@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Prescribing Hub · GP / SCA Clinical Reasoning Tool</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=11" />
+<link rel="stylesheet" href="../assets/prescriptions.css" />
+<style>
+  .tool-page{ padding:0; }
+  .panel{ padding:28px 32px 80px; max-width:1040px; margin:0 auto; }
+  @media (max-width:760px){ .panel{ padding:18px 14px 60px; } }
+  .tool-breadcrumb{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);margin-bottom:18px}
+  .tool-breadcrumb a{color:var(--teal-2);text-decoration:none;font-weight:600}
+  .tool-breadcrumb a:hover{color:var(--rust)}
+  .tool-breadcrumb svg{width:11px;height:11px;color:var(--muted-2)}
+  .tool-head{padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:20px}
+  .tool-head .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .tool-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.1;margin-top:8px}
+  .tool-head h1 em{font-style:italic;color:var(--teal)}
+  .tool-head p{color:var(--ink-2);font-size:14.5px;line-height:1.6;max-width:74ch;margin-top:8px}
+  .review-stamp{ display:inline-flex; align-items:center; gap:7px; margin-top:12px; font-size:11.5px; font-weight:700; color:var(--teal); background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:5px 12px; }
+  .review-stamp .dot{ width:7px; height:7px; border-radius:50%; background:#15803d; }
+  .review-stamp span.src{ color:var(--muted); font-weight:600; }
+
+  /* ===== Top-level section nav (Prescribing Hub) ===== */
+  .phub-nav{ display:flex; gap:10px; margin-bottom:8px; flex-wrap:wrap; }
+  .phub-btn{ font:inherit; text-align:left; flex:1 1 220px; min-width:0; cursor:pointer; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px 16px; display:flex; gap:13px; align-items:flex-start; transition:border-color .12s, box-shadow .12s, background .12s; }
+  .phub-btn:hover{ border-color:var(--teal-soft); }
+  .phub-btn.on{ border-color:var(--teal); background:var(--surface); box-shadow:0 0 0 1px var(--teal) inset; }
+  .phub-btn .ic{ font-size:22px; line-height:1; flex-shrink:0; width:42px; height:42px; display:grid; place-items:center; background:var(--bg-soft); border-radius:11px; }
+  .phub-btn.on .ic{ background:var(--teal); }
+  .phub-btn .tx b{ display:block; font-size:14.5px; font-weight:800; color:var(--ink); line-height:1.2; }
+  .phub-btn .tx span{ display:block; font-size:12px; color:var(--muted); line-height:1.4; margin-top:3px; }
+  .phub-section{ display:none; }
+  .phub-section.on{ display:block; animation:phubfade .22s ease; }
+  @keyframes phubfade{ from{ opacity:0; transform:translateY(4px);} to{ opacity:1; transform:none;} }
+  .phub-secp{ font-size:13.5px; line-height:1.6; color:var(--ink-2); max-width:74ch; margin:18px 0 18px; }
+
+  /* ===== shared sub-tab look (guide + sick-day) ===== */
+  .pg-tabs, .sd-tabs{ display:flex; gap:8px; margin-bottom:22px; flex-wrap:wrap; }
+  .pg-tab, .sd-tab{ font:inherit; font-size:13.5px; font-weight:700; padding:11px 17px; border-radius:11px; border:1px solid var(--line-2); background:#fff; color:var(--ink-2); cursor:pointer; display:flex; align-items:center; gap:8px; }
+  .pg-tab.on, .sd-tab.on{ background:var(--teal); color:#f6f2e9; border-color:var(--teal); }
+  .pg-panel, .sd-panel{ display:none; }
+  .pg-panel.on, .sd-panel.on{ display:block; }
+
+  .pg-sec-h{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:1.4rem; line-height:1.2; margin:2px 0 4px; }
+  .pg-grp-h{ font-size:13px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--teal); margin:24px 0 8px; padding-bottom:5px; border-bottom:2px solid var(--teal-soft); }
+  .pg-sec-h em{ font-style:italic; color:var(--teal); }
+  .pg-sec-p{ font-size:13.5px; line-height:1.6; color:var(--ink-2); max-width:74ch; margin-bottom:18px; }
+
+  .pg-cards{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:18px; }
+  @media (max-width:720px){ .pg-cards{ grid-template-columns:1fr; } }
+  .pg-card{ border:1px solid var(--line); border-radius:13px; background:var(--surface); padding:16px 18px; }
+  .pg-card.full{ grid-column:1 / -1; }
+  .pg-card h4{ font-size:12.5px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--teal); margin-bottom:11px; display:flex; align-items:center; gap:8px; }
+  .pg-card.warn{ border-color:#fed7aa; background:#fffdfa; }
+  .pg-card.warn h4{ color:var(--rust); }
+  .pg-card ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .pg-card li{ font-size:13.5px; line-height:1.55; color:var(--ink-2); padding-left:18px; position:relative; }
+  .pg-card li::before{ content:""; position:absolute; left:2px; top:7px; width:6px; height:6px; border-radius:2px; background:var(--teal); }
+  .pg-card.warn li::before{ background:var(--rust); }
+  .pg-card li b{ color:var(--ink); }
+  .pg-card p{ font-size:13.5px; line-height:1.6; color:var(--ink-2); }
+  .pg-cond-grp{ font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--rust); margin:14px 0 7px; }
+  .pg-cond{ columns:2; column-gap:30px; margin:0 0 2px; padding:0; list-style:none; }
+  @media (max-width:560px){ .pg-cond{ columns:1; } }
+  .pg-cond li{ font-size:13px; line-height:1.4; color:var(--ink); font-weight:600; margin-bottom:9px; break-inside:avoid; padding-left:24px; position:relative; }
+  .pg-cond li::before{ content:counter(condnum); counter-increment:condnum; position:absolute; left:0; top:0; color:var(--rust); font-weight:700; font-size:11.5px; font-variant-numeric:tabular-nums; }
+  .pg-cond li .otc{ display:block; font-weight:400; font-size:11.6px; line-height:1.4; color:var(--muted); margin-top:2px; }
+  .pg-cond li .otc::before{ content:"⊘ avoid: "; color:var(--rust); font-weight:600; }
+  .pg-cond-plus{ list-style:none; display:flex; gap:9px; flex-wrap:wrap; margin-top:2px; }
+  .pg-cond-plus li{ font-size:12.5px; color:var(--ink-2); background:#fff; border:1px solid var(--line); border-radius:8px; padding:6px 11px; }
+  .pg-cond-plus li b{ color:var(--ink); }
+
+  .pg-note{ font-size:12.5px; line-height:1.55; color:var(--ink-2); background:#fffbeb; border:1px solid #fde68a; border-radius:9px; padding:11px 14px; margin-bottom:16px; }
+  .pg-note b{ color:var(--ink); }
+  .pg-info{ font-size:12.5px; line-height:1.55; color:#1e3a8a; background:#eff6ff; border:1px solid #bfdbfe; border-radius:9px; padding:11px 14px; margin-bottom:16px; }
+  .pg-info b{ color:#1e3a8a; }
+
+  .pg-check{ list-style:none; display:flex; flex-direction:column; gap:9px; }
+  .pg-check li{ display:flex; gap:11px; align-items:flex-start; font-size:13.5px; line-height:1.5; color:var(--ink-2); padding-left:0; }
+  .pg-check li::before{ display:none; }
+  .pg-check li .bx{ flex-shrink:0; width:20px; height:20px; border-radius:5px; border:2px solid var(--teal); display:grid; place-items:center; color:var(--teal); font-size:12px; font-weight:800; margin-top:1px; }
+  .pg-check li b{ color:var(--ink); }
+
+  .pg-table{ width:100%; border-collapse:collapse; font-size:13px; }
+  .pg-table th, .pg-table td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; line-height:1.45; }
+  .pg-table th{ font-size:10.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); }
+  .pg-table tr:last-child td{ border-bottom:none; }
+  .pg-table td:first-child{ font-weight:800; color:var(--teal); white-space:nowrap; }
+  /* monitoring/reference tables keep their columns on mobile via horizontal scroll */
+  .pg-table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  @media (max-width:620px){
+    .pg-table{ min-width:560px; }
+    .pg-table td:first-child{ white-space:normal; }
+  }
+  /* Monitoring tables: STACK on mobile so every column (Baseline/Routine/Comments) is visible without horizontal scroll */
+  @media (max-width:620px){
+    .mon-stack .pg-table-wrap{ overflow:visible; }
+    .mon-stack table.pg-table{ min-width:0; width:100%; display:block; }
+    .mon-stack table.pg-table thead{ display:none; }
+    .mon-stack table.pg-table tbody,
+    .mon-stack table.pg-table tr,
+    .mon-stack table.pg-table td{ display:block; width:auto; }
+    .mon-stack table.pg-table tr{ border:1px solid var(--line); border-radius:11px; background:var(--surface); padding:6px 4px; margin-bottom:12px; }
+    .mon-stack table.pg-table td{ border:none; padding:6px 12px; }
+    .mon-stack table.pg-table td:first-child{ font-size:14.5px; color:var(--teal); border-bottom:1px solid var(--line); padding-bottom:8px; margin-bottom:2px; }
+    .mon-stack table.pg-table td:not(:first-child)::before{
+      content:attr(data-label); display:block; font-size:10px; font-weight:800;
+      letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-bottom:2px;
+    }
+  }
+
+  /* RAG */
+  .pg-rag-banner{ display:flex; gap:13px; align-items:flex-start; background:#fff7ed; border:1px solid #fed7aa; border-radius:13px; padding:15px 18px; margin-bottom:18px; }
+  .pg-rag-banner .ic{ font-size:22px; line-height:1; flex-shrink:0; }
+  .pg-rag-banner h3{ font-size:14.5px; font-weight:800; color:#9a3412; margin-bottom:4px; }
+  .pg-rag-banner p{ font-size:13px; line-height:1.55; color:var(--ink-2); }
+  .pg-rag-banner p b{ color:var(--ink); }
+  .pg-area-row{ display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin-top:11px; padding-top:11px; border-top:1px solid #fed7aa; }
+  .pg-area-label{ font-size:12px; font-weight:800; letter-spacing:.03em; text-transform:uppercase; color:#9a3412; }
+  .rgp-area-select{ font:inherit; font-size:13px; padding:6px 10px; border:1px solid var(--line-2); border-radius:8px; background:#fff; color:var(--ink); max-width:260px; }
+  .rgp-area-select:focus{ outline:none; border-color:var(--teal); }
+  .pg-area-state{ font-size:12.5px; line-height:1.5; color:var(--ink-2); }
+  .pg-area-state.ok{ color:#14532d; font-weight:600; }
+  .pg-area-state.warn{ color:#9a3412; }
+  .pg-area-state.warn a{ color:var(--teal); font-weight:700; text-decoration:none; white-space:nowrap; }
+  .pg-area-state.warn a:hover{ color:var(--rust); }
+
+  .pg-rag-legend{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-bottom:18px; }
+  .pg-rl{ border:1px solid var(--line); border-radius:12px; padding:13px 15px; background:var(--surface); border-left-width:5px; }
+  .pg-rl.green{ border-left-color:#15803d; }
+  .pg-rl.amber{ border-left-color:#d97706; }
+  .pg-rl.red{ border-left-color:#dc2626; }
+  .pg-rl.grey{ border-left-color:#64748b; }
+  .pg-rl h4{ font-size:13px; font-weight:800; color:var(--ink); margin-bottom:5px; display:flex; align-items:center; gap:7px; }
+  .pg-rl .dot{ width:11px; height:11px; border-radius:50%; }
+  .pg-rl.green .dot{ background:#15803d; }
+  .pg-rl.amber .dot{ background:#d97706; }
+  .pg-rl.red .dot{ background:#dc2626; }
+  .pg-rl.grey .dot{ background:#64748b; }
+  .pg-rl p{ font-size:12.3px; line-height:1.5; color:var(--ink-2); }
+
+  .pg-rag-controls{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:14px; }
+  .pg-rag-search{ flex:1; min-width:180px; }
+  .pg-rag-search input{ width:100%; font:inherit; font-size:13.5px; padding:9px 12px; border:1px solid var(--line-2); border-radius:9px; background:#fff; color:var(--ink); }
+  .pg-rag-search input:focus{ outline:none; border-color:var(--teal); }
+  .pg-rag-filters{ display:flex; gap:6px; flex-wrap:wrap; }
+  .pg-rfilt{ font:inherit; font-size:12px; font-weight:700; padding:8px 12px; border-radius:8px; border:1px solid var(--line-2); background:#fff; color:var(--ink-2); cursor:pointer; }
+  .pg-rfilt.on{ color:#fff; }
+  .pg-rfilt.all.on{ background:var(--teal); border-color:var(--teal); }
+  .pg-rfilt.green.on{ background:#15803d; border-color:#15803d; }
+  .pg-rfilt.amber.on{ background:#d97706; border-color:#d97706; }
+  .pg-rfilt.red.on{ background:#dc2626; border-color:#dc2626; }
+  .pg-rfilt.grey.on{ background:#64748b; border-color:#64748b; }
+
+  .pg-rag-list{ display:flex; flex-direction:column; gap:8px; }
+  .pg-rag-count{ font-size:12px; font-weight:700; color:var(--muted); margin-bottom:10px; }
+  .pg-rag-grp{ font-size:11px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--teal); margin:14px 0 2px; display:flex; align-items:center; gap:8px; }
+  .pg-rag-grp:first-child{ margin-top:0; }
+  .pg-rag-grp .n{ font-size:10.5px; font-weight:700; color:var(--muted); background:var(--bg-soft); border-radius:99px; padding:1px 7px; }
+  .pg-ritem{ display:flex; gap:13px; align-items:flex-start; border:1px solid var(--line); border-radius:11px; background:var(--surface); padding:12px 14px; border-left-width:5px; }
+  .pg-ritem.green{ border-left-color:#15803d; }
+  .pg-ritem.amber{ border-left-color:#d97706; }
+  .pg-ritem.red{ border-left-color:#dc2626; }
+  .pg-ritem.grey{ border-left-color:#64748b; }
+  .pg-ritem .rtag{ flex-shrink:0; font-size:10px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; padding:3px 9px; border-radius:999px; margin-top:2px; white-space:nowrap; }
+  .pg-ritem.green .rtag{ background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; }
+  .pg-ritem.amber .rtag{ background:#fffbeb; color:#b45309; border:1px solid #fde68a; }
+  .pg-ritem.red .rtag{ background:#fef2f2; color:#b91c1c; border:1px solid #fecaca; }
+  .pg-ritem.grey .rtag{ background:#f1f5f9; color:#475569; border:1px solid #cbd5e1; }
+  .pg-ritem .rbody h5{ font-size:14px; font-weight:700; color:var(--ink); }
+  .pg-ritem .rbody .ruse{ font-size:11.5px; color:var(--muted); font-weight:600; margin-top:1px; }
+  .pg-ritem .rbody p{ font-size:12.5px; line-height:1.5; color:var(--ink-2); margin-top:5px; }
+  .pg-rag-empty{ padding:30px 16px; text-align:center; color:var(--muted); font-size:14px; }
+
+  /* ===== Sick-day specifics ===== */
+  .sd-alert{ display:flex; gap:13px; align-items:flex-start; border-radius:13px; padding:15px 18px; margin-bottom:18px; }
+  .sd-alert.red{ background:#fef2f2; border:1px solid #fecaca; }
+  .sd-alert.amber{ background:#fff7ed; border:1px solid #fed7aa; }
+  .sd-alert .ic{ font-size:22px; line-height:1; flex-shrink:0; }
+  .sd-alert h3{ font-size:15px; font-weight:800; color:var(--ink); margin-bottom:4px; }
+  .sd-alert p{ font-size:13.5px; line-height:1.55; color:var(--ink-2); }
+  .sd-alert.red h3{ color:#b91c1c; }
+
+  .sd-cards{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:18px; }
+  @media (max-width:720px){ .sd-cards{ grid-template-columns:1fr; } }
+  .sd-card{ border:1px solid var(--line); border-radius:13px; background:var(--surface); padding:16px 18px; }
+  .sd-card.full{ grid-column:1 / -1; }
+  .sd-card h4{ font-size:13px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--teal); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .sd-card.warn h4{ color:var(--rust); }
+  .sd-card ul{ margin:0; padding-left:18px; }
+  .sd-card li{ font-size:13.5px; line-height:1.6; color:var(--ink-2); margin-bottom:7px; }
+  .sd-card li b{ color:var(--ink); }
+  .sd-card p{ font-size:13.5px; line-height:1.6; color:var(--ink-2); }
+  .sd-dose{ background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:11px 14px; margin-top:10px; font-size:13.5px; line-height:1.6; color:var(--ink); }
+  .sd-dose b{ color:var(--teal); }
+  .sad-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:6px 0 4px; }
+  .sad{ border:1px solid var(--line); border-radius:11px; background:var(--surface); padding:12px 14px; }
+  .sad .letter{ display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:7px; background:var(--rust); color:#fff; font-weight:800; font-size:14px; margin-bottom:7px; }
+  .sad h5{ font-size:13.5px; font-weight:700; color:var(--ink); }
+  .sad p{ font-size:12px; line-height:1.45; color:var(--muted); margin-top:3px; }
+  .sd-copy{ font:inherit; font-size:12.5px; font-weight:700; padding:9px 16px; border-radius:9px; border:1px solid var(--teal); background:#fff; color:var(--teal); cursor:pointer; margin-top:6px; }
+  .sd-copy:hover{ background:var(--teal); color:#f6f2e9; }
+  .sd-restart{ font-size:13px; line-height:1.55; color:var(--ink-2); background:#f0fdf4; border:1px solid #bbf7d0; border-radius:9px; padding:11px 14px; margin-top:12px; }
+  .sd-restart b{ color:#15803d; }
+
+  /* ===== Ready-prescriptions grid headings ===== */
+  [data-prescriptions]{margin-top:0}
+  .rx-groups{display:flex;flex-direction:column;gap:30px;margin-top:8px}
+  .rx-group{scroll-margin-top:80px}
+  .rx-group-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:0 0 8px 18px;border-bottom:2px solid var(--line)}
+  .rx-group-head h2{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:1.35rem;line-height:1.1;color:var(--ink);letter-spacing:-.01em}
+  .rx-group-count{font-size:11px;font-weight:700;color:var(--muted);background:var(--bg-soft);border:1px solid var(--line);border-radius:99px;padding:2px 9px;font-feature-settings:"tnum"}
+
+  .footer-disclaimer{ margin-top:40px; font-size:12.5px; line-height:1.6; color:var(--ink-2); background:var(--surface-2); border:1px solid var(--line); border-radius:12px; padding:16px 18px; }
+  .footer-disclaimer strong{ color:var(--ink); }
+</style>
+</head>
+<body>
+<button class="sb-toggle" aria-label="Open menu">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-prescribing"></aside>
+  <main class="main">
+    <div class="tool-page">
+      <div class="panel">
+
+        <div class="tool-breadcrumb">
+          <a href="../index.html">Reasoning GP</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+          <span>Tools</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+          <span style="color:var(--ink-2)">Prescribing Hub</span>
+        </div>
+
+        <header class="tool-head" data-screen-label="Tool head">
+          <span class="eyebrow">Reasoning Tool · Everything around the prescription pad</span>
+          <h1>Prescribing Hub — <em>write it, get the admin right, keep it safe when they're ill</em></h1>
+          <p>One place for the three jobs that surround a prescription: grab a <b>ready-made regimen</b> (dose, duration, counselling, EMIS copy-paste), settle the <b>prescribing admin</b> (free-prescription eligibility, a valid FP10, what not to prescribe, the traffic-light RAG), and apply the <b>sick-day rules</b> that keep long-term medicines safe in acute illness.</p>
+          <div class="review-stamp"><span class="dot"></span> Last reviewed June 2026 <span class="src">· NICE CKS / NG · BNF · NHSBSA · NHS England · GMMMG · Society for Endocrinology · MHRA</span></div>
+        </header>
+
+        <!-- ===== TOP-LEVEL SECTION NAV ===== -->
+        <nav class="phub-nav" id="phubNav" aria-label="Prescribing sections">
+          <button class="phub-btn on" data-sec="guide">
+            <span class="ic">🧾</span>
+            <span class="tx"><b>Prescribing guide</b><span>Eligibility · FP10 · what not to prescribe · RAG</span></span>
+          </button>
+          <button class="phub-btn" data-sec="rx">
+            <span class="ic">📝</span>
+            <span class="tx"><b>Ready prescriptions</b><span>Pre-built regimens · EMIS copy-paste</span></span>
+          </button>
+          <button class="phub-btn" data-sec="sickday">
+            <span class="ic">💉</span>
+            <span class="tx"><b>Sick-day rules</b><span>Increase · pause · never-stop · monitor</span></span>
+          </button>
+          <button class="phub-btn" data-sec="ckd">
+            <span class="ic">🫘</span>
+            <span class="tx"><b>Prescribing in CKD</b><span>Dose by eGFR · avoid · stop · adjust</span></span>
+          </button>
+          <button class="phub-btn" data-sec="pregnancy">
+            <span class="ic">🤰</span>
+            <span class="tx"><b>Pregnancy &amp; breastfeeding</b><span>Avoid · switch · safe options</span></span>
+          </button>
+          <button class="phub-btn" data-sec="review">
+            <span class="ic">🔁</span>
+            <span class="tx"><b>Medication review</b><span>Interactions · deprescribe · STOPP/START</span></span>
+          </button>
+        </nav>
+
+        <!-- ================================================================ -->
+        <!-- SECTION 1 · READY PRESCRIPTIONS                                   -->
+        <!-- ================================================================ -->
+        <section class="phub-section" id="sec-rx" data-screen-label="Ready prescriptions">
+          <p class="phub-secp">Filterable grid of fully-formed prescription bundles. Each opens to the full plan — indication · contraindications · drug table (dose · freq · route · duration) · alternative regimens · counselling · follow-up · red flags · copy-paste text for EMIS / SystmOne · NICE CKS source links.</p>
+          <div data-prescriptions></div>
+          <div class="footer-disclaimer" style="margin-top:40px">
+            <strong>Educational use only.</strong> Every prescription mirrors NICE CKS / NICE NG / FSRH / BNF guidance as cited per card. Always verify dose, contraindications, drug interactions, and your local formulary before prescribing — and confirm patient-specific factors (renal function, pregnancy, allergies, concomitant medications). Not a substitute for clinical judgement.
+          </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- SECTION 2 · PRESCRIBING GUIDE                                     -->
+        <!-- ================================================================ -->
+        <section class="phub-section on" id="sec-guide" data-screen-label="Prescribing guide">
+          <div class="pg-tabs">
+            <button class="pg-tab on" data-tab="free">💷 Free prescription eligibility</button>
+            <button class="pg-tab" data-tab="fp10">🖊️ Filling an FP10</button>
+            <button class="pg-tab" data-tab="avoid">🚫 What not to prescribe</button>
+            <button class="pg-tab" data-tab="rag">🚦 Traffic-light (RAG)</button>
+          </div>
+
+          <!-- FREE PRESCRIPTION ELIGIBILITY -->
+          <div class="pg-panel on" id="tab-free">
+            <h2 class="pg-sec-h">Who gets <em>free</em> NHS prescriptions (England)</h2>
+            <p class="pg-sec-p">Prescriptions are <b>free for everyone in Wales, Scotland and Northern Ireland</b>. In England a charge applies (around <b>£9.90 per item, 2025/26 — verify current</b>) unless the patient falls into an exemption below, or holds a prepayment certificate.</p>
+
+            <div class="pg-cards">
+              <div class="pg-card">
+                <h4>🎂 Age</h4>
+                <ul>
+                  <li><b>Under 16</b></li>
+                  <li><b>16–18</b> and in full-time education</li>
+                  <li><b>60 or over</b></li>
+                </ul>
+              </div>
+              <div class="pg-card">
+                <h4>🤰 Maternity (MatEx)</h4>
+                <ul>
+                  <li><b>Pregnant</b>, or have had a baby in the <b>last 12 months</b>, with a valid maternity exemption certificate (MatEx).</li>
+                </ul>
+              </div>
+              <div class="pg-card full">
+                <h4>🏥 Medical exemption (MedEx — apply via FP92A)</h4>
+                <p style="margin-bottom:9px">A defined, fixed list of conditions. Valid 5 years. The qualifying conditions are:</p>
+                <ul>
+                  <li>A <b>permanent fistula</b> needing dressing/appliance</li>
+                  <li><b>Hypoadrenalism</b> (e.g. Addison's) and other conditions needing specific replacement therapy — hypoparathyroidism, hypopituitarism, diabetes insipidus</li>
+                  <li><b>Diabetes mellitus</b> — except where treated by diet alone</li>
+                  <li><b>Myxoedema</b> (hypothyroidism needing thyroid hormone replacement)</li>
+                  <li><b>Myasthenia gravis</b></li>
+                  <li><b>Epilepsy</b> needing continuous anticonvulsant therapy</li>
+                  <li>A <b>continuing physical disability</b> that prevents leaving home without help</li>
+                  <li><b>Cancer</b> — treatment of cancer, the effects of cancer, or the effects of cancer treatment</li>
+                </ul>
+              </div>
+              <div class="pg-card full">
+                <h4>💷 Low income &amp; benefits</h4>
+                <ul>
+                  <li><b>Income Support</b>, income-based <b>JSA</b>, income-related <b>ESA</b>, <b>Pension Credit Guarantee Credit</b></li>
+                  <li><b>Universal Credit</b> — if earnings are below the set threshold in the relevant assessment period</li>
+                  <li><b>NHS Tax Credit Exemption Certificate</b>, or an <b>HC2 certificate</b> (NHS Low Income Scheme — HC3 gives partial help)</li>
+                  <li>Named on a valid <b>war pension exemption</b> certificate (for the accepted disability)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pg-info"><b>Not exempt but on regular meds?</b> A <b>Prescription Prepayment Certificate (PPC)</b> caps the cost — a 3-month or 12-month PPC pays for itself after roughly 4+ items in 3 months or 12+ a year. There is also a separate, cheaper <b>HRT PPC</b> covering most HRT items for 12 months.</div>
+            <div class="pg-note"><b>Check, don't assume.</b> Patients self-declare exemption on the back of the FP10 — the NHSBSA runs checks and issues penalty charges for wrongful claims. If unsure, advise the patient to confirm eligibility before ticking the box.</div>
+          </div>
+
+          <!-- FILLING AN FP10 -->
+          <div class="pg-panel" id="tab-fp10">
+            <h2 class="pg-sec-h">Writing a <em>legally valid</em> FP10</h2>
+            <p class="pg-sec-p">The FP10 is the NHS prescription form (now mostly issued electronically via EPS). Whether printed or electronic, a valid prescription must carry all of the following — a missing element means the pharmacist cannot legally dispense it.</p>
+
+            <div class="pg-cards">
+              <div class="pg-card full">
+                <h4>✅ Every prescription must have</h4>
+                <ul class="pg-check">
+                  <li><span class="bx">✓</span><span><b>Patient details</b> — full name and address; <b>age/date of birth is a legal requirement for children under 12</b> (best practice for all).</span></li>
+                  <li><span class="bx">✓</span><span><b>Date</b> the prescription was signed.</span></li>
+                  <li><span class="bx">✓</span><span><b>Drug</b> — name (use the <b>generic/approved name</b> unless brand is needed, e.g. modified-release, biologics, lithium), <b>form, strength, dose and directions</b>.</span></li>
+                  <li><span class="bx">✓</span><span><b>Quantity or duration</b> to supply (e.g. "28 tablets" or "28 days").</span></li>
+                  <li><span class="bx">✓</span><span><b>Prescriber's signature</b> (in ink, or a valid digital signature for EPS) plus <b>name and practice address</b>.</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pg-cards">
+              <div class="pg-card warn">
+                <h4>⚠️ Controlled drugs (Sch 2 &amp; 3) — extra legal rules</h4>
+                <ul>
+                  <li><b>Total quantity in both words and figures</b>.</li>
+                  <li>Form and strength stated; a <b>clearly specified dose</b> ("as directed" is not enough).</li>
+                  <li>Prescriber's details and signature; computer-generated is acceptable but the signature must be valid.</li>
+                  <li>Valid for <b>28 days</b> from the appropriate date.</li>
+                  <li><b>Good practice: limit to 30 days' supply</b> (not a strict legal limit, but expected).</li>
+                </ul>
+              </div>
+              <div class="pg-card">
+                <h4>🎨 Common FP10 variants</h4>
+                <div class="pg-table-wrap"><table class="pg-table">
+                  <thead><tr><th>Form</th><th>Use</th></tr></thead>
+                  <tbody>
+                    <tr><td>FP10NC / FP10SS</td><td>Standard GP prescription (green).</td></tr>
+                    <tr><td>FP10MDA</td><td>Instalment ("blue") — supervised opioid substitution (e.g. methadone).</td></tr>
+                    <tr><td>FP10D</td><td>Dental prescriptions.</td></tr>
+                    <tr><td>FP10PN / FP10CN</td><td>Nurse / non-medical prescriber forms.</td></tr>
+                  </tbody>
+                </table></div>
+              </div>
+            </div>
+
+            <div class="pg-info"><b>EPS is the norm.</b> Most prescriptions are signed digitally and sent to the patient's nominated pharmacy. The same legal elements apply — the smartcard digital signature replaces the ink one.</div>
+          </div>
+
+          <!-- WHAT NOT TO PRESCRIBE -->
+          <div class="pg-panel" id="tab-avoid">
+            <h2 class="pg-sec-h">Items GPs are asked <em>not</em> to prescribe</h2>
+            <p class="pg-sec-p">NHS England guidance asks prescribers to stop routinely prescribing two groups: cheap <b>over-the-counter (OTC)</b> items for self-limiting conditions, and a list of <b>low clinical-value</b> medicines. Plus a clinical group: drugs that should be <b>started and managed by secondary care</b>.</p>
+
+            <div class="pg-cards">
+              <div class="pg-card warn full">
+                <h4>🛒 The 35 conditions — OTC items not to routinely prescribe</h4>
+                <p style="margin-bottom:4px">NHS England (March 2018) lists <b>35 minor, short-term conditions</b> that are either <b>self-limiting</b> (clear on their own) or suitable for <b>self-care</b> (treatable with items bought over the counter), <b>plus</b> probiotics, vitamins &amp; minerals as items of limited clinical effectiveness. Each shows the <b>related OTC item(s)</b> a patient should normally buy rather than be prescribed.</p>
+
+                <div class="pg-cond-grp">Self-limiting conditions (8)</div>
+                <ol class="pg-cond" start="1" style="counter-reset:condnum">
+                  <li>Acute sore throat <span class="otc">lozenges, anaesthetic/analgesic throat sprays, paracetamol/ibuprofen</span></li>
+                  <li>Infrequent cold sores of the lip <span class="otc">aciclovir 5% cream</span></li>
+                  <li>Conjunctivitis <span class="otc">chloramphenicol eye drops/ointment, lubricants</span></li>
+                  <li>Coughs, colds &amp; nasal congestion <span class="otc">cough linctus/expectorants, decongestants, paracetamol, vapour rubs</span></li>
+                  <li>Cradle cap (seborrhoeic dermatitis — infants) <span class="otc">emollients, soft brushing, baby shampoo</span></li>
+                  <li>Haemorrhoids <span class="otc">topical soothing/anaesthetic creams &amp; suppositories (e.g. Anusol)</span></li>
+                  <li>Infant colic <span class="otc">simeticone drops, lactase drops, gripe water</span></li>
+                  <li>Mild cystitis <span class="otc">potassium/sodium citrate sachets, paracetamol/ibuprofen</span></li>
+                </ol>
+
+                <div class="pg-cond-grp">Conditions suitable for self-care (27)</div>
+                <ol class="pg-cond" start="9">
+                  <li>Mild irritant dermatitis <span class="otc">emollients, mild hydrocortisone 1% cream</span></li>
+                  <li>Dandruff <span class="otc">antifungal/ketoconazole or coal-tar shampoos</span></li>
+                  <li>Diarrhoea (adults) <span class="otc">oral rehydration salts, loperamide</span></li>
+                  <li>Dry / sore tired eyes <span class="otc">ocular lubricants / artificial tears</span></li>
+                  <li>Earwax <span class="otc">olive oil, sodium bicarbonate or urea-hydrogen-peroxide drops</span></li>
+                  <li>Excessive sweating (hyperhidrosis) <span class="otc">aluminium chloride antiperspirants (e.g. Driclor)</span></li>
+                  <li>Head lice <span class="otc">dimeticone 4% lotion, wet-combing, malathion</span></li>
+                  <li>Indigestion &amp; heartburn <span class="otc">antacids, alginates (Gaviscon), low-dose H2/PPI</span></li>
+                  <li>Infrequent constipation <span class="otc">bulk-forming, osmotic or stimulant laxatives</span></li>
+                  <li>Infrequent migraine <span class="otc">paracetamol, ibuprofen/aspirin, sumatriptan OTC</span></li>
+                  <li>Insect bites &amp; stings <span class="otc">antihistamines, mild hydrocortisone, crotamiton</span></li>
+                  <li>Mild acne <span class="otc">benzoyl peroxide, topical washes</span></li>
+                  <li>Mild dry skin <span class="otc">emollients / moisturisers</span></li>
+                  <li>Sunburn (excessive sun exposure) <span class="otc">after-sun, emollients, paracetamol/ibuprofen</span></li>
+                  <li>Sun protection <span class="otc">sunscreens (except ACBS photodermatoses)</span></li>
+                  <li>Mild–moderate hayfever / seasonal rhinitis <span class="otc">oral antihistamines, intranasal steroids, sodium cromoglicate eye drops</span></li>
+                  <li>Minor burns &amp; scalds <span class="otc">dressings, paracetamol/ibuprofen</span></li>
+                  <li>Minor pain, discomfort &amp;/or fever (aches, sprains, headache, period pain, back pain) <span class="otc">paracetamol, ibuprofen (oral/topical), aspirin</span></li>
+                  <li>Mouth ulcers <span class="otc">antiseptic/anaesthetic gels &amp; mouthwashes (e.g. Bonjela, chlorhexidine)</span></li>
+                  <li>Nappy rash <span class="otc">barrier creams, mild antifungal where needed</span></li>
+                  <li>Oral thrush <span class="otc">miconazole oral gel, nystatin</span></li>
+                  <li>Prevention of dental caries <span class="otc">fluoride toothpaste / mouthwash</span></li>
+                  <li>Ringworm / athlete's foot <span class="otc">topical antifungals (clotrimazole, terbinafine, miconazole)</span></li>
+                  <li>Teething / mild toothache <span class="otc">teething gels, paracetamol/ibuprofen</span></li>
+                  <li>Threadworms <span class="otc">mebendazole (+ household hygiene)</span></li>
+                  <li>Travel sickness <span class="otc">hyoscine, cinnarizine, antihistamines</span></li>
+                  <li>Warts &amp; verrucae <span class="otc">salicylic acid preparations, cryotherapy</span></li>
+                </ol>
+
+                <div class="pg-cond-grp">Plus — limited clinical effectiveness</div>
+                <ul class="pg-cond-plus">
+                  <li><b>Probiotics</b></li>
+                  <li><b>Vitamins &amp; minerals</b> (not as dietary supplements or a "pick-me-up")</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pg-cards">
+              <div class="pg-card warn">
+                <h4>📉 Low clinical-value medicines</h4>
+                <ul>
+                  <li><b>Liothyronine</b>; <b>lidocaine 5% plasters</b> (outside licensed use)</li>
+                  <li><b>Glucosamine &amp; chondroitin</b>; <b>omega-3</b> fatty acids; rubefacients</li>
+                  <li><b>Homeopathy</b>; herbal treatments; lutein &amp; antioxidants</li>
+                  <li><b>Co-proxamol</b>; immediate-release fentanyl (non-cancer); dosulepin; trimipramine</li>
+                  <li><b>Perindopril arginine</b>, prolonged-release doxazosin, once-daily tadalafil, paracetamol+tramadol combination, oxycodone+naloxone, aliskiren — prescribe the cheaper equivalent or alternative</li>
+                </ul>
+              </div>
+              <div class="pg-card">
+                <h4>✅ When OTC prescribing IS still appropriate</h4>
+                <ul>
+                  <li>Treating a <b>long-term condition</b> (e.g. regular paracetamol for persistent pain)</li>
+                  <li>Patient <b>can't self-manage / buy</b> (safeguarding, severe social vulnerability)</li>
+                  <li>Symptom of a more serious condition, or where OTC isn't clinically suitable</li>
+                  <li>Prescriber's clinical judgement always overrides the default.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pg-note"><b>Secondary-care / "red" drugs:</b> some medicines should never be <b>initiated</b> in primary care (see the Traffic-light tab). Don't take on prescribing of a hospital-initiated drug without a clear shared-care agreement and the monitoring it specifies.</div>
+          </div>
+
+          <!-- TRAFFIC LIGHT (RAG) -->
+          <div class="pg-panel" id="tab-rag">
+            <h2 class="pg-sec-h">The <em>traffic-light</em> (RAG) system — who prescribes what</h2>
+            <p class="pg-sec-p">Area Prescribing Committees classify drugs by where prescribing responsibility sits. The list below uses the <b>Greater Manchester (GMMMG)</b> RAG classification as the worked example, grouped by system. The full GMMMG list runs to many hundreds of items — this is the <b>GP-relevant subset</b>.</p>
+
+            <div class="pg-rag-banner">
+              <div class="ic">📍</div>
+              <div>
+                <h3>Not in Greater Manchester? Follow your local list</h3>
+                <p>RAG status <b>varies between areas</b> — a drug that's green in one ICB may be amber (shared care) in another. This GMMMG list is illustrative. <b>Always check your own Area Prescribing Committee / ICB formulary RAG classification</b> and shared-care agreements before prescribing.</p>
+                <div class="pg-area-row">
+                  <span class="pg-area-label">Your area:</span>
+                  <span id="pgAreaPicker"></span>
+                  <span class="pg-area-state" data-area-unset>Not set — showing GMMMG as the example.</span>
+                  <span class="pg-area-state ok" data-area-matches style="display:none">✓ <b data-area-name>your area</b> uses GMMMG — this list matches your area.</span>
+                  <span class="pg-area-state warn" data-area-other style="display:none">⚠ <b data-area-name>your area</b> has its own RAG list — GMMMG is shown only as an example. <a data-area-formulary href="#">Open your local formulary →</a></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pg-rag-legend">
+              <div class="pg-rl green"><h4><span class="dot"></span>GREEN</h4><p>Suitable for <b>GP prescribing and initiation</b> in primary care, within competence.</p></div>
+              <div class="pg-rl amber"><h4><span class="dot"></span>AMBER</h4><p><b>Specialist initiates</b>; GP continues under a <b>shared-care agreement</b> with defined monitoring.</p></div>
+              <div class="pg-rl red"><h4><span class="dot"></span>RED</h4><p><b>Hospital / specialist only.</b> Not for GP prescribing or routine repeat in primary care.</p></div>
+              <div class="pg-rl grey"><h4><span class="dot"></span>GREY / not recommended</h4><p>Insufficient evidence or value — <b>do not routinely prescribe</b>.</p></div>
+            </div>
+
+            <div class="pg-rag-controls">
+              <div class="pg-rag-search"><input type="search" id="ragSearch" placeholder="Search a drug…" autocomplete="off"></div>
+              <div class="pg-rag-filters" id="ragFilters">
+                <button class="pg-rfilt all on" data-r="all">All</button>
+                <button class="pg-rfilt green" data-r="green">Green</button>
+                <button class="pg-rfilt amber" data-r="amber">Amber</button>
+                <button class="pg-rfilt red" data-r="red">Red</button>
+                <button class="pg-rfilt grey" data-r="grey">Grey</button>
+              </div>
+            </div>
+
+            <div class="pg-rag-count" id="ragCount"></div>
+            <div class="pg-rag-list" id="ragList"></div>
+
+            <div class="pg-note" style="margin-top:16px"><b>Shared care is a two-way agreement.</b> For amber drugs, only take on prescribing once you have the specialist's shared-care request, are competent to monitor, and have capacity to do so safely — you can decline if those aren't met.</div>
+          </div>
+
+          <div class="footer-disclaimer">
+            <strong>Educational use only.</strong> Eligibility, fees, form rules and RAG classifications change and vary by nation and ICB. Prescription charge exemptions and PPC apply to <b>England</b>; prescriptions are free in Wales, Scotland and Northern Ireland. The RAG examples follow GMMMG and are illustrative — <b>always verify against your local Area Prescribing Committee / ICB formulary, the BNF, and current NHSBSA / NHS England guidance</b> before prescribing.
+          </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- SECTION 3 · SICK-DAY RULES                                        -->
+        <!-- ================================================================ -->
+        <section class="phub-section" id="sec-sickday" data-screen-label="Sick-day rules">
+          <p class="phub-secp">Acute intercurrent illness — fever, vomiting, diarrhoea, dehydration, infection — destabilises many long-term conditions. Some drugs must be <b>increased</b> (steroids), some <b>paused</b> to protect the kidneys (SAD MANS), some are <b>time-critical and must never be stopped</b> (insulin, levodopa, anti-epileptics), and several need <b>extra monitoring or dose review</b> (lithium, digoxin, DOACs, warfarin).</p>
+
+          <div class="sd-tabs">
+            <button class="sd-tab on" data-tab="steroid">💉 Steroids (adrenal)</button>
+            <button class="sd-tab" data-tab="diabetes">🩸 Diabetes</button>
+            <button class="sd-tab" data-tab="pause">⏸️ Pause (AKI — SAD MANS)</button>
+            <button class="sd-tab" data-tab="never">⛔ Never stop (time-critical)</button>
+            <button class="sd-tab" data-tab="monitor">🔬 Monitor &amp; adjust</button>
+            <button class="sd-tab" data-tab="fever">🌡️ Fever &amp; infection</button>
+            <button class="sd-tab" data-tab="flare">🫁 Flare action plans</button>
+          </div>
+
+          <!-- STEROID -->
+          <div class="sd-panel on" id="sd-steroid">
+            <div class="sd-alert red">
+              <div class="ic">🚨</div>
+              <div>
+                <h3>Adrenal crisis is a medical emergency</h3>
+                <p>Vomiting, severe illness, drowsiness or collapse in a steroid-dependent patient → <b>100 mg IM hydrocortisone immediately</b> and call 999. Never withhold steroid in a sick adrenal-insufficient patient because of a missing diagnosis. <b>When in doubt, give hydrocortisone.</b></p>
+              </div>
+            </div>
+            <div class="sd-cards">
+              <div class="sd-card full">
+                <h4>👥 Who needs steroid sick-day rules</h4>
+                <ul>
+                  <li><b>Primary adrenal insufficiency</b> — Addison's disease.</li>
+                  <li><b>Secondary adrenal insufficiency</b> — pituitary disease, or long-term exogenous steroids suppressing the axis.</li>
+                  <li>Anyone on <b>oral prednisolone ≥5 mg/day (or equivalent) for ≥4 weeks</b>, recently stopped long-term steroids, or on regular high-dose inhaled/topical/intra-articular steroids.</li>
+                  <li>Congenital adrenal hyperplasia; post-bilateral adrenalectomy.</li>
+                </ul>
+                <p style="margin-top:8px">Every such patient should hold a <b>NHS Steroid Emergency Card</b> and ideally a hydrocortisone injection kit with training.</p>
+              </div>
+              <div class="sd-card">
+                <h4>🤒 Moderate illness (oral rules)</h4>
+                <ul>
+                  <li>Fever/infection needing antibiotics, or feeling significantly unwell.</li>
+                  <li><b>Double the usual oral glucocorticoid</b> dose until recovered (usually 24–72 h after the fever settles), then return to normal.</li>
+                  <li>Minor illness without fever (e.g. common cold): usually no change needed.</li>
+                </ul>
+                <div class="sd-dose"><b>Major surgery / serious infection:</b> usually IV hydrocortisone 100 mg then 50 mg QDS or 200 mg/24 h infusion — secondary-care managed.</div>
+              </div>
+              <div class="sd-card warn">
+                <h4>🤮 Can't keep tablets down → inject</h4>
+                <ul>
+                  <li><b>Vomiting or diarrhoea</b> = oral steroid not absorbed. Don't wait.</li>
+                  <li>Give <b>100 mg hydrocortisone IM</b> (adult) and seek urgent medical help / call 999.</li>
+                  <li>Patient/carer should be trained to self-administer the emergency injection.</li>
+                </ul>
+                <div class="sd-dose">Paediatric IM hydrocortisone: <b>&lt;1 yr 25 mg · 1–5 yr 50 mg · &gt;5 yr 100 mg</b> (check local/specialist guidance).</div>
+              </div>
+              <div class="sd-card full">
+                <h4>📋 Patient advice — copy into the record / message</h4>
+                <p>"You have a condition where your body can't make extra steroid when you're ill, so you must do it yourself. <b>If you have a fever or infection, double your steroid dose</b> until you're better. <b>If you are vomiting or have diarrhoea, or feel very unwell, use your emergency hydrocortisone injection and call 999</b> — don't wait. Always carry your Steroid Emergency Card and tell any healthcare professional you are steroid-dependent."</p>
+                <button class="sd-copy" data-copy="steroid">Copy patient advice</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- DIABETES -->
+          <div class="sd-panel" id="sd-diabetes">
+            <div class="sd-alert red">
+              <div class="ic">🚨</div>
+              <div>
+                <h3>The golden rule: never stop insulin</h3>
+                <p>In type 1 diabetes, insulin must <b>never</b> be stopped during illness — even if not eating. Stress hormones push glucose and ketones up, and stopping insulin precipitates <b>diabetic ketoacidosis</b>. Illness usually means the patient needs the <b>same or more</b> insulin, not less.</p>
+              </div>
+            </div>
+            <div class="sd-cards">
+              <div class="sd-card full">
+                <h4>🩸 Core diabetes sick-day rules (insulin or hypo-causing drugs)</h4>
+                <ul>
+                  <li><b>Keep taking insulin</b> — never omit basal insulin; correction doses are often needed.</li>
+                  <li><b>Test glucose more often</b> — at least every 2–4 hours, including overnight if unwell.</li>
+                  <li><b>Check ketones</b> (blood ketone meter preferred) if type 1, or if glucose is persistently <b>&gt;15 mmol/L</b> / the patient is unwell.</li>
+                  <li><b>Maintain hydration &amp; carbohydrate</b> — aim ~3 L of sugar-free fluid; if not eating, replace meals with carb-containing drinks (milk, fruit juice, sugary drinks).</li>
+                  <li><b>Treat the underlying illness</b> and rest.</li>
+                </ul>
+                <div class="sd-dose"><b>Ketone-guided correction (type 1, rapid-acting insulin):</b> blood ketones <b>&lt;0.6</b> usually fine · <b>0.6–1.5</b> extra correction + recheck · <b>1.5–3.0</b> significant ketosis — give correction, push fluids, seek advice · <b>&gt;3.0</b> treat as impending DKA — urgent help. Follow the patient's own specialist plan where they have one.</div>
+              </div>
+              <div class="sd-card warn">
+                <h4>⏸️ Drugs to hold in diabetes during dehydrating illness</h4>
+                <ul>
+                  <li><b>SGLT2 inhibitors</b> ("-flozin") — stop; risk of <b>euglycaemic DKA</b>.</li>
+                  <li><b>Metformin</b> — stop if dehydrated (lactic-acidosis / AKI risk).</li>
+                  <li><b>Sulfonylureas</b> (gliclazide) &amp; <b>GLP-1 agonists</b> — review/reduce if not eating (hypo / nausea).</li>
+                </ul>
+              </div>
+              <div class="sd-card">
+                <h4>📞 When to escalate</h4>
+                <ul>
+                  <li>Persistent <b>vomiting</b> — can't keep fluids/carbs down.</li>
+                  <li><b>Ketones rising</b> or &gt;3.0, or glucose uncontrolled despite correction.</li>
+                  <li>Drowsy, abdominal pain, deep/laboured breathing, fruity breath → <b>?DKA, 999</b>.</li>
+                  <li>Unable to follow the plan / lives alone and deteriorating.</li>
+                </ul>
+              </div>
+              <div class="sd-card full">
+                <h4>📋 Patient advice — copy into the record / message</h4>
+                <p>"When you're ill, <b>keep taking your insulin — never stop it</b>, even if you're not eating. Test your blood sugar every 2–4 hours and check ketones if you have a meter. Drink plenty of sugar-free fluids; if you can't eat, take sugary drinks instead of meals. <b>Stop your '-flozin' (e.g. dapagliflozin) and metformin while you're dehydrated.</b> Get urgent help if you keep vomiting, your ketones are high, you feel drowsy, or you have tummy pain or fast breathing — this can be a diabetic emergency."</p>
+                <button class="sd-copy" data-copy="diabetes">Copy patient advice</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- PAUSE -->
+          <div class="sd-panel" id="sd-pause">
+            <div class="sd-alert amber">
+              <div class="ic">⏸️</div>
+              <div>
+                <h3>Pause during acute dehydrating illness</h3>
+                <p>During <b>vomiting, diarrhoea, or fevers/sweats/shaking severe enough to cause dehydration</b>, temporarily stop the drugs below to reduce the risk of acute kidney injury, DKA (SGLT2 inhibitors) and metformin-associated lactic acidosis. Restart when eating and drinking normally for 24–48 h. <b>This is for short-term illness — not a reason to stop chronic therapy.</b></p>
+              </div>
+            </div>
+            <div class="sd-card full" style="margin-bottom:16px">
+              <h4>🔤 The "SAD MANS" drugs to hold</h4>
+              <div class="sad-grid">
+                <div class="sad"><span class="letter">S</span><h5>Sulfonylureas</h5><p>gliclazide, glimepiride — hypo risk if not eating</p></div>
+                <div class="sad"><span class="letter">A</span><h5>ACE inhibitors</h5><p>ramipril, lisinopril, perindopril</p></div>
+                <div class="sad"><span class="letter">D</span><h5>Diuretics</h5><p>furosemide, bendroflumethiazide, spironolactone</p></div>
+                <div class="sad"><span class="letter">M</span><h5>Metformin</h5><p>lactic acidosis risk if dehydrated/AKI</p></div>
+                <div class="sad"><span class="letter">A</span><h5>ARBs</h5><p>losartan, candesartan, irbesartan</p></div>
+                <div class="sad"><span class="letter">N</span><h5>NSAIDs</h5><p>ibuprofen, naproxen, diclofenac</p></div>
+                <div class="sad"><span class="letter">S</span><h5>SGLT2 inhibitors</h5><p>dapagliflozin, empagliflozin — DKA risk</p></div>
+              </div>
+            </div>
+            <div class="sd-cards">
+              <div class="sd-card warn">
+                <h4>⚠ Special caution — SGLT2 inhibitors</h4>
+                <ul>
+                  <li>Stop the "-flozin" during any acute illness, dehydration, or before surgery.</li>
+                  <li>Risk of <b>euglycaemic DKA</b> — ketones can be high with near-normal glucose.</li>
+                  <li>Advise: check ketones if able, seek help if unwell, vomiting, abdominal pain or breathless.</li>
+                </ul>
+              </div>
+              <div class="sd-card">
+                <h4>🩸 Don't stop these</h4>
+                <ul>
+                  <li><b>Insulin</b> — never stop in type 1 diabetes; follow diabetes sick-day rules (more frequent monitoring, correction doses, ketone testing).</li>
+                  <li>Most other regular medicines continue unless advised otherwise.</li>
+                </ul>
+              </div>
+              <div class="sd-card full">
+                <h4>📋 Patient advice — copy into the record / message</h4>
+                <p>"While you are unwell with vomiting, diarrhoea or a high fever, <b>stop these tablets until you are eating and drinking normally again for a couple of days</b>: [list the patient's relevant SAD MANS drugs]. This protects your kidneys. <b>Keep taking your insulin if you use it.</b> Restart your usual tablets once you've recovered. If you can't keep fluids down, are getting more unwell, passing little urine, or feel drowsy, contact us or call 111/999."</p>
+                <button class="sd-copy" data-copy="pause">Copy patient advice</button>
+                <div class="sd-restart"><b>Restart rule:</b> resume the held medicines once the patient has been eating and drinking normally for <b>24–48 hours</b>. Consider a U&amp;E check if the illness was significant or they're high-risk.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- NEVER STOP -->
+          <div class="sd-panel" id="sd-never">
+            <div class="sd-alert red">
+              <div class="ic">⛔</div>
+              <div>
+                <h3>Time-critical medicines — do not stop or delay</h3>
+                <p>Some drugs cause serious harm if missed, delayed or abruptly stopped during illness. If the patient can't swallow or is vomiting, <b>find an alternative route — don't just omit them</b>. These are the medicines hospitals flag as "critical" / "must be given on time".</p>
+              </div>
+            </div>
+            <div class="sd-cards">
+              <div class="sd-card warn">
+                <h4>🧠 Parkinson's — levodopa &amp; PD drugs</h4>
+                <ul>
+                  <li><b>Must be given on time</b> (NICE NG71, Parkinson's UK "Get It On Time"). Late/missed doses cause severe immobility, swallowing/breathing problems.</li>
+                  <li><b>Never stop abruptly</b> — risk of an akinetic crisis / neuroleptic-malignant-like syndrome.</li>
+                  <li>If nil-by-mouth or vomiting: use <b>dispersible levodopa</b>, a <b>rotigotine patch</b>, or an NG tube — get specialist/Parkinson's nurse advice for dose conversion.</li>
+                  <li>For nausea use <b>domperidone / ondansetron</b> — <b>avoid</b> metoclopramide &amp; prochlorperazine (worsen Parkinson's).</li>
+                </ul>
+              </div>
+              <div class="sd-card warn">
+                <h4>⚡ Epilepsy — anti-epileptic drugs</h4>
+                <ul>
+                  <li><b>Don't miss doses</b> — abrupt withdrawal risks breakthrough seizures / status epilepticus.</li>
+                  <li>If vomiting: re-dose if vomited within ~1 hour; consider <b>buccal/rectal or alternative route</b>; seek advice for IV equivalents.</li>
+                  <li>Fever/illness lowers the seizure threshold — counsel on rescue medication (e.g. buccal midazolam) and the patient's seizure plan.</li>
+                </ul>
+              </div>
+              <div class="sd-card">
+                <h4>💉 Insulin &amp; steroids</h4>
+                <ul>
+                  <li><b>Insulin</b> — never stop in type 1 (see Diabetes tab); illness needs the same or more.</li>
+                  <li><b>Glucocorticoids / adrenal replacement</b> — never stop; <b>increase</b> in illness (see Steroids tab).</li>
+                </ul>
+              </div>
+              <div class="sd-card">
+                <h4>🩸 Anticoagulants &amp; others</h4>
+                <ul>
+                  <li><b>Anticoagulants</b> (DOAC / warfarin) — don't simply stop; balance clot vs bleed and review renal function/INR (see Monitor tab).</li>
+                  <li><b>Immunosuppression / biologics, antiretrovirals (HIV), anti-rejection (tacrolimus, ciclosporin)</b> — continue unless a specialist advises otherwise; seek advice early.</li>
+                  <li><b>Long-term opioids, baclofen, clonidine, beta-blockers</b> — abrupt withdrawal causes harm; don't stop suddenly.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- MONITOR -->
+          <div class="sd-panel" id="sd-monitor">
+            <div class="sd-alert amber">
+              <div class="ic">🔬</div>
+              <div>
+                <h3>Narrow-therapeutic-index drugs — review dose &amp; monitor</h3>
+                <p>These drugs aren't simply held or doubled — dehydration, AKI, fever and interacting antibiotics shift their levels, so they need <b>extra monitoring or a dose review</b> during illness.</p>
+              </div>
+            </div>
+            <div class="sd-cards">
+              <div class="sd-card warn">
+                <h4>🧂 Lithium</h4>
+                <ul>
+                  <li>Dehydration (D&amp;V, fever, sweats) and reduced intake <b>raise lithium levels → toxicity</b>.</li>
+                  <li>Maintain salt &amp; fluid intake; <b>check a lithium level</b> if significantly unwell; consider holding during marked dehydration on specialist advice.</li>
+                  <li>Watch the SAD MANS interactions — <b>NSAIDs, ACEi/ARBs, thiazides</b> all raise levels.</li>
+                  <li>Toxicity: coarse tremor, ataxia, slurred speech, vomiting, confusion → check level urgently.</li>
+                </ul>
+              </div>
+              <div class="sd-card warn">
+                <h4>❤️ Digoxin</h4>
+                <ul>
+                  <li>AKI and dehydration reduce clearance; <b>hypokalaemia</b> (D&amp;V or diuretics) potentiates toxicity.</li>
+                  <li>Check U&amp;E and consider a digoxin level if unwell; watch nausea, visual changes, arrhythmia.</li>
+                </ul>
+              </div>
+              <div class="sd-card">
+                <h4>🩸 DOACs &amp; warfarin</h4>
+                <ul>
+                  <li><b>DOACs</b> are renally cleared (especially <b>dabigatran</b>) — AKI causes accumulation and bleeding risk; <b>reassess renal function</b> and dose.</li>
+                  <li><b>Warfarin</b> — acute illness, reduced intake, liver involvement and many <b>antibiotics raise the INR</b>; <b>check INR</b> during significant illness or new antibiotics.</li>
+                </ul>
+              </div>
+              <div class="sd-card">
+                <h4>💊 Other level-sensitive drugs</h4>
+                <ul>
+                  <li><b>Methotrexate</b> — hold during serious infection/sepsis; avoid <b>trimethoprim/co-trimoxazole</b> (folate antagonism → marrow toxicity).</li>
+                  <li><b>Theophylline/aminophylline</b> — fever and <b>macrolides/ciprofloxacin</b> reduce clearance → toxicity.</li>
+                  <li><b>Phenytoin, ciclosporin, tacrolimus, aminoglycosides</b> — monitor levels/renal function in significant illness.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FEVER -->
+          <div class="sd-panel" id="sd-fever">
+            <div class="sd-alert red">
+              <div class="ic">🚨</div>
+              <div>
+                <h3>Sore throat, mouth ulcers, fever or flu-like illness on these drugs = possible agranulocytosis</h3>
+                <p>Several drugs can cause sudden <b>neutropenia / agranulocytosis</b>. In a patient on one of them, a sore throat, mouth ulcers, fever, chills or other infection is an emergency until excluded: <b>stop the drug and arrange an urgent (same-day) FBC</b>. Counsel every patient to recognise these symptoms when you start the drug.</p>
+              </div>
+            </div>
+            <div class="sd-cards">
+              <div class="sd-card warn">
+                <h4>🦋 Antithyroid drugs — carbimazole / propylthiouracil</h4>
+                <ul>
+                  <li><b>Sore throat, mouth ulcers, fever, flu-like illness</b> → <b>stop immediately</b> and get an <b>urgent FBC the same day</b> (MHRA warning).</li>
+                  <li>Do not restart until agranulocytosis is excluded; if confirmed, the drug is permanently contraindicated.</li>
+                  <li>Carbimazole also carries acute pancreatitis risk — stop if severe upper abdominal pain.</li>
+                </ul>
+              </div>
+              <div class="sd-card warn">
+                <h4>🧠 Clozapine</h4>
+                <ul>
+                  <li>Mandatory FBC monitoring scheme; any <b>fever/infection</b> → check FBC and consider sepsis.</li>
+                  <li>Infection &amp; reduced intake can also raise clozapine levels (toxicity) — review dose; smoking cessation during illness raises levels too.</li>
+                  <li>Fever in the first weeks may be benign clozapine-induced, but always exclude neutropenia, myocarditis and sepsis.</li>
+                </ul>
+              </div>
+              <div class="sd-card full">
+                <h4>💊 Immunosuppressants &amp; DMARDs — hold during significant infection, seek advice</h4>
+                <ul>
+                  <li><b>Methotrexate, azathioprine, leflunomide, mycophenolate, sulfasalazine, ciclosporin, tacrolimus</b> — usually <b>pause during a serious/febrile infection</b>; check FBC (neutropenia/marrow suppression); restart on specialist advice once recovered.</li>
+                  <li><b>Biologics</b> (anti-TNF — adalimumab, etanercept, infliximab; rituximab, tocilizumab, ustekinumab) and <b>JAK inhibitors</b> (tofacitinib, baricitinib) — <b>withhold during active infection</b>; infection signs may be blunted, threshold for investigation/treatment is lower.</li>
+                  <li>Avoid <b>trimethoprim/co-trimoxazole with methotrexate</b> (folate antagonism → marrow toxicity).</li>
+                  <li>High-dose / long-term <b>corticosteroids</b> are immunosuppressive — fever may be masked; also remember steroid sick-day rules (Steroids tab).</li>
+                  <li>Live vaccines are contraindicated; consider PJP/atypical infection in the unwell immunosuppressed patient.</li>
+                </ul>
+              </div>
+              <div class="sd-card">
+                <h4>⚠ Other drugs that can cause agranulocytosis</h4>
+                <ul>
+                  <li><b>Carbamazepine</b>, <b>mirtazapine</b>, <b>sulfasalazine</b>, <b>sulfonamides/co-trimoxazole</b>, <b>deferiprone</b>, <b>dapsone</b>, <b>penicillamine</b>, <b>ganciclovir</b>.</li>
+                  <li>Same rule: fever / sore throat / mouth ulcers → consider an urgent FBC and stop pending results.</li>
+                </ul>
+              </div>
+              <div class="sd-card">
+                <h4>🩸 Don't forget</h4>
+                <ul>
+                  <li><b>Neutropenic sepsis</b> in a patient on chemotherapy or recent immunosuppression is a medical emergency → <b>999 / acute oncology</b>, do not wait for tests.</li>
+                  <li>Fever also affects level-sensitive drugs (theophylline, phenytoin) — see Monitor tab.</li>
+                </ul>
+              </div>
+              <div class="sd-card full">
+                <h4>📋 Patient advice — copy into the record / message</h4>
+                <p>"While you take this medicine, a <b>sore throat, mouth ulcers, high temperature, chills or feeling flu-like</b> could be a sign your white blood cells have dropped. If that happens, <b>stop the medicine and contact us urgently (the same day) for a blood test</b> — don't wait. If you feel very unwell, shivery or can't get hold of us, call 111 or 999. Always tell any healthcare professional which medicine you're on."</p>
+                <button class="sd-copy" data-copy="fever">Copy patient advice</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- FLARE -->
+          <div class="sd-panel" id="sd-flare">
+            <div class="sd-alert amber">
+              <div class="ic">🫁</div>
+              <div>
+                <h3>Condition flare / self-management plans</h3>
+                <p>Beyond individual drugs, several long-term conditions have <b>NICE-backed self-management actions</b> for when the patient is unwell. Make sure each has a written personalised plan and (where relevant) a rescue pack.</p>
+              </div>
+            </div>
+            <div class="sd-cards">
+              <div class="sd-card">
+                <h4>🌬️ Asthma</h4>
+                <ul>
+                  <li>Follow the <b>personalised asthma action plan</b>; step up reliever / preventer per the plan.</li>
+                  <li><b>Oral prednisolone rescue</b> (e.g. 40 mg OD) for an acute attack as planned; seek help if reliever lasts &lt;4 h or no better.</li>
+                  <li>Red flags: too breathless to talk, blue lips, exhausted → 999.</li>
+                </ul>
+              </div>
+              <div class="sd-card">
+                <h4>🫁 COPD</h4>
+                <ul>
+                  <li><b>Rescue pack</b>: prednisolone for increased breathlessness; antibiotics if sputum is <b>more purulent</b> (Anthonisen criteria).</li>
+                  <li>Increase short-acting bronchodilator; use the written self-management plan; seek help if not improving in 48 h.</li>
+                </ul>
+              </div>
+              <div class="sd-card">
+                <h4>❤️ Heart failure</h4>
+                <ul>
+                  <li><b>Pause diuretics &amp; ACEi/ARB</b> during D&amp;V/dehydration (SAD MANS) — but watch for fluid overload on recovery.</li>
+                  <li>Daily weights; restart and review when eating/drinking normally; recheck U&amp;E.</li>
+                </ul>
+              </div>
+              <div class="sd-card">
+                <h4>🩹 Other plans</h4>
+                <ul>
+                  <li><b>Addison's / adrenal</b> — steroid sick-day rules + emergency injection (see Steroids tab).</li>
+                  <li><b>IBD</b> — flare plans; don't stop maintenance; steroid rescue per gastro plan.</li>
+                  <li><b>Epilepsy</b> — rescue medication &amp; seizure plan (see Never-stop tab).</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-disclaimer">
+            <strong>Educational use only.</strong> Steroid replacement and sick-day guidance follow the Society for Endocrinology / NHS Steroid Emergency Card guidance; diabetes sick-day rules follow Diabetes UK / TREND-UK; medicines-to-pause guidance follows NICE CKS and Think Kidneys / local AKI pathways; time-critical medicines (Parkinson's NICE NG71 / "Get It On Time", anti-epileptics, insulin) must not be omitted; narrow-therapeutic-index monitoring follows the BNF; agranulocytosis advice (antithyroid drugs, clozapine) follows the MHRA / BNF and the drug monitoring schemes. Doses are illustrative for adults unless stated — verify against the BNF/BNFc, the patient's specialist plan, and local policy.
+          </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- SECTION 4 · PRESCRIBING IN CKD                                    -->
+        <!-- ================================================================ -->
+        <section class="phub-section" id="sec-ckd" data-screen-label="Prescribing in CKD">
+          <p class="phub-secp">Reduced eGFR changes how renally-cleared drugs are handled — some need <b>dose reduction</b>, some should be <b>avoided</b>, and several must be <b>temporarily held during acute illness</b> (the sick-day "SAD MANS" rules) to prevent AKI. Always dose against the patient's <b>eGFR / CrCl</b> (use Cockcroft–Gault for narrow-therapeutic-index and DOAC dosing), and recheck renal function after any change.</p>
+
+          <div class="pg-tabs" id="ckdTabs">
+            <button class="pg-tab on" data-tab="ckd-avoid">⛔ Avoid / stop</button>
+            <button class="pg-tab" data-tab="ckd-dose">📉 Dose by eGFR</button>
+            <button class="pg-tab" data-tab="ckd-sick">⏸️ Sick-day (AKI)</button>
+            <button class="pg-tab" data-tab="ckd-stage">🪜 Stage thresholds</button>
+            <button class="pg-tab" data-tab="ckd-common">💡 Common problems</button>
+          </div>
+
+          <!-- AVOID / STOP -->
+          <div class="pg-panel on" id="ckd-avoid">
+            <h3 class="pg-sec-h">Drugs to <em>avoid or stop</em> as eGFR falls</h3>
+            <p class="pg-sec-p">These either accumulate to toxicity, are ineffective, or directly worsen renal function at low eGFR.</p>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Drug / class</th><th>Threshold</th><th>Why &amp; action</th></tr></thead>
+              <tbody>
+                <tr><td>NSAIDs</td><td>Avoid &lt;30; caution &lt;60</td><td>Reduce renal perfusion → AKI &amp; CKD progression; hyperkalaemia. Avoid in CKD, especially with ACEi/ARB + diuretic ("triple whammy").</td></tr>
+                <tr><td>Metformin</td><td>Review &lt;45; <b>stop &lt;30</b></td><td>Lactic-acidosis risk. Max 1 g/day if eGFR 30–45; stop if &lt;30 or during acute illness/contrast.</td></tr>
+                <tr><td>Nitrofurantoin</td><td>Avoid &lt;45 (short course 30–44 only if needed)</td><td>Inadequate urinary concentration → ineffective + neuropathy risk.</td></tr>
+                <tr><td>SGLT2 inhibitors</td><td>Don't <b>start</b> &lt;15–20 (drug-specific)</td><td>Glucose-lowering effect attenuated at low eGFR; continue for cardiorenal benefit per product licence. Hold during acute illness (DKA/AKI risk).</td></tr>
+                <tr><td>Potassium-sparing diuretics / MRAs</td><td>Caution &lt;45; avoid if K⁺ high</td><td>Hyperkalaemia — monitor U&amp;E closely with ACEi/ARB.</td></tr>
+                <tr><td>Spironolactone / amiloride</td><td>Avoid eGFR &lt;30</td><td>Severe hyperkalaemia risk.</td></tr>
+                <tr><td>Bisphosphonates</td><td>Avoid &lt;35 (drug-specific)</td><td>Alendronate/risedronate contraindicated below threshold.</td></tr>
+                <tr><td>Lithium</td><td>Nephrotoxic — specialist</td><td>Narrow index; reduce/specialist review as eGFR falls; hold when dehydrated.</td></tr>
+                <tr><td>Potassium supplements / high-K⁺ salt substitutes</td><td>Caution all stages</td><td>Hyperkalaemia.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="pg-note"><b>Contrast &amp; nephrotoxins:</b> review the need for IV contrast, aminoglycosides and other nephrotoxins; hydrate and recheck renal function.</div>
+          </div>
+
+          <!-- DOSE BY eGFR -->
+          <div class="pg-panel" id="ckd-dose">
+            <h3 class="pg-sec-h">Drugs that need <em>dose reduction</em> by eGFR</h3>
+            <p class="pg-sec-p">Renally-cleared drugs accumulate as eGFR falls — reduce dose or lengthen the interval. Doses below are a guide; confirm against the BNF / renal-drug handbook and use <b>CrCl (Cockcroft–Gault)</b> for DOACs and narrow-index drugs.</p>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Drug</th><th>Adjustment</th><th>Note</th></tr></thead>
+              <tbody>
+                <tr><td>Apixaban</td><td>2.5 mg BD if 2 of: age ≥80, ≤60 kg, creat ≥133; avoid CrCl &lt;15</td><td>Use CrCl, not eGFR.</td></tr>
+                <tr><td>Rivaroxaban</td><td>Caution CrCl 15–50; avoid &lt;15</td><td>AF dose 15 mg if CrCl 15–49.</td></tr>
+                <tr><td>Dabigatran / edoxaban</td><td>Reduce / avoid per CrCl</td><td>Dabigatran avoid &lt;30.</td></tr>
+                <tr><td>DOAC dosing</td><td>Recheck renal function ≥annually (6-monthly if CrCl &lt;60 or elderly)</td><td>—</td></tr>
+                <tr><td>Allopurinol</td><td>Start 50–100 mg; titrate to urate &amp; eGFR</td><td>Lower start in CKD (hypersensitivity).</td></tr>
+                <tr><td>Gabapentin / pregabalin</td><td>Reduce dose by eGFR band</td><td>Accumulate → sedation, falls.</td></tr>
+                <tr><td>Opioids (morphine, codeine, tramadol)</td><td>Reduce / avoid &lt;30; prefer oxycodone (low eGFR) / alfentanil, buprenorphine</td><td>Active metabolites accumulate → toxicity.</td></tr>
+                <tr><td>Digoxin</td><td>Reduce dose; monitor level &amp; K⁺</td><td>Renally cleared, narrow index.</td></tr>
+                <tr><td>Many antibiotics</td><td>Reduce (e.g. co-amoxiclav, trimethoprim, aciclovir, gentamicin)</td><td>Dose &amp; interval per CrCl.</td></tr>
+                <tr><td>Methotrexate</td><td>Reduce / avoid in significant CKD</td><td>Renally cleared — toxicity.</td></tr>
+                <tr><td>Atenolol / sotalol</td><td>Reduce (renally cleared)</td><td>Bisoprolol less affected.</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+
+          <!-- SICK DAY -->
+          <div class="pg-panel" id="ckd-sick">
+            <div class="pg-rag-banner">
+              <span class="ic">🟠</span>
+              <div><h3>Sick-day rules to prevent AKI — "SAD MANS"</h3>
+              <p>During acute illness with <b>dehydration, fever, vomiting or diarrhoea</b>, temporarily <b>stop</b> these drugs for ~24–48 h until eating and drinking normally, then restart. Give patients with CKD a written plan.</p></div>
+            </div>
+            <div class="pg-cards">
+              <div class="pg-card"><h4>🧯 S A D — M A N S</h4><ul>
+                <li><b>S</b>ulfonylureas — hypoglycaemia if not eating.</li>
+                <li><b>A</b>CE inhibitors — ramipril, lisinopril, perindopril.</li>
+                <li><b>D</b>iuretics — furosemide, bendroflumethiazide, indapamide.</li>
+                <li><b>M</b>etformin — lactic acidosis if AKI.</li>
+                <li><b>A</b>RBs — losartan, candesartan, valsartan.</li>
+                <li><b>N</b>SAIDs — ibuprofen, naproxen, diclofenac.</li>
+                <li><b>S</b>GLT2 inhibitors — dapagliflozin, empagliflozin (DKA/AKI risk).</li>
+              </ul></div>
+              <div class="pg-card warn"><h4>⚠️ Practical points</h4><ul>
+                <li><b>Restart</b> once eating/drinking normally for 24–48 h — don't leave essential cardio-renal drugs stopped indefinitely.</li>
+                <li><b>Insulin must never be stopped</b> in type 1 diabetes — adjust, don't omit (see Sick-day rules tab).</li>
+                <li>Recheck <b>U&amp;E</b> after a significant illness, and after restarting ACEi/ARB/diuretic.</li>
+                <li>Avoid <b>nephrotoxins</b> and review contrast exposure during illness.</li>
+              </ul></div>
+            </div>
+            <div class="pg-info">Reinforces the dedicated <b>Sick-day rules</b> section — the SAD MANS "pause" list there is the same drugs viewed from the AKI-prevention angle.</div>
+          </div>
+
+          <!-- STAGE THRESHOLDS -->
+          <div class="pg-panel" id="ckd-stage">
+            <h3 class="pg-sec-h">eGFR stage thresholds &amp; what changes</h3>
+            <p class="pg-sec-p">CKD is staged by eGFR (G1–G5) and albuminuria (A1–A3). Prescribing thresholds that matter in primary care:</p>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Stage (eGFR)</th><th>Key prescribing changes</th></tr></thead>
+              <tbody>
+                <tr><td>G1–G2 (≥60)</td><td>Normal/mild — review nephrotoxins; offer ACEi/ARB if albuminuria/diabetes/hypertension. SGLT2i for cardiorenal protection where indicated.</td></tr>
+                <tr><td>G3a (45–59)</td><td>Review metformin (max 1 g/day), nitrofurantoin (avoid), NSAIDs (avoid). Start statin for CVD risk. Recheck DOAC dose.</td></tr>
+                <tr><td>G3b (30–44)</td><td>Stop nitrofurantoin; reduce gabapentinoids/opioids; caution MRAs; reassess all renally-cleared drugs.</td></tr>
+                <tr><td>G4 (15–29)</td><td><b>Stop metformin;</b> avoid NSAIDs, spironolactone, many antibiotics need reduction; specialist/nephrology input; review DOAC suitability.</td></tr>
+                <tr><td>G5 (&lt;15)</td><td>Established kidney failure — specialist-led; most renally-cleared drugs need major adjustment or avoidance.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="pg-note"><b>Always:</b> annual (or more frequent) U&amp;E in CKD; recheck within 1–2 weeks of starting/increasing ACEi/ARB (accept ≤25% creatinine rise / ≤30% eGFR fall), and after any acute illness.</div>
+          </div>
+
+
+          <!-- COMMON PROBLEMS -->
+          <div class="pg-panel" id="ckd-common">
+            <h3 class="pg-sec-h">Common CKD prescribing <em>problems</em></h3>
+            <p class="pg-sec-p">The scenarios that actually come up in clinic — what to do.</p>
+            <div class="pg-cards">
+              <div class="pg-card"><h4>📉 "eGFR has dropped a stage"</h4><ul>
+                <li>First exclude an <b>acute</b> drop (AKI) vs true CKD progression — recheck, look for dehydration/illness/new nephrotoxin.</li>
+                <li>If genuine: re-dose renally-cleared drugs to the new band, stop nitrofurantoin if &lt;45, review metformin (&lt;45 reduce, &lt;30 stop), recheck DOAC dose by <b>CrCl</b>.</li>
+                <li>Recheck U&amp;E and consider nephrology if rapid decline (&gt;15% drop or sustained fall).</li>
+              </ul></div>
+              <div class="pg-card"><h4>💊 "Started ACEi/ARB — creatinine rose"</h4><ul>
+                <li>A <b>creatinine rise up to 30% (eGFR fall ≤25%) is acceptable</b> and expected — continue and recheck.</li>
+                <li>Recheck U&amp;E <b>1–2 weeks</b> after starting/up-titrating.</li>
+                <li>Stop &amp; investigate if rise &gt;30%, hyperkalaemia (K⁺ &gt;6), or symptomatic — consider renal artery stenosis.</li>
+              </ul></div>
+              <div class="pg-card warn"><h4>🩻 "Needs a CT with contrast"</h4><ul>
+                <li>Check eGFR; <b>hold metformin</b> at the time of contrast if eGFR &lt;60 (or any AKI risk) and for 48 h after, recheck renal function before restarting.</li>
+                <li>Ensure good hydration; review other nephrotoxins around the scan.</li>
+              </ul></div>
+              <div class="pg-card"><h4>🦠 "UTI in CKD"</h4><ul>
+                <li>Nitrofurantoin <b>avoid if eGFR &lt;45</b> (ineffective + neuropathy) — a short course at 30–44 only if no alternative and benefit outweighs risk.</li>
+                <li>Alternatives: trimethoprim (avoid 1st-tri pregnancy; watch K⁺ with ACEi/ARB), pivmecillinam, cefalexin (dose-reduce in severe CKD).</li>
+              </ul></div>
+              <div class="pg-card"><h4>😣 "Needs pain relief in CKD"</h4><ul>
+                <li><b>Avoid NSAIDs.</b> Paracetamol is first-line.</li>
+                <li>Opioids: morphine/codeine metabolites accumulate &lt;30 → prefer low-dose <b>oxycodone</b> (and alfentanil/buprenorphine in advanced CKD); start low, titrate slowly.</li>
+                <li>Gabapentinoids accumulate — reduce dose by eGFR, watch sedation/falls.</li>
+              </ul></div>
+              <div class="pg-card"><h4>🩺 "When to refer to nephrology"</h4><ul>
+                <li>eGFR &lt;30 (G4–G5), sustained ACR ≥70, rapid progression, refractory hyperkalaemia/hypertension, or genetic/uncertain cause.</li>
+                <li>Heart failure + CKD: SGLT2i offer cardiorenal protection — don't withhold purely for a modest eGFR dip after starting.</li>
+              </ul></div>
+            </div>
+          </div>
+
+          <div class="footer-disclaimer">
+            <strong>Educational use only.</strong> Renal dose adjustments follow NICE NG203 (CKD), NICE CKS and the BNF / Renal Drug Handbook — thresholds are drug-specific and change; always confirm the individual drug against the current BNF and the patient's measured renal function (CrCl for DOACs and narrow-index drugs) before prescribing.
+          </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- SECTION 5 · PREGNANCY & BREASTFEEDING                             -->
+        <!-- ================================================================ -->
+        <section class="phub-section" id="sec-pregnancy" data-screen-label="Pregnancy & breastfeeding">
+          <p class="phub-secp">Few drugs are formally "licensed" in pregnancy, but many are well-established as safe, and several are clearly harmful. <b>Treating the mother's condition matters</b> — untreated illness (epilepsy, asthma, severe mental illness, infection) often poses more risk than the drug. Always check the individual drug, and counsel using a shared decision.</p>
+
+          <div class="pg-rag-banner">
+            <span class="ic">🔎</span>
+            <div><h3>Check every drug against a specialist source</h3>
+            <p>Use <b><a href="https://www.medicinesinpregnancy.org" target="_blank" rel="noopener">UKTIS / "bumps"</a></b> (medicinesinpregnancy.org) for pregnancy, and <b><a href="https://www.breastfeedingnetwork.org.uk/drugs-factsheets/" target="_blank" rel="noopener">LactMed / Breastfeeding Network</a></b> or the <b>UK Drugs in Lactation Advisory Service (UKDILAS / SPS)</b> for breastfeeding. This tab gives common scenarios — it does not replace per-drug checking.</p></div>
+          </div>
+
+          <div class="pg-tabs" id="pregTabs">
+            <button class="pg-tab on" data-tab="preg-avoid">⛔ Avoid in pregnancy</button>
+            <button class="pg-tab" data-tab="preg-switch">🔁 Switch / common scenarios</button>
+            <button class="pg-tab" data-tab="preg-safe">✅ Usually-safe options</button>
+            <button class="pg-tab" data-tab="preg-bf">🤱 Breastfeeding</button>
+            <button class="pg-tab" data-tab="preg-common">💡 Common problems</button>
+          </div>
+
+          <!-- AVOID -->
+          <div class="pg-panel on" id="preg-avoid">
+            <h3 class="pg-sec-h">Known or likely <em>teratogens</em> — avoid / stop</h3>
+            <p class="pg-sec-p">These carry recognised fetal risk. Where the underlying condition still needs treatment, switch to a safer alternative pre-conception or as early as possible.</p>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Drug / class</th><th>Risk</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td>ACE inhibitors / ARBs</td><td>Renal dysgenesis, oligohydramnios, skull defects (2nd/3rd tri)</td><td>Stop pre-conception; switch to labetalol / nifedipine / methyldopa.</td></tr>
+                <tr><td>Sodium valproate</td><td>Neural-tube &amp; major malformations, neurodevelopmental harm</td><td><b>Contraindicated</b> in women of childbearing potential unless PPP; switch with specialist (e.g. lamotrigine/levetiracetam).</td></tr>
+                <tr><td>Warfarin</td><td>Embryopathy, fetal bleeding</td><td>Switch to LMWH pre-conception / early pregnancy.</td></tr>
+                <tr><td>Methotrexate / mycophenolate</td><td>Highly teratogenic, abortifacient</td><td>Stop well before conception (MTX ≥3 months); contraception essential.</td></tr>
+                <tr><td>Retinoids (isotretinoin, acitretin)</td><td>Severe malformations</td><td>Pregnancy Prevention Programme; avoid.</td></tr>
+                <tr><td>Statins</td><td>Theoretical fetal harm</td><td>Stop in pregnancy (and when planning).</td></tr>
+                <tr><td>Tetracyclines (doxycycline)</td><td>Dental/bone staining (2nd/3rd tri)</td><td>Avoid; use alternative antibiotic.</td></tr>
+                <tr><td>Trimethoprim (1st tri)</td><td>Folate antagonist — NTD risk</td><td>Avoid 1st trimester; give folic acid; use nitrofurantoin (not at term).</td></tr>
+                <tr><td>NSAIDs (3rd tri)</td><td>Premature ductus closure, oligohydramnios</td><td>Avoid esp. after 30 weeks.</td></tr>
+                <tr><td>Sodium valproate / topiramate / carbamazepine / phenytoin</td><td>AED teratogenicity (valproate worst)</td><td>Specialist pre-conception planning; high-dose folic acid 5 mg.</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+
+          <!-- SWITCH / SCENARIOS -->
+          <div class="pg-panel" id="preg-switch">
+            <h3 class="pg-sec-h">Common <em>switch</em> scenarios</h3>
+            <div class="pg-cards">
+              <div class="pg-card"><h4>🫀 Hypertension</h4><ul><li>Stop ACEi/ARB → <b>labetalol</b> (1st-line), <b>nifedipine MR</b>, or <b>methyldopa</b>.</li><li>Offer <b>aspirin 75–150 mg</b> from 12 weeks if pre-eclampsia risk.</li></ul></div>
+              <div class="pg-card"><h4>🧠 Epilepsy</h4><ul><li><b>Never stop AEDs abruptly.</b> Specialist pre-conception review; avoid valproate.</li><li><b>Folic acid 5 mg</b> daily pre-conception &amp; 1st trimester.</li></ul></div>
+              <div class="pg-card"><h4>😔 Depression</h4><ul><li>Many SSRIs continued if needed — <b>sertraline</b> commonly preferred; avoid paroxetine (1st tri) where possible.</li><li>Weigh relapse risk vs drug risk; shared decision.</li></ul></div>
+              <div class="pg-card"><h4>🩸 Diabetes</h4><ul><li>Stop non-insulin agents (except <b>metformin</b>, which is continued); optimise with insulin.</li><li><b>Folic acid 5 mg</b>; tight pre-conception control.</li></ul></div>
+              <div class="pg-card"><h4>🫁 Asthma</h4><ul><li><b>Continue inhalers</b> (ICS, SABA, LABA) — uncontrolled asthma is more dangerous than the drugs.</li></ul></div>
+              <div class="pg-card"><h4>🦠 Infection / UTI</h4><ul><li>1st tri: avoid trimethoprim → <b>nitrofurantoin</b> (not at term) or cephalexin.</li><li>Avoid tetracyclines &amp; quinolones.</li></ul></div>
+              <div class="pg-card"><h4>🩹 Anticoagulation / VTE</h4><ul><li>Warfarin/DOAC → <b>LMWH</b> in pregnancy.</li></ul></div>
+              <div class="pg-card"><h4>🦴 Thyroid</h4><ul><li>Continue <b>levothyroxine</b> (often needs dose increase ~25–30%).</li><li>Hyperthyroid: <b>propylthiouracil</b> 1st trimester, carbimazole later (specialist).</li></ul></div>
+            </div>
+            <div class="pg-note"><b>Folic acid:</b> 400 micrograms pre-conception–12 weeks for all; <b>5 mg</b> if diabetes, BMI ≥30, on AEDs, previous NTD, sickle cell/thalassaemia, or coeliac.</div>
+          </div>
+
+          <!-- SAFE -->
+          <div class="pg-panel" id="preg-safe">
+            <h3 class="pg-sec-h">Generally well-established options</h3>
+            <p class="pg-sec-p">Widely used and considered acceptable in pregnancy when indicated (still confirm per UKTIS/bumps):</p>
+            <div class="pg-cards">
+              <div class="pg-card"><h4>💊 Symptom relief</h4><ul><li><b>Paracetamol</b> — analgesic/antipyretic of choice.</li><li><b>Penicillins, cephalosporins, nitrofurantoin</b> (not at term), erythromycin.</li><li>Antacids/alginates; <b>omeprazole/ranitidine</b> alternatives for reflux.</li></ul></div>
+              <div class="pg-card"><h4>🤢 Nausea / common</h4><ul><li><b>Cyclizine, promethazine, prochlorperazine</b> for nausea/vomiting of pregnancy.</li><li><b>Loratadine/cetirizine</b> for allergy; chlorphenamine.</li><li><b>Topical</b> steroids/emollients for skin.</li></ul></div>
+            </div>
+            <div class="pg-info">"No evidence of harm" is not the same as "proven safe" — counsel honestly, document the discussion, and use the lowest effective dose for the shortest time.</div>
+          </div>
+
+          <!-- BREASTFEEDING -->
+          <div class="pg-panel" id="preg-bf">
+            <h3 class="pg-sec-h">Prescribing while <em>breastfeeding</em></h3>
+            <p class="pg-sec-p">Most drugs pass into breast milk only in tiny amounts. Prefer drugs with low oral bioavailability/short half-life, dose after a feed, and watch the infant for drowsiness/poor feeding. Check <b>LactMed</b> / Breastfeeding Network / UKDILAS.</p>
+            <div class="pg-cards">
+              <div class="pg-card warn"><h4>⛔ Avoid / caution</h4><ul>
+                <li><b>Codeine</b> — variable metabolism → infant opioid toxicity (avoid; use alternative analgesia).</li>
+                <li><b>Aspirin</b> (analgesic doses) — Reye's risk.</li>
+                <li><b>Lithium</b> — significant transfer; specialist only.</li>
+                <li><b>Cytotoxics, retinoids, amiodarone, high-dose iodine.</b></li>
+                <li>Combined oral contraceptive in the <b>first 6 weeks</b> (VTE + may reduce milk) — use POP/implant.</li>
+              </ul></div>
+              <div class="pg-card"><h4>✅ Usually compatible</h4><ul>
+                <li><b>Paracetamol, ibuprofen</b> — analgesics of choice.</li>
+                <li>Most <b>penicillins/cephalosporins/macrolides</b>.</li>
+                <li><b>Sertraline / paroxetine</b> — preferred SSRIs in lactation.</li>
+                <li><b>Levothyroxine, insulin, inhalers, most antihypertensives</b> (enalapril; avoid high-dose diuretics — may suppress milk).</li>
+                <li><b>Progestogen-only</b> contraception.</li>
+              </ul></div>
+            </div>
+          </div>
+
+
+          <!-- COMMON PROBLEMS -->
+          <div class="pg-panel" id="preg-common">
+            <h3 class="pg-sec-h">Common pregnancy/lactation <em>problems</em></h3>
+            <p class="pg-sec-p">Frequent real consultations — what to advise.</p>
+            <div class="pg-cards">
+              <div class="pg-card warn"><h4>😱 "I took X before I knew I was pregnant"</h4><ul>
+                <li>Don't panic the patient — most single exposures are low-risk. Check the specific drug on <b>UKTIS / bumps</b>.</li>
+                <li>Stop a teratogen now (ACEi/ARB, valproate, retinoid, methotrexate) and switch; arrange specialist/early scan if a known teratogen.</li>
+                <li>Give <b>folic acid 5 mg</b> and document the discussion.</li>
+              </ul></div>
+              <div class="pg-card"><h4>🤢 Nausea &amp; vomiting / hyperemesis</h4><ul>
+                <li>First-line antiemetics: <b>cyclizine, promethazine or prochlorperazine</b>; 2nd-line ondansetron (counsel small cleft-palate signal, 1st tri) / metoclopramide.</li>
+                <li>Hyperemesis (weight loss, ketones, dehydration) → admit/IV fluids; thiamine.</li>
+              </ul></div>
+              <div class="pg-card"><h4>🤕 Headache / pain</h4><ul>
+                <li><b>Paracetamol</b> is the analgesic of choice throughout.</li>
+                <li><b>Avoid NSAIDs</b> (esp. after 30 weeks — ductus closure); avoid codeine near term/in labour.</li>
+                <li>New severe headache + ≥20 weeks → check BP/pre-eclampsia.</li>
+              </ul></div>
+              <div class="pg-card"><h4>🦠 UTI in pregnancy</h4><ul>
+                <li>Always treat (incl. asymptomatic bacteriuria) — send MSU.</li>
+                <li>1st tri: avoid trimethoprim (folate antagonist) → <b>nitrofurantoin</b>; <b>avoid nitrofurantoin at term</b> (neonatal haemolysis) → cefalexin.</li>
+                <li>Group B strep / pyelonephritis → escalate.</li>
+              </ul></div>
+              <div class="pg-card"><h4>🤧 Reflux / hay-fever / constipation</h4><ul>
+                <li>Reflux: lifestyle, antacid/alginate; <b>omeprazole</b> if needed.</li>
+                <li>Allergy: <b>loratadine/cetirizine</b> or chlorphenamine.</li>
+                <li>Constipation: increase fibre/fluids; bulk-forming then lactulose/macrogol.</li>
+              </ul></div>
+              <div class="pg-card"><h4>🧠 Mental health in pregnancy</h4><ul>
+                <li>Don't stop antidepressants reflexively — relapse risk is real. <b>Sertraline</b> often preferred; perinatal mental-health input for severe illness.</li>
+                <li>Never stop antiepileptics/lithium without specialist advice.</li>
+              </ul></div>
+              <div class="pg-card"><h4>👶 Planning a pregnancy on regular meds</h4><ul>
+                <li>Pre-conception review: switch ACEi/ARB, statins, valproate, methotrexate, warfarin <b>before</b> conception.</li>
+                <li>Optimise: folic acid (5 mg if diabetes/BMI≥30/AED/NTD/sickle), control diabetes/thyroid/epilepsy.</li>
+              </ul></div>
+            </div>
+          </div>
+
+          <div class="footer-disclaimer">
+            <strong>Educational use only.</strong> Pregnancy and lactation prescribing must be individualised — always check the specific drug against <b>UKTIS / medicinesinpregnancy.org ("bumps")</b>, <b>LactMed</b>, the Breastfeeding Network and the BNF, and involve the relevant specialist for chronic conditions. Untreated maternal illness carries its own risks; decisions should be shared and documented.
+          </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- SECTION 6 · MEDICATION REVIEW & INTERACTIONS                      -->
+        <!-- ================================================================ -->
+        <section class="phub-section" id="sec-review" data-screen-label="Medication review">
+          <p class="phub-secp">A structured medication review (NICE NG5 / "structured medication review", and the <b>STOPP/START</b> criteria) checks every drug is still needed, effective, safe and wanted — and screens for the dangerous interactions and high-risk drugs that cause most avoidable harm in primary care.</p>
+
+          <div class="pg-tabs" id="revTabs">
+            <button class="pg-tab on" data-tab="rev-interact">⚠️ Key interactions</button>
+            <button class="pg-tab" data-tab="rev-7steps">🪜 7-step review</button>
+            <button class="pg-tab" data-tab="rev-stopp">🛑 STOPP / START</button>
+            <button class="pg-tab" data-tab="rev-highrisk">📊 Drug monitoring</button>
+          </div>
+
+          <!-- INTERACTIONS -->
+          <div class="pg-panel mon-stack on" id="rev-interact">
+            <h3 class="pg-sec-h">Common <em>interactions</em> to catch</h3>
+            <p class="pg-sec-p">High-yield, frequently-missed interactions in everyday GP prescribing — grouped by mechanism. Always check the specific pair in the <b>BNF (Appendix 1 / interactions checker)</b>; this is a primary-care prompt list.</p>
+
+            <div class="pg-rag-banner">
+              <span class="ic">⭐</span>
+              <div><h3>The "everyday traps" — the ones that catch people out</h3>
+              <p>These are the combinations that appear again and again in safe-prescribing audits and SCA stations — worth knowing on sight.</p></div>
+            </div>
+            <div class="pg-cards">
+              <div class="pg-card warn"><h4>💊 Clopidogrel + omeprazole / esomeprazole</h4><ul>
+                <li>Omeprazole/esomeprazole inhibit <b>CYP2C19</b>, which clopidogrel needs to become active → <b>reduced antiplatelet effect</b> (theoretical ↑ cardiovascular risk).</li>
+                <li><b>Action:</b> if a PPI is needed (e.g. with DAPT), use <b>lansoprazole or pantoprazole</b>; or an H₂-blocker (famotidine) — <b>not</b> cimetidine.</li>
+              </ul></div>
+              <div class="pg-card warn"><h4>💊 Simvastatin + clarithromycin / erythromycin</h4><ul>
+                <li>Macrolides inhibit <b>CYP3A4</b> → simvastatin levels soar → <b>myopathy / rhabdomyolysis</b>.</li>
+                <li><b>Action:</b> <b>stop simvastatin</b> during the macrolide course (and a few days after), or use a non-interacting antibiotic; <b>atorvastatin</b> is less affected but still caution. Avoid simvastatin entirely with itraconazole/ketoconazole.</li>
+              </ul></div>
+              <div class="pg-card warn"><h4>🫘 The "triple whammy" → AKI</h4><ul>
+                <li><b>ACEi/ARB + diuretic + NSAID</b> (especially with intercurrent dehydration) → acute kidney injury.</li>
+                <li><b>Action:</b> avoid adding an NSAID to this combination; if unavoidable, shortest course, check U&amp;E, and give sick-day rules.</li>
+              </ul></div>
+              <div class="pg-card warn"><h4>🩸 Methotrexate + trimethoprim</h4><ul>
+                <li>Both are <b>antifolates</b> → synergistic <b>bone-marrow suppression</b> (can be fatal). Also applies to co-trimoxazole.</li>
+                <li><b>Action:</b> <b>avoid</b> — choose a different antibiotic for the UTI/chest infection (e.g. nitrofurantoin/amoxicillin).</li>
+              </ul></div>
+              <div class="pg-card warn"><h4>🧂 Hyperkalaemia stack</h4><ul>
+                <li><b>ACEi/ARB + spironolactone/eplerenone + trimethoprim</b> (or K⁺ supplements / NSAIDs) → dangerous <b>hyperkalaemia</b>.</li>
+                <li><b>Action:</b> check U&amp;E before and ~5–7 days after starting; avoid trimethoprim in this group where possible.</li>
+              </ul></div>
+              <div class="pg-card warn"><h4>🧠 Serotonin stacking</h4><ul>
+                <li><b>SSRI/SNRI + tramadol / triptan / linezolid / St John's Wort</b> → <b>serotonin syndrome</b> (agitation, clonus, hyperthermia).</li>
+                <li><b>Action:</b> avoid stacking; counsel; review OTC/herbal use.</li>
+              </ul></div>
+            </div>
+
+            <h4 class="pg-grp-h">Bleeding risk</h4>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Combination</th><th>Effect</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td>Warfarin + macrolide / metronidazole / fluconazole / ciprofloxacin</td><td data-label="Effect">↑ INR → bleeding (enzyme inhibition)</td><td data-label="Action">Avoid or check INR a few days in; counsel on bleeding.</td></tr>
+                <tr><td>Warfarin + NSAID / aspirin</td><td data-label="Effect">↑ GI bleeding (additive + mucosal)</td><td data-label="Action">Avoid; if essential, PPI cover + INR monitoring.</td></tr>
+                <tr><td>Warfarin + miconazole oral gel</td><td data-label="Effect">Marked ↑ INR (often missed — it's "just a gel")</td><td data-label="Action">Avoid; use nystatin instead.</td></tr>
+                <tr><td>DOAC + NSAID / antiplatelet / SSRI</td><td data-label="Effect">↑ bleeding</td><td data-label="Action">Review need; gastroprotection; avoid triple therapy unless specialist-directed.</td></tr>
+                <tr><td>DOAC + strong CYP3A4/P-gp inhibitor (azoles, ritonavir) or inducer (rifampicin, carbamazepine, St John's Wort)</td><td data-label="Effect">↑ bleeding / ↓ efficacy</td><td data-label="Action">Avoid combinations; check BNF for the specific DOAC.</td></tr>
+                <tr><td>SSRI/SNRI + NSAID</td><td data-label="Effect">↑ GI bleeding</td><td data-label="Action">Add PPI or avoid; consider the bleeding risk in elderly.</td></tr>
+                <tr><td>SSRI + aspirin / anticoagulant</td><td data-label="Effect">↑ bleeding (platelet effect)</td><td data-label="Action">Gastroprotection; review necessity.</td></tr>
+              </tbody>
+            </table></div>
+
+            <h4 class="pg-grp-h">Enzyme inhibition / induction (CYP)</h4>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Combination</th><th>Effect</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td>Simvastatin/atorvastatin + amlodipine / diltiazem / verapamil</td><td data-label="Effect">↑ statin → myopathy</td><td data-label="Action">Cap simvastatin 20 mg with amlodipine; avoid with diltiazem/verapamil; consider rosuvastatin/pravastatin.</td></tr>
+                <tr><td>Statin + grapefruit juice (simvastatin)</td><td data-label="Effect">↑ statin levels</td><td data-label="Action">Counsel to avoid large quantities.</td></tr>
+                <tr><td>Clopidogrel + omeprazole / esomeprazole / cimetidine / fluconazole</td><td data-label="Effect">↓ clopidogrel activation (CYP2C19)</td><td data-label="Action">Use lansoprazole/pantoprazole or famotidine.</td></tr>
+                <tr><td>Enzyme inducers (rifampicin, carbamazepine, phenytoin, St John's Wort) + COC / DOAC / warfarin / many drugs</td><td data-label="Effect">↓ levels → contraceptive/treatment failure</td><td data-label="Action">Use alternative contraception; review affected drugs; check BNF.</td></tr>
+                <tr><td>Macrolides / azole antifungals + many CYP3A4 substrates (statins, some DOACs, calcium-channel blockers, midazolam)</td><td data-label="Effect">↑ substrate levels</td><td data-label="Action">Avoid or dose-adjust; choose non-interacting alternative.</td></tr>
+                <tr><td>Allopurinol + azathioprine / mercaptopurine</td><td data-label="Effect">Azathioprine toxicity (xanthine oxidase inhibition)</td><td data-label="Action">Major dose reduction / avoid — specialist only.</td></tr>
+              </tbody>
+            </table></div>
+
+            <h4 class="pg-grp-h">Renal &amp; electrolytes</h4>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Combination</th><th>Effect</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td>"Triple whammy": ACEi/ARB + diuretic + NSAID</td><td data-label="Effect">AKI (esp. with dehydration)</td><td data-label="Action">Avoid NSAID; sick-day rules; check U&amp;E.</td></tr>
+                <tr><td>ACEi/ARB + spironolactone/eplerenone / K⁺ supplement / trimethoprim</td><td data-label="Effect">Hyperkalaemia</td><td data-label="Action">Monitor U&amp;E/K⁺; avoid trimethoprim; counsel on salt substitutes (high K⁺).</td></tr>
+                <tr><td>Lithium + NSAID / ACEi/ARB / thiazide / dehydration</td><td data-label="Effect">↑ lithium → toxicity</td><td data-label="Action">Avoid new NSAID; check level; sick-day advice.</td></tr>
+                <tr><td>Digoxin + diuretic-induced hypokalaemia / amiodarone / verapamil</td><td data-label="Effect">↑ digoxin toxicity</td><td data-label="Action">Monitor K⁺ &amp; digoxin level; reduce dose with amiodarone.</td></tr>
+                <tr><td>Metformin + iodinated contrast (if eGFR low / AKI)</td><td data-label="Effect">Lactic acidosis</td><td data-label="Action">Hold around contrast; recheck renal function before restarting.</td></tr>
+                <tr><td>Drugs that lower sodium (SSRI + thiazide + carbamazepine)</td><td data-label="Effect">Hyponatraemia (SIADH)</td><td data-label="Action">Check Na⁺; review the combination, esp. in elderly.</td></tr>
+              </tbody>
+            </table></div>
+
+            <h4 class="pg-grp-h">Cardiac (rate, rhythm &amp; QT)</h4>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Combination</th><th>Effect</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td>Beta-blocker + verapamil / diltiazem</td><td data-label="Effect">Bradycardia, heart block, asystole</td><td data-label="Action">Avoid the combination.</td></tr>
+                <tr><td>QT-prolongers stacked (citalopram/escitalopram + macrolide + antipsychotic + ondansetron + amiodarone)</td><td data-label="Effect">↑ QT → torsades</td><td data-label="Action">Avoid stacking; respect citalopram dose caps (elderly ≤20 mg); ECG if needed.</td></tr>
+                <tr><td>Amiodarone + warfarin / digoxin / statin</td><td data-label="Effect">↑ levels of each</td><td data-label="Action">Reduce warfarin/digoxin dose; cap/avoid simvastatin; monitor.</td></tr>
+                <tr><td>Sildenafil/tadalafil + nitrates / nicorandil</td><td data-label="Effect">Profound hypotension</td><td data-label="Action"><b>Contraindicated</b> — never co-prescribe.</td></tr>
+              </tbody>
+            </table></div>
+
+            <h4 class="pg-grp-h">CNS &amp; sedation</h4>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Combination</th><th>Effect</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td>Opioid + benzodiazepine / gabapentinoid / "Z"-drug</td><td data-label="Effect">Respiratory depression, sedation, overdose death</td><td data-label="Action">Avoid combining; if unavoidable, lowest doses, counsel, review.</td></tr>
+                <tr><td>SSRI/SNRI + tramadol / triptan / linezolid / St John's Wort</td><td data-label="Effect">Serotonin syndrome</td><td data-label="Action">Avoid stacking; counsel on symptoms.</td></tr>
+                <tr><td>MAOI + SSRI / sympathomimetics / pethidine</td><td data-label="Effect">Serotonin syndrome / hypertensive crisis</td><td data-label="Action">Avoid; observe washout periods.</td></tr>
+                <tr><td>Anticholinergic burden stacking (TCA + oxybutynin + sedating antihistamine)</td><td data-label="Effect">Confusion, falls, retention</td><td data-label="Action">Minimise total ACB — see STOPP/START tab.</td></tr>
+              </tbody>
+            </table></div>
+
+            <h4 class="pg-grp-h">Contraception &amp; other key pairs</h4>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Combination</th><th>Effect</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td>Combined / progestogen pill + enzyme-inducer (rifampicin, some AEDs, St John's Wort)</td><td data-label="Effect">↓ contraceptive efficacy → unintended pregnancy</td><td data-label="Action">Use a reliable alternative/additional method; LARC (IUD) unaffected.</td></tr>
+                <tr><td>Lamotrigine + COC / valproate</td><td data-label="Effect">COC ↓ lamotrigine (seizures); valproate ↑ lamotrigine (rash/toxicity)</td><td data-label="Action">Specialist dose adjustment around starting/stopping.</td></tr>
+                <tr><td>Levothyroxine + calcium / iron / PPI / soya</td><td data-label="Effect">↓ levothyroxine absorption</td><td data-label="Action">Separate doses by ≥4 h; recheck TFTs.</td></tr>
+                <tr><td>Bisphosphonate + calcium / iron / antacids</td><td data-label="Effect">↓ bisphosphonate absorption</td><td data-label="Action">Take on empty stomach, separate from other drugs.</td></tr>
+                <tr><td>Quinolone/tetracycline + calcium / iron / antacids / dairy</td><td data-label="Effect">↓ antibiotic absorption (chelation)</td><td data-label="Action">Separate doses by ≥2–4 h.</td></tr>
+              </tbody>
+            </table></div>
+
+            <div class="pg-note"><b>Always check the specific pair in the BNF interactions checker</b> — severity and action depend on dose, indication and patient factors. See the <b>Drug monitoring</b>, <b>Prescribing in CKD</b> and <b>Sick-day rules</b> tabs for related safety.</div>
+          </div>
+
+          <!-- 7 STEPS -->
+          <div class="pg-panel" id="rev-7steps">
+            <h3 class="pg-sec-h">The <em>7-step</em> medication review</h3>
+            <p class="pg-sec-p">A structured framework (NHS Scotland Polypharmacy / NICE) for a shared, patient-centred review.</p>
+            <ol class="pg-check" style="counter-reset:none;list-style:none">
+              <li><span class="bx">1</span><div><b>Aims</b> — what matters to the patient? Establish their goals and understanding.</div></li>
+              <li><span class="bx">2</span><div><b>Need</b> — identify essential drugs and those for unnecessary/duplicate/expired indications.</div></li>
+              <li><span class="bx">3</span><div><b>Effectiveness</b> — are therapeutic goals being achieved? Stop ineffective drugs.</div></li>
+              <li><span class="bx">4</span><div><b>Safety</b> — screen for ADRs, interactions, and high-risk drugs (STOPP); check adherence-limiting side effects.</div></li>
+              <li><span class="bx">5</span><div><b>Cost-effectiveness</b> — is there a more cost-effective equivalent (without compromising care)?</div></li>
+              <li><span class="bx">6</span><div><b>Patient-centred</b> — is the patient willing/able to take the medicines as intended? Agree changes together.</div></li>
+              <li><span class="bx">7</span><div><b>Plan &amp; monitor</b> — document changes, deprescribing plan, and follow-up/monitoring.</div></li>
+            </ol>
+            <div class="pg-note"><b>Who to prioritise:</b> ≥10 regular medicines, care-home residents, frailty, recent admission/falls, high-risk drugs (anticoagulants, insulin, lithium, methotrexate, opioids), or eGFR decline.</div>
+          </div>
+
+          <!-- STOPP/START -->
+          <div class="pg-panel mon-stack" id="rev-stopp">
+            <h3 class="pg-sec-h"><em>STOPP / START</em> — deprescribe &amp; optimise in older people</h3>
+            <p class="pg-sec-p">Evidence-based criteria (STOPP/START, based on v3, 2023) for reviewing medicines in people <b>≥65</b>. <b>STOPP</b> = potentially inappropriate medicines to consider stopping; <b>START</b> = potential prescribing omissions to consider adding. Always individualise to the patient's goals, frailty and life expectancy — apply alongside the 7-step review.</p>
+
+            <div class="pg-rag-banner">
+              <span class="ic">⚖️</span>
+              <div><h3>Use as prompts, not rules</h3>
+              <p>Each criterion is a flag to <b>review</b>, not an automatic stop/start. Document the indication, shared decision and any agreed deprescribing/monitoring plan. Taper drugs that need it (benzodiazepines, opioids, PPIs, antidepressants, gabapentinoids, beta-blockers, steroids).</p></div>
+            </div>
+
+            <div class="sd-tabs" id="ssTabs">
+              <button class="sd-tab on" data-tab="ss-stopp">🛑 STOPP — consider stopping</button>
+              <button class="sd-tab" data-tab="ss-start">✅ START — consider adding</button>
+              <button class="sd-tab" data-tab="ss-falls">🤕 Falls &amp; anticholinergic</button>
+              <button class="sd-tab" data-tab="ss-taper">📉 How to deprescribe / taper</button>
+            </div>
+
+            <!-- STOPP -->
+            <div class="sd-panel on" id="sd-ss-stopp">
+              <h4 class="pg-grp-h">General / overarching</h4>
+              <div class="pg-table-wrap"><table class="pg-table">
+                <thead><tr><th>Consider stopping</th><th>When / why</th></tr></thead>
+                <tbody>
+                  <tr><td data-label="Drug">Any drug with no evidence-based clinical indication</td><td data-label="When / why">No valid indication, or prescribed beyond the recommended duration.</td></tr>
+                  <tr><td data-label="Drug">Duplicate drugs from the same class</td><td data-label="When / why">e.g. two NSAIDs, two ACEi/ARB, two opioids, two SSRIs — optimise monotherapy first.</td></tr>
+                  <tr><td data-label="Drug">Any drug beyond its recommended duration</td><td data-label="When / why">Where treatment duration is well defined (e.g. PPI, bisphosphonate review at 3–5 yr).</td></tr>
+                  <tr><td data-label="Drug">Drugs prescribed to treat a side-effect of another drug</td><td data-label="When / why">"Prescribing cascade" — review whether the first drug can be stopped instead.</td></tr>
+                </tbody>
+              </table></div>
+
+              <h4 class="pg-grp-h">Cardiovascular</h4>
+              <div class="pg-table-wrap"><table class="pg-table">
+                <thead><tr><th>Consider stopping</th><th>When / why</th></tr></thead>
+                <tbody>
+                  <tr><td data-label="Drug">Digoxin for heart failure with preserved systolic function</td><td data-label="When / why">No clear benefit; toxicity risk.</td></tr>
+                  <tr><td data-label="Drug">Digoxin long-term at dose &gt;125 microgram/day if eGFR &lt;30</td><td data-label="When / why">Accumulation → toxicity; reduce dose / monitor level.</td></tr>
+                  <tr><td data-label="Drug">Loop diuretic for dependent ankle oedema without heart failure</td><td data-label="When / why">No evidence of HF — elevation/compression more appropriate.</td></tr>
+                  <tr><td data-label="Drug">Loop diuretic first-line for hypertension</td><td data-label="When / why">Safer alternatives exist (CCB, ACEi/ARB, thiazide-like).</td></tr>
+                  <tr><td data-label="Drug">Thiazide with current/past significant hypokalaemia, hyponatraemia, hypercalcaemia or gout</td><td data-label="When / why">May precipitate these.</td></tr>
+                  <tr><td data-label="Drug">Beta-blocker with bradycardia (&lt;50), type II/III heart block</td><td data-label="When / why">Risk of complete heart block, asystole.</td></tr>
+                  <tr><td data-label="Drug">Beta-blocker + verapamil/diltiazem</td><td data-label="When / why">Risk of heart block.</td></tr>
+                  <tr><td data-label="Drug">Aspirin/antiplatelet for primary prevention (no established CVD)</td><td data-label="When / why">Bleeding risk outweighs benefit.</td></tr>
+                  <tr><td data-label="Drug">Aspirin + anticoagulant for AF without a clear indication</td><td data-label="When / why">Anticoagulant alone usually sufficient; bleeding risk.</td></tr>
+                  <tr><td data-label="Drug">Aspirin dose &gt;160 mg/day</td><td data-label="When / why">Increased bleeding, no added benefit.</td></tr>
+                </tbody>
+              </table></div>
+
+              <h4 class="pg-grp-h">CNS &amp; psychotropics</h4>
+              <div class="pg-table-wrap"><table class="pg-table">
+                <thead><tr><th>Consider stopping</th><th>When / why</th></tr></thead>
+                <tbody>
+                  <tr><td data-label="Drug">Benzodiazepines / Z-drugs ≥4 weeks</td><td data-label="When / why">Sedation, falls, fractures, confusion — taper, don't stop abruptly.</td></tr>
+                  <tr><td data-label="Drug">Antipsychotics in dementia (BPSD)</td><td data-label="When / why">Increased stroke/death; reserve for severe distress/risk, review regularly.</td></tr>
+                  <tr><td data-label="Drug">Antipsychotics as long-term hypnotics</td><td data-label="When / why">No indication; anticholinergic/EPSE/falls risk.</td></tr>
+                  <tr><td data-label="Drug">TCAs with dementia, glaucoma, prostatism, or prior falls</td><td data-label="When / why">Anticholinergic burden, falls, urinary retention.</td></tr>
+                  <tr><td data-label="Drug">SSRIs with current/recent hyponatraemia</td><td data-label="When / why">SIADH — check sodium; consider alternative.</td></tr>
+                  <tr><td data-label="Drug">Anticholinergics for antipsychotic EPSE</td><td data-label="When / why">Add to anticholinergic burden; review the antipsychotic.</td></tr>
+                  <tr><td data-label="Drug">Antipsychotics in those with parkinsonism / Lewy body dementia</td><td data-label="When / why">Severe sensitivity reactions.</td></tr>
+                </tbody>
+              </table></div>
+
+              <h4 class="pg-grp-h">GI, renal &amp; analgesia</h4>
+              <div class="pg-table-wrap"><table class="pg-table">
+                <thead><tr><th>Consider stopping</th><th>When / why</th></tr></thead>
+                <tbody>
+                  <tr><td data-label="Drug">PPI at full dose &gt;8 weeks for uncomplicated reflux/PUD</td><td data-label="When / why">Step down to lowest effective dose or stop/on-demand.</td></tr>
+                  <tr><td data-label="Drug">NSAID with eGFR &lt;50</td><td data-label="When / why">Risk of renal deterioration.</td></tr>
+                  <tr><td data-label="Drug">NSAID with heart failure</td><td data-label="When / why">Fluid retention, decompensation.</td></tr>
+                  <tr><td data-label="Drug">NSAID + anticoagulant/antiplatelet without PPI</td><td data-label="When / why">GI bleeding risk.</td></tr>
+                  <tr><td data-label="Drug">NSAID long-term (&gt;3 months) for mild OA pain</td><td data-label="When / why">Paracetamol/topical preferred; GI/renal/CV risk.</td></tr>
+                  <tr><td data-label="Drug">Long-term opioids for chronic non-cancer pain without benefit</td><td data-label="When / why">Review function; taper if not helping.</td></tr>
+                  <tr><td data-label="Drug">Opioids without laxative</td><td data-label="When / why">Predictable constipation — co-prescribe.</td></tr>
+                  <tr><td data-label="Drug">Prochlorperazine / metoclopramide with parkinsonism</td><td data-label="When / why">Worsens EPSE.</td></tr>
+                  <tr><td data-label="Drug">Metoclopramide long-term (&gt;5 days)</td><td data-label="When / why">Tardive dyskinesia / EPSE risk.</td></tr>
+                </tbody>
+              </table></div>
+
+              <h4 class="pg-grp-h">Endocrine &amp; urinary</h4>
+              <div class="pg-table-wrap"><table class="pg-table">
+                <thead><tr><th>Consider stopping</th><th>When / why</th></tr></thead>
+                <tbody>
+                  <tr><td data-label="Drug">Long-acting sulfonylureas (glibenclamide) in older people</td><td data-label="When / why">Prolonged hypoglycaemia — use shorter-acting/safer agents.</td></tr>
+                  <tr><td data-label="Drug">Sulfonylurea / insulin aiming for tight HbA1c in frail older people</td><td data-label="When / why">Relax targets; hypoglycaemia risk outweighs benefit.</td></tr>
+                  <tr><td data-label="Drug">Systemic oestrogen without progestogen (intact uterus)</td><td data-label="When / why">Endometrial cancer risk.</td></tr>
+                  <tr><td data-label="Drug">Antimuscarinics for OAB with dementia, glaucoma, chronic constipation or prostatism</td><td data-label="When / why">Worsens cognition, retention, constipation.</td></tr>
+                  <tr><td data-label="Drug">Alpha-blocker in those with symptomatic orthostatic hypotension / recurrent falls</td><td data-label="When / why">Postural drop, falls.</td></tr>
+                </tbody>
+              </table></div>
+
+              <h4 class="pg-grp-h">Respiratory</h4>
+              <div class="pg-table-wrap"><table class="pg-table">
+                <thead><tr><th>Consider stopping</th><th>When / why</th></tr></thead>
+                <tbody>
+                  <tr><td data-label="Drug">Theophylline as monotherapy for COPD</td><td data-label="When / why">Narrow therapeutic index; safer/more effective inhaled options.</td></tr>
+                  <tr><td data-label="Drug">Systemic corticosteroid (not inhaled) for maintenance COPD</td><td data-label="When / why">Long-term systemic steroid harms outweigh benefit — use inhaled.</td></tr>
+                  <tr><td data-label="Drug">Nebulised ipratropium with glaucoma</td><td data-label="When / why">Can worsen glaucoma — protect the eyes / review.</td></tr>
+                  <tr><td data-label="Drug">Benzodiazepine with acute/chronic respiratory failure</td><td data-label="When / why">Respiratory depression — avoid.</td></tr>
+                  <tr><td data-label="Drug">Long-acting beta-agonist alone in asthma</td><td data-label="When / why">LABA must be combined with an inhaled corticosteroid.</td></tr>
+                </tbody>
+              </table></div>
+
+              <h4 class="pg-grp-h">Musculoskeletal</h4>
+              <div class="pg-table-wrap"><table class="pg-table">
+                <thead><tr><th>Consider stopping</th><th>When / why</th></tr></thead>
+                <tbody>
+                  <tr><td data-label="Drug">Long-term oral NSAID/colchicine for chronic gout</td><td data-label="When / why">Where no contraindication to a urate-lowering drug (allopurinol/febuxostat) — treat the cause.</td></tr>
+                  <tr><td data-label="Drug">Oral bisphosphonate with current/recent upper-GI disease</td><td data-label="When / why">Dysphagia, oesophagitis, known stricture — reconsider/route.</td></tr>
+                  <tr><td data-label="Drug">Systemic corticosteroid (not NSAID) for OA monotherapy</td><td data-label="When / why">No proven benefit; systemic steroid harms.</td></tr>
+                  <tr><td data-label="Drug">Long-term NSAID/oral steroid without bone &amp; gastric protection</td><td data-label="When / why">Add gastroprotection; bone protection if steroid ≥7.5 mg ≥3 months.</td></tr>
+                  <tr><td data-label="Drug">Long-term oral NSAID with hypertension / heart failure / CKD</td><td data-label="When / why">Worsens all three — review need, use lowest dose/shortest course.</td></tr>
+                </tbody>
+              </table></div>
+            </div>
+
+            <!-- START -->
+            <div class="sd-panel" id="sd-ss-start">
+              <h4 class="pg-grp-h">Cardiovascular</h4>
+              <div class="pg-table-wrap"><table class="pg-table">
+                <thead><tr><th>Consider adding</th><th>When indicated</th></tr></thead>
+                <tbody>
+                  <tr><td data-label="Drug">Anticoagulant (DOAC/warfarin)</td><td data-label="When indicated">AF with CHA₂DS₂-VASc score qualifying — unless contraindicated.</td></tr>
+                  <tr><td data-label="Drug">Antihypertensive therapy</td><td data-label="When indicated">Persistent BP &gt;140/90 (or per individualised target in frailty).</td></tr>
+                  <tr><td data-label="Drug">Statin</td><td data-label="When indicated">Established coronary/cerebral/peripheral vascular disease (and high-risk primary prevention) where life expectancy &gt;5 yr.</td></tr>
+                  <tr><td data-label="Drug">ACEi (or ARB)</td><td data-label="When indicated">Heart failure with reduced EF; post-MI; diabetes with albuminuria.</td></tr>
+                  <tr><td data-label="Drug">Beta-blocker</td><td data-label="When indicated">Stable systolic heart failure; post-MI.</td></tr>
+                  <tr><td data-label="Drug">Antiplatelet</td><td data-label="When indicated">Established coronary/cerebral/peripheral arterial disease (secondary prevention).</td></tr>
+                  <tr><td data-label="Drug">SGLT2 inhibitor</td><td data-label="When indicated">Heart failure / CKD / type 2 diabetes for cardiorenal protection where indicated.</td></tr>
+                </tbody>
+              </table></div>
+
+              <h4 class="pg-grp-h">Bone, endocrine &amp; metabolic</h4>
+              <div class="pg-table-wrap"><table class="pg-table">
+                <thead><tr><th>Consider adding</th><th>When indicated</th></tr></thead>
+                <tbody>
+                  <tr><td data-label="Drug">Bone-protective therapy (bisphosphonate ± Ca/vit D)</td><td data-label="When indicated">Osteoporosis (prior fragility fracture, T-score ≤ −2.5, or high FRAX).</td></tr>
+                  <tr><td data-label="Drug">Vitamin D ± calcium</td><td data-label="When indicated">Housebound/falls/known osteoporosis or deficiency.</td></tr>
+                  <tr><td data-label="Drug">Bone protection with long-term oral steroids</td><td data-label="When indicated">Prednisolone ≥7.5 mg/day for ≥3 months.</td></tr>
+                  <tr><td data-label="Drug">Metformin</td><td data-label="When indicated">Type 2 diabetes (first-line) if eGFR adequate.</td></tr>
+                  <tr><td data-label="Drug">ACEi/ARB</td><td data-label="When indicated">Diabetes with albuminuria/diabetic nephropathy.</td></tr>
+                </tbody>
+              </table></div>
+
+              <h4 class="pg-grp-h">Respiratory, CNS &amp; other</h4>
+              <div class="pg-table-wrap"><table class="pg-table">
+                <thead><tr><th>Consider adding</th><th>When indicated</th></tr></thead>
+                <tbody>
+                  <tr><td data-label="Drug">Inhaled regular bronchodilator/steroid</td><td data-label="When indicated">Per stepwise COPD/asthma management with documented disease.</td></tr>
+                  <tr><td data-label="Drug">Levodopa / dopamine agonist</td><td data-label="When indicated">Idiopathic Parkinson's disease with functional impairment.</td></tr>
+                  <tr><td data-label="Drug">Antidepressant</td><td data-label="When indicated">Persistent moderate–severe depression.</td></tr>
+                  <tr><td data-label="Drug">Laxative</td><td data-label="When indicated">With regular opioids (prevent constipation).</td></tr>
+                  <tr><td data-label="Drug">Seasonal influenza / pneumococcal / shingles vaccine</td><td data-label="When indicated">Per national schedule for older adults.</td></tr>
+                  <tr><td data-label="Drug">PPI</td><td data-label="When indicated">Gastroprotection with high GI-bleed risk (NSAID/antiplatelet/anticoagulant combinations).</td></tr>
+                </tbody>
+              </table></div>
+            </div>
+
+            <!-- FALLS & ANTICHOLINERGIC -->
+            <div class="sd-panel" id="sd-ss-falls">
+              <h4 class="pg-grp-h">Drugs that increase falls risk — review in fallers</h4>
+              <div class="pg-table-wrap"><table class="pg-table">
+                <thead><tr><th>Class</th><th>Why &amp; action</th></tr></thead>
+                <tbody>
+                  <tr><td data-label="Class">Benzodiazepines / Z-drugs</td><td data-label="Why">Sedation, balance impairment — taper and stop.</td></tr>
+                  <tr><td data-label="Class">Antipsychotics</td><td data-label="Why">Sedation, postural hypotension, parkinsonism.</td></tr>
+                  <tr><td data-label="Class">TCAs &amp; sedating antihistamines</td><td data-label="Why">Anticholinergic, sedation, postural drop.</td></tr>
+                  <tr><td data-label="Class">Opioids &amp; gabapentinoids</td><td data-label="Why">Sedation, dizziness — review need, taper.</td></tr>
+                  <tr><td data-label="Class">Antihypertensives / nitrates / alpha-blockers</td><td data-label="Why">Postural hypotension — check lying/standing BP, review.</td></tr>
+                  <tr><td data-label="Class">Hypoglycaemic agents (sulfonylureas, insulin)</td><td data-label="Why">Hypoglycaemia → falls; relax targets in frailty.</td></tr>
+                </tbody>
+              </table></div>
+
+              <h4 class="pg-grp-h">Anticholinergic burden — minimise the total load</h4>
+              <p class="pg-sec-p">High cumulative anticholinergic burden (ACB) is linked to falls, confusion, constipation, urinary retention and dementia risk. Common culprits to review/replace:</p>
+              <div class="pg-cards">
+                <div class="pg-card warn"><h4>🧠 High ACB (score 3)</h4><ul>
+                  <li>Amitriptyline, nortriptyline (TCAs)</li>
+                  <li>Oxybutynin, tolterodine, solifenacin</li>
+                  <li>Chlorphenamine, promethazine, hydroxyzine, cyclizine</li>
+                  <li>Hyoscine, procyclidine</li>
+                  <li>Olanzapine, quetiapine, chlorpromazine</li>
+                </ul></div>
+                <div class="pg-card"><h4>↔️ Lower-burden swaps</h4><ul>
+                  <li>Depression → SSRI (sertraline) instead of TCA.</li>
+                  <li>OAB → mirabegron, or bladder training, instead of antimuscarinic.</li>
+                  <li>Allergy → non-sedating antihistamine (loratadine/cetirizine).</li>
+                  <li>Nausea → review need; lower-ACB antiemetic where possible.</li>
+                </ul></div>
+              </div>
+              <div class="pg-note"><b>Tip:</b> use an ACB calculator to total the burden at review; each additional point adds measurable cognitive and falls risk in older people.</div>
+            </div>
+
+            <!-- TAPER / DEPRESCRIBE -->
+            <div class="sd-panel" id="sd-ss-taper">
+              <div class="pg-rag-banner">
+                <span class="ic">📉</span>
+                <div><h3>Stopping is a process, not an event</h3>
+                <p>Several drug classes cause <b>withdrawal or rebound</b> if stopped abruptly — taper gradually, one drug at a time, with the patient's agreement and a review date. Go slower at lower doses and if long-term use, frail, or anxious about stopping.</p></div>
+              </div>
+              <h4 class="pg-grp-h">Tapering schedules — practical primary-care guide</h4>
+              <div class="pg-table-wrap"><table class="pg-table">
+                <thead><tr><th>Drug class</th><th>Why taper</th><th>Suggested approach</th></tr></thead>
+                <tbody>
+                  <tr><td data-label="Class">Benzodiazepines / Z-drugs</td><td data-label="Why taper">Withdrawal: anxiety, insomnia, seizures.</td><td data-label="Approach">Switch to equivalent <b>diazepam</b>; reduce by ~⅛ (up to 10%) of dose every 1–2 weeks; slower near the end. Total taper often weeks–months.</td></tr>
+                  <tr><td data-label="Class">Opioids</td><td data-label="Why taper">Withdrawal, rebound pain.</td><td data-label="Approach">Reduce by <b>10% of total daily dose every 1–4 weeks</b>; slow to 10% per month near the end. Pause/slow if withdrawal symptoms.</td></tr>
+                  <tr><td data-label="Class">PPIs</td><td data-label="Why taper">Rebound acid hypersecretion.</td><td data-label="Approach">Halve dose for 2–4 weeks → stop, or step to alternate-day; use on-demand/antacid for breakthrough. No taper needed if short course.</td></tr>
+                  <tr><td data-label="Class">Antidepressants (SSRI/SNRI)</td><td data-label="Why taper">Discontinuation syndrome (esp. paroxetine, venlafaxine).</td><td data-label="Approach">Reduce gradually over <b>≥4 weeks</b> (longer for short-half-life drugs); proportionate "hyperbolic" smaller steps at low doses. Fluoxetine self-tapers.</td></tr>
+                  <tr><td data-label="Class">Gabapentinoids</td><td data-label="Why taper">Withdrawal, seizures.</td><td data-label="Approach">Reduce slowly (e.g. ~10–25% per week, slower if long-term/high-dose); individualise.</td></tr>
+                  <tr><td data-label="Class">Oral corticosteroids</td><td data-label="Why taper">Adrenal suppression if ≥3 weeks or repeated courses.</td><td data-label="Approach">If &lt;3 weeks &amp; low dose → stop abruptly. Otherwise taper (e.g. by 2.5–5 mg prednisolone every 1–4 weeks) to physiological dose, then slower; give a steroid card.</td></tr>
+                  <tr><td data-label="Class">Beta-blockers</td><td data-label="Why taper">Rebound tachycardia/angina/hypertension.</td><td data-label="Approach">Reduce gradually over 1–2 weeks (longer in IHD) — avoid abrupt cessation.</td></tr>
+                  <tr><td data-label="Class">Clonidine</td><td data-label="Why taper">Severe rebound hypertension.</td><td data-label="Approach">Reduce slowly over days–weeks; never stop suddenly.</td></tr>
+                  <tr><td data-label="Class">Antipsychotics</td><td data-label="Why taper">Withdrawal dyskinesia, relapse.</td><td data-label="Approach">Reduce gradually over weeks–months with monitoring for relapse; in dementia, trial withdrawal with review.</td></tr>
+                </tbody>
+              </table></div>
+              <div class="pg-note"><b>Document:</b> the reason for stopping, the schedule agreed, what to expect, and a clear review/safety-net ("contact us if…"). Stop/taper <b>one drug at a time</b> so any effect is attributable.</div>
+            </div>
+          </div>
+
+          <!-- HIGH RISK -->
+          <div class="pg-panel mon-stack" id="rev-highrisk">
+            <h3 class="pg-sec-h"><em>Drug monitoring</em> recommendations</h3>
+            <p class="pg-sec-p">Baseline and routine monitoring for commonly-prescribed drugs that need it, grouped by system. Frequencies are a primary-care guide — follow any shared-care agreement and the current BNF/SPC.</p>
+
+            <h4 class="pg-grp-h">Gastrointestinal</h4>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Drug</th><th>Baseline</th><th>Routine</th><th>Comments</th></tr></thead>
+              <tbody>
+                <tr><td>Mesalazine / balsalazide</td><td data-label="Baseline">FBC, U&amp;E, LFTs</td><td data-label="Routine">U&amp;E, LFTs</td><td data-label="Comments">3-monthly for year 1, then 6-monthly for 4 years, then 12-monthly. FBC/WCC only if blood dyscrasia suspected (sore throat, fever, bruising → stop, urgent FBC).</td></tr>
+              </tbody>
+            </table></div>
+
+            <h4 class="pg-grp-h">Cardiovascular</h4>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Drug</th><th>Baseline</th><th>Routine</th><th>Comments</th></tr></thead>
+              <tbody>
+                <tr><td>ACEi / ARB</td><td data-label="Baseline">U&amp;E, BP</td><td data-label="Routine">U&amp;E, BP</td><td data-label="Comments">U&amp;E + BP 1–2 weeks after initiation/dose change, then 12-monthly. More often if on diuretics, renal impairment or unstable HF. Accept ≤30% eGFR fall / ≤25% creatinine rise.</td></tr>
+                <tr><td>Sacubitril/valsartan</td><td data-label="Baseline">U&amp;E, BP, LFTs</td><td data-label="Routine">U&amp;E, BP</td><td data-label="Comments">Don't initiate if SBP &lt;100, K⁺ &gt;5.4, or ACEi/ARB-naïve; lower start if SBP 100–110 or eGFR 30–60. Consider stopping if K⁺ &gt;5.4.</td></tr>
+                <tr><td>Amiodarone</td><td data-label="Baseline">TSH, fT3, fT4, LFTs, U&amp;E, CXR, ECG, thyroid ab</td><td data-label="Routine">TFTs + LFTs 6-monthly (incl. 12 months after stopping)</td><td data-label="Comments">CXR if pulmonary toxicity suspected; new dyspnoea/cough may signal lung toxicity.</td></tr>
+                <tr><td>Dronedarone</td><td data-label="Baseline">LFTs, ECG</td><td data-label="Routine">LFTs + U&amp;E</td><td data-label="Comments">LFTs &amp; U&amp;E at 1 week, repeat U&amp;E after 7 days if creatinine rises; LFTs monthly ×6, then 3-monthly ×6, then annually — stop if ALT &gt;3× ULN twice. ECG + pulmonary review 6-monthly.</td></tr>
+                <tr><td>Digoxin</td><td data-label="Baseline">U&amp;E</td><td data-label="Routine">U&amp;E</td><td data-label="Comments">Routine levels not needed; check if toxicity suspected, significant weight loss, hypokalaemia or hypothyroidism — sample ≥6 h (ideally 8–12 h) post-dose.</td></tr>
+                <tr><td>Ivabradine</td><td data-label="Baseline">HR</td><td data-label="Routine">HR</td><td data-label="Comments">Don't initiate if resting HR &lt;70 (&lt;75 in HF); reduce/stop if persistently &lt;50 bpm.</td></tr>
+                <tr><td>Thiazide / related diuretics</td><td data-label="Baseline">U&amp;E</td><td data-label="Routine">U&amp;E, HbA1c</td><td data-label="Comments">U&amp;E at 4–6 weeks &amp; after dose change, then 6–12-monthly — stop if eGFR &lt;30. HbA1c 12-monthly (or per diabetes review).</td></tr>
+                <tr><td>Eplerenone</td><td data-label="Baseline">U&amp;E</td><td data-label="Routine">U&amp;E</td><td data-label="Comments">U&amp;E at 1 week, then monthly ×3, then 6-monthly; plus at 1 &amp; 4 weeks after any dose increase.</td></tr>
+                <tr><td>Spironolactone</td><td data-label="Baseline">U&amp;E</td><td data-label="Routine">U&amp;E</td><td data-label="Comments"><b>Severe HF (NYHA III–IV):</b> U&amp;E after 1 week &amp; any dose increase, then monthly ×3, 3-monthly ×1 yr, then 6-monthly. <b>Other:</b> U&amp;E at 1 month, monthly ×3, 3-monthly ×1 yr, then 6-monthly.</td></tr>
+                <tr><td>Loop diuretics</td><td data-label="Baseline">U&amp;E</td><td data-label="Routine">U&amp;E</td><td data-label="Comments">U&amp;E 1–2 weeks after initiation/dose increase (after 5–7 days if renal impairment or on ACEi/ARB/MRA; within 5 days then 5–14-daily if loop + thiazide). Monitor weight/hydration; 6-monthly once stable.</td></tr>
+                <tr><td>Fibrates</td><td data-label="Baseline">LFTs, CK, lipids, U&amp;E</td><td data-label="Routine">LFTs, U&amp;E, lipids</td><td data-label="Comments">LFTs 3-monthly year 1 then annually; U&amp;E (fenofibrate) first 3 months then annually; lipids — stop if inadequate at 3 months; CK only if myopathy suspected; gemfibrozil → FBC 3-monthly year 1.</td></tr>
+                <tr><td>Statins</td><td data-label="Baseline">LFTs, U&amp;E, lipids (CK only if persistent unexplained muscle pain)</td><td data-label="Routine">Lipids, LFTs</td><td data-label="Comments">Aim ≥40% non-HDL-C reduction; LFTs at 3 &amp; 12 months (no re-measure unless symptoms of hepatotoxicity). <b>CK before starting:</b> if &gt;5× ULN, recheck after 7 days &amp; don't start if still &gt;5×.</td></tr>
+                <tr><td>Warfarin</td><td data-label="Baseline">INR, FBC, U&amp;E, LFTs, BP</td><td data-label="Routine">INR</td><td data-label="Comments">INR ≥ every 12 weeks once stable; more often if health/medication changes. BP for HAS-BLED.</td></tr>
+                <tr><td>DOACs (apixaban, rivaroxaban, dabigatran, edoxaban)</td><td data-label="Baseline">U&amp;E &amp; CrCl, LFTs, FBC, weight, BP (HAS-BLED)</td><td data-label="Routine">U&amp;E, LFTs, FBC</td><td data-label="Comments">Use <b>Cockcroft–Gault CrCl</b>, not eGFR: &lt;75 yrs &amp; CrCl &gt;60 → annual U&amp;E; ≥75 yrs or CrCl 30–60 → 6-monthly; CrCl 15–30 → 3-monthly. Recalculate with any acute illness. Annual LFTs &amp; FBC.</td></tr>
+              </tbody>
+            </table></div>
+
+            <h4 class="pg-grp-h">Respiratory</h4>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Drug</th><th>Baseline</th><th>Routine</th><th>Comments</th></tr></thead>
+              <tbody>
+                <tr><td>Theophylline</td><td data-label="Baseline">U&amp;E, LFTs, smoking status</td><td data-label="Routine">Drug level, U&amp;E</td><td data-label="Comments">Plasma level 2–6 weeks after dose change &amp; once maintenance reached, or if toxicity suspected. Range 10–20 mg/L; sample 4–6 h post-dose. Dose changes if starting/stopping smoking.</td></tr>
+              </tbody>
+            </table></div>
+
+            <h4 class="pg-grp-h">Infections</h4>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Drug</th><th>Baseline</th><th>Routine</th><th>Comments</th></tr></thead>
+              <tbody>
+                <tr><td>Nitrofurantoin</td><td data-label="Baseline">U&amp;E</td><td data-label="Routine">—</td><td data-label="Comments">Contraindicated if eGFR &lt;45 (short course with caution 30–44). Prophylaxis ≤6 months under urology; watch pulmonary fibrosis (esp. elderly); BNF advises 6-monthly LFTs on long-term use.</td></tr>
+                <tr><td>Minocycline</td><td data-label="Baseline">LFTs</td><td data-label="Routine">FBC + LFTs</td><td data-label="Comments">3-monthly. Watch hepatotoxicity, SLE-like reaction, pigmentation. Not a preferred option.</td></tr>
+                <tr><td>Terbinafine (oral)</td><td data-label="Baseline">LFTs</td><td data-label="Routine">LFTs</td><td data-label="Comments">Recheck LFTs 4–6 weeks after initiation.</td></tr>
+              </tbody>
+            </table></div>
+
+            <h4 class="pg-grp-h">Endocrine &amp; diabetes</h4>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Drug</th><th>Baseline</th><th>Routine</th><th>Comments</th></tr></thead>
+              <tbody>
+                <tr><td>Levothyroxine</td><td data-label="Baseline">TSH, T4, ECG</td><td data-label="Routine">TSH</td><td data-label="Comments">Recheck 6–8 weeks after a dose change, then 12-monthly once stable.</td></tr>
+                <tr><td>Carbimazole / propylthiouracil</td><td data-label="Baseline">TFTs, FBC, LFTs</td><td data-label="Routine">TFTs; FBC; LFTs</td><td data-label="Comments">TFTs every 1–3 months until stable then 12-monthly (6-monthly if block-and-replace). <b>FBC immediately if infection signs</b> (sore throat, mouth ulcers, bruising, fever). PTU LFTs at 3 &amp; 6 months then annually.</td></tr>
+                <tr><td>Metformin</td><td data-label="Baseline">U&amp;E</td><td data-label="Routine">U&amp;E</td><td data-label="Comments">12-monthly (6-monthly if elderly/worsening renal function). Max 1 g/day if eGFR 30–45; stop &lt;30 or during acute illness/contrast.</td></tr>
+                <tr><td>Pioglitazone</td><td data-label="Baseline">LFTs, weight</td><td data-label="Routine">LFTs</td><td data-label="Comments">Advise to report nausea/vomiting/abdominal pain/dark urine; stop if jaundice. Monitor weight for heart-failure signs.</td></tr>
+                <tr><td>Gliptins</td><td data-label="Baseline">U&amp;E, LFTs, HbA1c</td><td data-label="Routine">LFTs, HbA1c, U&amp;E</td><td data-label="Comments">Vildagliptin LFTs 3-monthly year 1 then annually. HbA1c 2–6-monthly; stop if not reduced ≥5.5 mmol/mol within 6 months. U&amp;E 6-monthly.</td></tr>
+                <tr><td>GLP-1 (dulaglutide, exenatide, liraglutide, etc.)</td><td data-label="Baseline">Weight, HbA1c</td><td data-label="Routine">Weight, HbA1c</td><td data-label="Comments">3-monthly. Discontinue if HbA1c not reduced ≥11 mmol/mol and ≥3% weight loss not achieved at 6 months.</td></tr>
+                <tr><td>Insulin / sulfonylurea</td><td data-label="Baseline">HbA1c, U&amp;E</td><td data-label="Routine">HbA1c</td><td data-label="Comments">Hypoglycaemia review; sick-day plan (don't omit insulin in T1DM); DVLA advice.</td></tr>
+                <tr><td>Ulipristal (Esmya, fibroids)</td><td data-label="Baseline">LFTs (before each course)</td><td data-label="Routine">LFTs</td><td data-label="Comments">Do not initiate if ALT/AST &gt;2× ULN. Monitor monthly during the first 2 treatment courses, and thereafter if clinically indicated; repeat 2–4 weeks after stopping. Test immediately in current/recent users with signs of liver injury; <b>stop if ALT/AST &gt;3× ULN</b>.</td></tr>
+              </tbody>
+            </table></div>
+
+            <h4 class="pg-grp-h">Musculoskeletal &amp; immunosuppression</h4>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Drug</th><th>Baseline</th><th>Routine</th><th>Comments</th></tr></thead>
+              <tbody>
+                <tr><td>Methotrexate</td><td data-label="Baseline">FBC, LFTs, U&amp;E</td><td data-label="Routine">FBC, LFTs, U&amp;E</td><td data-label="Comments">Per shared-care (typically 2–3-monthly once stable). Folic acid co-prescribed; <b>never with trimethoprim/co-trimoxazole</b> (marrow suppression).</td></tr>
+                <tr><td>DMARDs / immunosuppressants</td><td data-label="Baseline">FBC, LFTs, U&amp;E</td><td data-label="Routine">FBC, LFTs, U&amp;E</td><td data-label="Comments">Per CDDFT/shared-care monitoring schedule; infection vigilance; avoid live vaccines.</td></tr>
+                <tr><td>NSAIDs</td><td data-label="Baseline">U&amp;E, BP</td><td data-label="Routine">U&amp;E, BP</td><td data-label="Comments">Monitor renal function in renal, cardiac or hepatic impairment; gastroprotection where indicated; avoid in CKD &lt;30 and the "triple whammy".</td></tr>
+                <tr><td>Bisphosphonates</td><td data-label="Baseline">U&amp;E, calcium, vit D</td><td data-label="Routine">—</td><td data-label="Comments">Correct calcium/vit D first; review need at 3–5 years (drug holiday). Avoid if eGFR &lt;35 (drug-specific).</td></tr>
+              </tbody>
+            </table></div>
+
+            <h4 class="pg-grp-h">CNS / psychotropics</h4>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Drug</th><th>Baseline</th><th>Routine</th><th>Comments</th></tr></thead>
+              <tbody>
+                <tr><td>Lithium</td><td data-label="Baseline">U&amp;E, TFTs, calcium, weight, ECG if cardiac risk</td><td data-label="Routine">Level; TFTs + U&amp;E + calcium</td><td data-label="Comments">Level 3-monthly (12 h post-dose); TFTs, U&amp;E &amp; calcium 6-monthly. Avoid dehydration/NSAIDs; narrow therapeutic index.</td></tr>
+                <tr><td>Valproate</td><td data-label="Baseline">FBC, LFTs</td><td data-label="Routine">LFTs</td><td data-label="Comments">LFTs in first 6 months. <b>Pregnancy Prevention Programme</b> — contraindicated in women of childbearing potential unless PPP conditions met.</td></tr>
+                <tr><td>Antipsychotics</td><td data-label="Baseline">FBC, U&amp;E, LFTs, lipids, HbA1c, weight, ECG, prolactin</td><td data-label="Routine">Weight, HbA1c/glucose, lipids</td><td data-label="Comments">Metabolic monitoring at 12 weeks, annually (weight more often early). Follow local psychotropic monitoring guide.</td></tr>
+              </tbody>
+            </table></div>
+
+            <div class="pg-note"><b>DOAC dosing in renal impairment</b> — see the <b>Prescribing in CKD</b> tab for the full CrCl-based dose table (apixaban, rivaroxaban, dabigatran, edoxaban).</div>
+            <div class="pg-info">See the <b>Sick-day rules</b> and <b>Prescribing in CKD</b> tabs for how these drugs interact with acute illness and falling eGFR.</div>
+          </div>
+
+          <div class="footer-disclaimer">
+            <strong>Educational use only.</strong> Interaction and deprescribing guidance follows the BNF Appendix 1 (interactions), NICE NG5 (medicines optimisation) / structured medication review, the NHS Polypharmacy 7-Steps and STOPP/START criteria. Always check the specific interaction in the current BNF and individualise to the patient.
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Ready-prescriptions data + renderer -->
+<script src="../assets/case-related.js"></script>
+<script src="../assets/prescriptions-data.js"></script>
+<script src="../assets/prescriptions-data-infections.js"></script>
+<script src="../assets/prescriptions-data-skin-sexual.js"></script>
+<script src="../assets/prescriptions-data-common.js"></script>
+<script src="../assets/prescriptions-data-extra.js"></script>
+<script src="../assets/prescriptions-data-paeds-eyes.js"></script>
+<script src="../assets/prescriptions-data-batch6.js"></script>
+<script src="../assets/prescriptions-data-batch7.js"></script>
+<script src="../assets/prescriptions-data-batch8.js"></script>
+<script src="../assets/prescriptions-data-batch9.js"></script>
+<script src="../assets/prescriptions-data-batch10.js"></script>
+<script src="../assets/prescriptions-data-batch11.js"></script>
+<script src="../assets/prescriptions-data-batch12.js"></script>
+<script src="../assets/prescriptions.js"></script>
+
+<!-- RAG dataset + area picker -->
+<script src="../assets/rag-data.js"></script>
+<script src="../assets/local-area.js?v=1"></script>
+
+<script>
+(function(){
+  const $ = q => document.querySelector(q);
+  const $$ = q => document.querySelectorAll(q);
+  const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  /* ---- top-level section nav ---- */
+  const SECTIONS = ['guide','rx','sickday','ckd','pregnancy','review'];
+  function showSection(sec){
+    if(SECTIONS.indexOf(sec)<0) sec='guide';
+    $$('.phub-btn').forEach(b=>b.classList.toggle('on', b.dataset.sec===sec));
+    $$('.phub-section').forEach(s=>s.classList.toggle('on', s.id==='sec-'+sec));
+    try{ history.replaceState(null,'', '#'+sec); }catch(e){}
+  }
+  function headerOffset(){
+    const bar = document.querySelector('.rgp-topnav, .rgp-nav, header.rgp-header, .rgp-iface-bar');
+    return (bar ? bar.getBoundingClientRect().height : 64) + 12;
+  }
+  // find the real scrolling ancestor (could be window or an overflow:auto container)
+  function scrollParent(el){
+    let p = el && el.parentElement;
+    while(p && p !== document.body && p !== document.documentElement){
+      const s = getComputedStyle(p);
+      if(/(auto|scroll)/.test(s.overflowY) && p.scrollHeight > p.clientHeight + 4) return p;
+      p = p.parentElement;
+    }
+    return null; // => use window
+  }
+  function scrollToEl(el){
+    if(!el) return;
+    const off = headerOffset();
+    const sp = scrollParent(el);
+    if(sp){
+      const delta = el.getBoundingClientRect().top - sp.getBoundingClientRect().top - off;
+      sp.scrollTo({ top: Math.max(0, sp.scrollTop + delta), behavior:'smooth' });
+    } else {
+      const y = el.getBoundingClientRect().top + window.pageYOffset - off;
+      window.scrollTo({ top: Math.max(0, y), behavior:'smooth' });
+    }
+  }
+  $('#phubNav').addEventListener('click', e=>{
+    const b=e.target.closest('.phub-btn'); if(!b) return;
+    showSection(b.dataset.sec);
+    // Swap content in place — do NOT move the page. The user is already at the nav
+    // (they just clicked it) so the opened section appears right below it.
+  });
+
+  /* ---- prescribing-guide sub-tabs ---- */
+  $$('.pg-tab').forEach(t=>t.addEventListener('click',()=>{
+    // scope to this tab's own section so multiple .pg-tabs groups are independent
+    const scope = t.closest('.phub-section') || document;
+    scope.querySelectorAll('.pg-tab').forEach(x=>x.classList.remove('on'));
+    scope.querySelectorAll('.pg-panel').forEach(x=>x.classList.remove('on'));
+    t.classList.add('on');
+    // panel id is either "tab-<key>" (guide) or "<key>" (newer sections)
+    const panel = scope.querySelector('#tab-'+t.dataset.tab) || scope.querySelector('#'+t.dataset.tab);
+    if(panel) panel.classList.add('on');
+    // swap panel in place — do not move the page
+  }));
+
+  /* ---- sick-day sub-tabs ---- */
+  $$('.sd-tab').forEach(t=>t.addEventListener('click',()=>{
+    $$('.sd-tab').forEach(x=>x.classList.remove('on')); t.classList.add('on');
+    $$('.sd-panel').forEach(p=>p.classList.remove('on'));
+    document.getElementById('sd-'+t.dataset.tab).classList.add('on');
+    // swap panel in place — do not move the page
+  }));
+
+  /* ---- sick-day copy buttons ---- */
+  const SD_TEXT={
+    steroid:`You have a condition where your body can't make extra steroid when you're ill, so you must do it yourself. If you have a fever or infection, double your steroid dose until you're better. If you are vomiting or have diarrhoea, or feel very unwell, use your emergency hydrocortisone injection and call 999 — don't wait. Always carry your Steroid Emergency Card and tell any healthcare professional you are steroid-dependent.`,
+    pause:`While you are unwell with vomiting, diarrhoea or a high fever, stop these tablets until you are eating and drinking normally again for a couple of days: [list relevant drugs]. This protects your kidneys. Keep taking your insulin if you use it. Restart your usual tablets once you've recovered. If you can't keep fluids down, are getting more unwell, passing little urine, or feel drowsy, contact us or call 111/999.`,
+    diabetes:`When you're ill, keep taking your insulin — never stop it, even if you're not eating. Test your blood sugar every 2–4 hours and check ketones if you have a meter. Drink plenty of sugar-free fluids; if you can't eat, take sugary drinks instead of meals. Stop your '-flozin' (e.g. dapagliflozin) and metformin while you're dehydrated. Get urgent help if you keep vomiting, your ketones are high, you feel drowsy, or you have tummy pain or fast breathing — this can be a diabetic emergency.`,
+    fever:`While you take this medicine, a sore throat, mouth ulcers, high temperature, chills or feeling flu-like could be a sign your white blood cells have dropped. If that happens, stop the medicine and contact us urgently (the same day) for a blood test — don't wait. If you feel very unwell, shivery or can't get hold of us, call 111 or 999. Always tell any healthcare professional which medicine you're on.`
+  };
+  $$('.sd-copy').forEach(b=>b.addEventListener('click',async()=>{
+    try{ await navigator.clipboard.writeText(SD_TEXT[b.dataset.copy]); const o=b.textContent; b.textContent='Copied ✓'; setTimeout(()=>b.textContent=o,1400);}catch(e){}
+  }));
+
+  /* ---- RAG list (data in assets/rag-data.js) ---- */
+  const RAG = window.RGP_RAG || [];
+  let rq='', rfilt='all';
+  const RAG_LABEL={green:'Green',amber:'Amber · shared care',red:'Red · specialist',grey:'Grey · avoid'};
+  const RAG_GROUPS=['Analgesia & pain','Diabetes & endocrine','Cardiovascular','Respiratory','Gastrointestinal','Rheumatology & immunosuppression','Dermatology','Neurology','Mental health','Substance misuse','Bone health',"Urology & men's health","Women's health & HRT",'Infections & antimicrobials','Eye, ENT & oral','Palliative & end-of-life','Nutrition & borderline substances','Cancer & haematology','Low clinical value'];
+  function ragFiltered(){
+    const qq=rq.trim().toLowerCase();
+    return RAG.filter(x=>{
+      if(rfilt!=='all' && x.rag!==rfilt) return false;
+      if(qq){ if(!((x.d+' '+x.use+' '+x.note+' '+(x.grp||'')).toLowerCase().includes(qq))) return false; }
+      return true;
+    });
+  }
+  function renderRag(){
+    if(!$('#ragList')) return;
+    const list=ragFiltered();
+    $('#ragCount').textContent = list.length+' of '+RAG.length+' medicines';
+    if(!list.length){ $('#ragList').innerHTML=`<div class="pg-rag-empty">No drugs match. Try another term.</div>`; return; }
+    const groups=RAG_GROUPS.filter(g=>list.some(x=>x.grp===g));
+    list.forEach(x=>{ if(x.grp && groups.indexOf(x.grp)<0) groups.push(x.grp); });
+    $('#ragList').innerHTML = groups.map(g=>{
+      const items=list.filter(x=>x.grp===g);
+      if(!items.length) return '';
+      return `<div class="pg-rag-grp">${esc(g)} <span class="n">${items.length}</span></div>`+
+        items.map(x=>`
+        <div class="pg-ritem ${x.rag}">
+          <span class="rtag">${esc(RAG_LABEL[x.rag])}</span>
+          <div class="rbody"><h5>${esc(x.d)}</h5><div class="ruse">${esc(x.use)}</div><p>${esc(x.note)}</p></div>
+        </div>`).join('');
+    }).join('');
+  }
+  renderRag();
+  if($('#ragSearch')) $('#ragSearch').addEventListener('input',e=>{rq=e.target.value; renderRag();});
+  if($('#ragFilters')) $('#ragFilters').addEventListener('click',e=>{
+    const b=e.target.closest('.pg-rfilt'); if(!b) return;
+    rfilt=b.dataset.r;
+    $$('.pg-rfilt').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    renderRag();
+  });
+
+  /* ---- open the right section from the URL hash (deep links / redirects) ---- */
+  const h=(location.hash||'').replace('#','').toLowerCase();
+  if(SECTIONS.indexOf(h)>=0) showSection(h);
+})();
+</script>
+
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+<script>RGPArea && RGPArea.renderSelect('pgAreaPicker');</script>
+</body>
+</html>

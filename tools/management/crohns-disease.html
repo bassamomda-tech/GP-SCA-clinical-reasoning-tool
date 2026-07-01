@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Crohn's Disease — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Crohn's disease management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🟣",
+  title:"Crohn's Disease",
+  stemTitle:"Confirmed Crohn's Disease — primary-care role in shared care",
+  stemSub:"The GP\u2019s part in established Crohn\u2019s under gastroenterology shared care \u2014 smoking cessation as disease-modifying, supporting maintenance immunomodulators, drug monitoring, nutrition and bone health, and recognising flares and complications. NICE NG129 \u00b7 CKS 2026.",
+  guideline:"NICE NG129",
+  glance:[
+    {lbl:"Care model", val:"Shared care", sub:"with gastroenterology"},
+    {lbl:"Disease-modifying", val:"Stop smoking", sub:"worsens Crohn\u2019s"},
+    {lbl:"Induce remission", val:"Steroid", sub:"specialist-led"},
+    {lbl:"Maintain", val:"Thiopurine / MTX", sub:"\u00b1 biologic"},
+    {lbl:"Monitor", val:"FBC/LFT", sub:"+ B12 (ileal)"},
+    {lbl:"Red flag", val:"Obstruction/abscess", sub:"urgent"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Know the disease and the shared-care plan",
+      blocks:[
+        {b:"kv", rows:[
+          ["Distribution","Ileal, ileocolonic, colonic; perianal disease \u2014 guides management and complications"],
+          ["Behaviour","Inflammatory / stricturing / fistulating \u2014 affects flare presentation"],
+          ["Shared care","Specialist leads induction and maintenance; GP supports adherence, monitoring, flares"],
+          ["Baseline","FBC, U&amp;E, LFT, CRP, ferritin, <b>B12</b> (terminal ileal disease), vitamin D, faecal calprotectin"]
+        ]},
+        {b:"why", html:"Unlike UC, in Crohn\u2019s <strong>smoking is genuinely disease-modifying</strong> \u2014 it worsens activity, relapse and surgery rates, so cessation is a core treatment, not just general advice. The GP\u2019s recurring jobs are cessation, drug monitoring, nutrition (B12 in ileal disease) and recognising obstruction/abscess/fistula."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Cessation, nutrition and holistic care",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🚭 Smoking cessation", html:"<b>The single most important non-drug intervention</b> \u2014 smoking worsens Crohn\u2019s and surgical outcomes."},
+          {t:"🍽️ Nutrition", html:"Address weight loss/malnutrition; check and replace iron, B12, folate, vitamin D."},
+          {t:"🦴 Bone health", html:"Bone protection with repeated steroids; calcium/vitamin D."},
+          {t:"💉 Vaccination", html:"Optimise before immunosuppression; avoid live vaccines on biologics/thiopurines."},
+          {t:"🧠 Mental health", html:"Screen for anxiety/depression and fatigue \u2014 common in IBD."},
+          {t:"📋 Surveillance", html:"Ensure colonoscopic surveillance where indicated."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 induce + maintain", title:"Specialist-led drug strategy",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Induce", title:"Glucocorticoid", when:"for a flare (specialist-guided)",
+           html:"A reducing course of <b>prednisolone (e.g. 40 mg OD, tapering)</b> \u2014 or <b>budesonide 9 mg OD</b> for ileocaecal disease \u2014 induces remission. Enteral nutrition is an option, especially in children."},
+          {step:"Maintain", title:"Thiopurine or methotrexate", when:"steroid-sparing",
+           fromLabel:"after inducing remission",
+           html:"Azathioprine/mercaptopurine, or methotrexate \u2014 to maintain remission and spare steroids. Specialist-initiated, GP-monitored."},
+          {step:"Escalate", title:"Biologics", when:"refractory / fistulating disease",
+           fromLabel:"inadequate control",
+           html:"Anti-TNF and other biologics via gastroenterology. Surgery for strictures/fistulae/localised disease."}
+        ]},
+        {b:"warn", html:"<b>5-ASAs have limited role in Crohn\u2019s</b> (unlike UC). Steroids induce but never maintain remission. Monitor FBC/LFT on thiopurines/methotrexate; methotrexate is teratogenic \u2014 ensure contraception."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Drug safety + nutrition",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["FBC, LFT","Regularly on thiopurine/MTX","Cytopenia/hepatotoxicity \u2192 withhold + advice"],
+          ["CRP + faecal calprotectin","To assess activity","Distinguish active disease from functional symptoms"],
+          ["B12 / iron / vitamin D","Periodically (esp. ileal)","Replace deficiencies; B12 if terminal ileal disease/resection"],
+          ["Bone density","If recurrent steroids","Bone protection as indicated"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"During a flare", title:"Close review", html:"Assess severity, exclude complications/infection (incl. C. difficile), arrange FBC/CRP + stool MC&amp;S; <b>follow any secondary-care flare plan</b> and inform the IBD team."},
+          {n:"2", when:"In remission", title:"Maintenance review", html:"Smoking, adherence, drug monitoring, nutrition, mental health."},
+          {n:"3", when:"Annual", title:"Structured IBD review", html:"Disease control, monitoring bloods, vaccination, bone health, surveillance."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Flare not settling? Escalate appropriately",
+      arrow:"\u2026if a flare isn\u2019t responding",
+      intro:"Exclude complications and infection before assuming inflammatory relapse.",
+      checks:[
+        {b:"1 \u00b7 Complication?", html:"Obstruction, abscess, fistula \u2192 urgent surgical/specialist assessment."},
+        {b:"2 \u00b7 Infection", html:"Exclude superimposed infection (incl. C. difficile)."},
+        {b:"3 \u00b7 Smoking", html:"Still smoking \u2014 re-offer cessation (disease-modifying)."},
+        {b:"4 \u00b7 Adherence", html:"Maintenance immunomodulator actually taken?"},
+        {b:"5 \u00b7 Escalate", html:"True active disease \u2192 specialist for steroid course / biologic / surgery."}
+      ],
+      back:"Complications + infection excluded \u2192 specialist escalation"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Obstruction", html:"\u201cSevere cramping tummy pain with vomiting and no wind/stool \u2014 go to A&amp;E (possible blockage).\u201d"},
+          {t:"🔴 Abscess / sepsis", html:"\u201cHigh fever, severe localised or perianal pain, feeling very unwell \u2014 urgent assessment.\u201d"},
+          {t:"🦠 Immunosuppression", html:"\u201cOn azathioprine/methotrexate/biologics: any fever or infection \u2014 contact us; avoid live vaccines.\u201d"},
+          {t:"🚭 Smoking", html:"\u201cStopping smoking genuinely improves Crohn\u2019s \u2014 it\u2019s one of the most powerful things you can do.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"emergency for complications; specialist for escalation",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Obstruction, abscess, perforation, or systemic sepsis \u2192 same-day admission."},
+          {t:"Flare", html:"Flare not responding, or steroid-dependent disease \u2192 gastroenterology."},
+          {t:"Escalation / surgery", html:"For biologics, or stricturing/fistulating/localised disease needing surgery."},
+          {t:"Perianal disease", html:"Complex perianal Crohn\u2019s \u2192 specialist (often combined medical/surgical)."}
+        ]},
+        {b:"say", html:"Stopping smoking is genuinely one of the best treatments for Crohn\u2019s, so let\u2019s prioritise that together. The specialist team leads your main medicines, and I\u2019ll keep an eye on your bloods and nutrition \u2014 contact us urgently for the warning signs we discussed."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

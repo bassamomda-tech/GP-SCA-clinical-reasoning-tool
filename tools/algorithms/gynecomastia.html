@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gynaecomastia Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   BASE RESET & TOKENS
+═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #f7f6f3;
+  --surface:      #ffffff;
+  --border:       #e2e0da;
+  --border-med:   #ccc9c0;
+  --text:         #1c1a17;
+  --text-2:       #5a5750;
+  --text-3:       #8c897f;
+  --accent:       #1a4f7a;
+  --accent-light: #e8f0f8;
+  --safety:       #b81c1c;
+  --safety-bg:    #fdf2f2;
+  --diagnose:     #1a5c3a;
+  --diagnose-bg:  #f0f7f3;
+  --refer:        #7c3f0a;
+  --refer-bg:     #fdf5ed;
+  --treat:        #1a3f7a;
+  --treat-bg:     #eef3fb;
+  --life:         #3a5c1a;
+  --life-bg:      #f2f7ee;
+  --r: 10px;
+  --r-sm: 6px;
+  --shadow: 0 1px 3px rgba(0,0,0,.07), 0 4px 12px rgba(0,0,0,.05);
+  --shadow-md: 0 2px 8px rgba(0,0,0,.09), 0 8px 24px rgba(0,0,0,.07);
+  font-size: 15px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.6;
+  padding: 0 0 80px;
+}
+
+/* ═══════════════════════════════════════════
+   HEADER BANNER
+═══════════════════════════════════════════ */
+.stem-banner {
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 28px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,.18);
+}
+.sb-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  background: rgba(255,255,255,.15);
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: grid; place-items: center;
+}
+.stem-banner b { display: block; font-size: 1.1rem; font-weight: 600; letter-spacing: -.01em; }
+.stem-banner small { opacity: .75; font-size: .82rem; }
+
+/* ═══════════════════════════════════════════
+   PROGRESS BAR
+═══════════════════════════════════════════ */
+.alg-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 28px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  font-size: .82rem;
+  color: var(--text-2);
+  position: sticky;
+  top: 92px;
+  z-index: 99;
+}
+.pcount { font-weight: 600; color: var(--text); min-width: 32px; }
+.pbar { flex: 1; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.pbar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), #2b7de9); border-radius: 99px; width: 0%; transition: width .4s ease; }
+.reset { margin-left: auto; background: none; border: 1px solid var(--border-med); border-radius: var(--r-sm); padding: 4px 10px; font-size: .78rem; cursor: pointer; color: var(--text-2); font-family: inherit; transition: all .15s; }
+.reset:hover { background: var(--border); color: var(--text); }
+
+/* ═══════════════════════════════════════════
+   ALGORITHM FLOW
+═══════════════════════════════════════════ */
+.alg-flow {
+  max-width: 820px;
+  margin: 32px auto 0;
+  padding: 0 20px;
+}
+
+/* CONNECTOR */
+.connector {
+  width: 2px;
+  height: 28px;
+  background: linear-gradient(to bottom, var(--border-med), var(--border));
+  margin: 0 auto;
+  position: relative;
+}
+.connector::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--border-med);
+}
+
+/* NODE CARD */
+.node {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.node:hover { box-shadow: var(--shadow-md); }
+.node.done { border-color: #a3c9a8; }
+.node.done .node-num { background: #2d8a4e; }
+
+/* NODE TOP ROW */
+.node-top {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.node-num {
+  width: 48px;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  border-radius: var(--r) 0 0 0;
+  transition: background .3s;
+}
+.node-head {
+  flex: 1;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.node-tag {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+.node-head h3 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+}
+.node-tick {
+  display: grid;
+  place-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0 var(--r) 0 0;
+  flex-shrink: 0;
+}
+.node-tick label { display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+.node-tick input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; }
+.tlbl { font-size: .78rem; color: var(--text-3); font-weight: 500; }
+
+/* TYPE COLOURS */
+[data-type="SAFETY"]   .node-num { background: var(--safety); }
+[data-type="SAFETY"]   .node-tag { background: var(--safety-bg); color: var(--safety); }
+[data-type="DIAGNOSE"] .node-num { background: var(--diagnose); }
+[data-type="DIAGNOSE"] .node-tag { background: var(--diagnose-bg); color: var(--diagnose); }
+[data-type="REFER"]    .node-num { background: var(--refer); }
+[data-type="REFER"]    .node-tag { background: var(--refer-bg); color: var(--refer); }
+[data-type="TREAT"]    .node-num { background: var(--treat); }
+[data-type="TREAT"]    .node-tag { background: var(--treat-bg); color: var(--treat); }
+[data-type="LIFESTYLE"] .node-num { background: var(--life); }
+[data-type="LIFESTYLE"] .node-tag { background: var(--life-bg); color: var(--life); }
+
+/* NODE BODY */
+.node-body {
+  padding: 18px 20px 4px;
+  font-size: .92rem;
+  color: var(--text);
+}
+.node-body > p, .intro-text {
+  margin-bottom: 14px;
+  color: var(--text-2);
+  font-size: .9rem;
+}
+
+/* ── KEY-VALUE GRID ── */
+.kv {
+  display: grid;
+  grid-template-columns: minmax(130px,auto) 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  margin-bottom: 16px;
+  font-size: .88rem;
+}
+.kv > div:nth-child(4n+1),
+.kv > div:nth-child(4n+2) { background: #fafaf8; }
+.kv > div {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+}
+.kv > div:nth-last-child(-n+2) { border-bottom: none; }
+.kv > div:nth-child(odd) {
+  font-weight: 600;
+  font-size: .82rem;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  border-right: 1px solid var(--border);
+}
+
+/* ── RED FLAG GRID ── */
+.rfgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.rftile {
+  background: var(--safety-bg);
+  border: 1px solid #f0c8c8;
+  border-left: 3px solid var(--safety);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+.rftile b { display: block; color: var(--safety); margin-bottom: 2px; }
+
+/* ── BRANCH ── */
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.b-card {
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+}
+.b-cond {
+  background: var(--treat-bg);
+  color: var(--treat);
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+}
+.b-drug {
+  padding: 8px 10px 4px;
+  font-weight: 600;
+  font-size: .9rem;
+}
+.b-note {
+  padding: 0 10px 8px;
+  font-size: .82rem;
+  color: var(--text-2);
+}
+
+/* ── LADDER ── */
+.ladder {
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.rung {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: .88rem;
+  transition: background .15s;
+}
+.rung:last-child { border-bottom: none; }
+.rung:hover { background: #f7f6f3; }
+.rn {
+  font-size: .74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-3);
+  min-width: 54px;
+  flex-shrink: 0;
+}
+.rt { line-height: 1.5; }
+
+/* ── LIFESTYLE GRID ── */
+.lsgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px,1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.lstile {
+  background: var(--life-bg);
+  border: 1px solid #c3d9b0;
+  border-left: 3px solid var(--life);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+.lstile b { display: block; color: var(--life); margin-bottom: 2px; }
+
+/* ── PILLS ── */
+.pill {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 99px;
+  font-size: .72rem;
+  font-weight: 600;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.pill-red    { background: #fde8e8; color: #b81c1c; border: 1px solid #f5c0c0; }
+.pill-purple { background: #f0e8fc; color: #6b2fa0; border: 1px solid #d4b8f5; }
+.pill-blue   { background: #e8f0fc; color: #1a4f7a; border: 1px solid #b8d0f5; }
+.pill-teal   { background: #e8f5f5; color: #0f6b6b; border: 1px solid #b8e0e0; }
+.pill-amber  { background: #fdf3e8; color: #7c4a0a; border: 1px solid #f5d5a8; }
+.pill-green  { background: #e8f5e8; color: #2d6b2d; border: 1px solid #b0d8b0; }
+.pill-grey   { background: #f0eeeb; color: #5a5750; border: 1px solid #d8d5cf; }
+
+/* ── WHY DRAWER ── */
+.why-row {
+  border-top: 1px dashed var(--border);
+  margin: 8px 0 0;
+}
+.why-btn {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background .15s;
+}
+.why-btn:hover { background: var(--accent-light); }
+.caret { transition: transform .25s; display: inline-block; }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.why-drawer {
+  display: none;
+  padding: 0 20px 16px;
+  font-size: .86rem;
+  color: var(--text-2);
+  line-height: 1.7;
+  background: var(--accent-light);
+  border-top: 1px solid var(--border);
+}
+.why-drawer.open { display: block; }
+.why-drawer p { margin-bottom: 8px; }
+.why-drawer p:last-child { margin-bottom: 0; }
+
+/* FOOTER */
+.alg-foot {
+  max-width: 820px;
+  margin: 32px auto 0;
+  padding: 16px 20px;
+  font-size: .8rem;
+  color: var(--text-3);
+  border-top: 1px solid var(--border);
+  line-height: 1.6;
+}
+.alg-foot strong { color: var(--text-2); }
+
+/* SECTION LABEL */
+.section-label {
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--text-3);
+  margin: 28px 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-label::before, .section-label::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .rfgrid, .branch, .lsgrid { grid-template-columns: 1fr; }
+  .kv { grid-template-columns: 1fr; }
+  .kv > div:nth-child(odd) { border-right: none; border-bottom: 1px solid var(--border); }
+  .stem-banner { padding: 14px 16px; }
+  .alg-flow { padding: 0 12px; }
+  .node-body { padding: 14px 14px 4px; }
+  .why-btn, .why-drawer { padding-left: 14px; padding-right: 14px; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════ BANNER ══════════════════════════════ -->
+<div class="stem-banner">
+  <div class="sb-icon">🔬</div>
+  <div>
+    <b>Gynaecomastia — Assessment & Management</b>
+    <small>Systematic GP pathway: male breast tissue enlargement, any age · 10-minute consultation framework</small>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ PROGRESS ══════════════════════════════ -->
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- ══════════════════════════════ FLOW ══════════════════════════════ -->
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — distinguish true glandular gynaecomastia from lipomastia, exclude the drug, endocrine and (rarely) malignant causes, reassure physiological cases, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Gynaecomastia</span><div class="body">Onset, symmetry, tenderness, drugs, alcohol, systemic symptoms. Examine breast tissue (glandular vs fatty), testes, signs of liver/thyroid disease.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — breast cancer / tumour</span><span class="ttl">Breast cancer or sinister cause?</span><div class="body">Hard/eccentric/fixed unilateral mass, skin/nipple change, lymphadenopathy → male breast cancer. Rapid onset + testicular mass (tumour).</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">2WW / investigate</span><div class="body">Suspected male breast cancer → 2WW. Testicular mass → urgent USS + urology.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination localise the cause.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · common causes</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Physiological</div><div class="box act"><span class="ttl">Common</span><div class="body">Pubertal or senile; reassure, review; usually resolves.</div></div></div><div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Drug / substance</div><div class="box act"><span class="ttl">Common</span><div class="body">Spironolactone, anti-androgens, cannabis, alcohol, anabolic steroids; review and stop.</div></div></div><div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Endocrine / systemic</div><div class="box ix"><span class="ttl">Investigate</span><div class="body">Hypogonadism, hyperthyroidism, liver/renal disease, testicular/other tumours; LFT, TFT, testosterone, LH, hCG, oestradiol.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-purple">2WW</span> <span class="pill pill-grey">NICE NG12</span> suspected male breast cancer (hard fixed unilateral mass). <span class="pill pill-purple">Endocrinology</span> unexplained or persistent gynaecomastia after drug/physiological causes excluded.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; modifiable factors</span><span class="ttl">Remove the reversible drivers</span><div class="body"><b>Review the drug chart</b> and stop/switch culprits where possible (spironolactone, anti-androgens, PPIs, some antipsychotics); <b>stop anabolic steroids, cannabis and excess alcohol</b>. <b>Weight loss</b> reduces fatty (pseudo) gynaecomastia and aromatisation. Treat underlying hyperthyroidism, hypogonadism or liver disease.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Recheck &amp; when to escalate</span><div class="body"><b>Reassess in ~3 months</b> after removing a drug/lifestyle cause — most physiological and drug-induced cases settle. <b>2WW</b> for any hard, eccentric, fixed or enlarging unilateral mass, skin/nipple change or axillary node (male breast cancer). <b>Urgent</b> if a testicular mass or rapid-onset gynaecomastia (hCG-secreting tumour). Persistent &gt;12 months may need surgical opinion.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Review the drug chart and feel the testes:</b> many drugs cause gynaecomastia, but a hard eccentric breast mass (cancer) or a testicular tumour must not be missed.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- ─────────────────── STEP 1 ─────────────────── -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-top">
+    <div class="node-num">1</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flag Exclusion — Rule Out Life-Threatening Causes First</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p class="intro-text">Gynaecomastia is usually benign but must exclude male breast cancer, testicular malignancy, systemic disease and endocrine emergencies. Act before reassurance.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Hard, irregular, unilateral breast mass</b> Fixed, non-tender, skin tethering / nipple retraction → Same-day 2WW breast cancer referral (NICE NG12)</div>
+      <div class="rftile"><b>Nipple discharge</b> Bloody or serous unilateral discharge in a male → Same-day urgent referral; exclude Paget's disease / carcinoma</div>
+      <div class="rftile"><b>Testicular mass / pain</b> Firm, painless testicular swelling with gynaecomastia → Urgent USS scrotum + urology referral; germ cell tumour secreting hCG</div>
+      <div class="rftile"><b>Rapid onset + systemic symptoms</b> Weight loss, drenching sweats, lymphadenopathy → Urgent bloods + CT; exclude lymphoma, lung cancer (paraneoplastic)</div>
+      <div class="rftile"><b>Signs of liver failure</b> Jaundice, spider naevi, caput medusae, asterixis → Same-day medical review; hepatic failure reduces oestrogen clearance</div>
+      <div class="rftile"><b>Severe hypogonadism features</b> Kallmann-like picture: absent puberty, anosmia, eunuchoid proportions → Urgent endocrinology; may mask serious pituitary pathology</div>
+      <div class="rftile"><b>Galactorrhoea</b> True milky nipple discharge + gynaecomastia → Prolactin urgently; exclude prolactinoma, antipsychotics, pituitary macro-adenoma</div>
+      <div class="rftile"><b>New gynaecomastia + cardiac drugs</b> Digoxin, spironolactone, amiodarone recently started → Do NOT stop cardiac drugs without specialist advice; flag interaction</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Male breast cancer is rare (~400 UK cases/year) but gynaecomastia is a recognised presentation — delay is common because GPs and patients dismiss male breast symptoms. NICE NG12 mandates 2WW referral for any unexplained lump in males.</p>
+      <p>Testicular germ cell tumours (especially Leydig cell and Sertoli cell) and lung carcinomas secrete hCG or oestrogens, causing gynaecomastia before the primary tumour is detected. Missing this means missing a curable cancer.</p>
+      <p>Hepatic failure, renal failure, hyperthyroidism and pituitary pathology all disrupt sex-hormone binding globulin and peripheral aromatisation — gynaecomastia may be the presenting feature of these serious systemic conditions.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- ─────────────────── STEP 2 ─────────────────── -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-top">
+    <div class="node-num">2</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Confirm Diagnosis — True Gynaecomastia vs Pseudogynaecomastia</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p class="intro-text">First, establish whether this is true glandular gynaecomastia or adipose tissue (pseudogynaecomastia). Distinguish with the pinch test and focused history.</p>
+    <div class="kv">
+      <div>Pinch test</div>
+      <div>Grasp breast between thumb and forefinger and slide fingers toward nipple. <b>True gynaecomastia:</b> palpable, firm/rubbery concentric disc of glandular tissue &gt;2 cm subareolar. <b>Pseudogynaecomastia:</b> soft adipose, no disc, fingers meet without resistance</div>
+      <div>Duration</div>
+      <div>Ask onset: <b>&lt;6 months</b> = active proliferative phase (potentially reversible) · <b>&gt;12 months</b> = likely fibrosis / hyalinisation (less likely to regress)</div>
+      <div>Tenderness</div>
+      <div>Tender gynaecomastia = active inflammation (pubertal, drug-induced, hypogonadism) · Non-tender, hard = suspect malignancy or long-standing fibrosis</div>
+      <div>Laterality</div>
+      <div><b>Bilateral</b> = usually physiological, drug-induced or systemic · <b>Unilateral and asymmetric</b> = higher suspicion for malignancy or focal pathology</div>
+      <div>Age pattern</div>
+      <div>3 physiological peaks: <b>neonatal</b> (maternal oestrogens), <b>pubertal</b> (age 13–14, resolves in 18 months), <b>older adult</b> (50s–70s, rising SHBG + falling testosterone)</div>
+      <div>Drug history</div>
+      <div>Detailed medication review including prescribed, OTC, anabolic steroids, recreational drugs, herbal remedies. See Step 3 for full drug list</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Up to 65% of men with apparent gynaecomastia actually have pseudogynaecomastia (lipomastia) — particularly relevant in obesity. The management differs completely: pseudogynaecomastia is addressed through weight management; true gynaecomastia requires cause-finding and targeted treatment.</p>
+      <p>Duration is critical for prognosis: active-phase gynaecomastia (&lt;6 months) can regress spontaneously or with drug withdrawal. After 12 months, stromal fibrosis means medical treatment is unlikely to work and surgical referral may be the only option if distressing.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- ─────────────────── STEP 3 ─────────────────── -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-top">
+    <div class="node-num">3</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Classification — Identify Underlying Cause / Aetiology</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p class="intro-text">Classify by aetiology — drives all subsequent management decisions. Drugs and physiological causes account for ~75% of cases.</p>
+    <div class="kv">
+      <div>Physiological <span class="pill pill-green">~25%</span></div>
+      <div><b>Neonatal:</b> maternal oestrogen exposure, resolves in weeks · <b>Pubertal:</b> age 10–17, transient oestrogen:androgen imbalance, resolves 18–24 months · <b>Senescent:</b> age &gt;50, falling testosterone, rising SHBG, increased adipose aromatisation</div>
+      <div>Drug-induced <span class="pill pill-amber">~25%</span></div>
+      <div>
+        <b>High risk:</b> Spironolactone, Digoxin, Cimetidine, Oestrogens/DES, Anabolic steroids (post-cycle), Finasteride, Bicalutamide, Flutamide<br>
+        <b>Moderate risk:</b> Omeprazole, Metronidazole, Ketoconazole, Verapamil, Amlodipine, Risperidone, Haloperidol, Tricyclics, Metoclopramide<br>
+        <b>Recreational:</b> Cannabis (chronic), Alcohol (hepatotoxicity), Heroin, Amphetamines
+      </div>
+      <div>Hypogonadism <span class="pill pill-blue">~10%</span></div>
+      <div><b>Primary (hypergonadotrophic):</b> Klinefelter syndrome (XXY), orchitis, trauma, chemotherapy · <b>Secondary (hypogonadotrophic):</b> hypopituitarism, Kallmann syndrome, haemochromatosis, obesity</div>
+      <div>Hyperthyroidism</div>
+      <div>Increased SHBG reduces free testosterone · Free oestrogen relatively elevated · Treat hyperthyroidism → gynaecomastia often resolves</div>
+      <div>Liver disease</div>
+      <div>Cirrhosis: impaired oestrogen metabolism + SHBG elevation · Portal hypertension → adrenal dysfunction · Alcohol: direct testicular toxicity</div>
+      <div>Renal failure</div>
+      <div>Chronic kidney disease: elevated LH/FSH, reduced testosterone production, hyperprolactinaemia from reduced clearance</div>
+      <div>Tumour-related <span class="pill pill-red">Exclude first</span></div>
+      <div><b>Leydig/Sertoli cell tumours:</b> secrete oestrogens directly · <b>Adrenal tumours:</b> excess oestrogen/DHEA · <b>Lung, gastric, renal carcinoma:</b> ectopic hCG production · <b>Lymphoma:</b> rare</div>
+      <div>Idiopathic <span class="pill pill-grey">~25%</span></div>
+      <div>No cause found after full investigation · Diagnosis of exclusion · Often represents subtle subclinical endocrine shifts or unrecognised drug exposure</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>The cause determines management: drug-induced gynaecomastia → stop/switch the drug; hypogonadism → testosterone replacement; hyperthyroidism → carbimazole; tumour → urgent surgery. Getting the aetiology right prevents unnecessary drug treatment with aromatase inhibitors or SERMs.</p>
+      <p>Klinefelter syndrome (1:600 males) is frequently undiagnosed into adulthood. Gynaecomastia is the most common presenting feature. These patients also have 20–50× increased risk of male breast cancer — important cascade of discoveries from one GP consultation.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- ─────────────────── STEP 4 ─────────────────── -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-top">
+    <div class="node-num">4</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Targeted Examination — Systematic Physical Assessment</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p class="intro-text">Full examination is essential to identify systemic causes and exclude malignancy. Always examine genitalia in males with gynaecomastia (with chaperone).</p>
+    <div class="kv">
+      <div>Breast examination</div>
+      <div>Palpate bilaterally · Note: size, symmetry, texture (soft/firm/hard), tenderness, skin changes · Subareolar glandular disc = true gynaecomastia · Hard, irregular, fixed, skin tethering, nipple retraction → <span class="pill pill-red">2WW urgent</span></div>
+      <div>Nipple inspection</div>
+      <div>Discharge (express gently) · Paget's changes · Retraction or inversion · Ulceration → any of these in a male = same-day / 2WW referral</div>
+      <div>Axillary lymph nodes</div>
+      <div>Palpate axillae bilaterally · Hard, matted, fixed nodes + breast mass = strongly suspicious for malignancy · Soft, mobile = reactive (common in obesity, skin conditions)</div>
+      <div>Testicular examination</div>
+      <div>Size, symmetry, consistency · Normal adult testis: 15–25 mL · Small, firm testes in young male → Klinefelter syndrome · Firm painless nodule → <span class="pill pill-red">urgent USS scrotum</span></div>
+      <div>Body habitus / virilisation</div>
+      <div>Assess muscle mass, fat distribution, body hair (axillary, pubic, facial), penile development · Eunuchoid proportions = hypogonadism · Excess central adiposity = peripheral aromatisation source</div>
+      <div>Signs of liver disease</div>
+      <div>Jaundice, spider naevi, palmar erythema, Dupuytren's, hepatosplenomegaly, testicular atrophy, loss of axillary/pubic hair = cirrhosis</div>
+      <div>Thyroid</div>
+      <div>Palpate for goitre · Check for tremor, lid lag, tachycardia, warm moist skin → hyperthyroidism screen</div>
+      <div>Blood pressure + weight</div>
+      <div>BMI + waist circumference · Obesity: elevated aromatase in adipose → peripheral oestrogen excess · Hypertension may indicate drugs causing gynaecomastia (spironolactone, CCBs)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Testicular examination changes management in a significant minority: small testes in a young man with gynaecomastia and infertility strongly suggests Klinefelter syndrome (requires karyotype + endocrinology referral). A nodule in a testis with gynaecomastia = germ cell tumour until proven otherwise.</p>
+      <p>Signs of liver disease in a man with gynaecomastia should prompt LFTs, clotting, and USS liver — cirrhosis-related gynaecomastia requires hepatology input, not breast treatment. Similarly, thyroid signs should trigger TFTs before any hormonal investigation.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- ─────────────────── STEP 5 ─────────────────── -->
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-top">
+    <div class="node-num">5</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — Staged Approach to Blood Tests &amp; Imaging</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p class="intro-text">Investigate systematically. Many cases (pubertal, drug-induced) need NO tests. Match investigation intensity to clinical suspicion.</p>
+    <div class="kv">
+      <div>When NOT to investigate</div>
+      <div>Pubertal gynaecomastia (age 12–17) with no red flags, bilateral, tender, onset &lt;2 years → reassurance only, no bloods needed · Drug clearly causative → trial withdrawal, no tests · Neonatal → observe and reassure</div>
+      <div>First-line bloods <span class="pill pill-blue">All new adult cases</span></div>
+      <div><b>LH, FSH, testosterone</b> (8–10am sample) · <b>Oestradiol</b> · <b>Prolactin</b> · <b>hCG</b> (β-subunit) · <b>TFTs</b> (TSH ± free T4) · <b>LFTs</b> · <b>Renal function (U&amp;E, creatinine)</b> · <b>FBC</b></div>
+      <div>Second-line bloods</div>
+      <div>If LH/FSH elevated: <b>Karyotype</b> (exclude Klinefelter) · If hCG elevated: <b>AFP + LDH</b> (germ cell tumour markers) · If oestradiol very high: <b>DHEA-S, 24h urine steroids</b> (adrenal tumour) · If prolactin &gt;1000: <b>pituitary MRI</b></div>
+      <div>Interpretation: LH/FSH</div>
+      <div><b>High LH/FSH + low testosterone</b> = primary hypogonadism (Klinefelter, orchitis) · <b>Low LH/FSH + low testosterone</b> = secondary hypogonadism (pituitary, haemochromatosis) · <b>Low LH/FSH + high oestradiol</b> = oestrogen-secreting tumour</div>
+      <div>Interpretation: hCG</div>
+      <div>Any detectable hCG in non-pregnant male = pathological · Testicular germ cell tumour · Ectopic hCG from lung, gastric, pancreatic carcinoma · Refer urgently if elevated</div>
+      <div>Scrotal USS <span class="pill pill-blue">Targeted</span></div>
+      <div>Indicated if: testicular abnormality on examination · Elevated hCG · Bilateral small testes · Any clinical suspicion of testicular tumour · Do NOT order routinely in all gynaecomastia</div>
+      <div>Breast imaging</div>
+      <div><b>Mammogram:</b> indicated if hard/irregular lump, skin changes, nipple discharge (as part of 2WW referral — secondary care will arrange) · NOT routine for typical bilateral soft gynaecomastia</div>
+      <div>Bone density (DXA)</div>
+      <div>Only if hypogonadism confirmed (for fracture risk assessment before testosterone replacement) · Arrange via endocrinology or metabolic bone clinic</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Over-investigation of pubertal gynaecomastia is common and counterproductive — it medicalises a normal physiological process, causes unnecessary anxiety, and rarely changes management. Restrict bloods to adults with unexplained gynaecomastia or when systemic disease is suspected.</p>
+      <p>The testosterone:LH ratio is the key discriminant: primary hypogonadism (testicular failure) gives high LH + low testosterone; secondary (pituitary/hypothalamic) gives low LH + low testosterone. This distinction determines whether to refer to urology vs endocrinology and whether testosterone replacement is appropriate.</p>
+      <p>β-hCG must be checked in all adult males with gynaecomastia — a serum level of even 5 IU/L should trigger urgent testicular USS and urology referral. Germ cell tumours are the most common cancer in men aged 20–40 and are highly curable if caught early.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- ─────────────────── STEP 6 ─────────────────── -->
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-top">
+    <div class="node-num">6</div>
+    <div class="node-head">
+      <span class="node-tag">Refer</span>
+      <h3>Referral Criteria — When to Escalate &amp; To Whom</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p class="intro-text">Most gynaecomastia is managed in primary care. Refer when investigation reveals systemic cause, malignancy suspected, or treatment is required beyond GP scope.</p>
+    <div class="kv">
+      <div><span class="pill pill-red">999 / A&amp;E</span></div>
+      <div>Gynaecomastia + acute liver failure · Acute adrenal crisis · Hypercalcaemia with confusion (paraneoplastic)</div>
+      <div><span class="pill pill-red">Same-day</span></div>
+      <div>Signs of liver failure (jaundice + gynaecomastia) → medical assessment · Acute testicular mass + gynaecomastia → A&amp;E urology (torsion must be excluded first, then tumour USS)</div>
+      <div><span class="pill pill-purple">2WW Breast</span></div>
+      <div>Any male with unexplained lump in breast regardless of features (NICE NG12) · Hard, irregular, fixed, unilateral mass · Skin tethering / nipple retraction / Paget's · Bloody nipple discharge</div>
+      <div><span class="pill pill-purple">2WW Urology</span></div>
+      <div>Elevated β-hCG with testicular USS findings · Testicular mass on examination · AFP or LDH elevated with scrotal abnormality</div>
+      <div>Urgent Endocrinology <span class="pill pill-amber">2–4 weeks</span></div>
+      <div>Confirmed hypogonadism (primary or secondary) · Klinefelter karyotype · Prolactin &gt;1000 mIU/L · Low LH + low testosterone (pituitary pathology suspected) · Adrenal tumour on imaging</div>
+      <div>Routine Endocrinology</div>
+      <div>Confirmed hypogonadism requiring testosterone replacement assessment · Young male with senescent pattern gynaecomastia (exclude secondary cause) · Persistent gynaecomastia after drug withdrawal needing SERM/aromatase inhibitor consideration</div>
+      <div>Routine Surgery / Breast</div>
+      <div>Longstanding gynaecomastia (&gt;12–18 months), causing significant psychological distress, not responding to medical treatment · Patient requesting subcutaneous mastectomy · Must be confirmed true gynaecomastia, not obesity</div>
+      <div>Primary care management</div>
+      <div>Physiological pubertal gynaecomastia (observe 18–24 months) · Drug-induced (stop/switch offending drug) · Obesity-related pseudogynaecomastia (lifestyle intervention) · Idiopathic mild / asymptomatic with normal investigations</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>NICE NG12 (Suspected cancer: recognition and referral) is explicit: any unexplained lump in the breast of a male patient should trigger a 2WW referral, regardless of clinical features. The barrier to 2WW in males must be lower than in females given lower baseline suspicion — this is where diagnostic delay occurs.</p>
+      <p>NHS England data shows median time from symptom to diagnosis for male breast cancer is significantly longer than female breast cancer. GP referral behaviour is the key modifiable factor. When in doubt, refer on 2WW — breast clinics are equipped to discharge rapidly if benign.</p>
+      <p>Surgical referral for cosmetic subcutaneous mastectomy has a profound impact on quality of life in men with significant gynaecomastia. In the NHS, this requires careful documentation of psychological distress and failed medical treatment — start that paper trail early if surgery is being considered.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- ─────────────────── STEP 7 ─────────────────── -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-top">
+    <div class="node-num">7</div>
+    <div class="node-head">
+      <span class="node-tag">Treat</span>
+      <h3>Treatment Pathway — Stepwise Management by Cause</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p class="intro-text">Treatment is cause-specific. First-line is always cause removal / drug withdrawal. Medical therapy is only appropriate in the active proliferative phase (&lt;6–12 months). <b>Specialist-initiated only</b> for SERMs and aromatase inhibitors.</p>
+
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Drug-induced (confirmed)</div>
+        <div class="b-drug">Stop or switch causative drug <span class="pill pill-teal">First-line</span></div>
+        <div class="b-note">Allow 3–6 months for regression. If essential cardiac drug (digoxin, spironolactone): do NOT stop without specialist input — discuss with cardiology or endocrinology about alternatives</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Pubertal (physiological)</div>
+        <div class="b-drug">Watchful waiting <span class="pill pill-teal">First-line</span></div>
+        <div class="b-note">Reassure: 75–90% resolve within 18–24 months. No investigation unless persistent &gt;2 years or red flags. 6-monthly review</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Obesity / pseudogynaecomastia</div>
+        <div class="b-drug">Weight management programme <span class="pill pill-green">First-line</span></div>
+        <div class="b-note">Refer to NHS Tier 2 weight management. 5–10% weight loss reduces peripheral aromatisation significantly. Consider GLP-1 agonist if BMI criteria met</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Hypogonadism (confirmed)</div>
+        <div class="b-drug">Testosterone replacement <span class="pill pill-teal">Specialist-initiated</span></div>
+        <div class="b-note">Initiated by endocrinology. Options: Testogel 50 mg daily, Nebido 1000 mg IM every 10–14 weeks. Paradox: early TRT may temporarily worsen gynaecomastia via aromatisation. Monitor PSA, haematocrit, LFTs</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Hyperthyroidism</div>
+        <div class="b-drug">Treat underlying hyperthyroidism <span class="pill pill-teal">GP-initiated</span></div>
+        <div class="b-note">Carbimazole 20–40 mg OD titrating to TFTs. Refer to endocrinology for definitive treatment (radioiodine / thyroidectomy). Gynaecomastia usually resolves with euthyroid state</div>
+      </div>
+    </div>
+
+    <p style="font-size:.85rem;color:var(--text-2);margin-bottom:10px;"><b>Medical therapy for persistent idiopathic/active-phase gynaecomastia</b> — <span class="pill pill-amber">Secondary care initiation only</span></p>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Tamoxifen 10–20 mg OD</b> — SERM · 3–6 month trial · Reduces breast volume in ~80% of active-phase cases · Monitor LFTs, VTE risk · Off-label use — document consent</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Anastrozole 1 mg OD</b> or <b>Letrozole 2.5 mg OD</b> — aromatase inhibitor · Less evidence than tamoxifen · Used if tamoxifen not tolerated · Monitor bone density (DXA) · Off-label use</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Surgical: Subcutaneous mastectomy</b> — for fibrosed (&gt;12 months), distressing, or failed medical treatment · Liposuction-assisted or open · NHS availability varies by CCB/ICB — document psychological impact</span></div>
+    </div>
+    <div class="kv">
+      <div>What NOT to do</div>
+      <div>Do NOT start tamoxifen or anastrozole in primary care without specialist assessment · Do NOT prescribe testosterone without confirming hypogonadism and specialist review · Do NOT stop cardiac medications without specialist advice · Do NOT offer surgery without psychological assessment</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Tamoxifen has the strongest evidence base for medical treatment of gynaecomastia, with response rates of 60–80% in active-phase disease. It is used off-label (licensed in breast cancer treatment). Aromatase inhibitors have less evidence but are useful when tamoxifen is not tolerated.</p>
+      <p>The critical timing concept: medical treatment only works during active proliferation (ductal epithelial hyperplasia). After fibrosis and hyalinisation (&gt;12 months), no drug reduces breast tissue volume — surgery is the only effective option. This is why accurate assessment of duration is essential at Step 2.</p>
+      <p>Testosterone replacement in hypogonadal men can paradoxically worsen gynaecomastia initially through peripheral aromatisation of testosterone to oestradiol. Endocrinology will often co-prescribe tamoxifen short-term when initiating TRT to mitigate this effect.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- ─────────────────── STEP 8 ─────────────────── -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-top">
+    <div class="node-num">8</div>
+    <div class="node-head">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Non-Pharmacological Interventions — Lifestyle as Active Treatment</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p class="intro-text">Lifestyle modification is first-line treatment in many cases — not an afterthought. Address these at every consultation alongside medical management.</p>
+    <div class="lsgrid">
+      <div class="lstile"><b>Weight reduction</b> Target BMI &lt;25. Each 5 kg of fat loss reduces adipose aromatase activity significantly. Refer to NHS Tier 2 weight management service or consider GLP-1 agonist if BMI &gt;35 (or &gt;32.5 with comorbidities). 5–10% body weight loss is the minimum effective target.</div>
+      <div class="lstile"><b>Alcohol reduction</b> Alcohol causes direct testicular toxicity, hepatotoxicity (reducing oestrogen clearance) and promotes central adiposity. AUDIT screen. Target &lt;14 units/week with 2 alcohol-free days. Brief intervention has NNT ~8 for hazardous drinking. Refer to community alcohol services if dependent.</div>
+      <div class="lstile"><b>Stop anabolic steroids / SARMs</b> Anabolic steroids are the commonest cause of gynaecomastia in men aged 18–40. Suppression of LH/FSH leads to rebound oestrogen excess post-cycle. Provide non-judgmental harm reduction advice. Refer to specialist AAS clinic if available locally.</div>
+      <div class="lstile"><b>Cannabis cessation</b> Chronic cannabis use is associated with gynaecomastia via phyto-cannabinoid effects on hypothalamic-pituitary axis and possible direct oestrogen-like receptor activity. Offer referral to IAPT or drug service for cessation support.</div>
+      <div class="lstile"><b>Resistance exercise</b> Increases endogenous testosterone and reduces peripheral fat. Prescribe 150 min/week moderate activity + 2× resistance training sessions. Exercise referral scheme via social prescribing link worker if available. Improves testosterone:oestrogen ratio in obese men by ~15%.</div>
+      <div class="lstile"><b>Review herbal supplements</b> Lavender oil, tea tree oil (toiletries / aromatherapy), dong quai, black cohosh, fennel, soy isoflavones in excess — all have oestrogen-like activity. Advise review of supplements and products. Particularly relevant in teenage males using scented personal care products.</div>
+      <div class="lstile"><b>Psychological support</b> Gynaecomastia causes significant body dysmorphia, social withdrawal, and avoidance of intimacy / sport in adolescents. Offer IAPT referral or CBT for body image concerns if psychological distress is evident. PHQ-9 and GAD-7 at presentation. School referral for adolescents.</div>
+      <div class="lstile"><b>Dietary review</b> Reduce ultra-processed foods high in phytoestrogens. Optimise zinc intake (meat, shellfish, legumes — zinc is essential for testosterone production). Vitamin D supplementation if deficient (low vitamin D associated with low testosterone). Maintain healthy protein intake to support lean mass.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>In obese men, adipose tissue is the primary source of peripheral oestrogen via aromatase activity — a vicious cycle, as oestrogen also promotes further fat deposition. Weight loss is genuinely disease-modifying: in morbidly obese men who achieve &gt;10% weight loss, gynaecomastia regresses in a substantial proportion without any other intervention.</p>
+      <p>Anabolic steroid use is dramatically underreported — surveys suggest 1 in 20 gym-attending men have used AAS. Gynaecomastia from AAS is particularly distressing as it occurs in men who are exercising specifically for physique reasons. Post-cycle gynaecomastia is often severe as LH/FSH suppression leads to rebound oestrogen excess.</p>
+      <p>Psychological impact is often underappreciated by clinicians. Studies show adolescent males with gynaecomastia have rates of depression and social anxiety comparable to those with visible skin conditions like acne. Proactive mental health assessment should be routine.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- ─────────────────── STEP 9 ─────────────────── -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-top">
+    <div class="node-num">9</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up, Monitoring &amp; Safety-Netting</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p class="intro-text">Gynaecomastia needs structured review: to confirm resolution, detect progression, and maintain vigilance for malignancy. Tailor interval to cause and severity.</p>
+    <div class="kv">
+      <div>Pubertal (watchful wait)</div>
+      <div>Review at <b>6 months</b> — confirm no change in character (no hardening, no lateralisation) · If resolving: discharge at 18–24 months · If NOT resolving after 24 months: investigate as per adult pathway and consider endocrine referral</div>
+      <div>Drug-induced (drug stopped)</div>
+      <div>Review at <b>3 months</b> after drug cessation — measure breast disc size (document in cm) · Significant regression expected by 3–6 months · If no regression by 6 months: investigate fully, consider if drug truly causative</div>
+      <div>Idiopathic / investigation negative</div>
+      <div>Review at <b>3 months</b> with repeat examination · <b>6 months:</b> repeat targeted bloods if initial borderline · <b>12 months:</b> if persistent and significant, consider endocrine referral for SERM assessment</div>
+      <div>On medical treatment (SERM / AI)</div>
+      <div>Specialist-led monitoring · GP to check LFTs and VTE risk factors if on tamoxifen · Annual bone density review if on aromatase inhibitor · Reassess need for treatment at 6 months</div>
+      <div>On testosterone replacement</div>
+      <div><b>3 months:</b> testosterone level, haematocrit, PSA, BP · <b>6 months:</b> same + LFTs · <b>Annual:</b> full endocrine review via endocrinology · Monitor for gynaecomastia worsening (may need anastrozole addition)</div>
+      <div>Post-surgical</div>
+      <div>GP wound check at 1 week · Review at 6 weeks: healing, patient satisfaction · Long-term: document recurrence (recurrence possible if cause not treated, e.g. ongoing AAS use)</div>
+      <div><span class="pill pill-red">Safety-net 999</span></div>
+      <div>Acute chest pain + gynaecomastia (PE from tamoxifen?) · Confusion + jaundice · Signs of acute testicular pathology with new pain</div>
+      <div><span class="pill pill-red">Safety-net same-day GP</span></div>
+      <div>Breast mass becomes hard, irregular, or fixed at any review · New nipple discharge · Rapid increase in size · New systemic symptoms (weight loss, sweats) · Raised hCG returns on re-check</div>
+      <div>Klinefelter monitoring</div>
+      <div>Annual testosterone level · Bone density (DXA) every 2 years · Metabolic screen (HbA1c, lipids) · Haematology review if polycythaemia on TRT · Breast cancer surveillance per local protocol (higher lifetime risk)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Safety-netting is critical because gynaecomastia is a recurring presentation — the GP may be the only clinician reviewing a man whose gynaecomastia is gradually changing character over years. Documenting size in the notes (in cm, not just "improved" or "same") allows objective comparison at follow-up and supports timely escalation.</p>
+      <p>Men with Klinefelter syndrome have 20–50× the risk of breast cancer compared to 46,XY males. While absolute risk remains low (~3% lifetime), this group needs clear long-term monitoring. Many local trusts now have Klinefelter clinics — if available, refer for shared care.</p>
+      <p>Tamoxifen use carries a small but real VTE risk. If a man is on tamoxifen for gynaecomastia and develops leg swelling or breathlessness, VTE must be excluded. Ensure this is documented in safety-netting advice given to the patient at initiation.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .alg-flow -->
+
+<!-- FOOTER -->
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG12 (Suspected cancer: recognition and referral, 2015/2023 update) · NICE CKS Gynaecomastia (2022) · European Association of Urology Guidelines on Male Hypogonadism (2023) · British Society for Sexual Medicine Guidelines on Adult Testosterone Deficiency (2022) · Breast Cancer Now: Male Breast Cancer Guidance · BMJ Best Practice: Gynaecomastia. Always adapt to individual patient context, local formulary and current NICE guidance. Drug doses are for guidance only — verify before prescribing.
+</div>
+
+<script>
+(function () {
+  const STORE_KEY = 'rgp.alg.gynecomastia.v1';
+  const flow      = document.getElementById('flow');
+  const pDone     = document.getElementById('pDone');
+  const pFill     = document.getElementById('pFill');
+  const pTotal    = document.getElementById('pTotal');
+  const resetBtn  = document.getElementById('resetBtn');
+  const TOTAL     = 9;
+
+  pTotal.textContent = TOTAL;
+
+  /* ── Load saved state ── */
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch (_) {}
+
+  /* ── Init checkboxes ── */
+  const boxes = flow.querySelectorAll('input[type=checkbox]');
+  boxes.forEach(function (cb) {
+    const node = cb.closest('.node');
+    const step = node ? node.dataset.step : null;
+    if (step && saved[step]) {
+      cb.checked = true;
+      node.classList.add('done');
+    }
+    cb.addEventListener('change', function () {
+      if (step) {
+        if (cb.checked) { saved[step] = true; node.classList.add('done'); }
+        else            { delete saved[step]; node.classList.remove('done'); }
+        try { localStorage.setItem(STORE_KEY, JSON.stringify(saved)); } catch (_) {}
+        updateProgress();
+      }
+    });
+  });
+
+  /* ── Progress ── */
+  function updateProgress() {
+    const done = Object.keys(saved).length;
+    pDone.textContent = done;
+    pFill.style.width = (done / TOTAL * 100) + '%';
+  }
+  updateProgress();
+
+  /* ── Reset ── */
+  resetBtn.addEventListener('click', function () {
+    if (!confirm('Reset all progress?')) return;
+    saved = {};
+    try { localStorage.removeItem(STORE_KEY); } catch (_) {}
+    boxes.forEach(function (cb) {
+      cb.checked = false;
+      const node = cb.closest('.node');
+      if (node) node.classList.remove('done');
+    });
+    updateProgress();
+  });
+
+  /* ── Why drawers ── */
+  flow.querySelectorAll('.why-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      const drawer = btn.nextElementSibling;
+      if (drawer) drawer.classList.toggle('open', !expanded);
+    });
+  });
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

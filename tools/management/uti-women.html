@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UTI in Women — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="UTI in women management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"💧",
+  title:"UTI in Women",
+  stemTitle:"Urinary tract infection in women — management",
+  stemSub:"Primary-care management of UTI in non-pregnant and pregnant women \u2014 uncomplicated lower UTI antibiotics, self-care, recurrent-UTI prevention \u2014 with the pyelonephritis and pregnancy safety nets. NICE NG109 \u00b7 2026.",
+  guideline:"NICE NG109",
+  glance:[
+    {lbl:"First-line", val:"Nitrofurantoin 100 mg MR BD", sub:"3 days (eGFR \u226545)"},
+    {lbl:"Alternative", val:"Trimethoprim 200 mg BD", sub:"per resistance/culture"},
+    {lbl:"Culture if", val:"Pregnant/recurrent", sub:"or treatment failure"},
+    {lbl:"Pregnancy", val:"Treat bacteriuria", sub:"avoid certain abx by trimester"},
+    {lbl:"Recurrent", val:"Self-care + prophylaxis", sub:"\u00b1 vaginal oestrogen"},
+    {lbl:"Red flag", val:"Pyelonephritis", sub:"loin pain + fever"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm UTI and classify",
+      blocks:[
+        {b:"kv", rows:[
+          ["Uncomplicated lower UTI","Dysuria, frequency, urgency, suprapubic pain in a non-pregnant woman \u2014 often diagnosed clinically"],
+          ["When to culture","Pregnant, recurrent, treatment failure, atypical, or suspected upper UTI \u2014 send urine culture"],
+          ["Pregnancy","Always send culture; treat asymptomatic bacteriuria (preterm/pyelonephritis risk)"],
+          ["Exclude upper UTI","Loin pain, fever, rigors, vomiting \u2192 pyelonephritis (different treatment/urgency)"]
+        ]},
+        {b:"why", html:"Most UTIs in non-pregnant women are uncomplicated and treated empirically with a short antibiotic course. The branch points that change everything are <strong>pregnancy</strong> (treat even asymptomatic bacteriuria; antibiotic choice varies by trimester) and <strong>pyelonephritis</strong> (systemic illness needing longer/broader treatment or admission)."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 self-care", title:"Symptom relief and prevention",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"💧 Hydration", html:"Adequate fluids; analgesia (paracetamol) for symptom relief."},
+          {t:"⏱️ Self-care", html:"Mild symptoms may settle with self-care; consider back-up/delayed prescription where appropriate."},
+          {t:"🚽 Recurrent prevention", html:"Post-coital voiding, avoid spermicides, manage constipation; behavioural advice."},
+          {t:"🌸 Vaginal oestrogen", html:"Postmenopausal recurrent UTI \u2014 topical vaginal oestrogen reduces recurrence."},
+          {t:"💊 Methenamine / D-mannose", html:"Consider methenamine hippurate for recurrent UTI prophylaxis (alternative to antibiotics)."},
+          {t:"🧫 Don\u2019t treat asymptomatic", html:"Don\u2019t treat asymptomatic bacteriuria in non-pregnant women (resistance)."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication", title:"Antibiotics by group",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Non-pregnant", title:"Nitrofurantoin 3 days", when:"first-line",
+           html:"<b>Nitrofurantoin 100 mg MR BD</b> (avoid if eGFR &lt;45) for 3 days; alternative <b>trimethoprim 200 mg BD</b> or per local resistance/culture. Review at 48 h / with culture if not improving."},
+          {step:"Pregnant", title:"Culture-guided antibiotic", when:"7 days, trimester-aware",
+           fromLabel:"pregnancy",
+           html:"Treat (including asymptomatic bacteriuria). <b>Avoid trimethoprim in the 1st trimester</b> (folate antagonist); <b>avoid nitrofurantoin at term</b> (neonatal haemolysis). Send culture; treat ~7 days; test of cure."},
+          {step:"Recurrent", title:"Prophylaxis options", when:"after addressing reversibles",
+           fromLabel:"\u22652 in 6 months / \u22653 in a year",
+           html:"Self-start (standby) antibiotics, single post-coital dose, methenamine, or nightly low-dose antibiotic prophylaxis; vaginal oestrogen if postmenopausal."}
+        ]},
+        {b:"warn", html:"Pyelonephritis needs a <b>broader/longer</b> antibiotic (e.g. per local guidance) and assessment for admission. Always check the trimester and renal function before choosing an agent."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Response and recurrence",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Symptom response","48 h","Not improving \u2192 review, check culture/sensitivities"],
+          ["Culture result","When sent","Adjust antibiotic to sensitivities"],
+          ["Pregnancy test of cure","After treatment","Confirm clearance of bacteriuria"],
+          ["Recurrence pattern","Ongoing","\u22652/6 months \u2192 prevention strategy \u00b1 investigation"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"48 hours", title:"Response check", html:"If not improving, reassess, check culture, consider alternative diagnosis/upper UTI."},
+          {n:"2", when:"Recurrent", title:"Prevention review", html:"Address reversible factors; agree a prophylaxis strategy; vaginal oestrogen if postmenopausal."},
+          {n:"3", when:"Pregnancy", title:"Test of cure", html:"Confirm clearance; ongoing surveillance per antenatal care."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not responding / recurring? Re-check",
+      arrow:"\u2026if symptoms persist or recur",
+      intro:"Reconsider organism, diagnosis and reversible factors.",
+      checks:[
+        {b:"1 \u00b7 Culture", html:"Send/recheck culture \u2014 resistant organism? Adjust antibiotic."},
+        {b:"2 \u00b7 Upper UTI?", html:"Loin pain, fever, systemic upset \u2192 treat as pyelonephritis."},
+        {b:"3 \u00b7 Alternative diagnosis", html:"STI, vaginitis, interstitial cystitis, atrophy mimicking UTI?"},
+        {b:"4 \u00b7 Reversibles", html:"Constipation, spermicide, postmenopausal atrophy, poor fluid intake."},
+        {b:"5 \u00b7 Investigate", html:"Recurrent/atypical or visible haematuria \u2192 investigate (imaging / cancer pathway)."}
+      ],
+      back:"Culture-guided, upper UTI excluded, reversibles addressed \u2192 prevention / investigation"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Pyelonephritis / sepsis", html:"\u201cLoin/back pain, fever or shivering, vomiting, or feeling very unwell/confused \u2014 seek urgent help the same day.\u201d"},
+          {t:"🤰 Pregnancy", html:"\u201cIf you\u2019re pregnant, any urine infection needs prompt treatment \u2014 contact us; don\u2019t leave it.\u201d"},
+          {t:"🩸 Haematuria", html:"\u201cVisible blood in the urine that persists after treatment \u2014 tell us; it needs checking.\u201d"},
+          {t:"⏱️ Not improving", html:"\u201cIf you\u2019re not better in 48 hours, come back \u2014 we may need a different antibiotic.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"urgent for sepsis; routine for recurrent/complicated",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Urgent / admit", html:"Pyelonephritis with systemic illness/sepsis, or unable to tolerate oral treatment."},
+          {t:"Recurrent / complicated", html:"Recurrent or complicated UTI not controlled by prevention \u2192 urology/specialist."},
+          {t:"Haematuria", html:"Visible haematuria (or unexplained non-visible with risk) \u2192 urology suspected-cancer pathway."},
+          {t:"Pregnancy complications", html:"Recurrent bacteriuria/pyelonephritis in pregnancy \u2192 obstetric input."}
+        ]},
+        {b:"say", html:"A short antibiotic course usually clears this. Drink plenty, and come back if you\u2019re not better in two days. Seek urgent help if you get back pain, fevers or feel very unwell \u2014 that can mean the infection has reached the kidney."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

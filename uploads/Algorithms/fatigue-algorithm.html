@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Tiredness / Fatigue Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;
+  --diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;
+  --treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;
+  --refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;
+  --lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
+  --font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif;
+}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#2c3e50 0%,#4a6fa5 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#4a6fa5,#167a4a);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555;transition:.2s}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}
+.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}
+.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}
+.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}
+.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}
+.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}
+.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:70px;justify-content:center;white-space:nowrap}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#92400e}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="stem-banner">
+  <div class="sb-icon">😴</div>
+  <div>
+    <b>Tiredness / Fatigue — New Presentation</b>
+    <small>Systematic GP assessment of fatigue — excluding organic, psychiatric and lifestyle causes</small>
+  </div>
+</div>
+<div class="alg-progress">
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Exclude Serious Underlying Pathology</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Fatigue is one of the most common GP presentations. Most causes are benign — but screen for sinister pathology first.
+    <div class="rfgrid">
+      <div class="rftile"><b>Unexplained weight loss</b> &gt;5% body weight in 3–6 months + fatigue → 2WW referral (occult malignancy)</div>
+      <div class="rftile"><b>Night sweats + lymphadenopathy</b> B-symptoms — haematological malignancy (lymphoma) → urgent bloods + 2WW haematology</div>
+      <div class="rftile"><b>Dyspnoea at rest / exertion</b> Fatigue + breathlessness → heart failure, severe anaemia, PE → same-day assessment</div>
+      <div class="rftile"><b>Chest pain + fatigue</b> ACS, myocarditis (post-viral) → ECG + troponin → same-day or 999</div>
+      <div class="rftile"><b>Jaundice</b> Hepatitis, liver failure, haemolysis → LFTs + urgent hepatology referral</div>
+      <div class="rftile"><b>Severe headache + fatigue</b> Temporal arteritis (&gt;50 yrs), raised ICP, meningitis → ESR/CRP + same-day review</div>
+      <div class="rftile"><b>Fever &gt;2 weeks</b> Infective endocarditis, TB, HIV, occult sepsis → blood cultures, HIV test, CXR</div>
+      <div class="rftile"><b>Suicidal ideation</b> Fatigue + low mood + passive death wish → mental health emergency assessment</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Fatigue is the presenting complaint in 5–10% of GP consultations and carries a broad differential. Malignancy accounts for fewer than 1% of fatigue presentations in primary care, but the consequences of missing it are severe. The combination of weight loss, night sweats and fatigue (B-symptoms) has a high positive predictive value for lymphoma. Post-viral myocarditis is increasingly recognised, particularly post-COVID — dyspnoea on minimal exertion and exercise intolerance should prompt cardiac investigation. Suicidal ideation in the context of persistent fatigue and low mood must always be actively screened for.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>History — Characterise the Fatigue</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Structured history is the most important diagnostic tool. Fatigue has over 100 potential causes — targeted questioning narrows this efficiently.
+    <div class="kv">
+      <div>Onset &amp; duration</div><div>Acute (&lt;1 month) vs chronic (&gt;3 months). Gradual onset suggests systemic disease; acute onset with fever suggests infection</div>
+      <div>Character</div><div>Physical (exertional, muscular) vs mental (cognitive, concentration) vs both. Post-exertional malaise (PEM) — fatigue worsened by activity → ME/CFS pattern</div>
+      <div>Sleep quality</div><div>Hours, quality, unrefreshing sleep, snoring + apnoeas (partner history) → obstructive sleep apnoea (OSA); early morning waking → depression</div>
+      <div>Mood screen</div><div>PHQ-2: "Over the past 2 weeks, have you felt down, depressed, hopeless?" + "Little interest or pleasure?" Positive → PHQ-9. Depression causes fatigue in 70% of cases.</div>
+      <div>Associated symptoms</div><div>Weight change, fever, night sweats, polyuria/polydipsia (diabetes), cold intolerance (hypothyroidism), dyspnoea, palpitations, bleeding</div>
+      <div>Lifestyle factors</div><div>Work hours, shift work, caring responsibilities, screen time, caffeine/alcohol, exercise habits, social support</div>
+      <div>Medications</div><div>Beta-blockers, antihistamines, opioids, antidepressants, statins (myopathy), antihypertensives — all cause fatigue</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Post-exertional malaise (PEM) — defined as worsening of all symptoms after even minor physical or mental effort — is the cardinal feature of ME/CFS and fundamentally changes management (graded exercise therapy is contraindicated). PHQ-2 has 97% sensitivity for depression, which is the single most common identifiable cause of fatigue in primary care. OSA is significantly underdiagnosed — up to 4% of men and 2% of women in the UK — and causes severe daytime fatigue, cardiovascular risk, and metabolic disease.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis — Diagnostic Framework</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Use a systematic framework: TIPES — Toxic, Infective, Psychiatric/Psychological, Endocrine/metabolic, Structural/organic.
+    <div class="kv">
+      <div>Psychiatric (most common)</div><div>Depression, anxiety, somatisation, burnout — account for 40–50% of fatigue in primary care. Treat the underlying condition.</div>
+      <div>Endocrine/metabolic</div><div>Hypothyroidism, diabetes, Addison's disease, hypoparathyroidism, anaemia, iron deficiency without anaemia, B12/folate deficiency</div>
+      <div>Sleep disorders</div><div>OSA (snoring, daytime somnolence, witnessed apnoeas), insomnia, circadian rhythm disorder, restless legs</div>
+      <div>Infective / post-infective</div><div>Post-viral fatigue (COVID, EBV/glandular fever, CMV), chronic active infection (TB, hepatitis, HIV, Lyme disease)</div>
+      <div>ME/CFS</div><div>Post-exertional malaise ≥6 months + unrefreshing sleep + cognitive impairment + orthostatic intolerance — NICE NG206 (2021). Diagnosis of exclusion.</div>
+      <div>Cardiorespiratory</div><div>Heart failure (NYHA class I/II may present as fatigue only), COPD, anaemia, AF, post-myocarditis</div>
+      <div>Malignancy / haematological</div><div>Lymphoma, leukaemia, solid tumour — weight loss, lymphadenopathy, night sweats are clues. Myeloma in over-50s (bone pain + fatigue)</div>
+      <div>Lifestyle / environmental</div><div>Poor sleep hygiene, excessive work hours, alcohol dependence (check AUDIT-C), deconditioning, nutritional deficiency</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE NG206 (2021) fundamentally revised ME/CFS management — graded exercise therapy (GET) is no longer recommended as it worsens PEM. The new approach focuses on energy management and pacing. ME/CFS requires at least 3 months of symptoms meeting specific criteria before diagnosis — premature labelling prevents investigation of treatable causes. Iron deficiency without anaemia is a frequently missed and easily treatable cause of fatigue, particularly in women of reproductive age — ferritin &lt;30 µg/L warrants iron supplementation even with normal haemoglobin.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Targeted Examination</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>General appearance</div><div>Pallor (anaemia), jaundice, weight loss, cachexia, oedema, lymphadenopathy — systematic inspection</div>
+      <div>Vital signs</div><div>BP (postural hypotension → Addison's, autonomic dysfunction), HR, temperature, oxygen saturation at rest and on exertion</div>
+      <div>Thyroid</div><div>Goitre, lid lag, tremor (hyperthyroidism), dry skin, slow reflexes, myxoedematous facies (hypothyroidism)</div>
+      <div>Cardiovascular</div><div>S3/S4, pulmonary crackles, JVP elevation, pitting oedema → heart failure. Irregular pulse → AF.</div>
+      <div>Abdomen</div><div>Hepatosplenomegaly (haematological malignancy, hepatitis, EBV), adrenal tenderness (Addison's rare)</div>
+      <div>Lymph nodes</div><div>Cervical, axillary, inguinal — size, consistency, tenderness. Rubbery non-tender → lymphoma. Tender → reactive/infective.</div>
+      <div>Neurological</div><div>Proximal weakness (myopathy from statin, hypothyroid, Addison's), cerebellar signs (alcohol), cognitive assessment if indicated</div>
+      <div>BMI / waist</div><div>Obesity → OSA, metabolic syndrome, hypoventilation. BMI &gt;30 increases all-cause fatigue risk significantly.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Postural hypotension (drop ≥20 mmHg systolic on standing) is a key sign of Addison's disease, which can present insidiously with fatigue, weight loss, and salt craving. AF is a common underdiagnosed cause of fatigue — pulse palpation identifies this immediately. Proximal muscle weakness suggests an endocrine myopathy (hypothyroidism, Cushing's, statin-induced) rather than fatigue alone. Lymph node examination is quick and high-yield — rubbery lymphadenopathy in a fatigued patient with night sweats is a 2WW haematology referral.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Diagnose</span><h3>Investigations — Tiered Approach</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>First-line (all patients)</div><div><span class="pill pill-blue">FBC</span> <span class="pill pill-blue">U&E</span> <span class="pill pill-blue">LFTs</span> <span class="pill pill-blue">TFTs</span> <span class="pill pill-blue">CRP/ESR</span> <span class="pill pill-blue">Glucose / HbA1c</span> <span class="pill pill-blue">Ferritin</span> <span class="pill pill-blue">B12 / folate</span> <span class="pill pill-blue">Calcium</span></div>
+      <div>Second-line (directed)</div><div><span class="pill pill-blue">EBV / CMV serology</span> (post-viral suspect) · <span class="pill pill-blue">HIV</span> (offer universally per NICE) · <span class="pill pill-blue">Coeliac screen</span> (anti-TTG IgA + IgA level) · <span class="pill pill-blue">Cortisol 9am</span> (Addison's screen if postural hypotension/hyperpigmentation)</div>
+      <div>Urine</div><div><span class="pill pill-blue">Urine dip + MSU</span> — chronic UTI/pyelonephritis. <span class="pill pill-blue">Urine protein:creatinine ratio</span> if CKD suspected</div>
+      <div>Cardiac</div><div><span class="pill pill-blue">ECG</span> — AF, conduction disease, LVH. <span class="pill pill-blue">BNP/NT-proBNP</span> if heart failure suspected (dyspnoea + fatigue + oedema)</div>
+      <div>Sleep</div><div>Epworth Sleepiness Score ≥10 → refer for overnight oximetry / sleep study (OSA). No blood test for OSA.</div>
+      <div>NOT routinely needed</div><div>MRI brain, autoimmune screen (ANA, ANCA) — only if specific clinical features suggest systemic inflammatory disease. Avoid over-investigation in low-risk patients.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">A structured first-line panel detects the majority of organic causes of fatigue. Ferritin &lt;30 µg/L (iron deficiency without anaemia) affects 15–20% of premenopausal women and causes fatigue that responds to oral iron. Coeliac disease affects 1% of the UK population and presents with fatigue (often without GI symptoms) in up to 50% of cases — anti-TTG IgA is 95% sensitive. A 9am cortisol &lt;100 nmol/L is highly suggestive of adrenal insufficiency requiring urgent endocrinology referral. Epworth ≥10 has 80% sensitivity for clinically significant OSA.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Refer</span><h3>Referral Criteria</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-purple">2WW haematology</span></div><div>B-symptoms (weight loss + night sweats + lymphadenopathy), raised LDH, unexplained lymphocytosis — lymphoma screen</div>
+      <div><span class="pill pill-purple">2WW other</span></div><div>Unexplained weight loss + fatigue + age &gt;40 → 2WW lung/colorectal/upper GI depending on associated symptoms</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Suspected Addison's crisis (postural hypotension + confusion + vomiting), severe anaemia (Hb &lt;70), heart failure decompensation</div>
+      <div>Endocrinology</div><div>Confirmed hypothyroidism not responding to levothyroxine, suspected Addison's (9am cortisol &lt;100), adrenal fatigue workup</div>
+      <div>Sleep clinic</div><div>Epworth ≥10 + snoring/witnessed apnoeas → overnight oximetry first. Refer to respiratory/sleep medicine if OSA confirmed.</div>
+      <div>ME/CFS service</div><div>ME/CFS criteria met (≥3 months, PEM, unrefreshing sleep, cognitive impairment) → NICE NG206 referral to specialist CFS/ME service. Do not refer to GET programme.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The 2WW pathway for haematological malignancy is triggered by B-symptoms — GPs should not wait for haematology to request the referral. Early CPAP initiation for OSA reduces daytime fatigue, cardiovascular risk, and accident rates — driving ability is impaired in untreated OSA (DVLA regulations apply). ME/CFS services provide specialist assessment, energy management coaching, and support — GET and CBT aimed at activity increase are no longer recommended following NICE NG206 due to evidence of patient harm from PEM exacerbation.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Condition-Specific Treatment</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Hypothyroidism</div>
+        <div class="b-drug">Levothyroxine</div>
+        <div class="b-note">Start 25–50 mcg OD (lower in elderly/cardiac). Increase by 25 mcg every 4–6 weeks. Target TSH 0.5–2.5 mU/L. Check TFTs 6–8 weeks after each dose change.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Iron deficiency (with/without anaemia)</div>
+        <div class="b-drug">Ferrous sulfate 200 mg BD</div>
+        <div class="b-note">Take on empty stomach. Alternate-day dosing reduces GI side effects with equivalent absorption. Continue 3 months after Hb normalises. Investigate cause in men / post-menopausal women.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Depression-related fatigue</div>
+        <div class="b-drug">SSRI + psychological Rx</div>
+        <div class="b-note">Sertraline 50 mg OD first-line. Refer to IAPT for CBT. Fatigue typically improves as depression responds — warn patient of 2–4 week delay to benefit.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">ME/CFS</div>
+        <div class="b-drug">Energy management / pacing</div>
+        <div class="b-note">Stay within energy envelope — avoid boom-and-bust cycles. Symptom management: LDN (low-dose naltrexone) being studied. No proven pharmacological treatment. Refer to specialist service.</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">B12 deficiency</span><span class="rt"><b>Hydroxocobalamin 1 mg IM</b> — 3 injections/week for 2 weeks if neurological symptoms; 3 injections on alternate days if no neuro symptoms, then 3-monthly maintenance</span></div>
+      <div class="rung"><span class="rn">Diabetes</span><span class="rt">Optimise glycaemic control — fatigue improves with HbA1c reduction. Refer to DSN / diabetic clinic if HbA1c &gt;75 mmol/mol.</span></div>
+      <div class="rung"><span class="rn">OSA</span><span class="rt">CPAP — most effective treatment. 4+ hours/night use required for benefit. Review compliance at 3 months. Mandibular advancement device for mild/moderate OSA.</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Alternate-day iron dosing is supported by evidence showing equivalent absorption to daily dosing with fewer GI side effects — this improves adherence significantly. Ferrous sulfate is preferred over ferric preparations due to cost and equivalent efficacy. CPAP reduces Epworth score by 4–5 points on average (NNT ~3 for symptomatic benefit), reduces blood pressure by 3–5 mmHg, and reduces cardiovascular events in patients with moderate-severe OSA. Treating iron deficiency without anaemia resolves fatigue in 50% of affected premenopausal women within 4 weeks.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Non-Pharmacological Interventions</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Sleep hygiene</b> Fixed wake time (anchor sleep), no screens 1 hour before bed, bedroom cool and dark, avoid caffeine after 2pm, no napping &gt;20 minutes. Improves fatigue in insomnia-related cases.</div>
+      <div class="lstile"><b>Graded activity (non-ME/CFS)</b> For deconditioning and lifestyle fatigue: 20–30 min walking 5 days/week. Reduces fatigue by 65% in randomised trials in cancer-related fatigue. NOT for ME/CFS (PEM risk).</div>
+      <div class="lstile"><b>Alcohol reduction</b> AUDIT-C screen. Alcohol disrupts sleep architecture — even moderate drinking impairs sleep quality. Target &lt;14 units/week. Brief motivational intervention effective.</div>
+      <div class="lstile"><b>Nutritional review</b> Regular meals, adequate protein, iron-rich foods (red meat, legumes, dark leafy vegetables + vitamin C to enhance absorption), avoid extreme diets causing deficiency.</div>
+      <div class="lstile"><b>Stress and workload</b> Occupational fatigue — explore work hours, shift patterns, caring responsibilities. Fit note if appropriate. Self-referral to IAPT for stress/burnout.</div>
+      <div class="lstile"><b>Caffeine management</b> High caffeine perpetuates fatigue cycle (crash after stimulant). Gradual reduction. Switch to decaf after 2pm.</div>
+      <div class="lstile"><b>Social support</b> Social isolation worsens fatigue — identify and address. Carer fatigue is a separate entity requiring carer's assessment and respite services.</div>
+      <div class="lstile"><b>Daylight exposure</b> 30 minutes outdoor morning light — regulates circadian rhythm, improves mood and energy. Particularly effective in seasonal affective disorder (SAD).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">A fixed morning wake time is the single most evidence-based sleep intervention — it anchors the circadian rhythm regardless of sleep onset. Exercise is effective for fatigue in all conditions except ME/CFS — a Cochrane review found exercise reduced fatigue scores by 0.5–1.0 SD in multiple chronic conditions. The critical distinction is ME/CFS where exercise worsens outcomes through PEM — clinicians must assess for this before recommending activity. Alcohol reduces REM sleep by 25% even at low-moderate doses — this causes unrefreshing sleep and perpetuates daytime fatigue.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>4–6 weeks</div><div>Review investigation results. Is identified cause responding to treatment? PHQ-9 if depression screen positive. Epworth score if OSA suspected.</div>
+      <div>3 months</div><div>Reassess — if no cause found and fatigue persists, repeat bloods, extend investigation panel (HIV, coeliac, cortisol). Consider ME/CFS referral if criteria met.</div>
+      <div>6 months</div><div>Persistent unexplained fatigue → full reassessment. New symptoms may have emerged. Reconsider malignancy, systemic inflammatory disease, occult infection.</div>
+      <div>Levothyroxine</div><div>Check TFTs 6–8 weeks after each dose change. Annual TFTs once stable. Overtreatment causes AF, osteoporosis — avoid suppressed TSH.</div>
+      <div>Iron therapy</div><div>Recheck FBC + ferritin at 3 months. Find and treat cause in men and postmenopausal women (2WW colorectal if unexplained). Pre-menopausal women — menstrual cause likely.</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>Collapse, severe chest pain, acute breathlessness at rest, suicidal crisis</div>
+      <div><span class="pill pill-amber">Same-day GP</span></div><div>New weight loss, new lymphadenopathy, worsening dyspnoea, new neurological symptoms, jaundice</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Persistent unexplained fatigue at 6 months warrants a fresh review — new symptoms, weight changes, or examination findings may have emerged that point towards a diagnosis. "Unexplained" fatigue is rarely truly unexplained — it is often multi-factorial (mild anaemia + poor sleep + depression) and requires addressing all contributors. Over-replacement with levothyroxine (suppressed TSH) doubles AF risk and causes significant bone loss — the target TSH is 0.5–2.5, not the lower limit. Men and postmenopausal women with iron deficiency require colorectal cancer exclusion via 2WW — GI blood loss must be excluded.</div>
+  </div>
+</div>
+
+</div>
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE CKS Tiredness/Fatigue in Adults, NICE NG206 (ME/CFS, 2021), NICE NG12 (Suspected Cancer Referral), BSG iron deficiency guidelines, NICE CG91 (Hypothyroidism). Always adapt to individual patient context.
+</div>
+<script>
+(function(){
+  const STORE='rgp.alg.fatigue.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+</body>
+</html>

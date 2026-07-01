@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nocturnal Enuresis — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Nocturnal enuresis management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🛏️",
+  title:"Nocturnal Enuresis",
+  stemTitle:"Bedwetting in children — ongoing management",
+  stemSub:"Primary-care management of nocturnal enuresis in children \u2014 treating constipation/daytime symptoms first, conservative measures, then the alarm or desmopressin \u2014 with a no-blame approach. NICE NG111 \u00b7 CKS 2026.",
+  guideline:"NICE NG111",
+  glance:[
+    {lbl:"Treat first", val:"Constipation", sub:"+ daytime symptoms"},
+    {lbl:"Tone", val:"No blame", sub:"never punish"},
+    {lbl:"Long-term", val:"Alarm", sub:"first-line (\u22657y)"},
+    {lbl:"Rapid / short-term", val:"Desmopressin 200 mcg nocte", sub:"e.g. sleepovers"},
+    {lbl:"Fluids", val:"By day, not eve", sub:"avoid caffeine"},
+    {lbl:"Refer", val:"Daytime sx / red flags", sub:"or refractory"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Assess pattern and treat the basics first",
+      blocks:[
+        {b:"kv", rows:[
+          ["Pattern","Primary (never dry) vs secondary (relapse after \u22656 months dry \u2014 consider stressors, UTI, diabetes, constipation)"],
+          ["Daytime symptoms","Daytime wetting/urgency suggests bladder dysfunction \u2014 address/refer before treating night-time"],
+          ["Treat first","<b>Constipation</b> and any daytime symptoms \u2014 their treatment often resolves the bedwetting"],
+          ["Screen","UTI (dip), diabetes if secondary/thirst; safeguarding/psychosocial context"]
+        ]},
+        {b:"why", html:"Bedwetting is common and developmentally normal in younger children, so the approach is reassurance plus treating <strong>reversible contributors first</strong> \u2014 above all constipation and daytime bladder symptoms, which frequently drive the wetting. A blame-free stance protects the child\u2019s self-esteem and improves outcomes."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 first-line", title:"Conservative measures and reassurance",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🚫 No punishment", html:"Reassure child and family; never punish \u2014 reward systems for agreed behaviours (not dry nights)."},
+          {t:"💧 Fluids by day", html:"Adequate daytime fluids; reduce evening fluids and avoid caffeine."},
+          {t:"🚽 Toileting routine", html:"Regular daytime voiding and a void before bed; easy night access to toilet."},
+          {t:"💩 Treat constipation", html:"Identify and treat constipation first \u2014 a common, reversible driver."},
+          {t:"🎯 Realistic goals", html:"Explain natural improvement with age; set expectations."},
+          {t:"📓 Diary", html:"Baseline diary of wet/dry nights, fluids, bowels."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Treatment \u00b7 stepwise", title:"Alarm or desmopressin",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Enuresis alarm", when:"first-line for long-term cure (\u22657y, motivated)",
+           html:"Best long-term cure rate; needs commitment over weeks. Use with positive reinforcement. Review at 4 weeks; continue until \u22652 weeks dry."},
+          {step:"Step 2", title:"Desmopressin", when:"if alarm unsuitable / rapid result needed",
+           fromLabel:"alarm declined/ineffective, or short-term cover",
+           html:"For children \u22657y who need rapid/short-term control (sleepovers, camps) or where an alarm is inappropriate. <b>Fluid restriction</b> from 1 h before to 8 h after dose."},
+          {step:"Step 3", title:"Combination / specialist", when:"refractory",
+           fromLabel:"inadequate response",
+           html:"Alarm + desmopressin combination, or specialist assessment (consider anticholinergic add-on, bladder dysfunction)."}
+        ]},
+        {b:"warn", html:"<b>Desmopressin + fluid:</b> restrict fluids around dosing to avoid <b>hyponatraemia</b> \u2014 omit the dose if the child can\u2019t comply or is unwell with vomiting/diarrhoea."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Response and adherence",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Dry-night diary","Throughout","Track response objectively"],
+          ["Alarm progress","4 weeks","Signs of response \u2192 continue to \u22652 weeks dry; none \u2192 reassess"],
+          ["Desmopressin response","After ~1\u20132 weeks then 3 months","Effective \u2192 periodic withdrawal trials"],
+          ["Constipation / daytime","Ongoing","Ensure these stay treated"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"After conservative measures", title:"Reassess", html:"Confirm constipation/daytime symptoms treated; review diary; choose alarm vs desmopressin."},
+          {n:"2", when:"4 weeks", title:"Treatment review", html:"Assess alarm/desmopressin response; adjust or combine."},
+          {n:"3", when:"~3 months", title:"Withdrawal trial", html:"Trial stopping desmopressin to check for sustained dryness; re-treat if relapse."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not dry? Re-check before escalating",
+      arrow:"\u2026if bedwetting continues",
+      intro:"Revisit the basics and adherence before stepping up.",
+      checks:[
+        {b:"1 \u00b7 Constipation", html:"Still constipated? Treat fully \u2014 a frequent missed cause."},
+        {b:"2 \u00b7 Daytime symptoms", html:"Daytime wetting/urgency \u2192 bladder dysfunction; address/refer."},
+        {b:"3 \u00b7 Adherence", html:"Alarm used consistently? Desmopressin taken with fluid rules?"},
+        {b:"4 \u00b7 Secondary cause", html:"New-onset \u2192 reconsider UTI, diabetes, stressors, safeguarding."},
+        {b:"5 \u00b7 Refer", html:"Refractory or daytime symptoms \u2192 enuresis/paediatric service."}
+      ],
+      back:"Constipation + daytime symptoms + adherence addressed \u2192 combine therapy / refer"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🟠 Secondary enuresis", html:"\u201cIf a previously dry child starts wetting again, with thirst, weight loss, or pain passing urine \u2014 see us (we\u2019ll check for diabetes/infection).\u201d"},
+          {t:"💧 Desmopressin fluids", html:"\u201cStick to the fluid limits around the dose, and skip it if your child is vomiting or has diarrhoea \u2014 to protect against low sodium.\u201d"},
+          {t:"💩 Constipation", html:"\u201cKeep on top of constipation \u2014 it\u2019s often the hidden reason for bedwetting.\u201d"},
+          {t:"🫶 Reassure", html:"\u201cIt\u2019s common and not your child\u2019s fault \u2014 never punish; it usually improves.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"when daytime symptoms, red flags, or refractory",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Daytime symptoms", html:"Significant daytime wetting/urgency suggesting bladder dysfunction."},
+          {t:"Refractory", html:"Not responding to alarm + desmopressin \u2192 enuresis clinic / paediatrics."},
+          {t:"Secondary causes", html:"Suspected diabetes, recurrent UTI, neurological or structural cause."},
+          {t:"Safeguarding", html:"Psychosocial concerns or safeguarding context."}
+        ]},
+        {b:"say", html:"Bedwetting is very common and almost always improves \u2014 the most important things are no blame, sorting out any constipation, and then either an alarm for a lasting fix or a tablet for quick cover like sleepovers."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

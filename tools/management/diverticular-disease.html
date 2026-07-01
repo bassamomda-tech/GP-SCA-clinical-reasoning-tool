@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Diverticular Disease — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Diverticular disease management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🟢",
+  title:"Diverticular Disease",
+  stemTitle:"Diverticular disease — ongoing management",
+  stemSub:"Primary-care management of symptomatic diverticular disease \u2014 fibre and lifestyle, symptom-targeted analgesia that avoids harmful drugs, and recognising acute diverticulitis and its complications. NICE NG147 \u00b7 CKS 2026.",
+  guideline:"NICE NG147",
+  glance:[
+    {lbl:"Spectrum", val:"Disease vs diverticulitis", sub:"symptomatic vs inflamed"},
+    {lbl:"Core", val:"High-fibre diet", sub:"gradual + fluids"},
+    {lbl:"Pain", val:"Paracetamol", sub:"avoid NSAID/opioid"},
+    {lbl:"Bulk laxative", val:"If fibre insufficient", sub:"ispaghula"},
+    {lbl:"Diverticulitis", val:"LIF pain + fever", sub:"assess severity"},
+    {lbl:"Red flag", val:"Peritonitis", sub:"999"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Place the patient on the spectrum",
+      blocks:[
+        {b:"kv", rows:[
+          ["Diverticulosis","Diverticula present, asymptomatic \u2014 no treatment, lifestyle advice only"],
+          ["Diverticular disease","Symptomatic (intermittent lower abdominal pain, altered habit) without inflammation \u2014 this pathway"],
+          ["Acute diverticulitis","Inflamed \u2014 constant LIF pain, fever, raised inflammatory markers \u2192 assess severity (see refer)"],
+          ["Exclude cancer","Ensure colorectal malignancy excluded (colonoscopy/CT) where the picture warrants"]
+        ]},
+        {b:"why", html:"\u2018Diverticular\u2019 covers three very different states, and management hinges on which one you\u2019re in: nothing for diverticulosis, fibre and symptom control for diverticular disease, and an acute-illness assessment for diverticulitis. Symptoms also overlap with colorectal cancer \u2014 keep that exclusion in mind."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 core", title:"Fibre, fluid and lifestyle",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🌾 High-fibre diet", html:"Increase gradually to reduce bloating/wind; the mainstay for symptoms and prevention."},
+          {t:"💧 Fluids", html:"Adequate fluid intake \u2014 essential when increasing fibre."},
+          {t:"🏃 Activity & weight", html:"Regular activity and healthy weight; both reduce symptoms/complications."},
+          {t:"🚭 Smoking", html:"Cessation \u2014 smoking is associated with complicated disease."},
+          {t:"🥜 No food bans", html:"No need to avoid nuts, seeds or popcorn \u2014 old advice now refuted."},
+          {t:"💊 Bulk laxative", html:"Add a bulk-forming laxative (<b>ispaghula husk / Fybogel 1 sachet (3.5 g) BD</b>) if dietary fibre is insufficient."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication", title:"Symptom relief \u2014 and what to avoid",
+      blocks:[
+        {b:"kv", rows:[
+          ["Pain","<span class='pill pill-teal'>Paracetamol</span> first-line"],
+          ["Avoid","<b>NSAIDs and opioids</b> \u2014 associated with diverticular perforation; opioids also constipate"],
+          ["Bulk-forming laxative","Ispaghula if a high-fibre diet alone is insufficient (with fluids)"],
+          ["Antispasmodic","Consider for cramping abdominal pain"],
+          ["Acute diverticulitis","Manage per severity \u2014 may be home management \u00b1 antibiotics, or admission (see refer)"]
+        ]},
+        {b:"warn", html:"<b>Avoid NSAIDs and opioids</b> in diverticular disease/diverticulitis \u2014 NSAIDs are linked to perforation and bleeding, opioids worsen constipation and may mask deterioration."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Symptoms and recurrence",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Symptom control","Each review","Optimise fibre/fluids; review analgesia"],
+          ["Recurrent diverticulitis","Ongoing","Frequent/complicated episodes \u2192 specialist"],
+          ["Bowel-habit change / bleeding","Any time","Re-evaluate for malignancy"],
+          ["Bloods in acute episode","During diverticulitis","FBC/CRP; assess severity and dehydration"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"After lifestyle advice", title:"Symptom review", html:"Review fibre tolerance and symptom control; add bulk laxative if needed."},
+          {n:"2", when:"During/after diverticulitis", title:"Recovery review", html:"Ensure resolution; arrange interval investigation to exclude malignancy if indicated."},
+          {n:"3", when:"If recurrent", title:"Reassess", html:"Recurrent or complicated episodes \u2192 consider specialist referral."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Recurrent or not settling? Reassess",
+      arrow:"\u2026if episodes recur or symptoms persist",
+      intro:"Distinguish uncomplicated recurrence from complications or an alternative diagnosis.",
+      checks:[
+        {b:"1 \u00b7 Complication?", html:"Persisting fever, severe pain, peritonism \u2192 urgent (abscess/perforation/fistula)."},
+        {b:"2 \u00b7 Cancer excluded?", html:"Change in habit, bleeding, weight loss, anaemia \u2192 investigate."},
+        {b:"3 \u00b7 Fibre/fluids", html:"Genuinely optimised, with a bulk laxative if needed?"},
+        {b:"4 \u00b7 Harmful drugs", html:"On NSAIDs/opioids? Stop them."},
+        {b:"5 \u00b7 Refer", html:"Frequent/complicated diverticulitis \u2192 colorectal surgery."}
+      ],
+      back:"Complications + malignancy excluded, lifestyle optimised \u2192 refer if recurrent/complicated"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Peritonitis / perforation", html:"\u201cSevere, spreading tummy pain, a rigid abdomen, high fever, or feeling very unwell \u2014 call 999.\u201d"},
+          {t:"🟠 Acute diverticulitis", html:"\u201cConstant left-lower tummy pain with fever \u2014 contact us the same day for assessment.\u201d"},
+          {t:"🩸 Bleeding", html:"\u201cSignificant fresh rectal bleeding \u2014 seek urgent assessment.\u201d"},
+          {t:"🚽 Fistula clues", html:"\u201cPassing air or stool in the urine, or recurrent UTIs \u2014 tell us (possible fistula).\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"emergency for complications; routine for recurrence/doubt",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Suspected perforation, peritonitis, abscess, or significant bleeding \u2192 999 / admission."},
+          {t:"Acute diverticulitis", html:"Systemically unwell, uncertain diagnosis, or not improving \u2192 admit/assess per severity."},
+          {t:"Recurrent / complicated", html:"Frequent or complicated diverticulitis \u2192 colorectal surgery."},
+          {t:"Exclude cancer", html:"Change in bowel habit / bleeding \u2192 appropriate lower-GI investigation."}
+        ]},
+        {b:"say", html:"For the day-to-day, a gradually higher-fibre diet with plenty of fluids is the main treatment, and paracetamol for pain \u2014 I\u2019ll avoid anti-inflammatories as they can cause problems. Come back urgently if you get severe pain and fever."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

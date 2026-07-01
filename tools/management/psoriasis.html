@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Psoriasis — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+<link rel="stylesheet" href="../../assets/medchooser.css">
+</head>
+<body data-screen-label="Psoriasis management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🧴",
+  title:"Psoriasis",
+  stemTitle:"Chronic plaque psoriasis — ongoing management",
+  stemSub:"Primary-care management of chronic plaque psoriasis \u2014 the topical ladder by site, recognising psoriatic arthritis and cardiovascular comorbidity, and referral for phototherapy/systemics. NICE CG153 \u00b7 CKS 2026.",
+  guideline:"NICE CG153",
+  glance:[
+    {lbl:"Trunk/limbs 1st", val:"Potent TCS + vit D", sub:"separate AM/PM, 4 wks"},
+    {lbl:"Then", val:"Vit D analogue OD", sub:"or twice-daily"},
+    {lbl:"Scalp", val:"Potent TCS", sub:"\u00b1 vit D / coal tar"},
+    {lbl:"Face/flexures", val:"Mild TCS short", sub:"\u00b1 calcineurin inhibitor"},
+    {lbl:"Screen", val:"PsA + CVD", sub:"PEST tool"},
+    {lbl:"Refer", val:"Extensive / PsA / erythroderma", sub:""}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm type, assess severity + comorbidity",
+      blocks:[
+        {b:"kv", rows:[
+          ["Type","Chronic plaque (commonest); also guttate, flexural, pustular, erythrodermic, nail, scalp"],
+          ["Severity / impact","Body surface area, sites, and impact on quality of life (DLQI)"],
+          ["Screen PsA","Use a tool (e.g. PEST) \u2014 joint pain/stiffness/swelling; early detection prevents joint damage"],
+          ["Comorbidity","Cardiovascular risk, metabolic syndrome, depression \u2014 assess and manage"]
+        ]},
+        {b:"why", html:"Psoriasis is a systemic inflammatory condition, not just a skin rash \u2014 so beyond topical treatment you must <strong>screen for psoriatic arthritis</strong> (irreversible joint damage if missed) and manage <strong>cardiovascular risk</strong>. Topical therapy is organised by <em>site</em>, because potency tolerated on the trunk would harm the face and flexures."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Education, emollients and risk factors",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🧴 Emollients", html:"Regular emollients reduce scale and itch and improve other treatments\u2019 penetration."},
+          {t:"🚭 Smoking & 🍷 alcohol", html:"Both worsen psoriasis and CV risk \u2014 cessation/reduction helps."},
+          {t:"⚖️ Weight", html:"Weight loss improves disease and response to systemics; manage metabolic risk."},
+          {t:"🧠 Psychological", html:"Screen for depression/anxiety \u2014 high impact; offer support."},
+          {t:"☀️ Sunlight / triggers", html:"Moderate natural sunlight may help; note triggers (drugs e.g. lithium/\u03b2-blockers, strep, stress)."},
+          {t:"🩺 CV risk", html:"Assess and treat cardiovascular risk factors as part of routine care."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 topical, by site", title:"The topical ladder",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Trunk/limbs 1", title:"Potent TCS + vitamin D analogue", when:"separate applications, up to 4 weeks",
+           html:"<b>Potent corticosteroid (e.g. betamethasone valerate 0.1%) in the morning</b> and <b>calcipotriol (vitamin D analogue) in the evening</b> for up to 4 weeks \u2014 or a combined <b>calcipotriol + betamethasone</b> product (Dovobet/Enstilar) once daily up to 4 weeks (then review steroid use)."},
+          {step:"Trunk/limbs 2", title:"Vitamin D analogue alone", when:"if inadequate",
+           fromLabel:"after 8 weeks if needed",
+           html:"<b>Calcipotriol once\u2013twice daily</b> as ongoing therapy; or potent steroid BD for up to 4 weeks; or coal tar preparation."},
+          {step:"Scalp", title:"Potent TCS for scalp", when:"\u00b1 vit D / coal tar / salicylic acid",
+           fromLabel:"scalp disease",
+           html:"Potent steroid (4 weeks); add a vitamin D analogue or descaling agent; specific scalp formulations."},
+          {step:"Face/flexures/genitals", title:"Mild TCS short course", when:"delicate sites",
+           fromLabel:"flexural / facial disease",
+           html:"Short-term <b>mild/moderate steroid (e.g. hydrocortisone 1%)</b>; consider a <b>topical calcineurin inhibitor (tacrolimus 0.1% BD)</b> for steroid-sparing at these delicate sites."}
+        ]},
+        {b:"warn", html:"Limit potent steroid courses (\u22644\u20138 weeks; have a steroid-free break) to avoid skin atrophy and destabilisation. Abruptly stopping potent steroids over large areas risks pustular/erythrodermic flare. <b>Don\u2019t use potent steroids long-term on the face/flexures.</b>"}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Response, joints and comorbidity",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Skin response + QoL","After ~4\u20138 weeks per step","Inadequate \u2192 step up / refer"],
+          ["Steroid use","Each course","Enforce treatment breaks; watch for atrophy"],
+          ["PsA screen","Annually","Joint symptoms \u2192 rheumatology"],
+          ["Cardiovascular / metabolic","Routinely","Manage BP, lipids, glucose, weight, smoking"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"4\u20138 weeks", title:"Topical response", html:"Assess response and adherence; rotate/step up; manage steroid breaks."},
+          {n:"2", when:"Annual", title:"Holistic review", html:"PsA screen, cardiovascular/metabolic risk, mental health, treatment review."},
+          {n:"3", when:"On flare/change", title:"Reassess", html:"Unstable, extensive, or new arthritis \u2192 escalate/refer."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not responding? Check before escalating",
+      arrow:"\u2026if plaques persist",
+      intro:"Confirm adequate, correctly-sited topical therapy and look for triggers.",
+      checks:[
+        {b:"1 \u00b7 Adherence/technique", html:"Used for the full course; right product for the site?"},
+        {b:"2 \u00b7 Emollients", html:"Regular emollient base to reduce scale and aid penetration?"},
+        {b:"3 \u00b7 Triggers", html:"Drugs (lithium, \u03b2-blockers, antimalarials), infection, stress, alcohol?"},
+        {b:"4 \u00b7 PsA missed?", html:"Joint symptoms \u2192 rheumatology referral."},
+        {b:"5 \u00b7 Escalate", html:"Extensive/refractory \u2192 dermatology for phototherapy/systemics/biologics."}
+      ],
+      back:"Adequate topical therapy, triggers addressed \u2192 refer for phototherapy/systemics"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Erythroderma / pustular", html:"\u201cWidespread redness/peeling of most of the skin, or widespread pustules with fever/feeling unwell \u2014 seek same-day help.\u201d"},
+          {t:"🦴 Joint symptoms", html:"\u201cJoint pain, stiffness or swelling \u2014 tell us; psoriasis can affect the joints and early treatment protects them.\u201d"},
+          {t:"💊 Steroid use", html:"\u201cDon\u2019t suddenly stop strong steroid creams over large areas \u2014 it can trigger a severe flare; follow the plan.\u201d"},
+          {t:"🫀 Whole-body health", html:"\u201cPsoriasis links to heart and metabolic health \u2014 we\u2019ll keep an eye on those too.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"emergency for erythroderma/pustular; routine for extensive/PsA",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Erythrodermic or generalised pustular psoriasis \u2192 same-day admission/dermatology."},
+          {t:"Extensive / refractory", html:"Not controlled by optimised topical therapy \u2192 dermatology (phototherapy, systemics, biologics)."},
+          {t:"Psoriatic arthritis", html:"Suspected PsA \u2192 rheumatology (don\u2019t delay \u2014 prevents joint damage)."},
+          {t:"Diagnostic doubt / nail/severe scalp", html:"Uncertainty or major functional/psychosocial impact."}
+        ]},
+        {b:"say", html:"Psoriasis is long-term but very manageable. We treat the skin with creams matched to where it is, and I\u2019ll also check your joints and heart-health, because psoriasis is more than skin-deep. If creams aren\u2019t enough, dermatology has light therapy and tablets/injections."}
+      ]}
+  ]
+});
+</script>
+<!-- ═══ Interactive Medication Chooser ═══ -->
+<div class="mg-wrap mc-embed" style="padding-top:0;padding-bottom:40px">
+  <div class="mc-embed-head">⚙ Interactive Medication Chooser — tick the patient profile, options re-tier live against NICE / BNF</div>
+  <div data-medchooser="psoriasis"></div>
+</div>
+<style>.mc-embed-head{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#6b7280);margin:6px 0 10px}@media print{.mc-embed{display:none !important}}</style>
+<script src="../../assets/medchooser.js"></script>
+<script src="../../assets/meds/psoriasis.js"></script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

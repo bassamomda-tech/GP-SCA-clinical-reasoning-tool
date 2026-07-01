@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Giant Cell Arteritis — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Giant cell arteritis management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🧠",
+  title:"Giant Cell Arteritis (GCA)",
+  stemTitle:"GCA \u2014 a sight-threatening emergency: treat NOW, refer same-day",
+  stemSub:"Primary-care recognition &amp; immediate management of giant cell (temporal) arteritis \u2014 a sight-threatening emergency in the over-50s. Start high-dose steroid immediately on clinical suspicion (do NOT wait for results or biopsy), check inflammatory markers, and refer same-day for confirmation &amp; specialist care. BSR \u00b7 NICE CKS \u00b7 2026.",
+  guideline:"BSR / NICE CKS",
+  glance:[
+    {lbl:"Who", val:"Age \u226550 (usually \u226560)", sub:"often with PMR"},
+    {lbl:"Classic", val:"New temporal headache", sub:"+ scalp tenderness / jaw claudication"},
+    {lbl:"Don\u2019t wait", val:"Start steroid on suspicion", sub:"before biopsy/results"},
+    {lbl:"No visual loss", val:"Prednisolone 40\u201360mg OD", sub:"start immediately"},
+    {lbl:"Visual symptoms", val:"IV methylpred / 60mg + same-day eyes", sub:"emergency"},
+    {lbl:"Markers", val:"ESR &amp; CRP (usually high)", sub:"but normal doesn\u2019t exclude"}
+  ],
+  flow:[
+    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Sight-threatening \u2014 act immediately",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Visual symptoms = emergency", html:"Amaurosis fugax, diplopia or any visual loss \u2192 <b>same-day ophthalmology</b> + <b>IV methylprednisolone</b> (or oral prednisolone 60mg) <b>now</b>. Visual loss is often irreversible and the other eye is at imminent risk."},
+          {t:"🔴 Start steroid on clinical suspicion", html:"Do <b>NOT</b> wait for ESR/CRP, temporal artery biopsy or ultrasound before treating \u2014 delay risks blindness. Treat first, confirm second."},
+          {t:"🟠 Stroke risk", html:"GCA can cause cranial/vertebral artery involvement and stroke; large-vessel GCA (aortitis) may present with limb claudication."},
+          {t:"🟠 Jaw/tongue claudication", html:"Pain in the jaw on chewing (or tongue) is a high-specificity feature \u2014 take it seriously."}
+        ]},
+        {b:"why", html:"GCA is a medical emergency because it causes sudden, usually permanent, visual loss via anterior ischaemic optic neuropathy. The single most important action in primary care is to start high-dose corticosteroid the moment you suspect it \u2014 confirmation (markers, biopsy, vascular ultrasound) follows, it does not precede treatment."}
+      ]},
+    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Recognise the features",
+      blocks:[
+        {b:"kv", rows:[
+          ["Core","New-onset headache (often temporal) in someone \u226550; scalp tenderness (combing hair); jaw/tongue claudication; visual symptoms"],
+          ["Temporal artery","Tender, thickened, or pulseless temporal artery"],
+          ["Systemic","Malaise, fever, weight loss; \u226440% have coexisting PMR (shoulder/hip girdle pain &amp; stiffness)"],
+          ["Bloods","ESR typically markedly raised, CRP raised; FBC (anaemia, raised platelets) \u2014 but normal markers do NOT exclude GCA if the picture fits"],
+          ["Confirm (specialist)","Temporal artery biopsy and/or vascular ultrasound (halo sign) \u2014 ideally within ~1\u20132 weeks; steroid started first"]
+        ]}
+      ]},
+    {t:"node", d:"life", n:"3", tag:"Non-drug · core", title:"Steroid-care & bone protection", blocks:[{b:"tiles", v:"life", items:[{t:"🦴 Bone & gastric protection", html:"Long high-dose steroids \u2014 give bone protection (calcium/vit D \u00b1 bisphosphonate) and gastroprotection; baseline DXA."},{t:"💉 Steroid safety", html:"Steroid card/alert, never stop abruptly, sick-day rules, monitor BP, glucose and weight."},{t:"🧠 Vision urgency", html:"Educate: any new visual symptom is an emergency \u2014 do not wait for the next appointment."}]},{b:"why", html:"GCA means months of high-dose steroid, so bone/gastric protection, steroid-safety counselling and clear visual-emergency advice are essential non-drug elements from day one."}]},
+    {t:"node", d:"drug", n:"4", tag:"Management", title:"Steroid \u2014 immediate &amp; tapering",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"No visual symptoms", when:"uncomplicated GCA",
+           html:"<b>Prednisolone 40\u201360mg once daily</b>, started immediately on suspicion. Send urgent ESR/CRP/FBC the same day and refer urgently for confirmation."},
+          {step:"Step 2", title:"Visual symptoms / visual loss", when:"emergency",
+           fromLabel:"sight-threatening",
+           html:"<b>IV methylprednisolone</b> (e.g. 500mg\u20131g/day for up to 3 days) per specialist, or oral prednisolone 60mg if IV not immediately available, + <b>same-day ophthalmology</b>."},
+          {step:"Step 3", title:"Steroid-sparing &amp; protection", when:"adjuncts",
+           fromLabel:"co-prescribe",
+           html:"Co-prescribe a <b>PPI</b> (gastroprotection), <b>bone protection</b> (calcium/vitamin D \u00b1 bisphosphonate) and <b>low-dose aspirin</b> if no contraindication; consider <b>tocilizumab</b> (specialist) as steroid-sparing."},
+          {step:"Step 4", title:"Slow taper", when:"over ~12\u201318 months",
+           fromLabel:"long-term",
+           html:"Gradual, symptom- &amp; marker-guided taper over 1\u20132 years (specialist-led); most need steroids for &gt;1 year. Never stop abruptly; give a steroid card &amp; sick-day rules."}
+        ]},
+        {b:"warn", html:"A dramatic symptomatic response to steroid supports the diagnosis. Relapse on tapering is common \u2014 don\u2019t reduce too fast. All patients on long-term steroids need bone &amp; GI protection and adrenal-suppression safety-netting."}
+      ]},
+    {t:"node", d:"monitor", n:"5", tag:"Follow-up", title:"Monitor on steroids",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"Early", title:"Confirm &amp; review", html:"Specialist confirmation (biopsy/ultrasound); review symptoms &amp; markers; assess response."},
+          {n:"2", when:"Throughout taper", title:"Marker- &amp; symptom-guided", html:"Monitor ESR/CRP and symptoms; watch for relapse (recurrent headache/visual symptoms) and steroid side effects (BP, glucose, bone, mood)."},
+          {n:"3", when:"Long-term", title:"Steroid safety", html:"Bone protection, glucose/BP monitoring, steroid card, sick-day rules; gradual withdrawal."}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"6", tag:"Refer", title:"Referral",
+      arrow:"same-day always",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"🔴 Same-day ophthalmology", html:"Any visual symptoms/loss \u2014 with IV/high-dose steroid started."},
+          {t:"Urgent rheumatology / GCA fast-track", html:"All suspected GCA \u2014 for biopsy/ultrasound confirmation &amp; ongoing care (steroid already started)."},
+          {t:"Specialist (steroid-sparing)", html:"Relapsing/refractory disease, steroid toxicity \u2192 tocilizumab/methotrexate."},
+          {t:"Emergency", html:"Stroke features or large-vessel complications."}
+        ]},
+        {b:"say", html:"I\u2019m worried this headache could be inflammation of the arteries at your temple, which can affect the eyesight if untreated \u2014 so I want to start you on a steroid tablet right now and arrange for the specialists to see you urgently. If you get any change in your vision before then, that\u2019s an emergency \u2014 go straight to the eye unit."}
+      ]}
+  ],
+  foot:"Recognition &amp; immediate management of giant cell arteritis in primary care; a sight-threatening emergency \u2014 start high-dose steroid on clinical suspicion and refer same-day. Verify against current BSR GCA guideline and NICE CKS."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GP Admin · GP / SCA Clinical Reasoning Tool</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=27" />
+<style>
+  .tool-page{ padding:0; }
+  .panel{ padding:28px 32px 80px; max-width:1080px; margin:0 auto; }
+  @media (max-width:760px){ .panel{ padding:18px 14px 60px; } }
+  .tool-breadcrumb{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);margin-bottom:18px}
+  .tool-breadcrumb a{color:var(--teal-2);text-decoration:none;font-weight:600}
+  .tool-breadcrumb a:hover{color:var(--rust)}
+  .tool-breadcrumb svg{width:11px;height:11px;color:var(--muted-2)}
+  .tool-head{padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:20px}
+  .tool-head .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .tool-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.1;margin-top:8px}
+  .tool-head h1 em{font-style:italic;color:var(--teal)}
+  .tool-head p{color:var(--ink-2);font-size:14.5px;line-height:1.6;max-width:76ch;margin-top:8px}
+  .review-stamp{ display:inline-flex; align-items:center; gap:7px; margin-top:12px; font-size:11.5px; font-weight:700; color:var(--teal); background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:5px 12px; }
+  .review-stamp .dot{ width:7px; height:7px; border-radius:50%; background:#15803d; }
+  .review-stamp span.src{ color:var(--muted); font-weight:600; }
+
+  /* ===== hub section nav ===== */
+  .phub-nav{ display:flex; gap:10px; margin-bottom:6px; flex-wrap:wrap; }
+  .phub-btn{ font:inherit; text-align:left; flex:1 1 240px; min-width:0; cursor:pointer; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px 16px; display:flex; gap:13px; align-items:flex-start; transition:border-color .12s, box-shadow .12s; }
+  .phub-btn:hover{ border-color:var(--teal-soft); }
+  .phub-btn.on{ border-color:var(--teal); box-shadow:0 0 0 1px var(--teal) inset; }
+  .phub-btn .ic{ font-size:22px; line-height:1; flex-shrink:0; width:42px; height:42px; display:grid; place-items:center; background:var(--bg-soft); border-radius:11px; }
+  .phub-btn.on .ic{ background:var(--teal); }
+  .phub-btn .tx b{ display:block; font-size:14.5px; font-weight:800; color:var(--ink); line-height:1.2; }
+  .phub-btn .tx b .step{ font-size:10.5px; font-weight:800; color:var(--rust); letter-spacing:.04em; margin-right:6px; }
+  .phub-btn .tx span{ display:block; font-size:12px; color:var(--muted); line-height:1.4; margin-top:3px; }
+
+  .phub-flow{ font-size:11.5px; color:var(--muted); font-weight:600; margin:12px 2px 2px; display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+  .phub-flow b{ color:var(--teal); }
+  .phub-flow .arr{ color:var(--muted-2); }
+
+  .phub-section{ display:none; }
+  .phub-section.on{ display:block; }
+  .hub-frame{ width:100%; border:0; display:block; background:transparent; min-height:60vh; }
+
+  .footer-disclaimer{ margin-top:30px; font-size:12.5px; line-height:1.6; color:var(--ink-2); background:var(--surface-2); border:1px solid var(--line); border-radius:12px; padding:16px 18px; }
+  .footer-disclaimer strong{ color:var(--ink); }
+</style>
+</head>
+<body>
+<button class="sb-toggle" aria-label="Open menu">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-admin"></aside>
+  <main class="main">
+    <div class="tool-page">
+      <div class="panel">
+
+        <div class="tool-breadcrumb">
+          <a href="../index.html">Reasoning GP</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+          <span>Tools</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+          <span style="color:var(--ink-2)">GP Admin</span>
+        </div>
+
+        <header class="tool-head" data-screen-label="Tool head">
+          <span class="eyebrow">Reasoning Tool · The paperwork, done right</span>
+          <h1>GP Admin — <em>sick notes, fitness to drive &amp; the forms you sign</em></h1>
+          <p>The non-clinical paperwork that fills a GP's day, in one place: the <b>Fit Note (Med3)</b> helper ("may be fit" wording and duration rules), <b>DVLA fitness to drive</b> (Group 1/2 rules and who must notify), and the <b>GP forms &amp; certificates</b> directory (SR1, MATB1, who completes them, NHS-free vs chargeable, and the pitfalls).</p>
+          <div class="review-stamp"><span class="dot"></span> Live tools · always cite the source shown <span class="src">· DVLA · DWP · NHS England · GMC · BMA fees guidance</span></div>
+        </header>
+
+        <nav class="phub-nav" id="phubNav" aria-label="GP-admin sections">
+          <button class="phub-btn on" data-sec="fitnote" data-src="fit-note.html?embed=1">
+            <span class="ic">📄</span>
+            <span class="tx"><b>Fit Note (Med3)</b><span>“May be fit” wording · duration rules</span></span>
+          </button>
+          <button class="phub-btn" data-sec="dvla" data-src="dvla.html?embed=1">
+            <span class="ic">🚗</span>
+            <span class="tx"><b>DVLA fitness to drive</b><span>Group 1/2 rules · must they notify?</span></span>
+          </button>
+          <button class="phub-btn" data-sec="forms" data-src="gp-forms.html?embed=1">
+            <span class="ic">📋</span>
+            <span class="tx"><b>GP forms &amp; certificates</b><span>SR1 · MATB1 · who signs · fees</span></span>
+          </button>
+          <button class="phub-btn" data-sec="contypes" data-src="consultation-types.html?embed=1">
+            <span class="ic">🩺</span>
+            <span class="tx"><b>Consultation types</b><span>Reviews · ACP/GSF · EoL · OOH · UTC</span></span>
+          </button>
+          <button class="phub-btn" data-sec="community" data-src="community-orientation.html?embed=1">
+            <span class="ic">🤝</span>
+            <span class="tx"><b>Community orientation</b><span>The community team · who to involve</span></span>
+          </button>
+        </nav>
+        <div class="phub-flow"><b>Fitness for work</b> <span class="arr">·</span> <b>Fitness to drive</b> <span class="arr">·</span> <b>Forms &amp; certificates</b> <span class="arr">·</span> <b>Consultation types</b> <span class="arr">·</span> <b>Community orientation</b> &nbsp;—&nbsp; the GP's everyday admin and ways of working, in one place.</div>
+
+        <section class="phub-section on" id="sec-fitnote" data-screen-label="Fit Note">
+          <iframe class="hub-frame" title="Fit Note helper" loading="lazy"></iframe>
+        </section>
+        <section class="phub-section" id="sec-dvla" data-screen-label="DVLA fitness to drive">
+          <iframe class="hub-frame" title="DVLA fitness to drive" loading="lazy"></iframe>
+        </section>
+        <section class="phub-section" id="sec-forms" data-screen-label="GP forms">
+          <iframe class="hub-frame" title="GP forms and certificates" loading="lazy"></iframe>
+        </section>
+        <section class="phub-section" id="sec-contypes" data-screen-label="Consultation types">
+          <iframe class="hub-frame" title="Consultation types" loading="lazy"></iframe>
+        </section>
+        <section class="phub-section" id="sec-community" data-screen-label="Community orientation">
+          <iframe class="hub-frame" title="Community orientation" loading="lazy"></iframe>
+        </section>
+
+        <div class="footer-disclaimer">
+          <strong>Educational use only.</strong> Fit Note, DVLA and form/fee rules change and vary across the UK nations. Always check the current DVLA <em>Assessing fitness to drive</em> guidance, DWP Fit Note guidance, and your LMC/BMA fees schedule before acting. Not a substitute for clinical or medico-legal judgement.
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+<script>
+(function(){
+  const SECTIONS = ['fitnote','dvla','forms','contypes','community'];
+  const nav = document.getElementById('phubNav');
+
+  function fit(frame){
+    try{
+      const d = frame.contentDocument;
+      if(!d || !d.body) return;
+      const h = Math.max(d.body.scrollHeight, d.documentElement.scrollHeight);
+      if(h > 80) frame.style.height = h + 'px';
+    }catch(e){}
+  }
+
+  function wireFrame(frame){
+    // Keep cross-page links breaking OUT of the iframe to the whole window.
+    try{
+      const d = frame.contentDocument;
+      d.querySelectorAll('a[href]').forEach(a=>{
+        const href = a.getAttribute('href') || '';
+        if(href && href[0] !== '#' && !/^javascript:/i.test(href)) a.target = '_top';
+      });
+      // refit when the embedded content changes height (cards expand, filters, etc.)
+      const ro = new ResizeObserver(()=>fit(frame));
+      ro.observe(d.body);
+      d.addEventListener('click', ()=>{ for(let t=120;t<=900;t+=180) setTimeout(()=>fit(frame), t); }, true);
+    }catch(e){}
+    // settle re-fits (fonts/layout/scripts)
+    for(const t of [80,300,700,1300,2200]) setTimeout(()=>fit(frame), t);
+  }
+
+  function loadSection(sec){
+    const btn = nav.querySelector('.phub-btn[data-sec="'+sec+'"]');
+    const sect = document.getElementById('sec-'+sec);
+    if(!btn || !sect) return;
+    const frame = sect.querySelector('.hub-frame');
+    if(frame && !frame.dataset.loaded){
+      frame.dataset.loaded = '1';
+      // Render the sub-tool inline via srcdoc: a fetched document set as srcdoc
+      // executes its own scripts normally and isn't blocked by X-Frame-Options
+      // the way a framed URL is. We force embed mode with a data-rgp-embed attr
+      // (srcdoc has no ?embed=1 query string for site.js to read).
+      fetch(btn.dataset.src).then(r=>r.text()).then(html=>{
+        html = html.replace(/<html(\s|>)/i, '<html data-rgp-embed="1"$1');
+        // The sub-tool's own floating "Back" button is redundant inside the hub.
+        html = html.replace(/<\/head>/i, '<style>#navBackBtn{display:none!important}</style></head>');
+        frame.addEventListener('load', ()=>wireFrame(frame), { once:true });
+        frame.srcdoc = html;
+      }).catch(()=>{
+        frame.dataset.loaded = '';
+        const open = btn.dataset.src.replace(/\?.*$/,'');
+        sect.insertAdjacentHTML('beforeend', '<p style="padding:24px;color:var(--muted);font-size:14px">Couldn\u2019t load this tool inline. <a href="'+open+'" style="color:var(--teal);font-weight:700">Open it directly \u2192</a></p>');
+      });
+    } else { fit(frame); }
+  }
+
+  function show(sec){
+    if(SECTIONS.indexOf(sec) < 0) sec = 'diagnostic';
+    nav.querySelectorAll('.phub-btn').forEach(b=>b.classList.toggle('on', b.dataset.sec===sec));
+    document.querySelectorAll('.phub-section').forEach(s=>s.classList.toggle('on', s.id==='sec-'+sec));
+    loadSection(sec);
+    try{ history.replaceState(null,'', '#'+sec); }catch(e){}
+  }
+
+  nav.addEventListener('click', e=>{
+    const b = e.target.closest('.phub-btn'); if(!b) return;
+    show(b.dataset.sec);
+    window.scrollTo({ top:0, behavior:'smooth' });
+  });
+
+  window.addEventListener('resize', ()=>{
+    const on = document.querySelector('.phub-section.on .hub-frame'); if(on) fit(on);
+  });
+
+  const h = (location.hash||'').replace('#','').toLowerCase();
+  show(SECTIONS.indexOf(h)>=0 ? h : 'fitnote');
+})();
+</script>
+</body>
+</html>

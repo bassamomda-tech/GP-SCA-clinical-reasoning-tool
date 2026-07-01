@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Diagnostic Tool · GP / SCA Clinical Reasoning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=11" />
+<link rel="stylesheet" href="../assets/triage.css" />
+<link rel="stylesheet" href="../assets/diagnostic.css" />
+<link rel="stylesheet" href="../assets/workup.css" />
+
+<style>
+  .tool-head{padding:28px 0 6px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .tool-head .eyebrow{margin-bottom:10px;display:block}
+  .tool-head h1{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:10px}
+  .tool-head p{color:var(--ink-2);font-size:15px;line-height:1.6;max-width:64ch;margin-bottom:14px}
+  .tool-breadcrumb{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);margin-bottom:18px}
+  .tool-breadcrumb a{color:var(--teal-2);text-decoration:none;font-weight:600}
+  .tool-breadcrumb a:hover{color:var(--rust)}
+  .tool-breadcrumb svg{width:11px;height:11px;color:var(--muted-2)}
+  [data-workup]{margin-top:0}
+
+  .wu-explainer{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;
+    margin-top:18px;
+  }
+  @media(max-width:760px){.wu-explainer{grid-template-columns:1fr}}
+  .wu-ex{
+    border:1px solid var(--line);border-radius:var(--r-md);padding:14px 16px;
+    background:var(--surface);
+  }
+  .wu-ex b{
+    display:block;font-size:11px;font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;margin-bottom:4px;
+  }
+  .wu-ex.is-tr b{color:var(--rust)}
+  .wu-ex.is-dx b{color:var(--teal)}
+  .wu-ex p{font-size:13px;color:var(--ink-2);line-height:1.55;margin:0}
+
+  /* ===== Presentation picker ===== */
+  .dxp{margin-top:30px}
+  .dxp-head{margin-bottom:14px}
+  .dxp-head h2{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:22px;line-height:1.15;color:var(--ink)}
+  .dxp-head h2 em{font-style:italic;color:var(--teal);font-weight:500}
+  .dxp-head p{font-size:13.5px;color:var(--ink-2);line-height:1.55;margin-top:6px;max-width:70ch}
+
+  .dxp-controls{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:16px 0 4px}
+  .dxp-search{position:relative;flex:1;min-width:240px}
+  .dxp-search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+  .dxp-search input{width:100%;font:inherit;font-size:15px;padding:12px 14px 12px 42px;border:1px solid var(--line-2);border-radius:10px;background:#fff;color:var(--ink)}
+  .dxp-search input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px var(--teal-soft)}
+  .dxp-count{font-size:13px;color:var(--muted);font-weight:500;white-space:nowrap}
+  .dxp-count b{color:var(--ink);font-feature-settings:"tnum"}
+  .dxp-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:2px 0 4px}
+  .dxp-legend span{display:inline-flex;align-items:center;gap:6px}
+  .dxp-legend i{width:9px;height:9px;border-radius:99px;display:inline-block}
+  .dxp-legend .l-live{background:var(--teal)}
+  .dxp-legend .l-path{background:var(--line-2)}
+
+  .dxp-empty{display:none;padding:40px 20px;text-align:center;color:var(--muted);font-size:15px}
+  .dxp-empty.show{display:block}
+
+  .dxp-group{margin-top:26px}
+  .dxp-group-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .dxp-gicon{font-size:17px}
+  .dxp-group-head h3{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:19px;color:var(--ink);letter-spacing:-.01em}
+  .dxp-gcount{font-size:11px;font-weight:700;color:var(--muted);background:var(--bg-soft);border:1px solid var(--line);border-radius:99px;padding:2px 9px}
+
+  .dxp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:10px}
+
+  .dxp-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;transition:border-color .15s ease,box-shadow .15s ease,transform .15s ease}
+  .dxp-card:hover{border-color:var(--teal);box-shadow:var(--shadow-2);transform:translateY(-1px)}
+  .dxp-card.is-live{border-color:var(--teal-soft);background:linear-gradient(0deg,var(--teal-soft),var(--teal-soft)) padding-box,#fff;background:color-mix(in srgb,var(--teal-soft) 35%,#fff)}
+  .dxp-card.active{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+
+  .dxp-main{display:flex;align-items:flex-start;gap:12px;padding:13px 15px;text-decoration:none;color:inherit}
+  .dxp-icon{font-size:21px;line-height:1.1;flex-shrink:0;width:28px;text-align:center}
+  .dxp-text{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+  .dxp-text b{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.25}
+  .dxp-text small{font-size:12px;color:var(--muted);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .dxp-arrow{color:var(--line-2);font-size:15px;flex-shrink:0;align-self:center;transition:.15s ease}
+  .dxp-card:hover .dxp-arrow{color:var(--teal);transform:translateX(2px)}
+
+  .dxp-badge{align-self:flex-start;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--bg-soft);border:1px solid var(--line);border-radius:99px;padding:2px 8px;margin:1px 0}
+  .dxp-badge.is-live{color:var(--teal-2);background:var(--teal-soft);border-color:transparent}
+
+  .dxp-path{position:absolute;right:11px;bottom:9px;font-size:10.5px;font-weight:600;color:var(--muted);text-decoration:none;letter-spacing:.02em}
+  .dxp-path:hover{color:var(--rust)}
+
+  /* Live workup area */
+  .dxp-live{margin-top:38px;padding-top:8px}
+  .dxp-live-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .dxp-live-head .dot{width:9px;height:9px;border-radius:99px;background:var(--teal)}
+  .dxp-live-head h2{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:20px;color:var(--ink)}
+  .dxp-live-sub{font-size:13px;color:var(--ink-2);line-height:1.55;margin:0 0 12px;max-width:70ch}
+
+  /* The engine ships its own pill picker — the grouped picker above replaces it. */
+  .wu-topic-picker{display:none !important}
+
+  .tool-howto{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+    padding:18px 22px;margin-top:30px;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;
+  }
+  .tool-howto h4{
+    font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:700;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;
+  }
+  .tool-howto p{font-size:13px;color:var(--ink-2);line-height:1.55}
+</style>
+</head>
+<body>
+
+<aside class="sidebar" data-active-id="__tools-decision"></aside>
+
+<div class="app">
+
+  <main class="main">
+    <div class="panel">
+
+      <div class="tool-breadcrumb">
+        <a href="../index.html">Reasoning GP</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+        <span>Tools</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+        <span style="color:var(--ink-2)">Diagnostic Tool</span>
+      </div>
+
+      <header class="tool-head" data-screen-label="Tool head">
+        <span class="eyebrow">Reasoning Tool · Triage + Differential, by presentation</span>
+        <h1>Diagnostic tool — <em style="font-style:italic;color:var(--teal);font-weight:500">how urgent</em> &amp; <em style="font-style:italic;color:var(--teal);font-weight:500">what is it</em>, by presenting complaint</h1>
+        <p>Pick a presenting complaint below. Selected presentations open a <strong>live triage + differential workup</strong> — tick what the patient describes and the engine surfaces every NICE / Macmillan triage rule that fires and ranks the differential live. Every other presentation opens its <strong>structured visual pathway</strong>.</p>
+
+        <div class="wu-explainer">
+          <div class="wu-ex is-tr">
+            <b>🚦 Triage</b>
+            <p>NICE NG12 / Macmillan rapid-referral / CKS thresholds. Headline = highest-acuity rule fired; every fired rule listed by tier with patient phrase, copy-paste referral text and proforma link.</p>
+          </div>
+          <div class="wu-ex is-dx">
+            <b>🩺 Differential</b>
+            <p>Feature-weighted ranking against ICHD-3 / SNNOOP10 / TiTrATE / NICE CKS criteria. Three views: % likelihood, Most-likely / Consider / Don't-miss buckets, or Pro / Con per diagnosis. Red-flag diagnoses always surface when their triggers fire.</p>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===== Presentation picker ===== -->
+      <section class="dxp" data-screen-label="Presentation picker">
+        <div class="dxp-head">
+          <h2>Choose a <em>presenting complaint</em></h2>
+          <p>Live workups run the interactive triage + differential engine. The remaining presentations open their structured algorithm pathway in the Algorithms library.</p>
+        </div>
+
+        <div class="dxp-controls">
+          <div class="dxp-search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" id="dxSearch" placeholder="Search presentations — e.g. headache, chest pain, anaemia, vertigo…" autocomplete="off" />
+          </div>
+          <span class="dxp-count"><b id="dxShown">—</b> / <span id="dxTotal">—</span> presentations</span>
+        </div>
+        <div class="dxp-legend">
+          <span><i class="l-live"></i> Live triage + differential workup</span>
+          <span><i class="l-path"></i> Visual algorithm pathway</span>
+        </div>
+
+        <div class="dxp-empty" id="dxEmpty">No presentation matches that search. Try a symptom or condition name.</div>
+        <div id="dxPresentations"></div>
+      </section>
+
+      <!-- ===== Live workup engine ===== -->
+      <section class="dxp-live">
+        <div class="dxp-live-head"><span class="dot"></span><h2>Live workup</h2></div>
+        <p class="dxp-live-sub">Showing the interactive engine for the selected presentation. Pick another <strong>live</strong> presentation above to switch — your inputs reset for the new complaint.</p>
+        <!-- The combined engine. Initial topic = tiredness (has both triage + dx). -->
+        <div data-workup="tiredness"></div>
+      </section>
+
+      <div class="tool-howto" data-screen-label="How to use">
+        <div>
+          <h4>1 · Pick the presenting complaint</h4>
+          <p>Browse or search the grouped list. Teal cards run the live workup; the rest open a structured visual pathway. A live card also offers a small “pathway ↗” link to its algorithm.</p>
+        </div>
+        <div>
+          <h4>2 · Tick what you've found</h4>
+          <p>For live workups: symptoms · vitals · blood results · context. The merged input panel shows every feature either engine needs — ticked once, used by both.</p>
+        </div>
+        <div>
+          <h4>3 · Read the verdict</h4>
+          <p>Triage verdict sits on top — that's the safety net. The differential ranks beneath. Switch the DDx between % / Buckets / Pro-Con from the top-right.</p>
+        </div>
+        <div>
+          <h4>4 · Act on it</h4>
+          <p>Expand any diagnosis card for the key examination finding, the next investigation that confirms/refutes, the NICE CKS link, and the matching full case on Reasoning GP.</p>
+        </div>
+      </div>
+
+      <div class="footer-disclaimer" style="margin-top:50px">
+        <strong>Educational use only.</strong> The Diagnostic Tool surfaces published NICE / Macmillan triage thresholds (triage view) and tunes feature weights to ICHD-3 / SNNOOP10 / TiTrATE / NICE CKS criteria (differential view). Visual pathways are structured reference flows anchored to NICE / CKS guidance. None of this is a validated clinical decision rule — always confirm with full history, examination, and your local pathway.
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/filter-rail.js"></script>
+
+<!-- Triage engine + topic data -->
+<script src="../assets/triage.js"></script>
+<script src="../assets/triage/tiredness.js"></script>
+<script src="../assets/triage/hypertension.js"></script>
+<script src="../assets/triage/type-2-diabetes.js"></script>
+<script src="../assets/triage/asthma.js"></script>
+<script src="../assets/triage/headache.js"></script>
+<script src="../assets/triage/dizziness.js"></script>
+<script src="../assets/triage/chest-pain.js"></script>
+<script src="../assets/triage/abdo-pain.js"></script>
+<script src="../assets/triage/breathlessness.js"></script>
+
+<!-- Diagnostic engine + topic data -->
+<script src="../assets/diagnostic.js"></script>
+<script src="../assets/diagnostic/headache.js"></script>
+<script src="../assets/diagnostic/dizziness.js"></script>
+<script src="../assets/diagnostic/tatt.js"></script>
+<script src="../assets/diagnostic/hypertension.js"></script>
+<script src="../assets/diagnostic/type-2-diabetes.js"></script>
+<script src="../assets/diagnostic/asthma.js"></script>
+<script src="../assets/diagnostic/chest-pain.js"></script>
+<script src="../assets/diagnostic/abdo-pain.js"></script>
+<script src="../assets/diagnostic/breathlessness.js"></script>
+
+<!-- Live workup packs (algorithm cases converted to interactive triage + differential) -->
+<script src="../assets/dx-packs/palpitations.js"></script>
+<script src="../assets/dx-packs/anaemia.js"></script>
+<script src="../assets/dx-packs/back-pain.js"></script>
+
+<!-- Gastroenterology & Liver -->
+<script src="../assets/dx-packs/dyspepsia.js"></script>
+<script src="../assets/dx-packs/rectal-bleeding.js"></script>
+<script src="../assets/dx-packs/constipation.js"></script>
+<script src="../assets/dx-packs/chronic-diarrhoea.js"></script>
+<script src="../assets/dx-packs/abnormal-lfts.js"></script>
+<script src="../assets/dx-packs/diverticulitis.js"></script>
+<script src="../assets/dx-packs/crohns-flare.js"></script>
+<script src="../assets/dx-packs/uc-flare.js"></script>
+<script src="../assets/dx-packs/jaundice.js"></script>
+<script src="../assets/dx-packs/fatty-liver.js"></script>
+
+<!-- Endocrine & Metabolic -->
+<script src="../assets/dx-packs/hyperthyroidism.js"></script>
+<script src="../assets/dx-packs/hypothyroidism.js"></script>
+<script src="../assets/dx-packs/hypercalcaemia.js"></script>
+<script src="../assets/dx-packs/hyponatraemia.js"></script>
+<script src="../assets/dx-packs/hypokalaemia.js"></script>
+<script src="../assets/dx-packs/gynecomastia.js"></script>
+<script src="../assets/dx-packs/hirsutism.js"></script>
+<script src="../assets/dx-packs/hyperhidrosis.js"></script>
+
+<!-- Neurology -->
+<script src="../assets/dx-packs/tia.js"></script>
+<script src="../assets/dx-packs/vertigo.js"></script>
+<script src="../assets/dx-packs/fits-funny-turns.js"></script>
+<script src="../assets/dx-packs/sensory-neuropathy.js"></script>
+<script src="../assets/dx-packs/delirium.js"></script>
+
+<!-- Renal, Urology & Men's Health -->
+<script src="../assets/dx-packs/ckd.js"></script>
+<script src="../assets/dx-packs/aki.js"></script>
+<script src="../assets/dx-packs/haematuria.js"></script>
+<script src="../assets/dx-packs/renal-colic.js"></script>
+<script src="../assets/dx-packs/luts-men.js"></script>
+<script src="../assets/dx-packs/urinary-incontinence-female.js"></script>
+<script src="../assets/dx-packs/scrotal-pain.js"></script>
+<script src="../assets/dx-packs/chronic-testicular-pain.js"></script>
+<script src="../assets/dx-packs/haematospermia.js"></script>
+<script src="../assets/dx-packs/undescended-testis.js"></script>
+<script src="../assets/dx-packs/erectile-dysfunction.js"></script>
+<script src="../assets/dx-packs/premature-ejaculation.js"></script>
+
+<!-- Haematology -->
+<script src="../assets/dx-packs/iron-deficiency.js"></script>
+<script src="../assets/dx-packs/bruising.js"></script>
+<script src="../assets/dx-packs/thrombocytopenia.js"></script>
+<script src="../assets/dx-packs/thrombocytosis.js"></script>
+<script src="../assets/dx-packs/leucocytosis.js"></script>
+<script src="../assets/dx-packs/leucopenia.js"></script>
+<script src="../assets/dx-packs/polycythaemia.js"></script>
+
+<!-- Women's Health -->
+<script src="../assets/dx-packs/menorrhagia.js"></script>
+<script src="../assets/dx-packs/dysmenorrhoea.js"></script>
+<script src="../assets/dx-packs/irregular-periods.js"></script>
+<script src="../assets/dx-packs/amenorrhoea.js"></script>
+<script src="../assets/dx-packs/vaginal-bleeding.js"></script>
+<script src="../assets/dx-packs/vaginal-discharge.js"></script>
+<script src="../assets/dx-packs/mastalgia.js"></script>
+<script src="../assets/dx-packs/contraception.js"></script>
+<script src="../assets/dx-packs/hrt-menopause.js"></script>
+<script src="../assets/dx-packs/nvp.js"></script>
+<script src="../assets/dx-packs/pruritus-pregnancy.js"></script>
+
+<!-- Musculoskeletal -->
+<script src="../assets/dx-packs/neck-pain.js"></script>
+<script src="../assets/dx-packs/sciatica.js"></script>
+<script src="../assets/dx-packs/shoulder-pain.js"></script>
+<script src="../assets/dx-packs/knee-pain.js"></script>
+<script src="../assets/dx-packs/hip-pain.js"></script>
+<script src="../assets/dx-packs/hand-pain.js"></script>
+<script src="../assets/dx-packs/foot-pain.js"></script>
+<script src="../assets/dx-packs/body-aches.js"></script>
+
+<!-- ENT & Dental -->
+<script src="../assets/dx-packs/hearing-loss.js"></script>
+<script src="../assets/dx-packs/tinnitus.js"></script>
+<script src="../assets/dx-packs/epistaxis.js"></script>
+<script src="../assets/dx-packs/neck-lump.js"></script>
+<script src="../assets/dx-packs/halitosis.js"></script>
+<script src="../assets/dx-packs/jaw-pain.js"></script>
+
+<!-- Ophthalmology -->
+<script src="../assets/dx-packs/red-eye.js"></script>
+<script src="../assets/dx-packs/blurry-vision.js"></script>
+<script src="../assets/dx-packs/vision-loss.js"></script>
+<script src="../assets/dx-packs/diplopia.js"></script>
+<script src="../assets/dx-packs/flashes-floaters.js"></script>
+
+<!-- Cardiovascular (remaining) -->
+<script src="../assets/dx-packs/ankle-swelling.js"></script>
+<script src="../assets/dx-packs/claudication.js"></script>
+<script src="../assets/dx-packs/high-cholesterol.js"></script>
+<script src="../assets/dx-packs/leg-cramps.js"></script>
+<script src="../assets/dx-packs/raynauds.js"></script>
+
+<!-- General & Systemic -->
+<script src="../assets/dx-packs/weight-loss.js"></script>
+<script src="../assets/dx-packs/night-sweats.js"></script>
+<script src="../assets/dx-packs/widespread-itch.js"></script>
+<script src="../assets/dx-packs/hair-loss.js"></script>
+<script src="../assets/dx-packs/falls.js"></script>
+
+<!-- Paediatrics -->
+<script src="../assets/dx-packs/abdominal-pain-children.js"></script>
+<script src="../assets/dx-packs/constipation-children.js"></script>
+<script src="../assets/dx-packs/cough-children.js"></script>
+<script src="../assets/dx-packs/fever-children.js"></script>
+<script src="../assets/dx-packs/vomiting-children.js"></script>
+<script src="../assets/dx-packs/uti-children.js"></script>
+<script src="../assets/dx-packs/limping-children.js"></script>
+<script src="../assets/dx-packs/paediatric-msk.js"></script>
+<script src="../assets/dx-packs/developmental-delay.js"></script>
+<script src="../assets/dx-packs/faltered-growth.js"></script>
+<script src="../assets/dx-packs/cows-milk-allergy.js"></script>
+<script src="../assets/dx-packs/unsettled-baby.js"></script>
+
+<!-- Mental Health -->
+<script src="../assets/dx-packs/psychosis.js"></script>
+
+<!-- Workup orchestrator (consumes both registries) -->
+<script src="../assets/workup.js"></script>
+
+<!-- Presentation index (all algorithm cases + interactive topics) -->
+<script src="../assets/diagnostic-cases.js"></script>
+
+<!-- Picker renderer -->
+<script>
+(function(){
+  const data = window.RGP_DX_CASES || [];
+  const mount = document.getElementById('dxPresentations');
+  const search = document.getElementById('dxSearch');
+  const shown = document.getElementById('dxShown');
+  const totalEl = document.getElementById('dxTotal');
+  const empty = document.getElementById('dxEmpty');
+  if (!mount) return;
+
+  let total = 0;
+  data.forEach(g => total += g.items.length);
+  if (totalEl) totalEl.textContent = total;
+
+  function cardHTML(it){
+    const live = !!it.topicId;
+    const badge = live
+      ? '<span class="dxp-badge is-live">Live workup</span>'
+      : '<span class="dxp-badge">Visual pathway</span>';
+    const href = live ? ('#' + it.topicId) : ('algorithms/' + it.slug + '.html');
+    const path = (live && it.slug)
+      ? '<a class="dxp-path" href="algorithms/' + it.slug + '.html" title="Open the visual pathway instead">pathway \u2197</a>'
+      : '';
+    return '<div class="dxp-card ' + (live ? 'is-live' : '') + '" data-search="' + it.search + '" data-topic="' + (it.topicId || '') + '">'
+      + '<a class="dxp-main" href="' + href + '">'
+      +   '<span class="dxp-icon">' + it.icon + '</span>'
+      +   '<span class="dxp-text"><b>' + it.title + '</b>' + badge + '<small>' + it.desc + '</small></span>'
+      +   '<span class="dxp-arrow">' + (live ? '\u25B8' : '\u2192') + '</span>'
+      + '</a>' + path
+      + '</div>';
+  }
+
+  mount.innerHTML = data.map(function(g){
+    const cards = g.items.map(cardHTML).join('');
+    return '<section class="dxp-group" data-group="' + g.group + '">'
+      + '<div class="dxp-group-head"><span class="dxp-gicon">' + g.icon + '</span><h3>' + g.group + '</h3><span class="dxp-gcount">' + g.items.length + '</span></div>'
+      + '<div class="dxp-grid">' + cards + '</div>'
+      + '</section>';
+  }).join('');
+
+  const cards = Array.prototype.slice.call(mount.querySelectorAll('.dxp-card'));
+  const groups = Array.prototype.slice.call(mount.querySelectorAll('.dxp-group'));
+
+  function apply(){
+    const q = (search.value || '').trim().toLowerCase();
+    let n = 0;
+    cards.forEach(function(c){
+      const m = !q || c.dataset.search.indexOf(q) !== -1;
+      c.style.display = m ? '' : 'none';
+      if (m) n++;
+    });
+    groups.forEach(function(g){
+      const any = Array.prototype.slice.call(g.querySelectorAll('.dxp-card')).some(function(c){ return c.style.display !== 'none'; });
+      g.style.display = any ? '' : 'none';
+    });
+    if (shown) shown.textContent = n;
+    if (empty) empty.classList.toggle('show', n === 0);
+  }
+  if (shown) shown.textContent = total;
+  search.addEventListener('input', apply);
+
+  function syncActive(){
+    const h = (location.hash || '').replace(/^#/, '');
+    cards.forEach(function(c){ c.classList.toggle('active', !!h && c.dataset.topic === h); });
+  }
+  window.addEventListener('hashchange', syncActive);
+  syncActive();
+
+  // Left category filter rail (GPatlas-style), like Pathways
+  if (window.RGP_buildRail) window.RGP_buildRail({
+    page: document.querySelector('.dxp'), controls: '.dxp-controls', group: '.dxp-group',
+    card: '.dxp-card', gridClass: 'dxp-grid', search: '#dxSearch', shown: '#dxShown',
+    empty: '.dxp-empty', foot: null, groupName: 'h3', chapterHeading: 'Body system',
+    takeOverSearch: true
+  });
+})();
+</script>
+
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AKI Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #f5f4f0;
+  --surface:   #ffffff;
+  --border:    #e2ddd6;
+  --text:      #1a1814;
+  --muted:     #6b6560;
+  --accent:    #c0392b;     /* AKI = urgent red accent */
+  --accent2:   #2c3e7a;    /* deep blue secondary */
+
+  --safety-bg: #fff5f4;
+  --safety-bdr:#f5c6c2;
+  --diag-bg:   #f4f6ff;
+  --diag-bdr:  #c5cef5;
+  --ref-bg:    #fdf8ee;
+  --ref-bdr:   #f0d99a;
+  --treat-bg:  #f4fbf6;
+  --treat-bdr: #b5e0c3;
+  --life-bg:   #f5f9f0;
+  --life-bdr:  #c0dea5;
+
+  --red:    #c0392b;
+  --purple: #7b2d8b;
+  --blue:   #1a6fa8;
+  --teal:   #0e7c6e;
+  --amber:  #b45309;
+  --green:  #2e7d32;
+  --grey:   #555;
+
+  --radius: 10px;
+  --shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14.5px;
+  line-height: 1.6;
+  padding: 0 0 60px;
+}
+
+/* ── Banner ── */
+.stem-banner {
+  background: linear-gradient(135deg, #1a1f3a 0%, #2c3e7a 60%, #c0392b 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 3px solid rgba(255,255,255,0.12);
+}
+.sb-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+  background: rgba(255,255,255,.15);
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+.stem-banner b { font-size: 1.15rem; font-weight: 700; display: block; letter-spacing: -.01em; }
+.stem-banner small { font-size: .8rem; opacity: .8; font-style: italic; }
+
+/* ── Progress ── */
+.alg-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  font-size: .82rem;
+  color: var(--muted);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.pcount { font-weight: 700; color: var(--text); min-width: 40px; }
+.pbar { flex: 1; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.pbar-fill { height: 100%; background: linear-gradient(90deg, var(--accent2), var(--accent)); border-radius: 99px; width: 0%; transition: width .4s ease; }
+.reset {
+  border: 1px solid var(--border); background: none; color: var(--muted);
+  font-size: .78rem; padding: 4px 12px; border-radius: 6px; cursor: pointer;
+  font-family: inherit;
+}
+.reset:hover { background: var(--border); }
+
+/* ── Flow Container ── */
+.alg-flow {
+  max-width: 780px;
+  margin: 28px auto 0;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Connector ── */
+.connector {
+  width: 3px;
+  height: 28px;
+  background: linear-gradient(180deg, var(--border), var(--border));
+  position: relative;
+}
+.connector::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--border);
+}
+
+/* ── Node ── */
+.node {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.node:hover { box-shadow: 0 4px 20px rgba(0,0,0,.12); }
+
+.node[data-type="SAFETY"]    { border-color: var(--safety-bdr); background: var(--safety-bg); }
+.node[data-type="DIAGNOSE"]  { border-color: var(--diag-bdr);   background: var(--diag-bg); }
+.node[data-type="REFER"]     { border-color: var(--ref-bdr);    background: var(--ref-bg); }
+.node[data-type="TREAT"]     { border-color: var(--treat-bdr);  background: var(--treat-bg); }
+.node[data-type="LIFESTYLE"] { border-color: var(--life-bdr);   background: var(--life-bg); }
+
+/* Node Header */
+.node-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid rgba(0,0,0,.07);
+}
+.node-num {
+  background: var(--text);
+  color: #fff;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: .85rem;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.node[data-type="SAFETY"]    .node-num { background: var(--red); }
+.node[data-type="DIAGNOSE"]  .node-num { background: var(--blue); }
+.node[data-type="REFER"]     .node-num { background: var(--amber); }
+.node[data-type="TREAT"]     .node-num { background: var(--teal); }
+.node[data-type="LIFESTYLE"] .node-num { background: var(--green); }
+
+.node-tag {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(0,0,0,.08);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.node-head h3 {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  flex: 1;
+}
+
+/* Checkbox tick */
+.node-tick {
+  padding: 6px 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+.node-tick label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: .8rem;
+  color: var(--muted);
+  user-select: none;
+}
+.node-tick input[type="checkbox"] { accent-color: var(--teal); width: 16px; height: 16px; cursor: pointer; }
+.tlbl { transition: color .2s; }
+.node-tick input:checked ~ .tlbl { color: var(--teal); font-weight: 600; }
+
+/* Node Body */
+.node-body {
+  padding: 4px 16px 14px;
+  font-size: .9rem;
+  color: #2a2825;
+  line-height: 1.65;
+}
+.node-body > p, .node-body > span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: .87rem;
+  font-style: italic;
+}
+
+/* ── KV Grid ── */
+.kv {
+  display: grid;
+  grid-template-columns: minmax(130px, 185px) 1fr;
+  gap: 1px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 8px;
+  background: var(--border);
+  font-size: .88rem;
+}
+.kv > div {
+  background: var(--surface);
+  padding: 8px 12px;
+  line-height: 1.55;
+}
+.kv > div:nth-child(odd) {
+  background: rgba(0,0,0,.025);
+  font-weight: 600;
+  color: var(--muted);
+  font-size: .82rem;
+  letter-spacing: .01em;
+}
+
+/* ── RF Grid ── */
+.rfgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+.rftile {
+  background: #fff;
+  border: 1.5px solid #f0c4c0;
+  border-left: 4px solid var(--red);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: .86rem;
+  line-height: 1.5;
+  color: #2a2825;
+}
+.rftile b { display: block; color: var(--red); margin-bottom: 2px; font-size: .88rem; }
+
+/* ── Branch ── */
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+.b-card {
+  background: var(--surface);
+  border: 1.5px solid var(--treat-bdr);
+  border-radius: 8px;
+  padding: 12px;
+  font-size: .86rem;
+}
+.b-cond {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.b-drug {
+  font-weight: 700;
+  font-size: .95rem;
+  color: var(--teal);
+  margin-bottom: 4px;
+}
+.b-note { color: #4a4845; font-size: .83rem; line-height: 1.45; }
+
+/* ── Ladder ── */
+.ladder {
+  margin-top: 8px;
+  border-left: 3px solid var(--teal);
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.rung {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  background: var(--surface);
+  border: 1px solid var(--treat-bdr);
+  border-radius: 0 8px 8px 0;
+  overflow: hidden;
+  font-size: .87rem;
+}
+.rn {
+  background: var(--teal);
+  color: #fff;
+  font-weight: 700;
+  font-size: .75rem;
+  padding: 8px 10px;
+  white-space: nowrap;
+  min-width: 64px;
+  text-align: center;
+  line-height: 1.4;
+}
+.rt {
+  padding: 8px 12px;
+  color: #2a2825;
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* ── Lifestyle Grid ── */
+.lsgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+.lstile {
+  background: #fff;
+  border: 1.5px solid var(--life-bdr);
+  border-left: 4px solid var(--green);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: .86rem;
+  line-height: 1.5;
+  color: #2a2825;
+}
+.lstile b { display: block; color: var(--green); margin-bottom: 2px; }
+
+/* ── Pills ── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 8px;
+  border-radius: 99px;
+  font-size: .73rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.pill-red    { background: #fde8e6; color: var(--red); }
+.pill-purple { background: #f0e6f8; color: var(--purple); }
+.pill-blue   { background: #e3f0fb; color: var(--blue); }
+.pill-teal   { background: #e0f5f2; color: var(--teal); }
+.pill-amber  { background: #fef3e0; color: var(--amber); }
+.pill-green  { background: #e8f5e9; color: var(--green); }
+.pill-grey   { background: #f0efee; color: var(--grey); }
+
+/* ── Why Row ── */
+.why-row {
+  border-top: 1px solid rgba(0,0,0,.07);
+  padding: 0 16px;
+}
+.why-btn {
+  background: none;
+  border: none;
+  color: var(--accent2);
+  font-size: .82rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: inherit;
+  transition: color .15s;
+}
+.why-btn:hover { color: var(--accent); }
+.why-btn .caret { transition: transform .2s; display: inline-block; }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.why-drawer {
+  display: none;
+  padding: 10px 0 14px;
+  font-size: .85rem;
+  line-height: 1.65;
+  color: #4a4845;
+  border-top: 1px dashed var(--border);
+}
+.why-drawer.open { display: block; }
+
+/* ── Footer ── */
+.alg-foot {
+  max-width: 780px;
+  margin: 32px auto 0;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: .82rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── Utility ── */
+.mt8 { margin-top: 8px; }
+.note {
+  font-size: .82rem;
+  color: var(--muted);
+  background: rgba(0,0,0,.03);
+  border-left: 3px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 0 6px 6px 0;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+@media (max-width: 520px) {
+  .rfgrid, .branch, .lsgrid { grid-template-columns: 1fr; }
+  .kv { grid-template-columns: 1fr; }
+  .kv > div:nth-child(odd) { padding-bottom: 2px; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<!-- ══════════════════════ BANNER ══════════════════════ -->
+<div class="stem-banner">
+  <div class="sb-icon">🩺</div>
+  <div>
+    <b>Acute Kidney Injury (AKI) — Detection & Management</b>
+    <small>UK primary care pathway · NICE AKI guideline (NG148) · Adult patients · 10-minute consultation</small>
+  </div>
+</div>
+
+<!-- ══════════════════════ PROGRESS ══════════════════════ -->
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- ══════════════════════ FLOW ══════════════════════ -->
+<!-- ════════ DIAGRAM (FLOWCHART) VIEW ════════ -->
+<div id="viewDiagram">
+  <div class="dg-legend">
+    <span>The full reasoning pathway — confirm AKI against baseline, screen the killers, work pre-renal / intra-renal / post-renal to a cause, stop nephrotoxins early and support the kidney, refer, then prevent recurrence and safety-net.</span>
+    <span class="legend">
+      <span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span>
+    </span>
+  </div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start">
+      <span class="lbl">Presentation · NICE NG148</span>
+      <span class="ttl">AKI confirmed</span>
+      <div class="body">Creatinine ≥26 µmol/L rise in 48h · or ≥1.5× baseline within 7 days · or urine output &lt;0.5 mL/kg/h for &gt;6h. Check old results to separate AKI from CKD.</div>
+    </div>
+    <div class="arrow"></div>
+    <div class="box dec">
+      <span class="lbl">Step 1 · Safety — screen the killers</span>
+      <span class="ttl">Any emergency feature?</span>
+      <div class="body">K⁺ ≥6.5 / ECG changes · fluid overload / pulmonary oedema · severe acidosis · anuria · obstruction with sepsis · GN picture (haematuria + systemic illness).</div>
+    </div>
+    <div class="split">
+      <div class="stem"></div>
+      <div class="bar" style="width:62%;"></div>
+      <div class="cols two">
+        <div class="col">
+          <div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div>
+          <div class="box stop"><span class="lbl">Stop · Admit</span><span class="ttl">Same-day / emergency admission</span><div class="body">Treat hyperkalaemia, fluid overload &amp; sepsis. Catheterise if obstructed. <span class="pill pill-red">Dialysis criteria → renal/ICU</span></div></div>
+        </div>
+        <div class="col">
+          <div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div>
+          <div class="box ix"><span class="lbl">Investigate</span><span class="ttl">Urinalysis + USS + bloods</span><div class="body">Dipstick (blood+protein → intrinsic/GN). Renal USS <b>within 24h</b> if obstruction suspected or no cause / not recovering.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="arrow"><span class="tag">Step 3 · where is the problem?</span></div>
+    <div class="split">
+      <div class="bar" style="width:84%;"></div>
+      <div class="cols">
+        <div class="col"><div class="blabel">Pre-renal (commonest)</div><div class="box ix"><span class="ttl">Poor perfusion</span><div class="body">Hypovolaemia, sepsis, cardiorenal; drugs — <b>NSAIDs, ACEi/ARB, diuretics</b>.</div></div></div>
+        <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Intra-renal</div><div class="box ix"><span class="ttl">Parenchymal</span><div class="body">ATN (ischaemia/toxins/contrast), <b>glomerulonephritis</b> (blood+protein+systemic — urgent), interstitial nephritis, <b>myeloma</b>, rhabdomyolysis.</div></div></div>
+        <div class="col"><div class="blabel">Post-renal</div><div class="box ix"><span class="ttl">Obstruction</span><div class="body">Palpable bladder, LUTS, single kidney, pelvic/prostate malignancy, stones. → urgent USS.</div></div></div>
+      </div>
+    </div>
+    <div class="arrow"><span class="tag">Step 7 · STOP nephrotoxins + support</span></div>
+    <div class="box act" style="max-width:660px;">
+      <span class="lbl">Step 7 · Action · Management</span>
+      <span class="ttl">Treat the cause, protect the kidney</span>
+      <div class="body"><ul>
+        <li><b>Stop nephrotoxins:</b> NSAIDs, ACEi/ARB, diuretics; hold metformin; review gentamicin/contrast.</li>
+        <li>Assess volume — fluids if hypovolaemic; treat sepsis; relieve obstruction.</li>
+        <li>Issue <b>sick-day rules</b>; monitor U&amp;E, K⁺ and fluid balance until recovering.</li>
+      </ul></div>
+    </div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;">
+      <span class="lbl">Refer</span>
+      <span class="ttl">Escalation</span>
+      <div class="body"><span class="pill pill-red">999 / same-day medical</span> hyperkalaemia, overload, acidosis, complications. <span class="pill pill-purple">Urgent nephrology</span> AKI stage 3, suspected GN/vasculitis, no recovery, dialysis need. <span class="pill pill-purple">Urology</span> obstruction. <span class="pill pill-purple">2WW</span> <span class="pill pill-grey">NICE NG12</span> if myeloma suspected (AKI + ↑Ca²⁺ + anaemia/bone pain, age 60+) → urgent FBC + protein electrophoresis/BJP.</div>
+    </div>
+    <div class="arrow"><span class="tag">Step 8 · prevention &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:660px;border-color:#a9c6b3;">
+      <span class="lbl">Step 8 · Prevention &amp; modifiable factors</span>
+      <span class="ttl">Avoid the next AKI</span>
+      <div class="body"><b>Issue documented sick-day rules</b> — hold ACEi/ARB, diuretics, SGLT2i, metformin and NSAIDs during D&amp;V, fever or dehydration. <b>Avoid OTC NSAIDs</b>; maintain hydration; review the long-term need for nephrotoxic drugs; ensure contrast precautions. Flag AKI history in the record for future prescribing and imaging.</div>
+    </div>
+    <div class="arrow"><span class="tag">Step 9 · monitoring &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:660px;background:#fff8f0;border-color:#e6c489;">
+      <span class="lbl">Step 9 · Monitoring &amp; safety-net</span>
+      <span class="ttl">Recheck &amp; when to return</span>
+      <div class="body"><b>Monitor U&amp;E + K⁺ + fluid balance</b> until creatinine recovers; <b>recheck before restarting</b> held nephrotoxins. Recheck renal function at 2–3 months — AKI raises future CKD risk (consider ACR + ongoing follow-up if not back to baseline). <b>Same-day / 999</b> if breathless, not passing urine, persistent vomiting, confusion or palpitations.</div>
+    </div>
+
+  </div><!-- /flow -->
+  </div><!-- /chart -->
+  <div class="band">
+    <div class="caution">⚠️ <b>Every AKI:</b> review the drug chart first — stopping NSAIDs, ACEi/ARB and diuretics is often the single most effective intervention. Re-check renal function before restarting, and arrange a renal USS within 24h whenever obstruction is possible.</div>
+  </div>
+</div><!-- /viewDiagram -->
+
+<div class="alg-flow" id="flow">
+
+  <!-- ═══════════ STEP 1 ═══════════ -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-head">
+      <div class="node-num">1</div>
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Identify life-threatening AKI immediately</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Screen for these before anything else. AKI can be rapidly fatal — hyperkalaemia and pulmonary oedema kill within hours.</span>
+      <div class="rfgrid">
+        <div class="rftile"><b>Hyperkalaemia ≥6.5 mmol/L</b> ECG changes (peaked T, wide QRS, sine wave), weakness, palpitations → <span class="pill pill-red">999</span> cardiac arrest risk</div>
+        <div class="rftile"><b>Oliguria / Anuria</b> Urine output &lt;0.5 ml/kg/hr for 6+ hours or complete anuria → <span class="pill pill-red">999</span> severe AKI</div>
+        <div class="rftile"><b>Pulmonary oedema</b> Breathlessness at rest, crackles, O₂ sats falling, pink frothy sputum → <span class="pill pill-red">999</span> fluid overload</div>
+        <div class="rftile"><b>Uraemic encephalopathy</b> Confusion, drowsiness, asterixis (flapping tremor), pericardial rub → <span class="pill pill-red">999</span> dialysis urgency</div>
+        <div class="rftile"><b>Sepsis + AKI</b> HR &gt;90, RR &gt;20, temp &gt;38 or &lt;36, BP &lt;90 systolic + rising creatinine → <span class="pill pill-red">999</span> septic AKI</div>
+        <div class="rftile"><b>Haemodynamic collapse</b> SBP &lt;90 mmHg, cold peripheries, reduced GCS → <span class="pill pill-red">999</span> shock state</div>
+        <div class="rftile"><b>Rhabdomyolysis</b> Dark cola-coloured urine, severe myalgia, CK markedly elevated → <span class="pill pill-red">999</span> myoglobin nephrotoxicity</div>
+        <div class="rftile"><b>Obstructive uropathy</b> Bilateral flank pain, bladder distension, unable to pass urine despite urge → <span class="pill pill-red">Same-day urology</span></div>
+        <div class="rftile"><b>Rapidly rising creatinine</b> Creatinine doubled within 24–48 h or rise &gt;354 µmol/L → <span class="pill pill-red">Same-day medical</span></div>
+        <div class="rftile"><b>NSAID/nephrotoxin exposure + AKI</b> Recent high-dose NSAID, contrast, aminoglycoside + rising creatinine, unwell → <span class="pill pill-red">Same-day</span></div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <b>AKI kills via three mechanisms:</b> (1) Hyperkalaemia causes fatal arrhythmias — K⁺ ≥6.5 mmol/L warrants emergency ECG and IV treatment. (2) Fluid overload causes pulmonary oedema — loss of fluid excretion rapidly accumulates. (3) Uraemia accumulates toxins causing pericarditis, encephalopathy and coagulopathy. NICE NG148 mandates same-day specialist input for AKI stage 2–3. Missing severe AKI in primary care is a leading cause of preventable death and a frequent source of medico-legal claims. The "sick day rules" campaign exists because GPs historically underpowered this safety screen.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════ STEP 2 ═══════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-head">
+      <div class="node-num">2</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Confirm AKI — KDIGO staging criteria</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>AKI is defined by KDIGO 2012 criteria. You need a baseline creatinine — use most recent value within 3 months if no acute result available.</span>
+      <div class="kv">
+        <div>AKI Stage 1</div>
+        <div>Creatinine rise <b>1.5–1.9× baseline</b> OR rise ≥26.5 µmol/L within 48 h <span class="pill pill-amber">Moderate concern</span></div>
+        <div>AKI Stage 2</div>
+        <div>Creatinine rise <b>2.0–2.9× baseline</b> <span class="pill pill-red">High concern — same-day review</span></div>
+        <div>AKI Stage 3</div>
+        <div>Creatinine rise <b>≥3× baseline</b> OR creatinine ≥354 µmol/L OR oliguria &gt;12h OR dialysis <span class="pill pill-red">Emergency — 999</span></div>
+        <div>Urine output</div>
+        <div>&lt;0.5 ml/kg/hr for ≥6h = Stage 1 | &lt;0.5 ml/kg/hr for ≥12h = Stage 2 | &lt;0.3 ml/kg/hr for ≥24h or anuria ≥12h = Stage 3</div>
+        <div>Baseline creatinine</div>
+        <div>Use most recent stable value within 3 months. If unavailable, use CKD-EPI to estimate baseline from known eGFR. If no prior results: treat lowest result as baseline</div>
+        <div>eGFR caveat</div>
+        <div>eGFR can lag in rapidly changing AKI — use absolute creatinine values for staging, not eGFR alone</div>
+        <div>AKI alert</div>
+        <div>NHS Spine AKI algorithm generates automatic GP alerts. Check your lab results carefully for flagged AKI notifications</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        KDIGO staging is the global standard adopted by NICE NG148. Stage 1 AKI detected early can often be managed in primary care with reversal of precipitants. Stage 2–3 require hospital assessment. The NHS Spine AKI algorithm automatically flags AKI to GPs — studies show it reduces delayed diagnosis by ~40%. eGFR underestimates severity in rapidly rising creatinine because the CKD-EPI formula assumes steady-state — always reference absolute creatinine values against the individual's baseline.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════ STEP 3 ═══════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+    <div class="node-head">
+      <div class="node-num">3</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Identify the Cause — Pre-renal, Intrinsic, Post-renal</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Classify cause rapidly — it directly drives management. History is the most powerful diagnostic tool here.</span>
+      <div class="kv">
+        <div>Pre-renal (70%)</div>
+        <div><b>Reduced renal perfusion</b> — dehydration, vomiting/diarrhoea, haemorrhage, sepsis, cardiac failure, hepatorenal, NSAID/ACEi/ARB-induced. <span class="pill pill-teal">Most reversible</span><br>Clue: concentrated urine, mucous membranes dry, low BP, tachycardia</div>
+        <div>Intrinsic renal (25%)</div>
+        <div><b>Tubular injury (ATN)</b> — ischaemia, nephrotoxins (aminoglycosides, contrast, myoglobin, NSAIDs)<br><b>Glomerular</b> — rapidly progressive GN (haematuria + proteinuria + casts)<br><b>Vascular</b> — renal artery stenosis, TTP/HUS<br><b>Interstitial</b> — AIN from drugs (penicillin, NSAIDs, PPIs) <span class="pill pill-amber">May need nephrology input</span></div>
+        <div>Post-renal (5%)</div>
+        <div><b>Obstruction</b> — BPH, pelvic malignancy, retroperitoneal fibrosis, stones, urethral stricture<br>Clue: poor urine stream, nocturia, enlarged bladder, bilateral hydronephrosis on USS <span class="pill pill-purple">2WW if malignancy suspected</span></div>
+        <div>Key history</div>
+        <div>Recent illness, fluid intake, medications (NSAIDs, ACEi/ARB, diuretics, antibiotics, contrast), prior CKD, urinary symptoms, systemic features (rash, arthralgia — vasculitis/AIN), BP medications</div>
+        <div>Sick day rules</div>
+        <div>Ask about recent dose changes or continuation of ACEI/ARB/diuretics/NSAIDs during acute illness — this is a common and preventable precipitant</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Identifying cause is the pivot of AKI management. Pre-renal AKI (the vast majority in primary care) resolves with fluid resuscitation and nephrotoxin removal. Intrinsic renal causes (e.g. rapidly progressive GN) require urgent immunosuppression — delay causes irreversible nephron loss. Post-renal obstruction requires decompression (catheter or nephrostomy) — the longer obstruction persists, the greater the permanent damage. <b>Sick day rules</b> are validated: temporary cessation of ACEi/ARB/diuretics/NSAIDs/metformin during acute dehydrating illness prevents 20–30% of AKI hospital admissions.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════ STEP 4 ═══════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="4">
+    <div class="node-head">
+      <div class="node-num">4</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Targeted Examination — Volume status and organ complications</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Examination guides fluid management and identifies life-threatening complications. Volume status is the critical assessment.</span>
+      <div class="kv">
+        <div>Vital signs</div>
+        <div>BP (both arms — discrepancy suggests vascular cause), HR, RR, temp, O₂ sats, GCS. <b>Postural BP drop &gt;20 mmHg</b> = volume depletion confirmed</div>
+        <div>Volume status</div>
+        <div><b>Hypovolaemia:</b> dry mucosae, reduced skin turgor, sunken eyes, tachycardia, low BP, reduced JVP<br><b>Hypervolaemia:</b> raised JVP, peripheral oedema, crackles, ascites, S3 gallop → fluid overload</div>
+        <div>Cardiovascular</div>
+        <div>JVP (elevated = fluid overload or cardiac failure), heart sounds (pericardial rub = uraemia — emergency), peripheral oedema</div>
+        <div>Respiratory</div>
+        <div>Basal crackles (pulmonary oedema), reduced air entry, pleural effusion. O₂ sats &lt;94% → same-day hospital</div>
+        <div>Abdomen</div>
+        <div>Palpable bladder (retention → catheterise), renal angle tenderness (pyelonephritis, obstruction), flank mass (tumour, PKD), liver size (hepatorenal syndrome)</div>
+        <div>Skin / rash</div>
+        <div>Purpuric rash → vasculitis/TTP; maculopapular rash → drug hypersensitivity (AIN); livedo reticularis → cholesterol emboli, vasculitis</div>
+        <div>Neurological</div>
+        <div>Asterixis (flapping tremor) = uraemia → emergency. Reduced GCS → 999. Check for Wernicke's if alcoholic/malnourished</div>
+        <div>Rectal exam</div>
+        <div>If post-renal obstruction suspected — enlarged, irregular prostate (BPH, malignancy)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Volume assessment fundamentally drives whether you give fluids (hypovolaemia → pre-renal AKI) or restrict them (fluid overload → intrinsic/post-renal AKI). Giving IV fluids to a fluid-overloaded patient causes pulmonary oedema. A pericardial rub indicates uraemic pericarditis — an absolute emergency requiring dialysis. Asterixis is a rapid bedside screen for uraemic encephalopathy. Examining for bladder distension takes 30 seconds and immediately identifies post-renal obstruction, which is fully reversible if decompressed quickly.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════ STEP 5 ═══════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+    <div class="node-head">
+      <div class="node-num">5</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — Bloods, urine, and imaging</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Investigations confirm severity, identify cause, and guide treatment. Prioritise by urgency.</span>
+      <div class="kv">
+        <div>Urgent bloods</div>
+        <div><span class="pill pill-blue">U&Es</span> creatinine + potassium — K⁺ ≥6.0 mmol/L needs ECG immediately<br><span class="pill pill-blue">FBC</span> — anaemia (chronic AKI/haemolysis), WCC (infection/vasculitis), platelets (TTP/HUS)<br><span class="pill pill-blue">Venous blood gas</span> — pH &lt;7.2 = metabolic acidosis → emergency</div>
+        <div>Additional bloods</div>
+        <div><span class="pill pill-blue">LFTs, albumin</span> — hepatorenal syndrome, nutritional status<br><span class="pill pill-blue">CRP, ESR, CK</span> — infection, inflammation, rhabdomyolysis<br><span class="pill pill-blue">Glucose, HbA1c</span> — diabetic nephropathy background<br><span class="pill pill-blue">LDH, blood film</span> — TTP/HUS if microangiopathic picture</div>
+        <div>Urine</div>
+        <div><span class="pill pill-blue">Dipstick</span> — blood + protein = glomerulonephritis; nitrites/leucocytes = UTI/pyelonephritis<br><span class="pill pill-blue">MSU MC&S</span> — if infection suspected<br><span class="pill pill-blue">ACR (albumin:creatinine ratio)</span> — quantify proteinuria once stable<br><span class="pill pill-blue">Urine Na+</span> — &lt;20 mmol/L = pre-renal (sodium conserved); &gt;40 = intrinsic (tubular damage)</div>
+        <div>ECG</div>
+        <div>Mandatory if K⁺ ≥6.0 mmol/L. Peaked T waves → widen QRS → sine wave → VF. Treat before blood results return if ECG is abnormal</div>
+        <div>Imaging</div>
+        <div><span class="pill pill-blue">Renal USS</span> — first-line if obstruction suspected (bilateral hydronephrosis), asymmetric kidneys (renovascular), or cause unclear. NOT needed in obvious pre-renal AKI. Arrange same-day if obstruction likely<br><span class="pill pill-blue">CXR</span> — if fluid overload or pulmonary cause suspected</div>
+        <div>Specialist tests</div>
+        <div><b>If intrinsic renal disease suspected (nephrology input):</b> ANCA, ANA, anti-GBM, complement, immunoglobulins, protein electrophoresis, hepatitis B/C serology, HIV, ASOT</div>
+        <div>Do NOT order</div>
+        <div>Routine renal biopsy in primary care. Renal biopsy if cause is obvious pre-renal or post-renal. Repeat creatinine in stable CKD without acute change</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Potassium and ECG are the most time-critical results — hyperkalaemia kills before renal failure does. Urine sodium helps differentiate pre-renal (kidneys conserving Na, UNa &lt;20) from intrinsic renal damage (tubules fail to reabsorb Na, UNa &gt;40). USS is essential if obstruction is in the differential — bilateral hydronephrosis confirms the diagnosis and mandates same-day urology referral. Autoimmune screen (ANCA, ANA, anti-GBM) is only relevant if there are features of glomerulonephritis — initiating this in primary care can save 24–48 hours before nephrology initiates immunosuppression.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════ STEP 6 ═══════════ -->
+  <div class="node" data-type="REFER" data-step="6">
+    <div class="node-head">
+      <div class="node-num">6</div>
+      <span class="node-tag">Refer</span>
+      <h3>Referral Criteria — Who needs hospital and how urgently</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Most AKI detected in primary care requires same-day assessment at minimum. Very few patients can be safely managed in the community.</span>
+      <div class="kv">
+        <div><span class="pill pill-red">999 Emergency</span></div>
+        <div>K⁺ ≥6.5 mmol/L OR ECG changes | Pulmonary oedema | GCS reduced / asterixis | SBP &lt;90 mmHg / septic shock | Creatinine ≥354 µmol/L or AKI stage 3 | Anuria | Uraemic pericarditis (pericardial rub)</div>
+        <div><span class="pill pill-red">Same-day hospital</span></div>
+        <div>AKI stage 2 (creatinine 2–3× baseline) | K⁺ 6.0–6.4 mmol/L | Oliguria &gt;6 hours | Cause unclear or intrinsic renal disease suspected | Unable to tolerate oral fluids | Significant comorbidity (cardiac failure, cirrhosis, diabetes, immunosuppressed) | Rapidly progressive AKI (doubling in 24–48h) | Suspected obstruction (arrange USS same-day)</div>
+        <div><span class="pill pill-amber">Same-day urology</span></div>
+        <div>Bilateral hydronephrosis on USS | Acute urinary retention (catheterise first) | Ureteric stone causing obstruction + AKI | Suspected malignant obstruction</div>
+        <div><span class="pill pill-purple">Nephrology 2WW/urgent</span></div>
+        <div>Haematuria + proteinuria + AKI (possible GN) | Suspected vasculitis or AIN | Rapidly declining eGFR without clear pre-renal cause | AKI superimposed on CKD stage 4–5 | Nephrotic syndrome</div>
+        <div><span class="pill pill-green">Primary care manageable</span></div>
+        <div>AKI Stage 1 only | Known cause (dehydration, D&V) | Well patient, able to drink | No comorbidity or medication concerns | K⁺ &lt;5.5 mmol/L | Close GP follow-up arranged (recheck U&Es in 48h)</div>
+        <div>Medication on admission</div>
+        <div>Advise A&E/ward to flag: ACEi, ARBs, diuretics, NSAIDs, metformin, lithium, aminoglycosides — all require dose adjustment or suspension in AKI</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        NICE NG148 explicitly states that AKI Stage 2–3 warrants hospital admission for IV fluid resuscitation, ECG monitoring, and specialist input. Only mild stage 1 AKI with a clear reversible cause and a well patient can be monitored in primary care — and even then, 48-hour review is mandatory. Nephrology input improves outcomes in immune-mediated AKI (early immunosuppression for GN reduces irreversible fibrosis). Post-renal obstruction: each hour of obstruction causes nephron loss — urology must be contacted same-day. A common GP error is watchful waiting with AKI when the threshold for referral has been crossed — this generates complaint and medicolegal risk.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════ STEP 7 ═══════════ -->
+  <div class="node" data-type="TREAT" data-step="7">
+    <div class="node-head">
+      <div class="node-num">7</div>
+      <span class="node-tag">Treat</span>
+      <h3>Treatment — Pharmacological management in primary care</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Primary care treatment is targeted at: (1) removing precipitants, (2) optimising fluid balance, (3) managing hyperkalaemia if mild, (4) adjusting nephrotoxic medications.</span>
+
+      <b style="display:block;margin:10px 0 6px;font-size:.9rem;color:var(--muted)">IMMEDIATE ACTIONS — Apply to all AKI in primary care</b>
+      <div class="kv">
+        <div>Stop nephrotoxins</div>
+        <div>HOLD immediately: NSAIDs, ACEi, ARBs, diuretics, metformin (lactic acidosis risk if AKI), lithium (toxic accumulation), gentamicin, vancomycin, trimethoprim. Document clearly in notes</div>
+        <div>Fluid challenge</div>
+        <div>Oral rehydration if tolerated — encourage 2–3L/day water. If unable to drink → IV fluids in hospital. Do NOT give fluids if fluid overloaded (crackles, elevated JVP)</div>
+        <div>Treat underlying cause</div>
+        <div>UTI/pyelonephritis: <b>co-amoxiclav 500/125 mg TDS</b> (adjust dose for severity) or <b>cefalexin 500 mg QDS</b>. Sepsis → 999. Vomiting → antiemetics (cyclizine 50 mg TDS)</div>
+      </div>
+
+      <b style="display:block;margin:14px 0 6px;font-size:.9rem;color:var(--muted)">HYPERKALAEMIA — Primary care ladder (K⁺ 5.5–6.4 mmol/L, no ECG changes)</b>
+      <div class="ladder">
+        <div class="rung">
+          <span class="rn">Step 1</span>
+          <span class="rt"><b>ECG immediately</b> — if peaked T waves or QRS widening: <span class="pill pill-red">999 now</span></span>
+        </div>
+        <div class="rung">
+          <span class="rn">Step 2</span>
+          <span class="rt"><b>Dietary advice</b> — low potassium diet: avoid bananas, oranges, potatoes, tomatoes, nuts, chocolate, salt substitutes (LoSalt). Achieves 0.3–0.5 mmol/L reduction</span>
+        </div>
+        <div class="rung">
+          <span class="rn">Step 3</span>
+          <span class="rt"><b>Patiromer</b> (Veltassa) 8.4 g OD (potassium binder) — for persistent K⁺ 5.1–6.4 in ambulatory patients. Specialist initiation usually required. OR <b>sodium zirconium cyclosilicate</b> (Lokelma) 10 g TDS for 48h then 5 g OD <span class="pill pill-amber">Both may need shared care</span></span>
+        </div>
+        <div class="rung">
+          <span class="rn">Step 4</span>
+          <span class="rt"><b>Arrange same-day repeat U&Es</b> after 24–48h. K⁺ ≥6.0 or failing to respond → <span class="pill pill-red">Same-day hospital</span></span>
+        </div>
+      </div>
+
+      <b style="display:block;margin:14px 0 6px;font-size:.9rem;color:var(--muted)">MEDICATION REVIEW — AKI-related dose adjustments for primary care management</b>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">Metformin</div>
+          <div class="b-drug">STOP if eGFR &lt;30</div>
+          <div class="b-note">Risk of lactic acidosis. Hold during AKI even if eGFR usually &gt;30. Restart only when creatinine stable and eGFR ≥30 for ≥3 months</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">ACEi / ARB</div>
+          <div class="b-drug">HOLD during acute illness</div>
+          <div class="b-note">Restart once creatinine stable. Acceptable rise ≤30% baseline — document pre-/post-AKI creatinine to guide restart</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Diuretics</div>
+          <div class="b-drug">HOLD during AKI</div>
+          <div class="b-note">Furosemide, spironolactone, thiazides — all worsen pre-renal AKI. Restart with caution post-AKI if still indicated</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">NSAIDs</div>
+          <div class="b-drug">STOP — use paracetamol instead</div>
+          <div class="b-note">NSAIDs constrict afferent arterioles, reducing GFR. Avoid indefinitely in CKD. Paracetamol 1g QDS is safe in AKI</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Lithium</div>
+          <div class="b-drug">HOLD + urgent level</div>
+          <div class="b-note">Lithium toxicity rapidly accumulates in AKI. Hold, check level, and review with psychiatry. Therapeutic range 0.6–1.0 — toxicity &gt;1.5</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">SGLT2i (gliflozins)</div>
+          <div class="b-drug">HOLD during AKI</div>
+          <div class="b-note">Dapagliflozin, empagliflozin etc. — hold if eGFR &lt;45 or acute illness. Restart once stable and eGFR recovered</div>
+        </div>
+      </div>
+
+      <div class="note mt8">📋 <b>Sick Day Rules card:</b> Give every patient with CKD or at-risk medications a written sick day rules card — hold ACEi/ARB/diuretics/NSAIDs/metformin if vomiting, diarrhoea, or any illness reducing fluid intake. NHS England prescribing guidance supports this.</div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Nephrotoxin removal is the most powerful intervention available in primary care — studies show 40–60% of community AKI resolves when precipitants are removed and fluid balance is restored. Metformin accumulates in AKI causing potentially fatal lactic acidosis — hold even in mild AKI. ACEi/ARB hold is supported by NICE NG148 with explicit restart criteria. Patiromer/sodium zirconium cyclosilicate are now preferred over calcium resonium for outpatient hyperkalaemia management (better tolerability, faster action). The sick day rules campaign has been estimated to prevent 40,000 AKI admissions per year in the UK if consistently applied.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════ STEP 8 ═══════════ -->
+  <div class="node" data-type="LIFESTYLE" data-step="8">
+    <div class="node-head">
+      <div class="node-num">8</div>
+      <span class="node-tag">Lifestyle</span>
+      <h3>Non-Pharmacological — Prevention and recovery optimisation</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Lifestyle interventions are primary prevention AND recovery tools. AKI survivors have 3× higher risk of CKD progression — these measures are protective.</span>
+      <div class="lsgrid">
+        <div class="lstile"><b>Hydration</b> Minimum 1.5–2L fluid daily (water preferred). Increase during hot weather, exercise, illness. Urine should be pale yellow. Dehydration is the most common precipitant of community AKI</div>
+        <div class="lstile"><b>Sick Day Rules — Education</b> Written card and verbal explanation: hold ACEi/ARB/diuretics/NSAIDs/metformin during any vomiting, diarrhoea, or illness reducing fluid intake. Restart when eating/drinking normally for 24–48h</div>
+        <div class="lstile"><b>NSAID avoidance</b> Use paracetamol instead. NSAIDs are responsible for ~10% of community AKI. Educate patient: avoid ibuprofen even OTC. <span class="pill pill-amber">Especially important with ACEi/ARB ("triple whammy" = NSAID + ACEi + diuretic)</span></div>
+        <div class="lstile"><b>Alcohol reduction</b> Alcohol causes dehydration and direct nephrotoxicity. Target &lt;14 units/week with alcohol-free days. Excessive alcohol is a significant AKI risk factor, particularly in hot weather</div>
+        <div class="lstile"><b>Smoking cessation</b> Smoking independently causes renal vasoconstriction and accelerates CKD progression. Post-AKI, smoking cessation reduces GFR decline by up to 50%. Refer to stop smoking service</div>
+        <div class="lstile"><b>Blood pressure control</b> Hypertension accelerates CKD progression post-AKI. Target BP &lt;130/80 mmHg in CKD with proteinuria (NICE CKD guideline). ACEi/ARB preferred once creatinine stable (reduce proteinuria 30–40%)</div>
+        <div class="lstile"><b>Blood sugar optimisation</b> In diabetic patients, poor glycaemic control drives hyperfiltration and nephron loss. Target HbA1c ≤53 mmol/mol (7%) — reduces progression from AKI to CKD</div>
+        <div class="lstile"><b>Low potassium diet (if hyperkalaemia)</b> Avoid: bananas, oranges, tomatoes, potatoes, leafy greens, nuts, chocolate, LoSalt/NoSalt. Dietary change alone can reduce K⁺ by 0.3–0.5 mmol/L. Refer to renal dietitian post-AKI if K⁺ remains elevated</div>
+        <div class="lstile"><b>Weight management</b> Obesity drives CKD progression and increases AKI risk via hypertension and metabolic syndrome. Every 5 kg weight loss reduces BP by approximately 4 mmHg. Target BMI &lt;30</div>
+        <div class="lstile"><b>Contrast media precautions</b> Pre-hydrate with 0.9% saline before any contrast CT/angiography (hospital to arrange). Alert radiology if eGFR &lt;60 — use lowest-osmolarity contrast, consider alternative imaging</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        AKI is not a single event — it is a risk marker. Patients who survive AKI have a 3× higher rate of CKD development, 2× higher rate of cardiovascular events, and significantly reduced life expectancy compared to matched controls (NICE NG148). Post-AKI GP care is therefore a major prevention opportunity. Sick day rules are the single most cost-effective primary prevention tool available in primary care. The "triple whammy" combination (NSAID + ACEi + diuretic) is responsible for a significant proportion of AKI deaths and is entirely preventable with patient education. Hydration advice is free and effective — RCTs show adequate hydration reduces recurrent AKI by 25%.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════ STEP 9 ═══════════ -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-head">
+      <div class="node-num">9</div>
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up, Monitoring & Safety-Netting</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Post-AKI monitoring is a NICE-mandated quality standard. Many patients are discharged from hospital without adequate follow-up — this is the GP's safety net.</span>
+      <div class="kv">
+        <div>48–72 hours</div>
+        <div>Repeat U&Es + FBC (for community-managed AKI Stage 1). Check creatinine trending down. If stable or improving: continue monitoring. If worsening → escalate to same-day hospital</div>
+        <div>1 week</div>
+        <div>Recheck U&Es. Confirm creatinine returning toward baseline. Review medication changes — consider restarting ACEi/ARB/diuretics if creatinine within 30% of pre-AKI baseline</div>
+        <div>3 months</div>
+        <div>Full AKI review: U&Es, eGFR, ACR, BP, medication reconciliation. Formally assess for CKD — if eGFR &lt;60 or ACR &gt;3 mg/mmol persists, diagnose CKD and add to CKD register</div>
+        <div>Annual review</div>
+        <div>If CKD confirmed post-AKI: annual eGFR, ACR, BP, FBC, bone profile, calcium, phosphate, PTH (if eGFR &lt;30). Refer nephrology if eGFR &lt;30 or rapidly declining</div>
+        <div>Medication restart</div>
+        <div>ACEi/ARB: restart when creatinine stable ≤7 days. Acceptable if creatinine &lt;30% above pre-AKI level. Metformin: restart when eGFR ≥30 and stable for ≥3 months. NSAIDs: avoid permanently if CKD persists</div>
+        <div>Hospital discharge</div>
+        <div>If patient had inpatient AKI: check discharge summary for AKI stage, cause, nephrotoxin changes, and follow-up instructions. Many discharges are incomplete — active GP review within 1 week is best practice (RCGP/NHS England joint guidance)</div>
+        <div>Monitoring parameters</div>
+        <div>eGFR trend, serum creatinine, potassium, bicarbonate (acidosis), haemoglobin (anaemia of CKD), BP, proteinuria (ACR)</div>
+      </div>
+
+      <b style="display:block;margin:12px 0 6px;font-size:.9rem;color:var(--red)">🔴 Safety-netting — Advise patient to call 999 / attend A&E if:</b>
+      <div class="rfgrid">
+        <div class="rftile"><b>Passing no urine</b> For 6+ hours despite drinking well → 999</div>
+        <div class="rftile"><b>Breathlessness at rest</b> New or worsening, especially at night → 999</div>
+        <div class="rftile"><b>Confusion or drowsiness</b> Any new confusion, not acting normally → 999</div>
+        <div class="rftile"><b>Severe weakness</b> Cannot stand, severe muscle pain → 999</div>
+        <div class="rftile"><b>Palpitations or chest pain</b> Could indicate hyperkalaemic arrhythmia → 999</div>
+        <div class="rftile"><b>Not improving or worsening</b> Despite stopping nephrotoxins and drinking well → Same-day GP call</div>
+      </div>
+
+      <div class="note mt8">📝 <b>NICE Quality Standard QS76:</b> AKI survivors should have a structured review within 3 months. Add READ code for AKI episode and CKD register if appropriate. Consider referral to renal dietitian, DSME programme (if diabetic), and BP optimisation clinic as applicable.</div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Post-AKI care is chronically under-resourced in UK primary care. NICE NG148 and the Taskforce on Kidney Health (2020) highlight that up to 30% of AKI survivors have no formal review within 3 months, missing opportunities to diagnose CKD, optimise BP, and prevent recurrence. An AKI episode is a significant event — 1-year mortality after hospitalised AKI is approximately 25–30%. The 3-month review detects persistent renal impairment, allows safe medication restart, and reduces the risk of a second AKI. Structured follow-up also has medico-legal importance: failing to review post-AKI and missing progression to CKD3–4 is a known complaint trigger. The 48-hour creatinine recheck in community AKI is the safety net that prevents missed deterioration.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /alg-flow -->
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG148 (Acute Kidney Injury: Prevention, Detection and Management, 2019), KDIGO AKI Clinical Practice Guideline 2012, NICE CG182 (Acute Kidney Injury), NHS England AKI Programme, RCGP Curriculum 2019 (Core topic: Renal and urology), Think Kidneys sick day rules guidance, NICE QS76 (Acute Kidney Injury Quality Standards). Drug doses per BNF 2024. Always adapt to individual patient context, local protocols, and clinical judgement. For medical emergencies, call 999.
+</div>
+
+<!-- ══════════════════════ JAVASCRIPT ══════════════════════ -->
+<script>
+  (function () {
+    const STORE_KEY = 'rgp.alg.aki.v1';
+    const flow      = document.getElementById('flow');
+    const pDone     = document.getElementById('pDone');
+    const pFill     = document.getElementById('pFill');
+    const pTotal    = document.getElementById('pTotal');
+    const resetBtn  = document.getElementById('resetBtn');
+
+    const checkboxes = flow.querySelectorAll('input[type="checkbox"]');
+    const total      = checkboxes.length;
+    pTotal.textContent = total;
+
+    /* Restore state */
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch (_) {}
+
+    checkboxes.forEach((cb, i) => {
+      if (saved[i]) cb.checked = true;
+      cb.addEventListener('change', () => { persist(); updateProgress(); });
+    });
+
+    function persist () {
+      const state = {};
+      checkboxes.forEach((cb, i) => { if (cb.checked) state[i] = true; });
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (_) {}
+    }
+
+    function updateProgress () {
+      const done = Array.from(checkboxes).filter(c => c.checked).length;
+      pDone.textContent = done;
+      pFill.style.width = total ? (done / total * 100) + '%' : '0%';
+    }
+
+    resetBtn.addEventListener('click', () => {
+      checkboxes.forEach(cb => { cb.checked = false; });
+      try { localStorage.removeItem(STORE_KEY); } catch (_) {}
+      updateProgress();
+    });
+
+    updateProgress();
+
+    /* Why drawers */
+    flow.querySelectorAll('.why-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        const drawer = btn.nextElementSibling;
+        drawer.classList.toggle('open', !expanded);
+      });
+    });
+  })();
+</script>
+
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

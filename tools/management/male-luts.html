@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Male LUTS — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Male LUTS management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🚹",
+  title:"Male LUTS",
+  stemTitle:"Male lower urinary tract symptoms — ongoing management",
+  stemSub:"Primary-care management of LUTS in men \u2014 characterising voiding vs storage symptoms, conservative measures, and drug therapy (alpha-blocker, 5-ARI, anticholinergic) \u2014 with the retention and cancer safety nets. NICE NG97 (LUTS) \u00b7 CKS 2026.",
+  guideline:"NICE NG97",
+  glance:[
+    {lbl:"Characterise", val:"Voiding vs storage", sub:"+ IPSS, chart"},
+    {lbl:"Voiding (BPE)", val:"Alpha-blocker", sub:"tamsulosin"},
+    {lbl:"Large prostate", val:"Add 5-ARI", sub:"finasteride"},
+    {lbl:"Storage / OAB", val:"Antimuscarinic", sub:"or mirabegron"},
+    {lbl:"Check", val:"PSA + creatinine", sub:"+ urine dip"},
+    {lbl:"Red flag", val:"Retention / haematuria", sub:"urgent"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Characterise the symptoms and assess",
+      blocks:[
+        {b:"kv", rows:[
+          ["Symptom type","<b>Voiding</b> (hesitancy, weak stream, terminal dribble \u2014 usually BPE) vs <b>storage</b> (frequency, urgency, nocturia \u2014 OAB)"],
+          ["Assess","IPSS + bother score, frequency-volume chart, DRE (prostate size/feel), examine for palpable bladder"],
+          ["Tests","Urine dipstick (infection/haematuria), U&amp;E/creatinine, PSA (after counselling)"],
+          ["Exclude","UTI, retention, bladder/prostate cancer, neurological cause, diabetes, medications"]
+        ]},
+        {b:"why", html:"The voiding-vs-storage split steers the whole plan: voiding symptoms (prostatic obstruction) respond to alpha-blockers \u00b1 5-ARIs, while storage/overactive-bladder symptoms need bladder training and antimuscarinics. A DRE, PSA discussion and renal function check anchor safe management and catch the things you must not miss \u2014 retention and cancer."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 first-line", title:"Conservative measures",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"💧 Fluid timing", html:"Adjust fluid intake; reduce evening fluids and caffeine/alcohol for nocturia."},
+          {t:"🚽 Bladder training", html:"For storage/urgency \u2014 scheduled voiding, urge suppression techniques."},
+          {t:"🔁 Double voiding", html:"For incomplete emptying / post-micturition dribble; urethral milking."},
+          {t:"💊 Review drugs", html:"Diuretics timing, drugs causing retention (anticholinergics, opioids)."},
+          {t:"⚖️ Lifestyle", html:"Weight, constipation management, treat contributing conditions."},
+          {t:"📋 Containment", html:"Pads/sheaths and reassurance while other measures take effect."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication", title:"By symptom pattern",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Voiding 1", title:"Alpha-blocker", when:"tamsulosin / alfuzosin",
+           html:"<b>Tamsulosin 400micrograms OD</b> (or alfuzosin 10mg OD, doxazosin) \u2014 first-line for bothersome voiding symptoms (BPE), rapid effect within days. Counsel on postural hypotension (first-dose; take at night) and intra-operative floppy iris syndrome (tell the ophthalmologist before cataract surgery)."},
+          {step:"Voiding 2", title:"Add a 5-alpha-reductase inhibitor", when:"enlarged prostate",
+           fromLabel:"prostate enlarged (e.g. >30 g) / high PSA",
+           html:"<b>Finasteride 5mg OD</b> or <b>dutasteride 500micrograms OD</b> \u2014 shrinks the prostate over 3\u20136 months, reduces retention/surgery risk (offer if prostate &gt;30g or PSA &gt;1.4). Combine with an alpha-blocker if both bothersome and enlarged (combination product: <b>dutasteride/tamsulosin = Combodart\u00ae</b>)."},
+          {step:"Storage", title:"Antimuscarinic or mirabegron", when:"overactive bladder symptoms",
+           fromLabel:"storage symptoms persisting after bladder training",
+           html:"<b>Solifenacin 5mg OD / tolterodine 2mg BD</b> (or <b>mirabegron 50mg OD</b> if anticholinergic side effects problematic) for urgency/frequency \u2014 only <b>once retention/significant residual excluded</b>. Can combine with an alpha-blocker for mixed symptoms."},
+          {step:"Nocturia", title:"Targeted options", when:"if dominant",
+           fromLabel:"nocturnal polyuria",
+           html:"Address fluid timing first; <b>desmopressin 50\u2013100micrograms nocte</b> for troublesome nocturnal polyuria \u2014 cautiously, <b>check Na\u207a at baseline, 3 days and 7 days</b> (hyponatraemia risk; avoid &gt;65y with cardiac/renal disease)."}
+        ]},
+        {b:"warn", html:"<b>Exclude retention before antimuscarinics</b> (can precipitate acute retention). 5-ARIs lower PSA by ~50% \u2014 <b>double the measured PSA</b> when interpreting. Finasteride is teratogenic (handling precautions)."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Symptoms, PSA and renal",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["IPSS / symptoms","Each review","Titrate; combine therapies if needed"],
+          ["5-ARI effect","After 3\u20136 months","Prostate shrinkage takes months; reassess"],
+          ["PSA","Per surveillance","Interpret with the 5-ARI correction; rise \u2192 reassess"],
+          ["Renal function / residual","If concern","Rising creatinine / large residual \u2192 refer (chronic retention)"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"4\u20136 weeks", title:"Alpha-blocker response", html:"Assess symptom relief and side effects; add 5-ARI if enlarged prostate."},
+          {n:"2", when:"3\u20136 months", title:"Combination review", html:"Reassess after 5-ARI has had time to work; review storage symptoms."},
+          {n:"3", when:"Annual", title:"Ongoing review", html:"IPSS, PSA per plan, renal function, medication review."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not improving? Re-check before escalating",
+      arrow:"\u2026if symptoms persist",
+      intro:"Confirm the symptom type and exclude retention/cancer before referral.",
+      checks:[
+        {b:"1 \u00b7 Retention", html:"Palpable bladder, large residual, rising creatinine \u2192 refer (chronic retention)."},
+        {b:"2 \u00b7 Right target", html:"Voiding treated as voiding, storage as storage?"},
+        {b:"3 \u00b7 Adherence/dose", html:"Adequate trial and titration of each agent?"},
+        {b:"4 \u00b7 Red flags", html:"Haematuria, abnormal DRE, rising PSA \u2192 suspected-cancer pathway."},
+        {b:"5 \u00b7 Refer", html:"Refractory bothersome symptoms \u2192 urology (surgical options)."}
+      ],
+      back:"Retention + cancer excluded, therapy optimised \u2192 refer urology"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Acute retention", html:"\u201cSudden inability to pass urine with a painful, full bladder \u2014 go to A&amp;E.\u201d"},
+          {t:"🩸 Haematuria", html:"\u201cVisible blood in the urine \u2014 always get it checked; we\u2019ll refer for tests.\u201d"},
+          {t:"😵 Postural drop", html:"\u201cAlpha-blockers can cause dizziness on standing, especially the first dose \u2014 take it at night and rise slowly.\u201d"},
+          {t:"⚠️ Worsening / systemic", html:"\u201cFevers, loin pain, or rapidly worsening symptoms \u2014 contact us.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer urology",
+      arrow:"urgent for retention/cancer; routine for refractory",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Acute urinary retention \u2192 same-day."},
+          {t:"Suspected cancer", html:"Abnormal/hard DRE, raised age-specific PSA, or visible haematuria \u2192 suspected-cancer pathway."},
+          {t:"Chronic retention / renal", html:"Large residual volume or impaired renal function."},
+          {t:"Refractory", html:"Bothersome LUTS not controlled medically \u2192 surgical assessment (e.g. TURP)."},
+          {t:"Complex", html:"Suspected neurological cause or recurrent infections/stones."}
+        ]},
+        {b:"say", html:"Most prostate-related urinary symptoms improve with simple measures and a tablet that relaxes the bladder outlet. We\u2019ll check there\u2019s nothing more serious, and if tablets don\u2019t do enough, the urology team can offer a procedure."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

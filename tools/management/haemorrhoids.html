@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haemorrhoids — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Haemorrhoids management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🩸",
+  title:"Haemorrhoids",
+  stemTitle:"Haemorrhoids — ongoing management",
+  stemSub:"Primary-care management of haemorrhoids \u2014 fibre and fluids to soften stool, short-term topical relief, and the essential rule of not attributing rectal bleeding to piles without excluding cancer. CKS \u00b7 2026.",
+  guideline:"NICE CKS",
+  glance:[
+    {lbl:"Core", val:"Fibre + fluids", sub:"soften stool, avoid straining"},
+    {lbl:"Topical", val:"Short-term only", sub:"\u00b1 local anaesthetic/steroid"},
+    {lbl:"Caution", val:"Don't assume piles", sub:"exclude cancer"},
+    {lbl:"Procedural", val:"Banding / sclerotherapy", sub:"refractory grade I\u2013III"},
+    {lbl:"Thrombosed", val:"Analgesia / excise", sub:"if <72 h, severe"},
+    {lbl:"Refer", val:"Red flags / refractory", sub:"2WW or colorectal"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm and exclude sinister bleeding",
+      blocks:[
+        {b:"kv", rows:[
+          ["Symptoms","Bright-red painless rectal bleeding (on paper/coating stool), itch, prolapse, discomfort"],
+          ["Examine","Inspection + DRE \u00b1 proctoscopy; grade internal haemorrhoids (I\u2013IV)"],
+          ["Don\u2019t assume","<b>Never attribute rectal bleeding to haemorrhoids without excluding colorectal cancer</b>, especially with red flags"],
+          ["Red flags","Change in bowel habit, weight loss, anaemia, age, FH, dark/mixed-in blood, mass"]
+        ]},
+        {b:"why", html:"Haemorrhoids are common and benign, but the cardinal error is <strong>attributing rectal bleeding to piles and missing colorectal cancer</strong>. Examine, and apply red-flag/2WW criteria before reassuring \u2014 then treatment is conservative, with procedures for those who don\u2019t settle."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 first-line", title:"Stool softening and habits",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🌾 Fibre + fluids", html:"Increase dietary fibre and fluids to keep stool soft \u2014 the foundation of treatment and prevention."},
+          {t:"🚽 Avoid straining", html:"Don\u2019t strain or sit long on the toilet; respond to the urge promptly."},
+          {t:"💊 Bulk laxative", html:"Add a bulk-forming laxative if fibre alone insufficient."},
+          {t:"🧼 Anal hygiene", html:"Gentle cleaning, avoid vigorous wiping; pat dry."},
+          {t:"⚖️ Weight & activity", html:"Healthy weight and activity; treat chronic constipation/cough."},
+          {t:"🛁 Sitz baths", html:"Warm baths can soothe symptoms."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication / procedures", title:"Symptom relief then procedures",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Short-term topical preparations", when:"symptom relief",
+           html:"Soothing/barrier creams; short courses of topical local anaesthetic or corticosteroid for pain/itch (limit duration \u2014 skin sensitisation/atrophy)."},
+          {step:"Step 2", title:"Outpatient procedures", when:"persistent grade I\u2013III",
+           fromLabel:"not settling with conservative measures",
+           html:"Rubber-band ligation (first-line procedure) or sclerotherapy \u2014 refer for these."},
+          {step:"Step 3", title:"Surgery", when:"large/grade IV/refractory",
+           fromLabel:"failed conservative + outpatient",
+           html:"Haemorrhoidectomy or stapled/HALO procedures \u2014 surgical referral."},
+          {step:"Acute", title:"Thrombosed external pile", when:"acute severe pain",
+           fromLabel:"acute presentation",
+           html:"Analgesia + conservative; consider surgical excision if presenting within ~72 h with severe pain."}
+        ]},
+        {b:"warn", html:"Limit topical steroid/anaesthetic to short courses. Conservative measures and stool softening underpin everything \u2014 procedures fail if straining/constipation continues."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Response and bleeding",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Symptoms / bleeding","Each review","Persisting/worsening \u2192 examine, consider procedure/refer"],
+          ["Red flags","Ongoing","New change in habit/weight loss/anaemia \u2192 investigate"],
+          ["Anaemia","If significant bleeding","Check FBC; iron if needed"],
+          ["Constipation","Ongoing","Keep stool soft \u2014 prevents recurrence"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"After conservative measures", title:"Review", html:"Assess response; ensure stool soft; topical relief if needed."},
+          {n:"2", when:"If persistent", title:"Procedure referral", html:"Refer for banding/sclerotherapy (grade I\u2013III) or surgery (grade IV/refractory)."},
+          {n:"3", when:"On any red flag", title:"Investigate", html:"Re-evaluate for colorectal pathology if symptoms change."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not settling? Re-check before referral",
+      arrow:"\u2026if symptoms persist",
+      intro:"Exclude sinister causes and confirm conservative measures before procedures.",
+      checks:[
+        {b:"1 \u00b7 Cancer excluded?", html:"Red flags / 2WW criteria reviewed; bleeding truly haemorrhoidal?"},
+        {b:"2 \u00b7 Stool soft?", html:"Fibre, fluids, laxative \u2014 straining stopped?"},
+        {b:"3 \u00b7 Grade", html:"Higher grades / prolapse may need procedures."},
+        {b:"4 \u00b7 Topical overuse", html:"Avoid prolonged steroid/anaesthetic creams."},
+        {b:"5 \u00b7 Refer", html:"Persistent grade I\u2013III \u2192 banding; grade IV/refractory \u2192 surgery."}
+      ],
+      back:"Cancer excluded, conservative measures optimised \u2192 refer for procedure/surgery"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Sinister bleeding", html:"\u201cBleeding mixed in with the stool or darker blood, a change in bowel habit, weight loss, or tiredness/pallor \u2014 come back; we\u2019ll investigate.\u201d"},
+          {t:"🩸 Heavy bleeding", html:"\u201cLarge or persistent bleeding, or feeling faint \u2014 seek urgent help.\u201d"},
+          {t:"😣 Severe pain", html:"\u201cSudden severe anal pain with a tense lump may be a clotted pile \u2014 contact us early; it\u2019s most treatable in the first days.\u201d"},
+          {t:"🌾 Keep stool soft", html:"\u201cFibre, fluids and not straining are the key to preventing them coming back.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"2WW for red flags; colorectal for refractory",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"🔴 Suspected cancer", html:"Rectal bleeding with red-flag features / meeting 2WW criteria \u2192 suspected-cancer pathway."},
+          {t:"Procedures", html:"Persistent grade I\u2013III \u2192 banding/sclerotherapy."},
+          {t:"Surgery", html:"Grade IV, large, or refractory haemorrhoids \u2192 colorectal surgery."},
+          {t:"Thrombosed", html:"Acute thrombosed external haemorrhoid &lt;72 h with severe pain \u2192 consider surgical excision."}
+        ]},
+        {b:"say", html:"This looks like haemorrhoids, and the mainstay is keeping stools soft with fibre and fluids so you don\u2019t strain, plus a short course of soothing cream. I\u2019ve checked there\u2019s nothing more serious \u2014 but if your bleeding pattern or bowel habit changes, tell me."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

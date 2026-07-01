@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tinnitus Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #f7f6f2;
+  --surface:   #ffffff;
+  --border:    #e2dfd6;
+  --text:      #1a1814;
+  --muted:     #6b6760;
+  --accent:    #1d4ed8;
+
+  --safety-bg: #fff1f2; --safety-bd: #fecdd3; --safety-tx: #9f1239;
+  --diag-bg:   #f0f9ff; --diag-bd:   #bae6fd; --diag-tx:   #0c4a6e;
+  --ref-bg:    #f5f3ff; --ref-bd:    #ddd6fe; --ref-tx:    #4c1d95;
+  --treat-bg:  #f0fdf4; --treat-bd:  #bbf7d0; --treat-tx:  #14532d;
+  --life-bg:   #fefce8; --life-bd:   #fde68a; --life-tx:   #713f12;
+
+  --pill-red:    #dc2626; --pill-purple: #7c3aed;
+  --pill-blue:   #2563eb; --pill-teal:   #0d9488;
+  --pill-amber:  #d97706; --pill-green:  #16a34a;
+  --pill-grey:   #6b7280;
+
+  --r: 10px;
+  --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.05);
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 20px 16px 60px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* ── BANNER ───────────────────────────────────────── */
+.stem-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+.sb-icon { font-size: 2rem; line-height: 1; }
+.stem-banner b { display: block; font-size: 1.05rem; font-weight: 700; }
+.stem-banner small { color: var(--muted); font-size: 0.82rem; }
+
+/* ── PROGRESS ─────────────────────────────────────── */
+.alg-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  box-shadow: var(--shadow);
+}
+.pcount { font-weight: 700; color: var(--text); margin-left: auto; }
+.pbar { flex: 1; height: 6px; background: var(--border); border-radius: 3px; min-width: 80px; }
+.pbar-fill { height: 100%; border-radius: 3px; background: var(--accent); width: 0%; transition: width .4s ease; }
+.reset {
+  background: none; border: 1px solid var(--border); border-radius: 6px;
+  padding: 4px 10px; font-size: 0.78rem; cursor: pointer; color: var(--muted);
+}
+.reset:hover { background: var(--border); }
+
+/* ── NODE ─────────────────────────────────────────── */
+.node {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.node:hover { box-shadow: 0 2px 8px rgba(0,0,0,.12), 0 8px 24px rgba(0,0,0,.07); }
+
+.node[data-type="SAFETY"]    { border-left: 4px solid #e11d48; }
+.node[data-type="DIAGNOSE"]  { border-left: 4px solid #0284c7; }
+.node[data-type="REFER"]     { border-left: 4px solid #7c3aed; }
+.node[data-type="TREAT"]     { border-left: 4px solid #16a34a; }
+.node[data-type="LIFESTYLE"] { border-left: 4px solid #d97706; }
+
+.node-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--border);
+}
+.node-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.85rem; flex-shrink: 0;
+  background: var(--border); color: var(--text);
+}
+.node-tag {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; padding: 2px 8px; border-radius: 4px;
+}
+.node[data-type="SAFETY"]    .node-tag { background: var(--safety-bg); color: var(--safety-tx); }
+.node[data-type="DIAGNOSE"]  .node-tag { background: var(--diag-bg);   color: var(--diag-tx);   }
+.node[data-type="REFER"]     .node-tag { background: var(--ref-bg);    color: var(--ref-tx);    }
+.node[data-type="TREAT"]     .node-tag { background: var(--treat-bg);  color: var(--treat-tx);  }
+.node[data-type="LIFESTYLE"] .node-tag { background: var(--life-bg);   color: var(--life-tx);   }
+
+.node-head h3 { font-size: 0.97rem; font-weight: 600; flex: 1; }
+.node-tick { padding: 12px 16px 0; }
+.node-tick label { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 0.82rem; color: var(--muted); user-select: none; }
+.node-tick input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; }
+.node.checked { opacity: .75; }
+.node.checked .node-num { background: #16a34a; color: #fff; }
+
+.node-body { padding: 12px 16px 14px; font-size: 0.875rem; }
+.node-body > p, .node-body > span { margin-bottom: 10px; display: block; }
+
+/* ── KV GRID ──────────────────────────────────────── */
+.kv {
+  display: grid;
+  grid-template-columns: minmax(120px,180px) 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 10px;
+  font-size: 0.845rem;
+}
+.kv > div:nth-child(odd) {
+  background: #f9f8f5;
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+.kv > div:nth-child(even) {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.kv > div:nth-last-child(-n+2) { border-bottom: none; }
+
+/* ── RED FLAG GRID ────────────────────────────────── */
+.rfgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+.rftile {
+  background: var(--safety-bg);
+  border: 1px solid var(--safety-bd);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.835rem;
+  line-height: 1.5;
+}
+.rftile b { display: block; color: var(--safety-tx); margin-bottom: 2px; }
+
+/* ── BRANCH ───────────────────────────────────────── */
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+.b-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.835rem;
+}
+.b-cond { background: #f0f9ff; color: #0c4a6e; padding: 7px 12px; font-weight: 600; font-size: 0.78rem; border-bottom: 1px solid var(--border); }
+.b-drug { padding: 7px 12px 4px; font-weight: 700; }
+.b-note { padding: 0 12px 8px; color: var(--muted); font-size: 0.8rem; }
+
+/* ── LADDER ───────────────────────────────────────── */
+.ladder { margin-top: 10px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.rung {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.845rem;
+}
+.rung:last-child { border-bottom: none; }
+.rung:nth-child(odd) { background: #fafaf8; }
+.rn { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); min-width: 52px; }
+.rt { flex: 1; }
+
+/* ── LIFESTYLE GRID ───────────────────────────────── */
+.lsgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+.lstile {
+  background: var(--life-bg);
+  border: 1px solid var(--life-bd);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.835rem;
+  line-height: 1.5;
+}
+.lstile b { display: block; color: var(--life-tx); margin-bottom: 2px; }
+
+/* ── PILLS ────────────────────────────────────────── */
+.pill {
+  display: inline-block; border-radius: 999px;
+  padding: 1px 8px; font-size: 0.72rem; font-weight: 700;
+  color: #fff; white-space: nowrap; vertical-align: middle;
+}
+.pill-red    { background: var(--pill-red); }
+.pill-purple { background: var(--pill-purple); }
+.pill-blue   { background: var(--pill-blue); }
+.pill-teal   { background: var(--pill-teal); }
+.pill-amber  { background: var(--pill-amber); }
+.pill-green  { background: var(--pill-green); }
+.pill-grey   { background: var(--pill-grey); }
+
+/* ── WHY DRAWER ───────────────────────────────────── */
+.why-row { border-top: 1px solid var(--border); }
+.why-btn {
+  width: 100%; text-align: left; background: none; border: none;
+  padding: 10px 16px; font-size: 0.82rem; font-weight: 600; cursor: pointer;
+  color: var(--muted); display: flex; align-items: center; gap: 6px;
+}
+.why-btn:hover { background: #f9f8f5; }
+.caret { transition: transform .25s; }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.why-drawer {
+  display: none; padding: 0 16px 14px;
+  font-size: 0.83rem; line-height: 1.65;
+  color: #4b4840;
+  font-family: 'Source Serif 4', serif;
+}
+.why-drawer.open { display: block; }
+
+/* ── CONNECTOR ────────────────────────────────────── */
+.connector {
+  width: 2px; height: 20px; background: var(--border);
+  margin: 0 auto;
+}
+
+/* ── FOOT ─────────────────────────────────────────── */
+.alg-foot {
+  margin-top: 24px; text-align: center;
+  font-size: 0.78rem; color: var(--muted);
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  background: var(--surface);
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">👂</div>
+  <div>
+    <b>Tinnitus — Assessment &amp; Management</b>
+    <small>UK primary care pathway for new and persistent tinnitus presentations in adults</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — most tinnitus is benign and bilateral, but unilateral, pulsatile or red-flag tinnitus needs investigation for serious causes. Classify, refer, manage, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Tinnitus</span><div class="body">Unilateral vs bilateral, pulsatile vs non-pulsatile, hearing loss, vertigo, neurological symptoms. Otoscopy + audiology.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — red-flag tinnitus (NG155)</span><span class="ttl">Red-flag tinnitus?</span><div class="body"><b>Unilateral / asymmetric</b> (vestibular schwannoma) · <b>pulsatile</b> (vascular — esp. synchronous with the pulse, ?glomus tumour) · with sudden hearing loss, focal neurology, or significant distress / suicidality. Examine ears for wax/infection and check cranial nerves.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Urgent / refer</span><div class="body">Unilateral/asymmetric → ENT + MRI. Pulsatile → vascular imaging. Sudden SNHL → emergency. Distress → mental health support.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination localise the cause.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · common causes</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Bilateral non-pulsatile</div><div class="box act"><span class="ttl">Commonest — no scan needed</span><div class="body">Symmetrical non-pulsatile tinnitus has a low chance of significant pathology and does <b>not</b> need an MRI. Manage any hearing loss (hearing aids only if hearing loss present); sound therapy, CBT; treat anxiety/depression.</div></div></div><div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Unilateral / asymmetric</div><div class="box ix"><span class="ttl">Investigate</span><div class="body">Acoustic neuroma → MRI; Ménière.</div></div></div><div class="col"><div class="blabel">Pulsatile</div><div class="box ix"><span class="ttl">Vascular</span><div class="body">Carotid/venous, glomus tumour, raised ICP (IIH) → imaging.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> tinnitus + sudden SNHL. <span class="pill pill-purple">ENT + MRI</span> unilateral/asymmetric or pulsatile tinnitus. <span class="pill pill-purple">Audiology / psychology</span> bilateral with distress.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · self-management &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Self-management &amp; modifiable factors</span><span class="ttl">Reduce intrusiveness</span><div class="body"><b>Sound enrichment</b> (background noise, sound generators), <b>hearing aids if hearing loss</b>, good sleep hygiene and stress management; <b>CBT</b> for distress. Reduce caffeine/alcohol if they worsen it; <b>review ototoxic drugs</b> (aspirin, NSAIDs, aminoglycosides, loop diuretics); <b>protect hearing</b> from loud noise. Treat coexisting anxiety/depression.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Reassure &amp; when to escalate</span><div class="body"><b>Reassure</b> that bilateral non-pulsatile tinnitus rarely signals serious disease and often habituates. <b>Refer urgently</b> if it becomes <b>unilateral/asymmetric or pulsatile</b>, or with new hearing loss/vertigo/neurology. <b>Same-day</b> for sudden hearing loss; signpost <b>mental-health support</b> for severe distress or suicidality.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Unilateral or pulsatile tinnitus is not ordinary tinnitus:</b> it warrants imaging to exclude an acoustic neuroma or a vascular cause.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- ═══════════════════════════════════════════════
+       STEP 1 — SAFETY: Red Flags
+  ═══════════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-head">
+      <div class="node-num">1</div>
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Exclude Serious Pathology First</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Screen for sinister causes before managing tinnitus symptomatically. Any red flag = same-day assessment or urgent referral.</span>
+      <div class="rfgrid">
+
+        <div class="rftile">
+          <b>Pulsatile / unilateral tinnitus</b>
+          Rhythmic, heartbeat-synchronous sound → <span class="pill pill-purple">2WW ENT</span> — exclude glomus tumour, AVM, carotid stenosis
+        </div>
+
+        <div class="rftile">
+          <b>Sudden sensorineural hearing loss (SSNHL)</b>
+          &gt;30 dB loss over 3 frequencies in &lt;72 h → <span class="pill pill-red">Same-day ENT</span> — steroids within 72 h improve outcomes
+        </div>
+
+        <div class="rftile">
+          <b>Unilateral tinnitus + asymmetric hearing loss</b>
+          Especially progressive or &gt;65 years → <span class="pill pill-purple">2WW ENT</span> — exclude acoustic neuroma (vestibular schwannoma)
+        </div>
+
+        <div class="rftile">
+          <b>Neurological symptoms</b>
+          Facial weakness, diplopia, dysphagia, cerebellar signs → <span class="pill pill-red">999 / Same-day neurology</span> — posterior fossa lesion, CPA tumour
+        </div>
+
+        <div class="rftile">
+          <b>Sudden onset with headache + vomiting</b>
+          Thunderclap pattern or meningism → <span class="pill pill-red">999</span> — SAH, meningitis
+        </div>
+
+        <div class="rftile">
+          <b>Objective tinnitus (audible to examiner)</b>
+          Heard with stethoscope → <span class="pill pill-purple">Urgent ENT</span> — vascular malformation, palatal myoclonus
+        </div>
+
+        <div class="rftile">
+          <b>Otoscopy: ear mass or granulation tissue</b>
+          Polyp, cholesteatoma flakes, bleeding from EAC → <span class="pill pill-purple">Urgent ENT</span> — exclude cholesteatoma, malignancy
+        </div>
+
+        <div class="rftile">
+          <b>Vertigo + drop attacks (Tumarkin's)</b>
+          Sudden falls without loss of consciousness → <span class="pill pill-purple">Urgent ENT / audiology</span> — advanced Ménière's disease
+        </div>
+
+        <div class="rftile">
+          <b>Otalgia disproportionate to otoscopy findings</b>
+          Ear pain without obvious cause + ipsilateral tinnitus → <span class="pill pill-purple">Urgent ENT</span> — malignant otitis externa, nasopharyngeal Ca
+        </div>
+
+        <div class="rftile">
+          <b>Child with tinnitus</b>
+          Any age &lt;16 → <span class="pill pill-purple">Urgent paediatric audiology</span> — exclude structural lesion, SNHL
+        </div>
+
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Tinnitus is usually benign but a small but important minority have serious underlying pathology. Acoustic neuromas (vestibular schwannomas) present with unilateral tinnitus and asymmetric hearing loss in up to 90% of cases — delayed diagnosis leads to larger tumours requiring more complex surgery. Pulsatile tinnitus has a vascular cause in approximately 28% of cases including paragangliomas, dural AVFs and carotid artery disease. SSNHL is an otological emergency; high-dose systemic steroids initiated within 72 hours significantly improve hearing recovery (NICE 2018, SIGN 130). Cholesteatoma causes progressive bone erosion and risks meningitis, facial nerve palsy and sigmoid sinus thrombosis if missed.
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       STEP 2 — DIAGNOSE: Characterise the Tinnitus
+  ═══════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-head">
+      <div class="node-num">2</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Characterise the Tinnitus — History &amp; Onset</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Systematic characterisation identifies aetiology and guides management. Use structured history to distinguish primary from secondary tinnitus.</span>
+      <div class="kv">
+        <div>Onset &amp; duration</div>
+        <div>Sudden vs gradual? Hours/days/months/years? Any precipitant: loud noise exposure, new medication, head trauma, ear infection, barotrauma?</div>
+
+        <div>Character</div>
+        <div>Ringing, buzzing, hissing, rushing, clicking, pulsing? Tonal vs broad-band? <b>Pulsatile = vascular work-up required</b></div>
+
+        <div>Laterality</div>
+        <div><b>Unilateral</b> (more sinister — 2WW ENT if new + hearing loss) vs <b>bilateral</b> (more likely systemic/noise-induced) vs central (in head)</div>
+
+        <div>Severity — THI</div>
+        <div>Use <b>Tinnitus Handicap Inventory (THI)</b>: 25-item questionnaire. Grade: 0–16 slight, 17–36 mild, 37–56 moderate, 57–76 severe, 77–100 catastrophic</div>
+
+        <div>Associated symptoms</div>
+        <div>Hearing loss? Vertigo/dizziness? Aural fullness? Otalgia? Hyperacusis? Headache? Neck pain?</div>
+
+        <div>Triggers / modifiers</div>
+        <div>Worse with stress/fatigue/caffeine? Jaw movement worsens → TMJ. Positional changes → vascular. Reduced by masking noise?</div>
+
+        <div>Medication review</div>
+        <div>Ototoxic drugs: <b>aminoglycosides, cisplatin, loop diuretics (high dose), quinine, NSAIDs (chronic), aspirin (&gt;3 g/day)</b></div>
+
+        <div>Noise exposure</div>
+        <div>Occupational (manufacturing, music), recreational (concerts, firearms, headphone use)? Duration and recency</div>
+
+        <div>Systemic history</div>
+        <div>Hypertension, anaemia, thyroid disease, diabetes, autoimmune conditions, otosclerosis family history</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        The Tinnitus Handicap Inventory (THI) is the validated primary outcome measure in UK tinnitus care (NICE guideline NG155, 2020). It predicts need for specialist input and guides therapy selection: mild THI responds to self-management; severe/catastrophic THI requires MDT input including psychology. Laterality is the single most discriminating feature — unilateral tinnitus with audiometric asymmetry of &gt;15 dB at any frequency warrants MRI IAMs to exclude acoustic neuroma. Medication review is high-yield: aspirin ototoxicity is dose-dependent and reversible on cessation; aminoglycosides cause permanent cochlear damage.
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       STEP 3 — DIAGNOSE: Classification / Aetiology
+  ═══════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+    <div class="node-head">
+      <div class="node-num">3</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Classify the Aetiology — Identify Treatable Causes</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Most tinnitus is idiopathic or noise-induced, but systematically exclude treatable causes before labelling as primary tinnitus.</span>
+      <div class="kv">
+        <div>Conductive causes</div>
+        <div><b>Impacted wax</b> (most common, treat in primary care), <b>otitis media with effusion</b>, otosclerosis, perforated TM, Eustachian tube dysfunction — all potentially reversible</div>
+
+        <div>Sensorineural — acquired</div>
+        <div><b>Noise-induced hearing loss</b> (NIHL) — most common SNHL cause globally. <b>Presbycusis</b> (age-related). Ototoxic drugs. Viral (post-COVID tinnitus increasingly recognised)</div>
+
+        <div>Sensorineural — disease</div>
+        <div><b>Ménière's disease</b>: episodic tinnitus + vertigo + aural fullness + fluctuating low-frequency hearing loss. <b>Acoustic neuroma</b>: unilateral progressive. <b>Autoimmune inner ear disease</b></div>
+
+        <div>Vascular / pulsatile</div>
+        <div>Benign intracranial hypertension (young overweight women), glomus tumour, carotid stenosis, AVM, high jugular bulb, anaemia — <b>all need urgent investigation</b></div>
+
+        <div>Somatic tinnitus</div>
+        <div>Modulated by jaw/neck movement → TMJ dysfunction or cervical spine pathology. Refer to dental/physiotherapy as appropriate</div>
+
+        <div>Central tinnitus</div>
+        <div>Post-acoustic trauma, central sensitisation. In-head tinnitus without peripheral cause. Associated with anxiety/depression in 60% — psychological input crucial</div>
+
+        <div>Medication-related</div>
+        <div>Review and trial withdrawal of offending agent if clinically safe. Document before/after THI score</div>
+
+        <div>Systemic</div>
+        <div>Hypertension, anaemia (high-output state → pulsatile), hypothyroidism, diabetes — treat underlying condition first</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Identifying a treatable cause changes the management pathway entirely. Wax removal alone resolves tinnitus in a significant proportion of primary care presentations. Ménière's disease requires specialist dietary management, diuretic therapy and potentially intratympanic injections. Benign intracranial hypertension (pseudotumour cerebri) causes pulsatile tinnitus synchronous with pulse and demands urgent ophthalmology assessment for papilloedema to prevent permanent visual loss. Classification into primary vs secondary tinnitus (NICE NG155 framework) ensures patients with reversible causes are not prematurely counselled that tinnitus is permanent.
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       STEP 4 — DIAGNOSE: Targeted Examination
+  ═══════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="4">
+    <div class="node-head">
+      <div class="node-num">4</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Targeted Examination — Structured Clinical Assessment</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>A focused 5-minute examination can identify or exclude most serious causes. Document findings carefully.</span>
+      <div class="kv">
+        <div>Otoscopy (bilateral)</div>
+        <div>Wax impaction (remove if present), TM perforation, retraction pockets, cholesteatoma (white pearly mass, epithelial debris), haemotympanum, OME (amber fluid, hair-line), granulation tissue, foreign body</div>
+
+        <div>Tuning fork tests</div>
+        <div><b>Rinne:</b> BC &gt; AC = conductive loss (Rinne negative). <b>Weber:</b> lateralises to affected ear (conductive) or away from affected ear (sensorineural). Helps interpret audiogram direction</div>
+
+        <div>Cranial nerve exam</div>
+        <div>CN V (corneal reflex, face sensation), CN VII (facial symmetry), CN VIII (hearing, nystagmus), CN IX/X/XI/XII — any deficits → urgent ENT/neurology</div>
+
+        <div>Auscultation over ear/neck</div>
+        <div>Listen with stethoscope over EAC, mastoid, neck. <b>Audible bruit = objective tinnitus</b> → urgent vascular/ENT referral</div>
+
+        <div>BP both arms</div>
+        <div>Hypertension associated with pulsatile tinnitus. Inter-arm difference &gt;15 mmHg → subclavian steal / aortic coarctation</div>
+
+        <div>Whisper test / free-field hearing</div>
+        <div>Conversational voice at 60 cm, whisper at 60 cm. If fails → audiometry needed. Documents asymmetry between ears</div>
+
+        <div>Neck / TMJ examination</div>
+        <div>Cervical ROM and tenderness (somatic tinnitus). TMJ click, pain on opening jaw, bite asymmetry → refer dental/maxfax</div>
+
+        <div>Fundoscopy (if pulsatile)</div>
+        <div>Papilloedema → raised ICP → same-day ophthalmology + neurology for BIH/SOL</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Otoscopy is the single highest-yield examination in primary care tinnitus — wax removal is the most commonly effective treatment. Auscultation for objective tinnitus is underperformed but crucial: a bruit indicates vascular pathology requiring imaging. Cranial nerve examination identifies CPA lesions before imaging is arranged. The combination of asymmetric tuning fork findings + unilateral tinnitus + any hearing asymmetry on whisper test mandates audiological assessment and MRI IAMs to exclude acoustic neuroma — this diagnosis is frequently delayed by 2–4 years in UK practice.
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       STEP 5 — DIAGNOSE: Investigations
+  ═══════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+    <div class="node-head">
+      <div class="node-num">5</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — Targeted, Not Reflexive</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Investigations should be guided by history and examination. Bilateral tinnitus with normal ears and no red flags rarely needs extensive work-up at initial presentation.</span>
+      <div class="kv">
+        <div>Pure tone audiogram <span class="pill pill-blue">First-line</span></div>
+        <div>Request via audiology for all new tinnitus patients. Documents baseline, identifies SNHL pattern, asymmetry. Essential before ENT referral. <b>Not available same-day in most GP settings — request urgently</b></div>
+
+        <div>Bloods — baseline</div>
+        <div><b>FBC</b> (anaemia, polycythaemia), <b>TFTs</b> (hypo/hyperthyroidism), <b>fasting glucose / HbA1c</b> (diabetes), <b>lipids</b> (cardiovascular risk in pulsatile), <b>ESR/CRP</b> (autoimmune, vasculitis)</div>
+
+        <div>BP measurement</div>
+        <div>Both arms, seated. Target &lt;140/90 (or &lt;130/80 if diabetic/renal). Treat hypertension — may directly reduce pulsatile tinnitus</div>
+
+        <div>MRI IAMs <span class="pill pill-purple">Specialist-ordered</span></div>
+        <div>Gold standard for acoustic neuroma. Ordered by ENT/audiology after asymmetric audiogram. <b>Do not request as GP without ENT input</b>. Gadolinium-enhanced MRI is definitive</div>
+
+        <div>CT temporal bones <span class="pill pill-purple">Specialist-ordered</span></div>
+        <div>Suspected cholesteatoma, otosclerosis, bony lesion. Ordered by ENT. NOT for soft tissue lesions</div>
+
+        <div>MRA / CT angiogram</div>
+        <div>Pulsatile tinnitus with bruit or vascular risk → arrange via vascular/ENT. Identifies carotid stenosis, AVM, glomus tumour</div>
+
+        <div>Tympanometry</div>
+        <div>Available in many GP surgeries. Type B = flat (OME, perforation). Type C = negative pressure (Eustachian dysfunction). Type A = normal</div>
+
+        <div>NOT routinely needed</div>
+        <div>Routine CT head (low yield without neurological signs), MRI without audiogram first, VEMP, ECoG — specialist tests only when directed</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Pure tone audiometry is the cornerstone investigation — it characterises hearing loss type and severity, identifies the audiometric notch of noise-induced hearing loss at 4 kHz, and documents inter-ear asymmetry. NICE NG155 (2020) recommends audiological assessment for all adults with new tinnitus. Thyroid function is worth checking as both hypothyroidism (slow-onset pulsatile due to cardiac output changes) and hyperthyroidism (high-output state) cause tinnitus that resolves with treatment. Ordering MRI IAMs in primary care without an audiogram is poor practice — the audiogram guides the need for and interpretation of imaging.
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       STEP 6 — REFER: Referral Criteria
+  ═══════════════════════════════════════════════ -->
+  <div class="node" data-type="REFER" data-step="6">
+    <div class="node-head">
+      <div class="node-num">6</div>
+      <span class="node-tag">Refer</span>
+      <h3>Referral — Who Needs Specialist Input &amp; When</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Most tinnitus (bilateral, symmetrical, without red flags) can be managed in primary care with audiology support. Use urgency criteria below.</span>
+      <div class="kv">
+        <div><span class="pill pill-red">999</span> Emergency</div>
+        <div>Sudden tinnitus + neurological deficit (facial droop, dysphagia, ataxia), thunderclap headache + tinnitus, acute SSNHL (&gt;30 dB in &lt;72 h) — same-day ENT or acute medical</div>
+
+        <div><span class="pill pill-red">Same-day ENT</span></div>
+        <div>Acute SSNHL (must start oral prednisolone 1 mg/kg/day max 60 mg while awaiting ENT). Otorrhoea + suspected cholesteatoma</div>
+
+        <div><span class="pill pill-purple">2WW ENT</span></div>
+        <div>Unilateral pulsatile tinnitus (any age). Unilateral tinnitus + asymmetric audiogram. Tinnitus + unexplained otalgia. Head and neck cancer suspicion</div>
+
+        <div><span class="pill pill-purple">Urgent ENT (&lt;4 wks)</span></div>
+        <div>Objective tinnitus (audible on auscultation). Tinnitus + new facial nerve weakness. Failed conservative management 3 months + worsening THI. Suspected BIH (papilloedema)</div>
+
+        <div>Routine ENT / Audiology</div>
+        <div>Bilateral symmetrical tinnitus + significant SNHL on audiogram. THI severe/catastrophic not improving with primary care management. Request audiogram first</div>
+
+        <div>NHS audiology (direct)</div>
+        <div>Many areas accept direct GP referral for tinnitus assessment + hearing aid assessment without ENT. Check local pathway. <b>Most appropriate first step</b> for bilateral tinnitus</div>
+
+        <div>Psychological therapies</div>
+        <div>THI moderate–severe + significant distress → refer to IAPT/tinnitus-specific CBT. Tinnitus-related CBT shown to reduce THI by 8–10 points (NNT ~3). Also refer if comorbid depression/anxiety</div>
+
+        <div>Dental / maxfac</div>
+        <div>Suspected TMJ dysfunction (jaw-modulated tinnitus, click, bite abnormality) → dental assessment. Occlusal splint may help</div>
+
+        <div>Vascular surgery</div>
+        <div>Carotid bruit + pulsatile tinnitus → carotid duplex, vascular surgery input if significant stenosis</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Direct audiology referral is the most efficient pathway for uncomplicated tinnitus in most NHS areas — it provides audiometry, hearing aid fitting (masking effect reduces perceived tinnitus severity), and tinnitus counselling. ENT referral is appropriate when pathology may require medical or surgical intervention. The British Tinnitus Association (BTA) and NICE NG155 both recommend CBT as the most evidence-based psychological intervention — it improves quality of life and tinnitus distress even when the tinnitus itself does not change in loudness. Early psychological referral for high THI scores prevents chronic distress and sick leave.
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       STEP 7 — TREAT: Drug Ladder / Management
+  ═══════════════════════════════════════════════ -->
+  <div class="node" data-type="TREAT" data-step="7">
+    <div class="node-head">
+      <div class="node-num">7</div>
+      <span class="node-tag">Treat</span>
+      <h3>Treatment — Stepwise Management Approach</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span><b>Important:</b> There is no NICE-approved pharmacological cure for primary tinnitus. Management is multimodal. Treat underlying causes first. Drug therapy is for comorbidities (sleep, anxiety, depression), not tinnitus itself.</span>
+
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">Acute SSNHL (emergency only)</div>
+          <div class="b-drug">Prednisolone <span class="pill pill-teal">Systemic steroid</span></div>
+          <div class="b-note">1 mg/kg/day (max 60 mg) orally for 7 days, taper over 7 days. Start same-day while awaiting ENT. Improves hearing recovery — evidence for tinnitus improvement less robust but standard of care</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Tinnitus + depression / anxiety</div>
+          <div class="b-drug">SSRI / SNRI <span class="pill pill-teal">Antidepressant</span></div>
+          <div class="b-note">Treat comorbid depression/anxiety vigorously — these amplify tinnitus distress. Sertraline 50 mg OD (titrate to 100–200 mg) or escitalopram 10 mg OD. <b>Not for tinnitus itself</b></div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Tinnitus-related insomnia</div>
+          <div class="b-drug">Short-term hypnotic or melatonin <span class="pill pill-teal">Sleep</span></div>
+          <div class="b-note">Melatonin 2 mg modified-release (if &gt;55 yrs — licensed). Zopiclone 7.5 mg OD for max 2–4 weeks only. Sleep hygiene first-line. <b>Chronic benzodiazepines contraindicated — worsen long-term outcomes</b></div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Ménière's disease (confirmed)</div>
+          <div class="b-drug">Betahistine <span class="pill pill-teal">Histamine analogue</span></div>
+          <div class="b-note">Betahistine 16 mg TDS (titrate to 24 mg TDS if tolerated). Evidence modest but NICE-accepted for vestibular symptoms. Low side-effect burden. Trial for minimum 3 months</div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; font-weight:600; font-size:0.85rem; color:var(--muted);">Sound-Based &amp; Psychological Therapies — First-Line for Primary Tinnitus</div>
+
+      <div class="ladder">
+        <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Education &amp; reassurance</b> — explain mechanism, reinforce that tinnitus is rarely sinister, set realistic expectations. BTA leaflets. Average 6-week natural improvement in new tinnitus</span></div>
+        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Sound enrichment</b> — avoid silence. Background radio/TV, fan noise, nature sounds. Silence makes tinnitus louder by contrast. Free apps: ReSound Relief, Resound Tinnitus Relief, BTA Sound Oasis</span></div>
+        <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Hearing aids</b> (if SNHL present) — amplification of ambient sound reduces tinnitus contrast effect. Available via NHS audiology. Improves tinnitus in ~50% of patients with hearing loss</span></div>
+        <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Tinnitus Retraining Therapy (TRT)</b> — structured sound therapy + counselling delivered by audiologist. Reduces THI by ~15 points on average. 12–18 month programme. Available via ENT/audiology</span></div>
+        <div class="rung"><span class="rn">Step 5</span><span class="rt"><b>CBT for tinnitus</b> — NICE-recommended psychological therapy. Online (RNID iCBT programme, SilenceRx) or face-to-face via IAPT. Reduces tinnitus-related distress, improves quality of life even without loudness reduction. NNT ≈ 3 for meaningful THI improvement</span></div>
+        <div class="rung"><span class="rn">Step 6</span><span class="rt"><b>Mindfulness-based stress reduction (MBSR)</b> — 8-week structured programme. Evidence-base growing. Reduces emotional reactivity to tinnitus. Can be self-directed or via IAPT/psychology. MBSR apps: Headspace, Calm</span></div>
+        <div class="rung"><span class="rn">NOT recommended</span><span class="rt"><b>Avoid:</b> Ginkgo biloba (no evidence above placebo — NICE NG155 2020), acupuncture (insufficient evidence), carbamazepine (evidence poor, significant side effects), hyperbaric oxygen (investigational only)</span></div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        NICE NG155 (2020) explicitly states no pharmacological treatment has sufficient evidence to be recommended for primary tinnitus. Ginkgo biloba, widely used in Europe, was shown to be no better than placebo in multiple RCTs. CBT has the strongest evidence base (Cochrane review 2020, 28 RCTs): it does not reduce tinnitus loudness but significantly reduces tinnitus-related distress, depression, anxiety and quality-of-life impact. Sound enrichment works through habituation — the auditory cortex adapts faster when contrast with tinnitus is reduced. Betahistine's role in Ménière's remains controversial (INVEST trial, 2016) but it is widely used and has a good safety profile. The key clinical message: tinnitus management is about reducing distress, not eliminating the sound.
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       STEP 8 — LIFESTYLE: Non-Pharmacological
+  ═══════════════════════════════════════════════ -->
+  <div class="node" data-type="LIFESTYLE" data-step="8">
+    <div class="node-head">
+      <div class="node-num">8</div>
+      <span class="node-tag">Lifestyle</span>
+      <h3>Lifestyle Modifications — Evidence-Based Interventions</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Lifestyle changes are primary treatment, not optional extras. Address each domain at every review. Frame these as active management tools.</span>
+      <div class="lsgrid">
+
+        <div class="lstile">
+          <b>Noise protection</b>
+          Wear hearing protection (≥26 dB SNR ear defenders) in noisy environments (&gt;85 dB). Limit headphone use — no more than 60% max volume for 60 minutes/day (WHO 60/60 rule). Prevents NIHL progression
+        </div>
+
+        <div class="lstile">
+          <b>Avoid silence</b>
+          Maintain low-level background sound at all times, especially at night. Free tinnitus sound apps: ReSound Relief, Resound Tinnitus Relief. Fan, running water, or radio can be used. Reduces the contrast effect that amplifies perceived tinnitus
+        </div>
+
+        <div class="lstile">
+          <b>Caffeine reduction</b>
+          Limit to &lt;200 mg/day (approx 2 cups coffee). Trial caffeine abstinence for 4–6 weeks — some patients report 20–30% loudness reduction. Caffeine increases sympathetic arousal which worsens tinnitus perception
+        </div>
+
+        <div class="lstile">
+          <b>Alcohol reduction</b>
+          Excessive alcohol dilates cochlear blood vessels, alters endolymph production. UK Chief Medical Officer limit: ≤14 units/week. Particularly relevant in Ménière's disease — low-salt, low-alcohol diet reduces episode frequency
+        </div>
+
+        <div class="lstile">
+          <b>Stress management</b>
+          Stress is the strongest modifiable amplifier of tinnitus distress. Structured relaxation: diaphragmatic breathing (4-7-8 technique), progressive muscle relaxation, yoga. Refer to IAPT if stress is primary driver. Reduces sympathetic nervous system hyperactivity
+        </div>
+
+        <div class="lstile">
+          <b>Sleep hygiene</b>
+          Consistent bed/wake times, cool dark room, avoid screens 1 hour pre-bed. Tinnitus is loudest when trying to sleep — use sound enrichment at bedside. CBT-I (Cognitive Behavioural Therapy for Insomnia) more effective than hypnotics long-term
+        </div>
+
+        <div class="lstile">
+          <b>Physical activity</b>
+          150 min moderate aerobic exercise per week (NHS guidelines). Exercise improves cochlear blood flow, reduces anxiety/depression, and improves sleep — all of which reduce tinnitus distress. Swimming and cycling are particularly low-risk for noise exposure
+        </div>
+
+        <div class="lstile">
+          <b>Salt restriction (Ménière's only)</b>
+          Target &lt;1.5 g sodium/day (equivalent to &lt;3.75 g salt). Reduces endolymph volume fluctuations. Reduces episode frequency in confirmed Ménière's. Read food labels — processed foods are the main sodium source
+        </div>
+
+        <div class="lstile">
+          <b>Smoking cessation</b>
+          Smoking causes cochlear vasoconstriction and accelerates NIHL progression. Refer to NHS Stop Smoking Service. Nicotine replacement therapy (NRT) does not worsen tinnitus. Smoking cessation improves overall cardiovascular health reducing vascular tinnitus
+        </div>
+
+        <div class="lstile">
+          <b>Digital self-management</b>
+          BTA (British Tinnitus Association) website and helpline: 0800 018 0527. NHS online tinnitus guide. Apps: Oto (tinnitus CBT app, NHS-endorsed in some regions). Encourage self-monitoring with THI at home every 4–8 weeks
+        </div>
+
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        The neurophysiological model of tinnitus (Jastreboff 1990, basis of TRT) shows that emotional reaction and sympathetic nervous system activation are the primary drivers of tinnitus distress — not the loudness of the sound itself. Most people with tinnitus habituate naturally within 6–18 months if they receive good lifestyle advice and avoid behaviours that perpetuate hypervigilance. Caffeine and alcohol produce measurable changes in cochlear blood flow. Sound enrichment is the most universally effective immediate strategy: the auditory cortex decreases its attention to tinnitus when provided with competing stimuli. Physical exercise improves cochlear blood supply and reduces the amygdala reactivity that underlies tinnitus distress.
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       STEP 9 — SAFETY: Follow-Up & Monitoring
+  ═══════════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-head">
+      <div class="node-num">9</div>
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up &amp; Safety-Netting — When to Review &amp; Escalate</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Most tinnitus improves with time and support. Set clear review plan. Always safety-net for new red flags. Document THI at each review to track trajectory.</span>
+      <div class="kv">
+        <div>2–4 weeks</div>
+        <div>Review new presentations. Confirm ototoxic medication stopped/changed if applicable. Check audiology referral sent. Repeat THI — if worsening despite initial advice → escalate</div>
+
+        <div>6–8 weeks</div>
+        <div>Audiogram result review. If audiogram shows SNHL → ensure ENT/audiology referral made. THI reassessment. Review sleep and mood — initiate antidepressant if indicated</div>
+
+        <div>3 months</div>
+        <div>Full review of symptom trajectory. THI score comparison. If stable/improving → reinforce self-management. If THI still moderate–severe → confirm psychological referral active, chase audiology appointment</div>
+
+        <div>6 months</div>
+        <div>Long-term monitoring visit. Reassess blood pressure, medication list for new ototoxins. Review need for ongoing audiology/psychology input. Consider discharge to self-management if THI improving and stable</div>
+
+        <div>Annual</div>
+        <div>Patients with SNHL or Ménière's: annual audiological review via audiology. Reassess cardiovascular risk factors (BP, lipids, glucose). Review hearing aid function if fitted</div>
+
+        <div><span class="pill pill-red">999 immediately</span></div>
+        <div>New neurological deficit (facial palsy, diplopia, ataxia, dysphagia), thunderclap headache, sudden onset of bilateral severe tinnitus with deafness</div>
+
+        <div><span class="pill pill-red">Same-day GP / 111</span></div>
+        <div>Acute new unilateral hearing loss (SSNHL — start steroids). Sudden worsening of pre-existing tinnitus with new symptoms. Otorrhoea from ear with known cholesteatoma. New onset of pulsatile quality in previously steady tinnitus</div>
+
+        <div><span class="pill pill-amber">Return if</span></div>
+        <div>Tinnitus character changes (e.g., steady → pulsatile). New lateralisation of previously bilateral tinnitus. New associated dizziness/vertigo. THI score increasing despite management. Concerns about mental health / suicidal ideation related to tinnitus distress</div>
+
+        <div>Mental health monitoring</div>
+        <div>Screen for depression/suicidality at each visit in high THI patients. PHQ-9 and GAD-7 at baseline and 3 months. Tinnitus-related suicidality is rare but documented — take seriously. Refer urgently to IAPT or mental health crisis if needed</div>
+
+        <div>Medication monitoring</div>
+        <div>Betahistine: no routine blood monitoring required. SSRIs: review at 2 and 6 weeks. Prednisolone (acute): blood glucose monitoring in diabetics; BP monitoring; GI protection with PPI if &gt;1 week course</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        The natural history of tinnitus is favourable in the majority: 80% of patients show meaningful improvement in tinnitus-related distress within 12–18 months with appropriate support. However, a subset (~10–15%) develop chronic, severe tinnitus with significant quality-of-life impact. Regular THI monitoring detects this trajectory early and allows timely specialist input. Mental health vigilance is essential: depression and anxiety are 2–3× more common in tinnitus patients than the general population; severe tinnitus-related psychological distress occasionally presents with suicidal ideation, particularly in professionals facing career impact from hearing loss. New pulsatile quality or lateralisation of tinnitus after initial assessment should always prompt re-evaluation — new vascular or intracranial pathology can present this way.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG155 Tinnitus (2020) · NICE CKS Tinnitus (2023) · British Tinnitus Association Guidelines · SIGN 130 Hearing loss · BSA Guidelines for Audiological Management of Adult Tinnitus. Always adapt to individual patient context, local pathways, and current guidelines.
+</div>
+
+<script>
+(function () {
+  const STORE_KEY = 'rgp.alg.tinnitus.v1';
+  const totalSteps = 9;
+
+  // Load state
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch (e) {}
+
+  const nodes = document.querySelectorAll('.node[data-step]');
+
+  function updateProgress() {
+    let done = 0;
+    nodes.forEach(n => { if (n.classList.contains('checked')) done++; });
+    document.getElementById('pDone').textContent = done;
+    document.getElementById('pTotal').textContent = totalSteps;
+    document.getElementById('pFill').style.width = (done / totalSteps * 100) + '%';
+  }
+
+  function saveState() {
+    const state = {};
+    nodes.forEach(n => { state[n.dataset.step] = n.classList.contains('checked'); });
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  // Init checkboxes
+  nodes.forEach(node => {
+    const step = node.dataset.step;
+    const cb = node.querySelector('input[type=checkbox]');
+    if (!cb) return;
+
+    if (saved[step]) {
+      node.classList.add('checked');
+      cb.checked = true;
+    }
+
+    cb.addEventListener('change', () => {
+      node.classList.toggle('checked', cb.checked);
+      updateProgress();
+      saveState();
+    });
+  });
+
+  // Why drawers
+  document.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.nextElementSibling.classList.toggle('open', !expanded);
+    });
+  });
+
+  // Reset
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    if (!confirm('Reset all checkboxes?')) return;
+    nodes.forEach(node => {
+      node.classList.remove('checked');
+      const cb = node.querySelector('input[type=checkbox]');
+      if (cb) cb.checked = false;
+    });
+    try { localStorage.removeItem(STORE_KEY); } catch (e) {}
+    updateProgress();
+  });
+
+  updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

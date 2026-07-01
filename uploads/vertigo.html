@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vertigo · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="mode-both" id="bodyEl">
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">VT</div>
+      <div><div class="tb-title">Vertigo · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE CKS Vertigo 2022 / BPPV Clinical Guidelines</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">79%</span><span class="ns-lbl">Dix-Hallpike sensitivity for BPPV</span></div>
+    <div class="ns-item"><span class="ns-val">90 sec</span><span class="ns-lbl">Hold time at each Epley position</span></div>
+    <div class="ns-item"><span class="ns-val">85%</span><span class="ns-lbl">BPPV resolution rate with single Epley</span></div>
+    <div class="ns-item"><span class="ns-val">1 week</span><span class="ns-lbl">Vestibular neuritis acute phase duration</span></div>
+    <div class="ns-item"><span class="ns-val">20–12 hrs</span><span class="ns-lbl">Menière's attack duration (episodic)</span></div>
+    <div class="ns-item"><span class="ns-val">HINTS</span><span class="ns-lbl">Head Impulse·Nystagmus·Test of Skew</span></div>
+    <div class="ns-item"><span class="ns-val">4 weeks</span><span class="ns-lbl">DVLA off driving — acute disabling vertigo</span></div>
+    <div class="ns-item"><span class="ns-val">3 canals</span><span class="ns-lbl">Posterior canal BPPV = 90% of cases</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Acute Vertigo in a Middle-Aged Adult</div>
+  <div class="stem-title">A 57-year-old woman presents with sudden-onset vertigo and vomiting — differentiate BPPV, vestibular neuritis, and posterior circulation stroke</div>
+  <div class="stem-text">"Mrs Helen Okafor, 57, a secondary school teacher. She presents with sudden-onset severe rotational vertigo that started this morning when she rolled over in bed. The room is spinning. She has vomited twice. She finds it very difficult to stand or walk. No headache. No hearing loss. No diplopia or dysphagia. No weakness or numbness. Her vascular risk factors: hypertension (amlodipine 10 mg OD, ramipril 5 mg OD), BMI 32, non-smoker, drinks 12 units alcohol per week. The vertigo is there at rest but dramatically worse when she moves her head."</div>
+  <div class="stem-note">The sudden onset on head movement (rolling over in bed) with positional worsening strongly suggests BPPV. However, the severity of her presentation and her vascular risk factors (hypertension, obesity) mean a posterior circulation stroke must be actively excluded — not assumed absent. The HINTS exam (Head Impulse test, Nystagmus type, Test of Skew) is the primary clinical tool for distinguishing peripheral from central vertigo at the bedside, and is more sensitive than MRI in the first 48 hours of posterior fossa stroke.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — BPPV (Classic)</strong> Vertigo with position change (rolling over, looking up), brief (&lt;1 min), Dix-Hallpike positive (torsional upbeat nystagmus, fatigues, latency 2–5 sec). Normal HINTS. Epley manoeuvre in clinic.</div>
+    <div class="stem-variant"><strong>Scenario B — Vestibular Neuritis</strong> Sustained vertigo for days following a viral illness, worse with movement, no hearing loss, HINTS: normal head impulse test (actually abnormal — catch-up saccade present = peripheral), direction-fixed nystagmus, no skew. Prochlorperazine + prednisolone + vestibular rehabilitation.</div>
+    <div class="stem-variant"><strong>Scenario C — Posterior Circulation Stroke (AICA/PICA)</strong> Acute vertigo + new headache, diplopia, dysarthria, facial numbness, ipsilateral limb ataxia, or contralateral limb weakness. HINTS: normal head impulse (no catch-up saccade), direction-changing nystagmus, skew deviation present. 999 immediately — stroke pathway.</div>
+    <div class="stem-variant"><strong>Scenario D — Menière's Disease</strong> Episodic vertigo lasting 20 minutes to 12 hours, associated ipsilateral SNHL (fluctuating), tinnitus, aural fullness. Attacks spontaneous, not positional. ENT referral; betahistine; salt restriction; diuretic.</div>
+    <div class="stem-variant"><strong>Scenario E — Drug-Induced Vertigo</strong> New medication (aminoglycosides, loop diuretics, antiepileptics, antihypertensives causing postural hypotension) temporally correlated with onset. Medication review first; stop culprit; reassess.</div>
+    <div class="stem-variant"><strong>Key variables</strong> Was onset positional or spontaneous? Duration of each episode (seconds = BPPV; days = vestibular neuritis; 20 min–12 hrs = Menière's). HINTS exam result. Associated neurological symptoms (headache, diplopia, dysarthria, weakness). Hearing change. Vascular risk factor profile.</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History Taking — Open Question First · Targeted Questions · ICE · Psychosocial Context</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro">The history in vertigo is dominated by two questions: <strong>What is the character of the dizziness?</strong> (true rotational vertigo vs presyncope vs disequilibrium — these have completely different differentials) and <strong>What is the temporal pattern?</strong> (episodic brief = BPPV; episodic moderate = Menière's; sustained days = vestibular neuritis; acute constant = posterior fossa stroke). The neurological red flag screen must be completed before any positional testing is performed.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 Consultation opener</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"That sounds really frightening and I can imagine it's quite distressing — before I ask you anything specific, can you describe exactly what this dizziness is like? Is the room spinning, or is it more of a lightheaded or off-balance feeling?"</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Distinguishing true rotational vertigo from presyncope or disequilibrium at the opening is the most important single question in any dizziness presentation — the diagnosis flows directly from the answer.</div>
+    </div>
+    <div class="sub-divider">1A — Characterise the vertigo: type, temporal pattern, triggers</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question to ask</th><th style="width:42%">Why it matters clinically</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"Can you describe what the dizziness is like — is the room spinning around you, or is it more of a lightheaded or unsteady feeling?"</em></td>
+            <td class="why">The type of dizziness is the single most important discriminating factor. True rotational vertigo (room or self spinning) = vestibular cause (BPPV, vestibular neuritis, Menière's, central). Presyncope (lightheaded, grey-out) = cardiovascular cause. Disequilibrium (unsteady without spinning) = cerebellar, proprioceptive, or medication-related. Multisensory dizziness in older adults is a separate category.<span class="why-sub">Never conflate "dizziness" across these categories. The examiner expects you to establish the type of dizziness before making any diagnosis or performing any positional testing.</span></td>
+            <td><span class="chg chg-ddx">Diagnoses</span><span class="chg chg-urgent">Risk</span></td>
+          </tr>
+          <tr>
+            <td class="q">Is it related to head position?<em>"Does the spinning happen when you change position — rolling over in bed, looking up, bending down?"</em></td>
+            <td class="why">Positional triggering is the hallmark of BPPV — otoliths displaced into the semicircular canals respond to gravity with each position change. Vertigo that is purely positional, brief (&lt;1 minute), and reproducible is highly likely to be BPPV. Vertigo present at rest regardless of position suggests a different mechanism (vestibular neuritis, central pathology).<span class="why-sub">The specific movement that triggers BPPV: rolling over in bed is the most common trigger (especially rolling toward the affected ear). Looking up (top-shelf vertigo) = posterior canal BPPV affecting both ears on upward gaze.</span></td>
+            <td><span class="chg chg-ddx">BPPV vs other</span></td>
+          </tr>
+          <tr>
+            <td class="q">How long does each episode last?<em>"When the vertigo comes on, how long does it last — seconds, minutes, hours, or does it stay all day?"</em></td>
+            <td class="why">Duration is one of the most diagnostically useful single features: Seconds (&lt;1 minute) = BPPV (otolith settling in canal). 20 minutes–12 hours = Menière's disease (endolymphatic hydrops). Days (continuous, improving over 1–3 weeks) = vestibular neuritis. Constant from onset = central pathology (posterior circulation stroke) or acute labyrinthitis.<span class="why-sub">A patient who says "the room has been spinning continuously for 3 days" has vestibular neuritis or a central cause — not BPPV. This duration question alone narrows the differential dramatically.</span></td>
+            <td><span class="chg chg-ddx">DDx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Neurological red flags — screen first<em>"Any headache when the vertigo started? Any double vision, slurred speech, difficulty swallowing? Any weakness or numbness in your face, arm, or leg?"</em></td>
+            <td class="why">This is the critical safety question — the most dangerous diagnosis in vertigo is posterior circulation stroke/TIA. Key red flags: new headache at onset (SAH/posterior fossa haemorrhage), diplopia, dysarthria, dysphagia, facial numbness, limb ataxia or weakness, or sudden onset vertigo in a patient with high vascular risk. Any of these = 999 immediately.<span class="why-sub">The HINTS exam (bedside examination) is more sensitive for posterior fossa stroke than MRI in the first 48 hours — a critical caveat that every GP should know. A normal HINTS in the right hands is more reassuring than a normal MRI in acute vertigo.</span></td>
+            <td><span class="chg chg-999">Emergency if positive</span><span class="chg chg-ddx">Central vs peripheral</span></td>
+          </tr>
+          <tr>
+            <td class="q">Associated hearing change or tinnitus?<em>"Have you noticed any change in your hearing, or any ringing in your ears, since the vertigo started?"</em></td>
+            <td class="why">Vertigo + ipsilateral SNHL + tinnitus = Menière's disease (or AICA territory stroke — the anterior inferior cerebellar artery supplies both the labyrinth and the cerebellum). Vertigo without hearing change = vestibular neuritis (8th nerve dysfunction without cochlear involvement) or BPPV. Acute vestibular syndrome with sudden hearing loss = AICA infarct until excluded.<span class="why-sub">Sudden hearing loss + severe vertigo = AICA stroke until proven otherwise by MRI. Do not diagnose labyrinthitis without excluding a posterior fossa infarct in this presentation.</span></td>
+            <td><span class="chg chg-ddx">Menière's vs VN vs AICA</span><span class="chg chg-999">If acute hearing loss + vertigo</span></td>
+          </tr>
+          <tr>
+            <td class="q">Recent viral illness?<em>"Have you had a cold, flu, or ear infection in the 1–3 weeks before this started?"</em></td>
+            <td class="why">Vestibular neuritis classically follows a viral upper respiratory tract infection by 1–3 weeks — the virus (most commonly herpes simplex type 1 reactivation) infects the vestibular nerve causing acute unilateral vestibular deafferentation. In the context of post-viral onset, sustained vertigo lasting days is reassuring as vestibular neuritis (peripheral) rather than a stroke.<span class="why-sub">Vestibular neuritis produces the most severe acute vertigo of any peripheral cause — the severity of the vertigo alone does not distinguish it from a central lesion. The HINTS exam is still needed.</span></td>
+            <td><span class="chg chg-ddx">Vestibular neuritis</span><span class="chg chg-rx">Prednisolone</span></td>
+          </tr>
+          <tr>
+            <td class="q">Vascular risk factors?<em>"Do you have high blood pressure, diabetes, or have you had a stroke or heart attack before?"</em></td>
+            <td class="why">High vascular risk (hypertension, diabetes, AF, IHD, previous stroke) raises the pre-test probability of a posterior circulation stroke as the cause of acute vertigo — even if the history sounds peripheral. HINTS exam becomes even more important in high-risk patients. A "normal" positional vertigo history in a 70-year-old with AF still requires a thorough central exclusion.<span class="why-sub">In this stem: Mrs Okafor has hypertension, obesity, and is 57 — her vascular risk is not trivial. The HINTS exam is mandatory before reassuring her.</span></td>
+            <td><span class="chg chg-ddx">Stroke risk</span><span class="chg chg-urgent">Risk stratification</span></td>
+          </tr>
+          <tr>
+            <td class="q">Medication review<em>"Have any new medications been started recently? Do you take any tablets that can affect balance or blood pressure?"</em></td>
+            <td class="why">Many medications cause dizziness or vertigo: antihypertensives (postural hypotension), antiepileptics (phenytoin, carbamazepine — cerebellar toxicity), aminoglycosides (vestibulotoxic), loop diuretics at high doses, benzodiazepines (impair vestibular compensation), antipsychotics. Review the drug list before attributing vertigo to a primary vestibular cause.<span class="why-sub">In this patient: amlodipine at 10 mg can cause orthostatic hypotension — check lying/standing BP before diagnosing BPPV.</span></td>
+            <td><span class="chg chg-ddx">Drug-induced</span><span class="chg chg-rx">Stop culprit</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — posterior circulation stroke must be excluded first</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">New headache at onset of vertigo</td><td class="rf-why">Sudden onset severe headache with vertigo = posterior fossa haemorrhage (cerebellar bleed) or SAH. Even a mild new headache at the onset of acute vertigo in a hypertensive patient requires CT head urgently. "The worst headache of my life" = SAH pathway immediately.</td><td><span class="rf-action rfa-999">CT head + 999</span></td></tr>
+          <tr><td class="rf-flag">Diplopia, dysarthria, or dysphagia</td><td class="rf-why">Brainstem involvement — diplopia (ocular nerve nuclei), dysarthria (corticobulbar tracts), dysphagia (vagal and hypoglossal nuclei). Any of these alongside vertigo = posterior circulation stroke until proven by DWI-MRI. 999 immediately — stroke pathway regardless of how mild the symptoms appear.</td><td><span class="rf-action rfa-999">999 — stroke pathway</span></td></tr>
+          <tr><td class="rf-flag">Limb weakness or ataxia</td><td class="rf-why">Ipsilateral limb ataxia = cerebellar involvement (PICA territory infarct). Contralateral limb weakness = brainstem or corticospinal tract involvement. Either alongside vertigo = posterior circulation stroke. A patient who cannot walk and attributes this to vertigo — perform HINTS and activate stroke pathway.</td><td><span class="rf-action rfa-999">999 — stroke pathway</span></td></tr>
+          <tr><td class="rf-flag">HINTS exam suggesting central pathology</td><td class="rf-why">HINTS (Head Impulse test, Nystagmus type, Test of Skew) is the bedside examination that differentiates peripheral from central vertigo in acute vestibular syndrome. Central HINTS = normal head impulse (no catch-up saccade) + direction-changing nystagmus + vertical skew deviation → posterior fossa lesion until disproven by MRI.</td><td><span class="rf-action rfa-999">999 or urgent same-day MRI</span></td></tr>
+          <tr><td class="rf-flag">Facial numbness or weakness</td><td class="rf-why">Facial nerve or trigeminal involvement alongside vertigo localises the lesion to the posterior fossa. Lateral medullary syndrome (Wallenberg): vertigo + ipsilateral facial numbness + contralateral body pain/temperature loss + ipsilateral Horner's syndrome — classic posterior circulation stroke syndrome.</td><td><span class="rf-action rfa-999">999 — stroke pathway</span></td></tr>
+          <tr><td class="rf-flag">Sudden hearing loss + severe vertigo</td><td class="rf-why">Sudden combined cochlear and vestibular loss = AICA territory infarct (anterior inferior cerebellar artery supplies both the labyrinth and cerebellum). This is a stroke and not labyrinthitis until MRI proves otherwise. 999 immediately.</td><td><span class="rf-action rfa-999">999 — AICA stroke pathway</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1D — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i">
+        <div class="ice-label">💭 Ideas</div>
+        <div class="ice-phrase">"What do you think might be causing this — do you have any thoughts about what's happening?"</div>
+        <div class="ice-why">Many patients present convinced they have had a stroke — particularly those with vascular risk factors. Others are certain it is "inner ear." Understanding their model allows the GP to position the examination and explanation appropriately — confirming or addressing the model before explaining the actual diagnosis.</div>
+      </div>
+      <div class="ice-card ice-c">
+        <div class="ice-label">😟 Concerns</div>
+        <div class="ice-phrase">"I can imagine this is quite frightening — is there something specific you've been worried this might be?"</div>
+        <div class="ice-why">The dominant fear in acute severe vertigo is stroke — particularly in middle-aged and older adults with known cardiovascular risk factors. Naming this concern directly ("Are you worried this might be a stroke?") and then explaining the examination and its findings gives the patient the specific reassurance they need rather than generic "everything is fine."</div>
+      </div>
+      <div class="ice-card ice-e">
+        <div class="ice-label">🎯 Expectations</div>
+        <div class="ice-phrase">"What were you hoping we might be able to do about this today?"</div>
+        <div class="ice-why">Many patients with acute vertigo expect an MRI brain scan. Understanding this expectation allows the GP to explain why the HINTS bedside examination is more sensitive than MRI in the first 48 hours of acute vestibular syndrome — a counterintuitive but evidence-based and confidence-building explanation.</div>
+      </div>
+    </div>
+    <div class="sub-divider">1E — Psychosocial context</div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>😰 Fear and Acute Distress</h5><p>Acute severe rotational vertigo is one of the most distressing symptoms a patient can experience — the inability to stand, persistent vomiting, and the sensation of the world spinning are terrifying, particularly when they have occurred suddenly without warning. Acknowledging this experience empathetically before beginning the clinical assessment significantly improves patient cooperation and comfort.</p><span class="ps-phrase">"I can see this is really frightening — vertigo can be incredibly disabling. I'm going to examine you carefully to understand what's causing it and what we can do."</span></div>
+      <div class="ps-card"><h5>🚗 Driving — Acute Safety Restriction</h5><p>Acute disabling vertigo requires a driving restriction until fully resolved — DVLA guidelines recommend at least 4 weeks off driving after acute disabling vertigo (Group 1 car licence). This must be addressed at the initial consultation, particularly for a school teacher who may drive to work. The restriction is safety-based and time-limited, not permanent.</p><span class="ps-phrase">"I need to mention that it wouldn't be safe to drive while you're experiencing this level of vertigo — and formally, the DVLA requires at least 4 weeks off driving after acute disabling vertigo. Let's make sure we keep this under review."</span></div>
+      <div class="ps-card"><h5>💼 Work and Daily Function</h5><p>Vestibular neuritis and BPPV can severely impact a teacher's ability to stand at the front of a classroom, write on a board, or move around the school environment. A fit note may be needed for the acute phase. Understanding what the patient does at work allows appropriate advice — the Epley manoeuvre can be performed the same day, potentially resolving BPPV and enabling rapid return to function.</p><span class="ps-phrase">"Given your job, I understand how disabling this must feel. The good news is that if this is the most common type of inner-ear vertigo, there's a very effective treatment we can do right here today that works quickly for most people."</span></div>
+      <div class="ps-card"><h5>😔 Chronic Vertigo and Anxiety</h5><p>Patients who have had recurrent vertigo attacks (as in Menière's disease or BPPV) develop anticipatory anxiety about future episodes, often restricting their lives — avoiding situations where vertigo might occur, stopping exercise, and withdrawing from social activities. Vestibular rehabilitation explicitly targets this avoidance behaviour alongside physical reconditioning of the vestibular system.</p><span class="ps-phrase">"Some people find that after vertigo episodes, they start avoiding movement because they're frightened it will bring it back — but actually, gentle movement and rehabilitation is the best way to get better faster. Have you been finding yourself doing that?"</span></div>
+      <div class="ps-card"><h5>🤢 Nausea and Wellbeing</h5><p>The nausea and vomiting of acute vertigo can prevent oral medication, adequate hydration, and engagement with vestibular rehabilitation. Antiemetic medication (prochlorperazine buccal) is both symptom-relieving and necessary for the patient to be able to cooperate with examination and treatment. Its use should be time-limited — prolonged antiemetics impair vestibular compensation.</p><span class="ps-phrase">"The nausea is a really distressing part of this, and I'm going to give you something to help with that first — so we can make you comfortable enough to do the examination and treatment."</span></div>
+      <div class="ps-card"><h5>🏠 Falls Risk and Safety</h5><p>Acute severe vertigo creates a significant falls risk — particularly in older adults. The inability to stand without support, combined with the tendency to veer toward the affected side (past-pointing, Romberg), means the patient should not be left alone, and their home environment should be assessed for fall hazards. Handrails, shower seats, and carer support may be needed during the acute phase of vestibular neuritis.</p><span class="ps-phrase">"Given how severe this is, I don't want you to be at home alone during the acute phase — is there someone who can be with you? And please make sure you hold on to something when you move."</span></div>
+    </div>
+    <div class="sca-cp sca-only">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say">
+          <div class="sca-block-t">Key phrases that score</div>
+          <div class="sca-phrase">"Is the room spinning, or is it more of a lightheaded or unsteady feeling — I'm asking because that changes everything about what might be causing it."</div>
+          <div class="sca-phrase">"Any headache when this started? Any double vision, slurred speech, or weakness anywhere?"</div>
+          <div class="sca-phrase">"How long does each bout of spinning last — seconds when you move, or is it there all the time?"</div>
+          <div class="sca-phrase">"Are you worried this might be a stroke — that's a very natural thing to be concerned about with symptoms like this."</div>
+        </div>
+        <div class="sca-block sca-avoid">
+          <div class="sca-block-t">Deductions</div>
+          <ul>
+            <li>Not distinguishing true vertigo from presyncope or disequilibrium</li>
+            <li>Not screening for neurological red flags before positional testing</li>
+            <li>Not asking about episode duration — missing the BPPV vs Menière's vs VN distinction</li>
+            <li>Performing Dix-Hallpike before excluding central cause</li>
+            <li>Not asking about DVLA driving implications</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Doesn't distinguish vertigo from dizziness; no neurological red flag screen; Dix-Hallpike before history; doesn't ask episode duration; ICE not explored</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Vertigo confirmed; neurological screen partially done; episode duration asked; vascular risk factors not linked to central exclusion need; ICE partially explored</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Vertigo confirmed as rotational; neurological red flags fully screened; episode duration, triggers, hearing change, recent viral illness, and vascular risk all covered; stroke concern named and addressed; DVLA mentioned</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEPS 2-6 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage Engine — Emergency · Urgent · Routine</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div>
+        <h3>999 — Stroke Pathway</h3>
+        <span class="tc-badge tcb-e">Do not delay</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Any neurological red flag + vertigo</strong><em>Headache at onset, diplopia, dysarthria, dysphagia, facial numbness, limb weakness/ataxia → 999</em></li>
+          <li class="tc-item"><strong>Central HINTS exam</strong><em>Normal head impulse (no catch-up saccade) + direction-changing nystagmus + skew deviation → posterior fossa stroke</em></li>
+          <li class="tc-item"><strong>Sudden hearing loss + severe vertigo</strong><em>AICA stroke territory — 999 immediately; MRI DWI urgently</em></li>
+          <li class="tc-item"><strong>Cerebellar bleed (sudden onset headache + ataxia + vomiting)</strong><em>CT head emergency — neurosurgical referral if cerebellar haematoma</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Urgent</div>
+        <h3>Same-Day / 48-Hour Assessment</h3>
+        <span class="tc-badge tcb-u">Rapid assessment</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Acute vestibular syndrome — cannot exclude stroke clinically</strong><em>If HINTS equivocal or patient too distressed for reliable HINTS → same-day MRI DWI</em></li>
+          <li class="tc-item"><strong>First attack of Menière's disease</strong><em>ENT urgent referral for audiogram, tympanometry, and treatment initiation</em></li>
+          <li class="tc-item"><strong>BPPV not resolving with Epley after 3 treatments</strong><em>ENT referral for vestibular assessment; consider atypical canal or central cause</em></li>
+          <li class="tc-item"><strong>Vertigo with falls causing injury</strong><em>Urgent vestibular rehabilitation referral; falls assessment; occupational therapy</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Routine</div>
+        <h3>Primary Care Management</h3>
+        <span class="tc-badge tcb-r">GP management</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>BPPV — positive Dix-Hallpike, central features absent</strong><em>Epley manoeuvre in clinic today; Brandt-Daroff exercises at home; review 2 weeks</em></li>
+          <li class="tc-item"><strong>Vestibular neuritis (post-viral, peripheral HINTS)</strong><em>Prochlorperazine + prednisolone + vestibular rehabilitation; GP review 1 week</em></li>
+          <li class="tc-item"><strong>Drug-induced vertigo</strong><em>Stop or reduce culprit medication; review in 2–4 weeks</em></li>
+          <li class="tc-item"><strong>Recurrent BPPV</strong><em>Epley in clinic; teach Brandt-Daroff for self-management; ENT if more than 3 recurrences/year</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Diagnoses BPPV without excluding stroke; no HINTS exam; triage decision not linked to named clinical features</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Red flags screened; triage broadly correct; HINTS not mentioned; reasoning not shared with patient</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Red flags explicitly excluded; HINTS exam planned before Epley; triage decision linked to named features; reasoning shared with patient including stroke concern addressed</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Do I Need This Examination?</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro">The HINTS examination is the most important bedside test in acute vestibular syndrome — it is more sensitive than MRI in the first 48 hours for posterior fossa stroke. Dix-Hallpike testing must only be performed AFTER central causes have been clinically excluded or the HINTS exam result is consistent with a peripheral lesion. Never perform Dix-Hallpike as the first examination in a patient with acute vertigo without screening for central features first.</div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:20%">Examination</th><th style="width:36%">Why it matters</th><th style="width:26%">Finding + action</th><th>Mandatory?</th></tr></thead>
+        <tbody>
+          <tr><td class="q">HINTS Exam (Head Impulse, Nystagmus type, Test of Skew)</td><td class="why"><strong>The most important bedside test in acute vestibular syndrome.</strong> More sensitive than MRI DWI in the first 48 hours for posterior fossa stroke. Peripheral HINTS (reassuring): abnormal head impulse (catch-up saccade present) + direction-fixed nystagmus + no skew. Central HINTS (stroke): normal head impulse + direction-changing nystagmus + skew deviation.<span class="why-sub">Each component independently contributes to the assessment. A normal head impulse test (no catch-up saccade) in a patient with acute vertigo is a red flag for central pathology — the peripheral vestibular system is not damaged if the vestibulo-ocular reflex is intact.</span></td><td class="why">Central HINTS = 999. Peripheral HINTS = proceed to Dix-Hallpike. Equivocal HINTS in high-risk patient = urgent MRI DWI</td><td><span class="mcb mcb-yes">YES — first in AVS</span></td></tr>
+          <tr><td class="q">Dix-Hallpike test</td><td class="why">Diagnostic test for posterior canal BPPV — the patient is moved rapidly from sitting to lying with the head rotated 45° toward the affected side. Positive result: geotropic torsional upbeat nystagmus with 2–5 second latency, lasting under 1 minute, that fatigues on repeat testing.<span class="why-sub">Sensitivity 79%, specificity 75% for posterior canal BPPV. Perform only after central cause has been clinically excluded. If positive, the Epley manoeuvre can be performed immediately in the same clinic visit.</span></td><td class="why">Positive (torsional, fatiguing nystagmus) → BPPV confirmed → Epley manoeuvre. Negative (direction-changing, non-fatiguing, or vertical pure nystagmus) → consider central or atypical canal BPPV</td><td><span class="mcb mcb-yes">YES — if peripheral HINTS</span></td></tr>
+          <tr><td class="q">Romberg test and gait assessment</td><td class="why">Romberg positive (falls with eyes closed) indicates absent proprioceptive or vestibular compensation. Gait in peripheral vertigo: cautious, past-pointing to affected side, able to tandem gait with effort. Central ataxia: wide-based, unable to tandem gait, disproportionate severity of ataxia relative to nystagmus.<span class="why-sub">A patient with "vertigo" who cannot walk at all and has severe truncal ataxia has central vertigo until proven otherwise — the degree of ataxia in peripheral vertigo rarely completely prevents walking.</span></td><td class="why">Severe truncal ataxia disproportionate to nystagmus → central pathology → 999 or urgent MRI. Mild to moderate Romberg-positive → peripheral → proceed with vestibular assessment</td><td><span class="mcb mcb-yes">YES — always in vertigo</span></td></tr>
+          <tr><td class="q">BP lying and standing</td><td class="why">Excludes postural hypotension as a cause of dizziness — particularly relevant in this patient on amlodipine 10 mg (a significant vasodilator at high dose). A systolic drop ≥20 mmHg with symptoms on standing = orthostatic hypotension, which can be mistaken for or contribute to vestibular symptoms.<span class="why-sub">Never perform Dix-Hallpike in a patient who may have orthostatic hypotension without first excluding it — the position change could precipitate a presyncopal episode during the test.</span></td><td class="why">Systolic drop ≥20 mmHg → orthostatic hypotension → medication review; lying/standing BP protocol; adjust amlodipine dose</td><td><span class="mcb mcb-yes">YES in this patient</span></td></tr>
+          <tr><td class="q">Otoscopy + brief hearing assessment</td><td class="why">Identifies middle ear pathology — otitis media, cholesteatoma, or effusion — as a cause of vestibular symptoms. Whisper test or tuning fork test provides basic hearing assessment — unilateral hearing loss + vertigo requires ENT and MRI IAM exclusion of acoustic neuroma or AICA stroke.<span class="why-sub">In this stem: otoscopy is unlikely to find pathology, but it is a necessary examination to complete the vestibular assessment systematically.</span></td><td class="why">Normal → proceed. CSOM or cholesteatoma → ENT. Hearing loss unilateral → MRI IAM or if acute onset + severe vertigo → 999 AICA stroke pathway</td><td><span class="mcb mcb-context">Yes — if hearing change</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span></div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Dix-Hallpike performed before HINTS or neurological screen; HINTS exam not mentioned; lying/standing BP not checked in antihypertensive patient</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">HINTS mentioned; Dix-Hallpike planned after; lying/standing BP not mentioned; gait not assessed; findings not linked to central vs peripheral distinction</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">HINTS first and result interpreted; Dix-Hallpike only after peripheral confirmed; lying/standing BP in this antihypertensive patient; gait assessed; all findings explicitly linked to peripheral vs central decision</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Do I Need This Investigation?</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:20%">Investigation</th><th style="width:32%">Clinical question it answers</th><th>Key result + action</th></tr></thead>
+        <tbody>
+          <tr><td class="q">MRI DWI (diffusion-weighted imaging)</td><td class="why">The definitive investigation for posterior circulation stroke in vertigo — detects acute ischaemia within hours. However, sensitivity in the first 48 hours is under 80% for posterior fossa — HINTS exam by an experienced clinician is more sensitive. MRI is mandatory if central features are present or HINTS is equivocal. CT is inadequate for posterior fossa lesions (bone artefact).</td><td class="why">Acute DWI restriction → ischaemic stroke → stroke pathway. Normal → posterior fossa stroke not excluded if within 48 hours — reimage at 48–72 hours if clinical suspicion remains</td></tr>
+          <tr><td class="q">CT head</td><td class="why">Less sensitive than MRI for posterior fossa pathology but rapidly available for haemorrhage exclusion. Indicated for sudden onset severe headache + vertigo (subarachnoid or cerebellar bleed) when MRI is not immediately available. Not appropriate for ischaemic posterior circulation stroke exclusion.</td><td class="why">Cerebellar haematoma → neurosurgery. Normal CT + high suspicion of ischaemia → MRI DWI as next step</td></tr>
+          <tr><td class="q">Pure-tone audiogram</td><td class="why">For recurrent vertigo with associated hearing change — confirms SNHL pattern and severity. Mandatory for Menière's disease workup. Also required for vestibular schwannoma (acoustic neuroma) assessment alongside MRI IAM. Not needed for straightforward first-episode BPPV.</td><td class="why">Low-frequency SNHL fluctuating → Menière's pattern. Unilateral SNHL → MRI IAM. Normal → peripheral vestibular cause more likely</td></tr>
+          <tr><td class="q">Blood tests (FBC, glucose, TFTs)</td><td class="why">Anaemia causes lightheadedness often conflated with vertigo. Hypoglycaemia mimics acute vestibular syndrome. Hypothyroidism causes multisensory dizziness. Not required for straightforward acute BPPV but appropriate for first presentation of sustained vertigo without obvious cause.</td><td class="why">Anaemia → treat; reassess dizziness. Hypoglycaemia → treat; review medications. Hypothyroidism → treat; dizziness often improves</td></tr>
+          <tr><td class="q">Lying and standing BP (formal protocol)</td><td class="why">Formal 3-minute standing protocol excludes orthostatic hypotension as a cause of dizziness — particularly important in patients on antihypertensives (especially amlodipine at 10 mg). Medication-induced orthostatic hypotension can co-exist with BPPV.</td><td class="why">Systolic drop ≥20 mmHg → orthostatic hypotension → medication review; consider amlodipine dose reduction</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">CT ordered for posterior fossa ischaemia exclusion; MRI not planned for equivocal HINTS; "routine bloods" without clinical rationale</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">MRI planned for high-risk patients; audiogram not considered; investigations not explained to patient</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">MRI DWI (not CT) for posterior fossa; audiogram if hearing change; investigations explicitly linked to clinical questions; explains why HINTS is more sensitive than MRI in first 48 hours</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Reaching a Diagnosis &amp; DDx — Explained in Plain Language</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="lay-box">
+      <div class="lay-box-lbl">🗣️ Explaining Vertigo in Plain Language</div>
+      <p>"Your balance system uses signals from three places — your inner ear, your eyes, and the pressure sensors in your joints — and your brain combines all three to work out where you are in space. What's happened is that the balance organ in your inner ear has sent an incorrect signal — probably because a tiny crystal has shifted out of place inside the balance organ. When you turn your head, this crystal moves and sends a confusing message to your brain, which interprets it as spinning. The good news is that this is one of the most treatable types of vertigo — there's a specific head movement sequence I can do with you now that repositions the crystal. Most people feel significantly better after just one treatment."</p>
+    </div>
+    <div class="g3" style="margin-bottom:12px">
+      <div class="card" style="padding:1rem;border-left:4px solid var(--g)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.4rem">A — Diagnosable + Treatable in Primary Care</div>
+        <span class="conf-badge conf-gp" style="margin-bottom:.6rem;display:inline-block">GP can diagnose and treat</span>
+        <div class="ddx-card ddx-a" style="margin-bottom:8px"><h4>BPPV — Posterior Canal (90% of BPPV)</h4><p>Positional rotational vertigo &lt;1 minute triggered by rolling over, looking up. Dix-Hallpike positive: torsional upbeat nystagmus, 2–5 sec latency, fatigues on repeat. HINTS peripheral. Treatment: Epley manoeuvre — 85% resolution with one treatment. Brandt-Daroff exercises for home use. Review in 2 weeks.</p></div>
+        <div class="ddx-card ddx-a"><h4>Vestibular Neuritis</h4><p>Acute onset continuous vertigo for days, post-viral, no hearing loss. HINTS peripheral (catch-up saccade on head impulse). Dix-Hallpike negative. Treatment: prochlorperazine (acute), prednisolone 50 mg × 5 days (shortens course), vestibular rehabilitation. Resolves over 1–6 weeks.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--a)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:.4rem">B — Refer to ENT / Specialist</div>
+        <span class="conf-badge conf-sus" style="margin-bottom:.6rem;display:inline-block">Specialist needed</span>
+        <div class="ddx-card ddx-b" style="margin-bottom:8px"><h4>Menière's Disease</h4><p>Episodic vertigo (20 min–12 hrs) + unilateral SNHL (fluctuating) + tinnitus + aural fullness. Confirmed by ENT with audiogram. Treatment: betahistine, salt restriction, diuretic, intratympanic treatment in refractory cases. ENT referral for diagnosis and management.</p></div>
+        <div class="ddx-card ddx-b" style="margin-bottom:8px"><h4>BPPV — Horizontal or Anterior Canal (Atypical)</h4><p>Dix-Hallpike negative or atypical; horizontal canal BPPV confirmed by supine roll test (geotropic or ageotropic nystagmus). Requires ENT specialist positional manoeuvre (Gufoni or Barbecue roll) or vestibular physiotherapy. Refer if GP Epley fails after 3 attempts.</p></div>
+        <div class="ddx-card ddx-b"><h4>Vestibular Migraine</h4><p>Recurrent episodes of vertigo lasting 5 minutes to 72 hours associated with migraine features (headache, photophobia, phonophobia). No clear central HINTS findings. ENT or neurology referral for diagnosis. Treated as migraine prophylaxis plus vestibular rehabilitation.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--r)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--r);margin-bottom:.4rem">C — Emergency — Act Now</div>
+        <span class="conf-badge conf-emerg" style="margin-bottom:.6rem;display:inline-block">999 immediately</span>
+        <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Posterior Circulation Stroke / TIA</h4><p>HINTS central features + vascular risk factors. PICA (posterior inferior cerebellar artery) → Wallenberg syndrome. AICA (anterior inferior cerebellar artery) → vertigo + sudden hearing loss + ipsilateral facial numbness. HINTS: normal head impulse, direction-changing nystagmus, skew deviation → 999. MRI DWI urgently.</p></div>
+        <div class="ddx-card ddx-c"><h4>Cerebellar Haemorrhage</h4><p>Sudden onset severe vertigo + headache + inability to stand + vomiting in a hypertensive patient. CT head emergency. Neurosurgical referral if cerebellar haematoma with mass effect. 999 immediately. Do not attribute to BPPV without CT exclusion of haemorrhage in a hypertensive patient with severe acute presentation.</p></div>
+      </div>
+    </div>
+    <div class="card" style="overflow:hidden">
+      <div class="card-hd" style="color:var(--navy)">📊 HINTS Exam Interpretation Guide</div>
+      <table class="rt">
+        <thead><tr><th>Component</th><th>Peripheral (reassuring)</th><th>Central (red flag → 999)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Head Impulse Test</strong></td><td>Abnormal — catch-up saccade visible after rapid head thrust (VOR impaired = peripheral lesion)</td><td>Normal — smooth conjugate eye movement (VOR intact = central lesion)</td></tr>
+          <tr><td><strong>Nystagmus Type</strong></td><td>Direction-fixed — nystagmus beats the same direction regardless of gaze direction</td><td>Direction-changing — nystagmus changes direction with different gaze positions; or vertical; or purely horizontal without head impulse abnormality</td></tr>
+          <tr><td><strong>Test of Skew</strong></td><td>No vertical skew deviation on cover-uncover test</td><td>Skew deviation present — one eye higher than the other on cover-uncover test</td></tr>
+          <tr><td><strong>Overall interpretation</strong></td><td>All 3 peripheral findings = INFARCT unlikely — peripheral cause probable</td><td>Any 1 central finding = posterior fossa lesion until excluded by MRI DWI</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">If Referral Is Needed — What the GP Does Before &amp; During</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="card" style="overflow:hidden">
+      <table class="ref-table">
+        <thead><tr><th>Condition</th><th>Urgency</th><th>What GP does before referral</th><th>What GP must NOT do</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">Posterior circulation stroke / central HINTS</td><td><span class="ref-urg rurg-999">999 immediately</span></td><td style="font-size:12px">HINTS exam result documented. Activate stroke pathway. Note time of symptom onset (thrombolysis window). Record all neurological deficits. Lay patient flat. Start aspirin 300 mg if ischaemic stroke not excluded (unless on anticoagulation).</td><td style="font-size:12px;color:var(--r)">Do not give antiemetics and "wait and see" in a patient with central HINTS or neurological features. Do not allow a high-vascular-risk patient with unexplained sustained vertigo to leave without being seen by a physician today.</td></tr>
+          <tr><td style="font-weight:600">BPPV — confirmed, Epley performed</td><td><span class="ref-urg rurg-r">Routine ENT if fails ×3</span></td><td style="font-size:12px">Perform Epley manoeuvre in clinic (see 7C). Provide Brandt-Daroff exercise leaflet. Advise no driving until vertigo resolves. Review 2 weeks — if not resolved, repeat Epley. After 3 failed treatments → ENT referral for vestibular physiotherapy or atypical canal assessment.</td><td style="font-size:12px;color:var(--r)">Do not prescribe long-term prochlorperazine for BPPV — antiemetics impair vestibular compensation and delay recovery. Use only for acute nausea control (maximum 3–5 days).</td></tr>
+          <tr><td style="font-weight:600">Vestibular neuritis — confirmed peripheral</td><td><span class="ref-urg rurg-r">Routine vestibular rehab</span></td><td style="font-size:12px">Prescribe prochlorperazine buccal (short course); prednisolone 50 mg × 5 days (shortens acute phase); refer vestibular rehabilitation physiotherapy; advise falls precautions; DVLA advice; review 1 week.</td><td style="font-size:12px;color:var(--r)">Do not prescribe antiemetics for more than 5 days — they suppress vestibular compensation and significantly prolong the recovery period. Vestibular rehabilitation is the cornerstone of treatment, not medication.</td></tr>
+          <tr><td style="font-weight:600">Menière's disease (suspected)</td><td><span class="ref-urg rurg-4">4-week ENT</span></td><td style="font-size:12px">Audiogram; start low-salt diet advice; betahistine 16 mg TDS if ENT has confirmed diagnosis; prochlorperazine for acute attacks only; DVLA advice (not to drive during attacks). Refer ENT for diagnostic confirmation and specialist management.</td><td style="font-size:12px;color:var(--r)">Do not start betahistine before ENT confirms Menière's diagnosis — the triad must be confirmed on audiometry and clinical assessment before initiating long-term treatment.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Expectation · Goals · Epley · Drug Cards · Psychosocial · Follow-Up · Safety-Netting</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+
+    <div class="sub-divider">7A — Address the patient's expectation first</div>
+    <div class="expect-box">
+      <div class="expect-box-hdr"><span style="font-size:1.4rem">🤝</span><div class="expect-box-lbl">The patient with acute vertigo is frightened and expects either a brain scan or to be told there is nothing wrong. Address both.</div></div>
+      <div class="expect-steps">
+        <div class="expect-step"><div class="expect-step-num">1</div><h5>Validate</h5><p>Acknowledge how frightening acute vertigo is before any clinical explanation.</p><span class="expect-phrase">"I can see this has been really terrifying — sudden severe spinning and vomiting is one of the most distressing things to experience. I want to reassure you that I'm going to examine you carefully to understand exactly what's happening."</span></div>
+        <div class="expect-step"><div class="expect-step-num">2</div><h5>Explain</h5><p>Explain the HINTS exam and why it is actually more informative than a brain scan in the first 48 hours — this is counterintuitive but builds confidence in the examination.</p><span class="expect-phrase">"I'm going to do a specific clinical eye examination now — and actually, for the type of vertigo you have, this bedside test is more sensitive for detecting a brain problem than an MRI scan in the first 48 hours. So this is the most important test we can do right now."</span></div>
+        <div class="expect-step"><div class="expect-step-num">3</div><h5>Offer</h5><p>If BPPV is confirmed — offer the Epley manoeuvre today. The immediate treatment offer transforms the consultation from a diagnostic to a therapeutic encounter.</p><span class="expect-phrase">"The good news is that if this is the type I think it is — the crystal type — I can treat it right here today with a specific head movement sequence. Most people feel significantly better immediately afterwards."</span></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7C — The Epley Manoeuvre (BPPV treatment) — teach and perform</div>
+    <div class="life-grid" style="margin-bottom:1.25rem">
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🔄</span><div class="life-title">Epley Manoeuvre</div><span class="life-target">85% resolution with single treatment — perform in clinic</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>The Epley manoeuvre repositions otoliths (calcium carbonate crystals) displaced from the utricle back into the posterior semicircular canal through a series of sequential head positions that use gravity to guide the crystals. Each position is held for 90 seconds to allow the crystals to settle.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Steps</div><p>1. Dix-Hallpike to affected side (hold 90 sec). 2. Rotate head 90° to opposite side (hold 90 sec). 3. Roll body toward unaffected side, head now facing floor (hold 90 sec). 4. Sit patient up slowly. 5. Head returns to midline. Keep upright for 20 min post-procedure.</p></div>
+          <span class="life-benefit">85% resolution in single treatment; repeat 3 times before referring to ENT</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🏃</span><div class="life-title">Brandt-Daroff Exercises</div><span class="life-target">Home self-management — twice daily until symptoms resolve</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Brandt-Daroff exercises habituate the central nervous system to the abnormal vestibular signal by repeated exposure — less specific than Epley but easy to self-administer and effective for residual or recurrent symptoms. Also suitable for patients who cannot tolerate the Epley manoeuvre.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Sit upright → rapidly lie on affected side (head 45° toward ceiling) → hold 30 sec or until vertigo stops → return to sitting → hold 30 sec → lie on opposite side → hold 30 sec. Repeat 5 times per session, twice daily, for 2 weeks.</p></div>
+          <span class="life-benefit">Accelerates recovery and reduces recurrence when combined with Epley</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🧘</span><div class="life-title">Vestibular Rehabilitation</div><span class="life-target">Referral to vestibular physiotherapy for vestibular neuritis</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Vestibular rehabilitation physiotherapy promotes central compensation for peripheral vestibular deafferentation through structured exercises — gaze stabilisation, habituation exercises, and balance training. The cornerstone of vestibular neuritis management and significantly more effective than antiemetics as a long-term treatment.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Refer to community vestibular physiotherapy or ENT physiotherapy service. Programme typically 8 sessions over 6 weeks. Exercises must be done consistently — avoiding movement (common in patients with vertigo) dramatically slows recovery and maintains disability.</p></div>
+          <span class="life-benefit">Vestibular rehabilitation reduces chronic dizziness disability by 50% — more effective than medication for vestibular neuritis</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🚗</span><div class="life-title">DVLA Advice</div><span class="life-target">At least 4 weeks off driving — acute disabling vertigo</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Legal requirement</div><p>DVLA Group 1 (car): must not drive while experiencing disabling vertigo. Can resume when symptoms are controlled and unlikely to cause sudden disabling recurrence — minimum 4 weeks from the acute episode. Group 2 (HGV/bus): specialist assessment required before return to driving.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Advise explicitly: "You should not drive until the vertigo has completely resolved and you have been free of significant symptoms for at least 4 weeks." Document this advice in the clinical notes. Notify the patient that they must inform the DVLA if episodes are recurrent and disabling.</p></div>
+          <span class="life-benefit">DVLA advice is mandatory and must be documented — failure to advise is a medicolegal risk</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🏠</span><div class="life-title">Falls Prevention</div><span class="life-target">Acute phase — home safety assessment</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>During acute phase of vestibular neuritis or severe BPPV: remove trip hazards; hold handrails at all times; shower seated if possible; do not climb ladders or stairs alone; ensure someone is at home. Occupational therapy falls assessment if recurrent or severely impaired.</p></div>
+          <span class="life-benefit">Falls prevention during acute vestibular episode reduces serious injury risk in older adults significantly</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">💊</span><div class="life-title">Antiemetics — Short Course Only</div><span class="life-target">Maximum 3–5 days — longer impairs vestibular compensation</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Critical principle</div><p>Prochlorperazine provides acute symptom relief for nausea and vertigo — but if continued beyond 5 days it suppresses the central compensation mechanism that allows the brain to adapt to vestibular deafferentation. Long-term antiemetics for vertigo significantly prolong disability and are one of the most common management errors in vestibular disorders.</p></div>
+          <span class="life-benefit">Stop antiemetics within 5 days — vestibular rehabilitation, not medication, is the long-term solution</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7F — Drug reference cards: vertigo pharmacological management</div>
+    <div class="drug-cards">
+      <div class="dc" id="dc-prochlorperazine">
+        <div class="dc-head"><div><div class="dc-name">Prochlorperazine (Stemetil)</div><div class="dc-examples">Buccal 3 mg BD or oral 5 mg TDS — acute symptom control in vestibular neuritis / BPPV</div></div><div class="dc-badges"><span class="dc-step step1">Acute vertigo</span><span class="dc-dose">3–5 mg TDS · max 5 days</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use when</div>
+          <div class="dc-item">Acute nausea and vomiting preventing oral intake or cooperation with vestibular examination</div>
+          <div class="dc-item">Short-term symptomatic relief while vestibular compensation begins</div>
+          <div class="dc-item">Buccal (Buccastem 3 mg) preferred if vomiting prevents oral tablets</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Time-limit strictly</div>
+          <div class="dc-item ci-abs">Maximum 5 days — beyond this duration, suppresses vestibular compensation and prolongs disability</div>
+          <div class="dc-item ci-abs">Do NOT prescribe long-term "for dizziness" — this is a very common and harmful prescribing error</div>
+          <div class="dc-item ci-rel">Elderly — increased risk of extrapyramidal side effects; consider a lower dose or alternative antiemetic</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"This tablet will help with the nausea and spinning sensation in the short term. It's very important that you take it for no more than 5 days — after that, the tablet actually slows down your brain's ability to adapt and recover. The recovery really comes from the exercises, not the tablet."</p></div>
+        <div class="dc-sca"><p>The most examinable prescribing point for prochlorperazine in vestibular disorders: maximum 5 days. Prescribing it long-term for chronic dizziness is a very common error in primary care and is specifically tested in the SCA. "I'm giving you this for the acute symptoms, but we'll stop it after 5 days — longer than that actually slows recovery."</p></div>
+      </div>
+      <div class="dc" id="dc-pred-vn">
+        <div class="dc-head"><div><div class="dc-name">Prednisolone — Vestibular Neuritis</div><div class="dc-examples">50 mg OD × 5 days then taper — shortens acute phase; NICE CKS evidence-based</div></div><div class="dc-badges"><span class="dc-step step1">Vestibular neuritis</span><span class="dc-dose">50 mg OD × 5 days</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Initiate when</div>
+          <div class="dc-item">Vestibular neuritis confirmed (sustained vertigo days, post-viral, peripheral HINTS)</div>
+          <div class="dc-item">Best started within 72 hours of onset — reduces inflammatory damage to the vestibular nerve</div>
+          <div class="dc-item">Evidence: shortens acute phase; improves final vestibular function recovery</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Caution</div>
+          <div class="dc-item ci-rel">Diabetes — monitor blood glucose closely during course</div>
+          <div class="dc-item ci-rel">Taper if course over 7 days; 5-day course at 50 mg can stop abruptly</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"This short course of steroid tablets helps reduce the inflammation in the balance nerve — it tends to shorten how long the acute spinning phase lasts and improves how much function your balance system recovers. Take it with food for 5 days."</p></div>
+        <div class="dc-sca"><p>Prednisolone for vestibular neuritis is a NICE CKS-recommended evidence-based treatment that is often omitted in GP consultations. Prescribing it and explaining its mechanism (reducing vestibular nerve inflammation) scores in the Tasks domain. Pairing it with the explicit statement "maximum 5 days of prochlorperazine" demonstrates systematic management thinking.</p></div>
+      </div>
+      <div class="dc" id="dc-betahistine-m">
+        <div class="dc-head"><div><div class="dc-name">Betahistine — Menière's Disease</div><div class="dc-examples">Serc 16 mg TDS — only after ENT confirms Menière's diagnosis</div></div><div class="dc-badges"><span class="dc-step step2">Menière's only</span><span class="dc-dose">16 mg TDS × ≥6 months</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Only when Menière's confirmed</div>
+          <div class="dc-item">Menière's disease confirmed by ENT with audiogram-supported diagnosis</div>
+          <div class="dc-item">Minimum 6-month trial before assessing response</div>
+          <div class="dc-item">Combined with low-salt diet (&lt;1.5 g sodium/day) for best effect</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Do not use empirically</div>
+          <div class="dc-item ci-abs">Do not prescribe betahistine for any acute vertigo without ENT confirming Menière's</div>
+          <div class="dc-item ci-rel">Asthma — histamine pathway; caution; peptic ulcer risk</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"This tablet needs to be taken three times a day every day — it works by reducing the fluid pressure in the inner ear, which is what causes your attacks. You won't feel it working immediately; the benefit builds up over weeks and months. Low-salt diet alongside it makes it significantly more effective."</p></div>
+        <div class="dc-sca"><p>Key SCA point: betahistine is for confirmed Menière's only. "I wouldn't start betahistine today — we need ENT to confirm the diagnosis first with a formal hearing test." This demonstrates safe prescribing and the importance of not jumping to treatment before diagnosis is established.</p></div>
+      </div>
+      <div class="dc" id="dc-aspirin-stroke">
+        <div class="dc-head"><div><div class="dc-name">Aspirin 300 mg (if ischaemic stroke suspected)</div><div class="dc-examples">Single loading dose — while awaiting hospital admission for posterior circulation stroke</div></div><div class="dc-badges"><span class="dc-step step1">Stroke emergency</span><span class="dc-dose">300 mg stat</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Give when</div>
+          <div class="dc-item">Ischaemic stroke clinically suspected and NOT on anticoagulation already</div>
+          <div class="dc-item">Haemorrhage excluded (CT head) — but in practice, give while awaiting 999 if ischaemic features</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Do NOT give if</div>
+          <div class="dc-item ci-abs">Already on anticoagulation — do not add aspirin; risk of haemorrhage</div>
+          <div class="dc-item ci-abs">Haemorrhage not excluded and strong suspicion of bleed — withhold until CT result</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"I'm giving you a single aspirin tablet while we wait for the ambulance — this helps prevent any clot from extending. The hospital team will decide on further treatment when they see you."</p></div>
+        <div class="dc-sca"><p>Aspirin 300 mg for suspected ischaemic stroke is a NICE-recommended emergency measure while awaiting hospitalisation. Remembering to give this while calling 999 demonstrates comprehensive emergency management and scores in Tasks.</p></div>
+      </div>
+    </div>
+
+    <div class="sub-divider" style="margin-top:1.5rem">7G — Psychosocial impact: fear, avoidance, and return to function</div>
+    <div class="psoci-wrap">
+      <div class="psoci-hdr"><span style="font-size:1.5rem">🫂</span><div class="psoci-title">Living with vertigo — acute and chronic impact on daily life</div></div>
+      <div class="psoci-grid">
+        <div class="psoci-card"><span class="psoci-icon">😰</span><h5>Fear of Recurrence</h5><p>After a first episode of BPPV or vestibular neuritis, patients develop significant fear of recurrence — particularly when triggers (position change for BPPV, sudden head movements for VN) are unavoidable in daily life. Anticipatory anxiety leads to avoidance of any head movement, which paradoxically delays vestibular compensation and prolongs recovery.</p><p>The most important rehabilitation instruction is to move despite the discomfort — habituation exercises work by exposing the vestibular system to the triggering stimulus repeatedly until the central nervous system stops perceiving it as a problem. Avoidance is the enemy of recovery.</p><span class="psoci-phrase">"I know it's tempting to keep very still when you're dizzy, but actually the more you move — carefully and safely — the faster your balance system will adapt and recover. Avoiding movement is the one thing that makes recovery slower."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">🚗</span><h5>Driving and Occupation</h5><p>A teacher with acute disabling vertigo cannot drive to work and cannot stand at the front of a classroom safely — at least in the acute phase. A fit note for the acute phase may be needed. The DVLA advice (minimum 4 weeks) must be given and documented at this consultation.</p><p>The good news for BPPV: the Epley manoeuvre often resolves symptoms within minutes to hours, enabling a rapid return to function. For vestibular neuritis, the acute phase lasts 1–3 weeks — a fit note for this period is appropriate, with review at the end of that period.</p><span class="psoci-phrase">"Given how severe this is right now, I'm going to give you a fit note for the next 1–2 weeks — and I'd like you to come back then so we can see how the recovery is going and when it's safe to return."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">🧠</span><h5>Chronic Dizziness and Functional Disorder</h5><p>Persistent Postural-Perceptual Dizziness (PPPD) is a functional vestibular disorder that develops in a significant proportion of patients following acute vestibular events. The patient continues to experience chronic dizziness long after the acute event has resolved, driven by maladaptive neural compensation and anxiety.</p><p>PPPD is managed with vestibular rehabilitation, CBT, and SSRIs in selected cases — not with antiemetics. Recognising this transition from acute organic vertigo to functional dizziness is important; it changes the management from investigation to rehabilitation and psychological support.</p><span class="psoci-phrase">"Sometimes after vertigo, the dizziness can linger longer than the original cause would explain — this is quite common and it's something we address with specific exercises and, in some cases, talking therapy. It's very treatable."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">🏠</span><h5>Falls and Home Safety</h5><p>Acute severe vertigo is a significant falls risk — particularly in older adults or those with pre-existing balance difficulties. The combination of vestibular deafferentation, postural instability, and vascular risk factors (in this patient: hypertension) creates a dangerous context for falls with potentially serious consequences.</p><p>Practical acute phase advice: remove trip hazards, use handrails, shower seated, do not climb ladders or stairs alone, have someone at home during the acute phase. Occupational therapy falls assessment if recurrent or severely impaired after the acute phase.</p><span class="psoci-phrase">"For the next few days while the vertigo is at its worst, please make sure you're holding on to something whenever you move, and that there's someone with you at home — the risk of a fall is real and I don't want you to get hurt."</span></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7H — Follow-up</div>
+    <div class="card" style="padding:1.1rem 1.25rem;margin-bottom:1.25rem">
+      <div class="fu-line">
+        <div class="fu-event"><div class="fu-dot fd1">1</div><div class="fu-content"><h5>2 Weeks — BPPV response to Epley</h5><p>If BPPV: check whether Epley resolved symptoms. If resolved → reassure; Brandt-Daroff as ongoing prevention; DVLA review. If not resolved → repeat Epley (up to 3 times before ENT referral). If vestibular neuritis: assess recovery; stop prochlorperazine if still on it; continue prednisolone if within window.</p><div class="fu-tags"><span class="ft ft-r">Symptom review</span><span class="ft ft-a">DVLA check</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd2">2</div><div class="fu-content"><h5>4–6 Weeks — Recovery assessment + return to driving</h5><p>Review vestibular neuritis recovery; assess readiness to return to driving (minimum 4 weeks from onset if symptoms have resolved); vestibular rehab progress; PHQ-9 if anxiety or chronic dizziness developing; fit note review for return to work.</p><div class="fu-tags"><span class="ft ft-b">Driving return</span><span class="ft ft-r">PHQ-9</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd3">3</div><div class="fu-content"><h5>3 Months — If symptoms persist</h5><p>If dizziness persists beyond 6 weeks after vestibular neuritis → consider PPPD; refer vestibular physiotherapy. If BPPV recurring frequently → ENT referral; explore horizontal canal variant. Audiogram if any hearing change has developed since presentation.</p><div class="fu-tags"><span class="ft ft-b">PPPD assessment</span><span class="ft ft-r">Audiogram if hearing change</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7J — Safety-netting</div>
+    <div class="sn-box">
+      <h4>⚠ Three scenario-specific phrases</h4>
+      <div class="sn-scenarios">
+        <div class="sn-scenario sns-e">
+          <div class="sn-scenario-lbl">🔴 Emergency — neurological symptoms</div>
+          <div class="sn-phrase">"If the vertigo comes back and you notice any headache, double vision, slurred speech, weakness or numbness in your face or limbs, or if you feel that you're going to faint — call 999 immediately. These symptoms alongside dizziness can indicate a stroke and require immediate medical attention."</div>
+          <div class="sn-why">This safety-net phrase covers the neurological red flags for posterior circulation stroke that can present as or alongside vertigo. Giving these specific symptoms allows the patient to self-triage rapidly. Documenting this advice protects the GP medico-legally in a presentation where a stroke cannot be excluded with absolute certainty in primary care.</div>
+        </div>
+        <div class="sn-scenario sns-m">
+          <div class="sn-scenario-lbl">💊 Antiemetic time limit</div>
+          <div class="sn-phrase">"The prochlorperazine tablets I've prescribed are for the nausea only — please stop them after 5 days even if you still feel dizzy. Taking them for longer actually slows down your brain's ability to recover from the balance problem. The exercises are what will treat the underlying cause."</div>
+          <div class="sn-why">Long-term prochlorperazine prescription for vertigo is one of the most common and harmful management errors in primary care. Pre-warning the patient to stop after 5 days prevents both the patient and future prescribers from continuing it indefinitely, and reinforces that vestibular rehabilitation is the therapeutic goal.</div>
+        </div>
+        <div class="sn-scenario sns-a">
+          <div class="sn-scenario-lbl">🚗 DVLA driving restriction</div>
+          <div class="sn-phrase">"You should not drive until the vertigo has completely gone and you've been symptom-free for at least 4 weeks. If you drive and have an episode of vertigo at the wheel, you could cause a serious accident. Please arrange alternative transport for now, and let's review this at your next appointment."</div>
+          <div class="sn-why">DVLA guidance for acute disabling vertigo requires at least 4 weeks off Group 1 driving after the acute episode has resolved. Documenting this advice explicitly at the first consultation is mandatory for medico-legal protection and is a DVLA statutory requirement.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7 (Final)</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say">
+          <div class="sca-block-t">Closing the consultation</div>
+          <div class="sca-phrase">"To summarise: I've done the eye examination to check for a brain cause — that looked reassuring. The hearing and balance test suggests this is the crystal type of vertigo, and I'm going to treat it now with the head repositioning sequence."</div>
+          <div class="sca-phrase">"The nausea tablet is for 5 days only — please stop it after that even if you're still dizzy, because longer than that slows recovery."</div>
+          <div class="sca-phrase">"If you develop any headache, double vision, or weakness alongside the dizziness — call 999 immediately. And you shouldn't drive for at least 4 weeks."</div>
+          <div class="sca-phrase">"Is there anything you'd like to ask before I do the treatment?"</div>
+        </div>
+        <div class="sca-block sca-avoid">
+          <div class="sca-block-t">Deductions — closing</div>
+          <ul>
+            <li>Prescribing long-term prochlorperazine without the 5-day limit</li>
+            <li>Performing Epley without first doing HINTS exam</li>
+            <li>Not mentioning DVLA driving restriction</li>
+            <li>Not giving neurological red flag safety-net</li>
+            <li>Not offering Epley manoeuvre in clinic when BPPV is confirmed</li>
+            <li>Diagnosing BPPV without Dix-Hallpike test</li>
+          </ul>
+        </div>
+        <div class="sca-block sca-score">
+          <div class="sca-block-t">Tasks — full criteria</div>
+          <ul>
+            <li>Neurological red flags screened before positional testing</li>
+            <li>HINTS exam performed and interpreted correctly</li>
+            <li>Dix-Hallpike only after peripheral HINTS confirmed</li>
+            <li>Epley manoeuvre offered and performed in clinic (BPPV)</li>
+            <li>Prochlorperazine prescribed with explicit 5-day maximum</li>
+            <li>DVLA driving advice (4 weeks minimum) given and documented</li>
+          </ul>
+        </div>
+        <div class="sca-block sca-score" style="border-left:2px solid #c4b5fd">
+          <div class="sca-block-t" style="color:#c4b5fd">Relating to Others — full criteria</div>
+          <ul>
+            <li>Acknowledged how frightening acute vertigo is</li>
+            <li>Stroke concern named and addressed directly before examination</li>
+            <li>HINTS exam explained as more sensitive than MRI in first 48 hours</li>
+            <li>Epley offered as treatment today — transformed expectation</li>
+            <li>Falls risk and home safety discussed with genuine concern</li>
+            <li>Closing question asked before the Epley is performed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Epley before HINTS; long-term prochlorperazine; no DVLA; no neurological safety-net; stroke concern not addressed; no Epley offered for confirmed BPPV</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">HINTS done; Epley performed; prochlorperazine 5-day limit not stated; DVLA mentioned briefly; stroke concern not named before examination</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">HINTS first then Dix-Hallpike; Epley in clinic; prochlorperazine 5-day limit explicitly stated; DVLA documented; neurological red flag safety-net given; stroke concern named and addressed empathetically; falls risk addressed</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Vertigo — SCA Consultation Scorecard</div><div class="scorecard-sub">Based on the official SCA Consultation Tool · RAG self-assessment</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Structured consultation</strong> — history → HINTS → Dix-Hallpike → treatment in logical sequence</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Appropriate time use</strong> — neurological screen complete early; Epley offered and performed before end</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Dizziness type established first</strong> — rotational vertigo confirmed before any targeted questioning</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain language throughout</strong> — "crystal in the balance organ" or equivalent; HINTS exam explained before performing</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Acute distress acknowledged</strong> — empathy expressed before clinical examination; patient reassured appropriately</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>HINTS superiority explained</strong> — states HINTS more sensitive than MRI in first 48 hours; builds confidence in bedside assessment</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Closed with summary + question</strong> — management plan summarised; patient asked if anything unclear before Epley is performed</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Vertigo type + neurological screen</strong> — rotational confirmed; all neurological red flags checked before any positional test</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>HINTS exam performed and interpreted</strong> — all 3 components assessed; result correctly linked to peripheral vs central conclusion</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Dix-Hallpike after HINTS</strong> — positional test performed only after peripheral HINTS; result described and linked to BPPV diagnosis</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Epley manoeuvre offered and performed</strong> — in-clinic treatment for BPPV; steps explained before performing; outcome noted</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Prochlorperazine 5-day maximum stated explicitly</strong> — not just prescribed; explicitly told to stop after 5 days with clear rationale</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Brandt-Daroff exercises prescribed</strong> — home exercise programme explained and leaflet offered</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Vascular risk factors linked to central exclusion need</strong> — hypertension + obesity in this patient cited as reason for HINTS first</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>DVLA advice given and documented</strong> — 4 weeks minimum off driving; Group 2 specialist assessment; specific and documented</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Neurological safety-net specific</strong> — named: headache + diplopia + slurred speech + weakness alongside vertigo = 999 immediately</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Follow-up arranged and antiemetic stop-date set</strong> — 2-week review booked; prochlorperazine stop date explicitly stated at prescribing</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Acute distress empathised with</strong> — acknowledged how frightening acute vertigo is before beginning clinical assessment</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Stroke concern named and addressed directly</strong> — "Are you worried this might be a stroke?" asked or equivalent; concern addressed before examination</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>ICE explored</strong> — patient's ideas, specific fear, and expectation (MRI? brain scan?) elicited and addressed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>HINTS explained before performing</strong> — patient told what the test is looking for and why it is the most important examination</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Epley offered as an immediate treatment</strong> — transformed patient's expectation from "investigating" to "treating today"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>BPPV mechanism explained with analogy</strong> — "crystal in the balance organ" or piano-key analogy; mechanism linked to the treatment logic</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>DVLA handled with empathy</strong> — driving impact for a teacher acknowledged; restriction explained as safety-based and time-limited</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Falls risk addressed with practical safety advice</strong> — specific home safety instructions given; carer or support person discussed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Avoidance behaviour addressed</strong> — specifically told that movement accelerates recovery; avoidance delays it</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Understanding checked after key safety points</strong> — after 5-day prochlorperazine limit and after DVLA advice</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Closing question asked before Epley</strong> — "Is there anything you'd like to ask before I do the treatment?" with genuine space for response</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist above to see your score interpretation</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"This is terrifying — the room won't stop spinning and I keep being sick. I'm scared something's happened to my brain."</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>Helen Okafor, 57, secondary school teacher. Woke this morning and when she rolled over in bed the room started spinning violently. Vomited twice. Now sitting very still in the GP chair. Describes the spinning as definitely the room moving — not lightheadedness. Hypertension on amlodipine 10 mg + ramipril 5 mg. BMI 32. No headache. No diplopia, slurred speech, or weakness. No hearing change. No recent viral illness.</p></div>
+      <div class="ab"><h5>Hidden concern</h5><p>You are convinced this is a stroke. Your father died of a stroke at 62, and you know you have high blood pressure. Will not say this directly unless asked — but if the doctor asks "Is there something specific you're worried this might be?" → "My dad died of a stroke — I thought this is what it must feel like."</p></div>
+      <div class="ab"><h5>Symptoms if asked</h5><ul><li>Spinning started when she rolled over in bed — to the right side</li><li>Worst in the first 30 seconds, then settles a bit</li><li>Happens every time she moves her head</li><li>No spinning when sitting completely still</li><li>No headache, no double vision, no speech difficulty, no weakness</li><li>Hearing is normal — no change noticed</li></ul></div>
+      <div class="ab"><h5>Responses and challenges</h5><ul><li>If MRI is offered: "Shouldn't I have a brain scan to be safe?" → responds positively if HINTS superiority is explained</li><li>If Epley is offered: initially reluctant ("Moving my head sounds terrifying") → agrees if the 85% success rate is explained</li><li>On driving: "I need to drive to school — is there any flexibility?" → accepts restriction when safety framed empathetically</li><li>On prochlorperazine: "Can't I just take the tablets for longer to get through this?" → accepts 5-day limit if the recovery rationale is explained clearly</li></ul></div>
+    </div>
+    <div class="actor-challenge">"Are you sure this isn't a stroke? Shouldn't I be going to hospital?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> Helen accepts the diagnosis and treatment if the candidate: (1) directly names her stroke fear and addresses it before examining; (2) explains HINTS as more sensitive than MRI in first 48 hours; (3) performs or clearly describes the Epley manoeuvre; (4) gives the 5-day prochlorperazine limit with clear rationale; (5) addresses DVLA with empathy for its impact on her work as a teacher. She will ask about an MRI — this is the key expectation management moment of the consultation.</p>
+  </div>
+</div>
+
+<!-- SUMMARIES -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Vertigo — Clinical Decision Framework</div><div class="sum-sub">NICE CKS Vertigo 2022 · BPPV Clinical Guidelines · HINTS Examination Protocol</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🚦 1 — Triage + HINTS Guide</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div class="algo-wrap">
+        <div class="algo-start">Acute vertigo → neurological screen first → HINTS exam → Dix-Hallpike only if peripheral HINTS</div>
+        <div class="algo-row">
+          <div class="algo-branch algo-red"><div class="algo-branch-lbl">🔴 999 — Central</div><ul class="algo-list"><li>Headache at onset</li><li>Diplopia/dysarthria/dysphagia</li><li>Limb weakness or ataxia</li><li>Central HINTS (normal HIT, direction-changing Nystagmus, Skew deviation)</li><li>Sudden hearing loss + severe vertigo (AICA)</li></ul><div class="algo-action red-action">999 + stroke pathway immediately</div></div>
+          <div class="algo-branch algo-green"><div class="algo-branch-lbl">🟢 Peripheral → Primary Care</div><ul class="algo-list"><li>Peripheral HINTS (catch-up saccade, direction-fixed Nystagmus, no Skew)</li><li>BPPV: Dix-Hallpike + Epley in clinic</li><li>Vestibular neuritis: prednisolone + rehab</li></ul><div class="algo-action green-action">Epley / prednisolone / vestibular rehab</div></div>
+        </div>
+      </div>
+      <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem .9rem">
+        <div style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--navy);margin-bottom:.5rem">HINTS Interpretation (3 components)</div>
+        <div style="font-size:12px;line-height:1.7">
+          <strong>Peripheral (all 3):</strong><br>HIT: Catch-up saccade PRESENT ✓<br>Nystagmus: Direction-FIXED ✓<br>Skew: NO vertical skew ✓<br><br>
+          <strong>Central (any 1 = red flag):</strong><br>HIT: No catch-up saccade ✗<br>Nystagmus: Direction-CHANGING ✗<br>Skew: Skew deviation PRESENT ✗
+        </div>
+      </div>
+    </div>
+    <div class="sum-sub-hdr">📊 2 — Key Numbers</div>
+    <div class="num-grid" style="margin-bottom:1rem">
+      <div class="num-card num-highlight"><div class="num-val">5 days</div><div class="num-lbl">Prochlorperazine maximum — longer impairs vestibular compensation</div></div>
+      <div class="num-card num-highlight"><div class="num-val">85%</div><div class="num-lbl">BPPV resolution after single Epley manoeuvre</div></div>
+      <div class="num-card"><div class="num-val">90 sec</div><div class="num-lbl">Hold time at each Epley position</div></div>
+      <div class="num-card"><div class="num-val">4 weeks</div><div class="num-lbl">DVLA minimum off driving — acute disabling vertigo</div></div>
+      <div class="num-card num-highlight"><div class="num-val">48 hrs</div><div class="num-lbl">Window when HINTS > MRI sensitivity for posterior fossa stroke</div></div>
+      <div class="num-card"><div class="num-val">79%</div><div class="num-lbl">Dix-Hallpike sensitivity for BPPV</div></div>
+    </div>
+    <div class="sum-sub-hdr">⚠ 3 — Safety Netting</div>
+    <div class="sn-compact-wrap">
+      <div class="sn-compact sns-e"><div class="sn-compact-lbl">🔴 Neurological red flags</div><div class="sn-compact-phrase">"Headache, diplopia, slurred speech, or limb weakness + vertigo → 999 immediately."</div></div>
+      <div class="sn-compact sns-m"><div class="sn-compact-lbl">💊 Prochlorperazine limit</div><div class="sn-compact-phrase">Stop after 5 days — longer suppresses vestibular compensation and delays recovery.</div></div>
+      <div class="sn-compact sns-a"><div class="sn-compact-lbl">🚗 DVLA</div><div class="sn-compact-phrase">4 weeks minimum off driving after acute disabling vertigo. Document this advice.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label" style="color:rgba(255,255,255,.5)">SCA Quick Reference</div><div class="sum-title" style="color:#fff">Vertigo SCA — Strategy, Phrases &amp; Scoring</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🕐 12-Minute Flow</div>
+    <div class="sca-flow-wrap">
+      <div class="sca-flow-step sca-f1"><div class="sca-f-time">0–2 min</div><div class="sca-f-title">Open + Type of Dizziness</div><div class="sca-f-phrase">"That sounds really frightening. Can you describe what the dizziness is like — is the room spinning, or is it more of a lightheaded feeling?"</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">Relating to Others</span></div><div class="sca-f-avoid">✗ Not confirming rotational vertigo first · ✗ No empathy for acute distress</div></div>
+      <div class="sca-flow-step sca-f2"><div class="sca-f-time">2–4 min</div><div class="sca-f-title">Neurological Red Flag Screen</div><div class="sca-f-phrase">"Any headache when this started? Double vision? Slurred speech? Weakness or numbness anywhere? How long does each bout last?"</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span></div><div class="sca-f-avoid">✗ Performing positional test before this screen · ✗ Missing episode duration question</div></div>
+      <div class="sca-flow-step sca-f3"><div class="sca-f-time">4–7 min</div><div class="sca-f-title">ICE + HINTS Exam</div><div class="sca-f-phrase">"Are you worried this might be a stroke? I'm going to do a specific eye test now — this is actually more sensitive for brain problems than an MRI in the first 48 hours."</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">Relating to Others</span></div><div class="sca-f-avoid">✗ Stroke concern not named · ✗ HINTS not performed · ✗ Dix-Hallpike before HINTS</div></div>
+      <div class="sca-flow-step sca-f4"><div class="sca-f-time">7–10 min</div><div class="sca-f-title">Dix-Hallpike + Epley</div><div class="sca-f-phrase">"The eye test is reassuring — it doesn't suggest a brain problem. Now I'm going to do the specific position test for the crystal type, and if it's positive, I can treat it straight away."</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">Relating to Others</span></div><div class="sca-f-avoid">✗ No Epley offered after positive Dix-Hallpike · ✗ Diagnosis without Dix-Hallpike</div></div>
+      <div class="sca-flow-step sca-f5"><div class="sca-f-time">10–12 min</div><div class="sca-f-title">Safety-Net + DVLA + Close</div><div class="sca-f-phrase">"The prochlorperazine is for 5 days only — stopping it after that actually helps you recover faster. No driving for at least 4 weeks. If you get a headache or weakness with the dizziness — 999."</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">Relating to Others</span><span class="sca-dom-tag gs">Global Skills</span></div><div class="sca-f-avoid">✗ Long-term prochlorperazine · ✗ No DVLA · ✗ No neurological red flag safety-net · ✗ No closing question</div></div>
+    </div>
+    <div class="sum-sub-hdr sca-sub-hdr" style="margin-top:.85rem">🚫 8 Danger Zones</div>
+    <div class="dz-stack">
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Dix-Hallpike before neurological screen or HINTS</strong><br><span class="dz-fix">→ Neurological red flags → HINTS → Dix-Hallpike. This sequence is non-negotiable.</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Prescribing prochlorperazine without the 5-day maximum</strong><br><span class="dz-fix">→ "This is for 5 days only — longer than that actually slows your recovery by interfering with the brain's ability to adapt"</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not naming the stroke concern before examining</strong><br><span class="dz-fix">→ "Are you worried this might be a stroke? That's a very understandable thing to be concerned about with these symptoms."</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not offering the Epley manoeuvre in clinic for confirmed BPPV</strong><br><span class="dz-fix">→ "If the test is positive, I can treat it right here today — there's a specific head movement sequence that works for most people immediately"</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not giving DVLA advice</strong><br><span class="dz-fix">→ "You should not drive for at least 4 weeks — and that advice needs to be documented in your notes today"</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Diagnosing BPPV without Dix-Hallpike test</strong><br><span class="dz-fix">→ The diagnosis of BPPV requires a positive Dix-Hallpike. "I think this might be BPPV — let me do the specific test to confirm it"</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not giving a neurological red flag safety-net</strong><br><span class="dz-fix">→ "If the vertigo returns and you have any headache, double vision, or weakness — 999 immediately"</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not ordering MRI DWI (ordering CT instead) when central features are present</strong><br><span class="dz-fix">→ "CT cannot see the posterior fossa clearly — MRI DWI is the test we need for this area of the brain"</span></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Vertigo · GP Clinical Reasoning Framework v2</strong> · NICE CKS Vertigo (2022) · Kattah JC et al. HINTS to diagnose stroke in the acute vestibular syndrome (Stroke, 2009) · Bhattacharyya N et al. Clinical Practice Guideline: BPPV (Otolaryngol Head Neck Surg, 2017) · Karatas M. Vestibular Neuritis (NEJM, 2021)</p>
+  <p style="margin-top:4px">Teaching clinicians why each step matters — not just what to do · Always consult current BNF/SPC · DVLA standards verified at GOV.UK at the point of use</p>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

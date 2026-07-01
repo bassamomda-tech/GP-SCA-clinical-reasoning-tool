@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DVLA Fitness to Drive · GP / SCA Clinical Reasoning Tool</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=11" />
+<style>
+  .tool-page{ padding:0; }
+  .panel{ padding:28px 32px 80px; max-width:1080px; margin:0 auto; }
+  @media (max-width:760px){ .panel{ padding:18px 14px 60px; } }
+  .tool-breadcrumb{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);margin-bottom:18px}
+  .tool-breadcrumb a{color:var(--teal-2);text-decoration:none;font-weight:600}
+  .tool-breadcrumb a:hover{color:var(--rust)}
+  .tool-breadcrumb svg{width:11px;height:11px;color:var(--muted-2)}
+  .tool-head{padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:20px}
+  .tool-head .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .tool-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.1;margin-top:8px}
+  .tool-head h1 em{font-style:italic;color:var(--teal)}
+  .tool-head p{color:var(--ink-2);font-size:14.5px;line-height:1.6;max-width:70ch;margin-top:8px}
+  .review-stamp{ display:inline-flex; align-items:center; gap:7px; margin-top:12px; font-size:11.5px; font-weight:700; color:var(--teal); background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:5px 12px; }
+  .review-stamp .dot{ width:7px; height:7px; border-radius:50%; background:#15803d; }
+  .review-stamp span.src{ color:var(--muted); font-weight:600; }
+
+  .dv-layout{ display:grid; grid-template-columns:230px 1fr; gap:24px; align-items:start; }
+  @media (max-width:820px){ .dv-layout{ grid-template-columns:1fr; gap:16px; } }
+  .dv-filters{ position:sticky; top:8px; border:1px solid var(--line); border-radius:14px; background:var(--surface); padding:14px; }
+  @media (max-width:820px){ .dv-filters{ position:static; } }
+  .dv-search input{ width:100%; font:inherit; font-size:13.5px; padding:9px 12px; border:1px solid var(--line-2); border-radius:9px; background:#fff; color:var(--ink); }
+  .dv-search input:focus{ outline:none; border-color:var(--teal); }
+  .dv-fhead{ font-size:10.5px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); margin:15px 0 6px; }
+  .dv-flist{ display:flex; flex-direction:column; gap:1px; }
+  .dv-fitem{ display:flex; align-items:center; justify-content:space-between; gap:8px; font:inherit; font-size:13px; font-weight:600; text-align:left; padding:7px 10px; border-radius:8px; border:none; background:transparent; color:var(--ink-2); cursor:pointer; width:100%; }
+  .dv-fitem:hover{ background:var(--bg-soft); }
+  .dv-fitem.on{ background:var(--teal); color:#f6f2e9; }
+  .dv-fitem .n{ font-size:11px; font-weight:700; opacity:.6; font-variant-numeric:tabular-nums; }
+  .dv-fitem.on .n{ opacity:.85; }
+  .dv-reset{ margin-top:14px; width:100%; font:inherit; font-size:12.5px; font-weight:700; padding:8px; border-radius:8px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; }
+  .dv-reset:hover{ background:var(--bg-soft); }
+
+  .dv-count{ font-size:12.5px; font-weight:700; color:var(--muted); margin-bottom:12px; }
+  .dv-grid{ display:flex; flex-direction:column; gap:12px; }
+  .dv-card{ border:1px solid var(--line); border-radius:13px; background:var(--surface); overflow:hidden; }
+  .dv-card-hd{ display:flex; align-items:flex-start; gap:12px; padding:14px 16px; cursor:pointer; }
+  .dv-card-hd:hover{ background:var(--surface-2); }
+  .dv-ttl{ flex:1; }
+  .dv-ttl h3{ font-size:15.5px; font-weight:700; color:var(--ink); line-height:1.25; }
+  .dv-ttl .sys{ font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); margin-top:3px; }
+  .dv-badges{ display:flex; gap:6px; flex-wrap:wrap; align-items:center; }
+  .dv-pill{ font-size:10.5px; font-weight:800; letter-spacing:.03em; text-transform:uppercase; border-radius:999px; padding:3px 9px; white-space:nowrap; }
+  .dv-notify-y{ background:#fef2f2; color:#b91c1c; border:1px solid #fecaca; }
+  .dv-notify-n{ background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; }
+  .dv-stop{ background:#fff7ed; color:#9a3412; border:1px solid #fed7aa; }
+  .dv-chev{ width:18px; height:18px; color:var(--muted-2); flex-shrink:0; transition:transform .18s; margin-top:3px; }
+  .dv-card.open .dv-chev{ transform:rotate(90deg); }
+  .dv-body{ display:none; padding:0 16px 16px; }
+  .dv-card.open .dv-body{ display:block; }
+  .dv-groups{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:4px; }
+  @media (max-width:620px){ .dv-groups{ grid-template-columns:1fr; } }
+  .dv-grp{ border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
+  .dv-grp.g1{ background:#f8fafc; }
+  .dv-grp.g2{ background:#fbf6f4; }
+  .dv-grp h4{ font-size:11px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--teal); margin-bottom:7px; }
+  .dv-grp.g2 h4{ color:var(--rust); }
+  .dv-grp p{ font-size:13px; line-height:1.55; color:var(--ink-2); }
+  .dv-grp p + p{ margin-top:6px; }
+  .dv-note{ margin-top:12px; font-size:12.5px; line-height:1.55; color:var(--ink-2); background:#fffbeb; border:1px solid #fde68a; border-radius:9px; padding:10px 13px; }
+  .dv-note b{ color:var(--ink); }
+  .dv-notifyline{ margin-top:12px; display:flex; gap:9px; align-items:flex-start; font-size:12.5px; line-height:1.5; border-radius:9px; padding:10px 13px; }
+  .dv-notifyline.yes{ background:#fef2f2; border:1px solid #fecaca; color:#7f1d1d; }
+  .dv-notifyline.no{ background:#f0fdf4; border:1px solid #bbf7d0; color:#14532d; }
+  .dv-notifyline .ic{ flex-shrink:0; font-weight:800; }
+  .dv-notifyline b{ color:inherit; }
+  .dv-src{ margin-top:10px; font-size:11px; color:var(--muted); font-weight:600; }
+  .dv-src a{ color:var(--teal); }
+  .dv-empty{ padding:40px 16px; text-align:center; color:var(--muted); font-size:14px; }
+
+  .dv-legend{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:16px; font-size:12px; color:var(--ink-2); }
+  .dv-legend span{ display:flex; align-items:center; gap:6px; font-weight:600; }
+  .dv-legend i{ width:11px; height:11px; border-radius:3px; display:inline-block; }
+
+  .footer-disclaimer{ margin-top:18px; font-size:12.5px; line-height:1.6; color:var(--ink-2); background:var(--surface-2); border:1px solid var(--line); border-radius:12px; padding:16px 18px; }
+  .footer-disclaimer strong{ color:var(--ink); }
+  .footer-disclaimer a{ color:var(--teal); font-weight:600; }
+
+  .dv-official{ margin-top:40px; display:flex; gap:14px; align-items:flex-start; flex-wrap:wrap; background:linear-gradient(110deg,#eef6f4,#fff 75%); border:1px solid var(--teal); border-radius:14px; padding:17px 19px; }
+  .dv-official .dvo-ic{ font-size:20px; }
+  .dv-official .dvo-body{ flex:1 1 280px; min-width:0; }
+  .dv-official .dvo-body b{ display:block; color:var(--ink); font-size:14.5px; margin-bottom:3px; }
+  .dv-official .dvo-body span{ font-size:13px; line-height:1.55; color:var(--ink-2); }
+  .dv-official .dvo-links{ display:flex; flex-direction:column; gap:7px; flex-shrink:0; }
+  .dv-official .dvo-links a{ font-size:13px; font-weight:700; color:#f3f8f6; background:var(--teal); border-radius:9px; padding:8px 14px; text-decoration:none; white-space:nowrap; text-align:center; }
+  .dv-official .dvo-links a:hover{ background:var(--rust); }
+  @media(max-width:620px){ .dv-official .dvo-links{ flex-direction:row; flex-wrap:wrap; } .dv-official .dvo-links a{ flex:1 1 auto; } }
+</style>
+</head>
+<body>
+<button class="sb-toggle" aria-label="Open menu">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-admin"></aside>
+  <main class="main">
+    <div class="tool-page">
+      <div class="panel">
+
+        <div class="tool-breadcrumb">
+          <a href="../index.html">Reasoning GP</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+          <span>Tools</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+          <span style="color:var(--ink-2)">DVLA Fitness to Drive</span>
+        </div>
+
+        <header class="tool-head" data-screen-label="Tool head">
+          <span class="eyebrow">Reasoning Tool · DVLA "Assessing Fitness to Drive" · current guidance</span>
+          <h1>DVLA fitness to drive — <em>can they drive, must they tell DVLA?</em></h1>
+          <p>The question patients ask after almost every significant diagnosis — and one of the slowest to look up mid-clinic. Search a condition for the <b>Group 1</b> (car/motorcycle) and <b>Group 2</b> (lorry/bus) rules: whether they must stop, for how long, and whether they (not you) must notify the DVLA. Always confirm against the live DVLA guide for the exact wording.</p>
+          <div class="review-stamp"><span class="dot"></span> Last reviewed June 2026 <span class="src">· against DVLA “Assessing fitness to drive”</span></div>
+        </header>
+
+        <div class="dv-legend">
+          <span><i style="background:#b91c1c"></i> Must notify DVLA</span>
+          <span><i style="background:#15803d"></i> No need to notify (if criteria met)</span>
+          <span><i style="background:#9a3412"></i> Must stop driving — period stated</span>
+        </div>
+
+        <div class="dv-layout">
+          <aside class="dv-filters">
+            <div class="dv-search"><input type="search" id="dvSearch" placeholder="Search condition…" autocomplete="off"></div>
+            <div class="dv-fhead">System</div>
+            <div class="dv-flist" id="dvSysList"></div>
+            <button class="dv-reset" id="dvReset">Reset</button>
+          </aside>
+          <div>
+            <div class="dv-count" id="dvCount"></div>
+            <div class="dv-grid" id="dvGrid"></div>
+          </div>
+        </div>
+
+        <div class="dv-official">
+          <span class="dvo-ic">🔗</span>
+          <div class="dvo-body">
+            <b>Always check the DVLA official guide for the full, current detail.</b>
+            <span>This tool summarises common scenarios — the DVLA's <em>Assessing fitness to drive: a guide for medical professionals</em> and the condition-by-condition standards are the definitive source.</span>
+          </div>
+          <div class="dvo-links">
+            <a href="https://www.gov.uk/government/publications/assessing-fitness-to-drive-a-guide-for-medical-professionals" target="_blank" rel="noopener">DVLA medical guide ↗</a>
+            <a href="https://www.gov.uk/health-conditions-and-driving" target="_blank" rel="noopener">Check a condition A–Z ↗</a>
+            <a href="https://www.gov.uk/contact-the-dvla" target="_blank" rel="noopener">Tell DVLA / contact ↗</a>
+          </div>
+        </div>
+
+        <div class="footer-disclaimer">
+          <strong>Educational use only — the DVLA guide is the source of truth.</strong> Rules summarise the DVLA's <em>Assessing fitness to drive: a guide for medical professionals</em>. It is the <b>patient's</b> legal duty to notify the DVLA (DVA in Northern Ireland) where required; your duty is to advise them clearly, document that advice, and follow GMC guidance if a patient continues to drive against advice. Group 2 (LGV/PCV) standards are stricter throughout. Thresholds change — verify the exact current criteria and time periods in the <a href="https://www.gov.uk/government/publications/assessing-fitness-to-drive-a-guide-for-medical-professionals" target="_blank" rel="noopener">DVLA guide on gov.uk</a> before advising.
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+/* DVLA fitness-to-drive ruleset — summarised from DVLA "Assessing fitness to drive".
+   g1 = Group 1 (car / motorcycle); g2 = Group 2 (lorry / bus).
+   notify: true = patient must tell DVLA. */
+const DVLA = [
+  // ---------- Neurology ----------
+  { c:'First unprovoked / single seizure', sys:'Neurology', notify:true,
+    g1:'Must stop driving. Off driving for <b>6 months</b> from the seizure if no relevant abnormality on brain scan and EEG and assessed by a specialist as low recurrence risk; otherwise <b>12 months</b>.',
+    g2:'Off driving for <b>5 years</b> (no medication) with specialist review before relicensing — far stricter.',
+    note:'Applies to any first seizure including provoked-looking events. The clock runs from the event, not the diagnosis.' },
+  { c:'Epilepsy / recurrent seizures', sys:'Neurology', notify:true,
+    g1:'Must be <b>seizure-free for 12 months</b> (or established pattern of only-asleep seizures for ≥12 months / 3 years) to drive.',
+    g2:'<b>10 years seizure-free off all anti-epileptic medication</b> before relicensing.',
+    note:'Seizure on medication change: usually 6 months off driving; can resume earlier if previous medication reinstated and no further seizures, on specialist advice.' },
+  { c:'TIA or stroke (single)', sys:'Neurology', notify:false,
+    g1:'Must <b>not drive for 1 month</b>. May resume after 1 month if satisfactory clinical recovery; <b>need not notify DVLA</b> unless residual deficit (e.g. visual field, cognition, limb weakness) persists at 1 month.',
+    g2:'Must <b>not drive for 1 year</b>; relicensing requires DVLA notification and meeting functional/medical standards.',
+    note:'Multiple TIAs over a short period → stop driving and notify DVLA; relicensing after 3 months free of further events.' },
+  { c:'Cognitive impairment / dementia', sys:'Neurology', notify:true,
+    g1:'Must notify DVLA. Licensing decided on medical reports ± on-road assessment; early/mild may continue with annual review.',
+    g2:'Almost always refused / revoked.',
+    note:'Document the conversation. Lack of insight is itself a safety concern — consider GMC guidance if the person continues to drive unsafely.' },
+  // ---------- Cardiovascular ----------
+  { c:'Syncope — simple faint / vasovagal', sys:'Cardiovascular', notify:false,
+    g1:'No restriction for a typical situational/vasovagal faint with the "3 Ps" (posture, provoking factor, prodrome).',
+    g2:'No restriction if clearly typical vasovagal.',
+    note:'The reassuring case. The distinction from unexplained syncope is everything.' },
+  { c:'Syncope — unexplained / loss of consciousness', sys:'Cardiovascular', notify:true,
+    g1:'Single unexplained LoC with low risk: <b>4 weeks</b> off driving. Higher-risk or recurrent: <b>6–12 months</b> depending on cause and treatment.',
+    g2:'Generally <b>3 months</b> (low risk) up to 12 months; notify DVLA.',
+    note:'"Cough syncope", recurrent unexplained LoC, or LoC while sitting/lying are treated as higher risk.' },
+  { c:'Acute coronary syndrome / MI', sys:'Cardiovascular', notify:false,
+    g1:'Stop driving <b>1 week</b> if successfully treated by PCI; <b>4 weeks</b> if not treated by PCI. <b>Need not notify DVLA</b>.',
+    g2:'Stop driving <b>6 weeks</b>; notify DVLA; relicensing requires meeting exercise/functional criteria.',
+    note:'Resume only with satisfactory recovery and no other disqualifying condition.' },
+  { c:'Angina', sys:'Cardiovascular', notify:false,
+    g1:'Must stop driving when symptoms occur <b>at rest, with emotion, or at the wheel</b>. May drive once symptoms controlled. Need not notify DVLA.',
+    g2:'Disqualified if angina ongoing; notify DVLA; relicensing when symptom-free and meeting functional criteria.',
+    note:'' },
+  { c:'Pacemaker insertion', sys:'Cardiovascular', notify:true,
+    g1:'Stop driving for <b>1 week</b>; must notify DVLA.',
+    g2:'Stop driving for <b>6 weeks</b>; notify DVLA.',
+    note:'Box change also requires 1 week off (Group 1).' },
+  { c:'ICD (implantable defibrillator)', sys:'Cardiovascular', notify:true,
+    g1:'For primary prevention: <b>1 month</b> off driving. For secondary prevention (after arrhythmia/arrest): <b>6 months</b>. Must notify DVLA; further restrictions after any shock/therapy.',
+    g2:'<b>Permanently barred</b> from Group 2 driving once an ICD is fitted.',
+    note:'Any appropriate shock with symptoms → further 6 months off (Group 1).' },
+  { c:'Arrhythmia (significant, e.g. AF with symptoms)', sys:'Cardiovascular', notify:true,
+    g1:'Must stop driving if the arrhythmia has caused or is likely to cause incapacity. May drive <b>4 weeks</b> after the cause is controlled. Notify DVLA if disabling.',
+    g2:'Notify DVLA; relicensing 3 months after control and meeting criteria.',
+    note:'Asymptomatic, controlled AF generally needs no restriction.' },
+  { c:'Aortic aneurysm', sys:'Cardiovascular', notify:true,
+    g1:'Notify DVLA if AAA ≥ <b>6.0 cm</b>. Disqualified at ≥ <b>6.5 cm</b>.',
+    g2:'Notify DVLA at ≥ <b>5.5 cm</b>; disqualified at ≥ 5.5 cm until treated.',
+    note:'Annual review for those licensed with an aneurysm below threshold.' },
+  { c:'Hypertension (high blood pressure)', sys:'Cardiovascular', notify:false,
+    notifyText:'<b>Group 1:</b> no need to notify DVLA. <b>Group 2:</b> must notify <b>only if</b> resting BP is consistently ≥180 systolic and/or ≥100 diastolic, or treatment causes side effects affecting safe driving.',
+    g1:'May continue driving. <b>No need to notify DVLA</b> unless drug treatment causes side effects that affect driving (e.g. dizziness, postural hypotension). Manage the BP and any side effects.',
+    g2:'Disqualified — must <b>stop driving and notify DVLA</b> — if resting BP is <b>consistently ≥180 mmHg systolic and/or ≥100 mmHg diastolic</b>. May be relicensed once BP is controlled and treatment is not causing disqualifying side effects.',
+    note:'Look for the cause of severe/accelerated hypertension and for end-organ effects (visual fields, renal, cardiac) — any of those may carry their own driving rules. A hypertensive emergency causing symptoms means stop until controlled.' },
+  // ---------- Diabetes ----------
+  { c:'Diabetes — insulin treated', sys:'Diabetes', notify:true,
+    notifyText:'<b>Must notify DVLA</b> for any insulin treatment lasting (or expected to last) more than 3 months. Group 1 licences are then issued for 1, 2 or 3 years and reviewed.',
+    g1:'May drive if <b>all</b> of: (1) <b>adequate awareness of hypoglycaemia</b>; (2) <b>no more than one severe hypo</b> (needing the help of another person) in the last 12 months; (3) checks glucose <b>no more than 2 hours before driving</b> and <b>every 2 hours</b> on long journeys; (4) appropriate monitoring (meter, or flash/CGM with confirmatory finger-prick when low or symptomatic). Carry fast-acting carbohydrate in the vehicle. Must notify DVLA.',
+    g2:'Much stricter: must use a glucose meter with a <b>3-month memory</b>, have had <b>no severe hypo in the last 12 months</b>, <b>full hypo awareness</b>, finger-prick test (not CGM alone) within 2 hours of driving and 2-hourly, and an <b>annual specialist assessment</b>. Must notify DVLA.',
+    note:'"5 to drive": glucose should be <b>≥5.0 mmol/L</b> before driving. If 4.0–5.0, eat a snack first. If <b>below 4.0 (or hypo symptoms)</b> — do not drive, treat, and wait <b>45 minutes</b> after glucose returns to normal before driving.' },
+  { c:'Diabetes — temporary insulin (gestational, steroid-induced, post-MI, short course)', sys:'Diabetes', notify:false,
+    notifyText:'<b>Group 1:</b> need not notify DVLA <b>provided</b> under medical supervision and no disabling hypos — but must follow the same glucose-monitoring rules while on insulin. <b>Group 2:</b> must notify DVLA and licence is suspended while on insulin.',
+    g1:'May continue (Group 1) without notifying, as long as the patient is under medical supervision, has not had disabling hypoglycaemia, and follows the monitoring/"5 to drive" rules while on insulin.',
+    g2:'Must stop Group 2 driving and notify DVLA for the duration of insulin treatment; may reapply once insulin is stopped or the relevant standard is met.',
+    note:'Gestational diabetes requiring insulin is the classic example — reassure that Group 1 driving can usually continue with monitoring, but the rules still apply.' },
+  { c:'Diabetes — sulfonylureas / glinides (tablets that can cause hypos)', sys:'Diabetes', notify:false,
+    notifyText:'<b>Group 1:</b> no need to notify <b>unless</b> the patient has had more than one severe hypo in 12 months or impaired awareness → then notify. <b>Group 2:</b> must notify DVLA and meet the hypo-awareness and monitoring standards.',
+    g1:'May drive without notifying. Should monitor glucose when there is a relevant risk of hypoglycaemia. If <b>more than one severe hypo</b> in 12 months, or impaired awareness, → stop and notify DVLA.',
+    g2:'Must notify DVLA; must monitor glucose appropriately and meet the same hypo-awareness criteria as for insulin.',
+    note:'Gliclazide, glipizide, repaglinide, nateglinide are the common culprits. Newer agents (DPP-4, GLP-1, SGLT2) rarely cause hypos on their own.' },
+  { c:'Diabetes — diet / metformin / non-hypo agents only', sys:'Diabetes', notify:false,
+    notifyText:'<b>No need to notify DVLA</b> (Group 1 or 2) <b>unless</b> the patient develops relevant complications — e.g. eye/visual-field, limb, or cardiac problems — or treatment is changed to one that can cause hypoglycaemia.',
+    g1:'No DVLA involvement needed for diet-controlled diabetes, metformin alone, or other agents that do not cause hypoglycaemia (DPP-4, GLP-1, SGLT2, pioglitazone).',
+    g2:'Same — no need to notify unless complications develop or treatment changes to a hypo-causing drug.',
+    note:'Notification is triggered by complications (e.g. retinopathy affecting vision) or by a change of treatment — review at each medication step-up.' },
+  { c:'Severe hypoglycaemia (needing help / impaired awareness)', sys:'Diabetes', notify:true,
+    notifyText:'<b>Must notify DVLA</b> if there have been <b>2+ episodes of severe hypoglycaemia</b> (needing another person\u2019s help) within 12 months, or if hypoglycaemia awareness is impaired. Stop driving in the meantime.',
+    g1:'<b>Stop driving immediately</b> after a severe hypo. Two or more severe hypos in 12 months, or impaired awareness, → must <b>not drive and must notify DVLA</b>; relicensing once awareness is regained and the pattern resolves (usually a 3-month review).',
+    g2:'A <b>single</b> episode of severe hypoglycaemia while holding a Group 2 licence means the licence is <b>revoked</b>; the patient may reapply once the criteria are met and a specialist confirms hypo awareness.',
+    note:'A severe hypo at the wheel is treated very seriously. Document the advice to stop driving and to notify DVLA.' },
+  { c:'Diabetic retinopathy / eye complications', sys:'Diabetes', notify:true,
+    notifyText:'<b>Must notify DVLA</b> if visual acuity or visual fields no longer meet the standard, or after <b>laser treatment to both eyes</b> / extensive retinal laser affecting fields.',
+    g1:'Must meet the visual standards — number-plate test at 20 m and a field of at least <b>120° horizontally</b> with no significant central defect. Notify DVLA if the standard is not met, or after bilateral/extensive retinal laser.',
+    g2:'Higher visual standards apply (acuity and fields); notify DVLA and meet the Group 2 standard before relicensing.',
+    note:'Single eye laser with preserved fields usually does not need notification — it is bilateral/extensive treatment or a failed field/acuity test that triggers it.' },
+  { c:'Diabetic peripheral neuropathy / limb complications', sys:'Diabetes', notify:false,
+    notifyText:'<b>Group 1:</b> need not notify <b>unless</b> the neuropathy affects safe control of the vehicle (e.g. loss of foot sensation/power, amputation) — then notify and a driving assessment / adapted controls may be needed. <b>Group 2:</b> must notify if it affects driving.',
+    g1:'May drive without notifying if limb function is adequate to control the vehicle safely. If sensory/motor loss, foot ulceration, Charcot foot or amputation <b>affects pedal control</b>, → notify DVLA; an assessment and <b>adapted controls / automatic vehicle</b> may allow continued driving.',
+    g2:'Must notify DVLA if peripheral neuropathy affects the ability to operate the vehicle safely; assessed individually.',
+    note:'The trigger is functional — can they reliably feel and operate the pedals? Severe foot disease and lower-limb amputation are the common reasons to notify.' },
+  { c:'Diabetic kidney disease / chronic kidney disease (incl. dialysis)', sys:'Diabetes', notify:false,
+    notifyText:'<b>Group 1:</b> need not notify for CKD itself <b>unless</b> there are disabling symptoms (e.g. cognitive impairment, blackouts, severe anaemia, eye complications). <b>Group 2:</b> must notify DVLA.',
+    g1:'Stable CKD — including those on <b>dialysis</b> — may drive and <b>need not notify</b> the DVLA, provided there are no disqualifying symptoms or complications affecting driving.',
+    g2:'Must <b>notify DVLA</b>; relicensing depends on freedom from disqualifying symptoms/complications and meeting the medical standard.',
+    note:'It is the complications of advanced CKD — not the eGFR number — that affect driving: syncope, cognitive change, severe anaemia, or associated retinopathy each carry their own rules.' },
+  // ---------- Vision ----------
+  { c:'Visual acuity / field defect', sys:'Vision', notify:true,
+    g1:'Must meet the number-plate test (20 m) and a visual field of at least <b>120° horizontally</b>. Notify DVLA for any field defect, diplopia, or failing the standard.',
+    g2:'Much higher standard: acuity ≥6/7.5 better eye and ≥6/60 worse eye; stricter field rules.',
+    note:'Monocular vision: may drive Group 1 once adapted and field in remaining eye is normal — notify DVLA.' },
+  // ---------- Mental health / substance ----------
+  { c:'Alcohol dependence', sys:'Mental health & substance', notify:true,
+    g1:'Must stop and notify DVLA. Relicensing after <b>1 year</b> of controlled drinking or abstinence with no relevant organ damage.',
+    g2:'Relicensing after <b>3 years</b> abstinence/controlled drinking.',
+    note:'Alcohol misuse (not dependence): 6 months (G1) / 1 year (G2).' },
+  { c:'Drug (illicit/dependence) misuse', sys:'Mental health & substance', notify:true,
+    g1:'Notify DVLA. Persistent use/dependence on cannabis, opioids, cocaine, benzodiazepines etc → licence refused/revoked; relicensing after a period of abstinence (varies by drug).',
+    g2:'Longer abstinence periods required.',
+    note:'Includes misuse of prescribed drugs.' },
+  { c:'Psychosis / acute psychotic episode', sys:'Mental health & substance', notify:true,
+    g1:'Must stop driving during acute illness and notify DVLA. Relicensing when stable, well, insightful and adherent (often ≥3 months) on specialist advice.',
+    g2:'Stricter — longer period of stability required.',
+    note:'Sedating medication that impairs driving is itself disqualifying.' },
+  { c:'Bipolar / severe mood disorder (acute)', sys:'Mental health & substance', notify:true,
+    g1:'Notify DVLA if acute episode affects driving safety. Relicensing when stable, typically ≥3 months well.',
+    g2:'Stricter; longer stability required.',
+    note:'Mild–moderate anxiety/depression without significant memory/concentration/suicidal-distraction problems usually needs no notification.' },
+  // ---------- Sleep / ENT ----------
+  { c:'Obstructive sleep apnoea (OSA) with sleepiness', sys:'Sleep & ENT', notify:true,
+    g1:'Must <b>stop driving</b> until symptoms (excessive sleepiness) are controlled with treatment, then may resume. Notify DVLA if confirmed OSA syndrome causing sleepiness.',
+    g2:'Notify DVLA; must demonstrate adequate treatment/control before driving — reviewed more frequently.',
+    note:'Suspected OSA awaiting assessment: advise not to drive if excessively sleepy. Adherence to CPAP is key.' },
+  { c:'Vertigo / Ménière\u2019s (sudden, disabling)', sys:'Sleep & ENT', notify:true,
+    g1:'Must stop driving during episodes liable to occur without warning; notify DVLA if sudden/unpredictable disabling vertigo. May drive when controlled.',
+    g2:'Notify DVLA; relicensing when symptoms controlled.',
+    note:'' },
+  // ---------- Surgery / other ----------
+  { c:'After surgery (general)', sys:'Surgery & other', notify:false,
+    g1:'No fixed period — resume when safe to perform an emergency stop and not distracted by pain/medication. Usually days to weeks. Need not notify unless an underlying condition does.',
+    g2:'Discuss with surgeon; usually longer.',
+    note:'Check the patient\u2019s motor insurer too — many require fitness confirmation.' },
+  { c:'Eye surgery / cataract', sys:'Surgery & other', notify:false,
+    g1:'May drive once meeting the visual standard (number-plate test) and feeling confident — usually 1–2 days post cataract surgery.',
+    g2:'Must meet Group 2 visual standards.',
+    note:'' },
+];
+
+(function(){
+  const $ = q => document.querySelector(q);
+  const esc = s => String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  let q='', sys='all';
+
+  function filtered(){
+    const qq=q.trim().toLowerCase();
+    return DVLA.filter(d=>{
+      if(sys!=='all' && d.sys!==sys) return false;
+      if(qq){ if(!((d.c+' '+d.sys+' '+d.note+' '+d.g1+' '+d.g2).toLowerCase().includes(qq))) return false; }
+      return true;
+    });
+  }
+  function renderSys(){
+    const counts={};
+    DVLA.forEach(d=>counts[d.sys]=(counts[d.sys]||0)+1);
+    const order=['Neurology','Cardiovascular','Diabetes','Vision','Mental health & substance','Sleep & ENT','Surgery & other'];
+    const systems=order.filter(s=>counts[s]);
+    let html=`<button class="dv-fitem${sys==='all'?' on':''}" data-sys="all">All systems <span class="n">${DVLA.length}</span></button>`;
+    html+=systems.map(s=>`<button class="dv-fitem${sys===s?' on':''}" data-sys="${esc(s)}">${esc(s)} <span class="n">${counts[s]}</span></button>`).join('');
+    $('#dvSysList').innerHTML=html;
+  }
+  function card(d){
+    return `<div class="dv-card">
+      <div class="dv-card-hd">
+        <div class="dv-ttl"><h3>${esc(d.c)}</h3><div class="sys">${esc(d.sys)}</div></div>
+        <div class="dv-badges">
+          <span class="dv-pill ${d.notify?'dv-notify-y':'dv-notify-n'}">${d.notify?'Notify DVLA':'No notify*'}</span>
+        </div>
+        <svg class="dv-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+      </div>
+      <div class="dv-body">
+        <div class="dv-groups">
+          <div class="dv-grp g1"><h4>Group 1 · car / motorcycle</h4><p>${d.g1}</p></div>
+          <div class="dv-grp g2"><h4>Group 2 · lorry / bus</h4><p>${d.g2}</p></div>
+        </div>
+        <div class="dv-notifyline ${d.notify?'yes':'no'}">
+          <span class="ic">${d.notify?'⚠':'✓'}</span>
+          <span><b>Must they notify DVLA?</b> ${d.notifyText ? d.notifyText : (d.notify ? 'Yes — it is the patient\u2019s legal duty to notify the DVLA for this condition.' : 'Not for Group 1 if the criteria above are met. Group 2 standards are stricter — check the card.')}</span>
+        </div>
+        ${d.note?`<div class="dv-note"><b>Note:</b> ${d.note}</div>`:''}
+        <div class="dv-src">Source: DVLA — Assessing fitness to drive. *"No notify" applies only if the stated criteria are met; verify the current wording in the <a href="https://www.gov.uk/government/publications/assessing-fitness-to-drive-a-guide-for-medical-professionals" target="_blank" rel="noopener">DVLA official guide ↗</a>.</div>
+      </div>
+    </div>`;
+  }
+  function render(){
+    const list=filtered();
+    $('#dvCount').textContent=`${list.length} condition${list.length!==1?'s':''}`;
+    $('#dvGrid').innerHTML = list.length ? list.map(card).join('') : `<div class="dv-empty">No conditions match. Try a different term, or check the DVLA guide directly.</div>`;
+  }
+  renderSys(); render();
+  $('#dvSysList').addEventListener('click',e=>{const b=e.target.closest('.dv-fitem'); if(!b)return; sys=b.dataset.sys; renderSys(); render();});
+  $('#dvSearch').addEventListener('input',e=>{q=e.target.value; render();});
+  $('#dvReset').addEventListener('click',()=>{q='';sys='all';$('#dvSearch').value='';renderSys();render();});
+  $('#dvGrid').addEventListener('click',e=>{const hd=e.target.closest('.dv-card-hd'); if(!hd)return; hd.parentElement.classList.toggle('open');});
+})();
+</script>
+
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

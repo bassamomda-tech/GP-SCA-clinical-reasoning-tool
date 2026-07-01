@@ -1,0 +1,116 @@
+/* ════════════════════════════════════════════════════════════
+   Reasoning GP — Algorithm "Diagram view" (flowchart) + view toggle
+   Shared across all algorithm pathways. All flowchart rules are
+   scoped under #viewDiagram so they never touch the step-card view.
+   ════════════════════════════════════════════════════════════ */
+
+/* ── View toggle (sits in .alg-progress bar) ── */
+.view-toggle { display:inline-flex; background:#eef1f5; border:1px solid #d1d9e8; border-radius:8px; padding:2px; gap:2px; margin-right:4px; }
+.vt-btn { font-family:inherit; font-size:0.78rem; font-weight:600; color:#5a6678; background:none; border:none; padding:4px 13px; border-radius:6px; cursor:pointer; transition:all .15s; }
+.vt-btn[aria-selected="true"] { background:#0f2d52; color:#fff; }
+.vt-btn:not([aria-selected="true"]):hover { color:#0f2d52; }
+
+/* ── Show/hide logic (Diagram is the default view) ── */
+#viewDiagram { display:block; }
+#viewSteps, #flow { display:none; }
+.alg-progress .prog-only { display:none; }
+.alg-progress > *:not(.view-toggle) { display:none; }
+
+/* Steps view when explicitly selected */
+body.steps-mode #viewDiagram { display:none; }
+body.steps-mode #viewSteps { display:block; }
+body.steps-mode #flow { display:block; }
+body.steps-mode .alg-progress .prog-only { display:revert; }
+body.steps-mode .alg-progress > *:not(.view-toggle) { display:revert; }
+
+/* ── Diagram legend ── */
+#viewDiagram .dg-legend { max-width:1000px; margin:18px auto 0; padding:10px 18px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; font-size:0.78rem; color:#5a6678; line-height:1.5; }
+#viewDiagram .dg-legend .legend { display:flex; gap:12px; flex-wrap:wrap; margin-left:auto; }
+#viewDiagram .lg { display:inline-flex; align-items:center; gap:5px; font-weight:600; font-size:0.72rem; color:#4a5568; }
+#viewDiagram .sw { width:13px; height:13px; border-radius:4px; border:1.5px solid; flex-shrink:0; }
+#viewDiagram .sw.start { background:#0f2d52; border-color:#0f2d52; }
+#viewDiagram .sw.dec { background:#fffaf0; border-color:#dd9a3c; }
+#viewDiagram .sw.act { background:#f4faf6; border-color:#a9c6b3; }
+#viewDiagram .sw.ix { background:#eef5fc; border-color:#7ba7d7; }
+#viewDiagram .sw.refer { background:#faf3ff; border-color:#a982dd; }
+#viewDiagram .sw.stop { background:#fff4f3; border-color:#e08a82; }
+
+/* ── Chart + node boxes ── */
+#viewDiagram .chart { max-width:1000px; margin:8px auto 0; padding:0 18px; }
+#viewDiagram .box { background:#fff; border:1.5px solid #c9d3e0; border-radius:12px; padding:13px 16px; font-size:0.86rem; line-height:1.5; color:#2d3748; box-shadow:0 1px 2px rgba(15,45,82,.05); position:relative; }
+#viewDiagram .box .lbl { display:block; font-size:0.62rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px; }
+#viewDiagram .box .ttl { font-weight:700; font-size:0.92rem; color:#1a2c45; display:block; }
+#viewDiagram .box .ttl + .body { margin-top:5px; }
+#viewDiagram .box .body { color:#46566b; font-size:0.82rem; }
+#viewDiagram .box ul { margin:5px 0 0; padding-left:18px; }
+#viewDiagram .box li { margin-bottom:2px; }
+#viewDiagram .box b { font-weight:600; color:#2d3748; }
+#viewDiagram .box.start { background:#0f2d52; border-color:#0f2d52; color:#fff; text-align:center; }
+#viewDiagram .box.start .ttl { color:#fff; font-size:1rem; }
+#viewDiagram .box.start .body { color:rgba(255,255,255,.78); }
+#viewDiagram .box.start .lbl { color:rgba(255,255,255,.6); }
+#viewDiagram .box.start b { color:#fff; }
+#viewDiagram .box.dec { background:#fffaf0; border-color:#dd9a3c; }
+#viewDiagram .box.dec .lbl { color:#b9700f; }
+#viewDiagram .box.dec .ttl { color:#8a5208; }
+#viewDiagram .box.ix { background:#eef5fc; border-color:#7ba7d7; }
+#viewDiagram .box.ix .lbl { color:#2b6cb0; }
+#viewDiagram .box.ix .ttl { color:#1c4f86; }
+#viewDiagram .box.act { border-color:#a9c6b3; background:#f4faf6; }
+#viewDiagram .box.act .lbl { color:#3a6b46; }
+#viewDiagram .box.act .ttl { color:#27603b; }
+#viewDiagram .box.refer { background:#faf3ff; border-color:#a982dd; }
+#viewDiagram .box.refer .lbl { color:#6b46c1; }
+#viewDiagram .box.refer .ttl { color:#553099; }
+#viewDiagram .box.stop { background:#fff4f3; border-color:#e08a82; }
+#viewDiagram .box.stop .lbl { color:#c53030; }
+#viewDiagram .box.stop .ttl { color:#9b2c2c; }
+#viewDiagram .lbl .pill { text-transform:none; letter-spacing:normal; white-space:nowrap; }
+
+/* ── pills (self-contained so pages without step-card pills still work) ── */
+#viewDiagram .pill { display:inline-block; border-radius:99px; padding:1px 9px; font-size:0.68rem; font-weight:700; line-height:1.6; margin:1px 2px 1px 0; white-space:nowrap; border:1px solid; }
+#viewDiagram .pill-red    { background:#fff5f5; color:#c53030; border-color:#f3b2ad; }
+#viewDiagram .pill-purple { background:#faf5ff; color:#6b46c1; border-color:#d6bcfa; }
+#viewDiagram .pill-blue   { background:#ebf5fd; color:#2b6cb0; border-color:#9cc6ec; }
+#viewDiagram .pill-green  { background:#f0fff4; color:#276749; border-color:#9ae6b4; }
+#viewDiagram .pill-amber  { background:#fffbeb; color:#92400e; border-color:#fcd34d; }
+#viewDiagram .pill-teal   { background:#e6fffa; color:#234e52; border-color:#81e6d9; }
+#viewDiagram .pill-grey   { background:#f3f5f8; color:#4a5568; border-color:#cbd5e0; }
+
+/* ── Connectors ── */
+#viewDiagram .flow { display:flex; flex-direction:column; align-items:center; }
+#viewDiagram .flow > .box { width:100%; max-width:620px; }
+#viewDiagram .arrow { width:0; height:34px; display:flex; flex-direction:column; align-items:center; position:relative; }
+#viewDiagram .arrow::before { content:""; flex:1; width:2px; background:#9fb0c6; }
+#viewDiagram .arrow::after { content:""; position:absolute; bottom:-1px; left:50%; transform:translateX(-50%); border-left:6px solid transparent; border-right:6px solid transparent; border-top:8px solid #9fb0c6; }
+#viewDiagram .arrow .tag { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:#f4f6f9; padding:1px 8px; border-radius:99px; font-size:0.66rem; font-weight:700; color:#5a6678; white-space:nowrap; border:1px solid #cdd6e2; }
+
+/* ── Branch split ── */
+#viewDiagram .split { width:100%; }
+#viewDiagram .split .stem { height:18px; width:2px; background:#9fb0c6; margin:0 auto; }
+#viewDiagram .split .bar { height:2px; background:#9fb0c6; margin:0 auto; }
+#viewDiagram .cols { display:grid; gap:16px; grid-template-columns:repeat(3,1fr); }
+#viewDiagram .cols.two { grid-template-columns:repeat(2,1fr); }
+#viewDiagram .cols.four { grid-template-columns:repeat(4,1fr); }
+#viewDiagram .col { display:flex; flex-direction:column; align-items:center; position:relative; }
+#viewDiagram .col .drop { height:16px; width:2px; background:#9fb0c6; }
+#viewDiagram .col .blabel { background:#fffaf0; border:1px solid #e6c489; color:#8a5208; font-size:0.66rem; font-weight:700; border-radius:99px; padding:2px 10px; margin-bottom:6px; text-align:center; }
+#viewDiagram .col .box { width:100%; }
+#viewDiagram .col .arrow { margin:0 auto; }
+#viewDiagram .col .arrow.short { height:24px; }
+#viewDiagram .cluster { display:flex; flex-direction:column; align-items:center; width:100%; }
+
+/* ── Caution band ── */
+#viewDiagram .band { max-width:1000px; margin:24px auto 0; padding:0 18px; }
+#viewDiagram .caution { background:#fffbeb; border:1px solid #f5d97a; border-left:4px solid #dd9a3c; border-radius:10px; padding:12px 15px; font-size:0.82rem; color:#6b4e0f; line-height:1.55; }
+#viewDiagram .caution b { color:#8a5208; }
+#viewDiagram .caution.crit { background:#fff4f3; border-color:#f3b2ad; border-left-color:#c53030; color:#7a241a; }
+#viewDiagram .caution.crit b { color:#991b1b; }
+
+@media (max-width:760px) {
+  #viewDiagram .cols, #viewDiagram .cols.two, #viewDiagram .cols.four { grid-template-columns:1fr; }
+  #viewDiagram .split .bar { display:none; }
+  #viewDiagram .col .drop { display:none; }
+  #viewDiagram .col { margin-bottom:8px; }
+  #viewDiagram .col::before { content:""; width:2px; height:16px; background:#9fb0c6; display:block; }
+}

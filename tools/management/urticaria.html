@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Urticaria — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Urticaria management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🌡️",
+  title:"Urticaria",
+  stemTitle:"Urticaria — ongoing management",
+  stemSub:"Primary-care management of acute and chronic urticaria \u2014 trigger avoidance, non-sedating antihistamines with up-dosing for chronic disease, short steroid for severe flares \u2014 with the angioedema/anaphylaxis safety net. CKS / BSACI \u00b7 2026.",
+  guideline:"NICE CKS / BSACI",
+  glance:[
+    {lbl:"Type", val:"Acute <6 wk / chronic \u22656 wk", sub:"\u00b1 angioedema"},
+    {lbl:"First-line", val:"Non-sedating H1", sub:"standard dose"},
+    {lbl:"Chronic", val:"Up-dose to 4\u00d7", sub:"licensed for some"},
+    {lbl:"Severe flare", val:"Short oral steroid", sub:"not long-term"},
+    {lbl:"Refractory chronic", val:"Omalizumab", sub:"specialist"},
+    {lbl:"Red flag", val:"Airway angioedema", sub:"999"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Classify and exclude mimics",
+      blocks:[
+        {b:"kv", rows:[
+          ["Acute vs chronic","Acute &lt;6 weeks (often viral/drug/food trigger) vs chronic \u22656 weeks (usually spontaneous, idiopathic/autoimmune)"],
+          ["With angioedema?","Urticaria + angioedema; <b>angioedema without weals</b> \u2192 consider ACE-inhibitor cause or C1-esterase deficiency"],
+          ["Triggers","NSAIDs, opiates, infection, foods, physical (cold/heat/pressure), stress, alcohol"],
+          ["Exclude vasculitis","Individual weals lasting &gt;24 h, painful, leaving bruising \u2192 urticarial vasculitis (refer/biopsy)"]
+        ]},
+        {b:"why", html:"Most urticaria is self-limiting and antihistamine-responsive \u2014 so management is reassurance, trigger avoidance and antihistamines. The important exceptions to spot are <strong>angioedema threatening the airway</strong> (emergency), <strong>ACE-inhibitor angioedema</strong>, and <strong>urticarial vasculitis</strong> (weals lasting &gt;24 h), which behave differently."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Trigger avoidance and skin comfort",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🚫 Avoid triggers", html:"NSAIDs, opioids, alcohol, overheating, tight clothing, identified physical triggers."},
+          {t:"❄️ Cooling", html:"Cool showers, loose cotton clothing, cool environment to reduce itch."},
+          {t:"💊 Review drugs", html:"Stop ACE inhibitor if angioedema; review any culprit medications."},
+          {t:"🧠 Stress", html:"Stress can exacerbate chronic urticaria \u2014 acknowledge and support."},
+          {t:"📓 Diary", html:"Trigger/symptom diary for chronic or recurrent cases; UAS7 to track severity."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 stepwise", title:"Antihistamine-led ladder",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Non-sedating H1 antihistamine", when:"standard dose",
+           html:"Regular (not just PRN) second-generation antihistamine \u2014 <b>cetirizine 10 mg</b>, <b>fexofenadine 180 mg</b> or <b>loratadine 10 mg once daily</b> \u2014 first-line for acute and chronic urticaria; if uncontrolled, up-dose to up to 4\u00d7 standard (off-label, per BSACI/CKS)."},
+          {step:"Step 2", title:"Up-dose antihistamine", when:"chronic \u2014 up to 4\u00d7 standard",
+           fromLabel:"inadequate control of chronic urticaria",
+           html:"Increase to <b>up to 4\u00d7 the standard dose</b> (e.g. cetirizine 10\u00a0mg up to QDS \u2014 off-label) for chronic spontaneous urticaria; consider adding a different second-generation agent."},
+          {step:"Flare", title:"Short oral corticosteroid", when:"severe acute flare",
+           fromLabel:"severe flare / extensive",
+           html:"A short course of oral prednisolone for a severe flare \u2014 <b>prednisolone 40 mg once daily for up to 7 days</b>; <b>not</b> for long-term control."},
+          {step:"Refractory", title:"Omalizumab / ciclosporin", when:"specialist",
+           fromLabel:"chronic urticaria refractory to up-dosed antihistamines",
+           html:"Refer for omalizumab (or ciclosporin) for antihistamine-refractory chronic spontaneous urticaria."}
+        ]},
+        {b:"warn", html:"Avoid repeated/long-term oral steroids for chronic urticaria. For <b>angioedema affecting the airway</b>, treat as an emergency (adrenaline if anaphylaxis)."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Control and response",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Symptom control (UAS7)","Each review","Up-dose antihistamine if chronic and uncontrolled"],
+          ["Triggers / drugs","Each review","Remove culprits (esp. ACE inhibitor, NSAIDs)"],
+          ["Atypical features","Ongoing","Weals &gt;24 h / bruising \u2192 reconsider vasculitis"],
+          ["Refractory","After adequate up-dosing","Refer for specialist biologics"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"Acute", title:"Reassure", html:"Most acute urticaria settles in days\u2013weeks with a regular antihistamine; safety-net angioedema."},
+          {n:"2", when:"Chronic \u2014 weeks", title:"Titrate", html:"Up-dose antihistamine; track UAS7; remove triggers."},
+          {n:"3", when:"If refractory", title:"Refer", html:"Antihistamine-refractory chronic urticaria \u2192 dermatology/immunology for omalizumab."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not controlled? Check before escalating",
+      arrow:"\u2026if urticaria persists",
+      intro:"Confirm adequate antihistamine dosing and reconsider the diagnosis.",
+      checks:[
+        {b:"1 \u00b7 Dose", html:"Regular (not PRN) and up-dosed (up to 4\u00d7) for chronic disease?"},
+        {b:"2 \u00b7 Triggers / drugs", html:"NSAIDs, ACE inhibitor, alcohol, physical triggers removed?"},
+        {b:"3 \u00b7 Diagnosis", html:"Weals &gt;24 h / painful / bruising \u2192 urticarial vasculitis; angioedema-only \u2192 other cause."},
+        {b:"4 \u00b7 Adherence", html:"Taken consistently? Many under-use antihistamines."},
+        {b:"5 \u00b7 Refer", html:"Refractory chronic urticaria \u2192 specialist (omalizumab)."}
+      ],
+      back:"Up-dosed, triggers removed, diagnosis confirmed \u2192 refer for biologics"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Airway angioedema / anaphylaxis", html:"\u201cSwelling of the tongue, throat or lips with difficulty breathing or swallowing, or feeling faint \u2014 call 999 (use an adrenaline pen if you have one).\u201d"},
+          {t:"💊 ACE inhibitor", html:"\u201cIf you take a \u2018-pril\u2019 blood-pressure tablet and get facial/tongue swelling \u2014 stop it and contact us; it can cause this even years on.\u201d"},
+          {t:"⚠️ Vasculitis clue", html:"\u201cIf individual spots last more than a day, hurt, or bruise \u2014 tell us; that needs different assessment.\u201d"},
+          {t:"💤 Antihistamines", html:"\u201cTake the antihistamine regularly, not just when it flares \u2014 that\u2019s how it controls it.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"emergency for airway; specialist for refractory",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Anaphylaxis or airway-threatening angioedema \u2192 999."},
+          {t:"Refractory chronic", html:"Chronic spontaneous urticaria not controlled on up-dosed antihistamines \u2192 dermatology/immunology (omalizumab)."},
+          {t:"Urticarial vasculitis", html:"Weals &gt;24 h, painful, bruising \u2192 specialist \u00b1 biopsy."},
+          {t:"Angioedema without weals", html:"Recurrent isolated angioedema \u2192 consider C1-esterase inhibitor deficiency / ACE-inhibitor cause \u2192 immunology."}
+        ]},
+        {b:"say", html:"Hives are usually harmless and settle with a regular antihistamine, which you can take at a higher dose if needed. The one thing to act on immediately is swelling of the lips, tongue or throat with any breathing difficulty \u2014 that\u2019s a 999 situation."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

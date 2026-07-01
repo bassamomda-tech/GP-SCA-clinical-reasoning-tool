@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Ankle Pain Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;--diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;--treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;--refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;--lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;--radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);--font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#1a3a2a 0%,#2a6a4a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}.stem-banner b{display:block;font-size:1.05rem;font-weight:600}.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#2a6a4a,#1a6faf);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}.node[data-type="TREAT"] .node-num{background:var(--treat)}.node[data-type="REFER"] .node-num{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}.node[data-type="TREAT"] .node-tag{background:var(--treat)}.node[data-type="REFER"] .node-tag{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}.pill-purple{background:#ede9fe;color:#5b21b6}.pill-blue{background:#dbeafe;color:#1e40af}.pill-teal{background:#ccfbf1;color:#0f766e}.pill-amber{background:#fef3c7;color:#92400e}.pill-green{background:#dcfce7;color:#15803d}.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="stem-banner"><div class="sb-icon">🦶</div><div><b>Ankle Pain</b><small>Ottawa rules · ligament sprain grades · Achilles rupture (Simmonds) · gout · OA</small></div></div>
+<div class="alg-progress"><span>Progress</span><span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span><div class="pbar"><div class="pbar-fill" id="pFill"></div></div><button class="reset" id="resetBtn">Reset</button></div>
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+<div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Fracture, Achilles Rupture &amp; Septic Arthritis</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="rfgrid">
+<div class="rftile"><b>Ottawa Ankle Rules — X-ray indicated if:</b> Bony tenderness at posterior tip or lower 6 cm of fibula (lateral malleolus) OR posterior tip or lower 6 cm of tibia (medial malleolus) OR inability to weight-bear (4 steps) immediately after injury and in ED. Sensitivity 98% for fracture.</div>
+<div class="rftile"><b>Ottawa Foot Rules — X-ray if:</b> Bony tenderness at base of 5th metatarsal (peroneus brevis avulsion) OR navicular bone (medial foot) OR inability to weight-bear. Always apply both ankle AND foot rules after ankle injury.</div>
+<div class="rftile"><b>Simmonds test (Achilles rupture)</b> Positive = no plantar flexion when calf squeezed while patient prone = complete Achilles tendon rupture. Cannot stand on tiptoes. Gap palpable above heel. Same-day orthopaedics — immediate immobilisation.</div>
+<div class="rftile"><b>Hot swollen ankle + fever + systemically unwell</b> Septic arthritis → same-day hospital (joint aspiration + IV antibiotics). Any delay risks permanent joint destruction. Joint aspiration before antibiotics if possible.</div>
+<div class="rftile"><b>Ankle pain + calf swelling/erythema</b> DVT (especially after trauma or immobility) → Wells score → same-day USS Doppler. PE risk if DVT untreated.</div>
+<div class="rftile"><b>Stress fracture (insufficiency)</b> Insidious onset pain in physically active patient or osteoporotic elderly person without clear injury. Point tenderness on fibula or calcaneus. X-ray may be normal at 2 weeks → MRI or bone scan. Non-weight-bearing + orthopaedics.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The Ottawa Ankle Rules (OAR) were developed at the University of Ottawa in 1992 and have a sensitivity of 98–100% for ankle and midfoot fractures — their use eliminates unnecessary X-rays in 30–40% of ankle injury presentations. The rules apply only to acute ankle injuries in adults — they are less validated in children (growth plates complicate interpretation), pregnant women, and patients with multiple injuries. Critically, the inability to weight-bear immediately after injury is as important a criterion as bony tenderness — a patient who hobbles 4 steps but cannot stand on the injured ankle still meets the weight-bearing criterion for X-ray. Achilles tendon rupture is the most commonly missed significant ankle injury — the Simmonds squeeze test takes 5 seconds and should be performed in every case of acute Achilles/posterior heel pain. A palpable gap in the tendon is present in 70% of complete ruptures.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+<div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>History — Mechanism, Onset &amp; Character</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Mechanism of injury</div><div>Inversion injury (most common — rolls outward over lateral foot) → lateral ligament complex (ATFL, CFL, PTFL). Eversion injury → medial (deltoid ligament) damage or fibular avulsion. Forced dorsiflexion (fall from height) → Achilles, syndesmosis. No injury → inflammatory, degenerative, infection.</div>
+<div>Onset and timeline</div><div>Acute (&lt;48 hrs with trauma) → sprain, fracture, rupture. Subacute (days–weeks) → stress fracture, tendinopathy. Gradual onset without trauma → OA, inflammatory arthritis, gout (can be acute), posterior tibial tendon dysfunction.</div>
+<div>Location of pain</div><div>Lateral (ATFL/CFL) → lateral ligament sprain. Medial (deltoid) → medial ligament / posterior tibial tendon. Posterior heel/Achilles → Achilles tendinopathy or rupture. Anteromedial → OA. Posterior tibial tendon (medial) → acquired flat foot. Diffuse → inflammatory / gout.</div>
+<div>Functional impact</div><div>Weight-bearing possible? (Inability immediately post-injury → Ottawa X-ray criteria). Giving way (instability → chronic lateral ligament laxity). Morning stiffness &gt;60 min → inflammatory arthritis. First-step pain improving with walking → plantar fasciitis (arising at inferior calcaneus).</div>
+<div>Associated features</div><div>Warmth, erythema, swelling → inflammation, infection, gout, reactive arthritis. Bilateral swelling (pitting oedema) → systemic cause (heart failure, CKD, DVT). Previous ankle sprains → chronic instability. Psoriasis, IBD, sexually acquired infection → reactive / psoriatic arthritis.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The distinction between an acute lateral ligament sprain and a chronic ankle instability syndrome is clinically important. A single significant sprain that is inadequately rehabilitated leads to persistent proprioceptive deficit and mechanical laxity — the patient describes the ankle "giving way" on uneven ground. This is not a new injury each time but ongoing instability from the original inadequately healed ligament. The treatment is proprioceptive rehabilitation via physiotherapy, not repeated rest and RICE. Patients who present with recurrent "ankle sprains" without adequate rehabilitation should be referred to physiotherapy for a structured proprioceptive and strengthening programme. Persistent instability despite 6 months of physiotherapy may indicate a ligament reconstruction referral to orthopaedics.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+<div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Lateral ligament sprain</div><div>ATFL (anterior talofibular ligament) most commonly injured. Grade I: stretch, no laxity; Grade II: partial tear, some laxity; Grade III: complete rupture, significant laxity. Anterior drawer test (ATFL laxity). RICE + mobilisation + physiotherapy. 90% recover fully with Grade I–II.</div>
+<div>Achilles tendinopathy</div><div>Posterior ankle/heel pain, worse first thing in the morning and after exercise, improves with warming up. Tender thickened Achilles tendon. No rupture (Simmonds negative). Eccentric loading programme (Alfredson protocol) is first-line. Avoid fluoroquinolones (Achilles tendon risk).</div>
+<div>Achilles tendon rupture</div><div>Sudden severe posterior ankle pain — often described as "someone kicked me in the back of the leg." Simmonds squeeze test positive. Palpable gap. Same-day orthopaedics — conservative (functional bracing) vs surgical repair (lower re-rupture rate).</div>
+<div>Gout</div><div>Acute: severe, hot, red, swollen ankle or first MTP joint (podagra). Peak at 12–24 hrs, resolves in 1–2 weeks. Serum urate (may be normal during acute attack — reduced by inflammation). Joint aspiration: MSU (monosodium urate) crystals (needle-shaped, negatively birefringent).</div>
+<div>Ankle OA</div><div>Insidious onset pain, worse activity, better rest. Morning stiffness &lt;30 min. Reduced range of motion (dorsiflexion). X-ray: joint space narrowing, osteophytes, subchondral sclerosis. Risk: previous fracture (post-traumatic OA most common cause of ankle OA).</div>
+<div>Posterior tibial tendon dysfunction (PTTD)</div><div>Acquired adult flat foot. Medial ankle pain, progressive flattening of medial arch. "Too many toes" sign (excess toes visible from behind). Orthotics + physiotherapy early (Stage I–II). Surgery (Stage III–IV). Fluoroquinolones risk factor.</div>
+<div>Peroneal tendon pathology</div><div>Lateral ankle pain persisting after sprain — often confused for ligament injury. Peroneal tendons (peroneus longus and brevis) run posterior to lateral malleolus. Subluxation: snap/clunk sensation. Tear: chronic lateral ankle pain. USS/MRI confirmatory.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Peroneal tendon pathology is the most commonly missed diagnosis after an ankle sprain — studies show that 25% of patients with "chronic lateral ankle pain after sprain" have a peroneal tendon tear as the primary pathology rather than residual ligament injury. The peroneal tendons run posterior to the lateral malleolus in a shared fibrous tunnel — they stabilise the ankle in eversion and are stressed during inversion injuries. A peroneal tendon tear presents with persistent lateral ankle pain, swelling along the peroneal tendons (not at the ligament), and pain with resisted eversion. If lateral ankle pain persists beyond 6–8 weeks without improvement despite appropriate management, USS or MRI of the peroneal tendons should be arranged before referral to orthopaedics or physiotherapy. Fluoroquinolone antibiotics (ciprofloxacin, ofloxacin) are a significant risk factor for tendon rupture — both Achilles and peroneal tendons — via an unclear mechanism. This is a black box FDA warning and is documented in the MHRA SPC. Avoid in patients with current tendinopathy.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+<div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Examination &amp; Investigations</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Ottawa Rules (apply first)</div><div>Palpate: posterior tip and lower 6 cm of fibula (lateral malleolus), posterior tip and lower 6 cm of tibia (medial malleolus), base of 5th metatarsal, navicular. Weight-bearing test (4 steps). If any criteria met → X-ray ankle + foot.</div>
+<div>Simmonds test (mandatory for posterior heel pain)</div><div>Patient prone, feet over edge of couch. Squeeze mid-calf. <b>Normal: plantar flexion occurs. Positive (rupture): no plantar flexion.</b> Also assess: palpable gap, inability to stand on tiptoes, swelling/bruising over Achilles.</div>
+<div>Ligament stress tests</div><div>Anterior drawer test (ATFL): stabilise tibia, draw foot forward — &gt;5 mm laxity = Grade III rupture. Talar tilt test (CFL): invert foot — &gt;10° difference = CFL laxity. Compare with contralateral ankle.</div>
+<div>Gait assessment</div><div>Observe walking: antalgic (shortened stance phase), trendelenburg (hip weakness contributing to ankle stress), flat foot deformity (PTTD), "too many toes" sign (excessive heel valgus with forefoot abduction in PTTD).</div>
+<div>Investigations</div><div><span class="pill pill-blue">X-ray ankle (AP + lateral + mortise)</span> — if Ottawa criteria met. <span class="pill pill-blue">Serum urate</span> (gout — may be normal acutely). <span class="pill pill-blue">CRP + ESR</span> (inflammatory). <span class="pill pill-blue">Urine dipstick</span> (reactive arthritis — chlamydia source). <span class="pill pill-blue">USS</span> (tendon tears, peroneal pathology). <span class="pill pill-blue">MRI</span> (soft tissue, OCD, stress fracture — via orthopaedics/MSK specialist)</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Serum urate during an acute gout attack may be paradoxically normal or low — the acute inflammatory response redistributes urate from serum into the joint and tissues. A normal urate during an acute attack does not exclude gout. Urate should be re-measured 4–6 weeks after the acute attack resolves to establish the true baseline level for urate-lowering therapy (ULT) decisions. Target urate for ULT is &lt;360 μmol/L (&lt;300 μmol/L for tophaceous gout). The mortise view (15–20° internal rotation) is the most important X-ray for ankle assessment — it shows the tibiotalar joint space and the integrity of the ankle mortise. A widened lateral clear space (&gt;5 mm) indicates syndesmotic disruption — a high ankle sprain that requires orthopaedic assessment and may need screw fixation.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="5">
+<div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div><span class="pill pill-red">A&E same-day</span></div><div>Ottawa criteria met (fracture suspected) · Achilles tendon rupture (Simmonds positive) · Suspected septic arthritis (hot swollen ankle + fever) · DVT suspected (Wells + USS same-day) · Severe ankle injury with neurovascular compromise</div>
+<div>Orthopaedics / MSK urgent</div><div>Confirmed Achilles rupture (conservative vs surgical decision) · Osteochondral defect (OCD) on X-ray · Syndesmotic injury (widened mortise) · Peroneal tendon dislocation · Stress fracture</div>
+<div>Physiotherapy</div><div>Grade I–II ligament sprain (proprioceptive rehabilitation) · Achilles tendinopathy (eccentric loading programme) · PTTD Stage I–II (strengthening + orthotics) · Chronic ankle instability · Ankle OA (exercise programme)</div>
+<div>Rheumatology</div><div>Gout refractory to ULT · Suspected inflammatory arthritis (RA, psoriatic, reactive) · Recurrent gout with tophi or renal stones · Gout with normal urate despite treatment</div>
+<div>Podiatry</div><div>Custom orthotics for PTTD, flat foot, ankle OA · Footwear advice · Callus/pressure point management in ankle OA · Diabetic foot assessment</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The management of acute Achilles tendon rupture (conservative vs surgical) remains debated — the UKSTAR trial (UK) demonstrated equivalent functional outcomes with functional rehabilitation in a controlled ankle motion (CAM) boot versus surgical repair, with significantly fewer complications (wound infection, sural nerve injury, deep vein thrombosis) in the conservative group. Most UK orthopaedic centres now offer functional conservative management (immediate weight-bearing in equinus CAM boot) as the primary approach, reserving surgery for young athletes with high performance demands. The GP's role is to diagnose the rupture, immobilise immediately (backslab if available, or immediate orthopaedic referral), and arrange same-day review — not to decide on surgical vs conservative management.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="6">
+<div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>GP Treatment by Diagnosis</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="branch">
+<div class="b-card">
+<div class="b-cond">Ankle sprain Grade I–II</div>
+<div class="b-drug">PRICE + early mobilisation</div>
+<div class="b-note">Protection (lace-up ankle brace, not rigid cast), Rest (relative — avoid aggravating activities), Ice (20 min TDS × first 48 hrs), Compression (tubigrip), Elevation. NSAIDs (ibuprofen 400 mg TDS × 5 days) reduce swelling and pain. Early mobilisation is superior to immobilisation — begin weight-bearing within 48–72 hrs. Physiotherapy referral for rehabilitation.</div>
+</div>
+<div class="b-card">
+<div class="b-cond">Acute gout</div>
+<div class="b-drug">Naproxen 500 mg BD (short course)</div>
+<div class="b-note">NSAID first-line (naproxen 500 mg BD or indomethacin 50 mg TDS × 5–7 days) with PPI cover (omeprazole 20 mg OD). Alternative: colchicine 500 mcg BD–TDS (1st 12 hrs) if NSAID contraindicated (CKD, peptic ulcer). Prednisolone 30 mg OD × 5 days if both contraindicated. Do NOT start allopurinol during acute attack — precipitates prolonged attack. Start ULT 4–6 weeks after attack settles.</div>
+</div>
+<div class="b-card">
+<div class="b-cond">Achilles tendinopathy</div>
+<div class="b-drug">Eccentric loading programme (Alfredson)</div>
+<div class="b-note">Alfredson protocol: eccentric heel drops off a step, 3 sets × 15 reps × 2 daily for 12 weeks. Most effective evidence-based treatment. NSAIDs (short course only). Avoid steroid injection (high re-rupture risk). Physiotherapy referral. HCPC podiatrist for heel lift (reduces tendon load). Avoid fluoroquinolones.</div>
+</div>
+</div>
+<div class="ladder">
+<div class="rung"><span class="rn">Ankle OA</span><span class="rt">Paracetamol 1 g QDS regular + topical diclofenac gel (Voltarol 1% gel) TDS as first-line. Oral NSAIDs if inadequate (with PPI). Custom ankle-foot orthosis (podiatry/orthotics). Hyaluronic acid injection (specialist). NICE: do not offer opioids for OA. Refer orthopaedics if refractory (ankle fusion or total ankle replacement).</span></div>
+<div class="rung"><span class="rn">Gout — ULT</span><span class="rt">Allopurinol: start 4–6 weeks after acute attack. Begin 100 mg OD, titrate by 100 mg every 4 weeks to target urate &lt;360 μmol/L. Max dose 900 mg OD (check eGFR — dose reduce in CKD). Prophylactic colchicine 500 mcg BD or NSAID for first 3–6 months of allopurinol (reduces attack frequency during initiation). Annual urate monitoring.</span></div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The Alfredson eccentric loading protocol for Achilles tendinopathy was developed in 1998 and remains the best-evidenced single treatment — in Alfredson's original study, 100% of patients returned to pre-injury level of activity at 12 weeks. Eccentric (lengthening) contractions specifically stimulate neovascularisation and collagen remodelling in the tendon. The programme requires compliance with twice daily exercises for 12 weeks — explaining the mechanism and time commitment to patients significantly improves adherence. Corticosteroid injection for Achilles tendinopathy should be avoided — multiple studies show a short-term improvement in pain followed by a significantly increased risk of complete Achilles rupture. This is in contrast to plantar fasciitis (where steroid injection has a clear role). Starting allopurinol during an acute gout attack prolongs and worsens the attack — NICE and ACR guidelines both state that ULT should be initiated only after the acute attack has fully resolved, with prophylactic colchicine or NSAID cover for the first 3–6 months.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+<div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Immobilisation &amp; Rehabilitation Principles</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Confirmed fracture (non-displaced)</div><div>Below-knee plaster or CAM boot depending on fracture type and orthopaedic guidance. Non-weight-bearing crutches. Orthopaedic fracture clinic within 3–5 days. VTE prophylaxis (LMWH) for non-weight-bearing patients with additional risk factors.</div>
+<div>Ligament sprain — bracing</div><div>Lace-up ankle brace (superior to tubular bandage for Grade II–III). Allows protected weight-bearing while providing lateral stability. Preferable to plaster for Grade II sprains — early mobilisation reduces long-term stiffness. Continue for 6 weeks during sports.</div>
+<div>Physiotherapy content</div><div>Phase 1 (0–72 hrs): PRICE, maintain ROM. Phase 2 (3 days–3 weeks): proprioception exercises, strengthening. Phase 3 (3–8 weeks): sport-specific training, return to running. Phase 4 (8–12 weeks): full return to sport. Key: proprioceptive balance board work reduces re-sprain risk by 50%.</div>
+<div>VTE risk assessment</div><div>All lower limb immobilisation (plaster, cast, boot) increases VTE risk. Assess: previous VTE, cancer, thrombophilia, obesity, HRT/COCP, reduced mobility. Prescribe LMWH (tinzaparin, enoxaparin) if ≥2 additional risk factors or high clinical concern. Continue until mobile without plaster.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">VTE prophylaxis in lower limb immobilisation is a frequently neglected clinical duty in primary care. The NICE guideline NG89 (VTE prevention) specifies that patients immobilised in a plaster cast or functional brace following a lower limb injury should have a VTE risk assessment performed and LMWH considered. The risk is highest for above-knee immobilisation (thigh and knee injuries) but ankle fractures in plaster also carry a 2–4-fold increased DVT risk. LMWH is prescribed for the duration of immobilisation plus 7 days. GPs who prescribe plaster or arrange immobilisation must document VTE risk assessment — this is a medicolegal obligation. The specific LMWH dose for VTE prophylaxis (not treatment) is weight-based: tinzaparin 3500 units OD subcutaneously or enoxaparin 40 mg OD subcutaneously.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+<div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Rehabilitation, Prevention &amp; Gout Lifestyle</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="lsgrid">
+<div class="lstile"><b>Proprioceptive training</b> Balance board/wobble board exercises 10 min daily after ankle sprain — reduces re-sprain risk by 50%. Single-leg balance (eyes open then closed), progressively on unstable surface. Continue for 12 weeks post-sprain. Key to preventing chronic ankle instability.</div>
+<div class="lstile"><b>Footwear advice</b> Appropriate supportive footwear for ankle tendinopathy, OA, and PTTD. Heel lift (1–1.5 cm) reduces Achilles tendon load — significant symptom relief for tendinopathy. Avoid flat pumps (no heel support). Motion control shoes for flat foot. Podiatry for custom orthotics.</div>
+<div class="lstile"><b>Gout — dietary modification</b> Reduce: red meat, shellfish (high purine), alcohol (especially beer), fructose-sweetened drinks. Increase: low-fat dairy (uricosuric), cherries (reduce urate and inflammation), water (2+ litres/day promotes urate excretion). These modifications can reduce urate by 10–15% — insufficient alone for most patients but important alongside ULT.</div>
+<div class="lstile"><b>Gout — medication review</b> Review diuretics (thiazides, loop diuretics raise urate — switch if possible). Low-dose aspirin (raises urate — usually cannot stop but document). Ciclosporin, tacrolimus (post-transplant — raise urate). Losartan is the antihypertensive of choice in gout (mildly uricosuric).</div>
+<div class="lstile"><b>Weight management</b> Obesity worsens ankle OA (load), gout (elevated urate due to increased purine turnover), and tendinopathy (increased load). Each kg of body weight lost reduces ankle joint loading by 3–4 kg. Even 5 kg weight loss produces measurable improvement in ankle OA symptoms.</div>
+<div class="lstile"><b>Return to sport</b> Grade I: 1–2 weeks. Grade II: 3–6 weeks. Grade III: 8–12 weeks. Criteria for return: pain-free weight-bearing, full ROM, strength equal to contralateral side, proprioception tests passed. External ankle bracing for first 3–6 months of return to sport.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Proprioceptive rehabilitation is the most important component of ankle sprain management for preventing recurrence — yet it is rarely prescribed in primary care, where PRICE (Protection, Rest, Ice, Compression, Elevation) is often the only advice given. Studies show that ankle sprain recurrence rates are 40–70% without proprioceptive rehabilitation, falling to 20% with a structured balance training programme. The mechanism is restoration of ankle proprioceptive afferent signalling — ligament injury disrupts the mechanoreceptors in the ligament, impairing balance and increasing the risk of re-injury. Balance board training retrains the central nervous system to compensate. This takes 12 weeks of consistent daily practice. Gout medication review is often the most impactful intervention — thiazide diuretics (bendroflumethiazide, hydrochlorothiazide) significantly raise serum urate and are a major treatable contributor to recurrent gout. Switching to an alternative antihypertensive (amlodipine, losartan — the latter is mildly uricosuric) can reduce gout frequency dramatically without ULT.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+<div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Sprain — 6 weeks</div><div>Improving as expected? Physiotherapy commenced? If pain persisting at 6 weeks without improvement → X-ray (if not already done) + USS (peroneal tendon, OCD). Refer MSK physiotherapy if not already referred.</div>
+<div>Gout — 4 weeks post-attack</div><div>Recheck serum urate (after attack fully settled). Start allopurinol if: ≥2 attacks/year, tophi, renal stones, or CKD. Titrate allopurinol to target urate. Annual urate monitoring once stable.</div>
+<div>Achilles tendinopathy — 12 weeks</div><div>Eccentric programme completed? Symptoms improving? If no improvement at 12 weeks of compliant Alfredson programme → USS (tendon degeneration extent) + orthopaedics/MSK specialist referral for further management options (PRP injection, ESWT — extracorporeal shockwave therapy).</div>
+<div>Stress fracture</div><div>Non-weight-bearing compliance? Pain improving? X-ray at 4 weeks (callus formation confirms diagnosis if normal initially). Bone density assessment (DEXA) if insufficiency fracture in low-impact scenario — osteoporosis screen.</div>
+<div><span class="pill pill-red">999 / A&E safety-net</span></div><div>Sudden worsening of swelling + calf pain + erythema after ankle injury (DVT), calf squeeze test now positive if initially negative (delayed Achilles rupture recognition), new inability to weight-bear after previous weight-bearing was possible (stress fracture completion)</div>
+<div><span class="pill pill-amber">Same-day GP</span></div><div>New fever + rapidly worsening ankle swelling (septic arthritis), new neurovascular signs (paraesthesia, pallor, absent pulse — vascular injury with ankle fracture)</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Extracorporeal shockwave therapy (ESWT) for chronic refractory Achilles tendinopathy is supported by NICE IPG571 — it delivers acoustic shockwaves through the skin to stimulate neovascularisation and collagen remodelling in the tendon. It is performed as an outpatient procedure over 3 sessions. NICE evidence supports its use when conservative treatment (including eccentric loading) has failed for a minimum of 3 months. It is not available in all areas but can be accessed via physiotherapy MSK services or private. PRP (platelet-rich plasma) injection for tendinopathy shows promising early results in trials but is not currently funded by NHS for most indications — it may be available privately. The key principle: if 12 weeks of compliant Alfredson protocol fails, referral to a specialist MSK service is warranted rather than simply continuing the same management.</div></div>
+</div>
+
+</div>
+<div class="alg-foot"><strong>Educational use only.</strong> Based on NICE CKS Ankle Sprain (2023), NICE CG177 (Gout, 2022), Ottawa Rules (Stiell et al. 1992), UKSTAR Achilles trial, NICE NG89 (VTE), BASEM ankle guidelines. Always adapt to individual patient context.</div>
+<script>
+(function(){
+  const STORE='rgp.alg.anklepain.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+</body>
+</html>

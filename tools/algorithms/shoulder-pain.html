@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shoulder Pain Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#c0392b;--purple:#7c3aed;--blue:#1d4ed8;--teal:#0d9488;--amber:#b45309;--green:#15803d;--grey:#4b5563;
+  --bg:#f8f7f4;--card:#ffffff;--border:#e5e1d8;--text:#1a1a1a;--muted:#6b7280;
+  --shadow:0 2px 8px rgba(0,0,0,.08);
+  --accent1:#1e3a5f;--accent2:#2563eb;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.55;font-size:15px}
+.stem-banner{background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;padding:18px 24px;display:flex;align-items:center;gap:14px;border-radius:12px;margin:18px 16px 0}
+.sb-icon{font-size:2rem}
+.stem-banner b{font-size:1.05rem;font-weight:700}
+.stem-banner small{display:block;opacity:.8;font-size:.82rem;margin-top:2px}
+.alg-progress{margin:14px 16px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.alg-progress span:first-child{font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.pcount{font-weight:700;font-size:.9rem;margin-left:auto}
+.pbar{flex:1;min-width:100px;height:6px;background:#e5e7eb;border-radius:99px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#1e3a5f,#2563eb);width:0;transition:width .4s ease;border-radius:99px}
+.reset{padding:4px 12px;font-size:.8rem;border:1px solid var(--border);border-radius:6px;background:#fff;cursor:pointer;color:var(--muted);font-family:inherit}
+.reset:hover{background:#f3f4f6}
+.alg-flow{padding:8px 16px 16px;display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:linear-gradient(180deg,#1e3a5f,#2563eb);margin:0 auto;opacity:.4}
+.node{background:var(--card);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left:4px solid var(--red)}
+.node[data-type="DIAGNOSE"]{border-left:4px solid var(--blue)}
+.node[data-type="REFER"]{border-left:4px solid var(--purple)}
+.node[data-type="TREAT"]{border-left:4px solid var(--teal)}
+.node[data-type="LIFESTYLE"]{border-left:4px solid var(--green)}
+.node-num{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:10px 16px 0;color:var(--muted)}
+.node-head{padding:4px 16px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.node-tag{font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:99px;white-space:nowrap;flex-shrink:0}
+.node[data-type="SAFETY"] .node-tag{background:#fee2e2;color:var(--red)}
+.node[data-type="DIAGNOSE"] .node-tag{background:#dbeafe;color:var(--blue)}
+.node[data-type="REFER"] .node-tag{background:#ede9fe;color:var(--purple)}
+.node[data-type="TREAT"] .node-tag{background:#ccfbf1;color:var(--teal)}
+.node[data-type="LIFESTYLE"] .node-tag{background:#dcfce7;color:var(--green)}
+.node-head h3{font-family:'Source Serif 4',serif;font-size:1.02rem;font-weight:600;line-height:1.3;flex:1}
+.node-tick{padding:2px 16px 8px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.82rem;color:var(--muted)}
+.node-tick input[type=checkbox]{width:15px;height:15px;accent-color:#2563eb;cursor:pointer}
+.node.done{opacity:.75}
+.node.done .node-tick .tlbl{color:var(--green);font-weight:600}
+.node-body{padding:4px 16px 12px;font-size:.9rem}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:8px 0;font-size:.86rem}
+.kv>div{background:var(--card);padding:7px 10px;line-height:1.45}
+.kv>div:nth-child(odd){font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;background:#fafaf9}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin:8px 0}
+.rftile{background:#fff5f5;border:1px solid #fecaca;border-radius:8px;padding:9px 11px;font-size:.84rem;line-height:1.45}
+.rftile b{display:block;color:var(--red);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:8px 0}
+.b-card{background:#f0fdfa;border:1px solid #99f6e4;border-radius:8px;padding:10px}
+.b-cond{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--teal);margin-bottom:4px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:3px}
+.b-note{font-size:.82rem;color:var(--muted)}
+.ladder{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:8px 0}
+.rung{display:flex;align-items:stretch;border-bottom:1px solid var(--border);font-size:.86rem}
+.rung:last-child{border-bottom:none}
+.rn{background:#f0f9ff;padding:8px 12px;font-weight:700;font-size:.78rem;color:var(--blue);min-width:72px;display:flex;align-items:center;justify-content:center;text-align:center;flex-shrink:0;border-right:1px solid var(--border)}
+.rt{padding:8px 12px;flex:1;line-height:1.45}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:8px 0}
+.lstile{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:9px 11px;font-size:.84rem;line-height:1.45}
+.lstile b{display:block;color:var(--green);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:99px;font-size:.76rem;font-weight:700;vertical-align:middle;white-space:nowrap}
+.pill-red{background:#fee2e2;color:var(--red)}
+.pill-purple{background:#ede9fe;color:var(--purple)}
+.pill-blue{background:#dbeafe;color:var(--blue)}
+.pill-teal{background:#ccfbf1;color:var(--teal)}
+.pill-amber{background:#fef3c7;color:var(--amber)}
+.pill-green{background:#dcfce7;color:var(--green)}
+.pill-grey{background:#f3f4f6;color:var(--grey)}
+.why-row{border-top:1px solid var(--border);background:#fafaf9}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.82rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:inherit}
+.why-btn:hover{color:var(--text);background:#f3f4f6}
+.caret{transition:transform .25s}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 16px 12px;font-size:.84rem;color:#374151;line-height:1.55;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.alg-foot{margin:8px 16px 24px;padding:12px 16px;background:var(--card);border:1px solid var(--border);border-radius:10px;font-size:.8rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">💪</div>
+  <div>
+    <b>Shoulder Pain — Primary Care Assessment</b>
+    <small>Structured pathway for acute and chronic shoulder presentations in adults · UK primary care</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — localise to the joint vs referred sources, exclude the red flags (septic, fracture/dislocation, malignancy, referred cardiac/diaphragmatic), diagnose the rotator-cuff spectrum, treat conservatively, refer and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Shoulder pain</span><div class="body">Mechanism, <b>painful arc</b>, stiffness, weakness, night pain, neck involvement. Examine active/passive range, rotator-cuff tests, AC joint, and the <b>cervical spine</b> (referred pain).</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — red flags &amp; referred causes</span><span class="ttl">Emergency or non-shoulder cause?</span><div class="body"><ul>
+      <li><b>Septic joint</b> — hot, swollen, fever, unable to move</li>
+      <li><b>Trauma with deformity</b> — ?dislocation / fracture (esp. unable to externally rotate = posterior dislocation)</li>
+      <li><b>Mass / systemic red flags</b> — malignancy (esp. apical lung → Pancoast)</li>
+      <li><b>Referred</b> — cardiac (ACS), diaphragmatic, gallbladder; normal shoulder exam</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Emergency / urgent</span><div class="body">Septic joint → emergency aspiration/admission. Acute fracture-dislocation → A&amp;E. Referred cardiac → ACS pathway. Suspected malignancy → relevant 2WW/CXR.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — examine the pattern</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Clinical diagnosis</span><div class="body">Mostly clinical. <b>Painful arc</b> (cuff), <b>global loss of passive external rotation</b> (frozen shoulder), cuff weakness (tear), AC tenderness. USS for cuff tear; X-ray if trauma/OA/calcific.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · which diagnosis?</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Rotator-cuff spectrum</div><div class="box ix"><span class="ttl">Painful arc</span><div class="body">Subacromial impingement/tendinopathy, calcific tendinitis, partial/full-thickness <b>cuff tear</b> (weakness, drop-arm).</div></div></div>
+      <div class="col"><div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">Frozen shoulder</div><div class="box ix"><span class="ttl">Global stiffness</span><div class="body">Adhesive capsulitis — loss of <b>passive</b> external rotation; associated with <b>diabetes</b>; self-limiting over 1–3 years.</div></div></div>
+      <div class="col"><div class="blabel">OA / AC joint</div><div class="box ix"><span class="ttl">Localised</span><div class="body">Glenohumeral or AC joint OA; AC pain on cross-body adduction.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · treat conservatively</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — analgesia + physiotherapy</span><span class="ttl">Most settle without surgery</span><div class="body"><ul>
+      <li><b>Rotator-cuff / impingement:</b> relative rest + analgesia/NSAID, <b>physiotherapy</b> (cuff strengthening), <b>subacromial corticosteroid injection</b> for persistent pain.</li>
+      <li><b>Frozen shoulder:</b> analgesia + physiotherapy to maintain range; intra-articular/glenohumeral steroid injection (most effective early); reassure re natural recovery.</li>
+      <li><b>OA / AC joint:</b> analgesia, activity modification, joint injection; arthroplasty for end-stage glenohumeral OA.</li>
+      <li><b>Calcific tendinitis:</b> NSAID, physio, US-guided barbotage if refractory.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-red">Emergency</span> septic joint, acute fracture-dislocation.</li>
+      <li><span class="pill pill-purple">MSK / orthopaedics</span> suspected <b>acute full-thickness cuff tear</b> (esp. younger/traumatic — surgical window), instability/recurrent dislocation, or pain refractory to ≥6 weeks conservative care.</li>
+      <li><span class="pill pill-grey">Physiotherapy</span> most cuff and frozen-shoulder presentations.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · self-care &amp; rehab</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Self-management &amp; rehab</span><span class="ttl">Keep it moving</span><div class="body"><b>Home exercise programme</b> and posture/ergonomic advice · activity modification (avoid sustained overhead) while maintaining gentle range to prevent stiffness · <b>optimise diabetes</b> (frozen shoulder) · pacing and graded return to activity/work · analgesia timing around physiotherapy.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Same-day</b> if the shoulder becomes hot and swollen with fever (septic), or with chest pain/breathlessness (cardiac). <b>Review</b> at 6 weeks — escalate if no improvement or progressive weakness (re-examine for cuff tear). Reconsider referred/sinister causes if the local exam stays normal.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Beware referred pain:</b> shoulder-tip pain can be diaphragmatic or cardiac — examine the neck and consider ACS when the shoulder exam is normal. And a shoulder that won't externally rotate after trauma is a posterior dislocation until X-rayed.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-num">Step 1</div>
+  <div class="node-head">
+    <h3>Safety — Red Flags & Emergency Exclusion</h3>
+    <span class="node-tag">Safety</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Screen for can't-miss diagnoses BEFORE assuming a musculoskeletal cause. Shoulder pain is a common cardiac and thoracic referred pain site.
+    <div class="rfgrid">
+      <div class="rftile"><b>Chest pain + shoulder pain + diaphoresis / jaw pain</b> Acute MI — referred pain via phrenic nerve / brachial plexus → <span class="pill pill-red">999 immediately</span>. ECG while waiting.</div>
+      <div class="rftile"><b>Shoulder tip pain + hypotension + recent trauma or surgery</b> Sub-diaphragmatic haemorrhage (ruptured spleen, ectopic pregnancy) — phrenic nerve referral → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Hot, red, swollen joint + systemic fever + rigors</b> Septic arthritis of glenohumeral joint — destroys cartilage within 24–48 hours → <span class="pill pill-red">Same-day ED / orthopaedics</span></div>
+      <div class="rftile"><b>Shoulder pain + neurological deficit in arm / hand</b> Pancoast tumour (apex lung) — brachial plexus invasion; also consider cervical cord compression → <span class="pill pill-red">Urgent CXR + 2WW lung referral</span></div>
+      <div class="rftile"><b>Acute severe pain + unable to move shoulder + after dislocation</b> Acute dislocation / fracture — anterior most common → <span class="pill pill-red">Same-day ED</span>. Check axillary nerve (sensation lateral deltoid).</div>
+      <div class="rftile"><b>Shoulder pain + weight loss + night pain + age &gt;50 + no trauma</b> Malignancy (primary or metastatic bone disease — breast, prostate, lung) → <span class="pill pill-red">2WW bone / urgent CXR + bloods</span></div>
+      <div class="rftile"><b>Sudden complete loss of active shoulder movement + no trauma in elderly</b> Massive rotator cuff tear — may be atraumatic in older patients → <span class="pill pill-red">Urgent orthopaedic referral</span></div>
+      <div class="rftile"><b>Acute shoulder pain + Horner's syndrome (ptosis, miosis, anhidrosis)</b> Pancoast tumour involving stellate ganglion → <span class="pill pill-red">Urgent 2WW lung</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Shoulder pain referred from cardiac or abdominal sources accounts for a significant proportion of missed diagnoses in primary care. The phrenic nerve (C3–5) shares dermatomal referral with the shoulder, meaning any sub-diaphragmatic irritant (haemorrhage, abscess, ectopic pregnancy) can present as shoulder tip pain. Pancoast tumours are particularly important — they arise at the lung apex, are not visible on standard CXR views without apical cuts, and cause a characteristic triad of arm pain, Horner's syndrome, and hand weakness. NICE NG12 mandates 2WW referral for any unexplained shoulder or arm pain with features suggestive of malignancy. Septic arthritis of the glenohumeral joint has a mortality of up to 15% and must be aspirated urgently.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-num">Step 2</div>
+  <div class="node-head">
+    <h3>Diagnose — Structured History</h3>
+    <span class="node-tag">Diagnose</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    The history reliably identifies the diagnosis in 70–80% of shoulder presentations before examination.
+    <div class="kv">
+      <div>Onset &amp; mechanism</div><div>Traumatic (fall on outstretched hand → RC tear, dislocation, ACJ injury) vs atraumatic (insidious → frozen shoulder, OA, tendinopathy, referred pain). Sudden severe → dislocation, massive RC tear. Gradual → impingement, frozen shoulder, OA.</div>
+      <div>Location &amp; radiation</div><div>Anterior: AC joint, biceps tendon, GH joint. Lateral deltoid: rotator cuff, subacromial. Posterior: infraspinatus, posterior capsule. Radiation down arm to elbow: cervical radiculopathy (C5/C6). Shoulder tip: phrenic nerve referral.</div>
+      <div>Movement restriction pattern</div><div><b>Painful arc 60–120°</b>: subacromial impingement, RC tear. <b>Global restriction (active = passive)</b>: frozen shoulder, GH OA. <b>Active restricted, passive full</b>: RC tear. <b>Painless full range</b>: likely referred.</div>
+      <div>Night pain</div><div>Severe night pain waking from sleep is characteristic of rotator cuff tears and frozen shoulder. <span class="pill pill-amber">Also consider malignancy if age &gt;50 + no mechanism</span></div>
+      <div>Associated symptoms</div><div>Neck pain + paraesthesia down arm → cervical origin. Clicking/clunking → instability, labral tear. Bilateral → inflammatory arthritis, PMR (&gt;50yrs, bilateral girdle stiffness, ESR &gt;50). Preceding viral illness → reactive arthritis.</div>
+      <div>Occupation &amp; activities</div><div>Overhead activity (painting, swimming, throwing) → impingement. Heavy lifting → RC tear. Sedentary + prolonged immobility → frozen shoulder risk (also: diabetes, thyroid disease).</div>
+      <div>Diabetes / thyroid</div><div>Diabetes mellitus 5× increased risk of adhesive capsulitis (frozen shoulder). Hypothyroidism associated. Always ask.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The movement restriction pattern is the single most useful diagnostic discriminator. True frozen shoulder (adhesive capsulitis) causes global restriction of both active AND passive movements — passive external rotation is the first and most severely restricted. In rotator cuff tears, passive movement is preserved but active is restricted. Painful arc at 60–120° abduction is pathognomonic of subacromial impingement — the greater tuberosity impinges on the coracoacromial arch in this range. Diabetes is the strongest risk factor for frozen shoulder; prevalence is 10–20% in people with diabetes (vs 2–5% general population). Night pain is important — it should prompt active consideration of malignancy and RC tear, both requiring imaging.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-num">Step 3</div>
+  <div class="node-head">
+    <h3>Diagnose — Classification by Diagnosis</h3>
+    <span class="node-tag">Diagnose</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Classify the shoulder condition to direct treatment. Most presentations fit one of seven patterns.
+    <div class="kv">
+      <div>Subacromial impingement / RC tendinopathy</div><div>Painful arc 60–120° abduction. Worse overhead. Positive Hawkins-Kennedy and Neer tests. No passive restriction. <span class="pill pill-grey">Most common shoulder diagnosis in primary care</span></div>
+      <div>Rotator cuff tear</div><div>Partial: similar to impingement + weakness. Full thickness: unable to actively abduct, lag signs positive (drop arm sign, external rotation lag). Passive range preserved. <span class="pill pill-blue">MRI if suspected full tear</span></div>
+      <div>Adhesive capsulitis (frozen shoulder)</div><div>Global restriction active AND passive. External rotation most restricted. 3 phases: freezing (pain dominant, 3–9 months), frozen (stiffness dominant, 9–15 months), thawing (resolution, 15–24 months). Often self-limiting 18–24 months.</div>
+      <div>AC joint pathology</div><div>Localised tenderness at ACJ. Scarf test positive (cross-body adduction). Post-traumatic (Grade I–VI sprain), OA, osteolysis. No glenohumeral restriction.</div>
+      <div>GH osteoarthritis</div><div>Elderly, global restriction, crepitus. X-ray: loss of joint space, osteophytes. Less common than impingement. <span class="pill pill-purple">Consider orthopaedic referral if severe</span></div>
+      <div>Cervical referred pain</div><div>Neck pain ± radiating arm pain in dermatomal pattern. Full painless shoulder range (or minimally restricted). Spurling's test positive. Paraesthesia may be present.</div>
+      <div>Glenohumeral instability</div><div>Younger patients, history of dislocation or subluxation episodes. Apprehension test positive. May have labral tear (SLAP lesion). <span class="pill pill-purple">Orthopaedic referral for MR arthrogram</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Accurate classification prevents inappropriate treatment and imaging. Subacromial impingement is the most common diagnosis but is frequently over-diagnosed — cervical referred pain is commonly mistaken for shoulder pathology. The key differentiator is passive shoulder range: if passive movement is full and painless, the shoulder joint itself is not the source. Frozen shoulder is frequently misdiagnosed and overtreated with cortisone without physiotherapy — the condition is self-limiting but runs a predictable 18–24 month course, and treatment decisions should account for this. Full-thickness rotator cuff tears require MRI before any decision about surgical repair — ultrasound is a reasonable first investigation but has operator dependency. ACJ pathology is identified by the scarf test and point tenderness at the joint line, not generalized shoulder pain.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-num">Step 4</div>
+  <div class="node-head">
+    <h3>Diagnose — Targeted Examination</h3>
+    <span class="node-tag">Diagnose</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Examine systematically: Look → Feel → Move → Special Tests. Always examine the neck.
+    <div class="kv">
+      <div>Inspection</div><div>Wasting (supraspinatus, infraspinatus fossa) → RC tear / nerve injury. Asymmetry, swelling. Scars. Winging of scapula (long thoracic nerve injury).</div>
+      <div>Palpation</div><div>ACJ tenderness (ACJ pathology). Greater tuberosity (RC insertion). Biceps groove (bicipital tendinopathy — Speed's test). Axilla for lymph nodes.</div>
+      <div>Active range</div><div>Flexion (0–180°), abduction (0–180°), external rotation (arm at side, 60–90°), internal rotation (hand behind back). Note painful arc (60–120°).</div>
+      <div>Passive range</div><div>If passive = active restriction → frozen shoulder / OA / GH joint pathology. If passive full but active restricted → RC tear. If both full but painful → impingement.</div>
+      <div>Impingement tests</div><div><b>Hawkins-Kennedy</b>: forward flex 90° + IR → subacromial impingement. <b>Neer</b>: passive forward flex with IR → impingement. Sensitivity ~79%, specificity ~59%.</div>
+      <div>Rotator cuff strength</div><div><b>Empty can (Jobe)</b>: abduction 90°, 30° forward, thumb down — supraspinatus. <b>ER lag sign</b>: infraspinatus/teres minor. <b>Lift-off test</b>: subscapularis. <b>Drop arm sign</b>: full thickness supraspinatus tear.</div>
+      <div>AC joint test</div><div><b>Scarf test</b>: cross-body adduction — pain at ACJ → ACJ pathology. Point tenderness at ACJ.</div>
+      <div>Instability tests</div><div><b>Apprehension test</b>: 90° abduction + ER → fear of dislocation → anterior instability. <b>Sulcus sign</b>: inferior instability.</div>
+      <div>Cervical spine screen</div><div>ALWAYS examine neck. Spurling's test (lateral flex + extension + compression → reproduces arm pain) → cervical radiculopathy. C5/C6 most commonly implicated in shoulder-region pain.</div>
+      <div>Neurovascular</div><div>Axillary nerve: sensation lateral deltoid (post-dislocation). Radial pulse. Horner's syndrome → Pancoast.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The passive vs active range distinction is the single most important examination finding for shoulder diagnosis. Neck examination is non-negotiable — up to 20% of apparent shoulder pain presentations originate from the cervical spine (C5/C6 radiculopathy particularly). The drop arm sign (inability to slowly lower the arm from 90° abduction) has high specificity for full-thickness supraspinatus tear. The Hawkins-Kennedy test has the best sensitivity for subacromial impingement (~79%) but poor specificity — use in combination with Neer. Infraspinatus wasting in the posterior shoulder fossa is highly significant and indicates either RC tear or suprascapular nerve entrapment — do not miss this. Axillary nerve function must be assessed after every shoulder dislocation before and after reduction.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-num">Step 5</div>
+  <div class="node-head">
+    <h3>Diagnose — Investigations</h3>
+    <span class="node-tag">Diagnose</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Most shoulder diagnoses are clinical. Imaging changes management in specific situations only.
+    <div class="kv">
+      <div>Plain X-ray shoulder</div><div>AP + axillary views. Indicated for: trauma (fracture/dislocation), calcific tendinopathy (calcium deposit visible), GH OA (joint space loss), suspected ACJ OA, age &gt;50 with unexplained pain. <span class="pill pill-grey">NOT routinely needed for impingement or frozen shoulder</span></div>
+      <div>Ultrasound shoulder</div><div>First-line imaging for suspected RC tear (sensitivity 80%, specificity 95% for full-thickness). Also: biceps tendinopathy, subacromial bursitis, calcific tendinopathy (guides aspiration/barbotage). Operator-dependent. <span class="pill pill-blue">Request if RC tear suspected</span></div>
+      <div>MRI shoulder</div><div>Gold standard for RC tears (especially partial thickness), labral pathology (SLAP tears, Bankart lesion), glenohumeral instability. MR arthrogram for labral lesions. <span class="pill pill-purple">Usually requested by orthopaedics pre-operatively</span></div>
+      <div>Blood tests</div><div>NOT routinely needed for typical shoulder presentations. Indicated if: inflammatory arthritis suspected (FBC, CRP, ESR, RF, anti-CCP), PMR suspected (ESR, CRP — often dramatically elevated), malignancy screen (FBC, ESR, PSA, myeloma screen).</div>
+      <div>CXR</div><div>Indicated if: Pancoast tumour suspected (apical opacity — request apical lordotic view), unexplained shoulder pain with weight loss / smoking history, pre-operative assessment.</div>
+      <div>Do NOT request</div><div>Routine MRI without prior clinical assessment and targeted indication. CT for soft tissue pathology (use MRI). Isotope bone scan in primary care — request via secondary care.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Over-investigation of shoulder pain is a major NHS resource issue — most subacromial impingement and frozen shoulder presentations require no imaging and should proceed directly to physiotherapy. However, ultrasound is appropriate and cost-effective when a rotator cuff tear is clinically suspected (weak empty can, drop arm sign, age &gt;60 with acute-on-chronic pain). Ultrasound has excellent specificity for full-thickness tears. MRI is more sensitive for partial tears but should generally be requested by orthopaedics when surgical planning is needed. CXR with apical views is critical when Pancoast tumour is in the differential — standard PA CXR misses ~30% of apical lesions. ESR in PMR is typically markedly elevated (&gt;40, often &gt;80) and combined with dramatic prednisolone response is diagnostic.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-num">Step 6</div>
+  <div class="node-head">
+    <h3>Refer — Referral Criteria & Urgency</h3>
+    <span class="node-tag">Refer</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Most shoulder conditions are managed in primary care with physiotherapy. Refer when red flags, surgical pathology, or treatment failure.
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Suspected MI with shoulder pain. Acute dislocation with vascular compromise. Septic arthritis with haemodynamic instability.</div>
+      <div><span class="pill pill-red">Same-day ED</span></div><div>Acute traumatic dislocation / fracture. Septic arthritis (hot, swollen, febrile, systemically unwell). Neurovascular compromise post-injury.</div>
+      <div><span class="pill pill-red">2WW</span></div><div>NICE NG12: unexplained shoulder pain + weight loss / night sweats / age &gt;50 / smoking history / lymphadenopathy → <b>2WW lung or bone cancer pathway</b>. Pancoast suspected.</div>
+      <div><span class="pill pill-purple">Urgent orthopaedics (2–4 wks)</span></div><div>Full-thickness rotator cuff tear (confirmed on USS). Recurrent glenohumeral dislocation. Massive atraumatic cuff tear in elderly. ACJ dislocation Grade III–VI.</div>
+      <div><span class="pill pill-purple">Routine orthopaedics</span></div><div>RC tear failed 6 months physiotherapy. GH osteoarthritis severe, considering arthroplasty. Calcific tendinopathy failed conservative management (consider barbotage/USS-guided needling). SLAP tear / labral pathology.</div>
+      <div><span class="pill pill-purple">Rheumatology</span></div><div>Suspected inflammatory arthritis (RA, psoriatic, ankylosing spondylitis). PMR/GCA — initiate steroids in primary care, refer routinely. Systemic connective tissue disease.</div>
+      <div><span class="pill pill-grey">Primary care manage</span></div><div>Subacromial impingement — physiotherapy ± subacromial corticosteroid injection. Frozen shoulder — analgesia + physiotherapy ± intra-articular injection. Cervical referred pain — physiotherapy. ACJ Grade I–II sprain.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The vast majority of shoulder pain is safely managed in primary care — subacromial impingement, mild RC tendinopathy, and frozen shoulder should all receive a trial of physiotherapy before referral. However, confirmed full-thickness RC tears require orthopaedic review — surgical repair is more successful when performed within 6 months of tear, as fatty infiltration of the muscle belly becomes irreversible. PMR should be initiated with prednisolone 15mg OD in primary care (NICE NG167) without waiting for rheumatology — the response is both therapeutic and diagnostic. Recurrent dislocation requires Bankart repair assessment — each dislocation risks further labral damage and Hill-Sachs lesion enlargement, increasing instability.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-num">Step 7</div>
+  <div class="node-head">
+    <h3>Treat — Treatment Pathway by Diagnosis</h3>
+    <span class="node-tag">Treat</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Treatment depends on diagnosis. Physiotherapy is first-line for most conditions. Corticosteroid injections are adjunctive, not curative.
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Subacromial Impingement / RC Tendinopathy</div>
+        <div class="b-drug">Physiotherapy <span class="pill pill-teal">First-line</span></div>
+        <div class="b-note">Rotator cuff strengthening + scapular stabilisation programme. 6–8 week course. Referral to MSK physio via self-referral or GP referral.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Frozen Shoulder (Adhesive Capsulitis)</div>
+        <div class="b-drug">Analgesia + Intra-articular injection <span class="pill pill-teal">Staged</span></div>
+        <div class="b-note">Freezing phase: GH joint corticosteroid injection most effective. Frozen phase: intensive physiotherapy. Thawing: maintain range. Hydrodilatation via radiology if refractory.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">PMR</div>
+        <div class="b-drug">Prednisolone <span class="pill pill-teal">15mg OD</span></div>
+        <div class="b-note">Start immediately — do not wait for rheumatology. Dramatic improvement within 48–72 hours expected. Add bone protection: alendronate 70mg weekly + calcium/vitamin D. Slow taper over 2 years.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Calcific Tendinopathy</div>
+        <div class="b-drug">NSAID + Physio <span class="pill pill-teal">First-line</span></div>
+        <div class="b-note">Naproxen 500mg BD with food + omeprazole 20mg. Physio. If refractory: USS-guided barbotage (needling + lavage) — refer. Extracorporeal shockwave therapy (ESWT) also effective.</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Analgesia:</b> Paracetamol 1g QDS regular. Topical NSAID (diclofenac 1% gel) — first-line for musculoskeletal pain (NICE NG226 principle). Low abuse potential.</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Oral NSAID:</b> Naproxen 500mg BD with food + PPI (omeprazole 20mg OD). Use for maximum 2 weeks initially. <span class="pill pill-amber">Caution: CKD, cardiovascular disease, GI history, elderly</span></span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Corticosteroid injection:</b> Subacromial corticosteroid injection — methylprednisolone 40mg + lidocaine 1% 5ml. Lateral or posterior approach. Max 2–3 injections per year. Most effective for impingement in first 6 weeks.</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Physiotherapy referral:</b> If not already started. Rotator cuff strengthening programme essential. Exercise therapy equivalent to injection at 12 months. Combination injection + physio superior to either alone.</span></div>
+      <div class="rung"><span class="rn">Step 5</span><span class="rt"><b>Secondary care:</b> USS (if RC tear suspected). Orthopaedic referral for surgical assessment. Subacromial decompression (arthroscopic) if impingement refractory &gt;6 months.</span></div>
+    </div>
+    <p style="margin-top:8px;font-size:.83rem;color:var(--muted)"><b>Injection technique note:</b> Subacromial injection — lateral approach: needle 1cm below and medial to the lateral acromion edge, directed medially. Use aseptic technique. Avoid if: local skin infection, uncontrolled diabetes (warn of glucose spike 24–48h), previous reaction. Wait 6 weeks between injections.</p>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Subacromial corticosteroid injection is the most effective short-term intervention for impingement syndrome (NNT ~3 for short-term pain relief) but effect is not durable beyond 6 weeks without physiotherapy. NICE evidence synthesis shows exercise therapy has equivalent outcomes to injection at 12 months — injections are adjuncts that facilitate engagement with rehabilitation. Topical NSAIDs are recommended first-line for localised musculoskeletal pain before systemic NSAIDs (lower GI/renal/CV risk). Hydrodilatation for frozen shoulder (arthrographic distension) has NICE guidance support and is more effective than injection alone in the frozen phase. Prednisolone for PMR should be started without delay — the ESR/CRP are supportive but not diagnostic, and treatment should not be withheld pending rheumatology in a patient with typical features.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-num">Step 8</div>
+  <div class="node-head">
+    <h3>Lifestyle — Non-Pharmacological Interventions</h3>
+    <span class="node-tag">Lifestyle</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Lifestyle modification is treatment, not optional advice. Exercise is the most effective long-term intervention for most shoulder conditions.
+    <div class="lsgrid">
+      <div class="lstile"><b>Physiotherapy exercise programme</b> Rotator cuff strengthening + scapular stabilisation reduces pain and improves function in impingement. Equivalent to surgery at 2 years for subacromial impingement (CSAW trial, BMJ 2017).</div>
+      <div class="lstile"><b>Posture correction</b> Forward head posture and thoracic kyphosis increase subacromial impingement. Referral to physio for postural re-education. Ergonomic workstation assessment if desk-based.</div>
+      <div class="lstile"><b>Activity modification</b> Avoid provocative overhead activities during acute phase. Gradually reintroduce. Do NOT completely rest — disuse causes secondary muscle weakness and prolonged recovery.</div>
+      <div class="lstile"><b>Heat / ice application</b> Ice 15–20 min up to 4×/day for acute inflammation. Heat for chronic stiffness (frozen shoulder — warm shower/bath before exercises). No evidence one is superior; patient preference.</div>
+      <div class="lstile"><b>Weight management</b> Obesity increases shoulder pain burden and reduces physiotherapy response. BMI reduction reduces mechanical load. Brief intervention + referral to local weight management service.</div>
+      <div class="lstile"><b>Glycaemic control (diabetes)</b> Optimising HbA1c reduces risk of frozen shoulder progression and improves recovery. Target HbA1c &lt;53 mmol/mol (NICE NG28). Coordinate with diabetes annual review.</div>
+      <div class="lstile"><b>Sleep position advice</b> Avoid lying on affected shoulder — causes nocturnal compression. Use pillow support. Side-lying with pillow between arms (for frozen shoulder) maintains gentle stretch.</div>
+      <div class="lstile"><b>Self-management resources</b> Versus Arthritis shoulder pain leaflet. Physio-specific home exercise programme (Chartered Society of Physiotherapy resources). NHS shoulder exercises video resources.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The landmark CSAW trial (2017, BMJ) demonstrated that arthroscopic subacromial decompression surgery was no better than structured exercise physiotherapy at 12 months for subacromial impingement — exercise is the reference standard treatment. Postural retraining is particularly important in desk workers who develop impingement from prolonged forward-head posture and rounded shoulders, which mechanically reduce the subacromial space. Sleep disruption from shoulder pain is a significant contributor to quality of life impairment and should be addressed — simple positional advice (pillow support) makes a measurable difference. Glycaemic control in diabetes is one of the few modifiable risk factors for frozen shoulder and is an important co-management target.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-num">Step 9</div>
+  <div class="node-head">
+    <h3>Safety — Follow-Up, Monitoring & Safety-Netting</h3>
+    <span class="node-tag">Safety</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Most shoulder conditions improve within 6–12 weeks. Failure to improve warrants reassessment and imaging.
+    <div class="kv">
+      <div>2 weeks</div><div>Post-injection review: assess pain response, glucose (if diabetic). If no improvement at all → reconsider diagnosis. Ensure physiotherapy appointment booked.</div>
+      <div>6 weeks</div><div>Review physiotherapy engagement and response. If inadequate improvement → USS shoulder (if not done). Consider repeat injection if good initial response. Reassess diagnosis if atypical response.</div>
+      <div>3 months</div><div>If persistent — formal reassessment. Request USS if RC tear suspected and not yet imaged. Consider secondary care referral. Review analgesia and wean if improving.</div>
+      <div>6 months</div><div>Failure to improve after 6 months physiotherapy ± injection → routine orthopaedic referral. Ensure malignancy has been excluded with appropriate history review and CXR if any new features.</div>
+      <div>PMR monitoring</div><div>ESR + CRP at 4 weeks (should normalise on prednisolone). Monthly while tapering. Taper: reduce by 1mg every 4–8 weeks once CRP/ESR normalised. Expect 2-year course minimum.</div>
+      <div><span class="pill pill-red">Safety-net 999</span></div><div>Chest pain, sweating, jaw pain with shoulder pain → cardiac. Sudden severe dyspnoea. Signs of vascular compromise in arm.</div>
+      <div><span class="pill pill-red">Safety-net same-day</span></div><div>Developing fever + hot joint (septic arthritis). New neurological deficit in arm. Severe uncontrolled pain. New Horner's syndrome. Visual symptoms (GCA).</div>
+      <div><span class="pill pill-amber">Red flag review</span></div><div>New onset weight loss, night sweats, or pain worse at rest in any shoulder pain patient → CXR and bloods before next routine appointment. Do not wait.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The 6-week review is critical — failure to improve at 6 weeks after a corticosteroid injection and physiotherapy should prompt diagnostic re-evaluation and imaging, not just another injection. Injection without physiotherapy has poor long-term outcomes — the exercise programme must be reinforced at every review. PMR relapse occurs in 40–50% of patients during steroid taper and presents as return of bilateral girdle stiffness and rising ESR/CRP — patients should know to return if this happens. Safety-netting for GCA is particularly important in PMR patients — the estimated risk of GCA developing in a PMR patient is 10–15%. Visual symptoms in a PMR patient are a same-day emergency (same-day prednisolone 60mg and ophthalmology referral). Failure to improve after adequate conservative management should always prompt re-evaluation for missed diagnosis, particularly malignancy.</div>
+  </div>
+</div>
+
+</div><!-- end alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG12 (Suspected cancer recognition 2015, updated 2021) · NICE NG226 (OA 2022) · NICE NG167 (GCA/PMR 2020) · British Elbow and Shoulder Society (BESS) guidelines · CSAW Trial (BMJ 2017) · Chartered Society of Physiotherapy shoulder guidelines · NICE CKS Shoulder Pain. Always adapt to individual patient context and local pathways.
+</div>
+
+<script>
+(function(){
+  const KEY='rgp.alg.shoulderpain.v1';
+  const boxes=document.querySelectorAll('.node-tick input[type=checkbox]');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=boxes.length;
+  document.getElementById('pTotal').textContent=total;
+
+  function save(){
+    const state=[...boxes].map(b=>b.checked);
+    localStorage.setItem(KEY,JSON.stringify(state));
+  }
+  function load(){
+    try{
+      const s=JSON.parse(localStorage.getItem(KEY)||'[]');
+      boxes.forEach((b,i)=>{if(s[i])b.checked=true;});
+    }catch(e){}
+  }
+  function update(){
+    let done=0;
+    boxes.forEach(b=>{
+      const node=b.closest('.node');
+      if(b.checked){done++;node.classList.add('done');b.closest('label').querySelector('.tlbl').textContent='Done ✓';}
+      else{node.classList.remove('done');b.closest('label').querySelector('.tlbl').textContent='Done';}
+    });
+    pDone.textContent=done;
+    pFill.style.width=((done/total)*100)+'%';
+  }
+  load();update();
+  boxes.forEach(b=>b.addEventListener('change',()=>{save();update();}));
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    boxes.forEach(b=>{b.checked=false;});
+    localStorage.removeItem(KEY);update();
+  });
+  document.querySelectorAll('.why-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!expanded));
+      btn.nextElementSibling.classList.toggle('open',!expanded);
+    });
+  });
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Intermittent Claudication Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>/* ── Shared Algorithm Styles ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;-webkit-text-size-adjust:100%}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#f7f6f3;color:#1a1a2e;min-height:100vh;padding:0 0 4rem}
+h3{font-family:'Source Serif 4',Georgia,serif;font-size:1.15rem;font-weight:600;line-height:1.3}
+b{font-weight:600}
+small{font-size:.8rem}
+
+/* Banner */
+.stem-banner{display:flex;align-items:center;gap:1rem;background:#1a1a2e;color:#fff;padding:1rem 1.4rem;border-bottom:3px solid #e63946}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{font-size:1rem;display:block}
+.stem-banner small{opacity:.7;font-size:.78rem}
+
+/* Progress */
+.alg-progress{display:flex;align-items:center;gap:.75rem;padding:.6rem 1.4rem;background:#fff;border-bottom:1px solid #e5e3dc;font-size:.82rem;position:sticky;top:0;z-index:100;flex-wrap:wrap}
+.alg-progress span:first-child{font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:#666}
+.pcount{font-weight:700;color:#1a1a2e;min-width:2.5rem}
+.pbar{flex:1;min-width:80px;height:6px;background:#e5e3dc;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;width:0%;background:linear-gradient(90deg,#2a9d8f,#52b788);border-radius:3px;transition:width .4s ease}
+.reset{margin-left:auto;font-size:.75rem;padding:.3rem .7rem;border:1px solid #ccc;border-radius:4px;background:#fff;cursor:pointer;color:#666;font-family:inherit}
+.reset:hover{background:#fee;border-color:#e63946;color:#e63946}
+
+/* Flow */
+.alg-flow{max-width:760px;margin:1.5rem auto;padding:0 1rem;display:flex;flex-direction:column;align-items:center;gap:0}
+.connector{width:2px;height:24px;background:linear-gradient(180deg,#d1cec7,#b8b3a8);flex-shrink:0}
+
+/* Node */
+.node{width:100%;background:#fff;border-radius:12px;border:1.5px solid #e5e3dc;box-shadow:0 2px 8px rgba(0,0,0,.06);overflow:hidden;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.node.done{border-color:#52b788;background:#fafff8}
+.node.done .node-num{background:#52b788}
+
+/* Node header */
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:50%;background:#1a1a2e;color:#fff;font-weight:700;font-size:.85rem;flex-shrink:0}
+.node-head{display:flex;align-items:flex-start;gap:.75rem;padding:1rem 1rem .6rem;flex:1}
+.node-tag{display:inline-block;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:.15rem .5rem;border-radius:3px;background:#f0ece3;color:#666;margin-bottom:.3rem}
+.node[data-type="SAFETY"] .node-tag{background:#fde8e8;color:#c0392b}
+.node[data-type="DIAGNOSE"] .node-tag{background:#e8f4fd;color:#1a6fa3}
+.node[data-type="REFER"] .node-tag{background:#f3e8fd;color:#7b2fa8}
+.node[data-type="TREAT"] .node-tag{background:#e8fdf0;color:#1a7a4a}
+.node[data-type="LIFESTYLE"] .node-tag{background:#fdf8e8;color:#8a6a00}
+.node-row{display:flex;align-items:flex-start;gap:0}
+.node-tick{padding:.8rem .8rem .8rem 0;display:flex;align-items:center}
+.node-tick input[type=checkbox]{width:1.1rem;height:1.1rem;accent-color:#52b788;cursor:pointer}
+.tlbl{font-size:.75rem;color:#888;margin-left:.3rem;cursor:pointer}
+
+/* Node body */
+.node-body{padding:.2rem 1rem 1rem;font-size:.88rem;line-height:1.6;color:#333}
+.node-body>p,.node-body>span{display:block;margin-bottom:.6rem;font-size:.88rem}
+
+/* Key-Value Grid */
+.kv{display:grid;grid-template-columns:minmax(110px,1fr) 3fr;gap:0;border:1px solid #e5e3dc;border-radius:8px;overflow:hidden;margin:.5rem 0;font-size:.84rem}
+.kv>div{padding:.55rem .75rem;border-bottom:1px solid #eee}
+.kv>div:nth-child(odd){background:#f9f8f5;font-weight:600;color:#444;border-right:1px solid #e5e3dc}
+.kv>div:nth-child(even){background:#fff}
+.kv>div:nth-last-child(-n+2){border-bottom:none}
+
+/* Red flag grid */
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.5rem;margin:.5rem 0}
+.rftile{background:linear-gradient(135deg,#fff5f5,#ffeaea);border:1.5px solid #f5c6cb;border-radius:8px;padding:.65rem .75rem;font-size:.83rem;line-height:1.5}
+.rftile b{color:#c0392b;display:block;margin-bottom:.15rem}
+
+/* Branch */
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.6rem;margin:.5rem 0}
+.b-card{background:#f8fffe;border:1.5px solid #b2dfdb;border-radius:8px;padding:.65rem .75rem;font-size:.83rem}
+.b-cond{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#777;margin-bottom:.3rem}
+.b-drug{font-size:.95rem;font-weight:700;color:#1a1a2e;margin-bottom:.25rem}
+.b-note{font-size:.8rem;color:#555;line-height:1.4}
+
+/* Ladder */
+.ladder{border-left:3px solid #2a9d8f;margin:.5rem 0;padding-left:0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:flex-start;gap:0;padding:.5rem .75rem;border-bottom:1px solid #e8f5f3;background:#fbfffd;font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rn{background:#2a9d8f;color:#fff;font-size:.7rem;font-weight:700;padding:.2rem .5rem;border-radius:3px;flex-shrink:0;margin-right:.6rem;margin-top:.05rem;white-space:nowrap}
+.rt{line-height:1.5;flex:1}
+
+/* Lifestyle grid */
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.5rem;margin:.5rem 0}
+.lstile{background:linear-gradient(135deg,#f0fdf4,#e8f5e9);border:1.5px solid #a8d5b5;border-radius:8px;padding:.65rem .75rem;font-size:.83rem;line-height:1.5}
+.lstile b{color:#1a7a4a;display:block;margin-bottom:.15rem}
+
+/* Pills */
+.pill{display:inline-block;font-size:.68rem;font-weight:700;padding:.12rem .45rem;border-radius:20px;vertical-align:middle;margin:0 .1rem;letter-spacing:.03em}
+.pill-red{background:#fde8e8;color:#c0392b;border:1px solid #f5c6cb}
+.pill-purple{background:#f3e8fd;color:#7b2fa8;border:1px solid #d9b3f5}
+.pill-blue{background:#e8f4fd;color:#1a6fa3;border:1px solid #b3d9f5}
+.pill-teal{background:#e8fdf9;color:#0d7a6b;border:1px solid #b3f0e4}
+.pill-amber{background:#fdf8e8;color:#8a6a00;border:1px solid #f5e6a3}
+.pill-green{background:#e8fdf0;color:#1a7a4a;border:1px solid #a8f5c4}
+.pill-grey{background:#f0f0f0;color:#555;border:1px solid #ddd}
+
+/* Why drawer */
+.why-row{border-top:1px solid #f0ece3;padding:.5rem 1rem}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.8rem;font-weight:600;color:#777;font-family:inherit;display:flex;align-items:center;gap:.3rem;padding:.2rem 0}
+.why-btn:hover{color:#1a1a2e}
+.why-btn .caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;font-size:.82rem;color:#555;line-height:1.6;padding:.5rem 0 .2rem;border-top:1px dashed #e5e3dc;margin-top:.4rem}
+.why-drawer.open{display:block}
+
+/* Footer */
+.alg-foot{max-width:760px;margin:1rem auto;padding:0 1rem;font-size:.77rem;color:#888;line-height:1.6;text-align:center}
+.alg-foot strong{color:#555}
+
+@media(max-width:520px){
+  .rfgrid,.lsgrid,.branch{grid-template-columns:1fr}
+  .kv{grid-template-columns:1fr;font-size:.82rem}
+  .kv>div:nth-child(odd){border-right:none;border-bottom:1px solid #e5e3dc}
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body data-storage-key="rgp.alg.claudication.v1">
+
+<div class="stem-banner">
+  <div class="sb-icon">🚶</div>
+  <div>
+    <b>Intermittent Claudication — Peripheral Arterial Disease</b>
+    <small>Assessment &amp; management of PAD-related claudication | UK primary care</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — distinguish stable claudication from limb-threatening ischaemia, confirm PAD with ABPI, drive hard on secondary prevention, prescribe exercise, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Intermittent claudication</span><div class="body">Calf/thigh/buttock pain on walking, relieved by rest. Examine pulses; measure ABPI.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — limb-threatening ischaemia</span><span class="ttl">Limb-threatening ischaemia?</span><div class="body"><b>Acute:</b> 6 Ps (pain, pallor, pulseless, perishingly cold, paraesthesia, paralysis) → 999. <b>Critical:</b> rest pain, ulceration or gangrene.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">999 / urgent vascular</span><div class="body">Acute limb ischaemia → 999. Critical limb ischaemia → urgent vascular referral.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Investigate</span><span class="ttl">ABPI + risk factors</span><div class="body">ABPI &lt;0.9 confirms PAD. Exclude neurogenic claudication (spinal stenosis). HbA1c, lipids.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · manage</span></div>
+    <div class="box act" style="max-width:660px;"><span class="lbl">Step 7 · Action · Secondary prevention</span><span class="ttl">Treat the arteries, not just the legs</span><div class="body">Smoking cessation, supervised exercise programme, <b>statin + antiplatelet</b>, optimise BP and diabetes. PAD is a coronary-risk equivalent.</div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Vascular surgery</span><div class="body"><span class="pill pill-red">999</span> acute limb ischaemia. <span class="pill pill-purple">Vascular</span> critical ischaemia or lifestyle-limiting claudication despite exercise + risk-factor therapy (angioplasty/bypass).</div></div>
+    <div class="arrow"><span class="tag">Step 8 · exercise &amp; risk-factor modification</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle — more effective than drugs alone</span><span class="ttl">Walk through the pain, treat the whole tree</span><div class="body"><b>Supervised exercise programme</b> is first-line (walk to near-maximal claudication, rest, repeat; ≥2 h/week for 3 months) and improves walking distance more than drugs. <b>Stop smoking</b> (the single biggest modifiable risk) · weight loss, Mediterranean diet · optimise BP, diabetes and lipids · daily <b>foot care/inspection</b> (especially in diabetes) and well-fitting footwear.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · follow-up &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Follow-up &amp; safety-net</span><span class="ttl">Monitor &amp; urgent return advice</span><div class="body"><b>Review</b> walking distance, risk factors and medication adherence; reassess statin/antiplatelet and BP/diabetes targets. <b>999 / same-day vascular</b> for the <b>6 Ps of acute limb ischaemia</b> (pain, pallor, pulselessness, paraesthesia, paralysis, perishingly cold), or <b>rest pain / ulceration / gangrene</b> (critical limb ischaemia). Counsel that new foot ulcers or night/rest pain are red flags needing urgent review.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Claudication is a cardiovascular red flag:</b> these patients are at high risk of MI and stroke — the legs are the presenting complaint, but secondary prevention saves lives.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-row">
+    <div class="node-head"><div class="node-num">1</div><div><span class="node-tag">Safety</span><h3>Red flags — critical limb ischaemia &amp; cardiovascular emergencies</h3></div></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <span>Claudication itself is not an emergency, but critical limb ischaemia is. Screen every patient with PAD at every visit.</span>
+    <div class="rfgrid">
+      <div class="rftile"><b>Rest pain (especially nocturnal)</b> Severe constant ischaemic pain in foot/toes at rest → 999 or same-day vascular (critical limb ischaemia)</div>
+      <div class="rftile"><b>6 Ps — acute ischaemia</b> Pain, Pallor, Pulselessness, Paraesthesia, Paralysis, Perishing cold → 999 immediately (6-hour window)</div>
+      <div class="rftile"><b>Tissue loss</b> Ischaemic ulcers (punched-out, painful, distal), dry/wet gangrene of toes → same-day emergency vascular referral</div>
+      <div class="rftile"><b>Acute cardiovascular event</b> Chest pain + claudication = very high CV risk. New chest pain/stroke symptoms → 999</div>
+      <div class="rftile"><b>Acute aortic symptoms</b> Sudden severe back/abdominal pain + absent femoral pulses → 999 (aortic occlusion/dissection/AAA rupture)</div>
+      <div class="rftile"><b>Rapidly worsening claudication</b> Claudication distance halving over weeks → same-day vascular (acute-on-chronic ischaemia)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Critical limb ischaemia has a 1-year major amputation rate of 25–40% without revascularisation. The 6-hour window for acute limb ischaemia is analogous to STEMI — irreversible muscle death occurs after 6h of ischaemia. PAD patients have a 3–5x increased risk of MI and stroke — cardiovascular events kill more PAD patients than limb complications.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-row">
+    <div class="node-head"><div class="node-num">2</div><div><span class="node-tag">Diagnose</span><h3>Confirm claudication — Edinburgh Claudication Questionnaire</h3></div></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <span>Claudication = reproducible calf/leg pain on walking, relieved by rest within 10 minutes (standing still, not sitting). Use Edinburgh Claudication Questionnaire (ECQ) to classify.</span>
+    <div class="kv">
+      <div>Classic claudication</div><div>Calf pain on walking, always goes away on rest within 10 min, not present at rest. ECQ positive = 91% sensitivity, 99% specificity for PAD</div>
+      <div>Atypical claudication</div><div>Thigh/buttock claudication (aorto-iliac disease), foot claudication (tibial disease). May have associated erectile dysfunction (Leriche syndrome)</div>
+      <div>Claudication distance</div><div>Record: (1) initial claudication distance (pain starts) and (2) absolute claudication distance (stops walking). Track over time</div>
+      <div>Not claudication</div><div>Pain on standing still (spinal stenosis = neurogenic claudication — worse on extension, better flexed forward) | DVT | Arthritis | Compartment syndrome</div>
+      <div>Fontaine staging</div><div>I: Asymptomatic PAD | <b>IIa: Claudication &gt;200m</b> | <b>IIb: Claudication &lt;200m</b> | III: Rest pain | IV: Tissue loss</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Neurogenic claudication (spinal stenosis) is the main differential — it worsens going downhill, improves going uphill, and is relieved by sitting not standing. Leriche syndrome (aorto-iliac occlusion) causes buttock claudication and erectile dysfunction in younger men — often missed. Fontaine stage predicts prognosis and guides referral urgency.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-row">
+    <div class="node-head"><div class="node-num">3</div><div><span class="node-tag">Diagnose</span><h3>Cardiovascular risk stratification — PAD is a CVD equivalent</h3></div></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <span>Diagnosis of PAD immediately places the patient in the highest cardiovascular risk category. Address all modifiable risk factors.</span>
+    <div class="kv">
+      <div>Risk factors to assess</div><div>Smoking (most powerful), diabetes, hypertension, dyslipidaemia, CKD, family history of vascular disease. Calculate QRISK3</div>
+      <div>ABPI interpretation</div><div>0.9–1.3 = Normal | 0.7–0.9 = Mild PAD | 0.5–0.7 = Moderate PAD | &lt;0.5 = Severe PAD/critical ischaemia | &gt;1.3 = Calcified vessels (diabetes)</div>
+      <div>Polyvascular disease</div><div>Ask about: chest pain, TIA/stroke symptoms, carotid bruit. PAD + another vascular territory = very high CV event risk</div>
+      <div>Diabetes + PAD</div><div>ABI may be falsely normal/high (calcification). Use toe-brachial index (TBI) — more accurate. Neuropathy masks ischaemic pain</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">PAD is a CAD equivalent for statin and antiplatelet therapy — 10-year CV event rate &gt;20% by definition. Smoking cessation is the most effective single intervention, improving claudication distance by 30–50% and reducing amputation risk by 50%. Calcified vessels in diabetes give falsely reassuring ABIs — the most common diagnostic error in diabetic foot disease.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-row">
+    <div class="node-head"><div class="node-num">4</div><div><span class="node-tag">Diagnose</span><h3>Targeted examination</h3></div></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>ABPI <span class="pill pill-blue">Essential</span></div><div>Measure both legs. Doppler probe + sphygmomanometer. Ratio = highest ankle pressure ÷ brachial pressure. Asymmetry alone is significant</div>
+      <div>Peripheral pulses</div><div>Palpate and grade: femoral, popliteal, dorsalis pedis, posterior tibial. Document absent/reduced pulses bilaterally</div>
+      <div>Skin changes</div><div>Dependent rubor, pallor on elevation (Buerger's test), hair loss, shiny thin skin, cool temperature, trophic nail changes, ischaemic ulcers</div>
+      <div>Buerger's angle</div><div>Elevate leg — pallor at &lt;15° = critical ischaemia. Dependent rubor on lowering = reactive hyperaemia</div>
+      <div>Auscultation</div><div>Femoral bruits (stenosis). Carotid bruits. Abdominal aortic aneurysm (AAA) — consider if &gt;65M or &gt;70F with vascular risk factors</div>
+      <div>Neurological</div><div>Exclude diabetic neuropathy (monofilament testing, vibration sense) — important co-morbidity affecting management</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">ABPI is the single most important test in primary care PAD assessment — it has 95% sensitivity and 99% specificity for significant PAD. Buerger's test positive at &lt;15° identifies critical ischaemia clinically before ABPI. All men &gt;65 in the UK are offered NHS AAA screening — check if this has been done and document result.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-row">
+    <div class="node-head"><div class="node-num">5</div><div><span class="node-tag">Diagnose</span><h3>Investigations</h3></div></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>ABPI <span class="pill pill-blue">Essential</span></div><div>If &lt;0.9 = PAD confirmed. Refer for duplex ultrasound. If &gt;1.3 (calcification) → toe-brachial index (TBI) instead</div>
+      <div>Bloods <span class="pill pill-blue">Essential</span></div><div>HbA1c, lipid profile (LDL target &lt;1.8 mmol/L in PAD), FBC, U&amp;E, eGFR (contrast contraindication for imaging), CRP</div>
+      <div>ECG</div><div>AF (anticoagulation changes management), ischaemic changes — PAD + AF = high stroke risk</div>
+      <div>Duplex USS</div><div>Ordered by vascular team. Identifies location and severity of stenosis/occlusion. Guides intervention planning</div>
+      <div>Not routinely in PC</div><div>CT angiography, MRA — ordered by vascular team pre-intervention. Do not order in primary care</div>
+      <div>AAA screen</div><div>Abdominal USS if &gt;65M not previously screened. AAA prevalence 3x higher in PAD patients vs general population</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">LDL target in PAD is &lt;1.8 mmol/L (ESC 2019) — far lower than primary prevention targets. Most UK PAD patients are under-statin-dosed. eGFR &lt;30 is a relative contraindication for iodinated contrast used in CT angiography — document before referral. AF + PAD + anticoagulation dramatically reduces stroke and limb event risk.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-row">
+    <div class="node-head"><div class="node-num">6</div><div><span class="node-tag">Refer</span><h3>Referral criteria — vascular surgery</h3></div></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span> Emergency</div><div>Acute limb ischaemia (6 Ps) | Rest pain with complete pulse absence | Suspected aortic emergency</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Critical limb ischaemia (rest pain, tissue loss, ABI &lt;0.5) | Rapidly deteriorating claudication | Wet gangrene</div>
+      <div><span class="pill pill-purple">Urgent vascular</span></div><div>Claudication &lt;200m limiting daily activities | ABI &lt;0.7 with significant symptoms | Failed 3 months of supervised exercise | Suspected aorto-iliac disease (Leriche)</div>
+      <div><span class="pill pill-grey">Routine vascular</span></div><div>Confirmed PAD (ABI &lt;0.9) for duplex USS and supervised exercise programme. Even if not for intervention — multidisciplinary risk reduction</div>
+      <div><span class="pill pill-green">Primary care manages</span></div><div>Mild claudication (&gt;200m), ABI 0.7–0.9, stable symptoms — smoking cessation, exercise, antiplatelet, statin, BP control</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE NG19 (2020): all PAD patients should be offered supervised exercise programme (12 sessions over 3 months) — improves walking distance by 50–120m (equivalent to angioplasty for mild-moderate claudication). Referral to vascular MDT also enables cardiovascular risk optimisation. Intervention (angioplasty/bypass) reserved for significant disability or critical ischaemia.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-row">
+    <div class="node-head"><div class="node-num">7</div><div><span class="node-tag">Treat</span><h3>Medical management — cardiovascular risk reduction is the priority</h3></div></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Antiplatelet therapy</div>
+        <div class="b-drug">Clopidogrel 75 mg OD <span class="pill pill-teal">First-line</span></div>
+        <div class="b-note">Superior to aspirin for PAD (CAPRIE trial — 23.8% relative risk reduction). Start all symptomatic PAD patients</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">If clopidogrel intolerant</div>
+        <div class="b-drug">Aspirin 75 mg OD</div>
+        <div class="b-note">Second-line antiplatelet. Reduce GI risk with PPI if history of dyspepsia</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">High-intensity statin</div>
+        <div class="b-drug">Atorvastatin 80 mg OD <span class="pill pill-teal">Essential</span></div>
+        <div class="b-note">Target LDL &lt;1.8 mmol/L. Reduces major CV events by 25%. Do not wait for lipid result to start</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">BP</span><span class="rt"><b>Target &lt;140/90 mmHg</b> (or &lt;130/80 if diabetes). ACE inhibitor/ARB first-line. <span class="pill pill-amber">Caution:</span> beta-blockers not contraindicated in PAD (NICE NG19) but can worsen claudication subjectively</span></div>
+      <div class="rung"><span class="rn">Diabetes</span><span class="rt"><b>HbA1c &lt;53 mmol/mol</b> (7%). Tight glucose control slows PAD progression. SGLT2 inhibitors have cardiovascular and renal benefits in PAD + diabetes</span></div>
+      <div class="rung"><span class="rn">Cilostazol</span><span class="rt"><b>100 mg BD</b> — phosphodiesterase inhibitor. Improves claudication distance by 40–60m. Use if supervised exercise fails. <span class="pill pill-amber">Contraindicated:</span> heart failure, avoid with anticoagulants</span></div>
+      <div class="rung"><span class="rn">Anticoagulation</span><span class="rt"><b>Rivaroxaban 2.5 mg BD + aspirin 100 mg OD</b> (COMPASS trial) if high-risk PAD (ABI &lt;0.8, prior revascularisation) — discuss with vascular team first</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">CAPRIE trial: clopidogrel reduces combined MI/stroke/vascular death by 23.8% vs aspirin in PAD patients. High-intensity statins (atorvastatin 80mg) reduce 5-year major adverse limb events by 18% in PAD (Bhatt et al). COMPASS trial: rivaroxaban 2.5mg BD + aspirin reduced MACE and MALE (major adverse limb events) by 28% vs aspirin alone — NICE recommends consideration in high-risk stable PAD.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-row">
+    <div class="node-head"><div class="node-num">8</div><div><span class="node-tag">Lifestyle</span><h3>Exercise &amp; risk factor modification — more effective than medication alone</h3></div></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Supervised exercise programme</b> 12 sessions over 3 months, 30–60 min each. Walk to near-maximum claudication pain then rest. Improves walking distance by 50–200% — equivalent to angioplasty. Refer via vascular team or community exercise on prescription</div>
+      <div class="lstile"><b>Smoking cessation</b> Single most important intervention. Reduces claudication progression by 30–50%, halves amputation risk, reduces MI rate. Refer to NHS Stop Smoking Service. Varenicline + NRT most effective combination</div>
+      <div class="lstile"><b>Mediterranean diet</b> Reduces cardiovascular events by 30% (PREDIMED). High fruit, vegetables, olive oil, fish, legumes. Avoid saturated fat and processed foods</div>
+      <div class="lstile"><b>Foot care</b> Daily inspection for blisters, cuts, colour change. Well-fitting footwear. Podiatry referral for diabetics. Any wound in PAD patient = medical urgency</div>
+      <div class="lstile"><b>Weight reduction</b> Target BMI &lt;25 kg/m². Each 10 kg weight loss reduces CV event risk by 9 mmHg BP reduction and 0.5 mmol/L LDL fall</div>
+      <div class="lstile"><b>Alcohol reduction</b> &lt;14 units/week. Excess alcohol raises triglycerides and BP. Safe levels may have mild vasodilatory benefit but not a reason to drink</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">A Cochrane review (2017) shows supervised exercise improves maximum walking distance by 120m on average vs angioplasty improving by 80m — exercise is more effective than intervention for stable claudication. Smoking cessation is the only intervention proven to slow PAD progression AND reduce cardiovascular mortality. NICE NG19 mandates supervised exercise as first-line for claudication before any intervention is considered.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-row">
+    <div class="node-head"><div class="node-num">9</div><div><span class="node-tag">Safety</span><h3>Follow-up &amp; monitoring</h3></div></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>3 months</div><div>Review: claudication distance improving? Adherence to exercise/smoking cessation? LDL achieved &lt;1.8? BP at target? Medications tolerated?</div>
+      <div>6 months</div><div>Repeat ABPI if symptoms changing. Check HbA1c, lipids, renal function (if on ACEi/ARB). Reinforce exercise and lifestyle</div>
+      <div>Annual</div><div>Full cardiovascular risk review. ABPI annually in known PAD. Foot inspection. ECG (AF surveillance). Medication review</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>Sudden severe leg pain + pallor + cold + loss of pulse → 999 immediately (acute ischaemia). Chest pain, stroke symptoms</div>
+      <div><span class="pill pill-amber">Same-day</span></div><div>Rest pain developing | Any foot wound/ulcer | Rapidly worsening claudication distance | New neurological symptoms in leg</div>
+      <div>Foot wounds</div><div>Any break in skin in a PAD patient = same-day review. Risk of non-healing and limb loss is very high. Do not adopt watch-and-wait approach</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Annual MI rate in stable PAD patients is 5–7% — higher than most stable angina patients. Regular cardiovascular review (BP, lipids, HbA1c) reduces event rate. ABPI tracking identifies deterioration before critical ischaemia — a fall in ABI of 0.15 over 12 months is clinically significant. Ischaemic foot wounds heal poorly and progress to amputation in weeks without urgent vascular input.</div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE NG19 (Peripheral Arterial Disease 2020), ESC Guidelines PAD (2017), CAPRIE Trial, COMPASS Trial, Cochrane: Exercise for Claudication (2017). Adapt to individual patient context.
+</div>
+
+<script>
+(function(){
+  var KEY="rgp.alg.claudication.v1";
+  var boxes=document.querySelectorAll(".node-tick input[type=checkbox]");
+  var fill=document.getElementById("pFill"),done=document.getElementById("pDone"),total=document.getElementById("pTotal");
+  if(total)total.textContent=boxes.length;
+  function save(){var s={};boxes.forEach(function(b,i){s[i]=b.checked});try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}}
+  function load(){try{var s=JSON.parse(localStorage.getItem(KEY)||"{}");boxes.forEach(function(b,i){b.checked=!!s[i];syncNode(b)})}catch(e){}}
+  function syncNode(b){var node=b.closest(".node");if(node)node.classList.toggle("done",b.checked)}
+  function update(){var n=0;boxes.forEach(function(b){if(b.checked)n++});if(done)done.textContent=n;if(fill)fill.style.width=(boxes.length?Math.round(n/boxes.length*100):0)+"%"}
+  boxes.forEach(function(b){b.addEventListener("change",function(){syncNode(b);save();update()})});
+  document.querySelectorAll(".why-btn").forEach(function(btn){btn.addEventListener("click",function(){var exp=btn.getAttribute("aria-expanded")==="true";btn.setAttribute("aria-expanded",String(!exp));var d=btn.nextElementSibling;if(d)d.classList.toggle("open",!exp)})});
+  var rb=document.getElementById("resetBtn");if(rb)rb.addEventListener("click",function(){if(confirm("Reset?")){boxes.forEach(function(b){b.checked=false;syncNode(b)});try{localStorage.removeItem(KEY)}catch(e){}update()}});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

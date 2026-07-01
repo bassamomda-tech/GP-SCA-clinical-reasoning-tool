@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The SCA Guide · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<style>
+.tool-page{ padding:28px 32px 90px; max-width:960px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+.tool-head{ padding-bottom:16px; border-bottom:1px solid var(--line); margin-bottom:20px; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:36px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:8px; max-width:70ch; line-height:1.6; }
+
+/* numbers strip */
+.g-nums{ display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:8px; }
+@media (max-width:860px){ .g-nums{ grid-template-columns:repeat(2,1fr); } }
+.g-num{ border:1px solid var(--line); border-radius:13px; background:#fff; padding:13px 15px; text-align:center; }
+.g-num .v{ font-family:'Source Serif 4',Georgia,serif; font-size:27px; font-weight:600; color:var(--ink); }
+.g-num .l{ font-size:11px; color:var(--muted); margin-top:2px; line-height:1.4; }
+
+/* TOC */
+.g-toc{ display:flex; gap:8px; flex-wrap:wrap; margin:18px 0 26px; }
+.g-toc a{ font-size:12.5px; font-weight:700; color:var(--ink-2); text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:7px 15px; background:#fff; }
+.g-toc a:hover{ border-color:var(--teal); color:var(--teal); }
+
+.g-sec{ margin-bottom:34px; }
+.g-sec h2{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:25px; color:var(--ink); margin-bottom:4px; display:flex; gap:11px; align-items:baseline; }
+.g-sec h2 .n{ font-size:13px; font-weight:800; color:var(--teal); letter-spacing:.06em; }
+.g-sec > p{ font-size:14px; line-height:1.7; color:var(--ink-2); margin:8px 0; max-width:74ch; }
+.g-sec > p b{ color:var(--ink); }
+
+.g-card{ border:1px solid var(--line); border-radius:14px; background:#fff; padding:16px 19px; margin-top:12px; }
+.g-card h3{ font-size:14px; font-weight:700; color:var(--ink); margin-bottom:6px; }
+.g-card p, .g-card li{ font-size:13.3px; line-height:1.65; color:var(--ink-2); }
+.g-card ul{ margin:6px 0 0; padding-left:18px; }
+.g-card li{ margin-bottom:6px; }
+.g-card li b{ color:var(--ink); }
+
+.g-callout{ border:1px solid #fde68a; background:#fffbeb; border-radius:12px; padding:13px 16px; font-size:13.3px; line-height:1.65; color:#92400e; margin-top:12px; }
+.g-callout b{ color:#78350f; }
+.g-myth{ border:1px solid #fecaca; background:#fef2f2; border-radius:12px; padding:13px 16px; font-size:13.3px; line-height:1.65; color:#7f1d1d; margin-top:12px; }
+.g-myth b{ color:#991b1b; }
+
+/* rhythm diagram */
+.g-rhythm{ display:flex; gap:6px; margin-top:12px; flex-wrap:wrap; }
+.g-rhythm .blk{ border-radius:9px; padding:9px 12px; font-size:11.5px; font-weight:700; line-height:1.35; }
+.g-rhythm .read{ background:#fffbeb; border:1px solid #fde68a; color:#92400e; flex:1; min-width:84px; }
+.g-rhythm .cons{ background:#f0fdf4; border:1px solid #bbf7d0; color:#15803d; flex:3.4; min-width:170px; }
+.g-rhythm small{ display:block; font-weight:500; opacity:.8; }
+
+/* domains */
+.g-doms{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:12px; }
+@media (max-width:860px){ .g-doms{ grid-template-columns:1fr; } }
+.g-dom{ border:1px solid var(--line); border-top:4px solid var(--dc); border-radius:12px; background:#fff; padding:13px 15px; }
+.g-dom .t{ font-size:13px; font-weight:800; color:var(--dc); }
+.g-dom .w{ display:inline-block; font-size:10px; font-weight:800; color:#15803d; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:999px; padding:2px 8px; margin-left:6px; vertical-align:1px; }
+.g-dom p{ font-size:12.6px; line-height:1.6; color:var(--ink-2); margin-top:6px; }
+
+/* CEG grid */
+.g-cegs{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
+@media (max-width:760px){ .g-cegs{ grid-template-columns:1fr; } }
+.g-ceg{ display:flex; gap:10px; align-items:flex-start; border:1px solid var(--line); border-radius:11px; background:#fff; padding:11px 14px; }
+.g-ceg .ic{ font-size:17px; flex-shrink:0; }
+.g-ceg .b{ font-size:12.8px; line-height:1.5; color:var(--ink-2); }
+.g-ceg .b b{ color:var(--ink); display:block; font-size:13px; }
+
+/* plan table */
+.g-plan{ border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden; margin-top:12px; }
+.g-week{ display:flex; gap:14px; padding:13px 17px; border-bottom:1px solid #f1f5f9; }
+.g-week:last-child{ border-bottom:none; }
+.g-week .wk{ flex-shrink:0; width:84px; font-size:11px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--teal); padding-top:2px; }
+.g-week .wb{ flex:1; font-size:13.2px; line-height:1.6; color:var(--ink-2); }
+.g-week .wb b{ color:var(--ink); }
+.g-week .wb a{ color:var(--teal); font-weight:600; text-decoration:none; }
+.g-week .wb a:hover{ text-decoration:underline; }
+
+/* fail patterns */
+.g-fails{ display:flex; flex-direction:column; gap:9px; margin-top:12px; }
+.g-fail{ display:flex; gap:12px; border:1px solid var(--line); border-left:4px solid #b91c1c; border-radius:11px; background:#fff; padding:12px 15px; }
+.g-fail .n{ flex-shrink:0; width:24px; height:24px; border-radius:50%; background:#fef2f2; border:1px solid #fecaca; color:#b91c1c; font-size:11.5px; font-weight:800; display:grid; place-items:center; margin-top:1px; }
+.g-fail .b{ font-size:13.2px; line-height:1.6; color:var(--ink-2); }
+.g-fail .b b{ color:var(--ink); }
+.g-fail .b a{ color:var(--teal); font-weight:600; text-decoration:none; }
+
+/* FAQ */
+.g-faq{ border:1px solid var(--line); border-radius:12px; background:#fff; margin-top:9px; overflow:hidden; }
+.g-faq summary{ list-style:none; cursor:pointer; padding:13px 17px; font-size:13.5px; font-weight:700; color:var(--ink); display:flex; justify-content:space-between; gap:12px; align-items:center; }
+.g-faq summary::-webkit-details-marker{ display:none; }
+.g-faq summary:hover{ background:#f8fafc; }
+.g-faq .chev{ transition:transform .18s ease; color:var(--muted); flex-shrink:0; }
+.g-faq[open] .chev{ transform:rotate(180deg); }
+.g-faq .a{ padding:0 17px 14px; font-size:13.2px; line-height:1.65; color:var(--ink-2); }
+.g-faq .a b{ color:var(--ink); }
+</style>
+</head>
+<body>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-sca"></aside>
+  <main class="main">
+    <div class="tool-page">
+
+      <div class="tool-head">
+        <div class="tool-eyebrow">Reasoning GP · Start here</div>
+        <h1>The SCA, <em>explained properly</em></h1>
+        <p>Everything a candidate actually needs to know about the Simulated Consultation Assessment — the format, the marking arithmetic most guides get wrong, why candidates really fail, and a 12-week plan built directly on the training tools in this site. Written the way an examiner would brief a friend.</p>
+      </div>
+
+      <div class="g-nums">
+        <div class="g-num"><div class="v">12 × 12</div><div class="l">cases × minutes each</div></div>
+        <div class="g-num"><div class="v">3 min</div><div class="l">records window between cases</div></div>
+        <div class="g-num"><div class="v">3 × 0–3</div><div class="l">domains graded per case</div></div>
+        <div class="g-num"><div class="v">/ 126</div><div class="l">total (CM weighted ×1.5)</div></div>
+        <div class="g-num"><div class="v">~9 : 3</div><div class="l">video : audio case mix</div></div>
+      </div>
+
+      <nav class="g-toc">
+        <a href="#format">Format</a>
+        <a href="#marking">How it's marked</a>
+        <a href="#cegs">The 12 case groups</a>
+        <a href="#fails">Why candidates fail</a>
+        <a href="#plan">12-week plan</a>
+        <a href="#day">On the day</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <!-- FORMAT -->
+      <div class="g-sec" id="format">
+        <h2><span class="n">01</span>The format — a relay, not a sprint</h2>
+        <p>You sit the SCA <b>remotely, from a booked private room at a GP surgery</b> (usually your own), on your own computer via the RCGP's online exam platform, with a remote invigilator watching throughout. No exam centre, no travel — and no corridor between stations to collect yourself in.</p>
+        <p>Twelve consultations arrive back-to-back. Before each one you get <b>3 minutes with the patient's records</b> — demographics, past history, medications, recent entries, and the reason for contact. Then the role-player (a trained actor) connects and the 12 minutes start. When the buzzer goes, it ends — finished or not — and the next records appear.</p>
+        <div class="g-rhythm">
+          <span class="blk read">3 min<small>records</small></span>
+          <span class="blk cons">12 min — consultation<small>opening → gathering → sharing → management → safety-net → close</small></span>
+          <span class="blk read">3 min<small>records</small></span>
+          <span class="blk cons">12 min — consultation<small>…× 12, no pause button</small></span>
+        </div>
+        <div class="g-card">
+          <h3>What the 3 minutes are actually for</h3>
+          <ul>
+            <li><b>Mine, don't skim.</b> The records contain deliberate signal: the medication started four weeks ago, the DNA'd reviews, the nurse's note, the carer flag. Candidates who restate what the notes already say waste consultation minutes and signal template-thinking.</li>
+            <li><b>Predict the station.</b> Ask: what is this case probably testing? Where's the trap? What must I have done by minute 7? Our case briefs train exactly this — every Hot Seat case opens with an exam-format record extract.</li>
+            <li><b>Most cases are the patient</b> — but expect some to be a carer, a relative, another professional, or a results/data discussion. Physical examination is never assessed; findings are given if you ask for the right ones.</li>
+          </ul>
+        </div>
+        <div class="g-callout"><b>The skill nobody practises:</b> recovering between stations. A collapsed case must be left in its own 12 minutes — examiners mark each case independently, and the diet is lost more often by one bad station bleeding into three than by the bad station itself. The <a href="sca-circuit.html" style="color:#78350f;font-weight:700">Mock Exam Circuit</a> exists to train this.</div>
+      </div>
+
+      <!-- MARKING -->
+      <div class="g-sec" id="marking">
+        <h2><span class="n">02</span>How it's actually marked</h2>
+        <p>Every case is graded by an examiner in <b>three domains</b>, each Clear Fail (0) · Fail (1) · Pass (2) · Clear Pass (3). Clinical Management is weighted ×1.5 in the arithmetic — so each case carries <b>10.5 marks and the diet totals 126</b>. There is no fixed pass mark: it's set fresh each sitting by borderline-regression standard-setting, recently landing around the high 70s. And crucially, <b>you don't pass or fail individual cases</b> — only the cumulative total counts.</p>
+        <div class="g-doms">
+          <div class="g-dom" style="--dc:#1d4ed8"><span class="t">Data Gathering & Diagnosis</span><p>Hypothesis-driven questioning that visibly responds to this patient — not a recited systems template. Records used, red flags screened, and a working diagnosis <b>committed to out loud</b>.</p></div>
+          <div class="g-dom" style="--dc:#15803d"><span class="t">Clinical Management</span><span class="w">×1.5</span><p>A safe, specific, UK-primary-care plan at the correct urgency, shared as options. The weighting means a management zero is the single most expensive event in the exam.</p></div>
+          <div class="g-dom" style="--dc:#be185d"><span class="t">Relating to Others</span><p>Cues answered in the moment they're offered, ICE woven into the plan (not bolted on), plain language, genuine shared decisions. Formulaic empathy reads as no empathy.</p></div>
+        </div>
+        <div class="g-myth"><b>The myth that fails people:</b> "good communication can carry weak medicine." It cannot — domains don't compensate, and CM is worth half as much again. The reverse myth fails the rest: "the medicine is what matters." A doctor-centred interrogation caps Relating at borderline no matter how correct the plan. The exam wants both, and the weighting says management slightly more.</div>
+        <p>Train your marking eye before you train anything else: the <a href="sca-domains.html" style="color:var(--teal);font-weight:600">grade descriptors</a> show what each grade sounds like, and <a href="sca-examiner.html" style="color:var(--teal);font-weight:600">You Be the Examiner</a> tests whether your judgement matches an examiner's — because until it does, your self-assessment of practice runs is noise.</p>
+        <div class="g-card">
+          <h3>The exact phrases examiners pick from</h3>
+          <p style="margin-bottom:8px">When a domain doesn't reach the standard, examiners select from a fixed list of feedback statements. Reverse-engineer them — each is a thing to <em>not</em> do.</p>
+          <ul>
+            <li><b>Data Gathering &amp; diagnosis:</b> data gathering insufficient for a safe assessment; existing record information under-used; psychosocial information missed; unsystematic/disorganised gathering; poor prioritisation across multiple problems; implications of abnormal findings not grasped; differentials inadequately generated or tested; decision-making illogical, incorrect or incomplete.</li>
+            <li><b>Clinical management &amp; medical complexity:</b> referral, investigation or prevention/health-promotion plan not reflective of current practice; medical management of risk inadequate; implications of comorbidity under-considered; uncertainty (including the patient's) managed poorly; inadequate follow-up/continuity/safety-netting; ineffective time management.</li>
+            <li><b>Relating to others:</b> non-verbal cues/active listening not shown; agenda, health beliefs or preferences under-explored; circumstances/cultural differences not responded to; explanations not adapted to the person; a judgemental approach; insufficient respect or sensitivity; ownership of decisions inappropriate; teamwork/others' roles not recognised; <b>safeguarding concerns not recognised or acted on</b>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CEGS -->
+      <div class="g-sec" id="cegs">
+        <h2><span class="n">03</span>The 12 clinical experience groups</h2>
+        <p>Cases are sampled from the RCGP's twelve clinical experience groups. The college is explicit that the selection isn't a ranking — <b>prepare across all of them</b>, because the blueprint guarantees breadth. The groups, with what they tend to test:</p>
+        <div class="g-cegs">
+          <div class="g-ceg"><span class="ic">👶</span><div class="b"><b>Children & young people</b>Consulting through parents without losing the child; safeguarding antennae; adolescent confidentiality.</div></div>
+          <div class="g-ceg"><span class="ic">⚧️</span><div class="b"><b>Gender, reproductive & sexual health</b>Contraception, menopause/HRT, pregnancy red flags (ectopic!), sensitive history-taking.</div></div>
+          <div class="g-ceg"><span class="ic">📈</span><div class="b"><b>Long-term conditions & cancer</b>Reviews that negotiate rather than lecture; 2WW conversations; multimorbidity trade-offs.</div></div>
+          <div class="g-ceg"><span class="ic">🧓</span><div class="b"><b>Older adults</b>Frailty, delirium vs dementia, polypharmacy, carers as second patients, end-of-life honesty.</div></div>
+          <div class="g-ceg"><span class="ic">🧠</span><div class="b"><b>Mental health & addiction</b>Risk assessment that's specific, not scripted; alcohol/substance conversations without judgement.</div></div>
+          <div class="g-ceg"><span class="ic">🚨</span><div class="b"><b>Urgent & unscheduled care</b>Telephone triage, disposition decisions, the case where today-vs-tomorrow IS the mark.</div></div>
+          <div class="g-ceg"><span class="ic">🛡️</span><div class="b"><b>Health disadvantage & vulnerabilities</b>Safeguarding, capacity, veterans, homelessness, communication difficulties.</div></div>
+          <div class="g-ceg"><span class="ic">🌍</span><div class="b"><b>Ethnicity, culture & diversity</b>Beliefs that shape management (fasting, family decision-making) — respected and planned with, not around.</div></div>
+          <div class="g-ceg"><span class="ic">📋</span><div class="b"><b>New & undifferentiated presentations</b>The classic GP case: committing to a sensible working diagnosis under uncertainty.</div></div>
+          <div class="g-ceg"><span class="ic">💊</span><div class="b"><b>Prescribing & pharmacology</b>Safe, specific prescribing: interactions, monitoring, deprescribing, the drug-seeking conversation.</div></div>
+          <div class="g-ceg"><span class="ic">🔬</span><div class="b"><b>Investigations & results</b>Explaining abnormal results honestly; not hiding behind tests; rational investigation.</div></div>
+          <div class="g-ceg"><span class="ic">⚖️</span><div class="b"><b>Professional & ethical dilemmas</b>Confidentiality, third-party calls, colleagues as patients, dubious paperwork — reasoning out loud beats the "right answer".</div></div>
+        </div>
+        <p style="margin-top:12px">Every case in <a href="sca-practice.html" style="color:var(--teal);font-weight:600">The Hot Seat</a> is tagged to its groups and filterable — and your <a href="sca-progress.html" style="color:var(--teal);font-weight:600">heat-map</a> shows which groups you've never practised.</p>
+      </div>
+
+      <!-- FAILS -->
+      <div class="g-sec" id="fails">
+        <h2><span class="n">04</span>Why candidates actually fail</h2>
+        <p>Pass rates differ sharply between UK graduates and IMGs — a differential the college itself studies. Examiners' reports and trainer experience point at the same handful of patterns, and <b>none of them is a knowledge deficit</b>:</p>
+        <div class="g-fails">
+          <div class="g-fail"><span class="n">1</span><div class="b"><b>The recited template.</b> "Any fever, weight loss, night sweats…" fired regardless of presentation. It feels safe; it reads as not thinking. Fix: hypothesis first, questions second — every <a href="sca-practice.html">Hot Seat</a> case trains the discriminating question.</div></div>
+          <div class="g-fail"><span class="n">2</span><div class="b"><b>Management arrives at minute 11.</b> A beautiful history with no plan scores worse than an adequate history with a good plan — CM is weighted ×1.5. Fix: summarise by 6, manage by 7. The time maps in every case brief drill this rhythm.</div></div>
+          <div class="g-fail"><span class="n">3</span><div class="b"><b>Formulaic empathy.</b> "I'm sorry to hear that, it must be very difficult" deployed on a timer convinces no one. Fix: respond to the specific thing said — the <a href="sca-practice.html">"don't say it like this"</a> contrasts exist for exactly this.</div></div>
+          <div class="g-fail"><span class="n">4</span><div class="b"><b>Cues left on the table.</b> The under-stated British cue — "I've been a bit off, you know" — sails past. Each station plants them deliberately. Fix: the cue-recognition checklists in the Hot Seat feedback, and <a href="sca-examiner.html">You Be the Examiner</a>, where you watch cues being missed by someone else.</div></div>
+          <div class="g-fail"><span class="n">5</span><div class="b"><b>Secondary-care reflexes.</b> "I'll refer you" / "I'll discuss with my senior" where a UK GP manages in-house. The SCA examines an independent GP. Fix: learn what primary care holds — our algorithms and protocols are the reference layer.</div></div>
+          <div class="g-fail"><span class="n">6</span><div class="b"><b>Hedging the diagnosis.</b> Refusing to commit ("it could be several things…") reads as not knowing. Examiners reward a sensible working diagnosis said plainly, with uncertainty managed honestly.</div></div>
+          <div class="g-fail"><span class="n">7</span><div class="b"><b>Jargon and the unexplained plan.</b> "Stage 2 hypertension per NICE" means nothing to a patient. Fix: the <a href="sca-explainer.html">45-Second Explainer</a> — three a day until plain English is the default register.</div></div>
+        </div>
+      </div>
+
+      <!-- PLAN -->
+      <div class="g-sec" id="plan">
+        <h2><span class="n">05</span>A 12-week training plan</h2>
+        <p>Built on one principle: <b>calibrate first, drill second, simulate third.</b> Practising before you can recognise good is how people rehearse their mistakes for twelve weeks.</p>
+        <div class="g-plan">
+          <div class="g-week"><span class="wk">Wks 1–2</span><div class="wb"><b>Calibrate.</b> Read the <a href="sca-domains.html">grade descriptors</a> until you can hear them. Mark all three transcripts in <a href="sca-examiner.html">You Be the Examiner</a> — repeat until you're within one grade of the examiner everywhere. Read three <a href="sca-playbooks.html">playbooks</a>.</div></div>
+          <div class="g-week"><span class="wk">Wks 3–6</span><div class="wb"><b>Drill.</b> Two <a href="sca-practice.html">Hot Seat</a> cases a week, full feedback loop: scorecard → cues & time discipline → word-pictures → re-run anything that landed in Fail territory. Three <a href="sca-explainer.html">explainer drills</a> a day — they take four minutes. Log every case in <a href="sca-domains.html">Examiner Marking</a>.</div></div>
+          <div class="g-week"><span class="wk">Wks 7–8</span><div class="wb"><b>Find the cold cells.</b> Open your <a href="sca-progress.html">heat-map</a>. Practise ONLY the unpractised groups and the weakest domain for two weeks. If you have role-play partners or real (consented, de-identified) consultations, run them through <a href="sca-real-feedback.html">Real-Consultation Feedback</a> — your real habits differ from your performance habits.</div></div>
+          <div class="g-week"><span class="wk">Wks 9–11</span><div class="wb"><b>Simulate.</b> One <a href="sca-circuit.html">Mock Exam Circuit</a> per week under true timing — build from 3 cases to the full bank. Grade every case immediately after, while it's warm. Re-read the playbook for any consultation type that rattled you.</div></div>
+          <div class="g-week"><span class="wk">Wk 12</span><div class="wb"><b>Taper.</b> No new material. One light circuit early in the week, explainer drills daily, sleep guarded. Re-read your own reflection notes — by now they're the most personalised revision resource that exists for you.</div></div>
+        </div>
+      </div>
+
+      <!-- ON THE DAY -->
+      <div class="g-sec" id="day">
+        <h2><span class="n">06</span>On the day</h2>
+        <div class="g-card">
+          <ul>
+            <li><b>The room is your responsibility.</b> Book it well in advance, test the kit on the same computer, same network, same chair, days before. A "do not disturb" sign and a colleague guarding the door are not paranoia.</li>
+            <li><b>Tech checklist:</b> wired connection if possible, camera at eye level, face lit from the front, headset tested, phone OUT of the room except as instructed for invigilation.</li>
+            <li><b>Between cases, breathe out the last one.</b> Three minutes is enough: ten seconds to let it go, the rest to mine the next records. Nobody else knows how the last station went — including, often, the candidate. Examiners watch one case each; case 7's examiner never saw case 6.</li>
+            <li><b>The buzzer is not failure.</b> Plenty of passing consultations are cut off mid-close. What can't be missing is the management — another reason the minute-7 rule matters.</li>
+            <li><b>If technology fails,</b> follow the invigilator's instructions and keep evidence (times, screenshots where permitted). Interrupted diets are handled by the college — your job is only to document and stay calm.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PLATFORM / LOGISTICS (enriched from the RCGP Trainer & Exam-Day guides) -->
+      <div class="g-sec" id="platform">
+        <h2><span class="n">07</span>The platform &amp; exam-day logistics</h2>
+        <p>The SCA runs on the RCGP's <b>Osler Online</b> platform, from your own booked private room. Two sessions run per day and you're allocated one: <b>AM 08:45–13:25</b> or <b>PM 13:20–18:05</b>. Knowing the exact choreography removes a whole layer of exam-day stress.</p>
+        <div class="g-card">
+          <h3>The exam-day timeline</h3>
+          <ul>
+            <li><b>Candidate registration (45 min).</b> Log in to Osler; the invigilator does your <b>ID check</b> (government photo ID — passport or UK driving licence; a selfie emailed to exams@rcgp.org.uk is the fallback if your camera won't focus) and a <b>360° environment check</b> — they may take up to 30 minutes to appear.</li>
+            <li><b>Rounds 1–6 (1h 30).</b> 15 minutes per station: <b>3 minutes reading</b> then a <b>12-minute</b> video or telephone consultation. A <b>15-second gap</b> between stations to compose yourself (not a break).</li>
+            <li><b>Comfort break (10 min)</b> after case 6 — a blue coffee-cup icon and countdown appear.</li>
+            <li><b>Rounds 7–12 (1h 30),</b> same structure.</li>
+            <li><b>Wrap-up &amp; reruns (45 min).</b> You stay under exam conditions and may not log out until the invigilator gives permission.</li>
+          </ul>
+        </div>
+        <div class="g-card">
+          <h3>Navigating the platform</h3>
+          <ul>
+            <li><b>Before you start:</b> an automatic device check (mic, video, internet), then position your face until the on-screen oval turns <b>blue</b> (yellow = not aligned), and an audio test. Use the <b>walkthrough</b> as many times as you like beforehand.</li>
+            <li><b>During a case:</b> your brief and your private <b>notes</b> carry over from reading time; you can minimise/close the brief and expand notes using the on-screen icons. A red <b>one-minute warning</b> then a 5-second countdown signals the end; completed stations get a <b>green tick</b>.</li>
+            <li><b>Telephone cases</b> (about 3 of the 12) show a phone image — you hear the role-player but don't see them, and they/​the examiner don't see you, though you stay on camera for the invigilator.</li>
+            <li><b>To reach the invigilator:</b> the <b>hand-raise</b> button (mid-consultation) or the <b>direct-message</b> function. You must message them when leaving and returning during the break.</li>
+          </ul>
+        </div>
+        <div class="g-card">
+          <h3>Your desk — and reruns</h3>
+          <ul>
+            <li><b>Allowed:</b> a water bottle, a wipeable <b>whiteboard + marker</b>, and a <b>paper BNF</b>. <b>Banned:</b> any clinical guidance, charts or posters on the walls — clear them before the environment check. No phone use during the break.</li>
+            <li><b>Reruns (45 min reserved).</b> Granted for genuine disruption — repeated signal drops or severe external noise. <b>Flag any issue immediately</b> — for rounds 1–6 during the break, for rounds 7–12 in the 5 minutes straight after case 12 — or a lead-examiner review can't be guaranteed. A rerun appears as an <b>Ad-hoc Station</b> at the foot of your schedule.</li>
+            <li><b>If tech fails:</b> press <b>refresh</b> (≈15 s to reconnect) or log out and back in (you return to your station). IT helpline: <b>020 3188 7680</b> — keep your phone to hand, as they'll call you.</li>
+          </ul>
+        </div>
+        <div class="g-card">
+          <h3>Booking, attempts &amp; kit</h3>
+          <ul>
+            <li><b>9 sittings a year</b> (monthly except July, August &amp; December), bookable up to 12 months ahead on Fourteen Fish. A <b>maximum of 4 attempts</b> across any version (CSA/RCA/SCA) — usually no more than 2 in ST3 — so time it well and don't resit before you've fixed the flagged areas.</li>
+            <li><b>Kit:</b> updated <b>Chrome or Edge</b>; a <b>PC, laptop or Mac</b> only (no phones/tablets); the same device and location as your device check. <b>Wired</b> headphones are fine and often fix sound issues; <b>Bluetooth is not permitted</b>.</li>
+            <li><b>No physical examination</b> is required — cases are written without it, or examination findings are supplied in the pre-reading by another professional.</li>
+          </ul>
+        </div>
+        <div class="g-card">
+          <h3>What the cases emphasise</h3>
+          <ul>
+            <li>Expect <b>uncertain diagnosis, polypharmacy and comorbidity</b> — this is not one problem done well in 12 minutes. Role-players may be the patient, a <b>parent/carer or a health/social-care professional</b>.</li>
+            <li>Cases reach into less-everyday territory: <b>domestic abuse, FGM, transgender care, assisted-dying requests, safeguarding</b>.</li>
+            <li>Of the 12 blueprint areas, the college flags a <b>top 5 likely in every diet</b>: <b>under-19s; gender, reproductive &amp; sexual health; long-term conditions; older adults; mental health.</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="g-sec" id="faq">
+        <h2><span class="n">08</span>Quick answers</h2>
+        <details class="g-faq"><summary>Do I need to pass a minimum number of cases?<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="a">No. Only the cumulative total out of 126 counts. One disastrous case is survivable; the same weakness repeating across twelve is not — which is why the <b>domain averages</b> on your heat-map predict the result better than any single mock.</div></details>
+        <details class="g-faq"><summary>Is there a "preferred" consultation model?<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="a">The college is explicit that there isn't — no script, no model, no magic phrases. The descriptors reward behaviours (cues answered, plans shared, safety-nets specific), not structures. Any model that produces those behaviours is fine; reciting any model instead of consulting is not.</div></details>
+        <details class="g-faq"><summary>Will I be examined on physical examination?<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="a">No — examination skills live in workplace-based assessment. In the SCA you ask for findings and they're provided. The skill being tested is knowing <b>which</b> findings you need and what they change.</div></details>
+        <details class="g-faq"><summary>How is the audio (telephone) case different?<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="a">Roughly a quarter of the diet is audio-only. Your ears replace your eyes: verbalise what you'd normally show ("I'm writing this down", "take your time"), check understanding more often, and treat disposition (today vs tomorrow vs 999) as the centre of gravity — telephone cases are very often urgent-care cases.</div></details>
+        <details class="g-faq"><summary>When should I sit it?<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="a">In ST3, when your trainer agrees your ordinary surgeries look like passing consultations — the SCA samples your daily work, so the best preparation is consulting well daily and then exam-shaping it for 8–12 weeks. Booking is through your RCGP account; places go quickly, so plan the diet date before you plan the revision.</div></details>
+        <details class="g-faq"><summary>I failed. What now?<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="a">Your feedback names the weak domains — believe it over your memory of the day. Take your results letter to <a href="sca-resit.html" style="color:var(--teal);font-weight:600">The Resit Clinic</a>: it turns the letter and an honest questionnaire into named diagnoses and a personalised 8-week treatment plan. Rebuild from calibration, not volume — resitters who simply do more cases usually rehearse the same habits harder. And use your deanery's support — targeted help after a fail is what it exists for.</div></details>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

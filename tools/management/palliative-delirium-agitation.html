@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Delirium &amp; Terminal Agitation (Palliative) — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Palliative delirium and agitation management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🕊️",
+  title:"Delirium & Terminal Agitation — Step-by-Step",
+  stemTitle:"Delirium &amp; terminal agitation &mdash; hunt reversible causes, then haloperidol for delirium, midazolam for terminal restlessness",
+  stemSub:"A practical protocol: screen for and treat reversible causes (drugs, retention, constipation, pain, infection, hypercalcaemia, hypoxia), use non-drug calming measures, give haloperidol for hyperactive delirium, and use midazolam (± levomepromazine) for terminal agitation in the last days \u2014 by syringe pump. GMEC Palliative Care 2025 / NICE delirium / PCF8.",
+  guideline:"GMEC 2025 · PCF8",
+  glance:[
+    {lbl:"First", val:"Find reversible cause", sub:"PINCH-ME"},
+    {lbl:"Delirium drug", val:"Haloperidol 0.5–1.5 mg", sub:"0.5\u20131.5mg"},
+    {lbl:"Terminal agitation", val:"Midazolam 2.5–5 mg SC", sub:"2.5\u20135mg SC PRN"},
+    {lbl:"Refractory", val:"Levomepromazine 12.5–25 mg", sub:"broad / sedating"},
+    {lbl:"Avoid sole use", val:"No benzo alone in delirium", sub:"(worsens it; except alcohol/seizure)"},
+    {lbl:"Last days", val:"CSCI syringe pump", sub:"midazolam ± antipsychotic"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Recognise delirium & seek reversible causes", blocks:[{b:"kv", rows:[["Recognise","Acute fluctuating confusion/agitation \u2014 screen for delirium rather than assuming terminal restlessness."],["Reversible causes","Look for pain, urinary retention, constipation, infection, hypercalcaemia, hypoxia, and drug causes (esp. opioids, steroids, anticholinergics)."],["Goal","Treat reversible causes first; use non-drug calming, and reserve antipsychotics/sedation for distressing symptoms."]]},{b:"why", html:"Much terminal agitation has a treatable cause (retention, constipation, pain) \u2014 identifying it first avoids unnecessary sedation and relieves distress faster."}]},
+    {t:"node", d:"safety", n:"2", tag:"Assess", title:"Screen for reversible causes (PINCH-ME)",
+      blocks:[
+        {b:"rfgrid", items:[]},
+        {b:"tiles", v:"safety", items:[
+          {t:"💊 Drugs / withdrawal", html:"Opioid toxicity, anticholinergics, steroids, benzodiazepine/alcohol/nicotine withdrawal \u2014 the commonest reversible cause."},
+          {t:"🚽 Retention / constipation", html:"Urinary retention (palpable bladder) and faecal impaction \u2014 examine and relieve."},
+          {t:"🤕 Pain", html:"Unrelieved pain causing agitation \u2014 especially if non-verbal."},
+          {t:"🦠 Infection", html:"UTI, chest \u2014 treat if consistent with goals of care."},
+          {t:"🧪 Metabolic", html:"Hypercalcaemia, hyponatraemia, hypoglycaemia, uraemia, hypoxia \u2014 check if appropriate."},
+          {t:"🧠 CNS", html:"Brain metastases / raised ICP (consider dexamethasone), or the dying process itself (terminal agitation)."}
+        ]},
+        {b:"warn", html:"Distinguish <b>reversible delirium</b> (earlier in illness \u2014 worth investigating &amp; treating the cause) from <b>terminal agitation</b> in the last hours/days (focus shifts to comfort). A full bladder and constipation are easily-missed, quickly-treated causes."}
+      ]},
+    {t:"node", d:"life", n:"3", tag:"Step 1 \u00b7 non-drug", title:"Calm environment & orientation",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🤝 Familiar presence", html:"Calm, well-lit, quiet environment; familiar faces; reorientate gently; avoid over-stimulation."},
+          {t:"👓 Reversible deficits", html:"Glasses, hearing aids, hydration, sleep-wake routine."},
+          {t:"💬 Support family", html:"Explain what's happening; agitation is distressing to witness \u2014 involve and reassure carers."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"4", tag:"Step 2 \u00b7 hyperactive delirium", title:"Haloperidol first-line",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"3a", title:"Haloperidol", when:"distressing hyperactive delirium",
+           html:"<b>Haloperidol 0.5\u20131.5mg</b> oral/SC, repeat PRN; review and give regularly/CSCI if needed (e.g. 1.5\u20135mg/24h). Low doses; watch extrapyramidal effects/QT."},
+          {step:"3b", title:"Levomepromazine if refractory", when:"haloperidol insufficient",
+           fromLabel:"persistent distress",
+           html:"<b>Levomepromazine 6.25\u201312.5mg</b> SC PRN/CSCI \u2014 broad-spectrum and more sedating."},
+          {step:"3c", title:"Benzodiazepine \u2014 only if needed", when:"severe distress / specific cause",
+           fromLabel:"not as sole agent in delirium",
+           html:"A benzodiazepine alone can <b>worsen</b> delirium \u2014 reserve for alcohol/benzodiazepine withdrawal, seizures, or to add for severe agitation alongside an antipsychotic."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"5", tag:"Step 3 \u00b7 terminal agitation", title:"Midazolam in the last days",
+      blocks:[
+        {b:"kv", rows:[
+          ["Terminal restlessness/agitation","<b>Midazolam 2.5\u20135mg SC PRN</b>; if recurring, start a <b>CSCI</b> (e.g. 10\u201320mg/24h) and titrate."],
+          ["Add an antipsychotic","If a delirium component, combine with <b>haloperidol</b> or <b>levomepromazine</b> in the syringe pump."],
+          ["Refractory","Refractory terminal agitation \u2192 <b>seek specialist palliative care advice</b> (may need levomepromazine or, rarely, palliative sedation under specialist guidance)."]
+        ]},
+        {b:"warn", html:"Before attributing agitation to dying, quickly exclude a <b>full bladder, faecal impaction, unrelieved pain and opioid toxicity</b> \u2014 all common and reversible even in the last days."}
+      ]},
+    {t:"node", d:"monitor", n:"6", tag:"Monitoring & review", title:"Review response & titrate", blocks:[{b:"timeline", items:[{n:"1", when:"Each visit", title:"Reassess cause & comfort", html:"Reassess for reversible causes and overall comfort; review whether sedation level matches goals."},{n:"2", when:"Ongoing", title:"Titrate", html:"Titrate antipsychotic/sedative to the lowest dose that relieves distress; avoid oversedation unless that is the agreed goal."},{n:"3", when:"If refractory", title:"Specialist", html:"Refractory agitation \u2192 palliative specialist; consider midazolam by CSCI."}]}]},
+    {t:"node", d:"refer", n:"7", tag:"Refer / advice", title:"When to seek specialist advice",
+      arrow:"refractory or diagnostic doubt",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Specialist palliative care", html:"Refractory agitation/delirium, or where palliative sedation is being considered."},
+          {t:"Treat the cause", html:"Hypercalcaemia \u2192 hypercalcaemia pathway; raised ICP/brain mets \u2192 dexamethasone; retention/impaction \u2192 relieve."}
+        ]},
+        {b:"say", html:"Confusion and restlessness often have a treatable cause \u2014 like pain, a full bladder, constipation or a medication \u2014 so we'll check those first. We have calming medicines that help, and we'll keep you and the family informed at every step."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

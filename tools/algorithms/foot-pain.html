@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Foot Pain Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #f6f5f2;
+  --surface:   #ffffff;
+  --border:    #e2dfd8;
+  --text:      #1a1917;
+  --muted:     #6b6760;
+  --accent:    #1d4ed8;
+
+  --safety-h:  #b91c1c;
+  --safety-bg: #fef2f2;
+  --safety-br: #fecaca;
+
+  --diag-h:    #0369a1;
+  --diag-bg:   #f0f9ff;
+  --diag-br:   #bae6fd;
+
+  --ref-h:     #6d28d9;
+  --ref-bg:    #f5f3ff;
+  --ref-br:    #ddd6fe;
+
+  --treat-h:   #065f46;
+  --treat-bg:  #ecfdf5;
+  --treat-br:  #a7f3d0;
+
+  --life-h:    #92400e;
+  --life-bg:   #fffbeb;
+  --life-br:   #fde68a;
+
+  --conn:      #d1cfc9;
+
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+}
+
+body { padding: 0 0 60px; }
+
+/* ── Banner ── */
+.stem-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--text);
+  color: #fff;
+  padding: 18px 22px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.sb-icon { font-size: 2rem; line-height: 1; }
+.stem-banner b { display: block; font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em; }
+.stem-banner small { font-size: 0.78rem; opacity: 0.65; font-weight: 400; }
+
+/* ── Progress bar ── */
+.alg-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+.pbar { flex: 1; min-width: 120px; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.pbar-fill { height: 100%; width: 0%; background: var(--accent); border-radius: 99px; transition: width .35s ease; }
+.pcount { font-weight: 700; color: var(--text); }
+.reset {
+  margin-left: auto;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.76rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.reset:hover { background: var(--bg); }
+
+/* ── Flow ── */
+.alg-flow {
+  max-width: 780px;
+  margin: 28px auto 0;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ── Connector ── */
+.connector {
+  width: 2px;
+  height: 28px;
+  background: var(--conn);
+  align-self: center;
+  border-radius: 2px;
+}
+
+/* ── Node ── */
+.node {
+  background: var(--surface);
+  border-radius: 14px;
+  border: 1.5px solid var(--border);
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.node:hover { box-shadow: 0 4px 18px rgba(0,0,0,.07); }
+
+.node[data-type="SAFETY"]   { border-left: 4px solid var(--safety-h); }
+.node[data-type="DIAGNOSE"] { border-left: 4px solid var(--diag-h);   }
+.node[data-type="REFER"]    { border-left: 4px solid var(--ref-h);    }
+.node[data-type="TREAT"]    { border-left: 4px solid var(--treat-h);  }
+.node[data-type="LIFESTYLE"]{ border-left: 4px solid var(--life-h);   }
+
+/* header row */
+.node-head-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px 0;
+}
+
+.node-num {
+  flex-shrink: 0;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; font-weight: 700;
+  color: #fff;
+}
+.node[data-type="SAFETY"]    .node-num { background: var(--safety-h); }
+.node[data-type="DIAGNOSE"]  .node-num { background: var(--diag-h);   }
+.node[data-type="REFER"]     .node-num { background: var(--ref-h);    }
+.node[data-type="TREAT"]     .node-num { background: var(--treat-h);  }
+.node[data-type="LIFESTYLE"] .node-num { background: var(--life-h);   }
+
+.node-head { flex: 1; }
+.node-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 99px;
+  margin-bottom: 4px;
+}
+.node[data-type="SAFETY"]    .node-tag { background: var(--safety-bg); color: var(--safety-h); }
+.node[data-type="DIAGNOSE"]  .node-tag { background: var(--diag-bg);   color: var(--diag-h);   }
+.node[data-type="REFER"]     .node-tag { background: var(--ref-bg);    color: var(--ref-h);    }
+.node[data-type="TREAT"]     .node-tag { background: var(--treat-bg);  color: var(--treat-h);  }
+.node[data-type="LIFESTYLE"] .node-tag { background: var(--life-bg);   color: var(--life-h);   }
+
+.node-head h3 { font-size: 1rem; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; }
+
+.node-tick {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.node-tick label {
+  display: flex; align-items: center; gap: 6px;
+  cursor: pointer; user-select: none;
+}
+.node-tick input[type="checkbox"] {
+  width: 18px; height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.tlbl { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
+
+/* done state */
+.node.done { opacity: 0.68; }
+.node.done .node-num { background: #94a3b8 !important; }
+
+/* body */
+.node-body {
+  padding: 12px 18px 14px;
+  font-size: 0.9rem;
+}
+.node-body > p, .node-body > div:first-child { margin-bottom: 10px; }
+.intro { color: var(--muted); font-size: 0.87rem; margin-bottom: 10px; }
+
+/* ── KV grid ── */
+.kv {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 0.86rem;
+}
+.kv > div { padding: 8px 11px; border-bottom: 1px solid var(--border); }
+.kv > div:nth-last-child(-n+2) { border-bottom: none; }
+.kv > div:nth-child(odd) {
+  background: var(--bg);
+  font-weight: 600;
+  color: var(--text);
+  border-right: 1px solid var(--border);
+}
+.kv > div:nth-child(even) { background: var(--surface); }
+
+/* ── Red flag grid ── */
+.rfgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 4px;
+}
+@media (max-width: 540px) { .rfgrid { grid-template-columns: 1fr; } }
+
+.rftile {
+  background: var(--safety-bg);
+  border: 1px solid var(--safety-br);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+.rftile b { display: block; color: var(--safety-h); margin-bottom: 2px; font-size: 0.85rem; }
+
+/* ── Branch ── */
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-top: 6px;
+}
+.b-card {
+  border: 1.5px solid var(--treat-br);
+  background: var(--treat-bg);
+  border-radius: 10px;
+  padding: 11px 13px;
+  font-size: 0.84rem;
+}
+.b-cond { font-size: 0.75rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 700; color: var(--treat-h); margin-bottom: 4px; }
+.b-drug { font-weight: 700; font-size: 0.92rem; margin-bottom: 3px; }
+.b-note { color: var(--muted); font-size: 0.82rem; }
+
+/* ── Ladder ── */
+.ladder { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
+.rung {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 0.87rem;
+  position: relative;
+}
+.rung::before {
+  content: '↑';
+  position: absolute;
+  left: 16px;
+  top: -13px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.rung:first-child::before { display: none; }
+.rn { flex-shrink: 0; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding-top: 2px; min-width: 52px; }
+.rt { flex: 1; line-height: 1.45; }
+
+/* ── Lifestyle grid ── */
+.lsgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 4px;
+}
+@media (max-width: 540px) { .lsgrid { grid-template-columns: 1fr; } }
+
+.lstile {
+  background: var(--life-bg);
+  border: 1px solid var(--life-br);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+.lstile b { display: block; color: var(--life-h); margin-bottom: 2px; font-size: 0.85rem; }
+
+/* ── Pills ── */
+.pill {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 99px;
+  letter-spacing: .03em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.pill-red    { background: #fee2e2; color: #b91c1c; }
+.pill-purple { background: #ede9fe; color: #6d28d9; }
+.pill-blue   { background: #dbeafe; color: #1d4ed8; }
+.pill-teal   { background: #ccfbf1; color: #0f766e; }
+.pill-amber  { background: #fef3c7; color: #b45309; }
+.pill-green  { background: #dcfce7; color: #15803d; }
+.pill-grey   { background: #f1f5f9; color: #475569; }
+
+/* ── Why row ── */
+.why-row { border-top: 1px solid var(--border); }
+.why-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  text-align: left;
+  letter-spacing: .02em;
+}
+.why-btn:hover { background: var(--bg); color: var(--text); }
+.caret { transition: transform .22s; display: inline-block; }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+
+.why-drawer {
+  display: none;
+  padding: 0 18px 14px;
+  font-size: 0.84rem;
+  color: var(--muted);
+  line-height: 1.6;
+  font-style: italic;
+}
+.why-drawer.open { display: block; }
+.why-drawer b { color: var(--text); font-style: normal; }
+
+/* ── Footer ── */
+.alg-foot {
+  max-width: 780px;
+  margin: 24px auto 0;
+  padding: 14px 22px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  background: var(--surface);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  line-height: 1.6;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+@media (min-width: 812px) { .alg-foot { margin-left: auto; margin-right: auto; } }
+
+/* ── Scroll targets ── */
+:target { scroll-margin-top: 70px; }
+
+/* Subtle section dividers */
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  padding: 4px 0 2px;
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🦶</div>
+  <div>
+    <b>Foot Pain — Assessment &amp; Management</b>
+    <small>RCGP SCA pathway · UK primary care · 9-step algorithm</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — localise by region (heel / forefoot / midfoot), exclude infection and the diabetic-foot emergency, diagnose the common overuse causes, treat conservatively, refer and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Foot pain</span><div class="body"><b>Site</b> (heel / forefoot / midfoot), onset (first-step vs activity), footwear, <b>diabetes status</b>. Examine, and <b>assess vascular + neurological status</b> (pulses, sensation) — essential in diabetes.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — diabetic foot &amp; infection</span><span class="ttl">Emergency?</span><div class="body"><ul>
+      <li><b>Diabetic foot infection</b> — ulcer, spreading erythema, warmth, discharge, systemic upset</li>
+      <li><b>Charcot foot</b> — diabetic, hot/swollen/red foot, often <i>without</i> much pain (neuropathy)</li>
+      <li><b>Septic arthritis</b> — hot swollen joint + fever · critical ischaemia (pale, cold, pulseless)</li>
+      <li><b>Stress fracture</b> in an at-risk patient (sudden focal bony pain)</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Urgent</span><div class="body"><b>Diabetic foot infection / Charcot → same-day multidisciplinary diabetic-foot service.</b> Septic joint → emergency. Critical ischaemia → vascular emergency.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — localise</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">By region</span><div class="body">Mostly clinical. X-ray for trauma/suspected stress fracture/OA; consider gout (urate) for acute 1st MTP; USS for plantar/Morton's if uncertain.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · which region?</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Heel</div><div class="box ix"><span class="ttl">Plantar fasciitis</span><div class="body"><b>First-step pain</b> at the medial heel, worse after rest; also Achilles insertional pain, fat-pad atrophy.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Forefoot</div><div class="box ix"><span class="ttl">Metatarsalgia / Morton's</span><div class="body">Metatarsalgia, <b>Morton's neuroma</b> (burning + clicking between 3rd/4th toes), hallux valgus, <b>gout</b> (acute hot 1st MTP).</div></div></div>
+      <div class="col"><div class="blabel">Midfoot / other</div><div class="box ix"><span class="ttl">OA / stress fracture</span><div class="body">Midfoot OA, tibialis posterior dysfunction (flat foot), <b>stress fracture</b>, inflammatory arthritis.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · treat by cause</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — conservative first</span><span class="ttl">Footwear, orthotics, load management</span><div class="body"><ul>
+      <li><b>Plantar fasciitis:</b> <b>plantar-fascia &amp; calf stretches</b>, supportive footwear/insoles/heel cups, activity &amp; weight management, analgesia; injection only for refractory (fat-pad atrophy risk).</li>
+      <li><b>Metatarsalgia / Morton's:</b> wide footwear + metatarsal pad/orthotic; corticosteroid injection or excision for persistent neuroma.</li>
+      <li><b>Gout (1st MTP):</b> NSAID/colchicine/steroid for the flare; urate-lowering pathway.</li>
+      <li><b>Stress fracture:</b> rest/protected weight-bearing; address bone health (FRAX, vitamin D, RED-S in athletes).</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-red">Urgent / same-day</span> diabetic foot infection or Charcot, septic joint, critical ischaemia.</li>
+      <li><span class="pill pill-purple">Podiatry / MSK / orthopaedics</span> refractory plantar fasciitis, symptomatic Morton's neuroma, painful deformity (hallux valgus), midfoot OA, tibialis posterior dysfunction.</li>
+      <li><span class="pill pill-grey">Diabetic foot clinic</span> all at-risk diabetic feet for surveillance.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · footwear &amp; prevention</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; prevention</span><span class="ttl">Footwear is treatment</span><div class="body"><b>Supportive, well-fitted footwear</b> and appropriate orthotics/insoles · <b>weight management</b> (reduces plantar load) · stretching and graded loading · activity modification and pacing · <b>diabetic foot care</b> — daily inspection, never barefoot, prompt review of any break in the skin · address bone health for stress fracture.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Same-day (diabetic)</b> if the foot becomes red, hot, swollen or develops an ulcer/break in the skin — <b>do not wait</b>. <b>Same-day</b> if hot joint with fever, or a cold pulseless foot. <b>Review</b> plantar fasciitis at 6–12 weeks (slow to settle); escalate persistent or worsening pain and reconsider stress fracture.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>The diabetic foot is an emergency:</b> a warm, swollen or ulcerated foot in diabetes can be infection or Charcot — and Charcot is often <i>not</i> very painful. Refer urgently to the diabetic-foot service rather than treating as simple mechanical pain.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- ══════════════════════════════════════════
+       STEP 1 — SAFETY: Red Flags
+  ══════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="1" id="step1">
+    <div class="node-head-row">
+      <div class="node-num">1</div>
+      <div class="node-head">
+        <span class="node-tag">Safety</span>
+        <h3>Exclude emergencies &amp; can't-miss diagnoses first</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Ask about onset, trauma, systemic features, and vascular/neuropathic risk before any further assessment.</p>
+      <div class="rfgrid">
+        <div class="rftile"><b>Open fracture / dislocation</b> Visible bone, gross deformity, acute trauma → 999 immediately</div>
+        <div class="rftile"><b>Acute limb ischaemia</b> 6 Ps: Pain, Pallor, Pulselessness, Paraesthesia, Paralysis, Perishing cold → 999 vascular emergency</div>
+        <div class="rftile"><b>Necrotising fasciitis</b> Rapidly spreading erythema, severe disproportionate pain, sepsis, crepitus → 999 (surgical emergency; NICE NG51)</div>
+        <div class="rftile"><b>Septic arthritis</b> Hot swollen joint + fever + raised CRP/WCC → same-day orthopaedics; joint must be aspirated within hours</div>
+        <div class="rftile"><b>Diabetic foot emergency</b> Ulceration + infection/ischaemia/Charcot in diabetic patient → same-day diabetic foot team (NICE NG19)</div>
+        <div class="rftile"><b>Deep vein thrombosis</b> Unilateral calf swelling, pain, erythema post-immobility/travel → same-day DVTUS / Wells &amp; D-dimer pathway</div>
+        <div class="rftile"><b>Stress fracture with high-risk site</b> Anterior tibial cortex, femoral neck, navicular, 5th metatarsal (Jones) in athlete — continued activity risks complete fracture → urgent orthopaedics</div>
+        <div class="rftile"><b>Malignancy / Paget's disease</b> Night pain, bony swelling, age &gt;50, no trauma, weight loss → 2WW bone tumour pathway (NICE NG12)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Missed vascular emergencies and necrotising fasciitis carry catastrophic consequences within hours.</b> Acute limb ischaemia requires revascularisation within 6 hours to avoid amputation. Septic arthritis destroys cartilage within 72 hours if untreated. Diabetic foot infections account for over 50% of non-traumatic amputations in the UK (NICE NG19); identifying them early and referring same-day to a multidisciplinary diabetic foot team is a NICE quality standard. Stress fractures at high-risk sites (navicular, Jones) progress to complete fracture with permanent disability if loading continues — early orthopaedic input is mandatory.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════
+       STEP 2 — DIAGNOSE: History & Diagnostic Framework
+  ══════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="2" id="step2">
+    <div class="node-head-row">
+      <div class="node-num">2</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Structured history — localise and characterise the pain</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Use anatomical location + onset + aggravating factors as your primary diagnostic filter. The foot has 6 key zones — establish which first.</p>
+      <div class="kv">
+        <div>Location</div>
+        <div>Heel (plantar/posterior), midfoot arch, forefoot/metatarsal heads, toes, diffuse — narrows differential immediately</div>
+        <div>Onset &amp; duration</div>
+        <div>Acute (trauma, gout, septic arthritis) vs insidious (&gt;6 weeks → plantar fasciitis, stress fracture, Morton's, inflammatory arthritis)</div>
+        <div>Character</div>
+        <div>Sharp stabbing (plantar fasciitis, Morton's neuroma), burning (neuropathy), throbbing (gout, infection), aching (structural/mechanical)</div>
+        <div>Timing</div>
+        <div>First-step morning pain → plantar fasciitis; post-activity → stress fracture; night pain → gout, neuropathy, malignancy (alarm)</div>
+        <div>Aggravating/relieving</div>
+        <div>Weight-bearing worsens most; rest relief supports mechanical cause; NSAIDs dramatically relieve gout &amp; inflammatory arthritis</div>
+        <div>Radiation</div>
+        <div>Into toes → Morton's neuroma (3rd–4th webspace), tarsal tunnel; up leg → referred lumbar, DVT, vascular</div>
+        <div>Associated features</div>
+        <div>Swelling, erythema, fever, skin changes, nail dystrophy, numbness/tingling, bilateral symptoms</div>
+        <div>Systemic review</div>
+        <div>Diabetes, gout history, psoriasis, IBD, recent sore throat/urethritis (reactive arthritis), RA, SLE, medications (fluoroquinolones → tendinopathy)</div>
+        <div>Red flag symptoms</div>
+        <div>Weight loss, night sweats, constant night pain, age &gt;50 with no prior diagnosis → screen for malignancy/Paget's</div>
+        <div>Activity &amp; footwear</div>
+        <div>Recent increase in training load (stress fracture), occupation (prolonged standing), footwear type and fit</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Location alone narrows the differential to 2–3 diagnoses in most cases.</b> Plantar heel pain in a 40–60 year old with first-step pain is plantar fasciitis until proven otherwise (&gt;80% of plantar heel presentations). Asking about morning stiffness lasting &gt;30 minutes and involvement of other joints differentiates inflammatory arthritis (requiring DMARD therapy) from mechanical causes. The fluoroquinolone/tendinopathy link is a commonly missed iatrogenic cause. Bilateral symptoms should always prompt systemic disease screening.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════
+       STEP 3 — DIAGNOSE: Classification by anatomical zone
+  ══════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="3" id="step3">
+    <div class="node-head-row">
+      <div class="node-num">3</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Classify by anatomical zone &amp; likely diagnosis</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Match location to the most likely diagnosis. Most foot pain diagnoses are clinical — classification guides investigation and treatment choice.</p>
+      <div class="kv">
+        <div>🟥 Plantar heel</div>
+        <div><b>Plantar fasciitis</b> (most common) — first-step pain, worse AM, tender at medial calcaneal tuberosity. Also: <b>Fat pad atrophy</b> (elderly), <b>Calcaneal stress fracture</b> (squeeze test positive), <b>Tarsal tunnel syndrome</b> (burning, tingling medial ankle)</div>
+        <div>🟧 Posterior heel</div>
+        <div><b>Achilles tendinopathy</b> — mid-portion (2–6 cm above insertion) vs insertional. Also: <b>Retrocalcaneal bursitis</b>, <b>Haglund's deformity</b> (prominent posterosuperior calcaneus)</div>
+        <div>🟨 Midfoot / arch</div>
+        <div><b>Tibialis posterior tendinopathy</b> — medial arch pain, flat foot progression, post-menopausal women. Also: <b>Midfoot OA</b> (dorsal osteophytes), <b>Navicular stress fracture</b>, <b>Lisfranc injury</b> (post-trauma — do not miss)</div>
+        <div>🟩 Forefoot / MTP joints</div>
+        <div><b>Morton's neuroma</b> (3rd–4th webspace burning, Mulder's click). <b>Metatarsal stress fracture</b> (2nd/3rd shaft, focal tenderness). <b>Freiberg's disease</b> (2nd MTP, adolescents). <b>Sesamoiditis</b> (under 1st MTP)</div>
+        <div>🟦 Toes</div>
+        <div><b>Hallux valgus</b> (1st MTP deviation + bunion). <b>Hallux rigidus</b> (1st MTP stiffness/OA). <b>Hammer/claw toes</b> (deformity + dorsal corn). <b>Ingrown toenail</b> (lateral nail fold infection)</div>
+        <div>🟪 Diffuse / systemic</div>
+        <div><b>Gout</b> (acute 1st MTP, red, swollen — podagra in 50%). <b>Psoriatic arthritis</b> (dactylitis, nail changes). <b>Reactive arthritis</b> (asymmetric, post-infection). <b>RA</b> (symmetric MTP synovitis). <b>Peripheral neuropathy</b> (burning bilateral, distal, diabetes/alcohol)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Correct anatomical classification prevents treatment mismatches.</b> Plantar fasciitis and calcaneal stress fracture both present with heel pain but require opposite initial management (exercise vs offloading/imaging). Missing a Lisfranc injury (ligamentous injury between 1st–2nd metatarsals and cuneiforms) leads to chronic midfoot instability and early arthritis — weight-bearing X-rays are essential if suspected after trauma. Inflammatory arthritides (RA, psoriatic, reactive) need early DMARD therapy; delayed diagnosis accelerates joint destruction.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════
+       STEP 4 — DIAGNOSE: Targeted Examination
+  ══════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="4" id="step4">
+    <div class="node-head-row">
+      <div class="node-num">4</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Targeted foot examination — look, feel, move, special tests</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Examine weight-bearing and non-weight-bearing. Always check both feet. Examine footwear wear patterns — they reveal gait and loading abnormalities.</p>
+      <div class="kv">
+        <div>Inspection (standing)</div>
+        <div>Arch height (pes planus / cavus), alignment, swelling, erythema, skin, nails, callus pattern, toe deformities. Observe gait from behind and front</div>
+        <div>Calcaneal squeeze test</div>
+        <div>Mediolateral compression of calcaneus — positive (pain) → calcaneal stress fracture; highly sensitive in runners</div>
+        <div>Plantar fascia palpation</div>
+        <div>Direct palpation medial calcaneal tuberosity — sharp localised pain = plantar fasciitis. Windlass test: passive great toe dorsiflexion recreates pain</div>
+        <div>Achilles tendon</div>
+        <div>Palpate mid-portion and insertion; assess Thompson's test (calf squeeze — no plantarflexion = complete rupture → 999); crepitus suggests tendinopathy</div>
+        <div>MTP joint assessment</div>
+        <div>Squeeze across metatarsal heads (metatarsalgia, RA synovitis). Mulder's click test for Morton's neuroma (compression + dorsoplantar squeeze — audible click + pain). Assess 1st MTP range for hallux rigidus</div>
+        <div>Tarsal tunnel</div>
+        <div>Tinel's sign: percuss posterior to medial malleolus — tingling in plantar foot distribution = tarsal tunnel syndrome</div>
+        <div>Neurovascular</div>
+        <div>Dorsalis pedis + posterior tibial pulses; capillary refill &lt;2 sec; light touch/monofilament sensation (10g Semmes-Weinstein); vibration (128Hz tuning fork)</div>
+        <div>Ankle / subtalar</div>
+        <div>Assess dorsiflexion (normal ≥10° weight-bearing); subtalar inversion/eversion; pain on resisted tibialis posterior (tendinopathy vs tear)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Targeted examination discriminates between diagnoses that history alone cannot.</b> Thompson's test must be performed whenever Achilles rupture is possible — a palpable gap alone has poor sensitivity. Monofilament testing (10g Semmes-Weinstein) is the NICE-recommended standard for peripheral neuropathy screening in diabetes (NG19); missing neuropathy means missing the patient's ulcer risk. Mulder's click has ~90% sensitivity for Morton's neuroma when combined with compression, avoiding unnecessary MRI in many cases. Always assess the entire kinetic chain — limited ankle dorsiflexion (e.g., tight gastrocnemius) is a primary driver of plantar fasciitis and needs addressing in treatment.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════
+       STEP 5 — DIAGNOSE: Investigations
+  ══════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="5" id="step5">
+    <div class="node-head-row">
+      <div class="node-num">5</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Targeted investigations — investigate selectively, not reflexively</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Most mechanical foot pain diagnoses are clinical. Request investigations only when they will change management or rule out serious pathology.</p>
+      <div class="kv">
+        <div>X-ray foot/ankle <span class="pill pill-blue">1st line</span></div>
+        <div>Weight-bearing views (AP + lateral) for: suspected fracture, Lisfranc injury, OA, hallux valgus, Charcot. <b>Not routine for plantar fasciitis</b> — heel spurs correlate poorly with symptoms (present in 50% asymptomatic adults)</div>
+        <div>Bloods — gout screen</div>
+        <div>Serum urate (note: may be normal during acute attack); urea &amp; creatinine; eGFR baseline before urate-lowering therapy. Urate &gt;360 μmol/L confirms hyperuricaemia</div>
+        <div>Bloods — inflammatory</div>
+        <div>CRP, ESR, FBC if: suspected septic arthritis, inflammatory arthritis, or systemic disease. Anti-CCP + RF if RA suspected. HLA-B27 if reactive/psoriatic arthritis</div>
+        <div>Bloods — metabolic</div>
+        <div>HbA1c + fasting glucose if neuropathy or diabetic foot; calcium, ALP if Paget's suspected (markedly raised ALP); vitamin D if diffuse pain</div>
+        <div>MRI <span class="pill pill-blue">2nd line</span></div>
+        <div>Suspected: navicular/Jones stress fracture (plain X-ray initially normal), Morton's neuroma if uncertain, tarsal tunnel, osteonecrosis, soft tissue tumour. Refer for MRI via radiology — do not arrange CT for bony stress injury (MRI superior)</div>
+        <div>Ultrasound</div>
+        <div>Plantar fascia thickness &gt;4 mm supports fasciitis; Achilles tendinopathy assessment; Morton's neuroma if clinical diagnosis uncertain; guided injection planning</div>
+        <div>Joint aspiration</div>
+        <div>If septic arthritis or gout is suspected — same-day orthopaedics/rheumatology for aspiration. Polarised light microscopy: negatively birefringent urate crystals = gout; positively birefringent = pseudogout</div>
+        <div>Do NOT routinely order</div>
+        <div>MRI for uncomplicated plantar fasciitis; bone scan (largely superseded by MRI); nerve conduction studies in primary care (refer if tarsal tunnel confirmed clinically)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Over-investigation of plantar heel pain is common and delays treatment.</b> Up to 60% of asymptomatic adults have heel spurs on X-ray; requesting routine X-ray creates false causality and unnecessary patient concern. However, plain X-ray weight-bearing views are critical for Lisfranc injury — non-weight-bearing views miss up to 25% of injuries. MRI is the gold standard for navicular and Jones stress fractures as plain X-rays are normal in up to 30–40% of cases in the first 2 weeks. Joint aspiration in suspected septic arthritis is both diagnostic and therapeutic — do not delay for imaging.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════
+       STEP 6 — REFER: Referral Criteria
+  ══════════════════════════════════════════ -->
+  <div class="node" data-type="REFER" data-step="6" id="step6">
+    <div class="node-head-row">
+      <div class="node-num">6</div>
+      <div class="node-head">
+        <span class="node-tag">Refer</span>
+        <h3>Referral criteria — know when to escalate and to whom</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Most foot pain is managed in primary care. Refer early for high-risk diagnoses, failed conservative management, or when specialist intervention is required.</p>
+      <div class="kv">
+        <div>999 Emergency</div>
+        <div><span class="pill pill-red">999</span> Acute limb ischaemia, open fracture/dislocation, necrotising fasciitis, complete Achilles rupture with neurovascular compromise, sepsis from foot source</div>
+        <div>Same-day urgent</div>
+        <div><span class="pill pill-red">Same-day</span> Suspected septic arthritis (hot swollen joint + fever) → orthopaedics/rheumatology for aspiration. Diabetic foot with ulcer + infection/ischaemia → diabetic foot MDT (NICE NG19 standard). Suspected DVT → DVTUS via local pathway</div>
+        <div>2-Week Wait</div>
+        <div><span class="pill pill-purple">2WW</span> Persistent bony swelling, night pain, unexplained lytic/sclerotic lesion on X-ray, age &gt;50 with no trauma → sarcoma/bone tumour 2WW (NICE NG12). New painless nodule in soft tissue &gt;5 cm → soft tissue sarcoma 2WW</div>
+        <div>Urgent routine (2–4 wks)</div>
+        <div>High-risk stress fractures (navicular, Jones, 5th metatarsal) → orthopaedics for non-weight-bearing/surgical decision. Suspected Lisfranc injury → orthopaedics. Suspected Charcot foot → diabetic foot team. Acute gout not responding to first-line therapy → rheumatology</div>
+        <div>Routine orthopaedics / MSK</div>
+        <div>Hallux valgus/rigidus affecting quality of life and failed conservative management (6 months). Plantar fasciitis failed 6-month conservative treatment. Morton's neuroma failing conservative measures. Hammer/claw toes with pain/ulceration. Tarsal tunnel syndrome confirmed clinically</div>
+        <div>Podiatry <span class="pill pill-teal">Primary Care</span></div>
+        <div>Diabetic foot annual review + any foot concern in diabetics. Nail pathology (ingrown nails, onychomycosis resistant to treatment). Orthotics assessment for plantar fasciitis, tibialis posterior dysfunction, metatarsalgia. Callus/corn management. Verruca pedis not resolving</div>
+        <div>Physiotherapy</div>
+        <div>Plantar fasciitis, Achilles tendinopathy (eccentric loading programme), tibialis posterior tendinopathy, post-fracture rehabilitation. Self-refer where available or GP refer</div>
+        <div>Rheumatology</div>
+        <div>New inflammatory arthritis (RA, psoriatic, reactive), recurrent gout with renal impairment, suspected crystal arthropathy needing DMARD decision, seronegative arthropathy</div>
+        <div>Vascular surgery</div>
+        <div>ABPI &lt;0.8 (peripheral arterial disease), non-healing ulcer, rest pain, critical ischaemia (ABPI &lt;0.5)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>The diabetic foot pathway is a NICE quality standard</b> — same-day referral to the MDT diabetic foot team for any infected or ischaemic diabetic foot ulcer is mandatory (NICE QS119). Delayed referral is the most common preventable cause of lower limb amputation. Jones fractures (5th metatarsal base, zone 2) have a high non-union rate with conservative management — early orthopaedic input determines whether surgical fixation is needed, particularly in athletes. Early podiatry referral for diabetic patients without current ulcers reduces amputation risk by 50% (NICE NG19 evidence review).</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════
+       STEP 7 — TREAT: Treatment Pathway
+  ══════════════════════════════════════════ -->
+  <div class="node" data-type="TREAT" data-step="7" id="step7">
+    <div class="node-head-row">
+      <div class="node-num">7</div>
+      <div class="node-head">
+        <span class="node-tag">Treat</span>
+        <h3>Condition-specific treatment — structured by diagnosis</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Treatment is diagnosis-specific. Address the four most common diagnoses in primary care below. Always start with conservative measures before escalation.</p>
+
+      <!-- Plantar fasciitis -->
+      <p style="font-weight:700; font-size:0.9rem; margin: 12px 0 6px; color: var(--treat-h);">① Plantar Fasciitis (most common)</p>
+      <div class="ladder">
+        <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Load management + analgesia:</b> Reduce high-impact activity (not rest). Paracetamol 1g QDS and/or Ibuprofen 400 mg TDS with food (if no CI). Silicone heel cup / cushioned footwear immediately</span></div>
+        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Physiotherapy — stretching programme:</b> Plantar fascia stretch (towel toe-curls) and calf stretches (Achilles/gastrocnemius) 3× daily. Night splint if early morning pain prominent. 70–80% resolve by 12 weeks</span></div>
+        <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Orthotics &amp; podiatry:</b> Custom semi-rigid orthotics for pronation/pes planus. Podiatry referral for taping, assessment. Consider if failed step 2 at 6 weeks</span></div>
+        <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Corticosteroid injection</b> (if failed 3 months conservative): Methylprednisolone 40 mg + 1% lidocaine into plantar fascia insertion (ultrasound-guided preferred). Short-term benefit; warn: fat pad atrophy risk with repeated injections; do not give more than 2–3 lifetime injections</span></div>
+        <div class="rung"><span class="rn">Step 5</span><span class="rt"><b>Specialist referral</b> at 6 months if failed all above: Extracorporeal shockwave therapy (ESWT — NICE IPG311 supports use), platelet-rich plasma, or surgical plantar fasciotomy (last resort)</span></div>
+      </div>
+
+      <!-- Gout -->
+      <p style="font-weight:700; font-size:0.9rem; margin: 16px 0 6px; color: var(--treat-h);">② Acute Gout</p>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">First-line (no CI)</div>
+          <div class="b-drug">Naproxen <span class="pill pill-teal">NSAID</span></div>
+          <div class="b-note">500 mg BD with food for 5–7 days. Add PPI (omeprazole 20 mg OD) if &gt;65 yrs or GI risk. Avoid aspirin (raises urate)</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">CKD / NSAID intolerant</div>
+          <div class="b-drug">Colchicine <span class="pill pill-teal">1st line alt.</span></div>
+          <div class="b-note">500 mcg BD–TDS. Continue until attack resolves (usually 7–10 days). Reduce dose in eGFR &lt;30. Watch for diarrhoea/GI upset</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Both contraindicated / severe</div>
+          <div class="b-drug">Prednisolone <span class="pill pill-teal">Oral steroid</span></div>
+          <div class="b-note">25–35 mg OD for 5 days, then stop (no taper needed for short course). Check HbA1c / blood glucose if diabetic</div>
+        </div>
+      </div>
+      <div class="kv" style="margin-top:10px;">
+        <div>Urate-lowering therapy</div>
+        <div>Start allopurinol 100 mg OD (NOT during acute attack — wait 4 weeks after resolution). Increase by 100 mg monthly to target serum urate &lt;300 μmol/L (CKS recommendation). Titrate to max 900 mg OD. Start prophylactic colchicine 500 mcg OD for 6 months when initiating allopurinol (prevents flares)</div>
+        <div>Monitoring on allopurinol</div>
+        <div>FBC, U&amp;E, LFT at baseline; repeat at 3 months; check serum urate annually once at target. Warn: allopurinol hypersensitivity syndrome (rare but severe — stop if rash, fever, lymphadenopathy)</div>
+      </div>
+
+      <!-- Achilles tendinopathy -->
+      <p style="font-weight:700; font-size:0.9rem; margin: 16px 0 6px; color: var(--treat-h);">③ Achilles Tendinopathy</p>
+      <div class="ladder">
+        <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Load modification:</b> Reduce training load by 50%; avoid hills/barefoot. Heel raise (1–2 cm) immediately — offloads Achilles. Naproxen 500 mg BD short course for acute pain if no CI</span></div>
+        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Eccentric loading programme (Alfredson protocol):</b> Heel drops off step — eccentric phase only, 3 sets × 15 reps twice daily, 12 weeks. Physiotherapy referral for supervised programme. Evidence: 60–80% success rate at 12 weeks (Alfredson 1998, BJSM)</span></div>
+        <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Failed at 3 months:</b> Ultrasound-guided GTN patch (glyceryl trinitrate 1.25 mg/24h patch cut to ¼) applied over tendon — limited evidence; ESWT or PRP injection via sports/orthopaedic referral</span></div>
+      </div>
+      <div style="margin-top:8px; padding:8px 11px; background:#fee2e2; border:1px solid #fecaca; border-radius:8px; font-size:0.83rem;"><b style="color:#b91c1c;">⚠ Do NOT inject corticosteroid into or around the Achilles tendon</b> — risk of tendon rupture. Peritendinous steroid injection is contraindicated in Achilles tendinopathy.</div>
+
+      <!-- Inflammatory arthritis (RA/gout/psoriatic) -->
+      <p style="font-weight:700; font-size:0.9rem; margin: 16px 0 6px; color: var(--treat-h);">④ Inflammatory Arthritis (new presentation)</p>
+      <div class="kv">
+        <div>Acute analgesia</div>
+        <div>Naproxen 500 mg BD with PPI while awaiting rheumatology. Do not start DMARD without specialist input</div>
+        <div>RA suspected</div>
+        <div>Anti-CCP + RF; refer urgently to rheumatology — NICE NG100 recommends referral within 3 weeks of symptom onset. Early DMARD (methotrexate ± hydroxychloroquine) started by specialist</div>
+        <div>Psoriatic arthritis</div>
+        <div>Refer rheumatology ± dermatology. NSAIDs first-line symptom control. DMARDs (methotrexate) needed if persistent — specialist decision</div>
+        <div>Reactive arthritis</div>
+        <div>Treat underlying infection if active (STI screen, urine culture). NSAIDs. Self-limiting in 3–6 months majority; 25% become chronic — rheumatology if persistent &gt;3 months</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Eccentric loading is the gold-standard treatment for Achilles tendinopathy</b> (NNT ≈ 3 for significant improvement at 12 weeks — Alfredson et al, BJSM). The Achilles tendon has poor vascularity; corticosteroid injection causes collagen necrosis and dramatically increases rupture risk — this is a firm contraindication. For gout, starting allopurinol during an acute attack precipitates a further attack by mobilising urate deposits; the 4-week wait is essential. The 6-month colchicine prophylaxis when starting urate-lowering therapy reduces flare risk by 85%. For RA, every week of delay to DMARD therapy correlates with measurable joint erosion progression — urgent rheumatology referral is not optional.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════
+       STEP 8 — LIFESTYLE
+  ══════════════════════════════════════════ -->
+  <div class="node" data-type="LIFESTYLE" data-step="8" id="step8">
+    <div class="node-head-row">
+      <div class="node-num">8</div>
+      <div class="node-head">
+        <span class="node-tag">Lifestyle</span>
+        <h3>Non-pharmacological interventions — lifestyle IS treatment</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Lifestyle modifications are primary treatment for most foot pain conditions, not adjuncts. Quantify the impact and give specific measurable targets.</p>
+      <div class="lsgrid">
+        <div class="lstile"><b>Weight management</b> BMI reduction reduces plantar fascia load proportionally. Losing 10 kg reduces plantar fascia tension by ~70 kg per step (approximately 7× body weight force during walking). Target BMI &lt;25; refer to weight management services / NHS Diabetes Prevention Programme if appropriate</div>
+        <div class="lstile"><b>Appropriate footwear</b> Supportive shoes with cushioned heel, wide toe box, and rigid midfoot. Avoid flat flip-flops, high heels, and worn-out trainers. Replace running shoes every 500–800 km (every 6–12 months for regular runners). Prescription: "Supportive trainers with heel drop 8–12 mm" for plantar fasciitis</div>
+        <div class="lstile"><b>Stretching programme — calf &amp; plantar fascia</b> Towel curls, standing calf stretch (gastrocnemius and soleus — separate stretches), stair stretches. 3 × 30 seconds, 3 times daily, before first steps in the morning. Reduces plantar fasciitis pain by 52% at 8 weeks (Digiovanni 2003, JBJS)</div>
+        <div class="lstile"><b>Activity modification — not rest</b> Complete rest is harmful for tendinopathies and plantar fasciitis. Replace high-impact (running, jumping) with low-impact (swimming, cycling) during recovery. Return to running programme: 10% weekly increase in mileage (Couch to 5K structure for beginners)</div>
+        <div class="lstile"><b>Dietary modification — gout</b> Reduce: red meat, offal, shellfish, beer, spirits, fructose-sweetened drinks. Increase: low-fat dairy (uricosuric), cherries (reduces flare frequency by 35%), water ≥2L/day. Achieve healthy weight. Avoid crash dieting (increases urate). Alcohol in gout: ≤14 units/week, avoid beer specifically (high purine)</div>
+        <div class="lstile"><b>Footwear orthotics &amp; self-management</b> Off-the-shelf silicone heel cups (plantar fasciitis) £5–15 — recommend purchasing immediately. Metatarsal domes for metatarsalgia — position just proximal to MTP heads. Toe spacers for hallux valgus prevention. Custom orthotics via podiatry if significant biomechanical deformity</div>
+        <div class="lstile"><b>Smoking cessation</b> Smoking reduces peripheral perfusion and impairs tendon healing. Relevant for all tendinopathies and critical for diabetic foot disease (smoking doubles amputation risk in diabetics). Refer to NHS Stop Smoking services; offer NRT/varenicline (NICE PH10)</div>
+        <div class="lstile"><b>Diabetic foot self-care</b> Daily foot inspection (mirror if needed). Moisturise (avoid between toes). Never walk barefoot. Wear properly fitting shoes and specialist diabetic socks. Attend annual podiatry review (NICE NG28). Report any new blister, crack, discolouration, or break in skin within 24 hours</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Footwear change is the single most impactful immediate intervention for most mechanical foot pain.</b> Studies show that 78% of plantar fasciitis patients have inappropriate footwear at presentation. Cherry consumption reduces acute gout flare frequency by 35% (Zhang 2012, Arthritis &amp; Rheumatism); combined with reduced alcohol and purine load, dietary change reduces serum urate by 60–90 μmol/L — comparable to low-dose allopurinol in mild cases. Self-care education in diabetic foot disease reduces amputation rates by 50% — it is a NICE quality indicator and CCG performance metric (QS119). Embed these as active prescriptions, not general advice.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════
+       STEP 9 — SAFETY: Follow-up & Monitoring
+  ══════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="9" id="step9">
+    <div class="node-head-row">
+      <div class="node-num">9</div>
+      <div class="node-head">
+        <span class="node-tag">Safety</span>
+        <h3>Follow-up, monitoring &amp; safety-netting</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Always close the consultation with explicit safety-netting. Tell the patient exactly what symptoms should prompt them to return and when to call 999.</p>
+      <div class="kv">
+        <div>1–2 weeks</div>
+        <div>Acute gout: confirm resolution, check renal function if NSAID/colchicine used, plan urate-lowering therapy. Suspected stress fracture: X-ray result review + orthopaedic referral outcome. New diagnosis: confirm patient understands self-management plan</div>
+        <div>4–6 weeks</div>
+        <div>Plantar fasciitis / tendinopathy: assess adherence to stretching programme; if no improvement, progress to step 3 (orthotics, physiotherapy). Inflammatory arthritis: confirm rheumatology referral accepted and appointment booked</div>
+        <div>3 months</div>
+        <div>Plantar fasciitis: reassess — 80% should show improvement. If not, consider corticosteroid injection or podiatry referral. Gout on allopurinol: recheck serum urate, renal function, LFT; increase allopurinol dose if urate &gt;300 μmol/L</div>
+        <div>6 months</div>
+        <div>Failed conservative foot pain: refer orthopaedics/podiatry if not already done. Gout: review serum urate target achieved (&lt;300 μmol/L); consider stopping prophylactic colchicine if &gt;6 months flare-free on allopurinol</div>
+        <div>Annual</div>
+        <div>Diabetic foot: mandatory annual podiatry/GP review with monofilament testing, ABPI, pulse check, visual skin/nail inspection — NICE NG28 requirement. Gout: serum urate, eGFR, BP annually on allopurinol</div>
+        <div>Safety-net → 999</div>
+        <div><span class="pill pill-red">999</span> Sudden severe pain + pale/cold foot + absent pulse (acute ischaemia). Rapidly spreading redness + severe pain + feeling very unwell/fever (necrotising fasciitis). Foot crushing injury / open fracture</div>
+        <div>Safety-net → same-day GP</div>
+        <div><span class="pill pill-amber">Same-day</span> Diabetic patient: any new break in skin, ulcer, blister, or change in foot colour within 24 hours. Non-diabetic: sudden worsening swelling + fever + cannot weight-bear (septic arthritis). Any foot symptom in patient with peripheral vascular disease (ABPI &lt;0.8)</div>
+        <div>Safety-net → routine</div>
+        <div>Pain not improving after 4–6 weeks of first-line treatment. New swelling / bony deformity not yet imaged. Spreading rash or nail changes alongside joint pain (psoriatic arthritis). New numbness or tingling in feet</div>
+        <div>Patient information</div>
+        <div>Provide written information: NHS Choices foot pain page; Versus Arthritis gout leaflet; Diabetes UK foot care guide. Self-refer to physiotherapy via NHS self-referral where available locally</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Explicit safety-netting is an RCGP SCA marking criterion and a patient safety standard.</b> Diabetic foot safety-netting must be specific: "If you develop any new break in the skin, report it within 24 hours" — vague advice leads to delayed presentations and amputation. The 80% resolution rate of plantar fasciitis at 12 months means most patients do not need escalation, but 6-month failure should trigger reassessment rather than continued passive management. Serum urate monitoring on allopurinol is frequently omitted in practice — fewer than 30% of patients on allopurinol are at target (urate &lt;360 μmol/L), driving ongoing crystal deposition and silent joint damage. Follow-up is treatment.</div>
+    </div>
+  </div>
+
+</div><!-- end .alg-flow -->
+
+<div class="alg-foot" style="margin-left:16px; margin-right:16px;">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG19 (Diabetic Foot), NICE NG100 (Rheumatoid Arthritis), NICE NG120 (Gout), NICE NG12 (Suspected Cancer), NICE CKS Plantar Fasciitis, CKS Gout, CKS Achilles Tendinopathy, CKS Morton's Neuroma; SIGN 136 (Management of Osteoporosis); BTS guidelines; IPG311 (ESWT in plantar fasciitis). Alfredson eccentric loading protocol (BJSM 1998). Always adapt to individual patient context, local formulary, and current NICE guidance.
+</div>
+
+<script>
+(function () {
+  const STORE_KEY = 'rgp.alg.footpain.v1';
+  const flow = document.getElementById('flow');
+  const pDone = document.getElementById('pDone');
+  const pFill = document.getElementById('pFill');
+  const resetBtn = document.getElementById('resetBtn');
+
+  /* ── Why drawers ── */
+  document.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      const drawer = btn.nextElementSibling;
+      drawer.classList.toggle('open', !expanded);
+    });
+  });
+
+  /* ── Checkbox persistence ── */
+  function getState() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); }
+    catch { return {}; }
+  }
+
+  function saveState(state) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+    catch {}
+  }
+
+  function updateProgress() {
+    const checks = flow.querySelectorAll('input[type="checkbox"]');
+    const done = [...checks].filter(c => c.checked).length;
+    const total = checks.length;
+    pDone.textContent = done;
+    document.getElementById('pTotal').textContent = total;
+    pFill.style.width = (total ? (done / total * 100) : 0) + '%';
+  }
+
+  function applyState() {
+    const state = getState();
+    flow.querySelectorAll('.node').forEach(node => {
+      const step = node.getAttribute('data-step');
+      const cb = node.querySelector('input[type="checkbox"]');
+      if (state[step]) {
+        cb.checked = true;
+        node.classList.add('done');
+      }
+    });
+    updateProgress();
+  }
+
+  flow.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const node = cb.closest('.node');
+      const step = node.getAttribute('data-step');
+      node.classList.toggle('done', cb.checked);
+      const state = getState();
+      if (cb.checked) { state[step] = true; } else { delete state[step]; }
+      saveState(state);
+      updateProgress();
+    });
+  });
+
+  resetBtn.addEventListener('click', () => {
+    if (!confirm('Reset all progress for this algorithm?')) return;
+    localStorage.removeItem(STORE_KEY);
+    flow.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
+    flow.querySelectorAll('.node').forEach(n => n.classList.remove('done'));
+    updateProgress();
+  });
+
+  applyState();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Insomnia — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Insomnia management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🌙",
+  title:"Insomnia",
+  stemTitle:"Chronic insomnia — ongoing management",
+  stemSub:"Primary-care management of insomnia \u2014 treating underlying causes, sleep hygiene and CBT-insomnia as first-line, and short-term hypnotics only as a last resort \u2014 with dependence avoidance. CKS \u00b7 2026.",
+  guideline:"NICE CKS",
+  glance:[
+    {lbl:"First, treat", val:"Underlying cause", sub:"mood, pain, OSA, drugs"},
+    {lbl:"First-line", val:"CBT-I", sub:"+ sleep hygiene"},
+    {lbl:"Tool", val:"Sleepio / sleep diary", sub:"digital CBT-I"},
+    {lbl:"Hypnotic", val:"Last resort", sub:"\u2264 short course"},
+    {lbl:"Z-drug/BZD", val:"Lowest dose, days", sub:"dependence risk"},
+    {lbl:"Avoid", val:"Long-term hypnotics", sub:"+ \u2018Z\u2019 in elderly"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Characterise and find the cause",
+      blocks:[
+        {b:"kv", rows:[
+          ["Pattern","Difficulty getting to sleep, staying asleep, or early waking, with daytime impairment; short-term vs chronic (&gt;3 months)"],
+          ["Underlying causes","Depression/anxiety, pain, nocturia, restless legs, <b>OSA</b>, alcohol/caffeine/stimulants, drugs, shift work"],
+          ["Assess","Sleep diary, daytime impact, substances; screen mood and OSA"],
+          ["Set expectations","Treat the cause; behavioural change is the durable fix, not tablets"]
+        ]},
+        {b:"why", html:"Most chronic insomnia is secondary to something treatable \u2014 mood, pain, substances or OSA \u2014 so the first move is to <strong>treat the cause</strong>. The durable treatment for primary insomnia is <strong>CBT-I</strong>, not hypnotics, which lose efficacy and cause dependence; tablets are a brief last resort."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 first-line", title:"Sleep hygiene and CBT-I",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🧠 CBT-I", html:"<b>First-line</b> for chronic insomnia \u2014 stimulus control, sleep restriction, cognitive work. Offer digital CBT-I (e.g. Sleepio) where available."},
+          {t:"⏰ Sleep schedule", html:"Fixed wake time, get up if not asleep, bed only for sleep; avoid daytime naps."},
+          {t:"📵 Wind-down", html:"Screen/light reduction before bed; relaxation routine; dark, cool, quiet room."},
+          {t:"☕ Substances", html:"Reduce caffeine (esp. afternoon), alcohol and nicotine; review stimulating drugs."},
+          {t:"🏃 Daytime activity", html:"Regular exercise (not late evening); daylight exposure."},
+          {t:"📓 Sleep diary", html:"Track pattern to guide CBT-I and review progress."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 last resort", title:"Hypnotics \u2014 short-term only",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Optimise non-drug first", when:"CBT-I + sleep hygiene",
+           html:"Exhaust behavioural measures and treat the cause before any hypnotic."},
+          {step:"Step 2", title:"Short course hypnotic", when:"severe, disabling, short-term",
+           fromLabel:"only if daytime functioning severely affected",
+           html:"A <b>short course (e.g. up to ~1\u20132 weeks)</b> of a Z-drug (<b>zopiclone 3.75\u20137.5 mg</b> or <b>zolpidem 5\u201310 mg</b> nocte) or short-acting benzodiazepine, lowest effective dose, intermittently \u2014 not nightly long-term."},
+          {step:"Selected", title:"Other agents", when:"specific contexts",
+           fromLabel:"comorbidity-guided",
+           html:"<b>Melatonin 2 mg MR at night</b> (\u2265 55 years, short-term per criteria); sedating antidepressant only if comorbid depression \u2014 not as a primary hypnotic."}
+        ]},
+        {b:"warn", html:"<b>Avoid long-term hypnotics</b> (tolerance, dependence, falls). Counsel on next-day sedation and <b>not driving</b> if drowsy. Caution Z-drugs/benzodiazepines in the elderly (falls, confusion) and avoid with alcohol/opioids."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Response and dependence",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Sleep / daytime function","Each review","Reinforce CBT-I; avoid escalating hypnotics"],
+          ["Hypnotic use","If prescribed","Keep short/intermittent; plan a stop; watch dependence"],
+          ["Underlying cause","Ongoing","Re-treat mood/pain/OSA/substances"],
+          ["Withdrawal","When stopping","Taper benzodiazepines/Z-drugs if used regularly"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"After non-drug measures", title:"Review", html:"Assess sleep-diary progress with CBT-I/sleep hygiene; treat any cause."},
+          {n:"2", when:"If hypnotic used", title:"Short review", html:"Reassess within days\u2013weeks; stop/taper; do not convert to long-term use."},
+          {n:"3", when:"Ongoing", title:"Reassess", html:"Persistent insomnia \u2192 reconsider cause (OSA, mood) and CBT-I access."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not sleeping? Re-check before medicating",
+      arrow:"\u2026if insomnia persists",
+      intro:"Reconsider cause and CBT-I access before reaching for hypnotics.",
+      checks:[
+        {b:"1 \u00b7 Cause", html:"Depression/anxiety, pain, nocturia, RLS, OSA, substances treated?"},
+        {b:"2 \u00b7 CBT-I", html:"Has the patient actually accessed/engaged with CBT-I?"},
+        {b:"3 \u00b7 Substances", html:"Caffeine, alcohol, nicotine, stimulating drugs reviewed?"},
+        {b:"4 \u00b7 OSA", html:"Snoring, daytime sleepiness, witnessed apnoea \u2192 refer sleep service."},
+        {b:"5 \u00b7 Hypnotic trap", html:"Avoid drifting into long-term hypnotic use \u2014 plan a stop."}
+      ],
+      back:"Cause treated, CBT-I engaged \u2192 sleep service / mental-health if persistent"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🚗 Sedation", html:"\u201cSleeping tablets can leave you drowsy next day \u2014 don\u2019t drive or operate machinery if you feel sleepy.\u201d"},
+          {t:"⚠️ Dependence", html:"\u201cThese tablets are short-term only \u2014 used nightly they stop working and become hard to stop; we\u2019ll keep it brief.\u201d"},
+          {t:"😴 OSA", html:"\u201cLoud snoring with pauses in breathing and daytime sleepiness \u2014 tell us; it needs a different assessment.\u201d"},
+          {t:"🧠 Mood", html:"\u201cIf low mood, anxiety or thoughts of self-harm come with the poor sleep, let us know \u2014 we\u2019ll treat that too.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"by underlying cause",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Sleep service", html:"Suspected OSA, narcolepsy, parasomnias, or circadian-rhythm disorders."},
+          {t:"Mental health", html:"Significant depression/anxiety/PTSD driving insomnia, or high risk."},
+          {t:"Refractory", html:"Chronic insomnia not responding to CBT-I and cause management."},
+          {t:"Dependence", html:"Established hypnotic dependence needing structured withdrawal support."}
+        ]},
+        {b:"say", html:"The most effective long-term treatment for insomnia isn\u2019t a tablet \u2014 it\u2019s a structured programme called CBT for insomnia, plus sorting out anything keeping you awake. Sleeping tablets are a short-term last resort because they stop working and are hard to come off."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

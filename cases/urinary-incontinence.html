@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urinary Incontinence (Female) &middot; GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="../assets/medchooser.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+</style>
+<style>
+:root{
+  --navy:#0f2540;--navy2:#1b3a5c;--ink:#1a2332;--muted:#64748b;
+  --line:#e2e8f0;--surface:#f8fafc;--white:#fff;
+  --r:#b91c1c;--r-bg:#fef2f2;--r-bd:#fecaca;
+  --a:#b45309;--a-bg:#fffbeb;--a-bd:#fde68a;
+  --g:#15803d;--g-bg:#f0fdf4;--g-bd:#bbf7d0;
+  --b:#1d4ed8;--b-bg:#eff6ff;--b-bd:#bfdbfe;
+  --p:#6d28d9;--p-bg:#f5f3ff;--p-bd:#ddd6fe;
+  --t:#0f766e;--t-bg:#f0fdfa;--t-bd:#99f6e4;
+  --ps:#be185d;--ps-bg:#fdf2f8;--ps-bd:#fbcfe8;
+  --shadow:0 1px 3px rgba(0,0,0,.07),0 4px 16px rgba(0,0,0,.04);
+  --shadow-md:0 4px 12px rgba(0,0,0,.1);
+  --rad:12px;--rad-sm:8px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#e8edf3;color:var(--ink);line-height:1.6;font-size:14px;-webkit-font-smoothing:antialiased}
+.topbar{background:var(--navy);color:#fff;position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.tb-inner{max-width:1240px;margin:0 auto;padding:9px 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.tb-brand{display:flex;align-items:center;gap:10px}
+.tb-icon{width:34px;height:34px;background:#fff;color:var(--navy);border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex-shrink:0}
+.tb-title{font-size:14px;font-weight:600;color:#fff;line-height:1.2}
+.tb-sub{font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.07em}
+.mode-group{display:flex;background:rgba(255,255,255,.1);padding:4px;border-radius:30px;gap:3px}
+.mode-btn{font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;border:none;cursor:pointer;background:transparent;color:rgba(255,255,255,.6);transition:.2s;font-family:'DM Sans',sans-serif}
+.mode-btn.active{background:#fff;color:var(--navy)}
+.tb-nav{display:flex;gap:2px;flex-wrap:wrap}
+.tb-nav a{font-size:11px;color:rgba(255,255,255,.6);text-decoration:none;padding:4px 8px;border-radius:15px;transition:.15s;font-weight:500}
+.tb-nav a:hover{background:rgba(255,255,255,.12);color:#fff}
+@media(max-width:980px){.tb-nav{display:none}}
+.numstrip{background:var(--navy2);border-bottom:1px solid rgba(255,255,255,.07)}
+.ns-inner{max-width:1240px;margin:0 auto;padding:6px 1.25rem;display:flex;flex-wrap:wrap}
+.ns-item{padding:3px 14px;border-right:1px solid rgba(255,255,255,.1);flex-shrink:0}
+.ns-item:last-child{border-right:none}
+.ns-val{font-size:13px;font-weight:700;color:#fff;display:block;line-height:1.2}
+.ns-lbl{font-size:9.5px;color:rgba(255,255,255,.5);white-space:nowrap}
+.page{max-width:1240px;margin:0 auto;padding:20px 16px 60px}
+/* STEM */
+.stem-box{background:var(--navy);border-radius:var(--rad);padding:1.1rem 1.4rem;margin-bottom:1.5rem;border-left:5px solid #60a5fa}
+.stem-label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:.5rem}
+.stem-title{font-family:'DM Serif Display',serif;font-size:1.3rem;color:#fff;margin-bottom:.5rem}
+.stem-text{font-size:13px;color:rgba(255,255,255,.85);line-height:1.65;font-style:italic;border-left:2px solid rgba(255,255,255,.2);padding-left:12px;margin-bottom:.75rem}
+.stem-note{font-size:11.5px;color:rgba(255,255,255,.6);line-height:1.5}
+.stem-variants{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:.75rem}
+@media(max-width:700px){.stem-variants{grid-template-columns:1fr}}
+.stem-variant{background:rgba(255,255,255,.08);border-radius:8px;padding:.6rem .85rem;font-size:11.5px;color:rgba(255,255,255,.8);line-height:1.45}
+.stem-variant strong{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.45);margin-bottom:.2rem}
+/* STEPS */
+.step-wrap{margin-bottom:1.5rem}
+.step-hdr{display:flex;align-items:center;gap:12px;padding:.85rem 1.1rem;background:var(--white);border:1px solid var(--line);border-radius:var(--rad);cursor:pointer;user-select:none;box-shadow:var(--shadow);transition:background .15s,box-shadow .15s;position:relative;z-index:1}
+.step-hdr:hover{background:#f8fafc;box-shadow:var(--shadow-md)}
+.step-hdr.is-open{border-radius:var(--rad) var(--rad) 0 0;border-bottom-color:transparent;box-shadow:none;border-bottom:none}
+.step-circle{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#fff;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.sc1{background:#6d28d9}.sc2{background:#b91c1c}.sc3{background:#0369a1}.sc4{background:#0f766e}.sc5{background:#854d0e}.sc6{background:#be123c}.sc7{background:#15803d}
+.step-hdr-text{flex:1}
+.step-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1}
+.step-title{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--navy);font-weight:400;line-height:1.25;margin-top:2px}
+.step-toggle{display:flex;align-items:center;gap:6px;flex-shrink:0;padding:.35rem .75rem;border-radius:20px;background:#f1f5f9;border:1px solid var(--line);transition:background .15s}
+.step-hdr:hover .step-toggle{background:#e2e8f0}
+.sti-icon{font-size:12px;color:var(--muted);display:inline-block}
+.sti-text{font-size:11px;color:var(--muted);font-weight:500}
+.step-body{background:var(--white);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--rad) var(--rad);padding:1.1rem 1.1rem 1.25rem;box-shadow:var(--shadow);overflow:hidden}
+.step-body.closed{display:none}
+.step-intro{font-size:12.5px;color:var(--muted);line-height:1.6;background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:0 var(--rad-sm) var(--rad-sm) 0;padding:.7rem 1rem;margin-bottom:1rem}
+.step-intro strong{color:var(--ink)}
+.collapse-controls{display:flex;gap:8px;margin-bottom:1rem;align-items:center}
+.cc-btn{font-size:11.5px;font-weight:600;padding:5px 14px;border-radius:20px;border:1px solid var(--line);background:var(--white);cursor:pointer;color:var(--ink);font-family:'DM Sans',sans-serif;transition:.15s}
+.cc-btn:hover{background:#f1f5f9}
+.cc-label{font-size:11px;color:var(--muted)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:860px){.g2,.g3{grid-template-columns:1fr}}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--rad);box-shadow:var(--shadow)}
+.card-hd{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:.7rem 1rem;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:7px}
+.chg{font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;display:inline-block;margin:1px;white-space:nowrap}
+.chg-999{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
+.chg-urgent{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+.chg-ddx{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
+.chg-rx{background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe}
+.chg-ref{background:#f5f3ff;color:#5b21b6;border:1px solid #ddd6fe}
+.chg-inv{background:#fef9c3;color:#854d0e;border:1px solid #fde68a}
+.chg-ps{background:#fdf2f8;color:#be185d;border:1px solid #fbcfe8}
+.rt{width:100%;border-collapse:collapse;font-size:13px}
+.rt thead th{background:#f8fafc;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:.55rem .85rem;text-align:left;border-bottom:2px solid var(--line)}
+.rt td{padding:.65rem .85rem;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.rt tr:last-child td{border-bottom:none}
+.rt tr:hover td{background:#fafbfc}
+.rt .q{font-weight:500}.rt .q em{display:block;font-style:italic;font-size:12px;color:var(--b);margin-top:2px}
+.rt .why{font-size:12.5px;line-height:1.5}.rt .why-sub{font-size:11px;color:var(--muted);display:block;margin-top:2px}
+.rt .chg-col{min-width:120px}
+.mcb{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;display:inline-block}
+.mcb-yes{background:#dcfce7;color:#15803d}.mcb-context{background:#dbeafe;color:#1e40af}
+.open-q-row{background:#f0fdf4 !important}
+.open-q-row td{border-left:3px solid var(--g)}
+/* RED FLAGS */
+.rf-wrap{background:var(--r-bg);border:2px solid var(--r-bd);border-radius:var(--rad);overflow:hidden}
+.rf-hdr{background:#fecaca;padding:.65rem 1.1rem;display:flex;align-items:center;gap:8px}
+.rf-hdr h3{font-size:13px;font-weight:700;color:var(--r)}
+.rf-table{width:100%;border-collapse:collapse}
+.rf-table th{background:rgba(185,28,28,.08);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--r);padding:.5rem .85rem;text-align:left;border-bottom:1px solid var(--r-bd)}
+.rf-table td{padding:.55rem .85rem;border-bottom:1px solid var(--r-bd);font-size:12.5px;vertical-align:top;line-height:1.5}
+.rf-table tr:last-child td{border-bottom:none}
+.rf-flag{font-weight:600;color:var(--r)}.rf-why{font-size:12px;color:#7f1d1d;line-height:1.45}
+.rf-action{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;display:inline-block;white-space:nowrap}
+.rfa-999{background:#b91c1c;color:#fff}.rfa-same{background:#f97316;color:#fff}
+/* SAFEGUARDING */
+.sg-wrap{background:var(--ps-bg);border:2px solid var(--ps-bd);border-radius:var(--rad);overflow:hidden;margin-top:1rem}
+.sg-hdr{background:#fbcfe8;padding:.65rem 1.1rem;display:flex;align-items:center;gap:8px}
+.sg-hdr h3{font-size:13px;font-weight:700;color:var(--ps)}
+.sg-body{padding:.85rem 1.1rem}
+.sg-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:640px){.sg-grid{grid-template-columns:1fr}}
+.sg-card{border-radius:var(--rad-sm);padding:.7rem .9rem;background:#fff;border:1px solid var(--ps-bd)}
+.sg-card h5{font-size:11px;font-weight:700;color:var(--ps);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem}
+.sg-card li,.sg-card p{font-size:12px;line-height:1.5;color:var(--ink)}
+.sg-card ul{padding-left:1rem}
+.sg-action{margin-top:.75rem;background:var(--ps);border-radius:8px;padding:.65rem 1rem;font-size:12px;color:#fff;line-height:1.5}
+.sg-action strong{color:#fbcfe8}
+/* IMPACT TABLE */
+.it{width:100%;border-collapse:collapse}
+.it th{background:#f8fafc;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:.5rem .85rem;text-align:left;border-bottom:1px solid var(--line)}
+.it td{padding:.55rem .85rem;border-bottom:1px solid var(--line);font-size:12.5px;vertical-align:top;line-height:1.5}
+.it tr:last-child td{border-bottom:none}.it tr:hover td{background:#fafbfc}
+.it .factor{font-weight:600}.it .impact{color:var(--b);font-size:12px}
+/* PSYCHOSOCIAL BANNER */
+.ps-banner{background:linear-gradient(135deg,#fdf2f8,#f5f3ff);border:1px solid var(--ps-bd);border-left:4px solid var(--ps);border-radius:var(--rad-sm);padding:.75rem 1rem;margin:.75rem 0}
+.ps-banner-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ps);margin-bottom:.3rem}
+.ps-banner p{font-size:12.5px;color:#4a0072;line-height:1.55}
+.ps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:.75rem 0}
+@media(max-width:640px){.ps-grid{grid-template-columns:1fr}}
+.ps-card{background:#fff;border:1px solid var(--ps-bd);border-radius:var(--rad-sm);padding:.65rem .85rem}
+.ps-card h5{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ps);margin-bottom:.3rem}
+.ps-card p{font-size:12px;color:var(--ink);line-height:1.45}
+.ps-phrase{font-size:12px;font-style:italic;background:var(--ps-bg);border-left:2px solid var(--ps-bd);padding:.35rem .7rem;border-radius:0 6px 6px 0;margin-top:.35rem;line-height:1.5;color:#4a0072;display:block}
+/* ICE */
+.ice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:700px){.ice-grid{grid-template-columns:1fr}}
+.ice-card{border-radius:var(--rad);padding:.85rem 1rem;border:1px solid}
+.ice-i{background:var(--p-bg);border-color:var(--p-bd)}.ice-c{background:var(--b-bg);border-color:var(--b-bd)}.ice-e{background:var(--a-bg);border-color:var(--a-bd)}
+.ice-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem}
+.ice-i .ice-label{color:var(--p)}.ice-c .ice-label{color:var(--b)}.ice-e .ice-label{color:var(--a)}
+.ice-phrase{font-size:12.5px;font-style:italic;line-height:1.55;border-left:3px solid;padding-left:9px}
+.ice-i .ice-phrase{border-color:var(--p-bd)}.ice-c .ice-phrase{border-color:var(--b-bd)}.ice-e .ice-phrase{border-color:var(--a-bd)}
+.ice-why{font-size:11px;color:var(--muted);margin-top:.4rem}
+/* SCA CHECKPOINT */
+.sca-cp{background:var(--navy);border-radius:var(--rad);padding:1rem 1.25rem;margin-top:.85rem}
+.sca-cp-hdr{display:flex;align-items:center;gap:8px;margin-bottom:.75rem;flex-wrap:wrap}
+.sca-cp-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.sca-dom{font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,.15);color:#fff}
+.sca-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:600px){.sca-grid{grid-template-columns:1fr}}
+.sca-block{background:rgba(255,255,255,.07);border-radius:8px;padding:.65rem .85rem}
+.sca-block-t{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.4rem}
+.sca-say .sca-block-t{color:#86efac}.sca-avoid .sca-block-t{color:#fca5a5}.sca-score .sca-block-t{color:#93c5fd}
+.sca-block p,.sca-block li{font-size:12px;color:rgba(255,255,255,.82);line-height:1.5}
+.sca-block ul{list-style:none;padding-left:.25rem}
+.sca-say li::before{content:'✓ ';color:#86efac;font-size:11px}
+.sca-avoid li::before{content:'✗ ';color:#fca5a5;font-size:11px}
+.sca-score li::before{content:'• ';color:#93c5fd;font-size:11px}
+.sca-phrase{font-style:italic;font-size:12px;color:#e2e8f0;background:rgba(255,255,255,.06);border-left:2px solid rgba(255,255,255,.2);padding:.45rem .75rem;border-radius:0 6px 6px 0;line-height:1.55;margin-top:.3rem}
+.rag-strip{display:flex;gap:6px;flex-wrap:wrap;margin-top:.6rem;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.1)}
+.rag-item{background:rgba(255,255,255,.05);border-radius:8px;padding:.45rem .75rem;flex:1;min-width:140px}
+.rag-item-t{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.45);margin-bottom:.3rem}
+.rag-bullets{font-size:11px;color:rgba(255,255,255,.75);line-height:1.5}
+.rag-r{border-left:2px solid #fca5a5}.rag-a{border-left:2px solid #fde68a}.rag-g{border-left:2px solid #86efac}
+/* TRIAGE */
+.triage{display:grid;grid-template-columns:1fr 1fr 1fr;border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow-md)}
+@media(max-width:780px){.triage{grid-template-columns:1fr}}
+.tc{padding:1.1rem 1.1rem}
+.tc-e{background:var(--r-bg);border-right:2px solid var(--r-bd)}.tc-u{background:var(--a-bg);border-right:2px solid var(--a-bd)}.tc-r{background:var(--g-bg)}
+@media(max-width:780px){.tc{border-right:none!important;border-bottom:2px solid var(--line)}.tc-r{border-bottom:none}}
+.tc-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.tc-e .tc-lbl{color:var(--r)}.tc-u .tc-lbl{color:var(--a)}.tc-r .tc-lbl{color:var(--g)}
+.tc h3{font-size:14px;font-weight:700;margin-bottom:.35rem}
+.tc-e h3{color:var(--r)}.tc-u h3{color:var(--a)}.tc-r h3{color:var(--g)}
+.tc-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:.65rem}
+.tcb-e{background:#fee2e2;color:var(--r);border:1px solid var(--r-bd)}
+.tcb-u{background:var(--a-bg);color:var(--a);border:1px solid var(--a-bd)}
+.tcb-r{background:var(--g-bg);color:var(--g);border:1px solid var(--g-bd)}
+.tc-items{list-style:none;display:flex;flex-direction:column;gap:5px}
+.tc-item{font-size:12.5px;padding-left:18px;position:relative;line-height:1.45}
+.tc-e .tc-item::before{content:'🚨';position:absolute;left:0;font-size:10px;top:1px}
+.tc-u .tc-item::before{content:'⚠';position:absolute;left:0;font-size:10px;top:1px}
+.tc-r .tc-item::before{content:'✓';position:absolute;left:0;font-size:11px;top:0;color:var(--g);font-weight:700}
+.tc-item strong{font-weight:600;display:block}.tc-item em{font-size:11px;color:var(--muted);font-style:normal}
+/* CONF BADGES */
+.conf-badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;display:inline-block}
+.conf-gp{background:#dcfce7;color:#15803d}.conf-sus{background:#fef3c7;color:#b45309}.conf-emerg{background:#fee2e2;color:#b91c1c}
+.ddx-card{border-radius:var(--rad);padding:.85rem 1rem;border:1px solid}
+.ddx-b{background:var(--r-bg);border-color:var(--r-bd)}.ddx-c{background:var(--a-bg);border-color:var(--a-bd)}.ddx-d{background:var(--p-bg);border-color:var(--p-bd)}
+.ddx-card h4{font-size:12px;font-weight:700;margin-bottom:.35rem}
+.ddx-b h4{color:var(--r)}.ddx-c h4{color:var(--a)}.ddx-d h4{color:var(--p)}
+.ddx-card p{font-size:12px;line-height:1.45}
+/* LAY LANGUAGE */
+.lay-box{background:#fefce8;border:1px solid #fde68a;border-left:4px solid #ca8a04;border-radius:var(--rad-sm);padding:.85rem 1rem;margin:.75rem 0}
+.lay-box-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#92400e;margin-bottom:.4rem}
+.lay-box p{font-size:12.5px;color:#451a03;line-height:1.6;font-style:italic}
+.lay-why-not{background:#f0f9ff;border:1px solid #bae6fd;border-left:4px solid #0369a1;border-radius:var(--rad-sm);padding:.85rem 1rem;margin:.75rem 0}
+.lay-why-not-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#0369a1;margin-bottom:.4rem}
+.lay-why-not p{font-size:12.5px;color:#0c4a6e;line-height:1.6;margin-bottom:.6rem}
+/* REFERRAL */
+.ref-table{width:100%;border-collapse:collapse}
+.ref-table th{background:#f8fafc;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:.55rem .85rem;text-align:left;border-bottom:2px solid var(--line)}
+.ref-table td{padding:.65rem .85rem;border-bottom:1px solid var(--line);font-size:12.5px;vertical-align:top;line-height:1.5}
+.ref-table tr:last-child td{border-bottom:none}.ref-table tr:hover td{background:#fafbfc}
+.ref-urg{font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;display:inline-block}
+.rurg-999{background:#fee2e2;color:var(--r)}.rurg-2{background:#fff7ed;color:#c2410c}
+.rurg-4{background:var(--a-bg);color:var(--a)}.rurg-6{background:#fef9c3;color:#854d0e}.rurg-r{background:var(--g-bg);color:var(--g)}
+/* TX GOALS */
+.tx-goals{display:flex;flex-wrap:wrap;gap:8px;margin:.75rem 0}
+.tx-goal{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;display:inline-flex;align-items:center;gap:6px;border:1px solid}
+.tg1{background:#f0fdf4;border-color:var(--g-bd);color:var(--g)}.tg2{background:var(--b-bg);border-color:var(--b-bd);color:var(--b)}
+.tg3{background:var(--p-bg);border-color:var(--p-bd);color:var(--p)}.tg4{background:var(--a-bg);border-color:var(--a-bd);color:var(--a)}
+/* EXPECTATION BOX */
+.expect-box{background:linear-gradient(135deg,#f0fdf4,#eff6ff);border:2px solid var(--g-bd);border-radius:var(--rad);padding:1rem 1.25rem;margin-bottom:1rem}
+.expect-box-hdr{display:flex;align-items:center;gap:8px;margin-bottom:.75rem}
+.expect-box-lbl{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.expect-steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:680px){.expect-steps{grid-template-columns:1fr}}
+.expect-step{background:#fff;border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.7rem .9rem}
+.expect-step-num{width:22px;height:22px;border-radius:50%;background:var(--g);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:.35rem}
+.expect-step h5{font-size:11.5px;font-weight:700;color:var(--g);margin-bottom:.25rem}
+.expect-step p{font-size:12px;color:var(--ink);line-height:1.45}
+.expect-phrase{font-size:12px;font-style:italic;background:var(--g-bg);border-left:2px solid var(--g-bd);padding:.45rem .8rem;border-radius:0 6px 6px 0;margin-top:.35rem;color:#14532d;line-height:1.55;display:block}
+/* PSYCHOSOCIAL IMPACT SUBSTEP */
+.psoci-wrap{background:var(--ps-bg);border:1px solid var(--ps-bd);border-radius:var(--rad);padding:1rem 1.25rem;margin:1.25rem 0}
+.psoci-hdr{display:flex;align-items:center;gap:8px;margin-bottom:.85rem}
+.psoci-title{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--ps);font-weight:400}
+.psoci-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:760px){.psoci-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.psoci-grid{grid-template-columns:1fr}}
+.psoci-card{background:#fff;border:1px solid var(--ps-bd);border-radius:var(--rad-sm);padding:.75rem .9rem}
+.psoci-icon{font-size:1.3rem;margin-bottom:.25rem;display:block}
+.psoci-card h5{font-size:11px;font-weight:700;color:var(--ps);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+.psoci-card p{font-size:12px;line-height:1.45;color:var(--ink);margin-bottom:.3rem}
+.psoci-phrase{font-size:11.5px;font-style:italic;color:#831843;background:var(--ps-bg);border-radius:5px;padding:.3rem .6rem;line-height:1.45;display:block;margin-top:.35rem}
+/* LIFESTYLE */
+.life-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:760px){.life-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:460px){.life-grid{grid-template-columns:1fr}}
+.life-card{background:var(--white);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow)}
+.life-head{background:var(--g-bg);padding:.65rem .9rem;border-bottom:1px solid var(--g-bd)}
+.life-icon{font-size:1.3rem;margin-bottom:.15rem;display:block}
+.life-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--g)}
+.life-target{font-size:11px;font-weight:600;color:var(--g);margin-top:.2rem;display:block}
+.life-body{padding:.65rem .9rem}
+.life-section{margin-bottom:.4rem}
+.life-section-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.15rem}
+.life-section p{font-size:12px;color:var(--ink);line-height:1.45}
+.life-benefit{font-size:12px;font-weight:700;color:var(--g);background:var(--g-bg);border-radius:6px;padding:2px 7px;display:inline-block;margin-top:.2rem}
+/* DRUG SELECTOR */
+.ds-wrap{background:var(--white);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow)}
+.ds-top{background:#f8fafc;border-bottom:1px solid var(--line);padding:1rem 1.25rem}
+.ds-top h3{font-size:13px;font-weight:600;margin-bottom:.6rem}
+.ds-checks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+@media(max-width:700px){.ds-checks{grid-template-columns:1fr 1fr}}
+.ds-lbl{display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--white);border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:12.5px;transition:.15s}
+.ds-lbl:hover{background:#f8fafc}.ds-lbl input{accent-color:var(--navy);width:14px;height:14px;flex-shrink:0}
+.ds-result{padding:1rem 1.25rem;background:var(--g-bg);border-top:1px solid var(--g-bd)}
+.ds-result-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.5rem}
+/* DRUG CARDS */
+.drug-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:.85rem}
+@media(max-width:980px){.drug-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.drug-cards{grid-template-columns:1fr}}
+.dc{background:var(--white);border:2px solid var(--line);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow);transition:border-color .25s,box-shadow .25s}
+.dc.recommended{border-color:#15803d;box-shadow:0 0 0 3px rgba(21,128,61,.12),var(--shadow)}
+.dc.alt-rec{border-color:var(--b);box-shadow:0 0 0 3px rgba(29,78,216,.08),var(--shadow)}
+.dc-head{padding:.7rem 1rem;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.dc-name{font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.2}
+.dc-examples{font-size:11px;color:var(--muted);margin-top:1px}
+.dc-rec-badge{font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:10px;display:none;margin-top:4px}
+.dc.recommended .dc-rec-badge{display:inline-block;background:#dcfce7;color:var(--g);border:1px solid var(--g-bd)}
+.dc.alt-rec .dc-rec-badge{display:inline-block;background:var(--b-bg);color:var(--b);border:1px solid var(--b-bd)}
+.dc-badges{display:flex;gap:4px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+.dc-step{font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px}
+.step1{background:#dcfce7;color:#15803d}.step2{background:#dbeafe;color:#1d4ed8}.step3{background:#fef3c7;color:#92400e}.step4{background:#fee2e2;color:var(--r)}
+.dc-dose{font-size:11px;font-weight:600;font-family:'SF Mono','Consolas',monospace;background:#fefce8;padding:2px 6px;border-radius:4px;border:1px solid #fef08a;white-space:nowrap}
+.dc-section{padding:.6rem .9rem;border-bottom:1px solid var(--line)}
+.dc-section:last-child{border-bottom:none}
+.dc-sec-t{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.35rem}
+.dc-g .dc-sec-t{color:var(--g)}.dc-r .dc-sec-t{color:var(--r)}.dc-a .dc-sec-t{color:var(--a)}.dc-b .dc-sec-t{color:var(--b)}
+.dc-g{background:rgba(240,253,244,.6)}.dc-r{background:rgba(254,242,242,.6)}.dc-a{background:rgba(255,251,235,.6)}.dc-b{background:rgba(239,246,255,.6)}
+.dc-item{font-size:12px;padding-left:13px;position:relative;line-height:1.45;margin-bottom:3px}
+.dc-item::before{position:absolute;left:0;font-size:10px;top:2px}
+.dc-g .dc-item::before{content:'✓';color:var(--g);font-weight:700}
+.dc-r .dc-item::before{content:'✗';color:var(--r);font-weight:700}
+.dc-a .dc-item::before{content:'⚠';color:var(--a)}.dc-b .dc-item::before{content:'•';color:var(--b)}
+.dc-item.ci-abs{color:var(--r);font-weight:500}.dc-item.ci-rel{color:var(--a)}
+.dc-sca{background:var(--navy);padding:.5rem .85rem}
+.dc-sca p{font-size:11px;color:rgba(255,255,255,.8);line-height:1.45;font-style:italic}
+.dc-sca p::before{content:'🎓 ';font-style:normal}
+.dc-counsel{background:#f5f3ff;padding:.5rem .85rem;border-top:1px solid var(--p-bd)}
+.dc-counsel-t{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--p);margin-bottom:.2rem}
+.dc-counsel p{font-size:11.5px;color:var(--p);line-height:1.45;font-style:italic}
+/* FOLLOW-UP */
+.fu-line{display:flex;flex-direction:column;gap:0;position:relative;padding-left:50px}
+.fu-line::before{content:'';position:absolute;left:16px;top:12px;bottom:12px;width:2px;background:var(--line)}
+.fu-event{position:relative;padding:.6rem 0 .65rem .5rem;display:flex;gap:10px;align-items:flex-start}
+.fu-dot{position:absolute;left:-40px;top:11px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700;color:#fff;z-index:1}
+.fd1{background:var(--r)}.fd2{background:var(--a)}.fd3{background:var(--b)}.fd4{background:var(--g)}.fd5{background:var(--t)}
+.fu-content h5{font-size:12.5px;font-weight:600;margin-bottom:2px}
+.fu-content p{font-size:12px;color:var(--muted);line-height:1.45}
+.fu-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px}
+.ft{font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:500}
+.ft-r{background:var(--r-bg);color:var(--r)}.ft-a{background:var(--a-bg);color:var(--a)}.ft-b{background:var(--b-bg);color:var(--b)}
+.mon-rule{background:var(--navy);border-radius:var(--rad);padding:.85rem 1.1rem;margin-bottom:.85rem}
+.mon-rule h4{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.5);margin-bottom:.4rem}
+.mon-rule p{font-size:12.5px;color:#fff;line-height:1.55}
+.mon-rule strong{color:#86efac}
+/* SAFETY NETTING */
+.sn-box{background:#fffbeb;border:1px solid var(--a-bd);border-radius:var(--rad);padding:1rem 1.1rem}
+.sn-box h4{font-size:12px;font-weight:700;color:var(--a);margin-bottom:.6rem}
+.sn-scenarios{display:flex;flex-direction:column;gap:8px;margin-bottom:.85rem}
+.sn-scenario{border-radius:var(--rad-sm);padding:.75rem 1rem;border:1px solid}
+.sns-e{background:var(--r-bg);border-color:var(--r-bd)}.sns-m{background:var(--b-bg);border-color:var(--b-bd)}.sns-a{background:var(--a-bg);border-color:var(--a-bd)}
+.sn-scenario-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+.sns-e .sn-scenario-lbl{color:var(--r)}.sns-m .sn-scenario-lbl{color:var(--b)}.sns-a .sn-scenario-lbl{color:var(--a)}
+.sn-phrase{font-size:12.5px;font-style:italic;line-height:1.55}.sn-why{font-size:11px;color:var(--muted);margin-top:.35rem}
+.sn-legal{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem 1rem;margin-top:.85rem}
+.sn-legal h5{font-size:11px;font-weight:700;margin-bottom:.4rem}
+.sn-legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+@media(max-width:520px){.sn-legal-grid{grid-template-columns:1fr}}
+.sn-legal-item{font-size:12px;color:var(--muted);padding-left:14px;position:relative}
+.sn-legal-item::before{content:'•';position:absolute;left:0;color:var(--b)}
+.sn-fu{margin-top:.85rem;background:#fef9c3;border-radius:8px;padding:.7rem 1rem;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:520px){.sn-fu{grid-template-columns:1fr}}
+.sn-fu-item strong{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--a);margin-bottom:2px}
+.sn-fu-item{font-size:11.5px;color:#78350f}
+/* ACTOR */
+.actor-toggle{width:100%;text-align:left;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between}
+.actor-body{display:none;padding:0 1.25rem 1.25rem;border-top:1px solid var(--line)}
+.actor-body.open{display:block}
+.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:.75rem}
+@media(max-width:580px){.ab-grid{grid-template-columns:1fr}}
+.ab{background:var(--p-bg);border:1px solid var(--p-bd);border-radius:10px;padding:.8rem 1rem}
+.ab h5{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--p);margin-bottom:.35rem}
+.ab p,.ab li{font-size:12px;color:#4a235a;line-height:1.5}.ab ul{padding-left:1rem}
+.actor-open{background:#f5f3ff;border-left:3px solid #a855f7;padding:.65rem .9rem;border-radius:0 8px 8px 0;font-size:12.5px;font-style:italic;color:#3b0764;margin:.75rem 0 .5rem}
+.actor-challenge{background:#fff7ed;border-left:3px solid #f97316;padding:.65rem .9rem;border-radius:0 8px 8px 0;font-size:12.5px;font-style:italic;color:#7c2d12;margin-top:.5rem}
+/* SUB-DIVIDER */
+.sub-divider{display:flex;align-items:center;gap:8px;margin:1.25rem 0 .65rem;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.sub-divider::after{content:'';flex:1;height:1px;background:var(--line)}
+/* MODE */
+body.mode-sca .clinic-only{display:none!important}
+body.mode-clinic .sca-only{display:none!important}
+/* QUICK REF */
+.qr-section{margin-top:2.5rem}
+.qr-header{background:var(--navy);border-radius:var(--rad) var(--rad) 0 0;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.qr-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:.2rem}
+.qr-title{font-family:'DM Serif Display',serif;font-size:1.4rem;color:#fff;font-weight:400}
+.qr-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:.2rem}
+.qr-print-btn{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 16px;border-radius:20px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;transition:.15s}
+.qr-print-btn:hover{background:rgba(255,255,255,.25)}
+.qr-body{background:var(--white);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--rad) var(--rad);padding:1.25rem}
+.qr-tl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.25rem}
+@media(max-width:680px){.qr-tl{grid-template-columns:1fr}}
+.qr-tl-card{border-radius:var(--rad-sm);padding:.85rem 1rem;border:1px solid}
+.qr-tl-card.red{background:var(--r-bg);border-color:var(--r-bd)}.qr-tl-card.amber{background:var(--a-bg);border-color:var(--a-bd)}
+.qr-tl-card.green{background:var(--g-bg);border-color:var(--g-bd)}.qr-tl-card.blue{background:var(--b-bg);border-color:var(--b-bd)}
+.qr-tl-hdr{display:flex;align-items:center;gap:8px;margin-bottom:.6rem}
+.qr-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.qr-dot-r{background:var(--r)}.qr-dot-a{background:#f59e0b}.qr-dot-g{background:#16a34a}.qr-dot-b{background:#3b82f6}
+.qr-tl-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.qr-tl-card.red .qr-tl-title{color:var(--r)}.qr-tl-card.amber .qr-tl-title{color:var(--a)}
+.qr-tl-card.green .qr-tl-title{color:var(--g)}.qr-tl-card.blue .qr-tl-title{color:var(--b)}
+.qr-item{font-size:12.5px;padding-left:13px;position:relative;line-height:1.5;margin-bottom:4px}
+.qr-item::before{content:'';position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%}
+.qr-tl-card.red .qr-item::before{background:var(--r)}.qr-tl-card.amber .qr-item::before{background:#f59e0b}
+.qr-tl-card.green .qr-item::before{background:#16a34a}.qr-tl-card.blue .qr-item::before{background:#3b82f6}
+.qr-item strong{font-weight:600}
+.qr-item .sub{display:block;font-size:11px;color:var(--muted);margin-top:1px}
+.qr-tl-card.blue p{font-size:12.5px;color:var(--b);font-style:italic;line-height:1.55;border-left:2px solid var(--b-bd);padding-left:10px;margin-bottom:6px}
+.qr-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:1.25rem}
+@media(max-width:860px){.qr-cols{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.qr-cols{grid-template-columns:1fr}}
+.qr-col-card{border-radius:var(--rad-sm);border:1px solid var(--line);overflow:hidden;background:var(--white)}
+.qr-col-hd{padding:.6rem .85rem;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;border-bottom:1px solid var(--line)}
+.qr-col-body{padding:.75rem .85rem}
+.drug-tree{display:flex;flex-direction:column;gap:6px}
+.dt-row{display:flex;align-items:flex-start;gap:8px}
+.dt-cond{font-size:11.5px;font-weight:600;color:var(--muted);flex-shrink:0;width:130px;line-height:1.4;padding-top:2px}
+.dt-arrow{font-size:11px;color:var(--muted);flex-shrink:0;padding-top:3px}
+.dt-drug{font-size:12px;font-weight:700;padding:3px 9px;border-radius:8px;line-height:1.4}
+.dt-acei{background:#dcfce7;color:#15803d}.dt-ccb{background:#fef3c7;color:#92400e}.dt-arb{background:#dbeafe;color:#1d4ed8}
+.dt-divider{height:1px;background:var(--line);margin:4px 0}
+.dt-step{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:4px 0 2px}
+.dt-ladder{display:flex;flex-direction:column;gap:4px}
+.dt-lrow{display:flex;align-items:center;gap:6px;font-size:11.5px}
+.dt-lnum{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0}
+.dl1{background:#15803d}.dl2{background:#1d4ed8}.dl3{background:#b45309}.dl4{background:var(--r)}
+.k-pivot{font-size:11px;background:#fef3c7;color:#b45309;border-radius:6px;padding:2px 7px;font-weight:600;margin-top:2px;display:inline-block}
+.mon-compact{display:flex;flex-direction:column;gap:4px}
+.mc-row{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5}
+.mc-tag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;flex-shrink:0;margin-top:1px}
+.mct-1{background:#fee2e2;color:var(--r)}.mct-2{background:var(--a-bg);color:var(--a)}.mct-m{background:#fefce8;color:#854d0e}.mct-y{background:var(--g-bg);color:var(--g)}
+.bp-mini{width:100%;border-collapse:collapse;margin-top:8px}
+.bp-mini th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:.35rem .5rem;text-align:left;border-bottom:1px solid var(--line);background:#f8fafc}
+.bp-mini td{font-size:12px;padding:.35rem .5rem;border-bottom:1px solid var(--line)}
+.bp-mini tr:last-child td{border-bottom:none}
+.sn-phrase-box{border-radius:var(--rad-sm);padding:.65rem .85rem;border:1px solid;margin-bottom:8px}
+.snp-e{background:var(--r-bg);border-color:var(--r-bd)}.snp-m{background:var(--b-bg);border-color:var(--b-bd)}.snp-a{background:var(--a-bg);border-color:var(--a-bd)}
+.snp-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+.snp-e .snp-lbl{color:var(--r)}.snp-m .snp-lbl{color:var(--b)}.snp-a .snp-lbl{color:var(--a)}
+.snp-text{font-size:12px;font-style:italic;line-height:1.5}
+.qr-sca-section{margin-top:1.25rem;padding-top:1.25rem;border-top:2px solid var(--line)}
+.qr-sca-header{display:flex;align-items:center;gap:8px;margin-bottom:.85rem}
+.qr-sca-title{font-size:12px;font-weight:700;color:var(--navy)}
+.qr-sca-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--p-bg);color:var(--p);border:1px solid var(--p-bd)}
+.dz-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+@media(max-width:700px){.dz-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){.dz-grid{grid-template-columns:1fr}}
+.dz-card{background:#fff7f7;border:1px solid var(--r-bd);border-radius:var(--rad-sm);padding:.7rem .85rem}
+.dz-wrong{font-size:11.5px;font-weight:600;color:var(--r);margin-bottom:3px}
+.dz-wrong::before{content:'✗ '}
+.dz-right{font-size:11.5px;color:var(--g);font-weight:500}
+.dz-right::before{content:'✓ '}
+.cf-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:0;background:var(--white);border:1px solid var(--line);border-radius:var(--rad-sm);overflow:hidden;margin-top:.85rem}
+@media(max-width:700px){.cf-strip{grid-template-columns:1fr}}
+.cf-step{padding:.7rem .85rem;border-right:1px solid var(--line)}
+.cf-step:last-child{border-right:none}
+@media(max-width:700px){.cf-step{border-right:none;border-bottom:1px solid var(--line)}.cf-step:last-child{border-bottom:none}}
+.cf-time{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.25rem}
+.cs1 .cf-time{color:#7c3aed}.cs2 .cf-time{color:#0369a1}.cs3 .cf-time{color:#b45309}.cs4 .cf-time{color:#15803d}.cs5 .cf-time{color:#be123c}
+.cf-step h5{font-size:12px;font-weight:600;margin-bottom:.25rem}
+.cf-step li{font-size:11px;color:var(--muted);list-style:none;padding-left:10px;position:relative;line-height:1.4;margin-bottom:1px}
+.cf-step li::before{content:'→';position:absolute;left:0;font-size:9px;top:2px;color:#cbd5e1}
+
+/* ══════════════════════════════════════
+   DUAL SUMMARY SECTIONS
+══════════════════════════════════════ */
+.sum-section{margin-top:2rem}
+.sum-hdr{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:1rem 1.4rem;background:var(--navy2);border-radius:var(--rad) var(--rad) 0 0;cursor:pointer;user-select:none;flex-wrap:wrap;transition:background .15s}
+.sum-hdr:hover{background:#1e4573}
+.sca-sum-hdr{background:linear-gradient(135deg,#2d1b69,#1b3a5c)}
+.sca-sum-hdr:hover{background:linear-gradient(135deg,#3b2384,#1e4573)}
+.sum-hdr-left{display:flex;align-items:center;gap:12px}
+.sum-icon{font-size:1.6rem;flex-shrink:0}
+.sum-label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:.15rem}
+.sum-title{font-family:'DM Serif Display',serif;font-size:1.25rem;color:#fff;font-weight:400;line-height:1.2}
+.sum-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:.1rem}
+.sum-toggle{display:flex;align-items:center;gap:6px;padding:.4rem .85rem;border-radius:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);transition:.15s;flex-shrink:0}
+.sum-hdr:hover .sum-toggle{background:rgba(255,255,255,.2)}
+.sca-toggle{background:rgba(139,92,246,.25);border-color:rgba(139,92,246,.4)}
+.sum-ti-icon{font-size:12px;color:rgba(255,255,255,.7)}
+.sum-ti-text{font-size:11px;color:rgba(255,255,255,.7);font-weight:500}
+.sum-body{background:var(--white);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--rad) var(--rad);padding:1.25rem;box-shadow:var(--shadow)}
+.sum-body.closed{display:none}
+.sum-sub-hdr{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--navy);margin:.75rem 0 .5rem;display:flex;align-items:center;gap:6px}
+.sum-sub-hdr::after{content:'';flex:1;height:1px;background:var(--line)}
+.sca-sub-hdr{color:var(--p)}
+.sum-2col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.sum-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+@media(max-width:900px){.sum-2col,.sum-3col{grid-template-columns:1fr}}
+
+/* TRIAGE ALGORITHM */
+.algo-wrap{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem}
+.algo-start{background:var(--navy);color:#fff;font-weight:700;font-size:13px;padding:.5rem 1rem;border-radius:8px;display:inline-block;margin-bottom:.5rem}
+.algo-arrow{font-size:1.2rem;color:var(--muted);margin:.25rem 0;text-align:center}
+.algo-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:760px){.algo-row{grid-template-columns:1fr}}
+.algo-branch{border-radius:var(--rad-sm);padding:.7rem .85rem;border:1px solid}
+.algo-red{background:var(--r-bg);border-color:var(--r-bd)}
+.algo-amber{background:var(--a-bg);border-color:var(--a-bd)}
+.algo-green{background:var(--g-bg);border-color:var(--g-bd)}
+.algo-branch-lbl{font-size:11px;font-weight:700;margin-bottom:.4rem}
+.red .algo-branch-lbl,.algo-red .algo-branch-lbl{color:var(--r)}
+.amber .algo-branch-lbl,.algo-amber .algo-branch-lbl{color:var(--a)}
+.green .algo-branch-lbl,.algo-green .algo-branch-lbl{color:var(--g)}
+.algo-list{list-style:none;padding:0;margin-bottom:.4rem}
+.algo-list li{font-size:11.5px;line-height:1.5;padding-left:14px;position:relative;margin-bottom:1px}
+.algo-red .algo-list li::before{content:'🚨';position:absolute;left:0;font-size:9px;top:2px}
+.algo-amber .algo-list li::before{content:'⚠';position:absolute;left:0;font-size:9px;top:2px}
+.algo-green .algo-list li::before{content:'✓';position:absolute;left:0;font-size:10px;top:1px;color:var(--g);font-weight:700}
+.algo-action{font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:6px;margin-top:.3rem;display:inline-block}
+.red-action{background:#b91c1c;color:#fff}
+.amber-action{background:#b45309;color:#fff}
+.green-action{background:#15803d;color:#fff}
+
+/* DIAGNOSIS FLOW */
+.diag-flow{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem}
+.diag-box{padding:.4rem .75rem;border-radius:8px;font-size:12px;font-weight:600;display:inline-block;margin-bottom:.3rem}
+.diag-start{background:var(--navy);color:#fff}
+.diag-arrow{font-size:11px;color:var(--muted);margin:.2rem 0;font-style:italic}
+.diag-split{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:.4rem 0}
+@media(max-width:600px){.diag-split{grid-template-columns:1fr}}
+.diag-branch{text-align:center}
+.diag-a{background:var(--g-bg);color:var(--g);border:1px solid var(--g-bd)}
+.diag-b{background:var(--a-bg);color:var(--a);border:1px solid var(--a-bd)}
+.diag-c{background:var(--r-bg);color:var(--r);border:1px solid var(--r-bd)}
+.diag-label{font-size:11px;font-weight:700;margin:.15rem 0}
+.green-txt{color:var(--g)}.amber-txt{color:var(--a)}.red-txt{color:var(--r)}
+.diag-sub{font-size:10.5px;color:var(--muted);line-height:1.4}
+.diag-masked{background:var(--b-bg);color:var(--b);border:1px solid var(--b-bd);font-size:11.5px;display:block;margin-top:.4rem}
+
+/* KEY NUMBERS */
+.num-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+@media(max-width:680px){.num-grid{grid-template-columns:1fr 1fr}}
+.num-card{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:.5rem .65rem;text-align:center}
+.num-highlight{background:var(--navy);border-color:var(--navy)}
+.num-val{font-size:14px;font-weight:700;color:var(--navy);line-height:1.2}
+.num-highlight .num-val{color:#86efac}
+.num-lbl{font-size:10px;color:var(--muted);line-height:1.35;margin-top:.15rem}
+.num-highlight .num-lbl{color:rgba(255,255,255,.6)}
+
+/* DRUG ALGORITHM */
+.drug-algo{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem}
+.da-q{font-size:12px;font-weight:600;color:var(--navy);margin-bottom:.5rem;padding:.4rem .7rem;background:#fff;border:1px solid var(--line);border-radius:6px}
+.da-split{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:.65rem}
+@media(max-width:560px){.da-split{grid-template-columns:1fr}}
+.da-yes,.da-no{background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .8rem}
+.da-yes-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--g);margin-bottom:.3rem}
+.da-no-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.3rem}
+.da-sub{font-size:10.5px;color:var(--muted);margin-top:.25rem;line-height:1.35}
+.da-pill{font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block;margin:.15rem 0}
+.acei-pill{background:#dcfce7;color:#15803d}.ccb-pill{background:#fef3c7;color:#92400e}.arb-pill{background:#dbeafe;color:#1d4ed8}
+.da-row{display:flex;align-items:center;gap:6px;margin-bottom:.2rem}
+.da-cond{font-size:11px;color:var(--muted);flex:1}
+.da-arrow2{color:var(--muted);font-size:11px;flex-shrink:0}
+.da-ladder{border-top:1px solid var(--line);padding-top:.5rem;display:flex;flex-direction:column;gap:4px}
+.da-step-row{display:flex;align-items:center;gap:8px;font-size:12px}
+.da-num{width:22px;height:22px;border-radius:50%;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.da-text{color:var(--ink);line-height:1.4}
+.da-warn{font-size:10.5px;color:var(--r);margin-top:.5rem;padding:.3rem .6rem;background:var(--r-bg);border-radius:5px;border:1px solid var(--r-bd)}
+
+/* MONITORING TABLE */
+.mon-table-wrap{border:1px solid var(--line);border-radius:var(--rad-sm);overflow:hidden}
+.mon-table{width:100%;border-collapse:collapse;font-size:12px}
+.mon-table th{background:#f8fafc;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:.4rem .6rem;text-align:left;border-bottom:1px solid var(--line)}
+.mon-table td{padding:.4rem .6rem;border-bottom:1px solid var(--line);vertical-align:middle}
+.mon-table tr:last-child td{border-bottom:none}
+.mon-red{font-weight:700;color:var(--r)}.mon-amber{font-weight:700;color:var(--a)}.mon-green{font-weight:700;color:var(--g)}
+
+/* FLAG GRID */
+.flag-grid{display:flex;flex-direction:column;gap:5px;margin-top:.4rem}
+.flag-item{font-size:11.5px;line-height:1.45;padding:.4rem .65rem;border-radius:6px;border:1px solid}
+.flag-red{background:var(--r-bg);border-color:var(--r-bd);color:#7f1d1d}
+.flag-amber{background:var(--a-bg);border-color:var(--a-bd);color:#78350f}
+.flag-pink{background:var(--ps-bg);border-color:var(--ps-bd);color:#831843}
+
+/* COMPACT SAFETY NET */
+.sn-compact-wrap{display:flex;flex-direction:column;gap:6px}
+.sn-compact{border-radius:var(--rad-sm);padding:.6rem .85rem;border:1px solid}
+.sn-compact.sns-e{background:var(--r-bg);border-color:var(--r-bd)}
+.sn-compact.sns-m{background:var(--b-bg);border-color:var(--b-bd)}
+.sn-compact.sns-a{background:var(--a-bg);border-color:var(--a-bd)}
+.sn-compact-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem}
+.sns-e .sn-compact-lbl{color:var(--r)}.sns-m .sn-compact-lbl{color:var(--b)}.sns-a .sn-compact-lbl{color:var(--a)}
+.sn-compact-phrase{font-size:12px;font-style:italic;line-height:1.5}
+
+/* COMPACT FOLLOW-UP */
+.fu-compact-wrap{display:flex;flex-direction:column;gap:6px}
+.fu-compact-row{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5}
+.fu-compact-dot{width:22px;height:22px;border-radius:50%;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+
+/* SCA FLOW */
+.sca-flow-wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-radius:var(--rad-sm);overflow:hidden;border:1px solid var(--line)}
+@media(max-width:860px){.sca-flow-wrap{grid-template-columns:1fr}}
+.sca-flow-step{padding:.8rem .9rem;border-right:1px solid var(--line);position:relative}
+.sca-flow-step:last-child{border-right:none}
+@media(max-width:860px){.sca-flow-step{border-right:none;border-bottom:1px solid var(--line)}.sca-flow-step:last-child{border-bottom:none}}
+.sca-f1{background:#faf5ff;border-top:3px solid var(--p)}
+.sca-f2{background:#fef2f2;border-top:3px solid var(--r)}
+.sca-f3{background:#fffbeb;border-top:3px solid var(--a)}
+.sca-f4{background:#f0fdf4;border-top:3px solid var(--g)}
+.sca-f5{background:#eff6ff;border-top:3px solid var(--b)}
+.sca-f-time{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.2rem;color:var(--muted)}
+.sca-f-title{font-size:13px;font-weight:700;margin-bottom:.4rem;color:var(--ink)}
+.sca-f-phrase{font-size:11px;font-style:italic;background:rgba(255,255,255,.7);border-left:2px solid rgba(0,0,0,.1);padding:.3rem .5rem;border-radius:0 4px 4px 0;margin-bottom:.3rem;line-height:1.45;color:var(--ink)}
+.sca-f-note{font-size:10.5px;color:var(--muted);line-height:1.4;margin-bottom:.25rem}
+.sca-f-domains{display:flex;flex-wrap:wrap;gap:3px;margin-top:.4rem}
+.sca-dom-tag{font-size:9px;font-weight:700;padding:1px 6px;border-radius:8px}
+.sca-dom-tag.task{background:#dcfce7;color:#15803d}
+.sca-dom-tag.ro{background:var(--p-bg);color:var(--p)}
+.sca-dom-tag.gs{background:var(--b-bg);color:var(--b)}
+.sca-f-avoid{font-size:10px;color:var(--r);margin-top:.4rem;padding:.25rem .45rem;background:rgba(185,28,28,.06);border-radius:4px;line-height:1.4}
+
+/* RAG FULL */
+.rag-full-wrap{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem .9rem}
+.rag-domain-block{}
+.rag-domain-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.3rem}
+.task-col{color:var(--g)}.ro-col{color:var(--p)}.gs-col{color:var(--b)}
+.rag-row{display:flex;align-items:flex-start;gap:6px;margin-bottom:3px;font-size:11px;line-height:1.45;padding:.25rem .4rem;border-radius:4px}
+.rag-rl{flex-shrink:0;font-size:12px}
+.rag-g-row{background:rgba(21,128,61,.06)}
+.rag-a-row{background:rgba(180,83,9,.06)}
+.rag-r-row{background:rgba(185,28,28,.06)}
+
+/* PHRASE STACK */
+.phrase-stack{display:flex;flex-direction:column;gap:6px}
+.phrase-card{border-radius:var(--rad-sm);padding:.55rem .8rem;border:1px solid}
+.p-ideas{background:var(--p-bg);border-color:var(--p-bd)}
+.p-concerns{background:var(--b-bg);border-color:var(--b-bd)}
+.p-expect{background:var(--a-bg);border-color:var(--a-bd)}
+.p-validate{background:var(--g-bg);border-color:var(--g-bd)}
+.p-explain{background:#fefce8;border-color:#fde68a}
+.p-close{background:var(--navy);border-color:var(--navy2)}
+.p-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.2rem}
+.p-ideas .p-lbl{color:var(--p)}.p-concerns .p-lbl{color:var(--b)}.p-expect .p-lbl{color:var(--a)}
+.p-validate .p-lbl{color:var(--g)}.p-explain .p-lbl{color:#92400e}.p-close .p-lbl{color:rgba(255,255,255,.5)}
+.p-phrase{font-size:11.5px;font-style:italic;line-height:1.5}
+.p-close .p-phrase{color:rgba(255,255,255,.85)}
+
+/* DANGER ZONE STACK */
+.dz-stack{display:flex;flex-direction:column;gap:5px}
+.dz-item{display:flex;align-items:flex-start;gap:7px;background:#fff7f7;border:1px solid var(--r-bd);border-radius:7px;padding:.5rem .7rem;font-size:11.5px;line-height:1.4}
+.dz-x{color:var(--r);font-size:14px;font-weight:700;flex-shrink:0;line-height:1.2}
+.dz-fix{color:var(--g);font-size:11px;display:block;margin-top:.15rem}
+
+/* SCA DRUG PICK */
+.sca-drug-pick{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.7rem .9rem}
+.sdp-row{display:flex;align-items:center;gap:6px;margin-bottom:.3rem}
+.sdp-cond{font-size:11.5px;color:var(--muted);flex:1;line-height:1.3}
+.sdp-arrow{font-size:11px;color:var(--muted);flex-shrink:0}
+.sdp-pill{font-size:11px;font-weight:700;padding:2px 9px;border-radius:12px;flex-shrink:0}
+.sdp-note{font-size:10px;color:var(--muted);flex-shrink:0}
+.sdp-pivot{font-size:11px;font-weight:600;background:var(--navy);color:#86efac;padding:.35rem .7rem;border-radius:6px;margin-top:.3rem;line-height:1.4}
+
+
+/* SCA SCORECARD */
+.scorecard-wrap{background:var(--white);border:2px solid var(--af-bd);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:1.25rem}
+.scorecard-hdr{background:var(--navy);padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.scorecard-hdr-left{}
+.scorecard-title{font-family:"DM Serif Display",serif;font-size:1.2rem;color:#fff;font-weight:400}
+.scorecard-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:.15rem}
+.scorecard-total-wrap{display:flex;align-items:baseline;gap:4px;background:rgba(255,255,255,.12);padding:.45rem .9rem;border-radius:20px;border:1px solid rgba(255,255,255,.2)}
+.scorecard-total{font-size:1.8rem;font-weight:700;color:#86efac;line-height:1}
+.scorecard-total-label{font-size:12px;color:rgba(255,255,255,.6)}
+.sc-reset-btn{font-size:11.5px;font-weight:600;padding:6px 14px;border-radius:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;cursor:pointer;font-family:"DM Sans",sans-serif;transition:.15s}
+.sc-reset-btn:hover{background:rgba(255,255,255,.2)}
+.scorecard-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--line)}
+@media(max-width:900px){.scorecard-grid{grid-template-columns:1fr}}
+.sc-domain{border-right:1px solid var(--line);padding:0}
+.sc-domain:last-child{border-right:none}
+@media(max-width:900px){.sc-domain{border-right:none;border-bottom:1px solid var(--line)}.sc-domain:last-child{border-bottom:none}}
+.sc-domain-hdr{display:flex;align-items:center;gap:10px;padding:.75rem 1rem;border-bottom:1px solid var(--line)}
+.task-domain{background:#f0fdf4}.ro-domain{background:var(--p-bg)}.gs-domain{background:var(--b-bg)}
+.sc-domain-icon{font-size:1.3rem;flex-shrink:0}
+.sc-domain-title{font-size:12.5px;font-weight:700;color:var(--ink)}
+.sc-domain-sub{font-size:10.5px;color:var(--muted);line-height:1.3}
+.sc-domain-score{margin-left:auto;display:flex;align-items:baseline;gap:2px;flex-shrink:0}
+.sc-domain-score span:first-child{font-size:1.4rem;font-weight:700}
+.task-domain .sc-domain-score span:first-child{color:var(--g)}
+.ro-domain .sc-domain-score span:first-child{color:var(--p)}
+.gs-domain .sc-domain-score span:first-child{color:var(--b)}
+.sc-domain-max{font-size:11px;color:var(--muted)}
+.sc-items{padding:.65rem .85rem;display:flex;flex-direction:column;gap:5px}
+.sc-item{display:flex;align-items:flex-start;gap:8px;cursor:pointer;padding:.45rem .6rem;border-radius:8px;border:1px solid transparent;transition:.15s;user-select:none;font-size:12px;line-height:1.45}
+.sc-item:hover{background:#f8fafc;border-color:var(--line)}
+.sc-item input[type=checkbox]{accent-color:var(--af);width:15px;height:15px;flex-shrink:0;margin-top:1px;cursor:pointer}
+.sc-item-text{flex:1;color:var(--ink)}
+.sc-pts{font-size:10px;font-weight:700;padding:1px 6px;border-radius:8px;background:#f1f5f9;color:var(--muted);flex-shrink:0;margin-top:1px}
+.sc-item.checked{background:#f0fdf4;border-color:var(--g-bd)}
+.sc-item.checked .sc-item-text{color:var(--g)}
+.sc-item.checked .sc-pts{background:var(--g-bg);color:var(--g)}
+.scorecard-interp{padding:1rem 1.25rem;background:#f8fafc;border-top:1px solid var(--line)}
+.interp-bar-wrap{margin-bottom:.75rem}
+.interp-bar-track{height:12px;background:#e2e8f0;border-radius:6px;overflow:hidden;margin-bottom:4px;position:relative}
+.interp-bar-fill{height:100%;border-radius:6px;transition:width .4s cubic-bezier(.4,0,.2,1);background:linear-gradient(90deg,var(--r),var(--a),var(--g),#15803d)}
+.interp-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:2px;padding:0 0}
+.interp-zones{display:grid;grid-template-columns:33% 17% 24% 26%;gap:2px}
+.interp-zone{font-size:10px;font-weight:700;text-align:center;padding:2px 4px;border-radius:4px}
+.iz-r{background:var(--r-bg);color:var(--r)}.iz-a{background:var(--a-bg);color:var(--a)}
+.iz-g{background:var(--g-bg);color:var(--g)}.iz-gg{background:#dcfce7;color:#14532d}
+.interp-msg{display:flex;align-items:center;gap:10px;padding:.65rem .9rem;border-radius:var(--rad-sm);border:1px solid var(--line);background:var(--white)}
+.interp-icon{font-size:1.5rem;flex-shrink:0}
+.interp-text{font-size:12.5px;color:var(--ink);line-height:1.5}
+.sc-missed-wrap{padding:.85rem 1.25rem;background:var(--a-bg);border-top:1px solid var(--a-bd)}
+.sc-missed-title{font-size:11px;font-weight:700;color:var(--a);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.sc-missed-list{display:flex;flex-direction:column;gap:4px}
+.sc-missed-item{font-size:12px;color:#78350f;padding:.3rem .6rem;background:rgba(255,255,255,.6);border-radius:5px;border-left:3px solid var(--a)}
+
+@media print{
+  .sum-body.closed{display:block!important}
+  .sum-toggle{display:none!important}
+  .sca-only,.clinic-only{display:block!important}
+}
+
+@media print{
+  .topbar,.numstrip,.collapse-controls,.step-toggle,.qr-print-btn{display:none!important}
+  body{background:#fff;font-size:11px}.page{padding:0;max-width:100%}
+  .step-body.closed{display:block!important}
+  .sca-only,.clinic-only{display:block!important}
+  .actor-body{display:block!important}
+  .step-hdr{box-shadow:none;background:#f8fafc;border-radius:var(--rad)}
+  .step-hdr.is-open{border-radius:var(--rad);border-bottom:1px solid var(--line)}
+  .step-body{box-shadow:none;border-radius:var(--rad);border-top:1px solid var(--line)!important}
+  .qr-tl,.qr-cols,.g2,.g3{grid-template-columns:1fr 1fr}
+  .drug-cards{grid-template-columns:1fr 1fr}.triage{grid-template-columns:1fr}.dc{break-inside:avoid}
+}
+.page-footer{text-align:center;padding:1.5rem 1rem;color:var(--muted);font-size:11px;border-top:1px solid var(--line);margin-top:1.5rem}
+
+</style>
+
+</head>
+<body class="mode-both" id="bodyEl">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+
+<div class="app">
+  <aside class="sidebar" data-active-id="urinary-incontinence"></aside>
+  <main class="main">
+
+<!-- Case header -->
+<div class="case-head">
+  <div>
+    <div class="ch-cat">Urology · Full case</div>
+    <h1>Urinary Incontinence (Female)</h1>
+  </div>
+  <div class="case-head-tags">
+      <span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE NG123</span>
+  </div>
+</div>
+
+<!-- Drop-nav mounts here automatically via case-nav.js -->
+<div id="case-nav-mount"></div>
+
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">U</div>
+      <div><div class="tb-title">Urinary Incontinence (Female) &middot; Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA &middot; NICE NG123 (2019) / NICE CKS 2022</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">&#127891; SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">&#127973; Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">50%</span><span class="ns-lbl">Women affected at some point in life</span></div>
+    <div class="ns-item"><span class="ns-val">3 months</span><span class="ns-lbl">Conservative Rx before considering surgery</span></div>
+    <div class="ns-item"><span class="ns-val">8 wks</span><span class="ns-lbl">PFMT minimum before assessing response</span></div>
+    <div class="ns-item"><span class="ns-val">3&times;/day</span><span class="ns-lbl">PFMT sets per day (8&ndash;12 contractions)</span></div>
+    <div class="ns-item"><span class="ns-val">1.5&ndash;2L</span><span class="ns-lbl">Optimal daily fluid intake</span></div>
+    <div class="ns-item"><span class="ns-val">6&ndash;8</span><span class="ns-lbl">Normal voids/day; &gt;8 = frequency</span></div>
+    <div class="ns-item"><span class="ns-val">3 months</span><span class="ns-lbl">Bladder retraining minimum duration</span></div>
+    <div class="ns-item"><span class="ns-val">400mg</span><span class="ns-lbl">Tolterodine OD (antimuscarinic standard dose)</span></div>
+  </div>
+</div>
+
+<div class="page">
+
+<div class="stem-box clinic-only">
+  <div class="stem-label">&#128203; Clinical Stem &mdash; Female Urinary Incontinence</div>
+  <div class="stem-title">A woman presents with urinary leakage &mdash; to seek diagnosis, explanation, and a management plan.</div>
+  <div class="stem-text">"A 52-year-old woman attends her GP with an 18-month history of urinary leakage. She reports leakage when coughing, sneezing, and running, as well as occasional urgency to pass urine with leaking before reaching the toilet. She had two vaginal deliveries. BMI 29. She drinks 3&ndash;4 cups of coffee daily. She is embarrassed and has been avoiding exercise and social events. She has not mentioned this to her GP before."</div>
+  <div class="stem-note">Urinary incontinence is significantly underreported due to embarrassment. GPs must create psychological safety to explore the symptom fully. NICE NG123 prioritises conservative treatment for at least 3 months before considering any pharmacological or surgical options.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A &mdash; Stress incontinence (SUI)</strong> Leakage with exertion, cough, sneezing; no urgency; post-partum or post-menopausal; first-line PFMT; refer if no response at 3 months.</div>
+    <div class="stem-variant"><strong>Scenario B &mdash; Urgency incontinence (OAB)</strong> Urgency, frequency, nocturia, leakage before reaching toilet; bladder retraining + antimuscarinics; rule out UTI and haematuria.</div>
+    <div class="stem-variant"><strong>Scenario C &mdash; Mixed incontinence</strong> Features of both SUI and OAB; treat the predominant symptom first; PFMT + bladder retraining; consider dual pharmacotherapy.</div>
+    <div class="stem-variant"><strong>Scenario D &mdash; Post-menopausal with GSM</strong> Urgency, frequency, recurrent UTIs; oestrogen-deficient urethra and bladder trigone; vaginal oestrogen as primary treatment.</div>
+    <div class="stem-variant"><strong>Scenario E &mdash; Overflow incontinence</strong> Dribbling; poor stream; post-void residual; associated with neurological disease, medications, or pelvic mass; requires catheterisation + urgent assessment.</div>
+    <div class="stem-variant"><strong>Key variables to adapt</strong> Type of incontinence (SUI/OAB/mixed/overflow), parity, BMI, post-menopausal status, fluid intake, medications, neurological disease, pelvic organ prolapse, previous pelvic surgery.</div>
+  </div>
+</div>
+
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">&#9660; Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">&#9650; Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History Taking &mdash; Open Question First &middot; Symptom Characterisation &middot; ICE &middot; Psychosocial Impact</div></div>
+    <div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Urinary incontinence is massively underreported.</strong> Up to 50% of affected women never disclose symptoms to a healthcare professional due to embarrassment, fatalism ("it's just part of getting older"), or not knowing that effective treatments exist. The GP must create psychological safety before exploring the symptom and must not normalise incontinence as inevitable.</div>
+
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">&#127891; SCA opener &mdash; normalise before data-gathering</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"This is something a lot of women deal with but don't always feel comfortable talking about &mdash; so thank you for bringing it up. Before I ask you lots of questions, can you tell me in your own words what's been happening and how it's been affecting your life?"</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Normalisation at the start prevents the patient from minimising her symptoms. The impact on quality of life (QoL) drives the clinical urgency, not the volume of leakage alone.</div>
+    </div>
+
+    <div class="sub-divider">1A &mdash; Symptom characterisation: type, trigger, severity, impact</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row"><td class="q"><strong>&#128994; OPEN QUESTION first</strong><em>"Tell me in your own words what's been happening and how it's been affecting you."</em></td><td class="why">QoL impact drives the clinical urgency. A woman with small leakage but complete social withdrawal needs urgent treatment. A woman with large leakage who is not bothered requires a different intensity of response.<span class="why-sub">Patient-reported impact, not volume of leakage, determines treatment priority.</span></td><td><span class="chg chg-ps">QoL impact</span><span class="chg chg-rx">Treatment urgency</span></td></tr>
+          <tr><td class="q">Type: stress vs urgency triggers<em>"Does the leakage happen when you cough, sneeze, laugh, or exercise? Or do you get a sudden desperate urge to pass urine first?"</em></td><td class="why">Stress urinary incontinence (SUI): leakage with physical exertion (cough, sneeze, exercise). Urgency incontinence (OAB): urgency +/&mdash; leakage before reaching toilet. Mixed: both. The type determines the first-line treatment.<span class="why-sub">SUI: PFMT first-line. OAB: bladder retraining + antimuscarinics. Mixed: treat predominant symptom first.</span></td><td><span class="chg chg-ddx">DDx</span><span class="chg chg-rx">Rx</span></td></tr>
+          <tr><td class="q">Frequency and nocturia<em>"How many times do you pass urine in the day? Do you get up at night to pass urine?"</em></td><td class="why">Normal voiding: 6&ndash;8 times/day; 0&ndash;1 at night. Frequency &gt;8/day or nocturia &ge;2 suggests OAB. Polyuria (frequency with large volumes) may indicate diabetes or DI rather than OAB.<span class="why-sub">Distinguish OAB urgency/frequency from DM (polyuria), UTI (dysuria + frequency), or fluid overload.</span></td><td><span class="chg chg-ddx">DDx</span></td></tr>
+          <tr><td class="q">Fluid intake<em>"What do you drink in a day and how much? Any caffeine, alcohol, or fizzy drinks?"</em></td><td class="why">Caffeine, alcohol, and fizzy drinks are bladder irritants that exacerbate OAB symptoms. Fluid intake too low (below 1.5L) concentrates urine and worsens urgency. Fluid restriction is a common but counterproductive patient strategy.<span class="why-sub">Advise 1.5&ndash;2L non-caffeinated fluid/day; reducing caffeine alone can halve OAB symptoms in some women.</span></td><td><span class="chg chg-rx">Lifestyle Rx</span></td></tr>
+          <tr><td class="q">Haematuria<em>"Have you noticed any blood in your urine at any point?"</em></td><td class="why">Haematuria + urinary symptoms = bladder cancer / bladder stone / renal pathology until proven otherwise. Must be investigated urgently regardless of incontinence type.<span class="why-sub">NICE NG12: urgent 2WW referral for unexplained non-visible haematuria in any woman &ge;45, or visible haematuria at any age.</span></td><td><span class="chg chg-999">Red flag</span><span class="chg chg-ref">Referral</span></td></tr>
+          <tr><td class="q">Prolapse symptoms<em>"Do you notice any bulging or heaviness in your vaginal area? Any dragging sensation?"</em></td><td class="why">Pelvic organ prolapse (POP) coexists with SUI in 30&ndash;50% of affected women and changes the surgical management pathway. Symptomatic cystocele may cause both SUI and incomplete bladder emptying.<span class="why-sub">POP referral: urogynaeological surgical pathway rather than pure incontinence pathway.</span></td><td><span class="chg chg-ref">Referral</span><span class="chg chg-ddx">DDx</span></td></tr>
+          <tr><td class="q">Obstetric and surgical history<em>"How many pregnancies have you had? Any instrumental deliveries? Any previous pelvic surgery?"</em></td><td class="why">Vaginal delivery (especially instrumental) causes pudendal nerve and sphincter damage. Previous pelvic surgery (hysterectomy, incontinence repair) changes the treatment pathway and risk profile for further surgery.<span class="why-sub">Two or more vaginal deliveries: 3&times; higher SUI risk. Forceps delivery: significantly higher risk of sphincter damage.</span></td><td><span class="chg chg-ddx">DDx</span><span class="chg chg-ref">Surgical pathway</span></td></tr>
+          <tr><td class="q">Current medications<em>"Are you on any regular medications? Any diuretics, ACE inhibitors, alpha-blockers?"</em></td><td class="why">Diuretics cause frequency and urgency. ACE inhibitors cause cough which worsens SUI. Alpha-blockers cause urethral relaxation (overflow/SUI). Opiates cause urinary retention. Antipsychotics and TCAs affect bladder tone.<span class="why-sub">Review and modify causative medications before initiating bladder-specific treatment.</span></td><td><span class="chg chg-rx">Medication review</span></td></tr>
+          <tr><td class="q">Post-menopausal and hormonal status<em>"Have you gone through the menopause? Are you on any HRT?"</em></td><td class="why">Oestrogen deficiency causes urethral atrophy, reduced urethral closure pressure, and bladder trigone hypersensitivity. GSM-related incontinence (post-menopausal urgency, frequency, recurrent UTIs) responds to vaginal oestrogen.<span class="why-sub">Systemic HRT does not improve incontinence; local vaginal oestrogen is specific treatment for GSM.</span></td><td><span class="chg chg-rx">Vaginal oestrogen</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-divider">1B &mdash; Red flags: must not miss</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span>&#128680;</span><h3>Red Flags in female urinary incontinence</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Haematuria (visible or non-visible) + urinary symptoms</td><td class="rf-why">Bladder cancer presents with painless haematuria. NICE NG12: urgent 2WW for unexplained non-visible haematuria &ge;45 or visible haematuria any age.</td><td><span class="rf-action rfa-same">2WW urology</span></td></tr>
+          <tr><td class="rf-flag">Acute urinary retention (no urine output despite full bladder)</td><td class="rf-why">Overflow incontinence secondary to urinary retention. Causes: pelvic mass, neurological disease, drug-induced. Needs catheterisation and same-day assessment.</td><td><span class="rf-action rfa-999">A&amp;E / same day</span></td></tr>
+          <tr><td class="rf-flag">Neurological symptoms (new saddle anaesthesia, lower limb weakness)</td><td class="rf-why">Cauda equina syndrome. New onset incontinence + bilateral leg weakness + saddle anaesthesia = emergency MRI spine + neurosurgery.</td><td><span class="rf-action rfa-999">999 emergency</span></td></tr>
+          <tr><td class="rf-flag">New onset incontinence with weight loss, night sweats, rectal bleeding</td><td class="rf-why">Pelvic malignancy (bladder, colorectal, cervical, ovarian). These systemic symptoms alongside new incontinence require urgent investigation.</td><td><span class="rf-action rfa-same">Urgent USS / 2WW</span></td></tr>
+          <tr><td class="rf-flag">Post-void dribbling + straining to void + poor stream</td><td class="rf-why">Overflow incontinence from urethral obstruction or neurological detrusor underactivity. Residual urine &gt;100mL on USS = incomplete bladder emptying; refer urgently.</td><td><span class="rf-action rfa-same">Post-void USS; urology</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sg-wrap">
+      <div class="sg-hdr"><span>&#128737;&#65039;</span><h3>Safeguarding Considerations</h3></div>
+      <div class="sg-body">
+        <div class="sg-grid">
+          <div class="sg-card"><h5>&#128116; Domestic abuse and urinary incontinence</h5><ul><li>Sexual violence and perineal trauma can cause urinary symptoms including urinary fistula (continuous leakage)</li><li>Women with domestic abuse histories may have delayed presentation</li><li>Vesico-vaginal fistula after traumatic delivery or assault = urgent urogynaeological referral</li></ul></div>
+          <div class="sg-card"><h5>&#129504; Mental health impact</h5><ul><li>Severe incontinence causes social isolation, depression, and withdrawal from work and relationships</li><li>Screen with PHQ-9 if QoL is severely impaired</li><li>Incontinence-related depression responds to treatment of the incontinence, not just antidepressants</li></ul></div>
+          <div class="sg-card"><h5>&#128100; Older women and falls risk</h5><ul><li>Nocturia in older women significantly increases falls and hip fracture risk</li><li>Urgency incontinence in nursing home residents is a major safety issue</li><li>Anticholinergic medications in older women increase cognitive impairment and falls risk &mdash; mirabegron preferred</li></ul></div>
+          <div class="sg-card"><h5>&#128330; Carer and dignity issues</h5><ul><li>Women in care settings may have incontinence managed with pads when treatable causes have never been assessed</li><li>Ensure each patient has had at least one formal assessment of their incontinence type</li><li>Dignity in incontinence care is a CQC and safeguarding issue in care homes</li></ul></div>
+        </div>
+        <div class="sg-action">If trauma-related fistula suspected or domestic abuse identified: follow safeguarding protocols; refer to urogynaeology urgently for fistula; document DASH risk assessment for domestic abuse.</div>
+      </div>
+    </div>
+
+    <div class="sub-divider">1C &mdash; ICE &amp; Psychosocial</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">&#128173; Ideas</div><div class="ice-phrase">"What do you think is causing the leakage? Have you been told anything about why this might be happening?"</div><div class="ice-why">Many women believe incontinence is an inevitable consequence of childbirth or ageing. Correcting this fatalistic belief is the first therapeutic step &mdash; most types of incontinence are highly treatable.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">&#128543; Concerns</div><div class="ice-phrase">"What's your biggest worry about this &mdash; is it about the leakage itself, how it's affecting your daily life, or whether treatment would involve surgery?"</div><div class="ice-why">Common concerns: fear of surgery (often unnecessary), embarrassment about pads/smell, fear that it will worsen. Unaddressed concern about surgery stops women engaging with effective conservative treatment.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">&#128263; Expectations</div><div class="ice-phrase">"What would make this appointment really useful for you? Are you looking for a diagnosis, exercises to try, or more information about what the options are?"</div><div class="ice-why">Some women want immediate referral to a specialist; others want to try conservative measures first. Without asking, the GP may offer the wrong starting point.</div></div>
+    </div>
+
+    <div class="ps-grid">
+      <div class="ps-card"><h5>&#128116; Social withdrawal and isolation</h5><p>Incontinence causes women to avoid exercise, socialising, travel, and work. This secondary social withdrawal significantly amplifies psychological morbidity. Treatment of the incontinence alone markedly improves these downstream consequences.</p><span class="ps-phrase">"Has this stopped you from doing things you'd normally do &mdash; exercise, going out, travel? I ask because that really matters to the treatment plan."</span></div>
+      <div class="ps-card"><h5>&#128137; Relationship and intimacy</h5><p>Incontinence during sexual intercourse (coital incontinence) affects up to 30% of women with SUI or OAB. It is almost never volunteered without direct questioning. It causes significant relationship strain and sexual avoidance.</p><span class="ps-phrase">"Has the leakage been affecting your sex life or intimacy at all? I ask everyone because it's very common and there are very effective treatments for it."</span></div>
+      <div class="ps-card"><h5>&#128204; Pad use and cost</h5><p>Many women manage incontinence with sanitary or incontinence pads for years without seeking help. The cost, inconvenience, and skin effects of long-term pad use are a hidden burden. Effective treatment saves both money and dignity.</p><span class="ps-phrase">"Are you using pads regularly? How many per day? That gives me an idea of the severity and also what we can realistically aim to achieve with treatment."</span></div>
+      <div class="ps-card"><h5>&#129504; Fatalism: "it's just part of getting old"</h5><p>Fatalism about incontinence prevents help-seeking and reduces treatment uptake. 70&ndash;80% of women with SUI significantly improve or are cured with PFMT alone. This is a highly treatable condition if patients are given accurate information.</p><span class="ps-phrase">"I want to reassure you that this is not something you have to just put up with &mdash; the treatments are effective, and most women see a real improvement."</span></div>
+    </div>
+
+    <div class="sca-cp sca-only">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases</div><div class="sca-phrase">"This is something a lot of women deal with but don't always feel comfortable talking about &mdash; thank you for bringing it up."</div><div class="sca-phrase">"Does the leakage happen when you cough or sneeze, or do you get a sudden desperate urge first &mdash; or both?"</div><div class="sca-phrase">"Has there been any blood in your urine at any point?"</div><div class="sca-phrase">"This doesn't have to be something you just put up with &mdash; the treatments are very effective."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not characterising type (SUI vs OAB vs mixed) &mdash; treatment pathway wrong</li><li>Missing haematuria &mdash; red flag not addressed</li><li>Prescribing antimuscarinics without trying bladder retraining first (NICE NG123)</li><li>Normalising incontinence as "just part of ageing"</li><li>Not asking about QoL impact</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">&#128308; Red</div><div class="rag-bullets">Type not characterised &bull; haematuria missed &bull; antimuscarinics without conservative Rx &bull; normalised as ageing &bull; no ICE</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">&#128992; Amber</div><div class="rag-bullets">Type characterised &bull; haematuria asked &bull; conservative Rx mentioned &bull; QoL impact not fully explored &bull; ICE superficial</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">&#128994; Green</div><div class="rag-bullets">Open Q &bull; type (SUI/OAB/mixed) &bull; haematuria &bull; fluid intake &bull; QoL impact &bull; ICE all 3 &bull; normalised empathetically &bull; not normalised as inevitable</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEPS 2-6 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)"><div class="step-circle sc2">2</div><div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage Engine</div></div><div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div></div>
+  <div class="step-body">
+    <div class="triage">
+      <div class="tc tc-e"><div class="tc-lbl">&#128308; Emergency</div><h3>999 / Same Day</h3><span class="tc-badge tcb-e">Immediate</span><ul class="tc-items"><li class="tc-item"><strong>Acute urinary retention</strong><em>No urine output despite full bladder; painful; catheterisation + same-day urology or A&amp;E</em></li><li class="tc-item"><strong>Cauda equina syndrome</strong><em>New incontinence + saddle anaesthesia + bilateral lower limb weakness &rarr; 999 + emergency MRI</em></li></ul></div>
+      <div class="tc tc-u"><div class="tc-lbl">&#128992; Urgent</div><h3>2WW / Urology</h3><span class="tc-badge tcb-u">Days to weeks</span><ul class="tc-items"><li class="tc-item"><strong>Haematuria (visible or non-visible &ge;45)</strong><em>2WW urology; NICE NG12; bladder USS before referral</em></li><li class="tc-item"><strong>Suspected overflow incontinence</strong><em>Post-void residual USS; urology if residual &gt;100mL</em></li><li class="tc-item"><strong>Incontinence + new neurological symptoms</strong><em>Urgent neurology / spinal imaging</em></li></ul></div>
+      <div class="tc tc-r"><div class="tc-lbl">&#128994; Routine</div><h3>GP-managed</h3><span class="tc-badge tcb-r">Planned</span><ul class="tc-items"><li class="tc-item"><strong>SUI: pelvic floor muscle training (PFMT)</strong><em>First-line; minimum 3 months; refer if no improvement</em></li><li class="tc-item"><strong>OAB: bladder retraining + lifestyle</strong><em>6&ndash;8 weeks minimum; antimuscarinics second-line</em></li><li class="tc-item"><strong>Post-menopausal GSM-related incontinence</strong><em>Vaginal oestrogen first-line; PFMT + bladder retraining alongside</em></li><li class="tc-item"><strong>Conservative measures failed</strong><em>Refer to continence physiotherapy or urogynaecology</em></li></ul></div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem"><div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 2</span><span class="sca-dom">Tasks</span></div><div class="rag-strip"><div class="rag-item rag-r"><div class="rag-item-t">&#128308; Red</div><div class="rag-bullets">Haematuria not escalated &bull; cauda equina not recognised &bull; overflow not considered</div></div><div class="rag-item rag-g"><div class="rag-item-t">&#128994; Green</div><div class="rag-bullets">Haematuria = 2WW &bull; cauda equina screened &bull; retention recognised &bull; conservative Rx threshold correct</div></div></div></div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)"><div class="step-circle sc3">3</div><div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Do I Need This Examination?</div></div><div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div></div>
+  <div class="step-body">
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th>Examination</th><th>Why</th><th>Finding that changes management</th><th>Changes?</th></tr></thead>
+        <tbody>
+          <tr><td class="q">Pelvic examination (vulva, vagina, cervix)</td><td class="why">Assess for pelvic organ prolapse (cystocele, rectocele, uterine prolapse); vaginal atrophy (GSM); perineal scarring; fistula. Prolapse changes the surgical pathway.<span class="why-sub">Symptomatic prolapse to stage II or beyond changes management to urogynaeological referral.</span></td><td class="why">POP stage II+ = urogynaeology referral; vaginal atrophy = vaginal oestrogen; fistula = urgent urogynaeology</td><td><span class="mcb mcb-yes">YES &mdash; Referral route</span></td></tr>
+          <tr><td class="q">Abdominal examination</td><td class="why">Palpable bladder suggests urinary retention. Pelvic mass may cause urethral compression. Ascites suggests malignancy.<span class="why-sub">Palpable bladder post-void = retention &rarr; catheterisation + USS post-void residual.</span></td><td class="why">Palpable bladder = retention; pelvic mass = urgent USS + CA-125</td><td><span class="mcb mcb-yes">YES &mdash; urgent if mass</span></td></tr>
+          <tr><td class="q">Cough stress test</td><td class="why">Demonstrates SUI objectively. In dorsal lithotomy position with full bladder: ask patient to cough; observe urethral meatus for urine loss.<span class="why-sub">Positive: confirms SUI. Negative with typical history: still treat as SUI; test has variable sensitivity.</span></td><td class="why">Positive = SUI confirmed; documents severity; useful for referral documentation</td><td><span class="mcb mcb-context">Context: SUI</span></td></tr>
+          <tr><td class="q">Neurological examination (lower limbs, saddle area)</td><td class="why">New onset incontinence with neurological symptoms: exclude cauda equina, multiple sclerosis, Parkinson's disease.<span class="why-sub">Absent anal reflex + saddle anaesthesia = cauda equina emergency.</span></td><td class="why">Neurological signs = urgent spinal imaging; neurourology referral</td><td><span class="mcb mcb-context">Context: new onset + neuro symptoms</span></td></tr>
+          <tr><td class="q">BMI</td><td class="why">BMI &gt;35 independently worsens SUI and reduces surgical outcomes. NICE: advise weight loss before mid-urethral sling surgery.<span class="why-sub">Weight loss 5&ndash;10% significantly improves SUI in overweight women.</span></td><td class="why">BMI &gt;35 = weight loss before surgical referral; lifestyle first</td><td><span class="mcb mcb-yes">YES &mdash; surgical eligibility</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem"><div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 3</span><span class="sca-dom">Tasks</span></div><div class="rag-strip"><div class="rag-item rag-r"><div class="rag-item-t">&#128308; Red</div><div class="rag-bullets">Pelvic exam not mentioned &bull; prolapse missed &bull; BMI not noted for surgical planning</div></div><div class="rag-item rag-g"><div class="rag-item-t">&#128994; Green</div><div class="rag-bullets">Pelvic exam for prolapse &bull; vaginal atrophy noted &bull; BMI documented &bull; neurological screen if indicated</div></div></div></div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)"><div class="step-circle sc4">4</div><div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Do I Need This Investigation?</div></div><div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div></div>
+  <div class="step-body">
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:25%">Investigation</th><th style="width:40%">Clinical question</th><th>Abnormal result action</th></tr></thead>
+        <tbody>
+          <tr><td class="q">Urine dipstick + MSU if positive</td><td class="why">Is there UTI causing or contributing to urgency symptoms? Treat UTI before attributing all symptoms to OAB. UTI is the most common reversible cause of urinary urgency.</td><td class="why">Nitrites + leucocytes = treat UTI; reassess OAB symptoms after treatment; recurrent UTI (&ge;2/6m or 3/year) = MSU culture; consider vaginal oestrogen post-menopause</td></tr>
+          <tr><td class="q">Post-void residual (USS bladder)</td><td class="why">Is there incomplete bladder emptying? Residual &gt;100mL suggests overflow component (neurological, obstruction, or drug-induced). Missed retention presenting as overflow incontinence.</td><td class="why">Residual &gt;100mL = further investigation (cystoscopy; urodynamics); intermittent self-catheterisation may be needed</td></tr>
+          <tr><td class="q">Bladder diary (3&ndash;5 days)</td><td class="why">Quantifies frequency, volumes voided, fluid intake, urgency episodes and leakage events. Essential for treatment monitoring and for urogynaecology referral. NICE NG123 recommends for all women before treatment.</td><td class="why">Frequency &gt;8/day or nocturia &ge;2 confirms OAB; large volumes per void suggest polyuria not OAB; small volumes confirm bladder hypersensitivity</td></tr>
+          <tr><td class="q">Urine culture (MSU)</td><td class="why">Recurrent UTI in post-menopausal women often related to urethral atrophy. Identify organism and sensitivity for targeted treatment.</td><td class="why">Recurrent culture-positive UTI = vaginal oestrogen; prophylactic antibiotics (trimethoprim or nitrofurantoin); urology if structural cause</td></tr>
+          <tr><td class="q">Urodynamic testing (specialist)</td><td class="why">Confirms OAB (detrusor overactivity) or SUI (urethral sphincter incompetence) objectively before surgery. NICE: not routinely required before starting conservative treatment in primary care.</td><td class="why">Detrusor overactivity confirmed = OAB pathway; genuine stress incontinence confirmed = mid-urethral sling pathway; mixed = combined treatment</td></tr>
+          <tr><td class="q">HbA1c / fasting glucose</td><td class="why">Diabetes causes polyuria and can masquerade as OAB frequency. Glycosuria also causes bladder irritation and worsens OAB.</td><td class="why">HbA1c &ge;48 = T2DM; treat DM; frequency/nocturia may improve significantly with glycaemic control</td></tr>
+          <tr><td class="q">Renal USS</td><td class="why">Hydronephrosis suggests upper tract obstruction secondary to lower tract outflow obstruction. Renal pathology causing polyuria.</td><td class="why">Hydronephrosis = urgent urology; chronic retention &rarr; renal impairment = emergency management</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem"><div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 4</span><span class="sca-dom">Tasks</span></div><div class="rag-strip"><div class="rag-item rag-r"><div class="rag-item-t">&#128308; Red</div><div class="rag-bullets">UTI not excluded before treating OAB &bull; no bladder diary &bull; overflow incontinence missed (no post-void residual)</div></div><div class="rag-item rag-g"><div class="rag-item-t">&#128994; Green</div><div class="rag-bullets">UTI dipstick &bull; bladder diary recommended &bull; post-void residual if overflow features &bull; HbA1c if polyuria suspected</div></div></div></div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)"><div class="step-circle sc4">5</div><div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Reaching a Diagnosis &mdash; Type Classification &amp; Plain Language</div></div><div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div></div>
+  <div class="step-body">
+    <div class="lay-box"><div class="lay-box-lbl">&#128483;&#65039; Explaining urinary incontinence in plain language</div><p>"There are a few different types of urinary leakage, and the type matters because the treatments are different. The one you describe &mdash; leakage when you cough or sneeze &mdash; happens because the muscles supporting the bladder have been stretched, usually by childbirth, and aren't closing tightly enough under pressure. The good news is that specific strengthening exercises can fix this in up to 70&ndash;80% of women &mdash; without surgery."</p></div>
+    <div class="g3" style="margin-bottom:12px">
+      <div class="card" style="padding:1rem;border-left:4px solid var(--g)"><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--g);margin-bottom:.4rem">A &mdash; GP-managed (conservative Rx first)</div><div class="ddx-card ddx-a" style="margin-bottom:6px"><h4 style="color:var(--g)">Stress Urinary Incontinence (SUI)</h4><p>Leakage with exertion, cough, sneeze. No urgency. PFMT 3 months minimum; refer if fails; mid-urethral sling if surgery needed.</p></div><div class="ddx-card ddx-a" style="margin-bottom:6px"><h4 style="color:var(--g)">Overactive Bladder (OAB) / Urgency incontinence</h4><p>Urgency ± frequency ± nocturia ± urgency incontinence. Bladder retraining + lifestyle; antimuscarinics or mirabegron second-line.</p></div><div class="ddx-card ddx-a"><h4 style="color:var(--g)">Mixed incontinence</h4><p>Both SUI and OAB features. Treat predominant symptom first; bladder diary guides prioritisation.</p></div></div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--a)"><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--a);margin-bottom:.4rem">B &mdash; Specialist input needed</div><div class="ddx-card ddx-b" style="margin-bottom:6px"><h4>GSM-related incontinence</h4><p>Post-menopausal: urgency, recurrent UTI, urethral atrophy. Vaginal oestrogen primary treatment. Refer if fails.</p></div><div class="ddx-card ddx-b"><h4>Pelvic organ prolapse + incontinence</h4><p>Coexisting prolapse changes surgical pathway. Urogynaeological referral for combined management.</p></div></div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--r)"><div style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--r);margin-bottom:.4rem">C &mdash; Emergency / urgent</div><div class="ddx-card ddx-c" style="margin-bottom:6px"><h4 style="color:var(--r)">Overflow incontinence (retention)</h4><p>Continuous dribbling + poor stream + palpable bladder. Catheterise + same-day urology or A&amp;E.</p></div><div class="ddx-card ddx-c"><h4 style="color:var(--r)">Cauda equina syndrome</h4><p>New incontinence + saddle anaesthesia + bilateral leg weakness. 999 emergency MRI spine + neurosurgery.</p></div></div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem"><div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 5</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span></div><div class="rag-strip"><div class="rag-item rag-r"><div class="rag-item-t">&#128308; Red</div><div class="rag-bullets">Type not specified &bull; overflow missed &bull; cauda equina not screened &bull; "just part of ageing" comment</div></div><div class="rag-item rag-g"><div class="rag-item-t">&#128994; Green</div><div class="rag-bullets">Type named &bull; plain language explanation &bull; DDx considered &bull; 70&ndash;80% cure with PFMT mentioned &bull; emergency recognised</div></div></div></div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)"><div class="step-circle sc5">6</div><div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">If Referral Is Needed</div></div><div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div></div>
+  <div class="step-body">
+    <div class="card" style="overflow:hidden">
+      <table class="ref-table">
+        <thead><tr><th>Scenario</th><th>Urgency</th><th>GP action before referral</th><th>Must NOT do</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">SUI: conservative Rx failed (3 months PFMT)</td><td><span class="ref-urg rurg-r">Routine</span></td><td style="font-size:12px">Document 3 months of supervised PFMT; bladder diary; BMI; exclude UTI; refer to continence physiotherapy or urogynaecology</td><td style="font-size:12px;color:var(--r)">Refer before 3 months of supervised conservative treatment (NICE NG123 threshold)</td></tr>
+          <tr><td style="font-weight:600">Haematuria + urinary symptoms</td><td><span class="ref-urg rurg-2">2WW</span></td><td style="font-size:12px">Urine dipstick; MSU; USS bladder; refer 2WW urology per NICE NG12</td><td style="font-size:12px;color:var(--r)">Treat as UTI without culture; delay 2WW for haematuria</td></tr>
+          <tr><td style="font-weight:600">Overflow incontinence / urinary retention</td><td><span class="ref-urg rurg-999">Same day A&amp;E</span></td><td style="font-size:12px">Catheterise if acute retention; post-void residual USS; investigate cause (drug review, pelvic mass, neurological)</td><td style="font-size:12px;color:var(--r)">Prescribe antimuscarinics for overflow incontinence &mdash; this worsens retention</td></tr>
+          <tr><td style="font-weight:600">Pelvic organ prolapse + incontinence</td><td><span class="ref-urg rurg-r">Routine</span></td><td style="font-size:12px">Stage prolapse on pelvic exam; complete conservative treatment first; combined referral to urogynaeology for pelvic floor assessment and surgical planning</td><td style="font-size:12px;color:var(--r)">Refer for incontinence surgery alone without addressing prolapse &mdash; increases recurrence</td></tr>
+          <tr><td style="font-weight:600">OAB: pharmacological treatment failed</td><td><span class="ref-urg rurg-r">Routine</span></td><td style="font-size:12px">Document trial of at least one antimuscarinic + mirabegron; bladder diary; document QoL impact; refer to urogynaecology for botulinum toxin or sacral nerve stimulation</td><td style="font-size:12px;color:var(--r)">Prescribe antimuscarinics in older women without checking for cognitive effects and falls risk</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem"><div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 6</span><span class="sca-dom">Tasks</span></div><div class="rag-strip"><div class="rag-item rag-r"><div class="rag-item-t">&#128308; Red</div><div class="rag-bullets">Haematuria 2WW not stated &bull; antimuscarinics for overflow &bull; surgical referral before 3 months conservative</div></div><div class="rag-item rag-g"><div class="rag-item-t">&#128994; Green</div><div class="rag-bullets">3 months conservative before referral &bull; haematuria = 2WW &bull; overflow = A&amp;E &bull; prolapse addressed in surgical planning</div></div></div></div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management &mdash; PFMT &middot; Bladder Retraining &middot; Drug Cards &middot; Monitoring &middot; Safety-Netting</div></div>
+    <div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="sub-divider">7A &mdash; Address expectation first</div>
+    <div class="expect-box">
+      <div class="expect-box-hdr"><span style="font-size:1.4rem">&#129309;</span><div class="expect-box-lbl">70&ndash;80% of women with SUI improve significantly with PFMT alone &mdash; surgery is rarely the first step</div></div>
+      <div class="expect-steps">
+        <div class="expect-step"><div class="expect-step-num">1</div><h5>Validate</h5><p>Thank her for raising it. Name the impact on QoL explicitly.</p><span class="expect-phrase">"Thank you for telling me &mdash; it takes courage to bring this up. I can hear how much it's been affecting your day-to-day life."</span></div>
+        <div class="expect-step"><div class="expect-step-num">2</div><h5>Explain</h5><p>Provide the evidence. Most women do not need surgery.</p><span class="expect-phrase">"Before we think about any other options, I want to reassure you that most women &mdash; 7 or 8 out of 10 &mdash; see a real improvement with the right exercises, without needing surgery."</span></div>
+        <div class="expect-step"><div class="expect-step-num">3</div><h5>Agree today's plan</h5><p>Start exercises today; give bladder diary; arrange follow-up.</p><span class="expect-phrase">"I'd like to go through the exercises with you now and give you a diary to keep for the next 3&ndash;5 days &mdash; that will help us track progress."</span></div>
+      </div>
+      <div style="background:rgba(21,128,61,.08);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.65rem 1rem;margin-top:.75rem;font-size:12.5px;color:#14532d;line-height:1.55"><strong>Key principle:</strong> NICE NG123: conservative treatment (PFMT, bladder retraining, lifestyle) must be tried for a minimum of 3 months before considering any pharmacological or surgical options.</div>
+    </div>
+
+    <div class="sub-divider">7B &mdash; Conservative management: PFMT, bladder retraining, lifestyle</div>
+    <div class="life-grid" style="margin-bottom:1.25rem">
+      <div class="life-card"><div class="life-head"><span class="life-icon">&#127939;</span><div class="life-title">PFMT (Pelvic Floor)</div><span class="life-target">3&times;/day; 8&ndash;12 contractions; 6-month course</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Strengthens levator ani and external urethral sphincter; increases urethral closure pressure. Re-establishes the "knack" reflex (pre-contraction before cough). Most effective for SUI; adjunct for OAB.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>3 sets/day, 8&ndash;12 contractions per set, hold 6&ndash;8 seconds. NHS SQUEEZY app. Supervised physiotherapy more effective than leaflet alone. Assess at 3 months; continue 6 months before surgical referral.</p></div><span class="life-benefit">70&ndash;80% improvement or cure in SUI with supervised PFMT</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">&#127774;</span><div class="life-title">Bladder Retraining (OAB)</div><span class="life-target">Extend voiding interval by 15 min/wk; target 3&ndash;4h</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Gradually increases bladder capacity by resisting urgency; reconditions detrusor to suppress uninhibited contractions; breaks urgency&rarr;rushing&rarr;leakage cycle.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>"Freeze and squeeze" technique for urge suppression: pelvic floor contraction + distraction during urge. Increase voiding interval by 15 min/week. Minimum 6&ndash;8 weeks before adding pharmacotherapy.</p></div><span class="life-benefit">75% improvement in OAB with bladder retraining alone</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">&#9749;</span><div class="life-title">Fluid Management</div><span class="life-target">1.5&ndash;2L non-caffeinated; reduce caffeine/alcohol</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Caffeine is a diuretic and bladder irritant; increases urgency and frequency. Over-restriction concentrates urine and worsens urgency. Carbonated drinks directly irritate bladder mucosa.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Replace caffeine (coffee, tea, cola) with water or herbal tea. Maintain 1.5&ndash;2L total fluid. Avoid drinking &gt;200mL in 2 hours before bedtime for nocturia.</p></div><span class="life-benefit">Caffeine reduction alone halves OAB symptoms in 25% of women</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">&#9878;&#65039;</span><div class="life-title">Weight Loss</div><span class="life-target">5&ndash;10% reduces SUI significantly</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Each BMI unit increase raises SUI risk 3&ndash;5%. Weight loss reduces intra-abdominal pressure on the bladder and pelvic floor. Improves PFMT response.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>NHS Tier 2/3 weight management referral. NICE: advise weight loss before surgical referral for SUI in overweight women.</p></div><span class="life-benefit">5&ndash;10% weight loss significantly improves SUI severity</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">&#128326;</span><div class="life-title">Constipation Management</div><span class="life-target">Bristol type 4; avoid straining</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Chronic straining causes pudendal nerve traction injury and weakens pelvic floor. Loaded rectum compresses urethra, worsening incomplete emptying and urgency.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Increase fibre and fluid; bulking laxative (ispaghula) if needed. Avoid Valsalva; lean forward and relax pelvic floor to empty bowel.</p></div><span class="life-benefit">Treating constipation improves bladder symptoms in 30%</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">&#128330;</span><div class="life-title">Smoking Cessation</div><span class="life-target">Stop completely</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Chronic smoker&#39;s cough creates repeated high-pressure bladder events, damaging pelvic floor. Nicotine is a bladder irritant worsening OAB. Smokers have higher bladder cancer risk (haematuria awareness).</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>NHS Stop Smoking Service referral; varenceline first-line; NRT if pregnant/TTC.</p></div><span class="life-benefit">Eliminating cough reduces SUI trigger events; reduces bladder CA risk</span></div></div>
+    </div>
+
+    <!-- ═══ Interactive Medication Chooser (live, NICE/BNF tiered) ═══ -->
+    <div class="sub-divider">⚙ Interactive Medication Chooser — tick the patient profile, options re-tier live against NICE / BNF</div>
+    <div class="step-intro" style="margin-bottom:.6rem">A live, topic-scoped version of the standalone <a href="../tools/medication-chooser.html" style="font-weight:600;text-decoration:underline">Medication Chooser</a>. The detailed reference cards below are unchanged.</div>
+    <div data-medchooser="urinary-incontinence"></div>
+
+    <div class="sub-divider" id="drugs">7C &mdash; Drug reference cards</div>
+    <div class="drug-cards" id="drug-cards-container">
+      <div class="dc" id="dc-tolterodine">
+        <div class="dc-head"><div><div class="dc-name">Tolterodine (Antimuscarinic)</div><div class="dc-examples">Detrusitol 2mg BD; Detrusitol XL 4mg OD</div><div class="dc-rec-badge" id="rec-tolterodine">&#10003; First-line OAB pharmacotherapy</div></div><div class="dc-badges"><span class="dc-step step1">OAB second-line</span><span class="dc-dose">2mg BD or 4mg XL OD</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Use when</div><div class="dc-item">OAB not controlled by bladder retraining alone after 6&ndash;8 weeks</div><div class="dc-item">Better CNS tolerability than oxybutynin IR; preferred over oxybutynin in older adults</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Avoid if</div><div class="dc-item ci-abs">Urinary retention / post-void residual &gt;100mL &mdash; antimuscarinics worsen retention</div><div class="dc-item ci-abs">Narrow-angle glaucoma; gastric retention</div><div class="dc-item ci-rel">Cognitive impairment in older women: prefer mirabegron; cardiac conduction defect</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">&#9888; Side effects</div><div class="dc-item">Dry mouth (most common); constipation; blurred vision; cognitive impairment in elderly</div></div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">&#128300; Monitor</div><div class="dc-item">Response at 4 weeks; bladder diary; post-void residual if elderly; cognitive function in older women</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">&#128172; Counselling</div><p>"This tablet reduces the overactive bladder signals. Dry mouth is common &mdash; sip water regularly. If you find it hard to pass urine at all, stop and contact us immediately."</p></div>
+        <div class="dc-sca"><p>SCA pearl: Antimuscarinics must only be offered after conservative treatment (bladder retraining) has been tried. Prescribing without this step contradicts NICE NG123 and is a scored Tasks deduction. Never prescribe if overflow incontinence suspected.</p></div>
+      </div>
+      <div class="dc" id="dc-oxybutynin">
+        <div class="dc-head"><div><div class="dc-name">Oxybutynin (Antimuscarinic)</div><div class="dc-examples">Cystrin 2.5&ndash;5mg BD/TDS; oxybutynin patch (Kentera)</div><div class="dc-rec-badge" id="rec-oxybutynin">&#10003; OAB younger women (avoid elderly)</div></div><div class="dc-badges"><span class="dc-step step1">OAB second-line</span><span class="dc-dose">2.5&ndash;5mg BD&ndash;TDS; max 20mg/day</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Use when</div><div class="dc-item">OAB in younger women where cognitive side-effect profile less concerning</div><div class="dc-item">Oxybutynin patch: reduced systemic anticholinergic effects vs oral</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Avoid if</div><div class="dc-item ci-abs">AVOID in women &gt;65: STOPP criteria; significant cognitive impairment + falls risk</div><div class="dc-item ci-abs">Urinary retention; narrow-angle glaucoma; gastric retention; myasthenia gravis</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">&#9888; Side effects</div><div class="dc-item">Dry mouth; constipation; blurred vision; tachycardia; confusion in elderly</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">&#128172; Counselling</div><p>"This reduces the urgency by calming the bladder muscle. Dry mouth is common. If you&#39;re over 65, I would usually prefer a different medication with fewer side effects."</p></div>
+        <div class="dc-sca"><p>SCA pearl: Oxybutynin is inappropriate in women over 65 due to cognitive and falls risk (STOPP criteria). Mentioning mirabegron as the preferred alternative in older women scores a Tasks mark.</p></div>
+      </div>
+      <div class="dc" id="dc-mirabegron">
+        <div class="dc-head"><div><div class="dc-name">Mirabegron (Beta-3 agonist)</div><div class="dc-examples">Betmiga 25mg OD &rarr; 50mg OD after 4 weeks</div><div class="dc-rec-badge" id="rec-mirabegron">&#10003; Preferred in older women / antimuscarinic intolerance</div></div><div class="dc-badges"><span class="dc-step step1">OAB preferred elderly</span><span class="dc-dose">25mg OD &rarr; 50mg OD</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Use when</div><div class="dc-item">Older women (&gt;65): NO anticholinergic burden; no cognitive effects; no retention risk</div><div class="dc-item">Antimuscarinic intolerance or contraindication (dry mouth, constipation, cognitive impairment)</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Avoid if</div><div class="dc-item ci-abs">Severe uncontrolled hypertension (BP &ge;180/110); end-stage renal disease</div></div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">&#128300; Monitor</div><div class="dc-item">BP at 4 weeks and annually; symptom response at 4 weeks; bladder diary</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">&#128172; Counselling</div><p>"This works differently to the older bladder tablets &mdash; no dry mouth, no constipation, safer for memory. It can raise blood pressure slightly, so we&#39;ll check that after 4 weeks."</p></div>
+        <div class="dc-sca"><p>SCA pearl: Mirabegron is the preferred OAB treatment in women over 65. No anticholinergic burden, no cognitive side effects, no retention risk. Mentioning this distinction in an elderly patient scores a Tasks mark.</p></div>
+      </div>
+      <div class="dc" id="dc-duloxetine">
+        <div class="dc-head"><div><div class="dc-name">Duloxetine (SNRI &mdash; Yentreve)</div><div class="dc-examples">Yentreve 20&ndash;40mg BD &mdash; licensed specifically for SUI</div><div class="dc-rec-badge" id="rec-duloxetine">&#10003; SUI if surgery declined after PFMT failed</div></div><div class="dc-badges"><span class="dc-step step2">SUI (surgery declined)</span><span class="dc-dose">20mg BD &rarr; 40mg BD after 2 weeks</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Use when</div><div class="dc-item">SUI after PFMT has failed + patient declines surgery</div><div class="dc-item">May also improve co-existing depression / anxiety in women with incontinence</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Avoid if</div><div class="dc-item ci-abs">Uncontrolled hypertension; severe hepatic / renal impairment; MAOIs; thioridazine</div><div class="dc-item ci-rel">High discontinuation rate due to nausea; not as effective as surgery</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">&#9888; Side effects</div><div class="dc-item">Nausea (most common; improves after 4&ndash;8 weeks; take with food); dry mouth; insomnia; discontinue gradually</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">&#128172; Counselling</div><p>"This works on the nerve that controls the bladder outlet. Nausea is common at first but usually settles. It&#39;s not as effective as surgery but is a good option if you&#39;d rather not have an operation."</p></div>
+        <div class="dc-sca"><p>SCA pearl: Duloxetine is specifically licensed for SUI as Yentreve &mdash; NOT first-line. NICE: offer only if PFMT has failed AND patient declines surgery. Knowing the brand name (Yentreve) distinguishes it from antidepressant duloxetine dosing &mdash; scored knowledge.</p></div>
+      </div>
+      <div class="dc" id="dc-vaginal-e-ui">
+        <div class="dc-head"><div><div class="dc-name">Vaginal Oestrogen</div><div class="dc-examples">Vagifem 10mcg pessaries; Ovestin cream; Estring ring</div><div class="dc-rec-badge" id="rec-vaginal-e-ui">&#10003; Post-menopausal GSM-related incontinence</div></div><div class="dc-badges"><span class="dc-step step1">Post-menopausal</span><span class="dc-dose">Pessary nightly 2 weeks then twice weekly</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Use when</div><div class="dc-item">Post-menopausal urgency, frequency, recurrent UTIs &mdash; GSM (urethral and trigone atrophy)</div><div class="dc-item">Safe in most women including breast cancer survivors (low systemic absorption); can be used indefinitely</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Avoid if</div><div class="dc-item ci-abs">Unexplained vaginal bleeding &mdash; investigate first</div><div class="dc-item ci-rel">ER+ breast cancer on aromatase inhibitors: discuss with oncologist</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">&#128172; Counselling</div><p>"This very low-dose oestrogen stays in the vaginal area and restores the bladder outlet lining. It reduces urgency and recurrent infections. You can use it long-term without the risks of systemic HRT."</p></div>
+        <div class="dc-sca"><p>SCA pearl: In a post-menopausal woman with urgency incontinence and recurrent UTIs, identify GSM as the cause and offer vaginal oestrogen as primary treatment &mdash; not just a side note. This scores a Tasks mark for GSM recognition and appropriate management.</p></div>
+      </div>
+      <div class="dc" id="dc-solifenacin">
+        <div class="dc-head"><div><div class="dc-name">Solifenacin (Antimuscarinic)</div><div class="dc-examples">Vesicare 5mg OD &rarr; 10mg OD</div><div class="dc-rec-badge" id="rec-solifenacin">&#10003; OAB: once-daily dosing</div></div><div class="dc-badges"><span class="dc-step step1">OAB second-line</span><span class="dc-dose">5mg OD &rarr; 10mg OD</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Use when</div><div class="dc-item">OAB after bladder retraining; once-daily dosing improves adherence</div><div class="dc-item">Better tolerated than oxybutynin IR; similar efficacy to tolterodine</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Avoid if</div><div class="dc-item ci-abs">Urinary retention; narrow-angle glaucoma; gastric retention</div><div class="dc-item ci-rel">Elderly (&gt;65): anticholinergic burden; prefer mirabegron</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">&#128172; Counselling</div><p>"This is a once-a-day tablet to help with the urgency. Dry mouth is the main side effect. If you can&#39;t pass urine properly, stop and contact us."</p></div>
+        <div class="dc-sca"><p>SCA pearl: Know the spectrum of antimuscarinics: oxybutynin (avoid elderly), tolterodine/solifenacin (safer than oxybutynin), mirabegron (preferred elderly, no anticholinergic effects). These distinctions are scored Tasks knowledge items.</p></div>
+      </div>
+    </div>
+
+    <div class="sub-divider" style="margin-top:1.5rem">7D &mdash; Follow-up schedule</div>
+    <div class="card" style="padding:1.1rem 1.25rem;margin-bottom:1.25rem">
+      <div class="fu-line">
+        <div class="fu-event"><div class="fu-dot fd1">1</div><div class="fu-content"><h5>4 weeks (early review)</h5><p>Bladder diary review; PFMT adherence; medication side effects; dose titration; haematuria since consultation.</p><div class="fu-tags"><span class="ft ft-r">Bladder diary</span><span class="ft ft-b">Medication response</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd2">2</div><div class="fu-content"><h5>3 months (NICE threshold)</h5><p>Formal assessment of conservative treatment response. If PFMT not working: continence physiotherapy referral. If OAB not responding: add pharmacotherapy. If SUI no response: urogynaecology referral.</p><div class="fu-tags"><span class="ft ft-r">3-month threshold</span><span class="ft ft-b">Referral decision</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd3">3</div><div class="fu-content"><h5>6 months (sustained response)</h5><p>Pad count; frequency diary; QoL improvement. Continue PFMT long-term. Medication step-down if significant improvement (antimuscarinics 3&ndash;6 months).</p><div class="fu-tags"><span class="ft ft-a">Medication step-down</span><span class="ft ft-b">QoL improvement</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd4">4</div><div class="fu-content"><h5>Annual review</h5><p>Weight; anticholinergic burden (cognitive function in elderly); bladder cancer screen if smoker; prolapse progression; PHQ-9 if QoL still impaired.</p><div class="fu-tags"><span class="ft ft-r">Anticholinergic review</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd5">5</div><div class="fu-content"><h5>Post-surgical (if applicable)</h5><p>Mid-urethral sling: voiding function; post-void residual; mesh complications (urgency, pain, erosion). NICE: report all mesh complications to MHRA Yellow Card.</p><div class="fu-tags"><span class="ft ft-r">Mesh complications</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7E &mdash; Safety-netting</div>
+    <div class="sn-box">
+      <h4>&#9888; Three scenario-specific phrases</h4>
+      <div class="sn-scenarios">
+        <div class="sn-scenario sns-e"><div class="sn-scenario-lbl">&#128308; Haematuria</div><div class="sn-phrase">"If you notice any blood in your urine &mdash; even just once, even if it goes away &mdash; please contact us the same day. We would need to check that urgently."</div><div class="sn-why">Bladder cancer presents with painless haematuria. Documenting this safety-net is medicolegally mandatory in any incontinence consultation.</div></div>
+        <div class="sn-scenario sns-m"><div class="sn-scenario-lbl">&#128138; Medication &mdash; retention warning</div><div class="sn-phrase">"If you find you can&#39;t pass urine at all, or if the flow becomes very poor, please stop the tablet and contact us or go to A&amp;E. This is a rare but important side effect."</div><div class="sn-why">Urinary retention on antimuscarinics is a medical emergency. Pre-warning with specific language ensures the patient knows when to seek urgent help.</div></div>
+        <div class="sn-scenario sns-a"><div class="sn-scenario-lbl">&#128992; Cauda equina</div><div class="sn-phrase">"If you ever develop numbness around the back passage or inner thighs, or weakness in your legs alongside the bladder problems, please go straight to A&amp;E for an urgent scan."</div><div class="sn-why">Cauda equina syndrome may present with new incontinence. This safety-net is required in any new-onset incontinence consultation to demonstrate adequate neurological screening.</div></div>
+      </div>
+      <div class="sn-legal"><h5>Why safety-netting matters</h5><div class="sn-legal-grid"><div class="sn-legal-item">Haematuria without 2WW = missed bladder cancer = medicolegally indefensible; document safety-net in notes</div><div class="sn-legal-item">Antimuscarinics without retention warning = prescribing safety gap; document counselling given</div><div class="sn-legal-item">Cauda equina presenting as incontinence = missed emergency; safety-net documents neurological screening</div><div class="sn-legal-item">PFMT: NICE requires minimum 3 months; document date started and progress at each review</div><div class="sn-legal-item">Oxybutynin in &gt;65: STOPP criteria; document cognitive and falls risk assessment</div><div class="sn-legal-item">Mesh complications: MHRA mandates reporting all post-surgical mesh complications via Yellow Card</div></div></div>
+      <div class="sn-fu"><div class="sn-fu-item"><strong>4 weeks</strong>Bladder diary; medication response; PFMT adherence</div><div class="sn-fu-item"><strong>3 months</strong>Conservative treatment response; referral decision if no improvement</div><div class="sn-fu-item"><strong>Immediately</strong>Haematuria; acute retention; cauda equina symptoms; mesh complications</div></div>
+    </div>
+
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 7 (Final)</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Closing phrases</div><div class="sca-phrase">"I&#39;d like to start you on pelvic floor exercises today &mdash; 3 sets a day, 8&ndash;12 squeezes, hold for a count of 6."</div><div class="sca-phrase">"70&ndash;80% of women improve significantly without surgery &mdash; you don&#39;t have to put up with this."</div><div class="sca-phrase">"Blood in urine, even once &rarr; contact us same day."</div><div class="sca-phrase">"Can I ask if this has affected your sex life at all?"</div><div class="sca-phrase">"Review in 4 weeks. Any questions?"</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Final deductions</div><ul><li>Antimuscarinics without conservative treatment first (NICE NG123)</li><li>Antimuscarinics in elderly without checking retention / cognitive risk</li><li>No haematuria safety-net</li><li>Cauda equina not screened</li><li>Normalised as inevitable</li><li>Coital incontinence not asked</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">&#128308; Red</div><div class="rag-bullets">Antimuscarinics without conservative Rx &bull; haematuria missed &bull; type not characterised &bull; normalised as ageing &bull; no ICE &bull; no PFMT instructions</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">&#128992; Amber</div><div class="rag-bullets">Type characterised &bull; PFMT started &bull; haematuria safety-net &bull; QoL not fully explored &bull; coital incontinence missed</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">&#128994; Green</div><div class="rag-bullets">Type named &bull; UTI excluded &bull; PFMT instructed &bull; haematuria safety-net &bull; mirabegron in elderly &bull; coital incontinence &bull; ICE in plan &bull; 4-week follow-up</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Urinary Incontinence &mdash; SCA Consultation Scorecard</div><div class="scorecard-sub">Based on the official SCA Consultation Tool &middot; RAG self-assessment</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">&#8634; Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">&#127758;</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, empathy, language</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Normalises incontinence empathetically</strong> &mdash; "a lot of women deal with this but don&#39;t always mention it"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Open question first</strong> &mdash; "tell me in your own words what&#39;s been happening"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>QoL impact explored</strong> &mdash; exercise, socialising, work impact asked about</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Jargon-free language</strong> &mdash; "pelvic floor exercises" not "PFMT"; "bladder training" not "detrusor retraining"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Not normalised as inevitable</strong> &mdash; "this is treatable; you don&#39;t have to put up with it"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Well-structured in 12 minutes</strong> &mdash; type characterised by 6 min; plan started; safety-net before close</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Closes with summary and closing question</strong> &mdash; plan recapped; "anything else?" asked</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">&#10003;</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Diagnosis, conservative Rx first, safety</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Type characterised correctly</strong> &mdash; SUI vs OAB vs mixed vs overflow identified from history</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>UTI excluded before treating OAB</strong> &mdash; urine dipstick offered before any pharmacotherapy</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Conservative treatment first (NICE NG123)</strong> &mdash; PFMT and/or bladder retraining before pharmacology</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Haematuria safety-net stated explicitly</strong> &mdash; "blood in urine = same-day contact; 2WW urology"</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>PFMT instructions given specifically</strong> &mdash; 3 sets/day, 8&ndash;12 contractions, hold 6&ndash;8 seconds; or physio referral</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Bladder diary recommended</strong> &mdash; 3&ndash;5 day diary per NICE NG123</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Correct medication choice</strong> &mdash; mirabegron preferred &gt;65; antimuscarinics avoided in overflow</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Vaginal oestrogen offered post-menopausal GSM</strong> &mdash; urgency + recurrent UTI in menopausal woman</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>4-week follow-up arranged</strong> &mdash; bladder diary review; medication response at 4 weeks</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Cauda equina screened</strong> &mdash; new onset incontinence: saddle anaesthesia + bilateral lower limb weakness asked</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">&#129309;</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">ICE, empathy, coital incontinence</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> &mdash; "just childbirth damage?" or "just ageing?" beliefs identified and corrected</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> &mdash; fear of surgery, smell, pad use, social withdrawal named and addressed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations explored</strong> &mdash; "what would be helpful today?" before management plan</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Embarrassment acknowledged</strong> &mdash; patient explicitly thanked for raising the topic</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Coital incontinence asked directly</strong> &mdash; "has this affected your sex life?" asked sensitively</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Exercise avoidance addressed</strong> &mdash; "stopping exercise makes incontinence worse; PFMT during exercise protects you"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Surgery fear addressed</strong> &mdash; "most women don&#39;t need surgery; exercises work for 70&ndash;80%"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Shared decision making</strong> &mdash; patient chose PFMT/retraining first; plan not imposed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Mood screened</strong> &mdash; "has this been affecting your mood or confidence?"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>ICE referenced in plan</strong> &mdash; surgery fear addressed in plan: "most women won&#39;t need it"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Closing question asked</strong> &mdash; "anything else?" before ending</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">&#128308; Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">Type not characterised &bull; antimuscarinics without conservative Rx &bull; haematuria missed &bull; normalised as ageing &bull; cauda equina missed &bull; no ICE</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">&#128992; Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">Type characterised &bull; PFMT mentioned &bull; haematuria safety-net &bull; coital incontinence missed &bull; QoL not fully explored</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">&#128994; Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Type named &bull; UTI excluded &bull; PFMT instructed &bull; haematuria safety-net &bull; mirabegron in elderly &bull; coital incontinence &bull; ICE in plan &bull; 4-week follow-up</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp"><div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div><div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">&#128203;</div><div class="interp-text">Complete the checklist above to see your score interpretation</div></div></div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">&#9888; Items not yet checked</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()">
+    <h3>&#127917; Patient actor brief &mdash; click to practise</h3>
+    <span style="font-size:12px;color:var(--muted)" id="actor-icon">&#9660; show</span>
+  </button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"I&#39;ve been meaning to come about this for ages but it&#39;s embarrassing. I leak when I cough or sneeze and sometimes I don&#39;t make it to the toilet in time. I&#39;ve been using pads every day for over a year."</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>Carol, 52, teacher. Two vaginal deliveries (second with forceps). Menopause 14 months ago. BMI 28. Drinks 5 cups of coffee daily. Non-smoker. Stopped Zumba 6 months ago due to leakage fear. Using 3&ndash;4 pads/day. No previous GP consultation about this.</p></div>
+      <div class="ab"><h5>Hidden agenda</h5><p>Terrified of surgery (has heard about mesh complications). Leakage during sex &mdash; has avoided intimacy with husband for 4 months without explanation. Significantly depressed (PHQ-9 ~13) but won&#39;t volunteer this. No haematuria. No neurological symptoms.</p></div>
+      <div class="ab"><h5>If asked directly</h5><ul>
+        <li>Type: mixed (stress worse than urgency): "both, but the coughing and sneezing is definitely worse"</li>
+        <li>Coital incontinence: "yes actually... it&#39;s happened a few times and it&#39;s been really upsetting"</li>
+        <li>Mood: "honestly, it&#39;s really getting me down &mdash; I feel like I&#39;ve lost my confidence"</li>
+        <li>No blood in urine; no saddle anaesthesia or leg weakness; no prolapse symptoms</li>
+      </ul></div>
+      <div class="ab"><h5>Lifestyle</h5><ul>
+        <li>5 cups coffee/day (main fluid source); very little water</li>
+        <li>Stopped exercise 6 months ago</li>
+        <li>Has not tried pelvic floor exercises (didn&#39;t know where to start)</li>
+        <li>Husband unaware of severity</li>
+      </ul></div>
+    </div>
+    <div class="actor-challenge">"I&#39;ve heard about the mesh thing on the news &mdash; I really don&#39;t want surgery. Is there anything that doesn&#39;t involve an operation?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> Accept the plan if the doctor: (1) Characterises the type as mixed (stress predominant); (2) Reassures about non-surgical options (&ge;70% improve with PFMT); (3) Asks about coital incontinence; (4) States haematuria safety-net explicitly; (5) Addresses coffee intake; (6) Explores mood; (7) Gives specific PFMT instructions; (8) Arranges 4-week follow-up.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">&#127973;</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Urinary Incontinence &mdash; Clinical Decision Framework</div><div class="sum-sub">NICE NG123 (2019) &middot; NICE CKS Urinary incontinence 2022</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">&#9660;</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">&#128678; 1 &mdash; Triage by Type</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:1rem">
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.7rem .9rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.35rem">SUI &mdash; Stress</div><div style="font-size:12px;line-height:1.7">Cough/sneeze/exertion leakage &bull; PFMT 3 months minimum &bull; Continence physio if fails &bull; Duloxetine if surgery declined &bull; Mid-urethral sling if all fails</div></div>
+      <div style="background:var(--b-bg);border:1px solid var(--b-bd);border-radius:var(--rad-sm);padding:.7rem .9rem"><div style="font-size:10px;font-weight:700;color:var(--b);margin-bottom:.35rem">OAB &mdash; Urgency</div><div style="font-size:12px;line-height:1.7">Urgency &plusmn; frequency &plusmn; nocturia &bull; Exclude UTI &bull; Bladder retraining 6&ndash;8 weeks &bull; Antimuscarinics or mirabegron (&gt;65) &bull; Botox / SNS if fails</div></div>
+      <div style="background:var(--r-bg);border:1px solid var(--r-bd);border-radius:var(--rad-sm);padding:.7rem .9rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.35rem">Urgent / Emergency</div><div style="font-size:12px;line-height:1.7">Haematuria &rarr; 2WW &bull; Acute retention &rarr; A&amp;E &bull; Cauda equina &rarr; 999 MRI &bull; Overflow (residual &gt;100mL) &rarr; urology urgently</div></div>
+    </div>
+    <div class="sum-sub-hdr">&#128202; 2 &mdash; Key Numbers</div>
+    <div class="num-grid" style="margin-bottom:1rem">
+      <div class="num-card num-highlight"><div class="num-val">3 months</div><div class="num-lbl">Conservative Rx before surgery</div></div>
+      <div class="num-card num-highlight"><div class="num-val">70&ndash;80%</div><div class="num-lbl">SUI improvement with PFMT</div></div>
+      <div class="num-card num-highlight"><div class="num-val">75%</div><div class="num-lbl">OAB improvement with retraining</div></div>
+      <div class="num-card"><div class="num-val">3&times;/day</div><div class="num-lbl">PFMT sets (8&ndash;12 contractions)</div></div>
+      <div class="num-card"><div class="num-val">1.5&ndash;2L</div><div class="num-lbl">Optimal fluid intake</div></div>
+      <div class="num-card"><div class="num-val">&gt;8 voids/day</div><div class="num-lbl">Frequency: OAB criterion</div></div>
+      <div class="num-card"><div class="num-val">&gt;100mL</div><div class="num-lbl">Post-void residual = overflow</div></div>
+      <div class="num-card"><div class="num-val">&gt;65 yrs</div><div class="num-lbl">Prefer mirabegron over antimuscarinics</div></div>
+    </div>
+    <div class="sum-sub-hdr">&#128138; 3 &mdash; Drug Selection Quick Reference</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div style="background:#f0fdf4;border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.75rem .9rem"><div style="font-size:10.5px;font-weight:700;color:var(--g);margin-bottom:.4rem">&#128994; OAB pharmacotherapy</div><div style="font-size:12px;line-height:1.8"><strong>&gt;65 yrs:</strong> Mirabegron 25&ndash;50mg OD (no anticholinergic burden; check BP) &bull; <strong>&lt;65 yrs:</strong> Tolterodine 4mg XL OD or solifenacin 5mg OD &bull; <strong>Avoid:</strong> Oxybutynin IR in elderly (STOPP; cognitive + falls)</div></div>
+      <div style="background:var(--b-bg);border:1px solid var(--b-bd);border-radius:var(--rad-sm);padding:.75rem .9rem"><div style="font-size:10.5px;font-weight:700;color:var(--b);margin-bottom:.4rem">&#128309; SUI / GSM pharmacotherapy</div><div style="font-size:12px;line-height:1.8">Duloxetine (Yentreve 40mg BD): SUI after PFMT failed + surgery declined only &bull; Post-menopausal GSM: vaginal oestrogen is primary treatment for urgency + recurrent UTI &bull; NOT systemic HRT for incontinence</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div class="flag-item flag-red"><strong>&#128308; Red flags:</strong> Haematuria (2WW) &bull; Acute retention (A&amp;E) &bull; Cauda equina (999) &bull; Overflow (urgent USS) &bull; Pelvic mass with incontinence</div>
+      <div class="flag-item flag-pink"><strong>&#128737;&#65039; Safeguarding:</strong> Coital incontinence + abuse history (fistula?) &bull; Depression/social withdrawal &bull; Anticholinergics + cognitive decline in elderly &bull; Pad dependency normalised without assessment</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">&#127891;</span><div><div class="sum-label" style="color:rgba(255,255,255,.5)">SCA Exam Quick Reference</div><div class="sum-title" style="color:#fff">SCA Consultation Blueprint</div><div class="sum-sub" style="color:rgba(255,255,255,.6)">Tasks &middot; Relating to Others &middot; Global Skills &middot; RAG guide</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">&#9660;</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">&#128336; 12-Minute Consultation Flow</div>
+    <div class="sca-flow-wrap">
+      <div class="sca-flow-step sca-f1"><div class="sca-f-time">0&ndash;2 min</div><div class="sca-f-title">Normalise + open</div><div class="sca-f-body"><div class="sca-f-phrase">"A lot of women deal with this but don&#39;t always feel comfortable talking about it &mdash; thank you for raising it."</div></div><div class="sca-f-domains"><span class="sca-dom-tag ro">RO</span><span class="sca-dom-tag gs">GS</span></div><div class="sca-f-avoid">&#10007; "Is it worse when you cough?" first &bull; &#10007; "It&#39;s just part of getting older"</div></div>
+      <div class="sca-flow-step sca-f2"><div class="sca-f-time">2&ndash;5 min</div><div class="sca-f-title">Type + haematuria</div><div class="sca-f-body"><div class="sca-f-phrase">"Does it happen with coughing/sneezing or do you get a sudden urge first &mdash; or both?"</div><div class="sca-f-note">Characterise SUI vs OAB vs mixed. Ask haematuria. Fluid intake. Medications. Post-menopausal status.</div></div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag gs">GS</span></div><div class="sca-f-avoid">&#10007; Not characterising type &bull; &#10007; Haematuria not asked</div></div>
+      <div class="sca-flow-step sca-f3"><div class="sca-f-time">5&ndash;7 min</div><div class="sca-f-title">ICE + coital</div><div class="sca-f-body"><div class="sca-f-phrase">"Has this affected your sex life? I ask everyone &mdash; it&#39;s common and treatable."</div><div class="sca-f-note">ICE: fear of surgery; embarrassment; fatalism. QoL: exercise stopped? social withdrawal?</div></div><div class="sca-f-domains"><span class="sca-dom-tag ro">RO</span><span class="sca-dom-tag gs">GS</span></div><div class="sca-f-avoid">&#10007; No ICE &bull; &#10007; Coital incontinence not asked</div></div>
+      <div class="sca-flow-step sca-f4"><div class="sca-f-time">7&ndash;10 min</div><div class="sca-f-title">Conservative plan</div><div class="sca-f-body"><div class="sca-f-phrase">"Pelvic floor exercises 3 times a day &mdash; 8&ndash;12 squeezes each time. 70&ndash;80% improve without surgery."</div><div class="sca-f-note">PFMT for SUI; bladder retraining for OAB; UTI excluded; coffee reduction; bladder diary.</div></div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">RO</span></div><div class="sca-f-avoid">&#10007; Antimuscarinics without conservative Rx &bull; &#10007; No PFMT instructions</div></div>
+      <div class="sca-flow-step sca-f5"><div class="sca-f-time">10&ndash;12 min</div><div class="sca-f-title">Safety-net + close</div><div class="sca-f-body"><div class="sca-f-phrase">"Blood in urine &rarr; same-day contact. Review in 4 weeks. Anything else?"</div><div class="sca-f-note">Haematuria safety-net. Retention warning if medication. 4-week follow-up. Closing question.</div></div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">RO</span><span class="sca-dom-tag gs">GS</span></div><div class="sca-f-avoid">&#10007; No haematuria safety-net &bull; &#10007; No follow-up &bull; &#10007; No closing question</div></div>
+    </div>
+    <div class="sum-3col" style="margin-top:1rem">
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">&#128308;&#128992;&#128994; RAG Scoring</div>
+        <div class="rag-full-wrap">
+          <div class="rag-domain-title task-col">Tasks</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">&#128994;</div><div>Type characterised &bull; UTI excluded &bull; PFMT instructed &bull; haematuria safety-net &bull; mirabegron in elderly &bull; 4-week follow-up</div></div>
+          <div class="rag-row rag-a-row"><div class="rag-rl">&#128992;</div><div>Type characterised &bull; PFMT mentioned &bull; haematuria safety-net &bull; coital incontinence missed &bull; no bladder diary</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">&#128308;</div><div>Type not characterised &bull; antimuscarinics without conservative Rx &bull; haematuria missed &bull; overflow not considered</div></div>
+          <div class="rag-domain-title ro-col" style="margin-top:.6rem">Relating to Others</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">&#128994;</div><div>Normalised empathetically &bull; not fatalistic &bull; ICE all 3 &bull; coital incontinence &bull; mood explored &bull; shared decision</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">&#128308;</div><div>"Just ageing" comment &bull; no ICE &bull; coital incontinence missed &bull; plan imposed &bull; no mood</div></div>
+          <div class="rag-domain-title gs-col" style="margin-top:.6rem">Global Skills</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">&#128994;</div><div>Normalised &bull; jargon-free &bull; 70&ndash;80% reassurance &bull; timed &bull; closing question</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">&#128308;</div><div>"Just ageing" &bull; medical jargon &bull; no summary &bull; no closing question</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">&#128172; Key Phrases</div>
+        <div class="phrase-stack">
+          <div class="phrase-card p-ideas"><div class="p-lbl">Normalise</div><div class="p-phrase">"A lot of women deal with this but don&#39;t always mention it &mdash; thank you for raising it."</div></div>
+          <div class="phrase-card p-concerns"><div class="p-lbl">Not inevitable</div><div class="p-phrase">"You don&#39;t have to put up with this &mdash; 70&ndash;80% of women improve significantly."</div></div>
+          <div class="phrase-card p-expect"><div class="p-lbl">Type Q</div><div class="p-phrase">"Cough/sneeze leakage or sudden urge first &mdash; or both?"</div></div>
+          <div class="phrase-card p-validate"><div class="p-lbl">Coital</div><div class="p-phrase">"Has it affected your sex life? I ask everyone &mdash; it&#39;s very common and treatable."</div></div>
+          <div class="phrase-card p-explain"><div class="p-lbl">PFMT</div><div class="p-phrase">"3 sets of exercises a day, 8&ndash;12 squeezes, hold for a count of 6."</div></div>
+          <div class="phrase-card p-close"><div class="p-lbl">Safety-net</div><div class="p-phrase">"Blood in urine &rarr; same-day contact. Review in 4 weeks."</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">&#128683; 9 Danger Zones</div>
+        <div class="dz-stack">
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Not characterising type (SUI vs OAB vs mixed)</strong><br><span class="dz-fix">&rarr; "Cough/sneeze or urgent urge?" &mdash; must ask; determines entire treatment pathway</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Antimuscarinics without conservative treatment first</strong><br><span class="dz-fix">&rarr; NICE NG123: bladder retraining minimum 6&ndash;8 weeks before pharmacotherapy</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Haematuria not asked or not escalated</strong><br><span class="dz-fix">&rarr; Any haematuria = same-day contact + 2WW; must be documented in notes</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Normalising as "just part of ageing"</strong><br><span class="dz-fix">&rarr; "You don&#39;t have to put up with this" &mdash; reframe scores RO marks</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Oxybutynin in elderly woman (&gt;65)</strong><br><span class="dz-fix">&rarr; STOPP criteria: cognitive impairment + falls; always prefer mirabegron &gt;65</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Antimuscarinics for overflow incontinence</strong><br><span class="dz-fix">&rarr; Catastrophic: worsens retention; check post-void residual if overflow features</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Coital incontinence not asked</strong><br><span class="dz-fix">&rarr; Affects 30% of women with SUI/OAB; must ask directly &mdash; scores RO mark</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>UTI not excluded before treating OAB</strong><br><span class="dz-fix">&rarr; UTI is most common reversible cause of urgency; dipstick before antimuscarinics</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Cauda equina not screened in new-onset incontinence</strong><br><span class="dz-fix">&rarr; New incontinence + saddle anaesthesia + leg weakness = 999 emergency MRI</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Urinary Incontinence (Female) &middot; GP Clinical Reasoning Framework v2</strong> &middot; NICE NG123 Urinary incontinence and pelvic organ prolapse in women (2019) &middot; NICE CKS Urinary incontinence in women (2022) &middot; NICE NG12 Suspected cancer: recognition and referral &middot; STOPP/START Criteria v3 (2023)</p>
+  <p style="margin-top:4px">v2: Clinical stem &middot; Open Q first &middot; ICE in all modes &middot; Psychosocial (1C + 7D) &middot; Safeguarding &middot; Expectation management (7A) &middot; SCA RAG checkpoints after every step &middot; SCA Scorecard &middot; Dual summaries</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters &mdash; not just what to do &middot; Always consult current BNF/NICE CKS &middot; Clinical judgement takes precedence over any framework</p>
+</div>
+</div>
+
+
+
+  </main>
+</div><!-- /app -->
+
+<script>
+function toggleSum(which){
+  const body = document.getElementById('sum-body-' + which);
+  const toggle = document.getElementById('sum-toggle-' + which);
+  const icon = toggle.querySelector('.sum-ti-icon');
+  const text = toggle.querySelector('.sum-ti-text');
+  const isClosed = body.classList.contains('closed');
+  if(isClosed){
+    body.classList.remove('closed');
+    icon.textContent = '▲';
+    text.textContent = 'collapse';
+  } else {
+    body.classList.add('closed');
+    icon.textContent = '▼';
+    text.textContent = 'expand';
+  }
+}
+
+function setMode(m){
+  document.getElementById('bodyEl').className='mode-'+m;
+  ['sca','both','clinic'].forEach(k=>document.getElementById('btn-'+k).classList.toggle('active',k===m));
+}
+
+function toggleStep(hdr){
+  const body=hdr.nextElementSibling;
+  const icon=hdr.querySelector('.sti-icon');
+  const text=hdr.querySelector('.sti-text');
+  const isOpen=hdr.classList.contains('is-open');
+  if(isOpen){
+    body.classList.add('closed');
+    hdr.classList.remove('is-open');
+    icon.textContent='▼';
+    text.textContent='expand';
+  } else {
+    body.classList.remove('closed');
+    hdr.classList.add('is-open');
+    icon.textContent='▲';
+    text.textContent='collapse';
+  }
+}
+
+function expandAll(){
+  document.querySelectorAll('.step-hdr').forEach(h=>{
+    h.classList.add('is-open');
+    h.nextElementSibling.classList.remove('closed');
+    h.querySelector('.sti-icon').textContent='▲';
+    h.querySelector('.sti-text').textContent='collapse';
+  });
+}
+
+function collapseAll(){
+  document.querySelectorAll('.step-hdr').forEach(h=>{
+    h.classList.remove('is-open');
+    h.nextElementSibling.classList.add('closed');
+    h.querySelector('.sti-icon').textContent='▼';
+    h.querySelector('.sti-text').textContent='expand';
+  });
+}
+
+function toggleActor(){
+  const b=document.getElementById('actor-body');
+  const i=document.getElementById('actor-icon');
+  b.classList.toggle('open');
+  i.textContent=b.classList.contains('open')?'▲ hide':'▼ show';
+}
+
+function printSummary(){
+  const steps=document.querySelectorAll('.step-wrap');
+  const orig=[];
+  steps.forEach((s,i)=>{orig[i]=s.style.display;s.style.display='none';});
+  const ac=document.querySelector('.card.sca-only');
+  const ad=ac?ac.style.display:'';
+  if(ac)ac.style.display='none';
+  window.print();
+  steps.forEach((s,i)=>{s.style.display=orig[i];});
+  if(ac)ac.style.display=ad;
+}
+
+function calcDrug(){
+  const dm=document.getElementById('ds-dm').checked,
+    ckd=document.getElementById('ds-ckd').checked,
+    cvd=document.getElementById('ds-cvd').checked,
+    afro=document.getElementById('ds-afro').checked,
+    age55=document.getElementById('ds-age55').checked,
+    hf=document.getElementById('ds-hf').checked,
+    angina=document.getElementById('ds-angina').checked,
+    af=document.getElementById('ds-af').checked,
+    cough=document.getElementById('ds-cough').checked;
+  const none=!dm&&!ckd&&!cvd&&!afro&&!age55&&!hf&&!angina&&!af&&!cough;
+  ['acei','arb','ccb','thiazide','spiro','ab'].forEach(id=>{
+    const el=document.getElementById('dc-'+id);
+    el.classList.remove('recommended','alt-rec');
+    const b=document.getElementById('rec-'+id);
+    b.style.cssText='';b.textContent='✓ Recommended';b.style.display='none';
+  });
+  if(none){
+    document.getElementById('ds-output').innerHTML='<span style="font-size:12.5px;color:var(--g)">Select patient characteristics above</span>';
+    return;
+  }
+  let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
+  if(hf){
+    main='thiazide';mainLabel='Indapamide SR 1.5mg';
+    why='HF with fluid overload: thiazide-like diuretic. Add ACEi + bisoprolol + spiro per NICE NG106 HF guideline.';
+    alt='acei';altLabel='+ Ramipril (essential in HFrEF)';altWhy='ACEi + beta-blocker + spiro = cornerstone of HFrEF management';
+  } else if(af){
+    main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
+    why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
+    alt=(dm||ckd)?'acei':'ccb';altLabel='+ ACEi or CCB for BP target';altWhy='Rate control alone may not achieve BP target — add Step 2 drug';
+  } else if(cough){
+    main='arb';mainLabel='Candesartan / Losartan (ARB)';
+    why='ACEi intolerance (cough): switch class to ARB. Identical cardio-renal protection without the cough.';
+    alt='';altLabel='';altWhy='';
+  } else if(dm||ckd||cvd){
+    main='acei';mainLabel='Ramipril (ACEi)';
+    why='DM / CKD / CVD: ACEi first-line for cardio-renal protection at ANY age and ANY ethnicity (NICE NG136).';
+    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';altWhy='Equal renoprotection. Never combine ACEi + ARB simultaneously.';
+  } else if(afro){
+    main='ccb';mainLabel='Amlodipine (CCB)';
+    why='Afro-Caribbean (no DM): CCB more effective in low-renin hypertension. At Step 2: ARB preferred over ACEi.';
+    alt='';altLabel='';altWhy='';
+  } else if(age55){
+    main='ccb';mainLabel='Amlodipine (CCB)';
+    why='Age ≥55 (no DM, no Afro-Caribbean): CCB preferred over ACEi — greater efficacy in lower-renin patients.';
+    alt=angina?'acei':'arb';
+    altLabel=angina?'+ Ramipril (anti-anginal benefit at Step 2)':'Candesartan (ARB) — if CCB not tolerated';
+    altWhy=angina?'ACEi has additional anti-anginal benefit at Step 2':'ARB is equally effective if CCB causes intolerable oedema';
+  } else {
+    main='acei';mainLabel='Ramipril (ACEi)';
+    why='Age <55, non-Afro-Caribbean, no DM/CKD/CVD: ACEi is the Step 1 drug of choice (NICE NG136).';
+    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';
+    altWhy='Switch to ARB within the RAAS class, not off-class, if cough develops.';
+  }
+
+  const m=document.getElementById('dc-'+main);
+  m.classList.add('recommended');
+  const mb=document.getElementById('rec-'+main);
+  mb.style.display='inline-block';
+
+  if(alt){
+    const a=document.getElementById('dc-'+alt);
+    a.classList.add('alt-rec');
+    const ab=document.getElementById('rec-'+alt);
+    ab.style.display='inline-block';
+    ab.style.background='#dbeafe';
+    ab.style.color='#1d4ed8';
+    ab.style.borderColor='#bfdbfe';
+    ab.textContent='↳ Alternative';
+  }
+
+  document.getElementById('ds-output').innerHTML=`
+    <div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: ${mainLabel}</div>
+    ${alt?`<div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: ${altLabel}</div>`:''}
+    <div style="font-size:12px;color:#15803d;margin-bottom:3px">${why}</div>
+    ${altWhy?`<div style="font-size:11.5px;color:var(--b);margin-bottom:3px">${altWhy}</div>`:''}
+    <div style="font-size:11px;color:var(--muted);margin-top:5px">Drug card highlighted below ↓ &nbsp;|&nbsp; U&Es within 1 week of starting ACEi/ARB</div>`;
+}
+
+function calcScore(){
+  var total=0, tasks=0, ro=0, gs=0;
+  var allCbs = document.querySelectorAll('.sc-cb');
+  allCbs.forEach(function(cb){
+    var item = cb.closest('.sc-item');
+    if(cb.checked){
+      var pts = parseInt(cb.dataset.pts)||0;
+      total += pts; tasks += cb.classList.contains('tasks-cb')?pts:0;
+      ro += cb.classList.contains('ro-cb')?pts:0; gs += cb.classList.contains('gs-cb')?pts:0;
+      item.classList.add('checked');
+    } else { item.classList.remove('checked'); }
+  });
+  document.getElementById('sc-total').textContent = total;
+  document.getElementById('sc-tasks-score').textContent = tasks;
+  document.getElementById('sc-ro-score').textContent = ro;
+  document.getElementById('sc-gs-score').textContent = gs;
+  document.getElementById('sc-bar-fill').style.width = Math.round((total/33)*100) + '%';
+  var icon, msg;
+  if(total < 11){ icon='🔴'; msg='<strong>Not yet at pass standard.</strong> Focus on: exploring ICE including the family history fear, planning ABPM to confirm BP stage, choosing the correct drug for age/ethnicity/comorbidity, sharing the QRISK score as a number, and naming 999 symptoms explicitly. Review Global Skills — are you finishing data gathering by 6-7 minutes?'; }
+  else if(total < 17){ icon='🟠'; msg='<strong>Borderline — approaching pass standard.</strong> Core framework present but key items missing. Check: was ABPM planned and explained? Was QRISK shared as a specific percentage? Was the correct drug chosen for the specific comorbidities? Was the family history fear addressed in the plan? Was a 1-week follow-up named?'; }
+  else if(total < 25){ icon='🟢'; msg='<strong>Pass standard.</strong> Good clinical reasoning and patient-centred communication. To reach a strong pass: ensure lifestyle advice is specific and measurable, QRISK is shared as a number, and the drug choice rationale is explained in plain language tailored to this patient.'; }
+  else { icon='🟢'; msg='<strong>Strong pass.</strong> Excellent consultation across all three domains. ICE fully explored including family fear, BP staging with ABPM, correct drug for phenotype and comorbidities, QRISK shared as a number, lifestyle specific and measurable, 1-2-1 rule named, 999 symptoms explicit, closing question asked.'; }
+  document.getElementById('sc-interp-msg').innerHTML = '<div class="interp-icon">'+icon+'</div><div class="interp-text">'+msg+'</div>';
+  var missed = [];
+  allCbs.forEach(function(cb){ if(!cb.checked){ missed.push(cb.closest('.sc-item').querySelector('.sc-item-text').textContent.trim()); } });
+  var ms = document.getElementById('sc-missed-section');
+  if(missed.length < allCbs.length && missed.length > 0){
+    ms.style.display='block';
+    document.getElementById('sc-missed-list').innerHTML = missed.map(function(m){ return '<div class="sc-missed-item">- '+m.substring(0,120)+'</div>'; }).join('');
+  } else { ms.style.display='none'; }
+}
+
+function resetScorecard(){
+  document.querySelectorAll('.sc-cb').forEach(function(cb){ cb.checked=false; cb.closest('.sc-item').classList.remove('checked'); });
+  ['sc-total','sc-tasks-score','sc-ro-score','sc-gs-score'].forEach(function(id){ document.getElementById(id).textContent='0'; });
+  document.getElementById('sc-bar-fill').style.width='0%';
+  document.getElementById('sc-interp-msg').innerHTML='<div class="interp-icon">📋</div><div class="interp-text">Complete the checklist above to see your score interpretation</div>';
+  document.getElementById('sc-missed-section').style.display='none';
+}
+
+</script>
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+
+<!-- Medication Chooser engine + topic data -->
+<script src="../assets/medchooser.js"></script>
+<script src="../assets/meds/urinary-incontinence.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+</body>
+</html>

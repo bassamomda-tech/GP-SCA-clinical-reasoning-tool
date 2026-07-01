@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Itchy Eye Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;
+  --diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;
+  --treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;
+  --refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;
+  --lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
+  --font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif
+}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#0a1e2e 0%,#1a4a6a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#1a4a6a,#167a4a);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}
+.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}
+.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}
+.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}
+.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}
+.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}
+.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#92400e}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">👁️</div>
+  <div>
+    <b>Itchy Eye — Assessment &amp; Management</b>
+    <small>Allergic conjunctivitis · dry eye · blepharitis · contact lens · vernal · uveitis red flag · NICE CKS</small>
+  </div>
+</div>
+
+<div class="alg-progress">
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Sight-Threatening Conditions Not to Miss</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Itchy eye is almost always benign — but itching accompanied by pain, photophobia, visual change, or a unilateral red eye demands urgent ophthalmology exclusion of sight-threatening pathology.</b></p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Itchy + painful red eye + photophobia + reduced visual acuity</b> Anterior uveitis (iritis) — ciliary injection (limbal flush), miosis, keratic precipitates. Seen in HLA-B27 conditions (ankylosing spondylitis, Crohn's, reactive arthritis, psoriasis), sarcoidosis, Behçet's. Itching is not the dominant feature but can be present. Same-day ophthalmology. Misdiagnosed as conjunctivitis leads to posterior synechiae and sight loss.</div>
+      <div class="rftile"><b>Itchy + painful eye + contact lens wearer + corneal haze or opacity</b> Acanthamoeba keratitis or Pseudomonas corneal ulcer — contact lens-related infection. Sight-threatening — can perforate the cornea within days. Contact lens must be removed immediately. Same-day emergency ophthalmology. Do NOT prescribe topical steroids to a contact lens wearer with a red eye — steroids in infectious keratitis cause catastrophic corneal melting.</div>
+      <div class="rftile"><b>Itchy + unilateral sudden onset + dendritic ulcer appearance or history of HSV/HZV</b> Herpes simplex keratitis (dendritic corneal ulcer — stained with fluorescein, branching pattern) — topical steroids are absolutely contraindicated (cause amoeboid ulceration and perforation). Same-day ophthalmology. Herpes zoster ophthalmicus (shingles involving V1 of CN V): vesicular rash on forehead + periorbital + Hutchinson's sign (tip of nose = nasociliary branch = high risk of eye involvement).</div>
+      <div class="rftile"><b>Severe itching + giant papillae under upper lid + marked photophobia in a child or young adult</b> Vernal keratoconjunctivitis (VKC) — sight-threatening seasonal allergic eye disease of childhood, commoner in boys and atopic individuals in warm climates. Giant cobblestone papillae on upper tarsal conjunctiva on eversion. Risk of corneal shield ulcers and scarring. Urgent ophthalmology (same-week) — needs cyclosporine or tacrolimus drops, not just antihistamines.</div>
+      <div class="rftile"><b>Itchy eye + acute onset severe pain + haloes around lights + cloudy cornea + nausea</b> Acute angle-closure glaucoma — intraocular pressure crisis. Not primarily "itchy" but can have ocular irritation component. Nausea + vomiting + headache + rock-hard eye on palpation. → 999 / same-day ophthalmology. IV acetazolamide 500 mg urgently. Permanent vision loss within hours if untreated. Most commonly triggered by mydriatics (dilating drops).</div>
+      <div class="rftile"><b>Itchy eye + purulent discharge in a neonate (&lt;28 days)</b> Ophthalmia neonatorum — Neisseria gonorrhoeae (profuse purulent, onset day 2–5) or Chlamydia trachomatis (moderate discharge, onset day 5–14). Both sight-threatening (corneal ulceration, perforation, blindness). Same-day paediatric ophthalmology + systemic antibiotics (IV ceftriaxone for gonococcal; oral azithromycin for chlamydial). Notify public health. Maternal STI investigation mandatory.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The topical steroid contraindication in contact lens-related keratitis and herpes simplex keratitis is one of the most important prescribing safety principles in primary care ophthalmology. Topical corticosteroids suppress the immune response that is normally keeping infectious keratitis in check — in HSV keratitis (dendritic ulcer), steroids cause the characteristic branching ulcer to spread into a large geographic amoeboid ulcer with rapid corneal thinning and risk of perforation. In bacterial and Acanthamoeba keratitis (both common in contact lens wearers), steroids allow unchecked microbial proliferation and corneal melting. The clinical rule is: never prescribe topical steroids for a red eye without a slit-lamp examination confirming there is no corneal involvement. In general practice without a slit lamp, the safest rule is: never prescribe topical steroids for any red eye in a contact lens wearer, and never prescribe topical steroids for any unilateral red eye with photophobia or corneal cloudiness without ophthalmology review. Vernal keratoconjunctivitis (VKC) is a sight-threatening condition that is distinct from common allergic conjunctivitis and is frequently under-diagnosed and under-treated in primary care — it affects primarily boys under 14, is associated with atopy (asthma, eczema, hayfever), is more prevalent in South Asian and Middle Eastern children in the UK, and can cause permanent corneal scarring (shield ulcers) from the mechanical trauma of the giant papillae rubbing on the cornea during blinking. The examination finding of giant cobblestone papillae under the upper eyelid (requiring upper lid eversion — a skill GPs should have) is diagnostic. These children need ophthalmology referral and management with topical cyclosporine, not just OTC antihistamine eye drops. Hutchinson's sign in herpes zoster ophthalmicus (vesicular rash on the tip of the nose) is a clinical sign that strongly predicts eye involvement — the nasociliary branch of V1 supplies both the tip of the nose and the eye. Approximately 76% of patients with HZO who have a rash on the tip of the nose develop ocular complications (keratitis, uveitis, scleritis). Any patient with HZO and Hutchinson's sign needs same-day ophthalmology referral, regardless of whether they have eye symptoms yet.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Classification — The Main Causes of Itchy Eyes</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Seasonal allergic conjunctivitis (SAC)</div><div>Most common cause of itchy eyes. Bilateral, seasonal (spring/summer — grass pollen; autumn — mould; winter — house dust mite dominant indoors). Itching = cardinal symptom. Watery discharge. Conjunctival redness. Chemosis (conjunctival oedema — "jelly eye"). Lid swelling. Associated rhinitis (allergic rhinoconjunctivitis). History of atopy (asthma, eczema, food allergy). Symptoms reproduced by specific allergen exposure. Responds to antihistamines and mast cell stabilisers.</div>
+      <div>Perennial allergic conjunctivitis (PAC)</div><div>Year-round symptoms — house dust mite (most common perennial allergen), pet dander (cat, dog), feathers, mould. Less intense than SAC but persistent. Itching + watery discharge + conjunctival redness. Associated perennial rhinitis. Management as per SAC but trigger avoidance is key (HDM mattress covers, HEPA filters, pet removal if possible).</div>
+      <div>Blepharitis</div><div>Lid margin inflammation — not primarily allergic but causes intense eyelid itching (especially on the lid margin), grittiness, crusting on lids in the morning, red lid margins, meibomian gland dysfunction (foamy or thickened tear film). Anterior blepharitis: staphylococcal (dandruff-like scales) or seborrhoeic (greasy scales). Posterior blepharitis: meibomian gland dysfunction (MGD) — most common cause of chronic dry eye + itch. Chronic, relapsing — requires lid hygiene routine indefinitely.</div>
+      <div>Dry eye disease</div><div>Paradoxically causes itch (dryness = irritation perceived as itch), burning, grittiness, foreign body sensation, transient blurring that clears with blinking. Worsened by screen use, air conditioning, wind, low humidity. Risk factors: older age, female sex, contact lens wear, antihistamines, antidepressants, antihypertensives, post-LASIK. Schirmer's test: &lt;5 mm/5 min = severe dry eye. TBUT (tear break-up time) &lt;10 sec on slit lamp = abnormal.</div>
+      <div>Contact dermatoconjunctivitis</div><div>Allergic reaction to topical eye drop preservatives (benzalkonium chloride — BAK — most common), cosmetics (mascara, eye shadow, liner), contact lens solution, nickel (eyelash curler). Periorbital eczema + conjunctival injection + intense itch. Patch testing to identify allergen. Treat by removing the offending agent. Switch to preservative-free eye drops. Important in patients whose allergic eye disease is not responding to standard treatment.</div>
+      <div>Giant papillary conjunctivitis (GPC)</div><div>Contact lens-induced papillary reaction on the upper tarsal conjunctiva (similar to but distinct from VKC). Itching worst on lens removal, mucus discharge, lens intolerance, blurred vision. Cause: mechanical trauma from lens edge + protein deposits on lens. Management: lens holiday (1–4 weeks), switch lens material (daily disposable), reduce wear time, topical mast cell stabiliser, regular lens replacement.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The distinction between itching (allergic/blepharitis/dry eye) and pain (infective/inflammatory) is the most important first clinical discriminator in eye presentations — itching is predominantly a feature of Type I hypersensitivity reactions (allergic conjunctivitis) and ocular surface disorders (dry eye, blepharitis), whereas pain, photophobia, and visual change are features of more serious pathology. However, this distinction is not absolute — patients with severe allergic conjunctivitis (especially VKC) can experience significant discomfort amounting to pain from the friction of giant papillae on the cornea, and patients with iritis can have some ocular discomfort described as "itching." The key principle is that any itchy eye with visual change, severe photophobia, or unilateral presentation should be examined carefully before attributing to simple allergy. Meibomian gland dysfunction (MGD) is one of the most important and most under-diagnosed causes of itchy eyes in adults — it causes posterior blepharitis through obstruction of the meibomian glands (which produce the oily outer layer of the tear film that prevents evaporation). When these glands are obstructed by abnormally viscous meibum (often keratinised), the tear film becomes lipid-deficient, evaporates rapidly, and the resulting dryness causes itch, burning, and grittiness. MGD is present in approximately 40–60% of the population over 40. The treatment (warm compresses + lid massage to express blocked meibomian glands + omega-3 supplementation to normalise meibum viscosity) is entirely primary care-managed and dramatically effective. GPs should be aware that most patients who present with "itchy dry eyes" unresponsive to antihistamine drops have MGD and need lid hygiene rather than more antihistamine. Contact dermatoconjunctivitis from benzalkonium chloride (BAK) preservative is an important and very common cause of itchy eyes that paradoxically worsens with the eye drop treatment — BAK is the preservative in most multidose topical eye drops (including most antihistamine drops and artificial tears), and prolonged use causes a toxic/allergic reaction in approximately 10–15% of patients, producing chronic itching, redness, and irritation that exactly mimics the condition the drops were prescribed to treat. If a patient's allergic eye symptoms worsen with eye drop treatment, switching to preservative-free formulations (single-dose units) will often produce dramatic improvement.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Targeted History &amp; Examination</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Key history</div><div>Bilateral vs unilateral (bilateral = usually allergy/dry eye; unilateral = always exclude infective/inflammatory) · Seasonal pattern (SAC) vs year-round (PAC, dry eye, blepharitis) · Discharge character: watery/mucoid (allergy/dry eye), purulent (bacterial), stringy/ropy (VKC, dry eye) · Atopy history (asthma, eczema, food allergy, hayfever) · Contact lens use (GPC, keratitis risk) · Pet or dust exposure · Topical medications (BAK sensitivity) · Cosmetic use (mascara, liner) · Screen use/dry environment (dry eye) · Recent viral URTI (viral conjunctivitis)</div>
+      <div>Examination (with direct illumination or slit lamp if available)</div><div>Visual acuity (any VA reduction → urgent ophthalmology) · Conjunctival injection pattern: diffuse (allergy/viral) vs ciliary flush (limbal redness = uveitis) · Discharge: watery vs purulent vs ropy · Lid margin: crusting/scaling = blepharitis; swelling = allergy/cellulitis · Chemosis (conjunctival oedema = severe allergy) · Cornea: clear (allergy) vs hazy/opacity (keratitis, glaucoma) · Papillae vs follicles (giant papillae under upper lid = VKC/GPC; follicles = viral/chlamydial) · Pupil: equal round reactive (allergy) vs irregular/miotic (uveitis)</div>
+      <div>Upper lid eversion</div><div>Essential for diagnosing VKC and GPC — must be performed in any child with severe chronic itchy eyes or any contact lens wearer with itch + lens intolerance. Technique: ask patient to look down, hold upper lashes, press a cotton bud on the upper lid crease, fold lid over the bud. Giant papillae (&gt;1 mm, cobblestone appearance) = VKC (children) or GPC (contact lens wearers). Follicles = viral/chlamydial. Smooth surface = allergic conjunctivitis.</div>
+      <div>Allergen identification history</div><div>Tree pollen: late Feb–April (birch, alder). Grass pollen: May–July (peak UK allergic conjunctivitis season). Weed pollen: August–September. Mould: late summer/autumn (damp environments). HDM: year-round (worse in winter — more time indoors, less ventilation). Pet: cat dander most allergenic (Fel d 1 protein — lingers in environments for months after pet removed). Work exposure: flour dust, animal dander (occupational allergy).</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The papillae versus follicles distinction on the conjunctival surface is one of the most clinically useful examination findings in red/itchy eye assessment. Papillae are vascular mounds with a central capillary core, appearing as polygonal red dots — they indicate a cellular/allergic reaction and are seen in allergic conjunctivitis (small papillae &lt;1 mm on inferior tarsal conjunctiva), VKC (giant papillae &gt;1 mm on upper tarsal conjunctiva), and GPC. Follicles are avascular lymphoid aggregates appearing as translucent round bumps with vessels going around rather than through them — they indicate a lymphoid immune response and are seen in viral conjunctivitis (adenovirus — the most common cause of follicular conjunctivitis), chlamydial conjunctivitis (which must be excluded in any sexually active adult with chronic follicular conjunctivitis), and molluscum contagiosum affecting the eyelid margin. A GP who can reliably distinguish papillae from follicles using direct illumination and lid eversion can make the correct diagnosis in the majority of itchy/red eye cases. Upper lid eversion is a clinical skill that should be in every GP's repertoire — it takes approximately 30 seconds to perform and provides the crucial examination of the upper tarsal conjunctiva that reveals VKC, GPC, and papillary/follicular patterns. The most common reason VKC is missed in general practice is that the upper lid is not everted, so the diagnostic giant papillae are never seen. The bilateral vs unilateral rule is highly sensitive — bilateral itchy eyes almost always have a benign systemic cause (allergy, dry eye), whereas unilateral itchy eyes require examination to exclude infective, inflammatory (uveitis), or structural causes. A unilateral allergic conjunctivitis does occur (unilateral allergen exposure — working with animals on one side, unilateral contact lens reaction) but is less common and should trigger a more thorough examination.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Allergy testing</div><div><span class="pill pill-blue">Specific IgE blood test (RAST/ImmunoCAP)</span> — for common aeroallergens: grass pollen (Phleum pratense g6), house dust mite (Dermatophagoides pteronyssinus d1), cat dander (Fel d1), dog dander (Can f1), tree pollen (birch, alder). Useful when: multiple possible triggers, considering immunotherapy (AIT), occupational allergy, severe/refractory disease. <span class="pill pill-blue">Skin prick testing</span> (specialist allergy clinic — more sensitive, broad panel). Not routinely needed for typical seasonal allergic conjunctivitis with clear history.</div>
+      <div>Conjunctival swab</div><div>Not routinely required for allergic conjunctivitis. Indicated: purulent discharge (bacterial conjunctivitis — culture + sensitivity), neonatal conjunctivitis (urgent culture for Neisseria gonorrhoeae + Chlamydia PCR), contact lens wearer with acute red + painful eye (corneal scraping by ophthalmology), chronic unilateral follicular conjunctivitis in sexually active adult (Chlamydia trachomatis PCR — send as eye swab to virology).</div>
+      <div>Total IgE + eosinophil count</div><div>Useful in children with suspected severe atopic disease (high total IgE supports atopic diagnosis). Eosinophilia (blood eosinophils &gt;0.5 × 10⁹/L) supports allergic/eosinophilic disease in refractory cases. Not specific for allergic conjunctivitis — routine measurement not required for straightforward seasonal cases.</div>
+      <div>When NOT to investigate</div><div>Typical bilateral seasonal itchy watery eyes + positive atopy history + clear allergen trigger in an otherwise well patient → no investigations required. Clinical diagnosis is sufficient. Prescribe empirically. Investigations only needed when: diagnosis is uncertain, allergy immunotherapy is being considered, occupational allergy screen required, or symptoms are refractory to standard treatment.</div>
+      <div>Schirmer's test (dry eye)</div><div>Performed by ophthalmology or optometrist: standardised paper strip placed under lower lid — wetting &lt;5 mm in 5 minutes = severe dry eye; &lt;10 mm = mild-moderate. Useful to quantify dry eye severity when diagnosis is uncertain. Osmolarity testing (TearLab device): tear osmolarity &gt;308 mOsm/L = dry eye disease. Not routinely available in GP but available in some optometry practices with medical-grade equipment.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The chlamydial conjunctivitis swab in sexually active adults with chronic follicular conjunctivitis is a frequently missed investigation — Chlamydia trachomatis (serovars D–K) causes a chronic, unilateral or bilateral, follicular conjunctivitis in sexually active adults, typically presenting as a red itchy eye with follicles on the inferior tarsal conjunctiva and preauricular lymph node enlargement (pathognomonic). It is caused by autoinoculation from genital chlamydial infection. The diagnosis is missed because: (1) it does not produce the acute purulent discharge of bacterial conjunctivitis; (2) it does not respond to topical antibiotics (chlamydia requires systemic treatment); (3) GPs do not routinely take a sexual history in the context of an eye presentation. Any adult with chronic unilateral follicular conjunctivitis not responding to topical treatment warrants a sexual history and chlamydial PCR swab from the eye and genital sites. Treatment is doxycycline 100 mg BD × 3 weeks (or azithromycin 1 g stat for the genital infection, but longer course needed for ocular involvement). Partner notification is required. The specific IgE blood test for allergy immunotherapy (AIT) planning is important to understand — AIT (subcutaneous or sublingual desensitisation) is the only treatment that modifies the underlying allergic disease rather than simply suppressing symptoms. NICE recommends sublingual immunotherapy (SLIT) for house dust mite-driven allergic rhinitis and allergic asthma, and subcutaneous immunotherapy (SCIT) is effective for pollens. AIT requires confirmed specific IgE sensitisation before initiation — blood or skin prick testing is mandatory. GPs who identify patients with severe, refractory allergic conjunctivitis (particularly HDM-driven perennial disease) should refer to allergy/immunology for AIT consideration, as this can produce lasting symptom-free periods years after the course is completed.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="REFER" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">Same-day ophthalmology</span></div><div>Any itchy/red eye with: reduced VA · severe photophobia · corneal opacity or haze · unilateral red eye in contact lens wearer · suspected HSV keratitis (dendritic ulcer) · suspected acute angle-closure glaucoma (pain + nausea + haloes) · HZO with Hutchinson's sign · ophthalmia neonatorum · suspected anterior uveitis (ciliary flush + miosis)</div>
+      <div>Urgent ophthalmology (within 1 week)</div><div>Suspected VKC (child with giant papillae on lid eversion, severe itching, photophobia) · Suspected GPC in contact lens wearer not responding to conservative management · Chronic unilateral conjunctivitis with follicles not responding to 4 weeks treatment (chlamydial exclusion + slit lamp) · Recurrent severe allergic conjunctivitis requiring corticosteroid drops</div>
+      <div>Routine ophthalmology / optometrist</div><div>Chronic dry eye disease not responding to 3 months of lubricants + lid hygiene (for slit lamp, TBUT, Schirmer's, meibomian gland expression) · Blepharitis not responding to 8 weeks lid hygiene routine · Consideration of punctal plugs for severe aqueous-deficient dry eye</div>
+      <div>Allergy clinic / immunology</div><div>Allergic rhinoconjunctivitis severely impairing quality of life and not controlled by antihistamines + nasal steroid · Occupational allergic conjunctivitis (skin prick testing required) · Consideration of allergen immunotherapy (AIT) — confirmed specific IgE sensitisation required · Anaphylaxis risk with allergen exposure (add-on to eye referral)</div>
+      <div>GUM / sexual health</div><div>Chlamydial conjunctivitis confirmed or suspected (follicular conjunctivitis in sexually active adult) → conjunctival PCR swab + GUM referral for genital screen, treatment, and partner notification. Ophthalmia neonatorum: concurrent sexual health management of the mother and partner (maternal gonorrhoea or chlamydia requires treatment + notification).</div>
+      <div>Community optometrist (minor eye conditions service)</div><div>NHS Minor Eye Conditions Service (MECS) available in most areas — GPs can refer patients with red eye or itchy eye to optometrists with enhanced training for same-day or next-day assessment. More accessible than A&E or GP for many patients. The optometrist can differentiate, prescribe (where locally commissioned), and triage to ophthalmology if needed. Most suitable for mild-moderate itchy red eye without red flag features.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The NHS Minor Eye Conditions Service (MECS) is available in most Clinical Commissioning Group/ICB areas in England — it allows community optometrists with enhanced training to assess and manage minor eye conditions (including conjunctivitis, dry eye, blepharitis, and minor trauma) on the same day or next day, either as a direct patient self-referral or via GP referral. For straightforward itchy eye presentations, MECS provides a faster, more appropriate pathway than A&E ophthalmology (where simple allergy conjunctivitis should not be presenting) or a GP appointment where a slit lamp is unavailable. GPs should know whether their area has a MECS service and direct appropriate patients there. The VKC referral urgency (within 1 week, not routine) reflects the sight-threatening potential of this condition — corneal shield ulcers from giant papillae-induced mechanical trauma can develop rapidly during peak seasonal exposure and require urgent treatment with topical cyclosporine or tacrolimus. A child with severe seasonal itchy eyes who has been treated with OTC antihistamine drops for months without significant improvement, particularly a South Asian or Middle Eastern boy, should have their upper lids everted at GP examination. Finding giant papillae mandates urgent ophthalmology referral, not an escalation to prescription antihistamine drops. The allergy immunotherapy referral pathway for severe rhinoconjunctivitis is one of the most under-used referrals in primary care — sublingual immunotherapy (SLIT) with grass pollen or house dust mite allergen extracts produces sustained clinical remission in 60–80% of patients with seasonal allergic conjunctivitis and rhinitis, including reduced medication requirements that persist years after the treatment course ends. NICE TA278 (SLIT for HDM) and TA246 (SLIT for grass pollen) both provide positive recommendations for these treatments in adults with severe symptoms inadequately controlled by pharmacotherapy. The barrier is typically the multi-year commitment required (3–5 years of daily sublingual drops or monthly injections) and the availability of allergy clinic appointments — GPs who identify a patient with severe refractory allergic rhinoconjunctivitis should proactively refer to allergy/immunology rather than escalating pharmacotherapy indefinitely.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="TREAT" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>Treatment Ladder — Allergic Conjunctivitis</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1<br/>Mild seasonal</span><span class="rt"><b>Topical antihistamine (OTC):</b> olopatadine 0.1% (Opatanol) 1 drop BD — dual action: antihistamine + mast cell stabiliser. Or azelastine 0.05% (Optilast) 1 drop QDS. Or ketotifen 0.025% (Zaditen) 1 drop BD. All available OTC. Start before the allergy season (pre-seasonal dosing). For acute relief: single dose topical antihistamine provides significant itch relief within 15 minutes. <b>Cold compresses</b> (cold water flannel to closed lids — 5 minutes) — immediate symptomatic relief, no side effects. <b>Oral antihistamine</b> (loratadine 10 mg OD or cetirizine 10 mg OD) if rhinitis co-exists — treats both simultaneously.</span></div>
+      <div class="rung"><span class="rn">Step 2<br/>Moderate / persistent</span><span class="rt"><b>Mast cell stabiliser:</b> sodium cromoglicate 2% drops QDS (lodoxamide 0.1% is more potent — Alomide, prescription). Must be started 2–4 weeks before allergen season and continued throughout — does not provide immediate relief (prophylactic only). Combined antihistamine + mast cell stabiliser (olopatadine, azelastine) is more effective than either alone. <b>Oral non-sedating antihistamine</b> (loratadine 10 mg OD, cetirizine 10 mg OD, fexofenadine 120 mg OD) for combined rhinitis. <b>Preservative-free topical antihistamine</b> if BAK sensitivity (single-dose unit olopatadine).</span></div>
+      <div class="rung"><span class="rn">Step 3<br/>Severe / not controlled</span><span class="rt"><b>Topical NSAID:</b> ketorolac 0.5% (Acular) drops QDS — reduces ocular itching independently of histamine, useful adjunct to antihistamines. <b>Short-course topical steroid</b> (ophthalmology-initiated — loteprednol, prednisolone acetate): for severe exacerbations only, maximum 7–10 days, only after corneal disease excluded by slit lamp. GP should NOT initiate topical steroid without corneal clearance. <b>Oral prednisolone 20–30 mg</b> for severe acute exacerbation (1–3 days) while awaiting ophthalmology. <b>VKC:</b> topical cyclosporine 0.1% or tacrolimus 0.03% — specialist-initiated.</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Olopatadine is the preferred first-line topical antihistamine for allergic conjunctivitis because it has a dual mechanism — it is both an H1 receptor antagonist AND a mast cell stabiliser, preventing both the immediate-phase reaction (histamine-mediated itch within minutes of allergen exposure) and the late-phase reaction (cytokine-mediated inflammation 4–8 hours later). This dual mechanism means it provides both immediate symptomatic relief and sustained prophylaxis with BD dosing, making it more effective and more convenient than antihistamines alone (which only block immediate-phase) or mast cell stabilisers alone (which only prevent late-phase when used prophylactically). The prescribing principle of pre-seasonal dosing for mast cell stabilisers (sodium cromoglicate, nedocromil) is important — these drugs do not provide immediate relief. They work by stabilising mast cell membranes, preventing degranulation on allergen contact. This prophylactic mechanism requires consistent use for 2–4 weeks before allergen exposure to achieve maximum effect. Patients who start taking sodium cromoglicate drops at the height of the grass pollen season in June will not achieve the same benefit as those who start in April. GPs prescribing or recommending mast cell stabilisers must explicitly advise patients to start before the season begins. Cold compresses are one of the most effective immediate interventions for allergic conjunctivitis itch and are entirely evidence-based — cold temperature reduces mast cell degranulation activity, constricts blood vessels (reducing conjunctival chemosis and hyperaemia), and provides a counter-irritation effect that overrides itch signalling. A cold flannel to closed eyes for 5 minutes can provide more rapid itch relief than any eye drop, costs nothing, and can be repeated multiple times daily. This should be taught to every patient with allergic conjunctivitis as first-line immediate management alongside pharmacological treatment.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Blepharitis &amp; Dry Eye Management</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Lid hygiene routine (blepharitis)</div><div>The cornerstone of blepharitis treatment — must be performed consistently twice daily. (1) <b>Warm compress</b>: warm wet flannel or Eyebag (microwavable reusable lid warmer) held to closed lids for 5 minutes — softens blocked meibum, opens meibomian glands. (2) <b>Lid massage</b>: using a clean finger, press the lid margin and massage from outer to inner corner — expresses liquefied meibum. (3) <b>Lid scrubs</b>: cotton bud dipped in diluted baby shampoo (1:10 with warm water) or commercial lid wipe (Blephasol, Blephaclean — preservative-free, pharmacy OTC) — removes debris, demodex, bacterial biofilm from lid margins. Perform BD for 8 weeks initially, then OD maintenance lifelong.</div>
+      <div>Topical antibiotics (blepharitis)</div><div>Chloramphenicol 1% ointment applied to lid margins OD at night × 4–6 weeks — for anterior staphylococcal blepharitis with significant bacterial colonisation. Not effective for posterior (meibomian) blepharitis alone — lid hygiene is the primary treatment. Fusidic acid 1% gel (Fucithalmic) — alternative for marginal blepharitis. Azithromycin 1% drops — off-label, evidence for meibomian gland dysfunction (anti-inflammatory properties).</div>
+      <div>Systemic antibiotics (blepharitis — severe/rosacea-associated)</div><div><b>Doxycycline 40–100 mg OD × 6–12 weeks</b> — best evidence for posterior blepharitis/MGD, particularly in acne rosacea-associated blepharitis (rosacea blepharitis: lid telangiectasia, facial flushing, papules — doxycycline treats both ocular and facial rosacea). Anti-inflammatory mechanism (inhibits matrix metalloproteinases — reduces lid inflammation independently of antibiotic effect). Avoid in pregnancy/breastfeeding and under 12 years. Oxytetracycline 250–500 mg BD as alternative.</div>
+      <div>Dry eye lubricants</div><div><b>Carbomer gel (Viscotears) QDS</b> — viscous, longer contact time, good for moderate-severe dry eye. <b>Hyaluronate drops 0.1–0.2% (Hylo-Tear, Hycosan) BD–QDS</b> — mucoadhesive, stabilises tear film, excellent tolerability. <b>Carmellose sodium 0.5–1% (Celluvisc) QDS</b> — effective, inexpensive. Preservative-free formulations strongly preferred for dry eye (multidose drops with BAK worsen dry eye with frequent use). For severe dry eye: high-viscosity gel (Viscotears BD) or ointment (Lacri-Lube) at night. Omega-3 supplementation (1 g EPA/DHA daily — improves meibomian gland function, NNT approximately 6 for improved TBUT).</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The lid hygiene routine (warm compress → massage → lid scrub) sequence must be performed in this precise order because each step prepares for the next — the warm compress first softens the solidified meibum inside the meibomian glands (at 37°C it becomes more viscous and blocks the gland openings; warming to approximately 45°C liquefies it), the massage then expresses this liquid meibum from the glands onto the lid margin, and the scrub then removes the expressed meibum and debris before it reaccumulates. Performing the scrub without the warm compress first is much less effective because the glands are not primed for expression. The Eyebag (a microwavable wheat-filled bag designed specifically for warm lid compression) maintains temperature better than a wet flannel and is proven in RCTs to be superior for meibomian gland dysfunction — it should be recommended to patients as a long-term investment, typically costing approximately £12. The doxycycline mechanism for blepharitis is primarily anti-inflammatory rather than antibiotic at the doses used — doxycycline at sub-antimicrobial doses (40 mg OD — Periostat dosing) inhibits matrix metalloproteinases (MMPs) that are activated in the meibomian glands and conjunctiva in MGD and rosacea, causing local tissue inflammation and destruction of the lipid bilayer of the tear film. This MMP inhibition is independent of its antibiotic activity and explains why it works in posterior blepharitis where bacterial infection is not the primary mechanism. The 6–12 week course is typically needed before improvement is sustained, and courses may need to be repeated annually in chronic posterior blepharitis/rosacea. Preservative-free lubricants are significantly superior to preserved lubricants for chronic dry eye management — BAK preservative (present in most multidose lubricant eye drops) causes direct toxicity to corneal epithelial cells, goblet cells (which produce the mucin layer of the tear film), and meibomian gland cells with repeated use. In patients using lubricants more than 4 times daily, the BAK exposure becomes clinically significant and worsens the dry eye it is intended to treat. The NHS and RCOphth guidance is to use preservative-free lubricants when treatment frequency exceeds 4 times daily.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Allergen Avoidance, Environmental Modification &amp; Eye Care</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Pollen avoidance (SAC)</b> Check the pollen count (Met Office app — 5-day pollen forecast). Stay indoors on high pollen count days (especially 5–7 PM — pollen falls as temperatures drop). Keep windows and doors closed during peak season. Shower and change clothes after being outside. Dry laundry inside (pollen adheres to wet fabric). Wrap-around sunglasses outdoors — significantly reduces pollen-to-conjunctiva contact. Petroleum jelly around the nostrils (traps pollen — evidence from Manchester study showing 30% reduction in symptoms).</div>
+      <div class="lstile"><b>House dust mite reduction (PAC)</b> HDM allergen (Der p 1) is the most common perennial allergen. Impermeable mattress and pillow encasements (reduces HDM exposure by 60%). Wash bedding weekly at 60°C (kills HDMs — 40°C does not kill, only removes). Replace carpets with hard flooring where possible. HEPA vacuum cleaner (reduces airborne HDM allergen). Lower indoor humidity (&lt;50% RH — HDM cannot survive below 40% humidity) using dehumidifier. Remove soft furnishings and stuffed toys from bedroom.</div>
+      <div class="lstile"><b>Pet allergy management</b> Cat allergen (Fel d 1) is extremely sticky and persistent — remains detectable in cat-free homes for 6 months. If unable to rehome the pet: keep pets out of the bedroom (designated cat-free zone), HEPA air purifiers in bedroom and main living areas, weekly bathing of the cat (reduces dander shedding by 40–80% — most owners do not do this), frequent handwashing after cat contact, avoid touching face after petting. Neutralising anti-Fel d 1 cat food (Purina Pro Plan LiveClear) reduces allergen on fur by 47% after 3 weeks.</div>
+      <div class="lstile"><b>Screen use and dry eye</b> Digital eye strain and screen-induced dry eye (reduced blink rate during screen use — normal blink rate 12–16/min falls to 5–7/min during screen use). Apply the 20-20-20 rule: every 20 minutes, look at something 20 feet away for 20 seconds (reduces ciliary muscle fatigue and restores blink rate). Conscious blinking exercises during screen use. Screen position: slightly below eye level (less upper lid retraction, reduces corneal exposure). Reduce screen brightness. Increase font size to reduce focusing effort.</div>
+      <div class="lstile"><b>Cosmetics and contact lens hygiene</b> Mascara and eye shadow: use hypoallergenic, fragrance-free products. Replace mascara every 3 months (bacterial contamination). Remove make-up completely before sleep — sleeping in mascara causes direct mechanical trauma to conjunctiva and corneal epithelium. Contact lens hygiene: daily disposable lenses are the most hygienic option (no protein build-up, no solution sensitivity). Never sleep in contact lenses. Replace lens case every month. Use hydrogen peroxide-based lens solution (no preservatives — superior for GPC and lens intolerance).</div>
+      <div class="lstile"><b>Eye rubbing — the most harmful habit</b> Eye rubbing is the single most damaging behaviour in allergic conjunctivitis — mechanical pressure on the cornea causes mast cell degranulation (releasing more histamine — creates a rubbing cycle), direct corneal trauma (contributing to keratoconus in severe allergic disease), introduction of allergens and bacteria from fingers. Advise patients explicitly: rubbing provides momentary relief but worsens symptoms. Instead: cold compress, instil antihistamine drop, blink firmly. Tell children specifically: "rubbing makes the itch worse tomorrow." In VKC: keratoconus risk from chronic rubbing is a serious long-term consequence.</div>
+      <div class="lstile"><b>Diet and omega-3</b> Omega-3 fatty acids (EPA and DHA, 1–2 g daily) improve meibomian gland function by normalising meibum viscosity and reducing inflammatory mediators in the lid gland secretions. Evidence: multiple RCTs showing improved TBUT and subjective dry eye symptoms with omega-3 supplementation at 3 months. Sources: oily fish (mackerel, salmon, sardines, herring — 2 portions/week), flaxseed oil (plant source, less bioavailable). Anti-inflammatory diet (Mediterranean pattern) reduces systemic atopic inflammation in allergic conjunctivitis.</div>
+      <div class="lstile"><b>Workplace ergonomics and humidification</b> Air conditioning, central heating, and air travel severely worsen dry eye by reducing ambient humidity (RH as low as 10–20% in aircraft cabins vs ideal 45–55%). Use a desk humidifier (target RH 45–55%). VDU positioning: screen below eye level, appropriate character size to reduce squinting. Wind, fans, and air vents directed at the face worsen tear evaporation — redirect desk fan away from face. Protective eyewear (wraparound glasses, swim goggles for wind/sport) reduces evaporative dry eye and allergen exposure simultaneously.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The keratoconus-eye rubbing link is one of the most important patient safety messages in allergic eye disease management — keratoconus (progressive corneal thinning and ectasia causing irregular astigmatism and visual distortion) is strongly associated with chronic vigorous eye rubbing, particularly in patients with VKC and atopic eye disease. The mechanical stress of rubbing causes corneal cell apoptosis, activation of corneal proteases (collagenases that break down the stromal collagen lamellae), and localised thinning that produces the characteristic conical corneal protrusion. Keratoconus affects approximately 1 in 2,000 people in the general population but has a significantly higher prevalence in patients with atopic eye disease and chronic eye rubbing. It typically becomes clinically significant in the teens and 20s and can require corneal cross-linking (to halt progression) or corneal transplantation in advanced cases. Advising patients (especially children and adolescents with VKC) that eye rubbing must be avoided is a sight-preserving intervention. The Purina Pro Plan LiveClear cat food (containing anti-Fel d 1 chicken egg product — anti-Fel d 1 antibodies that bind and neutralise the allergen in saliva before the cat grooms and deposits it on its fur) is a genuinely evidence-based novel intervention — a controlled study (DeBoer et al. Immunity Inflammation and Disease 2019) demonstrated a 47% reduction in active Fel d 1 on cat fur after 3 weeks of feeding, with reduction in cat-allergic individuals' skin prick test reactivity to cat fur collected from cats fed the food vs control. This is the first diet-based allergen-neutralisation strategy for a pet allergen and represents a novel option for cat owners who cannot rehome their pet and find conventional allergen avoidance insufficient.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Mild-moderate allergic conjunctivitis</div><div>No routine follow-up needed if responding to treatment. Patient-initiated review if symptoms not controlled after 4 weeks of optimised topical treatment + oral antihistamine. Annual review at the start of allergy season (prescription renewal, assess severity, consider stepping up treatment). Document: treatment given, patient education on pre-seasonal prophylaxis, avoidance measures discussed.</div>
+      <div>Blepharitis — 6–8 weeks</div><div>Review at 6–8 weeks of lid hygiene to assess compliance and response. Lid hygiene is lifelong — improvement expected but not cure. Adjust routine if not compliant (simplified lid wipe protocol instead of 3-step if adherence is poor). If not responding at 8 weeks → add topical chloramphenicol ointment or doxycycline (if rosacea-associated). Review for rosacea features (facial flushing, telangiectasia, rhinophyma).</div>
+      <div>Dry eye — 3 months</div><div>Is lubricant frequency adequate? Preservative-free? Warm compress + lid massage routine adherence? Omega-3 started? Screen habits modified? If not responding to lubricants + lid hygiene at 3 months → optometrist or ophthalmology referral for Schirmer's, TBUT, punctal plug consideration, or topical cyclosporine (Ikervis 0.1% — licensed for severe dry eye keratitis, ophthalmology-initiated). Annual review: dry eye is chronic, progressive — monitor VA.</div>
+      <div>Contact lens management review</div><div>Any contact lens wearer with GPC or recurrent lens intolerance: ensure switched to daily disposables, reducing wear time, using hydrogen peroxide care system. If still symptomatic → ophthalmology. Annual review of lens prescription and health. Remind: never sleep in lenses, replace case monthly, attend annual eye examination with optometrist even if no symptoms.</div>
+      <div>Medication review — topical steroid monitoring</div><div>If topical steroids initiated by ophthalmology: GP must not renew prescription without ophthalmology review (steroid-induced glaucoma risk — raised IOP with prolonged topical steroid use; posterior subcapsular cataract with long-term use). Review IOP at 4–6 weeks of steroid use. Patients on long-term topical steroids for VKC require 3-monthly IOP checks by optometrist. Document: who initiated, for what indication, duration planned.</div>
+      <div><span class="pill pill-red">Same-day ophthalmology safety-net</span></div><div>Any new pain, photophobia, or VA change in a patient under treatment for itchy eyes → same-day ophthalmology. Contact lens wearer with new painful red eye during follow-up → remove lens immediately and same-day assessment. New corneal cloudiness or opacity on inspection. Rash around the eye (HZO — Hutchinson's sign on nose). Any episode of acutely raised IOP (haloes + nausea) in a patient on topical steroids.</div>
+      <div><span class="pill pill-amber">Urgent review same week</span></div><div>Allergic conjunctivitis not responding to 4 weeks of adequate topical + systemic antihistamine (reconsider diagnosis — VKC? Contact dermatoconjunctivitis? Chlamydial? Dry eye?) · Child with severe seasonal itchy eyes — evert upper lid before each treatment escalation · Blepharitis with corneal involvement (photophobia) → ophthalmology rather than GP escalation</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The topical steroid monitoring imperative is one of the most important safety issues in primary care ophthalmology — approximately 30% of the general population has a genetically determined steroid responder phenotype that causes a significant rise in intraocular pressure (IOP) in response to topical ophthalmic corticosteroids. In steroid responders, IOP typically rises within 4–6 weeks of starting topical steroids and returns to normal after discontinuation. However, if sustained elevations are undetected and the steroid is continued, glaucomatous optic nerve damage can occur (steroid-induced open-angle glaucoma). GPs who receive a prescription for topical loteprednol, prednisolone acetate, or betamethasone eye drops from an ophthalmologist should: (1) ensure IOP was measured at the ophthalmology visit before prescription; (2) schedule an IOP check at 4–6 weeks with the community optometrist (most optometrists can measure IOP with non-contact tonometry); (3) not renew topical steroid prescriptions for eye conditions without ophthalmology review. The "treatment failure = reconsider diagnosis" principle for allergic conjunctivitis is practically important — many patients who do not respond to antihistamine drops and oral antihistamines have been treated for the wrong diagnosis. The three most commonly missed alternative diagnoses are: (1) dry eye masquerading as allergy (itch without watery discharge, worse with screen use, worse in the afternoon, BAK sensitivity from previous drops); (2) contact dermatoconjunctivitis from cosmetics or drop preservatives (worsens with continued use of the allergen-containing product); (3) chlamydial conjunctivitis (unilateral, follicular, sexually active, often accompanied by discharge that is not clearly purulent). Reviewing these three diagnoses at the "4 weeks not responding" review point, and examining the upper lid (eversion), testing VA, and taking a sexual history if appropriate, will identify the missed diagnosis in most cases.</div></div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE CKS Allergic Conjunctivitis (2023), NICE CKS Blepharitis (2023), NICE CKS Dry Eye (2023), NICE CKS Infective Conjunctivitis (2023), RCOphth Commissioning Guide for Medical Ophthalmology 2021, SIGN 116 (Allergic Rhinitis), Leonardi et al. Prog Retin Eye Res (VKC 2021), DeBoer et al. Immunity Inflammation Disease 2019 (anti-Fel d 1 cat food). Always adapt to individual patient context.
+</div>
+
+<script>
+(function(){
+  const STORE='rgp.alg.itchyeye.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true;});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+</body>
+</html>

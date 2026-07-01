@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Epistaxis Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c-bg: #fafbfc;
+  --c-card: #ffffff;
+  --c-border: #e0e4e8;
+  --c-text: #1a2332;
+  --c-text-light: #5a6a7f;
+  --c-primary: #0066cc;
+  --c-primary-light: #e6f0ff;
+  --c-red: #d32f2f;
+  --c-red-light: #ffebee;
+  --c-purple: #7b1fa2;
+  --c-purple-light: #f3e5f5;
+  --c-blue: #1976d2;
+  --c-blue-light: #e3f2fd;
+  --c-teal: #00796b;
+  --c-teal-light: #e0f2f1;
+  --c-amber: #f57c00;
+  --c-amber-light: #fff3e0;
+  --c-green: #388e3c;
+  --c-green-light: #e8f5e9;
+  --c-grey: #616161;
+  --c-grey-light: #f5f5f5;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.stem-banner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 24px 28px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+}
+
+.sb-icon {
+  font-size: 48px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.stem-banner b {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.stem-banner small {
+  display: block;
+  font-size: 15px;
+  opacity: 0.95;
+  font-weight: 400;
+}
+
+.alg-progress {
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.alg-progress > span:first-child {
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--c-text-light);
+}
+
+.pcount {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--c-primary);
+}
+
+.pbar {
+  flex: 1;
+  height: 8px;
+  background: var(--c-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pbar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-primary), #667eea);
+  width: 0;
+  transition: width 0.3s ease;
+  border-radius: 8px;
+}
+
+.reset {
+  background: transparent;
+  border: 1.5px solid var(--c-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-text-light);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.reset:hover {
+  border-color: var(--c-primary);
+  color: var(--c-primary);
+  background: var(--c-primary-light);
+}
+
+.alg-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.node {
+  background: var(--c-card);
+  border: 2px solid var(--c-border);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.node.done {
+  border-color: var(--c-green);
+  background: var(--c-green-light);
+}
+
+.node-num {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  width: 36px;
+  height: 36px;
+  background: var(--c-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--c-text-light);
+  z-index: 1;
+}
+
+.node.done .node-num {
+  background: var(--c-green);
+  color: white;
+}
+
+.node.done .node-num::after {
+  content: '✓';
+  font-size: 18px;
+}
+
+.node-head {
+  padding: 20px 72px 16px 72px;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.node.done .node-head {
+  border-bottom-color: rgba(56, 142, 60, 0.2);
+}
+
+.node-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.node[data-type="SAFETY"] .node-tag {
+  background: var(--c-red-light);
+  color: var(--c-red);
+}
+
+.node[data-type="DIAGNOSE"] .node-tag {
+  background: var(--c-blue-light);
+  color: var(--c-blue);
+}
+
+.node[data-type="TREAT"] .node-tag {
+  background: var(--c-teal-light);
+  color: var(--c-teal);
+}
+
+.node[data-type="REFER"] .node-tag {
+  background: var(--c-purple-light);
+  color: var(--c-purple);
+}
+
+.node[data-type="LIFESTYLE"] .node-tag {
+  background: var(--c-green-light);
+  color: var(--c-green);
+}
+
+.node-head h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.3;
+}
+
+.node-tick {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.node-tick label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.node-tick input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: var(--c-green);
+}
+
+.tlbl {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-text-light);
+}
+
+.node-body {
+  padding: 24px 28px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px 24px;
+  margin-top: 16px;
+  align-items: start;
+}
+
+.kv > div:nth-child(odd) {
+  font-weight: 600;
+  color: var(--c-text);
+  padding-top: 2px;
+}
+
+.kv > div:nth-child(even) {
+  color: var(--c-text);
+}
+
+.rfgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.rftile {
+  background: var(--c-red-light);
+  border-left: 4px solid var(--c-red);
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.rftile b {
+  display: block;
+  color: var(--c-red);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.b-card {
+  border: 2px solid var(--c-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--c-bg);
+}
+
+.b-cond {
+  background: var(--c-primary-light);
+  color: var(--c-primary);
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  border-bottom: 2px solid var(--c-border);
+}
+
+.b-drug {
+  padding: 14px 16px;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--c-text);
+  background: white;
+}
+
+.b-note {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--c-text-light);
+  background: white;
+  border-top: 1px solid var(--c-border);
+}
+
+.ladder {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.rung {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border: 2px solid var(--c-border);
+  border-bottom: none;
+  background: white;
+}
+
+.rung:first-child {
+  border-radius: 12px 12px 0 0;
+}
+
+.rung:last-child {
+  border-bottom: 2px solid var(--c-border);
+  border-radius: 0 0 12px 12px;
+}
+
+.rn {
+  background: var(--c-teal-light);
+  color: var(--c-teal);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid var(--c-border);
+}
+
+.rt {
+  padding: 14px 18px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.lsgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.lstile {
+  background: var(--c-green-light);
+  border-left: 4px solid var(--c-green);
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.lstile b {
+  display: block;
+  color: var(--c-green);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin: 0 4px;
+}
+
+.pill-red { background: var(--c-red-light); color: var(--c-red); }
+.pill-purple { background: var(--c-purple-light); color: var(--c-purple); }
+.pill-blue { background: var(--c-blue-light); color: var(--c-blue); }
+.pill-teal { background: var(--c-teal-light); color: var(--c-teal); }
+.pill-amber { background: var(--c-amber-light); color: var(--c-amber); }
+.pill-green { background: var(--c-green-light); color: var(--c-green); }
+.pill-grey { background: var(--c-grey-light); color: var(--c-grey); }
+
+.why-row {
+  border-top: 1px solid var(--c-border);
+}
+
+.node.done .why-row {
+  border-top-color: rgba(56, 142, 60, 0.2);
+}
+
+.why-btn {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 16px 28px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-primary);
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.2s;
+}
+
+.why-btn:hover {
+  background: var(--c-primary-light);
+}
+
+.caret {
+  font-size: 12px;
+  transition: transform 0.3s;
+  display: inline-block;
+}
+
+.why-btn[aria-expanded="true"] .caret {
+  transform: rotate(180deg);
+}
+
+.why-drawer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.why-drawer.open {
+  max-height: 1000px;
+  padding: 0 28px 24px 28px;
+}
+
+.why-drawer p {
+  color: var(--c-text-light);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.why-drawer p:last-child {
+  margin-bottom: 0;
+}
+
+.connector {
+  height: 32px;
+  width: 3px;
+  background: linear-gradient(180deg, var(--c-border) 0%, transparent 100%);
+  margin: 0 auto;
+}
+
+.alg-foot {
+  margin-top: 32px;
+  padding: 20px 24px;
+  background: var(--c-grey-light);
+  border-radius: 12px;
+  font-size: 13px;
+  color: var(--c-text-light);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.alg-foot strong {
+  color: var(--c-text);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  body { padding: 16px; }
+  .stem-banner { padding: 20px; gap: 16px; }
+  .sb-icon { font-size: 36px; }
+  .stem-banner b { font-size: 20px; }
+  .stem-banner small { font-size: 14px; }
+  .node-head { padding: 20px 20px 16px 64px; }
+  .node-body { padding: 20px; }
+  .node-num { width: 32px; height: 32px; font-size: 14px; top: 14px; left: 16px; }
+  .node-tick { top: 16px; right: 16px; }
+  .kv { grid-template-columns: 1fr; gap: 8px; }
+  .kv > div:nth-child(odd) { font-size: 14px; }
+  .rfgrid, .lsgrid { grid-template-columns: 1fr; }
+  .branch { grid-template-columns: 1fr; }
+  .why-drawer.open { padding: 0 20px 20px 20px; }
+  .alg-progress { flex-wrap: wrap; }
+  .pbar { width: 100%; order: 3; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🩸</div>
+  <div>
+    <b>Epistaxis — nosebleeds</b>
+    <small>UK primary care pathway for managing anterior and posterior epistaxis in all ages</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — control active bleeding first, then identify the source and the patients at risk from anticoagulation, hypertension or a sinister cause. Treat, refer, modify factors, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Epistaxis (nosebleed)</span><div class="body">Anterior vs posterior, volume, recurrence, anticoagulants, trauma, unilateral persistent. First aid: lean forward, pinch soft part 10–15 min.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — uncontrolled / compromise</span><span class="ttl">Uncontrolled / haemodynamic compromise?</span><div class="body">Persistent heavy bleeding despite first aid, posterior bleed, haemodynamic instability, or significant bleeding on anticoagulation.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency ENT</span><div class="body">Uncontrolled/posterior bleed → ENT/A&amp;E for cautery/packing; resuscitate; check clotting/anticoagulation.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination localise the cause.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · common causes</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Anterior (Little area)</div><div class="box act"><span class="ttl">Commonest</span><div class="body">First aid; nasal cautery or topical antiseptic cream; humidify, avoid picking.</div></div></div><div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Coagulopathy / drugs</div><div class="box ix"><span class="ttl">Investigate</span><div class="body">Anticoagulant/antiplatelet, liver disease, thrombocytopenia; check INR/FBC.</div></div></div><div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Unilateral persistent</div><div class="box ix"><span class="ttl">Red flag</span><div class="body">Unilateral bloody discharge/obstruction in adult → exclude sinonasal/nasopharyngeal tumour.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency ENT</span> uncontrolled/posterior bleed. <span class="pill pill-purple">2WW</span> <span class="pill pill-grey">NICE NG12</span> unilateral persistent blood-stained nasal discharge/obstruction → suspected sinonasal/nasopharyngeal cancer. <span class="pill pill-purple">ENT</span> recurrent epistaxis.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · prevention &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Prevention &amp; modifiable factors</span><span class="ttl">Reduce recurrence</span><div class="body"><b>Avoid nose-picking/forceful blowing</b>, keep the mucosa moist (Naseptin/petroleum jelly, humidified air), sneeze with mouth open. <b>Optimise blood pressure</b> and <b>review anticoagulant/antiplatelet</b> dose &amp; indication; correct coagulopathy. After cautery, a short course of antiseptic nasal cream reduces re-bleeds.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">First-aid &amp; when to escalate</span><div class="body">Reinforce <b>first aid</b> — lean forward, pinch the soft part 10–15 min; <b>A&amp;E/999</b> if bleeding won't stop, is heavy, or there's faintness. <b>Refer for nasendoscopy</b> any persistent unilateral bleeding/obstruction (tumour). Recurrent epistaxis on anticoagulation → reassess the drug; recheck FBC/clotting if heavy or frequent.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Persistent unilateral nasal bleeding or blockage in an adult is a red flag</b> for a sinonasal or nasopharyngeal tumour — refer for nasendoscopy rather than treating as simple epistaxis.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-num">1</div>
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Red Flags — Massive haemorrhage, blood dyscrasias, malignancy</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Urgent exclusion of life-threatening bleeding and serious underlying pathology.
+    
+    <div class="rfgrid">
+      <div class="rftile"><b>Massive ongoing bleeding</b> Profuse blood loss, haemodynamic compromise (hypotension, tachycardia), pallor, dizziness → <span class="pill pill-red">999</span> or immediate A&E (posterior bleed, arterial source)</div>
+      <div class="rftile"><b>Uncontrolled despite 30 mins pressure</b> Continuous bleeding after proper first aid (pinch soft part, lean forward) → <span class="pill pill-red">Same-day</span> ENT or A&E (packing/cautery needed)</div>
+      <div class="rftile"><b>Recurrent bilateral bleeds</b> Both nostrils bleeding simultaneously or alternating frequently → <span class="pill pill-purple">Urgent</span> ENT (hereditary haemorrhagic telangiectasia, systemic cause)</div>
+      <div class="rftile"><b>Easy bruising / petechiae</b> Spontaneous bruising, petechial rash, bleeding gums, menorrhagia → <span class="pill pill-blue">Urgent bloods</span> FBC, clotting (thrombocytopenia, leukaemia, coagulopathy)</div>
+      <div class="rftile"><b>Anticoagulation + uncontrolled bleed</b> Warfarin/DOAC/aspirin with epistaxis not stopping → <span class="pill pill-red">Same-day</span> assessment, check INR, reverse if supratherapeutic</div>
+      <div class="rftile"><b>Unilateral + nasal obstruction</b> One-sided bleeds, blocked nose, facial pain/swelling, cranial nerve signs → <span class="pill pill-purple">2WW</span> ENT (nasal tumour, sinonasal malignancy)</div>
+      <div class="rftile"><b>Child <2 years with epistaxis</b> Uncommon age for nosebleeds → <span class="pill pill-amber">Investigate</span> (blood dyscrasia, NAI, foreign body, tumour rare)</div>
+      <div class="rftile"><b>Posterior bleed features</b> Blood down throat, choking, coughing up blood, bleeding from both nostrils → <span class="pill pill-red">A&E</span> (posterior nasal packing needed)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Posterior epistaxis</b> is a medical emergency — bleeding from sphenopalatine or ethmoidal arteries, difficult to control with simple pressure. Blood flows down throat (patient swallows/vomits blood). Requires ENT packing or interventional radiology (arterial embolisation). Can cause airway obstruction or aspiration.</p>
+      <p><b>Massive haemorrhage</b> (>1 litre blood loss) causes hypovolaemic shock. Elderly patients on anticoagulants are highest risk. Requires IV access, resuscitation, transfusion, urgent ENT/interventional radiology. Death from epistaxis is rare but occurs (40 deaths/year UK, mostly elderly anticoagulated patients).</p>
+      <p><b>Unilateral bleeds with obstruction</b> = nasal malignancy until proven otherwise. Squamous cell carcinoma, adenoid cystic carcinoma, melanoma all present with unilateral bleeding + obstruction. Delay = advanced disease, poor prognosis. 2WW referral mandatory.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-num">2</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>History — Frequency, severity, triggers, medications</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Take detailed history focusing on bleeding pattern, volume, triggers, and underlying risk factors.
+    
+    <div class="kv">
+      <div>Bleeding characteristics</div>
+      <div><b>Frequency:</b> First episode vs recurrent (daily, weekly, monthly). <b>Laterality:</b> One nostril (anterior) vs both/alternating (posterior or systemic). <b>Duration:</b> Seconds vs minutes vs hours. <b>Volume:</b> Drops vs tablespoons vs cups (quantify).</div>
+      
+      <div>First aid attempted</div>
+      <div><b>Correct technique:</b> Sit forward, pinch soft part of nose (not bridge), 10-15 minutes continuous pressure. <b>Incorrect:</b> Lying back (swallows blood, nauseates), ice on bridge (ineffective), head between knees. Ask what patient did — incorrect technique = not truly refractory bleed.</div>
+      
+      <div>Triggers</div>
+      <div><b>Local:</b> Nose picking, trauma, nose blowing, dry air (winter heating, air conditioning), intranasal drugs (cocaine, steroid sprays). <b>Systemic:</b> Straining, coughing, hot showers, alcohol. <b>Iatrogenic:</b> Recent nasal surgery, cautery, packing removal.</div>
+      
+      <div>Medications</div>
+      <div><b>Anticoagulants:</b> Warfarin, DOACs (apixaban, rivaroxaban, edoxaban, dabigatran), aspirin, clopidogrel. <b>NSAIDs:</b> Ibuprofen, naproxen (impair platelet function). <b>Nasal sprays:</b> Steroid sprays (thinning septum), decongestants (rebound vasodilation). <b>Herbal:</b> Ginkgo, ginseng, fish oils (antiplatelet).</div>
+      
+      <div>Bleeding elsewhere</div>
+      <div>Easy bruising, bleeding gums, heavy periods, PR bleeding, haematuria, haemoptysis. <b>Presence</b> = systemic bleeding disorder (coagulopathy, thrombocytopenia, platelet dysfunction). <b>Absence</b> = local nasal cause.</div>
+      
+      <div>PMH</div>
+      <div>Hypertension (posterior epistaxis), liver disease (coagulopathy), renal failure (platelet dysfunction, uraemia), hereditary haemorrhagic telangiectasia (HHT — family history of nosebleeds + telangiectasia).</div>
+      
+      <div>Age pattern</div>
+      <div><b>Children (2-10 years):</b> Common, anterior, self-limiting (Little's area trauma). <b>Young adults:</b> Rare unless trauma, cocaine. <b>Elderly (>60 years):</b> Posterior bleeds, anticoagulation, hypertension. <b>Bimodal distribution.</b></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Correct first aid technique is critical</b> — 90% of anterior nosebleeds stop with proper pressure (pinch soft part 10-15 minutes). Many "refractory" bleeds are actually inadequate pressure (pinching bony bridge, insufficient duration, looking up to check bleeding = releasing pressure). Education on technique prevents ED attendances.</p>
+      <p><b>Anticoagulation increases bleeding risk 2-3 fold</b> but is rarely sole cause of epistaxis. Nosebleed in anticoagulated patient = identify bleeding site (usually Little's area), control bleed, check INR (reverse if supratherapeutic), but do NOT routinely stop anticoagulation (thrombotic risk > bleeding risk).</p>
+      <p><b>Bilateral bleeding suggests systemic cause</b> — coagulopathy, thrombocytopenia, or posterior source. Unilateral bleeding suggests local pathology (Little's area trauma, tumour, vascular malformation). Laterality directs investigation.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-num">3</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Classification — Anterior vs Posterior, primary vs secondary</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Classify based on anatomical site and underlying cause. Determines management urgency.
+    
+    <div class="kv">
+      <div>Anterior epistaxis</div>
+      <div><b>Site:</b> Little's area (Kiesselbach's plexus) — anterior inferior septum where 5 arteries anastomose. <b>Features:</b> Unilateral, visible bleeding from one nostril, stops with pressure. <b>Prevalence:</b> 90% of epistaxis. <b>Cause:</b> Trauma (nose picking, dry air, nose blowing). <span class="pill pill-green">Benign, self-limiting</span></div>
+      
+      <div>Posterior epistaxis</div>
+      <div><b>Site:</b> Sphenopalatine artery, ethmoidal arteries (posterior nasal cavity). <b>Features:</b> Bilateral bleeding, blood down throat, difficult to see source, does NOT stop with pressure. <b>Prevalence:</b> 10% of epistaxis. <b>Risk:</b> Elderly, hypertensive, anticoagulated. <span class="pill pill-red">Medical emergency</span></div>
+      
+      <div>Primary (idiopathic)</div>
+      <div><b>No underlying cause identified.</b> Local vascular fragility at Little's area. <b>Prevalence:</b> 85% of cases. <b>Management:</b> Conservative (pressure, cautery if recurrent). <b>Prognosis:</b> Excellent, self-limiting, outgrown in children by adolescence.</div>
+      
+      <div>Secondary epistaxis</div>
+      <div><b>Underlying systemic cause:</b> Anticoagulation, hypertension, bleeding disorder, liver disease, malignancy. <b>Prevalence:</b> 15% of cases. <b>Investigation:</b> FBC, clotting, BP, examination. <b>Management:</b> Treat underlying cause + local measures.</div>
+      
+      <div>HHT (Osler-Weber-Rendu)</div>
+      <div><b>Hereditary Haemorrhagic Telangiectasia.</b> Autosomal dominant. <b>Features:</b> Recurrent epistaxis from childhood, telangiectasia (lips, tongue, fingers), AVM (pulmonary, cerebral, hepatic). <b>Diagnosis:</b> Curaçao criteria. <b>Management:</b> Specialist centre, laser, bevacizumab.</div>
+      
+      <div>Trauma-related</div>
+      <div><b>Iatrogenic:</b> Nasal surgery, septoplasty, cautery. <b>External:</b> Facial fracture, assault, RTA. <b>Chemical:</b> Cocaine (septal perforation), intranasal steroids (chronic use). <b>Mechanical:</b> NG tube, nasal CPAP.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Anterior vs posterior distinction is critical</b> — determines management site (home vs hospital). Anterior bleeds managed in primary care with pressure ± cautery. Posterior bleeds require ENT packing or interventional radiology in hospital. Missing posterior bleed = massive haemorrhage, aspiration, death.</p>
+      <p><b>Primary epistaxis is diagnosis of exclusion</b> — only diagnosed after excluding systemic causes (anticoagulation, blood dyscrasia, hypertension, malignancy). Young healthy patient with unilateral bleeding = likely primary. Elderly patient on warfarin with bilateral bleeding = secondary until proven otherwise.</p>
+      <p><b>HHT prevalence 1 in 5000</b> — underdiagnosed. Think of HHT in anyone with recurrent epistaxis starting in childhood. Curaçao criteria (need 3 of 4): epistaxis, telangiectasia, visceral AVMs, family history. Diagnosis important because pulmonary AVMs cause stroke risk (paradoxical embolism) — treatable with coil embolisation.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-num">4</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Examination — Inspect nose, check BP, look for bleeding disorder</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Examine during or immediately after bleeding if possible. Focus on identifying bleeding site and systemic signs.
+    
+    <div class="kv">
+      <div>Vital signs</div>
+      <div>BP both arms (hypertension = posterior bleed risk), pulse (tachycardia if significant blood loss), temperature (rarely elevated unless sinusitis/infection). <b>Postural BP</b> if suspecting volume depletion (elderly, prolonged bleeding).</div>
+      
+      <div>Nasal inspection</div>
+      <div><b>External:</b> Trauma, deformity, swelling, erythema. <b>Anterior rhinoscopy:</b> Use Thudichum speculum + headlight (or smartphone torch). Inspect Little's area (anterior septum) for visible vessel, clot, perforation. <b>Blood clot removal:</b> Gently blow nose to clear clot and identify bleeding point.</div>
+      
+      <div>Bleeding site</div>
+      <div><b>Visible anterior source:</b> Little's area (90%) — prominent vessel, fresh blood, unilateral. <b>Posterior:</b> Blood in nasopharynx (examine oropharynx — blood trickling down posterior wall). <b>No visible source:</b> Stopped bleeding or posterior (refer ENT for nasoendoscopy).</div>
+      
+      <div>Septal abnormalities</div>
+      <div>Septal perforation (cocaine, chronic steroid spray, Wegener's granulomatosis), deviation (predisposes to dryness on convex side), crusting (atrophic rhinitis, Wegener's), telangiectasia (HHT — also check lips, tongue).</div>
+      
+      <div>Signs of bleeding disorder</div>
+      <div>Petechiae (thrombocytopenia), purpura, bruising (easy bruising, multiple sites), pallor (anaemia from chronic blood loss), jaundice (liver disease coagulopathy), splenomegaly (portal hypertension, haematological malignancy).</div>
+      
+      <div>HHT screening</div>
+      <div>Telangiectasia on: lips, oral mucosa, tongue, fingers, nail beds. <b>If present</b> + recurrent epistaxis + family history = HHT likely. Screen for visceral AVMs (pulmonary, cerebral, hepatic) with imaging.</div>
+      
+      <div>Facial examination</div>
+      <div>Unilateral facial swelling, proptosis, cranial nerve palsies (sinonasal malignancy). Facial numbness (infraorbital nerve compression). Lymphadenopathy (cervical nodes — malignancy).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Identifying bleeding site enables targeted cautery</b> — silver nitrate stick applied to visible vessel at Little's area stops 95% recurrent anterior bleeds. Blind cautery without identifying site is ineffective and risks septal perforation. If site not visible, ENT nasoendoscopy needed.</p>
+      <p><b>Hypertension does NOT cause epistaxis</b> directly but worsens bleeding once started (higher arterial pressure = harder to achieve haemostasis). Posterior bleeds are more common in hypertensives (atherosclerotic vessel fragility). Do NOT aggressively lower BP during acute bleed (impairs clot formation) — control after bleeding stopped.</p>
+      <p><b>Septal perforation causes</b>: cocaine (vasoconstriction → ischaemic necrosis), chronic intranasal steroid misuse (spray aimed at septum not turbinates), Wegener's granulomatosis (ANCA-associated vasculitis), trauma (repeated cautery). Large perforations whistle, crust, bleed recurrently.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-num">5</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Investigations — Selective testing if red flags or recurrent</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Investigate if: recurrent bleeds, bleeding elsewhere, anticoagulated, red flags, or first bleed age >60 years.
+    
+    <div class="kv">
+      <div>FBC</div>
+      <div><b>Indications:</b> Recurrent bleeds, easy bruising, petechiae, pallor, suspected anaemia from chronic blood loss. <b>Check for:</b> Hb (anaemia), platelets <50 (thrombocytopenia), WCC (leukaemia). <b>Normal FBC</b> does NOT exclude bleeding disorder (platelet function defects have normal count).</div>
+      
+      <div>Clotting screen</div>
+      <div><b>Indications:</b> On warfarin (check INR), liver disease, bleeding elsewhere, easy bruising, family history bleeding disorder. <b>Tests:</b> PT/INR, APTT. <b>Prolonged APTT</b> = haemophilia, von Willebrand disease (refer haematology). <b>Prolonged PT</b> = warfarin, liver disease, vitamin K deficiency.</div>
+      
+      <div>Blood pressure</div>
+      <div><b>Always check</b> in adults age >40 years or recurrent posterior bleeds. Hypertension found in 50% posterior epistaxis (unclear if cause or consequence). Treat hypertension AFTER bleeding controlled.</div>
+      
+      <div>Nasoendoscopy</div>
+      <div><b>Indications:</b> Recurrent unilateral bleeds, no visible anterior source, suspected posterior bleed, unilateral obstruction, suspected malignancy. <b>Performed by:</b> ENT. <b>Findings:</b> Posterior bleeding point, tumour, polyp, AVM. <b>NOT routine</b> in simple anterior epistaxis.</div>
+      
+      <div>CT/MRI sinuses</div>
+      <div><b>Indications:</b> Suspected sinonasal malignancy (unilateral obstruction, facial swelling, cranial nerve signs), recurrent bleeds with negative nasoendoscopy. <b>Arranged by:</b> ENT. <b>NOT primary care.</b></div>
+      
+      <div>Do NOT investigate</div>
+      <div><b>Single anterior bleed</b> in child/young adult with no red flags, normal examination, stopped with pressure. <b>Benign self-limiting</b> — reassure, teach first aid, Naseptin cream. Over-investigation causes anxiety.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>FBC and clotting find bleeding disorders in <5%</b> of epistaxis patients. Reserve for those with clinical features suggesting systemic cause (easy bruising, petechiae, bleeding gums, family history). Routine testing in healthy children with single nosebleed is low yield and unnecessary.</p>
+      <p><b>INR monitoring in warfarin patients</b> — target INR 2-3 for most indications. INR >4 increases bleeding risk 5-fold. Supratherapeutic INR + epistaxis = withhold warfarin 1-2 doses, recheck INR, restart when <3.5. If INR >8 or uncontrolled bleeding = vitamin K 1-2 mg PO. Do NOT routinely stop warfarin (stroke risk > bleeding risk).</p>
+      <p><b>Nasoendoscopy is gold standard</b> for visualising entire nasal cavity and nasopharynx. Identifies posterior bleeding points, tumours, AVMs not visible on anterior rhinoscopy. Flexible scope passed via nostril under local anaesthetic (co-phenylcaine spray). ENT procedure, not primary care.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-num">6</div>
+  <div class="node-head">
+    <span class="node-tag">Refer</span>
+    <h3>Referral Criteria — When to escalate urgently</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Refer all posterior bleeds, uncontrolled anterior bleeds, and red flag features.
+    
+    <div class="kv">
+      <div><span class="pill pill-red">999 / A&E</span></div>
+      <div><b>Massive ongoing bleeding</b> (haemodynamic compromise). <b>Posterior bleed</b> (blood down throat, bilateral). <b>Uncontrolled after 30 mins pressure.</b> <b>Anticoagulated + profuse bleed.</b> Requires IV access, packing, possible embolisation.</div>
+      
+      <div><span class="pill pill-purple">2WW ENT</span></div>
+      <div><b>Unilateral obstruction + bleeding</b> (nasal tumour suspected). <b>Cranial nerve signs, facial swelling.</b> <b>Recurrent unilateral bleeds</b> age >40 years with no anterior source visible. <b>Unexplained epistaxis</b> in child <2 years (rare, warrants investigation).</div>
+      
+      <div><span class="pill pill-blue">Urgent ENT</span></div>
+      <div><b>Recurrent bleeds despite cautery.</b> <b>No anterior source visible</b> (needs nasoendoscopy). <b>Suspected HHT</b> (multiple telangiectasia + family history). <b>Septal perforation</b> enlarging or symptomatic.</div>
+      
+      <div><span class="pill pill-blue">Haematology</span></div>
+      <div><b>Thrombocytopenia</b> (platelets <50). <b>Prolonged APTT</b> (haemophilia, vWD). <b>Easy bruising + bleeding elsewhere.</b> <b>Family history</b> bleeding disorder. <b>Recurrent epistaxis</b> + normal ENT assessment (platelet function disorder).</div>
+      
+      <div><span class="pill pill-green">Primary care</span></div>
+      <div><b>Simple anterior epistaxis</b> controlled with pressure. <b>Visible Little's area source</b> → cautery in practice. <b>Recurrent</b> but controllable → Naseptin BD 10 days. <b>Child with self-limiting bleeds</b> → reassure, teach first aid.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Posterior epistaxis requires hospital admission</b> — cannot be controlled with simple pressure. Requires ENT packing (anterior + posterior packs, or Foley catheter balloon tamponade), or interventional radiology (sphenopalatine artery embolisation). 10-15% of admissions require embolisation. Delay = massive blood loss, aspiration, death.</p>
+      <p><b>Unilateral symptoms = malignancy until proven otherwise.</b> Squamous cell carcinoma, adenocarcinoma, esthesioneuroblastoma all present with unilateral bleeding + obstruction. 2WW nasoendoscopy + biopsy. 5-year survival 60% if early, <20% if advanced. Delay = metastasis.</p>
+      <p><b>Most anterior bleeds managed in primary care</b> — 90% stop with pressure, 95% of recurrent bleeds resolve with silver nitrate cautery. Only refer if: no visible source (needs nasoendoscopy), recurrent despite cautery (may need diathermy/laser), or red flags. Unnecessary ENT referrals burden limited capacity.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-num">7</div>
+  <div class="node-head">
+    <span class="node-tag">Treat</span>
+    <h3>Acute Management — Pressure, packing, cautery</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Stop bleeding with first aid, then prevent recurrence with cautery or topical treatments.
+    
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Active bleeding (first aid)</div>
+        <div class="b-drug">Pressure technique <span class="pill pill-green">First-line</span></div>
+        <div class="b-note">Sit forward (not back). Pinch soft part of nose (not bony bridge) continuously 10-15 mins. Breathe through mouth. Spit blood, do NOT swallow. Ice pack on forehead/nose (vasoconstriction). If continues → A&E.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Recurrent anterior bleeds</div>
+        <div class="b-drug">Silver nitrate cautery <span class="pill pill-teal">In-practice</span></div>
+        <div class="b-note">Identify bleeding point (Little's area). Local anaesthetic (co-phenylcaine spray 5 mins). Silver nitrate stick applied to vessel 3-5 seconds. Cauterise ONE side only (bilateral = perforation risk). 95% success rate.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Unable to cauterise / no visible source</div>
+        <div class="b-drug">Nasal packing <span class="pill pill-amber">Secondary care</span></div>
+        <div class="b-note">Merocel (expandable sponge), Rapid Rhino (inflatable balloon). Insert along nasal floor, inflate/expand with saline. Remove after 24-48 hours. Requires admission if bilateral or posterior. Prophylactic co-amoxiclav (toxic shock syndrome risk).</div>
+      </div>
+    </div>
+    
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Pressure 10-15 minutes</b> — First aid for all epistaxis. Stops 90% anterior bleeds. Pinch soft part (below bony bridge), sit forward, continuous pressure. Do NOT release to check bleeding before 10 minutes elapsed.</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Topical vasoconstrictor</b> — If pressure fails: soak cotton wool in adrenaline 1:1000 or cocaine 5% (if available), insert into nostril, pinch 10 minutes. Co-phenylcaine spray (lidocaine 5% + phenylephrine 0.5%) alternative. ENT/A&E procedure.</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Silver nitrate cautery</b> — For recurrent bleeds with visible anterior source. Local anaesthetic first (co-phenylcaine spray 5 mins). Apply stick to bleeding point 3-5 seconds. Warn: black eschar forms, falls off in 7-10 days. Cauterise ONE side only.</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Nasal packing</b> — If cautery fails or no visible source. Merocel or Rapid Rhino. Remove 24-48 hrs. Antibiotics (co-amoxiclav 500/125 TDS) to prevent toxic shock. ENT/A&E procedure.</span></div>
+      <div class="rung"><span class="rn">Step 5</span><span class="rt"><b>Interventional radiology</b> — If packing fails. Sphenopalatine artery embolisation under fluoroscopy. 90% success rate. Reserved for severe recurrent posterior bleeds. Complications: facial numbness, palatal necrosis (rare).</span></div>
+    </div>
+    
+    <div class="kv" style="margin-top: 20px;">
+      <div>Cautery technique</div>
+      <div><b>Indications:</b> Visible bleeding point, recurrent epistaxis from same site. <b>Contraindications:</b> Active bleeding (apply pressure first), both sides at same session (perforation risk), child <10 years (poor tolerance). <b>Method:</b> Co-phenylcaine spray 5 mins, silver nitrate stick to vessel 3-5 seconds, avoid excessive cautery.</div>
+      
+      <div>Anticoagulation</div>
+      <div><b>Do NOT routinely stop.</b> Stroke/PE risk > bleeding risk. <b>Warfarin:</b> Check INR. If supratherapeutic (>4) → withhold 1-2 doses, recheck. If >8 or uncontrolled bleed → Vitamin K 1-2 mg PO. <b>DOACs:</b> Withhold 1 dose if ongoing bleed, resume when controlled. Discuss with anticoagulation team.</div>
+      
+      <div>Tranexamic acid</div>
+      <div><b>Not routinely recommended</b> for epistaxis (NICE). Some ENT units use: Tranexamic acid 1g TDS PO for 5 days in recurrent bleeds. Antifibrinolytic, stabilises clots. Evidence weak. Avoid if history VTE.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Pinching soft part of nose</b> compresses Little's area (anterior inferior septum where 90% bleeds originate). Pinching bony bridge does nothing — no vessels there. Forward-leaning position prevents blood swallowing (causes nausea, obscures volume assessment). 15 minutes continuous pressure allows platelet plug formation.</p>
+      <p><b>Silver nitrate cautery</b> is highly effective (95% success) when bleeding point visible. Chemical cauterisation coagulates vessel and surrounding tissue, seals bleeding point. Bilateral cautery risks septal perforation (devascularisation → ischaemic necrosis). Wait 6 weeks before cauterising opposite side if needed.</p>
+      <p><b>Stopping anticoagulation is harmful</b> — stroke risk in AF patient off warfarin is 5%/year. Epistaxis in anticoagulated patient warrants investigation (identify source, cautery), INR check (reverse if supratherapeutic), but NOT routine cessation. Discuss with cardiologist before stopping DOACs/warfarin long-term.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-num">8</div>
+  <div class="node-head">
+    <span class="node-tag">Lifestyle</span>
+    <h3>Prevention — Humidification, Naseptin, avoid triggers</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Prevent recurrence by moisturising nasal mucosa, avoiding trauma, and managing environmental factors.
+    
+    <div class="lsgrid">
+      <div class="lstile"><b>Naseptin cream</b> Apply pea-sized amount inside nostrils with little finger BD for 10 days. Contains chlorhexidine + neomycin (antibacterial) and moisturises septum. Prevents crusting, reduces S. aureus colonisation. CONTRAINDICATED if peanut/soya allergy (contains arachis oil).</div>
+      <div class="lstile"><b>Alternative: Bactroban nasal</b> If Naseptin contraindicated (nut allergy). Mupirocin 2% nasal ointment BD 10 days. Antibacterial + emollient. Or simple petroleum jelly (Vaseline) TDS — cheaper, equally effective for moisturisation.</div>
+      <div class="lstile"><b>Saline nasal spray</b> Sodium chloride 0.9% spray TDS-QDS. Keeps mucosa moist, prevents crusting, thins secretions. Available OTC (Sterimar, Neilmed). Use especially in winter (dry heated air) and air-conditioned environments.</div>
+      <div class="lstile"><b>Humidify air</b> Bedroom humidifier (keep humidity 40-50%). Bowl of water on radiator. Prevents nasal mucosa drying overnight. Particularly important in winter (central heating), air-conditioned offices, low-humidity climates.</div>
+      <div class="lstile"><b>Avoid nose picking</b> Main cause of recurrent childhood epistaxis. Trim fingernails short (reduces trauma). Distraction techniques for children. Address underlying cause (allergic rhinitis → itchy nose → picking).</div>
+      <div class="lstile"><b>Gentle nose blowing</b> Blow gently, one nostril at a time. Vigorous blowing dislodges clots, increases pressure. Avoid forceful sniffing (can restart bleeding). Use tissues, not handkerchiefs (harbour bacteria).</div>
+      <div class="lstile"><b>Treat allergic rhinitis</b> If sneezing/itching triggers bleeds. Intranasal steroid (mometasone, fluticasone) — aim spray AWAY from septum toward turbinates (prevents septal thinning). Antihistamines (cetirizine 10 mg OD) reduce sneezing.</div>
+      <div class="lstile"><b>Avoid triggers</b> Hot showers (vasodilation), alcohol (vasodilation), straining, heavy lifting, bending forward. NSAIDs/aspirin if possible (impair platelet function). Cocaine (vasoconstriction → ischaemia → perforation).</div>
+      <div class="lstile"><b>Hydration</b> Drink 2 litres water daily. Systemic hydration maintains nasal mucosa moisture. Dehydration thickens mucus, promotes crusting and bleeding.</div>
+      <div class="lstile"><b>First aid education</b> Teach patient/parents correct technique: sit forward, pinch soft part, 15 minutes continuous pressure, do NOT tilt head back, do NOT release pressure early to check. Downloadable NHS leaflet available.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Naseptin reduces recurrence 70%</b> in studies — antibacterial (chlorhexidine + neomycin) eradicates S. aureus (found in 60% recurrent epistaxis patients), while emollient base moisturises fragile mucosa. 10-day course sufficient. Longer use risks resistance. Peanut allergy contraindication because contains arachis (peanut) oil.</p>
+      <p><b>Humidification prevents drying</b> — nasal mucosa needs 40-50% humidity. Winter central heating drops humidity to 20-30%, drying mucosa, causing crusting, cracking, bleeding. Bedroom humidifier or bowl of water on radiator restores physiological humidity. Simple, cheap, effective.</p>
+      <p><b>Correct steroid spray technique</b> prevents iatrogenic epistaxis — aim spray AWAY from septum (toward outer wall/turbinates). Spraying directly at septum causes chemical thinning, ulceration, perforation, recurrent bleeding. Right hand for left nostril, left hand for right nostril achieves correct angle.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-num">9</div>
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Follow-Up — Monitor recurrence, review anticoagulation, re-refer if red flags</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Schedule reviews based on severity. Safety-net for recurrent or severe bleeding.
+    
+    <div class="kv">
+      <div>1 week post-cautery</div>
+      <div><b>Phone review:</b> Check eschar healing (falls off 7-10 days), no re-bleeding, Naseptin compliance. If re-bled → examine, re-cauterise if source visible, or refer ENT if no source.</div>
+      
+      <div>2 weeks (if on Naseptin)</div>
+      <div><b>Review</b> after 10-day Naseptin course. Check bleeding stopped, mucosa healed. If recurrent despite Naseptin → refer ENT (may need diathermy cautery or nasoendoscopy to identify source).</div>
+      
+      <div>1 month (anticoagulated)</div>
+      <div><b>Check INR</b> if on warfarin (ensure therapeutic 2-3). Review need for anticoagulation with patient (stroke risk vs bleeding risk). If recurrent bleeds on anticoagulation → consider alternative (DOAC may have lower bleeding risk than warfarin, though evidence mixed).</div>
+      
+      <div>3 months (recurrent bleeds)</div>
+      <div><b>Review bleeding diary:</b> Frequency, severity, triggers. If >1 bleed/month despite preventive measures → ENT referral for nasoendoscopy ± diathermy cautery. If HHT suspected → genetics referral.</div>
+      
+      <div>Safety-net <span class="pill pill-red">999</span></div>
+      <div><b>Massive bleeding</b> (soaking towels, blood clots size of fist). <b>Haemodynamic compromise</b> (dizziness, collapse, chest pain). <b>Choking on blood</b> (posterior bleed). <b>Bleeding uncontrolled</b> after 30 minutes proper pressure.</div>
+      
+      <div>Safety-net <span class="pill pill-red">Same-day GP</span></div>
+      <div><b>Recurrent bleeding</b> (>3 episodes/week). <b>Bleeding despite cautery.</b> <b>New unilateral symptoms</b> (obstruction, facial pain). <b>Easy bruising</b> or petechiae develop. <b>Pallor, fatigue</b> (anaemia from chronic blood loss).</div>
+      
+      <div>Re-refer ENT if</div>
+      <div><b>Recurrent bleeds</b> despite cautery + Naseptin. <b>New unilateral obstruction.</b> <b>Suspected malignancy.</b> <b>No anterior source</b> identified (needs nasoendoscopy). <b>Septal perforation</b> enlarging or symptomatic (whistling, crusting).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Post-cautery follow-up</b> ensures healing and identifies treatment failure. Silver nitrate creates black eschar (coagulated tissue) which falls off in 7-10 days, revealing healed pink mucosa underneath. If re-bleeding occurs = either incomplete cautery (missed bleeding point) or new bleeding site. Re-examine and re-cauterise if source visible.</p>
+      <p><b>Chronic blood loss causes iron-deficiency anaemia</b> — even small frequent nosebleeds (teaspoon daily) = 5-10ml/day = 150-300ml/month. Check FBC if >4 weeks recurrent bleeds. Treat with ferrous sulphate 200mg BD, but also identify and treat bleeding source (cautery, Naseptin).</p>
+      <p><b>HHT requires specialist centre input</b> — not managed in primary care. Screen for visceral AVMs (pulmonary with bubble echo, cerebral with MRI brain, hepatic with USS liver). Pulmonary AVMs cause paradoxical emboli (stroke risk 30% lifetime) — treatable with coil embolisation. Bevacizumab (anti-VEGF) reduces epistaxis severity in severe HHT.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use.</strong> Pathway based on NICE CKS Epistaxis (nosebleed) (2023), ENT UK guidelines, British Rhinological Society. Always adapt to individual patient context and local ENT pathways.
+</div>
+
+<script>
+const storageKey = 'rgp.alg.epistaxis.v1';
+const flow = document.getElementById('flow');
+const nodes = flow.querySelectorAll('.node');
+const pDone = document.getElementById('pDone');
+const pTotal = document.getElementById('pTotal');
+const pFill = document.getElementById('pFill');
+const resetBtn = document.getElementById('resetBtn');
+
+pTotal.textContent = nodes.length;
+
+function loadState() {
+  const saved = localStorage.getItem(storageKey);
+  if (!saved) return;
+  try {
+    const state = JSON.parse(saved);
+    nodes.forEach((node, i) => {
+      const chk = node.querySelector('input[type="checkbox"]');
+      if (chk && state[i]) {
+        chk.checked = true;
+        node.classList.add('done');
+      }
+    });
+    updateProgress();
+  } catch (e) {}
+}
+
+function saveState() {
+  const state = Array.from(nodes).map(node => {
+    const chk = node.querySelector('input[type="checkbox"]');
+    return chk ? chk.checked : false;
+  });
+  localStorage.setItem(storageKey, JSON.stringify(state));
+}
+
+function updateProgress() {
+  const done = Array.from(nodes).filter(node => {
+    const chk = node.querySelector('input[type="checkbox"]');
+    return chk && chk.checked;
+  }).length;
+  pDone.textContent = done;
+  const pct = (done / nodes.length) * 100;
+  pFill.style.width = pct + '%';
+}
+
+nodes.forEach(node => {
+  const chk = node.querySelector('input[type="checkbox"]');
+  if (chk) {
+    chk.addEventListener('change', () => {
+      if (chk.checked) {
+        node.classList.add('done');
+      } else {
+        node.classList.remove('done');
+      }
+      updateProgress();
+      saveState();
+    });
+  }
+
+  const whyBtn = node.querySelector('.why-btn');
+  const whyDrawer = node.querySelector('.why-drawer');
+  if (whyBtn && whyDrawer) {
+    whyBtn.addEventListener('click', () => {
+      const isOpen = whyBtn.getAttribute('aria-expanded') === 'true';
+      whyBtn.setAttribute('aria-expanded', !isOpen);
+      whyDrawer.classList.toggle('open');
+    });
+  }
+});
+
+resetBtn.addEventListener('click', () => {
+  if (confirm('Reset all progress? This cannot be undone.')) {
+    localStorage.removeItem(storageKey);
+    nodes.forEach(node => {
+      const chk = node.querySelector('input[type="checkbox"]');
+      if (chk) {
+        chk.checked = false;
+        node.classList.remove('done');
+      }
+    });
+    updateProgress();
+  }
+});
+
+loadState();
+</script>
+
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

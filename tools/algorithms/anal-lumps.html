@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Anal Lumps Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;--diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;--treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;--refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;--lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;--radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);--font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#1a2a1a 0%,#3a6a3a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}.stem-banner b{display:block;font-size:1.05rem;font-weight:600}.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#3a6a3a,#c0392b);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}.node[data-type="TREAT"] .node-num{background:var(--treat)}.node[data-type="REFER"] .node-num{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}.node[data-type="TREAT"] .node-tag{background:var(--treat)}.node[data-type="REFER"] .node-tag{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}.pill-purple{background:#ede9fe;color:#5b21b6}.pill-blue{background:#dbeafe;color:#1e40af}.pill-teal{background:#ccfbf1;color:#0f766e}.pill-amber{background:#fef3c7;color:#92400e}.pill-green{background:#dcfce7;color:#15803d}.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+<div class="stem-banner"><div class="sb-icon">🔴</div><div><b>Anal Lumps — New Presentation</b><small>Haemorrhoids · skin tags · warts · abscess · rectal prolapse · cancer exclusion</small></div></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div><span>Progress</span><span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span><div class="pbar"><div class="pbar-fill" id="pFill"></div></div><button class="reset" id="resetBtn">Reset</button></div>
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — characterise the lump on inspection (skin tag, pile, wart, abscess or tumour) and refer the indurated or ulcerated lesion urgently. Treat the cause, support self-care, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Anal / perianal lump</span><div class="body">Onset, pain, bleeding, discharge, reducibility; sexual history (warts). Inspect + PR.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — sepsis / malignancy</span><span class="ttl">Sepsis or malignancy?</span><div class="body">Tender fluctuant swelling + fever (abscess). Hard, irregular, ulcerated or indurated lesion, or inguinal nodes → anal cancer.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Surgical / 2WW</span><div class="body">Abscess → urgent drainage. Suspicious mass → 2WW.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Investigate</span><span class="ttl">Identify the lump</span><div class="body">Inspection usually diagnostic.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · cause</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Haemorrhoids / tag</div><div class="box act"><span class="ttl">Common</span><div class="body">Prolapsing pile, sentinel tag (fissure), thrombosed external pile.</div></div></div>
+      <div class="col"><div class="blabel">Warts</div><div class="box act"><span class="ttl">HPV</span><div class="body">Anogenital warts — topical/ablative therapy; sexual health screen.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Sinister</div><div class="box ix"><span class="ttl">Don't miss</span><div class="body">Anal cancer, rectal prolapse, abscess.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Urgent surgical</span> abscess. <span class="pill pill-purple">2WW</span> <span class="pill pill-grey">NICE NG12</span> suspicious/indurated lesion → anal cancer pathway. <span class="pill pill-purple">Colorectal</span> symptomatic haemorrhoids / prolapse.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · self-care &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Self-care &amp; modifiable factors</span><span class="ttl">By diagnosis</span><div class="body"><b>Haemorrhoids/tags:</b> high-fibre diet, fluids, avoid straining, topical preparations short-term; banding/surgery if symptomatic. <b>Thrombosed external pile:</b> analgesia, ice, stool softeners (excision within 72 h if severe). <b>Anogenital warts:</b> topical treatment/cryotherapy, GUM referral and full STI screen, partner notification, HPV-vaccination advice. Gentle hygiene, keep dry.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Recheck &amp; when to escalate</span><div class="body"><b>Review</b> persistent or enlarging lumps and re-examine. <b>Same-day surgical</b> for a tender fluctuant swelling with fever (abscess — drainage). <b>2WW / examine &amp; refer</b> for any <b>hard, irregular, ulcerated or fixed perianal lesion</b>, especially with inguinal nodes (anal cancer — don't label as a pile). Safety-net new bleeding, change in bowel habit or weight loss via the colorectal pathway.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Not every lump is a pile:</b> an indurated, ulcerated or fixed perianal lesion — especially with inguinal nodes — needs urgent referral to exclude anal cancer.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+<div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Cancer, Abscess &amp; Prolapse Emergencies</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<p><b>Any new anal lump with bleeding, weight loss, or change in bowel habit = cancer until proven otherwise. 2WW lower GI mandatory in adults ≥40.</b></p>
+<div class="rfgrid">
+<div class="rftile"><b>Hard, fixed, irregular perianal/rectal mass</b> Anal SCC or rectal cancer → 2WW lower GI. Anal SCC is HPV-associated — risk factors: MSM, HIV, immunosuppression, receptive anal intercourse. Weight loss, tenesmus, bleeding = advanced disease.</div>
+<div class="rftile"><b>Tender fluctuant perianal lump + fever</b> Perianal abscess → same-day surgical (incision and drainage under GA). Do NOT prescribe antibiotics alone — inadequate drainage leads to fistula. 30–40% develop fistula even with timely I&D.</div>
+<div class="rftile"><b>Rectal prolapse — strangulated / irreducible</b> Full-thickness rectal prolapse that cannot be reduced → same-day surgical emergency (strangulation/gangrene risk). Reduce immediately in A&E if possible (sedation + gentle sustained pressure).</div>
+<div class="rftile"><b>Anal lump + rectal bleeding + age ≥40</b> 2WW lower GI — even if examination suggests haemorrhoids. Colorectal cancer and haemorrhoids can coexist. Do not attribute bleeding to haemorrhoids without appropriate investigation in ≥40s.</div>
+<div class="rftile"><b>Anal lump in immunocompromised / HIV</b> Anal cancer (SCC), large condylomata acuminata (HPV-driven rapid growth), CMV proctitis → same-day GUM + colorectal. HIV+ MSM: annual anal Pap smear for anal cancer surveillance.</div>
+<div class="rftile"><b>Fournier's gangrene</b> Any perianal/scrotal lump/swelling with crepitus + rapidly spreading erythema + extreme pain → 999. Necrotising fasciitis — mortality 40% even with surgery. Diabetics especially at risk.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Anal squamous cell carcinoma is HPV-related (types 16 and 18 in 80–90% of cases) and its incidence is rising — particularly in HIV-positive MSM where the risk is 80-fold higher than the general population. It typically presents as a perianal lump, ulcer, or persistent pain, and is often misdiagnosed as a haemorrhoid, fissure, or wart for months. Treatment is with the Nigro chemoradiotherapy protocol (5-fluorouracil + mitomycin C + radiotherapy) — 80% 5-year survival with localised disease, falling to 30% with metastatic disease. Early diagnosis is therefore critical. Any suspicious perianal lump that does not clearly have a benign explanation should be biopsied or referred for colorectal assessment.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+<div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>History — Nature of the Lump</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Appearance and onset</div><div>Appeared suddenly and very painful (thrombosed haemorrhoid, abscess) vs gradual painless growth (skin tag, wart, haemorrhoid). Soft reducible lump appearing with straining (prolapsing haemorrhoid, rectal prolapse). Multiple small rough lumps (condylomata/warts). Single ulcerated lump (cancer, herpes).</div>
+<div>Relationship to defecation</div><div>Lump protrudes during straining then returns spontaneously (Grade II haemorrhoid) or requires manual reduction (Grade III) or is permanently prolapsed (Grade IV). Rectal prolapse: large fleshy lump with concentric mucosal rings emerging from anus during straining.</div>
+<div>Bleeding</div><div>Bright red blood on paper / in pan (haemorrhoids, fissure) vs blood mixed with stool (colorectal cancer, IBD — urgent investigation). Mucus (haemorrhoidal prolapse, proctitis). No bleeding (skin tag, wart, perianal abscess).</div>
+<div>Pain</div><div>Painless (haemorrhoids Grade I–II, warts, skin tags, rectal prolapse initially) vs acutely painful (thrombosed haemorrhoid, abscess, anal fissure with sentinel pile) vs constant throbbing (abscess).</div>
+<div>Sexual history / risk factors</div><div>Receptive anal sex, MSM, HIV, multiple partners → condylomata acuminata (HPV warts), anal cancer risk. Any anal sexual activity → STI screen + GUM referral. Number of partners, condom use, HIV status.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The distinction between a prolapsing haemorrhoid and a rectal prolapse is clinically important and sometimes missed. Haemorrhoids prolapse as separate cushions with radial folds; full-thickness rectal prolapse produces a single large, fleshy, concentric-ringed structure. Rectal prolapse is associated with significant pelvic floor weakness — often in elderly multiparous women or those with neurological conditions affecting the pelvic floor. It requires colorectal surgical assessment. Grade III and IV haemorrhoids (requiring manual reduction or permanently prolapsed) also require colorectal referral for banding or haemorrhoidectomy — they cannot be managed conservatively indefinitely. Haemorrhoid grading: Grade I — bleed only; Grade II — prolapse + spontaneous reduction; Grade III — prolapse + manual reduction needed; Grade IV — permanently prolapsed, irreducible.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+<div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Haemorrhoids (piles)</div><div>Most common anal lump. Internal (above dentate line — painless, bleed bright red) or external (below — can thrombose — very painful). Grade I–IV. Associated with constipation, pregnancy, low-fibre diet, prolonged straining. Conservative: fibre + topical cream. Banding for Grade II–III. Haemorrhoidectomy for Grade IV.</div>
+<div>Thrombosed external haemorrhoid</div><div>Acute sudden severe pain + firm blue-black lump at anal margin. Peak pain 48–72 hrs. Most resolve conservatively over 2–3 weeks. Surgical excision within 72 hrs dramatically reduces pain and duration.</div>
+<div>Perianal skin tag</div><div>Soft, painless, flesh-coloured flap of skin at anal margin. Often residual from previous thrombosed haemorrhoid or fissure sentinel pile. Entirely benign. No treatment needed unless symptomatic (hygiene difficulty, irritation). Excision under LA if troublesome.</div>
+<div>Condylomata acuminata (anal warts)</div><div>Multiple soft, cauliflower-like, flesh-coloured or pink growths at anal margin and perianal skin. HPV types 6/11 (low-risk) in most. High-risk HPV (16/18) → anal cancer risk. GUM referral mandatory. Treatment: topical podophyllotoxin, imiquimod, cryotherapy, or surgical excision.</div>
+<div>Perianal abscess</div><div>Tender, warm, fluctuant lump adjacent to anus. Fever common. Originates in anal glands. Requires surgical I&D — do not drain in primary care. 30–40% develop fistula-in-ano post-drainage.</div>
+<div>Rectal prolapse</div><div>Protrusion of full-thickness rectum through anus — large fleshy lump with concentric mucosal rings, worse on straining. Elderly multiparous women most commonly. Colorectal surgical referral. Elective surgical repair (perineal or abdominal approach).</div>
+<div>Anal cancer (SCC)</div><div>Firm, indurated, ulcerated, fixed perianal/anal canal mass. May be mistaken for a thrombosed haemorrhoid. Any unusual or persistent anal lump not clearly benign → biopsy via colorectal. 2WW referral.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Condylomata acuminata (genital and anal warts) are caused by HPV — most commonly low-risk types 6 and 11. However, high-risk types (16, 18) can co-infect or be present separately, and anal warts require GUM referral for HPV typing, treatment, and anal cancer surveillance rather than simple topical treatment by the GP. In HIV-positive patients, warts are often more extensive, more rapidly growing, and more likely to harbour high-risk HPV. Imiquimod 5% cream (self-applied BD 3 nights/week × 16 weeks) is effective for external warts — it is an immune response modifier, not a cytotoxic agent. Podophyllotoxin 0.15% cream (Warticon) or 0.5% solution — applied BD × 3 days, 4 days rest, repeat × 4–5 cycles. Neither should be used inside the anal canal — internal warts require specialist treatment.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+<div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Examination &amp; Investigations</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Inspection at rest and straining</div><div>Part buttocks and inspect at rest: skin tags, warts, abscess, fissure (posterior midline). Ask patient to strain (or examine on commode): prolapsing haemorrhoids, rectal prolapse. Describe the lump: site, size, surface (smooth/rough/ulcerated), colour, reducibility.</div>
+<div>PR examination</div><div>Assess: internal haemorrhoids (soft, cushion-like — not palpable if not thrombosed), masses (hard, fixed = cancer), sphincter tone, rectal mucosa. Do NOT perform PR if abscess is suspected (exquisitely tender — examine under GA). Topical lidocaine 5% first for fissure/tenderness.</div>
+<div>Proctoscopy / sigmoidoscopy</div><div>Internal haemorrhoids best visualised via proctoscopy. Requested via colorectal/GI clinic (2WW pathway). Rigid sigmoidoscopy for rectal assessment. Not routinely GP-performed but GP can arrange if equipment available and trained.</div>
+<div>STI screen</div><div><span class="pill pill-blue">Rectal NAAT</span> (chlamydia, gonorrhoea) + <span class="pill pill-blue">syphilis serology</span> + <span class="pill pill-blue">HIV test</span> — if warts or any STI suspicion. HPV typing not routinely available in primary care — via GUM.</div>
+<div>Investigations</div><div><span class="pill pill-blue">FBC + CRP</span> (abscess) · <span class="pill pill-blue">HbA1c</span> (abscess risk — diabetics) · <span class="pill pill-blue">2WW lower GI</span> (cancer suspicion) · Biopsy (via colorectal/dermatology — not GP) for any atypical or non-healing lump</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Examination with straining (the Valsalva manoeuvre) is essential for assessing anal lumps — haemorrhoids and rectal prolapse may not be visible at rest but become apparent with increased intra-abdominal pressure. The most effective way is to examine the patient on a left lateral position and ask them to bear down as if opening their bowels. Alternatively, a commode examination is even more effective — the patient sits on the commode, strains, and the examiner inspects from behind. This simple manoeuvre can reveal Grade III/IV haemorrhoids and rectal prolapse that would be invisible at rest. Many GP examinations miss prolapsing lesions because straining is not incorporated into the examination.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="5">
+<div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div><span class="pill pill-red">999</span></div><div>Strangulated rectal prolapse (irreducible, ischaemic, blue/black mucosa). Fournier's gangrene (crepitus + spreading erythema + extreme pain).</div>
+<div><span class="pill pill-red">Same-day surgical</span></div><div>Perianal abscess (I&D). Thrombosed external haemorrhoid within 72 hrs of onset (surgical excision — dramatic pain relief). Strangulated Grade IV haemorrhoids.</div>
+<div><span class="pill pill-purple">2WW lower GI</span></div><div>Any anal lump + rectal bleeding + change in bowel habit age ≥40 · Suspicious anal mass (hard, irregular, fixed, ulcerated) · Anal lump + weight loss · Anal lump unresponsive to treatment · Any anal lump in HIV+ patient</div>
+<div>Colorectal (routine/urgent)</div><div>Grade III–IV haemorrhoids (banding, HALO, haemorrhoidectomy) · Rectal prolapse (surgical repair) · Fistula-in-ano · Recurrent perianal abscess · Anal skin tag (symptomatic, surgical excision)</div>
+<div>GUM</div><div>All anal warts (condylomata acuminata) — HPV typing, treatment, partner notification, HIV screen, anal cancer surveillance in high-risk. All MSM with anal lumps.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Rubber band ligation (banding) for Grade II–III haemorrhoids is one of the most effective and cost-efficient outpatient procedures in colorectal surgery — 80% success rate, minimal recovery time, can be performed in an outpatient setting without anaesthesia. It works by placing a tight rubber band at the base of the haemorrhoidal cushion above the dentate line (painless region), causing ischaemia and fibrotic obliteration of the haemorrhoid within 7–10 days. GPs should refer Grade II–III haemorrhoids to colorectal for banding rather than managing indefinitely with topical creams — creams treat symptoms only and do not address the underlying haemorrhoidal tissue. HALO (Haemorrhoidal Artery Ligation Operation) — Doppler-guided arterial ligation — is increasingly used for Grade III–IV haemorrhoids as an alternative to haemorrhoidectomy with faster recovery.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="6">
+<div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>GP-Initiated Treatment</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="branch">
+<div class="b-card">
+<div class="b-cond">Haemorrhoids Grade I–II</div>
+<div class="b-drug">High-fibre diet + stool softeners</div>
+<div class="b-note">Fybogel 1 sachet BD + lactulose 15 ml BD + 2 litres water/day. Topical creams (Anusol, Scheriproct) — symptom relief only, no healing evidence. Short-course (7 days) 1% hydrocortisone with local anaesthetic for acute flare. Avoid prolonged steroid use (skin atrophy). Refer for banding if refractory.</div>
+</div>
+<div class="b-card">
+<div class="b-cond">Thrombosed external haemorrhoid (&gt;72 hrs)</div>
+<div class="b-drug">Conservative management</div>
+<div class="b-note">After 72 hrs, conservative is safer: regular analgesia (paracetamol + ibuprofen), warm sitz baths (10 min TDS), stool softeners, scrotal/anal elevation. Spontaneous resolution in 2–3 weeks. Explain expected natural history. If &lt;72 hrs → refer same-day surgical excision.</div>
+</div>
+<div class="b-card">
+<div class="b-cond">Anal warts (external)</div>
+<div class="b-drug">Podophyllotoxin 0.15% cream (Warticon)</div>
+<div class="b-note">Apply BD × 3 days, 4 days off, repeat × 4–5 cycles. GUM referral simultaneously for HPV typing, partner notification, HIV screen. Imiquimod 5% cream (Aldara) — alternative; apply 3×/week at bedtime × 16 weeks, wash off after 6–10 hrs. Both available on FP10. Internal warts → GUM/colorectal.</div>
+</div>
+</div>
+<div class="ladder">
+<div class="rung"><span class="rn">Rectal prolapse (reducible)</span><span class="rt">Conservative first: pelvic floor exercises (reduce minor prolapse), stool softeners (reduce straining), weight loss. If persistent or symptomatic → colorectal referral for surgical repair. Transperineal or abdominal rectopexy. Delorme's procedure (elderly frail). No pharmacological treatment is effective.</span></div>
+<div class="rung"><span class="rn">Skin tag (symptomatic)</span><span class="rt">Reassure: entirely benign. No treatment needed unless hygiene difficulty or discomfort. Excision under local anaesthetic (colorectal or GP if trained and appropriate). Hygiene measures: water-only cleaning, pat dry, barrier cream. Do not scratch.</span></div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The 72-hour rule for thrombosed external haemorrhoid (TEH) is an important clinical decision point — before 72 hours, surgical excision (not simple incision) dramatically reduces pain, swelling, and time to resolution, and can be performed under local anaesthesia. After 72 hours, the oedema surrounding the thrombus makes surgical access more difficult and the risk of incomplete excision and residual skin tag increases. The spontaneous resolution trajectory means most TEHs resolve over 2–3 weeks conservatively. GPs who see a TEH within 72 hours should refer urgently for same-day surgical excision — this is a simple, highly effective intervention that provides immediate relief. Warning the patient that it will hurt for 2–3 weeks if managed conservatively is an important part of informed consent.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+<div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Anal Cancer — GP Recognition &amp; Support</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Recognition features</div><div>Firm, indurated, ulcerated, or fixed anal mass. Perianal itch + bleeding + mass. Inguinal lymphadenopathy (anal SCC drains to inguinal nodes, unlike rectal cancer). Any unusual persistent anal lump not clearly benign. Biopsy via colorectal — GP should not attempt biopsy.</div>
+<div>Staging (hospital)</div><div>CT chest/abdomen/pelvis + MRI pelvis (local staging) + PET-CT (distant staging). Inguinal node involvement common — examine inguinal region at initial assessment.</div>
+<div>Treatment (hospital)</div><div>Nigro protocol: 5-fluorouracil continuous infusion + mitomycin C IV + external beam radiotherapy. 85% complete response rate for early-stage disease. Abdominoperineal resection (APR) reserved for chemoradiotherapy failures. GP role: supportive care during treatment.</div>
+<div>Survivorship</div><div>Post-treatment proctitis (manage with barrier cream, stool softeners), radiation-induced sexual dysfunction, anal stenosis. Annual anal examination post-treatment. Psychological support — Macmillan, bowel cancer charities, LGBTQ+ cancer support groups.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The Nigro chemoradiotherapy protocol (originally described in 1974) cures 85% of anal SCC without surgery — this is remarkable given that abdominoperineal resection (which removes the entire anus and creates a permanent colostomy) was the only treatment previously. The key insight was that anal SCC, unlike colorectal adenocarcinoma, is a radiosensitive tumour that responds excellently to combined chemoradiotherapy. GPs should be aware of this because patients often fear they will need a colostomy — reassuring them that the primary treatment is non-surgical and that surgery is reserved for non-responders is an important part of communication. The main acute toxicities are radiation proctitis and skin desquamation — GPs manage these supportively with barrier creams, sitz baths, analgesia, and stool softeners.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+<div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Prevention, Hygiene &amp; Sexual Health</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="lsgrid">
+<div class="lstile"><b>High-fibre diet</b> The root cause of haemorrhoids and fistula is prolonged straining from constipation. 25–30 g fibre/day + 2 litres water/day. Fybogel, fruit, vegetables, wholegrains. Prevents recurrence after haemorrhoid treatment. Footstool during defecation (reduces straining angle). ≤5 min on toilet.</div>
+<div class="lstile"><b>HPV vaccination</b> Gardasil 9 (nine-valent HPV vaccine) prevents 90% of anal cancers (covers HPV 16, 18, 31, 33, 45, 52, 58) and 90% of genital warts (HPV 6, 11). NHS schedule up to age 25 (boys and girls). MSM vaccine up to age 45 via GUM. Check vaccination status opportunistically.</div>
+<div class="lstile"><b>Safe sex</b> Consistent condom use reduces HPV transmission risk by 60–70% (not 100% — HPV is transmitted by skin contact not just penetration). Reduces STI-related anal pathology risk. Discuss at every consultation involving anal warts or STI-related anal disease.</div>
+<div class="lstile"><b>HIV prevention</b> PrEP (pre-exposure prophylaxis — tenofovir/emtricitabine) recommended for all MSM at risk — available via GUM. Reduces HIV acquisition by 99% with good adherence. HIV+ individuals on treatment (undetectable viral load) cannot transmit HIV (U=U — undetectable = untransmittable).</div>
+<div class="lstile"><b>Anal cancer screening (MSM/HIV)</b> HIV+ MSM: annual anal cytology (Pap smear) — available in some GUM clinics. Detects HSIL (high-grade squamous intraepithelial lesion — anal cancer precursor). High-resolution anoscopy (HRA) if abnormal cytology. Reduces anal cancer mortality by early HSIL treatment.</div>
+<div class="lstile"><b>Weight management</b> Obesity increases intra-abdominal pressure → worsens haemorrhoids, increases straining, promotes rectal prolapse in women. BMI &lt;25 target. Exercise improves bowel transit. Each 5 kg weight loss significantly reduces venous pressure on haemorrhoidal plexus.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Gardasil 9 is now available on the NHS for MSM up to age 45 years via GUM clinics — this is a significant public health intervention given the 80-fold increased anal cancer risk in HIV-positive MSM. GPs should check HPV vaccination status in all MSM patients and direct them to GUM for vaccination if not completed. Even in already sexually active individuals, vaccination provides benefit against HPV types they have not yet been exposed to. The U=U (Undetectable = Untransmittable) principle for HIV is scientifically robust — the PARTNER and PARTNER2 studies demonstrated zero HIV transmissions in couples where the HIV-positive partner was on effective ART with an undetectable viral load. GPs communicating this to patients reduces stigma and improves HIV medication adherence.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+<div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Haemorrhoids — 6 weeks</div><div>Lifestyle changes effective? Symptomatic improvement? Grade I–II: continue. Grade II–III with persistent symptoms → colorectal referral for banding. Document haemorrhoid grade at each review — should not progress on conservative treatment.</div>
+<div>Anal warts — 4–8 weeks</div><div>GUM appointment confirmed? Podophyllotoxin/imiquimod cycles completed? Warts clearing? Sexual partner treatment arranged? Recheck HPV vaccination status. Any wart that does not respond to 2 treatment cycles → biopsy via GUM/colorectal.</div>
+<div>Post-abscess drainage</div><div>Persistent perianal discharge at 6 weeks → fistula-in-ano (occurs in 30–40% post-I&D). Colorectal referral for MRI fistula + surgical management. Document fistula opening (external) location if identified.</div>
+<div>2WW tracking</div><div>Confirm hospital appointment received within 2 weeks. Document referral date and indication. Communicate result to patient promptly. Cancer diagnosis → GP coordinates palliative care, radiotherapy support, and survivorship planning.</div>
+<div><span class="pill pill-red">999 safety-net</span></div><div>Strangulated rectal prolapse (cannot be reduced, ischaemic-looking), perianal crepitus + spreading erythema (Fournier's gangrene), haemodynamic compromise from rectal haemorrhage</div>
+<div><span class="pill pill-amber">Same-day GP</span></div><div>New abscess forming after drainage, warts rapidly enlarging (immunocompromised), new rectal bleeding during management, failure to reduce a prolapse manually</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Anal warts that do not respond to two standard treatment cycles must be biopsied — treatment failure may indicate the presence of high-risk HPV, early Buschke-Löwenstein tumour (giant condyloma — locally invasive but rarely metastatic), or anal intraepithelial neoplasia (AIN) progressing towards anal SCC. Buschke-Löwenstein tumour presents as a very large cauliflower-like perianal mass and can be confused with a large condyloma acuminatum — it is locally destructive and requires surgical excision. Any condyloma acuminatum that is unusually large (&gt;2 cm), rapidly growing, or causing functional symptoms should be referred urgently rather than treated empirically.</div></div>
+</div>
+
+</div>
+<div class="alg-foot"><strong>Educational use only.</strong> Based on NICE NG12 (Suspected Cancer, 2023), NICE CKS Haemorrhoids (2023), NICE CKS Genital Warts (2022), BASHH Condylomata Acuminata guidelines, ACPGBI Colorectal guidelines, NHS England anal cancer screening guidance. Always adapt to individual patient context.</div>
+<script>
+(function(){
+  const STORE='rgp.alg.anallumps.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

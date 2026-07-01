@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Real-Consultation Feedback · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<style>
+.tool-page{ padding:28px 32px 80px; max-width:920px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+.tool-head{ padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:18px; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:34px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:6px; max-width:68ch; }
+
+.rf-consent{ background:#fffbeb; border:1px solid #fde68a; border-radius:12px; padding:12px 16px; font-size:13px; line-height:1.6; color:#92400e; margin-bottom:18px; }
+.rf-consent b{ color:#78350f; }
+
+.rf-tabs{ display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
+.rf-tab{ font:inherit; font-size:13px; font-weight:700; padding:9px 17px; border-radius:10px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; display:flex; gap:7px; align-items:center; }
+.rf-tab.sel{ background:#0c4a47; color:#f6f2e9; border-color:#0c4a47; }
+
+.rf-input{ border:1px solid var(--line); border-radius:14px; background:#fff; padding:18px 20px; }
+.rf-pane{ display:none; }
+.rf-pane.on{ display:block; }
+.rf-pane p{ font-size:13px; color:var(--ink-2); line-height:1.6; margin-bottom:12px; }
+.rf-pane textarea{ width:100%; min-height:230px; font:inherit; font-size:13.5px; line-height:1.6; padding:13px 15px; border:1px solid var(--line); border-radius:11px; resize:vertical; color:var(--ink); }
+.rf-pane textarea:focus{ outline:2px solid #0c4a4733; border-color:#0c4a47; }
+
+.rf-file{ border:2px dashed var(--line); border-radius:12px; padding:28px 20px; text-align:center; cursor:pointer; transition:.15s ease; }
+.rf-file:hover{ border-color:#0c4a47; background:#f0fdfa; }
+.rf-file input{ display:none; }
+.rf-file .fi-ic{ font-size:28px; }
+.rf-file .fi-t{ font-size:14px; font-weight:700; color:var(--ink); margin-top:6px; }
+.rf-file .fi-s{ font-size:12px; color:var(--muted); margin-top:3px; }
+
+.rf-recbox{ text-align:center; padding:14px 0; }
+.rf-recbtn{ font:inherit; font-size:14px; font-weight:700; padding:13px 26px; border-radius:999px; border:1px solid var(--line); background:#fff; color:var(--ink); cursor:pointer; display:inline-flex; gap:9px; align-items:center; }
+.rf-recbtn .dot{ width:11px; height:11px; border-radius:50%; background:#94a3b8; }
+.rf-recbtn.live{ background:#b91c1c; border-color:#b91c1c; color:#fff; }
+.rf-recbtn.live .dot{ background:#fff; animation:rfPulse 1.1s infinite; }
+@keyframes rfPulse{ 0%,100%{ opacity:1 } 50%{ opacity:.3 } }
+.rf-recstat{ font-size:12.5px; color:var(--muted); margin-top:10px; }
+.rf-livetx{ margin-top:12px; text-align:left; font-size:13px; line-height:1.6; color:var(--ink-2); background:#f8fafc; border:1px solid var(--line); border-radius:10px; padding:11px 14px; max-height:170px; overflow:auto; white-space:pre-wrap; display:none; }
+.rf-livetx.on{ display:block; }
+
+.rf-ctx{ display:flex; gap:10px; margin-top:14px; flex-wrap:wrap; }
+.rf-ctx input{ flex:1; min-width:240px; font:inherit; font-size:13px; padding:9px 13px; border:1px solid var(--line); border-radius:9px; color:var(--ink); }
+.rf-go{ font:inherit; font-size:14px; font-weight:700; padding:11px 24px; border-radius:10px; border:none; background:#0c4a47; color:#f6f2e9; cursor:pointer; }
+.rf-go:hover{ filter:brightness(1.12); }
+.rf-go:disabled{ opacity:.45; cursor:not-allowed; }
+.rf-status{ font-size:12.5px; color:var(--muted); margin-top:10px; }
+
+.rf-out{ margin-top:18px; display:none; }
+.rf-out.on{ display:block; }
+.rf-report{ border:1px solid var(--line); border-radius:14px; background:#fff; padding:20px 22px; font-size:13.8px; line-height:1.7; color:var(--ink); }
+.rf-report h3{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:18px; margin:16px 0 6px; }
+.rf-report h3:first-child{ margin-top:0; }
+.rf-report ul{ margin:6px 0; padding-left:19px; }
+.rf-report li{ margin-bottom:5px; }
+.rf-report .tl-g{ color:#15803d; font-weight:700; } .rf-report .tl-a{ color:#b45309; font-weight:700; } .rf-report .tl-r{ color:#b91c1c; font-weight:700; }
+.rf-note{ font-size:12.3px; color:var(--muted); line-height:1.55; margin-top:12px; }
+</style>
+</head>
+<body>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-sca"></aside>
+  <main class="main">
+    <div class="tool-page">
+
+      <div class="tool-head">
+        <div class="tool-eyebrow">Reasoning GP · Your real consulting</div>
+        <h1>Real-consultation <em>feedback</em></h1>
+        <p>Simulated practice polishes a performance; this examines the habits underneath. Bring a <b>real consultation</b> — recorded role-play, dictated recall, or a transcript — and get RCGP-examiner feedback against the three domains, traffic-lighted.</p>
+      </div>
+
+      <div class="rf-consent"><b>Before you use a real patient encounter:</b> you must have the patient's explicit consent to record, and you must <b>remove every identifying detail</b> (names, dates of birth, addresses, employers, rare conditions) before pasting. Role-plays with colleagues need no consent beyond theirs. Nothing here is stored — the text lives only in this page until you leave it.</div>
+
+      <div class="rf-tabs">
+        <button class="rf-tab sel" data-p="paste">📋 Paste a transcript</button>
+        <button class="rf-tab" data-p="file">📁 Upload a .txt file</button>
+        <button class="rf-tab" data-p="rec">🎙️ Dictate / re-listen live</button>
+      </div>
+
+      <div class="rf-input">
+        <div class="rf-pane on" data-p="paste">
+          <p>Paste the consultation as <b>Doctor: / Patient:</b> turns if you can — but plain prose works too. Even a from-memory reconstruction is worth analysing: what you remember saying is itself diagnostic.</p>
+          <textarea id="rfText" placeholder="Doctor: Hello, what's brought you in today?&#10;Patient: It's this cough, it won't shift...&#10;Doctor: ..."></textarea>
+        </div>
+        <div class="rf-pane" data-p="file">
+          <p>A plain-text transcript exported from your video software, dictation app, or typed notes.</p>
+          <label class="rf-file">
+            <input type="file" id="rfFile" accept=".txt,.text,text/plain">
+            <div class="fi-ic">📄</div>
+            <div class="fi-t">Choose a .txt transcript</div>
+            <div class="fi-s" id="rfFileName">De-identified text only · processed in this page, never uploaded anywhere</div>
+          </label>
+        </div>
+        <div class="rf-pane" data-p="rec">
+          <p>Two ways to use the microphone: <b>dictate</b> a consultation from memory immediately after it happened, or <b>play back a recording out loud</b> near the mic and let the browser transcribe it. Works best in Chrome/Edge.</p>
+          <div class="rf-recbox">
+            <button class="rf-recbtn" id="rfRecBtn"><span class="dot"></span><span id="rfRecLbl">Start listening</span></button>
+            <div class="rf-recstat" id="rfRecStat">Microphone off</div>
+            <div class="rf-livetx" id="rfLive"></div>
+          </div>
+        </div>
+
+        <div class="rf-ctx">
+          <input type="text" id="rfCase" placeholder="One-line context (e.g. 'telephone triage, 54M chest tightness on exertion') — optional but sharpens the feedback">
+          <button class="rf-go" id="rfGo" disabled>Get examiner feedback</button>
+        </div>
+        <div class="rf-status" id="rfStatus">Waiting for a transcript — the button enables at ~200 characters.</div>
+      </div>
+
+      <div class="rf-out" id="rfOut">
+        <div class="rf-report" id="rfReport"></div>
+        <p class="rf-note">This feedback judges only what is visible in the text — tone, pace and body language are invisible to it, and a reconstructed transcript reflects your memory, not the room. Treat amber/red flags as hypotheses to test on your next recording, not verdicts. Patterns matter more than single consultations: <a href="sca-progress.html" style="color:var(--teal);font-weight:600">log your domain grades</a> over several weeks.</p>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=51"></script>
+<script>
+(function(){
+  'use strict';
+  const $ = q => document.querySelector(q);
+
+  /* Tabs */
+  document.querySelectorAll('.rf-tab').forEach(t => t.addEventListener('click', () => {
+    document.querySelectorAll('.rf-tab').forEach(x => x.classList.toggle('sel', x === t));
+    document.querySelectorAll('.rf-pane').forEach(p => p.classList.toggle('on', p.dataset.p === t.dataset.p));
+  }));
+
+  let transcript = '';
+  function setTranscript(t, src){
+    transcript = (t || '').trim();
+    const ok = transcript.length >= 200;
+    $('#rfGo').disabled = !ok;
+    $('#rfStatus').textContent = !transcript.length ? 'Waiting for a transcript — the button enables at ~200 characters.'
+      : !ok ? 'Captured ' + transcript.length + ' characters — a bit more detail will get usable feedback (200+).'
+      : 'Ready: ' + transcript.length + ' characters from ' + src + '. Check it\u2019s de-identified, then get feedback.';
+  }
+
+  $('#rfText').addEventListener('input', () => setTranscript($('#rfText').value, 'pasted text'));
+
+  $('#rfFile').addEventListener('change', e => {
+    const f = e.target.files[0];
+    if (!f) return;
+    $('#rfFileName').textContent = f.name + ' · ' + Math.round(f.size / 1024) + ' KB';
+    const r = new FileReader();
+    r.onload = () => { $('#rfText').value = r.result; setTranscript(r.result, f.name); };
+    r.readAsText(f);
+  });
+
+  /* Live mic via browser speech recognition */
+  let rec = null, recOn = false, recBuf = '';
+  $('#rfRecBtn').addEventListener('click', () => {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) { $('#rfRecStat').textContent = 'Speech recognition isn\u2019t available in this browser — use Chrome or Edge, or paste text instead.'; return; }
+    if (recOn) { try { rec.stop(); } catch(e){} return; }
+    rec = new SR();
+    rec.continuous = true; rec.interimResults = true; rec.lang = 'en-GB';
+    recBuf = transcript ? transcript + '\n' : '';
+    rec.onresult = ev => {
+      let interim = '';
+      for (let i = ev.resultIndex; i < ev.results.length; i++) {
+        if (ev.results[i].isFinal) recBuf += ev.results[i][0].transcript + ' ';
+        else interim += ev.results[i][0].transcript;
+      }
+      $('#rfLive').textContent = recBuf + interim;
+      $('#rfLive').scrollTop = $('#rfLive').scrollHeight;
+      setTranscript(recBuf, 'live dictation');
+      $('#rfText').value = recBuf;
+    };
+    rec.onstart = () => {
+      recOn = true;
+      $('#rfRecBtn').classList.add('live');
+      $('#rfRecLbl').textContent = 'Stop listening';
+      $('#rfRecStat').textContent = '🔴 Listening — speak naturally; pauses are fine.';
+      $('#rfLive').classList.add('on');
+    };
+    rec.onend = () => {
+      recOn = false;
+      $('#rfRecBtn').classList.remove('live');
+      $('#rfRecLbl').textContent = 'Start listening';
+      $('#rfRecStat').textContent = transcript.length ? 'Stopped. ' + transcript.length + ' characters captured — you can edit them in the Paste tab.' : 'Microphone off';
+    };
+    rec.onerror = e => { $('#rfRecStat').textContent = 'Mic error: ' + e.error + (e.error === 'not-allowed' ? ' — allow microphone access in the address bar.' : ''); };
+    try { rec.start(); } catch(e){}
+  });
+
+  /* AI examiner */
+  function mdLite(s){
+    return s
+      .replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]))
+      .replace(/^### (.*)$/gm, '<h3>$1</h3>')
+      .replace(/^## (.*)$/gm, '<h3>$1</h3>')
+      .replace(/\*\*(GREEN)\*\*/g, '<span class="tl-g">GREEN</span>')
+      .replace(/\*\*(AMBER)\*\*/g, '<span class="tl-a">AMBER</span>')
+      .replace(/\*\*(RED)\*\*/g, '<span class="tl-r">RED</span>')
+      .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+      .replace(/^[-•] (.*)$/gm, '<li>$1</li>')
+      .replace(/(<li>[\s\S]*?<\/li>)(?!\s*<li>)/g, '<ul>$1</ul>')
+      .replace(/\n{2,}/g, '<br><br>');
+  }
+
+  $('#rfGo').addEventListener('click', async () => {
+    if (!window.claude || !window.claude.complete) {
+      $('#rfStatus').textContent = 'The AI examiner isn\u2019t available in this preview — open the page in a normal browser tab.';
+      return;
+    }
+    $('#rfGo').disabled = true;
+    $('#rfStatus').textContent = 'The examiner is reading your consultation…';
+    const ctx = $('#rfCase').value.trim();
+    const prompt = `You are a senior RCGP SCA examiner giving written feedback on a GP trainee's REAL consultation transcript (not a simulated station). Many trainees using this are international medical graduates; be direct, specific and kind. Quote the trainee's actual words back at them as evidence wherever possible.
+
+${ctx ? 'CONTEXT GIVEN BY TRAINEE: ' + ctx + '\n' : ''}TRANSCRIPT:
+"""
+${transcript.slice(0, 12000)}
+"""
+
+Write the report in EXACTLY this structure (markdown, ## headings):
+
+## Overall impression
+2-3 sentences. The single dominant pattern in this consultation, good or bad.
+
+## Data Gathering & Diagnosis — **GREEN/AMBER/RED**
+(pick one rating) Then 3-4 bullets: hypothesis-driven vs template questioning; cues noticed or missed (quote them); red-flag coverage; whether a working diagnosis was committed to out loud.
+
+## Clinical Management & Medical Complexity — **GREEN/AMBER/RED**
+3-4 bullets: was the plan specific to THIS patient or generic; correct urgency; options shared vs dictated; safety-net quality (named symptoms + timeframe + route back, or vague).
+
+## Relating to Others — **GREEN/AMBER/RED**
+3-4 bullets: cue responses (quote the patient's offer and what the trainee did with it); formulaic vs genuine empathy; jargon; whether the patient's agenda shaped the plan.
+
+## The habit to break first
+ONE pattern, with 2-3 verbatim quotes from the transcript as evidence, and the exact alternative phrasing to use instead.
+
+## Two things to keep doing
+Specific, quoted, genuine strengths.
+
+If the transcript is too thin to judge a domain, say so honestly rather than inventing findings.`;
+    try {
+      const out = await window.claude.complete(prompt);
+      $('#rfReport').innerHTML = mdLite(out);
+      $('#rfOut').classList.add('on');
+      $('#rfStatus').textContent = 'Report generated. Run another consultation any time.';
+    } catch (e) {
+      $('#rfStatus').textContent = 'Failed: ' + (e.message || e) + ' — try again.';
+    }
+    $('#rfGo').disabled = false;
+  });
+})();
+</script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

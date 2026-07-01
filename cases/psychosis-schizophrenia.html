@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psychosis &amp; Schizophrenia · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="../assets/medchooser.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+.tag-emerg{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;font-weight:700}
+</style>
+</head>
+<body class="mode-both" id="bodyEl" data-screen-label="Psychosis &amp; Schizophrenia">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="psychosis-schizophrenia"></aside>
+  <main class="main">
+<div class="case-head">
+  <div>
+    <div class="ch-cat">Mental Health · Full case</div>
+    <h1>Psychosis &amp; Schizophrenia</h1>
+  </div>
+  <div class="case-head-tags"><span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE CG178 / NG10</span><span class="tag">EIP · DUP</span><span class="tag tag-emerg">Risk &amp; organic causes</span></div>
+</div>
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">PS</div>
+      <div><div class="tb-title">Psychosis &amp; Schizophrenia · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE CG178 · First-episode psychosis · Early Intervention (EIP) · exclude organic/drugs · risk · antipsychotics &amp; physical health · families</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">Refer early — don't treat alone</span><span class="ns-lbl">Suspected first-episode psychosis should be referred urgently to a community mental health team / Early Intervention in Psychosis (EIP) service. In primary care, do NOT start antipsychotics for a first episode without specialist assessment (unless advised) — refer</span></div>
+    <div class="ns-item"><span class="ns-val">DUP matters</span><span class="ns-lbl">A shorter duration of untreated psychosis (DUP) predicts better outcomes — which is why early recognition and urgent referral matter. EIP services support 14–65-year-olds with a first episode and reduce relapse, admission and self-harm</span></div>
+    <div class="ns-item"><span class="ns-val">Exclude organic &amp; drug causes</span><span class="ns-lbl">Psychosis is not always "psychiatric": exclude delirium, substance misuse/withdrawal (cannabis, stimulants, alcohol), prescribed drugs (steroids, dopaminergics), and organic disease (temporal lobe epilepsy, encephalitis, thyroid, B12, SLE, tumour, dementia). New psychosis in the older patient is delirium until proven otherwise</span></div>
+    <div class="ns-item"><span class="ns-val">Positive vs negative symptoms</span><span class="ns-lbl">Positive: hallucinations (often auditory), delusions, thought disorder, passivity. Negative: blunted affect, apathy, social withdrawal, poverty of speech — often the most disabling and easily mistaken for depression or "drifting"</span></div>
+    <div class="ns-item"><span class="ns-val">Risk — to self, from others, to others</span><span class="ns-lbl">Assess suicide/self-harm (markedly raised in psychosis), risk from command hallucinations/delusions, self-neglect, vulnerability/exploitation, and risk to others (less common than feared but must be assessed) — and safeguarding of any dependents</span></div>
+    <div class="ns-item"><span class="ns-val">Antipsychotics need monitoring</span><span class="ns-lbl">Antipsychotics carry metabolic (weight, glucose, lipids), cardiac (QTc), prolactin and extrapyramidal effects. NICE mandates baseline + ongoing physical-health monitoring; GPs play a central role. Clozapine (for treatment-resistant schizophrenia) needs mandatory blood monitoring (agranulocytosis)</span></div>
+    <div class="ns-item"><span class="ns-val">People with SMI die younger</span><span class="ns-lbl">People with severe mental illness die ~15–20 years earlier, largely from cardiovascular disease — proactive annual physical-health checks (BP, weight, lipids, glucose, smoking) and treatment are a core GP responsibility, not an afterthought</span></div>
+    <div class="ns-item"><span class="ns-val">Involve family &amp; carers</span><span class="ns-lbl">With consent, involve family/carers — they aid history, support engagement and adherence, and need support themselves. Family intervention and CBT for psychosis are NICE-recommended alongside medication. Watch the Mental Health Act threshold where risk/refusal endangers safety</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Psychosis &amp; Schizophrenia</div>
+  <div class="stem-title">A 21-year-old student brought by his worried mother — withdrawn for months, now convinced his housemates are spying on him and hearing voices commenting on him</div>
+  <div class="stem-text">Daniel Osei, 21, a university student, is brought in by his mother, who is frightened by how he has changed. Over 4–5 months he has become increasingly withdrawn, stopped attending lectures and seeing friends, and neglected his self-care. In the last few weeks he has become convinced his housemates are spying on him and have "bugged" his room, and he hears two voices commenting on what he is doing. He is guarded and suspicious in the consultation, sleeps poorly, and has been smoking high-potency cannabis daily. There is a family history of schizophrenia in an uncle. He has had fleeting thoughts that he might be "better off dead" but denies any plan. He has no fever or confusion and is physically well.</div>
+  <div class="stem-note">This stem tests the ability to: recognise a first episode of psychosis (positive symptoms — persecutory delusions, third-person auditory hallucinations — on a background of months of negative symptoms/decline), and to assess it sensitively in a guarded patient; to assess RISK thoroughly (suicide/self-harm, command hallucinations, self-neglect, vulnerability, risk to/from others, safeguarding); to exclude organic and drug causes (cannabis, delirium, organic disease) with history, examination and baseline investigations; to refer URGENTLY to the community mental health team / Early Intervention in Psychosis service rather than starting antipsychotics alone in primary care; to engage and support the family with consent; and to understand the longer-term GP roles (physical-health monitoring, relapse prevention). The SCA challenge is building enough rapport with a suspicious young man to assess risk and facilitate referral, while supporting a frightened parent and being honest within the limits of confidentiality.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — First-episode psychosis (this stem)</strong> Young person, positive + negative symptoms, cannabis use, family history. Risk assessment; exclude organic/drug causes; urgent EIP/CMHT referral; engage family (consent); don't start antipsychotics alone; safety-net.</div>
+    <div class="stem-variant"><strong>Scenario B — Acute risk / crisis</strong> Command hallucinations to harm self/others, active suicidality, severe self-neglect, or refusal endangering safety. Crisis team / urgent psychiatric assessment; consider Mental Health Act.</div>
+    <div class="stem-variant"><strong>Scenario C — Organic psychosis / delirium</strong> Older patient, acute onset, fluctuating, clouded consciousness, fever, focal signs. Treat as delirium — find and treat the cause; admit/medical work-up, not a psychiatric label.</div>
+    <div class="stem-variant"><strong>Scenario D — Drug-induced psychosis</strong> Stimulants/cannabis/withdrawal. Manage substance use; may resolve, but new psychosis still warrants assessment; comorbid SMI common.</div>
+    <div class="stem-variant"><strong>Scenario E — Established schizophrenia (GP role)</strong> Known patient on antipsychotics: physical-health monitoring, relapse signs, adherence, clozapine bloods, comorbidity, carer support, shared-care.</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> First episode vs established vs crisis; positive/negative symptoms; organic/drug causes (age, onset, confusion); risk (self/others/neglect/vulnerability/safeguarding); cannabis/substances; family history &amp; involvement; antipsychotic monitoring &amp; physical health; Mental Health Act threshold; confidentiality with families.</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History — Engage the Guarded Patient · Symptoms · Risk · Organic/Drug Causes · ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The history has to do several hard things at once: build enough trust with a suspicious young man to explore his experiences; characterise the psychotic symptoms (positive and the often-missed negative); conduct a thorough risk assessment; and screen for the organic and drug causes that must not be mislabelled as schizophrenia.</strong> Rapport is not a nicety here — without it, Daniel discloses nothing and the risk assessment fails.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 SCA framing — gentle, non-confronting, curious</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"Thanks for coming in — I can see this is hard. I'm not here to judge or to catch you out; I just want to understand what life's been like for you lately. Can you tell me how things have been?"</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Don't challenge delusions or argue with them; explore them with curiosity ("that sounds frightening — tell me more about it"). A non-confronting, validating stance is what allows a guarded, paranoid patient to talk, and is the gateway to assessing risk.</div>
+    </div>
+    <div class="sub-divider">1A — Symptoms, risk and causes</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"Tell me how the last few months have been for you — in your own words."</em></td>
+            <td class="why"><strong>An open, unhurried, non-judgmental opening is the single most important move.</strong> It lets Daniel describe the decline and, if trust builds, the delusions and voices. The timeline (months of withdrawal then emerging positive symptoms) is the classic first-episode trajectory.<span class="why-sub">In SCA: rapport-building with a suspicious patient, and exploring rather than challenging beliefs, is heavily rewarded — it's the core skill of the case.</span></td>
+            <td><span class="chg chg-ddx">Decline + positive symptoms → first-episode psychosis</span></td>
+          </tr>
+          <tr><td class="q">Positive symptoms<em>"Some people in your situation have unusual experiences — do you ever hear things others can't, or feel that people might be watching or interfering with you? Can you tell me about the voices?"</em></td><td class="why">Characterise hallucinations (modality, third-person/running commentary, command), delusions (persecutory, reference, control), thought disorder and passivity. Daniel's persecutory delusions and third-person auditory hallucinations are first-rank-type positive symptoms. Explore gently, without endorsing or disputing.</td><td class="why">Positive symptoms confirm psychosis; command hallucinations raise risk.</td><td><span class="chg chg-ddx">Defines psychosis</span><span class="chg chg-999">Command hallucinations → risk</span></td></tr>
+          <tr><td class="q">Negative symptoms &amp; function<em>"How have your motivation, studies, friendships and self-care been? What does a typical day look like now?"</em></td><td class="why">Negative symptoms (apathy, social withdrawal, blunted affect, self-neglect) are often the earliest and most disabling, and are easily mislabelled as depression or "drifting". The functional decline (stopped lectures, lost friends, neglected hygiene) defines severity and need.</td><td class="why">Negative symptoms/decline → severity, support needs; differentiate from depression.</td><td><span class="chg chg-rx">Function → support &amp; urgency</span></td></tr>
+          <tr><td class="q">🚩 Risk assessment<em>"Have you had thoughts of harming yourself or that life isn't worth living? Do the voices ever tell you to do things? Do you feel anyone means you harm, or that you need to protect yourself?"</em></td><td class="why"><strong>Mandatory and central.</strong> Assess suicide/self-harm (markedly raised), command hallucinations, intent/plans, risk to others (driven by delusions), self-neglect, vulnerability/exploitation, and safeguarding of dependents. Daniel has passive suicidal thoughts — explore fully and gauge protective factors.</td><td class="why">Active risk/command hallucinations/severe neglect → crisis/urgent assessment ± MHA.</td><td><span class="chg chg-999">Acute risk → crisis team / MHA</span></td></tr>
+          <tr><td class="q">🚩 Drugs &amp; organic screen<em>"What are you using — cannabis, stimulants, alcohol? Any new medicines? Any fevers, confusion, head injury, fits, or physical illness?"</em></td><td class="why">High-potency cannabis (Daniel, daily) and stimulants can precipitate/worsen psychosis; steroids/dopaminergics and withdrawal states cause it. Organic causes — delirium, temporal lobe epilepsy, encephalitis, thyroid, B12, SLE, tumour, dementia — must be excluded, especially with acute onset, confusion, fever, focal signs, or older age.</td><td class="why">Substance/organic cause → manage substance / medical work-up; new psychosis in older/confused patient = delirium.</td><td><span class="chg chg-inv">Bloods, urine drug screen; ?organic work-up</span></td></tr>
+          <tr><td class="q">Background &amp; collateral<em>"Any family history of mental illness? Can I, with your permission, also hear from your mum, who's worried about you?"</em></td><td class="why">Family history (Daniel's uncle) raises risk. Collateral history from family/carers is invaluable for the timeline and risk — seek consent, and balance confidentiality with safety. The mother's account both informs and is part of supporting the family.</td><td class="why">Family history → risk; collateral → accuracy; consent for family involvement.</td><td><span class="chg chg-ref">Collateral + family support (consent)</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — risk and the organic mimics</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Active suicidality / command hallucinations to harm self or others</td><td class="rf-why">Suicide risk is markedly raised in psychosis; command hallucinations can drive acts.</td><td><span class="rf-action rfa-999">Urgent psychiatric/crisis assessment; safety plan; consider Mental Health Act if refusing &amp; at risk</span></td></tr>
+          <tr><td class="rf-flag">Severe self-neglect / inability to care for self / vulnerability &amp; exploitation</td><td class="rf-why">Risk to health and safety; safeguarding of patient and any dependents.</td><td><span class="rf-action rfa-same">Urgent assessment; safeguarding; consider admission</span></td></tr>
+          <tr><td class="rf-flag">Delirium / organic psychosis — acute onset, fluctuating, clouded consciousness, fever, focal neurology, older age</td><td class="rf-why">A medical emergency mislabelled as "psychiatric"; encephalitis, metabolic, structural causes.</td><td><span class="rf-action rfa-999">Treat as delirium — medical assessment/admission; find &amp; treat the cause</span></td></tr>
+          <tr><td class="rf-flag">First-episode psychosis (any)</td><td class="rf-why">Shorter duration of untreated psychosis improves outcomes; needs specialist assessment, not GP-alone treatment.</td><td><span class="rf-action rfa-same">Urgent EIP/CMHT referral; do not start antipsychotics alone</span></td></tr>
+          <tr><td class="rf-flag">Neuroleptic malignant syndrome (in treated patients) — rigidity, fever, autonomic instability, ↑CK</td><td class="rf-why">Life-threatening reaction to antipsychotics.</td><td><span class="rf-action rfa-999">Stop antipsychotic; emergency admission</span></td></tr>
+          <tr><td class="rf-flag">Clozapine patient with fever/sore throat (neutropenia) or new illness</td><td class="rf-why">Agranulocytosis / myocarditis — life-threatening.</td><td><span class="rf-action rfa-999">Urgent FBC; liaise with the clozapine service; emergency assessment</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What do you make of what's been happening to you — what do you think is going on?"</div><div class="ice-why">Daniel may have little insight, or a frightening explanation (the housemates are real to him). Understanding his model lets you meet him where he is — neither colluding with nor flatly contradicting the delusion — and frame help in terms he can accept (stress, sleep, the distress of the voices).</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 Concerns</div><div class="ice-phrase">"What's been the hardest or most frightening part of all this for you?"</div><div class="ice-why">His concern may be fear of the voices, of being watched, or of being "mad"/sectioned. Naming it builds trust, reduces threat, and lets you offer help framed around reducing his distress rather than labelling him.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"What were you hoping might come from today — and what would feel like help to you?"</div><div class="ice-why">He may not want help, or fear hospital. Naming this lets you explain the supportive, non-coercive role of the specialist team, address fears about being sectioned, and negotiate engagement — central to a successful, consensual referral.</div></div>
+    </div>
+    <div class="sub-divider">1D — Psychosocial context</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 Fear, stigma, a frightened family, and the chance to intervene early</div>
+      <p>First-episode psychosis usually strikes a young person and their family at once — frightening, stigmatised, and often misread for months as "stress", drugs or laziness. The patient may be terrified, mistrustful, and lack insight; the family is frequently the one raising the alarm and carrying the distress. The consultation matters enormously because earlier treatment improves outcomes (shorter DUP). Success rests on a calm, non-judgmental, hopeful stance: engaging the young person without confrontation, taking risk seriously, supporting the family within the bounds of confidentiality, and getting specialist help moving quickly.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>🤝 Engagement over confrontation</h5><p>Don't argue with delusions; build trust around shared goals (sleep, less distress).</p><span class="ps-phrase">"I can't fully know what you're experiencing, but I can see it's distressing and exhausting. Whatever's behind it, I'd like to help you feel safer and sleep better — can we work on that together?"</span></div>
+      <div class="ps-card"><h5>👪 The frightened family</h5><p>Support the mother; seek consent to involve her; signpost carer support.</p><span class="ps-phrase">"I can see how worried you are, and bringing him in was the right thing. With Daniel's permission I'd like to keep you involved — and there's support for families going through this too."</span></div>
+      <div class="ps-card"><h5>😨 Fear of being "sectioned"</h5><p>Address the fear of hospital/coercion honestly.</p><span class="ps-phrase">"Most people get help without ever going into hospital — the team I want to involve work with you in the community. My aim is to support you, not to take control away from you."</span></div>
+      <div class="ps-card"><h5>🌱 Hope &amp; early help</h5><p>Convey realistic hope — early treatment helps.</p><span class="ps-phrase">"Getting help early genuinely makes a difference to how things go. There are effective treatments and a specialist team for exactly this — you don't have to manage it alone."</span></div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div><div class="sca-phrase">"Tell me about the voices — what do they say?" + "Do they ever tell you to do things?" — characterises symptoms and command-hallucination risk.</div><div class="sca-phrase">"Have you had thoughts of harming yourself?" — explicit risk assessment.</div><div class="sca-phrase">"I'm not here to judge or take control — I want to help you feel safer." — engagement.</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Arguing with / challenging delusions; confrontational stance</li><li>Not assessing risk (suicide, command hallucinations, neglect, to others)</li><li>Not screening drugs/organic causes</li><li>Breaching confidentiality with family without consent (outside risk)</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">No risk assessment; confronts delusions; organic/drug causes missed; starts antipsychotic alone; no referral</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Recognises psychosis; partial risk assessment; some cause screen; referral vague; family/consent partly handled</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Engages without confrontation; characterises positive &amp; negative symptoms; full risk assessment; excludes drug/organic; urgent EIP/CMHT referral; supports family with consent; ICE all three</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage — Crisis/MHA · Urgent EIP/CMHT · Medical (Organic)</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The triage hinge is risk and cause: acute risk or refusal endangering safety needs the crisis team and possibly the Mental Health Act; suspected organic psychosis/delirium needs medical assessment; and a first episode without acute risk needs urgent EIP/CMHT referral.</strong> Daniel — first episode, passive suicidal thoughts, no immediate plan, physically well — needs urgent EIP referral with a safety plan, not (yet) the crisis team.</div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div>
+        <h3>Same day / crisis</h3>
+        <span class="tc-badge tcb-e">Immediate</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Acute risk to self/others</strong><em>Active suicidality, command hallucinations, violence → crisis team / urgent psychiatry; MHA if needed</em></li>
+          <li class="tc-item"><strong>Severe self-neglect / refusal endangering safety</strong><em>Urgent assessment; consider MHA</em></li>
+          <li class="tc-item"><strong>Suspected delirium / organic cause</strong><em>Medical assessment/admission</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Urgent</div>
+        <h3>Days</h3>
+        <span class="tc-badge tcb-u">EIP / CMHT</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>First-episode psychosis (no acute risk)</strong><em>Urgent EIP/CMHT referral; safety plan</em></li>
+          <li class="tc-item"><strong>Relapse of known psychosis</strong><em>CMHT/care coordinator</em></li>
+          <li class="tc-item"><strong>Significant substance-induced psychosis</strong><em>MH + substance services</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Routine</div>
+        <h3>GP / shared care</h3>
+        <span class="tc-badge tcb-r">Ongoing role</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Stable established schizophrenia</strong><em>Physical-health monitoring; relapse vigilance; adherence</em></li>
+          <li class="tc-item"><strong>Clozapine shared care</strong><em>Bloods; liaise clozapine service</em></li>
+          <li class="tc-item"><strong>Carer support</strong><em>Family intervention; carer's assessment</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Triage rationale</div><div class="sca-phrase">"You're not in immediate danger today, which is good — so rather than hospital, I want to get you seen urgently by a specialist team that helps young people with exactly these experiences, and we'll make a safety plan in the meantime."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Missing acute risk / not escalating to crisis/MHA when needed</li><li>Treating organic psychosis as psychiatric</li><li>Routine (non-urgent) referral for a first episode</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Assessment — Mental State · Risk Formulation · Physical/Cognitive Screen</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>"Examination" is the mental state examination and risk formulation, plus a physical and cognitive screen to exclude organic causes — clouded consciousness, fever or focal signs point away from primary psychosis.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🧠 Mental state &amp; risk</div>
+        <table class="it">
+          <thead><tr><th>Domain</th><th>What to assess</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Appearance/behaviour</td><td>Self-care, guardedness, agitation, rapport, response to internal stimuli.</td></tr>
+            <tr><td class="factor">Speech &amp; thought</td><td>Form (disorder), content (delusions), possession (insertion/withdrawal/broadcast).</td></tr>
+            <tr><td class="factor">Perception</td><td>Hallucinations — modality, third-person, command.</td></tr>
+            <tr><td class="factor">Mood &amp; cognition</td><td>Depression/affect; orientation/attention (delirium screen).</td></tr>
+            <tr><td class="factor">Insight &amp; risk</td><td>Insight; suicide/self-harm, to/from others, neglect, vulnerability, safeguarding.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🩺 Physical / organic</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Consciousness / cognition</td><td>Clouding/fluctuation → delirium.</td></tr>
+            <tr><td class="factor">Vitals, temperature</td><td>Infection/encephalitis; NMS in treated patients.</td></tr>
+            <tr><td class="factor">Neurological exam</td><td>Focal signs, seizures (temporal lobe).</td></tr>
+            <tr><td class="factor">General/physical baseline</td><td>Weight, BP, signs of substance use/withdrawal; baseline for antipsychotics.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Demonstrating the formulation</div><div class="sca-phrase">"My assessment is a likely first episode of psychosis — persecutory beliefs and voices on a background of months of withdrawal — with current risk of self-harm low but present, no signs of a physical cause, and heavy cannabis use as a factor. That needs urgent specialist assessment."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>No explicit risk formulation</li><li>No cognitive/physical screen to exclude organic cause</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Investigations — Exclude Organic · Drug Screen · Antipsychotic Baseline</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Investigations exclude organic causes, screen for substances, and establish a physical-health baseline before antipsychotic treatment — much of this is initiated in primary care or shared with the specialist team.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🧪 Exclude organic / baseline</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">FBC, U&amp;E, LFTs, glucose/HbA1c, lipids</td><td>Organic screen + metabolic baseline before antipsychotics.</td></tr>
+            <tr><td class="factor">TFTs, calcium, B12/folate</td><td>Thyroid, metabolic, deficiency causes.</td></tr>
+            <tr><td class="factor">CRP/ESR (± autoimmune)</td><td>Infection/inflammation; SLE, autoimmune encephalitis if suspected.</td></tr>
+            <tr><td class="factor">Prolactin, ECG (QTc)</td><td>Baseline before/with antipsychotics.</td></tr>
+            <tr><td class="factor">Weight/BMI, BP, smoking</td><td>Physical-health baseline (SMI mortality).</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🔬 Targeted / specialist</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Urine drug screen</td><td>Cannabis/stimulants/other substances.</td></tr>
+            <tr><td class="factor">CT/MRI brain</td><td>Focal signs, atypical/late onset, suspected structural/encephalitic cause (specialist).</td></tr>
+            <tr><td class="factor">EEG / LP</td><td>Suspected epilepsy/encephalitis (specialist).</td></tr>
+            <tr><td class="factor">Clozapine monitoring</td><td>Mandatory FBC schedule in clozapine patients.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key reasoning</div><div class="sca-phrase">"I'll do some blood tests to rule out physical causes like thyroid or infection, and to get a baseline before any medication the specialist might start — and we'll factor in the cannabis use."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>No organic screen / drug screen</li><li>Not establishing a physical-health baseline</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Diagnosis — Psychosis · Schizophrenia · Organic/Drug · Affective · Differentials</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>In primary care the working diagnosis is "first-episode psychosis" — the formal diagnosis (schizophrenia vs other) is the specialist's job after assessment over time. The GP's task is to recognise psychosis, exclude organic/drug causes, and refer; not to apply the schizophrenia label prematurely.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:24%">Diagnosis</th><th>Discriminating features</th></tr></thead>
+        <tbody>
+          <tr><td class="q"><strong>First-episode psychosis</strong></td><td class="why">Positive ± negative symptoms; the primary-care working diagnosis → refer (Daniel).</td></tr>
+          <tr><td class="q"><strong>Schizophrenia</strong></td><td class="why">Characteristic symptoms ≥1 month with functional decline (specialist diagnosis over time).</td></tr>
+          <tr><td class="q"><strong>Drug-induced psychosis</strong></td><td class="why">Temporal link to cannabis/stimulants/withdrawal; may resolve but warrants assessment.</td></tr>
+          <tr><td class="q"><strong>Organic psychosis / delirium</strong></td><td class="why">Acute, fluctuating, clouded consciousness, fever/focal signs, older age.</td></tr>
+          <tr><td class="q"><strong>Affective psychosis</strong></td><td class="why">Mood-congruent psychosis in severe depression or bipolar (mania).</td></tr>
+          <tr><td class="q"><strong>Other</strong></td><td class="why">Schizoaffective, delusional disorder, severe stress/PTSD, autism-related.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ddx-card ddx-b" style="margin-bottom:4px">
+      <h4>🚩 Recognise and refer — don't over-label or under-treat</h4>
+      <p>The GP's job is not to diagnose schizophrenia but to recognise psychosis, exclude organic/drug causes, assess risk, and get specialist help quickly. For Daniel the formulation is a likely first episode of psychosis with heavy cannabis use and a family history, current self-harm risk low but present, no organic red flags — requiring urgent EIP referral, a safety plan, family support with consent, and physical-health baseline, but NOT a GP-initiated antipsychotic or a premature schizophrenia label.</p>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Explaining it plainly</div><div class="sca-phrase">"I think you're having experiences doctors call psychosis — the mind can start to perceive threats and voices that feel completely real. It's treatable, and there's a specialist team for young people I want to involve quickly. I won't put a bigger label on it now — that's something they'll work out with you over time."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Diagnosing "schizophrenia" prematurely</li><li>Not excluding drug/organic causes before labelling</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc6">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">Referral — Crisis/MHA · EIP/CMHT · Medical · Substance · Carer Support</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Referral is the core action: urgent Early Intervention in Psychosis / community mental health team for a first episode; the crisis team (and Mental Health Act) for acute risk; medical services for organic causes; substance services where relevant; and carer support for the family.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="ref-table">
+        <thead><tr><th style="width:24%">Referral</th><th>Who / when</th><th style="width:20%">Urgency</th></tr></thead>
+        <tbody>
+          <tr><td><strong>🔴 Crisis team / MHA</strong></td><td>Acute risk to self/others, severe neglect, refusal endangering safety.</td><td><span class="rf-action rfa-999">Same day</span></td></tr>
+          <tr><td><strong>EIP / CMHT (urgent)</strong></td><td>First-episode psychosis — Early Intervention in Psychosis service (14–65), or CMHT.</td><td><span class="rf-action rfa-same">Urgent</span></td></tr>
+          <tr><td><strong>Medical / acute</strong></td><td>Suspected delirium/organic psychosis — medical assessment/admission.</td><td><span class="rf-action rfa-999">Same day</span></td></tr>
+          <tr><td><strong>Substance misuse services</strong></td><td>Significant cannabis/stimulant use (often jointly with MH).</td><td><span class="rf-action rfa-same">Soon</span></td></tr>
+          <tr><td><strong>Carer / family support</strong></td><td>Family intervention; carer's assessment; support organisations.</td><td><span class="rf-action rfa-same">Routine</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">The key action</div><div class="sca-phrase">"The most important thing today is to get you seen quickly by the Early Intervention team — they specialise in helping young people through exactly this, in the community. I'll make that referral urgently and we'll agree what to do if things feel worse before they see you."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Starting an antipsychotic alone instead of referring</li><li>Not escalating acute risk to crisis/MHA</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Safety Plan · Specialist Treatment · GP Physical-Health Role · Family</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Immediate primary-care management is a safety plan and an urgent referral, not GP-initiated antipsychotics. Longer term, the GP's roles are central: physical-health monitoring (people with SMI die younger), supporting adherence and relapse prevention, clozapine shared care, and supporting the family — alongside the specialist treatments (antipsychotics, CBT for psychosis, family intervention).</strong></div>
+    <div class="sub-divider">7A — Now and ongoing</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--g)">🛡️ Immediate (primary care)</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Urgent referral</td><td>EIP/CMHT (crisis team/MHA if acute risk) — the key action.</td></tr>
+            <tr><td class="factor">Safety plan</td><td>What to do/who to call if worse; crisis numbers; involve family with consent; reduce access to means.</td></tr>
+            <tr><td class="factor">Don't start antipsychotics alone</td><td>For first episode, await specialist assessment unless specifically advised.</td></tr>
+            <tr><td class="factor">Address substances</td><td>Brief intervention/refer for cannabis; explain its role.</td></tr>
+            <tr><td class="factor">Support &amp; hope</td><td>Engage, reduce stigma, instil realistic hope; support the family.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🫀 Longer-term GP role</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Specialist treatment</td><td>Antipsychotic (specialist-led), CBT for psychosis, family intervention, psychosocial/vocational support.</td></tr>
+            <tr><td class="factor">Physical-health monitoring</td><td>Annual SMI check: weight/BMI, BP, glucose/HbA1c, lipids, smoking, ECG/QTc, prolactin; treat CVD risk (SMI mortality).</td></tr>
+            <tr><td class="factor">Antipsychotic adverse effects</td><td>Metabolic, EPSE, prolactin, sedation; NMS awareness; review tolerability/adherence.</td></tr>
+            <tr><td class="factor">Clozapine shared care</td><td>Mandatory FBC monitoring; fever/sore throat → urgent FBC; liaise service.</td></tr>
+            <tr><td class="factor">Relapse &amp; carers</td><td>Recognise relapse signs; relapse plan; carer support/assessment.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">A plan that scores</div><div class="sca-phrase">"Here's the plan: an urgent referral to the Early Intervention team today, some blood tests, and a clear plan for if things feel worse — including who to call. With your permission I'll keep your mum involved. I won't start medication myself; the specialists will discuss that with you. We'll also look after your physical health along the way."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Starting an antipsychotic alone for a first episode</li><li>No safety plan / no physical-health consideration</li><li>Excluding the family entirely, or breaching confidentiality without consent (outside risk)</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Psychosis &amp; Schizophrenia — SCA Consultation Scorecard</div><div class="scorecard-sub">Engage · risk · exclude organic/drug · urgent EIP referral · family · physical health</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Builds rapport with a guarded patient</strong> — non-judgmental, unhurried, enables disclosure</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Explores beliefs without confronting</strong> — neither colludes with nor argues against delusions</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Structured assessment</strong> — symptoms, risk, causes covered systematically</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Explicit risk formulation</strong> — to self, from/to others, neglect, vulnerability, safeguarding</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain-language explanation</strong> — explains psychosis and the plan without jargon or stigma</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Explicit safety plan</strong> — what to do/who to call if worse; means reduction</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plan + follow-up + closing question</strong> — clear plan, review, checks for questions</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, diagnosis, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Recognises first-episode psychosis</strong> — positive + negative symptoms on a background of decline</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Thorough risk assessment</strong> — suicide/self-harm, command hallucinations, to/from others, neglect, safeguarding</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Excludes organic &amp; drug causes</strong> — delirium, cannabis/stimulants, organic disease; bloods/drug screen</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Urgent EIP/CMHT referral; does NOT start antipsychotics alone</strong> — recognises shorter DUP improves outcomes</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Knows the crisis/MHA threshold</strong> — escalates acute risk or refusal endangering safety</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Distinguishes organic/delirium</strong> — new psychosis in older/confused patient = delirium until proven otherwise</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Avoids premature schizophrenia label</strong> — "first-episode psychosis" as the GP working diagnosis</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Physical-health baseline/monitoring awareness</strong> — SMI mortality; metabolic/ECG baseline</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Addresses substance use</strong> — cannabis role; brief intervention/referral</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct overall formulation &amp; plan</strong> — first-episode psychosis, risk addressed, urgent referral, family + safety plan</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decisions</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — the patient's own understanding/explanation surfaced</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> — fear of the voices / being watched / being "sectioned"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations addressed</strong> — engagement negotiated; fears about hospital addressed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Non-stigmatising, validating manner</strong> — takes experiences seriously without judgment</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Supports the family with consent</strong> — involves mother appropriately; carer support</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Handles confidentiality correctly</strong> — consent for sharing; shares without consent only where risk requires</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Instils realistic hope</strong> — early treatment helps; not alone</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Negotiates a consensual plan</strong> — works with the patient rather than coercing where possible</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Empathy for distress</strong> — acknowledges how frightening/exhausting it is</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Patient/family leave supported</strong> — feel heard, with a clear plan and safety-net</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Collaborative close</strong> — plan agreed; safety plan understood; referral made</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">No risk assessment; confronts delusions; organic/drug not excluded; antipsychotic started alone; no referral; family mishandled</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">Recognises psychosis; partial risk assessment/cause screen; referral made but not clearly urgent; family/safety partial; ICE partial</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Engages without confrontation; full risk assessment; excludes organic/drug; urgent EIP referral (no GP-alone antipsychotic); family with consent; safety plan; physical-health awareness; ICE all three</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist to see your score and feedback</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked — areas to develop</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">(Guarded, arms folded, glancing at the door) "I don't really want to be here — my mum made me come. There's nothing wrong with me. I just want people to leave me alone."</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>Daniel Osei, 21, university student, brought by your worried mum. Over 4–5 months you've withdrawn — stopped lectures, stopped seeing friends, stopped looking after yourself. In the last few weeks you've become convinced your housemates are spying on you and have bugged your room, and you hear two voices commenting on what you're doing (talking about you in the third person). You sleep badly and smoke strong cannabis every day. An uncle has schizophrenia. You've had fleeting thoughts you'd be "better off dead" but no plan. You're guarded and suspicious; you'll only open up if the doctor is calm, patient and clearly not trying to trap or judge you. You don't think you're ill and you're scared of being "locked up".</p></div>
+      <div class="ab"><h5>Hidden concerns (reveal if explored, slowly)</h5><p><strong>Fear of the voices / being watched (main):</strong> it's frightening and exhausting; if the doctor is gentle, you admit how distressing it is.</p><p><strong>Fear of being sectioned:</strong> you worry that admitting things means hospital. Reassurance about community help lowers your guard.</p><p><strong>Passive suicidal thoughts:</strong> you'll disclose these only if asked directly and kindly; no current plan.</p><p><strong>Cannabis:</strong> you don't connect it to how you feel; defensive if lectured.</p></div>
+      <div class="ab"><h5>Clinical details if asked (and trust is built)</h5><ul><li>Persecutory beliefs (housemates spying/bugging); third-person auditory hallucinations commenting on you</li><li>4–5 months of withdrawal, stopping studies/friends, self-neglect (negative symptoms)</li><li>Daily high-potency cannabis; poor sleep; family history (uncle with schizophrenia)</li><li>Passive thoughts of being better off dead; no plan/intent; voices don't (currently) command harm</li><li>No fever, confusion, head injury, fits; physically well; not on medications</li></ul></div>
+      <div class="ab"><h5>Reactions at key moments</h5><ul><li><strong>If confronted/contradicted ("that's not real"):</strong> you shut down, become more guarded.</li><li><strong>If explored gently ("that sounds frightening — tell me more"):</strong> you slowly open up.</li><li><strong>On risk questions asked kindly:</strong> you admit the dark thoughts.</li><li><strong>On "community team, not hospital":</strong> you relax a little and become more willing.</li><li><strong>Challenge line:</strong> "You think I'm crazy, don't you? Are you going to lock me up?"</li></ul></div>
+    </div>
+    <div class="actor-challenge">"You think I'm mad, don't you? Is that what this is — you're going to get me sectioned and locked away?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> Daniel engages if the GP: (1) builds rapport with a calm, non-judgmental, non-confronting manner and explores his experiences without arguing; (2) characterises the positive and negative symptoms and conducts a thorough risk assessment (suicide, command hallucinations, neglect, to/from others); (3) excludes organic/drug causes (cannabis, delirium) with history and baseline bloods/drug screen; (4) refers him urgently to the Early Intervention in Psychosis team rather than starting an antipsychotic in primary care, and makes a safety plan; (5) supports his mother with his consent, addresses his fear of being sectioned, and instils hope. He disengages and discloses nothing if confronted, judged, or threatened with hospital.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Psychosis &amp; Schizophrenia — Clinical Decision Framework</div><div class="sum-sub">CG178 · recognise · risk · exclude organic · refer EIP</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🚦 1 — Recognise &amp; triage</div>
+    <div class="algo-wrap" style="margin-bottom:1rem">
+      <div class="algo-start">Suspected psychosis</div>
+      <div class="algo-arrow">▼</div>
+      <div class="algo-row">
+        <div class="algo-branch algo-red"><div class="algo-branch-lbl">🔴 Emergency</div><ul class="algo-list"><li>Acute risk self/others; severe neglect; refusal + risk</li><li>Delirium / organic cause</li></ul><span class="algo-action red-action">Crisis/MHA · medical</span></div>
+        <div class="algo-branch algo-amber"><div class="algo-branch-lbl">🟠 Urgent</div><ul class="algo-list"><li>First-episode psychosis (no acute risk)</li><li>Relapse</li></ul><span class="algo-action amber-action">Urgent EIP/CMHT</span></div>
+        <div class="algo-branch algo-green"><div class="algo-branch-lbl">🟢 GP role</div><ul class="algo-list"><li>Stable SMI: physical-health checks</li><li>Clozapine shared care; carers</li></ul><span class="algo-action green-action">Monitor</span></div>
+      </div>
+    </div>
+    <div class="sum-sub-hdr">💊 2 — Act</div>
+    <div class="card" style="padding:.8rem 1rem"><p style="font-size:12.5px;line-height:1.6"><strong>Don't start antipsychotics for a first episode in primary care</strong> — refer urgently to EIP/CMHT (shorter DUP = better outcomes). <strong>Exclude organic/drug causes</strong> (delirium, cannabis/stimulants, thyroid/B12/encephalitis). <strong>Assess risk</strong> (self/others/neglect/safeguarding); safety plan. <strong>Involve family</strong> (consent). <strong>Ongoing GP role:</strong> annual physical-health monitoring (SMI mortality), antipsychotic adverse effects, clozapine bloods, relapse prevention, carer support; CBT &amp; family intervention alongside medication.</p></div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label">SCA Quick Reference</div><div class="sum-title">Psychosis &amp; Schizophrenia — Consultation Playbook</div><div class="sum-sub">Engage · assess risk · exclude organic · refer EIP · don't treat alone</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🎯 The three pivots that pass this case</div>
+    <div class="sum-3col">
+      <div class="snp-phrase-box snp-e"><div class="snp-lbl">1 · Engage &amp; assess risk</div><div class="snp-text">Build rapport, don't confront delusions; assess suicide, command hallucinations, neglect, risk to/from others.</div></div>
+      <div class="snp-phrase-box snp-m"><div class="snp-lbl">2 · Exclude organic/drug</div><div class="snp-text">Cannabis/stimulants, delirium, thyroid/B12/encephalitis — new psychosis in the older/confused = delirium.</div></div>
+      <div class="snp-phrase-box snp-a"><div class="snp-lbl">3 · Refer, don't treat alone</div><div class="snp-text">Urgent EIP/CMHT (shorter DUP = better); safety plan; involve family (consent); GP does physical-health monitoring.</div></div>
+    </div>
+    <div class="sdp-pivot" style="margin-top:1rem;font-size:11.5px;background:#fef3c7;color:#854d0e;border-radius:8px;padding:.6rem .85rem;line-height:1.5">⛔ Don't argue with or challenge delusions · Don't skip the risk assessment (self/others/neglect/safeguarding) · Don't miss organic/drug causes or call delirium "psychiatric" · Don't start antipsychotics for a first episode in primary care — refer urgently (EIP) · Don't breach confidentiality with family without consent (unless risk requires); do support them · Remember physical-health monitoring (SMI mortality) and clozapine bloods</div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Psychosis &amp; Schizophrenia · GP Clinical Reasoning Framework v2</strong> · NICE CG178 Psychosis &amp; schizophrenia in adults · NICE NG10 (violence/aggression) · Early Intervention in Psychosis standards · Mental Health Act</p>
+  <p style="margin-top:4px">Refer suspected first-episode psychosis urgently to EIP/CMHT — don't start antipsychotics alone (shorter duration of untreated psychosis improves outcomes) · Exclude organic/drug causes (delirium, cannabis/stimulants, thyroid/B12/encephalitis); new psychosis in the older/confused = delirium until proven otherwise · Assess risk to self, from/to others, self-neglect, vulnerability and safeguarding; consider crisis team/MHA for acute risk · Involve family/carers with consent · Ongoing GP role: physical-health monitoring (SMI mortality), antipsychotic adverse effects, clozapine bloods, relapse prevention; CBT &amp; family intervention alongside medication</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current NICE CG178 guidance and the Mental Health Act · Clinical judgement takes precedence over any framework</p>
+</div>
+</div><!-- /page -->
+  </main>
+</div><!-- /app -->
+<script src="script.js"></script>
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+</body>
+</html>

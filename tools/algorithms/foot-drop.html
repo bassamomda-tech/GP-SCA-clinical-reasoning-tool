@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Foot Drop Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;
+  --diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;
+  --treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;
+  --refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;
+  --lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
+  --font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif
+}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#0a1a2e 0%,#1a3a5e 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#1a3a5e,#167a4a);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}
+.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}
+.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}
+.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}
+.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}
+.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}
+.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#92400e}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🦶</div>
+  <div>
+    <b>Foot Drop</b>
+    <small>Common peroneal nerve · L4/L5 radiculopathy · cord compression · MND · stroke · AFO · DVLA</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — localise the lesion (common peroneal nerve, L5 root, sciatic nerve or central) because management and urgency differ sharply. Treat the cause, support function, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Foot drop</span><div class="body">Weakness of ankle dorsiflexion; tripping, high-stepping gait. Onset, back pain, sensory distribution, recent positioning/surgery.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — cauda equina / cord</span><span class="ttl">Cauda equina or cord signs?</span><div class="body">Bilateral leg weakness, saddle anaesthesia, bladder/bowel dysfunction, back pain → cauda equina / cord compression (emergency).</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Admit</span><span class="ttl">Emergency MRI</span><div class="body">Suspected cauda equina / cord compression → same-day spinal imaging.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Investigate</span><span class="ttl">Localise</span><div class="body">Examine for L5 root vs peroneal nerve; nerve conduction studies; glucose, B12.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · localise</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Common peroneal</div><div class="box ix"><span class="ttl">Fibular head</span><div class="body">Compression (leg crossing, plaster, weight loss); often recovers.</div></div></div>
+      <div class="col"><div class="blabel">L5 radiculopathy</div><div class="box ix"><span class="ttl">Root</span><div class="body">Back pain + dermatomal sensory loss; disc prolapse.</div></div></div>
+      <div class="col"><div class="blabel">Central / generalised</div><div class="box ix"><span class="ttl">Don't miss</span><div class="body">Stroke, MND, peripheral neuropathy.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> cauda equina/cord compression. <span class="pill pill-purple">Neurology / orthotics / physio</span> peroneal palsy or radiculopathy — ankle-foot orthosis + physiotherapy.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · treat cause &amp; rehab</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Treat the cause &amp; rehabilitation</span><span class="ttl">Protect, support, recover</span><div class="body"><b>Relieve nerve compression</b> — avoid leg-crossing/squatting and pad the fibular head; many compressive peroneal palsies recover. <b>Ankle-foot orthosis (AFO)</b> to prevent tripping, plus <b>physiotherapy</b> for strength and gait. Optimise diabetes and reduce alcohol where contributory; <b>falls prevention</b> and footwear advice. Address DVLA implications if driving is affected.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Recheck &amp; urgent return advice</span><div class="body"><b>Review</b> a compressive peroneal palsy for recovery over weeks–months; if not improving or the lesion is unclear → nerve conduction studies/neurology. <b>999 / same-day</b> for <b>bilateral foot drop</b>, saddle anaesthesia, new bladder/bowel disturbance or back pain with progressive weakness (cauda equina/cord compression → emergency MRI). Safety-net the at-risk insensate foot against injury.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Bilateral foot drop or sphincter disturbance is never a simple nerve palsy</b> — it points to cord or cauda equina pathology and needs emergency imaging.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Cord Compression, MSCC &amp; Motor Neurone Disease</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Foot drop is a sign — not a diagnosis. Localise the lesion first. UMN foot drop (spasticity, hyperreflexia, upgoing plantars) = spinal cord or brain until proven otherwise — neurological emergency. Do not attribute to peripheral nerve without full neurological examination.</b></p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Bilateral foot drop + saddle anaesthesia + sphincter dysfunction</b> Cauda equina syndrome — lumbar disc or tumour compressing sacral roots L2–S4 → 999. MRI lumbar spine urgently. Window for surgical decompression to preserve sphincter function: &lt;48 hours from onset. Any bowel or bladder dysfunction in a patient with low back pain and leg weakness = cauda equina emergency until excluded.</div>
+      <div class="rftile"><b>Foot drop + spastic paraparesis + hyperreflexia + upgoing plantars</b> Cervical or thoracic myelopathy — spinal cord compression above the L4/L5 level. UMN signs (Babinski, clonus, hyperreflexia, spasticity) with foot drop = cord lesion → same-day MRI whole spine + neurosurgery. Epidural abscess (fever + back pain + myelopathy) → 999 + broad-spectrum antibiotics.</div>
+      <div class="rftile"><b>Known malignancy + new back pain + any leg weakness</b> Malignant spinal cord compression (MSCC) — metastasis from lung, breast, prostate, myeloma, lymphoma. MSCC hotline in every UK cancer centre (24-hour access). Dexamethasone 16 mg IV/oral immediately (reduces cord oedema) → 999. Do not wait for severe deficit — early intervention preserves ambulation. Any cancer patient with new spinal pain + neurological symptoms = MSCC until excluded.</div>
+      <div class="rftile"><b>Foot drop + contralateral arm weakness or facial weakness</b> Cortical or internal capsule lesion — anterior cerebral artery stroke (leg &gt; arm weakness), parasagittal meningioma, or brain tumour affecting the leg area of the motor homunculus. FAST positive → 999. Any contralateral limb involvement with foot drop = intracranial pathology until excluded by MRI brain.</div>
+      <div class="rftile"><b>Progressive weakness + fasciculations + no sensory loss + hyperreflexia AND wasting in the same muscles</b> Motor neurone disease (ALS) — combined UMN and LMN signs in the same region is pathognomonic. No other common condition causes simultaneous hyperreflexia (UMN) and wasting/fasciculations (LMN) in the same limb. Urgent neurology. MND Association: 0808 802 6262. Mean time to diagnosis from first symptom: 10–18 months in UK — earlier referral is better.</div>
+      <div class="rftile"><b>Foot drop + systemic features (weight loss, fever, night sweats)</b> Spinal infection (epidural abscess — Staphylococcus aureus, TB / Pott's disease), primary or metastatic spinal tumour, or paraneoplastic neuropathy. Any combination of unexplained foot drop + systemic symptoms = serious spinal or systemic pathology → urgent MRI spine + bloods + same-day hospital or 2WW cancer pathway as appropriate.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The UMN versus LMN distinction in foot drop determines the entire investigation and management pathway. Upper motor neurone foot drop (brain or spinal cord lesion above L4) is characterised by: spastic increased tone, hyperreflexia, extensor plantar response (Babinski sign upgoing), clonus, minimal wasting early on. Lower motor neurone foot drop (nerve root, plexus, or peripheral nerve) is characterised by: flaccid weakness, absent or reduced reflexes, progressive wasting with time, fasciculations (anterior horn cell or nerve root lesion), sensory loss in the relevant territory. The Babinski sign is the most important single finding — a unilateral upgoing plantar response in a patient with foot drop means the lesion is in the corticospinal tract or cortex, regardless of the pattern of weakness. Malignant spinal cord compression (MSCC) is responsible for approximately 4,000 cases per year in the UK and is the most time-critical oncological emergency a GP will encounter. The NICE guidance on MSCC (NICE CG75, 2008) specifies that any patient with cancer who develops back pain (new or changed) must be assessed for MSCC and if suspected, started on dexamethasone 16 mg/day and referred urgently. Delay in MSCC treatment from symptom onset to treatment of more than 24 hours significantly worsens neurological outcome — patients who are ambulatory at the time of treatment have approximately 80% chance of remaining ambulatory; non-ambulatory patients have only 30% chance of regaining ambulation. The 24-hour MSCC hotline at every UK oncology centre means GPs can phone the specialist and have the patient seen the same day. MND diagnosis delay is one of the most distressing diagnostic experiences for patients — the average 12–18 months from first GP presentation to confirmed MND diagnosis in the UK reflects the subtlety of early signs and the rarity of the condition (2 per 100,000 per year). Key diagnostic alert: painless progressive asymmetric limb weakness in a middle-aged adult without sensory symptoms, particularly if combined with fasciculations or a mixture of UMN and LMN signs = refer neurology immediately without waiting for "further evidence."</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Anatomical Localisation — Where Is the Lesion?</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Common peroneal nerve at fibular head (most common cause)</div><div>The CPN wraps superficially around the fibular neck — the most pressure-vulnerable nerve in the body. Results in: weak dorsiflexion + weak eversion, <b>preserved inversion</b>, sensory loss on dorsum of foot + lateral lower leg. Causes: prolonged leg crossing, hospital bed positioning (lateral rotation), plaster cast pressure, squatting, weight loss (loss of peroneal fat pad), ganglion cyst, Baker's cyst, fibular head fracture. <b>No back pain. No SLR.</b></div>
+      <div>L4/L5 nerve root radiculopathy</div><div>L4/L5 disc herniation or foraminal stenosis: weak dorsiflexion + <b>weak eversion AND weak inversion</b> (tibialis posterior = L5 root, not CPN) + back pain ± radiation + positive SLR ≤60°. Sensory loss: dorsum of foot (L5) or medial foot/ankle (L4). Key distinguishing test: weak inversion = root or cord, not CPN alone. Confirm with MRI lumbar spine.</div>
+      <div>Lumbosacral plexopathy</div><div>Multiple root levels affected simultaneously. Severe unilateral leg pain preceding weakness (diabetic amyotrophy — Bruns-Garland syndrome). Also: retroperitoneal haematoma (anticoagulants), pelvic malignancy, post-radiation, obstetric injury. NCS/EMG + MRI lumbosacral plexus (specialist). Weight loss + asymmetric leg weakness = malignant plexopathy until excluded.</div>
+      <div>Spinal cord (myelopathy)</div><div>Cervical or thoracic cord compression: UMN foot drop (spastic, hyperreflexic, upgoing plantars), may be bilateral, sensory level on trunk. No back pain at the level of weakness. MS (common in young adults — Lhermitte's sign, relapsing course). MRI whole spine — urgent. Foot drop from cord = emergency neurosurgery referral.</div>
+      <div>Motor neurone disease (ALS)</div><div>Progressive painless asymmetric weakness, fasciculations, combined UMN + LMN signs, no sensory symptoms, no identifiable compressive cause. Foot drop is a common early ALS manifestation — often mistaken for L5 radiculopathy or CPN palsy initially. NCS normal sensory; EMG shows widespread denervation beyond a single nerve territory. Urgent neurology.</div>
+      <div>Brain / cortical</div><div>Anterior cerebral artery stroke (leg &gt; arm area of motor cortex), parasagittal meningioma, cerebral tumour, MS cortical plaque. Contralateral face or arm involvement (even subtle), cortical signs (dysphasia, apraxia), headache, or seizures suggest intracranial origin. MRI brain.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The anatomical localisation of foot drop is one of the most intellectually satisfying clinical exercises in general practice because the neurological examination findings directly map to the anatomy. The single most useful examination test is tibialis posterior function (foot inversion): preserved inversion + weak eversion + weak dorsiflexion = CPN at fibular head (tibialis posterior is supplied by the tibial nerve, not the CPN). Weak inversion + weak eversion + weak dorsiflexion = L5 nerve root or more proximal lesion (all three movements involve L5 root-innervated muscles). This takes 20 seconds to examine and immediately divides the two most common causes. Diabetic amyotrophy (Bruns-Garland syndrome) deserves emphasis as a cause of foot drop that is frequently misdiagnosed. It presents as acute severe unilateral thigh and hip pain (often worse at night) followed within days to weeks by rapid-onset proximal and sometimes distal leg weakness including foot drop. The pain precedes and is more prominent than the weakness — the opposite of most disc herniations. It is caused by ischaemic injury to the lumbosacral plexus (vasculitis of the vasa nervorum supplying the plexus) in the setting of diabetes. The clinical picture of a diabetic patient with severe unilateral leg pain + weakness + weight loss mimics malignant plexopathy, and both must be excluded. NCS/EMG is essential to characterise the distribution of nerve damage. Recovery over months to years is the norm with strict glycaemic control, but complete recovery is uncommon. Recognising this as a distinct diabetic complication (rather than attributing it to L5 disc herniation) ensures the patient receives the correct investigation and management.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Targeted Neurological Examination</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Gait observation</div><div>Steppage gait (high-stepping hip and knee flexion to clear the dropped foot) — pathognomonic on inspection. Ask: "Can you walk on your heels?" — heel-walking requires tibialis anterior (L4/L5 CPN) and is the single most efficient clinical screen for dorsiflexion weakness. Inability to heel-walk on one side = significant foot drop confirmed without formal testing. Observe foot clearance, toe drag, circumduction (hemiplegic gait), bilateral steppage (systemic neuropathy or bilateral cord lesion).</div>
+      <div>Ankle dorsiflexion power (MRC grading)</div><div>"Pull your foot up towards your head against my hand." <b>MRC 5</b> = normal; <b>4</b> = weak against resistance; <b>3</b> = against gravity only; <b>2</b> = with gravity eliminated; <b>1</b> = flicker; <b>0</b> = nil. Document grade precisely at baseline. MRC ≤3 = significant foot drop requiring urgent neurology referral. Serial grading at each follow-up quantifies recovery or deterioration — "some weakness" is insufficient documentation.</div>
+      <div>Eversion vs inversion — the key test</div><div><b>Eversion</b> (turn sole outward): peroneus longus/brevis — common peroneal nerve (superficial branch). <b>Inversion</b> (turn sole inward + plantarflex): tibialis posterior — tibial nerve from L5 root. <b>CPN palsy at fibular head:</b> weak eversion + weak dorsiflexion, <b>normal inversion</b>. <b>L5 radiculopathy:</b> weak eversion + weak dorsiflexion + <b>weak inversion</b>. This single comparison distinguishes the two most common causes of foot drop. Perform at every assessment.</div>
+      <div>Reflexes, tone and plantar responses</div><div>Knee jerk (L3/L4): preserved in CPN and L5 lesions; absent in L4. Ankle jerk (S1): preserved in CPN and L5; absent in S1 or tibial nerve. <b>Plantar response</b>: flexor (downgoing) = LMN or normal; <b>extensor (Babinski upgoing) = UMN — cord or brain</b>. Tone: spastic (UMN — increased, clasp-knife) vs flaccid (LMN — reduced). Clonus at ankle (≥3 beats = UMN = cord compression until proven otherwise). Fasciculations: inspect tibialis anterior at rest (MND, L5 root irritation).</div>
+      <div>Sensory examination</div><div>CPN palsy: reduced sensation dorsum of foot + lateral lower leg (superficial peroneal nerve territory) + first web space (deep peroneal nerve). L5 root: dorsum of foot + great toe + lateral calf. S1 root: lateral border of foot + heel + posterior calf. Tibial nerve: sole of foot. Map findings to dermatomal chart — document clearly. Posterior column (proprioception, vibration): impaired in cord lesions, preserved in CPN palsy.</div>
+      <div>Fibular head and lumbar spine</div><div>Palpate fibular head (posterolateral knee, below lateral joint line): tenderness = CPN compression. Tinel's at fibular head: percussion → tingling into dorsum of foot = CPN entrapment. SLR (L4/L5/S1 root — supine, raise leg passively, positive ≤60° with sciatica reproduction). Slump test. Lumbar paraspinal tenderness and ROM. Femoral stretch test (L2/L3/L4 — prone, flex knee). Neck flexion/Lhermitte's (cord).</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The MRC power grade documentation is a clinical governance and medicolegal standard — a foot drop case with serial documented power grades (e.g., tibialis anterior MRC 2/5 at first visit → 3/5 at 6 weeks → 4/5 at 3 months) tells a coherent story of recovery that guides management decisions. Without baseline documentation, it is impossible to know if a patient is improving (reassuring conservative management) or static/deteriorating (indicating escalation to surgical intervention). Equally important from a medicolegal perspective: a patient who sustains a permanent foot drop and alleges that the GP failed to act promptly will have a much better outcome for the clinician if serial objective power grades were documented at each visit. The ankle clonus assessment is the most important reflex test for identifying UMN pathology that changes management — sustained clonus (3 or more beats of rhythmic ankle dorsiflexion/plantarflexion when the foot is rapidly dorsiflexed and held) is a UMN sign indicating a lesion in the corticospinal tract. It is absent in normal individuals and in LMN lesions. Any patient with foot drop and clonus needs urgent MRI of the whole spine (at minimum cervical and thoracic) to exclude cord compression. This is an examination finding that should never be recorded as "normal" without actually being tested. The Tinel's sign at the fibular head (tapping the nerve as it curves around the lateral fibular neck, approximately 3 cm below and behind the lateral femoral condyle) is highly specific for CPN entrapment at this site — it is analogous to Tinel's sign at the wrist for carpal tunnel syndrome. Positivity (tingling radiating into the dorsum of the foot) confirms the nerve is sensitised at this anatomical point and is the clinical equivalent of the NCS localisation of conduction slowing across the fibular head.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Mandatory bloods</div><div><span class="pill pill-blue">HbA1c + glucose</span> (diabetic neuropathy, diabetic amyotrophy) · <span class="pill pill-blue">FBC + ESR + CRP</span> (vasculitic neuropathy, infection, malignancy screen) · <span class="pill pill-blue">B12 + folate</span> (peripheral neuropathy contributing to functional threshold) · <span class="pill pill-blue">TSH</span> (hypothyroid neuropathy) · <span class="pill pill-blue">U&amp;E + eGFR</span> (uraemic neuropathy) · <span class="pill pill-blue">LFTs</span> (alcohol neuropathy)</div>
+      <div>Additional targeted bloods</div><div><span class="pill pill-blue">SPEP + immunoglobulins</span> (paraprotein — MGUS, myeloma) · <span class="pill pill-blue">ANA + ANCA + RF + anti-CCP</span> (vasculitic neuropathy — mononeuritis multiplex) · <span class="pill pill-blue">PSA</span> (if male ≥50, exclude prostate metastasis causing MSCC) · <span class="pill pill-blue">Tumour markers</span> (if malignancy suspected — CA125, CEA, AFP) · <span class="pill pill-blue">IGRA</span> (TB — Pott's disease if travel history or immunocompromised)</div>
+      <div>MRI — investigation of choice</div><div><span class="pill pill-blue">MRI lumbar spine</span> — first choice for LMN unilateral foot drop + back pain + positive SLR (confirms L4/L5 disc level, nerve root compression, foraminal stenosis, tumour). <span class="pill pill-blue">MRI whole spine</span> — if UMN signs, bilateral foot drop, known malignancy, or systemic features (excludes MSCC at any level). <span class="pill pill-blue">MRI brain</span> — if contralateral limb or face involvement, stroke suspected, intracranial tumour. <span class="pill pill-blue">MRI lumbosacral plexus</span> — plexopathy (specialist-arranged).</div>
+      <div>Nerve conduction studies (NCS) + EMG</div><div>Arranged by neurology. Confirms CPN palsy: reduced peroneal conduction velocity / amplitude across fibular head, localises to fibular head vs sciatic nerve vs L5 root. EMG: denervation in tibialis anterior without tibialis posterior involvement = CPN distribution (excludes L5 root). For MND: widespread denervation beyond one nerve territory in three or more body regions. Essential before surgical decompression at fibular head.</div>
+      <div>USS fibular head</div><div>High-resolution ultrasound of CPN at fibular head: identifies ganglion cyst (10% of CPN palsies — surgically curable), nerve swelling, compressive scar tissue, Baker's cyst extending to popliteal fossa. Non-invasive, readily available, no radiation. Increasingly used as first-line structural investigation for confirmed CPN palsy before NCS — identifies surgically treatable causes rapidly.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The choice between MRI lumbar spine and MRI whole spine is one of the most important imaging decisions in foot drop management. MRI lumbar spine alone is appropriate when: the foot drop is clearly LMN (flaccid, areflexic, normal plantars), unilateral, associated with back pain and positive SLR, in a patient without systemic features or known cancer. MRI whole spine is required when: there are any UMN signs (the cord lesion may be cervical or thoracic — ordering lumbar MRI alone will be reported as normal and the myelopathy will continue to progress), when the foot drop is bilateral (single L4/L5 disc herniation very rarely causes bilateral foot drop), when the patient has known malignancy (MSCC can be at any spinal level), or when the clinical picture is atypical. A common medicolegal error pattern is: patient presents with foot drop + spasticity + upgoing plantar → GP orders MRI lumbar spine → reported as "mild degenerative changes" → myelopathy continues for months → delayed diagnosis of cervical myelopathy or thoracic MSCC. The lesson: if in doubt, order whole spine or let neurology arrange imaging. The ganglion cyst at the fibular head is the most important structural cause of CPN palsy to identify because it is completely surgically curable — excision of the cyst restores normal CPN function in the majority of patients within weeks to months. Ganglion cysts at the fibular head typically arise from the proximal tibiofibular joint and are found in approximately 10% of cases of CPN palsy referred for surgical assessment. USS identifies them easily and painlessly and should be considered in all cases of CPN palsy before attributing the cause to positional compression, since the management is fundamentally different (surgery vs conservative).</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="REFER" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways &amp; DVLA</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999 / Same-day</span></div><div>Bilateral foot drop + saddle anaesthesia + sphincter dysfunction → cauda equina → 999 · UMN foot drop + rapid progression → myelopathy → 999 + dexamethasone · Known cancer + new foot drop + back pain → MSCC → MSCC hotline + 999 · Foot drop + FAST-positive features → stroke → 999</div>
+      <div><span class="pill pill-purple">Urgent neurology (within 2 weeks)</span></div><div>Any new foot drop without a clearly identified compressive cause (leg crossing, plaster cast) · Suspected MND (UMN + LMN signs, fasciculations, no sensory loss) · Progressive foot drop over days to weeks · Bilateral foot drop without cauda equina signs · Suspected vasculitic mononeuritis multiplex · L5 radiculopathy with MRC ≤3 not rapidly improving</div>
+      <div>Neurosurgery / spinal surgery</div><div>L4/L5 disc herniation + foot drop MRC ≤3 not improving after 4–6 weeks conservative management → discectomy assessment. Cervical myelopathy + UMN foot drop → anterior cervical discectomy and fusion. CPN compression from structural lesion (ganglion cyst, osteochondroma) → surgical decompression via neurosurgery or orthopaedics. Cauda equina (from referral step above).</div>
+      <div>Orthotics (urgent AFO)</div><div>Refer for Ankle-Foot Orthosis urgently at the same visit as diagnosis — do not wait for investigation results before referring to orthotics. AFO prevents toe-dragging, trip injuries, and falls while the underlying cause is investigated and treated. NHS orthotics referral via GP or physiotherapy. Advise interim OTC peroneal splint (Foot-Up brace or equivalent) while NHS orthotics appointment is awaited.</div>
+      <div>Physiotherapy + rehabilitation</div><div>All foot drop: physiotherapy referral for gait retraining, compensatory muscle strengthening, proprioception training, and falls prevention. FES (Functional Electrical Stimulation) assessment via neurology/rehabilitation medicine for UMN foot drop (stroke, MS, incomplete SCI) — NICE IPG278. Specialist neurological physiotherapy for MND (pacing, energy conservation, postural management).</div>
+      <div>DVLA notification</div><div><b>Right-sided foot drop</b>: inability to safely operate accelerator/brake → must cease driving immediately and notify DVLA. <b>Left-sided foot drop</b> (manual gearbox): clutch control impaired → notify DVLA. Automatic transmission + left foot drop: DVLA driving assessment required before resuming. <b>Document the advice given, the patient's understanding, and their occupation in the clinical record at every relevant consultation.</b></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The urgency of surgical referral for L4/L5 disc herniation causing foot drop is determined by the power grade and the trajectory — the evidence for surgical intervention in discogenic foot drop shows that decompression surgery (discectomy) produces significantly better neurological recovery when performed within 4–6 weeks of onset of severe motor deficit (MRC ≤3) compared to later surgery. The window of opportunity for full recovery narrows substantially after 3 months of severe denervation because irreversible changes occur at the motor end-plate (the neuromuscular junction) when prolonged denervation prevents re-innervation. The clinical rule is: foot drop MRC ≤3 from disc herniation should be referred for neurosurgical assessment within 4–6 weeks, not managed conservatively for 3 months and then referred. Mild foot drop (MRC 4/5 — can lift against resistance but weak) can be managed conservatively initially with close follow-up, but any deterioration mandates immediate referral. The urgent AFO referral principle is that the orthosis does not treat the cause but prevents secondary harm — specifically, falls and fall-related injuries (hip fracture, head injury) that are extremely common in patients with foot drop who drag their foot on the ground. Every day without an AFO in a patient with significant foot drop is a day at heightened falls risk. Providing immediate advice about an interim OTC splint (available at any good pharmacist or online medical supplier for approximately £30–50, while NHS orthotics is arranged) is a practical, harm-reducing intervention that takes 30 seconds to advise and can prevent a serious injury. Functional Electrical Stimulation (FES) for UMN foot drop is a NICE-approved intervention (NICE IPG278) that is underused in UK clinical practice — it produces a 35% improvement in walking speed and a significant improvement in quality of life in patients with chronic hemiplegic foot drop following stroke. NHS FES services are available through rehabilitation medicine and neurology departments — GPs should be aware of this option for stroke patients who have persistent foot drop despite physiotherapy.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="TREAT" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>Conservative Management</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>AFO — Ankle-Foot Orthosis</div><div>Rigid polypropylene AFO (holds foot at 90° — prevents toe-drag). Hinged AFO (allows plantarflexion — better for active patients with preserved plantarflexion). Posterior leaf spring (lightweight flexible — mild foot drop only). Prescription: NHS orthotics referral. Must fit comfortably inside wide-fitting shoe (advise patient to buy shoes with extra toe box depth). Worn during all ambulation. Review fit at 6–8 weeks — pressure sores at fibular head common if fitting is incorrect.</div>
+      <div>CPN compression — remove the cause</div><div>Cease leg crossing (most common avoidable cause). Reposition in hospital bed (lateral rotation padding at fibular head — foam wedge). Remove or bivalve plaster cast. Avoid squatting for prolonged periods. Pad the fibular head with foam or gel padding if pressure is unavoidable. Most compressive CPN palsies resolve fully within 6–12 weeks once pressure is completely removed — recovery depends on severity (demyelinating = faster; axonal = slower, less complete).</div>
+      <div>L4/L5 radiculopathy analgesia</div><div><b>Paracetamol 1 g QDS</b> (maximise first). <b>Ibuprofen 400 mg TDS</b> or <b>naproxen 500 mg BD</b> with food — superior to paracetamol alone for radicular pain. <b>Amitriptyline 10–25 mg nocte</b> or <b>duloxetine 30–60 mg OD</b> for neuropathic shooting/burning component (NICE NG173). <b>Pregabalin 75–150 mg BD</b> (Schedule 3 CD) if above inadequate. <b>Diazepam 2–5 mg nocte</b> × 7 days for acute severe muscle spasm (paraspinal spasm). Avoid prolonged opioids for radiculopathy — poor long-term evidence, high dependence risk.</div>
+      <div>Physiotherapy for radiculopathy</div><div>McKenzie extension exercises for posterolateral L4/L5 disc herniation: prone lying → sphinx position → press-ups from prone, 10 repetitions × 6 times daily. Directs disc material anteriorly away from the nerve root. Most effective when performed early (&lt;6 weeks from onset) and frequently. Neural mobilisation (sciatic nerve glides) — mobilises inflamed L5 nerve root. Core stabilisation (transversus abdominis activation) reduces intradiscal pressure during activities of daily living.</div>
+      <div>Neuropathic pain for CPN + radiculopathy</div><div>Pain from CPN palsy or recovering L5 radiculopathy (neuropathic character — burning, electric, allodynia): amitriptyline 10–25 mg nocte (first-line, NICE NG173, NNT ≈ 4). Duloxetine 30–60 mg OD (useful if depression comorbid). Pregabalin 75–300 mg BD (Schedule 3 CD — do not prescribe to patients with substance misuse history). Review pain monthly — document VAS pain score at each visit for treatment response monitoring.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The McKenzie extension method for lumbar disc herniation is the most evidence-based physiotherapy technique for L4/L5 radiculopathy — it was developed by New Zealand physiotherapist Robin McKenzie in the 1960s and has been validated in multiple RCTs as superior to general exercise for lumbar radiculopathy. The mechanism is "centralisation" — lumbar extension encourages the nucleus pulposus to migrate anteriorly within the disc, reducing posterior herniation into the neuroforamen. The most important indicator of a good response to McKenzie extension is "centralisation of pain" — the leg pain and foot tingling become less severe and more proximal with each exercise session, eventually becoming limited to the back only. Centralisation is associated with 90% of patients recovering without surgery. Patients should be assessed and taught by a McKenzie-trained physiotherapist and advised to perform extensions 10 times, 6–8 times per day (not once a day — frequency is key). Diazepam for acute lumbar muscle spasm is appropriate for a very short course (maximum 7 days) — it reduces the secondary paraspinal muscle spasm component of acute disc herniation, which can be as debilitating as the radicular pain itself. Critically, GPs must advise that diazepam is for the spasm only, time-limited, and not for ongoing back pain management. Prescribing diazepam as a PRN for recurring back pain episodes creates iatrogenic benzodiazepine dependence — this is a well-documented prescribing error in back pain management. The prescription should state: "Diazepam 2 mg nocte × 7 days only — for acute muscle spasm. Do not repeat."</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Cause-Specific Treatment</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Surgical decompression (CPN structural compression)</div><div>Ganglion cyst or osteochondroma at fibular head compressing CPN: surgical excision via neurosurgery or orthopaedics. Excellent outcomes — most patients recover full dorsiflexion within 3–6 months. Open decompression or endoscopic approach. Post-operative physiotherapy essential. Review at 3 and 6 months post-surgery (serial power grading). If not recovering at 6 months → NCS to assess remaining axonal damage.</div>
+      <div>L4/L5 discectomy</div><div>Indicated: MRC ≤3 not improving after 4–6 weeks, or severe pain not controlled despite adequate analgesia at 6 weeks. Microdiscectomy under general anaesthesia. Success rate: 70–80% complete recovery of motor function if operated within 3 months. Post-operative: immediate mobilisation, physiotherapy from day 1. Return to work 4–6 weeks (sedentary) or 6–12 weeks (manual). Long-term: same recurrence risk as natural history; avoid heavy lifting for 3 months.</div>
+      <div>Stroke rehabilitation (UMN foot drop)</div><div>Early intensive physiotherapy: constraint-induced movement therapy (CIMT), neurodevelopmental technique (Bobath), task-specific gait training. FES (Functional Electrical Stimulation) — NICE IPG278: appropriate for chronic UMN foot drop post-stroke, MS, or incomplete SCI. Botulinum toxin injection to plantarflexors (if calf spasticity limiting AFO use — specialist rehabilitation medicine). Secondary prevention: antiplatelet + statin + antihypertensive + lifestyle modification.</div>
+      <div>MND — multidisciplinary management</div><div>Riluzole 50 mg BD (only licensed disease-modifying drug — extends median survival by 2–3 months, modest but only option). Edaravone (approved in some centres — IV infusion). Multidisciplinary MND team: neurologist, MND specialist nurse, physiotherapist (pacing, splinting), occupational therapist, speech therapist, dietitian (PEG timing), respiratory team (NIV — non-invasive ventilation, extends life and improves quality). Advance care planning: early discussion of wishes, DNACPR, LPA. Referral to MND Association care network.</div>
+      <div>Vasculitic neuropathy (mononeuritis multiplex)</div><div>Systemic vasculitis treatment: prednisolone 60 mg/day initially (rheumatology/neurology-led). Cyclophosphamide for severe/ANCA-associated vasculitis (Wegener's/GPA). Rituximab for refractory cases. Diabetic vasculitic amyotrophy: strict glycaemic control + methylprednisolone pulse (specialist). Partial recovery expected over months with treatment. Serial NCS to monitor progress.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Riluzole for MND is the only licensed pharmacological treatment for ALS in the UK — it works by reducing glutamate-mediated excitotoxicity (a proposed mechanism of motor neurone death in ALS). The clinical benefit is modest (extends median survival by approximately 2–3 months, and slightly prolongs the time to tracheostomy or death), but it is currently the only available neuroprotective treatment and should be started as early as possible after diagnosis. The decision to start riluzole is made by the neurologist, and GPs continue the prescription — it requires 3-monthly LFT monitoring (hepatotoxic in approximately 2% of patients). The multidisciplinary approach to MND is the most evidence-based aspect of its management — studies show that patients managed in specialist MND multidisciplinary clinics (which include all the above specialists) have significantly better quality of life and longer survival compared to those managed by neurology alone. The timing of non-invasive ventilation (NIV) — initiated when FVC drops below 50% of predicted or when orthopnoea develops — is one of the most important interventions, extending survival by a median of 7 months and substantially improving sleep quality and dyspnoea. GPs should be proactive in connecting MND patients with the MND Association regional care network and specialist MND clinic at the time of diagnosis. The botulinum toxin injection to plantarflexors for stroke-related UMN foot drop is a specialist rehabilitation intervention that can significantly improve AFO tolerance — in stroke patients with spastic equinus (plantarflexion spasticity that holds the foot in a fixed dropped and inverted position), the rigidity of the spastic calf muscles makes AFO fitting and gait retraining difficult. Botulinum toxin injection (guided by ultrasound or EMG) to gastrocnemius and/or soleus reduces this spasticity, allowing the AFO to position the foot correctly and enabling more effective physiotherapy-guided gait training.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Falls Prevention, Adaptation &amp; Self-Management</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>AFO compliance and footwear</b> Wear the AFO during all ambulation — not just outdoors. Ensure shoes accommodate the AFO (wider, deeper toe box — Cosyfeet, Hotter, or wide-fit shoes). Remove the AFO only for bathing and sleeping. Inspect the skin under the AFO daily (especially over the fibular head and malleoli) — pressure sores can develop undetected in patients with sensory loss. Report any redness or skin breakdown to GP or orthotist immediately.</div>
+      <div class="lstile"><b>Home hazard reduction</b> Occupational therapy home assessment for trip hazards: loose rugs (remove), uneven thresholds (threshold ramps), poor lighting (install night lights on stairs). Bathroom: grab rails by toilet and shower, shower chair, non-slip mat. Stairs: bilateral handrails, stair lift if climbing stairs unsafe. Open-plan living on one level if stairs are a major barrier. NHS community OT referral — document and chase outcome.</div>
+      <div class="lstile"><b>Safe footwear</b> Well-fitting, closed-toe shoes with a low flat heel, rigid sole, and good ankle support. Trainers with ankle support are appropriate. Avoid slippers (no grip, no ankle support — highest fall risk footwear in older adults). Avoid high heels, flip-flops, or any backless footwear. For neuropathic patients (diabetes): feet cannot feel pressure, heat, or stones — inspect inside shoes before putting them on every time.</div>
+      <div class="lstile"><b>Postural awareness and gait compensation</b> Compensatory gait strategies while awaiting AFO or recovery: consciously lift the knee higher on the affected side (high-stepping). Slow down — rushing increases trip risk. Look where you are walking — visual compensation for proprioceptive loss. Tap the outside of the foot on the ground to confirm ground contact. Use a stick on the contralateral side (ipsilateral stick use is common but biomechanically incorrect — contralateral stick is more effective).</div>
+      <div class="lstile"><b>Driving cessation compliance</b> Right-sided foot drop = cannot safely operate accelerator or brake = must not drive any vehicle. Advise the patient clearly and document. Provide alternative transport solutions: blue badge application (foot drop causing significant mobility impairment qualifies), community transport, taxi apps, Motability scheme if eligible. Return to driving after recovery: DVLA driving assessment — not GP clearance. The patient notifies DVLA; DVLA arranges assessment if required.</div>
+      <div class="lstile"><b>Exercise and strengthening</b> Tibialis anterior strengthening (even in partial foot drop): heel raises (seated) with resistance band around dorsum of foot × 3 sets × 15 daily. Calf strengthening (gastrocnemius — single-leg calf raises). Hip abductor strengthening (reduces lateral trunk sway during steppage gait). Hydrotherapy (aquatic physiotherapy) — buoyancy supports the foot during movement, allows active dorsiflexion exercises without gravity, improves proprioception. Walking in water is low-risk and highly effective for foot drop rehabilitation.</div>
+      <div class="lstile"><b>Psychosocial support</b> Foot drop causes significant psychological impact: fear of falls, loss of independence, embarrassment, social withdrawal, inability to work. CBT for health anxiety and fear of falling (IAPT referral). MND: MND Association support groups, specialist social worker, carer support. Stroke Association (0303 3033 100) peer support and community re-engagement programmes. Blue badge and PIP (Personal Independence Payment) applications for financial support in persistent foot drop — GP letter to support claim.</div>
+      <div class="lstile"><b>Position avoidance (prevention)</b> Patient education to prevent recurrent CPN compression: never cross legs for more than a few minutes. When hospitalised: request that the nursing team position the lateral fibula away from bed frame and mattress edge. Post-surgical patients: theatre team to pad fibular head during any procedure lasting &gt;90 minutes. Weight maintenance: significant weight loss removes the peroneal fat pad — advise maintaining BMI &gt;18.5 to preserve natural CPN cushioning.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The contralateral walking stick recommendation is frequently misunderstood — both patients and some clinicians instinctively use a walking stick on the same side as the weakness. However, the biomechanically correct position for a walking stick is the contralateral hand because: when the weak leg is in the stance phase (bearing weight), the contralateral arm is naturally forward (normal reciprocal arm swing). If the stick is in the contralateral hand, it contacts the ground simultaneously with the weak leg, providing lateral support at the moment of maximum weight-bearing on the affected side. This is how elderly people with hip OA are taught to use sticks, and it applies equally to foot drop where the weak ankle cannot resist lateral sway during stance. Using the stick on the same side as the weakness means it contacts the ground when the strong leg bears weight — providing no benefit at the moment it is most needed. The hydrotherapy recommendation for foot drop rehabilitation is evidence-based — the buoyancy of water effectively reduces the weight of the dropped foot, allowing active dorsiflexion movements that are impossible against gravity on land in severe foot drop (MRC 2/5 — movement with gravity eliminated). This allows earlier active rehabilitation and stimulates neural recovery more effectively than passive splinting alone. The skin inspection under the AFO is a patient safety instruction that is critical in patients with peripheral neuropathy (diabetic or otherwise) — sensory loss means that pressure sores developing under the AFO are not felt, and significant ulceration can occur before the patient notices. This is particularly relevant in diabetic patients where foot ulcers lead to a 15× higher amputation risk. The instruction to inspect the skin daily, remove the AFO if any redness persists beyond 30 minutes after removal, and attend podiatry for any skin break must be given explicitly and documented.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up, Monitoring &amp; Safety-Netting</html></h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Initial review — 4–6 weeks</div><div>Ankle dorsiflexion MRC grade (compare to baseline — improving, static, or deteriorating?). AFO fitted and worn? Orthotics referral outcome. Physiotherapy started? MRI result reviewed? Neurology referral appointment confirmed? DVLA advice re-confirmed and documented. Any new symptoms (bilateral involvement, bladder/bowel, saddle anaesthesia) → immediate escalation. Pain control adequate — neuropathic medication effective?</div>
+      <div>Review at 3 months</div><div>CPN compression: most should be improving (MRC 3→4) by 3 months if compressive cause removed. Static or worsening MRC at 3 months → NCS (if not already done) + neurosurgery/neurology escalation. L4/L5 disc: physiotherapy completed? Pain improving? If MRC still ≤3 → neurosurgery referral urgently. Functional review: walking, stairs, work, driving status.</div>
+      <div>Review at 6 months</div><div>Full recovery of CPN palsy expected by 6 months in demyelinating compression. If still MRC &lt;4 at 6 months → NCS confirms axonal damage extent → prognosis discussion (partial recovery expected). L4/L5: if not operated, is recovery ongoing? Re-refer if plateau at &lt;4/5. Document DVLA status: has patient been assessed for return to driving? Has DVLA been notified? Patient's occupation review.</div>
+      <div>MND — frequency increases</div><div>Monthly visits initially as disease progresses. Anticipatory prescribing (syringe driver for end-stage — morphine + midazolam + glycopyrronium). DNACPR discussion and documentation. Advance care plan. LPA (Lasting Power of Attorney) — advise early while patient has capacity. Carer support — GP letter for carer's allowance, social services referral, MND Association. Involve palliative care team from diagnosis.</div>
+      <div><span class="pill pill-red">999 / Same-day safety-net</span></div><div>Any new bilateral leg weakness or saddle anaesthesia in a patient under follow-up for unilateral foot drop → cauda equina emergency → 999 · New sphincter dysfunction at any follow-up visit · Rapid deterioration in MRC grade (1–2 grades worse in 2 weeks) suggesting active cord compression · MSCC suspected in any cancer patient</div>
+      <div><span class="pill pill-amber">Urgent GP same week</span></div><div>New contralateral leg symptoms developing (bilateral = cord or systemic neuropathy — escalate imaging) · Falls or injury related to foot drop since last visit · Pressure sore under AFO identified · Neuropathic pain not controlled despite adequate pharmacological treatment · Patient continuing to drive against medical advice — DVLA notification required</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The serial MRC grade documentation at each follow-up visit is the single most important quality indicator for foot drop management — it is the metric that drives every key management decision: continue conservative management (improving), escalate investigation (static), refer urgently for surgery (deteriorating or MRC ≤3 at 4–6 weeks). A GP who documents MRC grades at every visit is able to make these decisions objectively. A GP who documents "foot drop — ongoing" without a power grade is unable to demonstrate appropriate clinical decision-making if the case is ever reviewed. The prognosis discussion at 6 months for CPN palsy is an important component of patient-centred care — patients who have not fully recovered dorsiflexion by 6 months are unlikely to achieve full recovery and need realistic expectations about long-term functional limitations, permanent AFO use, and occupational implications. This conversation should address: realistic functional prognosis, permanent AFO requirements, driving restrictions (if right-sided persistent foot drop), and whether surgical decompression (if not already performed) might still improve function (surgical intervention for CPN palsy can benefit patients up to 12–18 months after onset if NCS shows preserved distal motor responses, suggesting viable nerve trunk despite axonal damage). The patient continuing to drive against medical advice in the context of right-sided foot drop is a public safety issue — if a patient is known to the GP to be driving unsafely and refuses to stop or notify DVLA, the GP has a legal right (and in some circumstances an obligation) to notify the DVLA directly without patient consent, having first informed the patient of this intention. The GMC guidance "Confidentiality: patients' fitness to drive and reporting concerns to the DVLA" details this process. Documentation of the conversation, the patient's refusal, and the subsequent DVLA notification is essential.</div></div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE CG75 (MSCC, 2008), NICE IPG278 (FES for foot drop), NICE NG173 (Neuropathic Pain, 2023), NICE NG128 (Stroke, 2019), DVLA Assessing Fitness to Drive 2022, Stewart JD (foot drop — practical neurology review), MND Association clinical guidance 2023, GMC Confidentiality: patients' fitness to drive 2019. Always adapt to individual patient context.
+</div>
+
+<script>
+(function(){
+  const STORE='rgp.alg.footdrop.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true;});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Logo directions · Reasoning GP</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=11" />
+
+<template id="__bundler_thumbnail" data-bg-color="#f6f2e9">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#f6f2e9"/>
+    <rect x="450" y="240" width="300" height="300" rx="60" fill="#0c4a47"/>
+    <text x="600" y="445" text-anchor="middle" font-family="Georgia, serif" font-size="200" font-weight="500" fill="#f3ede0">R</text>
+    <circle cx="740" cy="540" r="32" fill="#b54c2b" stroke="#f6f2e9" stroke-width="8"/>
+    <text x="600" y="650" text-anchor="middle" font-family="Georgia, serif" font-size="44" font-weight="500" fill="#15202b">Logo directions</text>
+    <text x="600" y="690" text-anchor="middle" font-family="sans-serif" font-size="18" letter-spacing="2" fill="#6b7280">REASONING GP · BRAND</text>
+  </svg>
+</template>
+<style>
+  body{background:var(--bg);color:var(--ink)}
+  .lp{max-width:1100px;margin:0 auto;padding:48px 28px 80px}
+  .lp h1{font-family:'Source Serif 4',serif;font-weight:500;font-size:36px;line-height:1.15;margin-bottom:8px;color:var(--ink)}
+  .lp .eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);margin-bottom:14px;display:block}
+  .lp-intro{max-width:60ch;color:var(--ink-2);font-size:15px;line-height:1.6;margin-bottom:38px}
+  .lp-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:760px){.lp-grid{grid-template-columns:1fr}}
+  .lp-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:36px 32px 28px;display:flex;flex-direction:column;gap:18px;transition:.2s}
+  .lp-card:hover{box-shadow:var(--shadow-2);transform:translateY(-2px)}
+  .lp-card.is-current{border-color:var(--teal-3);background:linear-gradient(180deg,#fff,#fbfdfc)}
+  .lp-card-tag{
+    font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    background:var(--bg-soft);color:var(--muted);padding:3px 9px;border-radius:99px;align-self:flex-start;
+  }
+  .lp-card.is-current .lp-card-tag{background:var(--teal);color:#f6f2e9}
+  .lp-mark-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;min-height:80px}
+  .lp-name{font-family:'DM Sans',sans-serif;font-weight:700;font-size:18px;color:var(--ink);margin:0}
+  .lp-desc{font-size:13.5px;color:var(--ink-2);line-height:1.6;margin:0}
+  .lp-desc b{color:var(--ink);font-weight:600}
+  .lp-pros{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:8px}
+  .lp-pro{font-size:10.5px;font-weight:600;color:var(--teal);background:var(--teal-soft);padding:2px 9px;border-radius:99px}
+  .lp-con{font-size:10.5px;font-weight:600;color:var(--rust-2);background:var(--rust-soft);padding:2px 9px;border-radius:99px}
+
+  /* Mark sizes */
+  .lp-mono{width:64px;height:64px;flex-shrink:0}
+  .lp-word{font-family:'Source Serif 4',serif;font-weight:500;font-size:26px;color:var(--ink);letter-spacing:-.01em;line-height:1}
+  .lp-word small{display:block;font-family:'DM Sans',sans-serif;font-size:9.5px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-top:6px;font-weight:600}
+
+  /* OPTION A — current mark refined */
+  .mA{width:64px;height:64px;border-radius:14px;background:var(--teal);color:#f3ede0;display:grid;place-items:center;font-family:'Source Serif 4',serif;font-weight:500;font-size:34px;position:relative;box-shadow:0 4px 12px rgba(12,74,71,.18)}
+  .mA::after{content:"";position:absolute;right:-3px;bottom:-3px;width:14px;height:14px;border-radius:50%;background:var(--rust);border:3px solid var(--bg)}
+
+  /* OPTION B — Step / chevron mark */
+  .mB{width:64px;height:64px}
+
+  /* OPTION C — Stethoscope / arc */
+  .mC{width:64px;height:64px}
+
+  /* OPTION D — Reasoning tree branches */
+  .mD{width:64px;height:64px}
+
+  /* Variant rows */
+  .lp-variants{margin-top:48px}
+  .lp-var-row{display:flex;align-items:center;gap:30px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px 28px;margin-bottom:14px}
+  .lp-var-row b{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);font-weight:700;min-width:140px}
+  .lp-var-l{display:flex;align-items:center;gap:14px}
+  .lp-foot{margin-top:48px;padding:24px;background:var(--bg-soft);border-radius:12px;font-size:14px;color:var(--ink-2);line-height:1.65}
+  .lp-foot b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<aside class="sidebar" data-active-id="__home"></aside>
+
+<div class="app">
+<main class="main">
+<div class="lp">
+  <span class="eyebrow">Brand · Logo exploration</span>
+  <h1>Pick a direction — or refine what's already working</h1>
+  <p class="lp-intro">Your site already has a recognisable mark: the editorial-serif "R" on a teal tile, with a small rust dot in the corner. It appears in the topnav, footer, and brand panels — it is, functionally, your logo. Below are four directions: the current mark (refined and packaged as proper SVG), and three alternatives I'd consider if you want to push further. I'd recommend <b>Option A</b> — it's distinctive, professional, and already woven through the site.</p>
+
+  <div class="lp-grid">
+
+    <!-- OPTION A : Current mark refined -->
+    <article class="lp-card is-current">
+      <span class="lp-card-tag">Current — recommended</span>
+      <div class="lp-mark-row">
+        <div class="mA">R</div>
+        <div class="lp-word">Reasoning GP<small>SCA · Clinical reasoning · UK</small></div>
+      </div>
+      <h3 class="lp-name">A — Editorial monogram + wordmark</h3>
+      <p class="lp-desc">A serif <b>R</b> on a deep teal tile, with a single rust dot in the corner. The dot acts as a "decision point" — a quiet nod to clinical reasoning without being heavy-handed. The wordmark uses Source Serif 4, the same serif as your case titles.</p>
+      <div class="lp-pros">
+        <span class="lp-pro">Already on site</span>
+        <span class="lp-pro">Distinctive</span>
+        <span class="lp-pro">Editorial tone</span>
+        <span class="lp-pro">Scales clean</span>
+      </div>
+    </article>
+
+    <!-- OPTION B : Stepped chevron -->
+    <article class="lp-card">
+      <span class="lp-card-tag">Alternative</span>
+      <div class="lp-mark-row">
+        <svg class="lp-mono mB" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <rect width="64" height="64" rx="14" fill="#0c4a47"/>
+          <!-- Three stepped chevrons suggesting framework steps -->
+          <path d="M14 22 L26 32 L14 42" stroke="#f3ede0" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".4"/>
+          <path d="M24 22 L36 32 L24 42" stroke="#f3ede0" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+          <path d="M34 22 L46 32 L34 42" stroke="#f3ede0" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="50" cy="32" r="3" fill="#b54c2b"/>
+        </svg>
+        <div class="lp-word">Reasoning GP<small>SCA · Clinical reasoning · UK</small></div>
+      </div>
+      <h3 class="lp-name">B — Stepped chevrons</h3>
+      <p class="lp-desc">Three forward-pointing chevrons in escalating opacity, ending at a rust dot. Literal visual metaphor for the <b>7-step framework</b> — each step builds on the last. More expressive but less distinctive than A.</p>
+      <div class="lp-pros">
+        <span class="lp-pro">On-brand colour</span>
+        <span class="lp-pro">Tells the framework story</span>
+        <span class="lp-con">Less unique</span>
+      </div>
+    </article>
+
+    <!-- OPTION C : Stethoscope arc -->
+    <article class="lp-card">
+      <span class="lp-card-tag">Alternative</span>
+      <div class="lp-mark-row">
+        <svg class="lp-mono mC" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <rect width="64" height="64" rx="14" fill="#0c4a47"/>
+          <!-- Stethoscope-inspired curve forming an R-like shape -->
+          <path d="M22 14 L22 50 M22 14 L36 14 Q46 14 46 24 Q46 33 36 33 L22 33 M30 33 L46 50" stroke="#f3ede0" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="46" cy="50" r="4.5" fill="#b54c2b"/>
+        </svg>
+        <div class="lp-word">Reasoning GP<small>SCA · Clinical reasoning · UK</small></div>
+      </div>
+      <h3 class="lp-name">C — Geometric "R" with stethoscope tail</h3>
+      <p class="lp-desc">A constructed-from-strokes "R" where the descending leg curves into a stethoscope bell (the rust dot). Explicitly medical. Reads as a logo first, an "R" second — useful for favicon and social-media avatar.</p>
+      <div class="lp-pros">
+        <span class="lp-pro">Explicitly clinical</span>
+        <span class="lp-pro">Strong at small sizes</span>
+        <span class="lp-con">Less editorial</span>
+      </div>
+    </article>
+
+    <!-- OPTION D : Reasoning tree -->
+    <article class="lp-card">
+      <span class="lp-card-tag">Alternative</span>
+      <div class="lp-mark-row">
+        <svg class="lp-mono mD" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <rect width="64" height="64" rx="14" fill="#0c4a47"/>
+          <!-- Decision tree branching motif -->
+          <circle cx="20" cy="20" r="3" fill="#f3ede0"/>
+          <circle cx="44" cy="20" r="3" fill="#f3ede0"/>
+          <circle cx="32" cy="38" r="3.5" fill="#f3ede0"/>
+          <circle cx="20" cy="50" r="3" fill="#b54c2b"/>
+          <circle cx="44" cy="50" r="3" fill="#b54c2b"/>
+          <path d="M20 23 L32 38 L44 23 M32 38 L32 44 M32 44 L20 50 M32 44 L44 50" stroke="#f3ede0" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="lp-word">Reasoning GP<small>SCA · Clinical reasoning · UK</small></div>
+      </div>
+      <h3 class="lp-name">D — Decision tree</h3>
+      <p class="lp-desc">A miniaturised decision-tree diagram — symptoms branch to differentials. The two rust nodes at the bottom suggest "outcome / action". Strong concept fit; visual feels more like an icon-set element than a brand mark.</p>
+      <div class="lp-pros">
+        <span class="lp-pro">Concept-rich</span>
+        <span class="lp-con">Busy at small sizes</span>
+        <span class="lp-con">Reads as illustration</span>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Wordmark variants of the recommended Option A -->
+  <div class="lp-variants">
+    <span class="eyebrow">Option A · Variants in context</span>
+    <h2 style="font-family:'Source Serif 4',serif;font-weight:500;font-size:24px;margin:0 0 18px 0">Same mark, different placements</h2>
+
+    <div class="lp-var-row">
+      <b>Topnav · current</b>
+      <div class="lp-var-l">
+        <div class="mA" style="width:40px;height:40px;font-size:22px;border-radius:9px"><span>R</span></div>
+        <div class="lp-word" style="font-size:17px">Reasoning GP<small>SCA · Clinical reasoning · UK</small></div>
+      </div>
+    </div>
+
+    <div class="lp-var-row" style="background:var(--teal);color:#d5e6e4">
+      <b style="color:#f3ede0">Dark / footer</b>
+      <div class="lp-var-l">
+        <div class="mA" style="background:#f3ede0;color:var(--teal);width:48px;height:48px;font-size:26px;border-radius:11px"><span>R</span></div>
+        <div class="lp-word" style="color:#f3ede0;font-size:20px">Reasoning GP<small style="color:var(--teal-soft)">SCA · Clinical reasoning · UK</small></div>
+      </div>
+    </div>
+
+    <div class="lp-var-row" style="background:#fff">
+      <b>Favicon / social</b>
+      <div class="lp-var-l">
+        <div class="mA" style="width:32px;height:32px;font-size:18px;border-radius:7px"><span>R</span></div>
+        <div class="mA" style="width:48px;height:48px;font-size:26px;border-radius:11px"><span>R</span></div>
+        <div class="mA" style="width:64px;height:64px;font-size:34px;border-radius:14px"><span>R</span></div>
+        <div class="mA" style="width:96px;height:96px;font-size:52px;border-radius:20px"><span>R</span></div>
+        <div class="mA" style="width:128px;height:128px;font-size:68px;border-radius:26px"><span>R</span></div>
+      </div>
+    </div>
+
+    <div class="lp-var-row">
+      <b>Reverse / light bg</b>
+      <div class="lp-var-l">
+        <div class="mA" style="background:#fff;color:var(--teal);width:48px;height:48px;font-size:26px;border-radius:11px;border:1px solid var(--line-2);box-shadow:none"><span>R</span></div>
+        <div class="lp-word">Reasoning GP<small>SCA · Clinical reasoning · UK</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lp-foot">
+    <b>My recommendation:</b> stick with Option A. The current mark is already doing the job, looks distinctive at any size, scales cleanly to favicon, and is consistent with the editorial serif typography across cases and tools. I've packaged it as a proper SVG file at <code style="background:#fff;padding:2px 6px;border-radius:4px">assets/logo.svg</code> so you can use it for emails, social profiles, business cards, and the upcoming app icon.<br/><br/>
+    <b>If you want to push further</b> — pick B/C/D and tell me, and I'll swap it everywhere on the site (topnav, footer, favicon, social cards). Or if you have a specific visual idea I haven't shown, describe it and I'll mock it up.
+  </div>
+
+</div>
+</main>
+</div>
+
+<script src="../assets/site.js?v=51"></script>
+</body>
+</html>

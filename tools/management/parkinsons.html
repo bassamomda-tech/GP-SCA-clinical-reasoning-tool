@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Parkinson's Disease — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Parkinson's disease management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🧠",
+  title:"Parkinson's Disease",
+  stemTitle:"Parkinson's disease — primary-care role in shared care",
+  stemSub:"The GP's part in established Parkinson's under specialist shared care \u2014 supporting drug regimens (never abruptly stopped), managing non-motor symptoms, MDT support, and recognising emergencies. NICE NG71 \u00b7 CKS 2026.",
+  guideline:"NICE NG71",
+  glance:[
+    {lbl:"Diagnosis & initiation", val:"Specialist", sub:"don't start drugs in 1\u00b0 care"},
+    {lbl:"Golden rule", val:"Never stop abruptly", sub:"+ on-time doses"},
+    {lbl:"Motor (specialist)", val:"Levodopa", sub:"\u00b1 DA / MAO-B"},
+    {lbl:"GP focus", val:"Non-motor + support", sub:"mood, constipation, falls"},
+    {lbl:"Avoid", val:"Dopamine antagonists", sub:"e.g. metoclopramide, haloperidol"},
+    {lbl:"Emergency", val:"Can't take meds", sub:"acute akinesia / NMS-like"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Understand the shared-care setup",
+      blocks:[
+        {b:"kv", rows:[
+          ["Diagnosis","Specialist-made (bradykinesia + rigidity/tremor); GP does not initiate anti-parkinsonian drugs"],
+          ["Drug classes","Levodopa (mainstay), dopamine agonists, MAO-B inhibitors, COMT inhibitors \u2014 specialist-led"],
+          ["GP role","On-time medication, non-motor symptoms, comorbidity, MDT coordination, anticipatory care"],
+          ["Assess","Motor fluctuations, falls, cognition/mood, swallow, autonomic symptoms, carer needs"]
+        ]},
+        {b:"why", html:"Parkinson\u2019s drug regimens are precisely timed and <strong>must never be stopped abruptly or delayed</strong> \u2014 missed doses cause severe immobility and a dangerous NMS-like state. The GP\u2019s highest-value work is the <strong>non-motor</strong> burden (mood, constipation, falls, sleep, autonomic) and coordinating the MDT, while the specialist tunes the motor drugs."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 MDT support", title:"Multidisciplinary and lifestyle support",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🏃 Physiotherapy", html:"For balance, gait, falls prevention and mobility."},
+          {t:"🗣️ SALT", html:"Speech and language therapy for speech and \u2014 importantly \u2014 swallowing/aspiration risk."},
+          {t:"🍽️ Dietitian / OT", html:"Nutrition (weight loss, constipation), occupational therapy for function and home safety."},
+          {t:"🚶 Exercise", html:"Regular exercise improves mobility and wellbeing."},
+          {t:"🫂 Carer & PD nurse", html:"Parkinson\u2019s specialist nurse, carer support, advance care planning."},
+          {t:"😴 Sleep & mood", html:"Address sleep disturbance, low mood, apathy \u2014 major quality-of-life factors."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 shared care", title:"Support the regimen; manage non-motor",
+      blocks:[
+        {b:"kv", rows:[
+          ["On-time, every time","Ensure medications given <b>on time</b> (incl. in hospital/care settings) \u2014 dispense, don\u2019t omit"],
+          ["Never stop abruptly","Abrupt withdrawal risks acute akinesia and a neuroleptic-malignant-like syndrome"],
+          ["Non-motor (GP-managed)","<b>Constipation</b> (laxatives), <b>orthostatic hypotension</b>, depression, REM-sleep disorder, urinary symptoms, drooling, pain"],
+          ["Psychosis/hallucinations","Discuss with specialist; if antipsychotic needed use <b>quetiapine/clozapine</b> \u2014 not typical antipsychotics"]
+        ]},
+        {b:"warn", html:"<b>Avoid dopamine-blocking drugs</b> \u2014 metoclopramide, prochlorperazine, haloperidol, typical antipsychotics worsen Parkinson\u2019s (use domperidone for nausea, quetiapine/clozapine for psychosis). Watch <b>impulse-control disorders</b> with dopamine agonists. Never abruptly stop PD medication."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Motor, non-motor and safety",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Motor fluctuations","Each review","\u2018Wearing off\u2019/dyskinesia \u2192 specialist for regimen adjustment"],
+          ["Falls / mobility","Each review","Physiotherapy, home safety, medication review"],
+          ["Mood / cognition / psychosis","Each review","Treat depression; specialist advice for hallucinations"],
+          ["Autonomic + constipation","Each review","Manage postural BP, bowels, bladder, swallow/aspiration"],
+          ["Impulse-control disorder","Each review (on agonists)","Ask directly; liaise with specialist"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"Regular shared-care reviews", title:"Holistic review", html:"Motor + non-motor symptoms, falls, mood, swallow, carer needs, medication timing."},
+          {n:"2", when:"On change", title:"Liaise with specialist", html:"Motor fluctuations, psychosis, or new disability \u2192 specialist/PD nurse."},
+          {n:"3", when:"Advancing disease", title:"Anticipatory care", html:"Palliative/anticipatory planning, swallow/aspiration, place of care."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Deteriorating? Check before assuming progression",
+      arrow:"\u2026with worsening symptoms",
+      intro:"Exclude reversible and iatrogenic causes before attributing to disease progression.",
+      checks:[
+        {b:"1 \u00b7 Medication timing", html:"Doses being taken on time / not omitted (esp. in hospital/care home)?"},
+        {b:"2 \u00b7 Offending drugs", html:"New dopamine antagonist (anti-emetic/antipsychotic) worsening symptoms?"},
+        {b:"3 \u00b7 Intercurrent illness", html:"Infection, dehydration, constipation causing acute deterioration/delirium?"},
+        {b:"4 \u00b7 Non-motor", html:"Mood, sleep, autonomic symptoms driving disability?"},
+        {b:"5 \u00b7 Specialist", html:"Motor fluctuations/psychosis \u2192 specialist for regimen change."}
+      ],
+      back:"Timing + offending drugs + illness excluded \u2192 specialist/PD nurse for adjustment"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Can't take medication", html:"\u201cIf you can\u2019t swallow or keep down your Parkinson\u2019s tablets (e.g. illness, surgery) \u2014 contact us urgently; doses must not be missed.\u201d"},
+          {t:"🔴 NMS-like", html:"\u201cHigh fever, severe stiffness, confusion, sweating \u2014 especially if medication has been stopped \u2014 call 999.\u201d"},
+          {t:"🎲 Impulse control", html:"\u201cSome medicines can cause urges to gamble, shop or other compulsions \u2014 tell us or family if you notice this.\u201d"},
+          {t:"💊 Avoid certain drugs", html:"\u201cSome anti-sickness and sedative drugs make Parkinson\u2019s worse \u2014 always check with us before new medicines.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer / liaise",
+      arrow:"specialist-led condition throughout",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Acute akinesia / NMS-like state / unable to take medication \u2192 999/admission."},
+          {t:"Motor fluctuations", html:"Wearing-off, dyskinesia, freezing \u2192 neurology/PD service for regimen change."},
+          {t:"Psychosis / dementia", html:"Hallucinations or cognitive decline \u2192 specialist (safe antipsychotic choice)."},
+          {t:"Advanced therapies", html:"For apomorphine, intestinal gel, or deep brain stimulation assessment."},
+          {t:"MDT", html:"Physiotherapy, SALT, OT, dietitian, PD nurse, palliative care as needs evolve."}
+        ]},
+        {b:"say", html:"Your specialist team leads the Parkinson\u2019s medicines, and the most important rule is taking them exactly on time and never stopping suddenly. My job here is to help with the other things \u2014 mood, constipation, falls, sleep \u2014 and to coordinate your support team."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

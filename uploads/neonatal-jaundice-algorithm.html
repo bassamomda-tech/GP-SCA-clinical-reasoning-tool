@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Neonatal Jaundice Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;
+  --diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;
+  --treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;
+  --refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;
+  --lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
+  --font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif
+}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#3a2a00 0%,#8a6a00 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#8a6a00,#167a4a);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}
+.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}
+.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}
+.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}
+.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}
+.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}
+.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#92400e}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🟡</div>
+  <div>
+    <b>Neonatal Jaundice — Birth to 28 Days</b>
+    <small>Jaundice &lt;24 hrs = emergency · biliary atresia (pale stools) · kernicterus prevention · NICE NG98 thresholds</small>
+  </div>
+</div>
+
+<div class="alg-progress">
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Kernicterus, Biliary Atresia &amp; Haemolysis Emergency</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Jaundice appearing within 24 hours of birth = haemolytic emergency → same-day hospital. Pale/white stools + jaundice at 2–6 weeks = biliary atresia until proven otherwise → same-day paediatrics.</b></p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Jaundice within 24 hours of birth</b> Haemolytic disease (Rhesus incompatibility, ABO incompatibility, G6PD deficiency) → same-day hospital. Bilirubin can rise catastrophically fast. Blood group + DAT (direct antiglobulin test) + urgent serum bilirubin. Never physiological at &lt;24 hours.</div>
+      <div class="rftile"><b>Pale/chalky white or clay-coloured stools + jaundice</b> Biliary atresia (obstructive cholestasis) — progressive liver destruction from fibrosis of biliary tree → same-day paediatric hepatology. Kasai portoenterostomy must be performed before 8 weeks — delay beyond 60 days dramatically worsens survival. Use stool colour chart.</div>
+      <div class="rftile"><b>Jaundice + dark urine (conjugated bilirubin)</b> Conjugated hyperbilirubinaemia — liver disease, biliary atresia, sepsis, metabolic disease (galactosaemia, tyrosinaemia). Any conjugated bilirubin &gt;25 μmol/L or &gt;20% of total bilirubin = pathological → same-day paediatrics. Direct bilirubin stains the urine yellow-brown.</div>
+      <div class="rftile"><b>Neurological signs of kernicterus</b> High-pitched cry, arching (opisthotonus), poor feeding, extreme lethargy, seizures, hyperthermia → 999. Acute bilirubin encephalopathy — permanent brain damage from bilirubin deposition in basal ganglia. Phototherapy or exchange transfusion must be initiated immediately.</div>
+      <div class="rftile"><b>Jaundice + fever + systemically unwell neonate</b> Neonatal sepsis (E. coli, GBS, Listeria, Staphylococcus) causing jaundice → 999 / same-day paediatrics. Neonates can deteriorate catastrophically within hours. Any sick jaundiced neonate = sepsis until proven otherwise. Blood cultures + IV antibiotics immediately.</div>
+      <div class="rftile"><b>Jaundice persisting beyond 14 days (21 days if breastfed)</b> Prolonged neonatal jaundice — screen for hypothyroidism (TFTs), galactosaemia (RBC galactose-1-phosphate uridyltransferase), biliary atresia (split bilirubin), UTI (MSU). Any conjugated element → urgent paediatric hepatology. Newborn screening (heel prick) check.</div>
+      <div class="rftile"><b>Jaundice + weight loss &gt;10% + poor feeding</b> Neonatal dehydration from inadequate feeding (breastfeeding problems) causing starvation jaundice → same-day midwifery / paediatric assessment. Bilirubin rises with dehydration. Establish feeding effectively — breastfeeding support specialist + consider supplementary feeding.</div>
+      <div class="rftile"><b>Rapidly rising bilirubin (>8.5 μmol/L/hr)</b> Exchange transfusion threshold may be reached before phototherapy is effective. Hospital measurement and monitoring every 4–6 hours if rising rapidly. Rate of rise is as important as absolute level.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Biliary atresia is the most time-critical diagnosis in neonatal jaundice — it is rare (1:10,000–15,000 births) but invariably fatal if untreated, and the outcome is critically time-dependent. The Kasai portoenterostomy (hepatic portoenterostomy) — an anastomosis between the intestine and the porta hepatis, bypassing the obliterated biliary tree — achieves bile drainage in 60–80% of cases if performed before 60 days of age, but success falls to under 20% if performed after 90 days. Beyond 4 years without successful Kasai, essentially all affected children will require liver transplantation. The UK has implemented mandatory stool colour cards (distributed at the 6-week check), and NICE NG98 explicitly mandates that all neonates with jaundice beyond 14 days must have a split bilirubin performed to calculate the conjugated fraction. The most practical immediate test a GP can perform is urine dipstick — dark urine (conjugated bilirubin is water-soluble and stains the urine) in a jaundiced neonate is a medical emergency requiring same-day referral to paediatric hepatology. Kernicterus from untreated severe unconjugated hyperbilirubinaemia was historically common and caused high rates of cerebral palsy and sensorineural deafness — the introduction of phototherapy has made it rare but not extinct. The opisthotonus (arching of the back) and high-pitched cry in acute bilirubin encephalopathy are pathognomonic — any GP seeing these signs in a jaundiced neonate should call 999 immediately.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Age at Onset — The Primary Diagnostic Branch</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Age of onset is the single most important clinical discriminator in neonatal jaundice. Use postnatal age in hours and days — not just "a few days old."</b></p>
+    <div class="kv">
+      <div>Jaundice &lt;24 hours</div><div><span class="pill pill-red">ALWAYS pathological — same-day hospital.</span> Causes: Rhesus incompatibility (anti-D haemolysis — most severe), ABO incompatibility (A or B baby, O mother — commonest haemolytic cause), G6PD deficiency (X-linked, common in African/Mediterranean populations — triggered by oxidative stress), hereditary spherocytosis.</div>
+      <div>Jaundice day 2–14 (physiological window)</div><div>Physiological jaundice most likely — but must measure serum bilirubin (SBR) against NICE NG98 treatment threshold chart. Physiological is a diagnosis of exclusion. Risk factors for severe physiological jaundice: prematurity (&lt;38 weeks), bruising / cephalhaematoma, East Asian ethnicity, breastfeeding, sibling with neonatal jaundice, G6PD deficiency.</div>
+      <div>Jaundice day 4–10 (peak physiological)</div><div>Physiological jaundice peaks between day 3–5 in term infants, day 5–7 in preterm. Peak bilirubin typically 150–200 μmol/L. Should be declining by day 10. Breastfed infants: higher peak, slower decline (breast milk jaundice — benign, do NOT stop breastfeeding).</div>
+      <div>Jaundice &gt;14 days (21 days if breastfed)</div><div>Prolonged neonatal jaundice — investigate fully. Most common benign cause: breast milk jaundice. But must exclude: biliary atresia (split bilirubin), hypothyroidism (TFTs — check newborn bloodspot result), galactosaemia, UTI, haemolysis (FBC), liver disease.</div>
+      <div>Key history questions</div><div>Gestational age at birth (prematurity = higher risk) · Maternal blood group + rhesus status (booking record) · Previous sibling with neonatal jaundice / phototherapy · Ethnicity (G6PD risk — African, Mediterranean, Middle Eastern, South/South-East Asian) · Breastfeeding / formula feeding · Stool colour (pale = biliary atresia) · Urine colour (dark = conjugated hyperbilirubinaemia) · Birth injuries (bruising, cephalhaematoma — haematoma breakdown increases bilirubin load)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The 24-hour rule is the most important rule in neonatal jaundice — any visible jaundice within the first 24 hours of life is pathological by definition, as physiological jaundice cannot occur this early (the mechanisms that produce physiological jaundice — normal red cell breakdown after the high fetal haemoglobin production period — take at least 24 hours to generate significant bilirubin load). Visible jaundice before 24 hours indicates pathological haemolysis, which can cause bilirubin to rise at rates of 17 μmol/L per hour — far faster than phototherapy can clear it. Exchange transfusion may be required within hours. The Rhesus incompatibility situation has been dramatically improved by routine anti-D prophylaxis to all Rh-negative pregnant women — but maternal records must be checked, as missed prophylaxis still occurs. ABO incompatibility (group O mother + group A or B baby) is now the most common cause of significant haemolytic disease of the newborn — it is unpredictable (no maternal sensitisation history) and presents with jaundice in the first 24 hours. G6PD deficiency is X-linked recessive (affects males primarily) and is common in populations from tropical and subtropical regions — it causes haemolytic crisis when the baby is exposed to oxidative stressors (infection, drugs like vitamin K if given in excessive doses, or in the neonatal period can be triggered without obvious trigger).</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Classification — Unconjugated vs Conjugated</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Unconjugated hyperbilirubinaemia</div><div>Bilirubin not water-soluble — not excreted in urine. Urine normal colour. Causes: physiological, breast milk jaundice, haemolysis (Rh/ABO/G6PD/spherocytosis), polycythaemia (twin-to-twin transfusion, delayed cord clamping), hypothyroidism (reduced bilirubin conjugation), bruising/cephalhaematoma, Crigler-Najjar syndrome (severe UGT1A1 deficiency — rare). Treatment: phototherapy / exchange transfusion.</div>
+      <div>Conjugated hyperbilirubinaemia</div><div>Conjugated bilirubin &gt;25 μmol/L OR &gt;20% of total — always pathological. Bilirubin water-soluble → dark urine, pale stools, steatorrhoea. Causes: biliary atresia (most important — surgical emergency), neonatal hepatitis (viral — CMV, hepatitis B), metabolic (galactosaemia, alpha-1-antitrypsin deficiency, PFIC), total parenteral nutrition cholestasis, sepsis. Always requires specialist assessment.</div>
+      <div>Physiological jaundice (diagnosis of exclusion)</div><div>Appears day 2–3. Peaks day 3–5. Resolves by day 10–14. Well baby, feeding normally, urine normal, stools yellow/green (NOT pale). SBR below treatment threshold on NICE NG98 chart. No risk factors for severe jaundice. Does not require treatment if below threshold. Continue breastfeeding.</div>
+      <div>Breast milk jaundice</div><div>Benign, prolonged unconjugated jaundice in exclusively breastfed infants. Persists beyond 14 days (occasionally to 12 weeks). Well, thriving, feeding well. Normal split bilirubin (conjugated normal). Mechanism: breast milk inhibitors of bilirubin conjugation (glucuronidase enzymes). Do NOT stop breastfeeding. Reassure parents. Monitor SBR and resolve spontaneously.</div>
+      <div>Haemolytic jaundice</div><div>Onset &lt;24 hrs, rises rapidly, SBR may exceed treatment threshold quickly. DAT positive (immune haemolysis: Rh, ABO) or negative (non-immune: G6PD, hereditary spherocytosis). FBC: anaemia, high reticulocyte count, spherocytes on film (ABO/spherocytosis), Heinz bodies (G6PD). Requires phototherapy ± exchange transfusion. IV immunoglobulin (IVIG) for Rh / ABO haemolysis (reduces need for exchange transfusion by 30–40%).</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The distinction between unconjugated and conjugated hyperbilirubinaemia is the critical biochemical branch in neonatal jaundice — unconjugated jaundice (the common, physiological/haemolytic type) can cause kernicterus but is treatable with phototherapy; conjugated jaundice is always pathological and indicates liver or biliary tract disease requiring specialist assessment. The practical bedside test is urine examination — conjugated bilirubin is water-soluble and stains the urine dark brown/orange. A urine dipstick positive for bilirubin in a jaundiced neonate is a same-day hospital emergency. Galactosaemia is a critical metabolic cause of conjugated jaundice — it is caused by deficiency of galactose-1-phosphate uridyltransferase (GALT enzyme) and presents in the first few days of life with jaundice, vomiting, hepatomegaly, hypoglycaemia, and E. coli sepsis (galactose accumulation impairs neutrophil function, predisposing to sepsis). It is included in the UK newborn bloodspot screening programme (heel prick test). Treatment is immediate lactose-free formula. If untreated, it causes liver failure, cataracts, intellectual disability, and ovarian failure in girls. Any sick jaundiced neonate with E. coli sepsis must have galactosaemia excluded immediately — withhold breast milk / lactose-containing formula while results are awaited.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Examination &amp; Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Clinical assessment of jaundice</div><div>Blanching test: press firmly on skin → if yellow on blanching = jaundice. Progression cephalocaudal: face → trunk → limbs → palms/soles (Kramer zones). Palms/soles yellow = severe jaundice (bilirubin likely &gt;250 μmol/L). <b>Clinical estimation is unreliable</b> — ALWAYS measure with transcutaneous bilirubinometer (TcB) or serum bilirubin (SBR). Do not manage neonatal jaundice clinically without measurement.</div>
+      <div>Transcutaneous bilirubinometer (TcB)</div><div>Non-invasive, immediate screening tool. <b>NICE NG98: TcB should be used as first-line screening in infants ≥35 weeks gestation.</b> If TcB ≥250 μmol/L or within 50 μmol/L of phototherapy threshold → confirm with SBR. TcB unreliable after phototherapy (skin bleaching) — use SBR only. Not validated for gestation &lt;35 weeks or &lt;24 hrs old.</div>
+      <div>Serum bilirubin (SBR) — total and split</div><div>Total SBR: treatment threshold decision (plot on NICE NG98 gestational age-specific chart). Split bilirubin (direct/conjugated): <b>mandatory if jaundice &gt;14 days (21 days if breastfed)</b>. Conjugated &gt;25 μmol/L or &gt;20% of total = pathological → same-day paediatric hepatology. Heel-prick capillary or venous sample.</div>
+      <div>Clinical examination</div><div>Wellbeing: alert vs lethargic, tone (hypotonia = bilirubin encephalopathy), feeding. Colour: scleral icterus (most sensitive visible sign), skin. Hepatosplenomegaly (haemolytic disease, liver disease, congenital infection). Bruising / cephalhaematoma (increased bilirubin load). Dysmorphic features (chromosomal disorders associated with liver disease).</div>
+      <div>Investigations by clinical scenario</div><div><b>All jaundice requiring treatment or &gt;24 hrs:</b> <span class="pill pill-blue">SBR (total + split)</span> · <span class="pill pill-blue">Blood group + DAT</span> (maternal and baby) · <span class="pill pill-blue">FBC + film</span> (haemolysis screen — anaemia, reticulocytosis, spherocytes, Heinz bodies) · <b>If prolonged (&gt;14 days):</b> <span class="pill pill-blue">TFTs</span> · <span class="pill pill-blue">G6PD screen</span> · <span class="pill pill-blue">MSU (UTI)</span> · <span class="pill pill-blue">Newborn bloodspot result check</span> (hypothyroidism, galactosaemia) · <span class="pill pill-blue">LFTs + GGT</span> · <span class="pill pill-blue">Urine reducing substances</span> (galactosaemia) · <b>If conjugated raised:</b> <span class="pill pill-blue">USS liver + biliary tree</span> (biliary atresia)</div>
+      <div>Stool colour chart</div><div>The NHS Stool Colour Card (provided at 6-week check or earlier if jaundice noted) — colours 1–3 (pale / white / clay) = abnormal → same-day referral. Colours 4–6 (yellow-green to dark brown) = normal. Parents should be taught to check stool colour at every nappy change in a jaundiced neonate.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">NICE NG98 explicitly states that clinical assessment alone is insufficient for managing neonatal jaundice — the Kramer zones have a sensitivity of only 35% for identifying neonates requiring phototherapy. All neonates with visible jaundice should have their bilirubin measured with TcB (transcutaneous bilirubinometer) or SBR (serum bilirubin), not managed on clinical observation alone. Transcutaneous bilirubinometers (Dräger JM-103, Philips BiliChek) are now widely available in NHS community settings — they use spectrophotometry to estimate bilirubin through the skin and are validated for screening in infants ≥35 weeks' gestation. They allow safe, non-invasive, rapid assessment in any setting. GPs and community midwives who have access to a TcB should use it for all jaundiced neonates presenting in the community. The direct antiglobulin test (DAT) — also called the Coombs test — detects antibody-coated red cells. A positive DAT in a jaundiced neonate confirms immune-mediated haemolysis (Rh incompatibility, ABO incompatibility). A negative DAT in a severely jaundiced neonate should prompt consideration of non-immune haemolysis: G6PD deficiency (red cell enzyme assay), hereditary spherocytosis (osmotic fragility test, ektacytometry), or pyruvate kinase deficiency.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="REFER" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999 / Same-day hospital (immediate)</span></div><div>Jaundice &lt;24 hours old · Neurological signs (high-pitched cry, arching, seizures, extreme lethargy — acute bilirubin encephalopathy) · Pale/white stools in any jaundiced neonate · SBR above exchange transfusion threshold · Sick febrile jaundiced neonate (sepsis)</div>
+      <div><span class="pill pill-red">Same-day paediatrics</span></div><div>SBR at or above phototherapy threshold on NICE NG98 chart · Conjugated bilirubin &gt;25 μmol/L or &gt;20% of total · Rapidly rising SBR (&gt;8.5 μmol/L/hr) · Any jaundiced neonate with dark urine or pale stools · Jaundice + unwell neonate at any age</div>
+      <div>Paediatric hepatology (urgent)</div><div>Conjugated hyperbilirubinaemia in any neonate — USS biliary tree + liver biopsy (biliary atresia vs neonatal hepatitis). Must be seen before 6 weeks of age for Kasai surgery to be feasible. Any delay is unacceptable — phone directly.</div>
+      <div>Community midwife / health visitor</div><div>Physiological jaundice below treatment threshold: community midwife or health visitor for daily TcB monitoring if close to threshold. Breastfeeding support if feeding concerns. Re-weigh at 5 days and 10 days. Daily GP/midwife assessment until jaundice resolving.</div>
+      <div>Prolonged jaundice &gt;14 days</div><div>GP-initiated investigations (TFTs, split bilirubin, MSU, FBC, check newborn bloodspot) then same-day paediatrics if conjugated raised, or paediatric outpatient within 48 hours if purely unconjugated prolonged (breast milk jaundice likely but must be confirmed). Never reassure without split bilirubin.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The NICE NG98 threshold charts provide gestational-age-specific phototherapy and exchange transfusion thresholds — the treatment threshold is lower (more conservative) for preterm infants because the blood-brain barrier is less mature and kernicterus can occur at lower bilirubin levels. There are separate charts for infants ≥38 weeks, 35–37+6 weeks, and for infants with additional risk factors (haemolysis, previous sibling requiring exchange transfusion, albumin &lt;25 g/L). The NICE NG98 chart is available as a free app and should be on every GP and midwife smartphone. Referral thresholds: if SBR is at or above the phototherapy line → same-day hospital for phototherapy. If SBR is within 50 μmol/L of the phototherapy line → same-day hospital for review and repeat measurement. The Kasai procedure timing is the most critical factor in biliary atresia outcome — the Jaundice Free Liver campaign has shown that implementing stool colour card screening at the 6-week neonatal check reduces diagnostic delay for biliary atresia. Every GP performing a 6-week check should ask specifically about stool colour and inspect the stool colour card. Pale stools at 6 weeks in a jaundiced infant = same-day referral regardless of how well the baby appears.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="TREAT" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>Treatment Modalities</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Phototherapy</div><div>Blue-green wavelength light (430–490 nm peak) converts unconjugated bilirubin to water-soluble photo-isomers excreted in bile and urine without conjugation. Single surface (overhead or underneath) or double surface (higher intensity — for higher levels or haemolytic disease). Continuous phototherapy (interruptions for feeding only). Conventional (fluorescent tubes) or LED (more efficient, less heat). Commenced at NICE NG98 threshold SBR for gestational age.</div>
+      <div>Exchange transfusion</div><div>Double-volume exchange (160 ml/kg) via umbilical vein catheter. Removes antibody-coated cells (haemolysis), reduces circulating bilirubin by 50%, replaces albumin. Used when: SBR above exchange transfusion threshold on NICE NG98 chart, or SBR rising rapidly (&gt;8.5 μmol/L/hr) despite maximum phototherapy, or signs of acute bilirubin encephalopathy. NICU procedure.</div>
+      <div>Intravenous immunoglobulin (IVIG)</div><div>For immune haemolytic disease (Rh or ABO incompatibility) — IVIG 0.5–1 g/kg IV over 2–4 hours. Reduces exchange transfusion rates by 30–40% by blocking Fc receptors on macrophages, reducing red cell destruction. Commence immediately on confirmation of immune haemolysis with rising SBR. Hospital administration.</div>
+      <div>Adequate feeding</div><div>Feeding promotes gut motility → bilirubin excretion in stool. Continue breastfeeding throughout phototherapy (do NOT supplement with formula for physiological jaundice unless weight loss &gt;10% or inadequate feeding confirmed). Breastfeed every 2–3 hours minimum. If truly inadequate intake: expressed breast milk supplement or formula supplement, not cessation of breastfeeding.</div>
+      <div>GP-community management (below threshold)</div><div>If SBR below phototherapy threshold + well baby + feeding well + no risk factors: GP/community midwife monitoring with TcB or SBR every 24–48 hours until clearly declining. Written safety-net: return immediately if feeding worsens, baby becomes lethargic, jaundice deepens or spreads to palms/soles. Do NOT discharge without a clear review plan.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The blue light of phototherapy (peak 460 nm) penetrates skin and converts unconjugated bilirubin IXα (the brain-toxic isomer) to lumirubin and configurational isomers that are water-soluble and can be excreted in bile without hepatic conjugation. This bypasses the conjugation defect of the immature neonatal liver. The efficiency of phototherapy is directly proportional to the irradiance (light intensity) and the skin surface area exposed — hence the use of double-surface phototherapy (baby between overhead lights and underneath billi blanket) for higher bilirubin levels. Home phototherapy (billi blankets) is used in some NHS trusts for stable, term infants with physiological jaundice, reducing hospitalisation and supporting breastfeeding. NICE NG98 does not endorse or prohibit home phototherapy — it acknowledges it as an option in some settings. The critical point is that phototherapy cannot be started in primary care without bilirubin measurement and threshold plotting — empirical phototherapy without measurement is not appropriate. The feeding message is critically important: stopping breastfeeding for jaundice is the single most common parental error — parents frequently stop breastfeeding because they have been told that breast milk "causes" jaundice. Breast milk jaundice (prolonged unconjugated jaundice in breastfed infants) is benign and does not cause kernicterus at the levels typically seen. Breastfeeding must be actively supported and continued unless there is a medical reason to supplement.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Prolonged Jaundice &amp; Specific Causes</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Hypothyroidism</div><div>Congenital hypothyroidism causes prolonged unconjugated jaundice (reduced bilirubin conjugation). Check newborn bloodspot result — hypothyroidism screened at 5 days. If missed or borderline: urgent TFTs (TSH elevated + low T4). Levothyroxine replacement started immediately by paediatrician — early treatment prevents intellectual disability. Incidence 1:3000–4000 births.</div>
+      <div>UTI-associated jaundice</div><div>E. coli UTI is a well-recognised cause of prolonged neonatal jaundice — the mechanism is endotoxin-mediated cholestasis. MSU by clean catch or suprapubic aspiration. Empirical antibiotics (cefotaxime or gentamicin IV in hospital) if systemically unwell. Oral trimethoprim or cefalexin once sensitivities available. Urine culture mandatory before treatment.</div>
+      <div>Biliary atresia — GP role after referral</div><div>GP has no treatment role — this is a specialist surgical condition. GP's primary role: refer urgently before 6–8 weeks, coordinate follow-up, support family. Post-Kasai: monitoring for cholangitis (fever + rising bilirubin), fat-soluble vitamin supplementation (A, D, E, K), growth monitoring, liver transplant preparation if Kasai fails.</div>
+      <div>Galactosaemia</div><div>Newborn bloodspot positive or clinical suspicion (jaundice + vomiting + hepatomegaly + E. coli sepsis) → immediate lactose-free formula (Nutramigen, Pregestimil). Stop breast milk. Urgent metabolic team referral. Lifelong galactose-free diet (no dairy — strict). Monitor for intellectual impairment, cataracts, ovarian failure (premature menopause in girls).</div>
+      <div>Breast milk jaundice — management</div><div>Reassurance + continued breastfeeding. Monitor SBR weekly until declining. Split bilirubin to confirm purely unconjugated (conjugated normal). No treatment required. Resolves by 3 months in almost all cases. No evidence of harm at levels typically seen in breast milk jaundice (&lt;350 μmol/L in well, term infant). Parental anxiety management — written information.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The GP's role in the 6-week check is particularly important for prolonged jaundice — it is the last formal clinical encounter before the baby is seen again at 8 weeks immunisations. NICE NG98 is explicit: if a baby is still visibly jaundiced at the 6-week check, a split bilirubin must be checked and the stool colour card reviewed. A baby who has been yellow since birth and whose parents "think it's breast milk jaundice" must not be dismissed without investigation. The consequences of missing biliary atresia at the 6-week check and reassuring parents without a split bilirubin are catastrophic — by the time the baby is seen at 8 weeks and jaundice is still present, the Kasai window may be closing. Galactosaemia warrants specific mention at the 6-week check — check the newborn bloodspot result in the red book. The bloodspot screens for galactosaemia (GALT deficiency), phenylketonuria (PKU), hypothyroidism, sickle cell disease, cystic fibrosis, MCADD, homocystinuria, isovaleric acidaemia, glutaric aciduria type 1, and MSUD. GPs should confirm at every early neonatal contact that the heel prick was taken (day 5) and the result was normal.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Supporting Parents — Feeding, Observation &amp; Wellbeing</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Continue breastfeeding</b> The most important lifestyle message in neonatal jaundice. Breastfeeding reduces neonatal jaundice risk through adequate hydration and gut stimulation. Interrupting breastfeeding for jaundice is NOT recommended and risks long-term breastfeeding failure. Ensure effective feeding: good latch, 8–12 feeds/24 hours, signs of adequate intake (6 wet nappies/day by day 5, regaining birth weight by 14 days).</div>
+      <div class="lstile"><b>Breastfeeding support access</b> Any breastfeeding difficulty in a jaundiced neonate → same-day breastfeeding support (community midwife, infant feeding coordinator, peer support worker, National Breastfeeding Helpline 0300 100 0212). Poor latch / positioning → reduced milk transfer → dehydration → worsening jaundice. Address the feeding problem, not the jaundice in isolation.</div>
+      <div class="lstile"><b>Stool colour monitoring</b> Teach parents to check stool colour at every nappy change throughout the jaundiced period. Keep the NHS Stool Colour Card visible. Colours 1–3 (pale/white/clay) → contact GP or midwife same-day. Normal colours are yellow, green, or brown. Stools should be passing and transitioning from meconium (black-green) by day 4.</div>
+      <div class="lstile"><b>Weight monitoring</b> Reweigh at 5 days and 10 days (or more frequently if jaundice worsening or feeding concerns). Weight loss &gt;10% from birth weight = significant dehydration → same-day assessment. Target: regain birth weight by day 14. Weight gain of 20–30 g/day after milk comes in (day 3–4) is normal.</div>
+      <div class="lstile"><b>Sunlight — evidence and caution</b> Filtered sunlight through glass does NOT provide effective phototherapy (glass blocks the therapeutic UV wavelengths). Placing baby in a sunny window is therefore not an effective treatment. However, outdoor sunlight exposure in warm, temperate weather may provide some benefit. NICE does not recommend sunlight as a substitute for measured phototherapy — do not advise parents to use sunlight in place of TcB monitoring and hospital phototherapy when indicated.</div>
+      <div class="lstile"><b>Parental anxiety support</b> Neonatal jaundice causes significant parental distress — especially when hospitalisation for phototherapy is required in the first days of life. Acknowledge anxiety, explain jaundice clearly in plain language, reassure that physiological jaundice is very common (60% of term and 80% of preterm neonates) and that treatment is highly effective. Written information (NICE NG98 patient leaflet, NHS website).</div>
+      <div class="lstile"><b>Future pregnancy risk (haemolytic disease)</b> After Rh haemolytic disease: ensure anti-D prophylaxis plan for all future pregnancies. Check maternal Rh antibody titres at booking. Future babies may require intrauterine transfusion. Refer to fetal medicine consultant. After ABO haemolytic disease: low recurrence risk in future pregnancies (ABO incompatibility is unpredictable).</div>
+      <div class="lstile"><b>G6PD — parental education</b> G6PD deficiency (X-linked) — lifelong avoidance of oxidative triggers: fava beans, certain antimalarials (primaquine, pamaquine), dapsone, high-dose aspirin, methylene blue, some antibiotics. Carry G6PD alert card. Genetic counselling (carrier mothers, affected sons, daughters are carriers). NHS newborn screening now includes G6PD in some areas.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The breastfeeding message in neonatal jaundice is one of the most common sources of parental misinformation — many parents are told by well-meaning relatives, and sometimes by healthcare professionals, to "stop breastfeeding for 24–48 hours to see if the jaundice improves." This "breastfeeding holiday" test has no evidence base and causes measurable harm: it disrupts breastfeeding establishment during the critical first two weeks, causes maternal engorgement and mastitis, reduces milk supply, and increases formula dependence. The only indication to temporarily supplement breastfeeding is objective evidence of inadequate intake (weight loss &gt;10%, insufficient wet nappies) combined with a rising bilirubin — and even then, the supplement should be expressed breast milk first, formula second, and breastfeeding itself should continue simultaneously. G6PD deficiency is globally the most common enzyme deficiency (400 million affected worldwide) and is highly prevalent in populations from Africa, the Mediterranean, Middle East, and South/Southeast Asia. GPs seeing neonates from these backgrounds should have a lower threshold for G6PD testing in unexplained haemolytic jaundice. G6PD-deficient males can have catastrophic haemolytic crises when exposed to fava beans, certain drugs, or infections even in adult life — parental education at the time of diagnosis has lifelong benefit.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up, Safety-Netting &amp; The 6-Week Check</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Community monitoring (below threshold)</div><div>Daily TcB or SBR measurement until clearly declining and below threshold level. Community midwife role until day 10–28 (depending on trust). Record each measurement + plot on NICE NG98 chart. Document clear escalation plan in notes: "If SBR rises to [X] μmol/L → same-day hospital."</div>
+      <div>After phototherapy discharge</div><div>SBR rebound check at 12–18 hours post-phototherapy (bilirubin can rise back after phototherapy lights removed — especially in haemolytic disease). If SBR rises &gt;20 μmol/L above phototherapy threshold → restart phototherapy. Community TcB at 24–48 hours post-discharge. Confirm feeding established and weight gaining.</div>
+      <div>The 6-week check — biliary atresia screen</div><div><b>MANDATORY at every 6-week check:</b> (1) Is the baby still visibly jaundiced? (2) What colour are the stools? (3) Is urine dark? (4) Show / inspect stool colour card. If jaundice still present → split bilirubin + same-day paediatrics if any conjugated element. If stool colour 1–3 → same-day paediatric hepatology regardless of jaundice severity.</div>
+      <div>Newborn bloodspot check</div><div>Confirm heel prick was performed at day 5 and result is documented. Check for hypothyroidism, galactosaemia, PKU, sickle cell, CF, MCADD results. If not done or result missing → repeat urgently. Do not assume result was normal without documentation.</div>
+      <div>Post-exchange transfusion / severe jaundice</div><div>Audiology follow-up (sensorineural hearing loss — bilirubin neurotoxicity affects cochlear nuclei). Ophthalmology (oculomotor palsies). Neurodevelopmental review at 6 months, 1 year, and 2 years. MRI brain (bilateral pallidal hyperintensity on T1 — classic kernicterus finding). Early intervention / SENCO referral if developmental concerns.</div>
+      <div>Recurrence in future siblings</div><div>Rh disease: prophylaxis plan documented in mother's records. ABO incompatibility: 25% recurrence risk in future O-mother pregnancies — early neonatal bilirubin monitoring for all subsequent babies. G6PD: X-linked — 50% of sons affected if mother is carrier. All future male siblings of G6PD neonate should be tested at birth.</div>
+      <div><span class="pill pill-red">999 / same-day safety-net</span></div><div>Baby becoming difficult to rouse, high-pitched cry, arching, or seizures (acute bilirubin encephalopathy) · Jaundice deepening rapidly after discharge from phototherapy · Pale/white stools developing at any time · Dark urine (tea-coloured) · Baby stops feeding or is inconsolably irritable</div>
+      <div><span class="pill pill-amber">Same-day GP / midwife</span></div><div>Jaundice visibly worsening between scheduled reviews · Baby losing weight or not feeding adequately · TcB approaching treatment threshold · Any parental concern about deterioration · Stool colour becoming paler than previous nappy · Temperature (&gt;38°C or &lt;36°C) in jaundiced neonate</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The 6-week GP check is the last safety net for biliary atresia in the UK — after this point, the next routine contact is at 8 weeks immunisations, at which point the Kasai surgery window is closing. UK national audit data (BAPS-CASS study) show that 25% of biliary atresia cases in the UK are still diagnosed after 60 days, with correspondingly worse outcomes. This diagnostic delay is almost entirely attributable to missed clinical assessment at the 6-week check. The BAPS (British Association of Paediatric Surgeons) and the Jaundice Free Liver charity have produced specific GP-targeted education on recognising biliary atresia at the 6-week check. GPs should treat a persistently jaundiced baby at the 6-week check as a potential biliary atresia until proven otherwise — the split bilirubin result and stool colour assessment are non-negotiable. The neurodevelopmental sequelae of kernicterus require long-term follow-up — kernicterus causes the classic tetrad: (1) athetoid/dyskinetic cerebral palsy, (2) sensorineural hearing loss (auditory neuropathy), (3) oculomotor palsy (particularly upgaze palsy), and (4) intellectual disability (variable). Early identification and intervention (cochlear implants for deafness, physiotherapy, SENCO) significantly improve outcomes. GPs should ensure neurodevelopmental review appointments are in place for any neonate who had severe hyperbilirubinaemia (&gt;425 μmol/L) or signs of encephalopathy.</div></div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE NG98 (Jaundice in Newborn Babies, 2016 — updated 2023), NICE NG98 phototherapy threshold charts, BAPS-CASS Biliary Atresia Audit, Jaundice Free Liver (www.jaundicefreelivers.org.uk), NHS Newborn Bloodspot Screening Programme, BAPM (British Association of Perinatal Medicine) neonatal jaundice guidelines. Always adapt to individual patient context and local trust guidelines. Use NICE NG98 gestational-age-specific treatment threshold charts for all treatment decisions.
+</div>
+
+<script>
+(function(){
+  const STORE = 'rgp.alg.neonataljaundice.v1';
+  const flow  = document.getElementById('flow');
+  const pDone = document.getElementById('pDone');
+  const pFill = document.getElementById('pFill');
+  const total = 9;
+  function save(){
+    localStorage.setItem(STORE, JSON.stringify(
+      [...flow.querySelectorAll('input[type=checkbox]')].map(c => c.checked)
+    ));
+  }
+  function load(){
+    try{
+      const d = JSON.parse(localStorage.getItem(STORE) || '[]');
+      [...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{ if(d[i]) c.checked=true; });
+    } catch(e){}
+  }
+  function update(){
+    const done = [...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;
+    pDone.textContent = done;
+    pFill.style.width = (done/total*100)+'%';
+    save();
+  }
+  flow.addEventListener('change', e=>{ if(e.target.type==='checkbox') update(); });
+  flow.addEventListener('click', e=>{
+    const btn = e.target.closest('.why-btn');
+    if(!btn) return;
+    const exp = btn.getAttribute('aria-expanded')==='true';
+    btn.setAttribute('aria-expanded', String(!exp));
+    btn.nextElementSibling.classList.toggle('open', !exp);
+  });
+  document.getElementById('resetBtn').addEventListener('click', ()=>{
+    flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);
+    flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));
+    flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));
+    localStorage.removeItem(STORE);
+    update();
+  });
+  load();
+  update();
+})();
+</script>
+</body>
+</html>

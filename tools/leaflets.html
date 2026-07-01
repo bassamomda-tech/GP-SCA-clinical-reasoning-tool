@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Patient Leaflets · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<style>
+.tool-page{ padding:28px 32px 80px; max-width:1180px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+
+.tool-head{ display:flex; gap:20px; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:18px; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:34px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); font-weight:500; }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:6px; max-width:60ch; }
+.head-actions{ display:flex; gap:8px; align-items:center; }
+.head-btn{ display:inline-flex; gap:6px; align-items:center; font:inherit; font-size:13px; font-weight:600; padding:8px 14px; border-radius:8px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; transition:.15s ease; text-decoration:none; }
+.head-btn:hover{ border-color:var(--ink-2); color:var(--ink); }
+.head-btn svg{ flex-shrink:0; }
+
+/* ============ Search bar ============ */
+.search-wrap{ position:relative; margin-bottom:24px; }
+.search-bar{
+  display:flex; gap:0; align-items:center; background:#fff; border:2px solid var(--line);
+  border-radius:14px; padding:6px 6px 6px 16px; transition:border-color .15s ease;
+}
+.search-bar:focus-within{ border-color:var(--teal); }
+.search-bar svg{ flex-shrink:0; color:var(--muted); }
+.search-bar input{
+  flex:1; border:none; outline:none; font:inherit; font-size:16px;
+  background:transparent; padding:10px 8px; color:var(--ink);
+}
+.search-clear{
+  font:inherit; font-size:12px; background:var(--bg-soft); border:1px solid var(--line);
+  border-radius:8px; padding:8px 14px; cursor:pointer; color:var(--muted); font-weight:600;
+}
+.search-clear:hover{ background:var(--surface); color:var(--ink); }
+.search-clear.is-hidden{ display:none; }
+
+.search-results{
+  position:absolute; top:calc(100% + 4px); left:0; right:0;
+  background:#fff; border:1px solid var(--line); border-radius:12px;
+  max-height:380px; overflow:auto; z-index:50;
+  box-shadow:0 12px 32px rgba(0,0,0,.08);
+  display:none;
+}
+.search-results.is-open{ display:block; }
+.sr-item{
+  display:flex; align-items:center; gap:12px; padding:11px 16px;
+  cursor:pointer; border-bottom:1px solid var(--line);
+  transition:background .12s;
+}
+.sr-item:last-child{ border-bottom:none; }
+.sr-item:hover, .sr-item.is-focused{ background:var(--bg-soft); }
+.sr-name{ font-weight:600; font-size:14px; color:var(--ink); flex:1; }
+.sr-name mark{ background:#fde68a; color:inherit; padding:0 2px; border-radius:2px; }
+.sr-spec{ font-size:11.5px; color:var(--muted); }
+.sr-empty{ padding:14px 16px; color:var(--muted); font-size:13px; font-style:italic; }
+
+/* ============ Specialty condition picker (top dropdown) ============ */
+.spec-picker{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin:-4px 0 24px; padding:12px 14px; background:#fff; border:1px solid var(--line); border-left:4px solid var(--teal); border-radius:12px; box-shadow:0 4px 14px rgba(0,0,0,.05); }
+.spec-picker[hidden]{ display:none; }
+.sp-label{ display:flex; align-items:center; gap:9px; font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:18px; color:var(--ink); }
+.sp-label .sp-ic{ color:var(--sp,var(--teal)); font-size:21px; line-height:1; }
+.sp-label .sp-n{ font-family:'DM Sans',sans-serif; font-size:11px; font-weight:700; color:var(--muted); background:var(--bg-soft); border:1px solid var(--line); border-radius:99px; padding:2px 9px; }
+.sp-dd{ position:relative; margin-left:auto; min-width:320px; }
+.sp-dd-toggle{ width:100%; display:flex; align-items:center; justify-content:space-between; gap:10px; font:inherit; font-size:14px; font-weight:600; padding:11px 14px; border-radius:10px; border:1.5px solid var(--line); background:var(--bg-soft); color:var(--ink); cursor:pointer; transition:.14s ease; }
+.sp-dd-toggle:hover{ border-color:var(--teal); }
+.sp-caret{ width:16px; height:16px; flex-shrink:0; color:var(--muted); transition:transform .2s ease, color .2s ease; }
+.sp-dd.is-open .sp-caret{ transform:rotate(180deg); color:var(--teal); }
+.sp-dd-menu{ position:absolute; top:calc(100% + 6px); right:0; left:0; background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:0 16px 38px rgba(0,0,0,.12); max-height:380px; overflow:auto; z-index:60; display:none; padding:4px; }
+.sp-dd.is-open .sp-dd-menu{ display:block; }
+.sp-opt{ display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:8px; cursor:pointer; transition:background .12s; }
+.sp-opt + .sp-opt{ border-top:1px solid var(--line); }
+.sp-opt:hover{ background:var(--bg-soft); }
+.sp-opt-name{ flex:1; min-width:0; font-size:14px; font-weight:500; color:var(--ink); }
+.sp-opt-name .sp-opt-syn{ display:block; font-size:11px; font-weight:400; color:var(--muted); margin-top:1px; }
+.sp-opt-link{ flex-shrink:0; display:inline-flex; align-items:center; gap:4px; font-size:11.5px; font-weight:600; color:var(--muted); text-decoration:none; white-space:nowrap; transition:color .12s; }
+.sp-opt-link:hover{ color:var(--teal); text-decoration:underline; }
+.sp-close{ flex-shrink:0; font:inherit; font-size:15px; line-height:1; width:36px; height:36px; border-radius:9px; border:1px solid var(--line); background:#fff; color:var(--muted); cursor:pointer; transition:.12s; }
+.sp-close:hover{ border-color:var(--ink-2); color:var(--ink); }
+@media (max-width:620px){ .sp-dd{ min-width:100%; margin-left:0; } }
+
+/* ============ Specialty accordion (expandable dropdowns) ============ */
+.sec-head{ font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:700; margin:12px 0 10px; }
+.spec-grid{ display:flex; flex-direction:column; gap:8px; margin-bottom:30px; }
+
+.spec-tile{
+  background:#fff; border:1px solid var(--line); border-radius:12px;
+  border-left:4px solid var(--line-2);
+  overflow:hidden; transition:border-color .15s ease, box-shadow .15s ease;
+}
+.spec-tile:hover{ box-shadow:0 4px 12px rgba(0,0,0,.04); }
+.spec-tile.is-active{ border-color:var(--teal); box-shadow:0 4px 14px rgba(0,0,0,.05); }
+
+.st-head{
+  width:100%; font:inherit; text-align:left; cursor:pointer; background:transparent; border:none;
+  display:flex; align-items:center; gap:14px; padding:14px 16px;
+  transition:background .14s ease;
+}
+.st-head:hover{ background:var(--bg-soft); }
+.spec-tile.is-active .st-head{ background:var(--teal-soft); }
+.st-icon{ font-size:24px; line-height:1; flex-shrink:0; width:30px; text-align:center; }
+.st-main{ flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+.st-name{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:18px; color:var(--ink); line-height:1.2; }
+.st-blurb{ font-size:12.5px; color:var(--muted); line-height:1.4; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
+.st-count{ font-size:11px; font-weight:700; color:var(--muted); background:var(--bg-soft); border:1px solid var(--line); border-radius:99px; padding:3px 10px; flex-shrink:0; white-space:nowrap; }
+.spec-tile.is-active .st-count{ color:var(--teal); border-color:var(--teal-soft); background:#fff; }
+.st-caret{ flex-shrink:0; color:var(--muted-2); width:18px; height:18px; transition:transform .22s ease; }
+.spec-tile.is-active .st-caret{ color:var(--teal); transform:rotate(180deg); }
+
+/* dropdown body with the condition links */
+.st-body{ padding:4px 16px 16px; border-top:1px solid var(--line); }
+.st-body[hidden]{ display:none; }
+.st-body-lead{ font-size:12.5px; color:var(--ink-2); margin:10px 0 12px; line-height:1.5; }
+.st-body-lead strong{ color:var(--ink); font-weight:600; }
+.spec-conditions{ display:flex; flex-direction:column; gap:1px; }
+.spec-cond-chip{
+  font:inherit; font-size:14px; text-align:left; padding:9px 12px; border-radius:8px;
+  background:transparent; border:none; cursor:pointer; color:var(--ink-2);
+  display:flex; align-items:center; gap:10px; transition:.12s;
+}
+.spec-cond-chip:hover{ background:#fff; color:var(--teal); box-shadow:inset 0 0 0 1px var(--teal-soft); }
+.spec-cond-chip .scc-arrow{ color:var(--line-2); font-size:14px; margin-left:auto; transition:.12s; }
+.spec-cond-chip:hover .scc-arrow{ color:var(--teal); transform:translateX(2px); }
+.spec-cond-chip .scc-syn{ font-size:11.5px; color:var(--muted); font-weight:400; }
+
+/* ============ Result panel ============ */
+.result-panel{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:24px 26px; margin-bottom:24px; }
+.result-head{ display:flex; gap:18px; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:18px; }
+.result-head h2{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:30px; line-height:1.1; }
+.result-head .result-spec{ font-size:12px; color:var(--muted); margin-top:4px; letter-spacing:.06em; text-transform:uppercase; font-weight:600; }
+.result-head .result-syn{ font-size:13px; color:var(--muted); margin-top:6px; font-style:italic; }
+.result-close{ font:inherit; font-size:12px; padding:6px 12px; border-radius:99px; background:transparent; border:1px solid var(--line); cursor:pointer; color:var(--muted); flex-shrink:0; }
+.result-close:hover{ border-color:var(--ink-2); color:var(--ink); }
+
+.leaf-best{
+  background:linear-gradient(180deg, var(--teal-soft), #fff 60%);
+  border:1px solid var(--teal-soft);
+  border-left:4px solid var(--teal);
+  border-radius:12px;
+  padding:18px 20px;
+  margin-bottom:14px;
+}
+.leaf-card{
+  background:#fff; border:1px solid var(--line); border-radius:12px;
+  padding:14px 18px; margin-bottom:10px;
+}
+.leaf-card .leaf-tier{ font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:700; }
+.leaf-best .leaf-tier{ color:var(--teal); }
+.leaf-card .leaf-org{ font-size:18px; font-family:'Source Serif 4',Georgia,serif; font-weight:500; color:var(--ink); margin-top:2px; line-height:1.2; }
+.leaf-card .leaf-org .leaf-tone{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:8px; vertical-align:middle; }
+.leaf-card .leaf-desc{ font-size:13.5px; color:var(--ink-2); margin-top:6px; line-height:1.5; }
+.leaf-card .leaf-url{ font-size:12px; color:var(--muted); margin-top:6px; word-break:break-all; font-family:'DM Sans',monospace; }
+.leaf-actions{ display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.lact{
+  font:inherit; font-size:13px; font-weight:600;
+  padding:8px 14px; border-radius:8px; border:1px solid var(--line);
+  background:#fff; color:var(--ink-2); cursor:pointer;
+  display:inline-flex; gap:6px; align-items:center; text-decoration:none;
+  transition:.12s ease;
+}
+.lact:hover{ border-color:var(--ink-2); color:var(--ink); }
+.lact.primary{ background:var(--teal); border-color:var(--teal); color:#fff; }
+.lact.primary:hover{ background:var(--teal-2); color:#fff; }
+.lact .lact-confirm{ color:var(--teal); font-weight:700; font-size:11.5px; padding:0; border:none; background:transparent; cursor:default; }
+
+/* Translations row */
+.translations{ margin-top:14px; padding:10px 14px; background:var(--bg-soft); border-radius:10px; font-size:13px; color:var(--ink-2); line-height:1.55; }
+.translations b{ color:var(--ink); font-weight:600; margin-right:6px; }
+
+/* Disclaimer */
+.tool-foot{ margin-top:32px; padding:14px 18px; background:var(--bg-soft); border:1px solid var(--line); border-radius:10px; font-size:12.5px; color:var(--muted); line-height:1.55; }
+.tool-foot strong{ color:var(--ink-2); }
+
+/* Print */
+@media print{
+  @page{ size:A4 portrait; margin:14mm; }
+  .sidebar, .sb-toggle, .head-actions, .search-wrap, .spec-grid, .result-close, .spec-panel-close, .lact{ display:none !important; }
+  body{ background:#fff !important; font-size:11px; }
+  .leaf-best, .leaf-card{ break-inside:avoid; page-break-inside:avoid; }
+}
+</style>
+</head>
+<body data-screen-label="Patient Leaflets tool">
+
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-leaflets"></aside>
+  <main class="main">
+
+    <div class="tool-page">
+
+      <div class="tool-head">
+        <div>
+          <div class="tool-eyebrow">Reasoning GP · Tools</div>
+          <h1>Patient Leaflet Finder</h1>
+          <p>Type a condition — get the <em>best</em> UK patient leaflet plus 2-3 alternates from specialist charities. Copy the link to paste into AccuRx, an SMS, or an email.</p>
+        </div>
+        <div class="head-actions">
+          <button class="head-btn" id="printBtn" type="button" title="Print this view">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print
+          </button>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div class="search-wrap">
+        <div class="search-bar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="search" id="condSearch" placeholder="Type a condition — e.g. ‘hypertension’, ‘eczema’, ‘PCOS’…" autocomplete="off" />
+          <button class="search-clear is-hidden" id="searchClear" type="button">Clear</button>
+        </div>
+        <div class="search-results" id="searchResults" role="listbox"></div>
+      </div>
+
+      <!-- Result panel (shown on condition selection) -->
+      <div class="result-panel" id="resultPanel" style="display:none;"></div>
+
+      <!-- Specialty tile grid -->
+      <div id="specSection">
+        <div class="sec-head">Browse by specialty</div>
+        <div class="spec-grid" id="specGrid"></div>
+      </div>
+
+      <div class="tool-foot">
+        <strong>Reference tool, not a directory of validated leaflets.</strong> Links anchor to canonical landing pages at established UK patient-information organisations (NHS, Versus Arthritis, BHF, BAD, Diabetes UK, Mind, RCOG, Macmillan, etc). Always preview the leaflet yourself before sharing it with a patient — content changes, and the right leaflet for the patient depends on language, literacy, and context. Translation support varies by organisation; NHS pages support browser-level translation widgets in 100+ languages.
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/leaflets-data.js"></script>
+<script>
+(function(){
+  const ORGS = window.LEAFLET_ORGS;
+  const SPECS = window.LEAFLET_SPECIALTIES;
+  const CONDS = window.LEAFLET_CONDITIONS;
+  const condBySlug = Object.fromEntries(CONDS.map(c => [c.s, c]));
+  const specById = Object.fromEntries(SPECS.map(s => [s.id, s]));
+  const condsBySpec = {};
+  CONDS.forEach(c => { (condsBySpec[c.sp] = condsBySpec[c.sp] || []).push(c); });
+
+  /* ---------- Specialty accordion (collapsible condition lists) ---------- */
+  const specGrid = document.getElementById('specGrid');
+  const caretSvg = '<svg class="st-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+  SPECS.forEach(s => {
+    const list = (condsBySpec[s.id] || []).slice().sort((a,b) => a.n.localeCompare(b.n));
+    const count = list.length;
+    const tile = document.createElement('div');
+    tile.className = 'spec-tile';
+    tile.style.borderLeftColor = s.color;
+    tile.dataset.specId = s.id;
+    tile.innerHTML = `
+      <button class="st-head" type="button" aria-expanded="false">
+        <span class="st-icon" style="color:${s.color}">${s.icon}</span>
+        <span class="st-main">
+          <span class="st-name">${escapeHtml(s.name)}</span>
+          <span class="st-blurb">${escapeHtml(s.blurb)}</span>
+        </span>
+        <span class="st-count">${count} condition${count===1?'':'s'}</span>
+        ${caretSvg}
+      </button>
+      <div class="st-body" hidden>
+        <div class="spec-conditions">
+          ${list.map(c => `<button class="spec-cond-chip" type="button" data-slug="${c.s}">${escapeHtml(c.n)}<span class="scc-arrow">\u203a</span></button>`).join('')}
+        </div>
+      </div>
+    `;
+    const head = tile.querySelector('.st-head');
+    const body = tile.querySelector('.st-body');
+    head.addEventListener('click', () => {
+      const open = tile.classList.toggle('is-active');
+      body.hidden = !open;
+      head.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    tile.querySelectorAll('.spec-cond-chip').forEach(chip => {
+      chip.addEventListener('click', () => selectCondition(chip.dataset.slug));
+    });
+    specGrid.appendChild(tile);
+  });
+
+  /* ---------- Left specialty filter rail (GPatlas-style, like Pathways) ---------- */
+  (function buildSpecRail(){
+    const section = document.getElementById('specSection');
+    const grid = document.getElementById('specGrid');
+    if (!section || !grid || section.querySelector('.dir-layout')) return;
+
+    const layout = document.createElement('div');
+    layout.className = 'dir-layout';
+    const rail = document.createElement('aside');
+    rail.className = 'dir-rail';
+    const main = document.createElement('div');
+    main.className = 'dir-main';
+    layout.append(rail, main);
+    grid.parentNode.insertBefore(layout, grid);
+    main.appendChild(grid);
+
+    rail.innerHTML =
+      '<div class="dir-rail-top">' +
+        '<span class="dir-rail-title">Filter</span>' +
+        '<span class="dir-rail-actions">' +
+          '<button type="button" class="dir-reset" hidden>Reset all</button>' +
+          '<button type="button" class="dir-rail-min" title="Hide filters" aria-label="Hide filters"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>' +
+        '</span>' +
+      '</div>' +
+      '<div class="dir-rail-sec"><div class="dir-rail-h">Specialty</div><div class="dir-rail-list">' +
+        SPECS.map(function(s){
+          var count = (condsBySpec[s.id] || []).length;
+          return '<label class="dir-check" data-spec="'+s.id+'"><input type="checkbox" value="'+s.id+'">' +
+            '<span class="dir-check-box"></span><span class="dir-check-label">'+escapeHtml(s.name)+'</span>' +
+            '<span class="dir-check-n">'+count+'</span></label>';
+        }).join('') +
+      '</div></div>';
+
+    const reset  = rail.querySelector('.dir-reset');
+    const minBtn = rail.querySelector('.dir-rail-min');
+    const tiles  = Array.prototype.slice.call(grid.querySelectorAll('.spec-tile'));
+
+    const toggle = document.createElement('button');
+    toggle.className = 'dir-filters-toggle';
+    toggle.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/></svg>Filters<span class="n" hidden>0</span>';
+    main.insertBefore(toggle, grid);
+
+    const RKEY = 'rgp-rail-collapsed';
+    const isDesktop = function(){ return window.matchMedia('(min-width:861px)').matches; };
+    function setCollapsed(v){ layout.classList.toggle('rail-collapsed', v); try { localStorage.setItem(RKEY, v?'1':'0'); } catch(e){} }
+    minBtn.addEventListener('click', function(){ if (isDesktop()) setCollapsed(true); else rail.classList.remove('open'); });
+    toggle.addEventListener('click', function(){ if (isDesktop()) setCollapsed(false); else rail.classList.toggle('open'); });
+    try { if (localStorage.getItem(RKEY) === '1') setCollapsed(true); } catch(e){}
+
+    function apply(){
+      const sel = new Set(Array.prototype.slice.call(rail.querySelectorAll('.dir-check input:checked')).map(function(i){ return i.value; }));
+      tiles.forEach(function(t){ t.style.display = (sel.size === 0 || sel.has(t.dataset.specId)) ? '' : 'none'; });
+      reset.hidden = sel.size === 0;
+      const tn = toggle.querySelector('.n');
+      tn.hidden = sel.size === 0;
+      tn.textContent = sel.size;
+    }
+    rail.addEventListener('change', function(e){ if (e.target.matches('.dir-check input')) apply(); });
+    reset.addEventListener('click', function(){ rail.querySelectorAll('.dir-check input:checked').forEach(function(i){ i.checked = false; }); apply(); });
+  })();
+
+  /* ---------- Condition result ---------- */
+  function selectCondition(slug) {
+    const c = condBySlug[slug];
+    if (!c) return;
+    const sp = specById[c.sp];
+    const panel = document.getElementById('resultPanel');
+    const leafs = [
+      { tier:'Best leaflet', ...c.p },
+      ...((c.a || []).map(a => ({ tier:'Alternate', ...a }))),
+    ];
+    panel.innerHTML = `
+      <div class="result-head">
+        <div>
+          <div class="result-spec" style="color:${sp?sp.color:'var(--muted)'}">${sp ? sp.icon + ' · ' + escapeHtml(sp.name) : ''}</div>
+          <h2>${escapeHtml(c.n)}</h2>
+          ${c.syn && c.syn.length ? `<div class="result-syn">Also: ${c.syn.map(escapeHtml).join(' · ')}</div>` : ''}
+        </div>
+        <button class="result-close" type="button">Close</button>
+      </div>
+      ${leafs.map((l, i) => renderLeafletCard(l, i===0)).join('')}
+      ${c.t && c.t.length ? `<div class="translations"><b>Translations:</b> ${c.t.map(escapeHtml).join(' · ')}</div>` : ''}
+    `;
+    panel.style.display = '';
+    panel.querySelector('.result-close').addEventListener('click', closeResult);
+
+    // Wire copy buttons
+    panel.querySelectorAll('.lact-copy').forEach(btn => {
+      btn.addEventListener('click', () => copyLink(btn.dataset.url, btn));
+    });
+
+    panel.scrollIntoView({behavior:'smooth', block:'start'});
+
+    // Update hash for shareable URL
+    history.replaceState(null, '', '#' + slug);
+  }
+
+  function renderLeafletCard(l, isBest) {
+    const org = ORGS[l.o] || { name: l.o, short: l.o, tone: '#475569' };
+    return `
+      <div class="${isBest ? 'leaf-best' : 'leaf-card'}">
+        <div class="leaf-tier">${escapeHtml(l.tier)}${isBest?' · UK lead source for this topic':''}</div>
+        <div class="leaf-org"><span class="leaf-tone" style="background:${org.tone}"></span>${escapeHtml(org.name)}</div>
+        <div class="leaf-desc">${escapeHtml(l.d || '')}</div>
+        <div class="leaf-url">${escapeHtml(l.u)}</div>
+        <div class="leaf-actions">
+          <a class="lact primary" href="${escapeAttr(l.u)}" target="_blank" rel="noopener noreferrer">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Open in new tab
+          </a>
+          <button class="lact lact-copy" type="button" data-url="${escapeAttr(l.u)}">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy link
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  function closeResult() {
+    const panel = document.getElementById('resultPanel');
+    panel.style.display = 'none';
+    panel.innerHTML = '';
+    if (location.hash) history.replaceState(null, '', location.pathname);
+  }
+
+  function copyLink(url, btn) {
+    const ok = (text) => {
+      const orig = btn.innerHTML;
+      btn.innerHTML = `<span class="lact-confirm">✓ Copied</span>`;
+      setTimeout(() => btn.innerHTML = orig, 1500);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(ok).catch(()=> fallback());
+    } else fallback();
+    function fallback() {
+      const ta = document.createElement('textarea');
+      ta.value = url; document.body.appendChild(ta);
+      ta.select(); try { document.execCommand('copy'); ok(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+  }
+
+  /* ---------- Search / autocomplete ---------- */
+  const searchInput = document.getElementById('condSearch');
+  const searchResults = document.getElementById('searchResults');
+  const searchClear = document.getElementById('searchClear');
+  let focusedIdx = -1; let currentMatches = [];
+
+  function normalise(s) { return (s||'').toLowerCase().replace(/[^a-z0-9 ]/g, ' '); }
+
+  function search(q) {
+    const nq = normalise(q).trim();
+    if (!nq) return [];
+    const tokens = nq.split(/\s+/).filter(Boolean);
+    const scored = [];
+    CONDS.forEach(c => {
+      const hay = normalise(c.n + ' ' + (c.syn || []).join(' ') + ' ' + (specById[c.sp]||{}).name);
+      let score = 0;
+      let allHit = true;
+      tokens.forEach(t => {
+        if (hay.includes(t)) {
+          score += hay.indexOf(t) === 0 ? 5 : 1;
+          if (normalise(c.n).startsWith(t)) score += 8;
+        } else allHit = false;
+      });
+      if (allHit) scored.push({c, score});
+    });
+    scored.sort((a,b) => b.score - a.score || a.c.n.localeCompare(b.c.n));
+    return scored.slice(0, 12).map(x => x.c);
+  }
+
+  function highlight(text, q) {
+    const nq = normalise(q).trim();
+    if (!nq) return escapeHtml(text);
+    const tokens = nq.split(/\s+/).filter(Boolean);
+    let out = escapeHtml(text);
+    tokens.forEach(t => {
+      const re = new RegExp('('+ t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') +')', 'ig');
+      out = out.replace(re, '<mark>$1</mark>');
+    });
+    return out;
+  }
+
+  function renderSearchResults(q) {
+    currentMatches = search(q);
+    focusedIdx = -1;
+    if (!q.trim()) { searchResults.classList.remove('is-open'); return; }
+    if (!currentMatches.length) {
+      searchResults.innerHTML = `<div class="sr-empty">No condition matched “${escapeHtml(q)}”. Try a synonym, or browse by specialty below.</div>`;
+      searchResults.classList.add('is-open');
+      return;
+    }
+    searchResults.innerHTML = currentMatches.map((c, i) => {
+      const sp = specById[c.sp];
+      return `<div class="sr-item" data-slug="${c.s}" data-i="${i}" role="option">
+        <div class="sr-name">${highlight(c.n, q)}${c.syn && c.syn.length ? ` <span class="sr-spec">· ${escapeHtml(c.syn.slice(0,2).join(', '))}</span>` : ''}</div>
+        <div class="sr-spec" style="${sp?'color:'+sp.color:''}">${sp ? sp.icon + ' ' + escapeHtml(sp.name) : ''}</div>
+      </div>`;
+    }).join('');
+    searchResults.classList.add('is-open');
+    searchResults.querySelectorAll('.sr-item').forEach(el => {
+      el.addEventListener('mousedown', e => { e.preventDefault(); selectCondition(el.dataset.slug); searchInput.blur(); searchResults.classList.remove('is-open'); });
+    });
+  }
+
+  searchInput.addEventListener('input', e => {
+    const q = e.target.value;
+    searchClear.classList.toggle('is-hidden', !q);
+    renderSearchResults(q);
+  });
+  searchInput.addEventListener('focus', () => { if (searchInput.value.trim()) renderSearchResults(searchInput.value); });
+  document.addEventListener('click', e => {
+    if (!searchResults.contains(e.target) && e.target !== searchInput) searchResults.classList.remove('is-open');
+  });
+  searchClear.addEventListener('click', () => {
+    searchInput.value = ''; searchClear.classList.add('is-hidden');
+    searchResults.classList.remove('is-open');
+    searchInput.focus();
+  });
+
+  // Keyboard nav
+  searchInput.addEventListener('keydown', e => {
+    if (!searchResults.classList.contains('is-open')) return;
+    const items = searchResults.querySelectorAll('.sr-item');
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      focusedIdx = Math.min(items.length - 1, focusedIdx + 1);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      focusedIdx = Math.max(0, focusedIdx - 1);
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (focusedIdx >= 0 && currentMatches[focusedIdx]) selectCondition(currentMatches[focusedIdx].s);
+      else if (currentMatches[0]) selectCondition(currentMatches[0].s);
+      searchInput.blur(); searchResults.classList.remove('is-open');
+    } else if (e.key === 'Escape') {
+      searchResults.classList.remove('is-open');
+    }
+    items.forEach((it, i) => it.classList.toggle('is-focused', i === focusedIdx));
+  });
+
+  // Print
+  document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+  // Hash on load: pre-select a condition (allows case page deep-links)
+  function applyHash() {
+    const h = (location.hash || '').replace(/^#/, '').trim();
+    if (h && condBySlug[h]) selectCondition(h);
+  }
+  applyHash();
+  window.addEventListener('hashchange', applyHash);
+
+  // Utils
+  function escapeHtml(s) { return String(s||'').replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m])); }
+  function escapeAttr(s) { return escapeHtml(s).replace(/`/g, '&#96;'); }
+})();
+</script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

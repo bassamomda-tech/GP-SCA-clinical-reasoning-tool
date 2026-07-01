@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Axial Spondyloarthritis · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+</style>
+</head>
+<body class="mode-both" id="bodyEl">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="axial-spa"></aside>
+  <main class="main">
+<div class="case-head">
+  <div>
+    <div class="ch-cat">MSK · Full case</div>
+    <h1>Axial Spondyloarthritis</h1>
+  </div>
+  <div class="case-head-tags"><span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE NG65</span><span class="tag">CKS axSpA 2024</span><span class="tag">ASAS</span></div>
+</div>
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">X</div>
+      <div><div class="tb-title">Axial Spondyloarthritis · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE NG65 (2017/2023) · CKS axSpA 2024 · ASAS Criteria</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">&lt;45 years</span><span class="ns-lbl">Age of onset criterion — inflammatory back pain typically starts before 45</span></div>
+    <div class="ns-item"><span class="ns-val">&gt;30 min</span><span class="ns-lbl">Morning stiffness duration distinguishing inflammatory from mechanical back pain</span></div>
+    <div class="ns-item"><span class="ns-val">4/5</span><span class="ns-lbl">NICE NG65 referral criteria threshold — refer if 4 of 5 met in &lt;45 with chronic back pain</span></div>
+    <div class="ns-item"><span class="ns-val">HLA-B27</span><span class="ns-lbl">Positive in ~90% AS, ~75% nr-axSpA; 8% general population (not diagnostic alone)</span></div>
+    <div class="ns-item"><span class="ns-val">2 NSAIDs</span><span class="ns-lbl">Failure of two adequate NSAID trials required before biologic therapy</span></div>
+    <div class="ns-item"><span class="ns-val">MRI SIJ</span><span class="ns-lbl">First-line imaging — detects bone marrow oedema (active inflammation) before X-ray changes</span></div>
+    <div class="ns-item"><span class="ns-val">BASDAI ≥4</span><span class="ns-lbl">Bath AS Disease Activity Index — biologic eligibility threshold</span></div>
+    <div class="ns-item"><span class="ns-val">8.5 years</span><span class="ns-lbl">Average diagnostic delay in the UK — primary care recognition is critical to closing this gap</span></div>
+  </div>
+</div>
+
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Chronic Back Pain in a Young Adult</div>
+  <div class="stem-title">A 28-year-old with 2-year history of back pain worse in the mornings that improves with exercise</div>
+  <div class="stem-text">Priya Sharma, a 28-year-old physiotherapy assistant, attends with a 2-year history of low back pain and morning stiffness lasting 45–60 minutes. The pain is bilateral, centred on the sacroiliac region, and is worse after periods of rest — worse in the second half of the night, waking her at around 4am. It improves with exercise and NSAIDs but not with rest. She has had two episodes of painful red eye (anterior uveitis) in the past 3 years, managed by optometrists who told her it was "iritis." She has been told she has "mechanical back pain" at two previous GP appointments and has been referred for physiotherapy without improvement. Her HLA-B27 status is unknown. She is concerned about her ability to continue her physically demanding job.</div>
+  <div class="stem-note">This stem tests recognition of inflammatory back pain (IBP) in a young adult with the classic cluster: insidious onset before 45, morning stiffness &gt;30 min, improvement with exercise, nocturnal pain, extra-articular manifestations (uveitis), and failure of mechanical back pain management. The 8.5-year average diagnostic delay reflects exactly this consultation pattern — recurrent GP visits attributed to mechanical back pain. NICE NG65 requires referral to rheumatology when ≥4 of 5 IBP criteria are present.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — Classic Ankylosing Spondylitis with Radiographic Changes</strong> 35-year-old male, 10-year history of inflammatory back pain, chest expansion reduced, plain X-ray shows bilateral sacroiliitis (Grade 2–4) and early syndesmophytes. Established radiographic axSpA (ankylosing spondylitis). Anti-TNF now indicated if BASDAI ≥4 and two NSAIDs failed. Monitor pulmonary function, cardiovascular risk, and uveitis.</div>
+    <div class="stem-variant"><strong>Scenario B — Non-Radiographic axSpA</strong> 26-year-old female, 18-month history IBP, MRI SIJ shows bone marrow oedema, plain X-ray normal. Non-radiographic axSpA (nr-axSpA). Same referral pathway and biologic eligibility as radiographic axSpA. NSAIDs first-line; physiotherapy; rheumatology follow-up.</div>
+    <div class="stem-variant"><strong>Scenario C — axSpA with Acute Anterior Uveitis</strong> 32-year-old male with known AS presenting with acute painful red eye. Acute anterior uveitis (iritis) — the most common extra-articular manifestation. Urgent ophthalmology same day. Topical steroids + mydriatics. Review AS disease activity (uveitis flares track with spinal disease activity in some patients).</div>
+    <div class="stem-variant"><strong>Scenario D — axSpA in Pregnancy</strong> 29-year-old with axSpA, 10 weeks pregnant. NSAIDs must be stopped (avoid in pregnancy, particularly third trimester). Continue physiotherapy. Anti-TNF biologics: can be used in first/second trimester with specialist guidance (certolizumab pegol preferred — no placental transfer). Sulfasalazine safe in pregnancy. Discuss planned NSAID gap in advance of conception.</div>
+    <div class="stem-variant"><strong>Scenario E — Peripheral SpA Overlap</strong> 30-year-old with psoriasis, asymmetric oligoarthritis of knees and ankles, enthesitis (Achilles), and inflammatory back pain. Psoriatic arthritis with axial involvement. HLA-B27 less predictive in psoriatic arthritis. Rheumatology referral; NSAIDs; methotrexate for peripheral joints; anti-TNF if refractory.</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Sex (AS 3:1 male predominance; nr-axSpA more equal), extra-articular manifestations (uveitis, psoriasis, IBD), presence of radiographic sacroiliitis vs MRI-only changes, BASDAI score, NSAIDs tried (two required before biologics), family history of AS/SpA, and pregnancy status.</div>
+  </div>
+</div>
+
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+<!-- ═══ STEP 1 ═══ -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History Taking — Open Question First · IBP Criteria · Extra-Articular Features · ICE · Psychosocial</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Axial spondyloarthritis has an average diagnostic delay of 8.5 years in the UK — because it looks like mechanical back pain.</strong> The history is the diagnostic tool. The 5 NICE NG65 inflammatory back pain (IBP) criteria can be asked in under 2 minutes. When ≥4 are met in a patient under 45 with chronic back pain, the diagnosis of axSpA is probable and rheumatology referral is required. Extra-articular manifestations — uveitis, psoriasis, IBD — are often not connected by patients (or their GPs) to the back pain, and must be specifically screened for. Eliciting these connections is the most important diagnostic act the GP can perform in this consultation.</div>
+
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 Consultation opener — two questions that change everything</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"Can you tell me about the back pain — particularly in the mornings? Does it take more than 30 minutes to loosen up? And does exercise help or make it worse?" These two questions — morning stiffness &gt;30 min, improvement with exercise — have the highest discriminating power between inflammatory and mechanical back pain. If both are positive, the pre-test probability of axSpA is substantially elevated before any examination or investigation.</div>
+    </div>
+
+    <div class="sub-divider">1A — Start with an open question, then screen IBP criteria</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question to ask</th><th style="width:42%">Why it matters clinically</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"Can you tell me about this back pain — when it started, where it is, and what makes it better or worse?"</em></td>
+            <td class="why"><strong>The spontaneous narrative reveals the hallmark features of inflammatory back pain without leading.</strong> Patients with axSpA typically describe: waking in the second half of the night, needing to get up and move, stiffness that takes 30–60 min to ease, genuine improvement with exercise, and worsening with prolonged sitting/rest. These features emerge naturally if the patient is allowed to narrate without closed questions.<span class="why-sub">The mechanical back pain narrative is the opposite: worse with movement, better with rest, aggravated by specific activities, associated with a precipitating event. The contrast is striking when both patterns are familiar — the diagnostic value is in listening, not interrogating.</span></td>
+            <td><span class="chg chg-ddx">Inflammatory vs mechanical vs mixed</span><span class="chg chg-ref">NICE NG65 referral criteria met?</span></td>
+          </tr>
+          <tr><td class="q">IBP Criterion 1: Age of onset<em>"How old were you when the back pain started? And it's been going on for more than 3 months?"</em></td><td class="why">NICE NG65 inflammatory back pain criteria require: onset before age 45 and duration &gt;3 months. These two eligibility criteria must be met before applying the 5 IBP criteria. <strong>85% of patients with axSpA develop symptoms before age 35.</strong> Onset in adolescence is not rare — juvenile SpA is a recognised variant. Onset after 45 should prompt alternative diagnoses (OA, degenerative disc disease, malignancy).<span class="why-sub">The 8.5-year average diagnostic delay often involves patients who presented at age 20–25 and were not diagnosed until their late 20s or early 30s. Every GP consultation with a young adult with chronic back pain is an opportunity to screen for axSpA.</span></td><td><span class="chg chg-ddx">Onset &lt;45 = IBP screen required</span><span class="chg chg-ref">Eligibility for NICE NG65 referral pathway</span></td></tr>
+          <tr><td class="q">IBP Criterion 2: Improvement with exercise<em>"Does movement or exercise make the back pain better — even walking, stretching, yoga? Does it improve during the day as you get more active?"</em></td><td class="why">Improvement with exercise (not rest) is the most specific feature distinguishing inflammatory from mechanical back pain. <strong>In mechanical back pain, exercise typically worsens pain acutely. In inflammatory back pain, exercise genuinely reduces stiffness and pain.</strong> This is because the underlying pathology — synovial/entheseal inflammation at the sacroiliac joints and spinal facets — responds to movement-mediated reduction of inflammatory mediators. The therapeutic implication is important: physiotherapy and exercise are first-line treatments.<span class="why-sub">The patient may not have noticed this pattern explicitly — they may say "I feel worse in the morning and better by midday." Prompt with: "by the time you've been active for an hour, does the back feel easier?" to elicit this feature reliably.</span></td><td><span class="chg chg-ddx">Improvement with exercise: IBP criterion 2 met</span><span class="chg chg-rx">Exercise is first-line treatment in axSpA</span></td></tr>
+          <tr><td class="q">IBP Criterion 3: No improvement with rest<em>"Does resting — sitting still, lying down — give you relief? Or does the pain actually worsen when you're still for a long time?"</em></td><td class="why">Worsening with rest is the complementary feature to improvement with exercise. Prolonged sitting — at a desk, on a plane, watching television — is specifically reported as worsening IBP. This is in direct contrast to mechanical back pain where rest typically reduces pain. <strong>The patient who reports that their back hurts more after a long car journey than after a gym session has a clinically characteristic IBP pattern.</strong><span class="why-sub">The "cinema sign": patients with axSpA report needing to change position frequently in seats, wriggling throughout films, and often needing to stand during long meetings. This is a high-specificity feature that patients may not connect to their back condition.</span></td><td><span class="chg chg-ddx">No improvement with rest: IBP criterion 3 met</span></td></tr>
+          <tr><td class="q">IBP Criterion 4: Insidious onset<em>"Did the pain come on gradually over weeks or months — or was there a specific event or injury that started it?"</em></td><td class="why">Insidious onset over weeks to months without a precipitating event distinguishes inflammatory from traumatic or mechanical back pain. Patients with axSpA often cannot identify a specific onset event — "it just gradually built up." Some patients retrospectively identify very early symptoms (mid-thoracic discomfort, buttock pain alternating sides) that they attributed to sports or overuse before the full IBP pattern established itself.<span class="why-sub">A mechanical back pain trigger (lifting, twisting) can trigger a first acute presentation of previously silent axSpA — the mechanical event "wakes up" subclinical sacroiliac inflammation. This is a common reason for delayed diagnosis: the patient and GP focus on the mechanical precipitant and miss the inflammatory substrate.</span></td><td><span class="chg chg-ddx">Insidious onset: IBP criterion 4 met</span></td></tr>
+          <tr><td class="q">IBP Criterion 5: Nocturnal pain waking from sleep<em>"Does the back pain wake you at night? What time — early morning around 3–5am? Do you need to get up and move around?"</em></td><td class="why"><strong>Waking in the second half of the night (2–5am) with back pain that improves after getting up and moving is highly specific for inflammatory back pain.</strong> The mechanism is the natural diurnal variation in cortisol — at its nadir in the early morning, the anti-inflammatory suppression of sacroiliac joint inflammation is at its weakest. Patients typically describe: "I wake up at 4am unable to get comfortable, and I have to get up and walk around for 20 minutes before I can go back to sleep." This feature is rarely present in mechanical back pain.<span class="why-sub">Night pain in the FIRST half of the night (lying down causes pain) is more associated with mechanical disc disease or deformity. Night pain in the SECOND half (waking from sleep due to stiffness/pain) is the IBP pattern. This distinction is underutilised in primary care.</span></td><td><span class="chg chg-ddx">Nocturnal pain second half: IBP criterion 5 met</span></td></tr>
+          <tr><td class="q">Extra-articular manifestations — the SpA family<em>"Have you ever had a painful red eye — 'iritis' or 'uveitis'? Any skin rash — psoriasis? Any inflammatory bowel symptoms — diarrhoea, blood in stool, colitis? Any joint swelling outside the back?"</em></td><td class="why"><strong>Extra-articular manifestations are the most important IBP features that patients do not connect to their back pain.</strong> The three hallmarks: (1) <strong>Acute anterior uveitis</strong> (iritis) — unilateral, painful, photophobic, recurrent — present in 25–40% of axSpA patients; (2) <strong>Psoriasis</strong> — skin or nail psoriasis; (3) <strong>Inflammatory bowel disease</strong> (Crohn's or UC) — present in ~10% of axSpA. These are not coincidental — they share genetic (HLA-B27, IL-23/17 axis) and immunological pathways with axSpA. Uveitis treated in isolation by optometrists without connecting to the back pain is a classic diagnostic delay pattern.<span class="why-sub">The SpA family: axSpA, psoriatic arthritis, reactive arthritis (Reiter's), IBD-associated arthritis, and undifferentiated SpA all share the HLA-B27 axis and IBP features. A patient with recurrent uveitis and back pain almost certainly has axSpA until proven otherwise.</span></td><td><span class="chg chg-ddx">Extra-articular features: near-diagnostic for SpA</span><span class="chg chg-ref">Acute uveitis: urgent ophthalmology same day</span></td></tr>
+          <tr><td class="q">Family history<em>"Does anyone in your family have a similar back condition, ankylosing spondylitis, psoriasis, inflammatory bowel disease, or recurrent eye problems?"</em></td><td class="why">AxSpA has a strong genetic component — concordance in identical twins is ~65–75%. First-degree relatives of patients with AS have a 10–20× relative risk. Family history of psoriasis, IBD, or uveitis in a patient with IBP substantially raises the pre-test probability of axSpA. HLA-B27 is inherited co-dominantly — if the proband is positive, first-degree relatives have a 50% chance of carrying the gene.<span class="why-sub">Family history also aids patient understanding — "this condition runs in families and has a genetic basis" is more reassuring than "we don't know why your back hurts." It counters attribution to posture or weakness.</span></td><td><span class="chg chg-ddx">Family history of SpA/IBD/psoriasis/uveitis: supports axSpA</span><span class="chg chg-inv">HLA-B27 testing more informative in IBD family context</span></td></tr>
+          <tr><td class="q">NSAID response — diagnostic and therapeutic<em>"Have you tried anti-inflammatory tablets — ibuprofen, naproxen, diclofenac? If so, how much did they help — dramatically, moderately, or very little?"</em></td><td class="why"><strong>Dramatic response to NSAIDs — within 24–48 hours of the first dose — is a specific diagnostic feature of axSpA.</strong> The Calin criteria include rapid dramatic NSAID response as a diagnostic criterion. In mechanical back pain, NSAIDs provide moderate analgesic effect; in axSpA, the anti-inflammatory effect specifically targets the sacroiliac joint and spinal inflammation, producing a qualitatively different response. A patient who reports "the ibuprofen is the only thing that helps — dramatically" is giving you a diagnostic clue.<span class="why-sub">Therapeutic implication: continuous (not PRN) NSAID use has disease-modifying properties in axSpA — there is evidence that continuous NSAID use reduces radiographic progression. This is the opposite of the advice for mechanical back pain (shortest duration). Document NSAID response clearly — it informs the biologic eligibility assessment (two NSAIDs must be tried and failed at adequate doses for ≥4 weeks each).</span></td><td><span class="chg chg-ddx">Dramatic NSAID response: diagnostic feature of axSpA</span><span class="chg chg-rx">Continuous NSAIDs: may reduce radiographic progression</span><span class="chg chg-ref">Two adequate NSAID trials documented for biologic eligibility</span></td></tr>
+          <tr><td class="q">Impact on daily function and work<em>"How much is this affecting your ability to do your job and daily activities? What can't you do now that you used to be able to do?"</em></td><td class="why">AxSpA causes significant and progressive functional limitation if undiagnosed and untreated. As a physiotherapy assistant, Priya's job involves significant physical activity — manual handling, demonstrations, patient transfers. Progressive spinal stiffness from untreated axSpA will progressively impair these. BASFI (Bath AS Functional Index) and MIDAS (adapted) quantify functional limitation. Documenting function provides the baseline for assessing treatment response.</td><td><span class="chg chg-ps">Occupational impact; functional limitation</span><span class="chg chg-rx">BASFI score for baseline; physiotherapy referral</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-divider">1B — Red flags: must not miss · must ask · must act</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — serious mimics of inflammatory back pain</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Acute anterior uveitis with sudden unilateral eye pain, photophobia, blurred vision, and red eye</td><td class="rf-why">Acute anterior uveitis can cause permanent visual loss if not treated within 24–48 hours with topical corticosteroids and mydriatics. This is not a same-week ophthalmology referral — it is a same-day emergency. The GP must recognise uveitis and refer urgently, not manage as conjunctivitis.</td><td><span class="rf-action rfa-same">Urgent ophthalmology same day — not GP management</span></td></tr>
+          <tr><td class="rf-flag">Progressive back pain + weight loss + age &gt;50 or cancer history</td><td class="rf-why">Malignant spinal cord compression from metastatic disease mimics IBP — particularly myeloma (which occurs in younger adults) and lymphoma. Night pain + progressive course + systemic features = malignancy until proven otherwise. Do not attribute to axSpA without cancer exclusion.</td><td><span class="rf-action rfa-same">Urgent whole-spine MRI + ESR/CRP/FBC/plasma electrophoresis</span></td></tr>
+          <tr><td class="rf-flag">Fever + localised spine tenderness + raised inflammatory markers + IVDU or recent immunosuppression</td><td class="rf-why">Vertebral osteomyelitis / discitis / epidural abscess. These may present with back pain indistinguishable from IBP clinically. Blood cultures + MRI spine with gadolinium + urgent surgical/ID input. Mismanagement with NSAIDs alone can allow untreated infection to progress to epidural abscess with irreversible neurological deficit.</td><td><span class="rf-action rfa-999">Emergency MRI + blood cultures + IV antibiotics</span></td></tr>
+          <tr><td class="rf-flag">New neurological signs in established axSpA — bilateral leg weakness, bladder symptoms</td><td class="rf-why">Cauda equina syndrome from a large central disc herniation can occur in patients with pre-existing axSpA. More importantly, atlantoaxial subluxation (C1/C2 instability) occurs in advanced AS from ligamentous laxity — can cause myelopathy or sudden death with neck trauma. Any new neurological symptoms in a patient with axSpA must be investigated urgently.</td><td><span class="rf-action rfa-same">Urgent MRI (whole spine including cervical) + rheumatology/neurosurgery</span></td></tr>
+          <tr><td class="rf-flag">Fracture in axSpA — after even minor trauma, sudden severe pain</td><td class="rf-why">The ankylosed ("bamboo") spine in advanced AS is paradoxically at very high fracture risk — it behaves like a long bone and fractures transversely with relatively minor trauma. Fractures in this context are highly unstable and associated with severe neurological injury. Fracture of an ankylosed spine = emergency — do not move patient unnecessarily; C-collar if cervical; immediate imaging.</td><td><span class="rf-action rfa-999">Emergency CT/MRI spine + spinal surgery</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sg-wrap">
+      <div class="sg-hdr"><span style="font-size:1.1rem">🛡️</span><h3>Safeguarding Considerations</h3></div>
+      <div class="sg-body">
+        <div class="sg-grid">
+          <div class="sg-card"><h5>💊 Long-term NSAID Prescribing</h5><ul><li>Continuous NSAID use (standard for axSpA management) carries significant GI, cardiovascular, and renal risks — mandatory GI protection (PPI) and annual BP/eGFR monitoring</li><li>NSAIDs must be stopped in pregnancy — discuss this explicitly with women of childbearing age at every prescription review</li><li>NSAIDs interact with antihypertensives (reduced BP control), anticoagulants (bleeding risk), and SSRIs (GI bleeding risk)</li></ul></div>
+          <div class="sg-card"><h5>🧬 Biologic Safety — Anti-TNF Monitoring</h5><ul><li>Anti-TNF biologics (adalimumab, etanercept, certolizumab) carry risk of serious infection, reactivation of latent TB, and demyelination — TB screen (IGRA/Mantoux) mandatory before initiation</li><li>Patients on anti-TNF agents should not receive live vaccines — check vaccination status before starting biologics; offer influenza and pneumococcal vaccines before initiation</li><li>Anti-TNF-associated lymphoma risk: inform patients and document in notes</li></ul></div>
+          <div class="sg-card"><h5>🤰 Reproductive Health</h5><ul><li>AxSpA predominantly affects women and men in their reproductive years. Family planning must be discussed at every consultation with women of childbearing age</li><li>NSAIDs: avoid in first trimester (teratogenicity risk) and absolutely contraindicated in third trimester (premature closure of ductus arteriosus)</li><li>Certolizumab pegol: the preferred anti-TNF in pregnancy as it does not cross the placenta (no Fc region). All other anti-TNFs: specialist guidance required during pregnancy and breastfeeding</li></ul></div>
+          <div class="sg-card"><h5>🚗 Driving and Neck Safety</h5><ul><li>Severe cervical ankylosis in advanced AS severely limits rotation — significantly impairs driving safety. Ophthalmology driving assessment if cervical involvement. DVLA notification if significant restriction</li><li>Cervical spine instability (atlantoaxial subluxation): patients must be warned about high-velocity trauma risk (car accidents, contact sports, manipulation by non-specialists)</li><li>Advise patients with cervical AS against chiropractic cervical manipulation — risk of catastrophic neurological injury</li></ul></div>
+        </div>
+        <div class="sg-action"><strong>If a safeguarding concern is identified:</strong> Pregnancy with NSAIDs → immediate NSAID review; involve rheumatology for biologic bridging. Anti-TNF before TB screen → do not initiate; arrange IGRA first. Cervical involvement → DVLA assessment; warn against neck manipulation.</div>
+      </div>
+    </div>
+
+    <div class="sub-divider">1C — PMH · Drug history · Social history</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🧬 PMH / FH — changes management</div>
+        <table class="it">
+          <thead><tr><th>Factor</th><th>Why it matters</th><th>Management impact</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Previous or current uveitis (iritis)</td><td>The most common extra-articular manifestation of axSpA — present in 25–40%. A history of recurrent iritis in a young adult with back pain is near-diagnostic for axSpA. Uveitis may precede back pain by years.</td><td class="impact">Connects uveitis to SpA diagnosis. Ophthalmology in IBP referral letter. Uveitis frequency may decrease with anti-TNF treatment. Certolizumab: may be less effective for uveitis compared with other anti-TNFs (monoclonal antibodies preferred for uveitis).</td></tr>
+            <tr><td class="factor">Psoriasis (skin or nail)</td><td>Psoriasis is present in 10–25% of axSpA patients. The overlap with psoriatic arthritis requires rheumatological distinction. Nail psoriasis (pitting, onycholysis) is a marker of psoriatic arthritis specifically.</td><td class="impact">Psoriatic axSpA: overlapping management with PSA. Dermatology + rheumatology co-management. Anti-IL-17 (secukinumab) may be preferred over anti-TNF in psoriatic axSpA given dual skin and joint benefit.</td></tr>
+            <tr><td class="factor">Inflammatory bowel disease (Crohn's/UC)</td><td>IBD present in ~10% axSpA. IBD and axSpA share genetic pathways (IL-23/17 axis). IBD complicates biologic choice: etanercept (most widely used anti-TNF) is NOT effective for IBD — use infliximab or adalimumab.</td><td class="impact">IBD-associated axSpA: avoid etanercept (no IBD efficacy). Use infliximab or adalimumab (effective for both IBD and axSpA). Gastroenterology + rheumatology co-management. IBD activity tracked separately from axSpA activity.</td></tr>
+            <tr><td class="factor">Cardiovascular risk factors</td><td>AxSpA carries a significantly increased cardiovascular risk — inflammatory state drives premature atherosclerosis. CVD risk in AS is comparable to RA (which is now established as a high CVD risk condition).</td><td class="impact">Annual BP, lipid profile, and glucose. Framingham risk calculation (use ×1.5 multiplier as per NICE RA guidance, applicable to inflammatory arthritis broadly). Statin if indicated. Smoking cessation urgently — amplified CV risk in axSpA.</td></tr>
+            <tr><td class="factor">Osteoporosis risk</td><td>Chronic inflammation, reduced mobility, and steroid use (less common in axSpA than RA but relevant) all reduce bone density. Paradoxically, X-rays in advanced AS show bone formation (syndesmophytes) while DXA reveals osteoporosis — chronic inflammation causes both simultaneously.</td><td class="impact">DEXA scan in established axSpA. Bisphosphonate if osteoporotic. Calcium + Vitamin D supplementation. Exercise (weight-bearing) has protective effect on bone density — another reason to maintain active lifestyle.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">💊 Drug history · Social history</div>
+        <table class="it">
+          <thead><tr><th>Factor</th><th>Why it matters</th><th>Management impact</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">NSAID trial history (which ones, doses, duration)</td><td>Biologic eligibility requires documented failure of two NSAIDs at adequate doses (naproxen 500–1000mg/day, or equivalent) for ≥4 weeks each. Sub-therapeutic dosing or short trials do not count. Document everything.</td><td class="impact">If first NSAID not tried at adequate dose → optimise first. If two have genuinely failed → rheumatology referral with documentation is essential for biologic funding (NICE TA criteria).</td></tr>
+            <tr><td class="factor">Previous physiotherapy</td><td>Physiotherapy is first-line treatment in axSpA — but generic back physiotherapy (passive treatment, lumbar stabilisation) is less effective than SpA-specific physiotherapy (hydrotherapy, spinal mobility exercises, chest expansion). Priya's lack of benefit from physiotherapy may reflect generic referral rather than targeted SpA programme.</td><td class="impact">In the referral letter to rheumatology, document physiotherapy response. After diagnosis: refer specifically for inflammatory arthritis physiotherapy programme or hydrotherapy. NASS (National Axial Spondyloarthritis Society) provides exercise programmes.</td></tr>
+            <tr><td class="factor">Occupation — physical demands</td><td>AxSpA affects people at the peak of their working life. Physical occupations are at risk of accelerated disability if diagnosis and treatment are delayed. Physiotherapy assistants, nurses, and construction workers with untreated axSpA face significant occupational limitation.</td><td class="impact">Occupational health referral after diagnosis. Early treatment reduces long-term disability risk. Modified duties during flares. Document occupational demands for DVLA, sick note, and disability benefit context if needed.</td></tr>
+            <tr><td class="factor">Smoking</td><td>Smoking is a significant modifiable risk factor for axSpA progression — associated with worse radiographic progression, reduced biologic response, and amplified cardiovascular risk.</td><td class="impact">Smoking cessation urgent: offers SMSC referral + NRT + varenicline. Document. Smoking status affects biologic funding in some NICE TA assessments.</td></tr>
+            <tr><td class="factor">Reproductive intent / contraception</td><td>NSAID and biologic prescribing both require reproductive status assessment. Disease activity often improves in pregnancy (second and third trimesters). NSAIDs must be stopped; biologic choice changes.</td><td class="impact">Ask reproductive plans at every review in women of reproductive age. Certolizumab pegol (no placental transfer) is the preferred anti-TNF if conception is planned. NSAIDs: stop before conception planning or at first positive pregnancy test.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-divider">1D — ICE: Ideas · Concerns · Expectations</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">💡 Why ICE matters in axSpA — the long journey to diagnosis</div>
+      <p>Priya has attended multiple GP appointments over 2 years and been told she has "mechanical back pain." She may have received incorrect reassurance ("nothing serious — just posture"), incorrect advice (rest, core exercises for a condition that responds to exercise), and incorrect analgesics (paracetamol instead of NSAIDs, which have specific anti-inflammatory benefit in axSpA). The ICE conversation in this consultation is not just rapport-building — it is restoring trust after a diagnostic delay and reframing years of unhelpful management. The patient who finally hears "I think what you have is an inflammatory condition, not mechanical back pain" is experiencing an explanatory breakthrough — that moment must be handled carefully.</p>
+    </div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What do you think has been causing your back pain — do you have a theory about why it's not improving with the advice you've been given?"</div><div class="ice-why">Patients who have been told "mechanical back pain" for years may have complex explanatory models — poor posture, weak core, disc problems, overexertion at work. These models actively prevent them from taking NSAIDs regularly (they see it as "just for pain"), exercising through stiffness (they've been told rest), or believing a diagnosis of inflammatory condition. Correcting the model is the most important therapeutic act of this consultation.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 Concerns</div><div class="ice-phrase">"What's your biggest worry about the back pain? Are you concerned it will get worse, affect your job long-term, or is there something specific that's been frightening you?"</div><div class="ice-why">Two dominant concerns in axSpA patients: (1) "Will I end up in a wheelchair?" — the image of the stooped, wheelchair-bound patient with advanced AS is culturally available and terrifying. Accurate prognostic information (most treated patients do not develop severe deformity) is reassuring. (2) "I've been told it's nothing serious — am I making this up?" — years of normal investigations and non-diagnostic appointments can create iatrogenic self-doubt. Validation is essential.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"What were you hoping we'd do differently today — a referral, different medication, or just an explanation of what's happening?"</div><div class="ice-why">Many patients with undiagnosed axSpA are primarily seeking understanding — an explanation that makes sense of their symptoms. A referral to rheumatology, with a clear explanation of why ("I think this is an inflammatory condition that a specialist can confirm and treat"), meets the expectation for action AND the need for explanation. The patient who has been told "nothing to find" for years and then receives a targeted rheumatology referral based on specific criteria will often report this as one of the most validating moments of their healthcare experience.</div></div>
+    </div>
+
+    <div class="sub-divider">1E — Psychosocial context</div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>⏳ Diagnostic Delay and Iatrogenic Harm</h5><p>The 8.5-year average diagnostic delay in axSpA is not a neutral period — it is a period of progressive unrecognised inflammation, potential irreversible radiographic damage, inadequate pain management, loss of productivity, and compounding self-doubt. Patients who have been dismissed or given incorrect management for years carry significant psychological burden alongside their physical symptoms.</p><span class="ps-phrase">"I want to acknowledge something: based on what you're describing, I think this is an inflammatory condition of the spine that responds to specific treatments — and I'm concerned that the management you've received until now hasn't been targeted for this. I'm going to refer you to a rheumatologist who specialises in this."</span></div>
+      <div class="ps-card"><h5>💼 Occupational Impact and Career Concern</h5><p>AxSpA predominantly affects people in their 20s and 30s — at the start of their careers. Physiotherapy, nursing, teaching, construction — physically demanding occupations are at highest risk of functional limitation. The fear of progressive disability that prevents career continuation is often the dominant motivating concern for seeking diagnosis.</p><span class="ps-phrase">"Your job as a physiotherapy assistant is physically demanding, and I understand why this is about more than just pain — it's about being able to work long-term. The good news is that with the right treatment, the majority of people with inflammatory back pain continue to work and stay active."</span></div>
+      <div class="ps-card"><h5>🔴 Uveitis — the Missed Connection</h5><p>Recurrent uveitis managed in isolation — by optometrists or A&amp;E — without connecting to the back pain is one of the most common patterns of delayed diagnosis. Priya's two previous episodes of "iritis" are the strongest diagnostic signal in this consultation, and their connection to the back pain is the key diagnostic act. "Your eye problems and your back pain are almost certainly the same condition" is a paradigm-shifting statement for most patients.</p><span class="ps-phrase">"I want to ask about your eye problems — the iritis. I believe those episodes and your back pain are connected. They're both caused by the same underlying inflammation, and they will both respond to the same treatment. This is something I should have been asked about earlier."</span></div>
+      <div class="ps-card"><h5>😔 Depression, Fatigue, and Fibromyalgia Overlap</h5><p>Chronic pain from undiagnosed axSpA causes depression and fatigue — both directly from the disease (inflammatory cytokines directly affect mood) and indirectly from years of inadequate management and self-doubt. Central sensitisation and fibromyalgia frequently co-occur with axSpA and may reduce the response to anti-TNF therapy if not addressed simultaneously. PHQ-9 at diagnosis and every review.</p><span class="ps-phrase">"How has your mood been through all of this? Two years of unexplained pain that isn't responding to what you've been given is genuinely exhausting and demoralising. I want to make sure we're looking after that as part of the overall plan."</span></div>
+      <div class="ps-card"><h5>🤰 Reproductive Planning</h5><p>AxSpA is diagnosed most commonly in women and men aged 20–35 — precisely the period of reproductive planning. NSAIDs must be stopped before conception and during pregnancy. Biologic choice is affected by pregnancy. This conversation must happen proactively, not reactively (not after the patient discovers they are pregnant while on NSAIDs).</p><span class="ps-phrase">"Before I talk about the medication: are you planning a pregnancy in the near future? The reason I ask is that some of the most effective medications for this condition need to be adjusted during pregnancy, and I want to plan ahead with you rather than having to change your treatment unexpectedly."</span></div>
+      <div class="ps-card"><h5>🏋️ Exercise, Swimming, and the SpA Mindset</h5><p>In contrast to most musculoskeletal conditions, patients with axSpA should be strongly encouraged to exercise — and specifically to understand that exercise is a treatment, not a risk. Swimming, cycling, yoga, Pilates, and NASS-approved exercise programmes are specifically beneficial. The sedentary response to pain that is often advised for mechanical conditions is actively harmful in axSpA.</p><span class="ps-phrase">"Here is the most important lifestyle message for your condition: exercise is your best treatment. Swimming, cycling, yoga — these are not just good for general health, they are specifically anti-inflammatory for your spine. The NASS website has tailored programmes designed for people with exactly your condition."</span></div>
+    </div>
+
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div><div class="sca-phrase">"Your morning stiffness, the fact that exercise helps rather than hurts, the waking in the night, and particularly those episodes of iritis — when I put all of those together, this looks very much like an inflammatory condition of the spine rather than mechanical back pain."</div><div class="sca-phrase">"I believe your eye problems and your back pain are connected — they're both caused by the same underlying inflammatory process."</div><div class="sca-phrase">"I'm going to refer you to a rheumatologist — a joint specialist — because this type of condition responds to specific treatments that I can start, but which need specialist oversight."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Treating again as mechanical back pain without screening IBP criteria</li><li>Not asking about uveitis, psoriasis, and IBD — the extra-articular features that confirm SpA</li><li>Not making the connection between uveitis and back pain explicitly</li><li>Ordering plain X-ray as first-line imaging — MRI SIJ is the NICE NG65-recommended investigation</li><li>Not referring to rheumatology when ≥4/5 IBP criteria are met</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Managed as mechanical back pain again; no IBP criteria screen; uveitis not connected to back pain; plain X-ray only; no rheumatology referral; NSAIDs not optimised</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">IBP features identified but NICE NG65 referral criteria not explicitly counted; uveitis noted but not connected; MRI ordered without referral; NSAIDs started but NSAID documentation incomplete</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">≥4/5 IBP criteria identified and counted; uveitis–back pain connection made explicitly; MRI SIJ not plain X-ray; NICE NG65 rheumatology referral made; NSAIDs optimised and continuous use explained; uveitis ophthalmology if acute; diagnostic delay acknowledged; ICE all three</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ STEP 2 ═══ -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage Engine — Emergency · Urgent · Routine</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The triage decision in suspected axSpA has one emergency: acute anterior uveitis requiring same-day ophthalmology.</strong> Beyond this, the triage framework addresses how urgently the rheumatology referral should be sent (routine for stable inflammatory back pain; urgent for progressive neurological features in established axSpA) and what must happen at the GP level before the referral is actioned.</div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div>
+        <h3>Same-Day Action</h3>
+        <span class="tc-badge tcb-e">Do not manage in primary care alone</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Acute anterior uveitis (iritis)</strong><em>Unilateral painful red eye + photophobia + blurred vision — same-day ophthalmology; topical corticosteroids + mydriatics within 24h prevents permanent damage; do NOT manage as conjunctivitis</em></li>
+          <li class="tc-item"><strong>Fracture in ankylosed spine after trauma</strong><em>Emergency CT/MRI spine + spinal surgery; ankylosed spine fractures are highly unstable; immobilise before imaging</em></li>
+          <li class="tc-item"><strong>New neurological deficit in known axSpA</strong><em>Atlantoaxial subluxation causing myelopathy; or CES from acute disc herniation; emergency MRI + neurosurgery</em></li>
+          <li class="tc-item"><strong>Fever + severe back pain + raised CRP</strong><em>Discitis / epidural abscess — emergency MRI + blood cultures + IV antibiotics; ID/spinal surgery same day</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Urgent</div>
+        <h3>2–4 Weeks</h3>
+        <span class="tc-badge tcb-u">Rheumatology + imaging</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Suspected axSpA with ≥4/5 IBP criteria — first diagnosis</strong><em>NICE NG65: refer to rheumatology; arrange MRI SIJ before or concurrent with referral; start NSAID trial immediately</em></li>
+          <li class="tc-item"><strong>Disease activity breakthrough on current therapy</strong><em>BASDAI ≥4 despite optimised treatment — rheumatology urgent review for biologic eligibility assessment</em></li>
+          <li class="tc-item"><strong>Recurrent or severe uveitis — subacute</strong><em>Ophthalmology review within 1 week; review AS/SpA disease activity with rheumatology; consider biologic optimisation</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Routine</div>
+        <h3>GP + Rheumatology Follow-Up</h3>
+        <span class="tc-badge tcb-r">Ongoing shared care</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Established axSpA, well-controlled on NSAIDs</strong><em>Annual shared care review: BASDAI, BASFI, ESR/CRP, BP/lipids (CVD risk), DEXA, ophthalmology review, NSAID safety bloods</em></li>
+          <li class="tc-item"><strong>Monitoring patients on anti-TNF biologics</strong><em>Rheumatology-led biologic monitoring with GP shared care for cardiovascular risk, infection screening, and vaccination</em></li>
+          <li class="tc-item"><strong>Physiotherapy referral (SpA-specific)</strong><em>Hydrotherapy, spinal mobility, chest expansion — NASS-referred exercise programmes; ongoing throughout disease course</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Triage communication</div><div class="sca-phrase">"The episodes of iritis — if you ever get another one, that's a same-day ophthalmology appointment, not something to manage at home or wait to see. For your back, I'm referring you urgently to rheumatology — they're the specialists for inflammatory joint conditions. I'm also organising an MRI scan of your sacroiliac joints, which is the specific investigation for this condition."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not flagging uveitis as same-day emergency if currently active</li><li>Sending routine back pain referral instead of rheumatology referral per NICE NG65</li><li>Ordering plain X-ray instead of MRI SIJ for new suspected axSpA</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Uveitis not urgently triaged; physiotherapy alone without rheumatology referral; plain X-ray ordered; triage reasoning not explained</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Rheumatology referral correct but MRI SIJ not arranged; uveitis urgency not communicated; triage decision not explained to patient</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Uveitis same-day ophthalmology if active; rheumatology referral with NICE NG65 criteria documented; MRI SIJ arranged; NSAID started immediately; triage reasoning explained to patient</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ═══ STEP 3 ═══ -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Do I Need This Examination?</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The physical examination in axSpA is often normal in early disease</strong> — and a normal examination should not be used to dismiss the diagnosis. The most diagnostically valuable findings are sacroiliac joint provocation tests, reduced lumbar flexion (Schober's test), reduced chest expansion, and any restriction of neck or thoracic mobility. Peripheral joint tenderness, enthesitis (plantar fascia, Achilles, tibial tuberosity), and skin changes (psoriasis) round out the SpA-targeted examination.</div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:20%">Examination</th><th style="width:36%">Why it matters</th><th style="width:26%">What finding changes management</th><th>Changes?</th></tr></thead>
+        <tbody>
+          <tr><td class="q">Sacroiliac joint provocation tests (FABER/Patrick's test; direct sacral compression)</td><td class="why">FABER test (Flexion-ABduction-External Rotation): hip pain = hip OA; groin pain = hip OA; buttock/SI pain = sacroiliac joint pathology. Direct sacral compression (patient prone, pressure over sacrum): reproducing bilateral buttock pain supports sacroiliitis. <strong>Sensitivity of SI provocation tests for sacroiliitis is ~60–70% — a negative test does not exclude axSpA, but a positive test is strongly supportive.</strong> Importantly: SI tenderness is not present in mechanical back pain.</td><td class="why">Positive FABER with SI pain → sacroiliitis supported; MRI SIJ. Positive FABER with hip pain → hip OA; X-ray hip. Negative SI provocation → axSpA still possible (early disease, quiescent phase); proceed with MRI based on history alone.</td><td><span class="mcb mcb-yes">YES — distinguishes SI from hip pathology</span></td></tr>
+          <tr><td class="q">Schober's test (lumbar flexion)</td><td class="why">Marks 10cm above and 5cm below the lumbosacral junction; measures change with maximum forward flexion. Normal: ≥5cm increase. Restricted Schober's (≤4cm increase) indicates reduced lumbar mobility. In early axSpA, Schober's may be normal — restriction develops with progressive disease. In established AS, Schober's is often severely reduced. Reassuringly, normal Schober's does not exclude early axSpA.</td><td class="why">Schober's ≤4cm → significant lumbar restriction; accelerates rheumatology referral; documents baseline for monitoring. Normal Schober's → early disease; history-based IBP criteria still valid for referral.</td><td><span class="mcb mcb-context">Context — progressive restriction tracked serially</span></td></tr>
+          <tr><td class="q">Chest expansion</td><td class="why">Measured at the level of the 4th intercostal space in full expiration vs full inspiration. Normal: ≥5cm. Reduced chest expansion (&lt;2.5cm) indicates costovertebral joint involvement — a specific feature of advanced axSpA. Affects respiratory function. The BASMI (Bath AS Metrology Index) includes chest expansion. <strong>Normal chest expansion is very common in early disease and does not exclude diagnosis.</strong></td><td class="why">Chest expansion &lt;2.5cm → significant costovertebral involvement; pulmonary function tests; BASMI documentation; smoking cessation urgent (amplified respiratory risk). Normal expansion → early disease; monitor serially.</td><td><span class="mcb mcb-context">Context — established disease severity marker</span></td></tr>
+          <tr><td class="q">Peripheral joint assessment — swelling, warmth, effusion</td><td class="why">Peripheral arthritis occurs in 30–50% of axSpA patients — typically asymmetric oligoarthritis of large joints (knees, ankles, hips). Hip involvement is particularly important — it is associated with more severe disease and greater functional limitation. Dactylitis (sausage digit) is characteristic of psoriatic arthritis with axial involvement.</td><td class="why">Hip restriction → urgent MRI hip + rheumatology; hip involvement predicts worse prognosis. Active peripheral arthritis → NSAID intensification; rheumatology same urgency. Dactylitis → psoriatic arthritis with axial involvement; dermatolgy/rheumatology co-referral.</td><td><span class="mcb mcb-yes">YES — hip involvement changes prognosis and urgency</span></td></tr>
+          <tr><td class="q">Enthesitis assessment (Achilles, plantar fascia, tibial tuberosity, patella, epicondyles)</td><td class="why">Enthesitis (inflammation at tendon/ligament insertion points) is a hallmark of spondyloarthritis — not found in other inflammatory arthritides (RA, gout). The MASES (Maastricht AS Enthesitis Score) assesses 13 enthesitis sites. Plantar fasciitis and Achilles enthesitis in a young adult with inflammatory back pain is near-diagnostic for SpA. These can be the presenting feature.</td><td class="why">Enthesitis present → SpA strongly supported; specific physiotherapy (enthesitis stretching) + NSAIDs; anti-IL-17 (secukinumab) may have particular efficacy for enthesitis. No enthesitis → still consistent with axSpA (enthesitis not present in all).</td><td><span class="mcb mcb-yes">YES — enthesitis specific to SpA</span></td></tr>
+          <tr><td class="q">Skin assessment (psoriasis, nail changes)</td><td class="why">Psoriasis present in ~10–25% of axSpA. Nail pitting, onycholysis, and oil-drop changes are psoriatic arthritis markers specifically. <strong>Scalp, hairline, umbilicus, and natal cleft are sites patients frequently miss or do not consider to be psoriasis.</strong> Ask specifically — patients may have had "dandruff" or "eczema" that is actually psoriasis at the psoriatic plaque sites.</td><td class="why">Psoriasis confirmed → psoriatic axSpA pathway; dermatology co-referral; anti-IL-17 preferred over anti-TNF for skin involvement. Nail changes without skin psoriasis → psoriatic arthritis; rheumatology + dermatology. No skin involvement → axSpA without psoriatic overlap; standard pathway.</td><td><span class="mcb mcb-context">Context — psoriatic vs non-psoriatic axSpA pathway</span></td></tr>
+          <tr><td class="q">Cervical and thoracic spine mobility</td><td class="why">Cervical restriction in advanced axSpA is a significant safety risk — limited rotation impairs driving and vulnerable to fracture. Thoracic kyphosis (hyperkyphosis, "stooped posture") in advanced AS is a late feature of progressive disease. Occiput-to-wall distance measures neck flexion deformity. These are BASMI components used to track disease progression.</td><td class="why">Restricted cervical rotation → DVLA assessment; warn against cervical manipulation; MRI cervical spine for atlantoaxial subluxation. Significant thoracic kyphosis → referral to spinal physiotherapy; occupational health for work adaptation; BASMI score for baseline.</td><td><span class="mcb mcb-context">Context — advanced disease safety markers</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Examination with explanation</div><div class="sca-phrase">"I'm going to test the movement of your lower back, check whether you have tenderness over the sacroiliac joints at the back of your pelvis, and check your chest expansion. I'm also going to check for any tendon tenderness — in inflammatory conditions like this, the tendons can also be affected. A normal examination today doesn't mean the diagnosis is wrong — the MRI scan will be the key investigation."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Dismissing axSpA diagnosis because examination is normal (common in early disease)</li><li>Not checking chest expansion — missing a specific axSpA finding</li><li>Not checking enthesitis sites — missing a SpA-specific finding</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ STEP 4 ═══ -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Do I Need This Investigation?</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>NICE NG65: MRI of the sacroiliac joints is the preferred imaging for suspected axSpA.</strong> Plain X-ray is insensitive in early disease — radiographic sacroiliitis takes years to develop after the onset of active inflammation. HLA-B27 is a useful supporting test but is not diagnostic — it is positive in 8% of the general population. ESR and CRP may be normal in up to 40% of patients with active axSpA. The combination of IBP history + positive HLA-B27 + MRI evidence of sacroiliitis is sufficient for diagnosis — rheumatology confirms using ASAS classification criteria.</div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:20%">Investigation</th><th style="width:32%">Clinical question it answers</th><th>What result changes management?</th></tr></thead>
+        <tbody>
+          <tr><td class="q">MRI sacroiliac joints (NICE NG65 first-line)</td><td class="why"><strong>NICE NG65: MRI SIJ is the recommended imaging for suspected axSpA.</strong> Detects bone marrow oedema (active inflammation — bright on STIR/T2 fat-sat sequences) before structural damage occurs. Can diagnose both active sacroiliitis and structural changes (erosions, sclerosis, ankylosis). Much more sensitive than plain X-ray in early disease. <strong>A normal MRI SIJ does not exclude non-radiographic axSpA — some patients have IBP + positive HLA-B27 without MRI evidence (ASAS axial SpA classification allows this).</strong></td><td class="why">Bone marrow oedema at SIJ → active sacroiliitis confirmed; NICE NG65 referral pathway; start NSAIDs immediately. Structural changes only (no active inflammation) → established sacroiliitis; same pathway. Normal MRI → non-radiographic axSpA still possible if HLA-B27+ and IBP criteria met; rheumatology will confirm with full ASAS criteria. Unexpected alternative finding → adjust management accordingly.</td></tr>
+          <tr><td class="q">HLA-B27</td><td class="why">HLA-B27 positive in ~90% of ankylosing spondylitis, ~75% of non-radiographic axSpA, ~75% of reactive arthritis. Present in ~8% of the healthy general population. <strong>NOT diagnostic alone — 8% of HLA-B27 positive individuals develop axSpA.</strong> Most useful when: MRI is normal/equivocal but clinical suspicion is high; adds probability to clinical diagnosis; part of ASAS classification criteria. A negative HLA-B27 does not exclude axSpA (10% of AS patients are HLA-B27 negative).</td><td class="why">HLA-B27 positive + IBP + MRI sacroiliitis → axSpA highly probable. HLA-B27 positive + IBP + normal MRI → still meets ASAS imaging-negative pathway; rheumatology to confirm. HLA-B27 negative + strong IBP + MRI sacroiliitis → axSpA still diagnosable (MRI-positive pathway). HLA-B27 negative + normal MRI → alternative diagnoses more likely; review differential.</td></tr>
+          <tr><td class="q">ESR and CRP</td><td class="why">Inflammatory markers elevated in ~60% of active axSpA patients — but normal in 40%. Normal ESR/CRP does NOT exclude axSpA. However, elevated markers support the diagnosis, track disease activity, and are used in the BASDAI/ASDAS disease activity scoring. CRP is more sensitive than ESR in axSpA. Very high CRP + back pain → also consider infection (discitis, osteomyelitis) and malignancy.</td><td class="why">CRP elevated → supports active inflammation; accelerates MRI and rheumatology urgency. Normal CRP → does NOT exclude axSpA; proceed with MRI and clinical criteria. CRP &gt;100 + fever + spine tenderness → exclude infection before attributing to axSpA.</td></tr>
+          <tr><td class="q">Plain X-ray of pelvis/lumbar spine</td><td class="why"><strong>NOT first-line for suspected axSpA per NICE NG65 — insensitive in early disease.</strong> Radiographic sacroiliitis (Grade 2–4 bilateral or Grade 3–4 unilateral) takes years to develop. However, X-ray is useful for: detecting established structural changes (syndesmophytes, "bamboo spine") in later disease; ruling in ankylosing spondylitis when X-ray shows clear sacroiliitis (Grade 2–4). Chest X-ray: apical fibrosis in advanced AS (rare but specific).</td><td class="why">Grade 2–4 bilateral sacroiliitis on X-ray → radiographic axSpA (ankylosing spondylitis) confirmed; rheumatology referral. Normal X-ray in suspected axSpA → does NOT exclude — proceed to MRI SIJ. Syndesmophytes → advanced AS; rheumatology urgency; BASMI assessment; cardiovascular risk amplified.</td></tr>
+          <tr><td class="q">FBC, U&amp;E, LFTs, fasting glucose, lipid profile</td><td class="why">Baseline bloods before NSAID and biologic therapy. NSAIDs: BP, eGFR, LFTs. Anti-TNF: FBC (cytopaenias), LFTs (hepatitis). Cardiovascular risk assessment: fasting lipids, glucose. Anaemia of chronic inflammation is common in active axSpA. Eosinophilia may suggest parasitic infection (relevant before immunosuppression).</td><td class="why">eGFR &lt;30 → avoid NSAIDs. LFTs abnormal → adjust drug choice. Anaemia → investigate (iron deficiency vs chronic disease). Lipid abnormalities → statin for CVD risk. Normal bloods → NSAID and eventual biologic therapy safer to initiate.</td></tr>
+          <tr><td class="q">TB screening — IGRA/Mantoux (before biologic initiation)</td><td class="why">Anti-TNF biologics reactivate latent TB — a mandatory pre-biologic screen. Interferon-Gamma Release Assay (IGRA — QuantiFERON, T-SPOT) is preferred over Mantoux in patients who have been BCG-vaccinated (Mantoux false positives). If IGRA positive: isoniazid prophylaxis for 6 months before biologic initiation (rheumatology to oversee).</td><td class="why">IGRA positive → latent TB; isoniazid prophylaxis before biologic initiation; TB physician input. IGRA negative → biologic initiation safe from TB perspective. High-risk patient (recent TB contact, from high-prevalence country) → TB clinic review regardless of IGRA result.</td></tr>
+          <tr><td class="q">BASDAI questionnaire (completed before rheumatology referral)</td><td class="why">Bath AS Disease Activity Index: 6 questions, 0–10 cm VAS each, average score 0–10. BASDAI ≥4 despite NSAID therapy = significant disease activity = indication for biologic therapy (NICE TA criteria). <strong>GP can and should complete BASDAI before the rheumatology referral</strong> — it documents disease activity at the time of referral and demonstrates NSAID failure. This is the most important piece of objective documentation for biologic eligibility.</td><td class="why">BASDAI ≥4 on NSAIDs → biologic therapy indication; ensures rheumatology appointment proceeds to biologics, not just NSAID review. BASDAI &lt;4 → continue NSAID optimisation; monitor; rheumatology will reassess. Document BASDAI at every review.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Investigation rationale</div><div class="sca-phrase">"I'm going to organise an MRI scan of the sacroiliac joints — the joints at the back of your pelvis — and a blood test to check for HLA-B27, which is a gene associated with this type of condition, along with inflammatory markers. I want these done before your rheumatology appointment so the specialist has everything they need."</div><div class="sca-phrase">"I want to be clear — a normal MRI doesn't mean there's nothing wrong. The MRI may be normal in the early stages and the rheumatologist may still be able to make the diagnosis based on your symptoms and the blood tests."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Ordering plain X-ray instead of MRI SIJ — missing early sacroiliitis</li><li>Dismissing axSpA because MRI is normal — early disease can have normal imaging</li><li>Not completing BASDAI before referral — misses the disease activity documentation for biologic eligibility</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ STEP 5 ═══ -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Reaching a Diagnosis &amp; DDx — Explained in Plain Language</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The diagnosis of axSpA is made by the rheumatologist using ASAS classification criteria</strong> — but the GP's role is to suspect the diagnosis, apply NICE NG65 IBP referral criteria, and act before the referral by optimising NSAIDs and arranging imaging. Explaining the diagnosis in plain language transforms the patient's explanatory model from "I have a bad back that won't get better" to "I have an inflammatory condition that responds to specific treatment" — which directly improves medication adherence and rehabilitation engagement.</div>
+    <div class="lay-box">
+      <div class="lay-box-lbl">🗣️ Explaining axSpA in Plain Language</div>
+      <p>"Your back pain is not caused by a 'slipped disc' or by the way you hold yourself or your posture — it's caused by inflammation in the joints at the base of your spine, called the sacroiliac joints. Think of these joints as the anchors connecting your spine to your pelvis. In this condition, the immune system mistakenly attacks those joints — causing inflammation, stiffness, and pain that is classically worse after rest and better with movement. Over time, if the inflammation is not treated, those joints can gradually fuse together — which is where the old name 'ankylosing spondylitis' (ankylosing means fusing) comes from. The good news is that we have very effective treatments that control the inflammation and can prevent this progression in most people. The condition responds well to anti-inflammatory tablets, specific physiotherapy, and — if needed — to biologic injections that target the inflammation directly."</p>
+    </div>
+    <div class="g3" style="margin-bottom:12px">
+      <div class="card" style="padding:1rem;border-left:4px solid var(--g)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.4rem">A — AxSpA Spectrum (GP refers; rheumatologist diagnoses)</div>
+        <div style="font-size:12.5px;font-weight:600;margin:.4rem 0 .2rem">Radiographic axSpA (Ankylosing Spondylitis)</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:.5rem">IBP criteria + sacroiliitis on plain X-ray (Grade 2+ bilateral, Grade 3+ unilateral). Male predominance (3:1). Strongest HLA-B27 association (90%).</div>
+        <div style="font-size:12.5px;font-weight:600;margin:.4rem 0 .2rem">Non-radiographic axSpA (nr-axSpA)</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:.5rem">IBP criteria + MRI sacroiliitis but normal plain X-ray. More equal sex distribution. Same treatment and biologic eligibility as radiographic axSpA per NICE.</div>
+        <div style="font-size:12.5px;font-weight:600;margin:.4rem 0 .2rem">Psoriatic Arthritis with Axial Involvement</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5">IBP + psoriasis ± peripheral arthritis + enthesitis. HLA-B27 less predictive. Anti-IL-17 preferred for skin + joint benefit.</div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--a)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:.4rem">B — Close DDx / Overlap</div>
+        <div class="ddx-card ddx-c" style="margin-bottom:7px"><h4>Degenerative/Mechanical Back Pain</h4><p>Age typically &gt;40 at onset; worsens with activity; improves with rest; no nocturnal waking; ESR/CRP normal; MRI shows degeneration not active inflammation. The most common misdiagnosis for axSpA.</p></div>
+        <div class="ddx-card ddx-d" style="margin-bottom:7px"><h4>Reactive Arthritis (Reiter's)</h4><p>Triggered by GI or GU infection. Asymmetric peripheral oligoarthritis + IBP + conjunctivitis/uveitis + urethritis. HLA-B27 positive in 75%. Usually self-limiting but can cause persistent IBP.</p></div>
+        <div class="ddx-card ddx-d"><h4>Diffuse Idiopathic Skeletal Hyperostosis (DISH)</h4><p>Older males; flowing calcification of anterior longitudinal ligament; normal SIJ on MRI; HLA-B27 negative; no inflammatory markers. Mimics late AS on plain X-ray. Rheumatology distinction.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--r)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--r);margin-bottom:.4rem">C — Must Exclude Before Confirming</div>
+        <div class="ddx-card ddx-b" style="margin-bottom:7px"><h4>Vertebral Osteomyelitis / Discitis</h4><p>Fever + raised CRP + back pain + IVDU or immunosuppression. Emergency MRI + blood cultures. Can mimic IBP clinically. Anti-TNF initiation in unrecognised spinal infection is dangerous.</p></div>
+        <div class="ddx-card ddx-b"><h4>Malignancy (Myeloma, Lymphoma, Metastases)</h4><p>Night pain + weight loss + age &gt;50 or cancer history. Normal X-ray doesn't exclude — MRI mandatory. Plasma electrophoresis for myeloma. ESR often dramatically elevated.</p></div>
+      </div>
+    </div>
+    <div class="card" style="overflow:hidden">
+      <div class="card-hd" style="color:var(--navy)">📊 NICE NG65 IBP Referral Criteria — 4 of 5 = Refer</div>
+      <table class="rt">
+        <thead><tr><th>Criterion</th><th>Description</th><th>Present in Priya?</th><th>Specificity for IBP</th></tr></thead>
+        <tbody>
+          <tr><td class="q">1. Age at onset &lt;45 years</td><td>Back pain started before age 45 (eligibility criterion — must be met)</td><td style="color:var(--g);font-weight:700">✓ Onset age 26</td><td>Moderate (IBP typically before 35)</td></tr>
+          <tr><td class="q">2. Improvement with exercise</td><td>Back pain genuinely improves with activity, exercise, or movement (not just temporarily)</td><td style="color:var(--g);font-weight:700">✓ Confirmed</td><td>High — specific to inflammatory mechanism</td></tr>
+          <tr><td class="q">3. No improvement with rest</td><td>Pain does not improve with rest; often worsens with prolonged sitting or lying</td><td style="color:var(--g);font-weight:700">✓ Confirmed</td><td>High — opposite of mechanical pattern</td></tr>
+          <tr><td class="q">4. Insidious onset</td><td>Gradual onset over weeks to months without specific trauma or precipitating event</td><td style="color:var(--g);font-weight:700">✓ Confirmed</td><td>Moderate</td></tr>
+          <tr><td class="q">5. Waking in second half of night</td><td>Pain wakes from sleep, specifically in the early morning (2–5am); requires getting up and moving</td><td style="color:var(--g);font-weight:700">✓ 4am waking confirmed</td><td>High — cortisol nadir mechanism</td></tr>
+          <tr><td colspan="4" style="background:var(--g-bg);color:var(--g);font-weight:700;font-size:12px;padding:.5rem .75rem">5/5 criteria met — NICE NG65 referral mandatory. Rheumatology referral + MRI SIJ + ESR/CRP + HLA-B27 arranged today.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Diagnosis in plain language</div><div class="sca-phrase">"Based on everything you've told me — the morning stiffness, the improvement with movement, waking at 4am, and particularly those two episodes of iritis — I believe this is an inflammatory condition of the sacroiliac joints, called axial spondyloarthritis. This is a real, recognised condition — and critically, it responds to specific treatments."</div><div class="sca-phrase">"I want to acknowledge that you've been coming with this for 2 years. I'm sorry that the pattern wasn't picked up sooner. Now that I've recognised it, the next steps are clear and I want to move quickly."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Saying "I can't diagnose this — only the rheumatologist can" without acknowledging the clinical probability</li><li>Not connecting uveitis to the back pain in the diagnosis explanation</li><li>Not acknowledging the diagnostic delay — misses a therapeutic validation opportunity</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ STEP 6 ═══ -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">If Referral Is Needed — What the GP Does Before &amp; During</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>NICE NG65 mandates rheumatology referral when ≥4 of 5 IBP criteria are met in a person under 45 with chronic back pain.</strong> The GP's role before referral is to: (1) start NSAID therapy immediately; (2) arrange MRI SIJ and HLA-B27; (3) document BASDAI score; and (4) make the uveitis–back pain connection explicit in the referral letter. The GP is not expected to confirm the diagnosis — that is the rheumatologist's role — but a high-quality referral letter containing all the IBP criteria, extra-articular features, investigations, NSAID response, and BASDAI score ensures the rheumatology appointment is productive.</div>
+    <div class="card" style="overflow:hidden">
+      <table class="ref-table">
+        <thead><tr><th>Pathway</th><th>Urgency</th><th>What GP does before referral</th><th>What GP must NOT do</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">NICE NG65 rheumatology referral — new suspected axSpA</td><td><span class="ref-urg rurg-4">Urgent — 2–4 weeks</span></td><td style="font-size:12px">Start NSAID immediately (naproxen 500mg BD or diclofenac 75mg BD). Arrange MRI SIJ and HLA-B27 bloods. Document IBP criteria count. Complete BASDAI if possible. Note uveitis, psoriasis, IBD in letter.</td><td style="font-size:12px;color:var(--r)">Do NOT delay NSAID while waiting for rheumatology appointment. Do NOT send plain X-ray as the primary investigation. Do NOT make the referral for generic back pain — specify IBP criteria met, NICE NG65 pathway.</td></tr>
+          <tr><td style="font-weight:600">Acute anterior uveitis</td><td><span class="ref-urg rurg-same">Same day — ophthalmology</span></td><td style="font-size:12px">Same-day ophthalmology contact. Document that this is in the context of known or suspected axSpA. Topical steroid + mydriatic is started by ophthalmologist. Inform rheumatologist at next review (uveitis frequency and treatment inform biologic selection).</td><td style="font-size:12px;color:var(--r)">Do NOT manage uveitis as conjunctivitis. Do NOT prescribe topical antibiotics for uveitis. Do NOT delay ophthalmology referral — permanent visual loss is the consequence.</td></tr>
+          <tr><td style="font-weight:600">Biologic therapy consideration (BASDAI ≥4 on NSAIDs)</td><td><span class="ref-urg rurg-r">Routine rheumatology</span></td><td style="font-size:12px">Document two NSAID failures at adequate doses for ≥4 weeks each. Complete BASDAI score. Arrange TB screening (IGRA). FBC, LFTs, eGFR baseline. Vaccination review (influenza, pneumococcal before anti-TNF). Do not initiate anti-TNF in primary care.</td><td style="font-size:12px;color:var(--r)">Do NOT prescribe anti-TNF biologics in primary care. Do NOT initiate biologic therapy without latent TB screen. Do NOT withhold biologic referral when BASDAI criteria are met — it is clinically indicated and NICE-approved.</td></tr>
+          <tr><td style="font-weight:600">SpA physiotherapy</td><td><span class="ref-urg rurg-r">Routine</span></td><td style="font-size:12px">Refer specifically for inflammatory arthritis physiotherapy programme or hydrotherapy. NASS (National Axial Spondyloarthritis Society) member exercise programmes are evidence-based. Generic back pain physiotherapy is not equivalent and may have limited benefit.</td><td style="font-size:12px;color:var(--r)">Do NOT refer for generic mechanical back pain physiotherapy — not equivalent. Do NOT advise rest. Do NOT advise avoiding exercise during flares unless acute uveitis prevents it.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="background:#f0fdf4;border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.75rem 1rem;margin-top:.85rem">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.4rem">📋 Model Referral Letter Content — NICE NG65-Compliant</div>
+      <div style="font-size:12px;line-height:1.7;color:var(--ink)">Dear Rheumatology Team, I am referring [Priya Sharma, DOB] under the NICE NG65 pathway for suspected axial spondyloarthritis. She is 28 years of age with a 2-year history of chronic low back pain (duration &gt;3 months) with the following IBP criteria (5/5 met): (1) onset before age 45 ✓; (2) improvement with exercise ✓; (3) no improvement with rest ✓; (4) insidious onset ✓; (5) waking second half of night ✓. Extra-articular features: two previous episodes of acute anterior uveitis (right eye ×1, left eye ×1) managed by optometry. No psoriasis or IBD. Current analgesia: ibuprofen 200mg PRN (sub-therapeutic — upgrading to naproxen 500mg BD). MRI SIJ requested. HLA-B27 and ESR/CRP requested. BASDAI score: [X]. Examination: SI joint tenderness on provocation; Schober's [X]cm. Many thanks for your assessment.</div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Referral explained</div><div class="sca-phrase">"I'm referring you to a rheumatologist — a specialist in inflammatory joint conditions. I'm also arranging an MRI scan of the base of your spine today, and a blood test for HLA-B27. While you're waiting for the appointment, I want to optimise your anti-inflammatory medication — naproxen is more effective than ibuprofen for this type of condition."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not referring to rheumatology — this is a NICE NG65 mandatory referral when criteria are met</li><li>Referring without starting NSAID therapy — delays disease management during waiting time</li><li>Not connecting uveitis to the SpA referral — ophthalmology and rheumatology involvement may both be needed</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ═══ STEP 7 ═══ -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Expectation · Goals · Lifestyle · Drug Selector · Drug Cards · Psychosocial · Follow-Up · Safety-Netting</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+
+    <div class="sub-divider">7A — Address the patient's expectation first: validate → explain → negotiate</div>
+    <div class="expect-box">
+      <div class="expect-box-hdr"><span style="font-size:1.4rem">🤝</span><div class="expect-box-lbl">The patient who has been told "mechanical back pain" for 2 years needs validation before management</div></div>
+      <div class="expect-steps">
+        <div class="expect-step"><div class="expect-step-num">1</div><h5>Validate — name the diagnostic journey</h5><p>Priya has attended multiple appointments and been dismissed. Before discussing any treatment, the GP must acknowledge the delay. This is both ethically correct and therapeutically necessary — without acknowledgement, the management plan sits on a foundation of unresolved distrust.</p><span class="expect-phrase">"I want to start by saying: I think there has been a delay in identifying what is actually causing your back pain. What you've been experiencing — the morning stiffness, the night waking, the episodes of iritis — these are characteristic of a specific inflammatory condition, and I want to make sure we now address it properly."</span></div>
+        <div class="expect-step"><div class="expect-step-num">2</div><h5>Explain — the diagnosis in plain terms</h5><p>The immune system is attacking the sacroiliac joints. This is not posture. This is not weakness. This responds to specific treatments. Most people with this condition maintain an active life and career with the right management. The bamboo spine image is the untreated extreme — not the expected outcome with modern therapy.</p><span class="expect-phrase">"Axial spondyloarthritis is a condition where your immune system attacks the sacroiliac joints — the anchors between your spine and pelvis. Think of it as internal joint inflammation, not a structural problem. Anti-inflammatory medication, the right physiotherapy programme, and — if needed — a biologic injection can control it very effectively in most people."</span></div>
+        <div class="expect-step"><div class="expect-step-num">3</div><h5>Negotiate — concrete actions today</h5><p>Today: NSAID upgraded to naproxen 500mg BD continuously (not PRN); MRI SIJ and HLA-B27 blood test arranged; NICE NG65 rheumatology referral sent; NASS website signposted; follow-up in 4 weeks to review NSAID response before rheumatology appointment.</p><span class="expect-phrase">"Today I'm going to upgrade your anti-inflammatory prescription, arrange the MRI and blood tests the rheumatologist will need, and send the referral. While you're waiting for the specialist appointment — which I'll make urgent — you will already be on the right medication and I'll see you again in 4 weeks to see how it's helping."</span></div>
+      </div>
+      <div style="background:rgba(21,128,61,.08);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.65rem 1rem;margin-top:.75rem;font-size:12.5px;color:#14532d;line-height:1.55">
+        <strong>Key principle:</strong> The patient who has waited 2 years for a diagnosis needs a consultation that is substantially different from the ones that preceded it. Acknowledging the delay, making the uveitis–back pain connection explicit, and providing concrete actions TODAY — not on return — is what transforms this consultation from another dismissal into a therapeutic breakthrough.
+      </div>
+    </div>
+
+    <div class="sub-divider">7B — Why treatment matters: goals tailored to this patient</div>
+    <div class="g2" style="margin-bottom:1rem">
+      <div class="card" style="padding:1rem 1.1rem">
+        <div class="card-hd" style="color:var(--g);border:none;padding:0 0 .6rem">Treatment goals</div>
+        <div class="tx-goals">
+          <span class="tx-goal tg1">Control sacroiliac inflammation and prevent structural progression</span><span class="tx-goal tg1">Reduce BASDAI to &lt;4 with NSAID; biologic threshold if BASDAI ≥4 persists</span>
+          <span class="tx-goal tg2">Maintain spinal mobility — preserve chest expansion, lumbar flexion, cervical rotation</span><span class="tx-goal tg2">Reduce uveitis frequency with disease control; ophthalmology shared care</span>
+          <span class="tx-goal tg3">Enable return to full physiotherapy assistant duties without functional limitation</span><span class="tx-goal tg3">Reduce average diagnostic delay — this patient should have been diagnosed at first IBP presentation</span>
+          <span class="tx-goal tg4">Pre-pregnancy planning — discuss NSAIDs and biologic choice before conception</span><span class="tx-goal tg4">Annual CVD risk assessment — inflammatory arthritis is a high CVD risk condition</span>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem">
+        <div class="card-hd" style="color:var(--b);border:none;padding:0 0 .6rem">Motivational language</div>
+        <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--b-bd);padding:.55rem .85rem;background:var(--b-bg);border-radius:0 8px 8px 0;line-height:1.6;margin-bottom:.5rem">"The images you may have seen of people with severe spinal fusion represent the extreme of untreated disease. That is not what happens to most people diagnosed at your age with modern treatment. Anti-TNF biologics have transformed outcomes — most people on them maintain a completely normal or near-normal life."</div>
+        <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.6">"As a physiotherapy assistant, you understand movement better than most. In this condition, exercise isn't just beneficial — it's the most powerful non-pharmacological treatment you have. Your professional background is an advantage here."</div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7C — Non-medication management: evidence-based exercise for axSpA</div>
+    <div class="step-intro" style="margin-bottom:.75rem"><strong>Exercise is first-line treatment in axSpA — not an adjunct.</strong> NICE NG65 recommends offering supervised exercise programmes to all patients. Specific spinal mobility exercises, hydrotherapy, and breathing exercises (to preserve chest expansion) have robust evidence. The NASS (National Axial Spondyloarthritis Society) provides community exercise programmes endorsed by rheumatologists.</div>
+    <div class="life-grid" style="margin-bottom:1.25rem">
+      <div class="life-card"><div class="life-head"><span class="life-icon">🏊</span><div class="life-title">Hydrotherapy / Swimming</div><span class="life-target">Target: 3× weekly; backstroke, front crawl</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Warm water reduces joint stiffness (thermotherapy) while buoyancy allows full spinal range of motion without axial loading. Hydrostatic pressure reduces joint oedema. Backstroke specifically mobilises the thoracic and lumbar spine in extension — counteracting the flexion tendency of progressive AS.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>NASS hydrotherapy referral or self-referral to leisure centre aquatic fitness programme. Avoid breaststroke in severe hip involvement. Warm pool preferred (33–35°C). Morning sessions most effective (counteracts morning stiffness).</p></div><span class="life-benefit">RCT: hydrotherapy superior to land exercise for spinal mobility in AS</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">🧘</span><div class="life-title">NASS Exercise Programme</div><span class="life-target">Target: daily home exercise + NASS group programme</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>NASS (National Axial Spondyloarthritis Society) provides disease-specific group exercise programmes developed by specialist physiotherapists. Evidence shows supervised SpA exercise is significantly superior to generic back physiotherapy. Components: spinal extension exercises (counteracting fusion tendency), chest expansion, deep breathing, posture correction.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>NASS website (nass.co.uk) — groups across the UK. NHS physiotherapy referral specifying "axial SpA programme." Self-referral to NASS groups free of charge. Home exercise programme (NASS booklet "AS Exercises") daily. Yoga and Pilates adapted to spinal extension have supportive evidence.</p></div><span class="life-benefit">Daily NASS programme maintains spinal mobility and reduces progression</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">🚴</span><div class="life-title">Cycling</div><span class="life-target">Target: 30 min daily, flat terrain</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Cycling provides cardiovascular conditioning without high spinal axial loading. The sitting-forward posture on a bike promotes thoracic extension relative to standing and maintains hip mobility. Stationary bike particularly useful during flares when outdoor exercise is limited.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Ergonomic handlebars (slightly raised) reduce cervical strain. Mountain biking cautioned in cervical involvement (fall risk). Stationary bike preferred in active flare. CVD risk monitoring — cycling doubles as cardiovascular protection in this high-CVD-risk population.</p></div><span class="life-benefit">Maintains CVD fitness — particularly important given elevated CVD risk in axSpA</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">💨</span><div class="life-title">Breathing Exercises</div><span class="life-target">Target: 10 min daily; deep diaphragmatic breathing</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Costovertebral joint involvement progressively restricts chest expansion in AS. Daily breathing exercises maintain intercostal mobility and prevent the restrictive lung pattern seen in advanced disease. Deep breathing also mobilises the thoracic spine in extension — counteracting the kyphotic tendency.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Deep breathing: maximum inspiration sustained 5 seconds × 10, twice daily. Arm raises with inspiration (rib cage expansion). NASS breathing exercise programme included in home booklet. Measure chest expansion at each rheumatology review (normal &gt;5cm; &lt;2.5cm = significant restriction).</p></div><span class="life-benefit">Prevents respiratory restriction — specific to axSpA unique risk</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">🚭</span><div class="life-title">Smoking Cessation</div><span class="life-target">Target: cessation within 3 months; SMSC referral</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Smoking is an independent risk factor for radiographic progression in axSpA (accelerated syndesmophyte formation), reduced biologic treatment response, amplified CVD risk (already elevated in axSpA), and reduced bone density (already at risk from chronic inflammation). The cumulative harm of smoking in axSpA is substantial — more than in the general population.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>SMSC (Smoking Cessation Service) referral at every consultation. NRT; varenicline (most effective); e-cigarettes as harm reduction. Document smoking status in every entry. Inform patient that smoking reduces anti-TNF response — this is a motivating factor specific to axSpA.</p></div><span class="life-benefit">Cessation reduces radiographic progression + amplifies biologic response</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">❤️</span><div class="life-title">CVD Risk Management</div><span class="life-target">Target: annual CVD risk assessment; Framingham ×1.5</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>AxSpA carries a CVD risk comparable to rheumatoid arthritis — 50–60% elevated relative risk from chronic systemic inflammation driving premature atherosclerosis. Traditional Framingham calculation underestimates risk in inflammatory arthritis — apply a ×1.5 multiplier (as per NICE RA guidance, applicable to inflammatory arthritis broadly).</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Annual: BP, fasting lipids, HbA1c, BMI. Framingham ×1.5 → statin threshold is lower in axSpA. Smoking cessation particularly important. Regular aerobic exercise (already recommended) has protective CVD effect. Document CVD risk score in notes annually.</p></div><span class="life-benefit">Annual CVD risk assessment mandatory — inflammatory arthritis is a high-risk state</span></div></div>
+    </div>
+
+    <div class="sub-divider">7D — Prescribing guide: NSAID → physiotherapy → biologic via rheumatology</div>
+    <div class="step-intro" style="margin-bottom:.75rem;border-left-color:var(--b)"><strong>NICE NG65 prescribing pathway: NSAIDs are first-line and continuous use is preferred (evidence of radiographic progression delay).</strong> Two NSAIDs must fail at adequate doses for ≥4 weeks each before biologic eligibility. Biologics are initiated and monitored by rheumatology. GP role: optimise NSAID, document trials, complete BASDAI, arrange pre-biologic baseline bloods.</div>
+    <div class="g3" style="margin-bottom:1rem;gap:10px">
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--b)">
+        <div class="card-hd" style="color:var(--b);border:none;padding:0 0 .55rem;font-size:11.5px">Step 1 — NSAIDs (First-Line, Continuous)</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
+          <p style="margin:0 0 .5rem"><strong>Naproxen 500–1000mg/day or Diclofenac 75–150mg/day (continuous, not PRN)</strong></p>
+          <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7"><li>Continuous use preferred over PRN — evidence suggests continuous NSAID use slows radiographic progression in axSpA</li><li>Dramatic NSAID response (within 24–48h) supports diagnosis of axSpA (quasi-diagnostic)</li><li>Add PPI (lansoprazole 15–30mg OD) — mandatory with continuous NSAID in axSpA due to prolonged course</li><li>Etoricoxib (COX-2 selective) as an alternative: equivalent efficacy, lower GI risk but higher CVD risk — use only if NSAID intolerance rather than elevated CVD risk</li></ul>
+          <div style="font-size:11px;background:var(--b-bg);border:1px solid var(--b-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--b);font-weight:600">NSAID failure criteria for biologic eligibility: two different NSAIDs at adequate doses for ≥4 weeks each, with BASDAI ≥4 at end of trial. Document each trial precisely — rheumatology NICE TA funding requires this.</div>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--a)">
+        <div class="card-hd" style="color:var(--a);border:none;padding:0 0 .55rem;font-size:11.5px">Step 2 — Peripheral Joint Disease (Sulfasalazine)</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
+          <p style="margin:0 0 .5rem"><strong>Sulfasalazine 2–3g/day (enteric-coated) — for PERIPHERAL joint involvement only</strong></p>
+          <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7"><li>NICE NG65: sulfasalazine is appropriate for peripheral arthritis in SpA — but has NO efficacy for axial (spinal/sacroiliac) disease</li><li>Used in the waiting period before biologic initiation when peripheral joints are active</li><li>Monitor: FBC, LFTs, eGFR at 4–6 weeks, then 3 monthly — sulphonamide component causes cytopaenias</li><li>Safe in pregnancy (with folic acid supplementation); used in IBD-associated axSpA for bowel benefit</li></ul>
+          <div style="font-size:11px;background:var(--a-bg);border:1px solid var(--a-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--a);font-weight:600">Sulfasalazine does NOT work for axial disease. Do not use as an alternative to biologic therapy for predominant spinal involvement.</div>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--g)">
+        <div class="card-hd" style="color:var(--g);border:none;padding:0 0 .55rem;font-size:11.5px">Step 3 — Biologic Therapy (Rheumatology-Initiated)</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
+          <p style="margin:0 0 .5rem"><strong>Anti-TNF (adalimumab/certolizumab/etanercept) or Anti-IL17 (secukinumab)</strong></p>
+          <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7"><li>NICE TA383/TA383B: anti-TNF therapy for active axSpA when BASDAI ≥4 despite two NSAID failures</li><li>Anti-TNF choice: adalimumab (fortnightly SC) / certolizumab pegol (preferred in pregnancy) / etanercept (weekly SC; NOT effective in IBD) / infliximab (IV infusion, IBD-associated axSpA)</li><li>Anti-IL17: secukinumab (monthly SC after loading) — preferred for psoriatic axSpA; anti-TNF failure; enthesitis-predominant disease</li><li>Pre-biologic: TB screen (IGRA), FBC, LFTs, hepatitis B and C serology, vaccination review</li></ul>
+          <div style="font-size:11px;background:var(--g-bg);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--g);font-weight:600">Biologics are initiated by rheumatology. GP role: pre-biologic baseline bloods, IGRA, vaccination update, shared care prescribing after initiation, annual infection and CVD monitoring.</div>
+        </div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:1rem;gap:10px">
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--p)">
+        <div class="card-hd" style="color:var(--p);border:none;padding:0 0 .55rem;font-size:11.5px">Biologics in Pregnancy — Certolizumab Preferred</div>
+        <div style="font-size:12.5px;line-height:1.55"><ul style="margin:0;padding-left:1.1rem;font-size:12px;line-height:1.7"><li>Certolizumab pegol: no Fc region, minimal placental transfer — preferred anti-TNF in pregnancy. Can be continued throughout all trimesters.</li><li>Adalimumab/infliximab: IgG1 antibodies — cross placenta in 2nd and 3rd trimesters; stop at ≥20 weeks in most guidelines unless benefit outweighs risk (discuss with rheumatology)</li><li>Etanercept: may be continued to ≥34 weeks — some placental transfer but considered lower risk than adalimumab/infliximab</li><li>NSAIDs: avoid in first trimester (teratogenicity), absolutely stop in third trimester (premature ductus closure). May use in second trimester only if benefit clearly outweighs risk.</li></ul></div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--r)">
+        <div class="card-hd" style="color:var(--r);border:none;padding:0 0 .55rem;font-size:11.5px">Analgesic Bridging — Residual Pain on Biologics</div>
+        <div style="font-size:12.5px;line-height:1.55"><ul style="margin:0;padding-left:1.1rem;font-size:12px;line-height:1.7"><li>Some patients on biologics have residual pain not explained by active inflammation — central sensitisation, fibromyalgia overlap, or structural damage</li><li>Duloxetine 30→60mg OD: addresses central sensitisation component; evidence in RA and inflammatory arthritis for residual pain</li><li>Paracetamol 1g QDS: safe to continue alongside NSAIDs and biologics for breakthrough pain</li><li>Opioids: very limited role in axSpA — risk of dependence; not disease-modifying; can worsen the sedentary behaviour that accelerates progression</li><li>Oral steroids: not standard in axSpA for axial disease; short courses for peripheral flares or bridging</li></ul></div>
+      </div>
+    </div>
+
+    <div class="sub-divider" id="drugs">7E — Medication selection tool</div>
+    <!-- NOTE: calcDrug() in script.js is HTN-specific. axSpA checkboxes use non-overlapping IDs. -->
+    <div class="ds-wrap" style="margin-bottom:.85rem">
+      <div class="ds-top">
+        <h3>Select patient characteristics — see drug cards and prescribing guide above</h3>
+        <div class="ds-checks">
+          <label class="ds-lbl"><input type="checkbox" id="ds-spa-ibd" onchange="calcDrug()"> Inflammatory bowel disease (Crohn's/UC)</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-spa-psoriasis" onchange="calcDrug()"> Psoriasis (skin or nail)</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-spa-preg" onchange="calcDrug()"> Pregnant or planning pregnancy</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-spa-uveitis" onchange="calcDrug()"> Recurrent uveitis</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-spa-nsaid-ci" onchange="calcDrug()"> NSAID intolerant or contraindicated</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-spa-enthesitis" onchange="calcDrug()"> Predominant enthesitis/peripheral arthritis</label>
+        </div>
+      </div>
+      <div class="ds-result">
+        <div class="ds-result-title">Biologic selection guide</div>
+        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">First-line: Naproxen 500mg BD (continuous) + PPI. IBD-associated: Adalimumab or Infliximab (NOT etanercept — no IBD efficacy). Psoriatic axSpA: Secukinumab (anti-IL17) preferred for dual skin + axial benefit. Pregnancy: Certolizumab pegol preferred (minimal placental transfer); stop NSAIDs in 3rd trimester. Recurrent uveitis: Adalimumab or Infliximab preferred (monoclonal antibodies) over etanercept. NSAID CI: skip to sulfasalazine (peripheral disease) or biologic referral via rheumatology if axial. Enthesitis: Secukinumab or NSAIDs. See drug cards below.</span></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7F — Drug reference cards</div>
+    <div class="drug-cards" id="drug-cards-container">
+      <div class="dc" id="dc-nsaid-spa">
+        <div class="dc-head"><div><div class="dc-name">NSAIDs — Naproxen / Diclofenac / Etoricoxib</div><div class="dc-examples">Naproxen 500mg BD · Diclofenac 75mg BD · Etoricoxib 60–90mg OD</div><div class="dc-rec-badge" id="rec-nsaid-spa">✓ Recommended</div></div><div class="dc-badges"><span class="dc-step step1">First-line (continuous)</span><span class="dc-dose">Naproxen 500–1000mg/day</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Prefer when</div><div class="dc-item">First-line treatment for all stages of axSpA — continuous use preferred over PRN</div><div class="dc-item">Dramatic response within 24–48h of first dose is quasi-diagnostic for axSpA (Calin criteria)</div><div class="dc-item">Naproxen or diclofenac preferred; etoricoxib (COX-2) as second NSAID or if GI intolerance</div><div class="dc-item">Continuous NSAID use may slow radiographic progression (syndesmophyte formation) — NSAID-as-disease-modifier concept</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div><div class="dc-item ci-abs"><strong>Third trimester of pregnancy, severe CKD (eGFR &lt;30), active peptic ulcer, NSAID hypersensitivity</strong></div><div class="dc-item ci-abs"><strong>Etoricoxib contraindicated in established CVD</strong> — use conventional NSAID + PPI instead</div><div class="dc-item ci-rel">First trimester (teratogenicity risk); uncontrolled hypertension; anticoagulant co-prescription (bleeding risk)</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div><div class="dc-item">GI: always co-prescribe PPI (lansoprazole 15–30mg) for prolonged continuous use in axSpA</div><div class="dc-item">Hypertension, fluid retention, eGFR decline with prolonged use — annual monitoring mandatory</div></div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">🔬 Monitor</div><div class="dc-item">Annual BP, eGFR, LFTs. CVD risk assessment annually (Framingham ×1.5). Pregnancy status at every prescription review. Document NSAID name, dose, duration, and response in every note — required for biologic eligibility funding.</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"Take this every day — not just when the pain is severe. In your condition, the anti-inflammatory effect builds up with regular use and actually reduces the underlying damage over time. Always take it with food. I'm also prescribing a stomach-protecting tablet to take alongside it."</p></div>
+        <div class="dc-sca"><p>Continuous NSAID use in axSpA may reduce radiographic progression — this is different from all other back pain where the shortest necessary duration is advised. Document the NSAID name, dose (therapeutic: naproxen ≥500mg/day), duration, and response precisely — this is required for NICE biologic funding eligibility.</p></div>
+      </div>
+
+      <div class="dc" id="dc-sulfa">
+        <div class="dc-head"><div><div class="dc-name">Sulfasalazine (Peripheral Joints Only)</div><div class="dc-examples">Sulfasalazine EC 500mg → titrate to 1g TDS (3g/day)</div><div class="dc-rec-badge" id="rec-sulfa">✓ Recommended</div></div><div class="dc-badges"><span class="dc-step step2">Peripheral arthritis</span><span class="dc-dose">Start 500mg OD → 1g TDS over 4 weeks</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Prefer when</div><div class="dc-item">Active peripheral arthritis alongside axial disease — sulfasalazine reduces peripheral joint inflammation and can be used while awaiting biologic therapy</div><div class="dc-item">IBD-associated axSpA — sulfasalazine benefits both bowel and peripheral joint disease</div><div class="dc-item">Safe in pregnancy (with folic acid 5mg/day supplementation) — one of the few DMARDs with an established pregnancy safety record</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div><div class="dc-item ci-abs"><strong>Sulphonamide allergy, severe hepatic impairment, G6PD deficiency</strong></div><div class="dc-item ci-abs"><strong>Does NOT treat axial disease</strong> — never use as an alternative to NSAID or biologic for spinal/sacroiliac inflammation</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div><div class="dc-item">Nausea, headache (start low and titrate slowly). Cytopaenias (FBC mandatory at 4–6 weeks, 3 monthly). Hepatotoxicity (LFTs monitoring). Reversible oligospermia in males — warn men of childbearing age.</div></div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">🔬 Monitor</div><div class="dc-item">FBC + LFTs + eGFR: 4–6 weeks, 3 monthly × 1 year, then 6 monthly. Alert: any fever, sore throat, or pallor on sulfasalazine = urgent FBC (agranulocytosis). Rheumatology monitors in shared care arrangement.</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"This tablet helps the joint swelling in your knees and ankles, but I want to be clear — it does not help the back stiffness directly. For the back, the ibuprofen and eventually the specialist's medication are what will work. Take this one with your largest meal, start at one tablet and build up slowly over 4 weeks."</p></div>
+        <div class="dc-sca"><p>Key SCA teaching point: sulfasalazine is NOT effective for axial spondyloarthritis. It is only appropriate for peripheral joint manifestations. Using it as the sole treatment for axial disease (instead of NSAID and biologic pathway) is a significant clinical error that would cost Tasks domain marks.</p></div>
+      </div>
+
+      <div class="dc" id="dc-anti-tnf">
+        <div class="dc-head"><div><div class="dc-name">Anti-TNF Biologics (Adalimumab / Etanercept / Certolizumab)</div><div class="dc-examples">Adalimumab (Humira) 40mg SC fortnightly · Etanercept (Enbrel) 50mg SC weekly · Certolizumab pegol (Cimzia) 200mg SC fortnightly</div><div class="dc-rec-badge" id="rec-anti-tnf">✓ Recommended</div></div><div class="dc-badges"><span class="dc-step step3">Second-line (via rheumatology)</span><span class="dc-dose">Rheumatology-initiated after 2 NSAID failures</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Prefer when</div><div class="dc-item">BASDAI ≥4 persisting despite two adequate NSAID trials (NICE TA383) — the evidence-based biologic threshold</div><div class="dc-item">Adalimumab / infliximab preferred in patients with concurrent uveitis (monoclonal antibodies more effective for eye involvement) or IBD</div><div class="dc-item">Certolizumab pegol preferred when conception is planned — no placental transfer (no Fc region)</div><div class="dc-item">Etanercept preferred if no IBD and no uveitis — well-established safety profile, most used in practice</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div><div class="dc-item ci-abs"><strong>Active infection (including latent TB not treated), history of lymphoma, demyelinating disease (MS/optic neuritis)</strong></div><div class="dc-item ci-abs"><strong>Decompensated heart failure (NYHA III/IV)</strong> — anti-TNF can worsen HF</div><div class="dc-item ci-rel">Hepatitis B reactivation risk — screen before initiation; antiviral cover if HBsAg positive. Live vaccines contraindicated while on anti-TNF.</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div><div class="dc-item">Serious infections (bacterial, opportunistic, TB reactivation) — report any fever, persistent cough, or systemic illness urgently</div><div class="dc-item">Injection site reactions (self-limiting). Rare: lymphoma, demyelination, drug-induced lupus, cytopaenias</div></div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">🔬 Monitor (shared care — rheumatology leads)</div><div class="dc-item">Annual FBC, LFTs, eGFR, CRP, BASDAI. TB screen (IGRA) before initiation. Hepatitis B serology before initiation. Annual influenza vaccination (live vaccines prohibited). Skin surveillance (melanoma risk). GP shared care: CVD risk, BP, lipids, infection awareness.</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"This injection — which you'll give yourself at home — works by specifically targeting the inflammatory chemical called TNF that is driving your joint disease. Most people feel significantly better within 6–12 weeks. The most important safety message: if you develop a fever, persistent cough, or feel unwell in a way that doesn't settle in 48 hours, contact us immediately — infections need prompt treatment while on this medication."</p></div>
+        <div class="dc-sca"><p>Anti-TNF biologic eligibility: BASDAI ≥4 + two NSAID failures documented. Etanercept: NOT effective for IBD or uveitis — this is a critical prescribing distinction. Certolizumab: preferred in pregnancy (no Fc region = no placental transfer). TB screen (IGRA) is mandatory before any biologic — failure to screen is a patient safety issue.</p></div>
+      </div>
+
+      <div class="dc" id="dc-il17">
+        <div class="dc-head"><div><div class="dc-name">Anti-IL17 — Secukinumab / Ixekizumab</div><div class="dc-examples">Secukinumab (Cosentyx) 150–300mg SC monthly · Ixekizumab (Taltz) 80mg SC monthly</div><div class="dc-rec-badge" id="rec-il17">✓ Recommended</div></div><div class="dc-badges"><span class="dc-step step3">Biologic (via rheumatology)</span><span class="dc-dose">Rheumatology-initiated; monthly maintenance</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Prefer when</div><div class="dc-item">Psoriatic axSpA — secukinumab treats both the skin and the axial/peripheral arthritis simultaneously; superior to anti-TNF for moderate-severe psoriasis</div><div class="dc-item">Anti-TNF failure or intolerance — secukinumab is the recommended second biologic for axSpA per NICE TA507/TA416</div><div class="dc-item">Predominantly enthesitis-driven disease — IL-17 pathway particularly important in entheseal inflammation</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div><div class="dc-item ci-abs"><strong>Inflammatory bowel disease — anti-IL17 can worsen IBD (Crohn's in particular); avoid in IBD-associated axSpA</strong></div><div class="dc-item ci-rel">Active infection; live vaccines contraindicated; Candida infections more common (IL-17 axis involved in mucosal immunity)</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div><div class="dc-item">Oral/vaginal candidiasis (IL-17 pathway involved in mucosal immunity — fluconazole for symptomatic candidiasis). Nasopharyngitis, upper respiratory infections. New or worsening IBD — monitor bowel symptoms vigilantly in all patients.</div></div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">🔬 Monitor</div><div class="dc-item">Annual FBC, LFTs, CRP, BASDAI. Monitor for IBD symptoms at every review. Candida: fluconazole if symptomatic; low threshold. Live vaccines prohibited. Dermatology shared care for psoriatic axSpA.</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"This injection works on a different part of the immune pathway from the TNF injection. It's particularly effective when psoriasis is also involved — treating both conditions at once. The most common side effect is oral or vaginal thrush, which is easily treated with antifungal medication. Please let us know if you develop any tummy symptoms or diarrhoea — this medication can occasionally affect the bowel in a small number of people."</p></div>
+        <div class="dc-sca"><p>Critical distinction: secukinumab (anti-IL17) WORSENS IBD — absolutely avoid in IBD-associated axSpA. Anti-TNF (adalimumab/infliximab) preferred in IBD + axSpA. Secukinumab is preferred for psoriatic axSpA. This anti-TNF vs anti-IL17 distinction based on extra-articular features (IBD vs psoriasis) is a high-yield SCA pharmacology question.</p></div>
+      </div>
+
+      <div class="dc" id="dc-certoliz">
+        <div class="dc-head"><div><div class="dc-name">Certolizumab Pegol — Pregnancy-Safe Anti-TNF</div><div class="dc-examples">Cimzia 200mg SC fortnightly (or 400mg monthly)</div><div class="dc-rec-badge" id="rec-certoliz">✓ Recommended</div></div><div class="dc-badges"><span class="dc-step step3">Biologic — pregnancy preferred</span><span class="dc-dose">200mg SC fortnightly maintenance</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Prefer when</div><div class="dc-item">Women of reproductive age planning a pregnancy — certolizumab pegol has no Fc region and therefore does not cross the placenta; can be continued throughout all trimesters with rheumatology guidance</div><div class="dc-item">BASDAI ≥4 on NSAIDs in a patient who is pregnant or actively trying to conceive</div><div class="dc-item">All other anti-TNF indications apply (active axSpA, NSAID failure, no active infection, no TB)</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div><div class="dc-item ci-abs"><strong>Active infection, latent TB not treated, history of demyelinating disease</strong></div><div class="dc-item ci-rel">Breastfeeding: minimal transfer into breast milk; considered safe by specialist — rheumatology decision</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div><div class="dc-item">Same profile as other anti-TNF agents: serious infections, injection site reactions, rare demyelination. Neonates: no increased infection risk (unlike adalimumab/infliximab which cross placenta and increase neonatal infection risk).</div></div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">🔬 Monitor</div><div class="dc-item">Shared care monitoring: annual FBC, LFTs, CRP. Rheumatology leads pregnancy monitoring. Obstetrics aware of biologic use. Neonates: no need to defer routine vaccinations (no drug in baby — unlike adalimumab/infliximab).</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"This particular anti-TNF injection is special because it's been designed so that it does not cross the placenta — which means it is the safest biologic to use when you're pregnant or planning to become pregnant. Your rheumatologist has chosen this specifically for you, knowing that you're thinking about starting a family. You won't need to stop it during pregnancy."</p></div>
+        <div class="dc-sca"><p>Certolizumab pegol is the preferred anti-TNF for women planning pregnancy — the only anti-TNF with no significant placental transfer (absence of Fc region). Neonates born to mothers on certolizumab can receive all routine vaccinations immediately (no delayed vaccination needed). Other anti-TNFs cross the placenta in 2nd/3rd trimesters and require delayed live vaccination of the neonate.</p></div>
+      </div>
+
+      <div class="dc" id="dc-dulox-spa">
+        <div class="dc-head"><div><div class="dc-name">Duloxetine — Residual Pain / Central Sensitisation</div><div class="dc-examples">Duloxetine 30mg OD → 60mg OD capsules</div><div class="dc-rec-badge" id="rec-dulox-spa">✓ Recommended</div></div><div class="dc-badges"><span class="dc-step step2">Adjunct — residual pain</span><span class="dc-dose">30mg OD × 2 weeks → 60mg OD</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Prefer when</div><div class="dc-item">Residual pain on adequate NSAID or biologic therapy — suggests central sensitisation (fibromyalgia overlay) rather than active inflammation</div><div class="dc-item">Comorbid depression or anxiety — dual analgesic + antidepressant benefit</div><div class="dc-item">Fatigue as a dominant symptom (duloxetine has evidence for fatigue in inflammatory arthritis)</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div><div class="dc-item ci-abs"><strong>MAOI within 14 days, uncontrolled narrow-angle glaucoma</strong></div><div class="dc-item ci-rel">Hepatic impairment; concurrent SSRIs (serotonin syndrome); significant renal impairment (eGFR &lt;30)</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div><div class="dc-item">Nausea initially (take with food, resolves in 2 weeks); dry mouth; insomnia; withdrawal if stopped abruptly — taper over 2–4 weeks</div></div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">🔬 Monitor</div><div class="dc-item">PHQ-9 at 4–6 weeks. Ensure BASDAI reviewed — if high despite duloxetine, consider that active inflammation (not central sensitisation) may be driving pain. Duloxetine does not replace biologic escalation when BASDAI ≥4.</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"Some patients with your condition have persistent pain even when the inflammation is well controlled — this can happen because the nervous system becomes sensitised to pain signals over time. This tablet works on that central pain pathway. It takes a few weeks to build up. It also helps with mood and sleep, which often suffer with chronic pain."</p></div>
+        <div class="dc-sca"><p>Important distinction: duloxetine for residual pain in axSpA is appropriate only when inflammation is controlled (BASDAI improving) but neuropathic/central pain persists. Using duloxetine as a substitute for biologic therapy when BASDAI ≥4 = undertreating the underlying disease. Ensure the clinical question "is this residual pain or still active inflammation?" is answered before adding duloxetine.</p></div>
+      </div>
+    </div><!-- /drug-cards -->
+
+    <div class="sub-divider" style="margin-top:1.5rem">7G — Psychosocial impact: diagnostic delay, identity, reproduction &amp; career</div>
+    <div class="psoci-wrap">
+      <div class="psoci-hdr"><span style="font-size:1.5rem">🫂</span><div class="psoci-title">axSpA — 8.5 years unseen, the bamboo spine fear, and a career at the nexus of physical activity</div></div>
+      <div style="font-size:12.5px;color:#831843;line-height:1.55;margin-bottom:.85rem;background:#fff;border:1px solid var(--ps-bd);border-radius:var(--rad-sm);padding:.65rem .9rem;border-left:3px solid var(--ps)">The 8.5-year diagnostic delay in axSpA is not medically neutral — it is 8.5 years of inadequate pain management, progressive unrecognised inflammation, incorrect reassurance ("nothing serious"), incorrect management (rest for a condition that responds to exercise), and progressive self-doubt. The patient who finally receives the correct diagnosis has complex emotional needs that go beyond pharmacology: they need validation, accurate prognosis, and a treatment plan that makes sense of all the years before.</div>
+      <div class="psoci-grid">
+        <div class="psoci-card"><span class="psoci-icon">⏳</span><h5>Validation of the Diagnostic Journey</h5><p>Years of being told "it's just mechanical back pain" or "nothing on the X-ray" creates iatrogenic self-doubt. The first responsibility of the diagnosing clinician is to validate the patient's experience — to make clear that their symptoms were real, their functional limitation was real, and the condition was missed, not imagined.</p><span class="psoci-phrase">"I want to be clear: everything you've experienced — the morning stiffness, the nights you've been woken up, the episodes of iritis — these are symptoms of a real and recognisable condition. It should have been identified sooner. I'm sorry that it wasn't."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">🦯</span><h5>The Bamboo Spine Fear — Accurate Prognosis</h5><p>Most patients who have searched online for "ankylosing spondylitis" have encountered images of severe spinal fusion — the stooped, rigid posture of advanced untreated AS. This image is not representative of modern outcomes. With NSAIDs and biologic therapy, most patients diagnosed at Priya's age maintain normal or near-normal spinal mobility. This prognosis must be given explicitly.</p><span class="psoci-phrase">"The images you may have seen — people with severe spinal curvature — represent advanced untreated disease. That is not what happens to most people diagnosed at your age with modern treatment. Anti-TNF biologics, which are NICE-approved for your condition, have transformed outcomes."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">💼</span><h5>Career as a Physiotherapy Assistant</h5><p>Priya's occupation — physiotherapy assistant — requires manual handling, prolonged standing, and patient transfers. Untreated axSpA will progressively impair all of these. But the irony is that her professional knowledge of exercise and body mechanics is a therapeutic asset — she will engage with the NASS exercise programme and physiotherapy more effectively than most patients.</p><span class="psoci-phrase">"Your understanding of the body is actually an advantage here. You will be able to engage with the exercise programme more intelligently than most patients. With proper treatment, there's no reason why this condition should prevent you from continuing your career."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">🤰</span><h5>Reproductive Planning and NSAIDs/Biologics</h5><p>Priya is 28, in a reproductive-age demographic. Family planning must be discussed proactively. NSAIDs must stop before conception or at first positive test. Certolizumab pegol is the preferred biologic if pregnancy is planned. Disease activity often improves in the second and third trimester — this is genuinely encouraging news for patients planning pregnancy.</p><span class="psoci-phrase">"If you're thinking about starting a family in the next year or two, I want to plan ahead. The anti-inflammatory tablets need to stop before you conceive or as soon as you have a positive test. But there is a biologic injection that is specifically designed to be safe during pregnancy — your rheumatologist will discuss this."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">👁️</span><h5>Uveitis Management — Connecting the Dots</h5><p>Priya has had two previous episodes of uveitis managed by optometrists who did not connect them to the back pain. This disconnection is common and represents a missed diagnostic opportunity. Making the connection explicitly — "your eye problems and your back pain are the same condition" — is the most therapeutically powerful statement of this consultation. It transforms isolated, mysterious, recurrent problems into a unified condition with a coherent treatment plan.</p><span class="psoci-phrase">"The two episodes of iritis you've had — those are almost certainly part of the same condition as your back pain. They're both caused by the same immune system activation. Importantly, effective treatment of the spinal condition will likely reduce the frequency of the eye flares as well."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">😔</span><h5>Depression, Fatigue, and Chronic Pain</h5><p>Years of undiagnosed and inadequately managed pain cause depression and fatigue — both from the biological impact of chronic inflammation (cytokines directly suppress mood) and from the psychosocial burden of an invisible, unvalidated condition. PHQ-9 screening at every review. The fatigue in axSpA is frequently underestimated — it is a significant component of the disease burden that NSAIDs address poorly and biologics often improve dramatically.</p><span class="psoci-phrase">"How has your mood been through all of this? The fatigue and depression that often come with this condition are as real as the back pain, and they improve with proper treatment. I want to check in about how you're feeling overall."</span></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7H — Follow-up schedule</div>
+    <div class="card" style="padding:1.1rem 1.25rem;margin-bottom:1.25rem">
+      <div class="fu-line">
+        <div class="fu-event"><div class="fu-dot fd1">1</div><div class="fu-content"><h5>4 Weeks — NSAID Response Review</h5><p>Has naproxen provided dramatic improvement? (If yes: axSpA diagnosis strongly supported; continue and refer.) BASDAI score at this appointment. MRI SIJ result reviewed. HLA-B27 result. Uveitis history — any new episode? PHQ-9. Physiotherapy referral actioned? Explanation of NICE NG65 referral process provided? Pre-rheumatology appointment checklist completed.</p><div class="fu-tags"><span class="ft ft-b">NSAID response + BASDAI</span><span class="ft ft-a">MRI + HLA-B27 results</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd2">2</div><div class="fu-content"><h5>Rheumatology Appointment — Specialist Confirmation</h5><p>GP to provide: all IBP criteria documented, extra-articular features listed, NSAID trials documented (name, dose, duration, response), BASDAI score, MRI SIJ report, HLA-B27 result, ESR/CRP. Rheumatologist confirms diagnosis using ASAS criteria. Biologic eligibility assessed. SpA-specific physiotherapy referral optimised.</p><div class="fu-tags"><span class="ft ft-b">Full documentation</span><span class="ft ft-r">BASDAI ≥4 = biologic eligibility</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd3">3</div><div class="fu-content"><h5>Post-Biologic Initiation — 3 Months</h5><p>BASDAI and BASFI response to biologic — NICE TA criteria require 50% improvement or BASDAI reduction ≥2 at 12 weeks. Infection screen. PHQ-9 — mood often improves with disease control. CVD risk markers. Ophthalmology — uveitis frequency change? Vaccination check (influenza; no live vaccines). Shared care agreement activated.</p><div class="fu-tags"><span class="ft ft-r">Biologic response at 12 weeks (50% BASDAI improvement)</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd4">4</div><div class="fu-content"><h5>Annual Shared Care Review (GP + Rheumatology)</h5><p>BASDAI, BASFI, chest expansion (BASMI), Schober's. CVD risk: BP, fasting lipids, glucose, smoking status, BMI, Framingham ×1.5 calculation. DEXA at 5 years (osteoporosis surveillance). NSAID safety bloods if continuing. Vaccination review (annual influenza; biologic patient). Uveitis frequency. Reproductive status (NSAID/biologic review if pregnancy planning). PHQ-9. NASS programme engagement. Smoking cessation.</p><div class="fu-tags"><span class="ft ft-b">Annual CVD risk</span><span class="ft ft-g">DEXA at 5 years</span><span class="ft ft-a">Pregnancy review annually</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd5">5</div><div class="fu-content"><h5>Any Acute Presentation — Uveitis Protocol</h5><p>Any painful red eye in a patient with known axSpA = same-day ophthalmology referral. Do not manage as conjunctivitis. Do not prescribe topical antibiotics. Contact ophthalmology directly with the axSpA diagnosis stated explicitly. After uveitis resolves: inform rheumatologist — frequency of uveitis flares informs biologic selection (adalimumab/infliximab preferred if recurrent uveitis).</p><div class="fu-tags"><span class="ft ft-r">Uveitis = same-day ophthalmology always</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="sub-divider" id="monitoring">7I — Monitoring: disease activity + drug surveillance</div>
+    <div class="mon-rule"><h4>Memory rule</h4><p>At every axSpA review: <strong>BASDAI</strong> (disease activity — ≥4 = biologic indication); <strong>chest expansion</strong> (specific to axSpA — preserve); <strong>uveitis frequency</strong> (informs biologic choice); <strong>CVD risk</strong> (annual BP/lipids/glucose — inflammatory arthritis is high CVD risk); <strong>NSAID safety bloods</strong> (eGFR, BP); <strong>biologic monitoring</strong> (FBC, LFTs, infection screen); <strong>PHQ-9</strong>; <strong>reproductive status</strong> (NSAIDs in pregnancy: contraindicated 3rd trimester; certolizumab if biologic needed).</p></div>
+    <div class="g2" style="margin-bottom:1.25rem">
+      <div class="card" style="overflow:hidden">
+        <table class="rt">
+          <thead><tr><th>Drug / target</th><th>Test</th><th>Timing</th><th>Action threshold</th></tr></thead>
+          <tbody>
+            <tr><td class="q">NSAIDs (continuous)</td><td>BP, eGFR, LFTs</td><td>4–6 weeks post-start; then annually</td><td>eGFR fall &gt;25% → reduce dose or stop. BP rising → adjust antihypertensive. GI symptoms → ensure PPI in use.</td></tr>
+            <tr><td class="q">Sulfasalazine</td><td>FBC + LFTs</td><td>4–6 weeks; 3 monthly × 1 year; then 6 monthly</td><td>WBC &lt;3.5 or neutrophils &lt;2.0 → stop immediately. LFTs 3× ULN → stop, re-challenge with caution. Any fever/sore throat → urgent FBC.</td></tr>
+            <tr><td class="q">Anti-TNF biologics</td><td>FBC, LFTs, CRP, BASDAI</td><td>3 months post-initiation; then 6 monthly (rheumatology-led)</td><td>BASDAI not &lt;50% improved at 12 weeks → biologic failure; switch. Serious infection → stop immediately; review with rheumatology. Annual influenza vaccine (compulsory). No live vaccines.</td></tr>
+            <tr><td class="q">BASDAI / disease activity</td><td>BASDAI questionnaire</td><td>Every GP and rheumatology review</td><td>BASDAI ≥4 on NSAIDs → biologic eligibility met; ensure rheumatology referral includes this. BASDAI ≥4 on anti-TNF at 12 weeks → biologic failure; switch.</td></tr>
+            <tr><td class="q">CVD risk (annual)</td><td>BP, fasting lipids, glucose, BMI, Framingham</td><td>Annually</td><td>Framingham ×1.5: ≥10% 10-year CVD risk → statin. BP &gt;140/90 → treat. Smoking → SMSC referral. Statin threshold lower than general population in axSpA.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <table class="rt">
+          <thead><tr><th>Clinical situation</th><th>First-choice</th><th>Key caveat</th></tr></thead>
+          <tbody>
+            <tr><td class="q">Active axSpA, no comorbidities</td><td>Naproxen 500mg BD (continuous)</td><td>Dramatic response supports diagnosis</td></tr>
+            <tr><td class="q">Peripheral + axial disease</td><td>NSAID + sulfasalazine (peripheral)</td><td>Sulfasalazine does NOT treat axial disease</td></tr>
+            <tr><td class="q">BASDAI ≥4 on 2 NSAIDs</td><td>Anti-TNF (rheumatology)</td><td>Document NSAID names, doses, durations precisely</td></tr>
+            <tr><td class="q">Psoriatic axSpA</td><td>Secukinumab (anti-IL17)</td><td>Avoid in IBD — worsens IBD</td></tr>
+            <tr><td class="q">IBD-associated axSpA</td><td>Adalimumab or Infliximab</td><td>Never etanercept — no IBD efficacy</td></tr>
+            <tr><td class="q">Pregnancy / planning</td><td>Certolizumab pegol</td><td>Only anti-TNF with no placental transfer</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-divider">7J — Safety-netting: uveitis emergency · biologic infection · fracture alert</div>
+    <div class="sn-box">
+      <h4>⚠ Three scenario-specific safety-net phrases</h4>
+      <div class="sn-scenarios">
+        <div class="sn-scenario sns-e"><div class="sn-scenario-lbl">🔴 Acute uveitis — same-day emergency</div><div class="sn-phrase">"If you ever get a painful red eye — whether it hurts, is sensitive to light, or your vision goes blurry — you need to go to the eye unit the same day, not to us and not to a pharmacist. This is a known complication of your condition and it requires specialist eye treatment within 24 hours to prevent lasting damage. Please save the number of the Eye Unit at [local hospital] on your phone."</div><div class="sn-why">Acute anterior uveitis causes permanent visual loss without treatment. The 24-hour window is critical. The patient must be able to access ophthalmology directly — delays from seeking GP triage first cost time and vision.</div></div>
+        <div class="sn-scenario sns-m"><div class="sn-scenario-lbl">💊 Biologic and serious infection</div><div class="sn-phrase">"While you're on the biologic injection, your immune system will be working slightly differently. If you develop a fever that doesn't settle in 24–48 hours, a persistent cough, breathlessness, or feel seriously unwell — please contact us or go to A&amp;E and tell them you're on a biologic medication for inflammatory arthritis. Infections can progress more quickly on this medication and need prompt treatment."</div><div class="sn-why">Anti-TNF therapy increases risk of serious bacterial, opportunistic, and reactivation infections (TB, fungal, listeria). The patient must know to seek help promptly and must always disclose biologic status to healthcare providers, including in A&amp;E.</div></div>
+        <div class="sn-scenario sns-a"><div class="sn-scenario-lbl">🟠 Spinal fracture warning (advanced disease)</div><div class="sn-phrase">"As the condition progresses, your spine can become stiffer and more vulnerable to injury. If you ever have a fall or knock to your back or neck — even a relatively minor one — and then develop sudden severe pain, or any weakness or numbness in your legs, please go to A&amp;E immediately and tell them you have ankylosing spondylitis. The ankylosed spine can fracture in ways that ordinary spines don't, and this requires immediate assessment."</div><div class="sn-why">Ankylosed spine fractures are highly unstable and associated with severe neurological injury. The mechanism (minor trauma → catastrophic fracture) must be explained proactively, not retrospectively after injury.</div></div>
+      </div>
+      <div class="sn-legal"><h5>Why safety-netting matters beyond clinical care</h5>
+        <div class="sn-legal-grid">
+          <div class="sn-legal-item">Uveitis same-day ophthalmology — document at every consultation: "patient advised: acute painful red eye = same-day ophthalmology, not GP appointment"</div>
+          <div class="sn-legal-item">Biologic infection safety-net documented at every prescription: "patient counselled re: infection risk on anti-TNF; advised to seek immediate care with fever or systemic illness"</div>
+          <div class="sn-legal-item">TB screen before biologic — IGRA result documented before any anti-TNF initiation; prescribing anti-TNF without TB screen = patient safety failure</div>
+          <div class="sn-legal-item">Pregnancy and NSAID — document at every prescription review: "patient informed NSAIDs must stop at conception/positive test; certolizumab as biologic option discussed"</div>
+          <div class="sn-legal-item">CVD risk documented annually with Framingham ×1.5 multiplier calculation and statin discussion outcome documented</div>
+          <div class="sn-legal-item">Vaccination review before biologic initiation — live vaccines prohibited during anti-TNF; annual influenza mandatory; pneumococcal before starting</div>
+        </div>
+      </div>
+      <div class="sn-fu">
+        <div class="sn-fu-item"><strong>4 Weeks</strong>NSAID response + BASDAI; MRI/HLA-B27 results; rheumatology referral confirmed actioned</div>
+        <div class="sn-fu-item"><strong>3 Months (post-biologic)</strong>BASDAI 50% improvement check; infection screen; PHQ-9; CVD risk markers</div>
+        <div class="sn-fu-item"><strong>Annual</strong>CVD risk (Framingham ×1.5); DEXA at 5 years; chest expansion; uveitis frequency; pregnancy review; biologic monitoring</div>
+      </div>
+    </div>
+
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7 (Final)</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say">
+          <div class="sca-block-t">Closing the consultation</div>
+          <div class="sca-phrase">"Today I'm going to do several things: upgrade your anti-inflammatory prescription to naproxen 500mg twice daily — taken every day, not just when it's bad; organise an MRI scan of your sacroiliac joints; arrange a blood test for HLA-B27 and inflammatory markers; and send an urgent referral to rheumatology."</div>
+          <div class="sca-phrase">"The episodes of iritis you've had — those are part of the same condition. They're not coincidences. And importantly, treating the underlying inflammation may reduce how often they happen."</div>
+          <div class="sca-phrase">"I want to give you a word of reassurance about the worst images you may have seen online — complete spinal fusion is the extreme of untreated disease. Most people diagnosed at your age, with treatment, maintain a completely normal life."</div>
+          <div class="sca-phrase">"If you ever get a painful red eye: same-day eye unit, not us. That is the emergency sign for this condition. Here's the number written down."</div>
+          <div class="sca-phrase">"Is there anything else on your mind — particularly about the medication if you're thinking about starting a family?"</div>
+        </div>
+        <div class="sca-block sca-avoid">
+          <div class="sca-block-t">Deductions — closing</div>
+          <ul>
+            <li>Not making the uveitis–back pain connection explicit</li>
+            <li>Managing as mechanical back pain again — not recognising IBP criteria met</li>
+            <li>Prescribing PRN rather than continuous NSAID</li>
+            <li>Not arranging MRI SIJ (ordering plain X-ray instead)</li>
+            <li>Not referring to rheumatology per NICE NG65 (≥4/5 criteria met)</li>
+            <li>Not giving the uveitis same-day ophthalmology safety-net</li>
+            <li>Not addressing the "bamboo spine" prognosis fear</li>
+          </ul>
+        </div>
+        <div class="sca-block sca-score">
+          <div class="sca-block-t">Tasks domain — full criteria</div>
+          <ul>
+            <li>NICE NG65 IBP criteria applied (≥4/5 met) → rheumatology referral made</li>
+            <li>MRI SIJ arranged (not plain X-ray)</li>
+            <li>HLA-B27 + ESR/CRP + BASDAI completed before referral</li>
+            <li>Naproxen continuous (not PRN) + PPI co-prescribed</li>
+            <li>Uveitis same-day ophthalmology safety-net provided in writing</li>
+          </ul>
+        </div>
+        <div class="sca-block sca-score" style="border-left:2px solid #c4b5fd">
+          <div class="sca-block-t" style="color:#c4b5fd">Relating to Others — full criteria</div>
+          <ul>
+            <li>Diagnostic delay acknowledged with apology and forward plan</li>
+            <li>Uveitis–back pain connection made explicitly ("same condition")</li>
+            <li>Bamboo spine fear addressed with accurate prognostic information</li>
+            <li>ICE all three explored — diagnostic journey ideas; wheelchair fear; referral expectation</li>
+            <li>Reproductive planning raised proactively ("before you need it")</li>
+            <li>Closing question asked specifically about pregnancy planning</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">IBP criteria not screened; mechanical back pain diagnosis repeated; uveitis not connected; plain X-ray only; no rheumatology referral; PRN NSAID only; no uveitis emergency safety-net</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">IBP identified but NICE NG65 referral threshold not applied; MRI arranged but no rheumatology referral; uveitis noted but not connected; BASDAI not completed; bamboo spine fear not addressed</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">≥4/5 IBP criteria identified; NICE NG65 rheumatology referral made; MRI SIJ (not plain X-ray); HLA-B27 + BASDAI; naproxen continuous + PPI; uveitis–back pain connection explicit; diagnostic delay acknowledged; bamboo spine prognosis corrected; uveitis same-day ophthalmology safety-net written; reproductive planning raised; closing question</div></div>
+      </div>
+    </div>
+  </div>
+</div><!-- /STEP 7 -->
+<!-- ═══ SCA SCORECARD ═══ -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Axial Spondyloarthritis — SCA Consultation Scorecard</div><div class="scorecard-sub">NICE NG65 · ASAS Criteria · RAG self-assessment · 8.5-year diagnostic delay: GP recognition is the solution</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>IBP screen opened the consultation</strong> — morning stiffness &gt;30 min, improvement with exercise, and nocturnal waking asked within the first 2 minutes; candidate did not default to generic back pain history</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Diagnostic delay acknowledged</strong> — candidate explicitly recognised that previous management was incorrect for this pattern and said so; patient validated rather than institutional loyalty defended</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain language throughout</strong> — "inflammation in the sacroiliac joints" not "sacroiliitis"; "anti-inflammatory injection targeting TNF" not "anti-TNF biologic"; uveitis explained as "a specific type of eye inflammation that is part of the same condition"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Responds to bamboo spine fear specifically</strong> — candidate did not give generic reassurance; gave the specific message that modern biologics have transformed outcomes and that severe deformity represents untreated disease</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Signposting and explanation at each decision</strong> — "I'm arranging an MRI rather than an X-ray because..."; "I'm referring to rheumatology rather than physiotherapy because..."; "I'm prescribing this every day, not just when it's bad, because..."</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Uveitis–back pain connection made explicitly</strong> — "your eye problems and your back pain are the same condition" stated directly; not implied or left for the patient to infer; this is the most important diagnostic integration act in this consultation</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Closing question asked proactively</strong> — "is there anything else, particularly about the medication if you're thinking about starting a family?" opens the reproductive planning agenda specifically; patient leaves with comprehensive understanding</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, diagnosis, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>All 5 IBP criteria screened and counted</strong> — age &lt;45; improvement with exercise; no improvement with rest; insidious onset; nocturnal waking second half of night; explicitly counted to meet NICE NG65 threshold of ≥4</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Extra-articular features screened</strong> — uveitis/iritis, psoriasis, IBD, peripheral arthritis, enthesitis all specifically asked about; previous uveitis connected to IBP pattern</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>MRI SIJ arranged (not plain X-ray)</strong> — NICE NG65 recommends MRI SIJ as first-line imaging; plain X-ray ordered alone = incorrect and misses early sacroiliitis; candidate explained why MRI is the right test</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>HLA-B27 and ESR/CRP arranged</strong> — supporting bloods for rheumatology referral; candidate explained what these test for and their limitations (normal MRI or normal ESR does not exclude axSpA)</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>BASDAI completed before rheumatology referral</strong> — BASDAI score documents disease activity at referral; confirms biologic eligibility at the time of first specialist review rather than wasting an appointment at a later date</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>NICE NG65 rheumatology referral made with complete documentation</strong> — IBP criteria count, extra-articular features, NSAID response, BASDAI score, MRI SIJ result all included in referral letter; not sent as generic back pain referral</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Naproxen prescribed continuous (not PRN) + PPI</strong> — NICE NG65: continuous NSAID preferred; sub-therapeutic PRN use documented as previous management; PPI co-prescribed; therapeutic dose confirmed (500mg BD not 200mg)</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>ICE all three explored</strong> — diagnostic model ("why hasn't the physio worked?"); bamboo spine fear named and addressed with accurate prognosis; referral to rheumatology as expectation met; reproductive planning raised proactively</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Uveitis acute safety-net provided + ophthalmology pathway explained</strong> — painful red eye = same-day eye unit; written card or contact number; this is the emergency sign for axSpA that is most commonly missed in GP consultations</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Biologic eligibility framework explained to patient</strong> — two NSAID trials required; BASDAI threshold; rheumatologist will assess; this sets realistic expectations for the biologic pathway and prevents premature disappointment if biologics not started at first rheumatology appointment</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decision making</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Diagnostic journey acknowledged</strong> — "I'm sorry this wasn't identified sooner"; validation before management; patient feels heard before being treated</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — patient's own explanatory model ("mechanical back pain," "poor posture") identified and gently replaced with the inflammatory mechanism explanation</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> — bamboo spine / wheelchair fear specifically asked and addressed ("that is the extreme of untreated disease — not what happens to most people with modern treatment")</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations explored</strong> — referral expectation matched; diagnosis as expectation met; management plan framed as "what you deserved 2 years ago, and what we're doing now"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Empathy specific to diagnostic delay</strong> — not generic sympathy but specific acknowledgement of the 2-year journey and the compounding impact: pain, self-doubt, incorrect advice, career anxiety</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Uveitis connection delivered as integrative insight</strong> — "the reason your iritis keeps coming back, and why your back pain doesn't respond to physio, is the same — they're both the same condition." This is not a clinical data point but a therapeutic revelation.</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Exercise framed as treatment, not adjunct</strong> — "exercise is your best non-pharmacological treatment — not a nice addition but an essential part of managing this condition"; NASS programme recommended specifically, not generic physiotherapy</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Occupation acknowledged as asset not just risk</strong> — "your knowledge of exercise and movement is an advantage here"; professional identity incorporated positively rather than just as an occupational hazard</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Reproductive planning raised proactively and non-intrusively</strong> — "before we finish, I want to mention something that might be relevant..." rather than interrogating about pregnancy plans; information offered, not demanded</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Chunk-and-check through four-part plan</strong> — diagnosis; investigations; NSAID; referral — delivered one part at a time with understanding confirmed after each; not a monologue of clinical information</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Consultation closes with patient confidence restored</strong> — patient leaves with explanation, plan, safety-net, and confidence that the healthcare system is now working with her rather than dismissing her</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment Guide</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">IBP criteria not screened; mechanical back pain repeated; uveitis not connected; plain X-ray instead of MRI SIJ; no rheumatology referral; PRN NSAID; uveitis emergency safety-net absent; diagnostic delay not acknowledged</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">Some IBP features noted but not counted to NICE threshold; MRI arranged but no rheumatology referral; uveitis noted but not connected; NSAID prescribed but PRN not continuous; BASDAI not completed; bamboo spine fear not addressed</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">≥4/5 IBP criteria counted; uveitis–back pain connected explicitly; MRI SIJ (not X-ray); HLA-B27 + BASDAI; NICE NG65 rheumatology referral; naproxen continuous + PPI; bamboo spine prognosis corrected; uveitis same-day ophthalmology safety-net written; diagnostic delay acknowledged; reproductive planning raised; closing question</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist above to see your score and personalised feedback</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ═══ PATIENT ACTOR BRIEF ═══ -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"I've been coming with this back pain for 2 years now and I keep being told it's mechanical and to do core exercises, but the physiotherapy hasn't helped. I'm a physiotherapy assistant so I know a bit about these things — and something about this just doesn't feel like normal back pain to me."</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>Priya Sharma, 28-year-old physiotherapy assistant at an NHS community rehabilitation team. Degree-educated, physically active, and knowledgeable about musculoskeletal conditions professionally. Married, no children yet. Has been attending GP appointments for 2 years with progressive back pain and has been told on two occasions it is "mechanical back pain." Has been referred for generic physiotherapy twice — neither course helped. Has two previous episodes of acute anterior uveitis (right eye once, left eye once, in the past 3 years), both managed by optometrists. The iritis episodes were not connected to her back pain by any clinician. She is aware there may be a connection but hasn't been told directly.</p></div>
+      <div class="ab"><h5>Hidden agendas (two layers)</h5><p><strong>Layer 1 — Bamboo spine / wheelchair fear:</strong> Priya has searched "inflammatory back pain" online and come across images of ankylosing spondylitis with severe spinal fusion. She is frightened that this is her future. She will not volunteer this unless asked about her concerns specifically. If asked "what's your biggest worry about this?", she will say: "I've seen pictures online of people whose spine completely fuses — I'm worried that's what's going to happen to me." Accurate prognostic information (most people with modern treatment maintain normal function) is the most reassuring thing the candidate can say.</p><p><strong>Layer 2 — Reproductive planning:</strong> Priya and her husband are "thinking about starting a family in the next couple of years." She is worried about what this means for her medication — she knows ibuprofen is not safe in pregnancy. She will not bring this up unless there is a natural opportunity, or unless the candidate specifically asks about reproductive plans at the end of the consultation.</p></div>
+      <div class="ab"><h5>Clinical details (if asked)</h5><ul>
+        <li>Back pain: bilateral, centred on the sacroiliac area (low back, slightly lateral, both sides); morning stiffness 45–60 minutes; better after 30 min of activity; waking around 4am with stiffness needing to walk around</li>
+        <li>Aggravating: sitting for &gt;30 min, car journeys, evenings watching TV; "I actually feel worse after rest"</li>
+        <li>Improving: exercise, gentle yoga, walking — "I actually feel better the more I move"</li>
+        <li>NSAID response: "when I've taken proper doses of ibuprofen — like 400mg — it genuinely helps a lot more than paracetamol ever did"</li>
+        <li>Uveitis: both episodes were sudden onset, red painful eye, sensitive to light, resolved with eye drops from the optometrist within 2–3 weeks; she was told "iritis" but no cause was identified</li>
+        <li>Family history: father has "some kind of back condition" — she thinks it might be similar; uncle has psoriasis</li>
+        <li>No IBD symptoms, no psoriasis, no peripheral joint swelling</li>
+        <li>PHQ-9 would score around 6 — "I've been getting down about this if I'm honest"</li>
+      </ul></div>
+      <div class="ab"><h5>Reactions to key moments</h5><ul>
+        <li><strong>When IBP criteria are systematically screened:</strong> Engaged and grateful — "yes, exactly — that's exactly my experience. Why hasn't anyone asked me that before?"</li>
+        <li><strong>When uveitis is connected to back pain:</strong> "Oh — really? They're connected? I had a feeling but no one ever said that to me." Visibly relieved.</li>
+        <li><strong>When bamboo spine is mentioned/addressed:</strong> If candidate asks "what's your biggest worry?" she reveals the fear. If candidate then says most people maintain normal function with modern treatment, she visibly relaxes.</li>
+        <li><strong>When told plain X-ray is insufficient:</strong> "Oh — so the X-ray wouldn't show it? That makes sense — I've had two X-rays that were normal and kept being told it was fine."</li>
+        <li><strong>When rheumatology referral is made:</strong> "Thank you — I've been asking for a proper referral for 2 years."</li>
+        <li><strong>Challenge line:</strong> "My previous GP told me core exercises and physiotherapy were the right treatment. But they haven't helped at all. Am I wrong that this is something different?"</li>
+      </ul></div>
+    </div>
+    <div class="actor-challenge">"I've seen pictures online of people with ankylosing spondylitis whose spine is completely fused. Is that what's going to happen to me? And — I'm a bit embarrassed to mention this — we're hoping to start a family in the next couple of years. Does that affect what I can take?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> Priya will feel fully satisfied if the candidate: (1) screens all 5 IBP criteria; (2) connects the uveitis to the back pain explicitly; (3) arranges MRI SIJ (not just X-ray); (4) makes the rheumatology referral per NICE NG65; (5) addresses the bamboo spine fear with accurate prognosis; (6) provides the uveitis same-day ophthalmology safety-net; (7) raises the reproductive planning question and mentions certolizumab as the pregnancy-safe biologic option. She will disengage if: managed as mechanical back pain again; uveitis not connected; plain X-ray only; no rheumatology referral; bamboo spine fear not addressed.</p>
+  </div>
+</div>
+<!-- ═══ CLINIC SUMMARY ═══ -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Axial Spondyloarthritis — Clinical Decision Framework</div><div class="sum-sub">NICE NG65 (2017/2023) · ASAS Criteria · CKS axSpA 2024 · Avg diagnostic delay 8.5 years</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🚦 1 — IBP Screen &amp; Triage</div>
+    <div class="algo-wrap" style="margin-bottom:1rem">
+      <div class="algo-start">Chronic back pain (&gt;3 months) in patient &lt;45 years → apply NICE NG65 IBP criteria</div>
+      <div class="algo-arrow">↓</div>
+      <div class="algo-row">
+        <div class="algo-branch algo-red"><div class="algo-branch-lbl">🔴 Emergency — same-day</div><ul class="algo-list"><li>Acute anterior uveitis: painful red eye + photophobia → same-day ophthalmology (NOT GP management, NOT topical antibiotics)</li><li>Fracture in ankylosed spine after trauma → emergency CT/MRI</li><li>New neurological deficit in known axSpA → MRI + neurosurgery</li></ul><div class="algo-action red-action">Uveitis: always same-day eye unit · Never manage as conjunctivitis</div></div>
+        <div class="algo-branch algo-amber"><div class="algo-branch-lbl">🟠 Urgent — 2–4 weeks</div><ul class="algo-list"><li>≥4/5 IBP criteria met in &lt;45 with chronic back pain: NICE NG65 rheumatology referral; MRI SIJ; HLA-B27; BASDAI; NSAID immediately</li><li>BASDAI ≥4 on NSAID therapy: biologic eligibility — rheumatology urgent review</li></ul><div class="algo-action amber-action">MRI SIJ (not plain X-ray) · Start NSAID before waiting for appointment</div></div>
+        <div class="algo-branch algo-green"><div class="algo-branch-lbl">🟢 Routine — shared care</div><ul class="algo-list"><li>Established axSpA well-controlled: annual BASDAI, CVD risk, chest expansion, DEXA at 5 yrs</li><li>Biologic monitoring: shared care FBC/LFTs/CRP; annual influenza; no live vaccines</li></ul><div class="algo-action green-action">Annual CVD risk (Framingham ×1.5) · Continuous NSAID + PPI · NASS exercise</div></div>
+      </div>
+    </div>
+    <div class="sum-sub-hdr">📊 2 — NICE NG65 IBP Referral Criteria &amp; Key Numbers</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem .9rem">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:.45rem">Refer if ≥4/5 IBP Criteria Met in &lt;45 with &gt;3 months back pain</div>
+        <div style="font-size:12px;line-height:1.75"><div><strong>1.</strong> Age &lt;45 at onset (eligibility criterion)</div><div><strong>2.</strong> Improvement with exercise ✓ (highest specificity)</div><div><strong>3.</strong> No improvement with rest ✓</div><div><strong>4.</strong> Insidious onset ✓</div><div><strong>5.</strong> Waking second half of night (4am) ✓ (cortisol nadir)</div><div style="margin-top:.5rem;background:var(--g-bg);border:1px solid var(--g-bd);border-radius:6px;padding:.3rem .5rem;font-size:11px;font-weight:700;color:var(--g)">Screen for extra-articular features: uveitis · psoriasis · IBD · enthesitis · peripheral arthritis</div></div>
+      </div>
+      <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem .9rem">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:.45rem">Biologic Selection Matrix</div>
+        <div style="display:flex;flex-direction:column;gap:4px;font-size:12px">
+          <div style="display:flex;gap:6px;align-items:center"><div style="background:#dbeafe;color:#1d4ed8;padding:1px 8px;border-radius:8px;font-weight:700;font-size:11px;flex-shrink:0">Standard</div><div>Adalimumab or Etanercept (first anti-TNF)</div></div>
+          <div style="display:flex;gap:6px;align-items:center"><div style="background:#fee2e2;color:var(--r);padding:1px 8px;border-radius:8px;font-weight:700;font-size:11px;flex-shrink:0">IBD</div><div>Adalimumab or Infliximab — NEVER etanercept</div></div>
+          <div style="display:flex;gap:6px;align-items:center"><div style="background:#fef3c7;color:#92400e;padding:1px 8px;border-radius:8px;font-weight:700;font-size:11px;flex-shrink:0">Psoriasis</div><div>Secukinumab (anti-IL17) preferred</div></div>
+          <div style="display:flex;gap:6px;align-items:center"><div style="background:#f0fdf4;color:var(--g);padding:1px 8px;border-radius:8px;font-weight:700;font-size:11px;flex-shrink:0">Pregnancy</div><div>Certolizumab pegol (no placental transfer)</div></div>
+          <div style="display:flex;gap:6px;align-items:center"><div style="background:var(--p-bg);color:var(--p);padding:1px 8px;border-radius:8px;font-weight:700;font-size:11px;flex-shrink:0">Uveitis</div><div>Adalimumab or Infliximab (monoclonals preferred)</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="num-grid" style="margin-bottom:1rem">
+      <div class="num-card num-highlight"><div class="num-val">8.5 yrs</div><div class="num-lbl">Average UK diagnostic delay — GP IBP screening closes this gap</div></div>
+      <div class="num-card num-highlight"><div class="num-val">4/5</div><div class="num-lbl">NICE NG65 IBP criteria threshold for mandatory rheumatology referral</div></div>
+      <div class="num-card num-highlight"><div class="num-val">BASDAI ≥4</div><div class="num-lbl">Biologic eligibility threshold (+ 2 NSAID failures documented)</div></div>
+      <div class="num-card num-highlight"><div class="num-val">MRI SIJ</div><div class="num-lbl">First-line imaging — detects bone marrow oedema before X-ray changes</div></div>
+      <div class="num-card"><div class="num-val">HLA-B27</div><div class="num-lbl">+ve 90% AS, 75% nr-axSpA; 8% general population (NOT diagnostic alone)</div></div>
+      <div class="num-card"><div class="num-val">Continuous</div><div class="num-lbl">NSAID use preferred in axSpA — may reduce radiographic progression</div></div>
+      <div class="num-card"><div class="num-val">CVD ×1.5</div><div class="num-lbl">Framingham risk ×1.5 multiplier — inflammatory arthritis elevated CVD risk</div></div>
+      <div class="num-card"><div class="num-val">Same day</div><div class="num-lbl">Acute uveitis — ophthalmology emergency, not GP management</div></div>
+    </div>
+    <div class="sum-sub-hdr">⚠ 3 — Safety-Netting &amp; Monitoring</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div class="sn-compact-wrap">
+        <div class="sn-compact sns-e"><div class="sn-compact-lbl">🔴 Uveitis — always same day</div><div class="sn-compact-phrase">"Painful red eye + photophobia = same-day eye unit, not GP appointment. Write down the number. Always."</div></div>
+        <div class="sn-compact sns-m"><div class="sn-compact-lbl">💊 Biologic — infection</div><div class="sn-compact-phrase">"Fever &gt;24–48h on biologic = contact us or A&amp;E immediately. Disclose biologic status. Infections progress faster on anti-TNF."</div></div>
+        <div class="sn-compact sns-a"><div class="sn-compact-lbl">🟠 Fracture in advanced AS</div><div class="sn-compact-phrase">"Any fall or neck trauma → if sudden severe pain develops, go to A&amp;E. Tell them you have ankylosing spondylitis."</div></div>
+      </div>
+      <div class="fu-compact-wrap">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.4rem">Follow-up</div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--b)">4w</div><div><strong>4 weeks:</strong> NSAID response + BASDAI; MRI/HLA-B27 results; rheumatology referral confirmed</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--a)">3m</div><div><strong>3 months (post-biologic):</strong> BASDAI 50% check; infection screen; PHQ-9; CVD</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--g)">1yr</div><div><strong>Annual:</strong> CVD risk (Framingham ×1.5); DEXA at 5 years; chest expansion; uveitis; pregnancy</div></div>
+        <div style="margin-top:.5rem;background:var(--r-bg);border:1px solid var(--r-bd);border-radius:8px;padding:.45rem .65rem;font-size:11.5px;color:var(--r);font-weight:600">📌 TB screen (IGRA) mandatory before ANY biologic initiation — failure = patient safety issue</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div class="flag-item flag-red"><strong>🚨 Red flags:</strong> Uveitis (same-day ophthal); fracture in ankylosed spine (emergency); new neurological deficit (MRI + neurosurgery); fever + back pain + raised CRP (discitis — emergency MRI + blood cultures); weight loss + age &gt;50 + back pain (malignancy — urgent MRI)</div>
+      <div class="flag-item flag-pink"><strong>🛡️ Safety:</strong> TB screen before biologic (IGRA mandatory); NSAIDs stop in pregnancy (3rd trimester CI; 1st trimester caution); certolizumab preferred biologic in pregnancy; sulfasalazine DOES NOT treat axial disease; anti-IL17 (secukinumab) worsens IBD; etanercept NOT effective in IBD</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SCA SUMMARY ═══ -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label" style="color:rgba(255,255,255,.5)">SCA Exam Quick Reference</div><div class="sum-title" style="color:#fff">SCA Consultation Blueprint</div><div class="sum-sub" style="color:rgba(255,255,255,.6)">Tasks · Relating to Others · Global Skills</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🕐 12-Minute Consultation Flow</div>
+    <div class="sca-flow-wrap">
+      <div class="sca-flow-step sca-f1"><div class="sca-f-time">0–2 min</div><div class="sca-f-title">IBP Screen + Acknowledge Delay</div><div class="sca-f-phrase">"Before I go through the history again, I want to ask specifically about whether the pain is better or worse after exercise, and whether you wake in the night with stiffness. These are the features that determine what type of back condition this is."</div><div class="sca-f-note">Two minutes of IBP screening yields more diagnostic information than 10 minutes of generic SOCRATES. Apply before any other history.</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag gs">Global Skills</span></div><div class="sca-f-avoid">✗ Starting generic SOCRATES · ✗ Accepting "mechanical back pain" as the prior diagnosis without IBP screening</div></div>
+      <div class="sca-flow-step sca-f2"><div class="sca-f-time">2–5 min</div><div class="sca-f-title">Extra-Articular Features + ICE</div><div class="sca-f-phrase">"I want to ask about something that may not seem related to your back — have you ever had a painful red eye, called iritis?"</div><div class="sca-f-phrase">"What's your biggest worry about this — have you come across images online of people with fused spines?"</div><div class="sca-f-note">Screen for uveitis, psoriasis, IBD, peripheral arthritis, family history. ICE: diagnostic journey model; bamboo spine fear; referral expectation. Connect uveitis to back pain explicitly after eliciting it.</div><div class="sca-f-domains"><span class="sca-dom-tag ro">Relating to Others</span><span class="sca-dom-tag task">Tasks</span></div></div>
+      <div class="sca-flow-step sca-f3"><div class="sca-f-time">5–7 min</div><div class="sca-f-title">Examination + Diagnosis</div><div class="sca-f-phrase">"I'm going to test your SI joints, check chest expansion, and look for any tendon tenderness. A normal examination does not mean the diagnosis is wrong — the MRI is the key test."</div><div class="sca-f-phrase">"Based on everything you've described — the morning stiffness, nocturnal waking, improvement with exercise, and especially the iritis — this is almost certainly an inflammatory condition. Your eye problems and your back pain are the same condition."</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag gs">Global Skills</span></div></div>
+      <div class="sca-flow-step sca-f4"><div class="sca-f-time">7–9 min</div><div class="sca-f-title">Investigations + Referral</div><div class="sca-f-phrase">"I'm organising an MRI of the sacroiliac joints — not an X-ray, which wouldn't show the early changes. And a blood test called HLA-B27, plus inflammatory markers. These will be ready for your rheumatology appointment."</div><div class="sca-f-note">Naproxen 500mg BD continuously (not PRN) + PPI. NICE NG65 rheumatology referral sent today. BASDAI completed.</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span></div><div class="sca-f-avoid">✗ Plain X-ray only · ✗ Physiotherapy-only without rheumatology referral · ✗ PRN NSAID</div></div>
+      <div class="sca-flow-step sca-f5"><div class="sca-f-time">9–12 min</div><div class="sca-f-title">Prognosis + Safety-Net + Close</div><div class="sca-f-phrase">"The images of fused spines represent untreated disease. Most people diagnosed at your age with modern biologic treatment maintain a completely normal life."</div><div class="sca-f-phrase">"If you ever get a painful red eye — same-day eye unit, not us. Here is the number written down."</div><div class="sca-f-phrase">"Before we finish — are you thinking about starting a family? The reason I ask is that it affects which medications are safest."</div><div class="sca-f-domains"><span class="sca-dom-tag ro">Relating to Others</span><span class="sca-dom-tag gs">Global Skills</span></div><div class="sca-f-avoid">✗ Bamboo spine fear unaddressed · ✗ Uveitis safety-net not written · ✗ Reproductive planning not raised</div></div>
+    </div>
+
+    <div class="sum-3col" style="margin-top:1rem">
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">🔴🟠🟢 RAG — All 3 Domains</div>
+        <div class="rag-full-wrap">
+          <div class="rag-domain-title task-col">Tasks</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">🟢</div><div>≥4/5 IBP criteria counted; uveitis connected; MRI SIJ (not X-ray); HLA-B27 + BASDAI; NICE NG65 rheumatology referral; naproxen continuous + PPI; uveitis same-day ophthal safety-net; biologic eligibility pathway explained; reproductive planning raised</div></div>
+          <div class="rag-row rag-a-row"><div class="rag-rl">🟠</div><div>IBP features noted but not counted; MRI arranged but no rheumatology referral; uveitis noted but not connected; NSAID prescribed but PRN; BASDAI not completed; bamboo spine fear not addressed</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">🔴</div><div>Mechanical back pain managed again; IBP criteria not screened; uveitis not connected; plain X-ray only; no rheumatology referral; PRN NSAID only; uveitis emergency safety-net absent</div></div>
+          <div class="rag-domain-title ro-col" style="margin-top:.6rem">Relating to Others</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">🟢</div><div>Diagnostic delay acknowledged; bamboo spine prognosis corrected specifically; uveitis–back pain connection as integrative insight; ICE all three; reproductive planning proactively raised; chunk-and-check; consultation closes with patient confidence restored</div></div>
+          <div class="rag-row rag-a-row"><div class="rag-rl">🟠</div><div>Delay acknowledged but no apology; bamboo spine addressed generically not specifically; uveitis connected but as data not as revelation; ICE partial; reproductive planning omitted</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">🔴</div><div>Delay not acknowledged; bamboo spine fear ignored; uveitis not connected; no ICE; information delivered as monologue; patient leaves more confused than when they arrived</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">💬 Key Phrases</div>
+        <div class="phrase-stack">
+          <div class="phrase-card p-ideas"><div class="p-lbl">💭 Replace mechanical model</div><div class="p-phrase">"This is not a structural problem with your disc or posture. It's an inflammatory condition — your immune system is attacking the sacroiliac joints. The physio hasn't worked because generic back exercises don't target inflammation."</div></div>
+          <div class="phrase-card p-concerns"><div class="p-lbl">😟 Bamboo spine prognosis</div><div class="p-phrase">"The images of completely fused spines represent the extreme of untreated disease. Most people diagnosed at your age — 28 — with modern biologic treatment maintain completely normal spinal mobility and a normal life."</div></div>
+          <div class="phrase-card p-expect"><div class="p-lbl">🎯 Uveitis connection</div><div class="p-phrase">"Your episodes of iritis and your back pain are the same condition — both caused by the same inflammatory process. Treating the underlying inflammation will likely reduce the frequency of the eye flares as well."</div></div>
+          <div class="phrase-card p-validate"><div class="p-lbl">⏳ Acknowledge delay</div><div class="p-phrase">"I want to acknowledge something: I believe this should have been identified sooner. Everything you've been experiencing is characteristic of a recognisable inflammatory condition. I'm sorry that it wasn't picked up earlier."</div></div>
+          <div class="phrase-card p-explain"><div class="p-lbl">🔬 Why MRI not X-ray</div><div class="p-phrase">"I'm organising an MRI scan rather than an X-ray because the early changes in the sacroiliac joints show up on MRI long before they're visible on X-ray. That's probably why your previous X-rays were reported as normal."</div></div>
+          <div class="phrase-card p-close"><div class="p-lbl">👁️ Uveitis safety-net</div><div class="p-phrase">"If you ever get a painful red eye — same-day eye unit, not us, not a pharmacist. Here is the number written down. Uveitis needs treatment within 24 hours to prevent lasting damage."</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">🚫 8 Danger Zones</div>
+        <div class="dz-stack">
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>IBP criteria not applied — manages as mechanical back pain again</strong><span class="dz-fix">→ NICE NG65: screen all 5 IBP criteria in any &lt;45 with &gt;3 months back pain. Perpetuating a 2-year delay in an SCA consultation = Tasks and Relating to Others deduction.</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Uveitis not connected to back pain</strong><span class="dz-fix">→ Uveitis is the most specific extra-articular feature of axSpA. Connecting it is the most important diagnostic integration act of this consultation. Not doing so leaves the most important clue unused.</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Plain X-ray ordered instead of MRI SIJ</strong><span class="dz-fix">→ NICE NG65: MRI SIJ is recommended first-line. Plain X-ray is insensitive in early axSpA (takes years for changes to appear). Normal X-ray ≠ no disease. Ordering X-ray alone continues the diagnostic delay.</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Physiotherapy-only referral without rheumatology</strong><span class="dz-fix">→ Generic physio has limited benefit in axSpA. NICE NG65: mandatory rheumatology referral when ≥4/5 IBP criteria met. Physio alone is insufficient and perpetuates the 2-year delay pattern.</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>NSAID prescribed PRN not continuously</strong><span class="dz-fix">→ Continuous NSAID use is preferred in axSpA — may reduce radiographic progression. PRN use misses the anti-inflammatory threshold needed. Co-prescribe PPI always.</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Etanercept prescribed/mentioned for IBD-associated axSpA</strong><span class="dz-fix">→ Etanercept has NO efficacy for IBD. In IBD-associated axSpA: use adalimumab or infliximab. This biologic selection error is NICE TA-listed and a Tasks domain deduction.</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Secukinumab (anti-IL17) given in IBD-associated axSpA</strong><span class="dz-fix">→ Anti-IL17 worsens IBD — absolutely avoid. For IBD + axSpA: anti-TNF (adalimumab/infliximab) only.</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Biologic initiated without TB screen</strong><span class="dz-fix">→ IGRA (QuantiFERON/T-SPOT) mandatory before any anti-TNF. Prescribing without TB screen is a patient safety failure and a NICE TA requirement violation.</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sum-sub-hdr sca-sub-hdr" style="margin-top:1.25rem">💊 Drug Quick-Pick by Scenario</div>
+    <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:5px"><div style="font-size:11px;font-weight:600;color:var(--muted)">Active axSpA — first-line</div><div style="display:flex;align-items:center;gap:5px"><span style="font-size:10px;color:var(--muted)">→</span><span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:12px;background:#dbeafe;color:#1d4ed8">Naproxen 500mg BD (continuous)</span></div><div style="font-size:10.5px;color:var(--muted)">Always + PPI; document response precisely</div></div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:5px"><div style="font-size:11px;font-weight:600;color:var(--muted)">Peripheral arthritis</div><div style="display:flex;align-items:center;gap:5px"><span style="font-size:10px;color:var(--muted)">→</span><span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:12px;background:#fef3c7;color:#92400e">Sulfasalazine 3g/day</span></div><div style="font-size:10.5px;color:var(--muted)">Does NOT treat axial disease</div></div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:5px"><div style="font-size:11px;font-weight:600;color:var(--muted)">BASDAI ≥4 on 2 NSAIDs</div><div style="display:flex;align-items:center;gap:5px"><span style="font-size:10px;color:var(--muted)">→</span><span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:12px;background:#dcfce7;color:#15803d">Anti-TNF (rheumatology)</span></div><div style="font-size:10.5px;color:var(--muted)">IGRA mandatory before initiation</div></div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:5px"><div style="font-size:11px;font-weight:600;color:var(--muted)">Psoriatic axSpA</div><div style="display:flex;align-items:center;gap:5px"><span style="font-size:10px;color:var(--muted)">→</span><span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:12px;background:#fef9c3;color:#854d0e">Secukinumab (anti-IL17)</span></div><div style="font-size:10.5px;color:var(--muted)">Avoid in IBD — worsens bowel disease</div></div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:5px"><div style="font-size:11px;font-weight:600;color:var(--muted)">IBD-associated axSpA</div><div style="display:flex;align-items:center;gap:5px"><span style="font-size:10px;color:var(--muted)">→</span><span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:12px;background:#fee2e2;color:var(--r)">Adalimumab / Infliximab ONLY</span></div><div style="font-size:10.5px;color:var(--muted)">NEVER etanercept in IBD</div></div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .85rem;display:flex;flex-direction:column;gap:5px"><div style="font-size:11px;font-weight:600;color:var(--muted)">Pregnancy / planning</div><div style="display:flex;align-items:center;gap:5px"><span style="font-size:10px;color:var(--muted)">→</span><span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:12px;background:#f0fdf4;color:var(--g)">Certolizumab pegol</span></div><div style="font-size:10.5px;color:var(--muted)">Only anti-TNF with no placental transfer</div></div>
+      </div>
+      <div class="sdp-pivot">⛔ Etanercept NOT effective for IBD · Anti-IL17 WORSENS IBD · TB screen (IGRA) mandatory before any biologic · NSAIDs: stop at conception; 3rd trimester absolute CI · Sulfasalazine does NOT treat axial disease · Continuous NSAID preferred over PRN · MRI SIJ (not X-ray) for new suspected axSpA</div>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Axial Spondyloarthritis · GP Clinical Reasoning Framework v2</strong> · NICE NG65 (2017, updated 2023) · ASAS Classification Criteria · CKS axSpA (2024) · NICE TA383/TA416/TA507 (anti-TNF/anti-IL17 biologics) · MHRA guidance on biologics in pregnancy</p>
+  <p style="margin-top:4px">v2: NICE NG65 IBP 5-criteria referral framework · 8.5-year diagnostic delay narrative · Uveitis–back pain connection as primary diagnostic integration · MRI SIJ (not plain X-ray) as first-line imaging · BASDAI ≥4 biologic eligibility threshold · Biologic matrix: IBD → adalimumab/infliximab (NEVER etanercept); psoriasis → secukinumab; pregnancy → certolizumab · Anti-IL17 worsens IBD; etanercept no IBD efficacy · TB screen (IGRA) mandatory pre-biologic · Bamboo spine prognosis correction · CVD risk Framingham ×1.5 · Sulfasalazine peripheral joints only</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters · Always consult current NICE NG65, NICE TAs, and rheumatology shared care guidelines · Uveitis = same-day ophthalmology every time · Clinical judgement takes precedence</p>
+</div>
+</div><!-- /page -->
+</main>
+</div>
+<script src="script.js"></script>
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+</body>
+</html>

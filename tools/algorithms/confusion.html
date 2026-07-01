@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Confusion Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;--diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;--treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;--refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;--lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;--radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);--font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif;}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#7a2a0a 0%,#c05a1a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#c05a1a,#c0392b);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}.node[data-type="TREAT"] .node-num{background:var(--treat)}.node[data-type="REFER"] .node-num{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}.node[data-type="TREAT"] .node-tag{background:var(--treat)}.node[data-type="REFER"] .node-tag{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:70px;justify-content:center;white-space:nowrap}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}.pill-purple{background:#ede9fe;color:#5b21b6}.pill-blue{background:#dbeafe;color:#1e40af}.pill-teal{background:#ccfbf1;color:#0f766e}.pill-amber{background:#fef3c7;color:#92400e}.pill-green{background:#dcfce7;color:#15803d}.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+<div class="stem-banner">
+  <div class="sb-icon">🌀</div>
+  <div>
+    <b>Confusion — Acute Confusional State</b>
+    <small>GP assessment of acute vs chronic confusion — delirium, dementia and organic causes</small>
+  </div>
+</div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — first split acute (delirium — a medical emergency, hunt the cause) from chronic (dementia work-up), screen the killers, find &amp; treat the precipitant or run reversible-cause bloods, then manage, refer and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Confusion</span><div class="body"><b>Collateral history is essential</b> — acute (hours–days, fluctuating) vs chronic (months, progressive)? Time course, drugs, alcohol, function. Examine, full obs, <b>capillary glucose</b>, screen with <b>4AT</b>.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — delirium &amp; the killers</span><span class="ttl">Acute fluctuating inattention?</span><div class="body"><ul>
+      <li><b>Hypoglycaemia</b> — treat immediately · <b>hypoxia</b> · <b>sepsis</b> (NEWS2)</li>
+      <li><b>Stroke / head injury / subdural</b> (esp. anticoagulated, falls)</li>
+      <li><b>Meningitis / encephalitis</b> — fever, headache, photophobia, seizures</li>
+      <li><b>Drug or alcohol withdrawal</b> (delirium tremens, Wernicke's), opioid/anticholinergic toxicity</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">ACUTE — delirium</div><div class="box stop"><span class="lbl">Stop · act</span><span class="ttl">Treat cause / admit</span><div class="body">4AT positive + acute onset → delirium. Treat hypoglycaemia/hypoxia/sepsis now; <b>admit if unwell, unsafe, or cause not treatable in the community</b>. Wernicke's → IV thiamine.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">CHRONIC — cognitive</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Reversible-cause work-up</span><div class="body">Cognitive testing (e.g. 6CIT/MoCA); <b>bloods</b> — FBC, U&amp;E, calcium, glucose/HbA1c, <b>TFT, B12/folate</b>, LFT; MSU; <b>medication review</b>; CT head if focal signs/rapid decline.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · delirium — find the precipitant</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Infective / metabolic</div><div class="box ix"><span class="ttl">Commonest</span><div class="body">UTI, chest infection, hypoxia, hypoglycaemia, electrolyte disturbance (Na, Ca), AKI, constipation/urinary retention, dehydration.</div></div></div>
+      <div class="col"><div class="blabel">Drugs / withdrawal</div><div class="box ix"><span class="ttl">Iatrogenic</span><div class="body">Opioids, anticholinergics, benzodiazepines, steroids; alcohol/benzo withdrawal; recent changes &amp; polypharmacy.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Neurological</div><div class="box ix"><span class="ttl">Don't miss</span><div class="body">Stroke, <b>subdural haematoma</b>, meningitis/encephalitis, non-convulsive seizure, raised ICP.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · manage</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — treat cause + supportive care</span><span class="ttl">Cause-directed, non-drug first</span><div class="body"><ul>
+      <li><b>Delirium:</b> treat the precipitant (antibiotics, oxygen, glucose, rehydrate, relieve retention/constipation, stop culprit drugs).</li>
+      <li><b>Non-pharmacological first:</b> reorientation, familiar faces, hearing aids/glasses, lighting, sleep-wake routine, hydration, mobilise.</li>
+      <li><b>Distress/risk only:</b> short-term low-dose haloperidol 0.5 mg (avoid in Parkinson's/Lewy body — use lorazepam); <b>lowest dose, shortest time</b>.</li>
+      <li><b>Dementia:</b> once reversible causes excluded → memory clinic for diagnosis; treat vascular risk; cholinesterase inhibitors are specialist-initiated.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-red">999 / admit</span> delirium with a serious or untreatable-at-home cause, suspected stroke/meningitis/subdural, hypoxia/sepsis, or unsafe at home.</li>
+      <li><span class="pill pill-purple">Memory clinic</span> suspected dementia <b>after reversible causes excluded</b>.</li>
+      <li><span class="pill pill-purple">Old-age psychiatry / community team</span> persistent delirium, behavioural &amp; psychological symptoms, or diagnostic uncertainty.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · prevent &amp; support</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Prevention &amp; support</span><span class="ttl">Reduce recurrence, support carers</span><div class="body"><b>Delirium prevention:</b> address sensory impairment, hydration, mobility, sleep, constipation; <b>deprescribe</b> anticholinergic burden. <b>Dementia:</b> vascular-risk modification, alcohol reduction, social/cognitive engagement, carer support &amp; respite, advance care planning, driving (DVLA) discussion.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>999</b> if reduced consciousness, focal neurology, fever + neck stiffness, or new seizure. <b>Same-day</b> if confusion worsens, new fever, or unsafe at home. <b>Review:</b> delirium should improve as the cause is treated — <b>if it doesn't fully resolve, reassess</b> (occult cause, or underlying dementia unmasked); chase reversible-cause bloods and arrange cognitive follow-up.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>New confusion is delirium until proven otherwise:</b> acute fluctuating inattention demands a hunt for an organic precipitant — never assume it is "just dementia". Always check a glucose, screen for sepsis, and review the drug chart.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Life-Threatening Causes of Confusion</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <b>First, establish: Is this acute (delirium) or chronic (dementia)?</b> Delirium is a medical emergency until proven otherwise.
+    <div class="rfgrid">
+      <div class="rftile"><b>Fever + confusion + neck stiffness</b> Bacterial meningitis / encephalitis → 999 + IM benzylpenicillin 1.2 g before transfer (do not delay for LP)</div>
+      <div class="rftile"><b>Hypoglycaemia</b> BM &lt;4 mmol/L + confusion → check glucose immediately. Glucogel PO if swallow safe; 999 if not. Most reversible cause.</div>
+      <div class="rftile"><b>Stroke — acute onset</b> FAST positive + confusion → 999. Posterior circulation stroke commonly presents with confusion without obvious motor signs.</div>
+      <div class="rftile"><b>Head injury</b> Subdural haematoma — lucid interval then deteriorating consciousness. Any confusion post-head injury → CT same-day</div>
+      <div class="rftile"><b>Sepsis</b> NEWS2 score — confusion + tachycardia + fever → sepsis 6 bundle → 999 or urgent same-day admission</div>
+      <div class="rftile"><b>Hyponatraemia / electrolyte crisis</b> Sodium &lt;125, calcium &gt;3.0, glucose severely abnormal → same-day hospital for IV correction</div>
+      <div class="rftile"><b>Opioid / benzodiazepine toxicity</b> Pinpoint pupils + confusion + reduced RR → opioid toxicity → 999 + naloxone (0.4 mg IM/IV)</div>
+      <div class="rftile"><b>Serotonin syndrome</b> SSRIs + other serotonergic drugs + tachycardia + hyperthermia + agitation + clonus → 999 (cyproheptadine antidote in hospital)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Bacterial meningitis kills within hours — IM benzylpenicillin must be given before transfer if there is any suspicion (rash, fever, neck stiffness, photophobia, confusion) and should not wait for LP. Hypoglycaemia is the most common and instantly reversible cause of acute confusion — blood glucose must be checked at every confused patient assessment. Sepsis-related confusion (acute brain dysfunction in sepsis) carries 40% mortality — early antibiotics and fluid resuscitation are time-critical. Serotonin syndrome is increasingly common as SSRI prescribing grows — the clonus on neurological examination (sustained rhythmic ankle/patella clonus) distinguishes it from neuroleptic malignant syndrome.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Delirium vs Dementia vs Psychiatric — Key Distinction</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    This distinction drives the entire management pathway. Collateral history is essential.
+    <div class="kv">
+      <div>Delirium (acute)</div><div>Onset hours–days. Fluctuating course — waxes and wanes during the day. Disturbed attention and arousal. Always has a precipitant. Treat the cause. (NICE CG103)</div>
+      <div>Dementia (chronic)</div><div>Onset months–years. Gradual progressive decline. Memory, language, executive function impaired. No fluctuation at baseline (unless Lewy body). No acute precipitant.</div>
+      <div>Delirium on dementia</div><div>Most common presentation in hospital elderly — background cognitive impairment + acute deterioration. Always investigate for precipitating cause even in known dementia.</div>
+      <div>Psychiatric (subacute)</div><div>Schizophrenia, severe depression, mania — confusion-like presentation. Onset days–weeks. Preserved orientation often. Psychiatric symptoms predominant. Refer psychiatry.</div>
+      <div>4AT delirium screen</div><div>Alertness + AMT4 (age, DoB, place, year) + attention (months backward) + acute change. Score ≥4 = probable delirium → investigate for cause urgently</div>
+      <div>Collateral history</div><div>Always obtain from family/carer — baseline cognitive function, timeframe of change, medications, falls, infections, alcohol use</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The distinction between delirium and dementia is clinically critical — delirium is a medical emergency requiring identification and treatment of the precipitant, while dementia is a chronic condition requiring a different management pathway. The key discriminating features are: onset (acute vs gradual) and fluctuation (delirium fluctuates during the day — patients may be lucid at some times and confused at others). The 4AT takes &lt;2 minutes and has been validated in multiple settings (sensitivity 76–88%, specificity 88–99%). Delirium on background dementia is the most common presentation in elderly hospital admissions — even patients with known dementia always warrant investigation for a precipitating cause.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Find the Cause — PINCH ME Framework</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Use <b>PINCH ME</b> to systematically identify delirium precipitants.
+    <div class="kv">
+      <div>P — Pain</div><div>Uncontrolled pain is a common and often unrecognised cause of delirium in non-verbal patients (dementia, stroke). Examine systematically for painful conditions.</div>
+      <div>I — Infection</div><div>UTI (most common in elderly women), pneumonia (may be afebrile in elderly), cellulitis, dental abscess, biliary. Dipstick + MSU + CXR + FBC + CRP</div>
+      <div>N — Nutrition</div><div>Dehydration (most common overall) + malnutrition. Check mucous membranes, skin turgor, urine output. IV/oral fluids urgently.</div>
+      <div>C — Constipation</div><div>Severe constipation is a significant cause of delirium in elderly/opioid users. Abdominal palpation + rectal exam. Movicol 2 sachets BD if confirmed.</div>
+      <div>H — Hypoxia</div><div>Pulse oximetry — SaO2 &lt;92% = urgent. COPD, pneumonia, PE, heart failure. Oxygen if needed. CXR.</div>
+      <div>M — Medication</div><div>Anticholinergics (oxybutynin, amitriptyline, chlorphenamine), opioids, benzodiazepines, digoxin toxicity, steroids, new medication started recently → stop/review</div>
+      <div>E — Environment</div><div>Unfamiliar environment, sensory deprivation (no glasses/hearing aids), immobility, catheter, Foley — all contribute to and worsen delirium</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">PINCH ME is a validated memory aid used in NICE CG103 education. Dehydration is the most common single precipitant of delirium in the community — simple oral or IV rehydration resolves confusion in many cases. Anticholinergic burden is a major contributor to delirium and chronic cognitive impairment — oxybutynin, chlorphenamine, and tricyclics all cross the blood-brain barrier. The ACB (anticholinergic cognitive burden) score helps quantify total anticholinergic load. Constipation causes delirium through pain, metabolic disturbance, and autonomic effects — it is underdiagnosed in non-verbal patients.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Targeted Examination</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>4AT / cognitive screen</div><div>4AT score. If chronic confusion: MoCA (10 minutes) or MMSE. MoCA &lt;26/30 = cognitive impairment. MMSE &lt;24/30 = significant impairment.</div>
+      <div>Vital signs</div><div>Temperature, HR, BP (postural), RR, SaO2, BM (glucose). Elevated NEWS2 → escalate urgently.</div>
+      <div>Neurological</div><div>Focal signs (stroke), meningism (meningitis), Wernicke's triad (nystagmus + ataxia + confusion), clonus (serotonin syndrome), papilloedema (raised ICP)</div>
+      <div>Chest</div><div>Auscultation — consolidation (pneumonia), crepitations (pulmonary oedema / heart failure), wheeze. RR &gt;20 = significant respiratory compromise.</div>
+      <div>Abdomen</div><div>Tenderness (peritonitis, constipation), distension (obstruction, urinary retention — palpate suprapubic), hepatomegaly (hepatic encephalopathy)</div>
+      <div>Urine</div><div>Dipstick at bedside — leucocytes + nitrites = UTI likely. Note: asymptomatic bacteriuria in elderly does not cause confusion and should not be treated.</div>
+      <div>Skin</div><div>Cellulitis, pressure sores, rashes (meningococcal, drug reaction), jaundice, signs of liver disease, signs of alcohol dependence</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-deeper">Asymptomatic bacteriuria (positive urine dipstick in an elderly patient without urinary symptoms) is extremely common (30–50% of elderly women) and is not a cause of confusion — treating it with antibiotics contributes to antibiotic resistance without benefit. Pneumonia in the elderly frequently presents without fever (40% are afebrile) — CXR is essential. Urinary retention causes severe pain and delirium in non-verbal patients — suprapubic palpation + bladder scanner should be performed in all confused elderly patients, especially men with BPH on anticholinergics or opioids.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Diagnose</span><h3>Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Bedside (immediate)</div><div><span class="pill pill-blue">BM (glucose)</span> <span class="pill pill-blue">Pulse oximetry</span> <span class="pill pill-blue">ECG</span> (AF, silent MI) <span class="pill pill-blue">Urine dipstick</span> <span class="pill pill-blue">Temperature / NEWS2</span></div>
+      <div>Bloods — all patients</div><div><span class="pill pill-blue">FBC</span> <span class="pill pill-blue">U&E</span> (Na, K, creatinine) <span class="pill pill-blue">LFTs + ammonia</span> (hepatic encephalopathy) <span class="pill pill-blue">CRP</span> <span class="pill pill-blue">Calcium</span> <span class="pill pill-blue">TFTs</span> <span class="pill pill-blue">Glucose</span> <span class="pill pill-blue">B12</span></div>
+      <div>Infection screen</div><div><span class="pill pill-blue">MSU</span> <span class="pill pill-blue">CXR</span> <span class="pill pill-blue">Blood cultures</span> (if temp &gt;38°C or &lt;36°C) · consider <span class="pill pill-blue">LP</span> (meningitis/encephalitis) — hospital arranged</div>
+      <div>Toxicology</div><div><span class="pill pill-blue">Urine drug screen</span> · <span class="pill pill-blue">Paracetamol level</span> (occult overdose in elderly) · <span class="pill pill-blue">Digoxin level</span> if applicable · <span class="pill pill-blue">Alcohol</span></div>
+      <div>Neuroimaging</div><div>CT head — if focal signs, post head-trauma, papilloedema, anticoagulated, or no cause found. Not required for all delirium. Organised in hospital.</div>
+      <div>Dementia bloods</div><div>For new dementia assessment: FBC, U&E, LFTs, TFTs, B12, folate, glucose, lipids, CRP, syphilis serology, HIV (selective). Then MRI brain via memory clinic.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Bedside glucose testing is mandatory in every confused patient — hypoglycaemia is instantly fatal if not corrected and instantly reversible if it is. ECG is important in acute confusion — silent MI (particularly inferior MI) commonly presents with confusion in elderly patients without chest pain; AF causes reduced cardiac output and cerebral hypoperfusion. B12 deficiency causes a reversible dementia-like picture — levels should be checked in all new memory complaints. Paracetamol overdose (deliberate or accidental excess in the elderly) causes confusion through incipient liver failure — serum paracetamol level should be checked in any unexplained elevated LFTs with confusion.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Refer</span><h3>Referral Criteria</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Meningism + fever, stroke (FAST+), seizures, severe hypoglycaemia unresponsive to oral glucose, opioid toxicity (naloxone), serotonin syndrome, haemodynamic instability</div>
+      <div><span class="pill pill-red">Same-day hospital</span></div><div>Acute delirium with unidentified cause, electrolyte abnormalities requiring IV correction, severe dehydration, sepsis, alcohol withdrawal, falls risk with confused patient alone</div>
+      <div><span class="pill pill-purple">Urgent memory clinic</span></div><div>New dementia suspected — refer via GP using local pathway. NICE NG97 recommends referral within 6 weeks of identification. MoCA/MMSE + dementia bloods done first.</div>
+      <div>Old age psychiatry</div><div>Dementia with severe BPSD (behavioural and psychological symptoms), suspected dementia + psychosis, diagnostic uncertainty</div>
+      <div>Neurology</div><div>Suspected encephalitis (post-hospital), suspected CJD (rapidly progressive dementia + myoclonus), epilepsy-related confusion</div>
+      <div>Social care</div><div>Confused patient unsafe at home alone — urgent social care assessment. Safeguarding referral if self-neglect or suspected abuse. Mental Capacity Act (MCA) assessment if needed.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-deeper">Community delirium management (treating the cause at home) is appropriate only when: the patient is safe, the cause is identified and treatable at home, adequate supervision exists, and the patient can be monitored. Any uncertainty → hospital admission. Memory clinic referral should not be delayed — early diagnosis of dementia allows advance care planning, medication initiation (donepezil), carer support, and legal planning (LPA, advance directives) while the patient has capacity. Mental Capacity Act assessment is required before any major decisions are made for an incapacitous person — GPs play a central role in assessing capacity.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Management — Delirium &amp; Dementia</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Delirium — treat cause</div>
+        <div class="b-drug">Antibiotics / rehydration / analgesia</div>
+        <div class="b-note">Treat the identified precipitant: IV/PO antibiotics for infection, IV fluids for dehydration, opioid reduction for drug-induced, bowel care for constipation. Non-pharmacological first.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Agitation in delirium (severe)</div>
+        <div class="b-drug">Haloperidol 0.5 mg PO</div>
+        <div class="b-note">Last resort. <b>Contraindicated in Parkinsonism/Lewy body.</b> Lowest effective dose, shortest duration. NICE CG103. Lorazepam 0.5 mg if Parkinsonism or alcohol withdrawal.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Alzheimer's dementia</div>
+        <div class="b-drug">Donepezil 5 mg nocte</div>
+        <div class="b-note">Initiated by memory clinic. Review at 3–6 months. Increase to 10 mg nocte if tolerated after 4 weeks. GI side effects (nausea, diarrhoea) common. Check HR (bradycardia risk).</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">UTI</span><span class="rt">Nitrofurantoin 100 mg MR BD for 5 days (if eGFR &gt;30) — first-line per local antibiogram. Trimethoprim 200 mg BD if nitrofurantoin not suitable. Avoid antibiotics for asymptomatic bacteriuria.</span></div>
+      <div class="rung"><span class="rn">Hepatic encephalopathy</span><span class="rt">Lactulose 15–30 ml BD–TDS (target 2 soft stools/day to clear ammonia). Rifaximin for recurrent episodes (specialist initiated).</span></div>
+      <div class="rung"><span class="rn">B12 deficiency</span><span class="rt">Hydroxocobalamin 1 mg IM on alternate days × 6 doses then 3-monthly. Cognitive improvement expected over 3–6 months.</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Non-pharmacological delirium management (HELP — Hospital Elder Life Program principles: reorientation, sleep preservation, mobilisation, hydration, sensory aids) reduces delirium duration by 30% and is safer than pharmacological sedation. Haloperidol does not shorten delirium duration but reduces severity of agitation — it should be used only when non-pharmacological measures fail and the patient is at risk of harm. Donepezil in Alzheimer's reduces MMSE decline by 2–3 points at 6 months (NNT ~3 for any benefit) and delays nursing home placement — it is clinically meaningful despite modest effect sizes.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Delirium Prevention &amp; Dementia Support</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Orientation aids</b> Familiar clock, calendar, family photos, natural light. Orient patient to time and place at every interaction. Family presence reduces distress and confusion duration.</div>
+      <div class="lstile"><b>Sensory aids</b> Ensure glasses and hearing aids are worn — sensory deprivation worsens confusion. Check batteries. Loss of aids is common in hospital and community settings.</div>
+      <div class="lstile"><b>Hydration</b> Offer fluids regularly — aim 1.5–2 litres/day. Dehydration is both a cause and consequence of delirium. Thirst sensation diminishes with age.</div>
+      <div class="lstile"><b>Medication review</b> Anticholinergic burden review (ACB calculator) — reduce or stop opioids, benzodiazepines, anticholinergics where possible. Polypharmacy is a major risk factor for delirium.</div>
+      <div class="lstile"><b>Sleep preservation</b> Regular day/night routine — lights on during day, quiet at night. Avoid unnecessary medication at night. Melatonin 2 mg modified-release for sleep regulation in delirium prevention (evidence in elderly).</div>
+      <div class="lstile"><b>Mobilisation</b> Prevent bed rest — encourage movement, physiotherapy. Immobility worsens delirium and accelerates muscle loss. Delirium prevention includes falls prevention.</div>
+      <div class="lstile"><b>Carer education</b> Explain delirium is a brain response to illness, not madness — reduces carer distress. Provide written information. Alzheimer's Society (0333 150 3456) and Dementia UK Admiral Nurses (0800 888 6678).</div>
+      <div class="lstile"><b>Advance care planning</b> For dementia: Lasting Power of Attorney (financial + health/welfare), advance decision to refuse treatment (ADRT), preferred place of care. Ideally discuss while capacity is retained.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The HELP (Hospital Elder Life Program) multicomponent delirium prevention program reduces incident delirium by 33% and delirium duration by 30% using six non-pharmacological interventions: orientation, therapeutic activities, vision and hearing adaptations, sleep protocol, hydration, and early mobilisation. Anticholinergic cognitive burden (ACB scale) is important — total ACB score &gt;3 is associated with 4× increased risk of cognitive impairment. Early Lasting Power of Attorney is one of the most important GP interventions in early dementia — 30% of patients with moderate dementia lack capacity to make LPA decisions. Early GP support facilitates this vital legal protection.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>24–48 hours</div><div>Delirium: follow up urgently — is confusion improving? Cause identified and treated? Safe at home? Carer coping? If worsening → hospital admission.</div>
+      <div>1–2 weeks</div><div>Post-delirium review — cognitive baseline restored? Medication review completed? MoCA/MMSE to document cognitive state after acute illness resolves.</div>
+      <div>3–6 months</div><div>Post-delirium dementia risk: 25–40% of patients who have delirium subsequently develop dementia — monitor with MoCA. Refer to memory clinic if cognitive decline continues.</div>
+      <div>Dementia review</div><div>6-monthly: MMSE/MoCA, functional assessment (ADLs), carer burden (Zarit score), medication review, falls risk, driving assessment (DVLA notification duty if unsafe), advance care planning progress</div>
+      <div>Driving &amp; safety</div><div>DVLA must be notified by patient with dementia — GP has duty to advise and document. If patient refuses → GP can inform DVLA without consent (patient safety). On-road driving assessment via DVLA.</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>Sudden deterioration in consciousness, new focal neurological signs, high fever + neck stiffness, acute stroke symptoms, respiratory distress</div>
+      <div><span class="pill pill-amber">Same-day GP</span></div><div>Worsening confusion despite treatment, unable to maintain safe home situation, new fall with injury, severe agitation, carer breakdown</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Post-delirium cognitive vulnerability is a critical and underrecognised phenomenon — patients who experience delirium have a 2–5× increased risk of developing dementia over subsequent years. This is a biological relationship (delirium causes neuroinflammation and accelerated neurodegeneration) not just unmasking of pre-existing dementia. Driving with dementia is a major public safety issue — GPs have a legal and ethical duty to advise patients to stop driving when unsafe and to notify DVLA if the patient refuses. The Zarit Burden Interview is a validated carer burden tool — scores &gt;40 indicate significant carer distress requiring support and respite services.</div>
+  </div>
+</div>
+
+</div>
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE CG103 (Delirium, 2010), NICE NG97 (Dementia, 2018), NICE CG140 (Infection in Older People), British Geriatrics Society PINCH ME framework, Mental Capacity Act (2005). Always adapt to individual patient context and local pathways.
+</div>
+<script>
+(function(){
+  const STORE='rgp.alg.confusion.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

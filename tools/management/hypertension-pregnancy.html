@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hypertension in Pregnancy — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Hypertension in pregnancy management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🤰",
+  title:"Hypertension in Pregnancy",
+  stemTitle:"Hypertension in pregnancy &amp; pre-eclampsia \u2014 recognise, refer, prevent",
+  stemSub:"Primary-care role in hypertensive disorders of pregnancy \u2014 recognise pre-eclampsia and refer urgently, use pregnancy-safe antihypertensives, offer aspirin prophylaxis to those at risk, switch teratogenic drugs pre-conception, and follow up postpartum cardiovascular risk. NICE NG133 \u00b7 2026.",
+  guideline:"NICE NG133",
+  glance:[
+    {lbl:"Safe agents", val:"Labetalol 100 mg BD / nifedipine MR", sub:"+ methyldopa"},
+    {lbl:"STOP", val:"ACEi / ARB / thiazide", sub:"teratogenic"},
+    {lbl:"Prophylaxis", val:"Aspirin 75\u2013150 mg", sub:"from 12 wks if at risk"},
+    {lbl:"Pre-eclampsia", val:"BP \u2191 + proteinuria", sub:"\u226520 weeks"},
+    {lbl:"Severe", val:"BP \u2265160/110", sub:"= same-day"},
+    {lbl:"Red flag", val:"Headache / RUQ / visual", sub:"= emergency"}
+  ],
+  flow:[
+    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Pre-eclampsia / severe HTN \u2014 emergency",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Severe hypertension", html:"BP \u2265160/110 in pregnancy \u2192 same-day obstetric assessment."},
+          {t:"🔴 Pre-eclampsia symptoms", html:"Severe headache, visual disturbance, RUQ/epigastric pain, vomiting, sudden face/hand/foot swelling, reduced fetal movements \u2192 immediate obstetric assessment (999/maternity triage)."},
+          {t:"🔴 Eclampsia / HELLP", html:"Seizure, or HELLP (haemolysis, \u2191LFTs, low platelets) \u2192 999 emergency."},
+          {t:"🟠 New HTN \u226520 weeks", html:"New hypertension after 20 weeks \u00b1 proteinuria \u2192 urgent assessment for pre-eclampsia (BP, urine PCR, bloods, PlGF-based testing in secondary care)."}
+        ]},
+        {b:"why", html:"Pre-eclampsia is a leading cause of maternal and fetal morbidity and can deteriorate rapidly. Any new hypertension or pre-eclampsia symptoms after 20 weeks needs same-day obstetric assessment \u2014 the GP recognises and refers, secondary care manages."}
+      ]},
+    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Classify the disorder",
+      blocks:[
+        {b:"kv", rows:[
+          ["Chronic hypertension","Present pre-pregnancy or before 20 weeks"],
+          ["Gestational hypertension","New hypertension after 20 weeks WITHOUT proteinuria/organ involvement"],
+          ["Pre-eclampsia","New hypertension after 20 weeks WITH proteinuria or maternal organ/uteroplacental dysfunction"],
+          ["Pre-conception","Optimise BP; switch teratogenic drugs; plan aspirin; discuss risks"]
+        ]}
+      ]},
+    {t:"node", d:"life", n:"3", tag:"Non-drug · core", title:"Monitoring & safety advice", blocks:[{b:"tiles", v:"life", items:[{t:"🩺 Self-monitoring", html:"Support BP monitoring and awareness of pre-eclampsia symptoms (headache, visual changes, epigastric pain, swelling)."},{t:"🚫 Avoid teratogens", html:"Avoid ACEi/ARB and thiazides in pregnancy \u2014 use labetalol, nifedipine or methyldopa."},{t:"👶 Aspirin prophylaxis", html:"Offer aspirin 75\u2013150 mg from 12 weeks if at risk of pre-eclampsia."}]},{b:"why", html:"In pregnancy the priority non-drug actions are recognising pre-eclampsia early, avoiding teratogenic antihypertensives, and offering aspirin prophylaxis to those at risk."}]},
+    {t:"node", d:"drug", n:"4", tag:"Medication", title:"Pregnancy-safe antihypertensives",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"1st-line", title:"Labetalol", when:"unless contraindicated",
+           html:"Oral <b>labetalol 100 mg BD (titrate, up to 2.4 g/day)</b> is first-line (avoid in asthma). Target BP per NG133 (e.g. \u2264135/85)."},
+          {step:"Alternatives", title:"Nifedipine MR / methyldopa", when:"if labetalol unsuitable",
+           fromLabel:"if not tolerated/contraindicated",
+           html:"<b>Modified-release nifedipine 10\u201320 mg BD</b>, or <b>methyldopa 250 mg BD\u2013TDS</b> (avoid in depression; stop within 2 days postpartum)."},
+          {step:"STOP teratogens", title:"Discontinue ACEi/ARB/thiazide", when:"immediately",
+           fromLabel:"switch at pregnancy/pre-conception",
+           html:"ACE inhibitors, ARBs and thiazide diuretics are teratogenic/fetotoxic \u2014 switch to a safe agent pre-conception or as soon as pregnancy confirmed."}
+        ]},
+        {b:"warn", html:"ACEi/ARBs cause fetal renal damage and oligohydramnios \u2014 women of childbearing potential on these for chronic HTN should have a pre-conception plan to switch."}
+      ]},
+    {t:"node", d:"drug", n:"5", tag:"Prevention", title:"Aspirin prophylaxis",
+      blocks:[
+        {b:"kv", rows:[
+          ["Who","Offer <b>aspirin 75\u2013150 mg from 12 weeks until birth</b> if \u22651 high-risk factor (previous pre-eclampsia, chronic HTN, CKD, diabetes, autoimmune e.g. SLE/APS) or \u22652 moderate-risk factors (first pregnancy, age \u226540, BMI \u226535, family history, multiple pregnancy, &gt;10y since last pregnancy)"],
+          ["Calcium","Consider calcium supplementation in those with low dietary intake (reduces pre-eclampsia risk)"],
+          ["Surveillance","Ensure engaged with antenatal care + BP/urine monitoring schedule"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"6", tag:"Follow-up", title:"Postpartum + future risk",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"Postnatal", title:"BP review", html:"Continue/adjust antihypertensives; many gestational cases resolve. Methyldopa stopped within 2 days. Safe agents while breastfeeding (e.g. enalapril, labetalol, nifedipine per specialist advice)."},
+          {n:"2", when:"6\u20138 weeks", title:"Confirm resolution", html:"Check BP normalised; if still hypertensive, investigate/treat as chronic HTN."},
+          {n:"3", when:"Long-term", title:"Cardiovascular risk", html:"Pre-eclampsia/gestational HTN raises future CVD and HTN risk \u2014 lifestyle advice + periodic BP checks; counsel for future pregnancies (aspirin)."}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer", title:"Referral",
+      arrow:"obstetric-led care",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency / same-day", html:"Severe HTN \u2265160/110, pre-eclampsia symptoms, eclampsia/HELLP, reduced fetal movements."},
+          {t:"Obstetrics", html:"All new gestational hypertension/pre-eclampsia, and chronic HTN needs obstetric-led antenatal care."},
+          {t:"Pre-conception", html:"Women with chronic HTN/CKD/diabetes \u2014 medication review + aspirin plan."}
+        ]},
+        {b:"say", html:"High blood pressure in pregnancy needs close monitoring because of a condition called pre-eclampsia. We use blood-pressure tablets that are safe in pregnancy and stop any that aren\u2019t. If you get a bad headache, visual spots, upper tummy pain or sudden swelling, contact maternity straight away."}
+      ]}
+  ],
+  foot:"Primary-care recognition and support of hypertensive disorders of pregnancy under obstetric-led care; pre-eclampsia is an emergency. Verify against current NICE NG133 and specialist/obstetric advice."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

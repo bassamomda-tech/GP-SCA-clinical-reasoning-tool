@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Osteoporosis — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Osteoporosis management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🦴",
+  title:"Osteoporosis",
+  stemTitle:"Confirmed Osteoporosis — ongoing management",
+  stemSub:"Primary-care management of osteoporosis / high fracture risk \u2014 calcium and vitamin D, the bisphosphonate ladder, falls prevention, the drug-holiday review and monitoring \u2014 up to metabolic-bone referral. NICE NG/CKS \u00b7 NOGG 2026.",
+  guideline:"NICE CKS / NOGG",
+  glance:[
+    {lbl:"Risk tool", val:"FRAX / QFracture", sub:"+ DXA T-score"},
+    {lbl:"Foundation", val:"Calcium + Vit D", sub:"ensure replete"},
+    {lbl:"First-line", val:"Oral bisphosphonate", sub:"alendronate / risedronate"},
+    {lbl:"If unsuitable", val:"IV zoledronate", sub:"or denosumab"},
+    {lbl:"Review", val:"~5 years", sub:"drug-holiday decision"},
+    {lbl:"Before IV/denosumab", val:"Dental check", sub:"ONJ risk"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm risk and exclude secondary causes",
+      blocks:[
+        {b:"kv", rows:[
+          ["Diagnosis","DXA T-score \u2264 \u22122.5, and/or a fragility fracture; quantify with FRAX/QFracture. Consider a <b>spine X-ray</b> in confirmed osteoporosis to detect asymptomatic vertebral fractures (may change treatment choice)"],
+          ["Secondary causes","Bloods: Ca/bone profile, phosphate, vit D, U&amp;E, LFT, TFT, FBC, ESR/CRP, coeliac, testosterone (men), myeloma screen if indicated. <b>Actively investigate a secondary cause in</b>: any man, a pre-/early-menopausal woman, or fractures at unusual sites / a vertebral fracture still painful &gt;6 weeks"],
+          ["Falls + fractures","Falls risk assessment; previous fragility fractures (esp. vertebral/hip)"],
+          ["Drugs","Long-term steroids, aromatase inhibitors, androgen deprivation \u2014 bone-protect. <b>On glucocorticoids, start bone protection without waiting for DXA if high-risk</b>: previous fragility fracture; any woman \u226570 on any dose; or postmenopausal women / men \u226550 on \u22657.5 mg/day prednisolone for \u22653 months"]
+        ]},
+        {b:"why", html:"The goal is preventing the next fracture, not chasing a number \u2014 fracture risk (FRAX), not the T-score alone, decides treatment. Excluding secondary causes (especially vitamin-D deficiency, coeliac, myeloma) first ensures you are treating osteoporosis rather than a correctable cause of low bone density."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Bone health + falls prevention",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🥛 Calcium & vit D", html:"Aim ~700 mg/day dietary calcium (supplement if intake inadequate); vitamin D 800 IU/day if deficient or at risk. <b>Don\u2019t take calcium within 2 h of a bisphosphonate</b> (reduces absorption)."},
+          {t:"🏋️ Weight-bearing exercise", html:"Weight-bearing + resistance + balance training maintains bone and prevents falls."},
+          {t:"🚶 Falls prevention", html:"Strength/balance programmes, home hazards, vision, medication review (sedatives, postural drops)."},
+          {t:"🚭 Smoking & 🍷 alcohol", html:"Cessation; alcohol within limits \u2014 both harm bone."},
+          {t:"☀️ Vitamin D", html:"Supplement if at risk of deficiency, especially housebound/elderly."},
+          {t:"⚖️ Avoid low weight", html:"Address underweight / undernutrition."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 stepwise", title:"The anti-resorptive ladder",
+      blocks:[
+        {b:"p", html:"Ensure <strong>calcium and vitamin D are replete</strong> (e.g. <b>colecalciferol 800\u20131000 units + calcium 1 g daily</b> if intake inadequate) before and during treatment. Then offer bone-protective therapy by fracture risk."},
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Oral bisphosphonate", when:"alendronate / risedronate",
+           html:"First-line: <b>alendronic acid 70 mg once weekly</b> (or risedronate 35 mg weekly). Take on an empty stomach with water, sit upright \u226530 min. Co-prescribe calcium/vit D if intake inadequate."},
+          {step:"Step 2", title:"IV zoledronate or denosumab", when:"intolerance / poor adherence / unsuitable",
+           fromLabel:"oral not tolerated / absorbed / adhered",
+           html:"IV <b>zoledronate 5 mg annually</b> or SC <b>denosumab 60 mg 6-monthly</b>. <b>Dental check first</b> (ONJ). Denosumab must not be stopped abruptly (rebound fractures)."},
+          {step:"Step 3", title:"Anabolic agents", when:"specialist \u2014 severe / very high risk",
+           fromLabel:"treatment failure / very high risk",
+           html:"Teriparatide or romosozumab via metabolic-bone specialists. HRT is an option in early menopause."}
+        ]},
+        {b:"warn", html:"<b>Bisphosphonate cautions:</b> oesophagitis (dosing posture), rare atypical femoral fracture (new thigh/groin pain \u2014 investigate), osteonecrosis of the jaw (dental health). <b>Denosumab:</b> never stop without a plan \u2014 rebound vertebral fractures."},
+        {b:"why", html:"Calcium/vit D is the foundation because anti-resorptives can\u2019t build bone the body lacks the materials for, and hypocalcaemia worsens with potent agents. The drug-holiday concept (below) exists because bisphosphonate benefit persists after stopping, while continued use raises the rare atypical-fracture/ONJ risks."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Adherence, review and the drug holiday",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Adherence + tolerability","Each review","Oral bisphosphonate poorly adhered \u2192 switch to IV/denosumab"],
+          ["Calcium / vit D / renal","Baseline + periodically","Correct deficiency; check renal function before zoledronate"],
+          ["Treatment review","After ~5 yr oral (3 yr IV)","Reassess risk \u2014 consider a <b>drug holiday</b> if low risk; continue if high"],
+          ["DXA","If reassessment needed","Guide continuation vs holiday vs switch"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"~3\u20134 months after starting", title:"Tolerability + adherence", html:"Check the drug is tolerated and taken correctly; reinforce calcium/vit D and falls advice."},
+          {n:"2", when:"Annually", title:"Bone-health review", html:"Adherence, new fractures, falls, secondary-cause review, calcium/vit D."},
+          {n:"3", when:"~5 years", title:"Treatment-duration review", html:"Re-evaluate fracture risk \u00b1 DXA \u2192 drug holiday, continue, or switch."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Fracture on treatment / not tolerated?",
+      arrow:"\u2026if a fracture occurs or the drug isn\u2019t tolerated",
+      intro:"A fragility fracture on treatment warrants review, not just continuation.",
+      checks:[
+        {b:"1 \u00b7 Adherence", html:"Has the oral bisphosphonate actually been taken correctly and regularly?"},
+        {b:"2 \u00b7 Absorption", html:"Taken fasting, upright, separate from food/calcium?"},
+        {b:"3 \u00b7 Calcium/vit D", html:"Replete? Persistent deficiency undermines treatment."},
+        {b:"4 \u00b7 Secondary cause", html:"Re-screen \u2014 new steroid use, coeliac, myeloma, hyperparathyroidism."},
+        {b:"5 \u00b7 Switch / refer", html:"True failure \u2192 IV/denosumab or specialist anabolic therapy."}
+      ],
+      back:"Adherence + calcium/vit D + secondary causes addressed \u2192 switch agent / refer"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🦴 Atypical fracture", html:"\u201cNew, persistent thigh or groin pain on a bisphosphonate \u2014 tell us; it needs checking.\u201d"},
+          {t:"🦷 Jaw (ONJ)", html:"\u201cKeep up dental care; report any non-healing area in the mouth, especially after dental work.\u201d"},
+          {t:"💊 Oral dosing", html:"\u201cTake the tablet with a full glass of water, stay upright for 30 minutes, and don\u2019t eat beforehand \u2014 it protects your gullet.\u201d"},
+          {t:"⚠️ Denosumab", html:"\u201cDon\u2019t let denosumab lapse \u2014 stopping it suddenly can cause spine fractures; keep to the schedule.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer metabolic bone",
+      arrow:"when complex, failing, or very high risk",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Treatment failure", html:"Recurrent fragility fractures or significant bone loss despite adherent therapy."},
+          {t:"Very high risk", html:"For anabolic therapy (teriparatide/romosozumab) per specialist criteria."},
+          {t:"Secondary / complex", html:"Suspected secondary osteoporosis, CKD-related bone disease, or unexplained features."},
+          {t:"Intolerance", html:"Unable to take oral or IV anti-resorptives \u2014 specialist alternatives."},
+          {t:"Vertebral fracture", html:"Severe/symptomatic vertebral fractures \u2014 consider specialist + pain pathway."}
+        ]},
+        {b:"say", html:"You\u2019ve had a fracture / your scan shows thin bones, but this is very treatable \u2014 a weekly tablet plus calcium and vitamin D, staying active, and reducing falls. We\u2019ll review it at five years to decide whether to take a break from the tablet."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

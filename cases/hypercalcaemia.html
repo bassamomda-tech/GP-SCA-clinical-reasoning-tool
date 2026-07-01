@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hypercalcaemia · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+</style>
+<style>
+:root{
+  --navy:#0f2540;--navy2:#1b3a5c;--ink:#1a2332;--muted:#64748b;
+  --line:#e2e8f0;--surface:#f8fafc;--white:#fff;
+  --r:#b91c1c;--r-bg:#fef2f2;--r-bd:#fecaca;
+  --a:#b45309;--a-bg:#fffbeb;--a-bd:#fde68a;
+  --g:#15803d;--g-bg:#f0fdf4;--g-bd:#bbf7d0;
+  --b:#1d4ed8;--b-bg:#eff6ff;--b-bd:#bfdbfe;
+  --p:#6d28d9;--p-bg:#f5f3ff;--p-bd:#ddd6fe;
+  --t:#0f766e;--t-bg:#f0fdfa;--t-bd:#99f6e4;
+  --ps:#be185d;--ps-bg:#fdf2f8;--ps-bd:#fbcfe8;
+  --shadow:0 1px 3px rgba(0,0,0,.07),0 4px 16px rgba(0,0,0,.04);
+  --shadow-md:0 4px 12px rgba(0,0,0,.1);
+  --rad:12px;--rad-sm:8px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#e8edf3;color:var(--ink);line-height:1.6;font-size:14px;-webkit-font-smoothing:antialiased}
+.topbar{background:var(--navy);color:#fff;position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.tb-inner{max-width:1240px;margin:0 auto;padding:9px 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.tb-brand{display:flex;align-items:center;gap:10px}
+.tb-icon{width:34px;height:34px;background:#fff;color:var(--navy);border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex-shrink:0}
+.tb-title{font-size:14px;font-weight:600;color:#fff;line-height:1.2}
+.tb-sub{font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.07em}
+.mode-group{display:flex;background:rgba(255,255,255,.1);padding:4px;border-radius:30px;gap:3px}
+.mode-btn{font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;border:none;cursor:pointer;background:transparent;color:rgba(255,255,255,.6);transition:.2s;font-family:'DM Sans',sans-serif}
+.mode-btn.active{background:#fff;color:var(--navy)}
+.tb-nav{display:flex;gap:2px;flex-wrap:wrap}
+.tb-nav a{font-size:11px;color:rgba(255,255,255,.6);text-decoration:none;padding:4px 8px;border-radius:15px;transition:.15s;font-weight:500}
+.tb-nav a:hover{background:rgba(255,255,255,.12);color:#fff}
+@media(max-width:980px){.tb-nav{display:none}}
+.numstrip{background:var(--navy2);border-bottom:1px solid rgba(255,255,255,.07)}
+.ns-inner{max-width:1240px;margin:0 auto;padding:6px 1.25rem;display:flex;flex-wrap:wrap}
+.ns-item{padding:3px 14px;border-right:1px solid rgba(255,255,255,.1);flex-shrink:0}
+.ns-item:last-child{border-right:none}
+.ns-val{font-size:13px;font-weight:700;color:#fff;display:block;line-height:1.2}
+.ns-lbl{font-size:9.5px;color:rgba(255,255,255,.5);white-space:nowrap}
+.page{max-width:1240px;margin:0 auto;padding:20px 16px 60px}
+/* STEM */
+.stem-box{background:var(--navy);border-radius:var(--rad);padding:1.1rem 1.4rem;margin-bottom:1.5rem;border-left:5px solid #60a5fa}
+.stem-label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:.5rem}
+.stem-title{font-family:'DM Serif Display',serif;font-size:1.3rem;color:#fff;margin-bottom:.5rem}
+.stem-text{font-size:13px;color:rgba(255,255,255,.85);line-height:1.65;font-style:italic;border-left:2px solid rgba(255,255,255,.2);padding-left:12px;margin-bottom:.75rem}
+.stem-note{font-size:11.5px;color:rgba(255,255,255,.6);line-height:1.5}
+.stem-variants{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:.75rem}
+@media(max-width:700px){.stem-variants{grid-template-columns:1fr}}
+.stem-variant{background:rgba(255,255,255,.08);border-radius:8px;padding:.6rem .85rem;font-size:11.5px;color:rgba(255,255,255,.8);line-height:1.45}
+.stem-variant strong{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.45);margin-bottom:.2rem}
+/* STEPS */
+.step-wrap{margin-bottom:1.5rem}
+.step-hdr{display:flex;align-items:center;gap:12px;padding:.85rem 1.1rem;background:var(--white);border:1px solid var(--line);border-radius:var(--rad);cursor:pointer;user-select:none;box-shadow:var(--shadow);transition:background .15s,box-shadow .15s;position:relative;z-index:1}
+.step-hdr:hover{background:#f8fafc;box-shadow:var(--shadow-md)}
+.step-hdr.is-open{border-radius:var(--rad) var(--rad) 0 0;border-bottom-color:transparent;box-shadow:none;border-bottom:none}
+.step-circle{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#fff;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.sc1{background:#6d28d9}.sc2{background:#b91c1c}.sc3{background:#0369a1}.sc4{background:#0f766e}.sc5{background:#854d0e}.sc6{background:#be123c}.sc7{background:#15803d}
+.step-hdr-text{flex:1}
+.step-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1}
+.step-title{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--navy);font-weight:400;line-height:1.25;margin-top:2px}
+.step-toggle{display:flex;align-items:center;gap:6px;flex-shrink:0;padding:.35rem .75rem;border-radius:20px;background:#f1f5f9;border:1px solid var(--line);transition:background .15s}
+.step-hdr:hover .step-toggle{background:#e2e8f0}
+.sti-icon{font-size:12px;color:var(--muted);display:inline-block}
+.sti-text{font-size:11px;color:var(--muted);font-weight:500}
+.step-body{background:var(--white);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--rad) var(--rad);padding:1.1rem 1.1rem 1.25rem;box-shadow:var(--shadow);overflow:hidden}
+.step-body.closed{display:none}
+.step-intro{font-size:12.5px;color:var(--muted);line-height:1.6;background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:0 var(--rad-sm) var(--rad-sm) 0;padding:.7rem 1rem;margin-bottom:1rem}
+.step-intro strong{color:var(--ink)}
+.collapse-controls{display:flex;gap:8px;margin-bottom:1rem;align-items:center}
+.cc-btn{font-size:11.5px;font-weight:600;padding:5px 14px;border-radius:20px;border:1px solid var(--line);background:var(--white);cursor:pointer;color:var(--ink);font-family:'DM Sans',sans-serif;transition:.15s}
+.cc-btn:hover{background:#f1f5f9}
+.cc-label{font-size:11px;color:var(--muted)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:860px){.g2,.g3{grid-template-columns:1fr}}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--rad);box-shadow:var(--shadow)}
+.card-hd{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:.7rem 1rem;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:7px}
+.chg{font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;display:inline-block;margin:1px;white-space:nowrap}
+.chg-999{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
+.chg-urgent{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+.chg-ddx{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
+.chg-rx{background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe}
+.chg-ref{background:#f5f3ff;color:#5b21b6;border:1px solid #ddd6fe}
+.chg-inv{background:#fef9c3;color:#854d0e;border:1px solid #fde68a}
+.chg-ps{background:#fdf2f8;color:#be185d;border:1px solid #fbcfe8}
+.rt{width:100%;border-collapse:collapse;font-size:13px}
+.rt thead th{background:#f8fafc;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:.55rem .85rem;text-align:left;border-bottom:2px solid var(--line)}
+.rt td{padding:.65rem .85rem;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.rt tr:last-child td{border-bottom:none}
+.rt tr:hover td{background:#fafbfc}
+.rt .q{font-weight:500}.rt .q em{display:block;font-style:italic;font-size:12px;color:var(--b);margin-top:2px}
+.rt .why{font-size:12.5px;line-height:1.5}.rt .why-sub{font-size:11px;color:var(--muted);display:block;margin-top:2px}
+.rt .chg-col{min-width:120px}
+.mcb{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;display:inline-block}
+.mcb-yes{background:#dcfce7;color:#15803d}.mcb-context{background:#dbeafe;color:#1e40af}
+.open-q-row{background:#f0fdf4 !important}
+.open-q-row td{border-left:3px solid var(--g)}
+/* RED FLAGS */
+.rf-wrap{background:var(--r-bg);border:2px solid var(--r-bd);border-radius:var(--rad);overflow:hidden}
+.rf-hdr{background:#fecaca;padding:.65rem 1.1rem;display:flex;align-items:center;gap:8px}
+.rf-hdr h3{font-size:13px;font-weight:700;color:var(--r)}
+.rf-table{width:100%;border-collapse:collapse}
+.rf-table th{background:rgba(185,28,28,.08);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--r);padding:.5rem .85rem;text-align:left;border-bottom:1px solid var(--r-bd)}
+.rf-table td{padding:.55rem .85rem;border-bottom:1px solid var(--r-bd);font-size:12.5px;vertical-align:top;line-height:1.5}
+.rf-table tr:last-child td{border-bottom:none}
+.rf-flag{font-weight:600;color:var(--r)}.rf-why{font-size:12px;color:#7f1d1d;line-height:1.45}
+.rf-action{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;display:inline-block;white-space:nowrap}
+.rfa-999{background:#b91c1c;color:#fff}.rfa-same{background:#f97316;color:#fff}
+/* SAFEGUARDING */
+.sg-wrap{background:var(--ps-bg);border:2px solid var(--ps-bd);border-radius:var(--rad);overflow:hidden;margin-top:1rem}
+.sg-hdr{background:#fbcfe8;padding:.65rem 1.1rem;display:flex;align-items:center;gap:8px}
+.sg-hdr h3{font-size:13px;font-weight:700;color:var(--ps)}
+.sg-body{padding:.85rem 1.1rem}
+.sg-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:640px){.sg-grid{grid-template-columns:1fr}}
+.sg-card{border-radius:var(--rad-sm);padding:.7rem .9rem;background:#fff;border:1px solid var(--ps-bd)}
+.sg-card h5{font-size:11px;font-weight:700;color:var(--ps);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem}
+.sg-card li,.sg-card p{font-size:12px;line-height:1.5;color:var(--ink)}
+.sg-card ul{padding-left:1rem}
+.sg-action{margin-top:.75rem;background:var(--ps);border-radius:8px;padding:.65rem 1rem;font-size:12px;color:#fff;line-height:1.5}
+.sg-action strong{color:#fbcfe8}
+/* IMPACT TABLE */
+.it{width:100%;border-collapse:collapse}
+.it th{background:#f8fafc;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:.5rem .85rem;text-align:left;border-bottom:1px solid var(--line)}
+.it td{padding:.55rem .85rem;border-bottom:1px solid var(--line);font-size:12.5px;vertical-align:top;line-height:1.5}
+.it tr:last-child td{border-bottom:none}.it tr:hover td{background:#fafbfc}
+.it .factor{font-weight:600}.it .impact{color:var(--b);font-size:12px}
+/* PSYCHOSOCIAL BANNER */
+.ps-banner{background:linear-gradient(135deg,#fdf2f8,#f5f3ff);border:1px solid var(--ps-bd);border-left:4px solid var(--ps);border-radius:var(--rad-sm);padding:.75rem 1rem;margin:.75rem 0}
+.ps-banner-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ps);margin-bottom:.3rem}
+.ps-banner p{font-size:12.5px;color:#4a0072;line-height:1.55}
+.ps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:.75rem 0}
+@media(max-width:640px){.ps-grid{grid-template-columns:1fr}}
+.ps-card{background:#fff;border:1px solid var(--ps-bd);border-radius:var(--rad-sm);padding:.65rem .85rem}
+.ps-card h5{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ps);margin-bottom:.3rem}
+.ps-card p{font-size:12px;color:var(--ink);line-height:1.45}
+.ps-phrase{font-size:12px;font-style:italic;background:var(--ps-bg);border-left:2px solid var(--ps-bd);padding:.35rem .7rem;border-radius:0 6px 6px 0;margin-top:.35rem;line-height:1.5;color:#4a0072;display:block}
+/* ICE */
+.ice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:700px){.ice-grid{grid-template-columns:1fr}}
+.ice-card{border-radius:var(--rad);padding:.85rem 1rem;border:1px solid}
+.ice-i{background:var(--p-bg);border-color:var(--p-bd)}.ice-c{background:var(--b-bg);border-color:var(--b-bd)}.ice-e{background:var(--a-bg);border-color:var(--a-bd)}
+.ice-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem}
+.ice-i .ice-label{color:var(--p)}.ice-c .ice-label{color:var(--b)}.ice-e .ice-label{color:var(--a)}
+.ice-phrase{font-size:12.5px;font-style:italic;line-height:1.55;border-left:3px solid;padding-left:9px}
+.ice-i .ice-phrase{border-color:var(--p-bd)}.ice-c .ice-phrase{border-color:var(--b-bd)}.ice-e .ice-phrase{border-color:var(--a-bd)}
+.ice-why{font-size:11px;color:var(--muted);margin-top:.4rem}
+/* SCA CHECKPOINT */
+.sca-cp{background:var(--navy);border-radius:var(--rad);padding:1rem 1.25rem;margin-top:.85rem}
+.sca-cp-hdr{display:flex;align-items:center;gap:8px;margin-bottom:.75rem;flex-wrap:wrap}
+.sca-cp-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.sca-dom{font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,.15);color:#fff}
+.sca-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:600px){.sca-grid{grid-template-columns:1fr}}
+.sca-block{background:rgba(255,255,255,.07);border-radius:8px;padding:.65rem .85rem}
+.sca-block-t{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.4rem}
+.sca-say .sca-block-t{color:#86efac}.sca-avoid .sca-block-t{color:#fca5a5}.sca-score .sca-block-t{color:#93c5fd}
+.sca-block p,.sca-block li{font-size:12px;color:rgba(255,255,255,.82);line-height:1.5}
+.sca-block ul{list-style:none;padding-left:.25rem}
+.sca-say li::before{content:'✓ ';color:#86efac;font-size:11px}
+.sca-avoid li::before{content:'✗ ';color:#fca5a5;font-size:11px}
+.sca-score li::before{content:'• ';color:#93c5fd;font-size:11px}
+.sca-phrase{font-style:italic;font-size:12px;color:#e2e8f0;background:rgba(255,255,255,.06);border-left:2px solid rgba(255,255,255,.2);padding:.45rem .75rem;border-radius:0 6px 6px 0;line-height:1.55;margin-top:.3rem}
+.rag-strip{display:flex;gap:6px;flex-wrap:wrap;margin-top:.6rem;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.1)}
+.rag-item{background:rgba(255,255,255,.05);border-radius:8px;padding:.45rem .75rem;flex:1;min-width:140px}
+.rag-item-t{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.45);margin-bottom:.3rem}
+.rag-bullets{font-size:11px;color:rgba(255,255,255,.75);line-height:1.5}
+.rag-r{border-left:2px solid #fca5a5}.rag-a{border-left:2px solid #fde68a}.rag-g{border-left:2px solid #86efac}
+/* TRIAGE */
+.triage{display:grid;grid-template-columns:1fr 1fr 1fr;border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow-md)}
+@media(max-width:780px){.triage{grid-template-columns:1fr}}
+.tc{padding:1.1rem 1.1rem}
+.tc-e{background:var(--r-bg);border-right:2px solid var(--r-bd)}.tc-u{background:var(--a-bg);border-right:2px solid var(--a-bd)}.tc-r{background:var(--g-bg)}
+@media(max-width:780px){.tc{border-right:none!important;border-bottom:2px solid var(--line)}.tc-r{border-bottom:none}}
+.tc-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.tc-e .tc-lbl{color:var(--r)}.tc-u .tc-lbl{color:var(--a)}.tc-r .tc-lbl{color:var(--g)}
+.tc h3{font-size:14px;font-weight:700;margin-bottom:.35rem}
+.tc-e h3{color:var(--r)}.tc-u h3{color:var(--a)}.tc-r h3{color:var(--g)}
+.tc-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:.65rem}
+.tcb-e{background:#fee2e2;color:var(--r);border:1px solid var(--r-bd)}
+.tcb-u{background:var(--a-bg);color:var(--a);border:1px solid var(--a-bd)}
+.tcb-r{background:var(--g-bg);color:var(--g);border:1px solid var(--g-bd)}
+.tc-items{list-style:none;display:flex;flex-direction:column;gap:5px}
+.tc-item{font-size:12.5px;padding-left:18px;position:relative;line-height:1.45}
+.tc-e .tc-item::before{content:'🚨';position:absolute;left:0;font-size:10px;top:1px}
+.tc-u .tc-item::before{content:'⚠';position:absolute;left:0;font-size:10px;top:1px}
+.tc-r .tc-item::before{content:'✓';position:absolute;left:0;font-size:11px;top:0;color:var(--g);font-weight:700}
+.tc-item strong{font-weight:600;display:block}.tc-item em{font-size:11px;color:var(--muted);font-style:normal}
+/* CONF BADGES */
+.conf-badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;display:inline-block}
+.conf-gp{background:#dcfce7;color:#15803d}.conf-sus{background:#fef3c7;color:#b45309}.conf-emerg{background:#fee2e2;color:#b91c1c}
+.ddx-card{border-radius:var(--rad);padding:.85rem 1rem;border:1px solid}
+.ddx-b{background:var(--r-bg);border-color:var(--r-bd)}.ddx-c{background:var(--a-bg);border-color:var(--a-bd)}.ddx-d{background:var(--p-bg);border-color:var(--p-bd)}
+.ddx-card h4{font-size:12px;font-weight:700;margin-bottom:.35rem}
+.ddx-b h4{color:var(--r)}.ddx-c h4{color:var(--a)}.ddx-d h4{color:var(--p)}
+.ddx-card p{font-size:12px;line-height:1.45}
+/* LAY LANGUAGE */
+.lay-box{background:#fefce8;border:1px solid #fde68a;border-left:4px solid #ca8a04;border-radius:var(--rad-sm);padding:.85rem 1rem;margin:.75rem 0}
+.lay-box-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#92400e;margin-bottom:.4rem}
+.lay-box p{font-size:12.5px;color:#451a03;line-height:1.6;font-style:italic}
+.lay-why-not{background:#f0f9ff;border:1px solid #bae6fd;border-left:4px solid #0369a1;border-radius:var(--rad-sm);padding:.85rem 1rem;margin:.75rem 0}
+.lay-why-not-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#0369a1;margin-bottom:.4rem}
+.lay-why-not p{font-size:12.5px;color:#0c4a6e;line-height:1.6;margin-bottom:.6rem}
+/* REFERRAL */
+.ref-table{width:100%;border-collapse:collapse}
+.ref-table th{background:#f8fafc;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:.55rem .85rem;text-align:left;border-bottom:2px solid var(--line)}
+.ref-table td{padding:.65rem .85rem;border-bottom:1px solid var(--line);font-size:12.5px;vertical-align:top;line-height:1.5}
+.ref-table tr:last-child td{border-bottom:none}.ref-table tr:hover td{background:#fafbfc}
+.ref-urg{font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;display:inline-block}
+.rurg-999{background:#fee2e2;color:var(--r)}.rurg-2{background:#fff7ed;color:#c2410c}
+.rurg-4{background:var(--a-bg);color:var(--a)}.rurg-6{background:#fef9c3;color:#854d0e}.rurg-r{background:var(--g-bg);color:var(--g)}
+/* TX GOALS */
+.tx-goals{display:flex;flex-wrap:wrap;gap:8px;margin:.75rem 0}
+.tx-goal{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;display:inline-flex;align-items:center;gap:6px;border:1px solid}
+.tg1{background:#f0fdf4;border-color:var(--g-bd);color:var(--g)}.tg2{background:var(--b-bg);border-color:var(--b-bd);color:var(--b)}
+.tg3{background:var(--p-bg);border-color:var(--p-bd);color:var(--p)}.tg4{background:var(--a-bg);border-color:var(--a-bd);color:var(--a)}
+/* EXPECTATION BOX */
+.expect-box{background:linear-gradient(135deg,#f0fdf4,#eff6ff);border:2px solid var(--g-bd);border-radius:var(--rad);padding:1rem 1.25rem;margin-bottom:1rem}
+.expect-box-hdr{display:flex;align-items:center;gap:8px;margin-bottom:.75rem}
+.expect-box-lbl{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.expect-steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:680px){.expect-steps{grid-template-columns:1fr}}
+.expect-step{background:#fff;border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.7rem .9rem}
+.expect-step-num{width:22px;height:22px;border-radius:50%;background:var(--g);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:.35rem}
+.expect-step h5{font-size:11.5px;font-weight:700;color:var(--g);margin-bottom:.25rem}
+.expect-step p{font-size:12px;color:var(--ink);line-height:1.45}
+.expect-phrase{font-size:12px;font-style:italic;background:var(--g-bg);border-left:2px solid var(--g-bd);padding:.45rem .8rem;border-radius:0 6px 6px 0;margin-top:.35rem;color:#14532d;line-height:1.55;display:block}
+/* PSYCHOSOCIAL IMPACT SUBSTEP */
+.psoci-wrap{background:var(--ps-bg);border:1px solid var(--ps-bd);border-radius:var(--rad);padding:1rem 1.25rem;margin:1.25rem 0}
+.psoci-hdr{display:flex;align-items:center;gap:8px;margin-bottom:.85rem}
+.psoci-title{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--ps);font-weight:400}
+.psoci-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:760px){.psoci-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.psoci-grid{grid-template-columns:1fr}}
+.psoci-card{background:#fff;border:1px solid var(--ps-bd);border-radius:var(--rad-sm);padding:.75rem .9rem}
+.psoci-icon{font-size:1.3rem;margin-bottom:.25rem;display:block}
+.psoci-card h5{font-size:11px;font-weight:700;color:var(--ps);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+.psoci-card p{font-size:12px;line-height:1.45;color:var(--ink);margin-bottom:.3rem}
+.psoci-phrase{font-size:11.5px;font-style:italic;color:#831843;background:var(--ps-bg);border-radius:5px;padding:.3rem .6rem;line-height:1.45;display:block;margin-top:.35rem}
+/* LIFESTYLE */
+.life-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:760px){.life-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:460px){.life-grid{grid-template-columns:1fr}}
+.life-card{background:var(--white);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow)}
+.life-head{background:var(--g-bg);padding:.65rem .9rem;border-bottom:1px solid var(--g-bd)}
+.life-icon{font-size:1.3rem;margin-bottom:.15rem;display:block}
+.life-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--g)}
+.life-target{font-size:11px;font-weight:600;color:var(--g);margin-top:.2rem;display:block}
+.life-body{padding:.65rem .9rem}
+.life-section{margin-bottom:.4rem}
+.life-section-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.15rem}
+.life-section p{font-size:12px;color:var(--ink);line-height:1.45}
+.life-benefit{font-size:12px;font-weight:700;color:var(--g);background:var(--g-bg);border-radius:6px;padding:2px 7px;display:inline-block;margin-top:.2rem}
+/* DRUG SELECTOR */
+.ds-wrap{background:var(--white);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow)}
+.ds-top{background:#f8fafc;border-bottom:1px solid var(--line);padding:1rem 1.25rem}
+.ds-top h3{font-size:13px;font-weight:600;margin-bottom:.6rem}
+.ds-checks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+@media(max-width:700px){.ds-checks{grid-template-columns:1fr 1fr}}
+.ds-lbl{display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--white);border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:12.5px;transition:.15s}
+.ds-lbl:hover{background:#f8fafc}.ds-lbl input{accent-color:var(--navy);width:14px;height:14px;flex-shrink:0}
+.ds-result{padding:1rem 1.25rem;background:var(--g-bg);border-top:1px solid var(--g-bd)}
+.ds-result-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.5rem}
+/* DRUG CARDS */
+.drug-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:.85rem}
+@media(max-width:980px){.drug-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.drug-cards{grid-template-columns:1fr}}
+.dc{background:var(--white);border:2px solid var(--line);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow);transition:border-color .25s,box-shadow .25s}
+.dc.recommended{border-color:#15803d;box-shadow:0 0 0 3px rgba(21,128,61,.12),var(--shadow)}
+.dc.alt-rec{border-color:var(--b);box-shadow:0 0 0 3px rgba(29,78,216,.08),var(--shadow)}
+.dc-head{padding:.7rem 1rem;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.dc-name{font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.2}
+.dc-examples{font-size:11px;color:var(--muted);margin-top:1px}
+.dc-rec-badge{font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:10px;display:none;margin-top:4px}
+.dc.recommended .dc-rec-badge{display:inline-block;background:#dcfce7;color:var(--g);border:1px solid var(--g-bd)}
+.dc.alt-rec .dc-rec-badge{display:inline-block;background:var(--b-bg);color:var(--b);border:1px solid var(--b-bd)}
+.dc-badges{display:flex;gap:4px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+.dc-step{font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px}
+.step1{background:#dcfce7;color:#15803d}.step2{background:#dbeafe;color:#1d4ed8}.step3{background:#fef3c7;color:#92400e}.step4{background:#fee2e2;color:var(--r)}
+.dc-dose{font-size:11px;font-weight:600;font-family:'SF Mono','Consolas',monospace;background:#fefce8;padding:2px 6px;border-radius:4px;border:1px solid #fef08a;white-space:nowrap}
+.dc-section{padding:.6rem .9rem;border-bottom:1px solid var(--line)}
+.dc-section:last-child{border-bottom:none}
+.dc-sec-t{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.35rem}
+.dc-g .dc-sec-t{color:var(--g)}.dc-r .dc-sec-t{color:var(--r)}.dc-a .dc-sec-t{color:var(--a)}.dc-b .dc-sec-t{color:var(--b)}
+.dc-g{background:rgba(240,253,244,.6)}.dc-r{background:rgba(254,242,242,.6)}.dc-a{background:rgba(255,251,235,.6)}.dc-b{background:rgba(239,246,255,.6)}
+.dc-item{font-size:12px;padding-left:13px;position:relative;line-height:1.45;margin-bottom:3px}
+.dc-item::before{position:absolute;left:0;font-size:10px;top:2px}
+.dc-g .dc-item::before{content:'✓';color:var(--g);font-weight:700}
+.dc-r .dc-item::before{content:'✗';color:var(--r);font-weight:700}
+.dc-a .dc-item::before{content:'⚠';color:var(--a)}.dc-b .dc-item::before{content:'•';color:var(--b)}
+.dc-item.ci-abs{color:var(--r);font-weight:500}.dc-item.ci-rel{color:var(--a)}
+.dc-sca{background:var(--navy);padding:.5rem .85rem}
+.dc-sca p{font-size:11px;color:rgba(255,255,255,.8);line-height:1.45;font-style:italic}
+.dc-sca p::before{content:'🎓 ';font-style:normal}
+.dc-counsel{background:#f5f3ff;padding:.5rem .85rem;border-top:1px solid var(--p-bd)}
+.dc-counsel-t{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--p);margin-bottom:.2rem}
+.dc-counsel p{font-size:11.5px;color:var(--p);line-height:1.45;font-style:italic}
+/* FOLLOW-UP */
+.fu-line{display:flex;flex-direction:column;gap:0;position:relative;padding-left:50px}
+.fu-line::before{content:'';position:absolute;left:16px;top:12px;bottom:12px;width:2px;background:var(--line)}
+.fu-event{position:relative;padding:.6rem 0 .65rem .5rem;display:flex;gap:10px;align-items:flex-start}
+.fu-dot{position:absolute;left:-40px;top:11px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700;color:#fff;z-index:1}
+.fd1{background:var(--r)}.fd2{background:var(--a)}.fd3{background:var(--b)}.fd4{background:var(--g)}.fd5{background:var(--t)}
+.fu-content h5{font-size:12.5px;font-weight:600;margin-bottom:2px}
+.fu-content p{font-size:12px;color:var(--muted);line-height:1.45}
+.fu-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px}
+.ft{font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:500}
+.ft-r{background:var(--r-bg);color:var(--r)}.ft-a{background:var(--a-bg);color:var(--a)}.ft-b{background:var(--b-bg);color:var(--b)}
+.mon-rule{background:var(--navy);border-radius:var(--rad);padding:.85rem 1.1rem;margin-bottom:.85rem}
+.mon-rule h4{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.5);margin-bottom:.4rem}
+.mon-rule p{font-size:12.5px;color:#fff;line-height:1.55}
+.mon-rule strong{color:#86efac}
+/* SAFETY NETTING */
+.sn-box{background:#fffbeb;border:1px solid var(--a-bd);border-radius:var(--rad);padding:1rem 1.1rem}
+.sn-box h4{font-size:12px;font-weight:700;color:var(--a);margin-bottom:.6rem}
+.sn-scenarios{display:flex;flex-direction:column;gap:8px;margin-bottom:.85rem}
+.sn-scenario{border-radius:var(--rad-sm);padding:.75rem 1rem;border:1px solid}
+.sns-e{background:var(--r-bg);border-color:var(--r-bd)}.sns-m{background:var(--b-bg);border-color:var(--b-bd)}.sns-a{background:var(--a-bg);border-color:var(--a-bd)}
+.sn-scenario-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+.sns-e .sn-scenario-lbl{color:var(--r)}.sns-m .sn-scenario-lbl{color:var(--b)}.sns-a .sn-scenario-lbl{color:var(--a)}
+.sn-phrase{font-size:12.5px;font-style:italic;line-height:1.55}.sn-why{font-size:11px;color:var(--muted);margin-top:.35rem}
+.sn-legal{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem 1rem;margin-top:.85rem}
+.sn-legal h5{font-size:11px;font-weight:700;margin-bottom:.4rem}
+.sn-legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+@media(max-width:520px){.sn-legal-grid{grid-template-columns:1fr}}
+.sn-legal-item{font-size:12px;color:var(--muted);padding-left:14px;position:relative}
+.sn-legal-item::before{content:'•';position:absolute;left:0;color:var(--b)}
+.sn-fu{margin-top:.85rem;background:#fef9c3;border-radius:8px;padding:.7rem 1rem;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:520px){.sn-fu{grid-template-columns:1fr}}
+.sn-fu-item strong{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--a);margin-bottom:2px}
+.sn-fu-item{font-size:11.5px;color:#78350f}
+/* ACTOR */
+.actor-toggle{width:100%;text-align:left;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between}
+.actor-body{display:none;padding:0 1.25rem 1.25rem;border-top:1px solid var(--line)}
+.actor-body.open{display:block}
+.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:.75rem}
+@media(max-width:580px){.ab-grid{grid-template-columns:1fr}}
+.ab{background:var(--p-bg);border:1px solid var(--p-bd);border-radius:10px;padding:.8rem 1rem}
+.ab h5{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--p);margin-bottom:.35rem}
+.ab p,.ab li{font-size:12px;color:#4a235a;line-height:1.5}.ab ul{padding-left:1rem}
+.actor-open{background:#f5f3ff;border-left:3px solid #a855f7;padding:.65rem .9rem;border-radius:0 8px 8px 0;font-size:12.5px;font-style:italic;color:#3b0764;margin:.75rem 0 .5rem}
+.actor-challenge{background:#fff7ed;border-left:3px solid #f97316;padding:.65rem .9rem;border-radius:0 8px 8px 0;font-size:12.5px;font-style:italic;color:#7c2d12;margin-top:.5rem}
+/* SUB-DIVIDER */
+.sub-divider{display:flex;align-items:center;gap:8px;margin:1.25rem 0 .65rem;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.sub-divider::after{content:'';flex:1;height:1px;background:var(--line)}
+/* MODE */
+body.mode-sca .clinic-only{display:none!important}
+body.mode-clinic .sca-only{display:none!important}
+/* QUICK REF */
+.qr-section{margin-top:2.5rem}
+.qr-header{background:var(--navy);border-radius:var(--rad) var(--rad) 0 0;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.qr-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:.2rem}
+.qr-title{font-family:'DM Serif Display',serif;font-size:1.4rem;color:#fff;font-weight:400}
+.qr-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:.2rem}
+.qr-print-btn{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 16px;border-radius:20px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;transition:.15s}
+.qr-print-btn:hover{background:rgba(255,255,255,.25)}
+.qr-body{background:var(--white);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--rad) var(--rad);padding:1.25rem}
+.qr-tl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.25rem}
+@media(max-width:680px){.qr-tl{grid-template-columns:1fr}}
+.qr-tl-card{border-radius:var(--rad-sm);padding:.85rem 1rem;border:1px solid}
+.qr-tl-card.red{background:var(--r-bg);border-color:var(--r-bd)}.qr-tl-card.amber{background:var(--a-bg);border-color:var(--a-bd)}
+.qr-tl-card.green{background:var(--g-bg);border-color:var(--g-bd)}.qr-tl-card.blue{background:var(--b-bg);border-color:var(--b-bd)}
+.qr-tl-hdr{display:flex;align-items:center;gap:8px;margin-bottom:.6rem}
+.qr-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.qr-dot-r{background:var(--r)}.qr-dot-a{background:#f59e0b}.qr-dot-g{background:#16a34a}.qr-dot-b{background:#3b82f6}
+.qr-tl-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.qr-tl-card.red .qr-tl-title{color:var(--r)}.qr-tl-card.amber .qr-tl-title{color:var(--a)}
+.qr-tl-card.green .qr-tl-title{color:var(--g)}.qr-tl-card.blue .qr-tl-title{color:var(--b)}
+.qr-item{font-size:12.5px;padding-left:13px;position:relative;line-height:1.5;margin-bottom:4px}
+.qr-item::before{content:'';position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%}
+.qr-tl-card.red .qr-item::before{background:var(--r)}.qr-tl-card.amber .qr-item::before{background:#f59e0b}
+.qr-tl-card.green .qr-item::before{background:#16a34a}.qr-tl-card.blue .qr-item::before{background:#3b82f6}
+.qr-item strong{font-weight:600}
+.qr-item .sub{display:block;font-size:11px;color:var(--muted);margin-top:1px}
+.qr-tl-card.blue p{font-size:12.5px;color:var(--b);font-style:italic;line-height:1.55;border-left:2px solid var(--b-bd);padding-left:10px;margin-bottom:6px}
+.qr-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:1.25rem}
+@media(max-width:860px){.qr-cols{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.qr-cols{grid-template-columns:1fr}}
+.qr-col-card{border-radius:var(--rad-sm);border:1px solid var(--line);overflow:hidden;background:var(--white)}
+.qr-col-hd{padding:.6rem .85rem;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;border-bottom:1px solid var(--line)}
+.qr-col-body{padding:.75rem .85rem}
+.drug-tree{display:flex;flex-direction:column;gap:6px}
+.dt-row{display:flex;align-items:flex-start;gap:8px}
+.dt-cond{font-size:11.5px;font-weight:600;color:var(--muted);flex-shrink:0;width:130px;line-height:1.4;padding-top:2px}
+.dt-arrow{font-size:11px;color:var(--muted);flex-shrink:0;padding-top:3px}
+.dt-drug{font-size:12px;font-weight:700;padding:3px 9px;border-radius:8px;line-height:1.4}
+.dt-acei{background:#dcfce7;color:#15803d}.dt-ccb{background:#fef3c7;color:#92400e}.dt-arb{background:#dbeafe;color:#1d4ed8}
+.dt-divider{height:1px;background:var(--line);margin:4px 0}
+.dt-step{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:4px 0 2px}
+.dt-ladder{display:flex;flex-direction:column;gap:4px}
+.dt-lrow{display:flex;align-items:center;gap:6px;font-size:11.5px}
+.dt-lnum{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0}
+.dl1{background:#15803d}.dl2{background:#1d4ed8}.dl3{background:#b45309}.dl4{background:var(--r)}
+.k-pivot{font-size:11px;background:#fef3c7;color:#b45309;border-radius:6px;padding:2px 7px;font-weight:600;margin-top:2px;display:inline-block}
+.mon-compact{display:flex;flex-direction:column;gap:4px}
+.mc-row{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5}
+.mc-tag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;flex-shrink:0;margin-top:1px}
+.mct-1{background:#fee2e2;color:var(--r)}.mct-2{background:var(--a-bg);color:var(--a)}.mct-m{background:#fefce8;color:#854d0e}.mct-y{background:var(--g-bg);color:var(--g)}
+.bp-mini{width:100%;border-collapse:collapse;margin-top:8px}
+.bp-mini th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:.35rem .5rem;text-align:left;border-bottom:1px solid var(--line);background:#f8fafc}
+.bp-mini td{font-size:12px;padding:.35rem .5rem;border-bottom:1px solid var(--line)}
+.bp-mini tr:last-child td{border-bottom:none}
+.sn-phrase-box{border-radius:var(--rad-sm);padding:.65rem .85rem;border:1px solid;margin-bottom:8px}
+.snp-e{background:var(--r-bg);border-color:var(--r-bd)}.snp-m{background:var(--b-bg);border-color:var(--b-bd)}.snp-a{background:var(--a-bg);border-color:var(--a-bd)}
+.snp-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+.snp-e .snp-lbl{color:var(--r)}.snp-m .snp-lbl{color:var(--b)}.snp-a .snp-lbl{color:var(--a)}
+.snp-text{font-size:12px;font-style:italic;line-height:1.5}
+.qr-sca-section{margin-top:1.25rem;padding-top:1.25rem;border-top:2px solid var(--line)}
+.qr-sca-header{display:flex;align-items:center;gap:8px;margin-bottom:.85rem}
+.qr-sca-title{font-size:12px;font-weight:700;color:var(--navy)}
+.qr-sca-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--p-bg);color:var(--p);border:1px solid var(--p-bd)}
+.dz-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+@media(max-width:700px){.dz-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){.dz-grid{grid-template-columns:1fr}}
+.dz-card{background:#fff7f7;border:1px solid var(--r-bd);border-radius:var(--rad-sm);padding:.7rem .85rem}
+.dz-wrong{font-size:11.5px;font-weight:600;color:var(--r);margin-bottom:3px}
+.dz-wrong::before{content:'✗ '}
+.dz-right{font-size:11.5px;color:var(--g);font-weight:500}
+.dz-right::before{content:'✓ '}
+.cf-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:0;background:var(--white);border:1px solid var(--line);border-radius:var(--rad-sm);overflow:hidden;margin-top:.85rem}
+@media(max-width:700px){.cf-strip{grid-template-columns:1fr}}
+.cf-step{padding:.7rem .85rem;border-right:1px solid var(--line)}
+.cf-step:last-child{border-right:none}
+@media(max-width:700px){.cf-step{border-right:none;border-bottom:1px solid var(--line)}.cf-step:last-child{border-bottom:none}}
+.cf-time{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.25rem}
+.cs1 .cf-time{color:#7c3aed}.cs2 .cf-time{color:#0369a1}.cs3 .cf-time{color:#b45309}.cs4 .cf-time{color:#15803d}.cs5 .cf-time{color:#be123c}
+.cf-step h5{font-size:12px;font-weight:600;margin-bottom:.25rem}
+.cf-step li{font-size:11px;color:var(--muted);list-style:none;padding-left:10px;position:relative;line-height:1.4;margin-bottom:1px}
+.cf-step li::before{content:'→';position:absolute;left:0;font-size:9px;top:2px;color:#cbd5e1}
+
+/* ══════════════════════════════════════
+   DUAL SUMMARY SECTIONS
+══════════════════════════════════════ */
+.sum-section{margin-top:2rem}
+.sum-hdr{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:1rem 1.4rem;background:var(--navy2);border-radius:var(--rad) var(--rad) 0 0;cursor:pointer;user-select:none;flex-wrap:wrap;transition:background .15s}
+.sum-hdr:hover{background:#1e4573}
+.sca-sum-hdr{background:linear-gradient(135deg,#2d1b69,#1b3a5c)}
+.sca-sum-hdr:hover{background:linear-gradient(135deg,#3b2384,#1e4573)}
+.sum-hdr-left{display:flex;align-items:center;gap:12px}
+.sum-icon{font-size:1.6rem;flex-shrink:0}
+.sum-label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:.15rem}
+.sum-title{font-family:'DM Serif Display',serif;font-size:1.25rem;color:#fff;font-weight:400;line-height:1.2}
+.sum-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:.1rem}
+.sum-toggle{display:flex;align-items:center;gap:6px;padding:.4rem .85rem;border-radius:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);transition:.15s;flex-shrink:0}
+.sum-hdr:hover .sum-toggle{background:rgba(255,255,255,.2)}
+.sca-toggle{background:rgba(139,92,246,.25);border-color:rgba(139,92,246,.4)}
+.sum-ti-icon{font-size:12px;color:rgba(255,255,255,.7)}
+.sum-ti-text{font-size:11px;color:rgba(255,255,255,.7);font-weight:500}
+.sum-body{background:var(--white);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--rad) var(--rad);padding:1.25rem;box-shadow:var(--shadow)}
+.sum-body.closed{display:none}
+.sum-sub-hdr{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--navy);margin:.75rem 0 .5rem;display:flex;align-items:center;gap:6px}
+.sum-sub-hdr::after{content:'';flex:1;height:1px;background:var(--line)}
+.sca-sub-hdr{color:var(--p)}
+.sum-2col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.sum-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+@media(max-width:900px){.sum-2col,.sum-3col{grid-template-columns:1fr}}
+
+/* TRIAGE ALGORITHM */
+.algo-wrap{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem}
+.algo-start{background:var(--navy);color:#fff;font-weight:700;font-size:13px;padding:.5rem 1rem;border-radius:8px;display:inline-block;margin-bottom:.5rem}
+.algo-arrow{font-size:1.2rem;color:var(--muted);margin:.25rem 0;text-align:center}
+.algo-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:760px){.algo-row{grid-template-columns:1fr}}
+.algo-branch{border-radius:var(--rad-sm);padding:.7rem .85rem;border:1px solid}
+.algo-red{background:var(--r-bg);border-color:var(--r-bd)}
+.algo-amber{background:var(--a-bg);border-color:var(--a-bd)}
+.algo-green{background:var(--g-bg);border-color:var(--g-bd)}
+.algo-branch-lbl{font-size:11px;font-weight:700;margin-bottom:.4rem}
+.red .algo-branch-lbl,.algo-red .algo-branch-lbl{color:var(--r)}
+.amber .algo-branch-lbl,.algo-amber .algo-branch-lbl{color:var(--a)}
+.green .algo-branch-lbl,.algo-green .algo-branch-lbl{color:var(--g)}
+.algo-list{list-style:none;padding:0;margin-bottom:.4rem}
+.algo-list li{font-size:11.5px;line-height:1.5;padding-left:14px;position:relative;margin-bottom:1px}
+.algo-red .algo-list li::before{content:'🚨';position:absolute;left:0;font-size:9px;top:2px}
+.algo-amber .algo-list li::before{content:'⚠';position:absolute;left:0;font-size:9px;top:2px}
+.algo-green .algo-list li::before{content:'✓';position:absolute;left:0;font-size:10px;top:1px;color:var(--g);font-weight:700}
+.algo-action{font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:6px;margin-top:.3rem;display:inline-block}
+.red-action{background:#b91c1c;color:#fff}
+.amber-action{background:#b45309;color:#fff}
+.green-action{background:#15803d;color:#fff}
+
+/* DIAGNOSIS FLOW */
+.diag-flow{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem}
+.diag-box{padding:.4rem .75rem;border-radius:8px;font-size:12px;font-weight:600;display:inline-block;margin-bottom:.3rem}
+.diag-start{background:var(--navy);color:#fff}
+.diag-arrow{font-size:11px;color:var(--muted);margin:.2rem 0;font-style:italic}
+.diag-split{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:.4rem 0}
+@media(max-width:600px){.diag-split{grid-template-columns:1fr}}
+.diag-branch{text-align:center}
+.diag-a{background:var(--g-bg);color:var(--g);border:1px solid var(--g-bd)}
+.diag-b{background:var(--a-bg);color:var(--a);border:1px solid var(--a-bd)}
+.diag-c{background:var(--r-bg);color:var(--r);border:1px solid var(--r-bd)}
+.diag-label{font-size:11px;font-weight:700;margin:.15rem 0}
+.green-txt{color:var(--g)}.amber-txt{color:var(--a)}.red-txt{color:var(--r)}
+.diag-sub{font-size:10.5px;color:var(--muted);line-height:1.4}
+.diag-masked{background:var(--b-bg);color:var(--b);border:1px solid var(--b-bd);font-size:11.5px;display:block;margin-top:.4rem}
+
+/* KEY NUMBERS */
+.num-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+@media(max-width:680px){.num-grid{grid-template-columns:1fr 1fr}}
+.num-card{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:.5rem .65rem;text-align:center}
+.num-highlight{background:var(--navy);border-color:var(--navy)}
+.num-val{font-size:14px;font-weight:700;color:var(--navy);line-height:1.2}
+.num-highlight .num-val{color:#86efac}
+.num-lbl{font-size:10px;color:var(--muted);line-height:1.35;margin-top:.15rem}
+.num-highlight .num-lbl{color:rgba(255,255,255,.6)}
+
+/* DRUG ALGORITHM */
+.drug-algo{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem}
+.da-q{font-size:12px;font-weight:600;color:var(--navy);margin-bottom:.5rem;padding:.4rem .7rem;background:#fff;border:1px solid var(--line);border-radius:6px}
+.da-split{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:.65rem}
+@media(max-width:560px){.da-split{grid-template-columns:1fr}}
+.da-yes,.da-no{background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .8rem}
+.da-yes-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--g);margin-bottom:.3rem}
+.da-no-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.3rem}
+.da-sub{font-size:10.5px;color:var(--muted);margin-top:.25rem;line-height:1.35}
+.da-pill{font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block;margin:.15rem 0}
+.acei-pill{background:#dcfce7;color:#15803d}.ccb-pill{background:#fef3c7;color:#92400e}.arb-pill{background:#dbeafe;color:#1d4ed8}
+.da-row{display:flex;align-items:center;gap:6px;margin-bottom:.2rem}
+.da-cond{font-size:11px;color:var(--muted);flex:1}
+.da-arrow2{color:var(--muted);font-size:11px;flex-shrink:0}
+.da-ladder{border-top:1px solid var(--line);padding-top:.5rem;display:flex;flex-direction:column;gap:4px}
+.da-step-row{display:flex;align-items:center;gap:8px;font-size:12px}
+.da-num{width:22px;height:22px;border-radius:50%;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.da-text{color:var(--ink);line-height:1.4}
+.da-warn{font-size:10.5px;color:var(--r);margin-top:.5rem;padding:.3rem .6rem;background:var(--r-bg);border-radius:5px;border:1px solid var(--r-bd)}
+
+/* MONITORING TABLE */
+.mon-table-wrap{border:1px solid var(--line);border-radius:var(--rad-sm);overflow:hidden}
+.mon-table{width:100%;border-collapse:collapse;font-size:12px}
+.mon-table th{background:#f8fafc;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:.4rem .6rem;text-align:left;border-bottom:1px solid var(--line)}
+.mon-table td{padding:.4rem .6rem;border-bottom:1px solid var(--line);vertical-align:middle}
+.mon-table tr:last-child td{border-bottom:none}
+.mon-red{font-weight:700;color:var(--r)}.mon-amber{font-weight:700;color:var(--a)}.mon-green{font-weight:700;color:var(--g)}
+
+/* FLAG GRID */
+.flag-grid{display:flex;flex-direction:column;gap:5px;margin-top:.4rem}
+.flag-item{font-size:11.5px;line-height:1.45;padding:.4rem .65rem;border-radius:6px;border:1px solid}
+.flag-red{background:var(--r-bg);border-color:var(--r-bd);color:#7f1d1d}
+.flag-amber{background:var(--a-bg);border-color:var(--a-bd);color:#78350f}
+.flag-pink{background:var(--ps-bg);border-color:var(--ps-bd);color:#831843}
+
+/* COMPACT SAFETY NET */
+.sn-compact-wrap{display:flex;flex-direction:column;gap:6px}
+.sn-compact{border-radius:var(--rad-sm);padding:.6rem .85rem;border:1px solid}
+.sn-compact.sns-e{background:var(--r-bg);border-color:var(--r-bd)}
+.sn-compact.sns-m{background:var(--b-bg);border-color:var(--b-bd)}
+.sn-compact.sns-a{background:var(--a-bg);border-color:var(--a-bd)}
+.sn-compact-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem}
+.sns-e .sn-compact-lbl{color:var(--r)}.sns-m .sn-compact-lbl{color:var(--b)}.sns-a .sn-compact-lbl{color:var(--a)}
+.sn-compact-phrase{font-size:12px;font-style:italic;line-height:1.5}
+
+/* COMPACT FOLLOW-UP */
+.fu-compact-wrap{display:flex;flex-direction:column;gap:6px}
+.fu-compact-row{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5}
+.fu-compact-dot{width:22px;height:22px;border-radius:50%;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+
+/* SCA FLOW */
+.sca-flow-wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-radius:var(--rad-sm);overflow:hidden;border:1px solid var(--line)}
+@media(max-width:860px){.sca-flow-wrap{grid-template-columns:1fr}}
+.sca-flow-step{padding:.8rem .9rem;border-right:1px solid var(--line);position:relative}
+.sca-flow-step:last-child{border-right:none}
+@media(max-width:860px){.sca-flow-step{border-right:none;border-bottom:1px solid var(--line)}.sca-flow-step:last-child{border-bottom:none}}
+.sca-f1{background:#faf5ff;border-top:3px solid var(--p)}
+.sca-f2{background:#fef2f2;border-top:3px solid var(--r)}
+.sca-f3{background:#fffbeb;border-top:3px solid var(--a)}
+.sca-f4{background:#f0fdf4;border-top:3px solid var(--g)}
+.sca-f5{background:#eff6ff;border-top:3px solid var(--b)}
+.sca-f-time{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.2rem;color:var(--muted)}
+.sca-f-title{font-size:13px;font-weight:700;margin-bottom:.4rem;color:var(--ink)}
+.sca-f-phrase{font-size:11px;font-style:italic;background:rgba(255,255,255,.7);border-left:2px solid rgba(0,0,0,.1);padding:.3rem .5rem;border-radius:0 4px 4px 0;margin-bottom:.3rem;line-height:1.45;color:var(--ink)}
+.sca-f-note{font-size:10.5px;color:var(--muted);line-height:1.4;margin-bottom:.25rem}
+.sca-f-domains{display:flex;flex-wrap:wrap;gap:3px;margin-top:.4rem}
+.sca-dom-tag{font-size:9px;font-weight:700;padding:1px 6px;border-radius:8px}
+.sca-dom-tag.task{background:#dcfce7;color:#15803d}
+.sca-dom-tag.ro{background:var(--p-bg);color:var(--p)}
+.sca-dom-tag.gs{background:var(--b-bg);color:var(--b)}
+.sca-f-avoid{font-size:10px;color:var(--r);margin-top:.4rem;padding:.25rem .45rem;background:rgba(185,28,28,.06);border-radius:4px;line-height:1.4}
+
+/* RAG FULL */
+.rag-full-wrap{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem .9rem}
+.rag-domain-block{}
+.rag-domain-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.3rem}
+.task-col{color:var(--g)}.ro-col{color:var(--p)}.gs-col{color:var(--b)}
+.rag-row{display:flex;align-items:flex-start;gap:6px;margin-bottom:3px;font-size:11px;line-height:1.45;padding:.25rem .4rem;border-radius:4px}
+.rag-rl{flex-shrink:0;font-size:12px}
+.rag-g-row{background:rgba(21,128,61,.06)}
+.rag-a-row{background:rgba(180,83,9,.06)}
+.rag-r-row{background:rgba(185,28,28,.06)}
+
+/* PHRASE STACK */
+.phrase-stack{display:flex;flex-direction:column;gap:6px}
+.phrase-card{border-radius:var(--rad-sm);padding:.55rem .8rem;border:1px solid}
+.p-ideas{background:var(--p-bg);border-color:var(--p-bd)}
+.p-concerns{background:var(--b-bg);border-color:var(--b-bd)}
+.p-expect{background:var(--a-bg);border-color:var(--a-bd)}
+.p-validate{background:var(--g-bg);border-color:var(--g-bd)}
+.p-explain{background:#fefce8;border-color:#fde68a}
+.p-close{background:var(--navy);border-color:var(--navy2)}
+.p-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.2rem}
+.p-ideas .p-lbl{color:var(--p)}.p-concerns .p-lbl{color:var(--b)}.p-expect .p-lbl{color:var(--a)}
+.p-validate .p-lbl{color:var(--g)}.p-explain .p-lbl{color:#92400e}.p-close .p-lbl{color:rgba(255,255,255,.5)}
+.p-phrase{font-size:11.5px;font-style:italic;line-height:1.5}
+.p-close .p-phrase{color:rgba(255,255,255,.85)}
+
+/* DANGER ZONE STACK */
+.dz-stack{display:flex;flex-direction:column;gap:5px}
+.dz-item{display:flex;align-items:flex-start;gap:7px;background:#fff7f7;border:1px solid var(--r-bd);border-radius:7px;padding:.5rem .7rem;font-size:11.5px;line-height:1.4}
+.dz-x{color:var(--r);font-size:14px;font-weight:700;flex-shrink:0;line-height:1.2}
+.dz-fix{color:var(--g);font-size:11px;display:block;margin-top:.15rem}
+
+/* SCA DRUG PICK */
+.sca-drug-pick{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.7rem .9rem}
+.sdp-row{display:flex;align-items:center;gap:6px;margin-bottom:.3rem}
+.sdp-cond{font-size:11.5px;color:var(--muted);flex:1;line-height:1.3}
+.sdp-arrow{font-size:11px;color:var(--muted);flex-shrink:0}
+.sdp-pill{font-size:11px;font-weight:700;padding:2px 9px;border-radius:12px;flex-shrink:0}
+.sdp-note{font-size:10px;color:var(--muted);flex-shrink:0}
+.sdp-pivot{font-size:11px;font-weight:600;background:var(--navy);color:#86efac;padding:.35rem .7rem;border-radius:6px;margin-top:.3rem;line-height:1.4}
+
+
+/* SCA SCORECARD */
+.scorecard-wrap{background:var(--white);border:2px solid var(--af-bd);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:1.25rem}
+.scorecard-hdr{background:var(--navy);padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.scorecard-hdr-left{}
+.scorecard-title{font-family:"DM Serif Display",serif;font-size:1.2rem;color:#fff;font-weight:400}
+.scorecard-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:.15rem}
+.scorecard-total-wrap{display:flex;align-items:baseline;gap:4px;background:rgba(255,255,255,.12);padding:.45rem .9rem;border-radius:20px;border:1px solid rgba(255,255,255,.2)}
+.scorecard-total{font-size:1.8rem;font-weight:700;color:#86efac;line-height:1}
+.scorecard-total-label{font-size:12px;color:rgba(255,255,255,.6)}
+.sc-reset-btn{font-size:11.5px;font-weight:600;padding:6px 14px;border-radius:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;cursor:pointer;font-family:"DM Sans",sans-serif;transition:.15s}
+.sc-reset-btn:hover{background:rgba(255,255,255,.2)}
+.scorecard-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--line)}
+@media(max-width:900px){.scorecard-grid{grid-template-columns:1fr}}
+.sc-domain{border-right:1px solid var(--line);padding:0}
+.sc-domain:last-child{border-right:none}
+@media(max-width:900px){.sc-domain{border-right:none;border-bottom:1px solid var(--line)}.sc-domain:last-child{border-bottom:none}}
+.sc-domain-hdr{display:flex;align-items:center;gap:10px;padding:.75rem 1rem;border-bottom:1px solid var(--line)}
+.task-domain{background:#f0fdf4}.ro-domain{background:var(--p-bg)}.gs-domain{background:var(--b-bg)}
+.sc-domain-icon{font-size:1.3rem;flex-shrink:0}
+.sc-domain-title{font-size:12.5px;font-weight:700;color:var(--ink)}
+.sc-domain-sub{font-size:10.5px;color:var(--muted);line-height:1.3}
+.sc-domain-score{margin-left:auto;display:flex;align-items:baseline;gap:2px;flex-shrink:0}
+.sc-domain-score span:first-child{font-size:1.4rem;font-weight:700}
+.task-domain .sc-domain-score span:first-child{color:var(--g)}
+.ro-domain .sc-domain-score span:first-child{color:var(--p)}
+.gs-domain .sc-domain-score span:first-child{color:var(--b)}
+.sc-domain-max{font-size:11px;color:var(--muted)}
+.sc-items{padding:.65rem .85rem;display:flex;flex-direction:column;gap:5px}
+.sc-item{display:flex;align-items:flex-start;gap:8px;cursor:pointer;padding:.45rem .6rem;border-radius:8px;border:1px solid transparent;transition:.15s;user-select:none;font-size:12px;line-height:1.45}
+.sc-item:hover{background:#f8fafc;border-color:var(--line)}
+.sc-item input[type=checkbox]{accent-color:var(--af);width:15px;height:15px;flex-shrink:0;margin-top:1px;cursor:pointer}
+.sc-item-text{flex:1;color:var(--ink)}
+.sc-pts{font-size:10px;font-weight:700;padding:1px 6px;border-radius:8px;background:#f1f5f9;color:var(--muted);flex-shrink:0;margin-top:1px}
+.sc-item.checked{background:#f0fdf4;border-color:var(--g-bd)}
+.sc-item.checked .sc-item-text{color:var(--g)}
+.sc-item.checked .sc-pts{background:var(--g-bg);color:var(--g)}
+.scorecard-interp{padding:1rem 1.25rem;background:#f8fafc;border-top:1px solid var(--line)}
+.interp-bar-wrap{margin-bottom:.75rem}
+.interp-bar-track{height:12px;background:#e2e8f0;border-radius:6px;overflow:hidden;margin-bottom:4px;position:relative}
+.interp-bar-fill{height:100%;border-radius:6px;transition:width .4s cubic-bezier(.4,0,.2,1);background:linear-gradient(90deg,var(--r),var(--a),var(--g),#15803d)}
+.interp-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:2px;padding:0 0}
+.interp-zones{display:grid;grid-template-columns:33% 17% 24% 26%;gap:2px}
+.interp-zone{font-size:10px;font-weight:700;text-align:center;padding:2px 4px;border-radius:4px}
+.iz-r{background:var(--r-bg);color:var(--r)}.iz-a{background:var(--a-bg);color:var(--a)}
+.iz-g{background:var(--g-bg);color:var(--g)}.iz-gg{background:#dcfce7;color:#14532d}
+.interp-msg{display:flex;align-items:center;gap:10px;padding:.65rem .9rem;border-radius:var(--rad-sm);border:1px solid var(--line);background:var(--white)}
+.interp-icon{font-size:1.5rem;flex-shrink:0}
+.interp-text{font-size:12.5px;color:var(--ink);line-height:1.5}
+.sc-missed-wrap{padding:.85rem 1.25rem;background:var(--a-bg);border-top:1px solid var(--a-bd)}
+.sc-missed-title{font-size:11px;font-weight:700;color:var(--a);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.sc-missed-list{display:flex;flex-direction:column;gap:4px}
+.sc-missed-item{font-size:12px;color:#78350f;padding:.3rem .6rem;background:rgba(255,255,255,.6);border-radius:5px;border-left:3px solid var(--a)}
+
+@media print{
+  .sum-body.closed{display:block!important}
+  .sum-toggle{display:none!important}
+  .sca-only,.clinic-only{display:block!important}
+}
+
+@media print{
+  .topbar,.numstrip,.collapse-controls,.step-toggle,.qr-print-btn{display:none!important}
+  body{background:#fff;font-size:11px}.page{padding:0;max-width:100%}
+  .step-body.closed{display:block!important}
+  .sca-only,.clinic-only{display:block!important}
+  .actor-body{display:block!important}
+  .step-hdr{box-shadow:none;background:#f8fafc;border-radius:var(--rad)}
+  .step-hdr.is-open{border-radius:var(--rad);border-bottom:1px solid var(--line)}
+  .step-body{box-shadow:none;border-radius:var(--rad);border-top:1px solid var(--line)!important}
+  .qr-tl,.qr-cols,.g2,.g3{grid-template-columns:1fr 1fr}
+  .drug-cards{grid-template-columns:1fr 1fr}.triage{grid-template-columns:1fr}.dc{break-inside:avoid}
+}
+.page-footer{text-align:center;padding:1.5rem 1rem;color:var(--muted);font-size:11px;border-top:1px solid var(--line);margin-top:1.5rem}
+
+</style>
+
+</head>
+<body class="mode-both" id="bodyEl">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+
+<div class="app">
+  <aside class="sidebar" data-active-id="hypercalcaemia"></aside>
+  <main class="main">
+
+<!-- Case header -->
+<div class="case-head">
+  <div>
+    <div class="ch-cat">Lab workup · Full case</div>
+    <h1>Hypercalcaemia</h1>
+  </div>
+  <div class="case-head-tags">
+      <span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE CKS</span>
+  </div>
+</div>
+
+<!-- Drop-nav mounts here automatically via case-nav.js -->
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">Ca</div>
+      <div><div class="tb-title">Hypercalcaemia &middot; Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA &middot; NICE CKS 2022 / BTA HPT Guidelines 2019</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">&#127891; SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">&#127973; Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">2.1&ndash;2.6</span><span class="ns-lbl">Normal corrected calcium (mmol/L)</span></div>
+    <div class="ns-item"><span class="ns-val">&gt;2.6</span><span class="ns-lbl">Mild/moderate hypercalcaemia &mdash; investigate</span></div>
+    <div class="ns-item"><span class="ns-val">&gt;3.5</span><span class="ns-lbl">Severe hypercalcaemia &mdash; 999 / same-day hospital</span></div>
+    <div class="ns-item"><span class="ns-val">90%</span><span class="ns-lbl">Hypercalcaemia caused by primary HPT or malignancy</span></div>
+    <div class="ns-item"><span class="ns-val">PTH &uarr;</span><span class="ns-lbl">Elevated PTH = primary/tertiary HPT &rarr; endocrine referral</span></div>
+    <div class="ns-item"><span class="ns-val">PTH &darr;</span><span class="ns-lbl">Suppressed PTH = malignancy / non-PTH cause &rarr; cancer screen</span></div>
+    <div class="ns-item"><span class="ns-val">2 samples</span><span class="ns-lbl">Two elevated corrected calcium samples required before acting on mild elevation</span></div>
+    <div class="ns-item"><span class="ns-val">2 L/day</span><span class="ns-lbl">Hydration target for all hypercalcaemia; first-line non-pharmacological measure</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">&#128203; Clinical Stem &mdash; Hypercalcaemia</div>
+  <div class="stem-title">A patient is found to have an elevated corrected serum calcium, either incidentally or following investigation of symptoms.</div>
+  <div class="stem-text">"Mrs Patricia Okafor is a 55-year-old accountant who presents after her routine blood test showed a corrected calcium of 2.78 mmol/L. She takes calcium carbonate 500 mg and vitamin D 800 IU daily for osteoporosis prevention. She reports fatigue, occasional constipation, and vague abdominal discomfort over the past 3 months. Her mother had breast cancer. She is worried the test result means she has cancer."</div>
+  <div class="stem-note">The hypercalcaemia consultation hinges on one pivotal question: is the PTH elevated (HPT) or suppressed (malignancy/other)? PTH is the test that determines the entire management pathway. Before referring for parathyroidectomy, CCCR must exclude FHH. In SCA, the cancer fear must be directly addressed while communicating appropriate diagnostic uncertainty.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A &mdash; Incidental mild hypercalcaemia (2.6&ndash;3.0)</strong> Confirm on repeat sample. Stop supplements. Check PTH. If PTH elevated: primary HPT &rarr; endocrine referral. If PTH suppressed: cancer screen urgently.</div>
+    <div class="stem-variant"><strong>Scenario B &mdash; Severe hypercalcaemia (&gt;3.5) or symptomatic</strong> Confusion, extreme fatigue, polyuria, severe nausea. Same-day hospital admission. IV saline rehydration. IV bisphosphonate (specialist). Treat underlying cause.</div>
+    <div class="stem-variant"><strong>Scenario C &mdash; Primary hyperparathyroidism confirmed</strong> PTH elevated + calcium elevated. Stop supplements. 24-hour urine calcium (CCCR) to exclude FHH before parathyroidectomy referral. Surgery vs cinacalcet vs surveillance.</div>
+    <div class="stem-variant"><strong>Scenario D &mdash; Malignancy-associated hypercalcaemia</strong> PTH suppressed. Solid tumour or myeloma. 2WW cancer referral urgently. IV bisphosphonate for hypercalcaemia management (hospital). Do not manage in primary care.</div>
+    <div class="stem-variant"><strong>Scenario E &mdash; Drug-induced or supplement-related</strong> Calcium carbonate, vitamin D, thiazides, lithium. Stop the causative agent. Recheck calcium in 4&ndash;6 weeks. Most reversible cause.</div>
+    <div class="stem-variant"><strong>Key variables</strong> Calcium level (mild vs severe); PTH result (HPT vs non-HPT); symptom burden; drug causes; cancer history; CCCR ratio (FHH vs primary HPT); renal function (tertiary HPT in CKD).</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">&#9660; Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">&#9650; Collapse all</button>
+</div>
+
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History Taking &mdash; Symptoms, Drug Causes, Cancer Screen, ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Hypercalcaemia history has three goals: assess symptom severity (determines urgency), screen for drug/supplement causes (most reversible), and identify clinical features that point to the underlying cause (HPT vs malignancy vs other).</strong> The "bones, groans, moans and stones" mnemonic covers the clinical syndrome: bone pain and fragility fractures, abdominal symptoms (nausea, constipation, peptic ulcer), neuropsychiatric symptoms (depression, confusion), and renal stones.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">&#127891; SCA opener</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"I can see from your recent blood test that your calcium level has come back a little higher than normal &mdash; I want to explain what that means and make sure we get to the bottom of it together. First, can you tell me how you've been feeling over the past few months &mdash; any particular symptoms that have been troubling you?"</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Reference the result. Normalise the finding ("a little higher") without either catastrophising or dismissing. Invite the patient to lead with symptoms before exploring the ICE (cancer fear will emerge naturally or should be proactively asked).</div>
+    </div>
+    <div class="sub-divider">1A &mdash; Key questions</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>&#128994; OPEN &mdash; always start here</strong><em>"How have you been feeling &mdash; any symptoms that might fit with this result?"</em></td>
+            <td class="why">Symptoms determine urgency: mild elevation with no symptoms = time for investigation; symptomatic (confusion, severe nausea, polyuria) = same-day admission. Also reveals the impact on daily life and opens the ICE conversation.</td>
+            <td><span class="chg chg-urgent">Urgency</span><span class="chg chg-ps">Psychosocial</span></td>
+          </tr>
+          <tr>
+            <td class="q">Fatigue, depression, cognitive change<em>"How has your energy been? Any low mood, difficulty concentrating, or feeling confused?"</em></td>
+            <td class="why">Neuropsychiatric symptoms (fatigue, depression, cognitive slowing, confusion) are common in hypercalcaemia and often the presenting complaint. They are frequently attributed to depression, menopause, or stress &mdash; hypercalcaemia is a commonly missed secondary cause of depression.</td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-urgent">Urgency</span></td>
+          </tr>
+          <tr>
+            <td class="q">GI symptoms<em>"Any nausea, vomiting, constipation, or abdominal pain?"</em></td>
+            <td class="why">GI symptoms (nausea, constipation, abdominal pain) are characteristic of hypercalcaemia ("groans"). Peptic ulceration (calcium stimulates gastrin) can coexist. Constipation from hypercalcaemia is a common presenting complaint &mdash; often managed as functional constipation without the metabolic cause being identified.</td>
+            <td><span class="chg chg-ddx">DDx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Renal symptoms<em>"Any kidney stones? Increased thirst or urination?"</em></td>
+            <td class="why">Renal stones (calcium oxalate) and nephrocalcinosis are long-term complications of hypercalcaemia. Polyuria and polydipsia occur from nephrogenic diabetes insipidus (calcium impairs ADH action). Renal stones support a diagnosis of primary HPT (longstanding hypercalcaemia). Also guides urgency: stones + hypercalcaemia = treat HPT.</td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-ref">Referral</span></td>
+          </tr>
+          <tr>
+            <td class="q">Bone pain or fractures<em>"Any bone pain &mdash; particularly in the hips, back, or long bones? Any recent fractures?"</em></td>
+            <td class="why">Bone pain and fragility fractures ("bones") indicate osteoclast activation from PTH or PTHrP. Severe osteitis fibrosa cystica (rare) occurs in severe longstanding HPT. Bone metastases cause pain + hypercalcaemia and must be distinguished from HPT &mdash; both cause bone pain.</td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-urgent">Urgency</span></td>
+          </tr>
+          <tr>
+            <td class="q">Drug history &mdash; calcium, vitamin D, thiazides, lithium<em>"What medications and supplements are you taking &mdash; including any calcium tablets, vitamin D, water tablets, or medications for mood?"</em></td>
+            <td class="why">Drug/supplement causes are the most immediately reversible: calcium carbonate + vitamin D supplements (this patient takes both), thiazide diuretics (reduce renal calcium excretion), lithium (stimulates PTH secretion). Stopping the causative agent and rechecking in 4&ndash;6 weeks often resolves the hypercalcaemia.</td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-rx">Management</span></td>
+          </tr>
+          <tr>
+            <td class="q">Cancer history and weight loss<em>"Have you ever been treated for cancer? Any unexplained weight loss or night sweats?"</em></td>
+            <td class="why">Malignancy is the second most common cause of hypercalcaemia (after primary HPT). PTH-suppressed hypercalcaemia = malignancy until proven otherwise. Known cancer history + hypercalcaemia = urgent oncology review. Weight loss + hypercalcaemia + PTH suppressed = cancer screen urgently.</td>
+            <td><span class="chg chg-urgent">Urgency</span><span class="chg chg-ddx">DDx</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B &mdash; Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">&#128680;</span><h3>Red Flags</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Calcium &gt;3.5 mmol/L</td><td class="rf-why">Severe hypercalcaemia: cardiac arrhythmia (shortened QT interval), acute kidney injury, coma. Requires IV saline rehydration and IV bisphosphonate urgently.</td><td><span class="rf-action rfa-999">Same-day hospital admission</span></td></tr>
+          <tr><td class="rf-flag">Hypercalcaemia + confusion or reduced consciousness</td><td class="rf-why">Hypercalcaemic crisis &mdash; life-threatening. CNS toxicity from calcium. Needs urgent IV rehydration and electrolyte correction.</td><td><span class="rf-action rfa-999">999 immediately</span></td></tr>
+          <tr><td class="rf-flag">Hypercalcaemia + weight loss + night sweats + known or suspected cancer</td><td class="rf-why">Malignancy-associated hypercalcaemia &mdash; from PTHrP, bone metastases, or myeloma. Requires 2WW cancer referral and IV bisphosphonate in hospital.</td><td><span class="rf-action rfa-same">Urgent 2WW cancer referral</span></td></tr>
+          <tr><td class="rf-flag">Hypercalcaemia + severe bone pain + anaemia + renal failure + SPEP band</td><td class="rf-why">Multiple myeloma &mdash; specific cancer causing hypercalcaemia through osteoclast activation. Requires 2WW haematology.</td><td><span class="rf-action rfa-same">2WW haematology</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C &mdash; ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">&#128161; Ideas</div><div class="ice-phrase">"What did you make of the blood result when you saw it &mdash; had you heard anything about high calcium before?"</div><div class="ice-why">Many patients have no framework for interpreting a calcium result. Others have Googled "high calcium" and encountered cancer links immediately. Establishing the model enables appropriate calibrated explanation.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">&#128543; Concerns</div><div class="ice-phrase">"I want to ask directly &mdash; is there something particular you've been worried this result might mean?"</div><div class="ice-why">Cancer fear is the dominant concern in hypercalcaemia. The patient's mother had breast cancer &mdash; this family history will be in her mind. The concern must be named and addressed directly: "I want to be honest that we need to investigate to find the cause &mdash; the most common cause is a small gland problem, but I do want to check thoroughly, and I'll give you results face to face."</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">&#127919; Expectations</div><div class="ice-phrase">"What were you hoping would happen today &mdash; are you looking for answers, or is there something specific you wanted to discuss?"</div><div class="ice-why">Many patients want certainty ("Is it cancer or isn't it?") &mdash; which cannot be given at this stage without PTH result. Setting realistic expectations for the investigation timeline is clinically important and prevents a return call with the incorrect interpretation of a result.</div></div>
+    </div>
+    <div class="sca-cp sca-only">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases</div>
+          <div class="sca-phrase">"I want to ask directly &mdash; is there something specific you've been worried this might mean? Sometimes a calcium result brings up concerns about cancer."</div>
+          <div class="sca-phrase">"The first step is to check a hormone called PTH &mdash; that single test will tell us whether this is a gland problem or whether we need to look further."</div>
+          <div class="sca-phrase">"In the meantime, I'd like you to stop the calcium supplements &mdash; they could be contributing to this result and stopping them is the most immediate thing we can do."</div>
+        </div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul>
+          <li>Not asking about drug/supplement causes &mdash; calcium carbonate is in the stem and is the first thing to stop</li>
+          <li>Not addressing cancer fear directly &mdash; patient's mother had breast cancer; this must be named</li>
+          <li>Not explaining what PTH is and why it is the pivotal test</li>
+        </ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">&#128308; Red</div><div class="rag-bullets">Drug causes not asked. Cancer fear not explored. PTH not mentioned. Patient leaves without understanding what happens next.</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">&#128992; Amber</div><div class="rag-bullets">PTH mentioned but not explained. Calcium supplements identified but not stopped. Cancer fear acknowledged but not specifically addressed.</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">&#128994; Green</div><div class="rag-bullets">Calcium supplements stopped immediately. PTH explained as the pivotal test. Cancer fear named and addressed with appropriate calibrated uncertainty. Results review face-to-face agreed.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage Engine</div></div>
+    <div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Triage is driven by: calcium level (&gt;3.5 = emergency), symptom burden, and whether malignancy is suspected.</strong></div>
+    <div class="triage">
+      <div class="tc tc-e"><div class="tc-lbl">&#128308; Emergency</div><h3>Same-Day Hospital</h3><span class="tc-badge tcb-e">Act now</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Calcium &gt;3.5 mmol/L</strong><em>Cardiac arrhythmia risk; IV saline urgently; same-day admission</em></li>
+          <li class="tc-item"><strong>Hypercalcaemia + confusion</strong><em>Hypercalcaemic crisis; 999</em></li>
+          <li class="tc-item"><strong>Malignancy + severe hypercalcaemia</strong><em>IV bisphosphonate in hospital; 2WW cancer referral</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u"><div class="tc-lbl">&#128992; Urgent (days)</div><h3>Urgent Investigation / Referral</h3><span class="tc-badge tcb-u">Days to 2 weeks</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>PTH suppressed + no drug cause + symptomatic</strong><em>Cancer screen: FBC, CXR, CT, SPEP, PTHrP &rarr; 2WW if suspected malignancy</em></li>
+          <li class="tc-item"><strong>PTH elevated + calcium 2.6&ndash;3.5 (primary HPT confirmed)</strong><em>Endocrine referral; 24-hr urine calcium first (FHH exclusion)</em></li>
+          <li class="tc-item"><strong>Weight loss + bone pain + anaemia + hypercalcaemia</strong><em>Myeloma screen + 2WW haematology</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r"><div class="tc-lbl">&#128994; Routine</div><h3>Primary Care Investigation</h3><span class="tc-badge tcb-r">GP practice</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Mild incidental hypercalcaemia (2.6&ndash;2.8) on supplements</strong><em>Stop supplements; recheck calcium in 4&ndash;6 weeks; check PTH</em></li>
+          <li class="tc-item"><strong>Awaiting PTH result &mdash; mild asymptomatic</strong><em>Hydrate 2L/day; stop supplements; face-to-face results in 7&ndash;10 days</em></li>
+          <li class="tc-item"><strong>Known primary HPT under surveillance</strong><em>Annual calcium, eGFR, DXA; parathyroidectomy criteria review</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrase</div><div class="sca-phrase">"Your calcium level is 2.78 &mdash; that's above normal but not at the level that needs emergency treatment today. What it does need is a specific blood test called PTH, which will tell us the cause. I'd like you to come back to discuss the result face-to-face."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul>
+          <li>Not distinguishing mild from severe &mdash; both require different urgency</li>
+          <li>Communicating a significant calcium result by letter or online portal alone &mdash; face-to-face is the appropriate standard</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Do I Need This Examination?</div></div>
+    <div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Examination in hypercalcaemia looks for signs of the underlying cause and assesses severity of the clinical syndrome.</strong></div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:20%">Examination</th><th style="width:36%">Why it matters</th><th style="width:26%">Finding that changes management</th><th>Changes?</th></tr></thead>
+        <tbody>
+          <tr><td class="q">Hydration / general assessment</td><td class="why">Hypercalcaemia causes dehydration (polyuria, vomiting). Clinical dehydration (dry mucous membranes, reduced skin turgor, tachycardia, postural hypotension) indicates moderate-severe hypercalcaemia requiring same-day treatment.</td><td class="why">Dehydrated + Ca &gt;3.0 &rarr; same-day hospital. Well-hydrated mild &rarr; oral fluids and outpatient investigation.</td><td><span class="mcb mcb-yes">YES &mdash; urgency</span></td></tr>
+          <tr><td class="q">Lymphadenopathy</td><td class="why">Generalised lymphadenopathy in a patient with hypercalcaemia suggests lymphoma or sarcoidosis &mdash; granulomatous disease causes 1,25-OH vitamin D overproduction. Cervical lymphadenopathy in the presence of a suppressed PTH + hypercalcaemia strongly suggests malignancy.</td><td class="why">Lymphadenopathy &rarr; urgent cancer screen; 2WW if malignancy suspected</td><td><span class="mcb mcb-yes">YES</span></td></tr>
+          <tr><td class="q">Bone tenderness / abdominal examination</td><td class="why">Bone tenderness (sternum, ribs, vertebrae) in hypercalcaemia = myeloma or metastatic bone disease. Abdominal tenderness may indicate peptic ulcer (calcium stimulates gastrin) or pancreatitis (hypercalcaemia is a recognised cause).</td><td class="why">Diffuse bone tenderness &rarr; myeloma screen urgently. Acute abdomen with hypercalcaemia &rarr; pancreatitis or surgical emergency</td><td><span class="mcb mcb-yes">YES</span></td></tr>
+          <tr><td class="q">Blood pressure</td><td class="why">Hypertension is common in primary HPT (calcium has vasoconstrictive effects). Useful baseline before treatment. Hypotension with hypercalcaemia &rarr; dehydration / adrenal crisis (Addison's disease is a rare cause).</td><td class="why">Hypotension &rarr; assess for dehydration + adrenal insufficiency</td><td><span class="mcb mcb-context">Context</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Do I Need This Investigation?</div></div>
+    <div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>PTH is the single most important investigation &mdash; it determines the entire management pathway. No treatment decision should be made without PTH.</strong></div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:22%">Investigation</th><th style="width:38%">Why this is the pivotal test</th><th>Result that determines management</th></tr></thead>
+        <tbody>
+          <tr><td class="q">PTH (parathyroid hormone) &mdash; FIRST TEST</td><td class="why">PTH is the pivotal investigation. Elevated PTH with elevated calcium = primary (or tertiary) hyperparathyroidism &rarr; endocrine referral. Suppressed PTH with elevated calcium = non-PTH cause (malignancy, sarcoidosis, vitamin D toxicity, hyperthyroidism) &rarr; cancer screen. No management decision is possible without this test.</td><td class="why">PTH &uarr; &rarr; primary HPT &rarr; endocrine; 24-hr urine Ca (CCCR) before surgery. PTH &darr; &rarr; non-PTH cause &rarr; cancer screen urgently. PTH normal (inappropriately) &rarr; tertiary HPT or FHH.</td></tr>
+          <tr><td class="q">Corrected serum calcium (repeat)</td><td class="why">Confirm on at least 2 samples before investigation cascade. Single result can be artefactual (haemoconcentration, prolonged tourniquet time, high albumin). Corrected calcium = measured calcium + 0.02 &times; (40 &minus; albumin). Must be corrected &mdash; never act on uncorrected calcium alone.</td><td class="why">Two confirmatory elevated results &rarr; proceed with full investigation. One elevated only &rarr; repeat before acting. Normal on repeat &rarr; artefact; reassure and stop supplements.</td></tr>
+          <tr><td class="q">24-hour urine calcium (CCCR)</td><td class="why">Critical before parathyroidectomy referral. Calcio-creatinine clearance ratio (CCCR) &lt;0.01 = FHH (familial hypocalciuric hypercalcaemia) &mdash; a benign genetic condition where surgery FAILS. CCCR must be calculated before referral for parathyroidectomy; performing surgery on FHH is an avoidable harm.</td><td class="why">CCCR &lt;0.01 &rarr; FHH; do not refer for parathyroidectomy. CCCR &gt;0.02 &rarr; primary HPT confirmed; refer to endocrine for surgical consideration.</td></tr>
+          <tr><td class="q">Cancer screen (if PTH suppressed)</td><td class="why">FBC, ESR, SPEP, CXR, CT chest/abdomen/pelvis, PTHrP. Malignancy is the second most common cause of hypercalcaemia. PTHrP (parathyroid hormone-related protein) is secreted by solid tumours (lung, breast, renal, squamous cell). Elevated PTHrP + suppressed PTH = humoral hypercalcaemia of malignancy.</td><td class="why">Malignancy identified &rarr; 2WW cancer referral urgently; IV bisphosphonate in hospital. Normal cancer screen &rarr; consider sarcoidosis (ACE level, CXR), vitamin D toxicity, hyperthyroidism.</td></tr>
+          <tr><td class="q">eGFR, ALP, vitamin D level</td><td class="why">eGFR: hypercalcaemia causes nephrocalcinosis and CKD; eGFR also guides urgency. ALP elevated: suggests bone disease (metastases, Paget's) or liver metastases. Vitamin D level: vitamin D toxicity from supplements causes hypercalcaemia with suppressed PTH.</td><td class="why">eGFR &lt;60 &rarr; nephrocalcinosis; treat urgently. Elevated ALP &rarr; bone metastases or Paget's. Vitamin D &gt;250 nmol/L &rarr; toxicity; stop supplements immediately.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrase</div><div class="sca-phrase">"The most important test I'm going to request today is called PTH &mdash; it's a parathyroid hormone test. This single test will tell us whether this is coming from a small gland in your neck, or whether we need to look for another cause. Everything else follows from that result."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul>
+          <li>Not ordering PTH &mdash; proceeding without the pivotal test</li>
+          <li>Referring for parathyroidectomy without 24-hour urine calcium (CCCR) &mdash; may operate on FHH</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Reaching a Diagnosis &mdash; Explained in Plain Language</div></div>
+    <div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="lay-box">
+      <div class="lay-box-lbl">&#128483; Explaining the Result in Plain Language</div>
+      <p>"Your calcium level is higher than normal &mdash; calcium is a mineral in the blood that is normally kept in a very tight range by a small gland in your neck called the parathyroid gland. When calcium is too high, it can cause fatigue, constipation, and the kind of general malaise you've been describing. The most common reason for this &mdash; accounting for about 90% of cases &mdash; is that one of the parathyroid glands becomes overactive and releases too much of a hormone that raises calcium. This is usually a benign condition called hyperparathyroidism. The other important cause we need to rule out is a cancer that can also raise calcium, which is why I'm not going to give you false reassurance today. The key test that will separate these two possibilities is called PTH &mdash; parathyroid hormone. Once we have that result, I'll call you in to discuss it face to face."</p>
+    </div>
+    <div class="lay-why-not">
+      <div class="lay-why-not-lbl">&#128172; Addressing cancer fear directly</div>
+      <p><strong>"Does this mean I have cancer like my mother?"</strong><br><em>"That's really important to address, and I want to be direct with you. I can't tell you for certain that it isn't, because we need the tests to find out. But I want to reassure you that the most common cause of this finding is a benign gland problem called hyperparathyroidism &mdash; not cancer. I'm taking this seriously enough to investigate it properly, and I'll give you the results in person, not by letter. If the parathyroid hormone comes back elevated, that's the benign gland. If it comes back low, that would tell us we need to look further &mdash; and we would do that urgently. I don't want to worry you unnecessarily, but I also don't want to dismiss your concern."</em></p>
+    </div>
+    <div class="g3" style="margin-bottom:12px">
+      <div class="card" style="padding:1rem;border-left:4px solid var(--g)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.4rem">A &mdash; Most common (90%)</div>
+        <div class="ddx-card ddx-a" style="margin-bottom:.5rem"><h4>Primary hyperparathyroidism</h4><p>PTH elevated + calcium elevated. Benign adenoma in 85%. Referral to endocrine; 24-hr urine Ca before surgery. Surgery vs cinacalcet vs surveillance depending on age/symptoms.</p></div>
+        <div class="ddx-card ddx-a"><h4>Drug/supplement-induced</h4><p>Calcium carbonate, vitamin D, thiazides, lithium. Stop agent. Recheck in 4&ndash;6 weeks. Most reversible cause.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--a)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:.4rem">B &mdash; PTH suppressed: investigate</div>
+        <div class="ddx-card ddx-b" style="margin-bottom:.5rem"><h4>Malignancy (PTHrP-mediated)</h4><p>PTH suppressed + PTHrP elevated. Solid tumour (lung, breast, renal, squamous cell). 2WW cancer referral. IV bisphosphonate for hypercalcaemia management.</p></div>
+        <div class="ddx-card ddx-b"><h4>Sarcoidosis / granulomatous disease</h4><p>PTH suppressed + elevated ACE + bilateral hilar lymphadenopathy. Corticosteroids (prednisolone 20&ndash;40 mg/day) effective. Refer respiratory/rheumatology.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--r)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--r);margin-bottom:.4rem">C &mdash; Emergency</div>
+        <div class="ddx-card ddx-c" style="margin-bottom:.5rem"><h4>Hypercalcaemic crisis (Ca &gt;3.5)</h4><p>IV saline rehydration 200&ndash;300 mL/hr. IV bisphosphonate (zoledronate) after rehydration. ITU if confused. Mortality without treatment.</p></div>
+        <div class="ddx-card ddx-c"><h4>Myeloma</h4><p>PTH suppressed + anaemia + bone pain + SPEP monoclonal band. 2WW haematology urgently.</p></div>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 5</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases</div>
+          <div class="sca-phrase">"The most common cause is a benign gland problem in the neck &mdash; not cancer. But I'm investigating properly rather than just assuming, because I want to be thorough for you."</div>
+          <div class="sca-phrase">"I'll give you the results face to face &mdash; not by letter or online. This is a result that deserves a proper conversation."</div>
+        </div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul>
+          <li>False reassurance before PTH result ("It's definitely just a gland problem") &mdash; premature certainty before investigation</li>
+          <li>Not committing to face-to-face results discussion</li>
+          <li>Cancer fear not directly named and addressed</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">If Referral Is Needed</div></div>
+    <div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="card" style="overflow:hidden">
+      <table class="ref-table">
+        <thead><tr><th>Indication</th><th>Urgency</th><th>GP does before referral</th><th>Must NOT do</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">Ca &gt;3.5 or hypercalcaemic crisis</td><td><span class="ref-urg rurg-999">Same-day hospital</span></td><td style="font-size:12px">IV access; take bloods (Ca, PTH, FBC, eGFR, ECG); call 999 or direct admission</td><td style="font-size:12px;color:var(--r)">Do not give oral calcium supplements; do not give thiazide diuretics</td></tr>
+          <tr><td style="font-weight:600">PTH elevated (primary HPT)</td><td><span class="ref-urg rurg-r">Routine endocrine</span></td><td style="font-size:12px">Stop calcium/vitamin D supplements; calculate CCCR from 24-hr urine calcium; DXA; eGFR; document symptom burden</td><td style="font-size:12px;color:var(--r)">Never refer for parathyroidectomy without CCCR &mdash; CCCR &lt;0.01 = FHH; surgery fails and is harmful</td></tr>
+          <tr><td style="font-weight:600">PTH suppressed + cancer suspected</td><td><span class="ref-urg rurg-2">2WW cancer</span></td><td style="font-size:12px">FBC, CXR, CT, SPEP, PTHrP, ESR; 2WW referral to appropriate cancer pathway (oncology, haematology depending on suspected primary)</td><td style="font-size:12px;color:var(--r)">Do not manage hypercalcaemia alone without addressing cancer screen urgently</td></tr>
+          <tr><td style="font-weight:600">Primary HPT unsuitable for surgery (cinacalcet consideration)</td><td><span class="ref-urg rurg-r">Routine endocrine</span></td><td style="font-size:12px">Document reasons surgery unsuitable; calcium level trend; renal function; stop supplements</td><td style="font-size:12px;color:var(--r)">Do not initiate cinacalcet in primary care without specialist endocrine input</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management &mdash; Expectation &middot; Goals &middot; Lifestyle &middot; Drug Cards &middot; Follow-Up &middot; Safety-Netting</div></div>
+    <div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Primary care management of hypercalcaemia is largely investigative &mdash; the treatment is treating the cause, not the calcium level alone.</strong> In mild primary HPT: stop supplements, hydrate, and await endocrine review. In severe hypercalcaemia: IV saline is the first-line treatment (hospital). In malignancy: 2WW plus IV bisphosphonate (hospital). The GP's primary care role is: accurate diagnosis, appropriate triage, patient communication, and ensuring the right specialist receives the right information.</div>
+
+    <div class="sub-divider">7A &mdash; Address cancer fear expectation</div>
+    <div class="expect-box">
+      <div class="expect-box-hdr"><span style="font-size:1.4rem">&#129309;</span><div class="expect-box-lbl">Validate &rarr; Explain &rarr; Negotiate</div></div>
+      <div class="expect-steps">
+        <div class="expect-step"><div class="expect-step-num">1</div><h5>Validate</h5><p>Cancer fear in the context of her mother's diagnosis is entirely understandable &mdash; say so explicitly.</p><span class="expect-phrase">"I understand completely why your mother's cancer comes to mind &mdash; this is exactly the kind of result that would make anyone worried."</span></div>
+        <div class="expect-step"><div class="expect-step-num">2</div><h5>Explain</h5><p>The most common cause is benign (HPT). PTH will determine the pathway. Cannot give false certainty before results.</p><span class="expect-phrase">"The most common cause &mdash; accounting for about 9 in 10 cases &mdash; is a small benign gland problem. The test we're doing today will be definitive. I'll call you in to discuss the result in person."</span></div>
+        <div class="expect-step"><div class="expect-step-num">3</div><h5>Negotiate</h5><p>Concrete next steps: stop supplements now, bloods today, face-to-face results in 7&ndash;10 days, hydration advice.</p><span class="expect-phrase">"Here's what happens next: stop the calcium tablet today, drink at least 2 litres of water a day, and I'll call you in 7&ndash;10 days to discuss the PTH result together."</span></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7B &mdash; Treatment goals</div>
+    <div class="g2" style="margin-bottom:1rem">
+      <div class="card" style="padding:1rem 1.1rem">
+        <div class="card-hd" style="color:var(--g);border:none;padding:0 0 .6rem">Goals by aetiology</div>
+        <div class="tx-goals">
+          <span class="tx-goal tg1">Calcium normalised to 2.1&ndash;2.6 mmol/L</span>
+          <span class="tx-goal tg1">Drug/supplement cause identified and stopped</span>
+          <span class="tx-goal tg2">PTH result obtained and correctly interpreted</span>
+          <span class="tx-goal tg2">CCCR calculated before parathyroidectomy referral</span>
+          <span class="tx-goal tg3">Cancer screen completed if PTH suppressed</span>
+          <span class="tx-goal tg3">Hydration 2L/day maintained</span>
+          <span class="tx-goal tg4">Results communicated face-to-face</span>
+          <span class="tx-goal tg4">Anxiety about cancer fear addressed directly</span>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem">
+        <div class="card-hd" style="color:var(--b);border:none;padding:0 0 .6rem">Motivational language</div>
+        <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--b-bd);padding:.55rem .85rem;background:var(--b-bg);border-radius:0 8px 8px 0;line-height:1.6;margin-bottom:.5rem">"If the PTH comes back elevated, this is genuinely one of the most treatable causes of elevated calcium &mdash; often cured permanently with a straightforward operation."</div>
+        <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.6">"The fatigue and constipation you've been experiencing are very likely caused by the calcium level &mdash; and if we treat the cause, those symptoms should resolve."</div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7C &mdash; Immediate measures (all hypercalcaemia)</div>
+    <div class="life-grid" style="margin-bottom:1.25rem">
+      <div class="life-card"><div class="life-head"><span class="life-icon">&#128167;</span><div class="life-title">Hydration</div><span class="life-target">2L water/day minimum; IV saline if severe</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Volume expansion promotes urinary calcium excretion via dilution and increased GFR. Dehydration worsens hypercalcaemia by concentrating calcium and reducing renal clearance. This is the first-line non-pharmacological intervention for any level of hypercalcaemia.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Target 2L water/day in mild cases. Avoid excessive coffee and alcohol (diuretic). For Ca &gt;3.0 or symptomatic: IV normal saline in hospital (200&ndash;300 mL/hr with monitoring).</p></div><span class="life-benefit">Adequate hydration reduces serum calcium by approximately 0.1&ndash;0.3 mmol/L in mild cases</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">&#128682;</span><div class="life-title">Stop Calcium Supplements</div><span class="life-target">Immediate &mdash; stop same day</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Exogenous calcium supplementation in a patient with pre-existing hypercalcaemia from any cause will worsen the calcium level. Calcium carbonate (this patient's supplement) directly adds to calcium load and must be stopped immediately when hypercalcaemia is identified.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Stop calcium carbonate and vitamin D supplements today. Recheck calcium in 4&ndash;6 weeks &mdash; if calcium normalises, supplement-induced hypercalcaemia confirmed. If persists, proceed with PTH investigation.</p></div><span class="life-benefit">Drug-induced hypercalcaemia resolves in most patients within 4&ndash;6 weeks of stopping the causative agent</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">&#9995;</span><div class="life-title">Avoid Exacerbating Factors</div><span class="life-target">Thiazides, immobility, excessive sun/vitamin D</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Thiazide diuretics reduce urinary calcium excretion &mdash; directly worsening hypercalcaemia. Prolonged immobility causes calcium efflux from bone. Excessive vitamin D (including high-dose supplements) causes 1,25-OH overproduction in granulomatous disease.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Review all medications for calcium-raising effects. Maintain mobility. Avoid high-dose vitamin D supplements until cause established.</p></div><span class="life-benefit">Removing all exacerbating factors maximises effect of primary cause treatment</span></div></div>
+    </div>
+
+    <div class="sub-divider" id="drugs">7D &mdash; Drug reference cards: hypercalcaemia agents</div>
+    <div class="drug-cards" id="drug-cards-container">
+      <div class="dc" id="dc-ivsal">
+        <div class="dc-head"><div><div class="dc-name">IV Normal Saline (0.9%)</div><div class="dc-examples">Hospital management; 1&ndash;2 L bolus then 200&ndash;300 mL/hr</div><div class="dc-rec-badge" id="rec-ivsal">&#10003; Emergency first-line</div></div><div class="dc-badges"><span class="dc-step step1">Acute/severe</span><span class="dc-dose">1&ndash;6 L/day IV (hospital)</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Use when</div>
+          <div class="dc-item">Ca &gt;3.0 or symptomatic (confusion, severe nausea, dehydration)</div>
+          <div class="dc-item">First-line treatment for moderate-severe hypercalcaemia</div>
+          <div class="dc-item">Before IV bisphosphonate (rehydrate first)</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Caution</div><div class="dc-item ci-rel">Heart failure: risk of fluid overload; manage under specialist supervision</div></div>
+        <div class="dc-sca"><p>In SCA: IV saline is a hospital-initiated treatment. The GP's role is to recognise the need for same-day hospital admission, not to prescribe IV saline. Naming it as the first treatment in hospital demonstrates knowledge of the acute pathway.</p></div>
+      </div>
+
+      <div class="dc" id="dc-zolhca">
+        <div class="dc-head"><div><div class="dc-name">Zoledronic Acid (IV Bisphosphonate)</div><div class="dc-examples">Zometa 4 mg IV infusion; hospital-initiated</div><div class="dc-rec-badge" id="rec-zolhca">&#10003; Specialist-initiated</div></div><div class="dc-badges"><span class="dc-step step2">Specialist</span><span class="dc-dose">4 mg IV over 15 min (cancer/severe)</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Use when (hospital/specialist)</div>
+          <div class="dc-item">Severe hypercalcaemia (Ca &gt;3.0) after rehydration with IV saline</div>
+          <div class="dc-item">Malignancy-associated hypercalcaemia &mdash; most effective agent</div>
+          <div class="dc-item">Inhibits osteoclast activity, reducing bone calcium efflux</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Avoid if</div><div class="dc-item ci-abs">eGFR &lt;35; dehydration (give IV saline first to protect kidneys)</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">&#9888; Side effects</div>
+          <div class="dc-item">Acute phase reaction: flu-like symptoms 24&ndash;48 hrs; paracetamol covers this</div>
+          <div class="dc-item">Onset of effect: calcium reduces over 48&ndash;72 hrs; maximum effect at 4&ndash;7 days</div>
+        </div>
+        <div class="dc-sca"><p>In SCA: zoledronic acid is not primary care &mdash; it is hospital-initiated. Demonstrating knowledge that IV bisphosphonate follows rehydration (not concurrent) gains a Tasks mark. "The hospital would give IV saline first, then IV zoledronate after rehydration is established."</p></div>
+      </div>
+
+      <div class="dc" id="dc-cinac">
+        <div class="dc-head"><div><div class="dc-name">Cinacalcet (Calcimimetic)</div><div class="dc-examples">Mimpara; 30 mg&ndash;90 mg twice daily; specialist-initiated</div><div class="dc-rec-badge" id="rec-cinac">&#10003; Specialist HPT</div></div><div class="dc-badges"><span class="dc-step step3">Specialist HPT</span><span class="dc-dose">30&ndash;90 mg twice daily PO</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Use when</div>
+          <div class="dc-item">Primary HPT not suitable for surgery (age, comorbidities, patient preference)</div>
+          <div class="dc-item">Calcimimetic &mdash; increases sensitivity of parathyroid gland calcium-sensing receptor; reduces PTH secretion</div>
+          <div class="dc-item">Specialist-initiated only; does not cure HPT but controls calcium levels</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Avoid if</div><div class="dc-item ci-abs">Hypocalcaemia; severe hepatic impairment</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">&#128172; Counselling</div><p>"This tablet works on the calcium-sensing system in the parathyroid gland to reduce the hormone that's been raising your calcium. It controls the calcium but doesn't remove the overactive gland &mdash; that requires an operation."</p></div>
+      </div>
+
+      <div class="dc" id="dc-pred-hca">
+        <div class="dc-head"><div><div class="dc-name">Prednisolone (Granulomatous Disease)</div><div class="dc-examples">Prednisolone 20&ndash;40 mg/day; for sarcoidosis/lymphoma</div><div class="dc-rec-badge" id="rec-pred-hca">&#10003; Sarcoidosis / granulomatous</div></div><div class="dc-badges"><span class="dc-step step2">Specific indication</span><span class="dc-dose">20&ndash;40 mg/day PO</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Use when</div>
+          <div class="dc-item">Sarcoidosis, lymphoma, or granulomatous disease causing hypercalcaemia via 1,25-OH vitamin D overproduction</div>
+          <div class="dc-item">PTH suppressed + ACE elevated + bilateral hilar lymphadenopathy on CXR</div>
+          <div class="dc-item">Corticosteroids block 1-alpha-hydroxylase in granulomatous tissue &rarr; reduces 1,25-OH vitamin D &rarr; reduces calcium</div>
+          <div class="dc-item">Not effective for HPT &mdash; cause-specific</div>
+        </div>
+        <div class="dc-sca"><p>In SCA: knowing that corticosteroids specifically treat sarcoidosis-related hypercalcaemia (and are ineffective for HPT) demonstrates specific mechanistic knowledge worth a Tasks mark. The mechanism: granulomas produce 1,25-OH vitamin D; steroids block this pathway.</p></div>
+      </div>
+
+      <div class="dc" id="dc-calc">
+        <div class="dc-head"><div><div class="dc-name">Calcitonin (Short-Term Bridge)</div><div class="dc-examples">Salmon calcitonin 4&ndash;8 IU/kg SC or IM; hospital</div><div class="dc-rec-badge" id="rec-calc">&#10003; Hospital bridge</div></div><div class="dc-badges"><span class="dc-step step2">Short-term hospital</span><span class="dc-dose">4&ndash;8 IU/kg SC/IM 6&ndash;12 hrly</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Use when</div>
+          <div class="dc-item">Rapid calcium reduction needed (onset 4&ndash;6 hrs) while waiting for bisphosphonate to work (48&ndash;72 hrs)</div>
+          <div class="dc-item">Bridging agent in crisis hypercalcaemia</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Limitation</div><div class="dc-item ci-rel">Tachyphylaxis within 24&ndash;48 hrs &mdash; not for ongoing management; bridge only</div></div>
+        <div class="dc-sca"><p>In SCA: calcitonin as a bridging agent (rapid onset but short duration) demonstrates a high level of clinical knowledge. The key learning point: bisphosphonate takes 48&ndash;72 hrs for maximum effect; calcitonin provides rapid but transient calcium reduction in the interim.</p></div>
+      </div>
+
+      <div class="dc" id="dc-parathx">
+        <div class="dc-head"><div><div class="dc-name">Parathyroidectomy (Surgical)</div><div class="dc-examples">Minimally invasive parathyroidectomy; sestamibi scan pre-op</div><div class="dc-rec-badge" id="rec-parathx">&#10003; Definitive treatment</div></div><div class="dc-badges"><span class="dc-step step1">Definitive cure</span><span class="dc-dose">Day-case surgery; cure rate &gt;95%</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Indicated when</div>
+          <div class="dc-item">Primary HPT confirmed (PTH elevated + CCCR &gt;0.02 &mdash; FHH excluded)</div>
+          <div class="dc-item">Any age if symptomatic (renal stones, fragility fractures, nephrocalcinosis, significant symptoms)</div>
+          <div class="dc-item">Age &lt;50 or calcium &gt;2.85 or T-score &lt;&minus;2.5 or eGFR &lt;60 &mdash; even if asymptomatic</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Must not refer without</div>
+          <div class="dc-item ci-abs">CCCR from 24-hr urine calcium: CCCR &lt;0.01 = FHH; surgery fails and is harmful in FHH</div>
+          <div class="dc-item ci-abs">PTH confirmation: never refer for parathyroidectomy on calcium alone</div>
+        </div>
+        <div class="dc-sca"><p>In SCA: the CCCR / FHH exclusion step before parathyroidectomy referral is one of the most specific clinical knowledge points in hypercalcaemia. If asked "what would you do next if PTH comes back elevated?" &mdash; "I would refer to endocrine AND request a 24-hour urine calcium collection, because we need to exclude a condition called FHH before surgery is considered" gains a specific Tasks mark.</p></div>
+      </div>
+    </div>
+
+    <div class="sub-divider" style="margin-top:1.5rem">7E &mdash; Follow-up schedule</div>
+    <div class="card" style="padding:1.1rem 1.25rem;margin-bottom:1.25rem">
+      <div class="fu-line">
+        <div class="fu-event"><div class="fu-dot fd1">1</div><div class="fu-content"><h5>Today &mdash; Immediate actions</h5><p>Stop calcium carbonate and vitamin D supplements today. Request PTH, repeat corrected calcium, eGFR, ALP, FBC. Advise 2L water/day. Book face-to-face results appointment in 7&ndash;10 days. Address cancer concern directly.</p><div class="fu-tags"><span class="ft ft-r">Immediate</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd2">2</div><div class="fu-content"><h5>7&ndash;10 days &mdash; PTH results review (face-to-face)</h5><p>Discuss PTH result: if elevated &rarr; primary HPT pathway (CCCR, endocrine referral); if suppressed &rarr; cancer screen urgently (CT, CXR, SPEP, PTHrP). Never communicate this result by letter. Patient must have the conversation in person.</p><div class="fu-tags"><span class="ft ft-r">Face-to-face essential</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd3">3</div><div class="fu-content"><h5>4&ndash;6 weeks &mdash; Calcium recheck (if supplements were the cause)</h5><p>If calcium normalised after stopping supplements: drug-induced confirmed. Continue monitoring. If still elevated: proceed with full PTH-driven investigation regardless of supplementation.</p><div class="fu-tags"><span class="ft ft-a">Recheck</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd4">4</div><div class="fu-content"><h5>Annual &mdash; Surveillance HPT (if not treating)</h5><p>If primary HPT confirmed but surgery deferred (asymptomatic, age &gt;50, mild elevation): annual calcium, eGFR, DXA, BP. Review criteria for intervention at each visit.</p><div class="fu-tags"><span class="ft ft-b">Annual</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd5">5</div><div class="fu-content"><h5>Post-parathyroidectomy &mdash; hungry bone syndrome monitoring</h5><p>After parathyroidectomy: calcium may drop sharply ("hungry bone syndrome") &mdash; bone rapidly absorbs calcium. Check calcium daily for 2&ndash;3 days post-op, then weekly for 4 weeks. Calcium and vitamin D supplements may be needed post-operatively.</p><div class="fu-tags"><span class="ft ft-a">Post-surgical</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7F &mdash; Safety-netting</div>
+    <div class="sn-box">
+      <h4>&#9888; Three scenario-specific safety-net phrases</h4>
+      <div class="sn-scenarios">
+        <div class="sn-scenario sns-e">
+          <div class="sn-scenario-lbl">&#128308; Emergency &mdash; acute severe symptoms</div>
+          <div class="sn-phrase">"If before your appointment you develop confusion, extreme drowsiness, severe vomiting, or feel very unwell, please go to A&amp;E the same day and tell them your calcium level was elevated. Don't wait for your follow-up appointment."</div>
+          <div class="sn-why">Calcium levels can rise acutely with dehydration or concurrent illness. Hypercalcaemic crisis presenting with confusion is an emergency. The patient needs a specific, actionable trigger for emergency presentation &mdash; not "if you feel worse."</div>
+        </div>
+        <div class="sn-scenario sns-m">
+          <div class="sn-scenario-lbl">&#128138; Results &mdash; face-to-face commitment</div>
+          <div class="sn-phrase">"I'm going to call you in to discuss these results face-to-face &mdash; not by letter and not online. These results deserve a proper conversation where I can explain what they mean and answer your questions. If you haven't heard from us within 10 days, please call the surgery."</div>
+          <div class="sn-why">A significant calcium result communicated by letter or online portal is an inadequate standard of care for a finding that carries cancer fear implications. Face-to-face communication reduces anxiety, allows questions, and ensures the patient understands the management plan. Documented in notes, this commitment is also medico-legally protective.</div>
+        </div>
+        <div class="sn-scenario sns-a">
+          <div class="sn-scenario-lbl">&#128992; Supplements &mdash; what not to take meanwhile</div>
+          <div class="sn-phrase">"Please don't restart the calcium tablets or vitamin D until I've given you the results &mdash; we need to see what the calcium does without them first. If you're taking any other supplements, please bring them to the follow-up appointment so I can check them."</div>
+          <div class="sn-why">Restarting supplements before the repeat calcium check will confound the result. Many patients also take multiple OTC supplements containing calcium or vitamin D without knowing it. Specific instruction not to restart is clinically important and prevents a false-normal recheck result.</div>
+        </div>
+      </div>
+      <div class="sn-fu">
+        <div class="sn-fu-item"><strong>Today</strong>Stop supplements; hydrate 2L/day; PTH bloods taken</div>
+        <div class="sn-fu-item"><strong>7&ndash;10 days</strong>Face-to-face PTH results discussion &mdash; non-negotiable</div>
+        <div class="sn-fu-item"><strong>4&ndash;6 weeks</strong>Calcium recheck if supplement cause being tested; proceed with CCCR and endocrine referral if PTH elevated</div>
+      </div>
+    </div>
+
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 7 (Final)</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Closing phrases</div>
+          <div class="sca-phrase">"The most important test is PTH &mdash; that will tell us whether this is a gland problem or something else. I'll call you in to discuss that result face-to-face within 10 days."</div>
+          <div class="sca-phrase">"Please stop the calcium tablet from today and drink at least 8 glasses of water a day."</div>
+          <div class="sca-phrase">"If you develop confusion, severe nausea, or feel very unwell before the appointment, please go to A&amp;E and tell them about your calcium result."</div>
+          <div class="sca-phrase">"Is there anything else you'd like to ask before we finish?"</div>
+        </div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul>
+          <li>Starting bisphosphonate in primary care without specialist input</li>
+          <li>PTH not ordered &mdash; proceeding without the pivotal test</li>
+          <li>Premature reassurance: "It's definitely just a gland problem" before PTH result</li>
+          <li>Raising cancer unprompted without calibrated language</li>
+          <li>Not stopping supplements immediately</li>
+          <li>Referring for parathyroidectomy without 24-hour urine calcium (CCCR)</li>
+          <li>Results communicated by letter or portal alone</li>
+          <li>Closing question absent</li>
+        </ul></div>
+        <div class="sca-block sca-score"><div class="sca-block-t">Tasks &mdash; full closing criteria</div><ul>
+          <li>PTH requested as the pivotal test; explained to patient</li>
+          <li>Calcium supplements stopped immediately</li>
+          <li>Hydration 2L/day advised</li>
+          <li>Face-to-face results review committed to (7&ndash;10 days)</li>
+          <li>CCCR mentioned before any parathyroidectomy discussion</li>
+          <li>Emergency safety-net: confusion/severe symptoms = A&amp;E</li>
+          <li>Supplement safety-net: do not restart before results</li>
+        </ul></div>
+        <div class="sca-block sca-score" style="border-left:2px solid #c4b5fd"><div class="sca-block-t" style="color:#c4b5fd">Relating to Others &mdash; full criteria</div><ul>
+          <li>Cancer fear named and directly addressed with calibrated uncertainty</li>
+          <li>PTH explained as a plain-language concept</li>
+          <li>Family history (mother's breast cancer) acknowledged explicitly</li>
+          <li>Results approach committed to (face-to-face)</li>
+          <li>Understanding checked</li>
+          <li>Closing question asked</li>
+        </ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">&#128308; Red</div><div class="rag-bullets">PTH not ordered. Supplements not stopped. Cancer fear ignored. False certainty before results. No safety-net. Results by letter.</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">&#128992; Amber</div><div class="rag-bullets">PTH ordered but not explained. Supplements stopped but reasoning not given. Cancer fear acknowledged but not addressed specifically. Face-to-face results not committed to.</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">&#128994; Green</div><div class="rag-bullets">PTH explained as pivotal test. Supplements stopped immediately. Cancer fear addressed with calibrated uncertainty. Face-to-face results committed to. Emergency safety-net given. Closing question asked.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Hypercalcaemia &mdash; SCA Consultation Scorecard</div><div class="scorecard-sub">RAG self-assessment &middot; Use after every practice consultation</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">&#8634; Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain"><div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">&#127760;</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Stem referenced</strong> &mdash; used calcium result and supplement history before open question</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Open question first</strong> &mdash; invited patient to describe symptoms before targeted questions</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain language</strong> &mdash; PTH explained as "the hormone that controls calcium"; gland analogy used</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Data gathering complete</strong> &mdash; symptoms, drug causes, cancer history, ICE all assessed before management</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Calibrated uncertainty</strong> &mdash; neither falsely reassured nor catastrophised before PTH result</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Verbal summary</strong> &mdash; PTH test, next steps, safety-net summarised before closing</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Logical structure</strong> &mdash; history &rarr; clinical assessment &rarr; investigations &rarr; diagnosis &rarr; management &rarr; safety-net</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain"><div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">&#10003;</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, diagnosis, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>PTH ordered as pivotal test</strong> &mdash; named, explained, and framed as the investigation that determines the entire pathway</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Supplements stopped immediately</strong> &mdash; calcium carbonate AND vitamin D both identified and stopped same day</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Hydration 2L/day advised</strong> &mdash; specific daily target given</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Face-to-face results committed to</strong> &mdash; results to be given in person within 7&ndash;10 days; not by letter or portal</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>CCCR mentioned before parathyroidectomy</strong> &mdash; 24-hr urine calcium to exclude FHH before any surgical referral discussion</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Urgency threshold named</strong> &mdash; Ca &gt;3.5 or confusion = same-day hospital; mild incidental = investigation as outpatient</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Emergency safety-net</strong> &mdash; confusion / severe nausea / deterioration = A&amp;E same day with calcium result mentioned</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Supplement safety-net</strong> &mdash; do not restart calcium or vitamin D supplements before results</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>PTH pathway explained</strong> &mdash; PTH elevated = HPT &rarr; endocrine; PTH suppressed = cancer screen; patient understands the decision tree</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Follow-up booked</strong> &mdash; 7&ndash;10 day appointment confirmed before patient leaves</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain"><div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">&#129309;</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decision making</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> &mdash; patient's understanding of the result asked</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Cancer fear proactively named</strong> &mdash; "Is there something you've been worried this might mean?" asked directly</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations explored</strong> &mdash; what patient hoped would happen today asked</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Cancer fear addressed with calibrated uncertainty</strong> &mdash; neither dismissed nor confirmed; most common cause explained; PTH will determine</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Mother's cancer acknowledged</strong> &mdash; family history specifically referenced in the fear response</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>PTH explained in plain language</strong> &mdash; "the hormone that controls your calcium level &mdash; made by a small gland in your neck"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Understanding checked</strong> &mdash; "does that make sense?" at least once</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Shared decision on next steps</strong> &mdash; patient actively agreed to stop supplements, hydrate, and return for results</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Fatigue/constipation symptoms linked to calcium</strong> &mdash; explained that symptoms are likely calcium-related and should improve with treatment</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Verbal summary given</strong> &mdash; PTH test, next steps, safety-net summarised before closing</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Closing question asked</strong> &mdash; "Is there anything else on your mind?" at the very end</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap">
+      <div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div>
+      <div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div>
+      <div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div>
+    </div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">&#128203;</div><div class="interp-text">Complete the checklist above to see your score interpretation</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">&#9888; Items not yet checked</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>&#127917; Patient actor brief &mdash; click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">&#9660; show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"The receptionist said you needed to see me about a blood test. I'm not sure what it's about &mdash; is something wrong?"</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>Patricia Okafor, 55 years old, accountant. Presented after routine bloods showed corrected calcium 2.78 mmol/L. Takes calcium carbonate 500 mg OD and vitamin D 800 IU OD for osteoporosis prevention (prescribed by GP 2 years ago after low DXA). Reports fatigue, occasional constipation, and vague abdominal discomfort over 3 months (attributed to "getting older"). No polyuria, no renal stones, no bone pain. No personal cancer history. Mother had breast cancer &mdash; diagnosed at 58, died at 63. Otherwise well. No other medications.</p></div>
+      <div class="ab"><h5>Hidden agenda</h5><p>Has not yet connected her symptoms to the calcium result but when told the calcium is elevated, she will immediately think of cancer &mdash; her mother had breast cancer and presented at a similar age. She will not raise this spontaneously. If the GP says "we need to do more tests" without explaining why or addressing cancer, she will leave extremely anxious. She needs three things to feel adequately supported: (1) the cancer fear proactively asked about and addressed; (2) honest acknowledgement that more investigation is needed without catastrophising; (3) face-to-face results promise.</p></div>
+      <div class="ab"><h5>If asked about symptoms</h5><ul><li>Fatigue: "Yes &mdash; I've been really tired, I thought it was just work stress"</li><li>Constipation: "Yes &mdash; I've been taking Fybogel but it's not really working"</li><li>Polydipsia or renal stones: "No, nothing like that"</li><li>Bone pain: "No specific pain"</li><li>Weight loss: "No &mdash; if anything I've put a little on"</li></ul></div>
+      <div class="ab"><h5>If asked about supplements</h5><ul><li>"I take calcium tablets and vitamin D &mdash; the doctor put me on them 2 years ago for my bone scan"</li><li>If told to stop them: "Oh &mdash; okay, I'll stop them today"</li><li>If not told to stop: she will continue taking them (confounding the recheck result)</li></ul></div>
+    </div>
+    <div class="actor-challenge">"Does this mean I might have cancer? My mother was about my age when she was diagnosed with breast cancer."</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution criteria:</strong> Patricia leaves feeling adequately supported if: (1) her cancer concern is proactively asked about (not just responded to if raised); (2) the GP is honest about needing investigation without catastrophising; (3) PTH is explained as the key test; (4) supplements are stopped; (5) face-to-face results review is committed to within 7&ndash;10 days; (6) emergency safety-net is given for worsening symptoms.</p>
+  </div>
+</div>
+
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">&#127973;</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Hypercalcaemia &mdash; Clinical Decision Framework</div><div class="sum-sub">NICE CKS 2022 &middot; BTA HPT Guidelines 2019</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">&#9660;</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">&#128678; 1 &mdash; Triage by Calcium Level</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:var(--rad-sm);padding:.75rem .9rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.4rem">&#128308; Emergency / 2WW</div><div style="font-size:12px;line-height:1.75"><div>Ca &gt;3.5 &rarr; same-day hospital admission</div><div>Confusion + hypercalcaemia &rarr; 999</div><div>PTH suppressed + weight loss &rarr; 2WW cancer</div><div>Bone pain + anaemia + SPEP band &rarr; 2WW haematology</div></div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:var(--rad-sm);padding:.75rem .9rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.4rem">&#128992; Urgent (7&ndash;10 days)</div><div style="font-size:12px;line-height:1.75"><div>PTH result &rarr; face-to-face results review mandatory</div><div>PTH elevated &rarr; endocrine referral + CCCR</div><div>PTH suppressed &rarr; urgent cancer screen</div></div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.75rem .9rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.4rem">&#128994; Routine</div><div style="font-size:12px;line-height:1.75"><div>Mild incidental + supplements &rarr; stop supplements; recheck 4&ndash;6 weeks</div><div>Known HPT surveillance: annual Ca/eGFR/DXA</div></div></div>
+    </div>
+    <div class="sum-sub-hdr">&#128202; 2 &mdash; Key Numbers and Decision Points</div>
+    <div class="num-grid" style="margin-bottom:1rem">
+      <div class="num-card num-highlight"><div class="num-val">PTH first</div><div class="num-lbl">Pivotal investigation &mdash; determines entire pathway</div></div>
+      <div class="num-card num-highlight"><div class="num-val">CCCR &lt;0.01</div><div class="num-lbl">FHH &mdash; never refer for parathyroidectomy in FHH</div></div>
+      <div class="num-card"><div class="num-val">&gt;3.5 mmol/L</div><div class="num-lbl">Severe: same-day hospital; IV saline rehydration</div></div>
+      <div class="num-card"><div class="num-val">90%</div><div class="num-lbl">Hypercalcaemia caused by HPT or malignancy</div></div>
+      <div class="num-card"><div class="num-val">2 samples</div><div class="num-lbl">Two elevated corrected calcium readings before acting on mild elevation</div></div>
+      <div class="num-card"><div class="num-val">2L/day</div><div class="num-lbl">Hydration target in all hypercalcaemia</div></div>
+      <div class="num-card"><div class="num-val">Stop supp</div><div class="num-lbl">Stop calcium and vitamin D supplements immediately &mdash; most reversible cause</div></div>
+      <div class="num-card"><div class="num-val">Face-to-face</div><div class="num-lbl">Results must be communicated in person &mdash; not by letter/portal</div></div>
+      <div class="num-card"><div class="num-val">PTH &uarr;</div><div class="num-lbl">Primary HPT &rarr; endocrine; then 24-hr urine Ca (CCCR) before surgery</div></div>
+      <div class="num-card"><div class="num-val">PTH &darr;</div><div class="num-lbl">Malignancy or other cause &rarr; urgent cancer screen (CT, SPEP, PTHrP)</div></div>
+    </div>
+    <div class="sum-sub-hdr">&#9888; 3 &mdash; Safety Netting and Follow-Up</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div class="sn-compact-wrap">
+        <div class="sn-compact sns-e"><div class="sn-compact-lbl">&#128308; Acute deterioration</div><div class="sn-compact-phrase">"Confusion / severe nausea / feeling very unwell = A&amp;E same day; tell them about your calcium."</div></div>
+        <div class="sn-compact sns-m"><div class="sn-compact-lbl">&#128138; Results review</div><div class="sn-compact-phrase">"Results face-to-face within 7&ndash;10 days &mdash; not by letter. Call if not heard from us."</div></div>
+        <div class="sn-compact sns-a"><div class="sn-compact-lbl">&#128992; Supplements</div><div class="sn-compact-phrase">"Do not restart calcium or vitamin D until we have discussed the results."</div></div>
+      </div>
+      <div class="fu-compact-wrap">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.4rem">Follow-up timeline</div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--r)">1</div><div><strong>Today:</strong> Stop supplements; hydrate; PTH bloods</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--a)">2</div><div><strong>7&ndash;10 days:</strong> Face-to-face PTH results; pathway decision</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--b)">3</div><div><strong>4&ndash;6 wks:</strong> Calcium recheck if supplement cause being tested</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--g)">4</div><div><strong>Annual:</strong> HPT surveillance (Ca, eGFR, DXA, BP)</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--t)">5</div><div><strong>Post-op:</strong> Hungry bone syndrome &mdash; daily calcium monitoring</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">&#127891;</span><div><div class="sum-label" style="color:rgba(255,255,255,.5)">SCA Exam Quick Reference</div><div class="sum-title" style="color:#fff">SCA Consultation Blueprint</div><div class="sum-sub" style="color:rgba(255,255,255,.6)">Tasks &middot; Relating to Others &middot; Global Skills &middot; RAG guide</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">&#9660;</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">&#128336; 12-Minute Flow</div>
+    <div class="sca-flow-wrap">
+      <div class="sca-flow-step sca-f1"><div class="sca-f-time">0&ndash;2 min</div><div class="sca-f-title">Reference Stem + Open</div><div class="sca-f-phrase">"Your calcium level has come back a little elevated. Tell me how you've been feeling &mdash; any particular symptoms over the past few months?"</div><div class="sca-f-domains"><span class="sca-dom-tag gs">GS</span><span class="sca-dom-tag ro">RO</span></div><div class="sca-f-avoid">&#10007; Not referencing the calcium result context from stem</div></div>
+      <div class="sca-flow-step sca-f2"><div class="sca-f-time">2&ndash;6 min</div><div class="sca-f-title">Symptoms + Drug Causes + ICE</div><div class="sca-f-phrase">"What supplements are you taking? Are you worried this result might mean something serious &mdash; sometimes people worry about cancer with these results."</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">RO</span></div><div class="sca-f-avoid">&#10007; Not identifying calcium supplements &middot; &#10007; Not proactively asking about cancer fear</div></div>
+      <div class="sca-flow-step sca-f3"><div class="sca-f-time">6&ndash;7 min</div><div class="sca-f-title">Examination</div><div class="sca-f-phrase">"I'd like to check for any lymph gland enlargement and assess your general state."</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span></div><div class="sca-f-avoid">&#10007; No examination when red flags possible</div></div>
+      <div class="sca-flow-step sca-f4"><div class="sca-f-time">7&ndash;10 min</div><div class="sca-f-title">Explanation + PTH + Stop Supplements</div><div class="sca-f-phrase">"PTH &mdash; the parathyroid hormone test &mdash; is the key investigation. Stop the calcium supplement today. Most common cause is a benign gland problem, but I need the test before I can tell you more."</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">RO</span></div><div class="sca-f-avoid">&#10007; False certainty before PTH &middot; &#10007; Not stopping supplements</div></div>
+      <div class="sca-flow-step sca-f5"><div class="sca-f-time">10&ndash;12 min</div><div class="sca-f-title">Safety-Net + Face-to-Face + Close</div><div class="sca-f-phrase">"Results face-to-face in 7&ndash;10 days. If confusion or severe symptoms before then: A&amp;E. Is there anything else?"</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">RO</span></div><div class="sca-f-avoid">&#10007; Results by letter &middot; &#10007; No safety-net &middot; &#10007; No closing question</div></div>
+    </div>
+    <div class="sum-3col" style="margin-top:1rem">
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">&#128308;&#128992;&#128994; RAG Scoring</div>
+        <div class="rag-full-wrap">
+          <div class="rag-domain-title task-col">Tasks</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">&#128994;</div><div>PTH ordered and explained; supplements stopped; hydration advised; CCCR before parathyroidectomy; face-to-face results; emergency safety-net; 7&ndash;10 day follow-up</div></div>
+          <div class="rag-row rag-a-row"><div class="rag-rl">&#128992;</div><div>PTH ordered but not explained; supplements identified but not stopped; face-to-face not committed to; CCCR not mentioned</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">&#128308;</div><div>PTH not ordered; supplements not stopped; false certainty before results; cancer fear ignored; results by letter; no safety-net</div></div>
+          <div class="rag-domain-title ro-col" style="margin-top:.6rem">Relating to Others</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">&#128994;</div><div>Cancer fear proactively asked; mother's cancer acknowledged; calibrated uncertainty; PTH explained in plain language; face-to-face committed to; closing question</div></div>
+          <div class="rag-row rag-a-row"><div class="rag-rl">&#128992;</div><div>Cancer fear addressed if raised but not proactively asked; PTH not explained; closing question absent</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">&#128308;</div><div>Cancer fear ignored; patient leaves extremely anxious; false certainty given; results by letter</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">&#128172; Key Phrases</div>
+        <div class="phrase-stack">
+          <div class="phrase-card p-concerns"><div class="p-lbl">Cancer fear</div><div class="p-phrase">"I want to ask directly &mdash; are you worried this result might mean something serious? I know your mother had breast cancer and that this could be on your mind."</div></div>
+          <div class="phrase-card p-validate"><div class="p-lbl">Calibrated uncertainty</div><div class="p-phrase">"The most common cause is a benign gland problem &mdash; not cancer. But I'm investigating properly rather than just assuming, because I want to be thorough for you."</div></div>
+          <div class="phrase-card p-explain"><div class="p-lbl">PTH explanation</div><div class="p-phrase">"PTH is the hormone that controls your calcium. That single test will tell us whether this is a gland problem or whether we need to look further."</div></div>
+          <div class="phrase-card p-expect"><div class="p-lbl">Supplements</div><div class="p-phrase">"Please stop the calcium tablet from today &mdash; and don't restart it until we've had a chance to discuss the results."</div></div>
+          <div class="phrase-card p-close"><div class="p-lbl">Results commitment</div><div class="p-phrase">"I'll call you in to discuss the results face-to-face within 10 days &mdash; not by letter. These results deserve a proper conversation."</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">&#128683; 9 Danger Zones</div>
+        <div class="dz-stack">
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Starting bisphosphonate in primary care without specialist input</strong><br><span class="dz-fix">&rarr; Treat the cause; IV bisphosphonate is specialist-initiated in hospital</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>PTH not ordered &mdash; proceeding without the pivotal test</strong><br><span class="dz-fix">&rarr; PTH determines the entire pathway; no management decision possible without it</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Premature reassurance before PTH result</strong><br><span class="dz-fix">&rarr; Never diagnose HPT before PTH; acknowledge calibrated uncertainty</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Cancer fear not proactively named</strong><br><span class="dz-fix">&rarr; Ask directly; do not wait for patient to raise it</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Not stopping calcium and vitamin D supplements immediately</strong><br><span class="dz-fix">&rarr; First actionable intervention; must happen same day</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Referring for parathyroidectomy without CCCR</strong><br><span class="dz-fix">&rarr; CCCR &lt;0.01 = FHH; surgery fails and harms in FHH</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Results communicated by letter or online portal alone</strong><br><span class="dz-fix">&rarr; Face-to-face is the appropriate standard for a result of this significance</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Drug history not taken &mdash; missing the most reversible cause</strong><br><span class="dz-fix">&rarr; Always ask about calcium, vitamin D, thiazides, and lithium</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Closing question not asked</strong><br><span class="dz-fix">&rarr; Always end with "Is there anything else on your mind?"</span></div></div>
+        </div>
+        <div class="sum-sub-hdr sca-sub-hdr" style="margin-top:.85rem">&#128138; Management Quick-Pick</div>
+        <div class="sca-drug-pick">
+          <div class="sdp-row"><div class="sdp-cond">PTH elevated &rarr; primary HPT confirmed</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill acei-pill">Endocrine referral + 24-hr urine Ca (CCCR)</div><div class="sdp-note">Surgery vs cinacalcet</div></div>
+          <div class="sdp-row"><div class="sdp-cond">PTH suppressed &rarr; malignancy suspected</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill arb-pill">2WW cancer referral + CT + PTHrP</div><div class="sdp-note">Urgent oncology</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Ca &gt;3.5 or confusion</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill ccb-pill">999 &rarr; IV saline &rarr; IV zoledronate</div><div class="sdp-note">Hospital management</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Sarcoidosis / granulomatous disease</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill arb-pill">Prednisolone 20&ndash;40 mg/day</div><div class="sdp-note">Not for HPT</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Supplement-induced (Ca+D3, thiazides)</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill acei-pill">Stop drug &rarr; recheck 4&ndash;6 weeks</div><div class="sdp-note">Most reversible</div></div>
+          <div class="sdp-row"><div class="sdp-cond">HPT unsuitable for surgery</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill arb-pill">Cinacalcet (specialist-initiated)</div><div class="sdp-note">Medical control only</div></div>
+          <div class="sdp-pivot">&#10005; Always: hydration 2L/day &middot; Stop supplements &middot; Confirm on 2nd sample &middot; Never refer for parathyroidectomy without CCCR to exclude FHH</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Hypercalcaemia &middot; GP Clinical Reasoning Framework v2</strong> &middot; NICE CKS Hypercalcaemia (2022) &middot; BTA / BAETS HPT Guidelines (2019) &middot; NICE NG12 (2WW cancer) &middot; Endocrine Society Clinical Practice Guideline: Primary HPT 2022</p>
+  <p style="margin-top:4px">v3: Dual tailored summaries &middot; PTH-based differential diagnosis &middot; FHH / CCCR distinction before parathyroidectomy &middot; Emergency grading by calcium level &middot; Cancer fear calibration in SCA communication</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters &mdash; not just what to do &middot; Always consult current BNF/SPC &middot; Clinical judgement takes precedence &middot; Results of this significance must always be communicated face-to-face</p>
+</div>
+</div>
+
+
+  </main>
+</div><!-- /app -->
+
+<script>
+function toggleSum(which){
+  const body = document.getElementById('sum-body-' + which);
+  const toggle = document.getElementById('sum-toggle-' + which);
+  const icon = toggle.querySelector('.sum-ti-icon');
+  const text = toggle.querySelector('.sum-ti-text');
+  const isClosed = body.classList.contains('closed');
+  if(isClosed){
+    body.classList.remove('closed');
+    icon.textContent = '▲';
+    text.textContent = 'collapse';
+  } else {
+    body.classList.add('closed');
+    icon.textContent = '▼';
+    text.textContent = 'expand';
+  }
+}
+
+function setMode(m){
+  document.getElementById('bodyEl').className='mode-'+m;
+  ['sca','both','clinic'].forEach(k=>document.getElementById('btn-'+k).classList.toggle('active',k===m));
+}
+
+function toggleStep(hdr){
+  const body=hdr.nextElementSibling;
+  const icon=hdr.querySelector('.sti-icon');
+  const text=hdr.querySelector('.sti-text');
+  const isOpen=hdr.classList.contains('is-open');
+  if(isOpen){
+    body.classList.add('closed');
+    hdr.classList.remove('is-open');
+    icon.textContent='▼';
+    text.textContent='expand';
+  } else {
+    body.classList.remove('closed');
+    hdr.classList.add('is-open');
+    icon.textContent='▲';
+    text.textContent='collapse';
+  }
+}
+
+function expandAll(){
+  document.querySelectorAll('.step-hdr').forEach(h=>{
+    h.classList.add('is-open');
+    h.nextElementSibling.classList.remove('closed');
+    h.querySelector('.sti-icon').textContent='▲';
+    h.querySelector('.sti-text').textContent='collapse';
+  });
+}
+
+function collapseAll(){
+  document.querySelectorAll('.step-hdr').forEach(h=>{
+    h.classList.remove('is-open');
+    h.nextElementSibling.classList.add('closed');
+    h.querySelector('.sti-icon').textContent='▼';
+    h.querySelector('.sti-text').textContent='expand';
+  });
+}
+
+function toggleActor(){
+  const b=document.getElementById('actor-body');
+  const i=document.getElementById('actor-icon');
+  b.classList.toggle('open');
+  i.textContent=b.classList.contains('open')?'▲ hide':'▼ show';
+}
+
+function printSummary(){
+  const steps=document.querySelectorAll('.step-wrap');
+  const orig=[];
+  steps.forEach((s,i)=>{orig[i]=s.style.display;s.style.display='none';});
+  const ac=document.querySelector('.card.sca-only');
+  const ad=ac?ac.style.display:'';
+  if(ac)ac.style.display='none';
+  window.print();
+  steps.forEach((s,i)=>{s.style.display=orig[i];});
+  if(ac)ac.style.display=ad;
+}
+
+function calcDrug(){
+  const dm=document.getElementById('ds-dm').checked,
+    ckd=document.getElementById('ds-ckd').checked,
+    cvd=document.getElementById('ds-cvd').checked,
+    afro=document.getElementById('ds-afro').checked,
+    age55=document.getElementById('ds-age55').checked,
+    hf=document.getElementById('ds-hf').checked,
+    angina=document.getElementById('ds-angina').checked,
+    af=document.getElementById('ds-af').checked,
+    cough=document.getElementById('ds-cough').checked;
+  const none=!dm&&!ckd&&!cvd&&!afro&&!age55&&!hf&&!angina&&!af&&!cough;
+  ['acei','arb','ccb','thiazide','spiro','ab'].forEach(id=>{
+    const el=document.getElementById('dc-'+id);
+    el.classList.remove('recommended','alt-rec');
+    const b=document.getElementById('rec-'+id);
+    b.style.cssText='';b.textContent='✓ Recommended';b.style.display='none';
+  });
+  if(none){
+    document.getElementById('ds-output').innerHTML='<span style="font-size:12.5px;color:var(--g)">Select patient characteristics above</span>';
+    return;
+  }
+  let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
+  if(hf){
+    main='thiazide';mainLabel='Indapamide SR 1.5mg';
+    why='HF with fluid overload: thiazide-like diuretic. Add ACEi + bisoprolol + spiro per NICE NG106 HF guideline.';
+    alt='acei';altLabel='+ Ramipril (essential in HFrEF)';altWhy='ACEi + beta-blocker + spiro = cornerstone of HFrEF management';
+  } else if(af){
+    main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
+    why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
+    alt=(dm||ckd)?'acei':'ccb';altLabel='+ ACEi or CCB for BP target';altWhy='Rate control alone may not achieve BP target — add Step 2 drug';
+  } else if(cough){
+    main='arb';mainLabel='Candesartan / Losartan (ARB)';
+    why='ACEi intolerance (cough): switch class to ARB. Identical cardio-renal protection without the cough.';
+    alt='';altLabel='';altWhy='';
+  } else if(dm||ckd||cvd){
+    main='acei';mainLabel='Ramipril (ACEi)';
+    why='DM / CKD / CVD: ACEi first-line for cardio-renal protection at ANY age and ANY ethnicity (NICE NG136).';
+    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';altWhy='Equal renoprotection. Never combine ACEi + ARB simultaneously.';
+  } else if(afro){
+    main='ccb';mainLabel='Amlodipine (CCB)';
+    why='Afro-Caribbean (no DM): CCB more effective in low-renin hypertension. At Step 2: ARB preferred over ACEi.';
+    alt='';altLabel='';altWhy='';
+  } else if(age55){
+    main='ccb';mainLabel='Amlodipine (CCB)';
+    why='Age ≥55 (no DM, no Afro-Caribbean): CCB preferred over ACEi — greater efficacy in lower-renin patients.';
+    alt=angina?'acei':'arb';
+    altLabel=angina?'+ Ramipril (anti-anginal benefit at Step 2)':'Candesartan (ARB) — if CCB not tolerated';
+    altWhy=angina?'ACEi has additional anti-anginal benefit at Step 2':'ARB is equally effective if CCB causes intolerable oedema';
+  } else {
+    main='acei';mainLabel='Ramipril (ACEi)';
+    why='Age <55, non-Afro-Caribbean, no DM/CKD/CVD: ACEi is the Step 1 drug of choice (NICE NG136).';
+    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';
+    altWhy='Switch to ARB within the RAAS class, not off-class, if cough develops.';
+  }
+
+  const m=document.getElementById('dc-'+main);
+  m.classList.add('recommended');
+  const mb=document.getElementById('rec-'+main);
+  mb.style.display='inline-block';
+
+  if(alt){
+    const a=document.getElementById('dc-'+alt);
+    a.classList.add('alt-rec');
+    const ab=document.getElementById('rec-'+alt);
+    ab.style.display='inline-block';
+    ab.style.background='#dbeafe';
+    ab.style.color='#1d4ed8';
+    ab.style.borderColor='#bfdbfe';
+    ab.textContent='↳ Alternative';
+  }
+
+  document.getElementById('ds-output').innerHTML=`
+    <div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: ${mainLabel}</div>
+    ${alt?`<div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: ${altLabel}</div>`:''}
+    <div style="font-size:12px;color:#15803d;margin-bottom:3px">${why}</div>
+    ${altWhy?`<div style="font-size:11.5px;color:var(--b);margin-bottom:3px">${altWhy}</div>`:''}
+    <div style="font-size:11px;color:var(--muted);margin-top:5px">Drug card highlighted below ↓ &nbsp;|&nbsp; U&Es within 1 week of starting ACEi/ARB</div>`;
+}
+
+function calcScore(){
+  var total=0, tasks=0, ro=0, gs=0;
+  var allCbs = document.querySelectorAll('.sc-cb');
+  allCbs.forEach(function(cb){
+    var item = cb.closest('.sc-item');
+    if(cb.checked){
+      var pts = parseInt(cb.dataset.pts)||0;
+      total += pts; tasks += cb.classList.contains('tasks-cb')?pts:0;
+      ro += cb.classList.contains('ro-cb')?pts:0; gs += cb.classList.contains('gs-cb')?pts:0;
+      item.classList.add('checked');
+    } else { item.classList.remove('checked'); }
+  });
+  document.getElementById('sc-total').textContent = total;
+  document.getElementById('sc-tasks-score').textContent = tasks;
+  document.getElementById('sc-ro-score').textContent = ro;
+  document.getElementById('sc-gs-score').textContent = gs;
+  document.getElementById('sc-bar-fill').style.width = Math.round((total/33)*100) + '%';
+  var icon, msg;
+  if(total < 11){ icon='🔴'; msg='<strong>Not yet at pass standard.</strong> Focus on: exploring ICE including the family history fear, planning ABPM to confirm BP stage, choosing the correct drug for age/ethnicity/comorbidity, sharing the QRISK score as a number, and naming 999 symptoms explicitly. Review Global Skills — are you finishing data gathering by 6-7 minutes?'; }
+  else if(total < 17){ icon='🟠'; msg='<strong>Borderline — approaching pass standard.</strong> Core framework present but key items missing. Check: was ABPM planned and explained? Was QRISK shared as a specific percentage? Was the correct drug chosen for the specific comorbidities? Was the family history fear addressed in the plan? Was a 1-week follow-up named?'; }
+  else if(total < 25){ icon='🟢'; msg='<strong>Pass standard.</strong> Good clinical reasoning and patient-centred communication. To reach a strong pass: ensure lifestyle advice is specific and measurable, QRISK is shared as a number, and the drug choice rationale is explained in plain language tailored to this patient.'; }
+  else { icon='🟢'; msg='<strong>Strong pass.</strong> Excellent consultation across all three domains. ICE fully explored including family fear, BP staging with ABPM, correct drug for phenotype and comorbidities, QRISK shared as a number, lifestyle specific and measurable, 1-2-1 rule named, 999 symptoms explicit, closing question asked.'; }
+  document.getElementById('sc-interp-msg').innerHTML = '<div class="interp-icon">'+icon+'</div><div class="interp-text">'+msg+'</div>';
+  var missed = [];
+  allCbs.forEach(function(cb){ if(!cb.checked){ missed.push(cb.closest('.sc-item').querySelector('.sc-item-text').textContent.trim()); } });
+  var ms = document.getElementById('sc-missed-section');
+  if(missed.length < allCbs.length && missed.length > 0){
+    ms.style.display='block';
+    document.getElementById('sc-missed-list').innerHTML = missed.map(function(m){ return '<div class="sc-missed-item">- '+m.substring(0,120)+'</div>'; }).join('');
+  } else { ms.style.display='none'; }
+}
+
+function resetScorecard(){
+  document.querySelectorAll('.sc-cb').forEach(function(cb){ cb.checked=false; cb.closest('.sc-item').classList.remove('checked'); });
+  ['sc-total','sc-tasks-score','sc-ro-score','sc-gs-score'].forEach(function(id){ document.getElementById(id).textContent='0'; });
+  document.getElementById('sc-bar-fill').style.width='0%';
+  document.getElementById('sc-interp-msg').innerHTML='<div class="interp-icon">📋</div><div class="interp-text">Complete the checklist above to see your score interpretation</div>';
+  document.getElementById('sc-missed-section').style.display='none';
+}
+
+</script>
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+
+<script src="../assets/topic-links.js?v=2"></script>
+</body>
+</html>

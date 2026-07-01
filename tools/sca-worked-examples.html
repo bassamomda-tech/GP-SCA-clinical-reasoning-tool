@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Worked Example Consultations · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<style>
+.tool-page{ padding:28px 32px 80px; max-width:900px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+.tool-head{ padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:18px; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:34px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:6px; max-width:70ch; }
+.lbl{ font-size:11px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); margin:18px 0 8px; }
+
+.we-pick{ display:flex; gap:8px; flex-wrap:wrap; }
+.we-case{ font:inherit; font-size:12.5px; font-weight:700; padding:8px 15px; border-radius:999px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; }
+.we-case.sel{ background:#0c4a47; color:#f6f2e9; border-color:#0c4a47; }
+
+.we-brief{ border:1px solid var(--line); border-radius:13px; background:#fff; padding:15px 18px; margin:16px 0; }
+.we-brief .bh{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+.we-brief p{ font-size:13.5px; line-height:1.6; color:var(--ink-2); }
+
+.we-toggle{ display:flex; gap:8px; margin-bottom:14px; }
+.we-tog{ flex:1; font:inherit; font-size:13.5px; font-weight:800; padding:11px; border-radius:11px; border:1.5px solid var(--line); background:#fff; cursor:pointer; }
+.we-tog.sel.pass{ background:#f0fdf4; border-color:#15803d; color:#15803d; }
+.we-tog.sel.fail{ background:#fef2f2; border-color:#b91c1c; color:#b91c1c; }
+.we-tog .sm{ display:block; font-size:10.5px; font-weight:700; color:var(--muted); margin-top:1px; }
+.we-tog.sel.pass .sm{ color:#15803d; } .we-tog.sel.fail .sm{ color:#b91c1c; }
+
+.we-grades{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+.we-gr{ font-size:11.5px; font-weight:800; border-radius:8px; padding:5px 11px; }
+.we-gr .gn{ font-weight:600; color:var(--muted); margin-right:5px; }
+.we-gr.CF{ background:#fef2f2; color:#b91c1c; } .we-gr.F{ background:#fff7ed; color:#c2410c; }
+.we-gr.P{ background:#f0fdf4; color:#15803d; } .we-gr.CP{ background:#ecfeff; color:#0c4a47; }
+
+.we-convo{ border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden; }
+.we-turn{ display:flex; gap:11px; padding:12px 15px; border-bottom:1px solid #f4f6f9; }
+.we-turn:last-child{ border-bottom:none; }
+.we-turn .av{ flex-shrink:0; width:30px; height:30px; border-radius:50%; display:grid; place-items:center; font-size:13px; font-weight:800; }
+.we-turn.pt .av{ background:#fef3c7; color:#92400e; } .we-turn.dr .av{ background:#0c4a47; color:#f6f2e9; }
+.we-turn .body{ flex:1; min-width:0; }
+.we-turn .txt{ overflow-wrap:anywhere; }
+.we-an{ overflow-wrap:anywhere; }
+.we-turn .who{ font-size:10px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); }
+.we-turn .txt{ font-size:14px; line-height:1.55; color:var(--ink); margin-top:2px; }
+.we-turn.pt .txt{ font-family:'Source Serif 4',Georgia,serif; }
+.we-an{ margin-top:8px; font-size:12.5px; line-height:1.5; border-radius:9px; padding:8px 12px; }
+.we-an.good{ background:#f0fdf4; color:#166534; border:1px solid #bbf7d0; }
+.we-an.bad{ background:#fef2f2; color:#991b1b; border:1px solid #fecaca; }
+.we-an b{ font-weight:800; }
+.we-an .tag{ font-size:9.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; border-radius:999px; padding:1px 7px; margin-right:6px; background:#fff; }
+
+.we-verdict{ border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin-top:16px; background:#fafbfc; }
+.we-verdict h4{ font-size:12px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-bottom:7px; }
+.we-verdict p{ font-size:13.5px; line-height:1.65; color:var(--ink-2); }
+.we-diff{ margin-top:12px; padding-top:12px; border-top:1px dashed var(--line); }
+.we-diff li{ font-size:13px; line-height:1.6; color:var(--ink-2); margin-bottom:5px; }
+.we-cta{ margin-top:14px; }
+.we-cta a{ display:inline-block; font-size:13px; font-weight:800; color:#f6f2e9; background:#0c4a47; border-radius:10px; padding:10px 18px; }
+.an-toggle{ display:flex; align-items:center; gap:7px; font-size:12.5px; font-weight:600; color:var(--ink-2); margin-bottom:12px; }
+.an-toggle input{ width:16px; height:16px; accent-color:#0c4a47; }
+@media (max-width:560px){
+  .we-toggle{ flex-direction:column; }
+  .we-turn{ padding:11px 13px; gap:9px; }
+  .we-pick{ gap:7px; }
+}
+</style>
+</head>
+<body data-screen-label="Worked example consultations">
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-sca"></aside>
+  <main class="main">
+    <div class="tool-page">
+
+      <div class="tool-head">
+        <div class="tool-eyebrow">Reasoning GP · See the standard</div>
+        <h1>Worked example <em>consultations</em></h1>
+        <p>The question candidates ask most: what does a <em>pass</em> actually look like? Each high-yield station, played out twice — a clear pass and a borderline fail — annotated turn-by-turn so you can see exactly which words and decisions move the grade. Toggle between the two versions and watch what changes.</p>
+      </div>
+
+      <div class="lbl">Choose a station</div>
+      <div class="we-pick" id="pick"></div>
+
+      <div class="we-brief" id="brief"></div>
+
+      <label class="an-toggle"><input type="checkbox" id="anToggle" checked> Show examiner annotations</label>
+
+      <div class="we-toggle">
+        <button class="we-tog pass sel" id="togPass" data-v="pass">✓ The pass<span class="sm">how a strong candidate does it</span></button>
+        <button class="we-tog fail" id="togFail" data-v="fail">✗ The borderline fail<span class="sm">where marks are lost</span></button>
+      </div>
+
+      <div class="we-grades" id="grades"></div>
+      <div class="we-convo" id="convo"></div>
+      <div class="we-verdict" id="verdict"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/sca-worked-examples.js"></script>
+<script>
+(function(){
+  'use strict';
+  const $ = q=>document.querySelector(q);
+  const esc = s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  const DATA = (window.SCA_WORKED||[]);
+  const GLAB = {CF:'Clear fail',F:'Fail',P:'Pass',CP:'Clear pass'};
+  let cur = DATA[0], ver='pass';
+
+  $('#pick').innerHTML = DATA.map((c,i)=>`<button class="we-case${i===0?' sel':''}" data-i="${i}">${esc(c.title)}</button>`).join('');
+  document.querySelectorAll('.we-case').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.we-case').forEach(x=>x.classList.remove('sel'));
+    b.classList.add('sel'); cur=DATA[+b.dataset.i]; ver='pass'; setTog(); render();
+  }));
+  $('#togPass').addEventListener('click',()=>{ ver='pass'; setTog(); render(); });
+  $('#togFail').addEventListener('click',()=>{ ver='fail'; setTog(); render(); });
+  $('#anToggle').addEventListener('change', render);
+
+  function setTog(){ $('#togPass').classList.toggle('sel', ver==='pass'); $('#togFail').classList.toggle('sel', ver==='fail'); }
+
+  function render(){
+    const v = cur[ver];
+    $('#brief').innerHTML = `<div class="bh">Medical-record brief · ${esc(cur.type||'')}</div><p>${esc(cur.brief)}</p>`;
+    const g = v.grades;
+    $('#grades').innerHTML = [['Data Gathering','dg'],['Clinical Mgmt ×1.5','cm'],['Relating to Others','rto']]
+      .map(([n,k])=>`<span class="we-gr ${g[k]}"><span class="gn">${n}</span>${g[k]} · ${GLAB[g[k]]}</span>`).join('');
+    const showAn = $('#anToggle').checked;
+    $('#convo').innerHTML = v.turns.map(t=>{
+      const an = (showAn && t.an) ? `<div class="we-an ${t.an.t}"><span class="tag we-gr ${t.an.dom||''}">${t.an.t==='good'?'✓ scores':'✗ loses marks'}</span>${t.an.text}</div>` : '';
+      return `<div class="we-turn ${t.r}"><div class="av">${t.r==='pt'?'🧑':'Dr'}</div><div class="body"><div class="who">${t.r==='pt'?'Patient':'Candidate'}</div><div class="txt">${esc(t.s)}</div>${an}</div></div>`;
+    }).join('');
+    $('#verdict').innerHTML = `
+      <h4>${ver==='pass'?'Why this passes':'Why this falls short'}</h4>
+      <p>${v.verdict}</p>
+      ${ver==='fail' && cur.pass && cur.pass.diff ? `<div class="we-diff"><h4>What separates it from the pass</h4><ul>${cur.pass.diff.map(d=>`<li>${d}</li>`).join('')}</ul></div>`:''}
+      ${cur.link?`<div class="we-cta"><a href="${cur.link}">Practise this case in the simulator →</a></div>`:''}`;
+  }
+  render();
+})();
+</script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

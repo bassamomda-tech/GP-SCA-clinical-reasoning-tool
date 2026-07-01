@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="algkey" content="rgp.alg.chronicdiarrhoea.v1"/>
+<title>Chronic Diarrhoea Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,::before,::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f4f0;--surface:#ffffff;--surface2:#f9f8f5;
+  --border:#e2e0d8;--border2:#d0cec4;
+  --text:#1a1917;--text2:#4a4845;--text3:#7a7875;
+  --safety:#dc2626;--safety-bg:#fef2f2;--safety-border:#fecaca;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;--diagnose-border:#bfdbfe;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;--refer-border:#ddd6fe;
+  --treat:#059669;--treat-bg:#ecfdf5;--treat-border:#a7f3d0;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;--lifestyle-border:#fde68a;
+  --red:#dc2626;--purple:#7c3aed;--blue:#2563eb;--teal:#0d9488;
+  --amber:#d97706;--green:#16a34a;--grey:#6b7280;
+  --radius:12px;--radius-sm:8px;--shadow:0 1px 3px rgba(0,0,0,.08),0 4px 12px rgba(0,0,0,.05);
+  --font-body:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;padding:0 0 40px}
+/* Banner */
+.stem-banner{display:flex;align-items:center;gap:16px;background:var(--text);color:#fff;padding:20px 28px;border-radius:0}
+.sb-icon{font-size:2.2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.1rem;font-weight:600;letter-spacing:-.01em}
+.stem-banner small{opacity:.65;font-size:.82rem}
+/* Progress */
+.alg-progress{display:flex;align-items:center;gap:12px;padding:14px 28px;background:var(--surface);border-bottom:1px solid var(--border);font-size:.82rem;color:var(--text2);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.pcount{font-weight:600;color:var(--text);white-space:nowrap}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:99px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#2563eb,#059669);border-radius:99px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font:inherit;font-size:.78rem;padding:4px 12px;border:1px solid var(--border2);border-radius:99px;background:transparent;cursor:pointer;color:var(--text2);transition:all .15s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+/* Flow */
+.alg-flow{max-width:840px;margin:0 auto;padding:28px 20px 0}
+.connector{width:2px;height:28px;background:linear-gradient(var(--border2),var(--border2));margin:0 auto;opacity:.6}
+/* Node */
+.node{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s}
+.node:hover{box-shadow:0 2px 6px rgba(0,0,0,.08),0 8px 24px rgba(0,0,0,.08)}
+.node[data-type="SAFETY"]{border-left:4px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-left:4px solid var(--diagnose)}
+.node[data-type="REFER"]{border-left:4px solid var(--refer)}
+.node[data-type="TREAT"]{border-left:4px solid var(--treat)}
+.node[data-type="LIFESTYLE"]{border-left:4px solid var(--lifestyle)}
+.node-head{display:flex;align-items:flex-start;gap:14px;padding:18px 20px 14px;border-bottom:1px solid var(--border)}
+.node-num{font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--text3);padding-top:2px}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:99px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--red)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--blue)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--purple)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--green)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--amber)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;color:var(--text);letter-spacing:-.01em}
+.node-tick{padding:16px 20px 4px;display:flex;align-items:center;gap:8px}
+.node-tick label{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.82rem;color:var(--text3);user-select:none}
+.node-tick input[type=checkbox]{width:18px;height:18px;accent-color:var(--treat);cursor:pointer}
+.tlbl{}
+.node.done{opacity:.75}
+.node.done .node-head{background:var(--surface2)}
+.node-body{padding:4px 20px 16px;font-size:.88rem;color:var(--text2)}
+.node-body>p,.node-body>span{display:block;margin-bottom:12px;color:var(--text2)}
+/* KV Grid */
+.kv{display:grid;grid-template-columns:minmax(130px,30%) 1fr;gap:0;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin:10px 0}
+.kv>div{padding:9px 13px;font-size:.84rem;border-bottom:1px solid var(--border)}
+.kv>div:last-child,.kv>div:nth-last-child(2){border-bottom:none}
+.kv>div:nth-child(odd){background:var(--surface2);font-weight:500;color:var(--text);font-size:.81rem}
+.kv>div:nth-child(even){color:var(--text2)}
+/* RF Grid */
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:10px 0}
+.rftile{background:var(--safety-bg);border:1px solid var(--safety-border);border-radius:var(--radius-sm);padding:11px 13px;font-size:.82rem;color:var(--text);line-height:1.45}
+.rftile b{display:block;color:var(--red);font-weight:600;margin-bottom:3px;font-size:.81rem}
+/* Branch */
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:10px 0}
+.b-card{border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.b-cond{background:var(--surface2);padding:8px 12px;font-size:.78rem;font-weight:600;color:var(--text);border-bottom:1px solid var(--border)}
+.b-drug{padding:8px 12px 4px;font-size:.86rem;font-weight:600;color:var(--treat)}
+.b-note{padding:0 12px 10px;font-size:.78rem;color:var(--text3);line-height:1.4}
+/* Ladder */
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.rung{display:flex;align-items:baseline;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:nth-child(odd){background:var(--surface2)}
+.rn{font-size:.72rem;font-weight:700;letter-spacing:.05em;color:var(--text3);white-space:nowrap;min-width:52px}
+.rt{color:var(--text);line-height:1.45;flex:1}
+/* Lifestyle Grid */
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}
+.lstile{background:var(--lifestyle-bg);border:1px solid var(--lifestyle-border);border-radius:var(--radius-sm);padding:11px 13px;font-size:.82rem;color:var(--text);line-height:1.45}
+.lstile b{display:block;color:var(--amber);font-weight:600;margin-bottom:3px;font-size:.81rem}
+/* Pills */
+.pill{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.04em;padding:2px 7px;border-radius:99px;vertical-align:middle;white-space:nowrap}
+.pill-red{background:#fee2e2;color:#b91c1c}
+.pill-purple{background:#ede9fe;color:#6d28d9}
+.pill-blue{background:#dbeafe;color:#1d4ed8}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#b45309}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+/* Why drawer */
+.why-row{border-top:1px solid var(--border);padding:0}
+.why-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:transparent;border:none;cursor:pointer;font:inherit;font-size:.8rem;font-weight:500;color:var(--text3);transition:background .15s}
+.why-btn:hover{background:var(--surface2);color:var(--text)}
+.caret{font-size:.9rem;transition:transform .2s}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:14px 20px;font-size:.83rem;color:var(--text2);line-height:1.65;background:var(--surface2);border-top:1px solid var(--border)}
+.why-drawer b{color:var(--text)}
+/* Footer */
+.alg-foot{max-width:840px;margin:28px auto 0;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--text3);line-height:1.5}
+.alg-foot strong{color:var(--text)}
+/* Head flex fix */
+.node-head-inner{flex:1}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">💧</div>
+  <div>
+    <b>Chronic Diarrhoea — Adult presentation in primary care</b>
+    <small>Diarrhoea persisting ≥4 weeks · Adults ≥18 · UK NHS pathway</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — exclude the cancer/IBD red flags, then use FIT, faecal calprotectin and coeliac serology to separate inflammatory, malabsorptive and functional diarrhoea, treat the named cause, refer appropriately and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Chronic diarrhoea (&gt;4 weeks)</span><div class="body">Stool pattern &amp; frequency, blood/mucus, <b>nocturnal</b> symptoms, weight loss, steatorrhoea; travel, drugs (metformin, PPI, laxatives), diet, alcohol, prior surgery. Examine including <b>PR</b>.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — cancer / IBD red flags</span><span class="ttl">Serious pathology?</span><div class="body"><ul>
+      <li><b>Rectal bleeding</b>, iron-deficiency anaemia</li>
+      <li><b>Unexplained weight loss</b>, abdominal or rectal mass</li>
+      <li><b>Nocturnal diarrhoea</b>, systemic upset (suggests organic disease/IBD)</li>
+      <li><b>Age ≥50/60 + change in bowel habit ≥6 weeks</b>; family history of bowel cancer / IBD</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">FIT + 2WW</span><div class="body">Suspected colorectal cancer → FIT + colorectal 2WW (don't wait for FIT if criteria met). Suspected acute severe IBD → urgent gastro/admission.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — work up mechanism</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Bloods + stool tests</span><div class="body">FBC, CRP/ESR, U&amp;E, LFT, <b>TFT</b>, <b>coeliac serology (tTG)</b>, ferritin, B12/folate; <b>faecal calprotectin</b>, FIT, stool culture/ova/C. diff. Consider HIV/giardia per risk.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · which mechanism?</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Inflammatory</div><div class="box ix"><span class="ttl">Calprotectin (18–60y, cancer not suspected)</span><div class="body"><b>&lt;100</b> → IBS likely · <b>100–250</b> → repeat in 2 wks · <b>&gt;250</b> → urgent gastro (?IBD). Blood/mucus + nocturnal → IBD; watery + drug history → microscopic colitis (colonoscopy + biopsy).</div></div></div>
+      <div class="col"><div class="blabel">Malabsorption</div><div class="box ix"><span class="ttl">Weight loss, steatorrhoea</span><div class="body"><b>Coeliac</b> (+tTG → gastro for OGD/biopsy), <b>pancreatic insufficiency</b> (low faecal elastase), <b>bile-acid malabsorption</b> (post-cholecystectomy/terminal ileal → SeHCAT, colestyramine trial).</div></div></div>
+      <div class="col"><div class="blabel">Functional</div><div class="box ix"><span class="ttl">Normal tests</span><div class="body"><b>IBS-D</b> by positive Rome criteria (abdominal pain + altered habit, no alarms); drug-induced; dietary (caffeine, sorbitol, lactose).</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · treat the cause</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — cause-directed treatment</span><span class="ttl">Treat mechanism, not just symptom</span><div class="body"><ul>
+      <li><b>Coeliac:</b> gastro confirmation then lifelong gluten-free diet + dietitian; replace deficiencies.</li>
+      <li><b>Bile-acid malabsorption:</b> colestyramine (or colesevelam). <b>Pancreatic insufficiency:</b> CREON + specialist.</li>
+      <li><b>IBD / microscopic colitis:</b> specialist-led (mesalazine/budesonide); stop the culprit drug in microscopic colitis.</li>
+      <li><b>IBS-D:</b> loperamide PRN; dietary review (low-FODMAP with dietitian); antispasmodic; consider low-dose TCA (amitriptyline) for persistent symptoms. Review and stop metformin/PPI/laxative triggers.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-purple">2WW · NICE NG12</span> red flags → FIT + colorectal pathway; weight loss + diarrhoea ≥60 → consider pancreatic/CT pathway.</li>
+      <li><span class="pill pill-purple">Urgent gastroenterology</span> faecal calprotectin &gt;250 (suspected IBD), positive coeliac serology, unexplained malabsorption.</li>
+      <li><span class="pill pill-grey">Routine gastro</span> IBS-D refractory to first-line management, suspected bile-acid malabsorption for SeHCAT.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · diet &amp; lifestyle</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; diet</span><span class="ttl">Target the trigger</span><div class="body"><b>Food &amp; symptom diary</b> to find triggers · reduce caffeine, alcohol, fizzy drinks, sorbitol/artificial sweeteners · trial lactose reduction if suggestive · <b>low-FODMAP under a dietitian</b> for IBS-D · maintain hydration · regular meals and stress management (gut–brain axis). Lifelong gluten-free diet for coeliac.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Same-day</b> if dehydration, blood in stool, severe pain, or systemic upset/fever. <b>Return / re-investigate</b> if weight loss, nocturnal symptoms or anaemia develop — don't anchor on IBS. <b>Review:</b> treatment response and repeat calprotectin where borderline; reassess the diagnosis if not improving on first-line therapy.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Calprotectin and coeliac serology do the heavy lifting:</b> they separate inflammatory and malabsorptive causes from IBS — but red flags still go down the cancer pathway, and IBS is a <i>positive</i> diagnosis, never just "all tests normal".</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head">
+    <div class="node-num">01</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Exclude cancer, IBD complications, and dehydration emergencies first</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Screened — no red flags identified</span></label></div>
+  <div class="node-body">
+    <span>Chronic diarrhoea is common; serious causes are uncommon but catastrophic if missed. Screen every new presentation systematically.</span>
+    <div class="rfgrid">
+      <div class="rftile"><b>Rectal bleeding with diarrhoea</b> Any age → do not attribute to haemorrhoids. 2WW colorectal (NICE NG12) if age ≥40, or urgent assessment if profuse</div>
+      <div class="rftile"><b>Unintentional weight loss ≥5%</b> Over 6 months with chronic diarrhoea → 2WW upper or lower GI cancer. Check FBC, CEA, CA-125, LFTs</div>
+      <div class="rftile"><b>Age ≥50 — change in bowel habit ≥6 weeks</b> Looser, more frequent stools → 2WW colorectal cancer referral (NICE NG12) regardless of other explanation</div>
+      <div class="rftile"><b>Iron-deficiency anaemia</b> In men or postmenopausal women with diarrhoea → 2WW lower GI. Right-sided colon cancer classically presents with IDA + change in bowel habit</div>
+      <div class="rftile"><b>Nocturnal diarrhoea</b> Waking patient from sleep = organic cause until proven otherwise (IBD, microscopic colitis, VIPoma, secretory diarrhoea). NOT functional</div>
+      <div class="rftile"><b>Severe dehydration / haemodynamic compromise</b> In acute-on-chronic diarrhoea (e.g. IBD flare, C. diff) → 999 if shocked. Same-day if unable to maintain hydration</div>
+      <div class="rftile"><b>Fever + bloody diarrhoea</b> Systemic sepsis picture with diarrhoea → infectious colitis, IBD flare, C. difficile. Stool cultures urgently. Same-day if NEWS2 ≥3</div>
+      <div class="rftile"><b>Palpable abdominal mass</b> Any new mass with diarrhoea → urgent USS / 2WW colorectal</div>
+      <div class="rftile"><b>Recent antibiotics / hospital admission</b> Especially within 8 weeks — Clostridioides difficile until proven otherwise. Stool for C. diff toxin urgently</div>
+      <div class="rftile"><b>Immunocompromised patient</b> HIV, transplant, chemotherapy, biologics — opportunistic infections (CMV colitis, cryptosporidium, Giardia) require urgent specialist input</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Chronic diarrhoea (≥4 weeks) has an organic cause in ~30% of cases referred to secondary care — the challenge in primary care is identifying these. Colorectal cancer presenting with diarrhoea alone (without bleeding) is frequently right-sided and presents late — IDA may be the only clue. Nocturnal diarrhoea has &gt;90% specificity for organic disease and should never be attributed to IBS. C. difficile is significantly under-recognised in primary care — rates of community-acquired C. diff have increased since 2010. In immunocompromised patients, any diarrhoea lasting &gt;1 week requires specialist assessment due to the broad range of opportunistic pathogens.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head">
+    <div class="node-num">02</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Diagnose</span>
+      <h3>Define and characterise diarrhoea — confirm it is truly chronic diarrhoea</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Diarrhoea confirmed and characterised</span></label></div>
+  <div class="node-body">
+    <span>Chronic diarrhoea = ≥3 loose or watery stools/day for ≥4 weeks. First confirm the definition is met — some patients report diarrhoea when they mean urgency or frequency of normal stools.</span>
+    <div class="kv">
+      <div>Definition</div><div>Bristol Stool Chart types 5–7 (soft blobs, fluffy, watery) · ≥3 episodes/day · Duration ≥4 weeks. Note: faecal urgency or incontinence with normal stool consistency ≠ diarrhoea</div>
+      <div>Onset and pattern</div><div>Sudden onset (weeks) → infection, IBD, drug-induced, bile acid malabsorption · Gradual onset (years) → IBS, coeliac, microscopic colitis · Continuous vs intermittent · Nocturnal (organic) vs diurnal (functional more likely)</div>
+      <div>Stool characteristics</div><div>Watery = secretory (bile acid, VIPoma, Giardia) · Fatty / oily / offensive / difficult to flush = malabsorptive (coeliac, pancreatic exocrine insufficiency, small bowel disease) · Bloody / mucoid = IBD, infection, cancer · Small volume + urgency + tenesmus = rectal / distal disease</div>
+      <div>Dietary triggers</div><div>Lactose (dairy) = lactose intolerance · Wheat = coeliac / non-coeliac gluten sensitivity · Sorbitol (diet drinks / gum) = osmotic diarrhoea · High-FODMAP foods = IBS · Fat = bile acid malabsorption / pancreatic disease</div>
+      <div>Associated symptoms</div><div>Abdominal pain relieved by defaecation = IBS · Bloating / flatulence = malabsorption, SIBO, IBS · Perianal symptoms (soreness, prolapse, skin tags) = IBD · Joint pain / skin rash / eye symptoms = IBD (extraintestinal manifestations)</div>
+      <div>Medications — full review</div><div>Metformin (diarrhoea in 30%), PPIs, SSRIs, antibiotics, colchicine, magnesium-containing antacids, laxative overuse, orlistat, digoxin toxicity. Always take a full drug history including OTC and supplements</div>
+      <div>Surgical / medical history</div><div>Previous cholecystectomy (bile acid diarrhoea in 10%) · Bowel resection (short bowel) · Previous radiotherapy (radiation enteritis) · Thyroidectomy / diabetes (autonomic neuropathy) · HIV / immunosuppression</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Up to 25% of patients referred with "chronic diarrhoea" do not meet the objective definition — they have urgency, frequency of normal stools, or faecal incontinence, which require different management pathways. Drug-induced diarrhoea is underdiagnosed — metformin causes diarrhoea in up to 30% of patients and is often overlooked because it was started years before the symptom developed. Post-cholecystectomy bile acid malabsorption (BAM) affects 10% of patients and is frequently misdiagnosed as IBS — it responds to cholestyramine or colesevelam and can be confirmed with SeHCAT scan. Stool characteristics (fatty vs watery vs bloody) point to completely different pathophysiological mechanisms and diagnostic pathways.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head">
+    <div class="node-num">03</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Diagnose</span>
+      <h3>Classify by mechanism — the diagnostic framework that drives investigation</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Mechanism classified</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Osmotic</div><div>Diarrhoea stops with fasting. Stool osmolar gap &gt;125 mOsm/kg. Causes: lactose intolerance, coeliac disease, sorbitol, lactulose, magnesium-containing products, malabsorption syndromes. Clue: improves when not eating</div>
+      <div>Secretory</div><div>Diarrhoea continues with fasting (secretory mechanism independent of food). Large volume, watery. Causes: bile acid malabsorption, VIPoma, carcinoid, microscopic colitis, Giardia, Cryptosporidium, collagenous colitis. Clue: nocturnal, persists despite fasting</div>
+      <div>Inflammatory</div><div>Blood + mucus + systemic features (fever, weight loss, CRP elevated). Causes: IBD (Crohn's / UC), infectious colitis, C. difficile, ischaemic colitis, radiation enteritis. Clue: systemic upset, elevated inflammatory markers</div>
+      <div>Malabsorptive / fat malabsorption</div><div>Steatorrhoea: fatty, pale, difficult to flush, offensive stools. Causes: coeliac disease, pancreatic exocrine insufficiency (chronic pancreatitis, post-pancreatectomy), small bowel bacterial overgrowth (SIBO), Whipple's disease. Clue: weight loss + steatorrhoea</div>
+      <div>Dysmotility</div><div>Accelerated transit without structural disease. IBS-D, post-vagotomy, diabetic autonomic neuropathy, hyperthyroidism. Clue: often stress-related, no nocturnal symptoms, normal investigations</div>
+      <div>Functional (IBS-D)</div><div>Rome IV criteria: recurrent abdominal pain ≥1 day/week for ≥3 months, associated with defaecation or change in stool form/frequency. Diagnosis of exclusion — investigations must be normal. NOT a diagnosis to make without excluding organic causes</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Mechanistic classification directs investigation efficiently. Osmotic diarrhoea that stops with fasting does not need colonoscopy — dietary exclusion and coeliac screen are the first steps. Secretory diarrhoea that persists with fasting requires endoscopic investigation (microscopic colitis is invisible to the naked eye — biopsies are mandatory). Malabsorptive diarrhoea needs coeliac serology and faecal elastase (for pancreatic exocrine insufficiency) before colonoscopy. IBS-D is a clinical diagnosis requiring Rome IV criteria AND normal investigations — it must not be diagnosed by exclusion alone without appropriate workup, particularly in patients over 50.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head">
+    <div class="node-num">04</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Diagnose</span>
+      <h3>Targeted examination — look for systemic clues and extraintestinal signs</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Examination completed and documented</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>General / systemic</div><div>BMI (weight loss = organic until proven otherwise) · Pallor (anaemia = coeliac, IBD, cancer) · Lymphadenopathy · Muscle wasting · Peripheral oedema (hypoalbuminaemia = malabsorption / protein-losing enteropathy)</div>
+      <div>Skin</div><div>Dermatitis herpetiformis (intensely itchy blistering rash on extensor surfaces = coeliac) · Erythema nodosum / pyoderma gangrenosum (IBD extraintestinal) · Flushing (carcinoid) · Aphthous ulcers (Crohn's, coeliac)</div>
+      <div>Eyes</div><div>Uveitis / episcleritis / conjunctivitis = IBD extraintestinal manifestation. Ask about red / painful eye</div>
+      <div>Joints</div><div>Arthritis / arthralgia (large joints, migratory) = IBD / coeliac / reactive arthritis (Reiter's following infectious gastroenteritis)</div>
+      <div>Abdomen</div><div>RIF mass (Crohn's — ileal inflammation / abscess) · Hepatomegaly (IBD-related liver disease, PSC, metastatic cancer) · Tenderness distribution · Visible distension · Bowel sounds</div>
+      <div>PR examination</div><div>Perianal disease (fistulae, skin tags, fissures = Crohn's in ~25% of patients) · Rectal mucosa (proctitis — tender, contact bleeding) · Masses · Fresh blood / mucus on glove</div>
+      <div>Thyroid</div><div>Goitre / tremor / tachycardia / heat intolerance = hyperthyroidism causing dysmotility diarrhoea. Check TFTs</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Dermatitis herpetiformis is pathognomonic for coeliac disease — if you see this on skin, the diagnosis is made. Up to 25% of Crohn's disease patients have perianal involvement (fistulae, abscesses, fissures, skin tags) — finding this on PR exam should dramatically raise suspicion for Crohn's and expedite referral. PSC (primary sclerosing cholangitis) occurs in 5% of UC patients and can present before bowel symptoms — abnormal LFTs with IBD should always trigger PSC investigation (ALP elevated, MRCP). Hypoalbuminaemia (&lt;30 g/L) with diarrhoea indicates severe malabsorption or protein-losing enteropathy and requires urgent secondary care assessment.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head">
+    <div class="node-num">05</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — layered approach; faecal calprotectin is the pivotal primary care test</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Investigations ordered and results actioned</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>First-line — all patients</div><div><span class="pill pill-blue">FBC</span> (anaemia, eosinophilia) <span class="pill pill-blue">CRP / ESR</span> <span class="pill pill-blue">U&amp;E + LFTs + albumin</span> <span class="pill pill-blue">TFTs</span> (hyperthyroidism) <span class="pill pill-blue">Glucose / HbA1c</span> (diabetes → autonomic neuropathy) <span class="pill pill-blue">Coeliac: anti-tTG IgA + total IgA</span> (total IgA to exclude IgA deficiency — false negative if low)</div>
+      <div>Faecal tests</div><div><span class="pill pill-blue">Faecal calprotectin</span> — pivotal test. &lt;50 µg/g = organic cause very unlikely (IBD NPV 97%). 50–200 = repeat or refer. &gt;200 µg/g = refer for colonoscopy (93% sensitivity IBD). <span class="pill pill-blue">Stool MC&amp;S × 3</span> (OCP, C. diff toxin, Giardia antigen, Cryptosporidium if immunocompromised / travel)</div>
+      <div>Faecal elastase</div><div><span class="pill pill-blue">Faecal elastase-1</span> — if steatorrhoea suspected. &lt;200 µg/g = pancreatic exocrine insufficiency. Simple, non-invasive, sensitive (93%). Order if post-pancreatitis, alcohol history, weight loss + steatorrhoea</div>
+      <div>Coeliac disease</div><div>Anti-tTG IgA (positive = refer gastroenterology for duodenal biopsy to confirm — do NOT start gluten-free diet before biopsy). Must be eating gluten at time of testing. If IgA deficient: use anti-DGP IgG or anti-tTG IgG instead</div>
+      <div>If bile acid malabsorption suspected</div><div>Post-cholecystectomy, post-ileal resection, idiopathic BAM → empirical trial of cholestyramine, or <span class="pill pill-blue">SeHCAT scan</span> (nuclear medicine — 75Se retention &lt;10% = BAM). Arrange via gastroenterology</div>
+      <div>Second-line (secondary care)</div><div>Colonoscopy + biopsies (IBD, microscopic colitis — invisible to naked eye) · OGD + duodenal biopsy (coeliac, Giardia, Whipple's) · CT abdomen (Crohn's complications, cancer, lymphoma) · Small bowel MRI (Crohn's extent) · Hydrogen breath test (SIBO, lactose intolerance)</div>
+      <div>Do NOT order</div><div>Routine CT for all diarrhoea without indication · Breath tests in primary care without specialist input · SeHCAT without gastroenterology referral · Colonoscopy as first-line without red flags / elevated calprotectin</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <b>Faecal calprotectin</b> is endorsed by NICE (DG11) for distinguishing IBD from IBS in adults with diarrhoea. NPV of 97% for IBD when &lt;50 µg/g — this is one of the most powerful negative predictive tests in gastroenterology and allows safe avoidance of colonoscopy in the majority of patients. Sensitivity for IBD at &gt;200 µg/g is 93%. <b>Coeliac disease</b> affects 1% of the UK population — anti-tTG IgA has 93% sensitivity but will be falsely negative in 2–3% due to IgA deficiency (always check total IgA). The patient must be eating gluten (≥2 slices bread/day for ≥6 weeks) for the test to be valid. <b>Microscopic colitis</b> is the most underdiagnosed cause of chronic watery diarrhoea in women over 50 — it is invisible at colonoscopy and requires colonic biopsies specifically; calprotectin may be only mildly elevated.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head">
+    <div class="node-num">06</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Refer</span>
+      <h3>Referral criteria — structured pathway from emergency to routine</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Referral decision made and documented</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span> Emergency</div><div>Severe dehydration with haemodynamic shock · Profuse bloody diarrhoea with collapse · Toxic megacolon (IBD — distension + fever + peritonism) · Septic shock from enteric source</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Suspected C. difficile with systemic upset (elderly, post-antibiotic, care home) · Severe IBD flare (10+ stools/day with blood, fever, tachycardia — Truelove &amp; Witts severe criteria) · Unable to maintain oral hydration</div>
+      <div><span class="pill pill-purple">2WW</span> Colorectal</div><div>NICE NG12 criteria: Age ≥50 + unexplained change in bowel habit ≥6 weeks · Age ≥40 + rectal bleeding + change in bowel habit · IDA in men or postmenopausal women · Palpable rectal / abdominal mass · Positive FIT ≥10 µg/g</div>
+      <div>Urgent gastroenterology</div><div>Faecal calprotectin &gt;200 µg/g · Positive coeliac serology (for duodenal biopsy) · Suspected new IBD without red flag urgency · Steatorrhoea / malabsorption · Suspected microscopic colitis (watery diarrhoea, female, age &gt;50, on NSAIDs / PPIs)</div>
+      <div>Routine gastroenterology</div><div>IBS-D not responding to 6-month primary care treatment · Suspected bile acid malabsorption (for SeHCAT) · SIBO investigation · Positive Giardia / unusual parasites requiring specialist treatment oversight · Unexplained diarrhoea with normal standard workup</div>
+      <div>Other specialties</div><div>Dietitian: coeliac (gluten-free diet) · malabsorption · IBS-D (low-FODMAP) · Endocrinology: carcinoid / VIPoma (rare — diarrhoea + flushing + tachycardia) · Infectious diseases: immunocompromised with diarrhoea</div>
+      <div>Primary care manages</div><div>IBS-D (Rome IV criteria, investigations normal, age &lt;50, no red flags) · Lactose intolerance (dietary) · Drug-induced (switch medication) · Mild C. diff (community acquired, non-severe) · Dietary diarrhoea</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Toxic megacolon (UC complication — transverse colon &gt;6cm on AXR) carries 20–30% mortality without emergency colectomy — it must be identified and referred within hours. Severe UC (Truelove &amp; Witts criteria: ≥6 bloody stools/day + systemic upset) has a 30-day mortality of ~2% even with treatment — these patients need IV steroids in hospital, not oral treatment at home. Carcinoid tumours and VIPomas are rare but important: diarrhoea + flushing + tachycardia → check 5-HIAA in urine (carcinoid) or VIP levels (VIPoma) — both require oncology input. Positive coeliac serology should always be referred for biopsy before starting gluten-free diet — biopsy is the gold standard and becomes negative (falsely normal) on a gluten-free diet.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head">
+    <div class="node-num">07</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Treat</span>
+      <h3>Treatment ladder — cause-directed therapy with symptomatic support</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Treatment initiated</span></label></div>
+  <div class="node-body">
+    <span>Always treat the underlying cause first. Symptomatic antidiarrhoeals are an adjunct, not primary treatment for organic disease.</span>
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">IBS-D</div>
+        <div class="b-drug">Antispasmodic + loperamide <span class="pill pill-teal">1st line</span></div>
+        <div class="b-note">Loperamide 2mg after each loose stool (max 16mg/day) + Mebeverine 135mg TDS. Low-FODMAP diet with dietitian</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Coeliac disease</div>
+        <div class="b-drug">Strict gluten-free diet <span class="pill pill-teal">Lifelong</span></div>
+        <div class="b-note">Refer to dietitian immediately after biopsy-confirmed diagnosis. No wheat, barley, rye. Check for nutritional deficiencies: Fe, B12, folate, vitamin D, Ca²⁺</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">C. difficile (mild–moderate)</div>
+        <div class="b-drug">Metronidazole <span class="pill pill-teal">1st line mild</span></div>
+        <div class="b-note">Metronidazole 400mg TDS × 10 days (mild disease, CDI score 1–2). Vancomycin 125mg QDS × 10 days (moderate–severe, first recurrence, or metronidazole failure). Stop causative antibiotic if safe to do so</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Giardia</span><span class="rt"><b>Metronidazole 400mg TDS × 5 days</b> (or 2g stat × 3 days). Tinidazole 2g stat (single dose — better compliance, similar efficacy). Contact trace household / sexual contacts. Repeat stool if symptoms persist &gt;2 weeks post-treatment</span></div>
+      <div class="rung"><span class="rn">Bile acid malabsorption</span><span class="rt"><b>Colesevelam 625mg 1–3 tablets OD</b> (better tolerated than cholestyramine) OR <b>Cholestyramine 4g BD–QDS</b> in water. Empirical trial for 4 weeks — if improves, confirms diagnosis. Supplement fat-soluble vitamins (A, D, E, K) if prolonged use</span></div>
+      <div class="rung"><span class="rn">Pancreatic exocrine insufficiency</span><span class="rt"><b>Creon (pancrelipase) 25,000 units</b> with each meal, 10,000–25,000 with snacks. Titrate up to 75,000 units/meal if needed. Take with food — must not be taken before or after. Add PPI (omeprazole 20mg OD) to prevent acid inactivating enzymes. PERT is lifelong</span></div>
+      <div class="rung"><span class="rn">Lactose intolerance</span><span class="rt"><b>Lactose-free diet</b> (trial 4–6 weeks). Most patients tolerate up to 12g lactose/day (240ml milk). Lactase supplements (Lactaid) with dairy. Ensure adequate calcium intake (fortified dairy-free products, calcium supplement 1000mg/day)</span></div>
+      <div class="rung"><span class="rn">Microscopic colitis</span><span class="rt"><b>Budesonide 9mg OD × 8 weeks</b> (first-line — NICE endorsed, 80% remission rate). Taper to 6mg OD × 2 weeks → 3mg OD × 2 weeks. Stop NSAIDs / PPIs / SSRIs (identified triggers in 50% of cases). Bismuth subsalicylate if budesonide declined</span></div>
+      <div class="rung"><span class="rn">Symptomatic (adjunct)</span><span class="rt"><b>Loperamide 2mg</b> after each loose stool (max 16mg/day) for all causes as adjunct — reduces stool frequency and urgency. Do NOT use in severe IBD / C. diff flare (toxic megacolon risk). Codeine phosphate 30mg TDS if loperamide insufficient (short-term)</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <b>Colesevelam</b> is preferred over cholestyramine for bile acid malabsorption — better tolerability (tablet vs powder), fewer drug interactions, similar efficacy. BAM responds to bile acid sequestrants in 70% of cases. <b>Creon (PERT)</b> for pancreatic exocrine insufficiency: PPI co-prescription is mandatory — gastric acid inactivates lipase, reducing PERT efficacy by up to 40%. <b>Budesonide</b> for microscopic colitis has 80% remission rate (Cochrane 2016) — it is the only NICE-endorsed treatment and significantly superior to mesalazine or bismuth. Critically, loperamide is <b>contraindicated</b> in severe IBD flares (Truelove &amp; Witts severe) and C. difficile — it can precipitate toxic megacolon by reducing gut motility and allowing toxin accumulation.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head">
+    <div class="node-num">08</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Non-pharmacological — dietary and behavioural interventions with strong evidence</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Lifestyle advice provided</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Low-FODMAP diet (IBS-D)</b> Reduces symptoms in 75% of IBS-D patients (RCT evidence). Must be supervised by a dietitian. Restriction phase 4–8 weeks then structured reintroduction. NHS dietitian referral available via GP</div>
+      <div class="lstile"><b>Gluten-free diet (coeliac)</b> Strict lifelong adherence required — even trace amounts cause villous atrophy. Dietitian referral mandatory. Prescribable gluten-free staples available on NHS FP10</div>
+      <div class="lstile"><b>Lactose exclusion trial</b> Eliminate all dairy for 4–6 weeks — if improvement confirms lactose intolerance. Reintroduce gradually to determine threshold. Calcium supplementation essential if dairy eliminated long-term</div>
+      <div class="lstile"><b>Hydration</b> 1.5–2L clear fluids/day. Avoid sorbitol (diet drinks, chewing gum), excess caffeine (&gt;3 cups/day worsens diarrhoea via adenosine receptor), and alcohol (direct enterotoxic effect)</div>
+      <div class="lstile"><b>Meal regularity and pacing</b> Regular meal times stabilise gastrocolic reflex. Eating slowly and mindfully reduces air swallowing and gut hypersensitivity. Avoid large meals — smaller, more frequent meals reduce load on digestive system</div>
+      <div class="lstile"><b>Stress and psychological factors</b> CBT reduces IBS-D symptoms by 30–50% — refer to IAPT / primary care wellbeing. Gut-directed hypnotherapy has NICE endorsement for IBS. Mindfulness-based stress reduction (MBSR) effective adjunct</div>
+      <div class="lstile"><b>Probiotics (IBS-D)</b> Evidence is moderate but positive — Lactobacillus and Bifidobacterium strains reduce stool frequency and improve consistency. Suggest 4–8 week trial of commercially available multi-strain probiotic. Safety is established</div>
+      <div class="lstile"><b>Physical activity</b> Regular moderate exercise (150 min/week) improves gut transit regulation, reduces psychological stress contributing to IBS, and improves IBD quality of life. Avoid intense exercise during IBD flare (increases gut permeability)</div>
+      <div class="lstile"><b>Medication review</b> Stop or switch NSAIDs (worsen IBD, trigger microscopic colitis) · PPIs (associated with microscopic colitis, C. diff risk) · Metformin (switch to modified-release formulation — halves GI side effects) · Sorbitol-containing syrups</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Low-FODMAP diet has the strongest dietary evidence for IBS-D — multiple RCTs showing 75% symptom response rate, superior to a standard healthy eating diet. It requires dietitian supervision because unsupervised restriction leads to nutritional deficiencies and an overly restrictive diet long-term. CBT for IBS has NNT of 3–4 for significant improvement — it should be offered to all patients who do not respond to initial pharmacological treatment. Metformin modified-release formulation reduces GI side effects by ~50% compared with immediate-release — this simple switch is under-utilised and can be done in primary care without specialist input. Probiotics for IBS: BSG 2021 guidelines recommend a trial of a multi-strain probiotic for at least 4 weeks as they are safe and have moderate evidence of benefit.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head">
+    <div class="node-num">09</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-up &amp; monitoring — structured review with vigilance for new red flags</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Follow-up plan and safety-net documented</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>2–4 weeks</div><div>Blood and stool results review. C. diff: review treatment response — test of cure 4 weeks after completing treatment if symptomatic. Dietary exclusion trial: assess response. Drug switch: assess GI symptom improvement</div>
+      <div>6–8 weeks</div><div>IBS-D: review FODMAP progress (dietitian letter). Bile acid malabsorption trial: assess response to colesevelam. Microscopic colitis on budesonide: symptom control. Coeliac: confirm dietitian referral accepted and gluten-free diet started</div>
+      <div>3 months</div><div>Full review. Have investigations been completed? Any outstanding referral? Coeliac: repeat anti-tTG IgA at 6–12 months to confirm dietary adherence (should normalise on strict GFD). IBD: specialist follow-up plan confirmed?</div>
+      <div>Annual (established diagnosis)</div><div>Coeliac: annual bloods (FBC, B12, folate, ferritin, vitamin D, TFTs, LFTs) + DEXA scan (osteoporosis risk) · IBD: shared care monitoring per gastroenterology plan · Microscopic colitis: assess remission, step-down budesonide</div>
+      <div>C. diff recurrence monitoring</div><div>C. diff recurs in 15–25% after first episode. If second recurrence → Fidaxomicin 200mg BD × 10 days (NICE TA: superior to vancomycin for recurrent C. diff) or faecal microbiota transplant (FMT) referral</div>
+      <div><span class="pill pill-red">999</span> Safety-net</div><div>Sudden severe bloody diarrhoea · Haemodynamic collapse · Abdominal rigidity (toxic megacolon) · Severe dehydration with confusion or reduced consciousness</div>
+      <div><span class="pill pill-amber">Same-day GP</span> Safety-net</div><div>Any new rectal bleeding · Significant weight loss · Unable to maintain oral hydration · Fever &gt;38°C with diarrhoea · Symptoms worsening despite treatment · New abdominal mass</div>
+      <div>Re-screen red flags</div><div>At every follow-up — new weight loss, bleeding, or systemic symptoms in a patient with "established" IBS-D should prompt re-investigation. Patients age &gt;50 with new diarrhoea require re-evaluation even if IBS previously diagnosed</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Coeliac disease annual monitoring is mandatory — untreated or poorly adherent coeliac disease increases risk of enteropathy-associated T-cell lymphoma (EATL, rare but serious), osteoporosis, and nutritional deficiencies. Anti-tTG IgA should normalise within 12 months of strict GFD — failure to normalise indicates ongoing gluten exposure (intentional or inadvertent). C. difficile recurrence monitoring is critical — 25% of patients recur and each recurrence increases the risk of subsequent recurrences. NICE endorses fidaxomicin for recurrent C. diff (TA). FMT achieves 90% success rate for multiply-recurrent C. diff. In patients over 50 with previously "diagnosed" IBS, any change in symptom pattern should trigger re-investigation — new colorectal cancer developing in patients with IBS is a documented pattern of delayed diagnosis.
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG12 (Suspected cancer recognition) · NICE DG11 (Faecal calprotectin for IBD) · NICE CG61 (Irritable bowel syndrome) · NICE TA: Fidaxomicin · BSG Chronic Diarrhoea Guidelines · BSG Coeliac Disease Guidelines · BSG IBD Guidelines · BSG IBS Guidelines (2021) · BASHH · Rome IV Diagnostic Criteria · BNF. Always adapt to individual patient context and local clinical guidelines.
+</div>
+
+<script>
+(function(){
+  const flow=document.getElementById('flow');
+  const checks=flow?flow.querySelectorAll('input[type=checkbox]'):[];
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  const KEY='rgp.alg.chronicdiarrhoea.v1';
+  function save(){const s={};checks.forEach((c,i)=>{s[i]=c.checked});try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');checks.forEach((c,i)=>{if(s[i])c.checked=true})}catch(e){}}
+  function update(){let done=0;checks.forEach(c=>{const node=c.closest('.node');if(c.checked){done++;node&&node.classList.add('done')}else{node&&node.classList.remove('done')}});if(pDone)pDone.textContent=done;if(pFill)pFill.style.width=(done/total*100)+'%';}
+  checks.forEach(c=>c.addEventListener('change',()=>{update();save()}));
+  document.querySelectorAll('.why-btn').forEach(btn=>{btn.addEventListener('click',()=>{const drawer=btn.nextElementSibling;const open=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',open?'false':'true');drawer.style.display=open?'none':'block';});});
+  document.getElementById('resetBtn')?.addEventListener('click',()=>{checks.forEach(c=>c.checked=false);document.querySelectorAll('.why-drawer').forEach(d=>d.style.display='none');document.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));update();save();});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

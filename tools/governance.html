@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Guideline Review · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<style>
+.tool-page{ padding:28px 32px 90px; max-width:1000px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+.tool-head{ padding-bottom:16px; border-bottom:1px solid var(--line); margin-bottom:22px; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:34px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:8px; max-width:74ch; line-height:1.6; }
+
+/* RAG summary */
+.rag{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:0 0 26px; }
+@media (max-width:620px){ .rag{ grid-template-columns:1fr; } }
+.rag-card{ border:1px solid var(--line); border-radius:14px; padding:16px 18px; background:var(--surface); display:flex; align-items:center; gap:14px; }
+.rag-dot{ width:14px; height:14px; border-radius:50%; flex:none; }
+.rag-card.is-green{ border-color:#aacdb6; } .rag-card.is-green .rag-dot{ background:#1f8a5b; }
+.rag-card.is-amber{ border-color:#e6c98a; } .rag-card.is-amber .rag-dot{ background:#c9921f; }
+.rag-card.is-red{ border-color:#e8b4ae; } .rag-card.is-red .rag-dot{ background:#c0392b; }
+.rag-n{ font-family:'Source Serif 4',serif; font-weight:600; font-size:30px; line-height:1; }
+.rag-l{ font-size:12.5px; color:var(--ink-2); font-weight:500; margin-top:3px; }
+.rag-l small{ display:block; font-size:11px; color:var(--muted); font-weight:400; }
+
+.g-sec-h{ font-family:'Source Serif 4',serif; font-weight:600; font-size:20px; margin:30px 0 4px; }
+.g-sec-sub{ font-size:13px; color:var(--ink-2); margin:0 0 16px; line-height:1.55; }
+
+/* rows */
+.rev-list{ display:flex; flex-direction:column; gap:10px; }
+.rev-row{ display:grid; grid-template-columns:auto 1fr auto auto; gap:14px; align-items:center; border:1px solid var(--line); border-left-width:4px; border-radius:12px; padding:13px 16px; background:#fff; }
+.rev-row.s-green{ border-left-color:#1f8a5b; }
+.rev-row.s-amber{ border-left-color:#c9921f; background:#fffdf5; }
+.rev-row.s-red{ border-left-color:#c0392b; background:#fdf6f5; }
+.rev-ic{ font-size:22px; }
+.rev-main b{ font-size:15px; font-weight:600; display:block; }
+.rev-main small{ font-size:12px; color:var(--muted); }
+.rev-meta{ text-align:right; font-size:12.5px; color:var(--ink-2); line-height:1.4; min-width:140px; }
+.rev-meta .due{ font-weight:600; }
+.rev-badge{ font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:4px 10px; border-radius:99px; white-space:nowrap; }
+.rev-badge.s-green{ background:#e7f6ed; color:#1f6e49; }
+.rev-badge.s-amber{ background:#fbf1d8; color:#926b12; }
+.rev-badge.s-red{ background:#fbe6e3; color:#a02c1e; }
+.rev-act{ display:flex; gap:7px; align-items:center; }
+.rev-btn{ font:inherit; font-size:12px; font-weight:600; cursor:pointer; border-radius:99px; padding:6px 12px; border:1px solid var(--line-2); background:#fff; color:var(--ink); transition:all .15s; white-space:nowrap; }
+.rev-btn:hover{ border-color:var(--teal); color:var(--teal); }
+.rev-btn.is-go{ border-color:#cfe6e3; background:#f0fdfa; color:#0e5c58; }
+.rev-open{ color:var(--muted); text-decoration:none; font-size:13px; padding:4px; }
+.rev-open:hover{ color:var(--teal); }
+@media (max-width:680px){ .rev-row{ grid-template-columns:auto 1fr; } .rev-meta,.rev-act{ grid-column:2; text-align:left; justify-content:flex-start; } }
+
+/* guideline watch */
+.gl-row{ display:grid; grid-template-columns:1fr auto auto; gap:12px; align-items:center; padding:12px 15px; border:1px solid var(--line); border-radius:11px; background:#fff; }
+.gl-row + .gl-row{ margin-top:8px; }
+.gl-name b{ font-size:14px; font-weight:600; }
+.gl-name small{ display:block; font-size:11.5px; color:var(--muted); margin-top:2px; }
+.gl-type{ font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#0e7490; background:#ecfeff; border:1px solid #a5f3fc; border-radius:99px; padding:3px 9px; white-space:nowrap; }
+.gl-check{ display:inline-flex; align-items:center; gap:8px; font-size:12.5px; color:var(--ink-2); white-space:nowrap; }
+.gl-go{ text-decoration:none; color:#0e5c58; font-weight:600; font-size:12.5px; white-space:nowrap; }
+.gl-go:hover{ text-decoration:underline; }
+
+/* toolbar */
+.g-toolbar{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:6px 0 22px; padding:14px 16px; border:1px dashed var(--line-2); border-radius:12px; background:var(--surface); }
+.g-toolbar .win{ font-size:13px; color:var(--ink-2); }
+.g-toolbar .win b{ color:var(--ink); }
+.g-toolbar .spacer{ flex:1; }
+.g-exp{ font:inherit; font-size:13px; font-weight:600; cursor:pointer; border-radius:99px; padding:8px 16px; border:1px solid var(--teal); background:var(--teal); color:#fff; transition:all .15s; }
+.g-exp:hover{ filter:brightness(1.08); }
+.g-reset{ font:inherit; font-size:12.5px; cursor:pointer; background:none; border:0; color:var(--muted); text-decoration:underline; }
+.g-reset:hover{ color:var(--rust); }
+
+/* how it works */
+.g-how{ margin-top:34px; border:1px solid var(--line); border-radius:14px; padding:20px 22px; background:var(--surface); }
+.g-how h3{ font-family:'Source Serif 4',serif; font-weight:600; font-size:17px; margin:0 0 10px; }
+.g-how ol{ margin:0; padding-left:20px; font-size:13.5px; color:var(--ink-2); line-height:1.7; }
+.g-how ol b{ color:var(--ink); }
+.g-foot{ margin-top:24px; font-size:12.5px; color:var(--muted); line-height:1.6; }
+
+dialog.exp-dlg{ border:1px solid var(--line); border-radius:14px; padding:0; max-width:640px; width:92vw; box-shadow:var(--shadow-3); }
+dialog.exp-dlg::backdrop{ background:rgba(20,18,14,.45); }
+.exp-hd{ padding:16px 20px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; }
+.exp-hd b{ font-size:15px; }
+.exp-hd button{ font:inherit; cursor:pointer; background:none; border:0; font-size:20px; color:var(--muted); }
+.exp-bd{ padding:16px 20px; }
+.exp-bd p{ font-size:13px; color:var(--ink-2); margin:0 0 10px; }
+.exp-bd textarea{ width:100%; height:240px; font-family:ui-monospace,Menlo,monospace; font-size:11.5px; border:1px solid var(--line-2); border-radius:10px; padding:12px; resize:vertical; }
+</style>
+</head>
+<body>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools"></aside>
+  <main class="main">
+    <div class="tool-page">
+
+      <div class="tool-head">
+        <div class="tool-eyebrow">Reasoning GP · Clinical governance</div>
+        <h1>Guideline <em>review</em> dashboard</h1>
+        <p>Every content area is reviewed against current NICE CKS / named guidance on a rolling <b>12-month</b> cycle. This board flags anything coming due or overdue, tracks the source guidelines to watch, and lets you stamp an area "reviewed" once you've re-verified it.</p>
+      </div>
+
+      <div class="rag" id="rag"></div>
+
+      <div class="g-toolbar">
+        <span class="win">Review window: <b>12 months</b> · amber within <b>2 months</b> of due</span>
+        <span class="spacer"></span>
+        <button class="g-reset" id="resetBtn" type="button">Reset my marks</button>
+        <button class="g-exp" id="expBtn" type="button">Export updated dates</button>
+      </div>
+
+      <h2 class="g-sec-h">Content areas</h2>
+      <p class="g-sec-sub">Status is based on each area's last formal review date. "Mark reviewed" stamps today's date (saved on this device); use Export to fold those dates back into the register file permanently.</p>
+      <div class="rev-list" id="collections"></div>
+
+      <h2 class="g-sec-h">Guidelines to watch</h2>
+      <p class="g-sec-sub">The upstream sources your content depends on. Click through to the official page and check its "Last revised" date; if it has changed, review the content areas it affects and mark them reviewed once updated.</p>
+      <div id="guidelines"></div>
+
+      <div class="g-how">
+        <h3>How the update process works</h3>
+        <ol>
+          <li><b>Alerts.</b> Subscribe to NICE "Save &amp; alert" emails, the MHRA Drug Safety Update, and the UKHSA/Green Book bulletins so changes reach you the day they publish.</li>
+          <li><b>Watch the sources.</b> Each guideline above links to its official page — check its <b>last-revised date</b> against the one recorded here.</li>
+          <li><b>Review &amp; update.</b> When a source has changed, update the affected cases, pathways and prescriptions, then press <b>Mark reviewed</b> here.</li>
+          <li><b>Persist.</b> Press <b>Export updated dates</b> and paste the result into <code>assets/review-register.json</code> so the new dates are permanent for everyone, not just this device.</li>
+          <li><b>Rolling 12-month sweep.</b> Even with no alert, anything untouched for 12 months turns amber then red — a safety-net so nothing silently ages.</li>
+        </ol>
+      </div>
+
+      <p class="g-foot"><strong>Educational platform.</strong> This board governs content currency; it is not a substitute for clinical judgement. Dates marked here are stored in your browser until exported into the register file.</p>
+
+    </div>
+  </main>
+</div>
+
+<dialog class="exp-dlg" id="expDlg">
+  <div class="exp-hd"><b>Export updated register</b><button type="button" id="expClose" aria-label="Close">×</button></div>
+  <div class="exp-bd">
+    <p>Copy this and replace the contents of <code>assets/review-register.json</code> to make your "reviewed" dates permanent across all devices.</p>
+    <textarea id="expText" readonly></textarea>
+  </div>
+</dialog>
+
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+<script>
+(function(){
+  'use strict';
+  var LS_KEY = 'rgp.review.marks.v1';
+  var REG_URL = '../assets/review-register.json';
+
+  function marks(){ try { return JSON.parse(localStorage.getItem(LS_KEY)||'{}'); } catch(e){ return {}; } }
+  function setMark(id, ym){ var m = marks(); m[id] = ym; try { localStorage.setItem(LS_KEY, JSON.stringify(m)); } catch(e){} }
+  function clearMarks(){ try { localStorage.removeItem(LS_KEY); } catch(e){} }
+  function nowYM(){ var d = new Date(); return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0'); }
+
+  // months between a YYYY-MM string and now (positive = in the past)
+  function monthsSince(ym){
+    if(!ym) return 999;
+    var p = ym.split('-'); var y = +p[0], m = +p[1]-1;
+    var now = new Date(); var cy = now.getFullYear(), cm = now.getMonth();
+    return (cy - y)*12 + (cm - m);
+  }
+  function addMonths(ym, n){
+    var p = ym.split('-'); var y=+p[0], m=+p[1]-1 + n;
+    y += Math.floor(m/12); m = ((m%12)+12)%12;
+    return y + '-' + String(m+1).padStart(2,'0');
+  }
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function pretty(ym){ if(!ym) return '—'; var p = ym.split('-'); return MON[(+p[1])-1] + ' ' + p[0]; }
+
+  function statusOf(lastReviewed, windowM, amberM){
+    var age = monthsSince(lastReviewed);
+    var remaining = windowM - age;
+    if (remaining <= 0) return { s:'red', label:'Overdue', remaining:remaining };
+    if (remaining <= amberM) return { s:'amber', label:'Due soon', remaining:remaining };
+    return { s:'green', label:'Current', remaining:remaining };
+  }
+
+  var REG = null;
+  fetch(REG_URL).then(function(r){ return r.json(); }).then(function(reg){ REG = reg; render(); })
+    .catch(function(){ document.getElementById('collections').innerHTML = '<p style="color:var(--rust)">Could not load the review register.</p>'; });
+
+  function effectiveDate(item, kind){
+    var base = (kind==='gl') ? item.lastChecked : item.lastReviewed;
+    var m = marks()[ (kind==='gl'?'gl:':'col:') + item.id ];
+    if (m && monthsSince(m) < monthsSince(base)) return m;
+    return base;
+  }
+
+  function render(){
+    var winM = REG.reviewWindowMonths || 12;
+    var amberM = REG.amberWithinMonths || 2;
+
+    // collections
+    var counts = { green:0, amber:0, red:0 };
+    var colHtml = REG.collections.map(function(c){
+      var d = effectiveDate(c, 'col');
+      var st = statusOf(d, winM, amberM);
+      counts[st.s]++;
+      var due = addMonths(d, winM);
+      var remTxt = st.remaining > 0 ? (st.remaining + ' month' + (st.remaining===1?'':'s') + ' left') : (Math.abs(st.remaining) + ' month' + (Math.abs(st.remaining)===1?'':'s') + ' over');
+      return '<div class="rev-row s-'+st.s+'">'
+        + '<span class="rev-ic">'+c.icon+'</span>'
+        + '<div class="rev-main"><b>'+c.label+' <span style="color:var(--muted);font-weight:400">· '+c.count+'</span></b><small>'+c.basis+'</small></div>'
+        + '<div class="rev-meta"><div class="due">Next review '+pretty(due)+'</div><div>Reviewed '+pretty(d)+' · '+remTxt+'</div></div>'
+        + '<div class="rev-act"><span class="rev-badge s-'+st.s+'">'+st.label+'</span>'
+        + '<button class="rev-btn is-go" data-mark="col:'+c.id+'" type="button">Mark reviewed</button>'
+        + '<a class="rev-open" href="'+c.href+'" title="Open">↗</a></div>'
+        + '</div>';
+    }).join('');
+    document.getElementById('collections').innerHTML = colHtml;
+
+    // guidelines
+    var glHtml = REG.guidelines.map(function(g){
+      var d = effectiveDate(g, 'gl');
+      var st = statusOf(d, winM, amberM);
+      var dotColor = st.s==='red' ? '#c0392b' : st.s==='amber' ? '#c9921f' : '#1f8a5b';
+      return '<div class="gl-row">'
+        + '<div class="gl-name"><b>'+g.name+'</b><small>Affects: '+g.affects+'</small></div>'
+        + '<span class="gl-type">'+g.type+'</span>'
+        + '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px">'
+        + '<span class="gl-check"><span style="width:9px;height:9px;border-radius:50%;background:'+dotColor+';display:inline-block"></span>Checked '+pretty(d)+'</span>'
+        + '<span style="display:flex;gap:10px"><button class="rev-btn is-go" data-mark="gl:'+g.id+'" type="button">Mark checked</button><a class="gl-go" href="'+g.url+'" target="_blank" rel="noopener noreferrer">Open source ↗</a></span>'
+        + '</div></div>';
+    }).join('');
+    document.getElementById('guidelines').innerHTML = glHtml;
+
+    // RAG
+    document.getElementById('rag').innerHTML =
+        ragCard('green', counts.green, 'Current', 'within the 12-month window')
+      + ragCard('amber', counts.amber, 'Due soon', 'within 2 months of review')
+      + ragCard('red', counts.red, 'Overdue', 'past the review window');
+
+    // wire mark buttons
+    document.querySelectorAll('[data-mark]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        setMark(btn.getAttribute('data-mark'), nowYM());
+        render();
+      });
+    });
+  }
+
+  function ragCard(s, n, label, sub){
+    return '<div class="rag-card is-'+s+'"><span class="rag-dot"></span><div><div class="rag-n">'+n+'</div><div class="rag-l">'+label+'<small>'+sub+'</small></div></div></div>';
+  }
+
+  // export — fold marks into a fresh register copy
+  document.getElementById('expBtn').addEventListener('click', function(){
+    if(!REG) return;
+    var out = JSON.parse(JSON.stringify(REG));
+    out.collections.forEach(function(c){ c.lastReviewed = effectiveDate(c,'col'); });
+    out.guidelines.forEach(function(g){ g.lastChecked = effectiveDate(g,'gl'); });
+    document.getElementById('expText').value = JSON.stringify(out, null, 2);
+    document.getElementById('expDlg').showModal();
+  });
+  document.getElementById('expClose').addEventListener('click', function(){ document.getElementById('expDlg').close(); });
+  document.getElementById('resetBtn').addEventListener('click', function(){
+    if (confirm('Clear the review dates you marked on this device? The register file dates remain.')) { clearMarks(); render(); }
+  });
+})();
+</script>
+</body>
+</html>

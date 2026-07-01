@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hyperthyroidism — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Hyperthyroidism management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🦋",
+  title:"Hyperthyroidism",
+  stemTitle:"Confirmed Hyperthyroidism — primary-care management",
+  stemSub:"What the GP does for confirmed thyrotoxicosis \u2014 symptom control with a beta-blocker, safe shared-care antithyroid prescribing, the critical agranulocytosis and thyroid-storm safety nets \u2014 alongside prompt endocrinology referral. NICE NG145 \u00b7 CKS 2026.",
+  guideline:"NICE NG145",
+  glance:[
+    {lbl:"Biochemistry", val:"\u2193TSH \u2191FT4/FT3", sub:"+ TRAb for Graves\u2019"},
+    {lbl:"Symptom relief", val:"Propranolol", sub:"while awaiting specialist"},
+    {lbl:"Definitive (specialist)", val:"Carbimazole 20\u201340 mg OD", sub:"PTU in 1st trimester"},
+    {lbl:"Key danger", val:"Sore throat", sub:"= ?agranulocytosis"},
+    {lbl:"Referral", val:"All cases", sub:"endocrinology"},
+    {lbl:"Eyes", val:"Graves\u2019 orbit", sub:"ophthalmology if red flags"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm thyrotoxicosis and its cause",
+      blocks:[
+        {b:"kv", rows:[
+          ["Biochemistry","\u2193 TSH with \u2191 FT4 and/or FT3 (overt); subclinical = \u2193 TSH, normal FT4/FT3"],
+          ["Cause","Graves\u2019 (TRAb +, diffuse goitre, eye signs) \u00b7 toxic multinodular goitre / adenoma \u00b7 thyroiditis (transient)"],
+          ["Baseline","TSH, FT4, FT3, TRAb; FBC + LFTs <b>before</b> antithyroid drugs. Biotin (vitamin B7) supplements distort TSH \u2014 stop and retest after several days"],
+          ["Pregnancy","Test \u2014 changes drug choice and urgency"],
+          ["Subclinical","\u2193 TSH, normal FT4/FT3 \u2014 refer if TSH &lt;0.1 on two tests \u22653 months apart with symptoms or evidence of thyroid disease (goitre/antibodies); if not referring/treating, recheck TSH 6-monthly"]
+        ]},
+        {b:"why", html:"Cause changes the plan: Graves\u2019 and toxic nodular disease need antithyroid drugs / definitive treatment, whereas thyroiditis is self-limiting and needs only symptom relief. Almost all confirmed hyperthyroidism is referred \u2014 the GP\u2019s job is to relieve symptoms safely and protect the patient from the two dangerous complications."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 supportive", title:"Supportive measures",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🚭 Stop smoking", html:"Strongly worsens Graves\u2019 orbitopathy \u2014 cessation is part of treatment."},
+          {t:"🧂 Iodine", html:"Avoid iodine-rich supplements/contrast where possible \u2014 can worsen thyrotoxicosis."},
+          {t:"😌 Symptom support", html:"Explain palpitations/tremor/anxiety are from the thyroid and treatable."},
+          {t:"👁️ Eye care", html:"Lubricants for grittiness; advise on red-flag eye symptoms (below)."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication", title:"Symptom control now, antithyroid drugs in shared care",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"GP now", title:"Beta-blocker for symptoms", when:"propranolol 10\u201340 mg",
+           html:"<b>Propranolol 40 mg TDS</b> controls palpitations, tremor and anxiety rapidly while awaiting specialist review. Use a rate-limiting CCB (diltiazem) if \u03b2-blocker contraindicated (e.g. asthma)."},
+          {step:"Specialist-led", title:"Antithyroid drug \u2014 carbimazole", when:"titration or block-and-replace",
+           fromLabel:"endocrinology-initiated / shared care",
+           html:"Carbimazole first-line (15\u201340 mg/day until euthyroid, then reduce; usually 12\u201318 months). <b>Propylthiouracil instead if</b>: carbimazole adverse reaction, pregnancy / planning within 6 months, or a history of pancreatitis. Check FBC + LFTs before starting."},
+          {step:"Definitive", title:"Radioiodine or surgery", when:"specialist decision",
+           fromLabel:"for relapse / nodular disease / preference",
+           html:"Definitive treatment via endocrinology; both commonly lead to lifelong levothyroxine afterwards."}
+        ]},
+        {b:"warn", html:"<b>Carbimazole agranulocytosis:</b> warn every patient \u2014 a <b>sore throat, mouth ulcers or fever</b> means <b>stop the drug and get an urgent FBC the same day</b>. Carbimazole is also teratogenic \u2014 ensure effective contraception. Hyperthyroidism alters other drugs \u2014 warfarin may need a <b>lower</b> dose; digoxin, propranolol and steroids a <b>higher</b> dose."},
+        {b:"why", html:"The \u03b2-blocker buys comfort within hours while the antithyroid drug (which takes weeks) and the specialist plan catch up. The whole reason antithyroid prescribing is so safety-netted is agranulocytosis \u2014 rare but rapidly fatal if a febrile patient keeps taking the drug."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"What to track in shared care",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["TFTs (FT4/FT3, TSH)","Per specialist \u2014 often 4\u20136-weekly while titrating","Adjust antithyroid dose; TSH lags, follow FT4/FT3 early"],
+          ["FBC","Baseline + <b>urgently if sore throat/fever</b>","Neutropenia \u2192 stop carbimazole, urgent advice"],
+          ["LFTs","Baseline + if symptomatic","Hepatotoxicity (esp. PTU) \u2192 stop + advice"],
+          ["Symptoms / HR","Each review","Titrate \u03b2-blocker; watch for hypothyroid swing"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"Soon after diagnosis", title:"Symptom + safety review", html:"Confirm \u03b2-blocker tolerated, reinforce the sore-throat rule, ensure referral made."},
+          {n:"2", when:"Per shared-care plan", title:"Titration reviews", html:"TFTs and dose adjustments with endocrinology; watch for over-treatment (hypothyroid)."},
+          {n:"3", when:"Long-term / post-definitive", title:"Lifelong monitoring", html:"Annual TFTs \u2014 relapse of Graves\u2019, or hypothyroidism after radioiodine/surgery."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not controlled? Check before changing",
+      arrow:"\u2026if symptoms or biochemistry aren\u2019t settling",
+      intro:"Most issues are adherence, dosing lag, or the wrong assumption about cause.",
+      checks:[
+        {b:"1 \u00b7 Adherence", html:"Confirm antithyroid drug taken as prescribed."},
+        {b:"2 \u00b7 Timing", html:"FT4/FT3 take weeks to fall and TSH longer \u2014 don\u2019t over-react early."},
+        {b:"3 \u00b7 Cause", html:"Thyroiditis is transient and may swing to hypothyroid \u2014 reassess."},
+        {b:"4 \u00b7 Over-treatment", html:"Rising TSH / hypothyroid symptoms \u2192 reduce antithyroid dose."},
+        {b:"5 \u00b7 Escalate", html:"Persistent / relapsing \u2192 specialist for definitive treatment."}
+      ],
+      back:"Adherent, timing accounted for \u2192 specialist to adjust or move to definitive treatment"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting \u2014 the two emergencies",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Agranulocytosis", html:"\u201cOn carbimazole: any sore throat, mouth ulcers, or fever \u2014 STOP the tablet and get a blood test the same day.\u201d"},
+          {t:"🔴 Thyroid storm", html:"\u201cHigh fever, racing/irregular heart, agitation or confusion, vomiting \u2014 call 999. This is a medical emergency.\u201d"},
+          {t:"👁️ Eye red flags", html:"\u201cDouble vision, eye pain, or loss of colour vision \u2014 urgent eye assessment (sight-threatening Graves\u2019).\u201d"},
+          {t:"💓 Cardiac", html:"\u201cNew palpitations with chest pain or breathlessness \u2014 seek urgent help (AF risk).\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"Refer \u2014 essentially all cases",
+      arrow:"refer all confirmed hyperthyroidism",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Routine\u2013soon", html:"All confirmed hyperthyroidism \u2192 endocrinology for definitive diagnosis and treatment."},
+          {t:"Urgent", html:"Severe symptoms, AF, very high FT4, or significant comorbidity \u2014 urgent endocrine review."},
+          {t:"Emergency", html:"Suspected thyroid storm, or agranulocytosis with sepsis \u2192 999 / acute admission."},
+          {t:"Eyes", html:"Active or sight-threatening thyroid eye disease \u2192 ophthalmology (TED service)."},
+          {t:"Pregnancy", html:"Pregnant or planning \u2014 joint specialist\u2013antenatal care, PTU considerations."}
+        ]},
+        {b:"say", html:"Your thyroid is overactive, which always needs a specialist to confirm the type and plan the right treatment. I\u2019ll start a tablet today to settle the symptoms and refer you \u2014 and there\u2019s one important warning sign I need you to remember."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

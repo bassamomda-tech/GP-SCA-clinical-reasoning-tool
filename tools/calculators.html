@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Medical Calculators · GP / SCA Clinical Reasoning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=11" />
+<link rel="stylesheet" href="../assets/calculators.css" />
+
+<style>
+  .tool-head{padding:28px 0 6px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .tool-head .eyebrow{margin-bottom:10px;display:block}
+  .tool-head h1{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:10px}
+  .tool-head p{color:var(--ink-2);font-size:15px;line-height:1.6;max-width:64ch;margin-bottom:14px}
+  .tool-breadcrumb{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);margin-bottom:18px}
+  .tool-breadcrumb a{color:var(--teal-2);text-decoration:none;font-weight:600}
+  .tool-breadcrumb a:hover{color:var(--rust)}
+  .tool-breadcrumb svg{width:11px;height:11px;color:var(--muted-2)}
+  [data-calculators]{margin-top:0}
+  .calc-run{ max-width:780px; }
+  .cc-back{ display:inline-flex; align-items:center; gap:4px; font:inherit; font-size:12.5px; font-weight:700; color:var(--muted); background:transparent; border:none; cursor:pointer; padding:4px 8px 4px 4px; margin-bottom:16px; border-radius:6px; transition:color .12s ease, background .12s ease; }
+  .cc-back:hover{ color:var(--rust); background:var(--bg-soft); }
+  .cc-back svg{ width:15px; height:15px; }
+  .cc-back--calc{ color:var(--teal-2); }
+</style>
+</head>
+<body>
+
+<aside class="sidebar" data-active-id="__tools-calc"></aside>
+
+<button class="sb-toggle" aria-label="Open navigation">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+
+<div class="app">
+  <main class="main">
+    <div class="tool-page">
+
+      <div class="tool-breadcrumb">
+        <a href="../index.html">Reasoning GP</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+        <span>Tools</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+        <span style="color:var(--ink-2)">Medical Calculators</span>
+      </div>
+
+      <header class="tool-head" data-screen-label="Tool head">
+        <span class="eyebrow">Reasoning Tool · Bedside calculators</span>
+        <h1>Medical calculators — <em style="font-style:italic;color:var(--teal);font-weight:500">scores, scales &amp; formulae</em> for primary care</h1>
+        <p>UK primary-care calculator suite — CV risk, AF anticoagulation, VTE, sepsis, mental health, alcohol, BMI / eGFR, frailty &amp; more. Every result comes with interpretation and the action it triggers, plus references to the underlying NICE / RCGP / SIGN / specialist guidance.</p>
+      </header>
+
+      <div class="alg-controls">
+        <div class="alg-search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="calcSearch" placeholder="Search calculators — e.g. CHA₂DS₂, eGFR, PHQ-9, FRAX…" autocomplete="off" />
+        </div>
+        <span class="alg-count-pill"><b id="calcShown">0</b> / <span id="calcTotal">0</span> calculators</span>
+      </div>
+
+      <div class="alg-empty" id="calcEmpty">No calculator matches that search. Try a score name or condition.</div>
+
+      <!-- Calculator directory mounts here -->
+      <div id="calcGroups"></div>
+
+      <div class="alg-foot footer-disclaimer">
+        <strong>Educational use only.</strong> Scores are calculated from the standard published thresholds for each tool — they support but do not replace clinical judgement, full history and examination. For proprietary algorithms (QRISK3, QFracture, FRAX) we link out to the official calculator.
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/calculators-data.js"></script>
+<script src="../assets/calculators-data-2.js"></script>
+<script src="../assets/calculators-data-3.js"></script>
+<script src="../assets/calculators-data-4.js"></script>
+<script src="../assets/calculators.js"></script>
+<script src="../assets/filter-rail.js"></script>
+
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

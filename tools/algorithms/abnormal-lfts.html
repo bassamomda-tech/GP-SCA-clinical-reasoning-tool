@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Abnormal LFTs Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#f5f4f0;color:#1a1a2e;min-height:100vh;padding:0 0 60px}
+/* Banner */
+.stem-banner{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%);color:#fff;padding:18px 24px;border-bottom:3px solid #e94560}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:700;letter-spacing:.01em}
+.stem-banner small{opacity:.75;font-size:.8rem}
+/* Progress */
+.alg-progress{display:flex;align-items:center;gap:10px;padding:12px 24px;background:#fff;border-bottom:1px solid #e2e0da;font-size:.82rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.alg-progress span:first-child{font-weight:600;color:#555}
+.pcount{font-weight:700;color:#0f3460;min-width:36px}
+.pbar{flex:1;height:6px;background:#e2e0da;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#e94560,#0f3460);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:8px;padding:4px 10px;border:1px solid #ddd;border-radius:4px;background:#fff;font-size:.75rem;cursor:pointer;color:#666}
+.reset:hover{background:#f5f4f0}
+/* Flow */
+.alg-flow{max-width:820px;margin:28px auto;padding:0 20px;display:flex;flex-direction:column;align-items:stretch}
+.connector{width:2px;height:28px;background:linear-gradient(180deg,#c8c4bb,#e2e0da);margin:0 auto}
+/* Node */
+.node{background:#fff;border-radius:14px;border:1.5px solid #e2e0da;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.node[data-type="SAFETY"]{border-left:4px solid #e94560}
+.node[data-type="DIAGNOSE"]{border-left:4px solid #0f3460}
+.node[data-type="REFER"]{border-left:4px solid #7b2d8b}
+.node[data-type="TREAT"]{border-left:4px solid #0a7c6e}
+.node[data-type="LIFESTYLE"]{border-left:4px solid #2e7d32}
+.node-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0}
+.node[data-type="SAFETY"] .node-num{background:#fde8ec;color:#e94560}
+.node[data-type="DIAGNOSE"] .node-num{background:#e8edf5;color:#0f3460}
+.node[data-type="REFER"] .node-num{background:#f3e8f7;color:#7b2d8b}
+.node[data-type="TREAT"] .node-num{background:#e8f5f3;color:#0a7c6e}
+.node[data-type="LIFESTYLE"] .node-num{background:#e8f5e9;color:#2e7d32}
+.node-head{display:flex;align-items:center;gap:12px;padding:14px 16px 10px;border-bottom:1px solid #f0ede8}
+.node-tag{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:20px;flex-shrink:0}
+.node[data-type="SAFETY"] .node-tag{background:#fde8ec;color:#e94560}
+.node[data-type="DIAGNOSE"] .node-tag{background:#e8edf5;color:#0f3460}
+.node[data-type="REFER"] .node-tag{background:#f3e8f7;color:#7b2d8b}
+.node[data-type="TREAT"] .node-tag{background:#e8f5f3;color:#0a7c6e}
+.node[data-type="LIFESTYLE"] .node-tag{background:#e8f5e9;color:#2e7d32}
+.node-head h3{font-size:.95rem;font-weight:700;color:#1a1a2e;line-height:1.3;flex:1}
+.node-tick{display:flex;align-items:center;padding:0 16px 0 0}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:#888;user-select:none}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:#0f3460;cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:#0a7c6e;font-weight:600}
+.node-body{padding:14px 16px;font-size:.85rem;line-height:1.6;color:#333}
+.node-body>p,.node-body>span{display:block;margin-bottom:10px;color:#555}
+/* KV grid */
+.kv{display:grid;grid-template-columns:minmax(120px,180px) 1fr;gap:1px;background:#e2e0da;border:1px solid #e2e0da;border-radius:8px;overflow:hidden;margin-top:10px}
+.kv>div{background:#fff;padding:8px 10px;font-size:.82rem;line-height:1.5}
+.kv>div:nth-child(odd){font-weight:600;color:#0f3460;background:#f7f6f3}
+/* Red flag grid */
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-top:10px}
+.rftile{background:linear-gradient(135deg,#fff5f6,#fde8ec);border:1px solid #f5c0ca;border-radius:8px;padding:10px 12px;font-size:.8rem;line-height:1.5;color:#4a0010}
+.rftile b{display:block;color:#c0122a;font-size:.82rem;margin-bottom:2px}
+/* Branch */
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-top:10px}
+.b-card{border:1px solid #e2e0da;border-radius:8px;overflow:hidden}
+.b-cond{background:#f7f6f3;padding:7px 10px;font-size:.75rem;font-weight:700;color:#555;border-bottom:1px solid #e2e0da}
+.b-drug{padding:7px 10px 4px;font-size:.82rem;font-weight:700;color:#0a7c6e}
+.b-note{padding:0 10px 8px;font-size:.76rem;color:#555;line-height:1.4}
+/* Ladder */
+.ladder{margin-top:10px;border-left:3px solid #0a7c6e;padding-left:0}
+.rung{display:flex;align-items:flex-start;gap:0;padding:8px 12px;border-bottom:1px solid #f0ede8;font-size:.82rem}
+.rung:last-child{border-bottom:none}
+.rn{min-width:72px;font-weight:700;color:#0a7c6e;font-size:.78rem;padding-top:1px}
+.rt{flex:1;color:#333;line-height:1.5}
+/* Lifestyle */
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-top:10px}
+.lstile{background:linear-gradient(135deg,#f1f8e9,#e8f5e9);border:1px solid #c8e6c9;border-radius:8px;padding:10px 12px;font-size:.8rem;line-height:1.5;color:#1b4a1f}
+.lstile b{display:block;color:#2e7d32;font-size:.82rem;margin-bottom:2px}
+/* Pills */
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.02em;vertical-align:middle}
+.pill-red{background:#fde8ec;color:#c0122a;border:1px solid #f5c0ca}
+.pill-purple{background:#f3e8f7;color:#6a1b9a;border:1px solid #d9b8e8}
+.pill-blue{background:#e8edf5;color:#0f3460;border:1px solid #b8c8e0}
+.pill-teal{background:#e8f5f3;color:#0a7c6e;border:1px solid #b8ddd8}
+.pill-amber{background:#fff8e1;color:#b45309;border:1px solid #fcd980}
+.pill-green{background:#e8f5e9;color:#2e7d32;border:1px solid #c8e6c9}
+.pill-grey{background:#f5f5f5;color:#555;border:1px solid #ddd}
+/* Why */
+.why-row{border-top:1px solid #f0ede8;padding:0}
+.why-btn{width:100%;text-align:left;padding:9px 16px;background:none;border:none;font-size:.78rem;font-weight:600;color:#888;cursor:pointer;display:flex;align-items:center;gap:6px;transition:background .15s}
+.why-btn:hover{background:#f7f6f3}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 16px 14px;font-size:.8rem;color:#555;line-height:1.6;background:#fafaf8;border-top:1px dashed #e2e0da}
+.why-drawer.open{display:block}
+/* Footer */
+.alg-foot{max-width:820px;margin:20px auto 0;padding:14px 20px;font-size:.75rem;color:#888;line-height:1.6;border-top:1px solid #e2e0da}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🧪</div>
+  <div>
+    <b>Abnormal Liver Function Tests — Investigation & Management</b>
+    <small>Systematic approach from incidental finding to diagnosis · UK Primary Care Pathway</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — pattern first (hepatocellular / cholestatic / isolated bilirubin), screen the NG50 red flags &amp; ≥5× ULN, run the full liver screen even if mildly raised, stage fibrosis (FIB-4), treat the cause, and apply NG12 hepatobiliary 2WW.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Abnormal liver blood tests</span><div class="body">Define the pattern: <b>ALT/AST-dominant</b> (hepatocellular), <b>ALP/GGT-dominant</b> (cholestatic), or <b>isolated bilirubin</b>. Repeat with a split bilirubin. History: alcohol, metabolic syndrome/BMI/T2DM, hepatotoxic drugs, family history.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — NG50 red flags</span><span class="ttl">Decompensation, cancer, or ALT/ALP ≥5× ULN?</span><div class="body"><ul>
+      <li><b>Acute liver failure</b> — jaundice + encephalopathy + coagulopathy (↑INR)</li>
+      <li><b>Decompensation</b> — ascites, low albumin/platelets, variceal bleed</li>
+      <li><b>Suspected malignancy</b>, sepsis, or rapid deterioration</li>
+      <li><b>ALT or ALP ≥5× the upper limit of normal</b></li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Admit / 2WW hepatology</span><div class="body">Acute liver failure → 999. Suspected malignancy / synthetic failure / ≥5× ULN → 2WW or acute medical team.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — liver screen</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Full screen, even if mildly raised</span><div class="body">Bilirubin, albumin, ALT, AST, ALP, GGT, FBC, <b>ferritin + transferrin sat</b>; HBsAg + HCV Ab; AMA/ASMA/ANA + immunoglobulins; HbA1c; <b>abdominal USS</b>. Caeruloplasmin if &lt;40.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · which pattern?</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Hepatocellular (ALT/AST↑)</div><div class="box ix"><span class="ttl">Liver-cell injury</span><div class="body"><b>MASLD/fatty liver</b> (commonest), alcohol, viral hep B/C, drugs, autoimmune, haemochromatosis. <b>AST:ALT &gt;1</b> suggests advanced fibrosis (&gt;1.5 alcohol). Calculate <b>FIB-4</b>. (ALT also ↑ in thyroid/coeliac/muscle disease.)</div></div></div>
+      <div class="col"><div class="blabel">Cholestatic (ALP+GGT↑)</div><div class="box ix"><span class="ttl">Bile-flow problem</span><div class="body">Gallstones, stricture, tumour; <b>PBC</b> (AMA), PSC, drugs. <b>Isolated ALP + normal GGT → bone source</b>, not liver.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">Isolated bilirubin</div><div class="box ix"><span class="ttl">Split it</span><div class="body">Unconjugated + normal FBC → <b>Gilbert's</b> (reassure). Otherwise exclude haemolysis (retic, LDH, haptoglobin).</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · treat cause + stage fibrosis</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — treat the cause, stage the liver</span><span class="ttl">Modify, stage, monitor</span><div class="body"><ul>
+      <li><b>Stop hepatotoxic drugs</b> (recheck); follow the alcohol and MASLD pathways.</li>
+      <li><b>MASLD:</b> weight loss, control diabetes/lipids/BP; <b>FIB-4 (± ELF)</b> to stage — low score reassure &amp; recheck, indeterminate/high → hepatology.</li>
+      <li><b>Specific disease:</b> antivirals (hep B/C), venesection (haemochromatosis), immunosuppression (autoimmune hepatitis), ursodeoxycholic acid (PBC).</li>
+      <li><b>Gilbert's:</b> confirm (total bilirubin &lt;85, conjugated &lt;20%, normal FBC) and reassure — no treatment.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-red">Emergency</span> acute liver failure, decompensated cirrhosis, variceal bleed.</li>
+      <li><span class="pill pill-purple">2WW · NICE NG12</span> jaundice aged ≥40 or an upper-abdominal mass → urgent direct-access imaging for suspected pancreatic/hepatobiliary cancer.</li>
+      <li><span class="pill pill-purple">Hepatology</span> persistent unexplained derangement, positive liver screen, or significant fibrosis on FIB-4/ELF.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · modify &amp; protect</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; liver protection</span><span class="ttl">Treat the modifiable drivers</span><div class="body"><b>Alcohol reduction/abstinence</b> + brief intervention · <b>weight loss ≥7–10%</b> and exercise for MASLD · optimise diabetes, lipids and BP · hepatitis A/B vaccination in chronic liver disease · review hepatotoxic drugs and supplements · avoid excess paracetamol in established liver disease.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · monitor &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">What to recheck, when to return</span><div class="body"><b>Recheck LFTs</b> to confirm the trend (e.g. 1–3 months) and repeat FIB-4 periodically. <b>999 / same-day</b> if jaundice + drowsiness/confusion, bruising/bleeding, vomiting blood, or rapid abdominal swelling. <b>Safety-net:</b> a normalising mild abnormality still needs the cause addressed; escalate persistent or rising results.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>The number is not the severity:</b> a mildly abnormal LFT panel can hide significant fibrosis. Always pattern-recognise, run the full liver screen even when only mildly raised, and stage fibrosis with FIB-4.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- STEP 1 -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-head">
+      <div class="node-num">1</div>
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Exclude Acute Liver Failure & Serious Pathology</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Screen immediately for life-threatening causes before any further workup.</span>
+      <div class="rfgrid">
+        <div class="rftile"><b>Encephalopathy / Confusion</b> Flapping tremor (asterixis), drowsiness, personality change → 999 (acute liver failure)</div>
+        <div class="rftile"><b>Jaundice + Fever + RUQ Pain</b> Charcot's triad → 999 (acute cholangitis — Reynold's pentad if shock/confusion)</div>
+        <div class="rftile"><b>Coagulopathy</b> INR &gt;1.5, bruising, prolonged bleeding → same-day (acute liver failure, decompensation)</div>
+        <div class="rftile"><b>Haematemesis / Melaena</b> Vomiting blood, black stool → 999 (variceal bleed)</div>
+        <div class="rftile"><b>Rapid weight loss + jaundice</b> Painless jaundice, anorexia, steatorrhoea → 2WW (pancreatic/cholangiocarcinoma)</div>
+        <div class="rftile"><b>Ascites + peripheral oedema</b> New onset, grossly elevated ALT → same-day (decompensated cirrhosis)</div>
+        <div class="rftile"><b>Drug-induced (DILI)</b> New drug/supplement started ≤12 weeks, ALT &gt;5× ULN → stop drug, same-day review</div>
+        <div class="rftile"><b>Paracetamol overdose</b> Any history of ingestion → 999 (toxicology, N-acetylcysteine window critical)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Acute liver failure (ALF) carries &gt;50% mortality without transplant. The window for intervention is narrow — encephalopathy signals hepatic decompensation. Charcot's triad has &gt;90% specificity for cholangitis, a surgical emergency. Drug-induced liver injury accounts for ~10% of acute hepatitis; stopping the causative agent is curative if caught early. Paracetamol toxicity is treatable within 24h but fatal if missed.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 2 -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-head">
+      <div class="node-num">2</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Characterise the Pattern — Hepatocellular vs Cholestatic vs Isolated</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Identify the LFT pattern first — this drives your differential and investigations.</span>
+      <div class="kv">
+        <div>Hepatocellular</div><div><b>ALT / AST elevated</b> (&gt;2× ULN, disproportionate to ALP/GGT) → hepatitis, MASLD, alcohol, drugs, autoimmune, Wilson's</div>
+        <div>Cholestatic</div><div><b>ALP + GGT elevated</b> (disproportionate to ALT) → biliary obstruction, PBC, PSC, drugs, pregnancy</div>
+        <div>Mixed</div><div>All markers elevated → consider drugs, sepsis, infiltrative disease (sarcoid, lymphoma)</div>
+        <div>Isolated ALP ↑</div><div>If GGT normal → likely bone origin (Paget's, puberty, pregnancy) — check isoenzymes or bone profile</div>
+        <div>Isolated GGT ↑</div><div>Alcohol, enzyme-inducing drugs (phenytoin, rifampicin), MASLD — often no serious pathology</div>
+        <div>ALT:AST ratio</div><div>Ratio &gt;2:1 = <b>alcoholic liver disease</b> likely. Ratio &lt;1 = MASLD, viral hepatitis more likely</div>
+        <div>Bilirubin</div><div>Conjugated ↑ = hepatic/biliary pathology. Unconjugated ↑ = haemolysis, Gilbert's (harmless, fasting-related)</div>
+        <div>Albumin / INR</div><div>Low albumin or raised INR = impaired synthetic function → indicates significant hepatic damage</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Pattern recognition prevents unnecessary investigation. An isolated GGT in a social drinker rarely warrants liver biopsy, while a cholestatic pattern with ALP 3× ULN needs urgent ultrasound and hepatology input. The ALT:AST ratio (De Ritis ratio) has 70-80% sensitivity for alcoholic liver disease. Gilbert's syndrome affects ~5% of the population and causes benign unconjugated hyperbilirubinaemia — misdiagnosis leads to unnecessary anxiety and investigation.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 3 -->
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+    <div class="node-head">
+      <div class="node-num">3</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Targeted History — Systematic Cause Identification</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Use a structured history to cover the five main aetiological categories.</span>
+      <div class="kv">
+        <div>Alcohol</div><div>AUDIT-C score. Units/week (1 unit = 10ml pure alcohol). Binge pattern. Duration of heavy use. <b>Safe limits: &lt;14u/week</b></div>
+        <div>Drugs / Supplements</div><div>ALL prescription drugs (statins, methotrexate, amiodarone, antifungals). OTC/herbal (kava, green tea extract). New in last 12 weeks?</div>
+        <div>Metabolic risk</div><div>BMI, T2DM, dyslipidaemia, HTN, PCOS → MASLD screen. Rapid weight loss → acute fatty change</div>
+        <div>Viral exposure</div><div>IV drug use, tattoos, body piercing, blood transfusion (pre-1992), sexual history, travel to endemic regions (HEV)</div>
+        <div>Autoimmune history</div><div>Other autoimmune conditions (thyroid, IBD, coeliac), family history of liver disease, female sex → autoimmune hepatitis</div>
+        <div>Biliary symptoms</div><div>RUQ pain, fat intolerance, pale stools, dark urine, pruritus → cholestatic disease</div>
+        <div>Family history</div><div>Wilson's disease (&lt;40yo), haemochromatosis, alpha-1 antitrypsin deficiency, PBC</div>
+        <div>Systemic features</div><div>Weight loss, night sweats, lymphadenopathy → infiltrative/malignant cause</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">History identifies the cause in ~70% of cases, before any blood test. MASLD is now the most common cause of incidental LFT derangement in the UK (prevalence ~25% of population). Drugs account for 10% of cases — the temporal relationship (drug started within 12 weeks of LFT rise) is the key diagnostic clue. Wilson's disease is rare but treatable and fatal if missed; screen anyone &lt;40 with unexplained hepatitis.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 4 -->
+  <div class="node" data-type="DIAGNOSE" data-step="4">
+    <div class="node-head">
+      <div class="node-num">4</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Targeted Examination — Signs of Chronic Liver Disease</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Look for signs of established liver disease, portal hypertension, and metabolic risk factors.</span>
+      <div class="kv">
+        <div>Hands / Nails</div><div>Leukonychia (hypoalbuminaemia), clubbing (cirrhosis, IBD), palmar erythema, Dupuytren's (alcohol), asterixis (encephalopathy)</div>
+        <div>Eyes / Face</div><div>Jaundice (scleral icterus), Kayser-Fleischer rings (Wilson's — slit lamp needed), xanthelasma (PBC, dyslipidaemia)</div>
+        <div>Chest / Abdomen</div><div>Spider naevi (&gt;5 = significant), gynaecomastia (alcohol/cirrhosis), hepatomegaly, splenomegaly (portal HTN), ascites (shifting dullness, fluid thrill)</div>
+        <div>Skin</div><div>Jaundice, scratch marks (pruritus = cholestasis), bruising (coagulopathy), parotid enlargement (alcohol)</div>
+        <div>BMI / Waist</div><div>Obesity (BMI &gt;30), central adiposity (waist &gt;88cm F / &gt;102cm M) → MASLD risk factors</div>
+        <div>Blood pressure</div><div>Hypertension + obesity + abnormal LFTs = metabolic syndrome → MASLD pathway</div>
+        <div>Neurological</div><div>Tremor, dysarthria, personality change → Wilson's disease, hepatic encephalopathy</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Signs of chronic liver disease (spider naevi, leukonychia, splenomegaly) indicate established cirrhosis and change management significantly — these patients need hepatology referral, variceal screening, and HCC surveillance. Kayser-Fleischer rings (golden-brown corneal deposits) are pathognomonic of Wilson's disease — present in ~95% of neurological Wilson's. Ascites indicates portal hypertension and often requires diuretics and paracentesis — cannot be managed in primary care alone.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 5 -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+    <div class="node-head">
+      <div class="node-num">5</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — Systematic Second-Line Bloods & Imaging</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Order investigations based on the pattern identified in Step 2. Avoid a 'scattergun' approach.</span>
+      <div class="kv">
+        <div>All cases <span class="pill pill-blue">1st line</span></div><div>Repeat LFTs in 4-6 weeks if mildly abnormal (&lt;2× ULN). FBC (thrombocytopaenia = portal HTN), U&E, eGFR, glucose, lipids, HbA1c, INR, albumin</div>
+        <div>Hepatocellular pattern</div><div>Hepatitis B sAg + anti-HBc, Hepatitis C Ab, Hepatitis A/E IgM if acute. <b>LFTs &gt;3× ULN</b>: add autoimmune screen (ANA, SMA, anti-LKM1, immunoglobulins)</div>
+        <div>Cholestatic pattern</div><div>AMA (anti-mitochondrial Ab) → PBC. ANCA, p-ANCA → PSC (check with GI). CA 19-9, CEA if malignancy concern</div>
+        <div>Metabolic/MASLD</div><div>Fasting glucose, HbA1c, lipids, TSH, ferritin, transferrin saturation. <b>FibroScan</b> if MASLD confirmed</div>
+        <div>Alcohol related</div><div>GGT (sensitive but non-specific), MCV (macrocytosis), CDT (carbohydrate-deficient transferrin) if occupational/forensic relevance</div>
+        <div>Genetic / rare</div><div><b>Ferritin + transferrin saturation</b> (haemochromatosis — TS &gt;45%), serum caeruloplasmin (Wilson's &lt;40y), alpha-1 antitrypsin phenotype</div>
+        <div>Imaging <span class="pill pill-blue">All</span></div><div>Liver ultrasound: structural causes (gallstones, biliary obstruction, fatty infiltration, masses, cirrhotic texture, splenomegaly)</div>
+        <div>When NOT to investigate</div><div>Isolated GGT mildly ↑ in known social drinker with no other features — repeat after 4/52 abstinence. Isolated ALP ↑ in pregnancy (placental isoenzyme) — normal finding</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">NICE CG165 (2016) recommends a targeted approach. Liver ultrasound is the first-line imaging modality (sensitivity 80-90% for hepatic steatosis, &gt;95% for biliary dilation). FibroScan (transient elastography) quantifies liver stiffness non-invasively — kPa &gt;8 suggests significant fibrosis, &gt;13 cirrhosis — and is now recommended in NICE NG49 for MASLD staging. HCV serology is mandated as it is now curable in &gt;95% of cases. Haemochromatosis (transferrin saturation &gt;45%) affects 1:200 Northern Europeans.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 6 -->
+  <div class="node" data-type="REFER" data-step="6">
+    <div class="node-head">
+      <div class="node-num">6</div>
+      <span class="node-tag">Refer</span>
+      <h3>Referral Criteria — When to Escalate to Secondary Care</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Most mildly abnormal LFTs resolve in primary care; these criteria require specialist input.</span>
+      <div class="kv">
+        <div><span class="pill pill-red">999</span></div><div>Encephalopathy, haematemesis, haemodynamic instability, INR &gt;2.0 with clinical deterioration → acute liver failure</div>
+        <div><span class="pill pill-red">Same-day</span></div><div>ALT &gt;10× ULN; jaundice + fever + RUQ pain; suspected DILI with ALT &gt;5× ULN; new coagulopathy; ascites</div>
+        <div><span class="pill pill-purple">2WW</span></div><div>Painless progressive jaundice, weight loss + cholestatic LFTs (suspect pancreatic/cholangiocarcinoma). AFP raised. NICE NG12.</div>
+        <div><span class="pill pill-amber">Urgent 2/52</span></div><div>ALT &gt;3× ULN persisting &gt;6 weeks; positive autoimmune screen; positive viral hepatitis serology; haemochromatosis confirmed; Wilson's suspected (&lt;40y)</div>
+        <div><span class="pill pill-blue">Routine</span></div><div>MASLD with FibroScan kPa &gt;8 (significant fibrosis), PBC (AMA positive), PSC (ANCA positive + cholestatic), unexplained persistent LFT derangement &gt;6 months</div>
+        <div>Primary care manage</div><div>Mild isolated GGT in alcohol drinker — lifestyle advice, repeat 4-6/52. Mild MASLD (FibroScan &lt;8kPa, no features of advanced disease). Gilbert's syndrome (harmless, reassure)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">BSG/BASL guidelines emphasise that ALT &gt;10× ULN represents acute hepatitis requiring same-day assessment — acute viral hepatitis, autoimmune hepatitis, and DILI can all cause this. Autoimmune hepatitis is treatable (prednisolone + azathioprine) but if missed leads to cirrhosis. Pancreatic cancer has a 5-year survival of &lt;5%, making early 2WW referral critical. MASLD without advanced fibrosis is largely managed in primary care with lifestyle modification.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 7 -->
+  <div class="node" data-type="TREAT" data-step="7">
+    <div class="node-head">
+      <div class="node-num">7</div>
+      <span class="node-tag">Treat</span>
+      <h3>Treatment — Cause-Specific Management Pathway</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Treatment depends on the underlying cause. Most causes managed in primary care have lifestyle as the cornerstone.</span>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">MASLD (most common)</div>
+          <div class="b-drug">Lifestyle first <span class="pill pill-green">First-line</span></div>
+          <div class="b-note">10% weight loss normalises LFTs in 80%. No specific drug licensed in UK. Refer T2DM patients — semaglutide/pioglitazone have evidence for MASH.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Alcoholic Liver Disease</div>
+          <div class="b-drug">Abstinence + support <span class="pill pill-teal">Core</span></div>
+          <div class="b-note">Refer to alcohol services. Acamprosate 666mg TDS or naltrexone 50mg OD (if abstinent). Thiamine 200-300mg/day if nutritionally deficient.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Hepatitis C</div>
+          <div class="b-drug">DAA therapy <span class="pill pill-teal">Curative</span></div>
+          <div class="b-note">Refer hepatology — direct-acting antivirals (sofosbuvir/velpatasvir 12/52) achieve &gt;95% SVR. Do not initiate in primary care.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Hepatitis B</div>
+          <div class="b-drug">Tenofovir / Entecavir</div>
+          <div class="b-note">Hepatology-led. HBsAg carriers need HBV DNA quantification, LFT monitoring, HCC surveillance if cirrhotic.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">DILI (Drug-Induced)</div>
+          <div class="b-drug">Stop causative drug <span class="pill pill-amber">Urgent</span></div>
+          <div class="b-note">Check Roussel Uclaf Causality Assessment (RUCAM). Most recover within 8-12 weeks. Corticosteroids for severe DILI with autoimmune features.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">PBC (AMA positive)</div>
+          <div class="b-drug">Ursodeoxycholic acid</div>
+          <div class="b-note">UDCA 13-15 mg/kg/day. Hepatology-prescribed. Reduces progression to cirrhosis. Add obeticholic acid if incomplete response.</div>
+        </div>
+      </div>
+      <div class="ladder" style="margin-top:14px">
+        <div class="rung"><span class="rn">Statin LFTs</span><span class="rt">ALT &lt;3× ULN → <b>continue statin</b> (statins are hepatoprotective in MASLD). ALT &gt;3× ULN → withhold, recheck in 4-6 weeks; rechallenge or switch statin</span></div>
+        <div class="rung"><span class="rn">Haemochromatosis</span><span class="rt"><b>Venesection</b> (hepatology-led) — 450-500ml weekly until ferritin &lt;50 µg/L. Maintain with 4-6 weekly venesection. Advise reduce red meat intake, avoid alcohol, avoid iron supplements</span></div>
+        <div class="rung"><span class="rn">Gilbert's syndrome</span><span class="rt"><b>No treatment required.</b> Explain benign nature. Bilirubin rises with fasting, illness, or exercise. Not associated with liver disease. Reassure and discharge.</span></div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">MASLD affects 25% of UK adults — lifestyle modification (weight loss 7-10%) reduces ALT by 40-60% and liver stiffness by 30-50% (NICE NG49). Statins are frequently (and wrongly) stopped due to abnormal LFTs — the BSG/NICE guidance confirms statins do not cause clinically significant liver disease and are safe in MASLD. HCV is now curable — every positive HCV Ab should trigger HCV RNA testing and hepatology referral. Venesection in haemochromatosis, if started before cirrhosis, achieves normal life expectancy.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 8 -->
+  <div class="node" data-type="LIFESTYLE" data-step="8">
+    <div class="node-head">
+      <div class="node-num">8</div>
+      <span class="node-tag">Lifestyle</span>
+      <h3>Non-Pharmacological — The Foundation of Liver Health</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Lifestyle modification is the primary treatment for MASLD and alcohol-related disease — more effective than most drug interventions.</span>
+      <div class="lsgrid">
+        <div class="lstile"><b>Weight loss (MASLD)</b> Target 7-10% body weight reduction. Reduces steatosis, inflammation, and fibrosis. Each 1% weight loss reduces liver fat by ~1%.</div>
+        <div class="lstile"><b>Alcohol reduction</b> Target &lt;14 units/week with 2+ alcohol-free days. Complete abstinence if alcoholic liver disease. GGT normalises in 4-8 weeks of abstinence.</div>
+        <div class="lstile"><b>Exercise</b> 150 min/week moderate aerobic activity. Resistance exercise reduces hepatic fat independently of weight loss. Benefits seen even without weight loss.</div>
+        <div class="lstile"><b>Mediterranean diet</b> Reduce refined carbohydrates, saturated fat, processed foods. Increase vegetables, legumes, fish, olive oil. Reduces liver fat by 30-40%.</div>
+        <div class="lstile"><b>Stop hepatotoxic drugs</b> Review all OTC supplements (herbal teas, bodybuilding supplements, kava). Check for unnecessary medications. RCGP medication review tool.</div>
+        <div class="lstile"><b>Vaccinations</b> HAV and HBV vaccination in patients with chronic liver disease or at risk (PWID, MSM, travel). Influenza annually. Pneumococcal (PPV23) in cirrhosis.</div>
+        <div class="lstile"><b>Coffee (evidence-based!)</b> 2-3 cups/day of caffeinated coffee is independently associated with 40% reduced risk of liver fibrosis and HCC. Advise patients this is beneficial.</div>
+        <div class="lstile"><b>Avoid NSAIDs</b> NSAIDs + decompensated liver disease = acute kidney injury risk. Paracetamol is safer but limit to 2g/day in severe liver disease.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">The LEAN trial (2016) showed 52% reduction in MASH histology with lifestyle intervention vs 0% in controls. Mediterranean diet alone reduces hepatic steatosis by 38% (PREDIMED data). Exercise reduces liver fat by 3-4% (absolute) even without caloric restriction. Coffee's hepatoprotection is now well-established — meta-analysis of 16 studies shows OR 0.40 for fibrosis with 2+ cups/day. This is one of the few genuinely evidence-based dietary recommendations in hepatology.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 9 -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-head">
+      <div class="node-num">9</div>
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up & Monitoring — Structured Review Plan</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Monitoring intervals depend on severity and cause. Document a clear follow-up plan.</span>
+      <div class="kv">
+        <div>4-6 weeks</div><div>Repeat LFTs if initially &lt;2× ULN (mildly abnormal). Check response to lifestyle changes or drug cessation. If normalised → discharge with lifestyle advice</div>
+        <div>3 months</div><div>MASLD on lifestyle programme — repeat LFTs, weight, BMI, waist circumference. FibroScan if not yet done and LFTs persistently abnormal</div>
+        <div>6 months</div><div>Alcohol-related — LFTs, FBC, GGT trend. Assess engagement with alcohol services. AUDIT re-score.</div>
+        <div>Annual (MASLD)</div><div>LFTs, HbA1c, lipids, BP, BMI. Repeat FibroScan every 2-3 years if stable. If FibroScan worsening → re-refer hepatology</div>
+        <div>HCC surveillance</div><div>Liver ultrasound + AFP every 6 months if established cirrhosis (any cause). Do NOT do if no cirrhosis — cost-ineffective.</div>
+        <div>Safety-net <span class="pill pill-red">999</span></div><div>Haematemesis, melaena, confusion/encephalopathy, rapid deterioration with jaundice → call 999 immediately</div>
+        <div>Safety-net same-day</div><div>New jaundice, worsening RUQ pain, new ascites, significant bruising, any new neurological symptoms → same-day GP/ED</div>
+        <div>Discharge criteria</div><div>LFTs normal on 2 consecutive checks with identified and managed cause → discharge to primary care annual review if MASLD, or discharge if transient cause resolved</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">NICE NG49 recommends FibroScan every 2-3 years for MASLD in primary care. HCC surveillance (USS + AFP 6-monthly) reduces HCC mortality by 37% in cirrhotic patients (RCT evidence) — but is not cost-effective in non-cirrhotic patients. GGT has a half-life of ~26 days — normalisation with abstinence is useful to confirm alcohol as cause. LFTs that remain elevated after 6 months of lifestyle modification and alcohol reduction warrant re-investigation and hepatology input — a cause has likely been missed.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG49 (MASLD/NAFLD 2023), BSG/BASL LFT guidelines (2017), NICE CG165 (Hepatitis B/C), NICE NG12 (Suspected Cancer 2WW), BNF drug dosing. Always adapt to individual patient context and local formulary/guidelines. For acute presentations always follow local emergency pathways.
+</div>
+
+<script>
+(function(){
+  const STORE='rgp.alg.lfts.v1';
+  const flow=document.getElementById('flow');
+  const nodes=[...flow.querySelectorAll('.node')];
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=nodes.length;
+  document.getElementById('pTotal').textContent=total;
+
+  function save(){
+    const state=nodes.map(n=>n.querySelector('input[type=checkbox]').checked);
+    localStorage.setItem(STORE,JSON.stringify(state));
+  }
+  function load(){
+    try{const s=JSON.parse(localStorage.getItem(STORE)||'[]');
+    nodes.forEach((n,i)=>{if(s[i]){n.querySelector('input[type=checkbox]').checked=true;n.classList.add('done');}});}catch(e){}
+  }
+  function updateProgress(){
+    const done=nodes.filter(n=>n.querySelector('input[type=checkbox]').checked).length;
+    pDone.textContent=done;
+    pFill.style.width=(done/total*100)+'%';
+  }
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');
+    cb.addEventListener('change',()=>{
+      n.classList.toggle('done',cb.checked);
+      save();updateProgress();
+    });
+    const btn=n.querySelector('.why-btn');
+    const drawer=n.querySelector('.why-drawer');
+    btn.addEventListener('click',()=>{
+      const open=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!open));
+      drawer.classList.toggle('open',!open);
+    });
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    nodes.forEach(n=>{n.querySelector('input[type=checkbox]').checked=false;n.classList.remove('done');});
+    flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));
+    flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));
+    localStorage.removeItem(STORE);updateProgress();
+  });
+  load();updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

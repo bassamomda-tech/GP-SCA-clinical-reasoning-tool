@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hepatitis A — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Hepatitis A management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🦠",
+  title:"Hepatitis A",
+  stemTitle:"Hepatitis A \u2014 a notifiable, self-limiting infection: supportive care + public health",
+  stemSub:"Primary-care management of hepatitis A \u2014 confirm with serology, notify public health (UKHSA), give supportive care for this usually self-limiting illness, recognise the rare fulminant case, and arrange post-exposure prophylaxis and prevention. NICE CKS \u00b7 UKHSA \u00b7 2026.",
+  guideline:"NICE CKS / UKHSA",
+  glance:[
+    {lbl:"Notify", val:"UKHSA \u2014 urgently", sub:"notifiable disease"},
+    {lbl:"Confirm", val:"Hep A IgM", sub:"+ LFTs"},
+    {lbl:"Treatment", val:"Supportive", sub:"self-limiting"},
+    {lbl:"Transmission", val:"Faecal-oral", sub:"hygiene + exclusion"},
+    {lbl:"Prevention", val:"Vaccine + PEP", sub:"contacts/travel"},
+    {lbl:"Red flag", val:"Fulminant hepatic failure", sub:"= emergency"}
+  ],
+  flow:[
+    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Fulminant hepatitis \u2014 rare but critical",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Acute liver failure", html:"Drowsiness/confusion (encephalopathy), bruising/bleeding (coagulopathy), worsening jaundice, persistent vomiting \u2192 emergency admission."},
+          {t:"🟠 Dehydration", html:"Unable to maintain fluids with vomiting \u2192 assess/admit."},
+          {t:"🟠 At-risk hosts", html:"Chronic liver disease (esp. hepatitis B/C) or immunocompromise \u2192 higher complication risk, lower admission threshold."},
+          {t:"🩺 Cholestatic / relapsing", html:"Prolonged jaundice/pruritus or biphasic relapse can occur \u2014 reassess; usually still self-limiting."}
+        ]},
+        {b:"why", html:"Hepatitis A almost always resolves without specific treatment and does not become chronic, but rare fulminant hepatic failure (more likely with older age or pre-existing liver disease) is an emergency the GP must recognise."}
+      ]},
+    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Recognise + confirm",
+      blocks:[
+        {b:"kv", rows:[
+          ["Presentation","Prodrome (fever, malaise, nausea, anorexia, RUQ discomfort) then jaundice, dark urine, pale stools; often milder/anicteric in children"],
+          ["Transmission","Faecal-oral \u2014 contaminated food/water, travel to endemic areas, household/sexual contact, MSM, IVDU; incubation ~2\u20136 weeks"],
+          ["Confirm","<b>Hepatitis A IgM</b> (acute infection) + LFTs (markedly raised transaminases); IgG indicates past infection/immunity"],
+          ["Assess","Hydration, severity, liver synthetic function (consider INR/bilirubin), comorbidity, contacts, occupation (food handler/carer)"]
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Management", title:"Supportive care",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Supportive treatment", when:"mainstay",
+           html:"Rest, fluids, antiemetic if needed, simple analgesia; manage symptoms. No specific antiviral. Most recover fully in weeks."},
+          {step:"Step 2", title:"Protect the liver", when:"during illness",
+           fromLabel:"reduce liver stress",
+           html:"Avoid alcohol; review/avoid hepatotoxic drugs (and caution with paracetamol dosing); avoid unnecessary medication."},
+          {step:"Step 3", title:"Monitor recovery", when:"follow LFTs",
+           fromLabel:"track resolution",
+           html:"Recheck LFTs to confirm resolution; reassure no chronic carriage. Escalate if synthetic failure/encephalopathy."}
+        ]},
+        {b:"warn", html:"Counsel on infectivity: most infectious in the 2 weeks before and ~1 week after jaundice onset \u2014 strict hand hygiene; do not prepare food for others; avoid sex during infectious period."}
+      ]},
+    {t:"node", d:"life", n:"4", tag:"Public health", title:"Notify, exclude, prevent",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"📋 Notify UKHSA", html:"Hepatitis A is a <b>notifiable disease</b> \u2014 notify the local health protection team (they coordinate contact tracing + prophylaxis)."},
+          {t:"🚫 Exclusion", html:"Exclude from work/school until 7 days after onset of jaundice (longer/stricter for food handlers, healthcare and young children) \u2014 per UKHSA."},
+          {t:"💉 Contacts (PEP)", html:"Hepatitis A vaccine \u00b1 human normal immunoglobulin for close contacts per UKHSA risk assessment, ideally within 14 days of exposure."},
+          {t:"🛡️ Prevention", html:"Vaccinate travellers to endemic areas, MSM, chronic liver disease, occupational risk; food/water hygiene advice."}
+        ]}
+      ]},
+    {t:"node", d:"monitor", n:"5", tag:"Follow-up", title:"Recovery",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"During illness", title:"Symptom + hydration review", html:"Safety-net for encephalopathy/bleeding/vomiting; reinforce hygiene + exclusion."},
+          {n:"2", when:"Weeks", title:"Confirm resolution", html:"Repeat LFTs to normalisation; reassure full recovery and lifelong immunity."},
+          {n:"3", when:"Contacts", title:"Prophylaxis", html:"Ensure contacts assessed/vaccinated per UKHSA."}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"6", tag:"Refer", title:"Referral",
+      arrow:"severity + public health",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Fulminant hepatitis (encephalopathy, coagulopathy), severe dehydration."},
+          {t:"UKHSA / health protection", html:"Notification + outbreak/contact management + PEP coordination."},
+          {t:"Hepatology", html:"Diagnostic uncertainty, prolonged/relapsing course, or underlying chronic liver disease."}
+        ]},
+        {b:"say", html:"Hepatitis A is a liver infection caught from contaminated food or water. The good news is it clears on its own and doesn\u2019t become long-term \u2014 the treatment is rest, fluids and avoiding alcohol. It\u2019s very catching though, so wash hands carefully, don\u2019t prepare food for others, and we must inform public health so close contacts can be protected."}
+      ]}
+  ],
+  foot:"Management of hepatitis A in primary care \u2014 a notifiable, usually self-limiting infection; fulminant failure is an emergency. Follow UKHSA notification/exclusion/PEP guidance. Verify against current NICE CKS and the Green Book."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

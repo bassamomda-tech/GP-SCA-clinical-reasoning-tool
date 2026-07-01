@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Cough in Children Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   REASONING GP — Paediatric Algorithm Suite · Shared CSS
+   ═══════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f7f6f3;
+  --surface: #ffffff;
+  --border: #e4e1d9;
+  --border-soft: #ede9e2;
+  --text: #1a1714;
+  --text-muted: #6b6460;
+  --text-light: #9b9390;
+
+  --safety: #c0392b;
+  --safety-bg: #fef5f5;
+  --safety-border: #f5c6c6;
+
+  --diagnose: #1a5276;
+  --diagnose-bg: #f0f6fc;
+  --diagnose-border: #c5dff0;
+
+  --treat: #1e8449;
+  --treat-bg: #f0faf3;
+  --treat-border: #b8dfc5;
+
+  --refer: #6c3483;
+  --refer-bg: #f8f0fc;
+  --refer-border: #d7b8ed;
+
+  --lifestyle: #b7770d;
+  --lifestyle-bg: #fefaf0;
+  --lifestyle-border: #f0d9a0;
+
+  --rf-bg: #c0392b;
+  --rf-tile: #fff0f0;
+  --rf-tile-border: #f5c6c6;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,.10), 0 3px 8px rgba(0,0,0,.05);
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-xs: 5px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 0 0 60px;
+}
+
+/* ── Page Header ─────────────────────────────────────── */
+.page-header {
+  background: var(--text);
+  color: #fff;
+  padding: 20px 24px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+}
+.page-header .logo {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  opacity: .8;
+  white-space: nowrap;
+}
+.page-header .sep { opacity: .3; margin: 0 4px; }
+.page-header .title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+/* ── Stem Banner ─────────────────────────────────────── */
+.stem-banner {
+  background: linear-gradient(135deg, var(--text) 0%, #2c2620 100%);
+  color: #fff;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 24px 20px;
+  margin: 20px 16px 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+.sb-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.stem-banner b { font-size: 17px; font-weight: 700; display: block; margin-bottom: 4px; }
+.stem-banner small { font-size: 12.5px; opacity: .75; line-height: 1.45; display: block; }
+
+/* ── Progress Bar ────────────────────────────────────── */
+.alg-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.pcount { font-weight: 700; color: var(--text); font-size: 14px; }
+.pbar {
+  flex: 1;
+  height: 5px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.pbar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
+  border-radius: 99px;
+  width: 0%;
+  transition: width .4s cubic-bezier(.4,0,.2,1);
+}
+.reset {
+  font-size: 12px;
+  padding: 4px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  transition: all .15s;
+}
+.reset:hover { border-color: var(--text-muted); color: var(--text); }
+
+/* ── Algorithm Flow ──────────────────────────────────── */
+.alg-flow {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ── Connector ───────────────────────────────────────── */
+.connector {
+  width: 2px;
+  height: 24px;
+  background: linear-gradient(to bottom, var(--border), transparent);
+  margin: 0 auto;
+}
+
+/* ── Node ────────────────────────────────────────────── */
+.node {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.node:hover { box-shadow: var(--shadow-md); }
+
+.node[data-type="SAFETY"]    { border-left: 4px solid var(--safety); }
+.node[data-type="DIAGNOSE"]  { border-left: 4px solid var(--diagnose); }
+.node[data-type="TREAT"]     { border-left: 4px solid var(--treat); }
+.node[data-type="REFER"]     { border-left: 4px solid var(--refer); }
+.node[data-type="LIFESTYLE"] { border-left: 4px solid var(--lifestyle); }
+
+/* Node header */
+.node-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.node-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.node[data-type="SAFETY"]    .node-num { background: var(--safety);    color: #fff; }
+.node[data-type="DIAGNOSE"]  .node-num { background: var(--diagnose);  color: #fff; }
+.node[data-type="TREAT"]     .node-num { background: var(--treat);     color: #fff; }
+.node[data-type="REFER"]     .node-num { background: var(--refer);     color: #fff; }
+.node[data-type="LIFESTYLE"] .node-num { background: var(--lifestyle); color: #fff; }
+
+.node-head-text { flex: 1; }
+.node-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 3px;
+}
+.node[data-type="SAFETY"]    .node-tag { color: var(--safety); }
+.node[data-type="DIAGNOSE"]  .node-tag { color: var(--diagnose); }
+.node[data-type="TREAT"]     .node-tag { color: var(--treat); }
+.node[data-type="REFER"]     .node-tag { color: var(--refer); }
+.node[data-type="LIFESTYLE"] .node-tag { color: var(--lifestyle); }
+
+.node-head h3 {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.01em;
+  color: var(--text);
+}
+
+/* Checkbox */
+.node-tick {
+  padding: 8px 14px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.node-tick label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-light);
+  user-select: none;
+}
+.node-tick input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #27ae60;
+  cursor: pointer;
+}
+.node-tick input:checked + .tlbl { color: #27ae60; }
+
+/* Node body */
+.node-body {
+  padding: 12px 16px 14px;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+}
+.node-body > p, .node-body > span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text-muted);
+  font-size: 13.5px;
+}
+
+/* ── KV Grid ─────────────────────────────────────────── */
+.kv {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  font-size: 13.5px;
+  margin-top: 8px;
+}
+.kv > div {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border-soft);
+  line-height: 1.5;
+}
+.kv > div:nth-child(4n+1),
+.kv > div:nth-child(4n+2) { background: var(--surface); }
+.kv > div:nth-child(4n+3),
+.kv > div:nth-child(4n+4) { background: #fafaf8; }
+.kv > div:nth-last-child(-n+2) { border-bottom: none; }
+.kv > div:nth-child(odd) {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  border-right: 1px solid var(--border-soft);
+  letter-spacing: .01em;
+}
+
+/* ── Red Flag Grid ───────────────────────────────────── */
+.rfgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+@media (max-width: 480px) { .rfgrid { grid-template-columns: 1fr; } }
+.rftile {
+  background: var(--rf-tile);
+  border: 1.5px solid var(--rf-tile-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.rftile b { color: #c0392b; font-weight: 700; display: block; margin-bottom: 2px; }
+
+/* ── Branch ──────────────────────────────────────────── */
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+.b-card {
+  background: var(--treat-bg);
+  border: 1.5px solid var(--treat-border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  font-size: 13px;
+}
+.b-cond {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+.b-drug {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--treat);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+.b-note {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* ── Ladder ──────────────────────────────────────────── */
+.ladder {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+  padding-left: 20px;
+}
+.ladder::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--treat-border), var(--refer-border));
+  border-radius: 2px;
+}
+.rung {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  padding: 9px 12px;
+  font-size: 13.5px;
+  position: relative;
+}
+.rung::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--treat);
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+  box-shadow: 0 0 0 1px var(--treat);
+}
+.rn {
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--treat);
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px 7px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.rt { flex: 1; line-height: 1.5; }
+
+/* ── Lifestyle Grid ──────────────────────────────────── */
+.lsgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+@media (max-width: 520px) { .lsgrid { grid-template-columns: 1fr; } }
+.lstile {
+  background: var(--lifestyle-bg);
+  border: 1.5px solid var(--lifestyle-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.lstile b { color: var(--lifestyle); font-weight: 700; display: block; margin-bottom: 2px; }
+
+/* ── Pills ───────────────────────────────────────────── */
+.pill {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 99px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.pill-red    { background: #fde8e8; color: #b91c1c; border: 1px solid #fca5a5; }
+.pill-purple { background: #f3e8ff; color: #7e22ce; border: 1px solid #d8b4fe; }
+.pill-blue   { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
+.pill-teal   { background: #e0fdf4; color: #0f766e; border: 1px solid #5eead4; }
+.pill-amber  { background: #fffbeb; color: #b45309; border: 1px solid #fcd34d; }
+.pill-green  { background: #f0fdf4; color: #15803d; border: 1px solid #86efac; }
+.pill-grey   { background: #f3f4f6; color: #374151; border: 1px solid #d1d5db; }
+.pill-orange { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
+
+/* ── Why Drawer ──────────────────────────────────────── */
+.why-row {
+  border-top: 1px solid var(--border-soft);
+  background: #fafaf8;
+}
+.why-btn {
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: .02em;
+  transition: color .15s;
+}
+.why-btn:hover { color: var(--text); }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.caret { transition: transform .2s; display: inline-block; }
+.why-drawer {
+  display: none;
+  padding: 4px 16px 14px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  border-top: 1px solid var(--border-soft);
+}
+.why-drawer.open { display: block; }
+.why-drawer p { margin-bottom: 6px; }
+.why-drawer p:last-child { margin-bottom: 0; }
+
+/* ── Done state ──────────────────────────────────────── */
+.node.is-done {
+  opacity: .72;
+}
+.node.is-done .node-body { position: relative; }
+.node.is-done .node-head h3 { text-decoration: line-through; text-decoration-color: #ccc; }
+
+/* ── Footer ──────────────────────────────────────────── */
+.alg-foot {
+  margin: 28px 16px 0;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.alg-foot strong { color: var(--text); }
+
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="page-header">
+  <span class="logo">Reasoning GP</span>
+  <span class="sep">·</span>
+  <span class="title">Paediatric Algorithms</span>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🫁</div>
+  <div>
+    <b>Cough in Children — Assessment &amp; Management</b>
+    <small>NICE NG117 | BTS/SIGN Asthma | Ages 0–12 years | UK Primary Care Pathway</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — most childhood cough is viral; recognise the patterns needing action (bronchiolitis, croup, pneumonia, inhaled foreign body, whooping cough), treat by cause, advise carers, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Cough in a child</span><div class="body">Duration, character (barking, paroxysmal, wet), wheeze, feeding, fever, choking episode. Obs, work of breathing, chest signs.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — distress / serious cause</span><span class="ttl">Respiratory distress / serious cause?</span><div class="body">Significant respiratory distress (recession, grunting, low sats), stridor at rest (croup/airway), sudden choking (inhaled foreign body), apnoea (bronchiolitis/pertussis in infant).</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency</span><div class="body">Respiratory distress/airway compromise → emergency. Inhaled foreign body → urgent.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination guide management.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · common causes</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Viral URTI / bronchiolitis</div><div class="box act"><span class="ttl">Common</span><div class="body">Supportive; bronchiolitis (&lt;1yr, wheeze/crackles) — safety-net, admit if feeding poorly/distressed.</div></div></div><div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Croup</div><div class="box act"><span class="ttl">Barking</span><div class="body">Single-dose oral dexamethasone; admit if stridor at rest/distress.</div></div></div><div class="col"><div class="blabel">Other</div><div class="box ix"><span class="ttl">Consider</span><div class="body">Pneumonia, pertussis (paroxysmal/whoop), asthma, prolonged/chronic cough → investigate.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> respiratory distress / airway compromise / inhaled foreign body. <span class="pill pill-purple">Paediatrics</span> chronic cough (&gt;4–8 weeks), faltering growth, or recurrent pneumonia (?underlying cause).</div></div>
+    <div class="arrow"><span class="tag">Step 8 · carer advice &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Carer advice &amp; modifiable factors</span><span class="ttl">Supportive care, reduce triggers</span><div class="body"><b>Eliminate tobacco-smoke exposure</b> (a major driver of childhood cough and admissions) · fluids, paracetamol/ibuprofen for distress/fever, honey for cough in &gt;1 yr (<b>not</b> &lt;1 yr) · avoid OTC cough medicines in young children. Ensure <b>immunisations up to date</b> (pertussis, Hib, pneumococcal); optimise asthma inhaler technique where relevant.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Clear red-flag advice to carers</span><div class="body"><b>999 / urgent</b> for fast/laboured breathing, recession/grunting, blue lips, going floppy or unrousable, pauses in breathing (apnoea), or a sudden choking episode. <b>Same-day GP</b> for high fever, poor feeding/wet nappies, or worsening. Safety-net <b>cough &gt;4–8 weeks</b> for review (pertussis, TB, foreign body, asthma) and give a written advice sheet.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>A sudden choking episode followed by cough/wheeze is an inhaled foreign body</b> until proven otherwise — and any child with stridor at rest or significant recession needs emergency assessment.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head">
+    <div class="node-num">1</div>
+    <div class="node-head-text">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Exclude emergency respiratory causes first</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <span>Cough is rarely life-threatening but these presentations demand immediate action.</span>
+    <div class="rfgrid">
+      <div class="rftile"><b>Acute stridor at rest</b> Suggests croup (severe), epiglottitis, bacterial tracheitis, or foreign body → <span class="pill pill-red">999</span> — do not examine throat</div>
+      <div class="rftile"><b>Respiratory failure</b> SaO₂ &lt;92%, cyanosis, exhaustion, inability to complete sentences → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Choking episode / sudden onset</b> Inhaled foreign body — especially age 6mo–3yr, during meal/play → <span class="pill pill-red">999</span>; back blows if conscious + choking</div>
+      <div class="rftile"><b>Whooping cough — infant &lt;6 months</b> Paroxysmal cough + whoop / cyanosis / apnoea → <span class="pill pill-red">Same-day hospital</span> (apnoea risk)</div>
+      <div class="rftile"><b>Haemoptysis</b> Blood in sputum in child → urgent investigation. Consider bronchiectasis, TB, CF → <span class="pill pill-red">Same-day paeds</span></div>
+      <div class="rftile"><b>Severe wheeze / acute asthma</b> Too breathless to talk, silent chest, HR &gt;140 (&lt;5yr) or &gt;125 (≥5yr), SaO₂ &lt;92% → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Suspected epiglottitis</b> Drooling, muffled voice, tripod position, fever + stridor = rare but rapidly fatal → <span class="pill pill-red">999</span> — do NOT examine</div>
+      <div class="rftile"><b>Clubbing + chronic cough</b> Suggests cystic fibrosis, bronchiectasis, malignancy → <span class="pill pill-purple">Urgent paeds referral</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Foreign body inhalation kills rapidly from complete obstruction. Peak age is 6 months to 3 years. The classic history is sudden onset cough/choking during eating or play. CXR may show hyperinflation unilaterally (ball-valve effect) but a normal CXR does NOT exclude foreign body — rigid bronchoscopy is required if clinical suspicion is high.</p>
+      <p>Epiglottitis is rare since Hib vaccination but Hib uptake has declined. It is rapidly fatal — do NOT attempt to examine the throat or lay the child down. Call 999 and keep child upright with parent. Anaesthetic/ENT team are needed for airway management.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head">
+    <div class="node-num">2</div>
+    <div class="node-head-text">
+      <span class="node-tag">Diagnose</span>
+      <h3>Characterise the cough — duration, quality, timing, triggers</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <span>The character of the cough is your most important diagnostic tool — it narrows differentials before examination.</span>
+    <div class="kv">
+      <div>Acute (&lt;3 weeks)</div><div>Viral URTI (most common), croup, bronchiolitis, pneumonia, pertussis, foreign body, asthma exacerbation.</div>
+      <div>Subacute (3–8 weeks)</div><div>Post-infectious cough (most common), pertussis, mycoplasma, early asthma. Consider COVID-related cough.</div>
+      <div>Chronic (&gt;8 weeks)</div><div>Asthma, allergic rhinitis (post-nasal drip), recurrent viral infections, GORD, CF, tracheomalacia, habit cough, protracted bacterial bronchitis (PBB).</div>
+      <div>Barking / brassy</div><div>Croup (laryngotracheitis), tracheomalacia, subglottic stenosis, habit cough. Associated stridor in croup.</div>
+      <div>Paroxysmal + whoop</div><div>Pertussis (whooping cough) — regardless of vaccination status. Post-tussive vomiting. Cyanosis in infants.</div>
+      <div>Wet / productive</div><div>Bacterial infection, PBB, bronchiectasis, CF. Wet cough &gt;4 weeks → consider PBB. Chronic wet cough = red flag for structural disease.</div>
+      <div>Dry / non-productive</div><div>Asthma, viral, allergic, habit/tic cough, ACE inhibitor (adolescents on medication).</div>
+      <div>Nocturnal predominance</div><div>Asthma (classic — wakes child), GORD, post-nasal drip. Ask specifically: does it wake the child?</div>
+      <div>Exercise-triggered</div><div>Exercise-induced bronchoconstriction / asthma. Cold air triggers also suggest asthma.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Duration is the most powerful differentiator. Over 95% of acute coughs are viral and self-limiting. Chronic cough (&gt;8 weeks) has a completely different differential and often requires investigation. The BTS guideline (2008) recommends classifying cough by duration as the first step.</p>
+      <p>Protracted bacterial bronchitis (PBB) is under-recognised — wet cough &gt;4 weeks responding to 2 weeks of amoxicillin. It is the most common cause of chronic wet cough in under-6s. Failure to treat leads to bronchiectasis.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head">
+    <div class="node-num">3</div>
+    <div class="node-head-text">
+      <span class="node-tag">Diagnose</span>
+      <h3>Age-based differential diagnosis framework</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <span>Age shapes the differential — many diagnoses are age-specific.</span>
+    <div class="kv">
+      <div>&lt;1 year</div><div>Bronchiolitis (RSV, Oct–March), pertussis, viral URTI, GORD, tracheomalacia, CF (if faltering growth). Asthma diagnosis not made under 1yr — wheeze is common from viral-induced wheeze.</div>
+      <div>1–5 years</div><div>Viral URTI (most common), viral-induced wheeze, croup (6mo–6yr peak), foreign body, asthma (if recurrent wheeze), PBB.</div>
+      <div>5–12 years</div><div>Asthma (new or undiagnosed), allergic rhinitis + PND, mycoplasma pneumonia (school-age dry cough), pertussis, habit cough.</div>
+      <div>Bronchiolitis criteria</div><div>Age &lt;12 months. Coryzal prodrome → wheeze + crackles + subcostal recession. Peak at day 3–5. Mostly viral, self-limiting. Admit if SaO₂ &lt;92%, poor feeding (&lt;50%), apnoea, premature / under 2 months.</div>
+      <div>Croup severity</div><div>Mild: barking cough, no stridor at rest → oral dexamethasone 0.15mg/kg single dose. Moderate: stridor at rest → A&amp;E. Severe: stridor + recession → 999. Dexamethasone NNT=5 for symptom improvement.</div>
+      <div>Asthma likelihood</div><div>Use BTS/SIGN probability score: wheeze + atopy + FHx asthma + response to bronchodilator → high probability. Under 5: cannot do spirometry — use trial of ICS + SABA.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Asthma cannot be reliably diagnosed under 5 years because spirometry is not feasible and wheeze is common with viral infections ("viral-induced wheeze"). BTS/SIGN 2019 recommends a structured probability approach rather than reflexive diagnosis in young children.</p>
+      <p>Bronchiolitis affects 1 in 3 infants in the first year and is the most common cause of hospitalisation in this age group. The NICE NG9 guideline gives clear admission criteria — SaO₂, feeding, apnoea history, and age are the key determinants.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head">
+    <div class="node-num">4</div>
+    <div class="node-head-text">
+      <span class="node-tag">Diagnose</span>
+      <h3>Targeted Examination</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Respiratory rate</div><div>Age-specific norms: &lt;2mo &gt;60, 2–12mo &gt;50, 1–5yr &gt;40, 5–12yr &gt;30 = tachypnoea. Key marker of severity. Count for 1 full minute.</div>
+      <div>Oxygen saturation</div><div>Pulse oximetry if available. &lt;95% = concerning. &lt;92% = acute severe — hospital. Normal SaO₂ does not rule out significant respiratory illness.</div>
+      <div>Respiratory signs</div><div>Intercostal / subcostal recession (increased WOB). Nasal flaring. Grunting = end-stage respiratory failure. Tracheal tug. Hyperexpanded chest (asthma/FB).</div>
+      <div>Auscultation</div><div>Wheeze: expiratory predominant (asthma, bronchiolitis). Inspiratory stridor: upper airway (croup, FB). Focal crackles: pneumonia, bronchiectasis. Bilateral fine crackles: bronchiolitis.</div>
+      <div>ENT</div><div>Nasal polyps (CF). Cobblestoning of posterior pharynx (post-nasal drip). Ear drums (AOM + cough in young child). Tonsillar hypertrophy.</div>
+      <div>Growth / nutrition</div><div>Plot on centile chart. Faltering growth + chronic wet cough → CF until proven otherwise. Finger clubbing = CF, bronchiectasis, malignancy.</div>
+      <div>Skin / allergy</div><div>Eczema, urticaria → atopic — raises asthma probability significantly. Allergic shiners, transverse nasal crease (allergic salute).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Respiratory rate is the single most sensitive examination finding for pneumonia in children — more sensitive than temperature, WBC, or CRP. A child with cough + tachypnoea should be assessed for pneumonia even without focal auscultatory findings (early lobar pneumonia may be "silent" to the stethoscope).</p>
+      <p>Faltering growth with chronic wet cough should prompt CF testing (sweat chloride or genetics referral) — CF is diagnosed late in ~20% of cases in the UK because GPs do not consider it. Early diagnosis dramatically improves prognosis.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head">
+    <div class="node-num">5</div>
+    <div class="node-head-text">
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — when, what, and what to avoid</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Acute viral cough</div><div><b>No investigations needed.</b> Self-limiting in 3 weeks. CXR and bloods will not change management. Save the child from unnecessary procedures.</div>
+      <div>Spirometry</div><div><span class="pill pill-blue">Asthma diagnosis ≥5yr</span> FEV₁/FVC &lt;0.7 = obstruction. Significant bronchodilator reversibility = ≥12% and &gt;200ml improvement FEV₁. Perform when child is symptomatic if possible.</div>
+      <div>Peak flow diary</div><div><span class="pill pill-blue">Asthma monitoring</span> Morning + evening x 2–4 weeks. &gt;20% diurnal variation = asthma. Easy to do at home with standard peak flow meter.</div>
+      <div>Pertussis PCR / serology</div><div>Nasopharyngeal swab PCR if cough &lt;3 weeks. IgG serology if cough &gt;3 weeks. Confirm for public health notification + to protect household contacts.</div>
+      <div>CXR</div><div><span class="pill pill-blue">Indicated:</span> Suspected pneumonia (tachypnoea + fever + crackles), suspected FB (unilateral hyperinflation), chronic wet cough ≥4 weeks, haemoptysis, clubbing, unexplained recurrent wheeze.</div>
+      <div>Sweat chloride / CF genetics</div><div>Wet cough + faltering growth + steatorrhoea + recurrent chest infections. Refer to paeds for sweat test — do not delay.</div>
+      <div>Allergy testing</div><div>Skin prick test or specific IgE (RAST) if multiple atopic features and asthma likely. Refer to paeds allergy. Not needed for routine asthma diagnosis.</div>
+      <div>Chest CT / bronchoscopy</div><div>Hospital-initiated only. For persistent bronchiectasis, recurrent aspiration, persistent atelectasis, or suspected structural anomaly.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>CXR for acute cough in children without danger signs adds radiation exposure without changing management in the majority of cases. A 2012 Cochrane review found no benefit of CXR in non-severe community-acquired LRTI. Reserve for cases where the result will genuinely change management.</p>
+      <p>Spirometry is the gold standard for asthma diagnosis but is only reliable over age 5. Under 5, use a 4–8 week trial of low-dose ICS. If the cough/wheeze resolves on ICS and returns on stopping, the diagnosis is supported. Document this clearly to avoid inappropriate long-term prescribing.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head">
+    <div class="node-num">6</div>
+    <div class="node-head-text">
+      <span class="node-tag">Refer</span>
+      <h3>Referral Criteria</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Acute severe asthma (SaO₂ &lt;92%, silent chest, too breathless to talk). Epiglottitis. Stridor + respiratory distress. FB inhalation. Apnoea. Cyanosis.</div>
+      <div><span class="pill pill-orange">Same-day ED</span></div><div>Moderate acute asthma not responding to 10 puffs salbutamol. Bronchiolitis with poor feeding / SaO₂ &lt;92% / apnoea history. Pertussis in infant &lt;6 months. Bacterial tracheitis.</div>
+      <div><span class="pill pill-amber">Urgent paeds (1–2wk)</span></div><div>Suspected CF (wet cough + faltering growth). Bronchiectasis on CXR. Recurrent pneumonia (≥2 in 1yr). Haemoptysis. Clubbing + cough.</div>
+      <div><span class="pill pill-purple">Paeds outpatient</span></div><div>Uncontrolled asthma on step 3+. Diagnostic uncertainty for asthma in child &lt;5yr. Chronic wet cough &gt;8 weeks without diagnosis. Suspected primary ciliary dyskinesia (recurrent otitis + bronchiectasis).</div>
+      <div><span class="pill pill-green">Primary care manage</span></div><div>Viral acute cough with green features. Mild asthma well-controlled on step 1–2. Croup — mild, responds to oral dexamethasone. Post-infectious cough resolving.</div>
+      <div>Habit cough</div><div>Honking cough disappearing during sleep, school-age child, no nocturnal symptoms → refer CAMHS / specialist respiratory. Suggestion therapy / reassurance effective in 90%.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>CF diagnosis is delayed by an average of 1–2 years in children not detected by newborn screening (NBS). NBS detects ~90% but false negatives exist. Any child with chronic wet cough + faltering growth + recurrent chest infections deserves CF investigation regardless of NBS result.</p>
+      <p>Recurrent pneumonia (≥2 episodes in 12 months) should always be referred for investigation — underlying structural lesion (sequestration, congenital airway malformation), immunodeficiency, or aspiration should be excluded. These are missed in primary care.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head">
+    <div class="node-num">7</div>
+    <div class="node-head-text">
+      <span class="node-tag">Treat</span>
+      <h3>Treatment — condition-specific drug ladder</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Mild croup</div>
+        <div class="b-drug">Oral dexamethasone <span class="pill pill-teal">Single dose</span></div>
+        <div class="b-note">0.15 mg/kg PO single dose. Max 10mg. NNT=5. Can send home. Reassess if stridor at rest develops. Avoid in varicella.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Acute wheeze / asthma</div>
+        <div class="b-drug">Salbutamol MDI + spacer <span class="pill pill-teal">First-line</span></div>
+        <div class="b-note">2–6 puffs via spacer, repeat up to 10 puffs if moderate. Prednisolone 1–2mg/kg/day (max 40mg) x 3 days if moderate/severe.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Pertussis (confirmed)</div>
+        <div class="b-drug">Azithromycin <span class="pill pill-teal">Within 3 weeks</span></div>
+        <div class="b-note">Azithromycin 10mg/kg OD x 5 days (all ages). Reduces transmission; doesn't shorten cough. Notify PHE. Treat household contacts &lt;1yr prophylactically.</div>
+      </div>
+    </div>
+    <div class="ladder" style="margin-top:14px">
+      <div class="rung"><span class="rn">Asthma Step 1</span><span class="rt"><b>SABA PRN</b> — Salbutamol 100mcg 1–2 puffs via spacer as needed. Review if using &gt;3 times/week.</span></div>
+      <div class="rung"><span class="rn">Asthma Step 2</span><span class="rt"><b>Add ICS low dose</b> — Beclometasone 100–200mcg BD (≥5yr). Under 5: fluticasone 50mcg BD. Review after 4–8 weeks.</span></div>
+      <div class="rung"><span class="rn">Asthma Step 3</span><span class="rt"><b>ICS + LABA</b> — Salmeterol 25mcg BD added to ICS. Or MART regime (budesonide/formoterol 100/6 1 puff BD + PRN) if ≥12yr. Refer if &lt;5yr.</span></div>
+      <div class="rung"><span class="rn">Asthma Step 4</span><span class="rt"><b>Increase ICS to medium dose</b> + LTRA (montelukast) 4mg (&lt;6yr) / 5mg (6–14yr) OD at night. Refer to paeds.</span></div>
+    </div>
+    <div class="kv" style="margin-top:12px">
+      <div>PBB (wet cough &gt;4wk)</div><div>Amoxicillin 40mg/kg/day (max 1.5g/day) in 3 doses x 14 days. If fails → co-amoxiclav. Response confirms diagnosis. Recurrent PBB → refer paeds.</div>
+      <div>Viral cough</div><div>No antibiotic. Honey 2.5ml in children &gt;1yr at night (not infants — botulism risk). OTC cough medicines not recommended MHRA &lt;12yr. Reassure and safety-net.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Salbutamol via MDI + spacer is as effective as nebulisation in mild-moderate asthma (Cochrane 2013) and avoids hospitalisation delays. Every asthmatic child should have a spacer (e.g., AeroChamber Plus) — technique must be checked at every visit.</p>
+      <p>Honey at night reduces cough frequency in children over 1 year — a Cochrane review (2018) found a small but statistically significant benefit over no treatment. It should not be given to infants under 1 year due to infant botulism risk. OTC cough medicines have no evidence and are not recommended by MHRA for children under 12.</p>
+      <p>Montelukast for asthma: MHRA 2020 safety review highlighted neuropsychiatric side effects (sleep disturbances, nightmares, aggression, suicidal ideation). Counsel parents and document. Consider risk vs benefit especially in children with pre-existing behavioural issues.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head">
+    <div class="node-num">8</div>
+    <div class="node-head-text">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Preventive measures &amp; self-management</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Inhaler technique</b> Check at every asthma review — poor technique is the commonest cause of uncontrolled asthma. MDI + spacer = standard for under 8yr. Use InCheck DIAL or demonstrate at appointment.</div>
+      <div class="lstile"><b>Smoke-free environment</b> Passive smoking doubles asthma risk and increases cough frequency. Every smoking parent/carer should be offered smoking cessation referral. Carbon monoxide test for parents if appropriate.</div>
+      <div class="lstile"><b>Vaccinations</b> Annual influenza vaccine recommended for all children with asthma or recurrent LRTI. Pertussis booster in school-age if not up to date. Check immunisation record at every consultation.</div>
+      <div class="lstile"><b>Allergen avoidance</b> House dust mite reduction (mattress covers, regular washing at 60°C, no carpet in bedroom) reduces asthma exacerbations. Pet dander avoidance if sensitised. Pollen avoidance strategies in pollen season.</div>
+      <div class="lstile"><b>Asthma action plan</b> All asthmatics should have a written personalised asthma action plan (PAAP). Available via Asthma + Lung UK (asthma.org.uk). Review at every appointment.</div>
+      <div class="lstile"><b>Breast-feeding / diet</b> Breastfeeding for ≥4 months reduces bronchiolitis and recurrent wheeze risk. No evidence for elimination diets unless confirmed allergy. Good nutrition supports immune function.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Inhaler technique is poor in up to 70% of asthmatic children and their carers. The most common errors are lack of spacer use, failure to actuate during inhalation, and not holding breath after. Improving technique can reduce exacerbation frequency by 30–40% without medication change.</p>
+      <p>Environmental tobacco smoke (ETS) exposure in children with asthma increases hospitalisation risk by 2-fold and doubles the number of GP consultations. Parental smoking cessation is the most effective single intervention for childhood respiratory health but requires sensitive non-judgemental communication.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head">
+    <div class="node-num">9</div>
+    <div class="node-head-text">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-up, Safety-Netting &amp; Monitoring</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Acute viral cough</div><div>No routine follow-up needed. Safety-net: return if cough worsens, lasts &gt;3 weeks, or new symptoms develop (fever, wheeze, failure to feed).</div>
+      <div>Asthma — new diagnosis</div><div>Review at 4–8 weeks to assess response to ICS. Annual asthma review (NHS QOF). Check inhaler technique, PAAP, reliever use. Step down after 3 months of good control.</div>
+      <div>Bronchiolitis</div><div>Review at 24–48hrs if managed at home. Admit if not improving, SaO₂ drops, or feeding worsens. Most resolve by 2–3 weeks.</div>
+      <div>Pertussis</div><div>Notify PHE online (pertussis is notifiable). Household contacts &lt;1yr → prophylactic azithromycin. Child excluded from school/nursery until 48hrs of antibiotics completed.</div>
+      <div>Wet cough / PBB</div><div>Review at 2 weeks — has cough resolved? If not → repeat course or broaden antibiotic. If third course fails → paeds referral for bronchoscopy/BAL.</div>
+      <div><span class="pill pill-red">Call 999 if:</span></div><div>Child stops breathing / turns blue. Wheeze not responding to salbutamol. Child collapses or cannot be roused. Stridor at rest getting worse.</div>
+      <div><span class="pill pill-orange">Same-day if:</span></div><div>SaO₂ drops below 95% at home. Cough becomes suddenly much worse with distress. Feeding stops completely. Parent very worried — trust parental instinct.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Annual asthma review is a QOF target (QOF indicator AST) and has been shown to reduce asthma mortality. The UK has one of the highest rates of preventable asthma deaths in Europe — the majority related to inadequate monitoring, no PAAP, and failure to step up treatment.</p>
+      <p>The National Review of Asthma Deaths (NRAD 2014) found that 90% of asthma deaths were potentially avoidable. Common failures: no written action plan, no escalation plan communicated to parents, excessive reliance on SABA, under-use of ICS. Follow-up and monitoring saves lives.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on: NICE NG117 (Cough), NICE NG9 (Bronchiolitis), BTS/SIGN British Guideline on Asthma 2019 (updated 2023), NICE CKS Croup, NICE CKS Pertussis, MHRA guidance on cough medicines in children, NRAD 2014. Always adapt to individual patient context and local formulary.
+</div>
+
+<script>
+/* ═══════════════════════════════════
+   REASONING GP — Shared Algorithm JS
+   ═══════════════════════════════════ */
+function initAlgorithm(storageKey) {
+  const TOTAL = 9;
+  const pDone = document.getElementById('pDone');
+  const pFill = document.getElementById('pFill');
+  const resetBtn = document.getElementById('resetBtn');
+
+  function getState() {
+    try { return JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch { return {}; }
+  }
+  function saveState(s) {
+    try { localStorage.setItem(storageKey, JSON.stringify(s)); } catch {}
+  }
+
+  function updateProgress() {
+    const boxes = document.querySelectorAll('.node-tick input[type="checkbox"]');
+    let done = 0;
+    boxes.forEach(cb => { if (cb.checked) done++; });
+    pDone.textContent = done;
+    pFill.style.width = (done / TOTAL * 100) + '%';
+  }
+
+  function applyDoneClass(node, checked) {
+    if (checked) node.classList.add('is-done');
+    else node.classList.remove('is-done');
+  }
+
+  // Restore state
+  const state = getState();
+  document.querySelectorAll('.node').forEach((node, i) => {
+    const cb = node.querySelector('input[type="checkbox"]');
+    if (!cb) return;
+    const key = 'step' + (i + 1);
+    if (state[key]) { cb.checked = true; applyDoneClass(node, true); }
+    cb.addEventListener('change', () => {
+      const s = getState();
+      s['step' + (i + 1)] = cb.checked;
+      saveState(s);
+      applyDoneClass(node, cb.checked);
+      updateProgress();
+    });
+  });
+
+  // Why drawers
+  document.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      const drawer = btn.nextElementSibling;
+      if (drawer) drawer.classList.toggle('open', !expanded);
+    });
+  });
+
+  // Reset
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (!confirm('Reset all progress?')) return;
+      localStorage.removeItem(storageKey);
+      document.querySelectorAll('.node-tick input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+        applyDoneClass(cb.closest('.node'), false);
+      });
+      updateProgress();
+    });
+  }
+
+  updateProgress();
+}
+
+initAlgorithm('rgp.alg.cough-children.v1');
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

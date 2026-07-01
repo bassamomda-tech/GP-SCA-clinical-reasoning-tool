@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Leg Cramps Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ── Shared Algorithm Styles ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;-webkit-text-size-adjust:100%}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#f7f6f3;color:#1a1a2e;min-height:100vh;padding:0 0 4rem}
+h3{font-family:'Source Serif 4',Georgia,serif;font-size:1.15rem;font-weight:600;line-height:1.3}
+b{font-weight:600}
+small{font-size:.8rem}
+
+/* Banner */
+.stem-banner{display:flex;align-items:center;gap:1rem;background:#1a1a2e;color:#fff;padding:1rem 1.4rem;border-bottom:3px solid #e63946}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{font-size:1rem;display:block}
+.stem-banner small{opacity:.7;font-size:.78rem}
+
+/* Progress */
+.alg-progress{display:flex;align-items:center;gap:.75rem;padding:.6rem 1.4rem;background:#fff;border-bottom:1px solid #e5e3dc;font-size:.82rem;position:sticky;top:0;z-index:100;flex-wrap:wrap}
+.alg-progress span:first-child{font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:#666}
+.pcount{font-weight:700;color:#1a1a2e;min-width:2.5rem}
+.pbar{flex:1;min-width:80px;height:6px;background:#e5e3dc;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;width:0%;background:linear-gradient(90deg,#2a9d8f,#52b788);border-radius:3px;transition:width .4s ease}
+.reset{margin-left:auto;font-size:.75rem;padding:.3rem .7rem;border:1px solid #ccc;border-radius:4px;background:#fff;cursor:pointer;color:#666;font-family:inherit}
+.reset:hover{background:#fee;border-color:#e63946;color:#e63946}
+
+/* Flow */
+.alg-flow{max-width:760px;margin:1.5rem auto;padding:0 1rem;display:flex;flex-direction:column;align-items:center;gap:0}
+.connector{width:2px;height:24px;background:linear-gradient(180deg,#d1cec7,#b8b3a8);flex-shrink:0}
+
+/* Node */
+.node{width:100%;background:#fff;border-radius:12px;border:1.5px solid #e5e3dc;box-shadow:0 2px 8px rgba(0,0,0,.06);overflow:hidden;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.node.done{border-color:#52b788;background:#fafff8}
+.node.done .node-num{background:#52b788}
+
+/* Node header */
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:50%;background:#1a1a2e;color:#fff;font-weight:700;font-size:.85rem;flex-shrink:0}
+.node-head{display:flex;align-items:flex-start;gap:.75rem;padding:1rem 1rem .6rem;flex:1}
+.node-tag{display:inline-block;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:.15rem .5rem;border-radius:3px;background:#f0ece3;color:#666;margin-bottom:.3rem}
+.node[data-type="SAFETY"] .node-tag{background:#fde8e8;color:#c0392b}
+.node[data-type="DIAGNOSE"] .node-tag{background:#e8f4fd;color:#1a6fa3}
+.node[data-type="REFER"] .node-tag{background:#f3e8fd;color:#7b2fa8}
+.node[data-type="TREAT"] .node-tag{background:#e8fdf0;color:#1a7a4a}
+.node[data-type="LIFESTYLE"] .node-tag{background:#fdf8e8;color:#8a6a00}
+.node-row{display:flex;align-items:flex-start;gap:0}
+.node-tick{padding:.8rem .8rem .8rem 0;display:flex;align-items:center}
+.node-tick input[type=checkbox]{width:1.1rem;height:1.1rem;accent-color:#52b788;cursor:pointer}
+.tlbl{font-size:.75rem;color:#888;margin-left:.3rem;cursor:pointer}
+
+/* Node body */
+.node-body{padding:.2rem 1rem 1rem;font-size:.88rem;line-height:1.6;color:#333}
+.node-body>p,.node-body>span{display:block;margin-bottom:.6rem;font-size:.88rem}
+
+/* Key-Value Grid */
+.kv{display:grid;grid-template-columns:minmax(110px,1fr) 3fr;gap:0;border:1px solid #e5e3dc;border-radius:8px;overflow:hidden;margin:.5rem 0;font-size:.84rem}
+.kv>div{padding:.55rem .75rem;border-bottom:1px solid #eee}
+.kv>div:nth-child(odd){background:#f9f8f5;font-weight:600;color:#444;border-right:1px solid #e5e3dc}
+.kv>div:nth-child(even){background:#fff}
+.kv>div:nth-last-child(-n+2){border-bottom:none}
+
+/* Red flag grid */
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.5rem;margin:.5rem 0}
+.rftile{background:linear-gradient(135deg,#fff5f5,#ffeaea);border:1.5px solid #f5c6cb;border-radius:8px;padding:.65rem .75rem;font-size:.83rem;line-height:1.5}
+.rftile b{color:#c0392b;display:block;margin-bottom:.15rem}
+
+/* Branch */
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.6rem;margin:.5rem 0}
+.b-card{background:#f8fffe;border:1.5px solid #b2dfdb;border-radius:8px;padding:.65rem .75rem;font-size:.83rem}
+.b-cond{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#777;margin-bottom:.3rem}
+.b-drug{font-size:.95rem;font-weight:700;color:#1a1a2e;margin-bottom:.25rem}
+.b-note{font-size:.8rem;color:#555;line-height:1.4}
+
+/* Ladder */
+.ladder{border-left:3px solid #2a9d8f;margin:.5rem 0;padding-left:0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:flex-start;gap:0;padding:.5rem .75rem;border-bottom:1px solid #e8f5f3;background:#fbfffd;font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rn{background:#2a9d8f;color:#fff;font-size:.7rem;font-weight:700;padding:.2rem .5rem;border-radius:3px;flex-shrink:0;margin-right:.6rem;margin-top:.05rem;white-space:nowrap}
+.rt{line-height:1.5;flex:1}
+
+/* Lifestyle grid */
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.5rem;margin:.5rem 0}
+.lstile{background:linear-gradient(135deg,#f0fdf4,#e8f5e9);border:1.5px solid #a8d5b5;border-radius:8px;padding:.65rem .75rem;font-size:.83rem;line-height:1.5}
+.lstile b{color:#1a7a4a;display:block;margin-bottom:.15rem}
+
+/* Pills */
+.pill{display:inline-block;font-size:.68rem;font-weight:700;padding:.12rem .45rem;border-radius:20px;vertical-align:middle;margin:0 .1rem;letter-spacing:.03em}
+.pill-red{background:#fde8e8;color:#c0392b;border:1px solid #f5c6cb}
+.pill-purple{background:#f3e8fd;color:#7b2fa8;border:1px solid #d9b3f5}
+.pill-blue{background:#e8f4fd;color:#1a6fa3;border:1px solid #b3d9f5}
+.pill-teal{background:#e8fdf9;color:#0d7a6b;border:1px solid #b3f0e4}
+.pill-amber{background:#fdf8e8;color:#8a6a00;border:1px solid #f5e6a3}
+.pill-green{background:#e8fdf0;color:#1a7a4a;border:1px solid #a8f5c4}
+.pill-grey{background:#f0f0f0;color:#555;border:1px solid #ddd}
+
+/* Why drawer */
+.why-row{border-top:1px solid #f0ece3;padding:.5rem 1rem}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.8rem;font-weight:600;color:#777;font-family:inherit;display:flex;align-items:center;gap:.3rem;padding:.2rem 0}
+.why-btn:hover{color:#1a1a2e}
+.why-btn .caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;font-size:.82rem;color:#555;line-height:1.6;padding:.5rem 0 .2rem;border-top:1px dashed #e5e3dc;margin-top:.4rem}
+.why-drawer.open{display:block}
+
+/* Footer */
+.alg-foot{max-width:760px;margin:1rem auto;padding:0 1rem;font-size:.77rem;color:#888;line-height:1.6;text-align:center}
+.alg-foot strong{color:#555}
+
+@media(max-width:520px){
+  .rfgrid,.lsgrid,.branch{grid-template-columns:1fr}
+  .kv{grid-template-columns:1fr;font-size:.82rem}
+  .kv>div:nth-child(odd){border-right:none;border-bottom:1px solid #e5e3dc}
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body data-storage-key="rgp.alg.legcramps.v1">
+
+<div class="stem-banner">
+  <div class="sb-icon">🦵</div>
+  <div>
+    <b>Leg Cramps — Nocturnal &amp; Exercise-induced</b>
+    <small>Diagnosis &amp; management of muscle cramps in primary care | Adults</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — nocturnal leg cramps are usually benign and idiopathic, but exclude secondary causes and the mimics (claudication, neuropathy, DVT). Treat, advise, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Leg cramps</span><div class="body">Timing (nocturnal), frequency, exercise relationship, drugs, hydration. Examine pulses, neuro, calves.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — mimic / secondary cause</span><span class="ttl">Mimic or secondary cause?</span><div class="body">Exertional calf pain relieved by rest → claudication (vascular). Unilateral swelling/tenderness → DVT. Persistent severe cramps + systemic features.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Investigate / escalate</span><div class="body">Claudication → vascular assessment (ABPI). Suspected DVT → urgent pathway.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination localise the cause.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · common causes</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Idiopathic nocturnal</div><div class="box act"><span class="ttl">Commonest</span><div class="body">Stretching exercises, hydration; reassure. Quinine only if severe and other measures fail (caution).</div></div></div><div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Metabolic / drugs</div><div class="box ix"><span class="ttl">Secondary</span><div class="body">Electrolyte disturbance, dehydration, diuretics, statins, CKD, thyroid; correct cause.</div></div></div><div class="col"><div class="blabel">Neuromuscular</div><div class="box ix"><span class="ttl">Other</span><div class="body">Peripheral neuropathy, radiculopathy, MND (if weakness/fasciculation).</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-purple">Vascular</span> claudication; <span class="pill pill-purple">neurology</span> if neuromuscular features; correct metabolic causes and review drugs.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · self-management &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Self-management &amp; modifiable factors</span><span class="ttl">First-line for idiopathic cramps</span><div class="body"><b>Regular calf and hamstring stretching</b> (before bed), good <b>hydration</b>, gentle activity; passive stretch/massage during an attack. <b>Review contributing drugs</b> (diuretics, statins, β2-agonists) and correct electrolyte/thyroid abnormalities. <b>Reserve quinine</b> for severe, frequent cramps unresponsive to other measures (narrow therapeutic margin, review benefit at 4 weeks).</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Reassess &amp; spot the mimics</span><div class="body"><b>Urgent</b> if exertional calf pain consistently stops walking and eases with rest (claudication → ABPI), or unilateral calf swelling/tenderness (?DVT). <b>Review</b> persistent or worsening cramps for an electrolyte/endocrine/CKD cause, or neuromuscular features (weakness, fasciculation → neurology). Re-evaluate quinine benefit/toxicity periodically.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Distinguish cramp from claudication:</b> exertional calf pain that consistently stops the patient and resolves with rest is vascular and needs an ABPI, not stretching advice.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-row">
+    <div class="node-head">
+      <div class="node-num">1</div>
+      <div><span class="node-tag">Safety</span><h3>Red flags — exclude serious pathology first</h3></div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <span>Most leg cramps are benign and idiopathic, but several serious conditions can present similarly. Exclude before treating symptomatically.</span>
+    <div class="rfgrid">
+      <div class="rftile"><b>Calf pain + swelling + recent travel/immobility</b> → same-day DVT assessment (Wells score + D-dimer/USS). Do not diagnose as cramp</div>
+      <div class="rftile"><b>Leg cramps + claudication distance &lt;200m + absent pulses</b> → urgent vascular review (critical ischaemia if rest pain)</div>
+      <div class="rftile"><b>Rest pain + pallor + cold limb</b> → 999 (acute limb ischaemia — 6 hours to save limb)</div>
+      <div class="rftile"><b>Cramps + progressive weakness + fasciculations</b> → urgent neurology referral (MND, peripheral neuropathy)</div>
+      <div class="rftile"><b>Cramps + severe hypokalaemia symptoms</b> (K &lt;2.5 + arrhythmia/paralysis) → 999 or same-day electrolyte correction</div>
+      <div class="rftile"><b>Cramps in pregnancy + calf tenderness</b> → same-day DVT assessment (pregnancy is high-risk state)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">DVT affects 1–2 per 1000 adults/year and is commonly mistaken for cramp. Missing acute limb ischaemia causes amputation within 6–12 hours. MND presents with cramps and fasciculations before weakness in 25% of cases. Hypokalaemia from diuretics or eating disorders causes life-threatening arrhythmias at K &lt;2.5 mmol/L.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-row">
+    <div class="node-head">
+      <div class="node-num">2</div>
+      <div><span class="node-tag">Diagnose</span><h3>Confirm diagnosis — characterise the cramps</h3></div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <span>True muscle cramp = sudden, painful, involuntary contraction of a muscle, lasting seconds to minutes, relieved by stretching. Distinguish from mimics.</span>
+    <div class="kv">
+      <div>True cramp features</div><div>Sudden onset, calf or foot most common, visible/palpable muscle tightening, lasts &lt;10 min, relieved by stretching, tender for hours after</div>
+      <div>Nocturnal cramps</div><div>During sleep or on waking. Very common (60% of adults &gt;50 yrs). Frequency &gt;3/week = clinically significant</div>
+      <div>Exercise-induced</div><div>During or immediately after exercise. Ask about hydration, electrolyte intake, training volume</div>
+      <div>Not cramps: Restless legs</div><div>Urge to move, worse at rest, evening predominance, no muscle hardening → different condition, different treatment</div>
+      <div>Not cramps: Peripheral neuropathy</div><div>Burning, tingling, "dead" sensation, stocking distribution → check HbA1c, B12, alcohol history</div>
+      <div>Not cramps: Claudication</div><div>Pain on walking, reliably reproducible, relieved by standing still (not sitting) → Wells claudication criteria</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Restless legs syndrome (RLS) affects 5–10% of adults and is commonly misdiagnosed as cramps — treatment is entirely different (dopamine agonists for RLS vs stretching/electrolytes for cramps). Distinguishing cramp from claudication is critical — treating "cramps" without investigating claudication delays revascularisation.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-row">
+    <div class="node-head">
+      <div class="node-num">3</div>
+      <div><span class="node-tag">Diagnose</span><h3>Classify — idiopathic vs secondary cause</h3></div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <span>Most cramps are idiopathic (no identifiable cause). Screen for secondary causes — many are treatable.</span>
+    <div class="kv">
+      <div>Idiopathic</div><div>No systemic disease, no medication cause, normal examination and bloods. Most nocturnal cramps in adults &gt;50 yrs. Benign but distressing</div>
+      <div>Electrolyte disturbance</div><div>Hypomagnesaemia (most common, especially diuretic use), hypokalaemia, hypocalcaemia, hyponatraemia — check with bloods</div>
+      <div>Medication-induced</div><div>Diuretics (thiazide/loop), statins, beta-agonists, nifedipine, clonazepam withdrawal, alcohol, dialysis. Review Rx chart</div>
+      <div>Systemic disease</div><div>CKD (uraemia), hypothyroidism, diabetes (peripheral neuropathy component), cirrhosis, peripheral vascular disease</div>
+      <div>Dehydration/overexertion</div><div>Athletes, hot weather, excessive sweating without electrolyte replacement</div>
+      <div>Pregnancy</div><div>Common in 2nd/3rd trimester — low magnesium, mechanical compression. Manage conservatively; avoid quinine</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Hypomagnesaemia is the most common treatable cause and is found in 40–60% of patients on long-term diuretics — yet is rarely checked. Statin-induced myopathy (including cramps) affects 5–10% of statin users and is dose-dependent. Identifying secondary causes avoids unnecessary long-term treatment with quinine.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-row">
+    <div class="node-head">
+      <div class="node-num">4</div>
+      <div><span class="node-tag">Diagnose</span><h3>Targeted examination</h3></div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <span>Examination guides whether cramps are idiopathic or secondary to vascular, neurological, or systemic disease.</span>
+    <div class="kv">
+      <div>Peripheral pulses</div><div>Palpate femoral, popliteal, dorsalis pedis, posterior tibial. Absent/reduced → vascular disease (ABPI if available). ABI &lt;0.9 = PAD</div>
+      <div>Lower limb neurology</div><div>Sensation (light touch, vibration — 128Hz tuning fork), reflexes (ankle jerk absent in neuropathy), power. Wasting/fasciculations → MND/motor neuropathy</div>
+      <div>Calf assessment</div><div>Calf swelling, tenderness, warmth, Homan's sign (poor sensitivity) → if positive, Wells score for DVT</div>
+      <div>Muscle bulk</div><div>Wasting suggests systemic disease, MND, or prolonged immobility</div>
+      <div>Thyroid</div><div>Goitre, slow relaxing reflexes, dry skin, bradycardia → hypothyroidism</div>
+      <div>Fluid status</div><div>Skin turgor, mucous membranes → dehydration. Oedema → CKD, cardiac failure, liver disease</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">ABPI &lt;0.9 in a patient presenting with leg cramps changes the diagnosis to PAD and the management pathway entirely. Ankle jerk absence with normal vibration sensation localises neuropathy. Slow-relaxing reflexes are 97% specific for hypothyroidism. A normal examination supports idiopathic cramps and avoids unnecessary investigation.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-row">
+    <div class="node-head">
+      <div class="node-num">5</div>
+      <div><span class="node-tag">Diagnose</span><h3>Investigations</h3></div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <span>First presentation with significant cramps warrants targeted bloods. Not all patients need investigation — individualise.</span>
+    <div class="kv">
+      <div>First-line <span class="pill pill-blue">Bloods</span></div><div>U&amp;E (K, Na, Cr — renal disease, electrolyte disturbance), magnesium (most commonly low), calcium, glucose/HbA1c, TFTs, FBC</div>
+      <div>CK <span class="pill pill-blue">Creatine kinase</span></div><div>If statin use or if significant post-exertional pain. CK &gt;10x ULN = statin myopathy — stop statin</div>
+      <div>Vitamin D</div><div>If widespread musculoskeletal symptoms, elderly, housebound, or BMI &gt;30</div>
+      <div>B12/folate</div><div>If neuropathy features (tingling, numbness, reduced reflexes), alcohol use, metformin use</div>
+      <div>ABPI</div><div>If claudication suspected, absent/reduced peripheral pulses, or cardiovascular risk factors. ABI &lt;0.9 = PAD</div>
+      <div>Not routinely needed</div><div>MRI/nerve conduction if no clinical evidence of neurological disease. D-dimer only in low pre-test probability DVT</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Magnesium is not included in standard U&amp;E — must be specifically requested. Normal serum magnesium does not exclude total body depletion (intracellular), but checking it is the best available proxy. Statin myopathy with CK &gt;10x ULN requires statin cessation regardless of cardiovascular benefit — rechallenge at lower dose after 4–6 weeks.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-row">
+    <div class="node-head">
+      <div class="node-num">6</div>
+      <div><span class="node-tag">Refer</span><h3>Referral criteria</h3></div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Acute cold/pale/pulseless leg (acute limb ischaemia) | Severe hypokalaemia with cardiac arrhythmia</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Suspected DVT (Wells ≥2 or high clinical suspicion) | Rest pain with absent peripheral pulses</div>
+      <div><span class="pill pill-purple">Urgent vascular</span></div><div>ABPI &lt;0.9 with claudication symptoms | Claudication distance &lt;100m restricting daily life | Non-healing leg ulcer</div>
+      <div><span class="pill pill-purple">Urgent neurology</span></div><div>Progressive weakness + cramps + fasciculations (MND) | Rapidly progressive neuropathy</div>
+      <div><span class="pill pill-grey">Routine</span></div><div>Confirmed PAD for vascular assessment and exercise programme | Refractory cramps despite treatment</div>
+      <div><span class="pill pill-green">Primary care</span></div><div>Idiopathic cramps, electrolyte-related cramps, medication-induced, pregnancy-related — manage in primary care</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">PAD with ABPI &lt;0.9 benefits from supervised exercise (equivalent to angioplasty for claudication — NEJM 2015) and cardiovascular risk reduction. Urgent vascular referral for critical ischaemia (rest pain, tissue loss) — revascularisation must happen within 6 hours to save the limb.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-row">
+    <div class="node-head">
+      <div class="node-num">7</div>
+      <div><span class="node-tag">Treat</span><h3>Treatment ladder — stepwise approach</h3></div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <span>Treat underlying causes first. For idiopathic/nocturnal cramps, escalate through non-pharmacological to pharmacological.</span>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Treat underlying cause</b> — correct electrolytes (Mg, K), review/stop causative medications, treat hypothyroidism/diabetes/CKD</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Stretching exercises</b> — calf stretches 3x daily and before bed (most evidence for nocturnal cramps). Dorsiflexion during cramp provides immediate relief. Physiotherapy referral if needed</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Magnesium glycinate/citrate</b> 300–400 mg oral OD (better absorbed than magnesium oxide). Trial for 4–6 weeks. Especially effective if serum Mg low or on diuretics. <span class="pill pill-amber">Caution</span> CKD (dose-reduce, check eGFR)</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Quinine sulfate</b> 200–300 mg at night. <span class="pill pill-amber">Caution:</span> MHRA warning — only if cramps cause regular sleep disturbance AND Step 1–3 have failed. 4-week trial; review at 3 months. Contraindicated: pregnancy, haemolytic anaemia, optic neuritis. <b>Not for routine use</b></span></div>
+      <div class="rung"><span class="rn">Step 5</span><span class="rt"><b>Vitamin B complex / Vit E 400IU</b> — limited evidence but safe profile. Consider in refractory cases before specialist referral</span></div>
+      <div class="rung"><span class="rn">Avoid</span><span class="rt">Quinine in pregnancy | Routine use without trialling Steps 1–3 first | Prolonged quinine without 3-monthly review</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Calf stretching reduces nocturnal cramp frequency by 58% (BMJ 2012, Hallegraeff et al). Quinine reduces cramp frequency by ~27% (Cochrane 2015) but has narrow therapeutic index — causes cinchonism (tinnitus, dizziness, visual disturbances) and rare thrombocytopenia. MHRA 2010 restricted quinine to prescription-only due to fatalities. Magnesium is the preferred pharmacological option for most patients.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-row">
+    <div class="node-head">
+      <div class="node-num">8</div>
+      <div><span class="node-tag">Lifestyle</span><h3>Non-pharmacological interventions — first-line</h3></div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Calf stretching</b> 3 times daily and before bed. Stand facing wall, knee straight, heel on floor, hold 30 seconds each leg. Reduces frequency by up to 58%</div>
+      <div class="lstile"><b>Hydration</b> 2 litres water daily. Increase in hot weather or during exercise. Avoid alcohol excess (dehydrating and directly myotoxic)</div>
+      <div class="lstile"><b>Footwear</b> Supportive footwear with heel support. Avoid flat shoes/barefoot in recurrent sufferers</div>
+      <div class="lstile"><b>Bedding adjustments</b> Untuck bed sheets at foot of bed (tight sheets plantar-flex ankles, triggering cramps). Elevate foot of bed slightly</div>
+      <div class="lstile"><b>Exercise warm-down</b> Gentle stretching after exercise. Gradual cool-down prevents exercise-induced cramps. Avoid sudden increased training load</div>
+      <div class="lstile"><b>Dietary electrolytes</b> Potassium (bananas, avocado, potato), magnesium (nuts, dark chocolate, leafy greens), calcium (dairy, broccoli) — especially if dietary intake poor</div>
+      <div class="lstile"><b>Avoid aggravants</b> Reduce caffeine and alcohol. Both deplete magnesium and cause dehydration</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Loose bedding reduces cramp frequency by reducing nocturnal ankle plantar-flexion — a simple, free intervention. Exercise-induced cramps are strongly associated with electrolyte depletion through sweat — sodium and magnesium losses are greatest. Dietary improvement in electrolytes is more physiological than supplementation and avoids medication side effects.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-row">
+    <div class="node-head">
+      <div class="node-num">9</div>
+      <div><span class="node-tag">Safety</span><h3>Follow-up &amp; safety-netting</h3></div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>4–6 weeks</div><div>Review: Are cramps improving? Check magnesium/electrolyte results. Assess adherence to stretching programme. Escalate treatment if no benefit</div>
+      <div>3 months</div><div>If on quinine: mandatory review — is it still effective? Dose-lowest effective. Stop if not clearly beneficial. Check for cinchonism (tinnitus, visual disturbance)</div>
+      <div>Annual</div><div>Review medication (quinine, statins, diuretics). Repeat electrolytes if on diuretics or CKD. Reassess for new cardiovascular/neurological symptoms</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>Sudden cold, pale, pulseless, painful leg → 999 (acute limb ischaemia). Cardiac arrhythmia symptoms with muscle weakness → 999</div>
+      <div><span class="pill pill-amber">Same-day</span></div><div>New calf swelling + redness (DVT) | Progressive leg weakness or fasciculations | Tinnitus/visual changes on quinine</div>
+      <div>Quinine monitoring</div><div>Check FBC at 3 months (thrombocytopenia). Instruct patient: stop immediately if tinnitus, visual disturbance, or unusual bruising/bleeding</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Quinine-induced thrombocytopenia can occur even after months of treatment and can be severe (platelet count &lt;10). Visual toxicity (irreversible retinal damage) occurs at high cumulative doses. Regular review allows early detection. Cramps improving over months as underlying causes are addressed means medication can often be stopped — avoid indefinite quinine prescribing.</div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE CKS Leg Cramps (2023), MHRA Drug Safety Update on Quinine (2010, 2017), Cochrane Review: Quinine for Muscle Cramps (2015), BMJ Stretching RCT (Hallegraeff 2012). Adapt to individual patient context.
+</div>
+
+<script>
+(function(){
+  var KEY="rgp.alg.legcramps.v1";
+  var boxes=document.querySelectorAll(".node-tick input[type=checkbox]");
+  var fill=document.getElementById("pFill"),done=document.getElementById("pDone"),total=document.getElementById("pTotal");
+  if(total)total.textContent=boxes.length;
+  function save(){var s={};boxes.forEach(function(b,i){s[i]=b.checked});try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}}
+  function load(){try{var s=JSON.parse(localStorage.getItem(KEY)||"{}");boxes.forEach(function(b,i){b.checked=!!s[i];syncNode(b)})}catch(e){}}
+  function syncNode(b){var node=b.closest(".node");if(node)node.classList.toggle("done",b.checked)}
+  function update(){var n=0;boxes.forEach(function(b){if(b.checked)n++});if(done)done.textContent=n;if(fill)fill.style.width=(boxes.length?Math.round(n/boxes.length*100):0)+"%"}
+  boxes.forEach(function(b){b.addEventListener("change",function(){syncNode(b);save();update()})});
+  document.querySelectorAll(".why-btn").forEach(function(btn){btn.addEventListener("click",function(){var exp=btn.getAttribute("aria-expanded")==="true";btn.setAttribute("aria-expanded",String(!exp));var d=btn.nextElementSibling;if(d)d.classList.toggle("open",!exp)})});
+  var rb=document.getElementById("resetBtn");if(rb)rb.addEventListener("click",function(){if(confirm("Reset?")){boxes.forEach(function(b){b.checked=false;syncNode(b)});try{localStorage.removeItem(KEY)}catch(e){}update()}});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

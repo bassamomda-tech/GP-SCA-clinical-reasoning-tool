@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Psychosis Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;
+  --diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;
+  --treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;
+  --refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;
+  --lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
+  --font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif;
+}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+
+/* Banner */
+.stem-banner{background:linear-gradient(135deg,#1a1a2e 0%,#2d2d5e 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+
+/* Progress */
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#1a6faf,#16a34a);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555;transition:.2s}
+.reset:hover{background:#f3f4f6}
+
+/* Flow */
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:linear-gradient(#d1d5db,#d1d5db);margin:0 auto}
+
+/* Node */
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.node-body p,.node-body>div:first-child{margin-bottom:10px}
+
+/* KV grid */
+.kv{display:grid;grid-template-columns:minmax(130px,30%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}
+.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}
+.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}
+.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}
+.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}
+.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+
+/* RF grid */
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+
+/* Branch */
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+
+/* Ladder */
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;border-radius:0;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}
+.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:60px;justify-content:center;white-space:nowrap}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+
+/* LS grid */
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+
+/* Pills */
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#92400e}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+
+/* Why */
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px 0;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+
+/* Foot */
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+
+@media(max-width:500px){
+  .kv{grid-template-columns:1fr}
+  .kv>div:nth-child(odd){padding-bottom:2px}
+  .rfgrid,.branch,.lsgrid{grid-template-columns:1fr}
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🧠</div>
+  <div>
+    <b>Psychosis — First Episode & Acute Presentation</b>
+    <small>GP assessment, safety, referral and early management pathway</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — treat first-episode psychosis as an emergency for Early Intervention, assess risk, and exclude organic and drug-induced causes. Support and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Psychosis</span><div class="body">Hallucinations, delusions, thought disorder, function, insight. Onset, substance use, organic features. Risk assessment (self/others).</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — risk / organic cause</span><span class="ttl">Risk or organic cause?</span><div class="body">Risk to self/others, command hallucinations, severe self-neglect · organic cause (delirium, drug-induced, neurological) · acute behavioural disturbance.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency MH</span><div class="body">Acute risk → urgent mental health / crisis (consider Mental Health Act). Organic → treat cause/admit.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + assessment guide management.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · stepped care</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">First-episode psychosis</div><div class="box act"><span class="ttl">EIP</span><div class="body">Urgent referral to Early Intervention in Psychosis; antipsychotic initiated by specialist.</div></div></div><div class="col"><div class="blabel">Organic / substance</div><div class="box ix"><span class="ttl">Exclude</span><div class="body">Delirium, drugs (stimulants, cannabis), epilepsy, dementia; bloods, drug screen.</div></div></div><div class="col"><div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">Known relapse</div><div class="box act"><span class="ttl">Manage</span><div class="body">Relapse of known illness → CMHT, optimise treatment, address adherence.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Urgent / crisis MH</span> acute risk. <span class="pill pill-purple">Early Intervention in Psychosis</span> first-episode (time-critical); exclude organic causes. <b>Acutely disturbed &amp; declines help:</b> if immediate risk to self/others, <b>police can use s136</b> to remove to a place of safety for assessment (not usable in a private home/garden); if no immediate risk and calmed, arrange a Mental Health Act assessment. Keep calm, ensure staff safety, debrief afterwards.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · support &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Support &amp; modifiable factors</span><span class="ttl">Wrap-around recovery care</span><div class="body"><b>Stop cannabis/stimulants and reduce alcohol</b> (precipitate and worsen psychosis); support <b>medication adherence</b> and address side-effects. <b>Monitor physical health</b> — weight, lipids, glucose, ECG/QTc and smoking with antipsychotics (high CVD risk). Family/carer involvement and education, psychological therapy (CBTp), and social support (housing, employment, benefits).</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Time-critical referral; ongoing risk</span><div class="body"><b>First-episode psychosis is a time-critical EIP referral</b> — duration of untreated psychosis predicts outcome. Give <b>crisis contacts and a safety plan</b>; urgent reassessment for rising risk to self/others, command hallucinations, or severe self-neglect. Continue annual physical-health monitoring and relapse-signature planning with the CMHT.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>First-episode psychosis is a time-critical referral:</b> duration of untreated psychosis predicts outcome — refer urgently to Early Intervention while excluding organic and drug-induced causes.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head">
+    <div class="node-num">1</div>
+    <span class="node-tag">Safety</span>
+    <h3>Red Flags — Exclude Organic Causes & Immediate Danger</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Screen for organic causes and immediate risk before assuming primary psychiatric illness.
+    <div class="rfgrid">
+      <div class="rftile"><b>Command hallucinations to harm</b> Hearing voices instructing violence to self or others → 999 / Mental Health Act assessment</div>
+      <div class="rftile"><b>Active suicidal intent with plan</b> Expressing intent + method → 999, do not leave alone</div>
+      <div class="rftile"><b>Acute confusion + fever</b> Encephalitis, meningitis — neck stiffness, photophobia, rash → 999</div>
+      <div class="rftile"><b>New-onset seizures</b> Temporal lobe epilepsy, CNS lesion → same-day neurology/A&E</div>
+      <div class="rftile"><b>Focal neurological signs</b> New weakness, dysphasia, diplopia → 999 (stroke/CNS lesion)</div>
+      <div class="rftile"><b>Severe agitation / violence risk</b> Unable to engage safely, risk to clinician → 999 police support if needed</div>
+      <div class="rftile"><b>Rapid cognitive decline</b> Days–weeks onset — delirium, dementia with BPSD → same-day medical review</div>
+      <div class="rftile"><b>Substance intoxication / OD</b> Stimulants, cannabis, alcohol excess → same-day, toxicology screen</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Up to 20% of apparent first-episode psychosis has an underlying organic cause. Autoimmune encephalitis (anti-NMDA receptor), CNS infection, metabolic derangement, and substance-induced psychosis must be excluded before psychiatric diagnosis. Missing encephalitis carries mortality risk. Command hallucinations represent immediate danger and require urgent psychiatric assessment — never manage alone in primary care.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head">
+    <div class="node-num">2</div>
+    <span class="node-tag">Diagnose</span>
+    <h3>Confirm Psychotic Features — Core Symptom Screen</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Systematically identify positive, negative and disorganised symptoms. Use a structured approach.
+    <div class="kv">
+      <div>Positive symptoms</div><div>Hallucinations (auditory most common — voices commenting, commanding); delusions (persecutory, referential, grandiose); thought insertion/withdrawal; passivity phenomena</div>
+      <div>Negative symptoms</div><div>Blunted affect, alogia, avolition, anhedonia, social withdrawal — often precede florid psychosis by months</div>
+      <div>Disorganised symptoms</div><div>Formal thought disorder (loosening of associations, tangentiality), disorganised behaviour, inappropriate affect</div>
+      <div>Duration screen</div><div>&lt;1 month → Brief psychotic disorder; 1–6 months → Schizophreniform; &gt;6 months + function decline → Schizophrenia criteria</div>
+      <div>Collateral history</div><div>Essential — contact family/carer with consent. Baseline function, timeline of change, substance use, recent stressors</div>
+      <div>MSE (mental state)</div><div>Appearance, behaviour, speech (rate, form, content), mood, perception, cognition (orientation, memory), insight, judgement</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Accurate symptom characterisation determines urgency and referral pathway. Brief psychotic disorder (duration &lt;1 month) often follows acute stress and may resolve — but still needs urgent CMHT input. Negative symptoms are frequently missed and are the best predictor of functional outcome. Collateral history is often the most reliable information when insight is impaired.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head">
+    <div class="node-num">3</div>
+    <span class="node-tag">Diagnose</span>
+    <h3>Differential Diagnosis — Classification</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Differentiate primary psychotic disorder from secondary/organic and affective causes.
+    <div class="kv">
+      <div>Primary psychosis</div><div>Schizophrenia, schizoaffective disorder, delusional disorder, brief psychotic disorder — refer to EIP (Early Intervention in Psychosis) if first episode</div>
+      <div>Bipolar I — manic with psychosis</div><div>Elevated mood, grandiosity, reduced sleep, pressured speech, psychotic features mood-congruent → urgent psychiatric referral</div>
+      <div>Severe depression with psychosis</div><div>Psychotic features mood-congruent (worthlessness, guilt, nihilistic delusions) + severe depression → urgent psychiatric referral</div>
+      <div>Substance-induced</div><div>Cannabis (high-potency skunk), stimulants (cocaine, amphetamine), alcohol withdrawal (hallucinosis), LSD → urine drug screen essential</div>
+      <div>Organic / secondary</div><div>Delirium, dementia (BPSD), epilepsy, thyroid disease, B12 deficiency, HIV, neurosyphilis, autoimmune encephalitis → bloods + neurology</div>
+      <div>At-risk mental state</div><div>Sub-threshold symptoms, help-seeking, brief limited psychotic episodes → EIP referral for monitoring and early intervention</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Treatment diverges significantly by diagnosis. Bipolar disorder requires mood stabilisers, not antipsychotics alone. Organic psychosis requires treatment of the underlying cause. Early Intervention in Psychosis (EIP) services achieve significantly better outcomes when accessed within the first episode — delay worsens prognosis. NICE NG185 mandates EIP access for all first-episode psychosis regardless of age.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head">
+    <div class="node-num">4</div>
+    <span class="node-tag">Diagnose</span>
+    <h3>Targeted Examination — Physical Causes</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Full physical examination is mandatory in all new presentations of psychosis.
+    <div class="kv">
+      <div>Vital signs</div><div>Temperature (infection/encephalitis), BP, HR, oxygen saturation — tachycardia + fever → organic emergency</div>
+      <div>Neurological exam</div><div>Cranial nerves, focal deficits, cerebellar signs, primitive reflexes, meningism — any abnormality → neurology same-day</div>
+      <div>Cognitive screen</div><div>Orientation, MMSE or MoCA — disorientation suggests delirium/organic cause, not primary psychosis</div>
+      <div>Eyes</div><div>Kayser-Fleischer rings (Wilson's disease — rare), nystagmus (intoxication/cerebellar), pupil abnormalities</div>
+      <div>Thyroid</div><div>Goitre, lid lag, tremor — thyrotoxicosis can mimic mania/psychosis</div>
+      <div>Substance signs</div><div>Needle tracks, jaundice, parotid enlargement, ataxia, smell of alcohol</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">People with severe mental illness receive fewer physical health assessments and have 15–20 years reduced life expectancy — partly from physical comorbidities. Physical examination at first presentation establishes a baseline and excludes treatable organic causes. Neurological examination is especially important; viral encephalitis and CNS tumours can present with psychiatric symptoms.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head">
+    <div class="node-num">5</div>
+    <span class="node-tag">Diagnose</span>
+    <h3>Investigations — Exclude Organic Cause</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    All first-episode psychosis requires a minimum investigation screen.
+    <div class="kv">
+      <div>Bloods — first-line</div><div><span class="pill pill-blue">FBC</span> <span class="pill pill-blue">U&E</span> <span class="pill pill-blue">LFT</span> <span class="pill pill-blue">TFT</span> <span class="pill pill-blue">CRP</span> <span class="pill pill-blue">Glucose</span> <span class="pill pill-blue">B12 / folate</span> <span class="pill pill-blue">Calcium</span></div>
+      <div>Infection / autoimmune screen</div><div><span class="pill pill-blue">HIV test</span> (NICE recommends in psychosis) <span class="pill pill-blue">Syphilis serology</span> — consider NMDA-R antibodies if rapid onset, young female, seizures</div>
+      <div>Urine drug screen</div><div>Essential in all first episodes — cannabis, stimulants, opioids, benzodiazepines. Positive result does not exclude primary psychosis</div>
+      <div>Pregnancy test</div><div>All women of reproductive age — before initiating antipsychotics</div>
+      <div>ECG</div><div>Baseline QTc before antipsychotics — especially haloperidol, quetiapine. QTc &gt;450ms (men) / &gt;470ms (women) — seek advice before prescribing</div>
+      <div>Neuroimaging</div><div>MRI brain if: focal neuro signs, first episode in older adult, seizures, rapid onset, atypical features — request via CMHT or neurology, not routinely in GP</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE NG185 recommends metabolic, thyroid, and infection screening at first presentation. HIV testing is recommended given the high prevalence of psychiatric manifestations. Baseline ECG is essential before antipsychotic initiation — QT prolongation increases arrhythmia risk (torsades de pointes). Urine drug screen informs differential and management even if positive, as substance use and primary psychosis co-exist in ~50% of cases.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head">
+    <div class="node-num">6</div>
+    <span class="node-tag">Refer</span>
+    <h3>Referral Pathway — EIP and Urgent Psychiatry</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Most first-episode psychosis requires specialist referral. The GP role is assessment, safety and initiation.
+    <div class="kv">
+      <div><span class="pill pill-red">999 / Urgent</span></div><div>Command hallucinations to harm, active suicidal plan, violence risk, organic emergency (encephalitis), unable to assess safely</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>First-episode psychosis with significant distress, poor insight, risk to self or others — contact Crisis Team or duty psychiatrist</div>
+      <div><span class="pill pill-purple">EIP — urgent</span></div><div>All first-episode psychosis (any age) — NICE NG185 mandates access within 2 weeks. Contact local Early Intervention in Psychosis team directly</div>
+      <div><span class="pill pill-purple">CMHT routine</span></div><div>At-risk mental state, sub-threshold symptoms, carer concerns — refer to Community Mental Health Team</div>
+      <div>Section 136 / MHA</div><div>If patient refuses assessment and poses risk — police can use s136 powers; GP can request MHA assessment (s12 doctor needed)</div>
+      <div>Children / adolescents</div><div>Under 18 → CAMHS urgent referral, not adult EIP. Consider CAMHS crisis line</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Duration of untreated psychosis (DUP) is the strongest modifiable predictor of outcome — each week of delay worsens prognosis. EIP services reduce relapse rates, improve employment, and reduce hospitalisation. NICE NG185 (2020) mandates EIP referral for all ages with first-episode psychosis. GPs should not wait for certainty of diagnosis — EIP teams assess and confirm.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head">
+    <div class="node-num">7</div>
+    <span class="node-tag">Treat</span>
+    <h3>Pharmacological Management — Antipsychotic Initiation</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <b>GP role:</b> Initiate only if CMHT/EIP advise and patient consents, or for acute agitation bridging to specialist care. Most antipsychotic management should be led by CMHT/EIP.
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">First-line — no metabolic risk</div>
+        <div class="b-drug">Aripiprazole <span class="pill pill-teal">oral</span></div>
+        <div class="b-note">10–15 mg OD. Low metabolic side-effect profile. NICE preferred first-line.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">First-line — sedation needed</div>
+        <div class="b-drug">Olanzapine <span class="pill pill-teal">oral</span></div>
+        <div class="b-note">5–10 mg OD (start 5 mg in naïve patients). Monitor weight, glucose, lipids monthly initially.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Acute agitation (bridge)</div>
+        <div class="b-drug">Lorazepam <span class="pill pill-amber">short-term only</span></div>
+        <div class="b-note">1–2 mg PO/IM. Avoid in respiratory compromise. 1–2 doses only pending specialist review.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Treatment-resistant (CMHT led)</div>
+        <div class="b-drug">Clozapine <span class="pill pill-amber">specialist only</span></div>
+        <div class="b-note">After 2 antipsychotics failed. Requires CLOZARIL monitoring registration — never initiate in primary care.</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Baseline</span><span class="rt">ECG, FBC, U&E, LFT, lipids, HbA1c, weight, BP before starting any antipsychotic</span></div>
+      <div class="rung"><span class="rn">Week 4</span><span class="rt">Review side effects: EPS (akathisia, parkinsonism), sedation, weight gain — adjust dose with CMHT</span></div>
+      <div class="rung"><span class="rn">3 months</span><span class="rt">Metabolic monitoring: weight, BP, fasting glucose, lipids — annually thereafter</span></div>
+      <div class="rung"><span class="rn">No response</span><span class="rt">After 4–6 weeks adequate dose — CMHT review for switch or clozapine consideration</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Antipsychotics are effective in 70–80% of first-episode psychosis when used adequately. Starting at low doses reduces extrapyramidal side effects (EPS). Olanzapine and clozapine cause significant metabolic syndrome — weight gain, diabetes, dyslipidaemia — requiring metabolic monitoring. Aripiprazole has the most favourable metabolic profile (NICE preferred). Clozapine is the only evidence-based treatment for treatment-resistant schizophrenia but requires mandatory neutrophil monitoring due to agranulocytosis risk (1–2%).</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head">
+    <div class="node-num">8</div>
+    <span class="node-tag">Lifestyle</span>
+    <h3>Non-Pharmacological Support — Recovery and Wellbeing</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    NICE NG185 recommends CBT for psychosis and family intervention as standard of care alongside medication.
+    <div class="lsgrid">
+      <div class="lstile"><b>CBTp (CBT for Psychosis)</b> NICE-recommended. Reduces positive symptoms, improves insight. Minimum 16 sessions. Access via CMHT/EIP psychology.</div>
+      <div class="lstile"><b>Family intervention</b> Reduces relapse by 50% if high expressed emotion in family. Refer family to NICE-recommended programme via EIP.</div>
+      <div class="lstile"><b>Cannabis cessation</b> High-potency cannabis doubles relapse risk. Refer to Stop Smoking/drug services. Brief intervention at every consultation.</div>
+      <div class="lstile"><b>Physical health promotion</b> Antipsychotics increase cardiovascular risk — structured exercise 150 min/week, Mediterranean diet, smoking cessation reduce mortality gap.</div>
+      <div class="lstile"><b>Carer support</b> Signpost to Rethink Mental Illness, Mind, local carers' groups. Carers' assessment via GP/social care. Named carer identified.</div>
+      <div class="lstile"><b>Employment/education</b> Individual Placement and Support (IPS) via EIP — return to work/education improves long-term outcomes. More effective than traditional vocational services.</div>
+      <div class="lstile"><b>Substance use</b> Address all substances — alcohol, stimulants worsen psychosis. Dual diagnosis pathway if significant comorbidity. Non-judgemental approach.</div>
+      <div class="lstile"><b>Sleep hygiene</b> Regular sleep-wake cycle — disruption precipitates relapse. Avoid screens, caffeine after 2pm. Assess for insomnia as early relapse sign.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE NG185 places CBTp and family intervention alongside antipsychotics as first-line treatment. Family intervention is the single most effective intervention for reducing relapse in those with high expressed emotion households. Cannabis use is the most important modifiable environmental risk factor — high-potency cannabis users have 5x risk of psychosis compared to non-users. Physical health must be actively managed; people with schizophrenia die 15–20 years earlier, primarily from cardiovascular disease.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head">
+    <div class="node-num">9</div>
+    <span class="node-tag">Safety</span>
+    <h3>Follow-Up, Monitoring & Safety-Netting</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    GP maintains shared care with CMHT/EIP — annual physical health reviews are a core GP responsibility.
+    <div class="kv">
+      <div>1–2 weeks</div><div>Review medication tolerance, EPS (akathisia — restlessness, often mistaken for worsening psychosis), sedation, compliance</div>
+      <div>4–6 weeks</div><div>Treatment response — are positive symptoms improving? Liaise with EIP/CMHT. Weight, BP check</div>
+      <div>3 months</div><div>Full metabolic review: weight, BMI, BP, fasting glucose, lipids, HbA1c. Depression screen (PHQ-9)</div>
+      <div>Annual</div><div>Full physical health review: CVD risk (QRISK), metabolic monitoring, dental health, eye exam, smoking status, substance use, SMI register recall</div>
+      <div>Relapse signature</div><div>Document individual early warning signs with patient/carer — sleep disruption, social withdrawal, irritability often precede florid relapse by 2–4 weeks</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>Return of command hallucinations, expressed intent to harm self or others, severe agitation, organic symptoms (fever, confusion)</div>
+      <div><span class="pill pill-amber">Same-day GP</span></div><div>Significant deterioration in mental state, new concerns from carer, suspected medication side effect (e.g. dystonia, neuroleptic malignant syndrome)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Patients on antipsychotics have high rates of metabolic syndrome (up to 40%). Annual physical health reviews by GPs reduce the mortality gap. Neuroleptic malignant syndrome (NMS) is rare but life-threatening — hyperthermia, rigidity, altered consciousness — requires immediate cessation and emergency admission. Relapse signatures allow early intervention, reducing the need for hospitalisation. GP–CMHT communication is essential; GPs often see patients more frequently and are well-placed to detect early deterioration.</div>
+  </div>
+</div>
+
+</div><!-- end alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE NG185 (Psychosis and Schizophrenia in Adults, 2014 updated 2020), NICE CG178 (Psychosis and Schizophrenia in Children and Young People), NICE NG117 (Bipolar Disorder). Always adapt to individual patient context and local EIP/CMHT pathways. Mental Health Act 1983 (amended 2007) governs compulsory assessment.
+</div>
+
+<script>
+(function(){
+  const STORE='rgp.alg.psychosis.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+
+  function save(){
+    const checks=[...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked);
+    localStorage.setItem(STORE,JSON.stringify(checks));
+  }
+  function load(){
+    try{
+      const d=JSON.parse(localStorage.getItem(STORE)||'[]');
+      const boxes=[...flow.querySelectorAll('input[type=checkbox]')];
+      boxes.forEach((c,i)=>{if(d[i])c.checked=true});
+    }catch(e){}
+  }
+  function update(){
+    const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;
+    pDone.textContent=done;
+    pFill.style.width=(done/total*100)+'%';
+    save();
+  }
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{
+    const btn=e.target.closest('.why-btn');
+    if(!btn)return;
+    const expanded=btn.getAttribute('aria-expanded')==='true';
+    btn.setAttribute('aria-expanded',String(!expanded));
+    btn.nextElementSibling.classList.toggle('open',!expanded);
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);
+    flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));
+    flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));
+    localStorage.removeItem(STORE);
+    update();
+  });
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

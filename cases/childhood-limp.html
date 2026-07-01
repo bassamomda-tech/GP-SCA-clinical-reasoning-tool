@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Childhood Limp · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="../assets/medchooser.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+.tag-2ww{background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;font-weight:700}
+.tag-emerg{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;font-weight:700}
+</style>
+</head>
+<body class="mode-both" id="bodyEl" data-screen-label="Childhood Limp">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="childhood-limp"></aside>
+  <main class="main">
+<div class="case-head">
+  <div>
+    <div class="ch-cat">Paediatrics · Full case</div>
+    <h1>Childhood Limp</h1>
+  </div>
+  <div class="case-head-tags"><span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE CKS</span><span class="tag">Age-based differential</span><span class="tag tag-emerg">Septic · SUFE · cancer</span></div>
+</div>
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">CL</div>
+      <div><div class="tb-title">The Limping Child · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · Age-based differential · septic arthritis · transient synovitis · Perthes' · SUFE · DDH · hip refers to knee · NG12 leukaemia · safeguarding</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">Age frames the differential</span><span class="ns-lbl">0–3y: DDH, septic arthritis, toddler's fracture, non-accidental injury. 3–10y: transient synovitis, septic arthritis, Perthes'. 10–16y: SUFE, septic arthritis, Perthes'. Septic arthritis &amp; malignancy can occur at any age. Age narrows the list dramatically</span></div>
+    <div class="ns-item"><span class="ns-val">Septic arthritis = emergency</span><span class="ns-lbl">A child who won't weight-bear or move the joint, with fever and systemic upset, has septic arthritis until proven otherwise — an emergency needing same-day assessment, joint aspiration and IV antibiotics. Kocher criteria (non-weight-bearing, fever &gt;38.5, ESR/CRP↑, WCC↑) help differentiate from transient synovitis</span></div>
+    <div class="ns-item"><span class="ns-val">The hip refers to the knee</span><span class="ns-lbl">A child with knee or thigh pain and a normal knee must have the HIP examined — SUFE and Perthes' classically present with knee/thigh pain. Missing this is the commonest, most dangerous error in the limping child</span></div>
+    <div class="ns-item"><span class="ns-val">SUFE — don't miss it</span><span class="ns-lbl">Slipped upper femoral epiphysis: typically an overweight adolescent (often around puberty), with hip/groin/thigh/knee pain, an externally rotated leg and limited internal rotation. Needs urgent orthopaedics and non-weight-bearing — delay causes avascular necrosis. Can be bilateral</span></div>
+    <div class="ns-item"><span class="ns-val">Transient synovitis is a diagnosis of exclusion</span><span class="ns-lbl">The commonest cause of acute limp in 3–10y — often post-viral, the child is systemically well, afebrile or low-grade, and improves over days. But it is diagnosed only after excluding septic arthritis; never assume it in a febrile, unwell, non-weight-bearing child</span></div>
+    <div class="ns-item"><span class="ns-val">🟣 Persistent bone pain → leukaemia</span><span class="ns-lbl">NICE NG12: unexplained persistent bone pain, limp or musculoskeletal symptoms with systemic features — pallor, bruising/petechiae, hepatosplenomegaly, generalised lymphadenopathy, fever — warrant a very urgent FBC (within 48h) and immediate paediatric referral for suspected leukaemia. Night pain &amp; bone tenderness are clues</span></div>
+    <div class="ns-item"><span class="ns-val">Think safeguarding</span><span class="ns-lbl">Always consider non-accidental injury — inconsistent or changing history, injury not matching development/mechanism, delayed presentation, other injuries, or a non-mobile child with a fracture. A limp can be the presentation of abuse</span></div>
+    <div class="ns-item"><span class="ns-val">Other causes</span><span class="ns-lbl">Reactive/juvenile idiopathic arthritis, osteomyelitis, trauma/toddler's fracture, discitis, soft-tissue/foot causes, growing pains (bilateral, night, never limps by day, normal exam — a diagnosis of exclusion). Don't forget the foot, ankle and whole leg, and a full systemic look</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — The Limping Child</div>
+  <div class="stem-title">A 13-year-old boy with a few weeks of "knee" pain and a limp, now worse, who is overweight and walks with his foot turned out — and whose knee examines completely normally</div>
+  <div class="stem-text">Kyle Morrison, 13, is brought by his mother with several weeks of right knee and thigh pain and a limp that has worsened over the past week, now making PE difficult. There was no clear injury. He is overweight for his age. He walks with an antalgic gait and the right leg appears externally rotated. When you examine the knee it is entirely normal — no swelling, full painless range. He is otherwise well, afebrile, with no rash, bruising, weight loss or night sweats, and no recent illness. His mother is frustrated that "it's just his knee" and wants a referral to physiotherapy.</div>
+  <div class="stem-note">This stem tests the single most important principle of the limping child — that the hip refers to the knee — and the recognition of slipped upper femoral epiphysis (SUFE): an overweight adolescent around puberty, with knee/thigh pain, an externally rotated leg, restricted internal rotation of the hip, and a normal knee. It requires the candidate to examine the HIP despite knee-presenting pain, to recognise SUFE as needing urgent orthopaedic referral and non-weight-bearing (to prevent avascular necrosis), and NOT to refer to physiotherapy or reassure as a knee problem. It also tests the broader age-based framework and the exclusion of the emergencies (septic arthritis, and the NG12 leukaemia red flags) and safeguarding. The SCA challenge is to redirect a parent fixated on "the knee" toward urgent hip assessment, and to convey the seriousness without alarm.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — SUFE (this stem)</strong> Overweight adolescent, knee/thigh pain, externally rotated leg, restricted hip internal rotation, normal knee. Urgent orthopaedics, non-weight-bearing, X-ray (AP + frog-lateral); avoid AVN; check the other hip.</div>
+    <div class="stem-variant"><strong>Scenario B — Septic arthritis (EMERGENCY, any age)</strong> Won't weight-bear/move joint, fever, systemically unwell, raised inflammatory markers (Kocher). Same-day admission; aspiration + IV antibiotics.</div>
+    <div class="stem-variant"><strong>Scenario C — Transient synovitis (3–10y)</strong> Well child, post-viral, low/no fever, improving; diagnosis of exclusion after ruling out sepsis. Rest, analgesia, safety-net, review.</div>
+    <div class="stem-variant"><strong>Scenario D — Perthes' (3–10y)</strong> Insidious limp/hip-knee pain, restricted hip movement, often well. Orthopaedic referral; X-ray (avascular necrosis of the femoral head).</div>
+    <div class="stem-variant"><strong>Scenario E — Red flags: leukaemia / DDH / NAI</strong> Persistent bone pain + pallor/bruising/lymphadenopathy/fever → very urgent FBC + paediatrics (NG12 leukaemia). Infant: DDH (asymmetry, limited abduction). Any: non-accidental injury — inconsistent history/other injuries.</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Age (DDH/septic/toddler's # → transient synovitis/Perthes' → SUFE); weight-bearing &amp; systemic features (septic); hip refers to knee; SUFE in the overweight adolescent; persistent bone pain + systemic features (leukaemia, NG12); safeguarding/NAI; growing pains as exclusion; bilateral/other-hip involvement.</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History — Age · Weight-Bearing &amp; Systemic Features · Red Flags · Safeguarding · ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The history is structured around age (which reshapes the differential), the two pivotal questions — is the child weight-bearing, and is the child systemically well? — and the red flags (septic arthritis, the NG12 leukaemia features, and safeguarding).</strong> The over-arching rule, which Kyle's case turns on, is that knee or thigh pain in a child demands assessment of the hip.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 SCA framing — redirect "it's just his knee" to the hip</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"I can see why you think it's his knee — that's where it hurts. But in children, hip problems very often show up as knee pain, so I'm going to examine his hip carefully too. That's important, because some hip conditions need treating quickly."</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">The parent (and the symptom) point at the knee. The skill is to explain, not dismiss, why the hip must be examined — and to act urgently if SUFE is found, rather than refer to physiotherapy.</div>
+    </div>
+    <div class="sub-divider">1A — Age, weight-bearing, systemic features, red flags</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"Tell me about the limp — when it started, where it hurts, and how it's changed."</em></td>
+            <td class="why"><strong>Establishes onset, site and trajectory.</strong> Kyle's weeks of knee/thigh pain, worsening, no injury, in an overweight adolescent, with an out-turned leg, is a SUFE story — but it is masquerading as a knee problem. Acute vs insidious and the site guide the differential within the age band.<span class="why-sub">In SCA: not accepting "knee pain" at face value, and reasoning by age, is the core skill.</span></td>
+            <td><span class="chg chg-ddx">Adolescent + knee/thigh pain → examine hip (SUFE)</span></td>
+          </tr>
+          <tr><td class="q">🚩 Weight-bearing &amp; systemic features (septic)<em>"Can he walk/bear weight on it? Any fever, or has he been unwell or off-colour? Does he let you move the leg?"</em></td><td class="why"><strong>The emergency screen.</strong> A child who won't weight-bear or move the joint, with fever and systemic upset, has septic arthritis until proven otherwise — a same-day emergency. Kocher criteria (non-weight-bearing, fever &gt;38.5, raised ESR/CRP and WCC) help separate it from transient synovitis. Kyle is afebrile and weight-bears (antalgic) — against sepsis, but still abnormal.</td><td class="why">Won't weight-bear + fever/unwell → septic arthritis emergency.</td><td><span class="chg chg-999">Septic features → same-day admission</span></td></tr>
+          <tr><td class="q">Age &amp; the differential<em>"How old is he, and is he otherwise developing normally?"</em></td><td class="why">Age reshapes the list: infants/toddlers (DDH, septic, toddler's fracture, NAI); 3–10y (transient synovitis, septic, Perthes'); 10–16y (SUFE, septic, Perthes'). Kyle at 13 puts SUFE at the top. Always tailor to age.</td><td class="why">Age band → the most likely diagnoses.</td><td><span class="chg chg-ddx">Age narrows the differential</span></td></tr>
+          <tr><td class="q">🚩 Leukaemia / sinister bone-pain screen<em>"Any pain at night, bone tenderness, tiredness, pallor, easy bruising, lumps in the neck/armpits, fevers, or weight loss?"</em></td><td class="why">Persistent bone pain/limp with pallor, bruising/petechiae, hepatosplenomegaly, generalised lymphadenopathy or fever warrants a very urgent FBC (within 48h) and immediate paediatric referral for suspected leukaemia (NICE NG12). Night pain and bone tenderness are clues to malignancy. Kyle has none — reassuring, but the screen is mandatory.</td><td class="why">Bone pain + systemic features → very urgent FBC + paediatrics (NG12 leukaemia).</td><td><span class="chg" style="background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe">Leukaemia features → urgent FBC (NG12)</span></td></tr>
+          <tr><td class="q">🚩 Trauma &amp; safeguarding<em>"Was there any injury, and does the story fit? Has this happened before? How did it happen exactly?"</em></td><td class="why">Trauma may explain a fracture, but always consider non-accidental injury: a history that is inconsistent, changing, or doesn't fit the child's development/mechanism; delayed presentation; other injuries; or a non-mobile child with a fracture. A limp can be the presentation of abuse.</td><td class="why">Inconsistent history/other injuries / non-mobile child + fracture → safeguarding.</td><td><span class="chg chg-999">Safeguarding concern → child-protection pathway</span></td></tr>
+          <tr><td class="q">Preceding illness &amp; course<em>"Any recent cold, virus or sore throat? Is it getting better, worse or staying the same?"</em></td><td class="why">A recent viral illness with a well child and improving course suggests transient synovitis (but only after excluding sepsis). A worsening or persistent course (Kyle) argues against transient synovitis and for a structural cause needing imaging/referral.</td><td class="why">Post-viral + improving → ?transient synovitis (exclusion). Worsening/persistent → structural → image/refer.</td><td><span class="chg chg-inv">Persistent → imaging/referral</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — the limping child you cannot miss</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Septic arthritis / osteomyelitis — won't weight-bear/move joint, fever, systemically unwell</td><td class="rf-why">Joint destruction within days; sepsis; an emergency at any age.</td><td><span class="rf-action rfa-999">Same-day paediatric/orthopaedic admission; aspiration + IV antibiotics (Kocher to support)</span></td></tr>
+          <tr><td class="rf-flag">SUFE — overweight adolescent, hip/thigh/knee pain, externally rotated leg, ↓ internal rotation</td><td class="rf-why">Delay causes avascular necrosis and permanent damage; can be bilateral.</td><td><span class="rf-action rfa-same">Urgent orthopaedic referral; non-weight-bearing; X-ray (AP + frog-lateral)</span></td></tr>
+          <tr><td class="rf-flag">🟣 Leukaemia — persistent bone pain/limp + pallor, bruising/petechiae, hepatosplenomegaly, lymphadenopathy, fever, night pain</td><td class="rf-why">Haematological malignancy presenting as bone/joint pain.</td><td><span class="rf-action" style="background:#6d28d9;color:#fff">Very urgent FBC (within 48h) + immediate paediatric referral — NICE NG12</span></td></tr>
+          <tr><td class="rf-flag">Non-accidental injury — inconsistent/changing history, other injuries, non-mobile child with fracture</td><td class="rf-why">Child protection.</td><td><span class="rf-action rfa-999">Safeguarding assessment per local child-protection pathway</span></td></tr>
+          <tr><td class="rf-flag">Perthes' / DDH — insidious limp, restricted hip movement (Perthes' 3–10y); infant asymmetry/limited abduction (DDH)</td><td class="rf-why">Femoral head/hip joint damage if missed.</td><td><span class="rf-action rfa-same">Orthopaedic referral; hip X-ray/USS</span></td></tr>
+          <tr><td class="rf-flag">Atraumatic limp under 3 / unable to localise</td><td class="rf-why">Young children localise poorly; serious causes (septic, NAI, malignancy) easily missed.</td><td><span class="rf-action rfa-same">Low threshold for assessment/investigation/paediatrics</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What do you think is causing it — and what were you hoping we'd do?"</div><div class="ice-why">Kyle's mother thinks it's a knee problem for physiotherapy. Surfacing this lets you explain, respectfully, why the hip must be examined and why a referral to physio would be the wrong move if this is SUFE — replacing her plan with a better one she understands.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 Concerns</div><div class="ice-phrase">"Has anything about it worried you, beyond the pain and the limp?"</div><div class="ice-why">She may worry about him missing school/sport, or (unspoken) something serious. Naming it lets you reassure appropriately while being honest that some hip conditions need urgent attention.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"Let me explain what I've found and what needs to happen next."</div><div class="ice-why">She expects a physio referral. If SUFE is found, you must reframe to urgent hospital assessment and non-weight-bearing — clearly and calmly, so she understands the change of plan and its importance.</div></div>
+    </div>
+    <div class="sub-divider">1D — Psychosocial context</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 The anxious parent, the "obvious" knee, and the danger of premature reassurance</div>
+      <p>A limping child frightens parents and pulls the clinician toward the site of the complaint. The limping child is a classic exam — and real-life — trap precisely because the dangerous diagnoses hide: SUFE behind "knee pain", septic arthritis behind a "viral limp", leukaemia behind "growing pains". The safe consultation resists premature reassurance, reasons by age, always examines the joint above and below (the hip for knee pain), screens the emergencies and red flags, and reframes the parent's expectations toward the right — sometimes urgent — pathway with clarity and care.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>🦵 "It's just his knee"</h5><p>Explain why the hip matters, without dismissing.</p><span class="ps-phrase">"You're right that the pain's in his knee — but in growing children the hip often sends its pain to the knee, so checking the hip is exactly how we avoid missing something important."</span></div>
+      <div class="ps-card"><h5>🏥 Reframing to urgent care</h5><p>If SUFE, explain the change of plan calmly.</p><span class="ps-phrase">"From examining his hip, I'm concerned about a condition where the top of the thigh bone slips. It needs the hospital to see him urgently today, and he shouldn't put weight on that leg in the meantime — treating it quickly protects the hip."</span></div>
+      <div class="ps-card"><h5>🚫 Not physiotherapy</h5><p>Explain why physio would be wrong here.</p><span class="ps-phrase">"I know you were hoping for physio, but if this is what I think, exercises could make it worse — this needs an orthopaedic surgeon, not physiotherapy, and quickly."</span></div>
+      <div class="ps-card"><h5>🛡️ Honest reassurance</h5><p>Balance seriousness with calm.</p><span class="ps-phrase">"This is treatable, and we've caught it at the right time by checking properly. I'll arrange everything now and explain each step so you know what's happening."</span></div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div><div class="sca-phrase">"In children, hip problems often show up as knee pain — so I'll examine his hip." — the central principle.</div><div class="sca-phrase">"Can he bear weight, and has he had any fever?" — the septic-arthritis screen.</div><div class="sca-phrase">"Any night pain, pallor, bruising, or lumps?" — the NG12 leukaemia screen.</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Examining only the knee; missing SUFE / not examining the hip</li><li>Not screening for septic arthritis (weight-bearing/fever) or leukaemia red flags</li><li>Referring to physiotherapy / reassuring as a knee problem</li><li>Not considering safeguarding / age-based differential</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Treats as a knee problem; no hip exam; SUFE missed; physio referral; no septic/leukaemia/safeguarding screen</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Examines hip; suspects a hip cause; some red-flag screen; urgency/age framework partial; ICE partial</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Reasons by age; examines the hip for knee pain; recognises SUFE → urgent ortho + non-weight-bearing; screens septic/leukaemia/safeguarding; reframes parent; ICE all three</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage — Emergency (Septic/Leukaemia/NAI) · Urgent (SUFE/Perthes) · Routine</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Triage the limping child by danger: septic arthritis, suspected leukaemia and safeguarding are same-day; SUFE and Perthes' are urgent orthopaedic referrals; transient synovitis and minor causes are managed/reviewed in primary care — but only once the emergencies are excluded.</strong> Kyle is in the urgent SUFE lane.</div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div>
+        <h3>Same day</h3>
+        <span class="tc-badge tcb-e">Don't delay</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Septic arthritis / osteomyelitis</strong><em>Won't weight-bear + fever/unwell → admit</em></li>
+          <li class="tc-item"><strong>🟣 Suspected leukaemia</strong><em>Bone pain + systemic features → very urgent FBC + paediatrics (NG12)</em></li>
+          <li class="tc-item"><strong>Safeguarding / NAI</strong><em>Child-protection pathway</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Urgent</div>
+        <h3>Orthopaedics</h3>
+        <span class="tc-badge tcb-u">Days</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>SUFE</strong><em>Urgent ortho; non-weight-bearing; X-ray (Kyle)</em></li>
+          <li class="tc-item"><strong>Perthes'</strong><em>Orthopaedic referral; X-ray</em></li>
+          <li class="tc-item"><strong>DDH (infant)</strong><em>Hip USS/X-ray; orthopaedics</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Routine</div>
+        <h3>Primary care</h3>
+        <span class="tc-badge tcb-r">After exclusion</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Transient synovitis</strong><em>Well child; rest/analgesia; safety-net; review</em></li>
+          <li class="tc-item"><strong>Minor trauma/soft-tissue</strong><em>Conservative; review</em></li>
+          <li class="tc-item"><strong>Growing pains (exclusion)</strong><em>Reassure if classic &amp; normal exam</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Triage rationale</div><div class="sca-phrase">"He's not feverish or systemically unwell, which is reassuring against infection — but the hip findings make me concerned about a slipped growth plate, which is an urgent orthopaedic problem, not a physio one."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Routing SUFE to physiotherapy/routine care</li><li>Missing septic arthritis or leukaemia red flags</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Examination — Gait · The HIP (Internal Rotation) · Whole Leg · Systemic</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Examination must include the hip even when the knee is the complaint — gait, the look/feel/move of the hip with particular attention to internal rotation (lost early in SUFE and hip disease), the whole leg and the joint above and below, plus a systemic examination for the sinister causes.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🦵 The limb</div>
+        <table class="it">
+          <thead><tr><th>Step</th><th>What it shows</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Gait</td><td>Antalgic (painful), Trendelenburg; refusal to weight-bear (septic).</td></tr>
+            <tr><td class="factor">Hip — internal rotation especially</td><td>Restricted/painful internal rotation, externally rotated leg = SUFE/hip pathology (Kyle).</td></tr>
+            <tr><td class="factor">Examine knee, ankle, foot, whole leg</td><td>Normal knee with hip findings = referred (SUFE/Perthes'); don't miss foot/leg causes.</td></tr>
+            <tr><td class="factor">Leg length / muscle wasting</td><td>Chronic hip disease (Perthes', DDH).</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🩺 Systemic / red flags</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Temperature / unwell</td><td>Septic arthritis/osteomyelitis.</td></tr>
+            <tr><td class="factor">Pallor, bruising/petechiae, lymphadenopathy, hepatosplenomegaly</td><td>Leukaemia (NG12).</td></tr>
+            <tr><td class="factor">Other joints, rash</td><td>JIA/reactive arthritis.</td></tr>
+            <tr><td class="factor">Bruising patterns / other injuries</td><td>Safeguarding/NAI.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Narration that scores</div><div class="sca-phrase">"I'll watch him walk, examine his hip — especially rotating it inwards — as well as the knee and the whole leg, and check him over generally for anything else, like glands or bruising."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Examining only the knee; not testing hip internal rotation</li><li>No systemic exam for leukaemia/safeguarding signs</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Investigations — Imaging (Frog-Lateral) · Bloods · FBC for Red Flags</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Investigations are directed by the suspected cause: hip X-ray (AP + frog-lateral) for SUFE/Perthes'; inflammatory markers and a very urgent FBC for the emergencies (septic arthritis, leukaemia); and ultrasound for effusion/DDH — though many decisions (admit/refer) are made clinically and shouldn't wait for tests.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🩻 Imaging</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Hip X-ray (AP + frog-lateral)</td><td>SUFE (frog-lateral is key) and Perthes' — often arranged via urgent orthopaedics.</td></tr>
+            <tr><td class="factor">Ultrasound hip</td><td>Effusion (septic/transient synovitis); DDH in infants.</td></tr>
+            <tr><td class="factor">MRI / bone scan</td><td>Osteomyelitis, early Perthes', tumour (specialist).</td></tr>
+            <tr><td class="factor">X-ray of painful site</td><td>Suspected fracture/toddler's fracture.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🧪 Bloods</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">FBC, blood film</td><td>Leukaemia (very urgent if NG12 features); infection.</td></tr>
+            <tr><td class="factor">CRP/ESR</td><td>Septic arthritis/osteomyelitis (Kocher); inflammation.</td></tr>
+            <tr><td class="factor">Blood cultures</td><td>Suspected sepsis/osteomyelitis.</td></tr>
+            <tr><td class="factor">Joint aspiration</td><td>Definitive for septic arthritis (in hospital).</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key reasoning</div><div class="sca-phrase">"The orthopaedic team will get a specific hip X-ray (a 'frog-leg' view) that shows a slipped growth plate. If a child looked feverish or unwell I'd also be arranging urgent blood tests for infection — and a very urgent blood count if I were worried about anything in the blood."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Forgetting the frog-lateral view for SUFE</li><li>Not arranging urgent FBC when leukaemia features are present</li><li>Waiting for tests instead of admitting suspected septic arthritis</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Diagnosis — By Age &amp; Pattern · The Dangerous Masqueraders</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Reach the diagnosis through age, weight-bearing/systemic status and examination — and consciously hold the dangerous masqueraders (SUFE behind "knee pain", septic behind "viral limp", leukaemia behind "growing pains").</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:24%">Diagnosis</th><th style="width:52%">Discriminating features</th><th class="chg-col">Age</th></tr></thead>
+        <tbody>
+          <tr><td class="q"><strong>SUFE</strong></td><td class="why">Overweight adolescent; hip/thigh/knee pain; externally rotated leg; ↓ internal rotation; normal knee (Kyle).</td><td><span class="chg chg-ddx">10–16</span></td></tr>
+          <tr><td class="q"><strong>Septic arthritis</strong></td><td class="why">Won't weight-bear/move joint; fever; unwell; raised inflammatory markers — emergency, any age.</td><td><span class="chg chg-999">Any</span></td></tr>
+          <tr><td class="q"><strong>Transient synovitis</strong></td><td class="why">Well child, post-viral, low/no fever, improving — exclusion diagnosis.</td><td><span class="chg chg-ddx">3–10</span></td></tr>
+          <tr><td class="q"><strong>Perthes'</strong></td><td class="why">Insidious limp, hip/knee pain, restricted hip movement; AVN of femoral head.</td><td><span class="chg chg-ddx">3–10</span></td></tr>
+          <tr><td class="q"><strong>DDH</strong></td><td class="why">Infant/toddler; asymmetry, limited abduction, leg-length difference.</td><td><span class="chg chg-ddx">0–3</span></td></tr>
+          <tr><td class="q"><strong>🟣 Leukaemia / 🛡️ NAI / other</strong></td><td class="why">Bone pain + systemic features (NG12); inconsistent history/other injuries (safeguarding); JIA, osteomyelitis, toddler's fracture, growing pains.</td><td><span class="chg chg-999">Any</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ddx-card ddx-b" style="margin-bottom:4px">
+      <h4>🚩 The one rule that saves the case</h4>
+      <p>Examine the hip in a child with knee pain. Kyle's formulation is SUFE — an overweight 13-year-old with knee/thigh pain, an externally rotated leg, restricted hip internal rotation and a normal knee — needing urgent orthopaedic referral and non-weight-bearing to prevent avascular necrosis, NOT physiotherapy. The same discipline (reason by age, screen the emergencies, examine the joint above) catches the septic hip, Perthes', DDH and the leukaemia/safeguarding red flags.</p>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Explaining it plainly</div><div class="sca-phrase">"His knee is fine — the problem is in his hip. It looks like the growth plate at the top of the thigh bone has slipped, which is why his leg turns out and his hip is stiff. It's treatable, but he needs to be seen by the bone specialists urgently and not put weight on the leg."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Diagnosing a knee problem; missing SUFE</li><li>Calling it transient synovitis/growing pains without exclusion</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc6">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">Referral — Emergency Paediatrics · Urgent Orthopaedics · 2WW (Leukaemia) · Safeguarding</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Referral is danger-led: emergency paediatrics/orthopaedics for septic arthritis; very urgent paediatrics + FBC for suspected leukaemia (NG12); urgent orthopaedics for SUFE/Perthes'/DDH; and the safeguarding pathway where abuse is suspected.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="ref-table">
+        <thead><tr><th style="width:24%">Referral</th><th>Who / when</th><th style="width:20%">Urgency</th></tr></thead>
+        <tbody>
+          <tr><td><strong>🔴 Emergency paediatrics/orthopaedics</strong></td><td>Septic arthritis/osteomyelitis — admission, aspiration, IV antibiotics.</td><td><span class="rf-action rfa-999">Same day</span></td></tr>
+          <tr><td><strong>🟣 Suspected leukaemia (NG12)</strong></td><td>Bone pain + systemic features → very urgent FBC + immediate paediatric referral.</td><td><span class="rf-action" style="background:#6d28d9;color:#fff">Very urgent · NG12</span></td></tr>
+          <tr><td><strong>Urgent orthopaedics</strong></td><td>SUFE (non-weight-bearing), Perthes', DDH.</td><td><span class="rf-action rfa-same">Urgent</span></td></tr>
+          <tr><td><strong>Safeguarding / paediatrics</strong></td><td>Suspected non-accidental injury.</td><td><span class="rf-action rfa-999">Per child-protection pathway</span></td></tr>
+          <tr><td><strong>Paediatric rheumatology</strong></td><td>Suspected JIA/reactive arthritis.</td><td><span class="rf-action rfa-same">Soon</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Decisive action</div><div class="sca-phrase">"I'm referring Kyle to the orthopaedic team urgently today — I'll call them, and in the meantime he must not put weight on that leg. I'll arrange how he gets there safely."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Referring SUFE to physiotherapy/routine</li><li>Not admitting septic arthritis / not escalating leukaemia features</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — By Cause · Non-Weight-Bearing · Safety-Net · Support the Family</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Management is cause-specific and, for the emergencies, is mostly about timely recognition and the right referral: non-weight-bearing and urgent orthopaedics for SUFE; admission for septic arthritis; supportive care with safety-netting for transient synovitis; and clear family communication throughout.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--g)">🎯 By cause</div>
+        <table class="it">
+          <thead><tr><th>Cause</th><th>Management</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">SUFE (Kyle)</td><td>Non-weight-bearing; urgent orthopaedics; surgical fixation; check/monitor the other hip; weight management later.</td></tr>
+            <tr><td class="factor">Septic arthritis</td><td>Emergency admission; aspiration + IV antibiotics; orthopaedics.</td></tr>
+            <tr><td class="factor">Transient synovitis</td><td>Rest, analgesia (ibuprofen/paracetamol), reassurance; safety-net; review in 48h / if not improving by ~1 week.</td></tr>
+            <tr><td class="factor">Perthes' / DDH</td><td>Orthopaedic-led (observation, bracing, surgery as indicated).</td></tr>
+            <tr><td class="factor">Leukaemia / NAI</td><td>Specialist/child-protection pathways.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🛡️ Cross-cutting</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Safety-net (esp. transient synovitis)</td><td>Return immediately if fever, won't weight-bear, increasing pain, unwell, or not improving — explicit and written.</td></tr>
+            <tr><td class="factor">Analgesia</td><td>Weight-appropriate paracetamol/ibuprofen.</td></tr>
+            <tr><td class="factor">Support the family</td><td>Explain clearly, involve parents, arrange transport/time off school.</td></tr>
+            <tr><td class="factor">Review</td><td>Re-examine persistent/worsening limp; reconsider the differential if not resolving.</td></tr>
+            <tr><td class="factor">Don't over-label</td><td>"Growing pains" only with classic features and a normal exam, after exclusion.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">A plan that scores</div><div class="sca-phrase">"So for Kyle: urgent orthopaedic referral today, no weight on the leg, and I'll sort how he gets to hospital. (For a well child with likely transient synovitis: rest, child-dose ibuprofen, and come straight back if he develops a fever, won't put weight on it, or isn't better within a few days.)"</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Allowing weight-bearing in SUFE; physio referral</li><li>No safety-net for transient synovitis</li><li>Over-labelling "growing pains" without exclusion</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Childhood Limp — SCA Consultation Scorecard</div><div class="scorecard-sub">Age-based · hip refers to knee · SUFE · septic arthritis · NG12 leukaemia · safeguarding</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Age-structured history</strong> — reasons by age band; weight-bearing &amp; systemic status established</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Examines the hip for knee pain</strong> — narrates examining the joint above; internal rotation</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Systemic examination narrated</strong> — temperature, pallor/bruising/lymph nodes, other joints</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain-language explanation</strong> — explains the hip/knee link and the diagnosis to the parent</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Reframes parental expectation</strong> — redirects "physio for the knee" to urgent hip assessment</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Safety-net specific</strong> — fever/non-weight-bearing/worsening → return; written</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plan + follow-up + closing question</strong> — clear plan, review, "anything else?"</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, diagnosis, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Examines the hip in a child with knee pain</strong> — the central principle; tests internal rotation</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Recognises SUFE &amp; acts</strong> — overweight adolescent, ext. rotated leg → urgent ortho + non-weight-bearing</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Screens &amp; excludes septic arthritis</strong> — weight-bearing/fever/systemic; Kocher; emergency if present</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Screens leukaemia red flags (NG12)</strong> — bone pain + pallor/bruising/lymphadenopathy/fever → urgent FBC + paediatrics</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Uses the age-based differential</strong> — DDH/septic/toddler's # → transient synovitis/Perthes' → SUFE</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Considers safeguarding/NAI</strong> — inconsistent history/other injuries/non-mobile child</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Appropriate imaging</strong> — hip X-ray (AP + frog-lateral) for SUFE; USS for effusion/DDH</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Transient synovitis as exclusion</strong> — only in a well child after ruling out sepsis; review</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Avoids the wrong pathway</strong> — does NOT refer SUFE to physio or reassure as a knee problem</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct overall formulation &amp; disposition</strong> — SUFE → urgent ortho + non-weight-bearing; emergencies excluded</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decisions</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — mother's "it's his knee / wants physio" surfaced</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> — worry about school/sport / something serious</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations addressed</strong> — physio reframed to urgent orthopaedic referral with rationale</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Explains hip/knee link clearly</strong> — parent understands why the hip matters</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Conveys urgency without alarm</strong> — calm, clear, reassuring</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Involves child appropriately</strong> — speaks to the child, not only the parent</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Checks understanding</strong> — confirms non-weight-bearing and plan understood</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Practical support</strong> — transport, school, what to expect at hospital</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Handles uncertainty honestly</strong> — explains it's treatable, caught at the right time</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Parent/child leave clear &amp; supported</strong> — understand the plan and urgency</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Collaborative close</strong> — plan agreed; safety-net/referral arranged</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">Treats as knee; no hip exam; SUFE missed → physio; septic/leukaemia/safeguarding not screened; no safety-net</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">Examines hip; suspects hip cause; some red-flag screen; urgency/age framework partial; ICE partial</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Age-based reasoning; hip examined for knee pain; SUFE → urgent ortho + non-weight-bearing; septic/leukaemia/safeguarding screened; parent reframed; ICE all three; safety-net</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist to see your score and feedback</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked — areas to develop</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise (the mother)</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"It's Kyle's knee — he's had pain in it for a few weeks and now he's limping and can't do PE. I think he just needs some physio for it, can you refer him?"</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are (Kyle's mother)</h5><p>You've brought your son Kyle, 13, with several weeks of right knee and thigh pain and a limp that's got worse this past week. No clear injury. He's a bit overweight for his age. You're convinced it's a knee problem and want a physiotherapy referral so he can get back to sport. You're slightly impatient and feel it's "obviously his knee".</p></div>
+      <div class="ab"><h5>Hidden concerns (reveal if explored)</h5><p><strong>Frustration:</strong> you feel it's been going on too long and just want it sorted with physio.</p><p><strong>Worry (if the doctor seems concerned):</strong> you become anxious if told it might be serious — you'll need clear, calm explanation and reassurance it's treatable.</p><p><strong>Practicalities:</strong> you worry about him missing school and how you'll get to hospital.</p></div>
+      <div class="ab"><h5>Clinical details if asked</h5><ul><li>Knee/thigh pain several weeks, worsening; limp; no injury; can still bear weight (limping)</li><li>Overweight; around pubertal age; otherwise well</li><li>No fever, no recent illness, no night pain, no pallor/bruising/lumps, no weight loss/night sweats</li><li>Walks with the right leg/foot turned outwards (you've noticed he "walks funny")</li><li>On examination: knee is normal; the hip is stiff and uncomfortable when rotated inwards</li></ul></div>
+      <div class="ab"><h5>Reactions at key moments</h5><ul><li><strong>If the doctor only examines the knee &amp; offers physio:</strong> you're satisfied — so a strong candidate must examine the hip and NOT do this.</li><li><strong>On "I need to check his hip":</strong> mildly surprised ("but it's his knee"), accepting when explained.</li><li><strong>On the SUFE explanation &amp; urgent referral:</strong> anxious but reassured by calm clarity and that it's treatable.</li><li><strong>On non-weight-bearing:</strong> you accept it once you understand why.</li><li><strong>Challenge line:</strong> "Are you sure? It really seems like it's just his knee — can't he just have physio?"</li></ul></div>
+    </div>
+    <div class="actor-challenge">"I really think you're overcomplicating this — it's his knee, he just needs physio and to rest it. Why are you sending him to hospital?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> The consultation succeeds if the GP: (1) reasons by age and applies the rule that the hip refers to the knee — examining the hip despite a knee complaint; (2) recognises SUFE (overweight adolescent, externally rotated leg, restricted hip internal rotation, normal knee) and arranges urgent orthopaedic referral with non-weight-bearing, NOT physiotherapy; (3) screens and excludes septic arthritis (weight-bearing/fever) and the NG12 leukaemia red flags, and considers safeguarding; (4) reframes the mother's expectation calmly and clearly, conveying urgency without alarm; (5) safety-nets and supports the family practically. It fails if the GP examines only the knee and refers to physiotherapy, missing SUFE.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">The Limping Child — Clinical Decision Framework</div><div class="sum-sub">Age-based · hip refers to knee · exclude the emergencies</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">👶 1 — Differential by age</div>
+    <div class="card" style="padding:.8rem 1rem;margin-bottom:1rem"><p style="font-size:12.5px;line-height:1.6"><strong>0–3y:</strong> DDH, septic arthritis, toddler's fracture, NAI. <strong>3–10y:</strong> transient synovitis, septic arthritis, Perthes'. <strong>10–16y:</strong> SUFE, septic arthritis, Perthes'. <strong>Any age:</strong> septic arthritis, malignancy (leukaemia), osteomyelitis, JIA, NAI. <strong>Always examine the hip in knee pain</strong> (SUFE/Perthes' refer to the knee).</p></div>
+    <div class="sum-sub-hdr">🚦 2 — Triage &amp; act</div>
+    <div class="card" style="padding:.8rem 1rem"><p style="font-size:12.5px;line-height:1.6"><strong>🔴 Same-day:</strong> won't weight-bear + fever/unwell → septic arthritis (admit, aspirate, IV abx; Kocher); bone pain + pallor/bruising/lymphadenopathy/fever → very urgent FBC + paediatrics (NG12 leukaemia); suspected NAI → safeguarding. <strong>🟠 Urgent ortho:</strong> SUFE (non-weight-bearing, frog-lateral X-ray), Perthes', DDH. <strong>🟢 Routine:</strong> transient synovitis (exclusion; well child; rest/analgesia/safety-net/review). Don't over-label "growing pains".</p></div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label">SCA Quick Reference</div><div class="sum-title">The Limping Child — Consultation Playbook</div><div class="sum-sub">Age · examine the hip · exclude septic/leukaemia · SUFE urgently</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🎯 The three pivots that pass this case</div>
+    <div class="sum-3col">
+      <div class="snp-phrase-box snp-e"><div class="snp-lbl">1 · Examine the hip</div><div class="snp-text">Knee/thigh pain in a child → examine the HIP (internal rotation). SUFE &amp; Perthes' refer to the knee.</div></div>
+      <div class="snp-phrase-box snp-m"><div class="snp-lbl">2 · Exclude the emergencies</div><div class="snp-text">Won't weight-bear + fever = septic arthritis (admit). Bone pain + systemic features = NG12 leukaemia (urgent FBC). Consider NAI.</div></div>
+      <div class="snp-phrase-box snp-a"><div class="snp-lbl">3 · SUFE urgently, not physio</div><div class="snp-text">Overweight adolescent, ext. rotated leg, ↓ internal rotation → urgent orthopaedics + non-weight-bearing (avoid AVN).</div></div>
+    </div>
+    <div class="sdp-pivot" style="margin-top:1rem;font-size:11.5px;background:#fef3c7;color:#854d0e;border-radius:8px;padding:.6rem .85rem;line-height:1.5">⛔ Don't treat knee pain without examining the hip — you'll miss SUFE/Perthes' · Don't refer SUFE to physiotherapy or allow weight-bearing · Don't assume transient synovitis/"growing pains" in a febrile, unwell or non-weight-bearing child · Don't miss leukaemia (NG12) red flags or safeguarding · Reason by age</div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>The Limping Child · GP Clinical Reasoning Framework v2</strong> · NICE CKS Acute childhood limp · NICE NG12 Suspected cancer (children — leukaemia) · RCEM/RCPCH limping-child guidance · Kocher criteria</p>
+  <p style="margin-top:4px">Reason by age (0–3 DDH/septic/toddler's #; 3–10 transient synovitis/septic/Perthes'; 10–16 SUFE/septic/Perthes') · Always examine the hip in a child with knee pain — SUFE &amp; Perthes' refer to the knee · Septic arthritis (won't weight-bear + fever) = same-day emergency (Kocher; aspirate + IV antibiotics) · SUFE (overweight adolescent, externally rotated leg, ↓ internal rotation) → urgent orthopaedics + non-weight-bearing + frog-lateral X-ray · Persistent bone pain + systemic features → very urgent FBC + paediatrics (NG12 leukaemia) · Always consider safeguarding/NAI</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current NICE CKS / NG12 and local paediatric pathways · Clinical judgement takes precedence over any framework</p>
+</div>
+</div><!-- /page -->
+  </main>
+</div><!-- /app -->
+<script src="script.js"></script>
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+</body>
+</html>

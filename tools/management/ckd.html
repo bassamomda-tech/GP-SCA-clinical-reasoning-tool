@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chronic Kidney Disease — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="CKD management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🫘",
+  title:"Chronic Kidney Disease",
+  stemTitle:"Confirmed Chronic Kidney Disease — ongoing management",
+  stemSub:"Primary-care management of confirmed CKD \u2014 slowing progression, cardiovascular protection, managing complications, monitoring by risk, and safe prescribing \u2014 up to nephrology referral. NICE NG203 \u00b7 CKS 2026.",
+  guideline:"NICE NG203",
+  glance:[
+    {lbl:"Stage", val:"GFR + ACR", sub:"G1\u2013G5 \u00b7 A1\u2013A3"},
+    {lbl:"BP target", val:"<140/90", sub:"<130/80 if ACR \u226570 or DM"},
+    {lbl:"Proteinuria", val:"ACEi / ARB", sub:"titrate to max"},
+    {lbl:"Protection", val:"SGLT2i", sub:"dapagliflozin"},
+    {lbl:"Lipids", val:"Atorvastatin 20", sub:"CV risk reduction"},
+    {lbl:"Refer", val:"eGFR<30 / ACR\u226570", sub:"+ rapid decline"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm, stage and find the cause",
+      blocks:[
+        {b:"p", html:"CKD = abnormal eGFR (&lt;60) and/or ACR (\u22653) persisting <strong>\u226590 days</strong> on two samples. Stage with the <strong>GFR (G) + ACR (A) grid</strong> \u2014 the combination, not eGFR alone, predicts risk and referral. Identify and treat the cause (diabetes, hypertension, obstruction, drugs, glomerular)."},
+        {b:"kv", rows:[
+          ["GFR categories","G1 \u226590 \u00b7 G2 60\u201389 \u00b7 G3a 45\u201359 \u00b7 G3b 30\u201344 \u00b7 G4 15\u201329 \u00b7 G5 &lt;15"],
+          ["ACR categories","A1 &lt;3 \u00b7 A2 3\u201330 \u00b7 A3 &gt;30 (mg/mmol)"],
+          ["Baseline","U&amp;E/eGFR, ACR (early-morning sample if 3\u201370), FBC (anaemia), HbA1c, bone profile + PTH (G4\u2013G5), vit D; <b>dip urine for blood</b> and send ACR \u2014 don\u2019t dip for protein"],
+          ["Exclude AKI / transient","Repeat before labelling; check for reversible causes &amp; nephrotoxics"]
+        ]},
+        {b:"why", html:"ACR matters as much as eGFR: a patient with normal eGFR but heavy proteinuria (A3) is higher-risk than many with a lower eGFR and no protein. The grid drives both how often you monitor and when to refer \u2014 and proteinuria is the lever your drugs target."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Slow progression, protect the kidneys",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🩺 BP control", html:"The single biggest modifiable driver of progression \u2014 to target (node 3)."},
+          {t:"🚫 Avoid nephrotoxics", html:"NSAIDs, nephrotoxic OTCs; review contrast, gentamicin, lithium."},
+          {t:"🤢 Sick-day rules", html:"Pause ACEi/ARB, SGLT2i, diuretics, metformin, NSAIDs when acutely dehydrated."},
+          {t:"🧂 Diet", html:"Moderate salt; dietitian for advanced CKD (K\u207a, phosphate, protein)."},
+          {t:"🚭 Smoking & weight", html:"Cessation, weight and activity \u2014 CV and renal benefit."},
+          {t:"💉 Vaccination", html:"Influenza, pneumococcal, COVID-19 \u2014 higher infection risk."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 protection", title:"BP target, RAAS blockade and SGLT2 inhibition",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"BP", title:"Treat to target", when:"per ACR / diabetes",
+           html:"<b>&lt;140/90</b>; aim <b>&lt;130/80</b> if ACR \u226570 mg/mmol or diabetes. Lifestyle + antihypertensives as per the hypertension ladder."},
+          {step:"RAAS", title:"ACE inhibitor or ARB", when:"if proteinuric",
+           fromLabel:"ACR \u2265 30 (or \u22653 with diabetes / hypertension)",
+           html:"Titrate to maximum tolerated dose. Check U&amp;E + K\u207a before and 1\u20132 weeks after each change. A creatinine rise \u226430% / eGFR fall \u226425% is acceptable."},
+          {step:"SGLT2i", title:"Add dapagliflozin", when:"renal + CV protection",
+           fromLabel:"ACR \u2265 22.6 (or diabetic CKD per criteria)",
+           html:"Reduces progression and CV events on top of ACEi/ARB. Counsel on sick-day rules + DKA."},
+          {step:"Lipids", title:"Atorvastatin 20 mg", when:"all CKD",
+           fromLabel:"cardiovascular risk reduction",
+           html:"Offer for primary/secondary prevention; uptitrate if &gt;40% non-HDL reduction not achieved."}
+        ]},
+        {b:"kv", rows:[
+          ["Manage complications","<b>Anaemia</b> \u2192 check/replace iron, refer for ESA if persists. <b>CKD-MBD</b> \u2192 phosphate, PTH, vit D (G4\u2013G5). <b>Acidosis</b> \u2192 oral sodium bicarbonate if low. Hyperkalaemia \u2192 dietary + drug review."],
+          ["Avoid","Combining ACEi + ARB; nephrotoxics; gliptins/metformin dose errors at low eGFR."]
+        ]},
+        {b:"warn", html:"After starting/uptitrating ACEi/ARB: <b>K\u207a &gt;6 or creatinine rise &gt;30%/eGFR fall &gt;25%</b> \u2192 stop, recheck, exclude renovascular disease."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"How often, by risk",
+      blocks:[
+        {b:"table", head:["Risk","eGFR + ACR frequency","Notes"], rows:[
+          ["Low risk (G1\u2013G2, A1)","Annually","Plus BP, CV risk"],
+          ["Moderate (G3 / A2)","6\u201312-monthly","Watch progression rate"],
+          ["High (G4 / A3)","\u2265 every 6 months \u2014 often 3-monthly","Bone profile, PTH, Hb, K\u207a"],
+          ["After ACEi/ARB/SGLT2i change","U&amp;E + K\u207a at 1\u20132 weeks","Act on thresholds above"]
+        ]},
+        {b:"why", html:"Define <b>progression</b> as a sustained eGFR fall \u226525% + a drop in G category, or a sustained \u226515 ml/min/yr fall. Spotting accelerated decline early is the trigger to look for a reversible cause and to refer before complications set in."}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"After any drug change", title:"Safety bloods", html:"U&amp;E + K\u207a 1\u20132 weeks after ACEi/ARB/SGLT2i/diuretic change."},
+          {n:"2", when:"By risk category", title:"eGFR + ACR surveillance", html:"Frequency as above; calculate progression rate each time."},
+          {n:"3", when:"Annual", title:"Structured CKD review", html:"BP, eGFR, ACR, CV risk, medication &amp; nephrotoxic review, complications (Hb, bone), sick-day-rule reinforcement."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Declining function? Check before referral",
+      arrow:"\u2026if eGFR is falling faster than expected",
+      intro:"Rule out reversible causes before attributing decline to CKD itself.",
+      checks:[
+        {b:"1 \u00b7 AKI on CKD", html:"Dehydration, sepsis, obstruction, recent contrast \u2014 recheck after the insult."},
+        {b:"2 \u00b7 Nephrotoxins", html:"NSAIDs, new drugs, OTCs, herbal remedies."},
+        {b:"3 \u00b7 BP & proteinuria", html:"Is BP at target and RAAS at max tolerated dose?"},
+        {b:"4 \u00b7 Obstruction", html:"Consider renal tract USS \u2014 especially men with LUTS."},
+        {b:"5 \u00b7 Rate", html:"Confirm sustained decline on repeat, not a single blip."}
+      ],
+      back:"Reversible causes excluded, sustained decline \u2192 refer nephrology"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🤢 Sick-day rules", html:"\u201cIf you can\u2019t keep fluids down or have D&amp;V, pause your kidney/BP tablets and water tablets for 48 h and ring us.\u201d"},
+          {t:"🔴 AKI signs", html:"\u201cMuch less urine, swelling, drowsiness, or feeling very unwell \u2014 contact us the same day.\u201d"},
+          {t:"⚡ Hyperkalaemia", html:"\u201cMuscle weakness, palpitations after a new tablet or unwell spell \u2014 seek urgent advice.\u201d"},
+          {t:"💊 Medication", html:"\u201cAvoid anti-inflammatory painkillers (ibuprofen/naproxen) \u2014 they can harm the kidneys; ask us first.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer to nephrology",
+      arrow:"when criteria are met or progression is rapid",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Function", html:"eGFR &lt;30 (G4\u2013G5), sustained rapid decline (\u226525% + category drop, or \u226515/yr), or a <b>5-year kidney-failure risk &gt;5%</b> on the 4-variable KFRE."},
+          {t:"Proteinuria", html:"ACR \u226570 mg/mmol (unless clearly diabetes), or ACR \u226530 with persistent haematuria."},
+          {t:"Complications", html:"Anaemia/CKD-MBD needing specialist input; resistant hyperkalaemia; uncontrolled BP on \u22654 agents."},
+          {t:"Cause", html:"Suspected genetic, glomerular, or rare cause; renal artery stenosis."},
+          {t:"Emergency", html:"Hyperkalaemia with ECG changes, severe AKI, fluid overload \u2192 same-day."}
+        ]},
+        {b:"say", html:"Your kidney function needs a specialist eye now, so I\u2019m referring you to the kidney team. This is about protecting what we have and planning ahead \u2014 we\u2019ll keep managing your blood pressure and tablets together."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="algkey" content="rgp.alg.rectalbleeding.v1"/>
+<title>Rectal Bleeding Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,::before,::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f4f0;--surface:#ffffff;--surface2:#f9f8f5;
+  --border:#e2e0d8;--border2:#d0cec4;
+  --text:#1a1917;--text2:#4a4845;--text3:#7a7875;
+  --safety:#dc2626;--safety-bg:#fef2f2;--safety-border:#fecaca;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;--diagnose-border:#bfdbfe;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;--refer-border:#ddd6fe;
+  --treat:#059669;--treat-bg:#ecfdf5;--treat-border:#a7f3d0;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;--lifestyle-border:#fde68a;
+  --red:#dc2626;--purple:#7c3aed;--blue:#2563eb;--teal:#0d9488;
+  --amber:#d97706;--green:#16a34a;--grey:#6b7280;
+  --radius:12px;--radius-sm:8px;--shadow:0 1px 3px rgba(0,0,0,.08),0 4px 12px rgba(0,0,0,.05);
+  --font-body:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;padding:0 0 40px}
+/* Banner */
+.stem-banner{display:flex;align-items:center;gap:16px;background:var(--text);color:#fff;padding:20px 28px;border-radius:0}
+.sb-icon{font-size:2.2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.1rem;font-weight:600;letter-spacing:-.01em}
+.stem-banner small{opacity:.65;font-size:.82rem}
+/* Progress */
+.alg-progress{display:flex;align-items:center;gap:12px;padding:14px 28px;background:var(--surface);border-bottom:1px solid var(--border);font-size:.82rem;color:var(--text2);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.pcount{font-weight:600;color:var(--text);white-space:nowrap}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:99px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#2563eb,#059669);border-radius:99px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font:inherit;font-size:.78rem;padding:4px 12px;border:1px solid var(--border2);border-radius:99px;background:transparent;cursor:pointer;color:var(--text2);transition:all .15s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+/* Flow */
+.alg-flow{max-width:840px;margin:0 auto;padding:28px 20px 0}
+.connector{width:2px;height:28px;background:linear-gradient(var(--border2),var(--border2));margin:0 auto;opacity:.6}
+/* Node */
+.node{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s}
+.node:hover{box-shadow:0 2px 6px rgba(0,0,0,.08),0 8px 24px rgba(0,0,0,.08)}
+.node[data-type="SAFETY"]{border-left:4px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-left:4px solid var(--diagnose)}
+.node[data-type="REFER"]{border-left:4px solid var(--refer)}
+.node[data-type="TREAT"]{border-left:4px solid var(--treat)}
+.node[data-type="LIFESTYLE"]{border-left:4px solid var(--lifestyle)}
+.node-head{display:flex;align-items:flex-start;gap:14px;padding:18px 20px 14px;border-bottom:1px solid var(--border)}
+.node-num{font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--text3);padding-top:2px}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:99px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--red)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--blue)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--purple)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--green)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--amber)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;color:var(--text);letter-spacing:-.01em}
+.node-tick{padding:16px 20px 4px;display:flex;align-items:center;gap:8px}
+.node-tick label{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.82rem;color:var(--text3);user-select:none}
+.node-tick input[type=checkbox]{width:18px;height:18px;accent-color:var(--treat);cursor:pointer}
+.tlbl{}
+.node.done{opacity:.75}
+.node.done .node-head{background:var(--surface2)}
+.node-body{padding:4px 20px 16px;font-size:.88rem;color:var(--text2)}
+.node-body>p,.node-body>span{display:block;margin-bottom:12px;color:var(--text2)}
+/* KV Grid */
+.kv{display:grid;grid-template-columns:minmax(130px,30%) 1fr;gap:0;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin:10px 0}
+.kv>div{padding:9px 13px;font-size:.84rem;border-bottom:1px solid var(--border)}
+.kv>div:last-child,.kv>div:nth-last-child(2){border-bottom:none}
+.kv>div:nth-child(odd){background:var(--surface2);font-weight:500;color:var(--text);font-size:.81rem}
+.kv>div:nth-child(even){color:var(--text2)}
+/* RF Grid */
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:10px 0}
+.rftile{background:var(--safety-bg);border:1px solid var(--safety-border);border-radius:var(--radius-sm);padding:11px 13px;font-size:.82rem;color:var(--text);line-height:1.45}
+.rftile b{display:block;color:var(--red);font-weight:600;margin-bottom:3px;font-size:.81rem}
+/* Branch */
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:10px 0}
+.b-card{border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.b-cond{background:var(--surface2);padding:8px 12px;font-size:.78rem;font-weight:600;color:var(--text);border-bottom:1px solid var(--border)}
+.b-drug{padding:8px 12px 4px;font-size:.86rem;font-weight:600;color:var(--treat)}
+.b-note{padding:0 12px 10px;font-size:.78rem;color:var(--text3);line-height:1.4}
+/* Ladder */
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.rung{display:flex;align-items:baseline;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:nth-child(odd){background:var(--surface2)}
+.rn{font-size:.72rem;font-weight:700;letter-spacing:.05em;color:var(--text3);white-space:nowrap;min-width:52px}
+.rt{color:var(--text);line-height:1.45;flex:1}
+/* Lifestyle Grid */
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}
+.lstile{background:var(--lifestyle-bg);border:1px solid var(--lifestyle-border);border-radius:var(--radius-sm);padding:11px 13px;font-size:.82rem;color:var(--text);line-height:1.45}
+.lstile b{display:block;color:var(--amber);font-weight:600;margin-bottom:3px;font-size:.81rem}
+/* Pills */
+.pill{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.04em;padding:2px 7px;border-radius:99px;vertical-align:middle;white-space:nowrap}
+.pill-red{background:#fee2e2;color:#b91c1c}
+.pill-purple{background:#ede9fe;color:#6d28d9}
+.pill-blue{background:#dbeafe;color:#1d4ed8}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#b45309}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+/* Why drawer */
+.why-row{border-top:1px solid var(--border);padding:0}
+.why-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:transparent;border:none;cursor:pointer;font:inherit;font-size:.8rem;font-weight:500;color:var(--text3);transition:background .15s}
+.why-btn:hover{background:var(--surface2);color:var(--text)}
+.caret{font-size:.9rem;transition:transform .2s}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:14px 20px;font-size:.83rem;color:var(--text2);line-height:1.65;background:var(--surface2);border-top:1px solid var(--border)}
+.why-drawer b{color:var(--text)}
+/* Footer */
+.alg-foot{max-width:840px;margin:28px auto 0;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--text3);line-height:1.5}
+.alg-foot strong{color:var(--text)}
+/* Head flex fix */
+.node-head-inner{flex:1}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🩸</div>
+  <div>
+    <b>Rectal Bleeding — Adult presentation in primary care</b>
+    <small>Covers fresh PR bleeding, melaena, occult blood, and haematochezia · Adults ≥18 · UK NHS pathway</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — resuscitate major bleeds, examine (PR is mandatory), let age + FIT drive the NICE NG12 colorectal-cancer decision, then treat benign anorectal causes while never attributing bleeding to piles without investigation.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Rectal bleeding</span><div class="body">Colour (bright on paper vs dark mixed vs melaena), relation to stool, pain on defaecation, mucus, tenesmus, change in bowel habit, weight loss, NSAIDs/anticoagulants. <b>Abdominal exam + PR + proctoscopy</b> — ~30% of colorectal cancers are within reach of the finger.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — major bleed or obstruction?</span><span class="ttl">Haemodynamically significant?</span><div class="body"><ul>
+      <li><b>Instability</b> — tachycardia, hypotension, postural drop &gt;20 mmHg, NEWS2 ≥5</li>
+      <li><b>Large-volume / continuing bleeding</b> (diverticular, angiodysplasia)</li>
+      <li><b>Melaena</b> — black tarry stool → upper-GI source</li>
+      <li><b>Obstruction / peritonism</b>, or anticoagulated with a significant bleed</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — major</div><div class="box stop"><span class="lbl">Stop · admit</span><span class="ttl">Emergency admission</span><div class="body">Resuscitate (IV access, fluids, group &amp; save). Melaena → urgent OGD. Large lower-GI bleed → acute surgical/medical take.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — stable</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">FBC · FIT · exam</span><div class="body">FBC (IDA = chronic loss), ferritin, CRP. <b>FIT</b> to support (not delay) referral; faecal calprotectin if IBD suspected; proctoscopy for internal haemorrhoids. <b>Do not repeat FIT to get a "normal".</b></div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · benign vs sinister</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Anorectal (benign)</div><div class="box ix"><span class="ttl">Bright, on paper</span><div class="body"><b>Haemorrhoids</b> (painless, prolapse), <b>anal fissure</b> (pain on defaecation, sentinel tag), fistula, prolapse. No change in habit.</div></div></div>
+      <div class="col"><div class="blabel">Colonic — benign</div><div class="box ix"><span class="ttl">Diverticular / colitis</span><div class="body">Diverticular bleed (sudden, large-volume, ≥50), angiodysplasia (elderly, recurrent), infective/ischaemic colitis.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Red-flag</div><div class="box ix"><span class="ttl">Cancer / IBD</span><div class="body">Dark blood mixed with stool, change in habit ≥6 wks, weight loss, mass, anaemia, tenesmus → <b>colorectal cancer</b>; bloody diarrhoea + systemic features, age &lt;40 → IBD.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · treat the benign cause</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — treat benign causes (after excluding cancer)</span><span class="ttl">Fibre + topical + escalate</span><div class="body"><ul>
+      <li><b>Haemorrhoids (grade I–II):</b> high-fibre diet + hydration, avoid straining; short course topical (Anusol HC / Scheriproct ≤7 days). Grade II–III → rubber-band ligation; grade IV/refractory → surgery.</li>
+      <li><b>Anal fissure:</b> stool softener + fibre; <b>topical GTN 0.4% or diltiazem 2% BD for 8 weeks</b> (warn of GTN headache); chronic/refractory → surgical (botulinum, sphincterotomy).</li>
+      <li><b>IBD flare (mild UC):</b> mesalazine (oral ± rectal) in liaison with gastroenterology; steroids only for moderate–severe under specialist.</li>
+      <li><b>Diverticular/infective:</b> supportive; treat infection; review anticoagulation/NSAIDs.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · cancer pathway &amp; escalation</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer — <span class="pill pill-purple">2WW · NICE NG12</span></span><span class="ttl">Colorectal cancer thresholds</span><div class="body"><ul>
+      <li><b>≥40</b> with rectal bleeding <b>+</b> change in bowel habit; <b>≥50</b> with unexplained rectal bleeding; any age with abdominal/rectal mass; iron-deficiency anaemia (men any age / post-menopausal women).</li>
+      <li><b>FIT ≥10 µg Hb/g</b> supports urgent referral — but <b>do not wait for FIT</b> if NG12 criteria are already met.</li>
+      <li><span class="pill pill-purple">Urgent gastro</span> suspected new IBD (raised calprotectin), ischaemic/radiation colitis, recurrent diverticular bleeding.</li>
+      <li><span class="pill pill-grey">Routine</span> grade III–IV haemorrhoids, chronic fissure, complex fistula, prolapse. <span class="pill pill-grey">GUM</span> rectal STI.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · modify &amp; prevent</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; bowel habit</span><span class="ttl">Reduce recurrence</span><div class="body"><b>High-fibre diet</b> (≥30 g/day) + adequate hydration to soften stool and avoid straining · regular toileting without prolonged sitting · weight management · review NSAIDs/anticoagulants contributing to bleeding · treat constipation. Encourage uptake of <b>NHS bowel-cancer screening</b> (FIT, age 50/54–74).</div></div>
+    <div class="arrow"><span class="tag">Step 9 · safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Safety-net &amp; follow-up</span><span class="ttl">When to come back</span><div class="body"><b>999</b> if large-volume bleeding, black tarry stools, faintness or collapse. <b>Return</b> if bleeding persists ≥6 weeks despite treatment, new change in bowel habit, weight loss, or anaemia symptoms — <b>re-investigate, don't re-reassure</b>. Chase 2WW/colonoscopy outcomes; review fissure/haemorrhoid response at 8 weeks.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Don't attribute it all to piles:</b> visible haemorrhoids do not exclude a proximal cancer. Apply the NG12 age/FIT thresholds before reassuring, do the PR, and re-investigate persistent bleeding even with an obvious benign finding.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head">
+    <div class="node-num">01</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Haemodynamic instability and cancer must be excluded immediately</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Screened — no red flags identified</span></label></div>
+  <div class="node-body">
+    <span>Do not assume benign cause. Rectal bleeding is a presenting symptom of colorectal cancer in 40% of cases. Act on red flags immediately.</span>
+    <div class="rfgrid">
+      <div class="rftile"><b>Haemodynamic shock</b> HR &gt;100, SBP &lt;90, pallor, cold extremities, confusion → 999 (massive lower GI haemorrhage, ruptured aneurysm)</div>
+      <div class="rftile"><b>Melaena</b> Black, tarry, offensive stool = upper GI bleed (≥250ml blood in upper GI tract). → 999 / same-day endoscopy via A&amp;E (Rockford criteria)</div>
+      <div class="rftile"><b>Haematochezia with shock</b> Profuse fresh rectal bleeding + haemodynamic instability → 999 (massive lower GI bleed, Meckel's, ischaemic colitis)</div>
+      <div class="rftile"><b>Age ≥50 unexplained rectal bleeding</b> With or without change in bowel habit → 2WW colorectal cancer referral per NICE NG12</div>
+      <div class="rftile"><b>Rectal bleeding + change in bowel habit, age ≥40</b> Especially if persisting ≥6 weeks → 2WW colorectal (NICE NG12 criteria)</div>
+      <div class="rftile"><b>Iron-deficiency anaemia + rectal bleeding</b> Any age: male or postmenopausal female with IDA and occult/overt rectal bleeding → 2WW lower GI</div>
+      <div class="rftile"><b>Palpable rectal or abdominal mass</b> On examination → 2WW colorectal or urgent USS/CT</div>
+      <div class="rftile"><b>Unintentional weight loss + rectal bleeding</b> &gt;5% body weight in 6 months → 2WW colorectal. Check CEA, FBC, LFTs, CRP</div>
+      <div class="rftile"><b>Persistent rectal bleeding ≥6 weeks</b> Despite apparent benign explanation (e.g. haemorrhoids) in any age → investigate further before attributing to benign cause</div>
+      <div class="rftile"><b>Family history colorectal cancer</b> First-degree relative &lt;60 with CRC or 2 first-degree relatives any age + rectal bleeding → urgent colonoscopy / genetics referral</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Colorectal cancer is the 4th most common cancer in the UK (~43,000/year) and the 2nd most common cause of cancer death. NICE NG12 data shows that 10% of patients with unexplained rectal bleeding referred via 2WW have colorectal cancer. Critically, haemorrhoids are present in 40% of the population — the dangerous error is attributing bleeding to haemorrhoids without excluding more serious pathology. Upper GI bleeding presenting as melaena has 10% in-hospital mortality — time to endoscopy is directly correlated with outcomes (Glasgow-Blatchford score drives urgency). Never assume bright red blood = haemorrhoids alone without appropriate assessment.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head">
+    <div class="node-num">02</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Diagnose</span>
+      <h3>Characterise the bleeding — colour, site, pattern, and associations narrow diagnosis</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Bleeding fully characterised</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Colour and character</div><div><b>Bright red, on paper / separate</b> = likely anorectal (haemorrhoids, fissure) · <b>Mixed with stool</b> = more proximal (polyp, cancer, IBD, diverticular) · <b>Dark red / maroon</b> = right colon / small bowel source · <b>Melaena (black, tarry)</b> = upper GI (&gt;Treitz ligament) · <b>Occult (FIT positive)</b> = any site</div>
+      <div>Volume</div><div>Drops / spots = anorectal. Coating stool = distal. Significant volume mixed in bowl = proximal. Gushes = diverticular or angiodysplasia. Quantify in practical terms: teaspoon / tablespoon / toilet bowl</div>
+      <div>Associated symptoms</div><div>Pain on defaecation = fissure · Painless = haemorrhoids / cancer · Mucus = IBD, rectal cancer, solitary rectal ulcer · Tenesmus (persistent urge) = rectal cancer, IBD · Diarrhoea + bleeding = IBD, infectious, cancer</div>
+      <div>Systemic symptoms</div><div>Fever = IBD flare, infectious colitis, diverticulitis · Weight loss = cancer · Fatigue / pallor = anaemia (may indicate chronic slow bleed)</div>
+      <div>Bowel habit change</div><div>Looser / more frequent ≥6 weeks in age ≥40 = 2WW criteria. Alternating diarrhoea/constipation with bleeding = IBS unlikely — investigate</div>
+      <div>Temporal pattern</div><div>Acute single episode = diverticular / angiodysplasia / trauma · Recurrent intermittent = haemorrhoids, polyps, cancer · Chronic continuous = IBD, cancer, fistula</div>
+      <div>Risk factors</div><div>Age, NSAIDs / anticoagulants (diverticular bleed risk ×3), IBD diagnosis, previous polyps, constipation, anal intercourse, recent instrumentation, travel (infectious colitis)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      The colour and distribution of blood is the single most important clinical discriminator. Bright red blood <i>on</i> the paper or separate from stool (rather than mixed) has a positive predictive value of 85% for an anorectal source. However — this still leaves 15% with more proximal pathology. Melaena occurs with as little as 50–80ml of blood from any source above the ileocaecal valve, and requires &gt;14h transit time to oxidise haemoglobin to haematin. NSAIDs double the risk of diverticular bleeding — and anticoagulants quadruple it. Always ask about medication.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head">
+    <div class="node-num">03</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Diagnose</span>
+      <h3>Classify by likely diagnosis — guide workup and referral pathway</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Differential classified</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Anorectal (most common)</div><div>Haemorrhoids (internal grade I–IV, external) · Anal fissure · Fistula-in-ano · Rectal prolapse · Solitary rectal ulcer syndrome. All require PR exam ± proctoscopy to confirm</div>
+      <div>Colonic — benign</div><div>Diverticular bleed (sudden painless large-volume bleed, often self-limiting, age ≥50) · Angiodysplasia (recurrent small bleeds, elderly, RHF association) · Colonic polyps</div>
+      <div>Colonic — inflammatory</div><div>IBD (Crohn's / UC — bloody diarrhoea, systemic symptoms, age &lt;40 commonest) · Infective colitis (acute onset, travel history, fever) · Ischaemic colitis (vascular disease, sudden onset, LIF pain)</div>
+      <div>Colorectal cancer</div><div>Any age but rare &lt;40. Change in bowel habit + bleeding + weight loss. Right-sided = occult blood / anaemia. Left-sided = altered stool + bright blood. Rectal = tenesmus + bleeding</div>
+      <div>Upper GI (presenting as dark PR blood)</div><div>Peptic ulcer · Oesophageal varices · Mallory-Weiss · Aortoenteric fistula (post-AAA repair). If history of AAA repair → 999 (herald bleed precedes exsanguination)</div>
+      <div>Rare / don't miss</div><div>Meckel's diverticulum (young patients, painless, massive) · Radiation proctitis (previous pelvic radiotherapy) · Rectal varices (portal hypertension)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Diverticular bleeding is the most common cause of significant lower GI haemorrhage in adults over 50, accounting for 30–40% of hospitalised LGI bleeds. It is almost always painless and stops spontaneously in 80% of cases — but requires hospital assessment for transfusion and colonoscopy. Aortoenteric fistula is rare but uniformly fatal without immediate surgery — any patient with prior AAA repair presenting with GI bleeding must be treated as this until excluded. IBD first presentation in primary care is frequently delayed by an average of 2 years — think of it in any young adult with bloody diarrhoea.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head">
+    <div class="node-num">04</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Diagnose</span>
+      <h3>Targeted examination — PR exam is mandatory in all rectal bleeding presentations</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Examination completed including PR exam</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Vital signs + NEWS2</div><div>HR, BP (lying and standing — postural drop &gt;20mmHg SBP = significant volume loss), temperature, RR, SpO₂. Pallor, capillary refill. If NEWS2 ≥5 → 999</div>
+      <div>Abdominal exam</div><div>Masses (hepatomegaly — liver mets; abdominal mass — tumour, diverticular phlegmon) · Tenderness · Distension · Bowel sounds. Stigmata of liver disease (spider naevi, caput medusae, ascites) if portal hypertension suspected</div>
+      <div>Perianal inspection</div><div>External haemorrhoids (bluish, tense if thrombosed) · Skin tags · Sentinel pile (fissure marker) · Fistula orifice · Rectal prolapse · Warts (viral — ask re sexual health)</div>
+      <div>Digital rectal exam (PR)</div><div><b>Mandatory.</b> Anal tone · Tender fissure (do not proceed if too painful — LA gel first) · Mass (rectal cancer within reach of finger — 8cm) · Fresh blood / melaena on glove · Faecal impaction · Prostate (men)</div>
+      <div>Proctoscopy (if available)</div><div>Visualise internal haemorrhoids (can only be seen with proctoscope, not finger) · Anal fissure · Low rectal lesion. Can be done in practice with appropriate equipment and training</div>
+      <div>Lymph nodes</div><div>Inguinal lymphadenopathy (anal/lower rectal cancer, STI) · Supraclavicular (Virchow's node = upper GI / left colon metastases)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      PR examination detects rectal cancers within 8cm of the anal verge — approximately 30% of colorectal cancers are within reach of the examining finger. Failure to perform a PR examination in a patient with rectal bleeding is a significant clinical and medicolegal failure. Internal haemorrhoids (the most common cause of bright PR bleeding) cannot be seen or felt on PR exam alone — they require proctoscopy. Postural drop (orthostatic hypotension) identifies occult haemodynamic compromise in patients appearing well supine — check it in any patient with significant rectal bleeding.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head">
+    <div class="node-num">05</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — FIT test is now the pivotal primary care investigation</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Investigations ordered</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>All patients</div><div><span class="pill pill-blue">FBC</span> (anaemia — IDA suggests chronic blood loss) <span class="pill pill-blue">CRP / ESR</span> (IBD, infection) <span class="pill pill-blue">U&amp;E + LFTs</span> <span class="pill pill-blue">Ferritin</span> (IDA) <span class="pill pill-blue">Coagulation</span> (if on anticoagulants or liver disease suspected)</div>
+      <div>FIT Test (faecal immunochemical test)</div><div><span class="pill pill-blue">FIT ≥10 µg/g</span> → refer for colonoscopy. Quantitative FIT (not same as FOBT) · NICE DG30: FIT thresholds vary by region (10–80 µg/g) · Do NOT use FIT alone to rule out CRC in symptomatic patients with overt rectal bleeding — clinical 2WW criteria take priority</div>
+      <div>2WW criteria met</div><div><span class="pill pill-purple">2WW lower GI referral</span> — Do not wait for FIT result before referring if NICE NG12 criteria met. FIT augments but does not replace clinical criteria</div>
+      <div>If IBD suspected</div><div><span class="pill pill-blue">Faecal calprotectin</span> (&gt;50 µg/g = investigate further; &gt;200 µg/g = 93% sensitivity IBD) <span class="pill pill-blue">Stool MC&amp;S</span> (exclude infectious colitis first) <span class="pill pill-blue">Coeliac screen</span></div>
+      <div>If STI possible</div><div><span class="pill pill-blue">GUM screen</span> including gonorrhoea / chlamydia rectal swabs, syphilis serology, HIV</div>
+      <div>Upper GI bleed screen</div><div><span class="pill pill-blue">Group and save</span> (if significant bleed) <span class="pill pill-blue">H. pylori</span> (breath test or stool antigen — if melaena, do after endoscopy) <span class="pill pill-blue">OGD</span> (urgent — via A&amp;E for haemodynamically significant or melaena)</div>
+      <div>Do NOT</div><div>Attribute bleeding to haemorrhoids without age-appropriate investigation · Delay 2WW for investigation results · Repeat FIT to get a "normal" before referring</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <b>FIT (faecal immunochemical test)</b> has replaced FOBT (faecal occult blood test) as the preferred primary care investigation. FIT is more sensitive (specificity 94%, sensitivity 74% for CRC at threshold 10 µg/g) and specific — it detects human haemoglobin, not animal blood in food. NICE DG30 recommends FIT to guide colonoscopy need in symptomatic patients. However, in patients with overt rectal bleeding meeting 2WW criteria, FIT should not delay referral — a negative FIT does NOT exclude CRC in this group. Faecal calprotectin has 93% sensitivity for IBD — it is the recommended primary care test before gastroenterology referral (BSG and NICE CG61).
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head">
+    <div class="node-num">06</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Refer</span>
+      <h3>Referral criteria — rectal bleeding has high 2WW referral rate by design</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Referral decision made and documented</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span> Emergency</div><div>Haemodynamic instability (shock) · Massive PR haemorrhage · Melaena with haemodynamic compromise · Suspected aortoenteric fistula (post-AAA repair). Call 999 and do not transfer independently</div>
+      <div><span class="pill pill-red">Same-day A&amp;E</span></div><div>Melaena with stable haemodynamics (needs OGD within 24h per BSG) · Significant fresh PR bleed requiring transfusion · Glasgow-Blatchford score ≥6 · FBC showing Hb &lt;80 with acute bleed</div>
+      <div><span class="pill pill-purple">2WW Colorectal</span></div><div>NICE NG12: Age ≥50 unexplained PR bleeding · Age ≥40 PR bleeding + change in bowel habit ≥6 weeks · IDA in men or postmenopausal women + PR bleeding · Palpable rectal or abdominal mass · Age ≥60 change in bowel habit alone</div>
+      <div>Urgent gastroenterology</div><div>Suspected new IBD (bloody diarrhoea, systemic symptoms, elevated calprotectin) · Recurrent significant diverticular bleeding · Ischaemic colitis · Radiation proctitis requiring treatment</div>
+      <div>Routine colorectal / surgical</div><div>Grade III–IV haemorrhoids for banding/surgery · Chronic anal fissure not responding to medical treatment · Fistula-in-ano (complex) · Rectal prolapse requiring surgical repair</div>
+      <div>GUM clinic</div><div>Rectal STI (gonorrhoea, chlamydia, syphilis, herpes proctitis, warts) — refer to sexual health</div>
+      <div>Primary care manages</div><div>Grade I–II haemorrhoids (conservative + topical treatment) · Acute anal fissure (medical management) · Infectious diarrhoea with PR bleeding (self-limiting gastroenteritis — monitor, stool cultures) · FIT &lt;10 µg/g with no other risk factors in low-risk patients (local protocol-dependent)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      NICE NG12 deliberately sets a low threshold for 2WW rectal bleeding referral — the positive predictive value for CRC in referred patients is only 5–10%, meaning 90-95% will have a benign cause. This is intentional: missing CRC carries far greater harm than an unnecessary colonoscopy. The Glasgow-Blatchford score is the validated tool for risk-stratifying upper GI bleeds: score ≥6 predicts need for intervention (endoscopy, blood, surgery) with 99% sensitivity. Grade III haemorrhoids (require manual reduction) and grade IV (irreducible) almost always need surgical referral — topical treatment is ineffective at this stage.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head">
+    <div class="node-num">07</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Treat</span>
+      <h3>Treatment — condition-specific; primary care manages benign anorectal causes</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Treatment initiated</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Haemorrhoids (Grade I–II)</div>
+        <div class="b-drug">Topical + lifestyle <span class="pill pill-teal">1st line</span></div>
+        <div class="b-note">Anusol HC cream BD + after each defaecation × 7 days · Or Scheriproct ointment × 5–7 days · High-fibre diet · Adequate hydration · Avoid straining</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Anal fissure (acute)</div>
+        <div class="b-drug">Topical GTN or diltiazem <span class="pill pill-teal">1st line</span></div>
+        <div class="b-note">GTN 0.4% ointment applied to anal margin BD × 8 weeks (causes headache — warn patient) OR Diltiazem 2% cream BD × 8 weeks (fewer headaches, preferred if GTN not tolerated)</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">IBD flare (mild UC)</div>
+        <div class="b-drug">Mesalazine <span class="pill pill-teal">Under specialist</span></div>
+        <div class="b-note">Mesalazine 2.4–4.8g/day oral ± rectal (foam or enema) for distal UC. Initiate in liaison with gastroenterology. Prednisolone only if moderate-severe flare under specialist guidance</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Haemorrhoids Step 1</span><span class="rt"><b>Topical hydrocortisone / local anaesthetic cream</b> (Anusol HC, Proctosedyl) × 7 days max with hydrocortisone component. Add <b>bulk-forming laxative</b> (Fybogel 1 sachet BD) + high-fibre diet to reduce straining. Sitz baths (warm water) for symptom relief</span></div>
+      <div class="rung"><span class="rn">Haemorrhoids Step 2</span><span class="rt"><b>Refer for rubber band ligation</b> (Grade II) — effective in 80% of grade II haemorrhoids. Or injection sclerotherapy (5% phenol in oil). Both performed in outpatient setting without GA</span></div>
+      <div class="rung"><span class="rn">Anal fissure Step 1</span><span class="rt"><b>GTN 0.4% ointment</b> BD to anal margin (not into anal canal) × 8 weeks. Healing rate 60–70%. Warn: headache common (reduces over 1–2 weeks). Alternatively: <b>Diltiazem 2% cream</b> BD × 8 weeks (similar efficacy, fewer headaches)</span></div>
+      <div class="rung"><span class="rn">Anal fissure Step 2</span><span class="rt">Failed medical treatment → <b>Refer surgical</b> for Botulinum toxin injection (70–80% healing rate) or lateral internal sphincterotomy (95% healing but 5–10% incontinence risk)</span></div>
+      <div class="rung"><span class="rn">Diverticular bleed</span><span class="rt">Majority self-terminate. <b>Hospital management:</b> IV access, FBC/group &amp; save, colonoscopy when stable (within 24–48h). In primary care: if self-limited single episode, arrange urgent / 2WW colonoscopy + FBC. Stop NSAIDs</span></div>
+      <div class="rung"><span class="rn">Anticoagulated patient</span><span class="rt">Do not withhold anticoagulation without specialist advice — thrombotic risk may exceed bleeding risk. Discuss with anticoagulation clinic / cardiologist. Manage bleed urgency as per clinical status. Refer to A&amp;E if significant bleeding</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      GTN 0.4% ointment works by relaxing the internal anal sphincter (reducing hypertonia that impairs fissure healing) — it achieves 60–70% healing rate vs 40% for lidocaine alone. Diltiazem 2% cream has equivalent efficacy but fewer side effects — recommended if GTN causes intolerable headaches. Rubber band ligation for haemorrhoids has 80% success rate and is significantly more effective than injection sclerotherapy (Cochrane review). Topical steroids should not be used for more than 7 days continuously (atrophy, infection risk). Stopping NSAIDs in diverticular disease reduces re-bleed risk by 2–3 fold.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head">
+    <div class="node-num">08</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Non-pharmacological — prevent recurrence and reduce risk of serious pathology</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Lifestyle advice provided</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>High-fibre diet</b> 25–30g fibre/day. Softens stool, reduces straining, reduces haemorrhoid recurrence by 50% and diverticular bleed recurrence risk. Wholegrain, fruit, vegetables daily</div>
+      <div class="lstile"><b>Adequate hydration</b> 1.5–2L water/day. Essential to prevent hard stools — the primary mechanical cause of haemorrhoids and anal fissures from straining</div>
+      <div class="lstile"><b>Defaecation posture</b> Footstool to raise feet 20–30cm (reduces anorectal angle, minimises straining). Never strain or spend prolonged time on toilet. Respond immediately to defaecation urge</div>
+      <div class="lstile"><b>Bowel habit regularity</b> Regular toileting routine (post-breakfast — gastrocolic reflex). Avoid constipation proactively. Treat constipation before it causes haemorrhoidal disease</div>
+      <div class="lstile"><b>Weight management</b> Obesity increases intra-abdominal pressure → worsens haemorrhoids and diverticular disease. BMI &lt;25 target. Refer to weight management programme</div>
+      <div class="lstile"><b>Physical activity</b> 150 min/week moderate activity reduces colorectal cancer risk by 30% (WCRF). Reduces constipation, diverticular disease, and obesity-related comorbidities</div>
+      <div class="lstile"><b>NSAID and anticoagulant review</b> NSAIDs increase diverticular bleed risk ×2–3 and worsen haemorrhoids. Review need at every prescription. Switch to paracetamol if possible</div>
+      <div class="lstile"><b>Bowel cancer screening</b> Ensure enrolled in NHS Bowel Cancer Screening Programme (FIT every 2 years from age 50, colonoscopy if positive). Discuss family history screening eligibility</div>
+      <div class="lstile"><b>Alcohol moderation</b> Alcohol increases colorectal cancer risk (WCRF: each 10g/day alcohol increases CRC risk by 7%). Units &lt;14/week for all adults. Alcohol causes liver disease → portal hypertension → rectal varices</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      A high-fibre diet reduces haemorrhoid recurrence by 50% and diverticular bleed recurrence by 40% — this is level 1 evidence. Physical activity reduces colorectal cancer risk by 30–40% across multiple meta-analyses — comparable to the impact of aspirin chemoprevention but without the bleeding risk. NHS Bowel Cancer Screening (FIT programme) has 25% mortality reduction in screened populations — ensuring eligible patients are enrolled and engaged is a primary care quality metric. Alcohol is a recognised WHO Group 1 carcinogen for colorectal cancer — clear, quantified advice should be given at every opportunity.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head">
+    <div class="node-num">09</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-up &amp; monitoring — maintain vigilance; rectal bleeding needs structured review</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Follow-up plan and safety-net documented</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>1 week</div><div>Acute fissure or haemorrhoids: check response to topical treatment. Blood test results review. If no improvement → reassess and consider referral</div>
+      <div>4–6 weeks</div><div>Fissure on GTN/diltiazem: healing assessment (reduce to OD if improving). FIT result actioned. Any 2WW acknowledgment received from secondary care</div>
+      <div>8 weeks</div><div>End of fissure treatment course: document healing. If incomplete → refer surgical. Haemorrhoid: reassess symptom control — refer if Grade III/IV</div>
+      <div>Post-colonoscopy</div><div>Review results letter. Adenoma surveillance interval as per BSG guidelines (low risk: FIT at 3y; high risk: colonoscopy at 3y). Communicate results clearly to patient</div>
+      <div>IBD follow-up</div><div>Shared care with gastroenterology. FBC + LFTs 3-monthly on immunomodulators. Annual surveillance colonoscopy if pancolitis &gt;8 years. Check thiopurine metabolites annually</div>
+      <div><span class="pill pill-red">999</span> Safety-net</div><div>Return of haemorrhagic shock · Heavy PR haemorrhage · Collapse · Haematemesis · Severe abdominal pain with bleeding</div>
+      <div><span class="pill pill-amber">Same-day GP</span> Safety-net</div><div>Any return of significant PR bleeding · New melaena · New weight loss or systemic symptoms · Bleeding not settling after 48–72h · Failure to receive 2WW appointment within 14 days</div>
+      <div>NHS Bowel Screening</div><div>Confirm patient enrolled. If previously declined — re-offer. Document screening status in records. Patients with CRC family history may need earlier surveillance — check eligibility criteria</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Patients with adenomas found on colonoscopy have a 3–5× increased risk of future CRC — surveillance intervals (BSG 2019 guidelines) are evidence-based and must be communicated clearly and followed up. IBD patients with pancolitis for &gt;8 years have 2% annual risk of CRC — annual surveillance colonoscopy is mandatory. Patients who do not receive their 2WW appointment confirmation within 14 days should be followed up proactively — system failures occur, and the patient cannot always advocate for themselves. A documented safety-net discussion is an RCGP SCA examination competency requirement.
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG12 (Suspected cancer recognition 2015, updated 2023) · NICE DG30 (FIT for colorectal cancer) · BSG Lower GI Bleeding Guidelines · BSG IBD Guidelines · BSG Colorectal Cancer Screening/Surveillance · BNF · NHS Bowel Cancer Screening Programme · WCRF Cancer Prevention Recommendations. Always adapt to individual patient context and local clinical guidelines.
+</div>
+
+<script>
+(function(){
+  const flow=document.getElementById('flow');
+  const checks=flow?flow.querySelectorAll('input[type=checkbox]'):[];
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  const KEY='rgp.alg.rectalbleeding.v1';
+  function save(){const s={};checks.forEach((c,i)=>{s[i]=c.checked});try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');checks.forEach((c,i)=>{if(s[i])c.checked=true})}catch(e){}}
+  function update(){let done=0;checks.forEach(c=>{const node=c.closest('.node');if(c.checked){done++;node&&node.classList.add('done')}else{node&&node.classList.remove('done')}});if(pDone)pDone.textContent=done;if(pFill)pFill.style.width=(done/total*100)+'%';}
+  checks.forEach(c=>c.addEventListener('change',()=>{update();save()}));
+  document.querySelectorAll('.why-btn').forEach(btn=>{btn.addEventListener('click',()=>{const drawer=btn.nextElementSibling;const open=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',open?'false':'true');drawer.style.display=open?'none':'block';});});
+  document.getElementById('resetBtn')?.addEventListener('click',()=>{checks.forEach(c=>c.checked=false);document.querySelectorAll('.why-drawer').forEach(d=>d.style.display='none');document.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));update();save();});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

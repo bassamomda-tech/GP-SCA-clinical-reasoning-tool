@@ -1,0 +1,2378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pathways · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<style>
+.tool-page{ padding:28px 32px 80px; max-width:1180px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+
+.tool-head{ padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:20px; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:34px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); font-weight:500; }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:8px; max-width:68ch; }
+
+/* Search + meta row */
+.alg-controls{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-bottom:8px; }
+.alg-search{ position:relative; flex:1; min-width:260px; }
+.alg-search svg{ position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--muted); pointer-events:none; }
+.alg-search input{ width:100%; font:inherit; font-size:15px; padding:12px 14px 12px 42px; border:1px solid var(--line-2); border-radius:10px; background:#fff; color:var(--ink); }
+.alg-search input:focus{ outline:none; border-color:var(--teal); box-shadow:0 0 0 4px var(--teal-soft); }
+.alg-count-pill{ font-size:13px; color:var(--muted); font-weight:500; white-space:nowrap; }
+.alg-count-pill b{ color:var(--ink); font-feature-settings:"tnum"; }
+
+.alg-cats{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+.alg-cat{ font:inherit; font-size:12.5px; font-weight:600; padding:6px 12px; border:1px solid var(--line-2); border-radius:99px; background:#fff; color:var(--ink-2); cursor:pointer; white-space:nowrap; transition:all .12s ease; }
+.alg-cat:hover{ border-color:var(--teal); color:var(--teal); }
+.alg-cat.active{ background:var(--teal); border-color:var(--teal); color:#fff; }
+
+.alg-empty{ display:none; padding:48px 20px; text-align:center; color:var(--muted); font-size:15px; }
+.alg-empty.show{ display:block; }
+
+/* Group */
+.alg-group{ margin-top:30px; }
+.alg-group-head{ display:flex; align-items:center; gap:10px; margin-bottom:14px; padding:0 0 8px 18px; border-bottom:1px solid var(--line); }
+.agh-icon{ font-size:18px; }
+.alg-group-head h2{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:21px; color:var(--ink); letter-spacing:-.01em; }
+.agh-count{ font-size:11px; font-weight:700; color:var(--muted); background:var(--bg-soft); border:1px solid var(--line); border-radius:99px; padding:2px 9px; }
+
+.alg-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(264px,1fr)); gap:10px; }
+
+.alg-card{
+  display:flex; align-items:flex-start; gap:12px; padding:13px 15px;
+  background:#fff; border:1px solid var(--line); border-radius:12px;
+  text-decoration:none; color:inherit; transition:all .15s ease; position:relative;
+}
+.alg-card:hover{ border-color:var(--teal); box-shadow:var(--shadow-2); transform:translateY(-1px); }
+.ac-icon{ font-size:22px; line-height:1.1; flex-shrink:0; width:30px; text-align:center; }
+.ac-text{ display:flex; flex-direction:column; gap:2px; min-width:0; flex:1; }
+.ac-text b{ font-size:14.5px; font-weight:600; color:var(--ink); line-height:1.25; }
+.ac-text small{ font-size:12px; color:var(--muted); line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.ac-arrow{ color:var(--line-2); font-size:16px; flex-shrink:0; align-self:center; transition:.15s ease; }
+.alg-card:hover .ac-arrow{ color:var(--teal); transform:translateX(2px); }
+
+.alg-foot{ margin-top:36px; padding:14px 18px; background:var(--bg-soft); border:1px solid var(--line); border-radius:10px; font-size:12.5px; color:var(--muted); line-height:1.5; }
+.alg-foot strong{ color:var(--ink-2); }
+</style>
+</head>
+<body data-screen-label="Algorithms tool">
+
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+
+<div class="app">
+  <aside class="sidebar" data-active-id="__algorithms"></aside>
+  <main class="main">
+
+    <div class="tool-page">
+
+      <div class="tool-head">
+        <div class="tool-eyebrow">Reasoning GP</div>
+        <h1>Clinical <em>pathways</em></h1>
+        <p>Fast visual pathways for busy clinicians — one structured flow per presentation, colour-coded by Safety / Diagnose / Refer / Treat / Lifestyle, with a one-tap "why" on every step. Pick a presentation to open its pathway.</p>
+      </div>
+
+      <div class="alg-controls">
+        <div class="alg-search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="algSearch" placeholder="Search 250+ pathways — e.g. headache, chest pain, CKD, anaemia…" autocomplete="off" />
+        </div>
+        <span class="alg-count-pill"><b id="algShown">265</b> / 250+ pathways</span>
+      </div>
+
+      <div class="alg-cats" id="algCats"></div>
+
+      <div class="alg-empty" id="algEmpty">No algorithm matches that search. Try a symptom or condition name.</div>
+
+      <section class="alg-group" data-group="lab results">
+        <div class="alg-group-head">
+          <span class="agh-icon">🧪</span>
+          <h2>Lab Results</h2>
+          <span class="agh-count">hub</span>
+        </div>
+        <div class="alg-grid">
+        <a class="alg-card" href="algorithms/lab-results.html" data-search="lab results abnormal blood test bloods blood results hyponatraemia low sodium anaemia low hb iron deficiency potassium hypokalaemia calcium hypercalcaemia lfts liver function deranged tsh thyroid hyperthyroidism hypothyroidism platelets thrombocytopenia thrombocytosis white cells leucocytosis leucopenia polycythaemia egfr creatinine ckd aki cholesterol hba1c bilirubin jaundice ferritin bone profile u&amp;e fbc tft any blood abnormality">
+          <span class="ac-icon">🧪</span>
+          <span class="ac-text">
+            <b>Lab Results — any abnormal blood test</b>
+            <small>One hub for FBC · U&amp;E · LFTs · bone · thyroid · lipids &amp; glucose — anaemia, low sodium, high calcium, deranged LFTs, abnormal TFTs and more</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        </div>
+      </section>
+
+      <section class="alg-group" data-group="cardiovascular">
+        <div class="alg-group-head">
+          <span class="agh-icon">🫀</span>
+          <h2>Cardiovascular</h2>
+          <span class="agh-count">9</span>
+        </div>
+        <div class="alg-grid">
+        <a class="alg-card" href="algorithms/hypertension.html" data-search="new presentation of high blood pressure new presentation of high blood pressure clinic bp ≥140/90 mmhg in an adult, no prior diagnosis. hypertension">
+          <span class="ac-icon">🩺</span>
+          <span class="ac-text">
+            <b>New presentation of high blood pressure</b>
+            <small>Clinic BP ≥140/90 mmHg in an adult, no prior diagnosis.</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/chest-pain.html" data-search="chest pain chest pain — acute presentation in primary care 10-minute consultation pathway for undifferentiated chest pain in adults chest-pain">
+          <span class="ac-icon">🫀</span>
+          <span class="ac-text">
+            <b>Chest Pain</b>
+            <small>10-minute consultation pathway for undifferentiated chest pain in adults</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/palpitations.html" data-search="palpitations palpitations — new presentation structured 9-step pathway for uk gp: risk stratification, diagnosis, and management palpitations">
+          <span class="ac-icon">💓</span>
+          <span class="ac-text">
+            <b>Palpitations</b>
+            <small>Structured 9-step pathway for UK GP: risk stratification, diagnosis, and management</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/ankle-swelling.html" data-search="ankle swelling ankle swelling — new presentation covers bilateral &amp; unilateral oedema including cardiac, renal, hepatic, venous, dvt and medication causes ankle-swelling">
+          <span class="ac-icon">🦵</span>
+          <span class="ac-text">
+            <b>Ankle Swelling</b>
+            <small>Covers bilateral &amp; unilateral oedema including cardiac, renal, hepatic, venous, DVT and medication causes</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/claudication.html" data-search="intermittent claudication intermittent claudication — peripheral arterial disease assessment &amp; management of pad-related claudication | uk primary care claudication">
+          <span class="ac-icon">🚶</span>
+          <span class="ac-text">
+            <b>Intermittent Claudication</b>
+            <small>Assessment &amp; management of PAD-related claudication | UK primary care</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/high-cholesterol.html" data-search="high cholesterol high cholesterol — new result or review covers primary &amp; secondary prevention, fh, statin initiation, and cardiovascular risk stratification high-cholesterol">
+          <span class="ac-icon">🫀</span>
+          <span class="ac-text">
+            <b>High Cholesterol</b>
+            <small>Covers primary &amp; secondary prevention, FH, statin initiation, and cardiovascular risk stratification</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/leg-cramps.html" data-search="leg cramps leg cramps — nocturnal &amp; exercise-induced diagnosis &amp; management of muscle cramps in primary care | adults leg-cramps">
+          <span class="ac-icon">🦵</span>
+          <span class="ac-text">
+            <b>Leg Cramps</b>
+            <small>Diagnosis &amp; management of muscle cramps in primary care | Adults</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/raynauds.html" data-search="raynaud's phenomenon raynaud's phenomenon — episodic digital ischaemia uk primary care pathway for diagnosing and managing colour changes in fingers/toes triggered by cold or stress raynauds">
+          <span class="ac-icon">🥶</span>
+          <span class="ac-text">
+            <b>Raynaud's Phenomenon</b>
+            <small>UK primary care pathway for diagnosing and managing colour changes in fingers/toes triggered by cold or stress</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+                <a class="alg-card" href="algorithms/hypotension.html" data-search="hypotension orthostatic septic shock addisons drug-induced neurogenic fludrocortisone midodrine falls (stopp) hypotension">
+          <span class="ac-icon">💉</span>
+          <span class="ac-text">
+            <b>Hypotension</b>
+            <small>Orthostatic · septic shock · Addison's · drug-induced · neurogenic · fludrocortisone · midodrine · falls (STOPP)</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+</div>
+      </section>
+      <section class="alg-group" data-group="respiratory">
+        <div class="alg-group-head">
+          <span class="agh-icon">🫁</span>
+          <h2>Respiratory</h2>
+          <span class="agh-count">6</span>
+        </div>
+        <div class="alg-grid">
+        <a class="alg-card" href="algorithms/acute-asthma.html" data-search="acute asthma exacerbation attack pef peak flow silent chest magnesium prednisolone salbutamol nebuliser acute-asthma">
+          <span class="ac-icon">🫁</span>
+          <span class="ac-text">
+            <b>Acute Asthma Exacerbation</b>
+            <small>PEF % severity · silent chest · MgSO₄ 2g IV · prednisolone 40–50mg · admission criteria</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/acute-copd.html" data-search="acute copd exacerbation aecopd controlled oxygen venturi prednisolone antibiotics niv co2 narcosis acute-copd">
+          <span class="ac-icon">🫁</span>
+          <span class="ac-text">
+            <b>Acute COPD Exacerbation</b>
+            <small>Controlled O₂ 88–92% Venturi · prednisolone 30mg ×5d · antibiotics if purulent · NIV</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/breathlessness.html" data-search="breathlessness breathlessness — new or worsening presentation systematic assessment for uk primary care · 10-minute consultation framework breathlessness">
+          <span class="ac-icon">🫁</span>
+          <span class="ac-text">
+            <b>Breathlessness</b>
+            <small>Systematic assessment for UK primary care · 10-minute consultation framework</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/chronic-cough.html" data-search="chronic cough chronic cough — ≥8 weeks duration systematic gp assessment — uacs, gord, cva, eosinophilic bronchitis, cancer exclusion and cough hypersensitivity chronic-cough">
+          <span class="ac-icon">🫁</span>
+          <span class="ac-text">
+            <b>Chronic Cough</b>
+            <small>≥8 weeks · UACS, GORD, cough-variant asthma, eosinophilic bronchitis · cancer exclusion</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/snoring-osa.html" data-search="snoring osa obstructive sleep apnoea snoring &amp; osa — assessment &amp; management stop-bang risk stratification, sleep study pathway, cpap and driving regulations snoring-osa">
+          <span class="ac-icon">💤</span>
+          <span class="ac-text">
+            <b>Snoring &amp; OSA</b>
+            <small>STOP-BANG risk stratification · sleep study pathway · CPAP &amp; driving regulations</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+                <a class="alg-card" href="algorithms/acute-cough.html" data-search="acute cough crb-65 pneumonia pe wells/ctpa haemoptysis 2ww lung cancer pertussis notification copd rescue pack acute-cough">
+          <span class="ac-icon">🫁</span>
+          <span class="ac-text">
+            <b>Acute Cough</b>
+            <small>CRB-65 · pneumonia · PE Wells/CTPA · haemoptysis 2WW lung cancer · pertussis notification · COPD rescue pack</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+</div>
+      </section>
+      <section class="alg-group" data-group="gastroenterology &amp; liver">
+        <div class="alg-group-head">
+          <span class="agh-icon">🫃</span>
+          <h2>Gastroenterology &amp; Liver</h2>
+          <span class="agh-count">23</span>
+        </div>
+        <div class="alg-grid">
+        <a class="alg-card" href="algorithms/ulcerative-colitis-flare.html" data-search="ulcerative colitis flare uc toxic megacolon truelove witts oxford hydrocortisone infliximab mesalazine ibd ulcerative-colitis-flare">
+          <span class="ac-icon">🔴</span>
+          <span class="ac-text">
+            <b>Ulcerative Colitis Flare-up</b>
+            <small>Toxic megacolon 999 · Truelove–Witts severe → IV hydrocortisone · day-3 rescue · mesalazine</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/crohns-disease-flare.html" data-search="crohns disease flare cd abscess ct hbi prednisolone azathioprine tpmt methotrexate biologics ibd crohns-disease-flare">
+          <span class="ac-icon">🟣</span>
+          <span class="ac-text">
+            <b>Crohn’s Disease Flare-up</b>
+            <small>Exclude abscess on CT first · HBI severity · prednisolone · TPMT before azathioprine · biologics</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hernia.html" data-search="hernia inguinal femoral strangulation incarceration obstruction pubic tubercle repair umbilical incisional hernia">
+          <span class="ac-icon">🫃</span>
+          <span class="ac-text">
+            <b>Hernia</b>
+            <small>Strangulation 999 · femoral hernia urgent all · inguinal vs femoral landmark · repair</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/biliary-colic.html" data-search="biliary colic gallstones cholelithiasis cholecystitis cholangitis charcot courvoisier diclofenac cholecystectomy ercp biliary-colic">
+          <span class="ac-icon">🟡</span>
+          <span class="ac-text">
+            <b>Biliary Colic &amp; Gallstones</b>
+            <small>Charcot’s triad → cholangitis 999 · Courvoisier 2WW · diclofenac 75mg IM · cholecystectomy</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/abdominal-mass.html" data-search="abdominal mass aaa aneurysm 2ww virchow troisier hepatomegaly splenomegaly organomegaly imaging abdominal-mass">
+          <span class="ac-icon">🫃</span>
+          <span class="ac-text">
+            <b>Abdominal Mass</b>
+            <small>AAA rupture 999 · 2WW all unexplained adult masses · Virchow’s node · imaging</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/abdominal-pain.html" data-search="abdominal pain abdominal pain — adult presentation in primary care covers acute, subacute, and chronic presentations · adults ≥18 · uk nhs pathway abdominal-pain">
+          <span class="ac-icon">🫃</span>
+          <span class="ac-text">
+            <b>Abdominal Pain</b>
+            <small>Covers acute, subacute, and chronic presentations · Adults ≥18 · UK NHS pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/chronic-diarrhoea.html" data-search="chronic diarrhoea chronic diarrhoea — adult presentation in primary care diarrhoea persisting ≥4 weeks · adults ≥18 · uk nhs pathway chronic-diarrhoea">
+          <span class="ac-icon">💧</span>
+          <span class="ac-text">
+            <b>Chronic Diarrhoea</b>
+            <small>Diarrhoea persisting ≥4 weeks · Adults ≥18 · UK NHS pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/constipation.html" data-search="constipation constipation — adult presentation in primary care covers new-onset, chronic, and opioid-induced constipation · adults ≥18 · uk nhs pathway constipation">
+          <span class="ac-icon">🟤</span>
+          <span class="ac-text">
+            <b>Constipation</b>
+            <small>Covers new-onset, chronic, and opioid-induced constipation · Adults ≥18 · UK NHS pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/dyspepsia.html" data-search="dyspepsia dyspepsia — primary care management rcgp sca algorithm · uk gp trainees &amp; early-career gps · 10-minute appointment guide dyspepsia">
+          <span class="ac-icon">🫁</span>
+          <span class="ac-text">
+            <b>Dyspepsia</b>
+            <small>RCGP SCA algorithm · UK GP trainees &amp; early-career GPs · 10-minute appointment guide</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/rectal-bleeding.html" data-search="rectal bleeding rectal bleeding — adult presentation in primary care covers fresh pr bleeding, melaena, occult blood, and haematochezia · adults ≥18 · uk nhs pathway rectal-bleeding">
+          <span class="ac-icon">🩸</span>
+          <span class="ac-text">
+            <b>Rectal Bleeding</b>
+            <small>Covers fresh PR bleeding, melaena, occult blood, and haematochezia · Adults ≥18 · UK NHS pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/diverticulitis.html" data-search="diverticulitis diverticulitis — acute presentation gp diagnosis, severity assessment, antibiotic use and surgical referral pathway diverticulitis">
+          <span class="ac-icon">🟢</span>
+          <span class="ac-text">
+            <b>Diverticulitis</b>
+            <small>GP diagnosis, severity assessment, antibiotic use and surgical referral pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/crohns-flare.html" data-search="crohn's disease crohn's disease — acute flare-up gp assessment, complication exclusion, severity classification and management crohns-flare">
+          <span class="ac-icon">🟣</span>
+          <span class="ac-text">
+            <b>Crohn's Disease</b>
+            <small>GP assessment, complication exclusion, severity classification and management</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/uc-flare.html" data-search="ulcerative colitis ulcerative colitis — acute flare-up gp assessment, severity scoring, treatment escalation and referral pathway uc-flare">
+          <span class="ac-icon">🔴</span>
+          <span class="ac-text">
+            <b>Ulcerative Colitis</b>
+            <small>GP assessment, severity scoring, treatment escalation and referral pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/jaundice.html" data-search="jaundice in adults jaundice in adults — new presentation structured approach to diagnosis, investigation, and management of adult jaundice in primary care jaundice">
+          <span class="ac-icon">🟡</span>
+          <span class="ac-text">
+            <b>Jaundice in Adults</b>
+            <small>Structured approach to diagnosis, investigation, and management of adult jaundice in primary care</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/abnormal-lfts.html" data-search="abnormal liver function tests abnormal liver function tests — investigation &amp; management systematic approach from incidental finding to diagnosis · uk primary care pathway abnormal-lfts">
+          <span class="ac-icon">🧪</span>
+          <span class="ac-text">
+            <b>Abnormal Liver Function Tests</b>
+            <small>Systematic approach from incidental finding to diagnosis · UK Primary Care Pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/fatty-liver.html" data-search="fatty liver disease fatty liver disease — incidental finding or abnormal lfts covers masld (nafld), ald, fibrosis staging via fib-4/elf, and cirrhosis surveillance fatty-liver">
+          <span class="ac-icon">🫀</span>
+          <span class="ac-text">
+            <b>Fatty Liver Disease</b>
+            <small>Covers MASLD (NAFLD), ALD, fibrosis staging via FIB-4/ELF, and cirrhosis surveillance</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/anal-pain.html" data-search="anal pain anal pain — new presentation fissure abscess perianal haemorrhoids thrombosed proctalgia cancer exclusion pr examination pathway">
+          <span class="ac-icon">🩹</span>
+          <span class="ac-text">
+            <b>Anal Pain</b>
+            <small>Fissure · abscess · haemorrhoids · cancer exclusion · PR examination pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/anal-itchiness.html" data-search="anal itchiness pruritus ani anal itch hygiene threadworms skin disease contact dermatitis cancer exclusion">
+          <span class="ac-icon">🌿</span>
+          <span class="ac-text">
+            <b>Anal Itchiness (Pruritus Ani)</b>
+            <small>Hygiene · threadworms · skin disease · contact dermatitis · cancer exclusion</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/anal-lumps.html" data-search="anal lumps perianal lump haemorrhoids skin tags warts abscess rectal prolapse cancer exclusion">
+          <span class="ac-icon">🔴</span>
+          <span class="ac-text">
+            <b>Anal Lumps</b>
+            <small>Haemorrhoids · skin tags · warts · abscess · rectal prolapse · cancer exclusion</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+                <a class="alg-card" href="algorithms/hiccups.html" data-search="hiccups benign self-limiting vs serious cause phrenic nerve cns metabolic drug-induced palliative hiccups">
+          <span class="ac-icon">😮‍💨</span>
+          <span class="ac-text">
+            <b>Hiccups</b>
+            <small>Benign self-limiting vs serious cause · phrenic nerve · CNS · metabolic · drug-induced · palliative</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/faecal-incontinence.html" data-search="faecal incontinence passive vs urge obstetric injury sphincter defect rectal prolapse overflow nice ng224 faecal-incontinence">
+          <span class="ac-icon">🚽</span>
+          <span class="ac-text">
+            <b>Faecal Incontinence</b>
+            <small>Passive vs urge · obstetric injury · sphincter defect · rectal prolapse · overflow · NICE NG224</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/bloating.html" data-search="bloating ibs rome iv ovarian cancer ca125 coeliac calprotectin fodmap fit 2ww bloating">
+          <span class="ac-icon">🫃</span>
+          <span class="ac-text">
+            <b>Bloating</b>
+            <small>IBS Rome IV · ovarian cancer CA125 · coeliac · calprotectin · FODMAP · FIT 2WW</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/gord.html" data-search="gord / acid reflux dysphagia 2ww oesophageal/gastric cancer alarm features h. pylori test-and-treat ppi step-down barrettandrsquo;s nice ng12 gord">
+          <span class="ac-icon">🔥</span>
+          <span class="ac-text">
+            <b>GORD / Acid Reflux</b>
+            <small>Dysphagia 2WW · oesophageal/gastric cancer alarm features · H. pylori test-and-treat · PPI step-down · Barrett&rsquo;s · NICE NG12</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+</div>
+      </section>
+      <section class="alg-group" data-group="renal, urology &amp; men’s health">
+        <div class="alg-group-head">
+          <span class="agh-icon">🫘</span>
+          <h2>Renal, Urology &amp; Men’s Health</h2>
+          <span class="agh-count">25</span>
+        </div>
+        <div class="alg-grid">
+        <a class="alg-card" href="algorithms/proteinuria.html" data-search="proteinuria protein in urine acr pcr albuminuria nephrotic ckd myeloma renoprotection dipstick proteinuria">
+          <span class="ac-icon">🧪</span>
+          <span class="ac-text">
+            <b>Proteinuria</b>
+            <small>Confirm persistence, quantify with ACR, stage CKD, exclude myeloma.</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/incidental-renal-mass.html" data-search="incidental renal mass kidney bosniak cyst rcc renal cell carcinoma angiomyolipoma 2ww nephrectomy incidental-renal-mass">
+          <span class="ac-icon">🫘</span>
+          <span class="ac-text">
+            <b>Incidental Renal Mass</b>
+            <small>Bosniak I–IV cysts · 2WW solid enhancing mass · AML &gt;4cm · partial nephrectomy</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/abnormal-semen-analysis.html" data-search="abnormal semen analysis male infertility oligospermia azoospermia who 2021 cbavd cftr klinefelter fsh abnormal-semen-analysis">
+          <span class="ac-icon">🔬</span>
+          <span class="ac-text">
+            <b>Abnormal Semen Analysis</b>
+            <small>WHO 2021 values · repeat SA before deciding · CBAVD → CFTR · azoospermia referral</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/aki.html" data-search="acute kidney injury acute kidney injury (aki) — detection &amp; management uk primary care pathway · nice aki guideline (ng148) · adult patients · 10-minute consultation aki">
+          <span class="ac-icon">🩺</span>
+          <span class="ac-text">
+            <b>Acute Kidney Injury</b>
+            <small>UK primary care pathway · NICE AKI guideline (NG148) · Adult patients · 10-minute consultation</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/ckd.html" data-search="chronic kidney disease chronic kidney disease (ckd) — detection, staging &amp; management primary care pathway: g1–g5 · nice ng203 · annual review to nephrology referral ckd">
+          <span class="ac-icon">🫘</span>
+          <span class="ac-text">
+            <b>Chronic Kidney Disease</b>
+            <small>Primary care pathway: G1–G5 · NICE NG203 · Annual review to nephrology referral</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/haematuria.html" data-search="haematuria haematuria — visible &amp; non-visible, adult presentation from incidental dipstick finding to urgent cancer pathway · uk primary care haematuria">
+          <span class="ac-icon">🩸</span>
+          <span class="ac-text">
+            <b>Haematuria</b>
+            <small>From incidental dipstick finding to urgent cancer pathway · UK Primary Care</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/renal-colic.html" data-search="renal colic renal colic — acute presentation &amp; secondary prevention uk primary care algorithm · rcgp sca preparation · based on nice cks, eau guidelines, baus renal-colic">
+          <span class="ac-icon">🪨</span>
+          <span class="ac-text">
+            <b>Renal Colic</b>
+            <small>UK primary care algorithm · RCGP SCA preparation · Based on NICE CKS, EAU Guidelines, BAUS</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/luts-men.html" data-search="luts in men luts in men — assessment &amp; management primary care pathway: storage, voiding &amp; post-micturition symptoms · bph, prostate cancer, oab, uti exclusion luts-men">
+          <span class="ac-icon">🚿</span>
+          <span class="ac-text">
+            <b>LUTS in Men</b>
+            <small>Primary care pathway: storage, voiding &amp; post-micturition symptoms · BPH, prostate cancer, OAB, UTI exclusion</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/urinary-incontinence-female.html" data-search="urinary incontinence urinary incontinence (female) — assessment &amp; management rcgp sca algorithm · uk gp practice · 10-minute appointment pathway urinary-incontinence-female">
+          <span class="ac-icon">💧</span>
+          <span class="ac-text">
+            <b>Urinary Incontinence</b>
+            <small>RCGP SCA Algorithm · UK GP Practice · 10-minute appointment pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/chronic-testicular-pain.html" data-search="chronic testicular pain chronic testicular pain (orchialgia) — assessment &amp; management persistent scrotal pain ≥3 months · cancer exclusion · multidisciplinary approach · uk primary care chronic-testicular-pain">
+          <span class="ac-icon">🫁</span>
+          <span class="ac-text">
+            <b>Chronic Testicular Pain</b>
+            <small>Persistent scrotal pain ≥3 months · Cancer exclusion · Multidisciplinary approach · UK Primary Care</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/scrotal-pain.html" data-search="scrotal pain / swelling scrotal pain / swelling — acute &amp; chronic presentations uk primary care algorithm · rcgp sca preparation · based on nice cks, eau guidelines, sign scrotal-pain">
+          <span class="ac-icon">🔴</span>
+          <span class="ac-text">
+            <b>Scrotal Pain / Swelling</b>
+            <small>UK primary care algorithm · RCGP SCA preparation · Based on NICE CKS, EAU Guidelines, SIGN</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/haematospermia.html" data-search="haematospermia haematospermia — primary care assessment structured 9-step pathway for blood in semen · uk gp / rcgp sca preparation haematospermia">
+          <span class="ac-icon">🔴</span>
+          <span class="ac-text">
+            <b>Haematospermia</b>
+            <small>Structured 9-step pathway for blood in semen · UK GP / RCGP SCA preparation</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/undescended-testis.html" data-search="undescended testis undescended testis (cryptorchidism) — neonatal to adult uk primary care algorithm · rcgp sca preparation · based on nice, eau paediatric guidelines, baus undescended-testis">
+          <span class="ac-icon">👶</span>
+          <span class="ac-text">
+            <b>Undescended Testis</b>
+            <small>UK primary care algorithm · RCGP SCA preparation · Based on NICE, EAU Paediatric Guidelines, BAUS</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/erectile-dysfunction.html" data-search="erectile dysfunction erectile dysfunction — assessment &amp; management cardiovascular risk marker · psychogenic &amp; organic causes · uk primary care pathway erectile-dysfunction">
+          <span class="ac-icon">💊</span>
+          <span class="ac-text">
+            <b>Erectile Dysfunction</b>
+            <small>Cardiovascular risk marker · Psychogenic &amp; organic causes · UK Primary Care Pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/premature-ejaculation.html" data-search="premature ejaculation premature ejaculation — assessment &amp; management in primary care lifelong vs acquired · eau/issm guideline-aligned · pharmacological &amp; behavioural approaches premature-ejaculation">
+          <span class="ac-icon">🩺</span>
+          <span class="ac-text">
+            <b>Premature Ejaculation</b>
+            <small>Lifelong vs acquired · EAU/ISSM guideline-aligned · Pharmacological &amp; behavioural approaches</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/testicular-lump.html" data-search="testicular lump scrotal lump new presentation cancer exclusion mandatory uss within 2 weeks painless lump germ cell tumour hydrocele epididymal cyst varicocele">
+          <span class="ac-icon">🔵</span>
+          <span class="ac-text">
+            <b>Testicular Lump</b>
+            <small>Cancer exclusion mandatory · USS within 2 weeks · painless lump = cancer until proven otherwise</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/testicular-pain.html" data-search="testicular pain acute chronic scrotal pain torsion 6-hour surgical emergency epididymo-orchitis referred pain chronic orchialgia">
+          <span class="ac-icon">⚡</span>
+          <span class="ac-text">
+            <b>Testicular Pain — Acute &amp; Chronic</b>
+            <small>Torsion = 6-hour surgical emergency · epididymo-orchitis · referred pain · chronic orchialgia</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+                <a class="alg-card" href="algorithms/penile-discharge.html" data-search="penile discharge gonorrhoea ngu chlamydia gum bashh ceftriaxone doxycycline partner notification penile-discharge">
+          <span class="ac-icon">💧</span>
+          <span class="ac-text">
+            <b>Penile Discharge</b>
+            <small>Gonorrhoea · NGU · chlamydia · GUM · BASHH · ceftriaxone · doxycycline · partner notification</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/penile-irritation.html" data-search="penile irritation balanitis sti screen lichen sclerosus penile cancer exclusion phimosis contact dermatitis penile-irritation">
+          <span class="ac-icon">🔵</span>
+          <span class="ac-text">
+            <b>Penile Irritation</b>
+            <small>Balanitis · STI screen · lichen sclerosus · penile cancer exclusion · phimosis · contact dermatitis</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/recurrent-uti.html" data-search="recurrent uti urosepsis 999 haematuria 2ww topical oestrogen d-mannose methenamine prophylaxis nice ng112 recurrent-uti">
+          <span class="ac-icon">🧫</span>
+          <span class="ac-text">
+            <b>Recurrent UTI</b>
+            <small>Urosepsis 999 · haematuria 2WW · topical oestrogen · D-mannose · methenamine · prophylaxis · NICE NG112</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/testosterone-deficiency.html" data-search="testosterone deficiency hypogonadism two morning levels pituitary exclusion trt fertility prostate surveillance testosterone-deficiency">
+          <span class="ac-icon">🧔</span>
+          <span class="ac-text">
+            <b>Testosterone Deficiency</b>
+            <small>Hypogonadism · two morning levels · pituitary exclusion · TRT · fertility · prostate surveillance</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/anogenital-warts.html" data-search="anogenital warts hpv 6/11 condylomata acuminata podophyllotoxin imiquimod gum hpv vaccination safeguarding anogenital-warts">
+          <span class="ac-icon">🫛</span>
+          <span class="ac-text">
+            <b>Anogenital Warts</b>
+            <small>HPV 6/11 · condylomata acuminata · podophyllotoxin · imiquimod · GUM · HPV vaccination · safeguarding</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/dysuria.html" data-search="dysuria uti sti prostatitis interstitial cystitis atrophy 2ww haematuria nice ng112 dysuria">
+          <span class="ac-icon">💧</span>
+          <span class="ac-text">
+            <b>Dysuria</b>
+            <small>UTI · STI · prostatitis · interstitial cystitis · atrophy · 2WW haematuria · NICE NG112</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/penile-disorders.html" data-search="penile disorders penile scc 2ww fourniers 999 priapism paraphimosis bxo syphilitic chancre peyronies penile-disorders">
+          <span class="ac-icon">🩺</span>
+          <span class="ac-text">
+            <b>Penile Disorders</b>
+            <small>Penile SCC 2WW · Fournier's 999 · priapism · paraphimosis · BXO · syphilitic chancre · Peyronie's</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/anogenital-ulcers.html" data-search="anogenital ulcers syphilis chancre tpha/rpr hsv pcr lgv 4th-gen hiv + pep 72h behçets non-healing ulcer 2ww anogenital-ulcers">
+          <span class="ac-icon">🩹</span>
+          <span class="ac-text">
+            <b>Anogenital Ulcers</b>
+            <small>Syphilis chancre TPHA/RPR · HSV PCR · LGV · 4th-gen HIV + PEP 72h · Behçet's · non-healing ulcer 2WW</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+</div>
+      </section>
+      <section class="alg-group" data-group="endocrine &amp; metabolic">
+        <div class="alg-group-head">
+          <span class="agh-icon">🦋</span>
+          <h2>Endocrine &amp; Metabolic</h2>
+          <span class="agh-count">23</span>
+        </div>
+        <div class="alg-grid">
+        <a class="alg-card" href="algorithms/glucosuria.html" data-search="glycosuria glucosuria glucose in urine dipstick renal threshold diabetes hba1c sglt2 glucosuria">
+          <span class="ac-icon">🍬</span>
+          <span class="ac-text">
+            <b>Glycosuria</b>
+            <small>Glucose in the urine — renal threshold versus new diabetes.</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/dka.html" data-search="dka diabetic ketoacidosis ketones acidosis fixed rate insulin friii potassium jbds euglycaemic sglt2 t1dm dka">
+          <span class="ac-icon">🩸</span>
+          <span class="ac-text">
+            <b>DKA (Diabetic Ketoacidosis)</b>
+            <small>Ketones ≥3.0 + pH &lt;7.3 → 999 · FRIII 0.1 u/kg/h · K⁺ before insulin · euglycaemic DKA</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hypoglycaemia.html" data-search="hypoglycaemia hypo low blood glucose glucagon baqsimi sulfonylurea 15-15 rule glucogel insulin whipple hypoglycaemia">
+          <span class="ac-icon">🍬</span>
+          <span class="ac-text">
+            <b>Hypoglycaemia</b>
+            <small>Level 3 → 999 / IM glucagon / Baqsimi · sulfonylurea hypo 24–48h obs · 15-15 rule</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/t2dm.html" data-search="type 2 diabetes mellitus type 2 diabetes mellitus — new diagnosis rcgp sca algorithm · nice ng28/ng17 · uk primary care pathway t2dm">
+          <span class="ac-icon">🩸</span>
+          <span class="ac-text">
+            <b>Type 2 Diabetes Mellitus</b>
+            <small>RCGP SCA Algorithm · NICE NG28/NG17 · UK Primary Care Pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hyperthyroidism.html" data-search="hyperthyroidism hyperthyroidism — new &amp; established presentation uk gp pathway · nice cks · bta guidelines · suitable for 10-minute consultations hyperthyroidism">
+          <span class="ac-icon">🦋</span>
+          <span class="ac-text">
+            <b>Hyperthyroidism</b>
+            <small>UK GP pathway · NICE CKS · BTA guidelines · Suitable for 10-minute consultations</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hypothyroidism.html" data-search="hypothyroidism hypothyroidism — new diagnosis &amp; ongoing management primary hypothyroidism · subclinical hypothyroidism · hashimoto's thyroiditis · levothyroxine initiation &amp; titration hypothyroidism">
+          <span class="ac-icon">🦋</span>
+          <span class="ac-text">
+            <b>Hypothyroidism</b>
+            <small>Primary hypothyroidism · subclinical hypothyroidism · Hashimoto's thyroiditis · levothyroxine initiation &amp; titration</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/subclinical-hypothyroidism.html" data-search="subclinical hypothyroidism subclinical hypothyroidism — raised tsh with normal free t4 confirm on repeat tsh ≥10 vs &lt;10 treat 6-month trial monitor anti-tpo levothyroxine nice ng145 subclinical-hypothyroidism">
+          <span class="ac-icon">🦋</span>
+          <span class="ac-text">
+            <b>Subclinical Hypothyroidism</b>
+            <small>Raised TSH, normal free T4 · Confirm on repeat · TSH ≥10 vs &lt;10 · treat / 6-month trial / monitor · NICE NG145</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/thyroid-pregnancy.html" data-search="thyroid dysfunction in pregnancy hypothyroidism hyperthyroidism postpartum thyroiditis ppt levothyroxine propylthiouracil ptu carbimazole trimester tsh ft4 ft3 graves antenatal endocrinology thyroid-pregnancy">
+          <span class="ac-icon">🤰</span>
+          <span class="ac-text">
+            <b>Thyroid Dysfunction in Pregnancy</b>
+            <small>Hypo, hyper &amp; postpartum thyroiditis · Trimester ranges · levothyroxine ↑30–50% early · PTU · urgent endocrine + antenatal referral</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/diabetes-sick-day-rules.html" data-search="diabetes sick day rules intercurrent illness sick sadman mnemonic never stop insulin ketones dka hhs sglt2 metformin akl unwell diabetes-sick-day-rules">
+          <span class="ac-icon">🤒</span>
+          <span class="ac-text">
+            <b>Diabetes Sick Day Rules</b>
+            <small>Managing diabetes during illness · SICK &amp; SADMAN rules · never stop insulin · ketones &amp; DKA/HHS · when to seek help</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/diabetes-unwell-insulin.html" data-search="feeling unwell on insulin sick day insulin adjustment type 1 type 2 diabetes never stop insulin ketones dka extra units total daily dose rapid acting diabetes-unwell-insulin">
+          <span class="ac-icon">💉</span>
+          <span class="ac-text">
+            <b>Feeling Unwell on Insulin</b>
+            <small>Sick-day insulin adjustment · never stop insulin · test glucose &amp; ketones · two dose-adjustment methods · DKA red flags</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/t2dm-ramadan.html" data-search="type 2 diabetes ramadan fasting risk stratification idf dar bima category medication adjustment metformin sulfonylurea gliclazide sglt2 insulin iftar suhoor break fast hypoglycaemia t2dm-ramadan">
+          <span class="ac-icon">🌙</span>
+          <span class="ac-text">
+            <b>Type 2 Diabetes in Ramadan</b>
+            <small>Risk stratification &amp; medication adjustment · pre-Ramadan assessment · IDF-DAR categories · drug-by-drug dosing · when to break the fast</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hypercalcaemia.html" data-search="hypercalcaemia hypercalcaemia — investigation &amp; management corrected calcium &gt;2.6 mmol/l · primary care to acute pathway · primary hyperparathyroidism · malignancy hypercalcaemia">
+          <span class="ac-icon">🧪</span>
+          <span class="ac-text">
+            <b>Hypercalcaemia</b>
+            <small>Corrected calcium &gt;2.6 mmol/L · Primary care to acute pathway · Primary hyperparathyroidism · Malignancy</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hyponatraemia.html" data-search="hyponatraemia hyponatraemia — diagnosis &amp; management uk primary care pathway · na⁺ &lt;135 mmol/l · gp trainees &amp; early-career gps · sca-ready hyponatraemia">
+          <span class="ac-icon">🧂</span>
+          <span class="ac-text">
+            <b>Hyponatraemia</b>
+            <small>UK primary care pathway · Na⁺ &lt;135 mmol/L · GP trainees &amp; early-career GPs · SCA-ready</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hypokalaemia.html" data-search="hypokalaemia hypokalaemia — low serum potassium uk primary care pathway for investigating and managing k+ &lt;3.5 mmol/l hypokalaemia">
+          <span class="ac-icon">⚡</span>
+          <span class="ac-text">
+            <b>Hypokalaemia</b>
+            <small>UK primary care pathway for investigating and managing K+ &lt;3.5 mmol/L</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/gynecomastia.html" data-search="gynaecomastia gynaecomastia — assessment &amp; management systematic gp pathway: male breast tissue enlargement, any age · 10-minute consultation framework gynecomastia">
+          <span class="ac-icon">🔬</span>
+          <span class="ac-text">
+            <b>Gynaecomastia</b>
+            <small>Systematic GP pathway: male breast tissue enlargement, any age · 10-minute consultation framework</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hirsutism.html" data-search="hirsutism hirsutism — gp clinical algorithm excess terminal hair growth in androgen-dependent distribution · nice cks · endocrine society 2018 hirsutism">
+          <span class="ac-icon">🧔‍♀️</span>
+          <span class="ac-text">
+            <b>Hirsutism</b>
+            <small>Excess terminal hair growth in androgen-dependent distribution · NICE CKS · Endocrine Society 2018</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hyperhidrosis.html" data-search="hyperhidrosis hyperhidrosis — assessment &amp; management uk primary care pathway · rcgp sca preparation · 10-minute appointment framework hyperhidrosis">
+          <span class="ac-icon">💧</span>
+          <span class="ac-text">
+            <b>Hyperhidrosis</b>
+            <small>UK primary care pathway · RCGP SCA preparation · 10-minute appointment framework</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+                <a class="alg-card" href="algorithms/hyperkalaemia.html" data-search="hyperkalaemia k⁺ >5.5 ecg changes acei/arb ckd addisons patiromer sick day rules hyperkalaemia">
+          <span class="ac-icon">⚡</span>
+          <span class="ac-text">
+            <b>Hyperkalaemia</b>
+            <small>K⁺ &gt;5.5 · ECG changes · ACEi/ARB · CKD · Addison's · patiromer · sick day rules</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hypocalcaemia.html" data-search="hypocalcaemia tetany / seizure = 999 correct for albumin pth vitamin d qt prolongation hypocalcaemia">
+          <span class="ac-icon">🦴</span>
+          <span class="ac-text">
+            <b>Hypocalcaemia</b>
+            <small>Tetany / seizure = 999 · correct for albumin · PTH · vitamin D · QT prolongation</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hyperprolactinaemia.html" data-search="hyperprolactinaemia prolactinoma pituitary mri macroprolactin (peg) cabergoline drug-induced visual fields nice cg116 hyperprolactinaemia">
+          <span class="ac-icon">🔬</span>
+          <span class="ac-text">
+            <b>Hyperprolactinaemia</b>
+            <small>Prolactinoma · pituitary MRI · macroprolactin (PEG) · cabergoline · drug-induced · visual fields · NICE CG116</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/weight-gain.html" data-search="weight gain cushings drug-induced semaglutide direct remission nafld fib-4 bariatric surgery metabolic syndrome weight-gain">
+          <span class="ac-icon">⚖️</span>
+          <span class="ac-text">
+            <b>Weight Gain</b>
+            <small>Cushing's · drug-induced · semaglutide · DiRECT remission · NAFLD FIB-4 · bariatric surgery · metabolic syndrome</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/addisons-disease.html" data-search="addisonandrsquo;s disease adrenal crisis 999 + hydrocortisone synacthen test 21-oh antibodies fludrocortisone sick-day rules steroid card addisons-disease">
+          <span class="ac-icon">🧂</span>
+          <span class="ac-text">
+            <b>Addison&rsquo;s Disease</b>
+            <small>Adrenal crisis 999 + hydrocortisone · Synacthen test · 21-OH antibodies · fludrocortisone · sick-day rules · steroid card</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/metabolic-syndrome.html" data-search="metabolic syndrome central obesity + dysglycaemia/lipids/bp qrisk3 nafld fib-4 statin sglt2i/glp-1 dpp bariatric metabolic-syndrome">
+          <span class="ac-icon">⚖️</span>
+          <span class="ac-text">
+            <b>Metabolic Syndrome</b>
+            <small>Central obesity + dysglycaemia/lipids/BP · QRISK3 · NAFLD FIB-4 · statin · SGLT2i/GLP-1 · DPP · bariatric</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+</div>
+      </section>
+      <section class="alg-group" data-group="neurology">
+        <div class="alg-group-head">
+          <span class="agh-icon">🧠</span>
+          <h2>Neurology</h2>
+          <span class="agh-count">20</span>
+        </div>
+        <div class="alg-grid">
+        <a class="alg-card" href="algorithms/restless-legs.html" data-search="restless legs syndrome rls willis ekbom urge criteria iron ferritin augmentation periodic limb movement dopamine agonist restless-legs">
+          <span class="ac-icon">🦵</span>
+          <span class="ac-text">
+            <b>Restless Legs Syndrome</b>
+            <small>URGE criteria, iron deficiency, drug triggers and augmentation.</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/headache.html" data-search="headache headache — new or changing presentation structured 9-step pathway for uk gp trainees and early-career gps · sca exam ready headache">
+          <span class="ac-icon">🧠</span>
+          <span class="ac-text">
+            <b>Headache</b>
+            <small>Structured 9-step pathway for UK GP trainees and early-career GPs · SCA exam ready</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/tia.html" data-search="tia tia — transient ischaemic attack urgent assessment &amp; secondary prevention | nice ng128 | uk primary care &amp; acute interface tia">
+          <span class="ac-icon">🧠</span>
+          <span class="ac-text">
+            <b>TIA</b>
+            <small>Urgent assessment &amp; secondary prevention | NICE NG128 | UK primary care &amp; acute interface</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/dizziness.html" data-search="dizziness dizziness — new presentation in primary care rcgp sca algorithm · 9-step systematic approach · uk gp 10-minute consultation dizziness">
+          <span class="ac-icon">🌀</span>
+          <span class="ac-text">
+            <b>Dizziness</b>
+            <small>RCGP SCA algorithm · 9-step systematic approach · UK GP 10-minute consultation</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/vertigo.html" data-search="vertigo vertigo — new presentation in primary care 10-minute consultation pathway · rcgp sca exam ready · nice cks / bppv epley guidelines vertigo">
+          <span class="ac-icon">🌀</span>
+          <span class="ac-text">
+            <b>Vertigo</b>
+            <small>10-minute consultation pathway · RCGP SCA exam ready · NICE CKS / BPPV Epley guidelines</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/ataxia.html" data-search="ataxia ataxia — acute or chronic incoordination unsteadiness covers cerebellar stroke drug alcohol toxicity wernicke posterior fossa lesion ms b12 deficiency hereditary sensory ataxia">
+          <span class="ac-icon">🌀</span>
+          <span class="ac-text">
+            <b>Ataxia</b>
+            <small>Acute vs chronic incoordination — cerebellar stroke, toxicity, Wernicke's, B12, hereditary &amp; sensory causes</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/fits-funny-turns.html" data-search="fits / funny turns fits / funny turns — first episode or recurrent covers seizure, syncope, tia, hypoglycaemia, cardiac arrhythmia, and psychogenic causes fits-funny-turns">
+          <span class="ac-icon">⚡</span>
+          <span class="ac-text">
+            <b>Fits / Funny Turns</b>
+            <small>Covers seizure, syncope, TIA, hypoglycaemia, cardiac arrhythmia, and psychogenic causes</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/sensory-neuropathy.html" data-search="sensory neuropathy sensory neuropathy — assessment &amp; management uk primary care pathway · rcgp sca preparation · peripheral neuropathy workup sensory-neuropathy">
+          <span class="ac-icon">⚡</span>
+          <span class="ac-text">
+            <b>Sensory Neuropathy</b>
+            <small>UK primary care pathway · RCGP SCA preparation · Peripheral neuropathy workup</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/delirium.html" data-search="delirium delirium — acute confusion assessment &amp; management of acute confusion in adults | uk primary &amp; secondary care interface delirium">
+          <span class="ac-icon">🧠</span>
+          <span class="ac-text">
+            <b>Delirium</b>
+            <small>Assessment &amp; management of acute confusion in adults | UK primary &amp; secondary care interface</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/confusion.html" data-search="confusion confusion — acute confusional state gp assessment of acute vs chronic confusion — delirium, dementia and organic causes confusion">
+          <span class="ac-icon">🌀</span>
+          <span class="ac-text">
+            <b>Confusion</b>
+            <small>Acute vs chronic confusion — delirium, dementia and organic causes</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+                <a class="alg-card" href="algorithms/paraesthesia.html" data-search="tingling and paraesthesia peripheral neuropathy entrapment radiculopathy central causes b12 diabetes ms paraesthesia">
+          <span class="ac-icon">⚡</span>
+          <span class="ac-text">
+            <b>Tingling &amp; Paraesthesia</b>
+            <small>Peripheral neuropathy · entrapment · radiculopathy · central causes · B12 · diabetes · MS</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/tloc.html" data-search="transient loss of consciousness syncope reflex vasovagal cardiac orthostatic epilepsy dvla nice cg109 tloc">
+          <span class="ac-icon">💫</span>
+          <span class="ac-text">
+            <b>Transient Loss of Consciousness</b>
+            <small>Syncope · reflex vasovagal · cardiac · orthostatic · epilepsy · DVLA · NICE CG109</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/foot-drop.html" data-search="foot drop common peroneal nerve l4/l5 radiculopathy cord compression mnd stroke afo dvla foot-drop">
+          <span class="ac-icon">🦶</span>
+          <span class="ac-text">
+            <b>Foot Drop</b>
+            <small>Common peroneal nerve · L4/L5 radiculopathy · cord compression · MND · stroke · AFO · DVLA</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/tremors.html" data-search="tremors essential tremor parkinsons cerebellar drug-induced wilsons serotonin syndrome propranolol nice ng71 tremors">
+          <span class="ac-icon">🤝</span>
+          <span class="ac-text">
+            <b>Tremors</b>
+            <small>Essential tremor · Parkinson's · cerebellar · drug-induced · Wilson's · serotonin syndrome · propranolol · NICE NG71</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/memory-deficit.html" data-search="memory deficit delirium vs dementia moca reversible causes donepezil lbd caution dvla memory-deficit">
+          <span class="ac-icon">🧠</span>
+          <span class="ac-text">
+            <b>Memory Deficit</b>
+            <small>Delirium vs dementia · MoCA · reversible causes · donepezil · LBD caution · DVLA</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/leg-weakness.html" data-search="leg weakness cauda equina/mscc emergency gbs stroke umn vs lmn foot drop dermatomyositis malignancy screen leg-weakness">
+          <span class="ac-icon">🦵</span>
+          <span class="ac-text">
+            <b>Leg Weakness</b>
+            <small>Cauda equina/MSCC emergency · GBS · stroke · UMN vs LMN · foot drop · dermatomyositis malignancy screen</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/facial-pain.html" data-search="facial pain gca same-day trigeminal neuralgia carotid dissection ludwigs angina tmd dental abscess npc 2ww facial-pain">
+          <span class="ac-icon">😣</span>
+          <span class="ac-text">
+            <b>Facial Pain</b>
+            <small>GCA same-day · trigeminal neuralgia · carotid dissection · Ludwig's angina · TMD · dental abscess · NPC 2WW</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/neuropathic-pain.html" data-search="neuropathic pain cauda equina/mscc red flags dn4 amitriptyline/duloxetine/gabapentin/pregabalin carbamazepine for tn nice ng173 neuropathic-pain">
+          <span class="ac-icon">⚡</span>
+          <span class="ac-text">
+            <b>Neuropathic Pain</b>
+            <small>Cauda equina/MSCC red flags · DN4 · amitriptyline/duloxetine/gabapentin/pregabalin · carbamazepine for TN · NICE NG173</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/bppv.html" data-search="bppv dix-hallpike epley manoeuvre central vertigo exclusion canalith repositioning recurrence avoid vestibular sedatives bppv">
+          <span class="ac-icon">🔄</span>
+          <span class="ac-text">
+            <b>BPPV</b>
+            <small>Dix-Hallpike · Epley manoeuvre · central vertigo exclusion · canalith repositioning · recurrence · avoid vestibular sedatives</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/menieres-disease.html" data-search="ménièreandrsquo;s disease episodic vertigo 20minandndash;12h + fluctuating snhl + tinnitus audiometry mri iam low-salt betahistine dvla menieres-disease">
+          <span class="ac-icon">👂</span>
+          <span class="ac-text">
+            <b>Ménière&rsquo;s Disease</b>
+            <small>Episodic vertigo 20min&ndash;12h + fluctuating SNHL + tinnitus · audiometry · MRI IAM · low-salt · betahistine · DVLA</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+</div>
+      </section>
+      <section class="alg-group" data-group="mental health">
+        <div class="alg-group-head">
+          <span class="agh-icon">🧩</span>
+          <h2>Mental Health</h2>
+          <span class="agh-count">7</span>
+        </div>
+        <div class="alg-grid">
+        <a class="alg-card" href="algorithms/opioid-dependence.html" data-search="opioid dependence addiction heroin methadone buprenorphine suboxone naloxone overdose opioid substitution treatment ost detox lofexidine naltrexone harm reduction needle exchange blood borne virus hepatitis c shared care orange book nice ta114 drug misuse substance use take-home naloxone supervised consumption opioid-dependence">
+          <span class="ac-icon">💊</span>
+          <span class="ac-text">
+            <b>Opioid Dependence</b>
+            <small>Orange Book · NICE TA114 · confirm dependence before prescribing · methadone / buprenorphine OST · take-home naloxone · shared care</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/psychosis.html" data-search="psychosis psychosis — first episode &amp; acute presentation gp assessment, safety, referral and early management pathway psychosis">
+          <span class="ac-icon">🧠</span>
+          <span class="ac-text">
+            <b>Psychosis</b>
+            <small>GP assessment, safety, referral and early management pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hallucinations.html" data-search="hallucinations hallucinations — new presentation modality-specific gp assessment — organic, psychiatric and pharmacological causes hallucinations">
+          <span class="ac-icon">👁️‍🗨️</span>
+          <span class="ac-text">
+            <b>Hallucinations</b>
+            <small>Modality-specific assessment — organic, psychiatric &amp; pharmacological causes</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/insomnia.html" data-search="insomnia insomnia — new presentation systematic gp assessment — cbt-i first, targeted pharmacology, comorbidity exclusion insomnia sleep">
+          <span class="ac-icon">🌙</span>
+          <span class="ac-text">
+            <b>Insomnia</b>
+            <small>CBT-I first · targeted pharmacology · comorbidity exclusion</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+                <a class="alg-card" href="algorithms/anxiety.html" data-search="feeling anxious gad panic disorder social anxiety ptsd health anxiety gad-7 nice ng197 anxiety">
+          <span class="ac-icon">😰</span>
+          <span class="ac-text">
+            <b>Feeling Anxious</b>
+            <small>GAD · panic disorder · social anxiety · PTSD · health anxiety · GAD-7 · NICE NG197</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/low-mood.html" data-search="low mood depression adjustment disorder bipolar grief organic causes phq-9 nice ng222 low-mood">
+          <span class="ac-icon">🌧️</span>
+          <span class="ac-text">
+            <b>Low Mood</b>
+            <small>Depression · adjustment disorder · bipolar · grief · organic causes · PHQ-9 · NICE NG222</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/medically-unexplained-symptoms.html" data-search="medically unexplained symptoms functional disorder cbt symptom legitimacy biopsychosocial model medically-unexplained-symptoms">
+          <span class="ac-icon">🧠</span>
+          <span class="ac-text">
+            <b>Medically Unexplained Symptoms</b>
+            <small>Functional disorder · CBT · symptom legitimacy · biopsychosocial model</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+</div>
+      </section>
+      <section class="alg-group" data-group="ent &amp; dental">
+        <div class="alg-group-head">
+          <span class="agh-icon">👂</span>
+          <h2>ENT &amp; Dental</h2>
+          <span class="agh-count">19</span>
+        </div>
+        <div class="alg-grid">
+        <a class="alg-card" href="algorithms/dry-mouth.html" data-search="dry mouth xerostomia sjogren anti-ro la sicca anticholinergic burden acb parotid mass 2ww pilocarpine duraphat fluoride biotene artificial saliva igg4 lymphoma dry-mouth">
+          <span class="ac-icon">💧</span>
+          <span class="ac-text">
+            <b>Dry Mouth (Xerostomia)</b>
+            <small>Sjögren's · anticholinergic burden review · parotid mass 2WW · pilocarpine · fluoride · saliva substitutes</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+          <span class="ac-icon">👂</span>
+          <span class="ac-text">
+            <b>Hearing Loss</b>
+            <small>Primary care assessment, investigation and management pathway · UK GP / RCGP SCA</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/otitis-media-effusion.html" data-search="otitis media with effusion ome glue ear middle ear fluid children under 12 hearing loss tympanometry grommets ventilation tubes adenoidectomy auto-inflation bone conduction active observation watchful waiting nice ng233 cks down syndrome cleft palate otitis-media-effusion">
+          <span class="ac-icon">👂</span>
+          <span class="ac-text">
+            <b>Otitis Media with Effusion (Glue Ear)</b>
+            <small>Under 12s · middle-ear fluid without infection · 3-month active observation · OME decision table · grommets ± adenoidectomy · NICE NG233</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/tinnitus.html" data-search="tinnitus tinnitus — assessment &amp; management uk primary care pathway for new and persistent tinnitus presentations in adults tinnitus">
+          <span class="ac-icon">👂</span>
+          <span class="ac-text">
+            <b>Tinnitus</b>
+            <small>UK primary care pathway for new and persistent tinnitus presentations in adults</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/epistaxis.html" data-search="epistaxis epistaxis — nosebleeds uk primary care pathway for managing anterior and posterior epistaxis in all ages epistaxis">
+          <span class="ac-icon">🩸</span>
+          <span class="ac-text">
+            <b>Epistaxis</b>
+            <small>UK primary care pathway for managing anterior and posterior epistaxis in all ages</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/neck-lump.html" data-search="neck lump neck lump — new presentation systematic approach to diagnosis, risk stratification, and management of a neck mass in primary care neck-lump">
+          <span class="ac-icon">🔍</span>
+          <span class="ac-text">
+            <b>Neck Lump</b>
+            <small>Systematic approach to diagnosis, risk stratification, and management of a neck mass in primary care</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/halitosis.html" data-search="halitosis halitosis — assessment &amp; management uk primary care pathway · rcgp sca preparation · oral, ent &amp; systemic causes halitosis">
+          <span class="ac-icon">💨</span>
+          <span class="ac-text">
+            <b>Halitosis</b>
+            <small>UK primary care pathway · RCGP SCA preparation · Oral, ENT &amp; systemic causes</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/jaw-pain.html" data-search="jaw pain jaw pain — acute &amp; chronic presentations uk primary care algorithm · rcgp sca preparation · based on nice cks, sign, bnf, bsso guidelines jaw-pain">
+          <span class="ac-icon">🦷</span>
+          <span class="ac-text">
+            <b>Jaw Pain</b>
+            <small>UK primary care algorithm · RCGP SCA preparation · Based on NICE CKS, SIGN, BNF, BSSO Guidelines</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/otalgia.html" data-search="otalgia ear pain otalgia — ear pain primary vs referred otalgia — otoscopic assessment, dental, tmj and sinister causes otalgia">
+          <span class="ac-icon">👂</span>
+          <span class="ac-text">
+            <b>Otalgia (Ear Pain)</b>
+            <small>Primary vs referred · otoscopy, dental, TMJ &amp; sinister causes</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hoarseness.html" data-search="hoarseness voice hoarseness of voice — new presentation laryngeal cancer exclusion, vocal cord pathology, systemic and neurological causes hoarseness">
+          <span class="ac-icon">🗣️</span>
+          <span class="ac-text">
+            <b>Hoarseness of Voice</b>
+            <small>Laryngeal cancer exclusion · vocal cord, systemic &amp; neurological causes</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/dysphagia.html" data-search="dysphagia swallowing dysphagia — new presentation oropharyngeal vs oesophageal swallowing difficulty — cancer exclusion and functional management dysphagia">
+          <span class="ac-icon">🍽️</span>
+          <span class="ac-text">
+            <b>Dysphagia</b>
+            <small>Oropharyngeal vs oesophageal · cancer exclusion &amp; functional management</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/facial-swelling.html" data-search="facial swelling face swelling angio-oedema airway emergency dental abscess parotitis svc obstruction cellulitis malignancy salivary facial-swelling">
+          <span class="ac-icon">🫤</span>
+          <span class="ac-text">
+            <b>Facial Swelling</b>
+            <small>Angio-oedema airway emergency · dental abscess · parotitis · SVC obstruction · cellulitis · malignancy</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+                <a class="alg-card" href="algorithms/sore-throat.html" data-search="sore throat epiglottitis (999) quinsy feverpain / centor ebv lemierres head and neck 2ww sore-throat">
+          <span class="ac-icon">😷</span>
+          <span class="ac-text">
+            <b>Sore Throat</b>
+            <small>Epiglottitis (999) · quinsy · FeverPAIN / Centor · EBV · Lemierre's · head &amp; neck 2WW</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/mouth-ulcers.html" data-search="mouth ulcers recurrent aphthous oral cancer 2ww sjs behçets coeliac nice ng12 mouth-ulcers">
+          <span class="ac-icon">👄</span>
+          <span class="ac-text">
+            <b>Mouth Ulcers</b>
+            <small>Recurrent aphthous · oral cancer 2WW · SJS · Behçet's · coeliac · NICE NG12</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/tongue-problems.html" data-search="tongue problems glossitis geographic black hairy burning mouth macroglossia tongue cancer 2ww tongue-problems">
+          <span class="ac-icon">👅</span>
+          <span class="ac-text">
+            <b>Tongue Problems</b>
+            <small>Glossitis · geographic · black hairy · burning mouth · macroglossia · tongue cancer 2WW</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/loss-of-smell.html" data-search="loss of smell (anosmia) post-viral covid nasal polyps meningioma parkinsons kallmann olfactory training loss-of-smell">
+          <span class="ac-icon">👃</span>
+          <span class="ac-text">
+            <b>Loss of Smell (Anosmia)</b>
+            <small>Post-viral · COVID · nasal polyps · meningioma · Parkinson's · Kallmann · olfactory training</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/loss-of-taste.html" data-search="loss of taste (dysgeusia) true taste vs retronasal olfaction zinc drugs ramsay hunt sjögrens cn vii/ix loss-of-taste">
+          <span class="ac-icon">😋</span>
+          <span class="ac-text">
+            <b>Loss of Taste (Dysgeusia)</b>
+            <small>True taste vs retronasal olfaction · zinc · drugs · Ramsay Hunt · Sjögren's · CN VII/IX</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/nasal-congestion.html" data-search="nasal congestion and rhinorrhoea allergic rhinitis incs crs (epos) polyps csf leak rhinitis medicamentosa nasal-congestion">
+          <span class="ac-icon">👃</span>
+          <span class="ac-text">
+            <b>Nasal Congestion &amp; Rhinorrhoea</b>
+            <small>Allergic rhinitis INCS · CRS (EPOS) · polyps · CSF leak · rhinitis medicamentosa</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/taste-disorders.html" data-search="taste disorders dysgeusia parosmia zinc bells / ramsay hunt post-covid training burning mouth taste-disorders">
+          <span class="ac-icon">👅</span>
+          <span class="ac-text">
+            <b>Taste Disorders</b>
+            <small>Dysgeusia · parosmia · zinc · Bell's / Ramsay Hunt · post-COVID training · burning mouth</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/sore-mouth-tongue.html" data-search="sore mouth and tongue 3-week ulcer 2ww leukoplakia biopsy aphthous oral candida ics rinse burning mouth mronj sore-mouth-tongue">
+          <span class="ac-icon">👅</span>
+          <span class="ac-text">
+            <b>Sore Mouth &amp; Tongue</b>
+            <small>3-week ulcer 2WW · leukoplakia biopsy · aphthous · oral candida · ICS rinse · burning mouth · MRONJ</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+</div>
+      </section>
+      <section class="alg-group" data-group="ophthalmology">
+        <div class="alg-group-head">
+          <span class="agh-icon">👁️</span>
+          <h2>Ophthalmology</h2>
+          <span class="agh-count">10</span>
+        </div>
+        <div class="alg-grid">
+        <a class="alg-card" href="algorithms/watery-eye.html" data-search="watery eye epiphora dry eye mgd doxycycline cnldo crigler massage dacryocystitis co-amoxiclav nld obstruction dcr olopatadine allergic ophthalmia neonatorum lacrimal sac carcinoma 2ww watery-eye">
+          <span class="ac-icon">👁️</span>
+          <span class="ac-text">
+            <b>Watery Eye (Epiphora)</b>
+            <small>Dry-eye paradox · CNLDO · dacryocystitis · NLD obstruction (DCR) · lacrimal sac carcinoma 2WW</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/red-eye.html" data-search="red eye red eye — acute presentation gp primary care pathway · rcgp sca exam standard · uk nhs guidelines red-eye">
+          <span class="ac-icon">👁️</span>
+          <span class="ac-text">
+            <b>Red Eye</b>
+            <small>GP primary care pathway · RCGP SCA exam standard · UK NHS guidelines</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/blurry-vision.html" data-search="blurry / reduced vision blurry / reduced vision — new or worsening covers acute visual loss, gradual visual deterioration, diplopia, refractive error, and ocular emergencies blurry-vision">
+          <span class="ac-icon">👁️</span>
+          <span class="ac-text">
+            <b>Blurry / Reduced Vision</b>
+            <small>Covers acute visual loss, gradual visual deterioration, diplopia, refractive error, and ocular emergencies</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/vision-loss.html" data-search="vision loss vision loss — acute and chronic assessment in primary care 9-step diagnostic pathway · ophthalmic emergencies to chronic disease · uk gp / rcgp sca vision-loss">
+          <span class="ac-icon">👁️</span>
+          <span class="ac-text">
+            <b>Vision Loss</b>
+            <small>9-step diagnostic pathway · Ophthalmic emergencies to chronic disease · UK GP / RCGP SCA</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/diplopia.html" data-search="diplopia diplopia — new presentation systematic gp assessment of double vision — monocular vs binocular, benign vs emergency diplopia">
+          <span class="ac-icon">👁️</span>
+          <span class="ac-text">
+            <b>Diplopia</b>
+            <small>Systematic GP assessment of double vision — monocular vs binocular, benign vs emergency</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/flashes-floaters.html" data-search="flashes &amp; floaters flashes &amp; floaters — posterior vitreous detachment &amp; retinal tear urgent assessment of new visual symptoms | uk primary care &amp; ophthalmology interface flashes-floaters">
+          <span class="ac-icon">👁️</span>
+          <span class="ac-text">
+            <b>Flashes &amp; Floaters</b>
+            <small>Urgent assessment of new visual symptoms | UK primary care &amp; ophthalmology interface</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+                <a class="alg-card" href="algorithms/itchy-eye.html" data-search="itchy eye allergic conjunctivitis dry eye blepharitis contact lens vernal uveitis red flag itchy-eye">
+          <span class="ac-icon">👁️</span>
+          <span class="ac-text">
+            <b>Itchy Eye</b>
+            <small>Allergic conjunctivitis · dry eye · blepharitis · contact lens · vernal · uveitis red flag</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/eye-swelling.html" data-search="eye swelling (periorbital) orbital cellulitis emergency pre-septal vs orbital chalazion angio-oedema thyroid eye disease eye-swelling">
+          <span class="ac-icon">👁️</span>
+          <span class="ac-text">
+            <b>Eye Swelling (Periorbital)</b>
+            <small>Orbital cellulitis emergency · pre-septal vs orbital · chalazion · angio-oedema · thyroid eye disease</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/subconjunctival-haemorrhage.html" data-search="subconjunctival haemorrhage ruptured globe exclusion bp check anticoagulation recurrent va mandatory subconjunctival-haemorrhage">
+          <span class="ac-icon">🩸</span>
+          <span class="ac-text">
+            <b>Subconjunctival Haemorrhage</b>
+            <small>Ruptured globe exclusion · BP check · anticoagulation · recurrent · VA mandatory</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/foreign-body-eye.html" data-search="foreign body in eye iofb ct 999 chemical burn irrigation subtarsal fb rust ring fluorescein foreign-body-eye">
+          <span class="ac-icon">👁️</span>
+          <span class="ac-text">
+            <b>Foreign Body in Eye</b>
+            <small>IOFB CT 999 · chemical burn irrigation · subtarsal FB · rust ring · fluorescein</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+</div>
+      </section>
+      <section class="alg-group" data-group="women’s health">
+        <div class="alg-group-head">
+          <span class="agh-icon">🌸</span>
+          <h2>Women’s Health</h2>
+          <span class="agh-count">23</span>
+        </div>
+        <div class="alg-grid">
+        <a class="alg-card" href="algorithms/gestational-hyperglycaemia.html" data-search="hyperglycaemia in pregnancy gestational diabetes gdm ogtt insulin metformin macrosomia ng3 postnatal gestational-hyperglycaemia">
+          <span class="ac-icon">🤰</span>
+          <span class="ac-text">
+            <b>Hyperglycaemia in Pregnancy</b>
+            <small>Gestational diabetes — OGTT thresholds, treatment ladder, postnatal follow-up.</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/pelvic-organ-prolapse.html" data-search="pelvic organ prolapse cystocele rectocele uterine vault pop-q ring pessary pfmt 2ww gynaecology pelvic-organ-prolapse">
+          <span class="ac-icon">🌸</span>
+          <span class="ac-text">
+            <b>Pelvic Organ Prolapse</b>
+            <small>2WW irregular vaginal mass · ring pessary 65–75% GP-fitted · PFMT 3 months · POP-Q</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/amenorrhoea.html" data-search="amenorrhoea amenorrhoea — primary &amp; secondary uk gp / rcgp sca pathway · covers primary, secondary, hypothalamic, pcos, premature ovarian insufficiency &amp; more amenorrhoea">
+          <span class="ac-icon">🌸</span>
+          <span class="ac-text">
+            <b>Amenorrhoea</b>
+            <small>UK GP / RCGP SCA pathway · Covers primary, secondary, hypothalamic, PCOS, premature ovarian insufficiency &amp; more</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/dysmenorrhoea.html" data-search="dysmenorrhoea dysmenorrhoea — primary &amp; secondary causes structured 9-step pathway · menstrual pain · uk gp / rcgp sca dysmenorrhoea">
+          <span class="ac-icon">💜</span>
+          <span class="ac-text">
+            <b>Dysmenorrhoea</b>
+            <small>Structured 9-step pathway · Menstrual pain · UK GP / RCGP SCA</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/irregular-periods.html" data-search="irregular periods irregular periods (oligomenorrhoea / aub) — primary care assessment structured 9-step pathway · reproductive age women · uk gp / rcgp sca irregular-periods">
+          <span class="ac-icon">🌸</span>
+          <span class="ac-text">
+            <b>Irregular Periods</b>
+            <small>Structured 9-step pathway · Reproductive age women · UK GP / RCGP SCA</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/menorrhagia.html" data-search="menorrhagia menorrhagia (heavy menstrual bleeding) — assessment &amp; management hmb defined as &gt;80ml/cycle or significant impact on quality of life · nice ng88-aligned menorrhagia">
+          <span class="ac-icon">🩸</span>
+          <span class="ac-text">
+            <b>Menorrhagia</b>
+            <small>HMB defined as &gt;80mL/cycle or significant impact on quality of life · NICE NG88-aligned</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/mastalgia.html" data-search="mastalgia mastalgia — breast pain assessment &amp; management uk primary care pathway · rcgp sca exam preparation · 10-minute appointment guide mastalgia">
+          <span class="ac-icon">🌸</span>
+          <span class="ac-text">
+            <b>Mastalgia</b>
+            <small>UK primary care pathway · RCGP SCA exam preparation · 10-minute appointment guide</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/vaginal-bleeding.html" data-search="vaginal bleeding vaginal bleeding — clinical algorithm covers premenopausal, perimenopausal &amp; postmenopausal presentations · pregnancy-related &amp; non-pregnancy causes vaginal-bleeding">
+          <span class="ac-icon">🩸</span>
+          <span class="ac-text">
+            <b>Vaginal Bleeding</b>
+            <small>Covers premenopausal, perimenopausal &amp; postmenopausal presentations · Pregnancy-related &amp; non-pregnancy causes</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/vaginal-discharge.html" data-search="vaginal discharge vaginal discharge — clinical algorithm differentiating bv, thrush, trichomonas, chlamydia, gonorrhoea, pid · bashh 2023 · nice cks aligned vaginal-discharge">
+          <span class="ac-icon">🔬</span>
+          <span class="ac-text">
+            <b>Vaginal Discharge</b>
+            <small>Differentiating BV, thrush, trichomonas, chlamydia, gonorrhoea, PID · BASHH 2023 · NICE CKS aligned</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/contraception.html" data-search="women requesting contraception women requesting contraception — clinical algorithm ukmec-guided method selection · emergency contraception · special populations · fsrh 2023 contraception">
+          <span class="ac-icon">💊</span>
+          <span class="ac-text">
+            <b>Women Requesting Contraception</b>
+            <small>UKMEC-guided method selection · Emergency contraception · Special populations · FSRH 2023</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/emergency-contraception.html" data-search="emergency contraception emergency contraception — clinical algorithm cu-iud vs oral ec ellaone vs levonelle ulipristal levonorgestrel morning after pill timing weight rules quick-starting fsrh ec emergency-contraception">
+          <span class="ac-icon">⏱️</span>
+          <span class="ac-text">
+            <b>Emergency Contraception</b>
+            <small>Cu-IUD vs oral EC · ellaOne vs Levonelle · Timing &amp; weight rules · Quick-starting · FSRH EC</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hrt-menopause.html" data-search="hrt request with suspected menopause hrt request with suspected menopause — clinical algorithm nice ng23-aligned · perimenopause &amp; menopause diagnosis · hrt initiation &amp; risk assessment · mhra 2020 hrt-menopause">
+          <span class="ac-icon">🌸</span>
+          <span class="ac-text">
+            <b>HRT Request with Suspected Menopause</b>
+            <small>NICE NG23-aligned · Perimenopause &amp; menopause diagnosis · HRT initiation &amp; risk assessment · MHRA 2020</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/nvp.html" data-search="nausea &amp; vomiting in pregnancy nausea &amp; vomiting in pregnancy — assessment &amp; management nvp to hyperemesis gravidarum · rcog green-top 69 &amp; nice ng201 aligned · up to 16 weeks gestation focus nvp">
+          <span class="ac-icon">🤢</span>
+          <span class="ac-text">
+            <b>Nausea &amp; Vomiting in Pregnancy</b>
+            <small>NVP to Hyperemesis Gravidarum · RCOG Green-top 69 &amp; NICE NG201 aligned · Up to 16 weeks gestation focus</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/pruritus-pregnancy.html" data-search="itchiness in pregnancy itchiness in pregnancy — clinical algorithm obstetric cholestasis (icp) · dermatoses of pregnancy · candida · safe management · rcog gtg 43 pruritus-pregnancy">
+          <span class="ac-icon">🤰</span>
+          <span class="ac-text">
+            <b>Itchiness in Pregnancy</b>
+            <small>Obstetric cholestasis (ICP) · Dermatoses of pregnancy · Candida · Safe management · RCOG GTG 43</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/dyspareunia.html" data-search="dyspareunia painful sex superficial deep endometriosis vulvodynia gsm genitourinary syndrome menopause sti vaginismus safeguarding">
+          <span class="ac-icon">💜</span>
+          <span class="ac-text">
+            <b>Dyspareunia (Painful Sex)</b>
+            <small>Superficial vs deep · endometriosis · vulvodynia · GSM · STI · safeguarding</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+                <a class="alg-card" href="algorithms/vaginal-bleeding-pregnancy.html" data-search="vaginal bleeding in pregnancy ectopic miscarriage praevia abruption gtd anti-d epau nice ng126 vaginal-bleeding-pregnancy">
+          <span class="ac-icon">🤰</span>
+          <span class="ac-text">
+            <b>Vaginal Bleeding in Pregnancy</b>
+            <small>Ectopic · miscarriage · praevia · abruption · GTD · anti-D · EPAU · NICE NG126</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/recurrent-thrush.html" data-search="recurrent thrush rvvc candida glabrata lichen sclerosus diabetes fluconazole suppression bashh recurrent-thrush">
+          <span class="ac-icon">🍄</span>
+          <span class="ac-text">
+            <b>Recurrent Thrush</b>
+            <small>RVVC · Candida glabrata · lichen sclerosus · diabetes · fluconazole suppression · BASHH</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/infertility.html" data-search="infertility pcos ovulation induction tubal and male factor amh clomifene letrozole ivf nice ng156 poi infertility">
+          <span class="ac-icon">👶</span>
+          <span class="ac-text">
+            <b>Infertility</b>
+            <small>PCOS · ovulation induction · tubal &amp; male factor · AMH · clomifene · letrozole · IVF · NICE NG156 · POI</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/bleeding-on-hrt.html" data-search="bleeding on hrt endometrial cancer 2ww unscheduled bleeding >6 months pipelle atrophy mirena bleeding-on-hrt">
+          <span class="ac-icon">🩸</span>
+          <span class="ac-text">
+            <b>Bleeding on HRT</b>
+            <small>Endometrial cancer 2WW · unscheduled bleeding &gt;6 months · pipelle · atrophy · Mirena</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/vulvar-disorders.html" data-search="vulvar disorders lichen sclerosus vulval scc 2ww candida hsv vestibulodynia bartholins gsm safeguarding vulvar-disorders">
+          <span class="ac-icon">🌸</span>
+          <span class="ac-text">
+            <b>Vulvar Disorders</b>
+            <small>Lichen sclerosus · vulval SCC 2WW · candida · HSV · vestibulodynia · Bartholin's · GSM · safeguarding</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/postnatal-disorders.html" data-search="postnatal disorders puerperal sepsis 999 postpartum psychosis mbu epds pnd postpartum thyroiditis vte mastitis postnatal-disorders">
+          <span class="ac-icon">👶</span>
+          <span class="ac-text">
+            <b>Postnatal Disorders</b>
+            <small>Puerperal sepsis 999 · postpartum psychosis MBU · EPDS · PND · postpartum thyroiditis · VTE · mastitis</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/nipple-problems.html" data-search="nipple problems pagets 2ww bloodstained/single-duct discharge 2ww new retraction galactorrhoea prolactin/mri male breast 2ww nipple-problems">
+          <span class="ac-icon">🩺</span>
+          <span class="ac-text">
+            <b>Nipple Problems</b>
+            <small>Paget's 2WW · bloodstained/single-duct discharge 2WW · new retraction · galactorrhoea prolactin/MRI · male breast 2WW</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/vaginal-mass.html" data-search="vaginal mass pmb 2ww postcoital bleeding speculum rhabdomyosarcoma (child) 2ww prolapse pop-q ring pessary pyometra vaginal-mass">
+          <span class="ac-icon">🩻</span>
+          <span class="ac-text">
+            <b>Vaginal Mass</b>
+            <small>PMB 2WW · postcoital bleeding speculum · rhabdomyosarcoma (child) 2WW · prolapse POP-Q · ring pessary · pyometra</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+</div>
+      </section>
+      <section class="alg-group" data-group="haematology">
+        <div class="alg-group-head">
+          <span class="agh-icon">🩸</span>
+          <h2>Haematology</h2>
+          <span class="agh-count">12</span>
+        </div>
+        <div class="alg-grid">
+        <a class="alg-card" href="algorithms/anaemia.html" data-search="anaemia anaemia (low hb) — investigation &amp; management uk primary care algorithm for adults presenting with low hb or suspected anaemia · nice/bsh-aligned anaemia">
+          <span class="ac-icon">🩸</span>
+          <span class="ac-text">
+            <b>Anaemia</b>
+            <small>UK primary care algorithm for adults presenting with low Hb or suspected anaemia · NICE/BSH-aligned</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/iron-deficiency.html" data-search="iron deficiency iron deficiency — new diagnosis or incidental finding covers isolated iron deficiency, ida, finding the cause, oral/iv iron, and cancer red flags iron-deficiency">
+          <span class="ac-icon">🩸</span>
+          <span class="ac-text">
+            <b>Iron Deficiency</b>
+            <small>Covers isolated iron deficiency, IDA, finding the cause, oral/IV iron, and cancer red flags</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/bruising.html" data-search="bruising bruising — easy or unexplained systematic approach to evaluation, investigation, and management of new or worsening bruising in adults bruising">
+          <span class="ac-icon">🟣</span>
+          <span class="ac-text">
+            <b>Bruising</b>
+            <small>Systematic approach to evaluation, investigation, and management of new or worsening bruising in adults</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/thrombocytopenia.html" data-search="thrombocytopenia thrombocytopenia — low platelet count investigation and management pathway for platelets &lt;150 × 10⁹/l in adults thrombocytopenia">
+          <span class="ac-icon">🩸</span>
+          <span class="ac-text">
+            <b>Thrombocytopenia</b>
+            <small>Investigation and management pathway for platelets &lt;150 × 10⁹/L in adults</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/thrombocytosis.html" data-search="thrombocytosis thrombocytosis — elevated platelet count investigation and management pathway for platelets &gt;450 × 10⁹/l in adults thrombocytosis">
+          <span class="ac-icon">🔴</span>
+          <span class="ac-text">
+            <b>Thrombocytosis</b>
+            <small>Investigation and management pathway for platelets &gt;450 × 10⁹/L in adults</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/leucocytosis.html" data-search="leucocytosis leucocytosis — elevated white cell count investigation and management pathway for wcc &gt;11 × 10⁹/l in adults leucocytosis">
+          <span class="ac-icon">🔬</span>
+          <span class="ac-text">
+            <b>Leucocytosis</b>
+            <small>Investigation and management pathway for WCC &gt;11 × 10⁹/L in adults</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/leucopenia.html" data-search="leucopenia leucopenia — low white cell count investigation and management pathway for wcc &lt;4 × 10⁹/l in adults leucopenia">
+          <span class="ac-icon">⚪</span>
+          <span class="ac-text">
+            <b>Leucopenia</b>
+            <small>Investigation and management pathway for WCC &lt;4 × 10⁹/L in adults</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/polycythaemia.html" data-search="polycythaemia polycythaemia — elevated red cell mass investigation and management pathway for hb &gt;165 g/l (m) or &gt;155 g/l (f), or hct &gt;0.52 (m) or &gt;0.48 (f) polycythaemia">
+          <span class="ac-icon">🩺</span>
+          <span class="ac-text">
+            <b>Polycythaemia</b>
+            <small>Investigation and management pathway for Hb &gt;165 g/L (M) or &gt;155 g/L (F), or Hct &gt;0.52 (M) or &gt;0.48 (F)</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+                <a class="alg-card" href="algorithms/lymphadenopathy.html" data-search="lymphadenopathy localised vs generalised lymphoma metastatic cancer infection 6-week rule 2ww lymphadenopathy">
+          <span class="ac-icon">🔵</span>
+          <span class="ac-text">
+            <b>Lymphadenopathy</b>
+            <small>Localised vs generalised · lymphoma · metastatic cancer · infection · 6-week rule · 2WW</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/purpura-petechiae.html" data-search="purpura and petechiae meningococcal sepsis = 999 non-blanching rash itp vasculitis leukaemia nai purpura-petechiae">
+          <span class="ac-icon">🔴</span>
+          <span class="ac-text">
+            <b>Purpura &amp; Petechiae</b>
+            <small>Meningococcal sepsis = 999 · non-blanching rash · ITP · vasculitis · leukaemia · NAI</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/eosinophilia.html" data-search="eosinophilia hypereosinophilic syndrome egpa (churg-strauss) strongyloides dress atopy parasites imatinib eosinophilia">
+          <span class="ac-icon">🔬</span>
+          <span class="ac-text">
+            <b>Eosinophilia</b>
+            <small>Hypereosinophilic syndrome · EGPA (Churg-Strauss) · strongyloides · DRESS · atopy · parasites · imatinib</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/splenomegaly.html" data-search="splenomegaly ebv rupture risk cml portal hypertension myelofibrosis opsi 2ww lymphoma splenomegaly">
+          <span class="ac-icon">🫛</span>
+          <span class="ac-text">
+            <b>Splenomegaly</b>
+            <small>EBV rupture risk · CML · portal hypertension · myelofibrosis · OPSI · 2WW lymphoma</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+</div>
+      </section>
+      <section class="alg-group" data-group="musculoskeletal">
+        <div class="alg-group-head">
+          <span class="agh-icon">🦴</span>
+          <h2>Musculoskeletal</h2>
+          <span class="agh-count">21</span>
+        </div>
+        <div class="alg-grid">
+        <a class="alg-card" href="algorithms/thigh-pain.html" data-search="thigh pain anterior posterior thigh quadriceps hamstring adductor strain dvt deep vein thrombosis acute limb ischaemia compartment syndrome hip fracture nof meralgia paraesthetica lateral femoral cutaneous nerve radiculopathy l2 l3 l4 claudication stress fracture atypical femoral fracture bisphosphonate diabetic amyotrophy bone sarcoma soft tissue sarcoma nice ng12 2ww thigh-pain">
+          <span class="ac-icon">🦵</span>
+          <span class="ac-text"><b>Thigh Pain</b><small>DVT · acute ischaemia · compartment syndrome · hip fracture · meralgia / radiculopathy · NICE NG12 sarcoma</small></span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/leg-pain.html" data-search="leg pain calf lower leg dvt deep vein thrombosis acute critical limb ischaemia compartment syndrome necrotising fasciitis cauda equina sciatica l5 s1 radiculopathy neurogenic claudication spinal stenosis peripheral arterial disease pad intermittent claudication gastrocnemius tear tennis leg achilles rupture simmonds baker cyst restless legs cramps stress fracture bone sarcoma nice ng12 2ww abpi wells leg-pain">
+          <span class="ac-icon">🦵</span>
+          <span class="ac-text"><b>Leg Pain</b><small>DVT · acute &amp; critical ischaemia · compartment syndrome · sciatica / cauda equina · claudication · NICE NG12 sarcoma</small></span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/gout.html" data-search="gout serum urate hyperuricaemia 1st mtp podagra septic arthritis allopurinol febuxostat colchicine urate-lowering therapy treat-to-target tophi nice ng219">
+          <span class="ac-icon">🦶</span>
+          <span class="ac-text"><b>Gout</b><small>Serum urate ≥360 · exclude septic arthritis · flare treatment · ULT treat-to-target · NICE NG219</small></span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/osteoporosis.html" data-search="osteoporosis fracture risk frax qfracture nogg dxa t-score bisphosphonate alendronate zoledronate denosumab fragility fracture vertebral nice cg146">
+          <span class="ac-icon">🦴</span>
+          <span class="ac-text"><b>Osteoporosis &amp; fracture risk</b><small>FRAX · NOGG thresholds · DXA · bisphosphonates · fragility fracture · NICE/NOGG</small></span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/back-pain.html" data-search="acute &amp; subacute back pain acute &amp; subacute back pain — primary care management uk primary care pathway · nice ng59 · suitable for 10-minute consultations back-pain">
+          <span class="ac-icon">🦴</span>
+          <span class="ac-text">
+            <b>Acute &amp; Subacute Back Pain</b>
+            <small>UK primary care pathway · NICE NG59 · Suitable for 10-minute consultations</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/neck-pain.html" data-search="neck pain neck pain — assessment &amp; management rcgp sca pathway · uk primary care · 9-step algorithm neck-pain">
+          <span class="ac-icon">🫀</span>
+          <span class="ac-text">
+            <b>Neck Pain</b>
+            <small>RCGP SCA pathway · UK primary care · 9-step algorithm</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/sciatica.html" data-search="sciatica sciatica — assessment &amp; management rcgp sca pathway · uk primary care · 9-step algorithm sciatica">
+          <span class="ac-icon">⚡</span>
+          <span class="ac-text">
+            <b>Sciatica</b>
+            <small>RCGP SCA pathway · UK primary care · 9-step algorithm</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/shoulder-pain.html" data-search="shoulder pain shoulder pain — primary care assessment structured pathway for acute and chronic shoulder presentations in adults · uk primary care shoulder-pain">
+          <span class="ac-icon">💪</span>
+          <span class="ac-text">
+            <b>Shoulder Pain</b>
+            <small>Structured pathway for acute and chronic shoulder presentations in adults · UK primary care</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/knee-pain.html" data-search="knee pain knee pain — assessment &amp; management rcgp sca pathway · uk primary care · 9-step algorithm knee-pain">
+          <span class="ac-icon">🦵</span>
+          <span class="ac-text">
+            <b>Knee Pain</b>
+            <small>RCGP SCA pathway · UK primary care · 9-step algorithm</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hip-pain.html" data-search="hip pain hip pain — assessment &amp; management rcgp sca pathway · uk primary care · 9-step algorithm hip-pain">
+          <span class="ac-icon">🍑</span>
+          <span class="ac-text">
+            <b>Hip Pain</b>
+            <small>RCGP SCA pathway · UK primary care · 9-step algorithm</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hand-pain.html" data-search="hand pain hand pain — assessment &amp; management uk primary care pathway · rcgp sca preparation · 10-minute appointment framework hand-pain">
+          <span class="ac-icon">🖐️</span>
+          <span class="ac-text">
+            <b>Hand Pain</b>
+            <small>UK primary care pathway · RCGP SCA preparation · 10-minute appointment framework</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/foot-pain.html" data-search="foot pain foot pain — assessment &amp; management rcgp sca pathway · uk primary care · 9-step algorithm foot-pain">
+          <span class="ac-icon">🦶</span>
+          <span class="ac-text">
+            <b>Foot Pain</b>
+            <small>RCGP SCA pathway · UK primary care · 9-step algorithm</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/body-aches.html" data-search="generalised body aches generalised body aches — musculoskeletal &amp; systemic structured approach to widespread pain | uk primary care body-aches">
+          <span class="ac-icon">😣</span>
+          <span class="ac-text">
+            <b>Generalised Body Aches</b>
+            <small>Structured approach to widespread pain | UK primary care</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/ankle-pain.html" data-search="ankle pain ottawa rules ligament sprain grades achilles rupture simmonds test gout osteoarthritis">
+          <span class="ac-icon">🦶</span>
+          <span class="ac-text">
+            <b>Ankle Pain</b>
+            <small>Ottawa rules · ligament sprain grades · Achilles rupture (Simmonds) · gout · OA</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/elbow-pain.html" data-search="elbow pain swelling tennis golfer epicondylitis olecranon bursitis cubital tunnel radial head fracture septic arthritis">
+          <span class="ac-icon">💪</span>
+          <span class="ac-text">
+            <b>Elbow Pain / Swelling</b>
+            <small>Tennis / golfer’s elbow · olecranon bursitis · cubital tunnel · radial head fracture · septic arthritis</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/joint-pain.html" data-search="joint pain swelling septic arthritis emergency inflammatory vs mechanical rheumatoid gout reactive arthritis das28 dmards">
+          <span class="ac-icon">🦴</span>
+          <span class="ac-text">
+            <b>Joint Pain / Swelling</b>
+            <small>Septic arthritis emergency · inflammatory vs mechanical · RA / gout / reactive · DAS28 · DMARDs</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/chronic-back-pain.html" data-search="chronic low back pain 12 weeks cauda equina red flags yellow flags nice ng59 exercise over medication persistent">
+          <span class="ac-icon">🔙</span>
+          <span class="ac-text">
+            <b>Chronic Low Back Pain (≥12 Weeks)</b>
+            <small>Cauda equina = 999 · red vs yellow flags · NICE NG59 · exercise over medication</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/groin-pain.html" data-search="groin pain inguinal hernia hip osteoarthritis adductor strain lymphadenopathy femoral hernia meralgia paraesthetica">
+          <span class="ac-icon">🏃</span>
+          <span class="ac-text">
+            <b>Groin Pain</b>
+            <small>Inguinal hernia · hip OA · adductor strain · lymphadenopathy · femoral hernia · meralgia paraesthetica</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+                <a class="alg-card" href="algorithms/finger-pain.html" data-search="finger pain flexor tenosynovitis (kanavel) 999 septic arthritis ra anti-ccp window gout trigger finger mallet finger finger-pain">
+          <span class="ac-icon">🖐️</span>
+          <span class="ac-text">
+            <b>Finger Pain</b>
+            <small>Flexor tenosynovitis (Kanavel) 999 · septic arthritis · RA anti-CCP window · gout · trigger finger · mallet finger</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/toe-pain.html" data-search="toe pain diabetic foot osteomyelitis charcot foot gout podagra mortons neuroma ingrown toenail hallux valgus toe-pain">
+          <span class="ac-icon">🦶</span>
+          <span class="ac-text">
+            <b>Toe Pain</b>
+            <small>Diabetic foot osteomyelitis · Charcot foot · gout podagra · Morton's neuroma · ingrown toenail · hallux valgus</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/fractures.html" data-search="fractures ottawa rules open fracture 999 compartment syndrome nai scaphoid fragility fracture frax/dexa hip 36h fractures">
+          <span class="ac-icon">🦴</span>
+          <span class="ac-text">
+            <b>Fractures</b>
+            <small>Ottawa Rules · open fracture 999 · compartment syndrome · NAI · scaphoid · fragility fracture FRAX/DEXA · hip 36h</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+</div>
+      </section>
+      <section class="alg-group" data-group="general &amp; systemic">
+        <div class="alg-group-head">
+          <span class="agh-icon">⚖️</span>
+          <h2>General &amp; Systemic</h2>
+          <span class="agh-count">16</span>
+        </div>
+        <div class="alg-grid">
+        <a class="alg-card" href="algorithms/subcutaneous-lumps.html" data-search="lumps and bumps subcutaneous lump lipoma sebaceous epidermoid cyst ganglion soft tissue sarcoma swelling mass subcutaneous-lumps">
+          <span class="ac-icon">🫧</span>
+          <span class="ac-text">
+            <b>Lumps &amp; Bumps</b>
+            <small>Lipoma and cyst versus the soft-tissue sarcoma red flags.</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/anaphylaxis.html" data-search="anaphylaxis adrenaline im epipen auto-injector allergic reaction airway breathing circulation tryptase resus council biphasic angioedema">
+          <span class="ac-icon">🚨</span>
+          <span class="ac-text"><b>Anaphylaxis</b><small>IM adrenaline first-line · A/B/C problem · position · two auto-injectors · Resus Council UK 2021</small></span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/weight-loss.html" data-search="unintentional weight loss unintentional weight loss — new presentation covers cancer red flags, metabolic causes, malabsorption, psychological, and obesity pharmacotherapy weight-loss">
+          <span class="ac-icon">⚖️</span>
+          <span class="ac-text">
+            <b>Unintentional Weight Loss</b>
+            <small>Covers cancer red flags, metabolic causes, malabsorption, psychological, and obesity pharmacotherapy</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/night-sweats.html" data-search="night sweats night sweats — systematic primary care assessment 9-step diagnostic and management pathway · uk gp / rcgp sca preparation night-sweats">
+          <span class="ac-icon">🌙</span>
+          <span class="ac-text">
+            <b>Night Sweats</b>
+            <small>9-step diagnostic and management pathway · UK GP / RCGP SCA preparation</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/widespread-itch.html" data-search="widespread itch widespread itch (pruritus) — systematic assessment excluding primary skin disease · identifying systemic causes · nice/cks-aligned pathway widespread-itch">
+          <span class="ac-icon">🧴</span>
+          <span class="ac-text">
+            <b>Widespread Itch</b>
+            <small>Excluding primary skin disease · Identifying systemic causes · NICE/CKS-aligned pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/hair-loss.html" data-search="hair loss hair loss (alopecia) — assessment &amp; management uk primary care pathway · rcgp sca preparation · all hair loss types including scarring alopecia hair-loss">
+          <span class="ac-icon">💇</span>
+          <span class="ac-text">
+            <b>Hair Loss</b>
+            <small>UK primary care pathway · RCGP SCA preparation · All hair loss types including scarring alopecia</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/falls.html" data-search="falls falls — assessment &amp; prevention in older adults multifactorial falls risk assessment | uk primary care | nice ng191 falls">
+          <span class="ac-icon">🤕</span>
+          <span class="ac-text">
+            <b>Falls</b>
+            <small>Multifactorial falls risk assessment | UK primary care | NICE NG191</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/fatigue.html" data-search="tiredness fatigue tiredness / fatigue — new presentation systematic gp assessment of fatigue — excluding organic, psychiatric and lifestyle causes fatigue tatt">
+          <span class="ac-icon">😴</span>
+          <span class="ac-text">
+            <b>Tiredness / Fatigue</b>
+            <small>Excluding organic, psychiatric &amp; lifestyle causes · TATT workup</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+                <a class="alg-card" href="algorithms/anorexia.html" data-search="anorexia (loss of appetite) cancer 2ww marsipan must score refeeding cachexia eating disorders nice cg9 anorexia">
+          <span class="ac-icon">🍽️</span>
+          <span class="ac-text">
+            <b>Anorexia (Loss of Appetite)</b>
+            <small>Cancer 2WW · MARSIPAN · MUST score · refeeding · cachexia · eating disorders · NICE CG9</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/urticaria.html" data-search="urticaria anaphylaxis 999 chronic spontaneous antihistamine step-up omalizumab acei angio-oedema hae urticaria">
+          <span class="ac-icon">🫧</span>
+          <span class="ac-text">
+            <b>Urticaria</b>
+            <small>Anaphylaxis 999 · chronic spontaneous · antihistamine step-up · omalizumab · ACEi angio-oedema · HAE</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/maculopapular-rash.html" data-search="maculopapular rash meningococcaemia 999 sjs/ten dress kawasaki secondary syphilis measles notification maculopapular-rash">
+          <span class="ac-icon">🔴</span>
+          <span class="ac-text">
+            <b>Maculopapular Rash</b>
+            <small>Meningococcaemia 999 · SJS/TEN · DRESS · Kawasaki · secondary syphilis · measles notification</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/screening-programmes.html" data-search="uk screening programmes cervical breast bowel fit aaa diabetic eye nhs health check brca/lynch lung tlhc screening-programmes">
+          <span class="ac-icon">🩺</span>
+          <span class="ac-text">
+            <b>UK Screening Programmes</b>
+            <small>Cervical · breast · bowel FIT · AAA · diabetic eye · NHS Health Check · BRCA/Lynch · lung TLHC</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/driving-diseases.html" data-search="driving and medical fitness (dvla) epilepsy syncope insulin dm dementia osa cardiac group 1 vs 2 gmc duty driving-diseases">
+          <span class="ac-icon">🚗</span>
+          <span class="ac-text">
+            <b>Driving &amp; Medical Fitness (DVLA)</b>
+            <small>Epilepsy · syncope · insulin DM · dementia · OSA · cardiac · Group 1 vs 2 · GMC duty</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/pigmented-skin-lesions.html" data-search="pigmented skin lesions melanoma abcde + efg 2ww (do not excise in primary care) dermoscopy actinic keratosis bcc lentigo maligna pigmented-skin-lesions">
+          <span class="ac-icon">🔬</span>
+          <span class="ac-text">
+            <b>Pigmented Skin Lesions</b>
+            <small>Melanoma ABCDE + EFG · 2WW (do not excise in primary care) · dermoscopy · actinic keratosis · BCC · lentigo maligna</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/nail-disorders.html" data-search="nail disorders subungual melanoma (hutchinsons) 2ww clubbing onychomycosis herpetic whitlow psoriatic nails terrys nail-disorders">
+          <span class="ac-icon">💅</span>
+          <span class="ac-text">
+            <b>Nail Disorders</b>
+            <small>Subungual melanoma (Hutchinson's) 2WW · clubbing · onychomycosis · herpetic whitlow · psoriatic nails · Terry's</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/malnutrition.html" data-search="malnutrition must screening refeeding syndrome ons prescribing cancer cachexia wernickes food insecurity malnutrition">
+          <span class="ac-icon">🥗</span>
+          <span class="ac-text">
+            <b>Malnutrition</b>
+            <small>MUST screening · refeeding syndrome · ONS prescribing · cancer cachexia · Wernicke's · food insecurity</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+</div>
+      </section>
+      <section class="alg-group" data-group="palliative &amp; end of life care">
+        <div class="alg-group-head">
+          <span class="agh-icon">🕊️</span>
+          <h2>Palliative &amp; End of Life Care</h2>
+          <span class="agh-count">6</span>
+        </div>
+        <div class="alg-grid">
+        <a class="alg-card" href="algorithms/palliative-pain.html" data-search="palliative pain management who ladder opioid titration syringe driver mscc neuropathic anticipatory prescribing palliative-pain">
+          <span class="ac-icon">💊</span>
+          <span class="ac-text">
+            <b>Palliative Pain Management</b>
+            <small>WHO ladder · opioid titration · syringe driver · MSCC · neuropathic · anticipatory prescribing</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/mscc.html" data-search="mscc metastatic spinal cord compression oncological emergency back pain dexamethasone whole spine mri radiotherapy prostate breast lung myeloma ng234 palliative mscc">
+          <span class="ac-icon">🧬</span>
+          <span class="ac-text">
+            <b>Metastatic Spinal Cord Compression</b>
+            <small>Oncological emergency · dexamethasone 16mg · whole-spine MRI ≤24h · MSCC coordinator · NG234</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/cauda-equina.html" data-search="cauda equina compression syndrome ces saddle anaesthesia bladder bowel sphincter bilateral sciatica emergency mri decompression dexamethasone malignant ng59 cauda-equina">
+          <span class="ac-icon">🦴</span>
+          <span class="ac-text">
+            <b>Cauda Equina Compression</b>
+            <small>Saddle anaesthesia · bladder/bowel dysfunction · emergency MRI · disc vs malignant · NG59</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/svco.html" data-search="svco superior vena cava obstruction facial arm swelling dyspnoea distended veins lung cancer lymphoma dexamethasone stent oncological emergency palliative svco">
+          <span class="ac-icon">🩺</span>
+          <span class="ac-text">
+            <b>Superior Vena Cava Obstruction</b>
+            <small>Facial/arm swelling + dyspnoea · sit up · dexamethasone · urgent oncology · lung/lymphoma</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/malignant-hypercalcaemia.html" data-search="malignant hypercalcaemia of malignancy corrected calcium rehydration iv saline zoledronic acid pamidronate bisphosphonate bones stones groans moans palliative malignant-hypercalcaemia">
+          <span class="ac-icon">🦴</span>
+          <span class="ac-text">
+            <b>Malignant Hypercalcaemia</b>
+            <small>Corrected calcium · IV saline rehydration · IV bisphosphonate · poor prognosis marker</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/terminal-haemorrhage.html" data-search="catastrophic terminal haemorrhage palliative bleeding crisis midazolam dark towels tranexamic acid anticipatory prescribing end of life haemoptysis variceal pcf8 terminal-haemorrhage">
+          <span class="ac-icon">🩸</span>
+          <span class="ac-text">
+            <b>Catastrophic Haemorrhage (Palliative)</b>
+            <small>Anticipate &amp; plan · crisis midazolam (not SC) · dark towels · stay &amp; comfort · debrief · PCF8</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        </div>
+      </section>
+      <section class="alg-group" data-group="paediatrics">
+        <div class="alg-group-head">
+          <span class="agh-icon">🧒</span>
+          <h2>Paediatrics</h2>
+          <span class="agh-count">23</span>
+        </div>
+        <div class="alg-grid">
+        <a class="alg-card" href="algorithms/suspected-diabetes-children.html" data-search="suspected diabetes in children type 1 diabetes paediatric new onset 4 ts toilet thirsty tired thinner polyuria polydipsia weight loss secondary enuresis bedwetting capillary blood glucose ketones dka diabetic ketoacidosis nice ng18 same-day paediatric diabetes referral monogenic mody type 2 acanthosis nigricans suspected-diabetes-children">
+          <span class="ac-icon">🩸</span>
+          <span class="ac-text">
+            <b>Suspected Diabetes in Children</b>
+            <small>NICE NG18 · the 4 T's · capillary glucose + ketones · exclude DKA · same-day paediatric diabetes referral</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/paediatric-cancer-referral.html" data-search="paediatric childhood cancer referral children young people nice ng12 leukaemia petechiae hepatosplenomegaly fbc 48 hours lymphoma retinoblastoma red reflex neuroblastoma wilms sarcoma bone pain parental concern paediatric-cancer-referral">
+          <span class="ac-icon">🧒</span>
+          <span class="ac-text">
+            <b>Suspected Cancer in Children &amp; Young People</b>
+            <small>NICE NG12 · petechiae/hepatosplenomegaly → immediate · very urgent FBC 48h · absent red reflex · parental concern</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/precocious-puberty.html" data-search="precocious puberty early puberty breast development before 8 testicular enlargement before 9 central peripheral gnrh frax mccune-albright thelarche adrenarche paediatric endocrinology">
+          <span class="ac-icon">🧒</span>
+          <span class="ac-text"><b>Precocious puberty</b><small>&lt;8y girls / &lt;9y boys · intracranial red flags · refer all · every boy urgent · central vs peripheral</small></span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/abdominal-pain-children.html" data-search="abdominal pain in children abdominal pain in children — assessment &amp; management nice cg161 | appendicitis | ages 0–12 years | uk primary care pathway abdominal-pain-children">
+          <span class="ac-icon">🩺</span>
+          <span class="ac-text">
+            <b>Abdominal Pain in Children</b>
+            <small>NICE CG161 | Appendicitis | Ages 0–12 years | UK Primary Care Pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/constipation-children.html" data-search="constipation in children constipation in children — assessment &amp; management nice cg99 | bristol stool chart | ages 0–12 years | uk primary care pathway constipation-children">
+          <span class="ac-icon">💩</span>
+          <span class="ac-text">
+            <b>Constipation in Children</b>
+            <small>NICE CG99 | Bristol Stool Chart | Ages 0–12 years | UK Primary Care Pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/cough-children.html" data-search="cough in children cough in children — assessment &amp; management nice ng117 | bts/sign asthma | ages 0–12 years | uk primary care pathway cough-children">
+          <span class="ac-icon">🫁</span>
+          <span class="ac-text">
+            <b>Cough in Children</b>
+            <small>NICE NG117 | BTS/SIGN Asthma | Ages 0–12 years | UK Primary Care Pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/fever-children.html" data-search="fever in children fever in children — assessment &amp; management nice ng143 | traffic light system | ages 0–12 years | uk primary care pathway fever-children">
+          <span class="ac-icon">🌡️</span>
+          <span class="ac-text">
+            <b>Fever in Children</b>
+            <small>NICE NG143 | Traffic Light System | Ages 0–12 years | UK Primary Care Pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/vomiting-children.html" data-search="vomiting in children vomiting in children — assessment &amp; management nice cg84 | ages 0–12 years | uk primary care pathway vomiting-children">
+          <span class="ac-icon">🤢</span>
+          <span class="ac-text">
+            <b>Vomiting in Children</b>
+            <small>NICE CG84 | Ages 0–12 years | UK Primary Care Pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/uti-children.html" data-search="uti in children uti in children — primary care assessment &amp; management nice cg54-aligned pathway · age &lt;16 · uk gp / rcgp sca preparation uti-children">
+          <span class="ac-icon">🧒</span>
+          <span class="ac-text">
+            <b>UTI in Children</b>
+            <small>NICE CG54-aligned pathway · Age &lt;16 · UK GP / RCGP SCA preparation</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/limping-children.html" data-search="limping in children limping in children — acute &amp; chronic presentation ages 0–16 · differential diagnosis, safety exclusion, investigation &amp; management pathway limping-children">
+          <span class="ac-icon">🦵</span>
+          <span class="ac-text">
+            <b>Limping in Children</b>
+            <small>Ages 0–16 · Differential diagnosis, safety exclusion, investigation &amp; management pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/paediatric-msk.html" data-search="paediatric msk presentations paediatric msk presentations — limping child, joint pain, growing pains uk primary care pathway for musculoskeletal symptoms in children paediatric-msk">
+          <span class="ac-icon">🦴</span>
+          <span class="ac-text">
+            <b>Paediatric MSK Presentations</b>
+            <small>UK primary care pathway for musculoskeletal symptoms in children</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/developmental-delay.html" data-search="developmental delay in children developmental delay in children — primary care pathway structured assessment for global and domain-specific developmental delay · 0–5 years primary focus · uk primary care developmental-delay">
+          <span class="ac-icon">🧠</span>
+          <span class="ac-text">
+            <b>Developmental Delay in Children</b>
+            <small>Structured assessment for global and domain-specific developmental delay · 0–5 years primary focus · UK primary care</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/faltered-growth.html" data-search="faltered growth in children faltered growth in children — primary care pathway structured assessment for weight faltering / failure to thrive · 0–5 years primary focus · uk primary care faltered-growth">
+          <span class="ac-icon">📏</span>
+          <span class="ac-text">
+            <b>Faltered Growth in Children</b>
+            <small>Structured assessment for weight faltering / failure to thrive · 0–5 years primary focus · UK primary care</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/cows-milk-allergy.html" data-search="cow's milk allergy cow's milk allergy — ige-mediated and non-ige-mediated uk primary care pathway for diagnosing and managing cma in infants and children cows-milk-allergy">
+          <span class="ac-icon">🍼</span>
+          <span class="ac-text">
+            <b>Cow's Milk Allergy</b>
+            <small>UK primary care pathway for diagnosing and managing CMA in infants and children</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/unsettled-baby.html" data-search="unsettled baby unsettled baby — primary care assessment structured pathway for excessive crying / colic in infants 0–6 months · uk primary care unsettled-baby">
+          <span class="ac-icon">👶</span>
+          <span class="ac-text">
+            <b>Unsettled Baby</b>
+            <small>Structured pathway for excessive crying / colic in infants 0–6 months · UK primary care</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+                <a class="alg-card" href="algorithms/wheeze-child.html" data-search="wheezy child acute asthma viw bronchiolitis foreign body bts/sign waap nice ng80 wheeze-child">
+          <span class="ac-icon">🫁</span>
+          <span class="ac-text">
+            <b>Wheezy Child</b>
+            <small>Acute asthma · VIW · bronchiolitis · foreign body · BTS/SIGN · WAAP · NICE NG80</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/sleep-problems-children.html" data-search="sleep problems in children osa behavioural insomnia parasomnias safeguarding cbt-i melatonin pathway sleep-problems-children">
+          <span class="ac-icon">🌙</span>
+          <span class="ac-text">
+            <b>Sleep Problems in Children</b>
+            <small>OSA · behavioural insomnia · parasomnias · safeguarding · CBT-I · melatonin pathway</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/neonatal-jaundice.html" data-search="neonatal jaundice jaundice <24 hrs = emergency biliary atresia (pale stools) kernicterus nice ng98 neonatal-jaundice">
+          <span class="ac-icon">🟡</span>
+          <span class="ac-text">
+            <b>Neonatal Jaundice</b>
+            <small>Jaundice &lt;24 hrs = emergency · biliary atresia (pale stools) · kernicterus · NICE NG98</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/speech-delay-children.html" data-search="speech delay in children hearing loss audiology m-chat asd dld regression red flag hanen ehcp speech-delay-children">
+          <span class="ac-icon">🗣️</span>
+          <span class="ac-text">
+            <b>Speech Delay in Children</b>
+            <small>Hearing loss audiology · M-CHAT ASD · DLD · regression red flag · Hanen · EHCP</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/daytime-urinary-incontinence-children.html" data-search="daytime wetting (children) oab bladder retraining constipation ectopic ureter oxybutynin eric timed voiding daytime-urinary-incontinence-children">
+          <span class="ac-icon">🚽</span>
+          <span class="ac-text">
+            <b>Daytime Wetting (Children)</b>
+            <small>OAB bladder retraining · constipation · ectopic ureter · oxybutynin · ERIC · timed voiding</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/haematuria-children.html" data-search="haematuria in children wilms 999 psgn hsp nephritis alport upcr glomerular vs non-glomerular haematuria-children">
+          <span class="ac-icon">🩺</span>
+          <span class="ac-text">
+            <b>Haematuria in Children</b>
+            <small>Wilms 999 · PSGN · HSP nephritis · Alport · uPCR · glomerular vs non-glomerular</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/short-stature.html" data-search="short stature growth velocity bone age turner karyotype coeliac gh deficiency cdgp short-stature">
+          <span class="ac-icon">📏</span>
+          <span class="ac-text">
+            <b>Short Stature</b>
+            <small>Growth velocity · bone age · Turner karyotype · coeliac · GH deficiency · CDGP</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+        <a class="alg-card" href="algorithms/surgical-problems-children.html" data-search="surgical problems in children bilious vomiting/volvulus 999 intussusception torsion wilms undescended testis pyloric stenosis surgical-problems-children">
+          <span class="ac-icon">🏥</span>
+          <span class="ac-text">
+            <b>Surgical Problems in Children</b>
+            <small>Bilious vomiting/volvulus 999 · intussusception · torsion · Wilms' · undescended testis · pyloric stenosis</small>
+          </span>
+          <span class="ac-arrow">→</span>
+        </a>
+</div>
+      </section>
+
+        <section class="alg-group" data-group="lab results · abnormal blood tests" data-search-only="1">
+          <div class="alg-group-head"><span class="agh-icon">🧪</span><h2>Lab Results · Abnormal Blood Tests</h2><span class="agh-count">22</span></div>
+          <div class="alg-grid">
+          <a class="alg-card" href="algorithms/macrocytosis.html" data-search="macrocytosis high mcv b12/folate alcohol mds hypothyroid macrocytosis oval macrocytes hypersegmented lab result blood test abnormal">
+            <span class="ac-icon">🔬</span>
+            <span class="ac-text">
+              <b>Macrocytosis</b>
+              <small>High MCV · B12/folate · alcohol · MDS · hypothyroid</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/microcytosis.html" data-search="microcytosis low mcv iron deficiency thalassaemia acd microcytosis mentzer thalassaemia lab result blood test abnormal">
+            <span class="ac-icon">🩸</span>
+            <span class="ac-text">
+              <b>Microcytosis</b>
+              <small>Low MCV · iron deficiency · thalassaemia · ACD</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/lymphocytosis.html" data-search="lymphocytosis high lymphocytes cll ebv pertussis lymphocytosis cll smear cells binet lab result blood test abnormal">
+            <span class="ac-icon">🦠</span>
+            <span class="ac-text">
+              <b>Lymphocytosis</b>
+              <small>High lymphocytes · CLL · EBV · pertussis</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/lymphopenia.html" data-search="lymphopenia low lymphocytes hiv steroids cvid lymphopenia hiv cd4 cvid lab result blood test abnormal">
+            <span class="ac-icon">🧬</span>
+            <span class="ac-text">
+              <b>Lymphopenia</b>
+              <small>Low lymphocytes · HIV · steroids · CVID</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/pancytopenia.html" data-search="pancytopenia all cell lines low marrow failure aml/mds urgent pancytopenia aplastic neutropenic sepsis lab result blood test abnormal">
+            <span class="ac-icon">🩸</span>
+            <span class="ac-text">
+              <b>Pancytopenia</b>
+              <small>All cell lines low · marrow failure · AML/MDS · urgent</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/normocytic-anaemia.html" data-search="normocytic anaemia reticulocyte stfr schistocytes pancytopenia acd vs early ida haemolysis (retic/dat) ckd marrow failure ttp normocytic-anaemia lab result blood test abnormal">
+            <span class="ac-icon">🩸</span>
+            <span class="ac-text">
+              <b>Normocytic anaemia</b>
+              <small>ACD vs early IDA · haemolysis (retic/DAT) · CKD · marrow failure · TTP</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/low-ferritin.html" data-search="low ferritin iron deficiency gi workup oral iv iron coeliac low-ferritin menorrhagia ferric carboxymaltose bsg lab result blood test abnormal">
+            <span class="ac-icon">🩸</span>
+            <span class="ac-text">
+              <b>Low ferritin</b>
+              <small>Iron deficiency · GI workup · oral/IV iron · coeliac · menorrhagia</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/vitamin-b12-deficiency.html" data-search="vitamin b12 deficiency pernicious anaemia sacd hydroxocobalamin metformin vitamin-b12-deficiency folate n2o vegan lab result blood test abnormal">
+            <span class="ac-icon">🧬</span>
+            <span class="ac-text">
+              <b>Vitamin B12 deficiency</b>
+              <small>Pernicious anaemia · neuro SACD · IM hydroxocobalamin · metformin</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/high-ferritin.html" data-search="high ferritin hlh (andgt;10,000) emergency haemochromatosis c282y/transferrin sat venesection hcc surveillance dios high-ferritin aosd anakinra family cascade vibrio lab result blood test abnormal">
+            <span class="ac-icon">🔴</span>
+            <span class="ac-text">
+              <b>High ferritin</b>
+              <small>HLH (&gt;10,000) emergency · haemochromatosis C282Y/transferrin sat · venesection · HCC surveillance · DIOS</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/low-folate.html" data-search="low folate check b12 before treating (sacd risk) mtx 5mg weekly periconception 400mcg vs 5mg coeliac valproate low-folate metformin haemolysis ppp folic acid lab result blood test abnormal">
+            <span class="ac-icon">🥦</span>
+            <span class="ac-text">
+              <b>Low folate</b>
+              <small>Check B12 BEFORE treating (SACD risk) · MTX 5mg weekly · periconception 400mcg vs 5mg · coeliac · valproate</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/magnesium-deficiency.html" data-search="hypomagnesaemia ppi-induced refractory hypokalaemia qt torsades magnesium-deficiency gitelman ppi mgso4 lab result blood test abnormal">
+            <span class="ac-icon">🔋</span>
+            <span class="ac-text">
+              <b>Hypomagnesaemia</b>
+              <small>PPI-induced · refractory hypokalaemia · QT · torsades</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/hypernatraemia.html" data-search="hypernatraemia na⁺ andgt;145 correct ≤0.5 mmol/l/h (chronic) na andgt;160 999 diabetes insipidus lithium ndi hhs hypernatraemia desmopressin water deprivation amiloride corrected na lab result blood test abnormal">
+            <span class="ac-icon">💧</span>
+            <span class="ac-text">
+              <b>Hypernatraemia</b>
+              <small>Na⁺ &gt;145 · correct ≤0.5 mmol/L/h (chronic) · Na &gt;160 999 · diabetes insipidus · lithium NDI · HHS</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/abnormal-bone-profile.html" data-search="abnormal bone profile calcium pth pagets osteomalacia raised alp abnormal-bone-profile hyperparathyroid fhh renal osteodystrophy lab result blood test abnormal">
+            <span class="ac-icon">🦴</span>
+            <span class="ac-text">
+              <b>Abnormal bone profile</b>
+              <small>Calcium · PTH · Paget's · osteomalacia · raised ALP</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/vitamin-d-deficiency.html" data-search="vitamin d deficiency 25-oh-d loading regimen osteomalacia rickets vitamin-d-deficiency colecalciferol sacn malabsorption lab result blood test abnormal">
+            <span class="ac-icon">☀️</span>
+            <span class="ac-text">
+              <b>Vitamin D deficiency</b>
+              <small>25-OH-D · loading regimen · osteomalacia · rickets</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/abnormal-tfts.html" data-search="abnormal tfts tsh interpretation graves hashimoto pregnancy subclinical abnormal-tfts carbimazole levothyroxine amiodarone lab result blood test abnormal">
+            <span class="ac-icon">🦋</span>
+            <span class="ac-text">
+              <b>Abnormal TFTs</b>
+              <small>TSH interpretation · Graves · Hashimoto · pregnancy · subclinical</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/female-hormone-abnormalities.html" data-search="female hormone abnormalities poi (fsh andgt;25) hrt essential pcos rotterdam day-21 progesterone virilising tumour (testosterone andgt;5) 2ww pituitary apoplexy female-hormone-abnormalities prolactin progesterone hirsutism eflornithine amenorrhoea lab result blood test abnormal">
+            <span class="ac-icon">⚕️</span>
+            <span class="ac-text">
+              <b>Female hormone abnormalities</b>
+              <small>POI (FSH &gt;25) HRT essential · PCOS Rotterdam · day-21 progesterone · virilising tumour (testosterone &gt;5) 2WW · pituitary apoplexy</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/high-triglycerides.html" data-search="high triglycerides pancreatitis risk metabolic syndrome fibrates epa high-triglycerides fcs non-hdl chylomicronaemia fenofibrate lab result blood test abnormal">
+            <span class="ac-icon">🔴</span>
+            <span class="ac-text">
+              <b>High triglycerides</b>
+              <small>Pancreatitis risk · metabolic syndrome · fibrates · EPA</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/high-crp-esr.html" data-search="raised crp / esr sepsis gca same-day pmr myeloma vasculitis high-crp-esr procalcitonin tocilizumab news2 lab result blood test abnormal">
+            <span class="ac-icon">🔥</span>
+            <span class="ac-text">
+              <b>Raised CRP / ESR</b>
+              <small>Sepsis · GCA same-day · PMR · myeloma · vasculitis</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/abnormal-immunoglobulin.html" data-search="abnormal immunoglobulins mgus myeloma crab serum flc cvid paraprotein abnormal-immunoglobulin waldenstrom amyloid iga deficiency lab result blood test abnormal">
+            <span class="ac-icon">🧬</span>
+            <span class="ac-text">
+              <b>Abnormal immunoglobulins</b>
+              <small>MGUS · myeloma CRAB · serum FLC · CVID · paraprotein</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/abnormal-cancer-markers.html" data-search="abnormal tumour markers psa ca125 rmi cea afp 2ww thresholds abnormal-cancer-markers brca lynch gtd ng12 lab result blood test abnormal">
+            <span class="ac-icon">🔬</span>
+            <span class="ac-text">
+              <b>Abnormal tumour markers</b>
+              <small>PSA · CA125 RMI · CEA · AFP · 2WW thresholds</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/high-psa.html" data-search="raised psa prostate active surveillance protect bone mets ng12 age-adjusted thresholds mpmri before biopsy (ng131) malignant dre → 2ww adt mscc high-psa lab result blood test abnormal">
+            <span class="ac-icon">🔬</span>
+            <span class="ac-text">
+              <b>Raised PSA</b>
+              <small>Age-adjusted thresholds · mpMRI before biopsy (NG131) · malignant DRE → 2WW · ADT · MSCC</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          <a class="alg-card" href="algorithms/allergy-test-abnormalities.html" data-search="allergy test abnormalities sensitisation vs clinical allergy sige needs history tryptase/mastocytosis penicillin de-labelling oas venom immunotherapy allergy-test-abnormalities rast saap anaphylaxis aai oral allergy syndrome lab result blood test abnormal">
+            <span class="ac-icon">🧬</span>
+            <span class="ac-text">
+              <b>Allergy test abnormalities</b>
+              <small>Sensitisation vs clinical allergy · sIgE needs history · tryptase/mastocytosis · penicillin de-labelling · OAS · venom immunotherapy</small>
+            </span>
+            <span class="ac-arrow">→</span>
+          </a>
+          </div>
+        </section>
+
+      <div class="alg-foot">
+        <strong>Educational use.</strong> 250+ clinical pathways listed here, plus the lab-value pathways on the <a href="algorithms/lab-results.html" style="color:var(--teal-2);font-weight:600">Lab Results hub</a>, anchored to NICE / CKS guidance (2026). Each is a reference tool for UK GP trainees and early-career GPs — always verify against current local guidance and the patient's individual context.
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/filter-rail.js"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

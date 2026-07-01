@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Tingling &amp; Paraesthesia Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;
+  --diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;
+  --treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;
+  --refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;
+  --lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
+  --font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif
+}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#1a0d2e 0%,#3a1a5e 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#3a1a5e,#c0392b);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}
+.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}
+.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}
+.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}
+.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}
+.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}
+.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#92400e}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">⚡</div>
+  <div>
+    <b>Tingling &amp; Paraesthesia</b>
+    <small>Peripheral neuropathy · entrapment · cervical/lumbar radiculopathy · central causes · B12 · diabetes · MS</small>
+  </div>
+</div>
+
+<div class="alg-progress">
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Spinal Cord, Stroke &amp; Rapidly Progressive Neuropathy</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Paraesthesia with upper motor neurone signs, bilateral symptoms, or rapid progression = central or compressive cause until proven otherwise. Do not attribute to peripheral neuropathy without neurological examination.</b></p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Bilateral leg tingling + weakness + saddle anaesthesia + urinary/bowel dysfunction</b> Cauda equina syndrome (lumbar disc or tumour compressing sacral roots) or spinal cord compression → 999. MRI spine urgently. Saddle anaesthesia (perineum, inner thighs) + any sphincter dysfunction = surgical emergency. Window for decompression to preserve function: &lt;48 hours.</div>
+      <div class="rftile"><b>Acute unilateral face, arm, or leg tingling with sudden onset</b> TIA or ischaemic stroke — sensory cortex or thalamic lacunar infarct. FAST positive or new neurological deficit → 999, same-day TIA clinic if resolved. Do not attribute sudden-onset unilateral tingling to peripheral neuropathy — central cause until excluded. ABCD2 score. Aspirin 300 mg immediately if TIA confirmed.</div>
+      <div class="rftile"><b>Rapidly progressive ascending paraesthesia + weakness + areflexia</b> Guillain-Barré syndrome — ascending demyelinating polyneuropathy, often post-infectious (Campylobacter, CMV, EBV). Paraesthesia starts in toes, ascends to trunk. Respiratory compromise risk (measure FVC at each assessment — FVC &lt;1.5 L = ITU). → 999. IVIG and plasma exchange reduce severity and duration. Time-critical.</div>
+      <div class="rftile"><b>Paraesthesia + Lhermitte's sign (electric shock down spine on neck flexion)</b> Spinal cord demyelination — multiple sclerosis (MS), cervical cord compression, B12 subacute combined degeneration of the cord. Lhermitte's is pathognomonic of posterior column pathology in the cervical cord. → Urgent neurology referral. MRI brain and spine. B12 level urgently.</div>
+      <div class="rftile"><b>Paraesthesia + weight loss + night sweats + lymphadenopathy</b> Paraneoplastic neuropathy — sensory neuropathy as the presenting feature of an occult malignancy (lung SCLC, breast, ovarian, lymphoma). Anti-Hu, anti-Yo, anti-amphiphysin antibodies. 2WW cancer pathway + urgent neurology. Paraneoplastic neuropathy precedes cancer diagnosis in 60% of cases.</div>
+      <div class="rftile"><b>Tingling + ataxia + cognitive impairment in B12-deficient patient</b> Subacute combined degeneration of the spinal cord (SACD) — B12 deficiency causing simultaneous posterior column (sensory) and lateral column (motor/corticospinal) degeneration. Irreversible if not treated promptly. B12 IM loading urgently (6 injections over 2 weeks). Do NOT give folic acid alone without checking B12 — folic acid can mask B12 deficiency while allowing neurological damage to progress.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The anatomical localisation of paraesthesia is the most important clinical skill in managing this symptom — the distribution of tingling determines whether the cause is peripheral (nerve, root, plexus) or central (spinal cord, brainstem, thalamus, cortex). A GP who cannot localise the symptom neuroanatomically cannot safely manage paraesthesia. Key principles: (1) dermatome distribution = nerve root (radiculopathy) — e.g. C6 (thumb, index finger, lateral forearm), L5 (great toe, dorsum of foot, lateral calf); (2) peripheral nerve distribution = entrapment neuropathy — e.g. median nerve (thumb, index, middle, lateral half of ring finger — carpal tunnel), ulnar nerve (little and medial ring finger + medial hand); (3) stocking-and-glove distribution = length-dependent peripheral neuropathy (diabetes, alcohol, B12 deficiency); (4) one limb completely + face contralateral = brainstem; (5) all four limbs = spinal cord (above C5) or bilateral peripheral neuropathy; (6) one body half (hemisensory) = thalamus or cortex. Guillain-Barré syndrome is the most important acute paraesthesia emergency after stroke/TIA — it is post-infectious in 70% of cases (Campylobacter jejuni most common, CMV, EBV, Zika, COVID-19), presenting 1–3 weeks after the infection with ascending tingling starting in the toes. The critical prognostic factor is respiratory compromise — the diaphragm and intercostal muscles can be affected, causing respiratory failure in up to 30% of patients. FVC (&lt;1.5 L = 50% of predicted) is the measurement that triggers ITU transfer. GPs who see a patient with ascending tingling + muscle weakness after a recent diarrhoeal illness must refer to hospital immediately.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Pattern Recognition — Localise the Lesion</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Stocking-and-glove (length-dependent)</div><div>Both feet first (longest nerves affected first) → spreading proximally up legs, later hands. Implies: diffuse peripheral neuropathy. Most common causes: diabetes (most common worldwide), alcohol, B12 deficiency, CKD (uraemic neuropathy), hypothyroidism, drugs (metronidazole, isoniazid, nitrofurantoin, vincristine, cisplatin, statins — rare), hereditary (CMT disease). Investigate systematically.</div>
+      <div>Dermatomal (nerve root)</div><div>Specific anatomical band corresponding to a nerve root: C5 (lateral arm), C6 (thumb + lateral forearm), C7 (middle finger + dorsal forearm), C8 (little + ring finger + medial forearm), T1 (medial forearm), L4 (medial lower leg + ankle), L5 (dorsum foot + great toe), S1 (lateral foot + heel). Associated neck or back pain ± radiation. Coughing/sneezing worsens it. Cervical or lumbar radiculopathy — MRI spine.</div>
+      <div>Peripheral nerve territory (mononeuropathy)</div><div>Median nerve (carpal tunnel): thumb + index + middle + lateral half of ring finger, worse at night, flicking the wrist relieves (Flick sign), Phalen's and Tinel's positive. Ulnar nerve (cubital tunnel): little + medial ring finger + medial hand, worse with elbow flexion. Radial nerve (Saturday night palsy): dorsal thumb + index + web space, associated wrist drop. Common peroneal nerve (foot drop): dorsum of foot + lateral lower leg — see Foot Drop algorithm.</div>
+      <div>Bilateral hands AND feet simultaneously</div><div>Both upper and lower limbs simultaneously affected = systemic polyneuropathy (B12, alcohol, diabetes) OR spinal cord pathology (above C5). Distinguish by examination: UMN signs (hyperreflexia, upgoing plantars, clonus) = cord; absent reflexes + normal plantars = polyneuropathy. Any UMN sign = urgent neurology + MRI spine.</div>
+      <div>Face + limb (same or opposite side)</div><div>Ipsilateral face + contralateral limb tingling = brainstem lesion (lateral medullary syndrome, MS plaque, brainstem tumour). Hemibody (one entire half of body) = thalamic or cortical — stroke, MS, tumour. Perioral + bilateral hands tingling = hyperventilation (respiratory alkalosis → hypocalcaemia → tetany — check CO₂ and calcium).</div>
+      <div>Nocturnal, waking patient from sleep</div><div>Carpal tunnel syndrome: classic nocturnal tingling of median nerve distribution, relieved by shaking or dangling the hand. Also: ulnar nerve entrapment at elbow (if sleeping with elbow flexed). Meralgia paraesthetica (lateral femoral cutaneous nerve — outer thigh tingling, worsened by lying flat) — common in pregnancy, obesity, tight clothing. Peripheral vascular disease can mimic neuropathy at night.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Length-dependent peripheral neuropathy is the most common pattern seen in primary care and reflects a fundamental neurobiological principle — the longest peripheral nerves (those supplying the toes and feet) are most susceptible to metabolic damage because they have the greatest distance over which axonal transport must maintain the distal axon. In diabetes, for example, chronic hyperglycaemia causes AGE (advanced glycation end-products) accumulation, oxidative stress, and polyol pathway dysfunction that impairs this axonal transport, affecting the longest nerves first. This is why diabetic peripheral neuropathy begins in both feet, symmetrically, before progressing to involve the legs and later the hands. Understanding this principle means a GP can immediately recognise that "tingling in one foot only" is unlikely to be diabetic neuropathy and requires localised investigation (nerve entrapment, lumbar radiculopathy). The Flick sign for carpal tunnel syndrome (median nerve distribution tingling that is relieved by vigorously shaking or flicking the wrist) has a sensitivity of 93% and specificity of 96% for CTS — it is more sensitive than Tinel's sign (percussion over the carpal tunnel) and Phalen's test (wrist flexion for 60 seconds). It was described by Pryse-Phillips in 1984 and validated in multiple studies. A patient who describes waking at night with tingling in the thumb and fingers and shaking their hand to relieve it has carpal tunnel syndrome until proven otherwise. The hyperventilation-tetany pattern (perioral tingling + bilateral hand tingling + carpopedal spasm) is important to recognise — it is caused by respiratory alkalosis from hyperventilation reducing ionised calcium, producing the sensory and motor manifestations of hypocalcaemia. It is distinct from true hypocalcaemia (which has the same symptoms but different cause) and is treated by addressing the hyperventilation pattern, not calcium supplementation.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Targeted Neurological Examination</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Sensory examination</div><div>Light touch (cotton wool — spinothalamic anterior column) · Pinprick (spinothalamic — pain/temperature fibres, small fibre neuropathy) · Vibration sense (128 Hz tuning fork at great toe, malleolus, then knee — posterior column, large fibre) · Proprioception (joint position sense at toes, then ankles — posterior column) · Temperature (hot/cold test tubes — if vibration/proprioception normal but pain abnormal = small fibre neuropathy)</div>
+      <div>Motor and reflex examination</div><div>Power (MRC grading 0–5) in upper and lower limbs · Reflexes: biceps (C5/C6), supinator (C6), triceps (C7), knee (L3/L4), ankle (S1) · Plantar response (normal = downgoing; UMN = Babinski upgoing) · Clonus (sustained rhythmic contractions at ankle = UMN, spinal cord pathology) · Coordination (heel-shin, finger-nose — cerebellar, posterior column). <b>Absent ankle jerks + upgoing plantars = subacute combined degeneration until proven otherwise.</b></div>
+      <div>Specific entrapment tests</div><div><b>Carpal tunnel:</b> Tinel's (tap over flexor retinaculum → tingling in median distribution), Phalen's (wrist flexion 60 sec → tingling), Flick sign (shaking relieves), thenar wasting (advanced). <b>Cubital tunnel (ulnar):</b> elbow hyperflexion test (30 sec flexion → ulnar distribution tingling), hypothenar wasting. <b>Meralgia paraesthetica:</b> lateral thigh sensory loss/tingling, positive hip flexion test. Reproducing symptoms confirms entrapment.</div>
+      <div>Romberg's test</div><div>Stand with feet together, eyes open (normal) then closed. Positive = increased sway or falls with eyes closed but not open = posterior column dysfunction (proprioception loss) — B12 deficiency, tabes dorsalis, MS. Distinguish from cerebellar ataxia (unsteady with eyes open AND closed). Positive Romberg = urgent B12 level + MRI spine if B12 normal.</div>
+      <div>Spinal examination</div><div>Neck: flexion/extension ROM, Spurling's test (axial compression + lateral flexion towards affected side → radiculopathy), Lhermitte's sign. Lumbar: SLR (straight leg raise — L4/L5/S1 radiculopathy positive ≤60°), slump test, femoral stretch test (L2/L3/L4 — prone, flex knee, pain in anterior thigh). Document level of any radiculopathy sign clearly.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The combination of absent ankle jerks + extensor plantar responses (upgoing Babinski) is one of the most clinically important neurological sign combinations — it indicates simultaneous lower motor neurone (absent reflex = LMN at the peripheral nerve or anterior horn) and upper motor neurone (Babinski = UMN corticospinal tract) dysfunction. This combination occurs in three conditions: subacute combined degeneration of the spinal cord (B12 deficiency — posterior and lateral column degeneration), Friedreich's ataxia, and combined peripheral neuropathy with spinal cord compression. In primary care, the absent ankle jerks + upgoing plantars combination in a patient with tingling mandates immediate B12 measurement and urgent neurology referral. Thenar muscle wasting in carpal tunnel syndrome indicates advanced, long-standing disease with significant denervation — this finding should accelerate the referral to neurology/hand surgery for nerve conduction studies and surgical decompression consideration. Early carpal tunnel (tingling only, no wasting) can be managed conservatively with wrist splints. Wasting = nerve damage is occurring. The MRC muscle power scale (0 = no movement, 1 = flicker, 2 = movement with gravity eliminated, 3 = movement against gravity only, 4 = movement against resistance but reduced, 5 = normal) is the universal language for documenting neurological weakness. GPs should document power grades at every neurological examination — "power 4/5 in right ankle dorsiflexion" communicates much more than "some weakness in the right foot" and is the documentation standard expected in medicolegal review of neurological cases.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Mandatory first-line bloods</div><div><span class="pill pill-blue">HbA1c + fasting glucose</span> (diabetes — most common cause of peripheral neuropathy) · <span class="pill pill-blue">B12 + folate</span> (B12 deficiency — subacute combined degeneration; folate deficiency — peripheral neuropathy) · <span class="pill pill-blue">TSH</span> (hypothyroid neuropathy — reversible) · <span class="pill pill-blue">FBC</span> (macrocytic anaemia = B12/folate; normocytic = chronic disease; microcytic = iron) · <span class="pill pill-blue">U&amp;E + eGFR</span> (uraemic neuropathy, CKD)</div>
+      <div>Second-line targeted bloods</div><div><span class="pill pill-blue">Serum protein electrophoresis (SPEP) + immunoglobulins</span> (paraproteinaemia — MGUS, myeloma causing neuropathy: 10% of peripheral neuropathy) · <span class="pill pill-blue">LFTs + GGT</span> (alcohol neuropathy) · <span class="pill pill-blue">Calcium</span> (hypercalcaemia — sarcoidosis neuropathy) · <span class="pill pill-blue">CRP + ESR</span> (vasculitic neuropathy — mononeuritis multiplex) · <span class="pill pill-blue">Anti-nuclear antibody (ANA)</span> (SLE, Sjögren's — sensory ganglionopathy) · <span class="pill pill-blue">Anti-CCP + RF</span> (RA neuropathy) · <span class="pill pill-blue">HIV test</span> (HIV sensory neuropathy)</div>
+      <div>Imaging</div><div><span class="pill pill-blue">MRI cervical spine</span> (cervical radiculopathy, cord compression, MS — any upper limb radicular paraesthesia, Lhermitte's sign, UMN signs) · <span class="pill pill-blue">MRI lumbar spine</span> (lower limb radiculopathy, cauda equina) · <span class="pill pill-blue">MRI brain</span> (sensory stroke, MS plaque, thalamic lesion — any hemibody or central pattern) · USS wrist or elbow (carpal tunnel confirmation — not routinely needed if clinical diagnosis clear)</div>
+      <div>Nerve conduction studies (NCS) / EMG</div><div>Arranged by neurology. NCS distinguishes: demyelinating (reduced conduction velocity — GBS, CIDP, CMT) vs axonal (reduced amplitude — diabetes, alcohol, toxic) neuropathy, confirms nerve entrapment location and severity (CTS — delays across carpal tunnel), identifies mononeuropathy multiplex (vasculitis). EMG (electromyography) adds motor unit analysis — denervation, reinnervation, myopathy. Refer to neurology to arrange.</div>
+      <div>Skin biopsy (small fibre neuropathy)</div><div>NCS only tests large myelinated fibres — small fibre neuropathy (burning, tingling in feet, normal NCS) requires skin punch biopsy (intraepidermal nerve fibre density) or quantitative sensory testing (QST). Seen in: diabetes (early), chemotherapy-induced, Sjögren's, coeliac disease, amyloidosis, idiopathic. Specialist investigation — ordered by neurology.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">B12 deficiency is the single most important reversible cause of peripheral neuropathy and spinal cord disease in primary care — the serum B12 level must be measured in every patient with unexplained paraesthesia, regardless of age. The reference range threshold varies between laboratories (typically 180–200 pmol/L), but many patients with neurological manifestations have serum B12 in the "low-normal" range (180–300 pmol/L) while having true functional B12 deficiency. If clinical suspicion is high despite normal serum B12, methylmalonic acid (MMA) and homocysteine are more sensitive markers of functional B12 deficiency (elevated MMA = B12 functional deficiency at cellular level). The interaction between folic acid and B12 in neuropathy management is a prescribing safety issue — folic acid supplementation in a patient with combined B12 and folate deficiency can cause haematological recovery (normalising the macrocytic anaemia) while the B12 deficiency neuropathy continues to progress and becomes irreversible. Always check B12 before prescribing folic acid. Always treat B12 deficiency with IM hydroxocobalamin before or concurrently with folic acid. The paraproteinaemia investigation (SPEP) is important in unexplained peripheral neuropathy — approximately 10% of all peripheral neuropathy cases are caused by a paraprotein (IgM, IgG, or IgA monoclonal protein) from MGUS (monoclonal gammopathy of undetermined significance), multiple myeloma, or Waldenström's macroglobulinaemia. IgM paraproteinaemia is particularly strongly associated with peripheral neuropathy (anti-MAG antibodies in IgM MGUS cause a distinctive predominantly sensory, demyelinating neuropathy). SPEP should be part of the second-line peripheral neuropathy screen in any patient where the first-line investigations are normal.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="REFER" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999 / Same-day hospital</span></div><div>Ascending paraesthesia + progressive weakness → Guillain-Barré (respiratory compromise risk) · Bilateral leg tingling + saddle anaesthesia + sphincter dysfunction → cauda equina · Acute unilateral sensory deficit + FAST symptoms → stroke/TIA · Rapidly progressive bilateral weakness + sensory level → acute spinal cord compression</div>
+      <div><span class="pill pill-purple">Urgent neurology (within 2 weeks)</span></div><div>Lhermitte's sign (MS until proven otherwise) · Absent ankle jerks + upgoing plantars (subacute combined degeneration) · Progressive peripheral neuropathy with normal first-line investigations · Mononeuritis multiplex (multiple separate nerve territories affected — vasculitis) · Suspected paraneoplastic neuropathy · New sensory ataxia</div>
+      <div>Routine neurology</div><div>Peripheral neuropathy with identified cause but requiring NCS/EMG for severity and monitoring · Unexplained peripheral neuropathy despite GP investigations · Hereditary neuropathy (CMT disease, family history) · Chronic sensory neuropathy stable but requiring diagnostic clarification</div>
+      <div>Hand surgery / orthopaedics</div><div>Carpal tunnel syndrome — surgical decompression if: failed conservative management (splinting × 6 weeks), wasting (thenar or hypothenar), severe pain, bilateral · Cubital tunnel — ulnar nerve transposition if failed conservative management or wasting · Trigger finger, de Quervain's tenosynovitis, other hand conditions causing paraesthesia</div>
+      <div>Spine surgery (neurosurgery / orthopaedic spinal)</div><div>Cervical radiculopathy with persistent pain or progressive weakness after 6 weeks conservative management · Lumbar radiculopathy with progressive weakness (not pain alone) · Spinal stenosis causing myelopathy (cord compression) · MRI-confirmed significant disc herniation with functional impairment</div>
+      <div>Endocrinology / haematology</div><div>Hypothyroid neuropathy — endocrinology for levothyroxine management. Diabetic neuropathy not responding to primary care management — diabetic specialist nurse/clinic. Paraprotein on SPEP → haematology (MGUS monitoring, myeloma exclusion: urine Bence Jones, bone marrow if CRAB criteria). B12 deficiency with neurological features (subacute combined degeneration) → haematology/neurology jointly.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The surgical referral threshold for carpal tunnel syndrome is based on the presence of thenar wasting — once the abductor pollicis brevis (the thenar muscle innervated exclusively by the median nerve) shows wasting, axonal degeneration of the median nerve is occurring and decompression surgery is indicated regardless of symptom duration. In contrast, mild CTS (tingling only, no wasting, normal sensation) can be managed conservatively: nocturnal wrist splint (neutral position splint, worn at night — treats the nocturnal component which is caused by wrist flexion during sleep), corticosteroid injection (methylprednisolone 40 mg or triamcinolone 10–20 mg into the carpal tunnel — provides 3–6 months of relief in 80% of patients, superior to splinting alone), ergonomic modifications. The NICE guideline on CTS (NG246, 2023) recommends corticosteroid injection as the first-line treatment for mild-moderate CTS before surgery. Mononeuritis multiplex (the simultaneous or successive involvement of multiple separate named peripheral nerves — e.g. right ulnar + left femoral + right sural) is a neurological pattern that is almost always caused by vasculitis (polyarteritis nodosa, Wegener's granulomatosis, rheumatoid vasculitis, SLE, cryoglobulinaemia, diabetic amyotrophy) or sarcoidosis, and occasionally by diabetic amyotrophy. It is a neurological emergency pattern — the nerve damage can be rapid and severe. Any patient with tingling in multiple separate non-contiguous nerve territories simultaneously needs urgent ESR, CRP, ANCA, ANA, rheumatoid factor, cryoglobulins, and urgent neurology referral.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="TREAT" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>Treatment of Neuropathic Pain &amp; Specific Causes</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Neuropathic pain — first-line</div>
+        <div class="b-drug">Amitriptyline 10 mg nocte</div>
+        <div class="b-note">Titrate by 10 mg every 2 weeks to 25–75 mg nocte. NICE NG173 first-line for peripheral neuropathic pain. Sedating — take 2 hours before bed. Anticholinergic side effects (dry mouth, constipation, urinary retention — avoid in prostatism). Contraindicated: recent MI, arrhythmia, QTc prolonged. ECG if cardiac history. NNT ≈ 4 for 50% pain reduction.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Neuropathic pain — alternative first-line</div>
+        <div class="b-drug">Duloxetine 30 mg OD</div>
+        <div class="b-note">Increase to 60 mg OD after 2 weeks. Licensed for diabetic peripheral neuropathic pain (DPNP). NICE NG173. Useful if amitriptyline poorly tolerated or depression comorbid. SNRI — monitor BP, do not stop abruptly (discontinuation syndrome).</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Second-line neuropathic</div>
+        <div class="b-drug">Pregabalin 75 mg BD</div>
+        <div class="b-note">Titrate to 150–300 mg BD. Schedule 3 CD (controlled drug) — prescribe on FP10 CD. Do not prescribe to patients with substance misuse history. Alternative: gabapentin 300 mg nocte increasing to 300–600 mg TDS (also Schedule 3 CD). Warn: dizziness, somnolence, weight gain, peripheral oedema. Do not stop abruptly.</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">B12 deficiency</span><span class="rt"><b>Hydroxocobalamin 1000 mcg IM</b> loading: if neurological features → 6 injections over 2 weeks (alternate days). Maintenance: 1000 mcg IM every 2 months for life (if pernicious anaemia or malabsorption) or every 3 months (if dietary deficiency). Oral cyanocobalamin 50–150 mcg OD only for dietary deficiency (vegans) — NOT for pernicious anaemia or malabsorption. Neurological improvement may take 3–6 months — monitor B12 levels and symptoms.</span></div>
+      <div class="rung"><span class="rn">Diabetic neuropathy</span><span class="rt">Optimise glycaemic control (HbA1c &lt;48 mmol/mol — best modifiable risk factor). Tight BP control (ACE inhibitor — nephroprotective and neuroprotective). Foot care education (see Lifestyle step). Neuropathic pain management as above. Duloxetine preferred (dual benefit: neuropathic pain + depression, common comorbidity). Regular foot examination by diabetic podiatry service.</span></div>
+      <div class="rung"><span class="rn">Carpal tunnel</span><span class="rt">Nocturnal wrist splint (neutral position) — first 6 weeks. Corticosteroid injection (methylprednisolone 40 mg + 1 ml lidocaine — NICE NG246 first-line). Ergonomic wrist splint at work if occupational cause. Avoid activities requiring sustained wrist flexion. Refer hand surgery if: wasting, severe symptoms, bilateral, failed injection × 2, pregnancy CTS not resolving post-partum.</span></div>
+      <div class="rung"><span class="rn">Alcohol neuropathy</span><span class="rt">Alcohol cessation is the most important intervention — improvement takes months and may be incomplete. Thiamine 100 mg TDS orally for 3 months (nutritional replacement). If Wernicke's risk (confusion + ataxia + nystagmus) → Pabrinex IV (thiamine 500 mg TDS × 3 days) before any carbohydrate. Balanced diet. AUDIT score + alcohol liaison referral. B12, folate replacement if deficient.</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">NICE NG173 (Neuropathic Pain in Adults, 2013 updated 2023) recommends amitriptyline, duloxetine, gabapentin, and pregabalin as the four first-line options for peripheral neuropathic pain, with the choice guided by individual patient factors. Amitriptyline has the longest evidence base and is the cheapest (off-patent TCA), but carries anticholinergic risks in older patients (urinary retention, confusion, falls from orthostatic hypotension). Duloxetine is preferred in diabetic neuropathy (licensed indication) and when comorbid depression is present. Pregabalin and gabapentin are equally effective but are now Schedule 3 controlled drugs in England (since 2019) due to misuse concerns — they must be prescribed on CD prescription forms and must NOT be prescribed to patients with a history of opioid, benzodiazepine, or pregabalin/gabapentin misuse. The B12 dosing distinction is critical — the loading regimen for B12 deficiency with neurological features is more intensive than the standard regimen: 6 injections on alternate days (1000 mcg hydroxocobalamin IM each) over 2 weeks, rather than 3 injections over 2 weeks used for haematological deficiency alone. This more intensive loading is recommended by the BNF specifically because neurological recovery requires a higher tissue B12 saturation, and the window for preventing permanent cord damage is time-sensitive. Maintenance thereafter is every 2 months for pernicious anaemia with neurological features (vs 3-monthly for haematological features alone). Thiamine before carbohydrates in alcohol-related presentations is the Wernicke's encephalopathy prevention rule — administering IV glucose to a thiamine-depleted patient precipitates acute Wernicke's encephalopathy by rapidly depleting the last reserves of thiamine needed for glucose metabolism in the brain (specifically the mammillary bodies, thalamus, and oculomotor nuclei). Any patient who is intoxicated, malnourished, or acutely unwell from alcohol excess should receive Pabrinex IV (high-dose parenteral thiamine) before any IV glucose or oral carbohydrate.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Radiculopathy &amp; Central Causes</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Cervical / lumbar radiculopathy</div><div>Most resolve within 6–12 weeks with conservative management. Regular analgesia: paracetamol 1 g QDS (maximise before adding other agents). NSAIDs (ibuprofen 400 mg TDS or naproxen 500 mg BD) — superior to paracetamol alone for radicular pain. Short-term weak opioid (codeine 30 mg QDS PRN) if NSAIDs contraindicated. Neuropathic agent (amitriptyline or pregabalin) if burning/shooting component. Physiotherapy referral for specific nerve root exercises, McKenzie technique for lumbar, cervical traction.</div>
+      <div>Corticosteroid injection</div><div>Epidural steroid injection for acute lumbar radiculopathy with severe uncontrolled pain — arranged via spinal pain clinic or neurosurgery. Provides short-term (4–12 weeks) pain relief, allowing mobilisation and physiotherapy. Does not alter long-term outcome but improves short-term function. Transforaminal approach preferred (fluoroscopy-guided).</div>
+      <div>MS-related paraesthesia</div><div>Acute relapse: methylprednisolone 500 mg IV (or oral) daily × 5 days (speeds recovery, does not alter long-term disability). Liaison with MS specialist nurse and neurology team. Disease-modifying therapy (DMT) — specialist initiated. Lhermitte's — no specific treatment needed; usually self-limiting. Gabapentin or amitriptyline for chronic neuropathic pain in MS.</div>
+      <div>Drug-induced neuropathy</div><div>Identify and stop the causative drug where possible. Metronidazole: stop if cumulative dose &gt;50 g or symptoms appear (usually reversible). Isoniazid: give pyridoxine (vitamin B6) 10 mg OD co-prescription to prevent INH neuropathy (NICE TB guidelines). Nitrofurantoin: avoid long-term use (&gt;3 months) — peripheral neuropathy risk. Cisplatin/vincristine: oncology to manage. Statin neuropathy: very rare — discontinue statin, document, and inform cardiologist.</div>
+      <div>Meralgia paraesthetica</div><div>Lateral femoral cutaneous nerve compression at the inguinal ligament (L2/L3). Causes: obesity, pregnancy, tight belts/clothing, prolonged standing. Symptoms: burning, tingling, numbness of outer thigh — no motor deficit. Management: weight loss (most effective), loose clothing, avoid prolonged standing, NSAIDs. Corticosteroid injection at the ASIS (anterior superior iliac spine) — 80% respond. Surgery (nerve decompression or neurectomy) if refractory.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The isoniazid-pyridoxine co-prescription rule is a prescribing safety principle that is commonly neglected in primary care — isoniazid (INH) competitively inhibits pyridoxine (vitamin B6) metabolism and causes a peripheral neuropathy in approximately 17% of patients not receiving pyridoxine supplementation, through depletion of pyridoxal-5-phosphate, which is essential for peripheral nerve axonal integrity. NICE TB guidelines (NG33) explicitly recommend co-prescribing pyridoxine 10–25 mg/day with isoniazid for all patients receiving INH-containing regimens. Patients who develop peripheral neuropathy on isoniazid while not receiving pyridoxine have experienced a preventable iatrogenic injury. The McKenzie method for lumbar radiculopathy (extension exercises — "press-ups" from a prone position) is evidence-based physiotherapy for posterolateral disc prolapse causing radiculopathy — it works by using lumbar extension to centralise the disc herniation (pushing the nucleus pulposus anteriorly away from the nerve root). It is most effective when performed early (&lt;6 weeks), repeated frequently (&gt;10 repetitions × 5 times daily), and combined with directional preference assessment by a trained McKenzie physiotherapist. GPs referring for physiotherapy for back pain + radiculopathy should specify "McKenzie-trained physiotherapist for lumbar radiculopathy" rather than generic physiotherapy to ensure the appropriate technique is applied. The 6-week conservative management rule for cervical and lumbar radiculopathy reflects the natural history data — approximately 70–80% of radiculopathy episodes from disc herniation resolve within 6–12 weeks with conservative management. Surgery is indicated for progressive neurological deficit (muscle wasting, power &lt;4/5), sphincter involvement, or failure to improve after 6 weeks of adequate conservative management.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Modifiable Risk Factors &amp; Self-Management</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Glycaemic control (diabetic neuropathy)</b> HbA1c &lt;48 mmol/mol reduces risk of neuropathy progression — every 1% reduction in HbA1c reduces microvascular complication risk by 37% (UKPDS). Annual diabetic neuropathy screen (10-g monofilament + vibration testing) in primary care. Refer to diabetic podiatry if loss of protective sensation detected — foot ulcer prevention is the primary clinical goal.</div>
+      <div class="lstile"><b>Alcohol cessation</b> Alcohol neuropathy: complete cessation is the most effective treatment — recovery (partial or complete) occurs in most patients who stop drinking, over months to years. No specific pharmacological neuropathy treatment beyond cessation + thiamine replacement. Involve alcohol liaison nurse, SMART Recovery, Alcoholics Anonymous, or community alcohol team as appropriate. Screen all patients with neuropathy for alcohol use (AUDIT).</div>
+      <div class="lstile"><b>Foot care (peripheral neuropathy)</b> Loss of protective sensation = major fall and ulceration risk. Daily foot inspection (use a mirror or ask a family member to check soles). Check footwear for stones, foreign bodies before putting on. No barefoot walking. No hot water bottles directly on feet (burns without feeling it). Fitted footwear from orthotics if deformity. Podiatry referral. NHS Diabetes foot care pathway.</div>
+      <div class="lstile"><b>Ergonomic modification (entrapment neuropathy)</b> Carpal tunnel: avoid sustained wrist flexion (repetitive keyboard work, sleeping on flexed wrist). Ergonomic keyboard and mouse. Neutral wrist splint at night and during aggravating activities. Regular breaks from repetitive hand use. Cubital tunnel: avoid prolonged elbow flexion (phone use, sleeping), pad elbow. Meralgia paraesthetica: loose waistbands, avoid prolonged standing, lose weight if BMI &gt;27.</div>
+      <div class="lstile"><b>Posture and back care (radiculopathy)</b> Avoid prolonged sitting (&gt;45 minutes without break — increases intradiscal pressure). Lumbar support roll for car and desk sitting. Core strengthening exercises (physiotherapy-directed). Sleep position: side-lying with pillow between knees for lumbar radiculopathy. Avoid lifting with bent spine. Smoking cessation — smoking impairs disc nutrition (avascular structure) and accelerates degenerative disc disease.</div>
+      <div class="lstile"><b>Vitamin B12 dietary sources</b> B12 found exclusively in animal products: meat, fish, eggs, dairy, shellfish. Vegans and strict vegetarians require lifelong B12 supplementation. Fortified foods (plant milks, cereals). Oral cyanocobalamin 1000 mcg/day is adequate for dietary B12 deficiency in vegans with normal gut absorption. Advise all vegan and vegetarian patients to ensure adequate B12 intake — this is a preventable cause of irreversible neurological damage.</div>
+      <div class="lstile"><b>Falls prevention (sensory neuropathy)</b> Loss of joint position sense and vibration sense = high falls risk. Occupational therapy home assessment. Remove hazards (loose rugs, poor lighting). Bathroom: grab rails, shower seat, non-slip mat. Footwear: well-fitting, closed-toe, flat heel. Mobility aid if needed (stick → frame). Refer to falls prevention service (NHS Ageing Well). Balance exercises (Otago programme — proven falls reduction NNT ≈ 6).</div>
+      <div class="lstile"><b>Sleep hygiene (nocturnal symptoms)</b> Carpal tunnel, peripheral neuropathy, and restless legs are all worse at night, disrupting sleep. Neutral wrist splint at night for CTS. Elevation of feet (pillow under lower legs) — reduces nocturnal neuropathic symptoms in peripheral neuropathy. Amitriptyline nocte: dual benefit of neuropathic pain relief + sedation for sleep disturbance. Avoid caffeine after noon. Consistent sleep schedule reduces sleep deprivation-amplified pain perception.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The diabetic foot care pathway is one of the most evidence-based and most impactful preventive interventions in all of primary care — the lifetime risk of a foot ulcer in a diabetic patient is approximately 15%, and 85% of lower limb amputations in diabetic patients are preceded by a foot ulcer. Annual monofilament testing (10-g Semmes-Weinstein monofilament at 10 sites on each foot) identifies patients who have lost protective sensation (cannot feel the filament at ≥4 sites = risk foot), who are at highest risk of ulceration and require: specialist podiatry, prescription footwear assessment, patient education about foot inspection, and an emergency protocol if a foot wound is identified (urgent same-day diabetic foot clinic if any break in skin, redness, swelling, or skin temperature increase). The Otago Exercise Programme for falls prevention in older adults with sensory neuropathy is one of the most rigorously evidence-based community interventions available — it is a home-based balance and strength training programme developed in New Zealand and validated in multiple RCTs. It consists of 17 exercises (leg strengthening + balance exercises) performed 3 times/week, delivered by a physiotherapist initially then independently. NNT of approximately 6 for preventing one fall, and NNT approximately 11 for preventing one injurious fall. NHS falls prevention services (typically within community physiotherapy) deliver the Otago programme — GPs should refer proactively when loss of proprioception or vibration sense is identified on examination.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up, Monitoring &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Initial review — 6 weeks</div><div>Neuropathic pain medication tolerability and dose (amitriptyline or duloxetine at therapeutic dose?). Symptom progression (worse = escalate investigation/referral). Physiotherapy commenced? Blood test results reviewed (all results back?). Splint compliance (carpal tunnel). Podiatry referral outcome (diabetic neuropathy). Document neurological signs at each visit — changes inform referral urgency.</div>
+      <div>3 months</div><div>Peripheral neuropathy: treatment response (VAS or NRS pain score). Neuropathic medication: effective? Side effects? Escalate dose or switch if inadequate. Carpal tunnel: response to splint/injection — if not improved after 2 injections or wasting present → refer hand surgery urgently. B12 deficiency: repeat B12 level, neurological symptom review (improving?). Functional status: daily activities, driving, work.</div>
+      <div>Ongoing (chronic peripheral neuropathy)</div><div>Annual review: pain score, functional assessment, medication review. Foot examination at every diabetic annual review (monofilament + vibration). NCS repeated if significant progression. Driving: DVLA notification required if peripheral neuropathy significantly affects vehicle control — patient must notify DVLA if neuropathy in lower limbs affects ability to control pedals or brakes safely. Document advice given.</div>
+      <div>Investigation result review</div><div>All blood results reviewed within 1 week. MRI results within 2 weeks — any unexpected finding (spinal cord lesion, cerebral infarct, demyelinating plaque, tumour) → urgent neurology referral regardless of symptoms. SPEP/paraprotein positive → urgent haematology referral (CRAB criteria: hyperCalcaemia, Renal failure, Anaemia, Bone lesions — myeloma screen).</div>
+      <div><span class="pill pill-red">999 / Same-day safety-net</span></div><div>Any new bowel or bladder dysfunction in a patient with back pain + leg tingling → cauda equina (999) · New bilateral leg weakness developing in any patient under follow-up for paraesthesia · Ascending paralysis developing (GBS) · New inability to walk safely (acute cord compression)</div>
+      <div><span class="pill pill-amber">Urgent GP same week</span></div><div>Rapidly worsening symptoms despite conservative treatment · New neurological sign at follow-up examination (new weakness, new reflex loss, new UMN sign) · Patient unable to tolerate neuropathic medication and in severe pain · Suspected drug-induced neuropathy (stop the drug and document)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The DVLA notification requirement for peripheral neuropathy affecting driving is a medicolegal obligation that GPs must advise patients about and document — the DVLA medical standards for driving specify that any condition significantly affecting vehicle control requires notification. For lower limb neuropathy: if the patient cannot safely control the foot pedals (accelerator, brake, clutch) due to sensory loss or motor weakness, they must notify DVLA. Failure to notify DVLA and continued driving is illegal and voids the patient's insurance. The GP must advise the patient to notify DVLA, and should document this conversation in the medical record. If the patient refuses to stop driving when medically unsafe to do so, GPs have a legal obligation to contact the DVLA directly (DVLA Confidential Medical Advice, Swansea). The MRI unexpected finding protocol is important — GPs who request MRI spine for radiculopathy may receive reports containing unexpected findings (incidental meningioma, Chiari malformation, spinal cord lesion, unexpected vertebral metastasis, aortic aneurysm, adrenal lesion). Any unexpected significant finding requires: prompt review of the report, urgent specialist referral appropriate to the finding, and timely communication with the patient. A system for reviewing all imaging reports within 2 weeks of ordering is a clinical governance requirement — many serious diagnoses are made on incidental imaging findings, and the responsibility for acting on these lies with the requesting clinician.</div></div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE NG173 (Neuropathic Pain, 2023), NICE NG246 (Carpal Tunnel Syndrome, 2023), NICE NG28 (Type 1 Diabetes), NICE NG87 (Type 2 Diabetes), NICE NG33 (TB), BNF hydroxocobalamin dosing, SIGN 73 (Peripheral Neuropathy), Cruccu et al. EAN guidelines neuropathic pain 2017, Preston DC &amp; Shapiro BE Clinical Neurophysiology. Always adapt to individual patient context.
+</div>
+
+<script>
+(function(){
+  const STORE='rgp.alg.paraesthesia.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true;});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+</body>
+</html>

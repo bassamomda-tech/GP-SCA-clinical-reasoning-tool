@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Dysphagia Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;--diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;--treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;--refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;--lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;--radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);--font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif;}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#1a2e4a 0%,#2a5c8a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#2a5c8a,#c0392b);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}.node[data-type="TREAT"] .node-num{background:var(--treat)}.node[data-type="REFER"] .node-num{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}.node[data-type="TREAT"] .node-tag{background:var(--treat)}.node[data-type="REFER"] .node-tag{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:70px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}.pill-purple{background:#ede9fe;color:#5b21b6}.pill-blue{background:#dbeafe;color:#1e40af}.pill-teal{background:#ccfbf1;color:#0f766e}.pill-amber{background:#fef3c7;color:#92400e}.pill-green{background:#dcfce7;color:#15803d}.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="stem-banner">
+  <div class="sb-icon">🍽️</div>
+  <div>
+    <b>Dysphagia — New Presentation</b>
+    <small>Oropharyngeal vs oesophageal swallowing difficulty — cancer exclusion and functional management</small>
+  </div>
+</div>
+<div class="alg-progress">
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Dysphagia Is a Cancer Symptom Until Proven Otherwise</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <b>Any new unexplained dysphagia in an adult = 2WW upper GI endoscopy.</b> There is no "benign dysphagia" until cancer is excluded.
+    <div class="rfgrid">
+      <div class="rftile"><b>Progressive dysphagia</b> Solids first → then liquids (mechanical obstruction — oesophageal cancer, stricture) → 2WW upper GI endoscopy. Any age, any duration.</div>
+      <div class="rftile"><b>Weight loss + dysphagia</b> Oesophageal or gastric cancer → 2WW. NICE NG12: age ≥55 + weight loss + dysphagia = urgent 2WW regardless of other features.</div>
+      <div class="rftile"><b>Neck mass + dysphagia</b> Hypopharyngeal cancer, thyroid mass, cervical lymphadenopathy → 2WW head and neck cancer</div>
+      <div class="rftile"><b>Hoarseness + dysphagia</b> Recurrent laryngeal nerve involvement — posterior mediastinal mass, oesophageal/lung cancer → same-day or 2WW depending on tempo</div>
+      <div class="rftile"><b>Haematemesis or melaena</b> Bleeding from oesophageal tumour, varices, peptic ulcer → 999 / same-day hospital</div>
+      <div class="rftile"><b>Acute onset + drooling + no passage</b> Oesophageal food bolus obstruction → 999 (flexible endoscopy to remove bolus within hours)</div>
+      <div class="rftile"><b>Neurological symptoms + dysphagia</b> New stroke (oropharyngeal dysphagia), motor neurone disease, Parkinson's, myasthenia → aspiration pneumonia risk → urgent neurology / SLT</div>
+      <div class="rftile"><b>Chest pain + dysphagia</b> Oesophageal spasm, achalasia, but also: exclude ACS + aortic dissection (referred pain) → ECG + troponin</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE NG12 (Suspected Cancer, 2023) mandates 2WW upper GI endoscopy for dysphagia at any age — there is no age threshold below which dysphagia can be considered benign without investigation. Oesophageal cancer has a 5-year survival of only 15% at stage IV versus 90% at stage I — early referral is the most impactful intervention a GP can make. Progressive dysphagia (solids → liquids) is the classic history of mechanical obstruction (tumour or benign stricture) — the transition from difficulty with bread and meat to difficulty with liquids indicates progressive luminal narrowing and is an oncological emergency. Food bolus obstruction needs endoscopic removal within hours to prevent mucosal ischaemia and perforation.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Oropharyngeal vs Oesophageal — Key Distinction</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Oropharyngeal dysphagia</div><div>Difficulty initiating swallow — food sticks immediately, coughing/choking at onset, nasal regurgitation, aspiration (gurgling/wet voice). Neurological or structural cause. Refer SLT urgently.</div>
+      <div>Oesophageal dysphagia</div><div>Difficulty progressing food down — sticking sensation in chest/throat after swallowing, regurgitation (undigested food). Mechanical or motility cause. 2WW endoscopy.</div>
+      <div>Level of obstruction</div><div>Patient often localises to sternum level or throat — not always accurate, but retrosternal sticking = mid-lower oesophagus; throat sensation = oropharyngeal / upper oesophageal</div>
+      <div>Solids only vs both</div><div>Solids only → mechanical obstruction (malignancy, stricture, Schatzki ring). Both solids and liquids from onset → motility disorder (achalasia, diffuse oesophageal spasm, MND)</div>
+      <div>Progression</div><div>Progressive = mechanical obstruction (cancer until proven otherwise). Intermittent / static over years = benign motility disorder (achalasia, oesophageal dysmotility, functional)</div>
+      <div>Associated features</div><div>Heartburn / regurgitation (GORD, peptic stricture, Barrett's oesophagus), pill ingestion (pill-induced oesophagitis — bisphosphonates, doxycycline), eosinophilic oesophagitis (young atopic patients, dysphagia + food impaction)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The oropharyngeal/oesophageal distinction determines the urgency and direction of referral. Oropharyngeal dysphagia after stroke carries a 50% aspiration pneumonia risk — SALT (Speech and Language Therapy) assessment is mandatory within 24 hours in acute stroke. Achalasia (failure of lower oesophageal sphincter relaxation) presents classically with dysphagia for both solids and liquids from the outset, with regurgitation of undigested food, and nocturnal cough — it is distinguished from cancer by its intermittent, long-standing history and young patient age. Eosinophilic oesophagitis is an increasingly recognised cause in young atopic adults presenting with recurrent food impaction — it requires endoscopy with biopsies and specialist management.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Oesophageal cancer</div><div>Age &gt;55, progressive dysphagia (solids → liquids), weight loss, anaemia. Barrett's oesophagus is a risk factor. Squamous (upper) — smoking/alcohol. Adenocarcinoma (lower) — GORD/Barrett's.</div>
+      <div>Peptic stricture / Barrett's</div><div>Long-standing GORD → mucosal damage → stricture. Gradual onset, mainly solids, heartburn history. Endoscopy diagnostic + dilatation therapeutic.</div>
+      <div>Eosinophilic oesophagitis (EoE)</div><div>Young adults, atopy (asthma/eczema/rhinitis), recurrent food impaction (meat/bread), intermittent dysphagia. Endoscopy + biopsies (eosinophilia &gt;15/hpf). Fluticasone swallowed + dietary exclusion.</div>
+      <div>Achalasia</div><div>Dysmotility — LOS failure to relax. Dysphagia solids AND liquids, regurgitation of undigested food, nocturnal cough. Chest X-ray may show absent gastric air bubble. Oesophageal manometry diagnostic.</div>
+      <div>GORD / oesophagitis</div><div>Heartburn, regurgitation, dysphagia in context of longstanding reflux. PPI trial first (8 weeks). Endoscopy if no response or alarm features.</div>
+      <div>Globus pharyngeus</div><div>Lump-in-throat sensation, no difficulty swallowing, worse with anxiety/stress. Diagnosis of exclusion — normal endoscopy. Related to GORD, post-nasal drip, anxiety.</div>
+      <div>Neurological dysphagia</div><div>Parkinson's disease (oropharyngeal — rigid hyoid, bradykinesia), stroke, MND (bulbar palsy — combined oral + oesophageal), myasthenia gravis (fatigable, worse through meal), MS</div>
+      <div>Pharyngeal pouch (Zenker's)</div><div>Elderly, regurgitation of undigested food hours later, halitosis, gurgling, aspiration. Soft lump in neck on eating. Barium swallow diagnostic. ENT / upper GI surgery.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Barrett's oesophagus (columnar metaplasia of the distal oesophagus from chronic GORD) is a precursor to oesophageal adenocarcinoma — patients with Barrett's have a 30–40× increased cancer risk and require endoscopic surveillance. Eosinophilic oesophagitis is now the most common cause of food impaction in young adults — it was barely recognised 20 years ago but its incidence is increasing in parallel with allergic disease. Pharyngeal pouch (Zenker's diverticulum) can be dangerous — regurgitation of food from the pouch during anaesthetic induction causes aspiration pneumonia. Any patient with a pharyngeal pouch must have this documented in their records and surgical pre-assessment teams must be alerted.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Targeted Examination</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Weight and BMI</div><div>Weigh at every consultation — weight loss quantifies severity and urgency. &gt;5% in 3 months + dysphagia = urgent 2WW. MUST score.</div>
+      <div>Oral cavity</div><div>Dental health (poor dentition contributes to dysphagia), oral candidiasis (immunocompromised, steroid inhaler use), oropharyngeal mass, tonsillar asymmetry</div>
+      <div>Neck</div><div>Lymphadenopathy (malignancy), thyroid enlargement (goitre causing extrinsic compression), neck pulsation/lump palpable on swallowing (pharyngeal pouch), tracheal deviation</div>
+      <div>Neurological</div><div>Dysarthria (stroke, MND, Parkinson's), wet/gurgling voice (aspiration), tongue wasting and fasciculations (MND — bulbar onset), facial weakness, Parkinson's features (rigidity, bradykinesia, tremor)</div>
+      <div>Respiratory</div><div>Chest auscultation — aspiration pneumonia crackles (basal — right lower lobe most common). SpO2. Respiratory compromise from oesophageal compression (large tumour, thyroid)</div>
+      <div>Abdomen</div><div>Epigastric mass (gastric cancer), hepatomegaly (metastases from oesophageal/gastric primary), ascites (peritoneal spread)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Tongue fasciculations are a pathognomonic sign of lower motor neurone involvement and should be specifically looked for in any patient with progressive oropharyngeal dysphagia — bulbar-onset MND is easily missed if the neurological examination is not complete. A wet or "gurgling" voice after swallowing indicates material pooling in the hypopharynx and is a clinical sign of aspiration risk — SALT referral is immediate. Oropharyngeal candidiasis causes dysphagia (particularly painful swallowing — odynophagia) and is common in patients using inhaled corticosteroids who do not rinse their mouth after use, diabetics, and immunocompromised patients.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral — The Priority Step in Dysphagia</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Complete oesophageal obstruction (cannot swallow own saliva), haematemesis, severe aspiration with respiratory compromise, suspected aortic emergency</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Food bolus impaction (flexible endoscopy within hours), acute neurological dysphagia post-stroke (SALT + NIL BY MOUTH + hospital), severe weight loss with unable to swallow fluids</div>
+      <div><span class="pill pill-purple">2WW upper GI</span></div><div>Any unexplained dysphagia, age ≥55 with new dysphagia, weight loss + dysphagia any age, iron-deficiency anaemia + dysphagia, suspected oesophageal or gastric cancer</div>
+      <div><span class="pill pill-purple">2WW head &amp; neck</span></div><div>Oropharyngeal dysphagia + neck mass, lump in throat + weight loss + hoarseness — if uncertain whether upper GI or head/neck pathway, refer both</div>
+      <div>SALT (Speech and Language Therapy)</div><div>Any oropharyngeal dysphagia — aspiration risk assessment, modified diet/fluid recommendations, swallowing exercises. Urgent for stroke/MND. Via GP referral or community SALT.</div>
+      <div>Gastroenterology</div><div>Suspected achalasia (manometry + Heller myotomy / POEM), eosinophilic oesophagitis (endoscopy + biopsy + management), GORD not responding to PPI</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE NG12 (2023) updated guidance explicitly states that ALL unexplained dysphagia warrants 2WW upper GI endoscopy regardless of age — previous guidance had age thresholds that caused missed diagnoses in younger patients. Submitting both a head and neck 2WW and upper GI 2WW when uncertain about the level is acceptable — the specialist team will direct appropriately after flexible nasendoscopy or endoscopy. SALT involvement is critical in oropharyngeal dysphagia — aspiration pneumonia is the most common cause of death in neurological dysphagia, and SALT-guided modified diet (IDDSI framework) and feeding tube decisions are specialist decisions that should not be made in primary care alone.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Diagnose</span><h3>Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Bloods</div><div><span class="pill pill-blue">FBC</span> (anaemia — iron-deficiency suggests GI blood loss) · <span class="pill pill-blue">Ferritin + iron studies</span> · <span class="pill pill-blue">U&E + LFTs</span> (malnutrition, metastases) · <span class="pill pill-blue">TFTs</span> (goitre causing compression) · <span class="pill pill-blue">CRP</span></div>
+      <div>Nutritional screen</div><div><span class="pill pill-blue">Albumin</span> (&lt;35 g/L = significant malnutrition) · <span class="pill pill-blue">MUST score</span> (malnutrition universal screening) · weigh and document</div>
+      <div>Endoscopy</div><div>Upper GI endoscopy (OGD) — gold standard. Identifies tumour, stricture, oesophagitis, Barrett's, eosinophilic oesophagitis (biopsies). Allows dilatation of benign strictures. Arranged via 2WW.</div>
+      <div>Barium swallow</div><div>Useful for pharyngeal pouch (Zenker's — avoid OGD, risk of perforation), motility disorders, oropharyngeal dysphagia. Also: video fluoroscopy (VFSS) — gold standard for oropharyngeal aspiration (arranged by SALT).</div>
+      <div>CXR</div><div>Aspiration pneumonia, mediastinal widening (oesophageal or mediastinal tumour), absent gastric air bubble (achalasia), right lower lobe consolidation (recurrent aspiration)</div>
+      <div>NOT in primary care</div><div>CT chest/abdomen — staging investigation, not diagnostic. Arranged by secondary care after endoscopic diagnosis. Oesophageal manometry (achalasia) — via gastroenterology.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Iron-deficiency anaemia in the context of dysphagia has a high positive predictive value for upper GI malignancy — both findings mandate urgent 2WW endoscopy. The Paterson-Kelly (Plummer-Vinson) syndrome (iron-deficiency anaemia + dysphagia + oesophageal web) is a rare but important condition that predisposes to postcricoid carcinoma — iron replacement alone may resolve the web. CXR showing an absent gastric air bubble is a classical radiological sign of achalasia — the fundal air shadow normally visible below the left hemidiaphragm is absent because no air can enter from the oesophagus past the tight lower oesophageal sphincter.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>GP-Initiated Management</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">GORD / peptic oesophagitis</div>
+        <div class="b-drug">Omeprazole 20–40 mg OD</div>
+        <div class="b-note">8-week PPI trial for oesophagitis. Do NOT allow PPI trial to delay 2WW if alarm features present — refer AND start PPI concurrently. Review need for long-term PPI at 4 weeks. H. pylori test-and-treat if dyspepsia component.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Oropharyngeal candidiasis</div>
+        <div class="b-drug">Fluconazole 50 mg OD × 7 days</div>
+        <div class="b-note">Systemic treatment for oesophageal candidiasis. Nystatin suspension for oral candida alone. Address underlying immunosuppression — inhaler rinse technique, diabetes control, check for HIV if recurrent.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Nutritional support</div>
+        <div class="b-drug">ONS on FP10 (ACBS)</div>
+        <div class="b-note">Ensure Plus / Fortisip BD–TDS if weight loss + dysphagia + MUST ≥2. Dietitian referral. Modified texture food (IDDSI framework). PEG tube — hospital/gastroenterology decision for severe neurological dysphagia.</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Globus pharyngeus</span><span class="rt">Reassurance after negative investigation. Trial omeprazole 20 mg OD (GORD component). Anxiolytic if anxiety-driven. IAPT referral. Salt water gargling. Usually resolves with reassurance.</span></div>
+      <div class="rung"><span class="rn">Neurological — Parkinson's</span><span class="rt">Optimise dopaminergic therapy (under neurology). SALT for swallowing exercises, modified diet/fluid IDDSI level. Refer PD nurse specialist. Levodopa should be given 30 min before meals to improve swallowing timing.</span></div>
+      <div class="rung"><span class="rn">Pill-induced oesophagitis</span><span class="rt">Stop offending drug if possible (bisphosphonates, doxycycline, NSAIDs, iron). Switch bisphosphonate to monthly or IV preparation. Always take with 200 ml water upright. PPI for healing.</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Starting a PPI for dysphagia while awaiting 2WW endoscopy is appropriate — it treats any co-existing oesophagitis and is not harmful. However, it must never be used as a reason to delay 2WW referral — the clinical principle is "refer AND treat, not treat THEN refer." Bisphosphonate-induced oesophagitis (alendronate, risedronate) causes severe oesophageal ulceration if tablets are not taken correctly — patients must sit or stand upright for 30 minutes after taking, with at least 200 ml water, and must not eat for 30 minutes. Monthly bisphosphonate formulations (risedronate 150 mg monthly) improve adherence and reduce oesophageal contact time.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Dietary Modification &amp; Swallowing Safety</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>IDDSI texture modification</b> International Dysphagia Diet Standardisation Initiative (IDDSI) — 8 levels from regular to liquidised. SALT prescribes appropriate level. Dietitian advises caloric adequacy at prescribed level.</div>
+      <div class="lstile"><b>Posture during eating</b> Sit fully upright (90°), chin tuck for oropharyngeal dysphagia (reduces aspiration risk). Remain upright 30–45 min after meals. Small portions, eat slowly.</div>
+      <div class="lstile"><b>GORD lifestyle</b> Raise head of bed 15–20 cm, avoid eating 3 hours before lying down, small frequent meals, weight loss, avoid alcohol/coffee/chocolate/fatty foods. Reduces reflux and protects oesophagus.</div>
+      <div class="lstile"><b>Smoking and alcohol cessation</b> Both are independent risk factors for oesophageal squamous cancer and adenocarcinoma. Smoking doubles oesophageal cancer risk. Refer to stop smoking service at every consultation.</div>
+      <div class="lstile"><b>Oral hygiene</b> Good dental hygiene reduces aspiration pneumonia risk from bacteria in the mouth. Electric toothbrush, twice daily, after meals. Chlorhexidine mouthwash if needing swallowing with moist mouth.</div>
+      <div class="lstile"><b>Medication review</b> Review all medications for dysphagia risk (bisphosphonates, doxycycline, iron tablets, NSAIDs, KCl, quinidine). Switch to liquid formulations where available. Crush medications with SALT guidance.</div>
+      <div class="lstile"><b>Carer training</b> For neurological dysphagia — family/carer education on modified diet preparation, signs of aspiration (coughing, choking, wet voice), when to call 999. Dysphagia cafés (SALT-run group sessions) available locally.</div>
+      <div class="lstile"><b>Hydration</b> Dehydration worsens dysphagia (thickened secretions). Thickened fluids (IDDSI) if thin liquids unsafe. Monitor urine output, skin turgor. IV fluids if hospitalised and unable to maintain oral intake.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Aspiration pneumonia accounts for 20–30% of deaths in patients with neurological dysphagia (stroke, MND, Parkinson's) — it is largely preventable with correct swallowing precautions and modified diet. The IDDSI framework (2019) replaced earlier inconsistent texture terminology internationally — using standardised IDDSI levels on prescriptions and referrals ensures consistent food preparation across care settings. Chin-tuck swallowing (chin to chest before swallowing) narrows the laryngeal inlet and significantly reduces aspiration — it is a SALT-taught technique with evidence in post-stroke dysphagia that GPs can reinforce at every consultation.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>2WW tracking</div><div>Confirm hospital has received referral. Expected appointment within 2 weeks. If not heard within 2 weeks → patient phones hospital directly or GP chases. Do not wait passively.</div>
+      <div>Weight monitoring</div><div>Weigh at every consultation. Trend is more important than single value. Progressive weight loss despite treatment → escalate urgency. MUST score monthly.</div>
+      <div>PPI response</div><div>GORD: review at 4–6 weeks. No improvement in oesophagitis dysphagia → endoscopy (do not re-trial PPI). Globus: 4–8 week PPI trial, then reassess.</div>
+      <div>Post-endoscopy</div><div>Benign stricture dilatation: reassess at 4–6 weeks. Repeat dilatation if recurrence. Barrett's surveillance interval set by endoscopist. Cancer diagnosis: CNS (Cancer Nurse Specialist) allocated — GP provides ongoing primary care support.</div>
+      <div>Neurological dysphagia</div><div>Monthly SALT review for progressive conditions (MND). PEG tube decision timing — discuss early with patient when they have capacity (advance directive). Palliative care involvement in MND.</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>Complete obstruction (cannot swallow saliva), haematemesis, choking episode with respiratory compromise, sudden severe chest pain (oesophageal perforation)</div>
+      <div><span class="pill pill-amber">Same-day GP</span></div><div>Rapid deterioration in swallowing, new aspiration event (coughing/choking + fever), weight loss accelerating, inability to maintain hydration</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Active tracking of 2WW referrals is a GP responsibility — studies consistently show that 10–15% of 2WW referrals are not acted upon by the hospital due to administrative errors, and patients do not always chase their own appointments. A written safety-net at time of referral (telling the patient to phone the hospital if no letter in 2 weeks, with the hospital number) is best practice. PEG tube timing in MND is a critical palliative decision — PEG is safest when FVC (forced vital capacity) is &gt;50% and becomes dangerous below 50% due to anaesthetic risk. This discussion requires advance care planning while the patient has capacity to participate.</div>
+  </div>
+</div>
+
+</div>
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE NG12 (Suspected Cancer Referral, 2023), NICE CKS Dysphagia, BSG Oesophageal Cancer guidelines, SIGN 119 (Management of Oesophageal and Gastric Cancer), IDDSI Framework (2019), RCSLT Dysphagia guidelines. Always adapt to individual patient context.
+</div>
+<script>
+(function(){
+  const STORE='rgp.alg.dysphagia.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+</body>
+</html>

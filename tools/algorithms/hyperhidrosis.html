@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hyperhidrosis Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--c-bg:#f7f6f3;--c-surface:#ffffff;--c-border:#e3e0d8;--c-text:#1a1a1a;--c-muted:#6b6560;--c-accent:#1d3461;--c-safety:#c0392b;--c-diagnose:#1d6a96;--c-treat:#1a6b3c;--c-refer:#7b3fa0;--c-life:#b86a00;--radius:12px;--shadow:0 2px 12px rgba(0,0,0,.08)}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--c-bg);color:var(--c-text);font-size:15px;line-height:1.6;padding:0 0 60px}
+.stem-banner{display:flex;align-items:center;gap:16px;background:var(--c-accent);color:#fff;padding:20px 28px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{font-size:1.15rem;display:block}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{display:flex;align-items:center;gap:12px;background:var(--c-surface);border-bottom:1px solid var(--c-border);padding:12px 28px;font-size:.82rem;color:var(--c-muted);position:sticky;top:0;z-index:50}
+.pcount{font-weight:700;color:var(--c-accent);white-space:nowrap}
+.pbar{flex:1;height:6px;background:var(--c-border);border-radius:99px;overflow:hidden}
+.pbar-fill{height:100%;background:var(--c-accent);border-radius:99px;transition:width .4s ease;width:0%}
+.reset{background:none;border:1px solid var(--c-border);border-radius:6px;padding:4px 12px;font-size:.78rem;cursor:pointer;color:var(--c-muted);font-family:inherit}
+.reset:hover{background:var(--c-border)}
+.alg-flow{max-width:820px;margin:0 auto;padding:32px 20px 0;display:flex;flex-direction:column;align-items:stretch}
+.connector{width:3px;height:28px;background:var(--c-border);margin:0 auto;border-radius:2px}
+.node{background:var(--c-surface);border:2px solid var(--c-border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:border-color .2s}
+.node.done{border-color:#a0c4a0;background:#f7fbf7}
+.node[data-type="SAFETY"]{border-left:5px solid var(--c-safety)}
+.node[data-type="DIAGNOSE"]{border-left:5px solid var(--c-diagnose)}
+.node[data-type="TREAT"]{border-left:5px solid var(--c-treat)}
+.node[data-type="REFER"]{border-left:5px solid var(--c-refer)}
+.node[data-type="LIFESTYLE"]{border-left:5px solid var(--c-life)}
+.node-head{display:flex;align-items:flex-start;gap:10px;padding:16px 20px 0 20px;flex-wrap:wrap}
+.node-num{width:32px;height:32px;border-radius:50%;background:var(--c-accent);color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.node-tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:4px;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:#fdecea;color:var(--c-safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:#e8f3fb;color:var(--c-diagnose)}
+.node[data-type="TREAT"] .node-tag{background:#e8f6ee;color:var(--c-treat)}
+.node[data-type="REFER"] .node-tag{background:#f3ebf9;color:var(--c-refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:#fdf3e3;color:var(--c-life)}
+.node-head-inner{display:flex;flex-direction:column;flex:1}
+.node-head h3{font-size:1.05rem;font-weight:700;line-height:1.3;width:100%;margin-top:4px}
+.node-tick{display:flex;justify-content:flex-end;padding:10px 20px 0}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none}
+.node-tick input[type=checkbox]{width:18px;height:18px;accent-color:var(--c-accent);cursor:pointer}
+.tlbl{font-size:.8rem;color:var(--c-muted)}
+.node-body{padding:12px 20px 16px;font-size:.88rem;line-height:1.65}
+.intro{color:var(--c-muted);margin-bottom:12px;font-style:italic}
+.kv{display:grid;grid-template-columns:minmax(140px,200px) 1fr;border:1px solid var(--c-border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{padding:9px 12px;border-bottom:1px solid var(--c-border);line-height:1.5}
+.kv>div:nth-last-child(-n+2){border-bottom:none}
+.kv>div:nth-child(odd){background:#f5f4f0;font-weight:600;color:var(--c-accent);font-size:.8rem}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:10px 0}
+.rftile{background:#fff8f7;border:1px solid #f5c6c2;border-left:4px solid var(--c-safety);border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5}
+.rftile b{display:block;color:var(--c-safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:10px 0}
+.b-card{border:1px solid var(--c-border);border-radius:8px;overflow:hidden;font-size:.83rem}
+.b-cond{background:#f0f4fa;padding:7px 10px;font-weight:600;font-size:.8rem;color:var(--c-diagnose);border-bottom:1px solid var(--c-border)}
+.b-drug{padding:7px 10px 4px;font-weight:700;font-size:.88rem;color:var(--c-treat)}
+.b-note{padding:0 10px 8px;color:var(--c-muted);font-size:.79rem;line-height:1.4}
+.ladder{display:flex;flex-direction:column;gap:4px;margin:10px 0;border-left:3px solid var(--c-treat);padding-left:14px}
+.rung{display:flex;gap:10px;align-items:flex-start;background:#f5fbf7;border:1px solid #c8e8d4;border-radius:7px;padding:8px 12px;font-size:.83rem}
+.rn{font-weight:700;color:var(--c-treat);white-space:nowrap;min-width:55px;font-size:.78rem;padding-top:2px}
+.rt{flex:1;line-height:1.5}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:10px 0}
+.lstile{background:#fffbf2;border:1px solid #f0d9a0;border-left:4px solid var(--c-life);border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5}
+.lstile b{display:block;color:var(--c-life);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 8px;border-radius:99px;font-size:.72rem;font-weight:700;letter-spacing:.02em;vertical-align:middle}
+.pill-red{background:#fdecea;color:#c0392b;border:1px solid #f5c6c2}
+.pill-purple{background:#f3ebf9;color:#7b3fa0;border:1px solid #d9b8ee}
+.pill-blue{background:#e8f3fb;color:#1d6a96;border:1px solid #b3d4eb}
+.pill-teal{background:#e6f7f5;color:#0d7a6b;border:1px solid #9fd5cc}
+.pill-amber{background:#fdf3e3;color:#b86a00;border:1px solid #f0c878}
+.pill-green{background:#e8f6ee;color:#1a6b3c;border:1px solid #a0d4b4}
+.pill-grey{background:#f2f2f0;color:#555;border:1px solid #d0cfc8}
+.why-row{border-top:1px solid var(--c-border);background:#fcfbf9}
+.why-btn{width:100%;background:none;border:none;padding:9px 20px;text-align:left;font-family:inherit;font-size:.8rem;font-weight:600;color:var(--c-muted);cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .15s}
+.why-btn:hover{color:var(--c-accent)}
+.caret{transition:transform .2s}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 20px 14px;font-size:.82rem;line-height:1.65;color:var(--c-muted)}
+.why-drawer.open{display:block}
+.alg-foot{max-width:820px;margin:32px auto 0;padding:18px 20px;background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius);font-size:.78rem;color:var(--c-muted);line-height:1.6}
+.alg-foot strong{color:var(--c-text)}
+@media(max-width:600px){.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}.kv{grid-template-columns:1fr}.kv>div:nth-child(odd){border-bottom:none;padding-bottom:2px}.alg-flow{padding:20px 12px 0}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">💧</div>
+  <div>
+    <b>Hyperhidrosis — Assessment &amp; Management</b>
+    <small>UK primary care pathway · RCGP SCA preparation · 10-minute appointment framework</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — separate primary focal hyperhidrosis (treat topically and step up) from secondary generalised sweating, which needs a systemic cause search. Classify, treat, refer, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Excessive sweating</span><div class="body">Focal (axillae/palms/soles, symmetrical, &lt;25 yrs onset, stops in sleep) vs generalised. Drugs, systemic symptoms.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — secondary cause / red flags</span><span class="ttl">Secondary cause / red flags?</span><div class="body">Generalised, nocturnal sweats + weight loss/fever/lymphadenopathy → infection, lymphoma, endocrine (thyroid, phaeo), menopause.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Investigate</span><div class="body">Night sweats with systemic features → screen (FBC, TFT, infection, lymphoma pathway).</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination localise the cause.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · common causes</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Primary focal</div><div class="box act"><span class="ttl">Commonest</span><div class="body">Topical aluminium chloride → iontophoresis → anticholinergic → botulinum toxin.</div></div></div><div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Secondary endocrine/infective</div><div class="box ix"><span class="ttl">Systemic</span><div class="body">Hyperthyroidism, menopause, diabetes (hypoglycaemia), infection, phaeochromocytoma.</div></div></div><div class="col"><div class="blabel">Drug-induced</div><div class="box act"><span class="ttl">Iatrogenic</span><div class="body">SSRIs, opioids, others; review medication.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-purple">2WW</span> <span class="pill pill-grey">NICE NG12</span> night sweats + weight loss/lymphadenopathy → haematological cancer pathway. <span class="pill pill-purple">Dermatology</span> refractory primary hyperhidrosis (botulinum toxin); treat secondary causes.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · self-management &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Self-management &amp; modifiable factors</span><span class="ttl">Reduce sweating &amp; its impact</span><div class="body"><b>Antiperspirant (aluminium chloride) at night</b>, breathable natural-fibre clothing, absorbent insoles/foot hygiene, avoid triggers (heat, spicy food, caffeine, alcohol). <b>Review culprit drugs</b> (SSRIs, opioids). Treat secondary drivers (thyroid, glycaemic control, menopause). Acknowledge the <b>psychosocial impact</b> and signpost support.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Step up &amp; when to escalate</span><div class="body"><b>Review response</b> and step up the focal-hyperhidrosis ladder (topical → iontophoresis → anticholinergic → botulinum toxin). <b>Reassess as secondary</b> if sweating becomes generalised/nocturnal or new systemic features appear — screen for thyroid disease, infection, lymphoma (B-symptoms → 2WW). Safety-net new weight loss/fevers.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Generalised or nocturnal sweating is different from focal hyperhidrosis</b> — it needs a search for thyroid disease, infection, lymphoma and other systemic causes.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- STEP 1 -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">1</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Safety</span>
+        <h3>Red Flags — Exclude Secondary Hyperhidrosis &amp; Serious Pathology First</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Generalised or nocturnal sweating in a patient &gt;25 years demands secondary cause exclusion before labelling primary. Act on any of the following urgently.</p>
+      <div class="rfgrid">
+        <div class="rftile"><b>Lymphoma / Haematological malignancy</b> Drenching night sweats + weight loss &gt;10% + lymphadenopathy → 2WW haematology referral (NICE NG12). Do not reassure without FBC, ESR, LDH.</div>
+        <div class="rftile"><b>Phaeochromocytoma</b> Episodic sweating + palpitations + headache + hypertension = classic triad. Urgent endocrine referral. Check 24h urine catecholamines / plasma metanephrines. Do not delay.</div>
+        <div class="rftile"><b>Carcinoid tumour</b> Flushing + sweating + diarrhoea + wheeze. Check 24h urine 5-HIAA. Refer urgently to gastroenterology or endocrine if suspected.</div>
+        <div class="rftile"><b>Tuberculosis</b> Night sweats + cough ≥3 weeks + haemoptysis + weight loss + risk factors (origin country, contacts, HIV). Request chest X-ray same day + sputum AFB. Refer respiratory / TBCN.</div>
+        <div class="rftile"><b>Thyrotoxicosis (severe)</b> Sweating + weight loss + tremor + tachycardia + AF. Check TFTs. If T3/T4 grossly elevated with cardiac instability, same-day acute medical review.</div>
+        <div class="rftile"><b>Drug-induced (urgent review)</b> Serotonin syndrome (sweating + rigidity + clonus + hyperthermia) — stop precipitant, emergency admission. SSRI/SNRI/opioid-induced sweating if causing severe distress requires urgent medication review.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Secondary causes account for approximately 30% of presenting hyperhidrosis in primary care. The NICE 2-week wait pathway (NG12) mandates urgent referral for unexplained night sweats with constitutional symptoms suggestive of haematological malignancy. Phaeochromocytoma is rare (2–8 per million) but hypertensive crises carry 10% mortality if undiagnosed during surgery; early biochemical testing is essential. Serotonin syndrome is a medical emergency with up to 10% mortality if untreated.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 2 -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">2</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Diagnose</span>
+        <h3>History — Primary vs Secondary Discrimination &amp; Disease Severity</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">The history alone distinguishes primary from secondary hyperhidrosis in the vast majority of cases. Quantify impact using the Hyperhidrosis Disease Severity Scale (HDSS).</p>
+      <div class="kv">
+        <div>Age of onset</div><div>Primary: typically &lt;25 years, often adolescence. Secondary: onset &gt;25 years or recent change in sweating pattern. Red flag if new-onset sweating in a patient with previous cancer.</div>
+        <div>Distribution</div><div>Primary: focal, bilateral and symmetrical — axillae, palms, soles, craniofacial. Secondary: generalised (whole-body). Unilateral sweating suggests neurological cause (Frey's syndrome, Horner's).</div>
+        <div>Timing</div><div>Primary: does NOT occur during sleep (nocturnal absence is pathognomonic). Secondary: nocturnal sweating highly suggestive — ask "Do you wake up drenched?" Diurnal episodes with rapid onset suggest phaeochromocytoma.</div>
+        <div>Family history</div><div>Primary hyperhidrosis: 30–50% have first-degree relative affected. Absence of family history in a young patient does not exclude primary but should prompt secondary cause screen.</div>
+        <div>Triggers</div><div>Primary: emotional stress, heat, exercise — but also occurs without trigger. Secondary: enquire about fever, weight loss, appetite change, thirst/polyuria (diabetes), heat intolerance, palpitations.</div>
+        <div>Medications review</div><div>SSRIs, SNRIs, opioids, tamoxifen, bupropion, pilocarpine, cholinesterase inhibitors → drug-induced. Consider stopping/switching if causally implicated and clinically safe.</div>
+        <div>HDSS score</div><div>1 = Never noticeable, never interferes. 2 = Tolerable, sometimes interferes. 3 = Barely tolerable, frequently interferes. 4 = Intolerable, always interferes. HDSS ≥3 = significant — triggers treatment escalation and NHS botulinum toxin eligibility.</div>
+        <div>QoL impact</div><div>Ask about occupation (avoidance of handshakes, difficulty with paperwork/keyboards), social activities, relationships, clothing restrictions. Psychological comorbidity (anxiety, depression, social phobia) common — screen with PHQ-9/GAD-7 if indicated.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">The HDSS is a validated 4-point scale specifically developed for hyperhidrosis and is used in clinical trials and NHS funding criteria for botulinum toxin (NICE TA88 specifies HDSS ≥3 as eligibility threshold for axillary hyperhidrosis). Nocturnal absence is the single most reliable clinical discriminator for primary hyperhidrosis — its presence virtually excludes the primary diagnosis and mandates secondary cause investigation. Family history in up to 50% of primary cases reflects autosomal dominant inheritance with variable penetrance.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 3 -->
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">3</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Diagnose</span>
+        <h3>Classification — Primary Focal vs Secondary Generalised</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Accurate classification determines investigation, treatment pathway, and referral destination. Primary focal is a diagnosis of exclusion once red flags cleared.</p>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">Primary Axillary</div>
+          <div class="b-drug">Most common form</div>
+          <div class="b-note">Bilateral, symmetrical excessive axillary sweating impairing daily activities. HDSS ≥3 qualifies for NHS botulinum toxin (NICE TA88). First line: aluminium chloride. Most referrals are for this type.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Primary Palmoplantar</div>
+          <div class="b-drug">Palms ± soles</div>
+          <div class="b-note">Highly distressing — impacts handshakes, grip, keyboards, paperwork. Iontophoresis is first-line (hands and feet). Botulinum toxin to palms is NHS-funded but painful (requires nerve block or ice anaesthesia).</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Primary Craniofacial</div>
+          <div class="b-drug">Face / scalp</div>
+          <div class="b-note">Blushing + sweating, often with social phobia. Consider referral to dermatology. Exclude Frey's syndrome (unilateral gustatory sweating post-parotid surgery). Beta-blockers may help blushing component.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Secondary Endocrine</div>
+          <div class="b-drug">Investigate &amp; treat cause</div>
+          <div class="b-note">Thyrotoxicosis, diabetes (autonomic neuropathy, hypoglycaemia), phaeochromocytoma, carcinoid, acromegaly, menopause (hot flushes = thermoregulatory, not true hyperhidrosis). Refer to relevant specialty.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Secondary Drug-Induced</div>
+          <div class="b-drug">Review &amp; switch</div>
+          <div class="b-note">SSRIs (up to 22%), SNRIs, opioids, tamoxifen, bupropion, cholinesterase inhibitors. If causally implicated: reduce dose, switch agent, or add low-dose mirtazapine (off-label, reduces SSRI-induced sweating).</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Secondary Neurological</div>
+          <div class="b-drug">Neurology referral</div>
+          <div class="b-note">Spinal cord injury, stroke, Parkinson's disease, peripheral autonomic neuropathy (diabetic). Compensatory hyperhidrosis post-sympathectomy — affects trunk/thighs bilaterally, often distressing, limited treatment options.</div>
+        </div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Classification determines both investigation and treatment pathway. NICE TA88 (2004, reconfirmed 2012) specifically covers primary axillary hyperhidrosis for botulinum toxin; palmoplantar and craniofacial cases may receive botulinum toxin under discretionary commissioning. Secondary causes require treating the underlying condition — symptomatic treatment of sweating without addressing the cause is inappropriate. Menopausal hot flushes are thermoregulatory events mediated by oestrogen withdrawal rather than true eccrine hyperhidrosis, requiring HRT-pathway management.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 4 -->
+  <div class="node" data-type="DIAGNOSE" data-step="4">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">4</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Diagnose</span>
+        <h3>Examination — Clinical Assessment &amp; Mapping</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Examination for primary hyperhidrosis is largely confirmatory. Systematic secondary cause screen is mandatory if any diagnostic uncertainty exists.</p>
+      <div class="kv">
+        <div>General inspection</div><div>Note visible sweating at rest during consultation. Observe clothing (sweat staining, choice of dark/loose clothing as coping behaviour). Assess anxiety level — may be contributing or consequential.</div>
+        <div>Minor's starch-iodine test</div><div>Paint iodine solution to suspected area, allow to dry, apply starch powder. Sweat turns blue-black — maps distribution and severity objectively. Useful pre-botulinum toxin injection to guide injection pattern. Not routine in primary care but can be improvised.</div>
+        <div>Thyroid</div><div>Palpate for goitre, bruits. Tachycardia, fine tremor, lid lag, exophthalmos → thyrotoxicosis. Check pulse rate and rhythm — AF in new-onset hyperthyroidism.</div>
+        <div>Lymphadenopathy</div><div>Examine cervical, axillary, inguinal chains. Generalised lymphadenopathy + night sweats = haematological malignancy until proven otherwise. Any non-tender rubbery nodes require urgent 2WW referral.</div>
+        <div>Blood pressure</div><div>Check BP both arms. Labile hypertension or persistent hypertension in young patient raises phaeochromocytoma concern. Postural drop suggests autonomic neuropathy (diabetic).</div>
+        <div>Skin inspection (axillae)</div><div>Erythrasma (coral-red fluorescence under Wood's lamp — if available), intertrigo, fungal infection (complication of hyperhidrosis). Bromhidrosis (odour from bacterial decomposition) — distinguish from hyperhidrosis alone.</div>
+        <div>Neurological screen</div><div>If unilateral sweating: assess for Horner's syndrome (ptosis, miosis, anhidrosis ipsilateral face), peripheral neuropathy, signs of spinal cord pathology. Frey's syndrome: unilateral gustatory sweating after eating — ask about parotid surgery history.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Minor's starch-iodine test was developed in 1928 and remains the gold-standard clinical mapping tool for hyperhidrosis, used by dermatologists and surgeons to plan botulinum toxin injection sites. The iodine-starch reaction with eccrine sweat produces a visually striking dark colour change that quantifies distribution precisely. Erythrasma is significantly more prevalent in axillary hyperhidrosis (warm, moist environment) and is treated with topical fusidic acid or a single 1g oral azithromycin dose — treating the hyperhidrosis reduces recurrence risk substantially.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 5 -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">5</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Diagnose</span>
+        <h3>Investigations — Targeted by Clinical Suspicion</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Classic primary focal hyperhidrosis (young patient, bilateral, focal, no nocturnal sweating, family history) requires NO investigations. Investigate only when secondary cause is suspected.</p>
+      <div class="kv">
+        <div>TFTs (TSH + free T4)</div><div>First-line if thyrotoxicosis suspected (tachycardia, weight loss, tremor, heat intolerance). TSH &lt;0.1 mU/L with elevated free T4 confirms hyperthyroidism. Refer endocrine or initiate antithyroid therapy per local protocol.</div>
+        <div>FBC + ESR/CRP</div><div>Night sweats + constitutional symptoms screen. Lymphocytosis / normochromic anaemia + elevated ESR → haematological malignancy (lymphoma). Neutrophilia → infection. Eosinophilia → parasitic/allergic cause.</div>
+        <div>Fasting glucose / HbA1c</div><div>Diabetes screen — autonomic neuropathy causes gustatory sweating and nocturnal hypoglycaemia sweating. HbA1c ≥48 mmol/mol confirms diabetes. Also check if patient on insulin — nocturnal hypo-induced sweating may be mistaken for primary.</div>
+        <div>LFTs + GGT</div><div>Alcohol-related sweating (alcohol withdrawal, autonomic dysregulation). LFTs screen for hepatic cause of night sweats (hepatitis, cirrhosis — less common).</div>
+        <div>Plasma metanephrines / 24h urine catecholamines</div><div>If phaeochromocytoma suspected (episodic severe sweating + headache + palpitations + hypertension). Plasma metanephrines have 96% sensitivity — preferred first-line. Positive → urgent endocrine referral + CT adrenal.</div>
+        <div>Chest X-ray</div><div>If TB or lymphoma suspected — mediastinal widening (lymphoma), upper lobe infiltrates/cavities (TB), hilar lymphadenopathy. Request same-day if clinical urgency.</div>
+        <div>24h urine 5-HIAA</div><div>If carcinoid suspected (flushing + diarrhoea + wheezing + sweating). 5-HIAA &gt;50 mg/24h = strongly suggestive. Patient must avoid serotonin-rich foods for 48h before collection (banana, avocado, pineapple).</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Over-investigation of classic primary hyperhidrosis medicalises a benign condition and delays treatment. NICE CKS guidance states investigations are not required when the clinical picture is consistent with primary hyperhidrosis (age &lt;25, bilateral focal, no nocturnal sweating). Plasma metanephrines are now preferred over 24h urine catecholamines for phaeochromocytoma detection due to superior sensitivity (96% vs 86%) and patient convenience, though both are acceptable. False positives in catecholamine testing occur with tricyclics, labetalol, and high caffeine intake — advise patient accordingly before testing.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 6 -->
+  <div class="node" data-type="REFER" data-step="6">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">6</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Refer</span>
+        <h3>Referral Pathways — Specialist Input When Required</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Most primary hyperhidrosis is managed entirely in primary care. Refer when first-line treatments have failed, secondary causes are identified, or surgical options are being considered.</p>
+      <div class="kv">
+        <div>Dermatology <span class="pill pill-amber">routine–urgent</span></div><div>Primary axillary hyperhidrosis with HDSS ≥3 failing aluminium chloride — for NHS botulinum toxin A (NICE TA88). Also: refractory palmoplantar cases for iontophoresis assessment and botulinum toxin. Scarring alopecia or skin complications of hyperhidrosis. Allow 6–8 weeks aluminium chloride trial before referring.</div>
+        <div>Vascular / Thoracic Surgery <span class="pill pill-grey">last resort</span></div><div>Endoscopic thoracic sympathectomy (ETS) for refractory palmar or craniofacial hyperhidrosis unresponsive to all other treatments. Warn patient: compensatory hyperhidrosis (trunk/thighs) occurs in 30–80% post-ETS and can be more distressing than original complaint. Irreversible procedure.</div>
+        <div>Endocrine <span class="pill pill-red">urgent</span></div><div>Suspected phaeochromocytoma (positive biochemistry), carcinoid tumour, uncontrolled thyrotoxicosis, acromegaly. 2WW haematology if lymphoma suspected (night sweats + constitutional features). Do not delay.</div>
+        <div>Menopause Clinic / Gynaecology</div><div>Perimenopausal / menopausal sweating and hot flushes significantly impairing QoL — HRT discussion. Women who cannot take HRT (e.g. breast cancer survivors): consider CBT, venlafaxine (off-label but evidence-based), clonidine, or gabapentin for menopausal sweating.</div>
+        <div>Neurology</div><div>Unilateral hyperhidrosis (Horner's syndrome, spinal cord pathology), compensatory post-sympathectomy sweating, autonomic neuropathy of unclear aetiology. Refer to appropriate specialty based on presumed localisation.</div>
+        <div>Psychology / IAPT</div><div>HDSS ≥3 with confirmed anxiety, depression, or social phobia as consequence or driver of hyperhidrosis. CBT has evidence for managing hyperhidrosis-related anxiety. IAPT self-referral available in most areas.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">NICE TA88 (2004) recommends botulinum toxin A as an option for primary axillary hyperhidrosis that has not responded to topical aluminium chloride treatment — this is an NHS-funded intervention. The compensatory sweating risk post-ETS is a critical counselling point: systematic reviews report 30–90% incidence depending on surgical level, and many patients rate the compensatory sweating as equally or more distressing than the original axillary hyperhidrosis. This must be documented in the referral and informed consent discussion. Venlafaxine and clonidine have RCT evidence for menopausal vasomotor symptoms in women who cannot take oestrogen.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 7 -->
+  <div class="node" data-type="TREAT" data-step="7">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">7</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Treat</span>
+        <h3>Treatment Ladder — Stepwise Escalation by Severity</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Always start with the least invasive effective treatment. Escalate only after adequate trial of each step. All primary care treatments target eccrine gland function; none are curative.</p>
+      <div class="ladder">
+        <div class="rung"><span class="rn">Step 1</span><span class="rt"><strong>Aluminium chloride hexahydrate 20% (Driclor / Anhydrol Forte)</strong> — Apply to completely dry skin at night, wash off in morning. Use 2–3× per week initially, then reduce to once weekly for maintenance. Warn: skin irritation common — apply 1% hydrocortisone cream next morning if needed. Best for axillae; less effective for palms/soles. Trial 4–6 weeks.</span></div>
+        <div class="rung"><span class="rn">Step 2</span><span class="rt"><strong>Iontophoresis</strong> — Tap water iontophoresis using a portable device (e.g. Hidrex, Drionic). Hands/feet immersed in water trays with low-voltage direct current (15–20mA). 20–30 min sessions, 3× weekly initially, then weekly maintenance. NHS can prescribe devices on FP10. Mechanism: keratin plug formation in sweat ducts. Glycopyrronium bromide solution can be added to tap water for enhanced effect.</span></div>
+        <div class="rung"><span class="rn">Step 3</span><span class="rt"><strong>Botulinum toxin A — axillary (NHS-funded, NICE TA88)</strong> — OnabotulinumtoxinA 50–100 units per axilla injected intradermally in a grid pattern guided by Minor's test. Duration 4–6 months (re-referral at 6 months). Palmar botox (NHS discretionary): highly effective but painful — requires nerve block or topical anaesthesia. Suitable when HDSS ≥3 and aluminium chloride has failed.</span></div>
+        <div class="rung"><span class="rn">Step 4</span><span class="rt"><strong>Oral glycopyrronium bromide 1–2 mg BD</strong> — Anticholinergic. NICE-approved for primary axillary hyperhidrosis (NICE TA659, 2021 — Qbrexza topical glycopyrronium also licensed for axillary use). Side effects: dry mouth, blurred vision, urinary retention, constipation — limit tolerability. Contraindicated: glaucoma, BPH, myasthenia gravis, intestinal obstruction.</span></div>
+        <div class="rung"><span class="rn">Step 5</span><span class="rt"><strong>Oxybutynin 2.5–5 mg BD (off-label)</strong> — Anticholinergic with similar profile to glycopyrronium. Good evidence base in RCTs for generalised and focal hyperhidrosis. Start 2.5 mg OD, titrate to BD. Cognitive side effects in elderly — caution. Extended-release formulation reduces peak side effects.</span></div>
+        <div class="rung"><span class="rn">Step 6</span><span class="rt"><strong>Endoscopic thoracic sympathectomy (ETS)</strong> — Surgical last resort for refractory palmar/craniofacial hyperhidrosis. T2–T4 sympathetic chain ablated. Compensatory hyperhidrosis in 30–80% — thorough counselling mandatory. Axillary hyperhidrosis alone is NOT an indication for ETS (botulinum toxin is preferable). Refer to vascular/thoracic surgery with clear documentation of all prior treatments tried.</span></div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Aluminium chloride works by physically occluding eccrine duct openings and causing superficial gland atrophy; it must be applied to completely dry skin (even residual moisture hydrolyses aluminium chloride to hydrochloric acid, causing severe irritation). NICE TA88 (botulinum toxin A for axillary hyperhidrosis) was the first NICE technology appraisal for a dermatological condition and remains current guidance. NICE TA659 (2021) approved oral glycopyrronium for primary axillary hyperhidrosis in adults — this is the newest addition to the primary care formulary and specifically has NHS prescribing approval, unlike oxybutynin which remains off-label. Iontophoresis devices (e.g. Hidrex PS500) can be prescribed on FP10 under the appliances section in some CCGs/ICBs — check local formulary.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 8 -->
+  <div class="node" data-type="LIFESTYLE" data-step="8">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">8</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Lifestyle</span>
+        <h3>Lifestyle, Self-Management &amp; Psychological Support</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <div class="lsgrid">
+        <div class="lstile"><b>Antiperspirant vs deodorant education</b> Antiperspirants (aluminium salts) reduce sweating — correct product for hyperhidrosis. Deodorants only mask odour. Standard commercial antiperspirants insufficient for hyperhidrosis — prescribe Driclor 20% rather than suggesting over-the-counter products.</div>
+        <div class="lstile"><b>Axillary hair removal</b> Shaving axillary hair increases the contact area and efficacy of aluminium chloride by removing sweat-trapping hair. Also reduces bacterial colonisation contributing to bromhidrosis (malodour). Recommend before initiating aluminium chloride treatment.</div>
+        <div class="lstile"><b>Clothing choices</b> Natural fibres (cotton, bamboo, merino wool) are more breathable than synthetic fabrics. Moisture-wicking technical fabrics may help during exercise. Dark or patterned clothing conceals sweat staining and reduces social anxiety. Dress shields (armpit pads) available — reduce visible staining.</div>
+        <div class="lstile"><b>Dietary trigger avoidance</b> Spicy foods (capsaicin stimulates sweating), hot beverages, alcohol, caffeine (autonomic stimulant) all increase eccrine output. Advise reduction if identified as personal trigger. Gustatory sweating (eating-triggered facial sweating) exacerbated by spicy, sour, and salty foods.</div>
+        <div class="lstile"><b>Stress management &amp; CBT</b> Emotional sweating (social phobia, anxiety) amplifies primary hyperhidrosis via sympathetic nervous system activation. CBT reduces sweating frequency and severity by addressing catastrophising and avoidance behaviours. IAPT referral for anxiety/social phobia. Mindfulness may reduce stress-triggered episodes.</div>
+        <div class="lstile"><b>Occupational adjustments</b> HDSS ≥3 significantly impacts employment — difficulty with handshakes, handling paper/keyboards/tools. Discuss with employer re: reasonable adjustments (Equality Act 2010 may apply if hyperhidrosis substantially impacts daily activities). Occupational health referral if appropriate.</div>
+        <div class="lstile"><b>Skin hygiene and infection prevention</b> Regular washing (2× daily in hot weather) reduces bacterial load and bromhidrosis. Antibacterial soap reduces Corynebacterium (erythrasma risk). Antifungal powder (e.g. Daktarin) to feet and groin if intertrigo present. Keep affected areas dry after washing before applying aluminium chloride.</div>
+        <div class="lstile"><b>Psychological support and peer resources</b> International Hyperhidrosis Society (SweatHelp.org) provides validated patient information and treatment finder. Normalising the condition reduces shame and improves treatment adherence. Many patients have suffered in silence for years — acknowledge impact explicitly during consultation.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Studies consistently show hyperhidrosis has a greater negative impact on quality of life than many chronic conditions including severe acne — DLQI (Dermatology Life Quality Index) scores are frequently in the "very large effect" category. This is compounded by delayed presentation: average time from symptom onset to medical consultation is 7–9 years due to embarrassment and unawareness of treatment options. Social phobia is present in up to 25% of patients with palmoplantar hyperhidrosis. CBT has level II evidence for anxiety-related sweating, while mindfulness-based interventions show a 20–30% reduction in stress-triggered sweating episodes in observational studies.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 9 -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">9</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Safety</span>
+        <h3>Follow-Up, Monitoring &amp; Safety-Netting</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <div class="kv">
+        <div>4–6 weeks</div><div>Review aluminium chloride 20% response. Assess application technique (dry skin, night application). If partial response: ensure correct technique and frequency before escalating. If intolerant (irritation): try lower strength 15%, or glycopyrronium topical wipes. HDSS re-score.</div>
+        <div>3 months</div><div>Review oral anticholinergic (glycopyrronium / oxybutynin) efficacy and tolerability. Dose titration if needed. Reassess secondary cause exclusion if clinical picture evolving. Review iontophoresis adherence and technique if prescribed.</div>
+        <div>6 months</div><div>Post-botulinum toxin: sweating typically returns at 4–6 months. Re-refer to dermatology for repeat injection at 6-month mark (NHS funded). Ongoing HDSS scoring to document response and justify continued treatment.</div>
+        <div>Annual review</div><div>Review need for ongoing treatment — some patients with primary hyperhidrosis improve spontaneously in 4th–5th decade. Screen for emerging secondary causes annually if history was ambiguous. Review medication list for new drug-induced causes.</div>
+        <div>Safety-net — urgent GP</div><div>New nocturnal sweating in a patient previously diagnosed with primary hyperhidrosis. New constitutional symptoms (weight loss, fever, lymphadenopathy) at any point. These require urgent secondary cause re-evaluation — do not assume pre-existing primary diagnosis covers new symptoms.</div>
+        <div>Safety-net — 999</div><div>Suspected phaeochromocytoma crisis: severe hypertension + headache + palpitations + sweating → emergency. Serotonin syndrome (new medication + sweating + rigidity + clonus + hyperthermia) → 999 immediately.</div>
+        <div>Review if re-presenting</div><div>Patient returns after apparently successful treatment: consider tolerance to aluminium chloride (rare), secondary cause emerging de novo, or incomplete treatment adherence. Do not re-start treatment ladder without re-evaluating clinical picture.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Natural history data shows primary hyperhidrosis can spontaneously remit in 25% of patients by age 40–50, possibly due to reduced sympathetic tone with ageing — this should be discussed with patients to maintain realistic expectations. The safety-netting for new nocturnal sweating is critical: a patient with a longstanding "primary" diagnosis can develop lymphoma or other secondary cause at any age, and the primary diagnosis must not become a cognitive anchor preventing timely investigation. Botulinum toxin efficacy declines with repeated injections in a small proportion of patients due to neutralising antibody formation — if duration of effect shortens progressively, antibody testing may be warranted.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE TA88 Botulinum Toxin for Hyperhidrosis (2004), NICE TA659 Glycopyrronium Tosylate for Primary Axillary Hyperhidrosis (2021), NICE CKS Hyperhidrosis, British Dermatology Nursing Group Guidelines, Hornberger J et al. J Am Acad Dermatol 2004 (primary hyperhidrosis diagnostic criteria), International Hyperhidrosis Society consensus statements. Always adapt to individual patient context, co-morbidities and local formulary.
+</div>
+
+<script>
+(function(){
+  const KEY='rgp.alg.hyperhidrosis.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  document.getElementById('pTotal').textContent=total;
+
+  function save(){
+    const state={};
+    flow.querySelectorAll('.node').forEach(n=>{
+      const s=n.dataset.step;
+      state[s]=n.querySelector('input[type=checkbox]').checked;
+    });
+    localStorage.setItem(KEY,JSON.stringify(state));
+    update();
+  }
+
+  function update(){
+    let done=0;
+    flow.querySelectorAll('.node').forEach(n=>{
+      const cb=n.querySelector('input[type=checkbox]');
+      if(cb.checked){n.classList.add('done');done++;}
+      else n.classList.remove('done');
+    });
+    pDone.textContent=done;
+    pFill.style.width=(done/total*100)+'%';
+  }
+
+  function load(){
+    try{
+      const state=JSON.parse(localStorage.getItem(KEY)||'{}');
+      flow.querySelectorAll('.node').forEach(n=>{
+        const cb=n.querySelector('input[type=checkbox]');
+        if(state[n.dataset.step])cb.checked=true;
+      });
+    }catch(e){}
+    update();
+  }
+
+  flow.querySelectorAll('input[type=checkbox]').forEach(cb=>{
+    cb.addEventListener('change',save);
+  });
+
+  flow.querySelectorAll('.why-btn').forEach(btn=>{
+    btn.addEventListener('click',function(){
+      const expanded=this.getAttribute('aria-expanded')==='true';
+      this.setAttribute('aria-expanded',String(!expanded));
+      this.nextElementSibling.classList.toggle('open',!expanded);
+    });
+  });
+
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    if(confirm('Reset all checkboxes?')){
+      flow.querySelectorAll('input[type=checkbox]').forEach(cb=>cb.checked=false);
+      localStorage.removeItem(KEY);
+      update();
+    }
+  });
+
+  load();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

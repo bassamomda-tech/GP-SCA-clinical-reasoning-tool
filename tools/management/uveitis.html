@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Uveitis — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Uveitis management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"👁️",
+  title:"Uveitis",
+  stemTitle:"Uveitis \u2014 recognise the painful red eye and refer same-day",
+  stemSub:"The primary-care priority in uveitis is rapid recognition and same-day ophthalmology referral \u2014 it is a sight-threatening cause of the acute red eye. This card covers spotting anterior uveitis, the systemic associations to consider, and the GP role in recurrent disease. NICE CKS \u00b7 2026.",
+  guideline:"NICE CKS",
+  glance:[
+    {lbl:"Action", val:"Same-day ophthalmology", sub:"do not delay"},
+    {lbl:"Hallmark", val:"Painful red eye + photophobia", sub:"\u00b1 blurred vision"},
+    {lbl:"Pupil", val:"Small/irregular", sub:"+ ciliary flush"},
+    {lbl:"Treatment", val:"Topical steroid + cycloplegic", sub:"ophthalmology-initiated"},
+    {lbl:"Think systemic", val:"HLA-B27, sarcoid, IBD", sub:"if recurrent/bilateral"},
+    {lbl:"Red flag", val:"Pain / \u2193vision / photophobia", sub:"= sight-threatening"}
+  ],
+  flow:[
+    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Recognise + refer same-day",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Anterior uveitis (iritis)", html:"Acute painful red eye, photophobia (including consensual), blurred vision, watering, ciliary flush (redness around the cornea), small/irregular pupil \u2192 <b>same-day ophthalmology</b>."},
+          {t:"🔴 Posterior/pan-uveitis", html:"Floaters + visual loss with little redness \u2192 urgent ophthalmology (can be sight-threatening, e.g. infective)."},
+          {t:"🆚 Exclude mimics", html:"Acute angle-closure glaucoma (fixed mid-dilated pupil, haloes, nausea), microbial keratitis (contact lens), scleritis \u2014 all need urgent eye assessment."},
+          {t:"💧 Don\u2019t start steroids", html:"Do NOT initiate topical steroids in primary care \u2014 risk if it\u2019s herpetic keratitis; let ophthalmology examine first."}
+        ]},
+        {b:"why", html:"Uveitis is a sight-threatening cause of the acute red eye where the GP\u2019s job is recognition and same-day referral \u2014 diagnosis (slit-lamp) and treatment are ophthalmology-led. Photophobia + pain + ciliary flush + visual change distinguishes it from conjunctivitis."}
+      ]},
+    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Classify + think systemic",
+      blocks:[
+        {b:"kv", rows:[
+          ["Anterior (commonest)","Iris/ciliary body \u2014 the classic acute painful photophobic red eye"],
+          ["Intermediate/posterior/pan","Vitreous/retina/choroid \u2014 floaters, visual loss; often investigated for systemic/infective cause"],
+          ["Systemic associations","HLA-B27 spondyloarthropathies (ankylosing spondylitis, reactive, psoriatic, IBD-related), sarcoidosis, Beh\u00e7et\u2019s, JIA (children \u2014 often painless!), infection (HSV/VZV, TB, syphilis, toxoplasma)"],
+          ["When to investigate","Recurrent, bilateral, granulomatous, or posterior \u2192 specialist work-up for underlying systemic disease"]
+        ]}
+      ]},
+    {t:"node", d:"life", n:"3", tag:"Non-drug · advice", title:"Supportive advice", blocks:[{b:"tiles", v:"life", items:[{t:"🕶️ Comfort", html:"Dark glasses for photophobia; warm compresses; analgesia."},{t:"🔎 Find associations", html:"Ask about systemic links (ankylosing spondylitis, IBD, sarcoid) if recurrent."},{t:"⏱️ Urgency", html:"An eye emergency \u2014 same-day ophthalmology, not self-managed."}]},{b:"why", html:"Uveitis is treated by ophthalmology, but comfort advice and identifying systemic associations are the GP\u2019s non-drug contributions."}]},
+    {t:"node", d:"drug", n:"4", tag:"Treatment (specialist-led)", title:"What ophthalmology does",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Acute anterior", title:"Topical corticosteroid + cycloplegic", when:"ophthalmology-initiated",
+           html:"Intensive topical steroid to control inflammation + cycloplegic/mydriatic (e.g. cyclopentolate) to relieve pain (ciliary spasm) and prevent posterior synechiae."},
+          {step:"Severe/posterior", title:"Systemic immunosuppression", when:"specialist",
+           fromLabel:"if sight-threatening/systemic",
+           html:"Oral/periocular steroid, steroid-sparing immunosuppressants or biologics; treat infective causes specifically. Managed by ophthalmology \u00b1 rheumatology."},
+          {step:"Underlying disease", title:"Treat the systemic cause", when:"if identified",
+           fromLabel:"recurrent/systemic",
+           html:"Co-manage spondyloarthropathy/sarcoid/IBD with the relevant specialty; GP supports DMARD/biologic monitoring per shared-care protocols."}
+        ]}
+      ]},
+    {t:"node", d:"monitor", n:"5", tag:"GP role", title:"Recurrent disease + shared care",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Rapid re-referral","Recurrent symptoms","Known uveitis patients often self-recognise flares \u2014 fast-track back to ophthalmology"],
+          ["Systemic screen","Recurrent/bilateral","Consider/refer for HLA-B27, inflammatory back pain, sarcoid, IBD links"],
+          ["Shared-care monitoring","On immunosuppressants","Bloods/monitoring per DMARD/biologic shared-care agreement"],
+          ["Steroid effects","On topical/systemic steroid","Watch for raised IOP/cataract (ophthalmology), systemic steroid effects"]
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"6", tag:"Refer", title:"Referral",
+      arrow:"same-day for acute disease",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Same-day ophthalmology", html:"Any suspected acute uveitis / painful photophobic red eye with visual change."},
+          {t:"Rheumatology", html:"Recurrent anterior uveitis with inflammatory back pain / suspected spondyloarthropathy."},
+          {t:"Paediatric ophthalmology + rheum", html:"Child with JIA \u2014 uveitis is often asymptomatic; ensure screening."},
+          {t:"Other specialties", html:"Sarcoid (respiratory), IBD (gastro), infection per cause."}
+        ]},
+        {b:"say", html:"This looks like uveitis \u2014 inflammation inside the eye that needs to be seen by the eye team the same day, because untreated it can affect your sight. They\u2019ll examine the eye and usually start steroid and dilating drops. If it keeps coming back, we\u2019ll also look for any linked condition in the body."}
+      ]}
+  ],
+  foot:"Primary-care recognition and same-day referral of uveitis; diagnosis and treatment are ophthalmology-led. Verify against current NICE CKS Uveitis and local eye-service pathways."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

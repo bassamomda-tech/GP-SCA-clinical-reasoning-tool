@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safeguarding · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="../assets/medchooser.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+.tag-emerg{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;font-weight:700}
+</style>
+</head>
+<body class="mode-both" id="bodyEl" data-screen-label="Safeguarding">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="safeguarding"></aside>
+  <main class="main">
+<div class="case-head">
+  <div>
+    <div class="ch-cat">General Practice · Full case</div>
+    <h1>Safeguarding</h1>
+  </div>
+  <div class="case-head-tags"><span class="tag tag-teal"><span class="tag-dot dot-teal"></span>Children &amp; adults</span><span class="tag">Recognise · respond · refer · record</span><span class="tag tag-emerg">Immediate danger = 999</span></div>
+</div>
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">SG</div>
+      <div><div class="tb-title">Safeguarding (Children &amp; Adults) · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · recognise the signs · respond &amp; share · refer to the right pathway · record · domestic abuse · MCA &amp; capacity · the GP's statutory duty</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">Recognise · Respond · Refer · Record</span><span class="ns-lbl">The four Rs of safeguarding. Recognise the signs and listen; respond appropriately and don't promise confidentiality you can't keep; refer to the right pathway (children's social care / adult safeguarding / police / MARAC); record contemporaneously, factually, including what was said in the person's own words</span></div>
+    <div class="ns-item"><span class="ns-val">Safeguarding is everyone's business</span><span class="ns-lbl">Every clinician has a duty to safeguard children and adults at risk. If in doubt, discuss with the practice safeguarding lead/named professional and the local safeguarding hub. You don't need proof to refer — reasonable concern is enough. Acting on suspicion is the duty</span></div>
+    <div class="ns-item"><span class="ns-val">Think family / think the whole household</span><span class="ns-lbl">A concern about one person often signals risk to others — children of a parent with mental illness/substance use/domestic abuse ("Think Family"), or other dependents/vulnerable adults in the home. Always consider who else may be at risk, including unborn babies and siblings</span></div>
+    <div class="ns-item"><span class="ns-val">Children: types &amp; red flags</span><span class="ns-lbl">Abuse types: physical, emotional, sexual, neglect, fabricated/induced illness. Red flags: injury inconsistent with the history/development, delayed presentation, a non-mobile child with a bruise/fracture, disclosure, neglect, FGM, child sexual exploitation/trafficking, parental risk factors. Bruising in a non-mobile baby is a major red flag</span></div>
+    <div class="ns-item"><span class="ns-val">Adults at risk &amp; the 6 principles</span><span class="ns-lbl">An "adult at risk" has care/support needs and cannot protect themselves. Care Act categories: physical, psychological/emotional, sexual, financial, neglect/self-neglect, discriminatory, organisational, domestic, modern slavery. Principles: Empowerment, Prevention, Proportionality, Protection, Partnership, Accountability — making safeguarding personal</span></div>
+    <div class="ns-item"><span class="ns-val">Capacity changes the route</span><span class="ns-lbl">For adults, mental capacity (Mental Capacity Act) and the person's wishes matter — a capacitous adult can decline a referral (except where others are at risk, a serious crime, or duties like FGM/terrorism). Where capacity is lacking, act in best interests. Coercion/undue influence may impair capacity in domestic abuse</span></div>
+    <div class="ns-item"><span class="ns-val">Domestic abuse — ask &amp; act</span><span class="ns-lbl">Domestic abuse (physical, sexual, psychological, financial, coercive control) is common and dangerous; enquire sensitively when indicated, assess risk (e.g. DASH), safety-plan, and refer (IDVA/MARAC for high risk). Children in the household are affected — consider them. Never raise it in front of the suspected perpetrator</span></div>
+    <div class="ns-item"><span class="ns-val">Information sharing is justified</span><span class="ns-lbl">Confidentiality is not absolute. Where there is a risk of serious harm, sharing relevant information without consent is justified and expected; for children, the child's welfare is paramount. Mandatory reporting applies to FGM in under-18s. Document the rationale for sharing or not sharing</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Safeguarding</div>
+  <div class="stem-title">A mother attends with her toddler for a minor rash — but you notice a finger-mark bruise on the child's arm, a delayed presentation, an inconsistent story, and the mother seems frightened of her partner</div>
+  <div class="stem-text">Chloe Davies, 24, brings her 14-month-old son for what she says is a rash. While examining him you notice a cluster of finger-tip bruises on his upper arm and an older bruise on his cheek. When you ask how they happened, Chloe gives a vague, changing account ("he's always bumping into things"), avoids eye contact, and flinches when her phone buzzes — it's her partner. She mentions, quietly, that things at home are "stressful" and that her partner "has a temper". She seems exhausted and low. There is a 6-year-old sibling at home. Chloe asks you not to "make a fuss" and says her partner will be angry if she's late.</div>
+  <div class="stem-note">This stem tests safeguarding reasoning across children and adults at once: recognising the red flags of possible non-accidental injury in a young child (bruising in a barely-mobile toddler, finger-mark pattern, an injury inconsistent and changing in the history, delayed presentation), AND the signs of possible domestic abuse of the mother (fear of the partner, coercive control, low mood) with a "Think Family" risk to both children; responding appropriately (listening, not promising confidentiality you can't keep, not raising domestic abuse if the perpetrator were present, ensuring immediate safety); referring correctly (children's social care for the child — the child's welfare is paramount and consent is not required where there is risk of significant harm; domestic-abuse services/MARAC and adult safeguarding as appropriate); recording factually in the child's and mother's own words; sharing information lawfully; and involving the practice safeguarding lead. The SCA challenge is to act decisively to protect the child and support the mother, balancing engagement with the duty to refer, without colluding with "don't make a fuss".</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — Child NAI + maternal domestic abuse (this stem)</strong> Recognise NAI red flags + domestic abuse; ensure safety; refer children's social care (child welfare paramount, consent not required where significant-harm risk); domestic-abuse/IDVA/MARAC; Think Family (sibling); record &amp; share lawfully; safeguarding lead.</div>
+    <div class="stem-variant"><strong>Scenario B — Child neglect / FII / CSE</strong> Neglect (failure to thrive, missed appointments, dirty/unsafe), fabricated/induced illness, child sexual exploitation/trafficking, FGM (mandatory reporting in under-18s). Refer per pathway.</div>
+    <div class="stem-variant"><strong>Scenario C — Adult at risk (Care Act)</strong> Vulnerable adult with care/support needs unable to protect themselves — financial abuse, neglect, self-neglect. Adult safeguarding; capacity (MCA); making safeguarding personal.</div>
+    <div class="stem-variant"><strong>Scenario D — Capacitous adult declining referral</strong> A capacitous adult can decline a safeguarding referral — unless others at risk, serious crime, or statutory duty (FGM). Support, safety-plan, keep the door open; document.</div>
+    <div class="stem-variant"><strong>Scenario E — Immediate danger</strong> A child or adult in immediate danger → 999/emergency; don't delay for process.</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Child vs adult; abuse type; NAI red flags (non-mobile child, inconsistent history); domestic abuse &amp; coercive control (DASH/MARAC); capacity &amp; the person's wishes (MCA); Think Family/other dependents; consent &amp; lawful information sharing; mandatory duties (FGM); immediate danger; recording; the safeguarding lead.</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">Recognise &amp; Respond — The Signs · Listen · Don't Over-Promise · Think Family · ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The first task is to recognise the concern and respond well: notice the red flags, listen without leading, respond with empathy but without promising a confidentiality you cannot keep, ensure immediate safety, and think about everyone in the household.</strong> Here there are two intertwined concerns — possible non-accidental injury to the toddler, and possible domestic abuse of the mother — with a sibling also at risk.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 SCA framing — empathic, honest, child-focused</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"Thank you for telling me things are stressful — that took courage, and I want to help. I need to be honest with you: my first job is to make sure your little boy and you are safe, and if I'm ever worried about that, I can't keep it just between us — but I'll always be open with you about what I'm doing and why."</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Never promise to keep a safeguarding concern secret. Being honest about the limits of confidentiality, while remaining supportive and non-judgmental, is both ethical and a marked skill.</div>
+    </div>
+    <div class="sub-divider">1A — Recognise the signs (child &amp; adult)</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question / observation</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN / OBSERVE</strong><em>"Tell me how the bruises happened" — and note the explanation, the child's development, and the interaction.</em></td>
+            <td class="why"><strong>The history is the key safeguarding tool.</strong> An injury that is inconsistent with the given mechanism or the child's developmental stage, a changing or vague account, and delayed presentation are core NAI red flags. Finger-tip bruising and bruising in a barely-mobile toddler are especially concerning — most importantly, bruising in a NON-mobile infant.<span class="why-sub">In SCA: noticing the inconsistency and the pattern, and not accepting the vague story, is the pivotal recognition step.</span></td>
+            <td><span class="chg chg-999">Inconsistent injury in a young child → NAI concern</span></td>
+          </tr>
+          <tr><td class="q">🚩 Child NAI red flags<em>"Has this happened before? Who looks after him? Are there other children at home?"</em></td><td class="why">Pattern injuries, multiple injuries of different ages, a non-mobile child with bruising/fracture, delayed/inconsistent presentation, disclosure, neglect signs and parental risk factors all raise NAI. The 6-year-old sibling must be considered (Think Family). The child's welfare is paramount.</td><td class="why">NAI red flags → safeguard the child; refer children's social care.</td><td><span class="chg chg-999">Refer children's social care (welfare paramount)</span></td></tr>
+          <tr><td class="q">🚩 Domestic abuse (the mother)<em>"You mentioned things are stressful and your partner has a temper — can you tell me more? Do you ever feel frightened or controlled at home?"</em></td><td class="why">Chloe's fear, flinching, low mood and "his temper" suggest possible domestic abuse (including coercive control). Enquire sensitively WHEN SAFE — never with the suspected perpetrator present. Domestic abuse endangers her and the children. Assess risk and consider IDVA/MARAC.</td><td class="why">Domestic abuse → risk assess (DASH); safety plan; IDVA/MARAC; consider the children.</td><td><span class="chg chg-999">Domestic abuse → safety plan + MARAC/IDVA</span></td></tr>
+          <tr><td class="q">Respond appropriately<em>"I'm not going to share this with your partner, and I'll explain anything I do — but I can't promise to keep concerns about safety just between us."</em></td><td class="why">Respond with empathy and honesty: don't promise unconditional confidentiality, don't collude with "don't make a fuss", don't alert a suspected perpetrator. Ensure immediate safety. Listening and not leading the child/parent (avoid suggestive questioning) preserves any future investigation.</td><td class="why">Honest, non-colluding response → protects the child while keeping engagement.</td><td><span class="chg chg-rx">Don't over-promise; ensure safety</span></td></tr>
+          <tr><td class="q">Think Family / who else is at risk<em>"Who else lives in the home, and are there other children or vulnerable adults?"</em></td><td class="why">A concern about one person signals risk to others — the sibling, an unborn baby, other dependents or vulnerable adults. "Think Family" is core: safeguard everyone potentially affected, not just the person in front of you.</td><td class="why">Other dependents → include in the safeguarding response.</td><td><span class="chg chg-ref">Safeguard siblings/others too</span></td></tr>
+          <tr><td class="q">Capacity &amp; wishes (for adults)<em>(For the adult dimension) "What would you like to happen, and what are you worried about?"</em></td><td class="why">For the adult (mother), her wishes and capacity matter (making safeguarding personal). A capacitous adult can decline help for herself — but NOT where the children are at risk (their welfare overrides), or a serious crime/statutory duty applies. Coercion can impair capacity.</td><td class="why">Capacity/wishes shape the adult route; child risk overrides.</td><td><span class="chg chg-rx">Empower the adult; protect the child regardless</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — when to act now</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why it matters</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Child or adult in immediate danger</td><td class="rf-why">Risk to life/serious harm now.</td><td><span class="rf-action rfa-999">999 / emergency; ensure immediate safety; don't delay for process</span></td></tr>
+          <tr><td class="rf-flag">Bruising/fracture in a non-mobile infant; injury inconsistent with history/development</td><td class="rf-why">Strong marker of non-accidental injury.</td><td><span class="rf-action rfa-999">Refer children's social care urgently; paediatric assessment; don't accept the explanation at face value</span></td></tr>
+          <tr><td class="rf-flag">Disclosure of abuse (child or adult)</td><td class="rf-why">Must be taken seriously and acted on.</td><td><span class="rf-action rfa-same">Listen, don't lead; reassure; record in their words; refer</span></td></tr>
+          <tr><td class="rf-flag">High-risk domestic abuse</td><td class="rf-why">Risk of serious harm/homicide; affects children.</td><td><span class="rf-action rfa-same">DASH risk assessment; safety plan; IDVA/MARAC; never raise with the perpetrator present</span></td></tr>
+          <tr><td class="rf-flag">FGM in/at risk in an under-18</td><td class="rf-why">Mandatory reporting duty.</td><td><span class="rf-action rfa-same">Report to police (under-18 FGM); safeguarding referral</span></td></tr>
+          <tr><td class="rf-flag">Adult at risk unable to protect themselves (Care Act)</td><td class="rf-why">Neglect/self-neglect, financial/sexual/physical abuse, modern slavery.</td><td><span class="rf-action rfa-same">Adult safeguarding referral; capacity assessment; making safeguarding personal</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What do you think has been happening — and what's worrying you about home?"</div><div class="ice-why">Surfacing the mother's understanding may bring a disclosure or reveal her fear and the coercive control. It also helps gauge insight and safety, and keeps her engaged in a process that must, regardless, protect the children.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 Concerns</div><div class="ice-phrase">"What are you most frightened of — for yourself and for the children?"</div><div class="ice-why">Her concern is likely her partner's reaction and losing her children. Naming and addressing these fears (you'll be honest, you'll support her, the aim is safety not punishment) is what allows her to engage rather than flee.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"You've asked me not to make a fuss — let me explain what I have to do and why."</div><div class="ice-why">She wants you to do nothing. Naming this lets you explain, honestly and kindly, that you cannot ignore a concern about a child's safety — that you'll act transparently and supportively, but you must act.</div></div>
+    </div>
+    <div class="sub-divider">1D — Psychosocial context</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 The frightened parent, the silent child, and the duty that overrides discomfort</div>
+      <p>Safeguarding consultations are uncomfortable: they sit between compassion for a struggling, frightened adult and an absolute duty to protect a child who cannot protect themselves. The pull to collude — to accept the vague explanation, to "not make a fuss", to keep a parent on side — is exactly the pull that lets abuse continue. The skilled clinician holds empathy for the adult and decisive protection of the child together: listening without leading, being honest about confidentiality, ensuring immediate safety, and acting on reasonable concern by referring — because in safeguarding, doing nothing is itself a decision with consequences.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>👶 The child comes first</h5><p>The child's welfare is paramount and overrides the parent's wish for secrecy.</p><span class="ps-phrase">"I can hear you don't want a fuss, and I'll be as supportive as I can — but my first duty is your son's safety, and that's something I can't set aside."</span></div>
+      <div class="ps-card"><h5>🤝 Support, not punishment</h5><p>Frame safeguarding as help for the family.</p><span class="ps-phrase">"This isn't about blame or taking your children — it's about getting your family the right support and keeping everyone safe. I'll be honest with you every step."</span></div>
+      <div class="ps-card"><h5>🔒 Honest about confidentiality</h5><p>Never promise to keep safety concerns secret.</p><span class="ps-phrase">"I won't tell your partner anything, but I can't promise to keep worries about safety just between us — I'll always tell you what I'm doing and why."</span></div>
+      <div class="ps-card"><h5>🛟 Safety now</h5><p>Address immediate safety for mother and children.</p><span class="ps-phrase">"Before anything else — are you and the children safe to go home today, or do we need to sort somewhere safe right now?"</span></div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div><div class="sca-phrase">"I can't promise to keep safety concerns just between us." — honest about confidentiality.</div><div class="sca-phrase">"My first duty is your son's safety." — child welfare paramount.</div><div class="sca-phrase">"Are you and the children safe to go home today?" — immediate safety + Think Family.</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Colluding with "don't make a fuss"; promising secrecy</li><li>Accepting an inconsistent injury history at face value</li><li>Not recognising domestic abuse / not thinking of the sibling</li><li>Raising domestic abuse with the perpetrator present; leading questions</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Accepts the story; promises secrecy; no child/sibling safeguarding; misses domestic abuse; no referral</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Recognises a concern; some safety enquiry; confidentiality handled partly; referral intended but vague; ICE partial</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Recognises NAI + domestic abuse; honest re confidentiality; immediate safety; Think Family; plans children's social care + DA referral; ICE all three</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage — Immediate Danger · Urgent Referral · Support &amp; Monitor</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Triage by risk: immediate danger means 999/emergency and ensuring safety now; significant-harm concerns (NAI, high-risk domestic abuse, adult at serious risk) need urgent referral to the right pathway; lower-level concerns need support, early help and monitoring — but always discuss with the safeguarding lead if unsure.</strong></div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Immediate danger</div>
+        <h3>Now / 999</h3>
+        <span class="tc-badge tcb-e">Protect now</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Child/adult at risk of serious harm now</strong><em>999/emergency; ensure safety</em></li>
+          <li class="tc-item"><strong>Acute injury / unsafe to go home</strong><em>Admit/paediatrics; safe place</em></li>
+          <li class="tc-item"><strong>High-risk domestic abuse</strong><em>Police/IDVA; do not alert perpetrator</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Urgent referral</div>
+        <h3>Same day</h3>
+        <span class="tc-badge tcb-u">Right pathway</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Suspected NAI / significant harm (child)</strong><em>Children's social care (consent not required)</em></li>
+          <li class="tc-item"><strong>Adult at risk (Care Act)</strong><em>Adult safeguarding</em></li>
+          <li class="tc-item"><strong>FGM under-18</strong><em>Police (mandatory) + safeguarding</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Support</div>
+        <h3>Early help / monitor</h3>
+        <span class="tc-badge tcb-r">With lead</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Lower-level concern</strong><em>Early help; health visitor; support</em></li>
+          <li class="tc-item"><strong>Capacitous adult declining (self only)</strong><em>Support; safety-plan; door open</em></li>
+          <li class="tc-item"><strong>Uncertain</strong><em>Discuss with safeguarding lead/hub</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Triage rationale</div><div class="sca-phrase">"Because of the bruising and the worries at home, I need to refer to children's social care today to keep your son and his sibling safe, and get you support around the domestic situation — and I'll check you're safe to leave here."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not referring suspected NAI urgently</li><li>Delaying protection for "process"</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Assessment — Examine Carefully &amp; Document · Risk · Capacity · The Whole Picture</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Examination is careful, documented and proportionate: assess and accurately record the injuries (site, size, pattern, age, with body maps), the child's development and demeanour, the parent's presentation, and the risk — and assess capacity where the concern is an adult. Don't conduct a forensic examination you're not trained for; refer to paediatrics/specialists.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🔎 Examine &amp; record</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Injuries — site/size/pattern/age (body map)</td><td>Document factually; pattern/inconsistency = NAI clue.</td></tr>
+            <tr><td class="factor">Development &amp; mobility</td><td>Is the injury plausible for the child's stage?</td></tr>
+            <tr><td class="factor">Demeanour / interaction</td><td>Fear, frozen watchfulness, parent-child interaction.</td></tr>
+            <tr><td class="factor">Growth / neglect signs</td><td>Failure to thrive, hygiene, missed appointments.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🧠 Risk &amp; capacity</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Domestic-abuse risk (DASH)</td><td>Gauge severity; MARAC threshold.</td></tr>
+            <tr><td class="factor">Adult capacity (MCA)</td><td>Where the concern is an adult at risk.</td></tr>
+            <tr><td class="factor">Mother's mental health</td><td>Low mood/risk; impact on parenting/support.</td></tr>
+            <tr><td class="factor">Other household members</td><td>Sibling, vulnerable adults (Think Family).</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Doing it well</div><div class="sca-phrase">"I'll carefully document the bruises with a body map and note exactly what you told me, in your words — that's important for getting your family the right help."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not documenting injuries/history accurately</li><li>Attempting a forensic exam beyond competence rather than referring</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Information — Record Factually · Share Lawfully · Check the Records</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>"Investigation" in safeguarding is information: contemporaneous factual recording (including the person's own words and the rationale for decisions), lawful information sharing where there is a risk of serious harm, and checking existing records and other agencies' information to build the picture.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">📝 Record</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Contemporaneous &amp; factual</td><td>What you saw/heard, in the person's own words; date/time; distinguish fact from opinion.</td></tr>
+            <tr><td class="factor">Body maps / injury documentation</td><td>Objective injury record.</td></tr>
+            <tr><td class="factor">Rationale for decisions</td><td>Why you did/didn't refer or share — defensible.</td></tr>
+            <tr><td class="factor">Flag the record</td><td>Safeguarding flags; alert the team appropriately.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🔗 Share &amp; gather</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Lawful information sharing</td><td>Without consent where risk of serious harm; child welfare paramount; proportionate &amp; relevant.</td></tr>
+            <tr><td class="factor">Check existing records</td><td>Previous concerns, attendances, family history.</td></tr>
+            <tr><td class="factor">Multi-agency information</td><td>Health visitor, school, social care, police.</td></tr>
+            <tr><td class="factor">Mandatory duties</td><td>FGM (under-18) reporting; document.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key reasoning</div><div class="sca-phrase">"I'll record exactly what I've seen and what you've said, check whether there have been any previous concerns, and share the relevant information with social care — which I'm able to do because it's about keeping a child safe."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not recording factually / not checking records</li><li>Withholding information that should be shared (or sharing more than necessary)</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Formulation — Who Is at Risk · From What · How Urgently</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The "diagnosis" is a safeguarding formulation: who is at risk (the child, the sibling, the mother), from what (NAI, domestic abuse, neglect), how urgently, and what the right response and pathway are — anchored to the principle that a child's welfare is paramount.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">At risk</th><th>From / response</th></tr></thead>
+        <tbody>
+          <tr><td class="q"><strong>The toddler</strong></td><td class="why">Possible non-accidental injury (inconsistent bruising in a young child) → children's social care referral; paediatric assessment; consent not required where significant-harm risk.</td></tr>
+          <tr><td class="q"><strong>The 6-year-old sibling</strong></td><td class="why">At risk in the same household (Think Family) → include in the safeguarding response.</td></tr>
+          <tr><td class="q"><strong>The mother</strong></td><td class="why">Possible domestic abuse/coercive control → risk assessment, safety plan, IDVA/MARAC; support; her wishes/capacity matter for her own safety, but the children's safety overrides.</td></tr>
+          <tr><td class="q"><strong>Urgency</strong></td><td class="why">Immediate safety today; same-day referral; emergency if immediate danger.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ddx-card ddx-b" style="margin-bottom:4px">
+      <h4>🚩 Act on reasonable concern — the child's welfare is paramount</h4>
+      <p>The formulation: a young child with possible non-accidental injury, a sibling at risk, and a mother experiencing possible domestic abuse. You do not need proof — reasonable concern is enough to refer. The plan: ensure immediate safety, refer to children's social care today (consent not required given the significant-harm risk), risk-assess and refer the domestic abuse (IDVA/MARAC) without alerting the perpetrator, record factually, share lawfully, involve the practice safeguarding lead, and follow up.</p>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Stating the formulation</div><div class="sca-phrase">"My concern is that your son's bruises may not be accidental, that his sibling could be at risk too, and that you may be experiencing abuse at home. I don't need to be certain to act — I have to refer to keep everyone safe, and I'll support you through it."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Waiting for "proof" before acting</li><li>Forgetting the sibling/the mother</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc6">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">Refer — Children's Social Care · Adult Safeguarding · Police/MARAC · Safeguarding Lead</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Referral is the decisive action: the right pathway for each concern — children's social care, adult safeguarding, police, MARAC/IDVA — coordinated through the practice safeguarding lead and the local safeguarding hub, with emergency services for immediate danger.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="ref-table">
+        <thead><tr><th style="width:24%">Referral</th><th>Who / when</th><th style="width:20%">Urgency</th></tr></thead>
+        <tbody>
+          <tr><td><strong>🔴 Emergency (999/police)</strong></td><td>Immediate danger; suspected serious crime.</td><td><span class="rf-action rfa-999">Now</span></td></tr>
+          <tr><td><strong>Children's social care</strong></td><td>Suspected significant harm/NAI/neglect (consent not required where risk).</td><td><span class="rf-action rfa-999">Same day</span></td></tr>
+          <tr><td><strong>Adult safeguarding</strong></td><td>Adult at risk (Care Act) — neglect, financial/sexual/physical abuse, modern slavery.</td><td><span class="rf-action rfa-same">Per risk</span></td></tr>
+          <tr><td><strong>Domestic abuse — IDVA / MARAC</strong></td><td>Domestic abuse; MARAC for high-risk; IDVA support.</td><td><span class="rf-action rfa-same">Per risk</span></td></tr>
+          <tr><td><strong>Practice safeguarding lead / hub</strong></td><td>Discuss, coordinate, document; named professionals.</td><td><span class="rf-action rfa-same">Always</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">The decisive action</div><div class="sca-phrase">"I'm going to refer to children's social care today and speak to our safeguarding lead, and get you connected to a domestic-abuse worker. If at any point you or the children are in immediate danger, call 999."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not referring / wrong pathway</li><li>Not involving the safeguarding lead</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Manage &amp; Follow Through — Safety · Support · Record · Multi-Agency · Review</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Management is following through: ensuring immediate safety, making and documenting the referrals, supporting the family (without colluding), participating in multi-agency work (strategy/conference), safety-planning the domestic abuse, considering all household members, and reviewing — safeguarding is a process, not a single act.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--g)">🛡️ Act &amp; support</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Immediate safety</td><td>Ensure the child/adult is safe today; emergency if needed.</td></tr>
+            <tr><td class="factor">Make &amp; document referrals</td><td>Children's social care, DA services, safeguarding lead; record rationale.</td></tr>
+            <tr><td class="factor">Support the family</td><td>Empathic, non-colluding; support the mother; early help.</td></tr>
+            <tr><td class="factor">Safety plan (domestic abuse)</td><td>Don't alert the perpetrator; IDVA; risk-led plan.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🔁 Follow through</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Multi-agency working</td><td>Strategy discussion/case conference; share information.</td></tr>
+            <tr><td class="factor">Think Family</td><td>Sibling, other dependents, unborn baby — all considered.</td></tr>
+            <tr><td class="factor">Review &amp; continuity</td><td>Follow up the referral outcome; ongoing vigilance.</td></tr>
+            <tr><td class="factor">Reflect / supervision</td><td>Safeguarding supervision; learn from the case.</td></tr>
+            <tr><td class="factor">Keep the door open</td><td>Maintain the therapeutic relationship where possible.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">A plan that scores</div><div class="sca-phrase">"So today: I'll make sure you and the children are safe to leave, refer to children's social care and speak to our safeguarding lead, connect you with a domestic-abuse worker, and document everything carefully. This is to support your family and keep everyone safe — and I'll follow it up and keep seeing you."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Referring but not ensuring immediate safety / not safety-planning DA</li><li>Forgetting the sibling/multi-agency working</li><li>Colluding or being punitive toward the mother</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Safeguarding — SCA Consultation Scorecard</div><div class="scorecard-sub">Recognise · respond · refer · record · child welfare paramount · domestic abuse · Think Family</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Recognises the concern</strong> — notices the red flags (NAI pattern, domestic abuse)</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Listens without leading</strong> — open, non-suggestive; preserves the account</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Honest about confidentiality</strong> — doesn't promise secrecy; explains the limits</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Ensures immediate safety</strong> — checks the family is safe today</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Records factually &amp; contemporaneously</strong> — own words; body map; rationale</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Involves the safeguarding lead</strong> — discusses, coordinates</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Clear plan + follow-through + review</strong> — referrals made, followed up</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, duty, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Recognises NAI red flags</strong> — inconsistent injury / young child / pattern / delayed presentation</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Refers children's social care (welfare paramount)</strong> — acts on reasonable concern; consent not required where significant-harm risk</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Recognises &amp; acts on domestic abuse</strong> — sensitive enquiry (not with perpetrator); risk assess; IDVA/MARAC; safety plan</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Think Family / other dependents</strong> — considers the sibling and others at risk</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Shares information lawfully</strong> — without consent where serious-harm risk; proportionate</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Capacity &amp; wishes (adult dimension)</strong> — MCA; making safeguarding personal; child risk overrides</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Knows mandatory duties</strong> — e.g. FGM reporting in under-18s</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Acts on suspicion (no proof needed)</strong> — doesn't wait for certainty</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Recognises immediate danger → 999</strong> — escalates appropriately</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct overall plan</strong> — safety + children's social care + DA referral + record/share + lead + Think Family + follow-up</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decisions</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — the mother's account/fears surfaced</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> — fear of the partner / losing the children acknowledged</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations addressed</strong> — "don't make a fuss" met honestly, not collusively</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Empathic, non-judgmental</strong> — supports the mother without blame</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Doesn't collude</strong> — declines secrecy; acts on the concern</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Frames safeguarding as support</strong> — help &amp; safety, not punishment</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Transparent</strong> — explains what she'll do and why</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Handles the perpetrator-safety issue</strong> — doesn't alert/raise DA unsafely</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Keeps the door open</strong> — maintains the relationship where possible</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Mother feels supported, not attacked</strong> — engaged in the process</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Collaborative close</strong> — plan explained; safety/contacts given; review</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">Accepts the story; promises secrecy; no child/sibling safeguarding; misses DA; no referral; waits for proof</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">Recognises a concern; some safety/recording; referral intended but vague; DA/Think Family partial; ICE partial</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Recognises NAI + DA; honest re confidentiality; immediate safety; children's social care + DA referral; Think Family; record/share lawfully; safeguarding lead; ICE all three</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist to see your score and feedback</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked — areas to develop</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise (the mother)</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"It's just a rash, doctor, that's all — he's fine, he's always bumping into things. Please don't make a fuss, I really need to get going, my partner's waiting and he gets cross if I'm late."</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are (Chloe, the mother)</h5><p>Chloe Davies, 24, with your 14-month-old son (you came about a "rash"). You're exhausted, low, and frightened of your partner, who "has a temper". There are finger-tip bruises on your son's arm and an older bruise on his cheek; when asked, you give vague, changing explanations ("he's always bumping into things") and avoid eye contact. You flinch when your phone buzzes (it's your partner). You have a 6-year-old at home too. You're terrified of your partner finding out you've said anything, and terrified your children will be taken away — so you want the doctor to do nothing and let you leave.</p></div>
+      <div class="ab"><h5>Hidden concerns (reveal if explored gently)</h5><p><strong>Fear of the partner (main):</strong> you're scared of his reaction; you'll hint at coercive control / his temper if the doctor is gentle and you feel safe.</p><p><strong>Fear of losing the children:</strong> this is why you want no fuss; reassurance that it's about support and safety, not removal, helps you engage.</p><p><strong>Your own low mood:</strong> you're worn down; you'll admit it if asked kindly.</p></div>
+      <div class="ab"><h5>Details if asked</h5><ul><li>Finger-mark bruising on the toddler's arm + older cheek bruise; vague/changing explanation; delayed coming in</li><li>Partner with a "temper"; you feel frightened and controlled; phone buzzing = him</li><li>A 6-year-old sibling at home</li><li>You're exhausted and low; you don't want anyone told; you fear your children being removed</li></ul></div>
+      <div class="ab"><h5>Reactions at key moments</h5><ul><li><strong>If the doctor promises secrecy / accepts the story / lets you leave:</strong> you're relieved — so a strong candidate must NOT collude and must act.</li><li><strong>On honest "I can't keep safety concerns secret, but I'll support you":</strong> anxious but you stay if treated with warmth.</li><li><strong>On "this is about support and safety, not taking your children":</strong> you soften.</li><li><strong>If the partner's name/abuse is raised carelessly (e.g. with him present):</strong> you shut down/panic.</li><li><strong>Challenge line:</strong> "Please, just leave it — you'll make everything worse for me at home."</li></ul></div>
+    </div>
+    <div class="actor-challenge">"Please don't report anything — you don't understand, you'll make it so much worse for me at home. Can't you just let it go?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> The consultation succeeds if the GP: (1) recognises the red flags of possible non-accidental injury (finger-mark bruising in a young child, inconsistent/changing history, delayed presentation) AND possible domestic abuse of the mother, with a sibling also at risk (Think Family); (2) responds empathically but honestly — listening without leading, not promising secrecy, not raising domestic abuse unsafely, ensuring immediate safety; (3) acts on reasonable concern (no proof needed) by referring to children's social care today (child's welfare paramount, consent not required where significant-harm risk) and arranging domestic-abuse support/risk assessment (IDVA/MARAC), involving the safeguarding lead; (4) records factually and shares information lawfully; (5) supports the mother without colluding, framing it as safety and support, and follows through. It fails if the GP colludes with "don't make a fuss", accepts the story, promises secrecy, or fails to refer.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Safeguarding — Clinical Decision Framework</div><div class="sum-sub">Recognise · respond · refer · record</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🧭 1 — The four Rs &amp; who's at risk</div>
+    <div class="card" style="padding:.8rem 1rem;margin-bottom:1rem"><p style="font-size:12.5px;line-height:1.6"><strong>Recognise</strong> the signs (children: inconsistent injury, non-mobile child with bruise/fracture, delayed presentation, disclosure, neglect, FGM, CSE; adults: Care Act categories incl. neglect/self-neglect, financial, modern slavery; domestic abuse incl. coercive control). <strong>Respond</strong> (listen, don't promise secrecy, ensure safety). <strong>Refer</strong> (right pathway). <strong>Record</strong> (factual, own words, rationale). <strong>Think Family</strong> — who else is at risk?</p></div>
+    <div class="sum-sub-hdr">⚖️ 2 — Act &amp; the law</div>
+    <div class="card" style="padding:.8rem 1rem"><p style="font-size:12.5px;line-height:1.6"><strong>Children:</strong> welfare paramount; consent NOT required where risk of significant harm; refer children's social care; FGM in under-18s = mandatory report. <strong>Adults:</strong> capacity (MCA) &amp; wishes matter (making safeguarding personal) — a capacitous adult can decline for themselves unless others at risk / serious crime / statutory duty. <strong>Information sharing</strong> without consent is justified where risk of serious harm. <strong>Immediate danger → 999.</strong> Involve the safeguarding lead; act on reasonable concern (no proof needed).</p></div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label">SCA Quick Reference</div><div class="sum-title">Safeguarding — Consultation Playbook</div><div class="sum-sub">Recognise · respond honestly · refer · record · Think Family</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🎯 The three pivots that pass this case</div>
+    <div class="sum-3col">
+      <div class="snp-phrase-box snp-e"><div class="snp-lbl">1 · Recognise &amp; don't collude</div><div class="snp-text">Spot NAI + domestic-abuse red flags; don't accept the vague story or promise secrecy; ensure immediate safety.</div></div>
+      <div class="snp-phrase-box snp-m"><div class="snp-lbl">2 · Child welfare paramount</div><div class="snp-text">Act on reasonable concern (no proof needed); refer children's social care (consent not required where significant-harm risk); Think Family.</div></div>
+      <div class="snp-phrase-box snp-a"><div class="snp-lbl">3 · Refer, record, support</div><div class="snp-text">Domestic-abuse/IDVA/MARAC (never with perpetrator present); record factually; share lawfully; safeguarding lead; support without blame.</div></div>
+    </div>
+    <div class="sdp-pivot" style="margin-top:1rem;font-size:11.5px;background:#fef3c7;color:#854d0e;border-radius:8px;padding:.6rem .85rem;line-height:1.5">⛔ Don't collude with "don't make a fuss" or accept an inconsistent injury history · Don't promise to keep safety concerns secret · Don't raise domestic abuse with the perpetrator present · Don't wait for proof — reasonable concern is enough · Don't forget the sibling/other dependents (Think Family) · Record factually, share lawfully, involve the safeguarding lead</div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Safeguarding (Children &amp; Adults) · GP Clinical Reasoning Framework v2</strong> · Working Together to Safeguard Children · Care Act 2014 (adult safeguarding) · Mental Capacity Act · Domestic Abuse Act / DASH-MARAC · FGM mandatory reporting · GMC safeguarding guidance</p>
+  <p style="margin-top:4px">Recognise · Respond · Refer · Record — the four Rs · Children: welfare is paramount; consent is NOT required to refer where there is risk of significant harm; non-mobile child with bruising, inconsistent/changing history and delayed presentation are major NAI red flags; FGM in under-18s is a mandatory report · Adults at risk (Care Act): consider capacity (MCA) and wishes (making safeguarding personal); a capacitous adult may decline for themselves unless others are at risk / serious crime / statutory duty · Domestic abuse: enquire safely (never with the perpetrator present), risk-assess (DASH), safety-plan, IDVA/MARAC · Think Family; share information lawfully where there is risk of serious harm; act on reasonable concern; involve the safeguarding lead; immediate danger → 999</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always follow local safeguarding procedures and current statutory guidance · Clinical judgement and the duty to protect take precedence</p>
+</div>
+</div><!-- /page -->
+  </main>
+</div><!-- /app -->
+<script src="script.js"></script>
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+</body>
+</html>

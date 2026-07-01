@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Allergic Rhinitis — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+<link rel="stylesheet" href="../../assets/medchooser.css">
+</head>
+<body data-screen-label="Allergic rhinitis management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"👃",
+  title:"Allergic Rhinitis",
+  stemTitle:"Allergic rhinitis — ongoing management",
+  stemSub:"Primary-care management of allergic rhinitis \u2014 allergen avoidance and nasal saline, antihistamines for mild disease and intranasal corticosteroids for moderate\u2013severe, with attention to inhaler-style technique and comorbid asthma. CKS / BSACI \u00b7 2026.",
+  guideline:"NICE CKS / BSACI",
+  glance:[
+    {lbl:"Mild / intermittent", val:"Antihistamine", sub:"cetirizine/loratadine 10 mg OD"},
+    {lbl:"Mod\u2013severe / persistent", val:"Intranasal steroid", sub:"first-line"},
+    {lbl:"Combined", val:"INCS + antihistamine spray", sub:"if INCS alone insufficient"},
+    {lbl:"With asthma", val:"Consider LTRA", sub:"treat both"},
+    {lbl:"Technique", val:"Crucial", sub:"spray angled away from septum"},
+    {lbl:"Refer", val:"Refractory / immunotherapy", sub:"allergy clinic"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Characterise the rhinitis",
+      blocks:[
+        {b:"kv", rows:[
+          ["Pattern","Seasonal (pollen) vs perennial (house dust mite, pets, mould); intermittent vs persistent"],
+          ["Severity","Impact on sleep, daily activity, work/school \u2014 drives step of treatment"],
+          ["Comorbidity","Allergic conjunctivitis, asthma (treat together \u2014 \u2018one airway\u2019), nasal polyps"],
+          ["Red flags","Unilateral symptoms, bloody discharge, crusting, or anosmia \u2192 consider structural/sinister cause"],
+          ["Pregnancy / children","Saline lavage is safe and first-line; if a nasal steroid is needed choose a <b>low-bioavailability</b> one (fluticasone propionate, mometasone, budesonide) at the lowest effective dose; monitor growth on long-term use in children; LTRA only if also asthmatic"]
+        ]},
+        {b:"why", html:"Severity and persistence set the step: mild intermittent disease responds to antihistamines, but moderate\u2013severe or persistent rhinitis needs an <strong>intranasal corticosteroid</strong> as the most effective single agent. Treating coexisting asthma matters because the upper and lower airway behave as one."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Allergen avoidance and nasal care",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🌼 Allergen avoidance", html:"Pollen (stay in when high, shower/change clothes), house dust mite (bedding, reduce soft furnishings), pets."},
+          {t:"💧 Nasal saline", html:"Saline irrigation/douching clears allergens and improves symptoms \u2014 a useful adjunct."},
+          {t:"🌬️ Spray technique", html:"Teach correct intranasal technique \u2014 head forward, aim away from the septum \u2014 the commonest reason sprays \u2018fail\u2019."},
+          {t:"🚭 Irritants", html:"Avoid smoke and other nasal irritants."},
+          {t:"👓 Eye measures", html:"For conjunctivitis: avoidance, lubricants, antihistamine drops."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 stepwise", title:"By severity",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Mild", title:"Antihistamine", when:"non-sedating oral or intranasal",
+           html:"Non-sedating oral antihistamine \u2014 <b>cetirizine 10 mg once daily</b> or <b>loratadine 10 mg once daily</b> (fexofenadine 120\u2013180 mg OD an alternative) \u2014 or an intranasal antihistamine for mild/intermittent symptoms."},
+          {step:"Mod\u2013severe", title:"Intranasal corticosteroid", when:"first-line, regular use",
+           fromLabel:"moderate\u2013severe / persistent",
+           html:"A regular intranasal corticosteroid is the most effective treatment \u2014 e.g. <b>fluticasone propionate or mometasone, 1\u20132 sprays per nostril once daily</b>; takes days\u2013weeks for full effect \u2014 use continuously through the season."},
+          {step:"Step up", title:"INCS + intranasal antihistamine", when:"combination spray",
+           fromLabel:"INCS alone insufficient",
+           html:"A combined intranasal steroid + antihistamine spray; add an oral antihistamine for eye/systemic symptoms; LTRA if comorbid asthma. Target the dominant symptom: <b>nasal ipratropium</b> for persistent watery rhinorrhoea, antihistamine / mast-cell-stabiliser eye drops for conjunctivitis, a brief (&lt;7-day) decongestant for blockage."},
+          {step:"Rescue", title:"Short oral steroid", when:"severe, time-limited",
+           fromLabel:"severe uncontrolled (e.g. exams/event)",
+           html:"A short course of oral prednisolone occasionally for severe symptoms \u2014 e.g. <b>prednisolone ~0.5 mg/kg (typically 20\u201330 mg) once daily for 5\u20137 days</b>; <b>never depot steroid injections</b>."}
+        ]},
+        {b:"warn", html:"Avoid <b>long-term intranasal decongestants</b> (rhinitis medicamentosa \u2014 rebound congestion). Do <b>not</b> use depot corticosteroid injections for hay fever."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Control, technique and asthma",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Symptom control","Each review","Step up/down; ensure continuous INCS use in season"],
+          ["Spray technique","Each review","Re-teach \u2014 poor technique is the top cause of failure"],
+          ["Adherence","Each review","INCS needs regular use; manage expectation of delayed effect"],
+          ["Asthma control","If comorbid","Worsening rhinitis often worsens asthma \u2014 treat both"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"2\u20134 weeks", title:"Response review", html:"Assess INCS effect and technique; step up if uncontrolled."},
+          {n:"2", when:"Seasonal", title:"Pre-season start", html:"For seasonal disease, start INCS ~2 weeks before the season."},
+          {n:"3", when:"If refractory", title:"Reassess / refer", html:"Reconsider diagnosis, adherence, technique; consider immunotherapy referral."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not controlled? Check before escalating",
+      arrow:"\u2026if symptoms persist",
+      intro:"Technique and adherence are the usual culprits.",
+      checks:[
+        {b:"1 \u00b7 Technique", html:"Watch them use the spray \u2014 correct head position, aim away from septum."},
+        {b:"2 \u00b7 Adherence", html:"Used regularly (not just when blocked)? INCS needs continuous use."},
+        {b:"3 \u00b7 Allergen", html:"Ongoing exposure (pets, dust mite, occupation)?"},
+        {b:"4 \u00b7 Diagnosis", html:"Unilateral, anosmia, polyps, or non-allergic rhinitis \u2192 reconsider."},
+        {b:"5 \u00b7 Step up / refer", html:"Combination spray; refractory \u2192 allergy clinic / immunotherapy."}
+      ],
+      back:"Technique + adherence + allergen addressed \u2192 step up / refer"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Anaphylaxis", html:"\u201cIf you have a food/venom allergy: lip/face/throat swelling, breathing difficulty, or collapse \u2014 use the adrenaline pen if prescribed and call 999.\u201d"},
+          {t:"⚠️ Unilateral / bleeding", html:"\u201cOne-sided blockage, bloody discharge, or loss of smell \u2014 get reviewed (we\u2019ll check for other causes).\u201d"},
+          {t:"🌬️ Technique", html:"\u201cThe spray only works if used correctly and regularly \u2014 aim it slightly away from the middle of your nose.\u201d"},
+          {t:"🫁 Asthma", html:"\u201cIf your chest gets tight or wheezy when your nose flares, tell us \u2014 we treat them together.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"refractory or for immunotherapy",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Refractory", html:"Symptoms uncontrolled despite optimal technique, adherence and combination therapy."},
+          {t:"Immunotherapy", html:"Candidate for allergen immunotherapy (e.g. severe single-allergen disease) \u2192 allergy clinic."},
+          {t:"Diagnostic doubt", html:"Unilateral symptoms, anosmia, nasal polyps, or suspected structural cause \u2192 ENT."},
+          {t:"Severe / occupational", html:"Occupational rhinitis or significant impact needing specialist input."}
+        ]},
+        {b:"say", html:"For ongoing symptoms a steroid nasal spray, used correctly and regularly, is the most effective treatment \u2014 it takes a week or two to work, so don\u2019t give up early. If we still can\u2019t control it, an allergy clinic can consider longer-term options."}
+      ]}
+  ]
+});
+</script>
+<!-- ═══ Interactive Medication Chooser ═══ -->
+<div class="mg-wrap mc-embed" style="padding-top:0;padding-bottom:40px">
+  <div class="mc-embed-head">⚙ Interactive Medication Chooser — tick the patient profile, options re-tier live against NICE / BNF</div>
+  <div data-medchooser="allergic-rhinitis"></div>
+</div>
+<style>.mc-embed-head{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#6b7280);margin:6px 0 10px}@media print{.mc-embed{display:none !important}}</style>
+<script src="../../assets/medchooser.js"></script>
+<script src="../../assets/meds/allergic-rhinitis.js"></script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

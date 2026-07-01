@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Weight Loss — Unintentional Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;--diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;--treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;--refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;--lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;--radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);--font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif;}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#1a2e1a 0%,#2d5a2d 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#2d5a2d,#c0392b);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}.node[data-type="TREAT"] .node-num{background:var(--treat)}.node[data-type="REFER"] .node-num{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}.node[data-type="TREAT"] .node-tag{background:var(--treat)}.node[data-type="REFER"] .node-tag{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:70px;justify-content:center;white-space:nowrap}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}.pill-purple{background:#ede9fe;color:#5b21b6}.pill-blue{background:#dbeafe;color:#1e40af}.pill-teal{background:#ccfbf1;color:#0f766e}.pill-amber{background:#fef3c7;color:#92400e}.pill-green{background:#dcfce7;color:#15803d}.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+<div class="stem-banner">
+  <div class="sb-icon">⚖️</div>
+  <div>
+    <b>Unintentional Weight Loss — New Presentation</b>
+    <small>Systematic assessment — cancer exclusion, organic and non-organic causes</small>
+  </div>
+</div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — unintentional weight loss is a high-yield cancer marker: quantify it, screen localising red flags, investigate broadly and in parallel (not in series), sort malignant / organic / psychosocial, act on findings and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Unintentional weight loss</span><div class="body"><b>Quantify</b> (&gt;5% body weight over 6–12 months is significant; confirm objectively). Appetite, GI/systemic symptoms, mood, drugs, social circumstances. <b>Examine fully</b> — lymph nodes, abdomen/masses, breast, testes, respiratory.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — localising cancer red flags</span><span class="ttl">Any site-specific feature?</span><div class="body"><ul>
+      <li><b>GI</b> — dysphagia, rectal bleeding, change in bowel habit, abdominal mass, jaundice</li>
+      <li><b>Respiratory</b> — haemoptysis, persistent cough, chest signs</li>
+      <li><b>Haematological</b> — lymphadenopathy, bruising, night sweats, bone pain</li>
+      <li><b>Urological/gynae</b> — haematuria, postmenopausal bleeding, pelvic mass</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — localising flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Site-specific 2WW</span><div class="body">Direct to the relevant urgent suspected-cancer pathway based on the localising feature (lung/colorectal/upper-GI/haematology/urology, etc.).</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO localising feature</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Broad first-line panel — in parallel</span><div class="body"><b>FBC, ferritin, U&amp;E, LFT, calcium, glucose/HbA1c, TFT, CRP/ESR, coeliac serology, CXR, urinalysis, FIT</b>; consider <b>CA-125 / PSA, myeloma screen, HIV</b>. Order together, not one at a time.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · which category?</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Malignancy</div><div class="box ix"><span class="ttl">Must exclude</span><div class="body">GI, lung, haematological (lymphoma/myeloma), renal, pancreatic, ovarian/prostate — the priority to exclude.</div></div></div>
+      <div class="col"><div class="blabel">Organic non-cancer</div><div class="box ix"><span class="ttl">Systemic</span><div class="body"><b>Hyperthyroidism, uncontrolled diabetes</b>, chronic infection (<b>TB, HIV</b>), organ failure (cardiac/renal/COPD), IBD/coeliac/malabsorption.</div></div></div>
+      <div class="col"><div class="blabel">Psychosocial</div><div class="box ix"><span class="ttl">Common &amp; treatable</span><div class="body"><b>Depression, dementia, eating disorder</b>, social isolation/poverty (food insecurity), alcohol/substance use, polypharmacy.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · act on findings</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — treat the cause + support</span><span class="ttl">Cause-directed, nutrition alongside</span><div class="body"><ul>
+      <li><b>Abnormal results → relevant pathway</b> (cancer 2WW, endocrine, gastro, ID/TB-HIV).</li>
+      <li><b>Nutritional support:</b> dietitian, oral nutritional supplements, treat reversible causes of poor intake (oral health, swallowing, nausea).</li>
+      <li><b>Psychosocial:</b> treat depression, dementia support, eating-disorder pathway, social prescribing/food support, alcohol services.</li>
+      <li><b>Medication review</b> — culprit drugs (metformin, SSRIs, stimulants) and appetite-affecting agents.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer — <span class="pill pill-purple">2WW · NICE NG12</span></span><span class="ttl">Don't sit on it</span><div class="body"><ul>
+      <li>NG12 supports <b>urgent investigation/referral for unexplained weight loss with other features</b> — low threshold for imaging and site-specific pathways.</li>
+      <li><b>Arrange parallel rather than sequential testing</b>; if first-line panel is normal but loss continues, consider <b>CT chest/abdomen/pelvis</b> and specialist referral.</li>
+      <li>Refer per the abnormal result (haematology for paraprotein/cytopenia, gastro, endocrine, etc.).</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · nutrition &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Nutrition &amp; support</span><span class="ttl">Address intake &amp; circumstances</span><div class="body"><b>Food-first fortification</b> and regular meals/snacks · dietitian and oral nutritional supplements · address dentition, dysphagia, nausea and social factors (shopping/cooking, finances, isolation) · alcohol reduction · optimise diabetes/thyroid; review appetite-suppressing drugs.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · monitor &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Monitor weight objectively</b> and re-review at a defined interval (e.g. 4–6 weeks). <b>If weight loss continues despite a normal first-line panel, escalate to CT and specialist review</b> — do not reassure on normal initial bloods alone. Return sooner if new localising symptoms (bleeding, dysphagia, lumps) develop.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Investigate in parallel, not in series:</b> unexplained weight loss is among the strongest predictors of undiagnosed cancer — order a broad panel up front, and if it is normal but the weight keeps falling, image (CT-CAP) rather than reassure.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Cancer Until Proven Otherwise</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <b>Unintentional weight loss ≥5% in 6–12 months is significant.</b> Malignancy is found in 25% of referred cases. Investigate all.
+    <div class="rfgrid">
+      <div class="rftile"><b>Weight loss + dysphagia</b> Oesophageal / gastric cancer → 2WW upper GI endoscopy. Any age with dysphagia = urgent.</div>
+      <div class="rftile"><b>Weight loss + rectal bleeding / altered bowel habit</b> Age ≥40 → 2WW colorectal cancer</div>
+      <div class="rftile"><b>Weight loss + haematuria</b> Age ≥45 → 2WW urology (renal cell carcinoma, transitional cell carcinoma)</div>
+      <div class="rftile"><b>Weight loss + haemoptysis</b> Any age → 2WW lung cancer + urgent CXR</div>
+      <div class="rftile"><b>Weight loss + jaundice</b> Pancreatic / biliary / hepatic malignancy → 2WW + urgent LFTs / USS abdomen</div>
+      <div class="rftile"><b>Night sweats + lymphadenopathy</b> Haematological malignancy (lymphoma) → 2WW haematology</div>
+      <div class="rftile"><b>Bone pain + weight loss</b> Myeloma, bony metastases → urgent serum protein electrophoresis + calcium + bone profile</div>
+      <div class="rftile"><b>Postmenopausal bleeding + weight loss</b> Endometrial / ovarian cancer → 2WW gynaecology</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE NG12 (Suspected Cancer Referral, 2015 updated 2023) mandates 2WW referral pathways for specific symptom combinations with weight loss. Unintentional weight loss has a positive predictive value for cancer of 2–5% as an isolated symptom, rising to 15–25% when combined with organ-specific symptoms (dysphagia, haemoptysis, rectal bleeding). Malignancy is the cause in approximately 25% of unintentional weight loss presentations that are investigated — GPs should have a low threshold for 2WW referral given the mortality benefit of early-stage cancer treatment.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Quantify &amp; Characterise — History</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Quantify weight loss</div><div>Weigh patient now — compare to recorded weights. &gt;5% loss in 6 months is clinically significant. &gt;10% in 6 months = severe (urgent investigation regardless of cause)</div>
+      <div>Intentional or not?</div><div>Dietary change, increased exercise, GLP-1 agonists, new medication — confirm unintentional before investigating. If intentional + disordered pattern → eating disorder screen</div>
+      <div>Appetite</div><div>Preserved appetite + weight loss → malabsorption (coeliac, IBD, pancreatic insufficiency), diabetes, hyperthyroidism. Reduced appetite → depression, malignancy, infection</div>
+      <div>GI symptoms</div><div>Dysphagia, vomiting, diarrhoea, steatorrhoea (pale, floating, offensive stool = malabsorption), PR bleeding, change in bowel habit</div>
+      <div>Systemic symptoms</div><div>Fever, night sweats, fatigue (B-symptoms → haematological malignancy). Polydipsia / polyuria (diabetes). Tremor, heat intolerance, palpitations (hyperthyroidism)</div>
+      <div>Psychosocial</div><div>Depression (most common non-organic cause in elderly), anxiety, social isolation, financial difficulties (food insecurity), bereavement, dementia (forgetting to eat)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Preserved appetite with weight loss strongly suggests a hypermetabolic state (hyperthyroidism, uncontrolled diabetes) or malabsorption rather than malignancy or depression. This distinction narrows the differential significantly. Steatorrhoea (the hallmark of fat malabsorption) is a key symptom patients rarely volunteer — direct questioning is needed. In elderly patients, depression is the most common cause of unintentional weight loss (accounting for 25–30% of cases) and is frequently missed — direct PHQ-9 screening is essential.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis Framework</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Malignancy (25%)</div><div>Most common in over 50s. Any organ system. Weight loss can precede other symptoms by months. Low threshold for 2WW if over 40 + weight loss + any alarm symptom.</div>
+      <div>Non-malignant organic (25%)</div><div>Hyperthyroidism, uncontrolled diabetes (type 1 or 2), Addison's disease, COPD, heart failure, CKD, cirrhosis, IBD, coeliac disease, TB, HIV, chronic infection</div>
+      <div>Psychiatric (25%)</div><div>Depression (most common in elderly), anxiety, anorexia nervosa / ARFID (all ages), late-onset psychosis, substance misuse (alcohol, stimulants)</div>
+      <div>Malabsorption</div><div>Coeliac disease (preserved appetite + diarrhoea + fatigue), exocrine pancreatic insufficiency, small bowel bacterial overgrowth, post-surgical (gastrectomy, short bowel)</div>
+      <div>Medication-related</div><div>GLP-1 agonists (semaglutide, liraglutide), SGLT2 inhibitors, metformin (nausea), SSRIs initially, stimulants, digoxin toxicity, opioids (nausea)</div>
+      <div>Social / no cause (25%)</div><div>After full investigation, 25% remain unexplained — these require monitoring as cancer risk is still elevated for 12–24 months post-investigation</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The classic teaching is that unintentional weight loss is caused approximately equally by malignancy, non-malignant organic disease, psychiatric/social causes, and unexplained causes — each ~25%. This distribution means that even after thorough investigation, a significant minority remain unexplained and still require cancer surveillance over 12–24 months (annual 2WW risk is elevated). Coeliac disease accounts for 1% of UK adults and is frequently diagnosed late — anti-TTG should be checked in all presentations with preserved appetite + weight loss.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Targeted Examination</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Weight &amp; BMI</div><div>Weigh and calculate BMI. Document BMI — if &lt;17.5 with distorted body image → anorexia nervosa. Assess muscle mass (MUAC) if frail.</div>
+      <div>General appearance</div><div>Cachexia (muscle wasting + fat loss), lymphadenopathy, jaundice, pallor, clubbing, oedema</div>
+      <div>Thyroid</div><div>Goitre, tremor, lid lag, warm peripheries, AF — hyperthyroidism. Weight loss with preserved appetite + palpitations → TFTs urgently</div>
+      <div>Abdominal exam</div><div>Hepatomegaly (metastases, cirrhosis, haematological), splenomegaly (haematological malignancy, portal hypertension), masses, ascites, PR examination</div>
+      <div>Lymph nodes</div><div>Cervical, axillary, inguinal, supraclavicular (Virchow's node — left supraclavicular = upper GI malignancy, highly significant)</div>
+      <div>Rectal exam</div><div>Rectal mass, blood on examining finger — mandatory in weight loss + bowel symptoms in age &gt;40</div>
+      <div>Breasts / testes</div><div>In age-appropriate context — new lump + weight loss = cancer until proven otherwise. Testicular exam in young men.</div>
+      <div>Mental state</div><div>PHQ-9, cognitive screen (MMSE/MoCA if elderly), eating disorder signs (Russell's sign, parotid enlargement, lanugo hair)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Virchow's node (left supraclavicular lymphadenopathy — Troisier's sign) is a highly significant finding indicating metastatic upper GI, lung, or other intra-abdominal malignancy — this is an urgent 2WW finding. Russell's sign (calluses on dorsum of knuckles from self-induced vomiting) and parotid enlargement suggest bulimia nervosa. Rectal examination is mandatory in weight loss with any change in bowel habit — it detects approximately 10% of rectal cancers that would otherwise be missed on sigmoidoscopy alone.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Diagnose</span><h3>Investigations — Systematic Screen</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Bloods — all patients</div><div><span class="pill pill-blue">FBC</span> <span class="pill pill-blue">U&E</span> <span class="pill pill-blue">LFTs</span> <span class="pill pill-blue">TFTs</span> <span class="pill pill-blue">CRP/ESR</span> <span class="pill pill-blue">HbA1c</span> <span class="pill pill-blue">Calcium</span> <span class="pill pill-blue">Albumin</span> (malnutrition marker)</div>
+      <div>Cancer screen</div><div><span class="pill pill-blue">PSA</span> (men &gt;50) · <span class="pill pill-blue">Serum protein electrophoresis</span> (age &gt;50 + bone pain/fatigue) · <span class="pill pill-blue">CEA</span> / <span class="pill pill-blue">CA-125</span> only if specific clinical indication — not routine cancer markers</div>
+      <div>Malabsorption screen</div><div><span class="pill pill-blue">Anti-TTG IgA + IgA level</span> (coeliac) · <span class="pill pill-blue">Faecal elastase</span> (exocrine pancreatic insufficiency) · <span class="pill pill-blue">B12 / folate</span> · <span class="pill pill-blue">Iron studies</span></div>
+      <div>Infection screen</div><div><span class="pill pill-blue">HIV test</span> (offer universally per NICE) · <span class="pill pill-blue">CXR</span> (TB, lung cancer, heart failure, lymphoma) · <span class="pill pill-blue">Urine MC&S</span> · <span class="pill pill-blue">Blood cultures</span> if febrile</div>
+      <div>Imaging</div><div><span class="pill pill-blue">CXR</span> — all patients (lung cancer, TB, heart failure, lymphadenopathy). <span class="pill pill-blue">USS abdomen/pelvis</span> if abdominal symptoms, jaundice, hepatomegaly. CT organised via 2WW pathway.</div>
+      <div>NOT routinely</div><div>CA-19-9, AFP, CEA without specific clinical indication — poor specificity, causes anxiety and over-investigation. PSA in symptomatic prostate disease only.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">CXR is the single highest-yield investigation in unexplained weight loss — it identifies lung cancer, TB (now re-emerging in UK cities), heart failure, and mediastinal lymphadenopathy in a single, fast, low-cost test. Serum albumin &lt;35 g/L is a powerful predictor of malnutrition and increased mortality risk — it should prompt dietitian referral and consideration of nutritional supplementation. Routine cancer markers (CEA, CA-125, AFP) have poor specificity and low positive predictive value in the absence of clinical features — they generate more false positives than true positives in unselected patients.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Refer</span><h3>Referral — 2WW and Urgent Pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999 / same-day</span></div><div>Severe malnutrition (BMI &lt;15), haemodynamic instability from GI bleeding, sepsis with weight loss, acute decompensation</div>
+      <div><span class="pill pill-purple">2WW upper GI</span></div><div>Dysphagia, vomiting, upper abdominal pain/mass + weight loss. Age ≥55 + weight loss + upper abdominal symptoms.</div>
+      <div><span class="pill pill-purple">2WW colorectal</span></div><div>Age ≥40 + rectal bleeding + unexplained weight loss or change in bowel habit</div>
+      <div><span class="pill pill-purple">2WW lung</span></div><div>Haemoptysis any age. Age ≥40 + two of: weight loss, fatigue, cough, dyspnoea, chest/shoulder pain</div>
+      <div><span class="pill pill-purple">2WW haematology</span></div><div>Unexplained weight loss + night sweats + lymphadenopathy (B-symptoms)</div>
+      <div>Eating disorders</div><div>Anorexia nervosa / ARFID / bulimia → CRISIS referral if BMI &lt;15 or medically unstable. BEAT eating disorder referral for stable cases. Do NOT manage alone in primary care.</div>
+      <div>Dietitian</div><div>All patients with significant weight loss + malnutrition risk — MUST score (Malnutrition Universal Screening Tool) ≥2 → dietitian referral + nutritional supplementation</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE NG12 2WW thresholds are based on positive predictive value — the combinations listed carry ≥3% PPV for the relevant cancer. Anorexia nervosa has the highest mortality of any psychiatric disorder (5–10% lifetime) — BMI &lt;15 represents a medical emergency requiring inpatient treatment. Malnutrition affects 3 million people in the UK (BAPEN data) — MUST scoring takes &lt;5 minutes and identifies those needing nutritional supplementation and dietitian input. Delaying dietitian referral worsens outcomes in cancer and chronic disease.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>GP Management — Nutritional Support &amp; Condition-Specific</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Malnutrition (MUST ≥2)</div>
+        <div class="b-drug">Oral nutritional supplements</div>
+        <div class="b-note">Ensure Plus / Fortisip 200 kcal supplement BD–TDS (prescribable on FP10 via ACBS). Dietitian input for individualised plan. Protein target 1–1.5 g/kg/day.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Hyperthyroidism</div>
+        <div class="b-drug">Carbimazole 20–40 mg OD</div>
+        <div class="b-note">Start only if diagnosis confirmed. Refer endocrinology concurrently. Check FBC before starting (agranulocytosis risk). Titration regime preferred.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Coeliac disease</div>
+        <div class="b-drug">Gluten-free diet</div>
+        <div class="b-note">Life-long strict GFD. Dietitian referral essential. Check B12, folate, iron, vitamin D, calcium — often deficient. Annual review including coeliac antibody titre.</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Depression</span><span class="rt">Sertraline 50 mg OD + IAPT referral. Weight typically recovers as depression responds. Monitor weight monthly. If severe anorexia + depression → psychiatric referral.</span></div>
+      <div class="rung"><span class="rn">Pancreatic insufficiency</span><span class="rt">Creon (pancreatic enzyme replacement) — dose adjusted to fat content of meals. Dietitian involvement. Address cause (chronic pancreatitis, pancreatic cancer).</span></div>
+      <div class="rung"><span class="rn">Unexplained weight loss</span><span class="rt">Watchful waiting + 3-monthly weight review + repeat bloods at 3 months if initial investigations normal. Document clearly. Annual review for 2 years.</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Oral nutritional supplements (ONS) prescribed on FP10 are ACBS-approved and represent a cost-effective intervention for malnutrition — they reduce hospital admissions, infection rates, and mortality in malnourished patients. Carbimazole carries 0.2–0.5% risk of agranulocytosis — patients must be warned to seek immediate review if they develop sore throat or fever and an FBC arranged urgently. Strict lifelong gluten-free diet resolves most coeliac symptoms and normalises intestinal architecture — 30% of patients achieve remission within 3 months and recover lost weight fully.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Nutritional Rehabilitation &amp; Support</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Nutritional fortification</b> Add calories to food — butter, full-fat milk, cheese, nut butters, avocado. Aim 500 kcal surplus above estimated requirements. Small frequent meals if appetite poor.</div>
+      <div class="lstile"><b>Social eating</b> Eating alone reduces food intake by 30%. Encourage meals with family, friends, or community dining. Refer to local community meals service if socially isolated elderly patient.</div>
+      <div class="lstile"><b>Appetite stimulation</b> Small portions, favourite foods, timing meals with social occasion. Megestrol acetate (appetite stimulant) in cancer cachexia — specialist use only. Mirtazapine increases appetite as side effect — useful in depression + weight loss.</div>
+      <div class="lstile"><b>Exercise (preserve muscle)</b> Resistance exercise preserves muscle mass during weight loss. Even light walking + gentle strength training prevents sarcopaenia. Physiotherapy referral if severely deconditioned.</div>
+      <div class="lstile"><b>Alcohol review</b> Alcohol displaces nutrition (empty calories + poor absorption). AUDIT-C. Alcohol dependence → alcohol specialist service referral. B1 (thiamine) supplementation if alcohol excess (Pabrinex in clinic if deficiency suspected).</div>
+      <div class="lstile"><b>Food insecurity</b> Assess practical barriers — finances, ability to shop/cook, dentition (poor teeth = reduced intake). Signpost to local food banks, social prescribing, Meals on Wheels, community care.</div>
+      <div class="lstile"><b>Dental review</b> Poor dentition is a major underdiagnosed cause of weight loss in elderly — pain on chewing reduces intake. Urgent dental referral if significant dental disease.</div>
+      <div class="lstile"><b>MUST monitoring</b> Repeat MUST score monthly in patients with active weight loss. Weight trend chart — GP clinical system weight record is an underused resource for monitoring.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Food insecurity affects approximately 8% of UK adults (Food Foundation 2023) and is significantly higher in elderly, disabled, and low-income patients — it is a common and completely reversible cause of weight loss that is missed without direct questioning. Sarcopaenia (muscle loss) associated with malnutrition is a major predictor of functional decline and mortality in the elderly — resistance exercise alongside nutritional rehabilitation preserves muscle far better than nutrition alone. Mirtazapine's weight-gain side effect (mediated by H1 and 5-HT2C antagonism) makes it a preferred antidepressant in elderly depressed patients with weight loss.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>2–4 weeks</div><div>Weight check — is weight loss continuing or stabilising? Review investigation results. Any new symptoms pointing to specific diagnosis?</div>
+      <div>3 months</div><div>Full reassessment if no diagnosis found initially. Repeat bloods. New symptoms may have emerged. Repeat CXR if initial normal but weight loss continues.</div>
+      <div>6–12 months</div><div>Annual weight monitoring for 2 years after unexplained weight loss — malignancy risk remains elevated even after negative initial workup</div>
+      <div>Carbimazole monitoring</div><div>TFTs at 4–6 weeks after starting, then 2–3 monthly. FBC if sore throat/fever (agranulocytosis). Refer endocrinology for definitive treatment (radioiodine or surgery).</div>
+      <div>Anorexia nervosa</div><div>Weekly weight, SUSS score (Sick, Control, One Stone, Fat, Food), physical health parameters (bradycardia, BP, ECG — QTc prolongation) if managing in primary care</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>Haematemesis / melaena, haemoptysis with haemodynamic compromise, collapse, severe confusion</div>
+      <div><span class="pill pill-amber">Same-day GP</span></div><div>Rapid acceleration of weight loss, new alarm symptom (dysphagia, haemoptysis, rectal bleeding), jaundice appearing, BMI falling below 15</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Ongoing cancer surveillance after negative initial investigation is essential — a 5-year prospective study found that 12% of patients with unexplained weight loss diagnosed with no cause subsequently developed malignancy within 2 years. "No cause found" is not a reassuring endpoint — it requires structured monitoring. In anorexia nervosa, bradycardia (&lt;50 bpm) and QTc prolongation are the most life-threatening signs — ECG is a key monitoring tool and QTc &gt;450ms warrants emergency psychiatric admission. The SUSS questionnaire is a validated 5-question screen for eating disorder severity usable in primary care.</div>
+  </div>
+</div>
+
+</div>
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE NG12 (Suspected Cancer Referral, 2023), NICE CKS Unintentional Weight Loss, BAPEN MUST tool, NICE NG69 (Eating Disorders), BSG coeliac guidelines. Always adapt to individual patient context.
+</div>
+<script>
+(function(){
+  const STORE='rgp.alg.weightloss.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

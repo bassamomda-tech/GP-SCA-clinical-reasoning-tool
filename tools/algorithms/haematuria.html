@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haematuria Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#f4f5f0;color:#1a1a2e;min-height:100vh;padding:0 0 60px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#1b2838 0%,#2d3a4f 60%,#c0392b 100%);color:#fff;padding:18px 24px;border-bottom:3px solid #c0392b}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:700;letter-spacing:.01em}
+.stem-banner small{opacity:.75;font-size:.8rem}
+.alg-progress{display:flex;align-items:center;gap:10px;padding:12px 24px;background:#fff;border-bottom:1px solid #e2e0da;font-size:.82rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.alg-progress span:first-child{font-weight:600;color:#555}
+.pcount{font-weight:700;color:#c0392b;min-width:36px}
+.pbar{flex:1;height:6px;background:#e2e0da;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#c0392b,#1b2838);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:8px;padding:4px 10px;border:1px solid #ddd;border-radius:4px;background:#fff;font-size:.75rem;cursor:pointer;color:#666}
+.reset:hover{background:#f5f4f0}
+.alg-flow{max-width:820px;margin:28px auto;padding:0 20px;display:flex;flex-direction:column;align-items:stretch}
+.connector{width:2px;height:28px;background:linear-gradient(180deg,#c8c4bb,#e2e0da);margin:0 auto}
+.node{background:#fff;border-radius:14px;border:1.5px solid #e2e0da;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.node[data-type="SAFETY"]{border-left:4px solid #c0392b}
+.node[data-type="DIAGNOSE"]{border-left:4px solid #1b2838}
+.node[data-type="REFER"]{border-left:4px solid #7b2d8b}
+.node[data-type="TREAT"]{border-left:4px solid #0a7c6e}
+.node[data-type="LIFESTYLE"]{border-left:4px solid #2e7d32}
+.node-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0}
+.node[data-type="SAFETY"] .node-num{background:#fde8e8;color:#c0392b}
+.node[data-type="DIAGNOSE"] .node-num{background:#e8edf5;color:#1b2838}
+.node[data-type="REFER"] .node-num{background:#f3e8f7;color:#7b2d8b}
+.node[data-type="TREAT"] .node-num{background:#e8f5f3;color:#0a7c6e}
+.node[data-type="LIFESTYLE"] .node-num{background:#e8f5e9;color:#2e7d32}
+.node-head{display:flex;align-items:center;gap:12px;padding:14px 16px 10px;border-bottom:1px solid #f0ede8}
+.node-tag{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:20px;flex-shrink:0}
+.node[data-type="SAFETY"] .node-tag{background:#fde8e8;color:#c0392b}
+.node[data-type="DIAGNOSE"] .node-tag{background:#e8edf5;color:#1b2838}
+.node[data-type="REFER"] .node-tag{background:#f3e8f7;color:#7b2d8b}
+.node[data-type="TREAT"] .node-tag{background:#e8f5f3;color:#0a7c6e}
+.node[data-type="LIFESTYLE"] .node-tag{background:#e8f5e9;color:#2e7d32}
+.node-head h3{font-size:.95rem;font-weight:700;color:#1a1a2e;line-height:1.3;flex:1}
+.node-tick{display:flex;align-items:center;padding:0 16px 0 0}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:#888;user-select:none}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:#c0392b;cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:#0a7c6e;font-weight:600}
+.node-body{padding:14px 16px;font-size:.85rem;line-height:1.6;color:#333}
+.node-body>p,.node-body>span{display:block;margin-bottom:10px;color:#555}
+.kv{display:grid;grid-template-columns:minmax(120px,180px) 1fr;gap:1px;background:#e2e0da;border:1px solid #e2e0da;border-radius:8px;overflow:hidden;margin-top:10px}
+.kv>div{background:#fff;padding:8px 10px;font-size:.82rem;line-height:1.5}
+.kv>div:nth-child(odd){font-weight:600;color:#1b2838;background:#f7f6f3}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-top:10px}
+.rftile{background:linear-gradient(135deg,#fff5f5,#fde8e8);border:1px solid #f5c0c0;border-radius:8px;padding:10px 12px;font-size:.8rem;line-height:1.5;color:#4a0000}
+.rftile b{display:block;color:#c0392b;font-size:.82rem;margin-bottom:2px}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-top:10px}
+.b-card{border:1px solid #e2e0da;border-radius:8px;overflow:hidden}
+.b-cond{background:#f7f6f3;padding:7px 10px;font-size:.75rem;font-weight:700;color:#555;border-bottom:1px solid #e2e0da}
+.b-drug{padding:7px 10px 4px;font-size:.82rem;font-weight:700;color:#0a7c6e}
+.b-note{padding:0 10px 8px;font-size:.76rem;color:#555;line-height:1.4}
+.ladder{margin-top:10px;border-left:3px solid #c0392b;padding-left:0}
+.rung{display:flex;align-items:flex-start;gap:0;padding:8px 12px;border-bottom:1px solid #f0ede8;font-size:.82rem}
+.rung:last-child{border-bottom:none}
+.rn{min-width:72px;font-weight:700;color:#c0392b;font-size:.78rem;padding-top:1px}
+.rt{flex:1;color:#333;line-height:1.5}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-top:10px}
+.lstile{background:linear-gradient(135deg,#f1f8e9,#e8f5e9);border:1px solid #c8e6c9;border-radius:8px;padding:10px 12px;font-size:.8rem;line-height:1.5;color:#1b4a1f}
+.lstile b{display:block;color:#2e7d32;font-size:.82rem;margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.02em;vertical-align:middle}
+.pill-red{background:#fde8e8;color:#c0122a;border:1px solid #f5c0c0}
+.pill-purple{background:#f3e8f7;color:#6a1b9a;border:1px solid #d9b8e8}
+.pill-blue{background:#e8edf5;color:#1b2838;border:1px solid #b8c8e0}
+.pill-teal{background:#e8f5f3;color:#0a7c6e;border:1px solid #b8ddd8}
+.pill-amber{background:#fff8e1;color:#b45309;border:1px solid #fcd980}
+.pill-green{background:#e8f5e9;color:#2e7d32;border:1px solid #c8e6c9}
+.pill-grey{background:#f5f5f5;color:#555;border:1px solid #ddd}
+.why-row{border-top:1px solid #f0ede8;padding:0}
+.why-btn{width:100%;text-align:left;padding:9px 16px;background:none;border:none;font-size:.78rem;font-weight:600;color:#888;cursor:pointer;display:flex;align-items:center;gap:6px;transition:background .15s}
+.why-btn:hover{background:#f7f6f3}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 16px 14px;font-size:.8rem;color:#555;line-height:1.6;background:#fafaf8;border-top:1px dashed #e2e0da}
+.why-drawer.open{display:block}
+.alg-foot{max-width:820px;margin:20px auto 0;padding:14px 20px;font-size:.75rem;color:#888;line-height:1.6;border-top:1px solid #e2e0da}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🩸</div>
+  <div>
+    <b>Haematuria — Visible & Non-Visible, Adult Presentation</b>
+    <small>From incidental dipstick finding to urgent cancer pathway · UK Primary Care</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — confirm true haematuria, apply the specific NICE NG12 age thresholds for visible vs non-visible (never blame a transient UTI), investigate the cause, treat the benign causes, refer on the cancer pathway, and safety-net the recheck.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Haematuria</span><div class="body"><b>Visible (frank)</b> vs <b>non-visible</b> (dip/microscopy). Pain, LUTS, clots, anticoagulation, smoking (bladder-cancer risk), occupational dyes. Confirm; <b>MSU to exclude UTI</b>; U&amp;E, ACR. Exclude menstruation / exercise / myoglobin.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — NICE NG12 referral thresholds</span><span class="ttl">Meets a 2WW threshold, or retention?</span><div class="body"><ul>
+      <li><b>Visible haematuria aged ≥45</b> — unexplained, or persisting/recurring after UTI treatment → bladder cancer</li>
+      <li><b>Non-visible haematuria aged ≥60</b> with dysuria or a raised WCC → bladder cancer</li>
+      <li><b>Aged ≥60 + unexplained non-visible haematuria + raised WCC/recurrent UTI</b></li>
+      <li><b>Clot retention</b> → urology emergency · child with visible haematuria → ?Wilms', discuss paeds</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · refer</span><span class="ttl">2WW urology</span><div class="body">Meets threshold → urgent suspected bladder/renal cancer referral. Clot retention → urology. <b>Women ≥55 + visible haematuria + thrombocytosis/anaemia/high glucose</b> → also consider endometrial (TVUSS).</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — work up cause</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">By pattern</span><div class="body">MSU + recheck dip after any UTI treatment; U&amp;E, <b>ACR/PCR</b> (glomerular), BP; imaging (USS/CT urogram) and cystoscopy via urology where indicated.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · common causes</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">UTI / infective</div><div class="box ix"><span class="ttl">Common, but recheck</span><div class="body">Cystitis, prostatitis, schistosomiasis (travel). Treat infection — <b>recheck the dip after treatment</b>; persistent haematuria needs investigation.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Stones / structural</div><div class="box ix"><span class="ttl">Urological</span><div class="body">Renal/ureteric stones (colic), BPH, trauma, recent instrumentation; imaging.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Malignant / glomerular</div><div class="box ix"><span class="ttl">Don't miss</span><div class="body"><b>Bladder, renal, prostate cancer</b> (apply NG12). Non-visible + proteinuria/raised creatinine/dysmorphic RBC → <b>glomerular</b> → nephrology.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · treat the benign cause</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — treat the confirmed cause</span><span class="ttl">After excluding cancer</span><div class="body"><ul>
+      <li><b>UTI:</b> appropriate antibiotic, then recheck urine to confirm clearance of blood.</li>
+      <li><b>Stones:</b> analgesia + the renal-colic pathway (medical expulsive therapy / urology).</li>
+      <li><b>BPH-related:</b> follow the LUTS pathway (alpha-blocker ± 5-ARI).</li>
+      <li><b>Glomerular:</b> nephrology-led — BP control + ACEi/ARB if proteinuric, treat the underlying nephropathy.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-red">Same-day</span> clot retention, haemodynamically significant bleeding.</li>
+      <li><span class="pill pill-purple">2WW · NICE NG12</span> visible haematuria ≥45 (unexplained or post-UTI); non-visible ≥60 + dysuria/raised WCC → bladder/renal cancer pathway.</li>
+      <li><span class="pill pill-purple">Nephrology</span> non-visible haematuria + significant proteinuria (ACR ≥30 / PCR ≥50), declining eGFR, or hypertension (glomerular disease).</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · modify &amp; reduce risk</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; risk reduction</span><span class="ttl">Address modifiable factors</span><div class="body"><b>Smoking cessation</b> (the leading modifiable bladder-cancer risk) · adequate hydration and stone-prevention advice for recurrent calculi · BP and cardiovascular-risk control in glomerular disease · review anticoagulation appropriately (but <b>never</b> attribute haematuria to it without investigation) · occupational exposure review (aromatic amines/dyes).</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Same-day</b> if unable to pass urine (clot retention), heavy bleeding or fever + loin pain. <b>Always recheck the dipstick after treating a UTI</b> — persistent haematuria at NG12 thresholds needs urgent urology even if symptoms settled. <b>Monitor</b> persistent non-visible haematuria (annual BP, eGFR, ACR) and re-refer if it becomes visible or proteinuria develops.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Do not let a UTI explain it away:</b> always recheck the dip after treating infection — persistent haematuria meeting the NG12 age thresholds needs urgent urological investigation. And visible haematuria in an anticoagulated patient is still investigated, not blamed on the drug.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- STEP 1 -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-head">
+      <div class="node-num">1</div>
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Exclude Emergencies & Urgent Malignancy</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Haematuria can represent emergency, urgent cancer, or benign pathology. Triage immediately.</span>
+      <div class="rfgrid">
+        <div class="rftile"><b>Haemodynamic instability</b> Tachycardia, hypotension, pallor with heavy visible haematuria → 999 (massive haemorrhage, clot retention)</div>
+        <div class="rftile"><b>Clot retention / acute urinary retention</b> Unable to pass urine + visible haematuria + bladder distension → 999 (catheterisation needed urgently)</div>
+        <div class="rftile"><b>Visible haematuria (frank) in ≥40y</b> ANY episode, even single, pain-free or painful → <b>2WW urology</b> (NICE NG12 — bladder/upper tract cancer until proven otherwise)</div>
+        <div class="rftile"><b>Flank pain + haematuria + fever</b> Rigors, high fever, unwell → same-day ED (urosepsis from obstructing stone or pyelonephritis)</div>
+        <div class="rftile"><b>NVH + age ≥60 with dysuria</b> Non-visible haematuria + recurrent UTI symptoms → 2WW urology (bladder cancer can mimic UTI)</div>
+        <div class="rftile"><b>Weight loss + haematuria + loin mass</b> Constitutional symptoms, palpable renal mass → 2WW (renal cell carcinoma)</div>
+        <div class="rftile"><b>Anticoagulation + visible haematuria</b> Never attribute VH solely to anticoagulation — cancer co-exists in &gt;10%. Investigate as per normal pathway.</div>
+        <div class="rftile"><b>Post-traumatic haematuria</b> Any trauma mechanism + haematuria → same-day/999 for imaging (renal laceration, urethral injury)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">NICE NG12 mandates 2WW urology referral for visible haematuria in adults ≥45y and NVH in adults ≥60y with dysuria or raised WBC. Bladder cancer has a 5-year survival of 77% if caught at stage 1 vs 15% at stage 4. In patients with visible haematuria, 20% will have a urological malignancy identified. Anticoagulants do NOT cause haematuria by themselves — a structural cause is found in 10-25% of anticoagulated patients with VH and must be excluded.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 2 -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-head">
+      <div class="node-num">2</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Classify — Visible vs Non-Visible Haematuria</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Establish the type — this determines the entire pathway and urgency of referral.</span>
+      <div class="kv">
+        <div>Visible haematuria (VH)</div><div>Patient can see blood in urine. Also called gross / frank haematuria. <b>Always requires investigation</b> regardless of age (NICE NG12: 2WW if ≥45y)</div>
+        <div>Non-visible haematuria (NVH)</div><div>Detected on dipstick or MSU only. Previously called microscopic haematuria. Threshold: <b>≥1+ blood on dipstick</b> (confirmed on 2 out of 3 samples)</div>
+        <div>Dipstick interpretation</div><div>Myoglobinuria and haemoglobinuria give false positives. Confirm NVH with <b>urine microscopy (MSU)</b> if dipstick positive. RBC ≥3/HPF on microscopy = significant</div>
+        <div>Exclude contaminants</div><div>Menstruation (repeat post-period), beetroot/rifampicin ingestion (pink urine, dipstick negative), vigorous exercise (resolves 24-48h), urethral trauma (catheterisation)</div>
+        <div>Symptomatic vs asymptomatic</div><div>Symptomatic (with LUTS, pain, fever) = likely infection/stone first. Asymptomatic = higher cancer risk. Both require investigation if confirmed.</div>
+        <div>Transient vs persistent</div><div>Single dipstick finding after UTI — treat UTI then re-check dipstick 4-6 weeks post-treatment. Persistent NVH = 2 positive samples → investigate</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">NVH is present in 2-3% of the general population. Persistent NVH (2+ positive dipstick samples) has a malignancy rate of ~2-3%. A single positive dipstick following a UTI does not require investigation until 4-6 weeks post-treatment — UTI can cause NVH that resolves. NICE NG12 thresholds are based on cancer risk modelling: VH in ≥45y or NVH + dysuria/raised WBC in ≥60y warrants urgent urology referral.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 3 -->
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+    <div class="node-head">
+      <div class="node-num">3</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Targeted History — Localise the Source & Identify Cause</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>History localises bleeding to upper or lower tract and narrows the differential significantly.</span>
+      <div class="kv">
+        <div>Timing of haematuria</div><div>Initial stream only = urethral/prostate source. Terminal = bladder neck/trigone. Throughout = upper tract, bladder body. Clots = significant bleed</div>
+        <div>Associated LUTS</div><div>Frequency, urgency, nocturia, poor flow, hesitancy → prostate (BPH/cancer), bladder pathology</div>
+        <div>Pain features</div><div>Loin-to-groin colicky pain → ureteric calculus. Dull loin ache → renal tumour, pyelonephritis. Suprapubic pain → cystitis, bladder tumour</div>
+        <div>Occupational / exposure</div><div><b>Aniline dyes, aromatic amines</b> (leather, printing, rubber industries) → <b>bladder cancer risk</b>. Cyclophosphamide, pioglitazone, phenacetin</div>
+        <div>Smoking history</div><div>Smoking × 2-6 relative risk of bladder cancer. Pack years. Current/ex. Biggest modifiable risk factor for transitional cell carcinoma.</div>
+        <div>Systemic features</div><div>Joint pains, rash, oedema, hypertension, recent sore throat/skin infection → glomerulonephritis (IgA nephropathy, post-strep GN, vasculitis)</div>
+        <div>Family history</div><div>Polycystic kidney disease (flank pain, hypertension, palpable kidneys), Alport syndrome, von Hippel-Lindau (renal tumours)</div>
+        <div>Drugs</div><div>Anticoagulants (warfarin, DOACs), antiplatelets (aspirin, clopidogrel). NSAIDs (papillary necrosis if chronic). Cyclophosphamide (haemorrhagic cystitis)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Occupational exposure to aniline dyes/rubber manufacturing increases bladder cancer risk 4-fold — ask specifically in any haematuria. IgA nephropathy (Berger's disease) is the most common glomerulonephritis worldwide — presents with frank haematuria 24-72h after URTI. Post-streptococcal GN presents 1-3 weeks after throat/skin infection with haematuria, proteinuria, hypertension, and oedema. These require urgent nephrology referral, not urology.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 4 -->
+  <div class="node" data-type="DIAGNOSE" data-step="4">
+    <div class="node-head">
+      <div class="node-num">4</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Examination — Abdominal, Renal, and Urological Assessment</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Examination guides urgency and helps localise the lesion.</span>
+      <div class="kv">
+        <div>Blood pressure</div><div>Hypertension + haematuria + proteinuria = <b>glomerulonephritis</b> until proven otherwise. Hypertension common in PKD. Check both arms.</div>
+        <div>Abdomen</div><div>Ballottable renal mass → renal carcinoma, PKD (bilateral masses). Suprapubic tenderness → cystitis, retention. Bladder distension → clot retention.</div>
+        <div>Flanks</div><div>Renal angle (CVA) tenderness → pyelonephritis, obstructing calculus. Loin mass → renal tumour.</div>
+        <div>DRE (male)</div><div>Prostate size, texture, nodules, asymmetry. Hard/nodular prostate → prostate cancer. Tender/boggy → prostatitis. Check PSA.</div>
+        <div>Pelvic exam (female)</div><div>Exclude gynaecological source — cervical abnormalities, uterine tenderness. Vaginal atrophy in post-menopausal → common cause of NVH.</div>
+        <div>Oedema / fluid</div><div>Peripheral oedema, periorbital puffiness → nephrotic/nephritic syndrome, cardiac/hepatic cause. Assess for ascites.</div>
+        <div>Skin / joints</div><div>Purpuric rash → IgA vasculitis (HSP). Joint disease → SLE, vasculitis (check ANA, ANCA). Skin ulcers → SLE nephritis.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">DRE is essential in males with haematuria — prostate cancer is detected in 3-5% of haematuria investigations. Vaginal atrophy causes NVH in up to 15% of post-menopausal women — this is benign and does not require urology referral if confirmed. Ballottable renal masses require urgent ultrasound — renal cell carcinoma presents asymptomatically in &gt;50% of cases (incidental or haematuria). The 'classic triad' (haematuria, flank pain, palpable mass) occurs in only 10% of RCC.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 5 -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+    <div class="node-head">
+      <div class="node-num">5</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — Urinalysis, Bloods & Imaging</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Order systematically — urine, bloods, then imaging. Imaging is mandatory for all confirmed haematuria.</span>
+      <div class="kv">
+        <div>Urine <span class="pill pill-blue">All</span></div><div>MSU for MC&S (exclude infection — do NOT investigate NVH within 4/52 of UTI). Urine dipstick: blood, protein, nitrites, leucocytes. Early morning urine (EMU) × 3 for cytology if high cancer risk (smoker, occupational exposure, ≥60y)</div>
+        <div>Urine protein</div><div>Protein + haematuria → renal cause. ACR (albumin:creatinine ratio) &gt;3 mg/mmol = significant proteinuria → suspect glomerulonephritis/nephrology referral</div>
+        <div>Bloods <span class="pill pill-blue">All</span></div><div>FBC (anaemia of malignancy, thrombocytopaenia), U&E/eGFR/creatinine (renal function), coagulation if on anticoagulants</div>
+        <div>PSA (males)</div><div>PSA in males ≥50y (or ≥45y with symptoms/family history). Discuss pros/cons before testing. Raised PSA + haematuria → urology 2WW</div>
+        <div>Calcium / urate</div><div>Hypercalciuria and hyperuricosuria → renal stones. Serum calcium, urate in recurrent stone-formers</div>
+        <div>Glomerulonephritis screen</div><div>If proteinuria + haematuria + HTN: ASOT (post-strep), ANA, ANCA, anti-dsDNA, C3/C4 (complement), anti-GBM antibody, cryoglobulins</div>
+        <div>Imaging <span class="pill pill-blue">Mandatory</span></div><div>CT urogram (CTU) — gold standard for upper tract. OR renal ultrasound as first-line if CTU not immediately available. USS does not exclude bladder tumours adequately.</div>
+        <div>When NOT to investigate</div><div>NVH on single dipstick post-UTI — treat UTI, recheck at 4-6/52. Children with haematuria → paediatric nephrology, not urology algorithm. Exercise-induced transient haematuria resolving &lt;48h — no investigation needed.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">CT urogram has sensitivity of 96% for upper tract malignancy and 95% for calculi (vs USS 60-70%). Urine cytology has poor sensitivity (20-40%) for low-grade bladder tumours — cystoscopy remains gold standard for bladder. However, urine cytology is valuable in high-grade/carcinoma in situ (sensitivity 80%). PSA has sensitivity 21% and specificity 91% for prostate cancer — shared decision-making is mandatory before testing. Urine MC&S is mandatory to exclude UTI as confounding cause of NVH.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 6 -->
+  <div class="node" data-type="REFER" data-step="6">
+    <div class="node-head">
+      <div class="node-num">6</div>
+      <span class="node-tag">Refer</span>
+      <h3>Referral Pathways — NICE NG12 Cancer Criteria & Nephrology</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Apply NICE NG12 thresholds precisely — under-referral risks delayed cancer diagnosis, over-referral wastes 2WW capacity.</span>
+      <div class="kv">
+        <div><span class="pill pill-red">999</span></div><div>Haemodynamic instability (massive VH), acute clot retention, urosepsis with shock → emergency department immediately</div>
+        <div><span class="pill pill-red">Same-day</span></div><div>Clot retention (stable but unable to void), urosepsis (unwell + fever + haematuria), acute kidney injury on U&E + haematuria</div>
+        <div><span class="pill pill-purple">2WW Urology</span></div><div>Visible haematuria ≥45y (any episode). NVH ≥60y + dysuria OR raised WBC. Unexplained LUTS in ≥60y (consider bladder cancer). Raised PSA + haematuria.</div>
+        <div><span class="pill pill-purple">2WW Urology</span></div><div>Renal mass on USS/imaging suspicious for malignancy. Ureteric mass. Bladder mass on USS. Upper tract filling defect on IVU/CTU.</div>
+        <div><span class="pill pill-amber">Urgent Nephrology</span></div><div>Haematuria + significant proteinuria (ACR &gt;30 mg/mmol). Haematuria + AKI. Haematuria + rapidly rising creatinine. Dysmorphic RBCs/casts on microscopy (RBC casts = glomerulonephritis).</div>
+        <div><span class="pill pill-blue">Routine Urology</span></div><div>Recurrent UTI with haematuria in ≥40y (not responding to treatment). Persistent NVH ≥40y not meeting 2WW criteria. Ureteric calculus not passing spontaneously after 4 weeks.</div>
+        <div>Primary care manage</div><div>Uncomplicated UTI with NVH — treat UTI, recheck. Vaginal atrophy-related NVH (postmenopausal) — topical oestrogen. Exercise-induced transient haematuria. Small distal calculus with adequate analgesia passing spontaneously.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">NICE NG12 (2015, updated 2023) recommends 2WW for VH ≥45y based on cancer risk of ~2-10% per episode. NVH ≥60y + dysuria is a 2WW trigger — bladder cancer classically presents with painless VH but 10-15% present with NVH alone. RBC casts on urine microscopy are pathognomonic of glomerulonephritis and mandate urgent nephrology referral — nephrotic range proteinuria (ACR &gt;300 mg/mmol) requires same-day assessment.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 7 -->
+  <div class="node" data-type="TREAT" data-step="7">
+    <div class="node-head">
+      <div class="node-num">7</div>
+      <span class="node-tag">Treat</span>
+      <h3>Treatment — Primary Care Management of Confirmed Causes</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Primary care manages UTI, stones (minor), and benign causes. All confirmed malignancy is secondary care.</span>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">UTI (cystitis, women)</div>
+          <div class="b-drug">Nitrofurantoin <span class="pill pill-teal">1st line</span></div>
+          <div class="b-note">100mg MR BD × 3 days (uncomplicated). Avoid if eGFR &lt;30. Trimethoprim 200mg BD × 3 days if nitrofurantoin CI. Recheck dipstick 4-6/52 post-treatment.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Ureteric calculus (≤5mm)</div>
+          <div class="b-drug">Medical expulsive therapy</div>
+          <div class="b-note">Tamsulosin 400mcg OD (unlicensed but evidence-based). Adequate analgesia (NSAIDs + paracetamol). 85% of ≤4mm stones pass spontaneously. High fluid intake 2-3L/day.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">BPH with haematuria</div>
+          <div class="b-drug">Tamsulosin 400mcg OD</div>
+          <div class="b-note">After urology review. 5-alpha reductase inhibitors (finasteride 5mg OD) reduce haematuria risk from BPH. Must exclude prostate cancer first.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Vaginal atrophy (postmenopausal)</div>
+          <div class="b-drug">Topical oestrogen</div>
+          <div class="b-note">Vagifem (estradiol) 10mcg pessary ON for 2 weeks then twice weekly. Systemic absorption minimal. Refer if haematuria persists after 12 weeks treatment.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Anticoagulant review</div>
+          <div class="b-drug">Do NOT stop anticoagulant</div>
+          <div class="b-note">Investigate haematuria fully (cancer co-exists). Only withhold if massive life-threatening haemorrhage. Review INR if on warfarin — supratherapeutic range.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Exercise-induced haematuria</div>
+          <div class="b-drug">Reassurance + rest</div>
+          <div class="b-note">Repeat dipstick 24-48h after cessation of exercise. Resolves completely. No investigation needed if resolves. Investigate if persists &gt;48h post-exercise.</div>
+        </div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">NICE CG149 (UTI in adults): nitrofurantoin is first-line for uncomplicated lower UTI — trimethoprim resistance now &gt;30% locally in many UK areas, making nitrofurantoin the preferred empirical choice. Tamsulosin for medical expulsive therapy (MET) is supported by BJUI guidelines — meta-analyses show 29% improvement in passage rate for 5-10mm stones. 5-alpha reductase inhibitors reduce haematuria episodes from BPH by 50% at 6 months (NNT ~8).</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 8 -->
+  <div class="node" data-type="LIFESTYLE" data-step="8">
+    <div class="node-head">
+      <div class="node-num">8</div>
+      <span class="node-tag">Lifestyle</span>
+      <h3>Prevention & Risk Reduction — Modifiable Factors</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Address modifiable risk factors for the underlying cause — reduces recurrence and cancer risk.</span>
+      <div class="lsgrid">
+        <div class="lstile"><b>Smoking cessation</b> Bladder cancer risk returns to near-normal 10-15 years after stopping. Refer to NHS Stop Smoking Service. Single most important lifestyle intervention for TCC prevention.</div>
+        <div class="lstile"><b>Hydration</b> 2-2.5L fluid/day reduces urinary stone recurrence by 50% (RCT evidence). Also reduces UTI risk. Plain water preferred over fruit juices (oxalate content).</div>
+        <div class="lstile"><b>Diet (stone prevention)</b> Reduce oxalate-rich foods (spinach, nuts, chocolate) if calcium oxalate stones. Reduce animal protein (uric acid stones). Normal calcium intake — NOT low calcium diet.</div>
+        <div class="lstile"><b>Occupational safety</b> Aniline dyes, aromatic amines, polycyclic aromatic hydrocarbons → bladder cancer risk. Ensure appropriate PPE use. Report to occupational health. Notify RIDDOR if occupational bladder cancer confirmed.</div>
+        <div class="lstile"><b>Weight management</b> Obesity increases RCC risk (RR 1.4 per 5kg/m² BMI increase). Metabolic syndrome also increases urinary stone risk via hyperuricosuria.</div>
+        <div class="lstile"><b>Pelvic floor exercises</b> For women with recurrent UTI — incomplete bladder emptying increases infection risk. Post-void residual &gt;100ml needs investigation.</div>
+        <div class="lstile"><b>Cranberry products</b> Cranberry capsules/juice have modest evidence for reducing recurrent UTI (OR ~0.67). Not proven in single-episode UTI. Advise as adjunct, not replacement for treatment.</div>
+        <div class="lstile"><b>NSAID review</b> Chronic NSAID use → papillary necrosis + haematuria. Review necessity. Switch to paracetamol where possible. Particularly important in elderly with recurrent NVH.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Smoking cessation is the most powerful cancer prevention strategy for bladder cancer — 50% of bladder cancers are attributable to smoking. The PREVENTED study (2016) showed 2.5L/day water intake reduced stone recurrence by 50% vs controls. Paradoxically, LOW calcium diets increase calcium oxalate stone risk by increasing intestinal oxalate absorption — patients should be counselled on this counter-intuitive fact (Curhan et al, NEJM 1993).</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 9 -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-head">
+      <div class="node-num">9</div>
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up — Safety-Netting & Monitoring Plan</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Close the loop — haematuria must never be left unresolved without a diagnosis.</span>
+      <div class="kv">
+        <div>4-6 weeks</div><div>Repeat dipstick after completing UTI treatment. Renal function (U&E/eGFR) if stone or renal pathology. Confirm MSU clearance if treated for infection.</div>
+        <div>6-8 weeks</div><div>If awaiting urology 2WW — chase referral status. Confirm appointment received. Document in notes if patient declines investigation.</div>
+        <div>3 months</div><div>NVH in primary care management — repeat dipstick. If persists → review investigation plan. If new symptoms develop → re-investigate or re-refer urgently.</div>
+        <div>Post-stone</div><div>Stone formers: 24h urine collection for metabolic workup (calcium, oxalate, urate, citrate, phosphate, creatinine) — to guide dietary/pharmacological prevention</div>
+        <div>Post-cancer treatment</div><div>Bladder cancer: urology-led surveillance cystoscopy (3-monthly for 2 years, then 6-monthly). RCC: CT surveillance (secondary care). GP role: BP control, eGFR monitoring, psychological support.</div>
+        <div>Safety-net <span class="pill pill-red">999</span></div><div>Heavy visible bleeding, clots, inability to pass urine, collapse, severe pain → 999 immediately</div>
+        <div>Safety-net same-day</div><div>Any new VH, frank haematuria, high fever + urinary symptoms, rapidly worsening loin pain, significant medication side effects</div>
+        <div>Unresolved NVH</div><div>Persistent NVH without diagnosis after full investigation (CTU + cystoscopy negative) → IgA nephropathy is likely (most common cause). Annual review: BP, eGFR, ACR. Refer nephrology if eGFR declining or proteinuria worsening.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Persistent NVH without identified cause after negative cystoscopy and CTU is found in 60-70% of cases — IgA nephropathy accounts for a significant proportion. Annual monitoring (BP, eGFR, ACR) is essential — 20-30% of IgA nephropathy patients progress to ESRD over 20 years. Unresolved NVH is not benign — a 7-year follow-up study (Khadra et al) showed 2% developed urological malignancy during surveillance. Document all referrals and patient decisions regarding investigation carefully.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG12 (Suspected Cancer 2023 update), NICE CG149 (UTI 2018), BSG Haematuria Guidelines, EAU Guidelines on Urological Infections 2023, BAUS Stone Guidelines. Always adapt to patient context and local formulary/protocols.
+</div>
+
+<script>
+(function(){
+  const STORE='rgp.alg.haematuria.v1';
+  const flow=document.getElementById('flow');
+  const nodes=[...flow.querySelectorAll('.node')];
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=nodes.length;
+  document.getElementById('pTotal').textContent=total;
+  function save(){const state=nodes.map(n=>n.querySelector('input[type=checkbox]').checked);localStorage.setItem(STORE,JSON.stringify(state));}
+  function load(){try{const s=JSON.parse(localStorage.getItem(STORE)||'[]');nodes.forEach((n,i)=>{if(s[i]){n.querySelector('input[type=checkbox]').checked=true;n.classList.add('done');}});}catch(e){}}
+  function updateProgress(){const done=nodes.filter(n=>n.querySelector('input[type=checkbox]').checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';}
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');
+    cb.addEventListener('change',()=>{n.classList.toggle('done',cb.checked);save();updateProgress();});
+    const btn=n.querySelector('.why-btn');
+    const drawer=n.querySelector('.why-drawer');
+    btn.addEventListener('click',()=>{const open=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!open));drawer.classList.toggle('open',!open);});
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{nodes.forEach(n=>{n.querySelector('input[type=checkbox]').checked=false;n.classList.remove('done');});flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);updateProgress();});
+  load();updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

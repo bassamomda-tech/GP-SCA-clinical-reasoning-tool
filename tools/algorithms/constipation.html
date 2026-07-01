@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="algkey" content="rgp.alg.constipation.v1"/>
+<title>Constipation Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,::before,::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f4f0;--surface:#ffffff;--surface2:#f9f8f5;
+  --border:#e2e0d8;--border2:#d0cec4;
+  --text:#1a1917;--text2:#4a4845;--text3:#7a7875;
+  --safety:#dc2626;--safety-bg:#fef2f2;--safety-border:#fecaca;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;--diagnose-border:#bfdbfe;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;--refer-border:#ddd6fe;
+  --treat:#059669;--treat-bg:#ecfdf5;--treat-border:#a7f3d0;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;--lifestyle-border:#fde68a;
+  --red:#dc2626;--purple:#7c3aed;--blue:#2563eb;--teal:#0d9488;
+  --amber:#d97706;--green:#16a34a;--grey:#6b7280;
+  --radius:12px;--radius-sm:8px;--shadow:0 1px 3px rgba(0,0,0,.08),0 4px 12px rgba(0,0,0,.05);
+  --font-body:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;padding:0 0 40px}
+/* Banner */
+.stem-banner{display:flex;align-items:center;gap:16px;background:var(--text);color:#fff;padding:20px 28px;border-radius:0}
+.sb-icon{font-size:2.2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.1rem;font-weight:600;letter-spacing:-.01em}
+.stem-banner small{opacity:.65;font-size:.82rem}
+/* Progress */
+.alg-progress{display:flex;align-items:center;gap:12px;padding:14px 28px;background:var(--surface);border-bottom:1px solid var(--border);font-size:.82rem;color:var(--text2);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.pcount{font-weight:600;color:var(--text);white-space:nowrap}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:99px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#2563eb,#059669);border-radius:99px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font:inherit;font-size:.78rem;padding:4px 12px;border:1px solid var(--border2);border-radius:99px;background:transparent;cursor:pointer;color:var(--text2);transition:all .15s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+/* Flow */
+.alg-flow{max-width:840px;margin:0 auto;padding:28px 20px 0}
+.connector{width:2px;height:28px;background:linear-gradient(var(--border2),var(--border2));margin:0 auto;opacity:.6}
+/* Node */
+.node{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s}
+.node:hover{box-shadow:0 2px 6px rgba(0,0,0,.08),0 8px 24px rgba(0,0,0,.08)}
+.node[data-type="SAFETY"]{border-left:4px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-left:4px solid var(--diagnose)}
+.node[data-type="REFER"]{border-left:4px solid var(--refer)}
+.node[data-type="TREAT"]{border-left:4px solid var(--treat)}
+.node[data-type="LIFESTYLE"]{border-left:4px solid var(--lifestyle)}
+.node-head{display:flex;align-items:flex-start;gap:14px;padding:18px 20px 14px;border-bottom:1px solid var(--border)}
+.node-num{font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--text3);padding-top:2px}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:99px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--red)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--blue)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--purple)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--green)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--amber)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;color:var(--text);letter-spacing:-.01em}
+.node-tick{padding:16px 20px 4px;display:flex;align-items:center;gap:8px}
+.node-tick label{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.82rem;color:var(--text3);user-select:none}
+.node-tick input[type=checkbox]{width:18px;height:18px;accent-color:var(--treat);cursor:pointer}
+.tlbl{}
+.node.done{opacity:.75}
+.node.done .node-head{background:var(--surface2)}
+.node-body{padding:4px 20px 16px;font-size:.88rem;color:var(--text2)}
+.node-body>p,.node-body>span{display:block;margin-bottom:12px;color:var(--text2)}
+/* KV Grid */
+.kv{display:grid;grid-template-columns:minmax(130px,30%) 1fr;gap:0;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin:10px 0}
+.kv>div{padding:9px 13px;font-size:.84rem;border-bottom:1px solid var(--border)}
+.kv>div:last-child,.kv>div:nth-last-child(2){border-bottom:none}
+.kv>div:nth-child(odd){background:var(--surface2);font-weight:500;color:var(--text);font-size:.81rem}
+.kv>div:nth-child(even){color:var(--text2)}
+/* RF Grid */
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:10px 0}
+.rftile{background:var(--safety-bg);border:1px solid var(--safety-border);border-radius:var(--radius-sm);padding:11px 13px;font-size:.82rem;color:var(--text);line-height:1.45}
+.rftile b{display:block;color:var(--red);font-weight:600;margin-bottom:3px;font-size:.81rem}
+/* Branch */
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:10px 0}
+.b-card{border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.b-cond{background:var(--surface2);padding:8px 12px;font-size:.78rem;font-weight:600;color:var(--text);border-bottom:1px solid var(--border)}
+.b-drug{padding:8px 12px 4px;font-size:.86rem;font-weight:600;color:var(--treat)}
+.b-note{padding:0 12px 10px;font-size:.78rem;color:var(--text3);line-height:1.4}
+/* Ladder */
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.rung{display:flex;align-items:baseline;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:nth-child(odd){background:var(--surface2)}
+.rn{font-size:.72rem;font-weight:700;letter-spacing:.05em;color:var(--text3);white-space:nowrap;min-width:52px}
+.rt{color:var(--text);line-height:1.45;flex:1}
+/* Lifestyle Grid */
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}
+.lstile{background:var(--lifestyle-bg);border:1px solid var(--lifestyle-border);border-radius:var(--radius-sm);padding:11px 13px;font-size:.82rem;color:var(--text);line-height:1.45}
+.lstile b{display:block;color:var(--amber);font-weight:600;margin-bottom:3px;font-size:.81rem}
+/* Pills */
+.pill{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.04em;padding:2px 7px;border-radius:99px;vertical-align:middle;white-space:nowrap}
+.pill-red{background:#fee2e2;color:#b91c1c}
+.pill-purple{background:#ede9fe;color:#6d28d9}
+.pill-blue{background:#dbeafe;color:#1d4ed8}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#b45309}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+/* Why drawer */
+.why-row{border-top:1px solid var(--border);padding:0}
+.why-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:transparent;border:none;cursor:pointer;font:inherit;font-size:.8rem;font-weight:500;color:var(--text3);transition:background .15s}
+.why-btn:hover{background:var(--surface2);color:var(--text)}
+.caret{font-size:.9rem;transition:transform .2s}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:14px 20px;font-size:.83rem;color:var(--text2);line-height:1.65;background:var(--surface2);border-top:1px solid var(--border)}
+.why-drawer b{color:var(--text)}
+/* Footer */
+.alg-foot{max-width:840px;margin:28px auto 0;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--text3);line-height:1.5}
+.alg-foot strong{color:var(--text)}
+/* Head flex fix */
+.node-head-inner{flex:1}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🟤</div>
+  <div>
+    <b>Constipation — Adult presentation in primary care</b>
+    <small>Covers new-onset, chronic, and opioid-induced constipation · Adults ≥18 · UK NHS pathway</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — exclude obstruction and the NG12 red flags, classify primary (functional) vs secondary (metabolic / drug / neuro / structural), climb the laxative ladder by subtype, refer when refractory, and keep lifestyle alongside throughout.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Constipation</span><div class="body">Bristol stool form, frequency, straining, incomplete emptying, duration and change from baseline. Diet, fluids, mobility, mood; <b>review drugs</b> (opioids, iron, CCBs, TCAs, anticholinergics). <b>PR exam</b> before any stimulant (impaction, fissure, mass).</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — obstruction &amp; NG12 red flags</span><span class="ttl">Serious cause?</span><div class="body"><ul>
+      <li><b>Bowel obstruction</b> — severe pain, distension, vomiting, no flatus → admit</li>
+      <li><b>Rectal bleeding</b> or <b>iron-deficiency anaemia</b></li>
+      <li><b>Unexplained weight loss</b>, abdominal/rectal mass</li>
+      <li><b>Persistent change in bowel habit ≥6 weeks aged ≥50/60</b></li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Admit / 2WW</span><div class="body">Obstruction → emergency admission. Cancer red flags → <b>FIT + colorectal 2WW</b> (don't wait for FIT if criteria already met).</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — work up cause</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Reversible causes</span><div class="body"><b>TSH, calcium, U&amp;E, glucose/HbA1c</b>; medication review. Coeliac serology if features. Bloods only where history suggests a secondary cause — most functional constipation needs none.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · primary vs secondary</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Primary / functional</div><div class="box ix"><span class="ttl">Rome IV subtypes</span><div class="body">Normal-transit (commonest), slow-transit, or <b>defaecatory/outlet dysfunction</b> (straining, digitation, incomplete evacuation → pelvic-floor).</div></div></div>
+      <div class="col"><div class="blabel">Secondary — metabolic / drug</div><div class="box ix"><span class="ttl">Treat the cause</span><div class="body"><b>Hypothyroidism, hypercalcaemia, hypokalaemia, diabetes</b>; <b>opioid-induced</b> (40–95% of opioid users) — won't respond to fibre alone.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Secondary — neuro / structural</div><div class="box ix"><span class="ttl">Often refractory</span><div class="body">Parkinson's, MS, spinal/cord lesion, autonomic neuropathy; fissure (painful avoidance), rectocele, prolapse, colorectal cancer.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · laxative ladder by subtype</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — stepwise laxatives</span><span class="ttl">Tailor to the cause, review at each step</span><div class="body"><ul>
+      <li><b>Functional:</b> ① bulk-forming (ispaghula/Fybogel) with adequate fluid → ② add osmotic <b>macrogol (Movicol)</b> 1–3 sachets/day (preferred over lactulose) → ③ add stimulant (senna/bisacodyl, short-term).</li>
+      <li><b>Opioid-induced:</b> osmotic + stimulant from the start (<b>not</b> bulk-forming); add a <b>PAMORA</b> (naloxegol 25 mg OD) if inadequate.</li>
+      <li><b>Faecal impaction:</b> high-dose macrogol disimpaction (8 sachets/day × 3 days) ± rectal (glycerol suppository, phosphate enema) before maintenance.</li>
+      <li><b>Refractory (women, ≥2 laxatives):</b> prucalopride 2 mg OD (NICE TA211). Defaecatory dysfunction → biofeedback, not more oral laxative.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-red">Emergency</span> bowel obstruction / perforation, impaction unresponsive to disimpaction.</li>
+      <li><span class="pill pill-purple">2WW · NICE NG12</span> change in bowel habit + rectal bleeding / weight loss, abdominal or rectal mass, iron-deficiency anaemia → <b>FIT + colorectal pathway</b>.</li>
+      <li><span class="pill pill-grey">Gastroenterology / colorectal</span> refractory after 6 months optimised treatment; <span class="pill pill-grey">pelvic-floor physio / continence nurse</span> for defaecatory dysfunction (biofeedback).</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · lifestyle (alongside laxatives)</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle — essential, not optional</span><span class="ttl">Reduce relapse (40% at 6 mo without it)</span><div class="body"><b>Gradually increase dietary fibre</b> to ~30 g/day · <b>fluids ≥1.5 L/day</b> · regular physical activity · <b>toileting routine</b> — respond to the urge, use a footstool, don't strain · review and reduce constipating drugs where possible. Lifestyle runs <i>alongside</i> every laxative step.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>999</b> if sudden complete obstruction, severe distension, rigid abdomen (perforation). <b>Same-day GP</b> if new rectal bleeding, weight loss, a rectal mass, or impaction not clearing. <b>Review:</b> response at 2–4 weeks, step up/down; attempt step-down at 3 months in mild cases; continue laxatives for the duration of opioid therapy; monitor U&amp;E on long-term macrogol/stimulants.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>New constipation in an older adult is not automatically benign:</b> a persistent change in bowel habit, especially with bleeding or weight loss, needs FIT and the colorectal pathway. And always do a PR before prescribing a stimulant — never give one into impaction.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head">
+    <div class="node-num">01</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Screen for serious pathology before assuming functional constipation</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Screened — no red flags identified</span></label></div>
+  <div class="node-body">
+    <span>Any of the following → urgent action required. Do not manage as simple constipation until excluded.</span>
+    <div class="rfgrid">
+      <div class="rftile"><b>Rectal bleeding (bright red / dark)</b> Especially if unprovoked, mixed with stool, or with altered stool — 2WW lower GI cancer referral</div>
+      <div class="rftile"><b>Unintentional weight loss ≥5% in 6 months</b> With new constipation → 2WW colorectal cancer. Check FBC, CRP, CEA</div>
+      <div class="rftile"><b>Change in bowel habit &gt;6 weeks age &gt;60</b> New looser stools OR constipation → 2WW colorectal referral per NICE NG12</div>
+      <div class="rftile"><b>Iron-deficiency anaemia</b> Unexplained IDA in men or postmenopausal women → 2WW lower GI. Check ferritin, FBC</div>
+      <div class="rftile"><b>Abdominal / rectal mass</b> Palpable mass on examination → same-day surgical assessment or urgent imaging</div>
+      <div class="rftile"><b>Acute intestinal obstruction</b> Absolute constipation + vomiting + distension + no flatus → 999 / A&amp;E immediately</div>
+      <div class="rftile"><b>Neurological symptoms</b> Saddle anaesthesia, new urinary retention, bilateral leg weakness → 999 cauda equina</div>
+      <div class="rftile"><b>Severe pain / peritonism</b> Board-like abdomen, rigid guarding, absent bowel sounds → 999 surgical emergency (volvulus, perforation)</div>
+      <div class="rftile"><b>Onset &lt;6 weeks age &gt;50 (no prior history)</b> No obvious cause → same-day or urgent lower GI assessment</div>
+      <div class="rftile"><b>Family history Lynch syndrome / FAP</b> With new bowel change → accelerated 2WW genetic / colorectal referral</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <b>NICE NG12</b> mandates 2WW referral for adults ≥40 with rectal bleeding + change in bowel habit, or ≥60 with change in bowel habit alone. Colorectal cancer affects ~43,000 UK patients/year; early diagnosis is the single biggest determinant of survival (90% 5-year survival Stage I vs 10% Stage IV). Missing a palpable mass or saddle anaesthesia can result in irreversible harm — cauda equina decompression must occur within hours. Volvulus and obstruction have 15–20% mortality if treatment delayed beyond 24h.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head">
+    <div class="node-num">02</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Diagnose</span>
+      <h3>Confirm constipation — Use Rome IV criteria and Bristol Stool Chart</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Diagnosis confirmed with criteria</span></label></div>
+  <div class="node-body">
+    <span>Constipation is a symptom-based diagnosis. Apply Rome IV criteria — ≥2 criteria for ≥3 months (onset ≥6 months ago).</span>
+    <div class="kv">
+      <div>Rome IV Criteria</div><div>≥2 of: &lt;3 stools/week · straining &gt;25% of defaecations · lumpy/hard stools (BSC 1–2) &gt;25% · sensation of incomplete evacuation &gt;25% · sensation of anorectal blockage &gt;25% · manual manoeuvres &gt;25%</div>
+      <div>Bristol Stool Chart</div><div>Types 1–2 = constipated · Types 3–4 = normal · Types 5–7 = loose/diarrhoea. Ask patient to identify their typical stool type</div>
+      <div>Key history questions</div><div>Onset, frequency, consistency, straining, blood, mucus, pain, diet change, new medications, obstetric history (women), systemic symptoms</div>
+      <div>Medication review</div><div>Opioids, iron supplements, calcium channel blockers (verapamil), antidepressants (TCAs), antipsychotics, antihistamines, anticholinergics — all cause constipation</div>
+      <div>Baseline severity</div><div>Use Patient Assessment of Constipation Symptoms (PAC-SYM) or ask: "How many days per week do you open your bowels?" to track response to treatment</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Rome IV criteria standardise diagnosis and avoid over-medicalising normal variation. Many patients with ≤3 stools/week feel fine — it's the symptom burden that matters. Medication-induced constipation accounts for ~25% of cases in primary care and is often reversible without laxatives. Establishing a baseline enables you to assess treatment response objectively at follow-up.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head">
+    <div class="node-num">03</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Diagnose</span>
+      <h3>Classify the type of constipation — drives treatment choice</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Type classified</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Primary / Functional</div><div>No identifiable organic cause. Subdivide: <b>Normal transit</b> (most common — stool moves normally, perception altered), <b>Slow transit</b> (prolonged colonic transit — severe, infrequent), <b>Defaecatory dysfunction</b> (outlet obstruction, pelvic floor dyssynergia)</div>
+      <div>Secondary — Metabolic</div><div>Hypothyroidism (check TSH), hypercalcaemia (check Ca²⁺), hypokalaemia, diabetes, uraemia. Treat underlying cause first</div>
+      <div>Secondary — Neurological</div><div>Parkinson's disease, MS, spinal cord lesion, autonomic neuropathy. Often severe, refractory to standard laxatives</div>
+      <div>Secondary — Structural</div><div>Anal fissure (painful defaecation → avoidance), rectal prolapse, rectocele, colorectal cancer. PR exam essential</div>
+      <div>Drug-induced</div><div>Opioids (most common — present in 40–95% of patients on regular opioids), iron, calcium channel blockers, TCAs. Review and switch/add peripherally-acting mu-opioid receptor antagonist (PAMORA) if opioid-induced</div>
+      <div>IBS-C</div><div>Constipation + abdominal pain relieved by defaecation + Rome IV IBS criteria. Manage as IBS with specific pathway</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Classification directly changes treatment. Hypothyroidism-associated constipation resolves with levothyroxine — laxatives are a sticking-plaster. Opioid-induced constipation does not respond adequately to bulk-forming laxatives; it requires osmotic/stimulant laxatives or PAMORAs (naloxegol, methylnaltrexone). Defaecatory dysfunction responds to biofeedback pelvic floor physiotherapy, not laxatives. Getting this right at Step 3 avoids months of ineffective treatment.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head">
+    <div class="node-num">04</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Diagnose</span>
+      <h3>Targeted examination — PR exam mandatory in new-onset or unexplained constipation</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Examination completed and documented</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Abdomen</div><div>Palpate all 4 quadrants. Faecal loading (doughy, indentable masses in LIF/RIF). Organomegaly. Tenderness. Visible distension or peristalsis</div>
+      <div>Perianal inspection</div><div>Haemorrhoids, fissures (look for sentinel tag), skin tags, prolapse, soiling. Do not proceed to PR if fissure causing severe pain without LA cream first</div>
+      <div>Digital rectal exam (PR)</div><div>Anal tone (low = sphincter injury/neurological; high = dyssynergia/fissure). Faecal impaction (hard stool in rectum). Masses. Tenderness. Empty rectum does not exclude slow-transit constipation</div>
+      <div>Thyroid</div><div>Goitre → check TFTs if not recently done</div>
+      <div>Neurological screen</div><div>If saddle anaesthesia, urinary symptoms, or leg weakness → check perianal sensation, anal wink reflex, and arrange urgent MRI spine</div>
+      <div>BMI / nutrition</div><div>Low BMI + constipation → consider eating disorder, malnutrition, or cancer</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      PR examination is essential before prescribing stimulant laxatives — giving bisacodyl to a patient with faecal impaction worsens pain and may cause perforation. An anal fissure will be perpetuated if the underlying constipation is not treated. High anal tone suggests dyssynergia — these patients need specialist anorectal physiology, not more laxatives. Missing a rectal mass on PR examination is an avoidable medicolegal failure.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head">
+    <div class="node-num">05</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — targeted, not routine; exclude secondary causes</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Appropriate investigations ordered</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>First-line bloods</div><div><span class="pill pill-blue">FBC</span> (anaemia, infection) <span class="pill pill-blue">TFTs</span> (hypothyroidism) <span class="pill pill-blue">U&amp;E + Ca²⁺</span> (hypercalcaemia, renal disease) <span class="pill pill-blue">Glucose / HbA1c</span> (diabetes) <span class="pill pill-blue">CRP / ESR</span> (inflammation)</div>
+      <div>If 2WW criteria met</div><div><span class="pill pill-purple">2WW lower GI referral</span> + <span class="pill pill-blue">FBC</span> <span class="pill pill-blue">CEA</span> <span class="pill pill-blue">LFTs</span> while awaiting colonoscopy</div>
+      <div>Coeliac screen</div><div><span class="pill pill-blue">Anti-tTG IgA + total IgA</span> — if IBS-C phenotype, poor response to dietary intervention, or anaemia</div>
+      <div>Stool calprotectin</div><div>If diagnostic uncertainty between functional and inflammatory — elevated (&gt;50 µg/g) → refer for colonoscopy</div>
+      <div>Imaging</div><div>Plain AXR: only if suspecting faecal impaction / obstruction. <b>Not routine</b>. CT abdomen/pelvis: urgent referral decision, not first-line in primary care</div>
+      <div>Do NOT routinely order</div><div>Colonoscopy without red flags / 2WW criteria · Transit studies (specialist only) · Defaecating proctogram (specialist only) · Anorectal manometry (specialist only)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Secondary causes are present in ~10–15% of constipation cases — hypothyroidism is detected in 5% of women presenting with constipation. Hypercalcaemia is often asymptomatic but causes severe refractory constipation. Over-investigating functional constipation wastes NHS resource and delays treatment. Stool calprotectin has 83% sensitivity for IBD — a useful GP-level test before referring for colonoscopy in diagnostic uncertainty.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head">
+    <div class="node-num">06</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Refer</span>
+      <h3>Referral criteria — know when primary care management is insufficient</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Referral decision made</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span> Emergency</div><div>Acute complete obstruction, peritonism, haemodynamic instability, suspected volvulus or perforation</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Suspected faecal impaction with overflow, acute urinary retention with constipation (neurological concern), high-grade cauda equina symptoms</div>
+      <div><span class="pill pill-purple">2WW</span> Colorectal</div><div>Per NICE NG12: age ≥40 rectal bleeding + change in bowel habit · age ≥50 unexplained rectal bleeding · age ≥60 change in bowel habit or IDA · palpable rectal/abdominal mass</div>
+      <div>Urgent gastroenterology</div><div>Suspected IBD (elevated calprotectin, bloody mucus, systemic symptoms) · New-onset constipation with iron deficiency in any age</div>
+      <div>Routine gastroenterology / colorectal</div><div>Refractory constipation failing 6-month optimised primary care treatment · Suspected defaecatory dysfunction (for anorectal physiology) · Suspected slow-transit constipation for transit studies</div>
+      <div>Specialist nurse / Physio</div><div>Defaecatory dysfunction → pelvic floor biofeedback. Refer to continence nurse or specialist physiotherapist</div>
+      <div>Primary care manages</div><div>New functional constipation · Medication-induced constipation · Mild–moderate severity · Adequate response to laxatives</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      NICE NG12 2WW criteria have strong evidence — failure to refer appropriately is a leading cause of delayed colorectal cancer diagnosis in the UK. Defaecatory dysfunction (outlet obstruction / dyssynergia) responds to biofeedback physiotherapy in 70–80% of cases — this is more effective than any laxative for this subtype and cannot be delivered in primary care. Identifying who needs specialist input early avoids prolonged ineffective treatment.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head">
+    <div class="node-num">07</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Treat</span>
+      <h3>Treatment ladder — stepwise laxative therapy with patient-specific branching</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Treatment initiated and documented</span></label></div>
+  <div class="node-body">
+    <span>Always combine with lifestyle (Step 8). Choose first-line based on constipation type.</span>
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Functional constipation (first-line)</div>
+        <div class="b-drug">Bulk-forming laxative <span class="pill pill-teal">1st line</span></div>
+        <div class="b-note">Ispaghula husk (Fybogel) 1 sachet BD in water. Takes 2–3 days. Adequate fluid essential (≥1.5L/day)</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Opioid-induced constipation</div>
+        <div class="b-drug">Osmotic + stimulant <span class="pill pill-teal">1st line</span></div>
+        <div class="b-note">Macrogol (Movicol) 1–3 sachets/day + Senna 15mg nocte. Do NOT use bulk-forming agents alone</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Faecal impaction (acute)</div>
+        <div class="b-drug">High-dose macrogol <span class="pill pill-amber">Acute</span></div>
+        <div class="b-note">Macrogol 8 sachets/day for 3 days (Movicol-half: 16 sachets/day). Do NOT give stimulant alone without disimpaction</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Ispaghula husk</b> (Fybogel) 1 sachet BD — bulk-forming. Review in 2–4 weeks. If adequate response, continue. Ensure fluid intake</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Add osmotic laxative:</b> Macrogol (Movicol) 1–3 sachets/day OR Lactulose 15ml BD (less preferred — causes bloating). Can combine with Step 1</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Add stimulant laxative:</b> Senna 15mg nocte OR Bisacodyl 5–10mg nocte. Short-term use. Review need at each appointment. Can combine Steps 1+2+3</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Opioid-induced: PAMORA</b> — Naloxegol 25mg OD (NICE TA345) or Methylnaltrexone SC if oral route not possible. For inadequate response to combined laxatives</span></div>
+      <div class="rung"><span class="rn">Step 5</span><span class="rt"><b>Refractory / specialist:</b> Prucalopride 2mg OD (NICE TA211 — women with chronic constipation, inadequate response to ≥2 laxatives). Linaclotide if IBS-C (NICE TA318)</span></div>
+      <div class="rung"><span class="rn">Rectal</span><span class="rt"><b>If impaction / acute:</b> Glycerol suppositories 4g PR · Sodium docusate enema · Phosphate enema (hospital/district nursing). Use alongside oral treatment, not instead</span></div>
+    </div>
+    <div class="kv">
+      <div>Key monitoring</div><div>Renal function if on long-term macrogol (elderly/CKD) · Electrolytes if on stimulants long-term · Review opioid dose — reduce if possible</div>
+      <div>Duration</div><div>Treat underlying cause. Functional constipation: minimum 4 weeks, reassess. Opioid-induced: treat for duration of opioid therapy</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <b>Bulk-forming agents</b> (NNT ~3 for improved stool frequency) work by increasing stool bulk and water content — they require adequate hydration to work. <b>Macrogol</b> is preferred over lactulose (Cochrane review: superior efficacy, less bloating). <b>Stimulant laxatives</b> are effective but concern about long-term colonic dependency exists — evidence is limited but monitoring is reasonable. <b>Prucalopride</b> (5-HT₄ agonist): NICE TA211 supports use in women failing 2+ laxatives — NNT ~5 for one additional complete spontaneous bowel movement per week. <b>Naloxegol</b> (PAMORA) peripherally blocks opioid receptor in gut without reversing analgesia — KODIAC trials showed significant improvement in opioid-induced constipation vs placebo.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head">
+    <div class="node-num">08</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Non-pharmacological interventions — essential alongside all laxatives</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Lifestyle advice given and documented</span></label></div>
+  <div class="node-body">
+    <span>Lifestyle is <b>treatment</b>, not afterthought. These interventions have level 1 evidence and should be addressed in every consultation.</span>
+    <div class="lsgrid">
+      <div class="lstile"><b>Dietary fibre</b> Target 25–30g/day. Practical: add 2 portions fruit, 3 portions vegetables, switch to wholegrain bread/pasta daily. Increase gradually to avoid bloating</div>
+      <div class="lstile"><b>Fluid intake</b> Minimum 1.5–2L water/day. Dehydration directly worsens transit time. Reduce caffeine and alcohol which worsen dehydration</div>
+      <div class="lstile"><b>Physical activity</b> 150 min moderate exercise/week. Walking 30 min/day reduces constipation by 30%. Physical activity stimulates colonic peristalsis via neurological and hormonal mechanisms</div>
+      <div class="lstile"><b>Toilet habit — defaecation timing</b> Use the gastrocolic reflex: sit on toilet 20–30 min after breakfast. Never ignore the urge. Allow adequate time — do not rush</div>
+      <div class="lstile"><b>Toilet posture</b> Use a footstool (Squatty Potty position — feet 20–30cm raised) to anorectal angle. Reduces straining significantly — evidence from RCTs</div>
+      <div class="lstile"><b>Medication review</b> Stop or switch constipating medications where clinically safe. Discuss opioid dose reduction or rotation with pain team if appropriate</div>
+      <div class="lstile"><b>Stress and anxiety</b> Gut-brain axis: CBT and mindfulness improve functional constipation. Refer to IAPT / primary care wellbeing if anxiety identified</div>
+      <div class="lstile"><b>Bowel diary</b> Ask patient to complete 1-week bowel diary (BSC type, frequency, straining, pain). Invaluable for monitoring response and specialist referral</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      A Cochrane review (2016) found dietary fibre supplementation significantly improves stool frequency vs placebo (RR 1.59). Physical activity reduces colon transit time by up to 30% in sedentary individuals. Correct toilet posture (squatting angle) reduces anorectal angle, decreasing straining effort — RCT evidence shows 80% of patients achieve faster complete evacuation. These interventions cost nothing, have no side effects, and should be prescribed with the same specificity as medications.
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head">
+    <div class="node-num">09</div>
+    <div class="node-head-inner">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-up &amp; monitoring — safety-net, reassess, and step down</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Follow-up plan documented and safety-net given</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>2–4 weeks</div><div>First review: treatment response, stool frequency/consistency, side effects (bloating, colic). Adjust laxative dose or add next step if insufficient response</div>
+      <div>6–8 weeks</div><div>Reassess symptom severity. Check bloods if ordered. If no improvement despite Step 3 → consider referral and specialist investigation</div>
+      <div>3 months</div><div>Full review: is laxative still needed? Attempt step-down in mild cases. Reassess dietary adherence, medication causes</div>
+      <div>Ongoing (opioid-induced)</div><div>Laxative treatment should continue for the duration of opioid therapy — review at every opioid prescription review</div>
+      <div><span class="pill pill-red">999</span> Safety-net</div><div>Sudden complete obstruction, severe abdominal distension, haemodynamic collapse, signs of perforation (severe pain, rigid abdomen, fever)</div>
+      <div><span class="pill pill-amber">Same-day GP</span> Safety-net</div><div>Any new rectal bleeding · Significant weight loss · Anal/rectal mass found · Worsening pain · Faecal impaction not resolving after 3 days of treatment</div>
+      <div>Return to Step 1</div><div>If new red flags emerge at ANY point — immediately re-screen. Constipation can mask new colorectal malignancy even in previously established "functional" patients</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      Laxative effectiveness declines over time if underlying lifestyle factors are not addressed — systematic review shows 40% relapse rate at 6 months without lifestyle modification. Long-term stimulant laxative use requires electrolyte monitoring (risk of hypokalaemia). A patient with "established" functional constipation who develops new rectal bleeding needs re-screening — interval colorectal cancers do occur. Structured safety-netting is an RCGP SCA competency marker — document what you told the patient to watch for.
+    </div>
+  </div>
+</div>
+
+</div><!-- end alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG12 (Suspected cancer recognition 2015, updated 2023) · NICE CG99 (Constipation in adults) · NICE TA211 (Prucalopride) · NICE TA345 (Naloxegol) · NICE TA318 (Linaclotide for IBS-C) · BSG guidelines on constipation · Rome IV diagnostic criteria · British National Formulary (BNF). Always adapt to individual patient context and local clinical guidelines.
+</div>
+
+<script>
+(function(){
+  const flow=document.getElementById('flow');
+  const checks=flow?flow.querySelectorAll('input[type=checkbox]'):[];
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  const KEY='rgp.alg.constipation.v1';
+  function save(){const s={};checks.forEach((c,i)=>{s[i]=c.checked});try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');checks.forEach((c,i)=>{if(s[i])c.checked=true})}catch(e){}}
+  function update(){let done=0;checks.forEach(c=>{const node=c.closest('.node');if(c.checked){done++;node&&node.classList.add('done')}else{node&&node.classList.remove('done')}});if(pDone)pDone.textContent=done;if(pFill)pFill.style.width=(done/total*100)+'%';}
+  checks.forEach(c=>c.addEventListener('change',()=>{update();save()}));
+  document.querySelectorAll('.why-btn').forEach(btn=>{btn.addEventListener('click',()=>{const drawer=btn.nextElementSibling;const open=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',open?'false':'true');drawer.style.display=open?'none':'block';});});
+  document.getElementById('resetBtn')?.addEventListener('click',()=>{checks.forEach(c=>c.checked=false);document.querySelectorAll('.why-drawer').forEach(d=>d.style.display='none');document.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));update();save();});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

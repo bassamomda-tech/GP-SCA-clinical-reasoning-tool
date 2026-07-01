@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Joint Pain / Swelling Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;--diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;--treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;--refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;--lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;--radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);--font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#2a1a1a 0%,#7a3a1a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}.stem-banner b{display:block;font-size:1.05rem;font-weight:600}.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#7a3a1a,#7b3fa0);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}.node[data-type="TREAT"] .node-num{background:var(--treat)}.node[data-type="REFER"] .node-num{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}.node[data-type="TREAT"] .node-tag{background:var(--treat)}.node[data-type="REFER"] .node-tag{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}.pill-purple{background:#ede9fe;color:#5b21b6}.pill-blue{background:#dbeafe;color:#1e40af}.pill-teal{background:#ccfbf1;color:#0f766e}.pill-amber{background:#fef3c7;color:#92400e}.pill-green{background:#dcfce7;color:#15803d}.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+<div class="stem-banner"><div class="sb-icon">🦴</div><div><b>Joint Pain / Swelling</b><small>Septic arthritis emergency · inflammatory vs mechanical · RA / gout / reactive · DAS28 · DMARDs</small></div></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div><span>Progress</span><span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span><div class="pbar"><div class="pbar-fill" id="pFill"></div></div><button class="reset" id="resetBtn">Reset</button></div>
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — count the joints and look for inflammation: the pattern (mono / oligo / poly, inflammatory vs mechanical) drives the diagnosis and urgency. Always exclude the hot septic joint, refer inflammatory arthritis early, and treat OA conservatively.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Joint pain</span><div class="body"><b>Number of joints</b> (mono/oligo/poly), symmetry, <b>inflammatory features</b> (swelling, warmth, early-morning stiffness &gt;30 min, improves with use), systemic symptoms, skin/eye/GI features. Examine all joints + look for synovitis.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — the hot joint &amp; systemic emergency</span><span class="ttl">Septic arthritis or systemic disease?</span><div class="body"><ul>
+      <li><b>Single hot, swollen, painful joint</b> ± fever → <b>septic arthritis until proven otherwise</b></li>
+      <li><b>Systemic features</b> — fever, weight loss, rash, multi-system involvement → vasculitis / connective-tissue disease</li>
+      <li><b>Giant cell arteritis</b> features in PMR-type presentation (headache, jaw claudication, visual loss)</li>
+      <li>New inflammatory back pain + peripheral arthritis → axial spondyloarthritis</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Emergency / urgent</span><div class="body"><b>Septic arthritis → emergency joint aspiration + admission</b> (don't delay for imaging). Systemic vasculitis / GCA → urgent (high-dose steroid for GCA before bloods).</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — pattern-recognise</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Bloods + targeted tests</span><div class="body">FBC, CRP/ESR, U&amp;E, urate; <b>RF, anti-CCP, ANA</b> if inflammatory; X-ray of affected joints; <b>joint aspiration + microscopy</b> for any acute monoarthritis (crystals + Gram stain/culture).</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · which pattern?</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">Acute monoarthritis</div><div class="box ix"><span class="ttl">Crystal / septic</span><div class="body"><b>Gout</b> (urate, 1st MTP), <b>pseudogout</b> (CPPD, knee/wrist, elderly) — <b>aspirate; always exclude infection first</b>.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Inflammatory polyarthritis</div><div class="box ix"><span class="ttl">RA / connective tissue / SpA</span><div class="body">Symmetrical small joints + prolonged morning stiffness → <b>RA</b> (RF/anti-CCP, raised CRP) → <b>urgent rheumatology</b>; psoriatic/reactive/SLE patterns.</div></div></div>
+      <div class="col"><div class="blabel">Mechanical / OA</div><div class="box ix"><span class="ttl">Degenerative</span><div class="body">Activity-related, older, asymmetrical, brief stiffness, bony swelling (Heberden's/Bouchard's), no systemic upset.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · treat by diagnosis</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — diagnosis-specific treatment</span><span class="ttl">Treat early, refer early for inflammatory</span><div class="body"><ul>
+      <li><b>Crystal arthritis:</b> NSAID + PPI, colchicine, or corticosteroid for the flare; urate-lowering therapy treat-to-target (gout pathway).</li>
+      <li><b>Inflammatory (RA/SpA):</b> NSAID for symptoms + <b>refer within 3 weeks</b> (window for DMARDs); a short steroid bridge only on specialist advice — early DMARDs prevent joint damage.</li>
+      <li><b>Osteoarthritis:</b> exercise &amp; weight loss (core), topical/oral NSAID, paracetamol adjunct, physiotherapy; joint injection / arthroplasty for refractory.</li>
+      <li><b>Septic:</b> hospital — aspiration, IV antibiotics, washout.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-red">Emergency</span> septic arthritis, systemic vasculitis, GCA (after starting steroid).</li>
+      <li><span class="pill pill-purple">Urgent rheumatology (≤3 weeks)</span> suspected RA / persistent synovitis / early inflammatory arthritis — refer <b>before</b> awaiting antibody results; suspected axial SpA.</li>
+      <li><span class="pill pill-grey">Orthopaedics</span> severe OA for joint replacement; <span class="pill pill-grey">MSK / physio</span> mechanical pain.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · lifestyle &amp; self-care</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; self-management</span><span class="ttl">Core therapy for OA, adjunct for all</span><div class="body"><b>Exercise (strengthening + aerobic) and weight loss</b> are the cornerstone of OA management · joint protection and pacing · physiotherapy and occupational therapy/aids · smoking cessation (worsens RA, ↑CV risk) · address gout dietary triggers (alcohol, purine-rich foods); cardiovascular-risk review in inflammatory arthritis.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Same-day</b> if a joint becomes acutely hot, swollen and painful with fever (septic), or new visual symptoms/jaw claudication (GCA). <b>Review</b> inflammatory referrals are actioned within the DMARD window; reassess persistent synovitis even if early bloods normal. Monitor NSAID GI/renal risk and DMARD bloods (shared care).</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>A hot single joint is septic until proven otherwise:</b> aspirate before assuming gout, and refer persistent inflammatory polyarthritis to rheumatology within 3 weeks — the early DMARD window is what prevents permanent joint damage.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+<div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Septic Arthritis, Malignancy &amp; Systemic Disease</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<p><b>A hot, swollen, acutely painful single joint = septic arthritis until proven otherwise. Any delay risks permanent joint destruction within 24–48 hours.</b></p>
+<div class="rfgrid">
+<div class="rftile"><b>Hot swollen single joint + fever</b> Septic arthritis → same-day hospital. Joint aspiration before antibiotics (MC&S + crystal microscopy). IV flucloxacillin + joint washout. Haematogenous seeding most common — exclude source (skin, urinary, dental). Do NOT aspirate in primary care without culture bottle available.</div>
+<div class="rftile"><b>Joint pain + weight loss + night sweats</b> Malignancy (primary bone tumour, metastases, paraneoplastic), leukaemia, lymphoma. Age &gt;50: metastatic disease (prostate, breast, lung, kidney). X-ray ± 2WW referral. Elevated inflammatory markers disproportionate to joint findings.</div>
+<div class="rftile"><b>Acute monoarthritis + rash + urethral discharge</b> Gonococcal (disseminated gonorrhoea) arthritis — most common cause of septic arthritis in sexually active adults &lt;40. Migratory polyarthralgia → monoarthritis. GUM referral + ceftriaxone urgently.</div>
+<div class="rftile"><b>Symmetrical small joint arthritis + systemic features</b> RA, SLE, vasculitis — early DMARD therapy prevents irreversible joint damage. Anti-CCP antibody + RF + X-rays urgently. Rheumatology referral within 6 weeks (NICE NG100).</div>
+<div class="rftile"><b>Joint pain + urinary symptoms + conjunctivitis</b> Reactive arthritis (formerly Reiter's syndrome) — post-infectious (chlamydia, enteric organisms). HLA-B27 associated. GUM + rheumatology referral.</div>
+<div class="rftile"><b>Joint pain + haemophilia / anticoagulant</b> Haemarthrosis (spontaneous joint bleeding) — swollen, warm, stiff — no fever. Factor replacement (haemophilia). Reverse anticoagulation if massive haemarthrosis. Same-day haematology.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Septic arthritis is a rheumatological emergency — irreversible cartilage destruction begins within 24–48 hours of bacterial invasion due to proteolytic enzyme release from neutrophils and bacteria. Staphylococcus aureus (50%) is the most common organism, followed by streptococci (25%) and gonococci in sexually active young adults. The synovial fluid WBC threshold for septic arthritis is typically &gt;50,000/mm³ (though crystal arthritis can produce similar counts). Joint aspiration MUST be performed before antibiotics to guide culture-directed therapy — but antibiotics should not be withheld for &gt;1–2 hours if aspiration is delayed. Risk factors: prosthetic joint (most important — prosthetic joint infection has 20% mortality), IV drug use, immunosuppression, diabetes, skin disease (psoriasis creates skin barrier breaks), recent joint injection. Any prosthetic joint with pain + fever = surgical emergency.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+<div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Inflammatory vs Mechanical — The Key Distinction</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Inflammatory features</div><div>Morning stiffness &gt;60 min (synovial inflammation — prolonged gel phenomenon) · Joint warmth and erythema · Systemic features (fatigue, fever, weight loss) · Elevated CRP/ESR · Multiple joints (polyarthritis) · Worse after rest, improves with activity · Raised RF/anti-CCP</div>
+<div>Mechanical features</div><div>Morning stiffness &lt;30 min (OA) · Pain worsens with activity, improves with rest · No systemic features · Normal or mildly elevated CRP · Single or asymmetric joint involvement · Age &gt;50, associated obesity/overuse · Crepitus, bony enlargement</div>
+<div>Acute onset (hours)</div><div>Septic arthritis (fever + single joint) · Gout / pseudogout (crystal arthritis — urate crystals) · Haemarthrosis (trauma, anticoagulant) · Reactive arthritis (post-infectious, 1–4 weeks after infection)</div>
+<div>Subacute (days to weeks)</div><div>RA (early — symmetrical small joints + morning stiffness) · Psoriatic arthritis (DIP joints + nail changes + psoriasis) · Reactive arthritis · Lyme disease (endemic area, tick bite history) · Viral arthritis (parvovirus B19, HIV, hepatitis)</div>
+<div>Chronic (&gt;3 months)</div><div>OA (mechanical, asymmetric, age-related) · RA (established) · Psoriatic · Ankylosing spondylitis (sacroiliac + axial) · Reactive (chronic) · Gout with tophi</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The duration of morning stiffness is the single most diagnostically discriminating clinical feature for distinguishing inflammatory from mechanical joint disease. Morning stiffness &gt;60 minutes strongly predicts inflammatory pathology (RA, psoriatic, reactive) — it reflects the time required for synovial gel phenomenon to resolve as the joint warms with activity. OA morning stiffness typically lasts &lt;30 minutes. This 60-minute threshold is incorporated into the ACR/EULAR 2010 RA classification criteria. The second key distinction is the relationship of pain to activity: inflammatory arthritis characteristically worsens with inactivity and improves with movement (joints feel worse first thing in the morning and after sitting), while OA worsens with use (pain builds with sustained activity and relieves with rest). Patients often describe OA as "the more I do, the more it hurts" and inflammatory arthritis as "the more I rest, the stiffer I get."</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+<div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Septic arthritis</div><div>Single hot swollen joint + fever. S. aureus (50%), streptococci, gonococci. Synovial WBC &gt;50,000. X-ray: normal early, joint destruction late. IV antibiotics + washout. Emergency.</div>
+<div>Rheumatoid arthritis (RA)</div><div>Symmetrical small joint polyarthritis (MCPs, PIPs, wrists), morning stiffness &gt;60 min, systemic fatigue. RF positive 70%, anti-CCP 75–80%. X-ray: periarticular osteopenia + erosions (late). DMARDs within 3 months of diagnosis. 2022 NICE NG100: refer within 6 weeks of symptom onset.</div>
+<div>Gout (crystal arthritis)</div><div>Acute: severe monarthritis (first MTP = podagra, ankle, knee), peaks 12–24 hrs. Tophi (chronic). Serum urate (may be normal acutely). Synovial fluid: MSU crystals (needle-shaped, negatively birefringent). Allopurinol for ULT after acute attack resolved.</div>
+<div>Pseudogout (CPPD)</div><div>Calcium pyrophosphate deposition — knee most common. Acute: similar to gout. Middle-aged/elderly, associated with hyperparathyroidism, haemochromatosis. X-ray: chondrocalcinosis (calcification of cartilage). Crystal microscopy: CPPD crystals (rhomboid, weakly positively birefringent).</div>
+<div>Osteoarthritis (OA)</div><div>Age &gt;45, activity-related pain, &lt;30 min stiffness, no systemic features. Bony swelling (Heberden's nodes at DIP, Bouchard's at PIP). X-ray: JSN, osteophytes, subchondral sclerosis. No blood test changes. Exercise + analgesia + weight loss.</div>
+<div>Psoriatic arthritis</div><div>Affects 20–30% of psoriasis patients. Asymmetric — can involve DIP joints (distinguishes from RA), dactylitis ("sausage digit"), enthesitis (tendon insertion pain), axial disease. Seronegative (RF negative). Nail changes (pitting, onycholysis). DMARDs + biologics.</div>
+<div>Reactive arthritis</div><div>Post-enteric (Campylobacter, Salmonella, Shigella, Yersinia) or post-urogenital (Chlamydia). Asymmetric large joint oligoarthritis 1–4 weeks post-infection. HLA-B27 associated. Self-limiting (90%) — most resolve in 3–6 months. NSAIDs first-line.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The anti-CCP (anti-cyclic citrullinated peptide) antibody is the most specific test for RA — 75–80% sensitivity but 95–97% specificity. Positive anti-CCP in early inflammatory arthritis is highly predictive of RA development and is associated with more erosive, aggressive disease. A patient with anti-CCP positive symmetrical small joint polyarthritis and elevated CRP should be referred to rheumatology as a matter of urgency (NICE NG100: within 6 weeks). The 2022 NICE guideline change removed the distinction between "undifferentiated inflammatory arthritis" and "RA" — all patients with persistent joint swelling of unclear cause and elevated inflammatory markers should be referred to rheumatology within 6 weeks regardless of serology. Distinguishing RA from psoriatic arthritis is clinically important as they have different DMARD pathways — psoriatic arthritis often responds well to TNF inhibitors and IL-17 inhibitors, while methotrexate is the anchor DMARD for RA.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+<div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Examination &amp; Investigations</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Joint examination</div><div>Swelling: effusion (soft, fluctuant) vs synovial thickening (boggy, doughy) vs bony enlargement (OA). Warmth (inflammatory/septic — compare to contralateral). Erythema (gout, septic arthritis — RA rarely causes erythema). ROM. Deformity. Crepitus. Tenderness on palpation vs movement.</div>
+<div>Systemic examination</div><div>Skin: psoriatic plaques (psoriatic arthritis), butterfly rash (SLE), tophi on ears/hands/Achilles (gout), rheumatoid nodules. Eyes: uveitis (ankylosing spondylitis, reactive arthritis, JIA). Nail pitting (psoriatic). Urethral discharge (gonococcal/reactive arthritis). Lymphadenopathy (viral, malignancy).</div>
+<div>Bloods</div><div><span class="pill pill-blue">CRP + ESR</span> · <span class="pill pill-blue">FBC</span> (anaemia of chronic disease, eosinophilia) · <span class="pill pill-blue">RF + anti-CCP</span> (RA) · <span class="pill pill-blue">Urate</span> (gout — normal acutely) · <span class="pill pill-blue">ANA</span> (SLE screen) · <span class="pill pill-blue">HLA-B27</span> (spondyloarthropathy — axial disease) · <span class="pill pill-blue">STI NAAT</span> (gonorrhoea, chlamydia — if sexually acquired suspected) · <span class="pill pill-blue">Complement C3/C4</span> (SLE)</div>
+<div>X-ray</div><div>Affected joints: baseline assessment. RA early: periarticular osteopenia, soft tissue swelling (erosions are late). OA: JSN, osteophytes, sclerosis. Gout: punched-out erosions with overhanging edges (Martel's sign — late). Chondrocalcinosis (CPPD). Lytic lesion (malignancy).</div>
+<div>Synovial fluid aspiration</div><div>Hospital investigation (A&E / rheumatology). WBC count (inflammatory vs septic), MC&S (culture), crystal microscopy (MSU vs CPPD). Key in acute monoarthritis. GP does NOT routinely aspirate joints without culture equipment.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">DAS28 (Disease Activity Score in 28 joints) is the validated clinical tool used by rheumatologists to monitor RA disease activity and guide DMARD dose escalation and treat-to-target decisions. It incorporates: 28-joint tender count, 28-joint swollen count, patient VAS (visual analogue scale for global health), and CRP (or ESR). DAS28 &lt;2.6 = remission; 2.6–3.2 = low activity; 3.2–5.1 = moderate; &gt;5.1 = high. NICE NG100 mandates treat-to-target (target DAS28 &lt;2.6 = remission) — DMARDs are escalated every 3 months until remission is achieved. GPs who see patients on DMARDs should be familiar with DAS28 from rheumatology letters to understand disease activity status and treatment appropriateness.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="5">
+<div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div><span class="pill pill-red">Same-day hospital</span></div><div>Septic arthritis (hot joint + fever) · Prosthetic joint infection · Acute haemarthrosis in haemophilia · Gonococcal arthritis with systemic compromise</div>
+<div><span class="pill pill-purple">Rheumatology (urgent — within 6 weeks)</span></div><div>Suspected RA (NICE NG100) · New inflammatory polyarthritis · Anti-CCP or RF positive + joint symptoms · Suspected psoriatic arthritis (dactylitis, enthesitis) · Suspected ankylosing spondylitis (young adult + back pain + morning stiffness &gt;3 months)</div>
+<div>Rheumatology (routine)</div><div>Established inflammatory arthritis with disease flare · gout refractory to ULT · CPPD/pseudogout recurrent attacks · SLE or connective tissue disease suspected</div>
+<div>Orthopaedics</div><div>OA with severe functional impairment (joint replacement consideration) · Loose bodies · Meniscal tear · Suspected bone malignancy (X-ray lesion + 2WW)</div>
+<div>GUM</div><div>Reactive arthritis (post-STI) · Suspected gonococcal arthritis · STI screen + contact tracing</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The NICE NG100 urgency for RA referral (within 6 weeks of symptom onset) is based on evidence that treatment delay beyond 12 weeks significantly worsens long-term joint damage outcomes — the window of opportunity for suppressing the immune cascade before erosive joint destruction occurs is narrow. Patients with RA who start DMARDs within 3 months of symptom onset have significantly better 5-year and 10-year functional outcomes than those starting later. The GP should not wait for repeat bloods or X-ray reports before referring — clinical suspicion of inflammatory arthritis with elevated CRP is sufficient to refer urgently. The rheumatologist will arrange the further investigations. The most common cause of delayed RA diagnosis in primary care audit data is repeat GP consultations without progression to referral.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="6">
+<div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>GP-Initiated Treatment</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="branch">
+<div class="b-card">
+<div class="b-cond">Acute gout</div>
+<div class="b-drug">Naproxen 500 mg BD × 5–7 days</div>
+<div class="b-note">+ omeprazole 20 mg OD (PPI). Colchicine 500 mcg BD–TDS if NSAID contraindicated (CKD, peptic ulcer). Prednisolone 30 mg OD × 5 days if both contraindicated. Do NOT start allopurinol during acute attack. Ice pack. Elevate affected joint. Review in 4–6 weeks to discuss ULT.</div>
+</div>
+<div class="b-card">
+<div class="b-cond">OA (mild–moderate)</div>
+<div class="b-drug">Topical diclofenac gel + exercise</div>
+<div class="b-note">Topical diclofenac 1% gel (Voltarol) TDS — first-line (NICE CG177). Paracetamol 1 g QDS (minimal evidence but low risk). Oral naproxen + PPI if topical inadequate. Physiotherapy referral (exercise — strongest evidence for OA). Weight loss (5 kg = significant symptom improvement). Avoid opioids (NICE: not recommended for OA).</div>
+</div>
+<div class="b-card">
+<div class="b-cond">Reactive arthritis</div>
+<div class="b-drug">Naproxen 500 mg BD (6–12 weeks)</div>
+<div class="b-note">NSAIDs are first-line for reactive arthritis — most cases self-resolve in 3–6 months. Treat underlying STI (if chlamydial: doxycycline 100 mg BD × 14 days + partner treatment). Physiotherapy for joint function. Sulfasalazine (rheumatology) if persistent. HLA-B27 positive patients have more persistent disease.</div>
+</div>
+</div>
+<div class="ladder">
+<div class="rung"><span class="rn">RA — bridging</span><span class="rt">While awaiting rheumatology: NSAIDs (naproxen + PPI) for symptom control. Prednisolone 30 mg OD × 2–3 weeks bridge (rheumatology may advise). Do NOT start DMARDs in primary care — immunosuppression without diagnosis confirmation and tuberculosis/hepatitis B screening risks serious infection.</span></div>
+<div class="rung"><span class="rn">Gout ULT</span><span class="rt">Allopurinol: start 4–6 weeks post-attack, 100 mg OD, titrate monthly by 100 mg to target urate &lt;360 μmol/L. Prophylactic colchicine 500 mcg BD for first 3–6 months. Check eGFR before starting (dose reduce in CKD). Annual urate monitoring. If allopurinol not tolerated: febuxostat (Adenuric) — specialist initiation.</span></div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Starting DMARDs (methotrexate, hydroxychloroquine, sulfasalazine) in primary care before a rheumatological diagnosis is confirmed is inappropriate and potentially harmful. DMARDs require: tuberculosis screening (IGRA test — methotrexate reactivates latent TB), hepatitis B screening (methotrexate and biologics can reactivate HBV), DEXA scan baseline (steroid-sparing), full blood count and LFT baseline, and patient counselling about teratogenicity and monitoring requirements. These are rheumatologist-led investigations. The GP's role is to provide symptomatic bridge therapy (NSAIDs, short prednisolone course if severe) while ensuring urgent rheumatology referral is made. The risk of delaying DMARD initiation is real (joint erosion) but the risk of starting immunosuppression without proper screening is also significant.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+<div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>RA Monitoring &amp; DMARD Co-Management</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Methotrexate monitoring (GP task)</div><div>Weekly FBC + LFTs for first 6 weeks → monthly once stable → every 12 weeks. Stop immediately if: WBC &lt;3.5 × 10⁹/L, neutrophils &lt;2.0, platelets &lt;150, ALT &gt;3× ULN, new pulmonary symptoms (methotrexate pneumonitis — rare but fatal). Document monitoring in EMIS/SystmOne protocol.</div>
+<div>Folic acid</div><div>Folic acid 5 mg weekly (not on same day as methotrexate) — reduces methotrexate toxicity (mucositis, nausea, hepatotoxicity, bone marrow suppression) without reducing efficacy. Ensure prescribed whenever methotrexate is prescribed. Low-dose folic acid (1 mg daily on non-MTX days) is an alternative.</div>
+<div>Sick day rules</div><div>Withhold methotrexate and other DMARDs if: acute severe illness (sepsis, pneumonia), acute kidney injury (hold until AKI resolved), active infection requiring antibiotics. Resume only when recovered. Document in patient records. Patient education card essential.</div>
+<div>Biologic therapies (hospital-initiated)</div><div>TNF inhibitors (adalimumab, etanercept), IL-6 inhibitors (tocilizumab), JAK inhibitors (baricitinib, upadacitinib). Increased infection risk (TB reactivation — annual IGRA). VZV reactivation (herpes zoster vaccine recommended pre-treatment — Shingrix × 2 doses). Annual flu + 5-yearly pneumococcal vaccination.</div>
+<div>Pregnancy and DMARDs</div><div>Methotrexate: teratogenic — stop 3 months before conception (both partners). Hydroxychloroquine: safe in pregnancy. Sulfasalazine: safe (add high-dose folic acid 5 mg OD). Biologics: most stopped at 30–32 weeks but specialist decision. Pre-conception planning mandatory for all women of childbearing age on DMARDs.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Methotrexate pneumonitis (MTX-induced lung toxicity) is a rare but life-threatening complication — it presents as progressive dyspnoea, dry cough, and fever, typically within the first 12 months of treatment. Any patient on methotrexate who develops new respiratory symptoms must have methotrexate stopped immediately, chest X-ray performed, and urgent respiratory referral arranged. The mortality of methotrexate pneumonitis is 10–15% even with corticosteroid treatment. New dyspnoea in an RA patient on methotrexate must never be attributed to infection or heart failure without specifically considering MTX lung toxicity. The GPs' monitoring protocol (FBC + LFT every 12 weeks) is mandated by NICE and the British Society for Rheumatology — failure to monitor and resulting MTX toxicity is a documented cause of GP negligence claims.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+<div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Exercise, Diet &amp; Self-Management</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="lsgrid">
+<div class="lstile"><b>Exercise for OA</b> The most effective OA treatment is regular aerobic + strengthening exercise — stronger muscles absorb joint load and reduce pain. NICE: offer exercise to all OA patients regardless of age, weight, or severity. 150 min/week aerobic (walking, swimming, cycling) + resistance training twice weekly. Physiotherapy for tailored programme.</div>
+<div class="lstile"><b>Weight loss (OA / gout)</b> Each 1 kg weight loss reduces knee joint loading by 4 kg. 5 kg weight loss = measurable pain reduction in knee OA. Gout: obesity drives insulin resistance → reduced urate excretion. Even 5% body weight reduction reduces gout frequency. Low-purine diet alone insufficient — ULT is required for most.</div>
+<div class="lstile"><b>Gout diet</b> Reduce: red meat, organ meat, shellfish (high purines), beer and spirits (raise urate + reduce excretion), fructose drinks. Increase: low-fat dairy (uricosuric), cherries (reduces inflammation + urate), water (promotes renal urate excretion). Dietary modification reduces urate by 10–15% — adequate for mild gout, but ULT needed for most.</div>
+<div class="lstile"><b>RA — fatigue management</b> Fatigue is one of the most disabling RA symptoms — often under-recognised. Pacing strategies (activity-rest cycles), cognitive behavioural strategies (via IAPT), occupational therapy (joint protection, adaptive equipment). Treat anaemia (often contributory — haematinics or rheumatology review).</div>
+<div class="lstile"><b>Arthritis charities</b> Versus Arthritis (versusarthritis.org) — excellent patient information, helpline, local support groups, exercise classes. NRAS (National Rheumatoid Arthritis Society) — RA-specific support. Refer all new RA patients to these resources. Social prescribing referral via GP.</div>
+<div class="lstile"><b>Vaccinations (inflammatory arthritis)</b> All patients on immunosuppressive DMARDs: annual influenza (inactivated only — not live), pneumococcal (PPV23 every 5 years), COVID booster (enhanced schedule). Pre-biologic: Shingrix (recombinant zoster vaccine) × 2 doses, hepatitis B 3-dose course. Live vaccines contraindicated on biologics (yellow fever, live flu nasal spray).</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Exercise is the most evidence-based treatment for OA — multiple systematic reviews and meta-analyses demonstrate that land-based exercise reduces OA pain (effect size 0.49 — comparable to NSAIDs) and improves function, with no ceiling effect across ages and severities. The key barrier is patient belief that exercise "wears out" the joint — this is scientifically incorrect and must be actively dispelled. Cartilage has no blood supply; it is nourished by the compressive-release pumping action of joint movement. Regular moderate exercise maintains cartilage health. Paracetamol has minimal evidence for OA pain — a 2016 Lancet meta-analysis of 74 trials found paracetamol had clinically insignificant effects on OA pain compared to placebo. Despite this, it remains recommended due to its safety profile while exercise takes effect. NSAIDs have better evidence but worse side effect profiles — use lowest effective dose for shortest duration.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+<div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Suspected RA — tracking</div><div>Rheumatology appointment within 6 weeks (NICE NG100). Patient to phone if no appointment after 2 weeks. If deteriorating rapidly (joints multiplying, functional decline) → phone rheumatology for expedited appointment. Document urgency of referral clearly.</div>
+<div>Gout — 4–6 weeks</div><div>Acute attack resolved? Urate recheck. Eligible for ULT? (≥2 attacks/year, tophi, renal stones, CKD). Allopurinol started with prophylactic colchicine? Annual urate monitoring once stable. Medication review (diuretics, aspirin).</div>
+<div>DMARD monitoring (RA)</div><div>FBC + LFTs every 12 weeks. Document on GP monitoring template. Alert for: new infection risk, MTX sick day rules, methotrexate pneumonitis signs. Shared care protocol with rheumatology.</div>
+<div>OA — review at 6 weeks</div><div>Exercise programme commenced? Pain improving? Adequate analgesia? If inadequate: step up to oral NSAID. Consider referral to orthopaedics if severe functional impairment (joint replacement criteria). Occupational therapy if functional disability.</div>
+<div><span class="pill pill-red">999 safety-net</span></div><div>Rapid deterioration of single hot joint with fever (septic arthritis can develop at any time including in known RA or gout), new respiratory symptoms in patient on methotrexate (MTX pneumonitis), signs of serious infection in immunocompromised patient</div>
+<div><span class="pill pill-amber">Same-day GP</span></div><div>Sudden worsening of single joint in patient on biologic (septic arthritis developing), significant drug toxicity (mouth ulcers, severe nausea, unusual bruising on MTX), STI symptoms developing in reactive arthritis patient (source re-infection)</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The risk of septic arthritis in patients on biologic DMARDs (TNF inhibitors, JAK inhibitors) is 2–3-fold higher than the general population — these drugs suppress the innate and adaptive immune response that normally prevents haematogenous seeding. Any patient on a biologic who develops a hot, swollen, acutely painful joint should be considered to have septic arthritis until joint aspiration proves otherwise. This is clinically challenging because biologics also suppress the inflammatory features of gout and RA flares — leading to presentations where crystal arthritis or RA flare mimics septic arthritis. The answer in all cases is the same: urgent hospital assessment for joint aspiration and culture. GPs should have a low threshold to call rheumatology directly when managing joint flares in biologic-treated patients.</div></div>
+</div>
+
+</div>
+<div class="alg-foot"><strong>Educational use only.</strong> Based on NICE NG100 (RA, 2018), NICE CG177 (OA, 2022), BSR DMARD monitoring guidelines (2020), ACR/EULAR 2010 RA classification criteria, BASHH reactive arthritis guidelines, NICE CG56 (Gout). Always adapt to individual patient context.</div>
+<script>
+(function(){
+  const STORE='rgp.alg.jointpain.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chest Pain Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fafaf9;
+  --card-bg: #ffffff;
+  --text: #1c1917;
+  --text-muted: #57534e;
+  --border: #e7e5e4;
+  --accent: #0369a1;
+  --accent-hover: #075985;
+  --red: #dc2626;
+  --purple: #9333ea;
+  --blue: #2563eb;
+  --teal: #0d9488;
+  --amber: #d97706;
+  --green: #16a34a;
+  --grey: #6b7280;
+  --safety: #fee2e2;
+  --diagnose: #dbeafe;
+  --treat: #d1fae5;
+  --refer: #fef3c7;
+  --lifestyle: #e0e7ff;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+  --shadow-lg: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.stem-banner {
+  background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.sb-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.stem-banner b {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.stem-banner small {
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+.alg-progress {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.alg-progress > span:first-child {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pcount {
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 0.95rem;
+}
+
+.pbar {
+  flex: 1;
+  height: 8px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.pbar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-hover) 100%);
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 999px;
+}
+
+.reset {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.reset:hover {
+  background: var(--bg);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.alg-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.node {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.2s;
+  position: relative;
+}
+
+.node:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+}
+
+.node[data-type="SAFETY"] {
+  border-left: 4px solid var(--red);
+}
+
+.node[data-type="DIAGNOSE"] {
+  border-left: 4px solid var(--blue);
+}
+
+.node[data-type="TREAT"] {
+  border-left: 4px solid var(--teal);
+}
+
+.node[data-type="REFER"] {
+  border-left: 4px solid var(--amber);
+}
+
+.node[data-type="LIFESTYLE"] {
+  border-left: 4px solid var(--green);
+}
+
+.node-num {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.node-head {
+  padding: 1.25rem 1.5rem 1rem 4rem;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.01) 100%);
+}
+
+.node-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.node[data-type="SAFETY"] .node-tag {
+  background: var(--safety);
+  color: var(--red);
+}
+
+.node[data-type="DIAGNOSE"] .node-tag {
+  background: var(--diagnose);
+  color: var(--blue);
+}
+
+.node[data-type="TREAT"] .node-tag {
+  background: var(--treat);
+  color: var(--teal);
+}
+
+.node[data-type="REFER"] .node-tag {
+  background: var(--refer);
+  color: var(--amber);
+}
+
+.node[data-type="LIFESTYLE"] .node-tag {
+  background: var(--lifestyle);
+  color: #4f46e5;
+}
+
+.node-head h3 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.node-tick {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+}
+
+.node-tick label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.node-tick input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.tlbl {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.node-body {
+  padding: 1rem 1.5rem 1.25rem;
+  color: var(--text);
+}
+
+.node-body > p:first-child {
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 0.75rem 1rem;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+.kv > div:nth-child(odd) {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.kv > div:nth-child(even) {
+  color: var(--text);
+}
+
+.rfgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.rftile {
+  background: var(--safety);
+  border: 1px solid #fecaca;
+  border-left: 3px solid var(--red);
+  padding: 0.875rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.rftile b {
+  color: var(--red);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.lsgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.lstile {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 1px solid #bbf7d0;
+  border-left: 3px solid var(--green);
+  padding: 0.875rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.lstile b {
+  color: var(--green);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.b-card {
+  background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 100%);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.b-cond {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.b-drug {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.b-note {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.ladder {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rung {
+  background: linear-gradient(90deg, #e0f2fe 0%, #f0f9ff 100%);
+  border: 1px solid #bae6fd;
+  border-left: 3px solid var(--blue);
+  border-radius: 8px;
+  padding: 0.875rem;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rn {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rt {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+.pill-red { background: #fee2e2; color: #991b1b; }
+.pill-purple { background: #fae8ff; color: #86198f; }
+.pill-blue { background: #dbeafe; color: #1e40af; }
+.pill-teal { background: #ccfbf1; color: #115e59; }
+.pill-amber { background: #fef3c7; color: #92400e; }
+.pill-green { background: #dcfce7; color: #166534; }
+.pill-grey { background: #f3f4f6; color: #4b5563; }
+
+.why-row {
+  border-top: 1px solid var(--border);
+  background: #fafaf9;
+}
+
+.why-btn {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--accent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.2s;
+}
+
+.why-btn:hover {
+  background: rgba(3, 105, 161, 0.05);
+}
+
+.caret {
+  transition: transform 0.2s;
+  font-size: 0.9rem;
+}
+
+.why-btn[aria-expanded="true"] .caret {
+  transform: rotate(180deg);
+}
+
+.why-drawer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.why-drawer.open {
+  max-height: 1000px;
+  padding: 0 1.5rem 1.25rem;
+}
+
+.why-drawer p {
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.connector {
+  height: 24px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--border) 0%, transparent 100%);
+  margin: 0 auto;
+}
+
+.alg-foot {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.alg-foot strong {
+  color: var(--text);
+}
+
+@media (max-width: 640px) {
+  body { padding: 1rem 0.75rem; }
+  .kv { grid-template-columns: 1fr; gap: 0.5rem; }
+  .kv > div:nth-child(odd) { font-size: 0.85rem; }
+  .node-head { padding-left: 3.5rem; }
+  .node-tick { top: auto; bottom: 1rem; right: 1rem; }
+  .branch { grid-template-columns: 1fr; }
+  .rfgrid { grid-template-columns: 1fr; }
+  .lsgrid { grid-template-columns: 1fr; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🫀</div>
+  <div>
+    <b>Chest Pain — Acute Presentation in Primary Care</b>
+    <small>10-minute consultation pathway for undifferentiated chest pain in adults</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway as a flowchart — screen the killers, stratify risk, branch by system to a named diagnosis, then treat, refer, modify risk and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Chest pain</span><div class="body">Characterise SOCRATES, cardiovascular risk and onset. Get an <b>ECG early</b> in anyone who could have ACS.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — screen the killers</span><span class="ttl">Any immediate life-threat?</span><div class="body"><ul>
+      <li><b>ACS</b> — crushing central pain, radiation to jaw/arm, sweating, nausea</li>
+      <li><b>Aortic dissection</b> — tearing pain to back, BP differential &gt;20 mmHg, pulse deficit</li>
+      <li><b>PE</b> — pleuritic pain, breathless, haemoptysis, DVT risk, hypoxia, tachycardia</li>
+      <li><b>Tension pneumothorax</b> — sudden, tracheal deviation, ↓breath sounds</li>
+      <li><b>Tamponade</b> — ↑JVP, hypotension, muffled sounds · <b>Oesophageal rupture</b> — after vomiting, surgical emphysema</li>
+      <li><b>Instability</b> — SBP &lt;90 · HR &lt;50 or &gt;120 · SpO₂ &lt;90% · ↓GCS · NEWS2 ≥5</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · 999 now</span><span class="ttl">Emergency admission</span><div class="body"><b>Suspected ACS</b> → aspirin 300 mg chewed + GTN + 999. <b>Dissection / massive PE / tension pneumothorax / tamponade</b> → 999, blue-light. Do not delay for tests.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — stable</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">ECG + obs + targeted tests</span><div class="body">12-lead ECG, full obs/NEWS2. Then by suspicion: CXR; D-dimer <i>only</i> if Wells &lt;4 &amp; actionable today; FBC, U&amp;E, lipids, HbA1c, TFTs. <b>Normal ECG does not exclude ACS.</b></div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · stratify &amp; classify</span></div>
+
+    <!-- STEP 3 — DECISION: cardiac-sounding? -->
+    <div class="box dec"><span class="lbl">Step 3 · Decision — risk stratify</span><span class="ttl">Does this sound cardiac?</span><div class="body"><b>Typical:</b> heavy/tight central pain · exertional · radiation to jaw/arms · relieved by rest/GTN. Weigh <span class="pill pill-blue">QRISK3</span>, age, smoking, diabetes. <b>Wells</b> for PE · <b>BP both arms</b> for dissection · reproducible tenderness lowers (not excludes) cardiac odds.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Cardiac</div><div class="box ix"><span class="ttl">Ischaemic / structural</span><div class="body"><b>Stable angina</b> — predictable exertional pain → RACPC. <b>Unstable angina</b> — rest/crescendo → same-day. <b>Pericarditis</b> — pleuritic, eased sitting forward, rub. <b>Aortic stenosis</b> — exertional syncope, ESM.</div></div></div>
+      <div class="col"><div class="blabel">Pulmonary</div><div class="box ix"><span class="ttl">Pleuritic</span><div class="body"><b>PE</b> (Wells, D-dimer/CTPA) · <b>Pneumonia</b> (fever, creps, CRP/CXR) · <b>Pneumothorax</b> (sudden, ↓sounds) · <b>Pleurisy</b> (post-viral). Persistent + smoker ≥40 → <span class="pill pill-purple">2WW</span> CXR.</div></div></div>
+      <div class="col"><div class="blabel">GI / MSK / psych</div><div class="box ix"><span class="ttl">Non-cardiac</span><div class="body"><b>GORD / spasm</b> — burning, post-prandial → PPI trial. <b>Costochondritis</b> — reproducible tenderness → NSAID + reassure. <b>Anxiety / panic</b> — GAD-7, hyperventilation → CBT.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · confirmed stable angina — manage (NICE NG185 / CG126)</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:720px;"><span class="lbl">Step 7 · Action — stable angina</span><span class="ttl">Symptom relief · anti-anginal ladder · secondary prevention (SAB)</span><div class="body"><ul>
+      <li><b>Symptom relief:</b> GTN spray PRN — sit, repeat after 5 min; if pain persists 5 min after 2nd dose → <span class="pill pill-red">999</span>.</li>
+      <li><b>1st-line:</b> beta-blocker (bisoprolol) <b>OR</b> rate-limiting CCB if asthma. <b>2nd:</b> add dihydropyridine CCB (amlodipine). <b>3rd:</b> add long-acting nitrate (ISMN, asymmetric dosing) / nicorandil / ranolazine / ivabradine.</li>
+      <li><b>Secondary prevention — SAB:</b> <b>S</b>tatin (atorvastatin 80 mg, LDL ≤2 / non-HDL ≤2.6) · <b>A</b>spirin 75 mg · <b>B</b>P control; add ACEi if diabetic.</li>
+      <li><b>Other branches:</b> GORD → lansoprazole 30 mg 8 wks · costochondritis → ibuprofen + reassurance · anxiety → CBT/IAPT ± sertraline · pericarditis → NSAID ± colchicine.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:720px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-red">999</span> ACS · dissection · massive PE · tension pneumothorax · tamponade · any instability.</li>
+      <li><span class="pill pill-red">Same-day</span> unstable angina · PE (Wells &gt;4) · acute heart failure · pneumonia NEWS2 ≥5 · large pneumothorax.</li>
+      <li><span class="pill pill-purple">2WW · NICE NG12</span> persistent unexplained chest symptoms in smoker/ex-smoker <b>≥40</b> + cough / haemoptysis / weight loss / breathlessness → <b>direct-access CXR</b>; pleural effusion + asbestos → mesothelioma; chest pain + dysphagia → upper-GI.</li>
+      <li><span class="pill pill-purple">RACPC ≤2 wks</span> suspected stable angina → CT coronary angiography. <span class="pill pill-grey">Cardiology</span> uncontrolled on 2 anti-anginals → revascularisation.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · modify risk</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:720px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle — treatment, not advice</span><span class="ttl">Cardiovascular risk modification</span><div class="body"><b>Smoking cessation</b> (halves MI risk &lt;1 yr) · <b>cardiac rehab</b> if angina confirmed · <b>Mediterranean diet</b> · <b>weight loss</b> 5–10% · alcohol ≤14 u/wk · <b>150 min/wk activity</b>. GORD: avoid triggers, raise bed-head. MSK: posture, physio.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:720px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Safety-net &amp; follow-up</span><span class="ttl">When to come back</span><div class="body"><b>Call 999</b> if pain &gt;15 min despite GTN, sudden tearing pain, breathless + low sats, syncope, haemoptysis. <b>Same-day GP</b> if rest pain (was exertional), GTN no longer working, new leg swelling, fever. <b>Review:</b> angina 1–2 wkly until RACPC; PPI at 4 wks; statin lipids/LFTs at 3 mo; annual CVD review.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>ECG buys safety, not certainty:</b> a normal ECG does not exclude ACS — if the story fits, treat and admit. Always actively consider PE and aortic dissection in atypical or tearing chest pain.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1: SAFETY - Red Flags -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-num">1</div>
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Red Flags — Emergency Exclusion</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Screen for life-threatening causes FIRST. Any red flag requires immediate escalation.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Suspected ACS</b> Crushing central chest pain, radiation to jaw/arm, sweating, nausea, known CAD → <span class="pill pill-red">999</span> immediate transfer</div>
+      <div class="rftile"><b>Aortic dissection</b> Tearing pain, maximal at onset, radiating to back, BP differential >20 mmHg between arms, neurological deficit → <span class="pill pill-red">999</span> immediate transfer</div>
+      <div class="rftile"><b>Pulmonary embolism</b> Pleuritic pain, breathlessness, haemoptysis, DVT risk factors, tachycardia, hypoxia → <span class="pill pill-red">999</span> if haemodynamically unstable, otherwise same-day emergency assessment</div>
+      <div class="rftile"><b>Tension pneumothorax</b> Sudden onset, breathlessness, tracheal deviation, reduced breath sounds, haemodynamic compromise → <span class="pill pill-red">999</span> immediate transfer</div>
+      <div class="rftile"><b>Cardiac tamponade</b> Breathlessness, hypotension, muffled heart sounds, raised JVP, history of pericarditis/malignancy → <span class="pill pill-red">999</span> immediate transfer</div>
+      <div class="rftile"><b>Oesophageal rupture</b> Severe pain after vomiting/instrumentation, surgical emphysema, systemically unwell → <span class="pill pill-red">999</span> immediate transfer</div>
+      <div class="rftile"><b>Haemodynamic instability</b> Systolic BP <90 mmHg, HR >120 or <50 bpm, oxygen saturations <90%, altered consciousness → <span class="pill pill-red">999</span> immediate transfer</div>
+      <div class="rftile"><b>Acute heart failure</b> Orthopnoea, paroxysmal nocturnal dyspnoea, bilateral basal creps, raised JVP, peripheral oedema → Same-day acute assessment</div>
+      <div class="rftile"><b>Pericarditis</b> Sharp pleuritic pain, worse lying flat, better sitting forward, pericardial rub, recent viral illness → Same-day assessment if severe, otherwise urgent cardiology referral</div>
+      <div class="rftile"><b>Unstable angina</b> Cardiac-sounding pain at rest, crescendo pattern, duration >20 minutes → Same-day emergency assessment</div>
+      <div class="rftile"><b>Cancer red flags</b> Persistent unexplained chest pain with weight loss, haemoptysis, hoarseness >3 weeks, supraclavicular lymphadenopathy → <span class="pill pill-purple">2WW</span> chest X-ray and appropriate referral</div>
+      <div class="rftile"><b>Sepsis</b> NEWS2 score ≥5, temp >38°C or <36°C, productive cough, systemically unwell → Same-day assessment for possible pneumonia/empyema</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><strong>Why red-flag screening matters:</strong> Chest pain accounts for 1-2% of GP consultations but includes conditions with 30-day mortality >10% if missed (STEMI 10%, aortic dissection 20-30%, massive PE 15%). Time-to-treatment directly impacts outcomes: door-to-balloon <90 minutes reduces STEMI mortality by 25%. Aortic dissection mortality increases 1% per hour. The goal is not to diagnose definitively but to identify who needs immediate hospital assessment. NICE CG95 emphasizes that clinical judgement overrides scoring systems—if it feels wrong, escalate. Missing ACS in a 45-year-old costs 30+ years of life; over-cautious transfer of MSK pain costs 4 hours. The asymmetry justifies liberal 999 use.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2: DIAGNOSE - Risk Stratification -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-num">2</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Risk Stratification — Confirm Cardiac vs Non-Cardiac</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Use clinical features and validated tools to stratify risk. Document clearly in notes.</p>
+    <div class="kv">
+      <div>Character</div>
+      <div><b>Cardiac:</b> Crushing, pressure, tightness, radiation to jaw/arms. <b>Non-cardiac:</b> Sharp, stabbing, positional, reproducible on palpation</div>
+      
+      <div>Onset</div>
+      <div><b>Cardiac:</b> Gradual build-up over minutes. <b>Dissection:</b> Maximal at onset (thunderclap). <b>MSK:</b> After exertion/movement</div>
+      
+      <div>Duration</div>
+      <div><b>Angina:</b> 2-10 minutes. <b>ACS:</b> >20 minutes. <b>GORD:</b> Variable, often post-prandial. <b>MSK:</b> Constant or intermittent over days</div>
+      
+      <div>Exacerbating factors</div>
+      <div><b>Angina:</b> Exertion, cold, emotion. <b>PE:</b> Deep breath. <b>Pericarditis:</b> Lying flat. <b>GORD:</b> Large meals, lying down. <b>MSK:</b> Movement, palpation</div>
+      
+      <div>Relieving factors</div>
+      <div><b>Angina:</b> Rest, GTN. <b>GORD:</b> Antacids. <b>MSK:</b> Position change, analgesia. <b>Pericarditis:</b> Sitting forward</div>
+      
+      <div>Associated symptoms</div>
+      <div><b>Cardiac:</b> Sweating, nausea, dyspnoea. <b>PE:</b> Haemoptysis, leg swelling. <b>Pneumonia:</b> Fever, productive cough. <b>Anxiety:</b> Palpitations, paraesthesia, hyperventilation</div>
+      
+      <div>Cardiovascular risk</div>
+      <div>Use <span class="pill pill-blue">QRISK3</span> if not already calculated. Age, smoking, diabetes, hypertension, hyperlipidaemia, family history, CKD</div>
+      
+      <div>Wells score (PE)</div>
+      <div>If pleuritic + breathlessness: DVT signs (3), PE most likely Dx (3), HR >100 (1.5), immobilization/surgery (1.5), previous VTE (1.5), haemoptysis (1), malignancy (1). <b>>4 = PE likely</b></div>
+      
+      <div>Marfan's features</div>
+      <div>If dissection suspected: tall, arm span > height, high-arched palate, pectus, arachnodactyly, lens dislocation, aortic regurgitation murmur</div>
+      
+      <div>Pain diary</div>
+      <div>If recurrent: ask patient to record timing, triggers, duration, severity (0-10), relief with GTN/analgesia over 1-2 weeks</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><strong>Why risk stratification matters:</strong> Only 10-15% of chest pain in primary care is cardiac. Sending everyone to ED creates 4-8 hour waits, raises anxiety, and costs £150+ per attendance. Clinical features have validated likelihood ratios: radiation to both arms (LR+ 7.1), diaphoresis (LR+ 2.0), chest wall tenderness (LR- 0.3). Wells score has 98% NPV at low-risk cut-off—missing 2% is acceptable when balanced against imaging 50+ patients. Pain diaries reveal patterns invisible in a snapshot consultation: exertional angina appears as 5-10 minute episodes triggered by identical activities. QRISK3 >10% means 1-in-10 will have a cardiovascular event within 10 years without intervention—these patients need lower thresholds for investigation. Documentation protects you medico-legally and guides the next clinician.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3: DIAGNOSE - Classification -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-num">3</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Classification — Identify the Underlying Cause</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Classify based on examination and risk assessment. Most diagnoses are clinical.</p>
+    <div class="kv">
+      <div>Cardiac ischaemic</div>
+      <div><b>Stable angina:</b> Predictable exertional pain, relieved by rest/GTN within 5 minutes, no rest symptoms. <b>Unstable angina:</b> New onset, crescendo pattern, pain at rest >20 minutes</div>
+      
+      <div>Cardiac non-ischaemic</div>
+      <div><b>Pericarditis:</b> Sharp, pleuritic, positional, pericardial rub. <b>Myocarditis:</b> Post-viral, HF features, arrhythmia. <b>Aortic stenosis:</b> Exertional syncope, slow-rising pulse, ejection systolic murmur</div>
+      
+      <div>Vascular</div>
+      <div><b>Aortic dissection:</b> Tearing, back pain, BP differential. <b>PE:</b> Pleuritic, breathlessness, Wells score >4</div>
+      
+      <div>Respiratory</div>
+      <div><b>Pneumonia:</b> Fever, productive cough, creps, dullness. <b>Pneumothorax:</b> Sudden, breathlessness, reduced breath sounds. <b>Pleurisy:</b> Sharp, worse on inspiration, post-viral</div>
+      
+      <div>Gastrointestinal</div>
+      <div><b>GORD:</b> Burning, retrosternal, post-prandial, worse lying down, antacid relief. <b>Oesophageal spasm:</b> Mimics cardiac pain but no ECG changes, may respond to nitrates</div>
+      
+      <div>Musculoskeletal</div>
+      <div><b>Costochondritis:</b> Tender costochondral junctions, reproduced on palpation. <b>Muscle strain:</b> History of overuse/injury, tender muscle, worse on movement. <b>Rib fracture:</b> Trauma, point tenderness, crepitus</div>
+      
+      <div>Psychological</div>
+      <div><b>Panic attack:</b> Sudden onset, palpitations, hyperventilation, paraesthesia, sense of doom, duration <30 minutes. <b>Anxiety disorder:</b> Recurrent, GAD-7 score elevated, triggers identifiable</div>
+      
+      <div>Other</div>
+      <div><b>Herpes zoster:</b> Dermatomal pain before rash, unilateral, burning quality. <b>Referred pain:</b> Cervical radiculopathy (C5-T1), gallbladder disease (right-sided)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><strong>Why classification drives management:</strong> Treatment pathways diverge completely based on cause. Stable angina requires antiplatelet + statin + beta-blocker ± revascularization. GORD requires PPI + lifestyle. Costochondritis requires reassurance + NSAIDs. Giving a PPI to angina delays diagnosis by 6 weeks and risks an MI. Giving aspirin to GORD causes bleeding without benefit. The key skill is not memorizing rare causes but recognizing the big 5: cardiac (10%), MSK (30%), GI (20%), respiratory (15%), psychological (15%). Most are benign—only 1-2% are ACS—but that 1-2% is why we exist. Classification also sets follow-up intervals: cardiac needs 2-week cardiology review; MSK can wait 4-6 weeks. Accurate labeling reduces patient anxiety (costochondritis sounds less scary than "chest pain of unknown cause") and prevents re-consultations.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4: DIAGNOSE - Examination -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-num">4</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Targeted Examination — What to Check</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Focused examination to confirm or refute differential diagnoses. Takes 3-5 minutes.</p>
+    <div class="kv">
+      <div>General inspection</div>
+      <div>Sweating (ACS), distress level, pallor (anaemia/shock), Marfanoid habitus (dissection risk). <b>Significance:</b> Diaphoresis LR+ 2.0 for ACS</div>
+      
+      <div>Vital signs</div>
+      <div>BP both arms (>20 mmHg difference suggests dissection), HR (tachy in PE/sepsis/panic, brady in heart block), RR (>20 in PE/pneumonia), oxygen sats (target >94%), temp. <b>NEWS2 score:</b> ≥5 = escalate</div>
+      
+      <div>Cardiovascular</div>
+      <div>JVP (raised in RV failure/tamponade), apex beat (displaced in LVH/cardiomegaly), heart sounds (S3 in HF, S4 in ischaemia, murmurs: AS, AR, MR), pericardial rub (pericarditis), peripheral pulses (absent in dissection/PE). <b>BP differential:</b> Critical sign in dissection</div>
+      
+      <div>Respiratory</div>
+      <div>Chest expansion (reduced in pneumothorax), percussion (dull in consolidation/effusion, hyper-resonant in pneumothorax), auscultation (creps in pneumonia/HF, reduced sounds in effusion/pneumothorax, wheeze in asthma). <b>Unilateral findings:</b> Suggest pneumothorax or consolidation</div>
+      
+      <div>Chest wall</div>
+      <div>Palpate costochondral junctions (Tietze's syndrome), intercostal muscles (strain), sternum (fracture post-trauma). <b>Reproducible tenderness:</b> LR- 0.3 for ACS but does not exclude cardiac cause</div>
+      
+      <div>Abdomen</div>
+      <div>Epigastric tenderness (GORD/PUD/pancreatitis), RUQ tenderness (gallbladder disease), pulsatile mass (AAA). <b>AAA:</b> Screen if >50 years + smoker + vascular disease</div>
+      
+      <div>Legs</div>
+      <div>Unilateral calf swelling/tenderness (DVT → increases PE probability), peripheral oedema (HF). <b>DVT:</b> Increases Wells score by 3 points</div>
+      
+      <div>Skin</div>
+      <div>Dermatomal rash (herpes zoster—may precede pain by 2-3 days), xanthelasma (hyperlipidaemia), corneal arcus <50 years (familial hypercholesterolaemia). <b>Lipid stigmata:</b> Increase CVD risk</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><strong>Why examination findings change management:</strong> Examination has two purposes: (1) exclude emergencies that need same-day transfer, (2) build confidence in a benign diagnosis. A pericardial rub confirms pericarditis and avoids a troponin (saves £30 + patient anxiety). Reproducible chest wall tenderness LR- 0.3 makes ACS less likely but does NOT exclude it (Cochrane review 2010)—combine with history and ECG. Unilateral leg swelling + pleuritic pain raises Wells score to 6.5 (PE likely) and triggers imaging. BP differential >20 mmHg has 96% sensitivity for dissection. The exam is not diagnostic—it shifts probabilities. A normal exam in a high-risk patient (diabetes, 60 years old, crushing pain) still needs investigation. An abnormal exam in a low-risk patient (25, no risk factors, sharp pain) might be costochondritis. Context is everything.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5: DIAGNOSE - Investigations -->
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-num">5</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Investigations — What to Test and When</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Targeted investigations based on clinical suspicion. Avoid blanket testing.</p>
+    <div class="kv">
+      <div>ECG</div>
+      <div><b>Who:</b> All suspected cardiac pain, any patient >40 with new chest pain, cardiovascular risk factors. <b>When:</b> Immediate in surgery. <b>Looking for:</b> ST elevation (STEMI → 999), ST depression/T wave inversion (NSTEMI/ischaemia → same-day), new LBBB (may be ACS → senior review), AF (anticoagulation needed), pericarditis (saddle-shaped ST elevation, PR depression). <b>Normal ECG does NOT exclude ACS</b></div>
+      
+      <div>Chest X-ray</div>
+      <div><b>Who:</b> Suspected pneumonia, pneumothorax, HF, malignancy, persistent unexplained pain. <b>When:</b> Urgent same-day if pneumothorax/HF suspected. <b>2WW if:</b> Haemoptysis, persistent (>3 weeks) unexplained chest symptoms + smoker/ex-smoker >40 years, or CXR findings suggestive of lung cancer</div>
+      
+      <div>Blood tests (if cardiac suspected)</div>
+      <div><b>Troponin:</b> Secondary care only—not GP role. <b>FBC:</b> Anaemia (may precipitate angina). <b>U&Es:</b> Baseline before ACEi/diuretics. <b>Lipids (non-fasting):</b> Risk assessment. <b>HbA1c:</b> Screen for diabetes. <b>TFTs:</b> Hyperthyroidism can cause angina. <b>NOT routine:</b> BNP in primary care (poor specificity without echo)</div>
+      
+      <div>Blood tests (if respiratory suspected)</div>
+      <div><b>FBC:</b> Raised WCC in pneumonia. <b>CRP:</b> Elevated in infection (>50 mg/L suggests bacterial pneumonia). <b>D-dimer:</b> Only if Wells score <4 AND can be acted on same-day (many false positives in >50s, post-op, pregnancy, malignancy). <b>NOT routine:</b> Sputum culture (low yield), viral PCR (does not change management)</div>
+      
+      <div>QRISK3 / cardiovascular risk</div>
+      <div><b>Who:</b> All patients 25-84 years not on statins/with known CVD. <b>Calculate using:</b> Age, sex, ethnicity, smoking, diabetes, BP, cholesterol ratio, BMI, family history, CKD, AF, RA, ED, antihypertensives. <b>Action threshold:</b> ≥10% = offer statin (atorvastatin 20 mg)</div>
+      
+      <div>Exercise tolerance test</div>
+      <div><b>NOT GP-initiated.</b> Cardiology will arrange if stable angina suspected after rapid-access chest pain clinic (RACPC) assessment. Positive if: ST depression ≥1 mm, symptoms at low workload, BP drop. <b>Sensitivity 68%, specificity 77%</b></div>
+      
+      <div>CT coronary angiography (CTCA)</div>
+      <div><b>NOT GP-initiated.</b> Now first-line investigation for stable chest pain (NICE CG95 update 2024). NPV 99%—normal CTCA effectively excludes CAD. Ordered by cardiology via RACPC</div>
+      
+      <div>Avoid over-investigation</div>
+      <div><b>Do NOT:</b> Order BNP without echo (poor PPV), routine troponin in GP (cannot interpret serial changes), screening echos in asymptomatic patients, stress echo without cardiology guidance, angiography referrals directly (go via RACPC)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><strong>Why investigations need clear indications:</strong> An ECG costs £1 but prevents a £500 ED admission if it shows STEMI. A normal ECG does NOT exclude ACS (10-15% of STEMIs have initial normal ECG) but combined with low-risk features reduces probability from 5% to <1%. CXR has 2WW indications (NICE NG12): persistent symptoms + smoking in over-40s has 2-3% lung cancer prevalence. D-dimer sensitivity 95% but specificity 50%—in a 70-year-old post-op patient, it will be elevated regardless of PE, creating false reassurance if negative (missed PE) or unnecessary CTPA if positive (radiation + contrast risk). Lipid testing guides primary prevention: QRISK3 10% = NNT 50 over 10 years to prevent one event with statins (atorvastatin 20 mg reduces events by 30%). Troponin requires serial samples 3-6 hours apart—GP cannot do this, hence same-day hospital transfer if ACS suspected. The key question: will this test change my management today? If no, defer to specialist.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6: REFER - Referral Criteria -->
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-num">6</div>
+  <div class="node-head">
+    <span class="node-tag">Refer</span>
+    <h3>Referral Criteria — When to Escalate</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Clear thresholds for when specialist input is needed. Document referral rationale.</p>
+    <div class="kv">
+      <div><span class="pill pill-red">999 Ambulance</span></div>
+      <div>Suspected ACS (crushing pain >20 mins, sweating, ECG changes), aortic dissection (tearing pain, BP differential), massive PE (haemodynamic instability), tension pneumothorax, cardiac tamponade, any patient with systolic BP <90, HR <50 or >120, oxygen sats <90%, altered consciousness</div>
+      
+      <div><span class="pill pill-red">Same-Day Emergency</span></div>
+      <div>Unstable angina (cardiac pain at rest), suspected PE (Wells >4 or high suspicion), acute heart failure (severe breathlessness, orthopnoea, bilateral creps), suspected pneumonia with NEWS2 ≥5, large pneumothorax (>2 cm), sepsis, moderate-severe pericarditis with effusion signs. <b>Call ED or acute medical team</b></div>
+      
+      <div><span class="pill pill-purple">2-Week Wait</span></div>
+      <div><b>Lung cancer (NICE NG12):</b> CXR findings suggesting lung cancer, or persistent (>3 weeks) unexplained chest symptoms in smoker/ex-smoker ≥40 years PLUS one of: cough, haemoptysis, weight loss, chest pain, breathlessness. <b>Mesothelioma:</b> CXR pleural effusion/mass + asbestos exposure. <b>Upper GI cancer:</b> Chest pain + dysphagia</div>
+      
+      <div>Urgent Cardiology (within 2 weeks)</div>
+      <div><b>Rapid Access Chest Pain Clinic (RACPC):</b> Suspected stable angina (typical exertional pain, cardiovascular risk factors, no red flags), abnormal ECG (new Q waves, LBBB, ST/T changes), recurrent unexplained chest pain with high-risk features. <b>Refer via e-RS or local pathway</b></div>
+      
+      <div>Routine Cardiology</div>
+      <div>Atypical chest pain + significant cardiac family history (<60 years), confirmed arrhythmia needing specialist input, valvular disease detected on examination (murmur + symptoms), structurally abnormal ECG in young patient (Brugada pattern, hypertrophic cardiomyopathy features). <b>Referral time: 6-18 weeks</b></div>
+      
+      <div>Respiratory</div>
+      <div><b>Urgent:</b> Recurrent pneumothorax, persistent pleural effusion, suspicion of interstitial lung disease (crackles + breathlessness). <b>Routine:</b> Chronic pleuritic pain without clear cause, recurrent pneumonia same lobe (? obstruction)</div>
+      
+      <div>Gastroenterology</div>
+      <div><b>Urgent:</b> Dysphagia (2WW if age >55 + weight loss), severe refractory GORD despite 8 weeks full-dose PPI + lifestyle. <b>Routine:</b> GORD not responding to treatment, query Barrett's oesophagus. <b>Consider endoscopy if:</b> Age >55 + new-onset dyspepsia, alarm features (weight loss, dysphagia, vomiting, anaemia)</div>
+      
+      <div>Psychologist / IAPT</div>
+      <div>Recurrent chest pain with panic features (GAD-7 ≥10, PHQ-9 ≥10), health anxiety, post-cardiac-event PTSD. <b>Self-referral available in most areas.</b> CBT reduces chest pain consultations by 40% in functional chest pain</div>
+      
+      <div>Primary Care Management</div>
+      <div>Costochondritis (clear MSK features, reproducible tenderness), GORD (typical symptoms, responding to PPI), anxiety-related chest pain (low risk, normal investigations, psychological triggers), viral pleurisy (post-URTI, improving spontaneously), stable angina controlled on medication (annual review)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><strong>Why referral thresholds matter:</strong> RACPC was designed to reduce inappropriate ED attendances and speed access to diagnostics for stable angina—most see patients within 2 weeks and have direct access to CTCA. National Audit of Cardiac Rehabilitation shows 30-40% of stable angina can be managed medically without revascularization, but you need cardiology input to confirm. 2WW lung referrals have 5-7% cancer pick-up rate (NICE NG12 data)—missing one lung cancer in a 55-year-old smoker costs 10+ years of life; over-referring 20 patients to find it is acceptable. Same-day PE referrals prevent death (untreated PE has 30% mortality; treated <5%). Primary care management of costochondritis saves 200+ ED visits per 100,000 population per year—reassurance + NSAIDs is effective for 90% within 2 weeks. The skill is triaging accurately: send sick patients fast, manage well patients locally, and document why you chose your pathway.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7: TREAT - Drug Ladder -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-num">7</div>
+  <div class="node-head">
+    <span class="node-tag">Treat</span>
+    <h3>Treatment — Drug Ladder and Symptom Control</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Treatment depends on underlying diagnosis. This section covers primary care management after exclusion of emergencies.</p>
+    
+    <h4 style="margin: 1.5rem 0 0.75rem; font-size: 1rem; font-weight: 600; color: var(--text);">Suspected Stable Angina (awaiting RACPC)</h4>
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Symptom Relief</div>
+        <div class="b-drug">GTN spray <span class="pill pill-teal">PRN</span></div>
+        <div class="b-note">400 mcg (2 puffs) sublingual PRN for chest pain. Repeat after 5 minutes if needed. Call 999 if pain persists >15 minutes despite GTN. Warn: headache, dizziness, flushing. Avoid in severe AS, HOCM</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Antiplatelet</div>
+        <div class="b-drug">Aspirin <span class="pill pill-teal">75 mg OD</span></div>
+        <div class="b-note">Start once diagnosis likely (while awaiting RACPC). Reduces cardiovascular events by 30%. Avoid if active PUD, bleeding risk. Consider PPI if history of dyspepsia. <b>NNT 50 to prevent one event over 2 years</b></div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">High-Intensity Statin</div>
+        <div class="b-drug">Atorvastatin <span class="pill pill-teal">80 mg OD</span></div>
+        <div class="b-note">Secondary prevention dose if angina confirmed. Reduces LDL by 50%, events by 30%. Monitor LFTs at 3 months (stop if ALT >3x ULN). Avoid grapefruit juice. <b>NNT 30 over 5 years to prevent one event</b></div>
+      </div>
+    </div>
+    
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Beta-blocker (first-line rate control)</b> Bisoprolol 2.5 mg OD, increase to 5 mg, then 10 mg. Target HR 55-60 bpm. Reduces oxygen demand. Avoid in asthma (use rate-limiting CCB instead). Monitor HR, BP. <b>NNT 25 to prevent one angina episode per week</b></span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Add long-acting CCB</b> Amlodipine 5 mg OD, increase to 10 mg. OR switch to rate-limiting CCB if beta-blocker contraindicated: Diltiazem MR 120 mg BD (target 180 mg BD). Avoid verapamil + beta-blocker (risk of heart block)</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Add long-acting nitrate</b> Isosorbide mononitrate MR 30 mg OD, increase to 60 mg. Ensure nitrate-free period (asymmetric dosing: 8am dose only) to avoid tolerance. Warn: headache common initially</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Specialist options (cardiologist-initiated)</b> Ivabradine (if HR >70 despite beta-blocker), Nicorandil, Ranolazine. OR consider revascularization (PCI or CABG) if refractory symptoms</span></div>
+    </div>
+    
+    <h4 style="margin: 1.5rem 0 0.75rem; font-size: 1rem; font-weight: 600; color: var(--text);">GORD / Oesophageal Chest Pain</h4>
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">First-Line PPI</div>
+        <div class="b-drug">Lansoprazole <span class="pill pill-teal">30 mg OD</span></div>
+        <div class="b-note">Take 30 minutes before breakfast. 8-week course initially. Symptom resolution in 70-80%. Step down to PRN or low-dose (15 mg) if effective. Review need annually (avoid long-term high-dose without indication)</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Alternative PPI</div>
+        <div class="b-drug">Omeprazole <span class="pill pill-teal">20 mg OD</span></div>
+        <div class="b-note">If lansoprazole not tolerated. Or try H2 antagonist: Ranitidine 300 mg nocte (if PPI contraindicated). Less effective than PPI (60% vs 80% resolution)</div>
+      </div>
+    </div>
+    
+    <h4 style="margin: 1.5rem 0 0.75rem; font-size: 1rem; font-weight: 600; color: var(--text);">Costochondritis / MSK Pain</h4>
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Simple Analgesia</div>
+        <div class="b-drug">Ibuprofen <span class="pill pill-teal">400 mg TDS</span></div>
+        <div class="b-note">With food. 7-10 day course. Anti-inflammatory effect reduces costochondral inflammation. Add PPI if high GI risk (age >65, previous PUD, on aspirin). Avoid in renal impairment, heart failure</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Alternative NSAID</div>
+        <div class="b-drug">Naproxen <span class="pill pill-teal">500 mg BD</span></div>
+        <div class="b-note">If ibuprofen ineffective. Or paracetamol 1g QDS (less effective but safer in elderly/comorbidities). Avoid opiates—no evidence of benefit, risk of dependence</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Topical</div>
+        <div class="b-drug">Ibuprofen gel <span class="pill pill-teal">QDS</span></div>
+        <div class="b-note">Apply to affected area. Lower systemic absorption than oral. Useful if oral NSAIDs contraindicated. Avoid on broken skin</div>
+      </div>
+    </div>
+    
+    <h4 style="margin: 1.5rem 0 0.75rem; font-size: 1rem; font-weight: 600; color: var(--text);">Pericarditis (Primary Care Management if Mild)</h4>
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Anti-Inflammatory</div>
+        <div class="b-drug">Ibuprofen <span class="pill pill-teal">600 mg TDS</span></div>
+        <div class="b-note">Higher dose than MSK. Continue until symptom resolution (typically 2-4 weeks), then taper. Add PPI. <b>Colchicine 500 mcg BD</b> can be added (reduces recurrence from 30% to 10%) but usually specialist-initiated. <b>Avoid in severe disease, large effusion, tamponade risk—refer urgently</b></div>
+      </div>
+    </div>
+    
+    <h4 style="margin: 1.5rem 0 0.75rem; font-size: 1rem; font-weight: 600; color: var(--text);">Anxiety-Related Chest Pain</h4>
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Psychological</div>
+        <div class="b-drug">CBT / IAPT <span class="pill pill-green">Referral</span></div>
+        <div class="b-note">First-line for mild-moderate anxiety. Self-referral or GP referral. 6-12 sessions. Teaches breathing techniques, challenges catastrophic thinking. <b>NNT 3 to achieve significant symptom reduction</b></div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Pharmacological (if CBT insufficient)</div>
+        <div class="b-drug">Sertraline <span class="pill pill-teal">50 mg OD</span></div>
+        <div class="b-note">First-line SSRI for GAD. Increase to 100 mg at 4 weeks if needed (max 200 mg). Warn: initial anxiety increase first 1-2 weeks, 6-8 weeks for full effect. Review at 2, 4, 8, 12 weeks. Continue 6-12 months after remission</div>
+      </div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><strong>Why treatment ladders improve outcomes:</strong> Stable angina medical therapy (aspirin + statin + beta-blocker) reduces cardiovascular events by 60% before any revascularization is considered. Beta-blockers reduce angina frequency by 50% (NNT 2.5 for symptom control). GTN terminates angina within 5 minutes in 80% of episodes—failure to respond is a red flag for ACS. High-dose atorvastatin (80 mg) is proven superior to 10 mg in ACS trials (PROVE-IT: 16% additional risk reduction). GORD: PPI trial is both diagnostic and therapeutic—70% resolution confirms GORD; failure prompts endoscopy/cardiology. Costochondritis: reassurance is as important as NSAIDs—natural history is resolution within 2-4 weeks in 90%. Over-medicalizing MSK pain increases anxiety and re-consultation rates. Anxiety chest pain: CBT has NNT 3 (better than most drugs) and no side effects. SSRIs take 6-8 weeks but reduce panic attacks by 60-70%. The error is treating everyone the same—individualize to diagnosis.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8: LIFESTYLE - Non-Pharmacological -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-num">8</div>
+  <div class="node-head">
+    <span class="node-tag">Lifestyle</span>
+    <h3>Lifestyle Interventions — Treatment, Not Afterthought</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Lifestyle modification is first-line treatment for cardiovascular risk and equivalent to pharmacotherapy for many conditions.</p>
+    <div class="lsgrid">
+      <div class="lstile"><b>Smoking cessation</b> Single most important intervention. Reduces MI risk by 50% within 1 year. Refer to NHS Stop Smoking Service (4x success vs willpower alone). Offer NRT, varenicline, or bupropion. <b>NNT 10 to achieve 1 quit at 1 year</b></div>
+      
+      <div class="lstile"><b>Cardiac rehabilitation</b> If angina confirmed: 6-12 week supervised exercise + education programme. Reduces all-cause mortality by 20%, hospital readmissions by 30%. Improves exercise tolerance, quality of life. <b>All ACS/revascularization patients should be offered</b></div>
+      
+      <div class="lstile"><b>Mediterranean diet</b> Reduce saturated fat (<7% total calories), increase fruit/veg (5+ portions/day), oily fish 2x/week, nuts/seeds, olive oil. PREDIMED trial: 30% reduction in cardiovascular events vs low-fat diet. <b>As effective as statins for primary prevention</b></div>
+      
+      <div class="lstile"><b>Weight loss (if BMI ≥25)</b> Target 5-10% body weight reduction. Reduces BP by 5-10 mmHg per 5 kg lost, improves lipids, insulin sensitivity. Refer to tier 2 weight management if BMI ≥30 or ≥27.5 with comorbidities. <b>10 kg loss = 20% reduction in total mortality in obese patients</b></div>
+      
+      <div class="lstile"><b>Alcohol reduction</b> Keep within 14 units/week, spread over 3+ days. Excessive alcohol raises BP, triglycerides, risk of cardiomyopathy. Brief intervention reduces consumption by 20% (NNT 8). Use AUDIT-C to screen</div>
+      
+      <div class="lstile"><b>Physical activity</b> 150 minutes moderate-intensity aerobic exercise per week (e.g., brisk walking 30 mins 5x/week) + strength training 2x/week. Reduces CVD risk by 30%, all-cause mortality by 25%. Prescribe via exercise referral schemes where available</div>
+      
+      <div class="lstile"><b>Stress reduction</b> For anxiety-related chest pain: mindfulness, yoga, progressive muscle relaxation. Headspace/Calm apps. Evidence base weaker than CBT but low-cost adjunct. May reduce panic attack frequency by 30-40%</div>
+      
+      <div class="lstile"><b>Sleep hygiene</b> 7-9 hours/night. Poor sleep (OSA, insomnia) increases CVD risk by 40%. Screen for OSA if BMI >35 + snoring + daytime somnolence (Epworth score >10). Treat insomnia non-pharmacologically (CBT-I) before hypnotics</div>
+      
+      <div class="lstile"><b>GORD-specific</b> Avoid large meals, fatty/spicy foods, caffeine, alcohol, chocolate. Elevate head of bed 15-20 cm. Weight loss if overweight (reduces reflux by 40%). Eat 3 hours before lying down. Stop smoking (weakens lower oesophageal sphincter)</div>
+      
+      <div class="lstile"><b>Posture (MSK pain)</b> Avoid slouching, heavy lifting, repetitive reaching. Ergonomic workstation review. Physiotherapy referral for persistent MSK pain (self-referral available in most areas). Stretches for pectoralis/intercostal muscles</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><strong>Why lifestyle is treatment, not advice:</strong> Smoking cessation reduces post-MI mortality by 50%—more than any single drug. Mediterranean diet in PREDIMED trial reduced cardiovascular events by 30% (NNT 33 over 5 years), comparable to statins (NNT 30). Exercise reduces all-cause mortality by 25%—no drug achieves this. Weight loss 10 kg reduces systolic BP by 10 mmHg (equivalent to adding a second antihypertensive). The error is relegating lifestyle to a leaflet—it should be prescribed like a drug with specific targets, follow-up, and referral to services (Stop Smoking, weight management, cardiac rehab). Stop Smoking Services achieve 15% quit rates vs 3% willpower-alone. Cardiac rehab reduces readmissions by 30% (saves NHS £2,000+ per patient). The challenge is adherence: 50% drop out of lifestyle programs. Motivational interviewing, written action plans, and follow-up calls improve adherence to 60-70%. Quantify the benefit: "Stopping smoking will halve your heart attack risk" is more powerful than "Smoking is bad for you."</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9: SAFETY - Follow-Up -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-num">9</div>
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Follow-Up & Safety-Netting — When to Review</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Structured follow-up prevents missed deterioration. Clear safety-netting empowers patients to re-present appropriately.</p>
+    <div class="kv">
+      <div>Suspected angina (awaiting RACPC)</div>
+      <div><b>1 week:</b> Check GTN use, medication tolerance, escalating symptoms. <b>2 weeks:</b> Chase RACPC appointment if not received. <b>Ongoing:</b> Review every 2 weeks until seen by cardiology. <b>Safety-net:</b> Return immediately if pain at rest, nocturnal symptoms, GTN ineffective</div>
+      
+      <div>GORD on PPI trial</div>
+      <div><b>4 weeks:</b> Assess symptom response. If resolved, continue 8 weeks total then step down. If persistent, consider endoscopy referral (especially age >55, weight loss, dysphagia). <b>3 months:</b> Attempt step-down to PRN or low-dose. <b>Annual review if long-term PPI needed</b></div>
+      
+      <div>Costochondritis / MSK</div>
+      <div><b>2 weeks:</b> Review if not improving (95% resolve by 2 weeks with NSAIDs + reassurance). <b>Persistent >4 weeks:</b> Consider alternative diagnosis (rib stress fracture, Tietze's, referred pain). <b>Physiotherapy if >6 weeks</b>. Safety-net: Return if severe worsening, breathlessness, fever (infection/PE)</div>
+      
+      <div>Anxiety-related pain</div>
+      <div><b>2 weeks (if started SSRI):</b> Monitor for worsening anxiety, suicidal ideation (especially age <30). <b>4 weeks:</b> Assess early response. <b>8 weeks:</b> Full effect. <b>12 weeks:</b> Consider increase/switch if inadequate response. <b>6-12 months remission before tapering</b>. IAPT review as per service (usually 6-12 weekly sessions)</div>
+      
+      <div>Pericarditis (mild, GP-managed)</div>
+      <div><b>1 week:</b> Check symptom improvement, no signs of effusion (breathlessness, tachycardia, muffled heart sounds). <b>2-4 weeks:</b> Continue until pain-free, then taper NSAIDs. <b>3 months:</b> Check for recurrence (occurs in 15-30%). <b>Refer urgently if:</b> Worsening breathlessness, fever, haemodynamic compromise</div>
+      
+      <div>Cardiovascular risk modification</div>
+      <div><b>3 months (if new statin):</b> Check lipids (aim LDL <2 mmol/L if CVD, <3 if primary prevention), LFTs (stop if ALT >3x ULN), CK if muscle pain. <b>Annual review:</b> BP, lipids, HbA1c (if diabetic), medication adherence, lifestyle. <b>QRISK3 recalculation every 5 years</b></div>
+      
+      <div>Recurrent chest pain (benign causes excluded)</div>
+      <div><b>3 months:</b> Review if pain pattern changing. New red flags (rest pain, nocturnal symptoms, exertional syncope) warrant urgent reassessment. Consider cardiology referral if diagnostic uncertainty persists despite normal initial work-up</div>
+      
+      <div><span class="pill pill-red">999 Safety-Net</span></div>
+      <div>Call 999 if: chest pain lasting >15 minutes despite GTN, sudden severe tearing pain, breathlessness with low oxygen sats, palpitations with dizziness/syncope, coughing blood, sudden one-sided chest pain + breathlessness (pneumothorax), systolic BP <90 mmHg</div>
+      
+      <div><span class="pill pill-red">Same-Day GP Safety-Net</span></div>
+      <div>Contact GP same-day if: pain at rest (previously only exertional), GTN no longer effective, worsening breathlessness, new leg swelling (DVT/PE concern), fever + chest pain (infection), vomiting blood, black stools (GI bleed), severe anxiety preventing function</div>
+      
+      <div>Re-referral triggers</div>
+      <div>Re-refer urgently if: previously benign chest pain now has cardiac features (exertional, radiation, sweating), new ECG changes, escalating symptoms despite medication, patient anxiety overwhelming despite reassurance + normal tests (consider cardiology reassurance)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><strong>Why follow-up and safety-netting save lives:</strong> 10-15% of ACS present initially with atypical symptoms and normal ECG—these patients re-present within 7 days with classic features. Early follow-up (1 week) catches this subgroup. GORD non-responders at 4 weeks include 2-3% with malignancy (especially age >55)—hence step-up to endoscopy. Costochondritis that persists >4 weeks may be rib fracture, Tietze's, or referred cervical spine pain—reassessment changes diagnosis in 10%. SSRIs increase suicidal ideation in first 2 weeks in <1% (especially under-30s)—hence 2-week review is mandatory. Safety-netting reduces re-consultation anxiety ("I don't want to bother the GP") while preventing inappropriate re-presentations ("Is this normal?"). Specific triggers ("pain at rest, GTN ineffective") are clearer than vague advice ("come back if worried"). The medico-legal protection is secondary but real—"Patient advised to re-attend if symptoms persist beyond 2 weeks" is documented evidence of safe practice. Annual cardiovascular reviews reduce events by 20% via medication adherence + risk factor control (NICE CG181).</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on NICE CG95 (Chest Pain of Recent Onset, 2024 update), NICE NG185 (Acute Coronary Syndromes), NICE NG12 (Suspected Cancer Recognition and Referral), BTS Guidelines on Pleural Disease, ESC Guidelines on Chronic Coronary Syndromes (2019), and SIGN 151 (British Guideline on the Management of Asthma, 2024 update where relevant to breathlessness assessment). Always adapt to individual patient context, local pathways, and seek senior/specialist input when uncertain.
+</div>
+
+<script>
+const STORAGE_KEY = 'rgp.alg.chestpain.v1';
+
+// Load saved state
+function loadState() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (!saved) return;
+  try {
+    const state = JSON.parse(saved);
+    state.forEach((checked, index) => {
+      const cb = document.querySelector(`.node[data-step="${index + 1}"] input[type="checkbox"]`);
+      if (cb) cb.checked = checked;
+    });
+    updateProgress();
+  } catch (e) {
+    console.error('Failed to load state:', e);
+  }
+}
+
+// Save state
+function saveState() {
+  const checkboxes = document.querySelectorAll('.node input[type="checkbox"]');
+  const state = Array.from(checkboxes).map(cb => cb.checked);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+// Update progress
+function updateProgress() {
+  const checkboxes = document.querySelectorAll('.node input[type="checkbox"]');
+  const total = checkboxes.length;
+  const done = Array.from(checkboxes).filter(cb => cb.checked).length;
+  document.getElementById('pDone').textContent = done;
+  document.getElementById('pTotal').textContent = total;
+  document.getElementById('pFill').style.width = `${(done / total) * 100}%`;
+}
+
+// Reset
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (!confirm('Reset all progress?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('.node input[type="checkbox"]').forEach(cb => cb.checked = false);
+  updateProgress();
+});
+
+// Checkbox listeners
+document.querySelectorAll('.node input[type="checkbox"]').forEach(cb => {
+  cb.addEventListener('change', () => {
+    saveState();
+    updateProgress();
+  });
+});
+
+// Why button toggles
+document.querySelectorAll('.why-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !isOpen);
+    const drawer = btn.nextElementSibling;
+    drawer.classList.toggle('open');
+  });
+});
+
+// Initialize
+loadState();
+updateProgress();
+</script>
+
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

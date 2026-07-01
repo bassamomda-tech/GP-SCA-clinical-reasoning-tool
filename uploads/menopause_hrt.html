@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menopause &amp; HRT &middot; GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="mode-both" id="bodyEl">
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">M</div>
+      <div><div class="tb-title">Menopause &amp; HRT &middot; Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA &middot; NICE NG23 (2019 update) / NICE CKS 2023</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">&#127891; SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">&#127973; Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">51</span><span class="ns-lbl">Average UK menopause age</span></div>
+    <div class="ns-item"><span class="ns-val">12 months</span><span class="ns-lbl">Amenorrhoea to diagnose menopause</span></div>
+    <div class="ns-item"><span class="ns-val">FSH &gt;30</span><span class="ns-lbl">IU/L if &lt;45 yrs (&times;2, 6 wks apart)</span></div>
+    <div class="ns-item"><span class="ns-val">&lt;60 yrs</span><span class="ns-lbl">Benefit window for HRT start</span></div>
+    <div class="ns-item"><span class="ns-val">1.8&times;</span><span class="ns-lbl">VTE risk with oral combined HRT</span></div>
+    <div class="ns-item"><span class="ns-val">No increase</span><span class="ns-lbl">VTE risk with transdermal HRT</span></div>
+    <div class="ns-item"><span class="ns-val">5 yrs</span><span class="ns-lbl">Standard HRT treatment duration</span></div>
+    <div class="ns-item"><span class="ns-val">1 in 1,000</span><span class="ns-lbl">Extra BC cases per yr (combined HRT)</span></div>
+  </div>
+</div>
+
+<div class="page">
+
+<div class="stem-box clinic-only">
+  <div class="stem-label">&#128203; Clinical Stem &mdash; Menopause &amp; HRT Consultation</div>
+  <div class="stem-title">A woman presents with symptoms of menopause &mdash; to seek diagnosis, discuss HRT, or review existing treatment.</div>
+  <div class="stem-text">"A 51-year-old woman attends her GP with a 6-month history of hot flushes occurring 8&ndash;10 times per day and disturbing her sleep. Her last menstrual period was 14 months ago. She is otherwise well, with no significant past medical history. She works as a secondary school teacher and reports that the symptoms are significantly affecting her concentration at work and her relationship with her husband."</div>
+  <div class="stem-note">This stem represents any point on the menopause journey &mdash; initial presentation, HRT start, HRT review, or late presentation with osteoporosis or cardiovascular concerns. The symptom burden and the patient's own priorities shape the consultation.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A &mdash; Classic perimenopause</strong> Irregular cycles, hot flushes, mood change, sleep disruption; FSH borderline; discuss lifestyle, HRT eligibility and risks.</div>
+    <div class="stem-variant"><strong>Scenario B &mdash; Requesting HRT after WHI scare</strong> Patient reluctant due to historical cancer fears; needs updated NICE-concordant risk communication and shared decision making.</div>
+    <div class="stem-variant"><strong>Scenario C &mdash; Premature ovarian insufficiency (POI)</strong> Woman &lt;40 with amenorrhoea and elevated FSH; different risk-benefit profile; HRT is cardiovascular and bone protective here.</div>
+    <div class="stem-variant"><strong>Scenario D &mdash; HRT review with complications</strong> Established HRT user with new diagnosis (hypertension, breast cancer history, DVT); re-assess risk; consider switching route or stopping.</div>
+    <div class="stem-variant"><strong>Scenario E &mdash; Non-hormonal options requested</strong> Woman who cannot or will not take HRT; explore reasons; discuss SSRIs, clonidine, cognitive behavioural therapy, lifestyle.</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Age, time since last period, breast cancer history, VTE history, cardiovascular risk, route preference (oral vs transdermal), type of HRT (sequential vs continuous), and psychosocial impact of symptoms.</div>
+  </div>
+</div>
+
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">&#9660; Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">&#9650; Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text">
+      <div class="step-label">Step 1</div>
+      <div class="step-title">History Taking &mdash; Open Question First &middot; Targeted Questions &middot; ICE &middot; Psychosocial Context</div>
+    </div>
+    <div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Menopause history is holistic, not hormonal alone.</strong> The consultation must capture symptom burden across all domains (vasomotor, urogenital, psychological, musculoskeletal), explore the patient's attributions and fears, and identify contraindications to HRT. The decision to start HRT must be the patient's, informed by an individualised risk-benefit discussion &mdash; not directed by the clinician's prior assumptions.</div>
+
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">&#127891; Consultation opener &mdash; use existing information first</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"I can see from your notes that you've come in today to talk about the menopause. It would really help me to hear from you directly &mdash; what's been going on, and what's been most difficult for you?"</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Opening with "when did your periods stop?" before the patient has spoken costs Global Skills and Relating to Others marks. The patient's own description of impact is the most clinically important information in this consultation.</div>
+    </div>
+
+    <div class="sub-divider">1A &mdash; Start with an open question: let the patient lead, then move to targeted questions</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question to ask</th><th style="width:42%">Why it matters clinically</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>&#128994; OPEN QUESTION &mdash; always start here</strong><em>"Can you tell me what's been happening and what's been most affecting you day to day?"</em></td>
+            <td class="why">Allows the patient to prioritise her own symptom burden &mdash; vasomotor, psychological, sexual or urogenital. Different priorities require different management decisions.<span class="why-sub">A patient who leads with mood and sleep disruption may have depression or thyroid disease, not menopause.</span></td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-ps">Psychosocial</span><span class="chg chg-rx">Rx plan</span></td>
+          </tr>
+          <tr>
+            <td class="q">Last menstrual period and cycle changes<em>"When did your periods stop or become irregular? Have they changed over time?"</em></td>
+            <td class="why">12 months of amenorrhoea = menopause (in women &ge;45). Perimenopause has irregular cycles but menopause diagnosis requires 12 months. Needed to determine if sequential or continuous combined HRT is appropriate.<span class="why-sub">Sequential HRT for perimenopause (&lt;12 months amenorrhoea); continuous combined for &ge;12 months amenorrhoea.</span></td>
+            <td><span class="chg chg-rx">Rx</span><span class="chg chg-ddx">DDx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Vasomotor symptoms<em>"How often are you getting hot flushes or night sweats? How badly are they affecting your sleep?"</em></td>
+            <td class="why">Frequency and severity score (Greene Climacteric Scale) guides treatment need. Mild = lifestyle; moderate-severe = HRT discussion. Night sweats disrupting sleep cause secondary depression, fatigue and cognitive impairment.<span class="why-sub">Aim: &lt;50% reduction in flush frequency at 3 months on HRT indicates dose review needed.</span></td>
+            <td><span class="chg chg-rx">Rx</span><span class="chg chg-ref">Referral</span></td>
+          </tr>
+          <tr>
+            <td class="q">Psychological symptoms<em>"How has your mood been? Have you noticed any anxiety, low mood, brain fog, or memory difficulties?"</em></td>
+            <td class="why">Depression, anxiety and cognitive symptoms are common in perimenopause and often unattributed to hormonal change. Differentiating primary depression from perimenopausal mood change affects management (HRT vs antidepressant vs both).<span class="why-sub">NICE NG23: do not diagnose depression without first considering whether symptoms are menopausal in origin.</span></td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-rx">Rx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Genitourinary symptoms<em>"Have you noticed any vaginal dryness, discomfort during sex, or problems with your bladder &mdash; like urgency or recurrent urine infections?"</em></td>
+            <td class="why">Genitourinary syndrome of menopause (GSM) affects 40&ndash;50% of menopausal women and is underreported. Often separate to vasomotor symptoms and often persists after systemic HRT resolves flushes &mdash; needs separate vaginal oestrogen treatment.<span class="why-sub">Vaginal oestrogen safe in most women, including those with breast cancer history (low systemic absorption).</span></td>
+            <td><span class="chg chg-rx">Rx</span><span class="chg chg-ddx">DDx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Musculoskeletal symptoms<em>"Have you noticed any joint pains, muscle aches, or changes in your hair or skin?"</em></td>
+            <td class="why">Joint pains and muscle aches are common in perimenopause and often attributed to ageing or fibromyalgia. Oestrogen deficiency affects connective tissue. Collagen loss accelerates after menopause.<span class="why-sub">Rule out inflammatory arthritis, hypothyroidism and other causes before attributing to menopause.</span></td>
+            <td><span class="chg chg-ddx">DDx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Previous or current HRT<em>"Have you ever tried HRT or hormonal treatment for the menopause? What happened?"</em></td>
+            <td class="why">Prior HRT experience reveals tolerability issues (breakthrough bleeding on continuous combined, nausea on oral preparations) that guide preparation choice. Discontinuation reason informs this consultation.<span class="why-sub">Women who stopped HRT after WHI (2002) publication often did so unnecessarily &mdash; updated evidence (NICE 2015/2019) significantly changes the risk-benefit communication.</span></td>
+            <td><span class="chg chg-rx">Rx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Breast cancer history (personal or family)<em>"Have you or any close family members had breast cancer?"</em></td>
+            <td class="why">Personal history of oestrogen-receptor positive breast cancer = systemic HRT UKMEC 4 in most cases (oncology-led decision). ER-negative breast cancer: specialist discussion. Strong family history alone does not preclude HRT but should prompt BRCA testing discussion.<span class="why-sub">Vaginal oestrogen is generally safe even in breast cancer survivors &mdash; very low systemic absorption.</span></td>
+            <td><span class="chg chg-rx">Rx</span><span class="chg chg-ref">Referral</span></td>
+          </tr>
+          <tr>
+            <td class="q">VTE history and cardiovascular risk<em>"Have you ever had a blood clot in your leg or lung? Any heart problems or history of stroke?"</em></td>
+            <td class="why">Oral HRT (not transdermal) increases VTE risk 1.8-fold. Personal DVT/PE = oral HRT contraindicated; transdermal HRT has no increased VTE risk and is safe.<span class="why-sub">NICE NG23: offer transdermal as first-line route when VTE risk elevated (obesity BMI &gt;30, immobility, strong FH).</span></td>
+            <td><span class="chg chg-rx">Rx</span><span class="chg chg-ref">Referral</span></td>
+          </tr>
+          <tr>
+            <td class="q">Age and time since last period<em>"How old are you now, and how long ago was your last period?"</em></td>
+            <td class="why">HRT benefit-risk ratio most favourable if started within 10 years of menopause or before age 60 (the "window of opportunity"). Starting after 60+ in women with no symptoms has less clear benefit and potentially increased cardiovascular risk.<span class="why-sub">Premature ovarian insufficiency (&lt;40 yrs): HRT is strongly recommended until at least age 51 for cardiovascular and bone protection &mdash; this overrides most HRT concerns.</span></td>
+            <td><span class="chg chg-rx">Rx</span><span class="chg chg-ddx">DDx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Contraceptive need<em>"Are you still having any periods at all? Are you using any contraception?"</em></td>
+            <td class="why">Menopausal women still need contraception until 1 year after last period (&ge;50) or 2 years (&lt;50). HRT is NOT a contraceptive. Mirena IUS (licensed for HRT progestogen component) also provides contraception.<span class="why-sub">Women on sequential HRT who want contraception need a separate progestogen-only method (implant, Cu-IUD, DMPA) or Mirena IUS.</span></td>
+            <td><span class="chg chg-rx">Rx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Current medications<em>"Are you on any other regular medications or supplements?"</em></td>
+            <td class="why">Tamoxifen + HRT = contraindicated (competes at oestrogen receptor). Enzyme inducers reduce oral HRT levels. SSRIs and SNRIs may already partially control vasomotor symptoms.<span class="why-sub">Venlafaxine (off-label) and paroxetine (avoid with tamoxifen) reduce flush frequency by ~50% &mdash; useful HRT alternatives.</span></td>
+            <td><span class="chg chg-rx">Rx</span><span class="chg chg-ddx">DDx</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-divider">1B &mdash; Red flags: must not miss &middot; must ask &middot; must act</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">&#128680;</span><h3>Red Flags &mdash; act before continuing history</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Postmenopausal bleeding (PMB) &mdash; any bleeding &gt;12 months after last period</td><td class="rf-why">Endometrial carcinoma must be excluded. PMB is an urgent 2-week wait (2WW) referral until proven otherwise; risk increases with age and unopposed oestrogen.</td><td><span class="rf-action rfa-same">2WW referral</span></td></tr>
+          <tr><td class="rf-flag">Unexpected vaginal bleeding on continuous combined HRT (&gt;6 months of use)</td><td class="rf-why">Breakthrough bleeding after initial 3&ndash;6 months on continuous combined HRT should be investigated to exclude endometrial pathology. Early bleeding is common and expected; late bleeding is not.</td><td><span class="rf-action rfa-same">Pelvic USS</span></td></tr>
+          <tr><td class="rf-flag">New unilateral breast lump on HRT</td><td class="rf-why">Combined HRT increases breast cancer risk by approximately 1 additional case per 1000 women per year of use. Any new breast lump requires urgent 2WW breast clinic referral regardless of HRT status.</td><td><span class="rf-action rfa-same">2WW breast</span></td></tr>
+          <tr><td class="rf-flag">DVT / PE symptoms</td><td class="rf-why">Oral HRT increases VTE risk ~1.8-fold. DVT or PE on oral HRT = stop oral HRT; transdermal route may be continued after haematology review.</td><td><span class="rf-action rfa-999">A&amp;E / DVT clinic</span></td></tr>
+          <tr><td class="rf-flag">Symptoms of POI in woman under 40 (&lt;45 with amenorrhoea)</td><td class="rf-why">Premature ovarian insufficiency (POI) is missed in 50% on first presentation. Untreated POI leads to premature cardiovascular disease, osteoporosis and cognitive decline.</td><td><span class="rf-action rfa-same">Same day / urgent</span></td></tr>
+          <tr><td class="rf-flag">Severe hypertension (&gt;160/100) on oral HRT</td><td class="rf-why">Oral oestrogen can raise blood pressure via hepatic angiotensinogen. Switch to transdermal route which has no hepatic first-pass effect and does not increase BP.</td><td><span class="rf-action rfa-same">BP management + switch route</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sg-wrap">
+      <div class="sg-hdr"><span style="font-size:1.1rem">&#128737;&#65039;</span><h3>Safeguarding Considerations &mdash; Consider in Every Consultation</h3></div>
+      <div class="sg-body">
+        <div style="font-size:12.5px;color:#4a0072;line-height:1.55;margin-bottom:.75rem;background:#fff;border:1px solid var(--ps-bd);border-radius:var(--rad-sm);padding:.65rem .9rem;border-left:3px solid var(--ps)">
+          <strong>Menopause can amplify vulnerability.</strong> Hormonal change, sleep deprivation, mood disruption and sexual dysfunction can destabilise relationships, increase alcohol dependence and reduce capacity for self-protection. GPs must recognise that menopausal women may present with domestic abuse and depression masked by somatic symptoms.
+        </div>
+        <div class="sg-grid">
+          <div class="sg-card"><h5>&#128116; Domestic abuse during menopause</h5><ul>
+            <li>Mood change, irritability and low libido can increase relationship conflict and abuse risk</li>
+            <li>Symptoms may mask IPV &mdash; ask NICE-recommended enquiry: "Do you feel safe at home?"</li>
+            <li>Alcohol use may increase in peri-menopausal women with poor sleep and mood symptoms</li>
+            <li>Refer to MARAC if high risk; document DASH assessment</li>
+          </ul></div>
+          <div class="sg-card"><h5>&#129504; Mental health and capacity</h5><ul>
+            <li>Severe perimenopausal depression may impair capacity for treatment decisions</li>
+            <li>Women who present with cognitive symptoms &mdash; exclude depression before dementia</li>
+            <li>Psychiatric medication interactions with HRT must be reviewed</li>
+            <li>Women on antipsychotics may have drug-induced amenorrhoea &mdash; distinguish from menopause</li>
+          </ul></div>
+          <div class="sg-card"><h5>&#128100; Older women and carer abuse</h5><ul>
+            <li>Post-menopausal women presenting late may have delayed help-seeking due to carer responsibilities</li>
+            <li>Financial exploitation by family members may prevent access to private HRT formulations</li>
+            <li>Loneliness and isolation amplify somatic symptom burden</li>
+            <li>Ensure patient is seen alone for part of consultation</li>
+          </ul></div>
+          <div class="sg-card"><h5>&#128330; POI and reproductive loss</h5><ul>
+            <li>POI causes permanent infertility &mdash; significant psychological impact</li>
+            <li>Refer to specialist fertility counselling before discussing HRT in POI</li>
+            <li>Young women with POI have elevated risk of depression and anxiety</li>
+            <li>Psychological support alongside HRT is part of NICE-recommended POI management</li>
+          </ul></div>
+        </div>
+        <div class="sg-action">
+          <strong>If a safeguarding concern is identified:</strong> Follow standard GP safeguarding adult protocols. Document clearly. Discuss safety planning with the patient without the presence of any potential perpetrator. Refer to MARAC if high risk. For women with POI and psychological distress, consider same-day urgent mental health referral if there is risk of self-harm.
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-divider">1C &mdash; PMH &middot; FH &middot; Drug history &middot; Social history: management impact</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">&#129516; PMH / FH &mdash; changes management</div>
+        <table class="it">
+          <thead><tr><th>Factor</th><th>Why it matters</th><th>Management impact</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">ER+ breast cancer (personal)</td><td>Systemic oestrogen may stimulate ER+ cancer recurrence</td><td class="impact">Systemic HRT generally contraindicated; discuss with oncologist; vaginal oestrogen usually safe</td></tr>
+            <tr><td class="factor">DVT / PE history</td><td>Oral HRT increases VTE risk 1.8-fold via hepatic clotting factor synthesis</td><td class="impact">Oral HRT contraindicated; transdermal has no VTE risk &mdash; safe to use</td></tr>
+            <tr><td class="factor">Cardiovascular disease (established)</td><td>HRT initiated &gt;10 years after menopause in women with existing CVD carries risk</td><td class="impact">Avoid starting HRT late; if symptomatic, transdermal preferred; consult cardiologist</td></tr>
+            <tr><td class="factor">Osteoporosis / fragility fracture</td><td>Oestrogen deficiency causes 3&ndash;5% bone loss per year in first 5 years post-menopause</td><td class="impact">HRT prevents bone loss; consider DEXA; calcium and vitamin D supplementation alongside</td></tr>
+            <tr><td class="factor">Endometrial cancer (treated)</td><td>Progestogen needed to protect endometrium; prior endometrial cancer complicates this</td><td class="impact">Specialist-only decision; generally avoid systemic HRT; vaginal oestrogen usually safe</td></tr>
+            <tr><td class="factor">Premature ovarian insufficiency (POI)</td><td>Different risk-benefit: HRT protective against CV disease and osteoporosis until age 51</td><td class="impact">HRT strongly recommended; higher dose often needed; continue until at least natural menopause age</td></tr>
+            <tr><td class="factor">Hypothyroidism (family history)</td><td>Thyroid disease mimics menopausal symptoms &mdash; fatigue, weight gain, mood change, irregular periods</td><td class="impact">Check TSH before attributing all symptoms to menopause; hypothyroidism must be treated first</td></tr>
+            <tr><td class="factor">Migraine with aura</td><td>Oral HRT can worsen migraine with aura via first-pass oestrogen effect on vasomotor tone</td><td class="impact">Use transdermal HRT &mdash; steady oestrogen levels avoid oestrogen fluctuation triggering migraines</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">&#128138; Drug history &middot; Social history &mdash; clinical impact</div>
+        <table class="it">
+          <thead><tr><th>Factor</th><th>Why it matters</th><th>Management impact</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Tamoxifen</td><td>Tamoxifen and oestrogen compete at ER; combined use reduces tamoxifen efficacy significantly</td><td class="impact">Systemic HRT absolutely contraindicated with tamoxifen; paroxetine also reduces tamoxifen metabolism &mdash; use venlafaxine instead for vasomotor symptoms</td></tr>
+            <tr><td class="factor">Antidepressants (SSRIs/SNRIs)</td><td>Venlafaxine and desvenlafaxine reduce hot flush frequency by ~50% independently of antidepressant effect</td><td class="impact">If HRT declined/contraindicated: venlafaxine 37.5&ndash;75mg first-line; avoid paroxetine if on tamoxifen</td></tr>
+            <tr><td class="factor">Smoking</td><td>Smoking accelerates oestrogen metabolism; increases CVD and bone loss risk; compounds menopausal cardiovascular risk</td><td class="impact">Transdermal HRT preferred (avoids hepatic first-pass); smoking cessation referral; discuss bone risk</td></tr>
+            <tr><td class="factor">BMI &gt;30</td><td>Obesity is the greatest risk factor for endogenous oestrogen after menopause (peripheral aromatisation); also increases VTE risk with oral HRT</td><td class="impact">Transdermal HRT preferred to avoid VTE risk from oral route; weight management referral</td></tr>
+            <tr><td class="factor">Heavy alcohol use</td><td>Alcohol increases breast cancer risk independently; combined with HRT may further elevate risk; worsens sleep and vasomotor symptoms</td><td class="impact">Discuss alcohol intake in HRT risk conversation; reduce alcohol to improve symptom control</td></tr>
+            <tr><td class="factor">Sedentary lifestyle</td><td>Physical inactivity accelerates bone loss, CVD risk and vasomotor severity after menopause</td><td class="impact">150 min/week exercise reduces vasomotor symptoms and preserves bone; strengthen counselling before HRT</td></tr>
+            <tr><td class="factor">Work / occupational stress</td><td>Vasomotor symptoms significantly impair cognitive function, concentration and workplace performance in up to 1 in 4 menopausal women</td><td class="impact">Workplace impact score influences treatment intensity; adjust HRT dose/route based on functional impairment</td></tr>
+            <tr><td class="factor">Hypertension on treatment</td><td>Oral HRT can further raise BP via hepatic angiotensinogen; transdermal route does not</td><td class="impact">Well-controlled HTN: transdermal HRT preferred; if BP rises on oral HRT, switch route before stopping</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-divider">1D &mdash; ICE: Ideas &middot; Concerns &middot; Expectations</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">&#128161; Why ICE is transformative in menopause &mdash; the WHI legacy and the informed choice gap</div>
+      <p>Millions of women stopped HRT after the 2002 WHI publication due to a fear of breast cancer that was significantly overstated in media coverage. Updated NICE evidence (2015, reviewed 2019) provides a far more nuanced and reassuring picture. Without exploring what the patient believes about HRT, the GP may spend the entire consultation prescribing to a woman who has already decided she will not take it &mdash; or may withhold effective treatment from a woman who desperately needs it but is afraid to ask. ICE in menopause can change a woman's life.</p>
+    </div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i">
+        <div class="ice-label">&#128173; Ideas</div>
+        <div class="ice-phrase">"What do you already know about the menopause and about HRT? Have you been reading anything about it, or spoken to anyone?"</div>
+        <div class="ice-why">Reveals whether the patient's understanding is based on current NICE evidence or on outdated WHI data. A woman who believes HRT causes cancer in 1 in 10 needs updated risk communication before any treatment discussion can proceed.</div>
+      </div>
+      <div class="ice-card ice-c">
+        <div class="ice-label">&#128543; Concerns</div>
+        <div class="ice-phrase">"A lot of women have worries about HRT &mdash; particularly around breast cancer. Is that something that's been on your mind, or is there something else you're concerned about?"</div>
+        <div class="ice-why">Naming the most common concern (breast cancer) normalises it and opens the door. Unaddressed, this concern will prevent adherence. Addressed with accurate risk framing (1 in 1000 per year additional risk &mdash; similar to drinking 1&ndash;2 units alcohol per day), it becomes manageable.</div>
+      </div>
+      <div class="ice-card ice-e">
+        <div class="ice-label">&#128263; Expectations</div>
+        <div class="ice-phrase">"What are you hoping we can do today? Are you looking to try HRT, or were you wanting to discuss other options, or just understand what's going on?"</div>
+        <div class="ice-why">Some patients attend expecting to be told HRT is dangerous and walk away with nothing. Some are desperate for immediate treatment. Without asking, the consultation aims at the wrong target. Expectations also reveal practical constraints (cost, administration route preference, partner's opinion).</div>
+      </div>
+    </div>
+
+    <div class="sub-divider">1E &mdash; Psychosocial context: the person behind the symptoms</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">&#129309; How social context shapes menopausal experience and treatment decisions</div>
+      <p>The biological reality of menopause is the same for every woman &mdash; but the lived experience varies enormously based on cultural framing, social support, occupational demands and psychological resilience. Women in high-pressure roles may experience symptoms as catastrophic to their identity and professional competence. Women in cultures where menopause is viewed positively experience fewer reported symptoms. Addressing the psychosocial context is not supplementary &mdash; it determines whether treatment is accepted, adhered to and effective.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card">
+        <h5>&#128118; Occupational impact and identity</h5>
+        <p>Cognitive symptoms (brain fog, memory loss) and vasomotor symptoms (public hot flushes) directly threaten professional confidence. Up to 1 in 4 menopausal women report significant occupational impairment. Some women contemplate early retirement due to untreated symptoms.</p>
+        <span class="ps-phrase">"You mentioned work has been affected &mdash; can you tell me a bit more about what that looks like day to day? Is it the concentration, the hot flushes, or the sleep that's most disruptive?"</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">Workplace impact score influences treatment urgency; occupational trigger may motivate treatment initiation and adherence.</p>
+      </div>
+      <div class="ps-card">
+        <h5>&#128141; Relationship and intimacy</h5>
+        <p>Genitourinary syndrome of menopause (GSM) causes dyspareunia and reduced libido which directly impacts intimate relationships. Partners may misinterpret symptoms as rejection. Relationship distress secondary to menopause is common and rarely volunteered.</p>
+        <span class="ps-phrase">"Has this been affecting your relationship or your sex life at all? That's something I ask everyone because it's very common and very treatable."</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">Vaginal oestrogen addresses GSM specifically; exploring this avoids under-treatment of a significant QoL domain.</p>
+      </div>
+      <div class="ps-card">
+        <h5>&#9878;&#65039; Cultural framing of menopause</h5>
+        <p>In many Western cultures, menopause is medicalised and associated with loss of femininity and ageing. In some East Asian cultures, it is viewed as liberation. A patient's cultural framing shapes her symptom severity, help-seeking behaviour and treatment preferences.</p>
+        <span class="ps-phrase">"How do you feel about this change in your body? Is it something you've been dreading, or does it feel like a natural transition for you?"</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">Negative cultural framing amplifies symptom burden; positive reframing alongside treatment is a therapeutic intervention in itself.</p>
+      </div>
+      <div class="ps-card">
+        <h5>&#128137; Alcohol, sleep and mood</h5>
+        <p>Night sweats disrupt sleep architecture, leading to secondary depression, irritability and daytime fatigue. Many women increase alcohol intake to manage sleep. Alcohol worsens night sweats, creating a vicious cycle.</p>
+        <span class="ps-phrase">"A lot of women find they use alcohol or other things to help them sleep when the night sweats are bad &mdash; has that been an issue for you?"</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">Alcohol cessation + HRT combined reduces vasomotor symptoms more than HRT alone; brief intervention for alcohol if identified.</p>
+      </div>
+      <div class="ps-card">
+        <h5>&#128165; Grief and transition</h5>
+        <p>For women who have not completed their family, menopause represents permanent infertility. For women whose identity is closely tied to fertility or youth, it may trigger grief or existential distress disproportionate to physical symptom burden.</p>
+        <span class="ps-phrase">"How are you feeling emotionally about this chapter in your life? Is there anything about this transition that feels particularly difficult to come to terms with?"</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">NICE NG23 recommends CBT (in person or digital: Wellbeing of Women app) for psychological symptoms of menopause as a primary or adjunct treatment.</p>
+      </div>
+      <div class="ps-card">
+        <h5>&#128218; Health literacy and media influence</h5>
+        <p>The media landscape around menopause has shifted dramatically since 2018 &mdash; from undertreatment of debilitating symptoms to occasional overclaiming of HRT benefits. Some patients have unrealistic expectations; others remain unjustifiably terrified. Health literacy shapes both.</p>
+        <span class="ps-phrase">"There's a lot of conflicting information about HRT in the press &mdash; has any of that affected how you feel about it, positively or negatively?"</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">Recalibrate media-driven beliefs with NICE NG23 individualised risk framing; written BMS/RCOG patient information offers reliable counters to misinformation.</p>
+      </div>
+    </div>
+
+    <div class="sca-cp sca-only">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say">
+          <div class="sca-block-t">Key phrases that score</div>
+          <div class="sca-phrase">"Before we get into the details, could you tell me what's been most difficult for you day to day?"</div>
+          <div class="sca-phrase">"A lot of women have heard worrying things about HRT &mdash; has any of that been on your mind?"</div>
+          <div class="sca-phrase">"Has this been affecting your relationship or your sex life? I ask everyone because it's very common and very treatable."</div>
+          <div class="sca-phrase">"What would feel like a good outcome from today's appointment for you?"</div>
+        </div>
+        <div class="sca-block sca-avoid">
+          <div class="sca-block-t">Deductions (examiner flags)</div>
+          <ul>
+            <li>Starting with LMP before patient's agenda &mdash; loses GS marks</li>
+            <li>Not asking about breast cancer history before prescribing HRT</li>
+            <li>Not asking about DVT/PE history before prescribing oral HRT</li>
+            <li>Missing GSM/sexual symptoms &mdash; undermanagement of treatable symptom</li>
+            <li>Ignoring ICE &mdash; especially WHI-related concerns about breast cancer</li>
+            <li>Not discussing PMB as 2WW if mentioned</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">&#128308; Red</div><div class="rag-bullets">LMP before agenda &bull; no VTE/breast cancer screen &bull; no ICE &bull; PMB not escalated &bull; GSM not asked</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">&#128992; Amber</div><div class="rag-bullets">UKMEC mostly checked &bull; ICE superficial &bull; GSM missed &bull; concerns acknowledged but not addressed</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">&#128994; Green</div><div class="rag-bullets">Opens with patient agenda &bull; UKMEC screened &bull; ICE fully explored &bull; GSM asked &bull; WHI concerns addressed with NICE evidence</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage Engine &mdash; Emergency &middot; Urgent &middot; Routine</div></div>
+    <div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Most menopause presentations are routine &mdash; but several require urgent action.</strong> Postmenopausal bleeding, unexpected bleeding on established HRT, new breast lumps and symptoms of POI in a young woman all require urgent investigation or referral before HRT is started or continued.</div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">&#128308; Emergency</div>
+        <h3>999 or Same-Day Hospital</h3>
+        <span class="tc-badge tcb-e">Urgent assessment</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>DVT or PE on HRT</strong><em>Stop oral HRT; 999 or urgent anticoagulation pathway; transdermal may be restarted after specialist review</em></li>
+          <li class="tc-item"><strong>Stroke / TIA on oral HRT</strong><em>999 immediately; stop HRT; hypercoagulable screen; TIA clinic same day</em></li>
+          <li class="tc-item"><strong>Acute severe chest pain</strong><em>Exclude MI / PE; oestrogen-related arterial thrombosis is rare but real</em></li>
+          <li class="tc-item"><strong>Adrenal or pituitary crisis mimicking menopause</strong><em>Severe hypotension, confusion, severe nausea in young woman with amenorrhoea &mdash; exclude Addison's or hypopituitarism</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">&#128992; Urgent</div>
+        <h3>Same-Day / 2-Week Wait</h3>
+        <span class="tc-badge tcb-u">Days to 2 weeks</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Postmenopausal bleeding (any)</strong><em>2WW gynaecology referral; USS endometrium; do not start HRT until investigated</em></li>
+          <li class="tc-item"><strong>Unexpected bleeding &gt;6m on continuous combined HRT</strong><em>Pelvic USS; endometrial biopsy if indicated; consider Pipelle biopsy</em></li>
+          <li class="tc-item"><strong>New breast lump on HRT</strong><em>Urgent 2WW breast clinic; do not delay referral for HRT review</em></li>
+          <li class="tc-item"><strong>POI in woman &lt;40 (amenorrhoea &gt;4 months)</strong><em>FSH x2 six weeks apart; testosterone; oestradiol; investigate primary cause; start HRT promptly</em></li>
+          <li class="tc-item"><strong>Severe uncontrolled menopausal symptoms affecting safety</strong><em>Suicidal ideation secondary to severe perimenopausal depression &mdash; same-day MH crisis referral</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">&#128994; Routine</div>
+        <h3>GP-managed</h3>
+        <span class="tc-badge tcb-r">Planned appointment</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Moderate vasomotor symptoms &mdash; new HRT request</strong><em>Full history, UKMEC, individualised risk discussion, HRT start</em></li>
+          <li class="tc-item"><strong>HRT annual review</strong><em>Symptom control, side effects, bleeding pattern, CVD/breast risk update</em></li>
+          <li class="tc-item"><strong>Switching HRT preparations</strong><em>Side effects, route preference, transition planning</em></li>
+          <li class="tc-item"><strong>Non-hormonal symptom management</strong><em>CBT, venlafaxine, lifestyle if HRT declined or contraindicated</em></li>
+          <li class="tc-item"><strong>Long-term bone and CVD risk counselling</strong><em>DEXA if indicated; calcium/vitamin D; statins; lifestyle optimisation</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 2</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Triage phrases</div><div class="sca-phrase">"Before anything else, I want to check &mdash; have you had any bleeding since your periods stopped? Any new breast lumps?"</div><div class="sca-phrase">"With any bleeding after the menopause, I would want to refer you quickly to exclude any serious causes &mdash; that's a standard precaution."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Starting HRT without asking about PMB</li><li>Not flagging PMB as 2WW referral &mdash; patient safety failure</li><li>Not screening for new breast lump before HRT start</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">&#128308; Red</div><div class="rag-bullets">PMB ignored &bull; HRT started without exclusion of endometrial pathology &bull; no breast lump check</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">&#128994; Green</div><div class="rag-bullets">PMB asked &bull; 2WW referenced if PMB present &bull; new symptoms screened before HRT start</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Do I Need This Examination?</div></div>
+    <div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Examination in menopause should be targeted, not reflexive.</strong> BP must be checked before starting oral HRT. Breast examination is not required as a routine prerequisite to HRT &mdash; but must be performed if a new breast symptom is reported. Pelvic examination is required if PMB is reported or if GSM/dyspareunia symptoms are present.</div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:20%">Examination</th><th style="width:36%">Why it matters</th><th style="width:26%">What finding changes management</th><th>Changes?</th></tr></thead>
+        <tbody>
+          <tr><td class="q">Blood pressure</td><td class="why">Oral HRT increases hepatic angiotensinogen and can raise BP; must be documented before start<span class="why-sub">Transdermal HRT does not raise BP &mdash; preferred if BP is borderline</span></td><td class="why">BP &ge;160/100 = use transdermal route only; BP &gt;180/110 = control BP before any HRT</td><td><span class="mcb mcb-yes">YES &mdash; route choice</span></td></tr>
+          <tr><td class="q">BMI / weight</td><td class="why">BMI &gt;30 increases VTE risk with oral HRT; obese women also have more endogenous oestrogen (peripheral aromatisation)<span class="why-sub">Transdermal preferred in BMI &gt;30 to avoid VTE risk</span></td><td class="why">BMI &gt;30 = transdermal HRT preferred; BMI &gt;35 = strongly avoid oral route</td><td><span class="mcb mcb-yes">YES &mdash; route choice</span></td></tr>
+          <tr><td class="q">Breast examination</td><td class="why">Not a routine prerequisite to HRT &mdash; but mandatory if patient reports new lump, nipple discharge or breast change<span class="why-sub">NICE NG23: routine breast examination not required before HRT start</span></td><td class="why">New breast lump = urgent 2WW breast clinic referral; defer HRT until investigated</td><td><span class="mcb mcb-context">Context: new symptoms</span></td></tr>
+          <tr><td class="q">Pelvic / vaginal examination</td><td class="why">Required for PMB investigation; also useful if GSM symptoms prominent &mdash; visualise vaginal atrophy, check vaginal pH, assess uterine size for IUS suitability<span class="why-sub">Not required for routine HRT start without specific pelvic symptoms</span></td><td class="why">PMB + palpable pelvic mass = urgent gynaecology; vaginal atrophy = topical oestrogen ± systemic</td><td><span class="mcb mcb-context">Context: PMB / GSM</span></td></tr>
+          <tr><td class="q">Abdominal examination</td><td class="why">If pelvic mass, ascites or distension in context of PMB &mdash; raises concern for ovarian or endometrial malignancy<span class="why-sub">Not required for routine HRT consultation</span></td><td class="why">Palpable mass + PMB = urgent CA-125 + gynaecology USS referral</td><td><span class="mcb mcb-context">Context: PMB</span></td></tr>
+          <tr><td class="q">Skin examination (progestogen patch sites)</td><td class="why">At follow-up &mdash; check for skin reaction to transdermal patches; local erythema or contact dermatitis requires switching to gel<span class="why-sub">Check rotation of patch sites at annual review</span></td><td class="why">Contact dermatitis = switch to oestrogen gel; rash elsewhere = investigate drug reaction</td><td><span class="mcb mcb-context">Context: HRT review</span></td></tr>
+          <tr><td class="q">Thyroid examination</td><td class="why">If thyroid disease suspected as cause of or contributor to symptoms &mdash; goitre, exophthalmos, tremor, bradycardia suggest thyroid disorder masquerading as menopause<span class="why-sub">Hypothyroidism classically mimics menopause: fatigue, weight gain, mood change, irregular periods</span></td><td class="why">Goitre or thyroid features = TSH + thyroid antibodies before HRT</td><td><span class="mcb mcb-context">Context: thyroid symptoms</span></td></tr>
+          <tr><td class="q">Cervical screening check</td><td class="why">Menopause consultation is an opportunity &mdash; check smear status; atrophic changes on smear in menopausal women may cause false abnormality readings; vaginal oestrogen before repeat smear improves cell quality<span class="why-sub">Not an examination per se, but a clinical check</span></td><td class="why">Atrophic changes causing inadequate smear = vaginal oestrogen 4 weeks then repeat</td><td><span class="mcb mcb-context">Opportunistic</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Examination phrases</div><div class="sca-phrase">"I'd like to check your blood pressure today &mdash; it helps us decide which form of HRT is safest for you."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>No BP check before oral HRT start &mdash; prescribing outside NICE guidance</li><li>Not arranging pelvic examination / USS for PMB &mdash; patient safety failure</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">&#128308; Red</div><div class="rag-bullets">Oral HRT without BP check &bull; PMB without pelvic assessment arranged</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">&#128994; Green</div><div class="rag-bullets">BP documented &bull; transdermal if elevated &bull; pelvic exam / USS arranged for PMB &bull; breast exam if new symptoms</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Do I Need This Investigation?</div></div>
+    <div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>NICE NG23 is clear: do not routinely measure FSH to diagnose menopause in women &ge;45 years.</strong> The diagnosis is clinical in women &ge;45. FSH is only needed if the patient is &lt;45, on the combined pill, or the diagnosis is uncertain. Investigations are targeted to contraindications (lipid profile for VTE risk), monitoring (BP on oral HRT), and excluding differential diagnoses (TSH, coeliac screen, FBC).</div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:22%">Investigation</th><th style="width:38%">Clinical question it answers</th><th>What result changes management?</th></tr></thead>
+        <tbody>
+          <tr><td class="q">FSH (follicle-stimulating hormone)</td><td class="why">Is this menopause or another cause of amenorrhoea? Only needed &lt;45 yrs, or on COC, or clinical uncertainty. NOT needed &ge;45 with typical symptoms + 12 months amenorrhoea.</td><td class="why">FSH &gt;30 IU/L twice (6 weeks apart) in woman &lt;45 = POI; &ge;45 = clinical diagnosis only</td></tr>
+          <tr><td class="q">TSH (thyroid-stimulating hormone)</td><td class="why">Is thyroid disease mimicking menopause? Hypothyroidism causes fatigue, weight gain, mood change, irregular periods indistinguishable from perimenopause.</td><td class="why">Low TSH = hyperthyroidism (sweats, palpitations, anxiety); High TSH = hypothyroidism; treat thyroid before or alongside HRT</td></tr>
+          <tr><td class="q">LH, oestradiol, testosterone (POI screen)</td><td class="why">Is this primary ovarian insufficiency? In POI: FSH elevated, oestradiol low, LH elevated. Testosterone may be low.</td><td class="why">Confirmed POI = HRT strongly recommended; referral to specialist POI clinic; fertility counselling if &lt;40</td></tr>
+          <tr><td class="q">Pelvic ultrasound (USS)</td><td class="why">Is there endometrial thickening or pelvic pathology in PMB? Endometrial thickness &ge;4mm on transvaginal USS in postmenopausal woman = further investigation required.</td><td class="why">Endometrial thickness &ge;4mm = endometrial biopsy (Pipelle); thickness &lt;4mm = reassuring but histology if symptomatic</td></tr>
+          <tr><td class="q">DEXA bone density scan</td><td class="why">Is osteoporosis present? Indicated in POI, early menopause, prolonged glucocorticoid use, strong FH of hip fracture, low BMI (&lt;19), prolonged immobility.</td><td class="why">T-score &lt; &minus;2.5 = osteoporosis; T-score &minus;1 to &minus;2.5 = osteopenia; results influence decision to start/continue HRT and need for bisphosphonate</td></tr>
+          <tr><td class="q">FBC and CRP</td><td class="why">Is anaemia explaining fatigue? Is inflammatory condition mimicking joint pain? Perimenopausal women often present with fatigue attributed to menopause that is anaemia.</td><td class="why">Low Hb = investigate iron deficiency / haematology; elevated CRP = investigate inflammatory cause</td></tr>
+          <tr><td class="q">Lipid profile (fasting)</td><td class="why">What is the baseline cardiovascular risk before HRT? HRT modestly improves lipid profile. Important for longer-term CVD risk management in peri/post-menopause.</td><td class="why">Very high LDL or TG = ensure CVD risk management alongside HRT; statin consideration; does not preclude HRT</td></tr>
+          <tr><td class="q">Blood glucose / HbA1c</td><td class="why">Does metabolic syndrome (common peri-menopausally) or prediabetes explain symptoms? Menopause increases insulin resistance.</td><td class="why">HbA1c &ge;48 = type 2 diabetes; &ge;42 = prediabetes; lifestyle + metformin &plusmn; HRT (HRT improves insulin sensitivity)</td></tr>
+          <tr><td class="q">Coeliac screen (anti-TTG IgA)</td><td class="why">Is coeliac disease causing bone loss (malabsorption of calcium/vitamin D) presenting as early osteoporosis in a menopausal woman?</td><td class="why">Positive TTG = gastroenterology referral; gluten-free diet; DEXA for bone density assessment</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 4</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Investigation phrases</div><div class="sca-phrase">"Because you're 51 and haven't had a period for over a year, I don't actually need to do a blood test to confirm the menopause &mdash; the diagnosis is clinical. I would like to check your thyroid, though, as it can cause very similar symptoms."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Routinely ordering FSH in woman &ge;45 with typical symptoms &mdash; NICE says this is unnecessary</li><li>Missing TSH before attributing all symptoms to menopause &mdash; misdiagnosis</li><li>Not arranging pelvic USS for PMB</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">&#128308; Red</div><div class="rag-bullets">Routine FSH in &ge;45 &bull; No TSH &bull; No pelvic USS for PMB</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">&#128994; Green</div><div class="rag-bullets">Clinical diagnosis &ge;45 &bull; TSH ordered &bull; FSH only if &lt;45 &bull; USS for PMB &bull; DEXA if indicated</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Reaching a Diagnosis &amp; DDx &mdash; Explained in Plain Language</div></div>
+    <div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The diagnosis of menopause is clinical in women &ge;45 &mdash; but the art lies in explaining the physiology in plain language and addressing the WHI legacy fears about HRT.</strong> Differential diagnoses must be considered and excluded before attributing all symptoms to menopause.</div>
+    <div class="lay-box">
+      <div class="lay-box-lbl">&#128483;&#65039; Explaining menopause in plain language &mdash; say something like this</div>
+      <p>"What's happening is that your ovaries are producing less oestrogen &mdash; that's the hormone that used to regulate your cycle and protect you from things like hot flushes and bone thinning. As oestrogen levels drop, your brain keeps sending signals asking for more, and that back-and-forth is what causes the flushes and night sweats. The good news is that we have very effective treatments &mdash; and the latest evidence shows that for most women, the benefits of HRT far outweigh the risks when it's started at the right time."</p>
+    </div>
+    <div class="lay-why-not">
+      <div class="lay-why-not-lbl">&#128172; Addressing patient's own beliefs &mdash; particularly WHI fears</div>
+      <p><strong>"I read that HRT causes breast cancer &mdash; isn't it really dangerous?"</strong><br><em>"I completely understand that concern &mdash; there was a lot of alarming coverage about a study in 2002. But that study looked at a specific type of HRT taken by older women for a long time, and the results have since been reinterpreted. For most women in your age group, the current evidence shows the risk of breast cancer from HRT is smaller than the risk from drinking a couple of glasses of wine a day &mdash; and the benefits, especially for your bones and heart if started now, are real."</em></p>
+      <p><strong>"I thought I just had to put up with it &mdash; isn't it just natural?"</strong><br><em>"It's natural in the sense that it happens to every woman, but that doesn't mean you have to suffer through it. These symptoms are caused by a hormone change that we can help with &mdash; the menopause isn't something to endure, it's something we can manage together."</em></p>
+    </div>
+    <div class="g3" style="margin-bottom:12px">
+      <div class="card" style="padding:1rem;border-left:4px solid var(--g)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.4rem">A &mdash; Clinical diagnosis / GP-managed</div>
+        <span class="conf-badge conf-gp" style="margin-bottom:.6rem;display:inline-block">GP can diagnose</span>
+        <div class="ddx-card ddx-a" style="margin-bottom:6px"><h4 style="color:var(--g)">Menopause (&ge;45, 12 months amenorrhoea)</h4><p>Clinical diagnosis; no FSH required. Vasomotor, mood, sleep, GSM symptoms. Confirm no red flags. Start HRT discussion.</p></div>
+        <div class="ddx-card ddx-a" style="margin-bottom:6px"><h4 style="color:var(--g)">Perimenopause (irregular cycles, symptoms)</h4><p>Variable oestrogen levels &mdash; diagnosis clinical. Sequential HRT appropriate; contraception still needed.</p></div>
+        <div class="ddx-card ddx-a"><h4 style="color:var(--g)">GSM (genitourinary syndrome)</h4><p>Vaginal dryness, dyspareunia, urinary urgency &mdash; treat with topical vaginal oestrogen; may not need systemic HRT</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--a)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:.4rem">B &mdash; Investigate / specialist input</div>
+        <span class="conf-badge conf-sus" style="margin-bottom:.6rem;display:inline-block">Further investigation needed</span>
+        <div class="ddx-card ddx-b" style="margin-bottom:6px"><h4>Premature ovarian insufficiency (POI, &lt;40)</h4><p>FSH &gt;30 IU/L x2 six weeks apart; refer to POI specialist; fertility implications; HRT until 51</p></div>
+        <div class="ddx-card ddx-b" style="margin-bottom:6px"><h4>Early menopause (40&ndash;44)</h4><p>FSH to confirm; DEXA; higher long-term bone and CV risk than natural menopause; NICE: offer HRT</p></div>
+        <div class="ddx-card ddx-b"><h4>Hypothyroidism / Hyperthyroidism</h4><p>TSH confirms; treat thyroid condition first or alongside. Hypothyroidism mimics menopause exactly.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--r)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--r);margin-bottom:.4rem">C &mdash; Urgent exclusion needed</div>
+        <span class="conf-badge conf-emerg" style="margin-bottom:.6rem;display:inline-block">Diagnose &amp; act now</span>
+        <div class="ddx-card ddx-c" style="margin-bottom:6px"><h4 style="color:var(--r)">Endometrial carcinoma (PMB)</h4><p>Any PMB = 2WW referral; do not start HRT; pelvic USS; endometrial biopsy if thickness &ge;4mm</p></div>
+        <div class="ddx-card ddx-c"><h4 style="color:var(--r)">Ovarian cancer</h4><p>CA-125 + USS if persistent bloating, pelvic pain, altered bowel habit in menopausal woman; urgent gynaecology</p></div>
+      </div>
+    </div>
+    <div class="card" style="overflow:hidden">
+      <div class="card-hd" style="color:var(--navy)">&#128202; Menopause Staging &amp; HRT Choice Framework</div>
+      <table class="rt">
+        <thead><tr><th>Stage</th><th>Definition</th><th>HRT type</th><th>Key consideration</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">Perimenopause</td><td>Irregular cycles + symptoms; FSH variable</td><td>Sequential combined (21 days oestrogen + 10&ndash;14 days progestogen) or Mirena IUS + oestrogen</td><td>Provides regular withdrawal bleed; contraceptive cover needed separately</td></tr>
+          <tr><td style="font-weight:600">Menopause (&ge;12m amenorrhoea, &ge;45)</td><td>Clinical diagnosis; no FSH needed</td><td>Sequential (if &lt;1 year post-menopause) or continuous combined after 1 year</td><td>Continuous combined causes no planned withdrawal bleed</td></tr>
+          <tr><td style="font-weight:600">Early menopause (40&ndash;44)</td><td>FSH to confirm; DEXA recommended</td><td>Standard-dose continuous combined HRT</td><td>Higher bone and CV risk; NICE recommends HRT until at least age 51</td></tr>
+          <tr><td style="font-weight:600">POI (&lt;40)</td><td>FSH &gt;30 x2; specialist referral</td><td>HRT or COC (if contraception also needed); higher doses often needed</td><td>Protects against CVD and osteoporosis; continue until natural menopause age</td></tr>
+          <tr><td style="font-weight:600">Post-menopause &gt;10 yrs / &gt;60 yrs</td><td>Late start; poor evidence window</td><td>If symptomatic: transdermal preferred; lower doses; reassess annually</td><td>Starting HRT after 60+ in asymptomatic women: no clear net benefit; risk-benefit less favourable</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 5</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Explanation phrases</div><div class="sca-phrase">"Based on your symptoms and the fact your periods stopped 14 months ago, I'm confident this is the menopause &mdash; I don't need a blood test to confirm that."</div><div class="sca-phrase">"The risk of breast cancer from HRT is real but much smaller than most people think &mdash; it's similar to the risk from drinking one glass of wine per day."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Dismissing breast cancer concern without addressing it with evidence</li><li>Not explaining WHI context when patient raises breast cancer fear</li><li>Ordering FSH in woman &ge;45 with typical symptoms &mdash; NICE says not needed</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">&#128308; Red</div><div class="rag-bullets">PMB dismissed &bull; breast cancer concern not addressed &bull; wrong HRT type for stage</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">&#128994; Green</div><div class="rag-bullets">Clinical diagnosis explained &bull; WHI fear addressed with evidence &bull; correct HRT type for stage &bull; DDx considered</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">If Referral Is Needed &mdash; What the GP Does Before &amp; During</div></div>
+    <div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Most menopause management should be in primary care.</strong> The GP's role is to identify the minority requiring secondary care (PMB, new breast symptoms, POI, complex medical history) while managing the majority confidently. Do not routinely refer all women for menopause specialist review &mdash; NICE NG23 places primary care at the centre of this pathway.</div>
+    <div class="card" style="overflow:hidden">
+      <table class="ref-table">
+        <thead><tr><th>Condition</th><th>Urgency</th><th>What GP does before referral</th><th>What GP must NOT do</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">Postmenopausal bleeding</td><td><span class="ref-urg rurg-2">2WW</span></td><td style="font-size:12px">Arrange urgent transvaginal USS; do not start or continue systemic HRT until investigated; document bleeding history precisely; check current medications (HRT, tamoxifen)</td><td style="font-size:12px;color:var(--r)">Start HRT before excluding endometrial pathology; delay 2WW referral; reassure without investigating</td></tr>
+          <tr><td style="font-weight:600">New breast lump or nipple discharge on HRT</td><td><span class="ref-urg rurg-2">2WW</span></td><td style="font-size:12px">Examine breast; document findings precisely; advise patient to continue HRT until reviewed (brief continuation is not harmful) or stop if she prefers; urgent breast clinic</td><td style="font-size:12px;color:var(--r)">Reassure without examination; delay referral; stop HRT abruptly without discussion</td></tr>
+          <tr><td style="font-weight:600">POI (FSH &gt;30, age &lt;40)</td><td><span class="ref-urg rurg-4">4&ndash;6 weeks</span></td><td style="font-size:12px">Start HRT promptly (do not wait for specialist appointment); arrange DEXA; fertility counselling referral; autoimmune POI screen (thyroid, anti-adrenal, anti-21-hydroxylase antibodies); karyotype if &lt;30</td><td style="font-size:12px;color:var(--r)">Delay HRT pending specialist appointment &mdash; every month without oestrogen in POI causes preventable bone loss</td></tr>
+          <tr><td style="font-weight:600">Complex HRT management (breast cancer history, multiple CIs)</td><td><span class="ref-urg rurg-r">Routine</span></td><td style="font-size:12px">Contact oncologist if breast cancer treated; arrange menopause specialist input; document risk-benefit discussion and patient preference; prescribe vaginal oestrogen (usually safe)</td><td style="font-size:12px;color:var(--r)">Prescribe systemic HRT in ER+ breast cancer without oncology input; withhold vaginal oestrogen without clinical reason</td></tr>
+          <tr><td style="font-weight:600">Suspected ovarian cancer (CA-125 raised, pelvic mass, ascites)</td><td><span class="ref-urg rurg-2">2WW</span></td><td style="font-size:12px">CA-125 + transvaginal USS; stop HRT; urgency communication to gynaecology 2WW pathway; safety-net for worsening symptoms</td><td style="font-size:12px;color:var(--r)">Attribute symptoms to menopause without USS; delay referral</td></tr>
+          <tr><td style="font-weight:600">Severe perimenopausal depression with suicidal ideation</td><td><span class="ref-urg rurg-999">Same day MH</span></td><td style="font-size:12px">Same-day mental health crisis referral; safety plan; do not dismiss as "just hormonal"; start HRT + SSRI concurrently as appropriate; involve CMHT</td><td style="font-size:12px;color:var(--r)">Dismiss suicidal ideation as menopausal; start HRT without addressing immediate safety; delay referral</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 6</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Referral phrases</div><div class="sca-phrase">"With any bleeding after the menopause, I always want to refer you quickly to check the lining of the womb &mdash; it's almost certainly nothing serious but it's the right thing to do."</div><div class="sca-phrase">"I'd like to refer you to a specialist who focuses specifically on early menopause &mdash; but in the meantime I'm going to start treatment because every month without oestrogen at your age matters for your bones."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Delaying PMB referral &mdash; 2WW is mandatory</li><li>Delaying HRT in POI while waiting for specialist</li><li>Missing ovarian cancer in menopausal woman with new abdominal symptoms</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">&#128308; Red</div><div class="rag-bullets">PMB without 2WW &bull; HRT in ER+ breast cancer without oncology &bull; delaying POI treatment</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">&#128994; Green</div><div class="rag-bullets">PMB = 2WW stated &bull; POI treatment started promptly &bull; complex cases escalated appropriately</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management &mdash; Expectation &middot; Goals &middot; Lifestyle &middot; Prescribing Guide &middot; Drug Cards &middot; Psychosocial Impact &middot; Follow-Up &middot; Safety-Netting</div></div>
+    <div class="step-toggle"><span class="sti-icon">&#9650;</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+
+    <div class="sub-divider">7A &mdash; Address the patient's expectation first: validate &rarr; explain &rarr; negotiate</div>
+    <div class="expect-box">
+      <div class="expect-box-hdr"><span style="font-size:1.4rem">&#129309;</span><div class="expect-box-lbl">Never dismiss the expectation &mdash; acknowledge it, share your reasoning, then agree a shared plan</div></div>
+      <div class="expect-steps">
+        <div class="expect-step"><div class="expect-step-num">1</div><h5>Validate &mdash; name their expectation</h5><p>Whether the patient wants HRT urgently or is afraid of it, name where she stands before offering your clinical view.</p><span class="expect-phrase">"It sounds like these symptoms have been really significantly affecting your life &mdash; you've had months of disrupted sleep and it's affecting your work. That's exactly the kind of situation where HRT can make a real difference."</span></div>
+        <div class="expect-step"><div class="expect-step-num">2</div><h5>Explain &mdash; share your clinical reasoning</h5><p>Address the breast cancer concern with current NICE evidence. Share the risk as an absolute number, not a relative risk.</p><span class="expect-phrase">"You mentioned you're worried about the breast cancer risk &mdash; the current evidence shows it's around 1 in 1000 women per year of using combined HRT. To put that in context, it's similar to the risk from drinking one glass of wine daily."</span></div>
+        <div class="expect-step"><div class="expect-step-num">3</div><h5>Negotiate &mdash; offer something today</h5><p>Always leave with a plan, even if HRT decision is deferred. Lifestyle and non-hormonal options can begin today.</p><span class="expect-phrase">"Whatever you decide about HRT, I'd like to start you on some things today that will definitely help &mdash; and we can revisit the HRT decision once you've had time to think about what we've discussed."</span></div>
+      </div>
+      <div style="background:rgba(21,128,61,.08);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.65rem 1rem;margin-top:.75rem;font-size:12.5px;color:#14532d;line-height:1.55"><strong>Key principle:</strong> NICE NG23 explicitly states that women should be given individualised information about the benefits and risks of HRT and supported to make an informed decision. The clinician's role is to facilitate an informed choice, not to advocate for or against HRT.</div>
+    </div>
+
+    <div class="sub-divider">7B &mdash; Why treatment matters: goals tailored to this patient</div>
+    <div class="g2" style="margin-bottom:1rem">
+      <div class="card" style="padding:1rem 1.1rem">
+        <div class="card-hd" style="color:var(--g);border:none;padding:0 0 .6rem">Treatment goals</div>
+        <div class="tx-goals">
+          <span class="tx-goal tg1">&#10003; Control vasomotor symptoms</span><span class="tx-goal tg1">&#10003; Restore sleep quality</span>
+          <span class="tx-goal tg2">&#9679; Prevent bone loss (3&ndash;5%/yr without HRT)</span><span class="tx-goal tg2">&#9679; Reduce CVD risk (window of opportunity)</span>
+          <span class="tx-goal tg3">&#9679; Treat GSM / dyspareunia</span><span class="tx-goal tg3">&#9679; Improve mood, cognition and concentration</span>
+          <span class="tx-goal tg4">Annual HRT review and breast screening</span><span class="tx-goal tg4">Lifestyle optimisation alongside HRT</span>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem">
+        <div class="card-hd" style="color:var(--b);border:none;padding:0 0 .6rem">Motivational language &mdash; tailored to the patient</div>
+        <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--b-bd);padding:.55rem .85rem;background:var(--b-bg);border-radius:0 8px 8px 0;line-height:1.6;margin-bottom:.5rem">"Starting HRT now, before the bone loss accelerates, reduces your risk of a hip fracture by around 30% &mdash; that's a very meaningful benefit on top of the symptom control."</div>
+        <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.6">"You mentioned that the concentration issues are affecting your work as a teacher &mdash; improving your sleep quality with HRT often has the biggest impact there. Many women feel like a different person within 3 months."</div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7C &mdash; Non-medication management: mechanism + evidence + tailored advice</div>
+    <div class="step-intro" style="margin-bottom:.75rem"><strong>Never give generic lifestyle advice.</strong> Each recommendation should be specific, quantified and linked to the mechanism by which it reduces menopausal symptom burden.</div>
+    <div class="life-grid" style="margin-bottom:1.25rem">
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">&#127939;</span><div class="life-title">Aerobic Exercise</div><span class="life-target">150 min/week moderate intensity</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Raises endorphins and serotonin; reduces thermoregulatory dysfunction; preserves bone density and muscle mass; reduces cardiovascular risk post-menopause.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Brisk walking 30 mins 5 days/week; swimming; cycling. Weight-bearing exercise additionally protects bone density more than non-impact exercise.</p></div>
+          <span class="life-benefit">Reduces flush frequency by ~25%; preserves bone density</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">&#129392;</span><div class="life-title">CBT for Menopause</div><span class="life-target">6&ndash;8 sessions; app-based available</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Reframes catastrophic thinking about flushes; reduces arousal response to vasomotor events; directly addresses perimenopausal anxiety and mood change.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>NICE NG23-recommended: menopause CBT with trained therapist or Mindfulness app (Wellbeing of Women app). Available on NHS in some areas.</p></div>
+          <span class="life-benefit">Reduces psychological symptoms by up to 50%; NICE-recommended</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">&#129492;</span><div class="life-title">Alcohol Reduction</div><span class="life-target">&lt;14 units/week; none before bed</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Alcohol is a vasodilator and triggers hot flushes. It disrupts sleep architecture and worsens night sweats. It independently increases breast cancer risk.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Advise alcohol-free evenings, particularly 3 hours before bedtime. Even modest reduction (2 nights/week off) reduces flush frequency measurably.</p></div>
+          <span class="life-benefit">Reduces flushes; reduces breast cancer risk alongside HRT</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">&#127804;</span><div class="life-title">Phytoestrogens &amp; Diet</div><span class="life-target">Soy isoflavones: limited evidence</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Phytoestrogens (soy, red clover) weakly bind oestrogen receptors. Evidence for symptom reduction is inconsistent and modest. Mediterranean diet reduces cardiovascular risk post-menopause.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Soy foods (tofu, edamame) 2&ndash;3 servings/day. Mediterranean diet &mdash; oily fish, vegetables, whole grains. Calcium-rich foods 700mg/day.</p></div>
+          <span class="life-benefit">Some women find symptom relief; no evidence of harm; bone protection</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">&#127771;</span><div class="life-title">Sleep Hygiene</div><span class="life-target">7&ndash;9 hrs; cool bedroom &lt;18&deg;C</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Night sweats fragment sleep by waking the patient in sympathetically aroused state. Poor sleep amplifies mood change, cognitive symptoms and cardiovascular risk.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Cool cotton night clothes and bedding; fan or open window; consistent sleep schedule; avoid caffeine after 2pm; layer bedding for easy adjustment.</p></div>
+          <span class="life-benefit">Reduces secondary sleep deprivation effects; improves mood</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">&#129388;</span><div class="life-title">Calcium &amp; Vitamin D</div><span class="life-target">700mg calcium; 800&ndash;1000 IU vit D/day</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Oestrogen deficiency causes rapid bone resorption; calcium and vitamin D are essential co-factors for mineralisation. Deficiency accelerates menopause-related bone loss.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Dairy products, leafy greens, fortified foods. Vitamin D supplement in UK autumn/winter; test 25-OH vitamin D if suspected deficiency; supplement at 800&ndash;2000 IU if low.</p></div>
+          <span class="life-benefit">Reduces fracture risk; essential alongside HRT for bone health</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7D &mdash; Prescribing guide: what to start, in what order, and why</div>
+    <div class="step-intro" style="margin-bottom:.75rem;border-left-color:var(--p)"><strong>The NICE NG23 HRT prescribing algorithm has four key decisions:</strong> (1) Does the patient have a uterus? (2) What route? (3) What type? (4) Sequential or continuous combined? Each decision tree branch follows NICE guidance and individualised risk assessment.</div>
+    <div class="g3" style="margin-bottom:1rem;gap:10px">
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--g)">
+        <div class="card-hd" style="color:var(--g);border:none;padding:0 0 .55rem;font-size:11.5px">Decision 1 &mdash; Does she have a uterus?</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
+          <p style="margin:0 0 .5rem"><strong>Uterus intact: must add progestogen to protect endometrium.</strong></p>
+          <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7">
+            <li>Combined HRT (oestrogen + progestogen): sequential if &lt;12 months amenorrhoea; continuous combined if &ge;12 months</li>
+            <li>Mirena IUS can provide the progestogen component alongside systemic oestrogen (patch/gel)</li>
+            <li>Unopposed oestrogen = endometrial hyperplasia risk &mdash; prescribing error with intact uterus</li>
+          </ul>
+          <div style="font-size:11px;background:var(--g-bg);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--g);font-weight:600">Post-hysterectomy: oestrogen-only HRT is safe and appropriate</div>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--b)">
+        <div class="card-hd" style="color:var(--b);border:none;padding:0 0 .55rem;font-size:11.5px">Decision 2 &mdash; Which route?</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
+          <p style="margin:0 0 .5rem"><strong>Transdermal (patch/gel) preferred in:</strong></p>
+          <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7">
+            <li>VTE risk factors (obesity BMI &gt;30, prior DVT/PE, immobility, thrombophilia)</li>
+            <li>Hypertension (oral HRT can raise BP; transdermal does not)</li>
+            <li>Migraine with aura (avoids oestrogen fluctuation of oral route)</li>
+            <li>Liver disease (avoids hepatic first-pass)</li>
+          </ul>
+          <div style="font-size:11px;background:var(--b-bg);border:1px solid var(--b-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--b);font-weight:600">Transdermal has no increased VTE risk &mdash; NICE NG23</div>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--a)">
+        <div class="card-hd" style="color:var(--a);border:none;padding:0 0 .55rem;font-size:11.5px">Decision 3 &mdash; Sequential or continuous?</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
+          <p style="margin:0 0 .5rem"><strong>Sequential combined:</strong> for perimenopause or &lt;12 months amenorrhoea.</p>
+          <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7">
+            <li>21 days oestrogen + 12&ndash;14 days progestogen; produces regular withdrawal bleed</li>
+            <li>Irregular bleeding in first 3 months is expected and normal</li>
+            <li>Late cycle irregular bleeding (days 1&ndash;9) after 6 months: investigate endometrium</li>
+          </ul>
+          <p style="margin:.35rem 0 .25rem"><strong>Continuous combined:</strong> for &ge;12 months amenorrhoea.</p>
+          <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7">
+            <li>Daily oestrogen + daily progestogen; aim: no withdrawal bleed</li>
+            <li>Irregular bleeding in first 3&ndash;6 months is common; review if persists &gt;6 months</li>
+          </ul>
+          <div style="font-size:11px;background:var(--a-bg);border:1px solid var(--a-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--a);font-weight:600">Do not start continuous combined in perimenopausal women &mdash; irregular bleeding &amp; endometrial risk</div>
+        </div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:1rem;gap:10px">
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--r)">
+        <div class="card-hd" style="color:var(--r);border:none;padding:0 0 .55rem;font-size:11.5px">Non-hormonal alternatives when HRT declined or contraindicated</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
+          <ul style="margin:0;padding-left:1.1rem;font-size:12px;line-height:1.8">
+            <li><strong>Venlafaxine 37.5&ndash;75mg OD</strong> &mdash; SNRI; reduces flush frequency ~50%; useful when HRT CI; avoid with tamoxifen (paroxetine) &mdash; venlafaxine is safe</li>
+            <li><strong>Clonidine 50&ndash;75mcg BD</strong> &mdash; alpha-2 agonist; modest effect on flushes; useful if venlafaxine not tolerated; hypotensive side effects</li>
+            <li><strong>Gabapentin 100&ndash;300mg nocte</strong> &mdash; reduces nocturnal flushes; useful for sleep disruption; off-label; caution in renal impairment</li>
+            <li><strong>CBT</strong> &mdash; NICE NG23 first-line for psychological symptoms; reduces anxiety, low mood, cognitive symptoms</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--p)">
+        <div class="card-hd" style="color:var(--p);border:none;padding:0 0 .55rem;font-size:11.5px">Genitourinary syndrome &mdash; local oestrogen</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
+          <ul style="margin:0;padding-left:1.1rem;font-size:12px;line-height:1.8">
+            <li><strong>Vaginal oestrogen (Vagifem pessaries / Ovestin cream / Estring ring)</strong> &mdash; minimal systemic absorption; safe in most women including breast cancer survivors (check with oncologist if ER+ cancer); no endometrial protection needed</li>
+            <li><strong>DHEA (prasterone, Intrarosa)</strong> &mdash; vaginal insert; converted locally to oestrogen and testosterone; useful when systemic HRT not tolerated; licensed in UK</li>
+            <li><strong>Ospemifene</strong> &mdash; oral SERM for GSM; useful when vaginal application difficult; avoid in breast cancer history; licensed in UK</li>
+            <li>Vaginal moisturisers (Replens) and lubricants: non-hormonal first-line for mild GSM</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-divider" id="drugs">7E &mdash; HRT medication selector</div>
+    <div class="ds-wrap" style="margin-bottom:.85rem">
+      <div class="ds-top">
+        <h3>Select patient characteristics &mdash; refer to 7D prescribing guide for recommended HRT type</h3>
+        <div class="ds-checks">
+          <label class="ds-lbl"><input type="checkbox" id="ds-dm" onchange="calcDrug()"> Uterus intact (needs progestogen)</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-ckd" onchange="calcDrug()"> DVT / PE history (use transdermal)</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-cvd" onchange="calcDrug()"> Migraine with aura (transdermal)</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-afro" onchange="calcDrug()"> BMI &gt;30 (transdermal preferred)</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-age55" onchange="calcDrug()"> Hypertension (transdermal preferred)</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-hf" onchange="calcDrug()"> Post-hysterectomy (oestrogen-only)</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-angina" onchange="calcDrug()"> &lt;12 months amenorrhoea (sequential)</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-af" onchange="calcDrug()"> &ge;12 months amenorrhoea (continuous combined)</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-cough" onchange="calcDrug()"> GSM only (vaginal oestrogen)</label>
+        </div>
+      </div>
+      <div class="ds-result">
+        <div class="ds-result-title">Guidance</div>
+        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Select patient characteristics above and refer to the 7D prescribing guide. Transdermal oestrogen is preferred in most women with risk factors. Always add progestogen if uterus intact.</span></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7F &mdash; Drug reference cards: HRT preparations</div>
+    <div class="drug-cards" id="drug-cards-container">
+      <div class="dc" id="dc-oral-e">
+        <div class="dc-head"><div><div class="dc-name">Oral Oestrogen &mdash; Unopposed</div><div class="dc-examples">Premarin (CEE); Zumenon; Elleste Solo (oestradiol); Progynova</div><div class="dc-rec-badge" id="rec-oral-e">&#10003; Recommended</div></div><div class="dc-badges"><span class="dc-step step1">Post-hysterectomy</span><span class="dc-dose">Oestradiol 1&ndash;2mg OD</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Prefer when</div><div class="dc-item">Post-hysterectomy only &mdash; no uterus, no endometrial risk</div><div class="dc-item">Oral route acceptable, no VTE risk factors, no hypertension</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Avoid if</div><div class="dc-item ci-abs">Uterus intact &mdash; unopposed oestrogen causes endometrial hyperplasia/cancer (UKMEC 4 equivalent)</div><div class="dc-item ci-rel">VTE risk factors (obesity, prior DVT) &mdash; use transdermal instead</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">&#9888; Side effects</div><div class="dc-item">Nausea (take with food); breast tenderness; bloating</div><div class="dc-item">BP elevation possible &mdash; check at 3 months; switch to transdermal if raised</div></div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">&#128300; Monitor</div><div class="dc-item">BP at 3 months; annually; breast screening up to date; symptom review</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">&#128172; Counselling</div><p>"This is the oestrogen-only version &mdash; because you've had your womb removed, you don't need the second hormone. Take it at the same time each day."</p></div>
+        <div class="dc-sca"><p>SCA pearl: Never prescribe unopposed oestrogen if the uterus is intact &mdash; this is one of the most consequential prescribing errors in HRT and must be checked explicitly.</p></div>
+      </div>
+
+      <div class="dc" id="dc-transdermal">
+        <div class="dc-head"><div><div class="dc-name">Transdermal Oestrogen (Patch/Gel)</div><div class="dc-examples">Estradot / Evorel (patches); Oestrogel / Sandrena (gel); Lenzetto (spray)</div><div class="dc-rec-badge" id="rec-transdermal">&#10003; Recommended</div></div><div class="dc-badges"><span class="dc-step step1">First-line</span><span class="dc-dose">25&ndash;100mcg/24h patch; 1&ndash;2 pumps gel</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Prefer when</div><div class="dc-item">VTE risk (obesity, prior DVT/PE, thrombophilia) &mdash; no hepatic first-pass; no VTE risk increase</div><div class="dc-item">Hypertension, migraine with aura, liver disease, smoker &mdash; transdermal avoids all oral HRT hepatic effects</div><div class="dc-item">Patient preference: no daily pill; steady hormone levels (avoid peaks/troughs of oral)</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Avoid if</div><div class="dc-item ci-abs">ER+ breast cancer (systemic oestrogen) &mdash; specialist decision</div><div class="dc-item ci-rel">Skin conditions / eczema at application site &mdash; switch to gel or spray</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">&#9888; Side effects</div><div class="dc-item">Local skin reaction at patch site &mdash; rotate site; switch to gel if persistent</div><div class="dc-item">Breast tenderness, bloating &mdash; usually resolves in 3 months</div></div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">&#128300; Monitor</div><div class="dc-item">BP at 3 months; annually; check patch site rotation</div><div class="dc-item">Symptom review at 3 months &mdash; dose may need titrating</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">&#128172; Counselling</div><p>"Apply the patch to clean, dry, hairless skin on the buttock or lower tummy &mdash; rotate the site each time. The gel is rubbed in to the inner arm or thigh; let it dry before getting dressed."</p></div>
+        <div class="dc-sca"><p>SCA pearl: Transdermal HRT has NO increased VTE risk &mdash; this is the key clinical difference from oral HRT. If a patient has risk factors for VTE, transdermal is the correct route. Stating this distinction in the SCA consultation scores a Tasks mark.</p></div>
+      </div>
+
+      <div class="dc" id="dc-seq-combined">
+        <div class="dc-head"><div><div class="dc-name">Sequential Combined HRT</div><div class="dc-examples">Evorel Sequi (patch); Femoston 1/10; Elleste Duet; Climagest</div><div class="dc-rec-badge" id="rec-seq-combined">&#10003; Recommended</div></div><div class="dc-badges"><span class="dc-step step1">Perimenopause</span><span class="dc-dose">21d oestrogen + 12&ndash;14d progestogen</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Prefer when</div><div class="dc-item">Perimenopausal (&lt;12 months amenorrhoea or irregular cycles)</div><div class="dc-item">Produces predictable monthly withdrawal bleed &mdash; reassuring for patient; monitors for PMB</div><div class="dc-item">Can be used within 5 years of last period in women switching to no-bleed prep</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Avoid if</div><div class="dc-item ci-abs">Post-menopausal (&gt;12 months amenorrhoea) wanting no bleed &mdash; use continuous combined</div><div class="dc-item ci-rel">History of progestogen intolerance &mdash; consider micronised progesterone (Utrogestan)</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">&#9888; Side effects</div><div class="dc-item">Progestogen phase symptoms: low mood, bloating, breast tenderness (days 12&ndash;21)</div><div class="dc-item">Irregular breakthrough bleeding in first 3 months &mdash; normal and expected</div><div class="dc-item">Late cycle bleeding (days 1&ndash;9) after 6 months &mdash; investigate endometrium</div></div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">&#128300; Monitor</div><div class="dc-item">Bleeding diary for 3 months; report late-cycle bleeding to GP; annual review</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">&#128172; Counselling</div><p>"You'll have a regular monthly bleed with this type &mdash; that's expected and reassuring. If you get any bleeding at other times, especially in the first half of your cycle, please let us know."</p></div>
+        <div class="dc-sca"><p>SCA pearl: Sequential = perimenopause. Continuous combined = post-menopause (&gt;12 months amenorrhoea). Mixing them up = wrong preparation for patient's stage &mdash; a scored Tasks failure.</p></div>
+      </div>
+
+      <div class="dc" id="dc-cont-combined">
+        <div class="dc-head"><div><div class="dc-name">Continuous Combined HRT</div><div class="dc-examples">Evorel Conti (patch); Femoston-Conti; Kliofem; Kliovance; Angeliq</div><div class="dc-rec-badge" id="rec-cont-combined">&#10003; Recommended</div></div><div class="dc-badges"><span class="dc-step step1">Post-menopause</span><span class="dc-dose">Daily oestrogen + daily progestogen</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Prefer when</div><div class="dc-item">Post-menopausal (&ge;12 months amenorrhoea) who wants no monthly bleed</div><div class="dc-item">Most convenient preparation for women established in menopause</div><div class="dc-item">Mirena IUS + systemic oestrogen (patch/gel) is equivalent: IUS provides progestogen + contraception</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Avoid if</div><div class="dc-item ci-abs">Perimenopause (&lt;12 months amenorrhoea) &mdash; high risk of irregular breakthrough bleeding, endometrial risk</div><div class="dc-item ci-rel">Progestogen intolerance &mdash; micronised progesterone (Utrogestan) 100mg OD continuous is better tolerated</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">&#9888; Side effects</div><div class="dc-item">Irregular spotting for 3&ndash;6 months &mdash; normal; review if persists &gt;6 months</div><div class="dc-item">Breast tenderness; bloating; mood change &mdash; usually resolves in first 3 months</div></div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">&#128300; Monitor</div><div class="dc-item">Bleeding diary; investigate late onset or heavy breakthrough bleeding; annual review</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">&#128172; Counselling</div><p>"This type aims for no monthly bleed. There may be some irregular spotting for the first few months &mdash; that's normal. If you get heavier or more regular bleeding after the first 6 months, please let us know."</p></div>
+        <div class="dc-sca"><p>SCA pearl: The most common reason for investigation during HRT review is unexpected late-cycle bleeding. Know when it's expected (first 6 months, continuous combined) vs when it needs investigation (after 6 months, or new onset in established user).</p></div>
+      </div>
+
+      <div class="dc" id="dc-vaginal-e">
+        <div class="dc-head"><div><div class="dc-name">Vaginal Oestrogen (Local)</div><div class="dc-examples">Vagifem / Vagirux pessaries; Ovestin cream; Estring ring; Gynatrof gel</div><div class="dc-rec-badge" id="rec-vaginal-e">&#10003; Recommended</div></div><div class="dc-badges"><span class="dc-step step1">GSM</span><span class="dc-dose">Topical; minimal systemic absorption</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Prefer when</div><div class="dc-item">GSM symptoms (dryness, dyspareunia, urgency) with or without systemic HRT</div><div class="dc-item">HRT contraindicated (breast cancer) &mdash; vaginal oestrogen is generally safe even post-breast cancer; discuss with oncologist for ER+ cancer</div><div class="dc-item">Can be used long-term indefinitely &mdash; no systemic risks at low topical doses</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Avoid if</div><div class="dc-item ci-abs">Unexplained vaginal bleeding &mdash; investigate first</div><div class="dc-item ci-rel">ER+ breast cancer on aromatase inhibitors &mdash; consult oncologist; systemic absorption may be higher than expected</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">&#9888; Side effects</div><div class="dc-item">Minimal systemic side effects; local mild irritation initially (resolves)</div><div class="dc-item">No endometrial protection needed at standard topical doses &mdash; no systemic progestogen required</div></div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">&#128300; Monitor</div><div class="dc-item">Symptom review at 3 months; no specific blood tests required</div><div class="dc-item">Cervical smear: atrophic changes may improve with 4&ndash;6 weeks of vaginal oestrogen before repeat</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">&#128172; Counselling</div><p>"This is a very low dose of oestrogen applied directly to the vaginal area &mdash; it stays local and doesn't significantly raise the oestrogen in your blood. You can use it long-term and there's no need to stop it after 5 years like systemic HRT."</p></div>
+        <div class="dc-sca"><p>SCA pearl: GSM is massively under-treated. Always ask about vaginal symptoms specifically &mdash; patients rarely volunteer them. Vaginal oestrogen is safe in most women including many with breast cancer. Mentioning this scores RO and Tasks marks.</p></div>
+      </div>
+
+      <div class="dc" id="dc-non-hormonal">
+        <div class="dc-head"><div><div class="dc-name">Non-Hormonal Vasomotor Treatment</div><div class="dc-examples">Venlafaxine 37.5&ndash;75mg; Clonidine 50&ndash;75mcg BD; Gabapentin 100&ndash;300mg nocte</div><div class="dc-rec-badge" id="rec-non-hormonal">&#10003; Recommended</div></div><div class="dc-badges"><span class="dc-step step2">HRT alternatives</span><span class="dc-dose">Various &mdash; see card</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">&#10003; Prefer when</div><div class="dc-item">HRT contraindicated (ER+ breast cancer on aromatase inhibitors, active VTE)</div><div class="dc-item">HRT declined on personal grounds; patient on tamoxifen (use venlafaxine, NOT paroxetine)</div><div class="dc-item">Concurrent depression/anxiety &mdash; venlafaxine addresses both symptoms</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">&#10007; Avoid if</div><div class="dc-item ci-abs">Paroxetine with tamoxifen &mdash; inhibits CYP2D6 reducing tamoxifen to active metabolite; use venlafaxine</div><div class="dc-item ci-rel">Clonidine in patients with hypotension or on antihypertensives</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">&#9888; Side effects</div><div class="dc-item">Venlafaxine: nausea, headache, BP elevation &mdash; take with food; start low dose</div><div class="dc-item">Clonidine: dry mouth, sedation, hypotension; wean off slowly to avoid rebound hypertension</div><div class="dc-item">Gabapentin: sedation, dizziness; avoid in renal impairment; caution driving</div></div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">&#128300; Monitor</div><div class="dc-item">Venlafaxine: BP at 3 months; QTc if cardiac history; annual review</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">&#128172; Counselling</div><p>"This isn't a hormone, but it works on the brain signals that cause hot flushes &mdash; around half of women find their flushes reduce by about 50% on this. It can take 2&ndash;4 weeks to take effect."</p></div>
+        <div class="dc-sca"><p>SCA pearl: Always check: is the patient on tamoxifen? If yes, venlafaxine is safe; paroxetine is contraindicated. This is a very common SCA catch &mdash; a scored Tasks item for drug interaction awareness.</p></div>
+      </div>
+    </div>
+
+    <div class="sub-divider" style="margin-top:1.5rem">7G &mdash; Psychosocial impact: driving, work, relationships &amp; daily life</div>
+    <div class="psoci-wrap">
+      <div class="psoci-hdr"><span style="font-size:1.5rem">&#129309;</span><div class="psoci-title">Menopause affects more than the body &mdash; proactively address the domains below</div></div>
+      <div style="font-size:12.5px;color:#831843;line-height:1.55;margin-bottom:.85rem;background:#fff;border:1px solid var(--ps-bd);border-radius:var(--rad-sm);padding:.65rem .9rem;border-left:3px solid var(--ps)">Menopausal symptoms are under-reported and under-treated because women feel they should cope. GPs who proactively open conversations about occupational impact, sexual function and mental health dramatically improve quality of life for their patients &mdash; and NICE explicitly states this is part of the GP role in NG23.</div>
+      <div class="psoci-grid">
+        <div class="psoci-card"><span class="psoci-icon">&#128118;</span><h5>Occupational impact</h5><p>Brain fog, concentration difficulties and hot flushes affect 1 in 4 menopausal women at work. Symptom burden reduces performance, increases absenteeism and may prompt early retirement.</p><p>HRT consistently improves cognitive symptoms and concentration within 3 months. Advise workplace menopause support policies (available from RCOG patient information).</p><p>Reasonable adjustments under Equality Act 2010 may include flexible hours, cooler workspace, reduced uniform requirements during peak symptoms.</p><span class="psoci-phrase">"You mentioned work has been affected &mdash; after treatment most women find their concentration significantly improves within 3 months."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">&#128147;</span><h5>Libido &amp; sexual function</h5><p>GSM causes dyspareunia and avoidance of sex &mdash; exacerbated by relationship tension if partner is not informed. Testosterone deficiency also contributes to low libido post-menopause.</p><p>Vaginal oestrogen addresses GSM effectively. Testosterone supplementation (off-label in UK for hypoactive sexual desire disorder) may be considered after menopause specialist input.</p><p>ISSVD and BMS guidelines recommend proactive sexual health discussion in every menopause consultation.</p><span class="psoci-phrase">"Has this been affecting your sex life at all? That's very common and very treatable &mdash; I'd like to help with that specifically."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">&#129504;</span><h5>Mood &amp; mental health</h5><p>Perimenopausal depression is a distinct entity &mdash; often responds to HRT alone or in combination with antidepressants. CBT is NICE-recommended for psychological symptoms.</p><p>Suicidal ideation in peri-menopause is an under-recognised risk; women in mid-life have a rising suicide rate that is underappreciated by clinicians.</p><p>Do not dismiss mood symptoms as "just hormonal" &mdash; screen using PHQ-9 and refer if appropriate.</p><span class="psoci-phrase">"How has your mood been? I want to make sure we're not missing any depression alongside the menopausal symptoms."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">&#128161;</span><h5>Driving &amp; safety</h5><p>Cognitive symptoms and severe sleep deprivation may affect driving safety. Night shift workers with severe night sweats and sleep disruption should be counselled on driving risk.</p><p>DVLA: there is no specific menopause notification requirement, but severe cognitive impairment may require disclosure. Encourage sleep treatment (HRT, sleep hygiene) before advising on driving limitation.</p><p>Gabapentin and clonidine can cause sedation &mdash; counsel explicitly on driving when prescribing these.</p><span class="psoci-phrase">"While your sleep is this disrupted, I'd encourage you to be mindful of how you feel before driving long distances."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">&#128165;</span><h5>Long-term health implications</h5><p>Untreated early menopause or POI significantly increases risk of cardiovascular disease, osteoporosis and possibly dementia. These are not trivial long-term consequences of oestrogen deficiency.</p><p>HRT started within the window of opportunity (within 10 years / before 60) reduces CVD risk and may reduce dementia risk. NICE explicitly states these benefits in NG23.</p><p>Lifestyle modifications (exercise, diet, calcium, vitamin D, no smoking) amplify the protective effects of HRT on bone and cardiovascular system.</p><span class="psoci-phrase">"Starting treatment now, while you're in the right window of opportunity, will protect your heart and bones for the long term."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">&#128330;</span><h5>Relationships &amp; support</h5><p>Partners and family members may not understand the physiological basis of mood change, irritability and low libido. Relationship strain from unexplained symptoms is common and rarely volunteered.</p><p>Signpost to menopause support organisations: Menopause Support UK, British Menopause Society patient information, Menopause Matters website.</p><p>Encourage patient to involve partner in HRT discussion where appropriate; couples who understand the biology together report better treatment adherence and relationship outcomes.</p><span class="psoci-phrase">"There's a lot of really good information for partners and family members too &mdash; it can really help if the people around you understand what's happening."</span></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7H &mdash; Follow-up schedule</div>
+    <div class="card" style="padding:1.1rem 1.25rem;margin-bottom:1.25rem">
+      <div class="fu-line">
+        <div class="fu-event"><div class="fu-dot fd1">1</div><div class="fu-content"><h5>3 months (initial HRT review)</h5><p>Assess symptom response (vasomotor, mood, sleep, GSM); check BP (oral HRT); review side effects (breast tenderness, irregular bleeding, nausea); dose titration if needed; discuss any concerns about breast cancer risk.</p><div class="fu-tags"><span class="ft ft-r">BP check</span><span class="ft ft-b">Symptom response</span><span class="ft ft-a">Side effect review</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd2">2</div><div class="fu-content"><h5>6&ndash;12 months (consolidation)</h5><p>Switch from sequential to continuous combined if now &gt;12 months amenorrhoea; review progestogen type if intolerance evident; bleeding diary review; cervical smear if due; discuss duration of HRT (NICE: no arbitrary limit).</p><div class="fu-tags"><span class="ft ft-b">HRT type review</span><span class="ft ft-a">Smear status</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd3">3</div><div class="fu-content"><h5>Annual review (ongoing)</h5><p>Symptom control; bleeding pattern; BP; BMI; breast screening (mammography up-to-date); cardiovascular risk factors; bone health if indicated; ongoing discussion of continuation vs stopping; update on safety evidence.</p><div class="fu-tags"><span class="ft ft-r">BP &amp; BMI</span><span class="ft ft-b">Mammogram</span><span class="ft ft-a">Cardiovascular risk</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd4">4</div><div class="fu-content"><h5>5-year review (HRT duration discussion)</h5><p>NICE NG23: no mandatory stopping point for HRT &mdash; discuss continuation vs stopping based on ongoing symptoms and updated risk profile. For some women (POI, early menopause) HRT is appropriate until at least age 51. Breast cancer risk increases with duration but must be weighed against bone and cardiovascular benefits.</p><div class="fu-tags"><span class="ft ft-b">Duration review</span><span class="ft ft-a">Updated risk discussion</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd5">5</div><div class="fu-content"><h5>Stopping HRT (when decided)</h5><p>Gradual dose reduction preferred over abrupt cessation to reduce symptom rebound. Vaginal oestrogen may continue indefinitely regardless of systemic HRT decision. DEXA if not recently done; optimise bone health; CVD lifestyle; continue calcium/vitamin D.</p><div class="fu-tags"><span class="ft ft-r">Bone health</span><span class="ft ft-b">Wean plan</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="sub-divider" id="monitoring">7I &mdash; Monitoring: BP-BMI-Bleeding triad + breast surveillance</div>
+    <div class="mon-rule"><h4>Memory rule</h4><p>For oral HRT: <strong>BP at 3 months then annually</strong>. For all HRT: <strong>bleeding diary for first 3 months; investigate late-cycle or heavy bleeding after 6 months</strong>. <strong>Annual breast screening reminder</strong>. No routine blood oestrogen levels needed. <strong>DEXA if POI, early menopause, or bone risk factors</strong>.</p></div>
+    <div class="g2" style="margin-bottom:1.25rem">
+      <div class="card" style="overflow:hidden">
+        <table class="rt">
+          <thead><tr><th>Preparation</th><th>What to check</th><th>Timing</th><th>Action threshold</th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:600">Oral HRT</td><td>Blood pressure</td><td>Before start; 3m; annually</td><td>BP &gt;160/100 on oral = switch to transdermal</td></tr>
+            <tr><td style="font-weight:600">Sequential combined</td><td>Bleeding diary</td><td>First 3 months; ongoing</td><td>Late cycle bleeding (days 1&ndash;9) after 6m = pelvic USS + endometrial biopsy</td></tr>
+            <tr><td style="font-weight:600">Continuous combined</td><td>Bleeding pattern</td><td>First 6 months; ongoing</td><td>Breakthrough bleeding &gt;6 months = pelvic USS; PMB any time = 2WW referral</td></tr>
+            <tr><td style="font-weight:600">All HRT</td><td>BMI; mammogram status</td><td>Annually</td><td>Mammogram overdue = refer NHS breast screening; BMI &gt;30 = switch oral to transdermal</td></tr>
+            <tr><td style="font-weight:600">POI / early menopause</td><td>DEXA bone density</td><td>At diagnosis; every 2&ndash;5 yrs</td><td>T-score &lt; &minus;2.5 = osteoporosis &mdash; add bisphosphonate; ensure calcium/vit D</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <table class="rt">
+          <thead><tr><th>Scenario</th><th>Expected finding</th><th>Action if outside expected</th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:600">Continuous combined: first 6m</td><td>Irregular spotting common</td><td>Reassure; no action needed in first 6 months unless heavy</td></tr>
+            <tr><td style="font-weight:600">Continuous combined: &gt;6 months</td><td>Amenorrhoea (no bleeding)</td><td>Any bleeding after 6 months = pelvic USS; endometrial biopsy if thickness &ge;4mm</td></tr>
+            <tr><td style="font-weight:600">Sequential combined: days 10&ndash;21</td><td>Withdrawal bleed expected</td><td>Normal; reassure</td></tr>
+            <tr><td style="font-weight:600">Sequential combined: days 1&ndash;9</td><td>No bleed expected</td><td>Late-cycle bleeding after 6 months = investigate endometrium</td></tr>
+            <tr><td style="font-weight:600">BP on oral HRT at 3m</td><td>Within 10mmHg of baseline</td><td>BP raised &gt;160/100 = switch to transdermal; do not add antihypertensive to compensate for HRT effect without route switch</td></tr>
+            <tr><td style="font-weight:600">Symptom control at 3m</td><td>&ge;50% reduction in flush frequency</td><td>&lt;50% response = increase oestrogen dose (e.g. 25mcg &rarr; 50mcg patch); review progestogen</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-divider">7J &mdash; Safety-netting: exact phrases + medico-legal rationale</div>
+    <div class="sn-box">
+      <h4>&#9888; Three scenario-specific phrases &mdash; use these verbatim</h4>
+      <div class="sn-scenarios">
+        <div class="sn-scenario sns-e">
+          <div class="sn-scenario-lbl">&#128308; Emergency &mdash; postmenopausal bleeding or new breast lump</div>
+          <div class="sn-phrase">"If at any point you notice bleeding from below &mdash; even just a small amount &mdash; after the menopause, or if you find a new lump in your breast, please contact us the same day. These need to be checked quickly &mdash; not because we expect anything serious, but to rule it out."</div>
+          <div class="sn-why">Names PMB and new breast lump as the two most time-critical symptoms on HRT. "Same day" and "rule out" framing is non-alarmist but creates urgency. Documents that the patient was warned &mdash; medicolegally essential for HRT prescribing.</div>
+        </div>
+        <div class="sn-scenario sns-m">
+          <div class="sn-scenario-lbl">&#128138; Medication &mdash; bleeding and breast tenderness expectations</div>
+          <div class="sn-phrase">"It's very common to have some irregular spotting and breast tenderness in the first few months &mdash; that's normal and usually settles. But if you're having heavy bleeding or it continues beyond 6 months, please come back and we'll investigate."</div>
+          <div class="sn-why">Sets realistic expectations that prevent premature discontinuation (common cause of treatment failure), while clearly naming the threshold for re-attendance. Failure to warn of initial irregular bleeding is a leading cause of HRT discontinuation in practice.</div>
+        </div>
+        <div class="sn-scenario sns-a">
+          <div class="sn-scenario-lbl">&#128992; Drug-specific &mdash; VTE awareness on oral HRT</div>
+          <div class="sn-phrase">"Because you're taking oral HRT, there's a very small increased risk of blood clots. If you develop a painful swollen leg or sudden breathlessness at any point, please go straight to A&amp;E and mention you're on HRT."</div>
+          <div class="sn-why">Required documentation for oral HRT prescribing. The 1.8-fold VTE risk with oral HRT is small in absolute terms but must be communicated. "Mention you're on HRT" is a specific and actionable phrase that helps emergency physicians in their differential diagnosis.</div>
+        </div>
+      </div>
+      <div class="sn-legal">
+        <h5>Why safety-netting matters beyond clinical care</h5>
+        <div class="sn-legal-grid">
+          <div class="sn-legal-item">PMB not referred urgently is a leading cause of delayed endometrial cancer diagnosis &mdash; medicolegally indefensible if not documented</div>
+          <div class="sn-legal-item">Starting HRT without discussing breast cancer risk is a GMC consent issue; document risk communication verbatim in notes</div>
+          <div class="sn-legal-item">Unopposed oestrogen in a woman with intact uterus causing endometrial cancer = prescribing error; always document uterus status</div>
+          <div class="sn-legal-item">VTE on oral HRT: if VTE risk factors were not assessed and transdermal not offered, this is a prescribing deficiency &mdash; document UKMEC equivalent reasoning</div>
+          <div class="sn-legal-item">Failure to refer breast lump for 2WW = delayed diagnosis complaint; always examine and refer without delay</div>
+          <div class="sn-legal-item">POI: failure to start HRT promptly and counsel on bone/CVD risk = preventable harm; document that HRT was offered and reason if declined</div>
+        </div>
+      </div>
+      <div class="sn-fu">
+        <div class="sn-fu-item"><strong>3 months</strong>BP check (oral HRT); symptom response; side effect review; dose titration</div>
+        <div class="sn-fu-item"><strong>Annual</strong>Mammogram status; BP; BMI; bleeding pattern; DEXA if indicated</div>
+        <div class="sn-fu-item"><strong>Immediately</strong>PMB any amount; new breast lump; VTE symptoms; new heavy breakthrough bleeding</div>
+      </div>
+    </div>
+
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">&#127891; SCA Checkpoint &mdash; Step 7 (Final)</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Closing phrases</div><div class="sca-phrase">"To summarise: we've agreed to start [HRT type] &mdash; watch out for [specific symptoms]. See you back in 3 months. Is there anything else?"</div><div class="sca-phrase">"The risk of breast cancer is real but smaller than many people think &mdash; around 1 per 1,000 per year, similar to 1 glass of wine daily."</div><div class="sca-phrase">"If you get any bleeding after the menopause, please contact us the same day."</div><div class="sca-phrase">"I'd like to continue this as long as it's helping &mdash; there's no reason to stop HRT after 5 years just because it's been 5 years."</div><div class="sca-phrase">"The most important thing is that this decision is yours &mdash; I want to make sure you have all the information you need."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions &mdash; closing</div><ul><li>Prescribing unopposed oestrogen with intact uterus &mdash; patient safety failure</li><li>No PMB safety-net &mdash; mandatory</li><li>Not discussing breast cancer risk numerically &mdash; loses Tasks mark</li><li>Continuous combined in perimenopause &mdash; wrong preparation</li><li>No follow-up arranged (3 months mandatory for HRT start)</li><li>Dismissing breast cancer concern without evidence-based response</li></ul></div>
+        <div class="sca-block sca-score"><div class="sca-block-t">Tasks domain &mdash; full criteria</div><ul><li>Correct HRT type for stage (sequential/continuous combined/oestrogen-only)</li><li>Correct route for risk profile (transdermal if VTE/HTN/obesity)</li><li>Uterus status documented and progestogen added if intact</li><li>Breast cancer risk communicated as absolute number</li><li>PMB safety-netting stated explicitly</li></ul></div>
+        <div class="sca-block sca-score" style="border-left:2px solid #c4b5fd"><div class="sca-block-t" style="color:#c4b5fd">Relating to Others &mdash; full criteria</div><ul><li>WHI breast cancer fear addressed with empathy and updated evidence</li><li>Patient's own goals (work, sleep, relationship) referenced in plan</li><li>Shared decision making &mdash; patient chose HRT not clinician</li><li>Non-hormonal options mentioned even if patient choosing HRT</li><li>Long-term health benefit framed in terms patient values</li><li>Closing question asked: "Is there anything else?"</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">&#128308; Red</div><div class="rag-bullets">Unopposed oestrogen with uterus &bull; no PMB safety-net &bull; no breast cancer risk discussed &bull; wrong HRT type for stage &bull; no follow-up</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">&#128992; Amber</div><div class="rag-bullets">Correct HRT type &bull; breast cancer risk mentioned but not quantified &bull; PMB safety-net generic &bull; ICE referenced but not in plan</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">&#128994; Green</div><div class="rag-bullets">Correct HRT type and route &bull; progestogen confirmed &bull; PMB explicit &bull; breast cancer risk as absolute number &bull; patient-led decision &bull; ICE in plan &bull; follow-up 3 months</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCA SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Menopause &amp; HRT &mdash; SCA Consultation Scorecard</div><div class="scorecard-sub">Based on the official SCA Consultation Tool &middot; RAG self-assessment</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">&#8634; Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">&#127758;</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Opens with patient agenda</strong> &mdash; uses existing information; allows narrative before any data-gathering</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Open question first</strong> &mdash; "what's been most affecting you?" before any targeted questions</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Active listening</strong> &mdash; summarises patient's experience; validates symptom impact</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Jargon-free</strong> &mdash; "hormone patch" not "transdermal oestradiol"; WHI explained not assumed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Consultation structured in 12 minutes</strong> &mdash; history complete by 6&ndash;7 min; plan clearly in final third</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Responds to patient cues</strong> &mdash; notices emotional cues; explores fear/hesitation about HRT</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Closes with summary and closing question</strong> &mdash; recaps plan; asks "anything else?"</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">&#10003;</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, HRT prescribing, safety</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>PMB screened and escalated</strong> &mdash; any postmenopausal bleeding identified and 2WW referral stated</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct HRT type for stage</strong> &mdash; sequential for perimenopause; continuous combined for post-menopause; oestrogen-only for hysterectomy</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Progestogen added if uterus intact</strong> &mdash; not prescribing unopposed oestrogen</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Route appropriate for risk profile</strong> &mdash; transdermal if VTE risk, hypertension, obesity, migraine with aura</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Breast cancer risk communicated as absolute number</strong> &mdash; "~1 per 1,000 per year" not just "increased risk"</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>GSM / sexual symptoms addressed</strong> &mdash; asked about and vaginal oestrogen offered if present</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Non-hormonal option mentioned</strong> &mdash; CBT, venlafaxine, or lifestyle discussed even if HRT chosen</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>VTE safety-net for oral HRT</strong> &mdash; patient told about leg/chest symptoms and to mention HRT in A&amp;E</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Follow-up arranged at 3 months</strong> &mdash; BP check for oral HRT; symptom review; bleeding diary discussed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>No arbitrary HRT duration limit imposed</strong> &mdash; NICE NG23: no mandatory stopping after 5 years; decision based on ongoing symptoms and risk</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">&#129309;</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decision making</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> &mdash; patient's understanding of menopause and HRT asked about; WHI beliefs identified</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> &mdash; breast cancer fear, fertility loss, ageing concerns named and addressed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations explored</strong> &mdash; what patient wants from appointment clarified before plan offered</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concern validated</strong> &mdash; breast cancer fear acknowledged empathetically before evidence offered</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Plain language throughout</strong> &mdash; "hormone patch" not "transdermal"; "monthly bleed" not "progestogen phase withdrawal bleed"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Occupational and life impact acknowledged</strong> &mdash; patient's work, sleep and relationship difficulties named as important</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Sexual health explored sensitively</strong> &mdash; GSM / dyspareunia asked without judgment; reassured about treatability</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Shared decision making</strong> &mdash; HRT was patient's choice; non-hormonal options also presented</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>ICE referenced in plan</strong> &mdash; patient's concerns about work/sleep specifically addressed in management plan</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Patient empowered</strong> &mdash; knows symptoms warranting urgent re-attendance; feels in control of HRT decision</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Closing question asked</strong> &mdash; "anything else you'd like to ask?" at end of consultation</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment Guide</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">&#128308; Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">Unopposed oestrogen with uterus &bull; PMB not escalated &bull; no breast cancer risk &bull; wrong HRT type &bull; no safety-net &bull; no follow-up</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">&#128992; Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">Correct HRT type but route not optimised &bull; breast cancer risk mentioned not quantified &bull; ICE superficial &bull; GSM missed</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">&#128994; Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Correct HRT type and route &bull; uterus confirmed &bull; absolute risk communicated &bull; ICE in plan &bull; PMB safety-net &bull; 3m follow-up</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">&#128203;</div><div class="interp-text">Complete the checklist above to see your score interpretation and feedback</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">&#9888; Items not yet checked &mdash; areas to develop</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()">
+    <h3>&#127917; Patient actor brief &mdash; click to practise</h3>
+    <span style="font-size:12px;color:var(--muted)" id="actor-icon">&#9660; show</span>
+  </button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"I've been having these terrible hot flushes for about 6 months &mdash; they're waking me up three or four times a night. I'm exhausted and I'm struggling at work. I want to try HRT but I'm terrified about the breast cancer risk."</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>Sarah, 52 years old, secondary school deputy head teacher. Your last period was 15 months ago. Hot flushes 8&ndash;10 times/day, including 3&ndash;4 times at night. Significant sleep disruption. Your concentration and memory have deteriorated and your performance reviews have been affected. BMI 28. Mild hypertension (136/82) on amlodipine 5mg. Non-smoker.</p></div>
+      <div class="ab"><h5>Hidden agenda</h5><p>Your mother had breast cancer at 62 and died from it. You are convinced HRT will give you breast cancer. You have read extensively online and mostly found negative information. You have also been having pain during sex for the past 6 months but are too embarrassed to mention it unless specifically asked. You are also worried your concentration problems could be early dementia.</p></div>
+      <div class="ab"><h5>Symptoms if asked directly</h5><ul>
+        <li>No postmenopausal bleeding &mdash; periods stopped 15 months ago completely</li>
+        <li>No new breast lumps; mammogram 2 years ago was clear</li>
+        <li>Vaginal dryness and pain during sex (dyspareunia) &mdash; will only disclose if specifically asked</li>
+        <li>Low mood and anxiety; PHQ-9 score would be around 10 (moderate)</li>
+        <li>No DVT/PE history; no migraine; no liver disease</li>
+        <li>No family history of VTE</li>
+      </ul></div>
+      <div class="ab"><h5>Lifestyle + bonus details</h5><ul>
+        <li>Drinks 8&ndash;10 units/week (stress-related); has increased since menopause started</li>
+        <li>Walks 20 minutes/day but not formally exercising</li>
+        <li>Has not been to breast screening for 2 years (avoidance due to cancer fear)</li>
+        <li>Mother's breast cancer was ER+ &mdash; this is a specific concern if asked</li>
+      </ul></div>
+    </div>
+    <div class="actor-challenge">"But my mum died from breast cancer &mdash; surely the risk for me is much higher? Am I not just inviting cancer by taking this?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> Accept the plan if the doctor: (1) Addresses the breast cancer fear with empathy and current NICE evidence (absolute number, not relative risk); (2) Asks about and addresses the dyspareunia (vaginal oestrogen); (3) Recommends transdermal HRT rather than oral (due to hypertension); (4) Checks for PMB; (5) Arranges breast screening; (6) Offers a follow-up appointment at 3 months.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left">
+      <span class="sum-icon">&#127973;</span>
+      <div>
+        <div class="sum-label">Clinic Quick Reference</div>
+        <div class="sum-title">Menopause &amp; HRT &mdash; Clinical Decision Framework</div>
+        <div class="sum-sub">NICE NG23 (2019) &middot; NICE CKS Menopause 2023 &middot; BMS Guidelines</div>
+      </div>
+    </div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">&#9660;</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">&#128678; 1 &mdash; Triage System</div>
+    <div class="algo-wrap" style="margin-bottom:1rem">
+      <div class="algo-start">Patient presents re: menopause &rarr; First: screen for PMB, new breast lump, VTE symptoms, POI in young woman</div>
+      <div class="algo-arrow">&darr;</div>
+      <div class="algo-row">
+        <div class="algo-branch algo-red">
+          <div class="algo-branch-lbl">&#128308; Emergency (999 / A&amp;E)</div>
+          <ul class="algo-list"><li>DVT / PE on HRT (leg pain, breathlessness)</li><li>Stroke / TIA on oral HRT</li><li>Suicidal ideation secondary to severe perimenopausal depression</li></ul>
+          <div class="algo-action red-action">999 / Same-day MH</div>
+        </div>
+        <div class="algo-branch algo-amber">
+          <div class="algo-branch-lbl">&#128992; Urgent (2WW / same day)</div>
+          <ul class="algo-list"><li>Postmenopausal bleeding (PMB) &rarr; 2WW gynaecology</li><li>New breast lump on HRT &rarr; 2WW breast clinic</li><li>Unexpected bleeding &gt;6m on continuous combined &rarr; pelvic USS</li><li>POI in woman &lt;40 &rarr; FSH x2 + specialist</li></ul>
+          <div class="algo-action amber-action">2WW / same-week assessment</div>
+        </div>
+        <div class="algo-branch algo-green">
+          <div class="algo-branch-lbl">&#128994; Routine GP</div>
+          <ul class="algo-list"><li>New HRT request (no red flags)</li><li>Annual HRT review</li><li>HRT preparation change</li><li>Non-hormonal options</li></ul>
+          <div class="algo-action green-action">Planned GP appointment</div>
+        </div>
+      </div>
+    </div>
+    <div class="sum-sub-hdr">&#128202; 2 &mdash; Key Numbers</div>
+    <div class="num-grid" style="margin-bottom:1rem">
+      <div class="num-card num-highlight"><div class="num-val">51</div><div class="num-lbl">Average UK menopause age</div></div>
+      <div class="num-card num-highlight"><div class="num-val">12 months</div><div class="num-lbl">Amenorrhoea to diagnose menopause</div></div>
+      <div class="num-card num-highlight"><div class="num-val">FSH &gt;30</div><div class="num-lbl">IU/L x2 confirms POI (&lt;45 only)</div></div>
+      <div class="num-card"><div class="num-val">&lt;60 yrs</div><div class="num-lbl">HRT benefit window</div></div>
+      <div class="num-card"><div class="num-val">1.8&times;</div><div class="num-lbl">VTE risk with oral HRT</div></div>
+      <div class="num-card"><div class="num-val">No increase</div><div class="num-lbl">VTE risk with transdermal</div></div>
+      <div class="num-card"><div class="num-val">1/1,000/yr</div><div class="num-lbl">Extra BC cases (combined HRT)</div></div>
+      <div class="num-card"><div class="num-val">5 yrs</div><div class="num-lbl">Standard review point (not stop point)</div></div>
+      <div class="num-card"><div class="num-val">4mm</div><div class="num-lbl">Endometrial thickness threshold (USS)</div></div>
+      <div class="num-card"><div class="num-val">3&ndash;5%</div><div class="num-lbl">Annual bone loss without HRT</div></div>
+      <div class="num-card"><div class="num-val">&lt;40 yrs</div><div class="num-lbl">POI definition (amenorrhoea + FSH)</div></div>
+      <div class="num-card"><div class="num-val">6 weeks</div><div class="num-lbl">Vaginal oestrogen before repeat smear</div></div>
+    </div>
+    <div class="sum-sub-hdr">&#128138; 3 &mdash; HRT Prescribing Rules</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div style="background:var(--r-bg);border:1px solid var(--r-bd);border-radius:var(--rad-sm);padding:.75rem .9rem">
+        <div style="font-size:10.5px;font-weight:700;color:var(--r);text-transform:uppercase;margin-bottom:.5rem">&#128308; Absolute rules</div>
+        <div style="font-size:12px;line-height:1.8;color:#7f1d1d">
+          <strong>Never:</strong> Unopposed oestrogen if uterus intact &bull; HRT without PMB exclusion &bull; Continuous combined in perimenopause &bull; Delay POI treatment pending specialist<br>
+          <strong>Always:</strong> Add progestogen if uterus intact &bull; Use transdermal if VTE risk / HTN / obesity &bull; Refer PMB as 2WW &bull; Start POI HRT promptly
+        </div>
+      </div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.75rem .9rem">
+        <div style="font-size:10.5px;font-weight:700;color:var(--g);text-transform:uppercase;margin-bottom:.5rem">&#128994; Route selection guide</div>
+        <div style="font-size:12px;line-height:1.8;color:#14532d">
+          <strong>Oral:</strong> No VTE risk factors, normal BP, post-hysterectomy (oestrogen-only)<br>
+          <strong>Transdermal:</strong> VTE risk, hypertension, obesity (BMI&gt;30), migraine with aura, liver disease, smoker<br>
+          <strong>Vaginal:</strong> GSM only or as adjunct to systemic HRT
+        </div>
+      </div>
+    </div>
+    <div class="sum-sub-hdr">&#9888; 4 &mdash; Safety Netting &amp; Follow-Up</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div class="sn-compact-wrap">
+        <div class="sn-compact sns-e"><div class="sn-compact-lbl">&#128308; PMB (any amount)</div><div class="sn-compact-phrase">"Any bleeding after the menopause &mdash; contact same day. 2WW referral."</div></div>
+        <div class="sn-compact sns-m"><div class="sn-compact-lbl">&#128138; Irregular bleeding (first 6m)</div><div class="sn-compact-phrase">"Spotting in first few months is normal. Heavy or prolonged &gt;6m &rarr; investigate."</div></div>
+        <div class="sn-compact sns-a"><div class="sn-compact-lbl">&#128992; VTE (oral HRT)</div><div class="sn-compact-phrase">"Leg swelling/breathlessness &rarr; A&amp;E; tell them you're on HRT."</div></div>
+      </div>
+      <div class="fu-compact-wrap">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.4rem">Follow-up timeline</div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--r)">1</div><div><strong>3 months:</strong> BP (oral), symptom response, side effects, dose titration</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--a)">2</div><div><strong>6&ndash;12m:</strong> Bleeding diary review; switch sequential&rarr;continuous if &gt;12m amenorrhoea</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--b)">3</div><div><strong>Annual:</strong> BP, BMI, mammogram, CVD risk, DEXA if indicated</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--g)">4</div><div><strong>5 years:</strong> Duration review &mdash; NICE: no mandatory stop point</div></div>
+        <div style="margin-top:.5rem;background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.45rem .65rem;font-size:11.5px;color:var(--a);font-weight:600">&#128204; No routine oestrogen blood levels needed; clinical symptom review sufficient</div>
+      </div>
+    </div>
+    <div class="sum-sub-hdr">&#128300; 5 &mdash; Monitoring</div>
+    <div class="mon-table-wrap" style="margin-bottom:.65rem">
+      <table class="mon-table">
+        <thead><tr><th>HRT type</th><th>What to check</th><th>Timing</th><th>Action if abnormal</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Oral HRT</strong></td><td>Blood pressure</td><td class="mon-red">Before start; 3m; annually</td><td style="font-size:11.5px">BP &gt;160/100 = switch to transdermal</td></tr>
+          <tr><td><strong>Sequential combined</strong></td><td>Bleeding diary</td><td class="mon-amber">First 3m; ongoing</td><td style="font-size:11.5px">Late cycle days 1&ndash;9 bleeding after 6m = pelvic USS + endometrial biopsy</td></tr>
+          <tr><td><strong>Continuous combined</strong></td><td>Bleeding pattern</td><td class="mon-amber">First 6m; ongoing</td><td style="font-size:11.5px">Breakthrough &gt;6m or any PMB = pelvic USS; 2WW if PMB</td></tr>
+          <tr><td><strong>All HRT</strong></td><td>BMI; mammogram</td><td class="mon-green">Annually</td><td style="font-size:11.5px">BMI &gt;30 = switch oral to transdermal; mammogram overdue = refer screening</td></tr>
+          <tr><td><strong>POI / early menopause</strong></td><td>DEXA bone density</td><td class="mon-amber">At diagnosis; every 2&ndash;5 yrs</td><td style="font-size:11.5px">T-score &lt; &minus;2.5 = osteoporosis; consider bisphosphonate; calcium/vit D</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div class="flag-item flag-red"><strong>&#128308; Red flags:</strong> PMB (any) &bull; new breast lump &bull; DVT/PE on HRT &bull; late continuous combined breakthrough bleeding &bull; pelvic mass</div>
+      <div class="flag-item flag-pink"><strong>&#128737;&#65039; Safeguarding:</strong> Domestic abuse exacerbated by mood symptoms &bull; POI grief/mental health &bull; perimenopausal suicidality &bull; carer abuse in older women</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left">
+      <span class="sum-icon">&#127891;</span>
+      <div>
+        <div class="sum-label" style="color:rgba(255,255,255,.5)">SCA Exam Quick Reference</div>
+        <div class="sum-title" style="color:#fff">Menopause SCA &mdash; Strategy, Phrases &amp; Scoring</div>
+        <div class="sum-sub" style="color:rgba(255,255,255,.6)">Tasks &middot; Relating to Others &middot; Global Skills &middot; RAG guide</div>
+      </div>
+    </div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">&#9660;</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">&#128336; 12-Minute Consultation Flow</div>
+    <div class="sca-flow-wrap">
+      <div class="sca-flow-step sca-f1"><div class="sca-f-time">0&ndash;2 min</div><div class="sca-f-title">Open &amp; Agenda</div><div class="sca-f-body"><div class="sca-f-phrase">"Before we go through anything, tell me what's been most affecting you day to day."</div><div class="sca-f-note">Don't start with LMP. Let patient lead. Validate symptom burden first.</div></div><div class="sca-f-domains"><span class="sca-dom-tag ro">RO</span><span class="sca-dom-tag gs">GS</span></div><div class="sca-f-avoid">&#10007; "When did your periods stop?" first &bull; &#10007; Clipboard questioning</div></div>
+      <div class="sca-flow-step sca-f2"><div class="sca-f-time">2&ndash;5 min</div><div class="sca-f-title">Safety Screen</div><div class="sca-f-body"><div class="sca-f-phrase">"Have you had any bleeding since your periods stopped? Any new lumps in your breast?"</div><div class="sca-f-note">PMB = 2WW before HRT. New breast lump = 2WW. Check VTE/DVT history. Breast cancer hx.</div></div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag gs">GS</span></div><div class="sca-f-avoid">&#10007; Starting HRT without PMB screen &bull; &#10007; No breast cancer hx check</div></div>
+      <div class="sca-flow-step sca-f3"><div class="sca-f-time">5&ndash;7 min</div><div class="sca-f-title">ICE + WHI Fear</div><div class="sca-f-body"><div class="sca-f-phrase">"Have you been worried about the breast cancer risk? That's really common &mdash; let me share what the latest evidence actually says."</div><div class="sca-f-note">Name the fear, validate it, then address with absolute numbers. Ask about dyspareunia.</div></div><div class="sca-f-domains"><span class="sca-dom-tag ro">RO</span><span class="sca-dom-tag gs">GS</span></div><div class="sca-f-avoid">&#10007; Dismissing cancer concern &bull; &#10007; Not asking about GSM/dyspareunia</div></div>
+      <div class="sca-flow-step sca-f4"><div class="sca-f-time">7&ndash;10 min</div><div class="sca-f-title">Individualised HRT Plan</div><div class="sca-f-body"><div class="sca-f-phrase">"Based on your blood pressure and your history, I'd recommend the patch rather than the tablet &mdash; it's safer for your circulation."</div><div class="sca-f-note">Correct type (sequential/continuous/oestrogen-only). Correct route (transdermal if risk factors). Add progestogen if uterus intact.</div></div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">RO</span></div><div class="sca-f-avoid">&#10007; Oral HRT if HTN &bull; &#10007; Unopposed oestrogen with uterus &bull; &#10007; Wrong type for stage</div></div>
+      <div class="sca-flow-step sca-f5"><div class="sca-f-time">10&ndash;12 min</div><div class="sca-f-title">Safety-Net &amp; Close</div><div class="sca-f-body"><div class="sca-f-phrase">"If you get any bleeding from below, contact us the same day. Some irregular spotting in the first few months is normal &mdash; heavy or ongoing bleeding needs to be checked."</div><div class="sca-f-note">PMB warning. VTE warning (oral HRT). 3-month follow-up. Closing question.</div></div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">RO</span><span class="sca-dom-tag gs">GS</span></div><div class="sca-f-avoid">&#10007; No PMB safety-net &bull; &#10007; No follow-up &bull; &#10007; No closing question</div></div>
+    </div>
+    <div class="sum-3col" style="margin-top:1rem">
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">&#128308;&#128992;&#128994; RAG Scoring</div>
+        <div class="rag-full-wrap">
+          <div class="rag-domain-title task-col">Tasks Domain</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">&#128994;</div><div>Correct HRT type + route &bull; progestogen confirmed &bull; PMB safety-net &bull; absolute BC risk given &bull; 3m follow-up</div></div>
+          <div class="rag-row rag-a-row"><div class="rag-rl">&#128992;</div><div>Correct HRT type but route not tailored &bull; BC risk mentioned not quantified &bull; PMB generic safety-net</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">&#128308;</div><div>Unopposed oestrogen with uterus &bull; PMB not escalated &bull; oral HRT in high VTE risk &bull; no follow-up</div></div>
+          <div class="rag-domain-title ro-col" style="margin-top:.6rem">Relating to Others</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">&#128994;</div><div>ICE all 3 &bull; WHI fear named + addressed &bull; GSM asked &bull; shared decision &bull; closing question</div></div>
+          <div class="rag-row rag-a-row"><div class="rag-rl">&#128992;</div><div>ICE partial &bull; BC concern acknowledged not addressed with evidence &bull; GSM missed</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">&#128308;</div><div>No ICE &bull; BC fear dismissed &bull; HRT imposed &bull; no closing question &bull; no GSM</div></div>
+          <div class="rag-domain-title gs-col" style="margin-top:.6rem">Global Skills</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">&#128994;</div><div>Opens with agenda &bull; jargon-free &bull; timed &bull; cues noticed &bull; clear summary</div></div>
+          <div class="rag-row rag-a-row"><div class="rag-rl">&#128992;</div><div>LMP before agenda &bull; some jargon &bull; summary incomplete</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">&#128308;</div><div>Clipboard style &bull; no patient agenda &bull; jargon throughout &bull; no summary</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">&#128172; Key Phrases</div>
+        <div class="phrase-stack">
+          <div class="phrase-card p-ideas"><div class="p-lbl">Ideas</div><div class="p-phrase">"What do you already know about HRT? Have you been reading about it?"</div></div>
+          <div class="phrase-card p-concerns"><div class="p-lbl">BC Fear</div><div class="p-phrase">"The breast cancer risk is around 1 per 1,000 women per year &mdash; similar to drinking one glass of wine daily."</div></div>
+          <div class="phrase-card p-expect"><div class="p-lbl">Expectations</div><div class="p-phrase">"What would a good outcome from today look like for you?"</div></div>
+          <div class="phrase-card p-validate"><div class="p-lbl">GSM</div><div class="p-phrase">"Has this been affecting your sex life or intimacy at all? I ask everyone &mdash; it's very common and very treatable."</div></div>
+          <div class="phrase-card p-explain"><div class="p-lbl">Transdermal</div><div class="p-phrase">"With your blood pressure, I'd recommend the patch &mdash; it doesn't go through your liver and has no increased clotting risk."</div></div>
+          <div class="phrase-card p-close"><div class="p-lbl">Close</div><div class="p-phrase">"To summarise: we've agreed on [HRT type]. Any bleeding from below &rarr; same day. Back in 3 months. Anything else?"</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">&#128683; 9 Danger Zones</div>
+        <div class="dz-stack">
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>LMP before patient agenda</strong><br><span class="dz-fix">&rarr; Open with "what's been most affecting you?" &mdash; always</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Unopposed oestrogen with intact uterus</strong><br><span class="dz-fix">&rarr; Always add progestogen or use Mirena IUS if uterus present</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>HRT without PMB exclusion</strong><br><span class="dz-fix">&rarr; Ask PMB before any HRT; 2WW if present; do not start HRT</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Oral HRT in high-risk patient (HTN / VTE / obesity)</strong><br><span class="dz-fix">&rarr; Transdermal has no VTE risk &mdash; always use with risk factors</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>BC fear dismissed without evidence</strong><br><span class="dz-fix">&rarr; Absolute risk: ~1/1,000/yr combined HRT; validate before correcting</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Continuous combined in perimenopause</strong><br><span class="dz-fix">&rarr; Sequential for &lt;12m amenorrhoea; continuous for &ge;12m</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>GSM not asked about</strong><br><span class="dz-fix">&rarr; Always ask dyspareunia; vaginal oestrogen addresses GSM specifically</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Delaying HRT in POI pending specialist</strong><br><span class="dz-fix">&rarr; Start HRT immediately; every month without oestrogen = bone loss</span></div></div>
+          <div class="dz-item"><span class="dz-x">&#10007;</span><div><strong>Imposing arbitrary 5-year stopping rule</strong><br><span class="dz-fix">&rarr; NICE NG23: no mandatory stop at 5 years; decision based on symptoms + risk</span></div></div>
+        </div>
+        <div class="sum-sub-hdr sca-sub-hdr" style="margin-top:.85rem">&#128138; HRT Quick-Pick</div>
+        <div class="sca-drug-pick">
+          <div class="sdp-row"><div class="sdp-cond">Post-hysterectomy</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill arb-pill">Oestrogen only</div><div class="sdp-note">No progestogen needed</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Perimenopause, uterus intact</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill acei-pill">Sequential combined</div><div class="sdp-note">&lt;12m amenorrhoea</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Post-menopause, uterus intact</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill acei-pill">Continuous combined</div><div class="sdp-note">&ge;12m amenorrhoea</div></div>
+          <div class="sdp-row"><div class="sdp-cond">VTE / HTN / obesity</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill arb-pill">Transdermal route</div><div class="sdp-note">No VTE risk increase</div></div>
+          <div class="sdp-row"><div class="sdp-cond">GSM only or adjunct</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill acei-pill">Vaginal oestrogen</div><div class="sdp-note">Safe long-term</div></div>
+          <div class="sdp-row"><div class="sdp-cond">HRT contraindicated</div><div class="sdp-arrow">&rarr;</div><div class="sdp-pill arb-pill">Venlafaxine / CBT</div><div class="sdp-note">Not paroxetine + tamoxifen</div></div>
+          <div class="sdp-pivot">&#9940; Never: Unopposed oestrogen if uterus intact &bull; HRT before PMB excluded &bull; Oral HRT with DVT/PE history &bull; Continuous combined in perimenopause</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Menopause &amp; HRT &middot; GP Clinical Reasoning Framework v2</strong> &middot; NICE NG23 Menopause: diagnosis and management (2015, updated 2019) &middot; NICE CKS Menopause (2023) &middot; British Menopause Society (BMS) Guidelines &middot; MHRA HRT safety update (2019)</p>
+  <p style="margin-top:4px">v2: Clinical stem &middot; Open Q first &middot; ICE in all modes &middot; Psychosocial (1E + 7G) &middot; Lay language DDx (Step 5) &middot; Safeguarding (Step 1) &middot; Expectation management (7A) &middot; SCA RAG checkpoints after every step &middot; SCA Scorecard as standalone section &middot; Dual tailored summaries (Clinic + SCA)</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters &mdash; not just what to do &middot; Always consult current BNF/NICE CKS/BMS guidelines &middot; Clinical judgement takes precedence over any framework</p>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

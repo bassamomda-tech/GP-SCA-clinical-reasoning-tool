@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Faecal Incontinence Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;
+  --diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;
+  --treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;
+  --refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;
+  --lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
+  --font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif
+}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#1a2a0a 0%,#3a5a1a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#3a5a1a,#7b3fa0);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}
+.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}
+.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}
+.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}
+.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}
+.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}
+.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#92400e}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🩺</div>
+  <div>
+    <b>Faecal Incontinence in Adults</b>
+    <small>Passive vs urge · obstetric injury · sphincter defect · rectal prolapse · overflow · NICE NG224</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — faecal incontinence is treatable and under-reported; exclude overflow and red flags, then manage the commonest reversible causes. Support self-care and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Faecal incontinence</span><div class="body">Passive vs urge leakage, stool consistency, obstetric/surgical history, neurological symptoms. Abdominal + PR exam.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — red flags</span><span class="ttl">Red flags?</span><div class="body">New incontinence + saddle anaesthesia / leg weakness / urinary retention → <b>cauda equina</b> (emergency). Rectal bleeding, weight loss, change in habit → cancer pathway.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency / 2WW</span><div class="body">Suspected cauda equina → emergency MRI. Colorectal red flags → FIT + 2WW.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Investigate</span><span class="ttl">Identify reversible cause</span><div class="body">Exclude <b>faecal impaction with overflow</b>; review laxatives/drugs; assess cognition, mobility, diet.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · manage</span></div>
+    <div class="box act" style="max-width:660px;"><span class="lbl">Step 7 · Action</span><span class="ttl">Treat cause + bowel programme</span><div class="body"><ul><li>Treat impaction (disimpaction then maintenance); optimise stool consistency.</li><li>Pelvic floor / biofeedback; skin care; toileting and dietary advice.</li><li>Manage diarrhoea cause; review offending medication.</li></ul></div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-purple">Continence service / colorectal</span> sphincter injury, refractory symptoms, or for specialist investigation (endoanal USS, manometry).</div></div>
+    <div class="arrow"><span class="tag">Step 8 · diet, skin &amp; self-management</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Diet, skin &amp; self-management</span><span class="ttl">Restore continence &amp; dignity</span><div class="body"><b>Optimise stool consistency</b> (fibre/fluid adjustment, loperamide for loose stool); <b>scheduled toileting</b> and a regular bowel routine; <b>pelvic-floor exercises / biofeedback</b>. Meticulous <b>perianal skin care</b> and barrier creams; continence products and a discreet plan for outings. Address mobility/access to the toilet and review constipating or loosening drugs.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Recheck &amp; when to escalate</span><div class="body"><b>Review</b> response to the bowel programme at a few weeks; if symptoms persist despite optimised stool consistency and pelvic-floor work → continence/colorectal referral. <b>Same-day</b> for new incontinence with <b>saddle anaesthesia, leg weakness or urinary retention</b> (cauda equina). Re-examine for <b>overflow</b> if "diarrhoea" recurs, and apply the colorectal 2WW pathway for any bleeding/weight loss/change in habit.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Think overflow first:</b> in older or immobile patients, "diarrhoea" with incontinence is frequently faecal impaction with overflow — examine and treat the impaction.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Malignancy, Spinal Cord &amp; Acute Causes</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>New faecal incontinence with neurological symptoms or rectal bleeding = exclude malignancy and spinal cord pathology first. Cauda equina syndrome causes faecal and urinary incontinence as a surgical emergency.</b></p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Bilateral leg weakness + faecal/urinary incontinence + saddle anaesthesia</b> Cauda equina syndrome — prolapsed lumbar disc or epidural mass compressing sacral nerve roots → 999. MRI lumbar spine urgently. Surgical decompression within 48 hours preserves continence. Saddle anaesthesia (perineum, inner thighs, genitals) is pathognomonic.</div>
+      <div class="rftile"><b>Rectal bleeding + change in bowel habit + weight loss + FI</b> Colorectal cancer — rectal tumour can destroy the internal anal sphincter (IAS) or cause false urgency from rectal filling. 2WW lower GI colonoscopy. Any rectal bleeding + new FI in adult ≥40 = cancer exclusion mandatory without exception.</div>
+      <div class="rftile"><b>New FI after pelvic radiotherapy</b> Radiation proctopathy — radiation damage to the rectum and anal sphincter causes FI in 30–50% of patients post pelvic radiotherapy (prostate, cervical, rectal cancer). Urgency, bleeding, mucus, tenesmus. Refer to gastroenterology + oncology for sucralfate enema, hyperbaric oxygen, or argon plasma coagulation.</div>
+      <div class="rftile"><b>New FI + progressive neurological symptoms</b> Spinal cord disease (MS, spinal tumour, transverse myelitis, syringomyelia), peripheral neuropathy (diabetic autonomic neuropathy — pudendal neuropathy causing sphincter denervation). Neurology referral. MRI spine. FI as a presenting symptom of MS is common and often delayed in diagnosis.</div>
+      <div class="rftile"><b>Acute onset FI in elderly patient after stroke</b> Post-stroke faecal incontinence — sphincter control disrupted at cortical/subcortical level. Very common (40% post-stroke), often overlooked in acute stroke management. Bowel retraining programme via stroke rehabilitation team. Do not attribute to "just old age."</div>
+      <div class="rftile"><b>FI + perianal sepsis / fistula</b> High anal fistula, rectovaginal fistula, or perianal abscess can destroy sphincter integrity. Refer same-day colorectal surgery if fistula or abscess present. Do not attempt to probe or manage a high fistula in primary care. Crohn's disease causes complex perianal fistulas — gastroenterology + colorectal surgery jointly.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Cauda equina syndrome is the most time-critical diagnosis in faecal incontinence — the sacral nerve roots (S2–S4) control both the external anal sphincter (EAS) and the external urethral sphincter, and compression by a prolapsed lumbar disc (most commonly L4/L5 or L5/S1) causes simultaneous faecal and urinary incontinence with perineal sensory loss. The window for surgical decompression that preserves sphincter function is approximately 48 hours from onset of sphincter dysfunction — delays beyond this cause permanent incontinence in a significant proportion of cases. GPs must recognise that the classic "saddle anaesthesia" description (numbness in the area that would contact a bicycle saddle) is a late sign — earlier features include bilateral sciatica, urinary hesitancy, reduced urinary stream, and constipation. Any patient with low back pain and new bowel or bladder symptoms must have cauda equina excluded urgently. Faecal incontinence is one of the most under-reported and under-treated conditions in primary care — prevalence is estimated at 1–10% of adults, rising to over 30% in care home residents. The majority of sufferers never discuss it with their GP due to shame, embarrassment, and the misconception that "nothing can be done." NICE NG224 (Faecal Incontinence, 2023 update) emphasises that GPs should proactively ask about FI in high-risk populations (multiparous women, elderly, IBD patients, post-pelvic radiotherapy patients, diabetics) rather than waiting for patients to volunteer the symptom.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Characterise the Incontinence</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Classifying incontinence as passive vs urge, and identifying the mechanism, directly determines treatment. Ask specifically — most patients will not volunteer details without direct questioning.</b></p>
+    <div class="kv">
+      <div>Passive FI</div><div>Leakage without awareness — patient does not feel the urge before leaking. Implies: internal anal sphincter (IAS) dysfunction, pudendal neuropathy, or rectal prolapse. IAS maintains resting tone and provides the "unconscious" continence mechanism. Passive FI occurs at rest, with position changes, or on bending. Common in obstetric injury (3rd/4th degree tear damaging IAS), post-haemorrhoidectomy, ageing.</div>
+      <div>Urge FI</div><div>Leakage despite urgent desire to defecate — patient feels the urge but cannot reach the toilet in time. Implies: external anal sphincter (EAS) weakness, rectal hypersensitivity, or reduced rectal compliance. EAS provides the voluntary "squeeze" continence. Common in obstetric injury (EAS damage), post-sphincterectomy, IBD (rectal inflammation reduces compliance), IBS-D, radiation proctitis.</div>
+      <div>Overflow / pseudo-incontinence</div><div>Liquid stool bypassing a faecal impaction and leaking passively — "overflow incontinence." Common in elderly, constipated, or cognitively impaired patients. Rectum full of hard stool on PR examination. Liquid stool seeps around impaction. Treat the underlying constipation — disimpaction (glycerol suppositories, phosphate enema, macrogol). Do NOT treat with antidiarrhoeal agents (worsens impaction).</div>
+      <div>Bowel diary</div><div>NICE NG224 recommends a bowel diary before first assessment and at review. Record: frequency of defecation, stool consistency (Bristol Stool Scale), urgency, incontinence episodes, diet and fluid intake, leakage context (urge/passive/with flatus). Minimum 3 days, ideally 7 days. Identifies patterns, quantifies severity, and monitors treatment response.</div>
+      <div>Validated scoring — St Mark's score</div><div>St Mark's (Vaizey) Incontinence Score: scores 0–24 across frequency of solid, liquid, and gas leakage; pad wearing; lifestyle alteration; urgency; and need for antidiarrhoeals. Score ≥10 = significant FI requiring specialist assessment. Documents severity for referral and tracks treatment outcomes. Widely used in UK colorectal practice.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The passive/urge distinction maps directly to sphincter anatomy and directs treatment: passive FI (IAS dysfunction) responds to bulking agents (to increase stool consistency and reduce liquid leakage), rectal irrigation, and in severe cases sphincter augmentation (sacral nerve stimulation or injectable bulking agents around the IAS). Urge FI (EAS weakness or rectal hypersensitivity) responds to pelvic floor exercises, biofeedback, antidiarrhoeal agents (loperamide), and in severe cases sphincter repair or sacral nerve stimulation. Many patients have mixed passive and urge FI, particularly after obstetric sphincter injury where both the IAS and EAS are damaged. The Bristol Stool Scale is the universal stool consistency tool used in the UK — Types 1–2 (hard lumps/sausage) = constipation risk; Types 3–4 (normal formed) = target; Types 5–7 (loose/liquid) = diarrhoea risk/FI trigger. Aiming for Type 3–4 consistency through dietary and pharmacological management is the central target of FI management in primary care. Overflow incontinence is the single most important and most commonly missed diagnosis in FI in elderly patients — a digital rectal examination in any elderly or constipated patient with "diarrhoea and incontinence" is mandatory to exclude faecal impaction. Treating apparent diarrhoea with loperamide in a patient who actually has overflow FI will cause a bowel obstruction.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Causes &amp; Risk Factor Assessment</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Obstetric sphincter injury</div><div>Most common cause of FI in women under 60. 3rd degree (partial or complete EAS tear) and 4th degree (EAS + IAS + rectal mucosa) tears — affect 1–5% of vaginal deliveries but up to 20% with instrumental delivery (forceps &gt; ventouse). Many women develop FI only years to decades later as sphincter reserve declines with age. Full obstetric history: mode of delivery, number of vaginal deliveries, any 3rd/4th degree repair.</div>
+      <div>Pelvic floor / rectal prolapse</div><div>Full thickness rectal prolapse (rectum prolapses through anus — visible reduction of anorectal mucosa) — causes passive FI from gaping sphincter. Anterior rectocele (posterior vaginal wall weakness — faeces trapped in hernia, incomplete evacuation, soiling). Internal rectal intussusception. Refer colorectal surgery for symptomatic rectal prolapse.</div>
+      <div>IBD and diarrhoeal conditions</div><div>Ulcerative colitis and Crohn's colitis cause urgency FI from rectal inflammation, reduced compliance, and urgency. IBS-D: liquid stool + urgency. Chronic diarrhoea of any cause (post-infectious, bile acid malabsorption, microscopic colitis — especially in women on NSAIDs/PPIs/SSRIs) can overwhelm a marginally competent sphincter.</div>
+      <div>Neurological causes</div><div>Diabetic pudendal neuropathy (most common neurological cause in community — chronic hyperglycaemia damages the pudendal nerve supplying the EAS). MS (sphincter dyssynergia). Spinal cord injury. Stroke. Parkinson's disease (autonomic dysfunction + constipation → overflow). Multiple system atrophy. Dementia (reduced cortical inhibition of defecation).</div>
+      <div>Iatrogenic / surgical</div><div>Post-haemorrhoidectomy (IAS damage). Post-lateral internal sphincterotomy (for anal fissure — IAS divided, can impair resting tone permanently: 10–20% passive FI rate). Post-anterior resection (partial rectal excision — reduced rectal reservoir, urgency, clustering of defecation — anterior resection syndrome). Post-anal stretch (now abandoned — caused widespread IAS damage).</div>
+      <div>Drug-induced / dietary</div><div>Drugs causing diarrhoea → FI: laxatives (excess), metformin (5–10% loose stools), SSRIs, NSAIDs (microscopic colitis), antibiotics (C. diff, post-antibiotic diarrhoea), magnesium-containing antacids. Dietary: excess caffeine, alcohol, artificial sweeteners (sorbitol, xylitol), spicy food. Medication review is mandatory before initiating FI investigations.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Obstetric anal sphincter injury (OASI) is the most common cause of faecal incontinence in women below 60, and the temporal gap between the injury and symptom onset is the reason it is so frequently missed — women who sustained a 3rd or 4th degree tear at age 25 may not develop symptomatic FI until their 40s or 50s as the ageing pelvic floor loses the remaining sphincter reserve. GPs should specifically ask about obstetric history and 3rd/4th degree tear documentation in any woman presenting with FI, regardless of how long ago the deliveries were. Many women were never told they sustained a significant sphincter injury. Metformin-induced loose stools causing FI is an important and reversible drug-induced cause — approximately 5–10% of patients on metformin develop persistent loose stools or diarrhoea, which in patients with marginal sphincter reserve causes FI. Switching from immediate-release to modified-release metformin (Glucophage SR) dramatically reduces GI side effects in most patients (NNT approximately 3 for GI symptom improvement). This is a simple, immediately modifiable intervention that should be considered in all diabetic patients with FI on metformin IR. The lateral internal sphincterotomy (LIS) for anal fissure carries a well-documented risk of passive FI — rates of 10–20% for minor soiling and 1–5% for significant FI. This is a mandatory informed consent discussion before LIS, and GPs should document this risk in pre-operative counselling. Post-LIS patients presenting with FI should be referred to colorectal surgery for physiological assessment (anal manometry) and consideration of sphincter repair.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Examination &amp; Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Abdominal examination</div><div>Faecal loading (hard mass in LIF — descending colon loaded — overflow risk). Distension. Organomegaly. Any abdominal mass → 2WW lower GI.</div>
+      <div>Perianal inspection</div><div>Skin excoriation / dermatitis (chronic FI). Soiling/moisture (passive leakage). Gaping anus at rest (IAS weakness — should be closed at rest). Rectal prolapse (ask patient to strain/bear down — full thickness prolapse protrudes). Perianal scarring (obstetric injury, previous surgery). Skin tags. External haemorrhoids. Fistula openings.</div>
+      <div>Digital rectal examination (DRE)</div><div>Mandatory in all FI. Resting tone (IAS): normal = firm ring of resistance. Reduced resting tone = IAS weakness (obstetric, post-haemorrhoidectomy, autonomic neuropathy). Squeeze pressure (EAS): ask patient to squeeze — reduced squeeze = EAS weakness. Faecal loading (hard impaction — overflow). Rectal mass or tenderness. Anteroposterior scar (obstetric injury — anterior sphincter defect, 12 o'clock position).</div>
+      <div>Investigations</div><div><span class="pill pill-blue">FBC + CRP</span> (IBD, infection) · <span class="pill pill-blue">TSH</span> (hypothyroidism — constipation/overflow; hyperthyroidism — diarrhoea) · <span class="pill pill-blue">HbA1c</span> (diabetic neuropathy) · <span class="pill pill-blue">Coeliac serology</span> (TTG IgA — if loose stools) · <span class="pill pill-blue">Faecal calprotectin</span> (IBD vs IBS if diarrhoea-predominant) · <span class="pill pill-blue">Flexible sigmoidoscopy / colonoscopy</span> (any rectal bleeding, 2WW lower GI) · <span class="pill pill-blue">Anorectal physiology</span> (anal manometry + endoanal USS — specialist: measures sphincter pressure and identifies sphincter defects)</span></div>
+      <div>Safeguarding</div><div>FI in a patient who cannot report symptoms (severe dementia, learning disability) — ensure adequate continence care is in place. Unexplained FI in a child or vulnerable adult raises the possibility of anal abuse — document carefully, consider safeguarding referral per local protocol. Any unexplained anal injury in a non-ambulatory person = safeguarding concern.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Anorectal physiology studies (anal manometry + endoanal ultrasound) are the specialist investigations that define sphincter anatomy and function — they are performed by colorectal physiologists in tertiary colorectal centres and are the prerequisite for surgical intervention (sphincter repair, sacral nerve stimulation). Anal manometry measures resting pressure (IAS function) and squeeze pressure (EAS function) — normal resting pressure 40–70 mmHg, squeeze pressure 80–180 mmHg. Reduced resting pressure = IAS damage; reduced squeeze = EAS damage. Endoanal ultrasound (360° sonography of the anal canal) visualises the sphincter ring and identifies defects — a defect at the 11–1 o'clock position (anteriorly) in a multiparous woman is pathognomonic of obstetric OASI not properly repaired at delivery. The faecal calprotectin test is the most important primary care investigation for distinguishing IBD (elevated — &gt;250 μg/g warrants urgent gastroenterology referral) from IBS (normal — &lt;50 μg/g) in patients with diarrhoea-predominant FI. It avoids unnecessary colonoscopy in the many patients whose FI is driven by IBS-D rather than inflammatory bowel disease. TSH is mandatory in any patient with FI associated with constipation (hypothyroidism causing overflow) or diarrhoea (hyperthyroidism or autoimmune thyroid disease).</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="REFER" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Cauda equina syndrome (bilateral leg weakness + urinary/faecal incontinence + saddle anaesthesia) → 999 + MRI spine urgently</div>
+      <div><span class="pill pill-purple">2WW lower GI</span></div><div>Rectal bleeding + new FI · FI + change in bowel habit + weight loss in adult ≥40 · FI + rectal mass on DRE · FI + unexplained iron deficiency anaemia · <b>NICE NG12:</b> rectal/anal mass or ulceration → 2WW lower GI; offer FIT for change in bowel habit / IDA per DG56 (FIT ≥10 µg Hb/g → 2WW)</div>
+      <div>Colorectal surgery</div><div>FI not responding to conservative management after 3 months · Rectal prolapse (full thickness) · Significant sphincter defect on DRE / endoanal USS · Post-obstetric OASI with symptomatic FI · Complex perianal fistula causing FI · Post-operative FI (haemorrhoidectomy, sphincterotomy, anterior resection)</div>
+      <div>Specialist continence service / gastroenterology</div><div>FI with diarrhoea — bile acid malabsorption (SeHCAT test), IBD, microscopic colitis · Biofeedback therapy (specialist physiotherapy — NICE NG224 recommends as second-line if conservative management fails) · Sacral nerve stimulation (SNS) assessment (specialist colorectal centre)</div>
+      <div>Specialist physiotherapy (pelvic floor)</div><div>NICE NG224: all patients with FI should be offered pelvic floor muscle training by a specialist physiotherapist before surgical intervention. Biofeedback (uses anorectal manometry to provide visual/auditory feedback of sphincter function during exercises) — superior to exercises alone.</div>
+      <div>Continence nurse / community continence team</div><div>Pad provision (NHS continence pads — requires continence nurse assessment in most areas). Skincare and perineal hygiene management. Bowel diary analysis. Rectal irrigation instruction (Qufora, Peristeen systems). Community-based conservative management coordination.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Sacral nerve stimulation (SNS — also called sacral neuromodulation) is the most effective interventional treatment for FI in patients with intact but dysfunctional sphincters — it works by modulating the sacral nerve roots (S3) with a permanent implanted electrode (similar to a cardiac pacemaker), improving sphincter tone, rectal sensation, and rectal compliance simultaneously. NICE TA99 recommends SNS for FI in patients who have failed conservative management and do not have large sphincter defects. Success rates are 70–85% for significant improvement in FI episodes. It is also effective for urge FI where the sphincter is structurally intact but functionally weak (e.g., pudendal neuropathy). Biofeedback from a specialist pelvic floor physiotherapist is the first-line intervention recommended by NICE NG224 for FI not responding to basic conservative measures — it is superior to pelvic floor exercises alone (NNT approximately 3 for significant improvement) and avoids pharmacological side effects. The biofeedback session uses anorectal manometry probes that display real-time sphincter squeeze pressure on a screen, allowing the patient to learn to coordinate and strengthen their sphincter contraction. Typical course: 6–8 sessions over 3 months. The lack of access to NHS specialist pelvic floor physiotherapy in many areas is a significant barrier — GPs should proactively refer at 3 months of failed conservative management rather than persisting with ineffective measures.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="TREAT" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>Treatment Ladder</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1<br/>Stool consistency</span><span class="rt"><b>Target Bristol Type 3–4.</b> If loose (Types 5–7): <b>loperamide 2 mg after each loose stool</b> (max 16 mg/day) — reduces stool frequency + increases IAS resting tone (direct sphincter effect). Start 2 mg OD, titrate up. If hard (Types 1–2) or overflow: <b>macrogol (Laxido) 1–2 sachets OD</b> to soften stool + treat underlying constipation. Disimpaction with phosphate enema if impacted. Do NOT give loperamide for overflow FI.</span></div>
+      <div class="rung"><span class="rn">Step 2<br/>Pelvic floor exercises</span><span class="rt"><b>Sphincter exercises</b> — squeeze EAS as if stopping wind, hold 10 seconds, relax 10 seconds, 10 repetitions × 3 sets daily. Supplement with fast-twitch exercises (rapid squeezes × 10). Referral to specialist pelvic floor physiotherapist for guided programme + biofeedback (NICE NG224). Toilet positioning: lean forward, elbows on knees, use footstool (Squatty Potty posture reduces anorectal angle and aids complete evacuation, reducing post-defecation soiling).</span></div>
+      <div class="rung"><span class="rn">Step 3<br/>Scheduled defecation</span><span class="rt"><b>Bowel retraining</b> — attempt defecation at the same time each day (30 min after breakfast — gastrocolic reflex is strongest). Use glycerol suppository if needed to trigger predictable defecation and reduce unexpected episodes. Retrograde colonic irrigation (Peristeen or Qufora irrigation system) for patients with neurogenic FI or incomplete evacuation — washes out left colon and reduces incontinence episodes by 80%. Trained by specialist nurse.</span></div>
+      <div class="rung"><span class="rn">Step 4<br/>Specialist</span><span class="rt"><b>Sacral nerve stimulation (SNS)</b> — NICE TA99. <b>Injectable bulking agents</b> (NASHA Dx — non-animal stabilised hyaluronic acid — injected submucosally at anorectal junction to bulk the IAS, NICE IPG356). <b>Sphincteroplasty</b> (surgical repair of anterior sphincter defect — for obstetric injury with identifiable defect, success rate 50–60% at 5 years). <b>Antegrade continence enema</b> (ACE — caecostomy/appendicostomy for irrigation — for complex neurogenic FI). <b>Stoma</b> as last resort.</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Loperamide's dual mechanism is important to understand — it is both an antidiarrhoeal (reduces gut motility via opioid receptor agonism in the gut wall) and an anal sphincter tonic agent (directly increases IAS resting tone via opioid receptors in the sphincter). This sphincter-tonic effect is independent of its antidiarrhoeal effect and is the reason loperamide is effective even in patients with formed stools who have IAS weakness — it supplements the resting tone of a weakened sphincter. Starting dose should be 2 mg after the first loose stool of the day and titrating upward — the goal is Type 3–4 stools, not constipation. A useful patient instruction is "take 2 mg half an hour before activities or situations where you most fear incontinence" (before going out, before a social event), which provides targeted symptom relief. Retrograde colonic irrigation (Peristeen, Qufora) is significantly underused in primary care — evidence shows it reduces FI episodes by 70–80% in patients with neurogenic FI (spinal cord injury, MS, spina bifida), and it is increasingly being used in non-neurogenic FI with incomplete evacuation. It works by flushing the left colon and rectum with warm water through a rectal catheter, producing a predictable complete evacuation and leaving the rectum empty for 24–48 hours. Training by a specialist nurse takes 3–4 sessions. NHS provision varies — many continence nurse specialists offer this service.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Overflow Incontinence &amp; Specific Causes</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Overflow (faecal impaction)</div><div>Disimpaction first — glycerol suppositories (2 PR) or phosphate enema if distally impacted. Macrogol (Laxido) 8 sachets/day × 3 days for high impaction (Movicol disimpaction protocol per NICE). Once disimpacted: regular Laxido 1–2 sachets OD to prevent recurrence + bowel habit diary. <b>Do NOT give antidiarrhoeals</b> — worsens impaction and bowel obstruction risk.</div>
+      <div>Drug-induced diarrhoea causing FI</div><div>Metformin IR → switch to Glucophage SR (modified release) — reduces GI side effects significantly. Excess laxatives — reduce dose or change agent. SSRI-associated diarrhoea — switch SSRI or add loperamide. Antibiotic-associated — probiotics (Lactobacillus rhamnosus GG) during and 2 weeks after antibiotics. NSAIDs/PPIs microscopic colitis — stop drug, start budesonide 9 mg OD × 8 weeks (gastroenterology).</div>
+      <div>IBD-related urgency FI</div><div>Active UC / Crohn's — treat underlying inflammation (5-ASA, steroids, biologics — gastroenterology). Loperamide adjunct for urgency symptom relief during flares (use cautiously in IBD — avoid in toxic megacolon). Biofeedback for FI when disease in remission.</div>
+      <div>Diabetic neuropathic FI</div><div>Optimise glycaemic control (HbA1c &lt;48 mmol/mol target). Amitriptyline 10–25 mg nocte (reduces bowel hypersensitivity, reduces urgency — low-dose neuromodulatory effect). Loperamide for loose stools. Biofeedback for sphincter strengthening. SNS referral if refractory.</div>
+      <div>Post-radiotherapy FI</div><div>Sucralfate enema (2 g in 20 ml BD) — protects rectal mucosa, reduces radiation proctitis symptoms. Hyperbaric oxygen therapy — increases tissue oxygenation in radiated tissue, reduces fibrosis (specialist centre). Argon plasma coagulation for telangiectasia-related bleeding (endoscopy). SNS for refractory FI post-radiotherapy (good evidence in this group).</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The modified-release metformin switch is one of the most underutilised simple interventions in primary care for FI — approximately 5–10% of patients on immediate-release metformin have significant GI side effects (loose stools, diarrhoea) that cause or contribute to FI in those with marginal sphincter reserve. The mechanism is that metformin IR is absorbed rapidly in the proximal small bowel, leaving a high concentration of drug in the distal small bowel and colon where it causes osmotic diarrhoea; metformin SR is released gradually along the GI tract, reducing the colonic drug concentration and dramatically improving GI tolerability. The glycaemic efficacy is equivalent. Switching from IR to SR metformin should be standard practice for any diabetic patient with FI or loose stools — it requires no investigation and is immediately reversible. Microscopic colitis (lymphocytic and collagenous colitis) is an important and frequently missed cause of watery diarrhoea causing FI in middle-aged and older women — it is strongly associated with PPI use (especially lansoprazole), NSAIDs, SSRIs, and statins. Colonoscopy appears macroscopically normal — the diagnosis requires colonic biopsies. Stopping the offending drug and treating with budesonide 9 mg OD achieves remission in 80% of cases. GPs should suspect microscopic colitis in any middle-aged woman with watery diarrhoea, incontinence, and a recent medication change to a PPI or NSAID.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Diet, Bowel Habits &amp; Practical Strategies</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Dietary fibre optimisation</b> Target Bristol Type 3–4. If loose stools: soluble fibre (ispaghula husk — Fybogel — 1 sachet BD) bulks stool and slows transit, improving stool consistency without causing constipation. Reduce insoluble fibre (bran, wholegrains) if contributing to urgency. If hard stools: increase fluid + soluble fibre + fruit/vegetable intake. Avoid artificial sweeteners (sorbitol, mannitol, xylitol) — osmotic diarrhoea.</div>
+      <div class="lstile"><b>Fluid intake</b> Adequate hydration (1.5–2 litres/day) prevents hard stool and overflow. Excess fluids, particularly caffeine (coffee, tea, cola) and alcohol, worsen loose stools. Caffeine is a known bowel stimulant — reducing to 1–2 cups per day can improve FI frequency significantly. Carbonated drinks worsen flatulence and urgency.</div>
+      <div class="lstile"><b>Food trigger diary</b> Identify and reduce personal dietary triggers. Common triggers: caffeine, alcohol, spicy food, onions, lactose (dairy — especially if lactose intolerant), gluten (coeliac), high-fat meals (bile acid release → diarrhoea in bile acid malabsorption). Keep a 7-day food and symptom diary. Low-FODMAP diet may benefit IBS-D-related FI (dietitian referral).</div>
+      <div class="lstile"><b>Toilet posture</b> Use a footstool to raise feet when on the toilet (Squatty Potty or similar — achieves squatting posture). This straightens the anorectal angle, promotes complete rectal emptying, and reduces post-defecation soiling. Lean forward with elbows on knees. Avoid straining. Complete evacuation on the first visit reduces the residual stool that causes later passive leakage.</div>
+      <div class="lstile"><b>Anal plug / body worn device</b> Anal plugs (Peristeen, Conveen) — silicone foam devices inserted into the anal canal to mechanically prevent passive leakage during activity. Particularly useful for social occasions, exercise, or work. Requires motivation and manual dexterity. NHS-available via continence nurse. Body-worn anal device (FDA-approved Eclipse system) — smaller, can remain in situ longer.</div>
+      <div class="lstile"><b>Skin protection</b> Chronic perianal moisture and faecal contamination causes severe excoriation dermatitis. Wash gently with water only (no soap — damages mucosal skin). Pat dry (do not rub). Apply zinc oxide or Cavilon barrier cream after each episode. Change clothing promptly. Moisture wicking underwear. Cotton underwear preferred. Avoid scented wipes — contact dermatitis worsens skin breakdown.</div>
+      <div class="lstile"><b>Psychological support</b> FI causes profound psychological distress — depression, anxiety, social isolation, and avoidance behaviours (not leaving home, restricted diet, restricting fluids). CBT for FI-related anxiety (IAPT referral). Peer support (Bowel and Bladder UK helpline: 0161 214 4591). Validate the impact: "This affects 1 in 10 adults — you are not alone, and there are effective treatments." Normalising the conversation is the first therapeutic step.</div>
+      <div class="lstile"><b>Exercise</b> Moderate regular physical activity (30 minutes × 5 days/week) improves gut transit regularity, reduces constipation, and reduces overflow risk. High-impact exercise (running, aerobics) may worsen urgency FI — substitute with lower-impact options (swimming, cycling) if exercise triggers leakage. Pelvic floor exercises performed consistently have NNT ≈ 4 for clinically meaningful FI improvement.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The toilet posture (squatting-equivalent position) has a genuine physiological basis — the puborectalis muscle creates an anorectal angle of approximately 90° when sitting upright on a standard Western toilet, which partially obstructs defecation. When the hips are flexed to 35° (by raising the feet 30 cm on a footstool), the anorectal angle straightens to approximately 126°, removing this obstruction and allowing complete rectal emptying in less time with less straining. The clinical benefit for FI is that complete first-time evacuation leaves minimal residual stool in the rectal ampulla, reducing post-defecation passive leakage (the "soiling after passing stool" that many patients with IAS weakness describe). Ispaghula husk (Fybogel) is the most evidence-based dietary supplement for FI with loose stools — as a soluble fibre it absorbs water in the colon, converting liquid stool to a formed consistency (Type 3–4). It works equally well whether the underlying problem is IBS-D, post-infective diarrhoea, or mild IAS weakness — it is inexpensive, safe, and available OTC. The key instruction is to take it with adequate fluid (at least 200 ml per sachet) to prevent it from causing a bolus of dry fibre — without adequate fluid, Fybogel can worsen constipation.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up, Monitoring &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Initial review — 4–6 weeks</div><div>Bowel diary reviewed. Stool consistency achieving Type 3–4? Loperamide dose effective? Pelvic floor exercises commenced (referral to specialist physio made)? Any red flag symptoms emerging? If not improving → escalate investigations, check medication interactions, and refer to colorectal / continence service.</div>
+      <div>Review at 3 months</div><div>NICE NG224: if conservative management (stool consistency + pelvic floor exercises + bowel habit training) has not produced meaningful improvement at 3 months → refer to specialist colorectal surgery or continence service for anorectal physiology and consideration of biofeedback or SNS. Do not persist beyond 3 months without specialist input.</div>
+      <div>Ongoing monitoring</div><div>St Mark's score at each review (baseline + follow-up). Weight (unintentional weight loss = new pathology). Repeat FBC/CRP if IBD suspected. Glycaemic control monitoring (HbA1c 3-monthly if diabetic autonomic FI — optimisation of HbA1c reduces neuropathy progression). Skin integrity review (perianal excoriation).</div>
+      <div>Care home / frail elderly</div><div>Proactive bowel management plan for all care home residents — regular toileting schedule, laxative prescription review (avoid chronic stimulant laxatives unless constipation confirmed), dietary fibre + fluid targets, prompt management of new FI episodes. Continence care as a dignity issue — FI in care homes is frequently inadequately managed.</div>
+      <div><span class="pill pill-red">999 / same-day</span></div><div>New bilateral leg weakness + urinary/faecal incontinence → cauda equina → 999 · Acute complete bowel obstruction from faecal impaction (severe abdominal pain, distension, vomiting, absolute constipation) → 999 · Perianal Fournier's gangrene (crepitus + rapidly spreading perianal necrosis) → 999</div>
+      <div><span class="pill pill-amber">Same-day GP</span></div><div>New rectal bleeding developing during conservative management · Rapid weight loss identified at review · Worsening neurological symptoms (new leg weakness, saddle anaesthesia) · Perianal abscess developing (fluctuant, tender — needs I&amp;D, not antibiotics alone)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The 3-month referral threshold in NICE NG224 reflects the evidence that prolonged conservative management beyond 3 months without specialist input does not improve outcomes — patients plateau with lifestyle measures and pharmacotherapy alone if they have structural sphincter defects, neuropathy, or rectal compliance issues that require physiological assessment. The role of the GP is to initiate conservative management, exclude red flags, and refer proactively at 3 months if improvement is insufficient. The single most important quality indicator for FI management in primary care is asking the question — NICE NG224 quality standard QS54 identifies the proactive inquiry about FI in high-risk populations (multiparous women, elderly, post-pelvic radiotherapy, IBD, diabetes, pelvic surgery) as a key indicator. FI is among the most undertreated conditions in primary care, and the treatment gap is predominantly due to non-disclosure (patients do not volunteer the symptom) and non-asking (GPs do not ask). Incorporating a brief screening question ("Do you ever have difficulty controlling your bowels or have accidental leakage?") into annual reviews for high-risk patients would identify the majority of undiagnosed FI and initiate appropriate management years earlier.</div></div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE NG224 (Faecal Incontinence, 2023), NICE TA99 (Sacral Nerve Stimulation), NICE IPG356 (Injectable Bulking Agents), ACPGBI Position Statement on FI, BSAG Guidelines, Norton C &amp; Chelvanayagam S (eds) Bowel Continence Nursing, Bharucha et al. Gastroenterology 2022. Always adapt to individual patient context.
+</div>
+
+<script>
+(function(){
+  const STORE='rgp.alg.faecalincontinence.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true;});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

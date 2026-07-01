@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SCA Hot Topics · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<style>
+.tool-page{ padding:28px 32px 80px; max-width:880px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+.tool-head{ padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:18px; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:34px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:6px; max-width:72ch; }
+.review-stamp{ display:inline-flex; align-items:center; gap:7px; margin-top:12px; font-size:11.5px; font-weight:700; color:var(--teal); background:#fff; border:1px solid var(--line); border-radius:999px; padding:5px 12px; }
+.review-stamp .dot{ width:7px; height:7px; border-radius:50%; background:#15803d; }
+
+.ht-filters{ display:flex; gap:7px; flex-wrap:wrap; margin-bottom:18px; }
+.ht-fchip{ font:inherit; font-size:12.5px; font-weight:700; padding:8px 14px; border-radius:999px; border:1px solid var(--line-2); background:#fff; color:var(--ink-2); cursor:pointer; }
+.ht-fchip:hover{ border-color:#0c4a47; color:#0c4a47; }
+.ht-fchip.on{ background:#0c4a47; color:#f6f2e9; border-color:#0c4a47; }
+
+.ht-feed{ display:flex; flex-direction:column; gap:13px; }
+.ht-card{ border:1px solid var(--line); border-radius:14px; background:#fff; padding:16px 18px; }
+.ht-top{ display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin-bottom:9px; }
+.ht-cat{ font-size:10px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; border-radius:999px; padding:3px 10px; }
+.ht-cat.guideline{ background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; }
+.ht-cat.seasonal{ background:#fff7ed; color:#c2410c; border:1px solid #fed7aa; }
+.ht-cat.favourite{ background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; }
+.ht-cat.safety{ background:#fef2f2; color:#b91c1c; border:1px solid #fecaca; }
+.ht-date{ font-size:11.5px; font-weight:700; color:var(--muted); margin-left:auto; }
+.ht-card h3{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:18px; line-height:1.25; color:var(--ink); }
+.ht-card .what{ font-size:13.5px; line-height:1.6; color:var(--ink-2); margin-top:7px; }
+.ht-why{ font-size:13px; line-height:1.55; color:var(--ink-2); background:#faf8f3; border-left:3px solid #0c4a47; border-radius:0 9px 9px 0; padding:9px 13px; margin-top:11px; }
+.ht-why b{ color:var(--ink); }
+.ht-links{ display:flex; flex-wrap:wrap; gap:7px; margin-top:12px; }
+.ht-link{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; padding:7px 12px; border-radius:8px; border:1px solid var(--line); background:#faf8f3; color:#0c4a47; text-decoration:none; }
+.ht-link:hover{ background:#0c4a47; color:#f6f2e9; border-color:#0c4a47; }
+.ht-foot{ font-size:11.5px; color:var(--muted); margin-top:22px; line-height:1.5; }
+.ht-empty{ padding:30px; text-align:center; color:var(--muted); font-size:14px; }
+</style>
+</head>
+<body data-screen-label="SCA hot topics">
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-sca"></aside>
+  <main class="main">
+    <div class="tool-page">
+
+      <div class="tool-head">
+        <div class="tool-eyebrow">Reasoning GP · Likely to come up</div>
+        <h1>SCA <em>hot topics</em></h1>
+        <p>A short, curated feed of the themes most worth revising before your sitting — recent guideline shifts, perennial examiner favourites, seasonal presentations and safety musts. Each links straight to the case or protocol so you can drill it now, not just read about it.</p>
+        <div class="review-stamp"><span class="dot"></span> Curated June 2026 · verify against current NICE / CKS</div>
+      </div>
+
+      <div class="ht-filters" id="filters">
+        <button class="ht-fchip on" data-cat="all">All topics</button>
+        <button class="ht-fchip" data-cat="guideline">📘 Guideline updates</button>
+        <button class="ht-fchip" data-cat="favourite">⭐ Examiner favourites</button>
+        <button class="ht-fchip" data-cat="seasonal">🍂 Seasonal</button>
+        <button class="ht-fchip" data-cat="safety">🚨 Safety musts</button>
+      </div>
+
+      <div class="ht-feed" id="feed"></div>
+
+      <p class="ht-foot">This feed reflects guidance and exam themes the authors considered current at the date shown. Guidelines change — always confirm the latest NICE / NICE CKS / SIGN / specialty-society position before relying on a threshold or drug choice. Educational aid for SCA preparation only.</p>
+
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+  const $ = q => document.querySelector(q);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+
+  const TOPICS = [
+    { cat:'guideline', date:'2025', title:'Type 2 diabetes — SGLT2 inhibitors earlier, by CV/renal risk',
+      what:'First-line remains metformin, but SGLT2 inhibitors are now added early where there is established/high-risk CVD, heart failure or CKD — independent of HbA1c — reflecting the cardiorenal evidence.',
+      why:'A classic management station. Marks come from individualising the second agent to the patient\u2019s CV/renal profile and counselling on sick-day rules (DKA, "-flozin" pause).',
+      links:[['Diabetes protocol','../tools/management.html'],['Sick-day rules','../tools/sick-day-rules.html']] },
+    { cat:'guideline', date:'2024–25', title:'Hypertension — confirm with ABPM/HBPM, treat from stage 1 under 80 with risk',
+      what:'Diagnose with ambulatory or home readings, not a single clinic reading; offer treatment in stage 1 if <80 with QRISK ≥10%, diabetes, renal or established CVD/organ damage.',
+      why:'Tests whether you confirm before labelling, use QRISK, and negotiate lifestyle + drug choice by age/ethnicity (ACEi/ARB vs CCB).',
+      links:[['Hypertension pathway','../tools/algorithms.html'],['QRISK3 calculator','../tools/calculators.html']] },
+    { cat:'favourite', date:'Perennial', title:'Menopause & HRT — benefit/risk conversation',
+      what:'Shared-decision counselling on HRT: symptom control vs individualised risk, transdermal options, and that HRT is not contraception. Body-identical vs conventional preparations frequently surface.',
+      why:'A high-frequency RTO + management case. Examiners reward eliciting the woman\u2019s priorities and a balanced, non-paternalistic risk discussion.',
+      links:[["Women's health protocols",'../tools/management.html']] },
+    { cat:'favourite', date:'Perennial', title:'Sick / unwell child — the safety-netting station',
+      what:'Traffic-light (NICE NG143) assessment of the febrile child, with explicit, specific worsening advice and clear escalation routes for the parent.',
+      why:'Paediatric safety-netting is one of the most reliably tested skills. Vague "come back if worse" loses marks; specific signs + where to go scores.',
+      links:[['Wheeze in children','../cases/wheeze-children.html'],['Childhood limp','../cases/childhood-limp.html']] },
+    { cat:'safety', date:'NICE NG12', title:'Two-week-wait thresholds — get the exact criteria right',
+      what:'Age- and feature-specific urgent suspected-cancer referrals and direct-access tests: rectal bleeding 50+, post-menopausal bleeding 55+, FIT ≥10 µg/g, CA-125 ≥35, PSA by age range, very urgent FBC for suspected childhood leukaemia.',
+      why:'A single missed red flag can fail the management domain. Knowing the precise threshold and the named direct-access test is the difference between Pass and Fail.',
+      links:[['Haematological cancers','../cases/haematological-cancers.html'],['Breast cancer','../cases/breast-cancer.html']] },
+    { cat:'guideline', date:'NG136 / NG203', title:'Chronic primary pain — away from opioids',
+      what:'For chronic primary pain, do not initiate opioids, gabapentinoids, paracetamol or NSAIDs; offer exercise, psychological therapy and (per guidance) consider an antidepressant. Deprescribe where started.',
+      why:'A counselling minefield — managing the patient who wants/expects strong analgesia, validating pain while explaining the evidence, and agreeing a plan.',
+      links:[['Analgesia in primary care','../cases/analgesia-primary-care.html'],['Neuropathic pain','../cases/neuropathic-pain.html']] },
+    { cat:'seasonal', date:'Autumn / winter', title:'Respiratory season — wheeze, COPD exacerbations, antibiotic stewardship',
+      what:'Self-limiting viral illness vs the patient needing treatment; back-up (delayed) prescribing; CRP-guided and TARGET stewardship; flu/COVID/RSV vaccination of at-risk groups.',
+      why:'Seasonal stations test resisting inappropriate antibiotics while safety-netting — and managing the patient who expects them.',
+      links:[['Chest infections','../cases/chest-infections.html'],['Asthma','../cases/asthma.html']] },
+    { cat:'seasonal', date:'Spring / summer', title:'Allergic rhinitis, eczema flares & sun-related skin',
+      what:'Stepwise hay-fever management, eczema flare control and emollient/steroid counselling, and recognising/ advising on skin lesions that need a 2WW dermatology referral.',
+      why:'Common seasonal presentations that double as counselling/management stations — and the melanoma red flag is a safety check.',
+      links:[['Allergic rhinitis','../cases/allergic-rhinitis.html'],['Eczema','../cases/eczema.html']] },
+    { cat:'favourite', date:'Perennial', title:'Low mood & risk assessment',
+      what:'Structured assessment of depression severity, a sensitive and explicit risk assessment, and stepped-care management including when to consider/withhold antidepressants.',
+      why:'Mental-health cases are heavily sampled. Marks hinge on a genuine, unhurried risk assessment and shared management — not a checklist.',
+      links:[['Depression','../cases/depression.html'],['Perinatal mental health','../cases/perinatal-mental-health.html']] },
+    { cat:'guideline', date:'2024', title:'Gout — treat-to-target urate, offer ULT earlier',
+      what:'Offer urate-lowering therapy (allopurinol first-line) to most people after a flare, titrating to a target serum urate (<360, or <300 with tophi/ongoing flares), with prophylaxis on initiation.',
+      why:'A neat management station: acute flare treatment plus the longer-term treat-to-target conversation many candidates under-play.',
+      links:[['Gout','../cases/gout.html'],['Management protocols','../tools/management.html']] },
+    { cat:'safety', date:'Perennial', title:'Safeguarding — the third agenda in the room',
+      what:'Recognising and acting on safeguarding concerns (child, vulnerable adult, domestic abuse), documentation and the correct referral route, while maintaining the therapeutic relationship.',
+      why:'A safeguarding cue embedded in an ordinary presentation is a favourite trap. Missing it is a clear fail; handling it well is a clear pass.',
+      links:[['Safeguarding','../cases/safeguarding.html']] },
+    { cat:'favourite', date:'Perennial', title:'The remote consultation — telephone & video skills',
+      what:'Most SCA cases are remote. Verbalising the absent examination, managing uncertainty without seeing the patient, and safety-netting harder because you can\u2019t lay hands on them.',
+      why:'The format itself is examined. Candidates who consult as if face-to-face miss the explicit remote-specific safety-netting examiners look for.',
+      links:[['AI Patient Simulator','sca-simulator.html'],['The Hot Seat','sca-practice.html']] }
+  ];
+
+  let cat='all';
+  function render(){
+    const list = cat==='all' ? TOPICS : TOPICS.filter(t=>t.cat===cat);
+    const CATLBL={guideline:'Guideline update',seasonal:'Seasonal',favourite:'Examiner favourite',safety:'Safety must'};
+    $('#feed').innerHTML = list.length ? list.map(t=>`
+      <div class="ht-card">
+        <div class="ht-top">
+          <span class="ht-cat ${t.cat}">${CATLBL[t.cat]}</span>
+          <span class="ht-date">${esc(t.date)}</span>
+        </div>
+        <h3>${esc(t.title)}</h3>
+        <div class="what">${esc(t.what)}</div>
+        <div class="ht-why"><b>Why it matters for the SCA:</b> ${esc(t.why)}</div>
+        <div class="ht-links">${t.links.map(l=>`<a class="ht-link" href="${l[1]}">${esc(l[0])} →</a>`).join('')}</div>
+      </div>`).join('') : `<div class="ht-empty">No topics in this category.</div>`;
+  }
+  $('#filters').addEventListener('click', e=>{ const b=e.target.closest('.ht-fchip'); if(!b) return;
+    cat=b.dataset.cat; $('#filters').querySelectorAll('.ht-fchip').forEach(x=>x.classList.toggle('on', x===b)); render(); });
+  render();
+})();
+</script>
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

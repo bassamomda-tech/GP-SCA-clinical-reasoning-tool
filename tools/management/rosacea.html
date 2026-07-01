@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rosacea — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Rosacea management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🧴",
+  title:"Rosacea",
+  stemTitle:"Rosacea — ongoing management",
+  stemSub:"Primary-care management of rosacea by dominant feature \u2014 trigger avoidance and sun protection for all, topicals for papules/pustules and erythema, oral antibiotics for more severe disease \u2014 with the ocular and rhinophyma referral routes. CKS \u00b7 2026.",
+  guideline:"NICE CKS",
+  glance:[
+    {lbl:"Treat by", val:"Dominant feature", sub:"erythema / papulopustular / ocular"},
+    {lbl:"All patients", val:"Sun protection", sub:"+ trigger avoidance"},
+    {lbl:"Flushing/erythema", val:"Brimonidine 0.33% gel", sub:"transient effect"},
+    {lbl:"Papulopustular 1st", val:"Ivermectin 10mg/g OD", sub:"or azelaic/metronidazole"},
+    {lbl:"Moderate\u2013severe", val:"Doxycycline 40mg MR OD", sub:"anti-inflammatory dose"},
+    {lbl:"Refer", val:"Ocular / rhinophyma", sub:"resistant"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Identify the dominant feature",
+      blocks:[
+        {b:"kv", rows:[
+          ["Subtypes / features","Erythematotelangiectatic (flushing, redness, telangiectasia) \u00b7 papulopustular \u00b7 phymatous (rhinophyma) \u00b7 ocular"],
+          ["Diagnosis","Clinical: central facial involvement, flushing, no comedones (distinguishes from acne)"],
+          ["Ocular","Ask about gritty/dry/red eyes, blepharitis \u2014 often missed"],
+          ["Impact","Psychosocial impact can be significant despite \u2018mild\u2019 appearance"]
+        ]},
+        {b:"why", html:"Rosacea has no cure, so management <strong>targets the dominant feature</strong>: redness/flushing, inflammatory papulopustules, telangiectasia, or eyes \u2014 each responds to different treatments. Distinguishing it from acne (no comedones) and spotting ocular rosacea (commonly overlooked) are the key diagnostic steps."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Triggers, sun protection and skin care",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"☀️ Sun protection", html:"Daily broad-spectrum SPF \u2014 UV is a major trigger and driver."},
+          {t:"🌶️ Identify triggers", html:"Common: sun, heat, spicy food, alcohol, hot drinks, stress, temperature change \u2014 keep a diary."},
+          {t:"🧼 Gentle skin care", html:"Non-soap cleanser, fragrance-free emollients; avoid astringents/abrasives."},
+          {t:"👓 Eye care", html:"Lid hygiene + artificial tears for ocular rosacea/blepharitis."},
+          {t:"💄 Camouflage", html:"Green-tinted make-up can help persistent redness."},
+          {t:"🧠 Reassure", html:"Explain it\u2019s chronic and relapsing but controllable; address psychosocial impact."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 by feature", title:"Match treatment to the feature",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Erythema/flushing", title:"Topical brimonidine (as needed)", when:"persistent redness",
+           html:"<b>Brimonidine 3\u00a0mg/g (0.33%) gel once daily</b> as needed gives transient reduction of redness (lasts ~12\u00a0h; can rebound). Manage flushing by trigger avoidance. Persistent telangiectasia may need laser/IPL (refer)."},
+          {step:"Papulopustular 1", title:"Topical (first-line)", when:"first-line for papules/pustules",
+           fromLabel:"inflammatory lesions",
+           html:"<b>Ivermectin 10\u00a0mg/g (1%) cream once daily</b> first-line; alternatives <b>azelaic acid 15% gel BD</b> or <b>metronidazole 0.75% cream/gel BD</b>. Allow 8\u201312 weeks."},
+          {step:"Papulopustular 2", title:"Oral antibiotic", when:"moderate\u2013severe / resistant",
+           fromLabel:"inadequate topical response",
+           html:"<b>Doxycycline 40\u00a0mg modified-release once daily</b> (anti-inflammatory dose, preferred) \u2014 or doxycycline 100\u00a0mg OD / lymecycline 408\u00a0mg OD \u2014 combined with topical therapy; review and stop when controlled."},
+          {step:"Ocular", title:"Lid hygiene \u00b1 oral antibiotic", when:"ocular rosacea",
+           fromLabel:"eye involvement",
+           html:"Lid hygiene + ocular lubricants; <b>oral doxycycline</b> (40\u00a0mg MR OD or 100\u00a0mg OD) if needed; refer to ophthalmology if not settling or keratitis suspected."}
+        ]},
+        {b:"warn", html:"<b>Topical steroids worsen rosacea</b> (steroid-induced rosacea) \u2014 do not use. Ocular rosacea with eye pain or visual symptoms needs ophthalmology (risk of keratitis)."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Response and maintenance",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Lesion / redness response","After several weeks","Inadequate \u2192 step up; maintain on topical once controlled"],
+          ["Oral antibiotic","Review at ~6\u201312 weeks","Stop when controlled; maintain on topical"],
+          ["Ocular symptoms","Each review","Not settling / eye pain \u2192 ophthalmology"],
+          ["Triggers","Ongoing","Reinforce avoidance and sun protection"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"After starting topical", title:"Response review", html:"Assess at several weeks; add oral antibiotic if moderate\u2013severe; reinforce triggers/sun protection."},
+          {n:"2", when:"~6\u201312 weeks (if oral)", title:"Antibiotic review", html:"Stop oral antibiotic when controlled; continue topical maintenance."},
+          {n:"3", when:"Ongoing", title:"Maintenance", html:"Chronic relapsing \u2014 maintain topical + lifestyle; refer for laser/rhinophyma/ocular as needed."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not responding? Re-check",
+      arrow:"\u2026if rosacea persists",
+      intro:"Confirm the feature, the trial, and exclude steroid use before escalating.",
+      checks:[
+        {b:"1 \u00b7 Right target", html:"Treatment matched to the dominant feature (redness vs papulopustular vs ocular)?"},
+        {b:"2 \u00b7 Steroid?", html:"Topical steroid being used (worsens rosacea)? Stop it."},
+        {b:"3 \u00b7 Adequate trial", html:"Topicals need weeks; oral antibiotic an adequate course?"},
+        {b:"4 \u00b7 Triggers / sun", html:"Sun protection and trigger avoidance in place?"},
+        {b:"5 \u00b7 Refer", html:"Resistant, telangiectasia, rhinophyma, or ocular \u2192 specialist."}
+      ],
+      back:"Feature matched, steroid stopped, adequate trial \u2192 refer (dermatology/ophthalmology)"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Eye symptoms", html:"\u201cEye pain, light sensitivity or blurred vision \u2014 seek prompt eye assessment (rosacea can affect the cornea).\u201d"},
+          {t:"🚫 Steroid creams", html:"\u201cDon\u2019t use steroid creams on your face for this \u2014 they make rosacea worse.\u201d"},
+          {t:"☀️ Sun & triggers", html:"\u201cDaily sunscreen and avoiding your triggers are as important as the creams.\u201d"},
+          {t:"🫶 Chronic but controllable", html:"\u201cThis comes and goes long-term, but we can keep it well controlled.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"by feature and severity",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Ophthalmology", html:"Ocular rosacea not responding, or any eye pain/visual symptoms (keratitis risk)."},
+          {t:"Dermatology", html:"Resistant papulopustular disease, or for laser/IPL of persistent erythema/telangiectasia."},
+          {t:"Rhinophyma", html:"Phymatous change \u2192 dermatology/plastic surgery for surgical/laser options."},
+          {t:"Diagnostic doubt", html:"Uncertain diagnosis or atypical features."}
+        ]},
+        {b:"say", html:"Rosacea is a long-term but controllable condition. The biggest wins are daily sunscreen and avoiding your personal triggers, plus a cream for the spots and redness \u2014 and importantly, no steroid creams, as they make it worse."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

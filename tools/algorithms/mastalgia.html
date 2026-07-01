@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mastalgia Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #f8f6f2;
+    --surface:   #ffffff;
+    --border:    #e4ddd6;
+    --text:      #1a1612;
+    --muted:     #6b6460;
+    --accent:    #8b2252;   /* deep rose – mastalgia */
+    --accent2:   #c75c8a;   /* lighter rose */
+
+    --safety-bg: #fff1f4;
+    --safety-bd: #f4b8c8;
+    --diagnose-bg:#f0f7ff;
+    --diagnose-bd:#b8d4f4;
+    --treat-bg:  #f0fdf4;
+    --treat-bd:  #86efac;
+    --refer-bg:  #fdf4ff;
+    --refer-bd:  #d8b4fe;
+    --life-bg:   #fffbeb;
+    --life-bd:   #fcd34d;
+
+    --red:    #dc2626; --red-bg:    #fef2f2;
+    --purple: #7c3aed; --purple-bg: #f5f3ff;
+    --blue:   #1d4ed8; --blue-bg:   #eff6ff;
+    --teal:   #0f766e; --teal-bg:   #f0fdfa;
+    --amber:  #b45309; --amber-bg:  #fffbeb;
+    --green:  #15803d; --green-bg:  #f0fdf4;
+    --grey:   #374151; --grey-bg:   #f9fafb;
+
+    --r: 12px;
+    --shadow: 0 2px 8px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.04);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.05);
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 1.5rem 1rem 4rem;
+  }
+
+  /* ── Banner ── */
+  .stem-banner {
+    display: flex; align-items: center; gap: 1rem;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    color: #fff;
+    border-radius: var(--r);
+    padding: 1.25rem 1.5rem;
+    max-width: 780px;
+    margin: 0 auto 1.25rem;
+    box-shadow: var(--shadow-lg);
+  }
+  .sb-icon { font-size: 2.4rem; flex-shrink: 0; }
+  .stem-banner b { display: block; font-size: 1.15rem; font-weight: 700; letter-spacing: -.02em; }
+  .stem-banner small { opacity: .85; font-size: .82rem; }
+
+  /* ── Progress ── */
+  .alg-progress {
+    display: flex; align-items: center; gap: .75rem;
+    max-width: 780px; margin: 0 auto 1.5rem;
+    font-size: .82rem; color: var(--muted);
+  }
+  .pcount { font-weight: 700; color: var(--text); margin-right: .25rem; }
+  .pbar { flex: 1; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+  .pbar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 99px; transition: width .4s ease; }
+  .reset { margin-left: auto; font-size: .78rem; padding: .3rem .75rem; border: 1px solid var(--border); border-radius: 99px; background: var(--surface); cursor: pointer; color: var(--muted); transition: all .2s; }
+  .reset:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── Flow wrapper ── */
+  .alg-flow { max-width: 780px; margin: 0 auto; }
+
+  /* ── Connector ── */
+  .connector {
+    width: 2px; height: 2rem;
+    background: linear-gradient(to bottom, var(--border), var(--border));
+    margin: 0 auto;
+    position: relative;
+  }
+  .connector::after {
+    content: '';
+    position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%);
+    border-left: 5px solid transparent; border-right: 5px solid transparent;
+    border-top: 7px solid var(--border);
+  }
+
+  /* ── Node ── */
+  .node {
+    background: var(--surface);
+    border-radius: var(--r);
+    border: 1.5px solid var(--border);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: box-shadow .2s;
+  }
+  .node:hover { box-shadow: var(--shadow-lg); }
+
+  .node[data-type="SAFETY"]    { border-color: var(--safety-bd);   }
+  .node[data-type="DIAGNOSE"]  { border-color: var(--diagnose-bd); }
+  .node[data-type="TREAT"]     { border-color: var(--treat-bd);    }
+  .node[data-type="REFER"]     { border-color: var(--refer-bd);    }
+  .node[data-type="LIFESTYLE"] { border-color: var(--life-bd);     }
+
+  /* header strip */
+  .node-head {
+    display: flex; align-items: flex-start; gap: .75rem;
+    padding: 1rem 1.25rem .75rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .node-num {
+    min-width: 2rem; height: 2rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .85rem; font-weight: 700; flex-shrink: 0;
+    margin-top: .05rem;
+  }
+  .node[data-type="SAFETY"]    .node-num { background: var(--red);    }
+  .node[data-type="DIAGNOSE"]  .node-num { background: var(--blue);   }
+  .node[data-type="TREAT"]     .node-num { background: var(--teal);   }
+  .node[data-type="REFER"]     .node-num { background: var(--purple); }
+  .node[data-type="LIFESTYLE"] .node-num { background: var(--green);  }
+
+  .node-tag {
+    display: inline-block;
+    font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    padding: .15rem .5rem; border-radius: 99px; margin-bottom: .3rem;
+  }
+  .node[data-type="SAFETY"]    .node-tag { background: var(--safety-bg);   color: var(--red);    }
+  .node[data-type="DIAGNOSE"]  .node-tag { background: var(--diagnose-bg); color: var(--blue);   }
+  .node[data-type="TREAT"]     .node-tag { background: var(--treat-bg);    color: var(--teal);   }
+  .node[data-type="REFER"]     .node-tag { background: var(--refer-bg);    color: var(--purple); }
+  .node[data-type="LIFESTYLE"] .node-tag { background: var(--life-bg);     color: var(--green);  }
+
+  .node-head h3 { font-family: 'Source Serif 4', serif; font-size: 1.05rem; font-weight: 600; line-height: 1.3; color: var(--text); }
+
+  .node-tick { padding: .5rem 1.25rem; background: var(--bg); border-bottom: 1px solid var(--border); }
+  .node-tick label { display: flex; align-items: center; gap: .5rem; cursor: pointer; font-size: .82rem; color: var(--muted); font-weight: 500; user-select: none; }
+  .node-tick input[type="checkbox"] { accent-color: var(--accent); width: 1rem; height: 1rem; cursor: pointer; }
+  .node-tick .tlbl { transition: color .2s; }
+  .node-tick input:checked ~ .tlbl { color: var(--green); font-weight: 600; }
+
+  .node-body { padding: 1.1rem 1.25rem; font-size: .88rem; line-height: 1.65; }
+  .node-body > p, .node-body > b { display: block; margin-bottom: .75rem; }
+
+  /* ── KV grid ── */
+  .kv {
+    display: grid; grid-template-columns: minmax(130px,28%) 1fr;
+    gap: 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+    margin-top: .75rem; font-size: .84rem;
+  }
+  .kv > div { padding: .6rem .85rem; border-bottom: 1px solid var(--border); }
+  .kv > div:nth-last-child(-n+2) { border-bottom: none; }
+  .kv > div:nth-child(odd)  { background: var(--bg); font-weight: 600; color: var(--muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; }
+  .kv > div:nth-child(even) { background: var(--surface); }
+
+  /* ── Red flag grid ── */
+  .rfgrid { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin-top: .75rem; }
+  @media(max-width:560px){ .rfgrid { grid-template-columns: 1fr; } }
+  .rftile {
+    background: var(--red-bg); border: 1px solid #fecaca;
+    border-radius: 8px; padding: .7rem .9rem;
+    font-size: .82rem; line-height: 1.5; color: #7f1d1d;
+  }
+  .rftile b { display: block; color: var(--red); margin-bottom: .2rem; font-size: .84rem; }
+
+  /* ── Branch ── */
+  .branch { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: .75rem; margin-top: .75rem; }
+  .b-card { border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .b-cond { background: var(--bg); padding: .5rem .85rem; font-size: .78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; border-bottom: 1px solid var(--border); }
+  .b-drug { padding: .5rem .85rem; font-weight: 700; font-size: .9rem; color: var(--teal); background: var(--treat-bg); border-bottom: 1px solid var(--border); }
+  .b-note { padding: .5rem .85rem; font-size: .82rem; line-height: 1.5; color: var(--text); }
+
+  /* ── Ladder ── */
+  .ladder { margin-top: .75rem; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .rung { display: flex; align-items: baseline; gap: .75rem; padding: .65rem 1rem; border-bottom: 1px solid var(--border); font-size: .84rem; }
+  .rung:last-child { border-bottom: none; }
+  .rung:nth-child(odd)  { background: var(--treat-bg); }
+  .rung:nth-child(even) { background: var(--surface); }
+  .rn { font-weight: 700; color: var(--teal); min-width: 60px; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; }
+  .rt { flex: 1; line-height: 1.5; }
+
+  /* ── Lifestyle grid ── */
+  .lsgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: .6rem; margin-top: .75rem; }
+  .lstile { background: var(--life-bg); border: 1px solid var(--life-bd); border-radius: 8px; padding: .75rem .9rem; font-size: .82rem; line-height: 1.5; }
+  .lstile b { display: block; color: #92400e; margin-bottom: .2rem; }
+
+  /* ── Pills ── */
+  .pill { display: inline-block; font-size: .7rem; font-weight: 700; padding: .15rem .5rem; border-radius: 99px; letter-spacing: .02em; vertical-align: middle; }
+  .pill-red    { background: var(--red-bg);    color: var(--red);    border: 1px solid #fca5a5; }
+  .pill-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid #c4b5fd; }
+  .pill-blue   { background: var(--blue-bg);   color: var(--blue);   border: 1px solid #93c5fd; }
+  .pill-teal   { background: var(--teal-bg);   color: var(--teal);   border: 1px solid #5eead4; }
+  .pill-amber  { background: var(--amber-bg);  color: var(--amber);  border: 1px solid #fcd34d; }
+  .pill-green  { background: var(--green-bg);  color: var(--green);  border: 1px solid #86efac; }
+  .pill-grey   { background: var(--grey-bg);   color: var(--grey);   border: 1px solid #d1d5db; }
+
+  /* ── Why drawer ── */
+  .why-row { border-top: 1px solid var(--border); }
+  .why-btn {
+    display: flex; align-items: center; gap: .4rem;
+    width: 100%; padding: .65rem 1.25rem;
+    background: transparent; border: none; cursor: pointer;
+    font-size: .8rem; font-weight: 600; color: var(--muted);
+    text-align: left; transition: background .15s;
+  }
+  .why-btn:hover { background: var(--bg); color: var(--text); }
+  .caret { font-size: .9rem; transition: transform .25s; display: inline-block; }
+  .why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+  .why-drawer {
+    max-height: 0; overflow: hidden;
+    transition: max-height .3s ease, padding .2s;
+    font-size: .83rem; line-height: 1.7; color: var(--muted);
+    padding: 0 1.25rem; background: var(--bg);
+  }
+  .why-drawer.open { max-height: 800px; padding: .75rem 1.25rem 1rem; }
+
+  /* ── Footer ── */
+  .alg-foot {
+    max-width: 780px; margin: 2rem auto 0;
+    font-size: .78rem; color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 1rem; line-height: 1.7;
+  }
+
+  /* ── Checked state ── */
+  .node.checked { opacity: .75; }
+  .node.checked .node-head h3 { text-decoration: line-through; color: var(--muted); }
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🌸</div>
+  <div>
+    <b>Mastalgia — Breast Pain Assessment &amp; Management</b>
+    <small>UK primary care pathway · RCGP SCA exam preparation · 10-minute appointment guide</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway as a flowchart — exclude breast-cancer red flags first, characterise the pain with a diary, phenotype into a named subtype, examine and investigate proportionately, then treat up a ladder, refer on threshold, modify lifestyle and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Breast pain (mastalgia)</span><div class="body">Characterise the pain: cyclical (hormonal) vs non-cyclical vs extramammary (chest wall). Note focal vs diffuse, lump, skin/nipple change, laterality and age. <b>Examine both breasts, axillae and chest wall</b> with a chaperone before deciding anything.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — exclude breast cancer first</span><span class="ttl">Any cancer red flag or urgent sign?</span><div class="body"><ul>
+      <li><b>New discrete lump</b> — hard/irregular, painful or painless, especially age ≥30</li>
+      <li><b>Skin change</b> — peau d'orange, tethering, dimpling on arm-raise, ulceration</li>
+      <li><b>Nipple change</b> — new inversion, eczematous change (Paget's), bloody/serous unilateral single-duct discharge</li>
+      <li><b>Axillary / supraclavicular nodes</b> — hard, fixed, enlarging</li>
+      <li><b>Abscess / non-lactational mastitis</b> not settling — erythema, fever, fluctuant mass</li>
+      <li><b>Post-menopausal or persistent focal non-cyclical pain &gt;6 wks</b> — lower referral threshold</li>
+      <li><b>Bone pain / systemic symptoms</b> with known cancer or strong FHx → metastatic until proven otherwise</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">2WW or same-day</span><div class="body"><span class="pill pill-purple">2WW</span> <span class="pill pill-grey">NICE NG12</span> any lump ≥30 · skin/nipple change · bloody discharge · hard axillary node → urgent breast clinic. <span class="pill pill-red">Same-day</span> breast abscess / sepsis or pathological fracture.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — reassuring exam</div><div class="box ix"><span class="lbl">Step 2 · Characterise</span><span class="ttl">Pain diary + history</span><div class="body">Request a <b>2–3 month Cardiff Breast Pain Chart</b> <span class="pill pill-blue">First line</span> — daily severity 0–3 vs periods. Review meds (HRT, OCP, SSRIs, antipsychotics, spironolactone, digoxin). Diary alone resolves 20–30%.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · phenotype — subtype drives management</span></div>
+
+    <!-- STEP 3 — DECISION: subtype -->
+    <div class="box dec"><span class="lbl">Step 3 · Decision — phenotype the mastalgia</span><span class="ttl">Which subtype is this?</span><div class="body">Use diary + history + exam to place the pain. <b>Grade severity</b> by VAS and days/cycle (mild &lt;7 days &amp; VAS &lt;4 · moderate 7–14 · severe &gt;14 days or VAS &gt;7) to keep escalation proportionate.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:88%;"></div><div class="cols four">
+      <div class="col"><div class="blabel">Cyclical · 60–70%</div><div class="box act"><span class="ttl">Usually physiological</span><div class="body">Bilateral, upper-outer, builds 7–14 days pre-menstrually, eases with period. Age 20s–40s. <span class="pill pill-green">Usually benign</span></div></div></div>
+      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Non-cyclical · ~25%</div><div class="box ix"><span class="ttl">Assess cause</span><div class="body">Unilateral, focal, sharp/burning. Duct ectasia, cyst, periductal mastitis, Mondor's. <span class="pill pill-amber">Image if focal/persistent</span></div></div></div>
+      <div class="col"><div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">Chest wall · ~10%</div><div class="box act"><span class="ttl">Extramammary</span><div class="body">Costochondritis/Tietze's, muscle strain. <b>Reproduced by pressing costochondral junction</b>, not the breast. <span class="pill pill-blue">MSK pathway</span></div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Drug-induced</div><div class="box act"><span class="ttl">Review meds</span><div class="body">HRT, OCP, SSRIs (sertraline), antipsychotics (↑prolactin), spironolactone, digoxin. <span class="pill pill-amber">Switch/stop agent</span></div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 4–5 · examine &amp; investigate proportionately</span></div>
+
+    <!-- STEP 4/5 — EXAMINE + INVESTIGATE -->
+    <div class="split"><div class="bar" style="width:70%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">Step 4 · Examine</div><div class="box ix"><span class="ttl">Targeted breast exam</span><div class="body">Chaperone. Inspect sitting (arms down/up) for skin/nipple change &amp; tethering. Palpate 4 quadrants + tail + subareolar for a discrete lump. Express nipple. Palpate axillae &amp; supraclavicular nodes. <b>Press costochondral junctions</b> to reproduce chest-wall pain. Check bra fit.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">Step 5 · Investigate</div><div class="box ix"><span class="ttl">Only if indicated</span><div class="body"><b>No tests</b> for typical cyclical pain + normal exam. Imaging (mammo ± USS via breast clinic) if non-cyclical/focal, age ≥40 or abnormal exam. <span class="pill pill-blue">Prolactin</span> + <span class="pill pill-blue">TSH</span> if galactorrhoea. <span class="pill pill-blue">Urine hCG</span> if any doubt. <span class="pill pill-amber">Avoid routine hormone panels &amp; bloods.</span></div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · treat — start low, escalate methodically</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:720px;"><span class="lbl">Step 7 · Action — treatment ladder</span><span class="ttl">By subtype, then escalate cyclical pain step-wise</span><div class="body"><ul>
+      <li><b>1st-line all benign types:</b> reassurance + <b>topical diclofenac 1% gel</b> (cyclical: 7–14 days pre-menstrually; non-cyclical: focal site, reassess 4 wks) + lifestyle. Preferred over oral NSAIDs.</li>
+      <li><b>Drug-induced:</b> switch/stop the agent (HRT prep change, POP/barrier, alternative antidepressant).</li>
+      <li><b>Chest wall:</b> oral ibuprofen + heat ± local steroid injection (triamcinolone + lidocaine) to costochondral junction; physio if recurrent.</li>
+      <li><b>Cyclical escalation:</b> diary/lifestyle → topical NSAID (≥3 cycles) → evening primrose oil (GLA 3 g/day, 3-mo trial) → <span class="pill pill-purple">Specialist</span> <b>tamoxifen 10 mg OD</b> (licensed, NNT≈2) → <b>danazol</b> → <b>bromocriptine</b>. Ensure contraception on hormonal agents.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:720px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Who needs specialist breast clinic</span><div class="body"><ul>
+      <li><span class="pill pill-red">Same-day</span> breast abscess / sepsis · non-lactational mastitis failing antibiotics at 48 h.</li>
+      <li><span class="pill pill-purple">2WW · NICE NG12</span> any palpable lump age <b>≥30</b> · bloody/serous unilateral discharge · skin dimpling/peau d'orange · new nipple inversion · nipple eczema not responding · hard axillary node · any uncertain finding.</li>
+      <li><span class="pill pill-purple">Urgent breast clinic</span> <b>post-menopausal mastalgia</b> with no cause · persistent focal non-cyclical pain &gt;6 wks (triple assessment to reassure).</li>
+      <li><span class="pill pill-blue">Routine breast clinic</span> severe cyclical pain failing 3 months of primary-care treatment · symptomatic macrocyst / recurrent cysts.</li>
+      <li><span class="pill pill-green">Primary care only</span> typical cyclical pain + normal exam · confirmed chest wall (MSK) · drug-induced (medication review).</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · lifestyle — treatment, not afterthought</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:720px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; self-management</span><span class="ttl">Evidence-based first-line measures</span><div class="body"><b>Professionally-fitted supportive bra</b> (sports bra day/night during flares — up to 85% pain reduction in macromastia) · <b>caffeine reduction</b> (6-wk trial) · <b>low saturated-fat diet</b> · <b>150 min/wk aerobic exercise</b> · <b>continue pain diary</b> (resolves 20–30% alone) · evening primrose oil OTC option · stress management / CBT for prominent anxiety · weight management if BMI ≥30. Frame these as active treatment, not advice.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:720px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Reassure, review, and escalate on change</span><div class="body"><b>Review:</b> 2–4 wks tolerability · 6–8 wks (2 cycles) response · 3 months for discharge vs referral · step down by 6 months. <b>Return same-day</b> for any new discrete lump, skin dimpling/peau d'orange, or bloody nipple discharge appearing during follow-up. <b>Return</b> if pain becomes unilateral/focal/persistent or loses its cyclical pattern. Give breast-awareness advice and ensure NHS mammography screening is up to date. Document safety-netting.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Pain alone rarely signifies cancer</b> (&lt;5% of breast cancers present with pain), so isolated cyclical pain with a normal exam can be confidently reassured — but a focal, persistent or post-menopausal pain, or any pain <b>with a lump or skin/nipple change</b>, needs 2-week-wait breast referral under NICE NG12.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STEP 1 — SAFETY: Red Flags -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-head">
+      <div class="node-num">1</div>
+      <div>
+        <span class="node-tag">Safety</span>
+        <h3>Screen for red flags — exclude breast cancer &amp; serious pathology first</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done — red flags excluded</span></label></div>
+    <div class="node-body">
+      <p>Before exploring cyclical vs non-cyclical pain, rule out these life-threatening and urgent diagnoses. Any red flag mandates same-day or urgent action.</p>
+      <div class="rfgrid">
+        <div class="rftile"><b>New discrete lump</b> Hard, irregular, painless or painful mass → <span class="pill pill-purple">2WW breast clinic</span> (NICE NG12 — urgent breast referral)</div>
+        <div class="rftile"><b>Skin changes</b> Peau d'orange, skin tethering, dimpling, ulceration → <span class="pill pill-purple">2WW breast clinic</span> (inflammatory breast cancer)</div>
+        <div class="rftile"><b>Nipple changes</b> New nipple inversion, eczematous change unresponsive to treatment (Paget's disease), or bloody/blood-stained nipple discharge → <span class="pill pill-purple">2WW breast clinic</span></div>
+        <div class="rftile"><b>Axillary lymphadenopathy</b> Hard, fixed, enlarging nodes with breast pain → <span class="pill pill-purple">2WW breast clinic</span></div>
+        <div class="rftile"><b>Breast abscess / mastitis not resolving</b> Erythema, warmth, fever, fluctuant mass — especially non-lactational → <span class="pill pill-red">Same-day assessment</span> (periductal mastitis, abscess)</div>
+        <div class="rftile"><b>Unilateral persistent non-cyclical pain &gt;6 weeks</b> Especially post-menopausal, no obvious musculoskeletal cause, focal tenderness → <span class="pill pill-purple">Urgent breast clinic</span> (NICE guidance — pain alone can rarely indicate cancer)</div>
+        <div class="rftile"><b>Age ≥30 with new breast pain + lump</b> Any age combination with mass → <span class="pill pill-purple">2WW breast clinic</span> (NICE NG12 threshold lower for palpable mass)</div>
+        <div class="rftile"><b>Bone pain / systemic symptoms</b> Back/bony pain + breast pain in known breast cancer or strong family history → <span class="pill pill-red">Same-day</span> (metastatic disease until proven otherwise)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <strong>Breast cancer rarely presents with pain alone</strong> (&lt;5% of breast cancers), but missing a concurrent lump while focusing on pain is a significant safety failure. NICE NG12 mandates 2WW referral for any palpable breast lump aged ≥30, regardless of pain character. Inflammatory breast cancer (IBC) is particularly dangerous — it mimics mastitis but carries 40% 5-year survival vs 90%+ for early-stage disease. Post-menopausal mastalgia is unusual and warrants lower referral threshold. RCGP SCA examiners will specifically test whether candidates can risk-stratify breast presentations without missing red flags.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STEP 2 — DIAGNOSE: Confirm Type -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-head">
+      <div class="node-num">2</div>
+      <div>
+        <span class="node-tag">Diagnose</span>
+        <h3>Classify the mastalgia — cyclical vs non-cyclical vs chest wall</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done — type classified</span></label></div>
+    <div class="node-body">
+      <p>Use a structured history and a <strong>breast pain diary (Cardiff Breast Pain Chart)</strong> to characterise the pain over 2–3 menstrual cycles. This distinguishes the three main types, which have different prognoses and treatments.</p>
+      <div class="kv">
+        <div>Pain diary</div><div>Request a <b>2–3 month Cardiff Breast Pain Chart</b> <span class="pill pill-blue">First line</span> — patient marks daily severity (0–3) and relation to periods. Distinguishes cyclical from non-cyclical objectively.</div>
+        <div>Menstrual relationship</div><div>Ask: <em>"Does the pain follow your cycle? Does it start 1–2 weeks before your period and ease when it starts?"</em> Cyclical pain typically builds in luteal phase and resolves with menstruation.</div>
+        <div>Location &amp; character</div><div>Cyclical: diffuse, bilateral, upper outer quadrant, heavy/aching. Non-cyclical: unilateral, focal, burning or sharp. Chest wall: reproducible with pressure on costochondral junctions.</div>
+        <div>Duration</div><div>Cyclical: onset 20s–40s, perimenopausal peak. Non-cyclical: any age, but post-menopausal mastalgia is non-cyclical by definition — lower threshold for referral.</div>
+        <div>Medication review</div><div>Check for <b>HRT, OCP, SSRIs, antipsychotics, digoxin, methyldopa, spironolactone, cimetidine</b> — all can cause mastalgia as a side effect. Ask about herbal remedies (evening primrose, phytoestrogens).</div>
+        <div>Caffeine / diet</div><div>High caffeine intake, high saturated fat diet — weak evidence but relevant to lifestyle advice. Document baseline.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        The Cardiff Breast Pain Chart was developed specifically for primary care and is validated for guiding treatment decisions. Cyclical mastalgia (60–70% of cases) resolves spontaneously in 20–30% of women within 3 months of keeping a diary alone — the act of recording can itself reduce anxiety and symptom severity. Non-cyclical pain has a more varied aetiology and lower spontaneous resolution rate (~50%), requiring more active investigation. Misclassifying chest wall pain (Tietze's syndrome, costochondritis) as breast pain leads to unnecessary breast referrals.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STEP 3 — DIAGNOSE: Classification / Phenotyping -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+    <div class="node-head">
+      <div class="node-num">3</div>
+      <div>
+        <span class="node-tag">Diagnose</span>
+        <h3>Phenotype the mastalgia — subtype diagnosis drives management</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done — subtype identified</span></label></div>
+    <div class="node-body">
+      <p>Once red flags excluded and diary reviewed, classify into one of four subtypes:</p>
+      <div class="kv">
+        <div>Cyclical mastalgia</div><div><b>60–70% of mastalgia.</b> Bilateral, upper-outer quadrant, starts 7–14 days pre-menstrually, resolves with period. Age 20–40s. Usually physiological — exaggerated progesterone/prolactin sensitivity. Often no underlying pathology. <span class="pill pill-green">Usually benign</span></div>
+        <div>Non-cyclical mastalgia</div><div><b>~25% of cases.</b> No relationship to cycle. Unilateral, often focal, sharp or burning. Causes: duct ectasia, periductal mastitis, macrocyst, post-surgical change, Mondor's disease (superficial thrombophlebitis). <span class="pill pill-amber">Needs further assessment</span></div>
+        <div>Chest wall / musculoskeletal</div><div><b>~10% of referred "breast pain".</b> Costochondritis (Tietze's), intercostal muscle strain, cervical radiculopathy, rib stress fracture. Reproduced by pressing on costochondral junction — not the breast itself. <span class="pill pill-blue">Refer to MSK pathway if confirmed</span></div>
+        <div>Drug-induced</div><div>HRT (oestrogen-dominant), combined OCP, SSRIs (esp. sertraline), antipsychotics (↑ prolactin), digoxin, spironolactone. Review medication list in every case. <span class="pill pill-amber">Consider drug switch</span></div>
+        <div>Severity grading</div><div>Mild: &lt;7 days/cycle, VAS &lt;4/10 — reassurance + lifestyle. Moderate: 7–14 days, VAS 4–7 — consider topical NSAIDs. Severe: &gt;14 days/cycle, VAS &gt;7, impairs daily function — consider systemic therapy. Use pain diary for objective grading.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Subtype classification is the pivot point for the entire management pathway. Cyclical mastalgia has 80–90% response to first-line treatment (reassurance + topical NSAIDs). Non-cyclical mastalgia responds less well (50–60%) and warrants imaging. Drug-induced mastalgia resolves completely with offending agent withdrawal in the majority of cases. Treating chest wall pain with breast-directed therapy is ineffective and delays appropriate musculoskeletal management. The severity grading ensures proportionate escalation — avoiding unnecessary systemic hormonal therapy in mild cases.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STEP 4 — DIAGNOSE: Examination -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="4">
+    <div class="node-head">
+      <div class="node-num">4</div>
+      <div>
+        <span class="node-tag">Diagnose</span>
+        <h3>Targeted breast examination — what to look for and what it means</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done — examination completed</span></label></div>
+    <div class="node-body">
+      <p>Offer a chaperone. Examine in two positions: sitting (arms by sides then arms raised) and lying (arms behind head). Document findings explicitly in notes.</p>
+      <div class="kv">
+        <div>Inspection — sitting</div><div>Look for <b>skin changes</b> (peau d'orange, erythema, oedema), asymmetry, nipple changes (inversion, eczematous change, discharge). Dimpling with arm raise = ligament tethering → 2WW. Normal finding: symmetrical contour, no skin changes.</div>
+        <div>Palpation — quadrants</div><div>Systematically palpate all four quadrants + axillary tail + subareolar. <b>Discrete lump</b>: note size, consistency (soft/firm/hard), mobility, fixation to skin or muscle → 2WW if any uncertainty. Diffuse nodularity = fibrocystic change (benign). Focal tenderness without mass — reassuring if matches pain site.</div>
+        <div>Nipple discharge</div><div>Gently express: <b>Bilateral, multi-duct, clear/milky</b> = physiological or drug-related (check prolactin if persistent). <b>Unilateral, single-duct, bloodstained or serous</b> → 2WW (papilloma or carcinoma). Galactorrhoea → check prolactin, TSH, medications.</div>
+        <div>Axillae</div><div>Palpate for lymphadenopathy. <b>Hard, fixed, &gt;1cm</b> nodes → 2WW. Soft, tender, mobile nodes = reactive (infection, recent vaccination). Normal: no palpable nodes or soft small nodes.</div>
+        <div>Chest wall</div><div>Press firmly on costochondral junctions (2nd–5th). <b>Reproduces the pain exactly</b> = chest wall origin (Tietze's/costochondritis). Press over breast — no reproduction. Document clearly to guide management.</div>
+        <div>Supraclavicular fossa</div><div>Palpate supraclavicular nodes — enlarged hard nodes with breast pain → urgent oncology review (N3 disease).</div>
+        <div>Bra fit assessment</div><div>Ask about bra type and size. Poorly fitting bra (especially underwired) is a common, under-recognised cause of non-cyclical breast pain — particularly in women with large breasts. Simple intervention with significant impact.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Clinical breast examination has sensitivity of 54% and specificity of 94% for detecting breast cancer when performed systematically. While not a screening tool, it is essential in any mastalgia presentation to exclude concurrent pathology. The chest wall compression test (pressing on costochondral junctions) has high specificity for musculoskeletal aetiology — a positive test changes management completely, avoiding unnecessary breast imaging and systemic treatment. Bra fit is genuinely therapeutic: studies show that correct bra fitting reduces breast pain by 85% in women with macromastia-related non-cyclical pain.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STEP 5 — DIAGNOSE: Investigations -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+    <div class="node-head">
+      <div class="node-num">5</div>
+      <div>
+        <span class="node-tag">Diagnose</span>
+        <h3>Targeted investigations — when to test and when NOT to</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done — investigations considered</span></label></div>
+    <div class="node-body">
+      <p>Most cyclical mastalgia with normal examination requires <strong>no investigations in primary care</strong>. Investigate to exclude specific causes:</p>
+      <div class="kv">
+        <div>Breast imaging</div><div><b>Mammogram ± ultrasound</b>: Indicated for non-cyclical mastalgia in women ≥40, or any age with focal non-cyclical pain, abnormal examination, or persistent symptoms. <b>Do NOT order mammogram for typical cyclical mastalgia with normal exam</b> — breast density in younger women limits sensitivity and increases anxiety. <span class="pill pill-blue">Refer to breast clinic for imaging if needed</span></div>
+        <div>Serum prolactin</div><div>If galactorrhoea present or bilateral mastalgia with no cyclical pattern — exclude hyperprolactinaemia. Normal: &lt;500 mIU/L. Elevated → check MRI pituitary, review medications (antipsychotics, metoclopramide, domperidone, methyldopa). <span class="pill pill-blue">Serum prolactin</span></div>
+        <div>TFTs</div><div>Hypothyroidism can cause diffuse mastalgia and galactorrhoea. Check TSH if galactorrhoea or if no other explanation. <span class="pill pill-blue">TSH</span></div>
+        <div>Pregnancy test</div><div>Breast pain is common in early pregnancy. Check urine hCG if: irregular periods, amenorrhoea, or any diagnostic uncertainty. Do not assume pain is not pregnancy-related. <span class="pill pill-blue">Urine hCG</span></div>
+        <div>Hormonal profile</div><div><b>Do NOT</b> routinely check oestrogen, progesterone, or LH/FSH for typical cyclical mastalgia — unhelpful and not evidence-based. Check FSH/LH only if assessing for perimenopause when this is clinically relevant. <span class="pill pill-amber">Avoid routine hormone panels</span></div>
+        <div>Do NOT order</div><div>Routine FBC, CRP, liver function for mastalgia — not indicated without specific clinical concern. Avoid over-investigating benign cyclical breast pain, which increases patient anxiety and generates unnecessary follow-up. <span class="pill pill-amber">Avoid unnecessary bloods</span></div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        NICE and the Association of Breast Surgery guidelines emphasise that investigations should be proportionate and targeted. Over-investigation of typical cyclical mastalgia creates health anxiety, nocebo effects, and false-positive cascades. The breast clinic (triple assessment: clinical exam + imaging + biopsy if needed) is better placed to perform and interpret breast imaging than primary care ordering mammograms ad hoc. Prolactin and TFTs address specific treatable causes — normal prolactin excludes pituitary-driven galactorrhoea and guides management. Pregnancy is the single most important and easily missed non-breast cause of mastalgia in women of reproductive age.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STEP 6 — REFER: Referral Criteria -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="REFER" data-step="6">
+    <div class="node-head">
+      <div class="node-num">6</div>
+      <div>
+        <span class="node-tag">Refer</span>
+        <h3>Referral criteria — who needs specialist breast clinic input</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done — referral decision made</span></label></div>
+    <div class="node-body">
+      <p>Most mastalgia is managed entirely in primary care. Use these criteria to decide urgency:</p>
+      <div class="kv">
+        <div><span class="pill pill-red">999</span></div><div>None for mastalgia alone. If septic shock from breast abscess → 999. If pathological fracture from suspected metastatic disease → 999.</div>
+        <div><span class="pill pill-red">Same day</span></div><div><b>Breast abscess</b> (fluctuant, systemically unwell, failed antibiotics). <b>Non-lactational mastitis</b> not responding to first-line antibiotics after 48hrs (risk of periductal mastitis / underlying malignancy).</div>
+        <div><span class="pill pill-purple">2WW breast clinic</span></div><div>Any palpable discrete lump ≥30 years. Bloody/serous unilateral nipple discharge. Skin changes (dimpling, peau d'orange, ulceration). New nipple inversion. Nipple eczema not responding to topical treatment (exclude Paget's). Unilateral hard axillary lymphadenopathy. Any examination finding causing clinical uncertainty.</div>
+        <div><span class="pill pill-purple">Urgent (2 wks)</span></div><div>Post-menopausal mastalgia with no obvious cause (requires breast imaging + clinical assessment). Persistent non-cyclical focal pain &gt;6 weeks with normal examination — warrants triple assessment to reassure and investigate.</div>
+        <div><span class="pill pill-blue">Routine breast clinic</span></div><div>Severe cyclical mastalgia not responding to 3 months of first and second-line primary care treatment (danazol / bromocriptine consideration). Confirmed macrocyst causing pain. Recurrent cysts.</div>
+        <div><span class="pill pill-green">Primary care only</span></div><div>Typical cyclical mastalgia + normal examination. Confirmed chest wall pain (MSK pathway). Drug-induced mastalgia (manage by medication review). Mild–moderate mastalgia responding to lifestyle + topical NSAIDs.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        NICE NG12 sets the 2WW threshold: any breast lump in women ≥30 or any suspicious clinical feature. The Association of Breast Surgery guidelines explicitly support primary care management of typical cyclical mastalgia without referral — this is appropriate stewardship of breast clinic capacity. However, post-menopausal mastalgia is a particularly important exception: oestrogen withdrawal at menopause means breast pain is uncommon, and new mastalgia in this group has a higher malignancy rate than in premenopausal women. Failing to refer post-menopausal mastalgia to breast clinic is a documented medicolegal risk.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STEP 7 — TREAT: Drug Ladder -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="TREAT" data-step="7">
+    <div class="node-head">
+      <div class="node-num">7</div>
+      <div>
+        <span class="node-tag">Treat</span>
+        <h3>Pharmacological treatment ladder — start low, escalate methodically</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done — treatment initiated</span></label></div>
+    <div class="node-body">
+      <p>Begin treatment after red flags excluded, type classified, and lifestyle interventions initiated. Cyclical and non-cyclical mastalgia may respond differently:</p>
+
+      <b style="margin-top:.5rem;">First line — by mastalgia type:</b>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">Cyclical mastalgia</div>
+          <div class="b-drug">Topical NSAID <span class="pill pill-teal">1st line</span></div>
+          <div class="b-note"><b>Diclofenac 1% gel</b> applied to affected breast 3–4× daily for 7–14 days pre-menstrually. Evidence: reduces pain by 70% vs 30% placebo. Minimal systemic absorption. Preferred over oral NSAIDs.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Non-cyclical mastalgia</div>
+          <div class="b-drug">Topical NSAID <span class="pill pill-teal">1st line</span></div>
+          <div class="b-note"><b>Diclofenac 1% gel</b> to focal pain site 3× daily for 4 weeks. Less predictable response than cyclical — reassess at 4 weeks. If no response, image and reconsider diagnosis.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Drug-induced</div>
+          <div class="b-drug">Medication review <span class="pill pill-amber">1st line</span></div>
+          <div class="b-note">Identify and switch offending drug where clinically appropriate. HRT: consider switching preparation, reducing dose, or progesterone-only HRT. OCP: try progestogen-only pill or barrier method. SSRIs: switch to alternative antidepressant. Document rationale.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Chest wall pain</div>
+          <div class="b-drug">Oral NSAID + physio <span class="pill pill-teal">1st line</span></div>
+          <div class="b-note"><b>Ibuprofen 400 mg TDS with food</b> for 2 weeks + local heat. Consider <b>local steroid injection</b> (triamcinolone 40 mg + lidocaine) into costochondral junction if persistent — highly effective for Tietze's. Refer physio if recurrent.</div>
+        </div>
+      </div>
+
+      <b style="margin:.9rem 0 .3rem; display:block;">Escalation ladder — cyclical mastalgia not responding to topical NSAIDs:</b>
+      <div class="ladder">
+        <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Reassurance + pain diary + lifestyle</b> — 30% resolve with diary alone over 3 months. Start here for mild symptoms.</span></div>
+        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Topical diclofenac 1% gel</b> — pre-menstrual use, 7–14 days/cycle. First pharmacological step. Use for ≥3 cycles before declaring failure.</span></div>
+        <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Evening primrose oil (EPO) — Gamolenic acid 3g/day</b> (Efamast 80 mg × 4 capsules daily). Modest evidence, well-tolerated, 3-month trial. Less effective than hormonal treatments but safer profile. Discuss with patient.</span></div>
+        <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Tamoxifen 10 mg OD</b> for 3–6 months (breast clinic / specialist initiation). <span class="pill pill-purple">Specialist</span> Most evidence-based hormonal option for severe cyclical mastalgia. Contraindicated in pregnancy — ensure contraception. Monitor: menstrual irregularity, hot flushes, DVT risk. Response rate 70–80%. Licensed for mastalgia.</span></div>
+        <div class="rung"><span class="rn">Step 5</span><span class="rt"><b>Danazol 100–200 mg OD</b> for 3–6 months. <span class="pill pill-purple">Specialist</span> Androgen with anti-gonadotrophic effect. Response rate 70%. Side effects: weight gain, acne, hirsutism, voice changes — often limit use. Effective but patients dislike side-effect profile. Effective contraception required.</span></div>
+        <div class="rung"><span class="rn">Step 6</span><span class="rt"><b>Bromocriptine 2.5 mg BD</b>. <span class="pill pill-purple">Specialist</span> Dopamine agonist — reduces prolactin. Side effects: nausea, dizziness, hypotension. Lower tolerability than tamoxifen. Consider only if tamoxifen/danazol contraindicated or failed. Start at 1.25 mg with food, titrate up.</span></div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <b>Evidence base for each step:</b><br>
+        Topical diclofenac: RCT data shows 70% pain reduction vs 30% placebo (Colak et al, 2003) with minimal systemic absorption — preferred over oral NSAIDs for breast pain.<br>
+        Evening primrose oil: Modest benefit in RCTs; Cochrane review suggests small but consistent effect. Well tolerated, no significant safety concerns, suitable for mild–moderate symptoms.<br>
+        Tamoxifen 10 mg: Multiple RCTs with NNT ≈ 2 for achieving significant pain reduction in cyclical mastalgia. The 10 mg dose (off-label lower dose) has similar efficacy to 20 mg with fewer side effects. Licensed for mastalgia in the UK at 10–20 mg.<br>
+        Danazol: Response rate 70% but androgenic side effects in 20–30% cause discontinuation. Not suitable as first hormonal option due to tolerability.<br>
+        RCGP examiners expect trainees to know that GCSB (goserelin/GNRH analogues) are NOT routinely used for mastalgia in primary care — these are third-line specialist options.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STEP 8 — LIFESTYLE -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="LIFESTYLE" data-step="8">
+    <div class="node-head">
+      <div class="node-num">8</div>
+      <div>
+        <span class="node-tag">Lifestyle</span>
+        <h3>Non-pharmacological interventions — evidence-based, not afterthought</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done — lifestyle advice given</span></label></div>
+    <div class="node-body">
+      <p>These interventions have evidence and should be recommended to every patient with mastalgia. Frame as <b>active treatment</b>, not just advice:</p>
+      <div class="lsgrid">
+        <div class="lstile"><b>🩱 Correct bra fitting</b> Professionally fitted, well-supporting bra (consider sports bra for 24hr use). Evidence: reduces breast pain by up to 85% in macromastia. Refer to trained fitter. Avoid underwired bras during exacerbations.</div>
+        <div class="lstile"><b>☕ Caffeine reduction</b> Reduce or eliminate coffee, tea, cola, energy drinks. Observational evidence supports caffeine as an aggravating factor — methylxanthines may increase receptor sensitivity. Advise 6-week trial of caffeine elimination.</div>
+        <div class="lstile"><b>🥗 Dietary fat reduction</b> Reduce saturated fat to &lt;15% of total calories. Some RCT evidence that low-fat diet reduces cyclical breast pain. Improves weight and cardiovascular risk simultaneously.</div>
+        <div class="lstile"><b>🏃 Regular aerobic exercise</b> 150 minutes moderate exercise per week. Reduces oestrogen levels, improves pain threshold, reduces BMI. Indirect but consistent evidence across multiple studies.</div>
+        <div class="lstile"><b>📓 Pain diary (Cardiff Chart)</b> Continue for 3 cycles. Tracking pain — reduces anxiety by contextualising symptom pattern. Diary alone leads to spontaneous resolution in 20–30% — this is treatment, not just monitoring.</div>
+        <div class="lstile"><b>🌿 Evening primrose oil</b> Gamolenic acid 3g/day (GLA supplement). Patient-led option. Modest evidence, excellent safety profile. Advise 3-month trial before assessing response. Can be purchased OTC. Discuss realistic expectations.</div>
+        <div class="lstile"><b>💊 Vitamin E / B6</b> Vitamin E 600 IU/day or Vitamin B6 100 mg/day — weak observational evidence only. Not NICE-recommended. If patient wishes to try, safe at these doses. Do not substitute for evidence-based treatment.</div>
+        <div class="lstile"><b>🧘 Stress management</b> Stress amplifies pain perception. CBT, mindfulness, yoga all have RCT evidence for chronic pain reduction. Consider referral to IAPT or self-referral to wellbeing service if anxiety component prominent.</div>
+        <div class="lstile"><b>⚖️ Weight management</b> BMI ≥30 associated with increased mastalgia severity, higher oestrogen levels (adipose aromatisation). Even modest 5–10% weight reduction improves hormonal profile and pain. Refer to tier 2 weight management if appropriate.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Lifestyle interventions are under-prescribed for mastalgia and over-reliance on pharmacotherapy is common. The Cardiff Breast Pain Chart study demonstrated that diary-keeping alone produced clinically significant pain reduction in 22% of participants — an effect size comparable to evening primrose oil. Bra fitting is supported by prospective studies from Portsmouth and Cardiff breast units showing up to 85% pain reduction in women with macromastia who were incorrectly fitted. Caffeine reduction: Allen et al. demonstrated 65% symptom improvement with caffeine elimination in women with fibrocystic change. These are high-impact, zero-side-effect interventions — they should always precede pharmacotherapy for mild–moderate symptoms.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- STEP 9 — SAFETY: Follow-Up -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-head">
+      <div class="node-num">9</div>
+      <div>
+        <span class="node-tag">Safety</span>
+        <h3>Follow-up &amp; safety-netting — when to return and when to escalate</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done — safety-netting provided</span></label></div>
+    <div class="node-body">
+      <p>Safety-net every patient explicitly. Document that safety-netting advice was given in the notes.</p>
+      <div class="kv">
+        <div>2–4 weeks</div><div>If starting topical diclofenac or new medication — review tolerability, ensure correct application, check pain diary is being kept. Reassess if symptoms worsening.</div>
+        <div>6–8 weeks</div><div>Review pain diary at 2 completed cycles. Assess response to first-line treatment. If no improvement: escalate treatment step (Step 7). If improved: continue and plan 3-month discharge review.</div>
+        <div>3 months</div><div>Full review at 3 months. Has pain resolved, improved, or persisted? If resolved: discharge with safety-netting. If partially improved: continue current treatment for further 3 months. If no improvement: consider referral to breast clinic (routine).</div>
+        <div>6 months</div><div>If still on pharmacological treatment — consider stepping down or stopping to see if spontaneous resolution has occurred. Many women can stop treatment after 6 months; reassess need for continuation.</div>
+        <div>Annual</div><div>For women with ongoing cyclical mastalgia — annual breast awareness check. Remind patient of normal breast screening programme (mammographic screening from age 50 via NHS BSP). No additional surveillance needed for mastalgia alone.</div>
+        <div><span class="pill pill-red">999 if:</span></div><div>Breast abscess causing sepsis (high fever, rigors, haemodynamic compromise). New pathological fracture if known or suspected breast malignancy.</div>
+        <div><span class="pill pill-red">Same-day if:</span></div><div>New discrete palpable lump develops at any point during follow-up. Skin changes develop (dimpling, peau d'orange). Wound/abscess concern in post-surgical patient. Unilateral bloodstained nipple discharge appears.</div>
+        <div><span class="pill pill-amber">Return if:</span></div><div>Pain becomes unilateral, focal, and persistent (change in pattern). Pain no longer related to menstrual cycle. Menstrual irregularity on hormonal treatment. New symptoms develop (weight loss, bone pain, fatigue) suggesting systemic illness.</div>
+        <div>Discharge criteria</div><div>Pain resolved or manageable (&lt;7 days/cycle, VAS &lt;4) with lifestyle measures alone. Normal examination at all visits. No new features of concern. Safety-netting understood and documented. Patient has breast screening info.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Safety-netting is a critical RCGP SCA competency domain and is frequently assessed. The key risk in mastalgia management is a change in symptom character that indicates new pathology developing — a cancer arising coincidentally in a woman already on the mastalgia pathway. Documented safety-netting protects both the patient and the practitioner. The 3-month review is important because: (1) most responders to first-line treatment show improvement by 3 months, (2) evening primrose oil takes 3 months to reach full effect, (3) tamoxifen response is assessed at 3 months in breast clinic protocols. Pattern change (becoming non-cyclical, becoming focal, becoming unilateral) is the key alarm feature that warrants urgent reassessment — this must be explicitly communicated to the patient.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG12 (Suspected Cancer: Recognition and Referral, 2015 updated 2023) · NICE CKS Mastalgia (2023) · Association of Breast Surgery (ABS) Guidelines for the Management of Symptomatic Breast Disease · Cardiff Breast Pain Chart (Robert et al.) · BNF treatment summaries · NHS England Breast Screening Programme. Always adapt to individual patient context, local formulary, and current NICE/local guidelines. Not a substitute for clinical judgement.
+</div>
+
+<script>
+  // ── Why drawers ──
+  document.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const drawer = btn.nextElementSibling;
+      const open = drawer.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  });
+
+  // ── Checkbox progress ──
+  const STORE_KEY = 'rgp.alg.mastalgia.v1';
+  const nodes = document.querySelectorAll('.node[data-step]');
+  const pDone = document.getElementById('pDone');
+  const pFill = document.getElementById('pFill');
+  const total  = nodes.length;
+  document.getElementById('pTotal').textContent = total;
+
+  function updateProgress() {
+    const done = document.querySelectorAll('.node[data-step] input[type="checkbox"]:checked').length;
+    pDone.textContent = done;
+    pFill.style.width  = `${(done / total) * 100}%`;
+  }
+
+  function saveState() {
+    const state = {};
+    nodes.forEach(n => {
+      const step = n.dataset.step;
+      const cb   = n.querySelector('input[type="checkbox"]');
+      state[step] = cb.checked;
+    });
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch(e) {}
+  }
+
+  function loadState() {
+    let state = {};
+    try { state = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch(e) {}
+    nodes.forEach(n => {
+      const step = n.dataset.step;
+      const cb   = n.querySelector('input[type="checkbox"]');
+      if (state[step]) {
+        cb.checked = true;
+        n.classList.add('checked');
+      }
+    });
+    updateProgress();
+  }
+
+  nodes.forEach(n => {
+    const cb = n.querySelector('input[type="checkbox"]');
+    cb.addEventListener('change', () => {
+      n.classList.toggle('checked', cb.checked);
+      updateProgress();
+      saveState();
+    });
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    nodes.forEach(n => {
+      const cb = n.querySelector('input[type="checkbox"]');
+      cb.checked = false;
+      n.classList.remove('checked');
+    });
+    updateProgress();
+    try { localStorage.removeItem(STORE_KEY); } catch(e) {}
+  });
+
+  loadState();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

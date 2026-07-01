@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Peripheral Arterial Disease — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="PAD management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🦵",
+  title:"Peripheral Arterial Disease",
+  stemTitle:"Confirmed Peripheral Arterial Disease — ongoing management",
+  stemSub:"Primary-care management of PAD with intermittent claudication \u2014 a supervised exercise programme and aggressive cardiovascular secondary prevention \u2014 plus the critical-limb-ischaemia safety net and referral triggers. NICE CG147 \u00b7 CKS 2026.",
+  guideline:"NICE CG147",
+  glance:[
+    {lbl:"Diagnosis", val:"ABPI \u22640.9", sub:"claudication"},
+    {lbl:"First-line", val:"Supervised exercise", sub:"for claudication"},
+    {lbl:"#1 modifiable", val:"Stop smoking", sub:"essential"},
+    {lbl:"Antiplatelet", val:"Clopidogrel 75", sub:"first-line"},
+    {lbl:"Statin", val:"Atorvastatin 80", sub:"high-intensity"},
+    {lbl:"Red flag", val:"Rest pain / ulcer", sub:"= critical ischaemia"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm PAD and stage it",
+      blocks:[
+        {b:"kv", rows:[
+          ["Diagnosis","Claudication + <b>ABPI \u2264 0.9</b> (falsely high if calcified/diabetic vessels)"],
+          ["Stage","Intermittent claudication \u2192 vs <b>critical limb ischaemia</b> (rest pain, ulcers, gangrene)"],
+          ["Risk","PAD = high cardiovascular risk \u2014 most patients die of MI/stroke, not the leg"],
+          ["Assess","CV risk factors, diabetes, smoking, foot health"]
+        ]},
+        {b:"why", html:"PAD is a marker of widespread atherosclerosis \u2014 so the priority is <strong>cardiovascular</strong> protection (the patient\u2019s biggest threat) as much as the leg. For the claudication itself, a supervised exercise programme outperforms drugs. Recognising the shift to critical limb ischaemia is the time-critical skill."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 first-line", title:"Supervised exercise + smoking cessation",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🏃 Supervised exercise", html:"<b>First-line for claudication</b> \u2014 a structured programme (~2 h/week for 3 months), walking to near-maximal pain."},
+          {t:"🚭 Smoking cessation", html:"Essential \u2014 the strongest modifiable factor for progression and CV events."},
+          {t:"🦶 Foot care", html:"Daily inspection, good footwear, prompt attention to wounds \u2014 especially in diabetes."},
+          {t:"🥗 Diet & weight", html:"Mediterranean diet, weight management."},
+          {t:"🩺 Risk factors", html:"Optimise BP and diabetes alongside."},
+          {t:"🚶 Keep walking", html:"Encourage daily walking even between supervised sessions."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 secondary prevention", title:"Cardiovascular protection first",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Antiplatelet", title:"Clopidogrel 75 mg", when:"first-line",
+           html:"<b>Clopidogrel 75 mg once daily</b> is preferred to aspirin in PAD; lifelong unless contraindicated (with a high-intensity statin, e.g. atorvastatin 80 mg)."},
+          {step:"Statin", title:"High-intensity statin", when:"atorvastatin 80 mg",
+           fromLabel:"all patients",
+           html:"Aim &gt;40% non-HDL reduction \u2014 reduces CV events and may improve walking distance."},
+          {step:"Risk factors", title:"Treat BP + diabetes", when:"to target",
+           fromLabel:"optimise",
+           html:"Manage hypertension and diabetes per their pathways; ACEi often appropriate."},
+          {step:"Symptomatic", title:"Naftidrofuryl oxalate", when:"selected claudication",
+           fromLabel:"if exercise + risk-factor modification insufficient and revascularisation declined/unsuitable",
+           html:"Consider for claudication; review benefit at 3\u20136 months and stop if none."}
+        ]},
+        {b:"why", html:"The drug priority is the heart and brain, not the calf \u2014 antiplatelet and statin cut MI and stroke, the events most likely to kill a PAD patient. Naftidrofuryl is a modest symptomatic add-on only, reviewed for benefit and stopped if it doesn\u2019t help."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Symptoms, risk and feet",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Walking distance / symptoms","Each review","Worsening \u2192 reassess; new rest pain \u2192 urgent"],
+          ["CV risk factors + lipids","Annually","Optimise BP, lipids, glucose, adherence"],
+          ["Foot inspection","Each review (more if diabetic)","Ulcer / colour change \u2192 urgent referral"],
+          ["Naftidrofuryl benefit","3\u20136 months","Stop if no improvement"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"After starting", title:"Establish the plan", html:"Enrol in supervised exercise, start antiplatelet + statin, smoking cessation, foot advice."},
+          {n:"2", when:"3 months", title:"Exercise response", html:"Reassess walking distance and symptoms; review naftidrofuryl if used."},
+          {n:"3", when:"Annual", title:"Vascular review", html:"Symptoms, ABPI if needed, CV risk factors, feet, adherence."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Worsening? Check before referral",
+      arrow:"\u2026if symptoms progress",
+      intro:"Distinguish slowly-worsening claudication from limb-threatening ischaemia.",
+      checks:[
+        {b:"1 \u00b7 Critical ischaemia?", html:"Rest pain (esp. at night), ulcers, gangrene \u2192 urgent vascular referral."},
+        {b:"2 \u00b7 Acute ischaemia?", html:"Sudden cold, pale, painful, pulseless, paraesthetic, paralysed leg \u2192 999."},
+        {b:"3 \u00b7 Exercise done?", html:"Has a supervised programme actually been completed?"},
+        {b:"4 \u00b7 Smoking", html:"Still smoking \u2014 re-offer cessation."},
+        {b:"5 \u00b7 Risk factors", html:"Statin/antiplatelet adherence, BP and diabetes control."}
+      ],
+      back:"Limb-threat excluded, conservative measures optimised \u2192 refer for revascularisation assessment"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Acute limb ischaemia", html:"\u201cA suddenly cold, pale, very painful, numb or weak leg \u2014 call 999 immediately; the limb is at risk within hours.\u201d"},
+          {t:"🟠 Critical ischaemia", html:"\u201cPain in the foot at rest (especially at night), or a wound/ulcer/black area that won\u2019t heal \u2014 contact us urgently.\u201d"},
+          {t:"🦶 Foot care", html:"\u201cCheck your feet daily, never walk barefoot, and report any cut, blister or colour change quickly.\u201d"},
+          {t:"🚭 Smoking", html:"\u201cStopping smoking is the single most important thing for your legs and your heart \u2014 we\u2019ll support you.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer vascular",
+      arrow:"urgent for limb threat; routine for refractory claudication",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Acute limb ischaemia (the 6 Ps) \u2192 999 / immediate vascular."},
+          {t:"Urgent", html:"Critical limb ischaemia \u2014 rest pain, tissue loss, ulcers, gangrene."},
+          {t:"Revascularisation", html:"Claudication limiting lifestyle despite supervised exercise + risk-factor control."},
+          {t:"Diagnostic doubt", html:"Atypical features, or unreliable ABPI (calcified vessels / diabetes)."}
+        ]},
+        {b:"say", html:"The most important treatments are stopping smoking, a walking programme, and tablets to protect your heart and circulation. If walking stays badly limited, the vascular team can consider a procedure \u2014 but call 999 if your leg ever becomes suddenly cold, pale and very painful."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

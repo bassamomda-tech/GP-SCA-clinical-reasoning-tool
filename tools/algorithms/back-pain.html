@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Back Pain Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+  /* ── Reset & Base ─────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #f5f3ee;
+    --surface:  #ffffff;
+    --border:   #e2ddd5;
+    --text:     #1c1a17;
+    --muted:    #6b6458;
+    --accent:   #b85c38;      /* warm terracotta */
+    --accent2:  #2d6a4f;      /* deep forest green */
+    --accent3:  #5b4fcf;      /* indigo for 2WW */
+
+    /* Step type colours */
+    --safety:   #c0392b;
+    --diagnose: #1a5276;
+    --refer:    #6c3483;
+    --treat:    #1e8449;
+    --lifestyle:#b7770d;
+
+    --radius:   10px;
+    --shadow:   0 2px 12px rgba(0,0,0,0.07);
+    --font-body: 'DM Sans', sans-serif;
+    --font-disp: 'Fraunces', serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 0 0 60px;
+  }
+
+  /* ── Header ──────────────────────────────────────────────── */
+  .alg-header {
+    background: var(--text);
+    color: #fff;
+    padding: 20px 24px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  }
+  .alg-header-icon {
+    font-size: 28px;
+    line-height: 1;
+  }
+  .alg-header h1 {
+    font-family: var(--font-disp);
+    font-weight: 500;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .alg-header small {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* ── Banner ──────────────────────────────────────────────── */
+  .stem-banner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(135deg, #1c1a17 0%, #2d2a25 100%);
+    color: #fff;
+    padding: 18px 20px;
+    border-bottom: 3px solid var(--accent);
+    font-size: 0.9rem;
+  }
+  .sb-icon { font-size: 2rem; }
+  .stem-banner b { display: block; font-weight: 600; font-size: 1rem; }
+  .stem-banner small { color: rgba(255,255,255,0.58); font-size: 0.75rem; }
+
+  /* ── Progress Bar ─────────────────────────────────────────── */
+  .alg-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    position: sticky;
+    top: 72px;
+    z-index: 90;
+  }
+  .pcount { font-weight: 700; color: var(--text); min-width: 38px; }
+  .pbar { flex: 1; height: 5px; background: var(--border); border-radius: 99px; overflow: hidden; }
+  .pbar-fill { height: 100%; background: var(--accent2); border-radius: 99px; width: 0%; transition: width 0.4s ease; }
+  .reset {
+    background: none; border: 1px solid var(--border); border-radius: 6px;
+    padding: 3px 10px; font-size: 0.75rem; cursor: pointer; color: var(--muted);
+    font-family: var(--font-body);
+  }
+  .reset:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── Flow Container ──────────────────────────────────────── */
+  .alg-flow {
+    max-width: 740px;
+    margin: 24px auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* ── Connector ───────────────────────────────────────────── */
+  .connector {
+    width: 2px;
+    height: 28px;
+    background: linear-gradient(180deg, var(--border) 0%, transparent 100%);
+    margin: 0 auto;
+    position: relative;
+  }
+  .connector::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--border);
+  }
+
+  /* ── Node Card ───────────────────────────────────────────── */
+  .node {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s;
+  }
+  .node:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.11); }
+  .node.done { border-color: var(--accent2); }
+  .node.done .node-num { background: var(--accent2); }
+
+  /* Colour coding per type */
+  .node[data-type="SAFETY"]    { border-left: 4px solid var(--safety); }
+  .node[data-type="DIAGNOSE"]  { border-left: 4px solid var(--diagnose); }
+  .node[data-type="REFER"]     { border-left: 4px solid var(--refer); }
+  .node[data-type="TREAT"]     { border-left: 4px solid var(--treat); }
+  .node[data-type="LIFESTYLE"] { border-left: 4px solid var(--lifestyle); }
+
+  /* ── Node Header ─────────────────────────────────────────── */
+  .node-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px 10px;
+    border-bottom: 1px solid var(--border);
+    background: #fafaf8;
+  }
+  .node-num {
+    min-width: 28px; height: 28px;
+    background: var(--text);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.78rem; font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .node[data-type="SAFETY"] .node-num    { background: var(--safety); }
+  .node[data-type="DIAGNOSE"] .node-num  { background: var(--diagnose); }
+  .node[data-type="REFER"] .node-num     { background: var(--refer); }
+  .node[data-type="TREAT"] .node-num     { background: var(--treat); }
+  .node[data-type="LIFESTYLE"] .node-num { background: var(--lifestyle); }
+
+  .node-head-text { flex: 1; }
+  .node-tag {
+    display: inline-block;
+    font-size: 0.65rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.07em;
+    padding: 2px 7px; border-radius: 4px;
+    margin-bottom: 4px;
+    color: #fff;
+  }
+  .node[data-type="SAFETY"] .node-tag    { background: var(--safety); }
+  .node[data-type="DIAGNOSE"] .node-tag  { background: var(--diagnose); }
+  .node[data-type="REFER"] .node-tag     { background: var(--refer); }
+  .node[data-type="TREAT"] .node-tag     { background: var(--treat); }
+  .node[data-type="LIFESTYLE"] .node-tag { background: var(--lifestyle); }
+
+  .node-head h3 {
+    font-family: var(--font-disp);
+    font-weight: 500;
+    font-size: 1.02rem;
+    line-height: 1.3;
+    color: var(--text);
+  }
+  .node-tick {
+    padding: 14px 16px 10px 0;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .node-tick label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+  .node-tick input[type="checkbox"] {
+    width: 18px; height: 18px;
+    accent-color: var(--accent2);
+    cursor: pointer;
+  }
+  .tlbl { font-size: 0.72rem; color: var(--muted); font-weight: 500; }
+
+  /* Reassemble header as flex row */
+  .node-header-row {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--border);
+    background: #fafaf8;
+  }
+  .node-header-row .node-head {
+    border-bottom: none;
+    flex: 1;
+    padding: 14px 0 10px 16px;
+  }
+  .node-header-row .node-tick {
+    padding: 14px 16px 10px;
+  }
+
+  /* ── Node Body ───────────────────────────────────────────── */
+  .node-body {
+    padding: 14px 16px;
+    font-size: 0.88rem;
+    color: var(--text);
+  }
+  .node-body > p, .node-body > .intro {
+    margin-bottom: 12px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  /* ── KV Grid ─────────────────────────────────────────────── */
+  .kv {
+    display: grid;
+    grid-template-columns: minmax(120px, 180px) 1fr;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 8px;
+    font-size: 0.84rem;
+  }
+  .kv > div {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  .kv > div:last-child, .kv > div:nth-last-child(2):nth-child(odd) {
+    border-bottom: none;
+  }
+  .kv > div:nth-child(odd) {
+    background: #f5f3ee;
+    font-weight: 600;
+    font-size: 0.79rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .kv > div:nth-child(even) { background: var(--surface); }
+
+  /* ── Red Flag Grid ───────────────────────────────────────── */
+  .rfgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .rftile {
+    background: #fdf3f2;
+    border: 1px solid #f5c0bc;
+    border-left: 3px solid var(--safety);
+    border-radius: 7px;
+    padding: 9px 11px;
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+  .rftile b { display: block; color: var(--safety); margin-bottom: 2px; font-size: 0.84rem; }
+
+  /* ── Branch ──────────────────────────────────────────────── */
+  .branch {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .b-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .b-cond {
+    background: #eef4f1;
+    padding: 7px 11px;
+    font-size: 0.77rem;
+    font-weight: 700;
+    color: var(--accent2);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--border);
+  }
+  .b-drug {
+    padding: 8px 11px 4px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text);
+  }
+  .b-note {
+    padding: 0 11px 9px;
+    font-size: 0.79rem;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  /* ── Ladder ──────────────────────────────────────────────── */
+  .ladder {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  .rung {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 9px 13px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.84rem;
+    line-height: 1.5;
+    background: var(--surface);
+    transition: background 0.15s;
+  }
+  .rung:last-child { border-bottom: none; }
+  .rung:hover { background: #f8f6f2; }
+  .rn {
+    min-width: 64px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    background: #f0ede8;
+    padding: 2px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .rt { flex: 1; }
+
+  /* ── Lifestyle Grid ──────────────────────────────────────── */
+  .lsgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .lstile {
+    background: #f0f7f4;
+    border: 1px solid #c8e6d6;
+    border-left: 3px solid var(--accent2);
+    border-radius: 7px;
+    padding: 9px 11px;
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+  .lstile b { display: block; color: var(--accent2); margin-bottom: 2px; }
+
+  /* ── Pills ───────────────────────────────────────────────── */
+  .pill {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 99px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .pill-red    { background: #fde8e8; color: #c0392b; border: 1px solid #f5c0bc; }
+  .pill-purple { background: #f0e8ff; color: #6c3483; border: 1px solid #d7bffc; }
+  .pill-blue   { background: #e8f0ff; color: #1a5276; border: 1px solid #b8d0f0; }
+  .pill-teal   { background: #e8f7f0; color: #1e8449; border: 1px solid #b8e0cc; }
+  .pill-amber  { background: #fef9e7; color: #b7770d; border: 1px solid #f5e07c; }
+  .pill-green  { background: #eafaf1; color: #1e8449; border: 1px solid #a9dfbf; }
+  .pill-grey   { background: #f2f3f4; color: #5d6d7e; border: 1px solid #d5d8dc; }
+
+  /* ── Why Drawer ──────────────────────────────────────────── */
+  .why-row {
+    border-top: 1px solid var(--border);
+  }
+  .why-btn {
+    width: 100%;
+    text-align: left;
+    background: #f8f6f2;
+    border: none;
+    padding: 9px 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-body);
+    letter-spacing: 0.03em;
+    transition: background 0.15s, color 0.15s;
+  }
+  .why-btn:hover { background: #f0ede6; color: var(--text); }
+  .why-btn .caret { transition: transform 0.25s; display: inline-block; }
+  .why-btn[aria-expanded="true"] { color: var(--text); background: #eeebe4; }
+  .why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+  .why-drawer {
+    display: none;
+    padding: 12px 16px;
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.65;
+    background: #fafaf7;
+    border-top: 1px dashed var(--border);
+  }
+  .why-drawer.open { display: block; }
+  .why-drawer b { color: var(--text); }
+
+  /* ── Footer ──────────────────────────────────────────────── */
+  .alg-foot {
+    max-width: 740px;
+    margin: 24px auto 0;
+    padding: 16px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  .alg-foot strong { color: var(--text); }
+
+  /* ── Utility ─────────────────────────────────────────────── */
+  ul.plain { padding-left: 0; list-style: none; }
+  ul.plain li { padding: 2px 0; font-size: 0.84rem; }
+  ul.plain li::before { content: '→ '; color: var(--accent); font-weight: 700; }
+
+  @media (max-width: 520px) {
+    .rfgrid { grid-template-columns: 1fr; }
+    .branch  { grid-template-columns: 1fr; }
+    .lsgrid  { grid-template-columns: 1fr; }
+    .kv { grid-template-columns: 1fr; }
+    .kv > div:nth-child(odd) { border-bottom: none; padding-bottom: 2px; }
+    .kv > div:nth-child(even) { padding-top: 2px; }
+    .alg-progress { flex-wrap: wrap; }
+  }
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<!-- ── Banner ─────────────────────────────────────────────────── -->
+<div class="stem-banner">
+  <div class="sb-icon">🦴</div>
+  <div>
+    <b>Acute &amp; Subacute Back Pain — Primary Care Management</b>
+    <small>UK primary care pathway · NICE NG59 · Suitable for 10-minute consultations</small>
+  </div>
+</div>
+
+<!-- ── Progress ───────────────────────────────────────────────── -->
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- ── Algorithm Flow ─────────────────────────────────────────── -->
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — sort every back pain into the 3 Ns (Nasty / Nerve-root / Non-specific), screen hard for the serious causes, then treat most as self-limiting mechanical pain while never missing cauda equina, MSCC, fracture, infection or AAA.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation · the 3 Ns (NICE NG59)</span><span class="ttl">Low back pain</span><div class="body">Sort into <b>Nasty</b> (red flags), <b>Nerve-root</b> (radicular/stenosis), or <b>Non-specific</b> (85–90%). History: leg-vs-back pain, neurology, systemic features, trauma, cancer/osteoporosis risk. Examine spine + neurology. <b>Do not image in primary care for non-specific pain.</b></div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — "Nasty": screen red flags</span><span class="ttl">Serious spinal pathology?</span><div class="body"><ul>
+      <li><b>Cauda equina</b> — saddle anaesthesia, new bladder/bowel dysfunction, bilateral sciatica, reduced anal tone</li>
+      <li><b>Cord compression / MSCC</b> — progressive bilateral weakness, UMN signs, cancer history, thoracic pain (sensory level is a late sign — refer before it appears)</li>
+      <li><b>Malignancy</b> — age &gt;50, known cancer, weight loss, pain worse at rest/night</li>
+      <li><b>Infection</b> — fever, IVDU, immunosuppression, recent spinal procedure · <b>Fracture</b> — trauma, or minor trauma + osteoporosis/steroids/age &gt;70 · <b>AAA</b></li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Emergency</span><div class="body"><b>Cauda equina / cord compression / MSCC</b> → immediate referral for emergency MRI + neurosurgery/oncology (MSCC hotline). <b>Infection</b> → same-day bloods + imaging. <b>Fracture</b> → same-day X-ray/CT. <b>AAA</b> → emergency.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — benign</div><div class="box ix"><span class="lbl">Step 2 · Stratify</span><span class="ttl">STarT Back + pattern</span><div class="body">Use <b>STarT Back</b> for chronicity risk. Spot the <b>inflammatory pattern</b> (young, morning stiffness &gt;30 min, improves with exercise, alternating buttock pain) → ?axial spondyloarthritis.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · which of the 3 Ns?</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Non-specific</div><div class="box ix"><span class="ttl">Mechanical (85–90%)</span><div class="body">Pain ± referral to buttock/thigh, no nerve-root signs, normal neurology. Self-limiting in most.</div></div></div>
+      <div class="col"><div class="blabel">Nerve-root</div><div class="box ix"><span class="ttl">Sciatica / stenosis</span><div class="body">Radicular leg pain &gt; back pain, dermatomal, +ve straight-leg raise; or neurogenic claudication (stenosis) eased by flexion.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Inflammatory</div><div class="box ix"><span class="ttl">Axial SpA</span><div class="body">Insidious, age &lt;45, night pain waking 2nd half of night, prolonged morning stiffness, good NSAID response → rheumatology.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · manage</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — analgesia + stay active</span><span class="ttl">Most settle within 6 weeks</span><div class="body"><ul>
+      <li><b>Core message:</b> reassure, <b>stay active, avoid bed rest</b>; self-management + exercise; address yellow flags (psychosocial barriers to recovery).</li>
+      <li><b>Mechanical pain:</b> NSAID at lowest effective dose/shortest time (ibuprofen/naproxen + PPI cover); topical NSAID; paracetamol alone not recommended as sole agent. Consider short muscle relaxant (diazepam ≤5–7 d) for severe spasm only.</li>
+      <li><b>Radicular/neuropathic:</b> amitriptyline or duloxetine; gabapentin/pregabalin per NICE caution. Physiotherapy; consider epidural/specialist if severe and persistent.</li>
+      <li><b>Stay-at-work / graded return advice;</b> group exercise, manual therapy as part of a package. <b>Do not</b> offer routine imaging, opioids long-term, or spinal injections for non-specific pain.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-red">Emergency</span> cauda equina, cord compression / MSCC, fracture with cord risk, spinal infection.</li>
+      <li><span class="pill pill-purple">2WW · NICE NG12</span> unexplained back pain + weight loss aged 60+; thoracic spine pain with a known primary cancer or no mechanical cause → suspected-cancer pathway (consider myeloma screen: FBC, ESR, calcium, protein electrophoresis if bony pain).</li>
+      <li><span class="pill pill-purple">Rheumatology</span> inflammatory back pain / axial SpA. <span class="pill pill-purple">MSK / spinal</span> radiculopathy or disabling pain not settling at 6 weeks; consider MRI only if surgery/injection is contemplated.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · modify &amp; rehab</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; self-management</span><span class="ttl">Recovery, not rest</span><div class="body"><b>Keep active &amp; keep working</b> where possible · structured exercise / physiotherapy · weight management · smoking cessation (disc health) · pacing and ergonomic/posture advice · psychological support / CBT for persistent pain with high distress · fracture-risk (FRAX/DXA) and bone protection if fragility fracture.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Safety-net &amp; follow-up</span><span class="ttl">When to come back</span><div class="body"><b>Same-day / 999</b> if numbness around the back passage/genitals, difficulty passing or controlling urine/bowels, or new weakness in both legs (cauda equina). <b>Urgent</b> if fever with severe pain, or progressive leg weakness. <b>Review:</b> reassess at 2–6 weeks; if not improving, re-screen red flags and reconsider the diagnosis before imaging.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>Cauda equina cannot wait:</b> bilateral sciatica, saddle anaesthesia or new bladder/bowel dysfunction needs same-day emergency MRI — ask about these in <i>every</i> back-pain consultation and document the answer.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       STEP 1 · SAFETY · Red Flags
+  ════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-header-row">
+      <div class="node-head" style="display:flex;gap:10px;align-items:flex-start;">
+        <div class="node-num">1</div>
+        <div class="node-head-text">
+          <span class="node-tag">Safety</span>
+          <h3>Screen for Red Flags — Exclude Serious Spinal Pathology First</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" class="step-check" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Before managing as musculoskeletal back pain, exclude sinister causes. Ask directly about each red flag category.</p>
+      <div class="rfgrid">
+        <div class="rftile"><b>Cauda Equina Syndrome</b> Bilateral leg weakness/numbness, saddle anaesthesia, new bowel/bladder dysfunction → <span class="pill pill-red">999 / Same-day MRI</span></div>
+        <div class="rftile"><b>Spinal Cord Compression</b> Progressive bilateral leg weakness, upper motor neuron signs (clonus, hyperreflexia), thoracic pain + neuro symptoms → <span class="pill pill-red">Same-day ED / MRI</span></div>
+        <div class="rftile"><b>Malignancy</b> Age &gt;50, known primary cancer, unexplained weight loss, pain worse at rest / night, thoracic pain → <span class="pill pill-purple">2WW suspected cancer referral</span></div>
+        <div class="rftile"><b>Spinal Infection</b> Fever, IV drug use, immunosuppression, recent spinal procedure, constant severe pain → <span class="pill pill-red">Same-day bloods + imaging</span></div>
+        <div class="rftile"><b>Vertebral Fracture</b> Sudden onset after trauma OR age &gt;70 / osteoporosis / prolonged steroids with minor trauma → <span class="pill pill-red">Same-day X-ray / CT</span></div>
+        <div class="rftile"><b>Aortic Aneurysm</b> Age &gt;65, male, hypertensive, pulsatile abdominal mass, tearing pain radiating to back → <span class="pill pill-red">999 — do not delay</span></div>
+        <div class="rftile"><b>Inflammatory Arthropathy (AS)</b> Age &lt;40, onset &lt;45, morning stiffness &gt;1hr, improves with exercise, buttock pain alternating sides, wakes at night → <span class="pill pill-purple">Routine rheumatology</span></div>
+        <div class="rftile"><b>Epidural Abscess / Haematoma</b> Severe constant back pain + fever + progressive neurological deficit → <span class="pill pill-red">999 — neurosurgical emergency</span></div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <b>Cauda equina syndrome</b> is the single most important diagnosis to exclude — delay beyond 24–48 hours correlates with permanent bladder/bowel dysfunction. NICE and BSR guidance mandate same-day assessment. <b>Malignancy</b> accounts for ~1% of back pain in primary care but is disproportionately over-represented in medicolegal cases where the diagnosis was delayed. <b>Spinal infection</b> (discitis/osteomyelitis) is rare but catastrophic if missed: mortality ~2–17%, neurological morbidity ~40% without prompt treatment. <b>Aortic dissection/AAA</b> can mimic back pain and carries &gt;80% mortality if ruptured — always consider in the right demographic. Missing any of these constitutes a patient safety incident.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       STEP 2 · DIAGNOSE · History & Confirmation
+  ════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-header-row">
+      <div class="node-head" style="display:flex;gap:10px;align-items:flex-start;">
+        <div class="node-num">2</div>
+        <div class="node-head-text">
+          <span class="node-tag">Diagnose</span>
+          <h3>Confirm the Diagnosis — Targeted History</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" class="step-check" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Characterise the pain to guide classification and treatment. Use the SOCRATES framework with specific back-pain prompts.</p>
+      <div class="kv">
+        <div>Onset &amp; Mechanism</div>
+        <div>Sudden (trauma, disc prolapse) vs insidious (degeneration, malignancy). Lifting/twisting mechanism common in mechanical LBP. Ask about preceding activity.</div>
+        <div>Site &amp; Radiation</div>
+        <div>Localised lumbar → mechanical. Radiation to buttock/thigh → referred. Below knee + dermatomal distribution → radiculopathy (L4/L5/S1). Saddle area → cauda equina.</div>
+        <div>Character</div>
+        <div>Aching / stiffness → musculoskeletal. Shooting / burning → neuropathic. Constant / boring / worse at rest → sinister (malignancy, infection).</div>
+        <div>Severity (NRS 0–10)</div>
+        <div>Document baseline pain score. Guides treatment intensity and follow-up. &gt;7/10 may warrant stronger analgesia and earlier review.</div>
+        <div>Aggravating / Relieving</div>
+        <div>Worse with movement, better with rest → mechanical. Worse at rest / night → inflammatory or sinister. Better with exercise → inflammatory (AS).</div>
+        <div>Associated Symptoms</div>
+        <div>Leg weakness / numbness, bladder / bowel change, fever, weight loss, fatigue. Each significantly alters the differential and urgency.</div>
+        <div>Psychosocial (Yellow Flags)</div>
+        <div>Fear-avoidance beliefs, catastrophising, low mood, workplace stress, previous sick leave for back pain — ask with <b>STarT Back Tool</b> (9-question validated screen). Predicts chronicity.</div>
+        <div>Occupation &amp; Function</div>
+        <div>Manual labour vs sedentary. Time off work already taken. Ability to perform ADLs (dress, walk &gt;100m, stairs). Critical for fit-note decisions.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <b>The STarT Back Screening Tool</b> (Keele) is NICE-recommended (NG59) and stratifies patients into low / medium / high risk of chronicity. High-risk patients (score ≥4 + psychosocial subscale ≥4) need early combined physical and psychological intervention — not just analgesia. <b>Yellow flags</b> (psychosocial risk factors) are stronger predictors of disability at 1 year than the severity of the initial pain. Identifying them early reduces long-term sickness absence by up to 40% (BMJ 2011 RCT).
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       STEP 3 · DIAGNOSE · Classification
+  ════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+    <div class="node-header-row">
+      <div class="node-head" style="display:flex;gap:10px;align-items:flex-start;">
+        <div class="node-num">3</div>
+        <div class="node-head-text">
+          <span class="node-tag">Diagnose</span>
+          <h3>Classify the Back Pain — Subtype &amp; Duration</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" class="step-check" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Classify by cause and duration — this drives the entire treatment pathway. Most (90%+) is non-specific mechanical LBP.</p>
+      <div class="kv">
+        <div>Non-specific LBP (mechanical)</div>
+        <div>No identifiable structural cause. Localised lumbar pain, related to posture/movement. <b>Acute</b> &lt;6 weeks · <b>Subacute</b> 6–12 weeks · <b>Chronic</b> &gt;12 weeks. This is the vast majority of presentations.</div>
+        <div>Radiculopathy (sciatica)</div>
+        <div>Nerve root compression — typically L4 (medial calf), L5 (dorsum foot), S1 (lateral foot/heel). Pain radiates below the knee in dermatomal pattern. Positive straight leg raise (&lt;60°) highly suggestive. Sensory, motor, and reflex changes may be present.</div>
+        <div>Inflammatory (Axial SpA / AS)</div>
+        <div>Meets ASAS criteria: insidious onset age &lt;45, &gt;3 months duration, morning stiffness &gt;1hr, improves with exercise, buttock pain, wakes from sleep. Request HLA-B27 and MRI sacroiliac joints.</div>
+        <div>Specific structural cause</div>
+        <div>Spinal stenosis (bilateral leg claudication, relieved by sitting/leaning forward), osteoporotic fracture, discitis. Requires imaging to confirm.</div>
+        <div>Referred pain</div>
+        <div>Renal colic, AAA, pancreatitis, pelvic pathology. No spinal tenderness. Pain not altered by spinal movement. Investigate accordingly.</div>
+        <div>STarT Back Risk</div>
+        <div><b>Low risk</b> (score 0–3): simple advice + analgesia. <b>Medium risk</b> (score 4+ but psychosocial &lt;4): physiotherapy. <b>High risk</b> (psychosocial subscale ≥4): combined physiotherapy + psychological support.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Accurate classification prevents over-investigation and under-treatment. <b>Radiculopathy</b> with motor deficit needs urgent MRI as surgical decompression within 6–12 weeks improves outcomes. <b>Axial SpA</b> is frequently diagnosed 8–10 years late, causing significant morbidity — early rheumatology referral changes disease trajectory. <b>Non-specific LBP</b> in low-risk patients does NOT benefit from early imaging — X-ray/CT adds no diagnostic value, increases radiation exposure, and paradoxically increases disability by medicalising a self-limiting condition (NICE NG59, Lancet 2018).
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       STEP 4 · DIAGNOSE · Examination
+  ════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="4">
+    <div class="node-header-row">
+      <div class="node-head" style="display:flex;gap:10px;align-items:flex-start;">
+        <div class="node-num">4</div>
+        <div class="node-head-text">
+          <span class="node-tag">Diagnose</span>
+          <h3>Targeted Examination — Spine, Neurology, Abdomen</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" class="step-check" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Systematic examination takes &lt;4 minutes. Focus on neurological examination — findings change urgency and management plan.</p>
+      <div class="kv">
+        <div>Gait &amp; Posture</div>
+        <div>Antalgic gait, inability to weight-bear → significant pathology. Observe lumbar lordosis, scoliosis, spasm.</div>
+        <div>Range of Motion</div>
+        <div>Flexion (finger-to-floor distance), extension, lateral flexion. Global restriction → degenerative. Asymmetric pain on extension → facet joint. Schober's test &lt;5cm expansion → inflammatory disease.</div>
+        <div>Palpation</div>
+        <div>Midline spinous process tenderness → vertebral fracture/infection (significant finding). Paraspinal muscle spasm → mechanical. Sacroiliac joint tenderness → axial SpA.</div>
+        <div>Straight Leg Raise (SLR)</div>
+        <div>Positive &lt;60° with reproduction of radiating leg pain → L4/5/S1 radiculopathy (sensitivity 80%, specificity 40%). Cross-SLR positive → large central disc prolapse.</div>
+        <div>Neurological Lower Limbs</div>
+        <div><b>L4:</b> knee extension, knee reflex, medial calf sensation. <b>L5:</b> big toe extension (EHL), dorsum foot sensation. <b>S1:</b> ankle plantar flexion, ankle reflex, lateral foot sensation. Document any deficit formally.</div>
+        <div>Perianal Sensation</div>
+        <div>If any bladder/bowel symptoms → test saddle sensation IMMEDIATELY. Loss = cauda equina until proven otherwise → same-day MRI.</div>
+        <div>Abdominal Examination</div>
+        <div>Pulsatile epigastric mass → AAA → do not delay, call 999. Renal angle tenderness → pyelonephritis / ureteric colic. Absent bowel sounds + peritonism → emergency.</div>
+        <div>Vital Signs</div>
+        <div>Fever &gt;38°C + back pain → spinal infection or pyelonephritis until proven otherwise. HR/BP if haemodynamic compromise suspected.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Neurological examination determines urgency: <b>motor weakness in the lower limbs</b> indicates significant nerve root compression requiring MRI within 24–48 hours and possible surgical referral. <b>Absent ankle reflexes</b> plus sensory loss in a dermatomal pattern confirms radiculopathy and guides analgesic choice (neuropathic agents). <b>Saddle anaesthesia</b> is an absolute indication for same-day emergency MRI — this is the single most time-critical physical finding in back pain. Documenting findings formally protects both patient and clinician.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       STEP 5 · DIAGNOSE · Investigations
+  ════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+    <div class="node-header-row">
+      <div class="node-head" style="display:flex;gap:10px;align-items:flex-start;">
+        <div class="node-num">5</div>
+        <div class="node-head-text">
+          <span class="node-tag">Diagnose</span>
+          <h3>Investigations — Order Only What Changes Management</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" class="step-check" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Do NOT routinely X-ray non-specific LBP. Investigate only where clinical findings or risk factors indicate sinister cause or guide specialist referral.</p>
+      <div class="kv">
+        <div>Do NOT routinely request</div>
+        <div><span class="pill pill-amber">⚠ Avoid</span> Plain X-ray (low-sensitivity for disc/nerve pathology, radiation, increases medicalisation). MRI in first 6 weeks of uncomplicated mechanical LBP — does not improve outcomes (NICE NG59).</div>
+        <div>Bloods — if red flag suspected</div>
+        <div><span class="pill pill-blue">FBC</span> <span class="pill pill-blue">ESR / CRP</span> <span class="pill pill-blue">LFTs / Ca²⁺ / ALP</span> <span class="pill pill-blue">PSA if male + cancer risk</span> <span class="pill pill-blue">Protein electrophoresis (myeloma)</span>. Elevated ESR/CRP with night pain → infection or malignancy until proven otherwise.</div>
+        <div>HLA-B27 + inflammatory markers</div>
+        <div>If axial SpA suspected (age &lt;45, morning stiffness &gt;1hr, improves with exercise). <span class="pill pill-blue">HLA-B27</span> positive in ~90% of AS. Also <span class="pill pill-blue">CRP</span>, <span class="pill pill-blue">ESR</span>. Refer to rheumatology with results.</div>
+        <div>MSU (urine dipstick / MC&amp;S)</div>
+        <div>If renal angle pain, fever, dysuria → exclude pyelonephritis and renal calculi. Dipstick positive for blood → urine M,C&amp;S and consider ultrasound / urology referral.</div>
+        <div>MRI lumbar spine</div>
+        <div>Indicated: radiculopathy not resolving at 4–6 weeks + considering surgical referral. Any neurology. Cauda equina (same-day emergency). Suspected spinal infection or malignancy. <span class="pill pill-grey">GP can request via agreed local pathway — check your CCB/ICB guidance.</span></div>
+        <div>X-ray lumbar spine</div>
+        <div>Only if suspected vertebral fracture (trauma, osteoporosis, steroid use). Not useful for disc disease. CT preferred if fracture likely and MRI not available.</div>
+        <div>Bone profile / PSA / SPEP</div>
+        <div>Age &gt;50 + back pain + weight loss + night pain: <span class="pill pill-blue">Ca²⁺</span> <span class="pill pill-blue">ALP</span> <span class="pill pill-blue">SPEP</span> <span class="pill pill-blue">PSA</span> to screen for myeloma, bone metastases, primary malignancy.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Routine imaging in non-specific LBP does not reduce pain or disability and is associated with <b>increased healthcare utilisation</b> and paradoxically worse outcomes (Foster et al., <i>Lancet</i> 2018). Incidental findings (disc bulges, Modic changes) are present in 30–40% of asymptomatic individuals and lead to unnecessary anxiety and further investigations. <b>ESR &gt;25mm/hr</b> combined with age &gt;50 and back pain has a likelihood ratio of ~7 for malignancy — order when the clinical picture warrants. Reserve MRI for cases where the result will change management, not as reassurance.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       STEP 6 · REFER · Referral Criteria
+  ════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="REFER" data-step="6">
+    <div class="node-header-row">
+      <div class="node-head" style="display:flex;gap:10px;align-items:flex-start;">
+        <div class="node-num">6</div>
+        <div class="node-head-text">
+          <span class="node-tag">Refer</span>
+          <h3>Referral Criteria — Who, When, and How Urgently</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" class="step-check" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Most back pain is managed in primary care. Refer when neurological findings, red flags, or failure to respond to treatment indicate specialist input.</p>
+      <div class="kv">
+        <div><span class="pill pill-red">999</span> Emergency</div>
+        <div>Cauda equina syndrome (saddle anaesthesia, bilateral leg weakness, new urinary retention/incontinence). Suspected AAA rupture. Suspected spinal cord compression with rapid deterioration.</div>
+        <div><span class="pill pill-red">Same-day</span> Urgent</div>
+        <div>New significant motor deficit (foot drop, quadriceps weakness). Fever + severe back pain (spinal infection). Acute vertebral fracture with cord compression risk.</div>
+        <div><span class="pill pill-purple">2WW</span> Suspected Cancer</div>
+        <div>Unexplained back pain + weight loss + age &gt;60 (NICE NG12 — suspected cancer pathway). Thoracic spine pain + known primary cancer. Persistent thoracic pain without mechanical cause.</div>
+        <div>Urgent (within 2 weeks)</div>
+        <div>Progressive neurological deficit (worsening foot drop, increasing sensory loss). Radiculopathy with severe motor weakness not improving at 6 weeks. Suspected spinal metastases.</div>
+        <div>Routine Neurosurgery / Ortho</div>
+        <div>Radiculopathy not responding to 6–12 weeks of conservative management. MRI-confirmed significant disc prolapse + persistent disability. Spinal stenosis with claudication limiting quality of life.</div>
+        <div>Routine Rheumatology</div>
+        <div>Suspected axial SpA (inflammatory features, HLA-B27 positive). Early-onset (&lt;45 years) back pain unresponsive to simple analgesia with inflammatory features.</div>
+        <div>MSK / Physiotherapy</div>
+        <div>Medium/high STarT Back score — refer to musculoskeletal physiotherapy service directly. High psychosocial risk — refer to combined physical and psychological pain programme (CBT-based).</div>
+        <div>Pain Management</div>
+        <div>Chronic back pain (&gt;3 months) not responding to first-line management. Consider multidisciplinary pain clinic. Avoid escalating opioids without specialist input.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <b>Cauda equina</b> requires decompression within 24–48 hours to prevent permanent bladder/bowel dysfunction — delay is the main driver of litigation in spinal pathology. <b>Foot drop</b> from disc prolapse recovers significantly better if operated within 6 weeks. Delayed referral for <b>axial SpA</b> remains a known quality-of-care failure in UK primary care — NICE guidance supports direct rheumatology referral when inflammatory features are present. <b>Multidisciplinary pain programmes</b> are more effective than surgery or opioids for chronic non-specific LBP (NICE NG59, Cochrane evidence).
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       STEP 7 · TREAT · Analgesic Ladder & Treatment Pathway
+  ════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="TREAT" data-step="7">
+    <div class="node-header-row">
+      <div class="node-head" style="display:flex;gap:10px;align-items:flex-start;">
+        <div class="node-num">7</div>
+        <div class="node-head-text">
+          <span class="node-tag">Treat</span>
+          <h3>Analgesic Ladder &amp; Pharmacological Treatment</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" class="step-check" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Tailor analgesia to pain type (nociceptive vs neuropathic), severity, and comorbidities. Always combine with active physiotherapy — drugs alone are insufficient.</p>
+
+      <!-- Branching by pain type -->
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">Mechanical / Nociceptive</div>
+          <div class="b-drug">Paracetamol ± NSAID <span class="pill pill-teal">1st line</span></div>
+          <div class="b-note">Paracetamol 1g QDS (regular, not PRN). Add topical NSAID first (diclofenac gel 1% TDS) — fewer GI side effects. Oral NSAID if inadequate: ibuprofen 400mg TDS with food or naproxen 500mg BD with PPI if GI risk.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Radiculopathy / Neuropathic</div>
+          <div class="b-drug">Neuropathic agent <span class="pill pill-teal">Add-on</span></div>
+          <div class="b-note">Amitriptyline 10mg nocte (titrate to 25–75mg). Or gabapentin 300mg nocte (titrate to 300mg TDS). Warn: sedation, driving, alcohol interaction. Avoid in elderly without specialist advice.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Acute severe spasm</div>
+          <div class="b-drug">Short-term muscle relaxant <span class="pill pill-amber">Caution</span></div>
+          <div class="b-note">Diazepam 2mg TDS for max 5–7 days only. Warn about addiction potential, driving. Avoid in substance misuse history. NOT for chronic use.</div>
+        </div>
+      </div>
+
+      <!-- Analgesic escalation ladder -->
+      <div class="ladder">
+        <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Paracetamol 1g QDS</b> regular + <b>topical diclofenac 1% gel</b> TDS to affected area. Reassess 1–2 weeks.</span></div>
+        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Add oral NSAID</b> — ibuprofen 400mg TDS with food, or naproxen 500mg BD. <span class="pill pill-amber">Add PPI</span> (omeprazole 20mg OD) if &gt;45 years, GI risk, or concurrent steroid. Review renal function. Short course: 2–4 weeks max.</span></div>
+        <div class="rung"><span class="rn">Step 3 (neuropathic)</span><span class="rt"><b>Amitriptyline 10mg nocte</b> — titrate by 10mg every 2 weeks to 25–75mg. Alternatives: <b>duloxetine 30mg OD</b> (titrate to 60mg) — especially if co-morbid depression. Review at 4 weeks.</span></div>
+        <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Weak opioid</b> — codeine phosphate 30–60mg QDS (short-term, &lt;4 weeks only) — always with regular laxative (macrogol). <span class="pill pill-amber">Constipation warning</span>. Do NOT combine with tramadol.</span></div>
+        <div class="rung"><span class="rn">Step 5 (specialist)</span><span class="rt"><b>Do NOT escalate to strong opioids</b> without pain specialist input. If considering: refer to chronic pain service. Avoid in non-specific chronic LBP — evidence does not support long-term opioids. <span class="pill pill-red">No benefit vs harm in chronic LBP (Cochrane 2023)</span>.</span></div>
+      </div>
+
+      <!-- Additional treatments -->
+      <div class="kv" style="margin-top:14px;">
+        <div>Oral Corticosteroids</div>
+        <div>Not routinely recommended for mechanical LBP. May consider short course (prednisolone 40mg OD for 5 days) for severe acute radiculopathy — discuss with senior / specialist. Limited evidence; significant side effects.</div>
+        <div>Topical Capsaicin</div>
+        <div>Capsaicin 0.075% cream TDS-QDS — useful adjunct for localised chronic pain. Warn: burning sensation on application, takes 4–6 weeks for effect.</div>
+        <div>NSAIDs — Contraindications</div>
+        <div><span class="pill pill-red">Avoid NSAIDs in:</span> eGFR &lt;30, heart failure, uncontrolled hypertension, active peptic ulcer, pregnancy. Check medication list for anticoagulants (bleeding risk).</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <b>Paracetamol alone</b> has low evidence for LBP (NNT ~15) but is safe and appropriate as baseline. <b>NSAIDs</b> have the strongest evidence for short-term pain relief in LBP (NNT ~6, Cochrane 2017) but carry GI, CV, and renal risks — limit to 2–4 weeks. <b>Opioids</b>: systematic reviews show no meaningful benefit over placebo for chronic non-specific LBP, with significant harms (addiction, constipation, falls in elderly, hyperalgesia). NICE NG59 explicitly states do NOT offer opioids for chronic primary pain. <b>Amitriptyline</b> and <b>duloxetine</b> are NICE-recommended for neuropathic pain; duloxetine has the additional advantage of treating co-morbid depression/anxiety, which frequently accompanies chronic back pain.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       STEP 8 · LIFESTYLE · Non-Pharmacological Interventions
+  ════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="LIFESTYLE" data-step="8">
+    <div class="node-header-row">
+      <div class="node-head" style="display:flex;gap:10px;align-items:flex-start;">
+        <div class="node-num">8</div>
+        <div class="node-head-text">
+          <span class="node-tag">Lifestyle</span>
+          <h3>Non-Pharmacological Treatment — The Most Important Step</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" class="step-check" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">NICE NG59 is explicit: exercise and self-management are the primary treatment for back pain. Drugs without these are insufficient. Prescribe activity as medicine.</p>
+      <div class="lsgrid">
+        <div class="lstile"><b>Stay Active — No Bed Rest</b> Strongly advise to continue normal activity as much as pain allows. Bed rest worsens outcomes and promotes chronicity. "Keep moving" is the single most important message.</div>
+        <div class="lstile"><b>Structured Exercise Programme</b> Refer to physiotherapy (NHS or self-refer). Core stabilisation, McKenzie exercises, aerobic exercise all have evidence. Goal: 150 minutes moderate-intensity activity/week. Reduces recurrence by ~30%.</div>
+        <div class="lstile"><b>Manual Therapy / Manipulation</b> NICE-recommended as part of a treatment package. Spinal manipulation (physiotherapist or osteopath), mobilisation, or massage — offer as adjunct to exercise, not standalone. 6–12 sessions over 8–12 weeks.</div>
+        <div class="lstile"><b>Heat Application</b> Topical heat (wheat bag, hot water bottle) — good evidence for short-term relief in acute mechanical LBP. Advise 15–20 minutes TDS. Reduces muscle spasm and improves mobility. Simple, cheap, effective.</div>
+        <div class="lstile"><b>Weight Management</b> BMI &gt;30 significantly increases LBP burden. Refer to NHS weight management programme. Achieving healthy BMI reduces chronic back pain prevalence by ~20%. Brief intervention and referral in consultation.</div>
+        <div class="lstile"><b>Psychological Support (CBT)</b> For medium/high STarT Back scores — refer to pain-focussed CBT, ACT (Acceptance &amp; Commitment Therapy), or mindfulness-based stress reduction. Reduces catastrophising, improves function. As effective as surgery in chronic non-specific LBP.</div>
+        <div class="lstile"><b>Smoking Cessation</b> Smoking impairs disc nutrition and is an independent risk factor for back pain and poor recovery. Refer to NHS Stop Smoking Service or prescribe NRT. Cessation improves both pain and surgical outcomes.</div>
+        <div class="lstile"><b>Sleep Hygiene &amp; Ergonomics</b> Poor sleep amplifies pain perception. Advise: firm mattress (medium-firm evidence-based), sleep position guidance (pillow between knees if side-lying). Workplace ergonomics assessment if sedentary/manual work — via occupational health or self-referral.</div>
+        <div class="lstile"><b>Return to Work</b> Early return (within 2–4 weeks) significantly reduces risk of chronic disability. Use fit note thoughtfully — "may be fit for work with adjustments" is often more appropriate than full incapacity. Discuss with employer-adjusted duties.</div>
+        <div class="lstile"><b>Acupuncture</b> NICE removed strong recommendation but acknowledges patient benefit. Some CCGs/ICBs commission it. Discuss as option if patient requests — 10 sessions. Not routinely commissioned nationally.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <b>Exercise therapy</b> has NNT ~5 for clinically meaningful improvement in chronic LBP — better than any single drug class. <b>Cognitive Behavioural Therapy</b> combined with physiotherapy reduces long-term disability by 35–50% (BEAM trial, BMJ 2004). <b>Return to work</b>: being off work &gt;6 months confers a 50% likelihood of still being off work at 1 year — early intervention is critical. <b>Bed rest</b> is actively harmful: the Cochrane review (2010) shows it worsens pain and disability versus staying active. The message to patients: "Your back is not fragile. Movement heals it."
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       STEP 9 · SAFETY · Follow-Up & Safety-Netting
+  ════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-header-row">
+      <div class="node-head" style="display:flex;gap:10px;align-items:flex-start;">
+        <div class="node-num">9</div>
+        <div class="node-head-text">
+          <span class="node-tag">Safety</span>
+          <h3>Follow-Up, Monitoring &amp; Safety-Netting</h3>
+        </div>
+      </div>
+      <div class="node-tick">
+        <label><input type="checkbox" class="step-check" /><span class="tlbl">Done</span></label>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Provide clear safety-net instructions at every consultation. Document that you have given them. Follow-up intervals depend on risk stratification and treatment.</p>
+      <div class="kv">
+        <div>1–2 weeks</div>
+        <div>Review if: high STarT Back score, started neuropathic analgesia, acute severe episode, or any uncertainty. Assess: pain score, function, medication tolerance, ability to work.</div>
+        <div>4–6 weeks</div>
+        <div>Routine review for subacute or persistent LBP. Assess: response to treatment, physiotherapy attendance, psychosocial factors. Consider MRI if radiculopathy not improving. Reassess STarT Back score.</div>
+        <div>3 months</div>
+        <div>Chronic LBP review. Assess: analgesic appropriateness (are opioids still being taken?), functional improvement, occupational impact, pain management programme referral. Consider medication rationalisation.</div>
+        <div>Ongoing</div>
+        <div>Annual review for chronic LBP patients. Review: all long-term medications (amitriptyline, gabapentin — renal monitoring for gabapentin annually). Assess for depression (PHQ-9) and anxiety (GAD-7) — comorbid in &gt;30% of chronic pain patients.</div>
+        <div><span class="pill pill-red">999 if</span></div>
+        <div>New saddle anaesthesia or perineal numbness. New bilateral leg weakness. New urinary retention or incontinence. Sudden severe onset "worst ever" back pain (AAA / aortic dissection). Leg paralysis.</div>
+        <div><span class="pill pill-red">Same-day GP if</span></div>
+        <div>Fever &gt;38°C with back pain. New foot drop or rapidly progressive neurological deficit. Severe pain unresponsive to analgesia. Suspicion of vertebral fracture after fall. Unexplained weight loss noted.</div>
+        <div>Fit Note Guidance</div>
+        <div>Acute LBP: 1–2 weeks "may be fit for work with adjustments" preferred over full incapacity. Subacute: consider phased return, altered duties. Avoid &gt;6-week sick notes without review — increases chronicity risk.</div>
+        <div>Medication Review</div>
+        <div>NSAIDs: maximum 4–6 weeks then stop or reassess. Opioids: review at each appointment — taper if &gt;4 weeks. Gabapentinoids: Schedule 3 CD (controlled drug) — monitor for misuse. Document review in notes.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <b>Safety-netting</b> for cauda equina must be explicit and documented — courts have found GPs negligent for failure to document this warning. The 10-minute consultation is high-risk: 80% of missed cauda equina diagnoses had a previous GP contact where red flags were present but not acted upon (Hoeritzauer et al., 2020). <b>Long-term opioid review</b>: ~30% of patients prescribed opioids for LBP in UK primary care are still on them at 5 years, despite no evidence of benefit — active deprescribing reduces harm. <b>Gabapentinoids</b> became Schedule 3 Controlled Drugs in 2019 due to misuse potential — require monitoring and cannot be issued by repeat prescription without review.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.alg-flow -->
+
+<!-- ── Footer ──────────────────────────────────────────────────── -->
+<div class="alg-foot" style="max-width:740px;margin:24px 16px 0;">
+  <strong>Educational use only.</strong> Pathway based on: <em>NICE NG59 — Low Back Pain and Sciatica (2016, updated 2020)</em> · NICE NG12 — Suspected Cancer Referral · NICE NG193 — Chronic Pain · BSR Axial Spondyloarthritis Guidelines · STarT Back Screening Tool (Keele University) · CKS Back Pain — Low (2023). Always adapt to individual patient context and local ICB / CCG guidelines. Drug doses are for adults with normal renal/hepatic function — adjust accordingly.
+</div>
+
+<script>
+(function () {
+  const STORAGE_KEY = 'rgp.alg.backpain.v1';
+
+  // Load saved state
+  function loadState() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    } catch { return {}; }
+  }
+
+  function saveState(state) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  // Checkboxes
+  const checks = document.querySelectorAll('.step-check');
+  const pDone  = document.getElementById('pDone');
+  const pFill  = document.getElementById('pFill');
+  const total  = checks.length;
+
+  document.getElementById('pTotal').textContent = total;
+
+  function updateProgress() {
+    const done = document.querySelectorAll('.step-check:checked').length;
+    pDone.textContent = done;
+    pFill.style.width = (done / total * 100) + '%';
+  }
+
+  function applyState(state) {
+    checks.forEach((cb, i) => {
+      const node = cb.closest('.node');
+      cb.checked = !!state['step_' + (i + 1)];
+      node.classList.toggle('done', cb.checked);
+    });
+    updateProgress();
+  }
+
+  // Initialise
+  applyState(loadState());
+
+  checks.forEach((cb, i) => {
+    cb.addEventListener('change', () => {
+      const state = loadState();
+      state['step_' + (i + 1)] = cb.checked;
+      saveState(state);
+      cb.closest('.node').classList.toggle('done', cb.checked);
+      updateProgress();
+    });
+  });
+
+  // Reset
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    if (!confirm('Reset all progress?')) return;
+    saveState({});
+    applyState({});
+  });
+
+  // Why drawers
+  document.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.nextElementSibling.classList.toggle('open', !expanded);
+    });
+  });
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

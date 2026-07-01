@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Temporomandibular Disorders — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="TMD management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"😬",
+  title:"TMDs",
+  stemTitle:"Temporomandibular disorders — ongoing management",
+  stemSub:"Primary-care management of TMD (jaw-joint/muscle pain) \u2014 reassurance, self-care and jaw rest, simple analgesia, and dental/maxillofacial referral when conservative measures fail. CKS \u00b7 2026.",
+  guideline:"NICE CKS",
+  glance:[
+    {lbl:"Nature", val:"Usually self-limiting", sub:"good prognosis"},
+    {lbl:"Core", val:"Self-care + reassurance", sub:"jaw rest, soft diet"},
+    {lbl:"Analgesia", val:"Paracetamol / NSAID", sub:"short-term"},
+    {lbl:"Habits", val:"Reduce clenching", sub:"+ stress, bruxism"},
+    {lbl:"Dental", val:"Bite splint", sub:"via dentist"},
+    {lbl:"Refer", val:"Persistent / red flags", sub:"OMFS / dental"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm TMD and exclude mimics",
+      blocks:[
+        {b:"kv", rows:[
+          ["Features","Jaw/facial pain, worse on chewing; clicking/locking; limited mouth opening; often masticatory-muscle tenderness"],
+          ["Contributors","Bruxism/clenching, stress, malocclusion, trauma, nail-biting, gum-chewing"],
+          ["Exclude","Dental pathology, otitis, parotid disease, giant cell arteritis (older), trigeminal neuralgia, rarely tumour"],
+          ["Reassure","Usually benign and self-limiting with conservative care"]
+        ]},
+        {b:"why", html:"TMD is common, usually <strong>self-limiting</strong>, and responds to conservative self-care \u2014 so the approach is reassurance and simple measures, reserving referral for persistence or red flags. Excluding dental and other facial-pain mimics (including GCA in older patients with jaw claudication) prevents missed diagnoses."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 first-line", title:"Self-care and habit change",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🦷 Jaw rest / soft diet", html:"Rest the jaw, soft foods, avoid wide opening, hard/chewy foods and gum."},
+          {t:"🔥 Heat / massage", html:"Warm compresses and gentle masseter massage; jaw stretching exercises."},
+          {t:"😬 Reduce clenching", html:"Awareness of daytime clenching; avoid nail-biting/pen-chewing; address night bruxism."},
+          {t:"🧠 Stress", html:"Stress management and relaxation \u2014 a major driver of muscle tension."},
+          {t:"💪 Jaw exercises", html:"Simple physiotherapy/jaw exercises can help."},
+          {t:"🫶 Reassurance", html:"Explain the favourable prognosis to reduce anxiety-driven clenching."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication / dental", title:"Simple analgesia and splints",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Simple analgesia", when:"paracetamol / NSAID",
+           html:"Short-term paracetamol 1 g QDS or NSAID (ibuprofen 400 mg TDS; topical or oral) for pain; combine with self-care."},
+          {step:"Step 2", title:"Bite splint (via dentist)", when:"bruxism / persistent",
+           fromLabel:"persistent / nocturnal bruxism",
+           html:"Refer to a dentist for an occlusal splint/bite guard if clenching/grinding is contributing."},
+          {step:"Step 3", title:"Adjuncts", when:"chronic / refractory",
+           fromLabel:"chronic pain",
+           html:"Consider a short course of muscle relaxant, or a low-dose TCA for chronic facial pain (off-label) \u00b1 physiotherapy."}
+        ]},
+        {b:"warn", html:"Keep analgesia short-term; chronic facial pain needs a broader approach (self-care, stress, dental input) rather than escalating painkillers. Reconsider the diagnosis if pain is atypical or progressive."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Response and prognosis",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Pain / function","Each review","Most improve with self-care over weeks"],
+          ["Habits / bruxism","Each review","Reinforce; dental splint if persistent"],
+          ["Red flags","Ongoing","Locking, progressive features, atypical pain \u2192 refer"],
+          ["Mood / stress","As needed","Address contributing stress/anxiety"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"After self-care advice", title:"Review", html:"Most settle; reinforce jaw rest, habit change, analgesia."},
+          {n:"2", when:"If persistent", title:"Dental / splint", html:"Refer to dentist for bite splint; consider physiotherapy."},
+          {n:"3", when:"If refractory / red flags", title:"Specialist", html:"Persistent or atypical \u2192 OMFS/oral medicine."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not improving? Re-check before referral",
+      arrow:"\u2026if jaw pain persists",
+      intro:"Confirm self-care, address habits, and reconsider the diagnosis.",
+      checks:[
+        {b:"1 \u00b7 Self-care", html:"Jaw rest, soft diet, heat, habit reduction genuinely tried?"},
+        {b:"2 \u00b7 Bruxism", html:"Night grinding/clenching addressed (dental splint)?"},
+        {b:"3 \u00b7 Stress", html:"Underlying stress/anxiety managed?"},
+        {b:"4 \u00b7 Mimic?", html:"Dental disease, GCA (older), trigeminal neuralgia, ear/parotid pathology?"},
+        {b:"5 \u00b7 Refer", html:"Persistent/atypical/locking \u2192 dental/OMFS."}
+      ],
+      back:"Self-care + bruxism + stress addressed, mimics excluded \u2192 dental/OMFS referral"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 GCA (older adults)", html:"\u201cIn over-50s: jaw pain on chewing with scalp tenderness, headache or visual symptoms \u2014 seek same-day help (possible temporal arteritis).\u201d"},
+          {t:"🔒 Locking", html:"\u201cIf your jaw locks open or closed, or you can\u2019t open your mouth \u2014 contact us.\u201d"},
+          {t:"⚠️ Atypical pain", html:"\u201cProgressive pain, swelling, numbness, or weight loss \u2014 get checked.\u201d"},
+          {t:"🫶 Prognosis", html:"\u201cMost jaw-joint pain settles with rest and simple measures over a few weeks.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"persistent, atypical, or red flags",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Dental", html:"For occlusal splint, suspected dental cause, or bruxism management."},
+          {t:"OMFS / oral medicine", html:"Persistent/refractory TMD, locking, or significant joint dysfunction."},
+          {t:"Urgent", html:"Suspected GCA (older, jaw claudication + visual/headache) \u2192 same-day; suspected malignancy."},
+          {t:"Chronic pain", html:"Refractory chronic facial pain \u2192 chronic pain/oral medicine."}
+        ]},
+        {b:"say", html:"Jaw-joint pain is common and usually settles with simple measures \u2014 resting the jaw, soft foods, warmth, and easing off clenching, plus short-term painkillers. If grinding is a factor, your dentist can make a bite guard. We\u2019ll review if it doesn\u2019t improve."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

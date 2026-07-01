@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fatty Liver (MASLD) Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f6f2;--surface:#ffffff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;--safety:#dc2626;--safety-bg:#fef2f2;--diagnose:#2563eb;--diagnose-bg:#eff6ff;--treat:#16a34a;--treat-bg:#f0fdf4;--refer:#7c3aed;--refer-bg:#f5f3ff;--lifestyle:#d97706;--lifestyle-bg:#fffbeb;--radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);--font-sans:'DM Sans',system-ui,sans-serif;--font-serif:'Source Serif 4',Georgia,serif;}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;min-height:100vh;padding:0 0 60px}
+.alg-header{background:#064e3b;color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#064e3b,#10b981);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted);transition:all .2s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--treat)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.fib4-box{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:14px 16px;margin:10px 0;font-size:.84rem}
+.fib4-box h4{font-size:.85rem;font-weight:700;color:#166534;margin-bottom:8px}
+.fib4-formula{font-family:monospace;background:#fff;border:1px solid #bbf7d0;border-radius:6px;padding:8px 12px;font-size:.82rem;margin-bottom:8px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.why-btn:hover{color:var(--text)}
+.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+<div class="alg-header">
+  <h1>🫀 Fatty Liver Disease (MASLD / ALD)</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta"><span>NICE NG49</span><span>EASL 2016</span><span>FIB-4 Score</span><span>10-min consult</span></div>
+</div>
+<div class="stem-banner">
+  <div class="sb-icon">🫀</div>
+  <div>
+    <b>Fatty Liver Disease — Incidental Finding or Abnormal LFTs</b>
+    <small>Covers MASLD (NAFLD), ALD, fibrosis staging via FIB-4/ELF, and cirrhosis surveillance</small>
+  </div>
+</div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — confirm MASLD by excluding other causes, then use FIB-4 to triage who can stay in primary care and who needs fibrosis assessment. Treat the metabolic drivers and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Raised ALT + hepatic steatosis</span><div class="body">Usually with metabolic risk — T2DM, obesity, dyslipidaemia, hypertension. Exclude significant alcohol (ALD) and viral causes.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — decompensation / cirrhosis</span><span class="ttl">Decompensation / cirrhosis?</span><div class="body">Jaundice, ascites, variceal bleeding, encephalopathy, or a nodular liver on imaging.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Escalate</span><span class="ttl">Urgent hepatology</span><div class="body">Decompensated liver disease → urgent referral / admission as appropriate.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Investigate · FIB-4</span><span class="ttl">Stage fibrosis risk</span><div class="body">Calculate FIB-4 (age, AST, ALT, platelets). It triages further testing.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · FIB-4 result</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">Low FIB-4</div><div class="box act"><span class="ttl">Primary care</span><div class="body">Weight loss (7–10%), treat metabolic risk, alcohol &lt; limits. Statins are safe and indicated. Recheck FIB-4 periodically.</div></div></div>
+      <div class="col"><div class="blabel">Indeterminate FIB-4</div><div class="box ix"><span class="ttl">Second-line test</span><div class="body"><b>ELF test</b> or transient elastography to clarify fibrosis stage.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">High FIB-4 / ELF</div><div class="box refer"><span class="ttl">Hepatology</span><div class="body">Advanced fibrosis — refer for assessment and HCC surveillance.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-purple">Hepatology</span> advanced fibrosis (high FIB-4/ELF) or cirrhosis → 6-monthly HCC surveillance USS. Decompensation → urgent.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · lifestyle &amp; metabolic treatment</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; metabolic treatment</span><span class="ttl">The core therapy for MASLD</span><div class="body"><b>Weight loss of 7–10%</b> can resolve steatohepatitis and improve fibrosis · Mediterranean diet, reduce sugar/refined carbs · ≥150 min/wk activity · <b>minimise alcohol</b> · optimise <b>T2DM, BP and lipids</b> (consider pioglitazone/GLP-1 agonists in diabetes per specialist). <b>Statins are not contraindicated</b> — treat the high CV risk. Hepatitis A/B vaccination in significant liver disease.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · monitoring &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">Re-stratify &amp; when to escalate</span><div class="body"><b>Recalculate FIB-4 periodically</b> (e.g. every 1–3 years by risk) — fibrosis risk evolves; rising score → re-test (ELF/elastography) or refer. Continue cardiovascular-risk management (the commonest cause of death in MASLD). <b>Urgent hepatology / same-day</b> for jaundice, ascites, GI bleeding (varices) or confusion (decompensation/encephalopathy).</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Statins are not contraindicated in MASLD</b> — these patients are at high cardiovascular risk and should usually be treated. The priority is identifying the minority with advanced fibrosis via FIB-4/ELF.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1" id="node1">
+  <div class="node-header"><div class="node-num">1</div>
+    <div class="node-head"><span class="node-tag">Safety</span><h3>Red Flags — When Fatty Liver Indicates Advanced Disease</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p class="intro-note">Fatty liver is extremely common (25% UK adults have MASLD). Most is benign. The task is identifying the minority who have advanced fibrosis or cirrhosis — they require specialist management.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Jaundice + deranged LFTs</b> Bilirubin &gt;50 µmol/L, coagulopathy (INR &gt;1.5), encephalopathy — <span class="pill pill-red">Same-day</span> Decompensated liver disease / acute liver failure</div>
+      <div class="rftile"><b>Haematemesis / melaena</b> Suspected variceal bleed — <span class="pill pill-red">999</span> Cirrhosis-related portal hypertension complication</div>
+      <div class="rftile"><b>New-onset ascites</b> Abdominal distension, shifting dullness, peripheral oedema — <span class="pill pill-red">Same-day</span> Decompensated cirrhosis. Do NOT drain in primary care</div>
+      <div class="rftile"><b>Hepatic encephalopathy</b> Confusion, asterixis (liver flap), behavioural change in chronic liver disease — <span class="pill pill-red">Same-day</span> Precipitant: infection, GI bleed, constipation, drugs</div>
+      <div class="rftile"><b>Right upper quadrant pain + fever + jaundice</b> Charcot's triad — <span class="pill pill-red">Same-day</span> Ascending cholangitis (not fatty liver — exclude biliary cause)</div>
+      <div class="rftile"><b>ALT &gt;3× ULN (or ALT &gt;120)</b> Needs active investigation — not simple MASLD. Consider acute hepatitis (viral, drug-induced, autoimmune, ischaemic)</div>
+      <div class="rftile"><b>Established cirrhosis + new weight loss or RUQ pain</b> Hepatocellular carcinoma surveillance failure — <span class="pill pill-red">2WW</span> if AFP rising or USS abnormal</div>
+      <div class="rftile"><b>Alcohol: acute binge + deranged LFTs</b> AST:ALT ratio &gt;2:1, GGT markedly elevated — <span class="pill pill-red">Same-day</span> if severe alcoholic hepatitis (Maddrey score &gt;32)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>MASLD (formerly NAFLD) affects 25% of UK adults but progresses to significant fibrosis in only ~5% of patients. The priority is identifying this 5%. Decompensation (jaundice, ascites, encephalopathy, variceal bleed) represents a major turning point — median survival after first decompensation is 1–2 years without transplant. The AST:ALT ratio &gt;2 in a drinker strongly suggests alcoholic hepatitis (AST elevated disproportionately due to pyridoxine deficiency). Acute liver failure (ALT &gt;10× ULN + INR &gt;1.5 + encephalopathy) is a medical emergency requiring same-day specialist assessment.</p></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2" id="node2">
+  <div class="node-header"><div class="node-num">2</div>
+    <div class="node-head"><span class="node-tag">Diagnose</span><h3>Distinguish MASLD from Alcoholic Liver Disease (ALD)</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p>Both present with raised ALT/GGT and fatty infiltration on USS. Distinction determines treatment pathway — critical clinical step.</p>
+    <div class="kv">
+      <div>MASLD criteria (2023)</div><div>Hepatic steatosis on imaging (USS: bright echogenic liver) OR biopsy + AT LEAST ONE metabolic criterion: BMI &gt;25 (or waist &gt;94/80 cm M/F), TG &gt;1.7 mmol/L, HDL &lt;1.0/1.3, BP ≥130/85, HbA1c ≥5.7%, or T2DM/pre-DM. Replaces "NAFLD" (2023)</div>
+      <div>ALD criteria</div><div>Harmful alcohol use: &gt;14 units/week (women) or &gt;21 units/week (men) consistently. AST:ALT ratio often &gt;2:1. GGT markedly elevated. MCV elevated (macrocytosis from alcohol). CDT (carbohydrate-deficient transferrin) elevated</div>
+      <div>Alcohol quantification</div><div>Use AUDIT-C questionnaire. Be direct: "How many units per week?" 1 unit = 10 mL pure alcohol = 1 small glass wine = half pint beer = 1 single spirit. Document actual consumption, not "social drinker"</div>
+      <div>Drug-induced</div><div>Amiodarone, methotrexate, tamoxifen, corticosteroids, antipsychotics (olanzapine), NSAIDs, statins (rare). Review complete drug history including OTC/supplements</div>
+      <div>Other causes to exclude</div><div>Viral hepatitis (Hep B/C surface antigen, anti-HCV), autoimmune hepatitis (ANA, ASMA — especially young women), haemochromatosis (ferritin + transferrin saturation), Wilson's disease (&lt;40y, caeruloplasmin)</div>
+      <div>USS findings</div><div>Bright echogenic liver = steatosis. Irregular surface = cirrhosis. Splenomegaly = portal hypertension. Hepatic nodule = HCC until proven otherwise. Note: USS cannot differentiate fibrosis stages</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>The 2023 nomenclature change from NAFLD to MASLD (metabolic dysfunction-associated steatotic liver disease) is clinically important — it explicitly links fatty liver to metabolic syndrome and removes the stigmatising "non-alcoholic" label. MASLD and ALD frequently co-exist (dual aetiology SLD — MetALD). ALD requires alcohol cessation as the primary treatment; MASLD requires metabolic risk factor reduction. GGT is the most sensitive marker of alcohol use but has low specificity — it is elevated by many drugs, obesity, and DM. MCV &gt;100 fl with raised GGT strongly suggests significant alcohol use.</p></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3" id="node3">
+  <div class="node-header"><div class="node-num">3</div>
+    <div class="node-head"><span class="node-tag">Diagnose</span><h3>Fibrosis Staging — FIB-4 Score in Primary Care</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p>Fibrosis stage determines prognosis and guides referral. FIB-4 is a validated, blood-test-based fibrosis score — calculate for all patients with confirmed MASLD/fatty liver.</p>
+    <div class="fib4-box">
+      <h4>FIB-4 Score Calculator</h4>
+      <div class="fib4-formula">FIB-4 = (Age × AST) ÷ (Platelets × √ALT)</div>
+      <p style="font-size:.8rem;color:#166534;">Units: Age in years, AST and ALT in U/L, Platelets in 10⁹/L</p>
+    </div>
+    <div class="kv">
+      <div>FIB-4 &lt;1.30</div><div><span class="pill pill-green">Low risk</span> NPV 90% for advanced fibrosis. No significant fibrosis likely. Reassure, lifestyle advice, repeat FIB-4 in 2–3 years or if metabolic risk changes</div>
+      <div>FIB-4 1.30–2.67</div><div><span class="pill pill-amber">Indeterminate</span> Intermediate risk. Refer to secondary care for ELF test (Enhanced Liver Fibrosis) or FibroScan (liver stiffness measurement). Do NOT manage as low risk</div>
+      <div>FIB-4 &gt;2.67</div><div><span class="pill pill-red">High risk</span> PPV 65% for advanced fibrosis/cirrhosis. Urgent hepatology referral. FibroScan + ELF to confirm fibrosis stage. May need liver biopsy</div>
+      <div>FIB-4 limitations</div><div>Less accurate in: age &gt;65 (falsely elevated), acute hepatitis (transaminase spike), thrombocytopenia. In elderly (&gt;65): threshold &gt;2.0 = high risk. Always interpret in clinical context</div>
+      <div>NICE NG49 pathway</div><div>NICE recommends FIB-4 as the primary care fibrosis risk stratification tool for all patients with MASLD/ALD. If FIB-4 indeterminate/high: refer for ELF test or FibroScan via community/secondary care pathway</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>FIB-4 was validated in large MASLD/ALD cohorts and has excellent negative predictive value for advanced fibrosis (F3-F4) when &lt;1.30 — most patients will be in this low-risk category and can be safely managed in primary care. The indeterminate range (1.30–2.67) requires secondary care assessment — most will be referred for ELF test or FibroScan (transient elastography). Liver stiffness &gt;8 kPa on FibroScan = significant fibrosis; &gt;12 kPa = probable cirrhosis. Liver biopsy remains the gold standard but carries 0.3% risk of significant bleeding — it is reserved for cases where non-invasive tests are inconclusive.</p></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4" id="node4">
+  <div class="node-header"><div class="node-num">4</div>
+    <div class="node-head"><span class="node-tag">Diagnose</span><h3>Investigations — Baseline Work-Up for Fatty Liver</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>First-line all patients</div><div><span class="pill pill-blue">LFTs</span> (ALT, AST, GGT, ALP, bilirubin, albumin), <span class="pill pill-blue">FBC</span> (platelets — portal hypertension, MCV — alcohol), <span class="pill pill-blue">INR/PT</span> (synthetic function), <span class="pill pill-blue">Fasting lipids</span>, <span class="pill pill-blue">HbA1c</span>, <span class="pill pill-blue">TFTs</span></div>
+      <div>Fibrosis score</div><div><span class="pill pill-blue">FIB-4 calculation</span> — requires age, AST, ALT, platelets. Calculate for all. <span class="pill pill-blue">Ferritin + transferrin saturation</span> (exclude haemochromatosis)</div>
+      <div>Exclude other causes</div><div><span class="pill pill-blue">HBsAg + anti-HBc</span> (Hep B), <span class="pill pill-blue">Anti-HCV</span> (Hep C — offer universal testing per NHS England), <span class="pill pill-blue">ANA + ASMA + anti-LKM1</span> (autoimmune — especially young women with elevated IgG), <span class="pill pill-blue">Caeruloplasmin</span> (&lt;40y, neurological features — Wilson's)</div>
+      <div>USS abdomen</div><div>First-line imaging. Confirms steatosis (echogenicity), excludes biliary obstruction, detects focal liver lesion, estimates liver size, splenomegaly. Does NOT reliably stage fibrosis</div>
+      <div>ELF test</div><div>Enhanced Liver Fibrosis panel (HA, TIMP-1, PIIINP) — available via secondary care or some community pathways. Used for indeterminate FIB-4 (1.30–2.67). ELF ≥9.8 = high risk advanced fibrosis</div>
+      <div>FibroScan (elastography)</div><div>Liver stiffness measurement (kPa). Available via hepatology/community services. Requires fasting 2h prior. Reliable in most patients (failure rate ~5% in obesity — XL probe needed)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>Hepatitis C screening is now universally recommended by NHS England — many patients with hepatitis C acquired it from IVDU in the 1980s-90s and are unaware. Treat-all HCV policy with direct-acting antivirals (DAAs) is highly effective (95%+ cure) and reverses liver fibrosis. Autoimmune hepatitis (AIH) is commonly missed in primary care — it typically presents in young women with elevated ALT, elevated IgG, and positive ANA/ASMA. Missing AIH risks progression to cirrhosis without immunosuppressive treatment. Always check autoimmune markers if LFTs unexpectedly elevated, especially in women of reproductive age.</p></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5" id="node5">
+  <div class="node-header"><div class="node-num">5</div>
+    <div class="node-head"><span class="node-tag">Diagnose</span><h3>Cardiovascular Risk — The Overlooked Priority in MASLD</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p>Patients with MASLD are more likely to die from cardiovascular disease than liver disease. CV risk assessment is a core part of MASLD management — not an afterthought.</p>
+    <div class="kv">
+      <div>CV death dominates</div><div>Most common cause of death in MASLD patients is CVD (MI, stroke) — not liver failure. MASLD confers 2× increased CV risk independently of traditional risk factors. QRISK3 score mandatory</div>
+      <div>QRISK3 calculation</div><div>Calculate for all MASLD patients. MASLD is associated with metabolic syndrome (T2DM, hypertension, dyslipidaemia, central obesity) — all multiplicative CV risk factors. Treat all modifiable components</div>
+      <div>Statin use in MASLD</div><div><span class="pill pill-green">Statins ARE safe</span> in MASLD. Transient ALT rise (&lt;3× ULN) is acceptable and does not require statin discontinuation. Statins reduce CV mortality in MASLD. Do NOT withhold statins for abnormal LFTs in MASLD if QRISK3 ≥10%</div>
+      <div>T2DM management</div><div>GLP-1 agonists (semaglutide, liraglutide) reduce hepatic steatosis and fibrosis. Pioglitazone improves liver histology in MASH (NASH). Metformin: neutral on liver. SGLT-2 inhibitors: hepatic benefit under study</div>
+      <div>Blood pressure</div><div>Hypertension is present in 40% of MASLD patients. RAAS blockade (ACE inhibitor/ARB) preferred — potential hepatoprotective effect. Target &lt;130/80 mmHg</div>
+      <div>Dyslipidaemia</div><div>Atorvastatin first-line for elevated LDL. Fenofibrate for hypertriglyceridaemia &gt;5 mmol/L. Omega-3 fatty acids 2–4 g/day reduce TG by 20–30%</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>The most important clinical message about MASLD: patients die from heart attacks, not liver failure (in the majority). This changes the priority — treating metabolic risk factors (hypertension, dyslipidaemia, DM, obesity) is the primary intervention. The fear of statin-induced liver damage in MASLD is evidence-based myth — statins are safe in MASLD and beneficial for CV risk. GLP-1 agonists (semaglutide) have RCT evidence for significant fibrosis regression in MASH (NASH) — the LEAN and SUSTAIN trials showed histological improvement — making them a priority choice for DM patients with MASLD. Pioglitazone is the only drug with NICE-approved evidence for liver-specific benefit in MASH.</p></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6" id="node6">
+  <div class="node-header"><div class="node-num">6</div>
+    <div class="node-head"><span class="node-tag">Refer</span><h3>Referral Criteria — Who Needs Hepatology</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">Same-day</span></div><div>Decompensated cirrhosis (jaundice + ascites + encephalopathy), variceal bleed, acute liver failure (ALT &gt;10× ULN + INR &gt;1.5 + encephalopathy)</div>
+      <div><span class="pill pill-red">Urgent (2WW)</span></div><div>Hepatocellular carcinoma suspected (rising AFP, new liver lesion on USS, known cirrhosis + RUQ pain/weight loss)</div>
+      <div>Hepatology (routine)</div><div>FIB-4 &gt;2.67 (high-risk fibrosis). FIB-4 1.30–2.67 (indeterminate — refer for ELF/FibroScan). ALT persistently &gt;3× ULN without clear cause. Suspected autoimmune hepatitis. Confirmed Hep B or Hep C</div>
+      <div>Community FibroScan</div><div>Many CCGs/ICBs have community transient elastography services — refer directly without hepatology outpatient for indeterminate FIB-4. Check local pathway</div>
+      <div>Bariatric surgery pathway</div><div>BMI &gt;40 (or &gt;35 with comorbidities) + MASLD with advanced fibrosis — bariatric surgery offers greatest liver fibrosis regression. Tier 3 weight management referral first</div>
+      <div>Primary care manage</div><div>FIB-4 &lt;1.30 + stable LFTs (ALT &lt;3× ULN) + metabolic risk factor management ongoing. Review FIB-4 every 2–3 years. USS every 3 years if steatosis confirmed without fibrosis risk</div>
+      <div>Alcohol services</div><div>Harmful or dependent drinking + abnormal LFTs — refer to community alcohol team (SMART Recovery, CGL, Turning Point). Assisted alcohol withdrawal if dependent</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>The NICE NG49 pathway establishes FIB-4 as the primary care gatekeeper test — most patients with low FIB-4 never need hepatology referral. This is deliberate: hepatology services are overwhelmed by MASLD referrals because of the high prevalence. The community FibroScan pathway in many ICBs allows primary care to directly access elastography for indeterminate-risk patients without specialist review — check local referral pathways. HCC surveillance (USS 6-monthly + AFP) is only indicated for patients with confirmed cirrhosis — not for all MASLD patients — this distinction avoids over-investigation.</p></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7" id="node7">
+  <div class="node-header"><div class="node-num">7</div>
+    <div class="node-head"><span class="node-tag">Treat</span><h3>Treatment — Weight Loss, Pharmacotherapy &amp; Cirrhosis Complications</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">MASLD without diabetes</div>
+        <div class="b-drug">Weight loss target <span class="pill pill-teal">&gt;5–7%</span></div>
+        <div class="b-note">≥5% weight loss reduces steatosis. ≥7% improves NASH (inflammation). ≥10% reduces fibrosis. Diet + exercise programme — structured tier 2/3 service referral. No licensed drugs for MASLD in primary care (as of 2025)</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">MASLD + Type 2 DM</div>
+        <div class="b-drug">GLP-1 agonist <span class="pill pill-teal">Priority choice</span></div>
+        <div class="b-note">Semaglutide (Ozempic/Wegovy), liraglutide (Victoza). Reduces hepatic steatosis + inflammation + fibrosis. Weight loss + glycaemic benefit. 2WW: pioglitazone if GLP-1 contraindicated</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">ALD — alcohol cessation</div>
+        <div class="b-drug">Assisted withdrawal + CIWA <span class="pill pill-teal">Essential</span></div>
+        <div class="b-note">Chlordiazepoxide reducing regimen for alcohol withdrawal. Thiamine 100 mg TDS (Wernicke's prophylaxis). Acamprosate or naltrexone for relapse prevention. Alcohol team referral</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Cirrhosis care</span><span class="rt"><b>Established cirrhosis (FIB-4 &gt;2.67 confirmed)</b>: HCC surveillance = USS abdomen + AFP 6-monthly. Varices screen = OGD at diagnosis. Propranolol if varices present</span></div>
+      <div class="rung"><span class="rn">Ascites</span><span class="rt"><b>Diuretics</b> (spironolactone 100 mg + furosemide 40 mg) — specialist-initiated for cirrhotic ascites. Low-salt diet (&lt;5 g/day). Avoid NSAIDs (precipitate AKI in cirrhosis)</span></div>
+      <div class="rung"><span class="rn">Vaccinations</span><span class="rt"><b>All MASLD patients</b>: Hepatitis A + B vaccine. Influenza annually. COVID-19 up to date. Pneumococcal. Cirrhosis = immunocompromised — check vaccination status</span></div>
+      <div class="rung"><span class="rn">Drugs to avoid</span><span class="rt"><b>Hepatotoxic drugs in liver disease</b>: NSAIDs (GI bleed + AKI risk), opioids (encephalopathy risk), benzodiazepines (encephalopathy), amoxicillin-clavulanate (hepatotoxic), metformin if eGFR &lt;30</span></div>
+      <div class="rung"><span class="rn">Resmetirom</span><span class="rt"><b>Resmetirom (Rezdiffra)</b> — first FDA-approved drug for MASH with fibrosis (F2-F3) as of 2024. Not yet approved in UK (NICE review pending). Licensed in USA. Watch for NICE guidance update</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>Weight loss of ≥10% is the only intervention consistently shown to reverse significant hepatic fibrosis in MASLD — this is the treatment target. For context: losing 10 kg in a 100 kg patient. GLP-1 agonists (semaglutide) show 59% resolution of MASH and 43% improvement in fibrosis stage in the ESSENCE trial (NEJM 2024) — making them the most promising pharmacological option. Resmetirom received FDA approval in March 2024 (first ever MASH-specific drug) — UK NICE approval pending. HCC risk increases exponentially with fibrosis stage: cirrhosis carries 2–4% annual HCC risk, making 6-monthly surveillance cost-effective.</p></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8" id="node8">
+  <div class="node-header"><div class="node-num">8</div>
+    <div class="node-head"><span class="node-tag">Lifestyle</span><h3>Lifestyle Interventions — The Foundation of MASLD Treatment</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Weight loss target: ≥10%</b> The single most effective intervention. For 90 kg patient: lose 9 kg. Achievable with 500–750 kcal/day deficit. Structured programme (Tier 3 service) superior to self-directed. Set 6-month target.</div>
+      <div class="lstile"><b>Mediterranean diet</b> Highest evidence base for MASLD. Olive oil, oily fish, legumes, vegetables, nuts, wholegrains. Reduces hepatic fat by 20–30% over 6 months independently of calorie restriction. Avoid ultra-processed foods.</div>
+      <div class="lstile"><b>Fructose / sugar reduction</b> High fructose intake (fizzy drinks, fruit juice, processed food) directly drives hepatic de novo lipogenesis. Eliminate all sugar-sweetened beverages. Significant and rapid effect on liver fat.</div>
+      <div class="lstile"><b>Aerobic exercise</b> 150–300 min/week moderate intensity reduces liver fat by 5–10% even without weight loss. Walking, cycling, swimming. Exercise alone (without weight loss) still meaningfully reduces steatosis.</div>
+      <div class="lstile"><b>Resistance training</b> 2–3 sessions/week improves insulin sensitivity and reduces liver fat. Combined aerobic + resistance is more effective than either alone. Particularly beneficial in sarcopenic obesity.</div>
+      <div class="lstile"><b>Alcohol abstinence / reduction</b> Any alcohol worsens MASLD — threshold effect. Even moderate drinking (&gt;7 units/week) accelerates fibrosis progression. Recommend complete abstinence if MASH or fibrosis present. AUDIT-C screening.</div>
+      <div class="lstile"><b>Coffee</b> 3–4 cups regular coffee/day associated with 40% lower cirrhosis risk and HCC risk reduction. Mechanism: cafestol + kahweol + antioxidants reduce hepatic inflammation. Evidence supports encouraging coffee (not decaf).</div>
+      <div class="lstile"><b>Sleep / circadian rhythm</b> OSA (obstructive sleep apnoea) is independently associated with more severe NAFLD. Screen for OSA in obese patients with MASLD (STOP-BANG questionnaire). CPAP treatment may reduce hepatic inflammation.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>The fructose reduction message is highly practical and evidence-based: fructose is metabolised almost exclusively in the liver (unlike glucose which is utilised systemically), promoting hepatic de novo lipogenesis. Cutting sugary drinks alone can reduce liver fat by 5–10% in months. Coffee is one of the most surprising evidence-based interventions for liver disease — multiple large studies show dose-dependent protection against cirrhosis and HCC. The OSA-MASLD link is important: untreated OSA causes intermittent hypoxia which independently activates hepatic stellate cells and drives fibrosis. CPAP treatment shows histological improvement in some studies.</p></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9" id="node9">
+  <div class="node-header"><div class="node-num">9</div>
+    <div class="node-head"><span class="node-tag">Safety</span><h3>Follow-Up, Monitoring &amp; Cirrhosis Surveillance</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Low risk (FIB-4 &lt;1.30)</div><div>Annual LFTs + metabolic check (HbA1c, lipids, BP, weight). Repeat FIB-4 every 2–3 years or if metabolic risk worsens. USS every 3 years if steatosis confirmed. No hepatology referral needed</div>
+      <div>Indeterminate / post-FibroScan</div><div>Follow specialist advice. If no significant fibrosis confirmed (liver stiffness &lt;8 kPa): manage as low risk, recheck in 2–3 years. If F2+ fibrosis: 12-monthly hepatology review</div>
+      <div>Confirmed cirrhosis</div><div><b>HCC surveillance</b>: USS abdomen + AFP every 6 months. OGD every 1–2 years (variceal surveillance). Annual bloods: FBC, LFTs, INR, albumin, creatinine. Child-Pugh / MELD scoring</div>
+      <div>ALD monitoring</div><div>LFTs monthly for 3 months after cessation, then 3-monthly. GGT normalises in 4–6 weeks of abstinence. MCV normalises in 3 months. GGT persistence suggests ongoing drinking</div>
+      <div><span class="pill pill-red">Safety-net — same-day</span></div><div>New jaundice, new ascites, confusion/encephalopathy, haematemesis, melaena, acute RUQ pain with fever (cholangitis)</div>
+      <div><span class="pill pill-red">Safety-net — 48h</span></div><div>Rising bilirubin, worsening oedema on diuretics, new peripheral oedema in known liver disease, significant ALT rise (&gt;3× rise from baseline)</div>
+      <div>Avoid in cirrhosis</div><div>NSAIDs (AKI + GI bleed), opioids (encephalopathy), benzodiazepines (sedation + encephalopathy), high-dose paracetamol (max 2 g/day in cirrhosis — not 4 g), herbal supplements (hepatotoxic)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>HCC surveillance (6-monthly USS + AFP) is highly cost-effective for cirrhotic patients — it doubles the chance of detecting HCC at a curative stage. The AFP threshold for concern is rising levels rather than a single absolute value — a doubling in AFP over 3 months in a cirrhotic patient is highly suspicious. NSAIDs in cirrhosis are particularly dangerous: they inhibit prostaglandin synthesis which maintains renal perfusion in the vasodilated cirrhotic patient — even a short course can precipitate acute hepatorenal syndrome. The "maximum 2 g paracetamol in cirrhosis" rule is often not communicated — patients assume paracetamol is safer than NSAIDs in liver disease, which is partially true at lower doses but not at standard OTC doses (1g × 4).</p></div>
+  </div>
+</div>
+
+</div>
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on: NICE NG49 (Non-alcoholic fatty liver disease 2016, updated 2023), EASL Clinical Practice Guidelines (NAFLD 2016, MAFLD 2023), BSG NAFLD Guidelines 2021, NICE NG188 (Alcohol-use disorders). Nomenclature updated to MASLD (2023). Always adapt to individual patient context.
+</div>
+<script>
+(function(){
+  const KEY='rgp.alg.fatty-liver.v1';
+  const nodes=document.querySelectorAll('.node[data-step]');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=nodes.length;
+  document.getElementById('pTotal').textContent=total;
+  function save(){const state={};nodes.forEach(n=>{state[n.dataset.step]=n.querySelector('input[type=checkbox]').checked;});localStorage.setItem(KEY,JSON.stringify(state));}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(s[n.dataset.step]){cb.checked=true;n.classList.add('done');}});}catch(e){}}
+  function updateProgress(){const done=document.querySelectorAll('.node.done').length;pDone.textContent=done;pFill.style.width=((done/total)*100)+'%';}
+  nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');cb.addEventListener('change',()=>{n.classList.toggle('done',cb.checked);save();updateProgress();});});
+  document.querySelectorAll('.why-btn').forEach(btn=>{btn.addEventListener('click',()=>{const expanded=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!expanded));btn.nextElementSibling.classList.toggle('open',!expanded);});});
+  document.getElementById('resetBtn').addEventListener('click',()=>{if(!confirm('Reset all progress?'))return;nodes.forEach(n=>{n.querySelector('input[type=checkbox]').checked=false;n.classList.remove('done');});localStorage.removeItem(KEY);updateProgress();});
+  load();updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

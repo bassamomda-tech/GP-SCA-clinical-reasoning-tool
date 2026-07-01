@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PPI Prescribing &amp; Deprescribing — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="PPI prescribing &amp; deprescribing management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"💊",
+  title:"PPI Prescribing & Deprescribing — Step-by-Step",
+  stemTitle:"Proton pump inhibitors &mdash; when to start, what dose, when to gastroprotect, and how to step down or stop",
+  stemSub:"A practical medicines-optimisation protocol: pick a cheap first-line PPI, treat at the right dose for a defined course, gastroprotect only the patients who need it, troubleshoot non-response, then review every long-term PPI and deprescribe safely \u2014 managing rebound. NICE CG184 / CKS Dyspepsia & GORD.",
+  guideline:"NICE CG184 \u00b7 CKS Dyspepsia/GORD",
+  glance:[
+    {lbl:"First-line", val:"Omeprazole / lansoprazole", sub:"CAPSULES \u2014 cheapest; never brand"},
+    {lbl:"Standard dose", val:"Omeprazole 20mg OD", sub:"lansoprazole 30mg OD"},
+    {lbl:"Acute course", val:"4\u20138 weeks then review", sub:"prescribe as acute, not repeat"},
+    {lbl:"Gastroprotection", val:"Lansoprazole 15\u201330mg", sub:"omeprazole 20mg"},
+    {lbl:"On clopidogrel", val:"Avoid omeprazole/esomeprazole", sub:"use lansoprazole / pantoprazole"},
+    {lbl:"Deprescribe", val:"Halve \u2192 stop / PRN", sub:"warn re rebound; alginate cover"}
+  ],
+  flow:[
+
+    {t:"node", d:"found", n:"1", tag:"Before you prescribe", title:"Confirm the indication, treat the cause, give lifestyle advice",
+      blocks:[
+        {b:"kv", rows:[
+          ["Confirm indication","Uninvestigated dyspepsia, proven GORD, peptic ulcer / H. pylori, or gastroprotection \u2014 follow NICE CG184. Document the indication on the prescription."],
+          ["Review culprit drugs","Stop/reduce drugs that cause or worsen dyspepsia where possible: NSAIDs, aspirin/antiplatelets, calcium-channel blockers, nitrates, theophylline, bisphosphonates, corticosteroids, SSRIs, TCAs, anticholinergics."],
+          ["Lifestyle for all","Weight loss, smaller meals, avoid trigger foods (fatty/spicy, coffee, chocolate, alcohol), stop smoking, don't eat 3\u20134h before bed, raise the head of the bed, manage stress."],
+          ["Try an alginate first","Consider a trial of an alginate/antacid (e.g. Gaviscon Advance\u00ae) and review in 1 month if referral not needed."],
+          ["Alarm features?","Dysphagia, weight loss, GI bleed/anaemia, persistent vomiting, epigastric mass, age \u226555 with new/persistent symptoms \u2192 urgent endoscopy / 2WW (Step 8) before settling on a PPI."]
+        ]},
+        {b:"warn", html:"Patients going for <b>endoscopy</b> should be <b>off PPI for \u22652 weeks</b> (and off NSAIDs) \u2014 PPIs mask malignancy and cause false-negative H. pylori tests. Don't start a PPI that delays needed investigation."}
+      ]},
+
+    {t:"node", d:"life", n:"2", tag:"Non-drug · core", title:"Lifestyle & step-down", blocks:[{b:"tiles", v:"life", items:[{t:"🍽️ Lifestyle", html:"Weight loss, smaller meals, avoid late eating/triggers, raise bed-head, reduce alcohol/caffeine."},{t:"📉 Deprescribe", html:"Step down to lowest effective dose or on-demand once healed; avoid indefinite PPI by default."},{t:"🚭 Smoking", html:"Stop smoking \u2014 worsens reflux and dyspepsia."}]},{b:"why", html:"Lifestyle measures and a deliberate step-down plan are central \u2014 the commonest PPI error is leaving patients on full dose indefinitely."}]},
+    {t:"node", d:"drug", n:"3", tag:"Step 1 \u00b7 choose & start", title:"Pick a cheap PPI, treat at full dose for a set course",
+      blocks:[
+        {b:"p", html:"<b>No PPI is more effective than another</b> \u2014 choose on cost. <b>First-line: omeprazole 20 mg or lansoprazole 30 mg CAPSULES once daily</b> (tablets are 4\u20137\u00d7 dearer; branded ~13\u00d7). Prescribe as an <b>acute</b> 1-month script with a review \u2014 only move to repeat once a long-term need is established."},
+        {b:"table", head:["PPI","Standard (full) dose","Low / on-demand","High / double dose"], rows:[
+          ["Omeprazole (1st line)","20mg once daily","10mg once daily","40mg once daily (40mg BD severe oesophagitis)"],
+          ["Lansoprazole (1st line)","30mg once daily","15mg once daily","30mg twice daily"],
+          ["Esomeprazole","20mg once daily","\u2014","40mg once daily"],
+          ["Pantoprazole / rabeprazole","40mg / 20mg once daily","20mg / 10mg","BD (non-formulary in many areas)"]
+        ]},
+        {b:"kv", rows:[
+          ["Typical courses","Uninvestigated dyspepsia / GORD: full dose <b>4 weeks</b> (8 weeks if oesophagitis/ulcer). Then step down to lowest effective dose or stop."],
+          ["How to take","30\u201360 minutes <b>before</b> breakfast (or before the main meal) for best acid suppression."],
+          ["Swallowing difficulty / NG tube","Esomeprazole gastro-resistant capsules/tablets (dispersible), lansoprazole orodispersible (Fastab), or omeprazole dispersible tablets \u2014 see SPC."]
+        ]},
+        {b:"why", html:"PPIs are over-prescribed and frequently continued without indication. Front-loading a <strong>defined course on an acute script</strong>, set at full dose, with the expectation of step-down, is the single most effective way to prevent a 4-week course becoming a 4-year one."}
+      ]},
+
+    {t:"node", d:"drug", n:"4", tag:"Step 2 \u00b7 gastroprotection", title:"Gastroprotect only the patients who actually need it",
+      blocks:[
+        {b:"p", html:"Co-prescribe a PPI with ulcer-causing drugs (NSAIDs, aspirin/antiplatelets, anticoagulants, corticosteroids, SSRIs) <b>only when GI-bleed risk factors are present</b>. Dose: <b>lansoprazole 15\u201330mg</b> or <b>omeprazole 20mg</b>."},
+        {b:"table", head:["Drug","Gastroprotect when\u2026","Notes"], rows:[
+          ["NSAID","Age \u226565, high dose/prolonged use, prior ulcer/bleed, comorbidity (CVD, diabetes, renal/hepatic), on steroid/anticoagulant/antiplatelet/SSRI, OA/RA, chronic back pain","Co-prescribe PPI for the duration of the NSAID; use lowest NSAID dose; stop PPI when NSAID stops"],
+          ["Aspirin / antiplatelet","On clopidogrel, high-dose aspirin, elderly, prior ulcer/bleed, H. pylori, dual antiplatelet, or on an NSAID/SSRI/anticoagulant","Lowest aspirin dose (75mg); <b>not</b> enteric-coated"],
+          ["Anticoagulant (DOAC / warfarin)","Prior ulcer/bleed, or on antiplatelet/NSAID/SSRI","Monitor INR closely if starting a PPI with warfarin"],
+          ["Corticosteroid","Prior ulcer, older age, serious comorbidity, or on NSAID/anticoagulant/antiplatelet/SSRI","Steroid alone is low-risk; PPI for the steroid course only"]
+        ]},
+        {b:"warn", html:"<b>Clopidogrel interaction:</b> omeprazole and esomeprazole inhibit CYP2C19 and may reduce clopidogrel activation (MHRA) \u2014 <b>avoid them; use lansoprazole or pantoprazole instead.</b>"},
+        {b:"why", html:"Younger patients (&lt;45) with no GI-bleed risk factors on an NSAID alone usually <strong>do not</strong> need a PPI. Reflexive co-prescribing of a PPI with every NSAID is a major driver of inappropriate long-term use \u2014 and the PPI should stop when the precipitating drug stops."}
+      ]},
+
+    {t:"node", d:"drug", n:"5", tag:"Step 3 \u00b7 not responding?", title:"Inadequate control \u2014 optimise before escalating",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"4a", title:"Check adherence, timing & lifestyle", when:"first move",
+           html:"Confirm the PPI is taken <b>30\u201360 min before food</b>, daily, and that trigger foods/alcohol/smoking and culprit drugs (NSAIDs, CCBs, nitrates, bisphosphonates) have been addressed."},
+          {step:"4b", title:"Increase to high/double dose", when:"persistent symptoms",
+           fromLabel:"adherence + timing confirmed",
+           html:"Step up to a <b>double dose</b> (e.g. omeprazole 40mg OD, or split BD) for proven/severe oesophagitis or refractory GORD. Review at 4\u20138 weeks."},
+          {step:"4c", title:"Switch to a different PPI", when:"non-response to first PPI",
+           fromLabel:"dose optimised, still symptomatic",
+           html:"Some patients respond to a different PPI \u2014 trial an alternative (e.g. omeprazole \u2192 lansoprazole or esomeprazole) before declaring failure."},
+          {step:"4d", title:"Test & treat H. pylori", when:"not already done",
+           fromLabel:"persistent dyspepsia",
+           html:"Stop PPI for <b>2 weeks</b>, then stool antigen / urea breath test. If positive: 7-day triple therapy (e.g. omeprazole 20\u201340mg BD + amoxicillin 1g BD + clarithromycin 500mg BD, or metronidazole if penicillin-allergic)."},
+          {step:"4e", title:"Add an alginate / reassess diagnosis", when:"breakthrough or atypical",
+           fromLabel:"still symptomatic on optimised PPI",
+           html:"Add an alginate (Gaviscon Advance\u00ae) for breakthrough symptoms. Reconsider functional dyspepsia, cardiac/biliary causes, or the need for endoscopy (Step 8)."}
+        ]}
+      ]},
+
+    {t:"node", d:"monitor", n:"6", tag:"Step 4 \u00b7 review long-term use", title:"Review every long-term PPI \u2014 at least annually",
+      blocks:[
+        {b:"p", html:"Every patient on a PPI beyond a defined course needs an <b>annual</b> risk\u2013benefit review. First decide whether there is a <b>valid indication to continue long-term</b> \u2014 if so, use the lowest effective dose; if not, deprescribe (Step 6)."},
+        {b:"tiles", v:"refer", items:[
+          {t:"Continue long-term", html:"<b>Barrett's oesophagus</b> (omeprazole 20\u201340mg), <b>severe oesophagitis (LA grade C/D)</b>, <b>oesophageal stricture</b>, <b>Zollinger\u2013Ellison</b>, recurrent bleeding ulcer of unclear cause, ongoing high-risk gastroprotection, PERT, palliative symptom control."},
+          {t:"Don't review (yet)", html:"Healing courses still within their window, current H. pylori eradication, awaiting/under gastro review or endoscopy, grade 3\u20134 oesophagitis, immunosuppression/chemo \u2014 leave until the course/episode completes."},
+          {t:"Step down candidates", html:"On a healing/high dose with symptoms controlled \u2192 step to the lowest maintenance dose and review for stopping 2\u20133 months later."},
+          {t:"Stop candidates", html:"On maintenance &gt;8 weeks with no valid long-term indication \u2192 trial stopping (Step 6)."}
+        ]},
+        {b:"warn", html:"Weak but biologically-plausible long-term associations to weigh in older/frail/care-home/immunocompromised patients: <b>C. difficile</b> &amp; enteric infections, <b>fractures</b>, <b>hypomagnesaemia</b>, <b>B12</b> &amp; iron deficiency, acute interstitial nephritis, community-acquired pneumonia, hyponatraemia."}
+      ]},
+
+    {t:"node", d:"drug", n:"7", tag:"Step 5 \u00b7 deprescribe", title:"Step down or stop \u2014 and manage rebound",
+      blocks:[
+        {b:"p", html:"For mild\u2013moderate GORD/dyspepsia (no erosions/Barrett's) controlled and asymptomatic \u2265 2 weeks, or where the precipitating drug has stopped \u2014 <b>deprescribe</b>. Choose one route and warn about rebound acid hypersecretion."},
+        {b:"ladder", steps:[
+          {step:"6a", title:"Halve the dose for 4 weeks", when:"on a standard/high dose",
+           html:"Reduce to the <b>lowest effective dose</b> (e.g. omeprazole 20mg \u2192 10mg) for ~4 weeks. Tapering reduces rebound acid hypersecretion."},
+          {step:"6b", title:"Stop, or switch to PRN / on-demand", when:"controlled on low dose",
+           fromLabel:"tolerating the lower dose",
+           html:"Stop the PPI, or move to <b>on-demand / PRN</b> use for symptom flares. Encourage self-purchase of an OTC alginate/antacid for breakthrough symptoms."},
+          {step:"6c", title:"Cover rebound with an alginate", when:"during/after tapering",
+           fromLabel:"warn the patient in advance",
+           html:"Rebound heartburn for 1\u20132 weeks after stopping is a <b>pharmacological effect, not relapse</b> \u2014 cover with an alginate/antacid and reassure; don't reflexively restart the PPI."},
+          {step:"6d", title:"Stop the PPI if the trigger drug stops", when:"gastroprotection only",
+           fromLabel:"NSAID/antiplatelet/steroid discontinued",
+           html:"If the PPI was purely for gastroprotection and the culprit drug has stopped, <b>stop the PPI</b> too."}
+        ]},
+        {b:"kv", rows:[
+          ["Monitor","Review at <b>4\u20138 weeks</b> for heartburn, epigastric pain, weight loss/appetite loss."],
+          ["If symptoms return significantly","Revert to the lowest effective dose; if continuing, review annually; consider H. pylori testing (off PPI 2 weeks)."],
+          ["Hospital / antibiotics","If on antibiotics with high C. diff risk, consider holding the PPI (alginate cover) and review the need afterwards."]
+        ]}
+      ]},
+
+    {t:"node", d:"safety", n:"8", tag:"Step 6 \u00b7 safety", title:"Rebound, side effects & what to warn about",
+      blocks:[
+        {b:"table", head:["Issue","What happens","What to do"], rows:[
+          ["Rebound acid hypersecretion","Transient heartburn 1\u20132 weeks after stopping/reducing","Pre-warn; taper; alginate cover; reassure \u2014 don't restart reflexively"],
+          ["Common short-term effects","Headache, diarrhoea, nausea, abdominal pain, constipation, rash","Usually mild/reversible; trial a different PPI or stop if troublesome"],
+          ["Hypomagnesaemia","Cramps, arrhythmia (esp. with diuretics/digoxin, long-term)","Check Mg in long-term users with symptoms; correct; review need"],
+          ["B12 / iron deficiency","Reduced absorption over years","Check if anaemic/fatigued long-term; supplement"],
+          ["C. difficile / pneumonia / AIN","Uncommon long-term associations","Lowest effective dose; review need; stop if AIN suspected"]
+        ]},
+        {b:"warn", html:"<b>Don't ignore new alarm features on a PPI:</b> dysphagia, weight loss, GI bleeding/iron-deficiency anaemia, persistent vomiting or an epigastric mass \u2192 urgent endoscopy / 2WW even if symptoms seem controlled."}
+      ]},
+
+    {t:"loop", icon:"\uD83D\uDD01", title:"Symptoms back after stopping? Re-run the checklist",
+      arrow:"\u2026before committing to a long-term PPI",
+      intro:"Most 'I can't come off it' is rebound or a fixable trigger, not a true long-term indication.",
+      checks:[
+        {b:"1 \u00b7 Rebound?", html:"&lt;2 weeks since stopping? Cover with alginate and reassure."},
+        {b:"2 \u00b7 Indication", html:"Is there a valid long-term indication (Barrett's, severe oesophagitis, stricture, ZES, gastroprotection)?"},
+        {b:"3 \u00b7 Trigger drugs", html:"NSAID, aspirin, CCB, nitrate, bisphosphonate, steroid still on board?"},
+        {b:"4 \u00b7 Lifestyle", html:"Weight, late meals, alcohol, smoking, trigger foods addressed?"},
+        {b:"5 \u00b7 H. pylori", html:"Tested (off PPI 2 weeks)? Eradicate if positive."}
+      ],
+      back:"Valid long-term indication \u2192 lowest effective dose + annual review; alarm features \u2192 endoscopy"},
+
+    {t:"node", d:"refer", n:"9", tag:"Refer / investigate", title:"When to scope or refer",
+      arrow:"alarm features or refractory disease",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"2WW / urgent endoscopy", html:"Dysphagia at any age; age \u226555 with weight loss + upper-abdominal pain/reflux/dyspepsia; GI bleed, iron-deficiency anaemia, persistent vomiting or epigastric mass (NICE NG12)."},
+          {t:"Refractory GORD/dyspepsia", html:"Persistent symptoms despite optimised dose, switch, H. pylori eradication and lifestyle \u2192 gastroenterology."},
+          {t:"Confirmed complications", html:"Barrett's oesophagus, severe (LA C/D) oesophagitis, stricture \u2192 specialist follow-up + long-term PPI."},
+          {t:"Suspected Zollinger\u2013Ellison", html:"Refractory/multiple ulcers, diarrhoea, very high PPI requirement \u2192 gastroenterology (fasting gastrin)."}
+        ]},
+        {b:"say", html:"We'll treat this with a short, full-strength course rather than an open-ended one, sort out anything that's triggering it, and then step you down to the lowest dose \u2014 or stop \u2014 once you're settled. A bit of heartburn for a week or two when we reduce it is expected and fixable, not a sign you need it forever."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

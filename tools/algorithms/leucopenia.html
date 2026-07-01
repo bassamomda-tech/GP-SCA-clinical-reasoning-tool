@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leucopenia Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'DM Sans',system-ui,-apple-system,sans-serif;
+  font-size:15px; line-height:1.6; color:#1a1a1a;
+  background:#fafafa; padding:2rem 1rem 4rem;
+}
+.alg-wrap { max-width:820px; margin:0 auto; }
+.stem-banner {
+  background:linear-gradient(135deg,#dc2626 0%,#b91c1c 100%);
+  color:#fff; padding:1.5rem 2rem; border-radius:12px;
+  margin-bottom:1.5rem; display:flex; align-items:center; gap:1rem;
+  box-shadow:0 4px 12px rgba(220,38,38,0.15);
+}
+.sb-icon { font-size:2.5rem; line-height:1; }
+.stem-banner b { display:block; font-size:1.2rem; margin-bottom:0.25rem; }
+.stem-banner small { opacity:0.9; font-size:0.9rem; }
+
+.alg-progress {
+  background:#fff; border-radius:8px; padding:1rem 1.5rem;
+  display:flex; align-items:center; gap:1rem; margin-bottom:2rem;
+  box-shadow:0 1px 3px rgba(0,0,0,0.08);
+}
+.alg-progress > span:first-child { font-weight:600; color:#666; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.5px; }
+.pcount { font-weight:700; color:#dc2626; font-size:1.1rem; white-space:nowrap; }
+.pbar { flex:1; height:8px; background:#e5e5e5; border-radius:999px; overflow:hidden; }
+.pbar-fill { height:100%; background:linear-gradient(90deg,#dc2626,#b91c1c); width:0%; transition:width 0.4s ease; }
+.reset {
+  background:#f5f5f5; border:1px solid #d4d4d4; padding:0.4rem 1rem;
+  border-radius:6px; font-size:0.85rem; font-weight:600; cursor:pointer;
+  transition:all 0.2s;
+}
+.reset:hover { background:#e5e5e5; }
+
+.alg-flow { display:flex; flex-direction:column; gap:0; }
+.connector {
+  width:3px; background:linear-gradient(180deg,#dc2626 0%,#b91c1c 100%);
+  height:24px; margin:0 auto; opacity:0.3;
+}
+
+.node {
+  background:#fff; border-radius:10px; overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  border-left:5px solid #dc2626;
+  transition:all 0.3s;
+}
+.node.done { opacity:0.6; }
+.node.done .node-head h3 { text-decoration:line-through; }
+
+.node-num {
+  position:absolute; top:1rem; right:1rem;
+  width:32px; height:32px; border-radius:50%;
+  background:#dc2626; color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:0.9rem;
+}
+.node { position:relative; }
+
+.node-head {
+  background:linear-gradient(135deg,#fef2f2 0%,#fee2e2 100%);
+  padding:1.5rem 4rem 1rem 1.5rem;
+}
+.node-tag {
+  display:inline-block; padding:0.25rem 0.75rem;
+  background:rgba(220,38,38,0.15); color:#dc2626;
+  border-radius:4px; font-size:0.75rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:0.5px; margin-bottom:0.5rem;
+}
+.node[data-type="DIAGNOSE"] { border-left-color:#2563eb; }
+.node[data-type="DIAGNOSE"] .node-num { background:#2563eb; }
+.node[data-type="DIAGNOSE"] .node-head { background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 100%); }
+.node[data-type="DIAGNOSE"] .node-tag { background:rgba(37,99,235,0.15); color:#2563eb; }
+
+.node[data-type="TREAT"] { border-left-color:#059669; }
+.node[data-type="TREAT"] .node-num { background:#059669; }
+.node[data-type="TREAT"] .node-head { background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%); }
+.node[data-type="TREAT"] .node-tag { background:rgba(5,150,105,0.15); color:#059669; }
+
+.node[data-type="REFER"] { border-left-color:#7c3aed; }
+.node[data-type="REFER"] .node-num { background:#7c3aed; }
+.node[data-type="REFER"] .node-head { background:linear-gradient(135deg,#faf5ff 0%,#f3e8ff 100%); }
+.node[data-type="REFER"] .node-tag { background:rgba(124,58,237,0.15); color:#7c3aed; }
+
+.node[data-type="LIFESTYLE"] { border-left-color:#ea580c; }
+.node[data-type="LIFESTYLE"] .node-num { background:#ea580c; }
+.node[data-type="LIFESTYLE"] .node-head { background:linear-gradient(135deg,#fff7ed 0%,#ffedd5 100%); }
+.node[data-type="LIFESTYLE"] .node-tag { background:rgba(234,88,12,0.15); color:#ea580c; }
+
+.node-head h3 { font-size:1.3rem; font-weight:700; color:#1a1a1a; line-height:1.3; }
+
+.node-tick {
+  position:absolute; top:1.5rem; right:4rem;
+}
+.node-tick label {
+  display:flex; align-items:center; gap:0.5rem; cursor:pointer;
+  padding:0.4rem 0.8rem; border-radius:6px;
+  transition:background 0.2s;
+}
+.node-tick label:hover { background:rgba(0,0,0,0.05); }
+.node-tick input[type="checkbox"] {
+  width:20px; height:20px; cursor:pointer;
+  accent-color:#dc2626;
+}
+.tlbl { font-size:0.85rem; font-weight:600; color:#666; }
+
+.node-body { padding:1.5rem; }
+.node-body > p:first-child { margin-bottom:1rem; color:#404040; }
+
+.kv {
+  display:grid; grid-template-columns:minmax(140px,200px) 1fr;
+  gap:0.75rem 1.5rem; margin-top:1rem;
+}
+.kv > div:nth-child(odd) {
+  font-weight:600; color:#525252; font-size:0.9rem;
+}
+.kv > div:nth-child(even) { color:#262626; }
+
+.rfgrid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:0.75rem; margin-top:1rem;
+}
+.rftile {
+  background:#fef2f2; border-left:3px solid #dc2626;
+  padding:0.75rem 1rem; border-radius:6px; font-size:0.9rem;
+  line-height:1.5;
+}
+.rftile b { color:#dc2626; display:block; margin-bottom:0.25rem; }
+
+.lsgrid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:0.75rem; margin-top:1rem;
+}
+.lstile {
+  background:#f0fdf4; border-left:3px solid:#059669;
+  padding:0.75rem 1rem; border-radius:6px; font-size:0.9rem; line-height:1.5;
+}
+.lstile b { color:#059669; display:block; margin-bottom:0.25rem; }
+
+.pill {
+  display:inline-block; padding:0.15rem 0.6rem;
+  border-radius:4px; font-size:0.8rem; font-weight:600;
+  margin:0 0.2rem;
+}
+.pill-red { background:#fef2f2; color:#dc2626; border:1px solid #fecaca; }
+.pill-purple { background:#faf5ff; color:#7c3aed; border:1px solid #e9d5ff; }
+.pill-blue { background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe; }
+.pill-teal { background:#f0fdfa; color:#0d9488; border:1px solid #99f6e4; }
+.pill-amber { background:#fffbeb; color:#d97706; border:1px solid #fde68a; }
+.pill-green { background:#f0fdf4; color:#059669; border:1px solid #86efac; }
+.pill-grey { background:#f5f5f5; color:#525252; border:1px solid #e5e5e5; }
+
+.branch {
+  display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem;
+}
+.b-card {
+  flex:1; min-width:240px;
+  background:#fafafa; border:2px solid #e5e5e5;
+  border-radius:8px; padding:1rem; transition:all 0.2s;
+}
+.b-card:hover { border-color:#059669; box-shadow:0 4px 12px rgba(5,150,105,0.1); }
+.b-cond {
+  font-size:0.85rem; font-weight:600; color:#737373;
+  text-transform:uppercase; letter-spacing:0.5px; margin-bottom:0.5rem;
+}
+.b-drug {
+  font-size:1.1rem; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;
+}
+.b-note { font-size:0.9rem; color:#525252; line-height:1.5; }
+
+.ladder { display:flex; flex-direction:column; gap:0.5rem; margin-top:1rem; }
+.rung {
+  display:flex; align-items:center; gap:1rem;
+  background:#f0fdf4; border-left:4px solid #059669;
+  padding:0.75rem 1rem; border-radius:6px;
+}
+.rn {
+  font-size:0.8rem; font-weight:700; color:#059669;
+  background:#fff; padding:0.3rem 0.7rem; border-radius:4px;
+  min-width:60px; text-align:center;
+}
+.rt { flex:1; font-size:0.95rem; color:#262626; }
+
+.why-row {
+  border-top:1px solid #e5e5e5;
+  padding:0;
+}
+.why-btn {
+  width:100%; background:#fafafa; border:none;
+  padding:0.75rem 1.5rem; text-align:left; cursor:pointer;
+  font-weight:600; color:#525252; font-size:0.9rem;
+  display:flex; align-items:center; justify-content:space-between;
+  transition:background 0.2s;
+}
+.why-btn:hover { background:#f0f0f0; }
+.caret {
+  transition:transform 0.3s; display:inline-block;
+  color:#a3a3a3; font-size:1.2rem;
+}
+.why-btn[aria-expanded="true"] .caret { transform:rotate(180deg); }
+.why-drawer {
+  max-height:0; overflow:hidden;
+  transition:max-height 0.4s ease, padding 0.4s ease;
+  background:#fafafa; padding:0 1.5rem;
+}
+.why-drawer.open {
+  max-height:800px; padding:1rem 1.5rem 1.5rem;
+}
+.why-drawer p { color:#404040; line-height:1.7; margin-bottom:0.75rem; }
+.why-drawer p:last-child { margin-bottom:0; }
+
+.alg-foot {
+  margin-top:3rem; padding:1.5rem; background:#fff;
+  border-radius:8px; border-left:4px solid #d97706;
+  font-size:0.9rem; color:#525252; line-height:1.6;
+}
+.alg-foot strong { color:#1a1a1a; }
+
+@media(max-width:640px) {
+  body { padding:1rem 0.5rem 3rem; }
+  .stem-banner { padding:1rem 1.25rem; flex-direction:column; text-align:center; }
+  .sb-icon { font-size:2rem; }
+  .alg-progress { flex-wrap:wrap; padding:0.75rem 1rem; }
+  .kv { grid-template-columns:1fr; gap:0.5rem; }
+  .kv > div:nth-child(odd) { font-weight:700; color:#1a1a1a; }
+  .node-num { top:0.75rem; right:0.75rem; width:28px; height:28px; font-size:0.8rem; }
+  .node-tick { position:static; margin:0.75rem 1.5rem 0; }
+  .node-head { padding:1.25rem 1.25rem 0.75rem; }
+  .node-head h3 { font-size:1.1rem; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+<div class="alg-wrap">
+
+<div class="stem-banner">
+  <div class="sb-icon">⚪</div>
+  <div>
+    <b>Leucopenia — Low White Cell Count</b>
+    <small>Investigation and management pathway for WCC <4 × 10⁹/L in adults</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — neutropenic sepsis is the emergency; otherwise think drugs, viruses, autoimmune disease and marrow. Quantify the neutrophil count, treat the cause, protect the patient, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Low WCC / neutrophils</span><div class="body">Confirm with a repeat and blood film. Quantify the <b>neutrophil</b> count — that drives infection risk.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — sepsis / agranulocytosis</span><span class="ttl">Neutropenic sepsis or agranulocytosis?</span><div class="body">Neutrophils &lt;0.5 (or &lt;1.0 falling) + fever/unwell → 999. New drug (carbimazole, clozapine, DMARD, sulfasalazine) + sore throat/fever.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Admit</span><span class="ttl">999 / emergency admission</span><div class="body">Neutropenic sepsis is a medical emergency — admit for IV antibiotics. Stop the suspected drug immediately.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Investigate</span><span class="ttl">Repeat + film + cause</span><div class="body">B12/folate, autoimmune screen, HIV; review drugs; check for other cytopenias.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · cause</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Drugs / infection</div><div class="box ix"><span class="ttl">Commonest</span><div class="body">Chemo, carbimazole, clozapine, DMARDs, sulfasalazine; viral infection.</div></div></div>
+      <div class="col"><div class="blabel">Autoimmune / benign</div><div class="box ix"><span class="ttl">Often isolated</span><div class="body">SLE, Felty's; <b>ethnic benign neutropenia</b> (stable, well).</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Marrow</div><div class="box ix"><span class="ttl">With other cytopenias</span><div class="body">MDS, leukaemia, aplasia, hypersplenism, B12/folate deficiency.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">999 / same-day</span> febrile neutropenia. <span class="pill pill-purple">Haematology</span> persistent/unexplained neutropenia, pancytopenia or blasts.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · treat cause &amp; protect</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Treat the cause &amp; protect the patient</span><span class="ttl">Remove drivers, reduce infection risk</span><div class="body"><b>Stop/withhold the culprit drug</b> (carbimazole, clozapine, sulfasalazine, DMARDs) in consultation with the specialist; replace B12/folate; treat infection. Counsel on <b>infection precautions</b> and to seek same-day help for fever/sore throat. Note <b>ethnic benign neutropenia</b> is stable and needs no treatment, just recognition.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · monitoring &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">Recheck &amp; when to escalate</span><div class="body"><b>Repeat FBC + film</b> to confirm and trend; mild isolated post-viral neutropenia usually recovers. <b>999 / same-day FBC</b> for any fever or sore throat on carbimazole/clozapine/DMARDs (agranulocytosis can be fatal). New <b>other cytopenias or blasts</b> → urgent haematology. Provide written safety-net advice for drug-related neutropenia.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>Safety rule:</b> any patient on carbimazole or clozapine with a sore throat or fever needs an urgent FBC and same-day assessment — agranulocytosis can be fatal.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-num">1</div>
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Red Flags — Exclude Neutropenic Sepsis and Bone Marrow Failure</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Neutropenic sepsis is a medical emergency. Screen for severe infection and pancytopenia immediately.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Neutrophils <0.5 × 10⁹/L</b> Severe neutropenia + fever >38°C or sepsis signs → 999 (neutropenic sepsis, mortality 10-20%)</div>
+      <div class="rftile"><b>Fever with neutropenia</b> Temp >38°C with neutrophils <1 × 10⁹/L → same-day assessment (sepsis risk even if clinically well)</div>
+      <div class="rftile"><b>Pancytopenia</b> WCC low + Hb <10 + platelets <100 → same-day haematology (aplastic anaemia, acute leukaemia, MDS)</div>
+      <div class="rftile"><b>Sepsis criteria</b> NEWS2 ≥5, SBP <90, lactate >2, confusion → 999 (septic shock in neutropenic patient has 40% mortality)</div>
+      <div class="rftile"><b>Mouth ulcers + sore throat</b> Severe mucositis, inability to swallow, drooling → same-day (agranulocytosis, risk of aspiration pneumonia)</div>
+      <div class="rftile"><b>Chemotherapy within 21 days</b> Any fever + recent chemo → 999 (presumed neutropenic sepsis until proven otherwise)</div>
+      <div class="rftile"><b>Purpura or bleeding</b> Petechiae, spontaneous bruising, mucosal bleeding → same-day haematology (DIC, aplastic anaemia, acute leukaemia)</div>
+      <div class="rftile"><b>Drug-induced agranulocytosis</b> New medication <3 months (clozapine, carbimazole, sulfasalazine) + WCC <1 → same-day (stop drug immediately)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Neutropenic sepsis</b> (neutrophils <0.5 × 10⁹/L + fever) is a medical emergency. Without neutrophils, infections progress rapidly to septic shock. Mortality is 10-20% even with prompt antibiotics. NICE NG151 mandates immediate admission and IV antibiotics within 1 hour.</p>
+      <p><b>Pancytopenia</b> suggests bone marrow failure (aplastic anaemia, MDS, acute leukaemia). Aplastic anaemia has 50% 5-year mortality without treatment. Same-day haematology enables urgent bone marrow biopsy and supportive care (transfusions, G-CSF).</p>
+      <p><b>Drug-induced agranulocytosis</b> occurs with clozapine (0.8% incidence), carbimazole (0.3%), and sulfasalazine (0.1%). Onset is typically 1-3 months after starting. Stopping the drug immediately is life-saving; continuing risks fatal sepsis.</p>
+      <p><b>Chemotherapy-induced neutropenia</b> peaks at day 7-14 post-treatment. Any fever in this window is neutropenic sepsis until proven otherwise, even if the patient looks well. Blood cultures are positive in only 20-30%, so treat empirically without waiting for results.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-num">2</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Confirm Leucopenia — Repeat FBC and Check Absolute Neutrophil Count</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Confirm persistent leucopenia and determine if neutropenia is the primary issue. A single low WCC can be a lab error or transient viral infection.</p>
+    <div class="kv">
+      <div>Repeat FBC</div>
+      <div>Repeat within <b>1 week</b> if WCC 3-4 × 10⁹/L with no fever. If WCC <3 or neutrophils <1.5, repeat within <b>48 hours</b>.</div>
+      
+      <div>Absolute neutrophil count</div>
+      <div>Request <span class="pill pill-blue">full differential</span> to calculate absolute neutrophil count (ANC). ANC is WCC × neutrophil %. ANC <1.5 = neutropenia, <0.5 = severe.</div>
+      
+      <div>Leucopenia vs neutropenia</div>
+      <div><b>Leucopenia</b> (WCC <4) can be due to low neutrophils, lymphocytes, or both. <b>Neutropenia</b> (ANC <1.5) is the clinically significant concern (infection risk).</div>
+      
+      <div>Blood film</div>
+      <div>Request <span class="pill pill-blue">blood film</span> if WCC <3, persistent neutropenia, or abnormal cell flags. Identifies blasts, dysplasia, atypical lymphocytes.</div>
+      
+      <div>Ethnic variation</div>
+      <div><b>Benign ethnic neutropenia (BEN):</b> ANC 1.0-1.5 × 10⁹/L in Black African, Afro-Caribbean, Middle Eastern populations. Lifelong, asymptomatic, no infection risk. No treatment needed.</div>
+      
+      <div>Persistent leucopenia</div>
+      <div>Confirmed if WCC <4 × 10⁹/L on <b>two occasions</b> separated by ≥1 week, or single WCC <3 with symptoms (fever, mouth ulcers, recurrent infections).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Transient leucopenia</b> is common after viral infections (influenza, EBV, CMV). WCC can drop to 2-3 × 10⁹/L transiently but recovers within 2 weeks. Repeating FBC avoids unnecessary investigations and anxiety.</p>
+      <p><b>Absolute neutrophil count</b> is the key number. A patient with WCC 3.5, neutrophils 40% (ANC 1.4) has mild neutropenia with low infection risk. A patient with WCC 3.5, neutrophils 20% (ANC 0.7) has moderate neutropenia requiring investigation.</p>
+      <p><b>Benign ethnic neutropenia (BEN)</b> affects 25-50% of Black African and Afro-Caribbean individuals. It is a normal variant, not a disease. ANC is typically 1.0-1.5 × 10⁹/L, stable over time, with no increased infection risk. Avoid unnecessary haematology referrals by recognizing BEN.</p>
+      <p><b>Blood film review</b> can detect myelodysplasia (dysplastic neutrophils, hyposegmented nuclei) and early leukaemia (blasts). Automated counters miss morphological abnormalities in 10-15% of cases.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-num">3</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Classification — Identify Severity and Pattern of Cytopenia</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Classify by severity of neutropenia and whether other cell lines are affected. This determines infection risk and urgency of referral.</p>
+    <div class="kv">
+      <div>Mild neutropenia</div>
+      <div>ANC 1.0-1.5 × 10⁹/L. <b>Low infection risk.</b> Causes: BEN, viral infection, mild drug effect. Monitor if asymptomatic.</div>
+      
+      <div>Moderate neutropenia</div>
+      <div>ANC 0.5-1.0 × 10⁹/L. <b>Moderate infection risk.</b> Causes: Autoimmune (SLE, RA), drugs (azathioprine, MTX), chronic infection (HIV, TB). Requires investigation.</div>
+      
+      <div>Severe neutropenia</div>
+      <div>ANC <0.5 × 10⁹/L. <b>High infection risk (40% within 3 months).</b> Causes: Chemotherapy, aplastic anaemia, drug-induced agranulocytosis. Same-day haematology referral.</div>
+      
+      <div>Isolated neutropenia</div>
+      <div>Low neutrophils only. Hb and platelets normal. Differential: BEN, autoimmune neutropenia, chronic idiopathic neutropenia, drug-induced.</div>
+      
+      <div>Pancytopenia</div>
+      <div>Low WCC + Hb + platelets. <b>Bone marrow failure.</b> Causes: Aplastic anaemia, MDS, acute leukaemia, myelofibrosis, megaloblastic anaemia (B12/folate deficiency).</div>
+      
+      <div>Lymphopenia</div>
+      <div>Lymphocytes <1 × 10⁹/L. Causes: HIV, steroids, chemotherapy, SLE, sarcoidosis. Less clinically significant than neutropenia unless HIV suspected.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Infection risk correlates with ANC.</b> Mild neutropenia (ANC 1.0-1.5) has <5% annual infection risk. Moderate neutropenia (ANC 0.5-1.0) has 10-20% risk. Severe neutropenia (ANC <0.5) has 40% risk of serious infection within 3 months without treatment.</p>
+      <p><b>Isolated neutropenia</b> is more likely to be benign (BEN, autoimmune) than pancytopenia. If Hb and platelets are normal, the bone marrow is functioning. Pancytopenia suggests marrow failure or infiltration and requires urgent haematology assessment.</p>
+      <p><b>Lymphopenia</b> is less clinically important than neutropenia. Lymphocytes <0.5 × 10⁹/L suggests immunodeficiency (HIV, chemotherapy, immunosuppressants). Check HIV serology if risk factors present.</p>
+      <p><b>Benign ethnic neutropenia (BEN)</b> is stable over time. ANC remains 1.0-1.5 × 10⁹/L for years without progression. If ANC is falling or <1.0, BEN is unlikely; investigate further.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-num">4</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Targeted Examination — Identify Infection, Splenomegaly, and Autoimmune Signs</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Examine for active infection, organomegaly, and signs of underlying systemic disease causing neutropenia.</p>
+    <div class="kv">
+      <div>Vital signs</div>
+      <div>Fever >38°C → infection (requires same-day assessment if ANC <1). Tachycardia, hypotension → sepsis (999 if ANC <0.5).</div>
+      
+      <div>Mouth and throat</div>
+      <div>Inspect oral mucosa. <b>Ulcers, gingivitis, mucositis</b> → agranulocytosis (severe neutropenia cannot mount inflammatory response). White patches → oral candidiasis (immunosuppression).</div>
+      
+      <div>Lymph nodes</div>
+      <div>Palpate cervical, axillary, inguinal chains. <b>Generalized lymphadenopathy</b> → HIV, SLE, lymphoma. Tender nodes → viral infection (EBV, CMV).</div>
+      
+      <div>Spleen</div>
+      <div>Percuss and palpate left upper quadrant. <b>Splenomegaly</b> → sequestration (Felty syndrome, portal hypertension), infiltration (lymphoma, myelofibrosis), chronic infection (EBV, malaria).</div>
+      
+      <div>Skin</div>
+      <div>Petechiae, purpura → thrombocytopenia (aplastic anaemia, acute leukaemia). Malar rash, photosensitivity → SLE. Cellulitis, abscesses → infection in neutropenic patient.</div>
+      
+      <div>Joints</div>
+      <div>Synovitis → RA (Felty syndrome: RA + splenomegaly + neutropenia). SLE arthritis (small joints, non-erosive).</div>
+      
+      <div>Chest</div>
+      <div>Auscultate for crackles (pneumonia). Reduced air entry → effusion (SLE, lymphoma). Neutropenic patients may have minimal signs despite severe pneumonia.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Oral ulcers and gingivitis</b> are hallmarks of severe neutropenia. Without neutrophils, the mouth cannot mount an inflammatory response to oral bacteria. Severe mucositis with ANC <0.5 increases aspiration pneumonia risk.</p>
+      <p><b>Splenomegaly</b> in neutropenia suggests Felty syndrome (RA + splenomegaly + neutropenia). Affects 1% of RA patients, typically after 10+ years of disease. Spleen sequesters neutrophils, worsening neutropenia. Splenectomy may be required if recurrent infections.</p>
+      <p><b>Malar rash + lymphopenia + neutropenia</b> is classic for SLE. 50% of SLE patients develop leucopenia. ANA is positive in 95%. Anti-dsDNA and anti-Sm antibodies are specific for SLE.</p>
+      <p><b>Absent infection signs</b> in neutropenic patient does not exclude serious infection. Neutrophils are required for pus formation, fever, and inflammatory markers. CRP can be normal despite pneumonia or sepsis. Low threshold for imaging and empirical antibiotics.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-num">5</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Investigations — Bloods, Autoimmune Screen, and Viral Serology</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Investigate based on the pattern of cytopenia, severity of neutropenia, and clinical context. Target investigations to the likely differential.</p>
+    <div class="kv">
+      <div>Baseline bloods</div>
+      <div><span class="pill pill-blue">FBC + differential</span> <span class="pill pill-blue">Reticulocyte count</span> (bone marrow response) <span class="pill pill-blue">Blood film</span> (dysplasia, blasts) <span class="pill pill-blue">CRP</span> (infection, inflammation)</div>
+      
+      <div>B12 and folate</div>
+      <div><span class="pill pill-blue">Vitamin B12</span> <span class="pill pill-blue">Serum folate</span> — megaloblastic anaemia causes pancytopenia. Easy to miss, easy to treat. Check in all unexplained cytopenias.</div>
+      
+      <div>Autoimmune screen</div>
+      <div>If ANC <1.0 persistent: <span class="pill pill-blue">ANA</span> (SLE), <span class="pill pill-blue">RF</span> (RA/Felty), <span class="pill pill-blue">Anti-dsDNA</span> (SLE-specific), <span class="pill pill-blue">Immunoglobulins</span> (exclude hypogammaglobulinaemia).</div>
+      
+      <div>Viral serology</div>
+      <div><span class="pill pill-blue">HIV test</span> (lymphopenia, neutropenia), <span class="pill pill-blue">EBV/CMV serology</span> (acute infection), <span class="pill pill-blue">Hepatitis B/C</span> (chronic infection causes cytopenia).</div>
+      
+      <div>Drug review</div>
+      <div>Check all medications. High-risk drugs: <b>clozapine, carbimazole, sulfasalazine, azathioprine, methotrexate, sodium valproate, captopril, penicillins, cephalosporins.</b> Stop if agranulocytosis suspected.</div>
+      
+      <div>If pancytopenia</div>
+      <div><span class="pill pill-blue">LDH</span> (haemolysis, malignancy), <span class="pill pill-blue">Haptoglobin</span> (low in haemolysis), <span class="pill pill-blue">Liver function</span> (portal hypertension), <span class="pill pill-blue">TFTs</span> (hypothyroidism). Same-day haematology for bone marrow biopsy.</div>
+      
+      <div>When NOT to investigate</div>
+      <div><b>Do NOT</b> perform bone marrow biopsy in primary care. <b>Do NOT</b> request G-CSF without haematology input. <b>Do NOT</b> delay referral to "complete investigations" if ANC <0.5 or pancytopenia.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>B12/folate deficiency</b> is a reversible cause of pancytopenia. Megaloblastic anaemia suppresses all cell lines due to ineffective haematopoiesis. B12 <200 ng/L or folate <2 μg/L confirms deficiency. Treatment with B12 IM or folic acid 5 mg OD reverses cytopenia within 1-2 weeks.</p>
+      <p><b>Drug-induced neutropenia</b> accounts for 20-30% of cases in primary care. Mechanism is immune-mediated (antibodies against neutrophils). Clozapine causes agranulocytosis in 0.8% of patients (mandates weekly FBC monitoring). Stopping the drug immediately is life-saving; neutrophil count recovers in 7-14 days.</p>
+      <p><b>HIV testing</b> is mandatory in unexplained leucopenia/lymphopenia. HIV causes lymphopenia early (CD4 <500) and neutropenia late (CD4 <200). Undiagnosed HIV is the most common missed diagnosis in immunosuppressed patients presenting to primary care.</p>
+      <p><b>Autoimmune neutropenia</b> (SLE, RA, Felty syndrome) is suggested by positive ANA (SLE), RF (RA), or anti-neutrophil antibodies. SLE causes neutropenia in 50% of patients. Immunosuppression with prednisolone or azathioprine improves neutrophil count but increases infection risk paradoxically.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-num">6</div>
+  <div class="node-head">
+    <span class="node-tag">Refer</span>
+    <h3>Referral Criteria — When to Involve Haematology or Infectious Diseases</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Refer based on severity of neutropenia, presence of pancytopenia, and infection risk. Severe neutropenia requires same-day haematology.</p>
+    <div class="kv">
+      <div><span class="pill pill-red">999 Emergency</span></div>
+      <div>ANC <0.5 × 10⁹/L + fever >38°C (neutropenic sepsis). Sepsis criteria (NEWS2 ≥5, SBP <90, lactate >2). Severe mucositis with drooling (aspiration risk).</div>
+      
+      <div><span class="pill pill-red">Same-day haematology</span></div>
+      <div>ANC <0.5 × 10⁹/L (severe neutropenia, even if afebrile). Pancytopenia (WCC <4 + Hb <10 + platelets <100). Agranulocytosis suspected (WCC <1, recent drug start). Recurrent infections in neutropenic patient.</div>
+      
+      <div><span class="pill pill-purple">2WW haematology</span></div>
+      <div>Persistent ANC 0.5-1.0 × 10⁹/L for >4 weeks. Splenomegaly + cytopenia. Abnormal blood film (dysplasia, blasts). Unexplained WCC <3 persistent >6 weeks.</div>
+      
+      <div><span class="pill pill-blue">Routine haematology</span></div>
+      <div>Persistent ANC 1.0-1.5 × 10⁹/L not explained by BEN. Autoimmune neutropenia needing specialist input. Chronic idiopathic neutropenia (no cause found after initial investigations).</div>
+      
+      <div><span class="pill pill-green">Primary care management</span></div>
+      <div>Benign ethnic neutropenia (ANC 1.0-1.5, stable, asymptomatic, appropriate ethnicity). Transient leucopenia post-viral infection normalizing within 4 weeks. Mild drug effect (ANC >1.5) after stopping causative agent.</div>
+      
+      <div>Infectious diseases referral</div>
+      <div><b>HIV positive:</b> All HIV patients with cytopenia. <b>Suspected TB:</b> Night sweats, weight loss, lymphopenia. <b>Persistent fever:</b> Fever >2 weeks despite antibiotics in neutropenic patient.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>ANC <0.5 × 10⁹/L</b> is the threshold for same-day referral even without fever. Infection risk is 40% within 3 months. Haematology can arrange G-CSF injections (filgrastim 300 mcg SC daily) to boost neutrophil production within 48-72 hours.</p>
+      <p><b>Pancytopenia</b> requires urgent bone marrow biopsy to differentiate aplastic anaemia (empty marrow), MDS (dysplastic marrow), and acute leukaemia (blast infiltration). Aplastic anaemia has 50% 5-year mortality without treatment (immunosuppression or bone marrow transplant).</p>
+      <p><b>Benign ethnic neutropenia (BEN)</b> does NOT require haematology referral if ANC is stable 1.0-1.5 × 10⁹/L over 3-6 months. Reassure patient this is a normal variant. Annual FBC monitoring in primary care is sufficient.</p>
+      <p><b>Drug-induced agranulocytosis</b> requires immediate drug cessation and same-day haematology. G-CSF shortens duration of neutropenia from 10-14 days to 5-7 days, reducing infection risk. Clozapine must never be restarted after agranulocytosis (30% recurrence rate).</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-num">7</div>
+  <div class="node-head">
+    <span class="node-tag">Treat</span>
+    <h3>Treatment — Treat Underlying Cause and Prevent Infection</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Treatment targets the underlying cause. Primary care can manage benign causes and infection prophylaxis; severe neutropenia requires specialist input for G-CSF or immunosuppression.</p>
+    
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Drug-induced neutropenia</div>
+        <div class="b-drug">Stop causative drug <span class="pill pill-red">Immediate</span></div>
+        <div class="b-note">Stop clozapine, carbimazole, sulfasalazine, azathioprine. Neutrophil count recovers in 7-14 days. Repeat FBC in 1 week. Same-day haematology if ANC <0.5.</div>
+      </div>
+      
+      <div class="b-card">
+        <div class="b-cond">B12/folate deficiency</div>
+        <div class="b-drug">Replace deficiency <span class="pill pill-teal">Curative</span></div>
+        <div class="b-note">Hydroxocobalamin 1 mg IM (3× weekly for 2 weeks, then 3-monthly). Folic acid 5 mg OD. Cytopenia resolves within 1-2 weeks. Repeat FBC at 2 weeks.</div>
+      </div>
+      
+      <div class="b-card">
+        <div class="b-cond">Benign ethnic neutropenia</div>
+        <div class="b-drug">No treatment <span class="pill pill-green">Reassure</span></div>
+        <div class="b-note">Explain this is a normal variant. No infection risk. No treatment needed. Annual FBC monitoring. Provide written information to avoid repeated investigations.</div>
+      </div>
+    </div>
+    
+    <p style="margin-top:1.5rem;"><b>Infection prophylaxis in neutropenia (ANC <1.0 × 10⁹/L persistent):</b></p>
+    
+    <div class="kv" style="margin-top:1rem;">
+      <div>Antibiotic prophylaxis</div>
+      <div><b>Co-trimoxazole 960 mg three times weekly</b> (prevents Pneumocystis jirovecii pneumonia in severe neutropenia <0.5). <b>Do NOT</b> use routine antibiotics in mild neutropenia (increases resistance).</div>
+      
+      <div>Antifungal prophylaxis</div>
+      <div><b>Fluconazole 50 mg OD</b> if ANC <0.5 × 10⁹/L for >7 days (prevents oral/oesophageal candidiasis). Haematology decides on prolonged neutropenia.</div>
+      
+      <div>G-CSF (filgrastim)</div>
+      <div><b>Haematology-led only.</b> Filgrastim 300 mcg SC daily for severe neutropenia. Increases ANC by 5-10× within 48-72 hours. Used in chemotherapy-induced neutropenia, aplastic anaemia, drug-induced agranulocytosis.</div>
+      
+      <div>Autoimmune neutropenia</div>
+      <div><b>Prednisolone 20-40 mg OD</b> (SLE, autoimmune neutropenia). <b>Rituximab</b> (if steroid-resistant). Haematology/rheumatology manages. Primary care monitors FBC response and steroid side effects.</div>
+      
+      <div>Infection treatment</div>
+      <div>If fever in ANC <1.0: <b>Same-day assessment.</b> Broad-spectrum antibiotics empirically. <b>Tazocin 4.5 g IV TDS</b> (covers Pseudomonas) if ANC <0.5. Do NOT wait for cultures.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Stopping the causative drug</b> is curative in drug-induced neutropenia. Neutrophil count typically recovers within 7-14 days once the drug is cleared. Clozapine-induced agranulocytosis has 30% recurrence if restarted; it is absolutely contraindicated after one episode.</p>
+      <p><b>G-CSF (filgrastim)</b> stimulates neutrophil production in bone marrow. It shortens duration of severe neutropenia from 10-14 days to 5-7 days, reducing infection risk by 50%. Used in chemotherapy-induced neutropenia (prophylactic or therapeutic) and aplastic anaemia bridging to definitive treatment.</p>
+      <p><b>Co-trimoxazole prophylaxis</b> prevents Pneumocystis jirovecii pneumonia (PJP), which has 30-40% mortality in neutropenic patients. PJP occurs at CD4 <200 in HIV or ANC <0.5 × 10⁹/L for >7 days in other causes. Co-trimoxazole 960 mg three times weekly reduces PJP risk by 90%.</p>
+      <p><b>Empirical antibiotics</b> in neutropenic fever save lives. Delaying antibiotics to await culture results increases mortality from 10% to 40%. Tazocin (piperacillin/tazobactam) covers Pseudomonas, E. coli, and Staph aureus — the commonest organisms in neutropenic sepsis.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-num">8</div>
+  <div class="node-head">
+    <span class="node-tag">Lifestyle</span>
+    <h3>Non-Pharmacological — Infection Prevention and Risk Reduction</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Lifestyle interventions reduce infection risk in patients with chronic neutropenia. Education on recognizing early infection signs is critical.</p>
+    <div class="lsgrid">
+      <div class="lstile"><b>Hand hygiene</b> Wash hands before eating, after toileting, after contact with pets. Alcohol gel if soap unavailable. Single most important intervention to prevent infection.</div>
+      
+      <div class="lstile"><b>Avoid sick contacts</b> Stay away from people with colds, flu, chickenpox. Children with neutropenic parents should not attend school if local outbreak. Wear mask in crowded places if ANC <1.0.</div>
+      
+      <div class="lstile"><b>Food hygiene</b> Avoid raw/undercooked meat, eggs, fish. Avoid unpasteurized dairy. Wash fruit/vegetables thoroughly. Avoid buffets and street food. High infection risk if ANC <0.5.</div>
+      
+      <div class="lstile"><b>Dental hygiene</b> Brush teeth twice daily with soft toothbrush. Floss gently (avoid bleeding gums). Dental infections can cause bacteraemia. Regular dental check-ups, avoid dental work if ANC <1.0 unless essential.</div>
+      
+      <div class="lstile"><b>Vaccinations</b> Annual flu vaccine (inactivated). Pneumococcal vaccine (PPV23 one-off). <b>Avoid live vaccines</b> (MMR, yellow fever, BCG) if ANC <1.0 or on immunosuppression.</div>
+      
+      <div class="lstile"><b>Pet safety</b> Avoid cleaning litter trays (toxoplasmosis risk). Avoid reptiles (Salmonella). Avoid bird droppings (Cryptococcus). Dogs/cats safe if healthy and vaccinated.</div>
+      
+      <div class="lstile"><b>Gardening</b> Wear gloves (prevent cuts, soil bacteria). Avoid handling compost (Aspergillus spores). Wash hands after gardening. Safe if ANC >1.0 with precautions.</div>
+      
+      <div class="lstile"><b>Recognize infection early</b> Fever >38°C = medical emergency. Sore throat, mouth ulcers, dysuria = same-day GP. Cough, breathlessness = chest infection (early antibiotics). Educate patient on when to seek help.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Hand hygiene</b> reduces infection transmission by 30-50%. Neutropenic patients cannot fight off normal skin flora (Staph aureus, Strep pyogenes). Alcohol gel kills 99.9% of bacteria within 30 seconds.</p>
+      <p><b>Food hygiene</b> prevents gastrointestinal infections (Salmonella, Campylobacter, Listeria). Neutropenic patients have 10× higher risk of bacteraemia from GI infections. Avoiding raw foods reduces risk by 70%.</p>
+      <p><b>Live vaccines</b> (MMR, yellow fever, BCG) contain attenuated virus/bacteria. In neutropenic/immunosuppressed patients, live vaccines can cause disseminated infection. Inactivated vaccines (flu, pneumococcal) are safe and recommended.</p>
+      <p><b>Early recognition of infection</b> is life-saving. Neutropenic patients cannot mount typical signs (pus, high WCC, high CRP). Fever may be the only sign of serious infection. Educating patients to seek help immediately for fever >38°C reduces mortality from 40% to 10%.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-num">9</div>
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Follow-Up — Monitor Neutrophil Count and Safety-Net for Infection</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Monitor neutrophil trajectory, watch for infection, and re-refer if ANC falling or recurrent infections. Chronic neutropenia requires long-term surveillance.</p>
+    <div class="kv">
+      <div>1 week</div>
+      <div>Repeat FBC if drug-induced neutropenia (should be recovering). If ANC still falling, same-day haematology. Check patient asymptomatic (no fever, mouth ulcers).</div>
+      
+      <div>2-4 weeks</div>
+      <div>Repeat FBC if transient viral leucopenia (should normalize). If WCC <3 persistent, refer haematology routine. If ANC <1.0 persistent, same-day haematology.</div>
+      
+      <div>3 months</div>
+      <div>If benign ethnic neutropenia (BEN) suspected: Repeat FBC to confirm ANC stable 1.0-1.5 × 10⁹/L. If stable, reassure and discharge with annual monitoring. If falling, refer haematology.</div>
+      
+      <div>6-12 months</div>
+      <div>Annual FBC for patients with history of transient neutropenia (ensure no recurrence). For chronic idiopathic neutropenia (ANC 1.0-1.5 stable): 6-monthly FBC in primary care.</div>
+      
+      <div><span class="pill pill-red">Safety-net 999</span></div>
+      <div>Fever >38°C + ANC <0.5 (neutropenic sepsis). Sepsis criteria (confusion, SBP <90, RR >25, HR >130). Severe dysphagia with drooling (mucositis, aspiration risk).</div>
+      
+      <div><span class="pill pill-red">Safety-net same-day</span></div>
+      <div>Fever >38°C + ANC 0.5-1.0. New mouth ulcers, sore throat, dysuria (infection). Cough + breathlessness (pneumonia). Diarrhea >3 days (GI infection). Any infection in neutropenic patient needs same-day assessment.</div>
+      
+      <div>Re-referral criteria</div>
+      <div>ANC falling despite stopping drugs. Recurrent infections (>2 per year). New pancytopenia (Hb or platelets dropping). Patient anxiety about malignancy (haematology can reassure).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>ANC trajectory</b> is more important than absolute value. A falling ANC (1.5 → 1.0 → 0.7 over 3 months) suggests evolving bone marrow failure or worsening autoimmune disease, even if each value is "mild." Rising ANC indicates recovery or response to treatment.</p>
+      <p><b>Benign ethnic neutropenia (BEN)</b> is stable over years. ANC remains 1.0-1.5 × 10⁹/L without treatment. If ANC is falling or <1.0, BEN is unlikely; investigate for other causes (autoimmune, bone marrow failure). Annual monitoring in primary care avoids unnecessary specialist input.</p>
+      <p><b>Neutropenic fever</b> is a medical emergency regardless of how well the patient looks. Sepsis mortality in ANC <0.5 is 20-40% if antibiotics delayed >6 hours. NICE NG151 mandates IV antibiotics within 1 hour of presentation to hospital.</p>
+      <p><b>Recurrent infections</b> (>2 per year) in neutropenic patient warrant haematology review. May indicate inadequate neutrophil function despite acceptable count, or progression of underlying disease. G-CSF prophylaxis or immunoglobulin replacement may be needed.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on NICE NG151 (Neutropenic Sepsis), BSH Guidelines for Investigation and Management of Neutropenia (2020), UpToDate clinical decision support, and NICE CKS Leucopenia. Always adapt to individual patient context, local guidelines, and specialist advice. Neutropenia is a laboratory finding — identify and treat the underlying cause while preventing infection.
+</div>
+
+</div>
+
+<script>
+const LSK='rgp.alg.leucopenia.v1';
+const flow=document.getElementById('flow');
+const nodes=flow.querySelectorAll('.node');
+const pDone=document.getElementById('pDone');
+const pTotal=document.getElementById('pTotal');
+const pFill=document.getElementById('pFill');
+const resetBtn=document.getElementById('resetBtn');
+
+pTotal.textContent=nodes.length;
+
+let state=JSON.parse(localStorage.getItem(LSK)||'{}');
+
+nodes.forEach((n,i)=>{
+  const cb=n.querySelector('input[type="checkbox"]');
+  const step=n.dataset.step;
+  if(state[step]) {
+    cb.checked=true;
+    n.classList.add('done');
+  }
+  cb.addEventListener('change',()=>{
+    if(cb.checked) {
+      n.classList.add('done');
+      state[step]=true;
+    } else {
+      n.classList.remove('done');
+      delete state[step];
+    }
+    localStorage.setItem(LSK,JSON.stringify(state));
+    updateProgress();
+  });
+});
+
+document.querySelectorAll('.why-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const isOpen=btn.getAttribute('aria-expanded')==='true';
+    btn.setAttribute('aria-expanded',!isOpen);
+    const drawer=btn.nextElementSibling;
+    if(!isOpen) {
+      drawer.classList.add('open');
+    } else {
+      drawer.classList.remove('open');
+    }
+  });
+});
+
+resetBtn.addEventListener('click',()=>{
+  if(!confirm('Reset all progress for this algorithm?')) return;
+  localStorage.removeItem(LSK);
+  state={};
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type="checkbox"]');
+    cb.checked=false;
+    n.classList.remove('done');
+  });
+  updateProgress();
+});
+
+function updateProgress() {
+  const done=Object.keys(state).length;
+  pDone.textContent=done;
+  const pct=(done/nodes.length)*100;
+  pFill.style.width=pct+'%';
+}
+updateProgress();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

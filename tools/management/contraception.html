@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contraception — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Contraception management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"💊",
+  title:"Contraception",
+  stemTitle:"Contraception \u2014 UKMEC-safe, effectiveness-led, patient-centred choice",
+  stemSub:"Primary-care contraceptive counselling \u2014 screen for UKMEC contraindications, lead with the most effective (LARC) methods, choose around the individual\u2019s needs and risks, cover emergency contraception, and safety-net. FSRH \u00b7 UKMEC 2016 (amended) \u00b7 2026.",
+  guideline:"FSRH / UKMEC",
+  glance:[
+    {lbl:"Most effective", val:"LARC", sub:"IUD/IUS/implant"},
+    {lbl:"Screen", val:"UKMEC 3/4", sub:"VTE, migraine+aura, BP"},
+    {lbl:"COC caution", val:"Migraine w/ aura", sub:"= UKMEC 4"},
+    {lbl:"Emergency", val:"Cu-IUD best", sub:"or UPA/LNG pill"},
+    {lbl:"Quick-start", val:"If reasonably sure", sub:"not pregnant"},
+    {lbl:"Red flag", val:"VTE / focal migraine", sub:"avoid oestrogen"}
+  ],
+  flow:[
+    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"UKMEC screen \u2014 who can't have oestrogen?",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 UKMEC 4 (avoid CHC)", html:"Migraine WITH aura (any age), &lt;6 weeks postpartum + breastfeeding, current breast cancer, BP \u2265160/100, VTE/known thrombogenic mutation, &lt;3 weeks postpartum with risk factors, smoker \u226535y \u226515/day."},
+          {t:"🟠 UKMEC 3", html:"BMI \u226535, well-controlled HTN, smoker \u226535y, migraine without aura starting on CHC, immobility \u2014 risks usually outweigh benefits."},
+          {t:"🩺 Always check", html:"BP + BMI before starting CHC; migraine aura history; VTE/CVD/family history; medications (enzyme inducers)."},
+          {t:"💊 Enzyme inducers / interactions", html:"Reduce efficacy of CHC/POP/implant \u2014 prefer Cu-IUD/LNG-IUS or injectable. <b>Avoid CHC with lamotrigine</b> (lowers seizure threshold) and in malabsorptive states / post-bariatric surgery; specialist advice."}
+        ]},
+        {b:"why", html:"The safety task is the UKMEC screen \u2014 above all, oestrogen-containing methods are contraindicated in migraine with aura and other VTE/arterial risks. Progestogen-only methods and intrauterine methods are the fallback for almost everyone."}
+      ]},
+    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Counsel \u2014 effectiveness-led + patient need",
+      blocks:[
+        {b:"kv", rows:[
+          ["Lead with LARC","Most effective, \u2018fit-and-forget\u2019: Cu-IUD, LNG-IUS, implant \u2014 offer to all as first discussion (NICE/FSRH)"],
+          ["Individualise","Future fertility plans, bleeding pattern wishes, comorbidity, acne/HMB (COC/IUS help), needle aversion, adherence"],
+          ["Non-contraceptive benefits","COC: acne, cycle control, ovarian/endometrial cancer risk reduction; LNG-IUS: HMB"],
+          ["STI risk","Condoms for STI protection alongside any method; offer screening"],
+          ["Prescribing","<b>Prescribe COC by brand</b> and choose the lowest-VTE preparation (levonorgestrel/norethisterone) with good cycle control. POPs may be generic \u2014 but prescribe <b>by brand in nut/soya allergy</b> (some COC/POP excipients are unsuitable). All oral contraceptives contain lactose (FSRH advice for vegans)"]
+        ]}
+      ]},
+    {t:"node", d:"life", n:"3", tag:"Non-drug · core", title:"Counselling & method choice", blocks:[{b:"tiles", v:"life", items:[{t:"🗂️ Informed choice", html:"Discuss effectiveness, UKMEC eligibility, bleeding patterns, return to fertility and STI protection for each method."},{t:"🧴 Condoms & STI", html:"Only condoms protect against STIs \u2014 promote dual protection alongside hormonal/LARC methods."},{t:"🏆 LARC first", html:"Long-acting reversible contraception is the most effective \u2014 \u2018fit and forget\u2019; offer it proactively."}]},{b:"why", html:"Contraception is fundamentally a counselling and shared-decision task \u2014 matching method to the individual (UKMEC, preferences, LARC-first, STI protection) is the core of good care."}]},
+    {t:"node", d:"drug", n:"4", tag:"Methods", title:"The options, by effectiveness",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Tier 1 (LARC)", title:"IUD / IUS / implant", when:">99% effective",
+           html:"Cu-IUD (5\u201310y, hormone-free; a \u2265300 mm\u00b2 device fitted at \u226540 can stay until menopause), LNG-IUS (lightens bleeding; a 52 mg device lasts 6y if fitted &lt;45, and until 55 if fitted \u226545), etonogestrel implant (3y). User-independent \u2014 most effective and the most cost-effective from year one."},
+          {step:"Tier 2", title:"Injectable / COC / POP / patch / ring", when:"effective with adherence",
+           fromLabel:"if LARC not chosen",
+           html:"<b>DMPA injectable</b> (Depo-Provera\u00ae/Sayana Press\u00ae \u2014 caution BMD, weight). <b>CHC</b> if UKMEC-safe \u2014 prefer a low-VTE <b>levonorgestrel/norethisterone COC</b>: <b>Microgynon 30\u00ae / Rigevidon\u00ae / Levest\u00ae</b> (levonorgestrel); a desogestrel COC (Gedarel\u00ae/Marvelon\u00ae) or co-cyprindiol (Dianette\u00ae) helps acne but carries higher VTE. <b>Tailored/extended regimens</b> (fewer/no hormone-free intervals) are FSRH-preferred. Patch <b>Evra\u00ae</b> (less effective &gt;90 kg); ring <b>NuvaRing\u00ae/SyreniRing\u00ae</b>. <b>POP</b>: desogestrel (Cerazette\u00ae/Cerelle\u00ae \u2014 12h window) or drospirenone (Slynd\u00ae \u2014 24h window, oestrogen-free); traditional LNG/norethisterone POP (Noriday\u00ae) has a 3h window."},
+          {step:"Tier 3", title:"Barrier / fertility awareness", when:"least effective",
+           fromLabel:"if preferred / adjunct",
+           html:"Condoms (also STI protection), diaphragm, fertility-awareness methods \u2014 typical-use efficacy lower."},
+          {step:"Quick-start", title:"Start today if not pregnant", when:"reasonably sure",
+           fromLabel:"avoid delay",
+           html:"Quick-start any method if reasonably certain not pregnant; advise extra precautions per method and a follow-up pregnancy test if needed. Teach <b>missed-pill rules</b> \u2014 vomiting within 3h or diarrhoea &gt;24h counts as missed pills."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"5", tag:"Emergency contraception", title:"After UPSI",
+      blocks:[
+        {b:"kv", rows:[
+          ["Most effective","<b>Copper IUD</b> \u2014 within 5 days of UPSI or earliest estimated ovulation; also ongoing contraception"],
+          ["Ulipristal acetate (UPA)","Single dose within 120h; delay restarting hormonal contraception 5 days; caution with breastfeeding (express/discard 1 week)"],
+          ["Levonorgestrel","Single dose within 72h (double dose if BMI &gt;26 / &gt;70kg or enzyme inducers); can quick-start contraception immediately after"],
+          ["Always","Offer STI screening; arrange ongoing contraception; pregnancy test if next period late/abnormal"]
+        ]}
+      ]},
+    {t:"node", d:"monitor", n:"6", tag:"Monitoring", title:"Review + continuation",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["BP + BMI (CHC)","Baseline + annually","Reassess UKMEC; stop oestrogen if new contraindication (new aura, BP rise)"],
+          ["Unscheduled bleeding","Early review (esp. first 3 months)","Reassure if &lt;3 months (settles); exclude STI/pregnancy/cervical cause; if persistent on COC consider a different progestogen or a higher-dose preparation; on POP/implant consider a 3-month trial of a COC or mefenamic acid"],
+          ["DMPA","Every injection / periodically","Review BMD risk, weight, ongoing need"],
+          ["LARC checks","As per method","IUD/IUS thread check; implant site; replacement timing"]
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer", title:"Referral + signposting",
+      arrow:"complex or procedural",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Sexual health / community contraception", html:"LARC fitting if not provided in-house, complex cases, or rapid access."},
+          {t:"Specialist advice", html:"Complex medical comorbidity (UKMEC 3/4 dilemmas), enzyme-inducing drugs, post-bariatric."},
+          {t:"Safeguarding", html:"Under-16 requesting contraception without parental consent \u2014 assess capacity and <b>document whether Fraser criteria are met</b>; under-13 \u2014 follow safeguarding pathways."}
+        ]},
+        {b:"say", html:"There are lots of safe options. The most effective are the \u2018fit-and-forget\u2019 methods \u2014 the coil or the implant \u2014 but the best one is the one that suits your life. I\u2019ll check your blood pressure and a few health questions to see which are safe for you, and remember condoms still matter for preventing infections."}
+      ]}
+  ],
+  foot:"Contraceptive counselling in primary care; screen with UKMEC and lead with LARC. Verify against current FSRH guidance, UKMEC 2016 (amended) and the BNF before prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

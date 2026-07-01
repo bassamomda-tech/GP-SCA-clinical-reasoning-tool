@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PCOS — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="PCOS management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🌸",
+  title:"PCOS",
+  stemTitle:"Confirmed Polycystic Ovary Syndrome — ongoing management",
+  stemSub:"Primary-care management of PCOS organised by the patient\u2019s goal \u2014 weight and metabolic health for all, cycle/endometrial protection, hirsutism/acne, and fertility \u2014 with long-term diabetes and endometrial-cancer risk in mind. CKS / international guideline \u00b7 2026.",
+  guideline:"NICE CKS / 2023 international guideline",
+  glance:[
+    {lbl:"Diagnosis", val:"Rotterdam 2/3", sub:"+ exclude mimics"},
+    {lbl:"Core for all", val:"Weight & lifestyle", sub:"biggest lever"},
+    {lbl:"Cycle / endometrium", val:"COC or progestogen", sub:"\u22654 bleeds/yr"},
+    {lbl:"Hirsutism", val:"COC \u00b1 antiandrogen", sub:"+ cosmetic"},
+    {lbl:"Fertility", val:"Letrozole", sub:"specialist"},
+    {lbl:"Screen", val:"HbA1c / glucose", sub:"diabetes risk"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm PCOS, exclude mimics, map risk + goals",
+      blocks:[
+        {b:"kv", rows:[
+          ["Diagnosis (Rotterdam)","\u22652 of: oligo/anovulation \u00b7 clinical/biochemical hyperandrogenism \u00b7 polycystic ovaries on USS"],
+          ["Exclude mimics","TFTs, prolactin, testosterone (very high \u2192 ?tumour), 17-OHP (CAH); consider Cushing\u2019s"],
+          ["Metabolic risk","BMI/waist, BP, HbA1c or OGTT, lipids \u2014 PCOS carries high T2DM risk"],
+          ["Clarify the goal","Cycle control \u00b7 hirsutism/acne \u00b7 fertility \u00b7 metabolic \u2014 management is goal-led"]
+        ]},
+        {b:"why", html:"PCOS has no single treatment \u2014 you manage the <strong>goal that matters to this woman now</strong>, while protecting against its two long-term risks: <strong>type 2 diabetes</strong> and <strong>endometrial hyperplasia/cancer</strong> from unopposed oestrogen when periods are infrequent. Weight loss improves every domain at once."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 foundation for all", title:"Weight, lifestyle and wellbeing",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"⚖️ Weight management", html:"Even 5\u201310% loss restores cycles, improves hirsutism, fertility and metabolic risk \u2014 the single most effective intervention."},
+          {t:"🥗 Diet", html:"Calorie-balanced healthy diet; no single \u2018PCOS diet\u2019 \u2014 sustainability matters most."},
+          {t:"🏃 Exercise", html:"Regular activity improves insulin sensitivity independent of weight."},
+          {t:"🚭 Smoking", html:"Cessation \u2014 compounds cardiometabolic risk."},
+          {t:"🧠 Psychological", html:"Screen for low mood, anxiety, disordered eating, body-image distress \u2014 common and important."},
+          {t:"💇 Cosmetic measures", html:"For hirsutism: shaving, waxing, laser/electrolysis as adjuncts."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 by goal", title:"Treat the chosen goal",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Cycle / endometrium", title:"COC, or cyclical progestogen", when:"protect the endometrium",
+           html:"A combined pill regulates cycles and treats hyperandrogenism. If COC unsuitable, ensure <b>\u22654 withdrawal bleeds/year</b> with cyclical progestogen (or a progestogen IUS) to protect the endometrium."},
+          {step:"Hirsutism / acne", title:"COC \u00b1 antiandrogen", when:"add cosmetic + eflornithine",
+           fromLabel:"if hyperandrogenism is the goal",
+           html:"COC first-line; topical eflornithine for facial hirsutism; antiandrogens (spironolactone, etc.) specialist/with contraception. Allow \u22656 months for effect."},
+          {step:"Fertility", title:"Letrozole (\u00b1 metformin)", when:"specialist-led",
+           fromLabel:"if trying to conceive",
+           html:"Weight optimisation first; <b>letrozole</b> (or clomifene) for ovulation induction via specialist; metformin may help."},
+          {step:"Metabolic", title:"Metformin", when:"IGT / T2DM",
+           fromLabel:"if metabolic risk",
+           html:"Consider <b>metformin 500 mg OD titrated to 1 g BD</b> if impaired glucose tolerance/T2DM; manage BP and lipids; intensive lifestyle."}
+        ]},
+        {b:"warn", html:"<b>Endometrial protection is mandatory:</b> prolonged amenorrhoea with unopposed oestrogen raises endometrial-cancer risk \u2014 ensure regular withdrawal bleeds or a progestogen IUS. Antiandrogens are teratogenic \u2014 reliable contraception required."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Long-term risk surveillance",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["HbA1c / glucose","Periodically (e.g. annually if risk factors)","High T2DM risk \u2014 detect early"],
+          ["BP + weight + lipids","Regularly","Manage cardiometabolic risk"],
+          ["Cycle frequency","Ongoing","Ensure \u22654 bleeds/year or endometrial protection"],
+          ["Mood","At reviews","Screen and support mental health"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"After agreeing goals", title:"Initiate", html:"Start lifestyle for all; begin goal-specific treatment; arrange baseline metabolic screen."},
+          {n:"2", when:"~6 months (hirsutism)", title:"Response review", html:"Hirsutism treatment is slow \u2014 reassess at \u22656 months; adjust or add."},
+          {n:"3", when:"Annual / periodic", title:"Risk review", html:"Weight, BP, glucose, cycle pattern, mental health, fertility plans."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not meeting the goal? Re-check",
+      arrow:"\u2026if the chosen goal isn\u2019t achieved",
+      intro:"Optimise weight and confirm an adequate trial before escalating.",
+      checks:[
+        {b:"1 \u00b7 Weight", html:"Has weight management been genuinely supported and engaged with?"},
+        {b:"2 \u00b7 Adequate trial", html:"Hirsutism takes \u22656 months; cycle control needs consistent use."},
+        {b:"3 \u00b7 Endometrium", html:"Amenorrhoeic and unprotected? Address now (hyperplasia risk)."},
+        {b:"4 \u00b7 Mimic missed?", html:"Rapid virilisation, very high testosterone \u2192 reconsider tumour/CAH."},
+        {b:"5 \u00b7 Refer", html:"Fertility, refractory hirsutism, or diagnostic doubt \u2192 specialist."}
+      ],
+      back:"Weight optimised, adequate trial, mimics excluded \u2192 refer (gynae/endocrine/fertility)"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Endometrial protection", html:"\u201cIf your periods become very infrequent, tell us \u2014 long gaps without a bleed can affect the womb lining and need treatment.\u201d"},
+          {t:"⚠️ Rapid virilisation", html:"\u201cRapidly increasing hair, voice deepening, or balding \u2014 get checked promptly.\u201d"},
+          {t:"🩸 Abnormal bleeding", html:"\u201cBleeding between periods or after sex \u2014 come in for assessment.\u201d"},
+          {t:"💊 COC / pregnancy", html:"\u201cAntiandrogens must not be taken if you might be pregnant \u2014 use reliable contraception.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"by goal and risk",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Fertility", html:"Subfertility / ovulation induction \u2192 fertility services."},
+          {t:"Refractory hirsutism", html:"Inadequate response to COC + cosmetic \u2192 endocrinology/dermatology for antiandrogens."},
+          {t:"Diagnostic doubt", html:"Very high androgens, rapid virilisation, suspected tumour/CAH/Cushing\u2019s \u2192 endocrinology."},
+          {t:"Endometrial concern", html:"Prolonged amenorrhoea / abnormal bleeding \u2192 gynaecology (assessment of endometrium)."}
+        ]},
+        {b:"say", html:"PCOS is very manageable, and the most powerful step \u2014 whatever your main concern \u2014 is supporting your weight and activity, which improves periods, skin and future health together. Let\u2019s also make sure your womb lining is protected and keep an eye on your diabetes risk."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

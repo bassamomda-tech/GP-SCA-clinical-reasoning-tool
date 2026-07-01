@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thyroid Dysfunction in Pregnancy · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #f4f3f0;
+  --surface:   #ffffff;
+  --border:    #e2e0da;
+  --text:      #1a1917;
+  --muted:     #6b6762;
+  --accent:    #1d4ed8;          /* blue */
+  --safety:    #dc2626;          /* red  */
+  --diagnose:  #7c3aed;          /* purple */
+  --treat:     #0f766e;          /* teal  */
+  --refer:     #b45309;          /* amber */
+  --lifestyle: #15803d;          /* green */
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, serif;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.05);
+}
+
+html { font-size: 15px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 0 0 60px;
+}
+
+/* ── HEADER / BANNER ──────────────────────────────────────── */
+.stem-banner {
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+.sb-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  background: #eff6ff;
+  border-radius: 10px;
+  width: 52px; height: 52px;
+  display: grid; place-items: center;
+}
+.stem-banner b { display: block; font-size: 1.05rem; font-weight: 700; color: var(--text); }
+.stem-banner small { font-size: .8rem; color: var(--muted); }
+
+/* ── PROGRESS BAR ─────────────────────────────────────────── */
+.alg-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  font-size: .82rem;
+  color: var(--muted);
+}
+.pcount { font-weight: 600; color: var(--text); white-space: nowrap; }
+.pbar { flex: 1; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; min-width: 60px; }
+.pbar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #1d4ed8, #7c3aed); border-radius: 99px; transition: width .4s ease; }
+button.reset {
+  padding: 4px 12px; border-radius: 6px;
+  border: 1px solid var(--border); background: white;
+  font-size: .78rem; font-family: var(--font-body);
+  cursor: pointer; color: var(--muted);
+  transition: all .15s;
+}
+button.reset:hover { background: #fee2e2; border-color: #fca5a5; color: var(--safety); }
+
+/* ── FLOW CONTAINER ───────────────────────────────────────── */
+.alg-flow {
+  max-width: 820px;
+  margin: 28px auto 0;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ── CONNECTOR ────────────────────────────────────────────── */
+.connector {
+  width: 2px;
+  height: 28px;
+  background: linear-gradient(to bottom, var(--border), transparent);
+  align-self: center;
+  margin: 0;
+}
+
+/* ── NODE CARD ────────────────────────────────────────────── */
+.node {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow .2s, border-color .2s;
+}
+.node:hover { box-shadow: var(--shadow-md); }
+.node.done { border-color: #bbf7d0; background: #f0fdf4; }
+
+/* Node type accent strip */
+.node[data-type="SAFETY"]    { border-left: 4px solid var(--safety); }
+.node[data-type="DIAGNOSE"]  { border-left: 4px solid var(--diagnose); }
+.node[data-type="TREAT"]     { border-left: 4px solid var(--treat); }
+.node[data-type="REFER"]     { border-left: 4px solid var(--refer); }
+.node[data-type="LIFESTYLE"] { border-left: 4px solid var(--lifestyle); }
+
+/* ── NODE HEADER ──────────────────────────────────────────── */
+.node-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px 10px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.node-num {
+  font-size: .72rem;
+  font-weight: 700;
+  background: var(--border);
+  color: var(--muted);
+  border-radius: 50%;
+  width: 22px; height: 22px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.node-tag {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+.node[data-type="SAFETY"]    .node-tag { background: #fee2e2; color: var(--safety); }
+.node[data-type="DIAGNOSE"]  .node-tag { background: #ede9fe; color: var(--diagnose); }
+.node[data-type="TREAT"]     .node-tag { background: #ccfbf1; color: var(--treat); }
+.node[data-type="REFER"]     .node-tag { background: #fef3c7; color: var(--refer); }
+.node[data-type="LIFESTYLE"] .node-tag { background: #dcfce7; color: var(--lifestyle); }
+
+.node-head h3 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
+}
+.node-tick {
+  margin-left: auto;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.node-tick label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+.node-tick input[type="checkbox"] {
+  width: 18px; height: 18px;
+  accent-color: var(--lifestyle);
+  cursor: pointer;
+}
+.node-tick .tlbl { font-size: .78rem; color: var(--muted); user-select: none; }
+
+/* ── NODE BODY ────────────────────────────────────────────── */
+.node-body {
+  padding: 14px 18px;
+  font-size: .9rem;
+  color: var(--text);
+  line-height: 1.65;
+}
+.node-body > p, .node-body > .intro {
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: .87rem;
+}
+
+/* ── KEY-VALUE GRID ───────────────────────────────────────── */
+.kv {
+  display: grid;
+  grid-template-columns: minmax(130px, 30%) 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  font-size: .87rem;
+}
+.kv > div:nth-child(4n+1),
+.kv > div:nth-child(4n+2) { background: #fafaf9; }
+.kv > div {
+  padding: 9px 13px;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+}
+.kv > div:last-child, .kv > div:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+.kv > div:nth-child(odd) { font-weight: 600; color: var(--muted); font-size: .82rem; }
+.kv > div:nth-child(even) { color: var(--text); }
+
+/* ── RED FLAG GRID ────────────────────────────────────────── */
+.rfgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+.rftile {
+  background: #fff5f5;
+  border: 1px solid #fecaca;
+  border-left: 3px solid var(--safety);
+  border-radius: var(--r-md);
+  padding: 10px 13px;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+.rftile b { display: block; color: var(--safety); font-size: .82rem; margin-bottom: 2px; }
+
+/* ── BRANCH ───────────────────────────────────────────────── */
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 10px;
+  margin-top: 6px;
+}
+.b-card {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  font-size: .86rem;
+}
+.b-cond {
+  background: #f1f5f9;
+  padding: 7px 12px;
+  font-weight: 600;
+  font-size: .8rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+.b-drug {
+  padding: 8px 12px;
+  font-weight: 700;
+  color: var(--treat);
+  background: #f0fdfa;
+  border-bottom: 1px solid var(--border);
+}
+.b-note {
+  padding: 8px 12px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ── LADDER ───────────────────────────────────────────────── */
+.ladder {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  margin-top: 6px;
+  font-size: .87rem;
+}
+.rung {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+}
+.rung:last-child { border-bottom: none; }
+.rn {
+  background: #f1f5f9;
+  font-weight: 700;
+  font-size: .78rem;
+  color: var(--muted);
+  padding: 10px 13px;
+  min-width: 70px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+}
+.rt {
+  padding: 10px 14px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* ── LIFESTYLE GRID ───────────────────────────────────────── */
+.lsgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+.lstile {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 3px solid var(--lifestyle);
+  border-radius: var(--r-md);
+  padding: 10px 13px;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+.lstile b { display: block; color: var(--lifestyle); font-size: .82rem; margin-bottom: 2px; }
+
+/* ── PILLS ────────────────────────────────────────────────── */
+.pill {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 99px;
+  vertical-align: middle;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+.pill-red    { background: #fee2e2; color: #b91c1c; }
+.pill-purple { background: #ede9fe; color: #6d28d9; }
+.pill-blue   { background: #dbeafe; color: #1d4ed8; }
+.pill-teal   { background: #ccfbf1; color: #0f766e; }
+.pill-amber  { background: #fef3c7; color: #92400e; }
+.pill-green  { background: #dcfce7; color: #15803d; }
+.pill-grey   { background: #f1f5f9; color: #475569; }
+
+/* ── WHY DRAWER ───────────────────────────────────────────── */
+.why-row {
+  border-top: 1px solid var(--border);
+  background: #fafaf9;
+}
+.why-btn {
+  width: 100%;
+  text-align: left;
+  padding: 10px 18px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  transition: background .15s;
+}
+.why-btn:hover { background: #eff6ff; }
+.caret { font-size: .9rem; transition: transform .2s; display: inline-block; }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.why-drawer {
+  display: none;
+  padding: 12px 18px 14px;
+  font-size: .86rem;
+  color: var(--muted);
+  line-height: 1.7;
+  border-top: 1px dashed var(--border);
+}
+.why-drawer.open { display: block; }
+
+/* ── FOOTER ───────────────────────────────────────────────── */
+.alg-foot {
+  max-width: 820px;
+  margin: 32px auto 0;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  font-size: .8rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-left: auto; margin-right: auto;
+}
+.alg-foot strong { color: var(--text); }
+
+/* ── UTILITY ──────────────────────────────────────────────── */
+ul.blist { padding-left: 18px; }
+ul.blist li { margin-bottom: 4px; }
+.mt8 { margin-top: 8px; }
+.mb8 { margin-bottom: 8px; }
+.note {
+  background: #fefce8;
+  border: 1px solid #fde68a;
+  border-radius: var(--r-sm);
+  padding: 8px 12px;
+  font-size: .84rem;
+  color: #78350f;
+  margin-top: 10px;
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<!-- ── BANNER ──────────────────────────────────────────────── -->
+<div class="stem-banner">
+  <div class="sb-icon">🤰</div>
+  <div>
+    <b>Thyroid Dysfunction in Pregnancy — Hypo, Hyper &amp; Postpartum Thyroiditis</b>
+    <small>Trimester-specific ranges · levothyroxine ↑30–50% early · PTU in pregnancy · urgent endocrine + antenatal referral · NWL pathway / NICE</small>
+  </div>
+</div>
+
+<!-- ── PROGRESS ────────────────────────────────────────────── -->
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- ── FLOW ────────────────────────────────────────────────── -->
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — pregnancy changes thyroid physiology and lowers treatment thresholds. Refer urgently, increase levothyroxine early, and use PTU for hyperthyroidism; monitor across trimesters and postpartum, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Thyroid disease in pregnancy</span><div class="body">↑oestrogen &amp; TBG → ↑FT4/FT3; a fall in TSH is normal in T1. Apply <b>trimester-specific reference ranges</b>. Established disease, new diagnosis, or postpartum — all need specialist input.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — Emergency / 2WW?</span><span class="ttl">Thyroid storm · hyperemesis · suspected malignancy?</span><div class="body">Severe hyperthyroidism (thyroid storm) or intractable vomiting (hyperemesis gravidarum) → emergency admission. Thyroid nodule/goitre with suspected malignancy → 2WW.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Admit / 2WW</span><span class="ttl">Emergency or cancer pathway</span><div class="body">Thyroid storm / hyperemesis → emergency admission. Suspected thyroid malignancy (nodule/goitre) → <b>2WW thyroid</b> (NICE NG12).</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Classify</span><span class="ttl">Hypo · Hyper · Postpartum</span><div class="body">Check TSH + FT4 (+ FT3 if hyper) immediately, apply trimester ranges, and refer urgently to antenatal + endocrinology.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · manage by pattern</span></div>
+    <div class="split"><div class="bar" style="width:88%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Hypothyroidism (overt or subclinical)</div><div class="box act"><span class="ttl">↑ Levothyroxine early</span><div class="body">Urgent antenatal + endocrine referral. <b>Increase levothyroxine by 30–50% from as early as 4–6 weeks</b> on specialist advice to keep TSH normal. Postpartum: drop back to pre-pregnancy dose, check TFTs at 6w.</div></div></div>
+      <div class="col"><div class="blabel">Hyperthyroidism (overt or subclinical)</div><div class="box act"><span class="ttl">Specialist · PTU</span><div class="body">Refer <b>all</b> (incl. euthyroid). Check TSH/FT3/FT4 immediately. <b>Propylthiouracil</b> preferred (carbimazole teratogenicity — MHRA), lowest dose for euthyroidism. Specialist monitoring.</div></div></div>
+      <div class="col"><div class="blabel">Postpartum thyroiditis (PPT)</div><div class="box ix"><span class="ttl">Thyrotoxic → hypothyroid</span><div class="body">Usually resolves &lt;1yr. Thyrotoxic phase → refer to differentiate from Graves; recheck 4–8w for hypothyroid phase. Hypothyroid phase → specialist advice on levothyroxine.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:700px;"><span class="lbl">Step 6 · Refer · monitoring</span><span class="ttl">Urgent endocrine + antenatal; TFTs at booking, each trimester &amp; postpartum</span><div class="body">Refer urgently. Measure TFTs at pregnancy confirmation, antenatal booking, ≥once in 2nd &amp; 3rd trimester, and 2–4 weeks postpartum. <b>T1DM = 3× PPT risk</b> → check TSH/FT4/TPOAb pre-pregnancy, at diagnosis of pregnancy, and 3 &amp; 6 months postpartum.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · preconception &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:700px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Preconception &amp; modifiable factors</span><span class="ttl">Optimise before and during pregnancy</span><div class="body"><b>Preconception counselling</b> for known thyroid disease — optimise control and adjust treatment before conceiving (hypothyroid women often need an immediate dose increase once pregnant). <b>Adequate iodine</b> intake; take levothyroxine on an empty stomach, separated from iron/calcium/prenatal vitamins. Adherence is critical. Discuss the carbimazole/PTU teratogenicity balance with the specialist; support smoking cessation.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:700px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Monitor closely; urgent return advice</span><div class="body"><b>Check TFTs at booking, each trimester and postpartum</b>; titrate with the specialist to trimester-specific ranges. <b>Same-day / admit</b> for thyroid storm (fever, tachyarrhythmia, agitation), intractable vomiting/dehydration (hyperemesis), or fetal concerns. Drop levothyroxine to the pre-pregnancy dose after delivery and recheck at ~6 weeks; review postpartum thyroiditis and screen high-risk (T1DM) women.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Inadequately-controlled disease harms mother and fetus:</b> undetected/under-treated hypothyroidism impairs fetal neurodevelopment; poorly-controlled hyperthyroidism raises miscarriage, pre-eclampsia, IUGR, preterm delivery and fetal death. Treat early and refer urgently.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- STEP 1 · SAFETY -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-head">
+      <div class="node-num">1</div>
+      <div>
+        <span class="node-tag">Safety</span>
+        <h3>Emergencies, the 2WW Flag &amp; Why Control Matters</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Pregnancy lowers the threshold for harm from thyroid disease. Screen first for the situations that need emergency or cancer-pathway action.</p>
+      <div class="rfgrid">
+        <div class="rftile"><b>Thyroid storm</b> Severe signs &amp; symptoms of hyperthyroidism (fever, tachyarrhythmia, agitation, vomiting) → <b>emergency admission</b>.</div>
+        <div class="rftile"><b>Hyperemesis gravidarum</b> Intractable vomiting (can overlap with gestational thyrotoxicosis) → emergency admission for rehydration &amp; assessment.</div>
+        <div class="rftile"><b>Suspected thyroid malignancy</b> Thyroid nodule or goitre with suspicious features → <span class="pill pill-purple">2WW thyroid</span> (NICE NG12), independent of pregnancy.</div>
+        <div class="rftile"><b>Inadequately-controlled hyperthyroidism</b> Raises miscarriage, pre-eclampsia, <b>IUGR</b>, preterm delivery, low birth weight and fetal death → urgent control.</div>
+        <div class="rftile"><b>Undetected/under-treated hypothyroidism</b> May adversely affect fetal <b>neuropsychological development</b> &amp; survival; associated with ovulatory dysfunction &amp; infertility.</div>
+        <div class="rftile"><b>Adrenergic symptoms</b> Tremor / tachycardia needing symptomatic treatment while awaiting specialist assessment → seek endocrinology advice (e.g. beta-blocker).</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Maternal thyroid hormone is critical for fetal brain development, especially in the first trimester before the fetal thyroid is functional — which is why both under-treated hypothyroidism and poorly-controlled hyperthyroidism carry serious fetal risks and demand prompt action. Thyroid storm and hyperemesis are the genuine emergencies, and a suspicious nodule still follows the 2WW cancer pathway in pregnancy.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 2 · DIAGNOSE (physiology) -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-head">
+      <div class="node-num">2</div>
+      <div>
+        <span class="node-tag">Diagnose</span>
+        <h3>Pregnancy Thyroid Physiology &amp; Trimester-Specific Ranges</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <div class="kv">
+        <div>TBG &amp; thyroid hormones</div>
+        <div>↑ oestrogen production → <b>↑ thyroxine-binding globulin (TBG)</b> → rise in total (and free) FT4 and FT3.</div>
+        <div>TSH falls in 1st trimester</div>
+        <div>A <b>fall in TSH is normal in the first trimester</b> (hCG cross-stimulates the TSH receptor). Don't misread a low T1 TSH as pathological hyperthyroidism.</div>
+        <div>Use trimester ranges</div>
+        <div><b>Apply trimester-specific reference ranges</b> for TSH and for total/free thyroid hormones — non-pregnant ranges mislead.</div>
+        <div>Immune changes</div>
+        <div>Altered immune function can change the course of existing autoimmune thyroid disease (may improve in pregnancy, relapse postpartum).</div>
+        <div>After delivery</div>
+        <div>Thyroid hormone &amp; TSH levels normally return to the pre-pregnant state postpartum (watch for PPT, Step 5).</div>
+        <div>What to request</div>
+        <div>TSH + FT4 for hypothyroid pictures; add <b>FT3</b> for hyperthyroid pictures. Check immediately and send results to the specialist.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Pregnancy physiology rewrites the reference ranges: hCG suppresses TSH in the first trimester and rising TBG lifts total thyroid hormones, so trimester-specific ranges are essential to avoid both over-diagnosing hyperthyroidism and missing genuine hypothyroidism. This is the single most common interpretive error in pregnancy thyroid testing.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 3 · TREAT (hypothyroidism) -->
+  <div class="node" data-type="TREAT" data-step="3">
+    <div class="node-head">
+      <div class="node-num">3</div>
+      <div>
+        <span class="node-tag">Treat</span>
+        <h3>Hypothyroidism — Increase Levothyroxine Early</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Overt <b>or</b> subclinical hypothyroidism needs prompt action — the treatment threshold is lower than outside pregnancy.</p>
+      <div class="kv">
+        <div>Refer urgently</div>
+        <div><b>Urgent referral to antenatal + endocrinology.</b> Check TSH &amp; FT4 immediately and discuss with the specialist while awaiting assessment.</div>
+        <div>Increase the dose early</div>
+        <div>On specialist advice, an <b>increase in levothyroxine of 30–50%</b> may be needed <b>from as early as 4–6 weeks' gestation</b> to maintain a normal serum TSH.</div>
+        <div>Already on levothyroxine?</div>
+        <div>Discuss dose increase &amp; monitoring as soon as pregnancy is confirmed — don't wait for booking. A common practical approach is to increase the dose immediately on a positive test, then titrate.</div>
+        <div>Newly diagnosed?</div>
+        <div>Whilst awaiting review, discuss <b>initiation of levothyroxine</b> with the specialist; the aim is rapid normalisation of TSH.</div>
+        <div>Target</div>
+        <div>Keep TSH within the <b>trimester-specific</b> range (specialist-led). Recheck TFTs frequently through pregnancy (Step 6).</div>
+        <div>How to take</div>
+        <div>Levothyroxine ≥30 min before food/caffeine; separate from iron &amp; calcium (incl. pregnancy supplements) by ~4 hours to preserve absorption.</div>
+      </div>
+      <div class="note mt8">ℹ️ The rising demand is driven by increased TBG and transfer to the fetus, so the dose often needs to go <b>up</b> in the first trimester — the opposite of the instinct to minimise medication in pregnancy.</div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Thyroxine requirements rise by roughly a third early in pregnancy because of increased binding-globulin and transplacental transfer to a fetus that can't yet make its own hormone. Increasing the dose by 30–50% from 4–6 weeks (often by simply adding extra doses per week on a positive test) keeps the TSH in range and protects fetal neurodevelopment — under-treatment here is the harm to avoid.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 4 · TREAT (hyperthyroidism) -->
+  <div class="node" data-type="TREAT" data-step="4">
+    <div class="node-head">
+      <div class="node-num">4</div>
+      <div>
+        <span class="node-tag">Treat</span>
+        <h3>Hyperthyroidism — PTU &amp; Specialist Management</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Refer <b>all</b> women with hyperthyroidism in pregnancy — including those currently euthyroid — to antenatal + endocrinology. Antithyroid drugs are specialist-initiated.</p>
+      <div class="kv">
+        <div>Refer everyone</div>
+        <div>Urgent referral of <b>all</b> patients to antenatal &amp; endocrinology, <b>including women who are euthyroid</b> (e.g. treated Graves). Check TSH, FT3 &amp; FT4 immediately and send to the specialist.</div>
+        <div>Drug of choice</div>
+        <div><b>Propylthiouracil (PTU)</b> is usually used in pregnant women, due to the increased risk of congenital abnormalities with <b>carbimazole</b> (see MHRA alert). Use the <b>lowest possible dose</b> to maintain euthyroidism.</div>
+        <div>Risk–benefit</div>
+        <div>The risks vs benefits of individual antithyroid treatments should be considered before prescribing — both PTU and carbimazole cross the placenta; specialist balances agent &amp; timing.</div>
+        <div>Already on treatment</div>
+        <div>If already on antithyroid therapy, ongoing <b>blood monitoring is arranged and managed in secondary care.</b></div>
+        <div>Symptom control</div>
+        <div>For adrenergic symptoms (tremor, tachycardia) awaiting specialist review, seek endocrinology advice — a beta-blocker may be used short-term.</div>
+        <div>Aetiology</div>
+        <div>Distinguish Graves' disease from gestational transient thyrotoxicosis (hCG-driven, often with hyperemesis) — specialist-led, as management differs.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Carbimazole (and its active metabolite methimazole) is associated with a recognised embryopathy, so the MHRA advises effective contraception and specialist-guided use; PTU is generally preferred in the first trimester despite its own (hepatic) risks. Because the agent choice, dose and timing are a fine specialist balance — and Graves antibodies can affect the fetus — every case is referred, even when the mother is currently euthyroid.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 5 · DIAGNOSE (PPT) -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+    <div class="node-head">
+      <div class="node-num">5</div>
+      <div>
+        <span class="node-tag">Diagnose</span>
+        <h3>Postpartum Thyroiditis — Thyrotoxic Then Hypothyroid</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Postpartum thyroiditis (PPT) is common and classically biphasic. It usually <b>resolves spontaneously within 1 year</b> postpartum.</p>
+      <div class="kv">
+        <div>Thyrotoxic pattern</div>
+        <div>If initial TFTs show a thyrotoxic pattern → <b>refer to a specialist</b> for further tests to differentiate from <b>Graves' disease</b>. After the thyrotoxic phase resolves, <b>recheck TFTs at 4–8 weeks</b> (or if new symptoms) to screen for the hypothyroid phase.</div>
+        <div>Hypothyroid pattern</div>
+        <div>If TFTs show a hypothyroid pattern → <b>seek specialist advice on whether to start levothyroxine</b>.</div>
+        <div>Who to suspect</div>
+        <div>Check TFTs after delivery — particularly with a goitre, non-specific symptoms suggestive of thyroiditis, history of PPT or autoimmune thyroid disease, or <b>TPOAb positive</b>.</div>
+        <div>When to check</div>
+        <div>Check TSH &amp; FT4 at <b>6–8 weeks postpartum</b> in at-risk women.</div>
+        <div>History of (resolved) PPT</div>
+        <div>Offer <b>annual TFT monitoring</b>; screen <b>before future pregnancy</b> and at <b>6–8 weeks after</b> any pregnancy — high risk of permanent hypothyroidism &amp; recurrence.</div>
+        <div>Significant relapse risk</div>
+        <div>There is a significant risk of relapse — don't discharge from follow-up too early.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        PPT typically runs a thyrotoxic phase (destructive release of stored hormone) followed by a hypothyroid phase before recovery — and distinguishing the thyrotoxic phase from new Graves' disease matters because Graves needs antithyroid drugs whereas PPT thyrotoxicosis does not. The high rate of eventual permanent hypothyroidism and recurrence is why resolved PPT earns annual monitoring and pre-pregnancy screening.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 6 · LIFESTYLE (monitoring) -->
+  <div class="node" data-type="LIFESTYLE" data-step="6">
+    <div class="node-head">
+      <div class="node-num">6</div>
+      <div>
+        <span class="node-tag">Lifestyle</span>
+        <h3>Monitoring Schedule &amp; Higher-Risk Groups</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <div class="lsgrid">
+        <div class="lstile"><b>At pregnancy confirmation</b> Measure TFTs as soon as pregnancy is confirmed — the earliest window for dose adjustment.</div>
+        <div class="lstile"><b>At antenatal booking</b> Recheck TFTs at booking and act on trimester-specific ranges.</div>
+        <div class="lstile"><b>Each of 2nd &amp; 3rd trimester</b> At least once in the 2nd and once in the 3rd trimester (more often if titrating).</div>
+        <div class="lstile"><b>2–4 weeks postpartum</b> Recheck TFTs 2–4 weeks after delivery; watch for PPT and adjust doses.</div>
+        <div class="lstile"><b>Type 1 diabetes = 3× PPT risk</b> Check <b>TSH, FT4 &amp; TPOAb</b> prior to pregnancy, at diagnosis of pregnancy, and <b>3 &amp; 6 months postpartum</b>.</div>
+        <div class="lstile"><b>TPOAb-positive women</b> Higher risk of PPT and progression — lower threshold for postpartum testing &amp; follow-up.</div>
+        <div class="lstile"><b>Pre-conception optimisation</b> In known thyroid disease, optimise TFTs and adjust levothyroxine <b>before</b> conception where possible.</div>
+        <div class="lstile"><b>Coordinate care</b> Keep antenatal, endocrinology and primary care aligned on targets, doses and the monitoring plan.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Frequent, scheduled TFTs (confirmation, booking, each trimester, postpartum) are what keep a moving target in range as requirements change through pregnancy and fall again after delivery. Women with type 1 diabetes carry a threefold PPT risk, so their antibody and TFT screening is more intensive and extends to 3 and 6 months postpartum.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 7 · TREAT (postpartum) -->
+  <div class="node" data-type="TREAT" data-step="7">
+    <div class="node-head">
+      <div class="node-num">7</div>
+      <div>
+        <span class="node-tag">Treat</span>
+        <h3>Postpartum — Step Levothyroxine Back Down</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <div class="kv">
+        <div>Was on levothyroxine before pregnancy</div>
+        <div>The dose will need to be <b>decreased back to the pre-pregnancy dose</b> as advised by a specialist. <b>Check TFTs at 6 weeks postpartum.</b></div>
+        <div>Started levothyroxine in pregnancy</div>
+        <div>Discuss with the specialist whether any dose changes are required postpartum and the frequency of TFT monitoring.</div>
+        <div>Hyperthyroidism postpartum</div>
+        <div>Significant <b>risk of relapse</b> of Graves' after delivery — check TFTs after delivery; continue specialist-led monitoring.</div>
+        <div>Breastfeeding</div>
+        <div>Levothyroxine is safe; PTU/carbimazole are used at the lowest effective dose under specialist guidance — don't stop thyroid treatment to breastfeed without advice.</div>
+        <div>PPT hypothyroid phase</div>
+        <div>If levothyroxine started for PPT-related hypothyroidism, the specialist will advise on duration and a later trial of withdrawal (many recover).</div>
+        <div>Document the plan</div>
+        <div>Record the postpartum dose change, the 6-week TFT, and the ongoing monitoring interval.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        The pregnancy-driven rise in thyroxine requirement reverses after delivery, so a woman left on her pregnancy dose will become over-replaced — hence the prompt step back to the pre-pregnancy dose and a 6-week TFT check. Graves' disease characteristically relapses postpartum, which is why hyperthyroid women stay under specialist monitoring after delivery.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 8 · REFER -->
+  <div class="node" data-type="REFER" data-step="8">
+    <div class="node-head">
+      <div class="node-num">8</div>
+      <div>
+        <span class="node-tag">Refer</span>
+        <h3>Referral &amp; Emergency Criteria</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <div class="kv">
+        <div><span class="pill pill-purple">Urgent antenatal + endocrinology</span></div>
+        <div>Refer <b>all</b> patients with overt or subclinical hypo- or hyperthyroidism — including euthyroid women with a history of thyroid disease. Check TSH/FT4 (+FT3 if hyper) immediately and discuss while awaiting assessment.</div>
+        <div>New diagnosis</div>
+        <div>New hypo- or hyperthyroidism in pregnancy → <b>contact endocrinology for advice &amp; guidance</b> and start the urgent referral.</div>
+        <div><span class="pill pill-red">Emergency admission</span></div>
+        <div>Severe hyperthyroidism / <b>thyroid storm</b>, or intractable vomiting suggesting <b>hyperemesis gravidarum</b>.</div>
+        <div><span class="pill pill-purple">2WW thyroid</span></div>
+        <div>Thyroid nodule or goitre with suspected malignancy (NICE NG12).</div>
+        <div>Refer if TFTs abnormal (PPT)</div>
+        <div>In postpartum thyroiditis, refer to endocrinology if TFTs are abnormal — urgency by clinical judgement.</div>
+        <div>Pre-conception</div>
+        <div>Known thyroid disease planning pregnancy → optimise &amp; refer for pre-pregnancy counselling and dose planning.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Thyroid disease in pregnancy is shared antenatal–endocrine–primary-care territory, and the threshold to refer is deliberately low (everyone, even the euthyroid) because the stakes for mother and fetus are high and the management — trimester targets, antithyroid drug choice, Graves antibody surveillance — is specialist. Thyroid storm and hyperemesis are the emergencies; a suspicious nodule still goes down the 2WW cancer pathway.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 9 · SAFETY -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-head">
+      <div class="node-num">9</div>
+      <div>
+        <span class="node-tag">Safety</span>
+        <h3>Risks of Inadequate Control &amp; Safety-Netting</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Keep the maternal and fetal stakes front of mind — they justify early treatment and urgent referral.</p>
+      <div class="kv">
+        <div>Under-treated hypothyroidism</div>
+        <div>May adversely affect fetal <b>neuropsychological development</b> &amp; survival; associated with <b>ovulatory dysfunction &amp; infertility</b> pre-conception.</div>
+        <div>Poorly-controlled hyperthyroidism</div>
+        <div>Increases <b>miscarriage, pre-eclampsia, intrauterine growth restriction, preterm delivery, low birth weight</b> and <b>fetal death</b>.</div>
+        <div>Drug safety</div>
+        <div>Carbimazole embryopathy risk (MHRA) → PTU preferred; lowest effective antithyroid dose. Levothyroxine is safe and often needs increasing.</div>
+        <div><span class="pill pill-amber">Re-test / escalate if</span></div>
+        <div>Symptoms worsen, vomiting becomes intractable, or TFTs drift out of the trimester range — bring testing forward and re-discuss with the specialist.</div>
+        <div>Postpartum vigilance</div>
+        <div>Check TFTs after delivery; high relapse/PPT risk. T1DM and TPOAb-positive women need closer surveillance.</div>
+        <div>Document &amp; coordinate</div>
+        <div>Record the diagnosis, dose plan, monitoring schedule and referrals; keep antenatal, endocrine &amp; primary care aligned.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Spelling out the fetal and maternal consequences of under-control — neurodevelopmental harm from hypothyroidism; miscarriage, pre-eclampsia and growth restriction from hyperthyroidism — is what justifies the assertive, refer-early, treat-early posture of this whole pathway. Good documentation and joined-up care between antenatal, endocrinology and primary care close the loop.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /alg-flow -->
+
+<!-- ── FOOTER ────────────────────────────────────────────────── -->
+<div class="alg-foot" style="max-width:820px; margin:32px auto 0; padding:0 16px;">
+  <div style="background:white;border:1px solid #e2e0da;border-radius:10px;padding:16px 20px;font-size:.8rem;color:#6b6762;line-height:1.6;">
+    <strong style="color:#1a1917;">Educational use only.</strong> Pathway based on:
+    NW London Outpatient Pathways — Thyroid dysfunction in pregnancy (Issue 1, March 2021) ·
+    NICE NG145 Thyroid disease: assessment &amp; management ·
+    NICE CKS Hypothyroidism / Hyperthyroidism · NICE NG12 Suspected Cancer Recognition &amp; Referral ·
+    MHRA Drug Safety Update — carbimazole &amp; congenital malformations · Endocrine Society / ATA pregnancy guidance.
+    Antithyroid drugs &amp; antenatal thyroid care are specialist-led. Always apply trimester-specific reference ranges and refer urgently.
+  </div>
+</div>
+
+<!-- ── JAVASCRIPT ─────────────────────────────────────────────── -->
+<script>
+(function () {
+  const STORE_KEY = 'rgp.alg.thyroid-pregnancy.v1';
+  const flow      = document.getElementById('flow');
+  const pDone     = document.getElementById('pDone');
+  const pFill     = document.getElementById('pFill');
+  const resetBtn  = document.getElementById('resetBtn');
+  const total     = 9;
+
+  // ── Load saved state ────────────────────────────────────────
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch(_) {}
+
+  // ── Apply to checkboxes ──────────────────────────────────────
+  flow.querySelectorAll('.node').forEach(node => {
+    const step = node.dataset.step;
+    const cb   = node.querySelector('input[type="checkbox"]');
+    if (!cb) return;
+    if (saved[step]) {
+      cb.checked = true;
+      node.classList.add('done');
+    }
+    cb.addEventListener('change', () => {
+      node.classList.toggle('done', cb.checked);
+      saved[step] = cb.checked;
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(saved)); } catch(_) {}
+      updateProgress();
+    });
+  });
+
+  // ── Progress bar ─────────────────────────────────────────────
+  function updateProgress() {
+    const n = Object.values(saved).filter(Boolean).length;
+    pDone.textContent = n;
+    pFill.style.width = (n / total * 100) + '%';
+  }
+  updateProgress();
+
+  // ── Reset ────────────────────────────────────────────────────
+  resetBtn.addEventListener('click', () => {
+    if (!confirm('Reset all progress?')) return;
+    saved = {};
+    try { localStorage.removeItem(STORE_KEY); } catch(_) {}
+    flow.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    flow.querySelectorAll('.node').forEach(n => n.classList.remove('done'));
+    updateProgress();
+  });
+
+  // ── Why? drawers ──────────────────────────────────────────────
+  flow.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const drawer  = btn.nextElementSibling;
+      const isOpen  = drawer.classList.contains('open');
+      drawer.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', !isOpen);
+    });
+  });
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

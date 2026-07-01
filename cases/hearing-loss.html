@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hearing Loss · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+</style>
+<style>
+:root{
+  --navy:#0f2540;--navy2:#1b3a5c;--ink:#1a2332;--muted:#64748b;
+  --line:#e2e8f0;--surface:#f8fafc;--white:#fff;
+  --r:#b91c1c;--r-bg:#fef2f2;--r-bd:#fecaca;
+  --a:#b45309;--a-bg:#fffbeb;--a-bd:#fde68a;
+  --g:#15803d;--g-bg:#f0fdf4;--g-bd:#bbf7d0;
+  --b:#1d4ed8;--b-bg:#eff6ff;--b-bd:#bfdbfe;
+  --p:#6d28d9;--p-bg:#f5f3ff;--p-bd:#ddd6fe;
+  --t:#0f766e;--t-bg:#f0fdfa;--t-bd:#99f6e4;
+  --ps:#be185d;--ps-bg:#fdf2f8;--ps-bd:#fbcfe8;
+  --shadow:0 1px 3px rgba(0,0,0,.07),0 4px 16px rgba(0,0,0,.04);
+  --shadow-md:0 4px 12px rgba(0,0,0,.1);
+  --rad:12px;--rad-sm:8px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#e8edf3;color:var(--ink);line-height:1.6;font-size:14px;-webkit-font-smoothing:antialiased}
+.topbar{background:var(--navy);color:#fff;position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.tb-inner{max-width:1240px;margin:0 auto;padding:9px 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.tb-brand{display:flex;align-items:center;gap:10px}
+.tb-icon{width:34px;height:34px;background:#fff;color:var(--navy);border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex-shrink:0}
+.tb-title{font-size:14px;font-weight:600;color:#fff;line-height:1.2}
+.tb-sub{font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.07em}
+.mode-group{display:flex;background:rgba(255,255,255,.1);padding:4px;border-radius:30px;gap:3px}
+.mode-btn{font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;border:none;cursor:pointer;background:transparent;color:rgba(255,255,255,.6);transition:.2s;font-family:'DM Sans',sans-serif}
+.mode-btn.active{background:#fff;color:var(--navy)}
+.tb-nav{display:flex;gap:2px;flex-wrap:wrap}
+.tb-nav a{font-size:11px;color:rgba(255,255,255,.6);text-decoration:none;padding:4px 8px;border-radius:15px;transition:.15s;font-weight:500}
+.tb-nav a:hover{background:rgba(255,255,255,.12);color:#fff}
+@media(max-width:980px){.tb-nav{display:none}}
+.numstrip{background:var(--navy2);border-bottom:1px solid rgba(255,255,255,.07)}
+.ns-inner{max-width:1240px;margin:0 auto;padding:6px 1.25rem;display:flex;flex-wrap:wrap}
+.ns-item{padding:3px 14px;border-right:1px solid rgba(255,255,255,.1);flex-shrink:0}
+.ns-item:last-child{border-right:none}
+.ns-val{font-size:13px;font-weight:700;color:#fff;display:block;line-height:1.2}
+.ns-lbl{font-size:9.5px;color:rgba(255,255,255,.5);white-space:nowrap}
+.page{max-width:1240px;margin:0 auto;padding:20px 16px 60px}
+/* STEM */
+.stem-box{background:var(--navy);border-radius:var(--rad);padding:1.1rem 1.4rem;margin-bottom:1.5rem;border-left:5px solid #60a5fa}
+.stem-label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:.5rem}
+.stem-title{font-family:'DM Serif Display',serif;font-size:1.3rem;color:#fff;margin-bottom:.5rem}
+.stem-text{font-size:13px;color:rgba(255,255,255,.85);line-height:1.65;font-style:italic;border-left:2px solid rgba(255,255,255,.2);padding-left:12px;margin-bottom:.75rem}
+.stem-note{font-size:11.5px;color:rgba(255,255,255,.6);line-height:1.5}
+.stem-variants{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:.75rem}
+@media(max-width:700px){.stem-variants{grid-template-columns:1fr}}
+.stem-variant{background:rgba(255,255,255,.08);border-radius:8px;padding:.6rem .85rem;font-size:11.5px;color:rgba(255,255,255,.8);line-height:1.45}
+.stem-variant strong{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.45);margin-bottom:.2rem}
+/* STEPS */
+.step-wrap{margin-bottom:1.5rem}
+.step-hdr{display:flex;align-items:center;gap:12px;padding:.85rem 1.1rem;background:var(--white);border:1px solid var(--line);border-radius:var(--rad);cursor:pointer;user-select:none;box-shadow:var(--shadow);transition:background .15s,box-shadow .15s;position:relative;z-index:1}
+.step-hdr:hover{background:#f8fafc;box-shadow:var(--shadow-md)}
+.step-hdr.is-open{border-radius:var(--rad) var(--rad) 0 0;border-bottom-color:transparent;box-shadow:none;border-bottom:none}
+.step-circle{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#fff;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.sc1{background:#6d28d9}.sc2{background:#b91c1c}.sc3{background:#0369a1}.sc4{background:#0f766e}.sc5{background:#854d0e}.sc6{background:#be123c}.sc7{background:#15803d}
+.step-hdr-text{flex:1}
+.step-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1}
+.step-title{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--navy);font-weight:400;line-height:1.25;margin-top:2px}
+.step-toggle{display:flex;align-items:center;gap:6px;flex-shrink:0;padding:.35rem .75rem;border-radius:20px;background:#f1f5f9;border:1px solid var(--line);transition:background .15s}
+.step-hdr:hover .step-toggle{background:#e2e8f0}
+.sti-icon{font-size:12px;color:var(--muted);display:inline-block}
+.sti-text{font-size:11px;color:var(--muted);font-weight:500}
+.step-body{background:var(--white);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--rad) var(--rad);padding:1.1rem 1.1rem 1.25rem;box-shadow:var(--shadow);overflow:hidden}
+.step-body.closed{display:none}
+.step-intro{font-size:12.5px;color:var(--muted);line-height:1.6;background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:0 var(--rad-sm) var(--rad-sm) 0;padding:.7rem 1rem;margin-bottom:1rem}
+.step-intro strong{color:var(--ink)}
+.collapse-controls{display:flex;gap:8px;margin-bottom:1rem;align-items:center}
+.cc-btn{font-size:11.5px;font-weight:600;padding:5px 14px;border-radius:20px;border:1px solid var(--line);background:var(--white);cursor:pointer;color:var(--ink);font-family:'DM Sans',sans-serif;transition:.15s}
+.cc-btn:hover{background:#f1f5f9}
+.cc-label{font-size:11px;color:var(--muted)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:860px){.g2,.g3{grid-template-columns:1fr}}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--rad);box-shadow:var(--shadow)}
+.card-hd{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:.7rem 1rem;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:7px}
+.chg{font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;display:inline-block;margin:1px;white-space:nowrap}
+.chg-999{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
+.chg-urgent{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+.chg-ddx{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
+.chg-rx{background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe}
+.chg-ref{background:#f5f3ff;color:#5b21b6;border:1px solid #ddd6fe}
+.chg-inv{background:#fef9c3;color:#854d0e;border:1px solid #fde68a}
+.chg-ps{background:#fdf2f8;color:#be185d;border:1px solid #fbcfe8}
+.rt{width:100%;border-collapse:collapse;font-size:13px}
+.rt thead th{background:#f8fafc;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:.55rem .85rem;text-align:left;border-bottom:2px solid var(--line)}
+.rt td{padding:.65rem .85rem;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.rt tr:last-child td{border-bottom:none}
+.rt tr:hover td{background:#fafbfc}
+.rt .q{font-weight:500}.rt .q em{display:block;font-style:italic;font-size:12px;color:var(--b);margin-top:2px}
+.rt .why{font-size:12.5px;line-height:1.5}.rt .why-sub{font-size:11px;color:var(--muted);display:block;margin-top:2px}
+.rt .chg-col{min-width:120px}
+.mcb{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;display:inline-block}
+.mcb-yes{background:#dcfce7;color:#15803d}.mcb-context{background:#dbeafe;color:#1e40af}
+.open-q-row{background:#f0fdf4 !important}
+.open-q-row td{border-left:3px solid var(--g)}
+/* RED FLAGS */
+.rf-wrap{background:var(--r-bg);border:2px solid var(--r-bd);border-radius:var(--rad);overflow:hidden}
+.rf-hdr{background:#fecaca;padding:.65rem 1.1rem;display:flex;align-items:center;gap:8px}
+.rf-hdr h3{font-size:13px;font-weight:700;color:var(--r)}
+.rf-table{width:100%;border-collapse:collapse}
+.rf-table th{background:rgba(185,28,28,.08);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--r);padding:.5rem .85rem;text-align:left;border-bottom:1px solid var(--r-bd)}
+.rf-table td{padding:.55rem .85rem;border-bottom:1px solid var(--r-bd);font-size:12.5px;vertical-align:top;line-height:1.5}
+.rf-table tr:last-child td{border-bottom:none}
+.rf-flag{font-weight:600;color:var(--r)}.rf-why{font-size:12px;color:#7f1d1d;line-height:1.45}
+.rf-action{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;display:inline-block;white-space:nowrap}
+.rfa-999{background:#b91c1c;color:#fff}.rfa-same{background:#f97316;color:#fff}
+/* SAFEGUARDING */
+.sg-wrap{background:var(--ps-bg);border:2px solid var(--ps-bd);border-radius:var(--rad);overflow:hidden;margin-top:1rem}
+.sg-hdr{background:#fbcfe8;padding:.65rem 1.1rem;display:flex;align-items:center;gap:8px}
+.sg-hdr h3{font-size:13px;font-weight:700;color:var(--ps)}
+.sg-body{padding:.85rem 1.1rem}
+.sg-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:640px){.sg-grid{grid-template-columns:1fr}}
+.sg-card{border-radius:var(--rad-sm);padding:.7rem .9rem;background:#fff;border:1px solid var(--ps-bd)}
+.sg-card h5{font-size:11px;font-weight:700;color:var(--ps);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem}
+.sg-card li,.sg-card p{font-size:12px;line-height:1.5;color:var(--ink)}
+.sg-card ul{padding-left:1rem}
+.sg-action{margin-top:.75rem;background:var(--ps);border-radius:8px;padding:.65rem 1rem;font-size:12px;color:#fff;line-height:1.5}
+.sg-action strong{color:#fbcfe8}
+/* IMPACT TABLE */
+.it{width:100%;border-collapse:collapse}
+.it th{background:#f8fafc;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:.5rem .85rem;text-align:left;border-bottom:1px solid var(--line)}
+.it td{padding:.55rem .85rem;border-bottom:1px solid var(--line);font-size:12.5px;vertical-align:top;line-height:1.5}
+.it tr:last-child td{border-bottom:none}.it tr:hover td{background:#fafbfc}
+.it .factor{font-weight:600}.it .impact{color:var(--b);font-size:12px}
+/* PSYCHOSOCIAL BANNER */
+.ps-banner{background:linear-gradient(135deg,#fdf2f8,#f5f3ff);border:1px solid var(--ps-bd);border-left:4px solid var(--ps);border-radius:var(--rad-sm);padding:.75rem 1rem;margin:.75rem 0}
+.ps-banner-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ps);margin-bottom:.3rem}
+.ps-banner p{font-size:12.5px;color:#4a0072;line-height:1.55}
+.ps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:.75rem 0}
+@media(max-width:640px){.ps-grid{grid-template-columns:1fr}}
+.ps-card{background:#fff;border:1px solid var(--ps-bd);border-radius:var(--rad-sm);padding:.65rem .85rem}
+.ps-card h5{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ps);margin-bottom:.3rem}
+.ps-card p{font-size:12px;color:var(--ink);line-height:1.45}
+.ps-phrase{font-size:12px;font-style:italic;background:var(--ps-bg);border-left:2px solid var(--ps-bd);padding:.35rem .7rem;border-radius:0 6px 6px 0;margin-top:.35rem;line-height:1.5;color:#4a0072;display:block}
+/* ICE */
+.ice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:700px){.ice-grid{grid-template-columns:1fr}}
+.ice-card{border-radius:var(--rad);padding:.85rem 1rem;border:1px solid}
+.ice-i{background:var(--p-bg);border-color:var(--p-bd)}.ice-c{background:var(--b-bg);border-color:var(--b-bd)}.ice-e{background:var(--a-bg);border-color:var(--a-bd)}
+.ice-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem}
+.ice-i .ice-label{color:var(--p)}.ice-c .ice-label{color:var(--b)}.ice-e .ice-label{color:var(--a)}
+.ice-phrase{font-size:12.5px;font-style:italic;line-height:1.55;border-left:3px solid;padding-left:9px}
+.ice-i .ice-phrase{border-color:var(--p-bd)}.ice-c .ice-phrase{border-color:var(--b-bd)}.ice-e .ice-phrase{border-color:var(--a-bd)}
+.ice-why{font-size:11px;color:var(--muted);margin-top:.4rem}
+/* SCA CHECKPOINT */
+.sca-cp{background:var(--navy);border-radius:var(--rad);padding:1rem 1.25rem;margin-top:.85rem}
+.sca-cp-hdr{display:flex;align-items:center;gap:8px;margin-bottom:.75rem;flex-wrap:wrap}
+.sca-cp-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.sca-dom{font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,.15);color:#fff}
+.sca-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:600px){.sca-grid{grid-template-columns:1fr}}
+.sca-block{background:rgba(255,255,255,.07);border-radius:8px;padding:.65rem .85rem}
+.sca-block-t{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.4rem}
+.sca-say .sca-block-t{color:#86efac}.sca-avoid .sca-block-t{color:#fca5a5}.sca-score .sca-block-t{color:#93c5fd}
+.sca-block p,.sca-block li{font-size:12px;color:rgba(255,255,255,.82);line-height:1.5}
+.sca-block ul{list-style:none;padding-left:.25rem}
+.sca-say li::before{content:'✓ ';color:#86efac;font-size:11px}
+.sca-avoid li::before{content:'✗ ';color:#fca5a5;font-size:11px}
+.sca-score li::before{content:'• ';color:#93c5fd;font-size:11px}
+.sca-phrase{font-style:italic;font-size:12px;color:#e2e8f0;background:rgba(255,255,255,.06);border-left:2px solid rgba(255,255,255,.2);padding:.45rem .75rem;border-radius:0 6px 6px 0;line-height:1.55;margin-top:.3rem}
+.rag-strip{display:flex;gap:6px;flex-wrap:wrap;margin-top:.6rem;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.1)}
+.rag-item{background:rgba(255,255,255,.05);border-radius:8px;padding:.45rem .75rem;flex:1;min-width:140px}
+.rag-item-t{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.45);margin-bottom:.3rem}
+.rag-bullets{font-size:11px;color:rgba(255,255,255,.75);line-height:1.5}
+.rag-r{border-left:2px solid #fca5a5}.rag-a{border-left:2px solid #fde68a}.rag-g{border-left:2px solid #86efac}
+/* TRIAGE */
+.triage{display:grid;grid-template-columns:1fr 1fr 1fr;border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow-md)}
+@media(max-width:780px){.triage{grid-template-columns:1fr}}
+.tc{padding:1.1rem 1.1rem}
+.tc-e{background:var(--r-bg);border-right:2px solid var(--r-bd)}.tc-u{background:var(--a-bg);border-right:2px solid var(--a-bd)}.tc-r{background:var(--g-bg)}
+@media(max-width:780px){.tc{border-right:none!important;border-bottom:2px solid var(--line)}.tc-r{border-bottom:none}}
+.tc-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.tc-e .tc-lbl{color:var(--r)}.tc-u .tc-lbl{color:var(--a)}.tc-r .tc-lbl{color:var(--g)}
+.tc h3{font-size:14px;font-weight:700;margin-bottom:.35rem}
+.tc-e h3{color:var(--r)}.tc-u h3{color:var(--a)}.tc-r h3{color:var(--g)}
+.tc-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:.65rem}
+.tcb-e{background:#fee2e2;color:var(--r);border:1px solid var(--r-bd)}
+.tcb-u{background:var(--a-bg);color:var(--a);border:1px solid var(--a-bd)}
+.tcb-r{background:var(--g-bg);color:var(--g);border:1px solid var(--g-bd)}
+.tc-items{list-style:none;display:flex;flex-direction:column;gap:5px}
+.tc-item{font-size:12.5px;padding-left:18px;position:relative;line-height:1.45}
+.tc-e .tc-item::before{content:'🚨';position:absolute;left:0;font-size:10px;top:1px}
+.tc-u .tc-item::before{content:'⚠';position:absolute;left:0;font-size:10px;top:1px}
+.tc-r .tc-item::before{content:'✓';position:absolute;left:0;font-size:11px;top:0;color:var(--g);font-weight:700}
+.tc-item strong{font-weight:600;display:block}.tc-item em{font-size:11px;color:var(--muted);font-style:normal}
+/* CONF BADGES */
+.conf-badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;display:inline-block}
+.conf-gp{background:#dcfce7;color:#15803d}.conf-sus{background:#fef3c7;color:#b45309}.conf-emerg{background:#fee2e2;color:#b91c1c}
+.ddx-card{border-radius:var(--rad);padding:.85rem 1rem;border:1px solid}
+.ddx-b{background:var(--r-bg);border-color:var(--r-bd)}.ddx-c{background:var(--a-bg);border-color:var(--a-bd)}.ddx-d{background:var(--p-bg);border-color:var(--p-bd)}
+.ddx-card h4{font-size:12px;font-weight:700;margin-bottom:.35rem}
+.ddx-b h4{color:var(--r)}.ddx-c h4{color:var(--a)}.ddx-d h4{color:var(--p)}
+.ddx-card p{font-size:12px;line-height:1.45}
+/* LAY LANGUAGE */
+.lay-box{background:#fefce8;border:1px solid #fde68a;border-left:4px solid #ca8a04;border-radius:var(--rad-sm);padding:.85rem 1rem;margin:.75rem 0}
+.lay-box-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#92400e;margin-bottom:.4rem}
+.lay-box p{font-size:12.5px;color:#451a03;line-height:1.6;font-style:italic}
+.lay-why-not{background:#f0f9ff;border:1px solid #bae6fd;border-left:4px solid #0369a1;border-radius:var(--rad-sm);padding:.85rem 1rem;margin:.75rem 0}
+.lay-why-not-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#0369a1;margin-bottom:.4rem}
+.lay-why-not p{font-size:12.5px;color:#0c4a6e;line-height:1.6;margin-bottom:.6rem}
+/* REFERRAL */
+.ref-table{width:100%;border-collapse:collapse}
+.ref-table th{background:#f8fafc;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:.55rem .85rem;text-align:left;border-bottom:2px solid var(--line)}
+.ref-table td{padding:.65rem .85rem;border-bottom:1px solid var(--line);font-size:12.5px;vertical-align:top;line-height:1.5}
+.ref-table tr:last-child td{border-bottom:none}.ref-table tr:hover td{background:#fafbfc}
+.ref-urg{font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;display:inline-block}
+.rurg-999{background:#fee2e2;color:var(--r)}.rurg-2{background:#fff7ed;color:#c2410c}
+.rurg-4{background:var(--a-bg);color:var(--a)}.rurg-6{background:#fef9c3;color:#854d0e}.rurg-r{background:var(--g-bg);color:var(--g)}
+/* TX GOALS */
+.tx-goals{display:flex;flex-wrap:wrap;gap:8px;margin:.75rem 0}
+.tx-goal{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;display:inline-flex;align-items:center;gap:6px;border:1px solid}
+.tg1{background:#f0fdf4;border-color:var(--g-bd);color:var(--g)}.tg2{background:var(--b-bg);border-color:var(--b-bd);color:var(--b)}
+.tg3{background:var(--p-bg);border-color:var(--p-bd);color:var(--p)}.tg4{background:var(--a-bg);border-color:var(--a-bd);color:var(--a)}
+/* EXPECTATION BOX */
+.expect-box{background:linear-gradient(135deg,#f0fdf4,#eff6ff);border:2px solid var(--g-bd);border-radius:var(--rad);padding:1rem 1.25rem;margin-bottom:1rem}
+.expect-box-hdr{display:flex;align-items:center;gap:8px;margin-bottom:.75rem}
+.expect-box-lbl{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.expect-steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:680px){.expect-steps{grid-template-columns:1fr}}
+.expect-step{background:#fff;border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.7rem .9rem}
+.expect-step-num{width:22px;height:22px;border-radius:50%;background:var(--g);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:.35rem}
+.expect-step h5{font-size:11.5px;font-weight:700;color:var(--g);margin-bottom:.25rem}
+.expect-step p{font-size:12px;color:var(--ink);line-height:1.45}
+.expect-phrase{font-size:12px;font-style:italic;background:var(--g-bg);border-left:2px solid var(--g-bd);padding:.45rem .8rem;border-radius:0 6px 6px 0;margin-top:.35rem;color:#14532d;line-height:1.55;display:block}
+/* PSYCHOSOCIAL IMPACT SUBSTEP */
+.psoci-wrap{background:var(--ps-bg);border:1px solid var(--ps-bd);border-radius:var(--rad);padding:1rem 1.25rem;margin:1.25rem 0}
+.psoci-hdr{display:flex;align-items:center;gap:8px;margin-bottom:.85rem}
+.psoci-title{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--ps);font-weight:400}
+.psoci-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:760px){.psoci-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.psoci-grid{grid-template-columns:1fr}}
+.psoci-card{background:#fff;border:1px solid var(--ps-bd);border-radius:var(--rad-sm);padding:.75rem .9rem}
+.psoci-icon{font-size:1.3rem;margin-bottom:.25rem;display:block}
+.psoci-card h5{font-size:11px;font-weight:700;color:var(--ps);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+.psoci-card p{font-size:12px;line-height:1.45;color:var(--ink);margin-bottom:.3rem}
+.psoci-phrase{font-size:11.5px;font-style:italic;color:#831843;background:var(--ps-bg);border-radius:5px;padding:.3rem .6rem;line-height:1.45;display:block;margin-top:.35rem}
+/* LIFESTYLE */
+.life-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:760px){.life-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:460px){.life-grid{grid-template-columns:1fr}}
+.life-card{background:var(--white);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow)}
+.life-head{background:var(--g-bg);padding:.65rem .9rem;border-bottom:1px solid var(--g-bd)}
+.life-icon{font-size:1.3rem;margin-bottom:.15rem;display:block}
+.life-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--g)}
+.life-target{font-size:11px;font-weight:600;color:var(--g);margin-top:.2rem;display:block}
+.life-body{padding:.65rem .9rem}
+.life-section{margin-bottom:.4rem}
+.life-section-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.15rem}
+.life-section p{font-size:12px;color:var(--ink);line-height:1.45}
+.life-benefit{font-size:12px;font-weight:700;color:var(--g);background:var(--g-bg);border-radius:6px;padding:2px 7px;display:inline-block;margin-top:.2rem}
+/* DRUG SELECTOR */
+.ds-wrap{background:var(--white);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow)}
+.ds-top{background:#f8fafc;border-bottom:1px solid var(--line);padding:1rem 1.25rem}
+.ds-top h3{font-size:13px;font-weight:600;margin-bottom:.6rem}
+.ds-checks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+@media(max-width:700px){.ds-checks{grid-template-columns:1fr 1fr}}
+.ds-lbl{display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--white);border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:12.5px;transition:.15s}
+.ds-lbl:hover{background:#f8fafc}.ds-lbl input{accent-color:var(--navy);width:14px;height:14px;flex-shrink:0}
+.ds-result{padding:1rem 1.25rem;background:var(--g-bg);border-top:1px solid var(--g-bd)}
+.ds-result-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.5rem}
+/* DRUG CARDS */
+.drug-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:.85rem}
+@media(max-width:980px){.drug-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.drug-cards{grid-template-columns:1fr}}
+.dc{background:var(--white);border:2px solid var(--line);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow);transition:border-color .25s,box-shadow .25s}
+.dc.recommended{border-color:#15803d;box-shadow:0 0 0 3px rgba(21,128,61,.12),var(--shadow)}
+.dc.alt-rec{border-color:var(--b);box-shadow:0 0 0 3px rgba(29,78,216,.08),var(--shadow)}
+.dc-head{padding:.7rem 1rem;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.dc-name{font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.2}
+.dc-examples{font-size:11px;color:var(--muted);margin-top:1px}
+.dc-rec-badge{font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:10px;display:none;margin-top:4px}
+.dc.recommended .dc-rec-badge{display:inline-block;background:#dcfce7;color:var(--g);border:1px solid var(--g-bd)}
+.dc.alt-rec .dc-rec-badge{display:inline-block;background:var(--b-bg);color:var(--b);border:1px solid var(--b-bd)}
+.dc-badges{display:flex;gap:4px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+.dc-step{font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px}
+.step1{background:#dcfce7;color:#15803d}.step2{background:#dbeafe;color:#1d4ed8}.step3{background:#fef3c7;color:#92400e}.step4{background:#fee2e2;color:var(--r)}
+.dc-dose{font-size:11px;font-weight:600;font-family:'SF Mono','Consolas',monospace;background:#fefce8;padding:2px 6px;border-radius:4px;border:1px solid #fef08a;white-space:nowrap}
+.dc-section{padding:.6rem .9rem;border-bottom:1px solid var(--line)}
+.dc-section:last-child{border-bottom:none}
+.dc-sec-t{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.35rem}
+.dc-g .dc-sec-t{color:var(--g)}.dc-r .dc-sec-t{color:var(--r)}.dc-a .dc-sec-t{color:var(--a)}.dc-b .dc-sec-t{color:var(--b)}
+.dc-g{background:rgba(240,253,244,.6)}.dc-r{background:rgba(254,242,242,.6)}.dc-a{background:rgba(255,251,235,.6)}.dc-b{background:rgba(239,246,255,.6)}
+.dc-item{font-size:12px;padding-left:13px;position:relative;line-height:1.45;margin-bottom:3px}
+.dc-item::before{position:absolute;left:0;font-size:10px;top:2px}
+.dc-g .dc-item::before{content:'✓';color:var(--g);font-weight:700}
+.dc-r .dc-item::before{content:'✗';color:var(--r);font-weight:700}
+.dc-a .dc-item::before{content:'⚠';color:var(--a)}.dc-b .dc-item::before{content:'•';color:var(--b)}
+.dc-item.ci-abs{color:var(--r);font-weight:500}.dc-item.ci-rel{color:var(--a)}
+.dc-sca{background:var(--navy);padding:.5rem .85rem}
+.dc-sca p{font-size:11px;color:rgba(255,255,255,.8);line-height:1.45;font-style:italic}
+.dc-sca p::before{content:'🎓 ';font-style:normal}
+.dc-counsel{background:#f5f3ff;padding:.5rem .85rem;border-top:1px solid var(--p-bd)}
+.dc-counsel-t{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--p);margin-bottom:.2rem}
+.dc-counsel p{font-size:11.5px;color:var(--p);line-height:1.45;font-style:italic}
+/* FOLLOW-UP */
+.fu-line{display:flex;flex-direction:column;gap:0;position:relative;padding-left:50px}
+.fu-line::before{content:'';position:absolute;left:16px;top:12px;bottom:12px;width:2px;background:var(--line)}
+.fu-event{position:relative;padding:.6rem 0 .65rem .5rem;display:flex;gap:10px;align-items:flex-start}
+.fu-dot{position:absolute;left:-40px;top:11px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700;color:#fff;z-index:1}
+.fd1{background:var(--r)}.fd2{background:var(--a)}.fd3{background:var(--b)}.fd4{background:var(--g)}.fd5{background:var(--t)}
+.fu-content h5{font-size:12.5px;font-weight:600;margin-bottom:2px}
+.fu-content p{font-size:12px;color:var(--muted);line-height:1.45}
+.fu-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px}
+.ft{font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:500}
+.ft-r{background:var(--r-bg);color:var(--r)}.ft-a{background:var(--a-bg);color:var(--a)}.ft-b{background:var(--b-bg);color:var(--b)}
+.mon-rule{background:var(--navy);border-radius:var(--rad);padding:.85rem 1.1rem;margin-bottom:.85rem}
+.mon-rule h4{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.5);margin-bottom:.4rem}
+.mon-rule p{font-size:12.5px;color:#fff;line-height:1.55}
+.mon-rule strong{color:#86efac}
+/* SAFETY NETTING */
+.sn-box{background:#fffbeb;border:1px solid var(--a-bd);border-radius:var(--rad);padding:1rem 1.1rem}
+.sn-box h4{font-size:12px;font-weight:700;color:var(--a);margin-bottom:.6rem}
+.sn-scenarios{display:flex;flex-direction:column;gap:8px;margin-bottom:.85rem}
+.sn-scenario{border-radius:var(--rad-sm);padding:.75rem 1rem;border:1px solid}
+.sns-e{background:var(--r-bg);border-color:var(--r-bd)}.sns-m{background:var(--b-bg);border-color:var(--b-bd)}.sns-a{background:var(--a-bg);border-color:var(--a-bd)}
+.sn-scenario-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+.sns-e .sn-scenario-lbl{color:var(--r)}.sns-m .sn-scenario-lbl{color:var(--b)}.sns-a .sn-scenario-lbl{color:var(--a)}
+.sn-phrase{font-size:12.5px;font-style:italic;line-height:1.55}.sn-why{font-size:11px;color:var(--muted);margin-top:.35rem}
+.sn-legal{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem 1rem;margin-top:.85rem}
+.sn-legal h5{font-size:11px;font-weight:700;margin-bottom:.4rem}
+.sn-legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+@media(max-width:520px){.sn-legal-grid{grid-template-columns:1fr}}
+.sn-legal-item{font-size:12px;color:var(--muted);padding-left:14px;position:relative}
+.sn-legal-item::before{content:'•';position:absolute;left:0;color:var(--b)}
+.sn-fu{margin-top:.85rem;background:#fef9c3;border-radius:8px;padding:.7rem 1rem;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:520px){.sn-fu{grid-template-columns:1fr}}
+.sn-fu-item strong{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--a);margin-bottom:2px}
+.sn-fu-item{font-size:11.5px;color:#78350f}
+/* ACTOR */
+.actor-toggle{width:100%;text-align:left;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between}
+.actor-body{display:none;padding:0 1.25rem 1.25rem;border-top:1px solid var(--line)}
+.actor-body.open{display:block}
+.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:.75rem}
+@media(max-width:580px){.ab-grid{grid-template-columns:1fr}}
+.ab{background:var(--p-bg);border:1px solid var(--p-bd);border-radius:10px;padding:.8rem 1rem}
+.ab h5{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--p);margin-bottom:.35rem}
+.ab p,.ab li{font-size:12px;color:#4a235a;line-height:1.5}.ab ul{padding-left:1rem}
+.actor-open{background:#f5f3ff;border-left:3px solid #a855f7;padding:.65rem .9rem;border-radius:0 8px 8px 0;font-size:12.5px;font-style:italic;color:#3b0764;margin:.75rem 0 .5rem}
+.actor-challenge{background:#fff7ed;border-left:3px solid #f97316;padding:.65rem .9rem;border-radius:0 8px 8px 0;font-size:12.5px;font-style:italic;color:#7c2d12;margin-top:.5rem}
+/* SUB-DIVIDER */
+.sub-divider{display:flex;align-items:center;gap:8px;margin:1.25rem 0 .65rem;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.sub-divider::after{content:'';flex:1;height:1px;background:var(--line)}
+/* MODE */
+body.mode-sca .clinic-only{display:none!important}
+body.mode-clinic .sca-only{display:none!important}
+/* QUICK REF */
+.qr-section{margin-top:2.5rem}
+.qr-header{background:var(--navy);border-radius:var(--rad) var(--rad) 0 0;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.qr-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:.2rem}
+.qr-title{font-family:'DM Serif Display',serif;font-size:1.4rem;color:#fff;font-weight:400}
+.qr-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:.2rem}
+.qr-print-btn{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 16px;border-radius:20px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;transition:.15s}
+.qr-print-btn:hover{background:rgba(255,255,255,.25)}
+.qr-body{background:var(--white);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--rad) var(--rad);padding:1.25rem}
+.qr-tl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.25rem}
+@media(max-width:680px){.qr-tl{grid-template-columns:1fr}}
+.qr-tl-card{border-radius:var(--rad-sm);padding:.85rem 1rem;border:1px solid}
+.qr-tl-card.red{background:var(--r-bg);border-color:var(--r-bd)}.qr-tl-card.amber{background:var(--a-bg);border-color:var(--a-bd)}
+.qr-tl-card.green{background:var(--g-bg);border-color:var(--g-bd)}.qr-tl-card.blue{background:var(--b-bg);border-color:var(--b-bd)}
+.qr-tl-hdr{display:flex;align-items:center;gap:8px;margin-bottom:.6rem}
+.qr-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.qr-dot-r{background:var(--r)}.qr-dot-a{background:#f59e0b}.qr-dot-g{background:#16a34a}.qr-dot-b{background:#3b82f6}
+.qr-tl-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.qr-tl-card.red .qr-tl-title{color:var(--r)}.qr-tl-card.amber .qr-tl-title{color:var(--a)}
+.qr-tl-card.green .qr-tl-title{color:var(--g)}.qr-tl-card.blue .qr-tl-title{color:var(--b)}
+.qr-item{font-size:12.5px;padding-left:13px;position:relative;line-height:1.5;margin-bottom:4px}
+.qr-item::before{content:'';position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%}
+.qr-tl-card.red .qr-item::before{background:var(--r)}.qr-tl-card.amber .qr-item::before{background:#f59e0b}
+.qr-tl-card.green .qr-item::before{background:#16a34a}.qr-tl-card.blue .qr-item::before{background:#3b82f6}
+.qr-item strong{font-weight:600}
+.qr-item .sub{display:block;font-size:11px;color:var(--muted);margin-top:1px}
+.qr-tl-card.blue p{font-size:12.5px;color:var(--b);font-style:italic;line-height:1.55;border-left:2px solid var(--b-bd);padding-left:10px;margin-bottom:6px}
+.qr-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:1.25rem}
+@media(max-width:860px){.qr-cols{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.qr-cols{grid-template-columns:1fr}}
+.qr-col-card{border-radius:var(--rad-sm);border:1px solid var(--line);overflow:hidden;background:var(--white)}
+.qr-col-hd{padding:.6rem .85rem;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;border-bottom:1px solid var(--line)}
+.qr-col-body{padding:.75rem .85rem}
+.drug-tree{display:flex;flex-direction:column;gap:6px}
+.dt-row{display:flex;align-items:flex-start;gap:8px}
+.dt-cond{font-size:11.5px;font-weight:600;color:var(--muted);flex-shrink:0;width:130px;line-height:1.4;padding-top:2px}
+.dt-arrow{font-size:11px;color:var(--muted);flex-shrink:0;padding-top:3px}
+.dt-drug{font-size:12px;font-weight:700;padding:3px 9px;border-radius:8px;line-height:1.4}
+.dt-acei{background:#dcfce7;color:#15803d}.dt-ccb{background:#fef3c7;color:#92400e}.dt-arb{background:#dbeafe;color:#1d4ed8}
+.dt-divider{height:1px;background:var(--line);margin:4px 0}
+.dt-step{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:4px 0 2px}
+.dt-ladder{display:flex;flex-direction:column;gap:4px}
+.dt-lrow{display:flex;align-items:center;gap:6px;font-size:11.5px}
+.dt-lnum{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0}
+.dl1{background:#15803d}.dl2{background:#1d4ed8}.dl3{background:#b45309}.dl4{background:var(--r)}
+.k-pivot{font-size:11px;background:#fef3c7;color:#b45309;border-radius:6px;padding:2px 7px;font-weight:600;margin-top:2px;display:inline-block}
+.mon-compact{display:flex;flex-direction:column;gap:4px}
+.mc-row{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5}
+.mc-tag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;flex-shrink:0;margin-top:1px}
+.mct-1{background:#fee2e2;color:var(--r)}.mct-2{background:var(--a-bg);color:var(--a)}.mct-m{background:#fefce8;color:#854d0e}.mct-y{background:var(--g-bg);color:var(--g)}
+.bp-mini{width:100%;border-collapse:collapse;margin-top:8px}
+.bp-mini th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:.35rem .5rem;text-align:left;border-bottom:1px solid var(--line);background:#f8fafc}
+.bp-mini td{font-size:12px;padding:.35rem .5rem;border-bottom:1px solid var(--line)}
+.bp-mini tr:last-child td{border-bottom:none}
+.sn-phrase-box{border-radius:var(--rad-sm);padding:.65rem .85rem;border:1px solid;margin-bottom:8px}
+.snp-e{background:var(--r-bg);border-color:var(--r-bd)}.snp-m{background:var(--b-bg);border-color:var(--b-bd)}.snp-a{background:var(--a-bg);border-color:var(--a-bd)}
+.snp-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+.snp-e .snp-lbl{color:var(--r)}.snp-m .snp-lbl{color:var(--b)}.snp-a .snp-lbl{color:var(--a)}
+.snp-text{font-size:12px;font-style:italic;line-height:1.5}
+.qr-sca-section{margin-top:1.25rem;padding-top:1.25rem;border-top:2px solid var(--line)}
+.qr-sca-header{display:flex;align-items:center;gap:8px;margin-bottom:.85rem}
+.qr-sca-title{font-size:12px;font-weight:700;color:var(--navy)}
+.qr-sca-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--p-bg);color:var(--p);border:1px solid var(--p-bd)}
+.dz-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+@media(max-width:700px){.dz-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){.dz-grid{grid-template-columns:1fr}}
+.dz-card{background:#fff7f7;border:1px solid var(--r-bd);border-radius:var(--rad-sm);padding:.7rem .85rem}
+.dz-wrong{font-size:11.5px;font-weight:600;color:var(--r);margin-bottom:3px}
+.dz-wrong::before{content:'✗ '}
+.dz-right{font-size:11.5px;color:var(--g);font-weight:500}
+.dz-right::before{content:'✓ '}
+.cf-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:0;background:var(--white);border:1px solid var(--line);border-radius:var(--rad-sm);overflow:hidden;margin-top:.85rem}
+@media(max-width:700px){.cf-strip{grid-template-columns:1fr}}
+.cf-step{padding:.7rem .85rem;border-right:1px solid var(--line)}
+.cf-step:last-child{border-right:none}
+@media(max-width:700px){.cf-step{border-right:none;border-bottom:1px solid var(--line)}.cf-step:last-child{border-bottom:none}}
+.cf-time{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.25rem}
+.cs1 .cf-time{color:#7c3aed}.cs2 .cf-time{color:#0369a1}.cs3 .cf-time{color:#b45309}.cs4 .cf-time{color:#15803d}.cs5 .cf-time{color:#be123c}
+.cf-step h5{font-size:12px;font-weight:600;margin-bottom:.25rem}
+.cf-step li{font-size:11px;color:var(--muted);list-style:none;padding-left:10px;position:relative;line-height:1.4;margin-bottom:1px}
+.cf-step li::before{content:'→';position:absolute;left:0;font-size:9px;top:2px;color:#cbd5e1}
+
+/* ══════════════════════════════════════
+   DUAL SUMMARY SECTIONS
+══════════════════════════════════════ */
+.sum-section{margin-top:2rem}
+.sum-hdr{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:1rem 1.4rem;background:var(--navy2);border-radius:var(--rad) var(--rad) 0 0;cursor:pointer;user-select:none;flex-wrap:wrap;transition:background .15s}
+.sum-hdr:hover{background:#1e4573}
+.sca-sum-hdr{background:linear-gradient(135deg,#2d1b69,#1b3a5c)}
+.sca-sum-hdr:hover{background:linear-gradient(135deg,#3b2384,#1e4573)}
+.sum-hdr-left{display:flex;align-items:center;gap:12px}
+.sum-icon{font-size:1.6rem;flex-shrink:0}
+.sum-label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:.15rem}
+.sum-title{font-family:'DM Serif Display',serif;font-size:1.25rem;color:#fff;font-weight:400;line-height:1.2}
+.sum-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:.1rem}
+.sum-toggle{display:flex;align-items:center;gap:6px;padding:.4rem .85rem;border-radius:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);transition:.15s;flex-shrink:0}
+.sum-hdr:hover .sum-toggle{background:rgba(255,255,255,.2)}
+.sca-toggle{background:rgba(139,92,246,.25);border-color:rgba(139,92,246,.4)}
+.sum-ti-icon{font-size:12px;color:rgba(255,255,255,.7)}
+.sum-ti-text{font-size:11px;color:rgba(255,255,255,.7);font-weight:500}
+.sum-body{background:var(--white);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--rad) var(--rad);padding:1.25rem;box-shadow:var(--shadow)}
+.sum-body.closed{display:none}
+.sum-sub-hdr{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--navy);margin:.75rem 0 .5rem;display:flex;align-items:center;gap:6px}
+.sum-sub-hdr::after{content:'';flex:1;height:1px;background:var(--line)}
+.sca-sub-hdr{color:var(--p)}
+.sum-2col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.sum-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+@media(max-width:900px){.sum-2col,.sum-3col{grid-template-columns:1fr}}
+
+/* TRIAGE ALGORITHM */
+.algo-wrap{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem}
+.algo-start{background:var(--navy);color:#fff;font-weight:700;font-size:13px;padding:.5rem 1rem;border-radius:8px;display:inline-block;margin-bottom:.5rem}
+.algo-arrow{font-size:1.2rem;color:var(--muted);margin:.25rem 0;text-align:center}
+.algo-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:760px){.algo-row{grid-template-columns:1fr}}
+.algo-branch{border-radius:var(--rad-sm);padding:.7rem .85rem;border:1px solid}
+.algo-red{background:var(--r-bg);border-color:var(--r-bd)}
+.algo-amber{background:var(--a-bg);border-color:var(--a-bd)}
+.algo-green{background:var(--g-bg);border-color:var(--g-bd)}
+.algo-branch-lbl{font-size:11px;font-weight:700;margin-bottom:.4rem}
+.red .algo-branch-lbl,.algo-red .algo-branch-lbl{color:var(--r)}
+.amber .algo-branch-lbl,.algo-amber .algo-branch-lbl{color:var(--a)}
+.green .algo-branch-lbl,.algo-green .algo-branch-lbl{color:var(--g)}
+.algo-list{list-style:none;padding:0;margin-bottom:.4rem}
+.algo-list li{font-size:11.5px;line-height:1.5;padding-left:14px;position:relative;margin-bottom:1px}
+.algo-red .algo-list li::before{content:'🚨';position:absolute;left:0;font-size:9px;top:2px}
+.algo-amber .algo-list li::before{content:'⚠';position:absolute;left:0;font-size:9px;top:2px}
+.algo-green .algo-list li::before{content:'✓';position:absolute;left:0;font-size:10px;top:1px;color:var(--g);font-weight:700}
+.algo-action{font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:6px;margin-top:.3rem;display:inline-block}
+.red-action{background:#b91c1c;color:#fff}
+.amber-action{background:#b45309;color:#fff}
+.green-action{background:#15803d;color:#fff}
+
+/* DIAGNOSIS FLOW */
+.diag-flow{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem}
+.diag-box{padding:.4rem .75rem;border-radius:8px;font-size:12px;font-weight:600;display:inline-block;margin-bottom:.3rem}
+.diag-start{background:var(--navy);color:#fff}
+.diag-arrow{font-size:11px;color:var(--muted);margin:.2rem 0;font-style:italic}
+.diag-split{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:.4rem 0}
+@media(max-width:600px){.diag-split{grid-template-columns:1fr}}
+.diag-branch{text-align:center}
+.diag-a{background:var(--g-bg);color:var(--g);border:1px solid var(--g-bd)}
+.diag-b{background:var(--a-bg);color:var(--a);border:1px solid var(--a-bd)}
+.diag-c{background:var(--r-bg);color:var(--r);border:1px solid var(--r-bd)}
+.diag-label{font-size:11px;font-weight:700;margin:.15rem 0}
+.green-txt{color:var(--g)}.amber-txt{color:var(--a)}.red-txt{color:var(--r)}
+.diag-sub{font-size:10.5px;color:var(--muted);line-height:1.4}
+.diag-masked{background:var(--b-bg);color:var(--b);border:1px solid var(--b-bd);font-size:11.5px;display:block;margin-top:.4rem}
+
+/* KEY NUMBERS */
+.num-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+@media(max-width:680px){.num-grid{grid-template-columns:1fr 1fr}}
+.num-card{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:.5rem .65rem;text-align:center}
+.num-highlight{background:var(--navy);border-color:var(--navy)}
+.num-val{font-size:14px;font-weight:700;color:var(--navy);line-height:1.2}
+.num-highlight .num-val{color:#86efac}
+.num-lbl{font-size:10px;color:var(--muted);line-height:1.35;margin-top:.15rem}
+.num-highlight .num-lbl{color:rgba(255,255,255,.6)}
+
+/* DRUG ALGORITHM */
+.drug-algo{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem}
+.da-q{font-size:12px;font-weight:600;color:var(--navy);margin-bottom:.5rem;padding:.4rem .7rem;background:#fff;border:1px solid var(--line);border-radius:6px}
+.da-split{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:.65rem}
+@media(max-width:560px){.da-split{grid-template-columns:1fr}}
+.da-yes,.da-no{background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .8rem}
+.da-yes-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--g);margin-bottom:.3rem}
+.da-no-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.3rem}
+.da-sub{font-size:10.5px;color:var(--muted);margin-top:.25rem;line-height:1.35}
+.da-pill{font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block;margin:.15rem 0}
+.acei-pill{background:#dcfce7;color:#15803d}.ccb-pill{background:#fef3c7;color:#92400e}.arb-pill{background:#dbeafe;color:#1d4ed8}
+.da-row{display:flex;align-items:center;gap:6px;margin-bottom:.2rem}
+.da-cond{font-size:11px;color:var(--muted);flex:1}
+.da-arrow2{color:var(--muted);font-size:11px;flex-shrink:0}
+.da-ladder{border-top:1px solid var(--line);padding-top:.5rem;display:flex;flex-direction:column;gap:4px}
+.da-step-row{display:flex;align-items:center;gap:8px;font-size:12px}
+.da-num{width:22px;height:22px;border-radius:50%;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.da-text{color:var(--ink);line-height:1.4}
+.da-warn{font-size:10.5px;color:var(--r);margin-top:.5rem;padding:.3rem .6rem;background:var(--r-bg);border-radius:5px;border:1px solid var(--r-bd)}
+
+/* MONITORING TABLE */
+.mon-table-wrap{border:1px solid var(--line);border-radius:var(--rad-sm);overflow:hidden}
+.mon-table{width:100%;border-collapse:collapse;font-size:12px}
+.mon-table th{background:#f8fafc;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:.4rem .6rem;text-align:left;border-bottom:1px solid var(--line)}
+.mon-table td{padding:.4rem .6rem;border-bottom:1px solid var(--line);vertical-align:middle}
+.mon-table tr:last-child td{border-bottom:none}
+.mon-red{font-weight:700;color:var(--r)}.mon-amber{font-weight:700;color:var(--a)}.mon-green{font-weight:700;color:var(--g)}
+
+/* FLAG GRID */
+.flag-grid{display:flex;flex-direction:column;gap:5px;margin-top:.4rem}
+.flag-item{font-size:11.5px;line-height:1.45;padding:.4rem .65rem;border-radius:6px;border:1px solid}
+.flag-red{background:var(--r-bg);border-color:var(--r-bd);color:#7f1d1d}
+.flag-amber{background:var(--a-bg);border-color:var(--a-bd);color:#78350f}
+.flag-pink{background:var(--ps-bg);border-color:var(--ps-bd);color:#831843}
+
+/* COMPACT SAFETY NET */
+.sn-compact-wrap{display:flex;flex-direction:column;gap:6px}
+.sn-compact{border-radius:var(--rad-sm);padding:.6rem .85rem;border:1px solid}
+.sn-compact.sns-e{background:var(--r-bg);border-color:var(--r-bd)}
+.sn-compact.sns-m{background:var(--b-bg);border-color:var(--b-bd)}
+.sn-compact.sns-a{background:var(--a-bg);border-color:var(--a-bd)}
+.sn-compact-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem}
+.sns-e .sn-compact-lbl{color:var(--r)}.sns-m .sn-compact-lbl{color:var(--b)}.sns-a .sn-compact-lbl{color:var(--a)}
+.sn-compact-phrase{font-size:12px;font-style:italic;line-height:1.5}
+
+/* COMPACT FOLLOW-UP */
+.fu-compact-wrap{display:flex;flex-direction:column;gap:6px}
+.fu-compact-row{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5}
+.fu-compact-dot{width:22px;height:22px;border-radius:50%;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+
+/* SCA FLOW */
+.sca-flow-wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-radius:var(--rad-sm);overflow:hidden;border:1px solid var(--line)}
+@media(max-width:860px){.sca-flow-wrap{grid-template-columns:1fr}}
+.sca-flow-step{padding:.8rem .9rem;border-right:1px solid var(--line);position:relative}
+.sca-flow-step:last-child{border-right:none}
+@media(max-width:860px){.sca-flow-step{border-right:none;border-bottom:1px solid var(--line)}.sca-flow-step:last-child{border-bottom:none}}
+.sca-f1{background:#faf5ff;border-top:3px solid var(--p)}
+.sca-f2{background:#fef2f2;border-top:3px solid var(--r)}
+.sca-f3{background:#fffbeb;border-top:3px solid var(--a)}
+.sca-f4{background:#f0fdf4;border-top:3px solid var(--g)}
+.sca-f5{background:#eff6ff;border-top:3px solid var(--b)}
+.sca-f-time{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.2rem;color:var(--muted)}
+.sca-f-title{font-size:13px;font-weight:700;margin-bottom:.4rem;color:var(--ink)}
+.sca-f-phrase{font-size:11px;font-style:italic;background:rgba(255,255,255,.7);border-left:2px solid rgba(0,0,0,.1);padding:.3rem .5rem;border-radius:0 4px 4px 0;margin-bottom:.3rem;line-height:1.45;color:var(--ink)}
+.sca-f-note{font-size:10.5px;color:var(--muted);line-height:1.4;margin-bottom:.25rem}
+.sca-f-domains{display:flex;flex-wrap:wrap;gap:3px;margin-top:.4rem}
+.sca-dom-tag{font-size:9px;font-weight:700;padding:1px 6px;border-radius:8px}
+.sca-dom-tag.task{background:#dcfce7;color:#15803d}
+.sca-dom-tag.ro{background:var(--p-bg);color:var(--p)}
+.sca-dom-tag.gs{background:var(--b-bg);color:var(--b)}
+.sca-f-avoid{font-size:10px;color:var(--r);margin-top:.4rem;padding:.25rem .45rem;background:rgba(185,28,28,.06);border-radius:4px;line-height:1.4}
+
+/* RAG FULL */
+.rag-full-wrap{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem .9rem}
+.rag-domain-block{}
+.rag-domain-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.3rem}
+.task-col{color:var(--g)}.ro-col{color:var(--p)}.gs-col{color:var(--b)}
+.rag-row{display:flex;align-items:flex-start;gap:6px;margin-bottom:3px;font-size:11px;line-height:1.45;padding:.25rem .4rem;border-radius:4px}
+.rag-rl{flex-shrink:0;font-size:12px}
+.rag-g-row{background:rgba(21,128,61,.06)}
+.rag-a-row{background:rgba(180,83,9,.06)}
+.rag-r-row{background:rgba(185,28,28,.06)}
+
+/* PHRASE STACK */
+.phrase-stack{display:flex;flex-direction:column;gap:6px}
+.phrase-card{border-radius:var(--rad-sm);padding:.55rem .8rem;border:1px solid}
+.p-ideas{background:var(--p-bg);border-color:var(--p-bd)}
+.p-concerns{background:var(--b-bg);border-color:var(--b-bd)}
+.p-expect{background:var(--a-bg);border-color:var(--a-bd)}
+.p-validate{background:var(--g-bg);border-color:var(--g-bd)}
+.p-explain{background:#fefce8;border-color:#fde68a}
+.p-close{background:var(--navy);border-color:var(--navy2)}
+.p-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.2rem}
+.p-ideas .p-lbl{color:var(--p)}.p-concerns .p-lbl{color:var(--b)}.p-expect .p-lbl{color:var(--a)}
+.p-validate .p-lbl{color:var(--g)}.p-explain .p-lbl{color:#92400e}.p-close .p-lbl{color:rgba(255,255,255,.5)}
+.p-phrase{font-size:11.5px;font-style:italic;line-height:1.5}
+.p-close .p-phrase{color:rgba(255,255,255,.85)}
+
+/* DANGER ZONE STACK */
+.dz-stack{display:flex;flex-direction:column;gap:5px}
+.dz-item{display:flex;align-items:flex-start;gap:7px;background:#fff7f7;border:1px solid var(--r-bd);border-radius:7px;padding:.5rem .7rem;font-size:11.5px;line-height:1.4}
+.dz-x{color:var(--r);font-size:14px;font-weight:700;flex-shrink:0;line-height:1.2}
+.dz-fix{color:var(--g);font-size:11px;display:block;margin-top:.15rem}
+
+/* SCA DRUG PICK */
+.sca-drug-pick{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.7rem .9rem}
+.sdp-row{display:flex;align-items:center;gap:6px;margin-bottom:.3rem}
+.sdp-cond{font-size:11.5px;color:var(--muted);flex:1;line-height:1.3}
+.sdp-arrow{font-size:11px;color:var(--muted);flex-shrink:0}
+.sdp-pill{font-size:11px;font-weight:700;padding:2px 9px;border-radius:12px;flex-shrink:0}
+.sdp-note{font-size:10px;color:var(--muted);flex-shrink:0}
+.sdp-pivot{font-size:11px;font-weight:600;background:var(--navy);color:#86efac;padding:.35rem .7rem;border-radius:6px;margin-top:.3rem;line-height:1.4}
+
+
+/* SCA SCORECARD */
+.scorecard-wrap{background:var(--white);border:2px solid var(--af-bd);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:1.25rem}
+.scorecard-hdr{background:var(--navy);padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.scorecard-hdr-left{}
+.scorecard-title{font-family:"DM Serif Display",serif;font-size:1.2rem;color:#fff;font-weight:400}
+.scorecard-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:.15rem}
+.scorecard-total-wrap{display:flex;align-items:baseline;gap:4px;background:rgba(255,255,255,.12);padding:.45rem .9rem;border-radius:20px;border:1px solid rgba(255,255,255,.2)}
+.scorecard-total{font-size:1.8rem;font-weight:700;color:#86efac;line-height:1}
+.scorecard-total-label{font-size:12px;color:rgba(255,255,255,.6)}
+.sc-reset-btn{font-size:11.5px;font-weight:600;padding:6px 14px;border-radius:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;cursor:pointer;font-family:"DM Sans",sans-serif;transition:.15s}
+.sc-reset-btn:hover{background:rgba(255,255,255,.2)}
+.scorecard-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--line)}
+@media(max-width:900px){.scorecard-grid{grid-template-columns:1fr}}
+.sc-domain{border-right:1px solid var(--line);padding:0}
+.sc-domain:last-child{border-right:none}
+@media(max-width:900px){.sc-domain{border-right:none;border-bottom:1px solid var(--line)}.sc-domain:last-child{border-bottom:none}}
+.sc-domain-hdr{display:flex;align-items:center;gap:10px;padding:.75rem 1rem;border-bottom:1px solid var(--line)}
+.task-domain{background:#f0fdf4}.ro-domain{background:var(--p-bg)}.gs-domain{background:var(--b-bg)}
+.sc-domain-icon{font-size:1.3rem;flex-shrink:0}
+.sc-domain-title{font-size:12.5px;font-weight:700;color:var(--ink)}
+.sc-domain-sub{font-size:10.5px;color:var(--muted);line-height:1.3}
+.sc-domain-score{margin-left:auto;display:flex;align-items:baseline;gap:2px;flex-shrink:0}
+.sc-domain-score span:first-child{font-size:1.4rem;font-weight:700}
+.task-domain .sc-domain-score span:first-child{color:var(--g)}
+.ro-domain .sc-domain-score span:first-child{color:var(--p)}
+.gs-domain .sc-domain-score span:first-child{color:var(--b)}
+.sc-domain-max{font-size:11px;color:var(--muted)}
+.sc-items{padding:.65rem .85rem;display:flex;flex-direction:column;gap:5px}
+.sc-item{display:flex;align-items:flex-start;gap:8px;cursor:pointer;padding:.45rem .6rem;border-radius:8px;border:1px solid transparent;transition:.15s;user-select:none;font-size:12px;line-height:1.45}
+.sc-item:hover{background:#f8fafc;border-color:var(--line)}
+.sc-item input[type=checkbox]{accent-color:var(--af);width:15px;height:15px;flex-shrink:0;margin-top:1px;cursor:pointer}
+.sc-item-text{flex:1;color:var(--ink)}
+.sc-pts{font-size:10px;font-weight:700;padding:1px 6px;border-radius:8px;background:#f1f5f9;color:var(--muted);flex-shrink:0;margin-top:1px}
+.sc-item.checked{background:#f0fdf4;border-color:var(--g-bd)}
+.sc-item.checked .sc-item-text{color:var(--g)}
+.sc-item.checked .sc-pts{background:var(--g-bg);color:var(--g)}
+.scorecard-interp{padding:1rem 1.25rem;background:#f8fafc;border-top:1px solid var(--line)}
+.interp-bar-wrap{margin-bottom:.75rem}
+.interp-bar-track{height:12px;background:#e2e8f0;border-radius:6px;overflow:hidden;margin-bottom:4px;position:relative}
+.interp-bar-fill{height:100%;border-radius:6px;transition:width .4s cubic-bezier(.4,0,.2,1);background:linear-gradient(90deg,var(--r),var(--a),var(--g),#15803d)}
+.interp-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:2px;padding:0 0}
+.interp-zones{display:grid;grid-template-columns:33% 17% 24% 26%;gap:2px}
+.interp-zone{font-size:10px;font-weight:700;text-align:center;padding:2px 4px;border-radius:4px}
+.iz-r{background:var(--r-bg);color:var(--r)}.iz-a{background:var(--a-bg);color:var(--a)}
+.iz-g{background:var(--g-bg);color:var(--g)}.iz-gg{background:#dcfce7;color:#14532d}
+.interp-msg{display:flex;align-items:center;gap:10px;padding:.65rem .9rem;border-radius:var(--rad-sm);border:1px solid var(--line);background:var(--white)}
+.interp-icon{font-size:1.5rem;flex-shrink:0}
+.interp-text{font-size:12.5px;color:var(--ink);line-height:1.5}
+.sc-missed-wrap{padding:.85rem 1.25rem;background:var(--a-bg);border-top:1px solid var(--a-bd)}
+.sc-missed-title{font-size:11px;font-weight:700;color:var(--a);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.sc-missed-list{display:flex;flex-direction:column;gap:4px}
+.sc-missed-item{font-size:12px;color:#78350f;padding:.3rem .6rem;background:rgba(255,255,255,.6);border-radius:5px;border-left:3px solid var(--a)}
+
+@media print{
+  .sum-body.closed{display:block!important}
+  .sum-toggle{display:none!important}
+  .sca-only,.clinic-only{display:block!important}
+}
+
+@media print{
+  .topbar,.numstrip,.collapse-controls,.step-toggle,.qr-print-btn{display:none!important}
+  body{background:#fff;font-size:11px}.page{padding:0;max-width:100%}
+  .step-body.closed{display:block!important}
+  .sca-only,.clinic-only{display:block!important}
+  .actor-body{display:block!important}
+  .step-hdr{box-shadow:none;background:#f8fafc;border-radius:var(--rad)}
+  .step-hdr.is-open{border-radius:var(--rad);border-bottom:1px solid var(--line)}
+  .step-body{box-shadow:none;border-radius:var(--rad);border-top:1px solid var(--line)!important}
+  .qr-tl,.qr-cols,.g2,.g3{grid-template-columns:1fr 1fr}
+  .drug-cards{grid-template-columns:1fr 1fr}.triage{grid-template-columns:1fr}.dc{break-inside:avoid}
+}
+.page-footer{text-align:center;padding:1.5rem 1rem;color:var(--muted);font-size:11px;border-top:1px solid var(--line);margin-top:1.5rem}
+
+</style>
+
+</head>
+<body class="mode-both" id="bodyEl">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+
+<div class="app">
+  <aside class="sidebar" data-active-id="hearing-loss"></aside>
+  <main class="main">
+
+<!-- Case header -->
+<div class="case-head">
+  <div>
+    <div class="ch-cat">ENT · Full case</div>
+    <h1>Hearing Loss</h1>
+  </div>
+  <div class="case-head-tags">
+      <span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE NG98</span>
+  </div>
+</div>
+
+<!-- Drop-nav mounts here automatically via case-nav.js -->
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">HL</div>
+      <div><div class="tb-title">Hearing Loss · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE CKS Hearing Loss 2023 / NICE NG98 2018</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">&lt;25 dB</span><span class="ns-lbl">Normal hearing threshold</span></div>
+    <div class="ns-item"><span class="ns-val">25–40 dB</span><span class="ns-lbl">Mild loss — trouble in noise</span></div>
+    <div class="ns-item"><span class="ns-val">41–70 dB</span><span class="ns-lbl">Moderate loss — everyday difficulty</span></div>
+    <div class="ns-item"><span class="ns-val">&gt;90 dB</span><span class="ns-lbl">Profound loss — hearing aid limited</span></div>
+    <div class="ns-item"><span class="ns-val">72 hours</span><span class="ns-lbl">Sudden SNHL → treat as ENT emergency</span></div>
+    <div class="ns-item"><span class="ns-val">2 weeks</span><span class="ns-lbl">Max delay for oral steroids in sudden SNHL</span></div>
+    <div class="ns-item"><span class="ns-val">40 dB</span><span class="ns-lbl">Threshold for NHS hearing aid referral</span></div>
+    <div class="ns-item"><span class="ns-val">55+</span><span class="ns-lbl">Age range for commonest ARHL prevalence peak</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Gradual Hearing Loss in an Older Adult</div>
+  <div class="stem-title">A 68-year-old retired factory worker presents with gradually worsening hearing over 2 years — differentiate age-related hearing loss, noise-induced loss, and wax from acoustic neuroma</div>
+  <div class="stem-text">"Mr Brian Whitfield, 68 years old, retired factory worker (metal press operator for 35 years). He presents with his wife who is frustrated that he keeps "missing" what she says. He reports gradual hearing difficulty over 2 years — worse in noisy environments. He has noticed tinnitus in both ears. He feels he hears low-pitched sounds better than high-pitched ones. He denies any dizziness or vertigo. His wife confirms he turns the television up very loudly. He has no ear infections, ear discharge, or pain. He takes atorvastatin and amlodipine."</div>
+  <div class="stem-note">The combination of gradual bilateral high-frequency hearing loss + prolonged occupational noise exposure + bilateral tinnitus without vertigo is the classic presentation of mixed ARHL and noise-induced hearing loss. The primary clinical task is to exclude acoustic neuroma (typically unilateral), sudden SNHL (emergency), cerumen impaction (fully reversible), and otosclerosis. This patient needs audiology and audiogram, not urgent ENT referral.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — Cerumen Impaction</strong> 45-year-old with sudden unilateral hearing loss + fullness + aural pressure after swimming. Otoscopy shows complete wax occlusion. Ear drops 2 weeks then microsuction if persists. Fully reversible.</div>
+    <div class="stem-variant"><strong>Scenario B — Sudden SNHL (Emergency)</strong> 55-year-old with acute unilateral hearing loss on waking, tinnitus, no vertigo. Developed within 72 hours. Same-day ENT referral; oral prednisolone 1 mg/kg/day × 7–14 days without waiting for ENT.</div>
+    <div class="stem-variant"><strong>Scenario C — Acoustic Neuroma (Vestibular Schwannoma)</strong> 52-year-old with progressive unilateral hearing loss + ipsilateral tinnitus + subtle balance disturbance. MRI IAM (internal auditory meatus) — gadolinium-enhanced. ENT urgent referral.</div>
+    <div class="stem-variant"><strong>Scenario D — Otosclerosis</strong> 38-year-old woman, bilateral progressive conductive hearing loss, family history of hearing loss. Otoscopy normal; Rinne negative bilaterally; Weber lateralises to affected ear. ENT for stapedectomy assessment.</div>
+    <div class="stem-variant"><strong>Scenario E — Glue Ear / OME (Child or Adult)</strong> 8-year-old with recurrent otitis media, school difficulties, bilateral flat tympanograms. Watchful waiting 3 months; grommets if persistent with educational impact. Adenoidectomy consideration.</div>
+    <div class="stem-variant"><strong>Key variables</strong> Onset (sudden vs gradual), laterality (unilateral vs bilateral), associated tinnitus/vertigo, occupational noise history, ear symptoms (pain, discharge, fullness, pressure), age, family history of hearing loss, medication review (ototoxic drugs), previous ear surgery.</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History Taking — Open Question First · Targeted Questions · ICE · Psychosocial Context</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro">The history is the primary diagnostic tool in hearing loss — the pattern of onset, laterality, associated symptoms, and occupational background often allows clinical categorisation before the examination. <strong>The single most important discriminator</strong> is sudden vs gradual onset: sudden unilateral hearing loss (within 72 hours) is a same-day ENT emergency requiring oral steroids immediately, regardless of other features.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 Consultation opener — include the informant</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"I can see that you've come in with your wife today, and I understand hearing has been a concern for both of you. Can you tell me, in your own words, what you've been noticing — and I'd like to hear from your wife too, because the person alongside often notices things that are hard to spot yourself."</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Including the partner or accompanying person in hearing loss consultations is both clinically useful (functional impact information) and patient-centred — they are directly affected by the condition and are a valuable informant. This scores in Relating to Others.</div>
+    </div>
+    <div class="sub-divider">1A — Characterise the hearing loss: onset, laterality, type, associations</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question to ask</th><th style="width:42%">Why it matters clinically</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"Can you describe what the hearing difficulty is like for you — when it started, whether it's both ears or one, and what sort of sounds are hardest?"</em></td>
+            <td class="why">Allows the patient to describe the onset pattern (sudden vs gradual), laterality, frequency preference (high vs low frequency loss), and functional impact in their own words before structured questioning guides the history towards specific differentials.<span class="why-sub">A patient who spontaneously says "it happened overnight" has told you this is sudden SNHL — an emergency. A patient who says "it's been getting worse for years" has described the gradual pattern of ARHL or noise-induced loss.</span></td>
+            <td><span class="chg chg-999">Sudden → emergency</span><span class="chg chg-ddx">Diagnoses</span></td>
+          </tr>
+          <tr>
+            <td class="q">Onset: sudden or gradual?<em>"Did the hearing loss happen suddenly — over a day or two — or has it been coming on slowly over weeks or months or even years?"</em></td>
+            <td class="why">The single most critical discriminating question in hearing loss. Sudden unilateral SNHL (onset within 72 hours) is a medical emergency requiring same-day ENT and immediate oral prednisolone 1 mg/kg/day — delay beyond 2 weeks dramatically worsens prognosis. Gradual bilateral loss = ARHL or noise-induced; bilateral gradual loss progressing over decades = otosclerosis or presbycusis.<span class="why-sub">If sudden: ask precisely — "Did you wake up with it?" (yes = sudden SNHL). Establish exactly when onset was to calculate hours since onset — steroid window closes after 2 weeks.</span></td>
+            <td><span class="chg chg-999">Sudden SNHL → emergency</span><span class="chg chg-urgent">Urgency</span></td>
+          </tr>
+          <tr>
+            <td class="q">Laterality: one ear or both?<em>"Is it both ears equally, or is one ear worse than the other?"</em></td>
+            <td class="why">Unilateral hearing loss has a fundamentally different differential to bilateral — acoustic neuroma (vestibular schwannoma) is almost always unilateral and must be excluded with MRI in any patient with unilateral SNHL of unknown cause, particularly with ipsilateral tinnitus. Bilateral gradual loss = presbycusis, noise-induced, or bilateral otosclerosis. Bilateral fluctuating = Menière's disease.<span class="why-sub">Asymmetric hearing loss (one ear worse than the other, even if both are affected) has the same differential as pure unilateral loss — MRI for acoustic neuroma exclusion.</span></td>
+            <td><span class="chg chg-ref">Unilateral → MRI</span><span class="chg chg-ddx">DDx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Type of sounds difficult?<em>"Are high-pitched sounds like women's voices or birdsong harder, or is it lower-pitched sounds? Or is everything equally unclear?"</em></td>
+            <td class="why">High-frequency loss first (difficulty with consonants, women's voices, birdsong) = ARHL or noise-induced hearing loss — the cochlear hair cells most vulnerable to noise are those processing 4–6 kHz. Low-frequency loss = rare; consider Menière's in early stages. Uniform loss across frequencies = conductive cause (wax, OME, otosclerosis) — these impede the mechanical transmission of sound.<span class="why-sub">Patients with ARHL and noise-induced loss typically say "I can hear, but I can't understand" — this reflects difficulty discriminating consonants (high-frequency sounds) rather than overall volume loss.</span></td>
+            <td><span class="chg chg-ddx">DDx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Associated tinnitus?<em>"Have you noticed any ringing, buzzing, or hissing sounds in your ears — even when it's quiet?"</em></td>
+            <td class="why">Bilateral tinnitus with bilateral hearing loss = ARHL or noise-induced (reassuring pattern). Unilateral tinnitus with ipsilateral hearing loss = acoustic neuroma until excluded on MRI — this is the most specific red flag combination for vestibular schwannoma. Pulsatile tinnitus (beating, synchronous with pulse) = vascular cause until excluded (glomus tumour, AVM, carotid artery disease) — requires urgent ENT and MRI.<span class="why-sub">Unilateral tinnitus + unilateral SNHL = MRI IAM with gadolinium as mandatory investigation, regardless of audiogram severity.</span></td>
+            <td><span class="chg chg-ref">Unilateral → MRI urgently</span><span class="chg chg-ddx">DDx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Associated vertigo or balance problems?<em>"Have you had any dizziness or spinning sensations — or any problems with your balance?"</em></td>
+            <td class="why">Hearing loss + episodic vertigo + tinnitus = Menière's disease triad. Acute onset hearing loss + vertigo + severe nausea = labyrinthitis or acute vestibular syndrome. Hearing loss + progressive balance instability (disequilibrium rather than vertigo) = possible acoustic neuroma affecting the vestibular nerve. Note: vertigo alone without hearing loss is covered in the Vertigo framework.<span class="why-sub">Menière's disease: episodic attacks lasting 20 minutes to 12 hours; low-frequency SNHL fluctuating in early disease; becomes permanent in late disease.</span></td>
+            <td><span class="chg chg-ddx">Menière's / neuroma</span><span class="chg chg-ref">ENT</span></td>
+          </tr>
+          <tr>
+            <td class="q">Aural symptoms: pain, discharge, fullness?<em>"Any pain in your ears? Any discharge? Any sensation of pressure or fullness?"</em></td>
+            <td class="why">Pain + discharge = acute otitis media or otitis externa. Feeling of pressure or fullness without pain = cerumen impaction, otitis media with effusion (OME), or Eustachian tube dysfunction. Painless discharge = chronic suppurative otitis media (CSOM) — risk of cholesteatoma. Ear pain without obvious external cause in an older adult = referred pain from neck, temporomandibular joint, or throat (malignancy).<span class="why-sub">Painless foul-smelling discharge in a middle-aged or older adult with hearing loss = cholesteatoma until excluded — bone-eroding destructive lesion requiring urgent ENT assessment and surgical removal.</span></td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-ref">ENT urgency</span></td>
+          </tr>
+          <tr>
+            <td class="q">Occupational noise exposure?<em>"Can you tell me about your job — were you exposed to loud noise for long periods? Did you wear ear protection?"</em></td>
+            <td class="why">Prolonged occupational noise exposure causes progressive high-frequency SNHL — the characteristic "noise notch" at 4 kHz on audiogram is diagnostic. Metal factory work, construction, heavy industry, military (gunfire), farming (tractor noise), and music industry are all high-risk. Without hearing protection, cumulative damage is significant. This is also relevant to potential compensation claims.<span class="why-sub">37.5 pack-year equivalent for noise = 35 years metal press operator without adequate protection. This is a significant industrial injury — Health and Safety Executive reporting may be relevant.</span></td>
+            <td><span class="chg chg-ddx">NIHL</span><span class="chg chg-rx">Compensation</span></td>
+          </tr>
+          <tr>
+            <td class="q">Medication review — ototoxic drugs?<em>"Do you take any tablets regularly? Have you been on any treatment for infections recently, or taken any water tablets for years?"</em></td>
+            <td class="why">Ototoxic medications cause sensorineural hearing loss: aminoglycosides (gentamicin — particularly relevant in IV courses), loop diuretics (furosemide at high doses), cisplatin (commonly used in cancer treatment), quinine, and aspirin at high doses. Any patient with hearing loss on these medications should have the connection explored and drug review performed.<span class="why-sub">Gentamicin ototoxicity is dose-dependent and cumulative — baseline audiogram before IV courses and monitoring during treatment is mandatory. High-dose furosemide + aminoglycoside = synergistic ototoxicity risk.</span></td>
+            <td><span class="chg chg-ddx">Drug-induced SNHL</span><span class="chg chg-rx">Stop culprit</span></td>
+          </tr>
+          <tr>
+            <td class="q">Family history of hearing loss?<em>"Has anyone in your family — parents or siblings — lost their hearing at a young age?"</em></td>
+            <td class="why">Family history of early-onset hearing loss raises otosclerosis (autosomal dominant, characteristically affects women in their 30s–40s) or hereditary SNHL. Otosclerosis causes progressive conductive hearing loss with a characteristic Rinne-negative result and normal otoscopy — managed surgically with stapedectomy under ENT.<span class="why-sub">A woman in her 30s–40s with progressive bilateral conductive loss and a positive family history of hearing loss = otosclerosis until proven otherwise. May worsen during pregnancy (oestrogen-dependent).</span></td>
+            <td><span class="chg chg-ddx">Otosclerosis</span><span class="chg chg-ref">ENT (stapedectomy)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — must not miss</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Sudden unilateral hearing loss (within 72 hours)</td><td class="rf-why">Sudden SNHL (sudden sensorineural hearing loss) has a time-critical treatment window. If oral prednisolone is started within 2 weeks, over 70% of cases partially or fully recover. Beyond 2 weeks, the prognosis is significantly worse. The aetiology is often idiopathic (presumed viral or vascular) — treatment should not wait for ENT appointment.</td><td><span class="rf-action rfa-same">Same-day ENT + start prednisolone 1 mg/kg/day today</span></td></tr>
+          <tr><td class="rf-flag">Unilateral hearing loss + ipsilateral tinnitus (any duration)</td><td class="rf-why">The classic presentation of vestibular schwannoma (acoustic neuroma) — a slow-growing benign tumour of the 8th cranial nerve. It is not immediately life-threatening but can cause permanent deafness, facial palsy (7th nerve compression), and brainstem compression if large. MRI IAM with gadolinium is the diagnostic test — audiogram alone is insufficient for exclusion.</td><td><span class="rf-action rfa-2">Urgent ENT referral + MRI IAM</span></td></tr>
+          <tr><td class="rf-flag">Pulsatile tinnitus (synchronous with heartbeat)</td><td class="rf-why">Pulsatile tinnitus indicates a vascular cause — glomus tympanicum/jugulare tumour, carotid artery disease, AVM, or high jugular bulb. These require vascular imaging urgently. Do not reassure pulsatile tinnitus as benign without exclusion of a vascular lesion.</td><td><span class="rf-action rfa-2">Urgent ENT referral + vascular imaging</span></td></tr>
+          <tr><td class="rf-flag">Painless foul-smelling unilateral ear discharge + hearing loss</td><td class="rf-why">Cholesteatoma is a destructive, locally invasive epidermal cyst growing into the middle ear and mastoid — it erodes bone, destroys ossicles, and can cause facial palsy, labyrinthitis, meningitis, or brain abscess if untreated. Surgical treatment is mandatory. Painlessness is a paradoxically alarming feature — pain usually indicates infection, not cholesteatoma itself.</td><td><span class="rf-action rfa-2">Urgent ENT referral — surgical removal</span></td></tr>
+          <tr><td class="rf-flag">Unilateral facial weakness + hearing loss or ear pain</td><td class="rf-why">Ramsay Hunt syndrome (herpes zoster oticus) — VZV reactivation in the geniculate ganglion causing facial palsy + ear pain + vesicles in the ear + hearing loss + vertigo. Requires urgent antiviral therapy (aciclovir) + prednisolone within 72 hours for best facial recovery. Otherwise: urgent ENT for acoustic neuroma with 7th nerve compression.</td><td><span class="rf-action rfa-same">Same-day ENT — antiviral + steroid within 72 hours</span></td></tr>
+          <tr><td class="rf-flag">Ear pain with no obvious cause in an older adult (especially smoker)</td><td class="rf-why">Referred otalgia from a pharyngeal or hypopharyngeal cancer is a classical and often missed presentation — the ear is innervated by branches that also supply the pharynx and tongue base. Any smoker over 45 with persistent ear pain without an obvious otological cause requires urgent ENT throat examination and nasendoscopy.</td><td><span class="rf-action rfa-2">Urgent ENT — exclude pharyngeal malignancy</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — PMH / Drug history / Social history</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🧬 PMH / FH — changes management</div>
+        <table class="it">
+          <thead><tr><th>Factor</th><th>Why it matters</th><th>Management impact</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Previous ear surgery</td><td>History of mastoidectomy, tympanostomy tubes, or stapedectomy changes the anatomy and potential complications — a perforated tympanic membrane after previous surgery may be CSOM rather than new pathology</td><td class="impact">ENT review of previous surgical notes; microsuction rather than syringing if perforated drum</td></tr>
+            <tr><td class="factor">Recurrent otitis media in childhood</td><td>Repeated childhood ear infections cause scarring (tympanosclerosis), ossicular damage, and perforations — a significant cause of adult conductive hearing loss not related to noise or ageing</td><td class="impact">Otoscopy carefully; audiogram with air/bone conduction; ENT for conductive loss unexplained by wax</td></tr>
+            <tr><td class="factor">Autoimmune disease (SLE, Wegener's, Cogan's syndrome)</td><td>Autoimmune SNHL is a rare but treatable cause of progressive bilateral SNHL — rapidly progressive bilateral SNHL that responds to steroids is characteristic. Cogan's syndrome: SNHL + interstitial keratitis + vestibular features</td><td class="impact">Autoimmune screen (ANA, ANCA, complement); specialist rheumatology and ENT; immunosuppression if confirmed</td></tr>
+            <tr><td class="factor">Diabetes mellitus</td><td>Diabetes is an independent risk factor for SNHL — microangiopathy of cochlear vessels causes progressive sensorineural loss. Also impairs wound healing post-otological surgery</td><td class="impact">Audiogram; tight glycaemic control; may need more frequent audiological monitoring</td></tr>
+            <tr><td class="factor">Previous cancer treatment (platinum-based chemotherapy)</td><td>Cisplatin causes irreversible ototoxicity — the more cumulative the dose, the greater the hearing loss. Carboplatin is less ototoxic but still causes measurable damage. Audiogram before and after each course is standard of care</td><td class="impact">Baseline and post-treatment audiogram; consider hearing aid early; oncology discussion about drug choice if future treatment planned</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">💊 Drug history · Social history</div>
+        <table class="it">
+          <thead><tr><th>Factor</th><th>Why it matters</th><th>Management impact</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Aminoglycosides (gentamicin, tobramycin)</td><td>Aminoglycosides cause irreversible damage to outer hair cells in the basal cochlea — the area processing high-frequency sounds. Vestibular toxicity also common. Risk increases with dose, duration, renal impairment, and concurrent loop diuretics</td><td class="impact">Drug history review; drug levels if on current course; audiogram baseline before future courses; switch to alternative if hearing critically important</td></tr>
+            <tr><td class="factor">High-dose aspirin or quinine</td><td>High-dose salicylates cause reversible dose-dependent tinnitus and SNHL — bilateral, usually resolves with dose reduction. Quinine (malaria prophylaxis, leg cramps): similar reversible ototoxicity</td><td class="impact">Review dose; reduce if hearing is significantly affected; stop if quinine being used for leg cramps (no longer recommended per NICE)</td></tr>
+            <tr><td class="factor">Social isolation and cognitive decline</td><td>Untreated hearing loss is the largest modifiable risk factor for dementia (Lancet Commission 2020 — 8% population attributable fraction). Age-related hearing loss causes social isolation, depression, and accelerated cognitive decline. Hearing aid use reduces dementia risk significantly</td><td class="impact">Hearing aid referral has a cognitive health rationale beyond communication — frame this explicitly to motivate engagement with audiological services</td></tr>
+            <tr><td class="factor">Employment — occupational noise (historical or current)</td><td>35 years metal press operation = high cumulative noise exposure. Relevant to audiological diagnosis (NIHL at 4 kHz), occupational health reporting, and potential industrial injury disablement benefit (IIDB) claim through DWP</td><td class="impact">Document work history precisely; refer to IIDB claim guidance; occupational audiometry records may support claim</td></tr>
+            <tr><td class="factor">Hearing aid use (current or previous)</td><td>Many patients have been provided hearing aids but do not wear them — either because of stigma, physical difficulty inserting them, or poor fitting/programming. The first question is not "do you have a hearing aid?" but "how much do you actually use it?"</td><td class="impact">Assess device use, fit, and comfort; refer back to audiology for re-programming or different style if compliance poor; address stigma directly</td></tr>
+            <tr><td class="factor">Smoking and cardiovascular risk factors</td><td>Cardiovascular disease reduces cochlear blood flow — smoking, hypertension, and hypercholesterolaemia all contribute to ARHL through cochlear microangiopathy. The same vascular risk reduction that protects against stroke and MI also protects cochlear blood supply</td><td class="impact">Smoking cessation; BP management; lipid management — all have secondary auditory benefit; address in annual review</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sub-divider">1D — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i">
+        <div class="ice-label">💭 Ideas</div>
+        <div class="ice-phrase">"What do you think might be causing the hearing difficulty — have you had any thoughts about it?"</div>
+        <div class="ice-why">Many older adults with gradual bilateral hearing loss have already self-diagnosed "just age" or "too much noise at work" — both of which may be correct but preclude consideration of treatable causes. Understanding whether the patient has attributed it to a specific cause allows the GP to validate this model while broadening the differential without invalidating what the patient already believes.</div>
+      </div>
+      <div class="ice-card ice-c">
+        <div class="ice-label">😟 Concerns</div>
+        <div class="ice-phrase">"Is there a specific thing you've been worried this might mean — something that's been on your mind?"</div>
+        <div class="ice-why">The hidden concern for many patients with hearing loss is either dementia ("it's the start of my mind going") or cancer. Older adults often conflate progressive age-related changes with dementia — directly addressing and separating these is important. Hearing loss is itself a dementia risk factor, but treating the hearing loss is the appropriate response, not diagnosing dementia on this basis alone.</div>
+      </div>
+      <div class="ice-card ice-e">
+        <div class="ice-label">🎯 Expectations</div>
+        <div class="ice-phrase">"What were you hoping we might be able to do about this — were you expecting a hearing aid, or a referral to a specialist?"</div>
+        <div class="ice-why">Patients with hearing loss often have specific expectations shaped by what happened to a family member — if their parent got hearing aids at 65, they may expect the same. Others may expect a "cure" or a hearing test today. Understanding the expectation allows the GP to confirm, redirect, or set realistic goals around the audiological pathway. Many patients are also genuinely uncertain whether hearing loss is treatable.</div>
+      </div>
+    </div>
+    <div class="sub-divider">1E — Psychosocial context</div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>😔 Social Isolation and Withdrawal</h5><p>Hearing loss causes progressive social withdrawal — the effort required to follow conversations in noisy environments (restaurants, parties, family gatherings) becomes exhausting and embarrassing. Many patients stop attending social events, creating a cycle of isolation, depression, and cognitive disengagement. This is the largest quality-of-life impact of hearing loss and is often under-recognised in clinical assessments.</p><span class="ps-phrase">"I want to understand how this has been affecting your social life — are there things you've been avoiding because of the hearing difficulty?"</span></div>
+      <div class="ps-card"><h5>🤝 Relationship Impact</h5><p>Hearing loss significantly strains the closest relationships — partners report frustration, the sensation of being ignored, and exhaustion from repeating themselves. The patient in this stem has a wife who is "frustrated" — this is both clinically significant (informant source) and emotionally significant (relationship stress). Naming and acknowledging this openly in the consultation is a high-scoring relational behaviour.</p><span class="ps-phrase">"I can hear how frustrating this has been for both of you — and I appreciate you both coming together today. It helps me understand the full picture."</span></div>
+      <div class="ps-card"><h5>🏭 Occupational Pride and Guilt</h5><p>Former factory workers who developed hearing loss from occupational noise often carry guilt (not wearing ear protection when it was available) or resentment (not being provided protection by their employer). Both affect their engagement with the NHS pathway. Occupational NIHL may also entitle the patient to Industrial Injuries Disablement Benefit — not mentioning this when the clinical history clearly indicates occupational exposure is a missed opportunity.</p><span class="ps-phrase">"It's worth knowing that if your hearing loss is related to your work, you may be entitled to some financial support — have you ever looked into industrial injury compensation?"</span></div>
+      <div class="ps-card"><h5>🧠 Dementia Risk and Cognitive Anxiety</h5><p>The Lancet Commission (2020) identified hearing loss as the single largest modifiable risk factor for dementia — attributable fraction of 8%. Many patients are unaware of this link and are not told it at their hearing aid appointment. Framing hearing aid use as a brain health intervention (not just a hearing device) dramatically improves motivation to wear and engage with audiological support, particularly in patients resistant to the "I'm going deaf" identity.</p><span class="ps-phrase">"Did you know that treating hearing loss with a hearing aid is one of the best things you can do to protect your memory and thinking as you get older? That's a relatively new finding but the evidence is quite compelling."</span></div>
+      <div class="ps-card"><h5>🎧 Hearing Aid Stigma</h5><p>Hearing aid stigma — particularly in men of the retired generation — remains a significant barrier to uptake and regular use. Many equate hearing aids with "being old" or "being disabled." Modern hearing aids are dramatically smaller, more discreet, and more technologically sophisticated (Bluetooth, directional microphones, app-controlled) than the devices patients imagine from their parents' generation. Explicitly addressing stigma and correcting these assumptions is a key behavioural intervention.</p><span class="ps-phrase">"Modern hearing aids are completely different from what your parents might have had — many are virtually invisible and can connect to your phone. Would it be useful to know more about what's available on the NHS?"</span></div>
+      <div class="ps-card"><h5>💼 Work and Communication Demands</h5><p>Even in retirement, communication demands remain high — telephone conversations, TV, family events, medical consultations. For working-age patients, untreated hearing loss has a significant occupational impact — reduced earning potential, safety risks in noisy environments (unable to hear warning signals), and vulnerability to discrimination. Disability Living Allowance (DLA) or Personal Independence Payments (PIP) may be relevant for severe loss.</p><span class="ps-phrase">"How is the hearing affecting you practically — are there situations at home or with your family where you're really struggling?"</span></div>
+    </div>
+    <div class="sca-cp sca-only">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say">
+          <div class="sca-block-t">Key phrases that score</div>
+          <div class="sca-phrase">"Did this happen suddenly — over one or two days — or has it been coming on gradually over months or years?"</div>
+          <div class="sca-phrase">"Is it one ear or both — and if both, is one side worse?"</div>
+          <div class="sca-phrase">"Any ringing in your ears — and is it both sides, or one more than the other?"</div>
+          <div class="sca-phrase">"What sort of work did you do — were you exposed to loud noise for long periods?"</div>
+          <div class="sca-phrase">"I can hear how frustrating this has been for both of you — and having you both here helps me understand the impact more fully."</div>
+        </div>
+        <div class="sca-block sca-avoid">
+          <div class="sca-block-t">Deductions</div>
+          <ul>
+            <li>Not asking about sudden onset — missing the emergency</li>
+            <li>Not asking about laterality before launching into treatment</li>
+            <li>Attributing to "age" without occupational history or otoscopy</li>
+            <li>Not checking for ototoxic medications in the drug history</li>
+            <li>Not including the partner or accompanying person in the consultation</li>
+            <li>Not asking about pulsatile tinnitus — missing vascular cause</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Sudden onset not asked; laterality not established; attributes to age without exclusion; occupational history not taken; partner not involved</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Onset and laterality asked; occupational history incomplete; ototoxic drugs not checked; ICE partially explored; partner included but not engaged meaningfully</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Sudden onset confirmed not the case; laterality established; occupational noise history taken; ototoxic drug review; pulsatile tinnitus asked; ICE explored; partner included and their frustration acknowledged empathetically</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage Engine — Emergency · Urgent · Routine</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro">Triage in hearing loss starts with a single question: was the onset sudden (within 72 hours)? If yes — this is a same-day ENT emergency and oral prednisolone must be started today, before the ENT appointment, because the steroid treatment window closes at 2 weeks. Every other triage decision flows from the laterality and associated features.</div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div>
+        <h3>Same-Day ENT + Steroids Now</h3>
+        <span class="tc-badge tcb-e">Do not wait</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Sudden unilateral SNHL (onset within 72 hours)</strong><em>Start prednisolone 1 mg/kg/day today — then same-day ENT for intratympanic steroid assessment</em></li>
+          <li class="tc-item"><strong>Ramsay Hunt syndrome</strong><em>Facial palsy + ear pain + vesicles in canal → aciclovir 800 mg 5× daily + prednisolone within 72 hours</em></li>
+          <li class="tc-item"><strong>Cholesteatoma with acute complication</strong><em>Facial palsy, meningism, or cerebellar signs → 999 / same-day neurosurgery</em></li>
+          <li class="tc-item"><strong>Pulsatile tinnitus with neurological signs</strong><em>Intracranial hypertension, vascular lesion — same-day ENT + MRI</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Urgent</div>
+        <h3>Within 2 Weeks</h3>
+        <span class="tc-badge tcb-u">Rapid referral</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Unilateral SNHL + ipsilateral tinnitus</strong><em>Acoustic neuroma exclusion — MRI IAM with gadolinium via urgent ENT within 2 weeks</em></li>
+          <li class="tc-item"><strong>Pulsatile tinnitus (without neurological signs)</strong><em>Vascular cause exclusion — ENT + MRI within 2 weeks</em></li>
+          <li class="tc-item"><strong>Cholesteatoma suspected (painless foul discharge)</strong><em>ENT within 2 weeks — never syringe; surgical assessment required</em></li>
+          <li class="tc-item"><strong>Ear pain without obvious cause in smoker over 45</strong><em>Pharyngeal malignancy exclusion — urgent ENT + nasendoscopy</em></li>
+          <li class="tc-item"><strong>Facial palsy + hearing loss (not Ramsay Hunt)</strong><em>Acoustic neuroma with 7th nerve compression — urgent ENT + MRI</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Routine</div>
+        <h3>Audiology / Primary Care</h3>
+        <span class="tc-badge tcb-r">Audiology referral</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Bilateral gradual SNHL (ARHL / NIHL)</strong><em>Audiology referral; formal audiogram; hearing aid assessment if ≥40 dB bilateral</em></li>
+          <li class="tc-item"><strong>Cerumen impaction</strong><em>Olive oil drops 2–4 weeks; microsuction if persisting — not syringing if drum perforation risk</em></li>
+          <li class="tc-item"><strong>OME (glue ear) — stable</strong><em>3-month watchful waiting (children); adult OME → ENT if persistent over 3 months</em></li>
+          <li class="tc-item"><strong>Hearing aid review</strong><em>Re-programme or refit via audiology; assess compliance and technique at every visit</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Sudden SNHL not triaged as emergency; unilateral tinnitus not triggering MRI referral; routine audiology for all without risk stratification</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Triage broadly correct; urgency criteria partially applied; reasoning not shared with patient</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Sudden SNHL = emergency explicitly named; unilateral features trigger urgent ENT + MRI IAM; bilateral gradual = audiology routine; reasoning shared clearly</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Do I Need This Examination?</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro">Otoscopy is mandatory — cerumen impaction is the commonest reversible cause of hearing loss and can only be found by looking. The Rinne and Weber tuning fork tests (512 Hz) differentiate conductive from sensorineural hearing loss with over 80% sensitivity and must follow otoscopy in every patient with hearing loss where the canal is patent.</div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:20%">Examination</th><th style="width:36%">Why it matters</th><th style="width:26%">Finding + action</th><th>Mandatory?</th></tr></thead>
+        <tbody>
+          <tr><td class="q">Otoscopy</td><td class="why">Visualises the canal and drum — wax impaction (most common), perforation, OME (dull retracted drum), AOM (red bulging), cholesteatoma (pearly mass at pars flaccida). The most important single examination.<span class="why-sub">Full canal wax occlusion → treat first, reassess hearing before any referral. Never syringe if perforation, mastoid cavity, or cholesteatoma suspected.</span></td><td class="why">Wax → olive oil then microsuction. Pearly mass pars flaccida → cholesteatoma → urgent ENT. Perforation → ENT; dry ear only. Dull retracted drum → OME → tympanometry</td><td><span class="mcb mcb-yes">YES — always</span></td></tr>
+          <tr><td class="q">Rinne test (512 Hz)</td><td class="why">Fork on mastoid (BC) vs beside ear (AC). Normal: AC > BC (Rinne positive). Rinne negative (BC > AC) = conductive loss. Rinne positive with poor hearing = SNHL.<span class="why-sub">False negative Rinne in profound unilateral SNHL — sound transmitted contralaterally. Use masking (Barany box) in the good ear to prevent this.</span></td><td class="why">Rinne negative → conductive (wax/OME/otosclerosis) → treat/ENT. Rinne positive with poor hearing → SNHL → audiology + audiogram</td><td><span class="mcb mcb-yes">YES — always</span></td></tr>
+          <tr><td class="q">Weber test (512 Hz)</td><td class="why">Fork on forehead. Lateralises to worse ear = conductive loss there. Lateralises to better ear = SNHL on worse side. Central = bilateral equal loss.<span class="why-sub">Rinne negative + Weber to worse ear = conductive. Rinne positive + Weber to better ear = SNHL on worse side. These two tests together guide the referral decision.</span></td><td class="why">Lateralises to worse ear → conductive loss. To better ear → SNHL on worse side → audiology; if unilateral → urgent ENT + MRI IAM</td><td><span class="mcb mcb-yes">YES — always</span></td></tr>
+          <tr><td class="q">Whisper test (60 cm)</td><td class="why">Functional speech comprehension assessment — cover your mouth 60 cm from patient, whisper numbers. Failure = significant conversational hearing impairment. Simple, no equipment, documents functional baseline immediately.<span class="why-sub">Not a substitute for audiogram but immediately quantifies functional impact in the clinical notes.</span></td><td class="why">Failure at 60 cm → significant functional impairment → audiology referral justified and documented</td><td><span class="mcb mcb-yes">YES — functional baseline</span></td></tr>
+          <tr><td class="q">Cranial nerve examination (CN VII)</td><td class="why">Check facial symmetry — asymmetric smile, incomplete eye closure, taste change in anterior 2/3 tongue with hearing loss = Ramsay Hunt or acoustic neuroma with 7th nerve compression. Both require same-day action.<span class="why-sub">Always check for ear canal vesicles (Ramsay Hunt) when facial palsy is present with ear symptoms.</span></td><td class="why">Any facial asymmetry + hearing loss → same-day ENT; look for vesicles → Ramsay Hunt → aciclovir + prednisolone immediately</td><td><span class="mcb mcb-context">Yes — unilateral/red flags</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span></div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">No otoscopy; tuning fork tests omitted; Rinne/Weber results not linked to conductive vs SNHL</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Otoscopy done; Rinne/Weber performed but interpretation not explained to patient; facial nerve not checked in unilateral case</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Otoscopy results reported; Rinne + Weber interpreted correctly and linked to diagnosis; facial nerve checked in unilateral cases; whisper test documented as functional baseline</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Do I Need This Investigation?</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:20%">Investigation</th><th style="width:32%">Clinical question it answers</th><th>Key result + action</th></tr></thead>
+        <tbody>
+          <tr><td class="q">Pure-tone audiogram (audiology)</td><td class="why">Definitive hearing threshold — type (conductive/SNHL/mixed), severity (dB), and frequency pattern (4 kHz notch = NIHL; high-frequency bilateral = ARHL; low-frequency = early Menière's). Enables hearing aid prescription and baseline for monitoring. Requires audiology referral — not GP surgery.</td><td class="why">Bilateral high-frequency SNHL → ARHL/NIHL → hearing aid assessment. 4 kHz notch → NIHL → IIDB claim. Asymmetric findings → MRI IAM regardless of severity. Conductive pattern → ENT</td></tr>
+          <tr><td class="q">MRI IAM with gadolinium</td><td class="why">Definitive investigation for acoustic neuroma — identifies tumours from 2–3 mm in the internal auditory meatus. Mandatory for any unilateral SNHL or asymmetric hearing loss of unknown cause. CT is inadequate for soft-tissue lesions here — do not substitute.</td><td class="why">Acoustic neuroma → ENT/neurosurgery (watch and wait, Gamma Knife, or surgery depending on size). Normal MRI → reassurance; annual monitoring audiogram</td></tr>
+          <tr><td class="q">Tympanometry</td><td class="why">Middle ear pressure and TM compliance — Type B (flat) = OME or perforation; Type C (negative peak) = Eustachian tube dysfunction; Type A (normal) = middle ear not the cause. Essential for children with suspected glue ear; useful in adults with unexplained conductive loss.</td><td class="why">Type B → OME → 3-month watchful waiting in children; adult → grommets via ENT if persistent. Type A → conductive loss not from middle ear → consider otosclerosis</td></tr>
+          <tr><td class="q">CT temporal bones</td><td class="why">Bony pathology — cholesteatoma extent and ossicular erosion, otosclerosis (lucency around oval window = "halo sign"), mastoid disease, fractures. Shows bone detail; complements MRI for soft tissue.</td><td class="why">Cholesteatoma extent → surgical planning. Otosclerosis → stapedectomy assessment. Fracture with intracranial extension → neurosurgery</td></tr>
+          <tr><td class="q">TFTs + FBC + fasting glucose</td><td class="why">Hypothyroidism causes bilateral SNHL — check TFTs in any bilateral progressive SNHL without clear cause. Anaemia worsens tinnitus. Diabetes is an SNHL risk factor. Autoimmune screen (ANA, ANCA) for rapidly progressive bilateral loss.</td><td class="why">Hypothyroidism → treat; hearing may partially improve. Autoimmune SNHL → immunosuppression under specialist guidance</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">CT ordered instead of MRI for acoustic neuroma exclusion; audiology not planned; investigations not explained to patient</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Correct investigations chosen; asymmetric finding not linked to urgent MRI; TFTs not checked</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">MRI IAM (not CT) for acoustic neuroma; audiogram via audiology; TFTs in bilateral progressive SNHL; investigations explained in plain language</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Reaching a Diagnosis &amp; DDx — Explained in Plain Language</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="lay-box">
+      <div class="lay-box-lbl">🗣️ Explaining Hearing Loss in Plain Language</div>
+      <p>"The inner part of your ear has thousands of tiny hair cells — think of them like the keys on a piano, each tuned to a different pitch. Years of loud noise exposure gradually wear down the cells that detect the highest sounds first. That's why you can hear voices but struggle to understand exactly what's being said — consonants like S, F, and T are high-pitched and they're the ones that have been most affected. The good news is that modern hearing aids are extraordinarily good at amplifying precisely those frequencies, and the NHS provides them free. But before we get to that, I want to do a formal hearing test through our specialist audiology team — they'll map out exactly which frequencies have been affected and which hearing aid would help you most."</p>
+    </div>
+    <div class="g3" style="margin-bottom:12px">
+      <div class="card" style="padding:1rem;border-left:4px solid var(--g)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.4rem">A — Diagnosable / Manageable in Primary Care</div>
+        <span class="conf-badge conf-gp" style="margin-bottom:.6rem;display:inline-block">GP can manage initially</span>
+        <div class="ddx-card ddx-a" style="margin-bottom:8px"><h4>Cerumen Impaction (Wax)</h4><p>Commonest reversible cause. Confirmed on otoscopy. Treatment: olive oil drops twice daily × 2–4 weeks → microsuction. Never syringe if drum perforation suspected. Fully reversible — reassess hearing after treatment before any further investigation.</p></div>
+        <div class="ddx-card ddx-a" style="margin-bottom:8px"><h4>Age-Related Hearing Loss (Presbycusis)</h4><p>Bilateral progressive high-frequency SNHL from the 50s onwards. Over 50% prevalence in adults over 75. Rinne positive bilaterally; Weber central; 4 kHz + higher frequencies affected on audiogram. Treated with NHS bilateral hearing aids (free; threshold ≥40 dB in better ear).</p></div>
+        <div class="ddx-card ddx-a"><h4>Noise-Induced Hearing Loss (NIHL)</h4><p>Bilateral high-frequency SNHL with characteristic 4 kHz notch on audiogram from occupational or recreational noise. Often combined with ARHL in older patients. Hearing protection advice mandatory. Industrial injury compensation (IIDB) may be applicable.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--a)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:.4rem">B — Refer to ENT / Audiology</div>
+        <span class="conf-badge conf-sus" style="margin-bottom:.6rem;display:inline-block">Specialist needed</span>
+        <div class="ddx-card ddx-b" style="margin-bottom:8px"><h4>Acoustic Neuroma (Vestibular Schwannoma)</h4><p>Benign slow-growing tumour of CN VIII. Unilateral SNHL + ipsilateral tinnitus ± disequilibrium. Normal otoscopy. MRI IAM with gadolinium diagnostic. Management: watch and wait (small, slow-growing), stereotactic radiosurgery (Gamma Knife), or surgical removal based on size and patient factors.</p></div>
+        <div class="ddx-card ddx-b" style="margin-bottom:8px"><h4>Otosclerosis</h4><p>Progressive bilateral conductive loss from abnormal bony remodelling around the stapes. Typical: young woman 30s–40s, family history, may worsen in pregnancy. Rinne negative bilaterally, normal otoscopy. CT temporal bones confirms. Treatment: stapedectomy (highly effective) or bone-anchored hearing aid.</p></div>
+        <div class="ddx-card ddx-b"><h4>Menière's Disease</h4><p>Episodic triad: vertigo (20 min–12 hours) + unilateral fluctuating SNHL + tinnitus. Low-frequency SNHL early, progresses to permanent. Confirmed by ENT. Treatment: salt restriction, betahistine, diuretics; intratympanic treatment in refractory cases.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--r)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--r);margin-bottom:.4rem">C — Emergency — Act Now</div>
+        <span class="conf-badge conf-emerg" style="margin-bottom:.6rem;display:inline-block">Same-day action</span>
+        <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Sudden SNHL</h4><p>Onset within 72 hours, unilateral SNHL ≥30 dB at 3 frequencies. Start prednisolone 1 mg/kg/day (max 60 mg) today — do not wait for ENT. Same-day ENT referral for intratympanic steroid injection consideration. 60–70% partial or full recovery if treated within 2 weeks.</p></div>
+        <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Ramsay Hunt Syndrome</h4><p>VZV reactivation in the geniculate ganglion. Ear pain + ipsilateral facial palsy + ear canal vesicles. Treat within 72 hours: aciclovir 800 mg 5× daily + prednisolone 1 mg/kg/day × 10 days. Facial palsy recovery worse than Bell's palsy — urgency of treatment is critical.</p></div>
+        <div class="ddx-card ddx-c"><h4>Cholesteatoma with Complication</h4><p>Facial palsy, meningism, or cerebellar signs in a patient with chronic ear disease = cholesteatoma complication (labyrinthitis, facial nerve erosion, intracranial extension) → 999 immediately.</p></div>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span></div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Diagnoses ARHL without audiogram; "nothing to do — just age"; doesn't explain mechanism; doesn't address partner's frustration in explanation</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Correct diagnosis stated; lay explanation attempted; audiogram planned; dementia link not raised; hearing aid stigma not addressed</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Mechanism explained with plain-language analogy; audiogram needed before confirming; hearing aid framed as brain health intervention; partner included in explanation; stigma addressed proactively</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">If Referral Is Needed — What the GP Does Before &amp; During</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="card" style="overflow:hidden">
+      <table class="ref-table">
+        <thead><tr><th>Condition</th><th>Urgency</th><th>What GP does before referral</th><th>What GP must NOT do</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">Sudden SNHL (within 72 hours)</td><td><span class="ref-urg rurg-999">Same-day + start steroids NOW</span></td><td style="font-size:12px">Start prednisolone 1 mg/kg/day (max 60 mg) today — before ENT appointment. Phone ENT directly. Document time of onset precisely. Reassure patient about urgency.</td><td style="font-size:12px;color:var(--r)">Never wait for an outpatient ENT appointment before starting steroids. Do not prescribe a 3-day course — minimum 7–14 days required.</td></tr>
+          <tr><td style="font-weight:600">Unilateral SNHL + tinnitus (non-sudden)</td><td><span class="ref-urg rurg-2">2-week ENT + MRI IAM</span></td><td style="font-size:12px">Otoscopy, Rinne/Weber, TFTs, fasting glucose. Refer ENT with explicit request for MRI IAM with gadolinium. Warn patient about MRI (claustrophobia?); reassure that most likely finding is benign but needs exclusion.</td><td style="font-size:12px;color:var(--r)">Do not order CT instead of MRI — CT cannot visualise soft tissue in the IAM. Do not dismiss unilateral tinnitus + SNHL as presbycusis without MRI exclusion of acoustic neuroma.</td></tr>
+          <tr><td style="font-weight:600">Cholesteatoma suspected</td><td><span class="ref-urg rurg-2">2-week urgent ENT</span></td><td style="font-size:12px">Document duration, discharge character, any facial nerve symptoms. Dry ear precautions — no water in the ear. Refer ENT urgently for surgical assessment.</td><td style="font-size:12px;color:var(--r)">Never syringe a suspected cholesteatoma — water irrigation accelerates bone destruction and infection. Microsuction only by specialist.</td></tr>
+          <tr><td style="font-weight:600">Ramsay Hunt syndrome</td><td><span class="ref-urg rurg-999">Same-day ENT + antivirals NOW</span></td><td style="font-size:12px">Start aciclovir 800 mg 5× daily + prednisolone 1 mg/kg/day immediately. Eye care if incomplete closure (lubricating drops + tape at night). Same-day ENT for comprehensive management.</td><td style="font-size:12px;color:var(--r)">Do not treat as Bell's palsy alone — the antiviral component is essential for facial recovery and is missed if only steroids are prescribed.</td></tr>
+          <tr><td style="font-weight:600">Bilateral gradual SNHL (ARHL/NIHL)</td><td><span class="ref-urg rurg-r">Routine audiology referral</span></td><td style="font-size:12px">Otoscopy, Rinne/Weber, exclude cerumen, TFTs. Discuss hearing aid expectations, address stigma, mention dementia risk reduction, mention IIDB if occupational. Refer NHS audiology for audiogram and hearing aid assessment.</td><td style="font-size:12px;color:var(--r)">Do not dismiss as "just age" without addressing psychosocial impact. Do not prescribe hearing aids directly from GP — NHS hearing aids require formal audiogram under audiology.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span></div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Waits for ENT before starting steroids in sudden SNHL; CT ordered for acoustic neuroma; syringing recommended; "nothing to do" for bilateral ARHL</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Appropriate referral; urgency correct; pre-referral workup incomplete; rationale not explained to patient</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Sudden SNHL: steroids today + same-day ENT. Unilateral: MRI IAM via ENT. Bilateral: audiology. No syringing if contraindication. Explanation and timeline shared with patient and partner.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Expectation · Goals · Lifestyle · Drug Cards · Psychosocial · Follow-Up · Safety-Netting</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+
+    <div class="sub-divider">7A — Address the patient's expectation first</div>
+    <div class="expect-box">
+      <div class="expect-box-hdr"><span style="font-size:1.4rem">🤝</span><div class="expect-box-lbl">This patient minimises his symptoms and may expect to be told "nothing can be done." Transform that expectation into engagement.</div></div>
+      <div class="expect-steps">
+        <div class="expect-step"><div class="expect-step-num">1</div><h5>Validate</h5><p>Acknowledge the impact on both the patient and his wife — and that the frustration in this room is shared, not a personal failing.</p><span class="expect-phrase">"I can see this has been affecting both of you, and I want to make sure you both leave today with a clear plan — not just a reassurance that this is normal."</span></div>
+        <div class="expect-step"><div class="expect-step-num">2</div><h5>Explain</h5><p>Many patients think hearing loss is untreatable — correct this directly. The NHS provides bilateral digital hearing aids free. Modern devices are invisible, app-controlled, and Bluetooth-enabled.</p><span class="expect-phrase">"Modern NHS hearing aids are completely different from the beige plastic things your parents had — they're digital, some are nearly invisible, and they can stream directly to your phone. And they're entirely free on the NHS."</span></div>
+        <div class="expect-step"><div class="expect-step-num">3</div><h5>Negotiate</h5><p>Give something concrete today — the ear drops, the audiology referral, and the IIDB information. The patient should leave with a plan, not just advice.</p><span class="expect-phrase">"Today I'm giving you the ear drops, sending the referral for the hearing test, and telling you about the industrial injury scheme you may be entitled to. And I want to make sure you know when to come back urgently."</span></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7C — Communication strategies and lifestyle</div>
+    <div class="life-grid" style="margin-bottom:1.25rem">
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🗣️</span><div class="life-title">Communication Strategies</div><span class="life-target">Both patient and partner — implement together</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">For the partner</div><p>Face the person when speaking. Reduce background noise first (TV off). Speak clearly — not loudly; shouting distorts consonants. Use shorter sentences. Get their attention before speaking. Don't say "never mind" — this causes withdrawal and depression.</p></div>
+          <div class="life-section"><div class="life-section-lbl">For the patient</div><p>Tell people about your hearing loss — most people will adapt naturally if they know. Position yourself close to the speaker in noisy environments. Ask for written information in medical consultations. Use subtitles on TV.</p></div>
+          <span class="life-benefit">Communication training for both partners reduces relationship strain and social withdrawal significantly</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🧠</span><div class="life-title">Dementia Prevention</div><span class="life-target">Hearing aid use = brain health investment</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Evidence</div><p>Hearing loss is the largest single modifiable dementia risk factor (Lancet Commission 2020, 8% PAF). Treating hearing loss reduces cognitive load from straining to understand speech, and maintains auditory cortex stimulation. Consistent hearing aid use is associated with significantly slower cognitive decline.</p></div>
+          <span class="life-benefit">Reframe hearing aid as brain protection — dramatically improves uptake in stigma-resistant patients</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🔇</span><div class="life-title">Hearing Protection</div><span class="life-target">Prevent further noise-induced damage</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>No further unprotected noise exposure — DIY, power tools, live music, loud TV all cause continued damage. Custom earplugs (from audiologist) superior to foam inserts. Cannot undo existing damage, but can prevent progression.</p></div>
+          <span class="life-benefit">Hearing protection prevents further loss — existing damage is irreversible</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">💧</span><div class="life-title">Wax Management</div><span class="life-target">Olive oil drops twice daily × 2–4 weeks before microsuction</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Olive oil drops or sodium bicarbonate drops (2–3 drops twice daily) soften cerumen. Tilt head 2–3 minutes after instilling. If still impacted after 4 weeks → microsuction via practice nurse or audiology. Never syringe if: perforation, mastoid cavity, previous ear surgery, or cholesteatoma suspected.</p></div>
+          <span class="life-benefit">Wax removal can restore full hearing — always exclude impaction before any other investigation</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">💻</span><div class="life-title">Assistive Technology</div><span class="life-target">Bridges gap while awaiting hearing aids</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Live Caption (smartphone app — free) provides real-time speech-to-text. Amplified telephones (BT provides free for eligible patients). TV hearing loops (neck loop). Smart TV Bluetooth streaming direct to hearing aids. Social Services assessment for assistive tech — free for significantly impaired patients.</p></div>
+          <span class="life-benefit">Assistive technology significantly improves function while awaiting audiology appointment</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">💊</span><div class="life-title">IIDB Compensation</div><span class="life-target">Occupational NIHL — DWP entitlement</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Industrial Injuries Disablement Benefit (IIDB) is payable to workers who developed hearing loss from occupational noise exposure. A retired factory worker with 35 years of noise exposure without adequate protection has a strong claim. Citizens Advice or the DWP website provides guidance on the claims process.</p></div>
+          <span class="life-benefit">IIDB compensation is a legal entitlement — failure to mention it is a significant missed opportunity for the patient</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7F — Drug reference cards: hearing loss pharmacological treatment</div>
+    <div class="drug-cards">
+      <div class="dc" id="dc-predsnhl">
+        <div class="dc-head"><div><div class="dc-name">Prednisolone — Sudden SNHL</div><div class="dc-examples">1 mg/kg/day (max 60 mg) × 7–14 days — start today, before ENT appointment</div></div><div class="dc-badges"><span class="dc-step step1">Emergency SNHL</span><span class="dc-dose">1 mg/kg/day × 14d</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Initiate when</div>
+          <div class="dc-item">Sudden SNHL onset within 72 hours — start today; do not wait for ENT confirmation</div>
+          <div class="dc-item">Treatment within 2 weeks → 60–70% partial or full recovery; delay beyond 2 weeks dramatically worsens prognosis</div>
+          <div class="dc-item">ENT may supplement with intratympanic steroids — but oral steroids must start in primary care</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Caution</div>
+          <div class="dc-item ci-rel">Diabetes — significant hyperglycaemia; advise monitoring; brief glucose check at 1 week</div>
+          <div class="dc-item ci-rel">Peptic ulcer — add PPI (lansoprazole 15 mg OD) for courses over 7 days</div>
+          <div class="dc-item ci-rel">Taper if over 10 days — reduce by 10 mg every 3 days to avoid adrenal withdrawal</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"We're starting this steroid today because time is critical — the sooner we get it in your system, the better the chance of recovering your hearing. Take it with breakfast. If you have diabetes, watch your blood sugar more closely. Don't stop it suddenly — we'll reduce the dose at the end of the course."</p></div>
+        <div class="dc-sca"><p>The most examinable point in sudden SNHL: start prednisolone TODAY, before ENT — stating this explicitly is a high-scoring clinical decision. "I am not waiting for the ENT appointment — we need to start the steroid right now because every day matters." This demonstrates time-critical safe prescribing and scores heavily in Tasks.</p></div>
+      </div>
+      <div class="dc" id="dc-aciclovir">
+        <div class="dc-head"><div><div class="dc-name">Aciclovir — Ramsay Hunt Syndrome</div><div class="dc-examples">800 mg 5× daily × 7–10 days + prednisolone — must start within 72 hours of onset</div></div><div class="dc-badges"><span class="dc-step step1">Ramsay Hunt</span><span class="dc-dose">800 mg 5× daily</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Initiate when</div>
+          <div class="dc-item">Ramsay Hunt: ear pain + facial palsy + vesicles in ear canal (any two of three = treat empirically)</div>
+          <div class="dc-item">Combined with prednisolone — both drugs needed for best facial recovery</div>
+          <div class="dc-item">Within 72 hours is the critical window for facial nerve recovery</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Caution</div>
+          <div class="dc-item ci-rel">Renal impairment — reduce dose; maintain hydration to prevent crystalluria</div>
+          <div class="dc-item ci-rel">5× daily dosing — counsel carefully on adherence; set phone alarms</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"Take this antiviral tablet 5 times a day — roughly every 4 hours while awake. Drink plenty of water with each dose. It targets the virus causing the facial weakness and hearing problem. With both this and the steroid, the chance of the facial weakness recovering fully is much better than with the steroid alone."</p></div>
+        <div class="dc-sca"><p>Critical SCA distinction: Ramsay Hunt is NOT Bell's palsy. The key distinguishing features are ear pain, ear canal vesicles, and the associated hearing loss/vertigo. Bell's palsy = prednisolone only. Ramsay Hunt = aciclovir + prednisolone. Demonstrating this distinction explicitly scores in Tasks.</p></div>
+      </div>
+      <div class="dc" id="dc-oliveoil">
+        <div class="dc-head"><div><div class="dc-name">Olive Oil / Sodium Bicarbonate Drops</div><div class="dc-examples">Cerumol, Otex — cerumen softener before microsuction</div></div><div class="dc-badges"><span class="dc-step step1">Wax impaction</span><span class="dc-dose">2–3 drops BD × 2–4 wks</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use when</div>
+          <div class="dc-item">Cerumen impaction confirmed on otoscopy — always first-line before microsuction</div>
+          <div class="dc-item">Routine prevention in hearing aid wearers — reduces impaction around device</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Never use if</div>
+          <div class="dc-item ci-abs">Perforated tympanic membrane — drops enter middle ear and risk infection</div>
+          <div class="dc-item ci-abs">Suspected cholesteatoma — never irrigate or apply drops to a cholesteatoma ear</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"Put 2–3 drops in the affected ear twice a day, tilt your head for 2–3 minutes, then straighten up. Do this for 2–4 weeks. Come back if hearing hasn't improved — we can then refer for a micro-vacuum to remove the wax safely."</p></div>
+        <div class="dc-sca"><p>Never syringe if: perforation, mastoid cavity, previous ear surgery, or cholesteatoma suspected. Microsuction only in these cases. Naming this contraindication explicitly is a patient safety marker in the Tasks domain.</p></div>
+      </div>
+      <div class="dc" id="dc-betahistine">
+        <div class="dc-head"><div><div class="dc-name">Betahistine — Menière's Disease</div><div class="dc-examples">Serc 16 mg TDS — reduces endolymphatic pressure; ENT-initiated only</div></div><div class="dc-badges"><span class="dc-step step2">Menière's (ENT)</span><span class="dc-dose">16 mg TDS or 24 mg BD</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use when (specialist confirms Menière's)</div>
+          <div class="dc-item">Menière's disease confirmed by ENT — not for empirical use without diagnosis</div>
+          <div class="dc-item">Minimum 6-month trial before assessing response; combine with low-salt diet</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Caution</div>
+          <div class="dc-item ci-rel">Asthma — histamine pathway; use with caution</div>
+          <div class="dc-item ci-rel">Peptic ulcer — increases gastric acid; prescribe with caution</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"Take three times a day with food — it needs to be taken every day, not just when you have symptoms. The benefit takes weeks to months to build up. Low-salt diet significantly improves how well it works — under 1.5 g sodium per day."</p></div>
+        <div class="dc-sca"><p>Betahistine is only for confirmed Menière's — prescribing empirically for any hearing loss + vertigo combination is unsafe. The SCA examiner expects: "We need ENT to confirm Menière's before we start any specific treatment — the diagnosis needs to be established first."</p></div>
+      </div>
+    </div>
+
+    <div class="sub-divider" style="margin-top:1.5rem">7G — Psychosocial impact: isolation, stigma, and dementia</div>
+    <div class="psoci-wrap">
+      <div class="psoci-hdr"><span style="font-size:1.5rem">🫂</span><div class="psoci-title">Living with hearing loss — relationships, independence, and long-term brain health</div></div>
+      <div class="psoci-grid">
+        <div class="psoci-card"><span class="psoci-icon">💑</span><h5>Relationship Impact</h5><p>Untreated hearing loss strains the closest relationships — partners experience exhaustion from repeating themselves, frustration from being "ignored," and social withdrawal from activities the couple previously shared together. Addressing the hearing loss is relationship therapy as well as medical treatment.</p><p>Communication strategies should be given directly to the partner in the consultation, not just to the patient. Both need to understand how to communicate most effectively given the specific pattern of hearing loss.</p><span class="psoci-phrase">"I'd like to give you both some specific advice about communication — because this is something you're managing together, not just Brian."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">🧠</span><h5>Dementia Prevention</h5><p>Hearing loss is the largest single modifiable dementia risk factor (Lancet Commission 2020 — 8% population attributable fraction). The mechanism is twofold: increased cognitive load from straining to understand speech diverts resources from memory; and reduced auditory stimulation accelerates auditory cortex atrophy. Hearing aid use significantly slows cognitive decline.</p><p>For patients resistant to hearing aids on grounds of stigma — framing the device as a brain health intervention sidesteps the identity issue entirely and significantly improves uptake rates.</p><span class="psoci-phrase">"The research now shows that using a hearing aid is one of the best things you can do to protect your memory as you get older. That's a really important finding — it changes the whole conversation about whether it's worth the bother."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">💼</span><h5>IIDB Compensation</h5><p>Noise-induced hearing loss from occupational exposure is an Industrial Injury under the Industrial Injuries Disablement Benefit (IIDB) scheme. Workers who developed NIHL from their occupation can claim financial compensation through the DWP — no time limit on making a claim for occupational NIHL.</p><p>The GP's role is to document the occupational history clearly in the clinical notes and advise the patient of their entitlement. Direct them to Citizens Advice or DWP. Audiological evidence from the formal audiogram (including the 4 kHz notch) will support the claim.</p><span class="psoci-phrase">"Given that your hearing loss is very likely related to 35 years in a noisy factory, you may actually be entitled to some financial support from the government. It's worth looking into — have you ever heard of the industrial injury scheme?"</span></div>
+        <div class="psoci-card"><span class="psoci-icon">🎧</span><h5>Hearing Aid Stigma</h5><p>The single most common barrier to hearing aid uptake in older men is stigma — equating the device with disability and old age. Modern NHS hearing aids are digital, many are in-the-canal (virtually invisible), and many stream directly to smartphones via Bluetooth. They bear no resemblance to the bulky beige devices of a previous generation.</p><p>Correcting the patient's mental image of what a hearing aid looks like is a specific and immediately impactful intervention. The dementia prevention reframe additionally removes the stigma by repositioning the hearing aid as a health device rather than a disability aid.</p><span class="psoci-phrase">"The hearing aids we're talking about are nothing like the ones people imagine. Would it help if I showed you what the modern NHS ones look like? Some are completely invisible from the side."</span></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7H — Follow-up schedule</div>
+    <div class="card" style="padding:1.1rem 1.25rem;margin-bottom:1.25rem">
+      <div class="fu-line">
+        <div class="fu-event"><div class="fu-dot fd1">1</div><div class="fu-content"><h5>4 Weeks — Wax treatment review</h5><p>Re-examine ears with otoscope — if wax cleared, reassess hearing informally (whisper test). If still impacted → microsuction via practice nurse or audiology. Confirm audiology referral active.</p><div class="fu-tags"><span class="ft ft-r">Otoscopy</span><span class="ft ft-b">Audiology referral check</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd2">2</div><div class="fu-content"><h5>Post-audiogram (6–10 weeks) — Results review</h5><p>Review formal audiogram; discuss hearing aid candidacy; if asymmetric loss → confirm ENT referral with MRI IAM; if NIHL confirmed → document and advise IIDB claim. Hearing aid fitting appointment timeline.</p><div class="fu-tags"><span class="ft ft-b">Audiogram result</span><span class="ft ft-a">IIDB if occupational</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd3">3</div><div class="fu-content"><h5>Post-fitting (3 months) — Compliance and benefit review</h5><p>Hearing aid usage and comfort; PHQ-9 (depression common in hearing loss); partner check-in; social re-engagement; re-programme referral if comfort or performance issues. Address any residual stigma barriers.</p><div class="fu-tags"><span class="ft ft-b">Compliance check</span><span class="ft ft-r">PHQ-9</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd4">4</div><div class="fu-content"><h5>Annual review</h5><p>Annual audiogram (especially if ongoing noise exposure or deterioration noticed); cognitive screening if concern; hearing aid battery and maintenance; reassess IIDB claim status; update red-flag safety netting; address any new unilateral or pulsatile features urgently.</p><div class="fu-tags"><span class="ft ft-r">Annual audiogram</span><span class="ft ft-b">Cognitive screen</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7J — Safety-netting</div>
+    <div class="sn-box">
+      <h4>⚠ Three scenario-specific safety-net phrases</h4>
+      <div class="sn-scenarios">
+        <div class="sn-scenario sns-e">
+          <div class="sn-scenario-lbl">🔴 Emergency — sudden hearing change</div>
+          <div class="sn-phrase">"If you ever notice that your hearing has suddenly got much worse — especially in one ear, perhaps overnight — contact us the same day or go to A&amp;E if we are closed. This is a time-critical medical emergency where treatment in the first 24–48 hours makes a significant difference to the outcome."</div>
+          <div class="sn-why">Sudden SNHL has a two-week steroid treatment window that begins at onset. Pre-warning patients of this specific emergency scenario ensures they seek help immediately rather than thinking the hearing "will settle on its own." Documenting this safety-net advice protects the GP medico-legally if a patient subsequently delays and loses their steroid window.</div>
+        </div>
+        <div class="sn-scenario sns-m">
+          <div class="sn-scenario-lbl">💊 Prednisolone — if prescribed for sudden SNHL</div>
+          <div class="sn-phrase">"Take the tablet with food every morning. If you have diabetes, check your blood sugar more frequently this week. Don't stop the tablets abruptly at the end — we'll reduce the dose gradually. Come back if you develop stomach pain or a fever."</div>
+          <div class="sn-why">High-dose prednisolone in sudden SNHL requires specific counselling: hyperglycaemia in diabetics, PPI co-prescription for GI protection, and graduated tapering after courses over 7 days. These are the prescribing safety points that the SCA examiner tests by observing whether the candidate spontaneously provides them.</div>
+        </div>
+        <div class="sn-scenario sns-a">
+          <div class="sn-scenario-lbl">🟠 Red flag — new facial or neurological symptoms</div>
+          <div class="sn-phrase">"If you ever notice your face drooping on one side, your eye not closing properly, or if you develop a severe spinning sensation or a severe headache alongside the ear problem — seek urgent medical attention the same day, even if you're already under the specialist."</div>
+          <div class="sn-why">Facial palsy plus ear symptoms = Ramsay Hunt (antiviral window) or acoustic neuroma with 7th nerve compression (urgent MRI). Both require same-day action. Pre-warning creates a second safety layer beyond specialist monitoring and is particularly important between outpatient appointments when the patient may not know when to escalate.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7 (Final)</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say">
+          <div class="sca-block-t">Closing the consultation</div>
+          <div class="sca-phrase">"To summarise: I'm giving you ear drops today, and I'm sending the referral to audiology for the formal hearing test and hearing aid assessment this week."</div>
+          <div class="sca-phrase">"Modern NHS hearing aids can be virtually invisible and connect directly to your phone — they're nothing like the devices of 20 years ago."</div>
+          <div class="sca-phrase">"One important safety point: if your hearing suddenly gets much worse, even overnight — contact us or A&amp;E the same day. That is a medical emergency."</div>
+          <div class="sca-phrase">"Is there anything either of you would like to ask before we finish?"</div>
+        </div>
+        <div class="sca-block sca-avoid">
+          <div class="sca-block-t">Deductions — closing</div>
+          <ul>
+            <li>Not giving the sudden SNHL safety-net explicitly</li>
+            <li>Syringing recommended without checking for perforation/cholesteatoma contraindications</li>
+            <li>Not addressing hearing aid stigma proactively</li>
+            <li>Not offering IIDB information when occupational NIHL is established</li>
+            <li>Not including partner in the closing question</li>
+            <li>Dismissing hearing loss as "just age, nothing to be done"</li>
+          </ul>
+        </div>
+        <div class="sca-block sca-score">
+          <div class="sca-block-t">Tasks — full criteria</div>
+          <ul>
+            <li>Sudden SNHL identified as emergency; prednisolone started before ENT if acute</li>
+            <li>Otoscopy performed; Rinne/Weber results linked to diagnosis</li>
+            <li>Laterality established before management plan made</li>
+            <li>Audiology referral with formal audiogram arranged; not done in GP surgery</li>
+            <li>Sudden hearing change safety-net given specifically</li>
+            <li>IIDB mentioned when occupational exposure established</li>
+          </ul>
+        </div>
+        <div class="sca-block sca-score" style="border-left:2px solid #c4b5fd">
+          <div class="sca-block-t" style="color:#c4b5fd">Relating to Others — full criteria</div>
+          <ul>
+            <li>Partner included from the start and their frustration acknowledged</li>
+            <li>Communication strategies given to both patient and partner directly</li>
+            <li>Hearing aid stigma addressed and corrected with specific modern device information</li>
+            <li>Dementia prevention rationale offered as a motivational reframe</li>
+            <li>ICE fully explored; dementia fear addressed if it emerges</li>
+            <li>Closing question asked to both patient and partner</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Sudden SNHL not emergency; partner ignored; "just age — nothing to do"; syringing without checking; no audiology referral; no sudden hearing change red flag</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Audiology referral made; wax treated appropriately; partner acknowledged but not engaged; sudden SNHL red flag not given; hearing aid stigma and IIDB not addressed</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Emergency identified and pre-warned; otoscopy + tuning forks; audiology referral; partner included and engaged; stigma addressed; dementia reframe offered; IIDB mentioned; closing question to both</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Hearing Loss — SCA Consultation Scorecard</div><div class="scorecard-sub">Based on the official SCA Consultation Tool · RAG self-assessment</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Structured consultation</strong> — logical flow from history to examination to referral decision</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Time management</strong> — characterisation complete by 5–6 min; management in final 5</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Open question first</strong> — patient and partner allowed to describe problem before targeted questions</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain language throughout</strong> — "hair cell" analogy; "piano key" equivalent; SNHL explained without jargon</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Partner included meaningfully</strong> — invited to contribute; frustration acknowledged empathetically</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Investigation rationale shared</strong> — explains why audiology (not GP) does the formal test; what MRI is checking</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Closed with summary + question to both</strong> — plan summarised; "Is there anything either of you would like to ask?"</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Onset (sudden vs gradual) + laterality established</strong> — the two most critical discriminating questions asked first</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Sudden SNHL = emergency</strong> — prednisolone 1 mg/kg/day started today (if acute); not waiting for ENT</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Occupational noise history taken</strong> — years of exposure, environment, ear protection use documented</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Otoscopy + Rinne/Weber performed</strong> — results explicitly linked to conductive vs SNHL classification</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Ototoxic medication review</strong> — aminoglycosides, loop diuretics, quinine, cisplatin checked</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Referral decision correct</strong> — bilateral → audiology; unilateral SNHL + tinnitus → urgent ENT + MRI IAM; cholesteatoma → urgent ENT</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Wax managed safely</strong> — olive oil drops; microsuction not syringing if drum at risk; reassess hearing after</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Sudden SNHL safety-net given</strong> — specifically: sudden worsening overnight → same-day contact or A&amp;E</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>IIDB compensation mentioned</strong> — occupational NIHL patient advised of industrial injury entitlement via DWP</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Hearing aid pathway + dementia reframe</strong> — NHS free; modern devices described; dementia prevention rationale given</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Partner included from the start</strong> — invited to contribute their observations and their experience of the hearing loss</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Partner's frustration named and validated</strong> — acknowledged empathetically; not dismissed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>ICE explored</strong> — patient's ideas, specific concern (dementia fear?), and expectation (hearing aid? specialist?) elicited</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Hearing aid stigma addressed</strong> — modern devices described specifically; invisibility and Bluetooth features named</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Dementia link raised positively</strong> — framed as brain health opportunity not a threat; Lancet evidence referenced</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Communication strategies given to both</strong> — specific practical advice given directly to partner, not just to patient</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Diagnosis explained with mechanism</strong> — hair cell analogy used; why high frequencies are hardest explained</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Uncertainty acknowledged</strong> — audiogram needed before diagnosis confirmed; honest about pathway timeline</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Occupational context handled sensitively</strong> — not blaming patient for no ear protection; industrial system failing him</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Understanding checked at key points</strong> — after sudden SNHL red flag and after hearing aid explanation</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Closing question to both</strong> — "Is there anything either of you would like to ask before we finish?"</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist above to see your score interpretation</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"I've been managing fine, honestly — it's my wife who wanted me to come. She says I'm going deaf, but I think she just mumbles."</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>Brian Whitfield, 68, retired metal press operator, 35 years in a Sheffield factory. Bilateral gradual hearing loss, 2 years. High-pitched sounds hardest — struggles with consonants. Wife Margaret is with you. Bilateral near-complete wax occlusion on otoscopy. No tinnitus (or mild bilateral — not unilateral). No vertigo. No ear pain or discharge. No sudden episodes.</p></div>
+      <div class="ab"><h5>Hidden concern</h5><p>You fear dementia — your father had Alzheimer's from age 72 and you've read that hearing loss is linked. Won't mention unless asked specifically: "Is there something you've been worried this might mean?" → "My dad had Alzheimer's. I've read that hearing problems can cause that. Am I getting early signs?"</p></div>
+      <div class="ab"><h5>Responses to specific questions</h5><ul><li>Ear protection at work: "We had earmuffs but it was too hot and uncomfortable — nobody really wore them properly"</li><li>If MRI mentioned: "I'm a bit claustrophobic — is there a different type of scan?"</li><li>If hearing aids offered: "I'm not ready for a big beige thing in my ear" → respond positively if modern invisible aids described</li><li>If IIDB mentioned: genuinely surprised — "I had absolutely no idea I could claim for that"</li></ul></div>
+      <div class="ab"><h5>Margaret (the wife)</h5><ul><li>Opens with: "He turns the TV so loud the neighbours complain. He misses half of what I say."</li><li>Frustrated but clearly caring; responds warmly if included</li><li>Visibly responds to communication strategy advice given directly to her</li><li>Challenge: "He won't wear a hearing aid even if they give him one — I know him."</li></ul></div>
+    </div>
+    <div class="actor-challenge">"He told me hearing aids are for old people — I'm not convinced he'll wear one."</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> Brian and Margaret leave satisfied if the candidate: (1) includes Margaret meaningfully and acknowledges her frustration; (2) addresses Brian's dementia fear directly and reframes hearing aids as brain protection; (3) describes modern hearing aids accurately — nearly invisible, Bluetooth, nothing like "the beige thing"; (4) mentions IIDB; (5) gives the sudden SNHL red flag. Brian drops his hearing aid resistance when modern devices are described specifically.</p>
+  </div>
+</div>
+
+<!-- SUMMARIES -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Hearing Loss — Clinical Decision Framework</div><div class="sum-sub">NICE CKS Hearing Loss 2023 · NICE NG98 Hearing Loss in Adults 2018</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🚦 1 — Triage</div>
+    <div class="algo-wrap" style="margin-bottom:1rem">
+      <div class="algo-start">Hearing loss → first question: was onset sudden (within 72 hours)?</div>
+      <div class="algo-arrow">↓</div>
+      <div class="algo-row">
+        <div class="algo-branch algo-red"><div class="algo-branch-lbl">🔴 Emergency — same-day</div><ul class="algo-list"><li>Sudden SNHL → prednisolone 1 mg/kg TODAY + same-day ENT</li><li>Ramsay Hunt → aciclovir + prednisolone within 72 hours</li><li>Cholesteatoma complication (facial palsy/meningism) → 999</li></ul><div class="algo-action red-action">Start treatment NOW — do not wait</div></div>
+        <div class="algo-branch algo-amber"><div class="algo-branch-lbl">🟠 Urgent — 2 weeks</div><ul class="algo-list"><li>Unilateral SNHL + tinnitus → urgent ENT + MRI IAM</li><li>Pulsatile tinnitus → ENT + vascular MRI</li><li>Cholesteatoma suspected → urgent ENT (no syringing)</li><li>Ear pain in smoker over 45 → ENT (pharyngeal Ca)</li></ul><div class="algo-action amber-action">ENT referral + imaging</div></div>
+        <div class="algo-branch algo-green"><div class="algo-branch-lbl">🟢 Routine</div><ul class="algo-list"><li>Bilateral gradual SNHL → audiology referral</li><li>Wax → olive oil drops then microsuction</li><li>OME stable → watchful waiting/audiology</li></ul><div class="algo-action green-action">Audiology + wax management</div></div>
+      </div>
+    </div>
+    <div class="sum-sub-hdr">📊 2 — Tuning Fork Guide + Key Numbers</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem .9rem;font-size:12px;line-height:1.7">
+        <strong>Rinne negative + Weber → worse ear:</strong> Conductive loss → wax/OME/otosclerosis<br>
+        <strong>Rinne positive + Weber → better ear:</strong> SNHL on worse side → audiology; unilateral → MRI IAM<br>
+        <strong>Never syringe:</strong> Perforation, mastoid cavity, previous surgery, or cholesteatoma<br>
+        <strong>Microsuction only</strong> in all high-risk ears
+      </div>
+      <div class="num-grid" style="margin-bottom:0">
+        <div class="num-card num-highlight"><div class="num-val">72 hrs</div><div class="num-lbl">Sudden SNHL window opens — start steroids</div></div>
+        <div class="num-card num-highlight"><div class="num-val">2 weeks</div><div class="num-lbl">Sudden SNHL window closes — treat before</div></div>
+        <div class="num-card"><div class="num-val">40 dB</div><div class="num-lbl">NHS hearing aid referral threshold</div></div>
+        <div class="num-card"><div class="num-val">8%</div><div class="num-lbl">Dementia PAF from hearing loss (Lancet 2020)</div></div>
+      </div>
+    </div>
+    <div class="sum-sub-hdr">⚠ 3 — Safety Netting</div>
+    <div class="sn-compact-wrap">
+      <div class="sn-compact sns-e"><div class="sn-compact-lbl">🔴 Sudden hearing change</div><div class="sn-compact-phrase">"If hearing suddenly gets much worse overnight → same-day contact or A&amp;E. Time-critical emergency — do not wait."</div></div>
+      <div class="sn-compact sns-m"><div class="sn-compact-lbl">💊 Prednisolone course</div><div class="sn-compact-phrase">With food. Monitor glucose in diabetes. Add PPI if GI risk. Taper — don't stop suddenly.</div></div>
+      <div class="sn-compact sns-a"><div class="sn-compact-lbl">🟠 Facial weakness or meningism</div><div class="sn-compact-phrase">"Face drooping or eye not closing + ear symptoms → same-day ENT urgently."</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label" style="color:rgba(255,255,255,.5)">SCA Quick Reference</div><div class="sum-title" style="color:#fff">SCA Consultation Blueprint</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🕐 12-Minute Flow</div>
+    <div class="sca-flow-wrap">
+      <div class="sca-flow-step sca-f1"><div class="sca-f-time">0–2 min</div><div class="sca-f-title">Open — Include Partner</div><div class="sca-f-phrase">"I'd like to hear from both of you — can you describe the hearing difficulty in your own words, and when it started?"</div><div class="sca-f-domains"><span class="sca-dom-tag ro">Relating to Others</span><span class="sca-dom-tag gs">Global Skills</span></div><div class="sca-f-avoid">✗ Not including partner · ✗ Starting with "Is it one ear or two?"</div></div>
+      <div class="sca-flow-step sca-f2"><div class="sca-f-time">2–5 min</div><div class="sca-f-title">Targeted History</div><div class="sca-f-phrase">"Was onset sudden — overnight? One ear or both? Tinnitus — one side or both? Dizziness? Work with loud noise? Ear pain or discharge? Any medications?"</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span></div><div class="sca-f-avoid">✗ Sudden onset not checked · ✗ Pulsatile tinnitus not asked · ✗ Occupational history skipped</div></div>
+      <div class="sca-flow-step sca-f3"><div class="sca-f-time">5–7 min</div><div class="sca-f-title">ICE + Otoscopy + Rinne/Weber</div><div class="sca-f-phrase">"Is there something specific you've been worried this might mean? I'm going to look in your ears now and do a quick hearing test with the tuning fork."</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">Relating to Others</span></div><div class="sca-f-avoid">✗ No otoscopy · ✗ Rinne/Weber omitted · ✗ ICE not explored</div></div>
+      <div class="sca-flow-step sca-f4"><div class="sca-f-time">7–10 min</div><div class="sca-f-title">Diagnosis + Plan</div><div class="sca-f-phrase">"This fits with a gradual high-frequency hearing loss — from both ageing and your work history. The formal hearing test will confirm this and guide which hearing aid would help most."</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">Relating to Others</span></div><div class="sca-f-avoid">✗ Diagnosing without audiogram · ✗ Not addressing stigma · ✗ Missing dementia link</div></div>
+      <div class="sca-flow-step sca-f5"><div class="sca-f-time">10–12 min</div><div class="sca-f-title">Safety-Net + IIDB + Close</div><div class="sca-f-phrase">"If hearing suddenly gets much worse overnight — same-day contact or A&amp;E. Also — given your work history, you may be entitled to industrial injury compensation. Is there anything either of you would like to ask?"</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">Relating to Others</span><span class="sca-dom-tag gs">Global Skills</span></div><div class="sca-f-avoid">✗ No sudden SNHL red flag · ✗ IIDB not mentioned · ✗ No closing question to both</div></div>
+    </div>
+    <div class="sum-sub-hdr sca-sub-hdr" style="margin-top:.85rem">🚫 8 Danger Zones</div>
+    <div class="dz-stack">
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Miss sudden SNHL as an emergency</strong><br><span class="dz-fix">→ "If onset within 72 hours: start prednisolone today — before ENT, not after"</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not establish laterality before management</strong><br><span class="dz-fix">→ Unilateral SNHL + tinnitus = MRI IAM via urgent ENT; bilateral = routine audiology</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Order CT instead of MRI for acoustic neuroma</strong><br><span class="dz-fix">→ "MRI IAM with gadolinium — CT cannot see soft tissue tumours in the internal auditory canal"</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Syringe an ear without checking contraindications</strong><br><span class="dz-fix">→ "Never syringe if: perforation, previous surgery, mastoid cavity, or cholesteatoma — microsuction only"</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Dismiss bilateral ARHL as "just age — nothing to do"</strong><br><span class="dz-fix">→ Always offer audiology; address stigma; frame hearing aid as brain health; mention IIDB if occupational</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not give the sudden SNHL safety-net</strong><br><span class="dz-fix">→ "If your hearing suddenly gets much worse overnight — that is a medical emergency; same-day contact or A&amp;E"</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Treat Ramsay Hunt as Bell's palsy (steroids only)</strong><br><span class="dz-fix">→ Ramsay Hunt = aciclovir + prednisolone. Bell's palsy = prednisolone only. Check for ear vesicles.</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not include partner in consultation or closing question</strong><br><span class="dz-fix">→ Partner is a key informant and is directly affected; "Is there anything either of you would like to ask?"</span></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Hearing Loss · GP Clinical Reasoning Framework v2</strong> · NICE CKS Hearing Loss (2023) · NICE Hearing Loss in Adults NG98 (2018) · NICE Tinnitus NG155 (2020) · Lancet Commission on Dementia Prevention (Livingston et al., 2020) · DVLA Assessing Fitness to Drive (2024)</p>
+  <p style="margin-top:4px">Teaching clinicians why each step matters — not just what to do · Always consult current BNF/SPC · Clinical judgement takes precedence · IIDB eligibility verified via DWP GOV.UK</p>
+</div>
+</div>
+
+
+
+  </main>
+</div><!-- /app -->
+
+<script>
+function toggleSum(which){
+  const body = document.getElementById('sum-body-' + which);
+  const toggle = document.getElementById('sum-toggle-' + which);
+  const icon = toggle.querySelector('.sum-ti-icon');
+  const text = toggle.querySelector('.sum-ti-text');
+  const isClosed = body.classList.contains('closed');
+  if(isClosed){
+    body.classList.remove('closed');
+    icon.textContent = '▲';
+    text.textContent = 'collapse';
+  } else {
+    body.classList.add('closed');
+    icon.textContent = '▼';
+    text.textContent = 'expand';
+  }
+}
+
+function setMode(m){
+  document.getElementById('bodyEl').className='mode-'+m;
+  ['sca','both','clinic'].forEach(k=>document.getElementById('btn-'+k).classList.toggle('active',k===m));
+}
+
+function toggleStep(hdr){
+  const body=hdr.nextElementSibling;
+  const icon=hdr.querySelector('.sti-icon');
+  const text=hdr.querySelector('.sti-text');
+  const isOpen=hdr.classList.contains('is-open');
+  if(isOpen){
+    body.classList.add('closed');
+    hdr.classList.remove('is-open');
+    icon.textContent='▼';
+    text.textContent='expand';
+  } else {
+    body.classList.remove('closed');
+    hdr.classList.add('is-open');
+    icon.textContent='▲';
+    text.textContent='collapse';
+  }
+}
+
+function expandAll(){
+  document.querySelectorAll('.step-hdr').forEach(h=>{
+    h.classList.add('is-open');
+    h.nextElementSibling.classList.remove('closed');
+    h.querySelector('.sti-icon').textContent='▲';
+    h.querySelector('.sti-text').textContent='collapse';
+  });
+}
+
+function collapseAll(){
+  document.querySelectorAll('.step-hdr').forEach(h=>{
+    h.classList.remove('is-open');
+    h.nextElementSibling.classList.add('closed');
+    h.querySelector('.sti-icon').textContent='▼';
+    h.querySelector('.sti-text').textContent='expand';
+  });
+}
+
+function toggleActor(){
+  const b=document.getElementById('actor-body');
+  const i=document.getElementById('actor-icon');
+  b.classList.toggle('open');
+  i.textContent=b.classList.contains('open')?'▲ hide':'▼ show';
+}
+
+function printSummary(){
+  const steps=document.querySelectorAll('.step-wrap');
+  const orig=[];
+  steps.forEach((s,i)=>{orig[i]=s.style.display;s.style.display='none';});
+  const ac=document.querySelector('.card.sca-only');
+  const ad=ac?ac.style.display:'';
+  if(ac)ac.style.display='none';
+  window.print();
+  steps.forEach((s,i)=>{s.style.display=orig[i];});
+  if(ac)ac.style.display=ad;
+}
+
+function calcDrug(){
+  const dm=document.getElementById('ds-dm').checked,
+    ckd=document.getElementById('ds-ckd').checked,
+    cvd=document.getElementById('ds-cvd').checked,
+    afro=document.getElementById('ds-afro').checked,
+    age55=document.getElementById('ds-age55').checked,
+    hf=document.getElementById('ds-hf').checked,
+    angina=document.getElementById('ds-angina').checked,
+    af=document.getElementById('ds-af').checked,
+    cough=document.getElementById('ds-cough').checked;
+  const none=!dm&&!ckd&&!cvd&&!afro&&!age55&&!hf&&!angina&&!af&&!cough;
+  ['acei','arb','ccb','thiazide','spiro','ab'].forEach(id=>{
+    const el=document.getElementById('dc-'+id);
+    el.classList.remove('recommended','alt-rec');
+    const b=document.getElementById('rec-'+id);
+    b.style.cssText='';b.textContent='✓ Recommended';b.style.display='none';
+  });
+  if(none){
+    document.getElementById('ds-output').innerHTML='<span style="font-size:12.5px;color:var(--g)">Select patient characteristics above</span>';
+    return;
+  }
+  let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
+  if(hf){
+    main='thiazide';mainLabel='Indapamide SR 1.5mg';
+    why='HF with fluid overload: thiazide-like diuretic. Add ACEi + bisoprolol + spiro per NICE NG106 HF guideline.';
+    alt='acei';altLabel='+ Ramipril (essential in HFrEF)';altWhy='ACEi + beta-blocker + spiro = cornerstone of HFrEF management';
+  } else if(af){
+    main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
+    why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
+    alt=(dm||ckd)?'acei':'ccb';altLabel='+ ACEi or CCB for BP target';altWhy='Rate control alone may not achieve BP target — add Step 2 drug';
+  } else if(cough){
+    main='arb';mainLabel='Candesartan / Losartan (ARB)';
+    why='ACEi intolerance (cough): switch class to ARB. Identical cardio-renal protection without the cough.';
+    alt='';altLabel='';altWhy='';
+  } else if(dm||ckd||cvd){
+    main='acei';mainLabel='Ramipril (ACEi)';
+    why='DM / CKD / CVD: ACEi first-line for cardio-renal protection at ANY age and ANY ethnicity (NICE NG136).';
+    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';altWhy='Equal renoprotection. Never combine ACEi + ARB simultaneously.';
+  } else if(afro){
+    main='ccb';mainLabel='Amlodipine (CCB)';
+    why='Afro-Caribbean (no DM): CCB more effective in low-renin hypertension. At Step 2: ARB preferred over ACEi.';
+    alt='';altLabel='';altWhy='';
+  } else if(age55){
+    main='ccb';mainLabel='Amlodipine (CCB)';
+    why='Age ≥55 (no DM, no Afro-Caribbean): CCB preferred over ACEi — greater efficacy in lower-renin patients.';
+    alt=angina?'acei':'arb';
+    altLabel=angina?'+ Ramipril (anti-anginal benefit at Step 2)':'Candesartan (ARB) — if CCB not tolerated';
+    altWhy=angina?'ACEi has additional anti-anginal benefit at Step 2':'ARB is equally effective if CCB causes intolerable oedema';
+  } else {
+    main='acei';mainLabel='Ramipril (ACEi)';
+    why='Age <55, non-Afro-Caribbean, no DM/CKD/CVD: ACEi is the Step 1 drug of choice (NICE NG136).';
+    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';
+    altWhy='Switch to ARB within the RAAS class, not off-class, if cough develops.';
+  }
+
+  const m=document.getElementById('dc-'+main);
+  m.classList.add('recommended');
+  const mb=document.getElementById('rec-'+main);
+  mb.style.display='inline-block';
+
+  if(alt){
+    const a=document.getElementById('dc-'+alt);
+    a.classList.add('alt-rec');
+    const ab=document.getElementById('rec-'+alt);
+    ab.style.display='inline-block';
+    ab.style.background='#dbeafe';
+    ab.style.color='#1d4ed8';
+    ab.style.borderColor='#bfdbfe';
+    ab.textContent='↳ Alternative';
+  }
+
+  document.getElementById('ds-output').innerHTML=`
+    <div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: ${mainLabel}</div>
+    ${alt?`<div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: ${altLabel}</div>`:''}
+    <div style="font-size:12px;color:#15803d;margin-bottom:3px">${why}</div>
+    ${altWhy?`<div style="font-size:11.5px;color:var(--b);margin-bottom:3px">${altWhy}</div>`:''}
+    <div style="font-size:11px;color:var(--muted);margin-top:5px">Drug card highlighted below ↓ &nbsp;|&nbsp; U&Es within 1 week of starting ACEi/ARB</div>`;
+}
+
+function calcScore(){
+  var total=0, tasks=0, ro=0, gs=0;
+  var allCbs = document.querySelectorAll('.sc-cb');
+  allCbs.forEach(function(cb){
+    var item = cb.closest('.sc-item');
+    if(cb.checked){
+      var pts = parseInt(cb.dataset.pts)||0;
+      total += pts; tasks += cb.classList.contains('tasks-cb')?pts:0;
+      ro += cb.classList.contains('ro-cb')?pts:0; gs += cb.classList.contains('gs-cb')?pts:0;
+      item.classList.add('checked');
+    } else { item.classList.remove('checked'); }
+  });
+  document.getElementById('sc-total').textContent = total;
+  document.getElementById('sc-tasks-score').textContent = tasks;
+  document.getElementById('sc-ro-score').textContent = ro;
+  document.getElementById('sc-gs-score').textContent = gs;
+  document.getElementById('sc-bar-fill').style.width = Math.round((total/33)*100) + '%';
+  var icon, msg;
+  if(total < 11){ icon='🔴'; msg='<strong>Not yet at pass standard.</strong> Focus on: exploring ICE including the family history fear, planning ABPM to confirm BP stage, choosing the correct drug for age/ethnicity/comorbidity, sharing the QRISK score as a number, and naming 999 symptoms explicitly. Review Global Skills — are you finishing data gathering by 6-7 minutes?'; }
+  else if(total < 17){ icon='🟠'; msg='<strong>Borderline — approaching pass standard.</strong> Core framework present but key items missing. Check: was ABPM planned and explained? Was QRISK shared as a specific percentage? Was the correct drug chosen for the specific comorbidities? Was the family history fear addressed in the plan? Was a 1-week follow-up named?'; }
+  else if(total < 25){ icon='🟢'; msg='<strong>Pass standard.</strong> Good clinical reasoning and patient-centred communication. To reach a strong pass: ensure lifestyle advice is specific and measurable, QRISK is shared as a number, and the drug choice rationale is explained in plain language tailored to this patient.'; }
+  else { icon='🟢'; msg='<strong>Strong pass.</strong> Excellent consultation across all three domains. ICE fully explored including family fear, BP staging with ABPM, correct drug for phenotype and comorbidities, QRISK shared as a number, lifestyle specific and measurable, 1-2-1 rule named, 999 symptoms explicit, closing question asked.'; }
+  document.getElementById('sc-interp-msg').innerHTML = '<div class="interp-icon">'+icon+'</div><div class="interp-text">'+msg+'</div>';
+  var missed = [];
+  allCbs.forEach(function(cb){ if(!cb.checked){ missed.push(cb.closest('.sc-item').querySelector('.sc-item-text').textContent.trim()); } });
+  var ms = document.getElementById('sc-missed-section');
+  if(missed.length < allCbs.length && missed.length > 0){
+    ms.style.display='block';
+    document.getElementById('sc-missed-list').innerHTML = missed.map(function(m){ return '<div class="sc-missed-item">- '+m.substring(0,120)+'</div>'; }).join('');
+  } else { ms.style.display='none'; }
+}
+
+function resetScorecard(){
+  document.querySelectorAll('.sc-cb').forEach(function(cb){ cb.checked=false; cb.closest('.sc-item').classList.remove('checked'); });
+  ['sc-total','sc-tasks-score','sc-ro-score','sc-gs-score'].forEach(function(id){ document.getElementById(id).textContent='0'; });
+  document.getElementById('sc-bar-fill').style.width='0%';
+  document.getElementById('sc-interp-msg').innerHTML='<div class="interp-icon">📋</div><div class="interp-text">Complete the checklist above to see your score interpretation</div>';
+  document.getElementById('sc-missed-section').style.display='none';
+}
+
+</script>
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+
+<script src="../assets/topic-links.js?v=2"></script>
+</body>
+</html>

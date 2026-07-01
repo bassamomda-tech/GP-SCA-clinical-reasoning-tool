@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hypokalaemia Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c-bg: #fafbfc;
+  --c-card: #ffffff;
+  --c-border: #e0e4e8;
+  --c-text: #1a2332;
+  --c-text-light: #5a6a7f;
+  --c-primary: #0066cc;
+  --c-primary-light: #e6f0ff;
+  --c-red: #d32f2f;
+  --c-red-light: #ffebee;
+  --c-purple: #7b1fa2;
+  --c-purple-light: #f3e5f5;
+  --c-blue: #1976d2;
+  --c-blue-light: #e3f2fd;
+  --c-teal: #00796b;
+  --c-teal-light: #e0f2f1;
+  --c-amber: #f57c00;
+  --c-amber-light: #fff3e0;
+  --c-green: #388e3c;
+  --c-green-light: #e8f5e9;
+  --c-grey: #616161;
+  --c-grey-light: #f5f5f5;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.stem-banner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 24px 28px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+}
+
+.sb-icon {
+  font-size: 48px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.stem-banner b {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.stem-banner small {
+  display: block;
+  font-size: 15px;
+  opacity: 0.95;
+  font-weight: 400;
+}
+
+.alg-progress {
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.alg-progress > span:first-child {
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--c-text-light);
+}
+
+.pcount {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--c-primary);
+}
+
+.pbar {
+  flex: 1;
+  height: 8px;
+  background: var(--c-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pbar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-primary), #667eea);
+  width: 0;
+  transition: width 0.3s ease;
+  border-radius: 8px;
+}
+
+.reset {
+  background: transparent;
+  border: 1.5px solid var(--c-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-text-light);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.reset:hover {
+  border-color: var(--c-primary);
+  color: var(--c-primary);
+  background: var(--c-primary-light);
+}
+
+.alg-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.node {
+  background: var(--c-card);
+  border: 2px solid var(--c-border);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.node.done {
+  border-color: var(--c-green);
+  background: var(--c-green-light);
+}
+
+.node-num {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  width: 36px;
+  height: 36px;
+  background: var(--c-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--c-text-light);
+  z-index: 1;
+}
+
+.node.done .node-num {
+  background: var(--c-green);
+  color: white;
+}
+
+.node.done .node-num::after {
+  content: '✓';
+  font-size: 18px;
+}
+
+.node-head {
+  padding: 20px 72px 16px 72px;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.node.done .node-head {
+  border-bottom-color: rgba(56, 142, 60, 0.2);
+}
+
+.node-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.node[data-type="SAFETY"] .node-tag {
+  background: var(--c-red-light);
+  color: var(--c-red);
+}
+
+.node[data-type="DIAGNOSE"] .node-tag {
+  background: var(--c-blue-light);
+  color: var(--c-blue);
+}
+
+.node[data-type="TREAT"] .node-tag {
+  background: var(--c-teal-light);
+  color: var(--c-teal);
+}
+
+.node[data-type="REFER"] .node-tag {
+  background: var(--c-purple-light);
+  color: var(--c-purple);
+}
+
+.node[data-type="LIFESTYLE"] .node-tag {
+  background: var(--c-green-light);
+  color: var(--c-green);
+}
+
+.node-head h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.3;
+}
+
+.node-tick {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.node-tick label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.node-tick input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: var(--c-green);
+}
+
+.tlbl {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-text-light);
+}
+
+.node-body {
+  padding: 24px 28px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px 24px;
+  margin-top: 16px;
+  align-items: start;
+}
+
+.kv > div:nth-child(odd) {
+  font-weight: 600;
+  color: var(--c-text);
+  padding-top: 2px;
+}
+
+.kv > div:nth-child(even) {
+  color: var(--c-text);
+}
+
+.rfgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.rftile {
+  background: var(--c-red-light);
+  border-left: 4px solid var(--c-red);
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.rftile b {
+  display: block;
+  color: var(--c-red);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.b-card {
+  border: 2px solid var(--c-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--c-bg);
+}
+
+.b-cond {
+  background: var(--c-primary-light);
+  color: var(--c-primary);
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  border-bottom: 2px solid var(--c-border);
+}
+
+.b-drug {
+  padding: 14px 16px;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--c-text);
+  background: white;
+}
+
+.b-note {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--c-text-light);
+  background: white;
+  border-top: 1px solid var(--c-border);
+}
+
+.ladder {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.rung {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border: 2px solid var(--c-border);
+  border-bottom: none;
+  background: white;
+}
+
+.rung:first-child {
+  border-radius: 12px 12px 0 0;
+}
+
+.rung:last-child {
+  border-bottom: 2px solid var(--c-border);
+  border-radius: 0 0 12px 12px;
+}
+
+.rn {
+  background: var(--c-teal-light);
+  color: var(--c-teal);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid var(--c-border);
+}
+
+.rt {
+  padding: 14px 18px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.lsgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.lstile {
+  background: var(--c-green-light);
+  border-left: 4px solid var(--c-green);
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.lstile b {
+  display: block;
+  color: var(--c-green);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin: 0 4px;
+}
+
+.pill-red { background: var(--c-red-light); color: var(--c-red); }
+.pill-purple { background: var(--c-purple-light); color: var(--c-purple); }
+.pill-blue { background: var(--c-blue-light); color: var(--c-blue); }
+.pill-teal { background: var(--c-teal-light); color: var(--c-teal); }
+.pill-amber { background: var(--c-amber-light); color: var(--c-amber); }
+.pill-green { background: var(--c-green-light); color: var(--c-green); }
+.pill-grey { background: var(--c-grey-light); color: var(--c-grey); }
+
+.why-row {
+  border-top: 1px solid var(--c-border);
+}
+
+.node.done .why-row {
+  border-top-color: rgba(56, 142, 60, 0.2);
+}
+
+.why-btn {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 16px 28px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-primary);
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.2s;
+}
+
+.why-btn:hover {
+  background: var(--c-primary-light);
+}
+
+.caret {
+  font-size: 12px;
+  transition: transform 0.3s;
+  display: inline-block;
+}
+
+.why-btn[aria-expanded="true"] .caret {
+  transform: rotate(180deg);
+}
+
+.why-drawer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.why-drawer.open {
+  max-height: 1000px;
+  padding: 0 28px 24px 28px;
+}
+
+.why-drawer p {
+  color: var(--c-text-light);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.why-drawer p:last-child {
+  margin-bottom: 0;
+}
+
+.connector {
+  height: 32px;
+  width: 3px;
+  background: linear-gradient(180deg, var(--c-border) 0%, transparent 100%);
+  margin: 0 auto;
+}
+
+.alg-foot {
+  margin-top: 32px;
+  padding: 20px 24px;
+  background: var(--c-grey-light);
+  border-radius: 12px;
+  font-size: 13px;
+  color: var(--c-text-light);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.alg-foot strong {
+  color: var(--c-text);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  body { padding: 16px; }
+  .stem-banner { padding: 20px; gap: 16px; }
+  .sb-icon { font-size: 36px; }
+  .stem-banner b { font-size: 20px; }
+  .stem-banner small { font-size: 14px; }
+  .node-head { padding: 20px 20px 16px 64px; }
+  .node-body { padding: 20px; }
+  .node-num { width: 32px; height: 32px; font-size: 14px; top: 14px; left: 16px; }
+  .node-tick { top: 16px; right: 16px; }
+  .kv { grid-template-columns: 1fr; gap: 8px; }
+  .kv > div:nth-child(odd) { font-size: 14px; }
+  .rfgrid, .lsgrid { grid-template-columns: 1fr; }
+  .branch { grid-template-columns: 1fr; }
+  .why-drawer.open { padding: 0 20px 20px 20px; }
+  .alg-progress { flex-wrap: wrap; }
+  .pbar { width: 100%; order: 3; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">⚡</div>
+  <div>
+    <b>Hypokalaemia — low serum potassium</b>
+    <small>UK primary care pathway for investigating and managing K+ <3.5 mmol/L</small>
+  </div>
+</div>
+
+<div class="alg-progress">
+  <div class="view-toggle" role="tablist" aria-label="View">
+    <button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button>
+    <button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button>
+  </div>
+  <span class="prog-only">Progress</span>
+  <span class="pcount prog-only"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar prog-only"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset prog-only" id="resetBtn">Reset</button>
+</div>
+
+<!-- ════════ DIAGRAM (FLOWCHART) VIEW ════════ -->
+<div id="viewDiagram">
+  <div class="dg-legend">
+    <span>The full reasoning pathway — symptoms &amp; ECG changes drive urgency (not the number); always correct magnesium first, classify GI/shift vs renal loss using BP + bicarbonate + urine K⁺ to a named cause, replace safely, then refer and safety-net.</span>
+    <span class="legend">
+      <span class="lg"><span class="sw start"></span>Start</span>
+      <span class="lg"><span class="sw dec"></span>Decision</span>
+      <span class="lg"><span class="sw ix"></span>Investigate</span>
+      <span class="lg"><span class="sw act"></span>Action</span>
+      <span class="lg"><span class="sw refer"></span>Refer</span>
+      <span class="lg"><span class="sw stop"></span>Stop / Admit</span>
+    </span>
+  </div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start">
+      <span class="lbl">Presentation</span>
+      <span class="ttl">Confirmed K⁺ &lt;3.5 mmol/L</span>
+      <div class="body">Repeat if unexpected (prolonged sample standing / very high WCC can falsely lower K⁺). Review drugs &amp; note any cardiac history.</div>
+    </div>
+
+    <div class="arrow"></div>
+
+    <div class="box dec">
+      <span class="lbl">Step 1 · Safety — symptoms/ECG drive urgency</span>
+      <span class="ttl">Severe or high-risk hypokalaemia?</span>
+      <div class="body">K⁺ &lt;2.5 · ECG changes (U waves, flat/inverted T, ST depression, long QT) · arrhythmia / palpitations · muscle paralysis · on digoxin · DKA.</div>
+    </div>
+
+    <div class="split">
+      <div class="stem"></div>
+      <div class="bar" style="width:62%;"></div>
+      <div class="cols two">
+        <div class="col">
+          <div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div>
+          <div class="box stop">
+            <span class="lbl">Stop · Admit</span>
+            <span class="ttl">999 / same-day admission</span>
+            <div class="body">12-lead ECG + cardiac monitoring. IV potassium replacement (max 10 mmol/h peripherally). <span class="pill pill-red">Digoxin + low K⁺ = arrhythmia</span></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div>
+          <div class="box act">
+            <span class="lbl">Action · Always</span>
+            <span class="ttl">Check &amp; replace magnesium</span>
+            <div class="body">Hypokalaemia is <b>refractory until Mg²⁺ is corrected</b>. Review drugs: thiazide/loop diuretics, β-agonists, theophylline, steroids, laxatives.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow"><span class="tag">Step 3 · classify mechanism — BP + bicarbonate + urine K⁺</span></div>
+
+    <div class="split">
+      <div class="bar" style="width:84%;"></div>
+      <div class="cols">
+        <div class="col">
+          <div class="blabel">GI loss / shift</div>
+          <div class="box ix">
+            <span class="ttl">Urine K⁺ &lt;20 mmol/L</span>
+            <div class="body">Diarrhoea, vomiting, laxatives, poor intake; or redistribution — insulin, β-agonists, refeeding, alkalosis. <b>Normotensive.</b></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="blabel">Renal loss · normal BP</div>
+          <div class="box ix">
+            <span class="ttl">Urine K⁺ &gt;20, BP normal</span>
+            <div class="body"><b>Diuretics (commonest)</b>, vomiting (alkalosis), Mg deficiency, Gitelman/Bartter, renal tubular acidosis.</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Renal loss · hypertension</div>
+          <div class="box ix">
+            <span class="ttl">Urine K⁺ &gt;20 + raised BP</span>
+            <div class="body">Mineralocorticoid excess — <b>primary hyperaldosteronism (Conn's)</b>, Cushing's, liquorice, renovascular disease.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow"><span class="tag">Step 7 · replace + treat cause</span></div>
+
+    <div class="box act" style="max-width:660px;">
+      <span class="lbl">Step 7 · Action · Replacement</span>
+      <span class="ttl">Oral potassium + treat the cause</span>
+      <div class="body">
+        <ul>
+          <li><b>Mild (3.0–3.4), asymptomatic:</b> dietary K⁺ + oral salts (e.g. Sando-K 2 tabs tds); stop/swap offending drug; recheck in 1–2 weeks.</li>
+          <li><b>Moderate (2.5–2.9):</b> oral replacement with closer monitoring; consider K⁺-sparing strategy if diuretic-driven.</li>
+          <li>Always correct magnesium. Recheck U&amp;E after replacement.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="arrow"></div>
+
+    <div class="box refer" style="max-width:660px;">
+      <span class="lbl">Refer</span>
+      <span class="ttl">Specialist input when cause is not obvious</span>
+      <div class="body">
+        <span class="pill pill-purple">Endocrinology</span> hypokalaemia + hypertension or raised aldosterone:renin ratio (?Conn's).
+        <span class="pill pill-purple">Nephrology</span> suspected tubulopathy (Gitelman/Bartter), RTA, unexplained renal K⁺ wasting.
+        <span class="pill pill-red">Same-day medical</span> severe / ECG changes / refractory.
+      </div>
+    </div>
+
+  </div><!-- /flow -->
+  </div><!-- /chart -->
+
+  <div class="band" style="background:#f3faf5;border-color:#a9c6b3;">
+    <div class="caution" style="color:#27603b;">➕ <b>Step 8 · Lifestyle &amp; modifiable factors:</b> encourage <b>potassium-rich foods</b> (bananas, oranges/juice, potatoes, tomatoes, pulses, dried fruit) for mild dietary/GI loss; reduce <b>liquorice</b> and caffeine/stimulant laxative misuse. Review the drug chart — thiazide/loop diuretics (consider a K⁺-sparing agent), β-agonists, theophylline, steroids, laxatives. Address alcohol misuse and refeeding risk; correct coexisting magnesium deficiency.</div>
+  </div>
+  <div class="band" style="background:#fff8f0;border-color:#e6c489;">
+    <div class="caution" style="color:#8a5208;">🔁 <b>Step 9 · Monitoring &amp; safety-net:</b> recheck U&amp;E (and Mg²⁺) 1–2 weeks after starting oral replacement / changing a drug, then until stable. <b>Same-day / 999</b> if palpitations, chest pain, fainting, severe weakness or inability to walk — especially on digoxin. If K⁺ will not correct, recheck and <b>replace magnesium</b>, and reconsider an occult renal-wasting or mineralocorticoid-excess cause.</div>
+  </div>
+
+  <div class="band">
+    <div class="caution">
+      ⚠️ <b>Replace safely:</b> oral route whenever possible; IV potassium only with cardiac monitoring (max 10 mmol/h peripherally). <b>Correct magnesium first</b> — potassium will not stay corrected while Mg²⁺ is low. Recheck U&amp;E after replacement and once the cause is treated.
+    </div>
+  </div>
+</div><!-- /viewDiagram -->
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-num">1</div>
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Red Flags — Severe hypokalaemia, cardiac arrhythmias, paralysis</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Urgent exclusion of life-threatening complications of severe potassium depletion.
+    
+    <div class="rfgrid">
+      <div class="rftile"><b>Severe hypokalaemia K+ <2.5</b> Cardiac arrhythmia risk, muscle weakness, rhabdomyolysis → <span class="pill pill-red">999/Same-day</span> hospital admission for IV potassium, cardiac monitoring</div>
+      <div class="rftile"><b>ECG changes</b> U waves, T wave flattening, ST depression, prolonged PR, wide QRS, ventricular ectopics → <span class="pill pill-red">999</span> (life-threatening arrhythmia risk: VT, VF, torsades)</div>
+      <div class="rftile"><b>Muscle paralysis</b> Ascending weakness, respiratory muscle involvement, unable to walk → <span class="pill pill-red">999</span> (periodic paralysis, severe depletion, respiratory failure risk)</div>
+      <div class="rftile"><b>Digoxin toxicity</b> Hypokalaemia + digoxin = arrhythmia (nausea, confusion, yellow vision, bradycardia, heart block) → <span class="pill pill-red">999</span> urgent digoxin level + cardiac monitoring</div>
+      <div class="rftile"><b>Rhabdomyolysis</b> Muscle pain, dark urine, weakness, AKI (severe K+ depletion causes muscle breakdown) → <span class="pill pill-red">Same-day</span> bloods CK, U&Es, IV fluids</div>
+      <div class="rftile"><b>Symptomatic hypokalaemia</b> Palpitations, chest pain, severe muscle weakness, cramps → <span class="pill pill-red">Same-day</span> assessment, ECG, urgent potassium replacement</div>
+      <div class="rftile"><b>Vomiting/diarrhoea + dehydration</b> Severe GI losses, unable to tolerate oral, postural hypotension → <span class="pill pill-red">Same-day</span> (IV fluids + potassium needed)</div>
+      <div class="rftile"><b>Concurrent medications</b> Diuretics + ACEi/ARB + hypokalaemia (paradoxical given ACEi raises K+, suggests severe depletion or renal pathology) → <span class="pill pill-amber">Urgent review</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Severe hypokalaemia (K+ <2.5) is life-threatening</b> — causes ventricular arrhythmias (VT, VF, torsades de pointes), cardiac arrest, respiratory muscle paralysis. Risk exponential below 2.5 mmol/L. Requires urgent IV potassium replacement under cardiac monitoring. Oral replacement too slow in severe depletion.</p>
+      <p><b>ECG changes precede arrhythmias</b> — U waves (most sensitive early sign), T wave flattening, ST depression appear at K+ <3.0. Below 2.5, ventricular ectopics, prolonged QT, widened QRS. Torsades de pointes (polymorphic VT) = cardiac arrest. ECG monitoring mandatory during IV replacement.</p>
+      <p><b>Digoxin toxicity amplified by hypokalaemia</b> — low K+ increases digoxin binding to Na+/K+-ATPase, enhancing toxicity even at therapeutic digoxin levels. Presents with nausea, confusion, bradycardia, heart block, yellow vision. Check digoxin level urgently, give Digibind if severe. Never give calcium in digoxin toxicity (precipitates VF).</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-num">2</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>History — Medications, GI losses, dietary intake</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Identify cause through medication review, assessment of GI/renal losses, and dietary history.
+    
+    <div class="kv">
+      <div>Medications</div>
+      <div><b>Diuretics:</b> Loop (furosemide, bumetanide) and thiazide (bendroflumethiazide, indapamide) cause kaliuresis. <b>Laxatives:</b> Chronic use (senna, bisacodyl). <b>Steroids:</b> Prednisolone, dexamethasone (mineralocorticoid effect). <b>Insulin:</b> Drives K+ intracellularly. <b>Salbutamol:</b> Beta-agonist (intracellular shift). <b>Amphotericin, gentamicin</b> (renal K+ wasting).</div>
+      
+      <div>GI losses</div>
+      <div><b>Vomiting:</b> Pyloric stenosis, hyperemesis, eating disorders (bulimia). <b>Diarrhoea:</b> Infective (cholera, norovirus), inflammatory (Crohn's, UC), laxative abuse. <b>Stoma:</b> Ileostomy, colostomy high output. <b>VIPoma:</b> Rare (watery diarrhoea, hypokalaemia, achlorhydria syndrome).</div>
+      
+      <div>Dietary intake</div>
+      <div>Inadequate oral potassium rare as sole cause (found in tea/coffee/milk). <b>At-risk:</b> Eating disorders, alcohol excess (poor nutrition + diarrhoea + vomiting), elderly (poor diet, polypharmacy). <b>Tea-and-toast diet</b> with diuretics = classic combination.</div>
+      
+      <div>Symptoms</div>
+      <div><b>Mild (K+ 3.0-3.5):</b> Often asymptomatic. <b>Moderate (K+ 2.5-3.0):</b> Muscle weakness, cramps, fatigue, constipation, polyuria. <b>Severe (K+ <2.5):</b> Paralysis, arrhythmias, rhabdomyolysis. <b>Cardiac:</b> Palpitations, chest pain, syncope.</div>
+      
+      <div>Renal losses</div>
+      <div><b>Diuretics</b> (most common cause). <b>Primary hyperaldosteronism</b> (Conn's syndrome — hypertension + hypokalaemia). <b>Renal tubular acidosis</b> (RTA type 1, 2). <b>Bartter/Gitelman syndrome</b> (genetic, normotensive). <b>Hypomagnesaemia</b> (causes renal K+ wasting — check Mg2+).</div>
+      
+      <div>Intracellular shift</div>
+      <div><b>Insulin therapy</b> (DKA treatment). <b>Beta-agonists</b> (salbutamol, terbutaline). <b>Alkalosis</b> (respiratory or metabolic). <b>Refeeding syndrome</b> (anorexia, chronic malnutrition). <b>Periodic paralysis</b> (familial hypokalaemic, thyrotoxic).</div>
+      
+      <div>PMH</div>
+      <div>Hypertension (Conn's syndrome, Cushing's), diabetes (DKA, insulin), eating disorders (purging, laxatives), CKD (RTA), thyrotoxicosis (periodic paralysis), alcohol excess.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Diuretics are the commonest cause</b> — thiazides and loop diuretics cause kaliuresis (renal potassium loss). Thiazides inhibit NaCl reabsorption in distal tubule, increasing Na+ delivery to collecting duct → increased Na+/K+ exchange → K+ loss. Loop diuretics similar mechanism. 50% of patients on diuretics develop hypokalaemia.</p>
+      <p><b>GI losses often underestimated</b> — vomiting causes hypokalaemia via renal losses (not GI). Vomiting → volume depletion → aldosterone release → renal K+ wasting. Diarrhoea causes direct GI K+ loss (stool K+ 20-80 mmol/L). Chronic laxative abuse (bulimia, eating disorders) = important hidden cause.</p>
+      <p><b>Hypomagnesaemia causes refractory hypokalaemia</b> — low Mg2+ impairs Na+/K+-ATPase, causing renal K+ wasting. Cannot correct K+ without correcting Mg2+ first. Check Mg2+ in all hypokalaemia, especially if resistant to oral K+ replacement. Give magnesium sulfate IV if severe or oral magnesium if mild.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-num">3</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Classification — Severity and mechanism</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Classify by severity (determines urgency) and mechanism (directs investigation and treatment).
+    
+    <div class="kv">
+      <div>Mild (3.0-3.5)</div>
+      <div><b>Usually asymptomatic.</b> Often incidental finding. <b>Causes:</b> Diuretics, poor diet, GI losses (mild). <b>Management:</b> Oral replacement, dietary advice, review diuretic dose. <span class="pill pill-green">Primary care</span></div>
+      
+      <div>Moderate (2.5-3.0)</div>
+      <div><b>Symptoms:</b> Muscle weakness, cramps, fatigue, constipation, polyuria. <b>ECG:</b> May show U waves, T wave flattening. <b>Management:</b> Oral potassium, investigate cause, stop/reduce diuretic if possible. Monitor closely. <span class="pill pill-amber">GP with close monitoring</span></div>
+      
+      <div>Severe (<2.5)</div>
+      <div><b>Life-threatening.</b> Arrhythmia risk, paralysis, rhabdomyolysis. <b>ECG changes:</b> U waves, ST depression, wide QRS, ventricular ectopics. <b>Management:</b> Hospital admission, IV potassium, cardiac monitoring. <span class="pill pill-red">Medical emergency</span></div>
+      
+      <div>Inadequate intake</div>
+      <div><b>Rare as sole cause</b> (ubiquitous in diet). <b>At-risk:</b> Eating disorders, elderly tea-and-toast diet, alcohol excess. <b>Management:</b> Dietary advice, treat underlying (anorexia support, alcohol cessation). Usually coexists with other causes (diuretics, GI losses).</div>
+      
+      <div>Increased GI losses</div>
+      <div><b>Vomiting, diarrhoea, laxatives, stoma, fistula.</b> <b>Diagnosis:</b> History of GI symptoms. <b>Management:</b> Treat cause (antiemetics, rehydration, stop laxatives), oral K+ replacement, monitor U&Es.</div>
+      
+      <div>Increased renal losses</div>
+      <div><b>Diuretics</b> (most common), primary hyperaldosteronism (Conn's — hypertension + hypokalaemia + high aldosterone), Cushing's syndrome (cortisol excess), RTA, Bartter/Gitelman, hypomagnesaemia. <b>Diagnosis:</b> Urine K+ >20 mmol/day despite hypokalaemia = renal wasting.</div>
+      
+      <div>Intracellular shift</div>
+      <div><b>K+ moves into cells, total body K+ normal.</b> Insulin, beta-agonists, alkalosis, refeeding, periodic paralysis, thyrotoxicosis. <b>Diagnosis:</b> Acute onset, appropriate trigger (insulin, salbutamol), normal/low urine K+. <b>Management:</b> Treat underlying, cautious K+ replacement (risk rebound hyperkalaemia).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Severity classification determines management setting</b> — mild hypokalaemia managed in primary care with oral K+, severe requires hospital admission for IV replacement + monitoring. Risk of arrhythmia exponential below 2.5 mmol/L. Every 0.5 mmol/L drop increases risk 2-fold.</p>
+      <p><b>Mechanism classification directs investigation</b> — GI losses (stop when vomiting/diarrhoea stops), renal losses (persistent, need investigation for Conn's/RTA), intracellular shift (transient, self-limiting). Urinary K+ distinguishes renal from extrarenal: urine K+ <20 mmol/day = extrarenal (GI, poor intake, shift), >20 mmol/day = renal wasting (diuretics, Conn's, RTA).</p>
+      <p><b>Conn's syndrome prevalence 5-10%</b> of hypertensive patients. Classically: hypertension + hypokalaemia + metabolic alkalosis. Aldosterone drives Na+ retention (hypertension) and K+ loss (hypokalaemia). Screen with aldosterone:renin ratio (ARR >750 pmol/mU suggests Conn's). CT adrenals to locate adenoma. Surgical cure possible.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-num">4</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Examination — Muscle strength, BP, signs of underlying cause</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Focus on neuromuscular examination, blood pressure, and signs of endocrine/renal disease.
+    
+    <div class="kv">
+      <div>Vital signs</div>
+      <div>BP (hypertension = Conn's, Cushing's), pulse (tachycardia, irregular if arrhythmia), postural BP drop (volume depletion from GI/renal losses), weight (malnutrition, eating disorder, cachexia).</div>
+      
+      <div>Neuromuscular</div>
+      <div><b>Muscle strength:</b> Proximal weakness (difficulty standing from squat, raising arms). <b>Tone:</b> Hypotonia (flaccid paralysis in severe cases). <b>Reflexes:</b> Reduced or absent. <b>Respiratory:</b> Tachypnoea, shallow breathing (respiratory muscle weakness). <b>Paralysis:</b> Ascending weakness, inability to walk.</div>
+      
+      <div>Cardiovascular</div>
+      <div>Pulse (irregular if ectopics/AF), JVP (low if volume depleted), heart sounds (listen for murmurs, gallop), peripheral oedema (if heart failure or Conn's), capillary refill time.</div>
+      
+      <div>Abdominal</div>
+      <div>Distension (ileus from severe hypokalaemia), bowel sounds (reduced/absent), tenderness, masses (VIPoma rare), stoma output (high output ileostomy). Examine for signs of Crohn's/IBD if diarrhoea.</div>
+      
+      <div>Endocrine</div>
+      <div><b>Cushing's:</b> Moon face, buffalo hump, abdominal striae, proximal myopathy, skin thinning. <b>Thyrotoxicosis:</b> Tremor, goitre, exophthalmos, tachycardia (periodic paralysis). <b>Conn's:</b> Hypertension, no specific signs.</div>
+      
+      <div>Volume status</div>
+      <div>Dry mucous membranes, reduced skin turgor, postural hypotension, tachycardia (volume depletion from vomiting/diarrhoea/diuretics). Fluid overload rare (unless renal failure).</div>
+      
+      <div>ECG</div>
+      <div><b>Early signs (K+ 3.0-3.5):</b> U waves (after T wave), T wave flattening. <b>Moderate (K+ 2.5-3.0):</b> ST depression, prolonged PR, prominent U waves. <b>Severe (K+ <2.5):</b> Widened QRS, ventricular ectopics, VT. <span class="pill pill-red">Do ECG if K+ <3.0 or symptomatic</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Muscle weakness is commonest symptom</b> — affects proximal muscles first (difficulty standing, climbing stairs, lifting arms). Caused by hyperpolarisation of muscle cell membranes (low extracellular K+ increases K+ gradient). Severe cases progress to flaccid paralysis, respiratory failure. Reflexes absent (hypotonia).</p>
+      <p><b>Hypertension + hypokalaemia = Conn's until proven otherwise</b> — primary hyperaldosteronism is underdiagnosed (5-10% of hypertensives). Aldosterone causes Na+ retention (hypertension) and K+ wasting (hypokalaemia). Classically K+ <3.5 with high-normal or elevated BP. Screen with aldosterone:renin ratio.</p>
+      <p><b>U waves are most sensitive ECG sign</b> — small positive deflection after T wave, best seen in V2-V4. Appear when K+ <3.0. Mechanism: prolonged ventricular repolarisation. Progression: T wave flattening → ST depression → prolonged QT → widened QRS → ventricular ectopics → VT/VF. ECG mandatory if K+ <3.0 or symptomatic.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-num">5</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Investigations — U&Es, Mg2+, urinary potassium, endocrine screen</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Investigate to confirm hypokalaemia, assess severity, and identify underlying cause.
+    
+    <div class="kv">
+      <div>Repeat U&Es</div>
+      <div><b>Confirm hypokalaemia</b> (pseudohypokalaemia if leukaemia — WBC consumes K+ in tube). <b>Assess severity:</b> K+ 3.0-3.5 (mild), 2.5-3.0 (moderate), <2.5 (severe). <b>Concurrent abnormalities:</b> Low Na+ (GI losses), high creatinine (CKD, dehydration), high glucose (DKA).</div>
+      
+      <div>Magnesium</div>
+      <div><b>Always check Mg2+</b> — hypomagnesaemia causes refractory hypokalaemia (cannot correct K+ without correcting Mg2+). <b>Normal:</b> 0.7-1.0 mmol/L. <b>Low Mg2+:</b> Diuretics, diarrhoea, alcohol, PPI (chronic use). Replace with magnesium sulfate IV or oral magnesium oxide.</div>
+      
+      <div>Urinary potassium</div>
+      <div><b>Distinguishes renal from extrarenal causes.</b> 24-hour urine K+ OR spot urine K+:creatinine ratio. <b><20 mmol/day:</b> Extrarenal (GI losses, poor intake, intracellular shift). <b>>20 mmol/day:</b> Renal wasting (diuretics, Conn's, RTA). <b>Not routine</b> — do if cause unclear or diuretic stopped but K+ still low.</div>
+      
+      <div>Acid-base status</div>
+      <div><b>Venous blood gas</b> if available. <b>Metabolic alkalosis + hypokalaemia:</b> Vomiting, diuretics, Conn's, Cushing's. <b>Metabolic acidosis + hypokalaemia:</b> Diarrhoea, RTA type 1 or 2, DKA. <b>Interpretation:</b> Alkalosis shifts K+ intracellularly (worsens hypokalaemia).</div>
+      
+      <div>Endocrine screen</div>
+      <div><b>If hypertension + hypokalaemia:</b> Aldosterone:renin ratio (ARR) for Conn's syndrome. <b>If Cushingoid features:</b> 9am cortisol, overnight dexamethasone suppression test. <b>If thyrotoxic features:</b> TFTs (thyrotoxic periodic paralysis). <b>Arrange via endocrinology</b> if suspicion high.</div>
+      
+      <div>ECG</div>
+      <div><b>Indications:</b> K+ <3.0, symptomatic (palpitations, weakness), on digoxin, cardiac history. <b>Findings:</b> U waves, T wave flattening, ST depression, prolonged QT, ventricular ectopics. <b>Action:</b> If ECG changes present → urgent K+ replacement + cardiac monitoring.</div>
+      
+      <div>Do NOT investigate</div>
+      <div><b>Mild hypokalaemia (K+ 3.0-3.5)</b> on diuretics, asymptomatic, otherwise well → supplement K+, reduce diuretic, recheck in 1 week. <b>Over-investigation</b> (urinary K+, endocrine screen) unnecessary unless persistent despite treatment or red flags.</div>
+    </div>
+  </  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Magnesium MUST be checked</b> — 40% of hypokalaemic patients have concurrent hypomagnesaemia. Low Mg2+ impairs cellular K+ uptake (Na+/K+-ATPase dysfunction) and increases renal K+ wasting. Hypokalaemia is refractory to treatment until Mg2+ corrected. Always replace Mg2+ first or concurrently.</p>
+      <p><b>Urinary K+ distinguishes pathophysiology</b> — appropriate renal response to hypokalaemia is K+ conservation (urine K+ <20 mmol/day). If urine K+ >20 mmol/day despite hypokalaemia = inappropriate renal K+ wasting (diuretics, Conn's, Bartter/Gitelman, RTA). Guides investigation: extrarenal causes obvious (vomiting, diarrhoea), renal causes need endocrine/nephrology input.</p>
+      <p><b>Conn's syndrome screening</b> if hypertension + hypokalaemia: aldosterone:renin ratio (ARR). ARR >750 pmol/mU (or 20 ng/dL per ng/mL/hr) suggests primary hyperaldosteronism. Confirmatory tests: saline suppression, fludrocortisone suppression. CT adrenals: adenoma (60%) or bilateral hyperplasia (40%). Adenoma → surgery curative. Hyperplasia → spironolactone.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-num">6</div>
+  <div class="node-head">
+    <span class="node-tag">Refer</span>
+    <h3>Referral Criteria — When to escalate urgently</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Refer all severe hypokalaemia, symptomatic patients, ECG changes, and unclear/resistant cases.
+    
+    <div class="kv">
+      <div><span class="pill pill-red">999 / A&E</span></div>
+      <div><b>K+ <2.5 mmol/L.</b> <b>ECG changes</b> (U waves, ventricular ectopics, widened QRS). <b>Symptomatic</b> (muscle paralysis, palpitations, chest pain). <b>Digoxin toxicity.</b> <b>Rhabdomyolysis.</b> Requires IV potassium, cardiac monitoring, ICU if severe.</div>
+      
+      <div><span class="pill pill-amber">Same-day medical</span></div>
+      <div><b>K+ 2.5-3.0 + symptomatic</b> (weakness, cramps). <b>Unable to tolerate oral</b> (vomiting). <b>Dehydration + hypokalaemia.</b> Requires IV fluids + potassium, monitoring, investigation.</div>
+      
+      <div><span class="pill pill-blue">Endocrinology</span></div>
+      <div><b>Hypertension + hypokalaemia</b> (Conn's suspected — ARR raised). <b>Cushingoid features.</b> <b>Thyrotoxic periodic paralysis</b> (recurrent episodes weakness + hypokalaemia + hyperthyroidism). <b>Unexplained persistent hypokalaemia</b> off diuretics.</div>
+      
+      <div><span class="pill pill-blue">Nephrology</span></div>
+      <div><b>Renal tubular acidosis suspected</b> (hypokalaemia + metabolic acidosis + normal anion gap). <b>Bartter/Gitelman syndrome</b> (young, normotensive, hypokalaemia + hypomagnesaemia + hypocalciuria). <b>Refractory hypokalaemia</b> despite K+ + Mg2+ replacement.</div>
+      
+      <div><span class="pill pill-green">Primary care</span></div>
+      <div><b>Mild hypokalaemia (K+ 3.0-3.5)</b> on diuretics, asymptomatic. <b>Clear cause</b> (vomiting, diarrhoea resolving). <b>Management:</b> Oral K+ replacement (Sando-K), dietary advice, reduce diuretic dose, recheck U&Es 1 week. Monitor closely.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>IV potassium requires hospital</b> — never give IV K+ in primary care. Maximum infusion rate 10 mmol/hour via peripheral line (20 mmol/hour via central line). Faster rates cause pain, phlebitis, cardiac arrest if bolus administered. Cardiac monitoring mandatory. Each 10 mmol IV raises serum K+ by ~0.1 mmol/L.</p>
+      <p><b>Conn's syndrome is treatable</b> — if caused by aldosterone-secreting adenoma (60% cases), surgical adrenalectomy is curative (80% cure hypertension, 100% cure hypokalaemia). Bilateral hyperplasia (40% cases) treated with spironolactone (aldosterone antagonist). Missing Conn's = lifelong antihypertensives when surgery could cure.</p>
+      <p><b>Primary care manages mild cases</b> — K+ 3.0-3.5 on diuretics, asymptomatic, obvious cause. Oral K+ supplementation (Sando-K 2 tablets BD = 24 mmol K+/day), reduce diuretic if possible, dietary advice (bananas, oranges, potatoes). Recheck U&Es 1 week. If persistent or worsening → investigate/refer.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-num">7</div>
+  <div class="node-head">
+    <span class="node-tag">Treat</span>
+    <h3>Potassium Replacement — Oral Sando-K, IV potassium if severe</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Replace potassium orally in mild-moderate cases, IV in severe/symptomatic cases (hospital only).
+    
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Mild (K+ 3.0-3.5), asymptomatic</div>
+        <div class="b-drug">Sando-K tablets <span class="pill pill-teal">Oral</span></div>
+        <div class="b-note">2 tablets BD (each tablet = 12 mmol K+, total 48 mmol/day). Dissolve in water, take with food. Duration: 1-2 weeks then recheck. Adjust diuretic if cause.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Moderate (K+ 2.5-3.0), symptomatic</div>
+        <div class="b-drug">Sando-K 2 tablets TDS <span class="pill pill-teal">Oral</span></div>
+        <div class="b-note">Total 72 mmol K+/day. Check U&Es after 48-72 hours. If K+ not rising or symptomatic worsens → admit for IV. Add Mg2+ if low.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Severe (K+ <2.5) or ECG changes</div>
+        <div class="b-drug">IV potassium chloride <span class="pill pill-red">Hospital only</span></div>
+        <div class="b-note">10-20 mmol/hour via central line (max 10 mmol/hr peripheral). Cardiac monitoring. Never IV bolus (cardiac arrest). Typical: 40 mmol in 1L NaCl 0.9% over 4 hours.</div>
+      </div>
+    </div>
+    
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Sando-K 2 tablets BD</b> — Effervescent tablets, dissolve in water (each = 12 mmol K+ + 8 mmol Cl-). Total 48 mmol K+/day. Take with food (GI irritation). Recheck U&Es 1 week.</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Increase to TDS</b> — If K+ not rising or symptomatic. Total 72 mmol/day. Check U&Es 48-72 hours. Warn: GI upset common (nausea, diarrhoea). Take with meals.</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Add magnesium</b> — If hypomagnesaemia (Mg2+ <0.7). Magnesium oxide 400mg BD or magnesium glycerophosphate (Magnaspartate) 1 sachet BD. Essential for K+ correction. Check Mg2+ with U&Es.</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Potassium-sparing diuretic</b> — If recurrent hypokalaemia on thiazide/loop. Add amiloride 5-10 mg OD or spironolactone 25-50 mg OD. Caution: monitor for hyperkalaemia (check U&Es 1 week). Avoid if CKD, ACEi/ARB.</span></div>
+      <div class="rung"><span class="rn">Step 5</span><span class="rt"><b>Refer if refractory</b> — Persistent hypokalaemia despite K+ + Mg2+ replacement and diuretic adjustment. Investigate for Conn's, RTA, Bartter/Gitelman. Endocrine/nephrology input.</span></div>
+    </div>
+    
+    <div class="kv" style="margin-top: 20px;">
+      <div>IV potassium (hospital)</div>
+      <div><b>Indications:</b> K+ <2.5, symptomatic, ECG changes, unable to tolerate oral. <b>Rate:</b> Max 10 mmol/hr peripheral, 20 mmol/hr central. <b>Typical:</b> 40 mmol in 1L NaCl 0.9% over 4 hrs. <b>Monitoring:</b> Cardiac monitor, U&Es every 4-6 hrs. <span class="pill pill-red">Never give in primary care</span></div>
+      
+      <div>Diuretic adjustment</div>
+      <div><b>If cause is diuretic:</b> Reduce dose (e.g. furosemide 80mg → 40mg, bendroflumethiazide 2.5mg → 1.25mg), OR add K+-sparing (amiloride, spironolactone), OR switch to K+-sparing alone if heart failure controlled. Balance: fluid overload vs hypokalaemia.</div>
+      
+      <div>Magnesium replacement</div>
+      <div><b>Essential if Mg2+ <0.7.</b> Oral: Magnesium oxide 400mg BD (cheap) or magnesium glycerophosphate 1 sachet BD (better tolerated). IV: Magnesium sulfate 20 mmol (5g) in 500ml NaCl 0.9% over 4 hours (hospital only). Concurrent with K+ replacement.</div>
+      
+      <div>Monitoring</div>
+      <div><b>Mild:</b> Recheck U&Es 1 week. <b>Moderate:</b> Recheck 48-72 hours. <b>Severe:</b> Hospital monitoring 4-6 hourly. <b>Caution:</b> Overreplacement → hyperkalaemia (especially if renal impairment, ACEi/ARB, K+-sparing diuretics).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Oral replacement is slow but safe</b> — each Sando-K tablet contains 12 mmol K+. Normal dietary K+ intake 60-100 mmol/day. Supplementing 48-72 mmol/day raises serum K+ by ~0.5 mmol/L over 3-5 days. GI upset common (nausea, diarrhoea) — take with meals, reduce dose if intolerable. Hyperkalaemia risk low with oral (body excretes excess).</p>
+      <p><b>IV potassium is high-risk</b> — rapid infusion causes cardiac arrest (asystole, VF). Maximum safe rate 10 mmol/hour peripheral (20 mmol/hour central). Never give IV bolus. Each 10 mmol raises serum K+ by ~0.1 mmol/L. Cardiac monitoring mandatory. Extravasation causes tissue necrosis. Peripheral infusion painful (K+ irritates veins).</p>
+      <p><b>Potassium-sparing diuretics prevent recurrence</b> — amiloride (epithelial Na+ channel blocker) and spironolactone (aldosterone antagonist) reduce K+ wasting while maintaining diuresis. Add to thiazide/loop rather than switching (synergistic effect). Caution: hyperkalaemia risk if CKD, ACEi/ARB. Monitor U&Es 1 week after starting.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-num">8</div>
+  <div class="node-head">
+    <span class="node-tag">Lifestyle</span>
+    <h3>Dietary Potassium and Medication Review</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Increase dietary potassium intake and review medications to prevent recurrence.
+    
+    <div class="lsgrid">
+      <div class="lstile"><b>High-potassium foods</b> Bananas (12 mmol/banana), oranges (10 mmol), potatoes (15 mmol/medium), tomatoes, spinach, beans, lentils, nuts, dried fruit (apricots, raisins), avocado, fish (salmon, mackerel). Aim 60-100 mmol/day dietary K+.</div>
+      <div class="lstile"><b>Orange juice / tomato juice</b> High K+ content (10-15 mmol/250ml glass). Practical daily source. Avoid if diabetic (sugar content). Fresh-squeezed better than concentrate (less sugar).</div>
+      <div class="lstile"><b>Low-sodium salt substitutes</b> LoSalt, Pan Salt contain KCl instead of NaCl (13 mmol K+ per 1g). Use in cooking, on food. Cheap K+ supplement. CAUTION: Contraindicated if CKD, ACEi/ARB (hyperkalaemia risk).</div>
+      <div class="lstile"><b>Reduce diuretic dose</b> If hypokalaemia recurrent on diuretics: reduce dose (e.g. furosemide 80mg → 40mg OD), switch to alternate days, or stop if possible (if mild heart failure, well-controlled hypertension). Balance diuresis vs K+ depletion.</div>
+      <div class="lstile"><b>Review medications</b> Stop/reduce: laxatives (if chronic use), NSAIDs (if on diuretics — synergistic K+ loss), steroids (if possible). Consider alternatives: thiazide-like (indapamide) → ACEi/ARB monotherapy for hypertension (K+-sparing).</div>
+      <div class="lstile"><b>Avoid excessive liquorice</b> Contains glycyrrhizic acid (mimics aldosterone, causes K+ wasting). Found in liquorice sweets, herbal teas, aniseed drinks. Significant consumption (>50g/day) causes hypokalaemia + hypertension.</div>
+      <div class="lstile"><b>Alcohol moderation</b> Alcohol excess causes K+ loss (vomiting, diarrhoea, poor nutrition, Mg2+ depletion). Limit to <14 units/week. Address alcohol dependency if present (brief intervention, refer alcohol services).</div>
+      <div class="lstile"><b>Treat underlying GI disease</b> IBD (optimize medical therapy), coeliac (gluten-free diet), chronic diarrhoea (investigate cause). Eating disorders (bulimia) — laxative abuse, vomiting. Refer psychology/eating disorder services.</div>
+      <div class="lstile"><b>Educate on symptoms</b> Muscle weakness, cramps, palpitations, constipation = hypokalaemia warning signs. Seek medical review if recurrent. Patients on diuretics should recognize risk and report symptoms early.</div>
+      <div class="lstile"><b>Medication compliance</b> If on Sando-K: take regularly with food. Dissolve fully in water (reduces GI irritation). Do not chew tablets. If intolerant: try splitting dose (1 tablet QDS vs 2 BD), take with meals, or switch to magnesium glycerophosphate (better tolerated).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Dietary K+ provides 60-100 mmol/day</b> — adequate for maintenance once hypokalaemia corrected. Bananas (12 mmol each), oranges (10 mmol), potatoes (15 mmol medium) are richest sources. Fresh fruit/vegetables > processed foods (processing removes K+). Cooking leaches K+ into water — steam/roast > boil.</p>
+      <p><b>LoSalt is effective K+ supplement</b> — 1g LoSalt contains 13 mmol K+ (vs 0 mmol in regular salt). Using 2-3g/day in cooking = 25-40 mmol K+ supplementation. Cheap (£2 for 350g vs £5 for Sando-K 100 tablets). CAUTION: Contraindicated in CKD (hyperkalaemia risk), ACEi/ARB users.</p>
+      <p><b>Diuretic dose reduction</b> often feasible — many patients started on high doses (furosemide 80-120mg) but only need 40mg maintenance. Trial dose reduction with close BP/fluid status monitoring. If mild heart failure well-controlled, consider stopping diuretic entirely (reduces K+ loss, polypharmacy).</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-num">9</div>
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Follow-Up — Monitor K+ levels, adjust treatment, prevent recurrence</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Regular monitoring of U&Es to ensure correction and prevent rebound hyperkalaemia.
+    
+    <div class="kv">
+      <div>1 week</div>
+      <div><b>Recheck U&Es</b> after starting Sando-K or adjusting diuretic. Target K+ 3.5-5.0 mmol/L. If <3.0 still → increase Sando-K to TDS, check Mg2+. If >5.0 → stop Sando-K, reduce K+-sparing diuretic if on one. If 3.5-5.0 → continue current dose, recheck 1 month.</div>
+      
+      <div>1 month</div>
+      <div><b>Repeat U&Es</b> to confirm stable K+. If normalized → consider stopping Sando-K if dietary K+ adequate and diuretic dose reduced. If recurrent → long-term Sando-K or add K+-sparing diuretic. Review medication list (stop laxatives, NSAIDs if possible).</div>
+      
+      <div>3-monthly</div>
+      <div><b>Routine monitoring</b> if on long-term diuretics, K+ supplements, or K+-sparing diuretics. Check U&Es, adjust doses. Screen for hyperkalaemia (especially if CKD, ACEi/ARB added). Document in chronic disease register.</div>
+      
+      <div>Annual review</div>
+      <div><b>Patients on diuretics:</b> Annual U&Es, BP, weight. Assess ongoing need for diuretic (can dose be reduced? can it be stopped?). Ensure dietary K+ adequate. Check compliance with K+ supplements if prescribed.</div>
+      
+      <div>Safety-net <span class="pill pill-red">999</span></div>
+      <div><b>Severe muscle weakness</b> (unable to walk, respiratory distress). <b>Chest pain, palpitations, syncope.</b> <b>Collapse, confusion</b> (severe hypokalaemia → arrhythmia). <b>Signs of rhabdomyolysis</b> (dark urine, severe muscle pain).</div>
+      
+      <div>Safety-net <span class="pill pill-red">Same-day GP</span></div>
+      <div><b>Muscle cramps, weakness worsening</b> despite K+ supplements. <b>Palpitations, chest discomfort.</b> <b>Severe vomiting/diarrhoea</b> (unable to take oral K+). <b>New medications started</b> that may affect K+ (ACEi, ARB, NSAIDs).</div>
+      
+      <div>Re-refer if</div>
+      <div><b>Refractory hypokalaemia</b> despite K+ + Mg2+ replacement and diuretic adjustment. <b>Recurrent episodes</b> without clear cause. <b>Hypertension develops</b> with hypokalaemia (Conn's). <b>Hyperkalaemia</b> on K+ supplements (? CKD, ? excessive supplementation).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Rebound hyperkalaemia is real risk</b> — overreplacement with Sando-K + K+-sparing diuretics + ACEi/ARB = severe hyperkalaemia (K+ >6.0). Especially in CKD patients (reduced K+ excretion). Monitor U&Es 1 week after any change. Hyperkalaemia >6.5 is medical emergency (cardiac arrest risk).</p>
+      <p><b>Long-term K+ supplementation often unnecessary</b> — once corrected and diuretic dose optimized, dietary K+ usually sufficient. Trial stopping Sando-K after 1-2 months if K+ stable and diet adequate. Recheck U&Es 1-2 weeks after stopping. Restart if K+ drops below 3.5.</p>
+      <p><b>Refractory hypokalaemia warrants specialist input</b> — if K+ remains <3.5 despite Sando-K 72 mmol/day + Mg2+ replacement + diuretic reduction = underlying pathology (Conn's, Bartter/Gitelman, RTA, VIPoma). Endocrine/nephrology investigation needed. Primary care has exhausted options.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use.</strong> Pathway based on NICE CKS Hypokalaemia (2023), NHS Laboratory Medicine guidelines, British Society for Haematology. Always adapt to individual patient context and local biochemistry protocols.
+</div>
+
+<script>
+const storageKey = 'rgp.alg.hypokalaemia.v1';
+const flow = document.getElementById('flow');
+const nodes = flow.querySelectorAll('.node');
+const pDone = document.getElementById('pDone');
+const pTotal = document.getElementById('pTotal');
+const pFill = document.getElementById('pFill');
+const resetBtn = document.getElementById('resetBtn');
+
+pTotal.textContent = nodes.length;
+
+function loadState() {
+  const saved = localStorage.getItem(storageKey);
+  if (!saved) return;
+  try {
+    const state = JSON.parse(saved);
+    nodes.forEach((node, i) => {
+      const chk = node.querySelector('input[type="checkbox"]');
+      if (chk && state[i]) {
+        chk.checked = true;
+        node.classList.add('done');
+      }
+    });
+    updateProgress();
+  } catch (e) {}
+}
+
+function saveState() {
+  const state = Array.from(nodes).map(node => {
+    const chk = node.querySelector('input[type="checkbox"]');
+    return chk ? chk.checked : false;
+  });
+  localStorage.setItem(storageKey, JSON.stringify(state));
+}
+
+function updateProgress() {
+  const done = Array.from(nodes).filter(node => {
+    const chk = node.querySelector('input[type="checkbox"]');
+    return chk && chk.checked;
+  }).length;
+  pDone.textContent = done;
+  const pct = (done / nodes.length) * 100;
+  pFill.style.width = pct + '%';
+}
+
+nodes.forEach(node => {
+  const chk = node.querySelector('input[type="checkbox"]');
+  if (chk) {
+    chk.addEventListener('change', () => {
+      if (chk.checked) {
+        node.classList.add('done');
+      } else {
+        node.classList.remove('done');
+      }
+      updateProgress();
+      saveState();
+    });
+  }
+
+  const whyBtn = node.querySelector('.why-btn');
+  const whyDrawer = node.querySelector('.why-drawer');
+  if (whyBtn && whyDrawer) {
+    whyBtn.addEventListener('click', () => {
+      const isOpen = whyBtn.getAttribute('aria-expanded') === 'true';
+      whyBtn.setAttribute('aria-expanded', !isOpen);
+      whyDrawer.classList.toggle('open');
+    });
+  }
+});
+
+resetBtn.addEventListener('click', () => {
+  if (confirm('Reset all progress? This cannot be undone.')) {
+    localStorage.removeItem(storageKey);
+    nodes.forEach(node => {
+      const chk = node.querySelector('input[type="checkbox"]');
+      if (chk) {
+        chk.checked = false;
+        node.classList.remove('done');
+      }
+    });
+    updateProgress();
+  }
+});
+
+loadState();
+</script>
+
+<script src="../../assets/alg-diagram.js"></script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Blurry Vision Algorithm · Reasoning GP</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f7f6f2;--surface:#fff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;--safety:#dc2626;--safety-bg:#fef2f2;--diagnose:#2563eb;--diagnose-bg:#eff6ff;--treat:#16a34a;--treat-bg:#f0fdf4;--refer:#7c3aed;--refer-bg:#f5f3ff;--lifestyle:#d97706;--lifestyle-bg:#fffbeb;--radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);--font-sans:'DM Sans',system-ui,sans-serif;--font-serif:'Source Serif 4',Georgia,serif;}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;padding:0 0 60px}
+.alg-header{background:#0f4c75;color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#0f4c75,#1e90ff);border-radius:3px;transition:width .4s;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted)}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--treat)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px}
+.why-btn:hover,.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+<div class="alg-header">
+  <h1>👁️ Blurry Vision</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta"><span>NICE NG81</span><span>RCOphth guidelines</span><span>CKS Visual problems</span><span>10-min consult</span></div>
+</div>
+<div class="stem-banner">
+  <div class="sb-icon">👁️</div>
+  <div>
+    <b>Blurry / Reduced Vision — New or Worsening</b>
+    <small>Covers acute visual loss, gradual visual deterioration, diplopia, refractive error, and ocular emergencies</small>
+  </div>
+</div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — separate sudden blurring (often sight- or life-threatening) from gradual blurring, and screen for the neurological and vascular causes. Treat the cause and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Blurred vision</span><div class="body">Sudden vs gradual, mono vs binocular, transient vs persistent, associated pain/neurology/headache. Examine acuity, fields, fundus, pupils.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — sudden loss / neuro emergency</span><span class="ttl">Sudden loss or neurological emergency?</span><div class="body">Sudden persistent blur/loss (retinal/optic/vascular) · transient (amaurosis = TIA) · with headache + neurology (stroke) · GCA features · acute red painful eye.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency</span><div class="body">Sudden visual loss → emergency ophthalmology. Stroke/TIA features → stroke pathway. GCA → steroids.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">Clarify what “blurred” means</span><div class="body"><b>Improves with blinking → dry eye</b> (commonest). Distinguish from scotoma, diplopia, floaters/flashes and distortion. Monocular diplopia (persists with one eye shut) → ocular (cataract); binocular → ocular malalignment (acute → cranial nerve palsy / intracranial lesion). A fixed dilated pupil with a 3rd-nerve palsy is a <b>surgical emergency</b> (aneurysm).</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · common causes</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Refractive / cataract</div><div class="box act"><span class="ttl">Commonest gradual</span><div class="body">Refractive error, cataract; optometry; reassure.</div></div></div><div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Vascular / retinal</div><div class="box ix"><span class="ttl">Investigate</span><div class="body">Diabetic retinopathy, retinal vein/artery occlusion, AMD; ophthalmology.</div></div></div><div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">Neurological</div><div class="box ix"><span class="ttl">Do not miss</span><div class="body">Optic neuritis, raised ICP (papilloedema), stroke, MS.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> sudden visual loss / stroke / GCA. <span class="pill pill-purple">Ophthalmology</span> retinal/optic disease; <span class="pill pill-purple">optometry</span> gradual refractive/cataract.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · treat cause &amp; risk reduction</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Treat the cause &amp; risk reduction</span><span class="ttl">By diagnosis</span><div class="body"><b>Refractive/cataract:</b> optometry, glasses, cataract referral. <b>Diabetic/hypertensive retinopathy:</b> optimise glycaemic control and BP, ensure <b>retinal screening</b>. <b>Vascular risk</b> (stroke/TIA, GCA): smoking cessation, BP/lipid/antiplatelet management. Counsel on <b>DVLA visual standards</b> and not driving if vision is impaired below standard.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Recheck &amp; urgent return advice</span><div class="body"><b>Review</b> that referred causes are progressing and chronic disease (diabetes/glaucoma) is monitored. <b>999 / same-day eye unit</b> for sudden visual loss, <b>transient binocular blur</b> (TIA — aspirin + TIA pathway), curtain/shadow or flashes-floaters (retinal detachment), painful red eye with haloes (acute glaucoma), or GCA features aged 50+ (start steroids). Safety-net any new sudden change as an emergency.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>Sudden blurring is the emergency:</b> transient binocular blur can be a TIA, and sudden monocular loss can be vascular or GCA — both need urgent action, unlike gradual refractive change.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-header"><div class="node-num">1</div>
+    <div class="node-head"><span class="node-tag">Safety</span><h3>Red Flags — Ocular Emergencies Not to Miss</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p class="intro-note">Acute visual loss is an ophthalmological emergency until proven otherwise. Speed matters — some causes have treatment windows of hours.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Sudden painless monocular visual loss</b> Curtain/shadow coming down, complete loss → <span class="pill pill-red">999</span> Central retinal artery occlusion — treatment window 4–6 hours. Also CRVO, retinal detachment</div>
+      <div class="rftile"><b>Painful red eye + reduced vision + haloes</b> Mid-dilated fixed pupil, rock-hard eye, vomiting → <span class="pill pill-red">999</span> Acute angle closure glaucoma — IOP can reach 60–80 mmHg, irreversible optic nerve damage</div>
+      <div class="rftile"><b>Visual loss + headache + scalp tenderness &gt;50y</b> Jaw claudication, temporal artery tenderness → <span class="pill pill-red">Same-day</span> Giant cell arteritis — start prednisolone 60 mg immediately, do not wait for ESR</div>
+      <div class="rftile"><b>Binocular visual loss + headache + vomiting</b> Papilloedema, disc swelling → <span class="pill pill-red">999</span> Raised intracranial pressure — SOL, pseudotumour cerebri</div>
+      <div class="rftile"><b>Floaters + flashing lights + curtain defect</b> New onset, especially myopic patient → <span class="pill pill-red">Same-day</span> Retinal tear/detachment — urgent ophthalmology within 24h (macular-sparing)</div>
+      <div class="rftile"><b>Visual loss + facial weakness/slurred speech</b> Sudden onset, other stroke features → <span class="pill pill-red">999</span> Posterior circulation stroke. FAST. Thrombolysis window</div>
+      <div class="rftile"><b>Chemical or penetrating eye injury</b> Alkali (cement, bleach) far worse than acid → <span class="pill pill-red">999</span> Irrigate immediately with water/saline for 20 min before transport</div>
+      <div class="rftile"><b>Acute visual loss in diabetic patient</b> Sudden vitreous haemorrhage, tractional RD → <span class="pill pill-red">Same-day</span> Urgent ophthalmology. Proliferative diabetic retinopathy complication</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>Central retinal artery occlusion is the ocular equivalent of a stroke — recanalization therapies (ocular massage, anterior chamber paracentesis, thrombolysis) have a treatment window of 4–6 hours after which retinal ischaemia becomes irreversible. Giant cell arteritis is the most common missed ocular emergency in primary care — starting prednisolone immediately (before biopsy) is correct because biopsy results remain positive for 2–4 weeks after starting steroids. Delaying by even 24 hours risks bilateral blindness.</p></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-header"><div class="node-num">2</div>
+    <div class="node-head"><span class="node-tag">Diagnose</span><h3>Characterise the Visual Problem</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Onset & duration</div><div>Sudden (&lt;24h): vascular, retinal detachment, acute glaucoma. Subacute (days–weeks): optic neuritis, uveitis. Gradual (months–years): cataract, AMD, glaucoma, refractive error</div>
+      <div>Monocular vs binocular</div><div><b>Monocular</b>: eye or pre-chiasmal problem (retina, optic nerve, cornea). <b>Binocular</b>: post-chiasmal (brain — occipital cortex, visual pathways). Critical distinction</div>
+      <div>Painful vs painless</div><div><b>Painful</b>: acute angle closure glaucoma, uveitis, corneal disease, optic neuritis (pain on eye movement). <b>Painless</b>: retinal vascular, AMD, cataract, ARMD</div>
+      <div>Type of blurring</div><div>Central: AMD, macular disease. Peripheral/field defect: glaucoma (arcuate), stroke (hemianopia). Floaters/flashing: vitreous/retinal. Halos/starbursts: cataract, refractive error</div>
+      <div>Diplopia</div><div>Monocular (persists with other eye covered): corneal or lens. Binocular (resolves with cover): cranial nerve palsy (III, IV, VI), thyroid eye disease, myasthenia. New-onset binocular diplopia = urgent referral</div>
+      <div>Medical history</div><div>Diabetes (diabetic retinopathy), hypertension (hypertensive retinopathy, CRVO), AF (embolic CRAO), MS (optic neuritis), autoimmune (uveitis), corticosteroids (cataract, glaucoma)</div>
+      <div>Drug history</div><div>Hydroxychloroquine (macular toxicity — annual monitoring), amiodarone (corneal deposits), ethambutol (optic neuritis), sildenafil (visual disturbance), tamoxifen (maculopathy)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>The monocular vs binocular distinction is the most important early differentiator — covering each eye individually in consultation takes 10 seconds and separates ocular pathology from neurological pathology. New binocular diplopia in an elderly patient with hypertension strongly suggests microvascular cranial nerve palsy (III, IV, VI) — usually self-limiting but must exclude posterior communicating artery aneurysm (third nerve palsy with ptosis and dilated pupil = aneurysm until proven otherwise). Hydroxychloroquine maculopathy is preventable — annual eye checks should be confirmed at every review.</p></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-header"><div class="node-num">3</div>
+    <div class="node-head"><span class="node-tag">Diagnose</span><h3>Classify the Likely Diagnosis</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Refractive error</div><div>Gradual bilateral blur (both near and far), improves with squinting, no pain, no other symptoms. Refer optometrist. Most common cause overall</div>
+      <div>Cataract</div><div>Gradual, worse in bright light, halo around lights, monocular diplopia, worse distance vision. Confirmed by ophthalmology. Surgical management</div>
+      <div>Age-related macular degeneration</div><div>Central vision loss (reading, faces), distorted straight lines (metamorphopsia), Amsler grid abnormal. Wet AMD: sudden central loss. Check NICE NG82 pathway</div>
+      <div>Glaucoma</div><div>Peripheral field loss (arcuate scotoma), may be painless and asymptomatic until advanced. IOP may be normal (normal tension glaucoma). Optic disc cupping on fundoscopy</div>
+      <div>Diabetic retinopathy</div><div>Background, pre-proliferative, proliferative stages. National Diabetic Eye Screening Programme — annual screening in all DM patients. Vitreous haemorrhage = acute loss</div>
+      <div>Optic neuritis</div><div>Subacute monocular visual loss, pain on eye movement, reduced colour vision (especially red desaturation), RAPD present. Age 20–45, associated with MS in 50%</div>
+      <div>Dry eye / corneal</div><div>Fluctuating blur (improves with blinking/lubricants), gritty sensation, worse in dry/air-conditioned environments. Extremely common — check before extensive investigation</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>Dry eye disease is the most common cause of "blurry vision" in primary care — it accounts for 20% of all ophthalmology outpatient referrals and most do not need specialist review. A simple test: ask if vision improves after blinking — yes = dry eye/surface disease. AMD affects 600,000 people in the UK and is the leading cause of blindness in over-50s. Wet AMD requires urgent referral for intravitreal anti-VEGF (ranibizumab/aflibercept) — treatment within 2 weeks significantly improves visual outcome.</p></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-header"><div class="node-num">4</div>
+    <div class="node-head"><span class="node-tag">Diagnose</span><h3>Targeted Examination — What GPs Can Assess</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Visual acuity</div><div>Snellen chart at 6 m (or near card). Record best corrected VA (with glasses). 6/6 normal. 6/60 or worse = significant impairment. Pinhole test: improves with pinhole = refractive error</div>
+      <div>Pupil reactions</div><div>Direct + consensual. RAPD (afferent pupillary defect = relative APD using swinging torch test) → optic nerve or retinal pathology (optic neuritis, CRVO, CRAO)</div>
+      <div>Visual fields</div><div>Confrontation fields: compare to examiner's. Bitemporal hemianopia (pituitary lesion), homonymous hemianopia (stroke/space-occupying lesion)</div>
+      <div>Extraocular movements</div><div>Check all 6 directions. Pain on movement → optic neuritis. Limitation → cranial nerve palsy (III = down-out, IV = vertical diplopia stairs, VI = lateral gaze failure)</div>
+      <div>External eye</div><div>Red eye (conjunctiva, cornea, ciliary injection). Proptosis (thyroid eye disease). Lid abnormalities. Corneal haziness (acute glaucoma)</div>
+      <div>Fundoscopy</div><div>Disc (papilloedema, cupping, pallor). Vessels (AV nipping, silver wiring). Macula (drusen = AMD, haemorrhage). Cotton wool spots, flame haemorrhages, neovascularisation</div>
+      <div>IOP (if tonometer available)</div><div>Normal 10–21 mmHg. &gt;30 mmHg = urgent referral. Acute angle closure = IOP typically 40–70 mmHg. Most GPs do not have tonometry — refer if suspected</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>The pinhole test is the most underused tool in primary care — it can distinguish refractive error (improves with pinhole) from pathological visual loss (does not improve) in 30 seconds. RAPD is the key sign for optic nerve disease — it indicates asymmetric afferent input and is present in optic neuritis, CRVO, and CRAO. A complete third nerve palsy with a dilated pupil (surgical third nerve) must be differentiated from a pupil-sparing microvascular third nerve palsy — dilated pupil = aneurysm, emergency CT angiography required.</p></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-header"><div class="node-num">5</div>
+    <div class="node-head"><span class="node-tag">Diagnose</span><h3>Investigations — When to Test What</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Suspected GCA</div><div><span class="pill pill-blue">ESR</span> (typically &gt;50, often &gt;100), <span class="pill pill-blue">CRP</span> (elevated), <span class="pill pill-blue">FBC</span> (normochromic anaemia, thrombocytosis). Do NOT wait for results — start prednisolone if clinical suspicion high</div>
+      <div>Vascular visual loss</div><div><span class="pill pill-blue">FBC</span>, <span class="pill pill-blue">ESR/CRP</span>, <span class="pill pill-blue">clotting</span>, <span class="pill pill-blue">lipids</span>, <span class="pill pill-blue">HbA1c</span>, <span class="pill pill-blue">BP</span>, <span class="pill pill-blue">ECG</span> (AF as embolic source), <span class="pill pill-blue">carotid Doppler</span> if TIA-equivalent</div>
+      <div>Optic neuritis</div><div>Refer neurology — MRI brain and orbits (gadolinium) to assess MS lesion burden. Do not initiate steroids in primary care (reduces attack duration but not long-term outcome)</div>
+      <div>Diabetic review</div><div><span class="pill pill-blue">HbA1c</span>, <span class="pill pill-blue">BP</span>, <span class="pill pill-blue">lipids</span>, <span class="pill pill-blue">urine ACR</span>. Confirm National Diabetic Eye Screening appointment up to date (annual). Refer if screen abnormal</div>
+      <div>Thyroid eye disease</div><div><span class="pill pill-blue">TFTs</span> (TSH, T4, T3), <span class="pill pill-blue">TRAb antibodies</span> (thyroid receptor antibodies). CT/MRI orbits (extraocular muscle enlargement). Refer endocrinology + ophthalmology</div>
+      <div>Amsler grid</div><div>Simple self-monitoring tool for AMD — central grid distortion = macular pathology. Provide to all over-50s with gradual central visual loss to self-monitor between appointments</div>
+      <div>When NOT to investigate</div><div>Do NOT order CT head for gradual bilateral blur improving with pinhole — this is refractive error, refer optometrist. Do NOT delay prednisolone for ESR in suspected GCA</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>GCA bloods should be sent simultaneously with starting prednisolone — never delay treatment waiting for results. ESR can be normal in 10–20% of GCA, so CRP is essential alongside. In CRAO, 25% have an identifiable cardiac embolic source — AF is the most common; ECG and echocardiogram are part of the secondary prevention workup. Optic neuritis MRI demonstrates white matter lesions in 50% of patients at first episode — the MRI result determines the 10-year MS conversion risk and guides disease-modifying therapy decisions.</p></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-header"><div class="node-num">6</div>
+    <div class="node-head"><span class="node-tag">Refer</span><h3>Referral — Urgency Stratification</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Acute angle closure glaucoma, CRAO (4–6h window), chemical eye injury, visual loss + stroke features, eclampsia-related visual loss, orbital cellulitis</div>
+      <div><span class="pill pill-red">Same-day ophthalmology</span></div><div>Suspected retinal detachment (curtain/floaters), vitreous haemorrhage, suspected endophthalmitis (post-procedure), acute uveitis with hypopyon, suspected GCA (start prednisolone + refer)</div>
+      <div>Urgent &lt;1 week ophthalmology</div><div>Wet AMD (sudden central vision loss), new optic disc swelling (papilloedema), central or branch retinal vein occlusion, new proptosis, third nerve palsy with dilated pupil (CT angiography first)</div>
+      <div><span class="pill pill-purple">2WW</span></div><div>Painless progressive monocular visual loss with no clear cause — exclude intraocular malignancy (uveal melanoma). Unexplained optic atrophy. New afferent pupillary defect</div>
+      <div>Routine ophthalmology</div><div>Suspected cataract (functional impairment), chronic glaucoma (raised IOP found by optometrist — refer their letter), stable diabetic retinopathy above background, stable dry AMD</div>
+      <div>Optometrist (not hospital)</div><div>Gradual bilateral blur (refractive error first), mild dry eye, stable mild cataracts, routine glaucoma monitoring (shared care). Saves hospital capacity</div>
+      <div>Neurology</div><div>Optic neuritis (MRI + MS assessment), suspected pituitary lesion (bitemporal hemianopia), myasthenia gravis (fatigable ptosis + diplopia)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>The RCOphth pathway for wet AMD requires treatment within 2 weeks — each week of delay loses approximately 1–2 lines of vision permanently. Anti-VEGF (ranibizumab, aflibercept) preserves or improves vision in 90% of wet AMD patients when treated promptly. Optometrist-led triage pathways (primary eyecare acute referral services, PEARS) are available in most NHS areas and can see urgent eye problems within 24–48 hours, freeing A&E and ophthalmology capacity for genuine emergencies.</p></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-header"><div class="node-num">7</div>
+    <div class="node-head"><span class="node-tag">Treat</span><h3>Immediate & Primary Care Treatment</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">GCA (suspected)</div>
+        <div class="b-drug">Prednisolone 60 mg OD <span class="pill pill-teal">Start immediately</span></div>
+        <div class="b-note">Do not wait for ESR/CRP. Visual loss already present: 500 mg–1g IV methylprednisolone (admit). Bone protection: alendronate + calcium/VitD. Taper guided by symptoms + CRP</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Dry eye</div>
+        <div class="b-drug">Hypromellose 0.3% drops <span class="pill pill-teal">First-line</span></div>
+        <div class="b-note">4–6× daily, or Carbomer gel (Viscotears) for night-time. Preservative-free if using &gt;4× daily. Omega-3 supplements evidence-based adjunct</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Vascular CV risk reduction</div>
+        <div class="b-drug">Anti-platelet + statin <span class="pill pill-teal">Secondary prevention</span></div>
+        <div class="b-note">Aspirin 75 mg OD (CRAO/BRVO with AF → anticoagulate). Atorvastatin 80 mg. BP control &lt;130/80. Stop smoking. Refer for carotid assessment if CRAO</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Acute angle closure (pre-hospital)</div>
+        <div class="b-drug">999 + position upright <span class="pill pill-teal">Emergency</span></div>
+        <div class="b-note">Lying supine worsens attack. If acetazolamide 500 mg IV available (A&E): use. Pilocarpine 2% topical (if available in surgery). Definitive: laser iridotomy</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Acute</span><span class="rt"><b>Identify ophthalmic emergency</b> — CRAO/acute glaucoma/GCA: 999/same-day. Chemical injury: irrigate immediately. Time is vision</span></div>
+      <div class="rung"><span class="rn">Primary care</span><span class="rt"><b>Cardiovascular risk factor control</b> — BP, HbA1c, lipids, smoking cessation. Protects against diabetic retinopathy, vascular occlusions, GCA flares</span></div>
+      <div class="rung"><span class="rn">Chronic</span><span class="rt"><b>Monitoring and specialist-initiated treatment</b> — anti-VEGF (wet AMD), laser photocoagulation (retinopathy), trabeculectomy (glaucoma) — all specialist. GP ensures systemic risk factors controlled</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>In GCA, the risk of visual loss in the fellow eye without treatment is 30–50% within days — starting high-dose prednisolone before biopsy is the correct management. For diabetic macular oedema (the commonest cause of visual loss in working-age adults), HbA1c control is the most important intervention — each 1% HbA1c reduction reduces diabetic retinopathy progression by 25%. Intravitreal anti-VEGF for wet AMD costs ~£800/injection (6–12 per year) but preserves independence and prevents residential care — highly cost-effective NICE approval.</p></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-header"><div class="node-num">8</div>
+    <div class="node-head"><span class="node-tag">Lifestyle</span><h3>Eye Health & Protective Interventions</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Smoking cessation</b> Smoking doubles AMD risk and triples cataract risk. Single most modifiable risk factor for ocular disease. Refer to stop-smoking service. Also increases CRAO/CRVO risk via thrombogenesis.</div>
+      <div class="lstile"><b>Glycaemic control (DM)</b> HbA1c &lt;53 mmol/mol (7%) reduces progression of diabetic retinopathy by 25–76% (UKPDS). Every GP consultation with a diabetic patient is an opportunity to optimise HbA1c.</div>
+      <div class="lstile"><b>Blood pressure control</b> SBP &lt;130 mmHg reduces retinal vascular events, hypertensive retinopathy, and optic nerve damage. Target more aggressively in diabetic eye disease.</div>
+      <div class="lstile"><b>UV protection</b> UV sunglasses and hat reduce cataract risk. UV-B most harmful. Polarised lenses more comfortable. Particularly important post-cataract surgery (lens no longer filters UV).</div>
+      <div class="lstile"><b>Diet — carotenoids</b> Lutein + zeaxanthin (leafy greens: kale, spinach) reduce AMD progression by 25% (AREDS2 trial). AREDS2 supplement recommended for intermediate AMD by RCOphth.</div>
+      <div class="lstile"><b>Screen breaks / 20-20-20 rule</b> Every 20 min, look at something 20 feet away for 20 seconds. Reduces digital eye strain and accommodative spasm. Reduces dry eye from reduced blink rate.</div>
+      <div class="lstile"><b>Diabetic eye screening adherence</b> Annual NDESP screening uptake is only 78% — at every DM consultation, confirm screening appointment is booked. Unscreened patients are the highest risk for preventable blindness.</div>
+      <div class="lstile"><b>Home monitoring (AMD)</b> Amsler grid for AMD patients — check weekly. Attend same day if new distortion or central scotoma. Wet AMD can develop from dry AMD rapidly — self-monitoring saves vision.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>The AREDS2 trial (Age-Related Eye Disease Study 2) demonstrated that supplementation with lutein 10 mg + zeaxanthin 2 mg reduces AMD progression to advanced disease by 18–25% over 5 years. Diabetic eye screening is the most cost-effective preventive intervention in diabetes — each case of blindness prevented saves £70,000 in social care costs. The 22% of diabetic patients who do not attend screening have 3× higher rates of preventable visual impairment.</p></div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-header"><div class="node-num">9</div>
+    <div class="node-head"><span class="node-tag">Safety</span><h3>Follow-Up, Monitoring & Safety-Netting</h3></div>
+    <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>GCA — steroid taper</div><div>Prednisolone: reduce by 10 mg/2 weeks to 20 mg, then 2.5 mg/4 weeks to 10 mg, then 1 mg/4–8 weeks. Monitor CRP at each reduction. Relapse = increase by 5–10 mg. Duration typically 1–2 years</div>
+      <div>GCA — monitoring</div><div>BP (steroid-induced hypertension), weight, glucose (steroid-induced DM), bone density (DEXA), osteoporosis prevention (alendronate 70 mg weekly). Annual ophthalmology review</div>
+      <div>Post-retinal detachment repair</div><div>Ophthalmology follow-up. Driving restrictions (6 weeks standard). Advice on other eye — 10% bilateral retinal detachment. Myopes: annual dilated fundoscopy</div>
+      <div>AMD monitoring</div><div>Wet AMD: ophthalmology manages anti-VEGF frequency. Dry AMD: annual review + Amsler grid monitoring. AREDS2 supplement recommendation at intermediate stage</div>
+      <div>Diabetic retinopathy</div><div>Annual NDESP. HbA1c/BP/lipids at every GP review. Refer if screen shows above background changes. Pregnancy: diabetic eye review in 1st trimester and at 28 weeks</div>
+      <div><span class="pill pill-red">Safety-net 999</span></div><div>Any sudden visual loss in one or both eyes, acute painful red eye with cloudy vision, visual loss with headache/vomiting/confusion, any sudden onset binocular visual field loss</div>
+      <div><span class="pill pill-red">Safety-net same-day</span></div><div>New floaters + flashes, sudden central blur in known AMD patient (same-day AMD service), any new RAPD, unexplained progressive visual loss over days</div>
+      <div>Low vision registration</div><div>VA 3/60–6/60: partially sighted. VA &lt;3/60: severely sight impaired (blind). GP can initiate CVI (Certificate of Visual Impairment) via ophthalmologist. Access to benefits, RNIB, rehabilitation</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer"><p>GCA steroid tapers are typically 18–24 months and require careful monitoring — relapse rate is 50% if steroids are stopped too quickly. Tocilizumab (IL-6 inhibitor) is now NICE-approved for relapsing/refractory GCA (TA518), allowing faster steroid taper and reducing cumulative steroid-related harm. AMD same-day emergency services (Macular Society) exist in most NHS regions — patients should have the service number. Pregnancy dramatically worsens diabetic retinopathy — women planning pregnancy should have pre-conception ophthalmology review and tightened glycaemic control.</p></div>
+  </div>
+</div>
+
+</div>
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on: NICE NG81 (AMD 2018), NICE NG81, RCOphth Clinical Guidelines, BSR GCA guidelines, National Diabetic Eye Screening Programme, AREDS2 trial data, CKS Visual problems. Always adapt to individual patient context.
+</div>
+<script>
+(function(){
+  const KEY='rgp.alg.blurry-vision.v1';
+  const nodes=document.querySelectorAll('.node[data-step]');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=nodes.length;
+  document.getElementById('pTotal').textContent=total;
+  function save(){const state={};nodes.forEach(n=>{state[n.dataset.step]=n.querySelector('input[type=checkbox]').checked;});localStorage.setItem(KEY,JSON.stringify(state));}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(s[n.dataset.step]){cb.checked=true;n.classList.add('done');}});}catch(e){}}
+  function updateProgress(){const done=document.querySelectorAll('.node.done').length;pDone.textContent=done;pFill.style.width=((done/total)*100)+'%';}
+  nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');cb.addEventListener('change',()=>{n.classList.toggle('done',cb.checked);save();updateProgress();});});
+  document.querySelectorAll('.why-btn').forEach(btn=>{btn.addEventListener('click',()=>{const expanded=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!expanded));btn.nextElementSibling.classList.toggle('open',!expanded);});});
+  document.getElementById('resetBtn').addEventListener('click',()=>{if(!confirm('Reset all progress?'))return;nodes.forEach(n=>{n.querySelector('input[type=checkbox]').checked=false;n.classList.remove('done');});localStorage.removeItem(KEY);updateProgress();});
+  load();updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

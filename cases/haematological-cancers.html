@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haematological Cancers · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="../assets/medchooser.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+.tag-2ww{background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;font-weight:700}
+.tag-emerg{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;font-weight:700}
+</style>
+</head>
+<body class="mode-both" id="bodyEl" data-screen-label="Haematological Cancers">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="haematological-cancers"></aside>
+  <main class="main">
+<div class="case-head">
+  <div>
+    <div class="ch-cat">Oncology &amp; 2WW · Full case</div>
+    <h1>Haematological Cancers</h1>
+  </div>
+  <div class="case-head-tags"><span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE NG12</span><span class="tag">FBC &amp; film · 2WW</span><span class="tag tag-emerg">Neutropenic sepsis</span></div>
+</div>
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">HC</div>
+      <div><div class="tb-title">Haematological Cancers (Leukaemia · Lymphoma · Myeloma) · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE NG12 · the vague-symptom cancers · FBC &amp; blood film · very urgent FBC for leukaemia · 2WW · myeloma (CRAB) · neutropenic sepsis</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">The vague-symptom cancers</span><span class="ns-lbl">Haematological cancers present with non-specific symptoms — fatigue, weight loss, night sweats, recurrent infection, bruising/bleeding, bone pain, lumps — easily attributed to benign causes. A high index of suspicion and a simple FBC are the GP's most powerful tools</span></div>
+    <div class="ns-item"><span class="ns-val">🟣 Very urgent FBC for leukaemia</span><span class="ns-lbl">NICE NG12: offer a VERY URGENT full blood count (within 48 hours) to assess for leukaemia in adults with unexplained: bruising/bleeding, petechiae, pallor, fatigue, recurrent/persistent infection, hepatosplenomegaly. In children/young people with these features → immediate specialist referral. Don't sit on suspicious bloods</span></div>
+    <div class="ns-item"><span class="ns-val">Lymphoma = nodes + B-symptoms</span><span class="ns-lbl">Consider Hodgkin/non-Hodgkin lymphoma with unexplained lymphadenopathy (persistent, &gt;6 weeks, painless, &gt;1–2cm), hepatosplenomegaly, or B-symptoms (fever, drenching night sweats, weight loss). Itch and alcohol-induced node pain are classic clues. FBC, film, LDH, ESR + urgent referral/imaging</span></div>
+    <div class="ns-item"><span class="ns-val">Myeloma = CRAB + the tests</span><span class="ns-lbl">Suspect myeloma in those 60+ with persistent bone pain (esp. back), pathological fracture, recurrent infection, or the CRAB features (hyperCalcaemia, Renal impairment, Anaemia, Bone lesions). NICE NG12: FBC, calcium, ESR/plasma viscosity, then very urgent protein electrophoresis &amp; serum-free light chains / Bence Jones</span></div>
+    <div class="ns-item"><span class="ns-val">Read the FBC properly</span><span class="ns-lbl">Cytopenias (anaemia, low platelets, low/abnormal white cells), a raised or very low WCC, or blasts/abnormal cells on the film point to marrow disease. Pancytopenia, blasts, or a markedly abnormal count need urgent haematology — request a blood film and discuss with haematology</span></div>
+    <div class="ns-item"><span class="ns-val">🔴 Neutropenic sepsis = emergency</span><span class="ns-lbl">A patient with (or being treated for) haematological cancer who is unwell/febrile may have neutropenic sepsis — a life-threatening emergency. Do not delay: immediate admission for IV antibiotics within the hour; don't wait for the neutrophil count. Also: tumour lysis, hyperviscosity, cord compression, hypercalcaemia</span></div>
+    <div class="ns-item"><span class="ns-val">Persistent &gt; transient</span><span class="ns-lbl">Many features (lymphadenopathy after infection, mild fatigue) are benign and transient. It is PERSISTENCE, progression, the combination of features, and the abnormal blood count that should trigger referral — safety-net explicitly and re-check rather than falsely reassure</span></div>
+    <div class="ns-item"><span class="ns-val">Children: act fast</span><span class="ns-lbl">In children/young people, unexplained petechiae, hepatosplenomegaly, persistent fatigue, bone pain, unexplained lymphadenopathy or recurrent infection warrant a very urgent FBC and immediate paediatric referral — leukaemia is the commonest childhood cancer (see Childhood Limp pathway)</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Haematological Cancers</div>
+  <div class="stem-title">A 67-year-old man with weeks of fatigue, easy bruising, recurrent chest infections and "feeling washed out", whose wife says he looks pale and has lost weight</div>
+  <div class="stem-text">Raymond Clarke, 67, attends feeling increasingly "washed out" over 6 weeks, with fatigue, breathlessness on the stairs, and several bruises he can't account for. He's had two chest infections in two months. His wife, with him, says he looks pale and has lost weight, and is worried. He's had some drenching night sweats. There's no obvious bleeding, no localising symptoms, and he assumed it was "just getting older". On examination he is pale, has scattered bruising and a few small petechiae, and you can feel a firm spleen tip and some small cervical lymph nodes. He hopes you'll "give him a tonic" and send him on his way.</div>
+  <div class="stem-note">This stem tests the ability to recognise the non-specific presentation of a haematological cancer — unexplained fatigue, pallor, easy bruising/petechiae, recurrent infection, weight loss, night sweats, hepatosplenomegaly and lymphadenopathy — as a constellation pointing to marrow disease (leukaemia) rather than "just ageing"; to act on the NICE NG12 guidance with a VERY URGENT full blood count (within 48 hours) and a blood film, plus the relevant screen (LDH/ESR, calcium, protein electrophoresis if myeloma suspected); to recognise and not miss neutropenic sepsis or other haematological emergencies; to make the appropriate urgent/2WW haematology referral on abnormal results or strong suspicion; and to communicate uncertainty and the need for urgent investigation to a patient who wants reassurance. The SCA challenge is converting a "give me a tonic" consultation into urgent, appropriate investigation, sensitively, without either falsely reassuring or causing undue alarm.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — Suspected leukaemia (this stem)</strong> Fatigue, pallor, bruising/petechiae, recurrent infection, hepatosplenomegaly, weight loss/night sweats. VERY URGENT FBC (48h) + film; urgent haematology if abnormal/strong suspicion (NG12).</div>
+    <div class="stem-variant"><strong>Scenario B — Lymphoma</strong> Persistent painless lymphadenopathy + B-symptoms (fever/night sweats/weight loss) ± itch/hepatosplenomegaly. FBC/film/LDH/ESR; urgent referral/imaging (NG12).</div>
+    <div class="stem-variant"><strong>Scenario C — Myeloma</strong> 60+ with persistent bone/back pain, pathological fracture, recurrent infection, CRAB features. FBC, calcium, ESR/PV; very urgent protein electrophoresis + serum-free light chains/BJP (NG12).</div>
+    <div class="stem-variant"><strong>Scenario D — Haematological emergency</strong> Neutropenic sepsis (unwell/febrile, immunocompromised) → immediate admission + IV antibiotics; also tumour lysis, hyperviscosity, cord compression, hypercalcaemia.</div>
+    <div class="stem-variant"><strong>Scenario E — Child / incidental abnormal FBC</strong> Child with petechiae/hepatosplenomegaly/bone pain → very urgent FBC + immediate paediatrics. Incidental cytopenia/blasts on FBC → blood film + urgent haematology discussion.</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Leukaemia vs lymphoma vs myeloma; the NG12 thresholds &amp; very-urgent FBC; reading the FBC/film; B-symptoms &amp; lymphadenopathy; CRAB/myeloma screen; emergencies (neutropenic sepsis, hypercalcaemia, cord compression, hyperviscosity); children; persistence vs transient; the reassurance-seeking patient.</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History — The Constellation · B-Symptoms · Bleeding/Infection · Bone Pain · ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The history's job is to recognise a constellation: individually, fatigue, the odd bruise or a chest infection are benign — together, with pallor, weight loss, night sweats, recurrent infection and bleeding, they point to marrow disease.</strong> Pull each thread (B-symptoms, bleeding/bruising, recurrent infection, bone pain, lumps) and resist the pull toward "just ageing" or a "tonic". A simple FBC is the decisive next step.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 SCA framing — don't reassure away a constellation</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"I know you were hoping for a tonic, and I'd love it to be that simple — but a few things together, the tiredness, the bruising, the infections and losing weight, mean I don't want to just put it down to age. I'd like to do an urgent blood test to be sure we're not missing anything."</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">The skill is to take the cluster seriously, explain why an urgent blood test is needed, and neither dismiss nor catastrophise.</div>
+    </div>
+    <div class="sub-divider">1A — The constellation, B-symptoms and emergencies</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"Tell me everything that's been going on — even things that seem unrelated."</em></td>
+            <td class="why"><strong>An open invitation lets the constellation emerge.</strong> Raymond's fatigue, breathlessness, bruising, recurrent infections, weight loss and night sweats, taken together, are the picture of marrow failure/infiltration — not "getting older". Recognising the pattern across separate complaints is the diagnostic move.<span class="why-sub">In SCA: assembling a constellation and acting on it (an urgent FBC) is what the case rewards.</span></td>
+            <td><span class="chg" style="background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe">Constellation → very urgent FBC (NG12)</span></td>
+          </tr>
+          <tr><td class="q">🚩 Bleeding, bruising, infection, anaemia<em>"Are you bruising or bleeding easily? Getting more infections? Feeling breathless, pale, exhausted?"</em></td><td class="why">Easy bruising/petechiae (low platelets), recurrent/persistent infection (neutropenia/immune dysfunction) and anaemia (fatigue, pallor, breathlessness) reflect marrow failure — the NG12 trigger for a very urgent FBC to assess for leukaemia. Raymond has all three.</td><td class="why">Bleeding/infection/anaemia → very urgent FBC (48h) for leukaemia.</td><td><span class="chg chg-inv">Very urgent FBC + blood film</span></td></tr>
+          <tr><td class="q">B-symptoms &amp; lymphadenopathy<em>"Any drenching night sweats, fevers, weight loss, or lumps in the neck, armpits or groin? Any itching, or pain in lumps after alcohol?"</em></td><td class="why">B-symptoms (fever, drenching night sweats, weight loss) and persistent painless lymphadenopathy ± hepatosplenomegaly point to lymphoma; itch and alcohol-induced node pain are classic clues. Raymond's night sweats, weight loss, spleen and nodes broaden the differential across the haematological cancers.</td><td class="why">B-symptoms + nodes → lymphoma work-up + urgent referral.</td><td><span class="chg chg-inv">FBC/film/LDH/ESR; refer</span></td></tr>
+          <tr><td class="q">Bone pain / myeloma (esp. 60+)<em>"Any persistent bone or back pain, or a bone that's broken easily? Recurrent infections? Any thirst, confusion, constipation (high calcium)?"</em></td><td class="why">Persistent bone pain (especially back), pathological fracture, recurrent infection and CRAB features (hyperCalcaemia, Renal impairment, Anaemia, Bone lesions) suggest myeloma in the over-60s — needing FBC, calcium, ESR/plasma viscosity, then protein electrophoresis and serum-free light chains/Bence Jones.</td><td class="why">Bone pain + CRAB → myeloma screen (electrophoresis, light chains).</td><td><span class="chg chg-inv">Calcium, ESR/PV, electrophoresis, FLC/BJP</span></td></tr>
+          <tr><td class="q">🚩 Emergency screen<em>"Are you feverish or unwell right now? Any severe back pain with leg weakness or bladder problems? Drowsy or very thirsty?"</em></td><td class="why">Haematological emergencies must not be missed: neutropenic sepsis (fever/unwell in the immunocompromised — immediate admission + IV antibiotics), spinal cord compression (myeloma/lymphoma), symptomatic hypercalcaemia, hyperviscosity, tumour lysis. These change the consultation from "urgent referral" to "emergency now".</td><td class="why">Fever/unwell (immunocompromised) → neutropenic sepsis emergency; cord compression → emergency.</td><td><span class="chg chg-999">Emergencies → immediate admission</span></td></tr>
+          <tr><td class="q">Duration, progression &amp; persistence<em>"How long has this been building, and is it getting worse?"</em></td><td class="why">Persistence and progression distinguish sinister from benign (a node that lingers &gt;6 weeks, fatigue that worsens). Raymond's 6 weeks of progressive symptoms is not transient — it warrants investigation, not watchful reassurance.</td><td class="why">Persistent/progressive → investigate; transient/resolving → safety-net.</td><td><span class="chg chg-rx">Persistence → act, not reassure</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — the bloods to do and the emergencies to catch</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why it matters</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">🟣 Unexplained bruising/petechiae, pallor, fatigue, recurrent infection, hepatosplenomegaly</td><td class="rf-why">Leukaemia / marrow failure.</td><td><span class="rf-action" style="background:#6d28d9;color:#fff">Very urgent FBC (within 48h) + blood film — NICE NG12; children → immediate paediatrics</span></td></tr>
+          <tr><td class="rf-flag">🟣 Persistent painless lymphadenopathy + B-symptoms ± hepatosplenomegaly/itch</td><td class="rf-why">Lymphoma.</td><td><span class="rf-action" style="background:#6d28d9;color:#fff">FBC/film/LDH/ESR; urgent suspected-cancer referral/imaging — NICE NG12</span></td></tr>
+          <tr><td class="rf-flag">🟣 60+ with persistent bone pain / fracture / recurrent infection / CRAB</td><td class="rf-why">Myeloma.</td><td><span class="rf-action" style="background:#6d28d9;color:#fff">FBC, calcium, ESR/PV → very urgent protein electrophoresis + serum-free light chains/BJP — NICE NG12</span></td></tr>
+          <tr><td class="rf-flag">🔴 Neutropenic sepsis — unwell/febrile + immunocompromised/on chemo</td><td class="rf-why">Life-threatening; rapid deterioration.</td><td><span class="rf-action rfa-999">Immediate admission; IV antibiotics within the hour; don't wait for the count</span></td></tr>
+          <tr><td class="rf-flag">🔴 Spinal cord compression / symptomatic hypercalcaemia / hyperviscosity</td><td class="rf-why">Myeloma/lymphoma complications — emergencies.</td><td><span class="rf-action rfa-999">Emergency admission/assessment</span></td></tr>
+          <tr><td class="rf-flag">Markedly abnormal FBC / pancytopenia / blasts on film</td><td class="rf-why">Acute leukaemia / marrow disease.</td><td><span class="rf-action rfa-999">Urgent same-day haematology discussion/referral</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What do you think has been going on — you mentioned wanting a tonic?"</div><div class="ice-why">Raymond attributes it to age. Surfacing this lets you respectfully explain why the combination of symptoms warrants an urgent blood test rather than a tonic — bringing him with you rather than overriding him.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 Concerns</div><div class="ice-phrase">"Has anything worried you or your wife about how you've been?"</div><div class="ice-why">His wife is worried (often the more accurate barometer). Naming the concern legitimises the urgent work-up and helps pitch it as careful and proportionate.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"Let me explain what I'd like to do and why it needs to be quick."</div><div class="ice-why">He expects reassurance and a quick fix. Naming this lets you set out the urgent blood test, possible referral, and timeframe — honest, not alarmist — so he understands the plan.</div></div>
+    </div>
+    <div class="sub-divider">1D — Psychosocial context</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 "Just getting older", the tonic, and the cancer that whispers</div>
+      <p>Haematological cancers rarely announce themselves; they whisper through fatigue, the odd infection, a bruise, a little weight loss — symptoms patients and clinicians readily ascribe to ageing, stress or a virus. That is exactly why they are missed. The protective discipline is to assemble the constellation, take persistence seriously, and reach for the humble, powerful full blood count — communicating the need for urgent investigation with honesty and care, so a patient seeking a tonic leaves with the right test rather than false reassurance.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>🩸 The power of the FBC</h5><p>Frame the blood test as the sensible, decisive step.</p><span class="ps-phrase">"A simple blood test tells us a huge amount here — it checks your blood cells and can pick up problems early. I'd like to do it urgently, within a day or two."</span></div>
+      <div class="ps-card"><h5>⚖️ Thorough, not frightening</h5><p>Pitch the urgency proportionately.</p><span class="ps-phrase">"Most of the time these tests are reassuring. But the combination of things you've described means the careful thing is to check quickly rather than wait."</span></div>
+      <div class="ps-card"><h5>👫 Listening to the family</h5><p>Validate the wife's concern.</p><span class="ps-phrase">"Your wife's noticed you're pale and have lost weight — that's important, and it's part of why I want to look into this properly."</span></div>
+      <div class="ps-card"><h5>🤝 Holding uncertainty</h5><p>Be honest while supportive.</p><span class="ps-phrase">"I can't tell you the cause until the tests are back, but I'd rather check thoroughly than miss something. We'll go through the results together quickly."</span></div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div><div class="sca-phrase">"The tiredness, bruising, infections and weight loss together make me want an urgent blood test." — assembles the constellation.</div><div class="sca-phrase">"Any drenching night sweats, lumps, or bone pain?" — screens lymphoma/myeloma.</div><div class="sca-phrase">"If you ever feel feverish and unwell, that's an emergency — go straight to hospital." — neutropenic-sepsis safety-net.</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Reassuring as "ageing"/offering a tonic; missing the constellation</li><li>Not doing a (very) urgent FBC / not knowing the NG12 thresholds</li><li>Missing neutropenic sepsis or other emergencies</li><li>Not screening B-symptoms/bone pain/lymphadenopathy</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">"Just ageing"/tonic; no FBC; constellation &amp; red flags missed; no safety-net</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Recognises something's wrong; orders FBC but not urgently; partial red-flag screen; ICE partial</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Assembles constellation; very urgent FBC + film (NG12); screens lymphoma/myeloma/emergencies; safety-nets neutropenic sepsis; ICE all three</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage — Emergency · Very Urgent FBC / 2WW · Investigate &amp; Safety-Net</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Triage by acuity: haematological emergencies (neutropenic sepsis, cord compression, hypercalcaemia, hyperviscosity, markedly abnormal FBC) are same-day; the NG12 red-flag presentations get a very urgent FBC and 2WW referral; and lower-probability cases get investigation with explicit safety-netting.</strong> Raymond needs a very urgent FBC today and likely same-day haematology if the count is grossly abnormal.</div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div>
+        <h3>Same day / 999</h3>
+        <span class="tc-badge tcb-e">Immediate</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Neutropenic sepsis</strong><em>Unwell/febrile + immunocompromised → admit + IV antibiotics</em></li>
+          <li class="tc-item"><strong>Cord compression / hypercalcaemia / hyperviscosity</strong><em>Emergency assessment</em></li>
+          <li class="tc-item"><strong>Markedly abnormal FBC / blasts</strong><em>Same-day haematology</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟣 Very urgent</div>
+        <h3>48h / 2WW</h3>
+        <span class="tc-badge tcb-u">NG12</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>?Leukaemia</strong><em>Very urgent FBC (48h) + film (Raymond)</em></li>
+          <li class="tc-item"><strong>?Lymphoma</strong><em>FBC/film/LDH/ESR; 2WW referral/imaging</em></li>
+          <li class="tc-item"><strong>?Myeloma</strong><em>FBC, calcium, ESR/PV → electrophoresis/FLC</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Investigate</div>
+        <h3>+ safety-net</h3>
+        <span class="tc-badge tcb-r">Lower probability</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Single/transient feature</strong><em>FBC; re-check; safety-net</em></li>
+          <li class="tc-item"><strong>Reactive lymphadenopathy</strong><em>Review at 6 weeks; refer if persistent</em></li>
+          <li class="tc-item"><strong>Benign cause confirmed</strong><em>Treat &amp; reassure</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Triage rationale</div><div class="sca-phrase">"Given everything together, I'm arranging an urgent blood test within 48 hours, and I'll chase it personally. If it's significantly abnormal you'll be seen by the blood specialists very quickly — possibly the same day."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Routine (non-urgent) bloods for a red-flag constellation</li><li>Missing an emergency (neutropenic sepsis)</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Examination — Pallor/Bruising · Nodes &amp; Spleen/Liver · Bone Tenderness · Systemic</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Examination looks for the signs of marrow failure and infiltration — pallor, bruising/petechiae, lymphadenopathy, hepatosplenomegaly, bone tenderness — and for signs of complications and infection.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🔎 Marrow &amp; infiltration</div>
+        <table class="it">
+          <thead><tr><th>Sign</th><th>Suggests</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Pallor</td><td>Anaemia (marrow failure).</td></tr>
+            <tr><td class="factor">Bruising / petechiae / purpura</td><td>Thrombocytopenia.</td></tr>
+            <tr><td class="factor">Lymphadenopathy (multiple sites)</td><td>Lymphoma / leukaemia.</td></tr>
+            <tr><td class="factor">Hepatosplenomegaly</td><td>Infiltration (Raymond: spleen tip).</td></tr>
+            <tr><td class="factor">Bone tenderness (esp. spine/sternum)</td><td>Myeloma / marrow disease.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🩺 Complications &amp; systemic</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Temperature / unwell (sepsis)</td><td>Neutropenic sepsis / infection.</td></tr>
+            <tr><td class="factor">Neuro exam (cord compression)</td><td>Myeloma/lymphoma complication.</td></tr>
+            <tr><td class="factor">Hydration / confusion</td><td>Hypercalcaemia.</td></tr>
+            <tr><td class="factor">Fundi / mucosa (hyperviscosity/bleeding)</td><td>Hyperviscosity; bleeding.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Narration that scores</div><div class="sca-phrase">"I'll check for pallor and bruising, feel for swollen glands in your neck, armpits and groin, check your tummy for an enlarged spleen or liver, and check your temperature — these help tell me what's going on in the blood and marrow."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not examining nodes/spleen/liver</li><li>Missing signs of sepsis/complications</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Investigations — FBC &amp; Film First · LDH/Calcium/ESR · Myeloma Screen</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The full blood count and blood film are the decisive first investigations; LDH/ESR support lymphoma, calcium and the protein screen support myeloma, and a markedly abnormal count goes straight to haematology. Read the FBC carefully — cytopenias, abnormal white cells or blasts are the clue.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🧪 First-line</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">FBC + blood film (very urgent)</td><td>Cytopenias, abnormal WCC, blasts → marrow disease (NG12 leukaemia).</td></tr>
+            <tr><td class="factor">LDH, ESR/plasma viscosity</td><td>Lymphoma/myeloma support; tumour burden.</td></tr>
+            <tr><td class="factor">U&amp;E, calcium, LFTs</td><td>Renal/hyperCalcaemia (CRAB); organ function.</td></tr>
+            <tr><td class="factor">Coagulation</td><td>Bleeding; DIC.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🔬 Targeted / second-line</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Serum protein electrophoresis + serum-free light chains / Bence Jones</td><td>Suspected myeloma (very urgent if FBC/calcium/ESR abnormal — NG12).</td></tr>
+            <tr><td class="factor">Imaging (CXR/CT)</td><td>Lymphadenopathy/organomegaly; staging (specialist).</td></tr>
+            <tr><td class="factor">Haematinics, blood-borne virus, infection screen</td><td>Differential of cytopenias.</td></tr>
+            <tr><td class="factor">Bone marrow / lymph node biopsy</td><td>Specialist — definitive diagnosis.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key reasoning</div><div class="sca-phrase">"I'll request an urgent full blood count and a blood film, plus markers like LDH and calcium. If the count is very abnormal, I'll speak to haematology the same day; if it points to myeloma, I'll add the protein tests."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not requesting a blood film / not reading the FBC properly</li><li>Forgetting the myeloma screen when indicated</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Diagnosis — Leukaemia · Lymphoma · Myeloma · Benign Mimics</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The GP recognises the pattern and acts; the definitive diagnosis (and type) is the specialist's. Hold the benign mimics, but let persistence and the FBC drive the decision.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:24%">Diagnosis</th><th>Discriminating features</th></tr></thead>
+        <tbody>
+          <tr><td class="q"><strong>Leukaemia</strong></td><td class="why">Marrow failure — fatigue/pallor (anaemia), bruising/petechiae (low platelets), infection (neutropenia); abnormal FBC/blasts; ± hepatosplenomegaly (Raymond).</td></tr>
+          <tr><td class="q"><strong>Lymphoma</strong></td><td class="why">Persistent painless lymphadenopathy + B-symptoms ± hepatosplenomegaly/itch; raised LDH.</td></tr>
+          <tr><td class="q"><strong>Myeloma</strong></td><td class="why">60+, bone/back pain, fracture, recurrent infection, CRAB; paraprotein/light chains.</td></tr>
+          <tr><td class="q"><strong>Myelodysplasia / marrow failure</strong></td><td class="why">Cytopenias in the older patient; dysplastic film.</td></tr>
+          <tr><td class="q"><strong>Benign mimics</strong></td><td class="why">Reactive lymphadenopathy (infection), iron-deficiency anaemia, viral illness, benign bruising — but persistence/constellation/abnormal FBC overrides.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ddx-card ddx-b" style="margin-bottom:4px">
+      <h4>🚩 Recognise the pattern, do the FBC, refer urgently</h4>
+      <p>Raymond's formulation is a constellation of marrow failure (anaemia, thrombocytopenic bruising, recurrent infection) with weight loss, night sweats, splenomegaly and lymphadenopathy — a strong suspicion of haematological malignancy (likely leukaemia). The plan: a very urgent FBC and blood film (NG12), same-day haematology discussion/referral if the count is grossly abnormal, the myeloma/lymphoma screens as indicated, an explicit neutropenic-sepsis safety-net, and honest, supportive communication.</p>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Explaining it plainly</div><div class="sca-phrase">"The combination of things makes me concerned there may be a problem with how your blood and marrow are working. I don't want to guess — an urgent blood test will tell us a lot, and if needed I'll get the blood specialists involved quickly. I'll be honest with you as we get the results."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Settling on a benign label despite the constellation/abnormal FBC</li><li>Not naming the need for urgent specialist input</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc6">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">Referral — Emergency Haematology · 2WW · Same-Day on Abnormal FBC</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Referral is driven by acuity and results: emergencies (neutropenic sepsis, cord compression) are admitted now; a grossly abnormal FBC/blasts gets same-day haematology; and the NG12 red-flag presentations get the 2WW suspected-cancer pathway.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="ref-table">
+        <thead><tr><th style="width:24%">Referral</th><th>Who / when</th><th style="width:20%">Urgency</th></tr></thead>
+        <tbody>
+          <tr><td><strong>🔴 Emergency admission</strong></td><td>Neutropenic sepsis, cord compression, symptomatic hypercalcaemia, hyperviscosity.</td><td><span class="rf-action rfa-999">Same day / 999</span></td></tr>
+          <tr><td><strong>Same-day haematology</strong></td><td>Markedly abnormal FBC / pancytopenia / blasts on film.</td><td><span class="rf-action rfa-999">Same day</span></td></tr>
+          <tr><td><strong>🟣 2WW haematology (NG12)</strong></td><td>Suspected leukaemia/lymphoma/myeloma on red-flag features/results.</td><td><span class="rf-action" style="background:#6d28d9;color:#fff">2WW · NG12</span></td></tr>
+          <tr><td><strong>Children — immediate paediatrics</strong></td><td>Child with leukaemia features (petechiae/hepatosplenomegaly/bone pain).</td><td><span class="rf-action rfa-999">Immediate</span></td></tr>
+          <tr><td><strong>Imaging / biopsy pathways</strong></td><td>Lymphadenopathy/organomegaly — specialist staging/biopsy.</td><td><span class="rf-action rfa-same">Per pathway</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Acting on results</div><div class="sca-phrase">"I'll chase your blood test results myself. If they're very abnormal, I'll phone haematology today and they'll see you urgently; otherwise I'll refer you on the two-week-wait pathway so you're seen quickly either way."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not escalating a grossly abnormal FBC same-day</li><li>Routine referral for a red-flag presentation</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Urgent Work-up &amp; Referral · Safety-Net · Support · The GP's Ongoing Role</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The GP's management is to investigate urgently, refer appropriately, safety-net the emergencies (especially neutropenic sepsis), support the patient and family through a frightening diagnosis, and — once the patient is under specialist care — continue general care, recognise complications, and support treatment side effects.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--g)">⚡ Acute / diagnostic</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Urgent investigation</td><td>Very urgent FBC + film; calcium/LDH/ESR; myeloma screen as indicated; chase results.</td></tr>
+            <tr><td class="factor">Referral</td><td>Same-day haematology if grossly abnormal; 2WW otherwise; emergency admission for complications.</td></tr>
+            <tr><td class="factor">Neutropenic-sepsis safety-net</td><td>"If you feel feverish or unwell, go straight to hospital — don't wait." Critical once immunocompromised/on chemo.</td></tr>
+            <tr><td class="factor">Support &amp; honesty</td><td>Break news sensitively; support patient and family; clear next steps.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🤝 Ongoing GP role</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Recognise complications</td><td>Neutropenic sepsis, hypercalcaemia, cord compression, tumour lysis, hyperviscosity.</td></tr>
+            <tr><td class="factor">Treatment side effects</td><td>Support through chemo/immunotherapy; infections; vaccination considerations.</td></tr>
+            <tr><td class="factor">Holistic &amp; palliative</td><td>Symptom control, psychological support, carers; palliative care where appropriate.</td></tr>
+            <tr><td class="factor">Continuity</td><td>Coordinate with the haematology team; general health; safety-net throughout.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">A plan that scores</div><div class="sca-phrase">"Here's the plan: an urgent blood test within 48 hours which I'll chase, a fast referral to the blood specialists depending on the result, and a clear instruction — if you become feverish or unwell at any point, go straight to hospital, as that can be an emergency. I'll support you and your wife through whatever comes next."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>No urgency / no result follow-up</li><li>No neutropenic-sepsis safety-net</li><li>Insensitive news-breaking; no support for patient/family</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Haematological Cancers — SCA Consultation Scorecard</div><div class="scorecard-sub">Recognise the constellation · very urgent FBC/film (NG12) · 2WW · myeloma screen · neutropenic-sepsis safety-net</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Assembles the constellation</strong> — links separate non-specific symptoms into one picture</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Examines fully</strong> — pallor/bruising, nodes, spleen/liver, temperature; narrated</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Reframes "ageing/tonic" without alarming</strong> — explains why urgent investigation is needed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain-language explanation</strong> — explains blood/marrow concern and the plan</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Breaks possible serious news sensitively</strong> — honest, supportive, not catastrophising</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Explicit safety-net (neutropenic sepsis)</strong> — fever/unwell → hospital immediately</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plan + result follow-up + closing question</strong> — chases results, review, "anything else?"</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, diagnosis, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Recognises the haematological-cancer constellation</strong> — fatigue/pallor/bruising/infection/weight loss/sweats, not "ageing"</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Very urgent FBC + blood film (NG12)</strong> — within 48h to assess for leukaemia</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Recognises &amp; safety-nets neutropenic sepsis</strong> — immediate admission + IV antibiotics; don't wait for the count</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Screens lymphoma &amp; myeloma</strong> — B-symptoms/nodes (LDH/ESR); 60+ bone pain/CRAB → calcium + electrophoresis/FLC</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Reads the FBC / requests a film</strong> — cytopenias/blasts → urgent haematology</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Considers other emergencies</strong> — cord compression, hypercalcaemia, hyperviscosity, tumour lysis</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Appropriate referral by acuity/result</strong> — same-day if grossly abnormal; 2WW otherwise; immediate paeds for children</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Persistence over reassurance</strong> — acts on a progressive/persistent constellation, doesn't falsely reassure</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Ongoing GP role awareness</strong> — complications, treatment support, holistic/palliative, continuity</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct overall plan</strong> — urgent FBC/film + referral by result + neutropenic-sepsis safety-net + support</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decisions</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — his "just ageing / tonic" belief surfaced</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> — the wife's worry / any hidden fear acknowledged</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations addressed</strong> — "tonic" reshaped into urgent investigation</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Balances thoroughness &amp; reassurance</strong> — proportionate, honest pitch</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Involves the family appropriately</strong> — validates the wife's observations</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Honest about uncertainty</strong> — can't say yet; right to check urgently</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Checks understanding</strong> — confirms the plan and the safety-net</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Avoids false reassurance</strong> — doesn't promise it's nothing</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Compassion &amp; support</strong> — empathic to a frightening situation</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Patient/family leave clear &amp; supported</strong> — understand the plan and urgency</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Collaborative close</strong> — plan agreed; safety-net/result follow-up arranged</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">"Just ageing"/tonic; no FBC; constellation/red flags missed; neutropenic sepsis not safety-netted; false reassurance</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">Recognises concern; FBC ordered but not urgent; partial screen; referral not clearly tiered; ICE partial</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Constellation recognised; very urgent FBC/film (NG12); lymphoma/myeloma screened; neutropenic-sepsis safety-net; tiered referral; ICE all three; support</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist to see your score and feedback</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked — areas to develop</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"Doctor, I've just been feeling completely washed out for weeks — no energy, breathless on the stairs. The wife says I look pale and I've got these bruises from nowhere. I expect it's just my age — can you give me a tonic or some iron?"</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>Raymond Clarke, 67, here with your wife. Six weeks of feeling "washed out" — fatigue, breathless on stairs. You've got several bruises you can't explain, and you've had two chest infections in two months. Your wife says you look pale and have lost weight, and you've had some drenching night sweats. You've put it down to getting older and you're hoping for a tonic or iron tablets so you can get on. You don't feel feverish right now.</p></div>
+      <div class="ab"><h5>Hidden concerns (reveal if explored)</h5><p><strong>Wants a quick fix:</strong> you'd rather not make a fuss; a tonic would do.</p><p><strong>Your wife's worry:</strong> she's quietly frightened and pushed you to come — she'll say so if asked.</p><p><strong>Fear (if doctor seems concerned):</strong> you become worried it's serious; you respond to calm, honest explanation.</p></div>
+      <div class="ab"><h5>Clinical details if asked</h5><ul><li>6 weeks progressive fatigue, breathlessness, pallor; unexplained bruising and a few petechiae</li><li>Two chest infections in two months; weight loss; drenching night sweats</li><li>No fever today; no severe back pain/leg weakness; no confusion/extreme thirst</li><li>On examination: pale, scattered bruising/petechiae, a firm spleen tip, small cervical lymph nodes</li><li>No regular medications; previously fairly well</li></ul></div>
+      <div class="ab"><h5>Reactions at key moments</h5><ul><li><strong>If offered a tonic/iron and sent away:</strong> you're satisfied — so a strong candidate must NOT do this and should investigate urgently.</li><li><strong>On "I'd like an urgent blood test":</strong> a bit surprised, reassured by calm explanation.</li><li><strong>On the neutropenic-sepsis advice:</strong> you take it seriously.</li><li><strong>On possible serious news:</strong> anxious; respond well to honesty and support, especially with your wife there.</li><li><strong>Challenge line:</strong> "It's just my age though, isn't it? Can't you just give me something to perk me up?"</li></ul></div>
+    </div>
+    <div class="actor-challenge">"Come on doctor, it's just getting old, isn't it? Can't you give me a tonic or some iron tablets and save us all the fuss of tests?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> Raymond is well served if the GP: (1) recognises the constellation (fatigue/pallor/breathlessness = anaemia; bruising/petechiae = low platelets; recurrent infection; weight loss/night sweats; splenomegaly and lymphadenopathy) as suspected haematological malignancy rather than ageing; (2) arranges a VERY URGENT full blood count and blood film (NICE NG12), plus LDH/calcium and a myeloma screen as indicated, and chases the results; (3) refers same-day to haematology if the count is grossly abnormal, or on the 2WW pathway, and recognises any emergency (notably neutropenic sepsis) with an explicit safety-net; (4) communicates the need for urgent investigation honestly and supportively, involving his wife. He is poorly served if given a "tonic"/iron and reassured it's just age.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Haematological Cancers — Clinical Decision Framework</div><div class="sum-sub">NG12 · constellation · FBC/film · 2WW</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🚦 1 — Recognise &amp; investigate</div>
+    <div class="card" style="padding:.8rem 1rem;margin-bottom:1rem"><p style="font-size:12.5px;line-height:1.6"><strong>Leukaemia:</strong> unexplained bruising/petechiae, pallor, fatigue, recurrent infection, hepatosplenomegaly → <strong>very urgent FBC (48h)</strong> + film (children → immediate paeds). <strong>Lymphoma:</strong> persistent painless lymphadenopathy + B-symptoms ± splenomegaly/itch → FBC/film/LDH/ESR + 2WW. <strong>Myeloma (60+):</strong> bone/back pain, fracture, recurrent infection, CRAB → FBC, calcium, ESR/PV → very urgent protein electrophoresis + FLC/BJP.</p></div>
+    <div class="sum-sub-hdr">🔴 2 — Emergencies &amp; referral</div>
+    <div class="card" style="padding:.8rem 1rem"><p style="font-size:12.5px;line-height:1.6"><strong>Neutropenic sepsis</strong> (unwell/febrile + immunocompromised) → immediate admission + IV antibiotics; don't wait for the count. Also cord compression, hypercalcaemia, hyperviscosity, tumour lysis. <strong>Markedly abnormal FBC/blasts</strong> → same-day haematology. Otherwise <strong>2WW (NG12)</strong>. Safety-net explicitly; act on persistence not reassurance.</p></div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label">SCA Quick Reference</div><div class="sum-title">Haematological Cancers — Consultation Playbook</div><div class="sum-sub">See the constellation · do the FBC · refer · safety-net sepsis</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🎯 The three pivots that pass this case</div>
+    <div class="sum-3col">
+      <div class="snp-phrase-box snp-e"><div class="snp-lbl">1 · See the constellation</div><div class="snp-text">Fatigue/pallor + bruising/petechiae + recurrent infection + weight loss/sweats + nodes/spleen = marrow disease, not ageing.</div></div>
+      <div class="snp-phrase-box snp-m"><div class="snp-lbl">2 · Do the FBC, refer right</div><div class="snp-text">Very urgent FBC + film (NG12); same-day haematology if grossly abnormal; 2WW otherwise. Myeloma → calcium + electrophoresis.</div></div>
+      <div class="snp-phrase-box snp-a"><div class="snp-lbl">3 · Safety-net sepsis</div><div class="snp-text">Neutropenic sepsis (fever/unwell, immunocompromised) = immediate admission + IV antibiotics — don't wait for the count.</div></div>
+    </div>
+    <div class="sdp-pivot" style="margin-top:1rem;font-size:11.5px;background:#fef3c7;color:#854d0e;border-radius:8px;padding:.6rem .85rem;line-height:1.5">⛔ Don't dismiss the constellation as "ageing" or offer a tonic · Don't sit on suspicious bloods — very urgent FBC/film, same-day haematology if grossly abnormal · Don't miss neutropenic sepsis (immediate IV antibiotics) or other emergencies · Don't forget the myeloma screen in the over-60s with bone pain/CRAB · Act on persistence, safety-net, support the family</div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Haematological Cancers (Leukaemia · Lymphoma · Myeloma) · GP Clinical Reasoning Framework v2</strong> · NICE NG12 Suspected cancer (haematological) · NICE NG35 (myeloma) · neutropenic sepsis (CG151) · UK haematology pathways</p>
+  <p style="margin-top:4px">Non-specific presentations — fatigue, weight loss, night sweats, recurrent infection, bruising/bleeding, bone pain, lumps — assemble the constellation · Very urgent FBC (within 48h) + blood film for suspected leukaemia (children → immediate paediatrics) · Lymphoma: persistent lymphadenopathy + B-symptoms → FBC/film/LDH/ESR + 2WW · Myeloma (60+): bone pain/CRAB → FBC, calcium, ESR/PV → very urgent protein electrophoresis + serum-free light chains/BJP · Neutropenic sepsis = immediate admission + IV antibiotics (don't wait for the count); also cord compression, hypercalcaemia, hyperviscosity · Act on persistence; safety-net; support patient &amp; family</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current NICE NG12/NG35 guidance · Clinical judgement takes precedence over any framework</p>
+</div>
+</div><!-- /page -->
+  </main>
+</div><!-- /app -->
+<script src="script.js"></script>
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+</body>
+</html>

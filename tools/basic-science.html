@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Basic Science · GP / SCA Clinical Reasoning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=11" />
+<style>
+  .tool-page{ padding:28px 32px 80px; max-width:1180px; margin:0 auto; }
+  @media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+
+  .tool-breadcrumb{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);margin-bottom:18px;flex-wrap:wrap}
+  .tool-breadcrumb a{color:var(--teal-2);text-decoration:none;font-weight:600;cursor:pointer}
+  .tool-breadcrumb a:hover{color:var(--rust)}
+  .tool-breadcrumb svg{width:11px;height:11px;color:var(--muted-2)}
+
+  .tool-head{padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:18px}
+  .tool-head .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .tool-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(1.8rem,3.4vw,2.4rem);line-height:1.12;margin-top:8px}
+  .tool-head h1 em{font-style:italic;color:var(--teal);font-weight:500}
+  .tool-head p{font-size:14.5px;color:var(--ink-2);margin-top:10px;max-width:72ch;line-height:1.6}
+
+  /* Domain toggle */
+  .bs-domains{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+  .bs-domain{display:flex;align-items:center;gap:11px;flex:1;min-width:240px;padding:13px 16px;background:#fff;border:1px solid var(--line);border-radius:12px;cursor:pointer;text-align:left;transition:all .15s;font:inherit}
+  .bs-domain:hover{border-color:var(--teal);box-shadow:var(--shadow-2)}
+  .bs-domain.is-active{border-color:var(--teal);background:var(--teal-soft);box-shadow:inset 0 0 0 1px var(--teal)}
+  .bsd-ic{font-size:24px;line-height:1}
+  .bs-domain span span,.bs-domain>span{display:flex;flex-direction:column;gap:1px}
+  .bs-domain b{font-size:15px;font-weight:600;color:var(--ink)}
+  .bs-domain small{font-size:12px;color:var(--muted)}
+  .bs-domain.is-active b{color:var(--teal)}
+
+  /* Controls */
+  .ex-controls{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+  .ex-search{position:relative;flex:1;min-width:260px}
+  .ex-search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+  .ex-search input{width:100%;font:inherit;font-size:15px;padding:12px 14px 12px 42px;border:1px solid var(--line-2);border-radius:10px;background:#fff;color:var(--ink)}
+  .ex-search input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px var(--teal-soft)}
+  .ex-count-pill{font-size:13px;color:var(--muted);font-weight:500;white-space:nowrap}
+  .ex-count-pill b{color:var(--ink);font-feature-settings:"tnum"}
+  .ex-empty{display:none;padding:40px 20px;text-align:center;color:var(--muted)}
+  .ex-empty.show{display:block}
+
+  /* Launcher groups */
+  .bs-group{margin-top:28px}
+  .bs-group-head{display:flex;align-items:center;gap:10px;margin-bottom:13px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .bgh-ic{font-size:18px}
+  .bs-group-head h2{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:20px;color:var(--ink);letter-spacing:-.01em}
+  .bgh-count{font-size:11px;font-weight:700;color:var(--muted);background:var(--bg-soft);border:1px solid var(--line);border-radius:99px;padding:2px 9px}
+  .bs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:10px}
+
+  .bs-card{display:flex;align-items:flex-start;gap:12px;padding:14px 15px;background:#fff;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;transition:all .15s ease}
+  .bs-card:hover{border-color:var(--teal);box-shadow:var(--shadow-2);transform:translateY(-1px)}
+  .bs-ic{font-size:22px;line-height:1.1;flex-shrink:0;width:30px;text-align:center}
+  .bs-tx{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+  .bs-tx b{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.25}
+  .bs-tx small{font-size:12px;color:var(--muted);line-height:1.4}
+  .bs-arrow{color:var(--line-2);font-size:16px;flex-shrink:0;align-self:center;transition:.15s}
+  .bs-card:hover .bs-arrow{color:var(--teal);transform:translateX(2px)}
+
+  .ex-foot{margin-top:36px;padding:14px 18px;background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;font-size:12.5px;color:var(--muted);line-height:1.5}
+  .ex-foot strong{color:var(--ink-2)}
+
+  /* Detail */
+  .ex-back{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--teal-2);text-decoration:none;padding:6px 12px;border:1px solid var(--line);border-radius:99px;background:#fff;margin-bottom:16px;transition:all .15s;cursor:pointer}
+  .ex-back:hover{border-color:var(--teal);background:var(--teal-soft);color:var(--teal)}
+  .ex-detail-head{display:flex;gap:16px;align-items:flex-start;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:8px}
+  .ex-dh-ic{font-size:32px;line-height:1;flex-shrink:0;width:56px;height:56px;display:flex;align-items:center;justify-content:center;background:var(--bg-soft);border:1px solid var(--line);border-radius:14px}
+  .ex-dh-sys{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-2);font-weight:700}
+  .ex-detail-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(1.6rem,3vw,2.1rem);line-height:1.12;margin:5px 0 0;color:var(--ink)}
+  .ex-detail-head p{font-size:14px;color:var(--ink-2);margin-top:8px;line-height:1.55;max-width:74ch}
+
+  .bs-sec{margin-top:24px}
+  .bs-sec-h{font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:18px;color:var(--ink);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+
+  .bs-list{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+  .bs-list li{font-size:14px;line-height:1.6;color:var(--ink-2)}
+  .bs-list li strong{color:var(--ink)}
+
+  /* paired rows (effect → mechanism, clue → why) */
+  .bs-pairs{display:flex;flex-direction:column;gap:8px}
+  .bs-pair{display:grid;grid-template-columns:minmax(180px,260px) 1fr;gap:14px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;align-items:start}
+  .bs-pair-k{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.45}
+  .bs-pair-v{font-size:13.5px;color:var(--ink-2);line-height:1.55}
+  .bs-pair-v strong{color:var(--ink)}
+  .bs-impl .bs-pair{border-left:3px solid var(--teal)}
+  .bs-cascade .bs-pair{border-left:3px solid var(--mustard);background:var(--mustard-soft)}
+  .bs-cascade .bs-pair-k{color:var(--rust-2)}
+  @media(max-width:620px){.bs-pair{grid-template-columns:1fr;gap:5px}}
+
+  .ex-chips{display:flex;flex-wrap:wrap;gap:7px}
+  .ex-chip{font-size:13px;line-height:1.4;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink-2)}
+  .ex-chip-eq{background:var(--bg-soft)}
+
+  .ex-keynote{margin-top:24px;padding:13px 16px;background:var(--mustard-soft);border:1px solid var(--mustard);border-radius:10px;font-size:13.5px;color:var(--ink-2);line-height:1.55}
+  .ex-keynote strong{color:var(--ink)}
+
+  .ex-links{display:flex;flex-wrap:wrap;gap:8px}
+  .ex-link{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:var(--ink-2);text-decoration:none;padding:8px 13px;border:1px solid var(--line);border-radius:10px;background:#fff;transition:all .15s}
+  .ex-link:hover{border-color:var(--teal);background:var(--teal-soft);color:var(--teal)}
+</style>
+</head>
+<body data-screen-label="Basic Science tool">
+
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-basicsci"></aside>
+  <main class="main">
+    <div class="tool-page">
+      <div id="bsRoot"></div>
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/filter-rail.js"></script>
+<script src="../assets/basic-science-patho.js"></script>
+<script src="../assets/basic-science-patho-2.js"></script>
+<script src="../assets/basic-science-patho-3.js"></script>
+<script src="../assets/basic-science-patho-4.js"></script>
+<script src="../assets/basic-science-patho-5.js"></script>
+<script src="../assets/basic-science-pharma.js"></script>
+<script src="../assets/basic-science-pharma-2.js"></script>
+<script src="../assets/basic-science-pharma-3.js"></script>
+<script src="../assets/basic-science-pharma-4.js"></script>
+<script src="../assets/basic-science-pharma-5.js"></script>
+<script src="../assets/basic-science.js"></script>
+
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

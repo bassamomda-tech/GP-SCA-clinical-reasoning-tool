@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peripheral Arterial Disease · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="mode-both" id="bodyEl">
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">PAD</div>
+      <div><div class="tb-title">Peripheral Arterial Disease · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE NG224 / CKS 2024</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">ABPI ≤0.9</span><span class="ns-lbl">Diagnostic threshold</span></div>
+    <div class="ns-item"><span class="ns-val">ABPI 0.5–0.9</span><span class="ns-lbl">Claudication range</span></div>
+    <div class="ns-item"><span class="ns-val">ABPI &lt;0.5</span><span class="ns-lbl">Critical limb ischaemia</span></div>
+    <div class="ns-item"><span class="ns-val">200m</span><span class="ns-lbl">Referral walking distance</span></div>
+    <div class="ns-item"><span class="ns-val">QRISK3 ≥10%</span><span class="ns-lbl">Statin threshold</span></div>
+    <div class="ns-item"><span class="ns-val">BP &lt;140/90</span><span class="ns-lbl">Target in PAD</span></div>
+    <div class="ns-item"><span class="ns-val">75mg OD</span><span class="ns-lbl">Clopidogrel first-line</span></div>
+    <div class="ns-item"><span class="ns-val">6 hours</span><span class="ns-lbl">Acute ischaemia window</span></div>
+  </div>
+</div>
+
+<div class="page">
+
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Leg Pain &amp; Walking Difficulty in Primary Care</div>
+  <div class="stem-title">A patient presents with exertional leg pain and reduced walking distance — what should you do?</div>
+  <div class="stem-text">Mr Derek Hargreaves, 64, attends the surgery complaining of a cramping pain in his right calf that comes on after walking about 200 metres and eases when he stops. He has smoked 20/day for 40 years, has type 2 diabetes managed with metformin, and takes ramipril for hypertension. He is worried because he read on the internet that people with blocked arteries can lose their legs. His wife is in the waiting room and is pushing him to "get it sorted."</div>
+  <div class="stem-note">This stem presents a classic intermittent claudication scenario, but in practice PAD presents across a wide spectrum — from incidental findings on ABPI screening to acute limb-threatening ischaemia. The framework below adapts across the following scenarios.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — Classic Claudication</strong> 64M smoker with exertional calf pain at 200m, relieved by rest, worried about amputation. Straightforward PAD — focus on CVD risk reduction, supervised exercise, and managing expectations about prognosis.</div>
+    <div class="stem-variant"><strong>Scenario B — Critical Limb Ischaemia</strong> 72F with rest pain in the foot at night, hanging the leg out of bed for relief, with a non-healing ulcer on the great toe. DM and CKD. Requires same-day vascular assessment — limb-threatening emergency.</div>
+    <div class="stem-variant"><strong>Scenario C — Atypical Presentation</strong> 58M with bilateral thigh heaviness and erectile dysfunction. No classic calf claudication. Aorto-iliac disease (Leriche syndrome) may be missed if you only think of calf pain.</div>
+    <div class="stem-variant"><strong>Scenario D — Incidental Low ABPI</strong> 68F found to have ABPI 0.82 during diabetic foot check. Asymptomatic. QRISK3 already ≥10%. How do you communicate cardiovascular risk without causing alarm?</div>
+    <div class="stem-variant"><strong>Scenario E — Acute Limb Ischaemia</strong> 76M with AF presents with sudden onset cold, pale, pulseless right foot for 4 hours. The 6 Ps are present. This is a surgical emergency — 999 and do not delay.</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Smoking status (current vs ex vs never); diabetes and CKD (accelerate disease, complicate ABPI); ethnicity (higher prevalence in South Asian and Afro-Caribbean populations); pre-existing CVD; walking capacity and functional limitation; patient's understanding and fear of amputation; rest pain vs claudication only.</div>
+  </div>
+</div>
+
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ STEP 1 ═══ -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text">
+      <div class="step-label">Step 1</div>
+      <div class="step-title">History Taking — Open Question First · Targeted Questions · ICE · Psychosocial Context</div>
+    </div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>History is the single highest-yield component of the PAD consultation.</strong> A structured history differentiates intermittent claudication from critical limb ischaemia, identifies the cardiovascular risk burden, screens for acute ischaemia, and — crucially — uncovers the psychosocial fear (usually amputation) that dominates the patient's agenda unless you name it first.</div>
+
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 Consultation opener — use existing information first</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"Good morning Mr Hargreaves. I can see from your notes you've come in about a pain in your leg when you walk. Before I ask anything else, could you tell me in your own words what's been happening?"</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">The case card already states the presenting complaint and key comorbidities. Asking "What brings you in today?" when the stem has told you wastes time and signals to the examiner you haven't read the brief — costing marks in Global Skills.</div>
+    </div>
+
+    <div class="sub-divider">1A — Start with an open question: let the patient lead, then move to targeted questions</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question to ask</th><th style="width:42%">Why it matters clinically</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION — always start here</strong><em>"Tell me about this leg pain — what happens when you walk?"</em></td>
+            <td class="why">Lets the patient describe their experience. Claudication is a clinical diagnosis based on history pattern. An open question reveals location, onset, character, and functional impact without leading.<span class="why-sub">SCA: scores in all three domains — Tasks (data gathering), Relating to Others (rapport), Global Skills (patient-centred opener)</span></td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-ps">Psychosocial</span><span class="chg chg-rx">Rx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Where exactly is the pain?<em>"Can you point to where you feel it most?"</em></td>
+            <td class="why">Calf = superficial femoral artery (most common). Thigh/buttock = aorto-iliac (Leriche). Foot = distal disease. Location predicts level of stenosis and influences surgical options.<span class="why-sub">Buttock claudication + erectile dysfunction = Leriche syndrome — frequently missed</span></td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-ref">Referral</span></td>
+          </tr>
+          <tr>
+            <td class="q">How far can you walk before it starts?<em>"Roughly how far can you get before the pain comes on?"</em></td>
+            <td class="why">&lt;200m = moderate PAD, likely to need vascular referral. &gt;500m = mild, may respond to supervised exercise alone. Serial measurement tracks progression.<span class="why-sub">Use a landmark: "from your front door to the postbox" is more meaningful than metres</span></td>
+            <td><span class="chg chg-ref">Referral</span><span class="chg chg-rx">Rx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Does it go away when you stop?<em>"When you stand still, does the pain ease off? How quickly?"</em></td>
+            <td class="why">Classic claudication resolves within 2–5 minutes of rest. Persistent rest pain = CLI. Pain that requires sitting = consider neurogenic claudication (spinal stenosis).<span class="why-sub">Spinal claudication eases on sitting/leaning forward but NOT on simply standing still — key differentiator</span></td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-urgent">Urgent</span></td>
+          </tr>
+          <tr>
+            <td class="q">Do you get pain at rest, especially at night?<em>"Does your foot ever hurt when you're just sitting or lying in bed?"</em></td>
+            <td class="why">Rest pain = CLI = ABPI typically &lt;0.5. Patients often hang the leg out of bed for gravity-assisted perfusion. Limb-threatening emergency requiring urgent vascular referral.<span class="why-sub">Rest pain worsens with elevation and improves with dependency — the opposite of venous pain</span></td>
+            <td><span class="chg chg-999">999/Urgent</span><span class="chg chg-ref">Referral</span></td>
+          </tr>
+          <tr>
+            <td class="q">Any wounds or ulcers on your feet?<em>"Have you noticed any sores that aren't healing?"</em></td>
+            <td class="why">Non-healing ulcers = tissue loss = CLI. Ischaemic ulcers are on toes/heel, punched-out, pale base (vs venous: shallow, medial malleolus). Gangrene is a surgical emergency.<span class="why-sub">Diabetic neuropathy may mask pain — patient may not notice the ulcer until advanced</span></td>
+            <td><span class="chg chg-999">999/Urgent</span><span class="chg chg-ref">Referral</span></td>
+          </tr>
+          <tr>
+            <td class="q">Any sudden cold, pale, or numb leg?<em>"Has your leg ever suddenly gone cold, white, or numb?"</em></td>
+            <td class="why">Acute limb ischaemia — 6 Ps: Pain, Pallor, Pulselessness, Paraesthesia, Paralysis, Perishingly cold. Surgical emergency (limb viability &lt;6 hours). Usually embolism (AF) or acute thrombosis.<span class="why-sub">If ANY of the 6 Ps are present NOW → 999, do not delay for ABPI</span></td>
+            <td><span class="chg chg-999">999</span></td>
+          </tr>
+          <tr>
+            <td class="q">Smoking history<em>"Have you ever smoked? Are you still smoking now?"</em></td>
+            <td class="why">Smoking is the strongest modifiable risk factor for PAD — stronger than for coronary disease. Continued smoking triples amputation risk and halves graft patency.<span class="why-sub">Quantify: "roughly how many a day, for how many years?"</span></td>
+            <td><span class="chg chg-rx">Rx</span><span class="chg chg-ref">Referral</span></td>
+          </tr>
+          <tr>
+            <td class="q">Other vascular history<em>"Have you ever had a heart attack, stroke, or kidney problems?"</em></td>
+            <td class="why">50% of PAD patients have coexisting coronary or cerebrovascular disease. Changes risk stratification, antiplatelet choice, and statin intensity.<span class="why-sub">PAD + known CVD = secondary prevention intensity</span></td>
+            <td><span class="chg chg-rx">Rx</span><span class="chg chg-inv">Investigations</span></td>
+          </tr>
+          <tr>
+            <td class="q">Diabetes control and foot care<em>"How's your diabetes? When was your last foot check?"</em></td>
+            <td class="why">Diabetes accelerates PAD 2–4 fold; neuropathy masks symptoms. ABPI may be falsely elevated from calcified arteries.<span class="why-sub">Calcified arteries (Mönckeberg's) = ABPI &gt;1.3 = unreliable — request toe pressures</span></td>
+            <td><span class="chg chg-inv">Investigations</span><span class="chg chg-rx">Rx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Erectile dysfunction<em>"Some men with circulation problems also notice difficulty with erections — is that something you've experienced?"</em></td>
+            <td class="why">ED is an early marker of systemic vascular disease. With buttock/thigh claudication, strongly suggests aorto-iliac disease (Leriche syndrome). Impacts QoL and medication choice.<span class="why-sub">Ask men routinely — they rarely volunteer this information</span></td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-ps">Psychosocial</span></td>
+          </tr>
+          <tr>
+            <td class="q">Functional impact on daily life<em>"How is this affecting your day-to-day — work, hobbies, getting around?"</em></td>
+            <td class="why">Claudication distance alone doesn't capture disability. Functional impact drives referral urgency and justifies intervention.<span class="why-sub">SCA: naming functional impact and linking it to the plan scores highly in Relating to Others</span></td>
+            <td><span class="chg chg-ref">Referral</span><span class="chg chg-ps">Psychosocial</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-divider">1B — Red flags: must not miss · must ask · must act</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — act before continuing history</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Acute cold, pale, pulseless limb (6 Ps)</td><td class="rf-why">Acute limb ischaemia — irreversible muscle necrosis within 6 hours. Embolism or acute thrombosis. Limb loss in 10–15% even with intervention; mortality 15–20%.</td><td><span class="rf-action rfa-999">999 → vascular surgery</span></td></tr>
+          <tr><td class="rf-flag">Rest pain requiring opioids / preventing sleep</td><td class="rf-why">Critical limb ischaemia — ABPI &lt;0.5, tissue perfusion inadequate at rest. Without revascularisation, 40% need major amputation within 6 months.</td><td><span class="rf-action rfa-same">Same-day vascular referral</span></td></tr>
+          <tr><td class="rf-flag">Non-healing ulcer on foot or toes (&gt;2 weeks)</td><td class="rf-why">Tissue loss = CLI = Fontaine IV. High risk of osteomyelitis and gangrene. Ischaemic ulcers have punched-out appearance with pale base.</td><td><span class="rf-action rfa-same">Urgent vascular referral (2ww)</span></td></tr>
+          <tr><td class="rf-flag">Gangrene — dry or wet</td><td class="rf-why">Dry gangrene = mummified tissue. Wet gangrene = infected necrosis = sepsis risk = surgical emergency. Both indicate end-stage CLI.</td><td><span class="rf-action rfa-999">Same-day hospital / 999 if wet</span></td></tr>
+          <tr><td class="rf-flag">Rapidly deteriorating claudication (&lt;4 weeks)</td><td class="rf-why">Suggests acute-on-chronic thrombosis or plaque rupture. Rapid deterioration implies a new vascular event requiring urgent assessment.</td><td><span class="rf-action rfa-same">Urgent vascular referral</span></td></tr>
+          <tr><td class="rf-flag">Blue toe syndrome (cyanotic toe, palpable pulses)</td><td class="rf-why">Atheroembolic shower from proximal plaque or aneurysm. Pedal pulses may be present. Risk of further embolisation and renal involvement.</td><td><span class="rf-action rfa-same">Urgent vascular referral</span></td></tr>
+          <tr><td class="rf-flag">Popliteal aneurysm — pulsatile mass behind knee</td><td class="rf-why">50% present with acute ischaemia from thrombosis. Bilateral in 50%. Associated with AAA in 30–50%.</td><td><span class="rf-action rfa-same">Urgent vascular referral</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sg-wrap">
+      <div class="sg-hdr"><span style="font-size:1.1rem">🛡️</span><h3>Safeguarding Considerations — Consider in Every Consultation</h3></div>
+      <div class="sg-body">
+        <div style="font-size:12.5px;color:#4a0072;line-height:1.55;margin-bottom:.75rem;background:#fff;border:1px solid var(--ps-bd);border-radius:var(--rad-sm);padding:.65rem .9rem;border-left:3px solid var(--ps)">
+          <strong>PAD predominantly affects older adults with multiple comorbidities — a population vulnerable to neglect, carer abuse, and self-neglect.</strong> Non-healing ulcers in a patient who "didn't notice" may reflect neglect. Inability to attend appointments may indicate coercive control or carer failure.
+        </div>
+        <div class="sg-grid">
+          <div class="sg-card"><h5>🏠 Domestic Abuse / Intimate Partner Violence</h5><ul><li>Controlling partner may restrict access to GP, pharmacy, or exercise programmes</li><li>Financial abuse may prevent purchase of appropriate footwear or heating</li><li>Partner minimises symptoms: "he's just lazy, he doesn't want to walk"</li><li>Unexplained injuries attributed to "poor circulation" or "tripping due to numb feet"</li></ul></div>
+          <div class="sg-card"><h5>👴 Older Adults / Carer-related Concern</h5><ul><li>Neglected foot care — long toenails, fungal infections, pressure sores unattended</li><li>Malnutrition accelerating wound healing failure and vascular disease</li><li>Carer not administering medications — statins, antiplatelets stopped</li><li>Social isolation preventing attendance at supervised exercise or vascular appointments</li></ul></div>
+          <div class="sg-card"><h5>🧒 Children in the Household</h5><ul><li>Patient with CLI/amputation may be sole carer for grandchildren — assess coping</li><li>Smoking in the home with children — opportunity for whole-household cessation</li><li>Young carer role — child providing wound care or mobility assistance</li><li>Parental disability may impact school attendance if child provides care</li></ul></div>
+          <div class="sg-card"><h5>💊 Self-Harm / Medication Misuse Risk</h5><ul><li>Chronic CLI pain may lead to opioid dependence or misuse</li><li>Diagnosis of "blocked arteries" or threat of amputation can trigger depression and suicidal ideation</li><li>Non-concordance as passive self-harm — "what's the point?"</li><li>Alcohol excess as coping mechanism — accelerates disease, interacts with anticoagulants</li></ul></div>
+        </div>
+        <div class="sg-action"><strong>If a safeguarding concern is identified:</strong> Document concerns clearly using direct quotes. Discuss with safeguarding lead. For adults at risk, consider referral to adult social care under the Care Act 2014. For children, follow local MASH procedures. Do not delay vascular referral — both pathways run in parallel.</div>
+      </div>
+    </div>
+
+    <div class="sub-divider">1C — PMH · FH · Drug history · Social history: management impact</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🧬 PMH / FH — changes management</div>
+        <table class="it">
+          <thead><tr><th>Factor</th><th>Why it matters</th><th>Management impact</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Type 2 diabetes</td><td>2–4× increased PAD risk; neuropathy masks claudication; calcified arteries make ABPI unreliable (&gt;1.3)</td><td class="impact">Toe pressures instead of ABPI; HbA1c &lt;53; intensify foot surveillance</td></tr>
+            <tr><td class="factor">Hypertension</td><td>Independent risk factor for PAD progression and target organ damage</td><td class="impact">Target BP &lt;140/90; ACEi preferred; avoid over-aggressive lowering</td></tr>
+            <tr><td class="factor">Coronary artery disease</td><td>50% of PAD patients have concurrent CAD; shared atherosclerotic burden</td><td class="impact">Secondary prevention intensity; optimise statin + antiplatelet doses</td></tr>
+            <tr><td class="factor">Previous stroke / TIA</td><td>Cerebrovascular disease coexists in 25% — polyvascular phenotype</td><td class="impact">Clopidogrel preferred (CAPRIE); ensure carotid assessment done</td></tr>
+            <tr><td class="factor">Chronic kidney disease</td><td>CKD accelerates arterial calcification; eGFR &lt;30 = contraindication to contrast imaging</td><td class="impact">Use duplex or MRA over contrast angiography; adjust drug doses</td></tr>
+            <tr><td class="factor">Atrial fibrillation</td><td>Commonest cause of acute limb ischaemia via embolism</td><td class="impact">Anticoagulant + antiplatelet = ↑ bleeding risk — discuss with vascular team</td></tr>
+            <tr><td class="factor">Abdominal aortic aneurysm</td><td>AAA and PAD share risk factors; 30–50% of popliteal aneurysms have AAA</td><td class="impact">Ensure AAA screening; popliteal aneurysm → request abdominal USS</td></tr>
+            <tr><td class="factor">Family history premature CVD</td><td>FH CVD &lt;60y ↑ QRISK3; may indicate familial hypercholesterolaemia</td><td class="impact">Check lipids; consider FH if TC &gt;7.5 or LDL &gt;4.9; lipid clinic referral</td></tr>
+            <tr><td class="factor">Depression / anxiety</td><td>PAD + depression = worse outcomes, reduced exercise adherence, higher amputation rates</td><td class="impact">Screen PHQ-2; treat depression actively; IAPT referral</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">💊 Drug history · Social history — clinical impact</div>
+        <table class="it">
+          <thead><tr><th>Factor</th><th>Why it matters</th><th>Management impact</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Current smoking</td><td>Strongest modifiable RF — OR 2.7 for PAD. Continued smoking triples amputation risk, halves graft patency.</td><td class="impact">Cessation = most effective intervention; varenicline + behavioural support</td></tr>
+            <tr><td class="factor">Statin therapy</td><td>Atorvastatin 80mg reduces CV events by 25% in PAD. Prior "intolerance" often nocebo.</td><td class="impact">Start atorvastatin 20–80mg; if intolerant → rosuvastatin or alternate-day</td></tr>
+            <tr><td class="factor">Antiplatelet therapy</td><td>Clopidogrel 75mg NICE-preferred for PAD. Aspirin 75mg alternative.</td><td class="impact">Start clopidogrel; if on aspirin → consider switch; DOAC + antiplatelet needs vascular input</td></tr>
+            <tr><td class="factor">Beta-blockers</td><td>Historical concern largely unfounded (Cochrane 2019) but caution in severe PAD.</td><td class="impact">Do not withhold for cardiac indications; consider alternative if severe claudication worsens</td></tr>
+            <tr><td class="factor">Alcohol excess</td><td>&gt;14u/week contributes to HTN, AF, weight gain. Thiamine deficiency → neuropathy confuses picture.</td><td class="impact">AUDIT-C; brief intervention; address as CVD risk factor</td></tr>
+            <tr><td class="factor">Physical activity level</td><td>Supervised exercise is first-line (NICE NG224) — 2hr/week × 3 months. Sedentary lifestyle accelerates disease.</td><td class="impact">Refer to supervised exercise programme; explain walking INTO pain is therapeutic</td></tr>
+            <tr><td class="factor">Occupation and mobility</td><td>Manual workers face occupational disability; drivers with CLI may not meet DVLA criteria.</td><td class="impact">Occupational health referral; DVLA notification for Group 2 if CLI; fit note</td></tr>
+            <tr><td class="factor">Socioeconomic deprivation</td><td>PAD prevalence 2–3× higher in deprived areas. Barriers: cold homes, food poverty, transport.</td><td class="impact">Social prescribing; ensure exercise programme accessible; explore barriers</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-divider">1D — ICE: Ideas · Concerns · Expectations — in every consultation, not just SCA</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">💡 Why ICE matters in PAD — not a tick-box exercise</div>
+      <p>Patients with PAD often present with a hidden catastrophic fear — amputation — that they may not volunteer. If you don't name this fear and address it directly, your management plan will fall on deaf ears. The patient who believes they are going to lose their leg will not hear your advice about statins and supervised exercise. ICE is the gateway to concordance: once you understand the patient's model, you can reframe the prognosis with real numbers.</p>
+    </div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i">
+        <div class="ice-label">💭 Ideas</div>
+        <div class="ice-phrase">"What do you think might be causing this pain? Have you had any thoughts about what's going on?"</div>
+        <div class="ice-why">Many patients have already self-diagnosed via the internet. Their model may range from "just cramp" to "gangrene." Understanding this lets you tailor your explanation — trivial models mean they won't take treatment seriously; catastrophic models mean they're too anxious to plan.</div>
+      </div>
+      <div class="ice-card ice-c">
+        <div class="ice-label">😟 Concerns</div>
+        <div class="ice-phrase">"I want to understand what's worrying you most. Some people with leg pain worry about very serious things — is there anything specific on your mind?"</div>
+        <div class="ice-why">The unspoken fear is almost always amputation. By naming the possibility before the patient does, you give them permission to voice it. Once named, you can address it with evidence: "Most people with your level of circulation problem do NOT lose their leg."</div>
+      </div>
+      <div class="ice-card ice-e">
+        <div class="ice-label">🎯 Expectations</div>
+        <div class="ice-phrase">"What were you hoping we might be able to do about this today? Were you expecting a scan, medication, or something else?"</div>
+        <div class="ice-why">Patients may expect an immediate scan, a bypass, or simply reassurance. If their expectation is a scan and you explain ABPI comes first, they feel heard. If they expected a pill and you explain exercise is most effective, skilled negotiation bridges the gap.</div>
+      </div>
+    </div>
+
+    <div class="sub-divider">1E — Psychosocial context: the person behind the peripheral arterial disease</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 PAD is a disease of accumulated vascular damage — shaped by decades of social context</div>
+      <p>Peripheral arterial disease is the end product of decades of smoking, metabolic syndrome driven by food poverty, untreated hypertension in populations with poor healthcare access, and depression that reduces motivation to exercise. The psychosocial history determines whether the patient can access supervised exercise, afford the bus to the vascular clinic, or muster the motivation to quit smoking.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card">
+        <h5>🚬 Smoking Identity &amp; Quit Readiness</h5>
+        <p>After 40 years, smoking is woven into identity, social network, and coping strategy. Abrupt "you must stop" rarely works; motivational interviewing is more effective.</p>
+        <span class="ps-phrase">"I can see you've smoked a long time. Can you tell me what smoking means to you day-to-day — is it something you enjoy, or feel stuck with?"</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">Quit-ready → varenicline + structured support. Pre-contemplative → harm reduction, revisit at every contact.</p>
+      </div>
+      <div class="ps-card">
+        <h5>🏠 Social Isolation &amp; Mobility Loss</h5>
+        <p>Claudication shrinks the patient's world. They stop walking to shops, visiting friends, attending clubs. Isolation accelerates depression and reduces exercise — the primary treatment.</p>
+        <span class="ps-phrase">"How has this leg pain changed what you're able to do day-to-day? Are there things you've had to give up?"</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">If isolated → social prescribing, adapted walking groups, community transport to exercise programme.</p>
+      </div>
+      <div class="ps-card">
+        <h5>💼 Occupational Impact &amp; Financial Stress</h5>
+        <p>PAD disproportionately affects manual workers. A bricklayer with 100m claudication faces job loss. Financial stress compounds depression and reduces adherence.</p>
+        <span class="ps-phrase">"Is this affecting your ability to work? Are you worried about your income because of this?"</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">Fit note, occupational health, Citizens Advice for benefits, Access to Work scheme.</p>
+      </div>
+      <div class="ps-card">
+        <h5>😔 Depression &amp; Health Anxiety</h5>
+        <p>PAD + depression halves exercise adherence, doubles smoking relapse, increases CV mortality by 30%. Amputation threat triggers disabling health anxiety.</p>
+        <span class="ps-phrase">"Living with this can take a toll on mood. How have you been feeling — have you been feeling low or anxious?"</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">PHQ-2 positive → full PHQ-9; SSRI (sertraline safe in CVD); IAPT referral.</p>
+      </div>
+      <div class="ps-card">
+        <h5>🍽️ Diet, Poverty &amp; Health Literacy</h5>
+        <p>Mediterranean diet reduces CV events by 30% (PREDIMED), but requires access to fresh food and cooking skills. Patients in food poverty eat processed, high-sodium diets.</p>
+        <span class="ps-phrase">"Can I ask about what you eat day to day? I know healthy eating can be difficult depending on circumstances."</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">Food poverty → food bank signposting, social prescribing, cooking skills programmes.</p>
+      </div>
+      <div class="ps-card">
+        <h5>👥 Carer Burden &amp; Family Dynamics</h5>
+        <p>The patient may be carer for a spouse with dementia or disabled child. Their own health is deprioritised. Alternatively, the spouse may be driving the consultation.</p>
+        <span class="ps-phrase">"Is there anyone at home who depends on you? Sometimes people put their own health last."</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">Carer → carer's assessment, respite care; spouse-driven → explore patient's own priorities.</p>
+      </div>
+    </div>
+
+    <div class="sca-cp sca-only">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say">
+          <div class="sca-block-t">Key phrases that score</div>
+          <div class="sca-phrase">"Tell me about this leg pain — what happens when you walk?"</div>
+          <div class="sca-phrase">"Some people with circulation problems worry about losing their leg — is that on your mind?"</div>
+          <div class="sca-phrase">"How far can you walk before the pain comes on — has that distance been getting shorter?"</div>
+          <div class="sca-phrase">"How is this affecting your day-to-day life and your mood?"</div>
+        </div>
+        <div class="sca-block sca-avoid">
+          <div class="sca-block-t">Deductions (examiner flags)</div>
+          <ul><li>Launching into closed questions without an open starter</li><li>Asking "What brings you in?" when the case card already states the complaint</li><li>Failing to screen for rest pain — missing CLI is a critical safety error</li><li>Not asking about smoking — the most important modifiable risk factor</li><li>Skipping ICE or asking formulaically</li><li>Ignoring functional and psychosocial impact</li></ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red — failing</div><div class="rag-bullets">Closed-question interrogation. No red flag screen. No ICE. No psychosocial enquiry. Missed rest pain or acute ischaemia.</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber — borderline</div><div class="rag-bullets">Open question attempted but reverts to closed. ICE asked formulaically. Red flags partially covered. Psychosocial mentioned but not explored.</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green — passing</div><div class="rag-bullets">Open question first, targeted history flows naturally, red flags covered, ICE explored with amputation fear named, psychosocial mapped to management. Completed by 6–7 minutes.</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ STEP 2 ═══ -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage Engine — Emergency · Urgent · Routine</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Triage in PAD spans a wide acuity range.</strong> Acute limb ischaemia is one of the most time-critical vascular emergencies (6 hours to irreversible damage). Critical limb ischaemia needs urgent vascular assessment. Intermittent claudication — the most common presentation — is managed in primary care with cardiovascular risk reduction and supervised exercise.</div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div><h3>999 or Same-Day Hospital</h3><span class="tc-badge tcb-e">Call 999 / A&amp;E now</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Acute limb ischaemia (6 Ps)</strong><em>Cold, pale, pulseless limb — 6-hour window. 999 to vascular surgery.</em></li>
+          <li class="tc-item"><strong>Wet gangrene / spreading infection</strong><em>Necrotic tissue with purulence, systemic sepsis. Emergency debridement + IV antibiotics.</em></li>
+          <li class="tc-item"><strong>Acute compartment syndrome</strong><em>Tense, swollen calf post-reperfusion. Pain out of proportion. Fasciotomy within hours.</em></li>
+          <li class="tc-item"><strong>Ruptured popliteal aneurysm</strong><em>Acute ischaemia from aneurysm thrombosis — emergency vascular surgery.</em></li>
+          <li class="tc-item"><strong>Concurrent acute coronary syndrome</strong><em>PAD patient with chest pain — cardiac emergency takes priority.</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Urgent</div><h3>Same-Day GP / Urgent Referral</h3><span class="tc-badge tcb-u">Days to 2 weeks</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Rest pain (CLI — Fontaine III)</strong><em>ABPI &lt;0.5, forefoot pain at night. Urgent vascular referral within 2 weeks.</em></li>
+          <li class="tc-item"><strong>Non-healing ischaemic ulcer (Fontaine IV)</strong><em>Tissue loss on toes/heel. 2-week wait vascular referral.</em></li>
+          <li class="tc-item"><strong>Rapidly deteriorating claudication</strong><em>Walking distance halved in &lt;4 weeks — acute plaque event. Urgent assessment.</em></li>
+          <li class="tc-item"><strong>Blue toe syndrome</strong><em>Atheroembolic shower — urgent assessment to identify proximal source.</em></li>
+          <li class="tc-item"><strong>Dry gangrene (localised, no infection)</strong><em>Urgent referral — assess for revascularisation potential.</em></li>
+          <li class="tc-item"><strong>Suspected popliteal aneurysm</strong><em>Pulsatile mass behind knee — urgent duplex + vascular review.</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Routine</div><h3>Manage in Primary Care</h3><span class="tc-badge tcb-r">GP practice</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Stable intermittent claudication</strong><em>Distance stable, no rest pain. CVD risk reduction + supervised exercise.</em></li>
+          <li class="tc-item"><strong>Incidental low ABPI (0.5–0.9)</strong><em>Asymptomatic PAD. Cardiovascular risk factor optimisation.</em></li>
+          <li class="tc-item"><strong>Mild claudication &gt;200m, improving</strong><em>Responding to exercise. Continue primary care management.</em></li>
+          <li class="tc-item"><strong>Post-intervention surveillance</strong><em>Stable post-angioplasty/bypass — annual ABPI, foot checks, CVD review.</em></li>
+          <li class="tc-item"><strong>Lifestyle-limiting claudication &lt;200m</strong><em>CVD management + supervised exercise; vascular referral if no improvement after 3 months.</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div>
+          <div class="sca-phrase">"The good news is that your leg isn't in danger right now — there are no signs this is an emergency."</div>
+          <div class="sca-phrase">"If your foot ever suddenly goes cold, white, or numb, that would be a 999 emergency."</div>
+          <div class="sca-phrase">"Because you get pain only on walking that goes away with rest, we can manage this safely as an outpatient."</div>
+          <div class="sca-phrase">"I'd like to refer you for a supervised walking programme — the most effective treatment we have."</div>
+        </div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions (examiner flags)</div>
+          <ul><li>Failing to exclude CLI or acute ischaemia before reassuring</li><li>Referring all claudication urgently when most is managed in primary care</li><li>Not mentioning the emergency scenario (acute ischaemia) to the patient</li><li>Saying "just poor circulation" without naming cardiovascular risk</li><li>Missing the opportunity to frame supervised exercise as treatment</li><li>Not quantifying prognosis — most claudication is stable</li></ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red — failing</div><div class="rag-bullets">No differentiation between CLI and claudication. Fails to mention emergency scenario. Reassures without excluding red flags.</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber — borderline</div><div class="rag-bullets">Identifies stable claudication but doesn't explain acuity range. Safety-net for acute ischaemia vague.</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green — passing</div><div class="rag-bullets">Triages as non-emergency, explains why, gives specific emergency safety-net, frames management positively.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ STEP 3 ═══ -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Do I Need This Examination?</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Examination in PAD is quick, targeted, and high-yield.</strong> Pulse palpation localises disease. Buerger's test takes 30 seconds and differentiates claudication from CLI. Foot inspection may reveal tissue loss invisible to the patient. In the SCA, requesting only examinations that change management scores higher than a reflexive "full vascular exam."</div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:20%">Examination</th><th style="width:36%">Why it matters</th><th style="width:26%">What finding changes management</th><th>Changes management?</th></tr></thead>
+        <tbody>
+          <tr><td class="q">Peripheral pulse palpation (femoral → popliteal → DP → PT)</td><td class="why">Localises arterial disease level. Absent femoral = aorto-iliac. Present femoral, absent popliteal = SFA. Absent pedal = distal disease.<span class="why-sub">Always compare both legs — unilateral absence is more significant</span></td><td class="why">Absent pulses + symptoms → confirms PAD; pulsatile popliteal → aneurysm → urgent referral</td><td><span class="mcb mcb-yes">YES — localises disease</span></td></tr>
+          <tr><td class="q">ABPI measurement</td><td class="why">Gold standard bedside test. ≤0.9 = PAD. 0.5–0.9 = claudication. &lt;0.5 = CLI. Requires Doppler + sphygmomanometer.<span class="why-sub">ABPI &gt;1.3 = calcified arteries (diabetes/CKD) → unreliable → request toe pressures</span></td><td class="why">ABPI ≤0.9 → confirms diagnosis; &lt;0.5 → CLI → urgent referral; &gt;1.3 → need alternative test</td><td><span class="mcb mcb-yes">YES — diagnostic + severity</span></td></tr>
+          <tr><td class="q">Foot inspection (colour, temperature, skin, ulcers, hair loss)</td><td class="why">Visual/tactile perfusion assessment. Pale/cyanotic, cool, shiny hairless skin = chronic ischaemia. Ulcers on toes/heel = CLI.<span class="why-sub">Diabetic patients may have warm feet (neuropathy) despite significant PAD</span></td><td class="why">Ulcer/gangrene → CLI → urgent referral; between-toe ulcers may be missed by patient</td><td><span class="mcb mcb-yes">YES — detects tissue loss</span></td></tr>
+          <tr><td class="q">Buerger's test (elevation pallor / dependent rubor)</td><td class="why">Elevate legs to 45° → pallor in ischaemic limb. Hang over edge → dependent rubor. Positive at &lt;20° = severe ischaemia.<span class="why-sub">Takes 30 seconds, costs nothing, works in any consulting room</span></td><td class="why">Positive at &lt;20° → severe PAD, likely CLI → expedite vascular referral</td><td><span class="mcb mcb-yes">YES — rapid severity screen</span></td></tr>
+          <tr><td class="q">Capillary refill time (toes)</td><td class="why">Normal &lt;2 seconds. Prolonged &gt;3s suggests reduced perfusion. Quick, non-invasive.<span class="why-sub">Affected by ambient temperature — ensure warm room</span></td><td class="why">Prolonged CRT + absent pulses → supports PAD; &gt;5s → consider CLI</td><td><span class="mcb mcb-yes">YES — supports assessment</span></td></tr>
+          <tr><td class="q">Abdominal aorta palpation</td><td class="why">AAA coexists with PAD in 10–15%. Pulsatile mass &gt;5.5cm → urgent repair.<span class="why-sub">Sensitivity poor in obese patients — request USS if clinical suspicion</span></td><td class="why">Pulsatile mass → urgent USS; &gt;5.5cm → vascular surgery referral</td><td><span class="mcb mcb-yes">YES — detects AAA</span></td></tr>
+          <tr><td class="q">Blood pressure (both arms)</td><td class="why">Bilateral BP detects subclavian stenosis (inter-arm &gt;15mmHg) affecting ABPI accuracy. Essential for CVD risk.<span class="why-sub">Use higher arm for ABPI calculation</span></td><td class="why">Inter-arm &gt;15mmHg → subclavian stenosis; BP &gt;140/90 → antihypertensive needed</td><td><span class="mcb mcb-yes">YES — affects ABPI accuracy</span></td></tr>
+          <tr><td class="q">Heart auscultation</td><td class="why">AF is commonest cause of acute limb ischaemia. Valvular disease may indicate cardiac embolic source.<span class="why-sub">AF detected → CHA₂DS₂-VASc → anticoagulation decision</span></td><td class="why">AF → anticoagulation decision interacts with PAD antiplatelet</td><td><span class="mcb mcb-context">Context — embolic source</span></td></tr>
+          <tr><td class="q">Neurological examination (lower limbs)</td><td class="why">Differentiates vascular from neurogenic claudication. Spinal: bilateral, dermatomal, eased by sitting. Vascular: unilateral, muscular, eased by standing.<span class="why-sub">Also detects diabetic peripheral neuropathy</span></td><td class="why">Dermatomal loss → neurogenic → MRI spine not ABPI; neuropathy → diabetic foot pathway</td><td><span class="mcb mcb-context">Context — DDx spinal stenosis</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div>
+          <div class="sca-phrase">"I'd like to feel the pulses in your legs — this tells me at what level the circulation is affected."</div>
+          <div class="sca-phrase">"I'd like to do a Buerger's test — a quick check of how severe the circulation problem is."</div>
+          <div class="sca-phrase">"I need to check your feet carefully — especially with diabetes, changes can go unnoticed."</div>
+          <div class="sca-phrase">"I'll arrange an ABPI — a simple blood pressure comparison between arm and ankle."</div>
+        </div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions (examiner flags)</div>
+          <ul><li>Requesting "full vascular examination" without specifying what and why</li><li>Not explaining each examination to the patient</li><li>Forgetting ABPI — the key diagnostic test</li><li>Missing foot inspection in a diabetic patient</li><li>Not comparing both legs</li><li>Requesting angiography from primary care</li></ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red — failing</div><div class="rag-bullets">No examination requested or generic "full exam." ABPI not mentioned.</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber — borderline</div><div class="rag-bullets">Pulses and ABPI mentioned but not linked to reasoning. Foot inspection missed.</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green — passing</div><div class="rag-bullets">Targeted: pulses, feet, Buerger's, ABPI — each explained with clear reasoning.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ STEP 4 ═══ -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Do I Need This Investigation?</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Investigations serve two purposes:</strong> (1) confirm the diagnosis and grade severity (ABPI, duplex), and (2) quantify systemic cardiovascular risk (lipids, HbA1c, renal function, ECG). Most are GP-initiated. Imaging beyond ABPI is requested by the vascular team. Do not delay CVD risk management while waiting for results.</div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:20%">Investigation</th><th style="width:32%">Clinical question it answers</th><th>What result changes management?</th></tr></thead>
+        <tbody>
+          <tr><td class="q">ABPI (ankle-brachial pressure index)</td><td class="why">Does this patient have PAD and how severe? Non-invasive, cheap, done in primary care with Doppler.</td><td class="why">≤0.9 → confirms PAD; 0.5–0.9 → claudication; &lt;0.5 → CLI → urgent referral; &gt;1.3 → calcified → toe pressures</td></tr>
+          <tr><td class="q">Full blood count</td><td class="why">Anaemia contributing to symptoms? Polycythaemia increasing thrombosis risk? Infection if ulcers present?</td><td class="why">Hb &lt;100 → anaemia may worsen ischaemia; raised WCC with ulcer → infection → antibiotics</td></tr>
+          <tr><td class="q">HbA1c</td><td class="why">Diabetes present or poorly controlled? DM accelerates PAD 2–4 fold.</td><td class="why">&gt;48 → new DM → metformin; &gt;64 despite Rx → intensify; &lt;53 → target achieved</td></tr>
+          <tr><td class="q">Lipid profile (TC, HDL, LDL, TG)</td><td class="why">Lipid burden and treatment intensity needed? All PAD patients should be on statin regardless.</td><td class="why">LDL &gt;4.9 or TC &gt;7.5 → consider FH → lipid clinic; non-HDL off target → intensify statin</td></tr>
+          <tr><td class="q">Renal function (U&amp;E, eGFR)</td><td class="why">Coexisting CKD? Affects contrast imaging and drug dosing.</td><td class="why">eGFR &lt;30 → avoid contrast (use MRA/duplex); eGFR &lt;45 → review metformin; CKD 3b+ → renal input</td></tr>
+          <tr><td class="q">ECG (resting 12-lead)</td><td class="why">AF (embolic risk)? LVH or previous MI? 50% of PAD have concurrent CAD.</td><td class="why">AF → CHA₂DS₂-VASc → anticoagulation (interacts with antiplatelet); Q waves → undiagnosed IHD</td></tr>
+          <tr><td class="q">QRISK3 cardiovascular risk</td><td class="why">10-year CV risk? PAD is a QRISK3 component — virtually guarantees ≥10%.</td><td class="why">≥10% → statin indicated (almost all PAD); ≥20% → intensified risk management</td></tr>
+          <tr><td class="q">Duplex ultrasound (vascular team)</td><td class="why">Where is the stenosis? What is the flow pattern? First-line imaging for PAD.</td><td class="why">Localises stenosis → guides angioplasty vs bypass; confirms ABPI; detects popliteal aneurysm</td></tr>
+          <tr><td class="q">Toe pressure / TBI</td><td class="why">Is ABPI falsely elevated by calcification? TBI more reliable in diabetes/CKD. TBI &lt;0.7 = PAD.</td><td class="why">TBI &lt;0.7 → confirms PAD when ABPI unreliable; TBI &lt;0.3 → critical ischaemia → urgent referral</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div>
+          <div class="sca-phrase">"I'd like to arrange an ABPI — a simple test comparing blood pressure in your arm and ankle to check blood flow."</div>
+          <div class="sca-phrase">"I'll also check blood tests — cholesterol, blood sugar, kidney function — they all affect your circulation."</div>
+          <div class="sca-phrase">"An ECG checks your heart rhythm — sometimes poor leg circulation is linked to heart rhythm problems."</div>
+          <div class="sca-phrase">"We won't need a scan straight away — the ABPI gives us most of what we need to start treatment."</div>
+        </div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions (examiner flags)</div>
+          <ul><li>Ordering CT angiography from primary care — vascular surgeon's decision</li><li>Not explaining what ABPI is in lay terms</li><li>Ordering investigations without explaining how results change the plan</li><li>Forgetting renal function before ACEi or contrast imaging</li><li>Not requesting ECG — missing AF has serious consequences</li><li>Delaying treatment until investigations return</li></ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red — failing</div><div class="rag-bullets">No ABPI. Orders invasive imaging. No CVD bloods. Delays treatment.</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber — borderline</div><div class="rag-bullets">ABPI mentioned but not explained. Bloods without linking to management. Forgets ECG.</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green — passing</div><div class="rag-bullets">ABPI explained in lay terms, bloods justified, ECG with reasoning, management started in parallel.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ STEP 5 ═══ -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Reaching a Diagnosis &amp; DDx — Explained in Plain Language</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Explaining PAD in plain language is one of the hardest communication challenges in general practice.</strong> The patient needs to understand their arteries are narrowed, this is the same process causing heart attacks, amputation is NOT inevitable, and the most effective treatment is exercise. If you use jargon, the patient hears nothing after "disease."</div>
+
+    <div class="lay-box">
+      <div class="lay-box-lbl">🗣️ Explaining the Diagnosis in Plain Language — say something like this</div>
+      <p>"What's happening is that the blood vessels in your legs have become narrower over time — a bit like old plumbing getting furred up. When you walk and your muscles need more blood, they can't get enough, and that's what causes the cramp. The important thing is that this is the same process that can affect the heart and brain, so we need to look after your whole circulation. The really good news is that for most people, the leg doesn't get worse — and with treatment, we can actually improve how far you walk. The best treatment, believe it or not, is a structured walking programme — it helps your body grow new small blood vessels around the blockage."</p>
+    </div>
+
+    <div class="lay-why-not">
+      <div class="lay-why-not-lbl">💬 Addressing the patient's own explanation — why it may not be the full picture</div>
+      <p><strong>"I just thought it was cramp from getting older."</strong><br><em>"It's understandable to think that. But cramp that comes on at a predictable distance and goes away when you stop is a specific pattern telling us the blood supply isn't quite keeping up. It's worth checking because there are treatments that make a real difference."</em></p>
+      <p><strong>"I read online that people with blocked arteries lose their legs."</strong><br><em>"I can understand why that's frightening. For most people with your level of circulation problem, the risk of losing your leg is actually very low — around 1–2% per year. What matters more is your heart and brain health, because the same furring affects those too. That's why we treat the whole picture."</em></p>
+    </div>
+
+    <div class="g3" style="margin-bottom:12px">
+      <div class="card" style="padding:1rem;border-left:4px solid var(--g)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.4rem">A — Diagnosable in Primary Care</div>
+        <span class="conf-badge conf-gp" style="margin-bottom:.6rem;display:inline-block">GP can diagnose</span>
+        <div class="ddx-card ddx-d" style="margin-bottom:8px"><h4>Intermittent Claudication (Fontaine II)</h4><p>Exertional calf/thigh pain, predictable distance, relieved by 2–5 min rest. ABPI 0.5–0.9. Absent or reduced pulses.</p></div>
+        <div class="ddx-card ddx-d" style="margin-bottom:8px"><h4>Musculoskeletal Leg Pain</h4><p>Not distance-related, may be present at rest, localised tenderness, no pulse deficit. Normal ABPI.</p></div>
+        <div class="ddx-card ddx-d"><h4>Venous Claudication</h4><p>Diffuse leg heaviness, relieved by elevation. Varicose veins, oedema, skin changes. Normal arterial pulses.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--a)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:.4rem">B — Suspected — Refer</div>
+        <span class="conf-badge conf-sus" style="margin-bottom:.6rem;display:inline-block">Refer for confirmation</span>
+        <div class="ddx-card ddx-b" style="margin-bottom:8px"><h4>Spinal Stenosis (Neurogenic Claudication)</h4><p>Bilateral thigh/buttock pain + paraesthesia. Eased by sitting (not standing still). MRI confirms. ABPI normal.</p></div>
+        <div class="ddx-card ddx-b" style="margin-bottom:8px"><h4>Chronic Compartment Syndrome</h4><p>Younger patient, exercise-induced tight calf, resolves 15–30 min. Pulses normal. Compartment pressure testing.</p></div>
+        <div class="ddx-card ddx-b"><h4>Popliteal Artery Entrapment</h4><p>Young athletic patient, calf claudication. Pulses normal at rest, disappear on plantar flexion. Dynamic duplex/MRA.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--r)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--r);margin-bottom:.4rem">C — Emergency — Act Now</div>
+        <span class="conf-badge conf-emerg" style="margin-bottom:.6rem;display:inline-block">Diagnose &amp; act</span>
+        <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Acute Limb Ischaemia</h4><p>Sudden 6 Ps. 6-hour window. 999 to vascular surgery. Do NOT delay for investigations.</p></div>
+        <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Critical Limb Ischaemia (Fontaine III–IV)</h4><p>Rest pain, tissue loss, ABPI &lt;0.5. Limb-threatening — urgent vascular referral.</p></div>
+        <div class="ddx-card ddx-c"><h4>Deep Vein Thrombosis</h4><p>Unilateral swelling, warmth, tenderness. Wells score → D-dimer or USS. Anticoagulation if confirmed.</p></div>
+      </div>
+    </div>
+
+    <div class="card" style="overflow:hidden">
+      <div class="card-hd" style="color:var(--navy)">📊 Fontaine Classification of PAD Severity</div>
+      <table class="rt">
+        <thead><tr><th>Stage</th><th>Clinical Presentation</th><th>ABPI Range</th><th>Management Level</th></tr></thead>
+        <tbody>
+          <tr><td><strong>I</strong></td><td>Asymptomatic — incidental finding</td><td>0.7–0.9</td><td><span class="conf-badge conf-gp">Primary care CVD management</span></td></tr>
+          <tr><td><strong>IIa</strong></td><td>Mild claudication &gt;200m</td><td>0.5–0.9</td><td><span class="conf-badge conf-gp">Supervised exercise + CVD reduction</span></td></tr>
+          <tr><td><strong>IIb</strong></td><td>Moderate-severe claudication &lt;200m</td><td>0.4–0.7</td><td><span class="conf-badge conf-sus">Vascular referral if no improvement after 3m exercise</span></td></tr>
+          <tr><td><strong>III</strong></td><td>Ischaemic rest pain</td><td>&lt;0.5</td><td><span class="conf-badge conf-emerg">Urgent vascular referral (2 weeks)</span></td></tr>
+          <tr><td><strong>IV</strong></td><td>Tissue loss — ulceration, gangrene</td><td>&lt;0.4</td><td><span class="conf-badge conf-emerg">Urgent vascular — limb-threatening</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div>
+          <div class="sca-phrase">"The blood vessels have become narrower — like old plumbing getting furred up."</div>
+          <div class="sca-phrase">"For most people with your level of problem, the risk of losing your leg is very low."</div>
+          <div class="sca-phrase">"This same process can affect heart and brain — we need to look after your whole circulation."</div>
+          <div class="sca-phrase">"The staging system shows you're at a stage where treatment makes the biggest difference."</div>
+        </div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions (examiner flags)</div>
+          <ul><li>Jargon: "peripheral vascular disease," "atherosclerosis," "stenosis" without explanation</li><li>Not addressing amputation fear</li><li>Over-reassuring: "nothing to worry about" — PAD IS serious CVD</li><li>Not mentioning systemic nature</li><li>Failing to share a plain-language diagnosis</li><li>Not framing prognosis positively</li></ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red — failing</div><div class="rag-bullets">Jargon-heavy. Amputation fear unaddressed. No lay diagnosis. No DDx.</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber — borderline</div><div class="rag-bullets">Diagnosis shared with some jargon. Amputation acknowledged but not quantified.</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green — passing</div><div class="rag-bullets">Plain-language analogy. Amputation fear named with numbers. Systemic CVD explained. Positive framing.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ STEP 6 ═══ -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">If Referral Is Needed — What the GP Does Before &amp; During</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Not all PAD needs referral.</strong> Stable intermittent claudication is managed in primary care. Referral is for lifestyle-limiting claudication not improving with exercise, critical limb ischaemia, or acute ischaemia. The GP optimises medical management and provides the vascular team with ABPI, bloods, and a clear clinical picture.</div>
+    <div class="card" style="overflow:hidden">
+      <table class="ref-table">
+        <thead><tr><th>Condition</th><th>Urgency</th><th>What GP does before referral</th><th>What GP must NOT do</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">Acute limb ischaemia (6 Ps)</td><td><span class="ref-urg rurg-999">999 Immediate</span></td><td style="font-size:12px">Call 999. Aspirin 300mg if not on antiplatelet. Keep limb horizontal. IV access if possible. Document time of onset.</td><td style="font-size:12px;color:var(--r)">Do NOT delay for investigations. Do NOT elevate limb. Do NOT apply heat. Do NOT discharge to outpatient.</td></tr>
+          <tr><td style="font-weight:600">CLI — rest pain</td><td><span class="ref-urg rurg-2">2 weeks</span></td><td style="font-size:12px">ABPI (expect &lt;0.5). Start antiplatelet + statin. Analgesia. Mark "suspected CLI" on referral. Include smoking status.</td><td style="font-size:12px;color:var(--r)">Do NOT delay referral for blood results. Do NOT start compression. Do NOT say "exercise will fix it."</td></tr>
+          <tr><td style="font-weight:600">CLI — tissue loss</td><td><span class="ref-urg rurg-2">2 weeks</span></td><td style="font-size:12px">Photograph wound (consent). Swab if infected. Flucloxacillin if cellulitis. ABPI + bloods. Optimise DM control.</td><td style="font-size:12px;color:var(--r)">Do NOT debride ischaemic ulcers in primary care. Do NOT apply compression. Do NOT wait for wound to heal.</td></tr>
+          <tr><td style="font-weight:600">Lifestyle-limiting claudication (&lt;200m, failed exercise)</td><td><span class="ref-urg rurg-4">4–6 weeks</span></td><td style="font-size:12px">Document distance. ABPI. 3 months supervised exercise completed. CVD fully optimised. Functional impact in referral.</td><td style="font-size:12px;color:var(--r)">Do NOT refer before exercise trial unless red flags. Do NOT imply surgery is guaranteed.</td></tr>
+          <tr><td style="font-weight:600">Suspected popliteal aneurysm</td><td><span class="ref-urg rurg-2">2 weeks</span></td><td style="font-size:12px">Urgent duplex USS. Check AAA (abdominal USS). Check contralateral popliteal. Start antiplatelet.</td><td style="font-size:12px;color:var(--r)">Do NOT discharge without imaging. Do NOT assume asymptomatic = safe. Do NOT forget AAA screen.</td></tr>
+          <tr><td style="font-weight:600">Blue toe syndrome</td><td><span class="ref-urg rurg-2">2 weeks</span></td><td style="font-size:12px">Photograph. Check proximal pulses. ABPI + duplex request. Start antiplatelet. Consider echo if cardiac source.</td><td style="font-size:12px;color:var(--r)">Do NOT dismiss as Raynaud's without checking pulses. Do NOT assume local source. Do NOT delay.</td></tr>
+          <tr><td style="font-weight:600">Supervised exercise programme</td><td><span class="ref-urg rurg-r">Routine</span></td><td style="font-size:12px">Confirm ABPI ≤0.9. No contraindications (unstable angina, decompensated HF). Refer to local SEP — 2hr/week × 3 months. Written info.</td><td style="font-size:12px;color:var(--r)">Do NOT just tell patient to "walk more." Do NOT refer without explaining walking INTO pain is the treatment.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div>
+          <div class="sca-phrase">"The best treatment is a supervised walking programme — not surgery."</div>
+          <div class="sca-phrase">"I'll refer you to a programme where a physio helps you walk further over about 3 months."</div>
+          <div class="sca-phrase">"If exercise doesn't improve things, we'd then consider the vascular specialists."</div>
+          <div class="sca-phrase">"I want to start treatment for your whole circulation today — we won't just wait."</div>
+        </div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions (examiner flags)</div>
+          <ul><li>Referring every claudication urgently to vascular surgery</li><li>Not mentioning supervised exercise as first-line</li><li>Implying surgery is the answer</li><li>Failing to start CVD management while awaiting referral</li><li>Not explaining what happens at vascular clinic</li><li>Referring without optimising medical management</li></ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red — failing</div><div class="rag-bullets">Refers all patients urgently. No exercise. No CVD management. Patient uncertain.</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber — borderline</div><div class="rag-bullets">Appropriate referral but without explaining stepped approach. Medical management started but not explained.</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green — passing</div><div class="rag-bullets">Stepped: exercise first, vascular if fails. CVD started today. Patient understands plan and timeline.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ STEP 7 ═══ -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Expectation · Goals · Lifestyle · Drug Selector · Drug Cards · Psychosocial · Follow-Up · Safety-Netting</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Management of PAD is fundamentally about cardiovascular risk reduction.</strong> The leg is the presenting symptom, but the real threat is MI and stroke — 5-year mortality 20–30%, mostly cardiovascular. Three pillars: (1) supervised exercise, (2) smoking cessation, (3) best medical therapy (antiplatelet + statin + BP control). Revascularisation is for lifestyle-limiting claudication unresponsive to exercise, or CLI.</div>
+
+    <!-- 7A -->
+    <div class="sub-divider">7A — Address the patient's expectation first: validate → explain → negotiate</div>
+    <div class="expect-box">
+      <div class="expect-box-hdr"><span style="font-size:1.4rem">🤝</span><div class="expect-box-lbl">Never dismiss the expectation — acknowledge it, share your reasoning, then agree a shared plan</div></div>
+      <div class="expect-steps">
+        <div class="expect-step">
+          <div class="expect-step-num">1</div>
+          <h5>Validate — name their expectation</h5>
+          <p>The patient may expect a scan, an operation, or reassurance. Start by naming what you think they want.</p>
+          <span class="expect-phrase">"I can see you're worried, and I think what you'd most like to know is whether this will get worse and whether you need an operation. Is that right?"</span>
+        </div>
+        <div class="expect-step">
+          <div class="expect-step-num">2</div>
+          <h5>Explain — share your clinical reasoning</h5>
+          <p>Use numbers: the chance of amputation is 1–2%/year, but the chance of MI/stroke is much higher — that's why we treat the whole circulation.</p>
+          <span class="expect-phrase">"The most effective treatment — even more than surgery for many — is a structured walking programme combined with medication to protect your arteries."</span>
+        </div>
+        <div class="expect-step">
+          <div class="expect-step-num">3</div>
+          <h5>Negotiate — offer something today</h5>
+          <p>Start antiplatelet and statin today. Arrange exercise referral. Book ABPI. Give a clear next step and follow-up date.</p>
+          <span class="expect-phrase">"Here's what I'd like to do today: start two tablets, refer you for the walking programme, book a test to measure blood flow, and see you in 4 weeks."</span>
+        </div>
+      </div>
+      <div style="background:rgba(21,128,61,.08);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.65rem 1rem;margin-top:.75rem;font-size:12.5px;color:#14532d;line-height:1.55">
+        <strong>Key principle:</strong> Patients accept "exercise before surgery" only when they understand WHY exercise works (grows new blood vessels) and that surgery is the next step if exercise isn't enough — not being withheld.
+      </div>
+    </div>
+
+    <!-- 7B -->
+    <div class="sub-divider">7B — Why treatment matters: goals tailored to this patient</div>
+    <div class="g2" style="margin-bottom:1rem">
+      <div class="card" style="padding:1rem 1.1rem">
+        <div class="card-hd" style="color:var(--g);border:none;padding:0 0 .6rem">Treatment goals</div>
+        <div class="tx-goals">
+          <span class="tx-goal tg1">↑ Walking distance 50–200%</span><span class="tx-goal tg1">↓ CV mortality 25–30%</span>
+          <span class="tx-goal tg2">↓ MI/stroke risk</span><span class="tx-goal tg2">↓ Amputation risk &lt;2%/yr</span>
+          <span class="tx-goal tg3">BP &lt;140/90</span><span class="tx-goal tg3">HbA1c &lt;53mmol/mol</span>
+          <span class="tx-goal tg4">Smoking cessation</span><span class="tx-goal tg4">Patient concordance</span>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem">
+        <div class="card-hd" style="color:var(--b);border:none;padding:0 0 .6rem">Motivational language — tailored to the patient</div>
+        <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--b-bd);padding:.55rem .85rem;background:var(--b-bg);border-radius:0 8px 8px 0;line-height:1.6;margin-bottom:.5rem">"For every 100 people like you who take a statin and keep walking, about 25 who would have had a heart attack won't have one. That's a big difference for a small tablet."</div>
+        <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.6">"You told me the most important thing is walking to the park with your grandchildren. Everything we're doing today is aimed at getting you back to that."</div>
+      </div>
+    </div>
+
+    <!-- 7C -->
+    <div class="sub-divider">7C — Non-medication management: mechanism + evidence + tailored advice</div>
+    <div class="step-intro" style="margin-bottom:.75rem"><strong>Never give generic lifestyle advice.</strong> In PAD, lifestyle interventions have specific vascular mechanisms. Supervised exercise grows collateral vessels. Smoking cessation halves progression. Mediterranean diet reduces CV events 30%. Each piece of advice must name the mechanism, evidence, and practical action.</div>
+    <div class="life-grid" style="margin-bottom:1.25rem">
+      <div class="life-card"><div class="life-head"><span class="life-icon">🚶</span><div class="life-title">Supervised Exercise Programme</div><span class="life-target">2hr/week × 3 months (NICE NG224)</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Repeated ischaemia-reperfusion stimulates angiogenesis — new collateral vessels around stenosis. Improves endothelial function and muscle oxygen extraction.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Refer to NHS supervised exercise programme. Walk until moderate pain (3/5), rest, repeat 30–45 min. Walking INTO the pain is the treatment — reassure this is safe.</p></div><span class="life-benefit">Walking distance ↑ 50–200% (Cochrane 2017)</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">🚭</span><div class="life-title">Smoking Cessation</div><span class="life-target">Complete cessation</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Nicotine causes vasoconstriction, platelet aggregation, endothelial damage. CO reduces oxygen capacity. Continued smoking triples amputation risk.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Offer varenicline + behavioural support. Set quit date within 2 weeks. NRT as alternative. Vaping as harm reduction. Follow up 2, 4, 12 weeks.</p></div><span class="life-benefit">Amputation risk ↓ 3-fold; CV events ↓ 36%</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">🥗</span><div class="life-title">Mediterranean Diet</div><span class="life-target">↑ fish, olive oil, veg, nuts · ↓ processed</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Anti-inflammatory pattern reduces oxidative stress and endothelial dysfunction. Omega-3 has anti-thrombotic properties. High fibre improves glycaemic control.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Oily fish 2×/week. Cook with olive oil. Handful unsalted nuts daily. 5+ fruit/veg. Reduce processed meat. Whole grains over white.</p></div><span class="life-benefit">CV events ↓ 30% (PREDIMED)</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">🦶</span><div class="life-title">Foot Care</div><span class="life-target">Daily inspection + podiatry</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Ischaemic feet heal poorly. Minor trauma progresses to ulcers, infection, gangrene. Diabetic neuropathy means patient may not feel injury.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Daily inspection (mirror for soles). Wash/dry between toes. Never walk barefoot. Professionally fitted shoes. Podiatry for nails. Report any colour/temp change immediately.</p></div><span class="life-benefit">Prevents up to 50% of amputations</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">⚖️</span><div class="life-title">Weight Management</div><span class="life-target">BMI 20–25 or 5–10% loss</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Obesity worsens insulin resistance, raises BP and LDL, mechanically impairs walking. Weight loss reduces all four pathways.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>5–10% loss is meaningful. Combine with supervised exercise. Consider GLP-1 if BMI ≥35 + T2DM. Sustainable changes, not crash diets.</p></div><span class="life-benefit">↓ BP 5–10mmHg per 5% weight loss</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">🍺</span><div class="life-title">Alcohol Moderation</div><span class="life-target">&lt;14 units/week, ≥3 days spread</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Excess alcohol raises BP, contributes to AF (embolic risk), causes weight gain, interacts with anticoagulants. Thiamine deficiency → neuropathy.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>AUDIT-C screen. &gt;14u/week → brief intervention. If dependent → specialist services. Count units explicitly. Alcohol-free days alone insufficient.</p></div><span class="life-benefit">↓ BP 2–4mmHg; ↓ AF risk; ↓ bleeding risk</span></div></div>
+    </div>
+
+    <!-- 7D -->
+    <div class="sub-divider">7D — Drug selector: prescribing guide for PAD</div>
+    <div class="step-intro" style="margin-bottom:.75rem"><strong>Three pillars of best medical therapy:</strong> antiplatelet (clopidogrel 75mg), high-intensity statin (atorvastatin 80mg), and BP control (ACEi/ARB first-line). Start all three at diagnosis — do not wait for vascular referral.</div>
+    <div class="g3" style="margin-bottom:1.25rem">
+      <div class="card" style="padding:1rem 1.1rem;border-top:4px solid var(--r)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--r);margin-bottom:.55rem">Antiplatelet Therapy</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:.3rem">First-line: Clopidogrel 75mg OD</div>
+        <p style="font-size:12.5px;line-height:1.55;margin-bottom:.45rem">NICE NG224: clopidogrel preferred over aspirin for PAD. CAPRIE trial showed 8.7% relative risk reduction vs aspirin for vascular events in PAD subgroup.</p>
+        <p style="font-size:12.5px;line-height:1.55;margin-bottom:.45rem"><strong>Alternative:</strong> Aspirin 75mg OD if clopidogrel contraindicated or not tolerated.</p>
+        <p style="font-size:12.5px;line-height:1.55;margin-bottom:.45rem"><strong>Dual antiplatelet:</strong> Not routine in PAD. COMPASS trial (rivaroxaban 2.5mg BD + aspirin) showed benefit in stable atherosclerotic disease — specialist decision only.</p>
+        <div style="font-size:11.5px;color:var(--r);font-weight:600;margin-top:.5rem">⚠️ If on anticoagulant (AF): discuss with vascular team before adding antiplatelet — bleeding risk</div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem;border-top:4px solid var(--a)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:.55rem">Statin Therapy</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:.3rem">Atorvastatin 80mg OD (secondary prevention)</div>
+        <p style="font-size:12.5px;line-height:1.55;margin-bottom:.45rem">PAD = established atherosclerotic CVD → secondary prevention intensity. Heart Protection Study: simvastatin reduced CV events 22% in PAD subgroup regardless of baseline cholesterol.</p>
+        <p style="font-size:12.5px;line-height:1.55;margin-bottom:.45rem"><strong>If intolerant:</strong> Try lower dose (atorvastatin 20mg) → rosuvastatin → alternate-day dosing. True statin intolerance is rare (~5%). Re-challenge after washout.</p>
+        <p style="font-size:12.5px;line-height:1.55;margin-bottom:.45rem"><strong>Target:</strong> Non-HDL cholesterol reduction ≥40% from baseline. Recheck at 3 months.</p>
+        <div style="font-size:11.5px;color:var(--a);font-weight:600;margin-top:.5rem">⚠️ Check LFTs at baseline and 3 months. CK only if symptomatic.</div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem;border-top:4px solid var(--b)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--b);margin-bottom:.55rem">Blood Pressure Control</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:.3rem">Target: &lt;140/90 mmHg (ACEi/ARB first-line)</div>
+        <p style="font-size:12.5px;line-height:1.55;margin-bottom:.45rem">ACE inhibitor (ramipril) or ARB has additional vascular protective effects beyond BP reduction (HOPE trial). Amlodipine second-line.</p>
+        <p style="font-size:12.5px;line-height:1.55;margin-bottom:.45rem"><strong>Caution:</strong> Avoid over-aggressive BP lowering in severe PAD — already compromised perfusion. Do not reduce systolic below 110mmHg.</p>
+        <p style="font-size:12.5px;line-height:1.55;margin-bottom:.45rem"><strong>If diabetic:</strong> BP target &lt;140/90 same. Check U&E 2 weeks after ACEi start. eGFR drop &gt;25% → stop and investigate renal artery stenosis.</p>
+        <div style="font-size:11.5px;color:var(--b);font-weight:600;margin-top:.5rem">⚠️ eGFR drop &gt;25% on ACEi → consider renal artery stenosis (common in PAD patients)</div>
+      </div>
+    </div>
+
+    <!-- 7E -->
+    <div class="sub-divider">7E — Drug cards: key medications in PAD management</div>
+    <div class="drug-grid">
+      <div class="drug-card">
+        <div class="drug-hdr"><div class="drug-name">Clopidogrel</div><div class="drug-class">Antiplatelet · P2Y12 inhibitor</div></div>
+        <div class="drug-body">
+          <div class="drug-row"><span class="drug-lbl">Dose</span><span class="drug-val">75mg once daily</span></div>
+          <div class="drug-row"><span class="drug-lbl">Indication</span><span class="drug-val">First-line antiplatelet for symptomatic PAD (NICE NG224). Preferred over aspirin based on CAPRIE trial.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Mechanism</span><span class="drug-val">Irreversibly inhibits P2Y12 ADP receptor on platelets → ↓ aggregation for platelet lifespan (7–10 days).</span></div>
+          <div class="drug-row"><span class="drug-lbl">Key side effects</span><span class="drug-val">Bleeding (GI, bruising), diarrhoea, rash. TTP (rare). GI upset less than aspirin.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Monitoring</span><span class="drug-val">No routine monitoring. Watch for bleeding signs. Check FBC if bruising.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Caution</span><span class="drug-val">Omeprazole inhibits CYP2C19 activation → use lansoprazole if PPI needed. Stop 7 days pre-surgery.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Patient advice</span><span class="drug-val">"This tablet makes your blood less sticky to protect you from heart attacks and strokes. Take it every day. You may bruise more easily — that's expected."</span></div>
+        </div>
+      </div>
+      <div class="drug-card">
+        <div class="drug-hdr"><div class="drug-name">Aspirin</div><div class="drug-class">Antiplatelet · COX-1 inhibitor</div></div>
+        <div class="drug-body">
+          <div class="drug-row"><span class="drug-lbl">Dose</span><span class="drug-val">75mg once daily (after food)</span></div>
+          <div class="drug-row"><span class="drug-lbl">Indication</span><span class="drug-val">Second-line antiplatelet for PAD if clopidogrel contraindicated. Loading 300mg in acute ischaemia.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Mechanism</span><span class="drug-val">Irreversibly inhibits COX-1 → ↓ thromboxane A2 → ↓ platelet aggregation.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Key side effects</span><span class="drug-val">GI bleeding (higher than clopidogrel), dyspepsia, bronchospasm (aspirin-sensitive asthma).</span></div>
+          <div class="drug-row"><span class="drug-lbl">Monitoring</span><span class="drug-val">No routine. Consider PPI co-prescription if GI risk factors (age &gt;65, prior GI bleed, NSAID, steroid).</span></div>
+          <div class="drug-row"><span class="drug-lbl">Caution</span><span class="drug-val">Avoid in aspirin-sensitive asthma, active PUD, children &lt;16 (Reye's). Stop 7 days pre-surgery.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Patient advice</span><span class="drug-val">"Take after food to protect your stomach. Watch for dark stools (bleeding) — tell us straight away."</span></div>
+        </div>
+      </div>
+      <div class="drug-card">
+        <div class="drug-hdr"><div class="drug-name">Atorvastatin</div><div class="drug-class">Lipid-lowering · HMG-CoA reductase inhibitor</div></div>
+        <div class="drug-body">
+          <div class="drug-row"><span class="drug-lbl">Dose</span><span class="drug-val">80mg once daily (secondary prevention). 20mg if primary prevention.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Indication</span><span class="drug-val">All patients with PAD — secondary prevention of CVD. Regardless of baseline cholesterol.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Mechanism</span><span class="drug-val">Inhibits HMG-CoA reductase → ↓ hepatic cholesterol synthesis → ↑ LDL receptor expression → ↓ LDL.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Key side effects</span><span class="drug-val">Myalgia (common, usually tolerable), raised LFTs, rhabdomyolysis (rare). New-onset DM at high doses.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Monitoring</span><span class="drug-val">LFTs at baseline and 3 months. Lipid profile at 3 months (target non-HDL ↓ ≥40%). CK only if symptomatic.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Caution</span><span class="drug-val">Active liver disease. Pregnancy/breastfeeding. Macrolide antibiotics and grapefruit juice ↑ levels.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Patient advice</span><span class="drug-val">"This protects your blood vessels from further furring up. Muscle aches are common in the first few weeks and usually settle — don't stop without speaking to us."</span></div>
+        </div>
+      </div>
+      <div class="drug-card">
+        <div class="drug-hdr"><div class="drug-name">Ramipril</div><div class="drug-class">ACE inhibitor · Antihypertensive</div></div>
+        <div class="drug-body">
+          <div class="drug-row"><span class="drug-lbl">Dose</span><span class="drug-val">1.25mg OD titrated to 10mg OD (start low, go slow)</span></div>
+          <div class="drug-row"><span class="drug-lbl">Indication</span><span class="drug-val">First-line antihypertensive in PAD. Vascular protection beyond BP reduction (HOPE trial). Also indicated if DM/CKD.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Mechanism</span><span class="drug-val">Inhibits ACE → ↓ angiotensin II → vasodilation + ↓ aldosterone → ↓ BP + cardio/vascular protection.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Key side effects</span><span class="drug-val">Dry cough (10–15% — switch to ARB), hyperkalaemia, AKI, angioedema (rare, serious).</span></div>
+          <div class="drug-row"><span class="drug-lbl">Monitoring</span><span class="drug-val">U&E + eGFR at baseline, 1–2 weeks after start/dose change. BP at each visit. eGFR drop &gt;25% → stop and investigate.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Caution</span><span class="drug-val">eGFR drop &gt;25% → suspect renal artery stenosis (common in PAD). Bilateral RAS = contraindication. Hyperkalaemia.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Patient advice</span><span class="drug-val">"This lowers blood pressure and protects the blood vessels and kidneys. A dry cough may develop — that's a known side effect, not an allergy. Tell us so we can switch to a similar tablet."</span></div>
+        </div>
+      </div>
+      <div class="drug-card">
+        <div class="drug-hdr"><div class="drug-name">Varenicline</div><div class="drug-class">Smoking cessation · Partial nicotinic agonist</div></div>
+        <div class="drug-body">
+          <div class="drug-row"><span class="drug-lbl">Dose</span><span class="drug-val">0.5mg OD days 1–3, 0.5mg BD days 4–7, then 1mg BD for 11 weeks. Set quit date day 8–14.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Indication</span><span class="drug-val">Most effective smoking cessation pharmacotherapy. 3× quit rate vs placebo. Essential in PAD — smoking cessation is the single most impactful intervention.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Mechanism</span><span class="drug-val">Partial agonist at α4β2 nicotinic receptors → reduces craving and withdrawal + blocks rewarding effect of smoking.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Key side effects</span><span class="drug-val">Nausea (most common — take with food), vivid dreams, insomnia, headache. Neuropsychiatric effects rare but monitor.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Monitoring</span><span class="drug-val">Review at 2 weeks (quit date), 4 weeks, 8 weeks, 12 weeks. Monitor mood changes. Can extend to 24 weeks if needed.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Caution</span><span class="drug-val">History of severe psychiatric illness — use with support. Dose reduce in eGFR &lt;30. Monitor mood actively.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Patient advice</span><span class="drug-val">"This is the most effective stop-smoking tablet. You start it while still smoking and set a quit date in the second week. Nausea is common but taking it with food helps."</span></div>
+        </div>
+      </div>
+      <div class="drug-card">
+        <div class="drug-hdr"><div class="drug-name">Naftidrofuryl oxalate</div><div class="drug-class">Vasodilator · 5-HT2 receptor antagonist</div></div>
+        <div class="drug-body">
+          <div class="drug-row"><span class="drug-lbl">Dose</span><span class="drug-val">100–200mg TDS</span></div>
+          <div class="drug-row"><span class="drug-lbl">Indication</span><span class="drug-val">Only vasodilator with NICE approval for intermittent claudication. Consider if supervised exercise not available/tolerated AND patient declines revascularisation.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Mechanism</span><span class="drug-val">Blocks 5-HT2 receptors in vascular smooth muscle → vasodilation + ↑ aerobic metabolism in ischaemic muscle.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Key side effects</span><span class="drug-val">Nausea, diarrhoea, rash, hepatotoxicity (rare). Epigastric pain.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Monitoring</span><span class="drug-val">Review at 3–6 months — discontinue if no symptomatic improvement. LFTs if hepatic symptoms.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Caution</span><span class="drug-val">Not a substitute for exercise or CVD management. Limited evidence base. Do not use in CLI.</span></div>
+          <div class="drug-row"><span class="drug-lbl">Patient advice</span><span class="drug-val">"This may help improve blood flow to your muscles. We'll trial it for 3–6 months — if there's no improvement in walking distance, we'll stop it."</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7F -->
+    <div class="sub-divider">7F — Psychosocial prescribing: linking back to the person</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 Psychosocial prescribing — connecting management to Step 1 context</div>
+      <p>Every treatment decision must account for the patient's psychosocial reality identified in Step 1. Prescribing atorvastatin 80mg to a man terrified of amputation without addressing that fear means the tablet goes in the drawer. Referring to supervised exercise when the patient can't afford the bus means the appointment is missed.</p>
+    </div>
+    <div class="ps-grid" style="margin-bottom:1.25rem">
+      <div class="ps-card">
+        <h5>🚬 Smoking Identity → Cessation Support</h5>
+        <p>Step 1 revealed a 40-year smoking history woven into identity and social routine. Abrupt instruction fails.</p>
+        <span class="ps-phrase">"I know smoking has been part of your life for a long time. Rather than telling you to just stop, I'd like to offer you the most effective support — a combination of medication and a programme that helps you at your pace."</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">Action: Varenicline + local stop-smoking service. Address social triggers (pub, tea breaks). Consider vaping as stepped harm reduction.</p>
+      </div>
+      <div class="ps-card">
+        <h5>😔 Amputation Fear → Reframe with Numbers</h5>
+        <p>The internet has told this patient he will lose his leg. This fear dominates until addressed.</p>
+        <span class="ps-phrase">"You mentioned you'd read about people losing their legs. For people at your stage, the risk of that is around 1–2% a year — very low. What's more important is protecting your heart and brain, which is what our treatment does."</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">Action: Written information. Vascular patient charity. Offer follow-up to check understanding.</p>
+      </div>
+      <div class="ps-card">
+        <h5>👥 Wife's Influence → Involve as Ally</h5>
+        <p>The wife is in the waiting room "pushing him to get it sorted." This is either support or control — explore which.</p>
+        <span class="ps-phrase">"Your wife is clearly concerned about you. Would it be helpful to bring her in so we can explain the plan together? Sometimes it helps when everyone understands the same information."</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">Action: Invite partner in (with consent). Give written info for both. Address her concerns too — she may be more frightened than him.</p>
+      </div>
+      <div class="ps-card">
+        <h5>🏠 Social Isolation → Exercise Access</h5>
+        <p>Reduced walking distance has shrunk his world. He may lack transport to the supervised exercise programme.</p>
+        <span class="ps-phrase">"The walking programme is the best treatment, but I want to make sure you can actually get there. How would you get to the hospital? Do you drive, or would you need help with transport?"</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">Action: Community transport referral. Walking groups. Social prescriber link worker. GP practice-based programme if available.</p>
+      </div>
+      <div class="ps-card">
+        <h5>💼 Work &amp; Financial Impact → Practical Support</h5>
+        <p>Manual worker with claudication faces job loss and financial crisis.</p>
+        <span class="ps-phrase">"If this is affecting your work, I can write a fit note explaining what adjustments might help. There are also services that can advise on your rights at work."</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">Action: Fit note. Occupational health. Citizens Advice. Access to Work scheme. PIP assessment if significant disability.</p>
+      </div>
+      <div class="ps-card">
+        <h5>🧠 Depression &amp; Low Motivation → Active Screening</h5>
+        <p>PAD + depression = reduced exercise adherence + smoking relapse + medication non-concordance.</p>
+        <span class="ps-phrase">"Sometimes when people are told about a circulation problem, it can really affect their mood. How have you been feeling in yourself recently?"</span>
+        <p style="font-size:11px;color:var(--muted);margin-top:.35rem">Action: PHQ-2 → PHQ-9 if positive. Sertraline safe in CVD. IAPT self-referral. Combine with exercise programme (dual benefit).</p>
+      </div>
+    </div>
+
+    <!-- 7G -->
+    <div class="sub-divider">7G — Follow-up plan: when to review and what to check</div>
+    <div class="card" style="overflow:hidden;margin-bottom:1.25rem">
+      <table class="rt">
+        <thead><tr><th>Timepoint</th><th>Actions</th><th>What triggers escalation</th></tr></thead>
+        <tbody>
+          <tr><td class="q" style="font-weight:700">Today (index visit)</td><td class="why">Start clopidogrel 75mg + atorvastatin 80mg. Arrange ABPI + bloods + ECG. Refer supervised exercise. Smoking cessation referral. Written information. Safety-net verbally.</td><td class="why">CLI or acute ischaemia identified → same-day action, not routine follow-up.</td></tr>
+          <tr><td class="q" style="font-weight:700">1–2 weeks</td><td class="why">U&E check (ACEi). Smoking cessation review. Check blood results. Confirm exercise referral accepted.</td><td class="why">eGFR drop &gt;25% → stop ACEi, investigate RAS. New symptoms → urgent review.</td></tr>
+          <tr><td class="q" style="font-weight:700">4 weeks</td><td class="why">Medication tolerance. BP check. Smoking status. Mood screen (PHQ-2). ABPI result review. Walking distance.</td><td class="why">ABPI &lt;0.5 → urgent vascular referral. Side effects → switch medication. Depression → treat.</td></tr>
+          <tr><td class="q" style="font-weight:700">3 months</td><td class="why">Lipid profile (non-HDL ↓ ≥40%?). HbA1c. Exercise programme completion. Walking distance reassessment. Repeat ABPI.</td><td class="why">No improvement after 3m exercise → vascular referral. Non-HDL off target → intensify statin or add ezetimibe.</td></tr>
+          <tr><td class="q" style="font-weight:700">6 months</td><td class="why">CVD risk review. Sustained smoking cessation? Walking distance stable/improved? Foot check. Medication concordance.</td><td class="why">Deteriorating distance → re-refer. New rest pain → urgent. Relapsed smoking → re-engage cessation.</td></tr>
+          <tr><td class="q" style="font-weight:700">Annual (ongoing)</td><td class="why">Annual CVD review: BP, lipids, HbA1c, eGFR, ABPI, weight, smoking, exercise, foot check, medication review, depression screen.</td><td class="why">New symptoms, declining ABPI, non-concordance, depression, social deterioration.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 7H -->
+    <div class="sub-divider">7H — Safety-netting: what to tell the patient before they leave</div>
+    <div class="sn-wrap">
+      <div class="sn-hdr">🔒 Safety-net: what to tell the patient — be specific, not vague</div>
+      <div class="sn-grid">
+        <div class="sn-card sn-999"><div class="sn-lbl">🚨 Call 999 if:</div><p>"Your leg suddenly goes cold, white, or numb — or you get sudden severe pain in a leg that was fine. This means the blood supply has suddenly blocked and needs emergency treatment within hours."</p></div>
+        <div class="sn-card sn-gp"><div class="sn-lbl">📞 Contact surgery urgently if:</div><p>"The pain starts happening when you're resting — especially at night in bed. Or if you notice a sore on your foot that isn't healing, or a toe that changes colour."</p></div>
+        <div class="sn-card sn-routine"><div class="sn-lbl">📅 Book routine appointment if:</div><p>"Your walking distance gets noticeably shorter, you have side effects from the new tablets, you're struggling with mood, or you want to discuss anything we've talked about today."</p></div>
+        <div class="sn-card sn-written"><div class="sn-lbl">📝 Written information to take home:</div><p>Circulation Foundation patient leaflet on PAD. Written summary of today's plan. Exercise programme referral letter copy. Medication list with purposes. Emergency contact numbers.</p></div>
+      </div>
+      <div class="sn-close">
+        <div class="sn-close-lbl">✅ Closing the consultation</div>
+        <p style="font-size:12.5px;font-style:italic;line-height:1.6;padding:.5rem .85rem;background:#f0fdf4;border-left:3px solid var(--g);border-radius:0 8px 8px 0">"Before you go — let me check we're on the same page. Today I'm starting two tablets to protect your circulation, referring you for the walking programme, and booking tests. I'll see you in 4 weeks to check everything. The most important thing is — your leg is NOT in danger right now. If anything changes, you know exactly what to do. Is there anything else you'd like to ask?"</p>
+      </div>
+    </div>
+
+    <!-- Step 7 SCA checkpoint -->
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div>
+          <div class="sca-phrase">"The most effective treatment is a structured walking programme — better than surgery for many people."</div>
+          <div class="sca-phrase">"I'm starting two tablets today — one to protect your arteries and one for cholesterol."</div>
+          <div class="sca-phrase">"Stopping smoking is the single most important thing you can do — I can help you with that."</div>
+          <div class="sca-phrase">"If your foot ever suddenly goes cold or numb, that's a 999 emergency."</div>
+          <div class="sca-phrase">"I'll see you in 4 weeks to check the tablets, your blood results, and how you're getting on."</div>
+        </div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions (examiner flags)</div>
+          <ul><li>Generic lifestyle advice without naming mechanism or evidence</li><li>Prescribing without explaining why each medication matters</li><li>Not offering smoking cessation support</li><li>No follow-up plan or safety-net</li><li>Failing to address amputation fear</li><li>Not starting treatment today</li><li>Vague safety-netting: "come back if it gets worse"</li><li>No written information or structured handover</li></ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red — failing</div><div class="rag-bullets">No management plan. Generic advice. No prescribing. No safety-net. Fear unaddressed.</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber — borderline</div><div class="rag-bullets">Some treatment started but rationale unclear. Safety-net vague. Exercise mentioned but not explained. Follow-up unstructured.</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green — passing</div><div class="rag-bullets">Three pillars named (exercise, cessation, best medical therapy). Medication started with rationale. Specific safety-net. Follow-up timeline. Patient understands and agrees. Fear addressed with numbers.</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ CLINIC SUMMARY ═══ -->
+<div class="sum-card clinic-only" id="sum-clinic">
+  <div class="sum-hdr"><h2>🏥 Clinic Quick-Reference Card — PAD</h2></div>
+  <div class="sum-body">
+    <div class="sum-section">
+      <h4>Diagnosis</h4>
+      <p>ABPI ≤0.9 confirms PAD. 0.5–0.9 = claudication. &lt;0.5 = CLI. &gt;1.3 = calcified (unreliable in DM/CKD → toe pressures). Classic claudication: predictable distance, calf pain, relieved 2–5 min rest.</p>
+    </div>
+    <div class="sum-section">
+      <h4>Emergency Red Flags</h4>
+      <p>Acute ischaemia (6 Ps) → 999. Rest pain → urgent vascular 2ww. Non-healing ulcer/gangrene → urgent vascular. Blue toe → urgent. Rapid deterioration → urgent.</p>
+    </div>
+    <div class="sum-section">
+      <h4>Investigations (GP-initiated)</h4>
+      <p>ABPI, FBC, HbA1c, lipid profile, U&E/eGFR, ECG, QRISK3. Duplex USS and advanced imaging = vascular team decision.</p>
+    </div>
+    <div class="sum-section">
+      <h4>Best Medical Therapy — Start at Diagnosis</h4>
+      <p><strong>Antiplatelet:</strong> Clopidogrel 75mg OD (NICE first-line). Aspirin 75mg if intolerant.<br><strong>Statin:</strong> Atorvastatin 80mg OD (secondary prevention). Target non-HDL ↓≥40%.<br><strong>BP:</strong> ACEi first-line, target &lt;140/90. Check U&E at 2 weeks.<br><strong>Smoking:</strong> Varenicline + behavioural support. Single most effective intervention.</p>
+    </div>
+    <div class="sum-section">
+      <h4>Exercise</h4>
+      <p>Supervised exercise programme: 2hr/week × 3 months (NICE NG224). Walk INTO moderate pain, rest, repeat. Improves walking distance 50–200%. Naftidrofuryl only if exercise unavailable.</p>
+    </div>
+    <div class="sum-section">
+      <h4>Referral Thresholds</h4>
+      <p>Lifestyle-limiting &lt;200m after 3m exercise → vascular referral. CLI (rest pain, tissue loss, ABPI &lt;0.5) → 2-week urgent. Acute ischaemia → 999. Popliteal aneurysm → urgent duplex + referral.</p>
+    </div>
+    <div class="sum-section">
+      <h4>Follow-Up Timeline</h4>
+      <p>2 weeks (U&E), 4 weeks (meds/BP/ABPI review), 3 months (lipids/exercise completion), 6 months (CVD review), then annual.</p>
+    </div>
+    <div class="sum-section">
+      <h4>Key Numbers</h4>
+      <p>Amputation risk 1–2%/year in claudication. 5-year CV mortality 20–30%. Statin ↓ CV events 25%. Exercise ↑ distance 50–200%. Cessation ↓ amputation 3-fold.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ SCA SUMMARY ═══ -->
+<div class="sum-card sca-only" id="sum-sca">
+  <div class="sum-hdr"><h2>🎓 SCA Quick-Reference Card — PAD</h2></div>
+  <div class="sum-body">
+    <div class="sum-section">
+      <h4>Opening (0–1 min)</h4>
+      <p>Use information from the case card. Don't ask "What brings you in?" Open with: "I can see you've come in about leg pain when walking. Tell me in your own words what's been happening." Read the brief — mark-saving.</p>
+    </div>
+    <div class="sum-section">
+      <h4>History Structure (1–6 min)</h4>
+      <p>Open question → location → distance → rest pain (CLI screen) → ulcers/skin changes → acute onset (6 Ps) → smoking → DM/vascular hx → functional impact → ICE (name amputation fear) → psychosocial context.</p>
+    </div>
+    <div class="sum-section">
+      <h4>Examination (6–7 min)</h4>
+      <p>Targeted: pulses (localise), feet (tissue loss), Buerger's (severity), ABPI (diagnostic). Explain each one. Link to differential diagnosis.</p>
+    </div>
+    <div class="sum-section">
+      <h4>Diagnosis Explanation (7–9 min)</h4>
+      <p>"Blood vessels furred up — like old plumbing." Name systemic CVD. Quantify amputation risk (1–2%/yr — low). Reframe prognosis positively. Address fear directly.</p>
+    </div>
+    <div class="sum-section">
+      <h4>Management Plan (9–12 min)</h4>
+      <p>Three pillars: (1) Supervised exercise first-line, (2) Smoking cessation = most impactful, (3) Medication: clopidogrel + atorvastatin + ACEi. Validate → Explain → Negotiate. Start treatment TODAY.</p>
+    </div>
+    <div class="sum-section">
+      <h4>Safety-Netting &amp; Close (12–13 min)</h4>
+      <p>Specific: "Cold/white/numb leg = 999." "Rest pain or non-healing sore = urgent." Follow-up at 4 weeks. Written info. Check understanding. Final question: "Is there anything else?"</p>
+    </div>
+    <div class="sum-section">
+      <h4>High-Scoring Phrases</h4>
+      <p>"The walking programme is actually the most effective treatment." · "Stopping smoking halves the risk of needing surgery." · "Most people with your level of circulation problem do NOT lose their leg." · "I want to start treatment today — we won't just wait and see."</p>
+    </div>
+    <div class="sum-section">
+      <h4>Common Deductions</h4>
+      <p>Missing CLI screen. Not addressing amputation fear. Generic lifestyle. No exercise referral. Referring before trying exercise. Not starting meds today. Vague safety-net. Ignoring psychosocial context.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- /.page -->
+
+<script src="script.js"></script>
+</body>
+</html>

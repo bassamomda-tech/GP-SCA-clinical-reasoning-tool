@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chest Infections · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="../assets/medchooser.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+.tag-2ww{background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;font-weight:700}
+.tag-emerg{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;font-weight:700}
+</style>
+</head>
+<body class="mode-both" id="bodyEl" data-screen-label="Chest Infections">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="chest-infections"></aside>
+  <main class="main">
+<div class="case-head">
+  <div>
+    <div class="ch-cat">Respiratory · Full case</div>
+    <h1>Chest Infections</h1>
+  </div>
+  <div class="case-head-tags"><span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE NG138 / CG191</span><span class="tag">CRB-65 · antibiotic stewardship</span><span class="tag tag-2ww">Persistent → CXR (NG12)</span></div>
+</div>
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">CI</div>
+      <div><div class="tb-title">Chest Infections (LRTI / CAP) · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE NG138/CG191 · Bronchitis vs pneumonia · CRB-65 · antibiotic stewardship · sepsis · COPD exacerbation · persistent symptoms → CXR (NG12)</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">Bronchitis vs pneumonia</span><span class="ns-lbl">Acute bronchitis (cough ± sputum, no focal chest signs, systemically well) is usually viral and self-limiting — antibiotics rarely help. Pneumonia (focal chest signs, fever, tachypnoea, hypoxia, systemic upset) is a different, potentially serious diagnosis. Examination separates them</span></div>
+    <div class="ns-item"><span class="ns-val">CRB-65 stratifies CAP</span><span class="ns-lbl">In community-acquired pneumonia, CRB-65 (Confusion, Respiratory rate ≥30, BP &lt;90/≤60, age ≥65) guides setting: 0 usually home, 1–2 consider hospital, 3–4 urgent admission. Use clinical judgement and consider oxygen saturations alongside</span></div>
+    <div class="ns-item"><span class="ns-val">Stewardship: don't reflex-prescribe</span><span class="ns-lbl">Most acute coughs/bronchitis are viral. NICE supports no antibiotic or a back-up (delayed) prescription for uncomplicated cases, with clear safety-netting — reducing resistance. Reserve immediate antibiotics for pneumonia, systemic illness or high-risk patients</span></div>
+    <div class="ns-item"><span class="ns-val">Spot sepsis early</span><span class="ns-lbl">A chest infection can be the source of sepsis: confusion, RR ≥22, hypotension, tachycardia, hypoxia, mottling, very high/low temperature, reduced urine output. Use a sepsis screen / NEWS2; sepsis is a time-critical emergency — admit and treat without delay</span></div>
+    <div class="ns-item"><span class="ns-val">COPD exacerbations differ</span><span class="ns-lbl">In COPD, an infective exacerbation (increased breathlessness, sputum volume/purulence) is managed with bronchodilators ± steroids ± antibiotics (per sputum purulence/criteria); have a lower threshold and a rescue-pack/self-management plan. Watch for type 2 respiratory failure</span></div>
+    <div class="ns-item"><span class="ns-val">Persistent cough → think cancer/TB</span><span class="ns-lbl">A cough/chest symptoms not resolving (e.g. &gt;3 weeks, or pneumonia not clearing), especially in a smoker 40+, with haemoptysis, weight loss or persistent signs, needs a chest X-ray and the NICE NG12 lung-cancer pathway — and consider TB (cough &gt;3 weeks, weight loss, night sweats, risk factors)</span></div>
+    <div class="ns-item"><span class="ns-val">Follow up pneumonia</span><span class="ns-lbl">Arrange a follow-up chest X-ray (~6 weeks) after pneumonia in smokers and those over 50 to ensure resolution and exclude an underlying lung cancer obstructing the airway. Safety-net for non-resolving or recurrent same-site infection</span></div>
+    <div class="ns-item"><span class="ns-val">Protect the vulnerable</span><span class="ns-lbl">The elderly, frail, immunosuppressed, those with comorbidity/lung disease and the very young decompensate fastest and present atypically (confusion, falls, no fever). Lower the threshold to examine, investigate and admit; offer vaccination (flu, pneumococcal, COVID)</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Chest Infections</div>
+  <div class="stem-title">A 72-year-old man with 5 days of cough, fever and breathlessness, now confused and unsteady, whose daughter is worried he's "gone downhill fast"</div>
+  <div class="stem-text">Brian Côté, 72, is brought in by his daughter with 5 days of productive cough, fever and increasing breathlessness, and since yesterday he has become confused and unsteady on his feet — "not himself at all". He has COPD (ex-smoker, 40 pack-years) and type 2 diabetes. On arrival he looks unwell: respiratory rate 28, oxygen saturation 90% on air, heart rate 112, blood pressure 104/62, temperature 38.6°C, and he is disorientated to time and place with focal crackles at the right base. His daughter expected "just some antibiotics". He has not been eating or drinking much and his urine output is reduced.</div>
+  <div class="stem-note">This stem tests the ability to: distinguish a serious lower respiratory tract infection / community-acquired pneumonia from simple bronchitis; recognise that this patient is not a "just antibiotics" case but has features of sepsis and significant CAP (confusion, RR ≥22/≥30, hypoxia, tachycardia, borderline BP, reduced urine output, comorbidity) — to calculate CRB-65 and use a sepsis/NEWS2 assessment and arrange urgent admission rather than an outpatient prescription; to recognise atypical presentation in the elderly (confusion/falls); to manage antibiotic stewardship appropriately in milder cases but treat seriously here; and to safety-net and follow up (resolution CXR, NG12 if non-resolving). The SCA challenge is conveying to a worried daughter (who expected a prescription) why admission is needed, calmly and clearly.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — CAP with sepsis (this stem)</strong> Elderly, comorbid, confused, hypoxic, tachypnoeic, hypotensive. CRB-65 high; sepsis features → urgent admission, oxygen, IV antibiotics/fluids per local sepsis pathway. NOT outpatient antibiotics.</div>
+    <div class="stem-variant"><strong>Scenario B — Acute bronchitis (well adult)</strong> Cough ± sputum, no focal signs, systemically well. Viral; no/delayed antibiotic; self-care; safety-net. Stewardship.</div>
+    <div class="stem-variant"><strong>Scenario C — CAP, low severity (CRB-65 0)</strong> Focal signs, fever, but well and stable. Home with oral antibiotics (amoxicillin first-line per local), safety-net, review.</div>
+    <div class="stem-variant"><strong>Scenario D — Infective COPD exacerbation</strong> Increased breathlessness/sputum volume &amp; purulence. Bronchodilators ± oral steroids ± antibiotics (purulence/criteria); rescue pack; watch for CO2 retention/type 2 failure.</div>
+    <div class="stem-variant"><strong>Scenario E — Persistent/atypical</strong> Cough &gt;3 weeks, haemoptysis, weight loss, non-resolving pneumonia, smoker 40+ → CXR + NG12 lung-cancer pathway; consider TB (cough &gt;3 weeks, night sweats, risk factors).</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Bronchitis vs pneumonia; severity (CRB-65/NEWS2/sepsis); age/frailty/comorbidity &amp; atypical presentation; COPD exacerbation; stewardship (no/delayed/immediate antibiotic); persistent symptoms → CXR/NG12/TB; resolution CXR &amp; vaccination; the "just antibiotics" expectation.</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History — Severity &amp; Sepsis · Bronchitis vs Pneumonia · Risk · Persistent Symptoms · ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The history must do three things fast: gauge severity and screen for sepsis; distinguish a self-limiting viral cough/bronchitis from pneumonia or a COPD exacerbation; and identify the high-risk patient and the persistent-symptom red flags (cancer/TB).</strong> Brian's confusion, breathlessness and systemic upset on a background of COPD and diabetes immediately mark him out as a serious presentation, not a prescription request.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 SCA framing — manage the "just antibiotics" expectation honestly</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"I can see you were hoping for antibiotics, and I understand why. But your dad is more unwell than a chest infection we'd treat at home — he's confused, his breathing and oxygen are affected — and that needs hospital assessment today, not just tablets."</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Whether the case is mild (stewardship: explain why antibiotics may not help) or severe (this one: explain why tablets aren't enough), the skill is to address the expectation with a clear, honest rationale.</div>
+    </div>
+    <div class="sub-divider">1A — Severity, type and risk</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"Tell me what's been happening — and what's changed that worried you enough to come today."</em></td>
+            <td class="why"><strong>Captures the trajectory and the alarm.</strong> The daughter's "gone downhill fast" and the new confusion are the key signals. New confusion, rapid deterioration and breathlessness elevate this above a simple cough and point to pneumonia/sepsis in a vulnerable patient.<span class="why-sub">In SCA: hearing the deterioration and the confusion, and reacting to them, is the pivotal step.</span></td>
+            <td><span class="chg chg-999">Confusion + deterioration → sepsis/CAP</span></td>
+          </tr>
+          <tr><td class="q">🚩 Sepsis / severity screen<em>"Is he confused or drowsy? Breathing fast? Passing less urine? Any dizziness, cold/mottled skin, or very high or low temperature?"</em></td><td class="why"><strong>The safety core.</strong> Confusion, RR ≥22, hypotension, tachycardia, hypoxia, reduced urine output and temperature extremes are sepsis features (NEWS2/sepsis screen). Brian has several — this is potential sepsis from a chest source, a time-critical emergency.</td><td class="why">Sepsis features → emergency admission, oxygen, IV antibiotics/fluids; don't delay.</td><td><span class="chg chg-999">Sepsis → admit + sepsis pathway</span></td></tr>
+          <tr><td class="q">Bronchitis vs pneumonia vs COPD<em>"Cough, sputum — colour/amount? Breathless beyond his usual? Chest pain on breathing? Is this his COPD flaring?"</em></td><td class="why">Focal/pleuritic features, purulent sputum, breathlessness and systemic upset suggest pneumonia; a change in sputum volume/purulence with increased breathlessness on his baseline suggests an infective COPD exacerbation; a dry cough in a well patient suggests viral bronchitis. The distinction drives treatment intensity.</td><td class="why">Pneumonia/COPD exacerbation → active treatment; viral bronchitis → stewardship.</td><td><span class="chg chg-rx">Type → treatment intensity</span></td></tr>
+          <tr><td class="q">Risk factors / vulnerability<em>"What's his usual health — COPD, diabetes, other conditions? How's he normally, and how much worse is he now? Vaccinations?"</em></td><td class="why">COPD, diabetes, age, frailty and immunosuppression raise risk and cause atypical presentation (confusion, falls, no fever). Baseline function frames how far he's deteriorated. Vaccination status (flu/pneumococcal/COVID) is relevant to prevention.</td><td class="why">High-risk/comorbid → lower threshold to admit; atypical presentation.</td><td><span class="chg chg-999">Comorbidity → lower admission threshold</span></td></tr>
+          <tr><td class="q">🚩 Persistent-symptom / cancer-TB screen<em>"How long has the cough been there overall? Any coughing up blood, weight loss, night sweats? Smoking history?"</em></td><td class="why">A cough not resolving (e.g. &gt;3 weeks), haemoptysis, weight loss or night sweats — especially in a smoker 40+ — needs a chest X-ray and the NG12 lung-cancer pathway, and consideration of TB. Brian (40 pack-years) warrants a resolution CXR and vigilance even after the acute episode.</td><td class="why">Persistent cough/haemoptysis/weight loss → CXR + NG12; ?TB.</td><td><span class="chg" style="background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe">Persistent → CXR (NG12) / TB</span></td></tr>
+          <tr><td class="q">Hydration / oral intake / social<em>"Is he eating and drinking? Who's at home, and could he manage there?"</em></td><td class="why">Poor intake (Brian) worsens AKI risk and decompensation; social circumstances affect whether home management is even safe. These inform admission and support.</td><td class="why">Poor intake/unsafe at home → admission/support.</td><td><span class="chg chg-rx">Intake/social → disposition</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — the chest infection that is an emergency</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Sepsis — confusion, RR ≥22, hypotension, tachycardia, hypoxia, mottling, temp extremes, low urine output</td><td class="rf-why">Time-critical; organ dysfunction and death without rapid treatment.</td><td><span class="rf-action rfa-999">Emergency admission; oxygen; IV antibiotics + fluids per sepsis pathway; NEWS2</span></td></tr>
+          <tr><td class="rf-flag">High CRB-65 / severe CAP</td><td class="rf-why">High mortality; needs hospital-level care.</td><td><span class="rf-action rfa-999">Urgent admission</span></td></tr>
+          <tr><td class="rf-flag">Respiratory failure / severe hypoxia / exhaustion</td><td class="rf-why">Especially type 2 failure in COPD — may need NIV/ventilation.</td><td><span class="rf-action rfa-999">Oxygen (target sats; care in COPD); urgent admission</span></td></tr>
+          <tr><td class="rf-flag">Significant haemoptysis / suspected PE / pneumothorax</td><td class="rf-why">Alternative serious diagnoses presenting as "chest infection".</td><td><span class="rf-action rfa-999">Urgent assessment/admission as indicated</span></td></tr>
+          <tr><td class="rf-flag">Persistent/non-resolving symptoms, haemoptysis, weight loss (smoker 40+)</td><td class="rf-why">Lung cancer / TB.</td><td><span class="rf-action rfa-same">CXR + NICE NG12 pathway; consider TB</span></td></tr>
+          <tr><td class="rf-flag">Vulnerable patient deteriorating atypically (confusion, falls, no fever)</td><td class="rf-why">Elderly/immunosuppressed decompensate fast and silently.</td><td><span class="rf-action rfa-same">Low threshold to examine/investigate/admit</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What were you hoping we'd do today — and what do you think is going on?"</div><div class="ice-why">The daughter expects antibiotics. Surfacing this lets you respect the worry behind it while explaining why this presentation needs more than tablets — turning a potential conflict into shared understanding.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 Concerns</div><div class="ice-phrase">"What's frightened you most about how he's been?"</div><div class="ice-why">Her concern is the rapid change and the confusion. Naming it validates her for bringing him and lets you align: that confusion is exactly why he needs urgent assessment.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"Let me explain what I'm worried about and what needs to happen next."</div><div class="ice-why">Reframing from "antibiotics at home" to "urgent hospital assessment" must be done clearly and compassionately, so she understands and agrees rather than feeling dismissed.</div></div>
+    </div>
+    <div class="sub-divider">1D — Psychosocial context</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 Expectations, stewardship, and the deteriorating older patient</div>
+      <p>Chest infections sit at two poles of the same consultation skill. At one pole is the well adult who wants antibiotics for a viral cough — where the art is to explain stewardship and safety-net without leaving them feeling fobbed off. At the other is the frail, comorbid older patient whose "chest infection" is actually pneumonia and sepsis, presenting atypically with confusion — where the art is to recognise severity behind a family's modest expectation and act decisively. Both require reading severity accurately and communicating the plan with clarity and empathy.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>🏥 Reframing to admission</h5><p>Explain clearly why home antibiotics aren't safe here.</p><span class="ps-phrase">"I know hospital wasn't what you expected, but his confusion and low oxygen tell me his body's under real strain. Treating this properly — with oxygen, fluids and antibiotics into a vein — needs to happen in hospital, today."</span></div>
+      <div class="ps-card"><h5>💊 Stewardship (milder cases)</h5><p>For the well patient, explain why antibiotics may not help.</p><span class="ps-phrase">"Most chest infections like this are viral, so antibiotics often don't help and can cause side effects. I'll give you a 'just-in-case' prescription to use only if you're not improving, and tell you exactly what to watch for."</span></div>
+      <div class="ps-card"><h5>👪 Supporting the family</h5><p>Acknowledge their worry and role.</p><span class="ps-phrase">"You did exactly the right thing bringing him in — you know him best, and 'not himself' is an important sign. Let's get him the help he needs."</span></div>
+      <div class="ps-card"><h5>🛡️ Prevention</h5><p>Vaccination and self-management for at-risk patients.</p><span class="ps-phrase">"Once he's through this, we'll make sure his flu, pneumonia and COVID jabs are up to date and his COPD plan is solid — that reduces the chance of this happening again."</span></div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div><div class="sca-phrase">"Is he confused, breathing fast, passing less urine?" — screens for sepsis.</div><div class="sca-phrase">"This is more than a chest infection for tablets at home — he needs hospital today." — acts on severity.</div><div class="sca-phrase">(milder case) "Antibiotics often don't help a viral cough — here's a back-up prescription and what to watch for." — stewardship + safety-net.</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Prescribing oral antibiotics and sending a septic patient home</li><li>Not screening for sepsis / not calculating CRB-65</li><li>Missing atypical presentation in the elderly</li><li>(milder) reflex antibiotics with no stewardship/safety-net</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Septic patient given oral antibiotics + sent home; no sepsis screen/CRB-65; severity missed; no safety-net</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Recognises serious infection; some severity assessment; admission considered but not decisive; ICE partial</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Screens sepsis + CRB-65/NEWS2; distinguishes pneumonia/COPD/bronchitis; recognises atypical severity in the elderly; decisive admission; stewardship in milder cases; ICE all three; safety-net</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage — Sepsis/Severe CAP · COPD/Moderate · Self-Limiting</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Triage in chest infection is severity-led: sepsis or severe CAP → emergency admission; moderate CAP/COPD exacerbation → treat actively ± admit by CRB-65/judgement; well patients with bronchitis → self-care + stewardship.</strong> Brian is firmly in the emergency lane.</div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div>
+        <h3>Same day / 999</h3>
+        <span class="tc-badge tcb-e">Admit</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Sepsis / severe CAP (high CRB-65/NEWS2)</strong><em>Oxygen, IV antibiotics + fluids, urgent admission (Brian)</em></li>
+          <li class="tc-item"><strong>Respiratory failure / severe hypoxia</strong><em>Oxygen (care in COPD); admit</em></li>
+          <li class="tc-item"><strong>Alternative emergency (PE/pneumothorax)</strong><em>Urgent assessment</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Moderate</div>
+        <h3>Treat ± admit</h3>
+        <span class="tc-badge tcb-u">By severity</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>CAP CRB-65 1–2</strong><em>Consider hospital; oral/IV antibiotics; review</em></li>
+          <li class="tc-item"><strong>Infective COPD exacerbation</strong><em>Bronchodilators ± steroids ± antibiotics; rescue pack</em></li>
+          <li class="tc-item"><strong>Vulnerable/comorbid</strong><em>Lower admission threshold; close review</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Routine</div>
+        <h3>Self-care</h3>
+        <span class="tc-badge tcb-r">Stewardship</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Acute bronchitis (well)</strong><em>No/delayed antibiotic; self-care; safety-net</em></li>
+          <li class="tc-item"><strong>Low-severity CAP (CRB-65 0)</strong><em>Oral antibiotic at home; review</em></li>
+          <li class="tc-item"><strong>Persistent cough</strong><em>CXR + NG12 if red flags</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Triage rationale</div><div class="sca-phrase">"His CRB-65 is high and he has signs of sepsis — confusion, fast breathing, low oxygen and blood pressure — so this is an emergency admission, with oxygen and treatment started straight away, not tablets at home."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Under-triaging sepsis/severe CAP</li><li>Over-treating viral bronchitis with antibiotics</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Examination — Observations/NEWS2 · Chest Signs · Confusion · Hydration</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Examination quantifies severity (full observations / NEWS2, oxygen saturations), localises the infection (focal chest signs of consolidation vs the diffuse wheeze of COPD vs a clear chest in bronchitis), and assesses confusion and hydration — the markers that decide disposition.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">📊 Severity</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Full observations / NEWS2</td><td>RR, SpO2, HR, BP, temp, consciousness — severity/sepsis (Brian: RR 28, SpO2 90%, HR 112, BP 104/62, 38.6°C, confused).</td></tr>
+            <tr><td class="factor">Oxygen saturations</td><td>Hypoxia; care with targets in COPD.</td></tr>
+            <tr><td class="factor">Confusion / AMTS</td><td>CRB-65 'C'; sepsis; atypical presentation.</td></tr>
+            <tr><td class="factor">Hydration / perfusion</td><td>Dehydration, AKI risk, shock.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🫁 Chest &amp; cause</div>
+        <table class="it">
+          <thead><tr><th>Sign</th><th>Suggests</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Focal crackles / bronchial breathing / dullness</td><td>Consolidation = pneumonia (Brian, right base).</td></tr>
+            <tr><td class="factor">Wheeze / prolonged expiration</td><td>COPD exacerbation / asthma.</td></tr>
+            <tr><td class="factor">Clear chest, systemically well</td><td>Viral bronchitis.</td></tr>
+            <tr><td class="factor">Reduced air entry / hyper-resonance</td><td>Effusion / pneumothorax.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Narration that scores</div><div class="sca-phrase">"I'll take a full set of observations including his oxygen level, check how alert he is, and listen to his chest for signs of pneumonia — these tell me how serious this is and where it needs treating."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not taking full observations / SpO2 / NEWS2</li><li>Not assessing confusion or hydration</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Investigations — Often Clinical · CXR · Bloods/CRP · Resolution &amp; NG12</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Mild bronchitis needs no tests; pneumonia/severe disease needs a chest X-ray and bloods (often as part of admission); CRP can support antibiotic decisions in uncertain primary-care cases; and persistent/non-resolving disease needs a CXR and the NG12 pathway plus a resolution film.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🩻 Acute</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">None</td><td>Well patient, clear chest, viral picture — clinical diagnosis.</td></tr>
+            <tr><td class="factor">Chest X-ray</td><td>Suspected pneumonia, diagnostic doubt, severe/non-resolving (usually via admission for severe cases).</td></tr>
+            <tr><td class="factor">Bloods (FBC, U&amp;E, CRP, glucose, blood cultures)</td><td>Severity, AKI/sepsis, source — with admission (Brian).</td></tr>
+            <tr><td class="factor">CRP (point-of-care)</td><td>Can guide antibiotic decisions in uncertain LRTI in primary care.</td></tr>
+            <tr><td class="factor">SpO2 / ABG</td><td>Hypoxia; CO2 retention in COPD.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🔬 Follow-up / persistent</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Resolution CXR (~6 weeks)</td><td>After pneumonia in smokers/over-50s — exclude underlying cancer.</td></tr>
+            <tr><td class="factor">CXR + NG12 pathway</td><td>Persistent cough/haemoptysis/weight loss, smoker 40+.</td></tr>
+            <tr><td class="factor">Sputum / TB tests</td><td>Persistent productive cough, TB risk (cough &gt;3 weeks, night sweats).</td></tr>
+            <tr><td class="factor">Spirometry / COPD review</td><td>Once recovered.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key reasoning</div><div class="sca-phrase">"In hospital he'll have a chest X-ray and blood tests to confirm pneumonia and check his kidneys and oxygen. And because he's a long-term smoker, I'll make sure he has a follow-up X-ray once he's better to confirm it's cleared."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Reflex tests/antibiotics for viral bronchitis</li><li>Not arranging a resolution CXR / NG12 for persistent disease in a smoker</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Diagnosis — Bronchitis · CAP · COPD Exacerbation · Mimics</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Name the diagnosis and its severity, and hold the mimics that present as "chest infection" — PE, heart failure, lung cancer, TB.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:24%">Diagnosis</th><th>Discriminating features</th></tr></thead>
+        <tbody>
+          <tr><td class="q"><strong>Acute bronchitis</strong></td><td class="why">Cough ± sputum, clear chest, systemically well — viral, self-limiting.</td></tr>
+          <tr><td class="q"><strong>Community-acquired pneumonia</strong></td><td class="why">Focal signs, fever, tachypnoea, hypoxia, systemic upset; severity by CRB-65 (Brian = severe + sepsis).</td></tr>
+          <tr><td class="q"><strong>Infective COPD exacerbation</strong></td><td class="why">Increased breathlessness/sputum volume &amp; purulence on a COPD background.</td></tr>
+          <tr><td class="q"><strong>Sepsis from a chest source</strong></td><td class="why">Systemic dysfunction — confusion, hypotension, hypoxia, low urine output.</td></tr>
+          <tr><td class="q"><strong>Mimics</strong></td><td class="why">PE (pleuritic pain, risk factors), heart failure (orthopnoea, oedema), lung cancer/TB (persistent), pneumothorax.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ddx-card ddx-b" style="margin-bottom:4px">
+      <h4>🚩 Severity is the diagnosis that matters</h4>
+      <p>Naming "chest infection" is not enough — the clinically decisive judgement is severity. Brian's formulation is severe community-acquired pneumonia with sepsis in a comorbid older man (COPD, diabetes): confusion, hypoxia, tachypnoea, borderline hypotension, reduced urine output — an emergency admission for oxygen, IV antibiotics and fluids, not an outpatient prescription. After recovery: resolution CXR, COPD optimisation and vaccination.</p>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Explaining it plainly</div><div class="sca-phrase">"Your dad has pneumonia — an infection in the lung — and it's made him seriously unwell, affecting his oxygen and his mind. That's why he needs hospital treatment now rather than tablets at home."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Diagnosing "chest infection" without grading severity</li><li>Missing PE/heart failure mimics</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc6">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">Referral — Emergency Admission · Respiratory/TB · 2WW (NG12)</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Referral is severity- and cause-driven: emergency admission for sepsis/severe CAP/respiratory failure; respiratory or TB services for specific disease; and the NG12 lung-cancer pathway for persistent/suspicious presentations.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="ref-table">
+        <thead><tr><th style="width:24%">Referral</th><th>Who / when</th><th style="width:20%">Urgency</th></tr></thead>
+        <tbody>
+          <tr><td><strong>🔴 Emergency admission</strong></td><td>Sepsis, severe CAP, respiratory failure, alternative emergency (Brian).</td><td><span class="rf-action rfa-999">Same day / 999</span></td></tr>
+          <tr><td><strong>Respiratory medicine</strong></td><td>Recurrent/non-resolving infection, complex COPD, bronchiectasis, empyema.</td><td><span class="rf-action rfa-same">Soon</span></td></tr>
+          <tr><td><strong>🟣 Lung cancer (2WW / NG12)</strong></td><td>Persistent cough/haemoptysis/weight loss, abnormal/non-resolving CXR (smoker 40+).</td><td><span class="rf-action" style="background:#6d28d9;color:#fff">2WW · NG12</span></td></tr>
+          <tr><td><strong>TB service</strong></td><td>Suspected TB (cough &gt;3 weeks, night sweats, weight loss, risk factors).</td><td><span class="rf-action rfa-same">Urgent</span></td></tr>
+          <tr><td><strong>Community / virtual ward</strong></td><td>Selected moderate cases suitable for supported home/IV care.</td><td><span class="rf-action rfa-same">As available</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Decisive action</div><div class="sca-phrase">"I'm arranging an emergency ambulance now — I'll call ahead so they're expecting him, give him oxygen while we wait, and send the details. This is the safest place for him to be treated."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Delaying admission of a septic patient</li><li>Not arranging NG12/TB pathways for persistent disease</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Admit &amp; Treat Severe · Stewardship for Mild · Safety-Net · Prevention</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Management spans the spectrum: emergency treatment and admission for sepsis/severe CAP (oxygen, IV antibiotics, fluids); appropriate antibiotics for pneumonia/COPD exacerbation; antibiotic stewardship (no/delayed prescription) with safety-netting for self-limiting bronchitis; and prevention (vaccination, COPD self-management) and follow-up.</strong></div>
+    <div class="sub-divider">7A — Across the spectrum</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--g)">🚑 Severe / pneumonia / COPD</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Sepsis / severe CAP (Brian)</td><td>Oxygen (target sats; care in COPD), IV antibiotics + fluids per sepsis pathway, urgent admission; treat AKI/glucose.</td></tr>
+            <tr><td class="factor">CAP antibiotics</td><td>Severity-guided (e.g. amoxicillin first-line low-severity; combination/IV for higher severity) per local guidance.</td></tr>
+            <tr><td class="factor">COPD exacerbation</td><td>Increase bronchodilators; oral steroids if more breathless; antibiotics if purulent sputum/criteria; rescue pack &amp; plan.</td></tr>
+            <tr><td class="factor">Oxygen in COPD</td><td>Controlled oxygen to target saturation; watch CO2 retention.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">💊 Mild &amp; cross-cutting</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Bronchitis — stewardship</td><td>No or back-up (delayed) antibiotic; self-care (fluids, analgesia, rest); explain natural history.</td></tr>
+            <tr><td class="factor">Safety-net</td><td>Clear advice: seek help if breathless, confused, not improving/worsening, fever persists, poor intake — when and who to call.</td></tr>
+            <tr><td class="factor">Follow-up</td><td>Resolution CXR (smokers/over-50s); review recovery; COPD/spirometry review.</td></tr>
+            <tr><td class="factor">Prevention</td><td>Flu/pneumococcal/COVID vaccination; smoking cessation; COPD optimisation.</td></tr>
+            <tr><td class="factor">Persistent → investigate</td><td>CXR + NG12 / TB if not resolving.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">A plan that scores</div><div class="sca-phrase">"For your dad: emergency admission now, oxygen and treatment started here. (For a milder patient: 'rest, fluids and a back-up antibiotic to use only if you worsen — and come back urgently if you get breathless or confused.') Once he's recovered we'll arrange a check X-ray, review his COPD and make sure his vaccines are up to date."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Oral antibiotics + home for a septic patient</li><li>Reflex antibiotics for viral bronchitis with no safety-net</li><li>No prevention/follow-up; missing resolution CXR in a smoker</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Chest Infections — SCA Consultation Scorecard</div><div class="scorecard-sub">Bronchitis vs pneumonia · CRB-65/sepsis · stewardship · admit the severe · NG12/resolution CXR</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Structured history</strong> — severity, type, risk, persistent-symptom screen gathered systematically</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Full observations / NEWS2 narrated</strong> — RR, SpO2, HR, BP, temp, consciousness</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain-language explanation</strong> — explains the diagnosis and why the plan is what it is</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Manages expectation honestly</strong> — reframes "just antibiotics" (up or down) with rationale</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Decisive &amp; calm</strong> — acts clearly on severity without alarming</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Safety-net specific</strong> — what to watch for, when and who to call</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plan + follow-up + closing question</strong> — clear plan, review/resolution CXR, "anything else?"</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, diagnosis, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Screens for sepsis &amp; calculates CRB-65/NEWS2</strong> — recognises severity, not just "a chest infection"</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Distinguishes bronchitis / pneumonia / COPD exacerbation</strong> — by signs &amp; systemic features</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Recognises atypical severity in the elderly &amp; admits</strong> — confusion/falls; comorbid; decisive admission</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Antibiotic stewardship in milder cases</strong> — no/delayed prescription; not reflex antibiotics</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Appropriate antibiotics when indicated</strong> — severity-guided per local guidance</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Oxygen/COPD care</strong> — controlled oxygen to target; CO2 retention awareness</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Persistent symptoms → CXR + NG12 / TB</strong> — smoker 40+, haemoptysis, weight loss</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Resolution CXR &amp; prevention</strong> — follow-up film in smokers/over-50s; vaccination; cessation</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Considers mimics</strong> — PE, heart failure, pneumothorax, cancer/TB</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct overall formulation &amp; disposition</strong> — severe CAP + sepsis → emergency admission/treatment</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decisions</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — the "just antibiotics" expectation surfaced</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> — the daughter's fear at the rapid change acknowledged</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations addressed</strong> — admission/stewardship explained, not dismissed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Validates the family</strong> — "you did the right thing bringing him in"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Explains admission compassionately</strong> — why hospital, what will happen</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Stewardship without dismissiveness (milder case)</strong> — patient doesn't feel fobbed off</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Checks understanding</strong> — confirms the plan and safety-net are understood</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Calm under pressure</strong> — reassuring while acting urgently</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Involves patient/family in the plan</strong> — shared, clear next steps</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Patient/family leave clear &amp; supported</strong> — understand what's happening and why</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Collaborative close</strong> — plan agreed; safety-net/follow-up arranged</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">Septic patient given oral antibiotics + home; no sepsis/CRB-65 screen; severity missed; reflex antibiotics for bronchitis; no safety-net</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">Recognises serious infection; some severity scoring; admission considered; stewardship/prevention partial; ICE partial</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Sepsis screen + CRB-65/NEWS2; bronchitis/pneumonia/COPD distinguished; atypical severity recognised → admission; stewardship in mild; NG12/resolution CXR; ICE all three; safety-net</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist to see your score and feedback</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked — areas to develop</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise (the daughter)</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"Dad's had a chest infection for a few days — cough, fever, getting breathless — and since yesterday he's gone really confused and wobbly. I just thought he needed some antibiotics, but he's gone downhill so fast."</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are (Brian's daughter)</h5><p>You've brought your dad Brian, 72, who has COPD (ex-smoker, 40 pack-years) and diabetes. He's had 5 days of productive cough, fever and worsening breathlessness, and since yesterday he's confused, unsteady and "not himself". He's barely eaten or drunk and is passing less urine. You expected the GP to give him antibiotics to take at home. You're frightened by how quickly he's changed.</p></div>
+      <div class="ab"><h5>Hidden concerns (reveal if explored)</h5><p><strong>Fear (main):</strong> the confusion scares you — your mum was like that before she died. You're reassured by clear, calm action.</p><p><strong>Reluctance about hospital:</strong> Dad hates hospitals; you worry about taking him. You accept it when the reason is explained.</p><p><strong>Guilt:</strong> you wonder if you should have come sooner — needs reassurance you did the right thing.</p></div>
+      <div class="ab"><h5>Clinical details if asked</h5><ul><li>5 days cough/fever/breathlessness; new confusion and unsteadiness since yesterday</li><li>COPD, type 2 diabetes; ex-smoker 40 pack-years; usually independent and "with it"</li><li>Poor oral intake; reduced urine output</li><li>On exam (you can confirm what the GP finds): looks unwell, breathing fast, low oxygen, fast pulse, fever, confused</li><li>Not sure about recent vaccinations</li></ul></div>
+      <div class="ab"><h5>Reactions at key moments</h5><ul><li><strong>On "he needs hospital, not tablets":</strong> initially taken aback ("I thought antibiotics would do it") then accepting when the reasons are explained.</li><li><strong>On the confusion being important:</strong> relieved it's being taken seriously.</li><li><strong>On reassurance you did right bringing him:</strong> visibly comforted.</li><li><strong>Challenge line:</strong> "Can't you just give him some antibiotics to take at home? He really hates hospitals."</li></ul></div>
+    </div>
+    <div class="actor-challenge">"Are you sure he needs to go in? Can't you just give him strong antibiotics to take at home — he'll be so much happier in his own bed."</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> The consultation succeeds if the GP: (1) takes full observations/NEWS2 and screens for sepsis, recognising confusion + hypoxia + tachypnoea + borderline BP + reduced urine output as severe CAP with sepsis (high CRB-65) in a comorbid older man; (2) does NOT prescribe oral antibiotics for home but arranges emergency admission with oxygen and pre-alert; (3) distinguishes this from bronchitis/COPD and explains the diagnosis and plan compassionately to a frightened, reluctant daughter, validating her for bringing him; (4) plans follow-up (resolution CXR given smoking history, COPD review, vaccination). It fails if the GP yields to the "just antibiotics at home" request and sends a septic patient away.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Chest Infections — Clinical Decision Framework</div><div class="sum-sub">Bronchitis vs pneumonia · CRB-65/sepsis · stewardship</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🚦 1 — Assess severity</div>
+    <div class="algo-wrap" style="margin-bottom:1rem">
+      <div class="algo-start">Cough / LRTI → observations + chest exam</div>
+      <div class="algo-arrow">▼</div>
+      <div class="algo-row">
+        <div class="algo-branch algo-red"><div class="algo-branch-lbl">🔴 Emergency</div><ul class="algo-list"><li>Sepsis (confusion, RR≥22, ↓BP, hypoxia, ↓urine)</li><li>Severe CAP (high CRB-65) / resp failure</li></ul><span class="algo-action red-action">O2 + IV abx/fluids + admit</span></div>
+        <div class="algo-branch algo-amber"><div class="algo-branch-lbl">🟠 Moderate</div><ul class="algo-list"><li>CAP CRB-65 1–2; vulnerable</li><li>Infective COPD exacerbation</li></ul><span class="algo-action amber-action">Treat ± admit</span></div>
+        <div class="algo-branch algo-green"><div class="algo-branch-lbl">🟢 Mild</div><ul class="algo-list"><li>Acute bronchitis (well, clear chest)</li><li>CAP CRB-65 0</li></ul><span class="algo-action green-action">Self-care / oral abx; stewardship</span></div>
+      </div>
+    </div>
+    <div class="sum-sub-hdr">💊 2 — Treat &amp; follow up</div>
+    <div class="card" style="padding:.8rem 1rem"><p style="font-size:12.5px;line-height:1.6"><strong>Bronchitis:</strong> usually viral — no/delayed antibiotic + safety-net. <strong>CAP:</strong> severity-guided antibiotics (amoxicillin first-line low-severity per local guidance); admit if severe/septic. <strong>COPD exacerbation:</strong> bronchodilators ± steroids ± antibiotics (purulence); rescue pack; controlled O2. <strong>Persistent/non-resolving</strong> (smoker 40+, haemoptysis, weight loss) → CXR + NG12 ± TB. <strong>Resolution CXR</strong> in smokers/over-50s; vaccination &amp; cessation; protect the vulnerable.</p></div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label">SCA Quick Reference</div><div class="sum-title">Chest Infections — Consultation Playbook</div><div class="sum-sub">Grade severity · spot sepsis · steward antibiotics · safety-net</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🎯 The three pivots that pass this case</div>
+    <div class="sum-3col">
+      <div class="snp-phrase-box snp-e"><div class="snp-lbl">1 · Grade severity / sepsis</div><div class="snp-text">Observations + CRB-65 + sepsis screen. Confusion/hypoxia/↓BP in a comorbid elder = emergency, not home antibiotics.</div></div>
+      <div class="snp-phrase-box snp-m"><div class="snp-lbl">2 · Right treatment</div><div class="snp-text">Bronchitis = stewardship (no/delayed antibiotic). Pneumonia/COPD = active treatment; severe/septic = admit + O2 + IV.</div></div>
+      <div class="snp-phrase-box snp-a"><div class="snp-lbl">3 · Safety-net &amp; follow up</div><div class="snp-text">Clear warning signs; persistent → CXR/NG12/TB; resolution CXR in smokers/over-50s; vaccinate.</div></div>
+    </div>
+    <div class="sdp-pivot" style="margin-top:1rem;font-size:11.5px;background:#fef3c7;color:#854d0e;border-radius:8px;padding:.6rem .85rem;line-height:1.5">⛔ Don't send a septic/severe-CAP patient home on oral antibiotics · Don't reflex-prescribe antibiotics for viral bronchitis — steward &amp; safety-net · Don't miss atypical severity (confusion/falls) in the elderly · Don't forget persistent symptoms → CXR/NG12/TB and a resolution CXR in smokers/over-50s · Use controlled oxygen in COPD</div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Chest Infections (LRTI / CAP) · GP Clinical Reasoning Framework v2</strong> · NICE NG138 (pneumonia in adults — community) · NICE CG191 / NG138 · NICE NG114 (cough/antimicrobial) · NICE NG12 (lung cancer) · NICE sepsis (NG51) · COPD (NG115)</p>
+  <p style="margin-top:4px">Distinguish self-limiting viral bronchitis from pneumonia and COPD exacerbation by examination &amp; systemic features · Stratify CAP with CRB-65 and screen for sepsis (NEWS2) — confusion/RR≥22/hypotension/hypoxia/low urine output = emergency admission · Antibiotic stewardship: no/delayed prescription + safety-net for uncomplicated cases; severity-guided antibiotics when indicated · Controlled oxygen in COPD · Persistent/non-resolving symptoms (smoker 40+, haemoptysis, weight loss) → CXR + NG12 ± TB; resolution CXR in smokers/over-50s; vaccinate &amp; protect the vulnerable</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current NICE NG138/NG114/NG12 and sepsis guidance · Clinical judgement takes precedence over any framework</p>
+</div>
+</div><!-- /page -->
+  </main>
+</div><!-- /app -->
+<script src="script.js"></script>
+<script src="../assets/site.js?v=51"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+</body>
+</html>

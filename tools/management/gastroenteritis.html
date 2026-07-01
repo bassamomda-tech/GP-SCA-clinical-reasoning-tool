@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gastroenteritis — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Gastroenteritis management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🦠",
+  title:"Gastroenteritis",
+  stemTitle:"Acute gastroenteritis \u2014 rehydrate, reassure, safety-net",
+  stemSub:"Primary-care management of acute infective diarrhoea \u00b1 vomiting \u2014 assess hydration and dehydration risk, rehydrate orally, avoid unnecessary antibiotics and antimotility drugs, send stool only when it changes management, and recognise the features that need admission or public-health action. NICE CKS \u00b7 2026.",
+  guideline:"NICE CKS",
+  glance:[
+    {lbl:"Mainstay", val:"Oral rehydration", sub:"little and often"},
+    {lbl:"Antibiotics", val:"Usually NOT", sub:"most are viral"},
+    {lbl:"Stool culture", val:"If indicated", sub:"blood/travel/systemic"},
+    {lbl:"Notify", val:"Suspected food poisoning", sub:"+ certain organisms"},
+    {lbl:"Exclusion", val:"48h after settling", sub:"food handlers / carers"},
+    {lbl:"Red flag", val:"Dehydration / bloody / septic", sub:"= admit"}
+  ],
+  flow:[
+    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Who needs admission / urgent review?",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Dehydration / shock", html:"Reduced urine output, lethargy, tachycardia, hypotension, reduced skin turgor, sunken eyes \u2014 especially infants/elderly \u2192 admit."},
+          {t:"🔴 Unable to tolerate fluids", html:"Persistent vomiting, can\u2019t maintain oral intake \u2192 same-day assessment / IV fluids."},
+          {t:"🟠 Bloody diarrhoea / sepsis", html:"Blood in stool, high fever, severe abdominal pain, systemic toxicity \u2192 assess for invasive infection / surgical cause."},
+          {t:"🟠 High-risk groups", html:"Frail elderly, infants, immunocompromised, significant comorbidity \u2014 lower admission threshold."}
+        ]},
+        {b:"why", html:"Most gastroenteritis is self-limiting and viral; the clinical task is identifying dehydration (the main cause of harm) and the minority with invasive/serious disease or a surgical mimic (appendicitis, DKA, obstruction)."}
+      ]},
+    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Assess + identify clues",
+      blocks:[
+        {b:"kv", rows:[
+          ["History","Onset, frequency, blood/mucus, vomiting, fever, abdominal pain; sick contacts, recent travel, suspect food, antibiotics (C. difficile), occupation (food handler/carer)"],
+          ["Hydration","Thirst, urine output, dizziness on standing; in children use the NICE dehydration assessment"],
+          ["Red-flag mimics","Right iliac fossa pain (appendicitis), severe/localised pain, DKA in a diabetic, obstruction"],
+          ["Organism clues","Bloody \u2192 Campylobacter/Shigella/E. coli O157/Salmonella; profuse watery + travel \u2192 viral/ETEC; recent antibiotics \u2192 C. difficile"]
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Treatment", title:"Rehydrate; antibiotics rarely",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Oral rehydration + continue feeding", when:"all patients",
+           html:"Encourage fluids, little and often; oral rehydration salts for those at risk of dehydration. Continue breastfeeding/normal diet as tolerated. Good hand hygiene to limit spread."},
+          {step:"Step 2", title:"Symptom relief (selected adults)", when:"if needed",
+           fromLabel:"adults, no red flags",
+           html:"Antiemetic for distressing vomiting in adults if appropriate (e.g. <b>cyclizine 50 mg TDS</b> or <b>prochlorperazine 5\u201310 mg TDS</b>). For non-bloody diarrhoea in adults, <b>loperamide 4 mg then 2 mg after each loose stool (max 16 mg/day)</b>; <b>avoid antimotility drugs</b> if bloody diarrhoea or suspected E. coli O157 / C. difficile, and avoid in children."},
+          {step:"Step 3", title:"Antibiotics \u2014 only if indicated", when:"specific cases",
+           fromLabel:"reserve",
+           html:"Most cases need none. Consider per organism/clinical picture (e.g. systemically unwell, immunocompromised, confirmed organism needing treatment) \u2014 guided by stool result/microbiology advice. C. difficile: stop precipitant + treat per protocol."}
+        ]},
+        {b:"warn", html:"E. coli O157: avoid antibiotics and antimotility agents \u2014 they increase the risk of haemolytic uraemic syndrome (HUS). Watch for HUS (pallor, reduced urine, bruising) especially in children."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Investigations", title:"When to send stool",
+      blocks:[
+        {b:"table", head:["Send stool if","Why","Action"], rows:[
+          ["Blood/mucus, or systemically unwell","Invasive bacterial infection","Culture \u00b1 microbiology advice"],
+          ["Recent travel abroad","Parasites/atypical organisms","Culture + ova/cysts/parasites"],
+          ["Recent antibiotics / hospital","C. difficile","C. diff toxin testing"],
+          ["Immunocompromised, or prolonged (>7 days)","Persistent/atypical infection","Culture \u00b1 parasitology"],
+          ["Public-health / outbreak / food handler","Notifiable / exclusion","Notify + culture"]
+        ]}
+      ]},
+    {t:"node", d:"life", n:"5", tag:"Public health + advice", title:"Exclusion + notification",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🚫 Exclusion", html:"Stay off work/school until <b>48 hours after the last episode</b> of diarrhoea/vomiting; stricter for food handlers, healthcare/care staff and young children."},
+          {t:"📋 Notify", html:"Suspected infectious bloody diarrhoea / food poisoning and certain organisms are notifiable to public health (UKHSA)."},
+          {t:"🧼 Hygiene", html:"Handwashing, don\u2019t prepare food for others, don\u2019t share towels; clean surfaces."},
+          {t:"🏊 Avoid swimming", html:"No swimming for 2 weeks after the last episode (esp. Cryptosporidium)."}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"6", tag:"Refer", title:"Refer / safety-net",
+      arrow:"escalation",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Admit", html:"Dehydration/shock, unable to maintain fluids, suspected HUS, sepsis, or surgical abdomen."},
+          {t:"Public health", html:"Outbreaks, notifiable organisms, food-poisoning clusters."},
+          {t:"Investigate further", html:"Diarrhoea &gt;7\u201314 days, or chronic/relapsing \u2192 reconsider IBD, coeliac, malabsorption."}
+        ]},
+        {b:"say", html:"This is a tummy bug \u2014 usually a virus that clears in a few days. The most important thing is sips of fluid little and often. Antibiotics don\u2019t usually help. Please stay off work or school until 48 hours after the last episode. Come back urgently if you can\u2019t keep fluids down, pass much less urine, or see blood."}
+      ]}
+  ],
+  foot:"Management of acute gastroenteritis in primary care; dehydration and invasive infection drive admission. Follow UKHSA exclusion/notification rules. Verify against current NICE CKS Gastroenteritis and local microbiology guidance."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

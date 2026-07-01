@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Resources · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=11" />
+<style>
+  .res-section h2 .eyebrow{margin-bottom:6px;display:block}
+  .res-link-card{display:block;text-decoration:none;color:inherit}
+  .res-link-card .page-card-cta{display:inline-block;margin-top:8px}
+  .res-search{
+    width:100%;max-width:520px;margin-bottom:28px;
+    display:flex;align-items:center;gap:10px;
+    background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:9px 14px;
+  }
+  .res-search input{
+    flex:1;font-family:inherit;font-size:14px;border:none;outline:none;background:transparent;color:var(--ink);
+  }
+  .res-search svg{width:16px;height:16px;color:var(--muted-2);flex-shrink:0}
+  .res-pill{
+    display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;
+    padding:2px 8px;border-radius:99px;margin-right:6px;
+  }
+  .res-pill-uk{background:var(--teal-soft);color:var(--teal)}
+  .res-pill-nhs{background:var(--rust-soft);color:var(--rust-2)}
+  .res-pill-free{background:#dcfce7;color:#15803d}
+  .res-pill-charity{background:#faf5ff;color:#6b21a8}
+
+  .res-section-intro{
+    max-width:760px;font-size:14px;color:var(--muted);margin:-8px 0 22px;
+  }
+
+  /* ---- Local NHS pathways: portal cards ---- */
+  .portal-group{margin-bottom:32px}
+  .portal-group-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+    margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line);
+  }
+  .portal-group h3{
+    margin:0;font-family:'Source Serif 4',serif;font-size:19px;font-weight:600;
+    color:var(--teal);letter-spacing:-0.01em;
+  }
+  .portal-group-count{
+    font-size:10.5px;color:var(--muted-2);font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;
+  }
+  .portal-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;
+  }
+  .portal-card{
+    display:flex;flex-direction:column;
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;text-decoration:none;color:inherit;
+    transition:all .15s ease;
+  }
+  .portal-card:hover{
+    border-color:var(--rust);
+    box-shadow:0 6px 20px -8px rgba(181,76,43,.18);
+    transform:translateY(-1px);
+  }
+  .portal-card-head{
+    display:flex;align-items:center;gap:8px;margin-bottom:8px;
+  }
+  .portal-region{
+    font-size:10.5px;font-weight:700;letter-spacing:.05em;
+    padding:2px 9px;border-radius:99px;
+    background:var(--teal-soft);color:var(--teal);
+  }
+  .portal-card h4{
+    font-family:'DM Sans',sans-serif;
+    margin:0 0 8px;font-size:14.5px;font-weight:600;line-height:1.3;color:var(--ink);
+  }
+  .portal-card p{
+    margin:0 0 12px;font-size:12.5px;line-height:1.5;color:var(--muted);
+    flex:1;
+  }
+  .portal-cta{
+    font-size:12px;font-weight:600;color:var(--rust-2);
+    align-self:flex-start;
+  }
+  .portal-card:hover .portal-cta{color:var(--rust)}
+
+  /* ---- Signposting A-Z ---- */
+  .signpost-grid{
+    column-count:2;column-gap:34px;
+  }
+  @media (max-width:900px){.signpost-grid{column-count:1}}
+  .signpost-letter{
+    break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;
+    margin-bottom:22px;display:inline-block;width:100%;
+  }
+  .signpost-letter h4{
+    font-family:'Source Serif 4',serif;font-size:28px;font-weight:600;
+    color:var(--rust);margin:0 0 10px;padding-bottom:4px;
+    border-bottom:2px solid var(--rust-soft);letter-spacing:-0.02em;
+  }
+  .signpost-row{
+    padding:9px 0;border-bottom:1px dashed var(--line);
+  }
+  .signpost-row:last-child{border-bottom:none}
+  .signpost-row-label{
+    font-weight:600;font-size:13.5px;color:var(--ink);margin-bottom:3px;line-height:1.3;
+  }
+  .signpost-row-links{
+    display:flex;flex-wrap:wrap;gap:3px 8px;font-size:12.5px;line-height:1.5;
+  }
+  .signpost-row-links a{
+    color:var(--teal-2);text-decoration:none;
+  }
+  .signpost-row-links a:hover{color:var(--rust);text-decoration:underline}
+  .signpost-row-links .sep{color:var(--line-2);user-select:none}
+  .signpost-link-plain{color:var(--muted)}
+
+  /* ---- Collapsible section accordion ---- */
+  .res-section > h2{
+    position:relative;cursor:pointer;padding-right:38px;user-select:none;
+    transition:color .15s ease;
+  }
+  .res-section > h2:hover{color:var(--rust)}
+  .res-acc-caret{
+    position:absolute;right:2px;top:50%;width:22px;height:22px;
+    transform:translateY(-50%);color:var(--muted-2);
+    transition:transform .22s ease,color .15s ease;pointer-events:none;
+  }
+  .res-section > h2:hover .res-acc-caret{color:var(--rust)}
+  .res-section.is-collapsed .res-acc-caret{transform:translateY(-50%) rotate(-90deg)}
+  .res-section.is-collapsed .res-body{display:none}
+  .res-body{margin-top:4px}
+</style>
+</head>
+<body>
+
+<aside class="sidebar" data-active-id="__resources"></aside>
+
+<div class="app"><main class="main">
+
+<section class="page-hero" data-screen-label="Resources hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow">Resources</span>
+    <h1>Trusted <em>links, pathways &amp; networks</em> for UK general practice</h1>
+    <p>A curated directory of the sites every UK GP keeps open in a second tab — official guidance, referral pathways, community resources, professional bodies, and patient-support charities. Every link has been picked because it changes what you do in clinic.</p>
+    <div class="res-search" style="margin-top:24px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" placeholder="Filter resources — e.g. 'dermatology', 'safeguarding', 'mental health'…" id="resQ" />
+    </div>
+  </div>
+</section>
+
+<div class="page-body">
+
+  <section class="page-section res-section" data-cat="guidance">
+    <h2><span class="eyebrow">Official UK guidance</span>NICE · SIGN · MHRA · UKHSA</h2>
+    <div class="page-grid">
+      <a class="page-card res-link-card" href="https://cks.nice.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">UK</span><span class="res-pill res-pill-free">Free</span></div>
+        <h3>NICE Clinical Knowledge Summaries (CKS)</h3>
+        <p>The single most-used GP reference. Concise summaries of NICE guidance with management algorithms.</p>
+        <span class="page-card-cta">Open cks.nice.org.uk →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.nice.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">UK</span><span class="res-pill res-pill-free">Free</span></div>
+        <h3>NICE — full guidance library</h3>
+        <p>NG / CG / TA / QS — the source documents behind every CKS topic. Use for evidence tables and consultation drafts.</p>
+        <span class="page-card-cta">Open nice.org.uk →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.sign.ac.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">Scotland</span></div>
+        <h3>SIGN — Scottish guidelines</h3>
+        <p>Scottish Intercollegiate Guidelines Network — often slightly different to NICE; check both for asthma, BP, depression.</p>
+        <span class="page-card-cta">Open sign.ac.uk →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.gov.uk/drug-safety-update" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">MHRA</span></div>
+        <h3>MHRA Drug Safety Update</h3>
+        <p>Monthly bulletin of safety alerts, dose changes, and pregnancy warnings. Subscribe by email — it changes practice.</p>
+        <span class="page-card-cta">Open Drug Safety Update →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.gov.uk/government/organisations/uk-health-security-agency" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">UKHSA</span></div>
+        <h3>UK Health Security Agency</h3>
+        <p>Outbreak alerts (measles, mpox, GAS), vaccination programmes, communicable disease guidance.</p>
+        <span class="page-card-cta">Open UKHSA →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.gov.uk/government/collections/green-book" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">Immunisation</span></div>
+        <h3>Green Book — UK immunisations</h3>
+        <p>The full UK immunisation handbook. Authoritative for catch-up schedules, special-risk groups, contraindications.</p>
+        <span class="page-card-cta">Open Green Book →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="page-section res-section" data-cat="prescribing">
+    <h2><span class="eyebrow">Prescribing &amp; drug references</span>BNF · BNF for Children · PIL</h2>
+    <div class="page-grid">
+      <a class="page-card res-link-card" href="https://bnf.nice.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">UK</span><span class="res-pill res-pill-free">Free</span></div>
+        <h3>BNF — British National Formulary</h3>
+        <p>Authoritative drug doses, interactions, renal / hepatic adjustments. Free via NICE login.</p>
+        <span class="page-card-cta">Open BNF →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://bnfc.nice.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">Paediatric</span></div>
+        <h3>BNF for Children</h3>
+        <p>Weight-based paediatric dosing. Essential for under-12s and renally / hepatically impaired children.</p>
+        <span class="page-card-cta">Open BNFC →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.medicines.org.uk/emc" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">SPC / PIL</span></div>
+        <h3>emc — Patient Information Leaflets</h3>
+        <p>Manufacturer SPCs and patient leaflets. Useful for unusual combinations and patient counselling.</p>
+        <span class="page-card-cta">Open emc.medicines.org.uk →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.medicinesinpregnancy.org/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">Pregnancy</span></div>
+        <h3>UKTIS / bumps — drugs in pregnancy</h3>
+        <p>Specialist advice on medicine safety during pregnancy and breastfeeding. Phone advice line for clinicians.</p>
+        <span class="page-card-cta">Open bumps →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.sps.nhs.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-nhs">NHS</span></div>
+        <h3>Specialist Pharmacy Service (SPS)</h3>
+        <p>NHS medicines Q&amp;A archive — drugs in pregnancy, lactation, palliative care, switching, COVID interactions.</p>
+        <span class="page-card-cta">Open SPS →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="page-section res-section" data-cat="referrals">
+    <h2><span class="eyebrow">Referral pathways</span>2WW · advice &amp; guidance · NHS e-Referral</h2>
+    <div class="page-grid">
+      <a class="page-card res-link-card" href="https://www.nice.org.uk/guidance/ng12" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">NG12</span></div>
+        <h3>NICE NG12 — Suspected cancer (2WW)</h3>
+        <p>The 2WW pathway by symptom and site. Bookmark for quick lookup before every cancer referral.</p>
+        <span class="page-card-cta">Open NG12 →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.ebi.nhs.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-nhs">NHS</span></div>
+        <h3>Evidence-based interventions (EBI)</h3>
+        <p>Procedures that should NOT be routinely referred. Check before sending — saves both clinician and patient time.</p>
+        <span class="page-card-cta">Open EBI →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.ers.nhs.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-nhs">NHS</span></div>
+        <h3>NHS e-Referral Service (e-RS)</h3>
+        <p>The official referral platform — direct booking, advice &amp; guidance, 2WW upload.</p>
+        <span class="page-card-cta">Open e-RS →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.england.nhs.uk/elective-care-transformation/best-practice-solutions/advice-and-guidance/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-nhs">A&amp;G</span></div>
+        <h3>Advice &amp; Guidance (A&amp;G) — NHS England</h3>
+        <p>Pre-referral advice from specialists via e-RS — often resolves the question without sending the patient.</p>
+        <span class="page-card-cta">Read A&amp;G guide →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.macmillan.org.uk/healthcare-professionals" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">Charity</span></div>
+        <h3>Macmillan — for HCPs</h3>
+        <p>Rapid-referral proformas, prehabilitation, holistic needs assessment templates. Excellent SCA-day fallback.</p>
+        <span class="page-card-cta">Open Macmillan HCPs →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.gettingitrightfirsttime.co.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-nhs">NHS</span></div>
+        <h3>GIRFT — Getting It Right First Time</h3>
+        <p>Specialty pathways and benchmark data shaping NHS referral expectations.</p>
+        <span class="page-card-cta">Open GIRFT →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="page-section res-section" data-cat="pathways" id="local-pathways">
+    <h2><span class="eyebrow">Local NHS clinical pathways</span>ICB &amp; regional GP guideline portals</h2>
+    <p class="res-section-intro">Direct links to the parent ICB, formulary and specialty-body sites — each one holds a stack of primary-care pathways (cancer, CV, respiratory, endo, women's health, MH, MSK, derm, eye…). Open the portal closest to your patch and browse from there.</p>
+    <div class="portal-group">
+      <div class="portal-group-head">
+        <h3>Regional ICB &amp; formulary portals</h3>
+        <span class="portal-group-count">25 portals</span>
+      </div>
+      <div class="portal-grid">
+        <a class="portal-card" href="https://www.selondonics.org/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">SE London</span>
+          </div>
+          <h4>selondonics — SE London ICB</h4>
+          <p>AF · HTN · lipids · COPD · adult asthma · T2DM · gout · HRT · RLS · depression · CKD · IBS · ENT · derm · eye · paeds referral · urology · general surgery · neuropathic pain · malnutrition</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://gmmmg.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Greater Manchester</span>
+          </div>
+          <h4>GMMMG — Greater Manchester</h4>
+          <p>AF · DOAC review · HTN · asthma · smoking · headache · neuropathic pain · GLP-1 · palliative care</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.nottsapc.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Nottinghamshire</span>
+          </div>
+          <h4>nottsapc — Notts Area Prescribing</h4>
+          <p>AF anticoagulation · hyperlipidaemia · statin intolerance · heart failure · osteoporosis · migraine · neuropathic pain · chronic pain · male LUTS · OAB · urticaria</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.nwlondonicb.nhs.uk/professionals/clinical-topics" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">NW London</span>
+          </div>
+          <h4>NW London ICB clinical topics</h4>
+          <p>Murmur · arrhythmia · syncope · cardiomyopathy · ED · thyroid · headache · dizziness · first fit · tremor · numbness · IBD · dyspepsia · rectal bleeding · gallstones · hernia · OSA · red eye · urology · haematology · MSK</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://remedy.bnssg.icb.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Bristol · N. Somerset · S. Glos</span>
+          </div>
+          <h4>BNSSG Remedy</h4>
+          <p>COPD · adult asthma · chronic non-cancer pain · recurrent UTI · ophthalmology · depression</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.swlondon-healthiertogether.nhs.uk/professionals/gp-primary-care-staff/paediatric-pathways" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">SW London</span>
+          </div>
+          <h4>SW London Healthier Together</h4>
+          <p>Paediatric primary-care pathways · fever · feeding · safeguarding · referral criteria.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://swlimo.southwestlondon.icb.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">SW London</span>
+          </div>
+          <h4>SW London Medicines Optimisation (SWLIMO)</h4>
+          <p>ED · HRT &amp; menopause prescribing · formulary.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://frimley-healthiertogether.nhs.uk/professionals/padiatric-pathways" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Frimley / Surrey Heath</span>
+          </div>
+          <h4>Frimley Healthier Together</h4>
+          <p>Paediatric pathways · CMPA pathway · primary-care referral.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://gp-portal.westhampshireccg.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Hampshire · IoW</span>
+          </div>
+          <h4>HIOW GP portal (West Hampshire)</h4>
+          <p>Testicular pain · haematospermia · dry eye · chronic pain prescribing.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://ntag.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">North East &amp; N. Cumbria</span>
+          </div>
+          <h4>NENC formulary (NTAG)</h4>
+          <p>CMPA · mucolytics · regional T2DM guidelines.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.covwarkformulary.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Cov &amp; Warks</span>
+          </div>
+          <h4>Coventry &amp; Warwickshire formulary</h4>
+          <p>Allergic rhinitis pathway · regional formulary.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.cheshireandmerseysideformulary.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Cheshire · Mersey</span>
+          </div>
+          <h4>Cheshire &amp; Merseyside formulary</h4>
+          <p>Recurrent UTI · APG prescribing guides.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://nhsdorset.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Dorset</span>
+          </div>
+          <h4>NHS Dorset medicines management</h4>
+          <p>Constipation · pain management · regional prescribing guidance.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.lancashireandsouthcumbriaformulary.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Lancs · S. Cumbria</span>
+          </div>
+          <h4>Lancs &amp; Cumbria formulary</h4>
+          <p>Restless legs · regional prescribing.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://best.barnsleyccg.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Barnsley</span>
+          </div>
+          <h4>Barnsley BEST</h4>
+          <p>Chronic coronary syndrome · referral guidance.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://medicines.bedfordshirelutonandmiltonkeynes.icb.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Beds · Luton · MK</span>
+          </div>
+          <h4>BLMK medicines optimisation</h4>
+          <p>Contraception (FSRH) · emergency contraception · prescribing.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.northoftyneapc.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">North of Tyne</span>
+          </div>
+          <h4>North of Tyne APC</h4>
+          <p>Ophthalmology referral · regional formulary.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://gps.cityandhackneyccg.nhs.uk/pathways" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">C&amp;H London</span>
+          </div>
+          <h4>City &amp; Hackney GP pathways</h4>
+          <p>Multi-specialty GP pathway hub.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.enherts-tr.nhs.uk/services/paediatrics-childrens-services-information-for-gps/children-services-primary-care-guidelines-and-useful-information/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">East Herts</span>
+          </div>
+          <h4>East Herts children's services</h4>
+          <p>Paediatric primary-care guidelines.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://mft.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Manchester</span>
+          </div>
+          <h4>MFT — Manchester Foundation Trust</h4>
+          <p>Haematology GP pathway guide &amp; secondary-care interface.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.stgeorges.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">SW London</span>
+          </div>
+          <h4>St George's (SWL CCG)</h4>
+          <p>NAFLD diagnosis &amp; referral protocol.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.hey.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Hull · E. Yorks</span>
+          </div>
+          <h4>Hull &amp; East Yorkshire dermatology</h4>
+          <p>Dermatology referral guide.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://rmpartners.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">West London</span>
+          </div>
+          <h4>RM Partners — cancer alliance</h4>
+          <p>Breast referral guidance · cancer pathways.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://gmcancer.org.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Greater Manchester</span>
+          </div>
+          <h4>GM Cancer</h4>
+          <p>Gynaecomastia · primary-care cancer pathways.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+      </div>
+    </div>
+    <div class="portal-group">
+      <div class="portal-group-head">
+        <h3>Scotland &amp; devolved nations</h3>
+        <span class="portal-group-count">3 portals</span>
+      </div>
+      <div class="portal-grid">
+        <a class="portal-card" href="https://rightdecisions.scot.nhs.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Scotland</span>
+          </div>
+          <h4>Right Decisions Scotland (NHS Highland TAM)</h4>
+          <p>Adult therapeutic guidelines · chronic cough · symptom-led pathways.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://apps.nhslothian.scot/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Lothian</span>
+          </div>
+          <h4>NHS Lothian formulary</h4>
+          <p>Stable angina · regional pharmacological pathways.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.sign.ac.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">Scotland</span>
+          </div>
+          <h4>SIGN — Scottish guidelines</h4>
+          <p>Scottish Intercollegiate Guidelines Network — full back-catalogue.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+      </div>
+    </div>
+    <div class="portal-group">
+      <div class="portal-group-head">
+        <h3>National specialty bodies &amp; tools</h3>
+        <span class="portal-group-count">11 portals</span>
+      </div>
+      <div class="portal-grid">
+        <a class="portal-card" href="https://www.nice.org.uk/guidance/ng245" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">National</span>
+          </div>
+          <h4>NICE NG245 — asthma (BTS/NICE/SIGN)</h4>
+          <p>Asthma algorithms by age, ICS dose tables, full joint guideline.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.pcrs-uk.org/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">National</span>
+          </div>
+          <h4>PCRS UK — Primary Care Respiratory Society</h4>
+          <p>Asthma 'first steps', COPD, primary-care respiratory resources.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.nogg.org.uk/resource-centre" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">National</span>
+          </div>
+          <h4>NOGG — National Osteoporosis Guideline Group</h4>
+          <p>FRAX-linked osteoporosis treatment thresholds &amp; full guideline.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://thebms.org.uk/publications/tools-for-clinicians/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">National</span>
+          </div>
+          <h4>British Menopause Society — tools for clinicians</h4>
+          <p>HRT prescribing tools, factsheets, consensus statements.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.fsrh.org/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">National</span>
+          </div>
+          <h4>FSRH — UKMEC &amp; EC algorithms</h4>
+          <p>UKMEC contraception eligibility, emergency contraception, full FSRH guidance.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.ukmec.co.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">National</span>
+          </div>
+          <h4>UKMEC quick-reference</h4>
+          <p>Searchable UK Medical Eligibility Criteria for contraception.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://gettingitrightfirsttime.co.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">National</span>
+          </div>
+          <h4>GIRFT — Getting It Right First Time</h4>
+          <p>AF, HRT unscheduled bleeding &amp; all specialty pathways.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://crohnsandcolitis.org.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">National</span>
+          </div>
+          <h4>Crohn's &amp; Colitis UK flare pathways</h4>
+          <p>Patient-facing IBD flare guidance · UC &amp; CD flare protocols (linked from selondonics).</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.versusarthritis.org/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">National</span>
+          </div>
+          <h4>Versus Arthritis MSK handbooks</h4>
+          <p>Adult &amp; paediatric MSK student handbooks, exam guides.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.reproductiveaccess.org/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">International</span>
+          </div>
+          <h4>Reproductive Access — Quickstart</h4>
+          <p>Quickstart contraception algorithm (used by BLMK and others).</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.addisonsdisease.org.uk/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">National</span>
+          </div>
+          <h4>Addison's Disease Self-Help Group</h4>
+          <p>Addison's primary-care management &amp; emergency protocols.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+      </div>
+    </div>
+    <div class="portal-group">
+      <div class="portal-group-head">
+        <h3>Cancer, palliative care &amp; paediatric oncology</h3>
+        <span class="portal-group-count">4 portals</span>
+      </div>
+      <div class="portal-grid">
+        <a class="portal-card" href="https://www.macmillan.org.uk/healthcare-professionals" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">National charity</span>
+          </div>
+          <h4>Macmillan — rapid referral &amp; symptom guides</h4>
+          <p>Rapid referral cancer guidelines, symptom-management leaflets, living-with-cancer guides.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.cancerresearchuk.org/health-professional" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">National charity</span>
+          </div>
+          <h4>Cancer Research UK — NG12 interactive guide</h4>
+          <p>Interactive NG12 cancer referral guide for primary care.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.cclg.org.uk/information-professionals/diagnosing-cancer-children-and-young-people/referral-guidance-suspected-cancer-children-and-young-people" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">National</span>
+          </div>
+          <h4>CCLG — paediatric cancer referral</h4>
+          <p>Children's Cancer &amp; Leukaemia Group referral pathways &amp; symptom guides.</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+        <a class="portal-card" href="https://www.england.nhs.uk/north-west/" target="_blank" rel="noopener noreferrer">
+          <div class="portal-card-head">
+            <span class="portal-region">NW England</span>
+          </div>
+          <h4>England NHS — NW Coast palliative care</h4>
+          <p>Palliative care clinical practice summary (latest edition).</p>
+          <span class="portal-cta">Open portal →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="page-section res-section" data-cat="bodies">
+    <h2><span class="eyebrow">Professional bodies</span>RCGP · GMC · BMA · indemnity</h2>
+    <div class="page-grid">
+      <a class="page-card res-link-card" href="https://www.rcgp.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">RCGP</span></div>
+        <h3>Royal College of General Practitioners</h3>
+        <p>Curriculum, SCA / MRCGP exams, appraisal toolkit, learning resources, CPD events.</p>
+        <span class="page-card-cta">Open RCGP →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.rcgp.org.uk/mrcgp-exams/sca" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">SCA</span></div>
+        <h3>RCGP — SCA exam page</h3>
+        <p>SCA blueprint, marking criteria, candidate handbook, mock-case examples.</p>
+        <span class="page-card-cta">Open SCA page →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.gmc-uk.org/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">Regulator</span></div>
+        <h3>General Medical Council (GMC)</h3>
+        <p>Good Medical Practice, revalidation, fitness-to-practise resources.</p>
+        <span class="page-card-cta">Open GMC →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.bma.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">Union</span></div>
+        <h3>British Medical Association (BMA)</h3>
+        <p>Pay, contracts, employment advice, BMA Library access (UpToDate, journals).</p>
+        <span class="page-card-cta">Open BMA →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.mdu.com/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">Indemnity</span></div>
+        <h3>MDU · MPS · MDDUS</h3>
+        <p>Medical defence organisations. Free 24/7 advice for members — call BEFORE acting on a complex case.</p>
+        <span class="page-card-cta">Find your defence org →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.england.nhs.uk/contracts-and-incentives/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-nhs">Contract</span></div>
+        <h3>GMS / PCN contract resources</h3>
+        <p>Contract documents, QOF, IIF, network DES updates from NHS England.</p>
+        <span class="page-card-cta">Open NHSE contracts →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="page-section res-section" data-cat="mh">
+    <h2><span class="eyebrow">Mental health pathways</span>NHS Talking Therapies · IAPT · crisis lines</h2>
+    <div class="page-grid">
+      <a class="page-card res-link-card" href="https://www.nhs.uk/service-search/mental-health/find-an-NHS-talking-therapies-service" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-nhs">NHS</span></div>
+        <h3>NHS Talking Therapies finder</h3>
+        <p>Postcode lookup for self-referral psychological therapy. Give patients the link directly in your consultation.</p>
+        <span class="page-card-cta">Open finder →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.samaritans.org/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">Crisis</span></div>
+        <h3>Samaritans — 116 123</h3>
+        <p>24/7 free emotional support line. Always give the number to patients with suicidal ideation when discharging from your consultation.</p>
+        <span class="page-card-cta">Open samaritans.org →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.mind.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">Charity</span></div>
+        <h3>Mind</h3>
+        <p>Patient-facing information on mental health conditions, treatments, and rights. Excellent for self-management literature.</p>
+        <span class="page-card-cta">Open mind.org.uk →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.cruse.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">Bereavement</span></div>
+        <h3>Cruse Bereavement Support</h3>
+        <p>National bereavement charity — phone, online chat, local groups.</p>
+        <span class="page-card-cta">Open cruse.org.uk →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.nhs.uk/nhs-services/mental-health-services/how-to-access-mental-health-services/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-nhs">Pathway</span></div>
+        <h3>Accessing MH services — NHS</h3>
+        <p>Plain-English explanation for patients of how MH referrals, crisis teams, and home treatment work.</p>
+        <span class="page-card-cta">Open NHS guide →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.papyrus-uk.org/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">Youth</span></div>
+        <h3>PAPYRUS HOPELINE247</h3>
+        <p>Suicide-prevention helpline specifically for under-35s. 24/7 — 0800 068 4141.</p>
+        <span class="page-card-cta">Open papyrus-uk.org →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="page-section res-section" data-cat="safeguarding">
+    <h2><span class="eyebrow">Safeguarding &amp; vulnerable patients</span>Children · adults · DV</h2>
+    <div class="page-grid">
+      <a class="page-card res-link-card" href="https://www.rcgp.org.uk/clinical-and-research/our-programmes/safeguarding.aspx" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">RCGP</span></div>
+        <h3>RCGP Safeguarding toolkit</h3>
+        <p>Adult and child safeguarding workflows, escalation thresholds, supervision templates.</p>
+        <span class="page-card-cta">Open toolkit →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.refuge.org.uk/get-help-now/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">DV</span></div>
+        <h3>Refuge — domestic abuse</h3>
+        <p>National DA helpline (0808 2000 247, 24/7). Use during consultations for women disclosing abuse.</p>
+        <span class="page-card-cta">Open refuge.org.uk →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.idas.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">DV</span></div>
+        <h3>IDAS / local IDVA services</h3>
+        <p>Independent domestic violence advisors — every area has one. Often co-located with safeguarding leads.</p>
+        <span class="page-card-cta">Find local IDVA →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.nspcc.org.uk/keeping-children-safe/reporting-abuse/dedicated-helplines/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">Child</span></div>
+        <h3>NSPCC — 0808 800 5000</h3>
+        <p>Free helpline for adults concerned about a child. Useful escalation point alongside MASH/social services.</p>
+        <span class="page-card-cta">Open NSPCC →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.gov.uk/government/publications/safeguarding-vulnerable-people-in-the-reformed-nhs-accountability-and-assurance-framework" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-nhs">Framework</span></div>
+        <h3>NHS safeguarding accountability framework</h3>
+        <p>Statutory roles for clinicians and providers — useful for appraisal evidence.</p>
+        <span class="page-card-cta">Open framework →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="page-section res-section" data-cat="community">
+    <h2><span class="eyebrow">Community resources</span>Social prescribing · benefits · housing</h2>
+    <div class="page-grid">
+      <a class="page-card res-link-card" href="https://www.england.nhs.uk/personalisedcare/social-prescribing/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-nhs">NHS</span></div>
+        <h3>Social prescribing — NHS</h3>
+        <p>Your local social prescriber / link worker is often the right "next step" for isolated, anxious or housing-affected patients.</p>
+        <span class="page-card-cta">Open NHS hub →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.citizensadvice.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">Charity</span></div>
+        <h3>Citizens Advice</h3>
+        <p>Benefits, debt, housing, employment. Use as first-line referral for financial-stress driving health outcomes.</p>
+        <span class="page-card-cta">Open citizensadvice.org.uk →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.ageuk.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">Charity</span></div>
+        <h3>Age UK</h3>
+        <p>Carers, befriending, falls prevention, end-of-life planning. Local branches in every area.</p>
+        <span class="page-card-cta">Open ageuk.org.uk →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.carersuk.org/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">Carers</span></div>
+        <h3>Carers UK</h3>
+        <p>Practical and emotional support for unpaid carers — Carer's Allowance, respite, mental-health support.</p>
+        <span class="page-card-cta">Open carersuk.org →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.shelter.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">Housing</span></div>
+        <h3>Shelter</h3>
+        <p>Housing crisis, homelessness, tenancy advice. Direct line and webchat for patients you can't safely discharge home.</p>
+        <span class="page-card-cta">Open shelter.org.uk →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.gov.uk/government/publications/inclusion-health-applying-all-our-health" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">Equity</span></div>
+        <h3>Inclusion health — gov.uk</h3>
+        <p>Frameworks for working with homeless, asylum-seeker, traveller, and sex-worker populations.</p>
+        <span class="page-card-cta">Open inclusion health →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="page-section res-section" data-cat="patient">
+    <h2><span class="eyebrow">Disease-specific patient charities</span>Hand-outs and helplines</h2>
+    <div class="page-grid">
+      <a class="page-card res-link-card" href="https://www.bhf.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">CV</span></div>
+        <h3>British Heart Foundation</h3>
+        <p>Patient leaflets for HTN, AF, angina, HF, MI. Excellent post-event support resources.</p>
+        <span class="page-card-cta">Open BHF →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.diabetes.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">Endo</span></div>
+        <h3>Diabetes UK</h3>
+        <p>Self-management resources, helpline, structured education signposting (DESMOND / DAFNE).</p>
+        <span class="page-card-cta">Open diabetes.org.uk →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.asthmaandlung.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">Resp</span></div>
+        <h3>Asthma + Lung UK</h3>
+        <p>Personalised asthma action plans, inhaler-technique videos, lung health information.</p>
+        <span class="page-card-cta">Open asthmaandlung.org.uk →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.cancerresearchuk.org/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">Cancer</span></div>
+        <h3>Cancer Research UK</h3>
+        <p>Patient-facing cancer information by type, plus risk-factor and screening advice.</p>
+        <span class="page-card-cta">Open CRUK →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.alzheimers.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">Dementia</span></div>
+        <h3>Alzheimer's Society</h3>
+        <p>Carer support, Dementia Connect helpline, lasting-power-of-attorney guidance.</p>
+        <span class="page-card-cta">Open alzheimers.org.uk →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.parkinsons.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">Neuro</span></div>
+        <h3>Parkinson's UK</h3>
+        <p>Specialist Parkinson's nurse helpline, exercise programmes, driving guidance.</p>
+        <span class="page-card-cta">Open parkinsons.org.uk →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.versusarthritis.org/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">MSK</span></div>
+        <h3>Versus Arthritis</h3>
+        <p>Inflammatory and degenerative arthritis information, self-management programmes.</p>
+        <span class="page-card-cta">Open versusarthritis.org →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.kidney.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-charity">Renal</span></div>
+        <h3>Kidney Care UK</h3>
+        <p>CKD patient resources, transplant information, financial-grant support.</p>
+        <span class="page-card-cta">Open kidneycareuk.org →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="page-section res-section" data-cat="signposting" id="signposting">
+    <h2><span class="eyebrow">Patient signposting — A–Z</span>Trusted charities &amp; support organisations to recommend in-consultation</h2>
+    <p class="res-section-intro">For every common GP presentation: at least one UK charity, helpline or self-help group worth giving to the patient. Use these as "homework" at the end of consultations — they shift workload and improve adherence.</p>
+    <div class="signpost-grid">
+      <div class="signpost-letter" data-sp-letter>
+        <h4>A</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Abortion</div>
+          <div class="signpost-row-links">
+            <a href="https://www.bpas.org/about-bpas/" target="_blank" rel="noopener noreferrer">BPAS</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Addison&#39;s</div>
+          <div class="signpost-row-links">
+            <a href="https://www.addisonsdisease.org.uk/" target="_blank" rel="noopener noreferrer">Self Help Group</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">ADHD</div>
+          <div class="signpost-row-links">
+            <a href="http://www.addiss.co.uk" target="_blank" rel="noopener noreferrer">ADDISS</a><span class="sep">·</span><a href="http://www.aadduk.org" target="_blank" rel="noopener noreferrer">AADD-UK</a><span class="sep">·</span><a href="https://www.mind.org.uk/" target="_blank" rel="noopener noreferrer">Mind</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Alcohol misuse</div>
+          <div class="signpost-row-links">
+            <a href="https://www.alcoholics-anonymous.org.uk/" target="_blank" rel="noopener noreferrer">AA</a><span class="sep">·</span><a href="https://smartrecovery.org.uk/" target="_blank" rel="noopener noreferrer">SMART Recovery</a><span class="sep">·</span><a href="https://alcoholchange.org.uk/" target="_blank" rel="noopener noreferrer">Alcohol Change UK</a><span class="sep">·</span><a href="https://www.actiononaddiction.org.uk/" target="_blank" rel="noopener noreferrer">Action on Addiction</a><span class="sep">·</span><a href="https://al-anonuk.org.uk/" target="_blank" rel="noopener noreferrer">Al-Anon</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Allergies</div>
+          <div class="signpost-row-links">
+            <a href="https://www.allergyuk.org/" target="_blank" rel="noopener noreferrer">Allergy UK</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Alopecia</div>
+          <div class="signpost-row-links">
+            <a href="https://www.alopecia.org.uk/" target="_blank" rel="noopener noreferrer">Alopecia UK</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Angina</div>
+          <div class="signpost-row-links">
+            <a href="https://www.bhf.org.uk/" target="_blank" rel="noopener noreferrer">BHF</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Ankylosing spondylitis</div>
+          <div class="signpost-row-links">
+            <a href="https://nass.co.uk/" target="_blank" rel="noopener noreferrer">NASS</a><span class="sep">·</span><a href="https://www.arthritiscare.org.uk/" target="_blank" rel="noopener noreferrer">Arthritis Care</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Antenatal &amp; postnatal depression</div>
+          <div class="signpost-row-links">
+            <a href="https://apni.org/" target="_blank" rel="noopener noreferrer">APNI</a><span class="sep">·</span><a href="https://pandasfoundation.org.uk/" target="_blank" rel="noopener noreferrer">PANDAS</a><span class="sep">·</span><a href="https://www.mind.org.uk/" target="_blank" rel="noopener noreferrer">Mind</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Arrhythmia</div>
+          <div class="signpost-row-links">
+            <a href="https://heartrhythmalliance.org/" target="_blank" rel="noopener noreferrer">Heart Rhythm Alliance</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Asthma</div>
+          <div class="signpost-row-links">
+            <a href="https://www.asthmaandlung.org.uk/" target="_blank" rel="noopener noreferrer">Asthma + Lung UK</a><span class="sep">·</span><a href="https://www.allergyuk.org/" target="_blank" rel="noopener noreferrer">Allergy UK</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Autism</div>
+          <div class="signpost-row-links">
+            <a href="https://www.autism.org.uk/" target="_blank" rel="noopener noreferrer">National Autistic Society</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>B</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Back pain</div>
+          <div class="signpost-row-links">
+            <a href="http://www.backcare.org.uk" target="_blank" rel="noopener noreferrer">BackCare</a><span class="sep">·</span><a href="http://www.versusarthritis.org" target="_blank" rel="noopener noreferrer">Versus Arthritis</a><span class="sep">·</span><a href="http://www.csp.org.uk" target="_blank" rel="noopener noreferrer">CSP</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Bedwetting / enuresis</div>
+          <div class="signpost-row-links">
+            <a href="https://eric.org.uk/" target="_blank" rel="noopener noreferrer">ERIC</a><span class="sep">·</span><a href="https://www.bladderandbowel.org" target="_blank" rel="noopener noreferrer">Bladder &amp; Bowel Community</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Bell&#39;s palsy</div>
+          <div class="signpost-row-links">
+            <a href="https://www.facialpalsy.org.uk/" target="_blank" rel="noopener noreferrer">Facial Palsy UK</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Bereavement</div>
+          <div class="signpost-row-links">
+            <a href="https://www.cruse.org.uk/" target="_blank" rel="noopener noreferrer">Cruse</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Bipolar disorder</div>
+          <div class="signpost-row-links">
+            <a href="http://www.bipolaruk.org.uk" target="_blank" rel="noopener noreferrer">Bipolar UK</a><span class="sep">·</span><a href="http://www.mind.org.uk" target="_blank" rel="noopener noreferrer">Mind</a><span class="sep">·</span><a href="http://www.rethink.org" target="_blank" rel="noopener noreferrer">Rethink</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">BPPV / vertigo</div>
+          <div class="signpost-row-links">
+            <a href="https://www.entuk.org/patients/conditions/18/vertigo" target="_blank" rel="noopener noreferrer">ENT UK</a><span class="sep">·</span><a href="https://www.brainandspine.org.uk/" target="_blank" rel="noopener noreferrer">Brain &amp; Spine Foundation</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Bullying</div>
+          <div class="signpost-row-links">
+            <a href="https://www.nationalbullyinghelpline.co.uk/" target="_blank" rel="noopener noreferrer">National Bullying Helpline</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>C</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Cancer — cervical</div>
+          <div class="signpost-row-links">
+            <a href="https://www.cancerresearchuk.org/" target="_blank" rel="noopener noreferrer">Cancer Research UK</a><span class="sep">·</span><a href="https://www.jostrust.org.uk/" target="_blank" rel="noopener noreferrer">Jo&#39;s Cervical Cancer Trust</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Cancer — prostate</div>
+          <div class="signpost-row-links">
+            <a href="http://www.cancerresearchuk.org" target="_blank" rel="noopener noreferrer">CRUK</a><span class="sep">·</span><a href="http://www.prostatecanceruk.org" target="_blank" rel="noopener noreferrer">Prostate Cancer UK</a><span class="sep">·</span><a href="http://www.macmillan.org.uk" target="_blank" rel="noopener noreferrer">Macmillan</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Carers</div>
+          <div class="signpost-row-links">
+            <a href="https://www.carersuk.org/" target="_blank" rel="noopener noreferrer">Carers UK</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Carpal tunnel</div>
+          <div class="signpost-row-links">
+            <a href="http://www.bssh.ac.uk" target="_blank" rel="noopener noreferrer">BSSH</a><span class="sep">·</span><a href="http://www.versusarthritis.org" target="_blank" rel="noopener noreferrer">Versus Arthritis</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Cerebral palsy</div>
+          <div class="signpost-row-links">
+            <a href="https://www.scope.org.uk/" target="_blank" rel="noopener noreferrer">SCOPE</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">CFS / ME</div>
+          <div class="signpost-row-links">
+            <a href="https://www.actionforme.org.uk/" target="_blank" rel="noopener noreferrer">Action for ME</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Chronic pain</div>
+          <div class="signpost-row-links">
+            <a href="https://www.britishpainsociety.org/" target="_blank" rel="noopener noreferrer">British Pain Society</a><span class="sep">·</span><a href="https://www.paintoolkit.org/" target="_blank" rel="noopener noreferrer">Pain Toolkit</a><span class="sep">·</span><a href="https://www.arthritis.com/" target="_blank" rel="noopener noreferrer">Arthritis</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Cirrhosis / NAFLD</div>
+          <div class="signpost-row-links">
+            <a href="https://britishlivertrust.org.uk/" target="_blank" rel="noopener noreferrer">British Liver Trust</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Coeliac disease</div>
+          <div class="signpost-row-links">
+            <a href="http://www.coeliac.org.uk" target="_blank" rel="noopener noreferrer">Coeliac UK</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Colic — infant</div>
+          <div class="signpost-row-links">
+            <a href="https://www.what0-18.nhs.uk/" target="_blank" rel="noopener noreferrer">Healthier Together</a><span class="sep">·</span><a href="http://www.cry-sis.org.uk" target="_blank" rel="noopener noreferrer">Cry-sis</a><span class="sep">·</span><a href="http://www.iconcope.org" target="_blank" rel="noopener noreferrer">ICON</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Constipation in pregnancy</div>
+          <div class="signpost-row-links">
+            <a href="https://www.medicinesinpregnancy.org/" target="_blank" rel="noopener noreferrer">bumps</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Contraception</div>
+          <div class="signpost-row-links">
+            <a href="https://www.sexwise.org.uk/" target="_blank" rel="noopener noreferrer">Sexwise</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">COPD</div>
+          <div class="signpost-row-links">
+            <a href="https://www.asthmaandlung.org.uk/" target="_blank" rel="noopener noreferrer">Asthma + Lung UK</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Cow&#39;s milk allergy</div>
+          <div class="signpost-row-links">
+            <a href="https://gpifn.org.uk/" target="_blank" rel="noopener noreferrer">GP Infant Feeding Network</a><span class="sep">·</span><a href="https://gpifn.files.wordpress.com/2019/10/imap_patient_factsheet_original.pdf" target="_blank" rel="noopener noreferrer">iMAP factsheet</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Crohn&#39;s disease</div>
+          <div class="signpost-row-links">
+            <a href="https://crohnsandcolitis.org.uk/" target="_blank" rel="noopener noreferrer">Crohn&#39;s &amp; Colitis UK</a><span class="sep">·</span><a href="https://www.cicra.org/" target="_blank" rel="noopener noreferrer">CICRA</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>D</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Dementia</div>
+          <div class="signpost-row-links">
+            <a href="http://www.alzheimers.org.uk" target="_blank" rel="noopener noreferrer">Alzheimer&#39;s Society</a><span class="sep">·</span><a href="http://www.lewybody.org" target="_blank" rel="noopener noreferrer">Lewy Body Society</a><span class="sep">·</span><a href="http://www.ucl.ac.uk" target="_blank" rel="noopener noreferrer">FTD support group (UCL)</a><span class="sep">·</span><a href="http://www.carersuk.org" target="_blank" rel="noopener noreferrer">Carers UK</a><span class="sep">·</span><a href="http://www.rcpsych.ac.uk" target="_blank" rel="noopener noreferrer">RCPsych</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Depression</div>
+          <div class="signpost-row-links">
+            <a href="http://www.depressionuk.org" target="_blank" rel="noopener noreferrer">Depression UK</a><span class="sep">·</span><a href="http://www.mind.org.uk" target="_blank" rel="noopener noreferrer">Mind</a><span class="sep">·</span><a href="http://www.mentalhealth.org.uk" target="_blank" rel="noopener noreferrer">Mental Health Foundation</a><span class="sep">·</span><a href="http://www.samaritans.org" target="_blank" rel="noopener noreferrer">Samaritans</a><span class="sep">·</span><a href="http://www.sane.org.uk" target="_blank" rel="noopener noreferrer">SANEline</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Diabetes</div>
+          <div class="signpost-row-links">
+            <a href="http://www.diabetes.org.uk" target="_blank" rel="noopener noreferrer">Diabetes UK</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Diet &amp; dietitians</div>
+          <div class="signpost-row-links">
+            <a href="https://www.bda.uk.com/" target="_blank" rel="noopener noreferrer">BDA</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Diverticulosis</div>
+          <div class="signpost-row-links">
+            <a href="https://gutscharity.org.uk/" target="_blank" rel="noopener noreferrer">Guts UK</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Domestic abuse</div>
+          <div class="signpost-row-links">
+            <a href="http://www.safelives.org.uk" target="_blank" rel="noopener noreferrer">SafeLives</a><span class="sep">·</span><a href="http://www.nationaldahelpline.org.uk" target="_blank" rel="noopener noreferrer">National DA Helpline</a><span class="sep">·</span><a href="http://www.samaritans.org" target="_blank" rel="noopener noreferrer">Samaritans</a><span class="sep">·</span><a href="http://www.victimsupport.org.uk" target="_blank" rel="noopener noreferrer">Victim Support</a><span class="sep">·</span><a href="http://www.womensaid.org.uk" target="_blank" rel="noopener noreferrer">Women&#39;s Aid</a><span class="sep">·</span><a href="http://www.childline.org.uk" target="_blank" rel="noopener noreferrer">Childline</a><span class="sep">·</span><a href="http://www.ncdv.co.uk" target="_blank" rel="noopener noreferrer">NCDV</a><span class="sep">·</span><a href="http://www.mensadviceline.org.uk" target="_blank" rel="noopener noreferrer">Men&#39;s Advice Line</a><span class="sep">·</span><a href="https://fortalice.org.uk/" target="_blank" rel="noopener noreferrer">Fortalice</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>E</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Eating disorders</div>
+          <div class="signpost-row-links">
+            <a href="https://www.beateatingdisorders.org.uk/" target="_blank" rel="noopener noreferrer">Beat</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Elbow &amp; shoulder</div>
+          <div class="signpost-row-links">
+            <a href="https://www.bloodpressureuk.org/" target="_blank" rel="noopener noreferrer">BESS</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">End of life — children</div>
+          <div class="signpost-row-links">
+            <a href="https://www.togetherforshortlives.org.uk/" target="_blank" rel="noopener noreferrer">Together for Short Lives</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Endometriosis</div>
+          <div class="signpost-row-links">
+            <a href="http://www.endo.org.uk" target="_blank" rel="noopener noreferrer">Endometriosis UK</a><span class="sep">·</span><a href="http://www.shetrust.org.uk/" target="_blank" rel="noopener noreferrer">SHE Trust</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Epilepsy</div>
+          <div class="signpost-row-links">
+            <a href="https://www.epilepsy.org.uk/" target="_blank" rel="noopener noreferrer">Epilepsy Action</a><span class="sep">·</span><a href="https://epilepsysociety.org.uk/" target="_blank" rel="noopener noreferrer">Epilepsy Society</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Erectile dysfunction</div>
+          <div class="signpost-row-links">
+            <a href="http://www.baus.org.uk" target="_blank" rel="noopener noreferrer">BAUS</a><span class="sep">·</span><a href="http://www.sexualadviceassociation.co.uk" target="_blank" rel="noopener noreferrer">SAA</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>F</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Fibromyalgia</div>
+          <div class="signpost-row-links">
+            <a href="https://fibro.org.uk/" target="_blank" rel="noopener noreferrer">FFT</a><span class="sep">·</span><a href="https://painrelieffoundation.org.uk/" target="_blank" rel="noopener noreferrer">Pain Relief Foundation</a><span class="sep">·</span><a href="https://www.fmauk.org/" target="_blank" rel="noopener noreferrer">FMA UK</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Forced marriage</div>
+          <div class="signpost-row-links">
+            <a href="https://www.gov.uk/guidance/forced-marriage" target="_blank" rel="noopener noreferrer">Forced Marriage Unit</a><span class="sep">·</span><a href="https://karmanirvana.org.uk/" target="_blank" rel="noopener noreferrer">Karma Nirvana</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>G</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Gambling</div>
+          <div class="signpost-row-links">
+            <a href="https://gamblersanonymous.org.uk/" target="_blank" rel="noopener noreferrer">Gamblers Anonymous</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Glaucoma</div>
+          <div class="signpost-row-links">
+            <a href="http://www.glaucoma-association.com" target="_blank" rel="noopener noreferrer">Int&#39;l Glaucoma Assoc.</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Gout</div>
+          <div class="signpost-row-links">
+            <a href="http://www.ukgoutsociety.org" target="_blank" rel="noopener noreferrer">UK Gout Society</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>H</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Headache &amp; migraine</div>
+          <div class="signpost-row-links">
+            <a href="https://headache.org.uk/" target="_blank" rel="noopener noreferrer">Headache UK</a><span class="sep">·</span><a href="https://migrainetrust.org/" target="_blank" rel="noopener noreferrer">The Migraine Trust</a><span class="sep">·</span><a href="https://migraine.org.uk/" target="_blank" rel="noopener noreferrer">Migraine UK</a><span class="sep">·</span><a href="https://ouchuk.org/" target="_blank" rel="noopener noreferrer">OUCH (cluster)</a><span class="sep">·</span><a href="https://painuk.org/" target="_blank" rel="noopener noreferrer">Pain UK</a><span class="sep">·</span><a href="https://bash.org.uk/" target="_blank" rel="noopener noreferrer">BASH</a><span class="sep">·</span><a href="http://www.l-t-b.org" target="_blank" rel="noopener noreferrer">Lifting the Burden</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Heart failure</div>
+          <div class="signpost-row-links">
+            <a href="http://www.bhf.org.uk" target="_blank" rel="noopener noreferrer">BHF</a><span class="sep">·</span><a href="http://www.heartfailurematters.org" target="_blank" rel="noopener noreferrer">Heart Failure Matters</a><span class="sep">·</span><a href="http://www.bsh.org.uk" target="_blank" rel="noopener noreferrer">BSH</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">HIV</div>
+          <div class="signpost-row-links">
+            <a href="http://www.aidsmap.com" target="_blank" rel="noopener noreferrer">aidsmap (NAM)</a><span class="sep">·</span><a href="https://www.tht.org.uk/" target="_blank" rel="noopener noreferrer">Terrence Higgins Trust</a><span class="sep">·</span><a href="http://www.avert.org" target="_blank" rel="noopener noreferrer">Avert</a><span class="sep">·</span><a href="https://bhiva.org/" target="_blank" rel="noopener noreferrer">BHIVA</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Hoarding</div>
+          <div class="signpost-row-links">
+            <a href="https://hoardinguk.org/" target="_blank" rel="noopener noreferrer">Hoarding UK</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Hypertension</div>
+          <div class="signpost-row-links">
+            <a href="https://bihsoc.org/" target="_blank" rel="noopener noreferrer">BIHS</a><span class="sep">·</span><a href="http://www.bhf.org.uk" target="_blank" rel="noopener noreferrer">BHF</a><span class="sep">·</span><a href="https://www.bloodpressureuk.org/" target="_blank" rel="noopener noreferrer">Blood Pressure UK</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>I</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">IBD</div>
+          <div class="signpost-row-links">
+            <a href="https://gutscharity.org.uk/" target="_blank" rel="noopener noreferrer">Guts UK</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">IBS</div>
+          <div class="signpost-row-links">
+            <a href="https://www.theibsnetwork.org/" target="_blank" rel="noopener noreferrer">The IBS Network</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Incontinence</div>
+          <div class="signpost-row-links">
+            <a href="https://www.bbuk.org.uk/" target="_blank" rel="noopener noreferrer">Bladder &amp; Bowel UK</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Infertility</div>
+          <div class="signpost-row-links">
+            <a href="http://www.britishfertilitysociety.org.uk" target="_blank" rel="noopener noreferrer">British Fertility Society</a><span class="sep">·</span><a href="http://www.bica.net" target="_blank" rel="noopener noreferrer">BICA</a><span class="sep">·</span><a href="http://www.fertilitynetworkuk.org" target="_blank" rel="noopener noreferrer">Fertility Network UK</a><span class="sep">·</span><a href="http://www.hfea.gov.uk" target="_blank" rel="noopener noreferrer">HFEA</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>K</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Kidney disease</div>
+          <div class="signpost-row-links">
+            <a href="https://www.kidneycareuk.org/" target="_blank" rel="noopener noreferrer">Kidney Care UK</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>L</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Learning disabilities</div>
+          <div class="signpost-row-links">
+            <a href="http://www.hft.org.uk" target="_blank" rel="noopener noreferrer">Hft</a><span class="sep">·</span><a href="http://www.mencap.org.uk" target="_blank" rel="noopener noreferrer">Mencap</a><span class="sep">·</span><a href="http://www.easyhealth.org.uk" target="_blank" rel="noopener noreferrer">Easyhealth</a><span class="sep">·</span><a href="http://www.bild.org.uk" target="_blank" rel="noopener noreferrer">BILD</a><span class="sep">·</span><a href="http://www.challengingbehaviour.org.uk" target="_blank" rel="noopener noreferrer">Challenging Behaviour Foundation</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>M</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Macular degeneration</div>
+          <div class="signpost-row-links">
+            <a href="http://www.macularsociety.org" target="_blank" rel="noopener noreferrer">Macular Society</a><span class="sep">·</span><a href="http://www.rnib.org.uk" target="_blank" rel="noopener noreferrer">RNIB</a><span class="sep">·</span><a href="http://www.citizensadvice.org.uk" target="_blank" rel="noopener noreferrer">Citizens Advice</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Ménière&#39;s disease</div>
+          <div class="signpost-row-links">
+            <a href="http://www.menieres.org.uk" target="_blank" rel="noopener noreferrer">Ménière&#39;s Society</a><span class="sep">·</span><a href="http://www.tinnitus.org.uk" target="_blank" rel="noopener noreferrer">British Tinnitus Assoc.</a><span class="sep">·</span><a href="http://www.rnid.org.uk" target="_blank" rel="noopener noreferrer">RNID</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Menopause</div>
+          <div class="signpost-row-links">
+            <a href="http://www.rockmymenopause.com" target="_blank" rel="noopener noreferrer">Rock My Menopause</a><span class="sep">·</span><a href="http://www.menopausematters.co.uk" target="_blank" rel="noopener noreferrer">Menopause Matters</a><span class="sep">·</span><a href="http://www.womens-health-concern.org" target="_blank" rel="noopener noreferrer">Women&#39;s Health Concern</a><span class="sep">·</span><a href="http://www.daisynetwork.org" target="_blank" rel="noopener noreferrer">Daisy Network (POI)</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Mental health — students</div>
+          <div class="signpost-row-links">
+            <a href="https://www.studentminds.org.uk/" target="_blank" rel="noopener noreferrer">Student Minds</a><span class="sep">·</span><a href="https://www.studentsagainstdepression.org/" target="_blank" rel="noopener noreferrer">Students Against Depression</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Multiple myeloma</div>
+          <div class="signpost-row-links">
+            <a href="https://www.myeloma.org.uk/" target="_blank" rel="noopener noreferrer">Myeloma UK</a><span class="sep">·</span><a href="https://www.macmillan.org.uk/" target="_blank" rel="noopener noreferrer">Macmillan</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Multiple sclerosis</div>
+          <div class="signpost-row-links">
+            <a href="http://www.mstrust.org.uk" target="_blank" rel="noopener noreferrer">MS Trust</a><span class="sep">·</span><a href="http://www.mssociety.org.uk" target="_blank" rel="noopener noreferrer">MS Society</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>O</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Obesity</div>
+          <div class="signpost-row-links">
+            <a href="https://www.obesityuk.org.uk/" target="_blank" rel="noopener noreferrer">Obesity UK</a><span class="sep">·</span><a href="https://www.nhs.uk/better-health/lose-weight/" target="_blank" rel="noopener noreferrer">NHS Better Health – Lose Weight</a><span class="sep">·</span><a href="https://aso.org.uk/" target="_blank" rel="noopener noreferrer">Assoc. for the Study of Obesity</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Obstructive sleep apnoea</div>
+          <div class="signpost-row-links">
+            <a href="http://www.sleep-apnoea-trust.org" target="_blank" rel="noopener noreferrer">Sleep Apnoea Trust</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Osteoporosis</div>
+          <div class="signpost-row-links">
+            <a href="https://theros.org.uk/" target="_blank" rel="noopener noreferrer">Royal Osteoporosis Society</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>P</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Pain (general)</div>
+          <div class="signpost-row-links">
+            <a href="https://action-on-pain.co.uk/" target="_blank" rel="noopener noreferrer">Action on Pain</a><span class="sep">·</span><a href="http://www.painconcern.org.uk/" target="_blank" rel="noopener noreferrer">Pain Concern</a><span class="sep">·</span><a href="https://painrelieffoundation.org.uk/" target="_blank" rel="noopener noreferrer">Pain Relief Foundation</a><span class="sep">·</span><a href="https://painassociation.co.uk/" target="_blank" rel="noopener noreferrer">Pain Association Scotland</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Parkinson&#39;s</div>
+          <div class="signpost-row-links">
+            <a href="http://www.parkinsons.org.uk" target="_blank" rel="noopener noreferrer">Parkinson&#39;s UK</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">PCOS</div>
+          <div class="signpost-row-links">
+            <a href="http://www.pcoschallenge.org" target="_blank" rel="noopener noreferrer">PCOS Challenge</a><span class="sep">·</span><a href="http://www.verity-pcos.org.uk" target="_blank" rel="noopener noreferrer">Verity</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Pets &amp; owners</div>
+          <div class="signpost-row-links">
+            <a href="https://cinnamon.org.uk/" target="_blank" rel="noopener noreferrer">Cinnamon Trust</a><span class="sep">·</span><a href="https://www.pdsa.org.uk/" target="_blank" rel="noopener noreferrer">PDSA</a><span class="sep">·</span><a href="https://www.rspca.org.uk/" target="_blank" rel="noopener noreferrer">RSPCA</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Pregnancy</div>
+          <div class="signpost-row-links">
+            <a href="https://www.tommys.org/" target="_blank" rel="noopener noreferrer">Tommy&#39;s</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Prison rehabilitation</div>
+          <div class="signpost-row-links">
+            <a href="https://www.nacro.org.uk/" target="_blank" rel="noopener noreferrer">Nacro</a><span class="sep">·</span><a href="https://prisonreformtrust.org.uk/" target="_blank" rel="noopener noreferrer">Prison Reform Trust</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>R</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Relationship support</div>
+          <div class="signpost-row-links">
+            <a href="https://www.relate.org.uk/" target="_blank" rel="noopener noreferrer">Relate</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Rheumatoid arthritis</div>
+          <div class="signpost-row-links">
+            <a href="https://www.versusarthritis.org/" target="_blank" rel="noopener noreferrer">Versus Arthritis</a><span class="sep">·</span><a href="https://nras.org.uk/" target="_blank" rel="noopener noreferrer">NRAS</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>S</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Safeguarding — elderly</div>
+          <div class="signpost-row-links">
+            <a href="https://www.voiceability.org/" target="_blank" rel="noopener noreferrer">VoiceAbility</a><span class="sep">·</span><a href="https://www.advocacyproject.org.uk/" target="_blank" rel="noopener noreferrer">The Advocacy Project</a><span class="sep">·</span><a href="https://www.ageuk.org.uk/" target="_blank" rel="noopener noreferrer">Age UK</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Sexual health</div>
+          <div class="signpost-row-links">
+            <a href="https://www.contraceptionchoices.org/" target="_blank" rel="noopener noreferrer">Contraception Choices</a><span class="sep">·</span><a href="https://www.brook.org.uk/" target="_blank" rel="noopener noreferrer">Brook</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Skin conditions</div>
+          <div class="signpost-row-links">
+            <a href="https://www.bad.org.uk/" target="_blank" rel="noopener noreferrer">British Assoc. of Dermatologists</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Smoking cessation</div>
+          <div class="signpost-row-links">
+            <a href="https://smokefree.gov/" target="_blank" rel="noopener noreferrer">Smokefree</a><span class="sep">·</span><a href="https://ash.org.uk/" target="_blank" rel="noopener noreferrer">ASH</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Stress</div>
+          <div class="signpost-row-links">
+            <a href="https://www.mentalhealth.org.uk/" target="_blank" rel="noopener noreferrer">Mental Health Foundation</a><span class="sep">·</span><a href="https://www.mind.org.uk/" target="_blank" rel="noopener noreferrer">Mind</a><span class="sep">·</span><a href="https://www.headspace.com/" target="_blank" rel="noopener noreferrer">Headspace</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Stroke / TIA</div>
+          <div class="signpost-row-links">
+            <a href="https://www.stroke.org.uk/" target="_blank" rel="noopener noreferrer">Stroke Association</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>T</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Thyroid (hyper/hypo)</div>
+          <div class="signpost-row-links">
+            <a href="https://www.btf-thyroid.org/" target="_blank" rel="noopener noreferrer">British Thyroid Foundation</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Tinnitus</div>
+          <div class="signpost-row-links">
+            <a href="http://www.tinnitus.org.uk" target="_blank" rel="noopener noreferrer">British Tinnitus Assoc.</a><span class="sep">·</span><a href="https://www.entuk.org/" target="_blank" rel="noopener noreferrer">ENT UK</a>
+          </div>
+        </div>
+      </div>
+      <div class="signpost-letter" data-sp-letter>
+        <h4>V</h4>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Veterans</div>
+          <div class="signpost-row-links">
+            <a href="https://www.helpforheroes.org.uk/" target="_blank" rel="noopener noreferrer">Help for Heroes</a><span class="sep">·</span><a href="https://combatstress.org.uk/" target="_blank" rel="noopener noreferrer">Combat Stress</a>
+          </div>
+        </div>
+        <div class="signpost-row" data-sp-row>
+          <div class="signpost-row-label">Vitiligo</div>
+          <div class="signpost-row-links">
+            <a href="https://vitiligosociety.org/" target="_blank" rel="noopener noreferrer">Vitiligo Society</a><span class="sep">·</span><a href="https://www.changingfaces.org.uk/" target="_blank" rel="noopener noreferrer">Changing Faces</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="page-section res-section" data-cat="learning">
+    <h2><span class="eyebrow">Learning &amp; CPD</span>e-LfH · BMJ Learning · Red Whale</h2>
+    <div class="page-grid">
+      <a class="page-card res-link-card" href="https://www.e-lfh.org.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-nhs">NHS</span><span class="res-pill res-pill-free">Free</span></div>
+        <h3>e-Learning for Healthcare (e-LfH)</h3>
+        <p>Free NHS e-learning catalogue — safeguarding, statutory training, specialty modules.</p>
+        <span class="page-card-cta">Open e-LfH →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://learning.bmj.com/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">CPD</span></div>
+        <h3>BMJ Learning</h3>
+        <p>CME / CPD modules with certificates — often free with BMA membership.</p>
+        <span class="page-card-cta">Open BMJ Learning →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.redwhale.co.uk/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">Course</span></div>
+        <h3>Red Whale — GP update courses</h3>
+        <p>The classic 1-day GP update — covers what changed in NICE / NG / DSU over the year.</p>
+        <span class="page-card-cta">Open Red Whale →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.rcgplearning.com/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">RCGP</span></div>
+        <h3>RCGP Learning</h3>
+        <p>RCGP e-learning hub — essential knowledge, CPD modules, ePortfolio integration.</p>
+        <span class="page-card-cta">Open RCGP Learning →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://patient.info/doctor" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-uk">Reference</span></div>
+        <h3>Patient.info — Pro section</h3>
+        <p>Clinical reference articles for clinicians — fast-search alternative to CKS.</p>
+        <span class="page-card-cta">Open patient.info →</span>
+      </a>
+      <a class="page-card res-link-card" href="https://www.geekymedics.com/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow"><span class="res-pill res-pill-free">Free</span></div>
+        <h3>Geeky Medics</h3>
+        <p>Free OSCE / SCA-style case examples, examination videos, communication-skills guides.</p>
+        <span class="page-card-cta">Open geekymedics.com →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Suggest a resource</span>What's missing?</h2>
+    <div class="page-card" style="max-width:680px">
+      <p>If there's a resource you rely on that isn't here — official guidance, charity, learning module, regional pathway — email it and we'll add it.</p>
+      <a class="page-card-cta" href="mailto:bassamomda91@gmail.com?subject=Resource%20suggestion">Email a suggestion →</a>
+    </div>
+  </section>
+
+</div>
+
+</main></div>
+
+<script src="../assets/site.js?v=51"></script>
+<script>
+  // Collapsible section accordion — click a section heading to expand/collapse it
+  (function(){
+    const caretSvg = '<svg class="res-acc-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+    document.querySelectorAll('.res-section').forEach(sec => {
+      const h2 = sec.querySelector(':scope > h2');
+      if (!h2) return;
+      const body = document.createElement('div');
+      body.className = 'res-body';
+      let node = h2.nextSibling;
+      while (node) { const next = node.nextSibling; body.appendChild(node); node = next; }
+      sec.appendChild(body);
+      h2.insertAdjacentHTML('beforeend', caretSvg);
+      sec.classList.add('is-collapsed');
+      h2.addEventListener('click', () => sec.classList.toggle('is-collapsed'));
+    });
+    // Auto-expand a section if the URL targets it (e.g. #local-pathways, #signposting)
+    function openHash(){
+      const id = (location.hash || '').replace(/^#/, '');
+      if (!id) return;
+      const sec = document.getElementById(id);
+      if (sec && sec.classList.contains('res-section')) {
+        sec.classList.remove('is-collapsed');
+      }
+    }
+    openHash();
+    window.addEventListener('hashchange', openHash);
+  })();
+
+  // Simple client-side filter for the resource search box
+  (function(){
+    const q = document.getElementById('resQ');
+    if (!q) return;
+    q.addEventListener('input', e => {
+      const v = e.target.value.trim().toLowerCase();
+      document.querySelectorAll('.res-section').forEach(sec => {
+        let anyVisible = false;
+        // Standard link cards
+        sec.querySelectorAll('.res-link-card').forEach(c => {
+          const txt = c.textContent.toLowerCase();
+          const match = !v || txt.includes(v);
+          c.style.display = match ? '' : 'none';
+          if (match) anyVisible = true;
+        });
+        // Local pathway portals
+        sec.querySelectorAll('.portal-card').forEach(c => {
+          const txt = c.textContent.toLowerCase();
+          const match = !v || txt.includes(v);
+          c.style.display = match ? '' : 'none';
+          if (match) anyVisible = true;
+        });
+        sec.querySelectorAll('.portal-group').forEach(g => {
+          const anyCard = [...g.querySelectorAll('.portal-card')].some(c => c.style.display !== 'none');
+          g.style.display = anyCard ? '' : 'none';
+        });
+        // Signposting rows
+        sec.querySelectorAll('[data-sp-row]').forEach(r => {
+          const txt = r.textContent.toLowerCase();
+          const match = !v || txt.includes(v);
+          r.style.display = match ? '' : 'none';
+          if (match) anyVisible = true;
+        });
+        sec.querySelectorAll('[data-sp-letter]').forEach(g => {
+          const anyRow = [...g.querySelectorAll('[data-sp-row]')].some(r => r.style.display !== 'none');
+          g.style.display = anyRow ? '' : 'none';
+        });
+        sec.style.display = anyVisible ? '' : 'none';
+        // When searching, auto-expand sections with matches; collapse all when cleared
+        if (v) sec.classList.toggle('is-collapsed', !anyVisible);
+        else sec.classList.add('is-collapsed');
+      });
+    });
+  })();
+</script>
+</body>
+</html>
