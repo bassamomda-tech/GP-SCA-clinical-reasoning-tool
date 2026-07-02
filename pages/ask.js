@@ -34,8 +34,8 @@
   // when embeddings are ready, else lexical). Degrades gracefully on any error.
   async function grounding(q){
     if(!RET) return [];
-    try{ return await RET.grounding(q, 6); }
-    catch(e){ return RET.searchScored(q, 5).map(x=>x.it); }
+    try{ return await RET.grounding(q, 4); }
+    catch(e){ return RET.searchScored(q, 4).map(x=>x.it); }
   }
 
   /* ---------- grouped "related in the library" links ---------- */
@@ -358,19 +358,35 @@
 
     // build message list (framing primer + recent conversation + grounded question)
     const msgs = [ {role:'user', content:FRAMING}, {role:'assistant', content:PRIMER_ACK} ];
-    history.slice(-8).forEach(m=> msgs.push({role:m.role, content:m.content}) );
+    history.slice(-6).forEach(m=> msgs.push({role:m.role, content:m.content}) );
     msgs.push({ role:'user', content: buildContext(hits) + '\n\n---\nCLINICIAN QUESTION (a follow-up in the conversation above unless it clearly changes subject): ' + q });
 
     let answer = '';
+    const canStream = window.claude && typeof window.claude.stream === 'function';
+    let streamEl = null, streamAns = null;   // live bubble while streaming
     try{
-      if(!(window.claude && window.claude.complete)) throw new Error('assistant-unavailable');
+      if(!(window.claude && (window.claude.stream || window.claude.complete))) throw new Error('assistant-unavailable');
       // First-turn questions carry a cache key: a repeat of a popular question is
       // served instantly from the Worker's vetted answer cache (zero AI cost).
       const cacheKey = history.length ? null : qt.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().slice(0,300);
-      answer = await window.claude.complete(Object.assign({ messages: msgs }, cacheKey ? { cacheKey } : {}));
+      const arg = Object.assign({ messages: msgs }, cacheKey ? { cacheKey } : {});
+      if(canStream){
+        answer = await window.claude.stream(arg, (chunk, full)=>{
+          if(!streamEl){
+            typingEl.remove();
+            streamEl = addBot('<div class="ans"></div>');
+            streamAns = streamEl.querySelector('.ans');
+          }
+          streamAns.innerHTML = mdToHtml(full);
+          thread.scrollTop = thread.scrollHeight;
+        });
+      } else {
+        answer = await window.claude.complete(arg);
+      }
       if(!answer || !answer.trim()) throw new Error('empty');
     }catch(err){
       typingEl.remove();
+      if(streamEl) streamEl.remove();
       let msg;
       if(err && err.code===401){
         msg = 'Please sign in (a free account is fine) to use the assistant — then ask again.';
@@ -391,7 +407,14 @@
     const wasCached = !!(window.claude && window.claude.lastCached);
     history.push({ role:'user', content:q });
     history.push({ role:'assistant', content:answer, q:q, hitSlugs:hits.map(h=>h.slug), web:webSrcs });
-    addBot(`<div class="ans">${mdToHtml(answer)}</div>${srcHtml(hits, q)}${webHtml(webSrcs)}${refHtml(answer, q)}<div class="ans-note">${wasCached ? '⚡ Instant — this exact question was answered before; served from the vetted cache. ' : ''}Generated from Reasoning GP notes + NICE-aligned guidance. Always confirm against current NICE CKS / BNF.</div>${fbHtml(history.length-1)}`);
+    const tail = `${srcHtml(hits, q)}${webHtml(webSrcs)}${refHtml(answer, q)}<div class="ans-note">${wasCached ? '⚡ Instant — this exact question was answered before; served from the vetted cache. ' : ''}Generated from Reasoning GP notes + NICE-aligned guidance. Always confirm against current NICE CKS / BNF.</div>${fbHtml(history.length-1)}`;
+    if(streamEl){
+      // finalise the streamed bubble: lock in the markdown + append sources/feedback
+      streamAns.innerHTML = mdToHtml(answer);
+      streamAns.insertAdjacentHTML('afterend', tail);
+    } else {
+      addBot(`<div class="ans">${mdToHtml(answer)}</div>${tail}`);
+    }
     save();
     busy=false; sendBtn.disabled = !input.value.trim();
     input.focus();

@@ -20,9 +20,9 @@
       const a = it.a;
       out += `\n[${i+1}] ${a.title}  (${a.category||'General'} · source: ${a.source||'NICE CKS'})\n`;
       if(a.overview) out += 'Overview: ' + a.overview + '\n';
-      if(a.features && a.features.length) out += 'Key features: ' + clip(a.features,6).join('; ') + '\n';
-      if(a.management && a.management.length) out += 'Primary-care approach: ' + clip(a.management,7).join('; ') + '\n';
-      if(a.referral && a.referral.length) out += 'Refer / red flags: ' + clip(a.referral,5).join('; ') + '\n';
+      if(a.features && a.features.length) out += 'Key features: ' + clip(a.features,4).join('; ') + '\n';
+      if(a.management && a.management.length) out += 'Primary-care approach: ' + clip(a.management,5).join('; ') + '\n';
+      if(a.referral && a.referral.length) out += 'Refer / red flags: ' + clip(a.referral,3).join('; ') + '\n';
     });
     return out;
   }

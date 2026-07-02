@@ -47,6 +47,53 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
       window.claude.lastCached = !!data.cached;
       return data.completion || data.text || '';
     },
+    // Streaming answer: same as complete() but calls onToken(textChunk) as words
+    // arrive, so the UI can render progressively. Returns the full text at the end.
+    // Falls back to a normal complete() if the server doesn't stream (cache hit).
+    async stream(arg, onToken){
+      const messages = Array.isArray(arg) ? arg : (arg && arg.messages) ? arg.messages
+        : [{ role:'user', content:String(arg||'') }];
+      const cacheKey = (arg && !Array.isArray(arg) && arg.cacheKey) ? String(arg.cacheKey) : null;
+      let token = null; try { token = localStorage.getItem('rgp.auth.token.v1'); } catch(e){}
+      const res = await fetch(cfg.workerUrl.replace(/\/$/,'') + '/api/ai', {
+        method:'POST',
+        headers: Object.assign({ 'Content-Type':'application/json' }, token ? { 'Authorization':'Bearer ' + token } : {}),
+        body: JSON.stringify(Object.assign({ messages, stream:true }, cacheKey ? { cacheKey } : {}))
+      });
+      if (res.status === 401 || res.status === 402) { const e = new Error('unavailable'); e.code = res.status; throw e; }
+      if (!res.ok) throw new Error('ai_error_' + res.status);
+      const ctype = res.headers.get('content-type') || '';
+      // Cache hit (or non-stream server) → plain JSON, no streaming.
+      if (ctype.indexOf('text/event-stream') === -1) {
+        const data = await res.json();
+        window.claude.lastSources = Array.isArray(data.sources) ? data.sources : [];
+        window.claude.lastCached = !!data.cached;
+        const full = data.completion || data.text || '';
+        if (full && typeof onToken === 'function') onToken(full, full);
+        return full;
+      }
+      window.claude.lastCached = false;
+      window.claude.lastSources = [];
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buf = '', full = '';
+      for (;;) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buf += decoder.decode(value, { stream:true });
+        let nl;
+        while ((nl = buf.indexOf('\n\n')) >= 0) {
+          const chunk = buf.slice(0, nl); buf = buf.slice(nl + 2);
+          const line = chunk.split('\n').find(l => l.startsWith('data:'));
+          if (!line) continue;
+          let o; try { o = JSON.parse(line.slice(5).trim()); } catch(e){ continue; }
+          if (o.t) { full += o.t; if (typeof onToken === 'function') onToken(o.t, full); }
+          else if (o.done) { window.claude.lastSources = Array.isArray(o.sources) ? o.sources : []; }
+          else if (o.error) { throw new Error(o.error); }
+        }
+      }
+      return full;
+    },
     // Embeddings for semantic search (Ask). Returns number[][]. Throws if the
     // Worker has no Workers AI binding (501) → callers fall back to lexical.
     async embed(texts){

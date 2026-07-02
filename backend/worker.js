@@ -258,7 +258,7 @@ async function aiProxy(request, env, cors) {
   try { user = await userFromToken(request, env); }
   catch (e) { return json({ error: 'sign_in_required' }, 401, cors); }
 
-  const { messages, cacheKey } = await request.json();
+  const { messages, cacheKey, stream } = await request.json();
   if (!Array.isArray(messages) || !messages.length) return json({ error: 'no_messages' }, 400, cors);
 
   // Common-answer cache: the site sends cacheKey (the normalised question) for
@@ -301,7 +301,7 @@ async function aiProxy(request, env, cors) {
   const tools = (env.WEB_SEARCH === 'off') ? null : [{
     type: 'web_search_20250305',
     name: 'web_search',
-    max_uses: 3,
+    max_uses: 1,
     allowed_domains: [
       'nice.org.uk',            // NICE + CKS + BNF (cks./bnf. subdomains included)
       'sign.ac.uk',
@@ -317,16 +317,61 @@ async function aiProxy(request, env, cors) {
     ]
   }];
 
+  const wantStream = !!stream;
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': env.AI_API_KEY, 'anthropic-version': '2023-06-01' },
     body: JSON.stringify(Object.assign({
       model: model,
       max_tokens: 1600,
-      messages: anthMessages
+      messages: anthMessages,
+      stream: wantStream
     }, tools ? { tools } : {}))
   });
   if (!resp.ok) return json({ error: 'ai_upstream_' + resp.status }, 502, cors);
+
+  // ---- Streaming path: pipe Anthropic's SSE back to the browser as a simple
+  //      token stream so the answer appears word-by-word (feels instant). ----
+  if (wantStream) {
+    const encoder = new TextEncoder();
+    const decoder = new TextDecoder();
+    const reader = resp.body.getReader();
+    const ts = new TransformStream();
+    const writer = ts.writable.getWriter();
+    (async () => {
+      let full = ''; const ssrc = []; const sseen = new Set(); let buf = '';
+      const send = (o) => writer.write(encoder.encode('data: ' + JSON.stringify(o) + '\n\n'));
+      try {
+        for (;;) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          buf += decoder.decode(value, { stream: true });
+          let nl;
+          while ((nl = buf.indexOf('\n')) >= 0) {
+            const line = buf.slice(0, nl).trim(); buf = buf.slice(nl + 1);
+            if (!line.startsWith('data:')) continue;
+            const p = line.slice(5).trim();
+            if (!p || p === '[DONE]') continue;
+            let ev; try { ev = JSON.parse(p); } catch (e) { continue; }
+            if (ev.type === 'content_block_delta' && ev.delta) {
+              if (ev.delta.type === 'text_delta' && ev.delta.text) { full += ev.delta.text; await send({ t: ev.delta.text }); }
+              else if (ev.delta.type === 'citations_delta' && ev.delta.citation && ev.delta.citation.url && !sseen.has(ev.delta.citation.url)) {
+                sseen.add(ev.delta.citation.url); ssrc.push({ url: ev.delta.citation.url, title: String(ev.delta.citation.title || '').slice(0, 120) });
+              }
+            }
+          }
+        }
+        if (ansKey && full && full.length > 40) {
+          try { await env.USERS.put(ansKey, JSON.stringify({ q: cacheKey.slice(0, 300), completion: full, sources: ssrc, ts: Date.now(), hits: 0, model }), { expirationTtl: 60 * 60 * 24 * 30 }); } catch (e) {}
+        }
+        await send({ done: true, sources: ssrc });
+      } catch (e) {
+        await send({ error: String((e && e.message) || e) });
+      } finally { await writer.close(); }
+    })();
+    return new Response(ts.readable, { status: 200, headers: Object.assign({}, cors, { 'Content-Type': 'text/event-stream; charset=utf-8', 'Cache-Control': 'no-cache' }) });
+  }
+
   const data = await resp.json();
   // With web search on, the reply arrives as multiple content blocks (text
   // interleaved with search activity). Join the text; collect cited live pages.
