@@ -5,10 +5,10 @@
   var btns = document.querySelectorAll('.vt-btn');
   if (!btns.length) return;
   var file = (location.pathname.split('/').pop() || 'alg').replace(/\.html?$/, '');
-  var KEY = 'rgp.alg.view.' + file;
+  var KEY = 'rgp.alg.view.v2.' + file;
 
   function setView(v, scroll) {
-    document.body.classList.toggle('steps-mode', v === 'steps');
+    document.body.classList.toggle('diagram-mode', v === 'diagram');
     for (var i = 0; i < btns.length; i++) {
       btns[i].setAttribute('aria-selected', String(btns[i].dataset.view === v));
     }

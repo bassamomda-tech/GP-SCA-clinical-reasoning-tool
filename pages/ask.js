@@ -405,9 +405,10 @@
     typingEl.remove();
     const webSrcs = (window.claude && Array.isArray(window.claude.lastSources)) ? window.claude.lastSources : [];
     const wasCached = !!(window.claude && window.claude.lastCached);
+    const wasFallback = !!(window.claude && window.claude.lastFallback);
     history.push({ role:'user', content:q });
     history.push({ role:'assistant', content:answer, q:q, hitSlugs:hits.map(h=>h.slug), web:webSrcs });
-    const tail = `${srcHtml(hits, q)}${webHtml(webSrcs)}${refHtml(answer, q)}<div class="ans-note">${wasCached ? '⚡ Instant — this exact question was answered before; served from the vetted cache. ' : ''}Generated from Reasoning GP notes + NICE-aligned guidance. Always confirm against current NICE CKS / BNF.</div>${fbHtml(history.length-1)}`;
+    const tail = `${srcHtml(hits, q)}${webHtml(webSrcs)}${refHtml(answer, q)}<div class="ans-note">${wasFallback ? '⚠️ Answered by a free backup model (the main AI was unavailable — e.g. credit ran out). No live guidance search was used — check this answer carefully against NICE CKS / BNF. ' : ''}${wasCached ? '⚡ Instant — this exact question was answered before; served from the vetted cache. ' : ''}Generated from Reasoning GP notes + NICE-aligned guidance. Always confirm against current NICE CKS / BNF.</div>${fbHtml(history.length-1)}`;
     if(streamEl){
       // finalise the streamed bubble: lock in the markdown + append sources/feedback
       streamAns.innerHTML = mdToHtml(answer);

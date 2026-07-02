@@ -10,18 +10,18 @@
 .vt-btn[aria-selected="true"] { background:#0f2d52; color:#fff; }
 .vt-btn:not([aria-selected="true"]):hover { color:#0f2d52; }
 
-/* ── Show/hide logic (Diagram is the default view) ── */
-#viewDiagram { display:block; }
-#viewSteps, #flow { display:none; }
-.alg-progress .prog-only { display:none; }
-.alg-progress > *:not(.view-toggle) { display:none; }
+/* ── Show/hide logic (Steps is the default view) ── */
+#viewSteps, #flow { display:block; }
+#viewDiagram { display:none; }
+.alg-progress .prog-only { display:revert; }
+.alg-progress > *:not(.view-toggle) { display:revert; }
 
-/* Steps view when explicitly selected */
-body.steps-mode #viewDiagram { display:none; }
-body.steps-mode #viewSteps { display:block; }
-body.steps-mode #flow { display:block; }
-body.steps-mode .alg-progress .prog-only { display:revert; }
-body.steps-mode .alg-progress > *:not(.view-toggle) { display:revert; }
+/* Diagram view only when explicitly selected */
+body.diagram-mode #viewSteps { display:none; }
+body.diagram-mode #flow { display:none; }
+body.diagram-mode #viewDiagram { display:block; }
+body.diagram-mode .alg-progress .prog-only { display:none; }
+body.diagram-mode .alg-progress > *:not(.view-toggle) { display:none; }
 
 /* ── Diagram legend ── */
 #viewDiagram .dg-legend { max-width:1000px; margin:18px auto 0; padding:10px 18px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; font-size:0.78rem; color:#5a6678; line-height:1.5; }

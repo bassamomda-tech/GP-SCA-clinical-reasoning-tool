@@ -45,6 +45,7 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
       // Live web sources cited by the answer (trusted-domain search) — read by Ask.
       window.claude.lastSources = Array.isArray(data.sources) ? data.sources : [];
       window.claude.lastCached = !!data.cached;
+      window.claude.lastFallback = !!data.fallback;
       return data.completion || data.text || '';
     },
     // Streaming answer: same as complete() but calls onToken(textChunk) as words
@@ -68,12 +69,14 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
         const data = await res.json();
         window.claude.lastSources = Array.isArray(data.sources) ? data.sources : [];
         window.claude.lastCached = !!data.cached;
+        window.claude.lastFallback = !!data.fallback;
         const full = data.completion || data.text || '';
         if (full && typeof onToken === 'function') onToken(full, full);
         return full;
       }
       window.claude.lastCached = false;
       window.claude.lastSources = [];
+      window.claude.lastFallback = false;
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
       let buf = '', full = '';

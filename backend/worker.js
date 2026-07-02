@@ -328,9 +328,19 @@ async function aiProxy(request, env, cors) {
       stream: wantStream
     }, tools ? { tools } : {}))
   });
-  if (!resp.ok) return json({ error: 'ai_upstream_' + resp.status }, 502, cors);
-
-  // ---- Streaming path: pipe Anthropic's SSE back to the browser as a simple
+  if (!resp.ok) {
+    // Anthropic failed — most commonly the prepaid credit has run out (HTTP 400
+    // "credit balance too low"), but also any outage. Fall back to a FREE Cloudflare
+    // Workers AI model so Ask keeps answering. Flagged as a backup so the UI can warn
+    // the reader to verify (the free model has no web search + lower clinical depth).
+    if (env.AI) {
+      try {
+        const fb = await workersAiAnswer(env, messages);
+        if (fb && fb.trim()) return json({ completion: fb, sources: [], fallback: true }, 200, cors);
+      } catch (e) { /* fall through to error */ }
+    }
+    return json({ error: 'ai_upstream_' + resp.status }, 502, cors);
+  } pipe Anthropic's SSE back to the browser as a simple
   //      token stream so the answer appears word-by-word (feels instant). ----
   if (wantStream) {
     const encoder = new TextEncoder();
@@ -390,6 +400,19 @@ async function aiProxy(request, env, cors) {
     try { await env.USERS.put(ansKey, JSON.stringify({ q: cacheKey.slice(0, 300), completion: text, sources, ts: Date.now(), hits: 0, model }), { expirationTtl: 60 * 60 * 24 * 30 }); } catch (e) {}
   }
   return json({ completion: text, sources }, 200, cors);
+}
+
+/* Free fallback answer via Cloudflare Workers AI (Llama 3.3). Used only when the
+   Anthropic call fails (e.g. prepaid credit exhausted). No web search, shorter,
+   lower clinical depth than Claude — always returned flagged as fallback:true. */
+async function workersAiAnswer(env, messages) {
+  const msgs = (messages || []).map((m, i) => ({
+    role: i === 0 ? 'system' : (m.role === 'assistant' ? 'assistant' : 'user'),
+    content: typeof m.content === 'string' ? m.content : String((m.content && m.content.text) || m.content || '')
+  }));
+  const model = env.FALLBACK_MODEL || '@cf/meta/llama-3.3-70b-instruct-fp8-fast';
+  const out = await env.AI.run(model, { messages: msgs, max_tokens: 900 });
+  return (out && (out.response || out.result || out.text || '')) || '';
 }
 
 /* ---------------- Answer feedback + owner Quality Console ----------------
