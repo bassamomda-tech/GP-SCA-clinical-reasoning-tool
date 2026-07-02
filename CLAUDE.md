@@ -50,6 +50,81 @@ Source of truth: `uploads/Cancer referral NICE.pdf` (NICE NG12, May 2025).
   in Chrome). Always handle the `unavailable` case gracefully and offer a worked example.
 
 ## Session log
+- **Ask — quality flywheel: feedback + answer cache + test bank (this session):** three
+  additions so Ask quality is measurable and self-improving. (1) **Shared answer core**
+  `assets/ask-core.js` (`window.RGPAskCore` = FRAMING, PRIMER_ACK, buildContext) extracted
+  verbatim out of `pages/ask.js` (which now just references it) so the console tests the
+  identical pipeline. (2) **Worker** (`backend/worker.js`): `/api/feedback` POST (signed-in;
+  stores `fb:<ts>:<rand>` in USERS KV, 180-day TTL); `/api/admin/ask` GET ?what=feedback|cache
+  + POST {action:delete|approve} gated on new `ADMIN_EMAIL` var (added to wrangler.toml);
+  **first-turn answer cache** in aiProxy — site sends `cacheKey` (normalised question, first
+  turn only) → SHA-256 `ans:<hash>` in USERS KV, hit = instant `{cached:true}` response with
+  zero AI cost, miss = generated then stored 30-day TTL; admin "approve" persists it (no TTL,
+  optional edited completion). (3) **Client**: site.js complete() shim passes `cacheKey`
+  through and sets `window.claude.lastCached`; ask.js sends cacheKey on first-turn asks,
+  shows "⚡ Instant — served from the vetted cache" in the ans-note, and every answer gets a
+  👍/👎 `fbHtml()` row (👎 opens an optional what-was-wrong input; POSTs to /api/feedback;
+  verdict stored as `m.fb` so re-renders show "✓ Feedback noted"). (4) **Owner console**
+  `tools/ask-quality.html` (UNLISTED on purpose — not in RGP_TOOLS/nav; linked from the setup
+  guide Part 6): tabs Test bank / User feedback / Cached answers. Test bank runs
+  `assets/ask-testbank.js` (window.ASK_TESTBANK, ~45 gold questions w/ must-contain fact
+  groups incl. 8 NG12 2WW items) through RGPRetrieval.grounding + RGPAskCore, checks each
+  answer for its must groups, persists results in localStorage `rgp-askq-run-v1`. site.js
+  changed → **sitewide `site.js?v=53`→`?v=54`**; `ask.js?v=9`→**`?v=10`** + ask.html loads
+  `ask-core.js?v=1` before it. Setup guide gained Part 6 (ADMIN_EMAIL + console). Worker
+  deploy still pending on the user's side.
+- **Ask — live web search on trusted UK domains (this session):** `/api/ai` in
+  `backend/worker.js` now passes Anthropic's `web_search_20250305` tool (max_uses 3,
+  `allowed_domains` = nice.org.uk (incl. cks./bnf.), sign.ac.uk, bestpractice.bmj.com,
+  gov.uk, brit-thoracic, bashh, rcog, bad, bihsoc, resus, ginasthma) — disable via env var
+  `WEB_SEARCH="off"` (added to wrangler.toml [vars]). Response parsing now joins ALL text
+  blocks and collects citation URLs → returns `{completion, sources}`. Also added **prompt
+  caching**: the first message (the big FRAMING primer, >1200 chars) is sent with
+  `cache_control:{type:'ephemeral'}` (~90% cheaper on repeat calls). site.js `complete()`
+  shim stores `data.sources` on `window.claude.lastSources`; `pages/ask.js` gained a
+  LIVE WEB SEARCH framing rule (search only when unsure/recent), a `webHtml()` "Live
+  sources · checked on the web just now" chip row (🌐, stored as `web:` on the history
+  message and re-rendered in renderThread), and grounding bumped 5→6 notes. Setup guide
+  gained "Part 5 — Live web search (already on)" (~1p/search, WEB_SEARCH=off to disable).
+  site.js changed → **sitewide `site.js?v=52`→`?v=53`** (root + all cases/ + tools/ +
+  pages/; also caught straggler `tools/sca-circuit-ai.html` which was stuck on ?v=27;
+  verified zero ?v=52 remain); `ask.js?v=8`→**`?v=9`** in ask.html. Access model stays
+  Option B (signed-in, any tier) for both /api/ai and /api/embed; default model
+  `claude-sonnet-4-6`. Worker deploy still pending on the user's side.
+- **Ask — semantic retrieval + trust hardening + backend wired (this session):** made Ask
+  the flagship point-of-care tool (GPs use it live in clinic instead of studying, so
+  accuracy = the product). (1) **New retrieval engine** `assets/ask-retrieval.js`
+  (`window.RGPRetrieval`) replaces the inline retriever in `pages/ask.js`: builds one index
+  over the whole library (~975 topics = 540 KB pathways/cases/protocols + 435 articles),
+  scores with **IDF-weighted lexical** matching (specific terms like "folate" dominate common
+  ones like "pain" automatically — retired the old GENERIC=2/6 hack) + a large
+  **colloquial→clinical synonym & phrase map** ("SOB"→breathlessness, "can't wee"→urinary
+  retention, "sugar 15"→glucose/diabetes, "feeling flat"→low mood/depression, "waterworks",
+  "blood in wee"→haematuria, "pins and needles"→paraesthesia, "high bp"→hypertension, etc.),
+  blended with an **optional semantic layer**: sentence embeddings via the Worker's new
+  `/api/embed` (Cloudflare Workers AI `@cf/baai/bge-base-en-v1.5`), topic vectors cached in
+  IndexedDB (`rgp-ask` db, fingerprinted so it re-embeds only if the library changes), cosine
+  similarity in-browser, hybrid score `0.55*sem + 0.45*lexNorm (+0.08 title-hit)`. **Graceful
+  fallback**: if embeddings aren't available (preview, or Workers AI binding absent) it
+  silently uses pure lexical — nothing breaks. `ask.js` now delegates via `RET.searchScored`
+  (sync, related chips), `RET.grounding` (async, the notes the answer is built from) and
+  `RET.bySlug` (persisted chats); follow-up anchoring preserved. (2) **Trust hardening** of
+  the answer FRAMING: point-of-care framing (clinician acts without cross-checking), explicit
+  NEVER-fabricate rule (no invented doses/thresholds/guideline numbers), say-so-if-unsure +
+  give the safe default/escalation instead of guessing, prefer correct-over-complete, disregard
+  mismatched notes. (3) **Backend**: `/api/embed` added to `worker.js` (gated like `/api/ai`,
+  returns 501 → lexical fallback if no `AI` binding); answer `max_tokens` 1024→**1600**;
+  `wrangler.toml` gained `[ai] binding="AI"` + `EMBED_MODEL`. `site.js` AI shim gained
+  `window.claude.embed(texts)` → `/api/embed`. (4) **Setup guide** (`SETUP - Connect the AI
+  (read me).html`) gained "Part 4 — (Optional) turn on semantic search" (add Workers AI
+  binding named `AI`). Loaded `../assets/ask-retrieval.js?v=1` in `ask.html` before
+  `ask.js?v=7`→**`?v=8`**. site.js changed → **sitewide `site.js?v=51`→`?v=52`** (root + all
+  cases/ + tools/ + pages/; verified zero `?v=51` remain). Prior this session: fixed the
+  misleading "open from the live site" errors in Ask + Scribe; set AI access to **Option B**
+  (signed-in free account, no payment) in `worker.js`; default model **claude-sonnet-4-6**
+  (cheaper: claude-haiku-4-5); documented the £20/month prepaid-credit ceiling. NOTE: the AI
+  only works on the live site once the user deploys the Worker (Cloudflare) and sets
+  `RGP_CONFIG.workerUrl` in site.js — that deploy is still pending on the user's side.
 - **Hot Seat in-case rail restyled (this session):** the in-session "Case Sections" sidebar
   in `tools/sca-practice.html` (`.hotseat-toc`) used an off-brand blue palette (`#3b6fd4`,
   `#dbe7ff`, blue gradient card, pill buttons w/ left-border accent + circular number badges)

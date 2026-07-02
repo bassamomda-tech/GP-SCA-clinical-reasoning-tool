@@ -40,6 +40,9 @@ export default {
       if (url.pathname === '/api/auth/login')    return json(await login(request, env), 200, cors);
       if (url.pathname === '/api/auth/me')        return json(await me(request, env), 200, cors);
       if (url.pathname === '/api/ai')             return await aiProxy(request, env, cors);
+      if (url.pathname === '/api/embed')          return await embedProxy(request, env, cors);
+      if (url.pathname === '/api/feedback')       return await feedback(request, env, cors);
+      if (url.pathname === '/api/admin/ask')      return await adminAsk(request, env, cors);
       if (url.pathname === '/api/updates')        return await updatesFeed(request, env, cors);
       if (url.pathname === '/api/updates/archive') return await updatesArchive(request, env, cors);
       if (url.pathname === '/api/paypal/webhook') return await paypalWebhook(request, env);
@@ -246,27 +249,191 @@ async function updatesArchive(request, env, cors){
 
 /* ---------------- AI proxy (Anthropic) ---------------- */
 async function aiProxy(request, env, cors) {
+  // Access model: FREE ACCOUNT REQUIRED (Option B).
+  // The user must be signed in, but any tier (incl. free "bronze") may use the AI.
+  // To require payment instead, add back:
+  //   if (!user.tier || user.tier === 'bronze') return json({ error: 'subscription_required' }, 402, cors);
+  // To open the AI to everyone (no sign-in), delete the try/catch below.
   let user;
   try { user = await userFromToken(request, env); }
   catch (e) { return json({ error: 'sign_in_required' }, 401, cors); }
-  if (!user.tier || user.tier === 'bronze') return json({ error: 'subscription_required' }, 402, cors);
 
-  const { messages } = await request.json();
+  const { messages, cacheKey } = await request.json();
   if (!Array.isArray(messages) || !messages.length) return json({ error: 'no_messages' }, 400, cors);
+
+  // Common-answer cache: the site sends cacheKey (the normalised question) for
+  // FIRST-TURN questions only. A repeat of a popular question is served straight
+  // from KV — instant, zero AI cost. Cached answers expire after 30 days unless
+  // the owner approves them in the Quality Console (then they persist as vetted).
+  const model = env.AI_MODEL || 'claude-sonnet-4-6';
+  let ansKey = null;
+  if (cacheKey && typeof cacheKey === 'string' && cacheKey.trim() && cacheKey.length <= 300) {
+    const norm = cacheKey.trim().toLowerCase();
+    ansKey = 'ans:' + hex(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(model + '|' + norm)));
+    const hitRaw = await env.USERS.get(ansKey);
+    if (hitRaw) {
+      try {
+        const c = JSON.parse(hitRaw);
+        c.hits = (c.hits || 0) + 1;
+        await env.USERS.put(ansKey, JSON.stringify(c), c.approved ? {} : { expirationTtl: 60 * 60 * 24 * 30 });
+        return json({ completion: c.completion, sources: c.sources || [], cached: true }, 200, cors);
+      } catch (e) { /* corrupt entry — regenerate below */ }
+    }
+  }
+
+  // Prompt caching: the first message is the large, constant clinical-instruction
+  // primer (identical on every question). Marking it cache_control:ephemeral means
+  // repeat calls are billed ~10% for it — a real cost saving that lets us ground
+  // the answer in richer context while staying inside a small monthly budget.
+  const anthMessages = messages.map((m, i) => {
+    const role = m.role === 'assistant' ? 'assistant' : 'user';
+    const text = String(m.content || '');
+    if (i === 0 && text.length > 1200) {
+      return { role, content: [{ type: 'text', text, cache_control: { type: 'ephemeral' } }] };
+    }
+    return { role, content: text };
+  });
+
+  // Live web search, restricted to trusted UK clinical domains. The model only
+  // searches when the answer depends on current guidance it is unsure of (new
+  // thresholds, safety alerts, updated guidelines). Each search costs ~1p on top
+  // of tokens. Turn off by setting a WEB_SEARCH env var to "off".
+  const tools = (env.WEB_SEARCH === 'off') ? null : [{
+    type: 'web_search_20250305',
+    name: 'web_search',
+    max_uses: 3,
+    allowed_domains: [
+      'nice.org.uk',            // NICE + CKS + BNF (cks./bnf. subdomains included)
+      'sign.ac.uk',
+      'bestpractice.bmj.com',
+      'gov.uk',                 // UKHSA, MHRA Drug Safety Update, Green Book
+      'brit-thoracic.org.uk',
+      'bashh.org',
+      'rcog.org.uk',
+      'bad.org.uk',
+      'bihsoc.org',
+      'resus.org.uk',
+      'ginasthma.org'
+    ]
+  }];
 
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'x-api-key': env.AI_API_KEY, 'anthropic-version': '2023-06-01' },
-    body: JSON.stringify({
-      model: env.AI_MODEL || 'claude-3-5-sonnet-20241022',
-      max_tokens: 1024,
-      messages: messages.map(m => ({ role: m.role === 'assistant' ? 'assistant' : 'user', content: String(m.content || '') }))
-    })
+    body: JSON.stringify(Object.assign({
+      model: model,
+      max_tokens: 1600,
+      messages: anthMessages
+    }, tools ? { tools } : {}))
   });
   if (!resp.ok) return json({ error: 'ai_upstream_' + resp.status }, 502, cors);
   const data = await resp.json();
-  const text = (data.content && data.content[0] && data.content[0].text) || '';
-  return json({ completion: text }, 200, cors);
+  // With web search on, the reply arrives as multiple content blocks (text
+  // interleaved with search activity). Join the text; collect cited live pages.
+  let text = '';
+  const sources = []; const seen = new Set();
+  for (const b of (data.content || [])) {
+    if (b && b.type === 'text') {
+      text += b.text || '';
+      for (const c of (b.citations || [])) {
+        if (c && c.url && !seen.has(c.url)) { seen.add(c.url); sources.push({ url: c.url, title: String(c.title || '').slice(0, 120) }); }
+      }
+    }
+  }
+  // store for next time (30-day TTL; the Quality Console can approve → permanent)
+  if (ansKey && text && text.length > 40) {
+    try { await env.USERS.put(ansKey, JSON.stringify({ q: cacheKey.slice(0, 300), completion: text, sources, ts: Date.now(), hits: 0, model }), { expirationTtl: 60 * 60 * 24 * 30 }); } catch (e) {}
+  }
+  return json({ completion: text, sources }, 200, cors);
+}
+
+/* ---------------- Answer feedback + owner Quality Console ----------------
+   POST /api/feedback  (any signed-in user)  { verdict:'up'|'down', q, answer, comment }
+   GET  /api/admin/ask?what=feedback|cache   (ADMIN_EMAIL only) → { items }
+   POST /api/admin/ask                        (ADMIN_EMAIL only)
+        { action:'delete', key }              remove a feedback item / cached answer
+        { action:'approve', key, completion? } vet a cached answer (persists, optional edit)
+   Stored in the USERS KV under fb: / ans: prefixes — no new namespace needed. */
+async function feedback(request, env, cors) {
+  if (request.method !== 'POST') return json({ error: 'method' }, 405, cors);
+  let user;
+  try { user = await userFromToken(request, env); }
+  catch (e) { return json({ error: 'sign_in_required' }, 401, cors); }
+  const b = await request.json();
+  const entry = {
+    verdict: b.verdict === 'up' ? 'up' : 'down',
+    q: String(b.q || '').slice(0, 500),
+    answer: String(b.answer || '').slice(0, 4000),
+    comment: String(b.comment || '').slice(0, 1000),
+    email: user.email,
+    ts: Date.now()
+  };
+  const key = 'fb:' + String(entry.ts).padStart(14, '0') + ':' + randHex(4);
+  await env.USERS.put(key, JSON.stringify(entry), { expirationTtl: 60 * 60 * 24 * 180 });
+  return json({ ok: true }, 200, cors);
+}
+
+async function requireAdmin(request, env) {
+  const user = await userFromToken(request, env);
+  const admin = String(env.ADMIN_EMAIL || '').trim().toLowerCase();
+  if (!admin || user.email !== admin) throw fail('Admin only — set ADMIN_EMAIL in the Worker vars to your account email', 403);
+  return user;
+}
+async function listKV(env, prefix, max) {
+  const res = await env.USERS.list({ prefix, limit: max || 100 });
+  const out = [];
+  for (const k of res.keys) {
+    const raw = await env.USERS.get(k.name);
+    if (!raw) continue;
+    try { out.push(Object.assign({ key: k.name }, JSON.parse(raw))); } catch (e) {}
+  }
+  out.sort((a, b) => (b.ts || 0) - (a.ts || 0));
+  return out;
+}
+async function adminAsk(request, env, cors) {
+  try { await requireAdmin(request, env); }
+  catch (e) { return json({ error: e.message }, e.status || 401, cors); }
+  if (request.method === 'GET') {
+    const what = new URL(request.url).searchParams.get('what') || 'feedback';
+    return json({ items: await listKV(env, what === 'cache' ? 'ans:' : 'fb:', 100) }, 200, cors);
+  }
+  const { action, key, completion } = await request.json();
+  if (!key || !/^(fb|ans):/.test(key)) return json({ error: 'bad_key' }, 400, cors);
+  if (action === 'delete') { await env.USERS.delete(key); return json({ ok: true }, 200, cors); }
+  if (action === 'approve' && key.indexOf('ans:') === 0) {
+    const raw = await env.USERS.get(key);
+    if (!raw) return json({ error: 'not_found' }, 404, cors);
+    const c = JSON.parse(raw);
+    c.approved = true;
+    if (completion && String(completion).trim()) c.completion = String(completion);
+    await env.USERS.put(key, JSON.stringify(c)); // no TTL — vetted answers persist
+    return json({ ok: true }, 200, cors);
+  }
+  return json({ error: 'bad_action' }, 400, cors);
+}
+
+/* ---------------- Embeddings proxy (Cloudflare Workers AI) ----------------
+   Powers semantic retrieval for the Ask assistant. Free tier; needs a Workers
+   AI binding named AI in wrangler.toml ([ai] binding = "AI"). If the binding
+   is absent the endpoint returns 501 and the site silently falls back to
+   lexical search — so this is OPTIONAL and never breaks Ask.
+   Body: { texts: ["...", ...] }  →  { vectors: [[...], ...] }              */
+async function embedProxy(request, env, cors) {
+  // Same gate as the AI proxy (Option B: signed-in, any tier).
+  try { await userFromToken(request, env); }
+  catch (e) { return json({ error: 'sign_in_required' }, 401, cors); }
+  if (!env.AI || typeof env.AI.run !== 'function') return json({ error: 'embeddings_unavailable' }, 501, cors);
+  const { texts } = await request.json();
+  const list = Array.isArray(texts) ? texts.map(t => String(t || '').slice(0, 512)).filter(Boolean) : [];
+  if (!list.length) return json({ error: 'no_texts' }, 400, cors);
+  const model = env.EMBED_MODEL || '@cf/baai/bge-base-en-v1.5';
+  try {
+    const out = await env.AI.run(model, { text: list });
+    const vectors = (out && out.data) ? out.data : [];
+    return json({ vectors }, 200, cors);
+  } catch (e) {
+    return json({ error: 'embed_failed' }, 502, cors);
+  }
 }
 
 /* ---------------- PayPal subscription webhook ---------------- */

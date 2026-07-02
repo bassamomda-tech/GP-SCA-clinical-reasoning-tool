@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect the AI — Reasoning GP setup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f3ea; --card:#fffdf8; --ink:#22322e; --muted:#5c6b64;
+    --teal:#1f4d45; --teal-soft:#e3ebe6; --rust:#b4552d; --line:#e4dcc9;
+    --purple:#6d5ab0;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:48px 24px 96px}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin:0 0 10px}
+  h1{font-family:"Source Serif 4",Georgia,serif;font-size:42px;line-height:1.1;margin:0 0 16px;font-weight:700;letter-spacing:-.01em}
+  h1 em{font-style:italic;color:var(--teal)}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px;max-width:64ch}
+  h2{font-family:"Source Serif 4",Georgia,serif;font-size:26px;margin:44px 0 6px;font-weight:700}
+  h3{font-size:17px;margin:26px 0 4px;font-weight:700;color:var(--teal)}
+  p{margin:10px 0}
+  code{font-family:ui-monospace,"SF Mono",Menlo,monospace;background:var(--teal-soft);color:var(--teal);padding:2px 6px;border-radius:5px;font-size:.9em;word-break:break-word}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin:18px 0;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+  .why{background:var(--teal);color:#eaf2ee;border:none}
+  .why h2{color:#fff;margin-top:0}
+  .why code{background:rgba(255,255,255,.14);color:#fff}
+  .why .lede{color:#cfe0d8}
+  ol.steps{list-style:none;counter-reset:s;padding:0;margin:14px 0 0}
+  ol.steps>li{counter-increment:s;position:relative;padding:0 0 22px 52px;margin:0}
+  ol.steps>li::before{content:counter(s);position:absolute;left:0;top:-2px;width:34px;height:34px;border-radius:50%;background:var(--teal);color:#fff;font-family:"Source Serif 4",serif;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center}
+  ol.steps>li::after{content:"";position:absolute;left:16px;top:36px;bottom:2px;width:2px;background:var(--line)}
+  ol.steps>li:last-child::after{display:none}
+  ol.steps>li b{font-weight:700}
+  ul.sub{margin:8px 0;padding-left:20px}
+  ul.sub li{margin:5px 0}
+  .pill{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background:var(--purple);color:#fff;vertical-align:middle}
+  .note{border-left:3px solid var(--rust);background:#fbf1ea;padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0;font-size:15px}
+  .note b{color:var(--rust)}
+  .ok{border-left-color:#1f8a5b;background:#e9f4ee}
+  .ok b{color:#1f8a5b}
+  .kv{font-size:15px;margin:6px 0}
+  .kv code:first-child{min-width:150px;display:inline-block}
+  hr{border:none;border-top:1px solid var(--line);margin:38px 0}
+  a{color:var(--rust);text-decoration:underline;text-underline-offset:2px}
+  .foot{color:var(--muted);font-size:14px;margin-top:40px}
+  table.vars{border-collapse:collapse;width:100%;margin:10px 0;font-size:15px}
+  table.vars td{border:1px solid var(--line);padding:9px 12px;vertical-align:top}
+  table.vars td:first-child{width:210px;background:#faf6ec;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">Reasoning GP · one-time setup</p>
+  <h1>Connect the AI — so <em>Ask</em> and <em>Scribe</em> work on your live site</h1>
+  <p class="lede">Follow this once. No coding, no command line — everything is done on the Cloudflare website. About 20 minutes.</p>
+
+  <div class="card why">
+    <h2>First, why it isn't working</h2>
+    <p class="lede">Your website (the pages at <code>gpreasoning.uk</code>) is just files. It cannot run AI by itself — a website can't safely hold your secret AI key.</p>
+    <p style="margin-bottom:0">The AI needs a small separate program — a <b>Cloudflare Worker</b> — that lives on Cloudflare's servers, holds your key privately, and answers the AI requests. The code for it is already written for you (it's in your project's <code>backend/worker.js</code>). You just have to <b>publish it once</b> and <b>tell your site where it lives</b>. That's the whole job.</p>
+  </div>
+
+  <div class="note"><b>Scribe's microphone is different.</b> The mic is a built-in browser feature and needs no backend — that's why it seemed to "work". But turning your speech into a written note, and everything in Ask, needs the Worker below.</div>
+
+  <h2>What you need open in tabs</h2>
+  <ul class="sub">
+    <li><b>Anthropic Console</b> — <a href="https://console.anthropic.com">console.anthropic.com</a> (for the AI key)</li>
+    <li><b>Cloudflare dashboard</b> — <a href="https://dash.cloudflare.com">dash.cloudflare.com</a> (free account)</li>
+    <li>Your project's <code>backend/worker.js</code> file open, ready to copy its contents</li>
+  </ul>
+
+  <hr>
+
+  <h2>Part 1 — Get your AI key</h2>
+  <ol class="steps">
+    <li>Sign in at <b>console.anthropic.com</b>. Go to <b>Billing</b> and add a little credit (e.g. £10) and set a monthly spend limit so it can never surprise you.</li>
+    <li>Go to <b>API keys → Create key</b>. Copy the key (it starts <code>sk-ant-…</code>) and paste it somewhere safe for a minute. <b>You only see it once.</b></li>
+  </ol>
+
+  <h2>Part 2 — Publish the Worker on Cloudflare</h2>
+  <ol class="steps">
+    <li>At <b>dash.cloudflare.com</b>, open <b>Workers &amp; Pages → Create → Create Worker</b>. Give it a name like <code>reasoning-gp-api</code>, then click <b>Deploy</b> (it deploys a placeholder — that's fine).</li>
+    <li>Click <b>Edit code</b>. Select all the placeholder code and delete it. Open your <code>backend/worker.js</code>, copy <b>everything</b>, paste it in, then click <b>Deploy</b> (top right).</li>
+    <li><b>Create the two databases.</b> In a new tab go to <b>Workers &amp; Pages → KV → Create a namespace</b>. Make one called <code>USERS</code>. Do it again for <code>TOKENS</code>. <span style="color:var(--muted)">(These store accounts &amp; logins.)</span></li>
+    <li><b>Connect the databases to the Worker.</b> Open your Worker → <b>Settings → Bindings → Add → KV namespace</b>. Add two:
+      <ul class="sub">
+        <li>Variable name <code>USERS</code> → select the <code>USERS</code> namespace</li>
+        <li>Variable name <code>TOKENS</code> → select the <code>TOKENS</code> namespace</li>
+      </ul>
+    </li>
+    <li><b>Add your secret AI key.</b> Same <b>Settings → Variables and Secrets → Add</b>. Type <span class="pill">Secret</span>:
+      <div class="kv"><code>AI_API_KEY</code> = your <code>sk-ant-…</code> key</div>
+    </li>
+    <li><b>Add two plain settings.</b> Same place, type <span style="background:var(--teal)" class="pill">Text</span> (not secret):
+      <table class="vars">
+        <tr><td>ALLOWED_ORIGIN</td><td><code>https://gpreasoning.uk</code> &nbsp;— your site address, no slash at the end</td></tr>
+        <tr><td>AI_MODEL</td><td><code>claude-sonnet-4-6</code> &nbsp;— best quality/price. For more volume per £, use <code>claude-haiku-4-5</code></td></tr>
+      </table>
+      Click <b>Deploy</b> again so the new settings take effect.
+    </li>
+    <li><b>Copy your Worker's address.</b> On the Worker's overview page it shows a URL like <code>https://reasoning-gp-api.<i>yourname</i>.workers.dev</code>. Copy it.</li>
+    <li><b>Test it.</b> Paste that URL in a browser and add <code>/api/health</code> on the end. You should see <code>{"ok":true}</code>. <span style="color:var(--muted)">That means the Worker is alive.</span></li>
+  </ol>
+
+  <div class="ok note"><b>Almost there.</b> The engine is now running. One last step tells your website to use it.</div>
+
+  <h2>Part 3 — Point your site at the Worker</h2>
+  <ol class="steps">
+    <li>Open <code>assets/site.js</code> in your project. Near the very top find:
+      <div class="kv"><code>workerUrl: '',</code></div>
+      Paste your Worker address inside the quotes (no slash at the end):
+      <div class="kv"><code>workerUrl: 'https://reasoning-gp-api.yourname.workers.dev',</code></div>
+    </li>
+    <li><b>Publish the change</b> the same way you publish your site (push to GitHub). Then <b>hard-refresh</b> the Ask page (Ctrl+Shift+R) so the browser loads the new file.</li>
+    <li>Open <b>Ask</b> and ask a question. It should now answer. 🎉</li>
+  </ol>
+
+  <hr>
+
+  <h2>Part 4 — (Optional) Turn on semantic search <span class="pill" style="background:var(--teal)">recommended</span></h2>
+  <p>By default Ask finds the right library topic by matching words (with a big clinical-synonym map, so "SOB in a smoker" still finds breathlessness/COPD). <b>Semantic search</b> makes it understand <i>meaning</i> — so even loose, colloquial questions land on the right note. It's <b>free</b> (Cloudflare Workers AI) and Ask works fine without it, so this is safe to add any time.</p>
+  <ol class="steps">
+    <li>Open your Worker → <b>Settings → Bindings → Add → Workers AI</b>. Set the variable name to exactly <code>AI</code> and save.</li>
+    <li>Click <b>Deploy</b>. That's it — Ask detects the binding and switches on semantic search automatically. If you ever remove it, Ask quietly goes back to word-matching. Nothing breaks either way.</li>
+  </ol>
+  <div class="note"><b>Note:</b> semantic search only runs on your live site (where the Worker lives), not inside the Claude builder preview. The first time someone uses Ask after enabling it, their browser quietly indexes the library once, then it's instant.</div>
+
+  <hr>
+
+  <h2 style="color:var(--rust)">Important: who is allowed to use the AI?</h2>
+  <p>The Worker is currently set so that <b>only signed-in, paying subscribers</b> can use the AI. That means straight after setup, <b>Ask will still say it can't answer</b> unless the person is logged in on a paid plan — and you haven't set up payments yet. Choose one:</p>
+
+  <h3>Option A — Free for everyone (fastest to see it working)</h3>
+  <p>In <code>backend/worker.js</code>, find the function <code>aiProxy</code> (near the bottom) and delete these three lines, then re-paste &amp; Deploy the Worker:</p>
+  <div class="card" style="padding:16px 20px"><code style="display:block;white-space:pre-wrap;background:none;padding:0">let user;
+try { user = await userFromToken(request, env); }
+catch (e) { return json({ error: 'sign_in_required' }, 401, cors); }
+if (!user.tier || user.tier === 'bronze') return json({ error: 'subscription_required' }, 402, cors);</code></div>
+  <p style="color:var(--muted);font-size:15px">Removing them lets anyone use the AI. Simple, but your AI credit pays for all usage — keep your Anthropic spend limit on.</p>
+
+  <h3>Option B — Free account required (no payment)</h3>
+  <p>Keep the sign-in lines, delete only the last line (the <code>bronze</code> / <code>subscription_required</code> one). Anyone who registers a free account gets the AI.</p>
+
+  <h3>Option C — Keep it paid</h3>
+  <p>Leave it as-is and complete the PayPal steps in <code>backend/README.md</code> (Steps 6–8). Subscribers get unlocked automatically.</p>
+
+  <div class="note"><b>Tell me your choice</b> and I'll make the exact edit for you in <code>worker.js</code> so you only have to copy-paste-Deploy once.</div>
+
+  <hr>
+
+  <h2>Part 4 — (Optional) turn on semantic search <span class="pill" style="background:var(--teal)">smarter Ask</span></h2>
+  <p>This makes Ask <b>understand meaning, not just keywords</b> — so "can't catch my breath in a smoker" finds the breathlessness/COPD notes even without matching words. It uses Cloudflare's <b>free</b> built-in AI, so it costs nothing extra. If you skip this, Ask still works well using keyword + synonym matching.</p>
+  <ol class="steps">
+    <li>Open your Worker → <b>Settings → Bindings → Add → Workers AI</b>. Set the variable name to exactly <code>AI</code> and save.</li>
+    <li>Click <b>Deploy</b>. That's it — the site detects it automatically. <span style="color:var(--muted)">(The first few questions per device quietly build a semantic index, cached in the browser; if the binding is ever missing, Ask silently falls back to keyword search — it never breaks.)</span></li>
+  </ol>
+  <div class="ok note"><b>Already in your config.</b> The <code>[ai] binding = "AI"</code> line is already in <code>wrangler.toml</code>, so if you deploy by CLI it's automatic. This step is only needed if you set the Worker up through the Cloudflare website.</div>
+
+  <hr>
+
+  <h2>Part 5 — Live web search <span class="pill" style="background:var(--teal)">already on</span></h2>
+  <p>Ask can also check <b>current guidance live on the web</b> — restricted to trusted UK sources only (NICE / CKS / BNF, SIGN, BMJ Best Practice, GOV.UK / MHRA / UKHSA, and UK specialist societies). It searches only when the answer depends on something recent it isn't sure about, and shows the pages it used under the answer as "Live sources". Nothing to set up — it's on by default.</p>
+  <ul class="sub">
+    <li><b>Cost:</b> about 1p per search on top of the answer — pennies a month at typical usage, already covered by the £20 estimate.</li>
+    <li><b>To turn it off:</b> Worker → <b>Settings → Variables</b> → add a Text variable <code>WEB_SEARCH</code> = <code>off</code>, then Deploy.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Part 6 — The quality flywheel <span class="pill" style="background:var(--rust)">owner tools</span></h2>
+  <p>Three things keep Ask provably accurate and cheap. They're all built in — you just need to add one variable:</p>
+  <ol class="steps">
+    <li><b>Set the admin email.</b> Worker → <b>Settings → Variables</b> → add a Text variable <code>ADMIN_EMAIL</code> = the email of <em>your</em> account on the site, then Deploy. This unlocks the owner console for you (and nobody else).</li>
+    <li><b>Open the Quality Console</b> at <code>tools/ask-quality.html</code> (deliberately not linked in the public menus — bookmark it). Three tabs:
+      <ul class="sub">
+        <li><b>🧪 Test bank</b> — ~45 gold-standard questions (doses, thresholds, 2WW criteria) run through the exact pipeline users get, each answer checked for its must-have facts. Run it after any change to the library or settings.</li>
+        <li><b>💬 User feedback</b> — every 👍/👎 users leave on an answer. Review weekly; each 👎 shows you which library note to fix.</li>
+        <li><b>⚡ Cached answers</b> — popular questions are answered once and then served instantly (zero AI cost). Approve the good ones to make them permanent, hand-vetted answers; delete weak ones to regenerate.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <hr>
+
+  <h2>Keeping it under £20/month</h2>
+  <p>Hosting (Cloudflare) is free. The only cost is the AI itself, paid per question to Anthropic. With the recommended <b>Claude Sonnet 4.6</b> model, a typical question costs about <b>2p</b> — so £20 covers roughly <b>900 questions a month</b>. Switching the <code>AI_MODEL</code> to <code>claude-haiku-4-5</code> costs ~0.7p each (~2,700/month) at slightly lower quality.</p>
+  <div class="ok note"><b>Hard ceiling:</b> in the Anthropic Console → Billing, load prepaid credit (e.g. $25) and turn <b>auto-reload OFF</b>. The AI simply stops when the credit runs out — it can never bill you more than you've added.</div>
+
+  <hr>
+
+  <h2>If something's not right</h2>
+  <ul class="sub">
+    <li><b>Ask still says "isn't connected":</b> the <code>workerUrl</code> in <code>site.js</code> is empty, mistyped, or the new file hasn't published yet. Re-check Part 3 and hard-refresh.</li>
+    <li><b>Answers fail with an error, not the "isn't connected" message:</b> the Worker is reached but rejecting — almost always the access gate above (Option A/B), or <code>ALLOWED_ORIGIN</code> doesn't exactly match <code>https://gpreasoning.uk</code>.</li>
+    <li><b><code>/api/health</code> doesn't show <code>{"ok":true}</code>:</b> the Worker code wasn't pasted/deployed. Redo Part 2, steps 1–2.</li>
+  </ul>
+
+  <p class="foot">Reasoning GP · setup guide · keep this file for reference. Once connected, the same Worker also powers logins, the paid tiers, and the auto-updating news feed.</p>
+
+</div>
+</body>
+</html>

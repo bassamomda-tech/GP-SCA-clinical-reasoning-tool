@@ -455,7 +455,7 @@
 </div>
 
 <script src="../assets/cpd-log.js?v=1"></script>
-<script src="../assets/site.js?v=51"></script>
+<script src="../assets/site.js?v=54"></script>
 <script>
 (function(){
   "use strict";
@@ -921,9 +921,17 @@
       if(!raw || !raw.trim()) throw new Error('empty');
     }catch(err){
       busy=false; updateWordCount();
-      $('#outErr').innerHTML = '<div class="scr-err">'+(err.message==='unavailable'
-        ? 'Note generation needs the assistant connection — open this page from the live Reasoning GP site (Chrome). You can still record and edit the transcript here, or tap <b>Load example</b> to preview the output.'
-        : 'The record couldn\u2019t be drafted just then — please try again.')+'</div>';
+      let m;
+      if(err && err.code===401){
+        m = 'Please sign in (a free account is fine) to generate the note — then tap <b>Generate note</b> again. You can keep editing the transcript meanwhile.';
+      } else if(err && err.code===402){
+        m = 'Note generation is available on a paid plan — sign in and subscribe. You can still record and edit the transcript, or tap <b>Load example</b> to preview the output.';
+      } else if(err && err.message==='unavailable'){
+        m = 'Note generation needs the AI backend, which isn\u2019t connected on this site yet. If you\u2019re the site owner, deploy the Worker and set RGP_CONFIG.workerUrl in assets/site.js (see backend/README.md). You can still record and edit the transcript here, or tap <b>Load example</b> to preview the output.';
+      } else {
+        m = 'The record couldn\u2019t be drafted just then — please try again.';
+      }
+      $('#outErr').innerHTML = '<div class="scr-err">'+m+'</div>';
       showOut('outErr');
       return;
     }

@@ -8,7 +8,7 @@
    ============================================ */
 window.RGP_CONFIG = window.RGP_CONFIG || {
   // e.g. 'https://reasoning-gp-api.YOURNAME.workers.dev'  (no trailing slash)
-  workerUrl: '',
+  workerUrl: 'https://shy-voice-2225.bassamomda.workers.dev',
   // PayPal LIVE client id (for the subscribe buttons + Apple Pay)
   paypalClientId: '',
   // PayPal Subscription Plan IDs — create these in the PayPal dashboard
@@ -32,16 +32,35 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
     async complete(arg){
       const messages = Array.isArray(arg) ? arg : (arg && arg.messages) ? arg.messages
         : [{ role:'user', content:String(arg||'') }];
+      const cacheKey = (arg && !Array.isArray(arg) && arg.cacheKey) ? String(arg.cacheKey) : null;
       let token = null; try { token = localStorage.getItem('rgp.auth.token.v1'); } catch(e){}
       const res = await fetch(cfg.workerUrl.replace(/\/$/,'') + '/api/ai', {
         method:'POST',
         headers: Object.assign({ 'Content-Type':'application/json' }, token ? { 'Authorization':'Bearer ' + token } : {}),
-        body: JSON.stringify({ messages })
+        body: JSON.stringify(Object.assign({ messages }, cacheKey ? { cacheKey } : {}))
       });
       if (res.status === 401 || res.status === 402) { const e = new Error('unavailable'); e.code = res.status; throw e; }
       if (!res.ok) throw new Error('ai_error_' + res.status);
       const data = await res.json();
+      // Live web sources cited by the answer (trusted-domain search) — read by Ask.
+      window.claude.lastSources = Array.isArray(data.sources) ? data.sources : [];
+      window.claude.lastCached = !!data.cached;
       return data.completion || data.text || '';
+    },
+    // Embeddings for semantic search (Ask). Returns number[][]. Throws if the
+    // Worker has no Workers AI binding (501) → callers fall back to lexical.
+    async embed(texts){
+      const list = Array.isArray(texts) ? texts : [String(texts||'')];
+      let token = null; try { token = localStorage.getItem('rgp.auth.token.v1'); } catch(e){}
+      const res = await fetch(cfg.workerUrl.replace(/\/$/,'') + '/api/embed', {
+        method:'POST',
+        headers: Object.assign({ 'Content-Type':'application/json' }, token ? { 'Authorization':'Bearer ' + token } : {}),
+        body: JSON.stringify({ texts: list })
+      });
+      if (!res.ok) { const e = new Error('embed_' + res.status); e.code = res.status; throw e; }
+      const data = await res.json();
+      if (!Array.isArray(data.vectors)) throw new Error('embed_bad');
+      return data.vectors;
     }
   };
 })();

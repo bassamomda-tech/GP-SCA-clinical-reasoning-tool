@@ -19,123 +19,23 @@
   function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
   function slugify(s){ return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); }
 
-  /* ---------- case pages that exist (for richer deep-links) ---------- */
-  const CASE_SLUGS = new Set(('abdominal-pain abnormal-lfts adhd allergic-rhinitis anaemia angina anxiety asthma '+
-    'atrial-fibrillation autism axial-spa blackouts breast-cancer breathlessness chest-pain chronic-pain ckd coeliac '+
-    'constipation contraception copd crohns dementia depression diverticulosis dyspepsia enuresis epilepsy fatigue gout '+
-    'headache hearing-loss heart-failure hiv hypercalcaemia hypercholesterolaemia hypertension hyperthyroidism hyponatraemia '+
-    'hypothyroidism ibs infertility insomnia low-back-pain male-luts menopause migraine ocd osa osteoarthritis osteoporosis '+
-    'palpitations parkinsons pcos peripheral-arterial-disease ptsd red-eye sciatica tia-stroke tinnitus tremor type-1-diabetes '+
-    'type-2-diabetes ulcerative-colitis urinary-incontinence urticaria vertigo '+
-    'acne aki alcohol breast-disorders cmpa-reflux constipation-children dry-eye eating-disorders eczema '+
-    'mi-secondary-prevention neuropathic-pain palliative-care shoulder-pain '+
-    'uti-women wheeze-children vaginal-discharge erectile-dysfunction perinatal-mental-health back-pain '+
-    'dvt obesity glaucoma neck-pain premenstrual-disorder addisons-disease amenorrhoea hip-pain diarrhoea psychosis-schizophrenia '+
-    'cervical-screening chest-infections childhood-limp fungal-infections pruritus '+
-    'drug-dependence gender-dysphoria haematological-cancers multimorbidity-polypharmacy analgesia-primary-care safeguarding childhood-msk').split(/\s+/));
-
-  /* ---------- build the knowledge index ---------- */
-  const STOP = new Set(('the a an and or of to in for with on at is are be do does what when which how why who whom can could '+
-    'should would may might will my his her their your our this that these those i you he she it we they not no yes any some '+
-    'about into from over under after before during patient patients management treat treatment cause causes diagnosis '+
-    'first line need please tell me give explain whats what\'s vs versus').split(/\s+/));
-
-  // Clinical synonyms / abbreviations → canonical token, so e.g. "folic acid" finds the
-  // "Low folate" topic and common acronyms resolve to the condition. Values are written in
-  // their already-collapsed spelling (ae/oe→e) so they match indexed title tokens.
-  const SYN = {
-    folic:'folate',
-    htn:'hypertension', hypertensive:'hypertension',
-    ckd:'kidney',
-    gord:'reflux', gerd:'reflux',
-    uti:'urinary',
-    bph:'prostate',
-    t2dm:'diabetes', t1dm:'diabetes', diabetic:'diabetes',
-    osa:'apnea',
-    tia:'stroke'
-  };
-  function tokens(s){
-    return String(s||'').toLowerCase().replace(/[^a-z0-9\s]/g,' ').split(/\s+/)
-      .filter(w => w.length>2 && !STOP.has(w))
-      .map(w => w.replace(/ae|oe/g,'e').replace(/iz/g,'is'))   // collapse UK/US spelling for ALL words (haem/hem, -aemia/-emia, -ize/-ise)
-      .map(w => SYN[w] || w);                                  // map clinical synonyms/abbreviations to a canonical token
-  }
-
-  const ARTICLES = (window.RGP_ARTICLES || []);
-  function caseHref(title){
-    // try the title minus parentheticals, the parenthetical content itself, and the raw title
-    const cands = new Set();
-    cands.add(slugify(title.replace(/\(.*?\)/g,'')));
-    cands.add(slugify(title));
-    const pm = title.match(/\(([^)]+)\)/);
-    if(pm) cands.add(slugify(pm[1]));
-    for(const c of cands){ if(c && CASE_SLUGS.has(c)) return '../cases/'+c+'.html'; }
-    return null;
-  }
-  const INDEX = ARTICLES.map(a=>{
-    const slug = slugify(a.title.replace(/\(.*?\)/g,''));
-    const body = [a.overview, (a.features||[]).join(' '), (a.management||[]).join(' '), (a.referral||[]).join(' '), a.aka||''].join(' ');
-    const titleTok = new Set(tokens(a.title + ' ' + (a.aka||'')));
-    const bodyTok = {};
-    tokens(body).forEach(w=>{ bodyTok[w] = (bodyTok[w]||0)+1; });
-    const ch = caseHref(a.title);
-    const href = ch || 'articles.html';
-    const kind = ch ? 'Case walkthrough' : 'Article';
-    return { a, slug, titleTok, bodyTok, href, kind };
-  });
-
-  /* ---------- also index every casebook, pathway & protocol ---------- */
-  const KB = (window.RGP_KB_TOPICS || window.RGP_ALG_TOPICS || []);
-  KB.forEach(t=>{
-    const cleanTitle = String(t.title||'').replace(/\s*[—-]\s.*$/,'').trim() || t.title;  // drop trailing subtitle after dash
-    const a = { title:cleanTitle, overview:t.sub||'', category:t.kind||'Pathway', source:'NICE CKS / NG12', icon:t.icon||'🗺️' };
-    // Title tokens come from the TITLE only (not the subtitle) so a topic that merely
-    // mentions the query word in its descriptive subtitle (e.g. Splenomegaly → "portal
-    // hypertension") is NOT treated as an on-topic title match. The subtitle still counts
-    // as body context for grounding.
-    const titleTok = new Set(tokens(cleanTitle));
-    const bodyTok = {};
-    tokens(t.sub||'').forEach(w=>{ bodyTok[w] = (bodyTok[w]||0)+1; });
-    const href = t.href || ('../tools/algorithms/'+t.slug+'.html');
-    INDEX.push({ a, slug:(t.kind||'kb')+'-'+slugify(cleanTitle)+'-'+(href), titleTok, bodyTok, href, kind:t.kind||'Pathway' });
-  });
-
-  // Generic qualifier words that appear across many titles ("X deficiency", "chronic Y").
-  // A title match on these is weak — the *specific* word (folate, sodium…) should decide
-  // ranking, so a hit here scores far less and doesn't inflate the coverage bonus.
-  const GENERIC = new Set(('deficiency disease syndrome disorder chronic acute low high raised elevated '+
-    'primary secondary infection infections problem problems abnormal abnormality test results result blood').split(/\s+/));
-
-  function retrieveScored(q, n){
-    const qt = tokens(q);
-    if(!qt.length) return [];
-    const scored = INDEX.map(it=>{
-      let sc = 0, tHit = false, titleHits = 0;
-      const tArr = it._tArr || (it._tArr = Array.from(it.titleTok));
-      qt.forEach(w=>{
-        if(it.titleTok.has(w)){ const gen = GENERIC.has(w); sc += gen ? 2 : 6; tHit = true; if(!gen) titleHits++; return; }
-        const bf = it.bodyTok[w]; if(bf) sc += Math.min(bf,4);
-        if(w.length>=4){
-          // partial / prefix match so e.g. "hyponatr" finds "hyponatremia"
-          for(let i=0;i<tArr.length;i++){ const tw=tArr[i]; if(tw.length>=4 && (tw.indexOf(w)===0 || w.indexOf(tw)===0)){ sc += 4; tHit = true; if(!GENERIC.has(tw)) titleHits++; break; } }
-        }
-      });
-      // Coverage bonus: reward titles that are *mostly* the query topic, so the exact
-      // condition ("Hypertension") outranks compound mentions ("Pulmonary hypertension").
-      if(titleHits && tArr.length){ sc += 6 * (titleHits / tArr.length); }
-      return { it, sc, tHit };
-    }).filter(x=>x.sc>0).sort((a,b)=>b.sc-a.sc);
-    return scored.slice(0,n);
-  }
-  function retrieveN(q, n){ return retrieveScored(q, n).map(x=>x.it); }
-  function retrieve(q){
-    const scored = retrieveScored(q, 8);
-    if(!scored.length) return [];
-    // Ground only on notes whose TITLE matches the question (the topic itself),
-    // never on a note that merely mentions a query word in its body. Fall back
-    // to the single best note so the answer is still grounded.
-    const tHits = scored.filter(x=>x.tHit);
-    return (tHits.length ? tHits : scored.slice(0,1)).slice(0,4).map(x=>x.it);
+  /* ---------- retrieval delegated to RGPRetrieval (assets/ask-retrieval.js) ----------
+     A single engine builds & searches the whole ~975-topic library: IDF-weighted
+     lexical matching + a large clinical/colloquial synonym & phrase map, blended with
+     optional sentence embeddings (semantic search) when the Worker exposes them.
+     Falls back to pure lexical everywhere else. See assets/ask-retrieval.js. */
+  const RET = window.RGPRetrieval || null;
+  const tokens   = RET ? RET.tokens   : (s=>String(s||'').toLowerCase().replace(/[^a-z0-9\s]/g,' ').split(/\s+/).filter(Boolean));
+  const GENERIC  = RET ? RET.GENERIC  : new Set();
+  const MODIFIER = RET ? RET.MODIFIER : new Set();
+  // Sync lexical scoring (used by the "related topics" chips).
+  function retrieveScored(q, n){ return RET ? RET.searchScored(q, n||40).map(x=>({ it:x.it, sc:x.sc, tHit:x.titleHit })) : []; }
+  // Async grounding: the notes the answer is actually built from (hybrid semantic+lexical
+  // when embeddings are ready, else lexical). Degrades gracefully on any error.
+  async function grounding(q){
+    if(!RET) return [];
+    try{ return await RET.grounding(q, 6); }
+    catch(e){ return RET.searchScored(q, 5).map(x=>x.it); }
   }
 
   /* ---------- grouped "related in the library" links ---------- */
@@ -204,42 +104,10 @@
     return TOOLS.filter(t=>t.test.test(ql)).slice(0,2);
   }
 
-  /* ---------- context block for the model ---------- */
-  function clip(arr, n){ return (arr||[]).slice(0,n); }
-  function buildContext(hits){
-    if(!hits.length) return 'No closely-matching note was found in the Reasoning GP library for this question. Follow the SOURCE HIERARCHY: answer from current UK guidance — NICE CKS / NICE guidelines and the BNF first; if those do not cover it, draw on other authoritative UK sources (BMJ Best Practice, SIGN, UK specialist-society guidance, UKHSA, MHRA, GOV.UK). State which source you relied on, keep it cautious, and note that no specific Reasoning GP library note matched.';
-    let out = 'REASONING GP LIBRARY — relevant topic notes (your source of truth; ground the answer in these):\n';
-    hits.forEach((it,i)=>{
-      const a = it.a;
-      out += `\n[${i+1}] ${a.title}  (${a.category||'General'} · source: ${a.source||'NICE CKS'})\n`;
-      if(a.overview) out += 'Overview: ' + a.overview + '\n';
-      if(a.features && a.features.length) out += 'Key features: ' + clip(a.features,6).join('; ') + '\n';
-      if(a.management && a.management.length) out += 'Primary-care approach: ' + clip(a.management,7).join('; ') + '\n';
-      if(a.referral && a.referral.length) out += 'Refer / red flags: ' + clip(a.referral,5).join('; ') + '\n';
-    });
-    return out;
-  }
-
-  /* ---------- the model framing ---------- */
-  const FRAMING = [
-    'You are the Reasoning GP assistant — a clinical-reasoning aide for the UK primary-care team and RCGP/SCA candidates.',
-    'Answer in British English, concisely (aim under ~220 words), the way an experienced GP trainer would at the point of care.',
-    'SOURCE HIERARCHY — follow it in order and ground every answer accordingly:',
-    '  1) The provided "Reasoning GP library" notes (your primary source of truth);',
-    '  2) then current NICE CKS / NICE guidelines and the BNF (doses, interactions, monitoring);',
-    '  3) only if 1 and 2 do not cover the question, draw on other authoritative UK sources — BMJ Best Practice, SIGN, UK specialist-society guidance (e.g. BHS, BTS, BASHH, RCOG, BAD), UKHSA, MHRA and GOV.UK.',
-    'Briefly attribute which source the key recommendation rests on (e.g. "per NICE CKS", "BNF", "BMJ Best Practice"). For well-established UK primary-care treatments you MUST state the actual drug, dose, frequency and duration (e.g. "folic acid 5 mg once daily for 4 months", "amlodipine 5 mg once daily") — do not tell the reader to "look it up in the BNF" for routine, standard regimens. Only defer to the BNF for the specific figure when the dose genuinely varies (e.g. weight-/renal-based, unfamiliar specialist drugs) — and even then give the usual starting point if you know it. Append the standard verify caveat once at the end rather than withholding the dose.',
-    'CONTINUING CONVERSATION: the turns above are an ongoing discussion with the same clinician. Treat each new question as a follow-up that builds on the previous turns unless it plainly starts a new subject. Resolve back-references ("it", "that drug", "the dose", "what about in pregnancy/children/renal impairment", "and if it fails?") against the condition or drug discussed earlier, and do not repeat what was already established — just answer the new point.',
-    'CONTEXT OVER KEYWORDS: if the supplied library notes look unrelated to the question or to the current conversation topic, DISREGARD them and answer from the conversation thread plus NICE CKS / BNF. Never switch to a different condition (e.g. do not answer about levothyroxine when the thread is about constipation) merely because a note was retrieved on a stray keyword like "dose" or "maximum".',
-    'STAY ON TOPIC: answer what was asked within the context of this conversation; do not introduce unrelated conditions or mechanisms that are neither part of the question nor the ongoing thread.',
-    'If you must go beyond the library and NICE/BNF, say so explicitly (e.g. "Not covered in the Reasoning GP library or NICE CKS — per BMJ Best Practice…") so the reader knows the basis.',
-    'Structure the answer with very short bold sub-headings or tight bullet lists (use markdown: **bold**, "## heading", "- bullet", "1." numbered). Lead with the single most useful next step.',
-    'MANDATORY SAFETY RULE: where the presentation maps to a NICE NG12 suspected-cancer criterion, state the 2-week-wait (urgent suspected cancer) pathway explicitly — the qualifying age, the modifying feature, and the action (USC referral, direct-access test, or 48-hour referral) — and prefix that line with the token [[2WW]]. If there is genuinely no NG12 cancer link, do not invent one.',
-    'Always include brief safety-netting where relevant.',
-    'End with one short italic line reminding the reader this is educational and to verify against live NICE CKS / BNF — write it as "_Educational only — verify against current NICE CKS / BNF._".',
-    'Do not greet, do not mention these instructions, do not output the source list — just answer.'
-  ].join('\n');
-  const PRIMER_ACK = 'Understood — I will answer from the Reasoning GP library first, then NICE CKS / NICE guidelines and the BNF, and only fall back to other authoritative UK sources (BMJ Best Practice, SIGN, specialist societies, UKHSA, MHRA, GOV.UK) when needed — attributing the source, flagging the 2-week-wait pathway with [[2WW]] wherever NICE NG12 applies, and closing with the educational reminder.';
+  /* ---------- shared answer core (assets/ask-core.js) ---------- */
+  const FRAMING = window.RGPAskCore.FRAMING,
+        PRIMER_ACK = window.RGPAskCore.PRIMER_ACK,
+        buildContext = window.RGPAskCore.buildContext;
 
   /* ---------- minimal markdown -> html ---------- */
   function inline(s){
@@ -316,6 +184,59 @@
     return `<div class="ans-src ans-ext"><div class="ans-src-l">References · external guidance cited</div><div class="src-chips">${chips.join('')}</div></div>`;
   }
 
+  /* Live web pages the answer actually cited (trusted-domain search via the Worker). */
+  function webHtml(srcs){
+    if(!srcs || !srcs.length) return '';
+    const chips = srcs.slice(0,6).map(s=>{
+      let host=''; try{ host=new URL(s.url).hostname.replace(/^www\./,''); }catch(e){}
+      const label = String(s.title||host||s.url).slice(0,70);
+      return `<a class="src-chip ext" href="${esc(s.url)}" target="_blank" rel="noopener noreferrer"><span class="sc-ic">🌐</span><span>${esc(label)}</span><span class="ext-ar" aria-hidden="true">↗</span></a>`;
+    });
+    return `<div class="ans-src ans-ext"><div class="ans-src-l">Live sources · checked on the web just now</div><div class="src-chips">${chips.join('')}</div></div>`;
+  }
+
+  /* ---------- answer feedback (the quality flywheel) ----------
+     👍/👎 on every answer → POST /api/feedback on the Worker. The owner reviews
+     them in tools/ask-quality.html and fixes the library note behind any 👎. */
+  function fbHtml(idx, state){
+    if(state) return `<div class="fb-row done">✓ Feedback noted — thank you</div>`;
+    return `<div class="fb-row" data-fb-idx="${idx}"><span class="fb-l">Was this answer right &amp; useful?</span><button type="button" class="fb-btn" data-v="up" title="Good answer">👍</button><button type="button" class="fb-btn" data-v="down" title="Something wrong or missing">👎</button></div>`;
+  }
+  async function sendFeedback(payload){
+    try{
+      const cfg = window.RGP_CONFIG || {};
+      if(!cfg.workerUrl) return; // preview / backend not connected — nothing to send to
+      let token=null; try{ token = localStorage.getItem('rgp.auth.token.v1'); }catch(e){}
+      await fetch(cfg.workerUrl.replace(/\/$/,'') + '/api/feedback', {
+        method:'POST',
+        headers: Object.assign({'Content-Type':'application/json'}, token?{'Authorization':'Bearer '+token}:{}),
+        body: JSON.stringify(payload)
+      });
+    }catch(e){ /* feedback must never break the page */ }
+  }
+  thread.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.fb-btn'); if(!btn) return;
+    const row = btn.closest('.fb-row'); if(!row) return;
+    const idx = +row.getAttribute('data-fb-idx');
+    const m = history[idx]; if(!m) return;
+    if(btn.getAttribute('data-v')==='up'){
+      m.fb='up'; save();
+      sendFeedback({ verdict:'up', q:m.q||'', answer:String(m.content||'').slice(0,4000) });
+      row.outerHTML = fbHtml(idx,'up');
+      return;
+    }
+    // 👎 → ask what was wrong before sending (optional free text)
+    row.innerHTML = `<span class="fb-l">What was wrong or missing?</span><input type="text" class="fb-in" placeholder="e.g. dose out of date, missed the 2WW criterion (optional)"><button type="button" class="fb-send">Send</button>`;
+    const inp = row.querySelector('.fb-in'); inp.focus();
+    const send = ()=>{
+      m.fb='down'; save();
+      sendFeedback({ verdict:'down', q:m.q||'', answer:String(m.content||'').slice(0,4000), comment: inp.value.trim() });
+      row.outerHTML = fbHtml(idx,'down');
+    };
+    row.querySelector('.fb-send').addEventListener('click', send);
+    inp.addEventListener('keydown', ev=>{ if(ev.key==='Enter'){ ev.preventDefault(); send(); } });
+  });
+
   function addUser(text){
     const el = document.createElement('div');
     el.className = 'msg user';
@@ -366,16 +287,16 @@
     if(!activeId || !activeSession()) activeId=sessions[0].id;
     history = activeSession().messages;
   }
-  function hitsFromSlugs(slugs){ if(!slugs) return []; return slugs.map(s=>INDEX.find(it=>it.slug===s)).filter(Boolean); }
+  function hitsFromSlugs(slugs){ if(!slugs || !RET) return []; return slugs.map(s=>RET.bySlug(s)).filter(Boolean); }
 
   function clearThreadDOM(){ thread.querySelectorAll('.msg').forEach(m=>m.remove()); }
   function renderThread(){
     clearThreadDOM();
     if(!history.length){ welcome.style.display=''; clearBtn.hidden=true; return; }
     welcome.style.display='none'; clearBtn.hidden=false;
-    history.forEach(m=>{
+    history.forEach((m,i)=>{
       if(m.role==='user') addUser(m.content);
-      else addBot(`<div class="ans">${mdToHtml(m.content)}</div>${srcHtml(hitsFromSlugs(m.hitSlugs), m.q)}${refHtml(m.content, m.q||m.content)}<div class="ans-note">Generated from Reasoning GP notes + NICE-aligned guidance. Always confirm against current NICE CKS / BNF.</div>`);
+      else addBot(`<div class="ans">${mdToHtml(m.content)}</div>${srcHtml(hitsFromSlugs(m.hitSlugs), m.q)}${webHtml(m.web)}${refHtml(m.content, m.q||m.content)}<div class="ans-note">Generated from Reasoning GP notes + NICE-aligned guidance. Always confirm against current NICE CKS / BNF.</div>${fbHtml(i, m.fb)}`);
     });
   }
 
@@ -423,22 +344,17 @@
     clearBtn.hidden = false;
     addUser(q);
 
-    // Retrieval: for follow-ups, reuse the previous question's topic so the context
-    // stays on the same thread instead of being hijacked by a stray keyword match.
-    let hits = retrieve(q);
+    // Retrieval: for follow-ups, anchor on the previous question's topic so the context
+    // stays on-thread instead of being hijacked by a stray keyword match.
     const prevUserQ = [...history].reverse().find(m=>m.role==='user');
     const qt = q.trim();
     const wc = qt.split(/\s+/).length;
     const FOLLOWUP_RE = /^(what about|how about|and\b|also\b|what if|in\b|the\b|that\b|it\b|its\b|dose|max|maximum|side[- ]?effect|contraindicat|interaction|monitor|pregnan|breastfeed|child|paediatric|elderly|renal|hepatic|if it fails|alternative|second[- ]?line|why\b|when\b|how long|duration|frequency|titrat|stop|switch)/i;
     const isFollowup = prevUserQ && (wc <= 5 || FOLLOWUP_RE.test(qt));
-    if(isFollowup){
-      // Anchor on the previous topic. Replacing (not merging) the standalone hits
-      // means a stray keyword match (e.g. "dose" → Levothyroxine) can never inject
-      // an off-topic note; if nothing matches, hits=[] and the model answers from
-      // the conversation thread + NICE/BNF instead.
-      hits = retrieve(prevUserQ.content + ' ' + q);
-    }
+    const effectiveQ = isFollowup ? (prevUserQ.content + ' ' + q) : q;
     const typingEl = botTyping();
+    // Grounding notes (hybrid semantic + lexical). Anchored on the thread topic for follow-ups.
+    let hits = await grounding(effectiveQ);
 
     // build message list (framing primer + recent conversation + grounded question)
     const msgs = [ {role:'user', content:FRAMING}, {role:'assistant', content:PRIMER_ACK} ];
@@ -448,23 +364,34 @@
     let answer = '';
     try{
       if(!(window.claude && window.claude.complete)) throw new Error('assistant-unavailable');
-      answer = await window.claude.complete({ messages: msgs });
+      // First-turn questions carry a cache key: a repeat of a popular question is
+      // served instantly from the Worker's vetted answer cache (zero AI cost).
+      const cacheKey = history.length ? null : qt.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().slice(0,300);
+      answer = await window.claude.complete(Object.assign({ messages: msgs }, cacheKey ? { cacheKey } : {}));
       if(!answer || !answer.trim()) throw new Error('empty');
     }catch(err){
       typingEl.remove();
-      const msg = (err && err.message==='assistant-unavailable')
-        ? 'The assistant isn\'t available in this preview. Open the page from the live site to ask questions.'
-        : 'Sorry — I couldn\'t generate an answer just then. Please try again in a moment.';
+      let msg;
+      if(err && err.code===401){
+        msg = 'Please sign in (a free account is fine) to use the assistant — then ask again.';
+      } else if(err && err.code===402){
+        msg = 'The assistant is available on a paid plan — sign in and subscribe to ask questions.';
+      } else if(err && err.message==='assistant-unavailable'){
+        msg = 'The AI assistant isn\'t connected on this site yet. If you\'re the site owner, deploy the backend Worker and paste its URL into RGP_CONFIG.workerUrl in assets/site.js (see backend/README.md). Otherwise please check back soon.';
+      } else {
+        msg = 'Sorry — I couldn\'t generate an answer just then. Please try again in a moment.';
+      }
       addBot(`<div class="ask-err">${esc(msg)}</div>`);
       busy=false; sendBtn.disabled = !input.value.trim();
       return;
     }
 
     typingEl.remove();
-    addBot(`<div class="ans">${mdToHtml(answer)}</div>${srcHtml(hits, q)}${refHtml(answer, q)}<div class="ans-note">Generated from Reasoning GP notes + NICE-aligned guidance. Always confirm against current NICE CKS / BNF.</div>`);
-
+    const webSrcs = (window.claude && Array.isArray(window.claude.lastSources)) ? window.claude.lastSources : [];
+    const wasCached = !!(window.claude && window.claude.lastCached);
     history.push({ role:'user', content:q });
-    history.push({ role:'assistant', content:answer, q:q, hitSlugs:hits.map(h=>h.slug) });
+    history.push({ role:'assistant', content:answer, q:q, hitSlugs:hits.map(h=>h.slug), web:webSrcs });
+    addBot(`<div class="ans">${mdToHtml(answer)}</div>${srcHtml(hits, q)}${webHtml(webSrcs)}${refHtml(answer, q)}<div class="ans-note">${wasCached ? '⚡ Instant — this exact question was answered before; served from the vetted cache. ' : ''}Generated from Reasoning GP notes + NICE-aligned guidance. Always confirm against current NICE CKS / BNF.</div>${fbHtml(history.length-1)}`);
     save();
     busy=false; sendBtn.disabled = !input.value.trim();
     input.focus();
