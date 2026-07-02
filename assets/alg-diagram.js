@@ -33,7 +33,11 @@
   var ic = sb.querySelector('.sb-icon');
   var icon = ic ? ic.textContent.trim() : '';
   var b = sb.querySelector('b');
-  var title = (b ? b.textContent : (document.title||'')).split(/\s+[\u2014\u2013-]\s+/)[0].trim();
+  // Prefer the page's own clean title ("Hypertension") over the stem sentence
+  // ("New presentation of high blood pressure"), which reads badly in the header.
+  var t = (document.title || '').split(/[·|\u2013]/)[0].replace(/\s*algorithm\s*$/i, '').trim();
+  if (!t || /reasoning gp/i.test(t)) t = b ? b.textContent.split(/\s+[\u2014\u2013-]\s+/)[0].trim() : '';
+  var title = t;
   var chips = [];
   var foot = document.querySelector('.alg-foot');
   if (foot) {
@@ -69,4 +73,17 @@
     hdr.appendChild(head);
     if(tick) hdr.appendChild(tick);
   }
+})();
+
+
+/* RGP why-drawer relocation (shared): the hypertension-generation template nests
+   the .why-drawer INSIDE .why-row, but its own toggle script looks for it as
+   .why-row's next sibling — so "Why?" never opened and the explanation text was
+   unreachable. Move the drawer to where the page script expects it. Idempotent;
+   pages whose drawers are already outside the row (ankle) are untouched. */
+(function(){
+  document.querySelectorAll('.alg-flow .why-row > .why-drawer').forEach(function(d){
+    var row = d.parentElement;
+    row.parentNode.insertBefore(d, row.nextSibling);
+  });
 })();

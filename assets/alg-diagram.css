@@ -229,7 +229,8 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
    Forces every pathway's step cards to the canonical look regardless of which
    older template generated them (border-left cards, absolute/ corner-tab number
    badges, solid-fill badges, etc.). */
-.alg-flow .node{ border:1.5px solid var(--border) !important; border-radius:var(--radius) !important; overflow:hidden !important; background:var(--surface) !important; position:relative !important; }
+.alg-flow .node{ display:block !important; border:1.5px solid var(--border) !important; border-radius:var(--radius) !important; overflow:hidden !important; background:var(--surface) !important; position:relative !important; }
+.alg-flow .node-body{ display:block !important; width:auto !important; padding:0 16px 14px !important; }
 .alg-flow .node[data-type="SAFETY"]{ border-top:3px solid var(--safety) !important; }
 .alg-flow .node[data-type="DIAGNOSE"]{ border-top:3px solid var(--diagnose) !important; }
 .alg-flow .node[data-type="TREAT"]{ border-top:3px solid var(--treat) !important; }
@@ -265,3 +266,19 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   .alg-progress{ margin:12px 8px !important; flex-wrap:wrap !important; }
 }
 body{ overflow-x:hidden; }
+
+/* === RGP desktop width fix — avoid a thin column on PC ===
+   The canonical ankle column was 720px; inside pages wrapped at 1180px that
+   read as a thin strip on a wide monitor. Widen the column and centre the
+   stem/progress to it so the whole pathway is one clean, comfortable column. */
+.alg-flow, .alg-foot{ max-width:1140px !important; margin-left:auto !important; margin-right:auto !important; }
+.stem-banner{ max-width:1140px !important; margin-left:auto !important; margin-right:auto !important; }
+.alg-progress{ max-width:1140px !important; margin-left:auto !important; margin-right:auto !important; }
+.alg-flow .box[style]{ max-width:none !important; }
+
+/* Some older templates styled .stem-banner as a DARK banner with light text;
+   the canonical override switches it to a white card, which left the title
+   as light-on-white (invisible). Force readable colours on the stem. */
+.stem-banner{ color:#1c1917 !important; }
+.stem-banner b{ color:#1c1917 !important; }
+.stem-banner small{ color:#6b7280 !important; }
