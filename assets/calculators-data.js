@@ -46,7 +46,7 @@ window.RGP_CALCULATORS = [
       if (s === 1 && isMale)  return { label:'Low risk',      severity:'low',  action:'Consider anticoagulation. Discuss with patient.', detail:'Annual stroke risk ~0.6%. Most guidelines (NICE NG196) recommend offering DOAC unless contraindications.' };
       if (s === 1 && !isMale) return { label:'Low risk',      severity:'low',  action:'No anticoagulation (sex alone insufficient).', detail:'Score of 1 from female sex alone does not mandate anticoagulation.' };
       if (s === 2)            return { label:'Moderate-high', severity:'med',  action:'Anticoagulation recommended (DOAC 1st line).', detail:'Annual stroke risk ~2%. NICE NG196: offer DOAC (apixaban, rivaroxaban, edoxaban, dabigatran).' };
-      if (s >= 3 && s <= 5)   return { label:'High risk',     severity:'high', action:'Anticoagulation strongly recommended.', detail:`Annual stroke risk rises with score (3 → ~3%; 5 → ~7%). Calculate HAS-BLED to inform — not to refuse — anticoagulation.` };
+      if (s >= 3 && s <= 5)   return { label:'High risk',     severity:'high', action:'Anticoagulation strongly recommended.', detail:`Annual stroke risk rises with score (3 → ~3%; 5 → ~7%). Calculate ORBIT (preferred by NICE NG196) to inform — not to refuse — anticoagulation.` };
       return                       { label:'Very high risk',  severity:'severe', action:'Anticoagulation indicated unless absolute contraindication.', detail:'Annual stroke risk ≥9%. Modify bleeding risk factors. Anticoagulant choice — see NICE NG196.' };
     },
     refs:[
@@ -465,7 +465,7 @@ window.RGP_CALCULATORS = [
     },
     interpret(s){
       if (s <= 4)  return { label:'Minimal',  severity:'low',    action:'No specific intervention.', detail:'' };
-      if (s <= 9)  return { label:'Mild',     severity:'med',    action:'Step 2 \u2014 guided self-help / psychoeducation.', detail:'IAPT referral, low-intensity psychological.' };
+      if (s <= 9)  return { label:'Mild',     severity:'med',    action:'Step 2 \u2014 guided self-help / psychoeducation.', detail:'NHS Talking Therapies referral, low-intensity psychological.' };
       if (s <= 14) return { label:'Moderate', severity:'high',   action:'Step 3 \u2014 high-intensity CBT or pharmacological (SSRI).', detail:'Sertraline first-line; review at 4\u20136 wks.' };
       return            { label:'Severe',     severity:'severe', action:'Step 3+ \u2014 pharmacological + high-intensity CBT; specialist if no response.', detail:'Consider MH referral. Assess function and risk.' };
     },

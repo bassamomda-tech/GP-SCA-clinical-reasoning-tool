@@ -8,519 +8,123 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #fafaf9;
-  --card-bg: #ffffff;
-  --text: #1c1917;
-  --text-muted: #57534e;
-  --border: #e7e5e4;
-  --accent: #0369a1;
-  --accent-hover: #075985;
-  --red: #dc2626;
-  --purple: #9333ea;
-  --blue: #2563eb;
-  --teal: #0d9488;
-  --amber: #d97706;
-  --green: #16a34a;
-  --grey: #6b7280;
-  --safety: #fee2e2;
-  --diagnose: #dbeafe;
-  --treat: #d1fae5;
-  --refer: #fef3c7;
-  --lifestyle: #e0e7ff;
-  --radius: 12px;
-  --shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
-  --shadow-lg: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  padding: 2rem 1rem;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.stem-banner {
-  background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
-  color: white;
-  padding: 1.5rem;
-  border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  box-shadow: var(--shadow-lg);
-}
-
-.sb-icon {
-  font-size: 2.5rem;
-  line-height: 1;
-}
-
-.stem-banner b {
-  display: block;
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-
-.stem-banner small {
-  opacity: 0.9;
-  font-size: 0.9rem;
-}
-
-.alg-progress {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1rem 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  box-shadow: var(--shadow);
-}
-
-.alg-progress > span:first-child {
-  font-weight: 600;
-  color: var(--text-muted);
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.pcount {
-  font-weight: 600;
-  color: var(--accent);
-  font-size: 0.95rem;
-}
-
-.pbar {
-  flex: 1;
-  height: 8px;
-  background: var(--border);
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.pbar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-hover) 100%);
-  width: 0%;
-  transition: width 0.3s ease;
-  border-radius: 999px;
-}
-
-.reset {
-  background: transparent;
-  border: 1px solid var(--border);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  color: var(--text-muted);
-  transition: all 0.2s;
-}
-
-.reset:hover {
-  background: var(--bg);
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-.alg-flow {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.node {
-  background: var(--card-bg);
-  border: 2px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: all 0.2s;
-  position: relative;
-}
-
-.node:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-1px);
-}
-
-.node[data-type="SAFETY"] {
-  border-left: 4px solid var(--red);
-}
-
-.node[data-type="DIAGNOSE"] {
-  border-left: 4px solid var(--blue);
-}
-
-.node[data-type="TREAT"] {
-  border-left: 4px solid var(--teal);
-}
-
-.node[data-type="REFER"] {
-  border-left: 4px solid var(--amber);
-}
-
-.node[data-type="LIFESTYLE"] {
-  border-left: 4px solid var(--green);
-}
-
-.node-num {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 2px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.875rem;
-  color: var(--text-muted);
-}
-
-.node-head {
-  padding: 1.25rem 1.5rem 1rem 4rem;
-  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.01) 100%);
-}
-
-.node-tag {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 0.25rem 0.75rem;
-  border-radius: 4px;
-  margin-bottom: 0.5rem;
-}
-
-.node[data-type="SAFETY"] .node-tag {
-  background: var(--safety);
-  color: var(--red);
-}
-
-.node[data-type="DIAGNOSE"] .node-tag {
-  background: var(--diagnose);
-  color: var(--blue);
-}
-
-.node[data-type="TREAT"] .node-tag {
-  background: var(--treat);
-  color: var(--teal);
-}
-
-.node[data-type="REFER"] .node-tag {
-  background: var(--refer);
-  color: var(--amber);
-}
-
-.node[data-type="LIFESTYLE"] .node-tag {
-  background: var(--lifestyle);
-  color: #4f46e5;
-}
-
-.node-head h3 {
-  font-family: 'Source Serif 4', Georgia, serif;
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.3;
-  color: var(--text);
-}
-
-.node-tick {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.5rem;
-}
-
-.node-tick label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  user-select: none;
-}
-
-.node-tick input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  accent-color: var(--accent);
-}
-
-.tlbl {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-muted);
-}
-
-.node-body {
-  padding: 1rem 1.5rem 1.25rem;
-  color: var(--text);
-}
-
-.node-body > p:first-child {
-  margin-bottom: 1rem;
-  color: var(--text-muted);
-}
-
-.kv {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 0.75rem 1rem;
-  margin: 1rem 0;
-  font-size: 0.95rem;
-}
-
-.kv > div:nth-child(odd) {
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-.kv > div:nth-child(even) {
-  color: var(--text);
-}
-
-.rfgrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 0.75rem;
-  margin: 1rem 0;
-}
-
-.rftile {
-  background: var(--safety);
-  border: 1px solid #fecaca;
-  border-left: 3px solid var(--red);
-  padding: 0.875rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-.rftile b {
-  color: var(--red);
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-.lsgrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 0.75rem;
-  margin: 1rem 0;
-}
-
-.lstile {
-  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-  border: 1px solid #bbf7d0;
-  border-left: 3px solid var(--green);
-  padding: 0.875rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-.lstile b {
-  color: var(--green);
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-.branch {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-.b-card {
-  background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 100%);
-  border: 2px solid var(--border);
-  border-radius: 8px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.b-cond {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-}
-
-.b-drug {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.b-note {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.5;
-}
-
-.ladder {
-  margin: 1rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.rung {
-  background: linear-gradient(90deg, #e0f2fe 0%, #f0f9ff 100%);
-  border: 1px solid #bae6fd;
-  border-left: 3px solid var(--blue);
-  border-radius: 8px;
-  padding: 0.875rem;
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  align-items: center;
-  gap: 1rem;
-}
-
-.rn {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--blue);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.rt {
-  font-size: 0.95rem;
-  color: var(--text);
-  line-height: 1.5;
-}
-
-.pill {
-  display: inline-block;
-  padding: 0.15rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  white-space: nowrap;
-}
-
-.pill-red { background: #fee2e2; color: #991b1b; }
-.pill-purple { background: #fae8ff; color: #86198f; }
-.pill-blue { background: #dbeafe; color: #1e40af; }
-.pill-teal { background: #ccfbf1; color: #115e59; }
-.pill-amber { background: #fef3c7; color: #92400e; }
-.pill-green { background: #dcfce7; color: #166534; }
-.pill-grey { background: #f3f4f6; color: #4b5563; }
-
-.why-row {
-  border-top: 1px solid var(--border);
-  background: #fafaf9;
-}
-
-.why-btn {
-  width: 100%;
-  padding: 0.875rem 1.5rem;
-  background: transparent;
-  border: none;
-  text-align: left;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--accent);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: background 0.2s;
-}
-
-.why-btn:hover {
-  background: rgba(3, 105, 161, 0.05);
-}
-
-.caret {
-  transition: transform 0.2s;
-  font-size: 0.9rem;
-}
-
-.why-btn[aria-expanded="true"] .caret {
-  transform: rotate(180deg);
-}
-
-.why-drawer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-
-.why-drawer.open {
-  max-height: 1000px;
-  padding: 0 1.5rem 1.25rem;
-}
-
-.why-drawer p {
-  color: var(--text-muted);
-  line-height: 1.7;
-  font-size: 0.95rem;
-}
-
-.connector {
-  height: 24px;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--border) 0%, transparent 100%);
-  margin: 0 auto;
-}
-
-.alg-foot {
-  margin-top: 3rem;
-  padding: 1.5rem;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 0.875rem;
-  line-height: 1.6;
-}
-
-.alg-foot strong {
-  color: var(--text);
-}
-
-@media (max-width: 640px) {
-  body { padding: 1rem 0.75rem; }
-  .kv { grid-template-columns: 1fr; gap: 0.5rem; }
-  .kv > div:nth-child(odd) { font-size: 0.85rem; }
-  .node-head { padding-left: 3.5rem; }
-  .node-tick { top: auto; bottom: 1rem; right: 1rem; }
-  .branch { grid-template-columns: 1fr; }
-  .rfgrid { grid-template-columns: 1fr; }
-  .lsgrid { grid-template-columns: 1fr; }
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f6f2;--surface:#ffffff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;
+  --safety:#dc2626;--safety-bg:#fef2f2;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;
+  --treat:#16a34a;--treat-bg:#f0fdf4;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;
+  --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;min-height:100vh;padding:0 0 60px}
+.alg-header{background:var(--text);color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--treat),#22c55e);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted);transition:all .2s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--diagnose)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.why-btn:hover{color:var(--text)}
+.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
 </style>
 <link rel="stylesheet" href="../../assets/alg-diagram.css">
 </head>
 <body>
+
+<div class="alg-header">
+  <h1>🫀 Chest Pain</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta">
+    <span>NICE CG95</span><span>NICE NG185</span><span>NICE NG12</span><span>10-min consult</span>
+  </div>
+</div>
 
 <div class="stem-banner">
   <div class="sb-icon">🫀</div>
@@ -575,7 +179,7 @@ body {
       <li><b>Symptom relief:</b> GTN spray PRN — sit, repeat after 5 min; if pain persists 5 min after 2nd dose → <span class="pill pill-red">999</span>.</li>
       <li><b>1st-line:</b> beta-blocker (bisoprolol) <b>OR</b> rate-limiting CCB if asthma. <b>2nd:</b> add dihydropyridine CCB (amlodipine). <b>3rd:</b> add long-acting nitrate (ISMN, asymmetric dosing) / nicorandil / ranolazine / ivabradine.</li>
       <li><b>Secondary prevention — SAB:</b> <b>S</b>tatin (atorvastatin 80 mg, LDL ≤2 / non-HDL ≤2.6) · <b>A</b>spirin 75 mg · <b>B</b>P control; add ACEi if diabetic.</li>
-      <li><b>Other branches:</b> GORD → lansoprazole 30 mg 8 wks · costochondritis → ibuprofen + reassurance · anxiety → CBT/IAPT ± sertraline · pericarditis → NSAID ± colchicine.</li>
+      <li><b>Other branches:</b> GORD → lansoprazole 30 mg 8 wks · costochondritis → ibuprofen + reassurance · anxiety → CBT/NHS Talking Therapies ± sertraline · pericarditis → NSAID ± colchicine.</li>
     </ul></div></div>
     <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
 
@@ -603,12 +207,14 @@ body {
 
 <!-- STEP 1: SAFETY - Red Flags -->
 <div class="node" data-type="SAFETY" data-step="1">
-  <div class="node-num">1</div>
-  <div class="node-head">
+  <div class="node-header">
+    <div class="node-num">1</div>
+    <div class="node-head">
     <span class="node-tag">Safety</span>
     <h3>Red Flags — Emergency Exclusion</h3>
   </div>
-  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
   <div class="node-body">
     <p>Screen for life-threatening causes FIRST. Any red flag requires immediate escalation.</p>
     <div class="rfgrid">
@@ -637,12 +243,14 @@ body {
 
 <!-- STEP 2: DIAGNOSE - Risk Stratification -->
 <div class="node" data-type="DIAGNOSE" data-step="2">
-  <div class="node-num">2</div>
-  <div class="node-head">
+  <div class="node-header">
+    <div class="node-num">2</div>
+    <div class="node-head">
     <span class="node-tag">Diagnose</span>
     <h3>Risk Stratification — Confirm Cardiac vs Non-Cardiac</h3>
   </div>
-  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
   <div class="node-body">
     <p>Use clinical features and validated tools to stratify risk. Document clearly in notes.</p>
     <div class="kv">
@@ -688,12 +296,14 @@ body {
 
 <!-- STEP 3: DIAGNOSE - Classification -->
 <div class="node" data-type="DIAGNOSE" data-step="3">
-  <div class="node-num">3</div>
-  <div class="node-head">
+  <div class="node-header">
+    <div class="node-num">3</div>
+    <div class="node-head">
     <span class="node-tag">Diagnose</span>
     <h3>Classification — Identify the Underlying Cause</h3>
   </div>
-  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
   <div class="node-body">
     <p>Classify based on examination and risk assessment. Most diagnoses are clinical.</p>
     <div class="kv">
@@ -733,12 +343,14 @@ body {
 
 <!-- STEP 4: DIAGNOSE - Examination -->
 <div class="node" data-type="DIAGNOSE" data-step="4">
-  <div class="node-num">4</div>
-  <div class="node-head">
+  <div class="node-header">
+    <div class="node-num">4</div>
+    <div class="node-head">
     <span class="node-tag">Diagnose</span>
     <h3>Targeted Examination — What to Check</h3>
   </div>
-  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
   <div class="node-body">
     <p>Focused examination to confirm or refute differential diagnoses. Takes 3-5 minutes.</p>
     <div class="kv">
@@ -778,12 +390,14 @@ body {
 
 <!-- STEP 5: DIAGNOSE - Investigations -->
 <div class="node" data-type="DIAGNOSE" data-step="5">
-  <div class="node-num">5</div>
-  <div class="node-head">
+  <div class="node-header">
+    <div class="node-num">5</div>
+    <div class="node-head">
     <span class="node-tag">Diagnose</span>
     <h3>Investigations — What to Test and When</h3>
   </div>
-  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
   <div class="node-body">
     <p>Targeted investigations based on clinical suspicion. Avoid blanket testing.</p>
     <div class="kv">
@@ -823,12 +437,14 @@ body {
 
 <!-- STEP 6: REFER - Referral Criteria -->
 <div class="node" data-type="REFER" data-step="6">
-  <div class="node-num">6</div>
-  <div class="node-head">
+  <div class="node-header">
+    <div class="node-num">6</div>
+    <div class="node-head">
     <span class="node-tag">Refer</span>
     <h3>Referral Criteria — When to Escalate</h3>
   </div>
-  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
   <div class="node-body">
     <p>Clear thresholds for when specialist input is needed. Document referral rationale.</p>
     <div class="kv">
@@ -851,9 +467,9 @@ body {
       <div><b>Urgent:</b> Recurrent pneumothorax, persistent pleural effusion, suspicion of interstitial lung disease (crackles + breathlessness). <b>Routine:</b> Chronic pleuritic pain without clear cause, recurrent pneumonia same lobe (? obstruction)</div>
       
       <div>Gastroenterology</div>
-      <div><b>Urgent:</b> Dysphagia (2WW if age >55 + weight loss), severe refractory GORD despite 8 weeks full-dose PPI + lifestyle. <b>Routine:</b> GORD not responding to treatment, query Barrett's oesophagus. <b>Consider endoscopy if:</b> Age >55 + new-onset dyspepsia, alarm features (weight loss, dysphagia, vomiting, anaemia)</div>
+      <div><b>2WW (NICE NG12):</b> new unexplained dysphagia at <b>any age</b> → urgent direct-access upper-GI endoscopy. <b>Urgent:</b> severe refractory GORD despite 8 weeks full-dose PPI + lifestyle. <b>Routine:</b> GORD not responding to treatment, query Barrett's oesophagus. <b>Consider endoscopy if:</b> Age >55 + new-onset dyspepsia, or alarm features (weight loss, vomiting, anaemia)</div>
       
-      <div>Psychologist / IAPT</div>
+      <div>Psychologist / NHS Talking Therapies</div>
       <div>Recurrent chest pain with panic features (GAD-7 ≥10, PHQ-9 ≥10), health anxiety, post-cardiac-event PTSD. <b>Self-referral available in most areas.</b> CBT reduces chest pain consultations by 40% in functional chest pain</div>
       
       <div>Primary Care Management</div>
@@ -871,12 +487,14 @@ body {
 
 <!-- STEP 7: TREAT - Drug Ladder -->
 <div class="node" data-type="TREAT" data-step="7">
-  <div class="node-num">7</div>
-  <div class="node-head">
+  <div class="node-header">
+    <div class="node-num">7</div>
+    <div class="node-head">
     <span class="node-tag">Treat</span>
     <h3>Treatment — Drug Ladder and Symptom Control</h3>
   </div>
-  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
   <div class="node-body">
     <p>Treatment depends on underlying diagnosis. This section covers primary care management after exclusion of emergencies.</p>
     
@@ -916,7 +534,7 @@ body {
       <div class="b-card">
         <div class="b-cond">Alternative PPI</div>
         <div class="b-drug">Omeprazole <span class="pill pill-teal">20 mg OD</span></div>
-        <div class="b-note">If lansoprazole not tolerated. Or try H2 antagonist: Ranitidine 300 mg nocte (if PPI contraindicated). Less effective than PPI (60% vs 80% resolution)</div>
+        <div class="b-note">If lansoprazole not tolerated. Or try H2 antagonist: Famotidine 40 mg nocte (if PPI contraindicated — ranitidine withdrawn from UK market 2020). Less effective than PPI (60% vs 80% resolution)</div>
       </div>
     </div>
     
@@ -952,7 +570,7 @@ body {
     <div class="branch">
       <div class="b-card">
         <div class="b-cond">Psychological</div>
-        <div class="b-drug">CBT / IAPT <span class="pill pill-green">Referral</span></div>
+        <div class="b-drug">CBT / NHS Talking Therapies <span class="pill pill-green">Referral</span></div>
         <div class="b-note">First-line for mild-moderate anxiety. Self-referral or GP referral. 6-12 sessions. Teaches breathing techniques, challenges catastrophic thinking. <b>NNT 3 to achieve significant symptom reduction</b></div>
       </div>
       <div class="b-card">
@@ -973,12 +591,14 @@ body {
 
 <!-- STEP 8: LIFESTYLE - Non-Pharmacological -->
 <div class="node" data-type="LIFESTYLE" data-step="8">
-  <div class="node-num">8</div>
-  <div class="node-head">
+  <div class="node-header">
+    <div class="node-num">8</div>
+    <div class="node-head">
     <span class="node-tag">Lifestyle</span>
     <h3>Lifestyle Interventions — Treatment, Not Afterthought</h3>
   </div>
-  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
   <div class="node-body">
     <p>Lifestyle modification is first-line treatment for cardiovascular risk and equivalent to pharmacotherapy for many conditions.</p>
     <div class="lsgrid">
@@ -1014,12 +634,14 @@ body {
 
 <!-- STEP 9: SAFETY - Follow-Up -->
 <div class="node" data-type="SAFETY" data-step="9">
-  <div class="node-num">9</div>
-  <div class="node-head">
+  <div class="node-header">
+    <div class="node-num">9</div>
+    <div class="node-head">
     <span class="node-tag">Safety</span>
     <h3>Follow-Up & Safety-Netting — When to Review</h3>
   </div>
-  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
   <div class="node-body">
     <p>Structured follow-up prevents missed deterioration. Clear safety-netting empowers patients to re-present appropriately.</p>
     <div class="kv">
@@ -1027,13 +649,13 @@ body {
       <div><b>1 week:</b> Check GTN use, medication tolerance, escalating symptoms. <b>2 weeks:</b> Chase RACPC appointment if not received. <b>Ongoing:</b> Review every 2 weeks until seen by cardiology. <b>Safety-net:</b> Return immediately if pain at rest, nocturnal symptoms, GTN ineffective</div>
       
       <div>GORD on PPI trial</div>
-      <div><b>4 weeks:</b> Assess symptom response. If resolved, continue 8 weeks total then step down. If persistent, consider endoscopy referral (especially age >55, weight loss, dysphagia). <b>3 months:</b> Attempt step-down to PRN or low-dose. <b>Annual review if long-term PPI needed</b></div>
+      <div><b>4 weeks:</b> Assess symptom response. If resolved, continue 8 weeks total then step down. If persistent, consider endoscopy referral (age >55, weight loss; any new dysphagia = 2WW OGD per NG12). <b>3 months:</b> Attempt step-down to PRN or low-dose. <b>Annual review if long-term PPI needed</b></div>
       
       <div>Costochondritis / MSK</div>
       <div><b>2 weeks:</b> Review if not improving (95% resolve by 2 weeks with NSAIDs + reassurance). <b>Persistent >4 weeks:</b> Consider alternative diagnosis (rib stress fracture, Tietze's, referred pain). <b>Physiotherapy if >6 weeks</b>. Safety-net: Return if severe worsening, breathlessness, fever (infection/PE)</div>
       
       <div>Anxiety-related pain</div>
-      <div><b>2 weeks (if started SSRI):</b> Monitor for worsening anxiety, suicidal ideation (especially age <30). <b>4 weeks:</b> Assess early response. <b>8 weeks:</b> Full effect. <b>12 weeks:</b> Consider increase/switch if inadequate response. <b>6-12 months remission before tapering</b>. IAPT review as per service (usually 6-12 weekly sessions)</div>
+      <div><b>2 weeks (if started SSRI):</b> Monitor for worsening anxiety, suicidal ideation (especially age <30). <b>4 weeks:</b> Assess early response. <b>8 weeks:</b> Full effect. <b>12 weeks:</b> Consider increase/switch if inadequate response. <b>6-12 months remission before tapering</b>. NHS Talking Therapies review as per service (usually 6-12 weekly sessions)</div>
       
       <div>Pericarditis (mild, GP-managed)</div>
       <div><b>1 week:</b> Check symptom improvement, no signs of effusion (breathlessness, tachycardia, muffled heart sounds). <b>2-4 weeks:</b> Continue until pain-free, then taper NSAIDs. <b>3 months:</b> Check for recurrence (occurs in 15-30%). <b>Refer urgently if:</b> Worsening breathlessness, fever, haemodynamic compromise</div>

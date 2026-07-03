@@ -188,7 +188,7 @@
     // footnote
     html += '<div class="mg-foot"><strong>Educational use only.</strong> '+
             (data.foot || 'Management pathway for an already-confirmed diagnosis. Not a substitute for clinical judgement, the patient\u2019s individual context, or your local formulary. Verify drugs and doses against the current BNF and live NICE CKS.')+
-            (data.guideline ? ' Anchored to '+data.guideline+'.' : '')+'</div>';
+            (data.guideline ? ' Anchored to '+data.guideline+'.' : '')+'<span class="rgp-reviewed" style="display:block;margin-top:6px;font-size:12px;color:#6b7280"><b>Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</span></div>';
 
     root.innerHTML = html;
 

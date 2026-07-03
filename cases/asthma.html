@@ -541,7 +541,7 @@ body.mode-clinic .sca-only{display:none!important}
   <div class="tb-inner">
     <div class="tb-brand">
       <div class="tb-icon">AST</div>
-      <div><div class="tb-title">Asthma · GP Clinical Reasoning Framework</div><div class="tb-sub">GP &amp; SCA · BTS/SIGN 2023 · NICE NG80 · GINA 2024</div></div>
+      <div><div class="tb-title">Asthma · GP Clinical Reasoning Framework</div><div class="tb-sub">GP &amp; SCA · NICE/BTS/SIGN NG245 (2024) · GINA 2025</div></div>
     </div>
     <div class="mode-group">
       <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
@@ -566,7 +566,7 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="ns-item"><span class="ns-val">2+ courses OCS/yr</span><span class="ns-lbl">Severe/uncontrolled — refer to specialist</span></div>
     <div class="ns-item"><span class="ns-val">SpO2 &lt;92%</span><span class="ns-lbl">Acute severe — target 94–98%</span></div>
     <div class="ns-item"><span class="ns-val">PEFR &lt;50%</span><span class="ns-lbl">Acute severe attack threshold</span></div>
-    <div class="ns-item"><span class="ns-val">ICS Step 2</span><span class="ns-lbl">Add ICS if SABA &gt;3×/week or nocturnal Sx</span></div>
+    <div class="ns-item"><span class="ns-val">AIR first-line</span><span class="ns-lbl">Low-dose ICS/formoterol PRN from diagnosis — no SABA-only (NG245)</span></div>
     <div class="ns-item"><span class="ns-val">Annual review</span><span class="ns-lbl">Check technique, adherence, trigger control</span></div>
   </div>
 </div>
@@ -674,7 +674,7 @@ body.mode-clinic .sca-only{display:none!important}
           <tr>
             <td class="q">Current inhaler use<em>"Are you using any inhalers at the moment? Which one and how often? Can you show me how you use it?"</em></td>
             <td class="why">SABA use is the single best marker of asthma control. Using &gt;3 times/week = poor control = step up. Daily SABA use = uncontrolled = urgent review. Over-reliance on SABA without preventer = major risk factor for fatal attack. Inhaler technique: up to 80% of patients use inhalers incorrectly. Wrong technique negates the treatment.<span class="why-sub">BTS/SIGN 2023: SABA over-prescription is independently associated with asthma mortality. Prescribers should consider reducing SABA reliance as a quality indicator.</span></td>
-            <td><span class="chg chg-rx">Step in GINA/BTS ladder</span><span class="chg chg-inv">Technique check mandatory</span></td>
+            <td><span class="chg chg-rx">Step on NG245 pathway</span><span class="chg chg-inv">Technique check mandatory</span></td>
           </tr>
           <tr>
             <td class="q">Atopic history and FH<em>"Do you have or have you ever had eczema, hay fever, or food allergies? Does asthma or atopy run in your family?"</em></td>
@@ -890,9 +890,9 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="tc tc-r">
         <div class="tc-lbl">🟢 Routine — GP management</div><h3>Stable / Chronic Management</h3><span class="tc-badge tcb-r">Planned care</span>
         <ul class="tc-items">
-          <li class="tc-item"><strong>New diagnosis of asthma</strong><em>Spirometry + reversibility · PEFR diary · Step 1–2 initiation</em></li>
+          <li class="tc-item"><strong>New diagnosis of asthma</strong><em>Spirometry + reversibility ± FeNO · Start AIR (low-dose ICS/formoterol PRN, NG245)</em></li>
           <li class="tc-item"><strong>Annual asthma review</strong><em>Control assessment · Inhaler technique · Triggers · Written plan · Step review</em></li>
-          <li class="tc-item"><strong>Poor control (SABA &gt;3×/week)</strong><em>Step up BTS/SIGN ladder · Check technique and adherence before stepping up</em></li>
+          <li class="tc-item"><strong>Poor control (reliever &gt;3×/week)</strong><em>Step up the NG245 pathway · Check technique and adherence before stepping up</em></li>
           <li class="tc-item"><strong>Mild acute exacerbation (PEFR &gt;50%)</strong><em>Increase SABA · 40–50 mg prednisolone × 5 days · Review in 48h</em></li>
         </ul>
       </div>
@@ -964,7 +964,7 @@ body.mode-clinic .sca-only{display:none!important}
         <tbody>
           <tr><td class="q">Spirometry + reversibility (post-bronchodilator)</td><td class="why"><strong>Confirms obstructive pattern and reversibility — the diagnostic cornerstone.</strong> FEV1/FVC &lt;0.7 = obstruction. ≥12% improvement + ≥200mL in FEV1 after bronchodilator = positive reversibility = asthma. Must be done when symptomatic for best yield. In over-35s with smoking history: distinguish from COPD or overlap (ACO).</td><td class="why">Positive reversibility → confirms asthma. No reversibility → consider COPD, VCD, ICS trial. FEV1 &lt;70% predicted at baseline = moderate–severe asthma → specialist input.</td></tr>
           <tr><td class="q">PEFR diary (twice daily × 2–4 weeks)</td><td class="why">Diurnal variability &gt;20% = confirmatory for asthma. Essential for occupational asthma diagnosis (worse on work days, better on days off). Cheaper and more accessible than spirometry. The pattern of variability is as important as the absolute value.<span class="why-sub">BTS/SIGN: PEFR variability = (max–min)/max × 100. &gt;20% supports diagnosis.</span></td><td class="why">&gt;20% variability → confirms asthma diagnosis. Occupational pattern (worse Mon–Fri) → occupational asthma pathway + SWORD reporting.</td></tr>
-          <tr><td class="q">FeNO (fractional exhaled nitric oxide)</td><td class="why">FeNO is a non-invasive biomarker of eosinophilic airway inflammation. &gt;40 ppb = significant eosinophilic inflammation → high probability of ICS responsiveness. &lt;25 ppb = low eosinophilic inflammation → less likely to respond to ICS alone (consider other diagnoses or non-eosinophilic asthma). Useful when diagnosis is uncertain or to guide ICS stepping.<span class="why-sub">NICE NG80: FeNO recommended for asthma diagnosis alongside spirometry and PEFR.</span></td><td class="why">FeNO &gt;40 ppb → strongly supports asthma, ICS responsive. FeNO 25–40 ppb → intermediate. &lt;25 ppb → consider VCD, hyperventilation, non-eosinophilic asthma.</td></tr>
+          <tr><td class="q">FeNO (fractional exhaled nitric oxide)</td><td class="why">FeNO is a non-invasive biomarker of eosinophilic airway inflammation. &gt;40 ppb = significant eosinophilic inflammation → high probability of ICS responsiveness. &lt;25 ppb = low eosinophilic inflammation → less likely to respond to ICS alone (consider other diagnoses or non-eosinophilic asthma). Useful when diagnosis is uncertain or to guide ICS stepping.<span class="why-sub">NICE NG245: FeNO recommended for asthma diagnosis alongside spirometry and PEFR.</span></td><td class="why">FeNO &gt;40 ppb → strongly supports asthma, ICS responsive. FeNO 25–40 ppb → intermediate. &lt;25 ppb → consider VCD, hyperventilation, non-eosinophilic asthma.</td></tr>
           <tr><td class="q">Full blood count — eosinophil count</td><td class="why">Blood eosinophils ≥0.3 × 10⁹/L = eosinophilic asthma phenotype — predicts ICS response and eligibility for biologic therapies (mepolizumab, benralizumab). High eosinophils with poor control = step up ICS or refer for biologic. Eosinophilia + pulmonary infiltrates = consider EGPA (Churg–Strauss).<span class="why-sub">Eligibility for mepolizumab/benralizumab: blood eosinophils ≥0.3 × 10⁹/L + ≥4 exacerbations/year or OCS-dependent.</span></td><td class="why">Eosinophils ≥0.3 → ICS-responsive phenotype. ≥0.3 + poor control on high-dose ICS/LABA → biologic eligibility referral.</td></tr>
           <tr><td class="q">IgE (total and specific — RAST/skin prick)</td><td class="why">Elevated total IgE confirms atopic phenotype. Specific IgE to cat, HDM, grass, mould identifies the causative allergen. Helps focus trigger avoidance — telling a patient to avoid "allergens" is less useful than naming the specific sensitisation. Eligibility for omalizumab (anti-IgE biologic): IgE 30–1500 IU/mL + confirmed allergen sensitisation.<span class="why-sub">Omalizumab eligibility: severe allergic asthma + IgE 30–1500 IU/mL + positive skin prick or specific IgE + ≥4 exacerbations/year.</span></td><td class="why">Cat-specific IgE positive → cat is confirmed trigger → graduated rehoming advice. Eligibility for omalizumab if IgE within range + criteria met.</td></tr>
           <tr><td class="q">CXR (chest X-ray)</td><td class="why">Asthma does not cause CXR abnormalities — if it is abnormal, consider an alternative diagnosis. CXR indicated: first presentation to exclude pneumothorax, malignancy, TB; acute severe attack to exclude pneumothorax and infection; if wheeze is unilateral; if response to treatment is poor.<span class="why-sub">CXR in asthma: hyperinflation with peri-bronchial thickening may be seen but is non-specific. A normal CXR does not exclude asthma.</span></td><td class="why">Unilateral opacity → tumour, foreign body. Pneumothorax → immediate management. Normal CXR + wheeze → supports asthma (by exclusion of alternatives).</td></tr>
@@ -1157,7 +1157,7 @@ body.mode-clinic .sca-only{display:none!important}
 
     <!-- 7D: Drug Selector -->
     <div class="sub-divider">7D — Prescribing Guide: what to start, in what order, and why</div>
-    <div class="step-intro" style="margin-bottom:.75rem"><strong>Three decisions, in this order, every time:</strong> (1) Does this patient need to step up — or is the apparent failure due to technique, adherence, or an unaddressed trigger? (2) Which step of the BTS/SIGN ladder is appropriate? (3) Within that step, which drug fits this patient's phenotype, comorbidities, and preferences? Never skip step 1 — the most common cause of "uncontrolled asthma" is suboptimal technique or non-adherence, not insufficient medication.</div>
+    <div class="step-intro" style="margin-bottom:.75rem"><strong>Three decisions, in this order, every time:</strong> (1) Does this patient need to step up — or is the apparent failure due to technique, adherence, or an unaddressed trigger? (2) Which step of the NG245 pathway is appropriate? (3) Within that step, which drug fits this patient's phenotype, comorbidities, and preferences? Never skip step 1 — the most common cause of "uncontrolled asthma" is suboptimal technique or non-adherence, not insufficient medication.</div>
 
     <div style="background:var(--white);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow);margin-bottom:.85rem">
 
@@ -1181,29 +1181,29 @@ body.mode-clinic .sca-only{display:none!important}
             <div style="font-size:12px;line-height:1.5;color:var(--ink)">Has something changed? New pet, new job, new medication (beta-blocker, NSAID, ACEi), new housing (mould, damp), new relationship stress. A new trigger treated as "worsening asthma" will not respond to a step up — it requires trigger removal.<br><br><em style="font-size:11.5px;color:var(--muted)">"Has anything changed recently — at home, at work, or with any other medicines you're taking?"</em></div>
           </div>
         </div>
-        <div style="margin-top:.65rem;background:var(--navy);border-radius:8px;padding:.55rem .9rem;font-size:12px;color:#86efac;font-weight:600">Only if technique is confirmed correct + adherence confirmed + no new trigger identified → proceed to step up on the BTS/SIGN ladder</div>
+        <div style="margin-top:.65rem;background:var(--navy);border-radius:8px;padding:.55rem .9rem;font-size:12px;color:#86efac;font-weight:600">Only if technique is confirmed correct + adherence confirmed + no new trigger identified → proceed to step up on the NG245 pathway</div>
       </div>
 
       <!-- DECISION 2 -->
       <div style="background:linear-gradient(90deg,var(--navy2),var(--navy));padding:.75rem 1.1rem;display:flex;align-items:center;gap:10px">
         <div style="width:28px;height:28px;border-radius:50%;background:#34d399;color:var(--navy);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
-        <div style="font-size:13px;font-weight:700;color:#fff">Step-by-step prescribing order — BTS/SIGN 2023</div>
+        <div style="font-size:13px;font-weight:700;color:#fff">Step-by-step prescribing order — NICE/BTS/SIGN NG245 (2024)</div>
       </div>
       <div style="padding:.85rem 1.1rem;border-bottom:1px solid var(--line)">
         <div style="display:flex;flex-direction:column;gap:6px">
 
           <div style="display:grid;grid-template-columns:80px 1fr 1fr;gap:0;border-radius:var(--rad-sm);overflow:hidden;border:1px solid var(--g-bd)">
             <div style="background:var(--g);padding:.65rem .75rem;display:flex;align-items:center;justify-content:center;text-align:center">
-              <div><div style="font-size:11px;font-weight:700;color:#fff">Step 1</div><div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:2px">Mild intermittent</div></div>
+              <div><div style="font-size:11px;font-weight:700;color:#fff">Step 1</div><div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:2px">New diagnosis / mild</div></div>
             </div>
             <div style="background:var(--g-bg);padding:.65rem .85rem;border-right:1px solid var(--g-bd)">
-              <div style="font-size:11px;font-weight:700;color:var(--g);margin-bottom:.25rem">START: SABA PRN only</div>
-              <div style="font-size:12px;line-height:1.45;color:var(--ink)">Salbutamol 100mcg 1–2 puffs as needed. Use with spacer for MDI. Demonstrate technique at every prescription.</div>
+              <div style="font-size:11px;font-weight:700;color:var(--g);margin-bottom:.25rem">START: AIR — low-dose ICS/formoterol PRN</div>
+              <div style="font-size:12px;line-height:1.45;color:var(--ink)">Combined low-dose ICS/formoterol (e.g. Symbicort 200/6 or Fostair 100/6) 1 puff as needed for symptoms — the "anti-inflammatory reliever" (AIR). NG245: do NOT start salbutamol alone. Demonstrate technique at every prescription.</div>
             </div>
             <div style="background:var(--g-bg);padding:.65rem .85rem">
               <div style="font-size:11px;font-weight:700;color:var(--g);margin-bottom:.2rem">WHY this first</div>
-              <div style="font-size:12px;line-height:1.45;color:var(--ink)">Symptoms ≤2 days/week · no nocturnal symptoms · no exacerbations. Rapid bronchodilation without systemic exposure. Reliever-only is appropriate for truly intermittent asthma.</div>
-              <div style="font-size:11px;font-weight:700;color:var(--r);margin-top:.3rem">→ Step up if SABA &gt;3×/week or any nocturnal symptoms or any exacerbation</div>
+              <div style="font-size:12px;line-height:1.45;color:var(--ink)">Formoterol relieves as fast as salbutamol, but every reliever dose now carries ICS — treating the inflammation with each use. AIR roughly halves severe exacerbations vs SABA-only (SYGMA-1, Novel START). SABA-only therapy is no longer recommended at any step.</div>
+              <div style="font-size:11px;font-weight:700;color:var(--r);margin-top:.3rem">→ Step up to low-dose MART if using the AIR inhaler ≥3 days/week, any night waking, or any exacerbation</div>
             </div>
           </div>
 
@@ -1212,42 +1212,42 @@ body.mode-clinic .sca-only{display:none!important}
               <div><div style="font-size:11px;font-weight:700;color:#fff">Step 2</div><div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:2px">Persistent symptoms</div></div>
             </div>
             <div style="background:var(--ast-bg);padding:.65rem .85rem;border-right:1px solid var(--ast-bd)">
-              <div style="font-size:11px;font-weight:700;color:var(--ast);margin-bottom:.25rem">ADD: Low-dose ICS</div>
-              <div style="font-size:12px;line-height:1.45;color:var(--ink)">Beclometasone dipropionate 200–400mcg/day, budesonide 200–400mcg/day, or fluticasone propionate 100–200mcg/day. Use with spacer. Rinse mouth after every dose. Takes 4–6 weeks for full effect.</div>
+              <div style="font-size:11px;font-weight:700;color:var(--ast);margin-bottom:.25rem">MOVE TO: Low-dose MART</div>
+              <div style="font-size:12px;line-height:1.45;color:var(--ink)">Same ICS/formoterol inhaler, now taken regularly: e.g. Symbicort 200/6 one puff BD maintenance PLUS as needed for relief (MART). One inhaler covers prevention and relief. Rinse mouth after maintenance doses. Review at 8–12 weeks.</div>
             </div>
             <div style="background:var(--ast-bg);padding:.65rem .85rem">
-              <div style="font-size:11px;font-weight:700;color:var(--ast);margin-bottom:.2rem">WHY ICS at Step 2</div>
-              <div style="font-size:12px;line-height:1.45;color:var(--ink)">Asthma is an inflammatory disease — SABA treats the spasm, ICS treats the underlying inflammation. ICS reduces exacerbations, hospital admissions, and asthma deaths. SABA without ICS = treating symptoms without treating disease.</div>
-              <div style="font-size:11px;font-weight:700;color:var(--r);margin-top:.3rem">→ Step up if still uncontrolled after 4–6 weeks on low-dose ICS with confirmed adherence</div>
+              <div style="font-size:11px;font-weight:700;color:var(--ast);margin-bottom:.2rem">WHY MART at Step 2</div>
+              <div style="font-size:12px;line-height:1.45;color:var(--ink)">Asthma is an inflammatory disease — regular ICS treats the inflammation, and keeping formoterol as the reliever means every extra puff during a bad patch automatically delivers more ICS. MART reduces exacerbations, admissions and asthma deaths versus fixed-dose regimens with separate SABA.</div>
+              <div style="font-size:11px;font-weight:700;color:var(--r);margin-top:.3rem">→ Step up if still uncontrolled after 8–12 weeks on low-dose MART with confirmed technique + adherence</div>
             </div>
           </div>
 
           <div style="display:grid;grid-template-columns:80px 1fr 1fr;gap:0;border-radius:var(--rad-sm);overflow:hidden;border:1px solid var(--b-bd)">
             <div style="background:var(--b);padding:.65rem .75rem;display:flex;align-items:center;justify-content:center;text-align:center">
-              <div><div style="font-size:11px;font-weight:700;color:#fff">Step 3</div><div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:2px">Uncontrolled on ICS</div></div>
+              <div><div style="font-size:11px;font-weight:700;color:#fff">Step 3</div><div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:2px">Uncontrolled on low-dose MART</div></div>
             </div>
             <div style="background:var(--b-bg);padding:.65rem .85rem;border-right:1px solid var(--b-bd)">
-              <div style="font-size:11px;font-weight:700;color:var(--b);margin-bottom:.25rem">ADD: LABA → MART preferred</div>
-              <div style="font-size:12px;line-height:1.45;color:var(--ink)"><strong>MART (preferred):</strong> Symbicort (budesonide/formoterol) 100/6 or 200/6 — 1–2 puffs BD maintenance + PRN relief (max 8 extra puffs/day). <strong>Alternative:</strong> Fixed ICS/LABA (Seretide, Fostair) + separate SABA. <strong>Add-on:</strong> Montelukast 10mg nocte if rhinitis, AERD, or EIB co-exist.</div>
+              <div style="font-size:11px;font-weight:700;color:var(--b);margin-bottom:.25rem">INCREASE: Moderate-dose MART</div>
+              <div style="font-size:12px;line-height:1.45;color:var(--ink)">Increase the maintenance dose: e.g. Symbicort 200/6 two puffs BD (or one puff BD of a higher-strength device) + PRN relief (max 8 extra puffs/day). <strong>Alternative if MART unsuitable:</strong> fixed-dose moderate ICS/LABA + separate reliever. <strong>Add-on:</strong> Montelukast 10mg nocte if rhinitis, AERD, or EIB co-exist.</div>
             </div>
             <div style="background:var(--b-bg);padding:.65rem .85rem">
-              <div style="font-size:11px;font-weight:700;color:var(--b);margin-bottom:.2rem">WHY MART at Step 3</div>
-              <div style="font-size:12px;line-height:1.45;color:var(--ink)">Adding LABA to ICS is superior to doubling ICS dose alone. MART reduces severe exacerbations by ~30% vs fixed ICS/LABA + SABA — formoterol has rapid onset allowing it to act as both maintenance and reliever. <strong>⛔ NEVER prescribe LABA without ICS.</strong></div>
-              <div style="font-size:11px;font-weight:700;color:var(--r);margin-top:.3rem">→ Step up after 3 months if still uncontrolled; specialist input before Step 4</div>
+              <div style="font-size:11px;font-weight:700;color:var(--b);margin-bottom:.2rem">WHY moderate-dose MART</div>
+              <div style="font-size:12px;line-height:1.45;color:var(--ink)">Escalating within MART keeps the exacerbation-protection of the ICS-with-every-relief mechanism (~30% fewer severe exacerbations vs fixed ICS/LABA + SABA). <strong>⛔ NEVER prescribe LABA without ICS.</strong></div>
+              <div style="font-size:11px;font-weight:700;color:var(--r);margin-top:.3rem">→ If still uncontrolled after 8–12 weeks → check FeNO + blood eosinophils (Step 4)</div>
             </div>
           </div>
 
           <div style="display:grid;grid-template-columns:80px 1fr 1fr;gap:0;border-radius:var(--rad-sm);overflow:hidden;border:1px solid var(--p-bd)">
             <div style="background:var(--p);padding:.65rem .75rem;display:flex;align-items:center;justify-content:center;text-align:center">
-              <div><div style="font-size:11px;font-weight:700;color:#fff">Step 4</div><div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:2px">Difficult asthma</div></div>
+              <div><div style="font-size:11px;font-weight:700;color:#fff">Step 4</div><div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:2px">Uncontrolled on moderate MART</div></div>
             </div>
             <div style="background:var(--p-bg);padding:.65rem .85rem;border-right:1px solid var(--p-bd)">
-              <div style="font-size:11px;font-weight:700;color:var(--p);margin-bottom:.25rem">INCREASE + ADD-ONS</div>
-              <div style="font-size:12px;line-height:1.45;color:var(--ink)">High-dose ICS/LABA (e.g. Seretide 500/50 or Fostair 200/6). Add LAMA (tiotropium) — additional bronchodilation. Consider adding LTRA (montelukast) or slow-release theophylline. Refer to specialist respiratory clinic if not already done.</div>
+              <div style="font-size:11px;font-weight:700;color:var(--p);margin-bottom:.25rem">CHECK BIOMARKERS → ADD-ON or REFER</div>
+              <div style="font-size:12px;line-height:1.45;color:var(--ink)">NG245 gate: check <strong>FeNO and blood eosinophils</strong>. If EITHER is raised → refer to a specialist asthma service. If BOTH are normal → 8–12 week trial of a LTRA (montelukast) or a LAMA added to moderate-dose MART; stop if ineffective, then refer.</div>
             </div>
             <div style="background:var(--p-bg);padding:.65rem .85rem">
-              <div style="font-size:11px;font-weight:700;color:var(--p);margin-bottom:.2rem">WHY add LAMA at Step 4</div>
-              <div style="font-size:12px;line-height:1.45;color:var(--ink)">LAMA (tiotropium) provides a third class of bronchodilation via anticholinergic mechanism — additive to LABA. Evidence from TALC and NHLBI trials. Theophylline: anti-inflammatory at low doses + bronchodilation — useful as add-on but narrow therapeutic index (monitor levels).</div>
+              <div style="font-size:11px;font-weight:700;color:var(--p);margin-bottom:.2rem">WHY biomarkers before add-ons</div>
+              <div style="font-size:12px;line-height:1.45;color:var(--ink)">Raised FeNO/eosinophils = ongoing type-2 inflammation despite moderate ICS — these patients need specialist assessment (and may be biologic candidates), not blind dose escalation. Normal biomarkers = bronchodilator-responsive phenotype where a LAMA or LTRA trial is rational. This biomarker gate is new in NG245.</div>
               <div style="font-size:11px;font-weight:700;color:var(--r);margin-top:.3rem">→ Specialist referral if not already made. Biologic eligibility assessment if ≥4 exacerbations/year.</div>
             </div>
           </div>
@@ -1367,17 +1367,17 @@ body.mode-clinic .sca-only{display:none!important}
     <div class="sub-divider">7F — Drug reference cards</div>
     <div class="drug-cards">
       <div class="dc" id="dc-saba">
-        <div class="dc-head"><div><div class="dc-name">SABA — Short-Acting Beta-2 Agonist</div><div class="dc-examples">Salbutamol (Ventolin) · Terbutaline (Bricanyl)</div><div class="dc-rec-badge">✓ Reliever — all steps</div></div><div class="dc-badges"><span class="dc-step step1-pill">Step 1+</span><span class="dc-dose">100mcg 1–2 puffs PRN</span></div></div>
-        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use for</div><div class="dc-item">Reliever at all steps — immediate bronchodilation (onset 3–5 min)</div><div class="dc-item">Pre-exercise: 2 puffs 15 min before exercise to prevent EIB</div><div class="dc-item">Step 1 (mild intermittent): SABA alone if symptoms ≤2 days/week</div></div>
-        <div class="dc-section dc-r"><div class="dc-sec-t">⚠ Warning signs of over-reliance</div><div class="dc-item ci-abs"><strong>SABA &gt;3×/week</strong> = poor control = step up mandatory</div><div class="dc-item ci-abs"><strong>SABA &gt;1 canister/month</strong> = independently associated with asthma mortality</div><div class="dc-item ci-rel">Over-prescribing SABA without ICS is a BTS/SIGN quality failure</div></div>
+        <div class="dc-head"><div><div class="dc-name">SABA — Short-Acting Beta-2 Agonist</div><div class="dc-examples">Salbutamol (Ventolin) · Terbutaline (Bricanyl)</div><div class="dc-rec-badge">⚠ Legacy reliever — no longer started alone</div></div><div class="dc-badges"><span class="dc-step step1-pill">Step 1+</span><span class="dc-dose">100mcg 1–2 puffs PRN</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use for</div><div class="dc-item">Immediate bronchodilation (onset 3–5 min) — for patients established on fixed-dose ICS/LABA + separate reliever regimens</div><div class="dc-item">Pre-exercise: 2 puffs 15 min before exercise to prevent EIB</div><div class="dc-item ci-abs"><strong>NG245: never start SABA alone</strong> — new diagnoses begin AIR (low-dose ICS/formoterol PRN) instead</div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">⚠ Warning signs of over-reliance</div><div class="dc-item ci-abs"><strong>SABA &gt;3×/week</strong> = poor control = step up mandatory</div><div class="dc-item ci-abs"><strong>SABA &gt;1 canister/month</strong> = independently associated with asthma mortality</div><div class="dc-item ci-rel">Prescribing SABA without any ICS is an NG245 quality failure — SABA-only therapy is banned at every step</div></div>
         <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div><div class="dc-item">Tremor, tachycardia, hypokalaemia at high doses (nebuliser)</div></div>
         <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling phrase</div><p>"This is your reliever — it opens your airways quickly. But if you're needing it more than 3 times a week, that's a sign your asthma isn't controlled and we need to do more, not just use more of this."</p></div>
-        <div class="dc-sca"><p>SABA frequency is the central control metric. In SCA: always ask how often they use it and interpret it — daily use = uncontrolled = immediate step up action required.</p></div>
+        <div class="dc-sca"><p>Reliever frequency is the central control metric. In SCA: always ask how often they use it and interpret it — daily use = uncontrolled = immediate action. Bonus mark: knowing NG245 replaced SABA-first with AIR→MART, and transitioning legacy SABA-only patients at review.</p></div>
       </div>
 
       <div class="dc" id="dc-ics">
         <div class="dc-head"><div><div class="dc-name">ICS — Inhaled Corticosteroid</div><div class="dc-examples">Beclometasone · Budesonide · Fluticasone propionate</div><div class="dc-rec-badge">✓ Preventer — Step 2+</div></div><div class="dc-badges"><span class="dc-step step2-pill">Step 2+</span><span class="dc-dose">BDP 200–400mcg/day (low)</span></div></div>
-        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Add ICS when</div><div class="dc-item">SABA &gt;3×/week or any nocturnal symptoms = Step 2</div><div class="dc-item">Exacerbation in last 2 years requiring OCS</div><div class="dc-item">Any risk factor for near-fatal attack</div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Add ICS when</div><div class="dc-item">From diagnosis — under NG245 the ICS arrives with the first reliever (AIR: ICS/formoterol PRN)</div><div class="dc-item">Exacerbation in last 2 years requiring OCS</div><div class="dc-item">Any risk factor for near-fatal attack</div></div>
         <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid / caution</div><div class="dc-item ci-rel">High-dose ICS in children — growth monitoring required</div><div class="dc-item ci-rel">Oral candidiasis — rinse mouth after every dose (spacer helps)</div><div class="dc-item ci-rel">Do NOT step down ICS in pregnancy</div></div>
         <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Critical teaching point</div><div class="dc-item">Must use spacer device for MDI — improves lung deposition 2–4×</div><div class="dc-item">Takes 4–6 weeks to achieve full anti-inflammatory effect</div><div class="dc-item">Technique check at every consultation</div></div>
         <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling phrase</div><p>"This is the most important inhaler — it treats the inflammation causing your asthma. It doesn't work immediately like the blue one, but after a few weeks you should notice fewer symptoms and needing the blue one less. It won't make your lungs lazy — it will make them less inflamed."</p></div>
@@ -1402,11 +1402,11 @@ body.mode-clinic .sca-only{display:none!important}
       </div>
 
       <div class="dc" id="dc-mart">
-        <div class="dc-head"><div><div class="dc-name">MART — Maintenance &amp; Reliever Therapy</div><div class="dc-examples">Symbicort MART · Fobumix Easyhaler · DuoResp Spiromax</div><div class="dc-rec-badge">✓ Step 3 preferred</div></div><div class="dc-badges"><span class="dc-step step3-pill">Step 3</span><span class="dc-dose">1–2 puffs BD maintenance + PRN</span></div></div>
+        <div class="dc-head"><div><div class="dc-name">MART — Maintenance &amp; Reliever Therapy</div><div class="dc-examples">Symbicort MART · Fobumix Easyhaler · DuoResp Spiromax</div><div class="dc-rec-badge">✓ NG245 core pathway</div></div><div class="dc-badges"><span class="dc-step step3-pill">Step 3</span><span class="dc-dose">1–2 puffs BD maintenance + PRN</span></div></div>
         <div class="dc-section dc-g"><div class="dc-sec-t">✓ Advantages of MART</div><div class="dc-item">Single inhaler for both maintenance and relief — reduces exacerbations ~30% vs fixed-dose regimen</div><div class="dc-item">Automatic dose increase during early exacerbation (formoterol has rapid onset like SABA)</div><div class="dc-item">Proven to reduce severe exacerbations, hospital admissions, and OCS use</div></div>
         <div class="dc-section dc-r"><div class="dc-sec-t">⚠ Limits and rules</div><div class="dc-item ci-abs">Maximum 12 puffs/day total (maintenance + relief combined)</div><div class="dc-item ci-abs"><strong>If needing &gt;8 puffs/day relief:</strong> seek medical review urgently</div><div class="dc-item ci-rel">Only formoterol-containing ICS/LABA combinations approved for MART (not salmeterol)</div></div>
         <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling phrase</div><p>"With this inhaler you take it morning and evening as normal, but if your breathing gets worse you can also use extra puffs as a reliever — up to 8 extra puffs in a day. If you're needing that many extra puffs, that's a sign to contact us urgently or go to hospital."</p></div>
-        <div class="dc-sca"><p>MART is the preferred Step 3 approach per BTS/SIGN 2023 for eligible adults. The nuance: patients must understand the daily maximum and the 8-puff urgent review threshold. Common SCA deduction: prescribing MART without explaining the relief-use limit.</p></div>
+        <div class="dc-sca"><p>MART (low-dose → moderate-dose) is the spine of the NG245 adult pathway. The nuance: patients must understand the daily maximum and the 8-puff urgent review threshold. Common SCA deduction: prescribing MART without explaining the relief-use limit.</p></div>
       </div>
 
       <div class="dc" id="dc-bio">
@@ -1589,7 +1589,7 @@ body.mode-clinic .sca-only{display:none!important}
       <div>
         <div class="sum-label">Clinic Quick Reference</div>
         <div class="sum-title">Asthma — Diagnostic Pathway &amp; Management Summary</div>
-        <div class="sum-sub">BTS/SIGN 2023 · NICE NG80 · GINA 2024 · Numbers · Step ladder · Safety netting · Monitoring</div>
+        <div class="sum-sub">NICE/BTS/SIGN NG245 (2024) · GINA 2025 · Numbers · Step ladder · Safety netting · Monitoring</div>
       </div>
     </div>
     <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
@@ -1628,10 +1628,10 @@ body.mode-clinic .sca-only{display:none!important}
           <ul class="algo-list">
             <li>New diagnosis: spirometry + PEFR diary + FeNO</li>
             <li>Annual review: control + technique + triggers</li>
-            <li>SABA &gt;3×/week: step up BTS ladder</li>
+            <li>Reliever &gt;3×/week: step up NG245 pathway</li>
             <li>Mild exacerbation (PEFR &gt;50%): increase SABA + OCS</li>
           </ul>
-          <span class="algo-action green-action">BTS/SIGN pathway</span>
+          <span class="algo-action green-action">NG245 pathway</span>
         </div>
       </div>
     </div>
@@ -1669,7 +1669,7 @@ body.mode-clinic .sca-only{display:none!important}
       </div>
     </div>
 
-    <div class="sum-sub-hdr">💊 3 — BTS/SIGN Step Ladder</div>
+    <div class="sum-sub-hdr">💊 3 — NG245 Pathway (adults &amp; 12+)</div>
     <div style="margin-bottom:1rem">
       <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);overflow:hidden">
         <table style="width:100%;border-collapse:collapse;font-size:12px">
@@ -1680,10 +1680,10 @@ body.mode-clinic .sca-only{display:none!important}
             <th style="padding:.5rem .75rem;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.6)">Before stepping up</th>
           </tr></thead>
           <tbody>
-            <tr style="border-bottom:1px solid var(--line)"><td style="padding:.45rem .75rem;font-weight:700;color:var(--g)">Step 1</td><td style="padding:.45rem .75rem;font-weight:600">SABA PRN only</td><td style="padding:.45rem .75rem;font-size:11.5px">Mild intermittent: SABA ≤2 days/week, no nocturnal Sx</td><td style="padding:.45rem .75rem;font-size:11.5px">–</td></tr>
-            <tr style="border-bottom:1px solid var(--line)"><td style="padding:.45rem .75rem;font-weight:700;color:var(--ast)">Step 2</td><td style="padding:.45rem .75rem;font-weight:600">SABA + low-dose ICS</td><td style="padding:.45rem .75rem;font-size:11.5px">SABA &gt;3×/week or any nocturnal or any exacerbation</td><td style="padding:.45rem .75rem;font-size:11.5px">Check technique · Confirm diagnosis</td></tr>
-            <tr style="border-bottom:1px solid var(--line)"><td style="padding:.45rem .75rem;font-weight:700;color:var(--b)">Step 3</td><td style="padding:.45rem .75rem;font-weight:600">ICS/LABA (MART preferred) ± LTRA</td><td style="padding:.45rem .75rem;font-size:11.5px">Uncontrolled on low-dose ICS alone</td><td style="padding:.45rem .75rem;font-size:11.5px">Adherence + technique confirmed</td></tr>
-            <tr style="border-bottom:1px solid var(--line)"><td style="padding:.45rem .75rem;font-weight:700;color:var(--p)">Step 4</td><td style="padding:.45rem .75rem;font-weight:600">High-dose ICS/LABA + add-ons (LTRA, LAMA, theophylline)</td><td style="padding:.45rem .75rem;font-size:11.5px">Uncontrolled on Step 3</td><td style="padding:.45rem .75rem;font-size:11.5px">Specialist input considered</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:.45rem .75rem;font-weight:700;color:var(--g)">Step 1</td><td style="padding:.45rem .75rem;font-weight:600">AIR — low-dose ICS/formoterol PRN</td><td style="padding:.45rem .75rem;font-size:11.5px">New diagnosis / infrequent symptoms — SABA-only banned</td><td style="padding:.45rem .75rem;font-size:11.5px">–</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:.45rem .75rem;font-weight:700;color:var(--ast)">Step 2</td><td style="padding:.45rem .75rem;font-weight:600">Low-dose MART (ICS/formoterol BD + PRN)</td><td style="padding:.45rem .75rem;font-size:11.5px">Reliever ≥3 days/week · night waking · any exacerbation</td><td style="padding:.45rem .75rem;font-size:11.5px">Check technique · Confirm diagnosis</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:.45rem .75rem;font-weight:700;color:var(--b)">Step 3</td><td style="padding:.45rem .75rem;font-weight:600">Moderate-dose MART</td><td style="padding:.45rem .75rem;font-size:11.5px">Uncontrolled on low-dose MART</td><td style="padding:.45rem .75rem;font-size:11.5px">Adherence + technique confirmed</td></tr>
+            <tr style="border-bottom:1px solid var(--line)"><td style="padding:.45rem .75rem;font-weight:700;color:var(--p)">Step 4</td><td style="padding:.45rem .75rem;font-weight:600">FeNO + eosinophils → raised: REFER · normal: trial LTRA or LAMA 8–12w</td><td style="padding:.45rem .75rem;font-size:11.5px">Uncontrolled on moderate-dose MART</td><td style="padding:.45rem .75rem;font-size:11.5px">Biomarker gate is mandatory (NG245)</td></tr>
             <tr><td style="padding:.45rem .75rem;font-weight:700;color:var(--r)">Step 5</td><td style="padding:.45rem .75rem;font-weight:600">Biologic (mepolizumab / omalizumab / dupilumab) ± OCS</td><td style="padding:.45rem .75rem;font-size:11.5px">≥4 exacerbations/year or OCS-dependent + eligible phenotype</td><td style="padding:.45rem .75rem;font-size:11.5px">Specialist-initiated only</td></tr>
           </tbody>
         </table>
@@ -1700,7 +1700,7 @@ body.mode-clinic .sca-only{display:none!important}
       </div>
       <div class="fu-compact-wrap">
         <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.4rem">Follow-up schedule</div>
-        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--r)">Dx</div><div><strong>Diagnosis:</strong> SABA prescribed · ICS if SABA &gt;3×/week · Inhaler technique demonstrated · Written action plan · PEFR diary · Trigger avoidance · Allergy testing · Annual review booked</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--r)">Dx</div><div><strong>Diagnosis:</strong> AIR started (low-dose ICS/formoterol PRN — no SABA-only, NG245) · Inhaler technique demonstrated · Written action plan · PEFR diary · Trigger avoidance · Allergy testing · Annual review booked</div></div>
         <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--a)">4–6w</div><div><strong>4–6 weeks:</strong> PEFR diary review · Control assessment · Technique recheck · SABA frequency · Trigger changes</div></div>
         <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--b)">3m</div><div><strong>3 months:</strong> Formal control assessment · Spirometry repeat · Allergy result · Step review · PHQ-9</div></div>
         <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--g)">1yr</div><div><strong>Annual:</strong> ACT + technique + OCS courses/year + triggers + action plan update + flu vaccine + smoking + weight</div></div>
@@ -1839,7 +1839,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="dz-stack">
           <div class="dz-item"><span class="dz-x">✗</span><div><strong>Telling Priya to rehome the cat immediately</strong><br><span class="dz-fix">→ Graduated approach: allergy test + bedroom exclusion + HEPA first. Ultimatum = consultation failure.</span></div></div>
           <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not addressing "inhalers make lungs lazy" before prescribing ICS</strong><br><span class="dz-fix">→ The myth must be explicitly named and debunked. Prescribing without doing this = ICS never used.</span></div></div>
-          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Diagnosing asthma without objective evidence</strong><br><span class="dz-fix">→ Spirometry + reversibility + PEFR diary required. Symptoms alone are insufficient — NICE NG80.</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Diagnosing asthma without objective evidence</strong><br><span class="dz-fix">→ Spirometry + reversibility + PEFR diary required. Symptoms alone are insufficient — NICE NG245.</span></div></div>
           <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not measuring PEFR or SpO2 in any acute or subacute presentation</strong><br><span class="dz-fix">→ PEFR is mandatory. Not measuring = missing severity + missing diagnosis confirmation.</span></div></div>
           <div class="dz-item"><span class="dz-x">✗</span><div><strong>Missing silent chest as near-fatal warning sign</strong><br><span class="dz-fix">→ No wheeze = no air movement = near-fatal. Absence of wheeze is worse, not better.</span></div></div>
           <div class="dz-item"><span class="dz-x">✗</span><div><strong>Prescribing LABA without ICS</strong><br><span class="dz-fix">→ LABA monotherapy is independently associated with asthma death. Never alone.</span></div></div>
@@ -1868,7 +1868,7 @@ body.mode-clinic .sca-only{display:none!important}
 
 
 <div class="page-footer">
-  <p><strong>Asthma · GP Clinical Reasoning Framework</strong> · BTS/SIGN 2023 · NICE NG80 · GINA 2024 · MHRA 2020 (montelukast) · SWORD reporting</p>
+  <p><strong>Asthma · GP Clinical Reasoning Framework</strong> · BTS/SIGN 2023 · NICE NG245 · GINA 2024 · MHRA 2020 (montelukast) · SWORD reporting</p>
   <p style="margin-top:4px">Includes: Clinical stem · Open Q first · ICE (cat concern + inhaler myths + occupational + exercise goals) · Safeguarding · BTS/SIGN step ladder · PEFR thresholds · Drug selector tool · Biologic eligibility · Written action plan · MART therapy · SCA RAG checkpoints · Dual collapsible summaries · SCA Scorecard /33</p>
   <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current BNF/SPC/NICE/BTS/SIGN guidelines · Clinical judgement takes precedence over any framework</p>
 </div>
@@ -2026,7 +2026,7 @@ function resetScorecard(){
   </main>
 </div><!-- /app -->
 
-<script src="../assets/site.js?v=54"></script>
+<script src="../assets/site.js?v=55"></script>
 <script src="../assets/case-nav.js"></script>
 <script src="../assets/case-related.js"></script>
 
@@ -2034,5 +2034,7 @@ function resetScorecard(){
 <script src="../assets/medchooser.js"></script>
 <script src="../assets/meds/asthma.js"></script>
 <script src="../assets/topic-links.js?v=2"></script>
+
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
 </body>
 </html>

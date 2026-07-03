@@ -8,107 +8,119 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;
-  --diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;
-  --treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;
-  --refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;
-  --lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;
-  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
-  --font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif
+  --bg:#f7f6f2;--surface:#ffffff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;
+  --safety:#dc2626;--safety-bg:#fef2f2;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;
+  --treat:#16a34a;--treat-bg:#f0fdf4;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;
+  --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
 }
-body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
-h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
-.stem-banner{background:linear-gradient(135deg,#0d2a2a 0%,#1a5a5a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;min-height:100vh;padding:0 0 60px}
+.alg-header{background:var(--text);color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
 .sb-icon{font-size:2rem;line-height:1}
-.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
-.stem-banner small{opacity:.75;font-size:.82rem}
-.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
-.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
-.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
-.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
-.pbar-fill{height:100%;background:linear-gradient(90deg,#1a5a5a,#7b3fa0);border-radius:3px;width:0%;transition:width .4s ease}
-.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
-.reset:hover{background:#f3f4f6}
-.alg-flow{display:flex;flex-direction:column;gap:0}
-.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
-.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--treat),#22c55e);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted);transition:all .2s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
 .node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
-.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
-.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
-.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
-.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
-.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
-.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
-.node[data-type="SAFETY"] .node-num{background:var(--safety)}
-.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
-.node[data-type="TREAT"] .node-num{background:var(--treat)}
-.node[data-type="REFER"] .node-num{background:var(--refer)}
-.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
-.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
-.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
-.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
-.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
-.node[data-type="TREAT"] .node-tag{background:var(--treat)}
-.node[data-type="REFER"] .node-tag{background:var(--refer)}
-.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
-.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
-.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
-.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
-.tlbl{user-select:none}
-.node-body{padding:4px 16px 14px;font-size:.875rem}
-.node-body p{margin-bottom:8px}
-.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
-.kv>div{background:#fff;padding:8px 10px}
-.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
-.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}
-.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
-.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}
-.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
-.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}
-.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
-.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}
-.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
-.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}
-.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
-.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
-.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
-.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
-.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
-.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
-.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
-.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
-.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
-.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
-.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
-.rung:first-child{border-radius:7px 7px 0 0}
-.rung:last-child{border-radius:0 0 7px 7px}
-.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
-.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
-.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
-.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
-.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
-.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
-.pill-red{background:#fee2e2;color:#991b1b}
-.pill-purple{background:#ede9fe;color:#5b21b6}
-.pill-blue{background:#dbeafe;color:#1e40af}
-.pill-teal{background:#ccfbf1;color:#0f766e}
-.pill-amber{background:#fef3c7;color:#92400e}
-.pill-green{background:#dcfce7;color:#15803d}
-.pill-grey{background:#f3f4f6;color:#374151}
-.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
-.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
-.why-btn:hover{color:#1a1a2e}
-.caret{transition:transform .25s;display:inline-block}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--diagnose)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.why-btn:hover{color:var(--text)}
+.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
 .why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
-.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
 .why-drawer.open{display:block}
-.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
-.alg-foot strong{color:#374151}
-@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
 </style>
 <link rel="stylesheet" href="../../assets/alg-diagram.css">
 </head>
 <body>
+
+<div class="alg-header">
+  <h1>😰 Feeling Anxious</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta"><span>RCGP SCA</span><span>10-min consult</span></div>
+</div>
 
 <div class="stem-banner">
   <div class="sb-icon">😰</div>
@@ -171,7 +183,7 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
       <div class="rftile"><b>Anxiety + sudden onset + first episode + age &gt;40 with no prior psychiatric history</b> New-onset anxiety after 40 without a clear precipitant = organic until proven otherwise. Consider: hypoglycaemia (check glucose), cardiac arrhythmia, hyperthyroidism, phaeochromocytoma, carcinoid (flushing + diarrhoea + wheeze + right heart valvular disease), CNS pathology (temporal lobe epilepsy — ictal anxiety), menopause.</div>
       <div class="rftile"><b>Anxiety + suicidal ideation / self-harm</b> Severe anxiety is a significant independent risk factor for suicide (higher than depression alone in some studies). Ask directly: "Have you had any thoughts of harming yourself or ending your life?" Comorbid anxiety + depression = highest suicide risk combination. Same-day crisis assessment if active ideation. Benzodiazepines reduce acute anxiety but disinhibit — assess risk before prescribing.</div>
       <div class="rftile"><b>Anxiety symptoms in a patient on stimulant drugs, excess caffeine, or substance withdrawal</b> Stimulant misuse (cocaine, amphetamines, MDMA) causes acute anxiety and panic. Cannabis use: bidirectional — cannabis causes acute anxiety and panic attacks AND is used to self-medicate anxiety. Alcohol/benzodiazepine withdrawal: severe anxiety, tremor, sweating → seizure risk → medical management. Caffeine excess (&gt;400 mg/day) causes clinical anxiety symptoms — caffeine history mandatory.</div>
-      <div class="rftile"><b>Anxiety + intrusive memories of trauma + hypervigilance + avoidance</b> PTSD — not GAD. Requires different treatment (trauma-focused CBT, EMDR — not generic anxiety management). Screen with PC-PTSD-5 questionnaire (5-item screen). Untreated PTSD with generalised anxiety management alone shows poor outcomes and can retraumatise. Refer to trauma-specialist IAPT pathway or CMHT if complex trauma.</div>
+      <div class="rftile"><b>Anxiety + intrusive memories of trauma + hypervigilance + avoidance</b> PTSD — not GAD. Requires different treatment (trauma-focused CBT, EMDR — not generic anxiety management). Screen with PC-PTSD-5 questionnaire (5-item screen). Untreated PTSD with generalised anxiety management alone shows poor outcomes and can retraumatise. Refer to trauma-specialist NHS Talking Therapies pathway or CMHT if complex trauma.</div>
     </div>
   </div>
   <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The overlap between anxiety symptoms and medical pathology is one of the most important diagnostic pitfalls in primary care — studies show that approximately 10–15% of patients presenting to primary care with anxiety symptoms have an identifiable organic cause. Hyperthyroidism and cardiac arrhythmias are the most common. TSH is the single most important investigation — it is abnormal in a clinically significant proportion of patients presenting with new anxiety, and hyperthyroidism is entirely treatable, removing the anxiety without psychiatric intervention. Phaeochromocytoma is rare (1–2 per 100,000) but is one of the most dangerous missed diagnoses — it causes episodic hypertensive crises with severe anxiety, headache, palpitations, and sweating that perfectly mimic panic disorder. Any patient with episodic anxiety accompanied by severe hypertension (systolic &gt;200 mmHg during episodes) or headache must have plasma metanephrines or 24-hour urinary catecholamines before the diagnosis of panic disorder is confirmed. The PTSD/GAD distinction has direct treatment implications — trauma-focused CBT (TF-CBT) and Eye Movement Desensitisation and Reprocessing (EMDR) are the NICE-recommended treatments for PTSD and are fundamentally different from the CBT used for GAD. Treating PTSD with relaxation techniques or standard anxiety management can be actively harmful (exposure to triggers without proper trauma processing can worsen flashbacks). NICE NG116 (PTSD, 2018) specifies that trauma-focused psychological therapy should be offered to all patients with PTSD — not pharmacological management as first-line. GPs must screen for PTSD in any patient with anxiety and a history of trauma before referring to generic anxiety services.</div></div>
@@ -191,7 +203,7 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
       <div>Functional impairment assessment</div><div>Work: absent from work, presenteeism, performance affected? Relationships: conflict, withdrawal, avoidance? Social: activities avoided, isolation? Physical: somatic symptoms (IBS, tension headache, chronic pain) driven by anxiety? Anxiety-driven functional impairment is both a severity indicator and a treatment outcome target — document it specifically. "What has anxiety stopped you doing that you want to do?"</div>
     </div>
   </div>
-  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The GAD-7 was developed and validated by Spitzer et al. (2006, Archives of Internal Medicine) as a 7-item brief measure for GAD in primary care — it has since been validated for use across all anxiety disorders including panic disorder, social anxiety disorder, and PTSD, making it a universally applicable screening tool. The cut-off of ≥10 for clinically significant anxiety has a sensitivity of 89% and specificity of 82% for GAD in primary care populations. Like the PHQ-9 for depression, serial GAD-7 documentation is the primary mechanism for tracking treatment response — a 5-point reduction represents a clinically meaningful improvement, and a score below 8 at 8–12 weeks represents a treatment response. NICE NG197 (GAD and Panic Disorder, 2011, updated 2019) recommends recording GAD-7 at every contact. The comorbidity of anxiety and depression is a central clinical fact — population studies consistently show that 50–60% of patients with an anxiety disorder also meet criteria for a depressive disorder, and vice versa. This has three implications: (1) always score both GAD-7 and PHQ-9 together; (2) SSRIs treat both, so pharmacological treatment is simple; (3) the prognosis for comorbid anxiety-depression is worse than either alone, and more intensive treatment (higher dose SSRI, combined pharmacological + psychological treatment) is often needed.</div></div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The GAD-7 was developed and validated by Spitzer et al. (2006, Archives of Internal Medicine) as a 7-item brief measure for GAD in primary care — it has since been validated for use across all anxiety disorders including panic disorder, social anxiety disorder, and PTSD, making it a universally applicable screening tool. The cut-off of ≥10 for clinically significant anxiety has a sensitivity of 89% and specificity of 82% for GAD in primary care populations. Like the PHQ-9 for depression, serial GAD-7 documentation is the primary mechanism for tracking treatment response — a 5-point reduction represents a clinically meaningful improvement, and a score below 8 at 8–12 weeks represents a treatment response. NICE CG113 (GAD and Panic Disorder, 2011, updated 2019) recommends recording GAD-7 at every contact. The comorbidity of anxiety and depression is a central clinical fact — population studies consistently show that 50–60% of patients with an anxiety disorder also meet criteria for a depressive disorder, and vice versa. This has three implications: (1) always score both GAD-7 and PHQ-9 together; (2) SSRIs treat both, so pharmacological treatment is simple; (3) the prognosis for comorbid anxiety-depression is worse than either alone, and more intensive treatment (higher dose SSRI, combined pharmacological + psychological treatment) is often needed.</div></div>
 </div>
 <div class="connector"></div>
 
@@ -208,7 +220,7 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
       <div>Social Anxiety Disorder</div><div>Marked fear of social situations where the person may be scrutinised or embarrassed (public speaking, eating in public, meeting new people). Avoidance or endurance with intense distress. Duration ≥6 months. Causes significant occupational and social impairment. Often misdiagnosed as shyness. Treatment: CBT (cognitive restructuring + behavioural experiments) ± SSRI/SNRI. Most underdiagnosed anxiety disorder.</div>
       <div>Health Anxiety (Illness Anxiety Disorder)</div><div>Persistent preoccupation with having or developing a serious illness despite medical reassurance. Excessive health-seeking or health avoidance behaviours. Exacerbated by internet symptom checking and repeated investigation. Investigations and reassurance provide only transient relief and can worsen the cycle. Treatment: CBT specifically for health anxiety — NOT more investigation. Explain the reassurance cycle explicitly to patient.</div>
       <div>OCD</div><div>Recurrent intrusive obsessional thoughts (contamination, harm, symmetry, religious) + compulsive rituals performed to reduce anxiety (washing, checking, ordering, counting, praying). Ego-dystonic — patient recognises thoughts as their own but unwanted. Impairs function when rituals take &gt;1 hour/day. Treatment: CBT with ERP (Exposure and Response Prevention) + SSRI (higher doses than depression: sertraline 200 mg, fluoxetine 60 mg). OCD UK referral.</div>
-      <div>PTSD</div><div>Following traumatic event(s): re-experiencing (intrusive memories, nightmares, flashbacks), avoidance (of trauma reminders), negative cognitions/mood, hyperarousal (hypervigilance, exaggerated startle, sleep disturbance). Duration &gt;1 month, causing functional impairment. PC-PTSD-5 screen. Treatment: trauma-focused CBT or EMDR (first-line NICE NG116). SSRI second-line only. Do NOT refer to generic anxiety IAPT without trauma-specialist track.</div>
+      <div>PTSD</div><div>Following traumatic event(s): re-experiencing (intrusive memories, nightmares, flashbacks), avoidance (of trauma reminders), negative cognitions/mood, hyperarousal (hypervigilance, exaggerated startle, sleep disturbance). Duration &gt;1 month, causing functional impairment. PC-PTSD-5 screen. Treatment: trauma-focused CBT or EMDR (first-line NICE NG116). SSRI second-line only. Do NOT refer to generic anxiety NHS Talking Therapies without trauma-specialist track.</div>
     </div>
   </div>
   <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The anxiety disorder classification matters clinically because NICE has different treatment guidelines for each specific anxiety disorder, and the psychological therapy required is distinct. For GAD: CBT focusing on worry postponement, cognitive restructuring, and applied relaxation (NICE NG197). For panic disorder: CBT with interoceptive exposure (deliberately inducing feared bodily sensations to demonstrate they are harmless) and panic cycle psychoeducation (NICE NG197). For PTSD: trauma-focused CBT or EMDR — generic CBT for anxiety is not adequate and not recommended (NICE NG116). For OCD: CBT with exposure and response prevention (ERP) — the distinctive feature of OCD treatment is that the patient must be exposed to the feared stimulus and PREVENTED from performing the compulsion, which is fundamentally different from anxiety management techniques. For health anxiety: CBT specifically targeting the reassurance-seeking cycle and illness worry, using techniques from CBT for hypochondriasis — which is counterintuitive because the clinical instinct is to investigate and reassure, whereas the evidence shows that investigation and reassurance maintain and worsen health anxiety by reinforcing the belief that symptoms require investigation. Social anxiety disorder is the most under-recognised anxiety disorder in primary care — it affects approximately 12% of the general population at some point in their lifetime, but is frequently attributed to "personality" or "shyness" rather than recognised as a treatable disorder. The occupational impairment (inability to speak in meetings, give presentations, or function socially at work) is substantial. SSRI treatment (particularly sertraline and paroxetine — both licensed specifically for social anxiety disorder) combined with CBT produces remission in the majority of patients.</div></div>
@@ -238,14 +250,14 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
   <div class="node-body">
     <div class="kv">
       <div><span class="pill pill-red">Same-day / 999</span></div><div>Anxiety + active suicidal ideation with plan → crisis team / 999 · Acute thyroid storm (hyperpyrexia + tachycardia + anxiety + altered consciousness) → 999 · Suspected phaeochromocytoma crisis (BP &gt;200/120 + headache + sweating + severe anxiety) → 999 · Panic attack + chest pain + troponin risk + ECG changes → 999</div>
-      <div>NHS Talking Therapies / IAPT (mild–moderate)</div><div>GAD-7 5–15: self-refer or GP refer to NHS Talking Therapies. Step 2: psychoeducation, guided self-help, computerised CBT (Silvercloud anxiety, Big White Wall, Anxiety UK online). Step 3: individual CBT 12–16 sessions, group CBT. For panic disorder: panic-focused CBT. For social anxiety: Clark model group CBT. NICE NG197 first-line for mild-moderate anxiety at all ages. Most areas: self-referral available online.</div>
-      <div>IAPT — specialist tracks</div><div>PTSD → trauma-specialist IAPT track (TF-CBT or EMDR — specify trauma on referral, do NOT refer to generic anxiety pathway). OCD → OCD-specialist IAPT or OCD UK/OCD Action referral. Health anxiety → specific health anxiety CBT track (not generic CBT). Social anxiety → Clark model group CBT programme (specialist).</div>
-      <div>CMHT / psychiatry</div><div>Severe anxiety (GAD-7 ≥15) + significant functional impairment not responding to IAPT + SSRI · Complex PTSD (chronic complex trauma, BPD comorbidity, dissociation) · OCD with severe impairment (rituals &gt;3 hours/day) · Comorbid psychosis · High suicide risk requiring intensive support · Treatment-resistant anxiety (2 SSRI trials failed + CBT completed)</div>
+      <div>NHS Talking Therapies / NHS Talking Therapies (mild–moderate)</div><div>GAD-7 5–15: self-refer or GP refer to NHS Talking Therapies. Step 2: psychoeducation, guided self-help, computerised CBT (Silvercloud anxiety, Big White Wall, Anxiety UK online). Step 3: individual CBT 12–16 sessions, group CBT. For panic disorder: panic-focused CBT. For social anxiety: Clark model group CBT. NICE NG197 first-line for mild-moderate anxiety at all ages. Most areas: self-referral available online.</div>
+      <div>NHS Talking Therapies — specialist tracks</div><div>PTSD → trauma-specialist NHS Talking Therapies track (TF-CBT or EMDR — specify trauma on referral, do NOT refer to generic anxiety pathway). OCD → OCD-specialist NHS Talking Therapies or OCD UK/OCD Action referral. Health anxiety → specific health anxiety CBT track (not generic CBT). Social anxiety → Clark model group CBT programme (specialist).</div>
+      <div>CMHT / psychiatry</div><div>Severe anxiety (GAD-7 ≥15) + significant functional impairment not responding to NHS Talking Therapies + SSRI · Complex PTSD (chronic complex trauma, BPD comorbidity, dissociation) · OCD with severe impairment (rituals &gt;3 hours/day) · Comorbid psychosis · High suicide risk requiring intensive support · Treatment-resistant anxiety (2 SSRI trials failed + CBT completed)</div>
       <div>Endocrinology / cardiology</div><div>Confirmed hyperthyroidism → endocrinology (carbimazole / radioiodine management). Suspected phaeochromocytoma (elevated metanephrines) → endocrinology urgently. WPW on ECG → cardiology (electrophysiology / ablation). Cardiac arrhythmia → cardiology (rate control, anticoagulation, ablation). Carcinoid → gastroenterology/oncology.</div>
       <div>Social prescribing / PCN link worker</div><div>Anxiety driven by social determinants (debt, housing, isolation, loneliness) — refer to PCN social prescribing link worker. Citizens Advice Bureau (financial anxiety), Mind/Rethink (peer support), No More Panic (online community), Anxiety UK (membership and therapy subsidies). These interventions address root causes that SSRI and CBT cannot resolve.</div>
     </div>
   </div>
-  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The stepped care model for anxiety in NICE NG197 is important to understand because it determines the appropriate referral level and avoids over-medicalisation of mild anxiety or under-treatment of severe anxiety. Step 1 (GP recognition and psychoeducation + signposting to self-help resources) is appropriate for subthreshold anxiety (GAD-7 &lt;10) without functional impairment. Step 2 (guided self-help, computerised CBT) is appropriate for mild anxiety (GAD-7 5–9). Step 3 (individual CBT, group CBT, SSRI) is appropriate for moderate anxiety (GAD-7 10–14). Step 4 (CMHT, complex psychological therapy, medication combinations) is for severe or treatment-resistant anxiety. The key principle is not to start at Step 3 for a patient who could be appropriately managed at Step 2 — this uses scarce resources inefficiently and can over-pathologise normal anxiety responses to life stressors. However, patients with moderate-severe anxiety who are clearly not going to benefit from self-help (those with complex trauma, comorbid depression, or significant functional impairment) should be referred directly to Step 3 rather than going through a Step 2 pathway first. The trauma-PTSD IAPT distinction requires emphasis — many GP referrals for "anxiety" reach generic IAPT and are treated with standard GAD/anxiety CBT, which is not effective for PTSD and can be distressing. Specifying "possible PTSD — please assess for trauma-focused pathway" on the IAPT referral is the clinical action that ensures the right treatment is provided.</div></div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The stepped care model for anxiety in NICE NG197 is important to understand because it determines the appropriate referral level and avoids over-medicalisation of mild anxiety or under-treatment of severe anxiety. Step 1 (GP recognition and psychoeducation + signposting to self-help resources) is appropriate for subthreshold anxiety (GAD-7 &lt;10) without functional impairment. Step 2 (guided self-help, computerised CBT) is appropriate for mild anxiety (GAD-7 5–9). Step 3 (individual CBT, group CBT, SSRI) is appropriate for moderate anxiety (GAD-7 10–14). Step 4 (CMHT, complex psychological therapy, medication combinations) is for severe or treatment-resistant anxiety. The key principle is not to start at Step 3 for a patient who could be appropriately managed at Step 2 — this uses scarce resources inefficiently and can over-pathologise normal anxiety responses to life stressors. However, patients with moderate-severe anxiety who are clearly not going to benefit from self-help (those with complex trauma, comorbid depression, or significant functional impairment) should be referred directly to Step 3 rather than going through a Step 2 pathway first. The trauma-PTSD NHS Talking Therapies distinction requires emphasis — many GP referrals for "anxiety" reach generic NHS Talking Therapies and are treated with standard GAD/anxiety CBT, which is not effective for PTSD and can be distressing. Specifying "possible PTSD — please assess for trauma-focused pathway" on the NHS Talking Therapies referral is the clinical action that ensures the right treatment is provided.</div></div>
 </div>
 <div class="connector"></div>
 
@@ -259,10 +271,10 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
       <div class="rung"><span class="rn">First-line<br/>SSRI</span><span class="rt"><b>Sertraline 50 mg OD</b> — first-line for GAD, panic disorder, social anxiety, PTSD, OCD (all NICE-supported). Start at 25–50 mg OD. Warn: may increase anxiety and agitation in first 1–2 weeks (common — reassure and persist, reduce dose temporarily if severe). Titrate to 100 mg at 4–6 weeks if inadequate response. Maximum 200 mg/day (OCD often requires higher doses). <b>Escitalopram 10 mg OD</b> is equally effective and may have slightly better tolerability. <b>Paroxetine</b>: licensed for all anxiety disorders but avoid — highest discontinuation syndrome risk and most difficult to stop.</span></div>
       <div class="rung"><span class="rn">GAD specifically<br/>— add-on</span><span class="rt"><b>Pregabalin 75 mg BD</b> — NICE NG197 second-line for GAD if SSRI inadequate or not tolerated. Titrate to 150–300 mg BD. Anxiolytic effect within days (unlike SSRI's 2–4 week onset). <b>Controlled drug (Schedule 3 CD)</b> — high misuse/dependence potential, not for patients with addiction history. Monitor for dizziness, sedation, weight gain. Do not stop abruptly (taper). Not recommended for panic disorder or PTSD. <b>Buspirone 5 mg TDS, titrate to 15 mg TDS</b> — non-addictive, slow onset (2–4 weeks), useful adjunct in GAD, low abuse potential.</span></div>
       <div class="rung"><span class="rn">SNRI<br/>alternative</span><span class="rt"><b>Venlafaxine XL 75 mg OD</b> — NICE-recommended for GAD as SSRI alternative. Titrate to 150 mg after 2 weeks if tolerated. Effective for both anxiety and comorbid depression. Monitor blood pressure (noradrenergic effect raises BP). Significant discontinuation syndrome — taper slowly. Duloxetine 30–60 mg OD — useful for GAD + comorbid pain or depression.</span></div>
-      <div class="rung"><span class="rn">Short-term<br/>adjunct only</span><span class="rt"><b>Propranolol 10–40 mg PRN</b> — for somatic anxiety symptoms (palpitations, tremor, flushing). No effect on cognitive or psychological anxiety. Useful for performance anxiety (exams, interviews, public speaking) — take 1 hour before. Not for asthma, bradycardia, heart block. <b>Hydroxyzine 25 mg TDS/nocte</b> — antihistamine with anxiolytic properties, non-addictive, useful for short-term bridging while awaiting SSRI effect or IAPT. Sedating — useful if insomnia is prominent. <b>Benzodiazepines: last resort only</b> — max 2–4 weeks, clearly time-limited, not for PTSD (worsens outcomes). Diazepam 2–5 mg TDS PRN or lorazepam 0.5–1 mg PRN only.</span></div>
+      <div class="rung"><span class="rn">Short-term<br/>adjunct only</span><span class="rt"><b>Propranolol 10–40 mg PRN</b> — for somatic anxiety symptoms (palpitations, tremor, flushing). No effect on cognitive or psychological anxiety. Useful for performance anxiety (exams, interviews, public speaking) — take 1 hour before. Not for asthma, bradycardia, heart block. <b>Hydroxyzine 25 mg TDS/nocte</b> — antihistamine with anxiolytic properties, non-addictive, useful for short-term bridging while awaiting SSRI effect or NHS Talking Therapies. Sedating — useful if insomnia is prominent. <b>Benzodiazepines: last resort only</b> — max 2–4 weeks, clearly time-limited, not for PTSD (worsens outcomes). Diazepam 2–5 mg TDS PRN or lorazepam 0.5–1 mg PRN only.</span></div>
     </div>
   </div>
-  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The transient worsening of anxiety in the first 1–2 weeks after starting an SSRI is a well-documented and clinically important pharmacological effect — it is caused by acute stimulation of 5-HT2C receptors (which mediate anxiogenic effects) before the anxiolytic down-regulation of 5-HT1A receptors (which takes 1–2 weeks) has occurred. Patients who are not warned about this effect frequently stop their SSRI within the first week, concluding it is "making them worse." A brief psychoeducation at prescription ("You may feel slightly more anxious or jittery for the first 1–2 weeks — this is a common and temporary effect, and the medication will start to help your anxiety from week 2–4") dramatically improves adherence. Starting at a lower dose (25 mg sertraline rather than 50 mg) for the first 1–2 weeks can reduce this effect in highly anxious patients. Pregabalin as a Schedule 3 controlled drug for GAD is an important prescribing consideration — the 2019 scheduling of pregabalin and gabapentin as Class C controlled drugs (Schedule 3 in England) followed evidence of significant misuse, particularly in patients with opioid use disorder. GPs must screen for substance misuse and addiction history before prescribing pregabalin — it should not be prescribed to patients with active opioid use disorder or history of pregabalin/gabapentin misuse. The prescription must be on a CD prescription pad in England. The benzodiazepine guidance for anxiety is unambiguous in NICE NG197 — benzodiazepines should not be used for long-term anxiety management due to tolerance, dependence, and the evidence that they prevent the long-term habituation to anxiety that is required for recovery (they block the learning that occurs during exposure-based therapies). Short-term use (maximum 2–4 weeks) at the lowest effective dose may be appropriate while awaiting IAPT or SSRI effect. The prescription should specify a fixed end date, not "PRN" without limit.</div></div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The transient worsening of anxiety in the first 1–2 weeks after starting an SSRI is a well-documented and clinically important pharmacological effect — it is caused by acute stimulation of 5-HT2C receptors (which mediate anxiogenic effects) before the anxiolytic down-regulation of 5-HT1A receptors (which takes 1–2 weeks) has occurred. Patients who are not warned about this effect frequently stop their SSRI within the first week, concluding it is "making them worse." A brief psychoeducation at prescription ("You may feel slightly more anxious or jittery for the first 1–2 weeks — this is a common and temporary effect, and the medication will start to help your anxiety from week 2–4") dramatically improves adherence. Starting at a lower dose (25 mg sertraline rather than 50 mg) for the first 1–2 weeks can reduce this effect in highly anxious patients. Pregabalin as a Schedule 3 controlled drug for GAD is an important prescribing consideration — the 2019 scheduling of pregabalin and gabapentin as Class C controlled drugs (Schedule 3 in England) followed evidence of significant misuse, particularly in patients with opioid use disorder. GPs must screen for substance misuse and addiction history before prescribing pregabalin — it should not be prescribed to patients with active opioid use disorder or history of pregabalin/gabapentin misuse. The prescription must be on a CD prescription pad in England. The benzodiazepine guidance for anxiety is unambiguous in NICE NG197 — benzodiazepines should not be used for long-term anxiety management due to tolerance, dependence, and the evidence that they prevent the long-term habituation to anxiety that is required for recovery (they block the learning that occurs during exposure-based therapies). Short-term use (maximum 2–4 weeks) at the lowest effective dose may be appropriate while awaiting NHS Talking Therapies or SSRI effect. The prescription should specify a fixed end date, not "PRN" without limit.</div></div>
 </div>
 <div class="connector"></div>
 
@@ -293,10 +305,10 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
       <div class="lstile"><b>Breathing retraining</b> Anxiety-driven hyperventilation (low CO₂) causes physical symptoms that are misinterpreted as dangerous (dizziness, tingling, palpitations) — perpetuating panic. Diaphragmatic breathing: 4 seconds in through nose, 6 seconds out through pursed lips. Practice daily for 10 minutes to build skill before using in anxiety episodes. Box breathing (4-4-4-4): inhale, hold, exhale, hold — used by military for acute stress. Teach at the consultation — demonstrate and observe patient doing it correctly.</div>
       <div class="lstile"><b>Caffeine and alcohol reduction</b> Caffeine: reduce to &lt;200 mg/day (&lt;2 cups coffee) — gradual reduction over 2 weeks (avoid withdrawal headache). Alcohol: short-term anxiolytic effect masks the fact that alcohol significantly worsens anxiety the following day via rebound sympathetic activation (next-day anxiety "the fear"). AUDIT-C score. Patients with anxiety who drink to cope enter a worsening spiral. Alcohol dependence needs specialist management before anxiety treatment can be effective.</div>
       <div class="lstile"><b>Sleep hygiene and CBT-I</b> Sleep deprivation dramatically worsens anxiety — the prefrontal cortex (anxiety regulation) is highly sleep-sensitive. CBT-I (Cognitive Behavioural Therapy for Insomnia) is the first-line treatment for comorbid anxiety and insomnia — NHS Sleepio (free digital CBT-I). Fixed wake time, no daytime napping, stimulus control (bed = sleep only), sleep restriction. Addressing sleep in anxiety management reduces the anxiety severity independently of other interventions.</div>
-      <div class="lstile"><b>Mindfulness-Based Stress Reduction (MBSR)</b> 8-week MBSR programme (Kabat-Zinn): meta-analyses show medium-large effect sizes for GAD and panic disorder. MBSR teaches decentred observation of anxious thoughts ("I notice I am having the thought that something bad will happen") rather than engagement or suppression. NHS MBSR programmes available through IAPT/Talking Therapies. Apps: Headspace, Calm, Insight Timer — accessible, evidence-supported for mild anxiety as step 1 interventions. Do not replace CBT for moderate-severe anxiety.</div>
+      <div class="lstile"><b>Mindfulness-Based Stress Reduction (MBSR)</b> 8-week MBSR programme (Kabat-Zinn): meta-analyses show medium-large effect sizes for GAD and panic disorder. MBSR teaches decentred observation of anxious thoughts ("I notice I am having the thought that something bad will happen") rather than engagement or suppression. NHS MBSR programmes available through NHS Talking Therapies. Apps: Headspace, Calm, Insight Timer — accessible, evidence-supported for mild anxiety as step 1 interventions. Do not replace CBT for moderate-severe anxiety.</div>
       <div class="lstile"><b>Worry postponement</b> A core CBT-GAD technique deliverable in primary care: designate a specific 20-minute "worry time" each day (not in the evening). When anxious thoughts intrude outside this time, note them briefly and postpone worrying until the scheduled time. Research shows many worries resolve themselves before "worry time" arrives, breaking the constant vigilance cycle. This technique can be taught in a 10-minute GP consultation with a brief written explanation.</div>
       <div class="lstile"><b>Social connection and nature</b> Social isolation is both a cause and a consequence of anxiety — avoidance maintains anxiety disorders. Prescribe gradual re-engagement: start with one social contact per week (not a group — too threatening initially), build up. Green exercise (walking in nature) has superior anxiolytic effects to urban exercise (meta-analysis). Refer to social prescribing link worker for community activity identification. Anxiety UK and Mind offer peer support groups — peer contact specifically reduces shame.</div>
-      <div class="lstile"><b>Digital mental health resources</b> NHS-approved apps and resources: Silvercloud (online CBT for anxiety — available via IAPT self-referral), Every Mind Matters (NHS anxiety resources, free), No Panic (helpline 0300 772 9844 for panic disorder and OCD), Anxiety UK (0344 477 5774), Samaritans (116 123 for crisis support). Prescribe specific resources, not generic "look online." Write the app name and access route on a printed resource sheet given at the consultation.</div>
+      <div class="lstile"><b>Digital mental health resources</b> NHS-approved apps and resources: Silvercloud (online CBT for anxiety — available via NHS Talking Therapies self-referral), Every Mind Matters (NHS anxiety resources, free), No Panic (helpline 0300 772 9844 for panic disorder and OCD), Anxiety UK (0344 477 5774), Samaritans (116 123 for crisis support). Prescribe specific resources, not generic "look online." Write the app name and access route on a printed resource sheet given at the consultation.</div>
     </div>
   </div>
   <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The worry postponement technique is one of the most evidence-based and most under-used brief interventions in primary care — it was developed by Borkovec et al. as a CBT component for GAD and has been shown in RCTs to significantly reduce worry frequency and duration within 1–2 weeks of consistent practice. Its mechanism is based on the principle that most GAD worries are not solved by prolonged rumination — they are sustained by the erroneous belief that worrying prevents bad outcomes ("if I stop worrying, something bad will happen"). Scheduled worry time disrupts this belief by demonstrating that the world does not fall apart when worry is deliberately postponed. A GP who spends 5 minutes teaching this technique in a consultation provides something that may be more therapeutically effective than a prescription pad. The nature exposure (green exercise) evidence is worth knowing clinically — a series of studies including the "Blue Mind" research on blue spaces (coastal, riverside) and "green exercise" studies consistently show that exercise in natural settings has significantly greater anxiolytic effect than the same exercise in urban settings, mediated through reduced amygdala activation. This gives GPs a specific recommendation: "Walk in the park for 30 minutes 5 times per week" rather than "do some exercise." The distinction matters for patients who find urban gym environments themselves anxiety-provoking.</div></div>
@@ -310,10 +322,10 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
   <div class="node-body">
     <div class="kv">
       <div>2 weeks after starting SSRI</div><div>Check tolerability: nausea, agitation, insomnia, increased anxiety (common and transient), activation syndrome (young adults — watch for suicidal ideation in first 2 weeks). If initial side effects intolerable → reduce to 25 mg for 2 more weeks, then retry 50 mg. If suicidal ideation worsening → review urgently or call crisis team. PHQ-9 and GAD-7 baseline repeat (trends more important than single scores).</div>
-      <div>4–6 weeks</div><div>Response to SSRI? GAD-7 and PHQ-9 repeat. Responder = ≥50% GAD-7 score reduction. If no response → increase dose (sertraline 50→100 mg). IAPT referral: made at last appointment? Accepted? On waiting list? Waiting time given? If waiting &gt;6 weeks with moderate-severe anxiety → escalate SSRI dose rather than waiting. Lifestyle changes progress reviewed. Caffeine reduction achieved?</div>
-      <div>3 months</div><div>Remission (GAD-7 &lt;8)? If yes → discuss continuation plan (6–12 months from remission). If not → review diagnosis (was this PTSD, OCD, or health anxiety needing specific pathway?), confirm adequate dose and duration, confirm IAPT engagement, consider venlafaxine if sertraline inadequate. Functional review: work, relationships, activities — are these improving alongside scores?</div>
+      <div>4–6 weeks</div><div>Response to SSRI? GAD-7 and PHQ-9 repeat. Responder = ≥50% GAD-7 score reduction. If no response → increase dose (sertraline 50→100 mg). NHS Talking Therapies referral: made at last appointment? Accepted? On waiting list? Waiting time given? If waiting &gt;6 weeks with moderate-severe anxiety → escalate SSRI dose rather than waiting. Lifestyle changes progress reviewed. Caffeine reduction achieved?</div>
+      <div>3 months</div><div>Remission (GAD-7 &lt;8)? If yes → discuss continuation plan (6–12 months from remission). If not → review diagnosis (was this PTSD, OCD, or health anxiety needing specific pathway?), confirm adequate dose and duration, confirm NHS Talking Therapies engagement, consider venlafaxine if sertraline inadequate. Functional review: work, relationships, activities — are these improving alongside scores?</div>
       <div>Medication discontinuation</div><div>Taper SSRIs over 4–8 weeks minimum (longer if taken &gt;1 year). Pregabalin: never stop abruptly — withdrawal seizure risk (taper 25–50 mg/week). Benzodiazepines: structured taper programme (Heather Ashton manual) if dependent — diazepam substitution then 10% dose reduction every 1–2 weeks. Refer to community alcohol and drug team if benzodiazepine dependence established.</div>
-      <div>Long-term management</div><div>Annual medication review. GAD-7 and PHQ-9 at each review — document trend. Remind patients that anxiety disorders are episodic — relapse is common and does not represent failure. Re-engage IAPT promptly if relapse (waiting lists exist — early re-referral is better). Relapse prevention: MBCT for recurrent anxiety (IAPT). Recognise early warning signs (patient's own relapse signature).</div>
+      <div>Long-term management</div><div>Annual medication review. GAD-7 and PHQ-9 at each review — document trend. Remind patients that anxiety disorders are episodic — relapse is common and does not represent failure. Re-engage NHS Talking Therapies promptly if relapse (waiting lists exist — early re-referral is better). Relapse prevention: MBCT for recurrent anxiety (IAPT). Recognise early warning signs (patient's own relapse signature).</div>
       <div><span class="pill pill-red">Same-day crisis</span></div><div>Active suicidal ideation in any patient with anxiety at any follow-up contact · Activation syndrome in first 2 weeks on SSRI with suicidal ideation · Benzodiazepine or alcohol withdrawal seizure risk (tremor, sweating, confusion) → hospital assessment · Acute panic attack with ECG-confirmed arrhythmia</div>
       <div><span class="pill pill-amber">Urgent GP same week</span></div><div>Significantly increased anxiety after new SSRI not resolving after 2 weeks · New onset panic attacks in patient previously stable on SSRI (dose inadequate, or new organic cause) · Unexpected pregabalin dose escalation request (misuse risk) · New PTSD symptoms emerging during generic anxiety treatment</div>
     </div>
@@ -324,7 +336,7 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
 </div>
 
 <div class="alg-foot">
-  <strong>Educational use only.</strong> Based on NICE NG197 (GAD and Panic Disorder, 2019), NICE NG116 (PTSD, 2018), NICE CG31 (OCD, 2005 — pending update), NICE NG23 (Menopause, 2019), MHRA SSRI safety guidance (2004, updated 2014), Cipriani et al. Lancet 2018, Bandelow et al. Dialogues Clin Neurosci 2017 (anxiety pharmacotherapy), Heather Ashton benzodiazepine withdrawal manual. Always adapt to individual patient context and local IAPT/Talking Therapies pathways.
+  <strong>Educational use only.</strong> Based on NICE CG113 (GAD and Panic Disorder, 2019), NICE NG116 (PTSD, 2018), NICE CG31 (OCD, 2005 — pending update), NICE NG23 (Menopause, 2019), MHRA SSRI safety guidance (2004, updated 2014), Cipriani et al. Lancet 2018, Bandelow et al. Dialogues Clin Neurosci 2017 (anxiety pharmacotherapy), Heather Ashton benzodiazepine withdrawal manual. Always adapt to individual patient context and local NHS Talking Therapies pathways.
 </div>
 
 <script>

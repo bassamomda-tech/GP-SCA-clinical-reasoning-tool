@@ -112,9 +112,9 @@
         { h:'The hair is the presenting ticket', t:'A new mother presenting with hair loss as "the last straw" is often signalling exhaustion and distress. Don\u2019t reassure about the hair and close the consultation \u2014 open the door to how she is really coping.' },
         { h:'Screen postnatal mental health', t:'Assess for postnatal depression/anxiety (low mood, anhedonia, guilt, sleep/appetite beyond normal newborn disruption, detachment), and explicitly ask about thoughts of self-harm and intrusive thoughts (per CG192). Use the consultation to validate and support, not just diagnose.' },
         { h:'Body image and identity', t:'Postpartum body-image change and loss of identity ("nothing about my body is mine") are common and distressing. Validate them as normal and worth support \u2014 part of looking after the whole person.' },
-        { h:'Support and follow-up', t:'Where mood is affected, involve the health visitor, perinatal mental-health/IAPT and (per severity) further support, with follow-up. Frame the plan around HER wellbeing, with the hair as the reassured, benign part.' },
+        { h:'Support and follow-up', t:'Where mood is affected, involve the health visitor, perinatal mental-health/NHS Talking Therapies and (per severity) further support, with follow-up. Frame the plan around HER wellbeing, with the hair as the reassured, benign part.' },
         { h:'Never do', t:'Never dismiss postpartum hair loss as trivial; never reassure the hair and miss the exhausted/depressed mother behind it; never skip the mood screen and body-image validation; never omit the ferritin/TFT check in the postpartum context.' },
-        { h:'Safety-net & follow-up', t:'Strong hair reassurance + recovery timeline; ferritin/TFT check; postnatal mental-health screen and support (health visitor/perinatal/IAPT, crisis routes if risk); follow-up centred on the mother\u2019s wellbeing.' }
+        { h:'Safety-net & follow-up', t:'Strong hair reassurance + recovery timeline; ferritin/TFT check; postnatal mental-health screen and support (health visitor/perinatal/NHS Talking Therapies, crisis routes if risk); follow-up centred on the mother\u2019s wellbeing.' }
       ]
     }
   };

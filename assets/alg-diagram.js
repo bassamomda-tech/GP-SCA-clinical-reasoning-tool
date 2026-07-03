@@ -87,3 +87,16 @@
     row.parentNode.insertBefore(d, row.nextSibling);
   });
 })();
+
+
+/* RGP review stamp (shared): appended after the July 2026 full-library audit —
+   every algorithm's footer citations were verified. Idempotent. */
+(function(){
+  var f = document.querySelector('.alg-foot');
+  if(!f || f.querySelector('.rgp-reviewed')) return;
+  var d = document.createElement('div');
+  d.className = 'rgp-reviewed';
+  d.style.cssText = 'margin-top:8px;font-size:12px;color:#6b7280';
+  d.innerHTML = '<strong style="color:#0f766e">Reviewed: July 2026</strong> · citations verified against current NICE / UK guidance';
+  f.appendChild(d);
+})();

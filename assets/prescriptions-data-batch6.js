@@ -117,7 +117,7 @@ Review function at each step; deprescribe if no benefit.`,
     ],
     altRegimens: [
       { label: 'Test-and-treat H. pylori', drugs: 'In uninvestigated dyspepsia, test for H. pylori and eradicate if positive (see H. pylori cards).' },
-      { label: 'Pregnancy', drugs: 'Lifestyle + antacid/alginate first; omeprazole/ranitidine alternatives if needed (omeprazole has most safety data).' },
+      { label: 'Pregnancy', drugs: 'Lifestyle + antacid/alginate first; omeprazole/famotidine alternatives if needed (omeprazole has most safety data).' },
       { label: 'Step-down', drugs: 'After symptom control, reduce to lowest effective dose, on-demand PPI, or H2RA; review long-term PPI need annually.' },
     ],
     counselling: [

@@ -124,7 +124,7 @@
       'Support engagement (avoidance is part of the disorder) and gradual exposure to feared situations',
       'Provide information and signpost self-help resources; review response and step up care as needed'],
     referral:[
-      'Moderate–severe or impairing social anxiety → psychological therapy (CBT for social anxiety) via IAPT/talking therapies',
+      'Moderate–severe or impairing social anxiety → psychological therapy (CBT for social anxiety) via NHS Talking Therapies',
       'Treatment-resistant disorder or significant comorbidity → mental-health services',
       'Significant risk (self-harm, severe depression) → urgent mental-health assessment',
       'Children/young people → CAMHS'],

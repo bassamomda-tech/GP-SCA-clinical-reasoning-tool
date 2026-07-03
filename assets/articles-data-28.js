@@ -43,7 +43,7 @@
       'Validate the experience and assess its impact, the underlying stressors, coping, risk (including self-harm and alcohol/substance use), and whether a mental-health disorder is present',
       'Address the cause where possible: problem-solving, prioritisation, and practical support (work, finances, relationships, caring) — signpost relevant support services',
       'Promote self-care and healthy coping: regular exercise, sleep hygiene, relaxation/mindfulness, reducing alcohol/caffeine, and social connection',
-      'Offer or signpost psychological support (e.g. self-help, talking therapies/IAPT) for those who need more than self-management',
+      'Offer or signpost psychological support (e.g. self-help, NHS Talking Therapies) for those who need more than self-management',
       'Treat any coexisting anxiety or depression on its own merits',
       'Avoid medicalising normal stress and avoid benzodiazepines/sedatives for ordinary stress',
       'Consider occupational factors and a fit note/workplace adjustments where work is a major contributor',
