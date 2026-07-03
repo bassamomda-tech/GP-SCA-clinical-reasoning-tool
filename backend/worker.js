@@ -265,7 +265,7 @@ async function aiProxy(request, env, cors) {
   // FIRST-TURN questions only. A repeat of a popular question is served straight
   // from KV — instant, zero AI cost. Cached answers expire after 30 days unless
   // the owner approves them in the Quality Console (then they persist as vetted).
-  const model = env.AI_MODEL || 'claude-sonnet-4-6';
+  const model = env.AI_MODEL || 'claude-sonnet-5';
   let ansKey = null;
   if (cacheKey && typeof cacheKey === 'string' && cacheKey.trim() && cacheKey.length <= 300) {
     const norm = cacheKey.trim().toLowerCase();
@@ -340,7 +340,8 @@ async function aiProxy(request, env, cors) {
       } catch (e) { /* fall through to error */ }
     }
     return json({ error: 'ai_upstream_' + resp.status }, 502, cors);
-  } pipe Anthropic's SSE back to the browser as a simple
+  }
+  // ---- If streaming was requested, pipe Anthropic's SSE back to the browser as a simple
   //      token stream so the answer appears word-by-word (feels instant). ----
   if (wantStream) {
     const encoder = new TextEncoder();
