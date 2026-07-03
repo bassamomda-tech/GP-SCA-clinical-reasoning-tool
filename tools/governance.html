@@ -90,6 +90,16 @@ dialog.exp-dlg::backdrop{ background:rgba(20,18,14,.45); }
 .exp-bd{ padding:16px 20px; }
 .exp-bd p{ font-size:13px; color:var(--ink-2); margin:0 0 10px; }
 .exp-bd textarea{ width:100%; height:240px; font-family:ui-monospace,Menlo,monospace; font-size:11.5px; border:1px solid var(--line-2); border-radius:10px; padding:12px; resize:vertical; }
+
+/* upstream change detection */
+.up-banner{ border-radius:12px; padding:12px 16px; font-size:13px; margin:0 0 14px; line-height:1.5; }
+.up-banner.up-hit{ background:#fbe6e3; border:1px solid #e8b4ae; color:#8a271a; }
+.up-banner.up-ok{ background:#e7f6ed; border:1px solid #aacdb6; color:#1f6e49; }
+.up-banner.up-checking{ background:var(--surface); border:1px dashed var(--line-2); color:var(--ink-2); }
+.up-banner a{ color:inherit; font-weight:700; }
+.gl-change{ display:block; font-size:11.5px; font-weight:600; color:#a02c1e; margin-top:5px; }
+.gl-change a{ color:#a02c1e; text-decoration:underline; }
+.gl-row.gl-changed{ border-color:#e8b4ae; background:#fdf6f5; }
 </style>
 </head>
 <body>
@@ -120,6 +130,7 @@ dialog.exp-dlg::backdrop{ background:rgba(20,18,14,.45); }
 
       <h2 class="g-sec-h">Guidelines to watch</h2>
       <p class="g-sec-sub">The upstream sources your content depends on. Click through to the official page and check its "Last revised" date; if it has changed, review the content areas it affects and mark them reviewed once updated.</p>
+      <div id="upstreamBanner" class="up-banner up-checking">⚙️ Checking your watched guidelines against the live NICE / MHRA / UKHSA feeds…</div>
       <div id="guidelines"></div>
 
       <div class="g-how">
@@ -147,7 +158,7 @@ dialog.exp-dlg::backdrop{ background:rgba(20,18,14,.45); }
   </div>
 </dialog>
 
-<script src="../assets/site.js?v=54"></script>
+<script src="../assets/site.js?v=57"></script>
 <script src="../assets/nav-back.js?v=1"></script>
 <script>
 (function(){
@@ -184,7 +195,46 @@ dialog.exp-dlg::backdrop{ background:rgba(20,18,14,.45); }
   }
 
   var REG = null;
-  fetch(REG_URL).then(function(r){ return r.json(); }).then(function(reg){ REG = reg; render(); })
+  var CHANGES = {};   // guideline id -> matching upstream feed item (change detected since lastChecked)
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]; }); }
+  function itemTime(it){ var t = Date.parse((it&&it.date)||''); return isNaN(t)?0:t; }
+  function ymTime(ym){ var p=String(ym||'').split('-'); if(p.length<2) return 0; return new Date(+p[0], (+p[1])-1, 1).getTime(); }
+  function glCode(g){ var m=String(g.url||'').match(/guidance\/((?:ng|cg|ta|qs)\d+)/i); return m?m[1].toLowerCase():null; }
+  function matchItem(g, items){
+    var code = glCode(g);
+    var checked = ymTime(effectiveDate(g,'gl'));
+    var best = null;
+    for(var i=0;i<items.length;i++){
+      var it = items[i]; if(!it) continue;
+      var hay = ((it.url||'')+' '+(it.title||'')).toLowerCase();
+      var hit = false;
+      if(code){ hit = new RegExp('\\b'+code+'\\b','i').test(hay); }
+      else if(g.type==='Safety alert'){ hit = String(it.src||'')==='MHRA'; }
+      else if(g.type==='UKHSA'){ hit = String(it.src||'')==='UKHSA'; }
+      if(hit && itemTime(it) > checked && (!best || itemTime(it) > itemTime(best))) best = it;
+    }
+    return best;
+  }
+  function checkUpstream(){
+    var banner = document.getElementById('upstreamBanner');
+    if(!banner || !REG) return;
+    var base = (window.RGP_CONFIG||{}).workerUrl;
+    if(!base){ banner.className='up-banner up-checking'; banner.innerHTML='Live upstream check isn\u2019t configured on this build — check each source manually via “Open source”.'; return; }
+    fetch(base.replace(/\/$/,'')+'/api/updates/archive').then(function(r){ return r.json(); }).then(function(data){
+      var items = (data && (data.items||data)) || [];
+      if(!Array.isArray(items)) items = [];
+      CHANGES = {};
+      REG.guidelines.forEach(function(g){ var m = matchItem(g, items); if(m) CHANGES[g.id] = m; });
+      render();
+      var n = Object.keys(CHANGES).length;
+      if(n){ banner.className='up-banner up-hit'; banner.innerHTML='⚠ <b>'+n+'</b> watched guideline'+(n>1?'s have':' has')+' upstream activity in the live NICE / MHRA / UKHSA feeds since your last check — flagged in red below. Re-verify the affected content, then press <b>Mark checked</b>.'; }
+      else { banner.className='up-banner up-ok'; banner.innerHTML='✓ No upstream changes detected across the live NICE / MHRA / UKHSA feeds since your recorded check dates.'; }
+    }).catch(function(){
+      banner.className='up-banner up-checking';
+      banner.innerHTML='Live upstream check is temporarily unavailable — check each source manually via “Open source”.';
+    });
+  }
+  fetch(REG_URL).then(function(r){ return r.json(); }).then(function(reg){ REG = reg; render(); checkUpstream(); })
     .catch(function(){ document.getElementById('collections').innerHTML = '<p style="color:var(--rust)">Could not load the review register.</p>'; });
 
   function effectiveDate(item, kind){
@@ -222,8 +272,14 @@ dialog.exp-dlg::backdrop{ background:rgba(20,18,14,.45); }
       var d = effectiveDate(g, 'gl');
       var st = statusOf(d, winM, amberM);
       var dotColor = st.s==='red' ? '#c0392b' : st.s==='amber' ? '#c9921f' : '#1f8a5b';
-      return '<div class="gl-row">'
-        + '<div class="gl-name"><b>'+g.name+'</b><small>Affects: '+g.affects+'</small></div>'
+      var chg = CHANGES[g.id];
+      var chgHtml = chg
+        ? '<span class="gl-change">⚠ Upstream update'
+            + (itemTime(chg) ? ' ('+pretty(new Date(itemTime(chg)).toISOString().slice(0,7))+')' : '')
+            + ' — <a href="'+esc(chg.url)+'" target="_blank" rel="noopener noreferrer">'+esc(chg.title)+' ↗</a> · re-verify, then Mark checked</span>'
+        : '';
+      return '<div class="gl-row'+(chg?' gl-changed':'')+'">'
+        + '<div class="gl-name"><b>'+g.name+'</b><small>Affects: '+g.affects+'</small>'+chgHtml+'</div>'
         + '<span class="gl-type">'+g.type+'</span>'
         + '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px">'
         + '<span class="gl-check"><span style="width:9px;height:9px;border-radius:50%;background:'+dotColor+';display:inline-block"></span>Checked '+pretty(d)+'</span>'

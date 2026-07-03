@@ -162,7 +162,7 @@
   </main>
 </div>
 
-<script src="../assets/site.js?v=54"></script>
+<script src="../assets/site.js?v=57"></script>
 <script src="../assets/sca-cases.js"></script>
 <script src="../assets/sca-extras.js?v=2"></script>
 <script>
@@ -179,6 +179,7 @@
   const exm      = j('rgp-sca-exm','{}');                 // legacy examiner-marking store
   const domAtt   = j('rgp-sca-domain-attempts','[]');     // "Examiner Marking" tool {d,c,dg,cm,ro}
   const hotSeat  = j('rgp-sca-attempts-hotseat','[]');    // Hot Seat self-marks if present
+  const hotSeatSC= j('rgp-sca-progress-v1','[]');         // Hot Seat scorecard "Log this attempt" store (RGPScaProgress)
   const srs      = j('rgp-akt-srs','{}');                 // qbank SRS
   const habitLog = j('rgp-sca-habits','[]');              // simulator per-consult habit flags
 
@@ -192,6 +193,15 @@
   // Examiner Marking tool: {dg,cm,ro} (note 'ro')
   [].concat(domAtt, hotSeat).forEach(e=>{ if(e&&typeof e==='object'){ const rto=e.rto!=null?e.rto:e.ro;
     if(num(e.dg)!=null)dgP.push(num(e.dg)); if(num(e.cm)!=null)cmP.push(num(e.cm)); if(num(rto)!=null)rtoP.push(num(rto)); } });
+  // Hot Seat scorecard attempts (RGPScaProgress store): map got/max fractions onto the 0–3 domain scale.
+  // Scorecard domains are gs (Global Skills) · tasks (data-gathering + diagnosis + management) · ro (Relating).
+  hotSeatSC.forEach(r=>{ if(!r||!r.got||!r.max) return;
+    const fr=k=> (r.max[k]>0 ? r.got[k]/r.max[k] : null);
+    const tasks=fr('tasks'), ro=fr('ro'), gs=fr('gs');
+    if(tasks!=null){ dgP.push(tasks*3); cmP.push(tasks*3); }          // Tasks spans DG + CM
+    const rel=[ro,gs].filter(v=>v!=null);
+    if(rel.length){ rtoP.push(rel.reduce((a,b)=>a+b,0)/rel.length*3); } // Relating + Global skills → RTO
+  });
 
   const avg = a => a.length? a.reduce((x,y)=>x+y,0)/a.length : null;
   const dom = { dg:avg(dgP), cm:avg(cmP), rto:avg(rtoP) };
@@ -353,6 +363,7 @@
   // titles the user has touched (any logged activity)
   const touchedTitles = [];
   attempts.forEach(a=>{ if(a.title) touchedTitles.push(a.title); });
+  hotSeatSC.forEach(r=>{ if(r&&r.title) touchedTitles.push(r.title); });
   circuits.forEach(c=>{ (c.results||[]).forEach(r=>{ if(r.title) touchedTitles.push(r.title); }); });
   Object.keys(exm).forEach(t=>touchedTitles.push(t));
   domAtt.forEach(a=>{ if(a.c) touchedTitles.push(a.c); });

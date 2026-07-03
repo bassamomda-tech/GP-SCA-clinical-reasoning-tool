@@ -503,6 +503,40 @@
       computeScore();
     });
     computeScore();
+    injectProgressLogger(mount);
+  }
+
+  function currentScoreSnapshot(){
+    const c = state.case; if (!c || !c.scorecard) return null;
+    const sc = c.scorecard;
+    const groups = { gs:sc.gs, tasks:sc.tasks, ro:sc.ro };
+    const got = { gs:0, tasks:0, ro:0 }; let total = 0;
+    Object.keys(groups).forEach(key => groups[key].forEach((it,i) => {
+      if (state.checkpoints[key+':'+i]) { got[key]+=it.pts; total+=it.pts; }
+    }));
+    return { caseId:c.id, title:c.title, system:(c.meta&&c.meta.system)||'',
+      got:got, max:{ gs:sc.maxGs, tasks:sc.maxTasks, ro:sc.maxRo },
+      total:total, maxTotal:sc.total };
+  }
+
+  function injectProgressLogger(mount){
+    if (!mount || !window.RGPScaProgress) return;
+    if (mount.querySelector('.sc-log-attempt')) return;
+    const bar = document.createElement('div');
+    bar.className = 'sc-log-attempt';
+    bar.style.cssText = 'display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px;padding:12px 14px;border:1px solid var(--line,#e6e0d4);border-radius:12px;background:var(--paper,#fbf8f1)';
+    bar.innerHTML = '<button type="button" class="sc-log-btn" style="font:inherit;font-weight:600;cursor:pointer;border:none;border-radius:9px;padding:8px 15px;background:var(--teal,#0f766e);color:#fff">＋ Log this attempt to my progress</button>'
+      + '<a href="sca-analytics.html" style="font-size:13px;font-weight:600;color:var(--teal,#0f766e);text-decoration:none">View my progress →</a>'
+      + '<span class="sc-log-msg" style="font-size:13px;color:var(--muted,#6b7280)"></span>';
+    mount.appendChild(bar);
+    bar.querySelector('.sc-log-btn').addEventListener('click', () => {
+      const snap = currentScoreSnapshot();
+      const msg = bar.querySelector('.sc-log-msg');
+      if (!snap || snap.total <= 0) { msg.textContent = 'Tick what you demonstrated first.'; return; }
+      const n = window.RGPScaProgress.logAttempt(snap);
+      const pct = Math.round(snap.total/snap.maxTotal*100);
+      msg.innerHTML = '✓ Saved — ' + pct + '% · ' + n + ' attempt' + (n===1?'':'s') + ' logged';
+    });
   }
 
   function computeScore(){

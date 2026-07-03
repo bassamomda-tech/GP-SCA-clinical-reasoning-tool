@@ -7,6 +7,25 @@
    the way Medwise / BMJ Best Practice auto-log reading time.
    Storage: localStorage 'rgp-cpd-v1' = { "<path>": {href,title,kind,seconds,visits,first,last,reflection} }
    ============================================================ */
+/* ---- Shared citation linkifier loader (runs on every content page) ----
+   Piggybacks on this always-injected file so guideline references become
+   click-through NICE/BNF links site-wide with no per-page edit. */
+(function () {
+  if (window.__rgpCiteLoaded) return; window.__rgpCiteLoaded = true;
+  try {
+    var cs = document.currentScript;
+    if (!cs || !/cpd-tracker\.js/.test(cs.src || '')) {
+      var ss = document.getElementsByTagName('script');
+      for (var i = ss.length - 1; i >= 0; i--) { if (/cpd-tracker\.js/.test(ss[i].src || '')) { cs = ss[i]; break; } }
+    }
+    var base = (cs && cs.src ? cs.src.replace(/cpd-tracker\.js.*$/, '') : '');
+    var el = document.createElement('script');
+    el.src = base + 'citation-links.js?v=1';
+    el.defer = true;
+    (document.head || document.documentElement).appendChild(el);
+  } catch (e) { /* cosmetic — never block CPD tracking */ }
+})();
+
 (function(){
   if (window.__rgpCpd) return; window.__rgpCpd = true;
 

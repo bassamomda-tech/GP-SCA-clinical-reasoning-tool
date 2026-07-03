@@ -1,12 +1,15 @@
 name = "shy-voice-2225"
 main = "worker.js"
-compatibility_date = "2024-11-01"
+compatibility_date = "2026-07-01"
 
 # --- KV namespaces (create with: wrangler kv namespace create USERS) ---
 # Paste the returned ids below.
 kv_namespaces = [
-  { binding = "USERS",  id = "f41ca9e7ac2b44c9830b029eaf003f88" },
-  { binding = "TOKENS", id = "90341b3815784b3da4ff2e8132ce5baf" }
+  { binding = "USERS",  id = "PASTE_USERS_KV_ID" },
+  { binding = "TOKENS", id = "PASTE_TOKENS_KV_ID" },
+  # Optional — powers the 12-month "Updates" archive. Create with:
+  #   wrangler kv namespace create UPDATES
+  { binding = "UPDATES", id = "PASTE_UPDATES_KV_ID" }
 ]
 
 # Daily cron warms the live feed AND appends new items to the 12-month archive.
@@ -21,9 +24,10 @@ binding = "AI"
 
 [vars]
 ALLOWED_ORIGIN = "https://gpreasoning.uk"
-AI_MODEL = "claude-sonnet-4-6"   # best quality/price. Cheaper: claude-haiku-4-5
+AI_MODEL = "claude-sonnet-5"     # best quality/price. Cheaper: claude-haiku-4-5
 WEB_SEARCH = "on"                # live web search on trusted UK clinical domains (set "off" to disable)
-ADMIN_EMAIL = "bassamomda@gmail.com"                 # YOUR account email on the site — unlocks tools/ask-quality.html (feedback review + answer cache)
+ADMIN_EMAIL = ""                 # YOUR account email on the site — unlocks tools/ask-quality.html (feedback review + answer cache)
+FALLBACK_MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast"  # free Workers AI model used if Anthropic credit runs out
 EMBED_MODEL = "@cf/baai/bge-base-en-v1.5"   # Workers AI embedding model for semantic search
 
 # PayPal Subscription Plan IDs (create them in the PayPal dashboard, then paste)

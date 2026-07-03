@@ -1,50 +1,49 @@
-GP / SCA CLINICAL REASONING TOOL — CHANGED FILES (July 2026 content audit)
-==========================================================================
-Upload/deploy everything in this folder, preserving the folder structure
-(cases/, tools/, assets/, pages/, and service-worker.js at the root).
+GP / SCA CLINICAL REASONING TOOL — FULL DEPLOYABLE SITE (July 2026)
+===================================================================
+This is a COMPLETE copy of the site. Upload it to your host
+(Cloudflare Pages) preserving the folder structure. Uploading the
+whole set is the safe option: the site.js version bump (?v=57) only
+works if the pages and the shared assets deploy together.
 
-WHY EACH FOLDER IS HERE
------------------------
-cases/  (108 files)
-  - Review-date stamp added to EVERY case ("Reviewed: July 2026").
-  - Clinical fixes: asthma (NG245 AIR->MART rewrite), tia-stroke (NG128,
-    all TIA -> 24h, ABCD2 de-scored), anxiety (NG222 -> CG113),
-    abnormal-lfts (MASH drug claims corrected),
-    urinary-incontinence (tolterodine 400mg -> 4mg XL / 2mg BD TYPO FIX),
-    type-2-diabetes (atorvastatin 10mg -> 20mg; BP <130/80 -> <140/90),
-    eczema (TA813 -> TA534), autism (TA741 -> licence/BNFc),
-    plus ~30 earlier citation fixes (acne NG198, breast-cancer NG12, etc.)
-    and IAPT -> NHS Talking Therapies renaming.
+WHAT CHANGED THIS SESSION
+-------------------------
+NEW
+  assets/cite-links.js        Click-through citations: turns plain-text
+                              NICE codes (NG/CG/TA/QS + number) into links
+                              to nice.org.uk. Runs on every content page.
 
-tools/algorithms/  (274 files)
-  - Citations verified 270/270; targeted content fixes; the review-date
-    stamp renders via assets/alg-diagram.js.
-  - tools/algorithms.html directory page updated.
+SHARED ASSETS
+  assets/site.js              loads cite-links.js (+ earlier fixes)
+  assets/alg-nav.js           loads cite-links.js on algorithm pages
+  assets/alg-diagram.js       "Reviewed: July 2026" stamp on algorithms
+  assets/management-engine.js "Reviewed" stamp in protocol footers
+  assets/review-register.json governance dates refreshed; NG245 + NG128 added
+  tools/governance.html       AUTO guideline-change detection (reads the
+                              Worker's MHRA/NICE/UKHSA feed, flags changes)
+  tools/sca-weakspots.html    Hot Seat "Log attempt" now feeds readiness
+  service-worker.js           CACHE_VERSION v6 -> v7 (forces refetch)
 
-tools/management/  (176 files)
-  - Protocol fixes (hypertension BP targets, etc.); the review stamp
-    renders for all protocols via assets/management-engine.js.
+CLINICAL FIXES (cases/)
+  asthma            re-based to NG245 (AIR -> MART; no SABA-only)
+  tia-stroke        re-based to NG128 (all suspected TIA -> 24h review)
+  anxiety           31 miscited NG222 -> CG113 (correct GAD guideline)
+  abnormal-lfts     MASH drug claims corrected (semaglutide/resmetirom)
+  urinary-incontinence  tolterodine "400mg" -> 4mg XL (100x overdose TYPO)
+  type-2-diabetes   atorvastatin 10mg -> 20mg; BP <130/80 -> <140/90
+  eczema            dupilumab TA813 -> TA534
+  autism            melatonin "TA741" -> licence/BNFc wording
 
-assets/
-  - alg-diagram.js         : appends review stamp to all algorithm pages
-  - management-engine.js   : emits review stamp in all protocol footers
-  - calculators-data.js    : CHA2DS2-VASc / NHS Talking Therapies wording
-  - articles-data-27.js / -28.js : IAPT -> NHS Talking Therapies
-  - prescriptions-data-batch6.js : pregnancy ranitidine -> famotidine
-  - ask-core.js            : Ask grounding / safety framing
-  - sca-cases 7,15,19,25,41,47,55,64.js : citation + IAPT fixes
+VERSION BUMP
+  site.js?v=55/56 -> ?v=57 on all 168 pages that load it
+  (root: index.html, cases.html; all of cases/, tools/, pages/).
 
-pages/ask.html, tools/ask-quality.html
-  - Ask retrieval / quality-console updates.
+BACKEND (already deployed by you via `wrangler deploy`)
+  backend/worker.js, backend/wrangler.toml — included for reference.
+  If you re-deploy the Worker from the CLI, the KV IDs are already in
+  wrangler.toml (USERS/TOKENS). ALLOWED_ORIGIN = https://gpreasoning.uk.
 
-service-worker.js
-  - CACHE_VERSION bumped v6 -> v7 so clients refetch the shared assets
-    above. IMPORTANT: without this bump the old cached alg-diagram.js /
-    management-engine.js are served and stamps/fixes won't appear.
-
-MOST CLINICALLY IMPORTANT CATCHES
----------------------------------
-1. urinary-incontinence: tolterodine "400mg OD" (100x overdose typo) -> 4mg XL.
+MOST IMPORTANT CATCHES OF THE WHOLE AUDIT
+-----------------------------------------
+1. urinary-incontinence: tolterodine 400mg (100x overdose) -> 4mg XL.
 2. type-2-diabetes: statin dose + blanket BP target corrected.
-3. asthma fully rewritten to current NG245 (AIR/MART, no SABA-only).
-4. tia-stroke fully rewritten to NG128 (all TIA -> 24h specialist review).
+3. asthma fully re-based to NG245; tia-stroke fully re-based to NG128.

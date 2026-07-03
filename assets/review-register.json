@@ -2,25 +2,159 @@
   "reviewWindowMonths": 12,
   "amberWithinMonths": 2,
   "registerInstated": "2026-06",
-  "note": "Single source of truth for content currency. Each collection and guideline carries a lastReviewed/lastChecked date; the governance dashboard and the per-pathway stamp flag anything older than reviewWindowMonths. Update a date here (or use 'Mark reviewed' on the dashboard) whenever you re-verify content against current NICE CKS / named guidance.",
+  "note": "Single source of truth for content currency. Each collection and guideline carries a lastReviewed/lastChecked date; the governance dashboard and the per-pathway stamp flag anything older than reviewWindowMonths. Full expert re-verification completed 2026-07 (asthma re-based to NG245, TIA/stroke to NG128, anxiety to CG113, lipids/BP targets corrected). Update a date here (or use 'Mark reviewed' on the dashboard) whenever you re-verify content against current NICE CKS / named guidance.",
   "collections": [
-    { "id": "pathways", "label": "Visual pathways", "icon": "\ud83d\uddfa\ufe0f", "count": 256, "basis": "NICE CKS + named NICE guidelines (NG / CG)", "href": "../tools/algorithms.html", "lastReviewed": "2026-06" },
-    { "id": "lab-pathways", "label": "Lab-result pathways", "icon": "\ud83e\uddea", "count": 52, "basis": "NICE CKS + lab-medicine standards", "href": "../tools/algorithms/lab-results.html", "lastReviewed": "2026-06" },
-    { "id": "sca-cases", "label": "SCA cases (Hot Seat)", "icon": "\ud83c\udf93", "count": 310, "basis": "RCGP SCA blueprint + NICE CKS / named guidance", "href": "../tools/sca-practice.html", "lastReviewed": "2026-06" },
-    { "id": "management", "label": "Management protocols", "icon": "\ud83d\udca0", "count": 170, "basis": "NICE NG/CG + BNF", "href": "../tools/management.html", "lastReviewed": "2026-06" },
-    { "id": "prescriptions", "label": "Ready prescriptions", "icon": "\ud83d\udc8a", "count": 118, "basis": "BNF + NICE antimicrobial / prescribing guidance", "href": "../tools/prescriptions.html", "lastReviewed": "2026-06" },
-    { "id": "articles", "label": "Article topic notes", "icon": "\ud83d\udcda", "count": 435, "basis": "NICE CKS + named guidance", "href": "../pages/articles.html", "lastReviewed": "2026-06" }
+    {
+      "id": "pathways",
+      "label": "Visual pathways",
+      "icon": "🗺️",
+      "count": 256,
+      "basis": "NICE CKS + named NICE guidelines (NG / CG)",
+      "href": "../tools/algorithms.html",
+      "lastReviewed": "2026-07"
+    },
+    {
+      "id": "lab-pathways",
+      "label": "Lab-result pathways",
+      "icon": "🧪",
+      "count": 52,
+      "basis": "NICE CKS + lab-medicine standards",
+      "href": "../tools/algorithms/lab-results.html",
+      "lastReviewed": "2026-07"
+    },
+    {
+      "id": "sca-cases",
+      "label": "SCA cases (Hot Seat)",
+      "icon": "🎓",
+      "count": 310,
+      "basis": "RCGP SCA blueprint + NICE CKS / named guidance",
+      "href": "../tools/sca-practice.html",
+      "lastReviewed": "2026-07"
+    },
+    {
+      "id": "management",
+      "label": "Management protocols",
+      "icon": "💠",
+      "count": 170,
+      "basis": "NICE NG/CG + BNF",
+      "href": "../tools/management.html",
+      "lastReviewed": "2026-07"
+    },
+    {
+      "id": "prescriptions",
+      "label": "Ready prescriptions",
+      "icon": "💊",
+      "count": 118,
+      "basis": "BNF + NICE antimicrobial / prescribing guidance",
+      "href": "../tools/prescriptions.html",
+      "lastReviewed": "2026-07"
+    },
+    {
+      "id": "articles",
+      "label": "Article topic notes",
+      "icon": "📚",
+      "count": 435,
+      "basis": "NICE CKS + named guidance",
+      "href": "../pages/articles.html",
+      "lastReviewed": "2026-07"
+    }
   ],
   "guidelines": [
-    { "id": "cks", "name": "NICE Clinical Knowledge Summaries (CKS)", "type": "CKS", "url": "https://cks.nice.org.uk/", "lastChecked": "2026-06", "affects": "All collections \u2014 primary source of truth" },
-    { "id": "ng12", "name": "NG12 \u2014 Suspected cancer: recognition & referral", "type": "NICE NG", "url": "https://www.nice.org.uk/guidance/ng12", "lastChecked": "2026-06", "affects": "All 2WW / USC red-flag thresholds" },
-    { "id": "bnf", "name": "BNF / BNFc", "type": "Formulary", "url": "https://bnf.nice.org.uk/", "lastChecked": "2026-06", "affects": "Ready prescriptions, Management protocols" },
-    { "id": "mhra", "name": "MHRA Drug Safety Update", "type": "Safety alert", "url": "https://www.gov.uk/drug-safety-update", "lastChecked": "2026-06", "affects": "Prescriptions, Management" },
-    { "id": "ng136", "name": "NG136 \u2014 Hypertension in adults", "type": "NICE NG", "url": "https://www.nice.org.uk/guidance/ng136", "lastChecked": "2026-06", "affects": "Hypertension case + pathway" },
-    { "id": "ng28", "name": "NG28 \u2014 Type 2 diabetes in adults", "type": "NICE NG", "url": "https://www.nice.org.uk/guidance/ng28", "lastChecked": "2026-06", "affects": "Diabetes case + pathways" },
-    { "id": "ng196", "name": "NG196 \u2014 Atrial fibrillation", "type": "NICE NG", "url": "https://www.nice.org.uk/guidance/ng196", "lastChecked": "2026-06", "affects": "AF case + anticoagulation" },
-    { "id": "ng3", "name": "NG3 \u2014 Diabetes in pregnancy", "type": "NICE NG", "url": "https://www.nice.org.uk/guidance/ng3", "lastChecked": "2026-06", "affects": "Gestational hyperglycaemia pathway" },
-    { "id": "ukmec", "name": "UKMEC \u2014 contraception eligibility", "type": "FSRH", "url": "https://www.fsrh.org/ukmec", "lastChecked": "2026-06", "affects": "Contraception cases + pathway" },
-    { "id": "greenbook", "name": "Immunisation against infectious disease (Green Book)", "type": "UKHSA", "url": "https://www.gov.uk/government/collections/immunisation-against-infectious-disease-the-green-book", "lastChecked": "2026-06", "affects": "Vaccination content" }
+    {
+      "id": "cks",
+      "name": "NICE Clinical Knowledge Summaries (CKS)",
+      "type": "CKS",
+      "url": "https://cks.nice.org.uk/",
+      "lastChecked": "2026-07",
+      "affects": "All collections — primary source of truth"
+    },
+    {
+      "id": "ng12",
+      "name": "NG12 — Suspected cancer: recognition & referral",
+      "type": "NICE NG",
+      "url": "https://www.nice.org.uk/guidance/ng12",
+      "lastChecked": "2026-07",
+      "affects": "All 2WW / USC red-flag thresholds"
+    },
+    {
+      "id": "bnf",
+      "name": "BNF / BNFc",
+      "type": "Formulary",
+      "url": "https://bnf.nice.org.uk/",
+      "lastChecked": "2026-07",
+      "affects": "Ready prescriptions, Management protocols"
+    },
+    {
+      "id": "mhra",
+      "name": "MHRA Drug Safety Update",
+      "type": "Safety alert",
+      "url": "https://www.gov.uk/drug-safety-update",
+      "lastChecked": "2026-07",
+      "affects": "Prescriptions, Management"
+    },
+    {
+      "id": "ng136",
+      "name": "NG136 — Hypertension in adults",
+      "type": "NICE NG",
+      "url": "https://www.nice.org.uk/guidance/ng136",
+      "lastChecked": "2026-07",
+      "affects": "Hypertension case + pathway"
+    },
+    {
+      "id": "ng28",
+      "name": "NG28 — Type 2 diabetes in adults",
+      "type": "NICE NG",
+      "url": "https://www.nice.org.uk/guidance/ng28",
+      "lastChecked": "2026-07",
+      "affects": "Diabetes case + pathways"
+    },
+    {
+      "id": "ng196",
+      "name": "NG196 — Atrial fibrillation",
+      "type": "NICE NG",
+      "url": "https://www.nice.org.uk/guidance/ng196",
+      "lastChecked": "2026-07",
+      "affects": "AF case + anticoagulation"
+    },
+    {
+      "id": "ng3",
+      "name": "NG3 — Diabetes in pregnancy",
+      "type": "NICE NG",
+      "url": "https://www.nice.org.uk/guidance/ng3",
+      "lastChecked": "2026-07",
+      "affects": "Gestational hyperglycaemia pathway"
+    },
+    {
+      "id": "ukmec",
+      "name": "UKMEC — contraception eligibility",
+      "type": "FSRH",
+      "url": "https://www.fsrh.org/ukmec",
+      "lastChecked": "2026-07",
+      "affects": "Contraception cases + pathway"
+    },
+    {
+      "id": "greenbook",
+      "name": "Immunisation against infectious disease (Green Book)",
+      "type": "UKHSA",
+      "url": "https://www.gov.uk/government/collections/immunisation-against-infectious-disease-the-green-book",
+      "lastChecked": "2026-07",
+      "affects": "Vaccination content"
+    },
+    {
+      "id": "ng245",
+      "name": "NG245 — Asthma: diagnosis, monitoring & chronic management",
+      "type": "NICE NG",
+      "url": "https://www.nice.org.uk/guidance/ng245",
+      "lastChecked": "2026-07",
+      "affects": "Asthma case + pathway (AIR/MART pathway)"
+    },
+    {
+      "id": "ng128",
+      "name": "NG128 — Stroke and TIA in over 16s",
+      "type": "NICE NG",
+      "url": "https://www.nice.org.uk/guidance/ng128",
+      "lastChecked": "2026-07",
+      "affects": "TIA/stroke case + pathway (all suspected TIA → 24h specialist review)"
+    }
   ]
 }
