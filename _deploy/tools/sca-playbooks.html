@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Consultation Playbooks · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<style>
+.tool-page{ padding:28px 32px 80px; max-width:980px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+.tool-head{ padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:18px; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:34px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:6px; max-width:68ch; }
+
+.pb-filter{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+.pb-filter button{ font:inherit; font-size:12.5px; font-weight:700; padding:7px 15px; border-radius:999px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; }
+.pb-filter button.sel{ background:#0c4a47; color:#f6f2e9; border-color:#0c4a47; }
+
+.pb-list{ display:flex; flex-direction:column; gap:12px; }
+.pb{ border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden; }
+.pb > summary{ list-style:none; cursor:pointer; display:flex; gap:13px; align-items:center; padding:15px 18px; }
+.pb > summary::-webkit-details-marker{ display:none; }
+.pb > summary:hover{ background:#f8fafc; }
+.pb-ic{ font-size:23px; flex-shrink:0; }
+.pb-tt{ flex:1; min-width:0; }
+.pb-t{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:18px; color:var(--ink); }
+.pb-cat{ display:inline-block; font-size:10px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:#3f5c93; background:#f0f5ff; border:1px solid #d8e3f8; border-radius:999px; padding:2.5px 9px; margin-top:4px; }
+.pb-chev{ flex-shrink:0; transition:transform .18s ease; color:var(--muted); }
+.pb[open] .pb-chev{ transform:rotate(180deg); }
+.pb-body{ border-top:1px solid var(--line); padding:16px 18px 18px; }
+
+.pb-sec{ margin-bottom:14px; }
+.pb-sec-h{ font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; margin-bottom:7px; display:flex; gap:7px; align-items:center; }
+.pb-when .pb-sec-h{ color:#3f5c93; } .pb-trap .pb-sec-h{ color:#b91c1c; }
+.pb-open .pb-sec-h{ color:#0e7490; } .pb-do .pb-sec-h{ color:#15803d; }
+.pb-avoid .pb-sec-h{ color:#b45309; } .pb-rem .pb-sec-h{ color:#7e22ce; }
+.pb-sec p{ font-size:13.3px; line-height:1.6; color:var(--ink-2); }
+.pb-trap p{ background:#fef2f2; border:1px solid #fecaca; border-radius:10px; padding:10px 13px; color:#7f1d1d; }
+.pb-openline{ font-size:13.3px; line-height:1.6; color:#155e75; background:#ecfeff; border:1px solid #a5f3fc; border-radius:10px; padding:10px 13px; margin-bottom:7px; font-style:italic; }
+.pb-cols{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media (max-width:760px){ .pb-cols{ grid-template-columns:1fr; } }
+.pb ul{ margin:0; padding-left:17px; }
+.pb li{ font-size:13px; line-height:1.6; color:var(--ink-2); margin-bottom:6px; }
+.pb-do li::marker{ color:#15803d; } .pb-avoid li::marker{ color:#b45309; }
+.pb-rem p{ background:linear-gradient(90deg,#faf5ff,#fff 60%); border:1px solid #e9d5ff; border-left:4px solid #7e22ce; border-radius:10px; padding:11px 14px; color:var(--ink); font-weight:500; }
+</style>
+</head>
+<body>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-sca"></aside>
+  <main class="main">
+    <div class="tool-page">
+
+      <div class="tool-head">
+        <div class="tool-eyebrow">Reasoning GP · Consultation craft</div>
+        <h1>Difficult-consultation <em>playbooks</em></h1>
+        <p>Clinical topics you can look up — these you can't. Ten consultation <b>types</b> that decide SCA results: the dynamics, the trap each one sets, opening lines that work, and the single thing to hold onto when it's going wrong at minute eight.</p>
+      </div>
+
+      <div class="pb-filter" id="pbFilter"></div>
+      <div class="pb-list" id="pbList"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/sca-playbooks.js?v=1"></script>
+<script>
+(function(){
+  'use strict';
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  const PB = window.SCA_PLAYBOOKS || [];
+  const cats = [...new Set(PB.map(p => p.cat))];
+
+  document.getElementById('pbFilter').innerHTML =
+    '<button class="sel" data-c="">All (' + PB.length + ')</button>' +
+    cats.map(c => `<button data-c="${esc(c)}">${esc(c)} (${PB.filter(p => p.cat === c).length})</button>`).join('');
+
+  document.getElementById('pbList').innerHTML = PB.map(p => `
+    <details class="pb" data-cat="${esc(p.cat)}" id="pb-${p.id}">
+      <summary>
+        <span class="pb-ic">${p.ic}</span>
+        <span class="pb-tt"><span class="pb-t">${esc(p.t)}</span><br><span class="pb-cat">${esc(p.cat)}</span></span>
+        <svg class="pb-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </summary>
+      <div class="pb-body">
+        <div class="pb-sec pb-when"><div class="pb-sec-h">📍 When it appears</div><p>${esc(p.when)}</p></div>
+        <div class="pb-sec pb-trap"><div class="pb-sec-h">⚠️ The trap</div><p>${esc(p.trap)}</p></div>
+        <div class="pb-sec pb-open"><div class="pb-sec-h">💬 Opening lines that work</div>${p.open.map(o => `<div class="pb-openline">${esc(o)}</div>`).join('')}</div>
+        <div class="pb-cols">
+          <div class="pb-sec pb-do"><div class="pb-sec-h">✓ Do</div><ul>${p.do.map(d => `<li>${esc(d)}</li>`).join('')}</ul></div>
+          <div class="pb-sec pb-avoid"><div class="pb-sec-h">✗ Avoid</div><ul>${p.avoid.map(a => `<li>${esc(a)}</li>`).join('')}</ul></div>
+        </div>
+        <div class="pb-sec pb-rem"><div class="pb-sec-h">🧭 The one thing to remember</div><p>${esc(p.remember)}</p></div>
+      </div>
+    </details>`).join('');
+
+  document.querySelectorAll('#pbFilter button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#pbFilter button').forEach(x => x.classList.remove('sel'));
+    b.classList.add('sel');
+    document.querySelectorAll('.pb').forEach(d => {
+      d.style.display = (!b.dataset.c || d.dataset.cat === b.dataset.c) ? '' : 'none';
+    });
+  }));
+})();
+</script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Addison's Disease · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="../assets/medchooser.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+.tag-emerg{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;font-weight:700}
+</style>
+</head>
+<body class="mode-both" id="bodyEl" data-screen-label="Addison's Disease">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="addisons-disease"></aside>
+  <main class="main">
+<div class="case-head">
+  <div>
+    <div class="ch-cat">Endocrine &amp; Metabolic · Full case</div>
+    <h1>Addison's Disease</h1>
+  </div>
+  <div class="case-head-tags"><span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE CKS / Soc. Endo.</span><span class="tag">Short Synacthen</span><span class="tag tag-emerg">Adrenal crisis</span></div>
+</div>
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">AD</div>
+      <div><div class="tb-title">Addison's Disease (Primary Adrenal Insufficiency) · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · The great mimic · Fatigue/weight loss/pigmentation · Low Na high K · Short Synacthen · Steroid replacement · Sick-day rules · Adrenal crisis</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">The great mimic</span><span class="ns-lbl">Addison's presents with non-specific symptoms — fatigue, weight loss, anorexia, nausea, dizziness, low mood — that mimic depression, chronic fatigue, anorexia and viral illness. It is frequently diagnosed late, often only at adrenal crisis. Keep it in mind in unexplained chronic fatigue with weight loss</span></div>
+    <div class="ns-item"><span class="ns-val">Pigmentation is the clue</span><span class="ns-lbl">Hyperpigmentation (palmar creases, buccal mucosa, scars, pressure areas) from high ACTH is the most specific sign of PRIMARY adrenal insufficiency. Postural hypotension and salt craving also point to it</span></div>
+    <div class="ns-item"><span class="ns-val">Low Na, high K</span><span class="ns-lbl">The classic biochemistry: hyponatraemia, hyperkalaemia, ± hypoglycaemia and mild metabolic acidosis. Unexplained low Na/high K in a tired, weight-losing patient should prompt urgent consideration of adrenal insufficiency</span></div>
+    <div class="ns-item"><span class="ns-val">9am cortisol then Synacthen</span><span class="ns-lbl">Screen with a 9am serum cortisol; a low/equivocal value needs a short Synacthen (ACTH stimulation) test to confirm. Paired ACTH (high in primary, low in secondary) localises the cause</span></div>
+    <div class="ns-item"><span class="ns-val">Adrenal crisis = emergency</span><span class="ns-lbl">Adrenal (Addisonian) crisis — hypotension/shock, vomiting, abdominal pain, confusion, profound weakness, often precipitated by infection/illness/missed steroids — is life-threatening. Give IV/IM hydrocortisone IMMEDIATELY and fluids; do not wait for test results</span></div>
+    <div class="ns-item"><span class="ns-val">Steroids for life</span><span class="ns-lbl">Treatment is lifelong glucocorticoid (hydrocortisone) + mineralocorticoid (fludrocortisone) replacement. Patients must never abruptly stop steroids — this itself can precipitate a crisis</span></div>
+    <div class="ns-item"><span class="ns-val">Sick-day rules</span><span class="ns-lbl">During illness, fever, surgery or vomiting, the steroid dose must be DOUBLED (or given parenterally if vomiting). Every patient needs sick-day rules, an emergency hydrocortisone injection kit, and a steroid emergency card / medical-alert ID</span></div>
+    <div class="ns-item"><span class="ns-val">Think autoimmune company</span><span class="ns-lbl">Autoimmune Addison's clusters with other autoimmune disease (thyroid, type 1 diabetes, pernicious anaemia, coeliac, vitiligo) — autoimmune polyendocrine syndromes. Screen associated conditions; TB and metastases are other causes worldwide</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Addison's Disease</div>
+  <div class="stem-title">A 38-year-old woman with months of "burnout" — exhaustion, weight loss, dizziness and salt craving — repeatedly attributed to stress, now looking tanned despite no sun</div>
+  <div class="stem-text">Hannah Whitfield, 38, attends for the third time in four months with overwhelming tiredness, low mood and "no appetite". She has lost about 6kg without trying, feels dizzy on standing, and has started craving salty food. Previous visits diagnosed "stress/burnout" and possible depression. She mentions, almost in passing, that friends keep saying how tanned she looks even though she hasn't been in the sun, and that her old appendix scar has gone dark. She has vitiligo and her mother has an underactive thyroid. Today she also feels nauseated and "wiped out", and her blood pressure is low with a marked postural drop.</div>
+  <div class="stem-note">This stem tests the ability to: recognise Addison's disease behind a "burnout/depression" presentation — the great mimic — by pulling together fatigue, unintentional weight loss, anorexia/nausea, postural dizziness, salt craving and (the specific clue) hyperpigmentation in a patient with personal/family autoimmune disease; check the right initial bloods (U&amp;E for low Na/high K, glucose, 9am cortisol) and arrange/seek the short Synacthen test; recognise the features of impending adrenal crisis (postural hypotension, nausea, intercurrent stress) and know that crisis is treated immediately with parenteral hydrocortisone and fluids without waiting for results; explain lifelong steroid replacement, sick-day rules, the emergency injection kit and steroid alert card; and screen for associated autoimmune conditions. The SCA challenge is taking a repeatedly dismissed woman seriously, and conveying a serious lifelong diagnosis with appropriate safety-netting.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — New diagnosis from chronic symptoms (this stem)</strong> The mimic picture + pigmentation + autoimmune background. Bloods (U&amp;E, glucose, 9am cortisol, ACTH), Synacthen, urgent endocrine referral; assess for impending crisis; safety-net.</div>
+    <div class="stem-variant"><strong>Scenario B — Adrenal crisis (EMERGENCY)</strong> Hypotension/shock, vomiting, abdominal pain, confusion, often precipitated by infection or missed doses. Immediate IV/IM hydrocortisone + fluids + glucose; 999/admit; don't wait for tests.</div>
+    <div class="stem-variant"><strong>Scenario C — Known Addison's, intercurrent illness</strong> Established patient with infection/vomiting/surgery. Apply sick-day rules (double dose or parenteral); emergency injection if vomiting; low threshold for admission.</div>
+    <div class="stem-variant"><strong>Scenario D — Secondary adrenal insufficiency</strong> Long-term/abruptly stopped exogenous steroids, or pituitary disease. No hyperpigmentation; ACTH low; aldosterone usually preserved. Steroid-withdrawal/pituitary management.</div>
+    <div class="stem-variant"><strong>Scenario E — Autoimmune polyendocrine screen</strong> Coexisting thyroid disease, type 1 diabetes, pernicious anaemia, coeliac, vitiligo. Screen and monitor associated conditions.</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Chronic insidious vs acute crisis; primary (pigmentation, high ACTH, low Na/high K) vs secondary (no pigmentation, low ACTH, steroid history); precipitants (infection, surgery, missed/stopped steroids); autoimmune associations; sick-day rules &amp; emergency kit; pregnancy; the repeatedly-dismissed patient.</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History — The Mimic · Specific Clues · Crisis Features · Autoimmune Background · ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The history's job is to lift Addison's out of the "burnout/depression" pile by recognising the specific clues hidden among non-specific symptoms — hyperpigmentation, salt craving, postural dizziness, and an autoimmune background — and to spot the features that signal an impending adrenal crisis.</strong> Hannah has been dismissed twice; the skill is to take the cluster seriously rather than re-label it as stress.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 SCA framing — take the dismissed patient seriously</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"You've been back a few times feeling exhausted and losing weight, and I don't think we've got to the bottom of it yet. Some of what you're describing — the weight loss, the dizziness, the salt craving, the tan — makes me want to check a specific hormone problem rather than just put it down to stress."</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Validating that the symptoms are real and not yet explained — rather than re-anchoring on "stress" — is both good medicine and good communication. The weight loss + pigmentation cluster is the pivot.</div>
+    </div>
+    <div class="sub-divider">1A — Symptoms, specific clues and crisis features</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"Tell me everything that's been going on — not just the tiredness, but anything else you've noticed, even things that seem unrelated."</em></td>
+            <td class="why"><strong>An open invitation surfaces the cluster.</strong> Fatigue and low mood alone read as depression; add unintentional weight loss, anorexia, nausea, postural dizziness, salt craving and pigmentation and the picture changes entirely. Inviting "unrelated" details is what lets a patient mention the tan and the darkened scar.<span class="why-sub">In SCA: recognising a pattern across previously separate complaints is the core diagnostic skill this case rewards.</span></td>
+            <td><span class="chg chg-ddx">Cluster → adrenal insufficiency, not depression</span></td>
+          </tr>
+          <tr><td class="q">🚩 Specific clues<em>"Have you noticed your skin getting darker — in your palm creases, gums, or old scars? Any craving for salt? Do you feel dizzy or faint when you stand?"</em></td><td class="why"><strong>These are the discriminators.</strong> Hyperpigmentation (palmar creases, buccal mucosa, scars, pressure points) from high ACTH is the most specific sign of primary adrenal insufficiency; salt craving and postural symptoms reflect mineralocorticoid deficiency. Hannah has all three. They convert a vague picture into a testable hypothesis.</td><td class="why">Pigmentation + salt craving + postural symptoms → test for Addison's.</td><td><span class="chg chg-inv">U&amp;E, glucose, 9am cortisol → Synacthen</span></td></tr>
+          <tr><td class="q">🚩 Crisis / decompensation features<em>"Are you vomiting, having tummy pain, feeling confused or very weak today? Any recent infection or illness?"</em></td><td class="why">Nausea, vomiting, abdominal pain, postural hypotension, profound weakness and confusion — especially with an intercurrent stressor (infection, illness) — herald adrenal crisis. Hannah is nauseated with marked postural hypotension today: she is on the edge of decompensation and must not simply be sent home to await an outpatient test.</td><td class="why">Crisis features → emergency parenteral hydrocortisone + fluids + admission; don't await results.</td><td><span class="chg chg-999">Crisis features → emergency treatment/admit</span></td></tr>
+          <tr><td class="q">Autoimmune &amp; cause background<em>"Do you or your family have any autoimmune conditions — thyroid, type 1 diabetes, vitiligo, pernicious anaemia, coeliac? Any TB risk?"</em></td><td class="why">Autoimmune adrenalitis is the commonest cause in the UK and clusters with other autoimmune disease (Hannah has vitiligo; her mother has thyroid disease). Worldwide, TB is important; metastases and adrenal haemorrhage are other causes. The background raises pre-test probability and prompts screening of associated conditions.</td><td class="why">Autoimmune background → higher probability; screen associated conditions.</td><td><span class="chg chg-inv">TFTs, B12, coeliac, glucose screen</span></td></tr>
+          <tr><td class="q">Steroid &amp; drug history<em>"Have you taken steroid tablets, inhalers, creams or injections — recently or long-term? Stopped any suddenly?"</em></td><td class="why">Distinguishes primary (Addison's) from secondary adrenal insufficiency. Long-term or abruptly-stopped exogenous steroids cause secondary insufficiency (no pigmentation, low ACTH). Crucial for both diagnosis and the warning never to stop steroids abruptly.</td><td class="why">Exogenous steroid history → secondary insufficiency / withdrawal; no pigmentation.</td><td><span class="chg chg-ddx">Primary vs secondary</span></td></tr>
+          <tr><td class="q">Mood &amp; impact<em>"How has your mood been, and how is all this affecting your life and work?"</em></td><td class="why">Low mood is genuinely part of Addison's (and was the previous misdiagnosis). Acknowledging it — while not stopping there — both validates her and avoids dismissing the depression that may coexist. The functional impact frames urgency and support.</td><td class="why">Low mood as part of the illness; treat the cause, support mood.</td><td><span class="chg chg-ps">Validate mood; don't re-anchor on depression</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — the crisis and the missed diagnosis</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Adrenal crisis — hypotension/shock, vomiting, abdominal pain, confusion, profound weakness</td><td class="rf-why">Life-threatening hypovolaemic/distributive shock; rapidly fatal if untreated. Often precipitated by infection, illness, surgery or missed steroids.</td><td><span class="rf-action rfa-999">Immediate IV/IM hydrocortisone (100mg) + IV fluids + treat hypoglycaemia; 999/admit; do NOT wait for test results</span></td></tr>
+          <tr><td class="rf-flag">Postural hypotension + nausea in the at-risk patient</td><td class="rf-why">Signals decompensation/impending crisis even before full shock.</td><td><span class="rf-action rfa-999">Urgent same-day assessment; do not send home to await an outpatient test</span></td></tr>
+          <tr><td class="rf-flag">Unexplained hyponatraemia / hyperkalaemia with fatigue &amp; weight loss</td><td class="rf-why">Classic biochemistry of adrenal insufficiency; easy to overlook on a routine U&amp;E.</td><td><span class="rf-action rfa-same">Urgent cortisol/ACTH; senior/endocrine advice; consider admission</span></td></tr>
+          <tr><td class="rf-flag">Hypoglycaemia</td><td class="rf-why">Cortisol deficiency impairs glucose counter-regulation, especially in children/fasting.</td><td><span class="rf-action rfa-999">Treat hypoglycaemia; consider adrenal insufficiency</span></td></tr>
+          <tr><td class="rf-flag">Known patient who has stopped / can't absorb steroids (vomiting)</td><td class="rf-why">Abrupt steroid cessation or vomiting precipitates crisis.</td><td><span class="rf-action rfa-999">Emergency hydrocortisone injection; sick-day rules; admit if vomiting</span></td></tr>
+          <tr><td class="rf-flag">Repeated "stress/depression" labels with weight loss + pigmentation</td><td class="rf-why">Anchoring leads to dangerously delayed diagnosis until crisis.</td><td><span class="rf-action rfa-same">Step back; test for Addison's (cortisol, U&amp;E); refer endocrinology</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What do you think has been making you feel so unwell — and how did you feel about the 'stress' explanation?"</div><div class="ice-why">Hannah may have accepted, or quietly doubted, the burnout label. Surfacing this lets you validate that her symptoms are real and physical, and explain why you now suspect a specific, treatable hormone problem — rebuilding trust eroded by being dismissed.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 Concerns</div><div class="ice-phrase">"What's worried you most — and has anything frightened you about how you've been feeling?"</div><div class="ice-why">She may fear cancer (weight loss), or that she won't be believed again. Naming her concerns lets you address them and explain the seriousness without alarming — and to convey that this, once diagnosed, is very treatable.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"What were you hoping would happen today?"</div><div class="ice-why">She may expect another reassurance-and-home visit. Naming this lets you set out a clear plan — urgent bloods, a confirmatory test, specialist referral, and (given today's symptoms) possibly same-day assessment — so she leaves feeling finally taken seriously.</div></div>
+    </div>
+    <div class="sub-divider">1D — Psychosocial context</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 The repeatedly-dismissed patient and the danger of the "stress" label</div>
+      <p>Addison's is a textbook example of how non-specific symptoms in a busy clinic get repeatedly attributed to stress, depression or "being run down" — until the patient arrives in crisis. For Hannah, being told three times it is burnout is both a clinical hazard and a relational wound. The clinical act that matters is the willingness to step back from the inherited label, take the symptom cluster seriously, and look for the specific clue (pigmentation) — and to do so in a way that restores her sense of being believed.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>🙇 Being believed</h5><p>Validate that the symptoms are real and not yet explained; avoid re-anchoring on stress.</p><span class="ps-phrase">"I don't think this is just stress, and I'm sorry if it's felt like you weren't being heard. Your symptoms are real, and I want to test for a specific cause."</span></div>
+      <div class="ps-card"><h5>⚖️ Serious but treatable</h5><p>Convey the seriousness honestly while giving hope — replacement treatment restores normal life.</p><span class="ps-phrase">"If it's what I suspect, it's a serious condition because the body isn't making an essential hormone — but it's very treatable: people live full, normal lives by replacing that hormone."</span></div>
+      <div class="ps-card"><h5>🆘 Why today matters</h5><p>Explain why the current nausea and low BP may need same-day assessment.</p><span class="ps-phrase">"Because you're nauseated and your blood pressure drops when you stand, I don't want to just wait for an outpatient test — I'd like you assessed urgently today to be safe."</span></div>
+      <div class="ps-card"><h5>🧬 The autoimmune link</h5><p>Connect her vitiligo and family thyroid disease to the picture.</p><span class="ps-phrase">"Your vitiligo and your mum's thyroid problem matter here — these conditions run together, which is part of why I'm thinking along these lines."</span></div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div><div class="sca-phrase">"Have you noticed your skin darkening — palm creases, gums, old scars? Any salt craving?" — elicits the specific clues.</div><div class="sca-phrase">"Are you vomiting or feeling confused, and have you been ill recently?" — screens for impending crisis.</div><div class="sca-phrase">"I don't think this is just stress — your symptoms are real and I want to test for a specific cause." — validates &amp; reframes.</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Re-anchoring on stress/depression and missing the cluster</li><li>Not eliciting pigmentation / salt craving / postural symptoms</li><li>Not recognising impending crisis in a nauseated, hypotensive patient</li><li>Ignoring the autoimmune background</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Labels "stress" again; no specific clues sought; crisis features missed; no urgent bloods/assessment</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Suspects organic cause; some clues elicited; bloods arranged but crisis risk underweighted; ICE partial</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Recognises the cluster + pigmentation; elicits salt craving/postural symptoms; spots impending crisis &amp; acts; autoimmune background; urgent bloods + cortisol; ICE all three; validates the patient</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage — Adrenal Crisis · Urgent Endocrine · Routine Work-up</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The triage hinge is whether the patient is decompensating: crisis (or impending crisis) is an immediate emergency treated before any test; biochemically-suspected or symptomatic adrenal insufficiency needs urgent endocrine assessment; and a stable suspicious picture needs prompt confirmatory testing.</strong> Hannah's nausea and postural hypotension push her toward urgent same-day assessment.</div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div>
+        <h3>Now / 999</h3>
+        <span class="tc-badge tcb-e">Treat before testing</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Adrenal crisis</strong><em>Shock, vomiting, confusion → IV/IM hydrocortisone + fluids + glucose; 999/admit</em></li>
+          <li class="tc-item"><strong>Impending crisis</strong><em>Postural hypotension + nausea + intercurrent stress → urgent same-day assessment</em></li>
+          <li class="tc-item"><strong>Severe hyponatraemia / hyperkalaemia / hypoglycaemia</strong><em>Urgent admission</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Urgent</div>
+        <h3>Days</h3>
+        <span class="tc-badge tcb-u">Endocrine</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Symptomatic suspected Addison's</strong><em>Urgent endocrinology; cortisol/ACTH + Synacthen</em></li>
+          <li class="tc-item"><strong>Low 9am cortisol</strong><em>Expedite confirmatory testing</em></li>
+          <li class="tc-item"><strong>Known patient, intercurrent illness</strong><em>Sick-day rules; review</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Routine</div>
+        <h3>Work-up</h3>
+        <span class="tc-badge tcb-r">Confirm &amp; screen</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Stable suspicious picture</strong><em>9am cortisol, U&amp;E, glucose; arrange Synacthen</em></li>
+          <li class="tc-item"><strong>Autoimmune screen</strong><em>TFTs, B12, coeliac, glucose</em></li>
+          <li class="tc-item"><strong>Established, stable Addison's</strong><em>Annual review; education</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Triage rationale</div><div class="sca-phrase">"Because of the nausea and your blood pressure today, I want you assessed urgently — if this is an adrenal problem, the treatment is given straight away, before we even have the test back."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Sending a decompensating patient home to await an outpatient test</li><li>Waiting for cortisol results before treating a crisis</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Examination — Pigmentation · Postural BP · Volume Status · Autoimmune Signs</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Examination looks for the specific sign (hyperpigmentation), quantifies the haemodynamic state (postural blood pressure, volume status — a marker of decompensation), and checks for associated autoimmune disease.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🔎 Specific &amp; haemodynamic</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Hyperpigmentation</td><td>Palmar creases, buccal mucosa, scars, pressure areas, recent — the specific sign of primary insufficiency.</td></tr>
+            <tr><td class="factor">Postural blood pressure</td><td>Postural drop reflects mineralocorticoid deficiency / volume depletion; a decompensation marker.</td></tr>
+            <tr><td class="factor">Volume/shock signs</td><td>Tachycardia, hypotension, dehydration — crisis.</td></tr>
+            <tr><td class="factor">Weight</td><td>Documents the unintentional loss.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🧬 Associated / cause</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Vitiligo</td><td>Autoimmune association (Hannah).</td></tr>
+            <tr><td class="factor">Thyroid signs</td><td>Coexisting autoimmune thyroid disease.</td></tr>
+            <tr><td class="factor">General/abdominal exam</td><td>Exclude other causes of weight loss; assess for sepsis precipitant.</td></tr>
+            <tr><td class="factor">Mental state</td><td>Mood; confusion (crisis).</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Narration that scores</div><div class="sca-phrase">"I'll check your blood pressure lying and standing, look at your palms, gums and that scar for any darkening, and check for signs of dehydration — these point to the hormone problem I'm thinking of."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not checking postural BP; not looking for pigmentation</li><li>Missing signs of decompensation</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Investigations — U&amp;E · 9am Cortisol · Short Synacthen · ACTH · Autoimmune Screen</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Investigation moves from the bedside biochemistry (U&amp;E, glucose) and a 9am cortisol to the confirmatory short Synacthen test, with paired ACTH to localise primary vs secondary — and a screen for the associated autoimmune diseases.</strong> In a crisis, treatment precedes all of it (a random cortisol/ACTH can be taken before the first hydrocortisone dose, but never delay treatment).</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🧪 Diagnostic</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">U&amp;E</td><td>Hyponatraemia + hyperkalaemia — the classic pattern.</td></tr>
+            <tr><td class="factor">Glucose</td><td>Hypoglycaemia.</td></tr>
+            <tr><td class="factor">9am serum cortisol</td><td>Screening: low → likely insufficiency; very low is diagnostic; equivocal → Synacthen.</td></tr>
+            <tr><td class="factor">Short Synacthen (ACTH stimulation) test</td><td>Confirmatory: inadequate cortisol rise confirms adrenal insufficiency.</td></tr>
+            <tr><td class="factor">Plasma ACTH (paired)</td><td>High in primary (Addison's), low in secondary; localises the level.</td></tr>
+            <tr><td class="factor">Adrenal autoantibodies (21-hydroxylase)</td><td>Support autoimmune aetiology.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🔬 Aetiology &amp; associations</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">TFTs</td><td>Autoimmune thyroid disease (common association).</td></tr>
+            <tr><td class="factor">B12, coeliac serology, glucose/HbA1c</td><td>Pernicious anaemia, coeliac, type 1 diabetes — polyendocrine clustering.</td></tr>
+            <tr><td class="factor">Renin/aldosterone</td><td>Assess mineralocorticoid axis (specialist).</td></tr>
+            <tr><td class="factor">Imaging / TB work-up</td><td>Adrenal CT or TB assessment where non-autoimmune cause suspected (specialist).</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key reasoning</div><div class="sca-phrase">"I'll check your salts and a morning cortisol level now. If that's low, we confirm it with a stimulation test the specialist arranges — and I'll also screen for related conditions like your thyroid."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Delaying crisis treatment for test results</li><li>Not knowing the 9am cortisol → Synacthen pathway or the role of ACTH</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Diagnosis — Primary vs Secondary · Crisis · The Mimics</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Confirm adrenal insufficiency, localise it (primary Addison's vs secondary), identify any precipitant, and consciously hold the mimics — because the cost of mislabelling Addison's as depression or anorexia is a preventable crisis.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:26%">Diagnosis</th><th>Discriminating features</th></tr></thead>
+        <tbody>
+          <tr><td class="q"><strong>Primary adrenal insufficiency (Addison's)</strong></td><td class="why">Hyperpigmentation, low Na/high K, high ACTH, salt craving; autoimmune background (Hannah).</td></tr>
+          <tr><td class="q"><strong>Secondary adrenal insufficiency</strong></td><td class="why">Exogenous steroids/pituitary disease; no pigmentation; low ACTH; aldosterone usually preserved.</td></tr>
+          <tr><td class="q"><strong>Adrenal crisis</strong></td><td class="why">Acute decompensation — shock, vomiting, confusion; needs immediate treatment.</td></tr>
+          <tr><td class="q"><strong>Depression / chronic fatigue</strong></td><td class="why">The common misdiagnosis — but no pigmentation, electrolyte changes or postural drop.</td></tr>
+          <tr><td class="q"><strong>Malignancy / other</strong></td><td class="why">Weight loss differential; exclude as appropriate.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ddx-card ddx-b" style="margin-bottom:4px">
+      <h4>🚩 The discipline — name it before the crisis</h4>
+      <p>The whole value of recognising Addison's is making the diagnosis from chronic symptoms, before the patient decompensates. For Hannah the formulation is primary (autoimmune) adrenal insufficiency — fatigue, weight loss, salt craving, pigmentation, postural hypotension, an autoimmune background, and likely low Na/high K — now showing early decompensation. That demands urgent assessment, treatment that does not wait for confirmation if she crises, lifelong replacement, and meticulous safety-netting (sick-day rules, emergency kit, alert card).</p>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Explaining it plainly</div><div class="sca-phrase">"I think your adrenal glands aren't making enough of an essential hormone — a condition called Addison's. It explains all your symptoms, including the tan. It's serious but very treatable: you replace the hormone, for life, and learn some rules for when you're ill."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not distinguishing primary from secondary</li><li>Accepting the depression label without excluding Addison's</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc6">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">Referral — Emergency Admission · Urgent Endocrinology</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Suspected new Addison's is an endocrine diagnosis: crisis/decompensation needs emergency admission with immediate hydrocortisone, and a stable suspected case needs urgent endocrinology for confirmation and treatment initiation. GPs rarely start replacement alone.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="ref-table">
+        <thead><tr><th style="width:24%">Referral</th><th>Who / when</th><th style="width:20%">Urgency</th></tr></thead>
+        <tbody>
+          <tr><td><strong>🔴 Emergency admission</strong></td><td>Adrenal crisis or impending crisis (give hydrocortisone + fluids first).</td><td><span class="rf-action rfa-999">Same day / 999</span></td></tr>
+          <tr><td><strong>Endocrinology (urgent)</strong></td><td>Symptomatic suspected Addison's / low 9am cortisol — confirmation (Synacthen), treatment initiation, aetiology.</td><td><span class="rf-action rfa-same">Urgent</span></td></tr>
+          <tr><td><strong>Endocrinology (routine)</strong></td><td>Stable suspicious picture; ongoing specialist management and monitoring.</td><td><span class="rf-action rfa-same">Soon</span></td></tr>
+          <tr><td><strong>Associated-condition care</strong></td><td>Thyroid, diabetes, coeliac etc. screening/management.</td><td><span class="rf-action rfa-same">As indicated</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Knowing the route</div><div class="sca-phrase">"Given how you are today, I'm going to arrange urgent assessment now — and the specialist endocrine team will confirm it and start the treatment that will get you feeling well again."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Routine referral for a decompensating patient</li><li>Starting lifelong replacement without specialist confirmation in a stable case</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Crisis Rx · Replacement · Sick-Day Rules · Emergency Kit · Education</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Management has two faces: the immediate, life-saving treatment of crisis (parenteral hydrocortisone + fluids, before tests), and the lifelong replacement and education that keep a patient safe — glucocorticoid + mineralocorticoid replacement, sick-day rules, an emergency injection kit, and a steroid alert card, with the absolute rule never to stop steroids.</strong></div>
+    <div class="sub-divider">7A — Acute and lifelong</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--g)">🚑 Crisis &amp; replacement</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Adrenal crisis</td><td>Immediate IV/IM hydrocortisone 100mg + rapid IV 0.9% saline + treat hypoglycaemia; identify/treat precipitant; admit. Do NOT await results.</td></tr>
+            <tr><td class="factor">Glucocorticoid replacement</td><td>Hydrocortisone (typically divided doses mimicking diurnal rhythm), specialist-initiated.</td></tr>
+            <tr><td class="factor">Mineralocorticoid replacement</td><td>Fludrocortisone in primary adrenal insufficiency (not usually needed in secondary).</td></tr>
+            <tr><td class="factor">Never stop abruptly</td><td>Abrupt cessation precipitates crisis — emphasise lifelong adherence.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🛡️ Education &amp; safety-net</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Sick-day rules</td><td>Double the glucocorticoid dose for fever/illness; parenteral if vomiting/can't absorb; extra cover for surgery/procedures.</td></tr>
+            <tr><td class="factor">Emergency injection kit</td><td>IM hydrocortisone at home; patient/family trained to use it.</td></tr>
+            <tr><td class="factor">Steroid emergency card / alert ID</td><td>Carry a steroid card and wear medical-alert jewellery.</td></tr>
+            <tr><td class="factor">Screen associations</td><td>Thyroid, diabetes, B12, coeliac; monitor.</td></tr>
+            <tr><td class="factor">Review &amp; support</td><td>Specialist follow-up; dose adjustment; psychological support; pregnancy/illness planning.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">A plan that scores</div><div class="sca-phrase">"The treatment is replacing the missing hormones, for life — and three safety rules: never stop your steroids, double the dose when you're ill, and use the emergency injection if you're vomiting. You'll carry a steroid card and wear an alert bracelet. The specialist will set the doses and review you."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not teaching sick-day rules / emergency kit / alert card</li><li>Not warning never to stop steroids abruptly</li><li>Treating crisis without parenteral hydrocortisone</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Addison's Disease — SCA Consultation Scorecard</div><div class="scorecard-sub">The great mimic · pigmentation/low Na high K · 9am cortisol → Synacthen · crisis Rx · sick-day rules</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Takes the dismissed patient seriously</strong> — steps back from the "stress" label; validates symptoms</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Structured history pulling the cluster together</strong> — links previously separate complaints</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Focused examination narrated</strong> — pigmentation, postural BP, volume status</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain-language explanation</strong> — explains adrenal insufficiency and treatment clearly</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Conveys serious-but-treatable</strong> — honest about seriousness; gives realistic hope</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Safety-net specific</strong> — what to do if she worsens; same-day route today</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plan + review + closing question</strong> — clear plan, follow-up, "anything else?"</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, diagnosis, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Recognises Addison's behind the mimic</strong> — fatigue + weight loss + the specific clues, not "depression"</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Elicits hyperpigmentation + salt craving + postural symptoms</strong> — the discriminating features</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Recognises impending/adrenal crisis &amp; acts</strong> — postural hypotension/nausea → urgent; treat before tests if crisis</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Checks U&amp;E/glucose</strong> — looks for low Na/high K/hypoglycaemia</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>9am cortisol → short Synacthen pathway</strong> — knows the screening and confirmatory tests (+ ACTH)</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Distinguishes primary vs secondary</strong> — pigmentation/ACTH/steroid history</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Screens autoimmune associations</strong> — thyroid, T1DM, B12, coeliac</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Urgent endocrine referral</strong> — appropriate urgency; doesn't start lifelong Rx alone in a stable case</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Knows replacement</strong> — hydrocortisone + fludrocortisone; never stop abruptly</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Sick-day rules + emergency kit + alert card</strong> — the safety education that prevents crises</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decisions</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — her view of the "burnout" label surfaced</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> — fears (cancer / not being believed) addressed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations addressed</strong> — clear plan rather than another reassure-and-home</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Validates being repeatedly dismissed</strong> — acknowledges and repairs</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Breaks serious news sensitively</strong> — lifelong condition conveyed with care</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Checks understanding</strong> — especially sick-day rules and never stopping steroids</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Instils hope</strong> — emphasises normal life with treatment</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Addresses mood/impact</strong> — acknowledges genuine low mood within the illness</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Involves patient/family in safety plan</strong> — emergency kit training</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Patient leaves believed &amp; safe</strong> — feels finally heard, with a clear plan</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Collaborative close</strong> — plan agreed; safety-net understood; review/referral arranged</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">Re-labels "stress"; misses pigmentation/cluster; crisis features missed; no cortisol/U&amp;E; no sick-day rules</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">Suspects organic cause; bloods/cortisol arranged; crisis risk underweighted; safety education partial; ICE partial</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Recognises Addison's; specific clues + low Na/high K; spots impending crisis &amp; acts; cortisol→Synacthen; urgent endocrine; sick-day rules/kit/card; ICE all three</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist to see your score and feedback</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked — areas to develop</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"I'm back again — I'm sorry. I'm just exhausted all the time, I've lost weight, and I feel sick today. I was told it was stress and burnout, but I really don't think that's it. I feel dreadful."</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>Hannah Whitfield, 38. Third visit in four months for overwhelming tiredness, low mood and poor appetite. You've lost about 6kg without trying, feel dizzy/light-headed standing up, and have started craving salty foods (you put extra salt on everything). Previous GPs said "stress/burnout" and possibly depression, which never sat right. Friends keep saying how tanned you look though you've not been in the sun, and your old appendix scar has gone dark. You have vitiligo; your mum has an underactive thyroid. Today you also feel nauseated and "wiped out".</p></div>
+      <div class="ab"><h5>Hidden concerns (reveal if explored)</h5><p><strong>Not being believed (main):</strong> you're worried you'll be fobbed off again. If the doctor takes you seriously, you're hugely relieved.</p><p><strong>Cancer fear:</strong> the weight loss frightens you.</p><p><strong>The tan:</strong> you think it's odd but didn't think it mattered — you'll mention it if asked about skin changes.</p></div>
+      <div class="ab"><h5>Clinical details if asked</h5><ul><li>Fatigue, weight loss ~6kg, anorexia, nausea; dizzy on standing; salt craving</li><li>Skin darkening — palms creases, gums, old scar; friends comment on "tan"</li><li>Vitiligo; mother hypothyroid; no steroid tablets/inhalers/creams ever</li><li>Low mood but you feel it's physical; no specific suicidal thoughts</li><li>Today: nausea, feels wiped out; light-headed standing (postural drop on exam); no vomiting yet</li><li>No recent foreign travel/TB contact that you know of</li></ul></div>
+      <div class="ab"><h5>Reactions at key moments</h5><ul><li><strong>On being taken seriously:</strong> visibly relieved, tearful — "thank you, I knew something was wrong."</li><li><strong>On the skin question:</strong> "Yes! Everyone says I look tanned and I haven't been anywhere."</li><li><strong>On urgent assessment today:</strong> a little frightened but reassured it's to be safe.</li><li><strong>On lifelong treatment:</strong> daunted but relieved there's an answer and a treatment.</li><li><strong>Challenge line:</strong> "It's not just stress, is it? Please tell me what you actually think is going on."</li></ul></div>
+    </div>
+    <div class="actor-challenge">"Please be honest — it's not just stress or depression, is it? Something's really wrong and nobody's listened. What do you think it is?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> Hannah is helped if the GP: (1) takes her seriously and steps back from the "stress/burnout" label, pulling the cluster together (fatigue, weight loss, salt craving, postural dizziness, pigmentation, autoimmune background); (2) elicits/looks for hyperpigmentation and checks postural BP; (3) recognises she is decompensating today (nausea, postural hypotension) and arranges urgent same-day assessment, knowing crisis is treated with parenteral hydrocortisone before results; (4) checks U&amp;E/glucose/9am cortisol and explains the Synacthen pathway and urgent endocrine referral; (5) conveys the serious-but-treatable diagnosis, and (once confirmed/initiated) teaches never to stop steroids, sick-day rules, the emergency kit and alert card. She is failed if dismissed again or sent home to await a routine test while decompensating.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Addison's Disease — Clinical Decision Framework</div><div class="sum-sub">The mimic · pigmentation/low Na high K · cortisol→Synacthen · crisis</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🚦 1 — Suspect &amp; triage</div>
+    <div class="algo-wrap" style="margin-bottom:1rem">
+      <div class="algo-start">Fatigue + weight loss + the clues</div>
+      <div class="algo-arrow">▼</div>
+      <div class="algo-row">
+        <div class="algo-branch algo-red"><div class="algo-branch-lbl">🔴 Crisis</div><ul class="algo-list"><li>Shock, vomiting, confusion</li><li>Postural hypotension + nausea</li></ul><span class="algo-action red-action">IV/IM hydrocortisone + fluids; admit</span></div>
+        <div class="algo-branch algo-amber"><div class="algo-branch-lbl">🟠 Urgent</div><ul class="algo-list"><li>Symptomatic / low 9am cortisol</li><li>Low Na, high K</li></ul><span class="algo-action amber-action">Urgent endocrine</span></div>
+        <div class="algo-branch algo-green"><div class="algo-branch-lbl">🟢 Work-up</div><ul class="algo-list"><li>9am cortisol, U&amp;E, glucose</li><li>Synacthen, ACTH, autoimmune screen</li></ul><span class="algo-action green-action">Confirm</span></div>
+      </div>
+    </div>
+    <div class="sum-sub-hdr">💊 2 — Treat &amp; safeguard</div>
+    <div class="card" style="padding:.8rem 1rem"><p style="font-size:12.5px;line-height:1.6"><strong>Crisis:</strong> immediate IV/IM hydrocortisone 100mg + IV saline + glucose; treat precipitant; don't await results. <strong>Lifelong:</strong> hydrocortisone + fludrocortisone (primary), specialist-initiated; never stop abruptly. <strong>Safety education:</strong> sick-day rules (double dose for illness; parenteral if vomiting), emergency hydrocortisone injection kit, steroid emergency card + medical-alert ID. Screen autoimmune associations; specialist follow-up.</p></div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label">SCA Quick Reference</div><div class="sum-title">Addison's — Consultation Playbook</div><div class="sum-sub">See past "stress" · the clues · treat crisis first · steroids for life + sick-day rules</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🎯 The three pivots that pass this case</div>
+    <div class="sum-3col">
+      <div class="snp-phrase-box snp-e"><div class="snp-lbl">1 · See past the mimic</div><div class="snp-text">Fatigue + weight loss + pigmentation + salt craving + postural dizziness + autoimmune background = Addison's, not "stress".</div></div>
+      <div class="snp-phrase-box snp-m"><div class="snp-lbl">2 · Crisis first</div><div class="snp-text">Decompensation → parenteral hydrocortisone + fluids before tests. Check U&amp;E/glucose/9am cortisol → Synacthen.</div></div>
+      <div class="snp-phrase-box snp-a"><div class="snp-lbl">3 · Steroids for life</div><div class="snp-text">Hydrocortisone + fludrocortisone; never stop; sick-day rules, emergency injection kit, steroid alert card.</div></div>
+    </div>
+    <div class="sdp-pivot" style="margin-top:1rem;font-size:11.5px;background:#fef3c7;color:#854d0e;border-radius:8px;padding:.6rem .85rem;line-height:1.5">⛔ Don't re-anchor on stress/depression and miss the cluster · Don't send a decompensating patient home to await a routine test · Don't wait for results to treat a crisis · Don't forget sick-day rules, the emergency kit and the alert card · Never advise stopping steroids abruptly</div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Addison's Disease · GP Clinical Reasoning Framework v2</strong> · NICE CKS Addison's disease · Society for Endocrinology (adrenal insufficiency &amp; crisis guidance) · steroid emergency card</p>
+  <p style="margin-top:4px">The great mimic — fatigue/weight loss/anorexia/nausea/dizziness/low mood; suspect with hyperpigmentation, salt craving, postural hypotension, low Na/high K, autoimmune background · Screen 9am cortisol → confirm with short Synacthen; ACTH localises primary vs secondary · Adrenal crisis = immediate IV/IM hydrocortisone + fluids before results · Lifelong hydrocortisone + fludrocortisone; never stop abruptly · Sick-day rules, emergency injection kit, steroid emergency card / alert ID · Screen autoimmune associations</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current NICE CKS and Society for Endocrinology guidance · Clinical judgement takes precedence over any framework</p>
+</div>
+</div><!-- /page -->
+  </main>
+</div><!-- /app -->
+<script src="script.js"></script>
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
+</body>
+</html>

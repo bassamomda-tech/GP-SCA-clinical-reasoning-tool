@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Type 2 Diabetes in Ramadan · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #f4f3f0;
+  --surface:   #ffffff;
+  --border:    #e2e0da;
+  --text:      #1a1917;
+  --muted:     #6b6762;
+  --accent:    #1d4ed8;          /* blue */
+  --safety:    #dc2626;          /* red  */
+  --diagnose:  #7c3aed;          /* purple */
+  --treat:     #0f766e;          /* teal  */
+  --refer:     #b45309;          /* amber */
+  --lifestyle: #15803d;          /* green */
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, serif;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.05);
+}
+
+html { font-size: 15px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 0 0 60px;
+}
+
+/* ── HEADER / BANNER ──────────────────────────────────────── */
+.stem-banner {
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+.sb-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  background: #eff6ff;
+  border-radius: 10px;
+  width: 52px; height: 52px;
+  display: grid; place-items: center;
+}
+.stem-banner b { display: block; font-size: 1.05rem; font-weight: 700; color: var(--text); }
+.stem-banner small { font-size: .8rem; color: var(--muted); }
+
+/* ── PROGRESS BAR ─────────────────────────────────────────── */
+.alg-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  font-size: .82rem;
+  color: var(--muted);
+}
+.pcount { font-weight: 600; color: var(--text); white-space: nowrap; }
+.pbar { flex: 1; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; min-width: 60px; }
+.pbar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #1d4ed8, #7c3aed); border-radius: 99px; transition: width .4s ease; }
+button.reset {
+  padding: 4px 12px; border-radius: 6px;
+  border: 1px solid var(--border); background: white;
+  font-size: .78rem; font-family: var(--font-body);
+  cursor: pointer; color: var(--muted);
+  transition: all .15s;
+}
+button.reset:hover { background: #fee2e2; border-color: #fca5a5; color: var(--safety); }
+
+/* ── FLOW CONTAINER ───────────────────────────────────────── */
+.alg-flow {
+  max-width: 820px;
+  margin: 28px auto 0;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ── CONNECTOR ────────────────────────────────────────────── */
+.connector {
+  width: 2px;
+  height: 28px;
+  background: linear-gradient(to bottom, var(--border), transparent);
+  align-self: center;
+  margin: 0;
+}
+
+/* ── NODE CARD ────────────────────────────────────────────── */
+.node {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow .2s, border-color .2s;
+}
+.node:hover { box-shadow: var(--shadow-md); }
+.node.done { border-color: #bbf7d0; background: #f0fdf4; }
+
+/* Node type accent strip */
+.node[data-type="SAFETY"]    { border-left: 4px solid var(--safety); }
+.node[data-type="DIAGNOSE"]  { border-left: 4px solid var(--diagnose); }
+.node[data-type="TREAT"]     { border-left: 4px solid var(--treat); }
+.node[data-type="REFER"]     { border-left: 4px solid var(--refer); }
+.node[data-type="LIFESTYLE"] { border-left: 4px solid var(--lifestyle); }
+
+/* ── NODE HEADER ──────────────────────────────────────────── */
+.node-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px 10px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.node-num {
+  font-size: .72rem;
+  font-weight: 700;
+  background: var(--border);
+  color: var(--muted);
+  border-radius: 50%;
+  width: 22px; height: 22px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.node-tag {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+.node[data-type="SAFETY"]    .node-tag { background: #fee2e2; color: var(--safety); }
+.node[data-type="DIAGNOSE"]  .node-tag { background: #ede9fe; color: var(--diagnose); }
+.node[data-type="TREAT"]     .node-tag { background: #ccfbf1; color: var(--treat); }
+.node[data-type="REFER"]     .node-tag { background: #fef3c7; color: var(--refer); }
+.node[data-type="LIFESTYLE"] .node-tag { background: #dcfce7; color: var(--lifestyle); }
+
+.node-head h3 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
+}
+.node-tick {
+  margin-left: auto;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.node-tick label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+.node-tick input[type="checkbox"] {
+  width: 18px; height: 18px;
+  accent-color: var(--lifestyle);
+  cursor: pointer;
+}
+.node-tick .tlbl { font-size: .78rem; color: var(--muted); user-select: none; }
+
+/* ── NODE BODY ────────────────────────────────────────────── */
+.node-body {
+  padding: 14px 18px;
+  font-size: .9rem;
+  color: var(--text);
+  line-height: 1.65;
+}
+.node-body > p, .node-body > .intro {
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: .87rem;
+}
+
+/* ── KEY-VALUE GRID ───────────────────────────────────────── */
+.kv {
+  display: grid;
+  grid-template-columns: minmax(130px, 30%) 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  font-size: .87rem;
+}
+.kv > div:nth-child(4n+1),
+.kv > div:nth-child(4n+2) { background: #fafaf9; }
+.kv > div {
+  padding: 9px 13px;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+}
+.kv > div:last-child, .kv > div:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+.kv > div:nth-child(odd) { font-weight: 600; color: var(--muted); font-size: .82rem; }
+.kv > div:nth-child(even) { color: var(--text); }
+
+/* ── RED FLAG GRID ────────────────────────────────────────── */
+.rfgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+.rftile {
+  background: #fff5f5;
+  border: 1px solid #fecaca;
+  border-left: 3px solid var(--safety);
+  border-radius: var(--r-md);
+  padding: 10px 13px;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+.rftile b { display: block; color: var(--safety); font-size: .82rem; margin-bottom: 2px; }
+
+/* ── BRANCH ───────────────────────────────────────────────── */
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 10px;
+  margin-top: 6px;
+}
+.b-card {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  font-size: .86rem;
+}
+.b-cond {
+  background: #f1f5f9;
+  padding: 7px 12px;
+  font-weight: 600;
+  font-size: .8rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+.b-drug {
+  padding: 8px 12px;
+  font-weight: 700;
+  color: var(--treat);
+  background: #f0fdfa;
+  border-bottom: 1px solid var(--border);
+}
+.b-note {
+  padding: 8px 12px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ── LADDER ───────────────────────────────────────────────── */
+.ladder {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  margin-top: 6px;
+  font-size: .87rem;
+}
+.rung {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+}
+.rung:last-child { border-bottom: none; }
+.rn {
+  background: #f1f5f9;
+  font-weight: 700;
+  font-size: .78rem;
+  color: var(--muted);
+  padding: 10px 13px;
+  min-width: 70px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+}
+.rt {
+  padding: 10px 14px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* ── LIFESTYLE GRID ───────────────────────────────────────── */
+.lsgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+.lstile {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 3px solid var(--lifestyle);
+  border-radius: var(--r-md);
+  padding: 10px 13px;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+.lstile b { display: block; color: var(--lifestyle); font-size: .82rem; margin-bottom: 2px; }
+
+/* ── PILLS ────────────────────────────────────────────────── */
+.pill {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 99px;
+  vertical-align: middle;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+.pill-red    { background: #fee2e2; color: #b91c1c; }
+.pill-purple { background: #ede9fe; color: #6d28d9; }
+.pill-blue   { background: #dbeafe; color: #1d4ed8; }
+.pill-teal   { background: #ccfbf1; color: #0f766e; }
+.pill-amber  { background: #fef3c7; color: #92400e; }
+.pill-green  { background: #dcfce7; color: #15803d; }
+.pill-grey   { background: #f1f5f9; color: #475569; }
+
+/* ── WHY DRAWER ───────────────────────────────────────────── */
+.why-row {
+  border-top: 1px solid var(--border);
+  background: #fafaf9;
+}
+.why-btn {
+  width: 100%;
+  text-align: left;
+  padding: 10px 18px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  transition: background .15s;
+}
+.why-btn:hover { background: #eff6ff; }
+.caret { font-size: .9rem; transition: transform .2s; display: inline-block; }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.why-drawer {
+  display: none;
+  padding: 12px 18px 14px;
+  font-size: .86rem;
+  color: var(--muted);
+  line-height: 1.7;
+  border-top: 1px dashed var(--border);
+}
+.why-drawer.open { display: block; }
+
+/* ── FOOTER ───────────────────────────────────────────────── */
+.alg-foot {
+  max-width: 820px;
+  margin: 32px auto 0;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  font-size: .8rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-left: auto; margin-right: auto;
+}
+.alg-foot strong { color: var(--text); }
+
+/* ── UTILITY ──────────────────────────────────────────────── */
+ul.blist { padding-left: 18px; }
+ul.blist li { margin-bottom: 4px; }
+.mt8 { margin-top: 8px; }
+.mb8 { margin-bottom: 8px; }
+.note {
+  background: #fefce8;
+  border: 1px solid #fde68a;
+  border-radius: var(--r-sm);
+  padding: 8px 12px;
+  font-size: .84rem;
+  color: #78350f;
+  margin-top: 10px;
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<!-- ── BANNER ──────────────────────────────────────────────── -->
+<div class="stem-banner">
+  <div class="sb-icon">🌙</div>
+  <div>
+    <b>Type 2 Diabetes in Ramadan — Risk Stratification &amp; Medication Adjustment</b>
+    <small>Pre-Ramadan assessment · IDF-DAR / BIMA risk categories · drug-by-drug dose timing · when to break the fast · Diabetes &amp; Primary Care 2023</small>
+  </div>
+</div>
+
+<!-- ── PROGRESS ────────────────────────────────────────────── -->
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- ── FLOW ────────────────────────────────────────────────── -->
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — assess risk 6–8 weeks before Ramadan, decide if it is safe to fast, then adjust each medication to iftar/suhoor — and agree when to break the fast. Educate, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Person with T2DM intends to fast</span><div class="body">~116 million people with diabetes fast worldwide. Most will fast despite risk. Offer a structured pre-Ramadan assessment <b>6–8 weeks before</b>; document the discussion and advice given.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Decision · Risk stratify (IDF-DAR / BIMA)</span><span class="ttl">Very high · high · moderate/low risk?</span><div class="body">Stratify on diabetes type, hypo risk, medications, complications, comorbidities, social/work circumstances and prior fasting experience.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:88%;"></div><div class="cols">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">Category 1 — very high</div><div class="box stop"><span class="lbl">MUST NOT fast</span><span class="ttl">Strongly advise against</span><div class="body">Poorly-controlled T1D, recent DKA/HHS/severe hypo (3m), hypo unawareness, advanced macrovascular disease, CKD 4–5, T2D needing insulin without safe fasting experience, pregnancy. If insists → specialist, structured education, SMBG, break fast if hypo/hyper.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#fdf6ec;border-color:#e3c08a;color:#92580a;">Category 2 — high</div><div class="box refer"><span class="lbl">SHOULD NOT fast</span><span class="ttl">Individualise carefully</span><div class="body">Sustained poor control, T2D on insulin with safe-fasting experience, T2D on SGLT2i (consider pausing), CKD 3, stable macrovascular disease. Education, SMBG, dose adjustment if proceeds.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">Category 3 — moderate/low</div><div class="box act"><span class="lbl">Decision = patient</span><span class="ttl">Likely able to fast</span><div class="body">Well-controlled T2D on diet, metformin, DPP-4i, GLP-1 RA, pioglitazone, acarbose; SU or basal insulin (moderate — regular SMBG). Adjust meds &amp; advise.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · if fasting — adjust meds</span></div>
+    <div class="box act" style="max-width:700px;"><span class="lbl">Step 7 · Action · medication</span><span class="ttl">Move the bigger dose to iftar; favour low-hypo agents</span><div class="body"><b>Metformin:</b> same total — OD at iftar; BD iftar+suhoor; TDS combine afternoon+evening at iftar (MR at iftar). <b>SU:</b> switch to gliclazide/glimepiride (avoid glibenclamide); OD at iftar, reduce if well-controlled; BD reduce suhoor dose. <b>SGLT2i:</b> take at iftar, extra fluids, caution if dehydration risk. <b>DPP-4i / GLP-1 RA / pioglitazone:</b> no change. <b>Glinides:</b> redistribute to iftar+suhoor.</div></div>
+    <div class="arrow"></div>
+    <div class="box stop" style="max-width:700px;"><span class="lbl">Break the fast if…</span><span class="ttl">BG &lt;3.9 or &gt;16.7 mmol/L · hypo symptoms · acute illness</span><div class="body">Advise breaking the fast immediately if blood glucose &lt;3.9 or &gt;16.7 mmol/L, any symptoms of hypoglycaemia, or an acute illness develops. Checking blood glucose does <b>not</b> break the fast. Resume when health back to normal.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · education &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:700px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Education &amp; modifiable factors</span><span class="ttl">Safe fasting habits</span><div class="body"><b>Structured pre-Ramadan education + SMBG training</b> (and a meter). Eat a balanced <b>suhoor as late as possible</b> with complex carbs; avoid large sugary iftar meals; <b>maintain hydration</b> between sunset and dawn; moderate activity (heavy exertion late in the fast risks hypos — consider timing around taraweeh prayers). Don't stop essential non-diabetes meds without advice; recognise religious exemption.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:700px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Monitor &amp; when to break/seek help</span><div class="body"><b>Break the fast and check glucose</b> for hypo symptoms or BG &lt;3.9 (treat) or &gt;16.7 mmol/L; <b>999</b> for features of DKA/HHS (vomiting, drowsiness, very high glucose/ketones). Encourage <b>regular SMBG</b> (it does not invalidate the fast). Review control after Ramadan and revert medication timing/doses. Start any new agent 6–8 weeks before, not during, Ramadan.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Fasting is a shared decision.</b> Those whose health is harmed by fasting are religiously exempt and may pay <em>fidyah</em> or do non-consecutive/winter fasts. Initiate any new antidiabetic agent 6–8 weeks before Ramadan, not during it.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- STEP 1 · SAFETY -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-head">
+      <div class="node-num">1</div>
+      <div>
+        <span class="node-tag">Safety</span>
+        <h3>When to Break the Fast &amp; the Risks of Fasting</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Before anything else, every fasting patient must know the non-negotiable rules for <b>breaking</b> the fast and the risks they're balancing.</p>
+      <div class="rfgrid">
+        <div class="rftile"><b>Break the fast immediately if BG &lt; 3.9 mmol/L</b> — impending hypoglycaemia. Treat and do not continue the fast.</div>
+        <div class="rftile"><b>Break the fast if BG &gt; 16.7 mmol/L</b> — significant hyperglycaemia.</div>
+        <div class="rftile"><b>Break the fast for any hypo symptoms</b> — sweating, tremor, palpitations, confusion — even if a meter isn't to hand.</div>
+        <div class="rftile"><b>Break the fast if an acute illness develops</b> — see the Sick Day Rules pathway; resume when health is back to normal.</div>
+        <div class="rftile"><b>DKA / euglycaemic DKA &amp; HHS</b> Risk rises with dehydration and SGLT2i use — DKA can occur with near-normal glucose. Urgent admission if suspected.</div>
+        <div class="rftile"><b>Dehydration &amp; thrombosis</b> Long summer fasts (10–21h in the UK) risk dehydration, AKI and thrombosis — emphasise hydration between iftar and suhoor.</div>
+      </div>
+      <div class="note mt8">ℹ️ <b>Checking blood glucose does NOT invalidate the fast</b> — reassure patients so they monitor freely. The key fasting risks are hypoglycaemia, hyperglycaemia, dehydration/thrombosis, DKA (incl. euglycaemic) and HHS.</div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        The &lt;3.9 / &gt;16.7 mmol/L break-fast thresholds and the "acute illness → break fast" rule come directly from the IDF-DAR practical guidelines and are the core safety messages of any Ramadan consultation. Reassuring patients that finger-prick testing doesn't break the fast removes the commonest barrier to safe self-monitoring during Ramadan.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 2 · DIAGNOSE (pre-Ramadan + stratify) -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-head">
+      <div class="node-num">2</div>
+      <div>
+        <span class="node-tag">Diagnose</span>
+        <h3>Pre-Ramadan Assessment &amp; Risk Stratification</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Offer a structured pre-Ramadan education session <b>1–2 months (6–8 weeks) before</b>. It reduces hypoglycaemia, supports weight loss and improves control. Stratify risk first.</p>
+      <div class="kv">
+        <div>Factors to weigh</div>
+        <div>Type of diabetes · individual <b>hypo risk</b> · current medications · complications/comorbidities · social &amp; work circumstances · <b>previous fasting experience</b>.</div>
+        <div>Category 1 — very high</div>
+        <div>Poorly-controlled T1D; DKA/HHS or severe/disabling hypo in last 3m; hypo unawareness; advanced macrovascular disease; CKD 4–5; <b>insulin-treated T2D without safe-fasting experience</b>; pregnancy in pre-existing DM or insulin/SU-treated GDM; acute illness; frail elderly. <span class="pill pill-red">MUST NOT fast</span></div>
+        <div>Category 2 — high</div>
+        <div>Well-controlled T1D; T2D with sustained poor control (HbA1c &gt;75 for &gt;12m); insulin-treated T2D <b>with</b> safe-fasting experience; <b>T2D on SGLT2i</b>; stable macrovascular disease; CKD 3; metformin/diet-controlled GDM. <span class="pill pill-amber">SHOULD NOT fast</span></div>
+        <div>Category 3 — moderate/low</div>
+        <div>Well-controlled T2D on diet/lifestyle, metformin, DPP-4i, GLP-1 RA, pioglitazone, acarbose; 2nd-gen SU or basal insulin (moderate — regular SMBG). <span class="pill pill-green">May fast — patient's discretion</span></div>
+        <div>Religious framing</div>
+        <div>In every category, patients should <b>follow medical opinion</b> where the advice is not to fast due to high probability of harm. A risk calculator is in IDF-DAR chapter 5 if uncertain.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        The IDF-DAR / British Islamic Medical Association three-tier risk stratification is the backbone of safe Ramadan diabetes care: it tells you who must not fast, who should not, and who may with adjustment. Doing the assessment 6–8 weeks ahead leaves time to switch high-hypo-risk drugs, trial fasting, and arrange education — none of which can be done safely once Ramadan has started.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 3 · DIAGNOSE (who shouldn't fast) -->
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+    <div class="node-head">
+      <div class="node-num">3</div>
+      <div>
+        <span class="node-tag">Diagnose</span>
+        <h3>Monitoring &amp; Who Is Exempt From Fasting</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <div class="kv">
+        <div>Exempt groups</div>
+        <div>Those for whom fasting is detrimental are religiously <b>exempt</b>: frail/elderly, children, <b>pregnant &amp; breastfeeding women</b>, and people with significant comorbidities.</div>
+        <div>SMBG — when to check</div>
+        <div>Check several times a day: <b>pre-dawn (suhoor)</b>, morning, midday, mid-afternoon, <b>pre-sunset (iftar)</b>, 2 hours after iftar, and <b>any time symptomatic or unwell</b>. Testing does not break the fast.</div>
+        <div>Trial fast</div>
+        <div>Patients can do a <b>1–2-day trial fast in the month before</b> Ramadan and review the effect on glucose.</div>
+        <div>Non-consecutive / winter fasts</div>
+        <div>Those whose conditions are exacerbated can do <b>non-consecutive</b> fasts, or switch to the <b>winter months</b> when fasts are shorter.</div>
+        <div>Fidyah</div>
+        <div>Those unable to fast may pay <b>fidyah</b> (a charitable donation, ~£5 per missed fast) and can participate in other acts of charity.</div>
+        <div>Document</div>
+        <div>If the patient chooses to fast despite risk, <b>record this and the advice given</b> in the notes.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Knowing the exemptions and alternatives (non-consecutive fasts, winter fasting, fidyah) lets you offer genuinely patient-centred advice rather than a blunt "don't fast". Most people with diabetes will fast regardless, so the realistic goal is risk-minimisation plus clear documentation that informed advice was given.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 4 · TREAT (metformin + SU) -->
+  <div class="node" data-type="TREAT" data-step="4">
+    <div class="node-head">
+      <div class="node-num">4</div>
+      <div>
+        <span class="node-tag">Treat</span>
+        <h3>Medication 1 — Metformin &amp; Sulfonylureas</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">General principle: the <b>bigger dose moves to iftar</b>, and favour agents with a low hypoglycaemia risk. The two key adjustments:</p>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">Metformin — total dose UNCHANGED</div>
+          <div class="b-drug">Re-time around iftar/suhoor</div>
+          <div class="b-note"><b>OD</b> → take at <b>iftar</b>. <b>BD</b> → iftar + suhoor. <b>TDS</b> → morning dose at suhoor, <b>combine afternoon + evening at iftar</b>. <b>MR/prolonged-release</b> → take at iftar.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Sulfonylurea — hypo risk</div>
+          <div class="b-drug">Switch &amp; reduce <span class="pill pill-amber">caution</span></div>
+          <div class="b-note">Switch to a newer SU (<b>gliclazide, glimepiride</b>) where possible; <b>avoid glibenclamide</b>. OD → take at iftar, reduce dose if well-controlled. BD → iftar dose unchanged, <b>reduce the suhoor dose</b>.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">SU combination tablets</div>
+          <div class="b-drug">Reduce / omit morning</div>
+          <div class="b-note">Once-daily SU combination → take at iftar, consider <b>reducing dose by 50%</b>. Twice-daily SU combination → <b>omit the morning dose</b>, take the normal dose at iftar.</div>
+        </div>
+      </div>
+      <div class="note mt8">ℹ️ Metformin's glucose-lowering doesn't depend on meal timing and it carries minimal hypo risk, so only the timing changes. Sulfonylureas are the main oral hypo culprit during fasting — hence switching agent and trimming the pre-dawn (suhoor) dose.</div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        The suhoor dose is the dangerous one: a sulfonylurea taken pre-dawn acts through the long daytime fast with nothing to eat, so it's reduced or omitted, while the iftar dose (taken with the evening meal) is safer and largely preserved. Glibenclamide is specifically avoided because its long action and high hypoglycaemia rate make it the worst SU for fasting.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 5 · TREAT (other agents) -->
+  <div class="node" data-type="TREAT" data-step="5">
+    <div class="node-head">
+      <div class="node-num">5</div>
+      <div>
+        <span class="node-tag">Treat</span>
+        <h3>Medication 2 — SGLT2i, Incretins, Glinides &amp; Pioglitazone</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <div class="kv">
+        <div>SGLT2 inhibitors</div>
+        <div><b>No dose change</b> — take with <b>iftar</b>. Drink extra clear fluids in non-fasting hours. <b>Use with caution</b> if at risk of fluid depletion; many stratify SGLT2i patients as high risk and consider pausing during Ramadan (euglycaemic DKA risk).</div>
+        <div>DPP-4 inhibitors</div>
+        <div><b>No dose modifications</b> (low hypo risk) — e.g. sitagliptin, linagliptin, alogliptin.</div>
+        <div>GLP-1 receptor agonists</div>
+        <div><b>No dose modifications.</b> If on <b>oral semaglutide (Rybelsus)</b>, take the tablet at iftar and wait 30 minutes before eating.</div>
+        <div>Pioglitazone (TZD)</div>
+        <div><b>No dose modifications</b> — can be taken with iftar or suhoor.</div>
+        <div>Prandial glucose regulators (glinides)</div>
+        <div>e.g. repaglinide. Three-times-daily dosing may be <b>reduced/redistributed to two doses</b> taken with iftar and suhoor.</div>
+        <div>Acarbose</div>
+        <div>Low hypo risk; take with meals (iftar/suhoor). Generally no specific change.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        The incretin-based agents (DPP-4i, GLP-1 RA), pioglitazone and acarbose are favoured in Ramadan precisely because they don't cause hypoglycaemia, so they generally need no dose change. SGLT2 inhibitors are the exception — their diuretic effect risks dehydration and euglycaemic DKA over a long fast, which is why many clinicians up-stratify these patients and consider pausing the drug.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 6 · TREAT (insulin) -->
+  <div class="node" data-type="TREAT" data-step="6">
+    <div class="node-head">
+      <div class="node-num">6</div>
+      <div>
+        <span class="node-tag">Treat</span>
+        <h3>Medication 3 — Insulin-Treated T2DM</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Insulin-treated T2D is at least high risk (Category 1–2). Proceed only with experience of safe fasting, education and SMBG — ideally with specialist input.</p>
+      <div class="kv">
+        <div>Basal insulin</div>
+        <div>Moderate risk with regular SMBG. Give at iftar; <b>reduce the dose by ~15–20%</b> if well-controlled to protect against daytime hypo.</div>
+        <div>Basal–bolus</div>
+        <div>Keep basal (reduced as above); give bolus with iftar and (smaller) with suhoor; <b>omit the daytime (lunch) bolus</b> as no meal is eaten.</div>
+        <div>Premixed / biphasic insulin</div>
+        <div>Give the <b>usual evening dose at iftar</b>; at suhoor give a <b>reduced</b> dose (often ~50% of the former morning dose). Reverse the larger/smaller timing so the bigger dose is at iftar.</div>
+        <div>Hypo monitoring</div>
+        <div>Intensify SMBG (incl. mid-afternoon, the highest-risk time). Break the fast if BG &lt;3.9 mmol/L.</div>
+        <div>Who needs specialist input</div>
+        <div>No prior safe-fasting experience, brittle control, recurrent hypo, or T1D → refer to the diabetes team before Ramadan.</div>
+      </div>
+      <div class="note mt8">ℹ️ Detailed insulin titration in fasting is specialist territory — this is a primary-care framework. Use the diabetes team for any insulin-treated patient without a track record of safe fasting.</div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Insulin is the highest-hypo-risk therapy during fasting, so the universal moves are to reduce basal modestly, omit the daytime prandial dose (there's no daytime meal), and shift the larger premix dose to iftar. Because individual regimens vary so much, insulin-treated patients without proven safe fasting belong with the specialist team.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 7 · LIFESTYLE -->
+  <div class="node" data-type="LIFESTYLE" data-step="7">
+    <div class="node-head">
+      <div class="node-num">7</div>
+      <div>
+        <span class="node-tag">Lifestyle</span>
+        <h3>Diet, Hydration &amp; Exercise During Ramadan</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <div class="lsgrid">
+        <div class="lstile"><b>Eat suhoor as late as possible</b> A late pre-dawn meal shortens the effective daytime fast and reduces hypo/hyperglycaemia swings.</div>
+        <div class="lstile"><b>Choose slow-release carbs</b> High-fibre, starchy foods that release energy slowly — chapatis, rice, oat cereals, grains, seeds, beans &amp; pulses.</div>
+        <div class="lstile"><b>Stay well hydrated</b> Drink plenty of water between iftar and suhoor; minimise caffeine (diuretic) to avoid dehydration.</div>
+        <div class="lstile"><b>Avoid fried &amp; sugary foods</b> Limit fried items (pakoras, samosas) and sugary foods; use Ramadan as a chance to make healthier choices.</div>
+        <div class="lstile"><b>Go easy on dates</b> Don't over-consume dates at iftar — they're high in sugar and spike glucose.</div>
+        <div class="lstile"><b>Plenty of fruit &amp; vegetables</b> Include fresh fruit, vegetables and salads for fibre and satiety.</div>
+        <div class="lstile"><b>Light-to-moderate exercise</b> Advisable; avoid strenuous activity during fasting hours and the period just before iftar (hypo risk).</div>
+        <div class="lstile"><b>Tarawih prayers count</b> The physical activity of nightly prayers adds up — factor it into hypo risk after iftar.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        A Ramadan nutrition plan — late suhoor, slow-release carbohydrate, good hydration and moderate sugar — flattens the glucose excursions that make fasting risky, while still respecting the cultural foods of the month. Counselling on dates and fried foods is practical and specific, which is what makes the advice land.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 8 · REFER -->
+  <div class="node" data-type="REFER" data-step="8">
+    <div class="node-head">
+      <div class="node-num">8</div>
+      <div>
+        <span class="node-tag">Refer</span>
+        <h3>Referral, New Medication Timing &amp; Specialist Input</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <div class="kv">
+        <div><span class="pill pill-purple">Diabetes specialist team</span></div>
+        <div>Type 1 diabetes, insulin-treated T2D <b>without</b> safe-fasting experience, recurrent/disabling hypoglycaemia, advanced complications, or CKD 4–5 who still wish to fast.</div>
+        <div>Initiate new agents early</div>
+        <div>Any new antidiabetic medication should ideally be started <b>6–8 weeks before</b> Ramadan, not during it, so tolerance &amp; effect are known.</div>
+        <div>Consider switching agents</div>
+        <div>Pre-Ramadan, consider moving high-hypo drugs (glibenclamide, certain insulins) to lower-risk alternatives (DPP-4i, GLP-1 RA, gliclazide).</div>
+        <div>Pregnancy</div>
+        <div>Pregnant women are exempt; pre-existing diabetes or insulin/SU-treated GDM in pregnancy is very high risk → specialist obstetric/diabetes care.</div>
+        <div>Community / cultural working</div>
+        <div>Work with local religious scholars and community leaders; deliver group education and Ramadan-specific leaflets where there's a large fasting population.</div>
+        <div>Acute illness in Ramadan</div>
+        <div>New illness while fasting → break the fast, apply Sick Day Rules, and resume fasting once recovered.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Starting new agents 6–8 weeks ahead is a recurring theme because you never want to discover a drug's hypoglycaemia or GI effects mid-fast. Engaging community and faith leaders is evidence-based: it improves reach and trust, and embeds the safety messages where patients actually hear them.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 9 · SAFETY -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-head">
+      <div class="node-num">9</div>
+      <div>
+        <span class="node-tag">Safety</span>
+        <h3>Fasting &amp; Illness — Shared Decision &amp; Safety-Netting</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">An individual's decision to fast should weigh spiritual benefit against the risk of exacerbating illness. Frame it as a shared decision and safety-net clearly.</p>
+      <div class="kv">
+        <div>Break / abstain if…</div>
+        <div>The illness is <b>worsened by fasting</b>, recovery is <b>delayed by fasting</b>, or there's <b>substantial fear</b> of either — judged by prior experience, common knowledge, or a clinician's advice.</div>
+        <div><span class="pill pill-red">Break the fast now</span></div>
+        <div>BG &lt;3.9 or &gt;16.7 mmol/L, hypo symptoms, or acute illness (restate from Step 1).</div>
+        <div>Resume when well</div>
+        <div>Resume fasting when health is back to normal; if unsure, seek medical advice.</div>
+        <div>COVID / vaccines</div>
+        <div>Receiving a COVID-19 (or other) vaccine does <b>not</b> invalidate the fast.</div>
+        <div>Reassure the exempt</div>
+        <div>Those who can't fast can give donations, feed others, and pay fidyah — they're not failing their faith.</div>
+        <div>Document &amp; follow up</div>
+        <div>Record the risk category, the plan, the advice given, and arrange review during/after Ramadan.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        The "break/abstain if fasting worsens illness or delays recovery" framework is the religiously-grounded counterpart to the medical risk stratification, and quoting it (with the reassurance that testing and vaccines don't break the fast) is what makes the consultation both safe and culturally respectful. Documenting the shared decision protects the patient and the clinician.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /alg-flow -->
+
+<!-- ── FOOTER ────────────────────────────────────────────────── -->
+<div class="alg-foot" style="max-width:820px; margin:32px auto 0; padding:0 16px;">
+  <div style="background:white;border:1px solid #e2e0da;border-radius:10px;padding:16px 20px;font-size:.8rem;color:#6b6762;line-height:1.6;">
+    <strong style="color:#1a1917;">Educational use only.</strong> Pathway based on:
+    Gilani A (2023) <em>How to manage diabetes in Ramadan</em> (updated March 2023). Diabetes &amp; Primary Care 25: 27–9 ·
+    IDF-DAR (2021) Diabetes and Ramadan: Practical Guidelines ·
+    British Islamic Medical Association (2020) Ramadan Rapid Review risk table ·
+    Hassanein M et al (2017) Diabetes Res Clin Pract 126:303–16 ·
+    NICE NG28 Type 2 diabetes. Risk categories are a shared-decision guide — patients should follow medical advice where fasting is likely to cause harm. Always individualise.
+  </div>
+</div>
+
+<!-- ── JAVASCRIPT ─────────────────────────────────────────────── -->
+<script>
+(function () {
+  const STORE_KEY = 'rgp.alg.t2dm-ramadan.v1';
+  const flow      = document.getElementById('flow');
+  const pDone     = document.getElementById('pDone');
+  const pFill     = document.getElementById('pFill');
+  const resetBtn  = document.getElementById('resetBtn');
+  const total     = 9;
+
+  // ── Load saved state ────────────────────────────────────────
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch(_) {}
+
+  // ── Apply to checkboxes ──────────────────────────────────────
+  flow.querySelectorAll('.node').forEach(node => {
+    const step = node.dataset.step;
+    const cb   = node.querySelector('input[type="checkbox"]');
+    if (!cb) return;
+    if (saved[step]) {
+      cb.checked = true;
+      node.classList.add('done');
+    }
+    cb.addEventListener('change', () => {
+      node.classList.toggle('done', cb.checked);
+      saved[step] = cb.checked;
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(saved)); } catch(_) {}
+      updateProgress();
+    });
+  });
+
+  // ── Progress bar ─────────────────────────────────────────────
+  function updateProgress() {
+    const n = Object.values(saved).filter(Boolean).length;
+    pDone.textContent = n;
+    pFill.style.width = (n / total * 100) + '%';
+  }
+  updateProgress();
+
+  // ── Reset ────────────────────────────────────────────────────
+  resetBtn.addEventListener('click', () => {
+    if (!confirm('Reset all progress?')) return;
+    saved = {};
+    try { localStorage.removeItem(STORE_KEY); } catch(_) {}
+    flow.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    flow.querySelectorAll('.node').forEach(n => n.classList.remove('done'));
+    updateProgress();
+  });
+
+  // ── Why? drawers ──────────────────────────────────────────────
+  flow.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const drawer  = btn.nextElementSibling;
+      const isOpen  = drawer.classList.contains('open');
+      drawer.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', !isOpen);
+    });
+  });
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

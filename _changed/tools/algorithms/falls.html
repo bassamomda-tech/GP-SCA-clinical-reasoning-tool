@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Falls Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>/* ── Shared Algorithm Styles ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;-webkit-text-size-adjust:100%}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#f7f6f3;color:#1a1a2e;min-height:100vh;padding:0 0 4rem}
+h3{font-family:'Source Serif 4',Georgia,serif;font-size:1.15rem;font-weight:600;line-height:1.3}
+b{font-weight:600}
+small{font-size:.8rem}
+
+/* Banner */
+.stem-banner{display:flex;align-items:center;gap:1rem;background:#1a1a2e;color:#fff;padding:1rem 1.4rem;border-bottom:3px solid #e63946}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{font-size:1rem;display:block}
+.stem-banner small{opacity:.7;font-size:.78rem}
+
+/* Progress */
+.alg-progress{display:flex;align-items:center;gap:.75rem;padding:.6rem 1.4rem;background:#fff;border-bottom:1px solid #e5e3dc;font-size:.82rem;position:sticky;top:0;z-index:100;flex-wrap:wrap}
+.alg-progress span:first-child{font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:#666}
+.pcount{font-weight:700;color:#1a1a2e;min-width:2.5rem}
+.pbar{flex:1;min-width:80px;height:6px;background:#e5e3dc;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;width:0%;background:linear-gradient(90deg,#2a9d8f,#52b788);border-radius:3px;transition:width .4s ease}
+.reset{margin-left:auto;font-size:.75rem;padding:.3rem .7rem;border:1px solid #ccc;border-radius:4px;background:#fff;cursor:pointer;color:#666;font-family:inherit}
+.reset:hover{background:#fee;border-color:#e63946;color:#e63946}
+
+/* Flow */
+.alg-flow{max-width:760px;margin:1.5rem auto;padding:0 1rem;display:flex;flex-direction:column;align-items:center;gap:0}
+.connector{width:2px;height:24px;background:linear-gradient(180deg,#d1cec7,#b8b3a8);flex-shrink:0}
+
+/* Node */
+.node{width:100%;background:#fff;border-radius:12px;border:1.5px solid #e5e3dc;box-shadow:0 2px 8px rgba(0,0,0,.06);overflow:hidden;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.node.done{border-color:#52b788;background:#fafff8}
+.node.done .node-num{background:#52b788}
+
+/* Node header */
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:50%;background:#1a1a2e;color:#fff;font-weight:700;font-size:.85rem;flex-shrink:0}
+.node-head{display:flex;align-items:flex-start;gap:.75rem;padding:1rem 1rem .6rem;flex:1}
+.node-tag{display:inline-block;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:.15rem .5rem;border-radius:3px;background:#f0ece3;color:#666;margin-bottom:.3rem}
+.node[data-type="SAFETY"] .node-tag{background:#fde8e8;color:#c0392b}
+.node[data-type="DIAGNOSE"] .node-tag{background:#e8f4fd;color:#1a6fa3}
+.node[data-type="REFER"] .node-tag{background:#f3e8fd;color:#7b2fa8}
+.node[data-type="TREAT"] .node-tag{background:#e8fdf0;color:#1a7a4a}
+.node[data-type="LIFESTYLE"] .node-tag{background:#fdf8e8;color:#8a6a00}
+.node-row{display:flex;align-items:flex-start;gap:0}
+.node-tick{padding:.8rem .8rem .8rem 0;display:flex;align-items:center}
+.node-tick input[type=checkbox]{width:1.1rem;height:1.1rem;accent-color:#52b788;cursor:pointer}
+.tlbl{font-size:.75rem;color:#888;margin-left:.3rem;cursor:pointer}
+
+/* Node body */
+.node-body{padding:.2rem 1rem 1rem;font-size:.88rem;line-height:1.6;color:#333}
+.node-body>p,.node-body>span{display:block;margin-bottom:.6rem;font-size:.88rem}
+
+/* Key-Value Grid */
+.kv{display:grid;grid-template-columns:minmax(110px,1fr) 3fr;gap:0;border:1px solid #e5e3dc;border-radius:8px;overflow:hidden;margin:.5rem 0;font-size:.84rem}
+.kv>div{padding:.55rem .75rem;border-bottom:1px solid #eee}
+.kv>div:nth-child(odd){background:#f9f8f5;font-weight:600;color:#444;border-right:1px solid #e5e3dc}
+.kv>div:nth-child(even){background:#fff}
+.kv>div:nth-last-child(-n+2){border-bottom:none}
+
+/* Red flag grid */
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.5rem;margin:.5rem 0}
+.rftile{background:linear-gradient(135deg,#fff5f5,#ffeaea);border:1.5px solid #f5c6cb;border-radius:8px;padding:.65rem .75rem;font-size:.83rem;line-height:1.5}
+.rftile b{color:#c0392b;display:block;margin-bottom:.15rem}
+
+/* Branch */
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.6rem;margin:.5rem 0}
+.b-card{background:#f8fffe;border:1.5px solid #b2dfdb;border-radius:8px;padding:.65rem .75rem;font-size:.83rem}
+.b-cond{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#777;margin-bottom:.3rem}
+.b-drug{font-size:.95rem;font-weight:700;color:#1a1a2e;margin-bottom:.25rem}
+.b-note{font-size:.8rem;color:#555;line-height:1.4}
+
+/* Ladder */
+.ladder{border-left:3px solid #2a9d8f;margin:.5rem 0;padding-left:0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:flex-start;gap:0;padding:.5rem .75rem;border-bottom:1px solid #e8f5f3;background:#fbfffd;font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rn{background:#2a9d8f;color:#fff;font-size:.7rem;font-weight:700;padding:.2rem .5rem;border-radius:3px;flex-shrink:0;margin-right:.6rem;margin-top:.05rem;white-space:nowrap}
+.rt{line-height:1.5;flex:1}
+
+/* Lifestyle grid */
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.5rem;margin:.5rem 0}
+.lstile{background:linear-gradient(135deg,#f0fdf4,#e8f5e9);border:1.5px solid #a8d5b5;border-radius:8px;padding:.65rem .75rem;font-size:.83rem;line-height:1.5}
+.lstile b{color:#1a7a4a;display:block;margin-bottom:.15rem}
+
+/* Pills */
+.pill{display:inline-block;font-size:.68rem;font-weight:700;padding:.12rem .45rem;border-radius:20px;vertical-align:middle;margin:0 .1rem;letter-spacing:.03em}
+.pill-red{background:#fde8e8;color:#c0392b;border:1px solid #f5c6cb}
+.pill-purple{background:#f3e8fd;color:#7b2fa8;border:1px solid #d9b3f5}
+.pill-blue{background:#e8f4fd;color:#1a6fa3;border:1px solid #b3d9f5}
+.pill-teal{background:#e8fdf9;color:#0d7a6b;border:1px solid #b3f0e4}
+.pill-amber{background:#fdf8e8;color:#8a6a00;border:1px solid #f5e6a3}
+.pill-green{background:#e8fdf0;color:#1a7a4a;border:1px solid #a8f5c4}
+.pill-grey{background:#f0f0f0;color:#555;border:1px solid #ddd}
+
+/* Why drawer */
+.why-row{border-top:1px solid #f0ece3;padding:.5rem 1rem}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.8rem;font-weight:600;color:#777;font-family:inherit;display:flex;align-items:center;gap:.3rem;padding:.2rem 0}
+.why-btn:hover{color:#1a1a2e}
+.why-btn .caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;font-size:.82rem;color:#555;line-height:1.6;padding:.5rem 0 .2rem;border-top:1px dashed #e5e3dc;margin-top:.4rem}
+.why-drawer.open{display:block}
+
+/* Footer */
+.alg-foot{max-width:760px;margin:1rem auto;padding:0 1rem;font-size:.77rem;color:#888;line-height:1.6;text-align:center}
+.alg-foot strong{color:#555}
+
+@media(max-width:520px){
+  .rfgrid,.lsgrid,.branch{grid-template-columns:1fr}
+  .kv{grid-template-columns:1fr;font-size:.82rem}
+  .kv>div:nth-child(odd){border-right:none;border-bottom:1px solid #e5e3dc}
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body data-storage-key="rgp.alg.falls.v1">
+<div class="stem-banner">
+  <div class="sb-icon">🤕</div>
+  <div><b>Falls — Assessment &amp; Prevention in Older Adults</b>
+  <small>Multifactorial falls risk assessment | UK primary care | NICE NG191</small></div>
+</div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — a fall is a syndrome, not a diagnosis: identify the injured or acutely-unwell patient, then assess the multifactorial causes to prevent the next fall. Modify risks and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Falls assessment</span><div class="body">Circumstances (before/during/after), frequency, injury, fear of falling. Lying/standing BP, ECG, medication review, gait &amp; balance, vision, cognition.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — injury / acute cause</span><span class="ttl">Injury or acute medical cause?</span><div class="body">Head injury (esp. anticoagulated) · fracture (#NOF — shortened, externally rotated leg) · syncope/cardiac cause · acute illness (sepsis, stroke, arrhythmia, hypoglycaemia).</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency / admit</span><div class="body">Significant injury, suspected fracture, head injury on anticoagulant, or acute medical cause → emergency assessment.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Investigate · Multifactorial</span><span class="ttl">Find modifiable risks</span><div class="body">Postural hypotension, polypharmacy, vision, footwear, environment, MSK, neurological, continence.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · modifiable risk factors</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Medication / cardiovascular</div><div class="box act"><span class="ttl">Review drugs + BP</span><div class="body">Reduce culprit drugs (sedatives, antihypertensives, anticholinergics); treat postural hypotension; ECG for arrhythmia.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">Strength &amp; balance</div><div class="box act"><span class="ttl">Exercise programme</span><div class="body">Strength and balance training; physiotherapy; walking aids; vision correction.</div></div></div>
+      <div class="col"><div class="blabel">Bone health / environment</div><div class="box act"><span class="ttl">Prevent injury</span><div class="body">Assess osteoporosis (FRAX/DXA), treat; home hazard assessment; footwear; address continence.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> fracture / head injury / acute medical cause. <span class="pill pill-purple">Falls service / community geriatrics</span> recurrent falls or multifactorial risk; <span class="pill pill-purple">bone health / FLS</span> fragility fracture for osteoporosis treatment.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · strength, balance &amp; environment</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; prevention</span><span class="ttl">The active ingredients of falls prevention</span><div class="body"><b>Strength &amp; balance training</b> (e.g. Otago, tai chi) is the highest-yield intervention · <b>home-hazard assessment</b> and modification · <b>vision review</b> and single-lens distance glasses for outdoor use · appropriate footwear · <b>vitamin D / bone protection</b> and FRAX/DXA · <b>deprescribe</b> culprit drugs (sedatives, antihypertensives causing postural drop, anticholinergics) · footcare and assistive devices.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Recheck &amp; urgent return advice</span><div class="body"><b>Review</b> after the multifactorial intervention; re-check postural BP and medication changes. <b>999 / same-day</b> for head injury (especially if anticoagulated — CT head), suspected hip/long-bone fracture, syncope with cardiac features, or a fall as the presentation of acute illness (sepsis, stroke, MI, GI bleed). Provide a <b>get-up-after-a-fall</b> plan and call-alarm where appropriate.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>A fall is a chance to prevent the next one:</b> a multifactorial assessment — medication review, postural BP, strength/balance and bone health — reduces future falls and fractures. Beware head injury in anticoagulated patients.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-row"><div class="node-head"><div class="node-num">1</div><div><span class="node-tag">Safety</span><h3>Red flags — injuries &amp; serious underlying causes</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
+  <div class="node-body">
+    <span>After a fall, screen for serious injury and underlying cause BEFORE a routine falls assessment.</span>
+    <div class="rfgrid">
+      <div class="rftile"><b>Head injury with LOC / confusion</b> Loss of consciousness, amnesia, vomiting → same-day CT head (NICE head injury criteria: anticoagulation, age &gt;65, skull fracture)</div>
+      <div class="rftile"><b>Hip fracture</b> Unable to weight-bear, shortened/externally rotated leg, hip pain → 999 (displaced NOF fracture — surgical emergency, mortality 30% at 1 year without repair)</div>
+      <div class="rftile"><b>Vertebral fracture</b> Acute back pain after minor trauma in &gt;65 or osteoporosis → XR spine; if severe/neurological signs → 999</div>
+      <div class="rftile"><b>Syncope preceding fall</b> "Blacked out" before falling, palpitations, chest pain → same-day ECG + cardiac review (cardiac syncope, arrhythmia, PE)</div>
+      <div class="rftile"><b>Long lie on floor (&gt;1h)</b> Unable to get up, pressure injury, dehydration, rhabdomyolysis → same-day bloods (CK, U&amp;E, AKI risk)</div>
+      <div class="rftile"><b>New neurological symptoms</b> New weakness, facial droop, ataxia, dysarthria at time of fall → 999 (stroke/TIA — fall was consequence of stroke)</div>
+      <div class="rftile"><b>Hypoglycaemia</b> Known diabetes + confused/sweaty → BM stat; treat &lt;4 mmol/L immediately</div>
+      <div class="rftile"><b>Safeguarding concern</b> Multiple unexplained falls/bruising in care setting or with carer present → safeguarding referral (elder abuse)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+  <div class="why-drawer">Hip fracture 30-day mortality is 7–10%, rising to 30% at 1 year without surgical repair — NICE mandates surgery within 36 hours. Long lie (&gt;1 hour) causes rhabdomyolysis in 50% of cases — AKI and hyperkalaemia can be fatal without IV fluids. Cardiac syncope is the cause in ~15% of "falls" — missing this means missing arrhythmias (Stokes-Adams attacks, HOCM, aortic stenosis).</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-row"><div class="node-head"><div class="node-num">2</div><div><span class="node-tag">Diagnose</span><h3>Falls risk screening — identify high-risk patients proactively</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
+  <div class="node-body">
+    <span>NICE NG191: ask all patients aged ≥65 about falls annually. Two or more falls in 12 months = high risk; offer full multifactorial assessment.</span>
+    <div class="kv">
+      <div>Falls history</div><div>Number in last 12 months, circumstances (indoor/outdoor, activity), time of day, witnesses, LOC, any injury. Near-miss falls count</div>
+      <div>NICE trigger</div><div>1 fall + injury OR 2+ falls in 12 months = full multifactorial falls risk assessment (NICE NG191)</div>
+      <div>Timed Up and Go (TUG)</div><div>Stand from chair, walk 3m, turn, walk back, sit. &gt;12 seconds = high fall risk. Simple, validated, takes 1 minute</div>
+      <div>Balance/gait</div><div>Observe while walking: wide-based gait, shuffling, reduced arm swing (Parkinson's), off-balance turning (cerebellar)</div>
+      <div>Fear of falling</div><div>Assess falls efficacy — "Are you afraid of falling?" Fear itself causes activity restriction, deconditioning, and more falls (vicious cycle)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+  <div class="why-drawer">Falls are the leading cause of accidental death in over-65s in the UK. One third of adults &gt;65 fall each year; 50% of &gt;80s. TUG test &gt;12 seconds has 87% sensitivity for identifying high-risk fallers. Many patients do not volunteer falls history — they fear losing independence. NICE NG191 (2023) mandates proactive annual questioning.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-row"><div class="node-head"><div class="node-num">3</div><div><span class="node-tag">Diagnose</span><h3>Multifactorial risk factor assessment — DAME mnemonic</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
+  <div class="node-body">
+    <span>Falls are multifactorial. Identify ALL contributing factors — each one addressed reduces fall rate by 10–15%.</span>
+    <div class="kv">
+      <div><b>D</b> — Drugs</div><div>Polypharmacy (&gt;4 drugs doubles fall risk). High-risk: <b>sedatives, opioids, antihypertensives</b> (postural hypotension), diuretics, antiepileptics, antipsychotics, tricyclics. Review ALL medications including OTC</div>
+      <div><b>A</b> — Ageing/neurological</div><div>Parkinson's (festination, freezing), cerebellar ataxia, peripheral neuropathy, dementia, stroke, Lewy body disease</div>
+      <div><b>M</b> — Mobility/musculoskeletal</div><div>Muscle weakness (sarcopenia), osteoarthritis (hip/knee), foot problems, inappropriate footwear, previous hip fracture, kyphosis</div>
+      <div><b>E</b> — Environmental</div><div>Loose rugs, poor lighting, slippery floors, no grab rails, high bed/chair, stairs without handrail, cluttered pathways</div>
+      <div>Cardiovascular</div><div>Postural hypotension (drop ≥20 systolic on standing), carotid sinus hypersensitivity, arrhythmia, aortic stenosis</div>
+      <div>Sensory</div><div>Visual impairment (cataracts, glaucoma, macular degeneration), peripheral neuropathy affecting proprioception</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+  <div class="why-drawer">Multifactorial intervention reduces fall rate by 24% vs usual care (Cochrane 2019). Each modifiable risk factor corrected reduces falls independently. Psychotropic medication use doubles fall risk — benzodiazepines, antipsychotics and tricyclics are the highest-risk drugs. Postural hypotension is found in 30% of community-dwelling older adults and is often drug-induced and reversible.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-row"><div class="node-head"><div class="node-num">4</div><div><span class="node-tag">Diagnose</span><h3>Targeted examination</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Postural BP</div><div>Supine BP → standing at 1 min and 3 min. Drop ≥20 systolic = postural hypotension. Symptoms: dizziness, greyout on standing</div>
+      <div>Gait &amp; balance</div><div>TUG test. Observe: foot clearance, step length, arm swing, turning. Berg Balance Scale if formal assessment needed</div>
+      <div>Muscle strength</div><div>Stand from chair without hands (chair stand test — 5 in 30s = adequate). Sarcopenia: grip strength &lt;16 kg (F) / &lt;27 kg (M)</div>
+      <div>Neurology</div><div>Proprioception (big toe joint position sense), vibration (tuning fork at ankle), Romberg's test, cranial nerves, cerebellar testing</div>
+      <div>Vision</div><div>Snellen chart. Refer optician if not reviewed in 2 years. Cataracts, bifocal lenses (increase fall risk on stairs)</div>
+      <div>Feet &amp; footwear</div><div>Peripheral pulses, sensation, nail care, foot deformity. Assess footwear: non-slip sole, correct fit, laces/fastenings secure</div>
+      <div>Cognitive screen</div><div>AMT or MoCA. Cognitive impairment triples fall risk. Affects rehabilitation capacity</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+  <div class="why-drawer">The 5-times sit-to-stand test predicts future falls with 86% sensitivity. Romberg's test positive (falls with eyes closed) = proprioceptive deficit not cerebellar — important for targeting vitamin D and B12. Bifocal/varifocal glasses increase falls on stairs by 40% — single-lens glasses recommended for outdoor use in high-risk patients.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-row"><div class="node-head"><div class="node-num">5</div><div><span class="node-tag">Diagnose</span><h3>Investigations</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Bloods <span class="pill pill-blue">First-line</span></div><div>FBC (anaemia), U&amp;E (hyponatraemia → falls risk), glucose (hypoglycaemia), calcium, TFTs (hypothyroidism/hyperthyroidism), B12</div>
+      <div>Vitamin D <span class="pill pill-blue">Essential</span></div><div>25-OH vitamin D. Deficiency (&lt;30 nmol/L) causes proximal myopathy and increases fall risk. Universal supplementation in &gt;65s recommended</div>
+      <div>ECG</div><div>If syncope preceding fall, palpitations, or bradicardia: AF, heart block, prolonged QTc (drug-induced), Brugada</div>
+      <div>DEXA scan</div><div>Fracture risk assessment (FRAX score) for all fallen patients &gt;50. Osteoporosis = silent co-morbidity. FRAX &gt;20% 10yr risk = treatment threshold</div>
+      <div>Long lie bloods</div><div>If &gt;1 hour on floor: CK (&gt;1000 = significant rhabdomyolysis), U&amp;E, urine dipstick (myoglobinuria)</div>
+      <div>Carotid sinus massage</div><div>Consider if unexplained/situational falls — specialist-supervised in cardiology/falls clinic (not primary care)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+  <div class="why-drawer">Vitamin D deficiency affects 1 in 5 UK adults and up to 50% of care home residents. Supplementation (800 IU daily) reduces fall rate by 19% and fracture rate by 23% (meta-analysis, Bischoff-Ferrari 2009). FRAX score changes management for most fallen older adults — osteoporosis treatment reduces re-fracture risk by 30–50%. Hyponatraemia (Na &lt;130) triples fall risk independently of all other factors.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-row"><div class="node-head"><div class="node-num">6</div><div><span class="node-tag">Refer</span><h3>Referral criteria</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Hip fracture, head injury with LOC, acute stroke at time of fall, unable to weight-bear with severe pain</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Long lie &gt;1h with AKI risk | Suspected vertebral fracture with neurology | Cardiac syncope (ECG abnormality)</div>
+      <div><span class="pill pill-purple">Falls clinic</span></div><div>≥2 falls in 12 months + functional impairment | Unexplained syncope | Postural hypotension not responding to medication adjustment | Complex multifactorial falls</div>
+      <div><span class="pill pill-grey">Routine referrals</span></div><div>Physiotherapy (strength and balance — strongest evidence) | Occupational therapy (home hazard assessment) | Optician | Podiatry | Osteoporosis service (if FRAX high) | Neurologist if Parkinson's/cerebellar</div>
+      <div><span class="pill pill-grey">Memory clinic</span></div><div>If cognitive impairment identified on screen — dementia triples fall risk and requires specific management</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+  <div class="why-drawer">Specialist falls clinics reduce fall rate by 30–40% in high-risk patients (NICE NG191). Physiotherapy for strength and balance is the single most effective intervention (NNT approximately 16 to prevent one fall). Home hazard assessment by OT reduces falls by 21% in high-risk patients — especially in those who have previously fallen indoors. Referral to multiple services simultaneously is appropriate and expected.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-row"><div class="node-head"><div class="node-num">7</div><div><span class="node-tag">Treat</span><h3>Treatment — medication review &amp; pharmacological interventions</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Deprescribing <span class="pill pill-teal">Priority</span></div><div>Stop/reduce: <b>benzodiazepines</b> (taper over 4–8 weeks), <b>antipsychotics</b>, <b>tricyclic antidepressants</b>. Switch to SSRIs if antidepressant needed. Each deprescribed drug reduces falls by ~15%</div>
+      <div>Antihypertensives</div><div>If postural hypotension: reduce dose or switch from alpha-blockers/nitrates/diuretics. Target SBP &gt;120 mmHg standing. Do not sacrifice BP control entirely</div>
+      <div>Vitamin D <span class="pill pill-teal">Universal</span></div><div>Vitamin D3 800–1000 IU OD for all &gt;65. Colecalciferol preferred. For deficiency (&lt;30 nmol/L): loading regimen 300,000 IU over 6–10 weeks then maintenance</div>
+      <div>Calcium</div><div>Only supplement if dietary intake &lt;700 mg/day. Calcium + Vitamin D reduces fall rate by 19% and fracture by 23%. Avoid over-supplementation (CV risk)</div>
+      <div>Osteoporosis treatment</div><div>FRAX 10yr hip fracture &gt;3% OR major osteoporotic fracture &gt;20% → alendronate 70mg weekly (first-line). Check renal function (eGFR &gt;35) and dental health before bisphosphonate</div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Vitamin D3 800 IU OD</b> — all patients &gt;65 years. Calcium supplementation if dietary intake inadequate</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Deprescribe high-risk medications</b> — use STOPPFall criteria. Gradual benzodiazepine taper. Switch antidepressants if tricyclic</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Bisphosphonate if osteoporosis criteria met</b> — alendronate 70 mg PO weekly. Counsel on administration (30 min upright, fasting). Review after 5 years (drug holiday consideration)</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Treat underlying conditions</b> — Parkinson's optimisation, heart rate control if AF, cataract surgery, hearing aids, diabetic neuropathy management</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+  <div class="why-drawer">STOPPFall criteria (Seppala et al 2021): 13 drug classes independently associated with falls — benzodiazepines increase fall risk 1.5x, antipsychotics 1.5x, tricyclics 2x. Structured deprescribing of psychotropics reduced falls by 66% in a Campbell RCT (1999). Cataract surgery reduces fall rate by 34% (Cochrane) — one of the most effective single interventions available.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-row"><div class="node-head"><div class="node-num">8</div><div><span class="node-tag">Lifestyle</span><h3>Exercise &amp; environmental modification — highest-evidence interventions</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Strength &amp; balance exercise</b> Otago Exercise Programme or Falls Management Exercise (FaME). 2–3 sessions/week for &gt;3 months. Reduces falls by 35–40%. Prescribe via community physiotherapy or exercise on prescription</div>
+      <div class="lstile"><b>Tai Chi</b> Reduces falls by 23–45% in community-dwelling older adults (Cochrane 2019). Particularly effective for balance. Suitable for mild-moderate frailty. Available via community leisure centres</div>
+      <div class="lstile"><b>Home hazard assessment</b> OT referral — remove trip hazards (loose rugs, trailing cables), improve lighting, install grab rails (bathroom, stairs), non-slip bath mat, raised toilet seat</div>
+      <div class="lstile"><b>Footwear review</b> Non-slip soles, adequate ankle support, well-fitting. Advise against walking in socks/slippers without grip. Podiatry for foot deformity</div>
+      <div class="lstile"><b>Personal alarm / fall detector</b> For patients living alone at high risk. Council-funded pendant alarms available. Reduces long-lie complications. Discuss with patient and family</div>
+      <div class="lstile"><b>Diet and protein intake</b> Adequate protein (1.0–1.2 g/kg/day) slows sarcopenia. Dietitian referral if weight loss or malnutrition risk (MUST score)</div>
+      <div class="lstile"><b>Vision correction</b> Annual optician review. Single-lens glasses for outdoor use if high risk on stairs. Cataract surgery if eligible — 34% fall reduction post-surgery</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+  <div class="why-drawer">Otago Exercise Programme: NNT = 10 to prevent one fall over 12 months (Robertson 2001). Home hazard assessment by OT reduces falls by 21% in high-risk patients who have previously fallen indoors. Personal alarms do not prevent falls but dramatically reduce the consequences of long lies — reducing AKI, rhabdomyolysis, pneumonia, and psychological trauma from floor-level helplessness.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-row"><div class="node-head"><div class="node-num">9</div><div><span class="node-tag">Safety</span><h3>Follow-up &amp; safety-netting</h3></div></div><div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>4–6 weeks</div><div>Review: Falls diary — any new falls? Deprescribing tolerated? Referrals accepted? Exercise programme started? Vitamin D commenced?</div>
+      <div>3 months</div><div>Formal reassessment — TUG test repeat. Review Vitamin D level. FRAX and DXA result. Bisphosphonate adherence</div>
+      <div>6–12 months</div><div>Annual falls risk review in all &gt;65s. Repeat postural BP. Review medication changes. Falls diary review</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>After any fall: "If you cannot get up, call 999. Do not lie on the floor" — educate patient and carers. New facial droop/arm weakness/speech problems = 999</div>
+      <div><span class="pill pill-amber">Same-day</span></div><div>Fall with head injury | Cannot weight-bear | New confusion after fall | Sustained fall injury not previously assessed</div>
+      <div>Falls diary</div><div>Provide NICE falls diary to patient — record date, time, activity, location, symptoms. Patterns guide cause (postural, nocturnal, activity-related)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+  <div class="why-drawer">Falls diaries improve recall accuracy by 50% and allow identification of patterns that change management (e.g., all falls occur on getting up from bed = postural hypotension; all falls on stairs = environmental). Vitamin D levels should be rechecked after loading dose at 3 months — up to 40% of patients require dose adjustment. Long-term bisphosphonate drug holidays reduce osteonecrosis of jaw risk after 5 years.</div></div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE CG161 (Falls in Older People), NICE CG146 (Osteoporosis), Cochrane: Interventions for Preventing Falls (2019), Otago Exercise Programme, STOPPFall Criteria (Seppala 2021). Adapt to individual patient context.
+</div>
+
+<script>
+(function(){
+  var KEY="rgp.alg.falls.v1";
+  var boxes=document.querySelectorAll(".node-tick input[type=checkbox]");
+  var fill=document.getElementById("pFill"),done=document.getElementById("pDone"),total=document.getElementById("pTotal");
+  if(total)total.textContent=boxes.length;
+  function save(){var s={};boxes.forEach(function(b,i){s[i]=b.checked});try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}}
+  function load(){try{var s=JSON.parse(localStorage.getItem(KEY)||"{}");boxes.forEach(function(b,i){b.checked=!!s[i];syncNode(b)})}catch(e){}}
+  function syncNode(b){var node=b.closest(".node");if(node)node.classList.toggle("done",b.checked)}
+  function update(){var n=0;boxes.forEach(function(b){if(b.checked)n++});if(done)done.textContent=n;if(fill)fill.style.width=(boxes.length?Math.round(n/boxes.length*100):0)+"%"}
+  boxes.forEach(function(b){b.addEventListener("change",function(){syncNode(b);save();update()})});
+  document.querySelectorAll(".why-btn").forEach(function(btn){btn.addEventListener("click",function(){var exp=btn.getAttribute("aria-expanded")==="true";btn.setAttribute("aria-expanded",String(!exp));var d=btn.nextElementSibling;if(d)d.classList.toggle("open",!exp)})});
+  var rb=document.getElementById("resetBtn");if(rb)rb.addEventListener("click",function(){if(confirm("Reset?")){boxes.forEach(function(b){b.checked=false;syncNode(b)});try{localStorage.removeItem(KEY)}catch(e){}update()}});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

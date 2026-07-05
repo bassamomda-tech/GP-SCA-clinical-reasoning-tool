@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Varicose Veins — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Varicose veins management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🦵",
+  title:"Varicose Veins",
+  stemTitle:"Varicose veins — ongoing management",
+  stemSub:"Primary-care management of varicose veins \u2014 conservative measures and symptom relief, recognising the complications (skin changes, ulceration, bleeding) and knowing the NICE referral thresholds for vascular intervention. NICE CG168 \u00b7 2026.",
+  guideline:"NICE CG168",
+  glance:[
+    {lbl:"Assess", val:"Symptoms + skin", sub:"complications drive referral"},
+    {lbl:"Conservative", val:"Weight, exercise", sub:"elevation, avoid standing"},
+    {lbl:"Compression", val:"If intervention unsuitable", sub:"not as sole Rx otherwise"},
+    {lbl:"Refer", val:"Symptomatic / skin changes", sub:"vascular"},
+    {lbl:"Ulcer", val:">2 weeks", sub:"leg-ulcer / vascular referral"},
+    {lbl:"Bleeding", val:"Elevate + press", sub:"999 if severe"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Assess symptoms and complications",
+      blocks:[
+        {b:"kv", rows:[
+          ["Symptoms","Aching, heaviness, itching, swelling, cramps, cosmetic concern"],
+          ["Complications","Skin changes (pigmentation, eczema, lipodermatosclerosis), <b>ulceration</b>, superficial thrombophlebitis, <b>bleeding</b>"],
+          ["Examine","Distribution, skin integrity; assess for chronic venous insufficiency"],
+          ["Exclude","DVT (acute unilateral swelling), arterial disease (check pulses before compression)"]
+        ]},
+        {b:"why", html:"Most varicose veins are a quality-of-life issue, but the presence of <strong>complications</strong> \u2014 skin changes, ulceration, bleeding, or thrombophlebitis \u2014 is what converts them into a referral. Checking arterial supply before compression avoids harming a limb with coexisting arterial disease."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 first-line", title:"Conservative measures",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"⚖️ Weight", html:"Weight loss if overweight reduces venous load and symptoms."},
+          {t:"🏃 Exercise", html:"Regular activity (calf-muscle pump); avoid prolonged standing/sitting."},
+          {t:"🦵 Elevation", html:"Elevate legs when resting to reduce swelling and aching."},
+          {t:"🧦 Compression hosiery", html:"For symptom relief \u2014 chiefly if intervention is unsuitable or while awaiting referral (check arterial supply first)."},
+          {t:"🧴 Skin care", html:"Emollients for venous eczema; treat dryness/itch to prevent breakdown."},
+          {t:"💬 Reassurance", html:"Explain natural history; address cosmetic vs medical expectations."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication", title:"Manage skin complications",
+      blocks:[
+        {b:"kv", rows:[
+          ["Venous eczema","Emollients \u00b1 a short course of topical corticosteroid for active eczema"],
+          ["No specific drug","There is no oral drug that cures varicose veins \u2014 management is conservative + intervention"],
+          ["Thrombophlebitis","Superficial thrombophlebitis: analgesia/NSAID; assess extent (proximal long-segment \u2192 refer / consider anticoagulation)"]
+        ]},
+        {b:"warn", html:"Before fitting compression, <b>confirm adequate arterial supply</b> (pulses/ABPI if doubt) \u2014 compression in arterial disease can cause ischaemia."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Symptoms and skin",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Symptoms / quality of life","Each review","Significant impact \u2192 refer for intervention"],
+          ["Skin integrity","Each review","Skin changes/eczema \u2192 refer; ulcer \u2192 leg-ulcer pathway"],
+          ["Compression tolerance","If used","Adjust class; ensure arterial supply adequate"],
+          ["New complications","Any time","Bleeding, ulceration, thrombophlebitis \u2192 act per safety-net/referral"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"At presentation", title:"Assess + conservative", html:"Symptoms, complications, conservative advice; decide if referral criteria met."},
+          {n:"2", when:"As needed", title:"Symptom / skin review", html:"Reassess if symptoms worsen or skin changes develop."},
+          {n:"3", when:"If ulcer / bleeding", title:"Escalate", html:"Active ulcer or bleeding \u2192 appropriate urgent pathway."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Worsening? Check referral criteria",
+      arrow:"\u2026if symptoms or skin worsen",
+      intro:"NICE referral is driven by symptoms and complications, not appearance alone.",
+      checks:[
+        {b:"1 \u00b7 Skin changes", html:"Pigmentation, eczema, lipodermatosclerosis \u2192 vascular referral."},
+        {b:"2 \u00b7 Ulcer", html:"Venous leg ulcer (or not healed in ~2 weeks) \u2192 leg-ulcer/vascular referral."},
+        {b:"3 \u00b7 Bleeding", html:"Bled or at risk of bleeding from a varicosity \u2192 refer."},
+        {b:"4 \u00b7 Thrombophlebitis", html:"Superficial vein thrombosis \u2192 assess/refer."},
+        {b:"5 \u00b7 Symptoms", html:"Troublesome symptoms affecting quality of life \u2192 vascular for intervention."}
+      ],
+      back:"Referral criterion met \u2192 vascular service for assessment/intervention"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Bleeding varicosity", html:"\u201cIf a vein bleeds: lie down, raise the leg high, and press firmly for several minutes \u2014 call 999 if it won\u2019t stop.\u201d"},
+          {t:"🩹 Ulcer", html:"\u201cA break in the skin or a non-healing sore around the ankle \u2014 contact us; venous ulcers need proper treatment.\u201d"},
+          {t:"🦵 DVT", html:"\u201cSudden painful swelling of one calf \u2014 seek urgent assessment to rule out a clot.\u201d"},
+          {t:"🧦 Compression care", html:"\u201cIf stockings cause pain, numbness or colour change in the foot, stop and tell us.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer vascular (NICE)",
+      arrow:"per NICE CG168 thresholds",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Symptomatic veins", html:"Symptomatic primary or recurrent varicose veins affecting quality of life."},
+          {t:"Skin changes", html:"Lower-limb skin changes thought due to chronic venous insufficiency (pigmentation, eczema)."},
+          {t:"Superficial thrombophlebitis", html:"Superficial vein thrombosis + suspected venous incompetence."},
+          {t:"Venous leg ulcer", html:"A leg ulcer (broken skin below the knee not healed within ~2 weeks) or a healed venous ulcer."},
+          {t:"Bleeding", html:"Bleeding from a varicose vein, or at high risk of bleeding."}
+        ]},
+        {b:"say", html:"Varicose veins are common and often just need simple measures \u2014 staying active, elevating your legs, and weight control. If they\u2019re really troubling you, or if the skin changes or a vein bleeds, I\u2019ll refer you to the vein specialists for treatment."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

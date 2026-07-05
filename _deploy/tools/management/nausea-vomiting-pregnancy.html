@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nausea & Vomiting in Pregnancy — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Nausea and vomiting in pregnancy management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🤰",
+  title:"Nausea/Vomiting in Pregnancy",
+  stemTitle:"Nausea & vomiting of pregnancy / hyperemesis gravidarum",
+  stemSub:"Primary-care management of NVP \u2014 conservative measures, a stepwise antiemetic ladder safe in pregnancy, and recognising hyperemesis gravidarum needing admission. CKS \u00b7 RCOG 2026.",
+  guideline:"NICE CKS / RCOG",
+  glance:[
+    {lbl:"Severity", val:"PUQE score", sub:"mild \u2192 hyperemesis"},
+    {lbl:"First-line drug", val:"Cyclizine 50 mg TDS / promethazine 25 mg", sub:"or prochlorperazine"},
+    {lbl:"Second-line", val:"Metoclopramide 10 mg TDS / ondansetron 4–8 mg", sub:"+ counselling"},
+    {lbl:"Adjunct", val:"Ginger / P6", sub:"mild cases"},
+    {lbl:"Hyperemesis", val:"Dehydration + ketones", sub:"admit"},
+    {lbl:"Always", val:"Thiamine + VTE risk", sub:"in HG"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Assess severity and exclude other causes",
+      blocks:[
+        {b:"kv", rows:[
+          ["Severity","Use <b>PUQE</b> score; assess hydration, weight loss, ketonuria, ability to keep fluids down"],
+          ["Hyperemesis gravidarum","Protracted vomiting + &gt;5% weight loss + dehydration + electrolyte/ketone disturbance"],
+          ["Exclude other causes","UTI, gastroenteritis, thyroid, molar/multiple pregnancy; consider if atypical/late onset"],
+          ["Red flags","Unable to tolerate fluids, ketonuria, significant weight loss \u2192 needs admission"]
+        ]},
+        {b:"why", html:"Most NVP is self-limiting and managed conservatively, but the task is to <strong>grade severity</strong> and spot <strong>hyperemesis gravidarum</strong>, which causes dehydration, electrolyte disturbance and (untreated) Wernicke\u2019s \u2014 and needs admission with fluids and thiamine. Antiemetics used are those with established pregnancy safety."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 first-line", title:"Conservative and dietary measures",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🍽️ Eat little & often", html:"Small frequent bland/dry meals; eat what's tolerated; avoid an empty stomach."},
+          {t:"💧 Hydration", html:"Frequent small sips; cold/clear fluids often better tolerated."},
+          {t:"🫚 Ginger", html:"Ginger may help mild NVP; reasonable to try."},
+          {t:"⌚ P6 acupressure", html:"Wrist (P6) acupressure bands \u2014 a low-risk option some find helpful."},
+          {t:"🚫 Avoid triggers", html:"Avoid smells/foods that trigger nausea; rest; take iron later if it worsens nausea."},
+          {t:"🫶 Reassurance", html:"Most NVP improves by ~16\u201320 weeks; explain and support."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 stepwise", title:"Antiemetic ladder (pregnancy-safe)",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"First-line", title:"Antihistamine / phenothiazine", when:"cyclizine, promethazine, prochlorperazine",
+           html:"First-line antiemetics with established safety. Offer if conservative measures insufficient."},
+          {step:"Second-line", title:"Metoclopramide or ondansetron", when:"if first-line inadequate",
+           fromLabel:"persistent symptoms",
+           html:"Metoclopramide (limit to ~5 days \u2014 extrapyramidal effects) or ondansetron (counsel re small cleft-palate signal, esp. first trimester \u2014 shared decision)."},
+          {step:"Adjunct/severe", title:"Consider corticosteroid", when:"refractory / hyperemesis",
+           fromLabel:"specialist-guided",
+           html:"For refractory hyperemesis, specialists may add a corticosteroid. Combine antiemetics from different classes."}
+        ]},
+        {b:"warn", html:"In <b>hyperemesis</b>: give <b>thiamine</b> (prevent Wernicke\u2019s), assess <b>VTE risk</b> (consider thromboprophylaxis), and correct electrolytes. Limit metoclopramide duration; counsel on ondansetron first-trimester data."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Hydration, weight and response",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["PUQE / symptoms","Each review","Step up antiemetics; admit if not coping"],
+          ["Hydration / ketonuria","Each review","Ketones + dehydration \u2192 admit for IV fluids"],
+          ["Weight","Each review","Significant loss \u2192 escalate/admit"],
+          ["U&amp;E / electrolytes","If vomiting significant","Correct disturbance; monitor in HG"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"Early / soon", title:"Assess + treat", html:"Grade severity, conservative measures, start first-line antiemetic if needed."},
+          {n:"2", when:"Few days", title:"Response review", html:"Step up the ladder if persisting; check hydration/ketones/weight."},
+          {n:"3", when:"Ongoing", title:"Support to ~16\u201320 weeks", html:"Most improve; continue antiemetics as needed; coordinate with maternity."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not controlled? Step up or admit",
+      arrow:"\u2026if vomiting persists",
+      intro:"Escalate the antiemetic ladder; admit if dehydrated or not coping.",
+      checks:[
+        {b:"1 \u00b7 Dehydration", html:"Ketonuria, unable to keep fluids down, weight loss \u2192 admit for IV fluids/antiemetics."},
+        {b:"2 \u00b7 Adequate antiemetic", html:"First-line at adequate dose; combine classes before giving up."},
+        {b:"3 \u00b7 Other cause", html:"UTI, thyroid, molar/multiple pregnancy excluded?"},
+        {b:"4 \u00b7 Thiamine / VTE", html:"In HG \u2014 thiamine given, VTE risk assessed?"},
+        {b:"5 \u00b7 Refer/admit", html:"Hyperemesis or not coping \u2192 maternity/early-pregnancy unit."}
+      ],
+      back:"Step up antiemetics; dehydration/HG \u2192 admit (IV fluids, thiamine, antiemetics)"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Can't keep fluids down", html:"\u201cIf you can\u2019t keep any fluids down, pass little/dark urine, or feel faint \u2014 contact maternity/us urgently; you may need a drip.\u201d"},
+          {t:"⚖️ Weight loss", html:"\u201cSignificant weight loss or persistent vomiting \u2014 we need to review you, don\u2019t struggle on.\u201d"},
+          {t:"🩸 Other symptoms", html:"\u201cTummy pain, fever, burning urine, or vaginal bleeding \u2014 seek assessment (other causes).\u201d"},
+          {t:"🫶 Prognosis", html:"\u201cIt usually eases by around 16\u201320 weeks \u2014 and there are safe medicines to help meanwhile.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer/admit",
+      arrow:"hyperemesis or red flags",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Admit", html:"Hyperemesis with dehydration/ketonuria, unable to tolerate oral fluids/antiemetics, or significant weight loss \u2192 early-pregnancy/maternity unit."},
+          {t:"Ambulatory care", html:"Where available, day-unit IV fluids/antiemetics for moderate cases."},
+          {t:"Other cause", html:"Suspected molar/multiple pregnancy, thyroid, or surgical cause."},
+          {t:"Refractory", html:"Not responding to combination antiemetics \u2192 obstetric input."}
+        ]},
+        {b:"say", html:"Sickness in pregnancy is common and usually eases by around 16 weeks. There are medicines that are safe to use, and we\u2019ll step them up if needed. The key thing is staying hydrated \u2014 if you can\u2019t keep fluids down, you may need a drip, so let us know."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

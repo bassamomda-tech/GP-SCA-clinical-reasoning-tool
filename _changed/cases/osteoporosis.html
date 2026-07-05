@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osteoporosis · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="../assets/medchooser.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+</style>
+<style>
+:root{
+  --navy:#0f2540;--navy2:#1b3a5c;--ink:#1a2332;--muted:#64748b;
+  --line:#e2e8f0;--surface:#f8fafc;--white:#fff;
+  --r:#b91c1c;--r-bg:#fef2f2;--r-bd:#fecaca;
+  --a:#b45309;--a-bg:#fffbeb;--a-bd:#fde68a;
+  --g:#15803d;--g-bg:#f0fdf4;--g-bd:#bbf7d0;
+  --b:#1d4ed8;--b-bg:#eff6ff;--b-bd:#bfdbfe;
+  --p:#6d28d9;--p-bg:#f5f3ff;--p-bd:#ddd6fe;
+  --t:#0f766e;--t-bg:#f0fdfa;--t-bd:#99f6e4;
+  --ps:#be185d;--ps-bg:#fdf2f8;--ps-bd:#fbcfe8;
+  --shadow:0 1px 3px rgba(0,0,0,.07),0 4px 16px rgba(0,0,0,.04);
+  --shadow-md:0 4px 12px rgba(0,0,0,.1);
+  --rad:12px;--rad-sm:8px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#e8edf3;color:var(--ink);line-height:1.6;font-size:14px;-webkit-font-smoothing:antialiased}
+.topbar{background:var(--navy);color:#fff;position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+.tb-inner{max-width:1240px;margin:0 auto;padding:9px 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.tb-brand{display:flex;align-items:center;gap:10px}
+.tb-icon{width:34px;height:34px;background:#fff;color:var(--navy);border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex-shrink:0}
+.tb-title{font-size:14px;font-weight:600;color:#fff;line-height:1.2}
+.tb-sub{font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.07em}
+.mode-group{display:flex;background:rgba(255,255,255,.1);padding:4px;border-radius:30px;gap:3px}
+.mode-btn{font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;border:none;cursor:pointer;background:transparent;color:rgba(255,255,255,.6);transition:.2s;font-family:'DM Sans',sans-serif}
+.mode-btn.active{background:#fff;color:var(--navy)}
+.tb-nav{display:flex;gap:2px;flex-wrap:wrap}
+.tb-nav a{font-size:11px;color:rgba(255,255,255,.6);text-decoration:none;padding:4px 8px;border-radius:15px;transition:.15s;font-weight:500}
+.tb-nav a:hover{background:rgba(255,255,255,.12);color:#fff}
+@media(max-width:980px){.tb-nav{display:none}}
+.numstrip{background:var(--navy2);border-bottom:1px solid rgba(255,255,255,.07)}
+.ns-inner{max-width:1240px;margin:0 auto;padding:6px 1.25rem;display:flex;flex-wrap:wrap}
+.ns-item{padding:3px 14px;border-right:1px solid rgba(255,255,255,.1);flex-shrink:0}
+.ns-item:last-child{border-right:none}
+.ns-val{font-size:13px;font-weight:700;color:#fff;display:block;line-height:1.2}
+.ns-lbl{font-size:9.5px;color:rgba(255,255,255,.5);white-space:nowrap}
+.page{max-width:1240px;margin:0 auto;padding:20px 16px 60px}
+/* STEM */
+.stem-box{background:var(--navy);border-radius:var(--rad);padding:1.1rem 1.4rem;margin-bottom:1.5rem;border-left:5px solid #60a5fa}
+.stem-label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:.5rem}
+.stem-title{font-family:'DM Serif Display',serif;font-size:1.3rem;color:#fff;margin-bottom:.5rem}
+.stem-text{font-size:13px;color:rgba(255,255,255,.85);line-height:1.65;font-style:italic;border-left:2px solid rgba(255,255,255,.2);padding-left:12px;margin-bottom:.75rem}
+.stem-note{font-size:11.5px;color:rgba(255,255,255,.6);line-height:1.5}
+.stem-variants{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:.75rem}
+@media(max-width:700px){.stem-variants{grid-template-columns:1fr}}
+.stem-variant{background:rgba(255,255,255,.08);border-radius:8px;padding:.6rem .85rem;font-size:11.5px;color:rgba(255,255,255,.8);line-height:1.45}
+.stem-variant strong{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.45);margin-bottom:.2rem}
+/* STEPS */
+.step-wrap{margin-bottom:1.5rem}
+.step-hdr{display:flex;align-items:center;gap:12px;padding:.85rem 1.1rem;background:var(--white);border:1px solid var(--line);border-radius:var(--rad);cursor:pointer;user-select:none;box-shadow:var(--shadow);transition:background .15s,box-shadow .15s;position:relative;z-index:1}
+.step-hdr:hover{background:#f8fafc;box-shadow:var(--shadow-md)}
+.step-hdr.is-open{border-radius:var(--rad) var(--rad) 0 0;border-bottom-color:transparent;box-shadow:none;border-bottom:none}
+.step-circle{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#fff;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.sc1{background:#6d28d9}.sc2{background:#b91c1c}.sc3{background:#0369a1}.sc4{background:#0f766e}.sc5{background:#854d0e}.sc6{background:#be123c}.sc7{background:#15803d}
+.step-hdr-text{flex:1}
+.step-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1}
+.step-title{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--navy);font-weight:400;line-height:1.25;margin-top:2px}
+.step-toggle{display:flex;align-items:center;gap:6px;flex-shrink:0;padding:.35rem .75rem;border-radius:20px;background:#f1f5f9;border:1px solid var(--line);transition:background .15s}
+.step-hdr:hover .step-toggle{background:#e2e8f0}
+.sti-icon{font-size:12px;color:var(--muted);display:inline-block}
+.sti-text{font-size:11px;color:var(--muted);font-weight:500}
+.step-body{background:var(--white);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--rad) var(--rad);padding:1.1rem 1.1rem 1.25rem;box-shadow:var(--shadow);overflow:hidden}
+.step-body.closed{display:none}
+.step-intro{font-size:12.5px;color:var(--muted);line-height:1.6;background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:0 var(--rad-sm) var(--rad-sm) 0;padding:.7rem 1rem;margin-bottom:1rem}
+.step-intro strong{color:var(--ink)}
+.collapse-controls{display:flex;gap:8px;margin-bottom:1rem;align-items:center}
+.cc-btn{font-size:11.5px;font-weight:600;padding:5px 14px;border-radius:20px;border:1px solid var(--line);background:var(--white);cursor:pointer;color:var(--ink);font-family:'DM Sans',sans-serif;transition:.15s}
+.cc-btn:hover{background:#f1f5f9}
+.cc-label{font-size:11px;color:var(--muted)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:860px){.g2,.g3{grid-template-columns:1fr}}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--rad);box-shadow:var(--shadow)}
+.card-hd{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:.7rem 1rem;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:7px}
+.chg{font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;display:inline-block;margin:1px;white-space:nowrap}
+.chg-999{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
+.chg-urgent{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+.chg-ddx{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
+.chg-rx{background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe}
+.chg-ref{background:#f5f3ff;color:#5b21b6;border:1px solid #ddd6fe}
+.chg-inv{background:#fef9c3;color:#854d0e;border:1px solid #fde68a}
+.chg-ps{background:#fdf2f8;color:#be185d;border:1px solid #fbcfe8}
+.rt{width:100%;border-collapse:collapse;font-size:13px}
+.rt thead th{background:#f8fafc;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:.55rem .85rem;text-align:left;border-bottom:2px solid var(--line)}
+.rt td{padding:.65rem .85rem;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.rt tr:last-child td{border-bottom:none}
+.rt tr:hover td{background:#fafbfc}
+.rt .q{font-weight:500}.rt .q em{display:block;font-style:italic;font-size:12px;color:var(--b);margin-top:2px}
+.rt .why{font-size:12.5px;line-height:1.5}.rt .why-sub{font-size:11px;color:var(--muted);display:block;margin-top:2px}
+.rt .chg-col{min-width:120px}
+.mcb{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;display:inline-block}
+.mcb-yes{background:#dcfce7;color:#15803d}.mcb-context{background:#dbeafe;color:#1e40af}
+.open-q-row{background:#f0fdf4 !important}
+.open-q-row td{border-left:3px solid var(--g)}
+/* RED FLAGS */
+.rf-wrap{background:var(--r-bg);border:2px solid var(--r-bd);border-radius:var(--rad);overflow:hidden}
+.rf-hdr{background:#fecaca;padding:.65rem 1.1rem;display:flex;align-items:center;gap:8px}
+.rf-hdr h3{font-size:13px;font-weight:700;color:var(--r)}
+.rf-table{width:100%;border-collapse:collapse}
+.rf-table th{background:rgba(185,28,28,.08);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--r);padding:.5rem .85rem;text-align:left;border-bottom:1px solid var(--r-bd)}
+.rf-table td{padding:.55rem .85rem;border-bottom:1px solid var(--r-bd);font-size:12.5px;vertical-align:top;line-height:1.5}
+.rf-table tr:last-child td{border-bottom:none}
+.rf-flag{font-weight:600;color:var(--r)}.rf-why{font-size:12px;color:#7f1d1d;line-height:1.45}
+.rf-action{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;display:inline-block;white-space:nowrap}
+.rfa-999{background:#b91c1c;color:#fff}.rfa-same{background:#f97316;color:#fff}
+/* SAFEGUARDING */
+.sg-wrap{background:var(--ps-bg);border:2px solid var(--ps-bd);border-radius:var(--rad);overflow:hidden;margin-top:1rem}
+.sg-hdr{background:#fbcfe8;padding:.65rem 1.1rem;display:flex;align-items:center;gap:8px}
+.sg-hdr h3{font-size:13px;font-weight:700;color:var(--ps)}
+.sg-body{padding:.85rem 1.1rem}
+.sg-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:640px){.sg-grid{grid-template-columns:1fr}}
+.sg-card{border-radius:var(--rad-sm);padding:.7rem .9rem;background:#fff;border:1px solid var(--ps-bd)}
+.sg-card h5{font-size:11px;font-weight:700;color:var(--ps);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem}
+.sg-card li,.sg-card p{font-size:12px;line-height:1.5;color:var(--ink)}
+.sg-card ul{padding-left:1rem}
+.sg-action{margin-top:.75rem;background:var(--ps);border-radius:8px;padding:.65rem 1rem;font-size:12px;color:#fff;line-height:1.5}
+.sg-action strong{color:#fbcfe8}
+/* IMPACT TABLE */
+.it{width:100%;border-collapse:collapse}
+.it th{background:#f8fafc;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:.5rem .85rem;text-align:left;border-bottom:1px solid var(--line)}
+.it td{padding:.55rem .85rem;border-bottom:1px solid var(--line);font-size:12.5px;vertical-align:top;line-height:1.5}
+.it tr:last-child td{border-bottom:none}.it tr:hover td{background:#fafbfc}
+.it .factor{font-weight:600}.it .impact{color:var(--b);font-size:12px}
+/* PSYCHOSOCIAL BANNER */
+.ps-banner{background:linear-gradient(135deg,#fdf2f8,#f5f3ff);border:1px solid var(--ps-bd);border-left:4px solid var(--ps);border-radius:var(--rad-sm);padding:.75rem 1rem;margin:.75rem 0}
+.ps-banner-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ps);margin-bottom:.3rem}
+.ps-banner p{font-size:12.5px;color:#4a0072;line-height:1.55}
+.ps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:.75rem 0}
+@media(max-width:640px){.ps-grid{grid-template-columns:1fr}}
+.ps-card{background:#fff;border:1px solid var(--ps-bd);border-radius:var(--rad-sm);padding:.65rem .85rem}
+.ps-card h5{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ps);margin-bottom:.3rem}
+.ps-card p{font-size:12px;color:var(--ink);line-height:1.45}
+.ps-phrase{font-size:12px;font-style:italic;background:var(--ps-bg);border-left:2px solid var(--ps-bd);padding:.35rem .7rem;border-radius:0 6px 6px 0;margin-top:.35rem;line-height:1.5;color:#4a0072;display:block}
+/* ICE */
+.ice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:700px){.ice-grid{grid-template-columns:1fr}}
+.ice-card{border-radius:var(--rad);padding:.85rem 1rem;border:1px solid}
+.ice-i{background:var(--p-bg);border-color:var(--p-bd)}.ice-c{background:var(--b-bg);border-color:var(--b-bd)}.ice-e{background:var(--a-bg);border-color:var(--a-bd)}
+.ice-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem}
+.ice-i .ice-label{color:var(--p)}.ice-c .ice-label{color:var(--b)}.ice-e .ice-label{color:var(--a)}
+.ice-phrase{font-size:12.5px;font-style:italic;line-height:1.55;border-left:3px solid;padding-left:9px}
+.ice-i .ice-phrase{border-color:var(--p-bd)}.ice-c .ice-phrase{border-color:var(--b-bd)}.ice-e .ice-phrase{border-color:var(--a-bd)}
+.ice-why{font-size:11px;color:var(--muted);margin-top:.4rem}
+/* SCA CHECKPOINT */
+.sca-cp{background:var(--navy);border-radius:var(--rad);padding:1rem 1.25rem;margin-top:.85rem}
+.sca-cp-hdr{display:flex;align-items:center;gap:8px;margin-bottom:.75rem;flex-wrap:wrap}
+.sca-cp-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.sca-dom{font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,.15);color:#fff}
+.sca-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:600px){.sca-grid{grid-template-columns:1fr}}
+.sca-block{background:rgba(255,255,255,.07);border-radius:8px;padding:.65rem .85rem}
+.sca-block-t{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.4rem}
+.sca-say .sca-block-t{color:#86efac}.sca-avoid .sca-block-t{color:#fca5a5}.sca-score .sca-block-t{color:#93c5fd}
+.sca-block p,.sca-block li{font-size:12px;color:rgba(255,255,255,.82);line-height:1.5}
+.sca-block ul{list-style:none;padding-left:.25rem}
+.sca-say li::before{content:'✓ ';color:#86efac;font-size:11px}
+.sca-avoid li::before{content:'✗ ';color:#fca5a5;font-size:11px}
+.sca-score li::before{content:'• ';color:#93c5fd;font-size:11px}
+.sca-phrase{font-style:italic;font-size:12px;color:#e2e8f0;background:rgba(255,255,255,.06);border-left:2px solid rgba(255,255,255,.2);padding:.45rem .75rem;border-radius:0 6px 6px 0;line-height:1.55;margin-top:.3rem}
+.rag-strip{display:flex;gap:6px;flex-wrap:wrap;margin-top:.6rem;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.1)}
+.rag-item{background:rgba(255,255,255,.05);border-radius:8px;padding:.45rem .75rem;flex:1;min-width:140px}
+.rag-item-t{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.45);margin-bottom:.3rem}
+.rag-bullets{font-size:11px;color:rgba(255,255,255,.75);line-height:1.5}
+.rag-r{border-left:2px solid #fca5a5}.rag-a{border-left:2px solid #fde68a}.rag-g{border-left:2px solid #86efac}
+/* TRIAGE */
+.triage{display:grid;grid-template-columns:1fr 1fr 1fr;border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow-md)}
+@media(max-width:780px){.triage{grid-template-columns:1fr}}
+.tc{padding:1.1rem 1.1rem}
+.tc-e{background:var(--r-bg);border-right:2px solid var(--r-bd)}.tc-u{background:var(--a-bg);border-right:2px solid var(--a-bd)}.tc-r{background:var(--g-bg)}
+@media(max-width:780px){.tc{border-right:none!important;border-bottom:2px solid var(--line)}.tc-r{border-bottom:none}}
+.tc-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.tc-e .tc-lbl{color:var(--r)}.tc-u .tc-lbl{color:var(--a)}.tc-r .tc-lbl{color:var(--g)}
+.tc h3{font-size:14px;font-weight:700;margin-bottom:.35rem}
+.tc-e h3{color:var(--r)}.tc-u h3{color:var(--a)}.tc-r h3{color:var(--g)}
+.tc-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:.65rem}
+.tcb-e{background:#fee2e2;color:var(--r);border:1px solid var(--r-bd)}
+.tcb-u{background:var(--a-bg);color:var(--a);border:1px solid var(--a-bd)}
+.tcb-r{background:var(--g-bg);color:var(--g);border:1px solid var(--g-bd)}
+.tc-items{list-style:none;display:flex;flex-direction:column;gap:5px}
+.tc-item{font-size:12.5px;padding-left:18px;position:relative;line-height:1.45}
+.tc-e .tc-item::before{content:'🚨';position:absolute;left:0;font-size:10px;top:1px}
+.tc-u .tc-item::before{content:'⚠';position:absolute;left:0;font-size:10px;top:1px}
+.tc-r .tc-item::before{content:'✓';position:absolute;left:0;font-size:11px;top:0;color:var(--g);font-weight:700}
+.tc-item strong{font-weight:600;display:block}.tc-item em{font-size:11px;color:var(--muted);font-style:normal}
+/* CONF BADGES */
+.conf-badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;display:inline-block}
+.conf-gp{background:#dcfce7;color:#15803d}.conf-sus{background:#fef3c7;color:#b45309}.conf-emerg{background:#fee2e2;color:#b91c1c}
+.ddx-card{border-radius:var(--rad);padding:.85rem 1rem;border:1px solid}
+.ddx-b{background:var(--r-bg);border-color:var(--r-bd)}.ddx-c{background:var(--a-bg);border-color:var(--a-bd)}.ddx-d{background:var(--p-bg);border-color:var(--p-bd)}
+.ddx-card h4{font-size:12px;font-weight:700;margin-bottom:.35rem}
+.ddx-b h4{color:var(--r)}.ddx-c h4{color:var(--a)}.ddx-d h4{color:var(--p)}
+.ddx-card p{font-size:12px;line-height:1.45}
+/* LAY LANGUAGE */
+.lay-box{background:#fefce8;border:1px solid #fde68a;border-left:4px solid #ca8a04;border-radius:var(--rad-sm);padding:.85rem 1rem;margin:.75rem 0}
+.lay-box-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#92400e;margin-bottom:.4rem}
+.lay-box p{font-size:12.5px;color:#451a03;line-height:1.6;font-style:italic}
+.lay-why-not{background:#f0f9ff;border:1px solid #bae6fd;border-left:4px solid #0369a1;border-radius:var(--rad-sm);padding:.85rem 1rem;margin:.75rem 0}
+.lay-why-not-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#0369a1;margin-bottom:.4rem}
+.lay-why-not p{font-size:12.5px;color:#0c4a6e;line-height:1.6;margin-bottom:.6rem}
+/* REFERRAL */
+.ref-table{width:100%;border-collapse:collapse}
+.ref-table th{background:#f8fafc;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:.55rem .85rem;text-align:left;border-bottom:2px solid var(--line)}
+.ref-table td{padding:.65rem .85rem;border-bottom:1px solid var(--line);font-size:12.5px;vertical-align:top;line-height:1.5}
+.ref-table tr:last-child td{border-bottom:none}.ref-table tr:hover td{background:#fafbfc}
+.ref-urg{font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;display:inline-block}
+.rurg-999{background:#fee2e2;color:var(--r)}.rurg-2{background:#fff7ed;color:#c2410c}
+.rurg-4{background:var(--a-bg);color:var(--a)}.rurg-6{background:#fef9c3;color:#854d0e}.rurg-r{background:var(--g-bg);color:var(--g)}
+/* TX GOALS */
+.tx-goals{display:flex;flex-wrap:wrap;gap:8px;margin:.75rem 0}
+.tx-goal{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;display:inline-flex;align-items:center;gap:6px;border:1px solid}
+.tg1{background:#f0fdf4;border-color:var(--g-bd);color:var(--g)}.tg2{background:var(--b-bg);border-color:var(--b-bd);color:var(--b)}
+.tg3{background:var(--p-bg);border-color:var(--p-bd);color:var(--p)}.tg4{background:var(--a-bg);border-color:var(--a-bd);color:var(--a)}
+/* EXPECTATION BOX */
+.expect-box{background:linear-gradient(135deg,#f0fdf4,#eff6ff);border:2px solid var(--g-bd);border-radius:var(--rad);padding:1rem 1.25rem;margin-bottom:1rem}
+.expect-box-hdr{display:flex;align-items:center;gap:8px;margin-bottom:.75rem}
+.expect-box-lbl{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--g)}
+.expect-steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:680px){.expect-steps{grid-template-columns:1fr}}
+.expect-step{background:#fff;border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.7rem .9rem}
+.expect-step-num{width:22px;height:22px;border-radius:50%;background:var(--g);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:.35rem}
+.expect-step h5{font-size:11.5px;font-weight:700;color:var(--g);margin-bottom:.25rem}
+.expect-step p{font-size:12px;color:var(--ink);line-height:1.45}
+.expect-phrase{font-size:12px;font-style:italic;background:var(--g-bg);border-left:2px solid var(--g-bd);padding:.45rem .8rem;border-radius:0 6px 6px 0;margin-top:.35rem;color:#14532d;line-height:1.55;display:block}
+/* PSYCHOSOCIAL IMPACT SUBSTEP */
+.psoci-wrap{background:var(--ps-bg);border:1px solid var(--ps-bd);border-radius:var(--rad);padding:1rem 1.25rem;margin:1.25rem 0}
+.psoci-hdr{display:flex;align-items:center;gap:8px;margin-bottom:.85rem}
+.psoci-title{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--ps);font-weight:400}
+.psoci-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:760px){.psoci-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.psoci-grid{grid-template-columns:1fr}}
+.psoci-card{background:#fff;border:1px solid var(--ps-bd);border-radius:var(--rad-sm);padding:.75rem .9rem}
+.psoci-icon{font-size:1.3rem;margin-bottom:.25rem;display:block}
+.psoci-card h5{font-size:11px;font-weight:700;color:var(--ps);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+.psoci-card p{font-size:12px;line-height:1.45;color:var(--ink);margin-bottom:.3rem}
+.psoci-phrase{font-size:11.5px;font-style:italic;color:#831843;background:var(--ps-bg);border-radius:5px;padding:.3rem .6rem;line-height:1.45;display:block;margin-top:.35rem}
+/* LIFESTYLE */
+.life-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:760px){.life-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:460px){.life-grid{grid-template-columns:1fr}}
+.life-card{background:var(--white);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow)}
+.life-head{background:var(--g-bg);padding:.65rem .9rem;border-bottom:1px solid var(--g-bd)}
+.life-icon{font-size:1.3rem;margin-bottom:.15rem;display:block}
+.life-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--g)}
+.life-target{font-size:11px;font-weight:600;color:var(--g);margin-top:.2rem;display:block}
+.life-body{padding:.65rem .9rem}
+.life-section{margin-bottom:.4rem}
+.life-section-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.15rem}
+.life-section p{font-size:12px;color:var(--ink);line-height:1.45}
+.life-benefit{font-size:12px;font-weight:700;color:var(--g);background:var(--g-bg);border-radius:6px;padding:2px 7px;display:inline-block;margin-top:.2rem}
+/* DRUG SELECTOR */
+.ds-wrap{background:var(--white);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow)}
+.ds-top{background:#f8fafc;border-bottom:1px solid var(--line);padding:1rem 1.25rem}
+.ds-top h3{font-size:13px;font-weight:600;margin-bottom:.6rem}
+.ds-checks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+@media(max-width:700px){.ds-checks{grid-template-columns:1fr 1fr}}
+.ds-lbl{display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--white);border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:12.5px;transition:.15s}
+.ds-lbl:hover{background:#f8fafc}.ds-lbl input{accent-color:var(--navy);width:14px;height:14px;flex-shrink:0}
+.ds-result{padding:1rem 1.25rem;background:var(--g-bg);border-top:1px solid var(--g-bd)}
+.ds-result-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.5rem}
+/* DRUG CARDS */
+.drug-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:.85rem}
+@media(max-width:980px){.drug-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.drug-cards{grid-template-columns:1fr}}
+.dc{background:var(--white);border:2px solid var(--line);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow);transition:border-color .25s,box-shadow .25s}
+.dc.recommended{border-color:#15803d;box-shadow:0 0 0 3px rgba(21,128,61,.12),var(--shadow)}
+.dc.alt-rec{border-color:var(--b);box-shadow:0 0 0 3px rgba(29,78,216,.08),var(--shadow)}
+.dc-head{padding:.7rem 1rem;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.dc-name{font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.2}
+.dc-examples{font-size:11px;color:var(--muted);margin-top:1px}
+.dc-rec-badge{font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:10px;display:none;margin-top:4px}
+.dc.recommended .dc-rec-badge{display:inline-block;background:#dcfce7;color:var(--g);border:1px solid var(--g-bd)}
+.dc.alt-rec .dc-rec-badge{display:inline-block;background:var(--b-bg);color:var(--b);border:1px solid var(--b-bd)}
+.dc-badges{display:flex;gap:4px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+.dc-step{font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px}
+.step1{background:#dcfce7;color:#15803d}.step2{background:#dbeafe;color:#1d4ed8}.step3{background:#fef3c7;color:#92400e}.step4{background:#fee2e2;color:var(--r)}
+.dc-dose{font-size:11px;font-weight:600;font-family:'SF Mono','Consolas',monospace;background:#fefce8;padding:2px 6px;border-radius:4px;border:1px solid #fef08a;white-space:nowrap}
+.dc-section{padding:.6rem .9rem;border-bottom:1px solid var(--line)}
+.dc-section:last-child{border-bottom:none}
+.dc-sec-t{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.35rem}
+.dc-g .dc-sec-t{color:var(--g)}.dc-r .dc-sec-t{color:var(--r)}.dc-a .dc-sec-t{color:var(--a)}.dc-b .dc-sec-t{color:var(--b)}
+.dc-g{background:rgba(240,253,244,.6)}.dc-r{background:rgba(254,242,242,.6)}.dc-a{background:rgba(255,251,235,.6)}.dc-b{background:rgba(239,246,255,.6)}
+.dc-item{font-size:12px;padding-left:13px;position:relative;line-height:1.45;margin-bottom:3px}
+.dc-item::before{position:absolute;left:0;font-size:10px;top:2px}
+.dc-g .dc-item::before{content:'✓';color:var(--g);font-weight:700}
+.dc-r .dc-item::before{content:'✗';color:var(--r);font-weight:700}
+.dc-a .dc-item::before{content:'⚠';color:var(--a)}.dc-b .dc-item::before{content:'•';color:var(--b)}
+.dc-item.ci-abs{color:var(--r);font-weight:500}.dc-item.ci-rel{color:var(--a)}
+.dc-sca{background:var(--navy);padding:.5rem .85rem}
+.dc-sca p{font-size:11px;color:rgba(255,255,255,.8);line-height:1.45;font-style:italic}
+.dc-sca p::before{content:'🎓 ';font-style:normal}
+.dc-counsel{background:#f5f3ff;padding:.5rem .85rem;border-top:1px solid var(--p-bd)}
+.dc-counsel-t{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--p);margin-bottom:.2rem}
+.dc-counsel p{font-size:11.5px;color:var(--p);line-height:1.45;font-style:italic}
+/* FOLLOW-UP */
+.fu-line{display:flex;flex-direction:column;gap:0;position:relative;padding-left:50px}
+.fu-line::before{content:'';position:absolute;left:16px;top:12px;bottom:12px;width:2px;background:var(--line)}
+.fu-event{position:relative;padding:.6rem 0 .65rem .5rem;display:flex;gap:10px;align-items:flex-start}
+.fu-dot{position:absolute;left:-40px;top:11px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700;color:#fff;z-index:1}
+.fd1{background:var(--r)}.fd2{background:var(--a)}.fd3{background:var(--b)}.fd4{background:var(--g)}.fd5{background:var(--t)}
+.fu-content h5{font-size:12.5px;font-weight:600;margin-bottom:2px}
+.fu-content p{font-size:12px;color:var(--muted);line-height:1.45}
+.fu-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px}
+.ft{font-size:10.5px;padding:1px 7px;border-radius:10px;font-weight:500}
+.ft-r{background:var(--r-bg);color:var(--r)}.ft-a{background:var(--a-bg);color:var(--a)}.ft-b{background:var(--b-bg);color:var(--b)}
+.mon-rule{background:var(--navy);border-radius:var(--rad);padding:.85rem 1.1rem;margin-bottom:.85rem}
+.mon-rule h4{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.5);margin-bottom:.4rem}
+.mon-rule p{font-size:12.5px;color:#fff;line-height:1.55}
+.mon-rule strong{color:#86efac}
+/* SAFETY NETTING */
+.sn-box{background:#fffbeb;border:1px solid var(--a-bd);border-radius:var(--rad);padding:1rem 1.1rem}
+.sn-box h4{font-size:12px;font-weight:700;color:var(--a);margin-bottom:.6rem}
+.sn-scenarios{display:flex;flex-direction:column;gap:8px;margin-bottom:.85rem}
+.sn-scenario{border-radius:var(--rad-sm);padding:.75rem 1rem;border:1px solid}
+.sns-e{background:var(--r-bg);border-color:var(--r-bd)}.sns-m{background:var(--b-bg);border-color:var(--b-bd)}.sns-a{background:var(--a-bg);border-color:var(--a-bd)}
+.sn-scenario-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+.sns-e .sn-scenario-lbl{color:var(--r)}.sns-m .sn-scenario-lbl{color:var(--b)}.sns-a .sn-scenario-lbl{color:var(--a)}
+.sn-phrase{font-size:12.5px;font-style:italic;line-height:1.55}.sn-why{font-size:11px;color:var(--muted);margin-top:.35rem}
+.sn-legal{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem 1rem;margin-top:.85rem}
+.sn-legal h5{font-size:11px;font-weight:700;margin-bottom:.4rem}
+.sn-legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+@media(max-width:520px){.sn-legal-grid{grid-template-columns:1fr}}
+.sn-legal-item{font-size:12px;color:var(--muted);padding-left:14px;position:relative}
+.sn-legal-item::before{content:'•';position:absolute;left:0;color:var(--b)}
+.sn-fu{margin-top:.85rem;background:#fef9c3;border-radius:8px;padding:.7rem 1rem;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:520px){.sn-fu{grid-template-columns:1fr}}
+.sn-fu-item strong{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--a);margin-bottom:2px}
+.sn-fu-item{font-size:11.5px;color:#78350f}
+/* ACTOR */
+.actor-toggle{width:100%;text-align:left;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between}
+.actor-body{display:none;padding:0 1.25rem 1.25rem;border-top:1px solid var(--line)}
+.actor-body.open{display:block}
+.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:.75rem}
+@media(max-width:580px){.ab-grid{grid-template-columns:1fr}}
+.ab{background:var(--p-bg);border:1px solid var(--p-bd);border-radius:10px;padding:.8rem 1rem}
+.ab h5{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--p);margin-bottom:.35rem}
+.ab p,.ab li{font-size:12px;color:#4a235a;line-height:1.5}.ab ul{padding-left:1rem}
+.actor-open{background:#f5f3ff;border-left:3px solid #a855f7;padding:.65rem .9rem;border-radius:0 8px 8px 0;font-size:12.5px;font-style:italic;color:#3b0764;margin:.75rem 0 .5rem}
+.actor-challenge{background:#fff7ed;border-left:3px solid #f97316;padding:.65rem .9rem;border-radius:0 8px 8px 0;font-size:12.5px;font-style:italic;color:#7c2d12;margin-top:.5rem}
+/* SUB-DIVIDER */
+.sub-divider{display:flex;align-items:center;gap:8px;margin:1.25rem 0 .65rem;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.sub-divider::after{content:'';flex:1;height:1px;background:var(--line)}
+/* MODE */
+body.mode-sca .clinic-only{display:none!important}
+body.mode-clinic .sca-only{display:none!important}
+/* QUICK REF */
+.qr-section{margin-top:2.5rem}
+.qr-header{background:var(--navy);border-radius:var(--rad) var(--rad) 0 0;padding:1.1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.qr-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:.2rem}
+.qr-title{font-family:'DM Serif Display',serif;font-size:1.4rem;color:#fff;font-weight:400}
+.qr-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:.2rem}
+.qr-print-btn{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 16px;border-radius:20px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;transition:.15s}
+.qr-print-btn:hover{background:rgba(255,255,255,.25)}
+.qr-body{background:var(--white);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--rad) var(--rad);padding:1.25rem}
+.qr-tl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.25rem}
+@media(max-width:680px){.qr-tl{grid-template-columns:1fr}}
+.qr-tl-card{border-radius:var(--rad-sm);padding:.85rem 1rem;border:1px solid}
+.qr-tl-card.red{background:var(--r-bg);border-color:var(--r-bd)}.qr-tl-card.amber{background:var(--a-bg);border-color:var(--a-bd)}
+.qr-tl-card.green{background:var(--g-bg);border-color:var(--g-bd)}.qr-tl-card.blue{background:var(--b-bg);border-color:var(--b-bd)}
+.qr-tl-hdr{display:flex;align-items:center;gap:8px;margin-bottom:.6rem}
+.qr-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.qr-dot-r{background:var(--r)}.qr-dot-a{background:#f59e0b}.qr-dot-g{background:#16a34a}.qr-dot-b{background:#3b82f6}
+.qr-tl-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.qr-tl-card.red .qr-tl-title{color:var(--r)}.qr-tl-card.amber .qr-tl-title{color:var(--a)}
+.qr-tl-card.green .qr-tl-title{color:var(--g)}.qr-tl-card.blue .qr-tl-title{color:var(--b)}
+.qr-item{font-size:12.5px;padding-left:13px;position:relative;line-height:1.5;margin-bottom:4px}
+.qr-item::before{content:'';position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%}
+.qr-tl-card.red .qr-item::before{background:var(--r)}.qr-tl-card.amber .qr-item::before{background:#f59e0b}
+.qr-tl-card.green .qr-item::before{background:#16a34a}.qr-tl-card.blue .qr-item::before{background:#3b82f6}
+.qr-item strong{font-weight:600}
+.qr-item .sub{display:block;font-size:11px;color:var(--muted);margin-top:1px}
+.qr-tl-card.blue p{font-size:12.5px;color:var(--b);font-style:italic;line-height:1.55;border-left:2px solid var(--b-bd);padding-left:10px;margin-bottom:6px}
+.qr-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:1.25rem}
+@media(max-width:860px){.qr-cols{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.qr-cols{grid-template-columns:1fr}}
+.qr-col-card{border-radius:var(--rad-sm);border:1px solid var(--line);overflow:hidden;background:var(--white)}
+.qr-col-hd{padding:.6rem .85rem;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;border-bottom:1px solid var(--line)}
+.qr-col-body{padding:.75rem .85rem}
+.drug-tree{display:flex;flex-direction:column;gap:6px}
+.dt-row{display:flex;align-items:flex-start;gap:8px}
+.dt-cond{font-size:11.5px;font-weight:600;color:var(--muted);flex-shrink:0;width:130px;line-height:1.4;padding-top:2px}
+.dt-arrow{font-size:11px;color:var(--muted);flex-shrink:0;padding-top:3px}
+.dt-drug{font-size:12px;font-weight:700;padding:3px 9px;border-radius:8px;line-height:1.4}
+.dt-acei{background:#dcfce7;color:#15803d}.dt-ccb{background:#fef3c7;color:#92400e}.dt-arb{background:#dbeafe;color:#1d4ed8}
+.dt-divider{height:1px;background:var(--line);margin:4px 0}
+.dt-step{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:4px 0 2px}
+.dt-ladder{display:flex;flex-direction:column;gap:4px}
+.dt-lrow{display:flex;align-items:center;gap:6px;font-size:11.5px}
+.dt-lnum{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0}
+.dl1{background:#15803d}.dl2{background:#1d4ed8}.dl3{background:#b45309}.dl4{background:var(--r)}
+.k-pivot{font-size:11px;background:#fef3c7;color:#b45309;border-radius:6px;padding:2px 7px;font-weight:600;margin-top:2px;display:inline-block}
+.mon-compact{display:flex;flex-direction:column;gap:4px}
+.mc-row{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5}
+.mc-tag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;flex-shrink:0;margin-top:1px}
+.mct-1{background:#fee2e2;color:var(--r)}.mct-2{background:var(--a-bg);color:var(--a)}.mct-m{background:#fefce8;color:#854d0e}.mct-y{background:var(--g-bg);color:var(--g)}
+.bp-mini{width:100%;border-collapse:collapse;margin-top:8px}
+.bp-mini th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:.35rem .5rem;text-align:left;border-bottom:1px solid var(--line);background:#f8fafc}
+.bp-mini td{font-size:12px;padding:.35rem .5rem;border-bottom:1px solid var(--line)}
+.bp-mini tr:last-child td{border-bottom:none}
+.sn-phrase-box{border-radius:var(--rad-sm);padding:.65rem .85rem;border:1px solid;margin-bottom:8px}
+.snp-e{background:var(--r-bg);border-color:var(--r-bd)}.snp-m{background:var(--b-bg);border-color:var(--b-bd)}.snp-a{background:var(--a-bg);border-color:var(--a-bd)}
+.snp-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+.snp-e .snp-lbl{color:var(--r)}.snp-m .snp-lbl{color:var(--b)}.snp-a .snp-lbl{color:var(--a)}
+.snp-text{font-size:12px;font-style:italic;line-height:1.5}
+.qr-sca-section{margin-top:1.25rem;padding-top:1.25rem;border-top:2px solid var(--line)}
+.qr-sca-header{display:flex;align-items:center;gap:8px;margin-bottom:.85rem}
+.qr-sca-title{font-size:12px;font-weight:700;color:var(--navy)}
+.qr-sca-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--p-bg);color:var(--p);border:1px solid var(--p-bd)}
+.dz-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+@media(max-width:700px){.dz-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){.dz-grid{grid-template-columns:1fr}}
+.dz-card{background:#fff7f7;border:1px solid var(--r-bd);border-radius:var(--rad-sm);padding:.7rem .85rem}
+.dz-wrong{font-size:11.5px;font-weight:600;color:var(--r);margin-bottom:3px}
+.dz-wrong::before{content:'✗ '}
+.dz-right{font-size:11.5px;color:var(--g);font-weight:500}
+.dz-right::before{content:'✓ '}
+.cf-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:0;background:var(--white);border:1px solid var(--line);border-radius:var(--rad-sm);overflow:hidden;margin-top:.85rem}
+@media(max-width:700px){.cf-strip{grid-template-columns:1fr}}
+.cf-step{padding:.7rem .85rem;border-right:1px solid var(--line)}
+.cf-step:last-child{border-right:none}
+@media(max-width:700px){.cf-step{border-right:none;border-bottom:1px solid var(--line)}.cf-step:last-child{border-bottom:none}}
+.cf-time{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.25rem}
+.cs1 .cf-time{color:#7c3aed}.cs2 .cf-time{color:#0369a1}.cs3 .cf-time{color:#b45309}.cs4 .cf-time{color:#15803d}.cs5 .cf-time{color:#be123c}
+.cf-step h5{font-size:12px;font-weight:600;margin-bottom:.25rem}
+.cf-step li{font-size:11px;color:var(--muted);list-style:none;padding-left:10px;position:relative;line-height:1.4;margin-bottom:1px}
+.cf-step li::before{content:'→';position:absolute;left:0;font-size:9px;top:2px;color:#cbd5e1}
+
+/* ══════════════════════════════════════
+   DUAL SUMMARY SECTIONS
+══════════════════════════════════════ */
+.sum-section{margin-top:2rem}
+.sum-hdr{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:1rem 1.4rem;background:var(--navy2);border-radius:var(--rad) var(--rad) 0 0;cursor:pointer;user-select:none;flex-wrap:wrap;transition:background .15s}
+.sum-hdr:hover{background:#1e4573}
+.sca-sum-hdr{background:linear-gradient(135deg,#2d1b69,#1b3a5c)}
+.sca-sum-hdr:hover{background:linear-gradient(135deg,#3b2384,#1e4573)}
+.sum-hdr-left{display:flex;align-items:center;gap:12px}
+.sum-icon{font-size:1.6rem;flex-shrink:0}
+.sum-label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:.15rem}
+.sum-title{font-family:'DM Serif Display',serif;font-size:1.25rem;color:#fff;font-weight:400;line-height:1.2}
+.sum-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:.1rem}
+.sum-toggle{display:flex;align-items:center;gap:6px;padding:.4rem .85rem;border-radius:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);transition:.15s;flex-shrink:0}
+.sum-hdr:hover .sum-toggle{background:rgba(255,255,255,.2)}
+.sca-toggle{background:rgba(139,92,246,.25);border-color:rgba(139,92,246,.4)}
+.sum-ti-icon{font-size:12px;color:rgba(255,255,255,.7)}
+.sum-ti-text{font-size:11px;color:rgba(255,255,255,.7);font-weight:500}
+.sum-body{background:var(--white);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--rad) var(--rad);padding:1.25rem;box-shadow:var(--shadow)}
+.sum-body.closed{display:none}
+.sum-sub-hdr{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--navy);margin:.75rem 0 .5rem;display:flex;align-items:center;gap:6px}
+.sum-sub-hdr::after{content:'';flex:1;height:1px;background:var(--line)}
+.sca-sub-hdr{color:var(--p)}
+.sum-2col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.sum-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+@media(max-width:900px){.sum-2col,.sum-3col{grid-template-columns:1fr}}
+
+/* TRIAGE ALGORITHM */
+.algo-wrap{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem}
+.algo-start{background:var(--navy);color:#fff;font-weight:700;font-size:13px;padding:.5rem 1rem;border-radius:8px;display:inline-block;margin-bottom:.5rem}
+.algo-arrow{font-size:1.2rem;color:var(--muted);margin:.25rem 0;text-align:center}
+.algo-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:760px){.algo-row{grid-template-columns:1fr}}
+.algo-branch{border-radius:var(--rad-sm);padding:.7rem .85rem;border:1px solid}
+.algo-red{background:var(--r-bg);border-color:var(--r-bd)}
+.algo-amber{background:var(--a-bg);border-color:var(--a-bd)}
+.algo-green{background:var(--g-bg);border-color:var(--g-bd)}
+.algo-branch-lbl{font-size:11px;font-weight:700;margin-bottom:.4rem}
+.red .algo-branch-lbl,.algo-red .algo-branch-lbl{color:var(--r)}
+.amber .algo-branch-lbl,.algo-amber .algo-branch-lbl{color:var(--a)}
+.green .algo-branch-lbl,.algo-green .algo-branch-lbl{color:var(--g)}
+.algo-list{list-style:none;padding:0;margin-bottom:.4rem}
+.algo-list li{font-size:11.5px;line-height:1.5;padding-left:14px;position:relative;margin-bottom:1px}
+.algo-red .algo-list li::before{content:'🚨';position:absolute;left:0;font-size:9px;top:2px}
+.algo-amber .algo-list li::before{content:'⚠';position:absolute;left:0;font-size:9px;top:2px}
+.algo-green .algo-list li::before{content:'✓';position:absolute;left:0;font-size:10px;top:1px;color:var(--g);font-weight:700}
+.algo-action{font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:6px;margin-top:.3rem;display:inline-block}
+.red-action{background:#b91c1c;color:#fff}
+.amber-action{background:#b45309;color:#fff}
+.green-action{background:#15803d;color:#fff}
+
+/* DIAGNOSIS FLOW */
+.diag-flow{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem}
+.diag-box{padding:.4rem .75rem;border-radius:8px;font-size:12px;font-weight:600;display:inline-block;margin-bottom:.3rem}
+.diag-start{background:var(--navy);color:#fff}
+.diag-arrow{font-size:11px;color:var(--muted);margin:.2rem 0;font-style:italic}
+.diag-split{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:.4rem 0}
+@media(max-width:600px){.diag-split{grid-template-columns:1fr}}
+.diag-branch{text-align:center}
+.diag-a{background:var(--g-bg);color:var(--g);border:1px solid var(--g-bd)}
+.diag-b{background:var(--a-bg);color:var(--a);border:1px solid var(--a-bd)}
+.diag-c{background:var(--r-bg);color:var(--r);border:1px solid var(--r-bd)}
+.diag-label{font-size:11px;font-weight:700;margin:.15rem 0}
+.green-txt{color:var(--g)}.amber-txt{color:var(--a)}.red-txt{color:var(--r)}
+.diag-sub{font-size:10.5px;color:var(--muted);line-height:1.4}
+.diag-masked{background:var(--b-bg);color:var(--b);border:1px solid var(--b-bd);font-size:11.5px;display:block;margin-top:.4rem}
+
+/* KEY NUMBERS */
+.num-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+@media(max-width:680px){.num-grid{grid-template-columns:1fr 1fr}}
+.num-card{background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:.5rem .65rem;text-align:center}
+.num-highlight{background:var(--navy);border-color:var(--navy)}
+.num-val{font-size:14px;font-weight:700;color:var(--navy);line-height:1.2}
+.num-highlight .num-val{color:#86efac}
+.num-lbl{font-size:10px;color:var(--muted);line-height:1.35;margin-top:.15rem}
+.num-highlight .num-lbl{color:rgba(255,255,255,.6)}
+
+/* DRUG ALGORITHM */
+.drug-algo{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.85rem 1rem}
+.da-q{font-size:12px;font-weight:600;color:var(--navy);margin-bottom:.5rem;padding:.4rem .7rem;background:#fff;border:1px solid var(--line);border-radius:6px}
+.da-split{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:.65rem}
+@media(max-width:560px){.da-split{grid-template-columns:1fr}}
+.da-yes,.da-no{background:#fff;border:1px solid var(--line);border-radius:8px;padding:.6rem .8rem}
+.da-yes-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--g);margin-bottom:.3rem}
+.da-no-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.3rem}
+.da-sub{font-size:10.5px;color:var(--muted);margin-top:.25rem;line-height:1.35}
+.da-pill{font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block;margin:.15rem 0}
+.acei-pill{background:#dcfce7;color:#15803d}.ccb-pill{background:#fef3c7;color:#92400e}.arb-pill{background:#dbeafe;color:#1d4ed8}
+.da-row{display:flex;align-items:center;gap:6px;margin-bottom:.2rem}
+.da-cond{font-size:11px;color:var(--muted);flex:1}
+.da-arrow2{color:var(--muted);font-size:11px;flex-shrink:0}
+.da-ladder{border-top:1px solid var(--line);padding-top:.5rem;display:flex;flex-direction:column;gap:4px}
+.da-step-row{display:flex;align-items:center;gap:8px;font-size:12px}
+.da-num{width:22px;height:22px;border-radius:50%;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.da-text{color:var(--ink);line-height:1.4}
+.da-warn{font-size:10.5px;color:var(--r);margin-top:.5rem;padding:.3rem .6rem;background:var(--r-bg);border-radius:5px;border:1px solid var(--r-bd)}
+
+/* MONITORING TABLE */
+.mon-table-wrap{border:1px solid var(--line);border-radius:var(--rad-sm);overflow:hidden}
+.mon-table{width:100%;border-collapse:collapse;font-size:12px}
+.mon-table th{background:#f8fafc;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:.4rem .6rem;text-align:left;border-bottom:1px solid var(--line)}
+.mon-table td{padding:.4rem .6rem;border-bottom:1px solid var(--line);vertical-align:middle}
+.mon-table tr:last-child td{border-bottom:none}
+.mon-red{font-weight:700;color:var(--r)}.mon-amber{font-weight:700;color:var(--a)}.mon-green{font-weight:700;color:var(--g)}
+
+/* FLAG GRID */
+.flag-grid{display:flex;flex-direction:column;gap:5px;margin-top:.4rem}
+.flag-item{font-size:11.5px;line-height:1.45;padding:.4rem .65rem;border-radius:6px;border:1px solid}
+.flag-red{background:var(--r-bg);border-color:var(--r-bd);color:#7f1d1d}
+.flag-amber{background:var(--a-bg);border-color:var(--a-bd);color:#78350f}
+.flag-pink{background:var(--ps-bg);border-color:var(--ps-bd);color:#831843}
+
+/* COMPACT SAFETY NET */
+.sn-compact-wrap{display:flex;flex-direction:column;gap:6px}
+.sn-compact{border-radius:var(--rad-sm);padding:.6rem .85rem;border:1px solid}
+.sn-compact.sns-e{background:var(--r-bg);border-color:var(--r-bd)}
+.sn-compact.sns-m{background:var(--b-bg);border-color:var(--b-bd)}
+.sn-compact.sns-a{background:var(--a-bg);border-color:var(--a-bd)}
+.sn-compact-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem}
+.sns-e .sn-compact-lbl{color:var(--r)}.sns-m .sn-compact-lbl{color:var(--b)}.sns-a .sn-compact-lbl{color:var(--a)}
+.sn-compact-phrase{font-size:12px;font-style:italic;line-height:1.5}
+
+/* COMPACT FOLLOW-UP */
+.fu-compact-wrap{display:flex;flex-direction:column;gap:6px}
+.fu-compact-row{display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5}
+.fu-compact-dot{width:22px;height:22px;border-radius:50%;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+
+/* SCA FLOW */
+.sca-flow-wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-radius:var(--rad-sm);overflow:hidden;border:1px solid var(--line)}
+@media(max-width:860px){.sca-flow-wrap{grid-template-columns:1fr}}
+.sca-flow-step{padding:.8rem .9rem;border-right:1px solid var(--line);position:relative}
+.sca-flow-step:last-child{border-right:none}
+@media(max-width:860px){.sca-flow-step{border-right:none;border-bottom:1px solid var(--line)}.sca-flow-step:last-child{border-bottom:none}}
+.sca-f1{background:#faf5ff;border-top:3px solid var(--p)}
+.sca-f2{background:#fef2f2;border-top:3px solid var(--r)}
+.sca-f3{background:#fffbeb;border-top:3px solid var(--a)}
+.sca-f4{background:#f0fdf4;border-top:3px solid var(--g)}
+.sca-f5{background:#eff6ff;border-top:3px solid var(--b)}
+.sca-f-time{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.2rem;color:var(--muted)}
+.sca-f-title{font-size:13px;font-weight:700;margin-bottom:.4rem;color:var(--ink)}
+.sca-f-phrase{font-size:11px;font-style:italic;background:rgba(255,255,255,.7);border-left:2px solid rgba(0,0,0,.1);padding:.3rem .5rem;border-radius:0 4px 4px 0;margin-bottom:.3rem;line-height:1.45;color:var(--ink)}
+.sca-f-note{font-size:10.5px;color:var(--muted);line-height:1.4;margin-bottom:.25rem}
+.sca-f-domains{display:flex;flex-wrap:wrap;gap:3px;margin-top:.4rem}
+.sca-dom-tag{font-size:9px;font-weight:700;padding:1px 6px;border-radius:8px}
+.sca-dom-tag.task{background:#dcfce7;color:#15803d}
+.sca-dom-tag.ro{background:var(--p-bg);color:var(--p)}
+.sca-dom-tag.gs{background:var(--b-bg);color:var(--b)}
+.sca-f-avoid{font-size:10px;color:var(--r);margin-top:.4rem;padding:.25rem .45rem;background:rgba(185,28,28,.06);border-radius:4px;line-height:1.4}
+
+/* RAG FULL */
+.rag-full-wrap{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem .9rem}
+.rag-domain-block{}
+.rag-domain-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.3rem}
+.task-col{color:var(--g)}.ro-col{color:var(--p)}.gs-col{color:var(--b)}
+.rag-row{display:flex;align-items:flex-start;gap:6px;margin-bottom:3px;font-size:11px;line-height:1.45;padding:.25rem .4rem;border-radius:4px}
+.rag-rl{flex-shrink:0;font-size:12px}
+.rag-g-row{background:rgba(21,128,61,.06)}
+.rag-a-row{background:rgba(180,83,9,.06)}
+.rag-r-row{background:rgba(185,28,28,.06)}
+
+/* PHRASE STACK */
+.phrase-stack{display:flex;flex-direction:column;gap:6px}
+.phrase-card{border-radius:var(--rad-sm);padding:.55rem .8rem;border:1px solid}
+.p-ideas{background:var(--p-bg);border-color:var(--p-bd)}
+.p-concerns{background:var(--b-bg);border-color:var(--b-bd)}
+.p-expect{background:var(--a-bg);border-color:var(--a-bd)}
+.p-validate{background:var(--g-bg);border-color:var(--g-bd)}
+.p-explain{background:#fefce8;border-color:#fde68a}
+.p-close{background:var(--navy);border-color:var(--navy2)}
+.p-lbl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.2rem}
+.p-ideas .p-lbl{color:var(--p)}.p-concerns .p-lbl{color:var(--b)}.p-expect .p-lbl{color:var(--a)}
+.p-validate .p-lbl{color:var(--g)}.p-explain .p-lbl{color:#92400e}.p-close .p-lbl{color:rgba(255,255,255,.5)}
+.p-phrase{font-size:11.5px;font-style:italic;line-height:1.5}
+.p-close .p-phrase{color:rgba(255,255,255,.85)}
+
+/* DANGER ZONE STACK */
+.dz-stack{display:flex;flex-direction:column;gap:5px}
+.dz-item{display:flex;align-items:flex-start;gap:7px;background:#fff7f7;border:1px solid var(--r-bd);border-radius:7px;padding:.5rem .7rem;font-size:11.5px;line-height:1.4}
+.dz-x{color:var(--r);font-size:14px;font-weight:700;flex-shrink:0;line-height:1.2}
+.dz-fix{color:var(--g);font-size:11px;display:block;margin-top:.15rem}
+
+/* SCA DRUG PICK */
+.sca-drug-pick{background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.7rem .9rem}
+.sdp-row{display:flex;align-items:center;gap:6px;margin-bottom:.3rem}
+.sdp-cond{font-size:11.5px;color:var(--muted);flex:1;line-height:1.3}
+.sdp-arrow{font-size:11px;color:var(--muted);flex-shrink:0}
+.sdp-pill{font-size:11px;font-weight:700;padding:2px 9px;border-radius:12px;flex-shrink:0}
+.sdp-note{font-size:10px;color:var(--muted);flex-shrink:0}
+.sdp-pivot{font-size:11px;font-weight:600;background:var(--navy);color:#86efac;padding:.35rem .7rem;border-radius:6px;margin-top:.3rem;line-height:1.4}
+
+
+/* SCA SCORECARD */
+.scorecard-wrap{background:var(--white);border:2px solid var(--af-bd);border-radius:var(--rad);overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:1.25rem}
+.scorecard-hdr{background:var(--navy);padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.scorecard-hdr-left{}
+.scorecard-title{font-family:"DM Serif Display",serif;font-size:1.2rem;color:#fff;font-weight:400}
+.scorecard-sub{font-size:11px;color:rgba(255,255,255,.55);margin-top:.15rem}
+.scorecard-total-wrap{display:flex;align-items:baseline;gap:4px;background:rgba(255,255,255,.12);padding:.45rem .9rem;border-radius:20px;border:1px solid rgba(255,255,255,.2)}
+.scorecard-total{font-size:1.8rem;font-weight:700;color:#86efac;line-height:1}
+.scorecard-total-label{font-size:12px;color:rgba(255,255,255,.6)}
+.sc-reset-btn{font-size:11.5px;font-weight:600;padding:6px 14px;border-radius:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;cursor:pointer;font-family:"DM Sans",sans-serif;transition:.15s}
+.sc-reset-btn:hover{background:rgba(255,255,255,.2)}
+.scorecard-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--line)}
+@media(max-width:900px){.scorecard-grid{grid-template-columns:1fr}}
+.sc-domain{border-right:1px solid var(--line);padding:0}
+.sc-domain:last-child{border-right:none}
+@media(max-width:900px){.sc-domain{border-right:none;border-bottom:1px solid var(--line)}.sc-domain:last-child{border-bottom:none}}
+.sc-domain-hdr{display:flex;align-items:center;gap:10px;padding:.75rem 1rem;border-bottom:1px solid var(--line)}
+.task-domain{background:#f0fdf4}.ro-domain{background:var(--p-bg)}.gs-domain{background:var(--b-bg)}
+.sc-domain-icon{font-size:1.3rem;flex-shrink:0}
+.sc-domain-title{font-size:12.5px;font-weight:700;color:var(--ink)}
+.sc-domain-sub{font-size:10.5px;color:var(--muted);line-height:1.3}
+.sc-domain-score{margin-left:auto;display:flex;align-items:baseline;gap:2px;flex-shrink:0}
+.sc-domain-score span:first-child{font-size:1.4rem;font-weight:700}
+.task-domain .sc-domain-score span:first-child{color:var(--g)}
+.ro-domain .sc-domain-score span:first-child{color:var(--p)}
+.gs-domain .sc-domain-score span:first-child{color:var(--b)}
+.sc-domain-max{font-size:11px;color:var(--muted)}
+.sc-items{padding:.65rem .85rem;display:flex;flex-direction:column;gap:5px}
+.sc-item{display:flex;align-items:flex-start;gap:8px;cursor:pointer;padding:.45rem .6rem;border-radius:8px;border:1px solid transparent;transition:.15s;user-select:none;font-size:12px;line-height:1.45}
+.sc-item:hover{background:#f8fafc;border-color:var(--line)}
+.sc-item input[type=checkbox]{accent-color:var(--af);width:15px;height:15px;flex-shrink:0;margin-top:1px;cursor:pointer}
+.sc-item-text{flex:1;color:var(--ink)}
+.sc-pts{font-size:10px;font-weight:700;padding:1px 6px;border-radius:8px;background:#f1f5f9;color:var(--muted);flex-shrink:0;margin-top:1px}
+.sc-item.checked{background:#f0fdf4;border-color:var(--g-bd)}
+.sc-item.checked .sc-item-text{color:var(--g)}
+.sc-item.checked .sc-pts{background:var(--g-bg);color:var(--g)}
+.scorecard-interp{padding:1rem 1.25rem;background:#f8fafc;border-top:1px solid var(--line)}
+.interp-bar-wrap{margin-bottom:.75rem}
+.interp-bar-track{height:12px;background:#e2e8f0;border-radius:6px;overflow:hidden;margin-bottom:4px;position:relative}
+.interp-bar-fill{height:100%;border-radius:6px;transition:width .4s cubic-bezier(.4,0,.2,1);background:linear-gradient(90deg,var(--r),var(--a),var(--g),#15803d)}
+.interp-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:2px;padding:0 0}
+.interp-zones{display:grid;grid-template-columns:33% 17% 24% 26%;gap:2px}
+.interp-zone{font-size:10px;font-weight:700;text-align:center;padding:2px 4px;border-radius:4px}
+.iz-r{background:var(--r-bg);color:var(--r)}.iz-a{background:var(--a-bg);color:var(--a)}
+.iz-g{background:var(--g-bg);color:var(--g)}.iz-gg{background:#dcfce7;color:#14532d}
+.interp-msg{display:flex;align-items:center;gap:10px;padding:.65rem .9rem;border-radius:var(--rad-sm);border:1px solid var(--line);background:var(--white)}
+.interp-icon{font-size:1.5rem;flex-shrink:0}
+.interp-text{font-size:12.5px;color:var(--ink);line-height:1.5}
+.sc-missed-wrap{padding:.85rem 1.25rem;background:var(--a-bg);border-top:1px solid var(--a-bd)}
+.sc-missed-title{font-size:11px;font-weight:700;color:var(--a);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.sc-missed-list{display:flex;flex-direction:column;gap:4px}
+.sc-missed-item{font-size:12px;color:#78350f;padding:.3rem .6rem;background:rgba(255,255,255,.6);border-radius:5px;border-left:3px solid var(--a)}
+
+@media print{
+  .sum-body.closed{display:block!important}
+  .sum-toggle{display:none!important}
+  .sca-only,.clinic-only{display:block!important}
+}
+
+@media print{
+  .topbar,.numstrip,.collapse-controls,.step-toggle,.qr-print-btn{display:none!important}
+  body{background:#fff;font-size:11px}.page{padding:0;max-width:100%}
+  .step-body.closed{display:block!important}
+  .sca-only,.clinic-only{display:block!important}
+  .actor-body{display:block!important}
+  .step-hdr{box-shadow:none;background:#f8fafc;border-radius:var(--rad)}
+  .step-hdr.is-open{border-radius:var(--rad);border-bottom:1px solid var(--line)}
+  .step-body{box-shadow:none;border-radius:var(--rad);border-top:1px solid var(--line)!important}
+  .qr-tl,.qr-cols,.g2,.g3{grid-template-columns:1fr 1fr}
+  .drug-cards{grid-template-columns:1fr 1fr}.triage{grid-template-columns:1fr}.dc{break-inside:avoid}
+}
+.page-footer{text-align:center;padding:1.5rem 1rem;color:var(--muted);font-size:11px;border-top:1px solid var(--line);margin-top:1.5rem}
+
+</style>
+
+</head>
+<body class="mode-both" id="bodyEl">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+
+<div class="app">
+  <aside class="sidebar" data-active-id="osteoporosis"></aside>
+  <main class="main">
+
+<!-- Case header -->
+<div class="case-head">
+  <div>
+    <div class="ch-cat">Endocrine · Full case</div>
+    <h1>Osteoporosis</h1>
+  </div>
+  <div class="case-head-tags">
+      <span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE NG222</span>
+      <span class="tag">NOGG 2021</span>
+  </div>
+</div>
+
+<!-- Drop-nav mounts here automatically via case-nav.js -->
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">Os</div>
+      <div><div class="tb-title">Osteoporosis · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE CG146 / NOGG 2021 / CKS 2023</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">&#127891; SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">&#127973; Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">T &le; &minus;2.5</span><span class="ns-lbl">DXA T-score: osteoporosis threshold</span></div>
+    <div class="ns-item"><span class="ns-val">&minus;1.0 to &minus;2.5</span><span class="ns-lbl">DXA T-score: osteopenia — use FRAX</span></div>
+    <div class="ns-item"><span class="ns-val">10-yr FRAX</span><span class="ns-lbl">Fracture Risk Assessment Tool drives treatment threshold</span></div>
+    <div class="ns-item"><span class="ns-val">1000&ndash;1200mg</span><span class="ns-lbl">Daily calcium target (diet + supplement combined)</span></div>
+    <div class="ns-item"><span class="ns-val">800&ndash;1000 IU</span><span class="ns-lbl">Daily vitamin D supplement target</span></div>
+    <div class="ns-item"><span class="ns-val">5 years</span><span class="ns-lbl">Standard bisphosphonate duration; holiday review at 5 yrs</span></div>
+    <div class="ns-item"><span class="ns-val">2-yearly DXA</span><span class="ns-lbl">Monitoring DXA interval on treatment</span></div>
+    <div class="ns-item"><span class="ns-val">&ge;4cm height</span><span class="ns-lbl">Height loss &ge;4cm &rarr; lateral spine X-ray (silent vertebral Fx)</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">&#128203; Clinical Stem &mdash; Osteoporosis / Fragility Fracture</div>
+  <div class="stem-title">A patient presents after a low-energy fracture, or with risk factors for osteoporosis requiring assessment and management.</div>
+  <div class="stem-text">"Mrs Carol White is a 58-year-old part-time administrator who presents after a Colles' wrist fracture following a minor trip three weeks ago. She has a history of coeliac disease diagnosed 8 years ago and takes no calcium or vitamin D supplements. She is postmenopausal (last period age 51), non-smoker, and drinks 10 units of alcohol per week. She is worried about having to take tablets for her bones and has heard they can cause jaw necrosis."</div>
+  <div class="stem-note">Management hinges on four decisions: (1) Has a fragility fracture occurred? (2) What is the 10-year FRAX? (3) What secondary causes and drug interactions are present? (4) Which anti-resorptive agent is most appropriate? In SCA, the ICE around ONJ fear and calcium/vitamin D co-prescription are the two most commonly missed scoring elements.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A &mdash; Post-fracture (hip, wrist, vertebral)</strong> Fragility fracture = automatic high risk. Start anti-resorptive without waiting for DXA. First-line: alendronate 70 mg weekly + calcium/vitamin D. Pre-treatment: Ca, eGFR, vitamin D.</div>
+    <div class="stem-variant"><strong>Scenario B &mdash; Osteopenic (T &minus;1 to &minus;2.5)</strong> T-score alone insufficient. Use FRAX. Treat if FRAX exceeds NOGG intervention threshold. Otherwise lifestyle + annual review.</div>
+    <div class="stem-variant"><strong>Scenario C &mdash; GIOP</strong> Prednisolone &ge;7.5 mg for &ge;3 months = risk regardless of DXA. Risedronate 35 mg weekly preferred. Start when steroids started.</div>
+    <div class="stem-variant"><strong>Scenario D &mdash; eGFR &lt;35 or GI disease</strong> Oral bisphosphonates contraindicated. Denosumab 60 mg SC 6-monthly. Counsel: never stop denosumab without bisphosphonate transition.</div>
+    <div class="stem-variant"><strong>Scenario E &mdash; Secondary osteoporosis</strong> Coeliac, hypogonadism, steroids, hyperthyroidism. Treat the cause first. Secondary causes account for up to 30% of presentations.</div>
+    <div class="stem-variant"><strong>Key variables</strong> Fracture history; DXA T-score; FRAX; eGFR; steroid use; secondary causes; drug history (PPIs reduce absorption); ONJ fear; dental status.</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">&#9660; Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">&#9650; Collapse all</button>
+</div>
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History Taking — Open Question First · Red Flags · FRAX Factors · Secondary Causes · ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Osteoporosis history has two priorities: establish fracture risk (FRAX variables) and identify secondary causes.</strong> Most patients present asymptomatically after DXA or following a fragility fracture. ICE consistently uncovers ONJ fear, concerns about lifelong medication, and attribution of falls to "clumsiness" rather than bone fragility.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 SCA opener</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"I can see from your notes you had a wrist fracture recently — I'm sorry to hear that. I'd like to talk about what happened and make sure we look after your bone health properly. Can you tell me about the fall — was it a minor trip on the flat?"</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Reference the stem (wrist fracture). Clarifying mechanism (low-energy vs high-energy) is the first clinical decision. A fracture from a minor trip = fragility fracture = treat without waiting for DXA.</div>
+    </div>
+    <div class="sub-divider">1A — Key targeted questions</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN — always start here</strong><em>"Tell me about the fall — what happened, and have you had any other fractures recently?"</em></td>
+            <td class="why">Mechanism (fragility vs trauma), fracture history, fall frequency. Low-energy fracture from standing height = fragility fracture = treat without DXA. Multiple falls = falls assessment needed alongside bone treatment.</td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-urgent">Urgency</span></td>
+          </tr>
+          <tr>
+            <td class="q">FRAX risk factors<em>"Previous fractures? Parents had a hip fracture? Smoker? Alcohol? Steroids?"</em></td>
+            <td class="why">All FRAX inputs must be collected: age, sex, BMI, previous fracture, parental hip fracture, smoking, alcohol &gt;3 units/day, corticosteroids, rheumatoid arthritis, secondary osteoporosis. Each independently multiplies risk.</td>
+            <td><span class="chg chg-rx">Management</span></td>
+          </tr>
+          <tr>
+            <td class="q">Secondary causes<em>"Coeliac disease, thyroid problems, early menopause, bowel conditions?"</em></td>
+            <td class="why">Secondary causes: malabsorption (coeliac — reduces calcium/vitamin D absorption), hyperthyroidism, hypogonadism, Cushing's, CKD, IBD. Each requires treatment of primary cause alongside osteoporosis management. Account for up to 30% of osteoporosis.</td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-inv">Investigations</span></td>
+          </tr>
+          <tr>
+            <td class="q">Steroid history<em>"Have you ever taken steroid tablets — for how long and at what dose?"</em></td>
+            <td class="why">Glucocorticoids at ≥7.5 mg prednisolone equivalent for ≥3 months = GIOP risk factor. Risedronate should start when steroids start — not after fracture occurs. This is one of the most preventable forms of fracture.</td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-rx">Management</span></td>
+          </tr>
+          <tr>
+            <td class="q">Calcium and vitamin D intake<em>"How much dairy? Any supplements? Regular outdoor sun exposure?"</em></td>
+            <td class="why">Calcium target 1000–1200 mg/day from all sources. Vitamin D: supplement 800–1000 IU/day. Both are mandatory alongside anti-resorptives. Correct vitamin D deficiency before starting bisphosphonate — risk of severe hypocalcaemia if deficient.</td>
+            <td><span class="chg chg-rx">Management</span></td>
+          </tr>
+          <tr>
+            <td class="q">Vertebral fracture symptoms<em>"Any sudden back pain? Height loss noticed? Back pain with leg weakness?"</em></td>
+            <td class="why">Up to two-thirds of vertebral fractures are clinically silent. Height loss ≥4 cm → lateral thoracolumbar X-ray. Back pain + neurological signs = possible cord compression = 999 emergency.</td>
+            <td><span class="chg chg-inv">Investigations</span><span class="chg chg-urgent">Urgency</span></td>
+          </tr>
+          <tr>
+            <td class="q">Drug history<em>"PPIs, anticonvulsants, aromatase inhibitors, heparin, anti-androgens?"</em></td>
+            <td class="why">PPIs: impair calcium absorption. Anticonvulsants: accelerate vitamin D metabolism. Aromatase inhibitors / ADT: cause rapid bone loss in cancer treatment. All are modifiable risk factors that affect management.</td>
+            <td><span class="chg chg-rx">Management</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Vertebral fracture + leg weakness / bladder or bowel dysfunction</td><td class="rf-why">Spinal cord or cauda equina compression — neurosurgical emergency; mortality without rapid decompression</td><td><span class="rf-action rfa-999">999 immediately</span></td></tr>
+          <tr><td class="rf-flag">Bone pain + weight loss + anaemia + elevated ESR + hypercalcaemia</td><td class="rf-why">Multiple myeloma — must not be managed as osteoporosis; SPEP, FBC, calcium, renal function urgently</td><td><span class="rf-action rfa-same">2WW haematology</span></td></tr>
+          <tr><td class="rf-flag">Atypical femoral fracture (subtrochanteric / mid-shaft) on long-term bisphosphonate</td><td class="rf-why">Bisphosphonate-associated atypical fracture — stop bisphosphonate; urgent orthopaedic; bilateral femur X-ray; consider teriparatide</td><td><span class="rf-action rfa-same">Urgent orthopaedics; stop bisphosphonate</span></td></tr>
+          <tr><td class="rf-flag">Rapidly growing or asymmetric thyroid/neck mass with osteoporosis</td><td class="rf-why">Parathyroid carcinoma or thyroid malignancy causing secondary osteoporosis — concurrent 2WW thyroid/endocrine referral</td><td><span class="rf-action rfa-same">2WW endocrine / thyroid</span></td></tr>
+          <tr><td class="rf-flag">Fracture in a patient under 50 without clear cause</td><td class="rf-why">Unusual — secondary cause must be excluded: hypogonadism, malabsorption, Cushing's, mastocytosis</td><td><span class="rf-action rfa-same">Full secondary cause screen urgently</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C–1D — ICE + Psychosocial</div>
+    <div class="ps-banner"><div class="ps-banner-lbl">💡 Why ICE matters in Osteoporosis</div><p>ONJ fear is the single most common barrier to treatment acceptance in osteoporosis — and it is almost never volunteered unless the clinician asks proactively. The patient who leaves without having their ONJ concern addressed will not take their alendronate, however well the rest of the consultation went. Additionally, many patients are profoundly frightened by the prospect of hip fracture — often having watched a parent die following one. This fear is motivating if properly engaged, and paralysing if left unexplored.</p></div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What's your understanding of what caused this fracture — did you know your bones might be at risk?"</div><div class="ice-why">Many patients believe osteoporosis only affects very elderly women. Establishing the model enables targeted education.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 ONJ Fear</div><div class="ice-phrase">"Have you heard anything about bone tablets that's concerned you — any worries about jaw problems specifically?"</div><div class="ice-why">Must be proactively asked — rarely volunteered. Address with &lt;1 in 10,000 risk framing and distinction from cancer IV doses. Dental check plan gives concrete reassurance.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"What were you hoping we'd do today — start treatment, investigate more, or get reassurance?"</div><div class="ice-why">Patients who expect a "cure" for osteoporosis need education on fracture risk reduction (~50%) vs cure expectation. Realistic expectations improve adherence.</div></div>
+    </div>
+    <div class="sca-cp sca-only">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases</div>
+          <div class="sca-phrase">"A fracture from a minor trip is a 'fragility fracture' — it tells us the bone wasn't strong enough to withstand a normal force, and that's clinically very important."</div>
+          <div class="sca-phrase">"I've heard people worry about jaw problems with these tablets — can I address that directly? It's an extremely rare side effect at the doses we use."</div>
+          <div class="sca-phrase">"Given your coeliac disease, your calcium and vitamin D absorption may be reduced — that's something we need to measure and correct."</div>
+        </div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul>
+          <li>Not asking about ONJ fear proactively — most common undisclosed concern in osteoporosis</li>
+          <li>Not identifying coeliac as secondary cause affecting calcium/vitamin D management</li>
+          <li>Not clarifying fracture mechanism (fragility vs trauma) — pivotal clinical decision</li>
+        </ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">ONJ fear not explored. Secondary causes not asked. Fracture mechanism not clarified. ICE absent.</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">FRAX factors partially collected. ONJ acknowledged if raised but not proactively asked. Coeliac not connected to management.</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Fragility fracture confirmed. Full FRAX factors. Coeliac and secondary causes explored. ONJ fear proactively asked and addressed with &lt;1/10,000 framing. ICE complete.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage Engine — Emergency · Urgent · Routine</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Post-fracture patients are automatically high-risk — treatment should be initiated promptly without waiting for DXA.</strong></div>
+    <div class="triage">
+      <div class="tc tc-e"><div class="tc-lbl">🔴 Emergency / 2WW</div><h3>999 / Same-Day</h3><span class="tc-badge tcb-e">Act now</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Vertebral fracture + leg weakness / bladder or bowel change</strong><em>Cord/cauda equina compression → 999</em></li>
+          <li class="tc-item"><strong>Hip fracture</strong><em>Emergency orthopaedic admission</em></li>
+          <li class="tc-item"><strong>Bone pain + weight loss + anaemia + SPEP band</strong><em>2WW haematology (myeloma)</em></li>
+          <li class="tc-item"><strong>Atypical femoral fracture on bisphosphonate</strong><em>Urgent orthopaedics; stop bisphosphonate</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u"><div class="tc-lbl">🟠 Urgent</div><h3>Treat Within 4 Weeks</h3><span class="tc-badge tcb-u">Weeks</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Fragility fracture (wrist, vertebral, humerus)</strong><em>Pre-treatment bloods + start treatment without DXA delay</em></li>
+          <li class="tc-item"><strong>GIOP — new long-term steroid prescription</strong><em>Start risedronate + calcium/vitamin D when steroids start</em></li>
+          <li class="tc-item"><strong>T-score ≤−2.5 with significant risk factors</strong><em>Pre-treatment bloods → start treatment</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r"><div class="tc-lbl">🟢 Routine</div><h3>Primary Care</h3><span class="tc-badge tcb-r">GP practice</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Osteopenia (T −1 to −2.5) — FRAX-driven</strong><em>Calculate FRAX; treat if above NOGG threshold; lifestyle if below</em></li>
+          <li class="tc-item"><strong>Annual treatment review</strong><em>DXA 2-yearly; adherence; bisphosphonate holiday at 5 years</em></li>
+          <li class="tc-item"><strong>Falls prevention without fracture</strong><em>Lifestyle + supplements + OTAGO programme</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrase</div><div class="sca-phrase">"This fracture happened from such a minor fall — that tells us your bones need support, and I'd like to start investigating and treating without waiting for all the results first."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Waiting for DXA before treating a confirmed fragility fracture</li><li>Missing neurological signs with vertebral pain as an emergency trigger</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Do I Need This Examination?</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Height measurement, falls risk assessment, and looking for secondary cause signs are the most important examination components.</strong></div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:20%">Examination</th><th style="width:36%">Why it matters</th><th style="width:26%">Finding that changes management</th><th>Changes?</th></tr></thead>
+        <tbody>
+          <tr><td class="q">Height measurement</td><td class="why">Height loss ≥4cm from peak = lateral thoracolumbar X-ray for silent vertebral fractures. Document at every review. Most important single measurement in osteoporosis.<span class="why-sub">Also: rib-to-pelvis distance &lt;2 finger-widths suggests vertebral collapse from kyphosis.</span></td><td class="why">≥4cm height loss → spinal X-ray urgently</td><td><span class="mcb mcb-yes">YES — critical</span></td></tr>
+          <tr><td class="q">Falls risk (balance and gait)</td><td class="why">Timed Up and Go &gt;12 seconds = falls risk. 4-stage balance test. Falls are the proximate cause of most fragility fractures — addressing falls risk is as important as bone treatment.</td><td class="why">Poor balance → OTAGO programme; physiotherapy; OT home assessment</td><td><span class="mcb mcb-yes">YES</span></td></tr>
+          <tr><td class="q">Weight and BMI</td><td class="why">Low BMI (&lt;19) is an independent FRAX input and fracture risk factor. Documents weight change for treatment monitoring (BMD often correlates with weight restoration).</td><td class="why">BMI &lt;19 → nutritional assessment; FRAX input</td><td><span class="mcb mcb-yes">YES — FRAX</span></td></tr>
+          <tr><td class="q">Secondary cause signs</td><td class="why">Cushingoid features (bruising, striae, buffalo hump), thyroid signs (tremor, tachycardia, goitre), proximal myopathy (vitamin D deficiency/osteomalacia), bruising (anticoagulant use)</td><td class="why">Cushingoid → cortisol screen. Thyroid signs → TFTs urgently. Proximal myopathy → vitamin D level</td><td><span class="mcb mcb-yes">YES — DDx</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrase</div><div class="sca-phrase">"I'd like to measure your height today — sometimes there are small fractures in the spine that don't cause pain, and a change in height is the clue. I'll also check your balance."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not measuring height — the most important single measurement in osteoporosis management</li><li>Not assessing falls risk — falls prevention is co-equal with bone treatment</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Do I Need This Investigation?</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Pre-treatment bloods (calcium, eGFR, vitamin D) are mandatory before any anti-resorptive prescription. DXA confirms diagnosis and guides treatment decisions in osteopenia.</strong></div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:22%">Investigation</th><th style="width:38%">When to order</th><th>Result that changes management</th></tr></thead>
+        <tbody>
+          <tr><td class="q">Pre-treatment bloods: corrected calcium, eGFR, 25-OH vitamin D, ALP, FBC</td><td class="why">Mandatory before any anti-resorptive. Hypocalcaemia → correct before bisphosphonate (risk of severe hypocalcaemia). eGFR &lt;35 → oral bisphosphonates contraindicated. Vitamin D deficiency → correct first.</td><td class="why">Hypocalcaemia → correct first. eGFR &lt;35 → denosumab. Vitamin D &lt;50 nmol/L → high-dose replacement before treatment. Elevated ALP → Paget's or bone metastases.</td></tr>
+          <tr><td class="q">DXA scan</td><td class="why">Gold standard for BMD. T-score: ≤−2.5 = osteoporosis. −1 to −2.5 = osteopenia (use FRAX). Monitors treatment response (2-yearly). VFA (vertebral fracture assessment) detects silent vertebral fractures.</td><td class="why">T ≤−2.5 → treat. T −1 to −2.5 → FRAX. T improving on treatment → continue / holiday at 5 years. T worsening despite treatment → review adherence and secondary causes.</td></tr>
+          <tr><td class="q">FRAX tool (online)</td><td class="why">10-year probability of major osteoporotic fracture. Uses clinical risk factors ± BMD. Compare against NOGG intervention threshold. Treatment recommended if above threshold.</td><td class="why">FRAX above intervention threshold → treat. Below threshold + osteopenia → lifestyle; annual DXA. Very high FRAX (hip &gt;3%) → early DXA and treatment.</td></tr>
+          <tr><td class="q">Myeloma screen (if bone pain + weight loss + anaemia)</td><td class="why">SPEP, FBC, ESR, corrected calcium, renal function, urine Bence Jones protein. Myeloma causes osteoporosis-like changes but requires completely different management.</td><td class="why">Monoclonal band + CRAB criteria → 2WW haematology urgently. Normal → proceed with osteoporosis management.</td></tr>
+          <tr><td class="q">Secondary cause investigations</td><td class="why">As clinically indicated: coeliac serology (anti-tTG IgA), TFTs (hyperthyroidism), testosterone (males), cortisol (if Cushingoid), PTH (if hypercalcaemia), LH/FSH (premature menopause).</td><td class="why">Coeliac positive → gluten-free diet mandatory; higher vitamin D doses. Low testosterone → replace before anti-resorptive. Cushing's → specialist management.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrase</div><div class="sca-phrase">"Before I prescribe the bone tablet, I need to check three things — your calcium level, your kidney function, and your vitamin D. These are mandatory safety checks before starting treatment."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Starting bisphosphonate without pre-treatment calcium, eGFR, and vitamin D — prescribing error</li><li>Not checking coeliac-related absorption markers in a patient with known coeliac</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Reaching a Diagnosis — Explained in Plain Language</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="lay-box">
+      <div class="lay-box-lbl">🗣️ Diagnosis in Plain Language</div>
+      <p>"Osteoporosis means that the scaffolding inside your bones has become too thin — like a sponge with too many large holes. It doesn't hurt, which is why it's often called the 'silent disease.' The problem is that when the scaffolding is thin enough, even a small knock or fall can break a bone that wouldn't have broken otherwise — which is what happened with your wrist. We can't fully undo what's there, but we can significantly slow down the loss and actually improve the structure over time. Treatment reduces your risk of another fracture by about half."</p>
+    </div>
+    <div class="lay-why-not">
+      <div class="lay-why-not-lbl">💬 Addressing ONJ concern directly</div>
+      <p><strong>"I've read these tablets cause your jaw bone to die."</strong><br><em>"I'm really glad you raised that — it's important and I want to give you the proper picture. ONJ is a real but extremely rare side effect. In studies of patients taking weekly alendronate tablets — which is what I'd recommend for you — the risk is less than 1 in 10,000. The risk you've likely read about is much higher with high-dose intravenous bisphosphonates used to treat cancer — that's a completely different situation. To put it in perspective: a hip fracture without treatment in someone with your fracture history carries a roughly 25–30% mortality risk within 12 months. The ONJ risk with your weekly tablet is under 1 in 10,000. I'd also ask you to see your dentist before we start — just as a sensible precaution."</em></p>
+    </div>
+    <div class="g3" style="margin-bottom:12px">
+      <div class="card" style="padding:1rem;border-left:4px solid var(--g)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.4rem">A — Primary care diagnosis and management</div>
+        <div class="ddx-card ddx-a" style="margin-bottom:.5rem"><h4>Primary osteoporosis (postmenopausal / age-related)</h4><p>Most common. DXA T ≤−2.5 or fragility fracture. Alendronate first-line. Calcium + vitamin D mandatory adjunct.</p></div>
+        <div class="ddx-card ddx-a"><h4>GIOP (glucocorticoid-induced)</h4><p>Prednisolone ≥7.5 mg for ≥3 months. Risedronate preferred. Start with steroids, not after fracture.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--a)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:.4rem">B — Secondary cause to treat first</div>
+        <div class="ddx-card ddx-b" style="margin-bottom:.5rem"><h4>Coeliac disease</h4><p>Gluten-free diet often improves BMD significantly. Higher vitamin D doses needed. Check absorption markers.</p></div>
+        <div class="ddx-card ddx-b"><h4>Hypogonadism / premature menopause</h4><p>HRT or testosterone replacement as primary treatment. Anti-resorptive secondary.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--r)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--r);margin-bottom:.4rem">C — Emergency / 2WW</div>
+        <div class="ddx-card ddx-c" style="margin-bottom:.5rem"><h4>Multiple myeloma</h4><p>Bone pain + weight loss + anaemia + SPEP band. 2WW haematology. Not osteoporosis.</p></div>
+        <div class="ddx-card ddx-c"><h4>Vertebral fracture + neurology</h4><p>Cord/cauda equina compression. 999 emergency.</p></div>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases</div>
+          <div class="sca-phrase">"The scaffolding inside your bones became too thin — like a sponge with too many holes. That's why the minor fall broke your wrist."</div>
+          <div class="sca-phrase">"ONJ risk with the weekly tablet is under 1 in 10,000. The risk you read about is from cancer IV doses — a completely different situation."</div>
+        </div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul>
+          <li>Dismissing ONJ concern without risk quantification</li>
+          <li>Not using a plain language analogy for osteoporosis mechanism</li>
+          <li>Not checking understanding after the explanation</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">If Referral Is Needed</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Most osteoporosis is managed in primary care. Referral is needed for: secondary causes requiring specialist treatment, eGFR &lt;35 needing denosumab guidance, suspected myeloma, or sequential therapy (teriparatide).</strong></div>
+    <div class="card" style="overflow:hidden">
+      <table class="ref-table">
+        <thead><tr><th>Indication</th><th>Urgency</th><th>GP does before referral</th><th>Must NOT do</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">Vertebral fracture + neurological signs</td><td><span class="ref-urg rurg-999">999</span></td><td style="font-size:12px">Lie flat if spinal instability suspected; 999; spinal precautions</td><td style="font-size:12px;color:var(--r)">Do not sit or mobilise if cord compression suspected</td></tr>
+          <tr><td style="font-weight:600">Suspected myeloma</td><td><span class="ref-urg rurg-2">2WW haematology</span></td><td style="font-size:12px">FBC, ESR, SPEP, corrected calcium, renal function, urine BJP; do not start bisphosphonate until excluded</td><td style="font-size:12px;color:var(--r)">Do not manage as primary osteoporosis — myeloma requires different treatment</td></tr>
+          <tr><td style="font-weight:600">eGFR &lt;35</td><td><span class="ref-urg rurg-r">Routine renal / endocrine</span></td><td style="font-size:12px">Correct vitamin D and calcium; denosumab is the alternative (can be started in primary care). NEVER stop denosumab without bisphosphonate transition.</td><td style="font-size:12px;color:var(--r)">Never prescribe oral bisphosphonate if eGFR &lt;35</td></tr>
+          <tr><td style="font-weight:600">Severe / recurrent fractures on treatment — teriparatide</td><td><span class="ref-urg rurg-r">Routine endocrine</span></td><td style="font-size:12px">Document T-score, FRAX, fractures on treatment, treatments tried; teriparatide requires specialist prescription (NICE TA161)</td><td style="font-size:12px;color:var(--r)">Do not prescribe teriparatide in primary care</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Expectation · Goals · Lifestyle · Drug Cards · Follow-Up · Safety-Netting</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Three non-negotiable prescribing rules: (1) always pre-screen with calcium/eGFR/vitamin D; (2) always co-prescribe calcium and vitamin D; (3) never stop denosumab without bisphosphonate transition.</strong></div>
+
+    <div class="sub-divider">7A — Address ONJ expectation: validate → explain → negotiate</div>
+    <div class="expect-box">
+      <div class="expect-box-hdr"><span style="font-size:1.4rem">🤝</span><div class="expect-box-lbl">Validate → Explain → Negotiate</div></div>
+      <div class="expect-steps">
+        <div class="expect-step"><div class="expect-step-num">1</div><h5>Validate</h5><p>ONJ fear and medication hesitancy are understandable. Acknowledge explicitly before presenting evidence.</p><span class="expect-phrase">"I completely understand the concern about the tablets — the jaw issue is something many patients have heard about and I want to give you the accurate picture."</span></div>
+        <div class="expect-step"><div class="expect-step-num">2</div><h5>Explain</h5><p>ONJ risk &lt;1 in 10,000 with oral weekly tablets. Fracture without treatment: ~25–30% mortality for hip fracture within 12 months. Evidence base and specific risk numbers are essential.</p><span class="expect-phrase">"The risk of jaw problems with the weekly tablet is under 1 in 10,000. A hip fracture without treatment in your situation carries a much greater risk. I want us to make this decision together with the full picture."</span></div>
+        <div class="expect-step"><div class="expect-step-num">3</div><h5>Negotiate</h5><p>Dental check as the concrete first step gives patient agency and addresses the concern practically.</p><span class="expect-phrase">"Could we agree on this — see your dentist in the next two weeks, let them know you're starting a bone tablet, then start the alendronate once that's done? I'll also sort the blood tests today."</span></div>
+      </div>
+      <div style="background:rgba(21,128,61,.08);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.65rem 1rem;margin-top:.75rem;font-size:12.5px;color:#14532d;line-height:1.55"><strong>Key principle:</strong> The patient who leaves without having the ONJ concern addressed will not take their alendronate regardless of how well the rest of the consultation went. Address it directly, quantify the risk, offer the dental check, and gain consent from a place of genuine informed understanding.</div>
+    </div>
+
+    <div class="sub-divider">7B — Treatment goals + motivational language</div>
+    <div class="g2" style="margin-bottom:1rem">
+      <div class="card" style="padding:1rem 1.1rem">
+        <div class="card-hd" style="color:var(--g);border:none;padding:0 0 .6rem">Treatment goals</div>
+        <div class="tx-goals">
+          <span class="tx-goal tg1">~50% relative reduction in vertebral fracture risk</span>
+          <span class="tx-goal tg1">~40% relative reduction in hip fracture risk (alendronate)</span>
+          <span class="tx-goal tg2">Stabilise or improve DXA T-score over 2 years</span>
+          <span class="tx-goal tg2">Correct vitamin D deficiency (≥50 nmol/L target)</span>
+          <span class="tx-goal tg3">No new fragility fractures while on treatment</span>
+          <span class="tx-goal tg3">Falls prevention programme completed</span>
+          <span class="tx-goal tg4">Dental review before bisphosphonate started</span>
+          <span class="tx-goal tg4">Gluten-free diet adherence (coeliac) reassessed</span>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem">
+        <div class="card-hd" style="color:var(--b);border:none;padding:0 0 .6rem">Motivational language</div>
+        <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--b-bd);padding:.55rem .85rem;background:var(--b-bg);border-radius:0 8px 8px 0;line-height:1.6;margin-bottom:.5rem">"Alendronate reduces the risk of another fracture like this wrist fracture by about half — that's a significant protection for a simple weekly tablet."</div>
+        <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.6">"I understand your mother had a hip fracture — that's exactly why I want us to be proactive here. This treatment significantly reduces the chance of that outcome for you."</div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7C — Lifestyle</div>
+    <div class="life-grid" style="margin-bottom:1.25rem">
+      <div class="life-card"><div class="life-head"><span class="life-icon">🥛</span><div class="life-title">Calcium Intake</div><span class="life-target">1000–1200 mg/day (diet + supplement)</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Calcium is the primary mineral in bone hydroxyapatite. Inadequate calcium accelerates bone loss; adequate calcium maximises anti-resorptive efficacy.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>~200 mg per dairy portion. If diet provides &lt;700 mg/day, supplement to 1000–1200 mg. Do not exceed 1200 mg — cardiovascular signal above this. Separate from bisphosphonate by 4–6 hours.</p></div><span class="life-benefit">Calcium + vitamin D reduces hip fracture risk ~15% independently</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">☀️</span><div class="life-title">Vitamin D</div><span class="life-target">800–1000 IU/day; 25-OH vitamin D ≥50 nmol/L</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Vitamin D is essential for calcium absorption from the gut. Deficiency causes secondary hyperparathyroidism → increased bone resorption. Deficiency dramatically reduces anti-resorptive efficacy and can cause severe hypocalcaemia on starting bisphosphonate.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Combined preparations (Adcal-D3, Calceos) convenient. In coeliac — higher doses often required; check 25-OH level. Must correct before starting anti-resorptive.</p></div><span class="life-benefit">Vitamin D must be ≥50 nmol/L before anti-resorptive — correct deficiency first</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">🏋️</span><div class="life-title">Weight-Bearing Exercise</div><span class="life-target">150 min/week; include strength, balance, impact</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Mechanical loading stimulates osteoblast activity. Weight-bearing exercise is the most potent non-pharmacological stimulus for bone maintenance.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Walking, dancing, heel drops (10/day — RCT evidence). Resistance training for appendicular bones. OTAGO programme specifically for falls reduction.</p></div><span class="life-benefit">Regular weight-bearing exercise reduces falls risk 25% and fracture risk independently</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">🚭</span><div class="life-title">Smoking and Alcohol</div><span class="life-target">Stop smoking; alcohol ≤14 units/week</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Smoking reduces BMD through osteoblast toxicity. Alcohol &gt;3 units/day is a FRAX risk factor through reduced bone formation and increased falls risk.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Brief alcohol advice: 10 units/week is within guidelines but worth reviewing in context of fracture risk. Smoking cessation referral via NHS Stop Smoking Service.</p></div><span class="life-benefit">Stopping smoking reduces fracture risk ~25% over 10 years</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">🏠</span><div class="life-title">Falls Prevention</div><span class="life-target">Multifactorial falls assessment + home hazard review</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Falls are the proximate cause of most fragility fractures. Addressing modifiable factors (medications, vision, footwear, home hazards, balance) is complementary to bone treatment.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>OTAGO/FaME structured programme. OT home assessment. Medication review (sedatives, hypnotics, antihypertensives). Hip protectors for very high-risk patients.</p></div><span class="life-benefit">Multifactorial falls prevention reduces falls by 30–40%</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">🦷</span><div class="life-title">Dental Review Before Starting</div><span class="life-target">Dental check before bisphosphonate; maintain oral hygiene</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>ONJ risk is dramatically reduced by ensuring good oral health before starting. Dental surgery during bisphosphonate therapy has higher ONJ risk — plan any needed work before starting.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Advise dental review before starting. Inform dentist of bisphosphonate at every dental visit. Excellent oral hygiene throughout. If dental surgery needed: discuss with prescriber — brief holiday evidence equivocal.</p></div><span class="life-benefit">Pre-treatment dental review + good oral hygiene reduce ONJ risk below baseline oral surgical risk</span></div></div>
+    </div>
+
+    <div class="sub-divider" id="drugs">7D — Drug selector</div>
+    <div class="ds-wrap" style="margin-bottom:.85rem">
+      <div class="ds-top">
+        <h3>Select patient characteristics — see drug cards below</h3>
+        <div class="ds-checks">
+          <label class="ds-lbl"><input type="checkbox" id="ds-dm" onchange="calcDrug()"> Standard postmenopausal/adult, eGFR ≥35, no GI disease</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-ckd" onchange="calcDrug()"> eGFR &lt;35 — oral bisphosphonates contraindicated</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-cvd" onchange="calcDrug()"> GIOP — prednisolone ≥7.5 mg for ≥3 months</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-afro" onchange="calcDrug()"> GI disease / cannot take oral tablets</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-age55" onchange="calcDrug()"> Severe osteoporosis T &lt;−3.5 / multiple fractures on treatment</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-hf" onchange="calcDrug()"> Denosumab planned — counsel on never stopping without transition</label>
+        </div>
+      </div>
+      <div class="ds-result">
+        <div class="ds-result-title">Treatment approach</div>
+        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Standard: alendronate 70 mg weekly + calcium/vitamin D. eGFR &lt;35: denosumab (never stop without bisphosphonate transition). GIOP: risedronate 35 mg weekly. GI disease/IV: zoledronic acid 5 mg annually. Severe: teriparatide (specialist). Always: pre-treatment Ca/eGFR/vit D · Ca+D3 co-prescribed (4–6 hrs from bisphosphonate) · dental check before starting.</span></div>
+      </div>
+    </div>
+
+    <!-- ═══ Interactive Medication Chooser (live, NICE/BNF tiered) ═══ -->
+    <div class="sub-divider">⚙ Interactive Medication Chooser — tick the patient profile, options re-tier live against NICE / BNF</div>
+    <div class="step-intro" style="margin-bottom:.6rem">A live, topic-scoped version of the standalone <a href="../tools/medication-chooser.html" style="font-weight:600;text-decoration:underline">Medication Chooser</a>. The reference cards below are unchanged.</div>
+    <div data-medchooser="osteoporosis"></div>
+
+    <div class="sub-divider">7E — Drug reference cards</div>
+    <div class="drug-cards" id="drug-cards-container">
+      <div class="dc" id="dc-alen">
+        <div class="dc-head"><div><div class="dc-name">Alendronate (Weekly Bisphosphonate)</div><div class="dc-examples">Alendronic acid 70 mg weekly; Fosamax; generic</div><div class="dc-rec-badge" id="rec-alen">✓ First-line</div></div><div class="dc-badges"><span class="dc-step step1">First-line</span><span class="dc-dose">70 mg weekly PO (empty stomach)</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use when</div>
+          <div class="dc-item">First-line for postmenopausal osteoporosis (NICE CG146)</div>
+          <div class="dc-item">Post-fragility fracture regardless of DXA result — treat without delay</div>
+          <div class="dc-item">eGFR ≥35 mL/min; able to sit upright 30 minutes; no oesophageal disease</div>
+          <div class="dc-item">~50% vertebral fracture risk reduction; ~40% hip fracture risk reduction (RCT)</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div>
+          <div class="dc-item ci-abs">eGFR &lt;35 — accumulation risk; AKI</div>
+          <div class="dc-item ci-abs">Oesophageal disease (stricture, achalasia) — severe oesophagitis risk</div>
+          <div class="dc-item ci-rel">Uncorrected hypocalcaemia — correct calcium/vitamin D first</div>
+        </div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div>
+          <div class="dc-item">Upper GI: oesophageal irritation — most common reason for stopping; prevented by correct administration</div>
+          <div class="dc-item">ONJ: &lt;1 in 10,000 with weekly oral — dental check before starting; inform dentist at every visit</div>
+          <div class="dc-item">Atypical femoral fracture: rare with &gt;5 years use — monitor for thigh pain; X-ray both femurs if suspected</div>
+          <div class="dc-item">Musculoskeletal pain: diffuse; usually resolves on stopping</div>
+        </div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">🔬 Monitor</div>
+          <div class="dc-item">DXA every 2 years; bisphosphonate holiday review at 5 years</div>
+          <div class="dc-item">Height annually; calcium/vitamin D status</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling — critical scoring point</div><p>"Take this tablet first thing in the morning on an empty stomach with a full glass of water — then stay upright (sitting or standing) for at least 30 minutes before eating or drinking anything else. Once a week, on the same day each week. Take your calcium and vitamin D supplement at a different time — with lunch or dinner is ideal."</p></div>
+        <div class="dc-sca"><p>In SCA: alendronate administration counselling (empty stomach + full glass of water + upright 30 min) is a specific Tasks mark. Omitting this = oesophagitis risk = prescribing error. The calcium/vitamin D timing separation (not with alendronate in morning) is also a scoring point.</p></div>
+      </div>
+
+      <div class="dc" id="dc-rise">
+        <div class="dc-head"><div><div class="dc-name">Risedronate (Weekly Bisphosphonate)</div><div class="dc-examples">Risedronic acid 35 mg weekly; Actonel</div><div class="dc-rec-badge" id="rec-rise">✓ GIOP First-Line</div></div><div class="dc-badges"><span class="dc-step step1">GIOP / step 2</span><span class="dc-dose">35 mg weekly PO</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use when</div>
+          <div class="dc-item">GIOP — NICE TA preferred bisphosphonate for glucocorticoid-induced osteoporosis</div>
+          <div class="dc-item">Alendronate not tolerated (GI side effects) — better GI tolerability</div>
+          <div class="dc-item">eGFR ≥35; same contraindications as alendronate</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div><div class="dc-item ci-abs">eGFR &lt;35; oesophageal disease; uncorrected hypocalcaemia</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"Same as alendronate — empty stomach, full glass of water, upright 30 minutes. Once a week on the same day."</p></div>
+        <div class="dc-sca"><p>In SCA: risedronate is the correct first choice for GIOP. Knowing this specific NICE TA indication gains a Tasks mark.</p></div>
+      </div>
+
+      <div class="dc" id="dc-zol">
+        <div class="dc-head"><div><div class="dc-name">Zoledronic Acid (IV Bisphosphonate)</div><div class="dc-examples">Aclasta 5 mg; IV infusion 15 min; annually</div><div class="dc-rec-badge" id="rec-zol">✓ Recommended</div></div><div class="dc-badges"><span class="dc-step step2">IV route</span><span class="dc-dose">5 mg IV once yearly</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use when</div>
+          <div class="dc-item">Oral bisphosphonates not tolerated (GI disease, oesophageal stricture)</div>
+          <div class="dc-item">Adherence to weekly oral regimen is poor</div>
+          <div class="dc-item">Post-hip fracture — can be given in hospital liaison setting</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div><div class="dc-item ci-abs">eGFR &lt;35; uncorrected hypocalcaemia (correct vitamin D + calcium first)</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div>
+          <div class="dc-item">Acute phase reaction: flu-like symptoms 24–48 hours after first infusion — warn; paracetamol; resolves by day 3; rare with subsequent infusions</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"A yearly 15-minute drip. You may feel flu-like for a day or two afterwards — that's normal and means the medication is working. The advantage: nothing to take by mouth each week."</p></div>
+      </div>
+
+      <div class="dc" id="dc-denos">
+        <div class="dc-head"><div><div class="dc-name">Denosumab (RANK-L Inhibitor)</div><div class="dc-examples">Prolia 60 mg SC injection every 6 months</div><div class="dc-rec-badge" id="rec-denos">⚠ NEVER STOP WITHOUT TRANSITION</div></div><div class="dc-badges"><span class="dc-step step2">eGFR &lt;35 / step 2</span><span class="dc-dose">60 mg SC every 6 months</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use when</div>
+          <div class="dc-item">eGFR &lt;35 — safe at any level of renal function; does not accumulate</div>
+          <div class="dc-item">Oral and IV bisphosphonates not tolerated or contraindicated</div>
+          <div class="dc-item">Aromatase inhibitor-induced bone loss in breast cancer patients</div>
+          <div class="dc-item">Faster BMD increase than alendronate — useful when rapid response needed</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ CRITICAL WARNING</div>
+          <div class="dc-item ci-abs">NEVER stop denosumab abruptly without transitioning to bisphosphonate — severe rebound vertebral fracture risk within 6–18 months. Multiple fractures reported. Must counsel every patient on this before prescribing.</div>
+        </div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div>
+          <div class="dc-item">Hypocalcaemia: particularly in CKD — check calcium 2–4 weeks post-injection in CKD</div>
+          <div class="dc-item">ONJ: higher risk than oral bisphosphonates but still low — dental check before starting</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling — critical safety message</div><p>"This injection every 6 months is very effective. The most important thing I need to tell you is that you must never stop this injection without speaking to me first — stopping it suddenly can cause multiple fractures to your spine within months. Even if you feel completely well, come back for each 6-month injection. If you can't make the appointment for any reason, contact us immediately."</p></div>
+        <div class="dc-sca"><p>In SCA: denosumab rebound fracture counselling is one of the most specific and clinically important knowledge points in osteoporosis. Prescribing denosumab without this counselling is an incomplete management — fails a Tasks mark AND potentially an RO mark.</p></div>
+      </div>
+
+      <div class="dc" id="dc-iban">
+        <div class="dc-head"><div><div class="dc-name">Ibandronate (Monthly Bisphosphonate)</div><div class="dc-examples">Bonviva 150 mg monthly tablet</div><div class="dc-rec-badge" id="rec-iban">✓ Recommended</div></div><div class="dc-badges"><span class="dc-step step2">Monthly oral</span><span class="dc-dose">150 mg once monthly PO</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use when</div>
+          <div class="dc-item">Weekly alendronate not tolerated; monthly regimen preferred by patient</div>
+          <div class="dc-item">eGFR ≥30 (lower eGFR threshold than alendronate/risedronate)</div>
+          <div class="dc-item">Less evidence for hip fracture reduction compared to alendronate</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"Once monthly, same date each month, first thing in the morning, full glass of water, upright 60 minutes before eating (longer standing time than weekly tablets)."</p></div>
+      </div>
+
+      <div class="dc" id="dc-cald">
+        <div class="dc-head"><div><div class="dc-name">Calcium + Vitamin D (Mandatory Adjunct)</div><div class="dc-examples">Adcal-D3; Calceos; Calcichew D3; various brands</div><div class="dc-rec-badge" id="rec-cald">✓ Always co-prescribe</div></div><div class="dc-badges"><span class="dc-step step1">Mandatory adjunct</span><span class="dc-dose">1000–1200 mg Ca + 800–1000 IU D3/day</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Co-prescribe with every anti-resorptive</div>
+          <div class="dc-item">Mandatory with bisphosphonates, denosumab, and teriparatide — always</div>
+          <div class="dc-item">Corrects nutritional deficiencies that reduce anti-resorptive efficacy</div>
+          <div class="dc-item">Prevents bisphosphonate-induced hypocalcaemia</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Caution</div>
+          <div class="dc-item ci-rel">Hypercalcaemia — check serum calcium before prescribing</div>
+          <div class="dc-item ci-rel">Do not exceed 1200 mg/day total — cardiovascular signal above this dose</div>
+        </div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">🔬 Critical timing</div>
+          <div class="dc-item">Take calcium/vitamin D supplement at a DIFFERENT time from bisphosphonate — calcium impairs bisphosphonate absorption. Take 4–6 hours apart from bisphosphonate dose.</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"Take this supplement with lunch or dinner — not in the morning with your bone tablet. They need to be taken at different times of day to work properly."</p></div>
+        <div class="dc-sca"><p>In SCA: omitting calcium + vitamin D co-prescription is a specific Tasks deduction. The TIMING (not with bisphosphonate — 4–6 hrs apart) is also a specific scoring point. Both prescription AND timing must be communicated.</p></div>
+      </div>
+    </div>
+
+    <div class="sub-divider" style="margin-top:1.5rem">7F — Psychosocial impact</div>
+    <div class="psoci-wrap">
+      <div class="psoci-hdr"><span style="font-size:1.5rem">🫂</span><div class="psoci-title">Osteoporosis and fractures affect independence, confidence, and identity</div></div>
+      <div class="psoci-grid">
+        <div class="psoci-card"><span class="psoci-icon">😨</span><h5>Fear of Falling</h5><p>Paradoxically, fear of falling after a fracture causes inactivity — which worsens bone density and balance, increasing future fracture risk.</p><p>Prescribe physical activity as medicine; refer to structured balance programme. Explain that inactivity is more dangerous than controlled activity.</p><span class="psoci-phrase">"The research shows that gentle structured exercise reduces fall risk rather than increasing it — inactivity is actually the bigger danger here."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">👨‍👩‍👧</span><h5>Family Fracture Fear</h5><p>Patients often fear repeating a parent's outcome — particularly if a parent died or became dependent following a hip fracture. This fear is powerfully motivating if properly engaged.</p><span class="psoci-phrase">"You mentioned your mother had a hip fracture — that's exactly why I want us to be proactive. Treatment significantly reduces the chance of that outcome for you."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">🦷</span><h5>ONJ Anxiety</h5><p>ONJ fear is the most common psychosocial barrier to treatment acceptance. Requires direct, evidence-based communication — not dismissal. &lt;1/10,000 risk framing plus dental check plan is the most effective approach.</p><span class="psoci-phrase">"I'd like you to see your dentist before we start — not because the risk is significant, but because it gives you peace of mind and it's a sensible precaution."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">🚗</span><h5>Driving and Independence</h5><p>Wrist and hip fractures often temporarily restrict driving — devastating for patients in rural areas or those with caring responsibilities.</p><span class="psoci-phrase">"Has the fracture affected your ability to drive — is that something we should think about alongside the recovery?"</span></div>
+        <div class="psoci-card"><span class="psoci-icon">💊</span><h5>Lifelong Medication Concern</h5><p>Many patients are reluctant to commit to "tablets for life." Frame bisphosphonate holidays (5-year review) early — this significantly improves initial acceptance.</p><span class="psoci-phrase">"We would review whether you still need the tablet after 5 years — it's not necessarily a lifetime commitment."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">🧬</span><h5>Family Screening Implications</h5><p>A parental hip fracture is a FRAX risk factor for offspring. Screening of adult daughters (after maternal fracture) is recommended.</p><span class="psoci-phrase">"It's worth mentioning to your daughters — a parental fracture like yours is a risk factor for them, and they may want to get their bones checked when they reach their 50s."</span></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7G — Follow-up schedule</div>
+    <div class="card" style="padding:1.1rem 1.25rem;margin-bottom:1.25rem">
+      <div class="fu-line">
+        <div class="fu-event"><div class="fu-dot fd1">1</div><div class="fu-content"><h5>6–8 weeks — Pre-treatment bloods review and treatment initiation</h5><p>Review calcium, eGFR, vitamin D, FBC, ALP results. If satisfactory: start alendronate 70 mg weekly + calcium/vitamin D. Advise on correct administration. Confirm dental check booked. Begin calcium/vitamin D immediately (do not wait for alendronate start).</p><div class="fu-tags"><span class="ft ft-r">Treatment initiation</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd2">2</div><div class="fu-content"><h5>3 months — Adherence and tolerability</h5><p>Is alendronate being taken correctly (empty stomach, upright 30 min)? Any GI side effects? Dental review done? If GI intolerance: switch to risedronate or IV zoledronic acid. Reinforce calcium/vitamin D timing and dose.</p><div class="fu-tags"><span class="ft ft-a">Adherence check</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd3">3</div><div class="fu-content"><h5>1 year — Annual review</h5><p>Height measurement (document change). Review fracture events. New medications that affect bone? Falls risk reassessment. Vitamin D level (particularly in coeliac). Gluten-free diet adherence reviewed.</p><div class="fu-tags"><span class="ft ft-b">Annual monitoring</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd4">4</div><div class="fu-content"><h5>2 years — DXA monitoring</h5><p>Repeat DXA. T-score should stabilise or improve. If worsening despite good adherence: review secondary causes, absorption (calcium/vitamin D), and consider step-up therapy. If significant improvement: reinforce adherence; continue current regimen.</p><div class="fu-tags"><span class="ft ft-r">DXA review</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd5">5</div><div class="fu-content"><h5>5 years — Bisphosphonate holiday decision</h5><p>Review: current T-score, fracture history on treatment. If T-score improved + fracture-free + low-moderate risk: holiday (2–3 years) with annual review. If high-risk (T &lt;−2.5 hip, previous hip/vertebral fracture): continue further 5 years or step up to denosumab.</p><div class="fu-tags"><span class="ft ft-b">Holiday decision</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7H — Safety-netting</div>
+    <div class="sn-box">
+      <h4>⚠ Three scenario-specific safety-net phrases</h4>
+      <div class="sn-scenarios">
+        <div class="sn-scenario sns-e">
+          <div class="sn-scenario-lbl">🔴 Emergency — vertebral fracture + neurological signs</div>
+          <div class="sn-phrase">"If you develop sudden severe back pain — particularly if you also notice any weakness in your legs, or any change in your bladder or bowel alongside the pain — please call 999 immediately. That combination is a potential emergency that cannot wait for an appointment."</div>
+          <div class="sn-why">Vertebral fractures can occur without warning in patients with osteoporosis and can compress the spinal cord or cauda equina. The safety-net naming specific features (back pain + neurological change = 999) is documented in the notes and creates a clear record that the patient was counselled on emergency escalation criteria.</div>
+        </div>
+        <div class="sn-scenario sns-m">
+          <div class="sn-scenario-lbl">💊 Denosumab — never stop without transition</div>
+          <div class="sn-phrase">"Because you're having the injection: the most critical thing I need to tell you is that you must never stop this injection without speaking to me first. Stopping it suddenly — even after feeling well — can cause multiple fractures to your spine within months. If for any reason you cannot make the 6-month appointment, contact us immediately rather than just missing it."</div>
+          <div class="sn-why">Denosumab rebound vertebral fractures are a documented, serious complication. Patients who stop denosumab through missed appointments, GP change, or medication review errors are at high risk. This counselling is clinically and medico-legally essential — it must be documented in the notes every time denosumab is prescribed.</div>
+        </div>
+        <div class="sn-scenario sns-a">
+          <div class="sn-scenario-lbl">🟠 Atypical fracture screen on long-term bisphosphonate</div>
+          <div class="sn-phrase">"While you're taking the alendronate — particularly after you've been on it for a few years — if you develop any unusual aching or pain in your thigh or groin on one or both sides, please come back promptly. That's a rare but important side effect I'd want to look into with an X-ray."</div>
+          <div class="sn-why">Atypical femoral fractures (subtrochanteric, mid-shaft femur) have a prodromal thigh pain that, if identified early, allows conservative management. Missed, they progress to complete fractures requiring surgery. The safety-net is specific, actionable, and protective for patients on long-term bisphosphonate.</div>
+        </div>
+      </div>
+      <div class="sn-fu">
+        <div class="sn-fu-item"><strong>6–8 weeks</strong>Pre-treatment bloods review + treatment initiation + dental check confirmed</div>
+        <div class="sn-fu-item"><strong>3 months</strong>Adherence and tolerability check; GI side effects; correct administration confirmed</div>
+        <div class="sn-fu-item"><strong>Annual + 2-yr DXA + 5-yr holiday review</strong>Height; fracture events; falls risk; DXA every 2 years; bisphosphonate holiday decision at 5 years</div>
+      </div>
+    </div>
+
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7 (Final)</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Closing phrases</div>
+          <div class="sca-phrase">"I'm prescribing alendronate — 70 mg, one tablet once a week, first thing in the morning, full glass of water, stay upright 30 minutes before eating. And I'm prescribing a calcium and vitamin D supplement separately — take that at a different time, with lunch or dinner."</div>
+          <div class="sca-phrase">"Before you start — please see your dentist and let them know. The jaw risk is under 1 in 10,000 with this tablet."</div>
+          <div class="sca-phrase">"Back pain with leg weakness or bladder change: 999, don't wait."</div>
+          <div class="sca-phrase">"Is there anything else you'd like to ask before we finish?"</div>
+        </div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul>
+          <li>Alendronate without administration counselling — prescribing error (oesophagitis)</li>
+          <li>Calcium and vitamin D not co-prescribed — mandatory omission</li>
+          <li>ONJ concern not addressed with risk quantification</li>
+          <li>Denosumab rebound not counselled if denosumab prescribed</li>
+          <li>No pre-treatment bloods plan</li>
+          <li>No neurological safety-net</li>
+          <li>Closing question absent</li>
+        </ul></div>
+        <div class="sca-block sca-score"><div class="sca-block-t">Tasks — full closing criteria</div><ul>
+          <li>Pre-treatment bloods: calcium, eGFR, vitamin D named</li>
+          <li>Alendronate 70 mg weekly with full administration counselling</li>
+          <li>Calcium + vitamin D co-prescribed with timing (not with bisphosphonate)</li>
+          <li>ONJ: &lt;1/10,000 + dental check before starting</li>
+          <li>Denosumab rebound counselling if applicable</li>
+          <li>Neurological safety-net: vertebral fracture + neurology = 999</li>
+          <li>Follow-up: 6–8 week bloods review + 3-month adherence check</li>
+        </ul></div>
+        <div class="sca-block sca-score" style="border-left:2px solid #c4b5fd"><div class="sca-block-t" style="color:#c4b5fd">Relating to Others — full criteria</div><ul>
+          <li>ONJ concern proactively explored and addressed (not just if raised)</li>
+          <li>Scaffolding analogy used for plain language explanation</li>
+          <li>Family hip fracture fear acknowledged and treatment framed as independence-preserving</li>
+          <li>Dental check negotiated as concrete first step</li>
+          <li>Understanding checked</li>
+          <li>Closing question asked</li>
+        </ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">No administration counselling. Ca+D3 omitted. ONJ dismissed. No pre-treatment bloods. Denosumab rebound not mentioned. No safety-net.</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Alendronate prescribed but partial counselling. Ca+D3 mentioned but timing not addressed. ONJ acknowledged without quantification.</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Full alendronate counselling. Ca+D3 co-prescribed with timing separation. ONJ: &lt;1/10,000 + dental check. Pre-treatment bloods. Neurological safety-net. Closing question.</div></div>
+      </div>
+    </div>
+  </div>
+</div><!-- /step 7 -->
+
+<!-- SCA SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Osteoporosis — SCA Consultation Scorecard</div><div class="scorecard-sub">RAG self-assessment · Use after every practice consultation</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain"><div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Stem information referenced</strong> — wrist fracture and coeliac history used before open question</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Open question first</strong> — "tell me about the fall" before targeted FRAX questions</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain language</strong> — "scaffolding/sponge with holes" analogy; no unexplained jargon</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Data gathering complete by 7 min</strong> — FRAX factors, secondary causes, ONJ concern all assessed before plan</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Empathetic manner</strong> — ONJ fear acknowledged and addressed with evidence, not dismissal</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Verbal summary</strong> — diagnosis, treatment plan, administration, safety-net summarised before closing</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Logical structure</strong> — history → exam → investigations → diagnosis → management → safety-net</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain"><div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, diagnosis, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Fragility fracture identified</strong> — mechanism clarified; implication explained; treatment not delayed for DXA</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Secondary cause (coeliac) addressed</strong> — calcium/vitamin D malabsorption linked to management; gluten-free diet adherence assessed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Pre-treatment bloods named</strong> — calcium, eGFR, vitamin D all stated as mandatory before treatment</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Alendronate administration counselled</strong> — empty stomach + full glass of water + upright 30 min + once weekly — all four elements</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Calcium + vitamin D co-prescribed with timing</strong> — both prescribed; taken 4–6 hrs apart from bisphosphonate</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>ONJ risk quantified</strong> — &lt;1 in 10,000 with weekly oral tablets stated; dental check advised</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Neurological safety-net</strong> — vertebral fracture + leg weakness/bladder change = 999 named specifically</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Falls prevention addressed</strong> — OTAGO/exercise programme, balance assessment, or home hazard reference</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Follow-up booked</strong> — 6–8 week bloods review + 3-month adherence check</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Denosumab rebound counselling</strong> — if denosumab prescribed: never stop without transition; contact if appointment missed</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain"><div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decision making</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — patient's understanding of cause asked</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>ONJ concern proactively explored</strong> — asked specifically, not waited for patient to raise it</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations explored</strong> — what patient hoped would happen today</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>ONJ fear addressed empathetically</strong> — validated before evidence; not dismissed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Scaffolding / sponge analogy used</strong> — plain language explanation of bone structure</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Understanding checked</strong> — "does that make sense?" at least once</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Shared decision-making</strong> — dental check negotiated as concrete first step; patient given agency</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Family fracture fear acknowledged</strong> — mother's hip fracture connected to independence-preserving treatment rationale</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Verbal summary</strong> — treatment, administration, safety-net summarised before close</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Named follow-up communicated</strong> — 6–8 week review stated explicitly</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Closing question asked</strong> — "Is there anything else on your mind?" at the very end</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap">
+      <div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div>
+      <div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div>
+      <div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div>
+    </div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist above to see your score interpretation</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"I came because of my wrist — they told me at the fracture clinic I should see my GP about my bones. I'm a bit worried about what that means."</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>Carol White, 58 years old, part-time administrator. Colles' wrist fracture 3 weeks ago after tripping on a flat pavement (minor trip, level ground — fragility fracture). Postmenopausal since age 51. History of coeliac disease 8 years ago — mostly gluten-free but admits to lapses at family events. No calcium or vitamin D supplements ("nobody told me to take them"). Non-smoker. 10 units alcohol/week. BMI 23. No other medications. Mother had a hip fracture aged 70 and spent her last years in a care home — Carol is frightened of the same outcome.</p></div>
+      <div class="ab"><h5>Hidden agenda</h5><p>Has read online that bisphosphonates cause "jaw bone death." Will not agree to take tablets unless this concern is specifically addressed with risk quantification — not just "it's rare." She needs to hear the &lt;1 in 10,000 risk with weekly tablets AND the distinction from cancer IV doses. If this is addressed well, she relaxes significantly and asks about the dental check. If dismissed ("it's nothing to worry about"), she leaves without accepting treatment. The dental check offer is the key turning point — it gives her agency.</p></div>
+      <div class="ab"><h5>Coeliac history if asked</h5><ul><li>Diagnosed 8 years ago; mostly gluten-free but slips occasionally</li><li>No calcium or vitamin D supplements — "nobody told me to take them"</li><li>No recent blood tests including vitamin D</li></ul></div>
+      <div class="ab"><h5>Bonus details</h5><ul><li>If asked about falls: "I just tripped — I'm not a 'faller,' I just had bad luck."</li><li>If told about dental check: "Oh — that's actually quite sensible. I can do that."</li><li>Mother's hip fracture: "She never really walked properly again. She died in a care home."</li></ul></div>
+    </div>
+    <div class="actor-challenge">"But I've read these tablets can cause your jaw to rot away. My friend said it happened to her — I'm not sure I want to take something like that."</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution criteria:</strong> Carol accepts treatment if: (1) ONJ addressed with &lt;1/10,000 risk framing + distinction from cancer doses; (2) dental check offered as concrete precaution; (3) coeliac-related deficiency explained + supplements prescribed; (4) alendronate administration counselled correctly; (5) mother's hip fracture fear acknowledged + treatment framed as independence-preserving.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Osteoporosis — Clinical Decision Framework</div><div class="sum-sub">NICE CG146 · NOGG 2021 · CKS 2023</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🚦 1 — Triage</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:var(--rad-sm);padding:.75rem .9rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.4rem">🔴 Emergency / 2WW</div><div style="font-size:12px;line-height:1.75"><div>999: vertebral fracture + leg weakness/bladder/bowel change</div><div>999: hip fracture → emergency orthopaedics</div><div>Urgent orthopaedics: atypical femoral fracture on bisphosphonate</div><div>2WW haematology: bone pain + weight loss + anaemia + SPEP band (myeloma)</div></div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:var(--rad-sm);padding:.75rem .9rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.4rem">🟠 Urgent — treat within 4 weeks</div><div style="font-size:12px;line-height:1.75"><div>Fragility fracture → pre-treatment bloods + start treatment without DXA delay</div><div>GIOP → risedronate when steroids start</div><div>T ≤−2.5 + multiple risk factors</div></div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.75rem .9rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.4rem">🟢 Routine — primary care</div><div style="font-size:12px;line-height:1.75"><div>Osteopenia (T −1 to −2.5) → FRAX → treat if above NOGG threshold</div><div>Annual review on treatment; DXA 2-yearly</div><div>Falls prevention without fracture</div></div></div>
+    </div>
+    <div class="sum-sub-hdr">📊 2 — Key Numbers</div>
+    <div class="num-grid" style="margin-bottom:1rem">
+      <div class="num-card num-highlight"><div class="num-val">T ≤−2.5</div><div class="num-lbl">DXA: osteoporosis threshold — treat</div></div>
+      <div class="num-card num-highlight"><div class="num-val">Fragility Fx</div><div class="num-lbl">Any low-energy fracture = treat regardless of DXA</div></div>
+      <div class="num-card"><div class="num-val">&lt;1/10,000</div><div class="num-lbl">ONJ risk with weekly oral bisphosphonate (not cancer IV doses)</div></div>
+      <div class="num-card"><div class="num-val">eGFR &lt;35</div><div class="num-lbl">Oral bisphosphonates contraindicated → use denosumab</div></div>
+      <div class="num-card"><div class="num-val">Never stop</div><div class="num-lbl">Denosumab — rebound fractures without bisphosphonate transition</div></div>
+      <div class="num-card"><div class="num-val">5 years</div><div class="num-lbl">Bisphosphonate duration; holiday review</div></div>
+      <div class="num-card"><div class="num-val">1000–1200mg</div><div class="num-lbl">Daily calcium target (diet + supplement)</div></div>
+      <div class="num-card"><div class="num-val">800–1000 IU</div><div class="num-lbl">Daily vitamin D target</div></div>
+      <div class="num-card"><div class="num-val">4–6 hrs</div><div class="num-lbl">Separate calcium/vitamin D from bisphosphonate dose</div></div>
+      <div class="num-card"><div class="num-val">2-yearly DXA</div><div class="num-lbl">Monitoring interval on treatment</div></div>
+      <div class="num-card"><div class="num-val">≥4cm height</div><div class="num-lbl">Height loss → lateral spine X-ray (silent vertebral fracture)</div></div>
+      <div class="num-card"><div class="num-val">FRAX</div><div class="num-lbl">10-year risk: required for treatment decision in osteopenia (T −1 to −2.5)</div></div>
+    </div>
+    <div class="sum-sub-hdr">💊 3 — Drug Choice + Prescribing Rules</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem .9rem">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:.5rem">Drug choice by patient profile</div>
+        <div style="font-size:12px;line-height:1.8">
+          <div>Standard adult, eGFR ≥35 → <strong>Alendronate 70 mg weekly</strong></div>
+          <div>GIOP → <strong>Risedronate 35 mg weekly</strong></div>
+          <div>eGFR &lt;35 / GI disease → <strong>Denosumab 60 mg SC 6-monthly</strong></div>
+          <div>Cannot take oral → <strong>Zoledronic acid 5 mg IV annually</strong></div>
+          <div>Severe / multiple fractures on treatment → <strong>Teriparatide (specialist)</strong></div>
+          <div style="margin-top:5px;font-size:11px;background:var(--r-bg);border:1px solid var(--r-bd);border-radius:5px;padding:3px 7px;color:var(--r)">⚠ Never stop denosumab without bisphosphonate transition</div>
+        </div>
+      </div>
+      <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem .9rem">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:.5rem">Non-negotiable prescribing rules</div>
+        <div style="font-size:12px;line-height:1.8">
+          <div>Pre-treatment: calcium + eGFR + vitamin D — MANDATORY before any anti-resorptive</div>
+          <div>Alendronate: empty stomach + full glass water + upright 30 min + weekly</div>
+          <div>Calcium+D3: prescribed alongside every anti-resorptive; NOT at same time as bisphosphonate (4–6 hrs apart)</div>
+          <div>Dental check before starting any bisphosphonate or denosumab</div>
+          <div>Vitamin D ≥50 nmol/L before starting anti-resorptive</div>
+        </div>
+      </div>
+    </div>
+    <div class="sum-sub-hdr">⚠ 4 — Safety Netting + Follow-Up</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:.5rem">
+      <div class="sn-compact-wrap">
+        <div class="sn-compact sns-e"><div class="sn-compact-lbl">🔴 Vertebral fracture + neurology</div><div class="sn-compact-phrase">"Back pain + leg weakness / bladder/bowel change = 999 immediately."</div></div>
+        <div class="sn-compact sns-m"><div class="sn-compact-lbl">💊 Denosumab — never stop</div><div class="sn-compact-phrase">"Never stop denosumab injection without calling us — multiple fractures can result within months."</div></div>
+        <div class="sn-compact sns-a"><div class="sn-compact-lbl">🟠 Atypical fracture screen</div><div class="sn-compact-phrase">"Thigh or groin pain on long-term bisphosphonate → come back for X-ray promptly."</div></div>
+      </div>
+      <div class="fu-compact-wrap">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.4rem">Follow-up timeline</div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--r)">1</div><div><strong>6–8 wks:</strong> Bloods review + treatment initiation + dental check</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--a)">2</div><div><strong>3 months:</strong> Adherence + tolerability check</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--b)">3</div><div><strong>Annual:</strong> Height; fracture events; falls risk; vitamin D</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--g)">4</div><div><strong>2 years:</strong> DXA monitoring scan</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--t)">5</div><div><strong>5 years:</strong> Bisphosphonate holiday decision</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label" style="color:rgba(255,255,255,.5)">SCA Exam Quick Reference</div><div class="sum-title" style="color:#fff">SCA Consultation Blueprint</div><div class="sum-sub" style="color:rgba(255,255,255,.6)">Tasks · Relating to Others · Global Skills · RAG guide</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🕐 12-Minute Flow</div>
+    <div class="sca-flow-wrap">
+      <div class="sca-flow-step sca-f1"><div class="sca-f-time">0–2 min</div><div class="sca-f-title">Reference Stem + Open + Mechanism</div><div class="sca-f-phrase">"I can see from your notes you had a wrist fracture — tell me about the fall. Was it a minor trip on the flat?"</div><div class="sca-f-domains"><span class="sca-dom-tag gs">GS</span><span class="sca-dom-tag task">Tasks</span></div><div class="sca-f-avoid">✗ Not clarifying fracture mechanism · ✗ Not referencing stem</div></div>
+      <div class="sca-flow-step sca-f2"><div class="sca-f-time">2–6 min</div><div class="sca-f-title">FRAX + Secondary Causes + ICE</div><div class="sca-f-phrase">"FRAX factors, coeliac history and diet, calcium/vitamin D intake, any ONJ concerns you've heard about?"</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">RO</span></div><div class="sca-f-avoid">✗ Not proactively asking about ONJ fear · ✗ Missing coeliac as secondary cause</div></div>
+      <div class="sca-flow-step sca-f3"><div class="sca-f-time">6–7 min</div><div class="sca-f-title">Examination</div><div class="sca-f-phrase">"I'd like to measure your height today and check your balance."</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span></div><div class="sca-f-avoid">✗ Not measuring height · ✗ Not assessing falls risk</div></div>
+      <div class="sca-flow-step sca-f4"><div class="sca-f-time">7–10 min</div><div class="sca-f-title">Diagnosis + ONJ + Treatment Plan</div><div class="sca-f-phrase">"Scaffolding too thin → fragility fracture. ONJ risk &lt;1/10,000 with weekly tablets. Alendronate + Ca+D3 (separate timing) + dental check first."</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">RO</span></div><div class="sca-f-avoid">✗ Dismissing ONJ · ✗ Omitting Ca+D3 · ✗ No administration counselling</div></div>
+      <div class="sca-flow-step sca-f5"><div class="sca-f-time">10–12 min</div><div class="sca-f-title">Safety-Net + Follow-Up + Close</div><div class="sca-f-phrase">"Back pain + leg weakness = 999. Bloods in 6–8 weeks. Is there anything else?"</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">RO</span></div><div class="sca-f-avoid">✗ No safety-net · ✗ No follow-up · ✗ No closing question</div></div>
+    </div>
+    <div class="sum-3col" style="margin-top:1rem">
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">🔴🟠🟢 RAG Scoring</div>
+        <div class="rag-full-wrap">
+          <div class="rag-domain-title task-col">Tasks</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">🟢</div><div>Fragility fracture identified; FRAX + coeliac; pre-treatment bloods; alendronate counselling; Ca+D3 co-prescribed with timing; ONJ quantified; dental check; neurological safety-net; follow-up</div></div>
+          <div class="rag-row rag-a-row"><div class="rag-rl">🟠</div><div>Fragility fracture recognised but treatment delayed for DXA; Ca+D3 omitted; ONJ acknowledged without quantification; partial administration counselling</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">🔴</div><div>Mechanism not clarified; pre-treatment bloods not mentioned; Ca+D3 not prescribed; ONJ dismissed; no safety-net; no follow-up</div></div>
+          <div class="rag-domain-title ro-col" style="margin-top:.6rem">Relating to Others</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">🟢</div><div>ONJ proactively explored + evidence-based response; scaffolding analogy; family fracture fear addressed; dental check negotiated; understanding checked; closing question</div></div>
+          <div class="rag-row rag-a-row"><div class="rag-rl">🟠</div><div>ONJ addressed if raised but not proactively explored; analogy not used; closing question missing</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">🔴</div><div>ICE absent; ONJ dismissed; patient leaves without treatment agreement</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">💬 Key Phrases</div>
+        <div class="phrase-stack">
+          <div class="phrase-card p-concerns"><div class="p-lbl">ONJ risk framing</div><div class="p-phrase">"The risk with the weekly tablet is under 1 in 10,000. The risk you've read about is from cancer IV doses — a completely different situation."</div></div>
+          <div class="phrase-card p-validate"><div class="p-lbl">Analogy</div><div class="p-phrase">"The scaffolding inside the bones became too thin — like a sponge with too many holes. A minor trip broke what shouldn't have broken."</div></div>
+          <div class="phrase-card p-explain"><div class="p-lbl">Administration</div><div class="p-phrase">"First thing in the morning, empty stomach, full glass of water, stay upright 30 minutes before eating. Once a week."</div></div>
+          <div class="phrase-card p-expect"><div class="p-lbl">Negotiate dental check</div><div class="p-phrase">"Could we agree — dental check in two weeks, then start once that's done? I'll sort the blood tests today."</div></div>
+          <div class="phrase-card p-close"><div class="p-lbl">Safety-net</div><div class="p-phrase">"Back pain with leg weakness or bladder change — 999, don't wait."</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">🚫 9 Danger Zones</div>
+        <div class="dz-stack">
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Dismissing ONJ without risk quantification</strong><br><span class="dz-fix">→ Always: &lt;1/10,000 with weekly tablets; distinguish from cancer IV doses</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Calcium + vitamin D not co-prescribed</strong><br><span class="dz-fix">→ Mandatory with every anti-resorptive; both elements required</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Alendronate without administration counselling</strong><br><span class="dz-fix">→ Empty stomach + full glass water + upright 30 min — all three required</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Bisphosphonate without pre-treatment Ca/eGFR/vitamin D</strong><br><span class="dz-fix">→ Mandatory safety check before prescribing any anti-resorptive</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not referencing stem context</strong><br><span class="dz-fix">→ "I can see from your notes…" gains GS mark and saves time</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not measuring height</strong><br><span class="dz-fix">→ Most important single measurement; ≥4cm → spinal X-ray</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Denosumab stopped without bisphosphonate transition</strong><br><span class="dz-fix">→ Counsel before prescribing: never stop suddenly — rebound fracture risk</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>FRAX not mentioned in osteopenic range</strong><br><span class="dz-fix">→ T-score alone does not make treatment decision in osteopenia</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Closing question absent</strong><br><span class="dz-fix">→ Always end with "Is there anything else on your mind?"</span></div></div>
+        </div>
+        <div class="sum-sub-hdr sca-sub-hdr" style="margin-top:.85rem">💊 Drug Quick-Pick</div>
+        <div class="sca-drug-pick">
+          <div class="sdp-row"><div class="sdp-cond">Standard postmenopausal, eGFR ≥35</div><div class="sdp-arrow">→</div><div class="sdp-pill acei-pill">Alendronate 70 mg weekly</div><div class="sdp-note">First-line</div></div>
+          <div class="sdp-row"><div class="sdp-cond">GIOP — prednisolone ≥7.5 mg ≥3 months</div><div class="sdp-arrow">→</div><div class="sdp-pill arb-pill">Risedronate 35 mg weekly</div><div class="sdp-note">NOGG GIOP</div></div>
+          <div class="sdp-row"><div class="sdp-cond">eGFR &lt;35 / GI disease</div><div class="sdp-arrow">→</div><div class="sdp-pill ccb-pill">Denosumab 60 mg SC 6-monthly</div><div class="sdp-note">Safe any eGFR</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Cannot take oral</div><div class="sdp-arrow">→</div><div class="sdp-pill arb-pill">Zoledronic acid 5 mg IV annually</div><div class="sdp-note">IV route</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Every case</div><div class="sdp-arrow">→</div><div class="sdp-pill acei-pill">+ Calcium + vitamin D (separate timing)</div><div class="sdp-note">Mandatory</div></div>
+          <div class="sdp-pivot">⛔ Pre-treatment Ca/eGFR/vit D always · Ca+D3 always co-prescribed (4–6 hrs from bisphosphonate) · Dental check before starting · Never stop denosumab without bisphosphonate transition</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Osteoporosis · GP Clinical Reasoning Framework v2</strong> · NICE CG146 (2012/2017) · NOGG Clinical Guideline 2021 · NICE CKS Osteoporosis (2023) · Royal Osteoporosis Society: theros.org.uk · Helpline: 0808 800 0035</p>
+  <p style="margin-top:4px">v3: Dual tailored summaries · ONJ risk framing (&lt;1/10,000 weekly oral) · Denosumab rebound fracture counselling · Pre-treatment bloods as mandatory safety check · Coeliac secondary cause emphasis</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current BNF/SPC and local formulary · Clinical judgement takes precedence over any framework</p>
+</div>
+</div><!-- /page -->
+
+
+  </main>
+</div><!-- /app -->
+
+<script>
+function toggleSum(which){
+  const body = document.getElementById('sum-body-' + which);
+  const toggle = document.getElementById('sum-toggle-' + which);
+  const icon = toggle.querySelector('.sum-ti-icon');
+  const text = toggle.querySelector('.sum-ti-text');
+  const isClosed = body.classList.contains('closed');
+  if(isClosed){
+    body.classList.remove('closed');
+    icon.textContent = '▲';
+    text.textContent = 'collapse';
+  } else {
+    body.classList.add('closed');
+    icon.textContent = '▼';
+    text.textContent = 'expand';
+  }
+}
+
+function setMode(m){
+  document.getElementById('bodyEl').className='mode-'+m;
+  ['sca','both','clinic'].forEach(k=>document.getElementById('btn-'+k).classList.toggle('active',k===m));
+}
+
+function toggleStep(hdr){
+  const body=hdr.nextElementSibling;
+  const icon=hdr.querySelector('.sti-icon');
+  const text=hdr.querySelector('.sti-text');
+  const isOpen=hdr.classList.contains('is-open');
+  if(isOpen){
+    body.classList.add('closed');
+    hdr.classList.remove('is-open');
+    icon.textContent='▼';
+    text.textContent='expand';
+  } else {
+    body.classList.remove('closed');
+    hdr.classList.add('is-open');
+    icon.textContent='▲';
+    text.textContent='collapse';
+  }
+}
+
+function expandAll(){
+  document.querySelectorAll('.step-hdr').forEach(h=>{
+    h.classList.add('is-open');
+    h.nextElementSibling.classList.remove('closed');
+    h.querySelector('.sti-icon').textContent='▲';
+    h.querySelector('.sti-text').textContent='collapse';
+  });
+}
+
+function collapseAll(){
+  document.querySelectorAll('.step-hdr').forEach(h=>{
+    h.classList.remove('is-open');
+    h.nextElementSibling.classList.add('closed');
+    h.querySelector('.sti-icon').textContent='▼';
+    h.querySelector('.sti-text').textContent='expand';
+  });
+}
+
+function toggleActor(){
+  const b=document.getElementById('actor-body');
+  const i=document.getElementById('actor-icon');
+  b.classList.toggle('open');
+  i.textContent=b.classList.contains('open')?'▲ hide':'▼ show';
+}
+
+function printSummary(){
+  const steps=document.querySelectorAll('.step-wrap');
+  const orig=[];
+  steps.forEach((s,i)=>{orig[i]=s.style.display;s.style.display='none';});
+  const ac=document.querySelector('.card.sca-only');
+  const ad=ac?ac.style.display:'';
+  if(ac)ac.style.display='none';
+  window.print();
+  steps.forEach((s,i)=>{s.style.display=orig[i];});
+  if(ac)ac.style.display=ad;
+}
+
+function calcDrug(){
+  const dm=document.getElementById('ds-dm').checked,
+    ckd=document.getElementById('ds-ckd').checked,
+    cvd=document.getElementById('ds-cvd').checked,
+    afro=document.getElementById('ds-afro').checked,
+    age55=document.getElementById('ds-age55').checked,
+    hf=document.getElementById('ds-hf').checked,
+    angina=document.getElementById('ds-angina').checked,
+    af=document.getElementById('ds-af').checked,
+    cough=document.getElementById('ds-cough').checked;
+  const none=!dm&&!ckd&&!cvd&&!afro&&!age55&&!hf&&!angina&&!af&&!cough;
+  ['acei','arb','ccb','thiazide','spiro','ab'].forEach(id=>{
+    const el=document.getElementById('dc-'+id);
+    el.classList.remove('recommended','alt-rec');
+    const b=document.getElementById('rec-'+id);
+    b.style.cssText='';b.textContent='✓ Recommended';b.style.display='none';
+  });
+  if(none){
+    document.getElementById('ds-output').innerHTML='<span style="font-size:12.5px;color:var(--g)">Select patient characteristics above</span>';
+    return;
+  }
+  let main='',alt='',mainLabel='',altLabel='',why='',altWhy='';
+  if(hf){
+    main='thiazide';mainLabel='Indapamide SR 1.5mg';
+    why='HF with fluid overload: thiazide-like diuretic. Add ACEi + bisoprolol + spiro per NICE NG106 HF guideline.';
+    alt='acei';altLabel='+ Ramipril (essential in HFrEF)';altWhy='ACEi + beta-blocker + spiro = cornerstone of HFrEF management';
+  } else if(af){
+    main='ab';mainLabel='Bisoprolol (rate control + antihypertensive)';
+    why='AF: bisoprolol controls rate AND lowers blood pressure. Check CHA₂DS₂-VASc and consider anticoagulation.';
+    alt=(dm||ckd)?'acei':'ccb';altLabel='+ ACEi or CCB for BP target';altWhy='Rate control alone may not achieve BP target — add Step 2 drug';
+  } else if(cough){
+    main='arb';mainLabel='Candesartan / Losartan (ARB)';
+    why='ACEi intolerance (cough): switch class to ARB. Identical cardio-renal protection without the cough.';
+    alt='';altLabel='';altWhy='';
+  } else if(dm||ckd||cvd){
+    main='acei';mainLabel='Ramipril (ACEi)';
+    why='DM / CKD / CVD: ACEi first-line for cardio-renal protection at ANY age and ANY ethnicity (NICE NG136).';
+    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';altWhy='Equal renoprotection. Never combine ACEi + ARB simultaneously.';
+  } else if(afro){
+    main='ccb';mainLabel='Amlodipine (CCB)';
+    why='Afro-Caribbean (no DM): CCB more effective in low-renin hypertension. At Step 2: ARB preferred over ACEi.';
+    alt='';altLabel='';altWhy='';
+  } else if(age55){
+    main='ccb';mainLabel='Amlodipine (CCB)';
+    why='Age ≥55 (no DM, no Afro-Caribbean): CCB preferred over ACEi — greater efficacy in lower-renin patients.';
+    alt=angina?'acei':'arb';
+    altLabel=angina?'+ Ramipril (anti-anginal benefit at Step 2)':'Candesartan (ARB) — if CCB not tolerated';
+    altWhy=angina?'ACEi has additional anti-anginal benefit at Step 2':'ARB is equally effective if CCB causes intolerable oedema';
+  } else {
+    main='acei';mainLabel='Ramipril (ACEi)';
+    why='Age <55, non-Afro-Caribbean, no DM/CKD/CVD: ACEi is the Step 1 drug of choice (NICE NG136).';
+    alt='arb';altLabel='Candesartan (ARB) — if ACEi cough develops';
+    altWhy='Switch to ARB within the RAAS class, not off-class, if cough develops.';
+  }
+
+  const m=document.getElementById('dc-'+main);
+  m.classList.add('recommended');
+  const mb=document.getElementById('rec-'+main);
+  mb.style.display='inline-block';
+
+  if(alt){
+    const a=document.getElementById('dc-'+alt);
+    a.classList.add('alt-rec');
+    const ab=document.getElementById('rec-'+alt);
+    ab.style.display='inline-block';
+    ab.style.background='#dbeafe';
+    ab.style.color='#1d4ed8';
+    ab.style.borderColor='#bfdbfe';
+    ab.textContent='↳ Alternative';
+  }
+
+  document.getElementById('ds-output').innerHTML=`
+    <div style="font-size:13px;font-weight:700;color:var(--g);margin-bottom:4px">Step 1: ${mainLabel}</div>
+    ${alt?`<div style="font-size:12.5px;color:var(--b);margin-bottom:4px">Alternative: ${altLabel}</div>`:''}
+    <div style="font-size:12px;color:#15803d;margin-bottom:3px">${why}</div>
+    ${altWhy?`<div style="font-size:11.5px;color:var(--b);margin-bottom:3px">${altWhy}</div>`:''}
+    <div style="font-size:11px;color:var(--muted);margin-top:5px">Drug card highlighted below ↓ &nbsp;|&nbsp; U&Es within 1 week of starting ACEi/ARB</div>`;
+}
+
+function calcScore(){
+  var total=0, tasks=0, ro=0, gs=0;
+  var allCbs = document.querySelectorAll('.sc-cb');
+  allCbs.forEach(function(cb){
+    var item = cb.closest('.sc-item');
+    if(cb.checked){
+      var pts = parseInt(cb.dataset.pts)||0;
+      total += pts; tasks += cb.classList.contains('tasks-cb')?pts:0;
+      ro += cb.classList.contains('ro-cb')?pts:0; gs += cb.classList.contains('gs-cb')?pts:0;
+      item.classList.add('checked');
+    } else { item.classList.remove('checked'); }
+  });
+  document.getElementById('sc-total').textContent = total;
+  document.getElementById('sc-tasks-score').textContent = tasks;
+  document.getElementById('sc-ro-score').textContent = ro;
+  document.getElementById('sc-gs-score').textContent = gs;
+  document.getElementById('sc-bar-fill').style.width = Math.round((total/33)*100) + '%';
+  var icon, msg;
+  if(total < 11){ icon='🔴'; msg='<strong>Not yet at pass standard.</strong> Focus on: exploring ICE including the family history fear, planning ABPM to confirm BP stage, choosing the correct drug for age/ethnicity/comorbidity, sharing the QRISK score as a number, and naming 999 symptoms explicitly. Review Global Skills — are you finishing data gathering by 6-7 minutes?'; }
+  else if(total < 17){ icon='🟠'; msg='<strong>Borderline — approaching pass standard.</strong> Core framework present but key items missing. Check: was ABPM planned and explained? Was QRISK shared as a specific percentage? Was the correct drug chosen for the specific comorbidities? Was the family history fear addressed in the plan? Was a 1-week follow-up named?'; }
+  else if(total < 25){ icon='🟢'; msg='<strong>Pass standard.</strong> Good clinical reasoning and patient-centred communication. To reach a strong pass: ensure lifestyle advice is specific and measurable, QRISK is shared as a number, and the drug choice rationale is explained in plain language tailored to this patient.'; }
+  else { icon='🟢'; msg='<strong>Strong pass.</strong> Excellent consultation across all three domains. ICE fully explored including family fear, BP staging with ABPM, correct drug for phenotype and comorbidities, QRISK shared as a number, lifestyle specific and measurable, 1-2-1 rule named, 999 symptoms explicit, closing question asked.'; }
+  document.getElementById('sc-interp-msg').innerHTML = '<div class="interp-icon">'+icon+'</div><div class="interp-text">'+msg+'</div>';
+  var missed = [];
+  allCbs.forEach(function(cb){ if(!cb.checked){ missed.push(cb.closest('.sc-item').querySelector('.sc-item-text').textContent.trim()); } });
+  var ms = document.getElementById('sc-missed-section');
+  if(missed.length < allCbs.length && missed.length > 0){
+    ms.style.display='block';
+    document.getElementById('sc-missed-list').innerHTML = missed.map(function(m){ return '<div class="sc-missed-item">- '+m.substring(0,120)+'</div>'; }).join('');
+  } else { ms.style.display='none'; }
+}
+
+function resetScorecard(){
+  document.querySelectorAll('.sc-cb').forEach(function(cb){ cb.checked=false; cb.closest('.sc-item').classList.remove('checked'); });
+  ['sc-total','sc-tasks-score','sc-ro-score','sc-gs-score'].forEach(function(id){ document.getElementById(id).textContent='0'; });
+  document.getElementById('sc-bar-fill').style.width='0%';
+  document.getElementById('sc-interp-msg').innerHTML='<div class="interp-icon">📋</div><div class="interp-text">Complete the checklist above to see your score interpretation</div>';
+  document.getElementById('sc-missed-section').style.display='none';
+}
+
+</script>
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+
+<!-- Medication Chooser engine + topic data -->
+<script src="../assets/medchooser.js"></script>
+<script src="../assets/meds/osteoporosis.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
+</body>
+</html>

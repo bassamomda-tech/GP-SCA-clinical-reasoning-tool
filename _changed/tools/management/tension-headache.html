@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tension-Type Headache — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Tension headache management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🧠",
+  title:"Tension-Type Headache",
+  stemTitle:"Tension-type headache — ongoing management",
+  stemSub:"Primary-care management of diagnosed tension-type headache \u2014 reassurance and lifestyle, simple acute analgesia kept within medication-overuse limits, prophylaxis for the chronic form \u2014 with the red-flag safety net. NICE CG150 \u00b7 CKS 2026.",
+  guideline:"NICE CG150",
+  glance:[
+    {lbl:"Pattern", val:"Bilateral, tight", sub:"mild\u2013moderate, no/one feature"},
+    {lbl:"Acute", val:"Paracetamol / NSAID", sub:"keep within MOH limits"},
+    {lbl:"Avoid", val:"Opioids", sub:"+ medication overuse"},
+    {lbl:"Chronic", val:"\u226515 d/mo", sub:"prophylaxis / acupuncture"},
+    {lbl:"Prophylaxis", val:"Acupuncture", sub:"\u00b1 amitriptyline (off-label)"},
+    {lbl:"MOH check", val:"Every review", sub:"the key reversible cause"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm the pattern, exclude mimics",
+      blocks:[
+        {b:"kv", rows:[
+          ["Typical TTH","Bilateral, pressing/tightening (\u2018band\u2019), mild\u2013moderate, no nausea, at most one of photophobia/phonophobia"],
+          ["Episodic vs chronic","Chronic = \u226515 days/month for &gt;3 months"],
+          ["Exclude MOH","Frequent analgesia (\u226515 days/month) can itself cause daily headache"],
+          ["Red flags","Exclude sinister causes before labelling (see safety-net)"]
+        ]},
+        {b:"why", html:"Most \u2018tension headache\u2019 that won\u2019t settle is either undiagnosed migraine or medication-overuse headache. Getting the pattern right prevents over-investigation of a benign condition while keeping the threshold to act on red flags low."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 mainstay", title:"Reassurance and lifestyle are the treatment",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"💬 Reassurance", html:"Explain it is benign and not dangerous \u2014 reduces anxiety that perpetuates it."},
+          {t:"🧘 Stress & relaxation", html:"Stress management, relaxation techniques; CBT for chronic forms."},
+          {t:"🪑 Posture & screens", html:"Address posture, screen ergonomics, eye strain, neck tension."},
+          {t:"⏰ Routine", html:"Regular sleep, meals, hydration; reduce caffeine and alcohol."},
+          {t:"💪 Physiotherapy", html:"Neck/shoulder physiotherapy and exercise where musculoskeletal contribution."},
+          {t:"📓 Diary", html:"Track frequency and analgesic days to detect overuse."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication", title:"Acute analgesia + chronic prophylaxis",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Acute", title:"Simple analgesia", when:"paracetamol or NSAID/aspirin",
+           html:"Use for episodic attacks. <b>Avoid opioids</b>. Keep within MOH limits (simple analgesia &lt;15 days/month)."},
+          {step:"Chronic \u2014 1", title:"Course of acupuncture", when:"if frequent/chronic TTH",
+           fromLabel:"chronic / frequent episodic TTH",
+           html:"NICE supports a course of acupuncture (up to 10 sessions over 5\u20138 weeks) for chronic TTH."},
+          {step:"Chronic \u2014 2", title:"Consider amitriptyline (off-label)", when:"selected chronic cases",
+           fromLabel:"persisting despite the above",
+           html:"Low-dose <b>amitriptyline 10\u201375 mg at night</b> (start 10 mg, titrate) is sometimes used for chronic TTH \u2014 counsel on off-label use and side effects."}
+        ]},
+        {b:"warn", html:"<b>Do not</b> use triptans or opioids for TTH. The biggest pitfall is <b>medication-overuse headache</b> from frequent simple analgesia \u2014 if present, the treatment is a planned analgesic withdrawal, not more tablets."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Diary-led, overuse-focused",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Headache + analgesic-day diary","Ongoing","Detect overuse; track frequency"],
+          ["MOH assessment","Each review","\u226515 analgesic days/mo \u2192 plan withdrawal"],
+          ["Prophylaxis response","After an adequate course","No benefit \u2192 reconsider diagnosis / refer"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"After lifestyle advice", title:"Reassess", html:"Most episodic TTH settles; review diary, reinforce non-drug measures."},
+          {n:"2", when:"If chronic / overusing", title:"Withdrawal + prophylaxis", html:"Plan analgesic withdrawal (warn headaches worsen first), offer acupuncture/amitriptyline."},
+          {n:"3", when:"Periodic", title:"Diagnostic review", html:"If not improving, re-examine the diagnosis \u2014 migraine, MOH, or red flags."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not improving? Re-think before escalating",
+      arrow:"\u2026if headache persists",
+      intro:"Re-examine the diagnosis before adding treatment.",
+      checks:[
+        {b:"1 \u00b7 MOH", html:"Count analgesic days \u2014 the commonest reversible cause; plan withdrawal."},
+        {b:"2 \u00b7 Is it migraine?", html:"Throbbing, nausea, photophobia, disability \u2192 treat as migraine instead."},
+        {b:"3 \u00b7 Psychosocial", html:"Stress, low mood, anxiety, sleep \u2014 address directly."},
+        {b:"4 \u00b7 Musculoskeletal", html:"Neck/posture problems \u2192 physiotherapy."},
+        {b:"5 \u00b7 Red flags", html:"Any new feature \u2192 reassess for secondary cause."}
+      ],
+      back:"MOH excluded, diagnosis confirmed \u2192 prophylaxis / refer"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Red-flag headache", html:"\u201cSudden \u2018worst-ever\u2019 headache, with fever/neck stiffness, new weakness or vision loss, or after head injury \u2014 call 999.\u201d"},
+          {t:"⚠️ Change in pattern", html:"\u201cIf the headache changes character, wakes you at night, or is worse on coughing/straining \u2014 contact us promptly.\u201d"},
+          {t:"💊 Overuse", html:"\u201cTaking painkillers on too many days can cause more headaches \u2014 keep within the limits we agreed.\u201d"},
+          {t:"😟 New onset >50", html:"\u201cA new headache over 50, or with weight loss/jaw pain, needs checking \u2014 book in.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"when uncertain, refractory, or red flags",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Red-flag features \u2192 same-day / 999."},
+          {t:"Diagnostic doubt", html:"Uncertain diagnosis or atypical features \u2014 neurology."},
+          {t:"Refractory chronic", html:"Chronic TTH not responding to withdrawal + prophylaxis."},
+          {t:"Overlap", html:"Mixed migraine/TTH with significant disability."}
+        ]},
+        {b:"say", html:"The reassuring news is this type of headache isn\u2019t dangerous. The most useful things are managing stress and posture, and being careful with painkillers so they don\u2019t cause more headaches \u2014 let\u2019s keep a diary and review."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

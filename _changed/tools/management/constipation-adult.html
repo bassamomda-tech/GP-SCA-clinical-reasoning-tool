@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Constipation (Adult) — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Adult constipation management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🟤",
+  title:"Constipation (Adult)",
+  stemTitle:"Chronic constipation in adults — ongoing management",
+  stemSub:"Primary-care management of adult constipation \u2014 lifestyle, the laxative ladder (bulk \u2192 osmotic \u2192 stimulant), the opioid-induced and impaction variants, and titrate-then-withdraw \u2014 with the red-flag safety net. CKS 2026.",
+  guideline:"NICE CKS",
+  glance:[
+    {lbl:"First-line", val:"Diet + fluids", sub:"+ activity"},
+    {lbl:"Laxative 1", val:"Bulk-forming", sub:"ispaghula (+ fluid)"},
+    {lbl:"Laxative 2", val:"Osmotic", sub:"macrogol first"},
+    {lbl:"Add", val:"Stimulant", sub:"senna / bisacodyl"},
+    {lbl:"Opioid-induced", val:"Osmotic + stimulant", sub:"avoid bulk-forming"},
+    {lbl:"Refer", val:"Red flags", sub:"2-week-wait"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm, and exclude secondary causes + red flags",
+      blocks:[
+        {b:"kv", rows:[
+          ["Define","Infrequent/hard/difficult stools, incomplete evacuation, straining \u2014 chronic if &gt; ~3 months"],
+          ["Secondary causes","Drugs (opioids, iron, CCBs, antimuscarinics), hypothyroidism, hypercalcaemia, diabetes, IBS, mechanical"],
+          ["Red flags","\u2265 60 with change in habit, PR bleeding, weight loss, anaemia, abdominal/rectal mass \u2192 investigate"],
+          ["Examine","Abdomen \u00b1 PR (impaction, mass, anal pathology)"]
+        ]},
+        {b:"why", html:"Most adult constipation is functional, but the two essentials before reaching for laxatives are <strong>excluding a reversible cause</strong> (above all a constipating drug) and <strong>screening for sinister red flags</strong> \u2014 a new change in bowel habit in an older adult is colorectal cancer until proven otherwise."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 first-line", title:"Diet, fluids, activity and toileting",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🌾 Fibre", html:"Increase dietary fibre gradually (avoids bloating); fruit, veg, wholegrains."},
+          {t:"💧 Fluids", html:"Adequate fluid intake \u2014 fibre without fluid worsens things."},
+          {t:"🏃 Activity", html:"Regular physical activity improves gut transit."},
+          {t:"🚽 Toileting routine", html:"Respond to the urge; unhurried routine, ideally after meals (gastrocolic reflex)."},
+          {t:"🦶 Position", html:"Knees above hips (footstool), lean forward \u2014 mechanical aid to evacuation."},
+          {t:"💊 Review drugs", html:"Identify and, where possible, switch constipating medicines."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 stepwise", title:"The laxative ladder",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Bulk-forming laxative", when:"ispaghula husk",
+           html:"First-line if diet inadequate \u2014 <b>ensure good fluid intake</b>. Avoid if stools already hard/impacted or opioid-induced."},
+          {step:"Step 2", title:"Osmotic laxative", when:"macrogol first-line",
+           fromLabel:"hard stools / inadequate response",
+           html:"<b>Macrogol 1\u20133 sachets daily</b> (preferred) or <b>lactulose 15 mL BD</b>. Titrate to a soft, formed stool."},
+          {step:"Step 3", title:"Add a stimulant", when:"senna / bisacodyl",
+           fromLabel:"still inadequate / slow transit",
+           html:"Add a stimulant — <b>senna 7.5–15 mg at night</b> or <b>bisacodyl 5–10 mg at night</b> — if stools soft but evacuation infrequent."},
+          {step:"Special", title:"Opioid-induced / impaction", when:"tailored regimens",
+           fromLabel:"specific situations",
+           html:"<b>Opioid-induced:</b> osmotic + stimulant (avoid bulk-forming); consider <b>naloxegol 25 mg OD</b> if refractory. <b>Impaction:</b> high-dose macrogol regimen \u00b1 stimulant \u00b1 suppository/enema."}
+        ]},
+        {b:"warn", html:"<b>Don\u2019t give bulk-forming laxatives for opioid-induced constipation or faecal impaction</b> \u2014 they can worsen it. Once regular, soft stools are achieved, <b>titrate down and withdraw gradually</b> rather than stopping abruptly."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Titrate to effect, then withdraw",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Stool frequency / form","Each review","Titrate laxative to soft, regular stool; combine if needed"],
+          ["Response to laxative","2\u20134 weeks","Inadequate \u2192 step up / combine"],
+          ["Withdrawal","Once stable","Gradually reduce and stop, maintaining lifestyle measures"],
+          ["Red flags","Ongoing","New alarm feature \u2192 investigate"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"2\u20134 weeks", title:"Response review", html:"Assess laxative effect; titrate or add a second class."},
+          {n:"2", when:"Once controlled", title:"Step-down", html:"Gradually withdraw laxatives while maintaining diet, fluids and activity."},
+          {n:"3", when:"As needed", title:"Reassess", html:"Recurrent/refractory \u2192 review cause; persistent change in habit \u2192 investigate."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not responding? Re-check before escalating",
+      arrow:"\u2026if constipation persists",
+      intro:"Reconsider cause, drugs and impaction before adding more laxatives.",
+      checks:[
+        {b:"1 \u00b7 Impaction", html:"Overflow diarrhoea / palpable loaded colon \u2192 treat impaction first."},
+        {b:"2 \u00b7 Drugs", html:"Constipating medicines still on board?"},
+        {b:"3 \u00b7 Secondary cause", html:"Recheck thyroid, calcium, glucose; consider IBS-C."},
+        {b:"4 \u00b7 Combination", html:"Combine osmotic + stimulant at adequate doses before declaring failure."},
+        {b:"5 \u00b7 Red flags", html:"Any alarm feature \u2192 investigate for malignancy."}
+      ],
+      back:"Impaction + drugs + secondary causes addressed \u2192 escalate / refer"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Alarm features", html:"\u201cRectal bleeding, unintentional weight loss, a tummy/back-passage lump, or a new persistent change in habit over 60 \u2014 come back; we\u2019ll investigate.\u201d"},
+          {t:"🟠 Obstruction", html:"\u201cSevere tummy pain with vomiting and no wind or stool \u2014 seek urgent help.\u201d"},
+          {t:"💩 Overflow", html:"\u201cLeaking loose stool while constipated can mean a blockage of hard stool \u2014 tell us, don\u2019t just treat the \u2018diarrhoea\u2019.\u201d"},
+          {t:"💧 Fibre + fluids", html:"\u201cIncrease fibre slowly and drink plenty \u2014 fibre without fluids makes it worse.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"red flags urgently; refractory routinely",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"2-week-wait", html:"Alarm features suggesting colorectal cancer \u2192 suspected-cancer pathway."},
+          {t:"Refractory", html:"Chronic constipation unresponsive to optimised lifestyle + combination laxatives \u2014 consider prucalopride / specialist."},
+          {t:"Impaction not resolving", html:"Faecal impaction failing oral/rectal treatment."},
+          {t:"Secondary cause", html:"Suspected metabolic, neurological, or structural cause needing investigation."}
+        ]},
+        {b:"say", html:"Let\u2019s start with fibre, fluids and activity, and a laxative we titrate to comfortable, regular stools \u2014 then taper it off. If you ever notice bleeding, weight loss or a lasting change in your bowels, come back so we can check things properly."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Heart Failure (HFrEF) — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Heart failure management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🫀",
+  title:"Heart Failure (HFrEF)",
+  stemTitle:"Confirmed Heart Failure with reduced EF — ongoing management",
+  stemSub:"Primary-care management of confirmed HFrEF (LVEF <40%) \u2014 the four pillars of disease-modifying therapy, diuretics for congestion, monitoring, follow-up and follow-up titration \u2014 alongside the specialist HF team. NICE NG106 \u00b7 CKS 2026.",
+  guideline:"NICE NG106",
+  glance:[
+    {lbl:"Diagnosis", val:"LVEF <40%", sub:"echo + NT-proBNP"},
+    {lbl:"Foundation pair", val:"ACEi + BB", sub:"start low, titrate"},
+    {lbl:"Pillar 3", val:"MRA", sub:"spiro / eplerenone"},
+    {lbl:"Pillar 4", val:"SGLT2i", sub:"dapa / empa"},
+    {lbl:"Congestion", val:"Loop diuretic", sub:"symptom, not prognosis"},
+    {lbl:"U&E check", val:"1\u20132 weeks", sub:"after ACEi/MRA change"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm HFrEF, classify and baseline",
+      blocks:[
+        {b:"p", html:"Diagnosis confirmed on echo (<strong>LVEF &lt;40%</strong>) with a raised NT-proBNP. Establish the cause (IHD, hypertension, valvular, arrhythmia), grade <strong>NYHA class</strong>, and record baseline obs and bloods before starting prognostic drugs."},
+        {b:"kv", rows:[
+          ["NYHA class","I (none) \u2192 IV (symptoms at rest) \u2014 tracks response &amp; prognosis"],
+          ["Baseline bloods","U&amp;E + eGFR + K\u207a (before ACEi/MRA), FBC, LFTs, TFTs, HbA1c, ferritin/TSAT (iron deficiency), lipids"],
+          ["Obs","BP, HR/rhythm (ECG \u2014 AF?), weight (dry weight), fluid status"],
+          ["Reversible / contributory","Iron deficiency, AF, anaemia, thyroid, alcohol, ischaemia \u2014 treat alongside"]
+        ]},
+        {b:"why", html:"Therapy is EF-specific: the four pillars below are proven in <strong>reduced</strong> EF. NT-proBNP and echo confirm the phenotype, and the baseline U&amp;E is the safety anchor \u2014 every RAAS-acting drug you add is titrated against renal function and potassium."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Self-management + risk reduction",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"⚖️ Daily weights", html:"Same time daily; report a gain of <b>&gt;2 kg over 3 days</b> \u2014 the earliest sign of decompensation."},
+          {t:"🧂 Salt & fluid", html:"Avoid added salt; sensible fluid intake. Restrict fluid only if advised (hyponatraemia / severe HF)."},
+          {t:"🏃 Cardiac rehab", html:"Supervised exercise rehab improves symptoms, function and admissions \u2014 refer."},
+          {t:"💉 Vaccines", html:"Annual influenza, pneumococcal, COVID-19."},
+          {t:"🚫 Avoid", html:"NSAIDs, glitazones, most non-DHP CCBs (verapamil/diltiazem) worsen HF."},
+          {t:"🚭 Smoking & alcohol", html:"Cessation; alcohol within limits (abstinence if alcohol-related cardiomyopathy)."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 disease-modifying", title:"The four pillars of HFrEF therapy",
+      blocks:[
+        {b:"p", html:"Start the <strong>foundation pair early and titrate to target (or maximum tolerated) every 2\u20134 weeks</strong>. Modern practice favours getting all four pillars on board at low dose, then up-titrating \u2014 led by the HF team."},
+        {b:"ladder", steps:[
+          {step:"Pillar 1", title:"ACE inhibitor (or ARB if intolerant)", when:"start low, titrate up",
+           html:"<b>Ramipril 1.25\u20132.5mg \u2192 target 10mg OD</b> (or lisinopril 2.5\u20135 \u2192 20\u201335mg; perindopril 2 \u2192 8mg). ARB if cough: <b>candesartan 4\u20138 \u2192 32mg OD</b>. Check U&amp;E + K\u207a at baseline and 1\u20132 weeks after each change."},
+          {step:"Pillar 2", title:"Beta-blocker licensed for HF", when:"when stable, not acutely congested",
+           fromLabel:"start together / sequentially, titrate both",
+           html:"<b>Bisoprolol 1.25 \u2192 10mg OD</b>, carvedilol 3.125mg BD \u2192 25\u201350mg BD, or nebivolol 1.25 \u2192 10mg OD. \u201cStart low, go slow\u201d \u2014 double no faster than every 2 weeks. Transient initial worsening is expected \u2014 don\u2019t abandon."},
+          {step:"Pillar 3", title:"MRA \u2014 spironolactone or eplerenone", when:"if still symptomatic / EF \u2264 35%",
+           fromLabel:"remains symptomatic",
+           html:"<b>Spironolactone 25 \u2192 50mg OD</b> (or eplerenone 25 \u2192 50mg OD \u2014 fewer anti-androgen effects, use if gynaecomastia). Monitor K\u207a + renal at 1, 4, 8, 12 weeks. <b>Stop if K\u207a &gt;5.5.</b>"},
+          {step:"Pillar 4", title:"SGLT2 inhibitor \u2014 dapagliflozin / empagliflozin", when:"regardless of diabetes",
+           fromLabel:"add as 4th pillar",
+           html:"<b>Dapagliflozin 10mg OD</b> or <b>empagliflozin 10mg OD</b> (no titration needed). Reduces HF hospitalisation and mortality independent of diabetes. Counsel on sick-day rules + DKA awareness."}
+        ]},
+        {b:"kv", rows:[
+          ["Congestion relief","<b>Furosemide 40mg OD</b> (or bumetanide 1mg \u2248 furosemide 40mg) titrated to symptoms &amp; weight \u2014 improves symptoms, <b>not</b> prognosis. Use lowest effective dose; consider a flexible self-adjusting plan."],
+          ["Specialist add-ons","<b>ARNI sacubitril/valsartan (Entresto\u00ae) 49/51mg BD \u2192 97/103mg BD</b> replacing ACEi/ARB if still symptomatic (36h ACEi washout); ivabradine 5mg BD (sinus HR \u226575 on max BB); hydralazine/nitrate; IV iron if deficient; devices (CRT/ICD)."]
+        ]},
+        {b:"warn", html:"<b>Do not combine ACEi + ARB + MRA</b> (hyperkalaemia/AKI). When switching ACEi \u2192 ARNI, allow a <b>36-hour washout</b> (angioedema risk)."},
+        {b:"why", html:"Each pillar cuts mortality by a further, largely independent margin \u2014 the survival benefit of all four together is far greater than any single agent. That is why the goal is breadth (all four on board) plus depth (titrated to target), not maximising one drug. Diuretics make patients <em>feel</em> better but don\u2019t prolong life \u2014 keep them separate in your reasoning."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Bloods, obs and review",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["U&amp;E + K\u207a + eGFR","Baseline, 1\u20132 wk after ACEi/ARB/MRA change, then routinely","K\u207a &gt;5.5 or creatinine \u2191 &gt;30% \u2192 reduce/stop + advice"],
+          ["Weight + symptoms / NYHA","Each review + patient self-monitoring","Rising weight / worsening NYHA \u2192 review diuretic &amp; decompensation"],
+          ["BP + HR","Each titration","Guides up-titration vs hypotension/bradycardia limits"],
+          ["Ferritin / TSAT","Annually","Treat iron deficiency (IV iron) even without anaemia"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Titration schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"Every 2\u20134 weeks while titrating", title:"Up-titrate the pillars", html:"Increase doses toward target as BP/HR/renal allow; check bloods after RAAS changes."},
+          {n:"2", when:"After any dose change", title:"Safety bloods", html:"U&amp;E + K\u207a per schedule; review symptoms and weight trend."},
+          {n:"3", when:"At least 6-monthly once stable", title:"Structured HF review", html:"Symptoms/NYHA, meds &amp; adherence, bloods, devices, iron status, comorbidities, advance-care discussion where appropriate."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not improving? Check before escalating",
+      arrow:"\u2026if symptoms persist or worsen at review",
+      intro:"Optimise what\u2019s on board before assuming refractory disease.",
+      checks:[
+        {b:"1 \u00b7 Adherence", html:"Confirm all pillars taken; address side-effect-driven non-adherence."},
+        {b:"2 \u00b7 Up-titration", html:"Are pillars at target / max tolerated dose, not just started?"},
+        {b:"3 \u00b7 Congestion", html:"Fluid overload \u2192 titrate loop diuretic; consider self-adjusting (\u201cflexible diuretic\u201d) plan."},
+        {b:"4 \u00b7 Drivers", html:"Recheck AF, ischaemia, anaemia, iron, thyroid, NSAIDs, alcohol."},
+        {b:"5 \u00b7 Phenotype", html:"Still symptomatic on optimal therapy \u2192 specialist for ARNI / devices."}
+      ],
+      back:"Optimised, adherent, congestion managed \u2192 escalate to specialist add-ons / HF team"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Decompensation", html:"\u201cWorsening breathlessness, especially lying flat or waking you at night, or new ankle swelling \u2014 contact us the same day.\u201d"},
+          {t:"⚖️ Weight gain", html:"\u201cGain of more than 2 kg over about 3 days \u2014 ring us; we may adjust your water tablet.\u201d"},
+          {t:"😵 Faint / very low BP", html:"\u201cBlackout, severe dizziness, or chest pain \u2014 call 999.\u201d"},
+          {t:"🤢 Sick-day rules", html:"\u201cVomiting/diarrhoea \u2014 pause water tablets, ACE inhibitor and SGLT2 for 48 h and call us (kidney protection).\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to involve the HF specialist team",
+      arrow:"shared care \u2014 specialist-initiated therapies",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Acute pulmonary oedema, severe hypotension, syncope, suspected ACS \u2192 999."},
+          {t:"Therapy escalation", html:"For ARNI initiation, ivabradine, device therapy (CRT/ICD), or refractory symptoms on optimal therapy."},
+          {t:"HFpEF / HFmrEF", html:"Preserved/mildly-reduced EF needs a different evidence base \u2014 specialist guidance."},
+          {t:"Valvular / structural", html:"Significant valve disease, or new murmur \u2014 cardiology/echo review."},
+          {t:"Diagnostic doubt", html:"Disproportionate symptoms, rising NT-proBNP, or uncertain phenotype."}
+        ]},
+        {b:"say", html:"Your heart-failure tablets are doing important work, but you\u2019re still getting symptoms, so I\u2019m linking you with the heart-failure team who can add a stronger treatment and keep an eye on things with us."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

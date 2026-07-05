@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Osteoporosis Algorithm &middot; Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;--diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;--treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;--refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;--lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;--radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);--font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#0a2a1a 0%,#1a5a3a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}.stem-banner b{display:block;font-size:1.05rem;font-weight:600}.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#1a5a3a,#167a4a);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}.node[data-type="TREAT"] .node-num{background:var(--treat)}.node[data-type="REFER"] .node-num{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}.node[data-type="TREAT"] .node-tag{background:var(--treat)}.node[data-type="REFER"] .node-tag{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}.kv>div{background:#fff;padding:8px 10px}.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}.pill-purple{background:#ede9fe;color:#5b21b6}.pill-blue{background:#dbeafe;color:#1e40af}.pill-amber{background:#fef3c7;color:#92400e}.pill-green{background:#dcfce7;color:#15803d}.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}.why-btn:hover{color:#1a1a2e}.caret{transition:transform .25s;display:inline-block}.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}</style><link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head><body>
+<div class="stem-banner"><div class="sb-icon">🦴</div><div><b>Osteoporosis &amp; Fracture Risk &mdash; Assessment &amp; Management</b><small>Case-finding &middot; FRAX &middot; NOGG thresholds &middot; DXA &middot; bisphosphonates &middot; fragility fracture</small></div></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div><span>Progress</span><span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span><div class="pbar"><div class="pbar-fill" id="pFill"></div></div><button class="reset" id="resetBtn">Reset</button></div>
+
+<!-- ════════ DIAGRAM (FLOWCHART) VIEW ════════ -->
+<div id="viewDiagram">
+  <div class="dg-legend">
+    <span>The full reasoning pathway — case-find those at risk, quantify with FRAX, map onto NOGG to decide DXA vs treat, give bone protection, modify falls &amp; bone-health factors, and safety-net. Follows NICE/NOGG.</span>
+    <span class="legend">
+      <span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span>
+    </span>
+  </div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation · NICE CG146 / NOGG</span><span class="ttl">Identify who is at risk (case-finding)</span><div class="body">Assess fracture risk in: women ≥65 and men ≥75; younger with risk factors — previous fragility fracture, oral glucocorticoids (prednisolone ≥7.5 mg/day ≥3 months), parental hip fracture, smoking, alcohol ≥3 units/day, low BMI, RA, premature menopause (&lt;45y), falls. (No population screening.)</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — the fracture not to miss</span><span class="ttl">Straight to DXA / urgent action?</span><div class="body">Some high-risk groups proceed <b>straight to DXA</b>: NICE — anyone &lt;40 with a major risk factor (fragility fracture, glucocorticoids, untreated premature menopause). Acute presentation: a <b>vertebral fracture</b> (sudden back pain/height loss) or any low-trauma fracture needs assessment + imaging.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">Straight to DXA</div><div class="box ix"><span class="lbl">Investigate</span><span class="ttl">DXA first</span><div class="body">&lt;40 with a major risk factor, or after a fragility fracture (per local pathway) → arrange DXA, then re-enter FRAX with the BMD/T-score.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">Most people</div><div class="box ix"><span class="lbl">Investigate · FRAX</span><span class="ttl">Calculate 10-year fracture risk</span><div class="body">Use <b>FRAX</b> (or QFracture) without BMD first. (In T2DM, tick the RA box.) Gives 10-year risk of major osteoporotic and hip fracture.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">map FRAX onto NOGG</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">Green — low risk</div><div class="box act"><span class="ttl">Lifestyle alone</span><div class="body">Reassure; address modifiable risk; reassess if circumstances change.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Amber — intermediate</div><div class="box ix"><span class="ttl">Arrange DXA</span><div class="body">Do a DXA, re-enter the T-score into FRAX, and review NOGG guidance again.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">Red / deep red — high</div><div class="box act"><span class="ttl">Treat</span><div class="body">Above the NOGG intervention threshold → treat (deep red: treat + consider specialist referral). NOGG: treatment may start immediately while awaiting DXA.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 6 · before &amp; during treatment</span></div>
+    <div class="box act" style="max-width:680px;"><span class="lbl">Step 6 · Action · Treat</span><span class="ttl">Bone-protection — first-line oral bisphosphonate</span><div class="body"><ul>
+      <li><b>Before starting:</b> check renal function, calcium and vitamin D; correct deficiency; arrange a dental check. Ensure dietary calcium ~700 mg/day (supplement only if intake inadequate — not within 2h of a bisphosphonate).</li>
+      <li><b>First-line: oral bisphosphonate</b> (alendronate/risedronate). If not tolerated/absorbed → IV zoledronate or denosumab. Severe vertebral osteoporosis → consider referral for anabolic agents (teriparatide, romosozumab).</li>
+      <li><b>Review</b> oral bisphosphonate at ~5 years (3 years for IV zoledronate) — consider a drug holiday vs continuation by ongoing risk.</li>
+    </ul></div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 5 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-purple">Metabolic bone / endocrine</span> deep-red risk, severe or recurrent vertebral fractures despite treatment, or for anabolic therapy. Investigate <b>secondary causes</b> in: any man, pre-/early-menopausal women, fractures at unusual sites, or vertebral fractures painful &gt;6 weeks (FBC, U&amp;E, LFT, bone profile, TFT, CRP/ESR, vitamin D, phosphate ± myeloma screen).</div></div>
+    <div class="arrow"><span class="tag">Step 8 · bone health &amp; falls prevention</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; falls prevention</span><span class="ttl">Strengthen bone, prevent the fall</span><div class="body"><b>Weight-bearing &amp; resistance exercise</b>, balance work (tai chi) · adequate <b>dietary calcium (~700 mg/day) + vitamin D</b> · <b>stop smoking</b>, alcohol &lt;3 u/day · <b>falls assessment</b> (home hazards, footwear, vision, postural BP) · review culprit drugs (long-term steroids, sedatives, drugs causing postural drop). Bone protection works only alongside fall reduction.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · monitoring &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">Review &amp; when to return</span><div class="body"><b>Review adherence/tolerance early</b>; reassess oral bisphosphonate at ~5 years (IV zoledronate at 3) for a drug holiday vs continuation by risk; repeat DXA if a treatment decision depends on it. <b>Seek help</b> for sudden severe back pain/height loss (new vertebral fracture), any new low-trauma fracture (→ fracture liaison), or thigh/groin pain on a bisphosphonate (rare atypical femoral fracture) and jaw symptoms (ONJ — maintain dental care).</div></div>
+  </div><!-- /flow -->
+  </div><!-- /chart -->
+  <div class="band"><div class="caution">⚠️ <b>Every fragility fracture is a treatment opportunity</b> (a low-trauma fracture in an adult ≥50 is osteoporosis until proven otherwise). The three UK guidelines (NICE, NOGG, SIGN) differ — pick one and don't switch mid-assessment. This pathway follows <b>NICE/NOGG</b> (FRAX → NOGG thresholds).</div></div>
+</div><!-- /viewDiagram -->
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — The Fracture You Must Not Miss</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>A fragility fracture — a fracture from a fall at standing height or less, in an adult aged ≥50 — is osteoporosis until proven otherwise and is the strongest predictor of the next fracture.</b></p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Sudden back pain / height loss / kyphosis</b> Vertebral fragility fracture — often unrecognised. Image (spine X-ray) and assess; a vertebral fracture markedly raises future risk and warrants treatment, often without waiting for DXA.</div>
+      <div class="rftile"><b>Hip fracture</b> Highest-mortality fragility fracture. After a hip fracture, IV bisphosphonate reduces mortality and re-fracture — ensure bone protection is started (fracture liaison service).</div>
+      <div class="rftile"><b>Glucocorticoids — prednisolone ≥7.5 mg/day for ≥3 months</b> High fracture risk; assess and usually start bone protection early (don't wait for DXA in high-risk steroid users).</div>
+      <div class="rftile"><b>Fractures at unusual sites, or vertebral fractures painful &gt;6 weeks / worsening</b> Investigate for a secondary cause (incl. myeloma, malignancy, metabolic bone disease).</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">Half of patients presenting with a hip fracture have had an earlier, often vertebral, fragility fracture that was not acted on. Each fracture roughly doubles the risk of the next, so the case-finding priority is to recognise the index fragility fracture and start assessment and treatment — the "fracture liaison" model exists precisely to close this secondary-prevention gap.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Case-finding &mdash; Who to Assess</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>There is <b>no population screening</b> &mdash; fracture-risk assessment is targeted (case-finding). Assess anyone in the groups below.</p>
+    <div class="kv">
+      <div>By age</div><div><b>Women &ge;65</b> and <b>men &ge;75</b> &mdash; assess all.</div>
+      <div>Younger + a risk factor</div><div>Previous <b>fragility fracture</b>, oral glucocorticoids (prednisolone &ge;7.5 mg/day for &ge;3 months), parental hip fracture, current smoking, alcohol &ge;3 units/day, low BMI (&lt;18.5), rheumatoid/secondary osteoporosis, <b>premature menopause &lt;45y</b>, recurrent falls.</div>
+      <div>Straight to DXA</div><div>NICE: anyone <b>&lt;40 with a major risk factor</b> (fragility fracture, glucocorticoids, untreated premature menopause) &mdash; scan first rather than FRAX.</div>
+      <div>Don't forget men</div><div>Osteoporosis is under-diagnosed in men; a man with any fragility fracture warrants assessment and a secondary-cause screen.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">Population screening for osteoporosis is not cost-effective, so the strategy is opportunistic case-finding around age and clinical risk factors. The under-40 "straight to DXA" group exists because FRAX is not validated below 40 and these patients have a clear high-risk trigger that warrants direct bone-density measurement.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Quantify Risk &mdash; FRAX &amp; the DXA T-score</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Tool (this pathway)</div><div>Use <b>FRAX</b> &mdash; gives 10-year risk of major osteoporotic and hip fracture and links directly to NOGG. (SIGN prefers QFracture.) In <b>T2DM, tick the RA box</b> to offset FRAX's underestimate.</div>
+      <div>Which score to act on</div><div><b>NICE:</b> use the major-osteoporotic-fracture risk. <b>NOGG:</b> use the higher of the two scores.</div>
+      <div>FRAX without BMD first</div><div>Calculate FRAX <b>without</b> a DXA T-score initially; only scan if the result lands in the assessment (amber) zone.</div>
+      <div>DXA T-score</div><div><b>&le; &minus;2.5 = osteoporosis</b>; &minus;1 to &minus;2.5 = osteopenia; &ge;&minus;1 = normal. Re-enter the BMD into FRAX to refine the decision.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">Fracture risk is driven by far more than bone density &mdash; age, prior fracture, steroids and parental hip fracture each add independent risk &mdash; which is why a validated tool (FRAX or QFracture) rather than DXA alone is the starting point. FRAX is favoured in the NICE/NOGG route because its output links straight to the NOGG intervention thresholds, telling you whether to reassure, scan, or treat.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>FRAX &rarr; NOGG: Reassure, Scan or Treat &mdash; &amp; Secondary Causes</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-green">Green</span></div><div>Below threshold &mdash; <b>lifestyle alone</b>; reassess if circumstances change.</div>
+      <div><span class="pill pill-amber">Amber / yellow</span></div><div><b>Arrange DXA</b>, re-enter the T-score into FRAX, and review NOGG guidance again.</div>
+      <div><span class="pill pill-red">Red</span></div><div>Above the intervention threshold &mdash; <b>treat</b>. NOGG allows starting treatment immediately while awaiting DXA.</div>
+      <div><span class="pill pill-red">Deep red</span></div><div><b>Treat and consider specialist referral.</b></div>
+      <div>Secondary causes &mdash; screen if</div><div>Any man; pre-/early-menopausal woman; fractures at unusual sites; vertebral fractures painful &gt;6 weeks. NOGG bloods: FBC, U&amp;E/creatinine, LFT, bone profile, TFT, CRP/ESR, vitamin D, phosphate. Consider spine X-ray for silent vertebral fractures.</div>
+      <div><span class="pill pill-purple">2WW</span> Myeloma (NICE NG12)</div><div>In a patient <b>&ge;60 with persistent bone pain or an unexplained fragility fracture</b> (esp. with raised ESR/plasma viscosity or anaemia), request <b>very urgent serum protein electrophoresis + serum-free light chains / Bence-Jones (urine BJP)</b> and FBC &mdash; myeloma can present as osteoporosis or a low-trauma vertebral fracture.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">The NOGG colour-coded graph turns a percentage risk into an action: green = reassure, amber = measure bone density to refine, red = treat. Screening for secondary causes matters because treating "primary" osteoporosis when the real driver is myeloma, hyperparathyroidism or osteomalacia means treating the wrong target &mdash; the NG12 myeloma pathway exists precisely to catch the malignancy hiding behind an unexplained fracture.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral &amp; Escalation</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">2WW</span> Suspected myeloma</div><div>NICE NG12 &mdash; &ge;60 with bone pain/unexplained fracture + abnormal protein electrophoresis or plasma viscosity/ESR &rarr; urgent haematology referral.</div>
+      <div><span class="pill pill-purple">Metabolic bone / endocrine</span></div><div>Deep-red risk; treatment failure (fractures despite adherence); intolerance of multiple agents; consideration of anabolic therapy; complex secondary osteoporosis.</div>
+      <div>Fracture liaison service</div><div>Anyone presenting with a fragility fracture &mdash; for systematic assessment and secondary prevention.</div>
+      <div>Guideline note</div><div>NICE, NOGG and SIGN differ; this pathway follows <b>NICE/NOGG</b> (FRAX &rarr; NOGG thresholds). Avoid switching guidelines mid-assessment.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">Most osteoporosis is managed entirely in primary care; referral is reserved for diagnostic complexity, treatment failure, or the need for parenteral/anabolic agents. The myeloma 2WW sits here because an unexplained fragility fracture in an older adult is one of NG12's recognised malignancy presentations and must not be absorbed silently into a "primary osteoporosis" label.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>Bone Protection &mdash; Pre-checks &amp; First-line Drug</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Before starting</div><div>Check <b>renal function, calcium and vitamin D</b>; correct deficiency first. Arrange a <b>dental check</b> (osteonecrosis-of-jaw risk). Aim ~700 mg/day dietary calcium; supplement only if intake inadequate (not within 2h of a bisphosphonate).</div>
+    </div>
+    <div class="branch">
+      <div class="b-card"><div class="b-cond">First-line</div><div class="b-drug">Oral bisphosphonate</div><div class="b-note">Alendronate 70 mg weekly or risedronate 35 mg weekly. Take on an empty stomach with a full glass of water, sit/stand upright &ge;30 min, fast afterwards.</div></div>
+      <div class="b-card"><div class="b-cond">Oral not tolerated / absorbed</div><div class="b-drug">IV zoledronate or denosumab</div><div class="b-note">IV zoledronate once yearly, or denosumab 60 mg SC every 6 months. Correct vitamin D/calcium first &mdash; hypocalcaemia risk with potent antiresorptives.</div></div>
+      <div class="b-card"><div class="b-cond">Severe vertebral / specialist</div><div class="b-drug">Anabolic therapy</div><div class="b-note">Teriparatide or romosozumab via specialist for severe or progressive vertebral osteoporosis.</div></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">Oral bisphosphonates are first-line because they reduce vertebral, non-vertebral and hip fractures cheaply and safely for most people; the upfront checks (renal function, calcium/vitamin D, dental review) minimise the rare harms (hypocalcaemia, osteonecrosis of the jaw, atypical femoral fracture). Correcting vitamin D and calcium before a potent antiresorptive is essential to avoid precipitating symptomatic hypocalcaemia.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Review, Drug Holiday &amp; Adherence</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Adherence</div><div>Persistence with oral bisphosphonates is poor &mdash; confirm the patient understands the dosing ritual and the long-term, often symptom-free, nature of treatment. Poor adherence is the commonest cause of apparent "failure".</div>
+      <div>Oral bisphosphonate review</div><div>Reassess at <b>~5 years</b>: consider a <b>drug holiday</b> if low ongoing risk (no new fracture, T-score &gt; &minus;2.5), or continue if high risk (prior vertebral/hip fracture, T-score &le; &minus;2.5, ongoing steroids).</div>
+      <div>IV zoledronate review</div><div>Reassess at <b>~3 years</b> on the same risk basis.</div>
+      <div>Denosumab caution</div><div><b>Do not stop denosumab without follow-on therapy</b> (e.g. a bisphosphonate) &mdash; abrupt cessation causes rapid rebound bone loss and multiple vertebral fractures.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">The "drug holiday" concept reflects the long skeletal retention of bisphosphonates, which continue to protect for a period after stopping in lower-risk patients, reducing cumulative exposure to rare harms. Denosumab is the opposite &mdash; its effect reverses quickly, so stopping it without a follow-on agent is dangerous, a point examiners frequently test.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Bone Health &amp; Falls Prevention</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Bone protection works only alongside fall reduction &mdash; most fractures need both a fragile bone <b>and</b> a fall.</p>
+    <div class="lsgrid">
+      <div class="lstile"><b>Exercise</b> Weight-bearing &amp; muscle-strengthening exercise; balance training (e.g. tai chi) to cut falls.</div>
+      <div class="lstile"><b>Calcium &amp; vitamin D</b> Adequate dietary calcium (~700 mg/day) and vitamin D; supplement if intake/levels low.</div>
+      <div class="lstile"><b>Smoking &amp; alcohol</b> Stop smoking; alcohol &lt;3 units/day &mdash; both directly weaken bone.</div>
+      <div class="lstile"><b>Falls assessment</b> Review home hazards, footwear, vision, and check a postural BP.</div>
+      <div class="lstile"><b>Culprit drugs</b> Review long-term steroids, sedatives and drugs causing a postural drop.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">Antiresorptive drugs reduce relative fracture risk, but the absolute number of fractures prevented depends just as much on whether the person falls. A combined approach &mdash; strengthen the bone, reduce the fall &mdash; is why structured falls assessment is part of every osteoporosis plan, not an optional extra.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Follow-up</span><h3>Monitoring &amp; Safety-net</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Early review</div><div>Check adherence and tolerance soon after starting; address GI upset (commonest reason oral bisphosphonates are abandoned).</div>
+      <div>Reassess treatment</div><div>Oral bisphosphonate at ~5 years, IV zoledronate at ~3 years &mdash; drug holiday vs continuation by risk; repeat DXA if a decision depends on it.</div>
+      <div><span class="pill pill-red">Seek help urgently</span></div><div>Sudden severe back pain/height loss (new vertebral fracture) or any new low-trauma fracture &rarr; fracture liaison.</div>
+      <div>Drug-specific warnings</div><div><b>Thigh/groin pain</b> on a bisphosphonate (rare atypical femoral fracture) or <b>jaw pain/non-healing socket</b> (osteonecrosis) &mdash; review the drug and maintain dental care.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">Structured review keeps patients on therapy long enough to benefit and catches the rare but serious adverse events (atypical femoral fracture, osteonecrosis of the jaw) early. Naming the specific warning symptoms to the patient both protects them and documents your safety-netting.</div></div>
+</div>
+
+</div>
+
+<div class="alg-foot"><strong>Educational use only.</strong> Follows <b>NICE CG146 (2017) and NOGG 2021</b> (FRAX → NOGG intervention thresholds) as summarised in the GEMS "Osteoporosis" guide, with NICE technology appraisals (TA160/161, TA464, TA204, TA791) for drug choice. The UK guidelines (NICE, NOGG, SIGN) differ — use one consistently. Verify thresholds and doses against the live tools and BNF.</div>
+
+<script>(function(){const STORE="rgp.alg.osteoporosis.v1";const flow=document.getElementById("flow");const pDone=document.getElementById("pDone");const pFill=document.getElementById("pFill");const total=flow.querySelectorAll(".node").length;document.getElementById("pTotal").textContent=total;function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll("input[type=checkbox]")].map(c=>c.checked)));}function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||"[]");[...flow.querySelectorAll("input[type=checkbox]")].forEach((c,i)=>{if(d[i])c.checked=true;});}catch(e){}}function update(){const done=[...flow.querySelectorAll("input[type=checkbox]")].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+"%";save();}flow.addEventListener("change",e=>{if(e.target.type==="checkbox")update();});flow.addEventListener("click",e=>{const btn=e.target.closest(".why-btn");if(!btn)return;const exp=btn.getAttribute("aria-expanded")==="true";btn.setAttribute("aria-expanded",String(!exp));btn.nextElementSibling.classList.toggle("open",!exp);});document.getElementById("resetBtn").addEventListener("click",()=>{flow.querySelectorAll("input[type=checkbox]").forEach(c=>c.checked=false);flow.querySelectorAll(".why-drawer").forEach(d=>d.classList.remove("open"));flow.querySelectorAll(".why-btn").forEach(b=>b.setAttribute("aria-expanded","false"));localStorage.removeItem(STORE);update();});load();update();})();</script><script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body></html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aphthous Ulcer — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Aphthous ulcer management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"👄",
+  title:"Aphthous Ulcer",
+  stemTitle:"Recurrent aphthous stomatitis — management",
+  stemSub:"Primary-care management of recurrent mouth ulcers \u2014 excluding underlying causes, symptomatic topical treatment, and the crucial 3-week rule for referring possible oral cancer. CKS \u00b7 2026.",
+  guideline:"NICE CKS",
+  glance:[
+    {lbl:"Most are", val:"Minor, self-limiting", sub:"heal &lt;2 weeks"},
+    {lbl:"Screen", val:"Underlying cause", sub:"haematinics, coeliac, IBD"},
+    {lbl:"Relief", val:"Topical analgesic/steroid", sub:"+ antiseptic"},
+    {lbl:"Severe", val:"Topical corticosteroid", sub:"hydrocortisone buccal"},
+    {lbl:"🔴 3-week rule", val:"Ulcer >3 weeks", sub:"= 2WW oral cancer"},
+    {lbl:"Refer", val:"Persistent / severe", sub:"oral medicine"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Classify and screen for causes",
+      blocks:[
+        {b:"kv", rows:[
+          ["Types","Minor (small, &lt;1 cm, heal &lt;2 weeks), major (larger, scarring), herpetiform"],
+          ["Screen if recurrent/severe","FBC, ferritin, B12, folate (haematinic deficiency), coeliac serology; consider IBD, Beh\u00e7et\u2019s"],
+          ["Triggers","Trauma, stress, certain foods (SLS toothpaste), hormonal; drugs (e.g. nicorandil, NSAIDs)"],
+          ["🔴 Red flag","Any single ulcer &gt;3 weeks, or unexplained oral lesion \u2192 suspected oral cancer pathway"]
+        ]},
+        {b:"why", html:"Most aphthous ulcers are benign and self-limiting, so treatment is symptomatic \u2014 but two things matter: screen recurrent/severe cases for a treatable <strong>underlying cause</strong> (iron/B12/folate deficiency, coeliac, IBD), and never forget the <strong>3-week rule</strong>: a persistent ulcer can be oral cancer and needs urgent referral."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 first-line", title:"Triggers and self-care",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🪥 SLS-free toothpaste", html:"Switch to a sodium-lauryl-sulfate-free toothpaste \u2014 can reduce recurrence."},
+          {t:"🍋 Avoid triggers", html:"Avoid trauma, acidic/spicy foods during episodes; identify personal triggers."},
+          {t:"🧂 Saltwater rinse", html:"Warm saline mouthwash for symptom relief and hygiene."},
+          {t:"🧠 Stress", html:"Address stress; reassure about the benign, recurring nature."},
+          {t:"🍎 Diet", html:"Ensure balanced diet; correct deficiencies identified on screening."},
+          {t:"🦷 Dental review", html:"Address sharp teeth/dentures causing recurrent trauma."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 symptomatic", title:"Topical relief by severity",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Topical analgesic / antiseptic", when:"symptom relief",
+           html:"Topical analgesic \u2014 <b>benzydamine 0.15% mouthwash/spray</b> (rinse 15 mL every 1.5\u20133 h) or lidocaine gel; <b>chlorhexidine 0.2% mouthwash BD</b> to prevent secondary infection and aid healing."},
+          {step:"Step 2", title:"Topical corticosteroid", when:"more severe / frequent",
+           fromLabel:"inadequate relief",
+           html:"<b>Hydrocortisone oromucosal tablets 2.5 mg, dissolved next to the ulcer QDS</b> (or betamethasone 500 microgram soluble tablet as a mouthwash) to reduce inflammation and duration."},
+          {step:"Step 3", title:"Treat underlying cause", when:"if identified",
+           fromLabel:"deficiency / systemic disease",
+           html:"Correct haematinic deficiency, treat coeliac/IBD; review causative drugs."}
+        ]},
+        {b:"warn", html:"Symptomatic treatments relieve but don\u2019t \u2018cure\u2019 \u2014 recurrence is common. <b>Any ulcer lasting &gt;3 weeks must be referred urgently</b> regardless of symptom response."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Healing and the 3-week rule",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Healing","Each episode","Minor ulcers heal &lt;2 weeks; persistence is a red flag"],
+          ["3-week rule","Any persistent ulcer","&gt;3 weeks \u2192 urgent suspected-cancer referral"],
+          ["Recurrence pattern","If frequent/severe","Screen/re-screen for underlying cause"],
+          ["Deficiencies","After screening","Correct and recheck"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"At presentation", title:"Assess + treat", html:"Classify, screen if recurrent/severe, symptomatic treatment, safety-net the 3-week rule."},
+          {n:"2", when:"If persistent >3 weeks", title:"Urgent referral", html:"Refer on the suspected oral-cancer pathway."},
+          {n:"3", when:"If recurrent", title:"Cause review", html:"Investigate/treat underlying cause; consider oral-medicine referral."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Persistent / recurrent? Re-check",
+      arrow:"\u2026if ulcers persist or recur",
+      intro:"Distinguish benign recurrence from a sinister or systemic cause.",
+      checks:[
+        {b:"1 \u00b7 3-week rule", html:"Any single ulcer &gt;3 weeks \u2192 urgent suspected-cancer referral."},
+        {b:"2 \u00b7 Deficiency", html:"Iron/B12/folate, coeliac \u2014 screened and corrected?"},
+        {b:"3 \u00b7 Systemic disease", html:"IBD, Beh\u00e7et\u2019s (genital ulcers, eye/skin), or drug cause?"},
+        {b:"4 \u00b7 Trauma", html:"Sharp tooth/denture causing recurrent ulceration \u2192 dental review."},
+        {b:"5 \u00b7 Refer", html:"Severe/refractory recurrent ulceration \u2192 oral medicine."}
+      ],
+      back:"Cancer excluded, cause screened \u2192 oral medicine if severe/recurrent"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 3-week ulcer", html:"\u201cAny mouth ulcer or sore that hasn\u2019t healed within 3 weeks needs urgent assessment to rule out mouth cancer \u2014 please come back.\u201d"},
+          {t:"🟠 Systemic clues", html:"\u201cUlcers with diarrhoea/weight loss, genital ulcers, or eye problems \u2014 tell us; there may be an underlying cause.\u201d"},
+          {t:"🚭 Risk factors", html:"\u201cSmoking and alcohol raise mouth-cancer risk \u2014 worth reducing.\u201d"},
+          {t:"🫶 Reassurance", html:"\u201cMost mouth ulcers are harmless and settle within a couple of weeks.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"urgent for the 3-week rule",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"🔴 Suspected cancer", html:"Ulcer/lesion unexplained and persisting &gt;3 weeks \u2192 2-week-wait head &amp; neck pathway."},
+          {t:"Oral medicine / dental", html:"Severe, frequent, or refractory recurrent aphthous stomatitis."},
+          {t:"Systemic disease", html:"Suspected Beh\u00e7et\u2019s, IBD, or other systemic cause \u2192 relevant specialty."},
+          {t:"Deficiency workup", html:"Persistent unexplained deficiency."}
+        ]},
+        {b:"say", html:"Mouth ulcers are usually harmless and settle in a week or two, and we can ease the pain meanwhile. The one important rule: if any ulcer hasn\u2019t healed in three weeks, come straight back \u2014 we\u2019d want to check it urgently."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

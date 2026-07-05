@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Lymphadenopathy Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;
+  --diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;
+  --treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;
+  --refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;
+  --lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
+  --font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif
+}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#2a0a3a 0%,#5a1a7a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#5a1a7a,#c0392b);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}
+.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}
+.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}
+.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}
+.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}
+.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}
+.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#92400e}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🔵</div>
+  <div>
+    <b>Lymphadenopathy — New or Persistent</b>
+    <small>Localised vs generalised · lymphoma · metastatic cancer · infection · 6-week rule · 2WW pathways</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — localised reactive nodes are usually benign; the priorities are generalised, persistent, or hard fixed nodes signalling lymphoma or metastatic cancer. Screen those, work up infective vs malignant, treat, refer and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Lymphadenopathy</span><div class="body"><b>Localised vs generalised</b>, size, consistency, tenderness, mobility, duration; <b>B-symptoms</b> (fever, night sweats, weight loss), site (<b>supraclavicular = high risk</b>). Examine all node groups + liver/spleen.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — red-flag nodes</span><span class="ttl">Lymphoma / metastatic cancer?</span><div class="body"><ul>
+      <li><b>Persistent &gt;6 weeks</b> unexplained, or progressively enlarging</li>
+      <li><b>Hard, fixed, matted, or &gt;2 cm</b></li>
+      <li><b>Supraclavicular</b> node (Virchow's — GI/thoracic malignancy)</li>
+      <li><b>Generalised + B-symptoms / hepatosplenomegaly</b>; child with petechiae/fever → leukaemia (NG12 very urgent FBC)</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">2WW / very urgent FBC</span><div class="body">Suspected lymphoma/leukaemia → <b>very urgent FBC + blood film</b> + haematology pathway. Metastatic node → site-specific 2WW (e.g. supraclavicular → chest/GI; cervical → head &amp; neck).</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — work up cause</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">By pattern</span><div class="body">FBC + film, ESR/CRP, LDH; targeted serology (EBV/CMV, HIV, toxoplasma), CXR (TB/sarcoid/lymphoma); USS ± core biopsy of a persistent node (avoid FNA for ?lymphoma).</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · which category?</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Reactive</div><div class="box ix"><span class="ttl">Commonest</span><div class="body">Local infection (tender, mobile, &lt;2 cm), recent URTI/skin/dental; resolves — safety-net &amp; review.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Infective systemic</div><div class="box ix"><span class="ttl">Investigate</span><div class="body"><b>EBV/CMV</b> (glandular fever), <b>HIV</b>, <b>TB</b>, toxoplasma, syphilis; serology as indicated.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Malignant / other</div><div class="box ix"><span class="ttl">Red flag</span><div class="body"><b>Lymphoma, leukaemia, metastatic carcinoma</b>; also sarcoidosis, connective-tissue disease, drug reaction.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · manage</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — by category</span><span class="ttl">Treat or investigate, don't drift</span><div class="body"><ul>
+      <li><b>Reactive:</b> treat the source (e.g. bacterial infection), reassure, and <b>review in 4–6 weeks</b> with clear safety-netting — most resolve.</li>
+      <li><b>Infective systemic:</b> manage per cause (glandular fever supportive; HIV/TB → relevant pathway + partner/contact tracing).</li>
+      <li><b>Suspected malignancy:</b> urgent referral — <b>excision/core biopsy</b> (not FNA) for tissue diagnosis of lymphoma.</li>
+      <li><b>Unexplained persistent node:</b> don't keep re-reviewing — investigate/refer.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-purple">2WW · NICE NG12</span> unexplained persistent/generalised lymphadenopathy → very urgent FBC + haematology; supraclavicular/hard fixed node → site-specific cancer pathway.</li>
+      <li><span class="pill pill-purple">Haematology</span> abnormal FBC/film, suspected lymphoma/leukaemia (very urgent in children).</li>
+      <li><span class="pill pill-purple">Relevant specialty</span> per cause — ID (HIV/TB), respiratory (sarcoid), ENT/head-and-neck.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Prevention &amp; modifiable factors</span><span class="ttl">Address the source</span><div class="body"><b>Treat and prevent recurrent local infections</b> (skin, dental) · <b>safer-sex advice and HIV testing</b> where relevant · BCG/TB risk and contact tracing for tuberculosis · review medications causing lymphadenopathy (phenytoin, allopurinol) · smoking/alcohol reduction for head-and-neck risk.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Review a presumed reactive node at 4–6 weeks</b> — if it persists, enlarges, hardens or fixes, <b>investigate/refer rather than re-reassure</b>. Return sooner with night sweats, weight loss, fever, or new nodes. A supraclavicular or progressively growing node warrants urgent investigation at any point.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>A supraclavicular node is high-risk</b> and persistent unexplained lymphadenopathy beyond 6 weeks needs urgent investigation — do not keep re-reviewing a hard, fixed or growing node, and use core/excision biopsy (not FNA) when lymphoma is possible.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Lymphoma, Metastatic Cancer &amp; Critical Infections</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Hard, fixed, painless, progressive cervical lymphadenopathy in an adult = malignancy until proven otherwise. Do not watch and wait beyond 6 weeks without investigation or referral.</b></p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Hard / rubbery, non-tender, fixed lymph node &gt;1 cm persisting &gt;6 weeks</b> Lymphoma (Hodgkin's — rubbery, B symptoms; Non-Hodgkin's — variable) or metastatic carcinoma → 2WW haematology / head and neck / relevant cancer pathway. 6-week persistence without clear benign cause = investigation and referral mandatory.</div>
+      <div class="rftile"><b>B symptoms: drenching night sweats + fever + weight loss &gt;10%</b> Classic lymphoma B symptoms — Hodgkin's lymphoma (peak age 20–35 and &gt;55). Night sweats classically drench the bedclothes. 2WW haematology urgently. FBC + LDH + uric acid + blood film. CT chest/abdomen/pelvis for staging.</div>
+      <div class="rftile"><b>Supraclavicular lymphadenopathy (any age, any size)</b> Left supraclavicular node (Virchow's node / Troisier's sign) = gastrointestinal cancer (stomach, pancreas, colon) draining via the thoracic duct. Right supraclavicular = lung, oesophageal cancer. Any supraclavicular node = malignancy until proven otherwise → 2WW relevant cancer pathway immediately.</div>
+      <div class="rftile"><b>Mediastinal mass on CXR + lymphadenopathy</b> Lymphoma (Hodgkin's — mediastinal involvement in 60%), sarcoidosis, thymoma, germ cell tumour. Same-day or urgent haematology. Large mediastinal mass can cause SVC obstruction (facial swelling + arm swelling + dilated neck veins) → 999 + dexamethasone 8 mg.</div>
+      <div class="rftile"><b>Generalised lymphadenopathy + rash + fever + pharyngitis in young adult</b> Primary HIV infection (seroconversion illness) — occurs 2–6 weeks after HIV exposure. Mononucleosis-like syndrome. HIV test urgently (antigen + antibody combined — 4th generation test). Missed HIV seroconversion = delayed diagnosis with consequences for individual and public health.</div>
+      <div class="rftile"><b>Rapidly enlarging node + overlying skin erythema + fever</b> Suppurative lymphadenitis (bacterial — Staphylococcus aureus, group A Streptococcus). Fluctuant = abscess → incision and drainage (OMFS/surgery). Also: cat scratch disease (Bartonella henselae — cat scratch history + regional lymphadenopathy + papule at scratch site). Antibiotics (co-amoxiclav) + surgical drainage if fluctuant.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The 6-week rule for unexplained lymphadenopathy is the most important clinical decision rule in primary care — lymph nodes that are still enlarged at 6 weeks without an identified benign cause have a significantly increased probability of malignancy and require investigation (FBC, blood film, LDH, ESR, urate) and/or referral. This applies even if the node is not hard or fixed — early lymphoma can present with soft, non-tender nodes that resemble reactive lymphadenopathy. Studies of unexplained lymphadenopathy in primary care show that approximately 1% of cases referred to haematology/oncology prove to have lymphoma, but the consequences of missing this diagnosis are severe. Virchow's node (left supraclavicular fossa) is one of the most clinically important examination findings in medicine — it receives lymphatic drainage from abdominal organs via the thoracic duct (which empties into the left subclavian vein). A palpable left supraclavicular node in an adult should trigger urgent investigation for GI malignancy (gastric cancer is the classic association — described by Troisier in 1886). It can also reflect thoracic malignancy (lung cancer, lymphoma). Any supraclavicular node warrants CXR + abdominal USS + FBC as a minimum immediately, followed by appropriate cancer referral. Primary HIV seroconversion is one of the most commonly missed diagnoses in general practice — the mononucleosis-like illness (fever, sore throat, lymphadenopathy, rash, malaise) is indistinguishable clinically from EBV or CMV. Testing for HIV must be offered proactively at the time of this presentation in any patient with risk factors — the seroconversion window is short, viral load is extremely high, and transmission risk is maximal during this period.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Localised vs Generalised — The Primary Branch</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Localised lymphadenopathy</div><div>Single node group enlarged — indicates pathology in the drainage region. Identify the drainage territory (see Step 3). Common causes: reactive (most common — URTI draining to cervical nodes), bacterial lymphadenitis, cat scratch disease, dental abscess (submandibular), scalp infection (occipital), STI (inguinal — chlamydia, syphilis, herpes, LGV), limb infection (axillary/inguinal). Unilateral cervical in adult &gt;40 = head and neck cancer exclusion.</div>
+      <div>Generalised lymphadenopathy</div><div>Two or more non-contiguous node groups enlarged simultaneously. Causes: viral infection (EBV, CMV, HIV, adenovirus, measles, rubella), bacterial (secondary syphilis, Lyme disease, brucellosis, TB), autoimmune (SLE, RA, Sjögren's), malignant (lymphoma — Hodgkin's or NHL, CLL, ALL), drugs (phenytoin, allopurinol, carbamazepine, hydralazine — drug-induced pseudolymphoma). Full systemic examination mandatory.</div>
+      <div>Node characteristics</div><div><b>Tender + soft + mobile:</b> reactive / infective (most common) · <b>Firm + rubbery + mobile:</b> lymphoma (Hodgkin's) · <b>Hard + fixed + non-tender:</b> metastatic carcinoma · <b>Fluctuant + erythematous:</b> suppurative lymphadenitis · <b>Matted + firm:</b> TB lymphadenitis (scrofula) · <b>Violaceous + progressive in child:</b> atypical mycobacteria</div>
+      <div>Key history</div><div>Duration and rate of change · Tender vs non-tender · Night sweats, fever, weight loss (B symptoms) · Recent infection / pharyngitis / dental work (reactive) · Animal exposure (cat scratch, toxoplasma from cat litter, brucella from cattle) · Travel history (TB, leishmaniasis, trypanosomiasis, lymphogranuloma venereum) · Sexual history (STI) · Medication history · HIV risk factors · Occupational exposure</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The distinction between reactive (tender, soft, mobile) and malignant (non-tender, firm/rubbery/hard, fixed, progressive) lymphadenopathy is the most clinically useful bedside distinction — but it has significant limitations. Lymphoma nodes are classically described as "rubbery" (the texture of an eraser) and non-tender. However, Hodgkin's lymphoma nodes can be tender (especially after alcohol intake — Hodgkin's-associated alcohol-induced pain is a rare but pathognomonic symptom), and reactive nodes in a thin patient can feel surprisingly firm. The key principle is that no single characteristic is diagnostic — it is the combination of features (consistency + mobility + tenderness + duration + patient age + associated symptoms) that determines the clinical probability. The alcohol-induced pain in Hodgkin's lymphoma (pain in affected lymph node regions within minutes of drinking alcohol) is one of medicine's most specific symptoms — it is virtually pathognomonic of Hodgkin's lymphoma and should always be asked about when taking the history. The mechanism is thought to involve eosinophil infiltration in Hodgkin's tumour tissue and prostaglandin release triggered by alcohol. Drug-induced pseudolymphoma (phenytoin being the classic example) can cause widespread lymphadenopathy indistinguishable from lymphoma — always perform a thorough medication review in generalised lymphadenopathy. Stopping the offending drug results in resolution within weeks.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Anatomical Location &amp; Differential Diagnoses</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Cervical (anterior / posterior)</div><div>Anterior cervical: dental infection, pharyngitis, tonsillitis, EBV, CMV, head and neck SCC. Posterior cervical: EBV (posterior cervical chain is the hallmark of EBV lymphadenopathy), rubella, toxoplasmosis, scalp infection, lymphoma. Occipital: scalp infection, sebaceous cyst, ringworm. <b>2WW head and neck</b>: any unilateral cervical node &gt;1 cm for &gt;3 weeks in adult ≥40 with no clear infective cause.</div>
+      <div>Submandibular / submental</div><div>Dental abscess, floor of mouth infection, lower lip/tongue SCC. Check dentition and oral cavity in all submandibular lymphadenopathy. Atypical mycobacterial lymphadenitis in children (violaceous skin, non-tender, progressive).</div>
+      <div>Axillary</div><div>Upper limb infection (hand / arm cellulitis, cat scratch — forearm scratch), breast cancer (sentinel node), melanoma (arm), lymphoma. <b>Unilateral axillary node in a woman → breast examination + USS breast ± mammogram (breast cancer exclusion).</b> HIV lymphadenopathy commonly involves axilla.</div>
+      <div>Inguinal</div><div>Lower limb infection (cellulitis, tinea pedis, infected ingrown toenail — always examine the feet), STI (herpes, syphilis primary/secondary, chlamydia — LGV strain, gonorrhoea), anal cancer, penile cancer, vulval cancer. Bilateral inguinal nodes commonly reactive (many people have palpable inguinal nodes normally — up to 2 cm). Unilateral inguinal node &gt;1.5 cm = investigate.</div>
+      <div>Supraclavicular</div><div><b>Any supraclavicular node = cancer until proven otherwise.</b> Left = GI cancer (stomach, pancreas, colon via thoracic duct). Right = lung, oesophageal cancer, lymphoma. Also: lymphoma (both sides), sarcoidosis. → 2WW urgently. CXR first. Never watch and wait a supraclavicular node.</div>
+      <div>Mediastinal (hilar)</div><div>Bilateral hilar lymphadenopathy (BHL): sarcoidosis (most common cause of BHL), lymphoma, TB, primary lung cancer (unilateral), silicosis, EAA. CXR identifies BHL. ACE level + serum calcium (sarcoidosis). Urgent respiratory/haematology referral. Unilateral hilar = lung cancer until proven otherwise → urgent CXR + CT chest.</div>
+      <div>Abdominal / retroperitoneal</div><div>Lymphoma (retroperitoneal mass — "rubber hose" appearance on CT), CLL, metastatic GI cancer, TB. Not palpable unless very large. Identified on CT or USS. CT abdomen/pelvis for staging in known lymphoma. Weight loss + abdominal lymphadenopathy = urgent investigation.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The axillary lymph node in women deserves specific attention — it is a key site for breast cancer sentinel node involvement, and any unilateral axillary lymphadenopathy in a woman without a clear infective cause (no ipsilateral arm or hand infection) warrants urgent breast examination and USS/mammography. Breast cancer presenting as an isolated axillary node without a palpable breast mass (occult primary breast cancer) accounts for approximately 0.3% of all breast cancers but has a reasonable prognosis with appropriate treatment — it should not be delayed. The NICE NG12 (Suspected Cancer) guidelines recommend 2WW breast assessment for any new unilateral axillary node in a woman aged ≥30 without an identifiable infective cause. Inguinal lymphadenopathy requires a full STI risk assessment and a lower limb examination — many GPs examine the groin without examining the feet, missing the infected toe, tinea pedis, or plantar wart that is draining to the inguinal chain. The most common cause of bilateral inguinal lymphadenopathy is reactive nodes from lower limb skin conditions (eczema, psoriasis, chronic tinea) — but unilateral, progressive, or hard inguinal nodes need STI testing and malignancy exclusion. LGV (lymphogranuloma venereum — Chlamydia trachomatis serovars L1–L3) causes massively enlarged, tender, matted inguinal nodes (buboes) — it is increasing in frequency in the UK, particularly in MSM, and requires doxycycline 100 mg BD × 21 days (longer course than standard chlamydia treatment).</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Examination &amp; Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Node examination</div><div>Systematically examine all node groups: pre-auricular, parotid, submandibular, submental, anterior cervical, posterior cervical, occipital, supraclavicular (MANDATORY), axillary, epitrochlear, inguinal, popliteal. For each node: size (measure in cm), consistency (soft/firm/rubbery/hard), mobility (mobile/fixed), tenderness, overlying skin (erythema, fluctuance, sinus). Measure the largest node.</div>
+      <div>Drainage territory examination</div><div>Examine the territory draining to the affected node group: oral cavity + teeth (submandibular/anterior cervical), pharynx + tonsils (anterior cervical), scalp + ears (occipital/posterior auricular), breast (axillary in women), hand + forearm (axillary), feet + leg (inguinal), genitals + perineum (inguinal). Identify the source of drainage before attributing the lymphadenopathy as "reactive."</div>
+      <div>Systemic examination</div><div>Hepatosplenomegaly (lymphoma, CLL, EBV, CMV, portal hypertension — splenomegaly in 20% of Hodgkin's). Rash (EBV rash, secondary syphilis — palms/soles, drug reaction). Fever (measure — temperature &gt;38°C). Weight (calculate 3-month % loss). Joints (RA/SLE arthropathy in generalised lymphadenopathy).</div>
+      <div>First-line investigations</div><div><span class="pill pill-blue">FBC + blood film</span> (lymphocytosis + atypical lymphocytes = EBV/CMV; lymphoblasts = ALL; lymphocytosis with smear cells = CLL; anaemia = haematological malignancy) · <span class="pill pill-blue">ESR + CRP</span> · <span class="pill pill-blue">LDH + uric acid</span> (tumour markers — elevated in high-grade lymphoma) · <span class="pill pill-blue">Paul-Bunnell (Monospot) + EBV serology</span> (cervical + generalised, young adult) · <span class="pill pill-blue">HIV 4th-generation test</span> (offer to all) · <span class="pill pill-blue">CXR</span> (mediastinal nodes, hilar, lung cancer)</div>
+      <div>Second-line investigations</div><div><span class="pill pill-blue">CMV serology</span> (monospot-negative EBV-like illness) · <span class="pill pill-blue">Toxoplasma IgM/IgG</span> (posterior cervical + animal exposure) · <span class="pill pill-blue">Syphilis serology (TPHA + RPR)</span> (inguinal / generalised + STI risk) · <span class="pill pill-blue">IGRA (TB)</span> (travel history, ethnic background, systemic symptoms) · <span class="pill pill-blue">ACE + serum calcium</span> (sarcoidosis + BHL) · <span class="pill pill-blue">ANA + anti-dsDNA</span> (SLE) · <span class="pill pill-blue">USS node ± USS breast/groin</span> · <span class="pill pill-blue">CT chest/abdomen/pelvis</span> (staging — haematology/oncology arranged)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The blood film is one of the most diagnostically rich investigations available in primary care for lymphadenopathy — it should be specifically requested alongside the FBC (not assumed to be automatically performed). A haematologist reviewing the film can identify: atypical lymphocytes (EBV, CMV, drug reaction), smear cells / CLL cells (chronic lymphocytic leukaemia — CLL is the most common leukaemia in the UK and typically presents with bilateral cervical and axillary lymphadenopathy in patients over 60), lymphoblasts (acute lymphoblastic leukaemia — paediatric emergency), Reed-Sternberg cells (rarely seen on a film in Hodgkin's — diagnosis requires lymph node biopsy), and the monocytosis of CMV. LDH (lactate dehydrogenase) is the most important biochemical marker of lymphoma — it reflects tumour bulk and cellular turnover. An elevated LDH in a patient with lymphadenopathy is a key indicator that haematological malignancy needs urgent evaluation. The International Prognostic Index (IPI) for lymphoma includes LDH as one of its five prognostic factors. The Monospot test (Paul-Bunnell heterophile antibody test) is positive in 80–90% of EBV infectious mononucleosis cases but may be negative in the first week and in young children — if clinical suspicion is high, request EBV-specific serology (VCA IgM — acute infection; VCA IgG + EBNA — past infection).</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="REFER" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">Same-day hospital</span></div><div>Mediastinal mass + SVC obstruction (facial/arm swelling + dilated veins) → 999 + dexamethasone 8 mg · Lymphadenopathy + severe pancytopenia (FBC: Hb &lt;70, neutrophils &lt;1.0, platelets &lt;50) — haematological emergency · Lymphadenopathy + airway compromise from large neck/mediastinal mass → 999</div>
+      <div><span class="pill pill-purple">2WW haematology</span></div><div>Unexplained lymphadenopathy &gt;1 cm persisting &gt;6 weeks with no infective cause · B symptoms (night sweats + fever + weight loss) + any lymphadenopathy · Elevated LDH or uric acid + lymphadenopathy · Blood film: lymphoblasts (ALL) or significant lymphocytosis</div>
+      <div><span class="pill pill-purple">2WW head &amp; neck</span></div><div>Unilateral cervical lymphadenopathy &gt;1 cm, &gt;3 weeks, adult ≥40, no clear infective cause · Any cervical lymphadenopathy + dysphagia or hoarse voice (laryngeal/hypopharyngeal cancer) · Cervical node + oral ulcer not healing 3 weeks</div>
+      <div><span class="pill pill-purple">2WW breast</span></div><div>Unilateral axillary lymphadenopathy in a woman ≥30 with no infective cause · Any axillary lymphadenopathy + breast lump or skin change</div>
+      <div>Urgent GP referral (within 2 weeks)</div><div>Supraclavicular lymphadenopathy (any size, any side) → 2WW relevant cancer pathway (CXR first — right = 2WW lung; left = urgent upper GI; lymphoma features = 2WW haematology) · Isolated inguinal lymphadenopathy without STI or lower limb source in adult ≥40</div>
+      <div>GUM / STI clinic</div><div>Inguinal lymphadenopathy + STI risk → gonorrhoea/chlamydia NAAT + syphilis serology + HIV test · LGV suspected (massive tender inguinal buboes in MSM) → doxycycline 100 mg BD × 21 days + GUM referral</div>
+      <div>Respiratory / rheumatology</div><div>Bilateral hilar lymphadenopathy + sarcoidosis features (ACE elevated, hypercalcaemia, uveitis, skin lesions) → urgent respiratory · Generalised lymphadenopathy + positive ANA + arthritis → rheumatology (SLE, adult Still's, RA)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The 6-week watch-and-wait period for cervical lymphadenopathy in adults is often cited but is increasingly being challenged in clinical practice — NICE NG12 specifies 3 weeks for head and neck 2WW referral in patients ≥40 with unexplained cervical lymphadenopathy. The 6-week period is appropriate for younger patients with clear reactive/infective features where spontaneous resolution is expected, but in patients aged ≥40 (higher prior probability of malignancy), ≥50 (smoking or alcohol history), or with any concerning features (hardness, fixation, progressive growth), 3 weeks is the appropriate threshold. The practical management is: at the first consultation, if features are clearly reactive (tender, soft, associated URTI, young patient) → watchful waiting with review at 4–6 weeks and blood tests. At the review — if not resolving → FBC + LDH + ESR + monospot + HIV test + USS, and 2WW referral if still unexplained. If any concerning features at first presentation (hard, fixed, non-tender, patient ≥40, B symptoms) → investigate and refer at the same visit. Lymph node biopsy (excision biopsy or core needle biopsy) is always performed by the specialist — it should never be attempted in primary care. The approach to biopsy is: USS-guided core needle biopsy first for accessible nodes (avoids general anaesthesia), proceeding to excision biopsy if core biopsy is non-diagnostic or insufficient tissue. Fine-needle aspiration (FNA) cytology alone is insufficient for lymphoma diagnosis — it cannot provide the architectural information needed for classification.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="TREAT" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>GP-Initiated Treatment for Infectious Causes</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">EBV (infectious mononucleosis)</div>
+        <div class="b-drug">Supportive — paracetamol + ibuprofen</div>
+        <div class="b-note">No specific antiviral treatment. Bed rest + adequate hydration. Avoid amoxicillin and ampicillin — 80–100% develop maculopapular rash with EBV. Corticosteroids (prednisolone 40 mg OD × 5 days) only if: severe oropharyngeal oedema threatening airway, thrombocytopenia, haemolytic anaemia, neurological complications. Contact sport restriction for 4–6 weeks (splenomegaly — splenic rupture risk). Return if worsening dysphagia, respiratory compromise, or neurological signs (EBV encephalitis).</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Bacterial lymphadenitis</div>
+        <div class="b-drug">Co-amoxiclav 625 mg TDS × 7 days</div>
+        <div class="b-note">Covers S. aureus, streptococci, anaerobes (dental source). Flucloxacillin 500 mg QDS if clearly staphylococcal (post-skin infection). Fluctuant node = abscess → same-day surgical incision and drainage (do NOT prescribe antibiotics alone for abscess). Review at 5 days — not responding → USS node + blood cultures + hospital assessment.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Cat scratch disease</div>
+        <div class="b-drug">Azithromycin 500 mg day 1, 250 mg days 2–5</div>
+        <div class="b-note">Bartonella henselae. Typically resolves spontaneously in 2–4 months (self-limiting). Azithromycin shortens duration in immunocompetent patients (modest benefit). Avoid node aspiration (sinus may form). Immunocompromised patients (HIV, transplant): disseminated bartonellosis — IV azithromycin or doxycycline + rifampicin (specialist).</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Toxoplasmosis</span><span class="rt">In immunocompetent patients: self-limiting — symptomatic treatment only (paracetamol). Resolves in 1–2 months. Specific treatment (pyrimethamine + sulfadiazine + folinic acid) only for: immunocompromised patients, pregnant women (vertical transmission risk — refer to obstetrics urgently), ocular toxoplasmosis (ophthalmology). Primary prevention: avoid eating undercooked meat, handle cat litter with gloves.</span></div>
+      <div class="rung"><span class="rn">TB lymphadenitis (scrofula)</span><span class="rt">Refer to respiratory/infectious diseases for RNTBC (Rifampicin, Isoniazid, Pyrazinamide, Ethambutol — RIPE × 2 months, then Rifampicin + Isoniazid × 4 months). Notify UKHSA (TB is notifiable). Contact tracing (Public Health team). Do NOT attempt aspiration or surgical excision of TB node in primary care — sinus formation risk and release of infectious material.</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The amoxicillin rash in EBV is one of the most important drug-disease interactions in primary care — if a patient with EBV infectious mononucleosis (or any active herpesvirus infection) is given amoxicillin or ampicillin, they develop a widespread maculopapular rash in 80–100% of cases. This rash is not a true penicillin allergy — it is a T-cell mediated reaction specific to the combination of the aminopenicillin and the EBV-altered immune state. Patients who have this reaction are NOT penicillin-allergic and should not be labelled as such in their records. The rash typically appears 5–10 days after starting amoxicillin. This matters because many patients with EBV present with a very sore throat — GPs must resist prescribing amoxicillin for the pharyngitis component without first excluding EBV (Monospot test in clinical practice — accepting the false negative rate in the first week). If antibiotics are genuinely needed for concurrent bacterial tonsillitis in EBV, use phenoxymethylpenicillin (penicillin V) rather than amoxicillin. Contact sport restriction in EBV splenomegaly is evidence-based — the spleen is enlarged in approximately 50% of EBV cases, and splenic rupture (spontaneous or traumatic) is the most dangerous acute complication, with mortality of approximately 1%. The restriction should be for 4–6 weeks after symptom onset, or until USS confirms normal spleen size. This is particularly important for young athletes and must be documented in the clinical records.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Autoimmune &amp; Drug-Induced Lymphadenopathy</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Drug-induced pseudolymphoma</div><div>Stop the implicated drug — phenytoin (most classic), carbamazepine, allopurinol, hydralazine, captopril, gold, primidone. Lymphadenopathy resolves within 4–8 weeks of stopping. If persistent after drug cessation → lymph node biopsy to exclude co-existing lymphoma (rare association between phenytoin use and true lymphoma). Document drug allergy and alternative agents.</div>
+      <div>SLE-associated lymphadenopathy</div><div>Treat underlying SLE (hydroxychloroquine ± low-dose prednisolone for active disease). Rheumatology to manage. Lymphadenopathy reflects disease activity — reduces with disease control. SLE also increases lymphoma risk (2–7-fold) — persistently enlarged, non-tender nodes in SLE need specialist biopsy consideration.</div>
+      <div>Sarcoidosis</div><div>Lofgren's syndrome (bilateral hilar lymphadenopathy + erythema nodosum + ankle arthritis) — 90% resolve spontaneously without treatment. Monitor with serial CXR and spirometry. Systemic/progressive sarcoidosis: prednisolone 30–40 mg OD × 4–6 weeks, taper over 12 months (respiratory/rheumatology). Steroid-sparing: methotrexate or hydroxychloroquine.</div>
+      <div>Reactive lymphadenopathy (confirmed benign)</div><div>No pharmacological treatment required. Reassurance + review plan. Antibiotic prescription is inappropriate for confirmed viral reactive lymphadenopathy — document this conversation in the records. Written safety-net instructions: return if node enlarges, becomes hard/fixed, or persists beyond 6 weeks. Confirm review appointment.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Drug-induced pseudolymphoma from phenytoin is historically important and clinically relevant — patients on long-term phenytoin can develop widespread lymphadenopathy, fever, skin rash, and even hepatosplenomegaly that is histologically indistinguishable from lymphoma on biopsy (follicular hyperplasia). The key feature that distinguishes pseudolymphoma from true lymphoma is complete resolution on drug cessation. Confusingly, there is a well-documented association between phenytoin use and an increased incidence of true Hodgkin's and non-Hodgkin's lymphoma — so any patient who develops lymphadenopathy while on phenytoin requires the drug to be stopped AND lymphoma to be excluded if the lymphadenopathy does not resolve. Sarcoidosis with bilateral hilar lymphadenopathy warrants a brief explanation for trainees: the bilateral hilar pattern on CXR is symmetric, with node enlargement at the hilum (where the bronchi and pulmonary vessels enter the lung) bilaterally. It must be distinguished from: unilateral hilar (lung cancer, more common on the right), lymphoma hilar (often asymmetric + mediastinal involvement), and TB hilar (usually with paratracheal involvement and calcification in old disease). The classic sarcoidosis presentation (Lofgren's syndrome) in a young woman with erythema nodosum and ankle arthritis has a 95% specificity for sarcoidosis — tissue biopsy is not required when this clinical triad is present.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Patient Education, Prevention &amp; Wellbeing</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>EBV recovery — rest and activity</b> Fatigue after EBV can persist for 3–6 months (post-viral fatigue). Graded return to activity — avoid rushing back to full activity. Adequate sleep, balanced diet. Contact sport avoidance for 4–6 weeks (splenomegaly — splenic rupture). Most young patients recover fully within 3 months. Persistent fatigue beyond 3 months → post-EBV fatigue syndrome (PVFS) assessment.</div>
+      <div class="lstile"><b>HIV prevention (PrEP)</b> If HIV risk identified during lymphadenopathy assessment → discuss PrEP (tenofovir/emtricitabine) for at-risk patients. Available free on NHS via GUM / online sexual health services. U=U: undetectable HIV on treatment = untransmittable. Condom use. Regular HIV testing (annually for MSM, more frequently if changing partners). Normalise HIV testing as routine healthcare.</div>
+      <div class="lstile"><b>TB prevention — BCG and screening</b> TB is a notifiable disease — all confirmed TB contacts offered IGRA testing and chemoprophylaxis if IGRA positive + not active TB (isoniazid 6 months or isoniazid + rifampicin 3 months). BCG for unvaccinated children born in high-prevalence areas. New entrant TB screening (NHS). Latent TB treatment prevents 60–90% of subsequent active TB.</div>
+      <div class="lstile"><b>Cancer awareness</b> Teach lymph node self-examination: gently palpate neck, axillae, groin monthly. Report promptly: any node &gt;1 cm persisting &gt;3 weeks, non-tender, hard, or growing. Smokers: head and neck cancer risk — smoking cessation (cervical lymphadenopathy + smoking = SCC until proven otherwise). Alcohol: head and neck cancer risk reduction with moderation.</div>
+      <div class="lstile"><b>STI prevention (inguinal lymphadenopathy)</b> Condom use for all STIs. HPV vaccination (Gardasil 9 — NHS schedule up to 25, GUM for MSM up to 45). Regular STI screening (annually or with each new partner). LGV in MSM: doxycycline prophylaxis under specialist guidance if high-risk MSM (off-label doxycycline PEP for STI prevention — evolving evidence).</div>
+      <div class="lstile"><b>Animal exposure (zoonotic infections)</b> Cat scratch disease prevention: wash cat scratches immediately with soap and water. Toxoplasma prevention: cook meat to ≥70°C, wear gloves for gardening and cat litter. Brucella: avoid unpasteurised dairy in endemic areas. Lyme disease: tick precautions (long sleeves, insect repellent, prompt tick removal) in endemic areas (New Forest, Lake District, Scottish Highlands).</div>
+      <div class="lstile"><b>Psychological support — lymphoma diagnosis anxiety</b> Waiting for lymphoma biopsy results is one of the most anxiety-provoking experiences for patients. Acknowledge the uncertainty explicitly: "I know waiting for these results is very difficult — I'll make sure you get your result within [timeframe]." Set a clear result communication plan at the time of referral. Macmillan Cancer Support (0808 808 0000) offers pre-diagnosis support. Document safety-net review appointment.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Post-EBV fatigue (post-viral fatigue syndrome following infectious mononucleosis) affects approximately 10–15% of patients at 6 months and 5% at 12 months — it is the most common cause of prolonged fatigue in young adults and is one of the proposed triggers of ME/CFS (myalgic encephalomyelitis/chronic fatigue syndrome) in genetically susceptible individuals. NICE NG206 (ME/CFS, 2021) guidance applies to post-viral fatigue states — the previous advice to "gradually increase exercise" (graded exercise therapy) has been removed from NICE guidance, replaced by an energy management approach (pacing, avoiding post-exertional malaise). GPs should not advise patients with post-EBV fatigue to push through tiredness or increase activity beyond their energy envelope. The anxiety associated with unexplained lymphadenopathy waiting for biopsy results is clinically significant — studies show that the period between GP referral and biopsy result is associated with high rates of anxiety, depression, and impact on work and relationships. Setting a clear, specific communication plan at the time of referral ("I'll ring you personally with the result" or "the results clinic is on [date]") significantly reduces anxiety and improves the doctor-patient relationship. This is an RCGP SCA-assessed communication competency — the ability to explain investigation plans, timescales, and safety-net while managing uncertainty is a core GP competency.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Reactive lymphadenopathy — 4–6 weeks</div><div>Review appointment booked at time of diagnosis. Reassess at 4–6 weeks: resolving? Measure node size at both visits. If not resolving by 6 weeks → FBC + blood film + LDH + ESR + USS node + 2WW referral. Do not give a further antibiotic course without objective reassessment.</div>
+      <div>EBV — 4 weeks + 3 months</div><div>Clinical review at 4 weeks (resolution of lymphadenopathy, fatigue improving, returned to activity?). FBC at 4 weeks if still fatigued (atypical lymphocytosis resolved?). If fatigue persisting at 3 months → post-EBV fatigue assessment (exclude thyroid, anaemia, depression). Contact sport restriction until USS confirms normal spleen.</div>
+      <div>Blood test results — 1 week</div><div>All blood tests in persistent lymphadenopathy reviewed within 1 week. Any abnormality (elevated LDH, lymphocytosis, atypical cells on film) → escalate immediately. Do not wait for an already-booked routine review if blood tests show urgent abnormalities.</div>
+      <div>Post-2WW / specialist referral</div><div>Confirm appointment received. If lymphoma confirmed: GP co-management role — toxicity management during chemotherapy (CHOP, ABVD), blood count monitoring, infection risk education, neutropenic sepsis management (GP prescription of G-CSF, IV antibiotics for febrile neutropenia). Macmillan GP facilitation.</div>
+      <div>CLL (long-term watchful waiting)</div><div>Early CLL (Binet Stage A) is managed with watchful waiting — GP monitors FBC every 3–6 months and refers back to haematology if: lymphocyte doubling time &lt;6 months, progressive lymphadenopathy, B symptoms, cytopenias, or transformation (Richter's syndrome — aggressive lymphoma transformation). Patient education: neutropenic sepsis awareness, vaccination schedule (avoid live vaccines on treatment).</div>
+      <div><span class="pill pill-red">999 / same-day safety-net</span></div><div>New SVC obstruction signs (face + arm swelling + distended veins) during watchful waiting · Airway compromise from rapidly enlarging cervical/mediastinal mass · Severe pancytopenia symptoms (bruising, bleeding, infection) · Febrile neutropenia in patient on lymphoma chemotherapy (temperature ≥38°C → 999 / haematology hotline)</div>
+      <div><span class="pill pill-amber">Same-day GP / urgent</span></div><div>Node rapidly enlarging beyond measured baseline · New B symptoms during watchful waiting · New neurological symptoms (CNS lymphoma — headache, cranial nerve palsy) · New hepatosplenomegaly at review · Any deterioration in general condition during watchful waiting period</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Febrile neutropenia in lymphoma chemotherapy patients is one of the most important emergencies that GPs will encounter in patients with haematological malignancy. The standard definition is: temperature ≥38°C AND neutrophil count &lt;1.0 × 10⁹/L (or expected to be, given chemotherapy timing). Febrile neutropenia is a medical emergency with a mortality of 5–10% even with treatment — patients must call the haematology 24-hour hotline number or attend A&E for IV antibiotics (typically piperacillin-tazobactam 4.5 g IV) within 1 hour of temperature onset, not the GP. Every patient commencing lymphoma chemotherapy should receive a "chemotherapy alert card" — GPs should ensure this is in the patient's records and that the practice knows to advise the patient to call 999 or the haematology hotline for any temperature ≥38°C. CLL watchful waiting monitoring is a significant primary care responsibility — many patients with Stage A CLL are monitored entirely in primary care (after diagnosis and initial staging). The key parameters to monitor are: lymphocyte count trajectory (doubling time &lt;6 months = progression = haematology referral), haemoglobin and platelet count (autoimmune cytopenias common in CLL), lymph node size, and constitutional symptoms. Regular FBC every 3 months with comparison to baseline is the surveillance tool.</div></div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE NG12 (Suspected Cancer 2023), NICE NG52 (Non-Hodgkin's Lymphoma), NICE NG12 (Hodgkin lymphoma 2WW), British Society of Haematology (BSH) CLL guidelines 2018, BASHH LGV guidelines, BHIVA HIV testing guidelines, UKHSA TB guidelines, Swerdlow et al. WHO Classification of Lymphoid Neoplasms 2022. Always adapt to individual patient context.
+</div>
+
+<script>
+(function(){
+  const STORE='rgp.alg.lymphadenopathy.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true;});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

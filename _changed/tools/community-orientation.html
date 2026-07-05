@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Community Orientation · GP / SCA Clinical Reasoning Tool</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=27" />
+<style>
+  .tool-page{ padding:0; }
+  .panel{ padding:28px 32px 80px; max-width:1080px; margin:0 auto; }
+  @media (max-width:760px){ .panel{ padding:18px 14px 60px; } }
+  .tool-breadcrumb{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);margin-bottom:18px}
+  .tool-breadcrumb a{color:var(--teal-2);text-decoration:none;font-weight:600}
+  .tool-breadcrumb a:hover{color:var(--rust)}
+  .tool-breadcrumb svg{width:11px;height:11px;color:var(--muted-2)}
+  .tool-head{padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:20px}
+  .tool-head .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .tool-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(1.7rem,3.2vw,2.4rem);line-height:1.1;margin-top:8px}
+  .tool-head h1 em{font-style:italic;color:var(--teal)}
+  .tool-head p{color:var(--ink-2);font-size:14.5px;line-height:1.6;max-width:78ch;margin-top:8px}
+
+  .co-filter{ display:flex; gap:8px; flex-wrap:wrap; margin:4px 0 20px; }
+  .co-chip{ font:inherit; font-size:12.5px; font-weight:600; padding:7px 13px; border-radius:99px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; transition:.13s; }
+  .co-chip:hover{ border-color:var(--teal); color:var(--teal); }
+  .co-chip.on{ background:var(--teal); border-color:var(--teal); color:#fff; }
+
+  .co-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:15px; }
+  .co-card{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 17px 15px; border-left-width:5px; display:flex; flex-direction:column; gap:8px; }
+  .co-card .co-grp{ font-size:10.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; }
+  .co-card h3{ font-size:15.5px; margin:0; line-height:1.25; letter-spacing:-.01em; font-family:'Source Serif 4',Georgia,serif; font-weight:600; }
+  .co-card .co-what{ font-size:13.2px; color:var(--ink); line-height:1.58; }
+  .co-card .co-refer{ font-size:12.4px; color:var(--ink-2); line-height:1.5; background:var(--surface-2); border-radius:8px; padding:8px 11px; }
+  .co-card .co-refer b{ color:var(--ink); }
+
+  .footer-disclaimer{ margin-top:30px; font-size:12.5px; line-height:1.6; color:var(--ink-2); background:var(--surface-2); border:1px solid var(--line); border-radius:12px; padding:16px 18px; }
+  .footer-disclaimer strong{ color:var(--ink); }
+</style>
+</head>
+<body>
+<button class="sb-toggle" aria-label="Open menu">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-admin"></aside>
+  <main class="main">
+    <div class="tool-page">
+      <div class="panel">
+
+        <div class="tool-breadcrumb">
+          <a href="../index.html">Reasoning GP</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+          <a href="gp-admin.html">GP Admin</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+          <span style="color:var(--ink-2)">Community orientation</span>
+        </div>
+
+        <header class="tool-head" data-screen-label="Community orientation head">
+          <span class="eyebrow">Reasoning Tool · The team around the patient</span>
+          <h1>Community orientation — <em>who's who in the community team</em></h1>
+          <p>General practice works through a wide multidisciplinary team. Knowing each role — what they do and when to involve them — is a core RCGP capability and a frequent SCA theme. Each card describes the role and when to refer or work with them.</p>
+        </header>
+
+        <div class="co-filter" id="coFilter"></div>
+        <div class="co-grid" id="coGrid"></div>
+
+        <div class="footer-disclaimer">
+          <strong>Educational use only.</strong> Team structures, titles and referral routes vary widely by practice, PCN, ICB and UK nation. Check your local directory of services, PCN roles (ARRS) and community provider arrangements for exact pathways.
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+window.COMMUNITY_ROLES = [
+  /* ---- Practice / PCN team ---- */
+  { grp:'Practice & PCN team', col:'#2563eb', name:'Practice nurses',
+    what:'Surgery-based nurses delivering chronic-disease management, immunisations, wound care, cervical screening, travel health, contraception and health promotion.',
+    refer:'<b>Work with:</b> chronic-disease reviews (diabetes, asthma/COPD, hypertension), vaccinations, dressings, smears and lifestyle support.' },
+
+  { grp:'Practice & PCN team', col:'#2563eb', name:'Advanced nurse practitioners (ANP)',
+    what:'Experienced nurses with advanced training who can assess, diagnose, prescribe and manage undifferentiated presentations, often running their own clinics.',
+    refer:'<b>Work with:</b> same-day/acute presentations, minor illness, and autonomous management within competence.' },
+
+  { grp:'Practice & PCN team', col:'#2563eb', name:'Clinical pharmacist',
+    what:'Practice/PCN-based pharmacist leading structured medication reviews, polypharmacy and deprescribing, monitoring, and medicines queries.',
+    refer:'<b>Refer for:</b> SMRs, complex polypharmacy, high-risk drug monitoring, post-discharge reconciliation and medicines optimisation.' },
+
+  { grp:'Practice & PCN team', col:'#2563eb', name:'Physician associate (PA)',
+    what:'A dependent practitioner trained in the medical model who assesses and manages patients under GP supervision (cannot currently prescribe).',
+    refer:'<b>Work with:</b> assessment of acute and chronic problems within an agreed scope, with GP oversight.' },
+
+  { grp:'Practice & PCN team', col:'#2563eb', name:'First-contact physiotherapist (FCP)',
+    what:'A musculoskeletal specialist patients can see directly for MSK problems without seeing the GP first; assesses, advises, and refers on.',
+    refer:'<b>Refer for:</b> back/neck pain, joint and soft-tissue problems, suspected MSK conditions needing assessment or rehab.' },
+
+  { grp:'Practice & PCN team', col:'#2563eb', name:'Care coordinator',
+    what:'A PCN role that helps patients (often complex, frail or with long-term conditions) navigate services, organise reviews and connect health and social care.',
+    refer:'<b>Refer for:</b> coordinating care for complex/frail patients, personalised care planning, and joining up appointments and services.' },
+
+  { grp:'Practice & PCN team', col:'#2563eb', name:'Health & wellbeing coach',
+    what:'Supports people to build knowledge, skills and confidence to manage their own health (self-management), often for long-term conditions or lifestyle change.',
+    refer:'<b>Refer for:</b> motivation/behaviour change, self-management support, and goal-focused lifestyle work.' },
+
+  /* ---- Personalised care ---- */
+  { grp:'Personalised care', col:'#0d9488', name:'Social prescriber (link worker)',
+    what:'Connects patients to non-clinical community support for the social causes of poor health — isolation, debt, housing, bereavement, low activity.',
+    refer:'<b>Refer for:</b> loneliness/isolation, low-level mental health, financial/housing/employment stress, and people who would benefit from community activities rather than (or alongside) medical care.' },
+
+  { grp:'Personalised care', col:'#0d9488', name:'Social care / social services',
+    what:'Local-authority service assessing and providing support for daily living, safeguarding, care packages, equipment and care-home placement.',
+    refer:'<b>Refer for:</b> care needs assessment, carer support, safeguarding concerns (adults/children), home adaptations and packages of care.' },
+
+  { grp:'Personalised care', col:'#0d9488', name:'Occupational therapist (OT)',
+    what:'Helps people stay independent and safe in daily activities through assessment, equipment, adaptations and rehabilitation.',
+    refer:'<b>Refer for:</b> falls risk, function/independence concerns, equipment and home adaptations, post-illness rehabilitation.' },
+
+  /* ---- Community nursing ---- */
+  { grp:'Community nursing', col:'#7c3aed', name:'District nurses',
+    what:'Registered nurses providing skilled nursing care to housebound and end-of-life patients in their own homes — wound care, catheters, injections, palliative support.',
+    refer:'<b>Refer for:</b> housebound patients needing dressings, catheter care, injections (e.g. B12), palliative nursing and syringe drivers.' },
+
+  { grp:'Community nursing', col:'#7c3aed', name:'Community nurses / community matrons',
+    what:'Nurses (including specialist community matrons) managing complex long-term conditions and frailty in the community to prevent admissions.',
+    refer:'<b>Refer for:</b> case management of complex/frail patients, admission-avoidance and proactive long-term-condition support at home.' },
+
+  { grp:'Community nursing', col:'#7c3aed', name:'Health visitors',
+    what:'Specialist community public-health nurses leading the Healthy Child Programme for under-5s and their families.',
+    refer:'<b>Work with:</b> child development and feeding, postnatal maternal mental health, parenting support and early safeguarding concerns.' },
+
+  { grp:'Community nursing', col:'#7c3aed', name:'Community midwives',
+    what:'Provide antenatal and postnatal care in the community for women and birthing people and their babies.',
+    refer:'<b>Work with:</b> antenatal/postnatal care, pregnancy concerns, and the early postnatal period.' },
+
+  /* ---- Palliative & end of life ---- */
+  { grp:'Palliative & end of life', col:'#b45309', name:'Specialist palliative care team',
+    what:'Multidisciplinary team (consultants, clinical nurse specialists) providing expert symptom control and support for complex palliative needs, in the community or hospice.',
+    refer:'<b>Refer for:</b> complex symptom control, difficult pain, psychological/spiritual distress, and complex end-of-life planning.' },
+
+  { grp:'Palliative & end of life', col:'#b45309', name:'Hospice',
+    what:'Provides specialist inpatient, day and community palliative care, respite and bereavement support — free at the point of use, often charity-funded.',
+    refer:'<b>Refer for:</b> complex symptom management, end-of-life inpatient care, respite, day services and family/bereavement support.' },
+
+  { grp:'Palliative & end of life', col:'#b45309', name:'Macmillan / specialist cancer nurses',
+    what:'Clinical nurse specialists supporting people affected by cancer — information, symptom and treatment support, and signposting to financial and emotional help.',
+    refer:'<b>Refer/signpost for:</b> cancer information and support, holistic needs, benefits advice and emotional support after diagnosis.' },
+
+  /* ---- Mental health & wider ---- */
+  { grp:'Mental health & wider', col:'#be185d', name:'NHS Talking Therapies (IAPT)',
+    what:'Self-referral psychological therapy service for common mental health problems (depression, anxiety) using guided self-help and CBT.',
+    refer:'<b>Refer/signpost for:</b> mild-to-moderate depression and anxiety; patients can self-refer directly.' },
+
+  { grp:'Mental health & wider', col:'#be185d', name:'Community mental health team (CMHT)',
+    what:'Multidisciplinary secondary-care team (psychiatrists, CPNs, psychologists) managing moderate-to-severe and complex mental illness in the community.',
+    refer:'<b>Refer for:</b> severe/complex mental illness, significant risk, psychosis, or treatment-resistant cases; crisis team for emergencies.' },
+
+  { grp:'Mental health & wider', col:'#be185d', name:'Community pharmacy',
+    what:'High-street pharmacists offering advice, the Pharmacy First service for common conditions, emergency supply, and medicines support.',
+    refer:'<b>Signpost for:</b> minor ailments (Pharmacy First), medicines queries, emergency supply, and adherence support.' },
+
+  /* ---- Specialist community teams ---- */
+  { grp:'Specialist community teams', col:'#0891b2', name:'Community heart failure team',
+    what:'Specialist HF nurses managing patients with chronic heart failure at home — titrating prescribed therapy, monitoring and educating to keep patients stable and out of hospital.',
+    refer:'<b>Refer for:</b> newly diagnosed HFrEF needing titration, decompensation/oedema, recurrent admissions, and end-of-life HF support.' },
+
+  { grp:'Specialist community teams', col:'#0891b2', name:'Community diabetes team',
+    what:'Specialist diabetes nurses and dietitians supporting complex diabetes in the community — insulin initiation/adjustment, structured education and target-setting.',
+    refer:'<b>Refer for:</b> insulin/GLP-1 initiation, poor control despite optimisation, recurrent hypos, pregnancy planning and structured education (e.g. DAFNE/DESMOND).' },
+
+  { grp:'Specialist community teams', col:'#0891b2', name:'Community respiratory team',
+    what:'Specialist respiratory nurses/physiotherapists managing COPD and other chronic lung disease at home — including pulmonary rehab, oxygen assessment and rescue planning.',
+    refer:'<b>Refer for:</b> frequent COPD exacerbations, pulmonary rehabilitation, home oxygen assessment, inhaler technique and self-management plans.' },
+
+  { grp:'Specialist community teams', col:'#0891b2', name:'Admission avoidance / virtual ward',
+    what:'Rapid-response and "hospital at home" services delivering acute-level care in the community (IV therapy, monitoring, remote observations) to prevent or shorten admission.',
+    refer:'<b>Refer for:</b> acutely unwell patients who could be managed at home with intensive support, early supported discharge, and frailty crises.' },
+
+  { grp:'Specialist community teams', col:'#0891b2', name:'Community / intermediate care & reablement',
+    what:'Short-term multidisciplinary support (therapy, nursing, care) to help people recover function after illness or admission and regain independence at home.',
+    refer:'<b>Refer for:</b> post-illness/post-admission rehabilitation, preventing readmission, and avoiding premature long-term care placement.' },
+
+  { grp:'Specialist community teams', col:'#0891b2', name:'Community geriatrics / frailty team',
+    what:'Geriatrician-led multidisciplinary team providing comprehensive geriatric assessment for frail older people in the community and care homes.',
+    refer:'<b>Refer for:</b> complex frailty, falls, polypharmacy, delirium/cognitive concerns, and proactive care-home support.' },
+
+  { grp:'Specialist community teams', col:'#0891b2', name:'Falls prevention service',
+    what:'Multidisciplinary service assessing and reducing falls risk — strength and balance programmes, medication review, bone health and home-hazard assessment.',
+    refer:'<b>Refer for:</b> recurrent falls, gait/balance problems, fear of falling, and fracture-risk reduction.' },
+
+  /* ---- Children & young people ---- */
+  { grp:'Children & young people', col:'#16a34a', name:'Community paediatrics',
+    what:'Consultant-led service assessing and managing children\u2019s development, behaviour, disability and complex needs outside the acute hospital (neurodevelopment, safeguarding medicals, looked-after children).',
+    refer:'<b>Refer for:</b> developmental delay, suspected neurodisability (cerebral palsy), complex behaviour, and child-health concerns not needing acute care.' },
+
+  { grp:'Children & young people', col:'#16a34a', name:'Early intervention team (children)',
+    what:'Multidisciplinary early-years support (therapists, portage, specialist health visitors) for children with developmental delay or disability and their families.',
+    refer:'<b>Refer for:</b> early developmental concerns, support for disability/SEND, and coordinated early-years input.' },
+
+  { grp:'Children & young people', col:'#16a34a', name:'CAMHS',
+    what:'Child and Adolescent Mental Health Services — specialist assessment and treatment of moderate-to-severe mental health problems in under-18s.',
+    refer:'<b>Refer for:</b> significant depression/anxiety, self-harm/risk, eating disorders, psychosis, and neurodevelopmental assessment (ASD/ADHD) per local pathway.' },
+
+  { grp:'Children & young people', col:'#16a34a', name:'School nursing',
+    what:'Public-health nurses for school-age children — health promotion, immunisations, safeguarding and supporting children with medical needs in school.',
+    refer:'<b>Work with:</b> school-age health and wellbeing, continence, emotional health, and safeguarding concerns.' },
+
+  /* ---- Specialist early intervention (adult MH) ---- */
+  { grp:'Mental health & wider', col:'#be185d', name:'Early intervention in psychosis (EIP)',
+    what:'Specialist team for people experiencing a first episode of psychosis (typically 14\u201365), providing rapid assessment and intensive support to improve long-term outcomes.',
+    refer:'<b>Refer urgently for:</b> suspected first-episode psychosis or at-risk mental state \u2014 early referral improves prognosis.' }
+];
+</script>
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+<script>
+(function(){
+  var T = window.COMMUNITY_ROLES || [];
+  var grid = document.getElementById('coGrid'), filter = document.getElementById('coFilter');
+  function esc(s){ return String(s==null?'':s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
+  var groups = ['All'].concat(T.map(function(t){return t.grp;}).filter(function(v,i,a){return a.indexOf(v)===i;}));
+  var state = 'All';
+  groups.forEach(function(g){
+    var b=document.createElement('button'); b.className='co-chip'+(g==='All'?' on':''); b.textContent=g; b.dataset.g=g;
+    b.addEventListener('click', function(){ state=g; filter.querySelectorAll('.co-chip').forEach(function(x){x.classList.toggle('on',x.dataset.g===g);}); render(); });
+    filter.appendChild(b);
+  });
+  function render(){
+    var rows = T.filter(function(t){ return state==='All' || t.grp===state; });
+    grid.innerHTML = rows.map(function(t){
+      return '<div class="co-card" style="border-left-color:'+t.col+'">'+
+        '<div class="co-grp" style="color:'+t.col+'">'+esc(t.grp)+'</div>'+
+        '<h3>'+esc(t.name)+'</h3>'+
+        '<div class="co-what">'+esc(t.what)+'</div>'+
+        (t.refer?'<div class="co-refer">'+t.refer+'</div>':'')+
+      '</div>';
+    }).join('');
+  }
+  render();
+})();
+</script>
+</body>
+</html>

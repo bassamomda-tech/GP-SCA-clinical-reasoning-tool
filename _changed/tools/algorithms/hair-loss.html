@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hair Loss Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--c-bg:#f7f6f3;--c-surface:#ffffff;--c-border:#e3e0d8;--c-text:#1a1a1a;--c-muted:#6b6560;--c-accent:#1d3461;--c-safety:#c0392b;--c-diagnose:#1d6a96;--c-treat:#1a6b3c;--c-refer:#7b3fa0;--c-life:#b86a00;--radius:12px;--shadow:0 2px 12px rgba(0,0,0,.08)}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--c-bg);color:var(--c-text);font-size:15px;line-height:1.6;padding:0 0 60px}
+.stem-banner{display:flex;align-items:center;gap:16px;background:var(--c-accent);color:#fff;padding:20px 28px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{font-size:1.15rem;display:block}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{display:flex;align-items:center;gap:12px;background:var(--c-surface);border-bottom:1px solid var(--c-border);padding:12px 28px;font-size:.82rem;color:var(--c-muted);position:sticky;top:0;z-index:50}
+.pcount{font-weight:700;color:var(--c-accent);white-space:nowrap}
+.pbar{flex:1;height:6px;background:var(--c-border);border-radius:99px;overflow:hidden}
+.pbar-fill{height:100%;background:var(--c-accent);border-radius:99px;transition:width .4s ease;width:0%}
+.reset{background:none;border:1px solid var(--c-border);border-radius:6px;padding:4px 12px;font-size:.78rem;cursor:pointer;color:var(--c-muted);font-family:inherit}
+.reset:hover{background:var(--c-border)}
+.alg-flow{max-width:820px;margin:0 auto;padding:32px 20px 0;display:flex;flex-direction:column;align-items:stretch}
+.connector{width:3px;height:28px;background:var(--c-border);margin:0 auto;border-radius:2px}
+.node{background:var(--c-surface);border:2px solid var(--c-border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:border-color .2s}
+.node.done{border-color:#a0c4a0;background:#f7fbf7}
+.node[data-type="SAFETY"]{border-left:5px solid var(--c-safety)}
+.node[data-type="DIAGNOSE"]{border-left:5px solid var(--c-diagnose)}
+.node[data-type="TREAT"]{border-left:5px solid var(--c-treat)}
+.node[data-type="REFER"]{border-left:5px solid var(--c-refer)}
+.node[data-type="LIFESTYLE"]{border-left:5px solid var(--c-life)}
+.node-head{display:flex;align-items:flex-start;gap:10px;padding:16px 20px 0 20px;flex-wrap:wrap}
+.node-num{width:32px;height:32px;border-radius:50%;background:var(--c-accent);color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.node-tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:4px;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:#fdecea;color:var(--c-safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:#e8f3fb;color:var(--c-diagnose)}
+.node[data-type="TREAT"] .node-tag{background:#e8f6ee;color:var(--c-treat)}
+.node[data-type="REFER"] .node-tag{background:#f3ebf9;color:var(--c-refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:#fdf3e3;color:var(--c-life)}
+.node-head-inner{display:flex;flex-direction:column;flex:1}
+.node-head h3{font-size:1.05rem;font-weight:700;line-height:1.3;width:100%;margin-top:4px}
+.node-tick{display:flex;justify-content:flex-end;padding:10px 20px 0}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none}
+.node-tick input[type=checkbox]{width:18px;height:18px;accent-color:var(--c-accent);cursor:pointer}
+.tlbl{font-size:.8rem;color:var(--c-muted)}
+.node-body{padding:12px 20px 16px;font-size:.88rem;line-height:1.65}
+.intro{color:var(--c-muted);margin-bottom:12px;font-style:italic}
+.kv{display:grid;grid-template-columns:minmax(140px,200px) 1fr;border:1px solid var(--c-border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{padding:9px 12px;border-bottom:1px solid var(--c-border);line-height:1.5}
+.kv>div:nth-last-child(-n+2){border-bottom:none}
+.kv>div:nth-child(odd){background:#f5f4f0;font-weight:600;color:var(--c-accent);font-size:.8rem}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:10px 0}
+.rftile{background:#fff8f7;border:1px solid #f5c6c2;border-left:4px solid var(--c-safety);border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5}
+.rftile b{display:block;color:var(--c-safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:10px 0}
+.b-card{border:1px solid var(--c-border);border-radius:8px;overflow:hidden;font-size:.83rem}
+.b-cond{background:#f0f4fa;padding:7px 10px;font-weight:600;font-size:.8rem;color:var(--c-diagnose);border-bottom:1px solid var(--c-border)}
+.b-drug{padding:7px 10px 4px;font-weight:700;font-size:.88rem;color:var(--c-treat)}
+.b-note{padding:0 10px 8px;color:var(--c-muted);font-size:.79rem;line-height:1.4}
+.ladder{display:flex;flex-direction:column;gap:4px;margin:10px 0;border-left:3px solid var(--c-treat);padding-left:14px}
+.rung{display:flex;gap:10px;align-items:flex-start;background:#f5fbf7;border:1px solid #c8e8d4;border-radius:7px;padding:8px 12px;font-size:.83rem}
+.rn{font-weight:700;color:var(--c-treat);white-space:nowrap;min-width:55px;font-size:.78rem;padding-top:2px}
+.rt{flex:1;line-height:1.5}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:10px 0}
+.lstile{background:#fffbf2;border:1px solid #f0d9a0;border-left:4px solid var(--c-life);border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5}
+.lstile b{display:block;color:var(--c-life);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 8px;border-radius:99px;font-size:.72rem;font-weight:700;letter-spacing:.02em;vertical-align:middle}
+.pill-red{background:#fdecea;color:#c0392b;border:1px solid #f5c6c2}
+.pill-purple{background:#f3ebf9;color:#7b3fa0;border:1px solid #d9b8ee}
+.pill-blue{background:#e8f3fb;color:#1d6a96;border:1px solid #b3d4eb}
+.pill-teal{background:#e6f7f5;color:#0d7a6b;border:1px solid #9fd5cc}
+.pill-amber{background:#fdf3e3;color:#b86a00;border:1px solid #f0c878}
+.pill-green{background:#e8f6ee;color:#1a6b3c;border:1px solid #a0d4b4}
+.pill-grey{background:#f2f2f0;color:#555;border:1px solid #d0cfc8}
+.why-row{border-top:1px solid var(--c-border);background:#fcfbf9}
+.why-btn{width:100%;background:none;border:none;padding:9px 20px;text-align:left;font-family:inherit;font-size:.8rem;font-weight:600;color:var(--c-muted);cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .15s}
+.why-btn:hover{color:var(--c-accent)}
+.caret{transition:transform .2s}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 20px 14px;font-size:.82rem;line-height:1.65;color:var(--c-muted)}
+.why-drawer.open{display:block}
+.alg-foot{max-width:820px;margin:32px auto 0;padding:18px 20px;background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius);font-size:.78rem;color:var(--c-muted);line-height:1.6}
+.alg-foot strong{color:var(--c-text)}
+@media(max-width:600px){.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}.kv{grid-template-columns:1fr}.kv>div:nth-child(odd){border-bottom:none;padding-bottom:2px}.alg-flow{padding:20px 12px 0}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">💇</div>
+  <div>
+    <b>Hair Loss (Alopecia) — Assessment &amp; Management</b>
+    <small>UK primary care pathway · RCGP SCA preparation · All hair loss types including scarring alopecia</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — separate scarring from non-scarring alopecia (scarring needs urgent dermatology to prevent permanent loss), identify the pattern, treat the cause, support the patient, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Hair loss</span><div class="body">Pattern (diffuse vs patchy), scalp scarring/inflammation, duration, systemic features, drugs. Examine scalp + hair pull test.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — scarring alopecia</span><span class="ttl">Scarring alopecia?</span><div class="body">Loss of follicular openings, scarring, scalp inflammation/scaling → scarring (cicatricial) alopecia — irreversible if untreated.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Urgent dermatology</span><div class="body">Suspected scarring alopecia → urgent referral + biopsy to halt progression.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">Morphology, distribution and history localise the cause.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · common causes</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Androgenetic</div><div class="box act"><span class="ttl">Commonest</span><div class="body">Patterned thinning; topical minoxidil; reassurance.</div></div></div><div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Telogen effluvium</div><div class="box ix"><span class="ttl">Diffuse</span><div class="body">Post-illness/stress/pregnancy, thyroid, iron deficiency; check ferritin, TFT; reversible.</div></div></div><div class="col"><div class="blabel">Alopecia areata</div><div class="box act"><span class="ttl">Patchy</span><div class="body">Well-defined patches, exclamation hairs; often regrows; topical steroid, dermatology if extensive.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Urgent</span> scarring alopecia. <span class="pill pill-purple">Dermatology</span> extensive alopecia areata, diagnostic uncertainty; correct iron/thyroid.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · treat cause &amp; support</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Treat the cause &amp; support</span><span class="ttl">Reverse the modifiable, support the rest</span><div class="body"><b>Correct iron deficiency and thyroid disease</b>; reassure that <b>telogen effluvium</b> regrows over months once the trigger (illness, childbirth, crash diet, stress) resolves. Encourage a balanced diet, gentle hair care (avoid traction styles/heat), and review culprit drugs. Address <b>psychological impact</b> — signpost support, wigs/scalp cooling where relevant; minoxidil for androgenetic pattern.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Recheck &amp; when to escalate</span><div class="body"><b>Review at ~3 months</b> with repeat ferritin/TFT as needed and reassess regrowth. <b>Urgent dermatology</b> if scarring/inflammation develops (loss of follicular openings → biopsy before permanent loss), rapidly progressive or scarring patches, or features of underlying disease (lupus, lichen planus). Safety-net the diffuse-loss patient that persistent or patchy scarring loss needs review.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Scarring vs non-scarring is the key division:</b> loss of follicular openings means scarring alopecia, which needs urgent dermatology and biopsy before the loss becomes permanent.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- STEP 1 -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">1</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Safety</span>
+        <h3>Red Flags — Identify Scarring Alopecia &amp; Systemic Disease</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Scarring (cicatricial) alopecia causes irreversible follicle destruction — do not miss these. Also screen for underlying systemic causes.</p>
+      <div class="rfgrid">
+        <div class="rftile"><b>Scarring alopecia (cicatricial)</b> Shiny atrophic scalp, absent follicular ostia on dermoscopy, progressive, irreversible. Any suspected scarring alopecia → <span class="pill pill-purple">Urgent dermatology (within 2 weeks)</span></div>
+        <div class="rftile"><b>Scalp malignancy</b> Ulcerated scalp lesion, rapidly growing nodule, firm attached scalp lump, bleeding ulcer, known lymphoma → <span class="pill pill-purple">2WW skin cancer</span></div>
+        <div class="rftile"><b>Tinea capitis with kerion</b> Boggy painful scalp swelling, pustules, cervical lymphadenopathy, systemic illness (especially child) → <span class="pill pill-red">Same-day treatment — systemic antifungal urgently</span></div>
+        <div class="rftile"><b>Secondary syphilis</b> "Moth-eaten" patchy scalp and beard hair loss + systemic symptoms (rash, lymphadenopathy, oral ulcers) → <span class="pill pill-amber">Same-day STI clinic / GUM referral</span></div>
+        <div class="rftile"><b>Systemic lupus erythematosus</b> Diffuse hair loss + malar rash, oral ulcers, arthralgia, serositis, photosensitivity → <span class="pill pill-amber">Urgent ANA/dsDNA, refer rheumatology</span></div>
+        <div class="rftile"><b>Malignancy-associated (telogen effluvium)</b> Rapid diffuse hair loss + weight loss, fatigue, night sweats, lymphadenopathy, known cancer history → <span class="pill pill-purple">Urgent investigation for underlying malignancy</span></div>
+        <div class="rftile"><b>Severe nutritional deficiency</b> Brittle hair + very low BMI (&lt;17.5), amenorrhoea, lanugo hair, marked muscle wasting → <span class="pill pill-amber">Assess for eating disorder — urgent medical review if unstable</span></div>
+        <div class="rftile"><b>Trichotillomania in children</b> Irregular areas of hair loss, short broken hairs of different lengths, scalp normal, behavioural distress → <span class="pill pill-amber">Safeguarding consideration + CAMHS referral</span></div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Scarring alopecia represents a dermatological emergency — once follicles are destroyed, hair loss is permanent and irreversible. Early treatment of lichen planopilaris, discoid lupus, or folliculitis decalvans can arrest progression. A delay of 6–12 months before referral can result in extensive irreversible baldness. Tinea capitis with kerion requires systemic antifungal therapy (terbinafine or griseofulvin) — topical antifungals do not penetrate the hair shaft and are ineffective. Secondary syphilis is a readily treatable STI that is frequently missed when presenting as hair loss.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 2 -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">2</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Diagnose</span>
+        <h3>History — Pattern, Timeline &amp; Triggers</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">The pattern and timeline of hair loss — combined with age, sex, and systemic symptoms — will identify the diagnosis in 70–80% of cases.</p>
+      <div class="kv">
+        <div>Pattern of loss</div><div>Diffuse (all over scalp) → telogen effluvium, AGA (F), hypothyroid. Patchy → alopecia areata, tinea capitis. Frontotemporal recession + vertex → male AGA. Frontal + crown parting → female AGA. Diffuse + receding hairline → FPHL.</div>
+        <div>Onset &amp; timeline</div><div>Acute (&lt;6 months) → telogen effluvium (trigger 2–3 months prior), alopecia areata. Chronic gradual → AGA, FPHL. Chronic scarring pattern → LPP, discoid lupus (ask about progression).</div>
+        <div>Trigger history</div><div>3 months prior: major illness, surgery, high fever, COVID-19, childbirth, major psychological stress, extreme weight loss → telogen effluvium (hair sheds 8–12 weeks post-trigger).</div>
+        <div>Systemic symptoms</div><div>Fatigue, weight change, cold intolerance, constipation → hypothyroid. Irregular periods, weight gain, hirsutism → PCOS. Fatigue, pallor, brittle nails → iron deficiency anaemia.</div>
+        <div>Medication history</div><div>Chemotherapy, anticoagulants (warfarin, heparin), retinoids, antithyroid drugs, lithium, beta-blockers, anticonvulsants, oral contraceptive pills (especially progesterone-dominant) — all cause hair loss.</div>
+        <div>Family history</div><div>AGA/FPHL: strong familial component (polygenic). Alopecia areata: 20% have first-degree relative with AA. Autoimmune thyroid disease.</div>
+        <div>Hair care practices</div><div>Chemical relaxers, bleaching, permanent waving → traction alopecia. Heat styling, tight ponytails/braids → traction alopecia (frontal recession). Trichodynia (scalp pain) → inflammatory alopecia.</div>
+        <div>Psychological impact</div><div>Hair loss causes significant psychological distress — routinely screen with PHQ-9 and ask about social impact. 40% of female alopecia patients develop anxiety or depression.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">The 8–12 week lag between telogen effluvium trigger and shedding is the single most important piece of history in alopecia assessment — patients presenting with diffuse hair loss should always be asked about events 2–3 months prior. Failure to elicit this history leads to unnecessary investigation and incorrect diagnoses. AGA affects 50% of men by age 50 and is significantly under-recognised in women (FPHL affects 40% of women by age 70 with the Ludwig classification).</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 3 -->
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">3</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Diagnose</span>
+        <h3>Classification — Scarring vs Non-Scarring, Diffuse vs Patchy</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">The scarring vs non-scarring distinction is the critical first branch — it determines urgency and treatability.</p>
+      <div class="kv">
+        <div>Androgenetic alopecia (AGA/FPHL)</div><div>Male: Hamilton-Norwood pattern (frontotemporal recession, vertex). Female: Ludwig pattern (diffuse vertex, preserved frontal hairline). Commonest alopecia. DHT-mediated follicle miniaturisation. <span class="pill pill-grey">Non-scarring</span></div>
+        <div>Telogen effluvium (TE)</div><div>Diffuse shedding 6–12 weeks after trigger. Positive hair pull test. Self-limiting — resolves in 3–6 months. Chronic TE if &gt;6 months. <span class="pill pill-grey">Non-scarring</span></div>
+        <div>Alopecia areata (AA)</div><div>Discrete round/oval patches, exclamation mark hairs at margins, normal scalp skin, nail pitting (30%). AA totalis (all scalp), AA universalis (all body hair). Autoimmune (Th1-mediated). <span class="pill pill-blue">Non-scarring, autoimmune</span></div>
+        <div>Tinea capitis</div><div>Scale + hair loss + pruritus, fluorescence with Wood's lamp (Microsporum), kerion (boggy mass). Mainly children. Highly infectious. <span class="pill pill-amber">Non-scarring if treated promptly</span></div>
+        <div>Traction alopecia</div><div>Frontal/temporal hairline recession due to tension (braids, ponytails, extensions). Marginal alopecia pattern. Can become scarring if chronic. <span class="pill pill-amber">Non-scarring if caught early</span></div>
+        <div>Lichen planopilaris (LPP)</div><div>Scarring alopecia — follicular erythema, peripilar scale, atrophic patches, no follicular openings. Pruritic, painful. Dermoscopy: loss of follicular ostia. <span class="pill pill-red">Scarring → urgent dermatology</span></div>
+        <div>Frontal fibrosing alopecia (FFA)</div><div>Scarring alopecia — progressive frontal hairline recession, loss of eyebrows, follicular red halo, perifollicular scale. Mainly postmenopausal women. <span class="pill pill-red">Scarring → urgent dermatology</span></div>
+        <div>Discoid lupus</div><div>Scarring — erythematous scaly plaques, follicular plugging, central atrophy, pigmentary changes. Sun-exposed areas. Check ANA/dsDNA. <span class="pill pill-red">Scarring → urgent dermatology/rheum</span></div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">The scarring vs non-scarring distinction dictates urgency. Non-scarring alopecia (AGA, TE, AA) is treatable and follicles remain viable. Scarring alopecia (LPP, FFA, discoid lupus, folliculitis decalvans) destroys follicles permanently — early dermatology referral arrests but does not reverse established scarring. Frontal fibrosing alopecia has increased 10-fold in incidence over the past 20 years and is now the most common form of scarring alopecia seen in dermatology — GPs must be familiar with its presentation.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 4 -->
+  <div class="node" data-type="DIAGNOSE" data-step="4">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">4</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Diagnose</span>
+        <h3>Targeted Examination — Scalp, Pattern &amp; Systemic</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Examine in good light; use a magnifying glass or dermatoscope if available.</p>
+      <div class="kv">
+        <div>Scalp skin assessment</div><div>Normal skin = non-scarring. Atrophic, shiny, loss of follicular openings = scarring. Scaly/inflamed = tinea/psoriasis/seborrhoeic dermatitis. Boggy/pustular = kerion/folliculitis decalvans.</div>
+        <div>Hair pull test</div><div>Grasp 40–60 hairs between thumb and index finger, apply gentle traction. &gt;6 hairs (telogen) = positive = active shedding. Normal = &lt;6 hairs. Positive in TE, early AA, active inflammatory alopecia.</div>
+        <div>Pattern assessment</div><div>Hamilton-Norwood scale (male AGA Grades I–VII). Ludwig scale (female: I–III). Describe exact distribution — vertex-dominant (AGA), frontal margin (FFA/traction), patchy (AA), diffuse (TE).</div>
+        <div>Exclamation mark hairs</div><div>Short hairs tapering at base (like "!") at periphery of bald patches → alopecia areata. Pathognomonic sign. Black dots = fractured hairs at surface (AA totalis).</div>
+        <div>Nails</div><div>Pitting, onycholysis, trachyonychia ("sandpaper nails") → alopecia areata (30% nail involvement). Also check for leukonychia (nutritional deficiency).</div>
+        <div>Systemic exam</div><div>Thyroid palpation, signs of hypothyroid (bradycardia, dry skin, puffiness). PCOS: hirsutism (Ferriman-Gallwey), acne, obesity. Anaemia: pallor, koilonychia. Lupus: malar rash, photosensitivity.</div>
+        <div>Lymph nodes</div><div>Cervical/occipital lymphadenopathy → tinea capitis (especially children). Generalised lymphadenopathy + hair loss → secondary syphilis, lymphoma.</div>
+        <div>Skin/body hair</div><div>Eyebrow thinning (outer third) → hypothyroid, FFA. Body hair loss → AA universalis. Eyelash loss → AA, trichotilomania.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">The hair pull test takes 30 seconds and directly confirms active shedding — a negative pull test in diffuse hair loss suggests the shedding phase has ended (post-TE regrowth phase) or the patient has AGA without active telogen conversion. Exclamation mark hairs are pathognomonic for alopecia areata and their presence should prevent unnecessary investigation for systemic causes. Outer-third eyebrow loss is a classic, often missed, sign of hypothyroidism — always check eyebrows when examining the scalp.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 5 -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">5</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Diagnose</span>
+        <h3>Investigations — Targeted Bloods &amp; Scalp Tests</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Investigate all diffuse alopecia to exclude reversible systemic causes. Do not investigate classical AGA without systemic features.</p>
+      <div class="kv">
+        <div>First-line bloods</div><div><span class="pill pill-blue">FBC, ferritin, TFTs, B12, folate</span> — mandatory in all diffuse hair loss. Iron deficiency (ferritin &lt;30 mcg/L) and hypothyroidism are the two most common reversible causes. 25-OH vitamin D if suspected.</div>
+        <div>Ferritin interpretation</div><div>Ferritin &lt;30 mcg/L = likely iron deficiency contributing to alopecia. Target &gt;70 mcg/L for hair regrowth. Many labs report normal range as &gt;12–15 — the hair threshold is higher. Treat if &lt;70 with symptoms.</div>
+        <div>Hormone panel</div><div><span class="pill pill-blue">Androgens: total testosterone, SHBG, free androgen index, DHEAS, LH, FSH, prolactin</span> — in females with diffuse hair loss + features of hyperandrogenism (PCOS, adrenal). Day 2–5 of cycle.</div>
+        <div>Thyroid</div><div><span class="pill pill-blue">TSH ± fT4</span> — hypothyroid and hyperthyroid both cause diffuse hair loss. TSH most sensitive. If abnormal: check TPO antibodies (autoimmune thyroiditis). Treat to TSH 1–2 mU/L.</div>
+        <div>Autoimmune screen</div><div><span class="pill pill-blue">ANA, anti-dsDNA, complement (C3/C4)</span> — if scarring alopecia or systemic lupus features. Anti-Ro/La if Sjögren's suspected. VDRL/RPR if syphilis possible.</div>
+        <div>Scalp biopsy</div><div><span class="pill pill-blue">4mm punch biopsy</span> — via dermatology for suspected scarring alopecia (LPP, discoid lupus, FFA). Horizontal sections preferred for alopecia diagnosis. Not a primary care test.</div>
+        <div>Scalp swab / Wood's lamp</div><div><span class="pill pill-blue">Scalp swab for MC&amp;S</span> — if tinea capitis suspected. Wood's lamp: Microsporum fluoresces blue-green (Trichophyton does not). Confirm with scalp brushings sent for mycology.</div>
+        <div>Do NOT routinely order</div><div>Hormone panel in male AGA (not indicated), MRI head for alopecia (specialist only), scalp biopsy without dermatology involvement, zinc/copper levels (not evidence-based in routine alopecia)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">The "normal" ferritin threshold used by most labs (12–15 mcg/L) is calibrated for iron-deficiency anaemia, not hair loss. Multiple studies demonstrate that hair regrowth does not occur until ferritin is &gt;70 mcg/L in patients with alopecia — GPs must be aware of this discrepancy and treat accordingly. Hypothyroidism causes telogen effluvium and is present in 8–12% of women presenting with diffuse hair loss — missing this is a significant diagnostic error. Hormone panel in male AGA has no clinical utility — the diagnosis is clinical and treatment is empirical.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 6 -->
+  <div class="node" data-type="REFER" data-step="6">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">6</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Refer</span>
+        <h3>Referral Criteria — Dermatology, Endocrinology, Mental Health</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <div class="kv">
+        <div>2WW skin cancer</div><div><span class="pill pill-purple">2-week wait</span> Ulcerated/bleeding scalp lesion, rapidly growing nodule, suspicious pigmented lesion, scalp patch with features of squamous cell carcinoma</div>
+        <div>Urgent dermatology</div><div><span class="pill pill-purple">Within 2 weeks</span> All suspected scarring alopecia (LPP, FFA, discoid lupus, folliculitis decalvans) — delay causes irreversible follicle loss. Extensive alopecia totalis/universalis.</div>
+        <div>Routine dermatology</div><div><span class="pill pill-grey">Within 18 weeks</span> Alopecia areata not responding to primary care treatment, suspected FFA (non-urgent if very early), traction alopecia with scarring features, diagnostic uncertainty</div>
+        <div>Paediatric dermatology / ED</div><div><span class="pill pill-amber">Same-day / urgent</span> Tinea capitis with kerion (same-day systemic antifungal). Tinea capitis confirmed → urgent griseofulvin/terbinafine. Notify school (infectious disease).</div>
+        <div>Endocrinology</div><div><span class="pill pill-grey">Routine</span> PCOS with marked hyperandrogenism + hair loss (combined OCP ± spironolactone management). Adrenal hyperandrogenism (elevated DHEAS). Resistant hypothyroidism.</div>
+        <div>Rheumatology</div><div><span class="pill pill-purple">Within 4 weeks</span> Suspected SLE (ANA positive + hair loss + systemic symptoms). Discoid lupus with systemic features. Co-manage with dermatology.</div>
+        <div>CAMHS / safeguarding</div><div><span class="pill pill-amber">Urgent</span> Trichotillomania in children with significant distress or safeguarding concerns. Adult trichotillomania — NHS Talking Therapies OCD pathway (HAbit Reversal Training).</div>
+        <div>Primary care manage</div><div>Male AGA (minoxidil topical, counselling, refer to trichologist/hair transplant if desired). TE post-trigger (reassurance + address cause). Iron/thyroid deficiency TE (replace and review at 3–6 months).</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Frontal fibrosing alopecia (FFA) is now the most common scarring alopecia in dermatology departments in the UK — it is frequently missed in primary care as a "receding hairline" in postmenopausal women. The average delay from first GP presentation to FFA diagnosis is 2.5 years — during which time irreversible scarring progresses. Tinea capitis is highly infectious within households and schools — public health notification and household screening are required. Children need 6 months of griseofulvin or 4 weeks of terbinafine (off-label in &lt;4 years).</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 7 -->
+  <div class="node" data-type="TREAT" data-step="7">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">7</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Treat</span>
+        <h3>Pharmacological Treatment — Condition-Specific Pathway</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Address reversible causes first. Condition-specific pharmacological treatments below.</p>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">Male AGA</div>
+          <div class="b-drug">Minoxidil 5% topical <span class="pill pill-teal">OTC</span></div>
+          <div class="b-note">Apply 1 ml to dry scalp BD. Results at 4–6 months. Continue indefinitely — stops on cessation. OR oral minoxidil 2.5 mg OD (off-label, effective). Finasteride 1 mg OD (prescription, private only NHS) — check PSA baseline.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Female AGA (FPHL)</div>
+          <div class="b-drug">Minoxidil 2% topical <span class="pill pill-teal">OTC</span></div>
+          <div class="b-note">Apply 1 ml BD to affected areas. 5% minoxidil also effective but more side effects (facial hypertrichosis). Spironolactone 100–200 mg OD (off-label, antiandrogen) — via specialist or GP with monitoring (K+, BP).</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Alopecia areata (limited)</div>
+          <div class="b-drug">Potent topical corticosteroid</div>
+          <div class="b-note">Betamethasone valerate 0.1% solution or clobetasol propionate 0.05% scalp application OD for 3–6 months. Intralesional triamcinolone 10 mg/ml — specialist procedure. Spontaneous remission in 50% within 12 months.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Tinea capitis</div>
+          <div class="b-drug">Griseofulvin or Terbinafine</div>
+          <div class="b-note">Child: Griseofulvin 10–20 mg/kg/day × 6–8 weeks (Microsporum); OR Terbinafine 62.5–250 mg OD × 4 weeks (Trichophyton). Adult: Terbinafine 250 mg OD × 4 weeks. Plus selenium sulfide/ketoconazole shampoo to reduce spore shedding.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Telogen effluvium</div>
+          <div class="b-drug">Treat underlying cause</div>
+          <div class="b-note">Iron: ferrous sulfate 200 mg TDS if ferritin &lt;70. Thyroid: levothyroxine titrated to TSH 1–2. B12: hydroxocobalamin IM. Reassure: self-limiting, 6–12 months recovery. No role for minoxidil.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Scarring alopecia</div>
+          <div class="b-drug">Dermatology-led Rx</div>
+          <div class="b-note">LPP/FFA: hydroxychloroquine 200–400 mg OD (specialist). Topical steroids. Pioglitazone 15 mg OD (off-label, FFA). Discoid lupus: hydroxychloroquine + sunscreen. Arrest not reversal is the goal.</div>
+        </div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Minoxidil's mechanism involves prolonging the anagen (growth) phase and increasing follicle size — it does not treat the androgenetic cause. Discontinuation leads to reversal of benefit within 3–4 months, making it a lifelong commitment. Finasteride is licensed for male AGA only (not female) — it reduces DHT by 70% and halts AGA in 83% of men (NNT 3.5 for hair count improvement). Post-finasteride syndrome (persistent sexual dysfunction) is a rare but real adverse effect — counsel patients explicitly. Spironolactone for FPHL is commonly used off-label in the UK — monitor potassium and blood pressure.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 8 -->
+  <div class="node" data-type="LIFESTYLE" data-step="8">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">8</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Lifestyle</span>
+        <h3>Non-Pharmacological Interventions &amp; Psychological Support</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <div class="lsgrid">
+        <div class="lstile"><b>Nutritional optimisation</b> Target ferritin &gt;70 mcg/L, normal TSH, normal B12/folate. Iron-rich diet (red meat, lentils, dark leafy greens). Vitamin C with iron enhances absorption. Avoid tea/coffee with iron-containing meals.</div>
+        <div class="lstile"><b>Avoid hair trauma</b> Reduce tight hairstyles (ponytails, braids, extensions, buns) — all cause traction alopecia. Heat styling, bleaching, and chemical relaxers damage hair shaft. Advise: loose styles, wide-toothed combs on wet hair, silk pillowcase.</div>
+        <div class="lstile"><b>Gentle hair washing</b> Wash every 2–3 days (not daily) with gentle shampoo. Massage scalp to improve circulation. Air dry rather than heat dry. Seborrhoeic dermatitis (dandruff) worsens some alopecias — use ketoconazole 2% shampoo twice weekly if present.</div>
+        <div class="lstile"><b>Stress reduction</b> Psychological stress is a proven telogen effluvium trigger via cortisol-mediated anagen-to-telogen shift. CBT, mindfulness, exercise all reduce cortisol. Address underlying stressors. Mental health support if severe anxiety/depression.</div>
+        <div class="lstile"><b>Psychological support</b> 40% of women with alopecia develop anxiety or depression. Validate the psychological impact explicitly. Refer to NHS Talking Therapies for CBT. Alopecia UK charity offers peer support, wigs advice, helpline. NHS wig provision available for alopecia totalis/universalis.</div>
+        <div class="lstile"><b>NHS wig provision</b> NHS wigs available free on prescription for medically indicated alopecia (alopecia areata totalis, chemotherapy-induced). GP to complete FP10 prescription. Surgical fitter referral via PALS. Human hair wigs available via voucher scheme.</div>
+        <div class="lstile"><b>Sunscreen (FFA/discoid lupus)</b> UV light triggers FFA and discoid lupus progression. Daily SPF 50+ on scalp and face. Hat use strongly encouraged. Refer to occupational health if outdoor worker.</div>
+        <div class="lstile"><b>Platelet-rich plasma (PRP)</b> PRP scalp injections — emerging evidence for AGA and AA (3 RCTs positive). Not currently NHS-funded. Private cost £300–600/session. Patients may ask — evidence is promising, endorse as an option. 3 sessions 4–6 weeks apart.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Hair loss carries a psychological burden equivalent to that of chronic pain — studies consistently show quality-of-life scores in alopecia areata patients comparable to patients with psoriasis and chronic eczema. Validating this impact explicitly in the consultation improves patient satisfaction and reduces re-consultation. Traction alopecia is preventable and reversible if caught early — becoming the most common alopecia in Black women in the UK, with cultural and social dimensions that require sensitive discussion. NHS wig prescribing is an entitlement that is significantly under-utilised — GPs should be aware of the process.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 9 -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">9</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Safety</span>
+        <h3>Follow-Up, Monitoring &amp; Safety-Netting</h3>
+      </div>
+    </div>
+    <div class="node-body">
+      <div class="kv">
+        <div>6–8 weeks</div><div>Review response to iron/thyroid replacement in TE — bloods improving? Review traction alopecia if advised to change hair practices. Monitor for minoxidil side effects (scalp irritation, facial hypertrichosis in women). Confirm tinea capitis treatment compliance and school notification.</div>
+        <div>3–4 months</div><div>Recheck ferritin, TSH in TE — target ferritin &gt;70. Minoxidil: early response may be seen (reduced shedding before regrowth). Alopecia areata: reassess extent, consider escalation or referral. Hormone results review for FPHL.</div>
+        <div>6–12 months</div><div>TE recovery expected — if not resolved, reassess diagnosis (FPHL? ongoing trigger?). AGA: photo documentation to assess treatment response. Annual review of all chronic alopecia medications.</div>
+        <div>Monitoring — Finasteride</div><div>PSA baseline before starting, annual PSA while on treatment (raises PSA interpretation threshold — adjust reference range). Counsel: rare risk of post-finasteride syndrome. Annual erectile function enquiry.</div>
+        <div>Monitoring — Spironolactone</div><div>U&amp;E + BP at 1 month, 3 months, then 6-monthly. Target K+ &lt;5.5. Contraindicated in CKD, ACE inhibitor combination (hyperK risk). Adequate contraception required (teratogenic).</div>
+        <div>Safety-net same-day GP</div><div>Rapid progression of hair loss over days/weeks, new scalp ulceration or bleeding lesion, systemic symptoms developing (fever, weight loss, rash), worsening after treatment initiation</div>
+        <div>Re-refer if</div><div>Scarring features develop in previously non-scarring alopecia, AGA not responding after 12 months of minoxidil, new neurological symptoms in patient with SLE, ferritin/TSH corrected but no regrowth after 9 months</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">The clinical response to iron replacement in TE can take 6–9 months to manifest as visible hair regrowth — patients require clear explanation and support through this waiting period to prevent premature abandonment of treatment. Minoxidil "shedding" in the first 2–4 weeks of treatment (paradoxical telogen effluvium induction) frequently causes patients to discontinue — proactively warn about this. Finasteride raises PSA levels — a man on finasteride with a PSA within the "normal" range may actually have an elevated underlying PSA. The guideline-recommended correction factor is to double the measured PSA when interpreting results in finasteride users.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE CKS Alopecia, British Association of Dermatologists (BAD) Guidelines on Alopecia Areata (2023), BAD Patient Leaflets on AGA and FPHL, NICE CKS Tinea Capitis, BAD Guidelines on Female Pattern Hair Loss (2021), NHS England wig prescribing guidance. Always adapt to individual patient context.
+</div>
+
+<script>
+(function(){
+  const KEY='rgp.alg.hairloss.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  document.getElementById('pTotal').textContent=total;
+  function save(){const state={};flow.querySelectorAll('.node').forEach(n=>{state[n.dataset.step]=n.querySelector('input[type=checkbox]').checked;});localStorage.setItem(KEY,JSON.stringify(state));update();}
+  function update(){let done=0;flow.querySelectorAll('.node').forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb.checked){n.classList.add('done');done++;}else n.classList.remove('done');});pDone.textContent=done;pFill.style.width=(done/total*100)+'%';}
+  function load(){try{const state=JSON.parse(localStorage.getItem(KEY)||'{}');flow.querySelectorAll('.node').forEach(n=>{if(state[n.dataset.step])n.querySelector('input[type=checkbox]').checked=true;});}catch(e){}update();}
+  flow.querySelectorAll('input[type=checkbox]').forEach(cb=>{cb.addEventListener('change',save);});
+  flow.querySelectorAll('.why-btn').forEach(btn=>{btn.addEventListener('click',function(){const expanded=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',String(!expanded));this.nextElementSibling.classList.toggle('open',!expanded);});});
+  document.getElementById('resetBtn').addEventListener('click',function(){if(confirm('Reset all checkboxes?')){flow.querySelectorAll('input[type=checkbox]').forEach(cb=>cb.checked=false);localStorage.removeItem(KEY);update();}});
+  load();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

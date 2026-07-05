@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Erectile Dysfunction Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#f4f3f8;color:#1a1a2e;min-height:100vh;padding:0 0 60px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#2c1654 0%,#3d1f6e 60%,#6b3fa0 100%);color:#fff;padding:18px 24px;border-bottom:3px solid #9b59b6}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:700;letter-spacing:.01em}
+.stem-banner small{opacity:.75;font-size:.8rem}
+.alg-progress{display:flex;align-items:center;gap:10px;padding:12px 24px;background:#fff;border-bottom:1px solid #e2e0da;font-size:.82rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.alg-progress span:first-child{font-weight:600;color:#555}
+.pcount{font-weight:700;color:#6b3fa0;min-width:36px}
+.pbar{flex:1;height:6px;background:#e2e0da;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#9b59b6,#2c1654);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:8px;padding:4px 10px;border:1px solid #ddd;border-radius:4px;background:#fff;font-size:.75rem;cursor:pointer;color:#666}
+.reset:hover{background:#f5f4f0}
+.alg-flow{max-width:820px;margin:28px auto;padding:0 20px;display:flex;flex-direction:column;align-items:stretch}
+.connector{width:2px;height:28px;background:linear-gradient(180deg,#c8c4bb,#e2e0da);margin:0 auto}
+.node{background:#fff;border-radius:14px;border:1.5px solid #e2e0da;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.node[data-type="SAFETY"]{border-left:4px solid #e94560}
+.node[data-type="DIAGNOSE"]{border-left:4px solid #2c1654}
+.node[data-type="REFER"]{border-left:4px solid #6b3fa0}
+.node[data-type="TREAT"]{border-left:4px solid #0a7c6e}
+.node[data-type="LIFESTYLE"]{border-left:4px solid #2e7d32}
+.node-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0}
+.node[data-type="SAFETY"] .node-num{background:#fde8ec;color:#e94560}
+.node[data-type="DIAGNOSE"] .node-num{background:#ede8f5;color:#2c1654}
+.node[data-type="REFER"] .node-num{background:#f3e8f7;color:#6b3fa0}
+.node[data-type="TREAT"] .node-num{background:#e8f5f3;color:#0a7c6e}
+.node[data-type="LIFESTYLE"] .node-num{background:#e8f5e9;color:#2e7d32}
+.node-head{display:flex;align-items:center;gap:12px;padding:14px 16px 10px;border-bottom:1px solid #f0ede8}
+.node-tag{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:20px;flex-shrink:0}
+.node[data-type="SAFETY"] .node-tag{background:#fde8ec;color:#e94560}
+.node[data-type="DIAGNOSE"] .node-tag{background:#ede8f5;color:#2c1654}
+.node[data-type="REFER"] .node-tag{background:#f3e8f7;color:#6b3fa0}
+.node[data-type="TREAT"] .node-tag{background:#e8f5f3;color:#0a7c6e}
+.node[data-type="LIFESTYLE"] .node-tag{background:#e8f5e9;color:#2e7d32}
+.node-head h3{font-size:.95rem;font-weight:700;color:#1a1a2e;line-height:1.3;flex:1}
+.node-tick{display:flex;align-items:center;padding:0 16px 0 0}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:#888;user-select:none}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:#6b3fa0;cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:#0a7c6e;font-weight:600}
+.node-body{padding:14px 16px;font-size:.85rem;line-height:1.6;color:#333}
+.node-body>p,.node-body>span{display:block;margin-bottom:10px;color:#555}
+.kv{display:grid;grid-template-columns:minmax(120px,180px) 1fr;gap:1px;background:#e2e0da;border:1px solid #e2e0da;border-radius:8px;overflow:hidden;margin-top:10px}
+.kv>div{background:#fff;padding:8px 10px;font-size:.82rem;line-height:1.5}
+.kv>div:nth-child(odd){font-weight:600;color:#2c1654;background:#f7f6fb}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-top:10px}
+.rftile{background:linear-gradient(135deg,#fff5f6,#fde8ec);border:1px solid #f5c0ca;border-radius:8px;padding:10px 12px;font-size:.8rem;line-height:1.5;color:#4a0010}
+.rftile b{display:block;color:#c0122a;font-size:.82rem;margin-bottom:2px}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-top:10px}
+.b-card{border:1px solid #e2e0da;border-radius:8px;overflow:hidden}
+.b-cond{background:#f7f6fb;padding:7px 10px;font-size:.75rem;font-weight:700;color:#555;border-bottom:1px solid #e2e0da}
+.b-drug{padding:7px 10px 4px;font-size:.82rem;font-weight:700;color:#0a7c6e}
+.b-note{padding:0 10px 8px;font-size:.76rem;color:#555;line-height:1.4}
+.ladder{margin-top:10px;border-left:3px solid #6b3fa0;padding-left:0}
+.rung{display:flex;align-items:flex-start;gap:0;padding:8px 12px;border-bottom:1px solid #f0ede8;font-size:.82rem}
+.rung:last-child{border-bottom:none}
+.rn{min-width:80px;font-weight:700;color:#6b3fa0;font-size:.78rem;padding-top:1px}
+.rt{flex:1;color:#333;line-height:1.5}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-top:10px}
+.lstile{background:linear-gradient(135deg,#f1f8e9,#e8f5e9);border:1px solid #c8e6c9;border-radius:8px;padding:10px 12px;font-size:.8rem;line-height:1.5;color:#1b4a1f}
+.lstile b{display:block;color:#2e7d32;font-size:.82rem;margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.02em;vertical-align:middle}
+.pill-red{background:#fde8ec;color:#c0122a;border:1px solid #f5c0ca}
+.pill-purple{background:#f3e8f7;color:#6a1b9a;border:1px solid #d9b8e8}
+.pill-blue{background:#ede8f5;color:#2c1654;border:1px solid #c8b8e0}
+.pill-teal{background:#e8f5f3;color:#0a7c6e;border:1px solid #b8ddd8}
+.pill-amber{background:#fff8e1;color:#b45309;border:1px solid #fcd980}
+.pill-green{background:#e8f5e9;color:#2e7d32;border:1px solid #c8e6c9}
+.pill-grey{background:#f5f5f5;color:#555;border:1px solid #ddd}
+.why-row{border-top:1px solid #f0ede8;padding:0}
+.why-btn{width:100%;text-align:left;padding:9px 16px;background:none;border:none;font-size:.78rem;font-weight:600;color:#888;cursor:pointer;display:flex;align-items:center;gap:6px;transition:background .15s}
+.why-btn:hover{background:#f7f6fb}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 16px 14px;font-size:.8rem;color:#555;line-height:1.6;background:#fafaf8;border-top:1px dashed #e2e0da}
+.why-drawer.open{display:block}
+.alg-foot{max-width:820px;margin:20px auto 0;padding:14px 20px;font-size:.75rem;color:#888;line-height:1.6;border-top:1px solid #e2e0da}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">💊</div>
+  <div>
+    <b>Erectile Dysfunction — Assessment & Management</b>
+    <small>Cardiovascular risk marker · Psychogenic & organic causes · UK Primary Care Pathway</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — treat ED as a cardiovascular warning sign: assess vascular risk and endocrine causes before reaching for a PDE5 inhibitor, address reversible factors, treat, refer and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Erectile dysfunction</span><div class="body"><b>Onset</b> (gradual = organic; sudden/situational = psychogenic), <b>morning/spontaneous erections</b>, libido, relationship &amp; mood factors, drugs, smoking/alcohol. Examine genitalia, <b>BP, BMI, waist</b>, peripheral pulses.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — ED as a cardiovascular &amp; endocrine flag</span><span class="ttl">Red flags?</span><div class="body"><ul>
+      <li><b>ED is a marker of cardiovascular disease</b> — assess QRISK, BP, lipids, HbA1c (may precede CV events by 3–5 years)</li>
+      <li><b>ED + exertional chest pain</b> → investigate angina before any PDE5 inhibitor</li>
+      <li><b>Low libido + headache / visual field defect / gynaecomastia</b> → pituitary tumour</li>
+      <li><b>Peyronie's, penile/testicular abnormality, or young man with primary ED</b></li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Investigate / escalate</span><div class="body">Significant CV risk / suspected angina → assess &amp; manage CV risk (PDE5i contraindicated with nitrates). Very low testosterone / pituitary features → endocrinology.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — characterise &amp; treat</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Vascular + endocrine work-up</span><div class="body"><b>HbA1c, fasting lipids, morning total testosterone</b> (repeat + add prolactin/LH/FSH/SHBG if low); TFT; QRISK; U&amp;E. Examine for hypogonadism.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · which mechanism?</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Vasculogenic</div><div class="box ix"><span class="ttl">Commonest</span><div class="body">Cardiovascular risk factors, diabetes, gradual onset, loss of spontaneous erections. ED = endothelial disease.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">Endocrine</div><div class="box ix"><span class="ttl">Hypogonadism / pituitary</span><div class="body">Low libido + low morning testosterone (confirm) → hypogonadism; raised prolactin → pituitary; thyroid disease.</div></div></div>
+      <div class="col"><div class="blabel">Psychogenic / drug-induced</div><div class="box ix"><span class="ttl">Common</span><div class="body">Sudden, situational, <b>preserved morning erections</b>; performance anxiety, depression; drugs (beta-blockers, thiazides, SSRIs, finasteride, opioids).</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · treat</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — risk reduction + PDE5 inhibitor</span><span class="ttl">Treat the cause and the symptom</span><div class="body"><ul>
+      <li><b>First-line: a PDE5 inhibitor</b> (sildenafil/tadalafil) for most, <b>regardless of cause</b> — <b>contraindicated with nitrates/nicorandil</b>; counsel on timing and adequate trials (×4 at max dose before "failure").</li>
+      <li><b>Optimise cardiovascular risk</b> — BP, lipids/statin, glycaemic control, and review culprit drugs (switch where possible).</li>
+      <li><b>Hypogonadism:</b> testosterone replacement (specialist-guided, after confirming low levels and excluding contraindications).</li>
+      <li><b>Psychogenic:</b> psychosexual therapy/relationship support; treat depression.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-purple">Cardiology / CV risk management</span> ED is a CV risk marker — treat risk; assess angina before PDE5i if symptomatic.</li>
+      <li><span class="pill pill-purple">Endocrinology</span> confirmed hypogonadism, raised prolactin/pituitary features.</li>
+      <li><span class="pill pill-purple">Urology / psychosexual</span> PDE5i failure (consider intracavernosal/vacuum/implant), Peyronie's, young men with primary ED, suspected structural cause.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · lifestyle &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle — genuinely improves ED</span><span class="ttl">Treat the arteries</span><div class="body"><b>Smoking cessation, weight loss, regular exercise</b> (aerobic activity improves erectile function), <b>alcohol reduction</b>, and good glycaemic/BP control all improve ED and CV risk · reduce recreational drugs · address sleep (OSA) · relationship/psychological support; review and switch culprit medications.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Review</b> PDE5i response after adequate trials (correct dose/timing, ×4) before declaring failure; recheck CV risk factors and testosterone if treated. <b>Seek urgent care</b> for chest pain on exertion, or <b>priapism</b> (erection &gt;4 h — urological emergency). Reassess mood and relationship factors at follow-up.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>ED is a window onto the arteries:</b> new erectile dysfunction often precedes cardiovascular events by years — assess and treat cardiovascular risk, not just the symptom. And never give a PDE5 inhibitor with nitrates or nicorandil.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- STEP 1 -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-head">
+      <div class="node-num">1</div>
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Exclude Urgent Underlying Conditions</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>ED is a vascular symptom — screen for conditions requiring urgent action before treatment.</span>
+      <div class="rfgrid">
+        <div class="rftile"><b>Priapism</b> Painful erection &gt;4 hours → 999 (ischaemic priapism — permanent ED risk within 24h if untreated)</div>
+        <div class="rftile"><b>Sudden onset + cardiovascular symptoms</b> New ED + exertional chest pain, dyspnoea, palpitations → same-day (ACS, undiagnosed HF — exercise tolerance test if stable)</div>
+        <div class="rftile"><b>Hypogonadism symptoms + young patient</b> &lt;40y, fatigue, loss of libido, gynaecomastia, infertility → pituitary tumour (MRI, LH/FSH/testosterone/prolactin panel)</div>
+        <div class="rftile"><b>Haematospermia + perineal pain</b> Blood in semen, perineal/rectal pain → same-day (prostate/seminal vesicle pathology, prostatitis, rarely malignancy)</div>
+        <div class="rftile"><b>Penile deformity + ED</b> Painful erection + curved/deformed penis → Peyronie's disease → urology referral (do not start PDE5 inhibitor without assessment)</div>
+        <div class="rftile"><b>Pelvic/perineal trauma</b> Recent pelvic fracture, perineal crush injury, or radical prostatectomy → same-day/urology (urethral injury, post-surgical neuropathy)</div>
+        <div class="rftile"><b>Nitrate use</b> If patient on nitrates (GTN, isosorbide) → <b>PDE5 inhibitors absolutely contraindicated</b>. Assess cardiovascular stability before any ED treatment.</div>
+        <div class="rftile"><b>Suicidal ideation + ED</b> Depression + sexual dysfunction + hopelessness → immediate mental health assessment. ED is a recognised precipitant of suicide risk in men.</div>
+        <div class="rftile"><b>Case-find for prostate cancer</b> ED is a NICE NG12 trigger to offer <b>PSA + DRE</b>. If the prostate feels malignant on DRE or PSA is above the age-specific threshold → <span class="pill pill-purple">2WW urology</span>.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">ED is an independent cardiovascular risk marker — men with ED have a 44% higher risk of major cardiovascular events (MACE) within 10 years (Vlachopoulos et al, JACC 2013). The penile vasculature (1.5-2mm diameter) occludes before coronary arteries (3-4mm) — ED often precedes MI by 2-5 years. Priapism is an emergency: ischaemic priapism lasting &gt;6h causes irreversible corporal fibrosis in &gt;50% of cases. The nitrate-PDE5 inhibitor interaction causes severe hypotension — potentially fatal.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 2 -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-head">
+      <div class="node-num">2</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Classify — Organic vs Psychogenic vs Mixed Aetiology</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Classification drives management — most ED has a mixed aetiology, but distinguishing predominant cause is essential.</span>
+      <div class="kv">
+        <div>Organic features</div><div>Gradual onset, absent nocturnal/morning erections, normal libido, consistent across situations, associated with vascular risk factors (T2DM, HTN, dyslipidaemia, smoking)</div>
+        <div>Psychogenic features</div><div>Sudden onset, normal nocturnal/morning erections (NPT present), situational (occurs with masturbation but not partner), young age, associated with anxiety/depression/relationship conflict</div>
+        <div>Mixed (most common)</div><div>Organic cause with psychological overlay — even purely organic ED causes performance anxiety, perpetuating the problem. Treat both components.</div>
+        <div>Nocturnal penile tumescence</div><div>Ask specifically about morning erections (proxy for NPT). Present = psychogenic strongly favoured. Absent = organic cause more likely. Not 100% reliable.</div>
+        <div>IIEF-5 Score</div><div>International Index of Erectile Function (5 questions, scored 5-25). 5-7 = severe, 8-11 = moderate, 12-16 = mild-moderate, 17-21 = mild, ≥22 = no ED. Use to document severity and monitor response.</div>
+        <div>Duration / progression</div><div>Acute onset after specific event = psychogenic. Gradual progressive worsening over years = organic (vascular, neuropathic). Post-radical prostatectomy = iatrogenic neurogenic.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">EAU Guidelines 2023 estimate 50-80% of ED has an organic component. Pure psychogenic ED is now considered less common than previously thought — even in young men, vascular and hormonal screening should be performed. The IIEF-5 is validated, quick (&lt;2 minutes), and allows objective monitoring of treatment response. Psychogenic ED responds well to CBT/psychosexual therapy — combined PDE5 inhibitor + psychotherapy achieves superior outcomes to either alone (NNT ~3).</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 3 -->
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+    <div class="node-head">
+      <div class="node-num">3</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Targeted History — Cardiovascular, Psychosocial & Medication Review</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>ED history requires sensitivity. Use PLISSIT model (Permission, Limited Information, Specific Suggestion, Intensive Therapy).</span>
+      <div class="kv">
+        <div>Cardiovascular risk</div><div>BP (check today), dyslipidaemia, T2DM (HbA1c), smoking, family history of premature CVD, obesity, physical activity level. ED = 'canary in the coal mine' for CVD.</div>
+        <div>Medications review</div><div><b>Common causative drugs:</b> beta-blockers (especially atenolol), thiazide diuretics, antidepressants (SSRIs, TCAs, SNRIs), antipsychotics, finasteride, dutasteride, spironolactone, opioids, recreational drugs (cocaine, cannabis, anabolic steroids)</div>
+        <div>Hormonal symptoms</div><div>Loss of libido (hypogonadism), fatigue, gynaecomastia, reduced body hair, testicular atrophy, infertility, hot flushes (hypoandrogenism)</div>
+        <div>Neurological</div><div>MS, Parkinson's, spinal cord injury, peripheral neuropathy (diabetic neuropathy). Pelvic surgery (prostatectomy, rectal surgery, aortoiliac reconstruction).</div>
+        <div>Psychosocial</div><div>Depression (PHQ-9), anxiety (GAD-7), relationship satisfaction, partner's views, past sexual trauma, pornography use, sexual orientation considerations. Work/financial stress.</div>
+        <div>Lifestyle factors</div><div>Cycling (&gt;3h/week perineal pressure = arterial/venous compression). Smoking (endothelial damage). Alcohol (&gt;14u/week). Obesity (aromatisation of testosterone → oestrogen).</div>
+        <div>Ejaculation / orgasm</div><div>Premature ejaculation often co-exists. Absence of ejaculation = retrograde ejaculation (T2DM, alpha-blocker use, post-TURP). Anorgasmia = neurological/psychogenic.</div>
+        <div>Previous treatment</div><div>Previous PDE5 inhibitor trial — which one, dose, how taken (with food?), adequate stimulation? Many 'treatment failures' are administration errors.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">SSRIs cause ED in up to 40% of male users — often undisclosed as patients don't connect the medications. Atenolol is the worst offender among beta-blockers (4× greater ED risk vs nebivolol). Finasteride causes persistent sexual dysfunction in ~2% even after stopping (Post-Finasteride Syndrome — controversial but recognised). Cycling &gt;3h/week is associated with 2× increased ED risk due to perineal artery compression. Alcohol — acute: facilitates psychogenic ED; chronic: causes hypogonadism and peripheral neuropathy.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 4 -->
+  <div class="node" data-type="DIAGNOSE" data-step="4">
+    <div class="node-head">
+      <div class="node-num">4</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Examination — Cardiovascular, Genital & Hormonal Assessment</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Physical examination is essential — do not proceed to treatment without cardiovascular and genital assessment.</span>
+      <div class="kv">
+        <div>Blood pressure</div><div>Check both arms. Assess CVD risk — hypertension is a major vascular risk factor for ED. White coat hypertension common; consider ABPM. Target BP &lt;130/80 in men with ED + CVD risk.</div>
+        <div>Cardiovascular</div><div>Heart rate, rhythm, peripheral pulses (femoral, popliteal — absence suggests aortoiliac disease/Leriche syndrome = classic triad of bilateral buttock claudication + ED + absent femoral pulses)</div>
+        <div>BMI / Waist</div><div>Obesity (BMI &gt;30) → reduced free testosterone (SHBG effects + aromatisation). Metabolic syndrome predicts ED risk. Waist &gt;102cm = high risk.</div>
+        <div>Genitalia</div><div>Testicular size/consistency (small, soft = hypogonadism; firm nodule = cancer). Penile plaques (Peyronie's). Phimosis. Hypospadias. Secondary sexual hair. Gynaecomastia.</div>
+        <div>DRE (if ≥50y or LUTS)</div><div>Prostate assessment before starting alpha-blockers or if PSA testing planned. Enlarged/nodular prostate → exclude malignancy before finasteride/dutasteride.</div>
+        <div>Peripheral neuropathy</div><div>Diabetic neuropathy screen — 10g monofilament, vibration sense (128Hz tuning fork). Neuropathy = neurogenic ED component, less responsive to PDE5 inhibitors.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Leriche syndrome (aortoiliac occlusive disease) causes severe neurogenic + vasculogenic ED and is found in &lt;1% of ED patients but is surgical. Absent femoral pulses are pathognomonic. Testicular volume &lt;15ml = hypogonadism (Prader orchidometer measurement). 25% of men with ED have hypogonadism — many are undiagnosed. Peyronie's disease (fibrous plaque causing penile curvature) is present in 5-9% of men with ED and requires specific management (intralesional collagenase, surgery) — PDE5 inhibitors don't treat the underlying condition.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 5 -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+    <div class="node-head">
+      <div class="node-num">5</div>
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — Hormonal, Metabolic & Cardiovascular Screening</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Screen for treatable underlying causes before initiating PDE5 inhibitor therapy.</span>
+      <div class="kv">
+        <div>All patients <span class="pill pill-blue">Mandatory</span></div><div>Fasting glucose / HbA1c, fasting lipids, U&E/eGFR, FBC. <b>Morning testosterone (8-11am) × 2</b> if low libido, fatigue, or hypogonadism features</div>
+        <div>Testosterone interpretation</div><div>Total testosterone &lt;8 nmol/L = deficiency (treat). 8-12 nmol/L = borderline (check SHBG, calculate free testosterone). &gt;12 nmol/L = normal. <b>Must be fasting, morning sample</b></div>
+        <div>If testosterone low</div><div>LH + FSH: High LH/FSH = primary hypogonadism (testicular failure). Low/normal LH/FSH = secondary hypogonadism → <b>MRI pituitary</b> (prolactin, macro-prolactinoma exclusion)</div>
+        <div>Prolactin</div><div>Hyperprolactinaemia (stress, antipsychotics, macroprolactinoma) → suppresses testosterone → ED. Repeat if elevated — exclude stress artefact. If &gt;700 mIU/L → MRI pituitary.</div>
+        <div>Thyroid</div><div>TSH — both hypo and hyperthyroidism cause ED. Hypothyroidism also reduces testosterone synthesis. Check if fatigue or other thyroid features.</div>
+        <div>PSA (if ≥50y)</div><div>Before starting testosterone therapy (contraindicated in active prostate cancer). Discuss PSA testing per NICE guidance. If PSA raised → prostate assessment before hormonal therapy.</div>
+        <div>Cardiovascular workup</div><div>ECG (rhythm, ischaemic changes). QRISK3 score calculation. 24h BP monitoring if hypertensive. Resting ECG and exercise tolerance test if cardiac symptoms before PDE5 inhibitor.</div>
+        <div>When NOT to investigate</div><div>Young healthy man with clearly psychogenic ED (sudden onset, situational, morning erections preserved, identifiable precipitant) — cardiovascular baseline still required but hormonal screen may be deferred.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Testosterone must be measured in the morning (fasting) — levels are 15-25% higher at 8am vs 4pm due to circadian rhythm. Two measurements are required due to day-to-day variability (up to 30%). T2DM is present in 25-35% of men with ED — HbA1c detects undiagnosed T2DM (prevalence 3-6% in general male population, higher with ED). QRISK3 is now preferred over Framingham — the Princeton III Guidelines stratify patients into low/intermediate/high cardiovascular risk before PDE5 inhibitor initiation.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 6 -->
+  <div class="node" data-type="REFER" data-step="6">
+    <div class="node-head">
+      <div class="node-num">6</div>
+      <span class="node-tag">Refer</span>
+      <h3>Referral Criteria — When to Escalate</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Most ED is managed in primary care. These presentations require specialist input.</span>
+      <div class="kv">
+        <div><span class="pill pill-red">999</span></div><div>Priapism (&gt;4 hours). Haemodynamic instability. Acute coronary syndrome triggered by ED discussion/treatment.</div>
+        <div><span class="pill pill-red">Same-day</span></div><div>Priapism &lt;4 hours (call urology for advice — aspiration may avoid emergency). Suspected acute prostatitis with systemic sepsis. Acute urinary retention.</div>
+        <div><span class="pill pill-amber">Urgent 2/52 Urology</span></div><div>Peyronie's disease (penile curvature with ED). Hypospadias affecting sexual function. Post-radical prostatectomy ED (nerve-sparing — early PDE5 inhibitor rehab). Testicular pathology on examination.</div>
+        <div><span class="pill pill-purple">Endocrinology</span></div><div>Secondary hypogonadism (low testosterone + low/normal LH/FSH). Prolactin &gt;700 mIU/L or any pituitary mass on MRI. Testosterone deficiency not responding to primary care management.</div>
+        <div><span class="pill pill-blue">Psychosexual therapy</span></div><div>Predominantly psychogenic ED. Failed PDE5 inhibitor trial in young man. Relationship conflict. Sexual trauma. Performance anxiety. Prefer non-pharmacological approach.</div>
+        <div><span class="pill pill-blue">Cardiology</span></div><div>High cardiovascular risk before PDE5 inhibitor initiation (recent MI &lt;6/52, unstable angina, severe HF, uncontrolled HTN). Needs exercise testing/risk stratification first.</div>
+        <div>Primary care manage</div><div>ED + metabolic risk factors (T2DM, dyslipidaemia, HTN, obesity) — address underlying risks + PDE5 inhibitor. Psychogenic ED with adequate explanation/counselling. ED secondary to medication — switch drug if possible.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Princeton III Consensus Guidelines (2012) stratify cardiovascular risk: LOW risk (stable angina, well-controlled HTN, mild HF) = safe for PDE5 inhibitors. HIGH risk (recent MI &lt;6/52, unstable angina, NYHA Class 3-4 HF, uncontrolled HTN) = defer until stabilised by cardiologist. Post-radical prostatectomy penile rehabilitation with early PDE5 inhibitor use (nerve-sparing procedures) improves long-term erectile recovery by 50% — urology should initiate within weeks of surgery.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 7 -->
+  <div class="node" data-type="TREAT" data-step="7">
+    <div class="node-head">
+      <div class="node-num">7</div>
+      <span class="node-tag">Treat</span>
+      <h3>Treatment — PDE5 Inhibitor Ladder & Hormonal Therapy</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>PDE5 inhibitors are first-line for all organic and mixed ED. Correct underlying cause simultaneously.</span>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">On-demand (situational)</div>
+          <div class="b-drug">Sildenafil 50mg <span class="pill pill-teal">1st line</span></div>
+          <div class="b-note">Take 30-60 min before sexual activity. Avoid high-fat meal (delays absorption). Titrate to 100mg if inadequate, or reduce to 25mg if side effects. Duration 4-6h.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Spontaneity preferred</div>
+          <div class="b-drug">Tadalafil 10mg daily</div>
+          <div class="b-note">Daily tadalafil (5mg OD) or on-demand (10mg, titrate to 20mg). Duration 36h allows sexual spontaneity. Preferred in daily use, T2DM, post-prostatectomy rehab.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Sildenafil side effects</div>
+          <div class="b-drug">Vardenafil 10mg</div>
+          <div class="b-note">Alternative to sildenafil. Take 25-60 min before activity. Titrate to 20mg. Avoid with class IA/III antiarrhythmics (QT prolongation risk). Check ECG first.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Hypogonadism confirmed</div>
+          <div class="b-drug">Testosterone replacement</div>
+          <div class="b-note">Refer endocrinology for initiation. Testogel 50mg sachet daily (transdermal) or Nebido 1000mg IM every 10-14/52. Improves libido + PDE5 response. Monitor PSA, FBC, testosterone levels.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">PDE5 inhibitor CI or fails</div>
+          <div class="b-drug">Alprostadil <span class="pill pill-amber">2nd line</span></div>
+          <div class="b-note">Caverject (intracavernosal injection, urology-taught) 5-40mcg or MUSE urethral pellet 125-1000mcg. Effective in &gt;70% of PDE5 failures. Urology to initiate.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">All treatments fail</div>
+          <div class="b-drug">Vacuum erection device</div>
+          <div class="b-note">Non-pharmacological. Effective in 60-70%. Useful in cardiovascular disease, anticoagulant use, PDE5 contraindication. Available on NHS prescription. Urology or primary care.</div>
+        </div>
+      </div>
+      <div class="ladder" style="margin-top:14px">
+        <div class="rung"><span class="rn">PDE5 teaching</span><span class="rt">Must counsel: <b>require sexual stimulation</b> (not aphrodisiacs), avoid high-fat meals (sildenafil), avoid grapefruit, not take &gt;once/day. Nitrate CI absolute. Allow 4-6 attempts at optimal dose before declaring failure.</span></div>
+        <div class="rung"><span class="rn">Medication switch</span><span class="rt">If ED caused by beta-blocker → switch to nebivolol (vasodilatory, less ED). SSRI-induced ED → consider mirtazapine or bupropion (lower sexual SE profile). Thiazide → switch to amlodipine/ACE inhibitor.</span></div>
+        <div class="rung"><span class="rn">NHS prescription</span><span class="rt">ED medications are NHS-prescribable for: T2DM, MS, Parkinson's, polio, prostate cancer, spinal cord injury, renal failure, severe pelvic injury, single gene neurological disease, radical prostatectomy, prostate/rectal cancer treatment.</span></div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">PDE5 inhibitors have overall efficacy of 65-75% across ED aetiologies (Cochrane meta-analysis, 2009). NNT ~2-3 for improved erection. Tadalafil daily (5mg) is superior to on-demand dosing for T2DM-related and post-prostatectomy ED (earlier penile rehabilitation). 50% of PDE5 'failures' are administration errors — the most common being taken after a high-fat meal (delays sildenafil absorption by 1-2h) or insufficient sexual stimulation. A 4-attempt trial at maximum tolerated dose is required before declaring treatment failure.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 8 -->
+  <div class="node" data-type="LIFESTYLE" data-step="8">
+    <div class="node-head">
+      <div class="node-num">8</div>
+      <span class="node-tag">Lifestyle</span>
+      <h3>Non-Pharmacological — Lifestyle as Vascular Treatment</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Lifestyle modification can restore erectile function without drugs — and reduces cardiovascular risk simultaneously.</span>
+      <div class="lsgrid">
+        <div class="lstile"><b>Exercise</b> 40 min aerobic exercise × 4/week reduces ED by 30% (RCT, Lamina et al). Improves endothelial function, reduces BMI, raises free testosterone. Most powerful lifestyle intervention.</div>
+        <div class="lstile"><b>Weight loss</b> 10% body weight loss restores erectile function in 30% of obese men without medication. Reduces aromatisation of testosterone to oestrogen. Target BMI &lt;25.</div>
+        <div class="lstile"><b>Smoking cessation</b> Smoking causes endothelial dysfunction and is an independent risk factor for ED (OR 1.51). Cessation improves ED in 25% within 1 year. Refer to NHS Stop Smoking Service.</div>
+        <div class="lstile"><b>Alcohol reduction</b> Chronic excess alcohol → hypogonadism, peripheral neuropathy, testicular atrophy. Target &lt;14 units/week with alcohol-free days. Acute excess causes transient ED even in healthy men.</div>
+        <div class="lstile"><b>Mediterranean diet</b> Reduces ED risk by 40% (Esposito et al, JAMA 2004, RCT). Improves endothelial function, reduces insulin resistance. Olive oil, fish, legumes, vegetables, nuts.</div>
+        <div class="lstile"><b>Cycling modification</b> &gt;3h/week cycling → perineal pressure compresses pudendal artery. Use ergonomic saddle (no-nose design), padded shorts, standing intervals. Reassess if not improving.</div>
+        <div class="lstile"><b>Psychosexual therapy</b> CBT addresses performance anxiety, sensate focus exercises improve intimacy. Combined PDE5 + psychotherapy superior to either alone. Refer if relationship conflict. COSRT-registered therapist.</div>
+        <div class="lstile"><b>Sleep hygiene</b> Testosterone secretion occurs predominantly during sleep (REM phase). Obstructive sleep apnoea causes hypogonadism + ED. Screen (STOP-BANG score). CPAP improves testosterone and ED.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">The MMAS (Massachusetts Male Ageing Study) showed physical activity reduces ED risk by 30-40%. Esposito's landmark RCT (JAMA 2004) showed Mediterranean diet improved IIEF scores from 13.9 to 17.0 (vs 13.6 to 13.4 in controls — p&lt;0.001). Sleep apnoea affects 15-25% of men with ED — CPAP therapy normalises testosterone levels in 70% of hypogonadal men with OSA. Lifestyle modification addressing all vascular risk factors collectively has greater impact on erectile function than any single drug intervention.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 9 -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-head">
+      <div class="node-num">9</div>
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up — Review, Monitoring & Cardiovascular Surveillance</h3>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <span>Follow-up has a dual purpose: assess treatment response AND manage cardiovascular risk.</span>
+      <div class="kv">
+        <div>4-6 weeks</div><div>Review PDE5 inhibitor response (re-score IIEF-5). Check side effects (flushing, headache, visual changes). Confirm correct administration technique. Address new psychological barriers.</div>
+        <div>3 months</div><div>Reassess QRISK3 if newly initiated antihypertensive/statin. Repeat testosterone if borderline. Weight/BMI/waist circumference. HbA1c if T2DM. Lifestyle progress.</div>
+        <div>6-12 months</div><div>Annual cardiovascular review — BP, lipids, HbA1c, weight, smoking status. IIEF-5 re-score to document outcome. Consider stepping down PDE5 inhibitor dose if lifestyle improvements significant.</div>
+        <div>On testosterone</div><div>Every 3-6 months: testosterone level, haematocrit/FBC (polycythaemia risk — target testosterone 10-25 nmol/L), PSA, BP. Refer if PSA rise &gt;1.4 ng/ml above baseline at any 12-month assessment.</div>
+        <div>Safety-net <span class="pill pill-red">999</span></div><div>Chest pain/dyspnoea during sexual activity → stop sexual activity, call 999. Priapism &gt;4 hours. Any severe adverse drug reaction (syncope after PDE5 + nitrate interaction).</div>
+        <div>Safety-net same-day</div><div>Sudden vision loss or hearing loss after PDE5 inhibitor (rare NAION — non-arteritic ischaemic optic neuropathy — stop PDE5 inhibitor permanently). Priapism &lt;4 hours.</div>
+        <div>Non-responders</div><div>Failed 2 different PDE5 inhibitors at maximum dose → confirm compliance, check testosterone, consider referral to urology (penile Doppler, alprostadil, vacuum device, surgical implant discussion)</div>
+        <div>Psychological review</div><div>If ED persists despite optimal pharmacological treatment → formal psychosexual therapy referral. Partner involvement in therapy improves outcomes. COSRT UK directory.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">ED patients have 44% higher rate of major cardiovascular events — every ED consultation is an opportunity for CVD risk reduction. Annual cardiovascular review in men with ED has been shown to detect new-onset T2DM, hypertension, and dyslipidaemia — effectively making ED a 'gateway' to preventive medicine. NAION (non-arteritic ischaemic optic neuropathy) associated with PDE5 inhibitors has estimated incidence of 2.5/100,000 — rare but serious; patients must be warned. Testosterone monitoring for polycythaemia is mandatory — haematocrit &gt;54% requires dose reduction or phlebotomy.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: EAU Guidelines on Male Sexual Dysfunction (2023), NICE CG97 (Lower Urinary Tract Symptoms, 2010), Princeton III Cardiovascular Consensus Guidelines (2012), British Society for Sexual Medicine (BSSM) ED Guidelines (2018), NICE TA325 (PDE5 inhibitors). Always adapt to individual patient and use shared decision-making.
+</div>
+
+<script>
+(function(){
+  const STORE='rgp.alg.erectiledysfunction.v1';
+  const flow=document.getElementById('flow');
+  const nodes=[...flow.querySelectorAll('.node')];
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=nodes.length;
+  document.getElementById('pTotal').textContent=total;
+  function save(){const state=nodes.map(n=>n.querySelector('input[type=checkbox]').checked);localStorage.setItem(STORE,JSON.stringify(state));}
+  function load(){try{const s=JSON.parse(localStorage.getItem(STORE)||'[]');nodes.forEach((n,i)=>{if(s[i]){n.querySelector('input[type=checkbox]').checked=true;n.classList.add('done');}});}catch(e){}}
+  function updateProgress(){const done=nodes.filter(n=>n.querySelector('input[type=checkbox]').checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';}
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');
+    cb.addEventListener('change',()=>{n.classList.toggle('done',cb.checked);save();updateProgress();});
+    const btn=n.querySelector('.why-btn');
+    const drawer=n.querySelector('.why-drawer');
+    btn.addEventListener('click',()=>{const open=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!open));drawer.classList.toggle('open',!open);});
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{nodes.forEach(n=>{n.querySelector('input[type=checkbox]').checked=false;n.classList.remove('done');});flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);updateProgress();});
+  load();updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

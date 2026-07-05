@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dyspepsia Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & BASE ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --safety:   #dc2626;
+  --diagnose: #2563eb;
+  --treat:    #059669;
+  --refer:    #7c3aed;
+  --lifestyle:#d97706;
+
+  --safety-bg:   #fef2f2;
+  --diagnose-bg: #eff6ff;
+  --treat-bg:    #ecfdf5;
+  --refer-bg:    #f5f3ff;
+  --lifestyle-bg:#fffbeb;
+
+  --ink:   #111827;
+  --muted: #6b7280;
+  --line:  #e5e7eb;
+  --card:  #ffffff;
+  --page:  #f8fafc;
+
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--page);
+  color: var(--ink);
+  line-height: 1.6;
+  padding: 0 0 80px;
+  min-height: 100vh;
+}
+
+/* ─── HEADER BANNER ─── */
+.stem-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 60%, #1d4ed8 100%);
+  color: #fff;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+}
+.sb-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.stem-banner b { font-size: 1.2rem; font-weight: 700; display: block; }
+.stem-banner small { font-size: .82rem; opacity: .8; margin-top: 2px; display: block; }
+
+/* ─── PROGRESS BAR ─── */
+.alg-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 28px;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.pcount { margin-left: auto; color: var(--ink); }
+.pbar {
+  width: 140px;
+  height: 6px;
+  background: var(--line);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.pbar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #059669);
+  border-radius: 99px;
+  transition: width .4s ease;
+  width: 0%;
+}
+.reset {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-size: .78rem;
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.reset:hover { background: #f3f4f6; color: var(--ink); }
+
+/* ─── FLOW CONTAINER ─── */
+.alg-flow {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ─── CONNECTOR ─── */
+.connector {
+  width: 2px;
+  height: 28px;
+  background: var(--line);
+  margin: 0 auto;
+}
+
+/* ─── NODE CARD ─── */
+.node {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--line);
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.node.done { opacity: .7; }
+.node[data-type="SAFETY"]    { border-left-color: var(--safety); }
+.node[data-type="DIAGNOSE"]  { border-left-color: var(--diagnose); }
+.node[data-type="TREAT"]     { border-left-color: var(--treat); }
+.node[data-type="REFER"]     { border-left-color: var(--refer); }
+.node[data-type="LIFESTYLE"] { border-left-color: var(--lifestyle); }
+
+/* ─── NODE HEADER ─── */
+.node-head-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--line);
+}
+.node-num {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 36px;
+  color: var(--muted);
+}
+.node-head { flex: 1; }
+.node-tag {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+.node[data-type="SAFETY"]    .node-tag { background: var(--safety-bg);    color: var(--safety); }
+.node[data-type="DIAGNOSE"]  .node-tag { background: var(--diagnose-bg);  color: var(--diagnose); }
+.node[data-type="TREAT"]     .node-tag { background: var(--treat-bg);     color: var(--treat); }
+.node[data-type="REFER"]     .node-tag { background: var(--refer-bg);     color: var(--refer); }
+.node[data-type="LIFESTYLE"] .node-tag { background: var(--lifestyle-bg); color: var(--lifestyle); }
+
+.node-head h3 { font-size: 1.05rem; font-weight: 700; color: var(--ink); line-height: 1.3; }
+
+.node-tick {
+  display: flex;
+  align-items: center;
+  padding-top: 4px;
+}
+.node-tick label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+.node-tick input[type="checkbox"] {
+  width: 18px; height: 18px;
+  accent-color: #059669;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.tlbl { font-size: .78rem; color: var(--muted); white-space: nowrap; font-weight: 500; }
+
+/* ─── NODE BODY ─── */
+.node-body {
+  padding: 16px 20px 18px;
+  font-size: .9rem;
+  line-height: 1.65;
+}
+.node-body > p, .node-body > .intro {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: .875rem;
+}
+
+/* ─── KEY-VALUE GRID ─── */
+.kv {
+  display: grid;
+  grid-template-columns: minmax(120px, 28%) 1fr;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: .86rem;
+}
+.kv > div {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.kv > div:last-child, .kv > div:nth-last-child(2) { border-bottom: none; }
+.kv > div:nth-child(odd) {
+  background: #f9fafb;
+  font-weight: 600;
+  font-size: .8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* ─── RED FLAG TILES ─── */
+.rfgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+.rftile {
+  background: var(--safety-bg);
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: .84rem;
+  line-height: 1.5;
+}
+.rftile b { color: var(--safety); display: block; margin-bottom: 3px; }
+
+/* ─── BRANCH ─── */
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+.b-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.b-cond {
+  background: #f3f4f6;
+  padding: 8px 12px;
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+.b-drug {
+  padding: 8px 12px 4px;
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.b-note {
+  padding: 0 12px 10px;
+  font-size: .8rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* ─── LADDER ─── */
+.ladder {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 4px;
+  counter-reset: ladder;
+}
+.rung {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+  font-size: .86rem;
+}
+.rung:last-child { border-bottom: none; }
+.rung:nth-child(even) { background: #fafafa; }
+.rn {
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+  white-space: nowrap;
+  min-width: 52px;
+}
+.rt { flex: 1; line-height: 1.5; }
+
+/* ─── LIFESTYLE TILES ─── */
+.lsgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+.lstile {
+  background: var(--lifestyle-bg);
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: .84rem;
+  line-height: 1.5;
+}
+.lstile b { color: #92400e; display: block; margin-bottom: 3px; }
+
+/* ─── PILLS ─── */
+.pill {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 99px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.pill-red    { background: #fee2e2; color: #b91c1c; }
+.pill-purple { background: #ede9fe; color: #6d28d9; }
+.pill-blue   { background: #dbeafe; color: #1d4ed8; }
+.pill-teal   { background: #ccfbf1; color: #0f766e; }
+.pill-amber  { background: #fef3c7; color: #b45309; }
+.pill-green  { background: #dcfce7; color: #15803d; }
+.pill-grey   { background: #f3f4f6; color: #4b5563; }
+
+/* ─── WHY DRAWER ─── */
+.why-row {
+  border-top: 1px solid var(--line);
+  background: #fafafa;
+}
+.why-btn {
+  width: 100%;
+  text-align: left;
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color .15s;
+}
+.why-btn:hover { color: var(--ink); }
+.caret { font-size: .9rem; transition: transform .25s; }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.why-drawer {
+  display: none;
+  padding: 0 20px 14px;
+  font-size: .84rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.why-drawer.open { display: block; }
+.why-drawer ul { margin: 6px 0 0 16px; }
+.why-drawer li { margin-bottom: 4px; }
+
+/* ─── FOOTER ─── */
+.alg-foot {
+  max-width: 860px;
+  margin: 32px auto 0;
+  padding: 16px 20px;
+  font-size: .8rem;
+  color: var(--muted);
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  line-height: 1.6;
+}
+
+/* ─── SPACING UTILITIES ─── */
+.mt { margin-top: 12px; }
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🫁</div>
+  <div>
+    <b>Dyspepsia — Primary Care Management</b>
+    <small>RCGP SCA algorithm · UK GP trainees &amp; early-career GPs · 10-minute appointment guide</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — screen ALARM red flags for urgent OGD, stop the culprit drugs, test-and-treat H. pylori before any empirical PPI, then step-wise treat, refer on NICE NG12 thresholds, and review long-term PPI use.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Dyspepsia</span><div class="body">Epigastric pain/burning, fullness, early satiety, reflux. Review <b>NSAIDs, aspirin, bisphosphonates, iron</b>, alcohol and smoking. Screen ALARM features at the first visit; a positive H. pylori test or NSAID link is far more common than cancer — but never skip the red-flag check.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — ALARM red flags (NICE NG12)</span><span class="ttl">Urgent OGD or admission needed?</span><div class="body"><ul>
+      <li><b>Dysphagia</b> — at ANY age → urgent OGD</li>
+      <li><b>Aged ≥55 + weight loss</b> with upper abdominal pain / reflux / dyspepsia</li>
+      <li><b>Upper abdominal mass</b> (stomach), iron-deficiency anaemia, persistent vomiting</li>
+      <li><b>Significant acute GI bleed</b> — haematemesis / melaena → immediate admission</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · refer / admit</span><span class="ttl">Urgent OGD — 2WW (or admit)</span><div class="body">Suspected oesophago-gastric cancer → urgent direct-access endoscopy. <b>Stop NSAIDs and, where possible, the PPI for 2 weeks before OGD</b> (PPIs mask malignancy). Acute GI bleed → emergency admission.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — uncomplicated</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Test H. pylori + review meds</span><div class="body"><b>Stool antigen or urea breath test</b> (off PPI 2 weeks, off antibiotics 4 weeks). Stop culprit drugs. Offer <b>FIT</b> if any colorectal features; coeliac serology if IBS overlap; USS if biliary picture.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · subtype the uncomplicated patient</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">H. pylori positive</div><div class="box ix"><span class="ttl">Peptic ulcer / infection</span><div class="body">Drives ~80% of duodenal &amp; 60% of gastric ulcers; eradication reduces gastric-cancer risk.</div></div></div>
+      <div class="col"><div class="blabel">GORD-predominant</div><div class="box ix"><span class="ttl">Heartburn / regurgitation</span><div class="body">Acid reflux worse lying flat / post-prandial, relieved by antacids → full-dose PPI + lifestyle.</div></div></div>
+      <div class="col"><div class="blabel">Functional / drug-induced</div><div class="box ix"><span class="ttl">No alarm, normal tests</span><div class="body">Rome IV functional dyspepsia (gut–brain), or a clear NSAID/aspirin/bisphosphonate link → stop the drug.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · stepwise treatment</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — NICE CKS stepwise pathway</span><span class="ttl">Drugs off → eradicate → PPI → review</span><div class="body"><ul>
+      <li><b>① Remove culprit drugs</b> — stop NSAIDs/aspirin (if safe), bisphosphonates, iron; switch NSAID or add cover.</li>
+      <li><b>② H. pylori positive → 7-day triple therapy:</b> omeprazole 20 mg BD + amoxicillin 1 g BD + clarithromycin 500 mg BD (metronidazole 400 mg BD if penicillin-allergic). Confirm eradication by UBT/HpSA 4 wks after, off PPI 2 wks. 2nd-line = quadruple bismuth therapy.</li>
+      <li><b>③ H. pylori negative / eradicated but symptomatic → empirical PPI</b> (omeprazole 20–40 mg OD, 30 min before food) for 4–8 weeks; step down to lowest effective / PRN dose.</li>
+      <li><b>④ Adjuncts</b> — alginate/antacid PRN (Gaviscon Advance); H₂RA (famotidine) if PPI not tolerated.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-purple">2WW · NICE NG12</span> dysphagia (any age); ≥55 + weight loss + upper-abdo pain / reflux / dyspepsia; upper-abdominal (stomach) mass → <b>urgent direct-access OGD</b>.</li>
+      <li><span class="pill pill-purple">Direct-access OGD (non-urgent)</span> ≥55 with treatment-resistant dyspepsia, or upper-abdo pain + low Hb, or raised platelets / nausea-vomiting with other features; ≥40 + family history or high-risk origin.</li>
+      <li><span class="pill pill-purple">Urgent CT</span> ≥60 + weight loss + back pain / new diabetes → suspected pancreatic cancer.</li>
+      <li><span class="pill pill-grey">Gastroenterology</span> symptoms persisting after 2 full treatment courses, diagnostic doubt, or H. pylori failing 1st+2nd-line.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · lifestyle &amp; deprescribe</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; medication review</span><span class="ttl">Reduce reflux, rationalise PPIs</span><div class="body"><b>Weight loss</b>, smaller meals, avoid late eating, <b>reduce alcohol, caffeine, fatty/spicy foods</b>, raise bed-head, stop smoking. Add routine PPI gastroprotection for anyone needing ongoing NSAIDs (esp. ≥65 / PUD history / steroids / anticoagulants). <b>Annual review of long-term PPIs</b> — step down to lowest effective dose.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Admit / 999</b> if vomiting blood, black tarry stools, collapse or new difficulty swallowing. <b>Review:</b> PPI response at 4 weeks; confirm H. pylori eradication at 4–6 weeks; reassess if symptoms recur after stopping. <b>Safety-net:</b> alarm features can appear <i>de novo</i> in someone previously labelled functional — document a red-flag return plan.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Test-and-treat H. pylori before empirical PPI</b>, and stop the PPI 2 weeks before any urea breath test or OGD or you'll get a false-negative and mask malignancy. <b>Dysphagia is never functional</b> — urgent OGD at any age.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- STEP 1: SAFETY — Red Flags                     -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-head-row">
+      <div class="node-num">1</div>
+      <div class="node-head">
+        <span class="node-tag">Safety</span>
+        <h3>Exclude alarm features — these patients must NOT wait</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Ask these questions BEFORE assuming simple dyspepsia. Alarm features mandate urgent investigation — most are 2WW upper GI cancer referrals.</p>
+      <div class="rfgrid">
+        <div class="rftile"><b>Dysphagia</b> Difficulty swallowing solids or liquids → <span class="pill pill-purple">2WW UGI</span> (oesophageal/gastric cancer)</div>
+        <div class="rftile"><b>Progressive unintentional weight loss</b> &gt;5% body weight unexplained → <span class="pill pill-purple">2WW UGI</span></div>
+        <div class="rftile"><b>Persistent vomiting</b> Frequent or severe, not relieved by simple measures → <span class="pill pill-purple">2WW UGI</span> / same-day review</div>
+        <div class="rftile"><b>Haematemesis</b> Vomiting blood or coffee-grounds → <span class="pill pill-red">999 / A&amp;E</span> (upper GI bleed)</div>
+        <div class="rftile"><b>Melaena</b> Tarry black stools → <span class="pill pill-red">999 / A&amp;E</span> (upper GI bleed)</div>
+        <div class="rftile"><b>Iron-deficiency anaemia</b> Confirmed on FBC + ferritin without obvious cause → <span class="pill pill-purple">2WW UGI</span></div>
+        <div class="rftile"><b>Epigastric mass</b> Palpable on examination → <span class="pill pill-purple">2WW UGI</span></div>
+        <div class="rftile"><b>Age ≥55 + new or changed dyspepsia</b> Especially with any of the above or unexplained → <span class="pill pill-purple">2WW UGI</span> (per NICE NG12)</div>
+        <div class="rftile"><b>Sudden severe epigastric pain</b> Tearing or board-like rigidity → <span class="pill pill-red">999</span> (perforated ulcer, aortic aneurysm)</div>
+        <div class="rftile"><b>Jaundice</b> Scleral icterus, dark urine → <span class="pill pill-purple">2WW UGI / hepatobiliary</span> (pancreatic cancer)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <ul>
+          <li>Upper GI cancer (oesophageal, gastric, pancreatic) frequently presents with dyspepsia-like symptoms — delay kills. UK 5-year survival for oesophageal cancer is only ~15% when diagnosed late.</li>
+          <li>NICE NG12 (2015, updated 2023) mandates urgent 2WW referral for dysphagia at any age, and for age ≥55 with weight loss, upper abdominal pain, or reflux symptoms that are new or changed.</li>
+          <li>Haematemesis carries a 10% mortality rate — do not delay.</li>
+          <li>Missing a perforated peptic ulcer leads to peritonitis within hours; mortality rises steeply with delay.</li>
+          <li>The ALARM acronym (Anaemia, Loss of weight, Anorexia, Recent progressive symptoms, Melaena/haematemesis) is a useful mnemonic.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- STEP 2: DIAGNOSE — Confirm & Classify          -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-head-row">
+      <div class="node-num">2</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Confirm dyspepsia and identify the likely cause</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Dyspepsia is a symptom complex — not a diagnosis. Establish which subtype applies to guide management.</p>
+      <div class="kv">
+        <div>Definition</div>
+        <div>Epigastric pain or discomfort, bloating, fullness, nausea, or heartburn — intermittent or persistent, ≥4 weeks. <b>Note:</b> heartburn-predominant = GORD; consider separately.</div>
+        <div>Key history</div>
+        <div>
+          Site &amp; character of pain · Relationship to meals (before vs after) · Acid taste / waterbrash · Bloating / early satiety · Nausea / vomiting · Nocturnal symptoms · Symptom duration &amp; pattern<br>
+          <b>Ask specifically:</b> NSAIDs, aspirin, steroids, bisphosphonates, iron supplements (all ulcerogenic) · Alcohol · Smoking · H. pylori risk (immigrant from high-prevalence country, previous infection, household contact)
+        </div>
+        <div>Symptom pattern</div>
+        <div>
+          <b>Ulcer-like:</b> Burning epigastric pain, relieved by food/antacids, wakes at night<br>
+          <b>Dysmotility-like:</b> Bloating, nausea, early satiety, upper abdominal discomfort<br>
+          <b>GORD-predominant:</b> Heartburn &gt; epigastric pain, worse lying flat, acid regurgitation<br>
+          <b>Unspecified:</b> Mixed / doesn't fit neatly
+        </div>
+        <div>H. pylori risk</div>
+        <div>High prevalence areas: South Asia, Africa, Eastern Europe, Latin America. Prevalence in UK general population ~30–40% but higher in migrants. Always test before empirical PPI in appropriate patients (see Step 5).</div>
+        <div>Medication review</div>
+        <div>Check prescriptions AND OTC: NSAIDs, low-dose aspirin, clopidogrel, SSRIs, bisphosphonates, calcium antagonists (may worsen reflux), iron. <b>Stop or review causative medications before escalating.</b></div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <ul>
+          <li>NICE CKS Dyspepsia (2023) emphasises identifying the symptom subtype as it directs whether to test-and-treat for H. pylori, use empirical PPIs, or refer.</li>
+          <li>NSAIDs account for up to 25% of peptic ulcer disease — stopping them alone may resolve symptoms.</li>
+          <li>H. pylori eradication cures ~80% of duodenal ulcers and reduces gastric cancer risk — identifying this at the outset saves unnecessary long-term PPI use.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- STEP 3: DIAGNOSE — Classification / Subtyping  -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+    <div class="node-head-row">
+      <div class="node-num">3</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Classify by subtype — drives the treatment pathway</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Functional dyspepsia (Rome IV criteria) vs organic cause — this distinction affects prognosis, treatment goals, and patient expectations.</p>
+      <div class="kv">
+        <div>Functional dyspepsia <span class="pill pill-grey">Rome IV</span></div>
+        <div>
+          One or more of: bothersome postprandial fullness, early satiation, epigastric pain or burning — at least 3 days/week for ≥3 months (onset ≥6 months ago) — <b>with no structural cause on investigation</b>.<br>
+          Subtypes: <b>PDS</b> (postprandial distress: meal-triggered) | <b>EPS</b> (epigastric pain syndrome: localised pain/burning)
+        </div>
+        <div>Peptic ulcer disease</div>
+        <div>H. pylori-associated or NSAID-induced. Confirmed on OGD. Ulcer-like symptom pattern. More likely with known H. pylori, NSAID use, or prior ulcer.</div>
+        <div>GORD</div>
+        <div>Heartburn dominant, acid regurgitation, relief with antacids, worse post-prandially and lying flat. Can co-exist with dyspepsia. Manage with full-dose PPI 4–8 weeks.</div>
+        <div>H. pylori-associated</div>
+        <div>Positive test-and-treat. Eradication may cure symptoms in PUD and improves functional dyspepsia in ~10% of cases (NNT ~14).</div>
+        <div>Medication-induced</div>
+        <div>Clear temporal link to new drug. Symptoms resolve on stopping/switching. Most common: NSAIDs, aspirin, bisphosphonates, iron.</div>
+        <div>Other / secondary</div>
+        <div>Coeliac disease (serological testing if suspected), biliary disease, chronic pancreatitis, gastroparesis (diabetes), IBS overlap. Consider if atypical features.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <ul>
+          <li>Functional dyspepsia has a benign prognosis but requires patient education — setting expectations prevents repeated unnecessary investigations and reassurance-seeking.</li>
+          <li>Rome IV criteria provide a positive diagnostic framework so functional dyspepsia is diagnosed actively, not just by exclusion.</li>
+          <li>Patients whose dyspepsia is due to H. pylori infection and whose infection is eradicated have long-term improvement in ~10% of cases above placebo — modest but clinically important and cost-effective.</li>
+          <li>Misdiagnosing GORD as functional dyspepsia means missing Barrett's oesophagus surveillance criteria — critical distinction.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- STEP 4: DIAGNOSE — Targeted Examination        -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="4">
+    <div class="node-head-row">
+      <div class="node-num">4</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Targeted examination — exclude surgical and serious pathology</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Examination is often normal in uncomplicated dyspepsia — but abnormal findings mandate urgent action.</p>
+      <div class="kv">
+        <div>General inspection</div>
+        <div>Pallor (anaemia — bleed or malignancy) · Jaundice (biliary/pancreatic) · Cachexia/weight loss · Distress level</div>
+        <div>Vital signs</div>
+        <div>Tachycardia + hypotension → haemodynamic compromise from GI bleed → <span class="pill pill-red">999</span>. Temperature → consider infection / cholangitis.</div>
+        <div>Abdominal palpation</div>
+        <div>
+          <b>Epigastric tenderness:</b> Common in PUD and GORD — not diagnostic but correlates with pathology<br>
+          <b>Epigastric mass:</b> Hard, irregular → <span class="pill pill-purple">2WW UGI</span><br>
+          <b>Hepatomegaly:</b> May indicate metastatic disease<br>
+          <b>Succussion splash:</b> Gastric outlet obstruction (pyloric stenosis)<br>
+          <b>Peritonism / guarding / rebound:</b> → <span class="pill pill-red">999</span> (perforation, ischaemia)
+        </div>
+        <div>BMI</div>
+        <div>Obesity drives GORD and dyspepsia. Record BMI — relevant to lifestyle advice and drug dosing. BMI &gt;30 → address weight as core treatment.</div>
+        <div>Lymphadenopathy</div>
+        <div>Left supraclavicular (Virchow's node) → <span class="pill pill-purple">2WW UGI</span> (gastric cancer metastasis — Troisier's sign)</div>
+        <div>Oropharynx</div>
+        <div>Dental erosions → chronic GORD. Visible peristalsis → gastric outlet obstruction (rare but important).</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <ul>
+          <li>Examination changes management: a palpable epigastric mass upgrades a routine consultation to a 2WW referral.</li>
+          <li>Haemodynamic instability (tachycardia, hypotension) in a patient with epigastric pain is a GI bleed until proven otherwise — do not send home.</li>
+          <li>Virchow's node (left supraclavicular lymphadenopathy) is a known metastatic sign for gastric cancer and should be checked in any atypical presentation in patients ≥45.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- STEP 5: DIAGNOSE — Investigations              -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+    <div class="node-head-row">
+      <div class="node-num">5</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Investigations — what to order and what to avoid</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">In uncomplicated dyspepsia in patients &lt;55 without alarm features, the key investigation is H. pylori testing — not a battery of bloods.</p>
+      <div class="kv">
+        <div>H. pylori test <span class="pill pill-blue">First-line</span></div>
+        <div>
+          <b>Urea breath test (UBT)</b> — preferred: 93% sensitivity, 97% specificity. Stop PPI 2 weeks before, antibiotics 4 weeks before.<br>
+          <b>H. pylori stool antigen (HpSA)</b> — if UBT unavailable. Same PPI/antibiotic stop rules.<br>
+          <b>Serology</b> — <b>not recommended</b> for active infection (cannot distinguish past from current infection).<br>
+          <b>Endoscopy-based CLO test</b> — if referred for OGD only.
+        </div>
+        <div>FBC <span class="pill pill-blue">Bloods</span></div>
+        <div>If anaemia suspected (pallor, alarm features, heavy menstrual loss). Microcytic anaemia + low ferritin = iron deficiency → investigate cause. <b>Not routine in straightforward dyspepsia.</b></div>
+        <div>LFTs / Amylase</div>
+        <div>If biliary/pancreatic pathology suspected (RUQ pain, jaundice, alcohol history). Not routine.</div>
+        <div>Coeliac serology <span class="pill pill-blue">If indicated</span></div>
+        <div>Anti-TTG IgA + total IgA if IBS-type overlap, bloating, diarrhoea, or iron deficiency. Must be eating gluten at time of test.</div>
+        <div>Fasting glucose / HbA1c</div>
+        <div>If gastroparesis suspected (diabetes + dysmotility symptoms: early satiety, vomiting, bloating). Not routine.</div>
+        <div>OGD <span class="pill pill-purple">Via referral</span></div>
+        <div>Indicated only via 2WW pathway (alarm features) or if symptoms persist despite 2 full treatment courses. <b>NOT a first-line investigation in primary care.</b></div>
+        <div>Do NOT order</div>
+        <div>H. pylori serology (unreliable for active infection) · Abdominal USS routinely · Gastric emptying studies in primary care · H. pylori breath test while on PPI/antibiotics (false negatives)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <ul>
+          <li>NICE CKS (2023) recommends a "test-and-treat" strategy for H. pylori in uninvestigated dyspepsia before empirical PPI — this is cost-effective and reduces long-term PPI dependency.</li>
+          <li>PPIs must be stopped 2 weeks before UBT/HpSA — failure to stop leads to false negative results, perpetuating untreated infection.</li>
+          <li>Routine OGD for all dyspepsia would overwhelm endoscopy services — NICE restricts this appropriately to alarm features or treatment failure.</li>
+          <li>Coeliac disease prevalence in the UK is ~1% and is commonly missed — a low threshold for testing is clinically appropriate in bloating-predominant dyspepsia.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- STEP 6: REFER — Referral Criteria              -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="node" data-type="REFER" data-step="6">
+    <div class="node-head-row">
+      <div class="node-num">6</div>
+      <div class="node-head">
+        <span class="node-tag">Refer</span>
+        <h3>Referral criteria — who needs specialist input?</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Most dyspepsia is managed entirely in primary care. Refer when alarm features are present, or when primary care management has failed.</p>
+      <div class="kv">
+        <div><span class="pill pill-red">999 / A&amp;E</span></div>
+        <div>Haematemesis · Melaena · Peritonism / guarding (perforation) · Haemodynamic instability (tachycardia, hypotension)</div>
+        <div><span class="pill pill-red">Same-day assessment</span></div>
+        <div>Severe persistent vomiting with inability to keep fluids down (dehydration risk) · Acute severe epigastric pain with no clear cause — rule out perforation, AAA</div>
+        <div><span class="pill pill-purple">2WW UGI endoscopy</span></div>
+        <div>
+          <b>Any age:</b> Dysphagia · Haematemesis<br>
+          <b>Age ≥55 + any of:</b> weight loss, reflux, upper abdominal pain (new/changed), nausea/vomiting (unexplained)<br>
+          <b>Any age:</b> Epigastric mass · Confirmed iron-deficiency anaemia without clear cause · Suspicious lymphadenopathy<br>
+          <i>(Per NICE NG12 / NG43)</i>
+        </div>
+        <div><span class="pill pill-grey">Routine gastroenterology</span></div>
+        <div>Symptoms persisting after 2 full courses of treatment (H. pylori eradication + PPI) with no alarm features · Suspected functional dyspepsia refractory to primary care management · Coeliac disease confirmed (for dietary review and follow-up)</div>
+        <div><span class="pill pill-green">Manage in primary care</span></div>
+        <div>Age &lt;55 · No alarm features · Uncomplicated dyspepsia / GORD · Responds to H. pylori eradication or PPI · Medication-induced dyspepsia · Functional dyspepsia with normal investigations</div>
+        <div>Dietitian referral</div>
+        <div>Confirmed coeliac disease (urgent — for gluten-free diet education) · Functional dyspepsia with dietary triggers · BMI &gt;35 with GORD</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <ul>
+          <li>NICE NG12 (Suspected cancer recognition) defines the 2WW criteria — these are updated regularly; always cross-check with current guidance.</li>
+          <li>Age ≥55 is the threshold for lowered suspicion — gastric cancer incidence rises sharply after this age. In the UK, mean age at diagnosis is 72.</li>
+          <li>Appropriate non-referral in primary care is equally important — unnecessary OGD requests increase waiting times and patient anxiety.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- STEP 7: TREAT — Drug Ladder                    -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="node" data-type="TREAT" data-step="7">
+    <div class="node-head-row">
+      <div class="node-num">7</div>
+      <div class="node-head">
+        <span class="node-tag">Treat</span>
+        <h3>Stepwise treatment — test-and-treat, then escalate</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Follow the NICE CKS pathway: always address medication causes first, then test-and-treat for H. pylori, then empirical PPI, then consider specialist review.</p>
+
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">H. pylori positive</div>
+          <div class="b-drug">Triple therapy eradication <span class="pill pill-teal">1st line</span></div>
+          <div class="b-note">
+            <b>Clarithromycin-based (if local resistance &lt;20%):</b><br>
+            Omeprazole 20 mg BD + Amoxicillin 1 g BD + Clarithromycin 500 mg BD — 7 days<br><br>
+            <b>Metronidazole-based (penicillin allergy or resistance):</b><br>
+            Omeprazole 20 mg BD + Metronidazole 400 mg BD + Clarithromycin 500 mg BD — 7 days<br><br>
+            Confirm eradication with UBT or HpSA 4 weeks after completion (off PPI 2 weeks)
+          </div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">H. pylori negative or not tested</div>
+          <div class="b-drug">Empirical PPI <span class="pill pill-teal">1st line</span></div>
+          <div class="b-note">
+            Omeprazole 20 mg OD or Lansoprazole 30 mg OD — <b>4 weeks</b>, taken 30 min before food<br><br>
+            If partial response: increase to full dose BD for 4–8 weeks (GORD)<br><br>
+            Review after 4 weeks — step down to lowest effective dose or PRN
+          </div>
+        </div>
+      </div>
+
+      <div class="ladder mt">
+        <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Remove causative medications</b> Stop NSAIDs, aspirin (if clinically safe to do so), bisphosphonates, iron. Switch NSAID to paracetamol. If NSAID must continue, add PPI gastroprotection: Omeprazole 20 mg OD.</span></div>
+        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Test and treat H. pylori</b> UBT or HpSA test. If positive → 7-day triple therapy (see above). Confirm eradication at 4 weeks.</span></div>
+        <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Empirical full-dose PPI × 4 weeks</b> If H. pylori negative or eradicated but symptoms persist. Omeprazole 20–40 mg OD or Lansoprazole 30 mg OD before food.</span></div>
+        <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Antacids / alginates PRN</b> For breakthrough symptoms. Gaviscon Advance 10 mL after meals + at bedtime (alginate barrier). Suitable alongside PPI or as sole treatment for mild/intermittent symptoms.</span></div>
+        <div class="rung"><span class="rn">Step 5</span><span class="rt"><b>H2 receptor antagonist</b> If PPI poorly tolerated or patient preference. Famotidine 20 mg BD. Less effective than PPIs but useful as add-on nocturnal acid suppression in GORD.</span></div>
+        <div class="rung"><span class="rn">Step 6</span><span class="rt"><b>Prokinetics (dysmotility-type)</b> Domperidone 10 mg TDS before meals (max 7 days — cardiac risk, QTc prolongation). Metoclopramide 10 mg TDS (max 5 days). Use only short-term; avoid in elderly (extrapyramidal effects).</span></div>
+        <div class="rung"><span class="rn">Step 7</span><span class="rt"><b>Low-dose tricyclic antidepressant</b> For refractory functional dyspepsia (EPS type). Amitriptyline 10 mg nocte — increasing to 25–50 mg if tolerated. NNT ~6 for functional dyspepsia. Explain this is for nerve sensitisation, not depression.</span></div>
+        <div class="rung"><span class="rn">Step 8</span><span class="rt"><b>Mirtazapine (PDS subtype)</b> If nausea/early satiety predominant and TCA not tolerated. Mirtazapine 15 mg nocte. Limited UK prescribing data — consider gastroenterology input.</span></div>
+        <div class="rung"><span class="rn">Failed 2nd course</span><span class="rt"><b>Refer routine gastroenterology</b> For OGD + specialist review if symptoms persist after two treatment courses with no alarm features.</span></div>
+      </div>
+
+      <div class="kv mt">
+        <div>PPI long-term use</div>
+        <div><span class="pill pill-amber">Caution</span> Annual review mandatory. Step down to lowest effective dose. Consider stopping trial if symptom-free &gt;3 months. Risks of long-term PPI: hypomagnesaemia, B12 deficiency, C. diff, increased fracture risk, CKD. Check Mg and B12 annually if on PPI &gt;1 year.</div>
+        <div>H. pylori 2nd-line eradication</div>
+        <div>If 1st-line fails (confirmed on UBT/HpSA): Quadruple therapy — Omeprazole 20 mg BD + Bismuth subsalicylate 120 mg QDS + Tetracycline 500 mg QDS + Metronidazole 400 mg TDS — 14 days. Refer to gastroenterology if 2nd line fails.</div>
+        <div>NSAID gastroprotection</div>
+        <div>Any patient requiring ongoing NSAID: add Omeprazole 20 mg OD routinely. Higher-risk patients (age &gt;65, PUD history, corticosteroids, anticoagulants): consider misoprostol or COX-2 selective NSAID.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <ul>
+          <li><b>Test-and-treat H. pylori before empirical PPI</b> is cost-effective and reduces long-term PPI dependency (NICE CKS 2023, Cochrane 2019).</li>
+          <li>H. pylori eradication cures ~80% of duodenal ulcers and ~60% of gastric ulcers — far superior to PPI alone for ulcer disease.</li>
+          <li>PPIs at step 3 relieve symptoms in ~60–70% of GORD cases (NNT ~3) but are less effective in functional dyspepsia (NNT ~9).</li>
+          <li>Domperidone and metoclopramide have a maximum duration — cardiac risk (QTc prolongation) and extrapyramidal effects respectively. Never prescribe long-term without specialist input.</li>
+          <li>Low-dose TCAs work via central visceral hypersensitivity modulation — the mechanism is well-established in functional GI disorders (Rome Foundation 2021).</li>
+          <li>Long-term PPI review is mandated by NHS England and NICE — patients on PPIs for &gt;8 weeks should have a documented reason and annual review.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- STEP 8: LIFESTYLE                              -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="node" data-type="LIFESTYLE" data-step="8">
+    <div class="node-head-row">
+      <div class="node-num">8</div>
+      <div class="node-head">
+        <span class="node-tag">Lifestyle</span>
+        <h3>Non-pharmacological interventions — first-line, not afterthought</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Lifestyle modification is core treatment — address these at every consultation. Many patients can reduce or stop medication with sustained lifestyle change.</p>
+      <div class="lsgrid">
+        <div class="lstile"><b>Dietary modification</b> Eat smaller, regular meals. Avoid fatty/spicy foods, chocolate, citrus, raw onion, peppermint. Identify and avoid personal trigger foods. Don't eat within 3 hours of bedtime.</div>
+        <div class="lstile"><b>Posture &amp; timing</b> Stay upright 2–3 hours post-meals. Elevate head of bed 15–20 cm (use bed blocks — not extra pillows). Reduces nocturnal GORD by reducing acid exposure.</div>
+        <div class="lstile"><b>Weight loss</b> BMI &gt;25 strongly associated with dyspepsia and GORD. Every 1 unit reduction in BMI reduces GORD symptom frequency. Target BMI &lt;25. Refer to weight management if BMI &gt;30.</div>
+        <div class="lstile"><b>Alcohol</b> Reduces lower oesophageal sphincter (LOS) tone. Advise ≤14 units/week with alcohol-free days. Complete abstinence often resolves alcohol-related dyspepsia.</div>
+        <div class="lstile"><b>Smoking cessation</b> Smoking reduces LOS pressure and delays gastric emptying — directly worsens dyspepsia and GORD. Refer to NHS Stop Smoking Service. Cessation reduces dyspepsia symptoms within weeks.</div>
+        <div class="lstile"><b>Stress management</b> Strong brain-gut axis evidence in functional dyspepsia. Mindfulness-based therapy, CBT (refer via NHS Talking Therapies) reduces symptom severity. NNT ~4 for CBT in functional GI disorders.</div>
+        <div class="lstile"><b>Clothing &amp; posture</b> Avoid tight-fitting clothing around abdomen (increases intra-abdominal pressure). Avoid bending and heavy lifting post-meals.</div>
+        <div class="lstile"><b>Caffeine reduction</b> Coffee and tea increase acid secretion. Advise reducing to ≤2 cups/day or switching to low-acid alternatives. Carbonated drinks worsen bloating — switch to still water.</div>
+        <div class="lstile"><b>Medication timing</b> Take bisphosphonates and iron with a full glass of water, remain upright for 30 minutes. Never take NSAID on an empty stomach. Review all medication timing to minimise GI irritation.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <ul>
+          <li>Weight loss of 5–10% body weight reduces GORD symptom frequency by up to 40% — comparable to full-dose PPI therapy in obese patients.</li>
+          <li>Head-of-bed elevation reduces oesophageal acid exposure time by 67% in studies of nocturnal GORD — a free intervention.</li>
+          <li>CBT improves functional dyspepsia symptom scores by 30–40% in RCTs — NICE recommends psychological therapies for refractory functional GI disorders (CG61).</li>
+          <li>Patients who make sustained lifestyle changes have lower long-term PPI dependency, fewer GP visits, and better quality of life.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- STEP 9: SAFETY — Follow-Up & Monitoring        -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-head-row">
+      <div class="node-num">9</div>
+      <div class="node-head">
+        <span class="node-tag">Safety</span>
+        <h3>Follow-up, monitoring &amp; safety-netting</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Always safety-net. Dyspepsia can evolve — new alarm features at any point mandate urgent re-assessment.</p>
+      <div class="kv">
+        <div>After H. pylori treatment</div>
+        <div>Confirm eradication with UBT or HpSA at <b>4–6 weeks</b> after completing antibiotics (off PPI for 2 weeks before test). If negative → eradication successful. If positive → second-line quadruple therapy. <b>Do not assume cure without testing.</b></div>
+        <div>After PPI course</div>
+        <div><b>4 weeks:</b> Review symptom response. If resolved → step down to lowest effective dose or stop (PRN only). If partial → continue full dose 4 more weeks. If no response → reassess diagnosis, consider H. pylori testing if not done.</div>
+        <div>Long-term PPI review</div>
+        <div><b>Annually:</b> Review indication. Check Mg²⁺ (hypomagnesaemia) and B12 (deficiency) if on PPI &gt;1 year. Attempt annual PPI step-down / stopping trial. Document clinical reason if continuing.</div>
+        <div>Functional dyspepsia</div>
+        <div><b>6–8 weeks:</b> Review response to low-dose TCA / psychological therapy. Reassurance and explanation of the brain-gut axis at each visit. If no improvement after 2 treatment trials → routine gastroenterology referral.</div>
+        <div>Coeliac disease</div>
+        <div>Annual review (GP or dietitian): Symptom control on gluten-free diet · FBC, ferritin, folate, B12, Vitamin D, Ca²⁺ · Anti-TTG antibody to assess dietary adherence · Bone density (DXA) at diagnosis and 2-yearly if osteopenia</div>
+        <div><span class="pill pill-red">Safety-net 999</span></div>
+        <div>New haematemesis · Melaena · Collapse / syncope · Severe acute abdominal pain with rigidity</div>
+        <div><span class="pill pill-amber">Safety-net same-day</span></div>
+        <div>New dysphagia · Rapidly progressive symptoms · Inability to swallow fluids · New unintentional weight loss · Persistent vomiting &gt;24 hours</div>
+        <div><span class="pill pill-purple">Safety-net 2WW</span></div>
+        <div>Any new alarm feature developing during follow-up in a patient previously managed conservatively → re-trigger 2WW UGI pathway immediately</div>
+        <div>Patient information</div>
+        <div>Provide written information: NHS Choices Dyspepsia leaflet · Guts UK patient information · Explain that dyspepsia can recur — knowing when to re-consult is key to patient safety</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <ul>
+          <li>Confirmed H. pylori eradication is mandatory — untreated persistent infection continues to drive ulcer disease and carries a 3–6× increased risk of gastric adenocarcinoma.</li>
+          <li>Up to 50% of patients on long-term PPIs have no clear ongoing indication on review — annual step-down attempts can safely reduce unnecessary prescribing (NHS STOPP criteria).</li>
+          <li>Alarm features can develop de novo in a patient previously diagnosed with functional dyspepsia — a safety-netting "red-flag return" plan is essential and should be documented in the notes.</li>
+          <li>In coeliac disease, annual bloods and anti-TTG monitoring identify dietary non-compliance before malabsorption complications develop (osteoporosis, lymphoma risk).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE CKS Dyspepsia — proven and suspected peptic ulcer disease (2023) · NICE NG12 Suspected cancer: recognition and referral (2015, updated 2023) · NICE CG184 Gastro-oesophageal reflux disease &amp; dyspepsia in adults (2014) · NICE CG61 Irritable bowel syndrome in adults (2008, updated 2017) · BNF guidance on H. pylori eradication regimens · Rome IV criteria for functional gastrointestinal disorders (2016). Always adapt to individual patient context, local antibiotic resistance patterns, and current NHS guidelines. Drug doses correct at time of writing — verify with current BNF before prescribing.
+</div>
+
+<script>
+(function () {
+  const STORE_KEY = 'rgp.alg.dyspepsia.v1';
+  const flow      = document.getElementById('flow');
+  const pDone     = document.getElementById('pDone');
+  const pFill     = document.getElementById('pFill');
+  const pTotal    = document.getElementById('pTotal');
+  const resetBtn  = document.getElementById('resetBtn');
+
+  const nodes     = Array.from(flow.querySelectorAll('.node'));
+  pTotal.textContent = nodes.length;
+
+  /* ── Load saved state ── */
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch (_) {}
+
+  nodes.forEach((node, idx) => {
+    const cb = node.querySelector('input[type="checkbox"]');
+    if (saved[idx]) {
+      cb.checked = true;
+      node.classList.add('done');
+    }
+    cb.addEventListener('change', () => {
+      node.classList.toggle('done', cb.checked);
+      persist();
+      updateProgress();
+    });
+  });
+
+  /* ── Why drawers ── */
+  flow.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const drawer = btn.nextElementSibling;
+      const open   = drawer.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  });
+
+  /* ── Progress ── */
+  function updateProgress () {
+    const done = nodes.filter(n => n.querySelector('input').checked).length;
+    pDone.textContent = done;
+    pFill.style.width = (done / nodes.length * 100) + '%';
+  }
+  updateProgress();
+
+  /* ── Persist ── */
+  function persist () {
+    const state = {};
+    nodes.forEach((n, i) => { state[i] = n.querySelector('input').checked; });
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (_) {}
+  }
+
+  /* ── Reset ── */
+  resetBtn.addEventListener('click', () => {
+    nodes.forEach(n => {
+      n.querySelector('input').checked = false;
+      n.classList.remove('done');
+    });
+    try { localStorage.removeItem(STORE_KEY); } catch (_) {}
+    updateProgress();
+  });
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

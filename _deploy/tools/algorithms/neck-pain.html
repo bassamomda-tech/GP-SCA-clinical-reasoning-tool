@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Neck Pain Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #f6f5f2;
+  --surface:   #ffffff;
+  --border:    #e2dfd8;
+  --text:      #1a1917;
+  --muted:     #6b6760;
+  --accent:    #1d4ed8;
+
+  --safety-h:  #b91c1c;
+  --safety-bg: #fef2f2;
+  --safety-br: #fecaca;
+
+  --diag-h:    #0369a1;
+  --diag-bg:   #f0f9ff;
+  --diag-br:   #bae6fd;
+
+  --ref-h:     #6d28d9;
+  --ref-bg:    #f5f3ff;
+  --ref-br:    #ddd6fe;
+
+  --treat-h:   #065f46;
+  --treat-bg:  #ecfdf5;
+  --treat-br:  #a7f3d0;
+
+  --life-h:    #92400e;
+  --life-bg:   #fffbeb;
+  --life-br:   #fde68a;
+
+  --conn:      #d1cfc9;
+
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+}
+
+body { padding: 0 0 60px; }
+
+.stem-banner {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--text); color: #fff;
+  padding: 18px 22px; position: sticky; top: 0; z-index: 50;
+}
+.sb-icon { font-size: 2rem; line-height: 1; }
+.stem-banner b { display: block; font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em; }
+.stem-banner small { font-size: 0.78rem; opacity: 0.65; font-weight: 400; }
+
+.alg-progress {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 22px; background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.82rem; color: var(--muted); font-weight: 500; flex-wrap: wrap;
+}
+.pbar { flex: 1; min-width: 120px; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.pbar-fill { height: 100%; width: 0%; background: var(--accent); border-radius: 99px; transition: width .35s ease; }
+.pcount { font-weight: 700; color: var(--text); }
+.reset {
+  margin-left: auto; background: none; border: 1px solid var(--border);
+  color: var(--muted); font-size: 0.76rem; padding: 3px 10px;
+  border-radius: 6px; cursor: pointer; font-family: inherit;
+}
+.reset:hover { background: var(--bg); }
+
+.alg-flow {
+  max-width: 780px; margin: 28px auto 0;
+  padding: 0 16px; display: flex; flex-direction: column; align-items: stretch;
+}
+.connector {
+  width: 2px; height: 28px; background: var(--conn);
+  align-self: center; border-radius: 2px;
+}
+
+.node {
+  background: var(--surface); border-radius: 14px;
+  border: 1.5px solid var(--border); overflow: hidden; transition: box-shadow .2s;
+}
+.node:hover { box-shadow: 0 4px 18px rgba(0,0,0,.07); }
+.node[data-type="SAFETY"]    { border-left: 4px solid var(--safety-h); }
+.node[data-type="DIAGNOSE"]  { border-left: 4px solid var(--diag-h); }
+.node[data-type="REFER"]     { border-left: 4px solid var(--ref-h); }
+.node[data-type="TREAT"]     { border-left: 4px solid var(--treat-h); }
+.node[data-type="LIFESTYLE"] { border-left: 4px solid var(--life-h); }
+
+.node-head-row {
+  display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px 0;
+}
+.node-num {
+  flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; font-weight: 700; color: #fff;
+}
+.node[data-type="SAFETY"]    .node-num { background: var(--safety-h); }
+.node[data-type="DIAGNOSE"]  .node-num { background: var(--diag-h); }
+.node[data-type="REFER"]     .node-num { background: var(--ref-h); }
+.node[data-type="TREAT"]     .node-num { background: var(--treat-h); }
+.node[data-type="LIFESTYLE"] .node-num { background: var(--life-h); }
+
+.node-head { flex: 1; }
+.node-tag {
+  display: inline-block; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 99px; margin-bottom: 4px;
+}
+.node[data-type="SAFETY"]    .node-tag { background: var(--safety-bg); color: var(--safety-h); }
+.node[data-type="DIAGNOSE"]  .node-tag { background: var(--diag-bg);   color: var(--diag-h); }
+.node[data-type="REFER"]     .node-tag { background: var(--ref-bg);    color: var(--ref-h); }
+.node[data-type="TREAT"]     .node-tag { background: var(--treat-bg);  color: var(--treat-h); }
+.node[data-type="LIFESTYLE"] .node-tag { background: var(--life-bg);   color: var(--life-h); }
+
+.node-head h3 { font-size: 1rem; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; }
+.node-tick { flex-shrink: 0; display: flex; align-items: center; gap: 6px; }
+.node-tick label { display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+.node-tick input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; }
+.tlbl { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
+
+.node.done { opacity: 0.68; }
+.node.done .node-num { background: #94a3b8 !important; }
+
+.node-body { padding: 12px 18px 14px; font-size: 0.9rem; }
+.intro { color: var(--muted); font-size: 0.87rem; margin-bottom: 10px; }
+
+.kv {
+  display: grid; grid-template-columns: 170px 1fr; gap: 0;
+  border: 1px solid var(--border); border-radius: 10px; overflow: hidden; font-size: 0.86rem;
+}
+.kv > div { padding: 8px 11px; border-bottom: 1px solid var(--border); }
+.kv > div:nth-last-child(-n+2) { border-bottom: none; }
+.kv > div:nth-child(odd) { background: var(--bg); font-weight: 600; color: var(--text); border-right: 1px solid var(--border); }
+.kv > div:nth-child(even) { background: var(--surface); }
+
+.rfgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
+@media (max-width: 540px) { .rfgrid { grid-template-columns: 1fr; } }
+.rftile {
+  background: var(--safety-bg); border: 1px solid var(--safety-br);
+  border-radius: 10px; padding: 10px 12px; font-size: 0.84rem; line-height: 1.45;
+}
+.rftile b { display: block; color: var(--safety-h); margin-bottom: 2px; font-size: 0.85rem; }
+
+.branch { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 6px; }
+.b-card { border: 1.5px solid var(--treat-br); background: var(--treat-bg); border-radius: 10px; padding: 11px 13px; font-size: 0.84rem; }
+.b-cond { font-size: 0.75rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 700; color: var(--treat-h); margin-bottom: 4px; }
+.b-drug { font-weight: 700; font-size: 0.92rem; margin-bottom: 3px; }
+.b-note { color: var(--muted); font-size: 0.82rem; }
+
+.ladder { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
+.rung {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; padding: 9px 12px; font-size: 0.87rem; position: relative;
+}
+.rung::before { content: '↑'; position: absolute; left: 16px; top: -13px; color: var(--muted); font-size: 0.8rem; }
+.rung:first-child::before { display: none; }
+.rn { flex-shrink: 0; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding-top: 2px; min-width: 52px; }
+.rt { flex: 1; line-height: 1.45; }
+
+.lsgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
+@media (max-width: 540px) { .lsgrid { grid-template-columns: 1fr; } }
+.lstile { background: var(--life-bg); border: 1px solid var(--life-br); border-radius: 10px; padding: 10px 12px; font-size: 0.84rem; line-height: 1.45; }
+.lstile b { display: block; color: var(--life-h); margin-bottom: 2px; font-size: 0.85rem; }
+
+.pill { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 99px; letter-spacing: .03em; vertical-align: middle; white-space: nowrap; }
+.pill-red    { background: #fee2e2; color: #b91c1c; }
+.pill-purple { background: #ede9fe; color: #6d28d9; }
+.pill-blue   { background: #dbeafe; color: #1d4ed8; }
+.pill-teal   { background: #ccfbf1; color: #0f766e; }
+.pill-amber  { background: #fef3c7; color: #b45309; }
+.pill-green  { background: #dcfce7; color: #15803d; }
+.pill-grey   { background: #f1f5f9; color: #475569; }
+
+.why-row { border-top: 1px solid var(--border); }
+.why-btn {
+  width: 100%; display: flex; align-items: center; gap: 6px;
+  padding: 9px 18px; background: none; border: none; font-family: inherit;
+  font-size: 0.8rem; font-weight: 600; color: var(--muted); cursor: pointer; text-align: left; letter-spacing: .02em;
+}
+.why-btn:hover { background: var(--bg); color: var(--text); }
+.caret { transition: transform .22s; display: inline-block; }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.why-drawer { display: none; padding: 0 18px 14px; font-size: 0.84rem; color: var(--muted); line-height: 1.6; font-style: italic; }
+.why-drawer.open { display: block; }
+.why-drawer b { color: var(--text); font-style: normal; }
+
+.warn-box { margin-top: 8px; padding: 8px 11px; background: #fee2e2; border: 1px solid #fecaca; border-radius: 8px; font-size: 0.83rem; }
+.info-box  { margin-top: 8px; padding: 8px 11px; background: var(--diag-bg); border: 1px solid var(--diag-br); border-radius: 8px; font-size: 0.83rem; }
+
+.diag-subhead { font-weight: 700; font-size: 0.9rem; margin: 14px 0 6px; color: var(--treat-h); }
+
+.alg-foot {
+  max-width: 780px; margin: 24px 16px 0; padding: 14px 22px;
+  font-size: 0.78rem; color: var(--muted); background: var(--surface);
+  border-radius: 12px; border: 1px solid var(--border); line-height: 1.6;
+}
+@media (min-width: 812px) { .alg-foot { margin-left: auto; margin-right: auto; } }
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🫀</div>
+  <div>
+    <b>Neck Pain — Assessment &amp; Management</b>
+    <small>RCGP SCA pathway · UK primary care · 9-step algorithm</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — most neck pain is mechanical; the priorities are myelopathy, trauma/instability, infection and the radiculopathy that needs imaging. Screen those, manage mechanical pain actively, treat radiculopathy, refer and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Neck pain</span><div class="body">Mechanical vs <b>radicular</b> (dermatomal arm pain), trauma, neurology in arms <b>and legs</b>, systemic features. Examine cervical range, upper-limb neurology, and <b>long-tract signs</b> (gait, reflexes, Hoffmann's).</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — the four priorities</span><span class="ttl">Myelopathy, trauma, infection, malignancy?</span><div class="body"><ul>
+      <li><b>Cervical myelopathy</b> — gait disturbance, hand clumsiness, brisk reflexes, bladder change</li>
+      <li><b>Trauma / instability</b> — significant mechanism, midline tenderness (Canadian C-spine rule)</li>
+      <li><b>Infection</b> — fever, IVDU, immunosuppression (discitis/epidural abscess)</li>
+      <li><b>Malignancy</b> — cancer history, weight loss, night pain · severe/progressive arm weakness</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Urgent imaging / referral</span><div class="body"><b>Myelopathy → urgent MRI + neurosurgery/spinal</b> (progression is irreversible). Trauma → image per C-spine rules. Infection/malignancy → urgent investigation + referral.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — mechanical / radicular</div><div class="box ix"><span class="lbl">Step 2 · Assess</span><span class="ttl">Pattern</span><div class="body">No imaging for uncomplicated mechanical neck pain. Distinguish mechanical (axial, movement-related) from <b>radiculopathy</b> (dermatomal arm pain ± weakness).</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · which pattern?</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Mechanical / non-specific</div><div class="box ix"><span class="ttl">Commonest</span><div class="body">Axial pain, stiffness, movement-related; postural, "text neck", acute torticollis. No neurology. Self-limiting.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">Cervical radiculopathy</div><div class="box ix"><span class="ttl">Nerve-root</span><div class="body">Dermatomal arm pain ± weakness/paraesthesia (often C6/C7), worse on extension/rotation; usually improves conservatively.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Myelopathy — don't miss</div><div class="box ix"><span class="ttl">Cord</span><div class="body">Clumsy hands, unsteady gait, brisk reflexes/Hoffmann's, bladder change → urgent MRI + surgery.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · manage</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — keep moving + analgesia</span><span class="ttl">Active management</span><div class="body"><ul>
+      <li><b>Mechanical neck pain:</b> reassure, <b>stay active / avoid collars</b>, analgesia (paracetamol/NSAID + PPI), heat, <b>physiotherapy &amp; exercises</b>, posture advice — most settle in weeks.</li>
+      <li><b>Acute torticollis:</b> reassurance, analgesia, gentle mobilisation — self-limiting.</li>
+      <li><b>Radiculopathy:</b> analgesia (consider neuropathic agent — amitriptyline/gabapentin), physiotherapy; most resolve in 6–12 weeks; MRI + spinal referral if persistent/progressive.</li>
+      <li><b>Myelopathy:</b> hospital — surgical decompression.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-red">Urgent</span> cervical myelopathy → MRI + neurosurgery; trauma/instability; infection or malignancy.</li>
+      <li><span class="pill pill-purple">MSK / spinal</span> persistent radiculopathy (&gt;4–6 weeks) or progressive deficit → MRI + consideration of injection/surgery.</li>
+      <li><span class="pill pill-grey">Physiotherapy</span> mechanical neck pain not settling with self-care.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · self-care &amp; prevention</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; self-management</span><span class="ttl">Keep active, fix the ergonomics</span><div class="body"><b>Stay active and keep the neck moving</b> (avoid collars/rest) · <b>workstation &amp; screen ergonomics</b>, posture and regular breaks · neck/shoulder strengthening and stretching exercises · sleep position/pillow advice · stress management (tension contributes) · graded return to activities.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Urgent / same-day</b> if developing clumsy hands, unsteady gait, leg weakness or bladder/bowel change (myelopathy), fever with severe neck pain, or progressive arm weakness. <b>Review</b> mechanical pain at 4–6 weeks; reassess radiculopathy and arrange MRI if not improving. Reconsider red flags if the picture changes.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>Don't miss cervical myelopathy:</b> a clumsy-hands / unsteady-gait + brisk-reflexes picture needs urgent MRI — progression can cause irreversible cord damage. Most other neck pain is mechanical and managed actively without imaging.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- ══ STEP 1: SAFETY ══ -->
+  <div class="node" data-type="SAFETY" data-step="1" id="step1">
+    <div class="node-head-row">
+      <div class="node-num">1</div>
+      <div class="node-head">
+        <span class="node-tag">Safety</span>
+        <h3>Exclude emergencies &amp; can't-miss diagnoses first</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">The neck is anatomically dense — the spinal cord, great vessels, oesophagus, and thyroid all lie within centimetres of each other. Screen for vascular, neurological, and malignant emergencies before any further assessment.</p>
+      <div class="rfgrid">
+        <div class="rftile"><b>Cervical myelopathy</b> Neck pain + bilateral arm/hand clumsiness + gait disturbance + hyperreflexia + Lhermitte's sign (electric shock sensation on neck flexion) → same-day neurosurgical/spinal referral. Cord compression — irreversible damage accumulates with delay</div>
+        <div class="rftile"><b>Vertebral artery dissection</b> Sudden severe posterior neck pain ± occipital headache ± vertigo / diplopia / dysarthria / ataxia / facial numbness (posterior circulation stroke) → 999. Often follows minor neck trauma or manipulation. Do NOT perform neck manipulation until excluded</div>
+        <div class="rftile"><b>Epidural abscess / discitis</b> Severe neck pain + fever + elevated CRP/WCC + progressive neurological deficit → same-day MRI + neurosurgical referral. Risk factors: IV drug use, immunosuppression, recent spinal procedure, bacteraemia. Can present subtly — high index of suspicion</div>
+        <div class="rftile"><b>Cervical fracture / instability</b> Trauma (RTA, fall, contact sport, diving) → Canadian C-Spine Rule before mobilisation. High-risk features: age ≥65, dangerous mechanism, paraesthesia in extremities → immobilise and 999. Do NOT examine ROM in acute post-trauma neck pain until fracture excluded</div>
+        <div class="rftile"><b>Carotid artery dissection</b> Unilateral neck pain + Horner's syndrome (ptosis, miosis, anhidrosis) ± contralateral hemiplegia/facial droop → 999 stroke pathway. May follow minor trauma or sudden neck movement. Pulsatile tinnitus is a clue</div>
+        <div class="rftile"><b>Meningitis / subarachnoid haemorrhage</b> Neck stiffness + headache + photophobia + fever (meningitis) OR thunderclap headache + meningism (SAH) → 999. Kernig's and Brudzinski's signs. Non-blanching rash = meningococcal septicaemia — immediate benzylpenicillin IV if available</div>
+        <div class="rftile"><b>Cervical malignancy / metastasis</b> Age &gt;50, known cancer, progressive unrelenting pain, night pain, weight loss, lymphadenopathy, bony tenderness → 2WW (NICE NG12). Cervical spine is a common site for metastatic deposit (breast, prostate, lung, thyroid, kidney)</div>
+        <div class="rftile"><b>Retropharyngeal / peritonsillar abscess</b> Neck pain + severe dysphagia + drooling + muffled voice + trismus + systemic sepsis → 999. Airway compromise can develop rapidly. Do NOT attempt to examine throat alone — senior review essential</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Vertebral artery dissection is the most dangerous missed diagnosis in neck pain</b> — it accounts for up to 20% of strokes in patients under 45 and frequently follows seemingly minor neck trauma or manipulation. The posterior circulation stroke symptoms (vertigo, diplopia, dysphagia, ataxia) may be subtle and transient initially, making this a particularly hazardous diagnosis to miss. Cervical myelopathy is insidious — patients often attribute hand clumsiness and gait changes to age, and the diagnosis is delayed by an average of 2 years in primary care. By the time myelopathy is confirmed, irreversible spinal cord damage has frequently occurred. Any patient with bilateral upper limb symptoms or gait change with neck pain must be referred urgently. The Canadian C-Spine Rule has 100% sensitivity for clinically significant cervical fractures — never examine ROM after significant neck trauma until the rule has been applied.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══ STEP 2: DIAGNOSE — History ══ -->
+  <div class="node" data-type="DIAGNOSE" data-step="2" id="step2">
+    <div class="node-head-row">
+      <div class="node-num">2</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Structured history — mechanism, radiation pattern, and neurological symptoms</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Radiation pattern and neurological symptoms are the most powerful history discriminators. Non-specific neck pain (by far the most common) is a diagnosis of exclusion — confirm absence of serious features first.</p>
+      <div class="kv">
+        <div>Onset &amp; mechanism</div>
+        <div>Acute (trauma, whiplash, disc prolapse, infection): immediate referral considerations. Insidious gradual (cervical spondylosis, OA, posture-related, inflammatory arthritis). Episodic (cervicogenic headache, facet joint pain, muscle tension). Sudden severe = vascular emergency until proven otherwise</div>
+        <div>Pain location &amp; radiation</div>
+        <div><b>Axial neck only:</b> mechanical (muscle, facet joint, discogenic). <b>Neck → shoulder/scapula:</b> C4–C5 referral pattern, supraspinatus pathology overlap. <b>Neck → arm in dermatomal pattern:</b> cervical radiculopathy (C5–C8 most common). <b>Neck → occipital head:</b> C2/C3 referral, cervicogenic headache. <b>Neck → bilateral arms + legs:</b> myelopathy — urgent referral</div>
+        <div>Dermatomal pattern</div>
+        <div>C5: lateral upper arm, shoulder abduction weakness, biceps reflex ↓. C6: lateral forearm, thumb/index, biceps reflex ↓, wrist extension weakness. C7: middle finger, triceps reflex ↓, wrist flexion/finger extension weakness. C8: medial forearm, ring/little finger, grip weakness. T1: medial upper arm, intrinsic hand weakness</div>
+        <div>Neurological symptoms</div>
+        <div>Unilateral arm numbness/tingling (radiculopathy — C5–C8). Bilateral hand clumsiness / dropping objects (myelopathy — urgent). Gait disturbance / leg weakness (myelopathy — urgent). Bladder/bowel dysfunction (myelopathy / cord compression — emergency). Lhermitte's sign (electric shock on flexion — cord involvement)</div>
+        <div>Aggravating / relieving</div>
+        <div>Worse with neck extension/rotation (facet joint, foraminal stenosis). Worse with sustained posture (muscle tension, discogenic). Worse with Valsalva/cough/sneeze (discogenic — raised intradiscal pressure). Relieved by traction (radiculopathy — shoulder abduction relief sign positive). Night pain worse = inflammatory / malignancy (alarm)</div>
+        <div>Headache pattern</div>
+        <div>Occipital headache starting in neck, unilateral, triggered by neck movement = cervicogenic headache (C2/C3). Distinguish from migraine (aura, nausea, photophobia) and tension-type. Do not confuse with posterior circulation stroke symptoms</div>
+        <div>Whiplash specific</div>
+        <div>Mechanism (RTA — direction of impact, head restraint position, airbag deployment). Quebec Classification: Grade 1 (complaint only), Grade 2 (MSK signs), Grade 3 (neurological signs), Grade 4 (fracture/dislocation). Psychosocial yellow flags: catastrophising, fear-avoidance, passive coping — predict chronic pain and disability</div>
+        <div>Systemic features</div>
+        <div>Fever / rigors (infection — epidural abscess, discitis, meningitis). Weight loss (malignancy). Night sweats (lymphoma, malignancy). Prior malignancy (metastasis). Inflammatory arthritis history (RA atlantoaxial instability — significant risk). Steroid use (epidural abscess risk ↑, osteoporotic fracture)</div>
+        <div>Occupation &amp; lifestyle</div>
+        <div>Prolonged screen use (postural). Heavy manual work (cervical spondylosis, disc disease). Contact sports (acute injury). Occupation as key yellow flag: work dissatisfaction and poor social support predict chronicity more reliably than physical findings</div>
+        <div>Yellow flags (psychosocial)</div>
+        <div>Fear-avoidance beliefs (pain with activity = damage). Catastrophising ("this will never get better"). Depression / anxiety. Passive coping strategies. Job dissatisfaction. Poor social support. Litigation / compensation claims. Screen with Keele STarT MSK tool (also validated for neck pain)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Psychosocial yellow flags are better predictors of chronic disability from neck pain than any physical examination finding or imaging result.</b> The STarT MSK tool risk-stratifies patients into low/medium/high psychosocial risk within 2 minutes — high-risk patients need early psychology/pain management input, not just physiotherapy, to prevent the transition to chronic pain. Dermatomal pattern recognition is a core GP SCA competency: C6 is the most commonly affected root (C5/C6 disc = C6 radiculopathy), followed by C7. The shoulder abduction relief sign (patient abducts arm to rest hand on head and pain improves) has 43% sensitivity and 97% specificity for cervical radiculopathy — when positive, it is virtually diagnostic and makes urgent MRI appropriate. RA atlantoaxial instability is a critical and often forgotten hazard: RA erodes the transverse ligament of C1, causing C1–C2 instability that can cause sudden death with minor neck trauma — it must be screened in any RA patient with new neck symptoms.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══ STEP 3: DIAGNOSE — Classification ══ -->
+  <div class="node" data-type="DIAGNOSE" data-step="3" id="step3">
+    <div class="node-head-row">
+      <div class="node-num">3</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Classify by presentation type — mechanical vs radicular vs myelopathic vs inflammatory</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Use this four-category classification to direct investigation and management. Most neck pain (85–90%) is non-specific mechanical — do not over-investigate or over-treat.</p>
+      <div class="kv">
+        <div>🟢 Non-specific mechanical neck pain</div>
+        <div><b>The diagnosis in 85–90% of cases.</b> Axial neck pain ± referred shoulder/scapular ache (non-dermatomal). No neurological deficit. Normal reflexes. Causes: muscle strain, facet joint dysfunction, poor posture, psychological tension. Duration: acute (&lt;6 weeks), subacute (6–12 weeks), chronic (&gt;12 weeks). Favourable prognosis: 50% improve within 4 weeks, 90% within 6 months</div>
+        <div>🟡 Cervical radiculopathy</div>
+        <div>Dermatomal arm pain (usually &gt; neck pain), paraesthesia, ± weakness in myotomal distribution. C5–C8 nerve roots. Most common: C6 (C5/C6 disc) and C7 (C6/C7 disc). Positive Spurling's test and/or shoulder abduction relief sign. Positive SLR equivalent = upper limb tension test (ULTT). 75–90% resolve with conservative management within 12 weeks</div>
+        <div>🔴 Cervical myelopathy</div>
+        <div><b>Urgent referral.</b> Bilateral upper limb symptoms + lower limb signs. Gait disturbance, clumsy hands, Lhermitte's sign, hyperreflexia (lower limbs), Hoffmann's sign, upgoing plantars. Caused by cervical cord compression (spondylotic stenosis, OPLL, disc herniation). Onset often insidious — high index of suspicion required. MRI confirms. Neurosurgical decompression prevents progression</div>
+        <div>🟠 Cervicogenic headache</div>
+        <div>Unilateral headache starting in occipital region radiating frontally, triggered by neck movement / sustained posture, associated neck stiffness. C2/C3 referral. Distinguish from migraine (bilateral pulsating, nausea, photophobia) and tension-type. Responds to C2/C3 manual therapy, not triptans</div>
+        <div>🔵 Whiplash-associated disorder</div>
+        <div>Following acceleration-deceleration trauma (typically RTA). Quebec Classification Grades 1–4. Grade 1–2: managed conservatively; Grade 3: neurological signs — MRI + physio; Grade 4: fracture/dislocation — 999. Yellow flags predict chronicity: catastrophising, fear-avoidance, early sick certification. Active engagement and early return to normal activities is the evidence-based management goal</div>
+        <div>🟣 Inflammatory / systemic neck pain</div>
+        <div><b>RA:</b> atlantoaxial instability (odontoid erosion) — subluxation risk with trauma/anaesthesia. Bilateral arm/leg symptoms = emergency. Radiograph C-spine flexion/extension views needed before anaesthesia. <b>Ankylosing spondylitis:</b> young male, bilateral SI involvement, bamboo spine. <b>PMR:</b> bilateral shoulder girdle + neck, age &gt;50, dramatic steroid response. <b>Malignancy:</b> constant unremitting pain, worse at night, known primary, weight loss</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>The most dangerous misclassification is labelling early myelopathy as non-specific neck pain.</b> Myelopathy has an insidious onset, and patients do not volunteer symptoms of hand clumsiness or gait change unless specifically asked — these symptoms must be actively sought at every neck pain consultation. The natural history of untreated myelopathy is stepwise deterioration punctuated by sudden neurological deterioration events (often triggered by minor trauma such as a fall or motor vehicle accident). Early surgical decompression prevents these catastrophic events. Cervicogenic headache is chronically mismanaged with triptans (no evidence) or analgesic overuse — identifying it correctly enables targeted C2/C3 joint manual therapy which produces significant benefit. Atlantoaxial instability in RA is a surgical/anaesthetic emergency hiding in plain sight — every RA patient with new neck pain must be assessed for this complication before any neck manipulation or elective anaesthesia.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══ STEP 4: DIAGNOSE — Examination ══ -->
+  <div class="node" data-type="DIAGNOSE" data-step="4" id="step4">
+    <div class="node-head-row">
+      <div class="node-num">4</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Targeted cervical spine examination — neurological assessment is mandatory</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Always perform a neurological examination of the upper limbs in neck pain. Missing myelopathy signs is a serious patient safety failure. A complete exam takes 4–5 minutes.</p>
+      <div class="kv">
+        <div>Inspection &amp; posture</div>
+        <div>Forward head posture (chin protruded — loads cervical facets 4× normal force). Torticollis (muscle spasm / atlanto-axial rotatory subluxation in children). Muscle wasting (trapezius, deltoid, intrinsic hand — suggests chronic radiculopathy). Skin: rash (meningococcal, herpes zoster — Ramsay Hunt variant)</div>
+        <div>Range of movement</div>
+        <div>Normal: flexion 45°, extension 45°, lateral flexion 45°, rotation 60°–80°. Document restriction and pain direction. <b>Do NOT assess ROM in acute post-trauma neck pain until fracture excluded.</b> Painful limitation of rotation in one direction → facet joint / spondylosis. Globally restricted ROM → severe OA, inflammatory arthritis, myelopathy, malignancy</div>
+        <div>Spurling's test (foraminal compression)</div>
+        <div>Extend and rotate neck toward affected side, apply gentle axial compression — reproduction of arm symptoms = positive. Sensitivity 30–60%, specificity 89–100% for radiculopathy. Most useful for confirmation when pre-test probability high. Do NOT perform after trauma until fracture excluded</div>
+        <div>Shoulder abduction relief sign</div>
+        <div>Ask patient to place hand of symptomatic arm on top of head — relief of arm pain = positive. Sensitivity 43%, specificity 97% for cervical radiculopathy. When positive: virtually diagnostic of radiculopathy — request MRI</div>
+        <div>Upper limb neurology (mandatory)</div>
+        <div><b>Power:</b> shoulder abduction (C5), elbow flexion (C5/6), wrist extension (C6), elbow extension (C7), finger extension (C7), grip strength (C8/T1), intrinsics (T1). <b>Sensation:</b> dermatomal testing with light touch / pinprick — C5 (lateral upper arm), C6 (thumb/index), C7 (middle finger), C8 (ring/little), T1 (medial upper arm). <b>Reflexes:</b> biceps (C5/6), supinator (C6), triceps (C7)</div>
+        <div>Myelopathy signs (mandatory)</div>
+        <div><b>Hoffmann's sign:</b> flick terminal phalanx of middle finger — thumb flexion = positive (upper motor neurone sign). <b>Hyperreflexia lower limbs:</b> brisk knee and ankle jerks. <b>Upgoing plantars (Babinski):</b> UMN lesion. <b>Clonus:</b> sustained clonus at ankle = significant cord compression. <b>Gait:</b> observe walking — wide-based, spastic gait = myelopathy. ANY positive sign = same-day/urgent neurosurgical referral</div>
+        <div>Upper limb tension test (ULTT)</div>
+        <div>Shoulder depression + abduction + elbow extension + wrist/finger extension — reproduction of arm symptoms = nerve root tension (equivalent of SLR for cervical). Most sensitive for C5/C6 radiculopathy. Useful when Spurling's negative but clinical suspicion remains</div>
+        <div>Lymph nodes</div>
+        <div>Palpate: anterior/posterior cervical chains, supraclavicular fossae. Firm, non-tender, fixed lymphadenopathy + neck pain → 2WW (head/neck cancer, lymphoma). Tender mobile nodes = reactive (infection)</div>
+        <div>Thyroid &amp; carotids</div>
+        <div>Palpate thyroid (goitre, nodule — if causing neck pain/dysphagia). Auscultate carotids (bruit — TIA risk). Check temporal arteries in &gt;50 yrs with new headache + neck pain (GCA)</div>
+      </div>
+      <div class="warn-box"><b style="color:#b91c1c;">⚠ Canadian C-Spine Rule — apply before any examination after trauma:</b> High-risk features (age ≥65, dangerous mechanism, extremity paraesthesia) → immobilise, 999. Low-risk features (simple RVA, ambulatory at scene, no midline tenderness) → assess ROM safely. If cannot rotate 45° bilaterally → X-ray required.</div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Hoffmann's sign is the most important physical sign to check in every patient with neck pain — it takes 5 seconds and detects cervical myelopathy.</b> It has a sensitivity of 58% and specificity of 78% for myelopathy, making it a valuable screening test. Combined with hyperreflexia and upgoing plantars, positive myelopathy signs mandate same-day neurosurgical referral regardless of symptom severity. The ULTT (upper limb tension test) is the upper limb equivalent of the SLR and should be performed whenever Spurling's is inconclusive — it increases sensitivity for radiculopathy detection from 50% to 72% when added to the clinical assessment. Supraclavicular lymphadenopathy with neck pain is a 2WW trigger — the supraclavicular fossa drains thoracic and abdominal viscera, making firm nodes there a potential metastatic signal even when the primary is not in the head/neck. Temporal artery palpation takes 10 seconds but catches giant cell arteritis, which causes sudden permanent visual loss if missed.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══ STEP 5: DIAGNOSE — Investigations ══ -->
+  <div class="node" data-type="DIAGNOSE" data-step="5" id="step5">
+    <div class="node-head-row">
+      <div class="node-num">5</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Targeted investigations — most neck pain needs no imaging</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Non-specific mechanical neck pain does not require imaging. Degenerative changes on cervical X-ray / MRI are present in 90% of adults over 60 and are not diagnostic. Image when the result will change management.</p>
+      <div class="kv">
+        <div>X-ray cervical spine <span class="pill pill-blue">Selective</span></div>
+        <div>Indications: post-trauma (Canadian C-Spine Rule positive), suspected inflammatory arthritis (erosions, atlantoaxial instability in RA — flexion/extension views), suspected Paget's/malignant bony change. <b>Do NOT request for acute non-specific neck pain</b> — degenerative changes correlate poorly with symptoms and increase anxiety. AP + lateral + odontoid peg view for RA/trauma</div>
+        <div>MRI cervical spine <span class="pill pill-blue">Primary imaging</span></div>
+        <div><b>First-choice imaging</b> when indicated. Indications: suspected radiculopathy not resolving at 4–6 weeks, suspected myelopathy (same-day), suspected epidural abscess / discitis (same-day), suspected malignancy/metastasis, failed conservative management at 6–12 weeks with persistent neurological signs. MRI superior to CT for soft tissue, disc, cord pathology</div>
+        <div>CT cervical spine</div>
+        <div>Use when MRI contraindicated (pacemaker, severe claustrophobia) or for acute trauma (fracture characterisation, pre-surgical planning). CT myelogram if MRI unavailable for myelopathy. Do not use CT as first-line for soft tissue/disc pathology</div>
+        <div>Bloods — red flags</div>
+        <div>CRP, ESR, FBC + differential if: fever (infection — discitis/abscess), suspected inflammatory arthritis, malignancy screen. ESR &gt;50 + bilateral shoulder/neck stiffness in &gt;50 yr = PMR until proven otherwise → add CRP. PSA (male &gt;50 with bony neck pain — prostate metastasis). ALP, Ca (bone metastases, Paget's). LDH + protein electrophoresis (myeloma — may present with spinal pain)</div>
+        <div>Inflammatory markers — GCA</div>
+        <div>Age &gt;50 + new headache + jaw claudication + temporal artery tenderness + neck pain: ESR (typically &gt;50, often &gt;100) + CRP + platelets + FBC. Do NOT delay prednisolone for biopsy — start prednisolone 40–60 mg OD immediately if GCA suspected with visual symptoms. Temporal artery biopsy via same-day ophthalmology/rheumatology</div>
+        <div>Nerve conduction studies / EMG</div>
+        <div>Not first-line in primary care. Indicated by neurology if: atypical distribution, suspected peripheral neuropathy mimicking radiculopathy, suspected motor neurone disease, diagnostic uncertainty after MRI. Arrange via neurology referral</div>
+        <div>Thyroid function</div>
+        <div>TSH + T4 if goitre palpable or thyroid nodule causing neck pain/dysphagia. Urgent ultrasound thyroid for new neck mass / rapidly growing nodule. Fine needle aspiration arranged via endocrine/head and neck surgery if suspicious</div>
+        <div>Do NOT routinely order</div>
+        <div>X-ray for acute non-specific neck pain (&lt;6 weeks, no red flags). MRI for acute whiplash grade 1–2. CT for suspected soft tissue/disc pathology (MRI preferred). Plain X-ray instead of MRI for suspected myelopathy or cord compression</div>
+      </div>
+      <div class="info-box"><b style="color:var(--diag-h);">Imaging paradox:</b> Cervical MRI shows "degenerative changes" in 90% of adults over 60 and 25% of asymptomatic 40-year-olds. A finding on MRI is not automatically the cause of pain. Imaging should confirm a clinical hypothesis, not generate one. Over-imaging increases catastrophising, reduces return to activity, and leads to unnecessary surgery.</div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Routine imaging of neck pain is actively harmful.</b> Multiple RCTs show that providing MRI results to patients with non-specific neck pain increases pain catastrophising, fear-avoidance behaviour, and time off work — without improving clinical outcomes. "Moderate spondylosis at C5/C6" on an MRI report creates a diagnostic label that prevents recovery. The correct management for non-specific neck pain is early active rehabilitation, not passive imaging. However, the MRI paradox cuts both ways: myelopathy on clinical examination mandates same-day MRI because cord compression requires neurosurgical decompression within hours to days — delay in this direction is equally dangerous. The skill is knowing which patients to image and which not to, based on clinical findings rather than patient or clinician anxiety.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══ STEP 6: REFER ══ -->
+  <div class="node" data-type="REFER" data-step="6" id="step6">
+    <div class="node-head-row">
+      <div class="node-num">6</div>
+      <div class="node-head">
+        <span class="node-tag">Refer</span>
+        <h3>Referral criteria — right pathway, right urgency</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Most neck pain is managed entirely in primary care with physiotherapy and analgesia. Know the thresholds for urgent neurological and surgical escalation.</p>
+      <div class="kv">
+        <div>999 Emergency</div>
+        <div><span class="pill pill-red">999</span> Suspected vertebral or carotid artery dissection (posterior neck pain + stroke symptoms). Meningitis / meningococcal septicaemia (non-blanching rash → benzylpenicillin 1.2g IM/IV immediately). SAH (thunderclap headache + meningism). Cervical fracture with neurological deficit / airway compromise. Retropharyngeal abscess with airway compromise</div>
+        <div>Same-day urgent</div>
+        <div><span class="pill pill-red">Same-day</span> Suspected myelopathy (Hoffmann's sign + hyperreflexia + gait disturbance) → neurosurgical referral + same-day MRI. Suspected epidural abscess / discitis (fever + neck pain + neurological deficit) → ED + MRI. GCA with visual symptoms → same-day ophthalmology + start prednisolone 60 mg OD immediately. Cauda equina equivalent: acute onset bladder/bowel + bilateral arm weakness</div>
+        <div>2-Week Wait</div>
+        <div><span class="pill pill-purple">2WW</span> Unexplained firm cervical lymphadenopathy &gt;3 weeks, neck mass + hoarseness/dysphagia/weight loss → head and neck cancer 2WW (NICE NG12). Bone pain with known primary malignancy + new cervical symptoms → urgent bone metastasis pathway. Unexplained progressive bony cervical pain + weight loss + night sweats + age &gt;50 → 2WW</div>
+        <div>Urgent routine (2–4 wks)</div>
+        <div>Cervical radiculopathy with significant neurological deficit (power &lt;4/5 in myotome, progressive weakness) → neurosurgery/spinal surgery. New inflammatory arthritis → rheumatology within 3 weeks (NICE NG100). PMR confirmed → rheumatology + start prednisolone 15 mg OD in primary care. RA with new neck symptoms + atlantoaxial instability concern → rheumatology + spinal surgery assessment</div>
+        <div>Routine neurosurgery / spinal</div>
+        <div>Radiculopathy not responding to 6–12 weeks conservative management with MRI-confirmed disc herniation + persistent pain/neurological symptoms. Myelopathy stable but confirmed on MRI — surgical discussion for decompression. Recurrent severe disc prolapse. Cervical stenosis causing quality-of-life impairment</div>
+        <div>Physiotherapy <span class="pill pill-teal">First-line</span></div>
+        <div>All non-specific neck pain, whiplash grade 1–2, cervical radiculopathy (while awaiting / instead of surgery), cervicogenic headache, cervical spondylosis. Self-refer where NHS self-referral available. Emphasise: active exercise is first-line, not passive treatment only</div>
+        <div>Pain management / psychology</div>
+        <div>Chronic neck pain (&gt;3 months) with high psychosocial yellow flag burden (STarT MSK high risk). Chronic pain programme via NHS Talking Therapies / pain clinic. CBT for pain — Level 1 evidence for chronic MSK pain. Do not continue escalating analgesia without addressing psychological factors</div>
+        <div>Neurology</div>
+        <div>Diagnostic uncertainty (atypical presentation, suspected MND, peripheral neuropathy vs radiculopathy). Nerve conduction studies needed. Complex headache differential. Suspected central demyelination (multiple sclerosis — Lhermitte's sign in young patient)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>GCA with visual symptoms is a same-day ophthalmological emergency.</b> Untreated anterior ischaemic optic neuropathy from GCA causes sudden permanent monocular blindness — the fellow eye is at risk within 24–48 hours. Prednisolone 60 mg OD must be started immediately when visual symptoms are present, without waiting for ESR results or biopsy. Biopsy can be positive up to 2 weeks after starting steroids. For cervical radiculopathy, surgical outcomes at 3 months are equivalent to conservative management for pain relief — surgery becomes appropriate when neurological deficit is progressive (power &lt;4/5) or when quality of life remains severely impaired after 6–12 weeks of optimal conservative treatment. Early physiotherapy referral for whiplash is the most cost-effective intervention available — delayed referral and early sick certification are the primary drivers of chronic whiplash disability, not the severity of the initial injury.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══ STEP 7: TREAT ══ -->
+  <div class="node" data-type="TREAT" data-step="7" id="step7">
+    <div class="node-head-row">
+      <div class="node-num">7</div>
+      <div class="node-head">
+        <span class="node-tag">Treat</span>
+        <h3>Condition-specific treatment pathways</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Active rehabilitation is the evidence-based foundation for all mechanical neck pain. Analgesia facilitates activity — it is not a standalone treatment. Address yellow flags early to prevent chronicity.</p>
+
+      <!-- Non-specific / mechanical -->
+      <p class="diag-subhead">① Non-Specific Mechanical Neck Pain (NICE NG59 / CKS)</p>
+      <div class="ladder">
+        <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Reassurance + early active mobilisation:</b> Advise: mechanical neck pain is not dangerous, continuing normal activities is the best treatment, avoiding movement makes it worse. Provide NICE/NHS patient information. Do NOT recommend collar immobilisation — prolongs disability. Return to normal activities as quickly as possible</span></div>
+        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Analgesia to facilitate movement:</b> Paracetamol 1g QDS regularly (not PRN). Add ibuprofen 400 mg TDS with food if no CI (short course 5–7 days). Topical NSAIDs (diclofenac 1% gel) for localised muscle pain. Low-dose amitriptyline 10–25 mg nocte if sleep disruption from pain</span></div>
+        <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Physiotherapy — structured exercise programme:</b> Refer for neck-specific exercises (deep cervical flexor strengthening, ROM exercises, postural correction). Manual therapy (manipulation or mobilisation) by trained physiotherapist for acute/subacute — NICE supports use. Combined exercise + manual therapy superior to either alone. Goal: 6–8 sessions</span></div>
+        <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Persistent pain (&gt;6 weeks, subacute):</b> Review yellow flags — address fear-avoidance and catastrophising directly. Consider: muscle relaxant — diazepam 2 mg TDS short course (maximum 2 weeks, BNF — dependence risk, avoid in anxious/dependent patients). Low-dose TCA: amitriptyline 10–50 mg nocte (neuropathic/chronic component). Gabapentin 300 mg TDS for neuropathic features</span></div>
+        <div class="rung"><span class="rn">Step 5</span><span class="rt"><b>Chronic neck pain (&gt;12 weeks):</b> Multidisciplinary pain programme. NHS Talking Therapies / CBT for pain — address central sensitisation and psychological contributors. Acupuncture: NICE supports for chronic primary pain (NG193, up to 10 sessions). Avoid escalating opioids — no evidence for chronic MSK neck pain, significant harm risk. Spinal injection (facet joint / medial branch block) via pain clinic if mechanical facet pain confirmed</span></div>
+      </div>
+
+      <!-- Radiculopathy -->
+      <p class="diag-subhead">② Cervical Radiculopathy</p>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">Acute radiculopathy</div>
+          <div class="b-drug">NSAIDs + physiotherapy</div>
+          <div class="b-note">Naproxen 500 mg BD with PPI. Short course oral prednisolone 30 mg OD × 5 days for severe acute radicular pain — reduces inflammation around nerve root. Physiotherapy: traction, neural mobilisation, McKenzie. 75–90% resolve within 12 weeks</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Neuropathic component</div>
+          <div class="b-drug">Amitriptyline / Gabapentin</div>
+          <div class="b-note">Amitriptyline 10 mg nocte, titrate to 50–75 mg (NNT 3.6 for neuropathic pain). OR gabapentin 300 mg TDS, titrate to 1800–3600 mg/day. Pregabalin 75 mg BD alternative (schedule 3 CD — prescribing governance). Warn: sedation, dizziness (falls risk in elderly)</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Persistent &gt;6–12 weeks</div>
+          <div class="b-drug">MRI + surgical review</div>
+          <div class="b-note">MRI cervical spine to characterise disc/root pathology. Refer neurosurgery if: significant deficit (power &lt;4/5), worsening despite treatment, or patient preference for surgical option. Anterior cervical discectomy and fusion (ACDF) — 90% success for radiculopathy</div>
+        </div>
+      </div>
+
+      <!-- Whiplash -->
+      <p class="diag-subhead">③ Whiplash-Associated Disorder (Grades 1–2)</p>
+      <div class="kv" style="margin-top:6px;">
+        <div>Acute phase (0–72h)</div>
+        <div>Analgesia: paracetamol 1g QDS + ibuprofen 400 mg TDS with food. Ice 20 min × 4–8/day. <b>Do NOT prescribe soft collar</b> — prolongs disability, reduces proprioception. Advise: normal activity as tolerated, early movement is therapeutic</div>
+        <div>Active management (1–6 wks)</div>
+        <div>Early physiotherapy referral (within 2 weeks) — reduces chronicity by 50% vs delayed referral. ROM exercises, strengthening, postural correction. Address yellow flags at first assessment — catastrophising predicts chronic disability more reliably than injury severity</div>
+        <div>Sick certification</div>
+        <div>Avoid long-term sick certification — return to work is therapeutic and reduces chronicity. Use fit note with "may be fit for work with modifications" rather than "not fit for work." Short-term certification (1–2 weeks) acceptable for severe Grade 2. DVLA: can drive once pain and medication allow safe driving (patient's responsibility)</div>
+        <div>Grade 3 whiplash</div>
+        <div>Neurological signs present → MRI cervical spine. Physiotherapy + neuropathic analgesia (amitriptyline / gabapentin). Neurosurgical referral if deficit significant or MRI shows cord/root compression</div>
+      </div>
+
+      <!-- GCA -->
+      <p class="diag-subhead">④ Giant Cell Arteritis (neck pain variant)</p>
+      <div class="kv" style="margin-top:6px;">
+        <div>Visual symptoms present</div>
+        <div><b>Start prednisolone 60 mg OD immediately</b> — do not wait for ESR or biopsy. Same-day ophthalmology referral. Temporal artery biopsy within 2 weeks (positive up to 14 days after steroids). Bone protection: alendronate 70 mg weekly + Ca/Vit D from day 1 (NICE NG187)</div>
+        <div>No visual symptoms</div>
+        <div>Start prednisolone 40 mg OD + ESR/CRP/FBC. Refer rheumatology routinely. Taper: 40 mg × 4 weeks, 30 mg × 4 weeks, then 2.5 mg reduction every 2–4 weeks. Total duration typically 18–24 months. Monitor for steroid side effects — BP, HbA1c, weight, vertebral fractures</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Soft collar prescription for whiplash or acute neck pain is one of the most persistently harmful interventions in musculoskeletal medicine.</b> RCTs consistently show that collar immobilisation leads to worse outcomes at 6 months compared to early mobilisation — it increases disability, muscle atrophy, and fear-avoidance. The evidence-based message is unequivocal: move early, move often. For neuropathic pain in radiculopathy, amitriptyline has the strongest evidence base (NNT 3.6) and is cost-effective, but the starting dose of 10 mg nocte must be titrated slowly to avoid anticholinergic side effects and excessive sedation — under-dosing is common. Pregabalin is now Schedule 3 Controlled Drug (since April 2019) due to misuse potential; prescribing requires appropriate monitoring and is subject to local governance. Short-term oral prednisolone for acute cervical radiculopathy (30 mg × 5 days) reduces nerve root oedema acutely and improves early pain — it does not alter the natural history but enables earlier engagement with physiotherapy.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══ STEP 8: LIFESTYLE ══ -->
+  <div class="node" data-type="LIFESTYLE" data-step="8" id="step8">
+    <div class="node-head-row">
+      <div class="node-num">8</div>
+      <div class="node-head">
+        <span class="node-tag">Lifestyle</span>
+        <h3>Non-pharmacological interventions — address posture, sleep, and work ergonomics</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Lifestyle modification is treatment, not afterthought. Postural correction and ergonomic change address the primary drivers of recurrent neck pain. Give specific, measurable prescriptions.</p>
+      <div class="lsgrid">
+        <div class="lstile"><b>Workstation ergonomics</b> Screen at eye level (top of monitor = eye height). Keyboard at elbow height with forearms supported. Chair height: feet flat on floor, hips/knees at 90°. Screen distance: arm's length. Avoid laptop on lap for prolonged use — neck flexion load multiplier: 0° = 5 kg, 30° = 18 kg, 60° = 27 kg on cervical spine. Refer to occupational health for formal DSE assessment in office workers (employer duty under Display Screen Equipment Regulations 1992)</div>
+        <div class="lstile"><b>Exercise prescription</b> Deep cervical flexor (DCF) strengthening: chin tucks (craniocervical flexion) 10 × 10-second holds, 3× daily. Shown to reduce neck pain intensity by 45% at 6 weeks (Jull et al, Spine). Scapular retraction exercises (rhomboid/lower trapezius): 3 × 15 daily. Aerobic exercise: 150 min/week moderate intensity — reduces chronic neck pain via central pain modulation. Avoid high-impact neck-loading sports during acute episodes</div>
+        <div class="lstile"><b>Sleep posture</b> One pillow aligned to maintain neutral cervical spine (fill shoulder gap in side-lying). Avoid sleeping prone (rotates neck maximally — loads facet joints). Cervical pillow (contour pillow): modest evidence for reducing neck pain intensity. Avoid sleeping on sofa/armchair — uncontrolled neck position. Assess mattress — medium-firm mattress reduces neck and back pain vs soft</div>
+        <div class="lstile"><b>Screen time &amp; phone use</b> "Text neck" — looking down at phone 60° flexion = 27 kg force on cervical spine. Advise: raise phone to eye level for sustained use. Maximum 30 minutes uninterrupted screen time before neck movement break. 20-20-20 rule (screen breaks): every 20 minutes, look 20 feet away for 20 seconds — reduces eye and neck strain. Set phone reminder for movement breaks</div>
+        <div class="lstile"><b>Stress management</b> Psychological stress → trapezius hypertonicity → chronic neck tension. Neck pain is the musculoskeletal symptom most strongly associated with work-related stress and anxiety. Mindfulness-based stress reduction (MBSR): reduces chronic neck pain by 30% at 6 months (Level 1 evidence). Refer to NHS Talking Therapies for anxiety/depression contributing to pain. Progressive muscle relaxation techniques — can be self-taught via NHS apps</div>
+        <div class="lstile"><b>Driving ergonomics</b> Head restraint position: top of restraint at eye level, &lt;4 cm gap between head and restraint (whiplash injury reduction). Adjust seat angle: slight recline (100–110°) reduces lumbar and cervical load. Avoid prolonged driving without breaks — 90-minute maximum then 15-minute movement break. Power steering: reduces neck isometric loading. Car pillow for long journeys with cervical spondylosis</div>
+        <div class="lstile"><b>Weight management &amp; smoking cessation</b> Obesity: increased axial load on cervical spine, increased inflammatory cytokines accelerating disc degeneration. Smoking: reduces disc nutrition (avascular disc relies on diffusion) — smokers have 1.5× higher risk of cervical disc disease and 2× higher risk of failed surgical outcomes. Refer to NHS Stop Smoking Service + NRT/varenicline. Advise: smoking cessation is the single most impactful modifiable risk factor for disc degeneration progression</div>
+        <div class="lstile"><b>Return to normal activity — key message</b> The most important lifestyle prescription is avoiding activity restriction. Fear of movement (kinesiophobia) is the primary driver of chronic neck disability, not structural damage. Active message: "Your neck is safe to move. Activity nourishes the discs and muscles. Rest causes weakness and stiffness. Moving is healing." STarT MSK high-risk patients need this message delivered with psychological framework — consider co-prescribing NHS Talking Therapies (IAPT) with physiotherapy</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>The biomechanics of forward head posture explain why screen use is the primary driver of the neck pain epidemic.</b> For every inch of forward head posture, the effective weight on the cervical spine increases by approximately 10 pounds (4.5 kg). At 60° of neck flexion (typical smartphone use), the cervical spine bears the equivalent of 27 kg — compared to 4–5 kg in neutral position. A person who spends 4 hours/day looking at a smartphone imposes this excessive load for 1,400 hours per year. Deep cervical flexor strengthening specifically targets the longus colli and longus capitis muscles which act as a corset for the cervical spine — they are selectively inhibited in chronic neck pain and their retraining is the most evidence-based physiotherapy intervention for both acute and chronic neck pain (Jull 2002, Spine). Smoking cessation deserves emphasis in neck pain: intervertebral disc nutrition depends entirely on diffusion from end-plate capillaries, and smoking-induced microvascular disease is the most potent modifiable accelerator of disc degeneration and premature spondylosis.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══ STEP 9: SAFETY — Follow-up ══ -->
+  <div class="node" data-type="SAFETY" data-step="9" id="step9">
+    <div class="node-head-row">
+      <div class="node-num">9</div>
+      <div class="node-head">
+        <span class="node-tag">Safety</span>
+        <h3>Follow-up, monitoring &amp; safety-netting</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Provide explicit, specific safety-netting at every neck pain consultation. The window to prevent myelopathy progression and vascular emergencies is narrow — patients must know when to re-present immediately.</p>
+      <div class="kv">
+        <div>1–2 weeks</div>
+        <div>Acute neck pain: analgesia adequacy review; confirm physiotherapy booked. Radiculopathy: neurological symptom trajectory — improving (continue), worsening (urgent MRI). Whiplash: yellow flag reassessment; confirm active mobilisation and physiotherapy engagement. NSAIDs started: check eGFR if elderly</div>
+        <div>4–6 weeks</div>
+        <div>Non-specific neck pain not improving: reassess yellow flags, consider physiotherapy intensification, review diagnosis. Radiculopathy: if power deteriorating → urgent MRI + neurosurgical referral regardless of duration. PMR / GCA on prednisolone: ESR/CRP recheck, bone protection confirmed, begin slow taper</div>
+        <div>3 months</div>
+        <div>Persistent neck pain: formal reassessment — NRS pain score, function (Neck Disability Index), psychological status. If not improving and yellow flags identified → pain management programme referral. Radiculopathy: if persistent despite optimal conservative management → neurosurgical referral with MRI. PMR: steroid dose review; target ≤10 mg OD by 3 months</div>
+        <div>6 months</div>
+        <div>Chronic neck pain (&gt;6 months): pain management programme if not engaged. Review all analgesics — avoid long-term opioid use for non-specific neck pain. Consider acupuncture referral (NICE NG193 — up to 10 sessions for chronic primary pain). Rheumatology review for inflammatory arthritis</div>
+        <div>Annual</div>
+        <div>Cervical spondylosis with known myelopathy risk: annual neurological review (repeat Hoffmann's, reflexes, gait assessment). RA with cervical disease: annual cervical X-ray (flexion/extension) and neurology review. Long-term NSAID: eGFR, BP, GI symptoms every 6 months. PMR on prolonged steroids: DEXA, HbA1c, BP, ESR/CRP</div>
+        <div>Safety-net → 999</div>
+        <div><span class="pill pill-red">999</span> Sudden new severe neck pain + neurological symptoms (arm/leg weakness, face droop, speech difficulty, vertigo, diplopia) = stroke / arterial dissection until proven otherwise. Neck stiffness + fever + headache ± non-blanching rash = meningitis — 999 + benzylpenicillin IM/IV if available. New bladder / bowel dysfunction + bilateral limb weakness = cord emergency</div>
+        <div>Safety-net → same-day</div>
+        <div><span class="pill pill-amber">Same-day</span> Progressive arm weakness / new hand clumsiness / new gait disturbance — myelopathy progression. Sudden visual loss / blurring in patient with neck pain + age &gt;50 — GCA. New fever + severe neck pain + systemically unwell — epidural abscess / discitis. Neck pain after any head/neck manipulation if new neurological symptoms develop</div>
+        <div>Safety-net → return if</div>
+        <div>Pain significantly worsens or changes character. New neurological symptoms develop (numbness, weakness, bladder/bowel). Bilateral arm symptoms develop. Symptoms not improving at 6 weeks. New systemic symptoms (fever, weight loss, night sweats). Lhermitte's sign develops (electric shock down spine on neck flexion)</div>
+        <div>Analgesic monitoring</div>
+        <div>Amitriptyline: review dose at 4 weeks; ECG if &gt;100 mg OD or cardiac risk factors; anticholinergic effects (constipation, dry mouth, urinary retention). Gabapentin: renal dose adjustment; dependence potential; driving advice (DVLA — patients must not drive if affected). Pregabalin: CD Schedule 3 — review monthly, urine drug screen if misuse concern. Opioids: avoid for non-specific neck pain — review and deprescribe if inherited</div>
+        <div>Patient resources</div>
+        <div>NHS Choices neck pain information. Versus Arthritis neck pain guide. Neck Disability Index (NDI) — 10-item PROM for tracking. STarT MSK tool — self-complete for risk stratification. NHS Talking Therapies (IAPT) self-referral for anxiety/depression contributing to pain</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>The safety-netting message for myelopathy must be specific and memorable.</b> "If you notice your hands becoming clumsy, you start dropping things, or your walking becomes unsteady — come back same day" is more actionable than generic advice to "return if worried." Myelopathic deterioration can occur rapidly and unpredictably, particularly after minor trauma such as a fall — patients with known cervical stenosis are at specific risk. For GCA, the safety-netting message "go to A&amp;E immediately if you have any change in your vision — even momentary" is a visual-loss prevention strategy; amaurosis fugax (transient monocular visual loss) is the warning event before permanent blindness and must be treated as a same-day emergency. Benzylpenicillin (1.2g IM) before hospital transfer for suspected meningococcal disease remains in NICE guidance and reduces mortality — keeping this in the medical bag and knowing the dose is a primary care patient safety standard.</div>
+    </div>
+  </div>
+
+</div><!-- end .alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG59 (Low Back and Neck Pain 2016), NICE NG193 (Chronic Primary Pain 2021), NICE NG100 (Rheumatoid Arthritis 2018), NICE NG12 (Suspected Cancer 2015), NICE CG146 (Fragility Fractures 2023), NICE CKS Neck Pain, CKS Whiplash, CKS Giant Cell Arteritis, CKS Cervical Radiculopathy; Canadian C-Spine Rule (Stiell et al, NEJM 2003); STarT MSK Tool (Hill et al, Lancet 2011); Jull deep cervical flexor training evidence (Spine 2002); Pregabalin Schedule 3 CD (April 2019); Quebec Classification of Whiplash (Spine 1995); NOGG Osteoporosis Guidelines 2022. Always adapt to individual patient context, local formulary, and current NICE guidance.
+</div>
+
+<script>
+(function () {
+  const STORE_KEY = 'rgp.alg.neckpain.v1';
+  const flow = document.getElementById('flow');
+  const pDone = document.getElementById('pDone');
+  const pFill = document.getElementById('pFill');
+  const resetBtn = document.getElementById('resetBtn');
+
+  document.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.nextElementSibling.classList.toggle('open', !expanded);
+    });
+  });
+
+  function getState() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch { return {}; }
+  }
+  function saveState(s) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(s)); } catch {}
+  }
+  function updateProgress() {
+    const checks = flow.querySelectorAll('input[type="checkbox"]');
+    const done = [...checks].filter(c => c.checked).length;
+    pDone.textContent = done;
+    document.getElementById('pTotal').textContent = checks.length;
+    pFill.style.width = (checks.length ? (done / checks.length * 100) : 0) + '%';
+  }
+  function applyState() {
+    const state = getState();
+    flow.querySelectorAll('.node').forEach(node => {
+      const step = node.getAttribute('data-step');
+      const cb = node.querySelector('input[type="checkbox"]');
+      if (state[step]) { cb.checked = true; node.classList.add('done'); }
+    });
+    updateProgress();
+  }
+  flow.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const node = cb.closest('.node');
+      const step = node.getAttribute('data-step');
+      node.classList.toggle('done', cb.checked);
+      const state = getState();
+      if (cb.checked) { state[step] = true; } else { delete state[step]; }
+      saveState(state);
+      updateProgress();
+    });
+  });
+  resetBtn.addEventListener('click', () => {
+    if (!confirm('Reset all progress for this algorithm?')) return;
+    localStorage.removeItem(STORE_KEY);
+    flow.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
+    flow.querySelectorAll('.node').forEach(n => n.classList.remove('done'));
+    updateProgress();
+  });
+  applyState();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

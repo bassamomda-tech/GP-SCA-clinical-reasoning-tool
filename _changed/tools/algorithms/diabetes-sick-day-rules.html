@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Diabetes Sick Day Rules · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #f4f3f0;
+  --surface:   #ffffff;
+  --border:    #e2e0da;
+  --text:      #1a1917;
+  --muted:     #6b6762;
+  --accent:    #1d4ed8;          /* blue */
+  --safety:    #dc2626;          /* red  */
+  --diagnose:  #7c3aed;          /* purple */
+  --treat:     #0f766e;          /* teal  */
+  --refer:     #b45309;          /* amber */
+  --lifestyle: #15803d;          /* green */
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, serif;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.05);
+}
+
+html { font-size: 15px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 0 0 60px;
+}
+
+/* ── HEADER / BANNER ──────────────────────────────────────── */
+.stem-banner {
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+.sb-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  background: #eff6ff;
+  border-radius: 10px;
+  width: 52px; height: 52px;
+  display: grid; place-items: center;
+}
+.stem-banner b { display: block; font-size: 1.05rem; font-weight: 700; color: var(--text); }
+.stem-banner small { font-size: .8rem; color: var(--muted); }
+
+/* ── PROGRESS BAR ─────────────────────────────────────────── */
+.alg-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  font-size: .82rem;
+  color: var(--muted);
+}
+.pcount { font-weight: 600; color: var(--text); white-space: nowrap; }
+.pbar { flex: 1; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; min-width: 60px; }
+.pbar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #1d4ed8, #7c3aed); border-radius: 99px; transition: width .4s ease; }
+button.reset {
+  padding: 4px 12px; border-radius: 6px;
+  border: 1px solid var(--border); background: white;
+  font-size: .78rem; font-family: var(--font-body);
+  cursor: pointer; color: var(--muted);
+  transition: all .15s;
+}
+button.reset:hover { background: #fee2e2; border-color: #fca5a5; color: var(--safety); }
+
+/* ── FLOW CONTAINER ───────────────────────────────────────── */
+.alg-flow {
+  max-width: 820px;
+  margin: 28px auto 0;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ── CONNECTOR ────────────────────────────────────────────── */
+.connector {
+  width: 2px;
+  height: 28px;
+  background: linear-gradient(to bottom, var(--border), transparent);
+  align-self: center;
+  margin: 0;
+}
+
+/* ── NODE CARD ────────────────────────────────────────────── */
+.node {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow .2s, border-color .2s;
+}
+.node:hover { box-shadow: var(--shadow-md); }
+.node.done { border-color: #bbf7d0; background: #f0fdf4; }
+
+/* Node type accent strip */
+.node[data-type="SAFETY"]    { border-left: 4px solid var(--safety); }
+.node[data-type="DIAGNOSE"]  { border-left: 4px solid var(--diagnose); }
+.node[data-type="TREAT"]     { border-left: 4px solid var(--treat); }
+.node[data-type="REFER"]     { border-left: 4px solid var(--refer); }
+.node[data-type="LIFESTYLE"] { border-left: 4px solid var(--lifestyle); }
+
+/* ── NODE HEADER ──────────────────────────────────────────── */
+.node-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px 10px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.node-num {
+  font-size: .72rem;
+  font-weight: 700;
+  background: var(--border);
+  color: var(--muted);
+  border-radius: 50%;
+  width: 22px; height: 22px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.node-tag {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+.node[data-type="SAFETY"]    .node-tag { background: #fee2e2; color: var(--safety); }
+.node[data-type="DIAGNOSE"]  .node-tag { background: #ede9fe; color: var(--diagnose); }
+.node[data-type="TREAT"]     .node-tag { background: #ccfbf1; color: var(--treat); }
+.node[data-type="REFER"]     .node-tag { background: #fef3c7; color: var(--refer); }
+.node[data-type="LIFESTYLE"] .node-tag { background: #dcfce7; color: var(--lifestyle); }
+
+.node-head h3 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
+}
+.node-tick {
+  margin-left: auto;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.node-tick label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+.node-tick input[type="checkbox"] {
+  width: 18px; height: 18px;
+  accent-color: var(--lifestyle);
+  cursor: pointer;
+}
+.node-tick .tlbl { font-size: .78rem; color: var(--muted); user-select: none; }
+
+/* ── NODE BODY ────────────────────────────────────────────── */
+.node-body {
+  padding: 14px 18px;
+  font-size: .9rem;
+  color: var(--text);
+  line-height: 1.65;
+}
+.node-body > p, .node-body > .intro {
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: .87rem;
+}
+
+/* ── KEY-VALUE GRID ───────────────────────────────────────── */
+.kv {
+  display: grid;
+  grid-template-columns: minmax(130px, 30%) 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  font-size: .87rem;
+}
+.kv > div:nth-child(4n+1),
+.kv > div:nth-child(4n+2) { background: #fafaf9; }
+.kv > div {
+  padding: 9px 13px;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+}
+.kv > div:last-child, .kv > div:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+.kv > div:nth-child(odd) { font-weight: 600; color: var(--muted); font-size: .82rem; }
+.kv > div:nth-child(even) { color: var(--text); }
+
+/* ── RED FLAG GRID ────────────────────────────────────────── */
+.rfgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+.rftile {
+  background: #fff5f5;
+  border: 1px solid #fecaca;
+  border-left: 3px solid var(--safety);
+  border-radius: var(--r-md);
+  padding: 10px 13px;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+.rftile b { display: block; color: var(--safety); font-size: .82rem; margin-bottom: 2px; }
+
+/* ── BRANCH ───────────────────────────────────────────────── */
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 10px;
+  margin-top: 6px;
+}
+.b-card {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  font-size: .86rem;
+}
+.b-cond {
+  background: #f1f5f9;
+  padding: 7px 12px;
+  font-weight: 600;
+  font-size: .8rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+.b-drug {
+  padding: 8px 12px;
+  font-weight: 700;
+  color: var(--treat);
+  background: #f0fdfa;
+  border-bottom: 1px solid var(--border);
+}
+.b-note {
+  padding: 8px 12px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ── LADDER ───────────────────────────────────────────────── */
+.ladder {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  margin-top: 6px;
+  font-size: .87rem;
+}
+.rung {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+}
+.rung:last-child { border-bottom: none; }
+.rn {
+  background: #f1f5f9;
+  font-weight: 700;
+  font-size: .78rem;
+  color: var(--muted);
+  padding: 10px 13px;
+  min-width: 70px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+}
+.rt {
+  padding: 10px 14px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* ── LIFESTYLE GRID ───────────────────────────────────────── */
+.lsgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+.lstile {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 3px solid var(--lifestyle);
+  border-radius: var(--r-md);
+  padding: 10px 13px;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+.lstile b { display: block; color: var(--lifestyle); font-size: .82rem; margin-bottom: 2px; }
+
+/* ── PILLS ────────────────────────────────────────────────── */
+.pill {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 99px;
+  vertical-align: middle;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+.pill-red    { background: #fee2e2; color: #b91c1c; }
+.pill-purple { background: #ede9fe; color: #6d28d9; }
+.pill-blue   { background: #dbeafe; color: #1d4ed8; }
+.pill-teal   { background: #ccfbf1; color: #0f766e; }
+.pill-amber  { background: #fef3c7; color: #92400e; }
+.pill-green  { background: #dcfce7; color: #15803d; }
+.pill-grey   { background: #f1f5f9; color: #475569; }
+
+/* ── WHY DRAWER ───────────────────────────────────────────── */
+.why-row {
+  border-top: 1px solid var(--border);
+  background: #fafaf9;
+}
+.why-btn {
+  width: 100%;
+  text-align: left;
+  padding: 10px 18px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  transition: background .15s;
+}
+.why-btn:hover { background: #eff6ff; }
+.caret { font-size: .9rem; transition: transform .2s; display: inline-block; }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.why-drawer {
+  display: none;
+  padding: 12px 18px 14px;
+  font-size: .86rem;
+  color: var(--muted);
+  line-height: 1.7;
+  border-top: 1px dashed var(--border);
+}
+.why-drawer.open { display: block; }
+
+/* ── FOOTER ───────────────────────────────────────────────── */
+.alg-foot {
+  max-width: 820px;
+  margin: 32px auto 0;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  font-size: .8rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-left: auto; margin-right: auto;
+}
+.alg-foot strong { color: var(--text); }
+
+/* ── UTILITY ──────────────────────────────────────────────── */
+ul.blist { padding-left: 18px; }
+ul.blist li { margin-bottom: 4px; }
+.mt8 { margin-top: 8px; }
+.mb8 { margin-bottom: 8px; }
+.note {
+  background: #fefce8;
+  border: 1px solid #fde68a;
+  border-radius: var(--r-sm);
+  padding: 8px 12px;
+  font-size: .84rem;
+  color: #78350f;
+  margin-top: 10px;
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<!-- ── BANNER ──────────────────────────────────────────────── -->
+<div class="stem-banner">
+  <div class="sb-icon">🤒</div>
+  <div>
+    <b>Diabetes Sick Day Rules — Managing Diabetes During Intercurrent Illness</b>
+    <small>SICK &amp; SADMAN rules · never stop insulin · ketones &amp; DKA/HHS · when to seek help · TREND-UK / Diabetes &amp; Primary Care 2020</small>
+  </div>
+</div>
+
+<!-- ── PROGRESS ────────────────────────────────────────────── -->
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- ── FLOW ────────────────────────────────────────────────── -->
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — any intercurrent illness can push glucose up. Keep glucose, calories, hydration and ketones in check, apply the SICK + SADMAN rules, and know when to escalate.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Person with diabetes feels unwell</span><div class="body">Cold, flu, D&amp;V, UTI, chest infection, pneumonia, abscess, injury — any illness can raise glucose. Aim: control glucose, maintain calories &amp; hydration, test/manage ketones, recognise when to escalate.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — DKA / HHS</span><span class="ttl">Signs of DKA or HHS?</span><div class="body">DKA: thirst, polyuria, dehydration, Kussmaul breathing, abdominal pain, vomiting, drowsiness, pear-drop breath, ketones. HHS: glucose &gt;30 for days, confused, drowsy, very dehydrated.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Admit</span><span class="ttl">999 / urgent hospital</span><div class="body">DKA or HHS is life-threatening → urgent admission. Blood ketones &gt;3.0 mmol/L (or +++/++++ urine), vomiting, or unable to keep fluids down → emergency assessment.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Apply rules</span><span class="ttl">SICK + SADMAN</span><div class="body">Increase monitoring, never stop insulin, keep carbs &amp; fluids going, check ketones, and temporarily pause the SADMAN drugs.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · the SICK rules</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">S — Sugar</div><div class="box act"><span class="ttl">Monitor more often</span><div class="body">Glucose rises even if not eating. Increase SMBG. SU / insulin doses may need to go <b>up</b> temporarily.</div></div></div>
+      <div class="col"><div class="blabel">I — Insulin</div><div class="box act"><span class="ttl">NEVER stop insulin</span><div class="body">Never stop insulin or oral agents (except SADMAN). Doses often need increasing, especially if ketones present.</div></div></div>
+      <div class="col"><div class="blabel">C — Carbohydrate</div><div class="box act"><span class="ttl">Carbs + fluids</span><div class="body">Maintain hydration &amp; carbs. If not eating/vomiting → sugary fluids. If BG high → sugar-free fluids, ≥100 mL/hour.</div></div></div>
+      <div class="col"><div class="blabel">K — Ketones</div><div class="box ix"><span class="ttl">Test &amp; act</span><div class="body">T1DM: test ketones every 4–6h (every 2h if present). Extra rapid-acting insulin if ketones. Drink water to flush.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">SADMAN — pause these</span></div>
+    <div class="box act" style="max-width:680px;"><span class="lbl">Step 7 · Action · SADMAN</span><span class="ttl">Temporarily STOP if at risk of dehydration</span><div class="body"><b>S</b>GLT2 inhibitors (euglycaemic DKA), <b>A</b>CE inhibitors (AKI), <b>D</b>iuretics (AKI), <b>M</b>etformin (lactic acidosis), <b>A</b>RBs (AKI), <b>N</b>SAIDs (AKI). Restart once eating &amp; drinking normally for 24–48 hours.</div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:680px;"><span class="lbl">Step 6 · Refer / escalate</span><span class="ttl">Seek urgent medical advice if…</span><div class="body">Persistent vomiting, unable to keep fluids down, unable to control glucose or ketones, blood ketones &gt;1.5 mmol/L, drowsiness/confusion, or the person is deteriorating → contact GP/DSN or urgent care; admit if DKA/HHS suspected.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Never stop insulin — even if not eating.</b> Stopping insulin during illness is the commonest precipitant of DKA. Food, insulin and fluids together prevent dehydration and serious complications.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- STEP 1 · SAFETY -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-head">
+      <div class="node-num">1</div>
+      <div>
+        <span class="node-tag">Safety</span>
+        <h3>Spot DKA, HHS &amp; Sepsis That Need Admission Now</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Before giving any advice, decide whether this is a sick day to manage at home or an emergency. DKA, HHS and sepsis all need urgent hospital care.</p>
+      <div class="rfgrid">
+        <div class="rftile"><b>Diabetic ketoacidosis (DKA)</b> Excessive thirst, polyuria, dehydration, laboured (Kussmaul) breathing, abdominal pain, leg cramps, nausea/vomiting, confusion/drowsiness, <b>pear-drop breath</b>, ketones in blood/urine → urgent admission.</div>
+        <div class="rftile"><b>Blood ketones &gt; 3.0 mmol/L</b> (or +++/++++ on urine) → high risk of DKA → urgent hospital assessment. Ketones &gt;1.5 mmol/L already warrant seeking advice.</div>
+        <div class="rftile"><b>Hyperosmolar hyperglycaemic state (HHS)</b> Glucose persistently &gt;30 mmol/L for days, disorientation/confusion, polyuria, thirst, dry mouth, nausea, progressive drowsiness → life-threatening, urgent admission.</div>
+        <div class="rftile"><b>Persistent vomiting / can't keep fluids down</b> Cannot maintain hydration or carbohydrate → can't safely manage at home → urgent assessment.</div>
+        <div class="rftile"><b>Drowsiness, confusion, reduced consciousness</b> Any altered mental state in an unwell person with diabetes → emergency.</div>
+        <div class="rftile"><b>Sepsis / source needing treatment</b> Pneumonia, pyelonephritis, abscess, cellulitis — treat the underlying infection and consider admission per sepsis assessment (NEWS2).</div>
+      </div>
+      <div class="note mt8">ℹ️ DKA occurs in type 1 diabetes, and can occur in type 2 at times of <b>severe illness</b> or — rarely — in those on an <b>SGLT2 inhibitor</b> (euglycaemic DKA, glucose may be near-normal). Don't be falsely reassured by a normal glucose if the person is acidotic/ketotic.</div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Poorly-managed illness is what turns a minor infection into DKA, HHS or AKI requiring emergency admission — so the first job is always to separate the patient who can be safely advised at home from the one who needs hospital now. Euglycaemic DKA on SGLT2 inhibitors is the classic trap: the glucose can be unremarkable while the patient is dangerously ketotic and acidotic.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 2 · DIAGNOSE -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-head">
+      <div class="node-num">2</div>
+      <div>
+        <span class="node-tag">Diagnose</span>
+        <h3>What Triggers Sick Day Rules — and the Four Aims</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">People with diabetes don't get ill more often, but illness can destabilise glucose fast. Any intercurrent illness can trigger the rules — the list isn't exhaustive.</p>
+      <div class="kv">
+        <div>Common triggers</div>
+        <div>Common cold, influenza, <b>diarrhoea &amp; vomiting</b>, urinary tract infection, chest infection, <b>pneumonia</b>, abscess, injury (e.g. fracture). Any infection or acute stress can raise glucose.</div>
+        <div>Aim 1 — Glucose</div>
+        <div>Manage blood glucose levels — they tend to rise during illness even without eating.</div>
+        <div>Aim 2 — Calories &amp; fluids</div>
+        <div>Ensure adequate calorie intake and hydration with fluid replacement.</div>
+        <div>Aim 3 — Ketones</div>
+        <div>Test for, and manage, ketones if present.</div>
+        <div>Aim 4 — Escalation</div>
+        <div>Recognise when further medical attention is required (Steps 1 &amp; 8).</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        The four aims are the backbone of every sick-day conversation: keep glucose controlled, keep calories and fluids going, watch ketones, and know the escalation triggers. Naming them stops sick-day advice from becoming a vague "drink fluids and rest" and turns it into a concrete, safety-netted plan.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 3 · TREAT (SICK) -->
+  <div class="node" data-type="TREAT" data-step="3">
+    <div class="node-head">
+      <div class="node-num">3</div>
+      <div>
+        <span class="node-tag">Treat</span>
+        <h3>The SICK Rules — Sugar, Insulin, Carbohydrate, Ketones</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">The core of home management. The single most important message: <b>never stop insulin.</b></p>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">S — Sugar</div>
+          <div class="b-drug">Monitor more often</div>
+          <div class="b-note">Glucose can rise even if not eating. <b>Increase glucose monitoring.</b> Sulfonylurea and insulin doses may need <b>increasing</b> temporarily during illness.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">I — Insulin</div>
+          <div class="b-drug">NEVER stop insulin <span class="pill pill-red">key</span></div>
+          <div class="b-note"><b>Never stop insulin or oral diabetes meds</b> (except SADMAN, Step 4). Doses may need <b>increasing</b>, especially if ketones present. Insulin users → see the insulin-adjustment pathway.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">C — Carbohydrate</div>
+          <div class="b-drug">Keep carbs &amp; fluids going</div>
+          <div class="b-note">Maintain hydration &amp; carb intake. <b>Not eating / vomiting → replace meals with sugary fluids.</b> BG high → sugar-free fluids. BG low → regular sugary fluids. Sip ≥100 mL/hour.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">K — Ketones</div>
+          <div class="b-drug">Test &amp; treat</div>
+          <div class="b-note">T1DM: check ketones every <b>4–6h</b> (every <b>2h</b> if present). Give extra rapid-acting insulin if ketones present (see insulin pathway). Drink water to flush ketones.</div>
+        </div>
+      </div>
+      <div class="note mt8">ℹ️ Metformin and SGLT2 inhibitors are the exception to "never stop" — they may need temporary stopping if there's a risk of dehydration (SADMAN, Step 4). Insulin and sulfonylureas are <b>not</b> stopped.</div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Stopping insulin during illness — often because the person isn't eating — is the commonest avoidable precipitant of DKA. During illness the counter-regulatory stress hormones drive glucose and ketones up, so the body needs <em>more</em> insulin, not less, even when food intake drops. The SICK mnemonic keeps all four levers (sugar, insulin, carbohydrate, ketones) in view at once.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 4 · TREAT (SADMAN) -->
+  <div class="node" data-type="TREAT" data-step="4">
+    <div class="node-head">
+      <div class="node-num">4</div>
+      <div>
+        <span class="node-tag">Treat</span>
+        <h3>The SADMAN Rules — Drugs to Temporarily Stop</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Several drug classes should be <b>temporarily paused</b> during any acute illness that can cause dehydration, then restarted on recovery.</p>
+      <div class="ladder">
+        <div class="rung"><span class="rn">S — SGLT2i</span><span class="rt"><b>Dapagliflozin, empagliflozin, canagliflozin, ertugliflozin.</b> Risk of <b>euglycaemic DKA</b> if dehydrated → stop during acute illness.</span></div>
+        <div class="rung"><span class="rn">A — ACEi</span><span class="rt"><b>Ramipril, lisinopril, perindopril</b> etc. Risk of <b>AKI</b> (reduced efferent vasoconstriction) → stop while dehydrated.</span></div>
+        <div class="rung"><span class="rn">D — Diuretics</span><span class="rt"><b>Furosemide, bendroflumethiazide, indapamide, spironolactone.</b> Risk of <b>AKI</b> from volume depletion → stop.</span></div>
+        <div class="rung"><span class="rn">M — Metformin</span><span class="rt"><b>Metformin.</b> Risk of <b>lactic acidosis</b> if dehydrated/AKI → stop during the acute illness.</span></div>
+        <div class="rung"><span class="rn">A — ARBs</span><span class="rt"><b>Losartan, candesartan, irbesartan, valsartan.</b> Risk of <b>AKI</b> → stop while dehydrated.</span></div>
+        <div class="rung"><span class="rn">N — NSAIDs</span><span class="rt"><b>Ibuprofen, naproxen, diclofenac.</b> Risk of <b>AKI</b> (reduced afferent vasodilation) → stop; use paracetamol for symptom relief.</span></div>
+      </div>
+      <div class="note mt8">✅ <b>Restart</b> all SADMAN drugs once the person is feeling better and has been <b>eating and drinking normally for 24–48 hours.</b></div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        SADMAN drugs each become dangerous in the setting of dehydration: SGLT2 inhibitors precipitate euglycaemic DKA, metformin risks lactic acidosis, and the ACEi/ARB/diuretic/NSAID combination is the classic "triple whammy" for acute kidney injury (Think Kidneys / NICE CG169). Pausing them during illness and restarting once the patient is eating and drinking normally is a simple, high-yield safety intervention.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 5 · DIAGNOSE (monitoring) -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+    <div class="node-head">
+      <div class="node-num">5</div>
+      <div>
+        <span class="node-tag">Diagnose</span>
+        <h3>Monitoring — Glucose &amp; Ketone Frequency (T1 vs T2)</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <div class="kv">
+        <div>Type 1 diabetes</div>
+        <div>Test <b>blood glucose AND ketones every 4–6 hours, including overnight.</b> If glucose &gt;11 and/or ketones present, increase to <b>every 2 hours</b>.</div>
+        <div>Type 2 diabetes</div>
+        <div>Test blood glucose <b>at least 4 times a day.</b> If BG &gt;11 and ketones present, test BG + ketones <b>every 2 hours</b> (including overnight).</div>
+        <div>Ketone thresholds</div>
+        <div>Blood ketones <b>&lt;0.6</b> normal · <b>0.6–1.5</b> recheck/act · <b>1.5–3.0</b> high risk, seek advice · <b>&gt;3.0</b> urgent hospital. Urine: + to ++ ≈ 1.5–3.0; +++ to ++++ &gt;3.0.</div>
+        <div>Target while ill</div>
+        <div>Keeping glucose roughly &lt;11–15 and ketones clear is the practical aim; don't chase tight control during acute illness.</div>
+        <div>If no ketone meter</div>
+        <div>Use urine ketone sticks; if neither available and the person is unwell with high glucose, lower the threshold to seek advice.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        More frequent testing during illness is what lets you catch a rising ketone trend before it becomes DKA. Blood ketone meters are preferred over urine sticks because they reflect the current state (urine lags), and a blood ketone &gt;1.5 mmol/L is the practical "seek advice" trigger while &gt;3.0 mmol/L signals likely DKA.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 6 · TREAT (carbs/fluids) -->
+  <div class="node" data-type="TREAT" data-step="6">
+    <div class="node-head">
+      <div class="node-num">6</div>
+      <div>
+        <span class="node-tag">Treat</span>
+        <h3>Carbohydrate &amp; Fluid Replacement</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Food, insulin and fluids together prevent dehydration and serious complications. Match the fluid to the glucose.</p>
+      <div class="kv">
+        <div>If able to eat</div>
+        <div>Continue normal carbohydrate-containing meals where possible.</div>
+        <div>If not eating / vomiting</div>
+        <div><b>Replace meals with sugary fluids</b> (e.g. non-diet cola/lemonade, fruit juice, sports drinks) or easy carbs — soup, milk, ice cream, yoghurt.</div>
+        <div>If BG is HIGH</div>
+        <div>Maintain fluids with <b>sugar-free</b> drinks/water to rehydrate without pushing glucose higher.</div>
+        <div>If BG is LOW</div>
+        <div>Encourage <b>regular sugary fluids</b> to keep glucose up and prevent hypoglycaemia.</div>
+        <div>How much</div>
+        <div>Aim to sip <b>at least 100 mL/hour</b> if able. Small, frequent sips are better tolerated if nauseated.</div>
+        <div>Ketones present</div>
+        <div>Drink plenty of water to maintain hydration and help flush ketones, alongside extra insulin if on insulin.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        The trick patients miss is that the type of fluid depends on the glucose: sugary fluids when they can't eat or BG is low, sugar-free when BG is high — but fluids never stop. Maintaining carbohydrate also prevents starvation ketosis, which compounds illness-driven ketone production.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 7 · LIFESTYLE (recovery) -->
+  <div class="node" data-type="LIFESTYLE" data-step="7">
+    <div class="node-head">
+      <div class="node-num">7</div>
+      <div>
+        <span class="node-tag">Lifestyle</span>
+        <h3>Recovery — Stepping Back Down &amp; Restarting Meds</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <div class="lsgrid">
+        <div class="lstile"><b>Wind dose changes back down</b> As the illness subsides, gradually reduce any increased insulin/SU doses back to the usual regimen — adjustments are incremental.</div>
+        <div class="lstile"><b>Restart SADMAN drugs</b> Restart metformin, SGLT2i, ACEi/ARB, diuretics and NSAIDs once eating &amp; drinking normally for <b>24–48 hours</b>.</div>
+        <div class="lstile"><b>Keep monitoring briefly</b> Continue more frequent glucose/ketone checks until stable, then return to the usual schedule.</div>
+        <div class="lstile"><b>Resume normal diet</b> Return to the usual eating pattern and rehydrate fully.</div>
+        <div class="lstile"><b>Review what happened</b> If the episode was severe or the person struggled to cope, arrange GP/DSN review and refresh the sick-day plan.</div>
+        <div class="lstile"><b>Check kidney function if needed</b> After significant dehydration/AKI risk, consider rechecking U&amp;Es per clinical judgement before restarting all nephrotoxic drugs.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Recovery is an active phase, not an afterthought: insulin/SU doses that were pushed up must be tapered back to avoid hypoglycaemia, and the SADMAN drugs should only be restarted once the patient is reliably eating and drinking. A post-episode review is a good chance to reinforce the plan and supply a sick-day kit.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 8 · REFER -->
+  <div class="node" data-type="REFER" data-step="8">
+    <div class="node-head">
+      <div class="node-num">8</div>
+      <div>
+        <span class="node-tag">Refer</span>
+        <h3>When to Seek Urgent Help or Admit</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <div class="kv">
+        <div><span class="pill pill-red">999 / admit</span></div>
+        <div>Suspected <b>DKA</b> or <b>HHS</b>, reduced consciousness, severe dehydration, or blood ketones <b>&gt;3.0 mmol/L</b> → emergency admission.</div>
+        <div><span class="pill pill-amber">Seek urgent advice</span></div>
+        <div><b>Vomiting / unable to keep fluids down</b>, unable to control glucose or ketones, blood ketones <b>&gt;1.5 mmol/L</b>, or persistent high glucose despite extra insulin → contact GP / DSN / urgent care.</div>
+        <div>Persistent vomiting</div>
+        <div>Cannot maintain hydration → risk of dehydration, AKI and DKA → low threshold for assessment, especially in the frail or elderly.</div>
+        <div>Unsure about dose changes</div>
+        <div>If the person is unsure how to adjust insulin/medication → contact GP or diabetes specialist nurse for advice.</div>
+        <div>Children / pregnancy / frail elderly</div>
+        <div>Lower threshold to seek help — these groups destabilise and dehydrate faster.</div>
+        <div>No improvement / deteriorating</div>
+        <div>If not improving over the expected course of the illness, or getting worse → reassess and escalate.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Clear escalation triggers — vomiting, uncontrolled glucose/ketones, ketones &gt;1.5, drowsiness — are what convert sick-day advice into a safe plan. The patient should leave the consultation knowing exactly which symptoms mean "phone now" and which mean "go to hospital".
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 9 · SAFETY (education) -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-head">
+      <div class="node-num">9</div>
+      <div>
+        <span class="node-tag">Safety</span>
+        <h3>Patient Education &amp; the Sick-Day Kit</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Sick-day rules only work if the patient knows them <b>before</b> they're ill. Give the advice proactively and provide a written plan.</p>
+      <div class="lsgrid">
+        <div class="lstile"><b>Give written sick-day rules</b> Provide TREND-UK "What to do when you are ill" (separate T1 and T2 leaflets) and document that advice was given.</div>
+        <div class="lstile"><b>Sick-day kit at home</b> Spare blood glucose strips, in-date <b>blood ketone meter + strips</b>, sugary &amp; sugar-free fluids, paracetamol, and contact numbers.</div>
+        <div class="lstile"><b>Know the SADMAN list</b> Patient should know which of their drugs to pause when dehydrated and to restart after 24–48h well.</div>
+        <div class="lstile"><b>Never stop insulin</b> Reinforce the golden rule — even when not eating. Insulin users → review the insulin-adjustment pathway.</div>
+        <div class="lstile"><b>Escalation numbers</b> GP, out-of-hours, diabetes specialist nurse, NHS 111, and when to call 999.</div>
+        <div class="lstile"><b>Review high-risk groups</b> Recent DKA, hypoglycaemia unawareness, CKD, frailty, or on SGLT2i — proactively counsel and consider a personalised plan.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Sick-day rules are preventive medicine: the evidence and guidance (TREND-UK, Think Kidneys, NICE CG169) all stress that the advice must be given and a kit prepared <em>before</em> illness strikes, because a frightened, vomiting patient is in no state to learn the rules from scratch. Documenting that advice was given is also good medicolegal practice.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /alg-flow -->
+
+<!-- ── FOOTER ────────────────────────────────────────────────── -->
+<div class="alg-foot" style="max-width:820px; margin:32px auto 0; padding:0 16px;">
+  <div style="background:white;border:1px solid #e2e0da;border-radius:10px;padding:16px 20px;font-size:.8rem;color:#6b6762;line-height:1.6;">
+    <strong style="color:#1a1917;">Educational use only.</strong> Pathway based on:
+    Down S (2020) <em>How to advise on sick day rules.</em> Diabetes &amp; Primary Care 22: 47–8 ·
+    TREND-UK (2018/2020) Type 1 &amp; Type 2 diabetes: What to do when you are ill ·
+    Think Kidneys / NHS England — Sick-day guidance for patients at risk of AKI ·
+    NICE NG148 Acute Kidney Injury · NICE NG17 Type 1 diabetes · NICE NG28 Type 2 diabetes.
+    SADMAN drugs should be temporarily paused when dehydrated and restarted after 24–48h of normal eating &amp; drinking. Always adapt to individual patient context and current guidance.
+  </div>
+</div>
+
+<!-- ── JAVASCRIPT ─────────────────────────────────────────────── -->
+<script>
+(function () {
+  const STORE_KEY = 'rgp.alg.diabetes-sick-day-rules.v1';
+  const flow      = document.getElementById('flow');
+  const pDone     = document.getElementById('pDone');
+  const pFill     = document.getElementById('pFill');
+  const resetBtn  = document.getElementById('resetBtn');
+  const total     = 9;
+
+  // ── Load saved state ────────────────────────────────────────
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch(_) {}
+
+  // ── Apply to checkboxes ──────────────────────────────────────
+  flow.querySelectorAll('.node').forEach(node => {
+    const step = node.dataset.step;
+    const cb   = node.querySelector('input[type="checkbox"]');
+    if (!cb) return;
+    if (saved[step]) {
+      cb.checked = true;
+      node.classList.add('done');
+    }
+    cb.addEventListener('change', () => {
+      node.classList.toggle('done', cb.checked);
+      saved[step] = cb.checked;
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(saved)); } catch(_) {}
+      updateProgress();
+    });
+  });
+
+  // ── Progress bar ─────────────────────────────────────────────
+  function updateProgress() {
+    const n = Object.values(saved).filter(Boolean).length;
+    pDone.textContent = n;
+    pFill.style.width = (n / total * 100) + '%';
+  }
+  updateProgress();
+
+  // ── Reset ────────────────────────────────────────────────────
+  resetBtn.addEventListener('click', () => {
+    if (!confirm('Reset all progress?')) return;
+    saved = {};
+    try { localStorage.removeItem(STORE_KEY); } catch(_) {}
+    flow.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    flow.querySelectorAll('.node').forEach(n => n.classList.remove('done'));
+    updateProgress();
+  });
+
+  // ── Why? drawers ──────────────────────────────────────────────
+  flow.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const drawer  = btn.nextElementSibling;
+      const isOpen  = drawer.classList.contains('open');
+      drawer.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', !isOpen);
+    });
+  });
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

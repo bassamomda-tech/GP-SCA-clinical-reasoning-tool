@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erectile Dysfunction · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="../assets/medchooser.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+.tag-2ww{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;font-weight:700}
+</style>
+</head>
+<body class="mode-both" id="bodyEl" data-screen-label="Erectile Dysfunction">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="erectile-dysfunction"></aside>
+  <main class="main">
+<div class="case-head">
+  <div>
+    <div class="ch-cat">Sexual Health · Full case</div>
+    <h1>Erectile Dysfunction</h1>
+  </div>
+  <div class="case-head-tags"><span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE CKS / BSSM</span><span class="tag">PDE5 inhibitor</span><span class="tag tag-2ww">CV sentinel</span></div>
+</div>
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">ED</div>
+      <div><div class="tb-title">Erectile Dysfunction · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE CKS / BSSM · Cardiovascular sentinel · Organic vs psychogenic · PDE5 inhibitors · Hypogonadism · QRISK</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">ED = vascular warning</span><span class="ns-lbl">Erectile dysfunction is an early marker of endothelial/vascular disease — it can precede a cardiac event by 2–5 years. New ED, especially of gradual organic onset, mandates full cardiovascular risk assessment (QRISK), not just a sildenafil prescription</span></div>
+    <div class="ns-item"><span class="ns-val">Organic vs psychogenic</span><span class="ns-lbl">Gradual onset, absent morning/spontaneous erections, age and vascular risk factors point to ORGANIC ED. Sudden onset, preserved morning erections, situational pattern, relationship/stress factors point to PSYCHOGENIC ED</span></div>
+    <div class="ns-item"><span class="ns-val">PDE5i first-line</span><span class="ns-lbl">A phosphodiesterase-5 inhibitor (sildenafil — now available without prescription in pharmacies, tadalafil, etc.) is first-line for most ED, regardless of cause, alongside treating the underlying drivers and lifestyle change. Sildenafil is generic and inexpensive</span></div>
+    <div class="ns-item"><span class="ns-val">Nitrates = absolute no</span><span class="ns-lbl">PDE5 inhibitors are absolutely contraindicated with nitrates and nicorandil (profound hypotension). Caution with alpha-blockers and recent cardiovascular events. Always check the cardiac drug list before prescribing</span></div>
+    <div class="ns-item"><span class="ns-val">Check testosterone</span><span class="ns-lbl">Measure morning (9–11am) fasting total testosterone, with low libido/fatigue or PDE5i failure. Confirm low results on a repeat with LH/FSH, prolactin and SHBG before diagnosing hypogonadism — and consider a pituitary cause</span></div>
+    <div class="ns-item"><span class="ns-val">Treat the drivers</span><span class="ns-lbl">Diabetes, hypertension, hyperlipidaemia, smoking, alcohol, obesity and sedentary lifestyle all cause/worsen ED. Many drugs contribute (thiazides, beta-blockers, SSRIs, finasteride, antipsychotics). Optimising these often improves erections</span></div>
+    <div class="ns-item"><span class="ns-val">Don't miss depression</span><span class="ns-lbl">ED and depression are bidirectionally linked; SSRIs both cause and result from sexual dysfunction. Screen mood, relationship distress and the psychological impact — and ask, sensitively, about self-harm where mood is low</span></div>
+    <div class="ns-item"><span class="ns-val">Sudden painful = red flag</span><span class="ns-lbl">A sustained painful erection (priapism &gt;4 hours) is a urological emergency. Peyronie's disease (painful curvature), penile/testicular lumps, or trauma have their own pathways. ED with prominent LUTS + abnormal prostate → consider prostate pathway</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Erectile Dysfunction</div>
+  <div class="stem-title">A 52-year-old man, embarrassed and reluctant, who books a "quick" appointment and only at the end mentions 6 months of erectile difficulty — with several untreated vascular risk factors</div>
+  <div class="stem-text">David Okonkwo, 52, comes in nominally about a repeat prescription, and as he is about to leave says, "while I'm here… things aren't working in the bedroom." On gentle questioning he describes 6 months of gradually worsening erectile difficulty, now affecting most attempts, with loss of his early-morning erections. He is a smoker, has untreated borderline-high blood pressure noted opportunistically last year, a strong family history of heart disease, a desk job and little exercise, and his waist is expanding. He drinks 25 units a week. His mood is "a bit flat" and it is straining his relationship. He hopes for "those blue tablets" and to keep the conversation brief.</div>
+  <div class="stem-note">This stem tests the ability to: create a safe, non-embarrassing space for a sensitive presentation raised as a "by the way"; recognise gradual-onset ED with loss of morning erections in a man with multiple vascular risk factors as ORGANIC and as a cardiovascular sentinel symptom that mandates full CV risk assessment (QRISK), not merely a PDE5i prescription; screen and act on mood; perform the relevant examination and investigations (BP, BMI/waist, glucose/HbA1c, lipids, morning testosterone); prescribe a PDE5 inhibitor safely (nitrate/nicorandil check); and address lifestyle and the underlying drivers. The SCA challenge is to honour his wish for "the blue tablets" and a brief consultation while doing the cardiovascular and psychological work the symptom demands.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — Organic ED + vascular risk (this stem)</strong> Gradual onset, lost morning erections, vascular risk factors. PDE5i + full CV risk assessment (QRISK), treat risk factors, lifestyle, screen mood. The symptom is a window onto cardiovascular health.</div>
+    <div class="stem-variant"><strong>Scenario B — Psychogenic ED</strong> Younger man, sudden onset, preserved morning/spontaneous erections, situational (fine with masturbation, not with partner), performance anxiety/relationship stress. PDE5i can help, but address psychological factors ± psychosexual therapy.</div>
+    <div class="stem-variant"><strong>Scenario C — Hypogonadism</strong> Low libido, fatigue, reduced morning erections, ± small testes. Morning total testosterone (repeat low + LH/FSH/prolactin/SHBG); exclude pituitary cause; consider testosterone replacement under guidance; PDE5i response may be blunted if very low.</div>
+    <div class="stem-variant"><strong>Scenario D — Drug-induced ED</strong> Onset after starting a thiazide, beta-blocker, SSRI, finasteride or antipsychotic. Review and, where possible, switch the offending drug; don't just add a PDE5i over the top.</div>
+    <div class="stem-variant"><strong>Scenario E — Red-flag urology</strong> Priapism &gt;4h (emergency), Peyronie's (painful curvature), penile/testicular lump, or ED with prominent LUTS + abnormal prostate → respective urological/prostate pathways.</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Onset (gradual organic vs sudden psychogenic); morning erections (lost = organic; preserved = psychogenic); vascular risk factors and QRISK; medication review (ED-causing drugs); libido/fatigue → testosterone; mood/relationship distress; nitrate/nicorandil use (PDE5i contraindication); age; LUTS; priapism/Peyronie's red flags; the "by the way" presentation and embarrassment.</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History — Organic vs Psychogenic · Vascular Risk · Mood · Drugs · ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The history has two big jobs: work out whether the ED is organic or psychogenic (which the pattern usually tells you), and recognise that organic ED is a cardiovascular sentinel — a reason to assess David's whole vascular risk, not just write a prescription.</strong> Layered onto that are the drivers (drugs, alcohol, mood) and the human reality of an embarrassed man who raised this as he was leaving.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 SCA framing — make it easy to talk about, then widen the lens</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"I'm really glad you mentioned it — it's very common and very treatable, and there's no need to feel awkward. There's a tablet that helps most men, and I'd also like to use this as a chance to check your heart health, because the two are closely linked. Shall we do both?"</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">David wants "the blue tablets" and a quick exit. The skill is to normalise the topic, validate him for raising it, and connect the symptom to his cardiovascular health so the broader assessment feels like care, not obstruction.</div>
+    </div>
+    <div class="sub-divider">1A — Characterise the ED and screen the drivers</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"Tell me a bit more about what's been happening — when it started and how it's affecting you."</em></td>
+            <td class="why"><strong>An open, unembarrassed question signals this is routine clinical territory.</strong> It captures onset (gradual vs sudden), the impact on David and his relationship, and his agenda. Gradual onset over months with loss of morning erections — David's story — points to organic ED.<span class="why-sub">In SCA: a calm, matter-of-fact opening to a sensitive topic is itself a marked communication skill.</span></td>
+            <td><span class="chg chg-ddx">Gradual + lost morning erections → organic</span></td>
+          </tr>
+          <tr><td class="q">Organic vs psychogenic features<em>"Do you still get firm erections first thing in the morning or on your own? Is it every time, or only in some situations?"</em></td><td class="why">The key discriminator. <strong>Organic:</strong> gradual, consistent across situations, loss of nocturnal/morning erections, vascular risk. <strong>Psychogenic:</strong> sudden onset, situational (preserved with masturbation/morning but not with partner), performance anxiety, relationship/stress factors. David has lost his morning erections — organic.</td><td class="why">Organic → vascular work-up + PDE5i. Psychogenic → address psychological factors ± therapy (PDE5i may still help).</td><td><span class="chg chg-ddx">Defines organic vs psychogenic</span></td></tr>
+          <tr><td class="q">🚩 Cardiovascular risk<em>"Can I check a few things about your heart health — do you smoke, what's your blood pressure been, any family history of heart problems, diabetes, cholesterol?"</em></td><td class="why"><strong>The safety core.</strong> Organic ED is endothelial disease and can precede a coronary event by years. David smokes, has untreated raised BP, a strong family history, is sedentary with central obesity, and drinks heavily — he needs a full cardiovascular risk assessment (QRISK), BP, lipids and glucose, with risk-factor treatment. The ED is the presenting tip of a vascular iceberg.</td><td class="why">Vascular risk factors → full CV risk assessment (QRISK), treat risk factors, lifestyle — the symptom is a cardiovascular opportunity.</td><td><span class="chg" style="background:#fef2f2;color:#b91c1c;border:1px solid #fecaca">CV sentinel → QRISK + risk-factor treatment</span></td></tr>
+          <tr><td class="q">Libido, energy, hypogonadism<em>"Has your sex drive changed? Any drop in energy, mood, or shaving frequency?"</em></td><td class="why">Low libido and fatigue (rather than ED alone) raise hypogonadism — prompting a morning total testosterone (repeat if low, with LH/FSH, prolactin, SHBG) and consideration of a pituitary cause. Very low testosterone can blunt the response to PDE5 inhibitors.</td><td class="why">Low libido/fatigue → check morning testosterone; investigate hypogonadism.</td><td><span class="chg chg-inv">Morning testosterone ± pituitary work-up</span></td></tr>
+          <tr><td class="q">Medication &amp; substances<em>"What medicines do you take, including anything for blood pressure, mood, or prostate? How much alcohol, and any recreational drugs?"</em></td><td class="why">Many drugs cause ED: thiazides, beta-blockers, SSRIs, finasteride, antipsychotics, some antiepileptics. Alcohol excess and recreational drugs contribute. Crucially, identify nitrates and nicorandil — an absolute contraindication to PDE5 inhibitors. David's 25 units/week is a modifiable driver.</td><td class="why">ED-causing drug → review/switch. Nitrate/nicorandil → PDE5i contraindicated. Alcohol → reduce.</td><td><span class="chg chg-rx">Nitrate/nicorandil = no PDE5i; switch offending drugs</span></td></tr>
+          <tr><td class="q">Mood &amp; relationship<em>"How's your mood been? How are things in the relationship — and is any of this getting you down?"</em></td><td class="why">ED and depression are bidirectional; SSRIs both cause and treat. David's "flat" mood and relationship strain need a proper screen (and, where mood is low, a sensitive risk assessment). Addressing mood and the relationship is part of treating the ED, not separate from it.</td><td class="why">Low mood → screen/treat depression (mind SSRI sexual side effects); relationship distress → support/psychosexual therapy.</td><td><span class="chg chg-ps">Screen mood + self-harm risk if low</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — the symptom that is also a warning</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Organic ED as a cardiovascular sentinel</td><td class="rf-why">ED is an early manifestation of systemic endothelial disease and can precede myocardial infarction/stroke by 2–5 years. Treating the erection while ignoring the vascular risk misses the most important diagnosis.</td><td><span class="rf-action rfa-same">Full CV risk assessment (QRISK); BP, lipids, glucose/HbA1c; treat risk factors; consider angina/exercise tolerance</span></td></tr>
+          <tr><td class="rf-flag">Chest pain / exertional symptoms / very high CV risk</td><td class="rf-why">Undiagnosed coronary disease may be unmasked by the assessment or by the exertion of resumed sexual activity.</td><td><span class="rf-action rfa-same">Assess cardiac symptoms; manage/refer per cardiac pathways before resuming activity if concern</span></td></tr>
+          <tr><td class="rf-flag">Priapism — painful erection &gt;4 hours</td><td class="rf-why">A urological emergency; prolonged priapism causes ischaemic damage and permanent ED.</td><td><span class="rf-action rfa-999">Emergency urology/A&amp;E; aspiration/treatment</span></td></tr>
+          <tr><td class="rf-flag">Low mood / self-harm risk</td><td class="rf-why">ED and depression compound each other; the psychological and relationship impact can be severe and occasionally dangerous.</td><td><span class="rf-action rfa-same">Screen mood; assess self-harm risk; treat/refer; mind SSRI sexual effects</span></td></tr>
+          <tr><td class="rf-flag">Hypogonadism with pituitary features</td><td class="rf-why">Low testosterone with high prolactin, visual field defects or headache may indicate a pituitary tumour.</td><td><span class="rf-action rfa-same">Confirm low morning testosterone + LH/FSH/prolactin; endocrinology if pituitary cause suspected</span></td></tr>
+          <tr><td class="rf-flag">Peyronie's / penile or testicular lump / LUTS + abnormal prostate</td><td class="rf-why">Structural disease, and prostate pathology presenting alongside ED, need their own assessment/pathways.</td><td><span class="rf-action rfa-same">Examine; urology referral; prostate assessment (PSA/DRE) if LUTS/abnormal exam</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What do you think is behind it — and what were you hoping we could do?"</div><div class="ice-why">David likely sees this as a mechanical problem with a tablet solution, and may not realise it is linked to his heart health. Surfacing his idea lets you give the tablet he wants AND introduce the cardiovascular link as a positive ("this is a chance to protect your heart"), so the wider assessment feels relevant rather than imposed.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 Concerns</div><div class="ice-phrase">"Has this been worrying you — about your health, or about the relationship?"</div><div class="ice-why">His concerns may be about masculinity, the relationship, ageing, or a fear of serious illness. Naming them — and the strain on his relationship and mood — makes him feel understood and opens the door to addressing the psychological dimension, not just the physiology.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"You mentioned the tablets — let me explain how they work and what else will help them work better."</div><div class="ice-why">He expects a quick prescription. Naming this lets you deliver it (most men can have a PDE5i) while framing lifestyle change, risk-factor treatment and mood as the things that make the tablets work better and protect his health — a deal he can buy into.</div></div>
+    </div>
+    <div class="sub-divider">1D — Psychosocial context</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 The "by the way" symptom — embarrassment, masculinity and missed opportunity</div>
+      <p>Men often raise ED as an afterthought, at the door, because of embarrassment, stigma and fear. How the clinician responds in that moment determines whether the consultation succeeds. Brushing it off, or simply printing a sildenafil prescription to end an awkward moment, both miss the point: ED is treatable AND it is a flag for cardiovascular disease and sometimes depression. The work is to normalise the topic warmly, give the treatment he came for, and use the open door to assess his heart and his mood — turning an embarrassing moment into a genuinely valuable consultation.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>🧍 Masculinity &amp; shame</h5><p>ED can feel like a threat to identity. A calm, normalising, blame-free manner is therapeutic in itself and makes the rest of the assessment possible.</p><span class="ps-phrase">"This is one of the commonest things I see, and it's very treatable — there's absolutely nothing to be embarrassed about. I'm glad you brought it up."</span></div>
+      <div class="ps-card"><h5>❤️ The cardiovascular link</h5><p>Reframing ED as a useful early warning gives a positive reason to engage with risk-factor work and lifestyle change.</p><span class="ps-phrase">"The same blood vessels that supply the penis supply the heart — so this can actually be an early heads-up. Sorting your blood pressure, the smoking and your weight will help the erections and protect your heart at the same time."</span></div>
+      <div class="ps-card"><h5>💞 Relationship strain</h5><p>ED affects partners and relationships; acknowledging this — and offering to involve the partner or psychosexual support — addresses a key driver.</p><span class="ps-phrase">"This kind of thing can put a strain on a relationship — how are things between you? Sometimes it helps to involve your partner, and there's specialist support if that would be useful."</span></div>
+      <div class="ps-card"><h5>🧠 Mood</h5><p>Low mood both causes and results from ED; screening and treating it (mindful of SSRI sexual effects) is part of the plan.</p><span class="ps-phrase">"You mentioned feeling a bit flat — that often goes hand in hand with this. Can I ask a bit more about your mood, because treating that can really help too?"</span></div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div><div class="sca-phrase">"Do you still get firm erections first thing in the morning?" — the question that separates organic from psychogenic.</div><div class="sca-phrase">"The blood vessels to the penis and the heart are the same — so this is a chance to protect your heart too." — frames the CV work as care.</div><div class="sca-phrase">"Are you on any heart tablets like a nitrate or nicorandil?" — the safety check before a PDE5i.</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Prescribing a PDE5i without CV risk assessment or a nitrate check</li><li>Not distinguishing organic from psychogenic</li><li>Missing mood/relationship impact</li><li>Awkward or dismissive handling of a sensitive disclosure</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">PDE5i prescribed with no CV assessment / no nitrate check; organic vs psychogenic not explored; mood ignored; dismissive manner</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">ED characterised; PDE5i offered; some risk factors noted but no QRISK/lifestyle plan; mood touched on; ICE partial</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Organic ED identified; full CV risk assessment (QRISK) + risk-factor treatment + lifestyle; nitrate check; testosterone if indicated; mood screened; PDE5i prescribed safely; ICE all three; sensitive, normalising manner</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage — Emergency · Urgent CV/Endocrine/Urology · Routine</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Almost all ED is managed routinely in primary care. The triage task is to catch priapism (emergency), the high cardiovascular risk or cardiac symptoms that need addressing before resuming activity, the pituitary/endocrine cause, and the urological red flags — while recognising the routine majority who need a PDE5i plus risk-factor work.</strong></div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div>
+        <h3>Same day / 999</h3>
+        <span class="tc-badge tcb-e">Immediate action</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Priapism &gt;4 hours</strong><em>Painful sustained erection → emergency urology/A&amp;E</em></li>
+          <li class="tc-item"><strong>Active cardiac symptoms</strong><em>Chest pain/unstable symptoms → cardiac pathway; defer sexual activity</em></li>
+          <li class="tc-item"><strong>Severe depression / self-harm risk</strong><em>Urgent mental-health assessment</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Urgent / Refer</div>
+        <h3>Soon</h3>
+        <span class="tc-badge tcb-u">Days–weeks</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>High CV risk / suspected angina</strong><em>Optimise/refer before resuming activity</em></li>
+          <li class="tc-item"><strong>Pituitary features / confirmed hypogonadism</strong><em>Endocrinology</em></li>
+          <li class="tc-item"><strong>Peyronie's / penile or testicular lump / PDE5i failure</strong><em>Urology</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Routine</div>
+        <h3>GP Management</h3>
+        <span class="tc-badge tcb-r">Primary care first-line</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Organic ED + vascular risk</strong><em>PDE5i + QRISK + risk-factor treatment + lifestyle</em></li>
+          <li class="tc-item"><strong>Psychogenic ED</strong><em>PDE5i ± psychosexual therapy; address stress/relationship</em></li>
+          <li class="tc-item"><strong>Drug-induced ED</strong><em>Review/switch offending drug</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Triage rationale</div><div class="sca-phrase">"This is very treatable and we'll manage it here. The most important thing today is to check your heart health properly, because the two are linked — and to make sure the tablet is safe with your other medicines."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Treating ED while ignoring high cardiovascular risk</li><li>Missing priapism or pituitary features</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Examination — Cardiovascular · Genital · Endocrine Signs</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Examination is focused: cardiovascular (because that is the real diagnosis behind organic ED), genital (structure, testes, prostate by symptoms), and signs of endocrine disease.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">❤️ Cardiovascular &amp; metabolic</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Blood pressure</td><td>Often raised and untreated; a key driver and CV risk factor (David).</td></tr>
+            <tr><td class="factor">BMI / waist circumference</td><td>Central obesity / metabolic syndrome — drivers of ED and CV risk.</td></tr>
+            <tr><td class="factor">Peripheral pulses / cardiac exam</td><td>Vascular disease; murmurs; signs of heart failure.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🔎 Genital &amp; endocrine</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Penis</td><td>Peyronie's plaques/curvature, phimosis, lesions.</td></tr>
+            <tr><td class="factor">Testes</td><td>Size (small → hypogonadism), masses (tumour).</td></tr>
+            <tr><td class="factor">Prostate (DRE)</td><td>If LUTS or prostate concern — assess size/abnormality; with PSA discussion.</td></tr>
+            <tr><td class="factor">Endocrine signs</td><td>Gynaecomastia, reduced body hair, visual fields (pituitary), thyroid signs.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Narration that scores</div><div class="sca-phrase">"I'd like to check your blood pressure, weight and waist, and — with your consent and a chaperone — examine you to rule out any local cause. That helps me be sure we're treating the right thing."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>No BP/metabolic assessment in organic ED</li><li>Genital examination without consent/chaperone, or omitted when indicated</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Investigations — Vascular Risk Bloods · Morning Testosterone · QRISK</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The investigations in ED are essentially a cardiovascular and endocrine work-up: glucose/HbA1c, lipids and a QRISK assessment for the vascular dimension, and a morning testosterone (with confirmatory tests) where libido is low or PDE5 inhibitors fail.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🧪 Core tests</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">HbA1c / fasting glucose</td><td>Diabetes is a major cause of ED and is frequently first detected this way.</td></tr>
+            <tr><td class="factor">Lipid profile + QRISK</td><td>Formal cardiovascular risk assessment — the most important "investigation" in organic ED.</td></tr>
+            <tr><td class="factor">Morning total testosterone (9–11am)</td><td>If low libido/fatigue or PDE5i failure; repeat if low with LH/FSH, prolactin, SHBG.</td></tr>
+            <tr><td class="factor">U&amp;E, FBC, TFTs</td><td>As clinically indicated (renal, anaemia, thyroid).</td></tr>
+            <tr><td class="factor">PSA</td><td>If LUTS/prostate concern, with appropriate counselling.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">📊 Interpreting it</div>
+        <div style="padding:.8rem 1rem;font-size:12.5px;line-height:1.6">
+          <p style="margin-bottom:.5rem">Treat the ED as the visible part of overall cardiovascular risk: calculate QRISK, treat hypertension/lipids/diabetes, and act on smoking, alcohol, weight and activity.</p>
+          <p style="margin-bottom:.5rem">Confirm low testosterone before labelling hypogonadism (two morning samples + LH/FSH/prolactin/SHBG); exclude pituitary causes.</p>
+          <p>Don't over-investigate a clear psychogenic picture in a young, low-risk man — the work-up should be proportionate to risk.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key reasoning</div><div class="sca-phrase">"I'll check your blood sugar, cholesterol and a morning testosterone, and work out your heart-risk score — that tells us what to treat alongside the tablets."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>No CV risk assessment / bloods in organic ED</li><li>Diagnosing hypogonadism on a single non-morning sample</li><li>Over-investigating an obvious psychogenic case</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Diagnosis — Organic · Psychogenic · Hypogonadal · Drug-Induced</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Name the type of ED and — crucially in organic ED — name the cardiovascular risk it represents.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:24%">Diagnosis</th><th>Discriminating features</th></tr></thead>
+        <tbody>
+          <tr><td class="q"><strong>Organic (vasculogenic) ED</strong></td><td class="why">Gradual onset, lost morning/nocturnal erections, vascular risk factors; a cardiovascular sentinel (David).</td></tr>
+          <tr><td class="q"><strong>Psychogenic ED</strong></td><td class="why">Sudden onset, situational, preserved morning erections, performance anxiety/relationship/stress.</td></tr>
+          <tr><td class="q"><strong>Hypogonadal ED</strong></td><td class="why">Low libido, fatigue, small testes; low confirmed morning testosterone; consider pituitary cause.</td></tr>
+          <tr><td class="q"><strong>Drug-induced ED</strong></td><td class="why">Temporal link to thiazide, beta-blocker, SSRI, finasteride, antipsychotic; review/switch.</td></tr>
+          <tr><td class="q"><strong>Neurogenic / structural</strong></td><td class="why">Diabetes/neuropathy, pelvic surgery/radiotherapy, Peyronie's, spinal cause.</td></tr>
+          <tr><td class="q"><strong>🚩 ED as CV disease</strong></td><td class="why">The most important "diagnosis": organic ED = endothelial disease → full CV risk management.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ddx-card ddx-b" style="margin-bottom:4px">
+      <h4>🚩 The discipline — don't just fix the erection</h4>
+      <p>The trap is to treat the symptom (write a PDE5i) and miss the message (cardiovascular disease, sometimes depression, occasionally hypogonadism or a pituitary tumour). For David the formulation is: organic ED in a man with multiple untreated vascular risk factors and low mood — meaning a PDE5 inhibitor PLUS full cardiovascular risk assessment and risk-factor treatment, lifestyle change, and attention to his mood and relationship.</p>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Explaining it plainly</div><div class="sca-phrase">"The pattern fits a circulation-related cause rather than a purely 'in the head' one. The tablets will help — and just as importantly, this is a signal to look after your heart, so we'll tackle the blood pressure, smoking and weight together."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Treating the erection and missing the cardiovascular diagnosis</li><li>Calling it psychogenic without the supporting pattern</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc6">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">Referral — Cardiology · Endocrinology · Urology · Psychosexual</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Most ED is managed in primary care. Referral is for high cardiovascular risk/cardiac symptoms, confirmed/complex hypogonadism, urological disease or PDE5i failure, and psychosexual/relationship difficulty.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="ref-table">
+        <thead><tr><th style="width:24%">Referral</th><th>Who / when</th><th style="width:20%">Urgency</th></tr></thead>
+        <tbody>
+          <tr><td><strong>🔴 Emergency urology</strong></td><td>Priapism &gt;4 hours.</td><td><span class="rf-action rfa-999">Same day</span></td></tr>
+          <tr><td><strong>Cardiology / CV optimisation</strong></td><td>Suspected angina, high CV risk, or cardiac symptoms — before resuming sexual activity if concern.</td><td><span class="rf-action rfa-same">Urgent by symptoms</span></td></tr>
+          <tr><td><strong>Endocrinology</strong></td><td>Confirmed hypogonadism (especially with pituitary features) or complex hormonal cases.</td><td><span class="rf-action rfa-same">Routine / soon</span></td></tr>
+          <tr><td><strong>Urology</strong></td><td>Peyronie's, penile/testicular lump, structural disease, or PDE5i failure for second-line therapy (intracavernosal/intraurethral, vacuum device, implant).</td><td><span class="rf-action rfa-same">Routine</span></td></tr>
+          <tr><td><strong>Psychosexual / relationship therapy</strong></td><td>Psychogenic ED, performance anxiety, relationship difficulty, or as adjunct.</td><td><span class="rf-action rfa-same">Routine</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Knowing the thresholds</div><div class="sca-phrase">"If the tablets don't work, or if your heart assessment throws up concerns, there are next steps and specialists we can involve — but most men do well with the tablet plus the lifestyle changes."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Resuming activity with untreated high cardiac risk</li><li>Not offering psychosexual support in clear psychogenic ED</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — PDE5 Inhibitor (Safely) · Risk Factors · Lifestyle · Mood</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Management has four parts: a PDE5 inhibitor prescribed safely; treatment of the underlying drivers (BP, lipids, diabetes, offending drugs); lifestyle change (the single most powerful long-term lever); and attention to mood and the relationship.</strong> For David, the prescription is the easy part — the cardiovascular and lifestyle work is the high-value medicine.</div>
+    <div class="sub-divider">7A — The plan</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--g)">💊 PDE5 inhibitor — safely</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">First-line drug</td><td>Sildenafil (generic, inexpensive; available OTC in pharmacies under protocol) or tadalafil (longer-acting / daily option); choose by preference/pattern.</td></tr>
+            <tr><td class="factor">How to use</td><td>Counsel: timing, need for sexual stimulation, food/alcohol effects, try several times at an adequate dose before judging failure.</td></tr>
+            <tr><td class="factor">⛔ Contraindications</td><td>Absolute: nitrates and nicorandil. Caution: alpha-blockers, recent stroke/MI/unstable angina, significant hypotension.</td></tr>
+            <tr><td class="factor">If it fails</td><td>Check dose/technique/adherence; optimise testosterone and drivers; then urology for second-line (intracavernosal alprostadil, vacuum device, implant).</td></tr>
+            <tr><td class="factor">Testosterone</td><td>Replace confirmed hypogonadism (specialist-guided); can improve libido and PDE5i response.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">❤️ Treat the drivers &amp; the person</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Cardiovascular risk</td><td>Treat hypertension, lipids (statin per QRISK), diabetes; this is the core of the consultation in organic ED.</td></tr>
+            <tr><td class="factor">Lifestyle</td><td>Smoking cessation, reduce alcohol, weight loss, physical activity — all directly improve erectile function and CV risk.</td></tr>
+            <tr><td class="factor">Medication review</td><td>Switch ED-causing drugs where feasible (e.g. antihypertensive choice; SSRI alternatives).</td></tr>
+            <tr><td class="factor">Mood &amp; relationship</td><td>Treat depression (mind sexual side effects); offer psychosexual/relationship support; involve partner where welcomed.</td></tr>
+            <tr><td class="factor">Safety-net &amp; review</td><td>Priapism advice; review response, risk-factor control and mood; adjust treatment.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">A plan that scores</div><div class="sca-phrase">"Here's the plan: a tablet to take before sex — let me check it's safe with your other medicines and explain how to use it — plus sorting your blood pressure, help to stop smoking, cutting the alcohol, and a look at your mood. We'll review how the tablet works and your heart-risk numbers."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>PDE5i with no nitrate check / no CV or lifestyle plan</li><li>Ignoring mood and the relationship</li><li>No priapism safety-net or review</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Erectile Dysfunction — SCA Consultation Scorecard</div><div class="scorecard-sub">NICE CKS/BSSM · CV sentinel + QRISK · Organic vs psychogenic · PDE5i safely · Mood</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Sensitive, normalising opening</strong> — handles the "by the way" disclosure warmly and without embarrassment</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Structured ED history</strong> — onset, morning erections, situational pattern, drivers gathered systematically</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Examination/tests proportionate</strong> — BP/metabolic, genital with consent/chaperone, relevant bloods</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain-language explanation</strong> — explains cause, the heart link and treatment without jargon</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Honours the agenda while widening it</strong> — gives the tablet AND the CV/mood work, framed as care</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Safety-net specific</strong> — priapism advice; review of response and risk factors</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plan + review + closing question</strong> — agreed plan, review booked, "anything else?"</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, diagnosis, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Recognises ED as a cardiovascular sentinel</strong> — performs full CV risk assessment (QRISK), not just a prescription</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Organic vs psychogenic distinguished</strong> — uses onset and morning erections to differentiate</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Checks nitrate/nicorandil before PDE5i</strong> — absolute contraindication actively excluded</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Medication review for ED-causing drugs</strong> — thiazide/beta-blocker/SSRI/finasteride considered</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Hypogonadism screened appropriately</strong> — morning testosterone if low libido/fatigue; confirmatory tests</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Diabetes/lipids checked</strong> — HbA1c, lipids as part of the work-up</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>PDE5 inhibitor prescribed correctly</strong> — first-line, with counselling on use and follow-up</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Treats the drivers</strong> — hypertension/lipids/diabetes treated; offending drugs switched</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Lifestyle advice specific</strong> — smoking cessation, alcohol reduction, weight, activity</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct overall formulation</strong> — organic ED + untreated vascular risk + low mood, managed holistically</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decisions</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — his mechanical/tablet model and any health fears surfaced</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> — masculinity, relationship, health worries acknowledged</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations addressed</strong> — "the blue tablets" delivered and the wider plan framed positively</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Normalising, non-embarrassing manner</strong> — destigmatises the topic; validates him for raising it</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Mood screened sensitively</strong> — low mood explored; self-harm risk assessed if indicated</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Relationship impact acknowledged</strong> — partner/relationship dimension addressed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>CV link framed positively</strong> — "early warning / chance to protect your heart," not alarming</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Lifestyle change motivated, not lectured</strong> — tied to what he cares about</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Shared decision-making</strong> — treatment options offered; his preferences incorporated</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Patient leaves reassured and engaged</strong> — feels helped, not just prescribed to</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Collaborative close</strong> — plan agreed; safety-net understood; review booked</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">PDE5i prescribed with no CV assessment / no nitrate check; organic vs psychogenic ignored; mood missed; awkward/dismissive manner</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">ED characterised; PDE5i offered safely; some risk factors noted but no QRISK/lifestyle plan; mood touched on; ICE partial</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Organic ED + CV sentinel recognised; QRISK + risk-factor treatment + lifestyle; nitrate check; testosterone if indicated; mood screened; PDE5i safe; ICE all three; normalising manner</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist to see your score and feedback</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked — areas to develop</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"Right, well, that's the prescription sorted… actually, doc, while I'm here — and this is a bit awkward — things haven't been working in the bedroom. I was hoping I could just get some of those blue tablets?"</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>David Okonkwo, 52, works a desk job. You came in about a repeat prescription and only mentioned the erection problem as you were about to leave, because you find it embarrassing. It's been gradually getting worse over about 6 months and now happens most times; you've noticed you don't really get morning erections any more. You smoke ~15 a day, drink ~25 units a week, don't exercise, and your waistband's getting tight. A nurse mentioned your blood pressure was "a bit high" last year but nothing was done. Your dad and brother both had heart attacks in their 50s. Your mood's been a bit flat and it's causing tension with your wife. You want the tablets and, honestly, to keep this short.</p></div>
+      <div class="ab"><h5>Hidden concerns (reveal if explored)</h5><p><strong>Embarrassment/masculinity (main):</strong> you feel awkward and a bit less of a man. A calm, matter-of-fact doctor puts you at ease.</p><p><strong>Relationship:</strong> it's straining things with your wife; you'll admit this if asked gently.</p><p><strong>Health fear:</strong> with your family history you do worry about your heart but haven't connected it to this. If the doctor explains the link, you're motivated.</p><p><strong>Mood:</strong> a bit low; if asked, you'll say you're "not depressed exactly, just fed up."</p></div>
+      <div class="ab"><h5>Clinical details if asked</h5><ul><li>Gradual onset ~6 months; now most attempts; lost morning erections; same in all situations</li><li>Libido a bit reduced; energy okay-ish; no testicular changes you've noticed</li><li>Smoker ~15/day; alcohol ~25 units/week; sedentary; central weight gain</li><li>BP "a bit high" last year, untreated; strong family history of heart disease (father, brother MIs in 50s)</li><li>No nitrate/nicorandil; not on any heart tablets; no chest pain on exertion that you've noticed</li><li>Mood flat; relationship strained; no thoughts of self-harm</li><li>No priapism, no penile curvature/lumps; no urinary symptoms</li></ul></div>
+      <div class="ab"><h5>Reactions at key moments</h5><ul><li><strong>On the heart link:</strong> surprised but takes it seriously given your family history; becomes more willing to address blood pressure/smoking.</li><li><strong>On lifestyle:</strong> a bit defensive about smoking, but open if not lectured.</li><li><strong>On mood:</strong> will open up a little if asked kindly.</li><li><strong>Challenge line:</strong> "Look, can't you just give me the tablets? I haven't really got time for all the blood tests and lifestyle stuff."</li></ul></div>
+    </div>
+    <div class="actor-challenge">"Honestly doc, I just want the tablets so things work again — do we really need all this heart and blood-test business?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> David is satisfied if the GP: (1) responds warmly and without embarrassment, and gives him a PDE5 inhibitor (after checking he's not on a nitrate/nicorandil); (2) recognises the gradual organic pattern as a cardiovascular sentinel and arranges a full CV risk assessment (BP, lipids, HbA1c, QRISK) and risk-factor treatment; (3) addresses lifestyle (smoking, alcohol, weight, activity) without lecturing; (4) screens his mood and the relationship sensitively; (5) safety-nets (priapism) and arranges review. He disengages if he's handed a prescription with no nitrate check and no attention to his heart or mood, or if the topic is handled awkwardly.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Erectile Dysfunction — Clinical Decision Framework</div><div class="sum-sub">NICE CKS / BSSM · CV sentinel · PDE5i · Hypogonadism</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🔍 1 — Organic vs psychogenic</div>
+    <div class="sum-2col">
+      <div class="card" style="padding:.8rem 1rem"><strong style="color:var(--b)">Organic</strong><p style="font-size:12.5px;line-height:1.55;margin-top:.3rem">Gradual onset, lost morning erections, vascular risk factors. = CV sentinel → QRISK, treat BP/lipids/diabetes, lifestyle. Check morning testosterone if low libido/fatigue.</p></div>
+      <div class="card" style="padding:.8rem 1rem"><strong style="color:var(--a)">Psychogenic</strong><p style="font-size:12.5px;line-height:1.55;margin-top:.3rem">Sudden, situational, preserved morning erections, performance anxiety/relationship. PDE5i can help; address psychological factors ± psychosexual therapy.</p></div>
+    </div>
+    <div class="sum-sub-hdr">💊 2 — Treat</div>
+    <div class="card" style="padding:.8rem 1rem"><p style="font-size:12.5px;line-height:1.6"><strong>PDE5 inhibitor first-line</strong> (sildenafil/tadalafil) — counsel on use; try several times at adequate dose. <strong>⛔ Absolute contraindication: nitrates &amp; nicorandil.</strong> <strong>Treat drivers:</strong> BP, lipids, diabetes, switch ED-causing drugs. <strong>Lifestyle:</strong> stop smoking, reduce alcohol, weight, activity. <strong>Mood/relationship:</strong> screen and treat. <strong>If PDE5i fails:</strong> optimise + urology (intracavernosal, vacuum, implant). Confirmed hypogonadism → testosterone (specialist). Priapism &gt;4h = emergency.</p></div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label">SCA Quick Reference</div><div class="sum-title">Erectile Dysfunction — Consultation Playbook</div><div class="sum-sub">Normalise · treat the symptom · read the warning · safe PDE5i</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🎯 The three pivots that pass this case</div>
+    <div class="sum-3col">
+      <div class="snp-phrase-box snp-e"><div class="snp-lbl">1 · The sentinel</div><div class="snp-text">Organic ED = vascular disease. Do a full CV risk assessment (QRISK) and treat the risk factors — don't just prescribe.</div></div>
+      <div class="snp-phrase-box snp-m"><div class="snp-lbl">2 · Safe prescribing</div><div class="snp-text">PDE5 inhibitor first-line, but check for nitrates/nicorandil first (absolute contraindication).</div></div>
+      <div class="snp-phrase-box snp-a"><div class="snp-lbl">3 · The whole person</div><div class="snp-text">Screen mood and relationship, address lifestyle, and handle the disclosure warmly — ED is rarely "just" mechanical.</div></div>
+    </div>
+    <div class="sdp-pivot" style="margin-top:1rem;font-size:11.5px;background:#fef3c7;color:#854d0e;border-radius:8px;padding:.6rem .85rem;line-height:1.5">⛔ Don't prescribe a PDE5 inhibitor without checking for nitrates/nicorandil · Don't treat the erection and ignore the cardiovascular warning · Don't miss depression or relationship strain · Don't diagnose hypogonadism on a single non-morning sample · Handle the "by the way" disclosure with warmth, not awkwardness</div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Erectile Dysfunction · GP Clinical Reasoning Framework v2</strong> · NICE CKS Erectile dysfunction · BSSM guidelines · NICE NG136/QRISK (cardiovascular risk) · British Society for Sexual Medicine</p>
+  <p style="margin-top:4px">Organic ED (gradual, lost morning erections, vascular risk) is a cardiovascular sentinel → full CV risk assessment (QRISK) + risk-factor treatment, not just a prescription · PDE5 inhibitor first-line; ⛔ absolute contraindication with nitrates/nicorandil · Check morning testosterone with low libido/fatigue or PDE5i failure (confirm + LH/FSH/prolactin) · Review medication for ED-causing drugs · Screen mood and the relationship · Priapism &gt;4h = emergency</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current NICE CKS and BSSM guidance · Clinical judgement takes precedence over any framework</p>
+</div>
+</div><!-- /page -->
+  </main>
+</div><!-- /app -->
+<script src="script.js"></script>
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
+</body>
+</html>

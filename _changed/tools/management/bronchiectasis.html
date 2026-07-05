@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bronchiectasis — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Bronchiectasis management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🫁",
+  title:"Bronchiectasis",
+  stemTitle:"Bronchiectasis — ongoing management",
+  stemSub:"Primary-care role in established bronchiectasis under shared care \u2014 airway clearance as the cornerstone, prompt exacerbation treatment guided by sputum, vaccination and pulmonary rehab. BTS \u00b7 CKS 2026.",
+  guideline:"BTS / NICE CKS",
+  glance:[
+    {lbl:"Cornerstone", val:"Airway clearance", sub:"daily physiotherapy"},
+    {lbl:"Confirm", val:"CT chest", sub:"+ find cause"},
+    {lbl:"Sputum", val:"Send before abx", sub:"culture-guided"},
+    {lbl:"Exacerbation", val:"Prolonged abx", sub:"\u224814 days"},
+    {lbl:"Prevent", val:"Vaccines + rehab", sub:"+ treat cause"},
+    {lbl:"Refer", val:"Pseudomonas / frequent / haemoptysis", sub:""}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm diagnosis and find the cause",
+      blocks:[
+        {b:"kv", rows:[
+          ["Diagnosis","Chronic productive cough + recurrent infections; confirmed on <b>CT chest</b> (airway dilatation)"],
+          ["Find a cause","Post-infective, immunodeficiency, ABPA, CF, ciliary dysfunction, aspiration, RA/IBD-associated"],
+          ["Baseline","Sputum culture (incl. <b>Pseudomonas</b>, mycobacteria), spirometry, immunoglobulins, consider specialist work-up"],
+          ["Assess","Exacerbation frequency, sputum colour/volume, breathlessness, colonising organisms"]
+        ]},
+        {b:"why", html:"Bronchiectasis is a cycle of impaired mucus clearance \u2192 infection \u2192 inflammation \u2192 airway damage \u2014 so <strong>daily airway clearance is the cornerstone</strong>, and exacerbations are treated promptly with <strong>longer (\u224814-day), culture-guided</strong> antibiotic courses. Identifying a treatable cause and detecting <em>Pseudomonas</em> colonisation change management."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 cornerstone", title:"Airway clearance and prevention",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🌬️ Airway clearance", html:"<b>Daily physiotherapy techniques</b> (active cycle of breathing, devices) \u2014 the most important ongoing treatment; refer to respiratory physio."},
+          {t:"💉 Vaccination", html:"Annual influenza, pneumococcal, COVID-19."},
+          {t:"🏃 Pulmonary rehab", html:"For those with breathlessness limiting activity."},
+          {t:"🚭 Smoking", html:"Cessation; avoid respiratory irritants."},
+          {t:"💧 Hydration / mucoactive", html:"Adequate hydration; humidification / mucoactive agents per specialist."},
+          {t:"🍽️ Nutrition & comorbidity", html:"Maintain nutrition; treat the underlying cause and comorbidities."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication", title:"Exacerbations and maintenance",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Exacerbation", title:"Culture-guided antibiotics", when:"prolonged course (\u224814 days)",
+           html:"<b>Send sputum before starting</b>; treat empirically then refine to sensitivities. Courses are typically <b>~14 days</b> (longer than for simple chest infections). Have a self-management/rescue plan for known patients."},
+          {step:"Pseudomonas", title:"Targeted therapy", when:"e.g. ciprofloxacin / specialist",
+           fromLabel:"Pseudomonas isolated",
+           html:"Treat per sensitivities (often ciprofloxacin); first isolation may prompt eradication \u2014 specialist-guided."},
+          {step:"Frequent exacerbations", title:"Specialist maintenance", when:"\u22653/year",
+           fromLabel:"prevention",
+           html:"Long-term/prophylactic antibiotics (e.g. <b>azithromycin 250\u2013500 mg three times weekly</b>), nebulised antibiotics, or mucoactive treatment \u2014 specialist-initiated (ECG/LFT, mycobacteria check before macrolide)."}
+        ]},
+        {b:"warn", html:"Don\u2019t under-treat exacerbations \u2014 they need <b>longer courses</b> and culture guidance. <b>Pseudomonas</b> colonisation worsens prognosis \u2192 specialist input. Check for non-tuberculous mycobacteria before long-term macrolides."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Exacerbations, sputum and function",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Exacerbation frequency","Each review","\u22653/year \u2192 specialist for prophylaxis"],
+          ["Sputum culture","With exacerbations / periodically","Guide antibiotics; detect Pseudomonas/NTM"],
+          ["Spirometry / symptoms","Periodically","Track decline; reassess management"],
+          ["Airway clearance adherence","Each review","Reinforce \u2014 the key ongoing therapy"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"After diagnosis", title:"Establish care", html:"Airway clearance/physio, vaccinations, self-management plan, treat cause."},
+          {n:"2", when:"With exacerbations", title:"Prompt treatment", html:"Sputum-guided prolonged antibiotics; reassess if not improving."},
+          {n:"3", when:"Annual / ongoing", title:"Structured review", html:"Exacerbation frequency, sputum/colonisation, spirometry, adherence, comorbidity."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Frequent exacerbations / declining? Check",
+      arrow:"\u2026if exacerbations are frequent or control worsens",
+      intro:"Optimise the basics and identify colonisation before escalating.",
+      checks:[
+        {b:"1 \u00b7 Airway clearance", html:"Is daily physiotherapy actually being done?"},
+        {b:"2 \u00b7 Organism", html:"Sputum culture \u2014 Pseudomonas or NTM driving exacerbations?"},
+        {b:"3 \u00b7 Course length", html:"Were exacerbations treated for long enough (\u224814 days), culture-guided?"},
+        {b:"4 \u00b7 Cause", html:"Underlying cause (immunodeficiency, ABPA, reflux/aspiration) treated?"},
+        {b:"5 \u00b7 Refer", html:"\u22653 exacerbations/year, Pseudomonas, or decline \u2192 respiratory specialist."}
+      ],
+      back:"Clearance + organism + course + cause addressed \u2192 respiratory referral for prophylaxis"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Massive haemoptysis", html:"\u201cCoughing up a large amount of blood \u2014 call 999.\u201d"},
+          {t:"🟠 Exacerbation", html:"\u201cMore or discoloured phlegm, more breathless, or feeling unwell \u2014 contact us early; you\u2019ll likely need a longer antibiotic course and a sputum sample.\u201d"},
+          {t:"🌬️ Clearance", html:"\u201cDaily breathing/clearance exercises are the most important treatment \u2014 keep them up even when well.\u201d"},
+          {t:"💉 Vaccines", html:"\u201cKeep up your flu, pneumonia and COVID vaccines \u2014 they reduce infections.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer respiratory",
+      arrow:"colonisation, frequency, or red flags",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Massive haemoptysis or severe exacerbation/respiratory failure \u2192 999/admit."},
+          {t:"Pseudomonas / NTM", html:"New Pseudomonas (for eradication) or non-tuberculous mycobacteria \u2192 specialist."},
+          {t:"Frequent exacerbations", html:"\u22653/year, or for long-term/nebulised antibiotic or mucoactive therapy."},
+          {t:"Cause work-up", html:"Suspected immunodeficiency, ABPA, CF, ciliary dyskinesia \u2192 specialist."},
+          {t:"Declining function", html:"Progressive symptoms / lung-function decline."}
+        ]},
+        {b:"say", html:"The cornerstone of managing bronchiectasis is daily airway-clearance exercises \u2014 a physiotherapist will teach you. When you get a flare-up, we treat it early with a longer antibiotic course guided by a phlegm sample. Keep your vaccinations up to date."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

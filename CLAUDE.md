@@ -50,6 +50,157 @@ Source of truth: `uploads/Cancer referral NICE.pdf` (NICE NG12, May 2025).
   in Chrome). Always handle the `unavailable` case gracefully and offer a worked example.
 
 ## Session log
+- **Algorithm pathways — "Why?" drawers unreachable = the real "thin" complaint (this session,
+  follow-on 4):** user's "steps so thin compared to original" meant LESS CLINICAL INFO, not width.
+  Diagnosis via eval: 9 hidden `.why-drawer` blocks (~1700 chars of reasoning per page) and the
+  "Why?" button did nothing. Root cause is in the PAGE template itself, not the restyle: the
+  hypertension generation nests `.why-drawer` INSIDE `.why-row`, but the page's own toggle does
+  `btn.parentElement.nextElementSibling` (= element AFTER .why-row → null), so drawers could never
+  open. Fix appended to SHARED `assets/alg-diagram.js`: "RGP why-drawer relocation" — move every
+  `.alg-flow .why-row > .why-drawer` to just after its row (drawer lookup happens at click time,
+  so the page's own listener then works). Idempotent; ankle-style pages (drawer already outside)
+  untouched. Verified: 3/3 drawers open with full text + aria-expanded=true. Bumped
+  `service-worker.js` CACHE_VERSION v5→v6. Upload set unchanged: `_restyle-upload/` (alg-diagram.css
+  + alg-diagram.js + service-worker.js).
+- **Algorithm pathways — column width raised to 1140px + SW v5 (this session, follow-on 3):**
+  user: hypertension steps "so thin compared to original" (original page wrapper is 1180px).
+  The desktop-width-fix block in shared `assets/alg-diagram.css` now forces
+  `.alg-flow/.alg-foot/.stem-banner/.alg-progress{max-width:1140px !important}` (was 900).
+  Bumped `service-worker.js` `CACHE_VERSION v4→v5`. NOTE: user kept seeing stale looks —
+  every alg fix needs BOTH the upload of `_restyle-upload/` (alg-diagram.css + alg-diagram.js +
+  service-worker.js) AND a hard refresh; preview eval_js timed out this round so width was
+  verified from the CSS source only.
+- **Algorithm pathways — side-by-side node layout fix (this session, follow-on 2):** user:
+  hypertension "words on the right side" / not like ankle. Cause: hypertension-generation
+  templates set `.node{display:grid;grid-template-columns:auto 1fr}` with `.node-body{grid-column:2}`
+  — so after the node-header wrapping, the header sat squeezed in column 1 and the BODY beside it
+  on the right, instead of ankle's stacked block card. Fix in the hard-unification block of SHARED
+  `assets/alg-diagram.css`: `.alg-flow .node{display:block !important}` +
+  `.alg-flow .node-body{display:block !important;width:auto !important;padding:0 16px 14px !important}`
+  (grid-column on children is ignored once the parent is block). Verified numerically on
+  hypertension: node display block, header 806px full-width, body 806px BELOW the header,
+  20px left padding — canonical ankle stacking. Same 3-file upload set in `_restyle-upload/`.
+- **Algorithm pathways — invisible stem-banner title fix (this session, follow-on):** user said
+  hypertension "still not done properly". Root cause found via computed styles: the stem-banner
+  `<b>` title rendered `rgb(246,242,233)` (cream) on the now-white banner = invisible. Older
+  templates (hypertension, chest-pain generation) styled `.stem-banner` as a DARK teal banner
+  with light text; the canonical override switched the bg to white but the page's light text
+  colour persisted → light-on-light. Fixed in SHARED `assets/alg-diagram.css` (appended): force
+  `.stem-banner{color:#1c1917}`, `.stem-banner b{color:#1c1917}`, `.stem-banner small{color:#6b7280}`.
+  Repairs every page from that template generation, not just hypertension. Verified: header now
+  "🩺 Hypertension", stem title dark/readable, steps + column clean. Shared-file only; SW already
+  bumped to v4 this session. (Same upload set: assets/alg-diagram.css + alg-diagram.js +
+  service-worker.js in `_restyle-upload/`.)
+- **Algorithm pathways — desktop "thin column" fix + header title fix (this session):** after
+  the library-wide restyle, the user reported PC pages looked "ugly and thin". Cause: the
+  appended canonical `.alg-flow{max-width:720px}` clamped the steps column to 720px, but pages
+  like hypertension are wrapped at `max-width:1180px`, so the 720 flow floated as a thin strip
+  inside a wide box on desktop (ankle-swelling has no 1180 wrapper so it looked fine). Fix in
+  SHARED `assets/alg-diagram.css` (appended, after the mobile block): widen `.alg-flow`/`.alg-foot`
+  to **900px** and centre `.stem-banner`/`.alg-progress` to the same 900px so the whole pathway
+  is one clean centred column; also `.alg-flow .box[style]{max-width:none}` so inline-width diagram
+  boxes don't re-clamp. Separately, the dark-header injector in `assets/alg-diagram.js` was showing
+  the stem SENTENCE (e.g. "New presentation of high blood pressure") as the H1; changed it to
+  derive the title from `document.title` (split on ·/|/– and strip trailing "Algorithm") →
+  "Hypertension", with the stem `<b>` as fallback. Verified on hypertension: flow+stem both ~869px
+  at 924vw (aligned column), title logic → "Hypertension". Bumped `service-worker.js`
+  `CACHE_VERSION v3→v4`. Minimal upload = **assets/alg-diagram.css + assets/alg-diagram.js +
+  service-worker.js** (staged in `_restyle-upload/`).
+- **Algorithm pathways — mobile fit (this session):** the two-column `.kv` key/value tables
+  overflowed the viewport on phones and clipped the value column (user screenshot: palpitations
+  ECG step cut off mid-word). Fixed in the SHARED `assets/alg-diagram.css` by appending a
+  `@media (max-width:640px)` block scoped to `.alg-flow`: `.kv` → single column with
+  `min-width:0` + `overflow-wrap:anywhere` on cells (the min-width:0 is the key — grid children
+  default to min-content and refuse to shrink), `.rfgrid/.lsgrid/.branch` → 1 column, `.rung`
+  wrap, `.pill` `white-space:normal`, tighter header/stem/progress margins, plus a
+  `body{overflow-x:hidden}` guard. Diagram view already had its own `@media(max-width:760px)`.
+  No per-page edits — one shared file; SW already on v3 so clients refetch. Re-copied to
+  `_restyle-upload/assets/alg-diagram.css`.
+- **Whole algorithm library unified to the ankle-swelling design — via SHARED files, not
+  per-page edits (this session):** the user wanted all ~269 `tools/algorithms/*.html` step
+  pathways to match the canonical ankle-swelling / chest-pain look. The library had ≥5 template
+  generations (canonical top-border `.node-header`; flat absolute-badge left/right; corner-tab
+  border-radius badges; border-LEFT cards; compact period-tools; bespoke back-pain
+  `.node-header-row`). Rather than rewrite 269 files (run_script reads timed out badly at
+  batch>~6), unified through the TWO shared files every pathway already loads:
+  (1) **`assets/alg-diagram.css`** — appended the canonical inline style block (overrides each
+  page's own `<style>`, which always precedes the linked sheet) PLUS a hard-unification override
+  block scoped to `.alg-flow` with `!important` forcing: node border→neutral + coloured
+  **border-top** per data-type, `.node-num`→static circular 32px tinted badge (defeats
+  absolute/corner-tab/solid-fill variants), `.node-header` flex row, `.node-head` serif h3.
+  (2) **`assets/alg-diagram.js`** — appended a flat-node wrapper (wraps direct-child
+  `.node-num/.node-head/.node-tick` into a `.node-header` so the flex row applies) and a
+  dark-header injector (builds the `.alg-header` bar from the page's own `.sb-icon` + stem
+  `<b>` title + guideline chips parsed from the `.alg-foot` "Based on:" text, only if the page
+  lacks one). Both are idempotent + scoped so the diagram view (`#viewDiagram`, `.box`) is
+  untouched. Verified on the worst-case variant (bruising: corner-tab + border-left) via
+  computed styles: border-top red, neutral left border, static 50% tinted badge, wrapped,
+  black header — all canonical. **Bumped `service-worker.js` `CACHE_VERSION v2→v3`** so
+  clients actually fetch the new shared assets (SW is stale-while-revalidate). NOTE: earlier
+  in the session I also hard-edited ~35 pages inline (chest-pain + batches abdominal-mass…
+  body-aches + anaemia) before switching to the shared approach — those edits are now
+  REDUNDANT (shared files override them identically) and harmless; they don't need
+  re-uploading. Minimal live upload = **assets/alg-diagram.css + assets/alg-diagram.js +
+  service-worker.js** (staged in `_restyle-upload/`). Both shared files are loaded un-versioned
+  by all pathway pages, so no per-page bump needed.
+- **Chest-pain pathway restyled to match ankle-swelling (this session):** the user disliked
+  chest-pain.html's look (teal gradient banner, no dark header, absolute-positioned node
+  numbers with left-border cards) and wanted it identical in depth + design to ankle-swelling.
+  All clinical content was already rich (9 steps, why-drawers, diagram view) — only the visual
+  system differed. Fix via run_script transform: (1) swapped chest-pain's inline `<style>`
+  block for ankle-swelling's exact block (shared design system: cream bg, top-border node
+  colour coding, circular tinted number badges, rfgrid/kv/branch/ladder/lsgrid/pill styles);
+  (2) inserted the dark sticky `.alg-header` (🫀 Chest Pain / RCGP SCA Algorithm / meta tags
+  NICE CG95·NG185·NG12·10-min) which it previously lacked; (3) re-wrapped all 9 node headers
+  from chest-pain's `node-num`+`node-head`+`node-tick` sibling structure into ankle's
+  `.node-header` flex-row wrapper via regex. No content changed. NOTE for future: ~270
+  algorithm pages exist in ≥3 template variants (ankle/ataxia/fatty-liver = newest & nicest
+  `.node-header` wrapper style; chest-pain was an older flat variant; back-pain bespoke
+  `.node-header-row`). Ankle-swelling is the canonical target design if more get restyled.
+  Changed file: tools/algorithms/chest-pain.html only (no site.js/alg-* change → no bump).
+- **Algorithm pathways — Steps is now the default view (this session):** the Steps/Diagram
+  toggle used to open on the flowchart. Flipped it to open on **Steps**. `assets/alg-diagram.css`
+  inverted: default (no body class) now shows `#viewSteps`/`#flow` + the progress bar and hides
+  `#viewDiagram`; the flowchart shows only under a new `body.diagram-mode` class. `assets/alg-diagram.js`
+  toggles `diagram-mode` (was `steps-mode`), still defaults to `'steps'`, and the persistence key
+  was bumped `rgp.alg.view.` → `rgp.alg.view.v2.` so every user resets to Steps once (old saved
+  "diagram" prefs ignored). Both files are loaded un-versioned by all 274 algorithm pages — no
+  per-page edit needed; GitHub Pages revalidates them via ETag. Changed files: assets/alg-diagram.css
+  + assets/alg-diagram.js only.
+- **Ask — free fallback model when credit runs out (this session):** if the Anthropic call
+  fails for ANY reason (most importantly prepaid credit exhausted, HTTP 400 "credit balance
+  too low"), `aiProxy` in `backend/worker.js` now falls back to a FREE Cloudflare Workers AI
+  model (`env.FALLBACK_MODEL` default `@cf/meta/llama-3.3-70b-instruct-fp8-fast`, via the
+  existing `AI` binding) so Ask keeps answering. Returns `{completion, fallback:true}` as
+  plain JSON (no streaming, no web search). `workersAiAnswer()` helper maps messages[0]→system.
+  site.js shim sets `window.claude.lastFallback` in complete() + stream() (both JSON + SSE
+  branches); ask.js prepends a ⚠️ "Answered by a free backup model — check carefully" note to
+  the ans-note when fallback. `FALLBACK_MODEL` added to wrangler.toml [vars]. Bumped
+  `site.js?v=55`→`?v=56` and `ask.js?v=12`→`?v=13` on the AI pages ONLY (ask.html, scribe.html,
+  ask-quality.html) to keep the changed-file upload small — other pages don't use window.claude.
+  Needs worker re-paste + upload of those + assets/site.js + pages/ask.js.
+- **Ask — cost trim (this session):** token cost per question was ~12¢ (mostly INPUT tokens:
+  big primer + 6 grounding notes + web-search pages fed back). Cut it ~half, quality-neutral:
+  grounding 6→4 notes (`pages/ask.js` grounding() + searchScored fallback 5→4), buildContext
+  clips tightened (features 6→4, management 7→5, referral 5→3 in `assets/ask-core.js`),
+  conversation history sent 8→6 turns, and web-search `max_uses` 3→1 in `backend/worker.js`.
+  Bumped `ask-core.js?v=1`→`?v=2` and `ask.js?v=11`→`?v=12` in ask.html + ask-quality.html.
+  Needs worker re-paste (max_uses) + site re-upload. Prompt caching (0 reused on dashboard)
+  only kicks in for repeat questions within 5 min — expected.
+- **Ask — streaming answers (this session):** answers now render word-by-word (ChatGPT-style)
+  so the wait no longer feels like waiting; total time unchanged, quality/model unchanged
+  (Sonnet 4.6). `/api/ai` in `backend/worker.js` accepts `stream:true` → requests
+  `stream:true` from Anthropic and pipes a simplified SSE (`data:{t}` per token, final
+  `data:{done,sources}`) back via a TransformStream; still fills the answer cache at end of
+  stream and still returns plain JSON on a cache hit (so instant answers keep working).
+  site.js AI shim gained `window.claude.stream(arg,onToken)` (reads the SSE, calls onToken
+  with each chunk + running full text, sets lastSources/lastCached; auto-falls back to JSON
+  parse if the server didn't stream). `pages/ask.js` ask() uses stream() when available:
+  creates the bot bubble on first token and re-renders `mdToHtml(full)` as tokens arrive,
+  then finalises with the sources/feedback tail; falls back to complete() otherwise. Bumped
+  **`site.js?v=54`→`?v=55`** sitewide (root+pages+tools+cases) and **`ask.js?v=10`→`?v=11`**.
+  Needs the user to re-paste worker.js in Cloudflare + re-upload the site. Worker URL is
+  live: `https://shy-voice-2225.bassamomda.workers.dev` (set in RGP_CONFIG.workerUrl).
 - **Ask — quality flywheel: feedback + answer cache + test bank (this session):** three
   additions so Ask quality is measurable and self-improving. (1) **Shared answer core**
   `assets/ask-core.js` (`window.RGPAskCore` = FRAMING, PRIMER_ACK, buildContext) extracted

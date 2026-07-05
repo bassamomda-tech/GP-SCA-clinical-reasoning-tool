@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Obstructive Sleep Apnoea — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="OSA management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"😴",
+  title:"Obstructive Sleep Apnoea (OSA)",
+  stemTitle:"OSA / OSAHS — assessment, referral and shared care",
+  stemSub:"Primary-care role in obstructive sleep apnoea \u2014 risk-stratify with a validated questionnaire, give the immediate DVLA and safety advice, refer to the sleep service for diagnosis, then support CPAP, weight loss and comorbidity control. NICE NG202 \u00b7 CKS 2026.",
+  guideline:"NICE NG202",
+  glance:[
+    {lbl:"Screen", val:"Epworth + STOP-Bang", sub:"daytime sleepiness"},
+    {lbl:"Diagnosis", val:"Sleep study", sub:"specialist-led"},
+    {lbl:"1st-line", val:"CPAP", sub:"moderate\u2013severe"},
+    {lbl:"Every patient", val:"Weight loss", sub:"+ alcohol/sedative review"},
+    {lbl:"DVLA", val:"Notify if sleepy", sub:"no driving while sleepy"},
+    {lbl:"Red flag", val:"Sleepy driver", sub:"+ obesity-hypoventilation"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Recognise OSA and stratify risk",
+      blocks:[
+        {b:"kv", rows:[
+          ["Suspect","Snoring + witnessed apnoeas + daytime sleepiness; non-refreshing sleep, morning headache, nocturia, poor concentration, low mood"],
+          ["Quantify sleepiness","<b>Epworth Sleepiness Scale</b> (ESS) \u2014 score &gt;10 suggests excessive daytime sleepiness"],
+          ["Pre-test risk","<b>STOP-Bang</b> (Snoring, Tiredness, Observed apnoea, Pressure/BP, BMI &gt;35, Age &gt;50, Neck &gt;40 cm, male) \u2014 \u22653 = intermediate/high risk"],
+          ["Comorbidity","Resistant hypertension, AF, type 2 diabetes, obesity, hypothyroidism, large neck, retrognathia \u2014 all raise probability"]
+        ]},
+        {b:"why", html:"OSA is common, under-diagnosed and a modifiable cause of resistant hypertension, arrhythmia, road-traffic accidents and reduced quality of life. The GP\u2019s job is to identify it, give immediate safety advice, and refer for the sleep study that confirms severity \u2014 diagnosis itself is specialist-led."}
+      ]},
+    {t:"node", d:"safety", n:"2", tag:"Safety-net", title:"Immediate driving + safety advice",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🚗 DVLA", html:"Patients with excessive sleepiness affecting driving <b>must not drive</b> and must notify the DVLA. Advise explicitly and document. Group 2 (HGV/PSV) rules are stricter."},
+          {t:"⚠️ Sleepy at the wheel", html:"\u201cIf you feel sleepy driving \u2014 stop, do not drive until treated and symptoms controlled.\u201d"},
+          {t:"🍺 Sedatives/alcohol", html:"Alcohol and sedatives worsen airway collapse and sleepiness \u2014 advise reduction; review benzodiazepines/opioids/Z-drugs."},
+          {t:"🫁 Obesity hypoventilation", html:"Morning headache + cyanosis + daytime hypercapnia/low SpO\u2082 \u2192 urgent assessment (consider ABG); risk of respiratory failure."}
+        ]}
+      ]},
+    {t:"node", d:"life", n:"3", tag:"Non-drug \u00b7 every patient", title:"Lifestyle \u2014 the foundation of treatment",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"⚖️ Weight loss", html:"The single most effective intervention \u2014 even 5\u201310% loss reduces severity. Offer structured support \u00b1 GLP-1 / bariatric pathway if eligible."},
+          {t:"🍺 Alcohol", html:"Avoid alcohol, especially in the evening \u2014 relaxes pharyngeal muscles."},
+          {t:"🚭 Smoking", html:"Smoking cessation \u2014 reduces upper-airway inflammation."},
+          {t:"🛌 Positional", html:"Avoid supine sleep where positional OSA \u2014 side-sleeping aids/positional therapy can help."},
+          {t:"💊 Drug review", html:"Reduce sedatives, opioids and muscle relaxants where possible."}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"4", tag:"Refer", title:"Refer to the sleep service for diagnosis",
+      arrow:"all suspected OSA needing diagnosis/treatment",
+      blocks:[
+        {b:"kv", rows:[
+          ["Routine sleep referral","Suspected OSA with daytime sleepiness or high STOP-Bang \u2014 for sleep study (home oximetry / polygraphy / polysomnography) to confirm and grade severity (AHI)"],
+          ["Urgent","Sleepy driver (especially vocational), suspected obesity-hypoventilation, or severe symptoms with comorbidity"],
+          ["Severity (AHI)","Mild 5\u201314 \u00b7 Moderate 15\u201330 \u00b7 Severe &gt;30 events/hour \u2014 guides treatment intensity"]
+        ]},
+        {b:"why", html:"NICE NG202 recommends referral for a sleep study in suspected OSAHS; severity (apnoea-hypopnoea index) plus symptom burden determines whether CPAP, a mandibular device, or conservative measures are offered."}
+      ]},
+    {t:"node", d:"drug", n:"5", tag:"Treatment (shared care)", title:"Device + treatment options",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"1st-line", title:"CPAP", when:"moderate\u2013severe, or mild with symptoms",
+           html:"Continuous positive airway pressure is first-line for moderate\u2013severe OSAHS and symptomatic mild disease. Highly effective for sleepiness, BP and quality of life. Support adherence \u2014 mask fit, humidification, troubleshooting."},
+          {step:"Alternative", title:"Mandibular advancement device (MAD)", when:"mild\u2013moderate, or CPAP not tolerated",
+           fromLabel:"if CPAP declined / mild disease",
+           html:"Custom mandibular advancement splint \u2014 option for mild\u2013moderate OSA or where CPAP is not tolerated/declined. Dental assessment required."},
+          {step:"Adjunct", title:"Weight management \u00b1 surgery", when:"ongoing",
+           fromLabel:"alongside device therapy",
+           html:"Continue intensive weight management; bariatric surgery can be curative in obesity-related OSA. ENT surgery only in selected anatomical cases."}
+        ]},
+        {b:"warn", html:"OSA is not treated with sedatives or hypnotics \u2014 these worsen it. There is no first-line drug treatment; CPAP and weight loss are the mainstays."}
+      ]},
+    {t:"node", d:"monitor", n:"6", tag:"Monitoring", title:"Comorbidity + adherence",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["CPAP adherence + symptoms","Sleep clinic follow-up + GP reviews","Reinforce use (aim &gt;4 h/night); troubleshoot; re-refer if failing"],
+          ["Blood pressure","Regularly","Treat resistant hypertension; OSA control improves BP"],
+          ["Weight / BMI","Each review","Continue weight programme; escalate if static"],
+          ["Cardiometabolic","Annually","Screen/treat T2DM, AF, lipids, mood"]
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer / escalate", title:"When to escalate further",
+      arrow:"complex, refractory or unsafe cases",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Respiratory/sleep", html:"CPAP intolerance or failure, diagnostic uncertainty, overlap with COPD, or suspected obesity-hypoventilation."},
+          {t:"ENT / maxillofacial", html:"Anatomical obstruction, MAD provision, selected surgical candidates."},
+          {t:"Bariatric", html:"Obesity meeting NICE thresholds \u2014 surgery can resolve OSA."},
+          {t:"Cardiology", html:"Resistant hypertension, AF, or heart failure linked to OSA."}
+        ]},
+        {b:"say", html:"Sleep apnoea is very treatable. A sleep test confirms how severe it is, and a mask at night (CPAP) usually transforms the daytime tiredness \u2014 alongside weight loss and cutting evening alcohol. Until it\u2019s controlled, please don\u2019t drive if you feel sleepy, and let the DVLA know."}
+      ]}
+  ],
+  foot:"Management framework for suspected/confirmed obstructive sleep apnoea in primary care, with diagnosis and CPAP titration in secondary care. Verify against current NICE NG202, SIGN 73, and DVLA Assessing Fitness to Drive."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

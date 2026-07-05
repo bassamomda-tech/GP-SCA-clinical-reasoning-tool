@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vaginal Bleeding Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#c0392b;--red-lt:#fdf3f2;--red-bd:#f5c6c2;
+  --purple:#7c3aed;--purple-lt:#f5f3ff;--purple-bd:#ddd6fe;
+  --blue:#1d6fb8;--blue-lt:#eff6ff;--blue-bd:#bfdbfe;
+  --teal:#0f766e;--teal-lt:#f0fdfa;--teal-bd:#99f6e4;
+  --amber:#b45309;--amber-lt:#fffbeb;--amber-bd:#fde68a;
+  --green:#15803d;--green-lt:#f0fdf4;--green-bd:#bbf7d0;
+  --grey:#475569;--grey-lt:#f8fafc;--grey-bd:#e2e8f0;
+  --ink:#0f172a;--muted:#64748b;--border:#e2e8f0;
+  --radius:10px;--shadow:0 1px 3px rgba(0,0,0,.08),0 4px 12px rgba(0,0,0,.06);
+}
+body{font-family:'DM Sans',sans-serif;background:#f1f5f9;color:var(--ink);min-height:100vh;padding:1rem}
+.stem-banner{display:flex;align-items:center;gap:1rem;background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1rem;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:700;color:var(--ink)}
+.stem-banner small{color:var(--muted);font-size:.82rem}
+.alg-progress{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:.75rem 1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:.75rem;box-shadow:var(--shadow)}
+.alg-progress span{font-size:.8rem;color:var(--muted);font-weight:600;white-space:nowrap}
+.pcount{font-weight:700;color:var(--ink);font-size:.9rem;white-space:nowrap}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:99px;overflow:hidden}
+.pbar-fill{height:100%;width:0%;background:linear-gradient(90deg,#c0392b,#7c3aed);border-radius:99px;transition:width .4s ease}
+.reset{margin-left:auto;font-size:.75rem;font-family:inherit;cursor:pointer;background:none;border:1px solid var(--border);border-radius:6px;padding:.25rem .6rem;color:var(--muted);transition:all .15s}
+.reset:hover{border-color:var(--red);color:var(--red)}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:linear-gradient(to bottom,var(--border),var(--border));margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);font-size:.55rem;color:var(--border)}
+.node{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.25rem;box-shadow:var(--shadow);transition:border-color .2s}
+.node.done{border-color:#86efac;background:#f0fdf4}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-size:.72rem;font-weight:800;margin-bottom:.5rem;flex-shrink:0}
+.node[data-type="SAFETY"] .node-num{background:var(--red-lt);color:var(--red);border:1.5px solid var(--red-bd)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--blue-lt);color:var(--blue);border:1.5px solid var(--blue-bd)}
+.node[data-type="REFER"] .node-num{background:var(--purple-lt);color:var(--purple);border:1.5px solid var(--purple-bd)}
+.node[data-type="TREAT"] .node-num{background:var(--teal-lt);color:var(--teal);border:1.5px solid var(--teal-bd)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--green-lt);color:var(--green);border:1.5px solid var(--green-bd)}
+.node-head{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem;margin-bottom:.65rem}
+.node-head-left{display:flex;align-items:center;gap:.6rem;flex:1}
+.node-tag{font-size:.65rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:.2rem .5rem;border-radius:5px;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--red-lt);color:var(--red)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--blue-lt);color:var(--blue)}
+.node[data-type="REFER"] .node-tag{background:var(--purple-lt);color:var(--purple)}
+.node[data-type="TREAT"] .node-tag{background:var(--teal-lt);color:var(--teal)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--green-lt);color:var(--green)}
+.node-head h3{font-size:.95rem;font-weight:700;color:var(--ink);line-height:1.3}
+.node-tick label{display:flex;align-items:center;gap:.35rem;cursor:pointer;font-size:.75rem;color:var(--muted);font-weight:600;white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;cursor:pointer;accent-color:var(--green)}
+.node-body{font-size:.83rem;line-height:1.55;color:#334155}
+.node-body>p,.node-body>div.intro{margin-bottom:.65rem}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:.3rem .75rem;font-size:.81rem;margin-top:.5rem}
+.kv>div:nth-child(odd){font-weight:700;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;padding-top:.15rem;white-space:nowrap}
+.kv>div:nth-child(even){color:var(--ink)}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.5rem;margin-top:.5rem}
+.rftile{background:var(--red-lt);border:1px solid var(--red-bd);border-radius:8px;padding:.6rem .75rem;font-size:.79rem;line-height:1.45;color:var(--ink)}
+.rftile b{color:var(--red);display:block;margin-bottom:.15rem;font-size:.8rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.5rem;margin-top:.5rem}
+.b-card{background:var(--teal-lt);border:1px solid var(--teal-bd);border-radius:8px;padding:.65rem .75rem}
+.b-cond{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--teal);margin-bottom:.3rem}
+.b-drug{font-size:.85rem;font-weight:700;color:var(--ink);margin-bottom:.25rem}
+.b-note{font-size:.77rem;color:var(--muted);line-height:1.4}
+.ladder{display:flex;flex-direction:column;gap:.3rem;margin-top:.5rem}
+.rung{display:flex;align-items:flex-start;gap:.6rem;background:var(--grey-lt);border:1px solid var(--border);border-radius:8px;padding:.55rem .75rem}
+.rn{font-size:.7rem;font-weight:800;color:#fff;background:var(--grey);border-radius:5px;padding:.15rem .4rem;white-space:nowrap;flex-shrink:0;align-self:flex-start;margin-top:.05rem}
+.rt{font-size:.82rem;color:var(--ink);line-height:1.45}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.5rem;margin-top:.5rem}
+.lstile{background:var(--green-lt);border:1px solid var(--green-bd);border-radius:8px;padding:.65rem .75rem;font-size:.79rem;line-height:1.45}
+.lstile b{color:var(--green);display:block;margin-bottom:.15rem}
+.pill{display:inline-flex;align-items:center;font-size:.68rem;font-weight:700;padding:.15rem .45rem;border-radius:99px;white-space:nowrap;letter-spacing:.02em;vertical-align:middle}
+.pill-red{background:var(--red-lt);color:var(--red);border:1px solid var(--red-bd)}
+.pill-purple{background:var(--purple-lt);color:var(--purple);border:1px solid var(--purple-bd)}
+.pill-blue{background:var(--blue-lt);color:var(--blue);border:1px solid var(--blue-bd)}
+.pill-teal{background:var(--teal-lt);color:var(--teal);border:1px solid var(--teal-bd)}
+.pill-amber{background:var(--amber-lt);color:var(--amber);border:1px solid var(--amber-bd)}
+.pill-green{background:var(--green-lt);color:var(--green);border:1px solid var(--green-bd)}
+.pill-grey{background:var(--grey-lt);color:var(--grey);border:1px solid var(--grey-bd)}
+.why-row{margin-top:.75rem;border-top:1px solid var(--border);padding-top:.5rem}
+.why-btn{background:none;border:none;cursor:pointer;font-family:inherit;font-size:.78rem;font-weight:700;color:var(--blue);display:flex;align-items:center;gap:.3rem;padding:0;transition:color .15s}
+.why-btn:hover{color:var(--purple)}
+.caret{font-size:.7rem;transition:transform .25s}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;margin-top:.5rem;font-size:.79rem;line-height:1.55;color:#475569;background:var(--blue-lt);border:1px solid var(--blue-bd);border-radius:8px;padding:.65rem .8rem}
+.why-drawer.open{display:block}
+.alg-foot{margin-top:1rem;font-size:.75rem;color:var(--muted);text-align:center;padding:.75rem;background:#fff;border:1px solid var(--border);border-radius:var(--radius)}
+.alg-foot strong{color:var(--ink)}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🩸</div>
+  <div>
+    <b>Vaginal Bleeding — Clinical Algorithm</b>
+    <small>Covers premenopausal, perimenopausal &amp; postmenopausal presentations · Pregnancy-related &amp; non-pregnancy causes</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — the most important triage is postmenopausal bleeding (endometrial cancer until excluded) and pregnancy-related bleeding (ectopic); then work the reproductive-age causes by pattern, treat, refer on NG12 and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Abnormal vaginal bleeding</span><div class="body"><b>Reproductive age vs postmenopausal</b>; <b>pregnancy status</b>; intermenstrual/postcoital; volume; pain; smear history; contraception. <b>Pregnancy test in all of reproductive age</b>; examine + <b>speculum (visualise the cervix)</b>.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — the three must-nots</span><span class="ttl">PMB, ectopic or haemorrhage?</span><div class="body"><ul>
+      <li><b>Postmenopausal bleeding</b> (≥12 months after the last period) → endometrial cancer until excluded</li>
+      <li><b>Positive pregnancy test + pain/bleeding</b> → ectopic pregnancy</li>
+      <li><b>Heavy bleeding with haemodynamic instability</b></li>
+      <li><b>Suspicious cervix</b> on speculum (mass, contact bleeding)</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">2WW / emergency</span><div class="body"><b>PMB → 2WW gynaecology (TVUSS + endometrial sampling).</b> Suspected ectopic → emergency gynaecology/EPAU. Suspicious cervix → 2WW colposcopy (don't wait for a smear). Haemorrhage → resuscitate + admit.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — reproductive-age work-up</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">By pattern</span><div class="body">FBC; STI screen (Chlamydia) for IMB/PCB; ensure cervical screening up to date; TVUSS if structural suspected; review hormonal contraception as a cause.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · which pattern?</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Reproductive — benign</div><div class="box ix"><span class="ttl">Common</span><div class="body">Anovulation/HMB, fibroids/polyps, infection (PID/cervicitis), <b>contraception-related</b> breakthrough bleeding, pregnancy-related (miscarriage threatened/incomplete).</div></div></div>
+      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Postcoital / intermenstrual</div><div class="box ix"><span class="ttl">Cervical — examine</span><div class="body"><b>Examine the cervix</b>: ectropion, polyp, cervicitis (STI) — but exclude cervical cancer; persistent/unexplained → colposcopy.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Postmenopausal</div><div class="box ix"><span class="ttl">Cancer until excluded</span><div class="body">Endometrial cancer/hyperplasia; also atrophic vaginitis (commonest) and polyps — but <b>investigate first</b> (TVUSS endometrial thickness + biopsy).</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · treat by cause</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — cause-directed (after excluding cancer)</span><span class="ttl">Treat the diagnosis</span><div class="body"><ul>
+      <li><b>Heavy menstrual bleeding:</b> LNG-IUS / tranexamic / mefenamic acid (HMB pathway).</li>
+      <li><b>Cervical ectropion/polyp:</b> reassure or treat (cautery/polypectomy) once malignancy excluded.</li>
+      <li><b>Infection:</b> treat PID/cervicitis per STI pathway + partner notification.</li>
+      <li><b>Atrophic vaginitis (postmenopausal, after investigation):</b> topical vaginal oestrogen. <b>Contraceptive breakthrough bleeding:</b> reassure/optimise method.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-red">Emergency</span> suspected ectopic, haemodynamic compromise.</li>
+      <li><span class="pill pill-purple">2WW · NICE NG12</span> postmenopausal bleeding (≥55, or &lt;55 with risk) → endometrial pathway; suspicious cervix → colposcopy.</li>
+      <li><span class="pill pill-purple">Gynaecology</span> structural cause, persistent unexplained IMB/PCB, or treatment failure.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · prevention &amp; screening</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Prevention &amp; modifiable factors</span><span class="ttl">Screening &amp; risk reduction</span><div class="body"><b>Ensure cervical screening is up to date</b> and encourage HPV vaccination uptake · safer-sex advice and STI prevention · weight management (obesity raises endometrial-cancer risk) · review hormonal contraception as a cause and optimise · iron-rich diet if anaemic.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Emergency</b> if pregnant with pain/bleeding, or very heavy bleeding with faintness. <b>Always re-refer any postmenopausal bleeding</b> — even a single episode, even after a previous normal scan. Review IMB/PCB treatment response; persistent symptoms → colposcopy. Reassess if a "benign" cause does not resolve.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>Postmenopausal bleeding is endometrial cancer until proven otherwise</b> — refer on the 2-week-wait pathway for transvaginal ultrasound and endometrial sampling, even if it is a single episode. And always do a pregnancy test in a woman of reproductive age.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-num">1</div>
+  <div class="node-head">
+    <div class="node-head-left">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Exclude emergencies &amp; urgent pathology first</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p>Before categorising, screen for haemodynamic compromise, pregnancy complications, and malignancy indicators.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Haemodynamic instability</b> Tachycardia &gt;100, hypotension, pallor, syncope → <strong>999</strong> (haemorrhagic shock)</div>
+      <div class="rftile"><b>Suspected ectopic pregnancy</b> Amenorrhoea + pain + PV bleeding + shoulder-tip pain → <strong>999 / Same-day gynae</strong> (ruptured ectopic)</div>
+      <div class="rftile"><b>Pregnancy loss with retained products</b> Heavy bleeding + clots + history of recent pregnancy → <strong>Same-day / 999</strong> if haemodynamically unstable</div>
+      <div class="rftile"><b>Postmenopausal bleeding</b> Any PV bleed ≥12 months after LMP → <strong>2WW gynaecology</strong> (endometrial carcinoma until proven otherwise)</div>
+      <div class="rftile"><b>Intermenstrual + contact bleeding</b> Especially if offensive discharge, cervical friability → <strong>Same-day urgent</strong> (cervical carcinoma, STI)</div>
+      <div class="rftile"><b>Severe coagulopathy features</b> Bleeding from multiple sites, purpura, recent anticoagulation overdose → <strong>999</strong> (DIC, haematological emergency)</div>
+      <div class="rftile"><b>Molar pregnancy signs</b> Hyperemesis, uterus large for dates, no fetal heart → <strong>Same-day gynae</strong> (gestational trophoblastic disease)</div>
+      <div class="rftile"><b>Sepsis features</b> Fever &gt;38°C, rigors, tachycardia + PV bleeding → <strong>999</strong> (septic miscarriage, endometritis)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Postmenopausal bleeding carries a 10% risk of endometrial carcinoma — NICE NG12 mandates 2WW referral. Ectopic pregnancy rupture causes 0.2–0.5% of maternal deaths in the UK; the classic triad of amenorrhoea, pain, and PV bleeding must never be dismissed. Haemodynamic compromise from menorrhagia or miscarriage can be life-threatening within minutes. Gestational trophoblastic disease (GTD) is rare but has &gt;95% cure rate if detected early — missing it is catastrophic.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-num">2</div>
+  <div class="node-head">
+    <div class="node-head-left">
+      <span class="node-tag">Diagnose</span>
+      <h3>Confirm pregnancy status &amp; cycle pattern first</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p>Determine pregnancy status (mandatory), menopausal status, and characterise the bleeding pattern before all else.</p>
+    <div class="kv">
+      <div>Pregnancy test</div><div><span class="pill pill-blue">Urine βhCG</span> — perform in ALL women of reproductive age regardless of reported contraception. Positive → changes entire pathway.</div>
+      <div>LMP &amp; cycle</div><div>Date of LMP, cycle length (normal 21–35 days), duration of bleeding (normal ≤8 days), any missed periods</div>
+      <div>Bleeding pattern</div><div>Menorrhagia (heavy regular), IMB (intermenstrual), PCB (postcoital), PMB (postmenopausal), irregular — each drives different differentials</div>
+      <div>Menopause status</div><div>Last period &gt;12 months ago = postmenopausal. Perimenopausal = irregular cycles &gt;40 years. Ask about HRT use.</div>
+      <div>Contraception use</div><div>IUD/IUS can cause irregular bleeding. Progesterone-only pill causes BTB. Combined pill — breakthrough suggests missed pills or drug interaction.</div>
+      <div>Cervical smear</div><div>Check date of last smear and result. Overdue smear + IMB/PCB → arrange smear + urgent assessment</div>
+      <div>Sexual history</div><div>New partner, STI symptoms, contact bleeding → screen for chlamydia, gonorrhoea, BV</div>
+      <div>Bleeding diary</div><div>Ask patient to complete <span class="pill pill-blue">PBAC score</span> or Menorrhagia Calendar for 1–3 cycles if non-urgent</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">A positive pregnancy test fundamentally redefines the differential — all non-pregnancy causes become secondary. NICE HG recommends urine βhCG in all women of reproductive age with abnormal bleeding. Cycle characterisation using validated tools (PBAC ≥100 = heavy menstrual bleeding) allows objective monitoring and treatment response assessment, avoiding over-investigation of physiological variation.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-num">3</div>
+  <div class="node-head">
+    <div class="node-head-left">
+      <span class="node-tag">Diagnose</span>
+      <h3>Classify the presentation — Pregnancy vs Non-pregnancy cause</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p>Categorise into one of five clinical subtypes to guide investigation and treatment.</p>
+    <div class="kv">
+      <div>Early pregnancy bleed</div><div>βhCG positive + bleeding ≤12 weeks. Differentials: threatened/inevitable/complete/incomplete/missed miscarriage, ectopic, GTD. → USS + serial βhCG</div>
+      <div>Heavy menstrual bleeding (HMB)</div><div>Regular heavy periods. PALM-COEIN classification: Polyp, Adenomyosis, Leiomyoma, Malignancy — Coagulopathy, Ovulatory, Endometrial, Iatrogenic, Not classified</div>
+      <div>Intermenstrual bleeding (IMB)</div><div>Bleeding between periods. Causes: cervical ectropion, polyp, endometritis, contraception-related, cervical/endometrial malignancy</div>
+      <div>Postcoital bleeding (PCB)</div><div>Bleeding after intercourse. Must exclude cervical carcinoma and STIs. Cervical smear + STI screen mandatory.</div>
+      <div>Postmenopausal bleeding (PMB)</div><div>≥12 months amenorrhoea. Causes: atrophic vaginitis (most common), endometrial polyp, endometrial hyperplasia/carcinoma, HRT-related. → 2WW</div>
+      <div>Perimenopausal bleeding</div><div>Age &gt;40, irregular/changing cycle. Can be physiological but endometrial pathology must be excluded if &gt;45 or risk factors present</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The PALM-COEIN classification (FIGO 2011) provides a structured framework for HMB that guides targeted investigation. For PMB, endometrial carcinoma is present in 10% of cases — atrophic vaginitis (the most common cause) is a diagnosis of exclusion, not assumption. Correct categorisation prevents both under-investigation (missed cancer) and over-investigation (unnecessary procedures for normal perimenopausal changes).</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-num">4</div>
+  <div class="node-head">
+    <div class="node-head-left">
+      <span class="node-tag">Diagnose</span>
+      <h3>Targeted Examination</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p>Perform targeted examination with chaperone documented. Examination findings directly change management.</p>
+    <div class="kv">
+      <div>Vital signs</div><div>HR, BP, O₂ sats. Tachycardia + hypotension = haemodynamic compromise → 999. Fever → sepsis screen</div>
+      <div>Pallor / anaemia</div><div>Conjunctival pallor, nail beds, capillary refill. Pallor + HMB → FBC urgent. Haemodynamic instability → 999</div>
+      <div>Abdominal exam</div><div>Palpate for uterine enlargement (fibroids, pregnancy), adnexal tenderness (ectopic, PID), peritonism → surgical emergency</div>
+      <div>Speculum examination</div><div>Visualise cervix: cervical os (open = miscarriage), cervical ectropion, polyps, contact bleeding, suspicious lesions → biopsy/urgent referral. Quantify bleeding.</div>
+      <div>Bimanual examination</div><div>Uterine size/tenderness, adnexal masses, cervical excitation (PID). Enlarged uterus + HMB → fibroids/adenomyosis</div>
+      <div>BMI</div><div>Obesity (BMI &gt;30) is independent risk factor for endometrial cancer and anovulatory cycles. Document and address.</div>
+      <div>Thyroid</div><div>Thyroid enlargement or features of hypo/hyperthyroidism — both cause menstrual disturbance</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Speculum examination is mandatory for IMB, PCB, and any suspicious bleeding — it can identify cervical carcinoma, polyps, or infection visible only on direct visualisation. Cervical excitation on bimanual examination has 95% sensitivity for PID. Documenting chaperone is both medico-legal best practice and GMC requirement. Always offer chaperone before intimate examination.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-num">5</div>
+  <div class="node-head">
+    <div class="node-head-left">
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — Targeted by presentation</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>FBC</div><div><span class="pill pill-blue">All patients with HMB</span> — Hb &lt;120 g/L = anaemia, needs treatment alongside cause. Thrombocytopenia → haematology</div>
+      <div>Ferritin</div><div>Chronic iron deficiency precedes anaemia. Replete if &lt;30 µg/L even if Hb normal</div>
+      <div>Coagulation / vWD screen</div><div><span class="pill pill-blue">FBC + clotting + vWF antigen</span> — if HMB since menarche, family history, heavy bruising. Von Willebrand disease in 13% of women with HMB</div>
+      <div>TFTs</div><div>If irregular cycles + symptoms. Hypothyroidism causes HMB; hyperthyroidism causes oligomenorrhoea</div>
+      <div>Pelvic USS</div><div><span class="pill pill-blue">Transvaginal USS preferred</span> — fibroids, polyps, adenomyosis, endometrial thickness (postmenopausal: &gt;4mm = investigate). First-line for HMB, PMB, suspected structural cause</div>
+      <div>βhCG (serum)</div><div>Serial measurements 48hr apart in early pregnancy bleeding. Rising &gt;66% = likely intrauterine pregnancy. Falling = failed pregnancy. Plateau = ectopic/GTD</div>
+      <div>STI screen</div><div><span class="pill pill-blue">Endocervical / vulvovaginal swabs</span> — chlamydia + gonorrhoea NAAT (mandatory if IMB, PCB, new partner, &lt;25 years)</div>
+      <div>Endometrial biopsy</div><div>Pipelle biopsy in primary care (or colposcopy clinic): PMB with endometrium &gt;4mm, persistent IMB &gt;45 years, failed medical treatment, BMI &gt;35 + bleeding irregularity</div>
+      <div>Do NOT order</div><div>CA-125 routinely for bleeding alone (low specificity). MRI not first-line (specialist-initiated). Hormone profile (FSH/LH/oestradiol) rarely changes primary care management of HMB</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE NG88 (Heavy Menstrual Bleeding 2018) specifies transvaginal USS as first-line structural investigation — it outperforms transabdominal USS for endometrial and submucous fibroid pathology. Endometrial thickness &gt;4mm on TVS in PMB has 96% sensitivity for endometrial cancer but specificity of only 60%, hence biopsy is required for histological confirmation. vWD is under-diagnosed in women with HMB — the American College of Obstetricians recommends screening all adolescents with HMB since menarche.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-num">6</div>
+  <div class="node-head">
+    <div class="node-head-left">
+      <span class="node-tag">Refer</span>
+      <h3>Referral Criteria — Urgency-stratified</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Haemodynamic instability (HR &gt;100 + systolic &lt;90). Suspected ruptured ectopic. Septic shock.</div>
+      <div><span class="pill pill-red">Same-day gynae</span></div><div>Suspected ectopic (stable). Open os + active miscarriage. Molar pregnancy features. PID with systemically unwell patient.</div>
+      <div><span class="pill pill-purple">2WW Gynaecology</span></div><div>All postmenopausal bleeding. Persistent IMB/PCB &gt;40 years. Unexplained cervical mass. Suspicious endometrial biopsy.</div>
+      <div><span class="pill pill-purple">Urgent Colposcopy</span></div><div>Visible cervical lesion. High-grade dyskaryosis on smear. Persistent PCB with normal smear.</div>
+      <div>Routine Gynaecology</div><div>HMB not responding to 3–6 months medical therapy. Suspected fibroids suitable for surgical/radiological treatment. Desire for fertility-preserving surgery.</div>
+      <div>Haematology</div><div>Suspected coagulopathy (vWD confirmed/suspected). Thrombocytopenia on FBC. Anticoagulation-related HMB requiring specialist optimisation.</div>
+      <div>EPAU</div><div>Early Pregnancy Assessment Unit: confirmed intrauterine pregnancy &lt;12 weeks + bleeding, PV pain. Self-refer or GP direct-book where available.</div>
+      <div>Primary care manage</div><div>HMB with structural cause excluded, normal examination, patient wishes medical treatment. Perimenopausal bleeding with normal USS + endometrial thickness &lt;4mm.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE NG12 mandates 2WW referral for PMB to achieve &lt;62-day pathway target for gynaecological malignancy. EPAU access has transformed management of early pregnancy complications — direct GP referral reduces ED attendance and improves patient experience. Colposcopy is the definitive investigation for cervical pathology; direct referral without waiting for failed treatment is appropriate when malignancy is suspected.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-num">7</div>
+  <div class="node-head">
+    <div class="node-head-left">
+      <span class="node-tag">Treat</span>
+      <h3>Treatment Pathway — Condition-specific management</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p><strong>Heavy Menstrual Bleeding (structural cause excluded):</strong> Follow stepwise NICE NG88 ladder</p>
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Wants contraception</div>
+        <div class="b-drug">Levonorgestrel IUS <span class="pill pill-teal">First-line</span></div>
+        <div class="b-note">Mirena 52mg — reduces blood loss by 90%. Effective contraception. Lasts 5–8 years. Consider for all eligible women.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">No contraception needed</div>
+        <div class="b-drug">Tranexamic acid</div>
+        <div class="b-note">1g TDS during menstruation. Reduces loss by 50%. Can combine with NSAIDs. Not hormonal — suitable if hormones contraindicated.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Dysmenorrhoea + HMB</div>
+        <div class="b-drug">NSAID (mefenamic acid)</div>
+        <div class="b-note">500mg TDS during period. Reduces blood loss by 30% + treats pain. Use with PPI if GI risk.</div>
+      </div>
+    </div>
+    <div class="ladder" style="margin-top:.75rem">
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Combined oral contraceptive pill</b> — Reduces HMB by 40–50%. Options: Microgynon 30, Rigevidon. Check VTE risk (UKMEC). 3 cycles minimum trial.</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Norethisterone 5mg TDS days 5–26</b> — Second-line if no response. Or depot medroxyprogesterone acetate (Depo-Provera) if contraception also needed.</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Refer gynaecology</b> for endometrial ablation, fibroid embolisation, myomectomy, or hysterectomy depending on patient preference and pathology.</span></div>
+    </div>
+    <p style="margin-top:.75rem"><strong>Concurrent iron deficiency anaemia:</strong></p>
+    <div class="kv">
+      <div>Mild-moderate (Hb 80–119)</div><div><span class="pill pill-teal">Ferrous sulfate 200mg BD</span> on empty stomach. Review FBC at 4 weeks. Continue 3 months after Hb normalises.</div>
+      <div>Severe (Hb &lt;80)</div><div>Same-day assessment. Consider IV iron (Ferinject) or blood transfusion via hospital. Urgent gynaecology referral.</div>
+      <div>IMB / PCB</div><div>Treat underlying cause (STI → antibiotics, ectropion → reassure/refer, polyp → refer, malignancy → 2WW). No empirical hormones for IMB without cause identified.</div>
+      <div>PMB — atrophic vaginitis</div><div><span class="pill pill-teal">Topical oestrogen</span> (Vagifem 10mcg pessary OD ×2/52, then twice weekly; or Ovestin cream) — local treatment, systemic absorption minimal, safe in most patients including breast cancer survivors with oncology advice.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE NG88 places the LNG-IUS as first-line for HMB — it outperforms all medical treatments with 90% blood loss reduction. Tranexamic acid has NNT of 3 for clinically meaningful reduction in HMB (Cochrane 2000). NSAIDs have additional analgesic benefit but are contraindicated in renal impairment, peptic ulcer disease, and NSAID hypersensitivity. Topical oestrogen for atrophic vaginitis delivers estradiol concentrations 1000× lower than systemic HRT — MHRA 2020 guidance confirms it is safe for long-term use including in most breast cancer survivors.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-num">8</div>
+  <div class="node-head">
+    <div class="node-head-left">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Non-Pharmacological Interventions</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Weight management</b> BMI &gt;30 increases oestrogen excess via peripheral aromatisation → anovulatory cycles + endometrial hyperplasia. 5–10% weight loss can restore ovulatory cycles and reduce HMB substantially.</div>
+      <div class="lstile"><b>Iron-rich diet</b> Red meat, dark leafy greens, fortified cereals. Vitamin C (orange juice) with meals enhances non-haem iron absorption by 300%. Avoid tea/coffee within 1 hour of iron-rich meals.</div>
+      <div class="lstile"><b>Reduce NSAID/aspirin overuse</b> Regular aspirin or NSAIDs worsen HMB by inhibiting platelet aggregation. Review analgesia — paracetamol preferred for non-menstrual pain.</div>
+      <div class="lstile"><b>Period tracking app</b> Recommend Clue, Flo, or menstrual diary. Provides objective PBAC data for GP consultations and allows identification of abnormal patterns.</div>
+      <div class="lstile"><b>Stress and cycle regulation</b> Psychological stress activates HPA axis suppressing GnRH → irregular/heavy periods. Signpost to CBT, mindfulness apps, or stress management services.</div>
+      <div class="lstile"><b>Pelvic floor exercises</b> For associated dyspareunia / urinary symptoms with atrophic vaginitis. Kegel exercises 3× daily. Refer to pelvic health physiotherapist if not improving in 3 months.</div>
+      <div class="lstile"><b>Lubricants for vaginal dryness</b> Non-hormonal: Replens (3× weekly), Sylk (daily). Use alongside topical oestrogen or as alternative if oestrogen declined.</div>
+      <div class="lstile"><b>Alcohol reduction</b> Alcohol metabolised to oestrone in the liver — heavy use worsens oestrogen-driven HMB and endometrial thickening. Advise ≤14 units/week with alcohol-free days.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Weight loss of ≥10% body weight restores ovulatory cycles in 55–100% of obese women with anovulatory HMB (Reproductive Biology and Endocrinology, 2019). Lifestyle interventions are disease-modifying, not merely adjunctive — addressing anovulation through weight loss avoids long-term hormonal treatment and reduces endometrial cancer risk. Vaginal lubricants have equivalent efficacy to topical oestrogen for atrophic vaginitis symptoms in women unable to use hormone therapy.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-num">9</div>
+  <div class="node-head">
+    <div class="node-head-left">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up, Monitoring &amp; Safety-Netting</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>4–6 weeks</div><div>Review FBC if anaemia treated. Assess menstrual diary / PBAC score. Confirm referral receipt if made.</div>
+      <div>3 months</div><div>Medical treatment response (tranexamic acid, COCP, IUS). Adjust or escalate if &lt;50% improvement in PBAC score. Check iron stores if anaemia.</div>
+      <div>6 months</div><div>Full reassessment if HMB not controlled. Confirm gynaecology referral outcome. LNG-IUS: warn of initial irregular spotting for 3–6 months — this is expected.</div>
+      <div>Annual</div><div>Cervical smear if due. BMI and weight. Review all medications for menstrual impact. Reassess menopausal status in perimenopausal women.</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>Soaking &gt;1 pad every 1–2 hours for &gt;2 hours. Haemodynamic symptoms (dizziness, fainting). Severe abdominal pain in pregnancy.</div>
+      <div><span class="pill pill-amber">Same-day safety-net</span></div><div>New fever + bleeding (endometritis/PID). Failure of medical treatment with symptomatic anaemia. New contact bleeding after treatment started.</div>
+      <div>Re-refer if</div><div>PMB recurs after initial investigation. HMB recurs after ablation. New suspicious symptoms (weight loss, pelvic mass, lymphadenopathy).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The PBAC (Pictorial Blood Assessment Chart) is validated as a primary care tool — a score &gt;100 correlates with measured blood loss &gt;80mL/cycle (HMB definition). Medical treatment of HMB should produce measurable improvement within 3 months — failure to respond is an indication for gynaecological review to exclude structural or endometrial pathology that may have been missed. Recurrent PMB requires re-referral even if previous investigations were normal, as endometrial cancer risk persists with each new episode.</div>
+  </div>
+</div>
+
+</div><!-- end alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG88 (Heavy Menstrual Bleeding, 2018), NICE NG12 (Suspected Cancer Referral, 2015 updated 2023), NICE CKS Vaginal Bleeding in Early Pregnancy, FSRH Guidelines, RCOG GTG Postmenopausal Bleeding, FIGO PALM-COEIN Classification 2011. Always adapt to individual patient context and local formulary/pathways.
+</div>
+
+<script>
+(function(){
+  const KEY='rgp.alg.vaginal-bleeding.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const pTotal=document.getElementById('pTotal');
+  const resetBtn=document.getElementById('resetBtn');
+  const nodes=[...flow.querySelectorAll('.node')];
+  pTotal.textContent=nodes.length;
+
+  function save(){
+    const state=nodes.map(n=>n.querySelector('input[type=checkbox]').checked);
+    localStorage.setItem(KEY,JSON.stringify(state));
+  }
+  function load(){
+    try{
+      const state=JSON.parse(localStorage.getItem(KEY)||'[]');
+      nodes.forEach((n,i)=>{
+        const cb=n.querySelector('input[type=checkbox]');
+        if(state[i]){cb.checked=true;n.classList.add('done');}
+      });
+    }catch(e){}
+  }
+  function updateProgress(){
+    const done=nodes.filter(n=>n.querySelector('input[type=checkbox]').checked).length;
+    pDone.textContent=done;
+    pFill.style.width=(done/nodes.length*100)+'%';
+  }
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');
+    cb.addEventListener('change',()=>{
+      n.classList.toggle('done',cb.checked);
+      save();updateProgress();
+    });
+    const btn=n.querySelector('.why-btn');
+    const drawer=n.querySelector('.why-drawer');
+    btn.addEventListener('click',()=>{
+      const open=drawer.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open);
+    });
+  });
+  resetBtn.addEventListener('click',()=>{
+    nodes.forEach(n=>{
+      n.querySelector('input[type=checkbox]').checked=false;
+      n.classList.remove('done');
+    });
+    localStorage.removeItem(KEY);
+    updateProgress();
+  });
+  load();updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

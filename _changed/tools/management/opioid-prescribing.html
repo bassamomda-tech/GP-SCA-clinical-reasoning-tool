@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Opioid Prescribing &amp; Deprescribing — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Opioid prescribing &amp; deprescribing management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"💊",
+  title:"Opioids in Non-Cancer Pain — Prescribing & Deprescribing",
+  stemTitle:"Opioids for persistent non-cancer pain &mdash; trial it properly, cap the dose, and taper safely when it isn't working",
+  stemSub:"A practical medicines-optimisation protocol: set functional goals, run a time-limited morphine trial, keep below 120mg/day oral morphine equivalent, choose a named first-line strong opioid, manage adverse effects, and taper-and-stop when there's no benefit \u2014 with a structured deprescribing schedule. Opioids Aware / Faculty of Pain Medicine / NICE chronic pain (NG193).",
+  guideline:"Opioids Aware \u00b7 FPM \u00b7 NICE NG193",
+  glance:[
+    {lbl:"Trial", val:"Morphine IR 5\u201310mg", sub:"1\u20132 week supply; 4-week trial"},
+    {lbl:"No benefit if\u2026", val:"No relief after 20mg", sub:"single-dose morphine \u2192 stop"},
+    {lbl:"Primary-care cap", val:"120mg/day OME", sub:"harm rises, benefit doesn't"},
+    {lbl:"1st-line strong", val:"Morphine MR (Zomorph\u00ae)", sub:"10mg BD start"},
+    {lbl:"Switching", val:"Specialist + cut 25\u201350%", sub:"incomplete cross-tolerance"},
+    {lbl:"Deprescribe", val:"Taper 10%/2\u20134 weeks", sub:"months not weeks"}
+  ],
+  flow:[
+
+    {t:"node", d:"found", n:"1", tag:"Before you prescribe", title:"Set goals, give realistic expectations, agree an exit",
+      blocks:[
+        {b:"kv", rows:[
+          ["Wider plan","Opioids are an <b>adjunct</b> to a plan aimed at improving function, reducing disability and quality of life \u2014 not a standalone fix. Agree and document individualised functional goals."],
+          ["Realistic expectations","Opioids rarely give complete relief; many chronic pains (low back pain, fibromyalgia, headache/migraine, abdominal/pelvic pain) <b>do not respond</b> to opioids. Neuropathic pain \u2192 see neuropathic-pain pathway, not opioids."],
+          ["Agree the exit upfront","State clearly: <b>if the trial doesn't meet the goals, the opioid will be stopped</b> \u2014 even if no other treatment is available."],
+          ["Single prescriber","Name one responsible prescriber; one pharmacy; don't issue scripts early; \u226428 days' supply (often weekly/2-weekly)."],
+          ["Cap the dose","Tell the patient the <b>maximum in primary care is 120mg/day oral morphine equivalent (OME)</b>; above this, harm rises with no extra benefit."]
+        ]},
+        {b:"warn", html:"<b>Cautions:</b> dependence/addiction (MHRA warning Sept 2020 \u2014 add a prominent label); <b>renal impairment</b> (reduce dose / seek advice if eGFR &lt;30); <b>driving</b> \u2014 don't drive when starting, adjusting, or if unfit; explain the drug-driving law."}
+      ]},
+
+    {t:"node", d:"life", n:"2", tag:"Non-drug · core", title:"Non-drug pain management", blocks:[{b:"tiles", v:"life", items:[{t:"🏃 Active strategies", html:"Exercise, physiotherapy, pacing and psychological therapy are first-line for chronic non-cancer pain \u2014 opioids are rarely the answer."},{t:"🎯 Set function goals", html:"Agree realistic function-based goals; explain opioids often don\u2019t help chronic pain and carry real harms."},{t:"🧠 Address drivers", html:"Treat mood, sleep and social factors that amplify pain."}]},{b:"why", html:"For chronic non-cancer pain, non-drug strategies (exercise, physio, psychological therapy) are first-line \u2014 opioids are reserved and reviewed, so non-drug care leads the plan."}]},
+    {t:"node", d:"drug", n:"3", tag:"Step 1 \u00b7 the trial", title:"Run a proper, time-limited opioid trial",
+      blocks:[
+        {b:"p", html:"Trial with a <b>short (1\u20132 week) supply of immediate-release morphine</b> (tablets or liquid), letting the patient explore a range, e.g. <b>morphine 5\u201310mg</b>. Define a clear maximum daily dose \u2014 \u201Cas directed\u201D is never acceptable."},
+        {b:"ladder", steps:[
+          {step:"1a", title:"Immediate-release morphine trial", when:"start here",
+           html:"Morphine IR 5\u201310mg, short supply, fixed dose range with a stated max/day. <b>If a single dose of morphine 20mg gives no useful pain reduction, opioids are unlikely to help long-term</b> \u2014 don't escalate."},
+          {step:"1b", title:"Assess at 4 weeks against goals", when:"trial endpoint",
+           fromLabel:"trial dose tolerated",
+           html:"A <b>4-week trial is adequate</b>. Success = pain relief <b>and</b> progress towards functional goals. Initial positive response doesn't predict long-term benefit. If unsuccessful \u2192 taper and stop (Step 6)."},
+          {step:"1c", title:"Convert to modified-release if continuing", when:"clear benefit + functional gain",
+           fromLabel:"trial met goals",
+           html:"If genuinely beneficial, convert to a regular <b>first-line strong opioid</b> (Step 3) at the lowest effective dose; keep IR \u201Cas required\u201D doses few and capped. Best outcomes are low-dose / intermittent use."}
+        ]},
+        {b:"why", html:"Framing opioids as a <strong>monitored trial with a defined endpoint</strong> \u2014 rather than an open-ended prescription \u2014 is the core of safe opioid prescribing. The morphine-20mg single-dose test and the 4-week review give objective off-ramps before dependence sets in."}
+      ]},
+
+    {t:"node", d:"drug", n:"4", tag:"Step 2 \u00b7 choice & dose", title:"First-line strong opioid, named brands & the dose cap",
+      blocks:[
+        {b:"p", html:"<b>Efficacy is similar across opioids</b> \u2014 choose on cost, formulation and tolerability. <b>First-line strong opioid: modified-release morphine (Zomorph\u00ae)</b>, starting <b>10mg every 12h</b>, titrated slowly (no more often than every 2 weeks)."},
+        {b:"table", head:["Opioid (brand)","Start","Primary-care max (\u224812h dose)","Status"], rows:[
+          ["Morphine MR (Zomorph\u00ae) \u2014 1st line","10mg BD","60mg BD (\u2248120mg/day OME)","First-line"],
+          ["Oxycodone MR (Longtec\u00ae)","5mg BD","~40mg BD","Amber 2 \u2014 pain-specialist recommendation"],
+          ["Buprenorphine patch (Butec\u00ae / Bupeaze\u00ae)","Butec 10mcg/h weekly","Bupeaze 52.5mcg/h twice weekly","Useful in renal impairment / swallowing difficulty"],
+          ["Fentanyl patch (Opiodur\u00ae)","12mcg/h every 3 days","37mcg/h","Amber 2 \u2014 specialist only; NOT for opioid-na\u00efve/acute"],
+          ["Tapentadol MR (Palexia\u00ae SR)","50mg BD","specialist","Amber 2 \u2014 pain-specialist initiation only (3rd line)"]
+        ]},
+        {b:"warn", html:"<b>Do not exceed 120mg/day OME without specialist input.</b> Risk of harm/mortality rises substantially above this with <b>no extra benefit</b>. Use the <b>ANZCA / Faculty of Pain Medicine opioid calculator</b> for equivalences. Fentanyl/buprenorphine patches are not for acute pain or opioid-na\u00efve patients."}
+      ]},
+
+    {t:"node", d:"drug", n:"5", tag:"Step 3 \u00b7 switching", title:"Switching opioids \u2014 do it safely",
+      blocks:[
+        {b:"kv", rows:[
+          ["When to switch","Intolerable side effects on one opioid (patients may tolerate another better), or a formulation need (e.g. patch for swallowing difficulty / renal impairment)."],
+          ["More potent = specialist","Only switch to a <b>more potent</b> opioid (oxycodone, fentanyl, tapentadol) on <b>specialist advice</b> (Amber 2 / Advice &amp; Guidance)."],
+          ["Cut the dose on switch","For safety, <b>reduce the calculated equivalent dose by 25\u201350%</b> to allow for incomplete cross-tolerance, then re-titrate and monitor closely."],
+          ["Use the calculator","Convert with the ANZCA / FPM opioid calculator; secondary care may use different brands \u2014 switch to the primary-care preferred brand."],
+          ["Withdrawal on abrupt change","Sweating, yawning, abdominal cramps, anxiety, insomnia if reduced/stopped abruptly \u2014 common with <b>tramadol</b> and even weak opioids after short courses."]
+        ]}
+      ]},
+
+    {t:"node", d:"safety", n:"6", tag:"Step 4 \u00b7 side effects & monitoring", title:"Manage adverse effects; review regularly",
+      blocks:[
+        {b:"table", head:["Effect","Detail","Action"], rows:[
+          ["Constipation","Very common, persists","Offer osmotic (Laxido\u00ae) + stimulant (bisacodyl), or docusate; fibre/fluid/exercise advice"],
+          ["Nausea / sedation","Early, often settles","Anti-emetic short-term; warn re driving; review dose"],
+          ["Endocrine","Low testosterone/oestradiol with long-term use","Consider checking testosterone/oestradiol at 6 months; seek advice if low"],
+          ["Tolerance / hyperalgesia","Escalating dose, worsening pain","Opioid-induced hyperalgesia \u2192 taper, don't escalate"],
+          ["Dependence vs addiction","Physical dependence is inevitable; addiction (craving) relatively rare","Limit max dose; single prescriber; review"],
+          ["Respiratory depression","Risk \u2191 with sedatives/alcohol","Avoid co-prescribing benzodiazepines/gabapentinoids; consider take-home naloxone if high-risk"]
+        ]},
+        {b:"kv", rows:[
+          ["Review","At least <b>monthly</b> initially (more often if concerns); <b>at least biannually</b> once on a stable dose. Add an opioid read-code for easy recall."],
+          ["If not progressing","Not meeting agreed functional goals \u2192 <b>taper and consider alternatives</b> (Step 6)."]
+        ]},
+        {b:"warn", html:"<b>Avoid combining opioids with benzodiazepines, Z-drugs, gabapentinoids (pregabalin/gabapentin) or alcohol</b> \u2014 additive respiratory depression and overdose risk. If the patient is on these, it's a strong reason to deprescribe the opioid."}
+      ]},
+
+    {t:"node", d:"drug", n:"7", tag:"Step 5 \u00b7 deprescribe", title:"Taper and stop \u2014 a structured schedule",
+      blocks:[
+        {b:"p", html:"<b>Taper or stop</b> if: no useful pain relief / function; intolerable side effects; dose &gt;120mg/day OME; misuse/diversion; on potentiating drugs (benzodiazepines, gabapentinoids, antidepressants, antipsychotics); on opioids &gt;3 months; the painful condition has resolved; or after a definitive intervention (e.g. joint replacement)."},
+        {b:"ladder", steps:[
+          {step:"6a", title:"Engage the patient", when:"first",
+           html:"Explain the limited role of opioids in long-term pain and that <b>stopping usually doesn't worsen pain but does improve how they feel</b>. If not keen, give information, use the Prescribed Opioids Difficulties Scale / Live Well with Pain resources, and review in 3\u20136 months \u2014 don't force it."},
+          {step:"6b", title:"Calculate total OME & confirm actual use", when:"plan the taper",
+           fromLabel:"patient willing",
+           html:"Total the OME across all opioids/routes (calculator). <b>Ask what they actually take</b> \u2014 don't assume the prescribed dose."},
+          {step:"6c", title:"Reduce by ~10% every 2\u20134 weeks", when:"the schedule",
+           fromLabel:"schedule agreed",
+           html:"Taper <b>10% of the original dose every 2 weeks or monthly</b>. Reduce <b>one opioid at a time, most potent first</b>; taper MR/patch first and switch IR liquid \u2192 tablets to count use. Don't let the patient up-titrate IR to compensate; don't issue scripts early."},
+          {step:"6d", title:"Go slower as the dose falls", when:"lower doses",
+           fromLabel:"approaching low doses",
+           html:"Each 10% becomes a bigger proportion as the dose drops \u2014 use <b>smaller reductions (5% or less) and monthly</b> intervals near the end. Withdrawal symptoms settle within a few days; reassure."},
+          {step:"6e", title:"Build self-management", when:"throughout",
+           fromLabel:"tapering",
+           html:"Pair the taper with non-drug pain self-management (Live Well with Pain \u2018Ten Footsteps\u2019, NHS \u201810 Ways to Reduce Pain\u2019, pacing, activity, CBT)."}
+        ]},
+        {b:"warn", html:"<b>Never stop opioids abruptly</b> after regular use \u2014 taper over <b>months, not weeks</b>. Reductions that are too fast cause withdrawal (sweating, yawning, cramps, anxiety, insomnia, diarrhoea) and erode the patient's confidence."}
+      ]},
+
+    {t:"loop", icon:"\uD83D\uDD01", title:"Still in pain on opioids? Re-run the checklist",
+      arrow:"\u2026the answer is rarely a higher dose",
+      intro:"Persistent pain despite opioids means the opioids aren't working \u2014 not that the dose is too low.",
+      checks:[
+        {b:"1 \u00b7 Working?", html:"Any genuine pain relief AND functional gain? If not \u2192 taper and stop."},
+        {b:"2 \u00b7 Dose", html:"Above 120mg/day OME? Get specialist input or deprescribe."},
+        {b:"3 \u00b7 Diagnosis", html:"Is this neuropathic / a non-opioid-responsive pain? Switch strategy."},
+        {b:"4 \u00b7 Co-drugs", html:"On benzodiazepines/gabapentinoids/alcohol? High-risk \u2192 deprescribe."},
+        {b:"5 \u00b7 Self-management", html:"Engaged with non-drug pain strategies and pacing?"}
+      ],
+      back:"No benefit, high dose, misuse or high-risk combination \u2192 taper, and involve the pain service"},
+
+    {t:"node", d:"follow", n:"8", tag:"Monitoring & review", title:"Structured opioid review", arrow:"review \u2014 do not just re-prescribe", blocks:[{b:"timeline", items:[{n:"1", when:"At each review", title:"Function, not just pain", html:"Review <b>pain AND function/quality of life</b> \u2014 if the opioid is not delivering meaningful benefit, it should be reduced/stopped. Avoid escalating doses for chronic non-cancer pain; <b>doses above 120 mg/day oral morphine equivalent rarely add benefit</b> and increase harm."},{n:"2", when:"Ongoing", title:"Harms & dependence", html:"Monitor for sedation, constipation (co-prescribe laxative), tolerance, dependence and aberrant use. Avoid co-prescribing with benzodiazepines/gabapentinoids (respiratory depression)."},{n:"3", when:"If not helping", title:"Deprescribe", html:"Taper gradually (e.g. 10% of dose every 1\u20134 weeks) with support; faster if safety concern. Offer non-drug pain strategies and address mood/sleep."}]}, {b:"say", html:"Strong painkillers are only worth continuing if they genuinely improve what you can do. We\u2019ll review that regularly, and if they\u2019re not helping we\u2019ll reduce them slowly together."}]},
+
+    {t:"node", d:"refer", n:"9", tag:"Refer", title:"When to involve specialists",
+      arrow:"escalation, complexity or addiction",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Pain service", html:"Considering &gt;120mg/day OME, a more potent opioid (oxycodone/fentanyl/tapentadol \u2014 Amber 2), or refractory pain despite an adequate trial."},
+          {t:"Drug & alcohol service", html:"Evidence of misuse, abuse, diversion, or opioid-use disorder \u2192 specialist substance-misuse support alongside the taper."},
+          {t:"Specialist taper support", html:"Complex/high-dose tapers, significant psychological distress, or failed previous attempts \u2014 shared care with the pain team."},
+          {t:"Reassess the diagnosis", html:"New or changing pain, red flags, or a treatable cause (e.g. joint requiring replacement) \u2192 appropriate specialty."}
+        ]},
+        {b:"say", html:"We'll try this as a time-limited test with clear goals. Opioids only help some pains, and if it isn't improving what you can do, the safest thing is to come off it slowly \u2014 most people actually feel better in themselves once the dose comes down, even if the pain doesn't change much."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

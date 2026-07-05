@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sinusitis — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Sinusitis management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"👃",
+  title:"Sinusitis (Rhinosinusitis)",
+  stemTitle:"Acute &amp; chronic rhinosinusitis \u2014 mostly self-limiting",
+  stemSub:"Primary-care management of rhinosinusitis \u2014 reassure and treat acute viral cases symptomatically, reserve antibiotics for the minority, step up to intranasal steroids for prolonged/chronic disease, and recognise the orbital/intracranial complications that need same-day referral. NICE NG79 \u00b7 CKS 2026.",
+  guideline:"NICE NG79",
+  glance:[
+    {lbl:"Most cases", val:"Viral, self-limiting", sub:"resolve \u226410 days"},
+    {lbl:"Symptom relief", val:"Analgesia + saline", sub:"\u00b1 decongestant"},
+    {lbl:">10 days", val:"Intranasal steroid", sub:"high-dose option"},
+    {lbl:"Antibiotic", val:"Rarely", sub:"if very unwell / no improvement"},
+    {lbl:"Chronic (>12 wk)", val:"INCS + saline", sub:"\u00b1 ENT"},
+    {lbl:"Red flag", val:"Orbital / neuro signs", sub:"= same-day"}
+  ],
+  flow:[
+    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Complications needing urgent referral",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Orbital", html:"Periorbital swelling/erythema, proptosis, painful or restricted eye movements, double vision, reduced acuity \u2192 same-day (orbital cellulitis)."},
+          {t:"🔴 Intracranial", html:"Severe frontal headache, swelling of the forehead, photophobia, neck stiffness, focal neurology, seizures, reduced consciousness \u2192 999/admit."},
+          {t:"🟠 Systemically very unwell", html:"Sepsis features \u2192 urgent assessment."},
+          {t:"🟠 Immunocompromised / unilateral persistent", html:"Lower threshold to refer; persistent unilateral symptoms \u2192 ENT (exclude tumour/fungal)."}
+        ]},
+        {b:"why", html:"Acute sinusitis is overwhelmingly benign, but spread to the orbit or cranium is sight- and life-threatening. The examiner wants the red flags verbalised before any reassurance or prescription."}
+      ]},
+    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Classify acute vs chronic",
+      blocks:[
+        {b:"kv", rows:[
+          ["Acute (<12 weeks)","Nasal blockage/discharge + facial pain/pressure \u00b1 reduced smell; usually post-viral. Most resolve within 2\u20133 weeks"],
+          ["Bacterial more likely","Symptoms &gt;10 days without improvement, or \u2018double-sickening\u2019 (initial improvement then worsening with fever, purulent discharge, severe localised pain)"],
+          ["Chronic (\u226512 weeks)","Persistent nasal obstruction, discharge, facial pressure, hyposmia \u00b1 nasal polyps; consider allergy/asthma overlap"],
+          ["Diagnosis","Clinical \u2014 imaging not routine. CT only if chronic refractory / pre-surgical / complications (specialist)"]
+        ]}
+      ]},
+    {t:"node", d:"life", n:"3", tag:"Non-drug · core", title:"Self-care", blocks:[{b:"tiles", v:"life", items:[{t:"💧 Symptom relief", html:"Analgesia, fluids, warmth; nasal saline irrigation may ease congestion."},{t:"⏳ Expect resolution", html:"Usually viral and self-limiting (~2\u20133 weeks); antibiotics rarely change the course."},{t:"🚭 Triggers", html:"Avoid smoking/irritants; manage allergic rhinitis which predisposes."}]},{b:"why", html:"Acute sinusitis is mostly viral and self-limiting, so analgesia, saline and reassurance are the mainstay."}]},
+    {t:"node", d:"drug", n:"4", tag:"Medication \u00b7 acute", title:"Symptomatic first, antibiotics rarely",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Self-care + analgesia", when:"all acute cases",
+           html:"Paracetamol/ibuprofen, nasal saline irrigation, adequate fluids, warm compresses. Reassure most resolve without antibiotics; safety-net."},
+          {step:"Step 2", title:"High-dose intranasal corticosteroid", when:"symptoms >10 days",
+           fromLabel:"if no improvement after ~10 days",
+           html:"<b>Mometasone 2 sprays (50 microgram/spray) each nostril once daily</b> (for symptoms \u226510 days) \u2014 may modestly speed resolution (NG79). Brief topical decongestant (<5 days) for congestion if needed."},
+          {step:"Step 3", title:"Antibiotic \u2014 only if indicated", when:"systemically unwell / high risk",
+           fromLabel:"reserve for the minority",
+           html:"Back-up or immediate: <b>phenoxymethylpenicillin 500 mg QDS for 5 days</b> first-line (<b>doxycycline 200 mg day 1 then 100 mg OD</b>, or <b>clarithromycin 500 mg BD</b>, if penicillin-allergic); <b>co-amoxiclav 500/125 mg TDS</b> if very unwell/high-risk. Most acute sinusitis does NOT need antibiotics."}
+        ]},
+        {b:"warn", html:"Avoid routine antibiotics \u2014 acute sinusitis is usually viral and self-limiting. Limit decongestants to &lt;5\u20137 days (rebound congestion / rhinitis medicamentosa)."}
+      ]},
+    {t:"node", d:"drug", n:"5", tag:"Medication \u00b7 chronic", title:"Chronic rhinosinusitis",
+      blocks:[
+        {b:"kv", rows:[
+          ["Mainstay","Daily <b>nasal saline irrigation</b> + <b>intranasal corticosteroid</b> (correct technique, prolonged trial)"],
+          ["Allergy","Treat coexisting allergic rhinitis (antihistamine/INCS); avoid triggers"],
+          ["Polyps","Intranasal steroid drops/spray; short oral steroid course in selected cases (specialist)"],
+          ["Stop smoking","Improves symptoms and surgical outcomes"]
+        ]}
+      ]},
+    {t:"node", d:"monitor", n:"6", tag:"Follow-up", title:"Review + escalation",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"Acute, safety-net", title:"Self-limiting", html:"Return if &gt;10 days without improvement, double-sickening, or any red flag."},
+          {n:"2", when:"Chronic, 4\u20138 weeks", title:"Assess INCS response", html:"Check technique/adherence; continue if improving."},
+          {n:"3", when:"Refractory", title:"ENT referral", html:"Chronic symptoms despite optimal medical therapy, polyps, unilateral disease."}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer", title:"When to refer",
+      arrow:"complications, chronic or unilateral disease",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Same-day", html:"Orbital or intracranial complications, sepsis."},
+          {t:"ENT (routine)", html:"Chronic rhinosinusitis refractory to medical therapy; nasal polyps for assessment/surgery (FESS)."},
+          {t:"Urgent ENT / 2WW", html:"Persistent unilateral symptoms, unilateral bloody discharge, or mass \u2014 exclude malignancy."},
+          {t:"Allergy", html:"Significant coexisting allergic rhinitis/asthma."}
+        ]},
+        {b:"say", html:"Most sinus infections are viral and settle within a couple of weeks with simple measures \u2014 painkillers, salt-water rinses and time. Antibiotics rarely help. Come back urgently if you get swelling or redness around the eye, a severe headache, or you feel very unwell."}
+      ]}
+  ],
+  foot:"Management of acute and chronic rhinosinusitis in primary care; orbital/intracranial complications are emergencies. Verify against current NICE NG79, CKS Sinusitis and EPOS guidance."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

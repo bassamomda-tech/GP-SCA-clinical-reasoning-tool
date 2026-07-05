@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Palliative Constipation — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Palliative constipation management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🕊️",
+  title:"Palliative Constipation — Step-by-Step",
+  stemTitle:"Constipation in palliative care &mdash; prevent it on opioids, then escalate the laxative ladder",
+  stemSub:"A practical protocol: anticipate and prevent opioid-induced constipation, combine a stimulant with a softener/osmotic, add rectal measures for loaded rectum, and reach for a PAMORA (naloxegol / methylnaltrexone) when opioid constipation is refractory \u2014 while excluding bowel obstruction. GMEC Palliative Care 2025 / PCF8.",
+  guideline:"GMEC 2025 · PCF8",
+  glance:[
+    {lbl:"On opioids", val:"Always co-prescribe", sub:"laxative from day 1"},
+    {lbl:"First-line", val:"Stimulant + softener", sub:"senna + macrogol/docusate"},
+    {lbl:"Loaded rectum", val:"Rectal measures", sub:"suppositories / enema"},
+    {lbl:"Refractory opioid", val:"PAMORA", sub:"naloxegol / methylnaltrexone"},
+    {lbl:"Avoid", val:"Bulk-forming", sub:"useless if poor fluid intake"},
+    {lbl:"Exclude", val:"Bowel obstruction", sub:"before stimulants"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Assess", title:"Assess and exclude obstruction",
+      blocks:[
+        {b:"kv", rows:[
+          ["History","Frequency &amp; consistency vs normal, last bowel motion, straining, overflow diarrhoea, colic, nausea."],
+          ["Examine","Abdomen + <b>PR</b> (hard stool, impaction, empty rectum, masses). Empty ballooned rectum may suggest higher obstruction."],
+          ["Reversible factors","Opioids, antimuscarinics, 5HT3 antiemetics (ondansetron), dehydration, hypercalcaemia, immobility, low intake."],
+          ["Exclude","<b>Bowel obstruction</b> \u2014 colic + distension + vomiting + no flatus \u2192 don't give stimulant laxatives; see GI obstruction."]
+        ]}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug · core", title:"Bowel-care measures", blocks:[{b:"tiles", v:"life", items:[{t:"💧 Hydration & diet", html:"Encourage fluids and fibre where tolerated and consistent with goals; respect reduced intake near end of life."},{t:"🚽 Toileting", html:"Privacy, comfortable positioning, and timing around meals support defecation."},{t:"💊 Prevent opioid constipation", html:"Co-prescribe a regular laxative with every opioid \u2014 prevention is easier than treatment."}]},{b:"why", html:"Bowel care and laxative co-prescription with opioids prevent the constipation that otherwise causes major distress \u2014 non-drug measures support this."}]},
+    {t:"node", d:"drug", n:"3", tag:"Step 1 \u00b7 prevent & treat", title:"The oral laxative ladder",
+      blocks:[
+        {b:"p", html:"<b>Anticipate opioid-induced constipation \u2014 co-prescribe a laxative whenever you start a strong opioid.</b> Combine a stimulant with a softener/osmotic."},
+        {b:"ladder", steps:[
+          {step:"1a", title:"Stimulant + osmotic/softener", when:"first-line combination",
+           html:"<b>Senna 7.5\u201315mg nocte</b> (stimulant) + <b>macrogol (Laxido/Movicol) 1\u20133 sachets/day</b> (osmotic), or <b>docusate 100\u2013200mg BD</b> (softener + mild stimulant). Titrate to a comfortable soft stool every 1\u20133 days."},
+          {step:"1b", title:"Increase / adjust", when:"inadequate",
+           fromLabel:"persisting",
+           html:"Up-titrate doses; if stool hard \u2192 favour the osmotic/softener; if soft but not passed \u2192 favour the stimulant. Maintain fluids."},
+          {step:"1c", title:"Avoid these", when:"not useful here",
+           fromLabel:"",
+           html:"Avoid <b>bulk-forming</b> laxatives (ispaghula) \u2014 ineffective with poor fluid intake and risk obstruction. Lactulose often causes bloating/flatulence \u2014 not preferred."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"4", tag:"Step 2 \u00b7 loaded rectum", title:"Rectal measures",
+      blocks:[
+        {b:"table", head:["Finding on PR","Measure"], rows:[
+          ["Soft stool in rectum","Bisacodyl suppository (stimulant)"],
+          ["Hard stool in rectum","Glycerin suppository (softening) ± bisacodyl"],
+          ["Impaction / no result","Phosphate or arachis-oil retention enema (avoid arachis if peanut allergy); consider manual evacuation"]
+        ]},
+        {b:"warn", html:"Build up oral laxatives once the rectum is cleared to prevent recurrence. Re-examine if overflow diarrhoea \u2014 it usually signals impaction, not true diarrhoea."}
+      ]},
+    {t:"node", d:"drug", n:"5", tag:"Step 3 \u00b7 refractory opioid constipation", title:"PAMORA / unable to swallow",
+      blocks:[
+        {b:"kv", rows:[
+          ["PAMORA","Opioid-induced constipation unresponsive to optimised laxatives \u2192 a peripherally-acting \u00b5-opioid antagonist: <b>naloxegol 25mg OD</b> (oral) or <b>methylnaltrexone SC</b> (rapid effect). Exclude obstruction first."],
+          ["Unable to swallow","Continue rectal measures; PAMORA (methylnaltrexone SC); review at every visit \u2014 constipation persists into the dying phase."],
+          ["Switch opioid","Consider switching to an opioid with less constipation burden if otherwise appropriate (specialist)."]
+        ]}
+      ]},
+    {t:"node", d:"monitor", n:"6", tag:"Review", title:"Review & safety-net",
+      blocks:[
+        {b:"kv", rows:[
+          ["Review","Record bowel motions; titrate laxatives to effect; don't stop when symptoms improve if opioids continue."],
+          ["Safety-net","No bowel motion for 3 days, colic + distension + vomiting \u2192 reassess for impaction/obstruction."]
+        ]}
+      ]},
+    {t:"node", d:"safety", n:"7", tag:"Safety-net · anticipatory", title:"When to escalate", blocks:[{b:"tiles", v:"safety", items:[{t:"🔴 Obstruction", html:"Colicky pain, vomiting, distension, no flatus → suspect bowel obstruction → urgent review (avoid stimulants)."},{t:"📞 Refractory", html:"No result despite escalating laxatives → palliative team; consider impaction (PR exam) and manual measures."},{t:"💊 Opioid-induced", html:"Refractory opioid-induced constipation → consider peripheral opioid antagonist (specialist)."}]}]},
+    {t:"node", d:"refer", n:"8", tag:"Refer", title:"When to escalate",
+      arrow:"obstruction or refractory",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Suspected obstruction", html:"Colic, distension, vomiting, no flatus \u2192 urgent assessment; do not give stimulant laxatives."},
+          {t:"Specialist palliative care", html:"Refractory constipation despite optimised laxatives + PAMORA."},
+          {t:"Reversible cause", html:"Hypercalcaemia \u2192 hypercalcaemia pathway; cord compression with bowel dysfunction \u2192 MSCC/cauda equina pathway."}
+        ]},
+        {b:"say", html:"These painkillers almost always slow the bowels, so we give a laxative alongside them from the start and adjust it to keep things comfortable \u2014 it's expected, not a sign anything's wrong."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reflux in Infants — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Infant reflux management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🍼",
+  title:"Reflux in Infants",
+  stemTitle:"Gastro-oesophageal reflux in infants — ongoing management",
+  stemSub:"Primary-care management of infant reflux \u2014 reassurance for physiological GOR, stepwise feeding measures, and a trial of acid suppression only where reflux disease (GORD) is likely \u2014 with red-flag exclusion. NICE NG1 \u00b7 CKS 2026.",
+  guideline:"NICE NG1",
+  glance:[
+    {lbl:"GOR vs GORD", val:"Posset vs distress", sub:"physiological vs disease"},
+    {lbl:"Mainstay", val:"Reassurance", sub:"+ feeding advice"},
+    {lbl:"Breastfed", val:"Feeding review", sub:"\u00b1 alginate trial"},
+    {lbl:"Formula", val:"Smaller, frequent", sub:"\u00b1 thickener / alginate"},
+    {lbl:"GORD trial", val:"PPI/H2RA", sub:"distress/faltering"},
+    {lbl:"Red flag", val:"Bile/blood/projectile", sub:"investigate"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Separate normal reflux from reflux disease",
+      blocks:[
+        {b:"kv", rows:[
+          ["GOR (physiological)","Effortless posseting in a thriving, content baby \u2014 very common, peaks ~4 months, resolves by ~1 year"],
+          ["GORD","Reflux causing marked distress, feeding refusal, faltering growth, or complications"],
+          ["Red flags","Bile-stained or blood-stained vomit, projectile vomiting (?pyloric stenosis), abdominal distension, late onset &gt;6 months / persisting &gt;1 year, systemic illness, bulging fontanelle"],
+          ["Consider CMPA","Overlapping features \u2014 consider a cow\u2019s-milk-protein trial if other allergic features"]
+        ]},
+        {b:"why", html:"The pivotal distinction is <strong>GOR vs GORD</strong>: physiological reflux in a thriving baby needs only explanation and reassurance, not medication. Acid suppression is reserved for genuine reflux <em>disease</em>, and the red-flag list separates benign reflux from sinister vomiting (obstruction, pyloric stenosis, raised ICP)."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 first-line", title:"Reassurance and feeding measures",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🫶 Reassurance", html:"Explain GOR is normal and self-limiting in a thriving baby \u2014 the most important \u2018treatment\u2019."},
+          {t:"🍼 Feed review", html:"Assess feeding technique and volume; avoid overfeeding."},
+          {t:"📉 Smaller, frequent feeds", html:"In formula-fed infants, a trial of smaller, more frequent feeds (without reducing total daily intake)."},
+          {t:"🧴 Thickener / alginate", html:"If measures fail: a trial of thickened feeds, or an alginate (e.g. Gaviscon Infant) \u2014 not with thickener together."},
+          {t:"⬆️ Positioning", html:"Hold upright after feeds; <b>always sleep supine</b> (don\u2019t use sleep-positioning devices)."},
+          {t:"🤱 Breastfed", html:"Breastfeeding assessment first; consider an alginate trial if needed."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 GORD only", title:"Acid suppression trial \u2014 when warranted",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Optimise feeding/alginate", when:"first",
+           html:"Exhaust feeding measures and an alginate trial before any acid suppression in uncomplicated reflux."},
+          {step:"Step 2", title:"Trial PPI or H2RA", when:"if features of GORD",
+           fromLabel:"unexplained feeding difficulty, distress, or faltering growth",
+           html:"A 4-week trial of a <b>PPI (e.g. omeprazole) or H2-receptor antagonist \u2014 dosed by weight per BNF for Children</b> where reflux disease is likely; review and stop if no benefit."},
+          {step:"Step 3", title:"Reassess / refer", when:"no response",
+           fromLabel:"trial ineffective",
+           html:"Reconsider the diagnosis (CMPA, other), and refer if GORD is confirmed/refractory."}
+        ]},
+        {b:"warn", html:"<b>Do not</b> offer acid suppression for simple posseting in a thriving baby. <b>Do not</b> add a thickener and an alginate together. Avoid prokinetics (e.g. domperidone) without specialist advice (cardiac risk)."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Growth and response",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Growth / feeding","At review","Faltering growth or feed refusal \u2192 escalate/refer"],
+          ["Response to measures","After feeding trial","Stepwise escalation only if needed"],
+          ["Acid-suppression trial","After 4 weeks","Stop if no benefit \u2014 don\u2019t continue indefinitely"],
+          ["Red flags","Ongoing","New bile/blood/projectile vomiting \u2192 investigate urgently"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"After feeding advice", title:"Reassess", html:"Most physiological GOR settles with reassurance and feeding measures."},
+          {n:"2", when:"4 weeks (if drug trial)", title:"Trial review", html:"Assess response to acid suppression; stop if ineffective; reconsider diagnosis."},
+          {n:"3", when:"Ongoing", title:"Natural resolution", html:"Reassure that GOR typically resolves by ~12 months; review growth."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not settling? Re-check before escalating",
+      arrow:"\u2026if symptoms persist or worsen",
+      intro:"Reconsider the diagnosis before continuing or adding medication.",
+      checks:[
+        {b:"1 \u00b7 Red flags", html:"Bile/blood/projectile vomiting, distension, systemic illness \u2192 investigate."},
+        {b:"2 \u00b7 CMPA?", html:"Allergic features \u2192 consider a cow\u2019s-milk-protein elimination trial."},
+        {b:"3 \u00b7 Feeding", html:"Overfeeding / technique still contributing?"},
+        {b:"4 \u00b7 Drug trial", html:"If on acid suppression without benefit \u2192 stop and rethink."},
+        {b:"5 \u00b7 Refer", html:"Faltering growth or confirmed/refractory GORD \u2192 paediatrics."}
+      ],
+      back:"Red flags + CMPA + feeding addressed \u2192 paediatric referral if GORD confirmed/refractory"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Sinister vomiting", html:"\u201cGreen (bile) or blood-stained vomit, or forceful projectile vomiting \u2014 seek urgent assessment.\u201d"},
+          {t:"📉 Not feeding/growing", html:"\u201cRefusing feeds, not gaining weight, or fewer wet nappies \u2014 contact us promptly.\u201d"},
+          {t:"🧠 Unwell baby", html:"\u201cFever, drowsiness, a bulging soft spot, or a baby who seems very unwell \u2014 urgent help.\u201d"},
+          {t:"🫶 Reassurance", html:"\u201cIn a happy, growing baby, posseting is normal and almost always settles by their first birthday.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"red flags urgently; GORD when refractory",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Urgent", html:"Bile/blood-stained or projectile vomiting, or a systemically unwell infant \u2192 same-day assessment."},
+          {t:"Faltering growth", html:"Reflux with poor weight gain or feeding refusal \u2192 paediatrics."},
+          {t:"Refractory GORD", html:"Confirmed GORD not responding to optimised treatment."},
+          {t:"Diagnostic doubt", html:"Persisting beyond 1 year, late onset, or atypical features."}
+        ]},
+        {b:"say", html:"In a thriving, happy baby, bringing up milk is normal and almost always settles by around a year \u2014 so we focus on feeding tweaks and reassurance rather than medicines. I\u2019ll just go through some warning signs that would mean we need to look further."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

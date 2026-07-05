@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Consultation Types · GP / SCA Clinical Reasoning Tool</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=27" />
+<style>
+  .tool-page{ padding:0; }
+  .panel{ padding:28px 32px 80px; max-width:1080px; margin:0 auto; }
+  @media (max-width:760px){ .panel{ padding:18px 14px 60px; } }
+  .tool-breadcrumb{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);margin-bottom:18px}
+  .tool-breadcrumb a{color:var(--teal-2);text-decoration:none;font-weight:600}
+  .tool-breadcrumb a:hover{color:var(--rust)}
+  .tool-breadcrumb svg{width:11px;height:11px;color:var(--muted-2)}
+  .tool-head{padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:20px}
+  .tool-head .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .tool-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(1.7rem,3.2vw,2.4rem);line-height:1.1;margin-top:8px}
+  .tool-head h1 em{font-style:italic;color:var(--teal)}
+  .tool-head p{color:var(--ink-2);font-size:14.5px;line-height:1.6;max-width:78ch;margin-top:8px}
+
+  .ct-filter{ display:flex; gap:8px; flex-wrap:wrap; margin:4px 0 20px; }
+  .ct-chip{ font:inherit; font-size:12.5px; font-weight:600; padding:7px 13px; border-radius:99px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; transition:.13s; }
+  .ct-chip:hover{ border-color:var(--teal); color:var(--teal); }
+  .ct-chip.on{ background:var(--teal); border-color:var(--teal); color:#fff; }
+
+  .ct-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:15px; }
+  .ct-card{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:17px 18px 16px; border-left-width:5px; display:flex; flex-direction:column; gap:9px; }
+  .ct-card .ct-grp{ font-size:10.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; }
+  .ct-card h3{ font-size:16px; margin:0; line-height:1.25; letter-spacing:-.01em; font-family:'Source Serif 4',Georgia,serif; font-weight:600; }
+  .ct-card .ct-what{ font-size:13.3px; color:var(--ink); line-height:1.6; }
+  .ct-card .ct-rules{ list-style:none; margin:2px 0 0; padding:0; display:flex; flex-direction:column; gap:6px; }
+  .ct-card .ct-rules li{ font-size:12.7px; color:var(--ink-2); line-height:1.5; padding-left:16px; position:relative; }
+  .ct-card .ct-rules li::before{ content:''; position:absolute; left:2px; top:8px; width:5px; height:5px; border-radius:50%; background:var(--teal); }
+  .ct-card .ct-tag{ margin-top:auto; padding-top:6px; font-size:11.5px; color:var(--muted); font-weight:600; border-top:1px solid var(--line); }
+
+  .footer-disclaimer{ margin-top:30px; font-size:12.5px; line-height:1.6; color:var(--ink-2); background:var(--surface-2); border:1px solid var(--line); border-radius:12px; padding:16px 18px; }
+  .footer-disclaimer strong{ color:var(--ink); }
+</style>
+</head>
+<body>
+<button class="sb-toggle" aria-label="Open menu">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-admin"></aside>
+  <main class="main">
+    <div class="tool-page">
+      <div class="panel">
+
+        <div class="tool-breadcrumb">
+          <a href="../index.html">Reasoning GP</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+          <a href="gp-admin.html">GP Admin</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+          <span style="color:var(--ink-2)">Consultation types</span>
+        </div>
+
+        <header class="tool-head" data-screen-label="Consultation types head">
+          <span class="eyebrow">Reasoning Tool · Modes of working</span>
+          <h1>Consultation types — <em>the ways a GP sees patients</em></h1>
+          <p>The settings and structured consultations that make up general practice — from chronic-disease and cancer-care reviews to advance care planning, the Gold Standards Framework, end-of-life care, home visits, telephone and out-of-hours work, extended access and urgent treatment centres. Each card sets out what it is and the practical rules that govern it.</p>
+        </header>
+
+        <div class="ct-filter" id="ctFilter"></div>
+        <div class="ct-grid" id="ctGrid"></div>
+
+        <div class="footer-disclaimer">
+          <strong>Educational use only.</strong> Service models, contractual requirements (GMS/PCN DES) and QOF/IIF details change and vary across the UK nations and ICBs. Check current NHS England contract guidance, your practice protocols and local commissioning arrangements before acting.
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+window.CONSULT_TYPES = [
+  { id:'reviews', grp:'Structured reviews', col:'#2563eb', name:'Chronic disease & medication reviews',
+    what:'Planned, structured contacts to monitor long-term conditions (diabetes, hypertension, COPD, asthma, CKD, CHD, mental health) and the medicines used to treat them — the backbone of proactive primary care and QOF.',
+    rules:['Usually recall-driven (often birthday-month or condition register) and template-led so data is captured for QOF/IIF.',
+      'Cover control (e.g. HbA1c, BP, inhaler technique), complications screening, bloods/monitoring, lifestyle and shared decisions.',
+      'A structured medication review (SMR) checks adherence, effectiveness, safety, deprescribing and the patient\u2019s priorities — often pharmacist-led.',
+      'Document the plan, next review interval and safety-net; code appropriately.'],
+    tag:'QOF · SMR · annual recall' },
+
+  { id:'ccr', grp:'Structured reviews', col:'#2563eb', name:'Cancer care review (CCR)',
+    what:'A dedicated, structured conversation with a patient diagnosed with cancer, offered after diagnosis to discuss their experience, needs and support — a QOF requirement.',
+    rules:['Offer within a defined window of a new cancer diagnosis (per current QOF — typically a 3-month and a 12-month review point).',
+      'Use a holistic-needs approach: physical, psychological, social, financial, information and support needs.',
+      'Check understanding of diagnosis/treatment, late effects, safety-netting for recurrence, and signpost (Macmillan, social prescribing, benefits).',
+      'Record consent, the discussion and any onward referrals; offer a written care plan.'],
+    tag:'QOF · holistic needs' },
+
+  { id:'acp', grp:'Palliative & end of life', col:'#7c3aed', name:'Advance care planning (ACP)',
+    what:'A voluntary process of discussion and shared planning about a person\u2019s future care, used while they still have capacity, to record their wishes should they later be unable to decide.',
+    rules:['Patient-led and voluntary; can be revisited and changed at any time while the person has capacity.',
+      'May include an Advance Statement (wishes/preferences), an Advance Decision to Refuse Treatment (ADRT — legally binding if valid & applicable), and appointment of a Lasting Power of Attorney (health & welfare).',
+      'Often recorded on a shared system (e.g. ReSPECT / EPaCCS / Coordinate My Care) so OOH, ambulance and hospital can see it.',
+      'Distinct from a DNACPR, which is a clinical decision about CPR specifically.'],
+    tag:'ReSPECT · ADRT · LPA' },
+
+  { id:'gsf', grp:'Palliative & end of life', col:'#7c3aed', name:'Gold Standards Framework (GSF)',
+    what:'A systematic, practice-based approach to identifying patients approaching the last year of life and proactively coordinating their care so more die in their preferred place.',
+    rules:['Maintain a palliative/supportive care register; use the "surprise question" (would you be surprised if this patient died in the next year?) and clinical indicators to identify patients early.',
+      'Regular multidisciplinary meetings (GP, district nurses, palliative team) to review and plan.',
+      'Assess and code needs, agree ACP/DNACPR, ensure anticipatory medicines and a clear out-of-hours handover.',
+      'Underpins the QOF palliative care indicators and good end-of-life coordination.'],
+    tag:'Register · MDT · surprise question' },
+
+  { id:'eol', grp:'Palliative & end of life', col:'#7c3aed', name:'End of life care (last days of life)',
+    what:'Care in the final days to weeks, focused on comfort, dignity and supporting the patient and family, in the patient\u2019s preferred place of care wherever possible.',
+    rules:['Recognise dying; review and stop non-essential interventions/medicines; ensure anticipatory ("just in case") medicines are prescribed and available.',
+      'Five priorities of care: recognise, communicate, involve, support, and an individualised plan (Leadership Alliance for the Care of Dying People).',
+      'Ensure DNACPR/ReSPECT in place and shared with OOH and ambulance services; consider fast-track CHC funding.',
+      'Support carers; verify and certify death appropriately; offer bereavement support.'],
+    tag:'Anticipatory meds · preferred place' },
+
+  { id:'home', grp:'Settings', col:'#0d9488', name:'Home visits',
+    what:'A consultation in the patient\u2019s own home (or care home) for those who cannot reasonably attend the surgery because of illness, frailty or end-of-life needs.',
+    rules:['Triage first: clinical need and housebound status, not convenience; phone assessment may resolve or prioritise.',
+      'Consider safety (lone working, who else is present), what to take (bag, equipment, forms) and infection control.',
+      'Higher diagnostic uncertainty — limited equipment and history; document findings and a clear safety-net.',
+      'Care-home rounds and ward-round models (often PCN-organised) support frail and EoL patients proactively.'],
+    tag:'Housebound · frailty · EoL' },
+
+  { id:'phone', grp:'Settings', col:'#0d9488', name:'Telephone consultations',
+    what:'Assessment and management by phone — used for triage, follow-up, results, medication queries and many problems that do not need an examination.',
+    rules:['No visual cues — rely on a careful history; have a low threshold to convert to face-to-face if uncertain.',
+      'Confirm identity and (for third parties) consent; ensure a safe number and quiet setting.',
+      'Strong safety-netting is essential; document advice given and worsening criteria.',
+      'Verbal consent for any examination-free management; arrange review if not improving.'],
+    tag:'Triage · remote · safety-net' },
+
+  { id:'video', grp:'Settings', col:'#0d9488', name:'Video / online consultations',
+    what:'Remote consultation with a visual element (video) or asynchronous online (e-consult) — useful for some examinations (rashes, ENT inspection with the patient\u2019s help) and for access/convenience.',
+    rules:['Check the platform is information-governance compliant and the connection/setting are private.',
+      'Some signs can be assessed visually; many cannot — convert to face-to-face when needed.',
+      'Asynchronous (online) requests still need triage, timely response and clear safety-netting.',
+      'Document the mode used and consent.'],
+    tag:'Video · e-consult · IG-compliant' },
+
+  { id:'ooh', grp:'Access models', col:'#b45309', name:'Out of hours (OOH)',
+    what:'Urgent primary care when practices are closed (typically 18:30\u201308:00 weekdays, plus weekends/bank holidays) — accessed via NHS 111 and delivered by OOH providers.',
+    rules:['Covers urgent problems that cannot wait until the practice reopens; not for routine care.',
+      'Continuity is limited — clear documentation and a good handover back to the registered practice are vital.',
+      'Use shared records (Special Patient Notes / EPaCCS / ReSPECT) for palliative and complex patients.',
+      'Safeguarding, prescribing and follow-up arrangements must be communicated to the day service.'],
+    tag:'NHS 111 · urgent · handover' },
+
+  { id:'extended', grp:'Access models', col:'#b45309', name:'Extended hours / extended access',
+    what:'Routine GP appointments offered outside core hours (early morning, evenings, weekends), now largely delivered at scale through PCNs ("enhanced access").',
+    rules:['Improves access for working patients; bookable routine and some same-day appointments.',
+      'Often delivered across a PCN at a hub, so the clinician may not be the patient\u2019s own GP — share records and safety-net.',
+      'Defined by the Network Contract DES (Enhanced Access) specification and local arrangements.',
+      'Document and route results/follow-up back to the registered practice.'],
+    tag:'PCN · enhanced access · hub' },
+
+  { id:'utc', grp:'Access models', col:'#b45309', name:'Urgent Treatment Centre (UTC)',
+    what:'A GP-led facility for urgent but non-life-threatening problems — open at least 12 hours/day, with access to diagnostics, bookable via NHS 111 or walk-in.',
+    rules:['Manages minor injuries and illnesses (sprains, wounds, minor infections, simple fractures) — reduces avoidable A&E attendances.',
+      'Has access to simple diagnostics (e.g. X-ray, bloods, ECG) and can prescribe.',
+      'Not for emergencies (chest pain, stroke, major trauma) — those go to A&E / 999.',
+      'Distinct from minor injury units and from full Emergency Departments; signpost appropriately.'],
+    tag:'NHS 111 · 12h+ · diagnostics' }
+];
+</script>
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+<script>
+(function(){
+  var T = window.CONSULT_TYPES || [];
+  var grid = document.getElementById('ctGrid'), filter = document.getElementById('ctFilter');
+  function esc(s){ return String(s==null?'':s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
+  var groups = ['All'].concat(T.map(function(t){return t.grp;}).filter(function(v,i,a){return a.indexOf(v)===i;}));
+  var state = 'All';
+  groups.forEach(function(g){
+    var b=document.createElement('button'); b.className='ct-chip'+(g==='All'?' on':''); b.textContent=g; b.dataset.g=g;
+    b.addEventListener('click', function(){ state=g; filter.querySelectorAll('.ct-chip').forEach(function(x){x.classList.toggle('on',x.dataset.g===g);}); render(); });
+    filter.appendChild(b);
+  });
+  function render(){
+    var rows = T.filter(function(t){ return state==='All' || t.grp===state; });
+    grid.innerHTML = rows.map(function(t){
+      return '<div class="ct-card" style="border-left-color:'+t.col+'">'+
+        '<div class="ct-grp" style="color:'+t.col+'">'+esc(t.grp)+'</div>'+
+        '<h3>'+esc(t.name)+'</h3>'+
+        '<div class="ct-what">'+esc(t.what)+'</div>'+
+        '<ul class="ct-rules">'+t.rules.map(function(r){return '<li>'+esc(r)+'</li>';}).join('')+'</ul>'+
+        (t.tag?'<div class="ct-tag">'+esc(t.tag)+'</div>':'')+
+      '</div>';
+    }).join('');
+  }
+  render();
+})();
+</script>
+</body>
+</html>

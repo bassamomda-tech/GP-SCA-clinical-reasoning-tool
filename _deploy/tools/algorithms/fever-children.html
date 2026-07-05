@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Fever in Children Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   REASONING GP — Paediatric Algorithm Suite · Shared CSS
+   ═══════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f7f6f3;
+  --surface: #ffffff;
+  --border: #e4e1d9;
+  --border-soft: #ede9e2;
+  --text: #1a1714;
+  --text-muted: #6b6460;
+  --text-light: #9b9390;
+
+  --safety: #c0392b;
+  --safety-bg: #fef5f5;
+  --safety-border: #f5c6c6;
+
+  --diagnose: #1a5276;
+  --diagnose-bg: #f0f6fc;
+  --diagnose-border: #c5dff0;
+
+  --treat: #1e8449;
+  --treat-bg: #f0faf3;
+  --treat-border: #b8dfc5;
+
+  --refer: #6c3483;
+  --refer-bg: #f8f0fc;
+  --refer-border: #d7b8ed;
+
+  --lifestyle: #b7770d;
+  --lifestyle-bg: #fefaf0;
+  --lifestyle-border: #f0d9a0;
+
+  --rf-bg: #c0392b;
+  --rf-tile: #fff0f0;
+  --rf-tile-border: #f5c6c6;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,.10), 0 3px 8px rgba(0,0,0,.05);
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-xs: 5px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 0 0 60px;
+}
+
+/* ── Page Header ─────────────────────────────────────── */
+.page-header {
+  background: var(--text);
+  color: #fff;
+  padding: 20px 24px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+}
+.page-header .logo {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  opacity: .8;
+  white-space: nowrap;
+}
+.page-header .sep { opacity: .3; margin: 0 4px; }
+.page-header .title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+/* ── Stem Banner ─────────────────────────────────────── */
+.stem-banner {
+  background: linear-gradient(135deg, var(--text) 0%, #2c2620 100%);
+  color: #fff;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 24px 20px;
+  margin: 20px 16px 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+.sb-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.stem-banner b { font-size: 17px; font-weight: 700; display: block; margin-bottom: 4px; }
+.stem-banner small { font-size: 12.5px; opacity: .75; line-height: 1.45; display: block; }
+
+/* ── Progress Bar ────────────────────────────────────── */
+.alg-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.pcount { font-weight: 700; color: var(--text); font-size: 14px; }
+.pbar {
+  flex: 1;
+  height: 5px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.pbar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
+  border-radius: 99px;
+  width: 0%;
+  transition: width .4s cubic-bezier(.4,0,.2,1);
+}
+.reset {
+  font-size: 12px;
+  padding: 4px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  transition: all .15s;
+}
+.reset:hover { border-color: var(--text-muted); color: var(--text); }
+
+/* ── Algorithm Flow ──────────────────────────────────── */
+.alg-flow {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ── Connector ───────────────────────────────────────── */
+.connector {
+  width: 2px;
+  height: 24px;
+  background: linear-gradient(to bottom, var(--border), transparent);
+  margin: 0 auto;
+}
+
+/* ── Node ────────────────────────────────────────────── */
+.node {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.node:hover { box-shadow: var(--shadow-md); }
+
+.node[data-type="SAFETY"]    { border-left: 4px solid var(--safety); }
+.node[data-type="DIAGNOSE"]  { border-left: 4px solid var(--diagnose); }
+.node[data-type="TREAT"]     { border-left: 4px solid var(--treat); }
+.node[data-type="REFER"]     { border-left: 4px solid var(--refer); }
+.node[data-type="LIFESTYLE"] { border-left: 4px solid var(--lifestyle); }
+
+/* Node header */
+.node-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.node-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.node[data-type="SAFETY"]    .node-num { background: var(--safety);    color: #fff; }
+.node[data-type="DIAGNOSE"]  .node-num { background: var(--diagnose);  color: #fff; }
+.node[data-type="TREAT"]     .node-num { background: var(--treat);     color: #fff; }
+.node[data-type="REFER"]     .node-num { background: var(--refer);     color: #fff; }
+.node[data-type="LIFESTYLE"] .node-num { background: var(--lifestyle); color: #fff; }
+
+.node-head-text { flex: 1; }
+.node-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 3px;
+}
+.node[data-type="SAFETY"]    .node-tag { color: var(--safety); }
+.node[data-type="DIAGNOSE"]  .node-tag { color: var(--diagnose); }
+.node[data-type="TREAT"]     .node-tag { color: var(--treat); }
+.node[data-type="REFER"]     .node-tag { color: var(--refer); }
+.node[data-type="LIFESTYLE"] .node-tag { color: var(--lifestyle); }
+
+.node-head h3 {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.01em;
+  color: var(--text);
+}
+
+/* Checkbox */
+.node-tick {
+  padding: 8px 14px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.node-tick label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-light);
+  user-select: none;
+}
+.node-tick input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #27ae60;
+  cursor: pointer;
+}
+.node-tick input:checked + .tlbl { color: #27ae60; }
+
+/* Node body */
+.node-body {
+  padding: 12px 16px 14px;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+}
+.node-body > p, .node-body > span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text-muted);
+  font-size: 13.5px;
+}
+
+/* ── KV Grid ─────────────────────────────────────────── */
+.kv {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  font-size: 13.5px;
+  margin-top: 8px;
+}
+.kv > div {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border-soft);
+  line-height: 1.5;
+}
+.kv > div:nth-child(4n+1),
+.kv > div:nth-child(4n+2) { background: var(--surface); }
+.kv > div:nth-child(4n+3),
+.kv > div:nth-child(4n+4) { background: #fafaf8; }
+.kv > div:nth-last-child(-n+2) { border-bottom: none; }
+.kv > div:nth-child(odd) {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  border-right: 1px solid var(--border-soft);
+  letter-spacing: .01em;
+}
+
+/* ── Red Flag Grid ───────────────────────────────────── */
+.rfgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+@media (max-width: 480px) { .rfgrid { grid-template-columns: 1fr; } }
+.rftile {
+  background: var(--rf-tile);
+  border: 1.5px solid var(--rf-tile-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.rftile b { color: #c0392b; font-weight: 700; display: block; margin-bottom: 2px; }
+
+/* ── Branch ──────────────────────────────────────────── */
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+.b-card {
+  background: var(--treat-bg);
+  border: 1.5px solid var(--treat-border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  font-size: 13px;
+}
+.b-cond {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+.b-drug {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--treat);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+.b-note {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* ── Ladder ──────────────────────────────────────────── */
+.ladder {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+  padding-left: 20px;
+}
+.ladder::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--treat-border), var(--refer-border));
+  border-radius: 2px;
+}
+.rung {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  padding: 9px 12px;
+  font-size: 13.5px;
+  position: relative;
+}
+.rung::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--treat);
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+  box-shadow: 0 0 0 1px var(--treat);
+}
+.rn {
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--treat);
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px 7px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.rt { flex: 1; line-height: 1.5; }
+
+/* ── Lifestyle Grid ──────────────────────────────────── */
+.lsgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+@media (max-width: 520px) { .lsgrid { grid-template-columns: 1fr; } }
+.lstile {
+  background: var(--lifestyle-bg);
+  border: 1.5px solid var(--lifestyle-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.lstile b { color: var(--lifestyle); font-weight: 700; display: block; margin-bottom: 2px; }
+
+/* ── Pills ───────────────────────────────────────────── */
+.pill {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 99px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.pill-red    { background: #fde8e8; color: #b91c1c; border: 1px solid #fca5a5; }
+.pill-purple { background: #f3e8ff; color: #7e22ce; border: 1px solid #d8b4fe; }
+.pill-blue   { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
+.pill-teal   { background: #e0fdf4; color: #0f766e; border: 1px solid #5eead4; }
+.pill-amber  { background: #fffbeb; color: #b45309; border: 1px solid #fcd34d; }
+.pill-green  { background: #f0fdf4; color: #15803d; border: 1px solid #86efac; }
+.pill-grey   { background: #f3f4f6; color: #374151; border: 1px solid #d1d5db; }
+.pill-orange { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
+
+/* ── Why Drawer ──────────────────────────────────────── */
+.why-row {
+  border-top: 1px solid var(--border-soft);
+  background: #fafaf8;
+}
+.why-btn {
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: .02em;
+  transition: color .15s;
+}
+.why-btn:hover { color: var(--text); }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.caret { transition: transform .2s; display: inline-block; }
+.why-drawer {
+  display: none;
+  padding: 4px 16px 14px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  border-top: 1px solid var(--border-soft);
+}
+.why-drawer.open { display: block; }
+.why-drawer p { margin-bottom: 6px; }
+.why-drawer p:last-child { margin-bottom: 0; }
+
+/* ── Done state ──────────────────────────────────────── */
+.node.is-done {
+  opacity: .72;
+}
+.node.is-done .node-body { position: relative; }
+.node.is-done .node-head h3 { text-decoration: line-through; text-decoration-color: #ccc; }
+
+/* ── Footer ──────────────────────────────────────────── */
+.alg-foot {
+  margin: 28px 16px 0;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.alg-foot strong { color: var(--text); }
+
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="page-header">
+  <span class="logo">Reasoning GP</span>
+  <span class="sep">·</span>
+  <span class="title">Paediatric Algorithms</span>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🌡️</div>
+  <div>
+    <b>Fever in Children — Assessment &amp; Management</b>
+    <small>NICE NG143 | Traffic Light System | Ages 0–12 years | UK Primary Care Pathway</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — use the NICE traffic-light system to identify the unwell child and the must-not-miss diagnoses (sepsis, meningitis, leukaemia) before reassuring the common viral illness; treat the focus, refer and safety-net the parents.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Fever in a child</span><div class="body"><b>Age, duration, focus, fluid intake/output, activity/alertness.</b> Full obs (incl. RR, HR, cap refill, temp), <b>rash (glass test)</b>, hydration. Apply the <b>NICE traffic-light</b> assessment.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — red / sepsis / meningitis (NG143/NG240)</span><span class="ttl">High-risk features?</span><div class="body"><ul>
+      <li><b>Non-blanching/petechial rash</b>, mottled/blue, looks unwell, reduced consciousness</li>
+      <li>Weak/high-pitched/continuous cry, <b>bulging fontanelle, neck stiffness</b>, focal neurology, status</li>
+      <li>Grunting, RR &gt;60, prolonged cap refill, reduced skin turgor</li>
+      <li><b>&lt;3 months + temp ≥38</b>, or <b>3–6 months + ≥39</b> → high-risk</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">RED — high-risk</div><div class="box stop"><span class="lbl">Stop · 999</span><span class="ttl">Emergency</span><div class="body">Suspected meningitis/meningococcal sepsis → <b>999</b>. <b>Give pre-hospital IM/IV benzylpenicillin (or ceftriaxone) if a non-blanching rash is present or transfer is delayed — but do not delay transfer.</b> Any febrile infant &lt;3 months → urgent paediatric assessment.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">GREEN/AMBER — assess</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Find the focus</span><div class="body"><b>Always dip the urine</b> (UTI is easily missed); examine ears/throat/chest; consider CRP/FBC/cultures in amber or &lt;3 months per protocol. Undress fully to look for a rash.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · which cause?</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Self-limiting viral</div><div class="box ix"><span class="ttl">Commonest</span><div class="body">URTI, viral exanthem (roseola, hand-foot-mouth), green-category child with a clear viral focus.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Treatable bacterial focus</div><div class="box ix"><span class="ttl">Treat</span><div class="body"><b>Otitis media, tonsillitis, UTI</b> (urine dip), pneumonia; treat per focus.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Serious / must-not-miss</div><div class="box ix"><span class="ttl">Don't miss</span><div class="body">Meningococcal sepsis, meningitis, <b>leukaemia</b> (petechiae/pallor/hepatosplenomegaly), Kawasaki (≥5 days fever), osteomyelitis/septic arthritis, appendicitis.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · manage</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — by category</span><span class="ttl">Treat the cause, advise the parent</span><div class="body"><ul>
+      <li><b>Viral (green):</b> antipyretics <b>for distress, not for the temperature itself</b> (don't alternate paracetamol/ibuprofen routinely), encourage fluids, manage at home with safety-netting.</li>
+      <li><b>Bacterial focus:</b> appropriate antibiotic (e.g. amoxicillin for UTI/pneumonia per local guidance) + review.</li>
+      <li><b>Amber:</b> consider observation, investigations, a safety-net plan or a period of review.</li>
+      <li><b>Red:</b> emergency treatment + admission.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-red">999</span> red-flag/sepsis/meningitis.</li>
+      <li><span class="pill pill-purple">2WW · NICE NG12 (children)</span> unexplained petechiae + fever, or hepatosplenomegaly / generalised lymphadenopathy → <b>very urgent FBC + immediate paediatric referral</b> (leukaemia).</li>
+      <li><span class="pill pill-purple">Paediatrics</span> all infants &lt;3 months with fever, amber features not settling, fever ≥5 days (Kawasaki), or diagnostic uncertainty.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · home care &amp; prevention</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Home care &amp; prevention</span><span class="ttl">Parent education</span><div class="body"><b>Fluids and antipyretics for distress</b> (not to prevent febrile convulsions — they don't); avoid over-wrapping/tepid sponging · ensure <b>immunisations up to date</b> · hand hygiene · clear written "when to worry" advice and where to seek help out of hours · check the child can maintain hydration.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Safety-net &amp; follow-up</span><span class="ttl">Tell parents exactly when to return</span><div class="body"><b>Call 999 / return immediately</b> if a <b>non-blanching rash</b>, the child becomes less responsive/floppy, has a fit, difficulty breathing, looks mottled/blue, or won't take fluids/has reduced wet nappies. Review if fever persists &gt;5 days or no focus emerges. Document the traffic-light category and the advice given.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>Always undress and examine for a non-blanching rash</b> — and any child with unexplained petechiae plus fever needs a very urgent FBC and immediate paediatric referral to exclude leukaemia and meningococcal sepsis. Always dip the urine.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head">
+    <div class="node-num">1</div>
+    <div class="node-head-text">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Exclude life-threatening causes immediately</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <span>Call 999 or send to ED without delay if ANY red flag present. Do not investigate — act.</span>
+    <div class="rfgrid">
+      <div class="rftile"><b>Non-blanching rash / petechiae</b> May indicate meningococcal sepsis → <span class="pill pill-red">999</span> IV benzylpenicillin if ≥1 month before transfer</div>
+      <div class="rftile"><b>Meningism</b> Neck stiffness, photophobia, Kernig's / Brudzinski's sign → <span class="pill pill-red">999</span> Bacterial meningitis</div>
+      <div class="rftile"><b>Bulging fontanelle</b> In infants — raised ICP → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Septic shock signs</b> Mottled / pale / blue skin, cap refill &gt;2s, hypotension, lethargy → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Fever &lt;3 months + temp ≥38°C</b> High risk of serious bacterial infection → <span class="pill pill-red">999</span> or same-day ED</div>
+      <div class="rftile"><b>Seizure / status epilepticus</b> First febrile seizure &gt;5 min or focal → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Altered consciousness / inconsolable</b> GCS drop, persistent high-pitched cry, not rousable → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Respiratory distress</b> Grunting, nasal flaring, SaO₂ &lt;95%, cyanosis → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Fever &gt;5 days</b> Consider Kawasaki disease — same-day paediatric review</div>
+      <div class="rftile"><b>Immunocompromised child</b> On steroids / chemotherapy / asplenic with fever → <span class="pill pill-red">Same-day ED</span></div>
+      <div class="rftile"><b>Features of leukaemia</b> Fever + unexplained pallor, persistent fatigue, bruising/bleeding, petechiae, generalised lymphadenopathy or hepatosplenomegaly → <span class="pill pill-red">Very urgent FBC (≤48h)</span> + <span class="pill pill-purple">immediate paediatric referral</span> (NICE NG12 — children &amp; young people)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Fever is the commonest presenting complaint in paediatric primary care but 1–3% of febrile children have a serious bacterial infection (SBI). The NICE traffic light system (NG143) stratifies risk; red features mandate immediate action before any other assessment.</p>
+      <p>Meningococcal disease has a case fatality of ~10% — pre-hospital IM benzylpenicillin (300mg &lt;1yr, 600mg 1–9yr, 1.2g ≥10yr) reduces mortality and should not delay transfer.</p>
+      <p>Infants under 3 months have immature immune responses; even low-grade fever carries a 10–15% risk of SBI. Febrile infants &lt;28 days should always be admitted.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head">
+    <div class="node-num">2</div>
+    <div class="node-head-text">
+      <span class="node-tag">Diagnose</span>
+      <h3>Assess — NICE Traffic Light System (Green / Amber / Red)</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <span>Apply the NICE NG143 traffic light tool across colour, activity, respiratory, hydration, and other features.</span>
+    <div class="kv">
+      <div>🟢 GREEN — Low risk</div><div>Normal colour; responds normally; normal cry; moist mucous membranes; no red/amber features → <b>Home with safety-net</b></div>
+      <div>🟡 AMBER — Intermediate</div><div>Pallor, decreased activity, prolonged febrile (&gt;5 days), limb swelling, rigors, new lump &gt;2cm → <b>Urgent GP review or same-day</b></div>
+      <div>🔴 RED — High risk</div><div>Any red flag from Step 1 → <b>999 / immediate ED</b></div>
+      <div>Temperature</div><div>Record axillary (add 0.5°C), tympanic, or rectal. Fever = ≥38°C. Height of fever does not reliably predict SBI.</div>
+      <div>Duration</div><div>Fever &gt;5 days → Kawasaki screen (see Step 6). Document carefully — parents' history is key.</div>
+      <div>Focus found?</div><div>URTI, otitis media, tonsillitis, UTI, pneumonia → likely source. No focus = higher SBI risk.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>The NICE traffic light system has a sensitivity of ~90% for SBI when red features are present. However specificity is lower — amber features require clinical judgement. No single feature is pathognomonic; the gestalt of the unwell child matters.</p>
+      <p>Temperature height alone is a poor predictor of SBI. A child with 39°C who is alert, playful and well-perfused is far lower risk than a lethargic child with 38.2°C.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head">
+    <div class="node-num">3</div>
+    <div class="node-head-text">
+      <span class="node-tag">Diagnose</span>
+      <h3>Age-specific risk stratification</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <span>Age is the strongest independent risk modifier for serious infection in febrile children.</span>
+    <div class="kv">
+      <div>&lt;28 days</div><div><b>All febrile neonates → 999 / immediate admission</b> regardless of appearance. Risk of SBI ~30%. Group B Strep, E. coli, Listeria.</div>
+      <div>1–3 months</div><div>Temp ≥38°C → same-day ED assessment. NICE recommends LP, blood/urine cultures, IV antibiotics if unwell.</div>
+      <div>3–6 months</div><div>Temp ≥39°C without source → urgent review. High risk of UTI, occult bacteraemia.</div>
+      <div>6 months – 5 years</div><div>Viral illness most likely (&gt;95% of cases). Target amber/red features. MSU if any urinary symptoms or no source in girls &lt;2yr or uncircumcised boys &lt;1yr.</div>
+      <div>5–12 years</div><div>Same amber/red framework. Consider EBV, mycoplasma if prolonged or with pharyngitis + rash.</div>
+      <div>Immunocompromised</div><div>Any fever → same-day ED regardless of age. Neutropenic sepsis kills within hours.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Age-based thresholds reflect immuno-developmental physiology. Neonates lack maternal IgG for many pathogens and have immature neutrophil function. The NICE NG143 thresholds are derived from prospective cohort studies of 5000+ febrile children.</p>
+      <p>UTI is the most common SBI in children 1–24 months and is easily missed — it causes no localising symptoms in infants. A clean-catch urine dipstick (leucocyte esterase + nitrites) has 88% sensitivity; send MSU if positive or clinical suspicion.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head">
+    <div class="node-num">4</div>
+    <div class="node-head-text">
+      <span class="node-tag">Diagnose</span>
+      <h3>Targeted Examination — systematic head-to-toe</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <span>Full examination every time. Never assume it's a simple viral illness without excluding other sources.</span>
+    <div class="kv">
+      <div>General impression</div><div>Responds to parent, maintains eye contact, consolable → low risk. Lethargic, glassy-eyed, high-pitched cry → high risk.</div>
+      <div>Skin</div><div>Rash: blanching (viral) vs non-blanching (petechiae/purpura → meningococcal). Jaundice in neonate = urgent. Scarlatiniform rash = strep.</div>
+      <div>ENT</div><div>Ears: erythematous TM / effusion (AOM). Throat: tonsillar exudate (use Centor/FeverPAIN). Lymphadenopathy: anterior cervical = local infection; generalised = EBV/malignancy.</div>
+      <div>Respiratory</div><div>RR (&gt;60 in &lt;2mo, &gt;50 in 2–12mo, &gt;40 in 1–5yr = abnormal). Recession, nasal flaring, grunting, wheeze, focal crackles.</div>
+      <div>Abdomen</div><div>Tenderness, guarding, rebound → surgical emergency. Right iliac fossa = appendicitis (peak 6–10yr). Hepatosplenomegaly = EBV.</div>
+      <div>Fontanelle</div><div>Infants only — bulging = raised ICP → 999. Sunken = dehydration.</div>
+      <div>Perfusion</div><div>Cap refill &lt;2s (central), warm peripheries, normal HR for age, normal BP. Tachycardia alone can be fever-driven but persisting after antipyretic is concerning.</div>
+      <div>Urine</div><div>Dipstick in all febrile children &lt;2yr without source, all girls &lt;5yr, all boys &lt;1yr. Offensive urine / frequency = UTI until proven otherwise.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Up to 20% of febrile children with a clinical diagnosis of "viral URTI" have a concomitant UTI. Systematic examination changes management in approximately 30% of cases where a source is found.</p>
+      <p>The "general impression" — how sick does this child look? — remains the highest-yield clinical decision tool and is what parents mean when they say "they just don't seem right." Trust parental concern: it correlates with illness severity.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head">
+    <div class="node-num">5</div>
+    <div class="node-head-text">
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — targeted, not blanket</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <span>Most febrile children (&gt;95%) require NO investigations in primary care. Investigate only when it will change management.</span>
+    <div class="kv">
+      <div>Urine dipstick / MSU</div><div><span class="pill pill-blue">First-line</span> All children &lt;2yr without source. Girls &lt;5yr. Boys &lt;1yr. Send MSU if dipstick +ve or strong clinical suspicion. Do not delay treatment for result.</div>
+      <div>Throat swab</div><div>Only if GAS strongly suspected (FeverPAIN ≥4 or Centor ≥3) and antibiotic prescribing considered. Routine swabs not recommended — most sore throats are viral.</div>
+      <div>FBC + CRP</div><div>Consider if amber or persistent fever &gt;5 days. WBC &gt;15 or CRP &gt;80 raises SBI risk but not diagnostic. Do not rely on WBC alone.</div>
+      <div>Blood cultures</div><div>Hospital only — not in primary care. Taken before IV antibiotics.</div>
+      <div>COVID/RSV/flu swab</div><div>Consider in community if affects isolation / cohorting decision or in at-risk groups. Not routine for every febrile child.</div>
+      <div>Kawasaki screen</div><div>If fever &gt;5 days: FBC, CRP, ESR, LFTs, ECHO referral. Kawasaki criteria: fever ≥5 days + ≥4 of: conjunctivitis, rash, lymphadenopathy, strawberry tongue, hand/foot changes.</div>
+      <div>Do NOT order</div><div>Routine CXR in primary care. Blood cultures in community. LP outside hospital. Repeat bloods within 24hrs unless clinical deterioration.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>CRP has a sensitivity of ~80% for SBI at a threshold of 80mg/L but misses ~20% of cases. It should be used to support, not replace, clinical judgement. A normal CRP does not rule out SBI in the first 12 hours of illness.</p>
+      <p>Urine testing is the most impactful investigation in primary care — UTI is the most common SBI, missed in 50% of infants because symptoms are non-specific. A clean-catch dipstick takes 2 minutes and changes management.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head">
+    <div class="node-num">6</div>
+    <div class="node-head-text">
+      <span class="node-tag">Refer</span>
+      <h3>Referral Criteria — who needs hospital assessment today?</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Any Step 1 red flag. Non-blanching rash, seizure, altered consciousness, respiratory failure, septic shock signs, neonate with fever.</div>
+      <div><span class="pill pill-orange">Same-day ED</span></div><div>Age &lt;3 months with fever ≥38°C. Amber NICE features + no improvement after antipyretic. Immunocompromised. Unable to tolerate oral fluids. Suspected appendicitis.</div>
+      <div><span class="pill pill-amber">Same-day paeds</span></div><div>Fever &gt;5 days (Kawasaki screen). Suspected septic arthritis / osteomyelitis (limb swelling + fever + refusal to weight-bear). Suspicious rash + fever (parvovirus B19, HHV-6, varicella complications).</div>
+      <div><span class="pill pill-purple">Urgent GP / OOH</span></div><div>Parental concern overriding your assessment — trust it. No improvement after 48hrs. New symptoms developing. Unable to assess adequately.</div>
+      <div><span class="pill pill-green">Primary care manage</span></div><div>Green NICE features. Clear viral source (URTI, hand-foot-mouth). Adequate fluid intake. Parent confident with safety-net. Age &gt;3 months.</div>
+      <div>Kawasaki disease</div><div>Fever ≥5 days + classic features → same-day paediatric referral. Missing Kawasaki = coronary aneurysm risk. IVIG within 10 days reduces aneurysm risk from 25% to &lt;5%.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>The decision to admit is the most important clinical decision in paediatric fever. Under-referring risks missing SBI; over-referring exposes children to nosocomial infection, unnecessary procedures, and parental anxiety. The NICE traffic light system guides but does not replace clinical judgement.</p>
+      <p>Parental concern is a validated risk factor for SBI independent of clinical findings. Studies show parents correctly identify deterioration before clinicians in 70% of cases.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head">
+    <div class="node-num">7</div>
+    <div class="node-head-text">
+      <span class="node-tag">Treat</span>
+      <h3>Treatment — antipyretics, antibiotics, and supportive care</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <span>Antipyretics treat discomfort — they do not prevent febrile seizures or alter disease course.</span>
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Discomfort / distress</div>
+        <div class="b-drug">Paracetamol <span class="pill pill-teal">1st line</span></div>
+        <div class="b-note">15mg/kg/dose PO 4–6 hourly. Max 4 doses/24h. From birth. Syrup / suppository / dispersible.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">If paracetamol insufficient</div>
+        <div class="b-drug">Ibuprofen <span class="pill pill-teal">2nd line</span></div>
+        <div class="b-note">5–10mg/kg/dose PO 6–8 hourly. Age ≥3 months, weight ≥5kg. Avoid if dehydrated, renal impairment, varicella.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Alternating (controversial)</div>
+        <div class="b-drug">Alternate paracetamol + ibuprofen</div>
+        <div class="b-note">Only if fever causing significant distress and neither alone effective. Not recommended routinely — risk of dosing errors. NICE does not recommend as standard.</div>
+      </div>
+    </div>
+    <div class="kv" style="margin-top:12px">
+      <div>Antibiotics — AOM</div><div>Amoxicillin 40mg/kg/day in 3 divided doses for 5 days. If &lt;2yr bilateral or with perforation. Watchful waiting 48–72hr for mild AOM &gt;2yr. Allergy: clarithromycin.</div>
+      <div>Antibiotics — URTI</div><div><b>Do not prescribe antibiotics for viral URTI.</b> Delayed prescription acceptable if parents insist + amber features. Phenoxymethylpenicillin for confirmed GAS tonsilitis 10 days.</div>
+      <div>Antibiotics — UTI</div><div>Trimethoprim 4mg/kg BD x 7 days (1st line if local sensitivity allows). Nitrofurantoin 1mg/kg QDS x 7 days alternative. Send MSU before starting. Children &lt;3months → IV in hospital.</div>
+      <div>Antibiotics — Pneumonia</div><div>Amoxicillin 40–90mg/kg/day in 3 doses x 5 days. Atypical: add clarithromycin if school-age + dry cough. Severe: hospital.</div>
+      <div>Pre-transfer Benzylpenicillin</div><div>If meningococcal disease suspected: &lt;1yr 300mg IM/IV. 1–9yr 600mg. ≥10yr 1.2g. Give before 999 transfer. Do not delay 999 call to give.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Antipyretics reduce fever by 1–2°C and improve child comfort but do NOT reduce risk of febrile seizure recurrence (Cochrane 2017). Do not wake a sleeping child to give antipyretics. Fever itself is not harmful — it is part of the immune response.</p>
+      <p>Antibiotic prescribing for viral URTI is the commonest source of unnecessary antibiotic use in paediatrics and drives resistance. The RCGP TARGET Toolkit supports delayed prescription strategies. NNT to prevent one case of otitis media with antibiotics for URTI = 6000.</p>
+      <p>For UTI: trimethoprim resistance is rising (&gt;30% in some areas). Check local antibiogram. Send MSU before treatment — culture results guide switch if no improvement at 48hrs.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head">
+    <div class="node-num">8</div>
+    <div class="node-head-text">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Supportive Care &amp; Parental Guidance</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <span>Clear verbal and written advice to parents reduces re-attendance, prevents complications, and builds confidence.</span>
+    <div class="lsgrid">
+      <div class="lstile"><b>Hydration — key priority</b> Encourage regular fluids: breast milk / formula in infants; water, diluted squash, oral rehydration solution in older children. Wet nappies / regular urination = adequate hydration.</div>
+      <div class="lstile"><b>Dress lightly</b> Remove excess clothing. Tepid sponging is NOT recommended — NICE 2023 advises against. Room temperature 18–21°C. Avoid over-bundling.</div>
+      <div class="lstile"><b>School / nursery exclusion</b> Exclude until fever-free for 24hrs (48hrs for GI illness). No need to exclude for mild URTI without fever. Inform school of Kawasaki / invasive GAS if applicable.</div>
+      <div class="lstile"><b>Vaccination check</b> Is child up to date? Fever within 24–48hrs of MenACWY / PCV / MMR is common and expected. Fever &gt;48hrs post-vaccine or &gt;39.5°C → assess as per usual pathway.</div>
+      <div class="lstile"><b>Avoid aspirin</b> Never give aspirin to children under 16 (Reye's syndrome risk) — except under specialist guidance in Kawasaki disease.</div>
+      <div class="lstile"><b>Written safety-net</b> Provide written advice: when to call 999, when to re-attend. Consider NHS 111 leaflet. "Fever in children" NICE patient leaflet available online.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Dehydration is the primary complication of fever in children and is prevented by consistent oral fluid intake rather than temperature management. Signs of dehydration (dry mucous membranes, sunken eyes, reduced urine output) should trigger urgent reassessment.</p>
+      <p>Parental anxiety is the primary driver of re-consultation for fever. Studies show that written safety-net advice reduces emergency re-attendance by 40% compared to verbal advice alone. The NICE "fever in under 5s" patient information leaflet is freely available and evidence-based.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head">
+    <div class="node-num">9</div>
+    <div class="node-head-text">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-up, Safety-Netting &amp; Monitoring</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>24–48 hrs</div><div>Review if amber features present. Check urine result if sent. Confirm child improving. If worsening → reassess urgently.</div>
+      <div>48–72 hrs</div><div>If no improvement in well child with presumed viral illness → repeat assessment. Consider delayed antibiotic prescription to open. Check for new focus.</div>
+      <div>Fever &gt;5 days</div><div>Kawasaki screen — do not miss. FBC, CRP, ESR, LFTs. Refer paediatrics same-day if ≥3 Kawasaki criteria alongside fever.</div>
+      <div>UTI follow-up</div><div>Renal USS within 6 weeks for all UTIs in children &lt;6 months. All febrile UTIs in under 3s → urgent renal USS &lt;2 weeks. DMSA / MAG3 if recurrent UTI.</div>
+      <div><span class="pill pill-red">Call 999 if:</span></div><div>Rash becomes non-blanching. Seizure. Child becomes unresponsive. Difficulty breathing. Blue around lips.</div>
+      <div><span class="pill pill-orange">Same-day if:</span></div><div>No urine output for 8 hrs. Unable to keep fluids down. Fever returns after 24hr gap. Parent very concerned about behaviour change. New or worsening symptoms.</div>
+      <div>Febrile seizure follow-up</div><div>If first simple febrile seizure recovered → no urgent investigation needed in most cases. Advise parents on seizure first aid. EEG not routinely indicated for simple FS. Review 1–2 weeks.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Safety-netting reduces medicolegal risk and improves outcomes. NICE NG143 specifies that all children discharged from primary care with fever must receive written or verbal safety-net advice. Document that this was given.</p>
+      <p>Renal tract imaging after UTI detects vesicoureteric reflux (present in 30% of children with febrile UTI) and renal scarring. Missed reflux leads to recurrent UTIs and chronic kidney disease. NICE recommends USS within 6 weeks for all febrile UTIs in children under 6 months and under 3 years with unusual organisms or recurrence.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- /alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on: NICE NG143 (Fever in under 5s, 2019 updated 2021), NICE CKS Feverish Children, NICE NG51 (Sepsis), RCPCH (Kawasaki Disease), RCPCH guidance, BNF for Children. Always adapt to individual patient context and local guidelines. Pre-hospital benzylpenicillin: consult local protocol.
+</div>
+
+<script>
+/* ═══════════════════════════════════
+   REASONING GP — Shared Algorithm JS
+   ═══════════════════════════════════ */
+function initAlgorithm(storageKey) {
+  const TOTAL = 9;
+  const pDone = document.getElementById('pDone');
+  const pFill = document.getElementById('pFill');
+  const resetBtn = document.getElementById('resetBtn');
+
+  function getState() {
+    try { return JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch { return {}; }
+  }
+  function saveState(s) {
+    try { localStorage.setItem(storageKey, JSON.stringify(s)); } catch {}
+  }
+
+  function updateProgress() {
+    const boxes = document.querySelectorAll('.node-tick input[type="checkbox"]');
+    let done = 0;
+    boxes.forEach(cb => { if (cb.checked) done++; });
+    pDone.textContent = done;
+    pFill.style.width = (done / TOTAL * 100) + '%';
+  }
+
+  function applyDoneClass(node, checked) {
+    if (checked) node.classList.add('is-done');
+    else node.classList.remove('is-done');
+  }
+
+  // Restore state
+  const state = getState();
+  document.querySelectorAll('.node').forEach((node, i) => {
+    const cb = node.querySelector('input[type="checkbox"]');
+    if (!cb) return;
+    const key = 'step' + (i + 1);
+    if (state[key]) { cb.checked = true; applyDoneClass(node, true); }
+    cb.addEventListener('change', () => {
+      const s = getState();
+      s['step' + (i + 1)] = cb.checked;
+      saveState(s);
+      applyDoneClass(node, cb.checked);
+      updateProgress();
+    });
+  });
+
+  // Why drawers
+  document.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      const drawer = btn.nextElementSibling;
+      if (drawer) drawer.classList.toggle('open', !expanded);
+    });
+  });
+
+  // Reset
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (!confirm('Reset all progress?')) return;
+      localStorage.removeItem(storageKey);
+      document.querySelectorAll('.node-tick input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+        applyDoneClass(cb.closest('.node'), false);
+      });
+      updateProgress();
+    });
+  }
+
+  updateProgress();
+}
+
+initAlgorithm('rgp.alg.fever-children.v1');
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

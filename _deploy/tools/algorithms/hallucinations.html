@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Hallucinations Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;--diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;--treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;--refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;--lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;--radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);--font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif;}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#2a0a4a 0%,#5b21b6 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#5b21b6,#c0392b);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}.node[data-type="TREAT"] .node-num{background:var(--treat)}.node[data-type="REFER"] .node-num{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}.node[data-type="TREAT"] .node-tag{background:var(--treat)}.node[data-type="REFER"] .node-tag{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:70px;justify-content:center;white-space:nowrap}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}.pill-purple{background:#ede9fe;color:#5b21b6}.pill-blue{background:#dbeafe;color:#1e40af}.pill-teal{background:#ccfbf1;color:#0f766e}.pill-amber{background:#fef3c7;color:#92400e}.pill-green{background:#dcfce7;color:#15803d}.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+<div class="stem-banner">
+  <div class="sb-icon">👁️‍🗨️</div>
+  <div>
+    <b>Hallucinations — New Presentation</b>
+    <small>Modality-specific GP assessment — organic, psychiatric and pharmacological causes</small>
+  </div>
+</div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — establish the modality and context, distinguishing organic/delirium and drug causes from primary psychiatric disease. Treat the cause, support, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Hallucinations</span><div class="body">Modality (visual, auditory, other), insight, onset, drugs/alcohol, cognitive state. Examine, obs, glucose.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — organic / risk</span><span class="ttl">Organic / risk to self or others?</span><div class="body">Acute + fluctuating cognition → delirium. Withdrawal states. Command hallucinations or high risk → urgent psychiatric assessment.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Act</span><span class="ttl">Treat cause / urgent MH</span><div class="body">Delirium → treat precipitant. Acute risk → urgent mental health assessment / Crisis team.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Investigate</span><span class="ttl">Context</span><div class="body">Bloods, drug screen; review meds (dopaminergics, anticholinergics); cognitive assessment.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · cause</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Organic</div><div class="box ix"><span class="ttl">Visual usually</span><div class="body">Delirium, dementia (esp. <b>Lewy body</b>), Parkinson meds, epilepsy, eye disease (Charles Bonnet).</div></div></div>
+      <div class="col"><div class="blabel">Substance</div><div class="box ix"><span class="ttl">Drugs/alcohol</span><div class="body">Intoxication/withdrawal, hallucinogens, dopaminergics.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Psychiatric</div><div class="box ix"><span class="ttl">Auditory usually</span><div class="body">Psychosis, schizophrenia, severe affective disorder → see psychosis pathway.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Urgent mental health / crisis</span> risk or first-episode psychosis (EIP). <span class="pill pill-purple">Relevant specialty</span> organic cause (neurology, geriatrics, ophthalmology).</div></div>
+    <div class="arrow"><span class="tag">Step 8 · treat cause &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Treat the cause &amp; modifiable factors</span><span class="ttl">Target the driver</span><div class="body"><b>Treat delirium precipitants</b> and <b>review culprit drugs</b> (dopaminergics, anticholinergics, opioids, steroids); manage alcohol/substance use and withdrawal. <b>Charles Bonnet</b> (eye disease) — reassure and optimise vision. <b>Lewy body dementia</b> — avoid antipsychotics (severe sensitivity). Support sleep, sensory aids and a calm environment; psychological support for distressing voices.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Risk &amp; when to escalate</span><div class="body"><b>Urgent mental health/crisis</b> for command hallucinations, risk to self/others, or first-episode psychosis (EIP). <b>Same-day</b> for new acute fluctuating cognition (delirium) or withdrawal. <b>Review</b> response to treating the cause; persisting visual hallucinations warrant organic work-up (cognitive, neuro, ophthalmology) rather than assuming a primary psychiatric cause.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Visual hallucinations are organic until proven otherwise:</b> they point to delirium, Lewy body dementia, drugs or eye disease far more often than to a primary psychotic illness.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Immediate Risk &amp; Organic Emergencies</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Always prioritise: <b>Is the patient safe right now?</b> Then assess: <b>Organic cause?</b>
+    <div class="rfgrid">
+      <div class="rftile"><b>Command hallucinations to harm</b> Voices instructing violence to self or others → 999 / MHA assessment. Do not manage alone.</div>
+      <div class="rftile"><b>Fever + hallucinations</b> Encephalitis (anti-NMDA, viral), meningitis — neck stiffness, photophobia → 999 (LP + IV aciclovir if herpes encephalitis suspected)</div>
+      <div class="rftile"><b>Alcohol withdrawal hallucinations</b> Alcoholic hallucinosis (clear sensorium), delirium tremens (confusion + hallucinations) → same-day hospital (seizure risk, benzodiazepine withdrawal)</div>
+      <div class="rftile"><b>Visual hallucinations + confusion</b> Delirium — acute, fluctuating, new → find and treat cause urgently. Same-day assessment.</div>
+      <div class="rftile"><b>Newly started medication</b> Dopaminergic agents (Parkinson's: levodopa, ropinirole), steroids, anticholinergics, opioids, antivirals → medication-induced, urgent review</div>
+      <div class="rftile"><b>Severe agitation + hallucinations</b> Violence risk — 999 if unsafe to assess. Police support if needed.</div>
+      <div class="rftile"><b>Head injury + hallucinations</b> Subdural haematoma, temporal lobe injury → CT head same-day</div>
+      <div class="rftile"><b>Visual hallucinations + Parkinson's</b> May signal Lewy body dementia or dopaminergic toxicity → reduce dopaminergic therapy with specialist advice. Do NOT use antipsychotics (risk of severe NMS).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Herpes simplex encephalitis has a mortality of 70% untreated and 20% even with treatment — IV aciclovir must be started empirically before LP results in any patient with fever + confusion + hallucinations. Delirium tremens carries 5% mortality — alcohol withdrawal hallucinations require same-day admission for chlordiazepoxide regime. Antipsychotics in Lewy body dementia/Parkinsonism cause severe neuroleptic sensitivity reactions (irreversible Parkinsonism, NMS) in up to 50% of patients — this is a contraindication that must be remembered.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Characterise the Hallucination — Modality &amp; Context</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    The <b>modality</b> of hallucination is the most diagnostically useful initial question.
+    <div class="kv">
+      <div>Auditory hallucinations</div><div>Most common type. Voices (2nd person → psychosis; 3rd person commenting → schizophrenia; command → risk). Music/noises → consider musical hallucinations (elderly, hearing loss), hypnagogic/pompic (normal at sleep onset/offset)</div>
+      <div>Visual hallucinations</div><div>Complex (formed figures/animals/people) → Lewy body dementia, Charles Bonnet syndrome (visual impairment), substance use, delirium. Simple (flashes, zigzags) → migraine aura, occipital epilepsy.</div>
+      <div>Tactile / somatic</div><div>Feeling of insects crawling (formication) → stimulant withdrawal/intoxication (cocaine, amphetamine), delirium tremens. Somatic passivity → psychosis.</div>
+      <div>Olfactory / gustatory</div><div>Unusual smell or taste → temporal lobe epilepsy (uncinate fits), psychiatric, brain tumour. Olfactory hallucinations are the most reliably organic modality.</div>
+      <div>Insight</div><div>Patient knows experiences are not real (retained insight) → Charles Bonnet, migraine, hypnagogic = lower acute psychiatric risk. No insight → psychosis, delirium, organic — higher urgency</div>
+      <div>Frequency &amp; context</div><div>When do they occur? During substance use, at sleep transitions, only at night, continuous throughout the day? Triggers? Duration of each episode?</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Modality guides the differential powerfully: visual hallucinations in an elderly patient with poor vision and intact insight almost always represent Charles Bonnet syndrome (benign) — no investigation is needed beyond reassurance. Olfactory hallucinations (unusual smells with no external source) are the most strongly associated modality with organic brain pathology — temporal lobe epilepsy (uncinate fits), brain tumour, or psychiatric illness. Third-person auditory hallucinations (voices talking about the patient in third person) are a first-rank symptom of schizophrenia (Schneider, 1959). Hypnagogic/hypnopompic hallucinations at sleep transitions are experienced by 25–37% of normal population and require no investigation.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis by Cause</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Psychiatric</div><div>Schizophrenia / psychosis (auditory predominant), severe depression with psychosis (mood-congruent), bipolar mania, PTSD (trauma-related, often visual or olfactory re-experiencing)</div>
+      <div>Neurological</div><div>Temporal lobe epilepsy (aura — olfactory/gustatory/déjà vu), Lewy body dementia (formed visual, preserved cognition initially), Parkinson's disease (dopaminergic, nocturnal), migraine aura (visual), brain tumour, subdural haematoma</div>
+      <div>Substance-related</div><div>Intoxication: LSD, psilocybin, cannabis (high-potency), cocaine, MDMA. Withdrawal: alcohol (hallucinosis/DTs), benzodiazepines, opioids. Chronic alcohol: Wernicke's (thiamine deficiency)</div>
+      <div>Metabolic / organic</div><div>Delirium (any cause — infection, metabolic, hypoxia, medications). Hyponatraemia, hypoglycaemia, hepatic encephalopathy, uraemia, thyroid storm, hypercalcaemia</div>
+      <div>Drug-induced</div><div>Levodopa, dopamine agonists (ropinirole, pramipexole), steroids, antimalarials (mefloquine), anticholinergics, opioids, antivirals (aciclovir in renal failure)</div>
+      <div>Benign</div><div>Hypnagogic/hypnopompic (normal), Charles Bonnet syndrome (visual impairment + formed visual hallucinations + intact insight), grief (auditory/visual experiences of deceased loved one — normal bereavement)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Lewy body dementia is the second most common dementia (after Alzheimer's) and is characterised by vivid formed visual hallucinations (often small people or animals), cognitive fluctuation, and Parkinsonism. It is critically important to recognise because antipsychotics are severely contraindicated. Grief hallucinations (experiencing the presence, voice, or vision of a deceased loved one) affect 50–80% of bereaved people — this is a normal bereavement phenomenon and should be normalised, not investigated. PTSD hallucinations are re-experiencing phenomena (flashbacks) rather than true hallucinations — they respond to trauma-focused CBT, not antipsychotics.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Targeted Examination</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Mental state exam (MSE)</div><div>Appearance, behaviour, speech (rate, form, content), mood/affect, perception, cognition (4AT delirium screen), insight, judgement — document fully</div>
+      <div>4AT delirium screen</div><div>4 components: Alertness, AMT4 (abbreviated mental test), attention (months backward), acute change. Score ≥4 = delirium → investigate urgently for cause</div>
+      <div>Neurological exam</div><div>Focal deficits, Parkinsonism (rigidity, bradykinesia, tremor), cerebellar signs, papilloedema (raised ICP), nystagmus (Wernicke's — lateral gaze), dysarthria</div>
+      <div>Vital signs</div><div>Fever (encephalitis, sepsis), HR, BP, glucose (hypoglycaemia causes hallucinations), oxygen saturation (hypoxia)</div>
+      <div>Alcohol withdrawal signs</div><div>Tremor, diaphoresis, tachycardia, confusion — CIWA-Ar score if withdrawal suspected. Nystagmus + ataxia + confusion = Wernicke's → IV Pabrinex immediately</div>
+      <div>Vision / hearing</div><div>Visual acuity (Charles Bonnet — visual impairment), hearing test (musical hallucinations in hearing loss). Brief bedside assessment adequate.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The 4AT is the most validated delirium screening tool for primary care (sensitivity 76%, specificity 94%) and takes under 2 minutes. Wernicke's encephalopathy triad (confusion + ataxia + ophthalmoplegia) is rarely complete — any two features in an at-risk patient (alcohol dependence, malnutrition) should prompt immediate IV Pabrinex. Untreated Wernicke's progresses to irreversible Korsakoff's syndrome in 80% of cases — early treatment with thiamine is curative. Papilloedema on fundoscopy in a patient with hallucinations and headache mandates same-day CT head (raised ICP).</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Diagnose</span><h3>Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Bloods — all new presentations</div><div><span class="pill pill-blue">FBC</span> <span class="pill pill-blue">U&E</span> (Na, Ca) <span class="pill pill-blue">LFTs</span> <span class="pill pill-blue">TFTs</span> <span class="pill pill-blue">CRP</span> <span class="pill pill-blue">Glucose</span> <span class="pill pill-blue">B12</span> <span class="pill pill-blue">Calcium</span></div>
+      <div>Urine drug screen</div><div>Essential in new-onset hallucinations — cannabis, cocaine, MDMA, opioids, benzodiazepines. Positive does not exclude co-existing psychiatric illness.</div>
+      <div>Suspected encephalitis</div><div><span class="pill pill-blue">Anti-NMDA receptor antibodies</span> (young women + psychiatric features + new-onset seizures). LP + CSF analysis. MRI brain — organised via A&E/neurology.</div>
+      <div>EEG</div><div>Suspected temporal lobe epilepsy (episodic olfactory/gustatory hallucinations + déjà vu + brief LOC) → refer neurology for interictal EEG. Routine sleep EEG.</div>
+      <div>Neuroimaging</div><div>CT head — focal neurological signs, head trauma, elderly with new hallucinations, raised ICP signs. MRI brain — organised via neurology or hospital, not GP routine.</div>
+      <div>NOT routinely</div><div>EEG, MRI, autoimmune screen in straightforward first-episode psychosis without neurological features — these are arranged by psychiatry/CMHT after organic causes clinically excluded</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Anti-NMDA receptor encephalitis is critical to recognise — it presents most commonly in young women (20s–30s) with psychiatric symptoms (paranoia, hallucinations, agitation) before developing seizures and movement abnormalities. It is treatable with immunotherapy (steroids, IVIG, rituximab) and associated with ovarian teratoma (50% of cases) — early recognition prevents permanent neurological damage. Hyponatraemia (&lt;125 mmol/L) causes hallucinations and confusion — U&E are mandatory in all presentations. Hypoglycaemia is instantly reversible — check blood glucose at the bedside immediately.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Refer</span><h3>Referral Pathway</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Command hallucinations with intent, acute encephalitis/delirium with unsafe behaviour, alcohol withdrawal seizures, haemodynamic instability, Wernicke's (IV Pabrinex + 999)</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>New delirium (find organic cause), alcohol withdrawal hallucinations (DTs risk), suspected encephalitis, focal neurology + hallucinations, Parkinson's + new hallucinations (dopaminergic review needed)</div>
+      <div><span class="pill pill-purple">Urgent psychiatry/EIP</span></div><div>First-episode psychotic hallucinations (auditory, no organic cause) → EIP referral (NICE NG185). All within 2 weeks. Crisis team if immediate risk.</div>
+      <div>Neurology</div><div>Suspected temporal lobe epilepsy, Lewy body dementia (for DaTscan, management guidance), suspected MS, post-encephalitis follow-up</div>
+      <div>Old age psychiatry</div><div>Dementia + hallucinations (Lewy body or Alzheimer's with psychotic features) → specialist assessment before any antipsychotic prescribing</div>
+      <div>Routine / no referral</div><div>Charles Bonnet syndrome (benign, reassurance only), hypnagogic/hypnopompic (normal — no investigation), bereavement hallucinations (normalise)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-deeper">Charles Bonnet syndrome (formed visual hallucinations in visually impaired patients with retained insight) requires only reassurance — treatment is directed at improving visual acuity (cataracts, macular degeneration management). It affects up to 15% of patients with significant visual impairment and is profoundly distressing because patients fear they are "going mad" — simple explanation and normalisation is highly effective. Old age psychiatry review before antipsychotics in dementia is essential — MHRA guidance warns of increased stroke and mortality risk with all antipsychotics in dementia patients (2× stroke risk, 1.6× mortality risk).</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>GP Management — Cause-Specific Treatment</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Delirium — bridge</div>
+        <div class="b-drug">Treat underlying cause</div>
+        <div class="b-note">Antibiotics for infection, glucose for hypoglycaemia, IV Pabrinex for Wernicke's, fluid for dehydration. Haloperidol 0.5 mg if severe agitation and <b>no Parkinsonism/Lewy body</b> — specialist direction preferred.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Alcohol withdrawal</div>
+        <div class="b-drug">Chlordiazepoxide taper</div>
+        <div class="b-note">CIWA-guided protocol — initiate in hospital. IV Pabrinex (2 pairs TDS for 3 days) for Wernicke's prevention. Thiamine 100 mg TDS oral maintenance. Do not manage DTs at home.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Drug-induced</div>
+        <div class="b-drug">Stop / reduce offending drug</div>
+        <div class="b-note">Reduce dopaminergic agents in Parkinson's with specialist advice. Stop steroids if possible. Check drug levels (digoxin, aciclovir, methotrexate). Hallucinations should resolve within days–weeks.</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Psychosis</span><span class="rt">Antipsychotic initiation — aripiprazole or olanzapine (NICE NG185) — led by EIP/CMHT. GP role: organic screen, ECG, bloods, and referral. See Psychosis algorithm for full pathway.</span></div>
+      <div class="rung"><span class="rn">TLE</span><span class="rt">Anti-epileptic drugs (lamotrigine, carbamazepine) — initiated by neurology after confirmed EEG diagnosis. Sodium valproate avoided in women of childbearing potential (teratogenicity).</span></div>
+      <div class="rung"><span class="rn">Lewy body</span><span class="rt">Rivastigmine (cholinesterase inhibitor) — improves hallucinations in Lewy body dementia. Initiated by old age psychiatry / memory clinic. <b>Avoid all antipsychotics.</b></span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Treating the underlying cause resolves delirium in the majority — physical restraint and sedation should be minimised. Rivastigmine reduces visual hallucination frequency by 30–40% in Lewy body dementia through acetylcholinesterase inhibition — this is the treatment of choice. Haloperidol in Lewy body patients causes severe extrapyramidal reactions in up to 50% — this represents one of the most important drug contraindications in geriatric medicine. IV Pabrinex contains a higher concentration of B vitamins than oral thiamine and must be given IV/IM (oral absorption is unreliable in alcohol-dependent patients due to gut malabsorption of thiamine).</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Patient &amp; Carer Support</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Psychoeducation</b> Explain the type of hallucination and its cause — knowing hallucinations are benign (Charles Bonnet, grief, hypnagogic) dramatically reduces distress. "Your brain is filling in gaps, not a sign of mental illness."</div>
+      <div class="lstile"><b>Cannabis cessation</b> High-potency cannabis triggers and perpetuates psychotic hallucinations. Refer to drug services. Every consultation — brief motivational intervention. Cannabis use doubles psychosis risk.</div>
+      <div class="lstile"><b>Substance use reduction</b> Stimulants (cocaine, MDMA, amphetamine) cause hallucinations during intoxication and withdrawal. Refer to community drug service. Harm reduction approach if abstinence not immediately achievable.</div>
+      <div class="lstile"><b>Sleep regulation</b> Severe sleep deprivation alone causes hallucinations (psychosis-like state after 24–72 hrs without sleep). Regular sleep schedule, CBT-I for insomnia. Particularly relevant in shift workers.</div>
+      <div class="lstile"><b>Carer support</b> Hallucinations in dementia are profoundly distressing for carers. Explain behaviours, refer to Alzheimer's Society / Lewy Body Society. Named carer identified. Carer's assessment via GP/social care.</div>
+      <div class="lstile"><b>Safe environment</b> In delirium/psychosis — reduce stimulation, familiar carers, orienting cues (clock, family photos, natural light), adequate hydration and nutrition. Avoid restraint.</div>
+      <div class="lstile"><b>Visual/hearing aids</b> Correct visual impairment (Charles Bonnet) — cataract surgery, glasses, macular degeneration treatment. Hearing aids for musical hallucinations in hearing loss. Often curative.</div>
+      <div class="lstile"><b>MIND / Rethink</b> MIND charity helpline 0300 123 3393. Rethink Mental Illness 0300 5000 927. Sane Line 0300 304 7000. Encourage patient + family use.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Charles Bonnet syndrome is frequently misdiagnosed — patients are often too frightened to report hallucinations for fear of being labelled "mad" or admitted. Simple psychoeducation (explaining the benign nature of the visual filling-in process) resolves distress in the majority without any pharmacological treatment. Sleep deprivation is an underrecognised cause of hallucinations — it lowers the threshold for psychotic symptoms and can precipitate episodes in vulnerable individuals. Improving vision in Charles Bonnet often eliminates hallucinations completely — cataract surgery represents one of the most effective "hallucination treatments" available.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>1–2 weeks</div><div>Review — are hallucinations resolving? Is organic cause identified and treated? New symptoms? Risk reassessment. Confirm EIP/psychiatric referral actioned.</div>
+      <div>4–6 weeks</div><div>Drug-induced hallucinations: resolved after stopping offending drug? Delirium resolved? If not → rethink diagnosis, neuroimaging.</div>
+      <div>Ongoing (psychosis)</div><div>Shared care with CMHT/EIP — GP monitors metabolic health, antipsychotic side effects, adherence. Annual physical health review. See Psychosis algorithm.</div>
+      <div>Lewy body dementia</div><div>Do not use antipsychotics at any dose. Any agitation/hallucinations → old age psychiatry or geriatric medicine for specialist advice. Non-pharmacological first.</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>New command hallucinations with intent, acute confusional state + fever, seizures, collapse, acute visual loss (rule out GCA in elderly)</div>
+      <div><span class="pill pill-amber">Same-day GP</span></div><div>Worsening hallucinations, new neurological symptoms, inability to care for self, carer unable to cope, signs of Wernicke's (ataxia + nystagmus)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The single most important monitoring question after treatment of drug-induced hallucinations is: "Did they resolve when the drug was stopped?" — failure to resolve confirms a primary neurological or psychiatric cause requiring further investigation. Wernicke's encephalopathy can develop acutely in any patient with alcohol dependence — even brief periods of poor nutrition (illness, hospital admission) can precipitate it. Recognition of the nystagmus + ataxia + confusion triad allows immediate IV thiamine treatment before irreversible Korsakoff's syndrome develops. Ongoing safety-netting for the carer of a patient with dementia-related hallucinations is as important as patient safety-netting — carer crisis is a common cause of emergency admissions.</div>
+  </div>
+</div>
+
+</div>
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE CG178 (Psychosis, 2020), NICE CG103 (Delirium), NICE NG97 (Dementia), SIGN 157 (Alcohol problems), Lewy Body Society guidelines, MHRA antipsychotic safety in dementia guidance (2004). Always adapt to individual patient context.
+</div>
+<script>
+(function(){
+  const STORE='rgp.alg.hallucinations.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

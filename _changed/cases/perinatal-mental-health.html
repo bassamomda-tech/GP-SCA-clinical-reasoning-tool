@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perinatal Mental Health · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="../assets/medchooser.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+.tag-emerg{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;font-weight:700}
+</style>
+</head>
+<body class="mode-both" id="bodyEl" data-screen-label="Perinatal Mental Health">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="perinatal-mental-health"></aside>
+  <main class="main">
+<div class="case-head">
+  <div>
+    <div class="ch-cat">Mental Health · Full case</div>
+    <h1>Perinatal Mental Health</h1>
+  </div>
+  <div class="case-head-tags"><span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE CG192</span><span class="tag">Postnatal depression</span><span class="tag tag-emerg">Psychosis = emergency</span></div>
+</div>
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">PN</div>
+      <div><div class="tb-title">Perinatal Mental Health · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE CG192 · Baby blues vs PND vs psychosis · Risk to self/baby · SSRI &amp; breastfeeding · Perinatal team · MBU</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">Blues ≠ depression</span><span class="ns-lbl">"Baby blues" — tearfulness, lability, anxiety — affect up to 80% of women, peak around days 3–5 and resolve by ~2 weeks. Postnatal depression persists beyond 2 weeks, is more pervasive, and impairs function and bonding</span></div>
+    <div class="ns-item"><span class="ns-val">PND ≈ 1 in 10</span><span class="ns-lbl">Postnatal depression affects around 10–15% of women; it is common, treatable, and frequently missed because women hide it through guilt and fear of judgement. Antenatal depression and anxiety are equally important and under-recognised</span></div>
+    <div class="ns-item"><span class="ns-val">Ask: self &amp; baby</span><span class="ns-lbl">Risk assessment is mandatory: thoughts of self-harm or suicide, and thoughts of harming or not being able to care for the baby. Suicide is a leading cause of maternal death. Ask directly, sensitively and always</span></div>
+    <div class="ns-item"><span class="ns-val">Psychosis = emergency</span><span class="ns-lbl">Postpartum (puerperal) psychosis — rapid onset (often days 1–2 weeks), mania/confusion, delusions (often about the baby), hallucinations — is a psychiatric EMERGENCY with high suicide/infanticide risk. Same-day specialist assessment; usually admission to a Mother &amp; Baby Unit</span></div>
+    <div class="ns-item"><span class="ns-val">Sertraline-friendly</span><span class="ns-lbl">Where an antidepressant is needed in a breastfeeding mother, sertraline is commonly used (low milk transfer). Don't withhold effective treatment because of breastfeeding — weigh risks/benefits and involve perinatal specialists for complex cases</span></div>
+    <div class="ns-item"><span class="ns-val">Whooley + EPDS</span><span class="ns-lbl">Screen with the Whooley questions (low mood; loss of interest) and an anxiety enquiry; the Edinburgh Postnatal Depression Scale (EPDS) helps quantify severity and track response — note item 10 screens self-harm thoughts</span></div>
+    <div class="ns-item"><span class="ns-val">Past illness = high risk</span><span class="ns-lbl">A personal or family history of bipolar disorder, postpartum psychosis or severe mental illness markedly raises the risk of severe perinatal relapse — flag in pregnancy, make a plan, and involve perinatal psychiatry early</span></div>
+    <div class="ns-item"><span class="ns-val">Think wider</span><span class="ns-lbl">Consider anxiety/OCD (intrusive thoughts of harm — distressing but ego-dystonic), PTSD after traumatic birth, thyroid dysfunction and anaemia as contributors, and always the safeguarding of the infant and other children</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Perinatal Mental Health</div>
+  <div class="stem-title">A first-time mother at 7 weeks postnatal, brought by her partner, tearful and exhausted, convinced she is "a terrible mother" — with intrusive thoughts she is frightened to disclose</div>
+  <div class="stem-text">Priya Sharma, 31, attends with her 7-week-old baby and her partner, ostensibly about the baby's feeding. She is tearful, exhausted and flat. With gentle questioning she describes 4 weeks of persistent low mood, poor sleep even when the baby sleeps, loss of enjoyment, poor appetite, and overwhelming guilt that she is "a terrible mother" and the baby "would be better off without me around." She is breastfeeding and very anxious about taking any medication. When asked carefully and given space, she discloses distressing intrusive thoughts of the baby coming to harm, which horrify her and which she has told no one. She denies any wish to act on them. There is no confusion, grandiosity or loss of touch with reality. She has no past psychiatric history but her mother had "a breakdown" after childbirth.</div>
+  <div class="stem-note">This stem tests the ability to: distinguish baby blues from postnatal depression and from the emergency of postpartum psychosis; conduct a thorough, sensitive risk assessment (thoughts of self-harm/suicide and thoughts about the baby), and correctly interpret ego-dystonic intrusive thoughts of harm (a feature of postnatal depression/anxiety/OCD — distressing but not psychosis) versus psychotic command/delusional phenomena; explore the guilt and the fear of disclosure; manage treatment in a breastfeeding mother (talking therapy, and sertraline where an antidepressant is needed) without withholding effective care; recognise the family history of probable postpartum psychosis as a risk marker; and arrange appropriate support (health visitor, perinatal mental health team) with a clear safety-net. The SCA challenge is creating enough safety for honest disclosure and responding to the intrusive thoughts without alarm or over-reaction.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — Postnatal depression (this stem)</strong> Persistent low mood &gt;2 weeks, guilt, anhedonia, impaired function/bonding, ego-dystonic intrusive thoughts, no psychosis. Risk assess; talking therapy ± sertraline; health visitor + perinatal team; safety-net; review.</div>
+    <div class="stem-variant"><strong>Scenario B — Baby blues</strong> Days 3–10, tearful, labile, anxious, resolving, function preserved. Reassurance, support, watchful waiting; review if persisting beyond 2 weeks.</div>
+    <div class="stem-variant"><strong>Scenario C — Postpartum psychosis (EMERGENCY)</strong> Rapid onset (often first 2 weeks), mania/confusion, delusions (often about the baby), hallucinations, severe insomnia, behavioural change. Same-day psychiatric assessment; usually Mother &amp; Baby Unit admission; high suicide/infanticide risk.</div>
+    <div class="stem-variant"><strong>Scenario D — Perinatal anxiety / OCD / PTSD</strong> Marked anxiety, intrusive ego-dystonic thoughts with checking/avoidance (OCD), or re-experiencing after traumatic birth (PTSD). Talking therapy first-line; SSRI if needed; perinatal team if severe.</div>
+    <div class="stem-variant"><strong>Scenario E — High-risk antenatal flag</strong> Personal/family history of bipolar or postpartum psychosis identified in pregnancy. Pre-emptive perinatal psychiatry referral and a written care plan for the perinatal period.</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Timing (blues days 3–10; psychosis often first 2 weeks; PND any point in the first year); severity and function; risk to self and baby; nature of intrusive thoughts (ego-dystonic vs delusional/command); past/family history (bipolar, postpartum psychosis); breastfeeding and medication choice; birth trauma (PTSD); social support, domestic abuse, safeguarding; physical contributors (thyroid, anaemia).</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History — Mood &amp; Function · Risk to Self &amp; Baby · Intrusive Thoughts · ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The history has three jobs: characterise the mood disturbance and its effect on function and bonding; conduct a full, sensitive risk assessment (thoughts about self AND the baby); and correctly classify what you find — baby blues, postnatal depression/anxiety, or the emergency of postpartum psychosis.</strong> The decisive interpretive skill is distinguishing ego-dystonic intrusive thoughts of harm (distressing, unwanted, a feature of PND/anxiety/OCD) from psychotic phenomena (delusions, command hallucinations) — because they sit at opposite ends of the urgency spectrum.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 SCA framing — create safety for honest disclosure</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"Becoming a parent is one of the hardest things there is, and lots of mums feel low or have frightening thoughts they're ashamed of — it doesn't make you a bad mother, and you won't be judged here. Can you tell me how you've really been feeling?"</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Priya is terrified that disclosing her thoughts will mean her baby is taken away. Normalising, non-judgmental language and explicit reassurance about the purpose of the conversation are what make an honest, life-saving disclosure possible.</div>
+    </div>
+    <div class="sub-divider">1A — Mood, function and risk</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"How have you been feeling in yourself since the baby arrived — not just the baby, but you?"</em></td>
+            <td class="why"><strong>Giving the mother permission to talk about herself, separate from the baby, opens the consultation.</strong> Capture onset and duration (beyond 2 weeks distinguishes PND from blues), pervasiveness, anhedonia, guilt, sleep (poor even when the baby sleeps is significant), appetite, and the impact on function and bonding. Priya's 4 weeks of pervasive low mood with guilt and anhedonia is postnatal depression, not blues.<span class="why-sub">In SCA: asking about <em>her</em>, and noticing she came in "about the baby's feeding," demonstrates the awareness that perinatal depression often presents covertly.</span></td>
+            <td><span class="chg chg-ddx">&gt;2 weeks, pervasive, impairing → PND not blues</span></td>
+          </tr>
+          <tr><td class="q">Timing &amp; course<em>"When did this start — and has it been getting better or worse?"</em></td><td class="why">Blues peak days 3–5 and resolve by ~2 weeks. Symptoms beyond this, worsening or pervasive, indicate depression. A very rapid, dramatic change with confusion/elation in the early weeks suggests psychosis and a different urgency.</td><td class="why">Resolving by 2 weeks → blues. Persisting/worsening → PND. Rapid dramatic onset + confusion → ?psychosis.</td><td><span class="chg chg-ddx">Timing separates blues / PND / psychosis</span></td></tr>
+          <tr><td class="q">🚩 Risk to self<em>"Sometimes when people feel this low they have thoughts that life isn't worth living, or of harming themselves — have you had any thoughts like that?"</em></td><td class="why"><strong>Mandatory and direct.</strong> Suicide is a leading cause of maternal death. Asking does not plant the idea. Priya's "the baby would be better off without me" needs careful exploration — passive ideation, active thoughts, plans, intent, protective factors. Quantify and act on the risk.</td><td class="why">Active suicidal ideation/plan/intent → urgent perinatal/crisis assessment; safety plan.</td><td><span class="chg chg-999">Active intent/plan → urgent same-day assessment</span></td></tr>
+          <tr><td class="q">🚩 Risk to and thoughts about the baby<em>"Many mums have frightening or unwanted thoughts about the baby that they'd never act on but feel awful about — have you had anything like that? And do you ever feel unable to cope with or care for the baby?"</em></td><td class="why"><strong>The most delicate and important enquiry.</strong> Distinguish: (1) ego-dystonic intrusive thoughts of harm — unwanted, distressing, recognised as wrong, no intent (PND/anxiety/OCD — Priya); from (2) thoughts driven by delusional beliefs or command hallucinations, or loss of touch with reality (psychosis — emergency). Also assess capacity to care for the baby and the baby's safety/welfare.</td><td class="why">Ego-dystonic, no intent → reassure, treat PND. Delusional/command/loss of reality, or intent → emergency. Welfare concern → safeguarding.</td><td><span class="chg chg-999">Psychotic phenomena / intent → emergency</span><span class="chg chg-ref">Welfare concern → safeguarding + HV</span></td></tr>
+          <tr><td class="q">🚩 Psychosis screen<em>"Have you felt unusually high or sped up, gone without sleep but not felt tired, had unusual beliefs, or sensed/heard things others don't?"</em></td><td class="why">Actively exclude postpartum psychosis: elated/labile mood, reduced need for sleep, grandiose or bizarre delusions (often centred on the baby), hallucinations, confusion, rapidly changing presentation. Its presence converts the consultation into an emergency. Priya has none of these.</td><td class="why">Any psychotic/manic features → psychiatric emergency, same-day assessment, likely MBU.</td><td><span class="chg chg-999">Psychosis → emergency, MBU</span></td></tr>
+          <tr><td class="q">Risk factors, support &amp; contributors<em>"Have you had depression before? Any history of bipolar or of severe illness after childbirth in the family? How's your support at home, and is the relationship okay?"</em></td><td class="why">Past depression, and especially personal/family history of bipolar or postpartum psychosis, sharply raise risk (Priya's mother had a postnatal "breakdown"). Assess social support, domestic abuse, birth trauma (PTSD), and physical contributors (thyroid, anaemia). Lack of support and abuse worsen prognosis and safety.</td><td class="why">Bipolar/postpartum psychosis history → high risk, perinatal psychiatry. Abuse/poor support → safeguarding, social support.</td><td><span class="chg chg-inv">TFTs, FBC; perinatal referral if high risk</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — the perinatal emergencies</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Postpartum psychosis — rapid onset, mania/confusion, delusions (often about the baby), hallucinations</td><td class="rf-why">A psychiatric emergency with very high risk of suicide and infanticide; presentation can fluctuate rapidly and deteriorate within hours.</td><td><span class="rf-action rfa-999">Same-day psychiatric assessment (perinatal/crisis); usually Mother &amp; Baby Unit admission; do not leave mother and baby unsupervised if concerned</span></td></tr>
+          <tr><td class="rf-flag">Active suicidal ideation with plan/intent</td><td class="rf-why">Suicide is a leading cause of death in the perinatal period; risk can escalate quickly and methods may be violent.</td><td><span class="rf-action rfa-999">Urgent same-day perinatal/crisis assessment; safety plan; do not leave alone</span></td></tr>
+          <tr><td class="rf-flag">Thoughts of harming the baby with any intent, or driven by delusional belief</td><td class="rf-why">Distinct from ego-dystonic intrusive thoughts; intent or delusional drive is a safeguarding and psychiatric emergency.</td><td><span class="rf-action rfa-999">Emergency psychiatric assessment; safeguarding; ensure infant safety</span></td></tr>
+          <tr><td class="rf-flag">Severe depression — not eating/drinking, profound hopelessness, unable to care for self or baby</td><td class="rf-why">Severe functional collapse endangers mother and infant.</td><td><span class="rf-action rfa-same">Urgent perinatal mental health referral; consider admission (MBU)</span></td></tr>
+          <tr><td class="rf-flag">Personal/family history of bipolar or postpartum psychosis</td><td class="rf-why">Very high risk of severe, rapid perinatal relapse — needs proactive planning, not watchful waiting.</td><td><span class="rf-action rfa-same">Perinatal psychiatry referral; written perinatal care plan; vigilance in early weeks</span></td></tr>
+          <tr><td class="rf-flag">Safeguarding / domestic abuse</td><td class="rf-why">Maternal mental illness, domestic abuse and infant welfare are intertwined; the infant and any other children must be safeguarded.</td><td><span class="rf-action rfa-same">Safeguarding assessment; health visitor; refer per local pathway</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What do you make of how you've been feeling — what do you think is going on?"</div><div class="ice-why">Priya may believe she is simply failing as a mother, or fear she is "going mad." Surfacing her model lets you reframe this as a common, recognised, treatable illness — not a character flaw — which is itself therapeutic and reduces the shame that fuels non-disclosure.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 Concerns</div><div class="ice-phrase">"Is there something you've been frightened might happen if you told someone?"</div><div class="ice-why">Her central concern is almost certainly that disclosing her thoughts will lead to her baby being taken away. Naming and addressing this fear directly — explaining that the aim is to support her and keep mother and baby together — is what unlocks honesty and engagement.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"What were you hoping for from coming in — and how do you feel about different kinds of help?"</div><div class="ice-why">She may expect to be told to "pull herself together," or fear being pushed onto medication while breastfeeding. Naming her expectations lets you offer a menu (talking therapy, health visitor support, safe medication if needed) and make a shared decision that respects her wishes about breastfeeding.</div></div>
+    </div>
+    <div class="sub-divider">1D — Psychosocial context</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 Guilt, stigma and the fear of losing the baby</div>
+      <p>Perinatal mental illness is shrouded in guilt and stigma — the cultural expectation that new motherhood is joyful makes women feel they are failing, and the fear that admitting dark thoughts will lead to their baby being removed keeps them silent. That silence is dangerous: it is why perinatal suicide and undiagnosed illness persist. The single most important clinical act is to create a non-judgmental space in which honest disclosure feels safe, to normalise intrusive thoughts and low mood, and to be explicit that the goal is to help her and keep her and her baby well — together.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>🤱 "I'm a terrible mother"</h5><p>The pervasive guilt of PND is a symptom, not a truth. Naming it as part of the illness, and separating her worth from her symptoms, is therapeutic.</p><span class="ps-phrase">"That feeling of being a terrible mother is one of the most common symptoms of this illness — it's the depression talking, not the truth. The fact you're here, worrying about your baby, tells me a lot about the kind of mother you are."</span></div>
+      <div class="ps-card"><h5>😨 Fear the baby will be taken</h5><p>This fear silences women. Address it openly: the aim is support, and most women are helped at home with their baby.</p><span class="ps-phrase">"I want to reassure you — telling me how you feel will not lead to your baby being taken away. My job is to help you get well, and the vast majority of mums are supported at home, with their baby, exactly where they should be."</span></div>
+      <div class="ps-card"><h5>🧠 Normalising intrusive thoughts</h5><p>Ego-dystonic intrusive thoughts are common and frightening; explaining what they are relieves enormous distress.</p><span class="ps-phrase">"Those horrible thoughts that pop into your head and upset you — lots of parents get them, precisely because you love your baby and your mind is on high alert. Having them does not mean you'll act on them; the distress they cause you is actually reassuring."</span></div>
+      <div class="ps-card"><h5>🤝 Support &amp; the partner</h5><p>Involve the partner and health visitor; isolation worsens outcomes. Practical support and sleep matter.</p><span class="ps-phrase">"You don't have to carry this alone. With your agreement I'd like to involve your health visitor and, where helpful, your partner, so you've got proper support around you — and we'll look at practical things like rest too."</span></div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div><div class="sca-phrase">"Have you had any thoughts of harming yourself, or that the baby would be better off without you?" — direct, compassionate self-risk assessment.</div><div class="sca-phrase">"Many mums get frightening, unwanted thoughts about the baby that horrify them — have you? The distress they cause you is actually reassuring." — interprets ego-dystonic thoughts correctly.</div><div class="sca-phrase">"Telling me how you feel will not lead to your baby being taken away." — unlocks disclosure.</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not asking about self-harm/suicide and thoughts about the baby</li><li>Misreading ego-dystonic intrusive thoughts as psychosis and over-reacting — or missing genuine psychotic features</li><li>Failing to screen for postpartum psychosis / bipolar history</li><li>Judgmental or dismissive manner that shuts down disclosure</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">No risk assessment; psychosis not screened; intrusive thoughts mishandled; "baby blues" mislabel; judgmental manner</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Mood assessed; some risk assessment; psychosis partly screened; intrusive thoughts noted but not interpreted; ICE partial</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">PND identified; full risk assessment (self + baby); psychosis excluded; intrusive thoughts correctly interpreted &amp; normalised; family bipolar history flagged; non-judgmental space; ICE all three</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage — Emergency (Psychosis / Suicide) · Urgent · Routine</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The triage hinge in perinatal mental health is risk: postpartum psychosis and active suicidality/infanticidal intent are emergencies needing same-day specialist assessment; severe depression and high-risk histories need urgent perinatal input; and mild–moderate PND/anxiety is managed in primary care with the health visitor and talking therapies.</strong> Priya is moderate PND with ego-dystonic thoughts and no psychosis — urgent primary-care management with perinatal team involvement and a clear safety-net.</div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div>
+        <h3>Same day</h3>
+        <span class="tc-badge tcb-e">Immediate action</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Postpartum psychosis</strong><em>Mania/confusion/delusions/hallucinations → same-day psychiatry; MBU; don't leave unsupervised</em></li>
+          <li class="tc-item"><strong>Active suicidal intent / plan</strong><em>Urgent crisis/perinatal assessment; safety plan; not left alone</em></li>
+          <li class="tc-item"><strong>Intent to harm baby / delusional drive</strong><em>Emergency psychiatric + safeguarding</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Urgent / Refer</div>
+        <h3>Days</h3>
+        <span class="tc-badge tcb-u">Perinatal team</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Severe depression / functional collapse</strong><em>Urgent perinatal MH referral; consider MBU</em></li>
+          <li class="tc-item"><strong>Bipolar / postpartum psychosis history</strong><em>Perinatal psychiatry; care plan</em></li>
+          <li class="tc-item"><strong>Moderate PND not responding / complex</strong><em>Perinatal team; medication advice</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Routine</div>
+        <h3>Primary care</h3>
+        <span class="tc-badge tcb-r">GP + health visitor</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Mild–moderate PND / anxiety</strong><em>Talking therapy; HV support; SSRI if needed; review</em></li>
+          <li class="tc-item"><strong>Baby blues</strong><em>Reassurance, support, review if &gt;2 weeks</em></li>
+          <li class="tc-item"><strong>Subthreshold symptoms</strong><em>Guided self-help; monitor</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Triage rationale</div><div class="sca-phrase">"You're not safe to be left struggling alone, but you're also not in crisis — there's no sign of the severe illness that needs hospital. So we'll treat this actively here, bring in your health visitor and the perinatal team, and I'll give you a clear plan for if things get worse."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Missing psychosis / not escalating active suicidality</li><li>Over-escalating ego-dystonic thoughts as an emergency</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Assessment — Mental State · Risk Formulation · Mother–Infant · Physical</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>"Examination" here is the mental state assessment and risk formulation, an observation of the mother–infant interaction, and a check for physical contributors. The risk formulation — to self, to the baby, and from others — is the document that drives every subsequent decision.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🧠 Mental state &amp; risk</div>
+        <table class="it">
+          <thead><tr><th>Domain</th><th>What to assess</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Appearance/behaviour</td><td>Self-care, engagement, agitation/retardation, rapport.</td></tr>
+            <tr><td class="factor">Mood &amp; affect</td><td>Low/labile/elated; range; reactivity.</td></tr>
+            <tr><td class="factor">Thought</td><td>Guilt/worthlessness; intrusive thoughts (ego-dystonic vs delusional); content about the baby.</td></tr>
+            <tr><td class="factor">Perception &amp; insight</td><td>Hallucinations/delusions (psychosis); insight preserved (PND) vs lost (psychosis).</td></tr>
+            <tr><td class="factor">Risk formulation</td><td>To self (ideation/plan/intent/protective factors), to baby (intent/capacity to care), from others (abuse).</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">👶 Infant &amp; physical</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Mother–infant interaction</td><td>Bonding, responsiveness, warmth; infant feeding/growth and welfare.</td></tr>
+            <tr><td class="factor">Infant safety/welfare</td><td>Safeguarding assessment; other children; home situation.</td></tr>
+            <tr><td class="factor">Physical contributors</td><td>Thyroid (postpartum thyroiditis), anaemia, pain, sleep deprivation.</td></tr>
+            <tr><td class="factor">Screening tools</td><td>Whooley questions; EPDS for severity/monitoring (note item 10 — self-harm).</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Demonstrating the formulation</div><div class="sca-phrase">"From what you've told me: your mood has been low for a month with lots of guilt, you've had frightening thoughts that distress you but you'd never act on, and there's no sign of losing touch with reality. I'd put the risk to you and the baby as low right now — but I want a clear plan in case that changes."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>No explicit risk formulation</li><li>Not observing the mother–infant interaction or infant welfare</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Investigations — Screening Tools · Exclude Physical Mimics</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>This is a clinical diagnosis supported by validated tools; "investigations" are limited to quantifying severity and excluding physical contributors that mimic or worsen low mood.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">📋 Tools</div>
+        <table class="it">
+          <thead><tr><th>Tool</th><th>Use</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Whooley questions</td><td>Case-finding for depression (low mood; loss of interest), plus an anxiety enquiry.</td></tr>
+            <tr><td class="factor">EPDS</td><td>Edinburgh Postnatal Depression Scale — severity and monitoring; item 10 screens self-harm thoughts.</td></tr>
+            <tr><td class="factor">GAD-7 / risk tools</td><td>Anxiety severity; structured risk documentation.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🧪 Exclude physical mimics</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">TFTs</td><td>Postpartum thyroiditis can mimic/worsen mood symptoms.</td></tr>
+            <tr><td class="factor">FBC / ferritin</td><td>Postpartum anaemia contributes to fatigue and low mood.</td></tr>
+            <tr><td class="factor">Other</td><td>Glucose, B12 as indicated; consider pain/sleep contributors.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key reasoning</div><div class="sca-phrase">"I'd like to use a short questionnaire to track how you're doing, and check your thyroid and iron levels, because those can affect mood after birth too."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not quantifying severity or documenting risk</li><li>Missing thyroid/anaemia as contributors</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Diagnosis — Blues · PND · Anxiety/OCD/PTSD · Psychosis</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Name the condition and its severity, and explicitly state the risk formulation — because the same symptom (a thought about harm) means completely different things in PND versus psychosis.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:24%">Diagnosis</th><th>Discriminating features</th><th class="chg-col">Urgency</th></tr></thead>
+        <tbody>
+          <tr><td class="q"><strong>Baby blues</strong></td><td class="why">Days 3–10, tearful/labile, transient, function preserved, resolves by 2 weeks.</td><td><span class="chg chg-ddx">Routine</span></td></tr>
+          <tr><td class="q"><strong>Postnatal depression</strong></td><td class="why">Persistent (&gt;2 weeks) pervasive low mood, guilt, anhedonia, impaired function/bonding, ego-dystonic intrusive thoughts (Priya).</td><td><span class="chg chg-rx">Active Rx</span></td></tr>
+          <tr><td class="q"><strong>Perinatal anxiety / OCD</strong></td><td class="why">Excessive worry, panic, intrusive thoughts with checking/avoidance; often coexists with depression.</td><td><span class="chg chg-rx">Active Rx</span></td></tr>
+          <tr><td class="q"><strong>Birth-related PTSD</strong></td><td class="why">Re-experiencing, avoidance, hyperarousal after traumatic birth.</td><td><span class="chg chg-rx">Therapy</span></td></tr>
+          <tr><td class="q"><strong>🚩 Postpartum psychosis</strong></td><td class="why">Rapid onset, mania/confusion, delusions (often about baby), hallucinations, lost insight.</td><td><span class="chg chg-999">EMERGENCY</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ddx-card ddx-b" style="margin-bottom:4px">
+      <h4>🚩 The discipline — the same thought, two very different illnesses</h4>
+      <p>The pivotal clinical judgement is the nature of a thought about harm. An <strong>ego-dystonic intrusive thought</strong> — unwanted, distressing, recognised as wrong, with no intent and preserved insight — is a feature of postnatal depression/anxiety/OCD and is reassuring in its very distress; it should be normalised and treated, not panicked over. A thought driven by a <strong>delusion or command hallucination</strong>, or with intent, or with lost insight, is postpartum psychosis — an emergency. For Priya, the formulation is moderate postnatal depression with ego-dystonic intrusive thoughts, no psychosis, current risk low but with a family history of probable postpartum psychosis warranting vigilance.</p>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Explaining it plainly</div><div class="sca-phrase">"What you have is postnatal depression — common, and very treatable. The frightening thoughts are part of it, not a sign you'll act on them. You're not losing your mind, and you're not a danger to your baby — but we'll keep a close eye and you've got a clear plan."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Confusing intrusive thoughts with psychosis (or vice versa)</li><li>Not stating an explicit risk formulation</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc6">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">Referral — Crisis/MBU · Perinatal Team · Health Visitor · Safeguarding</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Referral is driven by the risk formulation: emergency psychiatric assessment and Mother &amp; Baby Unit for psychosis or acute risk; the perinatal mental health team for severe, complex or high-risk cases; the health visitor as a core partner in all; and safeguarding where the infant's welfare is in question.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="ref-table">
+        <thead><tr><th style="width:24%">Referral</th><th>Who / when</th><th style="width:20%">Urgency</th></tr></thead>
+        <tbody>
+          <tr><td><strong>🔴 Crisis / perinatal psychiatry / MBU</strong></td><td>Postpartum psychosis, active suicidality, intent to harm baby, severe depression. Admission keeps mother and baby together (Mother &amp; Baby Unit).</td><td><span class="rf-action rfa-999">Same day</span></td></tr>
+          <tr><td><strong>Perinatal mental health team</strong></td><td>Moderate–severe PND/anxiety, complex cases, medication in pregnancy/breastfeeding, and high-risk histories (bipolar, postpartum psychosis).</td><td><span class="rf-action rfa-same">Urgent / soon</span></td></tr>
+          <tr><td><strong>Talking therapies (NHS Talking Therapies/perinatal)</strong></td><td>Mild–moderate depression/anxiety/OCD/PTSD — often first-line; perinatal-specific where available.</td><td><span class="rf-action rfa-same">Routine</span></td></tr>
+          <tr><td><strong>Health visitor</strong></td><td>Core support for all — monitoring, practical help, infant welfare, listening visits.</td><td><span class="rf-action rfa-same">Routine</span></td></tr>
+          <tr><td><strong>Safeguarding / social care</strong></td><td>Where infant or other children's welfare is a concern, or domestic abuse.</td><td><span class="rf-action rfa-same">Per local pathway</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Framing MBU positively</div><div class="sca-phrase">"If anyone ever does need hospital care for this, there are special units where mum and baby stay together — you would never be separated from your baby. But you're not at that point; we'll support you at home."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not involving the health visitor / perinatal team</li><li>Not escalating psychosis or acute risk same-day</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Talking Therapy · Medication &amp; Breastfeeding · Support · Safety-Net</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Management is stepped to severity: support and talking therapy for mild–moderate illness, antidepressants (sertraline commonly, even when breastfeeding) where moderate–severe or unresponsive, the health visitor and social support throughout, and a clear, explicit safety-net for escalation.</strong> The guiding principle is not to withhold effective treatment from a breastfeeding mother out of unfounded medication fears.</div>
+    <div class="sub-divider">7A — Stepped care</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--g)">💬 Psychological &amp; support</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Talking therapy</td><td>Guided self-help/CBT for mild–moderate; perinatal-specific therapy where available; first-line for many, especially if she prefers to avoid medication.</td></tr>
+            <tr><td class="factor">Health visitor</td><td>Listening visits, monitoring, practical support, infant welfare — a core part of the plan.</td></tr>
+            <tr><td class="factor">Social support</td><td>Partner involvement, practical help, sleep, peer support, addressing isolation/abuse.</td></tr>
+            <tr><td class="factor">Normalise &amp; educate</td><td>Explain the illness, the intrusive thoughts, and recovery — reduces guilt and improves engagement.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">💊 Medication &amp; safety-net</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Antidepressant</td><td>For moderate–severe or unresponsive: sertraline commonly used in breastfeeding (low milk transfer); discuss risks/benefits; don't withhold effective treatment for breastfeeding alone.</td></tr>
+            <tr><td class="factor">If already on treatment</td><td>Optimise; avoid abrupt changes; perinatal advice for complex regimens; never stop lithium/abruptly switch without specialist input.</td></tr>
+            <tr><td class="factor">High-risk history</td><td>Bipolar/postpartum psychosis history → perinatal psychiatry, vigilance, care plan.</td></tr>
+            <tr><td class="factor">Safety-net</td><td>Explicit: what to do and who to call if mood worsens, thoughts of harm intensify, or any psychotic features emerge — including out-of-hours/crisis numbers; involve partner in the plan.</td></tr>
+            <tr><td class="factor">Review</td><td>Early and regular review (and EPDS tracking); close the loop with the health visitor/perinatal team.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">A plan that scores</div><div class="sca-phrase">"Here's the plan: talking therapy, your health visitor closely involved, and — if you'd like — an antidepressant called sertraline that's considered one of the safer options while breastfeeding. I'll see you again soon, and here's exactly who to call, day or night, if things get worse or you have any frightening change."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Withholding an antidepressant solely because she is breastfeeding</li><li>No explicit safety-net / crisis plan for escalation or psychosis</li><li>Not involving the health visitor/partner</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Perinatal Mental Health — SCA Consultation Scorecard</div><div class="scorecard-sub">NICE CG192 · Risk to self &amp; baby · Blues vs PND vs psychosis · Sertraline &amp; breastfeeding · Perinatal team</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Creates a safe, non-judgmental space</strong> — enables honest disclosure of difficult thoughts</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Structured perinatal history</strong> — mood, function, timing, risk, history gathered systematically</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Explicit risk formulation</strong> — to self, to baby, from others — documented and verbalised</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain-language explanation</strong> — names PND, normalises intrusive thoughts, explains recovery</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Shared decision-making</strong> — therapy vs medication discussed respecting her wishes (breastfeeding)</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Explicit safety-net &amp; crisis plan</strong> — who to call, when, including out-of-hours/psychosis features</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plan + review + closing question</strong> — agreed plan, early review, "anything else?"</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, diagnosis, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Full risk assessment — self &amp; baby</strong> — directly asks about suicide and thoughts about the baby/capacity to care</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Excludes postpartum psychosis</strong> — screens mania/confusion/delusions/hallucinations and acts if present</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correctly interprets ego-dystonic intrusive thoughts</strong> — distinguishes from psychosis; normalises rather than panics</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Distinguishes blues from PND</strong> — uses timing (&gt;2 weeks), pervasiveness and function</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Flags high-risk history</strong> — family/personal bipolar or postpartum psychosis recognised as risk</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Screening tools &amp; physical mimics</strong> — EPDS/Whooley; TFTs/FBC considered</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Offers talking therapy</strong> — first-line for mild–moderate; perinatal-specific where available</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Medication handled correctly in breastfeeding</strong> — sertraline as an option; does not withhold effective treatment unnecessarily</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Involves health visitor / perinatal team</strong> — appropriate referral by severity/risk</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct overall formulation</strong> — moderate PND, ego-dystonic thoughts, low current risk, vigilance for psychosis given history</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decisions</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — her belief she's "a terrible mother" / "going mad" surfaced and reframed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> — fear the baby will be taken away directly addressed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations addressed</strong> — wishes about medication/breastfeeding respected in the plan</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Validates without minimising</strong> — guilt named as a symptom; mother reassured she is not failing</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Normalises intrusive thoughts compassionately</strong> — relieves shame; explains they don't mean she'll act</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Risk questions asked sensitively</strong> — direct but compassionate; no alarm</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Involves partner/support appropriately</strong> — with consent; addresses isolation</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>MBU/admission framed reassuringly if discussed</strong> — mother and baby stay together</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Instils realistic hope</strong> — PND is common and recovers with treatment</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Mother leaves feeling safe and supported</strong> — engaged, not judged or frightened</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Collaborative close</strong> — plan agreed; crisis plan understood; review booked</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">No risk assessment; psychosis missed or intrusive thoughts mishandled; antidepressant withheld for breastfeeding with no plan; no safety-net; judgmental</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">PND identified; partial risk assessment; intrusive thoughts noted but not interpreted; HV/therapy mentioned; safety-net vague; ICE partial</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">PND diagnosed; full risk assessment (self + baby); psychosis excluded; intrusive thoughts correctly interpreted &amp; normalised; therapy + sertraline option; HV/perinatal team; ICE all three; explicit crisis safety-net</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist to see your score and feedback</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked — areas to develop</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"Sorry, I'm here about the baby's feeding really… (tearful) …I don't know, I just don't feel like myself. I think I'm just not very good at this."</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>Priya Sharma, 31, first baby, now 7 weeks old. You booked the appointment "about feeding" because you couldn't bring yourself to say the real reason. For about 4 weeks you've felt persistently low, can't sleep even when the baby does, don't enjoy anything, barely eat, and feel crushing guilt that you're "a terrible mother." You've thought "the baby would be better off without me," though you don't have a plan to harm yourself. You are breastfeeding and very anxious about taking any medication. If the doctor is warm, patient and explicitly non-judgmental, you will — with great difficulty — admit you keep getting horrible intrusive thoughts of the baby being harmed, which terrify and disgust you; you would never act on them and they make you feel like a monster. You have told no one. You are NOT confused, elated, or hearing/seeing things, and you know these thoughts are your own. Your mum had a serious breakdown after you were born.</p></div>
+      <div class="ab"><h5>Hidden concerns (reveal if explored)</h5><p><strong>Fear of losing the baby (main):</strong> you're terrified that admitting the thoughts means social services will take your baby. This is why you've hidden it. Explicit reassurance changes everything.</p><p><strong>Shame:</strong> you feel like a failure and a bad person. Compassion and normalising help hugely.</p><p><strong>Medication/breastfeeding:</strong> you're scared medication will harm the baby through your milk and don't want to stop breastfeeding.</p></div>
+      <div class="ab"><h5>Clinical details if asked</h5><ul><li>Low mood ~4 weeks, persistent, worse in mornings; anhedonia; poor sleep and appetite; profound guilt</li><li>Passive thoughts "better off without me"; no active suicidal plan or intent; some protective factors (the baby, your partner)</li><li>Ego-dystonic intrusive thoughts of harm to baby — distressing, unwanted, no intent; you know they're wrong</li><li>No mania, no confusion, no delusions, no hallucinations; insight preserved</li><li>No past psychiatric history; mother had a postnatal "breakdown" (possibly psychosis)</li><li>Supportive partner; no domestic abuse; birth was okay (no trauma); breastfeeding established</li></ul></div>
+      <div class="ab"><h5>Reactions at key moments</h5><ul><li><strong>On gentle risk questions:</strong> initially hesitant; opens up if reassured and not judged.</li><li><strong>On disclosing intrusive thoughts:</strong> very ashamed; hugely relieved when told these are common and don't mean you'll act.</li><li><strong>On "baby won't be taken":</strong> visible relief; becomes much more engaged.</li><li><strong>On sertraline:</strong> reassured if told it's considered one of the safer options while breastfeeding and the decision is yours.</li><li><strong>Challenge line:</strong> "Please don't tell anyone about the thoughts — they'll take her away from me, won't they?"</li></ul></div>
+    </div>
+    <div class="actor-challenge">"I've never told anyone this because I was so scared… if I tell you about the thoughts I get, you won't take my baby away, will you?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> Priya is helped if the GP: (1) creates a warm, non-judgmental space and reassures her the baby won't be taken away for being honest; (2) conducts a full, sensitive risk assessment (self and baby) and excludes postpartum psychosis; (3) correctly interprets her intrusive thoughts as ego-dystonic (a feature of PND, not psychosis) and normalises them; (4) diagnoses postnatal depression and explains it compassionately; (5) offers talking therapy and discusses sertraline as a breastfeeding-compatible option without withholding treatment; (6) involves the health visitor/perinatal team, flags the family history, and gives an explicit crisis safety-net. She disengages and stays silent if she feels judged, or if her fear of losing the baby is not addressed.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Perinatal Mental Health — Clinical Decision Framework</div><div class="sum-sub">NICE CG192 · Blues vs PND vs psychosis · Risk · Breastfeeding</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🚦 1 — Triage by risk</div>
+    <div class="algo-wrap" style="margin-bottom:1rem">
+      <div class="algo-start">Perinatal mood/anxiety concern</div>
+      <div class="algo-arrow">▼</div>
+      <div class="algo-row">
+        <div class="algo-branch algo-red"><div class="algo-branch-lbl">🔴 Emergency</div><ul class="algo-list"><li>Postpartum psychosis (mania/delusions/hallucinations)</li><li>Active suicidality / intent to harm baby</li></ul><span class="algo-action red-action">Same-day · MBU</span></div>
+        <div class="algo-branch algo-amber"><div class="algo-branch-lbl">🟠 Urgent</div><ul class="algo-list"><li>Severe depression / functional collapse</li><li>Bipolar / postpartum psychosis history</li></ul><span class="algo-action amber-action">Perinatal team</span></div>
+        <div class="algo-branch algo-green"><div class="algo-branch-lbl">🟢 Routine</div><ul class="algo-list"><li>Mild–moderate PND / anxiety</li><li>Baby blues</li></ul><span class="algo-action green-action">GP + HV</span></div>
+      </div>
+    </div>
+    <div class="sum-sub-hdr">💊 2 — Manage</div>
+    <div class="card" style="padding:.8rem 1rem"><p style="font-size:12.5px;line-height:1.6"><strong>Always:</strong> risk assess (self + baby), exclude psychosis, normalise intrusive (ego-dystonic) thoughts, involve health visitor, explicit safety-net. <strong>Mild–moderate:</strong> talking therapy ± self-help. <strong>Moderate–severe/unresponsive:</strong> antidepressant — sertraline commonly used in breastfeeding; don't withhold effective treatment. <strong>High-risk history / severe / psychosis:</strong> perinatal psychiatry, MBU keeps mother and baby together. Exclude thyroid/anaemia. Review early.</p></div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label">SCA Quick Reference</div><div class="sum-title">Perinatal Mental Health — Consultation Playbook</div><div class="sum-sub">Safe space · risk to self &amp; baby · read the thoughts right · don't withhold treatment</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🎯 The three pivots that pass this case</div>
+    <div class="sum-3col">
+      <div class="snp-phrase-box snp-e"><div class="snp-lbl">1 · Risk &amp; psychosis</div><div class="snp-text">Always ask about self-harm AND thoughts about the baby; actively exclude postpartum psychosis (an emergency).</div></div>
+      <div class="snp-phrase-box snp-m"><div class="snp-lbl">2 · Read the thoughts</div><div class="snp-text">Ego-dystonic intrusive thoughts (distressing, no intent, insight intact) = PND, normalise. Delusional/command/intent = emergency.</div></div>
+      <div class="snp-phrase-box snp-a"><div class="snp-lbl">3 · Treat &amp; support</div><div class="snp-text">Don't withhold sertraline for breastfeeding; involve HV/perinatal team; reassure the baby won't be taken; explicit crisis safety-net.</div></div>
+    </div>
+    <div class="sdp-pivot" style="margin-top:1rem;font-size:11.5px;background:#fef3c7;color:#854d0e;border-radius:8px;padding:.6rem .85rem;line-height:1.5">⛔ Don't skip the risk assessment (self + baby) · Don't miss postpartum psychosis, or over-react to ego-dystonic intrusive thoughts · Don't withhold effective treatment purely because she's breastfeeding · Don't forget the health visitor, perinatal team and an explicit crisis plan · Address the fear that the baby will be taken away</div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Perinatal Mental Health · GP Clinical Reasoning Framework v2</strong> · NICE CG192 Antenatal &amp; postnatal mental health · NICE CKS Depression — antenatal &amp; postnatal · MBRRACE-UK maternal mortality reports · perinatal mental health services / Mother &amp; Baby Units</p>
+  <p style="margin-top:4px">Baby blues (days 3–10, resolving) ≠ postnatal depression (&gt;2 weeks, pervasive, impairing) · Always assess risk to self AND baby · Postpartum psychosis (rapid onset, mania/confusion/delusions/hallucinations) = emergency → same-day assessment, MBU · Ego-dystonic intrusive thoughts of harm are common in PND/anxiety/OCD — normalise; delusional/command thoughts or intent = emergency · Sertraline commonly used in breastfeeding — don't withhold effective treatment · Personal/family bipolar or postpartum psychosis = high risk · Involve the health visitor and perinatal team; explicit crisis safety-net</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current NICE CG192/CKS and local perinatal pathways · Clinical judgement takes precedence over any framework</p>
+</div>
+</div><!-- /page -->
+  </main>
+</div><!-- /app -->
+<script src="script.js"></script>
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
+</body>
+</html>

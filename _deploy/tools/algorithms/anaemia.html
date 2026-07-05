@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anaemia (Low Hb) Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f6f2;--surface:#ffffff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;
+  --safety:#dc2626;--safety-bg:#fef2f2;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;
+  --treat:#16a34a;--treat-bg:#f0fdf4;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;
+  --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;min-height:100vh;padding:0 0 60px}
+.alg-header{background:var(--text);color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--treat),#22c55e);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted);transition:all .2s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--diagnose)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.why-btn:hover{color:var(--text)}
+.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<!-- ============================================================
+     BANNER
+     ============================================================ -->
+<div class="alg-header">
+  <h1>🩸 Anaemia (Low Hb)</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta"><span>NICE NG12</span><span>CKS</span><span>NICE NG203</span><span>10-min consult</span></div>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🩸</div>
+  <div>
+    <b>Anaemia (Low Hb) — Investigation &amp; Management</b>
+    <small>UK primary care algorithm for adults presenting with low Hb or suspected anaemia · NICE/BSH-aligned</small>
+  </div>
+</div>
+
+<!-- ============================================================
+     PROGRESS
+     ============================================================ -->
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- ============================================================
+     FLOW
+     ============================================================ -->
+<!-- ════════ DIAGRAM (FLOWCHART) VIEW ════════ -->
+<div id="viewDiagram">
+  <div class="dg-legend">
+    <span>The full reasoning pathway — confirm and grade the anaemia, screen for emergencies, let <b>MCV</b> split the differential to a named cause, replace the deficiency while finding the source, and apply the NICE NG12 FIT / GI-cancer rules.</span>
+    <span class="legend">
+      <span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span>
+    </span>
+  </div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start">
+      <span class="lbl">Presentation</span>
+      <span class="ttl">Low haemoglobin</span>
+      <div class="body">Men &lt;130 g/L · women &lt;120 g/L (non-pregnant). Always read with the <b>MCV, reticulocyte count and blood film</b>; review the trend, speed of fall, and any bleeding. Anaemia is a <i>sign</i>, never a final diagnosis.</div>
+    </div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec">
+      <span class="lbl">Step 1 · Safety — screen the emergencies</span>
+      <span class="ttl">Very low / symptomatic Hb, bleeding, or pancytopenia?</span>
+      <div class="body"><ul>
+        <li><b>Haemodynamic compromise / symptomatic</b> — chest pain, breathlessness, syncope, tachycardia, very low Hb</li>
+        <li><b>Active major bleeding</b> — GI bleed, menorrhagia with collapse</li>
+        <li><b>Pancytopenia or blasts on film</b> — possible leukaemia/marrow failure</li>
+        <li><b>Rapidly falling Hb</b> — haemolysis or concealed bleeding</li>
+      </ul></div>
+    </div>
+    <div class="split">
+      <div class="stem"></div>
+      <div class="bar" style="width:62%;"></div>
+      <div class="cols two">
+        <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — escalate</div><div class="box stop"><span class="lbl">Stop · same-day / admit</span><span class="ttl">Urgent</span><div class="body">Symptomatic / very low Hb or active bleed → same-day admission, transfuse per protocol. <b>Pancytopenia or blasts → very urgent haematology / suspected-cancer referral.</b></div></div></div>
+        <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — primary-care work-up</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Classify by MCV</span><div class="body">History/exam: diet, alcohol, drugs, menstrual/GI bleeding, family origin. <b>Offer FIT to all adults with IDA, and to all aged ≥60 with ANY anaemia.</b></div></div></div>
+      </div>
+    </div>
+    <div class="arrow"><span class="tag">Step 3 · split by red-cell size (MCV)</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split">
+      <div class="stem"></div>
+      <div class="bar" style="width:84%;"></div>
+      <div class="cols">
+        <div class="col"><div class="blabel">Microcytic &lt;80 fL</div><div class="box ix"><span class="ttl">Ferritin + iron studies</span><div class="body"><b>Low ferritin = iron deficiency</b> (find the source). Raised ferritin + low transferrin sat = <b>anaemia of chronic disease / functional iron deficiency</b>. Also: <b>thalassaemia trait</b> (very low MCV, normal/high RBC, normal ferritin → Hb electrophoresis). Send coeliac serology.</div></div></div>
+        <div class="col"><div class="blabel">Normocytic 80–100 fL</div><div class="box ix"><span class="ttl">Reticulocytes + B12/folate</span><div class="body"><b>Low retic:</b> ACD, CKD (→ EPO deficiency), early IDA, mixed, marrow. <b>High retic:</b> bleeding or <b>haemolysis</b> → LDH, haptoglobin, bilirubin, DAT, film for fragments.</div></div></div>
+        <div class="col"><div class="blabel">Macrocytic &gt;100 fL</div><div class="box ix"><span class="ttl">B12/folate · TFTs · myeloma</span><div class="body"><b>Megaloblastic:</b> B12 / folate deficiency (hypersegmented neutrophils). <b>Non-megaloblastic:</b> alcohol, hypothyroidism, liver disease, <b>myelodysplasia</b>, drugs. Consider myeloma screen if ≥60.</div></div></div>
+      </div>
+    </div>
+    <div class="arrow"><span class="tag">Step 7 · treat cause + find source</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:740px;">
+      <span class="lbl">Step 7 · Action — replace &amp; treat the cause</span>
+      <span class="ttl">Correct the deficiency, never in isolation</span>
+      <div class="body"><ul>
+        <li><b>Iron deficiency:</b> oral ferrous sulfate/fumarate OD (alternate-day dosing improves absorption/tolerance); recheck Hb at 2–4 wks (rise &gt;20 g/L confirms response); continue 3 months after Hb normal to refill stores. <b>IV iron</b> if intolerant, non-adherent, ongoing losses or CKD. <b>Investigate the GI tract in parallel.</b></li>
+        <li><b>B12 deficiency:</b> IM hydroxocobalamin (loading then 3-monthly); <b>replace B12 before folate</b> to avoid subacute combined degeneration of the cord.</li>
+        <li><b>Folate deficiency:</b> oral folic acid 5 mg OD once B12 confirmed adequate.</li>
+        <li><b>ACD / CKD:</b> treat the underlying disease; renal anaemia → ESA + iron under nephrology. Coeliac serology in any unexplained IDA.</li>
+      </ul></div>
+    </div>
+    <div class="arrow"><span class="tag">Step 6 · cancer exclusion &amp; escalation</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:740px;">
+      <span class="lbl">Step 6 · Refer — <span class="pill pill-purple">2WW · NICE NG12</span></span>
+      <span class="ttl">Iron deficiency → exclude GI cancer</span>
+      <div class="body"><ul>
+        <li><b>Offer FIT</b> to all adults with iron-deficiency anaemia, and to adults aged <b>≥60 with ANY anaemia</b> — refer on the suspected-cancer pathway if <b>FIT ≥10 µg Hb/g</b>.</li>
+        <li>Aged <b>≥55 + upper abdominal pain + low Hb</b> → non-urgent direct-access OGD. <b>Women ≥55 + visible haematuria + low Hb</b> → direct-access gynae/urology USS.</li>
+        <li><b>Men of any age</b> and <b>post-menopausal women</b> with unexplained IDA → investigate both upper and lower GI tract.</li>
+        <li><span class="pill pill-purple">Haematology</span> suspected haemolysis, myelodysplasia, marrow failure, or anaemia unexplained after first-line work-up.</li>
+      </ul></div>
+    </div>
+    <div class="arrow"><span class="tag">Step 8 · diet &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:740px;border-color:#a9c6b3;">
+      <span class="lbl">Step 8 · Lifestyle &amp; modifiable factors</span>
+      <span class="ttl">Support replacement, not replace it</span>
+      <div class="body"><b>Iron-rich diet</b> (red meat, pulses, leafy greens) + vitamin C with meals to aid absorption; separate iron from tea/coffee/calcium. <b>Reduce alcohol</b> (macrocytosis, folate). Treat heavy menstrual bleeding (tranexamic acid, hormonal options). Review culprit drugs (PPIs, metformin → B12; methotrexate → folate). Dietitian if dietary/vegan deficiency.</div>
+    </div>
+    <div class="arrow"><span class="tag">Step 9 · monitor &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:740px;background:#fff8f0;border-color:#e6c489;">
+      <span class="lbl">Step 9 · Monitoring &amp; safety-net</span>
+      <span class="ttl">What to recheck, when to return</span>
+      <div class="body"><b>Recheck:</b> FBC at 2–4 wks (then periodically until stable); if no Hb rise on iron, reconsider adherence, ongoing loss, wrong diagnosis or malabsorption. <b>Return sooner if:</b> black/tarry or bloody stools, vomiting blood, worsening breathlessness or chest pain, dizziness/collapse. <b>Always close the loop</b> on FIT/endoscopy results.</div>
+    </div>
+
+  </div><!-- /flow -->
+  </div><!-- /chart -->
+  <div class="band">
+    <div class="caution">⚠️ <b>Never treat iron deficiency blindly:</b> in men and post-menopausal women IDA is colorectal cancer until proven otherwise. Replace iron <b>and</b> investigate the source in parallel.</div>
+  </div>
+</div><!-- /viewDiagram -->
+
+<div class="alg-flow" id="flow">
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 1 — SAFETY: Red Flags
+       ══════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-header">
+    <div class="node-num">1</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Exclude emergencies — haemodynamic compromise &amp; can't-miss causes</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+    <div class="node-body">
+      Screen every patient for the following before proceeding. If any present → act immediately.
+      <div class="rfgrid">
+        <div class="rftile"><b>Haemodynamic instability</b> HR &gt;100, SBP &lt;90, collapse, syncope, pallor with tachycardia → <span class="pill pill-red">999</span></div>
+        <div class="rftile"><b>Active / massive GI bleed</b> Haematemesis, melaena, PR haematochezia with haemodynamic compromise → <span class="pill pill-red">999</span></div>
+        <div class="rftile"><b>Acute chest pain + anaemia</b> Exertional chest pain or ECG changes — ACS risk high in severe anaemia → <span class="pill pill-red">999</span></div>
+        <div class="rftile"><b>Severe anaemia (Hb &lt;70 g/L)</b> Symptomatic (dyspnoea at rest, angina, confusion) → same-day haematology/A&amp;E <span class="pill pill-red">Same-day</span></div>
+        <div class="rftile"><b>Suspected haematological malignancy</b> Pancytopenia, lymphadenopathy, splenomegaly, night sweats, weight loss → <span class="pill pill-purple">2WW haematology</span></div>
+        <div class="rftile"><b>Unintentional weight loss + anaemia</b> &gt;5% in 3 months — consider GI, lung, haematological malignancy → <span class="pill pill-purple">2WW appropriate pathway</span></div>
+        <div class="rftile"><b>Rectal bleeding + iron-deficiency</b> Unexplained IDA aged ≥60, or any age with rectal bleed → <span class="pill pill-purple">2WW colorectal</span></div>
+        <div class="rftile"><b>Post-partum Hb &lt;80 g/L</b> Symptomatic new mother — haemorrhage risk, requires urgent review → <span class="pill pill-red">Same-day obstetric</span></div>
+        <div class="rftile"><b>Aplastic anaemia features</b> Pancytopenia + no obvious cause, easy bruising, recurrent infections → <span class="pill pill-red">Same-day haematology</span></div>
+        <div class="rftile"><b>Haemolytic features</b> Jaundice + anaemia, dark urine (haemoglobinuria), rapidly falling Hb → <span class="pill pill-red">Same-day</span></div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Anaemia is rarely a diagnosis in itself — it is a sign of an underlying condition. Missing a GI malignancy behind iron-deficiency anaemia (IDA), or failing to recognise aplastic anaemia, has life-altering consequences. NICE NG12 mandates 2WW colorectal referral for unexplained IDA aged ≥60. Hb &lt;70 g/L is associated with increased perioperative mortality and cardiac events; these patients need same-day input. Haemolysis can be life-threatening (e.g. TTP, haemolytic uraemic syndrome) and deteriorates rapidly without specialist treatment.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 2 — DIAGNOSE: Confirmation
+       ══════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-header">
+    <div class="node-num">2</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Confirm anaemia &amp; define the MCV — the diagnostic pivot</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+    <div class="node-body">
+      Anaemia is confirmed by WHO criteria. The MCV (mean cell volume) from FBC dictates the entire subsequent workup.
+      <div class="kv">
+        <div>WHO Thresholds</div>
+        <div>
+          Men: Hb &lt;130 g/L &nbsp;|&nbsp; Women (non-pregnant): Hb &lt;120 g/L &nbsp;|&nbsp; Pregnant: Hb &lt;110 g/L (1st &amp; 3rd trimester), &lt;105 g/L (2nd trimester)
+        </div>
+        <div>MCV &lt;80 fL</div>
+        <div><b>Microcytic anaemia</b> — think IDA, thalassaemia, sideroblastic, chronic disease (can be). Most common in primary care = IDA.</div>
+        <div>MCV 80–100 fL</div>
+        <div><b>Normocytic anaemia</b> — think anaemia of chronic disease (ACD), haemolysis, bone marrow failure, mixed deficiency, acute blood loss, CKD.</div>
+        <div>MCV &gt;100 fL</div>
+        <div><b>Macrocytic anaemia</b> — think B12/folate deficiency, hypothyroidism, liver disease, alcohol, drugs (methotrexate, hydroxycarbamide), myelodysplasia.</div>
+        <div>First-line FBC</div>
+        <div>Order <span class="pill pill-blue">FBC</span> <span class="pill pill-blue">Reticulocyte count</span> <span class="pill pill-blue">Blood film</span> simultaneously — these three together give maximum diagnostic information from one bleed.</div>
+        <div>Reticulocyte count</div>
+        <div>High reticulocytes → bone marrow responding (haemolysis, blood loss). Low/normal reticulocytes + anaemia → hypoproliferative (B12/folate/iron deficiency, bone marrow failure, CKD).</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        MCV is the single most useful discriminating parameter in anaemia workup. It narrows a broad differential to two or three diagnoses rapidly, avoiding unnecessary investigations. Reticulocyte count is systematically underused in primary care but is highly informative: a reticulocyte production index &gt;2 indicates haemolysis or haemorrhage; &lt;2 with anaemia indicates underproduction. Blood film adds morphological data (e.g. target cells in thalassaemia, hypersegmented neutrophils in B12 deficiency) that automated counters miss.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 3 — DIAGNOSE: Classification / Phenotyping
+       ══════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-header">
+    <div class="node-num">3</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Classify the anaemia type — targeted second-line investigations by MCV</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+    <div class="node-body">
+      Use MCV to guide second-line investigations. Order only what the MCV warrants.
+      <div class="kv">
+        <div>Microcytic → IDA</div>
+        <div>
+          <span class="pill pill-blue">Serum ferritin</span> — ferritin &lt;15 μg/L confirms IDA (or &lt;30 μg/L if CRP elevated/chronic disease).
+          <span class="pill pill-blue">Serum iron + TIBC</span> if ferritin borderline.
+          Then find the cause: <b>Menorrhagia? GI loss? Coeliac?</b>
+        </div>
+        <div>Microcytic → Thalassaemia</div>
+        <div>
+          Suspect if: normal/high ferritin, MCV disproportionately low, Mediterranean/SE Asian/African heritage, target cells on film.
+          <span class="pill pill-blue">Hb electrophoresis / HPLC</span> confirms. Refer to haematology for trait counselling if confirmed.
+        </div>
+        <div>Normocytic → ACD</div>
+        <div>
+          Most common in patients with known chronic disease (RA, IBD, CKD, malignancy).
+          <span class="pill pill-blue">CRP / ESR</span> elevated. Ferritin normal or raised (acute phase reactant).
+          <span class="pill pill-blue">Renal function</span> for CKD-related EPO deficiency.
+        </div>
+        <div>Normocytic → Haemolysis</div>
+        <div>
+          <span class="pill pill-blue">Bilirubin (unconjugated)</span> <span class="pill pill-blue">LDH</span> <span class="pill pill-blue">Haptoglobin</span> (low in haemolysis) <span class="pill pill-blue">Direct Coombs test</span>.
+          Spherocytes / fragmented cells on film → urgent haematology.
+        </div>
+        <div>Macrocytic → B12/Folate</div>
+        <div>
+          <span class="pill pill-blue">Serum B12</span> <span class="pill pill-blue">Serum folate</span> — order together.
+          Hypersegmented neutrophils on film highly specific for megaloblastic anaemia.
+          If B12 borderline (150–300 pg/mL): <span class="pill pill-blue">Methylmalonic acid</span> or <span class="pill pill-blue">Homocysteine</span> to confirm functional deficiency.
+        </div>
+        <div>Macrocytic → Other</div>
+        <div>
+          <span class="pill pill-blue">TFTs</span> (hypothyroidism), <span class="pill pill-blue">LFTs</span> (liver disease/alcohol), medication review (methotrexate, hydroxycarbamide, antiretrovirals). MCV &gt;115 fL without B12/folate deficiency → myelodysplasia until proven otherwise → haematology referral.
+        </div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Ferritin is the single most useful confirmatory test for IDA but is an acute-phase reactant — it can be falsely elevated in inflammation. A ferritin &lt;30 μg/L in the context of elevated CRP is still likely IDA. Coeliac serology (tTG-IgA) should be checked in all new IDA — prevalence of coeliac in IDA is ~5% and it is frequently missed. B12 and folate should always be checked together as folate supplementation can mask B12 deficiency and precipitate subacute combined degeneration of the cord. MDS is a diagnosis not to miss in the elderly with macrocytosis and no reversible cause.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 4 — DIAGNOSE: Examination
+       ══════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-header">
+    <div class="node-num">4</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Targeted examination — find the cause, not just the sign</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+    <div class="node-body">
+      Examination confirms severity, guides urgency, and uncovers the underlying aetiology.
+      <div class="kv">
+        <div>Vital signs</div>
+        <div>HR, BP, RR, SpO2. Tachycardia at rest suggests Hb &lt;80 g/L or active haemorrhage. SpO2 &lt;95% with severe anaemia → same-day referral.</div>
+        <div>Pallor</div>
+        <div>Conjunctival pallor (most reliable clinical sign), palmar creases, nail beds. Pallor of conjunctiva correlates with Hb &lt;90 g/L. Note: dark skin makes peripheral pallor unreliable.</div>
+        <div>Angular cheilitis / glossitis</div>
+        <div>Smooth red tongue (glossitis) + angular stomatitis → B12 or iron deficiency. Specifically ask about dysphagia (Plummer-Vinson/Patterson-Brown-Kelly syndrome in severe IDA).</div>
+        <div>Koilonychia</div>
+        <div>Spoon-shaped nails → chronic IDA. Less common but highly specific.</div>
+        <div>Jaundice / scleral icterus</div>
+        <div>Unconjugated hyperbilirubinaemia → haemolysis. Hepatosplenomegaly may also be present.</div>
+        <div>Lymphadenopathy / splenomegaly</div>
+        <div>Cervical, axillary, inguinal nodes + splenomegaly → haematological malignancy until proven otherwise. Measure and document node size.</div>
+        <div>Abdomen</div>
+        <div>Epigastric tenderness (peptic ulcer disease), mass (GI malignancy), ascites (liver disease/malignancy), organomegaly. Palpate for colonic masses in IDA aged ≥40.</div>
+        <div>PR examination</div>
+        <div>Melaena on glove → upper GI bleed. Fresh blood → lower GI bleed. Rectal mass. Do NOT defer in unexplained IDA.</div>
+        <div>Neurological</div>
+        <div>B12 deficiency: peripheral neuropathy (reduced vibration sense/proprioception in legs), cognitive impairment, subacute combined degeneration signs — must examine even if Hb normal (B12 can damage nerves before Hb falls).</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Examination in anaemia is often cursory in primary care. Clinical signs frequently identify the cause (glossitis = B12/iron, koilonychia = IDA, splenomegaly = haemolysis or haematological malignancy) and influence the urgency of referral. PR examination is repeatedly deferred in IDA and is a patient-safety issue — rectal malignancy is missed this way. Neurological examination in B12 deficiency is critical because subacute combined degeneration of the cord can occur at Hb levels that are near normal; delaying treatment causes irreversible damage.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 5 — DIAGNOSE: Investigations — Finding the Cause
+       ══════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-header">
+    <div class="node-num">5</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — find the underlying cause</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+    <div class="node-body">
+      Beyond the FBC, target investigations to find <i>why</i> the patient is anaemic.
+      <div class="kv">
+        <div>All anaemia</div>
+        <div>
+          <span class="pill pill-blue">FBC + blood film</span>
+          <span class="pill pill-blue">Reticulocyte count</span>
+          <span class="pill pill-blue">CRP / ESR</span>
+          <span class="pill pill-blue">LFTs</span>
+          <span class="pill pill-blue">TFTs</span>
+          <span class="pill pill-blue">U&amp;Es + eGFR</span> — baseline, cheap, high-yield.
+        </div>
+        <div>IDA (microcytic)</div>
+        <div>
+          <span class="pill pill-blue">Ferritin</span> (confirm) →
+          <span class="pill pill-blue">tTG-IgA + total IgA</span> (coeliac screen, do in all IDA) →
+          <span class="pill pill-blue">OGD ± colonoscopy</span> (2WW if ≥60 or red flags) →
+          <span class="pill pill-blue">Faecal occult blood</span> NOT sufficient to exclude GI malignancy — do not rely on it alone.
+        </div>
+        <div>B12 deficiency</div>
+        <div>
+          <span class="pill pill-blue">Serum B12</span> &lt;180 pg/mL = deficient; 180–300 = borderline (check MMA/homocysteine) →
+          <span class="pill pill-blue">Parietal cell antibodies + IF antibodies</span> (if pernicious anaemia suspected) → positive IFA = pernicious anaemia (highly specific).
+        </div>
+        <div>Folate deficiency</div>
+        <div>
+          <span class="pill pill-blue">Serum folate</span> &lt;3 ng/mL = deficient. Ask about: poor diet, alcohol, malabsorption, pregnancy, drugs (methotrexate, trimethoprim, phenytoin, sulfasalazine).
+        </div>
+        <div>ACD / CKD</div>
+        <div>
+          Ferritin normal or high. <span class="pill pill-blue">eGFR</span> — if &lt;45 ml/min/1.73m², EPO deficiency contributes. Optimise underlying disease first. Refer to nephrology if CKD-anaemia requires EPO therapy.
+        </div>
+        <div>Do NOT routinely order</div>
+        <div>Bone marrow biopsy (specialist only). Erythropoietin levels (rarely actionable in primary care). Haptoglobin without clinical haemolysis suspicion.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        NICE NG12 mandates that unexplained IDA in adults aged ≥60 warrants 2WW colorectal referral — upper and lower GI endoscopy finds a cause in ~60% of these patients, with malignancy in ~10%. Coeliac serology is commonly overlooked: prevalence of coeliac in IDA is approximately 3–5% in UK adults. Parietal cell antibodies are positive in ~90% of pernicious anaemia but are not specific; intrinsic factor antibodies are less sensitive (~50%) but highly specific. Serum B12 alone can miss functional B12 deficiency — methylmalonic acid is a more sensitive marker of cellular B12 insufficiency.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 6 — REFER: Referral Criteria
+       ══════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="REFER" data-step="6">
+  <div class="node-header">
+    <div class="node-num">6</div>
+    <div class="node-head">
+      <span class="node-tag">Refer</span>
+      <h3>Referral criteria — know who needs specialist input</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+    <div class="node-body">
+      Most anaemia is manageable in primary care. These patients need specialist input.
+      <div class="kv">
+        <div><span class="pill pill-red">999</span></div>
+        <div>Haemodynamic instability (HR &gt;100 + SBP &lt;90), active massive haemorrhage, acute chest pain + severe anaemia, symptomatic Hb &lt;70 g/L not tolerated.</div>
+        <div><span class="pill pill-red">Same-day</span></div>
+        <div>Hb &lt;70 g/L symptomatic (dyspnoea at rest, angina). Suspected aplastic anaemia (pancytopenia). Suspected haemolysis (jaundice + falling Hb). Post-partum Hb &lt;80 g/L.</div>
+        <div><span class="pill pill-purple">2WW Haematology</span></div>
+        <div>Pancytopenia. Suspected lymphoma / leukaemia (lymphadenopathy + anaemia + night sweats). MCV &gt;115 fL with no reversible cause (myelodysplasia). Unexplained normocytic anaemia with haematological abnormalities on film.</div>
+        <div><span class="pill pill-purple">2WW Colorectal</span></div>
+        <div>Unexplained IDA aged ≥60 (NICE NG12). Any age with rectal bleeding + IDA. Family history of colorectal cancer + IDA aged ≥40.</div>
+        <div><span class="pill pill-purple">2WW Upper GI</span></div>
+        <div>Unexplained IDA + dysphagia, or upper GI symptoms aged ≥55 (NICE NG12). Suspected gastric malignancy.</div>
+        <div>Routine Haematology</div>
+        <div>Confirmed thalassaemia trait (genetic counselling + family screening). IDA not responding to 3 months oral iron. Haemolytic anaemia requiring ongoing monitoring. Pernicious anaemia (for initial specialist confirmation if needed locally).</div>
+        <div>Primary care</div>
+        <div>IDA with identified and treatable cause (menorrhagia, coeliac — treat both). B12 deficiency — manage in practice. Folate deficiency — manage in practice. ACD with known stable underlying disease.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        NICE NG12 (2015, updated 2023) mandates 2WW colorectal referral for IDA in patients aged ≥60 — this applies even without overt GI symptoms. Studies show ~10% of these patients have colorectal malignancy. Failure to refer is a common cause of delayed cancer diagnosis complaints. Thalassaemia trait should be referred for genetic counselling, particularly for couples planning pregnancy (if both partners are carriers, 25% risk of thalassaemia major). IDA not responding to 3 months of adequate oral iron replacement must be escalated — causes include ongoing blood loss, malabsorption, and non-adherence.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 7 — TREAT: Drug Ladder
+       ══════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="TREAT" data-step="7">
+  <div class="node-header">
+    <div class="node-num">7</div>
+    <div class="node-head">
+      <span class="node-tag">Treat</span>
+      <h3>Treatment pathways — specific replacement by anaemia type</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+    <div class="node-body">
+      Treatment is cause-specific. Treat the underlying cause AND replace the deficiency.
+
+      <div style="margin:12px 0 6px;font-weight:700;font-size:.85rem;color:var(--teal);">Iron Deficiency Anaemia (IDA)</div>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">First-line (well tolerated)</div>
+          <div class="b-drug">Ferrous sulfate <span class="pill pill-teal">OD/BD</span></div>
+          <div class="b-note">200 mg BD (65 mg elemental iron per tablet). Take on empty stomach or with vitamin C to improve absorption. Avoid with tea, antacids, PPIs.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">GI intolerance / elderly</div>
+          <div class="b-drug">Ferrous fumarate or gluconate <span class="pill pill-teal">OD</span></div>
+          <div class="b-note">Ferrous fumarate 210 mg OD. Lower GI side-effects vs sulfate. Alternative: ferrous gluconate 300 mg BD.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Malabsorption / IBD / CKD</div>
+          <div class="b-drug">IV iron <span class="pill pill-amber">Specialist</span></div>
+          <div class="b-note">Ferric carboxymaltose (Ferinject) or iron isomaltoside — infuse in hospital/day unit. Discuss with gastroenterology or haematology. Monitor for anaphylaxis.</div>
+        </div>
+      </div>
+      <div class="kv" style="margin-top:10px;">
+        <div>Duration</div>
+        <div>Continue oral iron for <b>3 months after Hb normalises</b> to replenish stores. Total duration usually 4–6 months.</div>
+        <div>Response monitoring</div>
+        <div>Recheck FBC at 4 weeks — Hb should rise by ≥10 g/L. If not → reassess compliance, absorption, ongoing loss.</div>
+        <div>Treat underlying cause</div>
+        <div>Menorrhagia → hormonal treatment / refer gynaecology. Coeliac → strict gluten-free diet (refer dietitian). H. pylori → eradicate if positive on testing.</div>
+      </div>
+
+      <div style="margin:16px 0 6px;font-weight:700;font-size:.85rem;color:var(--teal);">B12 Deficiency</div>
+      <div class="ladder">
+        <div class="rung"><span class="rn">No neuro symptoms</span><span class="rt"><b>Hydroxocobalamin</b> 1 mg IM on alternate days for 2 weeks (6 doses), then 1 mg IM every 3 months for life (if pernicious anaemia / malabsorption). Oral cyanocobalamin 1000 mcg daily if dietary cause only and absorption intact.</span></div>
+        <div class="rung"><span class="rn">Neurological symptoms</span><span class="rt"><b>Hydroxocobalamin</b> 1 mg IM on alternate days <b>until no further improvement</b> (can be weeks), then every 2 months for life. <span class="pill pill-amber">Do not delay — irreversible cord damage risk</span></span></div>
+        <div class="rung"><span class="rn">Pernicious anaemia</span><span class="rt">Lifelong IM hydroxocobalamin every 3 months. Annual FBC + annual gastric cancer surveillance not routinely recommended but discuss risk with patient.</span></div>
+      </div>
+
+      <div style="margin:16px 0 6px;font-weight:700;font-size:.85rem;color:var(--teal);">Folate Deficiency</div>
+      <div class="kv">
+        <div>Treatment</div>
+        <div><b>Folic acid 5 mg OD orally for 4 months</b>. <span class="pill pill-amber">Always exclude B12 deficiency first</span> — giving folate alone in B12 deficiency can precipitate or worsen subacute combined degeneration of the cord.</div>
+        <div>Prevention (pregnancy)</div>
+        <div>Folic acid 400 mcg daily pre-conception and until 12 weeks. High-dose 5 mg daily if: previous NTD, diabetes, BMI &gt;30, antiepileptics.</div>
+        <div>Treat cause</div>
+        <div>Alcohol excess — refer alcohol services. Malnutrition — dietitian. Drug-induced — review necessity (methotrexate → discuss with prescriber).</div>
+      </div>
+
+      <div style="margin:16px 0 6px;font-weight:700;font-size:.85rem;color:var(--teal);">Anaemia of Chronic Disease</div>
+      <div class="kv">
+        <div>Principle</div>
+        <div>Treat the underlying condition — optimise RA (DMARDs), IBD, CKD, malignancy. ACD does not respond to iron unless co-existing IDA confirmed (ferritin &lt;30 μg/L despite high CRP).</div>
+        <div>CKD-related</div>
+        <div>eGFR &lt;45 + Hb &lt;100 g/L → refer nephrology for EPO/darbopoietin. Target Hb 100–120 g/L — higher targets increase cardiovascular risk (TREAT/CHOIR trials).</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Oral iron is absorbed best every other day (alternate-day dosing reduces hepcidin-mediated absorption block), though NICE CKS still recommends BD dosing in practice — consider QD or QOD if side-effects limit adherence. IV iron corrects IDA faster than oral (Hb normalises within 1–2 weeks vs 4 weeks orally) and is preferred in IBD (where oral iron worsens mucosal inflammation), CKD, and malabsorption. For B12: oral cyanocobalamin at 1000 mcg/day is equivalent to IM injections in patients without pernicious anaemia or malabsorption, but IM is preferred when certainty of absorption is needed. Folate supplementation without checking B12 is a patient safety error — the risk of precipitating or worsening subacute combined degeneration is well-documented.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 8 — LIFESTYLE
+       ══════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-header">
+    <div class="node-num">8</div>
+    <div class="node-head">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Non-pharmacological interventions — dietary and lifestyle optimisation</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+    <div class="node-body">
+      Lifestyle modification is treatment, not optional add-on. Address these in every consultation.
+      <div class="lsgrid">
+        <div class="lstile"><b>Iron-rich diet</b> Red meat, liver, dark leafy greens (spinach, kale), legumes, fortified cereals. Haem iron (meat) is 2–3× more bioavailable than non-haem iron (plants).</div>
+        <div class="lstile"><b>Vitamin C with meals</b> Vitamin C (citrus juice, peppers) increases non-haem iron absorption by up to 3-fold. Simple, effective, evidence-based.</div>
+        <div class="lstile"><b>Avoid inhibitors with iron</b> Tea, coffee, calcium-rich foods, antacids all reduce iron absorption. Advise separating by 1–2 hours from iron-rich meals or supplements.</div>
+        <div class="lstile"><b>B12-rich foods</b> Meat, fish, eggs, dairy. Vegans/vegetarians must supplement (cyanocobalamin 10 mcg daily or 2000 mcg weekly) or consume fortified foods. Advise routinely — B12 deficiency in vegans is preventable.</div>
+        <div class="lstile"><b>Folate-rich foods</b> Green leafy vegetables, legumes, fortified cereals, liver. Advise good dietary intake — particularly important in pregnancy, haemolytic states, and alcohol excess.</div>
+        <div class="lstile"><b>Alcohol reduction</b> Alcohol causes folate deficiency, liver disease (macrocytosis), and GI bleeding (varices, gastritis). Reducing alcohol use to &lt;14 units/week directly improves Hb. Refer to alcohol services if dependent.</div>
+        <div class="lstile"><b>Gluten-free diet (coeliac)</b> Strict lifelong gluten-free diet restores duodenal absorption. IDA resolves within 6–12 months in compliant coeliac disease. Refer to registered dietitian for detailed guidance.</div>
+        <div class="lstile"><b>Smoking cessation</b> Smokers have elevated carboxyhaemoglobin, impaired EPO response, and higher GI cancer risk. Refer to NHS Stop Smoking service — can improve oxygenation and reduce further GI risk.</div>
+        <div class="lstile"><b>Manage heavy periods</b> Menorrhagia is the leading cause of IDA in premenopausal women. Refer for gynaecology assessment. Hormonal treatment (LNG-IUS, combined pill) can reduce blood loss by 70–90%.</div>
+        <div class="lstile"><b>Exercise titration</b> In severe anaemia (Hb &lt;80 g/L), advise reduced physical exertion until Hb responds to treatment. As Hb corrects, gradual reintroduction of activity improves cardiovascular fitness and quality of life.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Dietary modifications alone rarely cure established anaemia but significantly aid recovery and prevent recurrence. Vitamin C co-ingestion with iron-rich meals or supplements increases non-haem iron absorption by up to 300% — this is equivalent to doubling iron intake with no additional supplementation cost. In vegan patients, B12 supplementation prevents deficiency entirely and is far preferable to treating established neurological damage later. The LNG-IUS (Mirena coil) reduces menstrual blood loss by approximately 90% at 12 months and is the most effective non-surgical treatment for menorrhagia-associated IDA. Alcohol is a nutritional triple-threat in anaemia: it reduces folate absorption, impairs erythropoiesis directly, and causes GI haemorrhage.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 9 — SAFETY: Follow-up & Monitoring
+       ══════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-header">
+    <div class="node-num">9</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-up &amp; monitoring — ensure response and safety-net</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+    <div class="node-body">
+      Anaemia is not a one-appointment condition. Follow-up confirms resolution and catches complications.
+      <div class="kv">
+        <div>4 weeks (IDA)</div>
+        <div>Repeat <span class="pill pill-blue">FBC</span>. Hb should rise by ≥10 g/L. If not: confirm compliance, reassess absorption, check for ongoing bleeding. Consider up-titrating dose or switching preparation.</div>
+        <div>6–8 weeks (B12/folate)</div>
+        <div>Repeat <span class="pill pill-blue">FBC</span> — MCV should be normalising. Reticulocyte count should rise within 5–10 days of starting treatment (reticulocyte crisis = good sign).</div>
+        <div>3 months</div>
+        <div>Hb should be normal. Review symptoms. Confirm cause is treated. For IDA: continue iron for further 3 months after normalisation to replenish stores. Check <span class="pill pill-blue">ferritin</span> at this point.</div>
+        <div>6 months</div>
+        <div>Full review: Hb, ferritin (IDA), B12 (pernicious anaemia). Ensure GI investigations completed and results reviewed. Confirm coeliac is adherent to GFD.</div>
+        <div>Annual (lifelong)</div>
+        <div>Pernicious anaemia / B12 deficiency on injections: annual <span class="pill pill-blue">FBC</span>. Coeliac on GFD: annual <span class="pill pill-blue">FBC</span>, <span class="pill pill-blue">ferritin</span>, <span class="pill pill-blue">B12</span>, <span class="pill pill-blue">folate</span>, <span class="pill pill-blue">tTG-IgA</span>, bone profile (osteoporosis risk).</div>
+        <div><span class="pill pill-red">Safety-net 999</span></div>
+        <div>Haemodynamic deterioration: feeling faint/collapse, very fast heart rate, black tarry stools, vomiting blood, chest pain with breathlessness.</div>
+        <div><span class="pill pill-red">Safety-net same-day GP</span></div>
+        <div>Worsening breathlessness at rest, new palpitations, ankle swelling, rapidly worsening fatigue suggesting haemorrhage. Any new neurological symptoms (weakness, numbness, coordination problems) in B12 deficiency — risk of subacute cord degeneration.</div>
+        <div><span class="pill pill-amber">Escalate if</span></div>
+        <div>No response to 3 months of adequate oral iron therapy. Recurrence of IDA after apparently successful treatment. New cytopenias (falling WCC or platelets) emerging during follow-up. Hb not normalising despite documented compliance.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Follow-up in anaemia serves three purposes: (1) confirm treatment response (Hb rising ≥10 g/L per month), (2) ensure the cause has been found and treated, and (3) detect complications early. IDA that fails to respond to oral iron after 3 months is an important clinical signal — non-adherence, ongoing blood loss, and malabsorption must all be addressed. Re-emerging IDA after treatment is common and often indicates inadequate investigation of the original cause. In B12 deficiency, neurological symptoms can progress even during treatment if the interval between injections is too long — patients with neurological involvement should be on 2-monthly injections, not 3-monthly.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /alg-flow -->
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<div class="alg-foot" style="margin: 32px auto 0; max-width: 820px; padding: 16px 20px;">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG12 (Suspected cancer: recognition and referral, updated 2023) · NICE CKS Anaemia — iron deficiency (updated 2024) · NICE CKS Anaemia — B12 and folate deficiency (updated 2023) · NICE CKS Thalassaemia · BSH Guidelines on the diagnosis and treatment of iron deficiency anaemia (2021) · BSH Guidelines for the diagnosis of cobalamin and folate disorders (2014, updated 2022) · NICE NG203 CKD (2021) · WHO Haemoglobin concentration thresholds for diagnosis of anaemia (2011). Always adapt to individual patient context, local pathways, and formulary. This algorithm does not replace clinical judgement.
+</div>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+(function () {
+  const STORE_KEY = 'rgp.alg.anaemia.v1';
+  const flow = document.getElementById('flow');
+  const pDone = document.getElementById('pDone');
+  const pFill = document.getElementById('pFill');
+  const pTotal = document.getElementById('pTotal');
+  const resetBtn = document.getElementById('resetBtn');
+  const total = 9;
+
+  /* --- load saved state --- */
+  function loadState() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); }
+    catch { return {}; }
+  }
+  function saveState(state) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch {}
+  }
+
+  /* --- progress --- */
+  function updateProgress() {
+    const checked = flow.querySelectorAll('input[type="checkbox"]:checked').length;
+    pDone.textContent = checked;
+    pTotal.textContent = total;
+    pFill.style.width = Math.round((checked / total) * 100) + '%';
+  }
+
+  /* --- apply state to nodes --- */
+  function applyState(state) {
+    flow.querySelectorAll('.node').forEach(node => {
+      const step = node.dataset.step;
+      const cb = node.querySelector('input[type="checkbox"]');
+      if (state[step]) {
+        cb.checked = true;
+        node.classList.add('done');
+      } else {
+        cb.checked = false;
+        node.classList.remove('done');
+      }
+    });
+    updateProgress();
+  }
+
+  /* --- checkbox change --- */
+  flow.addEventListener('change', function (e) {
+    if (e.target.type !== 'checkbox') return;
+    const node = e.target.closest('.node');
+    const step = node.dataset.step;
+    const state = loadState();
+    if (e.target.checked) {
+      node.classList.add('done');
+      state[step] = true;
+    } else {
+      node.classList.remove('done');
+      delete state[step];
+    }
+    saveState(state);
+    updateProgress();
+  });
+
+  /* --- why buttons --- */
+  flow.addEventListener('click', function (e) {
+    const btn = e.target.closest('.why-btn');
+    if (!btn) return;
+    const drawer = btn.nextElementSibling;
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    drawer.classList.toggle('open', !expanded);
+  });
+
+  /* --- reset --- */
+  resetBtn.addEventListener('click', function () {
+    if (!confirm('Reset all progress?')) return;
+    localStorage.removeItem(STORE_KEY);
+    applyState({});
+    flow.querySelectorAll('.why-drawer').forEach(d => d.classList.remove('open'));
+    flow.querySelectorAll('.why-btn').forEach(b => b.setAttribute('aria-expanded', 'false'));
+  });
+
+  /* --- init --- */
+  applyState(loadState());
+})();
+</script>
+
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

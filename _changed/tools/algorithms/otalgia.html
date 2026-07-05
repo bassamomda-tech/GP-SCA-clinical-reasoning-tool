@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Otalgia Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;--diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;--treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;--refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;--lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;--radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);--font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif;}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#1a3a5c 0%,#2a6099 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#2a6099,#167a4a);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}.node[data-type="TREAT"] .node-num{background:var(--treat)}.node[data-type="REFER"] .node-num{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}.node[data-type="TREAT"] .node-tag{background:var(--treat)}.node[data-type="REFER"] .node-tag{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:70px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}.pill-purple{background:#ede9fe;color:#5b21b6}.pill-blue{background:#dbeafe;color:#1e40af}.pill-teal{background:#ccfbf1;color:#0f766e}.pill-amber{background:#fef3c7;color:#92400e}.pill-green{background:#dcfce7;color:#15803d}.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+<div class="stem-banner">
+  <div class="sb-icon">👂</div>
+  <div>
+    <b>Otalgia — Ear Pain</b>
+    <small>Primary vs referred otalgia — otoscopic assessment, dental, TMJ and sinister causes</small>
+  </div>
+</div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — examine the ear: a normal ear drum means referred pain, and in an adult smoker that points to the head-and-neck cancer pathway. Treat the cause, advise, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Ear pain (otalgia)</span><div class="body">Otoscopy, hearing, discharge, jaw/throat/dental symptoms. Primary (ear pathology) vs referred (normal ear).</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — serious ear / referred cancer</span><span class="ttl">Serious ear or referred cancer?</span><div class="body">Mastoiditis (post-auricular swelling/fever), necrotising otitis externa (diabetic/elderly, severe pain). Referred otalgia + persistent throat symptoms/neck lump in a smoker.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency / 2WW</span><div class="body">Mastoiditis/necrotising OE → urgent ENT/admit. Referred pain + head/neck red flags → 2WW.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination localise the cause.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · common causes &amp; treatment</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Otitis media</div><div class="box act"><span class="ttl">Common</span><div class="body">Often viral; analgesia; antibiotics if severe/bilateral young child/perforation.</div></div></div><div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Otitis externa</div><div class="box act"><span class="ttl">Common</span><div class="body">Topical antibiotic/steroid drops, aural toilet; keep dry.</div></div></div><div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Referred</div><div class="box ix"><span class="ttl">Normal ear</span><div class="body">Dental, TMJ, tonsil, cervical spine — and head/neck cancer.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Urgent</span> mastoiditis / necrotising OE. <span class="pill pill-purple">2WW</span> <span class="pill pill-grey">NICE NG12</span> referred otalgia + persistent throat symptoms / neck lump → head &amp; neck pathway.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · self-management &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Self-management &amp; modifiable factors</span><span class="ttl">By cause</span><div class="body"><b>Regular analgesia</b> (paracetamol/ibuprofen) is the mainstay for otitis media — most is viral and self-limiting. <b>Otitis externa:</b> keep the ear <b>dry</b> (avoid cotton buds and water ingress), topical drops, treat the precipitant (eczema, swimming). <b>Stop smoking</b> (head-and-neck cancer risk and a driver of referred otalgia); treat dental/TMJ causes. Address allergic rhinitis contributing to ETD.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Don't miss the serious causes</span><div class="body"><b>Urgent / same-day</b> for post-auricular swelling/redness with fever (mastoiditis) or severe unremitting pain in a diabetic/elderly/immunocompromised patient (necrotising otitis externa). <b>A normal-looking ear means referred pain</b> — in an adult smoker with persistent unexplained otalgia, examine the throat and refer for head-and-neck assessment. Review otitis media not improving in 3 days.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>A normal-looking ear means the pain is referred:</b> in an adult smoker with persistent unexplained otalgia, examine the throat and refer for head-and-neck assessment.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Malignancy, Mastoiditis &amp; Dangerous Causes</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <b>Rule of thumb: normal otoscopy + unilateral otalgia in an adult = referred pain until proven otherwise — check mouth/throat/neck for cancer.</b>
+    <div class="rfgrid">
+      <div class="rftile"><b>Post-auricular swelling + otalgia + fever</b> Mastoiditis — destruction of mastoid air cells → same-day hospital (CT mastoids + IV antibiotics + ENT)</div>
+      <div class="rftile"><b>Vesicles on pinna / EAC</b> Ramsay Hunt syndrome (VZV reactivation in geniculate ganglion) — facial nerve palsy + severe otalgia + vesicles → same-day ENT + oral aciclovir</div>
+      <div class="rftile"><b>Persistent unilateral otalgia + normal ear + smoker/drinker</b> Referred pain from oropharyngeal / tongue base / hypopharyngeal cancer → 2WW head and neck</div>
+      <div class="rftile"><b>Facial nerve palsy + otalgia</b> Ramsay Hunt, cholesteatoma, parotid malignancy → same-day ENT if acute onset</div>
+      <div class="rftile"><b>Necrotising (malignant) OE</b> Diabetic / immunocompromised + severe OE + granulation tissue at EAC floor + pain out of proportion → same-day hospital (Pseudomonas osteitis — IV antibiotics + CT)</div>
+      <div class="rftile"><b>Hearing loss + otalgia + vertigo</b> Acute suppurative labyrinthitis, cholesteatoma, temporal bone tumour → same-day/urgent ENT</div>
+      <div class="rftile"><b>Otalgia + neck mass</b> Metastatic cervical lymph node from head and neck cancer → 2WW head and neck. Examine oral cavity + throat carefully.</div>
+      <div class="rftile"><b>Otalgia + dysphagia + weight loss</b> Hypopharyngeal or tongue base cancer → 2WW head and neck. Age &gt;40 + smoker = high risk.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Referred otalgia with a normal ear is one of the most important presentations in head and neck oncology — up to 50% of oropharyngeal cancers present with referred otalgia as the only symptom due to shared sensory innervation (Arnold's nerve — CN X auricular branch, Jacobson's nerve — CN IX tympanic branch, auriculotemporal nerve — CN V3). A normal otoscopic examination in a patient with unilateral otalgia mandates thorough oral cavity and oropharyngeal examination. Necrotising otitis externa has a mortality of 10–20% even with treatment — it typically affects diabetics and immunocompromised patients (e.g. HIV, post-chemotherapy) with Pseudomonas aeruginosa osteitis of the skull base.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Primary vs Referred Otalgia — Key Distinction</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <b>Is the ear normal on otoscopy?</b> Normal ear → referred pain. Abnormal ear → primary otalgia.
+    <div class="kv">
+      <div>Primary otalgia (ear pathology)</div><div>Otoscopy shows abnormality. AOM (red bulging TM), OE (tender pinna, swollen EAC), OME (dull retracted TM), perforation, cholesteatoma (white debris, granulation tissue), foreign body</div>
+      <div>Referred otalgia (distant pathology)</div><div>Otoscopy normal. Common sources: dental (lower molars — V3), TMJ (pre-auricular pain + clicking), tonsillitis (IX), pharyngeal cancer (IX/X), cervical spine (C2/C3 — great auricular nerve), GORD (X)</div>
+      <div>Onset and nature</div><div>Acute (hours) + fever → AOM, OE. Colicky (swimming) + itchy + discharge → OE. Dull aching + blocked sensation → OME. Sharp stabbing + jaw movement → TMJ / dental. Constant progressive → malignancy.</div>
+      <div>Associated symptoms</div><div>Discharge (otorrhoea — AOM perforation, OE, cholesteatoma), hearing loss (OME, AOM, cholesteatoma), tinnitus, vertigo (labyrinthitis), clicking jaw (TMJ), toothache (dental referred)</div>
+      <div>Risk factors</div><div>Swimming / water exposure → OE. Recent URTI / flying / diving → barotrauma, AOM. Diabetes / immunosuppression → necrotising OE. Smoking + alcohol → head and neck cancer. Age &gt;40 + persistent otalgia.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The distinction between primary and referred otalgia is made entirely by otoscopy — this makes proper otoscopic technique critical. The ear receives sensory supply from five different cranial and spinal nerves (V, VII, IX, X, C2/C3) — each nerve innervates a different anatomical region, making the ear a common site for referred pain from distant pathology. TMJ dysfunction is the most common cause of referred otalgia overall — it is frequently missed because clinicians focus on the ear. The TMJ sits immediately anterior to the external auditory canal and tenderness is palpable pre-auricular on jaw opening.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Acute otitis media (AOM)</div><div>Age 6 months–6 yrs most common (but affects all ages). Fever + otalgia + bulging red TM ± rupture with purulent discharge. Post-URTI. Streptococcus pneumoniae, H. influenzae, Moraxella.</div>
+      <div>Otitis externa (OE)</div><div>Swimmer's ear. Tragus tenderness (pathognomonic), swollen EAC, itching, discharge. Pseudomonas aeruginosa, Staphylococcus aureus. Diabetics: risk of necrotising OE.</div>
+      <div>Otitis media with effusion (OME)</div><div>Glue ear. Children: dull TM, fluid level, retraction. Usually painless (pressure discomfort). Conductive hearing loss. Associated with adenoid hypertrophy.</div>
+      <div>Ramsay Hunt syndrome</div><div>VZV reactivation (geniculate ganglion). Severe otalgia + vesicles on pinna/EAC/palate + facial nerve palsy + sensorineural hearing loss. Treat within 72 hrs for best facial nerve recovery.</div>
+      <div>TMJ dysfunction</div><div>Pre-auricular pain worse with chewing/jaw opening, clicking/grinding, clenching/bruxism, morning jaw ache. Normal otoscopy. Most common cause of referred otalgia.</div>
+      <div>Referred — dental</div><div>Lower molar pain (mandibular nerve — V3 auriculotemporal branch), dental abscess, impacted wisdom tooth, dry socket post-extraction → otalgia without ear pathology</div>
+      <div>Cholesteatoma</div><div>Chronic painless otorrhoea + conductive hearing loss ± otalgia. Attic perforation or retraction pocket on otoscopy. White keratin debris (pearly white mass). Always refer ENT.</div>
+      <div>Referred — pharynx</div><div>Tonsillitis (IX tympanic branch), peritonsillar abscess (IX), tongue base / hypopharyngeal cancer (IX/X). All cause ipsilateral referred otalgia.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Cholesteatoma is a critical diagnosis to make in primary care — it is a locally destructive epidermal cyst that erodes ossicles, the mastoid, facial nerve canal, and tegmen (leading to intracranial complications). The classic description of painless, smelly, unilateral discharge should always prompt otoscopy looking for the attic perforation (superior to the pars tensa). Ramsay Hunt syndrome causes permanent facial nerve palsy in 50% of cases if not treated within 72 hours — early antiviral therapy (aciclovir 800 mg 5× daily for 7 days + prednisolone 60 mg reducing over 10 days) significantly improves facial nerve recovery odds. AOM in adults is less common than in children and should prompt consideration of sinister causes if recurrent.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Targeted Examination</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Otoscopy (essential)</div><div>Inspect pinna and canal for vesicles (Ramsay Hunt), furunculosis, foreign body, EAC swelling/erythema (OE). TM: colour, landmarks, bulging (AOM), retraction (OME), perforation, cholesteatoma debris (attic)</div>
+      <div>Tragal tenderness</div><div>Press tragus and pull pinna — severe pain = OE (pathognomonic). Absent tenderness = not OE. Essential to differentiate OE from AOM.</div>
+      <div>Post-auricular area</div><div>Tenderness over mastoid bone (Battle's sign in trauma / mastoiditis), swelling, pinna pushed forward → mastoiditis → same-day hospital</div>
+      <div>Facial nerve</div><div>Examine all facial nerve branches — any weakness = urgent ENT (Ramsay Hunt, cholesteatoma, parotid pathology)</div>
+      <div>Oral cavity and oropharynx</div><div>Mandatory in all adult referred otalgia (normal ear). Inspect tonsils, tonsillar pillars, soft palate, posterior pharyngeal wall, tongue base (depress tongue + torch), floor of mouth. Palpate tongue and floor of mouth.</div>
+      <div>Neck</div><div>Cervical lymphadenopathy — size, consistency, tenderness. Jugulodigastric node (level 2) is the primary drainage node for oropharyngeal cancer.</div>
+      <div>TMJ</div><div>Palpate TMJ (just anterior to tragus) — tenderness, crepitus. Ask patient to open/close mouth — clicking, deviation, limited opening (&lt;35 mm = restricted)</div>
+      <div>Hearing test</div><div>Whisper test (free-field hearing screen). Tuning fork: Rinne (air vs bone) + Weber (lateralises to affected ear = conductive, away = sensorineural)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The oral cavity and oropharyngeal examination is the most frequently omitted examination in otalgia — and the most consequential omission, as oropharyngeal cancers (HPV-associated tonsillar and tongue base cancers) are increasing in incidence and frequently present with otalgia alone. Weber test lateralisation is clinically important: sound lateralises to the affected side in conductive hearing loss (OE, AOM, OME) and away from the affected side in sensorineural hearing loss. Mastoiditis is a clinical diagnosis requiring immediate action — waiting for imaging before treatment is inappropriate when there is post-auricular tenderness, swelling, and displaced pinna.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Diagnose</span><h3>Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Ear swab</div><div><span class="pill pill-blue">EAC swab (MC&S)</span> — for OE not responding to empirical treatment at 1 week. Identifies resistant organisms (Pseudomonas, MRSA, fungal). Guides antibiotic switch.</div>
+      <div>Audiometry</div><div><span class="pill pill-blue">Pure tone audiogram</span> — for hearing loss associated with otalgia, post-AOM resolution at 4–6 weeks (if persistent), suspected OME in adults, sensorineural hearing loss screen</div>
+      <div>Tympanometry</div><div><span class="pill pill-blue">Tympanogram</span> — community audiology. Type B (flat) = OME/perforation. Type C (negative pressure) = Eustachian tube dysfunction. Useful for OME confirmation.</div>
+      <div>If referred otalgia suspected</div><div><span class="pill pill-blue">Dental OPG</span> (if dental cause) · <span class="pill pill-blue">FBC + CRP</span> · <span class="pill pill-blue">Monospot / EBV serology</span> (glandular fever tonsillitis) · Nasendoscopy arranged by ENT for posterior pharyngeal wall and tongue base if 2WW referred</div>
+      <div>NOT routinely</div><div>CT or MRI for uncomplicated AOM or OE — reserve for mastoiditis, necrotising OE (CT temporal bone), cholesteatoma workup (CT mastoids), or skull base tumour (MRI). Arranged by ENT/hospital.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">An ear swab before prescribing topical antibiotics for OE guides treatment but should not delay treatment in straightforward presentations — swab results are used if treatment fails at 1 week. Adults with OME (glue ear) should be investigated for a nasopharyngeal cause — unilateral OME in an adult is a red flag for nasopharyngeal carcinoma (Epstein-Barr virus associated, most common in young South/East Asian adults) and requires urgent ENT referral. AOM resolution should be confirmed with otoscopy at 4–6 weeks in adults — persistent OME after AOM warrants audiometry and ENT review.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">Same-day hospital</span></div><div>Mastoiditis (post-auricular swelling + fever), necrotising OE (diabetic/immunocompromised + granulation tissue), Ramsay Hunt + facial palsy, foreign body with TM perforation</div>
+      <div><span class="pill pill-purple">2WW head &amp; neck</span></div><div>Persistent unilateral otalgia &gt;3 weeks with normal ear in adults, otalgia + neck mass, otalgia + dysphagia, unilateral OME in adult (nasopharyngeal carcinoma screen)</div>
+      <div>Urgent ENT (2 weeks)</div><div>Suspected cholesteatoma (attic perforation + white debris + offensive discharge), sudden sensorineural hearing loss + otalgia, Ramsay Hunt without facial palsy (confirm diagnosis + manage)</div>
+      <div>Routine ENT</div><div>Recurrent AOM (&gt;4 episodes in 12 months) — grommets consideration, OE not responding after 2 courses of treatment, chronic eustachian tube dysfunction</div>
+      <div>Dental (emergency)</div><div>Otalgia from impacted wisdom tooth, dental abscess with referred otalgia, post-extraction dry socket. NHS 111 dental line for emergency access.</div>
+      <div>TMJ — self-management first</div><div>Most TMJ dysfunction managed conservatively. Refer to maxillofacial surgery if: severe trismus, suspected internal derangement, no response to 6–8 weeks conservative management</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Sudden sensorineural hearing loss (SSNHL) is an ENT emergency — it requires systemic corticosteroids within 72 hours for best cochlear recovery outcomes. If SSNHL occurs with otalgia, it must be urgently assessed by ENT to rule out Ramsay Hunt, labyrinthitis, acoustic neuroma, and perilymph fistula. Cholesteatoma diagnosis in primary care is highly impactful — identifying it early and referring to ENT for mastoidectomy prevents intracranial complications (meningitis, brain abscess, sigmoid sinus thrombosis) and facial nerve damage. Primary care doctors should view chronic unilateral offensive ear discharge as cholesteatoma until proven otherwise.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Treatment by Cause</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Otitis externa</div>
+        <div class="b-drug">Acetic acid 2% (EarCalm) spray</div>
+        <div class="b-note">First-line per NICE CKS. 1 spray QDS for 7 days. If severe: topical antibiotic drops — Gentisone HC (gentamicin + hydrocortisone) 3–4 drops TDS for 7 days. If canal occluded: ENT wick insertion. Avoid if TM perforated.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">AOM — adults</div>
+        <div class="b-drug">Paracetamol + ibuprofen</div>
+        <div class="b-note">Most AOM self-resolves in 3–4 days. Delayed antibiotic prescription — amoxicillin 500 mg TDS × 5 days if no improvement at 72 hrs. Immediate antibiotics if: systemically unwell, &lt;2 yrs with bilateral AOM, otorrhoea.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Ramsay Hunt</div>
+        <div class="b-drug">Aciclovir 800 mg 5× daily × 7 days</div>
+        <div class="b-note">Start within 72 hrs of vesicle onset. Add prednisolone 60 mg OD tapering over 10 days (Bell's palsy protocol). Eye care (eye drops, tape closed at night). Refer ENT for management oversight. Warn about driving if facial palsy.</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">TMJ</span><span class="rt">Soft diet, jaw rest, avoid wide opening. Ibuprofen 400 mg TDS with food × 2 weeks. Night guard (mandibular advancement splint — via dentist). Heat/ice packs. Jaw physiotherapy exercises.</span></div>
+      <div class="rung"><span class="rn">OME (children)</span><span class="rt">Watchful waiting 3 months (most resolve spontaneously). Hearing support in classroom. Grommets if persists &gt;3 months with significant hearing loss — ENT decision.</span></div>
+      <div class="rung"><span class="rn">Barotrauma</span><span class="rt">Valsalva manoeuvre (pinch nose + blow gently). Decongestant (xylometazoline nasal spray) before flying if prone to eustachian tube dysfunction. Usually resolves within days.</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Acetic acid 2% (EarCalm) spray is first-line for OE per NICE guidance — it is an antiseptic with no antibiotic resistance risk, is low-cost, and is equally effective to topical antibiotics for mild-moderate OE. Topical aminoglycosides (gentamicin) are ototoxic and contraindicated when the TM is perforated — always check TM integrity before prescribing topical ear drops. The delayed prescribing strategy for AOM is supported by Cochrane evidence — 80% of patients recover without antibiotics, and waiting 72 hours while monitoring reduces antibiotic prescribing by 70% without increasing complication rates.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Self-Management &amp; Prevention</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>OE prevention</b> After swimming: tilt head to drain water, use hair dryer on cool setting 30 cm from ear. Avoid cotton buds (push wax deeper, traumatise skin). Custom earplugs for swimmers. Avoid hearing aids/earphones during OE episode.</div>
+      <div class="lstile"><b>Cotton bud ban</b> Cotton buds cause more OE than swimming. Ears are self-cleaning — earwax migrates naturally. Sodium bicarbonate ear drops (2 weeks) for symptomatic wax softening; refer for microsuction if impacted.</div>
+      <div class="lstile"><b>TMJ bruxism</b> Stress reduction, mindfulness, CBT for teeth-clenching. Night guard (dental splint) prevents overnight bruxism damage. Magnesium supplementation — some evidence for bruxism reduction.</div>
+      <div class="lstile"><b>AOM — breastfeeding</b> Breastfeeding for ≥6 months reduces AOM incidence by 50% through passive immunity and reduced reflux of formula into Eustachian tube. Advise at postnatal review.</div>
+      <div class="lstile"><b>Pneumococcal vaccination</b> PCV13 vaccine (infant schedule) reduces AOM by 30–40% by covering the most virulent Streptococcus pneumoniae serotypes. Ensure childhood immunisation schedule is up to date.</div>
+      <div class="lstile"><b>Smoking cessation</b> Passive smoke exposure doubles AOM risk in children — smoking cessation in household reduces AOM episodes. Active smoking increases eustachian tube dysfunction and OME in adults.</div>
+      <div class="lstile"><b>Flying with URTI</b> Avoid flying when significantly congested — Eustachian tube dysfunction + pressure change = severe barotrauma risk. If unavoidable: topical decongestant spray 30 min before descent.</div>
+      <div class="lstile"><b>VZV vaccination</b> Shingles vaccine (Shingrix — 2 doses) reduces Ramsay Hunt syndrome risk in adults ≥50. Check vaccination status. Offered on NHS from age 65–70 and clinically at-risk groups.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The herpes zoster vaccine (Shingrix) has 97% efficacy against shingles in adults 50–69 and 91% efficacy over age 70 — it also prevents postherpetic neuralgia (the most disabling complication) and Ramsay Hunt syndrome specifically. Opportunistic checking of shingles vaccination status in the 50–70 age group is an important primary prevention intervention. Cotton buds are responsible for approximately 34% of ear canal foreign body presentations and the majority of traumatic TM perforations in primary care — the message "never put anything smaller than your elbow in your ear" is worth repeating at every OE consultation.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>OE — 1 week</div><div>Not improving with acetic acid? Swab and switch to topical antibiotic drops (Gentisone HC or Otomize). Canal occluded → ENT wick. Suspect fungal (Aspergillus — white/black debris) → clotrimazole drops.</div>
+      <div>AOM — 72 hours</div><div>If antibiotic delayed prescription given: use it if not improving. If immediate antibiotics given: review at 72 hrs — improving? If not, change antibiotics (co-amoxiclav — covers beta-lactamase producers). Persistent perforation at 6 weeks → ENT.</div>
+      <div>Ramsay Hunt</div><div>Weekly review for facial nerve recovery monitoring. Refer ENT within 1 week. Ophthalmology if corneal exposure from incomplete eye closure (eye drops, lubricants, nocturnal eye tape).</div>
+      <div>Referred otalgia</div><div>Normal ear + adult + persists &gt;3 weeks = 2WW referral regardless of other findings. Do not wait or repeat courses of ear treatment.</div>
+      <div>Post-AOM hearing check</div><div>Audiometry at 4–6 weeks if hearing not fully recovered after AOM, or if &gt;3 episodes in 12 months (recurrent AOM workup).</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>New facial palsy developing after Ramsay Hunt diagnosis (check daily), post-auricular swelling + high fever + headache (mastoiditis with intracranial extension)</div>
+      <div><span class="pill pill-amber">Same-day GP</span></div><div>OE in diabetic patient worsening despite treatment (necrotising risk), new hearing loss in any otalgia patient, severe pain out of proportion to clinical findings</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The 3-week rule for persistent adult otalgia with normal otoscopy is non-negotiable — oropharyngeal and hypopharyngeal cancers are at an increasingly high incidence (particularly HPV-associated oropharyngeal cancer in 40–60 year old males) and otalgia is frequently the first symptom. Delayed diagnosis at this site results in significantly worse prognosis (5-year survival drops from 85% stage I to 35% stage IV). Fungal OE (otomycosis — Aspergillus species) should be suspected when OE fails to respond to topical antibiotic/acidic preparations — the clue is white or black debris in the canal, often described as "wet newspaper" texture. Treatment is clotrimazole 1% solution or econazole 1% cream.</div>
+  </div>
+</div>
+
+</div>
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE CKS Otitis Externa (2023), NICE CKS Acute Otitis Media (2023), NICE NG12 (Suspected Cancer Referral), SIGN 66 (Diagnosis and Management of Childhood Otitis Media), NICE CKS Ramsay Hunt Syndrome, BES guidelines. Always adapt to individual patient context.
+</div>
+<script>
+(function(){
+  const STORE='rgp.alg.otalgia.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

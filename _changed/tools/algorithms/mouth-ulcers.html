@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Mouth Ulcers Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;
+  --diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;
+  --treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;
+  --refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;
+  --lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
+  --font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif
+}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#2a0a0a 0%,#5a1a1a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#5a1a1a,#7b3fa0);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}
+.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}
+.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}
+.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}
+.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}
+.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}
+.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#92400e}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🦷</div>
+  <div>
+    <b>Mouth Ulcers — Assessment &amp; Management</b>
+    <small>Recurrent aphthous · oral cancer 2WW · SJS · Behçet's · coeliac · haematological · NICE NG12</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — a mouth ulcer persisting beyond 3 weeks is oral cancer until proven otherwise and triggers an urgent dental/maxillofacial referral. Treat benign causes, advise, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Mouth ulcer(s)</span><div class="body">Single vs multiple, duration, pain, induration, risk factors (smoking, alcohol, betel). Examine oral cavity + neck nodes.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — oral cancer (3-week rule)</span><span class="ttl">Persistent or suspicious ulcer?</span><div class="body">Unexplained ulceration lasting &gt;3 weeks · indurated/non-healing · red or mixed red-white patch · associated neck lump · in a smoker/drinker.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">2WW oral cancer</span><div class="body">Suspected oral cancer → urgent suspected cancer referral (dental/maxillofacial) within 2 weeks.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination localise the cause.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · common causes</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Aphthous ulcers</div><div class="box act"><span class="ttl">Commonest</span><div class="body">Recurrent, self-limiting; topical analgesia/steroid; check ferritin/B12/folate, coeliac if recurrent.</div></div></div><div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Traumatic / infective</div><div class="box act"><span class="ttl">Common</span><div class="body">Sharp tooth/denture, herpes, hand-foot-mouth; treat cause.</div></div></div><div class="col"><div class="blabel">Systemic</div><div class="box ix"><span class="ttl">Investigate</span><div class="body">IBD, Behçet, vitamin deficiency, drugs, immunobullous disease.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-purple">2WW</span> <span class="pill pill-grey">NICE NG12</span> unexplained oral ulceration &gt;3 weeks or red/white patch → oral cancer pathway. <span class="pill pill-purple">Oral medicine / gastro</span> recurrent/systemic ulceration.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · self-management &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Self-management &amp; modifiable factors</span><span class="ttl">Symptom relief + remove triggers</span><div class="body"><b>Topical analgesia/anti-inflammatory</b> (benzydamine rinse, topical corticosteroid), antiseptic mouthwash, soft diet, avoid acidic/spicy foods and SLS-containing toothpaste. <b>Smoking cessation and alcohol reduction</b> (oral-cancer risk), good denture/dental care for trauma. Correct <b>iron/B12/folate</b> and treat coeliac/IBD in recurrent aphthous ulcers.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">The 3-week rule, explicit return advice</span><div class="body"><b>Any ulcer or oral red/white patch not healed in 3 weeks → 2WW</b>, regardless of symptoms — tell the patient to return if it persists. <b>Urgent</b> for a neck lump, persistent sore throat, dysphagia, or numbness. Recurrent severe aphthae unresponsive to first-line care → oral medicine; reassess the diagnosis if not settling.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Three weeks is the rule:</b> any mouth ulcer or oral red/white patch that has not healed in 3 weeks needs urgent referral to exclude oral cancer — especially in smokers and drinkers.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Oral Cancer, SJS &amp; Haematological Emergencies</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Any unexplained oral ulcer persisting beyond 3 weeks in an adult = oral cancer until proven otherwise. Do not prescribe topical treatments for an unexplained ulcer without a plan for review and 2WW referral if not healing.</b></p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Ulcer present &gt;3 weeks + not healing despite treatment + indurated edges or raised/rolled border</b> Oral squamous cell carcinoma (SCC) — 8,300 new cases/year UK. NICE NG12: any unexplained oral ulcer persisting &gt;3 weeks → 2WW suspected cancer referral to oral medicine/maxillofacial surgery. Floor of mouth, lateral tongue, and soft palate = highest risk sites. Smoking + alcohol = 30× relative risk. HPV-positive oropharyngeal SCC rising in non-smokers.</div>
+      <div class="rftile"><b>Multiple oral ulcers + skin target lesions + mucosal involvement at 2+ sites (mouth, eyes, genitals)</b> Stevens-Johnson Syndrome (SJS) / Toxic Epidermal Necrolysis (TEN) — drug-induced (allopurinol, antiepileptics, sulfonamides, NSAIDs, penicillins). Life-threatening dermatological emergency — mucosal detachment. → 999. Nikolsky sign positive (skin slides on pressure). Any patient on a new drug with oral + skin + eye mucosal involvement = SJS until proven otherwise.</div>
+      <div class="rftile"><b>Oral ulcers + severe sore throat + fever + lymphadenopathy in immunocompromised patient or patient on immunosuppressants/chemotherapy</b> Neutropenic mucositis or neutropenic sepsis. Absolute neutrophil count may be critically low. FBC urgently. Neutrophils &lt;0.5 × 10⁹/L with fever = neutropenic sepsis → 999 + broad-spectrum IV antibiotics. Also: agranulocytosis from carbimazole, clozapine, methotrexate — check FBC in any patient on these drugs with oral ulcers + fever.</div>
+      <div class="rftile"><b>Single painless oral ulcer with indurated base + inguinal lymphadenopathy + sexual risk history</b> Primary syphilis chancre — can occur intra-orally (usually on tongue or lips from oral sex). Often overlooked as a traumatic ulcer. Painless + indurated = syphilis. GUM referral urgently. Syphilis serology (TPHA + RPR). Partner notification. Syphilis rates in UK rising dramatically — maintain a high index of suspicion in sexually active adults with unusual oral ulcers.</div>
+      <div class="rftile"><b>Recurrent oral ulcers + genital ulcers + uveitis + skin lesions (pathergy, erythema nodosum)</b> Behçet's disease — rare multi-system vasculitis, more common in patients of Middle Eastern, South Asian, or East Asian origin. Triad: oral ulcers + genital ulcers + ocular inflammation. Refer to rheumatology and ophthalmology. Colchicine + immunosuppressants for systemic control. Untreated ocular involvement leads to blindness in 25% of patients.</div>
+      <div class="rftile"><b>Oral ulcers + widespread mucosal blistering/peeling + Nikolsky sign positive (skin separates on lateral pressure)</b> Mucous membrane pemphigoid (MMP) or pemphigus vulgaris — autoimmune blistering disease. Desquamative gingivitis, gum blistering, oral erosions. Same-day dermatology or oral medicine. Biopsy + immunofluorescence required for diagnosis. High-dose steroids + immunosuppressants. Ocular involvement in MMP can cause blindness — ophthalmology review mandatory.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The 3-week rule for oral ulcers is one of NICE NG12's most clinically important recommendations — any ulcer in the oral cavity that has been present for more than 3 weeks without a clear benign cause (known aphthous ulcer pattern, identifiable trauma, clearly responding to topical treatment) must be referred urgently for specialist assessment to exclude oral squamous cell carcinoma. Oral cancer is the 6th most common cancer worldwide and has a poor prognosis — 5-year survival is only 50% overall, largely because most oral cancers are diagnosed at stage III or IV when symptoms have been present for months. The most common sites are the lateral tongue (40% of oral SCC), floor of mouth, soft palate, and buccal mucosa. The classic appearance of oral SCC is an indurated ulcer with raised, rolled, or everted edges, a firm base, and failure to heal — but early lesions can appear deceptively benign (erythematous patch, white patch, or shallow ulcer). The rule is simple: any ulcer not healed in 3 weeks → 2WW. Stevens-Johnson Syndrome is one of the most dangerous drug reactions in medicine — mortality of SJS is 5–10% and TEN (the severe end of the spectrum with &gt;30% body surface area epidermal detachment) has a mortality of 25–35%. The most common causative drugs are: allopurinol (most commonly in Asian patients with HLA-B*5801 genotype — genetic testing recommended before initiation in South Asian patients), aromatic antiepileptics (carbamazepine, phenytoin, lamotrigine — especially lamotrigine without slow titration), sulfonamide antibiotics, NSAIDs (particularly meloxicam and piroxicam), and nevirapine. Any patient on a new drug who develops oral mucosal involvement + skin rash is SJS until proven otherwise. The drug must be stopped immediately, and the patient sent to hospital.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Classification — Types of Mouth Ulcer</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Recurrent aphthous stomatitis (RAS) — minor</div><div>Most common cause of mouth ulcers (20% of population). Small (&lt;1 cm), round/oval, white/yellow centre with red halo, on non-keratinised mucosa (buccal, labial, floor, ventral tongue — NOT on keratinised hard palate or gingiva). Heal spontaneously in 7–14 days. Episodes every few weeks or months. No scarring. Trigger: stress, menstrual cycle, minor trauma, dietary triggers (chocolate, nuts, cheese), SLS (sodium lauryl sulfate) in toothpaste. Often positive family history. Requires no investigation if typical pattern since childhood.</div>
+      <div>RAS — major (Sutton's disease)</div><div>Larger (&gt;1 cm), deeper, may involve any oral mucosa including soft palate and tonsillar area. Last 2–6 weeks. May scar. Severe pain — limits eating, drinking, speaking. Can mimic oral cancer on first presentation (large + deep + prolonged). Biopsy required if atypical or &gt;3 weeks duration. More common in immunocompromised patients. Treat with topical/systemic steroids. ENT/oral medicine referral if &gt;3 weeks or scarring occurring.</div>
+      <div>Herpetiform ulcers</div><div>Many small (1–2 mm) ulcers appearing in crops of 10–100, coalescing, anywhere in mouth. Extremely painful. Recurrent. Named for resemblance to herpes but NOT caused by HSV. Affect older women more than minor aphthous. No viral cause. Treat with chlorhexidine mouthwash + topical corticosteroid. Prednisolone systemically for severe recurrent episodes.</div>
+      <div>Traumatic ulcers</div><div>Single ulcer at site of identifiable trauma — sharp tooth, ill-fitting denture, cheek biting, sharp food, toothbrush trauma. Irregular shape conforming to the traumatic instrument. Heals within 7–10 days when trauma removed. If not healing after removal of cause at 3 weeks → 2WW. Identify and address cause: dental referral for sharp tooth or ill-fitting denture, tongue guard for bruxism-related trauma.</div>
+      <div>Viral ulcers</div><div>Primary herpetic stomatitis (HSV-1 in children/young adults): multiple painful ulcers on gingiva, lips, palate, tongue + fever + lymphadenopathy → aciclovir 200 mg 5× daily × 5 days (or valaciclovir 500 mg BD). Hand, foot and mouth disease (Coxsackie A16 — children: painful oral vesicles/ulcers + hand/foot vesicles): self-limiting, supportive only. Herpangina (Coxsackie A — children: posterior oral ulcers + fever): supportive. HIV-related ulcers: larger, more severe, atypical sites — HIV test.</div>
+      <div>Drug-induced ulcers</div><div>NSAIDs (especially topical use — aspirin placed directly against mucosa), methotrexate (mucositis at toxic doses — check FBC, folate), nicorandil (large solitary persistent ulcers — distinct and very characteristic, heal completely on stopping drug), chemotherapy agents (5-FU, methotrexate, cisplatin — oral mucositis), alendronate (placed under tongue rather than swallowed → severe localised necrosis), ACE inhibitors (lichenoid drug reaction). <b>Nicorandil ulcers are pathognomonic — large, clean-based, very painful, exact drug history identifies them.</b></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Nicorandil-induced oral ulcers deserve special emphasis because they are a perfect example of a drug-induced condition that is completely reversible once recognised, but causes significant patient suffering and inappropriate treatments until identified. Nicorandil is a potassium channel opener used for angina — it causes large, single or multiple, clean-based, very painful oral ulcers (and can also cause perianal and vulval ulcers by the same mechanism — ischaemic mucosal injury). The ulcers are distinctive: they have clean, well-demarcated edges, can be very large (several centimetres), and are exquisitely painful. They do not heal despite all standard aphthous ulcer treatments. Stopping nicorandil results in complete healing within 3–6 weeks. The diagnosis is straightforward if the drug history is taken — but nicorandil is often overlooked because it is not a commonly prescribed drug. The SLS (sodium lauryl sulfate) connection to aphthous ulcers is important to advise patients — SLS is the foaming agent in most commercial toothpastes and has been shown in multiple RCTs to worsen recurrent aphthous stomatitis by disrupting the mucosal protective barrier. Switching to an SLS-free toothpaste (Sensodyne Original is SLS-free; Biotène is specifically formulated without SLS) reduces RAS frequency and severity in approximately 50% of patients who have the SLS sensitivity. This is a simple, zero-risk lifestyle modification that GP can recommend at the consultation and which often provides dramatic improvement in recurrent aphthous patients. The anatomical location of aphthous ulcers is diagnostically useful: genuine aphthous ulcers only occur on non-keratinised mucosa (buccal, labial, floor of mouth, soft palate, ventral tongue). Ulcers on the hard palate or gingiva (both keratinised mucosa) are NOT aphthous — they are more likely to be traumatic, herpetic (hard palate is a common site for HSV recurrence), or in the case of gingival ulceration, pemphigoid or pemphigus.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Systemic Causes — Investigations When RAS Is Recurrent or Atypical</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Recurrent aphthous stomatitis in adults with onset after age 30, increasing severity, or associated systemic symptoms warrants investigation to exclude a systemic disease driving the ulcers.</b></p>
+    <div class="kv">
+      <div>Haematological deficiencies</div><div>Iron deficiency (ferritin &lt;30 µg/L), B12 deficiency, folate deficiency — all cause or worsen RAS through mucosal atrophy and impaired epithelial renewal. Found in 20% of RAS patients. <span class="pill pill-blue">FBC + ferritin + B12 + folate</span> mandatory in all recurrent aphthous. Replace deficiencies — RAS often dramatically improves or resolves with iron supplementation alone in iron-deficient patients.</div>
+      <div>Coeliac disease</div><div>Recurrent aphthous stomatitis is the oral manifestation of coeliac disease in approximately 5% of adult RAS patients. May present without GI symptoms (silent coeliac). <span class="pill pill-blue">TTG IgA + total IgA</span> (total IgA to exclude selective IgA deficiency — in IgA-deficient patients TTG IgA will be falsely negative; use TTG IgG instead). If positive → gastroenterology for duodenal biopsy. Gluten-free diet resolves the mouth ulcers in most coeliac patients.</div>
+      <div>Inflammatory bowel disease</div><div>Crohn's disease: pyostomatitis vegetans (cobblestone buccal mucosa, linear ulcers in buccal sulcus), non-caseating granulomas on biopsy. Also oral Crohn's without GI symptoms in 6–20% (orofacial granulomatosis). Ulcerative colitis: large aphthous-like ulcers that parallel gut disease activity — flare with colitis flares. <span class="pill pill-blue">Faecal calprotectin</span> + gastroenterology referral if GI symptoms or strongly suspected.</div>
+      <div>Immunodeficiency / HIV</div><div>HIV infection: severe, large, persistent, atypical-site oral ulcers are a common AIDS-defining presentation. Offer HIV test to any patient with recurrent severe atypical oral ulcers + risk factors. Other immunodeficiencies (common variable immunodeficiency, cyclic neutropenia — PFAPA syndrome in children: Periodic Fever, Aphthous stomatitis, Pharyngitis, Adenitis). <span class="pill pill-blue">FBC with differential</span> (neutropenia).</div>
+      <div>Behçet's disease screen</div><div>In patients with recurrent oral ulcers + any two of: genital ulcers, uveitis, skin lesions (pathergy, erythema nodosum, pseudofolliculitis), vascular lesions → International Behçet's Disease Study Group criteria. <span class="pill pill-blue">CRP + ESR</span> (elevated in active disease). No specific diagnostic test — clinical diagnosis. Pathergy test (intradermal needle prick → pustule at 48 hours). Rheumatology referral.</div>
+      <div>Targeted investigations summary</div><div><span class="pill pill-blue">FBC + ferritin + B12 + folate</span> (all recurrent RAS) · <span class="pill pill-blue">TTG IgA + total IgA</span> (coeliac — first screen) · <span class="pill pill-blue">CRP + ESR</span> (systemic inflammation — Behçet's, IBD, vasculitis) · <span class="pill pill-blue">HIV 4th gen test</span> (offer to all with atypical/severe) · <span class="pill pill-blue">Glucose + HbA1c</span> (diabetes — impaired wound healing, susceptibility to candidal co-infection) · <span class="pill pill-blue">Syphilis serology</span> (TPHA + RPR — if sexual risk history or painless indurated ulcer)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The 20% prevalence of haematological deficiencies in recurrent aphthous stomatitis patients makes investigation mandatory — iron deficiency is the most common finding, present in approximately 15% of RAS patients, and correction of the deficiency resolves or substantially reduces ulcer frequency in the majority of these patients. The mechanism is that iron (and B12 and folate) are essential cofactors for epithelial cell turnover and mucosal barrier function — deficiency impairs the rapid renewal of the oral mucosal epithelium (which turns over every 7–14 days), creating fragility and susceptibility to ulceration. The clinical significance is that iron deficiency can cause RAS without causing anaemia — the ferritin may be low while the haemoglobin is still normal, so FBC alone is insufficient. A GP who prescribes ferrous sulphate for an iron-deficient patient with recurrent aphthous ulcers is both treating a systemic deficiency and likely resolving a frustrating and painful chronic oral condition — a satisfying intervention at minimal cost. The coeliac-RAS connection is well-established in the literature — recurrent oral ulcers are found in approximately 3–5% of coeliac disease patients and may be the only presenting symptom of coeliac disease in the absence of GI symptoms. The implication is that every patient presenting to a GP with recurrent aphthous stomatitis should be screened for coeliac disease with TTG IgA + total IgA — a simple blood test that costs very little and, if positive, leads to dietary treatment (gluten-free diet) that resolves both the oral ulcers and the intestinal damage. The total IgA is essential because 1 in 500 individuals has selective IgA deficiency, in which case TTG IgA will be falsely negative and TTG IgG or EMA IgG must be used instead. PFAPA syndrome (Periodic Fever, Aphthous stomatitis, Pharyngitis, Adenitis) is an important diagnosis in children with recurrent oral ulcers — it causes precisely periodic febrile episodes (every 3–6 weeks, like clockwork) with the four components, lasting 3–6 days and resolving completely between episodes. The periodicity is the diagnostic clue — if a parent says "my child gets a fever with mouth ulcers and a sore throat every month on a predictable schedule," PFAPA should be strongly considered. Paediatric referral for confirmation and management (corticosteroid at episode onset is highly effective; tonsillectomy is curative in many cases).</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Oral Examination — What to Look For</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Ulcer characteristics (examine with good light)</div><div>Site: non-keratinised (aphthous) vs keratinised (traumatic/herpetic/cancer) · Size: &lt;1 cm (minor aphthous) vs &gt;1 cm (major aphthous/cancer/nicorandil) · Number: single vs multiple · Base: yellow/white slough (benign) vs red granular (suspicious for malignancy) · Edges: regular/smooth (aphthous) vs raised/rolled/indurated (SCC) · Floor: soft (benign) vs indurated/firm on palpation (SCC) · Surrounding mucosa: erythema (benign) vs leukoplakia or erythroplakia (pre-malignant)</div>
+      <div>High-risk sites for oral cancer</div><div>Lateral tongue (most common oral SCC site — examine with tongue protruded AND laterally deviated), floor of mouth (bimanual palpation — place finger under chin), soft palate and oropharynx, retromolar trigone, buccal sulcus. Examine ALL sites systematically at every oral assessment — do not limit examination to the visible anterior mouth only. Use a tongue depressor to visualise the posterior floor of mouth and retromolar area.</div>
+      <div>Associated findings</div><div>Lymphadenopathy: palpate submandibular, submental, and anterior cervical chains — any hard/fixed node in oral cancer region = suspicious · White patches: leukoplakia (cannot be rubbed off — pre-malignant, 5–17% malignant transformation rate) · Red patches: erythroplakia (cannot be rubbed off — higher malignant transformation rate than leukoplakia: 14–50%) · Candidiasis: white patches that CAN be rubbed off, leaving red base · Gingival health: blistering gingivitis = MMP/pemphigus</div>
+      <div>Palate, tonsils and posterior pharynx</div><div>Tonsillar asymmetry (one enlarged tonsil = tonsillar cancer/lymphoma — 2WW head and neck), uvula deviation (peritonsillar abscess — quinsy), posterior pharyngeal ulcers (herpangina in children, epiglottitis — do not examine if stridor present), vesicles on soft palate (herpangina), cobblestone posterior pharynx (postnasal drip/GORD vs oropharyngeal Crohn's). Oropharyngeal SCC (HPV-positive) presents as tonsillar ulcer or mass, often in non-smokers.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The bimanual palpation technique for the floor of mouth is a clinical skill that dramatically increases the sensitivity of oral cancer detection — floor of mouth SCC often begins as a small, relatively painless, indurated lesion that is much more palpable than visible. With one finger inside the mouth on the floor and the other hand under the chin, a lesion that cannot be seen can be felt as a firm cord or thickening against the surrounding soft tissue. This technique takes 10 seconds and is taught in RCGP resources as part of the oral cancer awareness campaign. GPs should include floor of mouth palpation as a routine part of any oral examination in patients with mouth ulcers. Erythroplakia (red velvety patches of oral mucosa that cannot be wiped off) is the oral lesion with the highest malignant transformation rate — up to 50% of erythroplakic lesions will transform to SCC if untreated, compared to 5–17% for leukoplakia. Despite this, erythroplakia receives less clinical attention than leukoplakia because it is less visually dramatic. Any red non-wipeable patch in the mouth of an adult, particularly at a high-risk site (floor of mouth, lateral tongue, soft palate), warrants urgent 2WW referral even if an ulcer is not present. Tonsillar asymmetry in an adult (one tonsil visibly larger than the other) is a finding that must not be dismissed as normal variation without further assessment — unilateral tonsillar enlargement in an adult is an indication for urgent referral to exclude tonsillar lymphoma (rapidly growing, non-tender, firm) or tonsillar SCC (particularly HPV-positive oropharyngeal cancer, which is rising rapidly in the UK, predominantly affecting non-smoking men aged 40–60 years). NICE NG12 specifies 2WW referral for unexplained tonsillar asymmetry in adults.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="REFER" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999 / Same-day hospital</span></div><div>SJS/TEN (mucosal blistering + skin detachment + systemically unwell) → 999 + stop offending drug · Neutropenic sepsis (temperature ≥38°C + neutrophils &lt;0.5 × 10⁹/L) → 999 · Ludwig's angina (floor of mouth infection + neck swelling + stridor + drooling) → 999 airway emergency</div>
+      <div><span class="pill pill-purple">2WW — oral/head &amp; neck cancer</span></div><div>Any unexplained oral ulcer persisting &gt;3 weeks (NICE NG12) · Unexplained red or white patch in mouth · Unexplained tonsillar asymmetry · Any ulcer with indurated/raised edges · Oral SCC suspected on clinical examination · Unexplained lump in lip · Unexplained tooth loosening without dental cause</div>
+      <div>Urgent oral medicine / OMFS (within 2 weeks)</div><div>Major aphthous ulcers causing inability to eat or drink · Recurrent severe RAS not responding to topical treatment (requires systemic therapy) · Suspected MMP or pemphigus vulgaris (biopsy required) · Biopsy-level suspicion below 2WW threshold · Nicorandil ulcers not healing after drug cessation at 6 weeks</div>
+      <div>Gastroenterology</div><div>Positive TTG IgA (coeliac disease confirmed — duodenal biopsy) · Oral manifestations of suspected IBD (Crohn's, UC) · Pyostomatitis vegetans · Recurrent oral ulcers with GI symptoms</div>
+      <div>Rheumatology</div><div>Behçet's disease (oral + genital ulcers ± uveitis ± skin lesions) · Systemic lupus erythematosus (palatal ulcers + arthritis + rash) · Reactive arthritis (oral ulcers + urethritis + conjunctivitis + arthritis — Reiter's triad)</div>
+      <div>GUM / sexual health</div><div>Suspected primary syphilis chancre in mouth · HIV-related oral ulcers · Recurrent oral herpes with sexual transmission concerns</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Ludwig's angina is one of the most dangerous conditions in all of primary care — it is a rapidly spreading bilateral cellulitis of the floor of the mouth (submandibular, submental, and sublingual spaces) originating from dental infection (usually mandibular molar or premolar). The infection spreads along fascial planes to the floor of the mouth, causing a woody, brawny swelling that displaces the tongue superiorly and posteriorly. This leads to progressive airway obstruction — patients become unable to swallow saliva, hold the airway open, or breathe. Death from asphyxia can occur within hours of onset in an untreated case. The key clinical features are: floor of mouth induration (wooden feel on palpation rather than fluctuant — because the infection is diffuse through the fascial spaces rather than localised to an abscess), bilateral submandibular swelling, raised tongue, drooling, and inability to open the mouth fully. Any patient with these features must be called 999 immediately — this is not a case for GP prescription of antibiotics. The 2WW oral cancer pathway threshold of 3 weeks for non-healing ulcers is critical and must be applied without exceptions — the most common cause of delayed oral cancer diagnosis is a GP who gives an ulcer "one more week" beyond 3 weeks, then "another week," allowing the cancer to progress while the patient and GP wait for spontaneous resolution. The rule must be applied with the same inflexibility as the 2WW rule for rectal bleeding or a breast lump: any unexplained oral ulcer at 3 weeks from first presentation = 2WW, regardless of the patient's age, smoking status, or the GP's suspicion level. If the referral proves unnecessary, the specialist will discharge the patient at the outpatient appointment — no harm done.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="TREAT" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>Treatment Ladder — Aphthous Ulcers</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1<br/>Mild / infrequent</span><span class="rt"><b>Chlorhexidine 0.2% mouthwash</b> (Corsodyl) 10 ml BD for 1 minute — reduces secondary bacterial colonisation of ulcer, speeds healing by 1–2 days, reduces recurrence frequency. Not a cure. <b>Benzydamine hydrochloride mouthwash 0.15%</b> (Difflam) — analgesic mouthwash, rinse or gargle 15 ml every 1.5–3 hours — significant pain relief (local anaesthetic + anti-inflammatory). OTC, widely available. <b>Topical anaesthetic gels</b>: lidocaine 5% oromucosal gel, benzocaine lozenges — short-term pain relief before meals.</span></div>
+      <div class="rung"><span class="rn">Step 2<br/>Moderate</span><span class="rt"><b>Triamcinolone acetonide oromucosal paste 0.1% (Adcortyl in Orabase)</b> — apply to dry ulcer surface TDS/QDS after meals. Corticosteroid in adhesive vehicle that sticks to moist mucosa. Reduces inflammation, speeds healing. Or <b>Hydrocortisone 2.5 mg mucoadhesive buccal tablets (Corlan pellets)</b> — place adjacent to ulcer, dissolve slowly BD/QDS. Both are topical and minimal systemic absorption. <b>Amlexanox 5% paste</b> (oral anti-inflammatory — used in US, limited UK availability). <b>High-potency topical steroid</b>: clobetasol propionate 0.05% in orabase — specialist preparation, very effective for major aphthous.</span></div>
+      <div class="rung"><span class="rn">Step 3<br/>Severe / major aphthous</span><span class="rt"><b>Prednisolone 25–40 mg OD × 5 days</b> for severe exacerbations (major aphthous causing inability to eat). Short course, rapid taper. Reserve for genuine severity — oral steroid is not routine for minor aphthous. <b>Dapsone 50–100 mg OD</b> (anti-inflammatory, reduces neutrophil-mediated mucosal damage — specialist-initiated via oral medicine). <b>Thalidomide 100–300 mg OD</b> — highly effective for severe RAS including HIV-related major aphthous (specialist only — teratogenic, strict pregnancy prevention programme mandatory). <b>Colchicine 0.5 mg BD</b> for Behçet's-related oral ulcers (also effective for non-Behçet's severe RAS — reduces neutrophilic inflammation).</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Benzydamine hydrochloride (Difflam) mouthwash is underused in primary care — it is both an analgesic (via sodium channel blockade, similar mechanism to lidocaine) and an anti-inflammatory (via prostaglandin synthesis inhibition), making it effective for reducing the pain of aphthous ulcers during eating and drinking. It is licensed OTC, costs approximately £6, and can be recommended without prescription. For patients with major aphthous ulcers who cannot eat, Difflam mouthwash used 30 minutes before meals can make the difference between maintaining adequate oral intake and requiring hospital admission for fluid and nutritional support. The instruction is to rinse for 30–60 seconds, spit out, and then eat — the anaesthetic effect lasts approximately 30–60 minutes. Corlan pellets (hydrocortisone 2.5 mg mucoadhesive buccal tablets) are the most practical and widely used topical corticosteroid for aphthous ulcers in UK primary care — they are placed against the ulcer surface (on a dry mucosa for best adhesion) and allowed to dissolve slowly, delivering corticosteroid locally with negligible systemic absorption. They are most effective when started as soon as the prodromal tingling is felt (the 24-hour period before the ulcer appears when patients often feel a localised burning sensation) — at this stage they can abort the ulcer entirely. Patients should be instructed to start treatment at the prodromal stage rather than waiting for the ulcer to appear. Thalidomide for severe refractory RAS and HIV-associated major aphthous is a specialist intervention but is one of the most effective treatments known for this indication — complete or near-complete remission in 70–90% of patients. The strict teratogenicity requirements (thalidomide is absolutely contraindicated in pregnancy and was responsible for thousands of cases of phocomelia in the 1960s) mean it is only prescribed by specialists with a mandatory pregnancy prevention programme in all women of childbearing potential. GPs should be aware of this option for patients with truly refractory severe RAS who have failed multiple other treatments, so they can discuss specialist referral appropriately.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Specific Cause Treatment</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Iron / B12 / folate deficiency</div><div>Ferrous sulphate 200 mg TDS (or ferrous fumarate 210 mg BD if GI side effects) × 3 months minimum. Recheck ferritin at 3 months. Hydroxocobalamin 1000 mcg IM 6 doses over 2 weeks → maintenance every 3 months (pernicious anaemia) or oral cyanocobalamin 50 µg OD (dietary deficiency). Folic acid 5 mg OD × 4 months. Mouth ulcers typically resolve within 4–6 weeks of correction. Document the deficiency as the cause of RAS in the clinical records.</div>
+      <div>Coeliac disease</div><div>Strict lifelong gluten-free diet (GFD) — refer to gastroenterology for duodenal biopsy confirmation before dietary restriction. Dietitian referral for GFD education. On strict GFD, oral ulcers typically resolve or dramatically reduce within 6–12 months. Monitor TTG IgA annually (dietary adherence indicator). Supplement: iron, B12, folate, calcium, vitamin D (commonly deficient in coeliac).</div>
+      <div>Drug-induced (nicorandil)</div><div>Stop nicorandil — discuss with cardiologist regarding alternative angina management (isosorbide mononitrate, amlodipine, ranolazine). Do NOT add nicorandil back even at lower dose. Healing typically occurs within 3–6 weeks of cessation. Topical corticosteroids can be used during healing phase for symptomatic relief. Document nicorandil as the cause of oral ulceration in the clinical records — prevents re-prescription by another clinician.</div>
+      <div>Primary herpetic gingivostomatitis</div><div>Aciclovir 200 mg 5× daily × 5 days (or valaciclovir 500 mg BD × 5 days — higher bioavailability, better adherence). Most effective if started within 72 hours of symptom onset. Adequate hydration — hospital admission if unable to drink (IV fluids). Soft diet. Chlorhexidine mouthwash to prevent secondary bacterial infection. Analgesic mouthwash (benzydamine) before eating. Paracetamol ± ibuprofen for fever and pain.</div>
+      <div>Candidal co-infection</div><div>Oral candidiasis frequently co-exists with aphthous ulcers (particularly in immunocompromised patients, patients on topical or systemic steroids, patients with dry mouth). Identify: white plaques rubbing off to leave red base (pseudomembranous) or red glazed mucosa under dentures (erythematous). Nystatin 100,000 units/ml suspension 1 ml QDS × 7 days (swish and swallow) or fluconazole 50 mg OD × 7 days (systemic — for severe or nystatin-refractory). Remove dentures at night and soak in Milton solution. Denture hygiene advice.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The documentation of nicorandil as a cause of oral ulceration is a patient safety action — nicorandil is a drug that GPs prescribe, and once oral ulcers are identified as the cause, the drug must be clearly documented as contraindicated in the patient's allergy/adverse drug reaction record to prevent re-prescription by another GP or during hospital admissions. "Nicorandil — oral ulceration" should be added to the adverse drug reactions list. The patient should also be warned to inform all future prescribers of this reaction. Aciclovir timing in primary HSV gingivostomatitis is critical for efficacy — antiviral treatment significantly reduces the severity and duration of primary HSV stomatitis when started within 72 hours of symptom onset but has minimal benefit if started later. The most common reason for inadequate treatment is delay in diagnosis (many GPs do not recognise the clinical picture) or delay in presentation (parents bring children late because they assume the oral lesions are aphthous). Key features distinguishing primary HSV from aphthous: (1) affects both keratinised and non-keratinised mucosa (hard palate and gingiva are prominently involved in HSV); (2) fever + lymphadenopathy + malaise present; (3) acute onset without prior history; (4) age (most common in children and young adults — first exposure to HSV). The dehydration risk in primary HSV stomatitis in children is the most important immediate concern — the severe pain makes swallowing extremely difficult, and young children can become significantly dehydrated within 24 hours. Hospital admission for IV fluids should be considered early if the child is not maintaining adequate oral intake. A clinical decision rule: any febrile child who has not had adequate fluid intake for 12 hours because of oral pain = hospital assessment.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Trigger Avoidance &amp; Oral Health Optimisation</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>SLS-free toothpaste</b> Sodium lauryl sulphate (SLS) in toothpaste disrupts the oral mucosal protective barrier and triggers aphthous ulcers in susceptible patients. Switch to SLS-free alternatives: Sensodyne Original (SLS-free), Biotène Fluoride (SLS-free), Kingfisher SLS-free. A pragmatic trial — switch for 3 months and assess whether ulcer frequency reduces. Evidence: Herlofson and Barkvoll RCT (1994) showed 60% reduction in aphthous ulcer frequency with SLS-free toothpaste in sensitive patients.</div>
+      <div class="lstile"><b>Dietary trigger identification</b> Keep an ulcer diary (date of onset, foods consumed 24–48 hours before, stress level, menstrual cycle timing). Common dietary triggers: chocolate, nuts (particularly walnuts), hard cheeses, citrus fruits, tomatoes, spicy foods, vinegar, crisps (mechanical + chemical). Elimination trial: exclude suspected trigger × 4 weeks and assess frequency. Note: triggers are highly individual — not all patients are affected by the same foods. Vitamin E-rich diet (almonds, sunflower seeds, avocado) may reduce RAS frequency.</div>
+      <div class="lstile"><b>Stress management</b> Psychological stress is the most commonly identified trigger for RAS exacerbations — it activates the HPA axis, reducing mucosal immune defence and increasing inflammatory cytokine release. Stress management techniques: CBT via NHS Talking Therapies, mindfulness (Headspace, Calm), exercise, adequate sleep, workload management. Exam periods, bereavements, and relationship stressors classically trigger RAS clusters. Validate the connection: "Many people find their mouth ulcers are worst during stressful periods."</div>
+      <div class="lstile"><b>Denture hygiene and oral trauma prevention</b> Ill-fitting dentures are the most common cause of traumatic ulcers — refer to dentist for relining or new denture fabrication. Clean dentures twice daily with denture brush and Steradent/Milton solution (not toothpaste — abrasive). Remove dentures at night (reduces candidal colonisation). Avoid sharp foods (crisps, crusty bread) when oral mucosa is fragile. Soft toothbrush technique to prevent gum trauma. Use non-ionising mouthwash (not undiluted Corsodyl — corrosive to mucosa with prolonged direct contact).</div>
+      <div class="lstile"><b>Smoking cessation</b> Paradoxically, smoking increases the risk of oral cancer but tends to suppress aphthous ulcer frequency — patients who stop smoking often experience a temporary increase in aphthous ulcers (due to loss of nicotine's mucosal immunosuppressive effect). Warn quitters that this increase is temporary (3–6 months) and should not be a reason to resume smoking. The absolute risk reduction in oral cancer (30× risk reduction) vastly outweighs the temporary increase in benign oral ulcers. Support: NHS Stop Smoking Service, nicotine replacement therapy, varenicline or bupropion.</div>
+      <div class="lstile"><b>Nutritional optimisation</b> Maintain adequate iron, B12, folate, zinc, and vitamin D intake. At-risk groups: vegans and vegetarians (B12 deficiency), patients with IBD or coeliac (all haematinics), elderly patients (all haematinics + D), patients with poor appetite. Zinc lozenges (15 mg elemental zinc OD) — small RCT evidence for reducing RAS frequency. Liquorice root extract (mouthwash form — DGL deglycyrrhizinated liquorice) — modest evidence for RAS healing acceleration. These are adjuncts, not replacements for treatment of identified deficiencies.</div>
+      <div class="lstile"><b>Regular dental review</b> Annual dental check-up is essential for: early identification of pre-malignant lesions (leukoplakia, erythroplakia), removal of sharp teeth causing traumatic ulcers, denture adjustment, oral hygiene advice, and screening for oral cancer. GPs should advise all patients with recurrent mouth ulcers to attend the dentist regularly and specifically ask their dentist to check for pre-malignant changes. Patients who have not seen a dentist for &gt;2 years and have oral symptoms require dental registration as a priority.</div>
+      <div class="lstile"><b>Oral rinse hygiene</b> Chlorhexidine mouthwash 0.2% (Corsodyl): use BD for acute ulcer episodes, not continuously (chronic use stains teeth and tongue — brown discolouration, reversible). Alternative maintenance mouthwash: saline rinse (1 teaspoon salt in warm water) — antiseptic, promotes healing, no side effects, inexpensive. Avoid alcohol-based mouthwashes for dry mouth or inflamed mucosa. Bicarbonate of soda rinse (1 teaspoon in water) — alkalises the oral environment, reduces bacterial colonisation of ulcer surface.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The smoking-aphthous paradox is one of medicine's more counterintuitive observations — nicotine has a well-documented suppressive effect on oral mucosal immune activity (it stimulates keratinocyte differentiation and increases the thickness of the keratinised epithelial layer, reducing ulcer susceptibility). This explains why smokers have lower rates of RAS than non-smokers (despite having dramatically higher rates of oral cancer), and why patients who stop smoking frequently experience a cluster of aphthous ulcers in the weeks following cessation. This information is clinically important for two reasons: (1) GPs should warn patients who are stopping smoking that a temporary increase in mouth ulcers is expected and should not be alarming or a reason to resume; and (2) this observation must absolutely not be used to justify continued smoking — the oral cancer risk reduction alone (smoking accounts for 80% of oral SCC cases) provides an overwhelming reason to stop. The DGL (deglycyrrhizinated liquorice) mouthwash evidence for RAS is modest but worth knowing — a small RCT by Das et al. showed that DGL mouthwash reduced pain and ulcer size in RAS. The deglycyrrhizination removes the glycyrrhizin component (responsible for mineralocorticoid-like effects — fluid retention, hypertension) while retaining the anti-inflammatory flavonoids. Available from health food shops, it is a safe and reasonable adjunct for patients seeking non-pharmaceutical options. The chlorhexidine staining effect is frequently not communicated to patients — brown discolouration of teeth and tongue from chlorhexidine is reversible but distressing, and patients who are not warned are often alarmed and stop using the mouthwash. The instruction is: use BD for acute episodes of aphthous ulceration (7–14 days), then switch to saline or bicarbonate rinse for maintenance. Professional scale and polish can remove chlorhexidine staining if it occurs.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Typical minor aphthous — safety-net only</div><div>No follow-up required if: typical minor aphthous pattern (bilateral, small, non-keratinised mucosa, recurrent since adolescence, heals &lt;14 days). Provide written safety-net: "Return if any ulcer does not heal within 3 weeks, if an ulcer grows, if the edge feels hard or raised, or if you notice a white or red patch that won't rub off." Document the advice given.</div>
+      <div>Recurrent aphthous — 6–8 weeks</div><div>Review after 6–8 weeks of first-line treatment (SLS-free toothpaste + topical corticosteroid): frequency and severity improving? Investigation results reviewed (ferritin, B12, folate, TTG IgA)? If deficiency identified and replaced → document and review at 3 months (deficiency correction takes time to show effect). If no improvement at 6 weeks and no deficiency found → oral medicine referral for further assessment.</div>
+      <div>Any ulcer approaching 3 weeks</div><div>If a patient presented with an ulcer and it has not healed at 3 weeks → 2WW at that visit, regardless of clinical impression. Do not wait longer. Document: "Ulcer present × [duration], not healing, 2WW oral medicine/maxillofacial surgery arranged today. Patient informed." Return date for 2WW confirmation should be within 2 weeks of referral — track the outcome.</div>
+      <div>Post-2WW — GP follow-up</div><div>If 2WW referral confirms benign (reactive ulcer, minor aphthous) → GP continues management with reassurance. If oral pre-malignant lesion identified (leukoplakia — surveillance biopsy) → shared care with oral medicine. If oral cancer confirmed → oncology team leads, GP provides: patient support, sickness certification, information about Macmillan support, anticipatory prescribing for pain and mucositis.</div>
+      <div>Systemic disease monitoring</div><div>Coeliac on GFD: annual TTG IgA (adherence monitoring) + annual FBC/ferritin/B12/folate/calcium/vitamin D · IBD: GI review as per gastroenterology · Behçet's: rheumatology + ophthalmology (uveitis surveillance — 3-monthly initially) · Immunosuppressant-related ulcers (methotrexate, azathioprine): FBC monitoring per drug guidelines</div>
+      <div><span class="pill pill-red">Return immediately safety-net</span></div><div>Ulcer becomes painful + neck swelling + fever + difficulty opening mouth → Ludwig's angina → 999 · Extensive blistering of mouth + skin + eyes → SJS → 999 · Fever + severe rigors in patient on chemotherapy → neutropenic sepsis → 999 · Ulcer growing rapidly over 1–2 weeks with hard base → urgent 2WW same visit</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The tracking of 2WW referral outcomes is a clinical governance requirement that is frequently neglected — when a GP makes a 2WW referral, the outcome of that referral should be recorded in the patient's notes when the specialist letter arrives. If no specialist letter arrives within 4 weeks, the GP should proactively chase the outcome — this both ensures the patient was seen and provides the GP with important information about the safety of their 2WW threshold. In a medicolegal context, being able to demonstrate that a 2WW referral was made and followed up to a documented outcome (benign, pre-malignant, malignant) is the standard of care. Tracking outcomes also calibrates the GP's clinical decision-making — knowing what proportion of their 2WW oral medicine referrals prove to be benign vs malignant helps them understand whether they are pitching their threshold appropriately. The Behçet's uveitis surveillance frequency (3-monthly initially) reflects the sight-threatening potential of Behçet's ocular disease — uveitis in Behçet's can be severe, posterior (choroiditis, retinal vasculitis), and rapidly progressive, causing blindness if untreated. Approximately 25% of Behçet's patients with ocular involvement lose useful vision in the long term despite treatment. The rheumatologist managing the systemic disease and the ophthalmologist monitoring for ocular complications must both be involved — this is a condition that requires explicit co-ordination between specialties, and the GP's role is to ensure that both referrals are active and that the patient is attending both follow-up clinics.</div></div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE NG12 (Suspected Cancer, 2023), NICE CKS Aphthous Ulcer (2022), NICE CKS Oral Cancer (2022), BSG Coeliac Disease Guidelines 2014, Scully C &amp; Porter SR (recurrent aphthous stomatitis review), International Behçet's Disease Study Group diagnostic criteria, BNF topical corticosteroid and antiviral dosing. Always adapt to individual patient context.
+</div>
+
+<script>
+(function(){
+  const STORE='rgp.alg.mouthulcers.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true;});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

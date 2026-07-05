@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chalazion (Meibomian Cyst) — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Chalazion management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"👁️",
+  title:"Chalazion (Meibomian Cyst)",
+  stemTitle:"Chalazion \u2014 warm compresses, reassurance, refer the persistent ones",
+  stemSub:"Primary-care management of a chalazion \u2014 a blocked, non-infected meibomian gland presenting as a painless lid lump; treat conservatively with warm compresses, distinguish from an infected stye, and refer persistent or atypical lesions. NICE CKS \u00b7 2026.",
+  guideline:"NICE CKS",
+  glance:[
+    {lbl:"What", val:"Blocked meibomian gland", sub:"painless lid lump"},
+    {lbl:"1st-line", val:"Warm compress + massage", sub:"twice daily"},
+    {lbl:"vs stye", val:"Hordeolum = painful/acute", sub:"infected"},
+    {lbl:"Persistent", val:"Refer for incision &amp; curettage", sub:"if not resolving"},
+    {lbl:"Prevent", val:"Lid hygiene", sub:"treat blepharitis"},
+    {lbl:"Red flag", val:"Recurrent same site / atypical", sub:"= exclude malignancy"}
+  ],
+  flow:[
+    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Don't-miss features",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Preseptal/orbital cellulitis", html:"Spreading lid erythema/swelling, systemic upset, painful/restricted eye movements, proptosis \u2192 same-day (orbital cellulitis is sight/life-threatening)."},
+          {t:"🟠 Recurrent same-site lesion", html:"Especially unilateral recurrent \u2018chalazion\u2019 \u2192 refer to exclude <b>sebaceous gland carcinoma</b> (can masquerade as chalazion)."},
+          {t:"🟠 Atypical lesion", html:"Madarosis (lash loss), ulceration, distortion of lid margin, induration \u2192 refer to exclude lid malignancy."},
+          {t:"🔴 Vision affected / large lesion", html:"Large chalazion causing astigmatism/visual disturbance, or any reduced vision \u2192 ophthalmology."}
+        ]},
+        {b:"why", html:"A chalazion is benign, but a recurrent or atypical lid lump can be a sebaceous gland carcinoma \u2014 hence the rule to refer recurrent same-site or atypical lesions for histology. Acute spreading lid infection is a separate emergency."}
+      ]},
+    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Recognise + distinguish from a stye",
+      blocks:[
+        {b:"kv", rows:[
+          ["Chalazion","Painless (or mildly tender), firm, slowly enlarging lump in the body of the lid \u2014 a sterile lipogranuloma from a blocked meibomian gland"],
+          ["Stye (hordeolum)","Acute, painful, red, often at the lash line (external) \u2014 infected; may discharge"],
+          ["Association","Blepharitis / meibomian gland dysfunction, rosacea \u2014 predisposes and recurs"],
+          ["Course","Many resolve spontaneously over weeks; some persist as a firm nodule"]
+        ]}
+      ]},
+    {t:"node", d:"life", n:"3", tag:"Non-drug · first-line", title:"Conservative care", blocks:[{b:"tiles", v:"life", items:[{t:"🔥 Warm compress", html:"Warm compresses + gentle massage several times daily \u2014 most resolve over weeks."},{t:"🧽 Lid hygiene", html:"Reduces recurrence, especially with associated blepharitis."},{t:"⏳ Be patient", html:"Many resolve spontaneously; intervention only if persistent/large."}]},{b:"why", html:"Warm compresses and lid hygiene resolve most chalazia without any procedure \u2014 conservative care is first-line."}]},
+    {t:"node", d:"drug", n:"4", tag:"Treatment", title:"Conservative first",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Warm compress + massage", when:"first-line, all cases",
+           html:"Warm compress 5\u201310 min then gentle massage towards the lid margin, 2\u20134\u00d7/day, plus lid hygiene. Most resolve with this over weeks. Reassure."},
+          {step:"Step 2", title:"Treat associated blepharitis", when:"prevent recurrence",
+           fromLabel:"if lid disease present",
+           html:"Ongoing lid hygiene; manage MGD/rosacea (consider <b>doxycycline 100 mg once daily</b> for recurrent multiple chalazia with rosacea)."},
+          {step:"Step 3", title:"Refer for incision &amp; curettage", when:"persistent",
+           fromLabel:"if not resolving after weeks",
+           html:"Persistent (e.g. &gt;weeks\u2013months) or large/symptomatic chalazion \u2192 ophthalmology for incision and curettage \u00b1 steroid injection."}
+        ]},
+        {b:"warn", html:"Antibiotics are not needed for an uncomplicated (non-infected) chalazion. Do not repeatedly treat a recurrent same-site lesion as benign without considering referral for histology."}
+      ]},
+    {t:"node", d:"monitor", n:"5", tag:"Follow-up", title:"Review",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"Self-care", title:"Conservative trial", html:"Most resolve in weeks with warm compresses \u2014 safety-net for change."},
+          {n:"2", when:"Persistent", title:"Refer", html:"Not resolving / large / symptomatic \u2192 ophthalmology for I&C."},
+          {n:"3", when:"Recurrent/atypical", title:"Exclude malignancy", html:"Recurrent same-site or atypical \u2192 refer for assessment \u00b1 histology."}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"6", tag:"Refer", title:"Referral",
+      arrow:"persistent, atypical or unwell",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Same-day", html:"Suspected preseptal/orbital cellulitis."},
+          {t:"Ophthalmology", html:"Persistent/large chalazion for incision & curettage; vision affected."},
+          {t:"Urgent / histology", html:"Recurrent same-site or atypical lesion \u2014 exclude sebaceous carcinoma."}
+        ]},
+        {b:"say", html:"This is a chalazion \u2014 a blocked oil gland in the eyelid. It\u2019s harmless and usually clears over a few weeks. Warm compresses and a gentle massage several times a day speed it up. If it doesn\u2019t settle, we can refer for a small procedure to drain it. Let us know if the eyelid becomes hot, spreading and painful."}
+      ]}
+  ],
+  foot:"Management of chalazion in primary care; recurrent/atypical lid lesions and orbital cellulitis need referral. Verify against current NICE CKS Meibomian cyst (chalazion)."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

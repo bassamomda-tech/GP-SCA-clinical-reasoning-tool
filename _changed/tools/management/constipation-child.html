@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Constipation (Child) — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Child constipation management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🧒",
+  title:"Constipation (Child)",
+  stemTitle:"Idiopathic constipation in children — ongoing management",
+  stemSub:"Primary-care management of childhood functional constipation \u2014 disimpaction then maintenance with macrogol, behavioural support, and crucially not stopping too soon \u2014 with red-flag exclusion. NICE NG99 \u00b7 CKS 2026.",
+  guideline:"NICE NG99",
+  glance:[
+    {lbl:"First", val:"Exclude red flags", sub:"organic causes"},
+    {lbl:"Impacted?", val:"Disimpaction", sub:"high-dose macrogol"},
+    {lbl:"Then", val:"Maintenance", sub:"macrogol, lower dose"},
+    {lbl:"Add", val:"Stimulant", sub:"if macrogol alone insufficient"},
+    {lbl:"Duration", val:"Months", sub:"don\u2019t stop too soon"},
+    {lbl:"Avoid", val:"Dietary-only Rx", sub:"as sole treatment"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm functional constipation, exclude red flags",
+      blocks:[
+        {b:"kv", rows:[
+          ["Diagnosis","Clinical \u2014 infrequent/hard/painful stools, withholding, overflow soiling; usually idiopathic"],
+          ["Red flags","Failure to pass meconium &lt;48 h, ribbon stools, weight/growth faltering, abdominal distension, abnormal neurology/lower limbs/spine, delayed onset from birth"],
+          ["Impaction","Assess for faecal impaction (overflow soiling, palpable mass) \u2014 must be cleared first"],
+          ["Context","Diet, fluids, toileting, behavioural/psychosocial factors, pain/fear cycle"]
+        ]},
+        {b:"why", html:"Most childhood constipation is functional, driven by a <strong>painful-stool \u2192 withholding \u2192 harder-stool</strong> cycle. The two essentials are excluding red flags that suggest an organic cause (e.g. Hirschsprung\u2019s, neurological) and recognising <strong>impaction</strong> \u2014 because maintenance treatment fails if you don\u2019t disimpact first."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 alongside", title:"Behavioural and lifestyle support",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🚽 Toilet routine", html:"Regular, unhurried toileting after meals; correct foot support/position; reward systems."},
+          {t:"💧 Diet & fluids", html:"Adequate fluids and balanced fibre \u2014 but <b>not as the sole treatment</b>."},
+          {t:"📓 Bowel diary", html:"Track stools and soiling to guide titration."},
+          {t:"🫶 No blame", html:"Explain soiling is overflow, not naughtiness; support the child and family."},
+          {t:"🏃 Activity", html:"Encourage physical activity."},
+          {t:"📚 Education", html:"Explain the cycle and that treatment takes months."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 stepwise", title:"Disimpaction then maintenance",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Disimpaction (if impacted)", when:"escalating macrogol regimen",
+           html:"<b>Macrogol (Movicol Paediatric Plain)</b> in an escalating disimpaction regimen \u2014 e.g. <b>2 sachets day 1, increasing by 2/day to a max of 8</b> \u2014 over ~1\u20132 weeks (dose by age per BNFC). Warn soiling may briefly worsen first. Add a stimulant (<b>senna</b>) if macrogol alone insufficient."},
+          {step:"Step 2", title:"Maintenance", when:"start as disimpaction completes",
+           fromLabel:"continue \u2014 do not stop after clear-out",
+           html:"Macrogol at a maintenance dose (commonly <b>1\u20134 sachets daily, by age</b>); <b>adjust to a soft, regular stool</b>. Add/switch to include a stimulant (<b>senna, dose by age per BNFC</b>) if needed."},
+          {step:"Step 3", title:"Continue long enough", when:"months, then slow wean",
+           fromLabel:"taper only once consistently regular",
+           html:"Continue for <b>several months</b> after regular stools are established, then reduce gradually \u2014 stopping early causes relapse."}
+        ]},
+        {b:"warn", html:"<b>Don\u2019t stop maintenance too soon</b> \u2014 the commonest cause of relapse. <b>Don\u2019t rely on diet alone.</b> Maintenance should overlap and continue well beyond disimpaction."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Titrate and sustain",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Stool frequency / soiling","Regularly","Titrate macrogol to soft regular stool; add stimulant if needed"],
+          ["Disimpaction progress","During clear-out","Expect transient worsening; ensure completion before reducing"],
+          ["Growth / red flags","At review","Faltering growth / new features \u2192 reassess for organic cause"],
+          ["Adherence","Ongoing","Support families \u2014 long courses need encouragement"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"~1\u20132 weeks", title:"Disimpaction review", html:"Confirm clear-out; transition to/optimise maintenance."},
+          {n:"2", when:"4\u20138 weeks", title:"Maintenance review", html:"Titrate dose; reinforce behavioural measures and the long timescale."},
+          {n:"3", when:"Months", title:"Wean", html:"Once consistently regular for months, reduce gradually; re-treat early if relapse."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not improving? Re-check before escalating",
+      arrow:"\u2026if constipation persists",
+      intro:"Re-examine impaction, adherence and the diagnosis.",
+      checks:[
+        {b:"1 \u00b7 Still impacted?", html:"Inadequate disimpaction \u2192 maintenance will fail; re-disimpact."},
+        {b:"2 \u00b7 Dose", html:"Macrogol titrated adequately; stimulant added if needed?"},
+        {b:"3 \u00b7 Adherence", html:"Families often under-dose or stop early \u2014 support and re-educate."},
+        {b:"4 \u00b7 Behavioural", html:"Toileting routine, withholding, fear cycle addressed?"},
+        {b:"5 \u00b7 Red flags", html:"Faltering growth or organic features \u2192 refer."}
+      ],
+      back:"Impaction cleared, dose + behaviour optimised \u2192 paediatric referral if refractory"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🟠 Red flags", html:"\u201cTummy swelling with vomiting, blood in stool, weight loss or poor growth, or leg/back problems \u2014 bring them back for review.\u201d"},
+          {t:"💩 Soiling is overflow", html:"\u201cLeaking/soiling usually means a backlog of hard stool, not deliberate \u2014 we treat the constipation, not the soiling.\u201d"},
+          {t:"⏳ Keep going", html:"\u201cKeep the laxative going for months \u2014 stopping as soon as things improve is the main reason it comes back.\u201d"},
+          {t:"📈 Expect a wobble", html:"\u201cDuring the clear-out things can briefly get messier \u2014 this is expected; persevere.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer paediatrics",
+      arrow:"red flags or refractory disease",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Red flags / organic", html:"Delayed meconium, faltering growth, abnormal neurology/spine, distension \u2192 paediatrics (?Hirschsprung\u2019s/other)."},
+          {t:"Refractory", html:"Not responding to adequate disimpaction + maintenance \u2192 paediatric assessment."},
+          {t:"Infants <1 yr", html:"Younger infants / atypical features may need specialist input."},
+          {t:"Complex", html:"Significant behavioural, psychological or safeguarding factors."}
+        ]},
+        {b:"say", html:"This is very common and treatable, but it needs the right approach: a proper clear-out first, then a daily laxative kept going for months \u2014 stopping too early is the usual reason it returns. Diet helps but isn\u2019t enough on its own."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Penile Irritation Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;
+  --diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;
+  --treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;
+  --refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;
+  --lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
+  --font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif
+}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#1a1a3a 0%,#2a3a7a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#2a3a7a,#167a4a);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}
+.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}
+.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}
+.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}
+.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}
+.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}
+.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#92400e}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🔵</div>
+  <div>
+    <b>Penile Irritation — New or Recurrent</b>
+    <small>Balanitis · STI screen mandatory · lichen sclerosus · penile cancer exclusion · phimosis · contact dermatitis</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — most penile irritation is balanitis or dermatitis; treat the common causes, screen for diabetes and STIs, and refer persistent lesions. Advise and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Penile irritation / soreness</span><div class="body">Itch, redness, discharge, rash, foreskin involvement, sexual history, hygiene. Examine glans + foreskin; urinalysis (glucose).</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — persistent lesion / red flags</span><span class="ttl">Persistent lesion or red flags?</span><div class="body">Non-healing ulcer/plaque/induration → exclude penile cancer / premalignant change. Severe infection.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">2WW / refer</span><div class="body">Persistent suspicious lesion → 2WW; severe infection → treat/refer.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination localise the cause.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · common causes &amp; treatment</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Candidal balanitis</div><div class="box act"><span class="ttl">Common</span><div class="body">Itch, redness; topical antifungal; check diabetes; treat partner if recurrent.</div></div></div><div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Contact / irritant</div><div class="box act"><span class="ttl">Common</span><div class="body">Soaps, latex, hygiene (over- or under-washing); avoid irritants, emollient.</div></div></div><div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Inflammatory / premalignant</div><div class="box ix"><span class="ttl">Investigate</span><div class="body">Lichen sclerosus, Zoon balanitis, penile intraepithelial neoplasia.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-purple">2WW</span> persistent suspicious lesion. <span class="pill pill-purple">Dermatology / urology / GUM</span> recurrent or refractory irritation; screen diabetes and STIs.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · self-management &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Self-management &amp; modifiable factors</span><span class="ttl">Skin care &amp; trigger avoidance</span><div class="body"><b>Avoid soaps/irritants</b>, wash with an emollient and gently retract/dry under the foreskin (avoid over- and under-washing); cotton underwear. <b>Optimise glycaemic control</b> in diabetes (recurrent candidal balanitis is a classic presentation). Treat partners for recurrent candida; condom use and STI prevention. Emollient barrier for irritant dermatitis.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Check glucose; biopsy the persistent</span><div class="body"><b>Recurrent candidal balanitis can be the first sign of diabetes</b> — check glucose/HbA1c. <b>2WW</b> for any persistent plaque, ulcer, induration or non-healing lesion (penile intraepithelial neoplasia / penile cancer) — examine, don't just re-prescribe. <b>Review</b> irritation not settling on skin care/antifungal for an inflammatory dermatosis (lichen sclerosus, Zoon's) → dermatology; offer STI screening.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Recurrent candidal balanitis can be the first sign of diabetes</b> — check glucose; and any persistent plaque or ulcer needs referral to exclude premalignant change or penile cancer.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Penile Cancer, Fournier's Gangrene &amp; Phimosis Emergency</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Any persistent penile ulcer, non-healing lesion, or indurated plaque in a man aged ≥40 = penile cancer until proven otherwise. A normal appearance does NOT exclude cancer. Examine the glans under the foreskin.</b></p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Non-healing penile ulcer / indurated plaque</b> Penile squamous cell carcinoma (SCC) → 2WW urology. Most arise on the glans or inner prepuce — hidden under a non-retractile foreskin. Any ulcer not healed at 4 weeks = biopsy via urology. Risk factors: phimosis, HPV, poor hygiene, lichen sclerosus, smoking.</div>
+      <div class="rftile"><b>Rapidly spreading penile / scrotal skin necrosis</b> Fournier's gangrene — necrotising fasciitis of genitalia → 999. Extreme pain disproportionate to appearance + spreading erythema + crepitus + fever. Mortality 20–40% even with aggressive surgical debridement + IV antibiotics. Diabetics especially at risk.</div>
+      <div class="rftile"><b>Paraphimosis</b> Foreskin retracted and unable to return over glans → swelling of glans distal to trapped prepuce → vascular compromise. Penile gangrene risk within hours. Same-day urology / A&E emergency. Manual reduction (ice + compression + lubrication) or dorsal slit under LA / GA.</div>
+      <div class="rftile"><b>Penile irritation + urinary retention</b> Phimosis causing urinary obstruction (stream reduced to a trickle, painful voiding, distended bladder) → same-day urology catheterisation. Chronic urinary retention from phimosis → CKD risk from backpressure. Elective circumcision once stable.</div>
+      <div class="rftile"><b>Penile lesion + inguinal lymphadenopathy + weight loss</b> Advanced penile cancer with nodal metastases → 2WW urology urgently. Fixed, hard inguinal nodes + penile mass = Stage III disease. 5-year survival 50% at Stage III vs 85% at Stage I.</div>
+      <div class="rftile"><b>Penile irritation + systemic features in diabetic / immunocompromised</b> Invasive fungal infection (candidaemia), aggressive bacterial balanitis, or Fournier's gangrene precursor → same-day hospital. Any penile infection in a diabetic not responding within 48 hrs of topical treatment → same-day assessment.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Penile cancer is rare (approximately 700 new cases per year in the UK) but has a well-documented problem of delayed diagnosis — the average delay from first GP presentation to diagnosis is 6–12 months, predominantly due to attribution to benign conditions (balanitis, lichen sclerosus) without biopsy. The most important risk factor is lichen sclerosus — men with LS have a 5% lifetime risk of penile SCC (equivalent to the well-known vulval SCC risk in women with LS). Any non-healing penile lesion in a patient with known lichen sclerosus must be biopsied urgently. HPV infection (types 16 and 18) is causally implicated in 50% of penile SCCs — making HPV vaccination of adolescent males (now part of the NHS schedule) a penile cancer prevention strategy. Paraphimosis is a urological emergency that is frequently encountered in primary care — it can occur after a medical examination (failure to replace foreskin after catheterisation or examination), after sexual activity, or spontaneously in men with phimosis. The mechanism is that the tight retracted prepuce acts as a tourniquet, obstructing venous and lymphatic drainage → oedema → arterial obstruction → gangrene. The glans becomes progressively more engorged and cyanotic. Manual reduction with ice compression and lubrication (generous lubricant over glans, compress firmly between both thumbs, push glans through prepuce ring) can be attempted but should be escalated to A&E if not successful within 10–15 minutes.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Targeted History — STI Screen Is Mandatory</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>All men presenting with penile irritation require an STI risk assessment. Offer STI testing even if symptoms seem non-infectious — STI can mimic or co-exist with other diagnoses.</b></p>
+    <div class="kv">
+      <div>Sexual history (confidential)</div><div>Last sexual contact and gender of partner(s) · New partner in last 3 months · Condom use · Oral / anal / vaginal intercourse · Partner symptoms (vaginal discharge, vulval itch — suggests candida) · Previous STI history · HIV status and last test · IVDU history</div>
+      <div>Symptom character</div><div>Itch (dermatological — candida, contact, lichen sclerosus, psoriasis) vs burning (UTI, urethritis) vs discharge (urethritis — chlamydia / gonorrhoea) vs sore / ulcer (herpes, syphilis, chancroid) vs rash / lesion (warts, syphilis secondary, fixed drug eruption, psoriasis, Zoon's balanitis)</div>
+      <div>Onset and triggers</div><div>After new sexual partner (STI) · After antibiotic course (candida) · After soap / washing product change (contact dermatitis) · Chronic recurring (lichen sclerosus, recurrent herpes, recurrent candida) · Worsening under foreskin (phimosis trapping moisture → candida / poor hygiene balanitis)</div>
+      <div>Circumcision status</div><div>Uncircumcised: higher risk of candidal and aerobic balanitis (moisture + smegma accumulation under prepuce), phimosis. Circumcised: candidal balanitis less common, contact dermatitis more visible. Both: equally at risk of STIs. Ask specifically about foreskin retractability.</div>
+      <div>Medical history</div><div>Diabetes (glycosuria → candida, impaired immunity → recurrent / resistant balanitis) · Immunosuppression (candida, viral infections, drug eruptions) · Skin disease history (psoriasis, eczema, lichen sclerosus) · Recent antibiotics (candida) · Current medications (fixed drug eruption — co-trimoxazole, NSAIDs, tetracyclines)</div>
+      <div>Partner notification context</div><div>If STI confirmed — all recent partners need testing and treatment. BASHH: partners within 3 months for chlamydia, within 2 weeks for gonorrhoea acute symptomatic, within 3 months for asymptomatic gonorrhoea. GUM clinic can assist with partner notification (PN).</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The sexual history is the most important and most frequently incomplete part of the penile irritation consultation — many GPs find it uncomfortable to ask or assume the diagnosis is non-sexual based on age or relationship status. This is a well-documented cause of delayed STI diagnosis. BASHH guidelines and RCGP SCA competencies both emphasise that any genital complaint in a person of any age or relationship status warrants an STI risk assessment. The BASHH recommended approach is the "5 Ps": Partners (number, gender), Practices (oral, anal, vaginal), Protection (condom use), Past STI history, and Pregnancy plans. Asking this systematically rather than ad hoc is both more comfortable for the clinician and more acceptable to the patient. Diabetes-associated recurrent candidal balanitis is one of the most important presentations to recognise — recurrent candida (more than 2 episodes per year) in a man, especially if obese, middle-aged, or with other risk factors, should prompt urgent HbA1c. Undiagnosed type 2 diabetes frequently presents first as recurrent candidal balanitis — glycosuria provides a nutrient-rich environment for Candida albicans on the glans and prepuce.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Candidal balanitis</div><div>Most common cause of balanitis. Itch + erythema + white cottage-cheese discharge / satellite lesions under foreskin. Associated with: diabetes, antibiotics, partner with vaginal candidiasis, obesity. Clotrimazole 1% cream BD × 2 weeks (glans + foreskin) or single-dose fluconazole 150 mg PO. Recurrent (&gt;2/year) → HbA1c + longer antifungal course.</div>
+      <div>Aerobic balanitis (bacterial)</div><div>Mixed commensal overgrowth (Streptococcus, Staphylococcus, anaerobes) under non-retractile foreskin — poor hygiene / smegma accumulation. Erythema, malodorous discharge, no satellite lesions. Swab for MC&S. Topical fusidic acid 2% cream or clindamycin 1% lotion. Hygiene education + retraction technique. Recurrent → consider circumcision.</div>
+      <div>Chlamydia urethritis</div><div>Often asymptomatic or mild urethral discharge + dysuria + urethral itch (NGU — non-gonococcal urethritis). NAAT urine or urethral swab. Doxycycline 100 mg BD × 7 days. Partner treatment mandatory. Test of cure not required for chlamydia (re-test at 3 months for re-exposure screening).</div>
+      <div>Gonorrhoea</div><div>Purulent urethral discharge (yellow-green) + dysuria + urethral itch. NAAT + culture (essential for antimicrobial resistance testing). Ceftriaxone 1 g IM single dose (BASHH 2023). Culture before treatment — resistance rising (ciprofloxacin resistance now &gt;40%). Contact tracing essential. Test of cure at 2 weeks post-treatment.</div>
+      <div>Genital herpes (HSV-1 / HSV-2)</div><div>Clusters of vesicles → painful ulcers on glans / shaft / prepuce. Primary: systemic upset (fever, lymphadenopathy), very painful, dysuria. Recurrent: prodromal tingling → localised ulcers, milder, resolves in 5–7 days. Viral swab (HSV PCR) from active lesion. Aciclovir 400 mg TDS × 5 days (primary) or 200 mg 5× daily × 5 days.</div>
+      <div>Syphilis (primary / secondary)</div><div>Primary: painless indurated ulcer (chancre) at site of infection — may be hidden under foreskin. Secondary: generalised rash (palmar / plantar rash), condylomata lata (warty perianal / penile lesions), mucous patches. Syphilis serology (TPHA + RPR/VDRL) — GUM referral for treatment and contact tracing (penicillin G IM).</div>
+      <div>Lichen sclerosus (BXO)</div><div>Balanitis xerotica obliterans (BXO) = lichen sclerosus of penis. White atrophic plaques + fissuring of glans and prepuce → phimosis. Itch, white discolouration, tightening foreskin, dyspareunia. 5% lifetime SCC risk — annual review mandatory. Potent topical steroid (clobetasol propionate 0.05%) first-line. Circumcision for severe LS + phimosis.</div>
+      <div>Contact / irritant dermatitis</div><div>Itch + erythema + oedema from contactant — soap, washing powder, condom latex, spermicide, topical creams, lubricants. Bilateral / symmetrical rash. Resolves on allergen removal. Mild topical steroid (hydrocortisone 1% BD × 1 week) + emollient. Patch testing (dermatology) if persistent. Switch to non-latex condoms if latex allergy suspected.</div>
+      <div>Psoriasis</div><div>Well-demarcated, glazed, erythematous plaque on glans (inverse psoriasis — no silvery scaling on moist surfaces). Check elbows, knees, scalp, nails for classic psoriasis. Mild topical steroid or calcitriol (Silkis). Avoid potent steroids long-term on genital skin. Dermatology referral if uncertain diagnosis or not responding.</div>
+      <div>Zoon's balanitis (plasma cell balanitis)</div><div>Middle-aged / elderly uncircumcised men. Shiny, moist, orange-red, well-demarcated plaque on glans — "cayenne pepper" spots on examination. Benign but chronic. Diagnosis of exclusion — biopsy confirms (plasma cell infiltrate). Circumcision is curative. Topical steroid + imiquimod as alternatives.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Syphilis is one of the most important diagnoses not to miss in penile ulceration — the primary chancre is classically painless and indurated, and is frequently located under the foreskin where it is invisible without retraction. Patients do not present with "a sore" because it does not hurt. They may present weeks later with secondary syphilis features (widespread rash, condylomata lata, constitutional symptoms) without ever having noticed the primary ulcer. UK syphilis rates have increased by over 700% since 2012 — it is now at a 50-year high. Any genital ulcer, even if painless, must have syphilis serology alongside an STI screen. The painlessness of the chancre is the key teaching point — painful penile ulcers suggest herpes; painless indurated ulcers suggest syphilis; painful non-indurated ulcers in tropical settings suggest chancroid (Haemophilus ducreyi). Lichen sclerosus of the penis (BXO) deserves the same clinical attention as vulval lichen sclerosus — the 5% lifetime SCC risk requires annual review with inspection and a low threshold for biopsy of any new lump, ulcer, or area of induration. Many GPs are more familiar with vulval LS but the penile condition is equally important and equally undertreated. Potent topical steroid (clobetasol propionate 0.05%) applied with the same tapering protocol as for vulval LS is the evidence-based first-line treatment.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Examination &amp; Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Examine the fully retracted glans. Failure to retract the foreskin during examination is the single most common reason penile cancer is missed in primary care.</b></p>
+    <div class="kv">
+      <div>Penile examination</div><div>Fully retract foreskin (gently — note ease of retraction, phimosis grade). Inspect glans: colour, surface (smooth / ulcerated / plaques / vesicles / warts / white patches), discharge (colour, consistency, odour). Inspect inner prepuce (foreskin inner surface). Inspect shaft and base. Examine inguinal lymph nodes (tender = infection / reactive; hard, fixed = malignancy).</div>
+      <div>Phimosis grading</div><div>Grade 0: fully retractile. Grade 1: slight narrowing, full retraction possible. Grade 2: partial retraction, glans visible. Grade 3: partial retraction, meatus only visible. Grade 4: slight retraction only, meatus not visible. Grade 5: no retraction. Grades 3–5: functional phimosis — refer urology for consideration of topical steroid trial or circumcision.</div>
+      <div>Urethral inspection</div><div>Discharge: note colour (clear = NGU / reactive; yellow-green = gonorrhoea; white = chlamydia — though often absent). If no visible discharge: milk urethra from base to meatus. Dysuria + discharge = urethritis → NAAT swab + MSU.</div>
+      <div>Swabs and investigations</div><div><span class="pill pill-blue">NAAT urethral swab or first-catch urine</span> (chlamydia + gonorrhoea — mandatory in all penile irritation with STI risk) · <span class="pill pill-blue">Gonorrhoea culture swab</span> (if discharge present — for antimicrobial sensitivity testing before treatment) · <span class="pill pill-blue">HSV PCR swab</span> (from vesicle / ulcer base — must swab early, virus clears quickly) · <span class="pill pill-blue">Syphilis serology</span> (TPHA + RPR — any ulcer or STI risk) · <span class="pill pill-blue">HIV test</span> (offer to all) · <span class="pill pill-blue">HbA1c</span> (recurrent candida, resistant balanitis) · <span class="pill pill-blue">Skin scraping + KOH</span> (candida confirmation) · <span class="pill pill-blue">MSU</span> (UTI / urethritis)</div>
+      <div>Biopsy criteria</div><div>Any lesion not responding to treatment at 4–6 weeks → urology biopsy (penile cancer exclusion). White patches / plaques not clearly lichen sclerosus → biopsy. Recurrent lesion at same site → biopsy. Any indurated, ulcerated, or fixed lesion → urgent 2WW urology. Biopsy is performed by urology / dermatology, not in primary care.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The instruction to fully retract the foreskin before examining the penis cannot be overstated — an RCE (Royal College of Surgeons) audit of delayed penile cancer diagnosis found that in 40% of cases where penile cancer was initially missed, the GP had not examined under the foreskin. The inner prepuce and glans are the two most common sites for penile SCC. Non-retractile foreskin (phimosis) is both a risk factor for penile cancer (HPV trapping, chronic inflammation) and a physical barrier to examination. When the foreskin cannot be retracted for examination, urology referral is warranted — both to enable examination and to assess phimosis for treatment. Gonorrhoea culture (in addition to NAAT) is essential whenever gonorrhoea is suspected or when NAAT is positive — culture allows antimicrobial sensitivity testing, which is critical given the dramatic rise in antimicrobial resistance in Neisseria gonorrhoeae. Ceftriaxone-resistant gonorrhoea (ESBL-producing strains) has been identified in multiple UK outbreaks. BASHH guidelines therefore require culture before treatment for all confirmed gonorrhoea. A NAAT-positive result without culture means treatment is given empirically (ceftriaxone 1 g IM) but resistance data are not available for that specific isolate — culture is the safety net.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="REFER" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999 / A&E same-day</span></div><div>Paraphimosis (glans engorged, foreskin unable to return) · Fournier's gangrene (crepitus + spreading necrosis + extreme pain) · Urinary retention from phimosis (distended painful bladder)</div>
+      <div><span class="pill pill-purple">2WW urology</span></div><div>Any penile ulcer / indurated plaque not clearly benign · Penile lesion not healed at 4 weeks · Hard inguinal lymph nodes + penile lesion · Known lichen sclerosus with new lump/ulcer · Persistent white penile plaques not responding to treatment</div>
+      <div>GUM / sexual health clinic</div><div>All confirmed STIs (chlamydia, gonorrhoea, syphilis, herpes) — partner notification, HIV testing, contact tracing, test of cure (gonorrhoea). Complex STI management, PREP, PEP. Any STI in vulnerable patient. Recurrent herpes requiring suppressive therapy.</div>
+      <div>Urology</div><div>Symptomatic phimosis (urinary obstruction, recurrent balanitis, pain) — topical steroid trial (betamethasone 0.05% BD × 6 weeks) or circumcision · Recurrent balanoposthitis not responding to medical management · Paraphimosis (reduction / surgical) · BXO (lichen sclerosus) with significant scarring</div>
+      <div>Dermatology</div><div>Penile psoriasis not responding to mild topical steroid · Lichen sclerosus confirmed, complex management · Suspected contact dermatitis (patch testing) · Zoon's balanitis (confirmation by biopsy + management) · Penile fixed drug eruption (identification of causative drug)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The topical steroid trial for phimosis (betamethasone 0.05% cream applied to the phimotic ring BD × 6 weeks with gentle stretching) is the evidence-based first-line treatment for physiological or pathological phimosis in boys and adults — it achieves full or partial retraction in 70–80% of cases, avoiding the need for circumcision. The mechanism is steroid-induced softening of the fibrotic phimotic ring through suppression of the local inflammatory response and promotion of collagen remodelling. This should be tried before circumcision is offered for phimosis without lichen sclerosus. If lichen sclerosus is the cause of phimosis (BXO), clobetasol propionate 0.05% is used instead (same potency but higher concentration — better penetration through the thickened sclerotic tissue). GUM clinic referral for all confirmed STIs is the standard of care — GUM clinics provide: partner notification services (index case is notified of all contacts being tested without naming the index patient), contact tracing infrastructure, free STI testing for contacts, PREP (HIV pre-exposure prophylaxis), PEP (post-exposure prophylaxis), psychosexual support, and surveillance data for public health. GPs can initiate STI treatment but should always refer to GUM for full partner notification, especially for gonorrhoea and syphilis where contact tracing is critical.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="TREAT" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>GP-Initiated Treatment</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Candidal balanitis</div>
+        <div class="b-drug">Clotrimazole 1% cream BD × 2 weeks</div>
+        <div class="b-note">Apply to glans and inner prepuce after washing and drying. Alternatively: single-dose fluconazole 150 mg PO (if patient prefers oral, or extensive / persistent infection). If partner has vaginal candidiasis → treat partner simultaneously (Canesten vaginal pessary + cream). HbA1c if recurrent. Topical steroid-antifungal combination (Canesten HC) if significant inflammation.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Chlamydia (NGU)</div>
+        <div class="b-drug">Doxycycline 100 mg BD × 7 days</div>
+        <div class="b-note">First-line (BASHH 2018). Azithromycin 1 g PO single dose — second-line (higher treatment failure rate for rectal chlamydia). GUM referral for partner notification. Abstain from sex for 7 days after completing treatment (and partner treated). Re-test at 3 months (re-exposure screening, not test of cure).</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Genital herpes (primary)</div>
+        <div class="b-drug">Aciclovir 400 mg TDS × 5 days</div>
+        <div class="b-note">Start within 5 days of onset (or while new lesions forming — any time). Reduces duration and severity by 50%. Valaciclovir 500 mg BD × 5 days is better absorbed (oral prodrug) — preferred. Analgesia: paracetamol + topical lidocaine 5% gel for severe pain. Saline bathing for ulcer comfort. GUM referral. Suppressive therapy (aciclovir 400 mg BD) if ≥6 recurrences/year.</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Contact / irritant dermatitis</span><span class="rt">Identify and remove contactant — soap, condom (switch to non-latex / non-spermicidal), topical cream, washing powder. Soap substitute for washing (Dermol 500 lotion). Short-course topical hydrocortisone 1% cream BD × 1 week. Emollient (Diprobase) after washing. Patch testing via dermatology if contact allergen uncertain. Resolves fully on allergen removal.</span></div>
+      <div class="rung"><span class="rn">Lichen sclerosus (BXO)</span><span class="rt">Clobetasol propionate 0.05% ointment — same tapering protocol as vulval LS: OD × 4 weeks → EOD × 4 weeks → twice weekly ongoing. Emollient (50:50 white soft paraffin). Wash with water only. Annual penile examination — SCC surveillance. Circumcision for severe LS + phimosis (curative for LS on glans/prepuce). Urology referral.</span></div>
+      <div class="rung"><span class="rn">Gonorrhoea</span><span class="rt">Ceftriaxone 1 g IM single dose (BASHH 2023 — due to rising resistance). Culture before treatment for sensitivity. GUM referral for partner notification (contacts within 2 weeks symptomatic / 3 months asymptomatic). Abstain until test of cure at 2 weeks. Treat co-infection: azithromycin 1 g if chlamydia NAAT also positive (dual infection common). NEVER use ciprofloxacin empirically — &gt;40% resistance.</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The switch from azithromycin to doxycycline as first-line for chlamydia reflects important resistance data — the 2018 BASHH guideline change was driven by evidence that azithromycin 1 g single dose has higher treatment failure rates for rectal and pharyngeal chlamydia infection (up to 22% failure rate in some studies), and that single-dose treatment selects for macrolide resistance in Mycoplasma genitalium (a co-pathogen causing NGU that responds poorly to azithromycin after a single-dose exposure). Doxycycline 100 mg BD × 7 days achieves &gt;97% cure rates for urogenital, rectal, and pharyngeal chlamydia. The GUM referral after chlamydia diagnosis is essential for partner notification — BASHH partner notification standards require all sexual contacts within 3 months to be tested and treated. GPs can provide this service but the infrastructure of GUM clinics (trained health advisers, contact slips, anonymous notification) is more effective. Rising ceftriaxone resistance in gonorrhoea is an emerging global concern — BASHH increased the recommended ceftriaxone dose from 500 mg to 1 g in 2022 specifically in response to UK cases of treatment failure with 500 mg. Culture before treatment is mandatory to ensure resistance data are captured for public health surveillance and individual treatment modification if culture-directed therapy is needed.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Phimosis, Recurrent Balanitis &amp; Specialist Conditions</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Phimosis — topical steroid trial</div><div>Betamethasone valerate 0.05% cream (or clobetasol propionate 0.05% if LS suspected) — apply to tight ring of foreskin BD × 4–6 weeks + gentle manual stretching technique (after applying cream, gently retract as far as comfortable, hold 30 seconds, 2× daily). 70–80% success avoiding circumcision. Refer urology if no improvement at 8 weeks.</div>
+      <div>Recurrent candidal balanitis</div><div>Check HbA1c (undiagnosed diabetes). If HbA1c normal: longer antifungal course (clotrimazole 1% × 4 weeks or fluconazole 50 mg OD × 14 days). Prophylactic fluconazole 150 mg weekly × 6 months for men with ≥4 episodes/year (off-label — based on female recurrent candida evidence). Treat partner concurrently. Consider Depo COCP contribution in female partner. Circumcision curative in severe recurrent cases.</div>
+      <div>Recurrent herpes — suppressive therapy</div><div>≥6 recurrences/year: aciclovir 400 mg BD or valaciclovir 500 mg OD continuously. Reduces recurrences by 70–80% and reduces asymptomatic shedding (reduces transmission risk). Review annually — can attempt cessation after 12 months to see if recurrence frequency has reduced naturally (recurrence frequency decreases over time in most patients).</div>
+      <div>Fixed drug eruption</div><div>Well-demarcated round/oval erythematous to violaceous plaque on glans — recurs at same site each time implicated drug taken. Common culprits: co-trimoxazole (most common), NSAIDs, tetracyclines, paracetamol. Resolves within weeks of stopping drug. Re-challenge confirms diagnosis but should not be done clinically — drug allergy testing via dermatology. Avoid implicated drug permanently.</div>
+      <div>Syphilis (primary / secondary)</div><div>Penicillin G benzathine 2.4 MU IM single dose (primary / secondary syphilis — hospital / GUM-administered). Early latent: same dose × 3 weekly injections. Late latent / cardiovascular / neurosyphilis: specialist management. Jarisch-Herxheimer reaction (fever + rigors 2–8 hrs post-penicillin) — warn patient, treat with paracetamol. Partner notification for all sexual contacts within 3 months.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The fixed drug eruption is clinically important because it is frequently misdiagnosed as herpes, balanitis, or contact dermatitis — particularly when it presents on the glans penis as a painful, erythematous, or ulcerated lesion. The distinguishing feature is recurrence at exactly the same site with each drug exposure — the lesion "heals" leaving a post-inflammatory hyperpigmented macule, then re-activates to a blistering erosive lesion the next time the drug is taken. Co-trimoxazole (trimethoprim-sulfamethoxazole) is the most common cause on the glans. The reaction is T-cell mediated — there is residual memory T-cell infiltration at the site of the previous reaction, which is activated by systemic drug exposure. Definitive diagnosis requires identifying and documenting the implicated drug and its temporal relationship with the lesion. The Jarisch-Herxheimer reaction in syphilis treatment is caused by massive cytokine release (TNF-α, IL-6, IL-8) from the rapid lysis of Treponema pallidum spirochaetes by penicillin. It occurs in 50–70% of patients with primary syphilis, typically 2–8 hours after the first penicillin dose. It is self-limiting but can be alarming — patients must be pre-warned, given paracetamol at the time of injection, and advised to rest and remain well hydrated for 24 hours. It is not an allergic reaction to penicillin.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Penile Hygiene, STI Prevention &amp; Sexual Health</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Daily penile hygiene</b> Gently retract foreskin during washing — clean the glans and inner prepuce with warm water only (no soap, shower gel, or antiseptics directly on glans mucosa — disrupts normal flora and causes irritant balanitis). Dry thoroughly after washing — moisture under foreskin promotes candida and bacterial overgrowth. Replace foreskin fully after washing and sexual activity.</div>
+      <div class="lstile"><b>Condom use — STI prevention</b> Consistent condom use reduces chlamydia and gonorrhoea transmission by 85–95%. For latex allergy: polyurethane or polyisoprene condoms (Durex Avanti, Skyn). Avoid spermicide-coated condoms (nonoxynol-9 disrupts mucosal integrity and increases STI transmission risk). Correct technique: leave reservoir tip, check expiry date, use water-based lubricant only (oil-based damages latex).</div>
+      <div class="lstile"><b>HPV vaccination</b> Gardasil 9 (9-valent) prevents HPV 6, 11, 16, 18, 31, 33, 45, 52, 58 — responsible for 90% of genital warts and 90% of HPV-associated penile, anal, and oropharyngeal cancers. NHS schedule up to age 25 (boys and girls since 2019). MSM vaccine up to age 45 via GUM. Check vaccination status opportunistically in all young men presenting with genital complaints.</div>
+      <div class="lstile"><b>HIV PrEP and testing</b> HIV pre-exposure prophylaxis (PrEP — tenofovir/emtricitabine) is available on NHS for MSM and others at substantial risk. Reduces HIV acquisition by 99% with adherence. Offer HIV test to all patients with penile STIs — HIV enhances STI transmission and acquisition (mucosal disruption + immune dysregulation). U=U: undetectable HIV viral load on treatment = untransmittable.</div>
+      <div class="lstile"><b>Partner notification and re-testing</b> All new STI diagnoses: inform all recent partners. BASHH partner notification timelines: chlamydia → 3 months; gonorrhoea → 3 months asymptomatic / 2 weeks symptomatic; syphilis → 3 months (primary) / 2 years (early latent). GUM clinic health adviser provides anonymous patient-delivered partner notification. Re-test at 3 months post-treatment for re-exposure.</div>
+      <div class="lstile"><b>Diabetes management (balanitis)</b> Recurrent candidal balanitis in diabetic = suboptimal glycaemic control. Optimise HbA1c target (&lt;48 mmol/mol type 2, &lt;53 mmol/mol with comorbidities). SGLT2 inhibitors increase genital mycotic infections (glycosuria) — consider medication review if recurrent fungal balanitis on SGLT2i. Metformin-based regimens preferred if recurrent fungal infections.</div>
+      <div class="lstile"><b>Lichen sclerosus — self-monitoring</b> Teach penile self-examination monthly — glans, shaft, inner prepuce. Report promptly: any new lump, hardened area, ulcer, or sore that does not heal within 2 weeks. Annual GP penile examination for LS patients. Written patient information (Lichen Sclerosus Support Network). Avoid trauma to affected area (increases fissuring).</div>
+      <div class="lstile"><b>Smoking cessation</b> Smoking increases penile cancer risk (HPV persistence, impaired immune surveillance) and worsens lichen sclerosus. Stop Smoking Service + pharmacotherapy (varenicline most effective — 35% quit rate at 6 months). Every penile irritation consultation is an opportunity for a brief smoking intervention in current smokers.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">SGLT2 inhibitors (empagliflozin, dapagliflozin, canagliflozin) cause glycosuria as their mechanism of action — and glycosuria directly increases the risk of genital mycotic infections (candidal balanitis in men, vulvovaginal candidiasis in women) by providing a nutrient-rich, acidic environment on the genital skin. The incidence of genital mycotic infections with SGLT2 inhibitors is approximately 3–8% in men (vs 0.5% with placebo). GPs should specifically counsel diabetic men starting SGLT2 inhibitors about this risk and advise vigilant penile hygiene. If recurrent fungal balanitis occurs on an SGLT2 inhibitor, a medication switch review with the diabetes team is warranted — although the cardiovascular and renal benefits of SGLT2 inhibitors often outweigh the infection side effect and topical antifungal prophylaxis (clotrimazole 1% cream 2–3× per week) can be used alongside. The U=U (Undetectable = Untransmittable) principle is now scientifically established by the PARTNER, PARTNER2, and Opposites Attract studies — these collectively involved over 75,000 condomless sex acts and demonstrated zero HIV transmissions when the HIV-positive partner had an undetectable viral load on effective ART. Communicating U=U to patients with HIV in primary care reduces stigma, improves treatment adherence, and reduces transmission anxiety.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Candidal balanitis — 2–4 weeks</div><div>Resolved with treatment? HbA1c result? Recurrent (&gt;2 episodes) → HbA1c mandatory + longer antifungal course. Partner treated? SGLT2 inhibitor review if applicable. Recurrent and HbA1c normal + phimosis → consider urology referral (circumcision often curative in recurrent candidal balanitis under non-retractile foreskin).</div>
+      <div>STI (chlamydia / gonorrhoea) follow-up</div><div>Chlamydia: partner(s) tested and treated? Re-test at 3 months (not test of cure — screening for re-exposure). Gonorrhoea: test of cure at 2 weeks post-treatment (throat + urethra + rectum culture + NAAT). Partner treated? Resistance data from culture reviewed? Re-test at 3 months. Document treatment and outcome in records.</div>
+      <div>Herpes — after primary episode</div><div>GUM clinic referral confirmed? Suppressive therapy needed (≥6 recurrences/year — review at 3 months)? Informed about asymptomatic shedding and transmission risk to partners? Psychosocial impact addressed — herpes diagnosis has significant emotional impact (shame, relationship fears). Written information (BASHH patient leaflets). Support: Herpes Viruses Association (HVA).</div>
+      <div>Lichen sclerosus — annual</div><div>Annual penile examination: any new induration, ulcer, or lump → 2WW urology urgently. Steroid compliance? Phimosis worsening? Circumcision discussed? Patient taught self-examination. Document examination findings at each annual review — any change from baseline = action required.</div>
+      <div>Non-healing lesion — 4 weeks</div><div>Any penile lesion not healed at 4 weeks despite appropriate treatment → 2WW urology (penile cancer exclusion). Do NOT give repeated antibiotic / antifungal courses for non-healing penile lesions as a substitute for biopsy / urology referral. Document referral date.</div>
+      <div>Syphilis follow-up</div><div>RPR titres at 3, 6, 12, 24 months post-treatment (should fall 4-fold by 3 months). Persistent or rising titres = treatment failure or re-infection → GUM review. HIV co-infection (check in all syphilis) alters treatment recommendations (longer penicillin course, CSF examination if neurological symptoms).</div>
+      <div><span class="pill pill-red">999 / A&E safety-net</span></div><div>Foreskin retracted and cannot be replaced over glans (paraphimosis) → 999 immediately. Rapid penile / scrotal skin spreading with extreme pain (Fournier's). Inability to pass urine (urinary retention from phimosis).</div>
+      <div><span class="pill pill-amber">Same-day GP</span></div><div>Penile lesion rapidly enlarging or changing appearance · Balanitis in diabetic not responding at 48 hrs · Inguinal lymph nodes newly firm / enlarging in context of penile lesion · Any penile symptom associated with systemic fever in immunocompromised patient</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The 4-week non-healing rule for penile lesions is the most important safety-netting instruction for this presentation — any lesion that has not healed after 4 weeks of appropriate treatment for the presumed diagnosis must be referred for biopsy via 2WW urology, regardless of how benign it appears clinically. This is because penile SCC can mimic all of the benign conditions in this pathway: it can appear as a "chronic balanitis" (red granular plaque), a "chronic lichen sclerosus" lesion (white plaque), a "persistent wart" (papillomatous lesion), or an "ulcer from herpes" (shallow erosion). The biopsy is the only way to definitively exclude malignancy. For patients with lichen sclerosus, the threshold is even lower — any new area of induration, any ulcer, or any nodule in a patient with known LS should trigger urgent urology review within days, not weeks. The RPR (Rapid Plasma Reagin) titre monitoring after syphilis treatment is the serological test of cure — it is a quantitative test that measures the amount of non-treponemal antibody. A 4-fold fall (e.g., from 1:32 to 1:8) by 3 months indicates successful treatment response. Failure to achieve this fall raises concern for treatment failure or re-infection, requiring retreatment. GPs who have treated or are co-managing syphilis should ensure this follow-up serology is arranged and reviewed at each time point.</div></div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on BASHH Chlamydia guidelines (2018), BASHH Gonorrhoea guidelines (2023), BASHH Genital Herpes guidelines, BASHH Syphilis guidelines, NICE CKS Balanitis (2023), NICE CKS Phimosis (2022), NICE NG12 (Suspected Cancer 2023), ISSVD Lichen Sclerosus guidelines, EAU Penile Cancer guidelines. Always adapt to individual patient context.
+</div>
+
+<script>
+(function(){
+  const STORE = 'rgp.alg.penileirritation.v1';
+  const flow  = document.getElementById('flow');
+  const pDone = document.getElementById('pDone');
+  const pFill = document.getElementById('pFill');
+  const total = 9;
+  function save(){
+    localStorage.setItem(STORE, JSON.stringify(
+      [...flow.querySelectorAll('input[type=checkbox]')].map(c => c.checked)
+    ));
+  }
+  function load(){
+    try{
+      const d = JSON.parse(localStorage.getItem(STORE) || '[]');
+      [...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{ if(d[i]) c.checked=true; });
+    } catch(e){}
+  }
+  function update(){
+    const done = [...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;
+    pDone.textContent = done;
+    pFill.style.width = (done/total*100)+'%';
+    save();
+  }
+  flow.addEventListener('change', e=>{ if(e.target.type==='checkbox') update(); });
+  flow.addEventListener('click', e=>{
+    const btn = e.target.closest('.why-btn');
+    if(!btn) return;
+    const exp = btn.getAttribute('aria-expanded')==='true';
+    btn.setAttribute('aria-expanded', String(!exp));
+    btn.nextElementSibling.classList.toggle('open', !exp);
+  });
+  document.getElementById('resetBtn').addEventListener('click', ()=>{
+    flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);
+    flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));
+    flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));
+    localStorage.removeItem(STORE);
+    update();
+  });
+  load();
+  update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

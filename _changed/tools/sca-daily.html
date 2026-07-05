@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Daily 10 · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<style>
+.tool-page{ padding:28px 32px 80px; max-width:840px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+.tool-head{ padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:18px; display:flex; gap:18px; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:34px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:6px; max-width:60ch; }
+.d10-streak{ text-align:center; border:1px solid var(--line); border-radius:14px; background:#fff; padding:12px 22px; }
+.d10-streak .v{ font-family:'Source Serif 4',Georgia,serif; font-size:32px; font-weight:600; color:var(--ink); line-height:1.1; }
+.d10-streak .l{ font-size:11px; color:var(--muted); letter-spacing:.06em; text-transform:uppercase; font-weight:700; }
+
+.d10-prog{ display:flex; gap:8px; align-items:center; margin-bottom:18px; }
+.d10-prog .bar{ flex:1; height:9px; border-radius:999px; background:#f1f5f9; overflow:hidden; }
+.d10-prog .fill{ height:100%; border-radius:999px; background:#0c4a47; width:0; transition:width .3s ease; }
+.d10-prog .pct{ font-size:12.5px; font-weight:800; color:var(--ink); min-width:84px; text-align:right; }
+
+.d10-item{ border:1px solid var(--line); border-radius:15px; background:#fff; margin-bottom:13px; overflow:hidden; }
+.d10-item.done{ border-color:#bbf7d0; }
+.d10-hdr{ display:flex; gap:12px; align-items:center; padding:13px 17px; }
+.d10-n{ flex-shrink:0; width:30px; height:30px; border-radius:9px; background:#f0f5ff; border:1px solid #d8e3f8; color:#3f5c93; font-size:13px; font-weight:800; display:grid; place-items:center; }
+.d10-item.done .d10-n{ background:#0c4a47; border-color:#0c4a47; color:#f6f2e9; }
+.d10-tt{ flex:1; }
+.d10-t{ font-size:14.5px; font-weight:700; color:var(--ink); }
+.d10-s{ font-size:12px; color:var(--muted); margin-top:1px; }
+.d10-done-tag{ font-size:11px; font-weight:800; color:#15803d; }
+.d10-body{ border-top:1px solid var(--line); padding:15px 17px; }
+
+.d10-utter{ font-family:'Source Serif 4',Georgia,serif; font-size:17px; line-height:1.5; color:var(--ink); font-style:italic; margin-bottom:12px; }
+.d10-ctx{ font-size:11px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:#3f5c93; background:#f0f5ff; border:1px solid #d8e3f8; border-radius:999px; padding:3px 11px; display:inline-block; margin-bottom:10px; }
+.d10-opts{ display:flex; flex-direction:column; gap:8px; }
+.d10-opt{ font:inherit; text-align:left; cursor:pointer; border:1px solid var(--line); border-radius:10px; background:#fff; padding:10px 14px; font-size:13.3px; line-height:1.55; color:var(--ink-2); }
+.d10-opt:hover{ border-color:#94a3b8; }
+.d10-opt.right{ border-color:#15803d; background:#f0fdf4; color:#14532d; }
+.d10-opt.wrong{ border-color:#b91c1c; background:#fef2f2; color:#7f1d1d; }
+.d10-why{ display:none; margin-top:11px; border-left:4px solid #7e22ce; border-radius:9px; background:#faf5ff; padding:10px 14px; font-size:12.8px; line-height:1.6; color:var(--ink-2); }
+.d10-why.on{ display:block; }
+.d10-model{ display:none; margin-top:11px; }
+.d10-model.on{ display:block; }
+.d10-model .mt{ font-size:13.5px; line-height:1.65; color:var(--ink); background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:12px 15px; }
+.d10-btn{ font:inherit; font-size:12.5px; font-weight:700; padding:9px 17px; border-radius:9px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; }
+.d10-btn:hover{ border-color:var(--ink-2); color:var(--ink); }
+.d10-btn.pri{ background:#0c4a47; color:#f6f2e9; border:none; }
+.d10-ctl{ display:flex; gap:9px; margin-top:12px; flex-wrap:wrap; }
+.d10-mark{ display:none; gap:8px; margin-top:12px; flex-wrap:wrap; align-items:center; }
+.d10-mark.on{ display:flex; }
+.d10-mark button{ font:inherit; font-size:12px; font-weight:700; padding:8px 15px; border-radius:999px; border:1px solid var(--line); background:#fff; cursor:pointer; }
+.d10-mark .r-bad{ color:#b91c1c; } .d10-mark .r-good{ color:#15803d; }
+.d10-pb p{ font-size:13.3px; line-height:1.65; color:var(--ink-2); }
+.d10-pb .rem{ border:1px solid #e9d5ff; border-left:4px solid #7e22ce; border-radius:10px; background:#faf5ff; padding:11px 14px; color:var(--ink); font-weight:500; font-size:13.3px; line-height:1.6; margin-top:9px; }
+.d10-pb a{ color:var(--teal); font-weight:600; }
+
+.d10-complete{ display:none; text-align:center; border:1px solid #bbf7d0; border-radius:16px; background:linear-gradient(180deg,#f0fdf4,#fff); padding:26px 22px; margin-top:6px; }
+.d10-complete.on{ display:block; }
+.d10-complete .big{ font-family:'Source Serif 4',Georgia,serif; font-size:25px; font-weight:600; color:#14532d; }
+.d10-complete p{ font-size:13.5px; color:var(--ink-2); margin-top:6px; }
+</style>
+</head>
+<body>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-sca"></aside>
+  <main class="main">
+    <div class="tool-page">
+
+      <div class="tool-head">
+        <div>
+          <div class="tool-eyebrow">Reasoning GP · The habit</div>
+          <h1>The Daily <em>10</em></h1>
+          <p>First-time passers are made by ten minutes a day, not weekends of cramming. Today's set — same for the whole day, new tomorrow.</p>
+        </div>
+        <div class="d10-streak"><div class="v" id="streakV">0</div><div class="l">day streak</div></div>
+      </div>
+
+      <div class="d10-prog"><div class="bar"><div class="fill" id="progFill"></div></div><span class="pct" id="progPct">0 / 5 done</span></div>
+
+      <div id="d10List"></div>
+
+      <div class="d10-complete" id="d10Done">
+        <div class="big">✓ Daily 10 complete</div>
+        <p>Streak extended. Come back tomorrow — and if you have twenty more minutes today, run a <a href="sca-practice.html" style="color:var(--teal);font-weight:600">Hot Seat case</a>.</p>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/sca-explainer-data.js?v=1"></script>
+<script src="../assets/sca-explainer-data2.js?v=1"></script>
+<script src="../assets/sca-drills.js?v=1"></script>
+<script src="../assets/sca-playbooks.js?v=1"></script>
+<script>
+(function(){
+  'use strict';
+  const $ = q => document.querySelector(q);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+
+  const EXP = window.SCA_EXPLAINER || [];
+  const DR  = window.SCA_DRILLS || { cues:[], nets:[], openers:[] };
+  const PB  = window.SCA_PLAYBOOKS || [];
+
+  // Deterministic daily seed
+  const today = new Date().toISOString().slice(0, 10);
+  let seed = 0; for (const ch of today) seed = (seed * 31 + ch.charCodeAt(0)) >>> 0;
+  const rng = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
+  const pickN = (arr) => arr.length ? arr[Math.floor(rng() * arr.length)] : null;
+
+  const items = [
+    { kind:'cue',     d: pickN(DR.cues),     t:'Catch the cue',          s:'One utterance, three responses — pick the one that answers it' },
+    { kind:'exp',     d: pickN(EXP),         t:'Explain a condition',    s:'45 seconds, out loud, no jargon' },
+    { kind:'net',     d: pickN(DR.nets),     t:'Build a safety-net',     s:'Named symptoms · timeframe · route back' },
+    { kind:'opener',  d: pickN(DR.openers),  t:'Win the golden minute',  s:'Respond out loud to the opening line' },
+    { kind:'pb',      d: pickN(PB),          t:'One playbook principle', s:'Read it; carry it into today\u2019s surgeries' },
+  ].filter(x => x.d);
+
+  const KEY = 'rgp-sca-daily';
+  const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || { streak:0, last:'', doneDates:{}, prog:{} }; } catch(e){ return { streak:0, last:'', doneDates:{}, prog:{} }; } };
+  const save = s => { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch(e){} };
+
+  // prog is per-day: { 'YYYY-MM-DD': [bools] }
+  let st = load();
+  if (!st.prog || st.progDate !== today) { st.prog = items.map(() => false); st.progDate = today; save(st); }
+  if (st.prog.length !== items.length) st.prog = items.map((x, i) => !!st.prog[i]);
+
+  function renderStreak(){
+    $('#streakV').textContent = st.streak || 0;
+  }
+
+  function renderProg(){
+    const n = st.prog.filter(Boolean).length;
+    $('#progFill').style.width = (n / items.length * 100) + '%';
+    $('#progPct').textContent = n + ' / ' + items.length + ' done';
+    if (n === items.length) {
+      if (!st.doneDates[today]) {
+        st.doneDates[today] = true;
+        const yest = new Date(Date.now() - 864e5).toISOString().slice(0, 10);
+        st.streak = st.doneDates[yest] ? (st.streak || 0) + 1 : 1;
+        st.last = today;
+        save(st);
+        renderStreak();
+      }
+      $('#d10Done').classList.add('on');
+    }
+  }
+
+  function complete(idx){
+    if (st.prog[idx]) return;
+    st.prog[idx] = true;
+    save(st);
+    const el = document.querySelector(`.d10-item[data-i="${idx}"]`);
+    if (el) {
+      el.classList.add('done');
+      const tag = el.querySelector('.d10-done-tag'); if (tag) tag.textContent = '✓ done';
+    }
+    renderProg();
+  }
+
+  function body(it, i){
+    if (it.kind === 'cue') {
+      const d = it.d;
+      const order = [0,1,2].sort(() => Math.random() - .5);
+      return `<span class="d10-ctx">${esc(d.ctx)}</span><div class="d10-utter">${esc(d.u)}</div>
+        <div class="d10-opts">${order.map(o => `<button class="d10-opt" data-o="${o}">${esc(d.opts[o])}</button>`).join('')}</div>
+        <div class="d10-why" data-why="${i}"></div>`;
+    }
+    if (it.kind === 'exp') {
+      const d = it.d;
+      return `<span class="d10-ctx">${esc(d.t)}</span><div class="d10-utter" style="font-style:normal;font-size:21px">${esc(d.c)}</div>
+        <p style="font-size:13px;color:var(--ink-2);margin-bottom:10px">Explain it to a patient, out loud, ~45 seconds: what it is → why it happened → what we'll do → what to watch for.</p>
+        <div class="d10-ctl"><button class="d10-btn pri" data-reveal="${i}">I've said it — show the model</button></div>
+        <div class="d10-model" data-model="${i}"><div class="mt">${esc(d.m)}</div>
+          <div class="d10-mark on" style="margin-top:11px"><span style="font-size:12px;color:var(--muted)">Self-mark:</span><button class="r-bad" data-mark="${i}">Flabby / jargon</button><button class="r-good" data-mark="${i}">Patient could repeat it</button></div></div>`;
+    }
+    if (it.kind === 'net') {
+      const d = it.d;
+      return `<span class="d10-ctx">Safety-net this</span><div class="d10-utter" style="font-style:normal">${esc(d.s)}</div>
+        <div class="d10-ctl"><button class="d10-btn pri" data-reveal="${i}">Said aloud — show the model</button></div>
+        <div class="d10-model" data-model="${i}"><div class="mt">${esc(d.m)}</div>
+          <div class="d10-mark on" style="margin-top:11px"><span style="font-size:12px;color:var(--muted)">Did yours have named symptoms + timeframe + route back?</span><button class="r-bad" data-mark="${i}">Missing parts</button><button class="r-good" data-mark="${i}">All three</button></div></div>`;
+    }
+    if (it.kind === 'opener') {
+      const d = it.d;
+      return `<span class="d10-ctx">${esc(d.ctx)}</span><div class="d10-utter">${esc(d.u)}</div>
+        <p style="font-size:13px;color:var(--ink-2);margin-bottom:10px">One minute, out loud — take this somewhere good.</p>
+        <div class="d10-ctl"><button class="d10-btn pri" data-reveal="${i}">Done — show a strong version</button></div>
+        <div class="d10-model" data-model="${i}"><div class="mt">${esc(d.m)}</div>
+          <div class="d10-mark on" style="margin-top:11px"><span style="font-size:12px;color:var(--muted)">Self-mark:</span><button class="r-bad" data-mark="${i}">Interrogated / froze</button><button class="r-good" data-mark="${i}">Opened it up</button></div></div>`;
+    }
+    // playbook
+    const d = it.d;
+    return `<span class="d10-ctx">${esc(d.cat)} — ${esc(d.t)}</span>
+      <div class="d10-pb"><p><b>The trap:</b> ${esc(d.trap)}</p><div class="rem">🧭 ${esc(d.remember)}</div>
+      <p style="margin-top:9px"><a href="sca-playbooks.html#pb-${d.id}">Read the full playbook →</a></p></div>
+      <div class="d10-ctl"><button class="d10-btn pri" data-mark="${i}">Read — carrying it today</button></div>`;
+  }
+
+  $('#d10List').innerHTML = items.map((it, i) => `
+    <div class="d10-item${st.prog[i] ? ' done' : ''}" data-i="${i}">
+      <div class="d10-hdr">
+        <span class="d10-n">${i + 1}</span>
+        <div class="d10-tt"><div class="d10-t">${esc(it.t)}</div><div class="d10-s">${esc(it.s)}</div></div>
+        <span class="d10-done-tag">${st.prog[i] ? '✓ done' : ''}</span>
+      </div>
+      <div class="d10-body">${body(it, i)}</div>
+    </div>`).join('');
+
+  // Wire events
+  document.querySelectorAll('.d10-opt').forEach(b => b.addEventListener('click', () => {
+    const item = b.closest('.d10-item'), i = +item.dataset.i, d = items[i].d;
+    if (b.disabled) return;
+    item.querySelectorAll('.d10-opt').forEach(x => { x.disabled = true; if (+x.dataset.o === d.best) x.classList.add('right'); });
+    if (+b.dataset.o !== d.best) b.classList.add('wrong');
+    const why = item.querySelector('.d10-why');
+    why.innerHTML = '<b>' + (+b.dataset.o === d.best ? '✓ ' : '✗ ') + '</b>' + esc(d.why);
+    why.classList.add('on');
+    complete(i);
+  }));
+  document.querySelectorAll('[data-reveal]').forEach(b => b.addEventListener('click', () => {
+    document.querySelector(`[data-model="${b.dataset.reveal}"]`).classList.add('on');
+    b.style.display = 'none';
+  }));
+  document.querySelectorAll('[data-mark]').forEach(b => b.addEventListener('click', () => complete(+b.dataset.mark)));
+
+  renderStreak();
+  renderProg();
+})();
+</script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Paediatric MSK Presentations Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c-bg: #fafbfc;
+  --c-card: #ffffff;
+  --c-border: #e0e4e8;
+  --c-text: #1a2332;
+  --c-text-light: #5a6a7f;
+  --c-primary: #0066cc;
+  --c-primary-light: #e6f0ff;
+  --c-red: #d32f2f;
+  --c-red-light: #ffebee;
+  --c-purple: #7b1fa2;
+  --c-purple-light: #f3e5f5;
+  --c-blue: #1976d2;
+  --c-blue-light: #e3f2fd;
+  --c-teal: #00796b;
+  --c-teal-light: #e0f2f1;
+  --c-amber: #f57c00;
+  --c-amber-light: #fff3e0;
+  --c-green: #388e3c;
+  --c-green-light: #e8f5e9;
+  --c-grey: #616161;
+  --c-grey-light: #f5f5f5;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.stem-banner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 24px 28px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+}
+
+.sb-icon {
+  font-size: 48px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.stem-banner b {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.stem-banner small {
+  display: block;
+  font-size: 15px;
+  opacity: 0.95;
+  font-weight: 400;
+}
+
+.alg-progress {
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.alg-progress > span:first-child {
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--c-text-light);
+}
+
+.pcount {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--c-primary);
+}
+
+.pbar {
+  flex: 1;
+  height: 8px;
+  background: var(--c-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pbar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-primary), #667eea);
+  width: 0;
+  transition: width 0.3s ease;
+  border-radius: 8px;
+}
+
+.reset {
+  background: transparent;
+  border: 1.5px solid var(--c-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-text-light);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.reset:hover {
+  border-color: var(--c-primary);
+  color: var(--c-primary);
+  background: var(--c-primary-light);
+}
+
+.alg-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.node {
+  background: var(--c-card);
+  border: 2px solid var(--c-border);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.node.done {
+  border-color: var(--c-green);
+  background: var(--c-green-light);
+}
+
+.node-num {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  width: 36px;
+  height: 36px;
+  background: var(--c-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--c-text-light);
+  z-index: 1;
+}
+
+.node.done .node-num {
+  background: var(--c-green);
+  color: white;
+}
+
+.node.done .node-num::after {
+  content: '✓';
+  font-size: 18px;
+}
+
+.node-head {
+  padding: 20px 72px 16px 72px;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.node.done .node-head {
+  border-bottom-color: rgba(56, 142, 60, 0.2);
+}
+
+.node-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.node[data-type="SAFETY"] .node-tag {
+  background: var(--c-red-light);
+  color: var(--c-red);
+}
+
+.node[data-type="DIAGNOSE"] .node-tag {
+  background: var(--c-blue-light);
+  color: var(--c-blue);
+}
+
+.node[data-type="TREAT"] .node-tag {
+  background: var(--c-teal-light);
+  color: var(--c-teal);
+}
+
+.node[data-type="REFER"] .node-tag {
+  background: var(--c-purple-light);
+  color: var(--c-purple);
+}
+
+.node[data-type="LIFESTYLE"] .node-tag {
+  background: var(--c-green-light);
+  color: var(--c-green);
+}
+
+.node-head h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.3;
+}
+
+.node-tick {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.node-tick label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.node-tick input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: var(--c-green);
+}
+
+.tlbl {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-text-light);
+}
+
+.node-body {
+  padding: 24px 28px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px 24px;
+  margin-top: 16px;
+  align-items: start;
+}
+
+.kv > div:nth-child(odd) {
+  font-weight: 600;
+  color: var(--c-text);
+  padding-top: 2px;
+}
+
+.kv > div:nth-child(even) {
+  color: var(--c-text);
+}
+
+.rfgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.rftile {
+  background: var(--c-red-light);
+  border-left: 4px solid var(--c-red);
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.rftile b {
+  display: block;
+  color: var(--c-red);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.b-card {
+  border: 2px solid var(--c-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--c-bg);
+}
+
+.b-cond {
+  background: var(--c-primary-light);
+  color: var(--c-primary);
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  border-bottom: 2px solid var(--c-border);
+}
+
+.b-drug {
+  padding: 14px 16px;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--c-text);
+  background: white;
+}
+
+.b-note {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--c-text-light);
+  background: white;
+  border-top: 1px solid var(--c-border);
+}
+
+.ladder {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.rung {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border: 2px solid var(--c-border);
+  border-bottom: none;
+  background: white;
+}
+
+.rung:first-child {
+  border-radius: 12px 12px 0 0;
+}
+
+.rung:last-child {
+  border-bottom: 2px solid var(--c-border);
+  border-radius: 0 0 12px 12px;
+}
+
+.rn {
+  background: var(--c-teal-light);
+  color: var(--c-teal);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid var(--c-border);
+}
+
+.rt {
+  padding: 14px 18px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.lsgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.lstile {
+  background: var(--c-green-light);
+  border-left: 4px solid var(--c-green);
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.lstile b {
+  display: block;
+  color: var(--c-green);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin: 0 4px;
+}
+
+.pill-red { background: var(--c-red-light); color: var(--c-red); }
+.pill-purple { background: var(--c-purple-light); color: var(--c-purple); }
+.pill-blue { background: var(--c-blue-light); color: var(--c-blue); }
+.pill-teal { background: var(--c-teal-light); color: var(--c-teal); }
+.pill-amber { background: var(--c-amber-light); color: var(--c-amber); }
+.pill-green { background: var(--c-green-light); color: var(--c-green); }
+.pill-grey { background: var(--c-grey-light); color: var(--c-grey); }
+
+.why-row {
+  border-top: 1px solid var(--c-border);
+}
+
+.node.done .why-row {
+  border-top-color: rgba(56, 142, 60, 0.2);
+}
+
+.why-btn {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 16px 28px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-primary);
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.2s;
+}
+
+.why-btn:hover {
+  background: var(--c-primary-light);
+}
+
+.caret {
+  font-size: 12px;
+  transition: transform 0.3s;
+  display: inline-block;
+}
+
+.why-btn[aria-expanded="true"] .caret {
+  transform: rotate(180deg);
+}
+
+.why-drawer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.why-drawer.open {
+  max-height: 1000px;
+  padding: 0 28px 24px 28px;
+}
+
+.why-drawer p {
+  color: var(--c-text-light);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.why-drawer p:last-child {
+  margin-bottom: 0;
+}
+
+.connector {
+  height: 32px;
+  width: 3px;
+  background: linear-gradient(180deg, var(--c-border) 0%, transparent 100%);
+  margin: 0 auto;
+}
+
+.alg-foot {
+  margin-top: 32px;
+  padding: 20px 24px;
+  background: var(--c-grey-light);
+  border-radius: 12px;
+  font-size: 13px;
+  color: var(--c-text-light);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.alg-foot strong {
+  color: var(--c-text);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  body { padding: 16px; }
+  .stem-banner { padding: 20px; gap: 16px; }
+  .sb-icon { font-size: 36px; }
+  .stem-banner b { font-size: 20px; }
+  .stem-banner small { font-size: 14px; }
+  .node-head { padding: 20px 20px 16px 64px; }
+  .node-body { padding: 20px; }
+  .node-num { width: 32px; height: 32px; font-size: 14px; top: 14px; left: 16px; }
+  .node-tick { top: 16px; right: 16px; }
+  .kv { grid-template-columns: 1fr; gap: 8px; }
+  .kv > div:nth-child(odd) { font-size: 14px; }
+  .rfgrid, .lsgrid { grid-template-columns: 1fr; }
+  .branch { grid-template-columns: 1fr; }
+  .why-drawer.open { padding: 0 20px 20px 20px; }
+  .alg-progress { flex-wrap: wrap; }
+  .pbar { width: 100%; order: 3; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🦴</div>
+  <div>
+    <b>Paediatric MSK Presentations — limping child, joint pain, growing pains</b>
+    <small>UK primary care pathway for musculoskeletal symptoms in children</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — use pGALS to screen, separate mechanical/growing pains from inflammatory or sinister causes, and never miss septic arthritis, malignancy or safeguarding. Support recovery, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Paediatric MSK problem</span><div class="body">Pain pattern (mechanical vs inflammatory), swelling, function, systemic features, trauma. pGALS screen; examine joints + gait.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — septic / malignancy / NAI</span><span class="ttl">Red flags?</span><div class="body">Fever + hot swollen joint (septic) · bone pain/night pain/systemic features + cytopenias (malignancy) · inconsistent history (NAI) · persistent joint swelling (JIA).</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency / urgent</span><div class="body">Septic arthritis → emergency. Suspected malignancy → urgent. NAI → safeguarding.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination guide management.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · common causes</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Mechanical / growing pains</div><div class="box act"><span class="ttl">Common</span><div class="body">Bilateral leg pains, evenings, normal exam/function; reassure, safety-net.</div></div></div><div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Inflammatory (JIA)</div><div class="box ix"><span class="ttl">Refer</span><div class="body">Persistent joint swelling/stiffness &gt;6 weeks → paediatric rheumatology.</div></div></div><div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">Sinister</div><div class="box ix"><span class="ttl">Red flag</span><div class="body">Septic arthritis, leukaemia/bone tumour, NAI.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> septic arthritis / suspected malignancy / NAI. <span class="pill pill-purple">Paediatric rheumatology</span> persistent joint swelling (JIA); reassure typical growing pains.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · support &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Support &amp; modifiable factors</span><span class="ttl">Reassure and rehabilitate</span><div class="body"><b>Reassure growing pains</b> (benign, evening bilateral leg pains with a normal exam) — massage, simple analgesia, stretching. Encourage activity and physiotherapy for mechanical/overuse problems; address footwear, load and training in sport. For JIA, support school, mobility aids, and the MDT plan. Promote healthy weight and bone health.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Reassess &amp; urgent return advice</span><div class="body"><b>999 / same-day</b> for a hot, swollen, immobile joint with fever (septic arthritis — don't delay), or a limping/refusing-to-weight-bear child who is systemically unwell. <b>Urgent FBC + film</b> and referral for bone/night pain with pallor/bruising/systemic features (leukaemia). <b>Refer JIA</b> if joint swelling persists &gt;6 weeks. Safety-net any inconsistent/unexplained injury via the safeguarding pathway; review if pain changes pattern or fails to settle.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Night pain and systemic features point away from growing pains:</b> persistent bone pain with cytopenias can be leukaemia — check an FBC and film, and refer urgently.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-num">1</div>
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Red Flags — Exclude septic arthritis, malignancy, NAI</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Urgent exclusion of limb-threatening and life-threatening conditions in any child with MSK symptoms.
+    
+    <div class="rfgrid">
+      <div class="rftile"><b>Acute limp + fever</b> Refusing to weight-bear, hot swollen joint, systemically unwell → <span class="pill pill-red">999/Same-day</span> paediatric assessment (septic arthritis, osteomyelitis)</div>
+      <div class="rftile"><b>Non-accidental injury features</b> Multiple bruises at different stages, inconsistent history, delayed presentation, injuries incompatible with developmental stage → <span class="pill pill-red">Same-day</span> safeguarding referral</div>
+      <div class="rftile"><b>Night pain / bone pain</b> Wakes child from sleep, unrelieved by simple analgesia, constant aching → <span class="pill pill-purple">2WW</span> paediatrics (malignancy: leukaemia, bone tumour)</div>
+      <div class="rftile"><b>Systemically unwell</b> Weight loss, fever >2 weeks, pallor, petechiae, hepatosplenomegaly, lymphadenopathy → <span class="pill pill-purple">2WW</span> paediatrics (malignancy, systemic JIA)</div>
+      <div class="rftile"><b>Adolescent hip pain</b> Age 10-16 years, groin/knee pain, limp, restricted internal rotation → <span class="pill pill-red">Same-day</span> orthopaedics (SUFE — slipped upper femoral epiphysis)</div>
+      <div class="rftile"><b>Age <3 years with limp</b> Always abnormal. Cannot be "growing pains" → <span class="pill pill-red">Same-day</span> paediatric assessment (DDH, septic arthritis, toddler fracture, malignancy)</div>
+      <div class="rftile"><b>Persistent limp >48 hours</b> No improvement, worsening, or inability to weight-bear → <span class="pill pill-blue">Urgent</span> X-ray + paediatric review (fracture, Perthes, malignancy)</div>
+      <div class="rftile"><b>Red/hot/swollen single joint</b> Monoarthritis with effusion → <span class="pill pill-red">Same-day</span> (septic arthritis, reactive arthritis, haemarthrosis)</div>
+      <div class="rftile"><b>Back pain age <10 years</b> Unusual in young children. Exclude serious pathology → <span class="pill pill-blue">X-ray spine</span> + paediatric review (discitis, malignancy, spondylolisthesis)</div>
+      <div class="rftile"><b>Bilateral hip pain age 5-9 years</b> Bilateral Perthes (rare but can occur), systemic disease → <span class="pill pill-blue">Urgent</span> X-ray + orthopaedics</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Septic arthritis</b> is a surgical emergency — delayed treatment (>24 hours) leads to irreversible joint destruction, growth plate damage, and chronic disability. Kocher criteria: fever >38.5°C, refusal to weight-bear, WCC >12, ESR >40 = 99% sensitivity for septic arthritis vs transient synovitis.</p>
+      <p><b>Slipped upper femoral epiphysis (SUFE)</b> requires urgent surgical pinning to prevent avascular necrosis of femoral head. Presents as groin/knee pain in obese adolescents. Delay = slip progression = lifelong hip arthritis.</p>
+      <p><b>Childhood malignancy</b> (leukaemia, neuroblastoma, osteosarcoma) presents with vague MSK symptoms in 25% of cases. Night pain is pathognomonic — benign MSK pain does not wake children from sleep. Missing malignancy has catastrophic consequences.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-num">2</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>History — GALS approach and developmental context</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Take detailed history focusing on onset, pattern, functional impact. Ask about play, sport, school attendance.
+    
+    <div class="kv">
+      <div>Pain characteristics</div>
+      <div><b>Onset:</b> Acute (<24hrs) vs gradual. <b>Pattern:</b> Worse morning (inflammatory) vs evening (mechanical). <b>Night pain:</b> Wakes from sleep = red flag. <b>Severity:</b> Impact on function (play, sport, stairs, dressing).</div>
+      
+      <div>Limp pattern</div>
+      <div><b>Antalgic:</b> Shortened stance phase (painful). <b>Trendelenburg:</b> Hip abductor weakness (DDH, Perthes). <b>High-stepping:</b> Foot drop (neurological). <b>Circumduction:</b> Hip/knee stiffness.</div>
+      
+      <div>Systemic features</div>
+      <div>Fever, rash, weight loss, fatigue, poor appetite, night sweats, pallor. <b>Presence</b> = infection, malignancy, systemic JIA. <b>Absence</b> = mechanical or benign.</div>
+      
+      <div>Trauma history</div>
+      <div>Witnessed fall, mechanism, immediate vs delayed pain. Exclude NAI if history inconsistent or multiple injuries.</div>
+      
+      <div>Developmental stage</div>
+      <div><b><3 years:</b> Pre-verbal, examine carefully (septic arthritis, DDH, NAI common). <b>3-9 years:</b> Peak for transient synovitis, Perthes. <b>10-16 years:</b> SUFE, Osgood-Schlatter, anterior knee pain.</div>
+      
+      <div>Family history</div>
+      <div>Juvenile arthritis, autoimmune disease (JIA risk ↑), hypermobility syndromes, sickle cell disease (avascular necrosis).</div>
+      
+      <div>Activity level</div>
+      <div>Sports, dancing, gymnastics (overuse injuries). Sudden increase in activity (Sever's disease, stress fractures). Sedentary (obesity → SUFE, Blount's disease).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Age is the strongest diagnostic clue</b> — different conditions cluster at different developmental stages. Toddler fractures (<3 years), Perthes (4-8 years), SUFE (10-16 years). Age-inappropriate diagnosis should trigger reassessment.</p>
+      <p><b>Functional impact</b> distinguishes serious from benign pathology. Child still playing, running, climbing stairs = likely benign. Refusing to weight-bear, carried by parents, missing school = urgent assessment needed.</p>
+      <p><b>Night pain is never benign</b> in children. Growing pains occur in evening, resolve by bedtime, never wake children from sleep. Night pain = exclude malignancy, infection, inflammatory arthritis.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-num">3</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Classification — Age-based differential diagnosis</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Use age to narrow differential diagnosis and guide investigation strategy.
+    
+    <div class="kv">
+      <div>Age <3 years</div>
+      <div><b>Common:</b> Transient synovitis, toddler fracture (spiral tibia), post-viral arthralgia. <b>Serious:</b> Septic arthritis, osteomyelitis, DDH, NAI, leukaemia. <b>Rule:</b> Any limp age <3 requires same-day assessment — cannot self-report symptoms.</div>
+      
+      <div>Age 3-10 years</div>
+      <div><b>Common:</b> Transient synovitis (irritable hip), growing pains, post-viral, minor trauma. <b>Serious:</b> Perthes disease (4-8 yrs), septic arthritis, malignancy, juvenile idiopathic arthritis. <b>X-ray if:</b> Persistent >48 hrs, night pain, systemically unwell.</div>
+      
+      <div>Age 10-16 years</div>
+      <div><b>Common:</b> Osgood-Schlatter, Sever's disease, anterior knee pain, growing pains, sports injuries. <b>Serious:</b> SUFE, bone tumours (osteosarcoma, Ewing's), JIA. <b>Groin/hip pain</b> = SUFE until proven otherwise.</div>
+      
+      <div>Growing pains</div>
+      <div><b>Criteria:</b> Age 3-12 years, bilateral leg pain (thighs, calves), evening/night onset, resolves by morning, does NOT wake child, normal examination, normal activity. <b>If atypical</b> → investigate. <span class="pill pill-green">Diagnosis of exclusion</span></div>
+      
+      <div>Hypermobility</div>
+      <div><b>Beighton score</b> ≥4/9: thumb to forearm, little finger >90°, elbow hyperextension >10°, knee hyperextension >10°, palms flat on floor. <b>Symptoms:</b> Joint pains after activity, easy bruising, poor stamina. <b>Management:</b> Physiotherapy, core strengthening.</div>
+      
+      <div>Transient synovitis</div>
+      <div><b>Peak age:</b> 3-8 years. <b>Features:</b> Acute limp, hip pain, recent viral illness, low-grade fever (<38°C), can weight-bear with pain. <b>Investigations:</b> Normal WCC/CRP/ESR. <b>Self-limiting</b> 1-2 weeks. <span class="pill pill-amber">Exclude septic arthritis</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Growing pains</b> are a diagnosis of exclusion affecting 10-20% of children. Must be bilateral, evening-only, self-limiting, with normal examination and bloods. Unilateral pain, daytime pain, or abnormal examination = NOT growing pains.</p>
+      <p><b>Transient synovitis vs septic arthritis</b> is the critical distinction. Kocher criteria help but are not 100% sensitive. When in doubt = same-day hospital assessment for joint aspiration. Missing septic arthritis = permanent joint damage.</p>
+      <p><b>Age-specific pathology</b> reflects skeletal maturity. Perthes (avascular necrosis femoral head) occurs age 4-8 when blood supply to epiphysis is vulnerable. SUFE occurs in adolescents when growth plate is weakest pre-fusion. Wrong age for diagnosis = reconsider.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-num">4</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Examination — GALS screen + focused joint examination</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Start with GALS (Gait, Arms, Legs, Spine) screen, then focused joint examination.
+    
+    <div class="kv">
+      <div>Gait observation</div>
+      <div>Watch child walk, run, jump. <b>Antalgic:</b> Painful (shortened stance). <b>Trendelenburg:</b> Hip drops on opposite side (abductor weakness). <b>Toe-walking:</b> Achilles contracture, cerebral palsy. <b>Refusal to weight-bear:</b> Serious pathology until proven otherwise.</div>
+      
+      <div>Arms (GALS)</div>
+      <div>"Put hands behind head" (shoulder abduction/external rotation), "Touch ceiling" (shoulder elevation), "Make fist" (finger flexion), "Turn hands over" (wrist/forearm supination/pronation). <b>Abnormal</b> = JIA, connective tissue disease.</div>
+      
+      <div>Legs (GALS)</div>
+      <div>"Stand on tiptoes" (ankle plantarflexion, calf strength), "Squat down" (knee flexion, hip/knee pathology if unable). Check leg length (ASIS to medial malleolus). Palpate knees for effusion, warmth.</div>
+      
+      <div>Spine (GALS)</div>
+      <div>"Touch toes" (lumbar flexion, hamstring tightness). "Bend sideways" (lateral flexion). Observe from behind for scoliosis (Adams forward bend test). <b>Back pain <10 years</b> = X-ray spine.</div>
+      
+      <div>Hip examination</div>
+      <div><b>Look:</b> Leg length, muscle wasting (gluteal, quadriceps). <b>Feel:</b> Groin tenderness. <b>Move:</b> Flexion, abduction, adduction, internal/external rotation. <b>Limited internal rotation</b> = Perthes, SUFE, slipped capital femoral epiphysis. <b>Log roll test:</b> Passive internal/external rotation — pain = hip pathology.</div>
+      
+      <div>Knee examination</div>
+      <div><b>Effusion:</b> Bulge test, ballotment. <b>Tenderness:</b> Tibial tuberosity (Osgood-Schlatter), patella (patellofemoral pain), joint line (meniscal tear). <b>Stability:</b> Collateral ligaments, cruciate ligaments (teens only).</div>
+      
+      <div>Foot/ankle</div>
+      <div>Heel tenderness (Sever's disease age 8-14), flat feet (flexible normal), high arches (neuromuscular disease). Achilles tendon (tightness, swelling). Ankle range of motion (dorsiflexion, plantarflexion).</div>
+      
+      <div>Systemically</div>
+      <div>Temperature, rash (JIA, HSP, Lyme), pallor (anaemia in leukaemia), lymphadenopathy, hepatosplenomegaly (malignancy, JIA). Weight, height (growth plate damage in chronic disease).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>GALS screen</b> detects 96% of significant MSK abnormalities in 2 minutes. Quick screening tool before focused examination. Normal GALS screen makes serious pathology unlikely (high negative predictive value).</p>
+      <p><b>Hip pathology presents as knee pain</b> in 30% of children (referred pain via obturator nerve). Always examine hip in child with knee pain, especially if knee examination normal. Missing SUFE because you only examined the knee is a medicolegal disaster.</p>
+      <p><b>Refusal to weight-bear</b> is never normal. Even with transient synovitis, children can weight-bear with pain. Complete refusal = septic arthritis, fracture, malignancy, or severe Perthes until proven otherwise.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-num">5</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Investigations — Selective based on clinical suspicion</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Investigate if: age <3 years with limp, systemically unwell, abnormal examination, persistent >48 hours, or red flags.
+    
+    <div class="kv">
+      <div>Bloods — when to do</div>
+      <div><b>FBC, CRP, ESR</b> if: fever, systemically unwell, suspected infection/inflammation. <b>Interpretation:</b> WCC >12 + CRP >20 + ESR >40 = probable septic arthritis. Normal inflammatory markers do NOT exclude serious pathology (leukaemia, bone tumour can have normal bloods initially).</div>
+      
+      <div>X-ray — indications</div>
+      <div><b>Urgent same-day:</b> Suspected fracture, SUFE, severe pain, unable to weight-bear. <b>Routine:</b> Persistent limp >1 week, night pain, abnormal examination. <b>Views:</b> AP + lateral + frog-leg lateral (for hip). <b>Klein's line</b> on AP hip X-ray (SUFE diagnosis).</div>
+      
+      <div>Growing pains</div>
+      <div><b>Do NOT investigate</b> if: bilateral, evening-only, normal examination, child well. Reassure parents. <b>Investigate</b> if: unilateral, daytime, wakes from sleep, abnormal exam, systemically unwell.</div>
+      
+      <div>Hip ultrasound</div>
+      <div><b>Indications:</b> Suspected effusion (transient synovitis vs septic arthritis), DDH screening in at-risk infants. <b>Effusion >2mm</b> = aspiration if febrile/systemically unwell (septic arthritis).</div>
+      
+      <div>MRI</div>
+      <div><b>Indications:</b> Normal X-ray but high clinical suspicion (early Perthes, stress fracture, bone tumour, osteomyelitis), back pain <10 years, neurological signs. <b>Arranged by:</b> Paediatrics/orthopaedics, NOT primary care.</div>
+      
+      <div>Do NOT investigate</div>
+      <div><b>Typical growing pains.</b> <b>Transient synovitis</b> improving at 48 hours. <b>Clear sports injury</b> with normal examination. Overinvestigation causes anxiety, radiation exposure, false-positives.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>X-rays in children = radiation</b> — effective dose matters. Pelvis X-ray = 0.6 mSv (equivalent to 3 months background radiation). Only X-ray if result will change management. Normal X-ray does NOT exclude serious pathology (early Perthes, bone tumours, osteomyelitis may have normal X-rays initially).</p>
+      <p><b>Inflammatory markers help distinguish</b> septic arthritis from transient synovitis but are not 100% sensitive/specific. CRP <20 + ESR <40 + WCC <12 + afebrile = <2% probability septic arthritis. But clinical suspicion overrides bloods — if in doubt, refer for joint aspiration.</p>
+      <p><b>MRI is gold standard</b> for early Perthes, osteomyelitis, bone tumours, stress fractures, soft tissue masses. Avoid radiation. Arranged by specialists, not primary care. Do not delay referral waiting for MRI availability.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-num">6</div>
+  <div class="node-head">
+    <span class="node-tag">Refer</span>
+    <h3>Referral Criteria — When to escalate urgently</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Low threshold for urgent referral in children — consequences of missed serious pathology are catastrophic.
+    
+    <div class="kv">
+      <div><span class="pill pill-red">999/Same-day</span></div>
+      <div><b>Septic arthritis suspected:</b> Acute limp + fever + hot joint + refusing weight-bear. <b>SUFE suspected:</b> Adolescent with groin/hip pain + restricted internal rotation. <b>Fracture:</b> Significant trauma, deformity, unable to weight-bear. <b>NAI concern:</b> Inconsistent history, multiple injuries, safeguarding alert.</div>
+      
+      <div><span class="pill pill-purple">2WW paediatrics</span></div>
+      <div><b>Night pain waking from sleep.</b> <b>Systemically unwell:</b> Weight loss, fever >2 weeks, pallor, bruising, lymphadenopathy. <b>Persistent unexplained limp >2 weeks</b> despite normal X-ray. <b>Multiple joint swelling.</b> <b>Back pain age <10 years.</b></div>
+      
+      <div><span class="pill pill-blue">Urgent orthopaedics</span></div>
+      <div><b>Perthes disease</b> on X-ray (age 4-8, hip pain, limp). <b>Persistent limp + abnormal X-ray</b> (fracture, bone lesion). <b>DDH suspected</b> (clunk, asymmetric skin creases, leg length discrepancy). <b>Severe Osgood-Schlatter</b> unresponsive to rest.</div>
+      
+      <div><span class="pill pill-blue">Routine paediatrics</span></div>
+      <div><b>Suspected JIA:</b> Joint swelling >6 weeks, morning stiffness, multiple joints. <b>Hypermobility + significant functional impairment.</b> <b>Growing pains</b> atypical or severe (for reassurance + physiotherapy).</div>
+      
+      <div><span class="pill pill-green">Primary care</span></div>
+      <div><b>Typical growing pains</b> (bilateral, evening, normal exam). <b>Transient synovitis</b> improving at 48 hrs. <b>Minor sports injuries</b> (Sever's, Osgood-Schlatter mild). <b>Hypermobility</b> mild. Manage with reassurance, analgesia, physiotherapy referral.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>SUFE is a same-day surgical emergency</b> — requires immediate surgical pinning to prevent further slip and avascular necrosis. Delay = slip progression = chronic hip arthritis requiring hip replacement in early adulthood. Any adolescent with hip/groin pain and restricted internal rotation needs same-day X-ray and orthopaedic review.</p>
+      <p><b>Perthes disease</b> requires urgent orthopaedic input to prevent femoral head collapse. Treatment (containment, bracing, or surgery) is time-sensitive — delayed referral worsens long-term outcome (hip arthritis, leg length discrepancy).</p>
+      <p><b>Juvenile idiopathic arthritis</b> is a diagnosis of exclusion. JIA is joint swelling (not just pain) persisting >6 weeks with morning stiffness >15 minutes. Early rheumatology input prevents joint damage and disability. Window for aggressive treatment is first 3 months.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-num">7</div>
+  <div class="node-head">
+    <span class="node-tag">Treat</span>
+    <h3>Analgesia and Supportive Care — primary care management</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Treat benign MSK conditions in primary care with analgesia, activity modification, physiotherapy.
+    
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Growing pains</div>
+        <div class="b-drug">Reassurance + simple analgesia <span class="pill pill-green">First-line</span></div>
+        <div class="b-note">Paracetamol 15 mg/kg QDS PRN. Leg massage, heat packs. Benign, self-limiting. Resolves by age 12.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Transient synovitis (improving)</div>
+        <div class="b-drug">Ibuprofen + rest <span class="pill pill-teal">First-line</span></div>
+        <div class="b-note">Ibuprofen 10 mg/kg TDS (max 400mg) for 3-5 days. Avoid weight-bearing initially. Review 48 hours. Self-limiting 1-2 weeks.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Osgood-Schlatter / Sever's</div>
+        <div class="b-drug">Activity modification + physio <span class="pill pill-teal">First-line</span></div>
+        <div class="b-note">Reduce high-impact sport. Ice after activity. Stretching (quadriceps, hamstrings, calves). Resolves with growth plate fusion.</div>
+      </div>
+    </div>
+    
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Paracetamol 15 mg/kg QDS</b> (max 1g) PRN for mild pain (growing pains, minor trauma). Avoid regular dosing unless moderate-severe pain.</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Ibuprofen 10 mg/kg TDS</b> (max 400mg) for inflammatory conditions (transient synovitis, Osgood-Schlatter, soft tissue injury). Give with food. Avoid if asthma.</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Paracetamol + Ibuprofen</b> alternating for moderate-severe pain. Safe to combine. Review in 48 hours — if not improving, investigate.</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Refer if:</b> Analgesia ineffective, pain worsening, persistent >1 week, red flags emerge. Do NOT escalate to codeine/tramadol in primary care.</span></div>
+    </div>
+    
+    <div class="kv" style="margin-top: 20px;">
+      <div>Activity modification</div>
+      <div><b>Osgood-Schlatter / Sever's:</b> Reduce running, jumping sports. Swimming, cycling OK. Stretching exercises (quadriceps, hamstrings, gastrocnemius). Ice after activity 15 minutes. <b>Duration:</b> 3-6 months until growth spurt complete.</div>
+      
+      <div>Physiotherapy referral</div>
+      <div><b>Indications:</b> Hypermobility with functional impairment, recurrent sports injuries, persistent pain >4 weeks, muscle weakness (post-Perthes, post-fracture). <b>Focus:</b> Core strengthening, proprioception, gait retraining.</div>
+      
+      <div>Safety-netting</div>
+      <div>Return if: pain worsening, new systemic symptoms (fever, weight loss), unable to weight-bear, night pain develops. <b>Growing pains:</b> If still present age 12+ or becoming unilateral → re-investigate.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>NSAIDs are superior to paracetamol</b> for MSK pain in children because most paediatric MSK pain is inflammatory (transient synovitis, soft tissue injuries, overuse syndromes). Ibuprofen has better efficacy and similar safety profile. Avoid if asthma or <3 months old.</p>
+      <p><b>Activity modification is treatment</b>, not just advice. Osgood-Schlatter and Sever's disease are traction apophysitis — continuing high-impact sport perpetuates symptoms. Relative rest (reduce running/jumping, continue swimming/cycling) allows healing while maintaining fitness. Self-limiting once growth plate fuses.</p>
+      <p><b>Do NOT use codeine</b> in children <12 years (MHRA warning — risk of respiratory depression in ultra-rapid metabolisers). Tramadol also avoided. If simple analgesia ineffective = refer for investigation, not escalate opioids.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-num">8</div>
+  <div class="node-head">
+    <span class="node-tag">Lifestyle</span>
+    <h3>Parental Education and Injury Prevention</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Educate parents on self-management, red flags, and injury prevention. Reduce anxiety about benign symptoms.
+    
+    <div class="lsgrid">
+      <div class="lstile"><b>Growing pains reassurance</b> Explain benign nature. Not harmful to bones/joints. Self-limiting by age 12. No long-term consequences. Massage and reassurance as effective as medication.</div>
+      <div class="lstile"><b>Red flag education</b> Teach parents when to seek urgent care: fever + limp, refusing to weight-bear, night pain waking child, systemically unwell, persistent >1 week.</div>
+      <div class="lstile"><b>Activity balance</b> Encourage diverse physical activity (avoid single-sport specialisation <12 years). Mix high-impact (running) with low-impact (swimming, cycling). Rest days essential — growth plates need recovery time.</div>
+      <div class="lstile"><b>Warm-up and stretching</b> 5-10 minutes warm-up before sport. Stretching after activity (quadriceps, hamstrings, calves). Reduces overuse injury risk by 30%.</div>
+      <div class="lstile"><b>Appropriate footwear</b> Supportive trainers for running sports. Replace every 6 months (children's feet grow fast). Avoid worn-out shoes (increase injury risk).</div>
+      <div class="lstile"><b>Healthy weight</b> Obesity increases SUFE risk 3-fold, Blount's disease (tibia vara), anterior knee pain. Encourage active play, limit screen time <2 hours/day.</div>
+      <div class="lstile"><b>Graduated return to sport</b> After injury: start low-impact, progress gradually. Pain during activity = stop. Rule: 50% reduction activity 1 week, 75% week 2, full activity week 3 if pain-free.</div>
+      <div class="lstile"><b>Avoid over-training</b> Young athletes: limit training to age in years = hours per week (e.g. 10-year-old = max 10 hours/week). Overtraining → overuse injuries (stress fractures, apophysitis).</div>
+      <div class="lstile"><b>Vitamin D supplementation</b> All children Oct-March: 400 IU/day (10 mcg). Year-round if dark skin, limited sun exposure. Reduces fracture risk, supports bone health.</div>
+      <div class="lstile"><b>When to stop sport</b> Temporary rest if: pain during activity, limp after sport, pain >24 hours post-activity, night pain. Resume when pain-free at rest and during activity.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Parental anxiety drives consultations</b> — 80% of paediatric MSK consultations are benign (growing pains, transient synovitis, minor trauma). Reassurance is therapeutic. Clear explanation of red flags empowers parents to self-manage safely while seeking help when needed.</p>
+      <p><b>Early sport specialisation</b> (<12 years) increases overuse injury risk 3-fold compared to multi-sport athletes. Growth plates are vulnerable to repetitive stress. Diverse activity reduces single-muscle-group overload and prevents burnout.</p>
+      <p><b>Vitamin D deficiency</b> affects 20% UK children in winter (higher in dark skin, limited outdoor play). Deficiency increases fracture risk, rickets risk, and may contribute to growing pains. Supplementation 400 IU daily is safe, cheap, and evidence-based.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-num">9</div>
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Follow-Up and Safety-Netting</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Schedule reviews based on diagnosis. Clear safety-netting for red flags.
+    
+    <div class="kv">
+      <div>48 hours</div>
+      <div><b>Transient synovitis:</b> Phone review. If improving (reduced pain, walking better) → continue analgesia, review 1 week. If worsening or fever → same-day assessment (septic arthritis). <b>Acute limp post-trauma:</b> Review if not improving — consider X-ray.</div>
+      
+      <div>1 week</div>
+      <div><b>Growing pains, minor injuries:</b> Check symptom resolution. If persisting → examine, consider X-ray. <b>Osgood-Schlatter / Sever's:</b> Assess response to activity modification. Reinforce rest from high-impact sport.</div>
+      
+      <div>4 weeks</div>
+      <div><b>Persistent symptoms:</b> Re-examine, review X-rays if not done. Consider physiotherapy referral. If no improvement → paediatric/orthopaedic referral. <b>Overuse injuries:</b> Should be improving with activity modification — if not, refer physiotherapy.</div>
+      
+      <div>3 months</div>
+      <div><b>Hypermobility:</b> Review physiotherapy progress. Assess functional improvement (core strength, stamina, pain frequency). Discharge if improving. Re-refer if worsening or new symptoms.</div>
+      
+      <div>Safety-net <span class="pill pill-red">999</span></div>
+      <div><b>Sudden severe pain unable to weight-bear.</b> <b>Severe trauma</b> (fall from height, RTA). <b>Acute neurology</b> (leg weakness, bladder/bowel symptoms).</div>
+      
+      <div>Safety-net <span class="pill pill-red">Same-day GP</span></div>
+      <div><b>Fever + limp/joint pain.</b> <b>Systemically unwell</b> (lethargic, not eating, vomiting). <b>Refusal to weight-bear.</b> <b>Hot swollen joint.</b> <b>Night pain waking from sleep.</b> <b>Severe pain unrelieved by analgesia.</b></div>
+      
+      <div>Re-refer if</div>
+      <div><b>Benign diagnosis develops red flags:</b> Night pain, systemically unwell, persistent >2 weeks despite treatment. <b>Growing pains:</b> Become unilateral, daytime, or persist beyond age 12. <b>Action:</b> Urgent paediatric re-referral (may be evolving pathology).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>48-hour review for transient synovitis</b> is mandatory — septic arthritis can evolve from initially mild presentation. If fever develops or pain worsens after initial improvement = urgent reassessment. Do not assume "it's just viral".</p>
+      <p><b>Persistent symptoms >2 weeks</b> require investigation even if initial presentation was benign. Early Perthes, stress fractures, bone tumours can have delayed X-ray changes. Normal initial X-ray does not exclude serious pathology — clinical deterioration overrides imaging.</p>
+      <p><b>Night pain is never normal</b> in children and should never be dismissed. If benign diagnosis (growing pains) develops night pain = urgent re-referral for malignancy/infection exclusion. Changing pattern = changing diagnosis.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use.</strong> Pathway based on NICE CKS Limp in children (2023), RCPCH guidelines, SIGN guidelines. Always adapt to individual patient context and local safeguarding protocols.
+</div>
+
+<script>
+const storageKey = 'rgp.alg.paedmsk.v1';
+const flow = document.getElementById('flow');
+const nodes = flow.querySelectorAll('.node');
+const pDone = document.getElementById('pDone');
+const pTotal = document.getElementById('pTotal');
+const pFill = document.getElementById('pFill');
+const resetBtn = document.getElementById('resetBtn');
+
+pTotal.textContent = nodes.length;
+
+function loadState() {
+  const saved = localStorage.getItem(storageKey);
+  if (!saved) return;
+  try {
+    const state = JSON.parse(saved);
+    nodes.forEach((node, i) => {
+      const chk = node.querySelector('input[type="checkbox"]');
+      if (chk && state[i]) {
+        chk.checked = true;
+        node.classList.add('done');
+      }
+    });
+    updateProgress();
+  } catch (e) {}
+}
+
+function saveState() {
+  const state = Array.from(nodes).map(node => {
+    const chk = node.querySelector('input[type="checkbox"]');
+    return chk ? chk.checked : false;
+  });
+  localStorage.setItem(storageKey, JSON.stringify(state));
+}
+
+function updateProgress() {
+  const done = Array.from(nodes).filter(node => {
+    const chk = node.querySelector('input[type="checkbox"]');
+    return chk && chk.checked;
+  }).length;
+  pDone.textContent = done;
+  const pct = (done / nodes.length) * 100;
+  pFill.style.width = pct + '%';
+}
+
+nodes.forEach(node => {
+  const chk = node.querySelector('input[type="checkbox"]');
+  if (chk) {
+    chk.addEventListener('change', () => {
+      if (chk.checked) {
+        node.classList.add('done');
+      } else {
+        node.classList.remove('done');
+      }
+      updateProgress();
+      saveState();
+    });
+  }
+
+  const whyBtn = node.querySelector('.why-btn');
+  const whyDrawer = node.querySelector('.why-drawer');
+  if (whyBtn && whyDrawer) {
+    whyBtn.addEventListener('click', () => {
+      const isOpen = whyBtn.getAttribute('aria-expanded') === 'true';
+      whyBtn.setAttribute('aria-expanded', !isOpen);
+      whyDrawer.classList.toggle('open');
+    });
+  }
+});
+
+resetBtn.addEventListener('click', () => {
+  if (confirm('Reset all progress? This cannot be undone.')) {
+    localStorage.removeItem(storageKey);
+    nodes.forEach(node => {
+      const chk = node.querySelector('input[type="checkbox"]');
+      if (chk) {
+        chk.checked = false;
+        node.classList.remove('done');
+      }
+    });
+    updateProgress();
+  }
+});
+
+loadState();
+</script>
+
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

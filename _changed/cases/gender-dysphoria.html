@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gender Dysphoria · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="../assets/medchooser.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+.tag-emerg{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;font-weight:700}
+</style>
+</head>
+<body class="mode-both" id="bodyEl" data-screen-label="Gender Dysphoria">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="gender-dysphoria"></aside>
+  <main class="main">
+<div class="case-head">
+  <div>
+    <div class="ch-cat">Mental Health · Full case</div>
+    <h1>Gender Dysphoria</h1>
+  </div>
+  <div class="case-head-tags"><span class="tag tag-teal"><span class="tag-dot dot-teal"></span>GMC / GIC pathway</span><span class="tag">Affirming · GIC referral</span><span class="tag tag-emerg">Mental-health risk</span></div>
+</div>
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">GD</div>
+      <div><div class="tb-title">Gender Dysphoria · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · GMC guidance · affirming, respectful care · referral to a Gender Identity Clinic · mental-health &amp; risk support · general healthcare · bridging &amp; shared care · don't gatekeep</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">Respect &amp; affirm</span><span class="ns-lbl">Use the person's correct name and pronouns, take their experience seriously, and provide respectful, non-judgmental care. Gender incongruence is not a mental illness; gender dysphoria is the distress that can arise from a mismatch between gender identity and sex assigned at birth. Affirming care reduces distress</span></div>
+    <div class="ns-item"><span class="ns-val">The GP's role: refer &amp; support</span><span class="ns-lbl">A GP does not need to be a gender specialist. Make a direct referral to a Gender Identity Clinic (GIC) when the person asks — you do not need a mental-health assessment first, and referral should not be gatekept or delayed. Meanwhile, support mental health and general health</span></div>
+    <div class="ns-item"><span class="ns-val">Long waits → support meanwhile</span><span class="ns-lbl">GIC waiting times are very long. The GP's continuity matters: support mental health, monitor risk, manage general healthcare, and signpost peer/third-sector support. Don't leave the person unsupported while they wait</span></div>
+    <div class="ns-item"><span class="ns-val">Mental-health &amp; suicide risk</span><span class="ns-lbl">Trans and gender-diverse people have markedly higher rates of depression, anxiety, self-harm and suicide — largely driven by minority stress, discrimination and lack of support, NOT by being trans. Assess and treat mental health and risk proactively and compassionately</span></div>
+    <div class="ns-item"><span class="ns-val">Bridging &amp; shared care</span><span class="ns-lbl">Where a person is already self-medicating with hormones (bought online) or at risk, GMC guidance supports GPs considering "bridging" prescriptions to reduce harm, ideally with specialist advice. Engage in shared-care arrangements with the GIC rather than refusing to be involved</span></div>
+    <div class="ns-item"><span class="ns-val">Don't forget routine healthcare</span><span class="ns-lbl">Trans people need the same general healthcare as everyone — and organ-based screening: a trans man with a cervix still needs cervical screening; a trans woman may need prostate awareness; consider bone health and cardiovascular risk on hormones. Tailor screening to anatomy, not recorded gender</span></div>
+    <div class="ns-item"><span class="ns-val">Young people: specialist pathways</span><span class="ns-lbl">Children and young people with gender incongruence are managed through specialist services with a holistic, cautious, multidisciplinary approach (following current national service models). Involve the family appropriately and safeguard. Avoid initiating interventions in primary care</span></div>
+    <div class="ns-item"><span class="ns-val">Avoid harm: don't gatekeep or pathologise</span><span class="ns-lbl">Refusing referral, demanding proof, misgendering, or treating the person's identity as a problem to be solved causes harm and erodes trust. So does conversion practices (unethical and harmful). Provide affirming, person-centred care within your competence, and refer for specialist input</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Gender Dysphoria</div>
+  <div class="stem-title">A 24-year-old trans man, anxious about being dismissed, asking for a referral to a gender clinic — and quietly disclosing low mood, self-harm and that he's started buying testosterone online</div>
+  <div class="stem-text">Sam Okoro, 24 (he/him), assigned female at birth, attends asking to be referred to a gender clinic. He has felt a persistent mismatch between his gender identity and his body for years, with significant distress, and has socially transitioned. He's braced to be questioned or refused. As trust builds he discloses low mood, episodes of self-harm, and — hesitantly — that he has recently started buying testosterone online because the waiting list is "years long" and he couldn't wait. He has no regular contact with mental-health services. He is registered as female and is overdue cervical screening. He fears being judged, misgendered, or told he needs to "prove" anything.</div>
+  <div class="stem-note">This stem tests the ability to deliver respectful, affirming, person-centred care: using the correct name and pronouns; understanding the GP's role is to refer directly to a Gender Identity Clinic on request (without gatekeeping, demanding a mental-health assessment first, or pathologising the identity); to proactively assess and support mental health and suicide/self-harm risk (driven by minority stress, not by being trans); to respond safely to self-medication with online testosterone — recognising the harm-reduction issues, considering specialist advice and (per GMC guidance) the possibility of bridging prescribing and shared care, and arranging monitoring — rather than simply refusing involvement; to address general healthcare and anatomy-based screening (a trans man with a cervix still needs cervical screening); and to signpost support during the long wait. The SCA challenge is building trust with someone braced for rejection, and balancing affirming care with safety.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — Referral + risk + self-medication (this stem)</strong> Affirming care; direct GIC referral without gatekeeping; assess/treat mood &amp; self-harm; harm reduction + consider bridging/shared care &amp; monitoring for online testosterone; anatomy-based screening; signpost support.</div>
+    <div class="stem-variant"><strong>Scenario B — Straightforward referral request</strong> Person wants a GIC referral; refer directly, support general &amp; mental health, signpost peer support, manage the wait.</div>
+    <div class="stem-variant"><strong>Scenario C — Shared care on established treatment</strong> Person on specialist-initiated hormones; GP monitors per shared-care protocol (bloods, BP, bone/CV health), continues general care.</div>
+    <div class="stem-variant"><strong>Scenario D — Mental-health crisis</strong> Active suicidality/self-harm → urgent mental-health assessment &amp; safety plan, alongside affirming support.</div>
+    <div class="stem-variant"><strong>Scenario E — Young person / family</strong> Child/adolescent with gender incongruence → specialist young-people's pathway, holistic/multidisciplinary, family involvement, safeguarding; avoid primary-care-initiated interventions.</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Adult vs young person; referral (don't gatekeep) vs shared care vs crisis; mental-health/suicide risk; self-medication &amp; bridging/harm reduction; anatomy-based screening &amp; general health; hormone monitoring (bone/CV); social support &amp; minority stress; respectful language throughout.</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History — Affirming Opening · Their Goals · Risk · Self-Medication · ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The consultation opens by establishing respect — correct name and pronouns — and by understanding what the person wants (here, a referral) rather than interrogating their identity.</strong> Then, with trust built, sensitively assess mental health and risk (high in this group, driven by minority stress), uncover any self-medication, and address general healthcare. The GP's job is to refer, support and keep the person safe — not to gatekeep or to "assess whether they're really trans".</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 SCA framing — affirm, don't gatekeep</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"Thanks for coming, Sam — and just so you know, I'm happy to make that referral to the gender clinic today; you don't have to prove anything to me. I'd also like to understand how you're doing in yourself and make sure you're supported while you wait, because the waits are unfairly long."</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Sam is braced for rejection. Affirming his identity, committing to the referral up front, and using his correct name/pronouns is what builds the trust needed to then explore risk and the online testosterone safely.</div>
+    </div>
+    <div class="sub-divider">1A — Goals, experience, risk and self-medication</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"Tell me what you'd like from me today, and what would feel most helpful for you."</em></td>
+            <td class="why"><strong>Centres the person's goals.</strong> Sam wants a GIC referral and support. The GP's role is to provide these — to refer directly on request and support general/mental health — not to put the person through a gatekeeping "assessment" of their identity. Establishing the agenda respectfully sets the tone.<span class="why-sub">In SCA: leading with respect and the patient's goals (referral + support), rather than questioning the validity of their identity, is the core skill.</span></td>
+            <td><span class="chg chg-ref">Request → direct GIC referral (no gatekeeping)</span></td>
+          </tr>
+          <tr><td class="q">Their experience &amp; what's helped<em>"How long have you felt this way, and what's been helpful or hard so far?"</em></td><td class="why">Understanding the person's history and social transition supports holistic care and the referral letter — gathered with curiosity and respect, not as a test. It also surfaces sources of distress (minority stress, discrimination) and support.</td><td class="why">Holistic understanding → tailored support + referral.</td><td><span class="chg chg-rx">Support tailored to the person</span></td></tr>
+          <tr><td class="q">🚩 Mental health &amp; risk<em>"How's your mood been? Have you harmed yourself or had thoughts that life isn't worth living?"</em></td><td class="why"><strong>Proactive and compassionate.</strong> Trans people have markedly higher rates of depression, anxiety, self-harm and suicide — driven by minority stress and lack of support, not by being trans. Sam discloses low mood and self-harm. This needs assessment, treatment and a risk/safety plan, and may raise urgency.</td><td class="why">Low mood/self-harm → assess/treat; safety plan; urgent if active risk.</td><td><span class="chg chg-999">Active risk → urgent mental-health support</span></td></tr>
+          <tr><td class="q">🚩 Self-medication / hormones<em>"Are you taking any hormones or anything you've sourced yourself? Tell me honestly — I'm not here to judge, just to keep you safe."</em></td><td class="why"><strong>A harm-reduction issue.</strong> Sam is buying testosterone online because the wait is years. Refusing to engage drives concealment and risk. Per GMC guidance, consider specialist advice, the possibility of a bridging prescription to reduce harm, monitoring (bloods/BP), and shared care — rather than simply refusing involvement.</td><td class="why">Self-medication → harm reduction; consider bridging/shared care + monitoring; specialist advice.</td><td><span class="chg chg-rx">Self-medication → bridging/monitoring (GMC)</span></td></tr>
+          <tr><td class="q">General health &amp; anatomy-based screening<em>"Can we also make sure your general health is looked after — including any screening that applies to you?"</em></td><td class="why">Trans people need the same general healthcare plus organ-based screening: Sam (trans man with a cervix) still needs cervical screening, often complicated by being recorded as male/female on systems. Tailor screening to anatomy, not recorded gender; consider bone/CV health on hormones.</td><td class="why">Anatomy-based screening (cervical for Sam); bone/CV on hormones.</td><td><span class="chg chg-inv">Cervical screening; bone/CV monitoring</span></td></tr>
+          <tr><td class="q">Support &amp; social context<em>"Who's around you for support — family, friends, community? How are things at work/college?"</em></td><td class="why">Social support buffers minority stress; isolation and discrimination worsen mental health. Signposting peer/third-sector support is part of the plan, especially during the long wait. Safeguarding considerations apply for young people.</td><td class="why">Isolation → signpost peer support; address discrimination/stress.</td><td><span class="chg chg-ps">Signpost peer/third-sector support</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags / things not to miss</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — safety and harm to avoid</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why it matters</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Active suicidality / self-harm</td><td class="rf-why">Markedly raised in trans/gender-diverse people (minority stress).</td><td><span class="rf-action rfa-999">Risk assessment; urgent mental-health support; safety plan</span></td></tr>
+          <tr><td class="rf-flag">Unmonitored self-sourced hormones</td><td class="rf-why">Health risks without monitoring; concealment if the GP refuses to engage.</td><td><span class="rf-action rfa-same">Harm reduction; specialist advice; consider bridging/shared care; baseline &amp; monitoring bloods/BP</span></td></tr>
+          <tr><td class="rf-flag">Gatekeeping / refusing referral / pathologising</td><td class="rf-why">Causes harm, erodes trust, delays care.</td><td><span class="rf-action rfa-same">Refer directly to GIC on request; affirming, person-centred care</span></td></tr>
+          <tr><td class="rf-flag">Missed anatomy-based screening</td><td class="rf-why">Trans man with a cervix still at risk of cervical cancer; recorded-gender errors miss invitations.</td><td><span class="rf-action rfa-same">Tailor screening to anatomy; ensure cervical/other screening offered</span></td></tr>
+          <tr><td class="rf-flag">Child / young person</td><td class="rf-why">Needs specialist, holistic, cautious multidisciplinary care; safeguarding.</td><td><span class="rf-action rfa-same">Specialist young-people's pathway; family involvement; avoid primary-care-initiated interventions</span></td></tr>
+          <tr><td class="rf-flag">Conversion practices / misgendering</td><td class="rf-why">Unethical, harmful, damages trust and mental health.</td><td><span class="rf-action rfa-same">Never; provide affirming care; use correct name/pronouns</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What's your understanding of how the referral and treatment work?"</div><div class="ice-why">Sam may expect to be questioned or refused, or be unclear about the pathway and waits. Clarifying it honestly — direct referral, long wait, support meanwhile — sets realistic expectations and shows you're on his side.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 Concerns</div><div class="ice-phrase">"Has anything worried you about coming today — being judged, perhaps?"</div><div class="ice-why">His central concern is being dismissed, misgendered or made to "prove" himself. Naming and dispelling this directly is what builds the trust needed to discuss his mood, self-harm and the online testosterone safely.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"What would make today feel like it went well for you?"</div><div class="ice-why">He wants the referral and to be respected. Meeting that — and adding proactive support for his safety and health — lets him leave feeling helped and trusting the GP, which matters hugely given the long road ahead.</div></div>
+    </div>
+    <div class="sub-divider">1D — Psychosocial context</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 Minority stress, mistrust of healthcare, and the GP as ally</div>
+      <p>Many trans people approach healthcare expecting to be misgendered, questioned, gatekept or dismissed — and these experiences, alongside discrimination and isolation (minority stress), are the main drivers of the high rates of distress, self-harm and suicide in this group. The single most powerful clinical act is to be a respectful, affirming ally: use the right name and pronouns, make the referral without gatekeeping, support mental health and general health proactively, respond to self-medication with harm reduction rather than refusal, and keep the person supported through long waits. Trust, once earned, is protective.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>🗣️ Respectful language</h5><p>Correct name/pronouns; ask, don't assume.</p><span class="ps-phrase">"I want to make sure I get this right — can you tell me the name and pronouns you'd like me to use? I'll update your records too."</span></div>
+      <div class="ps-card"><h5>🚪 No gatekeeping</h5><p>Commit to the referral up front.</p><span class="ps-phrase">"You don't need to convince me of anything — I'll refer you to the gender clinic today. My job is to support you, not to put hurdles in the way."</span></div>
+      <div class="ps-card"><h5>🛟 Harm reduction on hormones</h5><p>Engage, don't refuse, around online testosterone.</p><span class="ps-phrase">"I understand why you couldn't wait years. Rather than you doing this alone and unmonitored, let's talk about keeping you safe — I can seek specialist advice about a bridging prescription and arrange some blood tests."</span></div>
+      <div class="ps-card"><h5>🧠 Mental health matters</h5><p>Address distress proactively and compassionately.</p><span class="ps-phrase">"The distress and self-harm you've described are real and important — and they're often about how the world treats people, not about who you are. Let's get you some support for that too."</span></div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div><div class="sca-phrase">"I'll refer you to the gender clinic today — you don't have to prove anything." — affirming, no gatekeeping.</div><div class="sca-phrase">"Have you harmed yourself or had thoughts life isn't worth living?" — proactive risk assessment.</div><div class="sca-phrase">"Rather than do this alone, let's keep you safe — I can seek advice about a bridging prescription." — harm reduction.</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Misgendering; gatekeeping/refusing or delaying referral; pathologising identity</li><li>Not assessing mental health/self-harm risk</li><li>Refusing to engage with self-medication (no harm reduction)</li><li>Missing anatomy-based screening (cervical)</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Misgenders; gatekeeps/refuses referral; no risk assessment; refuses to engage with hormones; screening missed</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Respectful; refers; some risk assessment; self-medication noted but no harm-reduction plan; screening/support partial; ICE partial</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Affirming language; direct referral (no gatekeeping); assesses/supports mood &amp; risk; harm reduction + considers bridging/shared care; anatomy-based screening; signposts support; ICE all three</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage — Crisis (Risk) · GIC Referral &amp; Bridging · Ongoing Support</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Triage by safety: active suicidality/self-harm needs urgent mental-health support now; the referral to specialist gender services and any harm-reduction/bridging decision proceed in parallel; and ongoing general/mental-health support continues throughout the long wait.</strong></div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Urgent</div>
+        <h3>Same day / soon</h3>
+        <span class="tc-badge tcb-e">Risk</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Active suicidality / self-harm</strong><em>Urgent mental-health assessment; safety plan</em></li>
+          <li class="tc-item"><strong>Acute distress / crisis</strong><em>Support; crisis services</em></li>
+          <li class="tc-item"><strong>Unsafe self-medication</strong><em>Harm reduction; specialist advice promptly</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Specialist</div>
+        <h3>Refer / share care</h3>
+        <span class="tc-badge tcb-u">GIC</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>GIC referral (adult)</strong><em>Direct, on request — no gatekeeping</em></li>
+          <li class="tc-item"><strong>Bridging / shared care</strong><em>With specialist advice; monitoring</em></li>
+          <li class="tc-item"><strong>Young person</strong><em>Specialist young-people's pathway</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Ongoing</div>
+        <h3>GP continuity</h3>
+        <span class="tc-badge tcb-r">During the wait</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Mental-health support</strong><em>Treat mood/anxiety; monitor risk</em></li>
+          <li class="tc-item"><strong>General &amp; anatomy-based screening</strong><em>Cervical for Sam; bone/CV on hormones</em></li>
+          <li class="tc-item"><strong>Peer/third-sector support</strong><em>Signpost</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Triage rationale</div><div class="sca-phrase">"I'll refer you to the gender clinic today, and because of the self-harm I want to get you some mental-health support now too — and we'll sort out keeping the testosterone safe while you wait."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not escalating active risk</li><li>Delaying/gatekeeping the GIC referral</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Assessment — Mental State &amp; Risk · Hormone Effects &amp; Monitoring · General Health</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>"Examination" here is a mental state and risk assessment, attention to the effects/safety of any hormones being taken, and general physical health and anatomy-based needs — all delivered respectfully.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🧠 Mental state &amp; risk</div>
+        <table class="it">
+          <thead><tr><th>Domain</th><th>What to assess</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Mood/affect, anxiety</td><td>Depression/anxiety; distress related to dysphoria &amp; minority stress.</td></tr>
+            <tr><td class="factor">Self-harm / suicide risk</td><td>Ideation/plans/acts; protective factors; safety plan.</td></tr>
+            <tr><td class="factor">Support &amp; coping</td><td>Social support, isolation, discrimination.</td></tr>
+            <tr><td class="factor">Capacity &amp; goals</td><td>Informed, person-led decisions.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🩺 Hormones &amp; general health</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Hormone effects / dose</td><td>If self-medicating — what, how much, source; effects/side effects.</td></tr>
+            <tr><td class="factor">BP, weight, CV/bone risk</td><td>Monitoring on hormone therapy.</td></tr>
+            <tr><td class="factor">Anatomy-based needs</td><td>Cervical screening (trans man with cervix); other organ-based screening.</td></tr>
+            <tr><td class="factor">General health</td><td>Same routine care as anyone; vaccinations; smoking (CV risk with hormones).</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Demonstrating the formulation</div><div class="sca-phrase">"My assessment: gender dysphoria with significant distress, low mood and self-harm needing support, currently self-medicating with testosterone that needs monitoring and safety, and overdue cervical screening — with a direct GIC referral the priority."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>No risk assessment / safety plan</li><li>Ignoring hormone monitoring / anatomy-based screening</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Investigations — Baseline &amp; Hormone Monitoring · Screening · Mental Health</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Investigations support safety on hormones (baseline and monitoring bloods, BP), anatomy-based screening, and mental-health assessment — gender dysphoria itself is a clinical diagnosis made by specialist services, not a lab test.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🧪 Hormone &amp; baseline</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Baseline bloods (FBC/LFTs/U&amp;E/lipids/glucose)</td><td>Before/with hormone therapy; CV/metabolic risk.</td></tr>
+            <tr><td class="factor">Hormone levels (per protocol)</td><td>Monitoring testosterone/oestradiol where on treatment.</td></tr>
+            <tr><td class="factor">Haematocrit (testosterone)</td><td>Polycythaemia risk on testosterone.</td></tr>
+            <tr><td class="factor">BP, weight, bone health</td><td>CV and bone monitoring on hormones.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🔬 Screening &amp; mental health</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Cervical screening</td><td>Trans man with a cervix (Sam) — anatomy-based; arrange despite recorded gender.</td></tr>
+            <tr><td class="factor">Other organ-based screening</td><td>Breast/prostate as anatomy dictates.</td></tr>
+            <tr><td class="factor">Mood/risk tools</td><td>Quantify mood &amp; risk; support referral.</td></tr>
+            <tr><td class="factor">BBV / sexual health</td><td>As indicated.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key reasoning</div><div class="sca-phrase">"Since you're on testosterone, I'll do some baseline bloods and check your blood count and blood pressure, and we'll arrange your cervical screening — which still matters for you."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>No monitoring for self-administered hormones</li><li>Not arranging anatomy-based screening</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Formulation — Needs, Risks &amp; the GP's Role</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The "diagnosis" is a needs-and-risk formulation that clarifies the GP's role: refer to specialist services, support mental health and general health, and respond safely to self-medication — not to make or contest the gender-identity diagnosis (a specialist task) and not to gatekeep.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Element</th><th>Detail</th></tr></thead>
+        <tbody>
+          <tr><td class="q"><strong>Gender dysphoria / incongruence</strong></td><td class="why">Persistent distress from a mismatch between identity and sex assigned at birth; not a mental illness — specialist (GIC) assessment for gender-affirming care.</td></tr>
+          <tr><td class="q"><strong>Mental-health needs</strong></td><td class="why">Depression, self-harm, suicide risk — driven by minority stress; need support/treatment.</td></tr>
+          <tr><td class="q"><strong>Self-medication / safety</strong></td><td class="why">Online testosterone unmonitored — harm reduction, bridging/shared care, monitoring.</td></tr>
+          <tr><td class="q"><strong>General &amp; screening needs</strong></td><td class="why">Anatomy-based screening (cervical), CV/bone health on hormones, routine care.</td></tr>
+          <tr><td class="q"><strong>The GP's role</strong></td><td class="why">Refer, support, keep safe — not gatekeep or pathologise.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ddx-card ddx-b" style="margin-bottom:4px">
+      <h4>🚩 Refer, support, keep safe — without gatekeeping</h4>
+      <p>Sam's formulation: gender dysphoria with significant distress, comorbid low mood and self-harm (minority stress), currently self-medicating with online testosterone, and overdue anatomy-based (cervical) screening. The GP's plan is to make a direct GIC referral today (no gatekeeping), proactively support and treat his mental health with a safety plan, respond to the self-medication with harm reduction and consideration of bridging/shared care and monitoring (with specialist advice), arrange his cervical screening, and signpost peer support — all with affirming, respectful care.</p>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Explaining the plan</div><div class="sca-phrase">"My role isn't to assess whether you're trans — that's for the specialist clinic, and I'll refer you today. What I can do is support your mental health, keep you safe on the testosterone while you wait, and look after your general health."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Treating identity as something to diagnose/contest in primary care</li><li>Not clarifying/owning the supportive GP role</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc6">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">Referral — GIC · Mental Health · Shared Care · Peer Support</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Referral is the GP's core action: a direct referral to a Gender Identity Clinic on request; mental-health services for risk/comorbidity; shared-care/specialist advice for hormones and bridging; and signposting to peer and third-sector support — with specialist young-people's pathways for under-18s.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="ref-table">
+        <thead><tr><th style="width:24%">Referral</th><th>Who / when</th><th style="width:20%">Urgency</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Gender Identity Clinic (GIC)</strong></td><td>Adults — direct referral on request; no gatekeeping/mental-health pre-assessment required.</td><td><span class="rf-action rfa-same">On request</span></td></tr>
+          <tr><td><strong>🔴 Mental health / crisis</strong></td><td>Active suicidality/self-harm; comorbid depression/anxiety.</td><td><span class="rf-action rfa-999">Urgent if risk</span></td></tr>
+          <tr><td><strong>Specialist advice / shared care</strong></td><td>Bridging prescription, hormone monitoring, established treatment.</td><td><span class="rf-action rfa-same">As needed</span></td></tr>
+          <tr><td><strong>Young-people's specialist pathway</strong></td><td>Children/adolescents — holistic, multidisciplinary; family/safeguarding.</td><td><span class="rf-action rfa-same">Per service model</span></td></tr>
+          <tr><td><strong>Peer / third-sector support</strong></td><td>Community/peer support during the wait.</td><td><span class="rf-action rfa-same">Signpost</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">The key action</div><div class="sca-phrase">"I'll write the referral to the gender clinic today. I'll also seek specialist advice about your testosterone and shared care, get you mental-health support, and point you to some peer support while you wait — and I'll be here throughout."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not referring to the GIC / adding barriers</li><li>Refusing shared care / specialist advice on hormones</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Refer · Support Mental Health &amp; Safety · Harm Reduction · General Care</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Management is affirming, continuity-based care: make the referral, support and treat mental health with a safety plan, respond to self-medication with harm reduction and (per GMC) consideration of bridging/shared care with monitoring, deliver anatomy-based screening and general health, signpost support — and keep the door open throughout the long wait.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--g)">🤝 Refer &amp; support</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">GIC referral</td><td>Direct, today, no gatekeeping; explain the pathway/wait honestly.</td></tr>
+            <tr><td class="factor">Mental health &amp; safety</td><td>Treat mood/anxiety; safety plan for self-harm; mental-health referral; monitor risk.</td></tr>
+            <tr><td class="factor">Peer/third-sector support</td><td>Signpost community support during the wait.</td></tr>
+            <tr><td class="factor">Affirming care &amp; records</td><td>Correct name/pronouns; update records sensitively.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🛟 Safety &amp; general health</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Self-medication / bridging</td><td>Harm reduction; specialist advice; consider bridging prescription &amp; shared care; baseline/monitoring bloods/BP.</td></tr>
+            <tr><td class="factor">Anatomy-based screening</td><td>Cervical screening for Sam; other organ-based screening.</td></tr>
+            <tr><td class="factor">Hormone monitoring</td><td>Haematocrit/CV/bone health on testosterone.</td></tr>
+            <tr><td class="factor">General health</td><td>Same routine care, vaccinations, smoking/CV risk.</td></tr>
+            <tr><td class="factor">Continuity / review</td><td>Regular review; keep the door open; coordinate with GIC.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">A plan that scores</div><div class="sca-phrase">"So: I'll refer you to the gender clinic today, get you mental-health support and make a safety plan, seek specialist advice about a bridging prescription and do some monitoring bloods so the testosterone is safer, arrange your cervical screening, and give you some peer-support contacts. I'll keep seeing you throughout — you're not on your own with this."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Referral only, with no mental-health/safety support</li><li>Refusing all involvement with hormones (no harm reduction)</li><li>Missing anatomy-based screening; not keeping the door open</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Gender Dysphoria — SCA Consultation Scorecard</div><div class="scorecard-sub">Affirming language · direct GIC referral (no gatekeeping) · mental-health/risk · harm reduction/bridging · anatomy-based screening</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Uses correct name &amp; pronouns</strong> — affirming language throughout; asks, doesn't assume</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Centres the person's goals</strong> — leads with what they want (referral/support), not interrogation</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Structured, respectful assessment</strong> — needs, risk, hormones, general health covered sensitively</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Explicit risk formulation/safety plan</strong> — self-harm/suicide addressed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Clarifies the GP's role</strong> — refer/support/keep safe, not gatekeep/diagnose identity</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Keeps the door open / continuity</strong> — supports through the wait; safety-net</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plan + review + closing question</strong> — clear plan, follow-up, "anything else?"</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, referral, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Direct GIC referral on request — no gatekeeping</strong> — doesn't demand a mental-health assessment first or "proof"</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Proactive mental-health &amp; suicide-risk assessment</strong> — recognises minority-stress drivers; safety plan</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Responds safely to self-medication</strong> — harm reduction; considers bridging/shared care + monitoring (GMC); specialist advice</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Anatomy-based screening</strong> — arranges cervical screening for a trans man with a cervix</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Hormone monitoring</strong> — baseline/monitoring bloods, haematocrit, BP, CV/bone on testosterone</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Treats mood / mental-health referral</strong> — depression/anxiety addressed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Signposts peer/third-sector support</strong> — addresses isolation/minority stress during the wait</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>General healthcare maintained</strong> — same routine care; vaccinations; CV risk</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Young-person awareness</strong> — would use specialist pathway/safeguarding for under-18s</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct overall plan</strong> — refer + support mental health/safety + harm reduction + screening, affirming throughout</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decisions</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — his understanding of the pathway/expectations surfaced</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> — fear of being judged/misgendered/refused addressed directly</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations addressed</strong> — referral + respect delivered; honest about waits</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Affirming, non-judgmental manner</strong> — takes identity seriously; no pathologising</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Builds trust with someone braced for rejection</strong> — explicit reassurance, no hurdles</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Non-judgmental about self-medication</strong> — safety not blame</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Discusses risk sensitively</strong> — self-harm explored with compassion</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Shared decision-making</strong> — person-led goals; informed choices</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Instils hope &amp; partnership</strong> — "you're not on your own"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Patient leaves trusting &amp; supported</strong> — feels respected and helped</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Collaborative close</strong> — plan agreed; referral/safety-net/support arranged</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">Misgenders; gatekeeps/refuses referral; no risk assessment; refuses to engage with hormones; screening missed; pathologises</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">Respectful; refers; some risk assessment; self-medication noted but no harm-reduction plan; screening/support partial; ICE partial</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Affirming; direct referral; assesses/supports mood &amp; risk; harm reduction + bridging/shared care + monitoring; anatomy-based screening; signposts support; ICE all three</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist to see your score and feedback</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked — areas to develop</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">(Guarded, expecting resistance) "Hi. I'm Sam — he/him. I've come to ask for a referral to a gender clinic. I'm guessing you'll want me to jump through hoops or tell me I have to see a psychiatrist first?"</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>Sam Okoro, 24 (he/him), assigned female at birth. You've felt a persistent mismatch between your gender and your body for years, with real distress, and have socially transitioned. You're here to ask for a referral to a gender clinic and you're braced to be questioned, misgendered or refused. As trust builds, you'll disclose low mood and episodes of self-harm, and — hesitantly — that you've recently started buying testosterone online because the waiting list is "years long" and you couldn't wait. You're registered as female on the system and overdue cervical screening (which you find distressing). You most fear being judged or told you have to "prove" you're really trans.</p></div>
+      <div class="ab"><h5>Hidden concerns (reveal if explored)</h5><p><strong>Fear of rejection/gatekeeping (main):</strong> if the GP affirms you and agrees to refer without hurdles, you relax and open up.</p><p><strong>Mood &amp; self-harm:</strong> you'll disclose these if asked compassionately — you've not had support.</p><p><strong>Online testosterone:</strong> you fear being told off or refused help; honesty depends on a non-judgmental approach.</p><p><strong>Cervical screening:</strong> distressing/dysphoric for you; needs sensitivity.</p></div>
+      <div class="ab"><h5>Clinical details if asked</h5><ul><li>Persistent gender incongruence/dysphoria for years; socially transitioned; wants GIC referral</li><li>Low mood; episodes of self-harm; no current mental-health support; no active plan to end your life today</li><li>Recently bought testosterone online; taking it unmonitored; waiting list "years"</li><li>Registered female; overdue cervical screening; otherwise generally well</li><li>Some peer/online community support; variable support from family</li></ul></div>
+      <div class="ab"><h5>Reactions at key moments</h5><ul><li><strong>If misgendered or asked to "prove" yourself / refused referral:</strong> you withdraw, become defensive, lose trust.</li><li><strong>On "I'll refer you today, no hoops":</strong> visible relief.</li><li><strong>On compassionate risk questions:</strong> you open up about the self-harm.</li><li><strong>On harm-reduction re testosterone (not a telling-off):</strong> relieved, willing to have monitoring.</li><li><strong>Challenge line:</strong> "You're not going to refuse to refer me or report me for the testosterone, are you?"</li></ul></div>
+    </div>
+    <div class="actor-challenge">"So are you actually going to refer me — without making me prove I'm 'really' trans — and are you going to give me a hard time about the testosterone?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> Sam is well served if the GP: (1) uses his correct name and pronouns and provides affirming, respectful care, agreeing to refer him directly to a Gender Identity Clinic on request — without gatekeeping, demanding a mental-health assessment first, or pathologising his identity; (2) proactively and compassionately assesses and supports his mental health and self-harm risk with a safety plan; (3) responds to the online testosterone with harm reduction — seeking specialist advice, considering a bridging prescription/shared care and arranging monitoring bloods — rather than refusing involvement; (4) arranges his (anatomy-based) cervical screening sensitively and maintains general health; (5) signposts peer support and offers continuity through the long wait. He disengages if misgendered, gatekept, judged about the testosterone, or left unsupported.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Gender Dysphoria — Clinical Decision Framework</div><div class="sum-sub">Affirm · refer (no gatekeeping) · support · keep safe</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🤝 1 — The GP's role</div>
+    <div class="card" style="padding:.8rem 1rem;margin-bottom:1rem"><p style="font-size:12.5px;line-height:1.6"><strong>Affirming care:</strong> correct name/pronouns; non-judgmental. <strong>Refer directly</strong> to a Gender Identity Clinic on request — no gatekeeping, no mandatory mental-health pre-assessment. <strong>Support</strong> mental health (high suicide/self-harm risk from minority stress) and general health through long waits. <strong>Don't</strong> pathologise identity or use conversion practices.</p></div>
+    <div class="sum-sub-hdr">🛟 2 — Safety &amp; general health</div>
+    <div class="card" style="padding:.8rem 1rem"><p style="font-size:12.5px;line-height:1.6"><strong>Self-medication:</strong> harm reduction; consider bridging prescription &amp; shared care with specialist advice + monitoring (haematocrit/BP/CV/bone on testosterone). <strong>Anatomy-based screening:</strong> trans man with a cervix needs cervical screening; tailor screening to anatomy not recorded gender. <strong>Young people:</strong> specialist holistic pathway, family/safeguarding, avoid primary-care-initiated interventions. <strong>Signpost</strong> peer support; provide continuity.</p></div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label">SCA Quick Reference</div><div class="sum-title">Gender Dysphoria — Consultation Playbook</div><div class="sum-sub">Affirm · refer · support safely</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🎯 The three pivots that pass this case</div>
+    <div class="sum-3col">
+      <div class="snp-phrase-box snp-e"><div class="snp-lbl">1 · Affirm &amp; refer</div><div class="snp-text">Correct name/pronouns; refer directly to a GIC on request — no gatekeeping or "proof". The GP supports, doesn't diagnose identity.</div></div>
+      <div class="snp-phrase-box snp-m"><div class="snp-lbl">2 · Mental health &amp; risk</div><div class="snp-text">Proactively assess/treat mood and self-harm (minority-stress driven); safety plan; signpost support through the wait.</div></div>
+      <div class="snp-phrase-box snp-a"><div class="snp-lbl">3 · Safety &amp; general health</div><div class="snp-text">Self-medication → harm reduction + bridging/shared care + monitoring; anatomy-based screening (cervical); routine care.</div></div>
+    </div>
+    <div class="sdp-pivot" style="margin-top:1rem;font-size:11.5px;background:#fef3c7;color:#854d0e;border-radius:8px;padding:.6rem .85rem;line-height:1.5">⛔ Don't misgender, gatekeep, demand "proof", or pathologise identity · Don't refuse to engage with self-sourced hormones — harm-reduce, consider bridging/shared care &amp; monitoring · Don't miss the high mental-health/suicide risk · Don't overlook anatomy-based screening (cervical for a trans man) · Never use conversion practices; provide affirming, person-centred care</div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Gender Dysphoria · GP Clinical Reasoning Framework v2</strong> · GMC guidance (trans healthcare; bridging prescriptions) · Gender Identity Clinic referral pathways · NHS gender dysphoria services · RCGP position on transgender care</p>
+  <p style="margin-top:4px">Provide affirming, respectful care (correct name/pronouns); gender incongruence is not a mental illness · The GP's role is to refer directly to a Gender Identity Clinic on request (no gatekeeping/mandatory mental-health pre-assessment) and to support mental and general health through long waits · Proactively assess/treat the high rates of depression, self-harm and suicide (minority stress) · Respond to self-medication with harm reduction; consider bridging prescriptions &amp; shared care with specialist advice and monitoring (GMC) · Tailor screening to anatomy (cervical screening for a trans man with a cervix); monitor hormone effects (haematocrit/CV/bone) · Young people via specialist holistic pathways; never use conversion practices</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current GMC guidance and local gender-service pathways · Clinical judgement takes precedence over any framework</p>
+</div>
+</div><!-- /page -->
+  </main>
+</div><!-- /app -->
+<script src="script.js"></script>
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
+</body>
+</html>

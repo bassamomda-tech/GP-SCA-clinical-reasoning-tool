@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hyperthyroidism Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & BASE ─────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{
+  font-family:'DM Sans',system-ui,sans-serif;
+  background:#f5f3ee;
+  color:#1c1a17;
+  min-height:100vh;
+  padding-bottom:4rem;
+}
+
+/* ─── TOKENS ───────────────────────────────────────────────── */
+:root{
+  --safety:#c0392b;
+  --diagnose:#1a5276;
+  --refer:#6c3483;
+  --treat:#145a32;
+  --lifestyle:#784212;
+
+  --safety-bg:#fdf2f0;
+  --diagnose-bg:#eaf2fb;
+  --refer-bg:#f5eef8;
+  --treat-bg:#eafaf1;
+  --lifestyle-bg:#fdf5e6;
+
+  --radius:12px;
+  --shadow:0 2px 12px rgba(0,0,0,.08);
+  --shadow-lg:0 6px 28px rgba(0,0,0,.12);
+
+  --accent:#b7410e;
+  --accent2:#1a5276;
+}
+
+/* ─── LAYOUT ───────────────────────────────────────────────── */
+.alg-wrap{max-width:780px;margin:0 auto;padding:1.5rem 1rem}
+
+/* ─── BANNER ───────────────────────────────────────────────── */
+.stem-banner{
+  display:flex;align-items:center;gap:1rem;
+  background:linear-gradient(135deg,#1c1a17 0%,#2c2825 100%);
+  color:#fff;
+  border-radius:var(--radius);
+  padding:1.25rem 1.5rem;
+  margin-bottom:1.25rem;
+  box-shadow:var(--shadow-lg);
+}
+.sb-icon{font-size:2.4rem;line-height:1;flex-shrink:0}
+.stem-banner b{display:block;font-size:1.15rem;font-weight:700;letter-spacing:-.02em}
+.stem-banner small{color:#bbb;font-size:.82rem;margin-top:.15rem;display:block}
+
+/* ─── PROGRESS BAR ─────────────────────────────────────────── */
+.alg-progress{
+  display:flex;align-items:center;gap:.75rem;
+  background:#fff;border-radius:var(--radius);
+  padding:.75rem 1.25rem;
+  margin-bottom:1.5rem;
+  box-shadow:var(--shadow);
+  font-size:.85rem;font-weight:600;color:#555;
+}
+.pcount{color:#1c1a17;font-weight:700;white-space:nowrap}
+.pbar{flex:1;height:8px;background:#e8e5df;border-radius:4px;overflow:hidden}
+.pbar-fill{height:100%;width:0%;background:linear-gradient(90deg,#b7410e,#e67e22);border-radius:4px;transition:width .4s ease}
+.reset{
+  margin-left:auto;padding:.3rem .85rem;
+  border:1.5px solid #ddd;border-radius:6px;
+  background:#fff;color:#666;font-size:.78rem;font-weight:600;
+  cursor:pointer;transition:all .2s;
+}
+.reset:hover{border-color:#b7410e;color:#b7410e}
+
+/* ─── FLOW ─────────────────────────────────────────────────── */
+.alg-flow{display:flex;flex-direction:column;gap:0}
+
+/* ─── CONNECTOR ────────────────────────────────────────────── */
+.connector{
+  width:3px;height:28px;
+  background:linear-gradient(180deg,#ccc,#bbb);
+  margin:0 auto;
+  position:relative;
+}
+.connector::after{
+  content:'▼';position:absolute;
+  bottom:-10px;left:50%;transform:translateX(-50%);
+  font-size:.55rem;color:#aaa;
+}
+
+/* ─── NODE ─────────────────────────────────────────────────── */
+.node{
+  background:#fff;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  border-left:5px solid #ccc;
+  transition:box-shadow .2s;
+  position:relative;
+}
+.node:hover{box-shadow:var(--shadow-lg)}
+
+/* TYPE COLOURS */
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+
+/* ─── NODE HEADER ──────────────────────────────────────────── */
+.node-head{
+  display:flex;align-items:flex-start;gap:.85rem;
+  padding:1rem 1.25rem .6rem;
+}
+.node-num{
+  width:32px;height:32px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;font-weight:800;color:#fff;flex-shrink:0;
+  margin-top:.05rem;
+}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
+.node[data-type="REFER"] .node-num{background:var(--refer)}
+.node[data-type="TREAT"] .node-num{background:var(--treat)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+
+.node-head-txt{flex:1}
+.node-tag{
+  display:inline-block;
+  font-size:.68rem;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;padding:.15rem .5rem;
+  border-radius:4px;margin-bottom:.3rem;color:#fff;
+}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
+.node[data-type="REFER"] .node-tag{background:var(--refer)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+
+.node-head h3{font-size:1.05rem;font-weight:700;line-height:1.25;color:#1c1a17}
+
+/* ─── TICK ─────────────────────────────────────────────────── */
+.node-tick{padding:.5rem 1.25rem .5rem;display:flex;justify-content:flex-end}
+.node-tick label{
+  display:flex;align-items:center;gap:.4rem;
+  font-size:.8rem;font-weight:600;color:#888;
+  cursor:pointer;user-select:none;
+}
+.node-tick input[type=checkbox]{
+  width:16px;height:16px;cursor:pointer;accent-color:#b7410e;
+}
+.node.done{opacity:.7}
+.node.done::after{
+  content:'✓ Done';
+  position:absolute;top:.6rem;right:.9rem;
+  font-size:.72rem;font-weight:700;color:#fff;
+  background:#27ae60;padding:.15rem .5rem;border-radius:20px;
+}
+
+/* ─── NODE BODY ────────────────────────────────────────────── */
+.node-body{
+  padding:.25rem 1.25rem 1rem;
+  font-size:.9rem;line-height:1.55;
+}
+.node-body > p, .node-body > span{
+  display:block;margin-bottom:.75rem;color:#333;font-size:.88rem;
+}
+
+/* ─── KV GRID ──────────────────────────────────────────────── */
+.kv{
+  display:grid;grid-template-columns:auto 1fr;
+  gap:0;border-radius:8px;overflow:hidden;
+  border:1.5px solid #e0ddd6;
+  margin-top:.5rem;
+}
+.kv > div:nth-child(odd){
+  background:#f0ede8;padding:.55rem .8rem;
+  font-size:.78rem;font-weight:700;color:#444;
+  text-transform:uppercase;letter-spacing:.04em;
+  display:flex;align-items:flex-start;
+  border-bottom:1px solid #e0ddd6;min-width:110px;
+}
+.kv > div:nth-child(even){
+  background:#fff;padding:.55rem .9rem;
+  font-size:.86rem;color:#222;
+  border-bottom:1px solid #f0ede8;
+}
+.kv > div:nth-last-child(-n+2){border-bottom:none}
+
+/* ─── RED FLAG GRID ────────────────────────────────────────── */
+.rfgrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:.6rem;margin-top:.6rem;
+}
+.rftile{
+  background:#fff;border:1.5px solid #f1948a;
+  border-left:4px solid var(--safety);
+  border-radius:8px;padding:.65rem .85rem;
+  font-size:.83rem;line-height:1.45;
+}
+.rftile b{display:block;color:var(--safety);margin-bottom:.2rem;font-size:.85rem}
+
+/* ─── BRANCH ───────────────────────────────────────────────── */
+.branch{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:.7rem;margin-top:.6rem;
+}
+.b-card{
+  background:#fff;border-radius:8px;
+  border:1.5px solid #d5e8d4;
+  padding:.75rem;
+}
+.b-cond{font-size:.75rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.35rem}
+.b-drug{font-size:.92rem;font-weight:700;color:#145a32;margin-bottom:.25rem}
+.b-note{font-size:.8rem;color:#444;line-height:1.4}
+
+/* ─── LADDER ───────────────────────────────────────────────── */
+.ladder{display:flex;flex-direction:column;gap:0;margin-top:.6rem}
+.rung{
+  display:flex;align-items:flex-start;gap:.75rem;
+  background:#fff;padding:.65rem 1rem;
+  border-left:4px solid var(--treat);
+  border-bottom:1px solid #d5e8d4;
+  font-size:.86rem;
+}
+.rung:first-child{border-radius:8px 8px 0 0}
+.rung:last-child{border-radius:0 0 8px 8px;border-bottom:none}
+.rn{
+  white-space:nowrap;font-weight:800;font-size:.78rem;
+  color:#145a32;min-width:60px;padding-top:.1rem;
+}
+.rt{color:#222;line-height:1.45;flex:1}
+
+/* ─── LIFESTYLE GRID ───────────────────────────────────────── */
+.lsgrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:.6rem;margin-top:.6rem;
+}
+.lstile{
+  background:#fff;border-radius:8px;
+  border:1.5px solid #f0d9a0;
+  border-top:3px solid #e67e22;
+  padding:.75rem .85rem;
+  font-size:.83rem;line-height:1.45;
+}
+.lstile b{display:block;color:#784212;margin-bottom:.25rem;font-size:.85rem}
+
+/* ─── PILLS ────────────────────────────────────────────────── */
+.pill{
+  display:inline-block;padding:.1rem .48rem;border-radius:20px;
+  font-size:.72rem;font-weight:700;letter-spacing:.03em;
+  vertical-align:middle;white-space:nowrap;
+}
+.pill-red{background:#fdecea;color:#c0392b;border:1px solid #f1948a}
+.pill-purple{background:#f5eef8;color:#6c3483;border:1px solid #c39bd3}
+.pill-blue{background:#eaf2fb;color:#1a5276;border:1px solid #7fb3d3}
+.pill-teal{background:#e8f8f5;color:#0e6655;border:1px solid #76d7c4}
+.pill-amber{background:#fef9e7;color:#784212;border:1px solid #f8c471}
+.pill-green{background:#eafaf1;color:#145a32;border:1px solid #82e0aa}
+.pill-grey{background:#f2f3f4;color:#555;border:1px solid #bdc3c7}
+
+/* ─── WHY DRAWER ───────────────────────────────────────────── */
+.why-row{border-top:1px solid rgba(0,0,0,.06);padding:.5rem 1.25rem}
+.why-btn{
+  background:none;border:none;
+  font-size:.8rem;font-weight:600;color:#888;
+  cursor:pointer;display:flex;align-items:center;gap:.3rem;
+  padding:.2rem 0;transition:color .2s;
+}
+.why-btn:hover{color:#b7410e}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.caret{display:inline-block;transition:transform .25s;font-size:.7rem}
+.why-drawer{
+  display:none;
+  padding:.65rem 0 .35rem;
+  font-size:.83rem;color:#444;line-height:1.6;
+  border-top:1px dashed #e0ddd6;
+  margin-top:.4rem;
+}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:.4rem}
+.why-drawer ul{padding-left:1.1rem;margin:.3rem 0}
+.why-drawer li{margin-bottom:.2rem}
+
+/* ─── FOOTER ───────────────────────────────────────────────── */
+.alg-foot{
+  max-width:780px;margin:1.5rem auto 0;padding:1rem 1.25rem;
+  background:#fff;border-radius:var(--radius);
+  font-size:.78rem;color:#666;line-height:1.55;
+  box-shadow:var(--shadow);
+}
+.alg-foot strong{color:#1c1a17}
+
+/* ─── SUBHEADS INSIDE NODE ─────────────────────────────────── */
+.sh{
+  font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;
+  color:#888;margin:.85rem 0 .35rem;display:block;
+}
+
+/* ─── RESPONSIVE ───────────────────────────────────────────── */
+@media(max-width:520px){
+  .rfgrid{grid-template-columns:1fr}
+  .branch{grid-template-columns:1fr}
+  .lsgrid{grid-template-columns:1fr}
+  .kv{grid-template-columns:1fr}
+  .kv > div:nth-child(odd){border-bottom:none;padding-bottom:.2rem}
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+<div class="alg-wrap">
+
+<!-- ─── BANNER ───────────────────────────────────────────────── -->
+<div class="stem-banner">
+  <div class="sb-icon">🦋</div>
+  <div>
+    <b>Hyperthyroidism — New &amp; Established Presentation</b>
+    <small>UK GP pathway · NICE CKS · BTA guidelines · Suitable for 10-minute consultations</small>
+  </div>
+</div>
+
+<!-- ─── PROGRESS ─────────────────────────────────────────────── -->
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- ─── FLOW ──────────────────────────────────────────────────── -->
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — confirm with TSH + free T4/T3, screen storm &amp; sight-threatening eye disease, find the cause (TRAb in all), control symptoms with a beta-blocker + antithyroid drug, refer on the BTA pathway, and safety-net carbimazole agranulocytosis.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation · NICE NG145</span><span class="ttl">Suppressed TSH + raised T4/T3</span><div class="body"><b>Overt</b> thyrotoxicosis (TSH low, T3/T4 raised); <b>subclinical</b> = low TSH + normal T3/T4. <b>Biotin supplements distort TFTs</b> — stop and retest. Don't test in acute illness. Weight loss, tremor, palpitations, heat intolerance, anxiety.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — storm, eye disease, AF</span><span class="ttl">Emergency feature?</span><div class="body"><ul>
+      <li><b>Thyroid storm</b> — fever, AF/tachycardia, heart failure, vomiting, jaundice, delirium (precipitated by surgery, amiodarone, stopping antithyroid drugs)</li>
+      <li><b>Sight-threatening thyroid eye disease</b> — corneal exposure, ↓acuity, diplopia</li>
+      <li><b>New AF</b> with suppressed TSH (esp. elderly)</li>
+      <li><b>Unexplained thyroid lump</b> → suspected-cancer pathway</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Same-day referral</span><div class="body">Thyroid storm → 999/same-day (mortality up to 17% if &gt;60). Active/sight-threatening eye disease → same-day ophthalmology. New AF → rate control + don't cardiovert until euthyroid.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — find the cause</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">TRAb in all + examination</span><div class="body"><b>Check TSH-receptor antibodies (TRAb) in all thyrotoxicosis</b> (confirms Graves). Examine goitre/nodules/eyes; if TRAb-negative → technetium uptake scan (secondary care).</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · which cause?</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Graves' disease</div><div class="box ix"><span class="ttl">Autoimmune (commonest)</span><div class="body"><b>TRAb-positive</b>, diffuse goitre, eye signs (proptosis, lid lag), pretibial myxoedema.</div></div></div>
+      <div class="col"><div class="blabel">Toxic nodular / adenoma</div><div class="box ix"><span class="ttl">Autonomous</span><div class="body">Nodular goitre or single hot nodule on uptake scan; older patients, no eye signs.</div></div></div>
+      <div class="col"><div class="blabel">Thyroiditis</div><div class="box ix"><span class="ttl">Transient — no antithyroid drug</span><div class="body">Viral (de Quervain, painful), post-partum, amiodarone — self-limiting; low isotope uptake. Beta-blocker only.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · control symptoms + treat</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — beta-blocker + antithyroid drug</span><span class="ttl">Symptom control then definitive therapy</span><div class="body"><ul>
+      <li><b>Symptom relief:</b> propranolol 40 mg TDS (rate + tremor) while awaiting specialist.</li>
+      <li><b>Antithyroid (Graves/toxic nodular):</b> <b>carbimazole</b> — titration or block-and-replace; usually specialist-initiated. PTU in 1st-trimester pregnancy.</li>
+      <li><b>Definitive (specialist):</b> radioiodine or surgery for Graves (esp. relapse) and toxic nodular disease.</li>
+      <li><b>Thyroiditis:</b> beta-blocker ± NSAID only — <b>no antithyroid drug</b> (gland not overproducing).</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-red">999 / same-day</span> thyroid storm, sight-threatening eye disease, decompensated AF/heart failure.</li>
+      <li><span class="pill pill-purple">2WW · NICE NG12</span> thyroid nodule with hoarseness/dysphagia/cervical nodes → thyroid USS + FNA.</li>
+      <li><span class="pill pill-purple">Endocrinology (BTA pathway)</span> for <b>all confirmed hyperthyroidism</b>; <span class="pill pill-red">urgent</span> in pregnancy, storm, or active thyroid eye disease.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; modifiable factors</span><span class="ttl">Reduce symptoms &amp; eye-disease risk</span><div class="body"><b>Stop smoking</b> (major driver of Graves' ophthalmopathy) · reduce caffeine and stimulants (palpitations/tremor) · adequate calories during the hypermetabolic phase · bone-health and cardiovascular review (AF, osteoporosis risk) · eye lubricants and elevate head of bed for mild eye symptoms · review amiodarone with cardiology.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · monitor &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">Carbimazole safety · when to return</span><div class="body"><b>Carbimazole:</b> any <b>sore throat, mouth ulcers or fever → stop the drug and get an urgent FBC</b> (agranulocytosis). Monitor TFTs during titration; watch for over-treatment (hypothyroid symptoms). <b>999</b> if fever + agitation + palpitations (storm). <b>Same-day</b> if new/worsening eye symptoms or visual change.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>Carbimazole safety:</b> any patient with a sore throat, mouth ulcers or fever must stop the drug and have an urgent FBC — agranulocytosis can be fatal. And check TRAb in every thyrotoxic patient: it confirms Graves and steers definitive treatment.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 1 · SAFETY — RED FLAGS
+  ═══════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-head">
+      <div class="node-num">1</div>
+      <div class="node-head-txt">
+        <span class="node-tag">Safety</span>
+        <h3>Exclude emergencies — Thyroid storm &amp; life-threatening red flags first</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Thyroid storm is rare but fatal if missed. Screen all presentations with significant tachycardia, fever, or altered consciousness.</span>
+      <div class="rfgrid">
+        <div class="rftile">
+          <b>Thyroid Storm (Burch-Wartofsky score ≥45)</b>
+          Fever &gt;38.5 °C + HR &gt;140 bpm + agitation / delirium / coma → <span class="pill pill-red">999 immediately</span>
+        </div>
+        <div class="rftile">
+          <b>New Atrial Fibrillation with haemodynamic compromise</b>
+          Rapid AF + hypotension + dyspnoea + chest pain → <span class="pill pill-red">999 immediately</span>
+        </div>
+        <div class="rftile">
+          <b>Acute severe heart failure</b>
+          Pulmonary oedema, SpO₂ &lt;92%, orthopnoea, raised JVP precipitated by thyrotoxicosis → <span class="pill pill-red">999</span>
+        </div>
+        <div class="rftile">
+          <b>Adrenal crisis (co-existing Addison's)</b>
+          Postural hypotension + vomiting + collapse in patient with autoimmune thyroid disease → <span class="pill pill-red">999</span>
+        </div>
+        <div class="rftile">
+          <b>Suspected thyroid malignancy</b>
+          Hard, fixed, rapidly enlarging goitre + cervical lymphadenopathy + hoarse voice / dysphagia → <span class="pill pill-purple">2WW Endocrinology/ENT</span>
+        </div>
+        <div class="rftile">
+          <b>Agranulocytosis (on carbimazole / PTU)</b>
+          Sore throat + fever + mouth ulcers in patient on antithyroid drug → <span class="pill pill-red">Same-day FBC</span>; stop drug immediately
+        </div>
+        <div class="rftile">
+          <b>Ophthalmopathy with corneal involvement</b>
+          Severe proptosis + corneal exposure + visual loss in Graves' disease → <span class="pill pill-red">Same-day ophthalmology</span>
+        </div>
+        <div class="rftile">
+          <b>Pregnancy / first trimester</b>
+          Uncontrolled hyperthyroidism in pregnancy — risk of miscarriage, pre-eclampsia, foetal growth restriction → <span class="pill pill-red">Same-day obstetric review</span>
+        </div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <p><strong>Thyroid storm</strong> carries a mortality of 10–30% even with treatment. The Burch-Wartofsky scoring system (fever, CNS dysfunction, GI symptoms, HR, heart failure, precipitating history) identifies patients needing immediate ICU-level care — never wait for TFTs to confirm.</p>
+        <p><strong>Agranulocytosis</strong> complicates carbimazole/PTU in ~0.3% of patients, typically in the first 3 months. Untreated sepsis from neutropenia can be fatal. Always counsel patients at initiation and at every review: "Stop the drug and attend A&E same day if you develop a sore throat or fever."</p>
+        <p><strong>Graves' ophthalmopathy</strong> with corneal exposure is a sight-threatening emergency — corneal ulceration can cause permanent visual loss within hours. Refer before trying to manage medically.</p>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 2 · DIAGNOSE — CONFIRM DIAGNOSIS
+  ═══════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-head">
+      <div class="node-num">2</div>
+      <div class="node-head-txt">
+        <span class="node-tag">Diagnose</span>
+        <h3>Confirm hyperthyroidism — TFTs &amp; biochemical classification</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Never start antithyroid treatment without confirming biochemical hyperthyroidism. A suppressed TSH alone is insufficient — check free T4 and free T3.</span>
+      <div class="kv">
+        <div>First-line</div>
+        <div><span class="pill pill-blue">TSH</span> <span class="pill pill-blue">Free T4</span> <span class="pill pill-blue">Free T3</span> — order together. Do not check TSH in isolation if hyperthyroidism suspected.</div>
+        <div>Interpretation</div>
+        <div>
+          <b>Overt hyperthyroidism:</b> Suppressed TSH (&lt;0.1 mU/L) + raised fT4 and/or raised fT3<br>
+          <b>Subclinical hyperthyroidism:</b> Suppressed TSH + <i>normal</i> fT4 and fT3<br>
+          <b>T3 toxicosis:</b> Suppressed TSH + normal fT4 but <i>raised</i> fT3 — check fT3 explicitly
+        </div>
+        <div>Cause identification</div>
+        <div>
+          <span class="pill pill-blue">TSH-receptor antibodies (TRAb)</span> — positive in Graves' disease (~95% sensitivity)<br>
+          <span class="pill pill-blue">Thyroid peroxidase Ab (TPO Ab)</span> — raised in Graves' and Hashimoto's (less specific for cause)<br>
+          <span class="pill pill-blue">Thyroid isotope scan</span> — if aetiology unclear (arranged via endocrinology)
+        </div>
+        <div>When NOT to investigate</div>
+        <div>Do not check TFTs routinely in the absence of symptoms or risk factors. Do not repeat TFTs more frequently than every 6 weeks when monitoring treatment (TSH lags weeks behind fT4 changes).</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <p><strong>TSH alone is misleading.</strong> TSH can remain suppressed for weeks after fT4/fT3 normalise (pituitary lag). Monitoring by TSH only risks over-treatment and iatrogenic hypothyroidism. Always check fT4 (and fT3 if TSH suppressed with normal fT4) when adjusting doses.</p>
+        <p><strong>TRAb antibody status</strong> changes management fundamentally: Graves' disease may undergo spontaneous remission (~50% at 18 months of antithyroid therapy), whereas toxic nodular goitre or toxic adenoma will not — they typically require definitive treatment (radioiodine or surgery).</p>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 3 · DIAGNOSE — CLASSIFY AETIOLOGY
+  ═══════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+    <div class="node-head">
+      <div class="node-num">3</div>
+      <div class="node-head-txt">
+        <span class="node-tag">Diagnose</span>
+        <h3>Classify the cause — Aetiology drives definitive treatment choice</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Identify the underlying cause before choosing between antithyroid drugs, radioiodine, or surgery. Clinical features and antibodies usually suffice; isotope scanning is specialist-led.</span>
+      <div class="kv">
+        <div>Graves' Disease</div>
+        <div><b>Most common cause (70–80%)</b>. Diffuse smooth goitre + TRAb positive. May have ophthalmopathy (25%), pretibial myxoedema, thyroid acropachy. Younger patients, often female. Autoimmune — may remit. <span class="pill pill-teal">Treat with antithyroid drugs first-line</span></div>
+        <div>Toxic Multinodular Goitre (TMNG)</div>
+        <div>Irregular, multinodular goitre. Older patients. TRAb negative. Common in iodine-deficient areas. Will <b>not</b> remit on antithyroid drugs alone. <span class="pill pill-teal">Definitive treatment: radioiodine or surgery</span></div>
+        <div>Toxic Adenoma (Plummer's)</div>
+        <div>Solitary hyperfunctioning nodule. TRAb negative. Palpable nodule on one side. Confirmed on isotope scan. Will not remit. <span class="pill pill-teal">Radioiodine or hemithyroidectomy</span></div>
+        <div>Thyroiditis</div>
+        <div>Post-partum, De Quervain's (painful, post-viral), silent/painless. <b>Self-limiting</b> — transient hyperthyroid phase (2–8 weeks) often followed by hypothyroidism. <span class="pill pill-amber">Do not start antithyroid drugs</span> — use beta-blockade symptomatically only</div>
+        <div>Drug-induced</div>
+        <div>Amiodarone (type 1: iodine excess; type 2: destructive thyroiditis), lithium withdrawal, contrast iodine. Check medication history. Involve endocrinology — management complex.</div>
+        <div>Subclinical Hyperthyroidism</div>
+        <div>TSH &lt;0.1 mU/L + normal fT4/fT3. Treat if: age &gt;65, AF risk, osteoporosis risk, or persistent at 3 months. If TSH 0.1–0.4 mU/L and asymptomatic: observe with TFTs in 3–6 months.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <p><strong>Aetiology fundamentally changes the plan.</strong> Starting carbimazole in thyroiditis is a common error — antithyroid drugs do not work in destructive thyroiditis (the gland is releasing pre-formed hormone, not synthesising new hormone) and treatment delays resolution. Beta-blockers for symptom control + watchful waiting is correct.</p>
+        <p><strong>Toxic nodular goitre</strong> has a very low remission rate with antithyroid drugs (&lt;1%). Prolonged drug treatment without a definitive plan exposes patients to unnecessary agranulocytosis risk. These patients should be referred early for definitive discussion.</p>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 4 · DIAGNOSE — TARGETED EXAMINATION
+  ═══════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="4">
+    <div class="node-head">
+      <div class="node-num">4</div>
+      <div class="node-head-txt">
+        <span class="node-tag">Diagnose</span>
+        <h3>Targeted examination — Assess severity &amp; identify aetiology clinically</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>A structured examination distinguishes Graves' from other causes, quantifies cardiac burden, and identifies complications. Examination findings guide urgency of referral.</span>
+      <div class="kv">
+        <div>Vital signs</div>
+        <div>HR (resting tachycardia &gt;100 bpm common), BP, temperature. Irregular pulse → AF (check ECG). If fever &gt;38.5 + HR &gt;140 → thyroid storm risk.</div>
+        <div>Hands</div>
+        <div>Fine tremor (outstretched hands), warm peripheries, palmar erythema, onycholysis (Plummer's nails), thyroid acropachy (Graves'). Pulse — rate &amp; rhythm.</div>
+        <div>Eyes</div>
+        <div><b>Lid retraction</b> (sclera visible above iris — any cause). <b>Exophthalmos/proptosis</b> — only Graves'. Check eye movements (diplopia), corneal exposure, visual acuity. Use CAS (Clinical Activity Score) if ophthalmopathy present.</div>
+        <div>Thyroid gland</div>
+        <div>Inspect: goitre visible? Palpate: size, consistency (smooth = Graves'; irregular = TMNG), tenderness (De Quervain's). Auscultate: thyroid bruit = Graves' (increased vascularity). Check for cervical lymphadenopathy.</div>
+        <div>Cardiovascular</div>
+        <div>AF on auscultation, heart failure signs (raised JVP, bibasal crackles, peripheral oedema). Systolic flow murmur common in hyperdynamic state.</div>
+        <div>Neurological / Psychiatric</div>
+        <div>Hyperreflexia (brisk tendon reflexes), proximal myopathy (stand from chair without hands), anxiety, restlessness, cognitive impairment — especially important in elderly (apathetic thyrotoxicosis: AF + weight loss without classic features).</div>
+        <div>Skin</div>
+        <div>Pretibial myxoedema (raised, pink-orange plaques over shins) = Graves' specific. Hyperhidrosis. Hair loss (telogen effluvium).</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <p><strong>Apathetic thyrotoxicosis</strong> in the elderly presents with weight loss, AF, and fatigue — without the classic anxiety, tremor, or heat intolerance. Without examination, this is easily attributed to malignancy or cardiac disease. Always check TFTs in new AF in the elderly.</p>
+        <p><strong>Thyroid bruit</strong> indicates hypervascular Graves' gland and confirms active autoimmune disease. Its presence (or absence) guides treatment modality — thyroid bruit contraindicates radioiodine in some protocols due to radiation thyroiditis risk in highly vascular glands.</p>
+        <p><strong>Proximal myopathy</strong> indicates significant thyrotoxicosis and needs prompt biochemical control — it is reversible with treatment.</p>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 5 · DIAGNOSE — INVESTIGATIONS
+  ═══════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+    <div class="node-head">
+      <div class="node-num">5</div>
+      <div class="node-head-txt">
+        <span class="node-tag">Diagnose</span>
+        <h3>Investigations — Baseline tests before starting treatment</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Order baseline blood tests before starting carbimazole/PTU — they are essential for monitoring and detecting drug toxicity during treatment.</span>
+      <div class="kv">
+        <div>Thyroid function</div>
+        <div><span class="pill pill-blue">TSH + fT4 + fT3</span> — all three at baseline. Repeat fT4 (not TSH) at 4–6 weeks when monitoring on antithyroid drugs.</div>
+        <div>Autoantibodies</div>
+        <div><span class="pill pill-blue">TRAb</span> (TSH receptor antibody) — confirms Graves', predicts relapse risk. <span class="pill pill-blue">TPO Ab</span> — supports autoimmune aetiology.</div>
+        <div>Haematology</div>
+        <div><span class="pill pill-blue">FBC</span> — baseline WCC before starting carbimazole. Essential for comparison if patient later develops sore throat/fever (agranulocytosis check).</div>
+        <div>Liver function</div>
+        <div><span class="pill pill-blue">LFTs</span> — baseline before carbimazole/PTU (both can cause hepatotoxicity). PTU causes more serious hepatotoxicity than carbimazole.</div>
+        <div>Cardiac</div>
+        <div><span class="pill pill-blue">ECG</span> — essential if palpitations or irregular pulse. Identifies AF, rate, QTc (important before beta-blocker or amiodarone).</div>
+        <div>Bone health</div>
+        <div><span class="pill pill-blue">DEXA scan</span> — if prolonged/recurrent hyperthyroidism, post-menopausal women, or older men. Thyrotoxicosis causes accelerated bone loss → osteoporosis risk.</div>
+        <div>Not routinely needed</div>
+        <div>Thyroid ultrasound (specialist-led), isotope scan (specialist-led), thyroglobulin (malignancy marker, not for hyperthyroidism). Do not repeat TFTs more frequently than 4–6 weekly.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <p><strong>Baseline FBC is critical.</strong> If a patient later presents with sore throat on carbimazole and has no baseline WCC, it is impossible to determine whether any neutropenia is drug-induced or pre-existing. Always document the baseline.</p>
+        <p><strong>LFTs before PTU</strong> are mandatory — PTU-induced fulminant hepatic failure has been reported. PTU is reserved for specific circumstances (first trimester, allergy to carbimazole, thyroid storm) precisely because of this hepatotoxicity risk.</p>
+        <p><strong>TRAb titre at diagnosis</strong> predicts remission probability: high TRAb titre correlates with lower remission rate on antithyroid drugs alone, helping counsel patients about definitive treatment options early.</p>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 6 · REFER — REFERRAL CRITERIA
+  ═══════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="REFER" data-step="6">
+    <div class="node-head">
+      <div class="node-num">6</div>
+      <div class="node-head-txt">
+        <span class="node-tag">Refer</span>
+        <h3>Referral — When to involve Endocrinology, Ophthalmology &amp; Surgery</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Most patients with confirmed hyperthyroidism should be referred to Endocrinology. Know the urgency and who to refer to.</span>
+      <div class="kv">
+        <div><span class="pill pill-red">999</span></div>
+        <div>Suspected thyroid storm (Burch-Wartofsky ≥45) · Acute heart failure from thyrotoxicosis · Haemodynamic compromise</div>
+        <div><span class="pill pill-red">Same-day</span></div>
+        <div>Suspected agranulocytosis on antithyroid drugs (stop drug, urgent FBC, same-day haematology / A&amp;E) · Corneal exposure in Graves' ophthalmopathy · Hyperthyroidism in pregnancy</div>
+        <div><span class="pill pill-purple">Urgent 2WW</span></div>
+        <div>Hard/fixed thyroid mass + cervical lymphadenopathy + hoarse voice → 2WW thyroid cancer pathway</div>
+        <div><span class="pill pill-purple">Urgent (2 weeks)</span></div>
+        <div>Newly diagnosed Graves' disease → Endocrinology (to confirm aetiology, initiate antithyroid drugs, discuss definitive treatment). New Graves' ophthalmopathy → Ophthalmology (CAS assessment)</div>
+        <div><span class="pill pill-grey">Routine</span></div>
+        <div>Toxic multinodular goitre / toxic adenoma requiring definitive treatment discussion · Relapsed Graves' after first course of antithyroid drugs · Subclinical hyperthyroidism requiring intervention · Amiodarone-induced thyrotoxicosis</div>
+        <div>Primary care management</div>
+        <div>Thyroiditis (symptomatic management with propranolol only) · Monitoring stable patients on antithyroid drugs between specialist reviews · Post-radioiodine hypothyroidism monitoring</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <p><strong>All new Graves' disease should be seen by endocrinology</strong> — the decision between antithyroid drugs, radioiodine, and thyroidectomy requires specialist input, isotope scanning, antibody profiling, and patient preference counselling. Starting carbimazole in primary care without a plan for definitive management is a common systems failure.</p>
+        <p><strong>Agranulocytosis requires the drug to be stopped immediately</strong> — before the FBC result is back. The risk of sepsis from neutropenia outweighs the risk of a short period without antithyroid medication. Do not wait for results before stopping.</p>
+        <p><strong>Graves' ophthalmopathy worsens significantly after radioiodine</strong> (in ~25% of patients). This cannot be determined without ophthalmology assessment and CAS scoring first — hence the importance of ophthalmology referral before any definitive treatment.</p>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 7 · TREAT — DRUG LADDER
+  ═══════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="TREAT" data-step="7">
+    <div class="node-head">
+      <div class="node-num">7</div>
+      <div class="node-head-txt">
+        <span class="node-tag">Treat</span>
+        <h3>Treatment pathway — Antithyroid drugs, definitive options &amp; symptom control</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+
+      <span class="sh">Phase 1 — Symptom control (start immediately, alongside antithyroid drugs)</span>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">Sinus tachycardia / tremor / anxiety / palpitations</div>
+          <div class="b-drug">Propranolol <span class="pill pill-teal">Beta-blocker</span></div>
+          <div class="b-note">40–80 mg TDS/QDS. Also 10–40 mg TDS (low dose). Non-cardioselective — also reduces peripheral T4→T3 conversion. Titrate to HR &lt;80 bpm resting.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Asthma / COPD / beta-blocker contraindicated</div>
+          <div class="b-drug">Diltiazem <span class="pill pill-amber">Alternative</span></div>
+          <div class="b-note">60–120 mg TDS for rate control if AF. Not for tremor/anxiety.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Thyroiditis (self-limiting cause)</div>
+          <div class="b-drug">Propranolol only <span class="pill pill-amber">No antithyroid drug</span></div>
+          <div class="b-note">Symptom control until thyrotoxic phase resolves (typically 4–8 weeks). NSAIDs / prednisolone for pain in De Quervain's.</div>
+        </div>
+      </div>
+
+      <span class="sh">Phase 2 — Antithyroid drug (Graves' &amp; toxic nodular goitre — first-line medical treatment)</span>
+      <div class="ladder">
+        <div class="rung">
+          <span class="rn">1st Line</span>
+          <span class="rt"><b>Carbimazole</b> 20–40 mg OD (titration regimen) or 40 mg OD with levothyroxine add-back (block-replace). Start within days of diagnosis. <span class="pill pill-teal">UK first-line</span><br>
+          <small>Titration: reduce carbimazole every 4–6 weeks as fT4 normalises, aiming for 5–10 mg maintenance. Total course: 12–18 months in Graves'.</small></span>
+        </div>
+        <div class="rung">
+          <span class="rn">Pregnancy / 1st trimester</span>
+          <span class="rt"><b>Propylthiouracil (PTU)</b> 100–200 mg TDS — preferred in 1st trimester (carbimazole teratogenic: aplasia cutis, choanal atresia). Switch to carbimazole after 1st trimester. <span class="pill pill-amber">Hepatotoxicity risk — monitor LFTs</span></span>
+        </div>
+        <div class="rung">
+          <span class="rn">Monitoring on drugs</span>
+          <span class="rt">Check <b>fT4</b> (not TSH) at 4–6 weeks to guide dose titration. Check FBC + LFTs if symptoms suggest toxicity. Counsel every review: "Stop drug and seek urgent care if sore throat, fever, or mouth ulcers."</span>
+        </div>
+      </div>
+
+      <span class="sh">Phase 3 — Definitive treatment (planned with Endocrinology)</span>
+      <div class="ladder">
+        <div class="rung">
+          <span class="rn">Radioiodine (I-131)</span>
+          <span class="rt"><b>First-line definitive treatment</b> for most adults with Graves', TMNG, or toxic adenoma. Outpatient oral capsule. 80% euthyroid / hypothyroid at 6 months. <span class="pill pill-amber">Avoid: active ophthalmopathy, pregnancy, breastfeeding, inability to follow radiation precautions.</span> Hypothyroidism expected — start levothyroxine when TSH rises.</span>
+        </div>
+        <div class="rung">
+          <span class="rn">Thyroidectomy</span>
+          <span class="rt"><b>Total/near-total thyroidectomy</b> for: large compressive goitre, patient preference, failed radioiodine, active Graves' ophthalmopathy, suspected malignancy, pregnancy planning &lt;6 months. Requires biochemical euthyroidism before surgery (carbimazole + Lugol's iodine pre-op). Lifelong levothyroxine post-op.</span>
+        </div>
+        <div class="rung">
+          <span class="rn">After definitive Rx</span>
+          <span class="rt">Monitor TSH 6–8 weeks post-radioiodine and 6 weeks post-thyroidectomy. Start <b>levothyroxine 1.6 mcg/kg/day</b> when hypothyroid. Target TSH 0.5–2.5 mU/L. Annual TFTs once stable.</span>
+        </div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <p><strong>Block-replace vs titration:</strong> Both are equally effective at achieving euthyroidism. Titration uses lower total carbimazole dose (reduces agranulocytosis risk). Block-replace may suit busy patients (fewer dose adjustments) but higher total drug exposure. Either is acceptable — discuss with endocrinology.</p>
+        <p><strong>Radioiodine and ophthalmopathy:</strong> Radioiodine worsens Graves' ophthalmopathy in ~25% of cases (particularly smokers). Patients with active ophthalmopathy (CAS ≥3) should not receive radioiodine without concurrent steroid cover. Ophthalmology assessment is mandatory before choosing definitive therapy.</p>
+        <p><strong>Remission rates:</strong> 40–60% of Graves' patients achieve remission after 12–18 months of carbimazole (higher if TRAb normalises). Relapse is more likely with: large goitre, high TRAb titre, active smoking, younger age. After relapse, definitive treatment is recommended rather than a second antithyroid drug course.</p>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 8 · LIFESTYLE — NON-PHARMACOLOGICAL
+  ═══════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="LIFESTYLE" data-step="8">
+    <div class="node-head">
+      <div class="node-num">8</div>
+      <div class="node-head-txt">
+        <span class="node-tag">Lifestyle</span>
+        <h3>Non-pharmacological interventions — Lifestyle as active treatment</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Lifestyle modifications reduce symptoms, reduce relapse risk, and protect organ systems while awaiting biochemical control. These are active treatments, not afterthoughts.</span>
+      <div class="lsgrid">
+        <div class="lstile">
+          <b>Smoking cessation</b>
+          Smoking doubles the risk of Graves' ophthalmopathy and worsens its severity. Radioiodine is more hazardous in smokers with orbitopathy. Refer to NHS Stop Smoking service — most important modifiable risk in Graves'. <span class="pill pill-green">Reduces ophthalmopathy risk significantly</span>
+        </div>
+        <div class="lstile">
+          <b>Rest &amp; activity pacing</b>
+          Active thyrotoxicosis causes proximal myopathy, tachycardia, and fatigue. Vigorous exercise increases cardiac stress — advise reduced intensity until biochemically controlled. Gentle walking acceptable.
+        </div>
+        <div class="lstile">
+          <b>Dietary iodine</b>
+          Avoid iodine supplementation and seaweed/kelp products — excess iodine can worsen or precipitate hyperthyroidism (Jod-Basedow effect). Normal iodine diet is safe. Avoid contrast dye exposure if possible.
+        </div>
+        <div class="lstile">
+          <b>Bone protection</b>
+          Prolonged thyrotoxicosis causes accelerated bone resorption. Adequate calcium (1000–1200 mg/day via diet) and vitamin D (≥600 IU/day). Consider DEXA scan if prolonged or recurrent hyperthyroidism. Bisphosphonates if osteoporosis confirmed. <span class="pill pill-green">Reduces fracture risk</span>
+        </div>
+        <div class="lstile">
+          <b>Eye care (Graves' ophthalmopathy)</b>
+          Lubricating eye drops (hypromellose) for dry eyes / corneal exposure. UV-protective sunglasses for photophobia and proptosis. Sleep with head elevated to reduce periorbital oedema. Absolutely stop smoking.
+        </div>
+        <div class="lstile">
+          <b>Heat avoidance</b>
+          Heat intolerance is a prominent symptom. Advise light clothing, cool environments, fans, cold showers. This improves quality of life while awaiting biochemical control — simple measures with significant impact.
+        </div>
+        <div class="lstile">
+          <b>Mental health &amp; work</b>
+          Anxiety, irritability, and cognitive impairment are thyrotoxicosis symptoms — not psychiatric disorder. Explain this to patients; it reduces anxiety about mental health. May need temporary sick leave. Reassure symptoms resolve with treatment.
+        </div>
+        <div class="lstile">
+          <b>Driving &amp; DVLA</b>
+          No DVLA notification required for controlled hyperthyroidism. Advise not to drive if symptomatic tachycardia, tremor, or significant visual symptoms (Graves' ophthalmopathy) impair safe driving.
+        </div>
+        <div class="lstile">
+          <b>Radioiodine precautions</b>
+          If radioiodine given: avoid close contact with children &lt;16 and pregnant women for 3 weeks, avoid public transport 24h, separate crockery 1 week, no intercourse 1 week. Give written ARSAC information leaflet.
+        </div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <p><strong>Smoking and ophthalmopathy:</strong> The association is dose-dependent and robust. Current smokers have a 7.7× greater risk of developing Graves' ophthalmopathy compared to never-smokers. Smoking cessation is the most effective intervention to prevent orbitopathy progression — more impactful than any drug in this regard.</p>
+        <p><strong>Bone loss</strong> in thyrotoxicosis is clinically significant — thyroid hormones increase bone turnover markers and reduce BMD by 10–20% in prolonged untreated disease. The effect is partially reversible with treatment, but early calcium/vitamin D support and DEXA monitoring prevents long-term fracture risk.</p>
+        <p><strong>Explaining psychiatric symptoms as thyroid symptoms</strong> significantly reduces patient anxiety and medication non-adherence. Many patients are incorrectly labelled with anxiety disorder or depression before thyroid disease is considered.</p>
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       STEP 9 · SAFETY — FOLLOW-UP & MONITORING
+  ═══════════════════════════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-head">
+      <div class="node-num">9</div>
+      <div class="node-head-txt">
+        <span class="node-tag">Safety</span>
+        <h3>Follow-up &amp; monitoring — Safety-netting, drug monitoring &amp; long-term review</h3>
+      </div>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <span>Structured monitoring prevents agranulocytosis deaths, detects relapse early, and optimises thyroid hormone replacement after definitive treatment.</span>
+      <div class="kv">
+        <div>4–6 weeks (on antithyroid drugs)</div>
+        <div>Check <b>fT4</b> (not TSH — still suppressed) to guide carbimazole dose titration. Assess symptom response. Review beta-blocker need. Check for drug side effects (rash, arthralgia, hepatotoxicity).</div>
+        <div>3 months</div>
+        <div>Full TFT review (fT4 + TSH usually recovering). Confirm dose has been appropriately reduced. Reinforce agranulocytosis warning. Ophthalmology update if Graves' with orbitopathy.</div>
+        <div>6 months (on antithyroid drugs)</div>
+        <div>Discuss definitive treatment plan with patient. Recheck TRAb titre — normalisation supports potential remission. Confirm endocrinology follow-up pathway.</div>
+        <div>12–18 months (end of antithyroid course)</div>
+        <div>Trial drug withdrawal if TRAb negative and fT4/TSH stable. TFTs 4–6 weeks after stopping. 40–60% achieve remission. If relapse — definitive treatment.</div>
+        <div>Post-radioiodine</div>
+        <div>TFTs at 6 and 12 weeks, then 6-monthly. Start levothyroxine when TSH rises (&gt;4.0 mU/L or symptomatic). Annual TFTs once stable on levothyroxine replacement.</div>
+        <div>Post-thyroidectomy</div>
+        <div>Calcium on day 1 post-op (hypoparathyroidism risk). TFTs at 6 weeks — start levothyroxine 1.6 mcg/kg/day. Annual TFTs. Check vitamin D yearly.</div>
+        <div>Long-term (Graves' remission)</div>
+        <div>Annual TFTs for life — relapse rate 50% over 5 years. No need for routine antibody monitoring once in remission unless symptoms recur.</div>
+      </div>
+
+      <span class="sh">Safety-netting — advise at every consultation</span>
+      <div class="kv">
+        <div><span class="pill pill-red">Call 999</span></div>
+        <div>Severe palpitations with chest pain / collapse · Sudden onset confusion or coma · Unable to tolerate fluids / unwell with vomiting (adrenal crisis risk)</div>
+        <div><span class="pill pill-red">Same-day GP / A&amp;E</span></div>
+        <div><b>Sore throat, fever, or mouth ulcers while on carbimazole or PTU → Stop drug immediately &amp; seek same-day care for urgent FBC</b> · Eye pain or visual loss (Graves') · Worsening palpitations / new irregular pulse · Jaundice (hepatotoxicity — especially PTU)</div>
+        <div><span class="pill pill-amber">Routine GP review</span></div>
+        <div>Symptoms of hypothyroidism emerging (fatigue, weight gain, cold intolerance) · Rash or joint pain on antithyroid drugs · Pregnancy planning — always review treatment plan before conception</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <p><strong>TSH monitoring error:</strong> The commonest monitoring mistake is checking TSH alone during antithyroid drug titration. TSH can remain suppressed for months after fT4 normalises due to pituitary lag. Relying on TSH alone leads to over-treatment and iatrogenic hypothyroidism. Always check fT4 as the primary monitoring marker for the first 6 months.</p>
+        <p><strong>Agranulocytosis safety-netting must be verbal AND written</strong> at every prescription. Most cases occur in the first 3 months, but can occur at any time. In a primary care audit, failure to warn patients was the most common avoidable factor in agranulocytosis deaths on antithyroid drugs.</p>
+        <p><strong>Pregnancy planning:</strong> Poorly controlled hyperthyroidism in pregnancy is associated with miscarriage, pre-term delivery, foetal growth restriction, and neonatal thyrotoxicosis (from transplacental TRAb). Women of childbearing age should be counselled to inform their GP when planning pregnancy so treatment can be optimised in advance.</p>
+        <p><strong>Relapse surveillance:</strong> 50% of Graves' patients who achieve remission relapse within 5 years — most within the first 2 years. Annual TFTs should be lifelong even after successful treatment, with clear patient education to return if symptoms recur.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /alg-flow -->
+
+<!-- ─── FOOTER ─────────────────────────────────────────────────── -->
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE CKS Hyperthyroidism (2023) · British Thyroid Association (BTA) Guidelines for the Management of Thyrotoxicosis 2019 · European Thyroid Association (ETA) Graves' Disease Guidelines 2022 · RCGP Curriculum — Metabolic Problems &amp; Endocrinology. Always adapt to individual patient context, local formulary, and specialist advice.
+</div>
+
+</div><!-- /alg-wrap -->
+
+<script>
+/* ─── WHY DRAWERS ──────────────────────────────────────────── */
+document.querySelectorAll('.why-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    btn.nextElementSibling.classList.toggle('open');
+  });
+});
+
+/* ─── PROGRESS TRACKING ────────────────────────────────────── */
+const STORE_KEY = 'rgp.alg.hyperthyroidism.v1';
+const nodes = document.querySelectorAll('.node[data-step]');
+const pDone = document.getElementById('pDone');
+const pFill = document.getElementById('pFill');
+const pTotal = document.getElementById('pTotal');
+
+pTotal.textContent = nodes.length;
+
+function save() {
+  const state = {};
+  nodes.forEach(n => {
+    const cb = n.querySelector('input[type=checkbox]');
+    state[n.dataset.step] = cb.checked;
+  });
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch(e){}
+}
+
+function load() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+    nodes.forEach(n => {
+      const cb = n.querySelector('input[type=checkbox]');
+      if (saved[n.dataset.step]) {
+        cb.checked = true;
+        n.classList.add('done');
+      }
+    });
+  } catch(e){}
+}
+
+function updateProgress() {
+  const done = document.querySelectorAll('.node.done').length;
+  pDone.textContent = done;
+  pFill.style.width = (done / nodes.length * 100) + '%';
+}
+
+nodes.forEach(node => {
+  const cb = node.querySelector('input[type=checkbox]');
+  cb.addEventListener('change', () => {
+    node.classList.toggle('done', cb.checked);
+    updateProgress();
+    save();
+  });
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (!confirm('Reset all progress?')) return;
+  nodes.forEach(n => {
+    n.querySelector('input[type=checkbox]').checked = false;
+    n.classList.remove('done');
+  });
+  updateProgress();
+  try { localStorage.removeItem(STORE_KEY); } catch(e){}
+});
+
+load();
+updateProgress();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

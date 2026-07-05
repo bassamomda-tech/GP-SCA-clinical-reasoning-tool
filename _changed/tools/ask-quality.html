@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask Quality Console — Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .aq-hero{ margin-bottom:18px; }
+  .aq-hero h1{ font-family:'Source Serif 4',serif; font-size:30px; color:var(--teal); margin:0 0 6px; }
+  .aq-hero p{ color:var(--muted); max-width:70ch; margin:0; }
+  .aq-owner{ display:inline-block; margin-bottom:10px; background:var(--rust); color:#fff; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 10px; border-radius:999px; }
+
+  .aq-tabs{ display:flex; gap:8px; margin:18px 0 16px; flex-wrap:wrap; }
+  .aq-tab{ border:1px solid var(--line); background:var(--card); border-radius:999px; padding:8px 16px; font:inherit; font-size:13.5px; font-weight:600; cursor:pointer; color:inherit; }
+  .aq-tab.on{ background:var(--teal); border-color:var(--teal); color:#fff; }
+  .aq-pane{ display:none; }
+  .aq-pane.on{ display:block; }
+
+  .aq-bar{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:14px; }
+  .aq-run{ border:none; background:var(--teal); color:#fff; border-radius:10px; padding:10px 18px; font:inherit; font-size:14px; font-weight:700; cursor:pointer; }
+  .aq-run[disabled]{ opacity:.5; cursor:default; }
+  .aq-score{ font-size:13.5px; color:var(--muted); }
+  .aq-score b.ok{ color:var(--teal); } .aq-score b.bad{ color:var(--rust); }
+
+  .aq-note{ background:var(--teal-soft); border:1px solid var(--line); border-radius:12px; padding:12px 16px; font-size:13px; line-height:1.55; margin-bottom:14px; }
+  .aq-err{ background:#fbeae4; border:1px solid #e8c4b4; border-radius:12px; padding:12px 16px; font-size:13px; line-height:1.55; margin-bottom:14px; }
+
+  .aq-item{ border:1px solid var(--line); background:var(--card); border-radius:12px; padding:12px 14px; margin-bottom:10px; }
+  .aq-item .row1{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+  .aq-st{ font-size:12px; font-weight:700; min-width:52px; }
+  .aq-st.pass{ color:var(--teal); } .aq-st.fail{ color:var(--rust); } .aq-st.wait{ color:var(--muted); } .aq-st.run{ color:#b07b1e; }
+  .aq-t{ font-weight:700; font-size:13.5px; }
+  .aq-q{ color:var(--muted); font-size:13px; flex:1 1 100%; }
+  .aq-miss{ margin-top:8px; font-size:12.5px; color:var(--rust); }
+  .aq-why{ margin-top:4px; font-size:12px; color:var(--muted); }
+  .aq-item details{ margin-top:8px; }
+  .aq-item summary{ font-size:12px; color:var(--muted); cursor:pointer; }
+  .aq-ans{ white-space:pre-wrap; font-size:12.5px; line-height:1.55; background:var(--bg); border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin-top:6px; max-height:320px; overflow:auto; }
+  .aq-one{ border:1px solid var(--line); background:none; border-radius:8px; padding:3px 10px; font:inherit; font-size:12px; cursor:pointer; margin-left:auto; }
+
+  .fb-card .meta{ display:flex; gap:10px; flex-wrap:wrap; font-size:12px; color:var(--muted); margin-bottom:6px; align-items:center; }
+  .fb-v{ font-weight:700; }
+  .fb-v.up{ color:var(--teal); } .fb-v.down{ color:var(--rust); }
+  .fb-q{ font-weight:700; font-size:13.5px; margin-bottom:4px; }
+  .fb-c{ font-size:13px; background:var(--bg); border-left:3px solid var(--rust); padding:6px 10px; border-radius:0 8px 8px 0; margin:6px 0; }
+  .aq-del,.aq-app{ border:1px solid var(--line); background:none; border-radius:8px; padding:4px 12px; font:inherit; font-size:12px; cursor:pointer; }
+  .aq-app{ border-color:var(--teal); color:var(--teal); font-weight:600; }
+  .aq-del:hover{ border-color:var(--rust); color:var(--rust); }
+  .pill-appr{ background:var(--teal); color:#fff; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:999px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-askquality"></aside>
+  <main class="main">
+    <div class="tool-page">
+
+      <div class="aq-hero">
+        <span class="aq-owner">Owner console · not linked in the public nav</span>
+        <h1>Ask — Quality Console</h1>
+        <p>Keep the assistant provably accurate: run the gold-standard test bank after any change, review 👍/👎 feedback from real users, and vet the cached answers served for popular questions.</p>
+      </div>
+
+      <div class="aq-tabs">
+        <button class="aq-tab on" data-pane="test" type="button">🧪 Test bank</button>
+        <button class="aq-tab" data-pane="fb" type="button">💬 User feedback</button>
+        <button class="aq-tab" data-pane="cache" type="button">⚡ Cached answers</button>
+      </div>
+
+      <!-- ============ TEST BANK ============ -->
+      <div class="aq-pane on" id="pane-test">
+        <div class="aq-note">Each question runs through the <b>exact same pipeline users get</b> (retrieval → grounding → framing → model), then the answer is checked for the facts it must contain — doses, thresholds, 2WW criteria. Run it after editing the library, the framing, or the model. A fail doesn't always mean a wrong answer (the model may phrase a fact differently) — read the answer before acting.</div>
+        <div class="aq-bar">
+          <button class="aq-run" id="runAll" type="button">▶ Run all</button>
+          <span class="aq-score" id="score"></span>
+        </div>
+        <div id="testList"></div>
+      </div>
+
+      <!-- ============ FEEDBACK ============ -->
+      <div class="aq-pane" id="pane-fb">
+        <div class="aq-note">Every 👍/👎 users leave on an answer lands here. Review weekly: each 👎 points at the library note to fix or write. Requires the backend Worker + <code>ADMIN_EMAIL</code> set to your account email, signed in as that account.</div>
+        <div id="fbList">Loading…</div>
+      </div>
+
+      <!-- ============ CACHE ============ -->
+      <div class="aq-pane" id="pane-cache">
+        <div class="aq-note">Popular first-turn questions are answered once, then served instantly from this cache (zero AI cost). Entries expire after 30 days unless you <b>approve</b> them — an approved answer is your hand-vetted, permanent answer for that question. <b>Delete</b> a weak one and it regenerates on next ask.</div>
+        <div id="cacheList">Loading…</div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- knowledge base (same set the Ask page loads, so retrieval is identical) -->
+<script src="../assets/articles-data-1.js"></script>
+<script src="../assets/articles-data-2.js"></script>
+<script src="../assets/articles-data-3.js"></script>
+<script src="../assets/articles-data-4.js"></script>
+<script src="../assets/articles-data-5.js"></script>
+<script src="../assets/articles-data-6.js"></script>
+<script src="../assets/articles-data-7.js"></script>
+<script src="../assets/articles-data-8.js"></script>
+<script src="../assets/articles-data-9.js"></script>
+<script src="../assets/articles-data-10.js"></script>
+<script src="../assets/articles-data-11.js"></script>
+<script src="../assets/articles-data-12.js"></script>
+<script src="../assets/articles-data-13.js"></script>
+<script src="../assets/articles-data-14.js"></script>
+<script src="../assets/articles-data-15.js"></script>
+<script src="../assets/articles-data-16.js"></script>
+<script src="../assets/articles-data-17.js"></script>
+<script src="../assets/articles-data-18.js"></script>
+<script src="../assets/articles-data-19.js"></script>
+<script src="../assets/articles-data-20.js"></script>
+<script src="../assets/articles-data-21.js"></script>
+<script src="../assets/articles-data-22.js"></script>
+<script src="../assets/articles-data-23.js"></script>
+<script src="../assets/articles-data-24.js"></script>
+<script src="../assets/articles-data-25.js"></script>
+<script src="../assets/articles-data-26.js"></script>
+<script src="../assets/articles-data-27.js"></script>
+<script src="../assets/articles-data-28.js"></script>
+<script src="../assets/articles-data-29.js"></script>
+<script src="../assets/articles-data-30.js"></script>
+<script src="../assets/articles-data-31.js"></script>
+<script src="../assets/articles-data-32.js"></script>
+<script src="../assets/kb-index.js"></script>
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/ask-retrieval.js?v=1"></script>
+<script src="../assets/ask-core.js?v=3"></script>
+<script src="../assets/ask-testbank.js?v=1"></script>
+<script>
+(function(){
+  'use strict';
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  /* ---------- tabs ---------- */
+  document.querySelectorAll('.aq-tab').forEach(t=> t.addEventListener('click', ()=>{
+    document.querySelectorAll('.aq-tab').forEach(x=>x.classList.toggle('on', x===t));
+    document.querySelectorAll('.aq-pane').forEach(p=>p.classList.toggle('on', p.id==='pane-'+t.getAttribute('data-pane')));
+    if(t.getAttribute('data-pane')==='fb') loadAdmin('feedback');
+    if(t.getAttribute('data-pane')==='cache') loadAdmin('cache');
+  }));
+
+  /* ================= TEST BANK ================= */
+  const BANK = window.ASK_TESTBANK || [];
+  const RET = window.RGPRetrieval, CORE = window.RGPAskCore;
+  const list = $('#testList'), scoreEl = $('#score'), runBtn = $('#runAll');
+  let results = {};
+  try{ results = JSON.parse(localStorage.getItem('rgp-askq-run-v1')||'{}') || {}; }catch(e){ results = {}; }
+
+  function missing(ans, must){
+    const a = String(ans||'').toLowerCase();
+    return (must||[]).filter(g => !g.some(v => a.indexOf(String(v).toLowerCase()) !== -1));
+  }
+  function renderItem(i){
+    const it = BANK[i], r = results[i];
+    const st = !r ? '<span class="aq-st wait">— not run</span>'
+      : r.state==='running' ? '<span class="aq-st run">⏳ running…</span>'
+      : r.state==='error' ? '<span class="aq-st fail">⚠ error</span>'
+      : r.miss.length ? '<span class="aq-st fail">✗ FAIL</span>' : '<span class="aq-st pass">✓ PASS</span>';
+    let extra = '';
+    if(r && r.state==='done' && r.miss.length){
+      extra += `<div class="aq-miss">Missing fact group${r.miss.length>1?'s':''}: ${r.miss.map(g=>esc(g.join(' / '))).join(' · ')}</div>`;
+    }
+    if(r && r.state==='error') extra += `<div class="aq-miss">${esc(r.err||'The assistant is not connected here.')}</div>`;
+    if(r && r.ans) extra += `<details><summary>Show answer</summary><div class="aq-ans">${esc(r.ans)}</div></details>`;
+    return `<div class="aq-item" id="ti-${i}">
+      <div class="row1">${st}<span class="aq-t">${esc(it.t)}</span><button class="aq-one" data-i="${i}" type="button">Run</button>
+      <span class="aq-q">${esc(it.q)}</span></div>
+      <div class="aq-why">Expected: ${esc(it.why||'')}</div>${extra}</div>`;
+  }
+  function renderAll(){
+    list.innerHTML = BANK.map((_,i)=>renderItem(i)).join('');
+    const done = Object.values(results).filter(r=>r.state==='done');
+    if(done.length){
+      const pass = done.filter(r=>!r.miss.length).length;
+      scoreEl.innerHTML = `<b class="${pass===done.length?'ok':'bad'}">${pass}/${done.length} passed</b> · ${BANK.length} in the bank` + (results._ts ? ` · last run ${new Date(results._ts).toLocaleString()}` : '');
+    } else scoreEl.textContent = BANK.length + ' gold-standard questions';
+  }
+  function saveRun(){ try{ localStorage.setItem('rgp-askq-run-v1', JSON.stringify(results)); }catch(e){} }
+
+  async function runOne(i){
+    const it = BANK[i];
+    results[i] = { state:'running' };
+    document.getElementById('ti-'+i).outerHTML = renderItem(i);
+    try{
+      if(!(window.claude && window.claude.complete)) throw new Error('The AI assistant isn\u2019t connected here — open this page on the live site (or in the preview) with the backend Worker deployed.');
+      let hits = [];
+      try{ hits = await RET.grounding(it.q, 6); }catch(e){ hits = []; }
+      const msgs = [
+        { role:'user', content: CORE.FRAMING },
+        { role:'assistant', content: CORE.PRIMER_ACK },
+        { role:'user', content: CORE.buildContext(hits) + '\n\n---\nCLINICIAN QUESTION (a follow-up in the conversation above unless it clearly changes subject): ' + it.q }
+      ];
+      const ans = await window.claude.complete({ messages: msgs }); // no cacheKey — always a fresh answer
+      results[i] = { state:'done', ans: ans, miss: missing(ans, it.must) };
+    }catch(err){
+      results[i] = { state:'error', err: (err && err.message) || 'failed' };
+    }
+    results._ts = Date.now(); saveRun();
+    const el = document.getElementById('ti-'+i); if(el) el.outerHTML = renderItem(i);
+    renderAll();
+  }
+  list.addEventListener('click', e=>{
+    const b = e.target.closest('.aq-one'); if(b) runOne(+b.getAttribute('data-i'));
+  });
+  let running = false;
+  runBtn.addEventListener('click', async ()=>{
+    if(running) return; running = true; runBtn.disabled = true; runBtn.textContent = 'Running…';
+    for(let i=0;i<BANK.length;i++){
+      await runOne(i);
+      await new Promise(r=>setTimeout(r, 400)); // gentle pacing
+      if(results[i] && results[i].state==='error' && /isn\u2019t connected|not connected/.test(results[i].err||'')) break; // no point continuing
+    }
+    running = false; runBtn.disabled = false; runBtn.textContent = '▶ Run all';
+  });
+  renderAll();
+
+  /* ================= ADMIN (feedback + cache) ================= */
+  function workerUrl(){ const c = window.RGP_CONFIG||{}; return c.workerUrl ? c.workerUrl.replace(/\/$/,'') : ''; }
+  function token(){ try{ return localStorage.getItem('rgp.auth.token.v1'); }catch(e){ return null; } }
+  async function adminFetch(qs, body){
+    const base = workerUrl();
+    if(!base) throw new Error('no_worker');
+    const t = token();
+    const res = await fetch(base + '/api/admin/ask' + (qs||''), {
+      method: body ? 'POST' : 'GET',
+      headers: Object.assign({'Content-Type':'application/json'}, t?{'Authorization':'Bearer '+t}:{}),
+      body: body ? JSON.stringify(body) : undefined
+    });
+    const data = await res.json().catch(()=>({}));
+    if(!res.ok) throw new Error(data.error || ('http_'+res.status));
+    return data;
+  }
+  function adminErr(e){
+    if(e.message==='no_worker') return '<div class="aq-err">The backend Worker isn\u2019t connected on this copy of the site (RGP_CONFIG.workerUrl is empty), so there\u2019s no server to read feedback from. Open this page on the live site once the Worker is deployed.</div>';
+    if(/Admin only|401|sign/i.test(e.message)) return '<div class="aq-err"><b>Admin sign-in needed.</b> In the Worker\u2019s Settings → Variables add <code>ADMIN_EMAIL</code> = the email of YOUR account on this site, deploy, then sign in here with that account and reload.</div>';
+    return '<div class="aq-err">Couldn\u2019t load: '+esc(e.message)+'</div>';
+  }
+  const when = ts => ts ? new Date(ts).toLocaleString() : '';
+
+  async function loadAdmin(what){
+    const mount = what==='cache' ? $('#cacheList') : $('#fbList');
+    mount.textContent = 'Loading…';
+    let items;
+    try{ items = (await adminFetch('?what='+what)).items || []; }
+    catch(e){ mount.innerHTML = adminErr(e); return; }
+    if(!items.length){ mount.innerHTML = '<div class="aq-note">Nothing here yet.</div>'; return; }
+    if(what==='feedback'){
+      mount.innerHTML = items.map(it=>`<div class="aq-item fb-card">
+        <div class="meta"><span class="fb-v ${it.verdict==='up'?'up':'down'}">${it.verdict==='up'?'👍 helpful':'👎 problem'}</span><span>${esc(when(it.ts))}</span><span>${esc(it.email||'')}</span><button class="aq-del" data-k="${esc(it.key)}" data-w="feedback" type="button">Delete</button></div>
+        <div class="fb-q">${esc(it.q||'(no question recorded)')}</div>
+        ${it.comment ? `<div class="fb-c">“${esc(it.comment)}”</div>` : ''}
+        ${it.answer ? `<details><summary>Show the answer they rated</summary><div class="aq-ans">${esc(it.answer)}</div></details>` : ''}
+      </div>`).join('');
+    } else {
+      mount.innerHTML = items.map(it=>`<div class="aq-item fb-card">
+        <div class="meta">${it.approved?'<span class="pill-appr">✓ approved · permanent</span>':'<span>expires ~30 days after last use</span>'}<span>${esc(when(it.ts))}</span><span>served ${(it.hits||0)}×</span>
+          ${it.approved?'':`<button class="aq-app" data-k="${esc(it.key)}" type="button">Approve as vetted</button>`}
+          <button class="aq-del" data-k="${esc(it.key)}" data-w="cache" type="button">Delete</button></div>
+        <div class="fb-q">${esc(it.q||'')}</div>
+        <details><summary>Show cached answer</summary><div class="aq-ans">${esc(it.completion||'')}</div></details>
+      </div>`).join('');
+    }
+    mount.onclick = async (e)=>{
+      const del = e.target.closest('.aq-del'), app = e.target.closest('.aq-app');
+      if(!del && !app) return;
+      const key = (del||app).getAttribute('data-k');
+      try{
+        await adminFetch('', del ? { action:'delete', key } : { action:'approve', key });
+        loadAdmin(del ? del.getAttribute('data-w') : 'cache');
+      }catch(err){ alert('Failed: '+err.message); }
+    };
+  }
+})();
+</script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Infertility — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Infertility management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"👶",
+  title:"Infertility",
+  stemTitle:"Subfertility \u2014 the primary-care workup before referral",
+  stemSub:"Primary-care management of the couple struggling to conceive \u2014 when to investigate, the parallel female and male workup, pre-conception optimisation, and timely referral. Investigate after 1 year (or earlier if \u226536, known cause, or red flags). NICE CG156 \u00b7 2026.",
+  guideline:"NICE CG156",
+  glance:[
+    {lbl:"Investigate", val:"After 12 months", sub:"earlier if \u226536 / cause"},
+    {lbl:"Female", val:"Mid-luteal progesterone", sub:"day 21 of 28-day cycle"},
+    {lbl:"Male", val:"Semen analysis", sub:"first-line, repeat if abnormal"},
+    {lbl:"Both", val:"Folic acid 400 mcg OD (5 mg if high-risk)", sub:"+ lifestyle"},
+    {lbl:"Refer", val:"Fertility clinic", sub:"per local criteria"},
+    {lbl:"Earlier", val:"Amenorrhoea / PID / cancer Rx", sub:"= refer sooner"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"When to investigate + take the history",
+      blocks:[
+        {b:"kv", rows:[
+          ["Define","Failure to conceive after <b>1 year</b> of regular unprotected intercourse (every 2\u20133 days)"],
+          ["Investigate earlier if","Woman \u226536, known cause (e.g. amenorrhoea/oligomenorrhoea, PID, undescended testes, cancer treatment), or predisposing factors"],
+          ["Female history","Cycle regularity, previous pregnancy, PID/STI, pelvic surgery, galactorrhoea, hirsutism (PCOS), smear status"],
+          ["Male history","Previous fatherhood, mumps, undescended testes, trauma/surgery, erectile/ejaculatory function, drugs (anabolic steroids), heat exposure"]
+        ]},
+        {b:"why", html:"Both partners are investigated in parallel from the outset \u2014 a male factor contributes in ~half of cases. Starting the workup early in older women and known-cause cases avoids losing time when ovarian reserve is declining."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 both partners", title:"Pre-conception optimisation",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"💊 Folic acid", html:"Folic acid 400 \u00b5g daily (5 mg if high-risk: diabetes, BMI \u226530, epilepsy meds, previous NTD)."},
+          {t:"⚖️ Weight", html:"Optimise BMI \u2014 both high and low BMI reduce fertility; weight loss restores ovulation in PCOS."},
+          {t:"🚭 Smoking/alcohol", html:"Stop smoking (both); limit alcohol; stop recreational drugs/anabolic steroids."},
+          {t:"📅 Timing", html:"Intercourse every 2\u20133 days throughout the cycle \u2014 no need to time to ovulation."},
+          {t:"🌡️ Male heat", html:"Avoid excessive scrotal heat; review medications affecting fertility."},
+          {t:"💉 Rubella/cervical screen", html:"Check rubella immunity; ensure smear up to date."}
+        ]}
+      ]},
+    {t:"node", d:"monitor", n:"3", tag:"Investigations", title:"Parallel female + male workup",
+      blocks:[
+        {b:"table", head:["Test","For","Notes"], rows:[
+          ["Semen analysis","Male","First-line; repeat after 3 months if abnormal (confirm before labelling)"],
+          ["Mid-luteal progesterone","Ovulation","Day 21 of a 28-day cycle (7 days before expected period); confirms ovulation"],
+          ["Chlamydia screen","Both","Before any uterine instrumentation"],
+          ["Hormones if irregular cycles","Female","FSH/LH, oestradiol, prolactin, TFTs; testosterone/SHBG if PCOS features"],
+          ["Rubella immunity, BMI, BP","Female","Pre-conception screen"],
+          ["Tubal/ovarian reserve, USS","Specialist","HSG/HyCoSy, AMH, antral follicle count \u2014 usually arranged in secondary care"]
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"4", tag:"Refer", title:"Referral to fertility services",
+      arrow:"timely onward referral",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Refer after 1 year", html:"No conception after a year of regular UPSI with normal initial tests \u2014 refer per local fertility pathway."},
+          {t:"Refer earlier", html:"Woman \u226536; amenorrhoea/oligomenorrhoea; known/suspected tubal, uterine or male-factor cause; previous cancer treatment; abnormal semen analysis."},
+          {t:"Specialist treatments", html:"Ovulation induction (e.g. letrozole/clomifene in PCOS), IUI, IVF/ICSI \u2014 specialist-led; access varies by local CCG/ICB criteria."},
+          {t:"Counselling", html:"Acknowledge psychological impact; signpost support."}
+        ]}
+      ]},
+    {t:"node", d:"safety", n:"5", tag:"Don't miss", title:"Earlier / urgent considerations",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🟠 Premature ovarian insufficiency", html:"Amenorrhoea + high FSH in a young woman \u2192 refer; counsel re fertility window."},
+          {t:"🟠 Fertility preservation", html:"Before gonadotoxic cancer treatment \u2192 urgent referral for gamete storage."},
+          {t:"🟠 Azoospermia / very low count", html:"Confirm + refer; consider genetic/endocrine causes."},
+          {t:"⏳ Age", html:"Female age is the strongest determinant \u2014 do not delay referral in older women."}
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"6", tag:"Support", title:"Information + wellbeing",
+      blocks:[
+        {b:"say", html:"About 8 in 10 couples conceive within a year. We\u2019ll start tests for both of you together \u2014 a sperm sample and a blood test to confirm ovulation \u2014 and optimise things like folic acid, weight and smoking. If we don\u2019t have a pregnancy after a year, or sooner given your circumstances, we\u2019ll refer to the fertility clinic. It can be a stressful journey, so support is available too."}
+      ]}
+  ],
+  foot:"Primary-care assessment and referral for subfertility; specialist services lead investigation and treatment. NHS-funded treatment criteria vary locally. Verify against current NICE CG156 and your local fertility pathway."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

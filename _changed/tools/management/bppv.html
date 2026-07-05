@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BPPV — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="BPPV management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🌀",
+  title:"BPPV",
+  stemTitle:"Benign paroxysmal positional vertigo — management",
+  stemSub:"Primary-care management of BPPV \u2014 confirming with Dix\u2013Hallpike, treating with the Epley manoeuvre, and home exercises \u2014 with the central-cause safety net. CKS \u00b7 2026.",
+  guideline:"NICE CKS",
+  glance:[
+    {lbl:"Hallmark", val:"Brief positional vertigo", sub:"seconds, on head movement"},
+    {lbl:"Confirm", val:"Dix\u2013Hallpike", sub:"+ rotatory nystagmus"},
+    {lbl:"Treat", val:"Epley manoeuvre", sub:"highly effective"},
+    {lbl:"Home", val:"Brandt\u2013Daroff", sub:"if needed"},
+    {lbl:"Drugs", val:"Not helpful", sub:"avoid vestibular sedatives"},
+    {lbl:"Red flag", val:"Central signs", sub:"refer"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Recognise and confirm BPPV",
+      blocks:[
+        {b:"kv", rows:[
+          ["Typical","Brief (seconds) episodes of rotational vertigo triggered by head position change (rolling over, looking up)"],
+          ["Confirm","<b>Dix\u2013Hallpike</b> test reproduces vertigo + upbeat-torsional nystagmus (posterior canal)"],
+          ["No","No hearing loss, tinnitus, or persistent vertigo between episodes (those suggest other causes)"],
+          ["Exclude central","Persistent vertigo, neuro signs, headache, vertical/direction-changing nystagmus \u2192 central cause"]
+        ]},
+        {b:"why", html:"BPPV is mechanical \u2014 displaced otoconia in a semicircular canal \u2014 so it is <strong>cured by a repositioning manoeuvre, not drugs</strong>. Confirming with Dix\u2013Hallpike and excluding central mimics (which the brief, positional, fatigable pattern usually does) is the whole diagnostic task."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 reassurance", title:"Explanation and safety",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🫶 Reassurance", html:"Explain it\u2019s benign, common, and usually settles \u2014 often within weeks even untreated."},
+          {t:"🛏️ Movement advice", html:"Move slowly when changing position; sit on the edge of the bed before standing."},
+          {t:"🚗 Safety", html:"Caution with ladders, driving during active vertigo, and falls risk (especially older people)."},
+          {t:"🔁 Home exercises", html:"Brandt\u2013Daroff exercises if manoeuvre not done/incomplete or for recurrence."},
+          {t:"📋 Recurrence", html:"Warn it can recur; the manoeuvre can be repeated."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Treatment", title:"Repositioning manoeuvres (not drugs)",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Epley manoeuvre", when:"posterior canal BPPV",
+           html:"Canalith repositioning (Epley) \u2014 highly effective, often curative in 1\u20132 attempts. Can repeat if symptoms persist/recur."},
+          {step:"Step 2", title:"Home Brandt\u2013Daroff exercises", when:"adjunct / if Epley unavailable",
+           fromLabel:"persistent or recurrent",
+           html:"Teach home exercises to aid resolution and manage recurrence."},
+          {step:"Note", title:"Avoid vestibular sedatives", when:"not a treatment",
+           fromLabel:"do not rely on drugs",
+           html:"Prochlorperazine/antihistamines do <b>not</b> treat BPPV and may impair central compensation \u2014 avoid for ongoing management."}
+        ]},
+        {b:"warn", html:"<b>Vestibular sedatives are not a treatment for BPPV</b> and can delay recovery. Take care performing manoeuvres in those with neck pathology or carotid disease."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Resolution and recurrence",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Symptom resolution","After manoeuvre","Most resolve; repeat Epley if persisting"],
+          ["Recurrence","Ongoing","Re-treat; teach home exercises"],
+          ["Reassess diagnosis","If atypical/persistent","New neuro signs / hearing loss \u2192 reconsider cause"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"At diagnosis", title:"Confirm + treat", html:"Dix\u2013Hallpike, Epley manoeuvre, reassurance and safety advice."},
+          {n:"2", when:"If persisting", title:"Repeat / exercises", html:"Repeat Epley, teach Brandt\u2013Daroff; reassess if not improving."},
+          {n:"3", when:"On recurrence", title:"Re-treat", html:"Repeat manoeuvre; consider referral if frequent/refractory."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not resolving? Re-think before referral",
+      arrow:"\u2026if vertigo persists",
+      intro:"Reconsider the diagnosis and technique before escalating.",
+      checks:[
+        {b:"1 \u00b7 Central signs", html:"Persistent vertigo, neuro signs, headache, atypical nystagmus \u2192 central cause \u2192 refer."},
+        {b:"2 \u00b7 Right canal", html:"Posterior-canal BPPV confirmed? Atypical nystagmus may be another canal."},
+        {b:"3 \u00b7 Manoeuvre", html:"Was Epley performed correctly / repeated?"},
+        {b:"4 \u00b7 Other diagnosis", html:"Hearing loss/tinnitus \u2192 M\u00e9ni\u00e8re\u2019s; persistent \u2192 vestibular neuronitis."},
+        {b:"5 \u00b7 Refer", html:"Refractory or diagnostic doubt \u2192 ENT/vestibular."}
+      ],
+      back:"Central cause excluded, manoeuvre repeated \u2192 ENT / balance clinic if refractory"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Central red flags", html:"\u201cConstant dizziness, severe headache, double vision, slurred speech, weakness/numbness, or trouble walking \u2014 call 999 (possible stroke).\u201d"},
+          {t:"👂 New hearing loss", html:"\u201cNew hearing loss or ringing with the dizziness \u2014 come back; it points to a different cause.\u201d"},
+          {t:"🚶 Falls", html:"\u201cMove slowly with position changes and take care on stairs/ladders until it settles.\u201d"},
+          {t:"🫶 Reassurance", html:"\u201cThis is benign and the repositioning manoeuvre usually fixes it quickly \u2014 it can be repeated.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"central red flags urgently; refractory routinely",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Central features suggesting stroke/posterior circulation \u2192 urgent/999."},
+          {t:"Refractory / recurrent", html:"Not responding to repeated manoeuvres, or frequent recurrence \u2192 ENT/balance clinic."},
+          {t:"Diagnostic doubt", html:"Atypical nystagmus, non-posterior canal, or uncertainty."},
+          {t:"Other inner-ear disease", html:"Associated hearing loss/tinnitus needing audiology/ENT."}
+        ]},
+        {b:"say", html:"This dizziness comes from tiny crystals in the inner ear shifting position \u2014 it\u2019s harmless, and a simple head-positioning manoeuvre usually settles it quickly. Tablets don\u2019t really help. It can come back, and we can just repeat the manoeuvre."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

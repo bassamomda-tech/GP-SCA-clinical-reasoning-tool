@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Faltered Growth Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#c0392b;--purple:#7c3aed;--blue:#1d4ed8;--teal:#0d9488;--amber:#b45309;--green:#15803d;--grey:#4b5563;
+  --bg:#f8f7f4;--card:#ffffff;--border:#e5e1d8;--text:#1a1a1a;--muted:#6b7280;
+  --shadow:0 2px 8px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.55;font-size:15px}
+.stem-banner{background:linear-gradient(135deg,#064e3b,#059669);color:#fff;padding:18px 24px;display:flex;align-items:center;gap:14px;border-radius:12px;margin:18px 16px 0}
+.sb-icon{font-size:2rem}
+.stem-banner b{font-size:1.05rem;font-weight:700}
+.stem-banner small{display:block;opacity:.8;font-size:.82rem;margin-top:2px}
+.alg-progress{margin:14px 16px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.alg-progress span:first-child{font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.pcount{font-weight:700;font-size:.9rem;margin-left:auto}
+.pbar{flex:1;min-width:100px;height:6px;background:#e5e7eb;border-radius:99px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#064e3b,#059669);width:0;transition:width .4s ease;border-radius:99px}
+.reset{padding:4px 12px;font-size:.8rem;border:1px solid var(--border);border-radius:6px;background:#fff;cursor:pointer;color:var(--muted);font-family:inherit}
+.reset:hover{background:#f3f4f6}
+.alg-flow{padding:8px 16px 16px;display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:linear-gradient(180deg,#064e3b,#059669);margin:0 auto;opacity:.4}
+.node{background:var(--card);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left:4px solid var(--red)}
+.node[data-type="DIAGNOSE"]{border-left:4px solid var(--blue)}
+.node[data-type="REFER"]{border-left:4px solid var(--purple)}
+.node[data-type="TREAT"]{border-left:4px solid var(--teal)}
+.node[data-type="LIFESTYLE"]{border-left:4px solid var(--green)}
+.node-num{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:10px 16px 0;color:var(--muted)}
+.node-head{padding:4px 16px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.node-tag{font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:99px;white-space:nowrap;flex-shrink:0}
+.node[data-type="SAFETY"] .node-tag{background:#fee2e2;color:var(--red)}
+.node[data-type="DIAGNOSE"] .node-tag{background:#dbeafe;color:var(--blue)}
+.node[data-type="REFER"] .node-tag{background:#ede9fe;color:var(--purple)}
+.node[data-type="TREAT"] .node-tag{background:#ccfbf1;color:var(--teal)}
+.node[data-type="LIFESTYLE"] .node-tag{background:#dcfce7;color:var(--green)}
+.node-head h3{font-family:'Source Serif 4',serif;font-size:1.02rem;font-weight:600;line-height:1.3;flex:1}
+.node-tick{padding:2px 16px 8px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.82rem;color:var(--muted)}
+.node-tick input[type=checkbox]{width:15px;height:15px;accent-color:#059669;cursor:pointer}
+.node.done{opacity:.75}
+.node.done .node-tick .tlbl{color:var(--green);font-weight:600}
+.node-body{padding:4px 16px 12px;font-size:.9rem}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:8px 0;font-size:.86rem}
+.kv>div{background:var(--card);padding:7px 10px;line-height:1.45}
+.kv>div:nth-child(odd){font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;background:#fafaf9}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin:8px 0}
+.rftile{background:#fff5f5;border:1px solid #fecaca;border-radius:8px;padding:9px 11px;font-size:.84rem;line-height:1.45}
+.rftile b{display:block;color:var(--red);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:8px 0}
+.b-card{background:#f0fdfa;border:1px solid #99f6e4;border-radius:8px;padding:10px}
+.b-cond{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--teal);margin-bottom:4px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:3px}
+.b-note{font-size:.82rem;color:var(--muted)}
+.ladder{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:8px 0}
+.rung{display:flex;align-items:stretch;border-bottom:1px solid var(--border);font-size:.86rem}
+.rung:last-child{border-bottom:none}
+.rn{background:#f0f9ff;padding:8px 12px;font-weight:700;font-size:.78rem;color:var(--blue);min-width:80px;display:flex;align-items:center;justify-content:center;text-align:center;flex-shrink:0;border-right:1px solid var(--border)}
+.rt{padding:8px 12px;flex:1;line-height:1.45}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:8px 0}
+.lstile{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:9px 11px;font-size:.84rem;line-height:1.45}
+.lstile b{display:block;color:var(--green);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:99px;font-size:.76rem;font-weight:700;vertical-align:middle;white-space:nowrap}
+.pill-red{background:#fee2e2;color:var(--red)}
+.pill-purple{background:#ede9fe;color:var(--purple)}
+.pill-blue{background:#dbeafe;color:var(--blue)}
+.pill-teal{background:#ccfbf1;color:var(--teal)}
+.pill-amber{background:#fef3c7;color:var(--amber)}
+.pill-green{background:#dcfce7;color:var(--green)}
+.pill-grey{background:#f3f4f6;color:var(--grey)}
+.why-row{border-top:1px solid var(--border);background:#fafaf9}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.82rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:inherit}
+.why-btn:hover{color:var(--text);background:#f3f4f6}
+.caret{transition:transform .25s}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 16px 12px;font-size:.84rem;color:#374151;line-height:1.55;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.alg-foot{margin:8px 16px 24px;padding:12px 16px;background:var(--card);border:1px solid var(--border);border-radius:10px;font-size:.8rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.safeguarding-box{background:#fff0f0;border:2px solid #fca5a5;border-radius:8px;padding:10px 12px;margin:8px 0;font-size:.85rem;line-height:1.5}
+.safeguarding-box strong{color:var(--red);display:block;margin-bottom:4px}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">📏</div>
+  <div>
+    <b>Faltered Growth in Children — Primary Care Pathway</b>
+    <small>Structured assessment for weight faltering / failure to thrive · 0–5 years primary focus · UK primary care</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — plot serial measurements, confirm a sustained fall across centiles, and work through inadequate intake, malabsorption, increased demand and psychosocial causes. Support feeding, safeguard, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Faltering growth</span><div class="body">Plot weight/length/head on growth chart; confirm sustained centile fall. Feeding history, stool, systemic symptoms, development, social context.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — organic disease / safeguarding</span><span class="ttl">Serious underlying disease or safeguarding?</span><div class="body">Significant systemic illness, dysmorphism, severe malnutrition/dehydration, or safeguarding/neglect concerns.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Refer / safeguard</span><div class="body">Severe/organic disease → paediatrics. Safeguarding concern → child protection pathway.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination guide management.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · approach</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Inadequate intake</div><div class="box act"><span class="ttl">Commonest</span><div class="body">Feeding difficulties, behavioural, poverty; feeding support, dietitian, health visitor.</div></div></div><div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Malabsorption / increased need</div><div class="box ix"><span class="ttl">Investigate</span><div class="body">Coeliac, CMPA, CF, chronic illness; targeted tests (coeliac serology, etc).</div></div></div><div class="col"><div class="blabel">Psychosocial</div><div class="box ix"><span class="ttl">Assess</span><div class="body">Neglect, maternal mental health, social stressors; multi-agency support.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-purple">Paediatrics / dietitian / health visitor</span> for assessment and feeding support; <span class="pill pill-red">Safeguarding</span> if neglect suspected. Investigate organic causes only when indicated.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · feeding support &amp; family</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Feeding support &amp; family</span><span class="ttl">Most cases are intake-related</span><div class="body"><b>Practical feeding support</b> — responsive feeding, calorie enrichment, structured mealtimes, manage fussy/behavioural feeding; <b>health visitor and dietitian</b> involvement. Address <b>poverty and food insecurity</b> (signpost support), maternal mental health, and the wider family/social context. Treat reversible causes (reflux, CMPA, iron deficiency).</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Re-plot &amp; reassess</span><div class="body"><b>Re-weigh and re-plot at intervals</b> appropriate to age to confirm response; if growth doesn't recover with feeding support, broaden investigation and refer. <b>Same-day</b> for severe malnutrition/dehydration or an acutely unwell child. <b>Escalate safeguarding</b> if neglect is suspected or engagement is poor — don't let a child be lost to follow-up.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>One low measurement is not faltering growth:</b> confirm a sustained fall across centiles on serial plots — and weigh feeding, organic and psychosocial factors together, including safeguarding.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-num">Step 1</div>
+  <div class="node-head">
+    <h3>Safety — Red Flags, Emergency Exclusion & Safeguarding</h3>
+    <span class="node-tag">Safety</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Screen for medical emergencies, serious underlying disease, and — critically — child maltreatment before all other assessment.
+    <div class="safeguarding-box">
+      <strong>⚠️ Safeguarding FIRST — Consider in every faltered growth presentation</strong>
+      Faltered growth is a recognised presentation of child neglect and non-accidental injury. Consider ALWAYS: Does this family engage with services? Are other children affected? Unexplained bruising or injuries? Inconsistent history? Inappropriate parental affect? If any concern → <span class="pill pill-red">Refer to Children's Social Care (Section 17/47)</span> and document RCPCH guidance followed.
+    </div>
+    <div class="rfgrid">
+      <div class="rftile"><b>Acute severe weight loss + lethargy + sunken fontanelle + reduced urine output</b> Severe dehydration / acute illness → <span class="pill pill-red">999 / same-day ED</span></div>
+      <div class="rftile"><b>Failure to thrive + recurrent infections + oral thrush + lymphadenopathy</b> Primary immunodeficiency, HIV, haematological malignancy → <span class="pill pill-red">Urgent paediatric referral same-day</span></div>
+      <div class="rftile"><b>Marked oedema + very low weight in infant</b> Severe protein-energy malnutrition (rare in UK but occurs in neglect / restrictive diets) → <span class="pill pill-red">Same-day paediatric admission</span></div>
+      <div class="rftile"><b>Weight crossing 2+ centile lines downwards + pallor + organomegaly</b> Malignancy, metabolic storage disease, cystic fibrosis, coeliac disease → <span class="pill pill-red">Urgent paediatric referral</span></div>
+      <div class="rftile"><b>Child &lt;6 months with inadequate weight gain + no other healthcare contact</b> High safeguarding risk (neglect) — isolated family, inadequate feeding, substance misuse, PND → <span class="pill pill-red">Immediate MDT discussion</span></div>
+      <div class="rftile"><b>Faltered growth + developmental regression + behavioural changes</b> Neglect, emotional abuse, deprivational dwarfism → <span class="pill pill-red">Safeguarding referral</span></div>
+      <div class="rftile"><b>Persistent vomiting + bilious vomiting in infant</b> Pyloric stenosis (4–8 weeks, projectile, non-bilious), malrotation, intestinal obstruction → <span class="pill pill-red">Same-day paediatric assessment</span></div>
+      <div class="rftile"><b>Failure to thrive + dysmorphic features + structural abnormalities</b> Chromosomal disorder (Trisomy 21, Turner's), congenital heart disease, inborn error of metabolism → <span class="pill pill-red">Urgent paediatric genetics / metabolic referral</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Faltered growth (the preferred term replacing "failure to thrive") is defined as weight consistently below the 2nd centile or crossing downwards through 2 or more centile spaces. NICE CG37 and RCPCH growth chart guidance emphasise that faltered growth is multifactorial — the majority (>80%) is due to inadequate caloric intake rather than underlying organic disease. However, the safeguarding dimension must be assessed in every case: faltered growth is one of the recognised presentations of child neglect, and the Working Together to Safeguard Children 2023 guidance requires GPs to apply threshold criteria for referral. Medical red flags requiring urgent paediatric assessment include: crossing 2+ centile lines, organomegaly, dysmorphic features, recurrent infections, significant developmental delay, and parental concern disproportionate to examination findings.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-num">Step 2</div>
+  <div class="node-head">
+    <h3>Diagnose — Accurate Growth Measurement & Plotting</h3>
+    <span class="node-tag">Diagnose</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Accurate measurement is the foundation. Errors in measurement or plotting are common and cause inappropriate referral or missed diagnosis.
+    <div class="kv">
+      <div>Weight measurement</div><div>Use calibrated scales. Infants: naked. Children: minimal clothing, no shoes. Plot on WHO growth charts (UK-WHO 0–4yrs) or UK90 (4–18yrs). Record to nearest 10g (infants) or 100g (children). Time of day affects weight (plot same time for serial measurements).</div>
+      <div>Length / height</div><div>Length (lying, &lt;2yrs): infantometer, two-person technique. Height (standing, ≥2yrs): stadiometer, Frankfurt plane (tragus–lower orbital margin horizontal). Convert between standing and lying (+0.7cm). Plot on RCPCH UK-WHO chart.</div>
+      <div>Head circumference</div><div>Measure to age 2 (or beyond if neurological concern). Use non-stretchable tape. Largest occipitofrontal circumference. Small head → microcephaly (brain pathology). Large head → hydrocephalus, storage disorders.</div>
+      <div>Mid-upper arm circumference (MUAC)</div><div>MUAC &lt;11.5cm in 6–59 months → severe acute malnutrition. MUAC &lt;12.5cm → moderate acute malnutrition. Simple, reliable in community. Does not require weight scales.</div>
+      <div>Defining faltered growth</div><div>Weight consistently below 0.4th centile, OR falling through 2 or more centile spaces (e.g. 50th to below 9th), OR clinical concern. <span class="pill pill-amber">A single low weight is not faltered growth — serial measurements needed</span></div>
+      <div>Mid-parental height (MPH)</div><div>Boys: (father's height + mother's height + 13cm) ÷ 2. Girls: (father's height + mother's height – 13cm) ÷ 2. ± 10cm target range. Child's height centile should approximate MPH centile. Significant discordance → investigate.</div>
+      <div>Growth velocity</div><div>Rate of growth over time. Weight gain norms: 0–3 months: ~200g/week; 3–6 months: ~150g/week; 6–12 months: ~70–90g/week; 1–2 years: ~50g/week. Deceleration across centiles is more significant than position alone.</div>
+      <div>Review Red Book</div><div>Review Personal Child Health Record (PCHR / Red Book) for all previous weights, lengths, immunisations, developmental checks. Essential context for trajectory assessment.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Measurement error is the most common cause of apparent faltered growth in primary care — up to 30% of weight measurements in primary care have significant errors due to inconsistent clothing, uncalibrated scales, or different measurement techniques. WHO growth charts (UK-WHO) are used from birth to 4 years because they represent optimal growth for breastfed infants in a supportive environment. UK90 charts are used from 4 years onwards. A single weight below a centile means nothing without context — serial measurements demonstrating sustained downward crossing of centile lines is the diagnostic criterion. Mid-parental height calculation is essential for any child with short stature — familial short stature is the most common cause of small stature and requires no investigation if growth velocity is normal and MPH centile is concordant.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-num">Step 3</div>
+  <div class="node-head">
+    <h3>Diagnose — Comprehensive History</h3>
+    <span class="node-tag">Diagnose</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    A detailed multi-system history identifies the cause in the majority of cases. Cover feeding, systemic symptoms, social context, and family history.
+    <div class="kv">
+      <div>Feeding history (infant)</div><div>Breastfeeding: frequency, duration, positioning, latch, maternal milk supply concerns, expressing (volume indicates supply). Formula: preparation method (over-diluting formula is a common error), volume per feed, frequency. Weaning: timing, textures, variety. Appetite — good or poor?</div>
+      <div>Feeding history (child)</div><div>Dietary recall (24-hour / 3-day food diary): volume, variety, texture, frequency of meals. Mealtime behaviour: refusal, distress, gagging. ARFID (Avoidant/Restrictive Food Intake Disorder) — extreme selectivity, sensory aversion. Family meals together? Screen time during meals?</div>
+      <div>GI symptoms</div><div>Vomiting (posset vs projectile vs bilious). Diarrhoea (frequency, blood, consistency — loose / floating / offensive steatorrhoea → malabsorption). Constipation. Abdominal pain / bloating. Coeliac: diarrhoea + weight loss + abdominal distension after gluten introduction (~6 months).</div>
+      <div>Respiratory symptoms</div><div>Recurrent chest infections + faltered growth → cystic fibrosis. Chronic wheeze, cough. Obstructive sleep apnoea (large tonsils, snoring, restless sleep → increased caloric expenditure + reduced daytime intake).</div>
+      <div>Systemic symptoms</div><div>Recurrent fever (immunodeficiency). Sweating (cardiac disease). Polyuria + polydipsia (diabetes, renal tubular acidosis). Pallor, bruising (haematological). Jaundice (liver disease).</div>
+      <div>Perinatal / birth history</div><div>Gestation, birth weight (SGA/IUGR), APGAR scores, NICU admission. Maternal health in pregnancy: infection (CMV, toxoplasma, rubella), substance use, nutrition. SGA may have constitutional small stature.</div>
+      <div>Social & environmental</div><div>Housing: overcrowding, cold, damp. Food security: benefit entitlement (Universal Credit, Healthy Start vouchers, Free School Meals). Parental mental health (PND, anxiety — affects feeding interactions). Domestic violence. Social isolation. Parental substance misuse.</div>
+      <div>Family history</div><div>Parental height and weight. Coeliac disease, IBD, cystic fibrosis, metabolic disorders. Constitutional delay of growth (father's puberty timing). Genetic syndromes.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Over 80% of faltered growth cases in the UK are due to inadequate caloric intake — the history must focus primarily on feeding before investigating for organic disease. Coeliac disease is the most commonly missed organic cause — it affects ~1% of the population and presents with faltered growth, steatorrhoea, and abdominal distension after gluten introduction. Cystic fibrosis should be considered in any child with recurrent chest infections and faltered growth — the newborn bloodspot screen (heel prick) screens for CF but false negatives occur. ARFID (Avoidant/Restrictive Food Intake Disorder) is increasingly recognised as a cause of inadequate intake in children — it requires specialist CAMHS and dietetic input and does not respond to standard feeding advice. Social history is not optional — food poverty affects 15–20% of UK children and is a primary driver of faltered growth that requires social care intervention, not medical treatment. Always ask about Healthy Start voucher entitlement.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-num">Step 4</div>
+  <div class="node-head">
+    <h3>Diagnose — Targeted Physical Examination</h3>
+    <span class="node-tag">Diagnose</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    A full top-to-toe examination is required. Most children with faltered growth are systemically well — a sick-looking child warrants urgent assessment.
+    <div class="kv">
+      <div>General appearance</div><div>Well / alert / interactive vs unwell / lethargic. Dysmorphic features (Down syndrome, Turner's, Russell-Silver, Williams, Prader-Willi). Wasting (loss of fat / muscle), oedema (protein deficiency). Hygiene, clothing, parent-child interaction.</div>
+      <div>Skin &amp; hair</div><div>Pallor (anaemia, malnutrition). Bruising / marks (safeguarding). Eczema (may contribute to poor intake if severe). Sparse, brittle hair (nutritional deficiency). Jaundice (liver disease). Mouth ulcers (IBD, nutritional deficiency).</div>
+      <div>Cardiovascular</div><div>Heart murmur (congenital heart disease — increased caloric expenditure). Cyanosis. Abnormal femoral pulses (coarctation). Tachycardia / diaphoresis with feeding.</div>
+      <div>Respiratory</div><div>Wheeze, crackles, chronic cough, clubbing → CF. Harrison's sulcus (chronic air trapping). Tachypnoea (cardiac, respiratory cause of FTT).</div>
+      <div>Abdomen</div><div>Distension (coeliac, malabsorption, organomegaly). Hepatomegaly (metabolic storage disease, liver disease, heart failure). Splenomegaly (haematological, infection, storage disease). Palpable kidneys (polycystic, Wilms tumour — also causes FTT).</div>
+      <div>Neurology</div><div>Tone (hypotonia → neuromuscular disease, Down syndrome, Prader-Willi — poor feeding), irritability (raised ICP, pain, neglect). Head circumference (micro/macrocephaly). Developmental assessment (see Step 5 algorithm for delay).</div>
+      <div>Mouth &amp; throat</div><div>Tonsil size (Grade 3–4 tonsils → OSA → increased caloric demand + poor sleep/appetite). Dental caries (diet quality). Cleft palate (check for submucosal cleft). Tongue tie (affects latch in breastfed infants).</div>
+      <div>Genitalia / pubertal staging</div><div>Precocious puberty causes short stature. Undescended testes (Prader-Willi). Turner's: webbed neck, wide carrying angle, absent secondary sexual characteristics.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The examination in faltered growth serves two purposes: to identify organic disease and to assess for signs of neglect or abuse. A child who is alert, interactive, and well-engaged with parents despite a low weight is very different from one who is withdrawn, apathetic, and showing poor parent-child interaction — the latter requires immediate safeguarding consideration. Dysmorphic features, cardiac murmurs, and organomegaly all require urgent secondary care assessment. Tongue tie (ankyloglossia) is a commonly missed cause of faltered growth in breastfed infants — it impairs latch and milk transfer, causing maternal nipple pain, poor infant satiety, and growth faltering. Assessment and division (frenotomy) by a trained practitioner resolves the problem. Tonsil size should always be assessed — Grade 3–4 tonsils can cause obstructive sleep apnoea, which dramatically increases basal metabolic rate and reduces appetite.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-num">Step 5</div>
+  <div class="node-head">
+    <h3>Diagnose — Investigations</h3>
+    <span class="node-tag">Diagnose</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Most faltered growth does NOT require extensive investigation. Investigations should be targeted based on the history and examination.
+    <div class="kv">
+      <div>First-line bloods (if organic cause suspected)</div><div>FBC (anaemia, infection), U&amp;E + creatinine (renal disease, renal tubular acidosis), LFTs + albumin (liver disease, nutritional status), TFTs (hypothyroidism), coeliac serology (IgA anti-TTG + total IgA — IgA deficiency can give false negative), ferritin + B12 + folate, glucose.</div>
+      <div>Coeliac serology</div><div>IgA anti-tissue transglutaminase (anti-TTG) + total IgA. Sensitivity 93%, specificity 99% on gluten-containing diet. <span class="pill pill-amber">Child must be eating gluten for 6 weeks before testing</span>. If positive → refer paediatric gastroenterology for endoscopy + biopsy confirmation.</div>
+      <div>Urine</div><div>MC&S: UTI (recurrent UTI → renal scarring → growth faltering). Urine reducing substances (inborn errors of carbohydrate metabolism). Urine protein (nephrotic syndrome). Dipstick: glucose (diabetes).</div>
+      <div>CF investigations</div><div>Newborn bloodspot screen result (check Red Book). If not screened or result unavailable: sweat chloride test (gold standard, &gt;60 mmol/L diagnostic). CFTR gene panel if clinical suspicion. <span class="pill pill-blue">Refer to paediatric respiratory for sweat test</span></div>
+      <div>If dysmorphic features</div><div>Chromosomal microarray (preferred over karyotype for dysmorphology). FISH for specific suspected syndrome. Refer to clinical genetics.</div>
+      <div>Bone age X-ray</div><div>Left wrist X-ray: Greulich-Pyle atlas. Used if short stature is the primary concern (not weight alone). Delayed bone age → constitutional delay / GH deficiency / hypothyroidism. Normal bone age → familial short stature.</div>
+      <div>Do NOT routinely</div><div>Extensive metabolic screen without clinical indication. Growth hormone testing in primary care (refer to paediatric endocrinology). Full immunology screen without recurrent infections. MRI brain without neurological signs.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE guidance and paediatric consensus emphasise that investigation-driven approaches in faltered growth are ineffective — a focused history and examination identify the cause far more reliably than a "scatter-gun" blood panel. Coeliac serology is the one investigation that should be performed in almost all children with faltered growth and any GI symptoms — coeliac disease affects 1% of the population and is significantly underdiagnosed. The child must be on a gluten-containing diet for at least 6 weeks before testing — parents sometimes withdraw gluten before the diagnosis is confirmed, which invalidates the test. Total IgA must be checked alongside anti-TTG to exclude IgA deficiency (which gives false-negative anti-TTG in 2–3% of children). Sweat chloride testing for CF requires referral to specialist paediatric respiratory services — the test cannot be performed reliably in primary care.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-num">Step 6</div>
+  <div class="node-head">
+    <h3>Refer — Referral Criteria, MDT & Safeguarding</h3>
+    <span class="node-tag">Refer</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Faltered growth is managed by a multidisciplinary team. Know when to refer urgently, involve paediatrics, or refer to social care.
+    <div class="kv">
+      <div><span class="pill pill-red">999 / Same-day admission</span></div><div>Acutely unwell, dehydrated, or shocked child. Severe acute malnutrition (MUAC &lt;11.5cm). Bilious vomiting. Suspected sepsis. Immediate safeguarding concern (at-risk child).</div>
+      <div><span class="pill pill-red">Same-day paediatrics</span></div><div>Weight crossing ≥2 centile spaces downwards. Suspected organic cause: organomegaly, murmur + FTT, dysmorphic features. Severe parental anxiety with inability to feed. Child &lt;6 months with significant weight concern.</div>
+      <div><span class="pill pill-red">Safeguarding referral (Section 17/47)</span></div><div>Suspected neglect or non-accidental injury. Unexplained bruising. Family not engaging with health services. Multiple children affected. Parental substance misuse affecting child's care. Contact Children's Social Care and document. Follow RCPCH / local safeguarding pathway.</div>
+      <div><span class="pill pill-purple">Routine paediatrics</span></div><div>Persistent faltered growth (≥3 months) despite dietary intervention + community support. Suspected coeliac, CF, IBD, or other organic cause. Dysmorphic features. Growth hormone deficiency suspected (short stature + poor velocity).</div>
+      <div><span class="pill pill-purple">Paediatric dietitian</span></div><div>All children with confirmed faltered growth. Dietary assessment + caloric fortification plan. Feeding behaviour specialist. Essential MDT member.</div>
+      <div><span class="pill pill-blue">Community / primary care MDT</span></div><div>Health visitor (primary support in infants — feeding observation, home visit). CAMHS (if ARFID, feeding aversion, maternal mental health). Speech and language therapy (swallowing difficulties, oral motor issues). Children's centre / family support worker (social support, food poverty).</div>
+      <div><span class="pill pill-grey">Primary care manage</span></div><div>Mild faltered growth + adequate caloric intake + normal examination + no organic symptoms → dietary advice, health visitor support, re-weigh 2–4 weeks. Ensure Healthy Start vouchers, food bank referral if food insecurity.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Faltered growth is a quintessential MDT problem — no single professional can manage it effectively alone. The health visitor is the most important primary care professional in infant faltered growth — they have the frequency of contact, the home visiting capability, and the feeding expertise that GPs lack. The GP role is to exclude organic disease, identify safeguarding concerns, and coordinate the MDT. NICE CG37 recommends that paediatric referral should be made when there is: organic disease suspected, weight consistently below 0.4th centile, weight crossing ≥2 centile spaces, or concern about neglect. Safeguarding referral must be made where neglect is suspected — Section 17 (child in need) for support, Section 47 (child protection) where significant harm is suspected. GPs have a legal duty to refer under the Children Act 1989. Delay in safeguarding referral is a recurring finding in serious case reviews.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-num">Step 7</div>
+  <div class="node-head">
+    <h3>Treat — Nutritional Intervention & Medical Management</h3>
+    <span name="node-tag" class="node-tag">Treat</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    The primary treatment for most faltered growth is increasing caloric intake. Treat the underlying cause where identified.
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Breastfed infant — supply concern</div>
+        <div class="b-drug">Feeding support <span class="pill pill-teal">Immediate</span></div>
+        <div class="b-note">Refer to IBCLC lactation consultant. Check latch, positioning, tongue tie. Increase feeding frequency (8–12 feeds/day). Supplementary expressed breast milk or formula if acute concern. Do not recommend formula without breastfeeding support first.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Formula-fed infant — inadequate volume</div>
+        <div class="b-drug">Optimise volume + caloric density <span class="pill pill-teal">Dietitian-led</span></div>
+        <div class="b-note">Check preparation (standard 1 scoop:30ml). Ensure adequate volume for weight (150–200ml/kg/day in infants). High-calorie formula (e.g. Infatrini, SMA High Energy) if poor volume tolerance — with dietitian guidance.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Older child — poor intake</div>
+        <div class="b-drug">Caloric fortification <span class="pill pill-teal">Dietitian-led</span></div>
+        <div class="b-note">Add fat/calorie-dense foods: butter, cream, cheese, peanut butter to existing meals. Small frequent meals (6–8/day). Oral nutritional supplements (Paediasure, Fortini) if caloric enrichment alone inadequate — prescribe on FP10.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Organic cause identified</div>
+        <div class="b-drug">Treat underlying condition <span class="pill pill-teal">Specialist-led</span></div>
+        <div class="b-note">Coeliac: strict gluten-free diet (dietitian). CF: CREON (pancreatic enzyme replacement), high-calorie diet, physiotherapy. Hypothyroidism: levothyroxine. IBD: specialist escalation. Cardiac: cardiological management.</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Dietary assessment + caloric enrichment:</b> Dietitian-calculated caloric target (120–150% estimated average requirement for age). Calorie-dense food additions to existing diet. Structured meal routine.</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Oral nutritional supplements (ONS):</b> Paediasure 1.0 kcal/ml (1–10 years) or Fortini (1–10 years, 1.5 kcal/ml). Prescribe on FP10 if dietitian confirms inadequate intake. Do not replace meals — supplement between meals.</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Nasogastric / gastrostomy feeding:</b> If oral feeding inadequate or child unable to meet nutritional requirements despite ONS. Inpatient initiation of NG feeds. Gastrostomy (PEG) for long-term requirements (neurodisability, CF, complex cardiac). Secondary care decision.</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Treat organic cause:</b> Coeliac → gluten-free diet + dietitian. CF → enzyme replacement (Creon) + high-energy diet + chest physiotherapy. Hypothyroidism → levothyroxine. Coordinate with specialist team.</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Caloric enrichment (adding fat and protein to existing foods) is more effective and better tolerated than volume increases for most children with faltered growth — it avoids overwhelming small appetites. The standard dietary target for catch-up growth is 120–150% of the estimated average requirement for chronological age, though this is guided by the dietitian based on the child's specific needs. Oral nutritional supplements can be prescribed on FP10 (NHS prescription) when a dietitian has confirmed inadequate intake — they should supplement, not replace, normal foods, as children who rely on supplements can develop feeding aversion. Pancreatic enzyme replacement (Creon) for CF must be given with every meal and snack — undertreatment causes malabsorption and persistent faltered growth despite adequate intake. For coeliac disease, strict gluten-free diet (not just low-gluten) is essential — even small amounts of gluten cause ongoing villous atrophy and malabsorption.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-num">Step 8</div>
+  <div class="node-head">
+    <h3>Lifestyle — Family Support, Feeding Environment & Social Interventions</h3>
+    <span class="node-tag">Lifestyle</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Social, environmental, and behavioural interventions are as important as nutritional advice and must not be treated as afterthoughts.
+    <div class="lsgrid">
+      <div class="lstile"><b>Structured mealtimes</b>3 meals + 2–3 snacks/day at regular times. No grazing. Sit at table together as a family. Meals &lt;30 minutes — remove food without comment if not eaten. Reduces mealtime anxiety.</div>
+      <div class="lstile"><b>Reduce pressure at mealtimes</b> Responsive feeding approach: let child lead hunger cues. Avoid force-feeding, bribing, or coaxing — increases food refusal. Division of responsibility: parent decides what/when/where; child decides how much.</div>
+      <div class="lstile"><b>Screen-free mealtimes</b> Remove screens (TV, tablets, phones) during meals. Distractions impair hunger awareness and meal duration. Positive association with mealtimes reduces long-term feeding difficulties.</div>
+      <div class="lstile"><b>Food security support</b> Assess eligibility: Healthy Start vouchers (pregnacy / children under 4 on income support — £8.50/week). Free School Meals. Food banks. Universal Credit. Citizens Advice Bureau referral. Do not assume — always ask.</div>
+      <div class="lstile"><b>Maternal mental health</b> PND affects feeding interaction and responsiveness. PHQ-9 / Edinburgh Postnatal Depression Scale (EPDS). Refer for psychological support — NHS Talking Therapies/CAMHS. Improving maternal mental health improves infant growth.</div>
+      <div class="lstile"><b>Health visitor support</b> Regular home visits for feeding observation and practical support. Can attend mealtimes. Key community support professional. Ensure referral made and follow-up agreed.</div>
+      <div class="lstile"><b>Cooking skills / food preparation support</b> Refer to children's centre cooking classes. Sure Start / Family Support Worker for practical food preparation help. Avoid judgemental advice — focus on practical support.</div>
+      <div class="lstile"><b>Vitamin supplementation</b> All children 6 months–5 years: vitamin A, C, D (Healthy Start vitamins — free if eligible, cheap OTC otherwise). Vitamin D 400 IU/day in infants not taking 500ml formula/day (per NICE). Address rickets risk.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The "division of responsibility" in feeding (Ellyn Satter model) is evidence-based — parents control what food is offered, when, and where; the child controls whether and how much they eat. Pressure-based feeding strategies (coaxing, bribing, force) reliably worsen food refusal and increase mealtime anxiety, causing a negative cycle. Reducing pressure, even when a child is failing to thrive, produces better long-term outcomes than pressure-based approaches. Maternal postnatal depression affects feeding responsiveness — mothers with depression are less likely to recognise infant hunger cues, feed responsively, or persist with breastfeeding. Treating maternal mental health is a direct intervention for infant growth. Food poverty is a structural issue affecting 1 in 5 UK children — practical social support (food banks, Healthy Start vouchers, benefit entitlement checks) is a clinical intervention, not a social nicety. NICE CG37 explicitly recommends addressing social determinants of growth faltering as part of clinical management.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-num">Step 9</div>
+  <div class="node-head">
+    <h3>Safety — Monitoring, Follow-Up & Safety-Netting</h3>
+    <span class="node-tag">Safety</span>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Growth monitoring must be structured with clear escalation criteria. Avoid excessive weighing, which increases parental anxiety without improving outcomes.
+    <div class="kv">
+      <div>Weighing frequency</div><div>Infants &lt;6 months: no more than once/week unless acute concern. 6–12 months: fortnightly. &gt;12 months: monthly. <span class="pill pill-amber">Over-frequent weighing increases parental anxiety and does not improve outcomes (NICE CG37)</span></div>
+      <div>1–2 weeks</div><div>Ensure health visitor has made home visit. Feeding support in place. Dietitian referral made if caloric enrichment recommended. Check family engagement with services.</div>
+      <div>4 weeks</div><div>Reweigh: expected catch-up weight gain should be &gt;2× expected weight gain for age. If no catch-up → reassess, escalate to paediatrics. Review any investigation results (coeliac serology, FBC).</div>
+      <div>3 months</div><div>If no improvement in growth trajectory despite adequate intervention → urgent paediatric referral. Review safeguarding concerns if family not engaging. Reassess for organic cause if not yet excluded.</div>
+      <div>Catch-up growth criteria</div><div>Successful catch-up: weight crosses centile lines upward, returns toward expected centile. Expected: 6–12 weeks of adequate nutrition before catch-up begins. <span class="pill pill-green">Do not stop intervention when weight improves — maintain until growth trajectory stable</span></div>
+      <div><span class="pill pill-red">Safety-net 999</span></div><div>Acutely unwell, drowsy, or not responding. Signs of dehydration or shock. Severe nutritional compromise (MUAC &lt;11.5cm). Suspicion of immediate physical harm.</div>
+      <div><span class="pill pill-red">Safety-net same-day</span></div><div>Child stops feeding / refuses all food suddenly. Acute weight loss. New illness symptoms (fever, vomiting, diarrhoea). Parental concern unable to cope / risk of harm.</div>
+      <div><span class="pill pill-amber">Safeguarding trigger</span></div><div>Family repeatedly failing to attend follow-up appointments. No improvement despite apparent adequate support. New safeguarding concerns emerging. If uncertain — discuss with Named GP for Safeguarding or LADO.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The frequency of monitoring should be tailored to severity and risk — NICE CG37 explicitly warns against over-frequent weighing, which creates parental anxiety and a medicalization of normal infant weight variation without improving outcomes. Catch-up growth (crossing centiles upward) typically begins 6–12 weeks after adequate nutritional intervention — do not expect immediate centile catches. Non-engagement with follow-up in the context of faltered growth is a safeguarding signal — it must be escalated rather than simply documented as "did not attend." Documenting safeguarding concerns contemporaneously (date, time, observations, who was present, what was said) is legally important and protects both the child and the clinician. The RCPCH Growth Chart guidelines recommend that growth monitoring should be part of a structured plan with clear escalation criteria documented at each review — "safety-netting" must be specific and recorded.</div>
+  </div>
+</div>
+
+</div><!-- end alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG75 (Faltering growth 2017) · RCPCH UK-WHO Growth Charts · Working Together to Safeguard Children 2023 · NICE PH11 (Improving nutrition in under 5s) · Ellyn Satter Institute (Division of Responsibility in Feeding) · British Dietetic Association Paediatric Group · NHS Healthy Start Programme. Always adapt to individual patient context and local pathways. Safeguarding decisions should follow local procedures and involve the Named GP for Safeguarding.
+</div>
+
+<script>
+(function(){
+  const KEY='rgp.alg.falteredgrowth.v1';
+  const boxes=document.querySelectorAll('.node-tick input[type=checkbox]');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=boxes.length;
+  document.getElementById('pTotal').textContent=total;
+  function save(){const state=[...boxes].map(b=>b.checked);localStorage.setItem(KEY,JSON.stringify(state));}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach((b,i)=>{if(s[i])b.checked=true;});}catch(e){}}
+  function update(){
+    let done=0;
+    boxes.forEach(b=>{
+      const node=b.closest('.node');
+      if(b.checked){done++;node.classList.add('done');b.closest('label').querySelector('.tlbl').textContent='Done ✓';}
+      else{node.classList.remove('done');b.closest('label').querySelector('.tlbl').textContent='Done';}
+    });
+    pDone.textContent=done;pFill.style.width=((done/total)*100)+'%';
+  }
+  load();update();
+  boxes.forEach(b=>b.addEventListener('change',()=>{save();update();}));
+  document.getElementById('resetBtn').addEventListener('click',()=>{boxes.forEach(b=>{b.checked=false;});localStorage.removeItem(KEY);update();});
+  document.querySelectorAll('.why-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!expanded));
+      btn.nextElementSibling.classList.toggle('open',!expanded);
+    });
+  });
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

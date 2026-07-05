@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anxiety &amp; Depression (Palliative) — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Palliative anxiety and depression management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🕊️",
+  title:"Anxiety & Depression in Palliative Care — Step-by-Step",
+  stemTitle:"Mood &amp; anxiety in palliative care &mdash; let prognosis guide the choice between an SSRI and a fast-acting option",
+  stemSub:"A practical protocol: distinguish understandable distress from a treatable disorder, address symptoms and psychosocial/spiritual needs, choose an antidepressant when prognosis allows time for it to work (mirtazapine if poor sleep/appetite), and use benzodiazepines for acute anxiety or when prognosis is short. GMEC Palliative Care 2025 / NICE.",
+  guideline:"GMEC 2025 · NICE",
+  glance:[
+    {lbl:"First", val:"Distress vs disorder", sub:"+ psychosocial support"},
+    {lbl:"Anxiety (episodic)", val:"Lorazepam 0.5–1 mg", sub:"0.5\u20131mg SL PRN"},
+    {lbl:"Depression (time)", val:"SSRI", sub:"sertraline / citalopram"},
+    {lbl:"Poor sleep/appetite", val:"Mirtazapine", sub:"15\u201330mg nocte"},
+    {lbl:"Short prognosis", val:"Faster options", sub:"benzo; consider steroid mood lift"},
+    {lbl:"Last days", val:"Midazolam SC", sub:"for distress/agitation"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Assess", title:"Distress vs treatable disorder; address the whole person",
+      blocks:[
+        {b:"kv", rows:[
+          ["Normalise","Sadness, fear and worry are understandable \u2014 not every patient needs a drug. But persistent low mood, anhedonia, hopelessness, or disabling anxiety is a treatable disorder."],
+          ["Screen","Consider mood/anxiety tools; ask directly. Assess risk (suicidal ideation) and capacity."],
+          ["Reversible / contributors","Uncontrolled symptoms (pain, breathlessness), steroids, hypercalcaemia, hypoactive delirium, akathisia, financial/spiritual distress."],
+          ["Holistic","Psychological support, counselling, chaplaincy/spiritual care, social work, carer support \u2014 often more valuable than medication."]
+        ]}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug · core", title:"Psychological & supportive care", blocks:[{b:"tiles", v:"life", items:[{t:"🗣️ Presence & listening", html:"Calm presence, listening, addressing fears and unfinished business often help more than drugs."},{t:"👪 Family & spiritual", html:"Involve family, chaplaincy/spiritual care and the palliative team; treat reversible causes (pain, breathlessness)."},{t:"🛏️ Environment", html:"Quiet, familiar surroundings, routine, and reassurance reduce distress."}]},{b:"why", html:"Psychological, social and spiritual support is first-line for distress at end of life \u2014 medication complements it, never replaces it."}]},
+    {t:"node", d:"drug", n:"3", tag:"Step 1 \u00b7 anxiety", title:"Anxiety \u2014 non-drug first, then anxiolytics",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"2a", title:"Non-drug + treat symptoms", when:"first",
+           html:"Relaxation, breathing techniques, address breathlessness/pain that drive panic; psychological support."},
+          {step:"2b", title:"Benzodiazepine for episodic anxiety", when:"acute / panic",
+           fromLabel:"distressing anxiety",
+           html:"<b>Lorazepam 0.5\u20131mg sublingual PRN</b> (fast). For persistent anxiety, a regular low dose short-term, or diazepam 2mg if longer action wanted."},
+          {step:"2c", title:"SSRI for sustained anxiety", when:"prognosis allows",
+           fromLabel:"weeks\u2013months prognosis",
+           html:"An SSRI (sertraline/citalopram) for generalised anxiety if there's time for it to work (2\u20134 weeks)."},
+          {step:"2d", title:"Last days", when:"short prognosis",
+           fromLabel:"unable to swallow / dying",
+           html:"<b>Midazolam 2.5\u20135mg SC PRN</b> / CSCI for anxiety-related distress in the last days (see Care of the Dying)."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"4", tag:"Step 2 \u00b7 depression", title:"Depression \u2014 choose by prognosis & symptoms",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"3a", title:"SSRI (prognosis > a few weeks)", when:"time for onset",
+           html:"<b>Sertraline 50mg</b> or <b>citalopram 20mg</b> (max 20mg if elderly/QT) \u2014 first-line when there's time for the 2\u20134 week onset."},
+          {step:"3b", title:"Mirtazapine if poor sleep/appetite", when:"insomnia / anorexia / nausea",
+           fromLabel:"symptom overlap",
+           html:"<b>Mirtazapine 15\u201330mg nocte</b> \u2014 sedating + appetite-stimulating + antiemetic; ideal where insomnia, weight loss or nausea coexist."},
+          {step:"3c", title:"Short prognosis", when:"weeks or less",
+           fromLabel:"no time for an antidepressant",
+           html:"Consider a <b>psychostimulant</b> (e.g. methylphenidate \u2014 specialist) for rapid mood/energy lift, a corticosteroid's transient mood effect, and prioritise psychological/spiritual support."}
+        ]},
+        {b:"warn", html:"Watch for <b>akathisia</b> (drug-induced restlessness) and ensure low mood isn't actually <b>hypoactive delirium</b> or uncontrolled symptoms. Assess suicide risk; escalate urgently if significant."}
+      ]},
+    {t:"node", d:"monitor", n:"5", tag:"Review", title:"Review & safety-net",
+      blocks:[
+        {b:"kv", rows:[
+          ["Review","Reassess at 1\u20132 weeks (sooner if high risk) for response, side effects, akathisia, and ongoing risk."],
+          ["Psychosocial","Keep psychological, social and spiritual support running alongside any drug."]
+        ]}
+      ]},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net · anticipatory", title:"When carers should call", blocks:[{b:"tiles", v:"safety", items:[{t:"📞 Escalating distress", html:"Severe agitation, suicidal ideation, or distress not responding to the plan → contact the palliative team/out-of-hours."},{t:"💊 Anticipatory meds", html:"Ensure anticipatory medications are prescribed and carers know how/when to use them."},{t:"🔄 Review reversible causes", html:"Sudden change → reassess for pain, retention, hypercalcaemia, infection or drug causes."}]}]},
+    {t:"node", d:"refer", n:"7", tag:"Refer", title:"When to refer",
+      arrow:"risk or complexity",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Urgent mental health", html:"Significant suicide risk, psychotic depression, or severe refractory symptoms."},
+          {t:"Specialist palliative care / psychology", html:"Complex distress, existential/spiritual suffering, or refractory anxiety/depression."},
+          {t:"Psychiatry of old age / liaison", html:"Diagnostic uncertainty (depression vs delirium vs dementia)."}
+        ]},
+        {b:"say", html:"It's completely understandable to feel low or anxious facing this \u2014 and there's a lot we can do, from talking support to medication. If we've got time, an antidepressant can really help; if things are more immediate, we'll use something faster-acting, and you'll have support around you throughout."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

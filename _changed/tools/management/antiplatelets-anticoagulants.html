@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Antiplatelets &amp; Anticoagulants — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Antiplatelets and anticoagulants management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🩸",
+  title:"Antiplatelets & Anticoagulants — Prescribing Guide",
+  stemTitle:"Antithrombotics &mdash; which agent, for which indication, for how long, and how to manage around bleeding and surgery",
+  stemSub:"A practical prescribing protocol: pick the right antiplatelet regimen and duration after ACS/PCI/stroke, choose a DOAC for AF and VTE at the correct dose, gastroprotect and manage bleeding risk, and handle the peri-procedural stop/restart \u2014 with named drugs and doses. NICE NG196/NG158/NG128 \u00b7 BNSSG/BSH.",
+  guideline:"NICE NG196/NG158/NG128 \u00b7 BSH",
+  glance:[
+    {lbl:"ACS / PCI DAPT", val:"Aspirin + ticagrelor", sub:"2nd agent 12 months (per cardiology)"},
+    {lbl:"Long-term single", val:"Aspirin 75mg (cardiac)", sub:"clopidogrel for stroke/TIA/PAD"},
+    {lbl:"AF stroke prevention", val:"Apixaban 5mg BD", sub:"DOAC first-line; CHA\u2082DS\u2082-VASc"},
+    {lbl:"VTE", val:"Apixaban 10mg BD \u00d77d", sub:"then 5mg BD; review at 3 months"},
+    {lbl:"Peri-procedural DOAC", val:"Stop 24h, restart 6h", sub:"low-bleed-risk surgery"},
+    {lbl:"Bleeding risk", val:"ORBIT / fix modifiables", sub:"don't withhold for high score alone"}
+  ],
+  flow:[
+
+    {t:"node", d:"found", n:"1", tag:"Before you prescribe", title:"Confirm indication, who set the duration, and bleeding risk",
+      blocks:[
+        {b:"kv", rows:[
+          ["Confirm the indication","Antiplatelet (arterial: ACS, post-PCI/CABG, stroke/TIA, PAD) vs anticoagulant (AF, VTE, mechanical valve). They are <b>not</b> interchangeable."],
+          ["Respect specialist durations","DAPT and post-ACS second-agent durations are set by cardiology on the <b>discharge summary</b> \u2014 don't shorten/stop without consulting them; query if the duration isn't stated."],
+          ["Assess bleeding risk","Use <b>ORBIT</b> (or HAS-BLED) for AF \u2014 to <b>identify and fix modifiable factors</b> (BP, alcohol, concurrent NSAID/antiplatelet, labile INR), <b>not</b> to withhold anticoagulation."],
+          ["Single prescriber clarity","Be clear who owns the antithrombotic plan; reconcile hospital-initiated agents promptly."],
+          ["Gastroprotect if indicated","Add a PPI where GI-bleed risk is raised (prior ulcer/bleed, elderly, DAPT, on NSAID/SSRI/steroid/anticoagulant) \u2014 see PPI pathway; <b>avoid omeprazole/esomeprazole with clopidogrel</b> (use lansoprazole/pantoprazole)."]
+        ]},
+        {b:"warn", html:"<b>Never combine an antiplatelet + anticoagulant (or dual/triple therapy) long-term without a specialist plan</b> \u2014 bleeding risk multiplies. Triple therapy (e.g. post-PCI in AF) is time-limited and cardiology-directed."}
+      ]},
+
+    {t:"node", d:"life", n:"2", tag:"Non-drug · safety", title:"Bleeding-risk & adherence", blocks:[{b:"tiles", v:"life", items:[{t:"🩹 Bleeding awareness", html:"Counsel on bleeding signs (melaena, haematuria, prolonged bleeding) and when to seek help; carry an alert card."},{t:"💊 Adherence & interactions", html:"Stress adherence (esp. short-half-life DOACs); review OTC NSAIDs/aspirin and interacting drugs."},{t:"🍷 Lifestyle", html:"Moderate alcohol, falls reduction in elderly, plan around dental/surgical procedures."}]},{b:"why", html:"Safe antithrombotic therapy depends on non-drug factors \u2014 adherence, avoiding interacting OTC NSAIDs, falls reduction and knowing the bleeding red flags."}]},
+    {t:"node", d:"drug", n:"3", tag:"Step 1 \u00b7 antiplatelets", title:"Antiplatelet regimens & durations by indication",
+      blocks:[
+        {b:"table", head:["Indication","Regimen","Duration"], rows:[
+          ["ACS (NSTEMI/STEMI/unstable angina)","Aspirin 75mg OD + ticagrelor 90mg BD (or clopidogrel 75mg OD or prasugrel)","2nd agent 12 months (per discharge); aspirin indefinitely"],
+          ["PCI with drug-eluting stent","Aspirin 75mg OD + clopidogrel 75mg OD","Clopidogrel \u2265 6 months (12 if recent ACS); aspirin indefinitely"],
+          ["CABG","Aspirin 75mg OD + clopidogrel 75mg OD","Clopidogrel 12 months; aspirin indefinitely"],
+          ["Long-term after cardiac event","Single antiplatelet \u2014 aspirin 75mg OD","Indefinite (clopidogrel if aspirin intolerant)"],
+          ["Stroke / TIA / PAD (long-term)","Clopidogrel 75mg OD","Indefinite (it's the preferred single agent here, not aspirin)"]
+        ]},
+        {b:"kv", rows:[
+          ["Higher-risk ACS","A small cohort continues ticagrelor 60mg BD beyond 12 months (up to 36) \u2014 secondary-care directed."],
+          ["Aspirin intolerant","Long-term single agent becomes clopidogrel."],
+          ["PAD / multivascular disease","Clopidogrel 75mg OD (low-dose aspirin if clopidogrel C/I)."]
+        ]},
+        {b:"why", html:"The single most important rule: the <strong>second antiplatelet's duration is a cardiology decision</strong> tied to the stent/event. Stopping DAPT early risks stent thrombosis; continuing it too long risks bleeding. Always go by the discharge summary and query gaps."}
+      ]},
+
+    {t:"node", d:"drug", n:"4", tag:"Step 2 \u00b7 stroke/TIA antiplatelets", title:"Acute stroke & TIA antiplatelet loading",
+      blocks:[
+        {b:"table", head:["Scenario","Regimen"], rows:[
+          ["High-risk TIA (\u22652 in 24h, or crescendo)","Aspirin 300mg + clopidogrel 300mg STAT \u2192 aspirin 75mg + clopidogrel 75mg for 21 days \u2192 clopidogrel 75mg long-term (specialist-led DAPT)"],
+          ["Minor ischaemic stroke (NIHSS \u22643, <48h)","Aspirin 300mg + clopidogrel 300mg STAT \u2192 dual for 21 days \u2192 clopidogrel 75mg long-term"],
+          ["Standard TIA / major stroke","Aspirin 300mg OD for 2 weeks \u2192 clopidogrel 75mg OD long-term"],
+          ["Clopidogrel intolerant","Aspirin 75mg + dipyridamole MR 200mg BD; if both intolerant, dipyridamole MR monotherapy; else aspirin alone"]
+        ]},
+        {b:"warn", html:"Short-course DAPT after high-risk TIA / minor stroke is <b>specialist-initiated</b> and time-limited (21 days) \u2014 confirm exclusion of haemorrhage on imaging first. Don't start dual therapy in primary care without the stroke team."}
+      ]},
+
+    {t:"node", d:"drug", n:"5", tag:"Step 3 \u00b7 anticoagulation (AF)", title:"DOAC first-line for AF \u2014 choose & dose correctly",
+      blocks:[
+        {b:"p", html:"Anticoagulate AF when <b>CHA\u2082DS\u2082-VASc \u22652 (men) / \u22653 (women)</b> \u2014 consider if score 1 (men). <b>A DOAC is first-line</b> over warfarin (NICE NG196). Pick one and dose-adjust for renal function/age/weight."},
+        {b:"table", head:["DOAC","Standard AF dose","Reduced dose when\u2026"], rows:[
+          ["Apixaban (Eliquis\u00ae)","5mg BD","2.5mg BD if \u22652 of: age \u226580, \u226460kg, creatinine \u2265133\u00b5mol/L"],
+          ["Rivaroxaban (Xarelto\u00ae)","20mg OD with food","15mg OD if CrCl 15\u201349"],
+          ["Edoxaban (Lixiana\u00ae)","60mg OD","30mg OD if \u226460kg, CrCl 15\u201350, or potent P-gp inhibitor"],
+          ["Dabigatran (Pradaxa\u00ae)","150mg BD","110mg BD if \u226580y or on verapamil"]
+        ]},
+        {b:"kv", rows:[
+          ["Warfarin / LMWH instead","Reserve for where DOACs are contraindicated/unsuitable: <b>mechanical heart valve</b>, <b>moderate\u2013severe mitral stenosis</b>, antiphospholipid syndrome (triple-positive), severe renal impairment (CrCl &lt;15), pregnancy."],
+          ["Baseline checks","FBC, U&amp;E/CrCl, LFTs, weight; review interacting drugs. Don't combine routinely with antiplatelets."],
+          ["Valvular AF","Mechanical valve / significant mitral stenosis \u2192 warfarin (target INR per valve)."]
+        ]},
+        {b:"why", html:"DOACs need no routine INR monitoring, have fewer interactions than warfarin and at least equivalent efficacy with less intracranial bleeding \u2014 hence first-line. The dose-reduction criteria are drug-specific and frequently mis-applied; check them at every annual review as renal function changes."}
+      ]},
+
+    {t:"node", d:"drug", n:"6", tag:"Step 4 \u00b7 anticoagulation (VTE)", title:"DOAC for DVT/PE \u2014 loading & duration",
+      blocks:[
+        {b:"table", head:["DOAC","Loading","Maintenance"], rows:[
+          ["Apixaban","10mg BD for 7 days","5mg BD"],
+          ["Rivaroxaban","15mg BD for 21 days","20mg OD with food"],
+          ["Edoxaban / dabigatran","\u22655 days LMWH first","then edoxaban 60mg OD / dabigatran 150mg BD"]
+        ]},
+        {b:"table", head:["VTE type","Duration"], rows:[
+          ["Provoked (transient factor removed)","3 months (3\u20136 months) then stop"],
+          ["Unprovoked","\u22653 months; consider indefinite after risk/benefit (assess bleeding risk)"],
+          ["Active cancer","DOAC or LMWH, continue while cancer active (\u22653\u20136 months)"],
+          ["Recurrent / antiphospholipid","Long-term; APS (triple-positive) \u2192 warfarin"]
+        ]},
+        {b:"warn", html:"Reassess at the planned end date \u2014 don't let a 3-month course drift into indefinite anticoagulation without an explicit unprovoked/recurrent indication and a bleeding-risk discussion."}
+      ]},
+
+    {t:"node", d:"safety", n:"7", tag:"Step 5 \u00b7 bleeding & side effects", title:"Manage bleeding, gastroprotection & monitoring",
+      blocks:[
+        {b:"table", head:["Problem","What to do"], rows:[
+          ["Minor bleeding / bruising","Reassure; review modifiable factors (NSAID, alcohol, BP); rarely need to stop"],
+          ["GI symptoms / dyspepsia","Add PPI (lansoprazole/pantoprazole if on clopidogrel); review need for antiplatelet"],
+          ["Major / life-threatening bleed","Stop drug; resuscitate; reversal \u2014 <b>idarucizumab</b> (dabigatran), <b>andexanet alfa</b> (apixaban/rivaroxaban), <b>PCC + vitamin K</b> (warfarin); urgent admission"],
+          ["Recurrent bleeding","Reassess indication/dose; treat source (e.g. endoscopy); specialist review of agent choice"],
+          ["Monitoring","DOAC: U&amp;E/FBC/LFT + weight at least annually (more often if renal impairment/elderly). Warfarin: INR per anticoag service"]
+        ]},
+        {b:"warn", html:"<b>Don't co-prescribe NSAIDs</b> with antiplatelets/anticoagulants where avoidable. Falls risk alone is rarely a reason to withhold anticoagulation in AF \u2014 the stroke-prevention benefit usually outweighs it."}
+      ]},
+
+    {t:"node", d:"monitor", n:"8", tag:"Step 6 \u00b7 around surgery", title:"Peri-procedural stop / restart (minor surgery)",
+      blocks:[
+        {b:"p", html:"Balance the <b>bleeding risk of the procedure</b> against the <b>thrombotic risk of stopping</b> \u2014 involve the original prescriber for high thrombotic risk (recent stent/ACS, mechanical valve)."},
+        {b:"table", head:["Drug","Stop before","Restart"], rows:[
+          ["Apixaban / dabigatran / edoxaban","\u226524h before (low-bleed-risk procedure)","6h after"],
+          ["Rivaroxaban","Just before next dose due, or ~18\u201324h after last dose","6h after"],
+          ["Aspirin (secondary prevention)","Usually continue","\u2014"],
+          ["Clopidogrel / prasugrel","7 days before","24h after, if not bleeding"],
+          ["Ticagrelor","5 days before","24h after"],
+          ["Dipyridamole","2 days before (high-bleed-risk procedure)","\u2014"],
+          ["Warfarin","Liaise with anticoagulation service","Per service"]
+        ]},
+        {b:"warn", html:"<b>Do not stop antiplatelets within 4 weeks of a bare-metal stent or while on mandated DAPT after a drug-eluting stent</b> \u2014 discuss with cardiology. Renal/hepatic impairment lengthens DOAC stop times; seek advice."}
+      ]},
+
+    {t:"loop", icon:"\uD83D\uDD01", title:"Unsure whether to start / stop / switch? Re-check",
+      arrow:"\u2026when in doubt, ask the original prescriber",
+      intro:"Most antithrombotic errors are wrong duration, wrong dose for renal function, or stopping a specialist-mandated agent.",
+      checks:[
+        {b:"1 \u00b7 Indication", html:"Arterial (antiplatelet) vs AF/VTE (anticoagulant) \u2014 right class?"},
+        {b:"2 \u00b7 Duration", html:"Is the DAPT/second-agent duration specialist-set? Check the discharge summary."},
+        {b:"3 \u00b7 Dose", html:"DOAC dose correct for age/weight/renal function? Re-check at annual review."},
+        {b:"4 \u00b7 Bleeding", html:"Modifiable bleeding factors fixed? Gastroprotection needed?"},
+        {b:"5 \u00b7 Procedure", html:"Stop/restart timed correctly; stent/valve thrombotic risk considered?"}
+      ],
+      back:"Recent stent/ACS, mechanical valve, triple therapy, or major bleeding \u2192 specialist"},
+
+    {t:"node", d:"refer", n:"9", tag:"Refer / discuss", title:"When to involve cardiology, haematology or anticoag services",
+      arrow:"high thrombotic or bleeding complexity",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Cardiology", html:"Any change to specialist-mandated DAPT, recent stent/ACS needing surgery, or triple therapy (AF + recent PCI)."},
+          {t:"Anticoagulation service", html:"Warfarin peri-procedural bridging, unstable INR, or switching warfarin\u2194DOAC."},
+          {t:"Haematology", html:"Antiphospholipid syndrome, unexplained recurrent VTE/bleeding, thrombophilia, or DOAC use in extremes of weight/renal impairment."},
+          {t:"Emergency", html:"Major or life-threatening bleeding \u2192 admit for reversal; intracranial bleed on antithrombotic \u2192 999."}
+        ]},
+        {b:"say", html:"This medicine lowers your risk of a clot/stroke, and the main trade-off is a higher chance of bleeding \u2014 so we'll use the right dose for your kidneys and weight, add stomach protection if needed, and have a clear plan for stopping it safely around any operations or dental work."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

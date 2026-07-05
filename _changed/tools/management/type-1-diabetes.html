@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Type 1 Diabetes — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Type 1 diabetes management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🩸",
+  title:"Type 1 Diabetes",
+  stemTitle:"Confirmed Type 1 Diabetes — primary-care role in shared care",
+  stemSub:"The GP\u2019s part in established T1DM under specialist care \u2014 supporting insulin self-management and structured education, the annual complication-screening bundle, and the DKA and hypoglycaemia safety nets. NICE NG17 \u00b7 2026.",
+  guideline:"NICE NG17",
+  glance:[
+    {lbl:"Care model", val:"Specialist-led", sub:"shared care"},
+    {lbl:"Insulin", val:"Basal\u2013bolus", sub:"MDI or pump"},
+    {lbl:"Education", val:"DAFNE-type", sub:"carb counting"},
+    {lbl:"HbA1c", val:"\u226448", sub:"individualised"},
+    {lbl:"Annual", val:"Complication screen", sub:"eyes/feet/renal"},
+    {lbl:"Never", val:"Stop insulin", sub:"DKA risk"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm care structure and targets",
+      blocks:[
+        {b:"kv", rows:[
+          ["Care model","Lifelong, specialist-led; GP supports monitoring, screening, acute illness, comorbidity"],
+          ["Regimen","Basal\u2013bolus multiple daily injections (MDI) or insulin pump; structured education (DAFNE-type) + carbohydrate counting"],
+          ["Targets","HbA1c \u226448 mmol/mol if achievable safely; glucose/CGM time-in-range targets; individualise to avoid hypos"],
+          ["Technology","Continuous/flash glucose monitoring; pumps \u2014 specialist-initiated"]
+        ]},
+        {b:"why", html:"T1DM is an <strong>insulin-deficient</strong> condition \u2014 insulin is never optional, and the management is built on self-management skills (carb counting, dose adjustment) supported by specialists. The GP\u2019s recurring contributions are the annual complication-screening bundle, acute-illness support, and reinforcing the DKA/hypo safety rules."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 self-management", title:"Education, diet and daily living",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🎓 Structured education", html:"DAFNE-type course \u2014 carbohydrate counting and insulin dose adjustment."},
+          {t:"🍽️ Diet & exercise", html:"Match insulin to carbohydrate and activity; plan exercise (hypo risk)."},
+          {t:"🤒 Sick-day rules", html:"Never stop insulin when ill; monitor glucose + ketones; maintain fluids/carbs."},
+          {t:"🍬 Hypo plan", html:"Recognise/treat hypos; fast-acting then long-acting carbs; glucagon for severe."},
+          {t:"🚗 Driving", html:"DVLA rules \u2014 glucose checks before/while driving; carry fast carbs; report severe/disabling hypos."},
+          {t:"🧠 Psychological", html:"Support self-management burden; screen mood and disordered eating."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication", title:"Insulin regimens",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Standard", title:"Basal\u2013bolus (MDI)", when:"first-line",
+           html:"Long-acting basal insulin + rapid-acting bolus with meals, adjusted to carbohydrate, glucose and activity."},
+          {step:"Technology", title:"Insulin pump (CSII)", when:"specialist criteria",
+           fromLabel:"disabling hypos / target not met on MDI",
+           html:"Continuous subcutaneous insulin infusion via specialist, per NICE criteria; often with CGM (hybrid closed-loop)."},
+          {step:"Adjunct", title:"Metformin (selected)", when:"specialist consideration",
+           fromLabel:"high BMI / cardiometabolic risk",
+           html:"May be added in some adults with high BMI \u2014 specialist decision; insulin remains essential."}
+        ]},
+        {b:"warn", html:"<b>Insulin is never stopped</b> \u2014 omission precipitates DKA. SGLT2 inhibitors are <b>not</b> routinely recommended in T1DM in primary care (euglycaemic DKA risk)."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"The annual complication bundle",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["HbA1c / CGM data","3\u20136-monthly","Adjust regimen with specialist; review time-in-range"],
+          ["Retinal screening","Annually","National diabetic eye screening"],
+          ["Feet","Annually (urgent if active problem)","Risk-stratify; same-day for active foot disease"],
+          ["Renal (ACR + eGFR), BP, lipids","Annually","Treat as for CV/renal protection; ACEi/ARB if albuminuria"],
+          ["TFTs + coeliac","Per guidance","Associated autoimmune conditions"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"3\u20136-monthly", title:"Glycaemic review", html:"HbA1c/CGM, hypos, injection sites (lipohypertrophy), regimen with specialist."},
+          {n:"2", when:"Annual", title:"Structured annual review", html:"Full complication-screening bundle; CV risk; psychological wellbeing."},
+          {n:"3", when:"Acute illness / life events", title:"Targeted support", html:"Sick-day rules, pregnancy planning, technology changes."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Poor control? Support before escalating",
+      arrow:"\u2026if glucose control is poor",
+      intro:"Most control problems are education, technology, or psychosocial \u2014 not lack of insulin options.",
+      checks:[
+        {b:"1 \u00b7 Education", html:"Carb counting/dose adjustment skills refreshed (structured education)?"},
+        {b:"2 \u00b7 Technique / sites", html:"Injection technique and lipohypertrophy; rotate sites."},
+        {b:"3 \u00b7 Hypo fear", html:"Hypo unawareness or fear driving high targets \u2192 specialist + CGM."},
+        {b:"4 \u00b7 Psychosocial", html:"Mood, eating disorder, insulin omission \u2014 address sensitively."},
+        {b:"5 \u00b7 Technology", html:"Consider pump/CGM/closed-loop via specialist."}
+      ],
+      back:"Education + technique + psychosocial addressed \u2192 specialist team / technology"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 DKA", html:"\u201cVomiting, tummy pain, drowsiness, fast deep breathing, high glucose + ketones \u2014 call 999. Never stop insulin, even when not eating.\u201d"},
+          {t:"🍬 Severe hypo", html:"\u201cUnable to self-treat / unconscious \u2014 helpers should give glucagon and call 999; never force food into a drowsy person.\u201d"},
+          {t:"🤒 Sick-day rules", html:"\u201cWhen ill: keep taking insulin, check glucose and ketones more often, keep hydrated, and call if ketones rise.\u201d"},
+          {t:"🚗 Driving", html:"\u201cCheck glucose before and during driving; don\u2019t drive if hypo or unaware of hypos.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer / escalate",
+      arrow:"specialist-led throughout",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"DKA or severe hypoglycaemia \u2192 999 / admission."},
+          {t:"Technology / control", html:"Disabling hypos or HbA1c targets unmet \u2192 specialist for pump/CGM/closed-loop."},
+          {t:"Pregnancy / planning", html:"Pre-conception and pregnancy \u2192 joint specialist\u2013antenatal care (tight targets)."},
+          {t:"Complications", html:"Active foot disease (same-day), sight-threatening retinopathy, advancing nephropathy."},
+          {t:"Recurrent DKA / hypo", html:"Recurrent admissions \u2192 specialist + psychological support."}
+        ]},
+        {b:"say", html:"Your specialist team leads your insulin and technology, and our job here is to keep your yearly checks on track \u2014 eyes, feet, kidneys, blood pressure \u2014 and support you day to day. The golden rule: never stop your insulin, even when you\u2019re unwell."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

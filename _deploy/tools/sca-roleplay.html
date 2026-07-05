@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Role-Play Packs · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<style>
+.tool-page{ padding:28px 32px 80px; max-width:960px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+.tool-head{ padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:18px; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:34px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:6px; max-width:68ch; }
+
+.rp-how{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:18px; }
+@media (max-width:760px){ .rp-how{ grid-template-columns:1fr; } }
+.rp-how-c{ border:1px solid var(--line); border-radius:12px; background:#fff; padding:12px 15px; font-size:12.6px; line-height:1.55; color:var(--ink-2); }
+.rp-how-c b{ color:var(--ink); display:block; margin-bottom:3px; font-size:13px; }
+
+.rp-pick{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+.rp-case{ font:inherit; font-size:12.5px; font-weight:700; padding:8px 15px; border-radius:999px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; }
+.rp-case.sel{ background:#0c4a47; color:#f6f2e9; border-color:#0c4a47; }
+
+.rp-actions{ display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+.rp-print{ font:inherit; font-size:13px; font-weight:700; padding:10px 18px; border-radius:9px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; }
+.rp-print:hover{ border-color:var(--ink-2); color:var(--ink); }
+
+.rp-card{ border:1px solid var(--line); border-radius:14px; background:#fff; margin-bottom:18px; overflow:hidden; }
+.rp-card-hdr{ padding:13px 18px; border-bottom:1px solid var(--line); display:flex; gap:11px; align-items:center; }
+.rp-card-hdr .badge{ font-size:10px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; border-radius:999px; padding:3px 11px; }
+.rp-pt .rp-card-hdr{ background:#fffbeb; }
+.rp-pt .badge{ background:#fff; border:1px solid #fde68a; color:#92400e; }
+.rp-ex .rp-card-hdr{ background:#f0f5ff; }
+.rp-ex .badge{ background:#fff; border:1px solid #d8e3f8; color:#3f5c93; }
+.rp-card-hdr h2{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:18px; color:var(--ink); }
+.rp-card-hdr .warn{ margin-left:auto; font-size:11px; font-weight:700; color:#b91c1c; }
+.rp-body{ padding:16px 18px; }
+.rp-sec{ margin-bottom:14px; }
+.rp-sec-h{ font-size:11px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+.rp-sec p, .rp-sec li{ font-size:13px; line-height:1.6; color:var(--ink-2); }
+.rp-sec ul{ margin:0; padding-left:17px; }
+.rp-sec li{ margin-bottom:5px; }
+.rp-open{ font-family:'Source Serif 4',Georgia,serif; font-style:italic; font-size:14.5px; line-height:1.55; color:var(--ink); background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:11px 14px; }
+.rp-fact{ display:flex; gap:10px; border-bottom:1px dashed #f1f5f9; padding:6px 0; }
+.rp-fact .k{ flex-shrink:0; width:130px; font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); padding-top:2px; }
+.rp-fact .v{ flex:1; font-size:13px; line-height:1.55; color:var(--ink-2); }
+.rp-cue{ background:#fdf2f8; border:1px solid #fbcfe8; border-radius:9px; padding:8px 12px; font-size:12.8px; color:#9d174d; line-height:1.5; margin-bottom:6px; }
+.rp-cue b{ font-size:10px; letter-spacing:.07em; text-transform:uppercase; display:block; margin-bottom:2px; }
+
+.rp-chk{ display:flex; gap:9px; align-items:flex-start; border:1px solid var(--line); border-radius:9px; padding:8px 12px; margin-bottom:6px; font-size:12.8px; line-height:1.5; color:var(--ink-2); }
+.rp-chk .dom{ flex-shrink:0; font-size:9.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; border-radius:999px; padding:2px 8px; margin-top:1px; }
+.rp-chk .dom.tasks{ background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; }
+.rp-chk .dom.rto{ background:#fdf2f8; color:#be185d; border:1px solid #fbcfe8; }
+.rp-chk .dom.gs{ background:#fffbeb; color:#b45309; border:1px solid #fde68a; }
+.rp-chk .box{ flex-shrink:0; width:15px; height:15px; border:1.5px solid #94a3b8; border-radius:4px; margin-top:2px; }
+.rp-grades{ margin-top:14px; }
+.rp-grade-row{ display:flex; gap:8px; align-items:center; padding:7px 0; border-bottom:1px dashed #f1f5f9; }
+.rp-grade-row .gd{ flex:1; font-size:12.8px; font-weight:700; color:var(--ink); }
+.rp-grade-row .opts{ display:flex; gap:6px; font-size:11px; color:var(--muted); }
+.rp-grade-row .opts span{ border:1.5px solid #cbd5e1; border-radius:7px; padding:3px 9px; font-weight:700; }
+.rp-timeline{ font-size:12.3px; color:var(--muted); margin-top:8px; line-height:1.55; }
+
+@media print {
+  .sidebar, .sb-overlay, .tool-head, .rp-how, .rp-pick, .rp-actions, .rp-hide-print{ display:none !important; }
+  .app, .main{ display:block !important; }
+  .tool-page{ padding:0; max-width:none; }
+  body{ background:#fff; }
+  .rp-card{ border:1.5px solid #000; border-radius:8px; page-break-inside:avoid; }
+  body.print-pt .rp-ex{ display:none !important; }
+  body.print-ex .rp-pt{ display:none !important; }
+  .rp-pt{ page-break-after:always; }
+}
+</style>
+</head>
+<body>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-sca"></aside>
+  <main class="main">
+    <div class="tool-page">
+
+      <div class="tool-head">
+        <div class="tool-eyebrow">Reasoning GP · Practise with a partner</div>
+        <h1>Role-play <em>packs</em></h1>
+        <p>The gold standard of SCA preparation is still three people and a timer: one consults, one plays the patient, one marks. Every Hot Seat case as a printable two-card pack — a <b>patient card</b> with the script and the cues to plant, and an <b>examiner card</b> with the marking scheme. The candidate sees neither.</p>
+      </div>
+
+      <div class="rp-how">
+        <div class="rp-how-c"><b>1 · Candidate</b>Gets only the case title and the medical-record brief (in The Hot Seat, or read aloud by the examiner). 3 minutes to prepare, 12 to consult.</div>
+        <div class="rp-how-c"><b>2 · Patient</b>Prints the amber card. Plays it straight — answers what's asked, volunteers the opening line, and plants each cue once. Don't rescue the candidate.</div>
+        <div class="rp-how-c"><b>3 · Examiner</b>Prints the blue card. Ticks behaviours as they happen, grades the three domains at the buzzer, then debriefs: two strengths first, then one thing to change.</div>
+      </div>
+
+      <div class="rp-pick" id="rpPick"></div>
+
+      <div class="rp-actions">
+        <button class="rp-print" id="printBoth">🖨️ Print both cards</button>
+        <button class="rp-print" id="printPt">🖨️ Patient card only</button>
+        <button class="rp-print" id="printEx">🖨️ Examiner card only</button>
+      </div>
+
+      <div id="rpCards"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/sca-cases.js"></script>
+<script src="../assets/sca-extras.js?v=2"></script>
+<script src="../assets/sca-cases2.js?v=1"></script>
+<script src="../assets/sca-cases3.js?v=1"></script>
+<script src="../assets/sca-cases4.js?v=1"></script>
+<script src="../assets/sca-cases5.js?v=1"></script>
+<script src="../assets/sca-cases6.js?v=1"></script>
+<script src="../assets/sca-cases7.js?v=1"></script>
+<script src="../assets/sca-cases8.js?v=1"></script>
+<script src="../assets/sca-cases9.js?v=1"></script>
+<script src="../assets/sca-cases10.js?v=1"></script>
+<script src="../assets/sca-cases11.js?v=1"></script>
+<script src="../assets/sca-cases12.js?v=1"></script>
+<script src="../assets/sca-cases13.js?v=1"></script>
+<script src="../assets/sca-cases14.js?v=1"></script>
+<script src="../assets/sca-cases15.js?v=1"></script>
+<script src="../assets/sca-cases16.js?v=1"></script>
+<script src="../assets/sca-cases17.js?v=1"></script>
+<script src="../assets/sca-cases18.js?v=1"></script>
+<script src="../assets/sca-cases19.js?v=1"></script>
+<script src="../assets/sca-cases20.js?v=1"></script>
+<script src="../assets/sca-cases21.js?v=1"></script>
+<script src="../assets/sca-cases22.js?v=1"></script>
+<script src="../assets/sca-cases23.js?v=1"></script>
+<script src="../assets/sca-cases24.js?v=1"></script>
+<script src="../assets/sca-cases25.js?v=1"></script>
+<script src="../assets/sca-cases26.js?v=1"></script>
+<script src="../assets/sca-cases27.js?v=1"></script>
+<script src="../assets/sca-cases28.js?v=1"></script>
+<script src="../assets/sca-cases29.js?v=1"></script>
+<script src="../assets/sca-cases30.js?v=1"></script>
+<script src="../assets/sca-cases31.js?v=1"></script>
+<script src="../assets/sca-cases32.js?v=1"></script>
+<script src="../assets/sca-cases33.js?v=1"></script>
+<script src="../assets/sca-cases34.js?v=1"></script>
+<script src="../assets/sca-cases35.js?v=1"></script>
+<script src="../assets/sca-cases36.js?v=1"></script>
+<script src="../assets/sca-cases37.js?v=1"></script>
+<script src="../assets/sca-cases38.js?v=1"></script>
+<script src="../assets/sca-cases39.js?v=1"></script>
+<script src="../assets/sca-cases40.js?v=1"></script>
+<script src="../assets/sca-cases41.js?v=1"></script>
+<script src="../assets/sca-cases42.js?v=1"></script>
+<script src="../assets/sca-cases43.js?v=1"></script>
+<script src="../assets/sca-cases44.js?v=1"></script>
+<script src="../assets/sca-cases45.js?v=1"></script>
+<script src="../assets/sca-cases46.js?v=1"></script>
+<script src="../assets/sca-cases47.js?v=1"></script>
+<script src="../assets/sca-cases48.js?v=1"></script>
+<script src="../assets/sca-cases49.js?v=1"></script>
+<script src="../assets/sca-cases50.js?v=1"></script>
+<script src="../assets/sca-cases51.js?v=1"></script>
+<script src="../assets/sca-cases52.js?v=1"></script>
+<script src="../assets/sca-cases53.js?v=1"></script>
+<script src="../assets/sca-cases54.js?v=1"></script>
+<script src="../assets/sca-cases55.js?v=1"></script>
+<script src="../assets/sca-cases56.js?v=1"></script>
+<script src="../assets/sca-cases57.js?v=1"></script>
+<script src="../assets/sca-cases58.js?v=1"></script>
+<script src="../assets/sca-cases59.js?v=1"></script>
+<script src="../assets/sca-cases60.js?v=1"></script>
+<script src="../assets/sca-cases61.js?v=1"></script>
+<script src="../assets/sca-cases62.js?v=1"></script>
+<script src="../assets/sca-cases63.js?v=1"></script>
+<script src="../assets/sca-cases64.js?v=1"></script>
+<script src="../assets/sca-cases65.js?v=1"></script>
+<script src="../assets/sca-cases66.js?v=1"></script>
+<script src="../assets/sca-cases67.js?v=1"></script>
+<script src="../assets/sca-cases68.js?v=1"></script>
+<script src="../assets/sca-cases69.js?v=1"></script>
+<script src="../assets/sca-cases70.js?v=1"></script>
+<script src="../assets/sca-cases71.js?v=1"></script>
+<script src="../assets/sca-cases72.js?v=1"></script>
+<script src="../assets/sca-cases73.js?v=1"></script>
+<script src="../assets/sca-cases74.js?v=1"></script>
+<script src="../assets/sca-cases75.js?v=1"></script>
+<script src="../assets/sca-cases76.js?v=1"></script>
+<script src="../assets/sca-cases77.js?v=1"></script>
+<script src="../assets/sca-cases78.js?v=1"></script>
+<script src="../assets/sca-cases79.js?v=1"></script>
+<script src="../assets/sca-cases80.js?v=1"></script>
+<script>
+(function(){
+  'use strict';
+  const $ = q => document.querySelector(q);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+
+  const CASES = (window.SCA_CASES || []).map(c => Object.assign({}, c, (window.SCA_EXTRAS || {})[c.id] || {}));
+  const TYPE_LBL = { video:'Video', phone:'Telephone', telephone:'Telephone', f2f:'Face-to-face', visit:'Home visit', data:'Results' };
+  const DOM_LBL = { tasks:'Clinical', rto:'Relating', gs:'Safety' };
+
+  let cur = CASES[0];
+
+  $('#rpPick').innerHTML = CASES.map((c, i) =>
+    `<button class="rp-case${i === 0 ? ' sel' : ''}" data-id="${c.id}">${esc(c.title)}</button>`).join('');
+
+  function render(){
+    const c = cur, s = c.script || {};
+    $('#rpCards').innerHTML = `
+      <div class="rp-card rp-pt">
+        <div class="rp-card-hdr">
+          <span class="badge">Patient card</span>
+          <h2>${esc(c.title)} — ${TYPE_LBL[c.type] || ''}</h2>
+          <span class="warn">⚠ Candidate must not see this</span>
+        </div>
+        <div class="rp-body">
+          <div class="rp-sec"><div class="rp-sec-h">Who you are</div>
+            <p>${esc(c.brief)}</p></div>
+          <div class="rp-sec"><div class="rp-sec-h">Your opening line — say this first, then answer only what's asked</div>
+            <div class="rp-open">${esc(s.opening || '')}</div></div>
+          <div class="rp-sec"><div class="rp-sec-h">Your story — reveal each piece only when the right question comes</div>
+            ${(s.facts || []).map(f => `<div class="rp-fact"><span class="k">${esc(f.topic)}</span><span class="v">${esc(f.text)}</span></div>`).join('')}</div>
+          <div class="rp-sec" style="margin-top:12px"><div class="rp-sec-h">Your inner world (give only if genuinely explored)</div>
+            <div class="rp-fact"><span class="k">Ideas</span><span class="v">${esc((s.ice || {}).ideas || '')}</span></div>
+            <div class="rp-fact"><span class="k">Concerns</span><span class="v">${esc((s.ice || {}).concerns || '')}</span></div>
+            <div class="rp-fact"><span class="k">Expectations</span><span class="v">${esc((s.ice || {}).expectations || '')}</span></div></div>
+          <div class="rp-sec" style="margin-top:12px"><div class="rp-sec-h">Cues to plant — once each, naturally, then move on</div>
+            ${(s.cues || []).map((cu, i) => `<div class="rp-cue"><b>Cue ${i + 1}</b>${esc(cu)}</div>`).join('')}</div>
+        </div>
+      </div>
+
+      <div class="rp-card rp-ex">
+        <div class="rp-card-hdr">
+          <span class="badge">Examiner card</span>
+          <h2>${esc(c.title)}</h2>
+          <span class="warn">⚠ Candidate must not see this</span>
+        </div>
+        <div class="rp-body">
+          <div class="rp-sec"><div class="rp-sec-h">Tick each behaviour as it actually happens (said out loud, not implied)</div>
+            ${(c.checkpoints || []).map(cp => `<div class="rp-chk"><span class="box"></span><span class="dom ${cp.dom}">${DOM_LBL[cp.dom] || cp.dom}</span><span>${esc(cp.text)}</span></div>`).join('')}</div>
+          <div class="rp-sec"><div class="rp-sec-h">Cue audit — did the candidate respond to each planted cue out loud?</div>
+            ${(s.cues || []).map((cu, i) => `<div class="rp-chk"><span class="box"></span><span class="dom rto">Cue ${i + 1}</span><span>${esc(cu)}</span></div>`).join('')}</div>
+          <div class="rp-grades">
+            <div class="rp-sec-h">At the buzzer — circle one grade per domain (CF 0 · F 1 · P 2 · CP 3)</div>
+            <div class="rp-grade-row"><span class="gd">Data Gathering &amp; Diagnosis</span><span class="opts"><span>CF</span><span>F</span><span>P</span><span>CP</span></span></div>
+            <div class="rp-grade-row"><span class="gd">Clinical Management (×1.5)</span><span class="opts"><span>CF</span><span>F</span><span>P</span><span>CP</span></span></div>
+            <div class="rp-grade-row"><span class="gd">Relating to Others</span><span class="opts"><span>CF</span><span>F</span><span>P</span><span>CP</span></span></div>
+            <div class="rp-timeline">Timing notes: summarised &amp; shared diagnosis by min 6? □ &nbsp; Management begun by min 7? □ &nbsp; Specific safety-net (symptoms + timeframe + route back)? □<br>
+            Debrief order: two specific strengths → one change → candidate logs grades in <b>Examiner Marking</b> on the site.</div>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  document.querySelectorAll('.rp-case').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.rp-case').forEach(x => x.classList.remove('sel'));
+    b.classList.add('sel');
+    cur = CASES.find(c => c.id === b.dataset.id);
+    render();
+  }));
+
+  const doPrint = cls => {
+    document.body.classList.remove('print-pt', 'print-ex');
+    if (cls) document.body.classList.add(cls);
+    window.print();
+  };
+  $('#printBoth').addEventListener('click', () => doPrint(null));
+  $('#printPt').addEventListener('click', () => doPrint('print-pt'));
+  $('#printEx').addEventListener('click', () => doPrint('print-ex'));
+
+  render();
+})();
+</script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

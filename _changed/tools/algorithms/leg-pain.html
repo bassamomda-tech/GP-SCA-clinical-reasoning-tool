@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Leg Pain Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   REASONING GP — Algorithm Suite · Shared CSS
+   ═══════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f7f6f3;
+  --surface: #ffffff;
+  --border: #e4e1d9;
+  --border-soft: #ede9e2;
+  --text: #1a1714;
+  --text-muted: #6b6460;
+  --text-light: #9b9390;
+
+  --safety: #c0392b;
+  --safety-bg: #fef5f5;
+  --safety-border: #f5c6c6;
+
+  --diagnose: #1a5276;
+  --diagnose-bg: #f0f6fc;
+  --diagnose-border: #c5dff0;
+
+  --treat: #1e8449;
+  --treat-bg: #f0faf3;
+  --treat-border: #b8dfc5;
+
+  --refer: #6c3483;
+  --refer-bg: #f8f0fc;
+  --refer-border: #d7b8ed;
+
+  --lifestyle: #b7770d;
+  --lifestyle-bg: #fefaf0;
+  --lifestyle-border: #f0d9a0;
+
+  --rf-bg: #c0392b;
+  --rf-tile: #fff0f0;
+  --rf-tile-border: #f5c6c6;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,.10), 0 3px 8px rgba(0,0,0,.05);
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-xs: 5px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 0 0 60px;
+}
+
+/* ── Page Header ─────────────────────────────────────── */
+.page-header {
+  background: var(--text);
+  color: #fff;
+  padding: 20px 24px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+}
+.page-header .logo {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  opacity: .8;
+  white-space: nowrap;
+}
+.page-header .sep { opacity: .3; margin: 0 4px; }
+.page-header .title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+/* ── Stem Banner ─────────────────────────────────────── */
+.stem-banner {
+  background: linear-gradient(135deg, var(--text) 0%, #2c2620 100%);
+  color: #fff;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 24px 20px;
+  margin: 20px 16px 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+.sb-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.stem-banner b { font-size: 17px; font-weight: 700; display: block; margin-bottom: 4px; }
+.stem-banner small { font-size: 12.5px; opacity: .75; line-height: 1.45; display: block; }
+
+/* ── Progress Bar ────────────────────────────────────── */
+.alg-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.pcount { font-weight: 700; color: var(--text); font-size: 14px; }
+.pbar {
+  flex: 1;
+  height: 5px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.pbar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
+  border-radius: 99px;
+  width: 0%;
+  transition: width .4s cubic-bezier(.4,0,.2,1);
+}
+.reset {
+  font-size: 12px;
+  padding: 4px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  transition: all .15s;
+}
+.reset:hover { border-color: var(--text-muted); color: var(--text); }
+
+/* ── Algorithm Flow ──────────────────────────────────── */
+.alg-flow {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ── Connector ───────────────────────────────────────── */
+.connector {
+  width: 2px;
+  height: 24px;
+  background: linear-gradient(to bottom, var(--border), transparent);
+  margin: 0 auto;
+}
+
+/* ── Node ────────────────────────────────────────────── */
+.node {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.node:hover { box-shadow: var(--shadow-md); }
+
+.node[data-type="SAFETY"]    { border-left: 4px solid var(--safety); }
+.node[data-type="DIAGNOSE"]  { border-left: 4px solid var(--diagnose); }
+.node[data-type="TREAT"]     { border-left: 4px solid var(--treat); }
+.node[data-type="REFER"]     { border-left: 4px solid var(--refer); }
+.node[data-type="LIFESTYLE"] { border-left: 4px solid var(--lifestyle); }
+
+/* Node header */
+.node-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.node-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.node[data-type="SAFETY"]    .node-num { background: var(--safety);    color: #fff; }
+.node[data-type="DIAGNOSE"]  .node-num { background: var(--diagnose);  color: #fff; }
+.node[data-type="TREAT"]     .node-num { background: var(--treat);     color: #fff; }
+.node[data-type="REFER"]     .node-num { background: var(--refer);     color: #fff; }
+.node[data-type="LIFESTYLE"] .node-num { background: var(--lifestyle); color: #fff; }
+
+.node-head-text { flex: 1; }
+.node-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 3px;
+}
+.node[data-type="SAFETY"]    .node-tag { color: var(--safety); }
+.node[data-type="DIAGNOSE"]  .node-tag { color: var(--diagnose); }
+.node[data-type="TREAT"]     .node-tag { color: var(--treat); }
+.node[data-type="REFER"]     .node-tag { color: var(--refer); }
+.node[data-type="LIFESTYLE"] .node-tag { color: var(--lifestyle); }
+
+.node-head h3 {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.01em;
+  color: var(--text);
+}
+
+/* Checkbox */
+.node-tick {
+  padding: 8px 14px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.node-tick label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-light);
+  user-select: none;
+}
+.node-tick input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #27ae60;
+  cursor: pointer;
+}
+.node-tick input:checked + .tlbl { color: #27ae60; }
+
+/* Node body */
+.node-body {
+  padding: 12px 16px 14px;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+}
+.node-body > p, .node-body > span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text-muted);
+  font-size: 13.5px;
+}
+
+/* ── KV Grid ─────────────────────────────────────────── */
+.kv {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  font-size: 13.5px;
+  margin-top: 8px;
+}
+.kv > div {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border-soft);
+  line-height: 1.5;
+}
+.kv > div:nth-child(4n+1),
+.kv > div:nth-child(4n+2) { background: var(--surface); }
+.kv > div:nth-child(4n+3),
+.kv > div:nth-child(4n+4) { background: #fafaf8; }
+.kv > div:nth-last-child(-n+2) { border-bottom: none; }
+.kv > div:nth-child(odd) {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  border-right: 1px solid var(--border-soft);
+  letter-spacing: .01em;
+}
+
+/* ── Red Flag Grid ───────────────────────────────────── */
+.rfgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+@media (max-width: 480px) { .rfgrid { grid-template-columns: 1fr; } }
+.rftile {
+  background: var(--rf-tile);
+  border: 1.5px solid var(--rf-tile-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.rftile b { color: #c0392b; font-weight: 700; display: block; margin-bottom: 2px; }
+
+/* ── Branch ──────────────────────────────────────────── */
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+.b-card {
+  background: var(--treat-bg);
+  border: 1.5px solid var(--treat-border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  font-size: 13px;
+}
+.b-cond {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+.b-drug {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--treat);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+.b-note {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* ── Ladder ──────────────────────────────────────────── */
+.ladder {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+  padding-left: 20px;
+}
+.ladder::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--treat-border), var(--refer-border));
+  border-radius: 2px;
+}
+.rung {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  padding: 9px 12px;
+  font-size: 13.5px;
+  position: relative;
+}
+.rung::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--treat);
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+  box-shadow: 0 0 0 1px var(--treat);
+}
+.rn {
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--treat);
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px 7px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.rt { flex: 1; line-height: 1.5; }
+
+/* ── Lifestyle Grid ──────────────────────────────────── */
+.lsgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+@media (max-width: 520px) { .lsgrid { grid-template-columns: 1fr; } }
+.lstile {
+  background: var(--lifestyle-bg);
+  border: 1.5px solid var(--lifestyle-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.lstile b { color: var(--lifestyle); font-weight: 700; display: block; margin-bottom: 2px; }
+
+/* ── Pills ───────────────────────────────────────────── */
+.pill {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 99px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.pill-red    { background: #fde8e8; color: #b91c1c; border: 1px solid #fca5a5; }
+.pill-purple { background: #f3e8ff; color: #7e22ce; border: 1px solid #d8b4fe; }
+.pill-blue   { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
+.pill-teal   { background: #e0fdf4; color: #0f766e; border: 1px solid #5eead4; }
+.pill-amber  { background: #fffbeb; color: #b45309; border: 1px solid #fcd34d; }
+.pill-green  { background: #f0fdf4; color: #15803d; border: 1px solid #86efac; }
+.pill-grey   { background: #f3f4f6; color: #374151; border: 1px solid #d1d5db; }
+.pill-orange { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
+
+/* ── Why Drawer ──────────────────────────────────────── */
+.why-row {
+  border-top: 1px solid var(--border-soft);
+  background: #fafaf8;
+}
+.why-btn {
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: .02em;
+  transition: color .15s;
+}
+.why-btn:hover { color: var(--text); }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.caret { transition: transform .2s; display: inline-block; }
+.why-drawer {
+  display: none;
+  padding: 4px 16px 14px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  border-top: 1px solid var(--border-soft);
+}
+.why-drawer.open { display: block; }
+.why-drawer p { margin-bottom: 6px; }
+.why-drawer p:last-child { margin-bottom: 0; }
+
+/* ── Done state ──────────────────────────────────────── */
+.node.is-done {
+  opacity: .72;
+}
+.node.is-done .node-body { position: relative; }
+.node.is-done .node-head h3 { text-decoration: line-through; text-decoration-color: #ccc; }
+
+/* ── Footer ──────────────────────────────────────────── */
+.alg-foot {
+  margin: 28px 16px 0;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.alg-foot strong { color: var(--text); }
+
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="page-header">
+  <span class="logo">Reasoning GP</span>
+  <span class="sep">·</span>
+  <span class="title">Musculoskeletal</span>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🦵</div>
+  <div>
+    <b>Leg Pain — Assessment &amp; Management</b>
+    <small>DVT · acute &amp; critical ischaemia · compartment syndrome · sciatica / cauda equina · claudication · NICE NG12 bone &amp; soft-tissue sarcoma</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — exclude the limb- and life-threatening emergencies first, then separate vascular, neurogenic and musculoskeletal pain to a named cause, treat actively, apply the NICE NG12 sarcoma rules, modify risk and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Leg pain</span><div class="body">Onset, claudication pattern, radiation/nerve features, rest/night pain, systemic &amp; cancer features; VTE and cardiovascular risk. Examine calf, pulses, L5/S1 neurology and the spine.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — limb- &amp; life-threats</span><span class="ttl">Any emergency?</span><div class="body"><ul><li><b>DVT</b> — unilateral swollen tender calf + VTE risk (± PE: breathless/pleuritic pain)</li><li><b>Acute limb ischaemia</b> — the 6 Ps (~6-hour window)</li><li><b>Compartment syndrome</b> — pain out of proportion, tense calf, worse on stretch</li><li><b>Necrotising fasciitis / sepsis</b> · <b>Cauda equina</b> — bilateral/saddle/bladder</li><li><b>Bone sarcoma</b> — persistent/night deep bone pain or bony mass</li></ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">999 / same-day</span><div class="body">Acute ischaemia / compartment / nec fasc / cauda equina → 999. Suspected DVT → same-day DVT pathway. Suspected bone sarcoma on X-ray → 48-hour 2WW.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — classify</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Directed tests</span><div class="body">Wells + leg-vein USS (DVT); ABPI ± duplex (PAD); X-ray then MRI for bone/stress fracture; MRI for radicular deficit/stenosis; USS for a soft-tissue lump. Bloods incl. bone profile/ALP, myeloma screen if older unexplained bone pain.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · which system?</span></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Vascular</div><div class="box ix"><span class="ttl">Claudication / ischaemia</span><div class="body">Cramping calf pain at a fixed walking distance, relieved by rest (PAD); rest/night foot pain (critical ischaemia); superficial thrombophlebitis.</div></div></div>
+      <div class="col"><div class="blabel">Neurogenic</div><div class="box ix"><span class="ttl">Radicular / stenosis</span><div class="body">Dermatomal pain + tingling (L5/S1 sciatica); pain on standing/walking eased by flexion (spinal stenosis); neuropathy; restless legs.</div></div></div>
+      <div class="col"><div class="blabel">Musculoskeletal</div><div class="box ix"><span class="ttl">Soft tissue / bone</span><div class="body">Gastrocnemius tear, Achilles tendinopathy/rupture, ruptured Baker's cyst, cramps; stress fracture; <b>don't miss sarcoma/mets</b>.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · treat the common causes</span></div>
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — active management</span><span class="ttl">Right treatment for the diagnosis</span><div class="body"><ul><li><b>Calf strain:</b> PRICE + graded calf loading. <b>Sciatica (NG59):</b> stay active + analgesia (avoid routine opioids/gabapentinoids), physio; refer if deficit / no improvement at 6–8 wks.</li><li><b>Claudication (PAD):</b> supervised exercise, statin, antiplatelet, smoking cessation, BP/glucose control.</li><li><b>Cramps/restless legs:</b> stretching, hydration, replace ferritin, review drugs. <b>Venous:</b> compression — only after excluding arterial disease with ABPI.</li></ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation</span></div>
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul><li><span class="pill pill-red">999 / same-day</span> acute ischaemia, compartment syndrome, nec fasc/sepsis, cauda equina, DVT with PE features.</li><li><span class="pill pill-purple">2WW · NICE NG12</span> X-ray suggesting bone sarcoma → 48-hour referral; unexplained enlarging/deep/&gt;5cm soft-tissue lump → USS and/or 2WW.</li><li><span class="pill pill-purple">Vascular</span> lifestyle-limiting claudication. <span class="pill pill-purple">Spinal/MSK</span> sciatica not settling at 6–8 wks or with deficit; Achilles rupture (urgent). <span class="pill pill-grey">Vein service</span> symptomatic varicose veins / skin changes.</li></ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · rehab &amp; risk</span></div>
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; risk reduction</span><span class="ttl">Rehab + cardiovascular risk</span><div class="body"><b>Graded rehabilitation</b> and staying active; <b>cardiovascular risk control</b> for PAD (the main threat is MI/stroke); correct training load/energy availability (RED-S) in stress fracture; VTE prevention around surgery/travel; venous health (elevation, exercise, compression); iron/caffeine review for cramps &amp; restless legs.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · safety-net</span></div>
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Safety-net &amp; follow-up</span><span class="ttl">When to come back</span><div class="body"><b>999 / ED</b> for new/increasing calf swelling or breathlessness/chest pain (PE), a suddenly cold pale numb leg (ischaemia), a tense calf with pain out of proportion (compartment/nec fasc), or bilateral leg/saddle/bladder symptoms (cauda equina). <b>Re-image/refer</b> for worsening or night bone pain, a new/enlarging lump, or weight loss. Most strains/sciatica settle in 2–8 weeks — if recovery stalls, re-examine rather than re-prescribe.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>Never compress an ischaemic leg</b> (check ABPI first), and <b>never quietly escalate opioids for sciatica</b> without re-examining for a progressive deficit or cauda equina.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><div class="node-head-text"><span class="node-tag">Safety</span><h3>Red Flags — exclude the limb- and life-threatening causes</h3></div></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body"><span>Leg pain is common and usually benign, but first exclude the venous, arterial, compartment, infective and spinal emergencies — and the NICE NG12 bone cancer pathway.</span><div class="rfgrid"><div class="rftile"><b>Deep vein thrombosis</b> Unilateral calf/leg swelling, tenderness along the deep veins, warmth, pitting oedema + VTE risk → two-level Wells, <span class="pill pill-red">same-day DVT pathway</span>. Breathless / pleuritic chest pain → <span class="pill pill-red">999 ?PE</span></div><div class="rftile"><b>Acute limb ischaemia</b> Sudden Painful, Pale, Pulseless, Perishingly cold, Paraesthetic, Paralysed leg (6 Ps) → <span class="pill pill-red">999</span> — limb viable only about six hours</div><div class="rftile"><b>Compartment syndrome</b> Pain out of proportion, worse on passive stretch, tense swollen calf — after fracture, crush or reperfusion → <span class="pill pill-red">999</span> fasciotomy</div><div class="rftile"><b>Necrotising fasciitis / sepsis</b> Pain out of proportion to skin signs, rapidly spreading erythema, systemic toxicity, crepitus → <span class="pill pill-red">999</span></div><div class="rftile"><b>Cauda equina / cord</b> Bilateral leg pain or weakness with saddle numbness, urinary retention or faecal incontinence → <span class="pill pill-red">emergency MRI</span></div><div class="rftile"><b>Bone sarcoma — NICE NG12</b> Unexplained, persistent or night-time deep bone pain (the tibia is a classic site) or a bony mass → urgent X-ray; if it suggests sarcoma → <span class="pill pill-purple">2WW</span> (48h) NICE NG12</div></div></div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer"><p>The lower leg concentrates several time-critical diagnoses: a DVT that can embolise to the lungs, an acutely ischaemic limb with a six-hour window, a calf compartment syndrome, and necrotising fasciitis. Each is separated from benign leg pain by a single discriminator — unilateral swelling with VTE risk, the 6 Ps, pain out of proportion, or systemic toxicity — and each is acted on before, not after, imaging.</p><p>NICE NG12 places bone sarcoma on the primary-care radar, and the tibia is one of the commonest sites of osteosarcoma in young people. Persistent deep bone pain, particularly at night, or a bony swelling warrants an urgent X-ray; an X-ray suggesting sarcoma triggers a 48-hour referral, and persisting suspicion with a normal film still needs repeat imaging or referral.</p></div></div>
+</div>
+<div class="connector"></div>
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><div class="node-head-text"><span class="node-tag">Diagnose</span><h3>Focused history — separate vascular, neurogenic and MSK pain</h3></div></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body"><span>The history usually distinguishes the three big groups — vascular claudication, neurogenic/radicular pain, and musculoskeletal pain — and flags the systemic causes.</span><div class="kv"><div>Onset</div><div>Sudden during activity (gastrocnemius tear — tennis leg, or Achilles rupture) vs gradual (claudication, stress fracture, OA) vs spontaneous (DVT).</div><div>Claudication pattern</div><div>Cramping calf pain on walking a reproducible distance, relieved within minutes of rest → vascular (PAD). Pain on standing/walking eased by sitting or bending forward → neurogenic claudication (spinal stenosis).</div><div>Radiation &amp; nerve features</div><div>Pain radiating from the back down the leg with tingling/numbness in a dermatome → sciatica (L5/S1). Burning, glove-and-stocking numbness → peripheral neuropathy.</div><div>Rest / night pain</div><div>Rest pain in the foot relieved by hanging the leg down → critical limb ischaemia. Night cramps → benign nocturnal cramps; constant night bone pain → sarcoma/mets.</div><div>Systemic / cancer</div><div>Fever, weight loss, night sweats, known cancer (bone metastasis), or a growing lump.</div><div>Risk factors</div><div>VTE risk (surgery, immobility, long travel, cancer, COCP/HRT, pregnancy); cardiovascular risk (smoking, diabetes — PAD); training error / RED-S (stress fracture).</div></div></div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer"><p>The two claudication histories are the highest-yield discriminator in leg pain. Vascular claudication is brought on by a fixed walking distance and relieved by simply stopping; neurogenic claudication (lumbar spinal stenosis) is brought on by standing and walking and relieved by flexion — sitting, leaning on a trolley, walking uphill — and the two lead to completely different investigations and specialists.</p><p>A clear VTE risk profile changes the pre-test probability of DVT enough to drive the whole pathway, while a cardiovascular risk profile reframes calf claudication as a marker of systemic atherosclerosis whose main threat is myocardial infarction and stroke, not the leg itself.</p></div></div>
+</div>
+<div class="connector"></div>
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><div class="node-head-text"><span class="node-tag">Diagnose</span><h3>Examination — calf, pulses, nerves and the spine</h3></div></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body"><div class="kv"><div>Look</div><div>Unilateral swelling, erythema, varicose veins, venous skin changes/ulcer, bruising, deformity, muscle wasting or an obvious mass.</div><div>Feel</div><div>Calf tenderness and tension, skin temperature, a palpable gap (Achilles rupture), and the femoral, popliteal, posterior tibial and dorsalis pedis pulses. Measure calf circumference.</div><div>Move</div><div>Ankle and knee range; Simmonds (calf-squeeze) test for Achilles rupture; resisted plantarflexion (gastrocnemius).</div><div>Neuro</div><div>L5/S1 — power (dorsiflexion, plantarflexion, EHL), ankle and knee reflexes, dermatomal sensation; straight-leg raise. Screen for a glove-and-stocking sensory loss (neuropathy).</div><div>Vascular</div><div>Absent pulses, cool pale foot, prolonged capillary refill, a bruit, or a positive Buerger test → ischaemia/PAD. Warm, swollen, tender calf → consider DVT.</div><div>Spine &amp; hip</div><div>Examine the lumbar spine and hip — both refer pain to the leg; check for saddle anaesthesia and anal tone if any cauda equina concern.</div></div></div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer"><p>A leg examination is incomplete without the pulses, the L5/S1 neurology and the spine, because the three commonest serious causes — ischaemia, sciatica/cauda equina and DVT — declare themselves there rather than in the painful muscle. A single absent pulse or a focal motor deficit redirects the entire work-up.</p><p>Simple bedside tests carry a lot of weight here: the Simmonds calf-squeeze rapidly identifies an Achilles rupture that is otherwise easy to miss, calf circumference quantifies the asymmetry of a DVT, and capillary refill and the Buerger test grade arterial insufficiency without any equipment.</p></div></div>
+</div>
+<div class="connector"></div>
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><div class="node-head-text"><span class="node-tag">Diagnose</span><h3>Differential diagnosis — by anatomical origin</h3></div></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body"><div class="kv"><div>Vascular</div><div><span class="pill pill-blue">Emergency or urgent</span> DVT, acute or critical limb ischaemia, intermittent claudication (PAD), superficial thrombophlebitis.</div><div>Neurogenic</div><div>Sciatica / lumbar radiculopathy (L5, S1), neurogenic claudication (spinal stenosis), peripheral neuropathy, restless legs syndrome.</div><div>Muscular / soft tissue</div><div>Gastrocnemius tear (tennis leg), Achilles tendinopathy or rupture, ruptured Baker’s cyst, chronic exertional compartment syndrome, nocturnal cramps, DOMS.</div><div>Venous / skin</div><div>Varicose veins and venous insufficiency, venous eczema/ulcer, cellulitis, erythema nodosum.</div><div>Bone</div><div><span class="pill pill-red">Do not miss</span> Tibial stress fracture (runners, RED-S), <span class="pill pill-purple">bone sarcoma / metastasis</span>, osteomyelitis, Paget’s disease.</div><div>Referred</div><div>Hip or knee osteoarthritis; lumbar spine pathology.</div></div></div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer"><p>Sorting the differential by tissue keeps the dangerous and the trivial side by side — a ruptured Baker’s cyst and a DVT both present as a swollen painful calf, and only deliberate consideration (and often an ultrasound) separates them. The framework prevents the common error of treating a DVT as a strain or a strain as a DVT.</p><p>Restless legs and nocturnal cramps are common, benign and frequently missed in the rush to exclude vascular disease; recognising their characteristic histories (an urge to move at rest, relieved by movement; sudden painful nocturnal contractions) avoids unnecessary investigation and gives the patient an explanation and a management plan.</p></div></div>
+</div>
+<div class="connector"></div>
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><div class="node-head-text"><span class="node-tag">Diagnose</span><h3>Investigations — directed by the suspected origin</h3></div></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body"><div class="kv"><div>Suspected DVT</div><div><span class="pill pill-blue">First</span> Two-level Wells score → D-dimer and/or proximal leg-vein ultrasound (within 4 hours, or interim anticoagulation + scan within 24 hours).</div><div>Vascular</div><div><span class="pill pill-blue">PAD</span> ABPI (0.9–0.5 claudication, below 0.5 critical ischaemia; above 1.3 calcified/unreliable) ± arterial duplex.</div><div>Bloods</div><div>FBC, CRP/ESR, U&amp;E, glucose/HbA1c, bone profile + ALP, calcium; CK if diffuse muscle pain; ferritin (restless legs); myeloma screen in older unexplained bone pain.</div><div>X-ray</div><div>Persistent or night bone pain, after trauma, suspected stress fracture or sarcoma (urgent).</div><div>MRI</div><div>Sciatica with a neurological deficit, suspected spinal stenosis, an X-ray-occult stress fracture, or a soft-tissue mass / suspected sarcoma.</div><div>USS</div><div>Soft-tissue lump (sarcoma pathway), or to confirm a ruptured Baker’s cyst vs DVT.</div><div>Do NOT</div><div>Order a D-dimer when DVT is clinically likely (go to ultrasound); image early, uncomplicated sciatica or a simple calf strain.</div></div></div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer"><p>Each investigation answers a specific question raised by the history: a Wells score and ultrasound for venous disease, an ABPI for arterial disease, an X-ray then MRI for bone, and an MRI for a neurological deficit or spinal stenosis. Ordering tests by hypothesis rather than reflex avoids both missed diagnoses and incidental findings that mislead.</p><p>Two rules prevent the commonest errors: a high clinical probability of DVT goes straight to ultrasound because a D-dimer cannot exclude it, and early uncomplicated sciatica is not imaged because most settles within weeks and an MRI rarely changes early management — imaging is reserved for a deficit, failure to improve, or a planned intervention.</p></div></div>
+</div>
+<div class="connector"></div>
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><div class="node-head-text"><span class="node-tag">Refer</span><h3>Referral criteria</h3></div></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body"><div class="kv"><div><span class="pill pill-red">999 / emergency</span></div><div>Acute limb ischaemia, compartment syndrome, necrotising fasciitis/sepsis, cauda equina syndrome, or suspected DVT with PE features.</div><div><span class="pill pill-red">Same-day</span></div><div>Suspected DVT (local DVT pathway), critical limb ischaemia (rest pain, tissue loss), or a hot febrile swollen leg.</div><div><span class="pill pill-purple">2WW — bone sarcoma</span> NICE NG12</div><div>An X-ray suggesting bone sarcoma → refer within 48 hours. Persistent unexplained bone pain or a bony mass with a normal X-ray → repeat imaging or refer.</div><div><span class="pill pill-purple">2WW — soft-tissue sarcoma</span> NICE NG12</div><div>An unexplained, enlarging, deep or larger-than-5cm soft-tissue lump → ultrasound and/or 2WW.</div><div>Vascular</div><div>Lifestyle-limiting claudication → vascular surgery; same-day for critical/acute ischaemia.</div><div>Spinal / MSK</div><div>Sciatica not settling at 6–8 weeks or with a deficit; suspected spinal stenosis; Achilles rupture (urgent orthopaedics); refractory tendinopathy → physiotherapy.</div><div>Vein service</div><div>Symptomatic varicose veins, skin changes or a healed/active venous ulcer → NICE NG168 referral.</div></div></div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer"><p>The referral map follows directly from the red flags: vascular, infective and neurological emergencies bypass investigation, while the two NG12 sarcoma routes (bone via urgent X-ray then 48-hour referral; soft tissue via ultrasound then 2-week-wait) are the cancer safety net that primary care must apply to any unexplained limb lump or persistent bone pain.</p><p>Timing matters for the common conditions too: most sciatica is managed in primary care and referred only at 6–8 weeks or for a deficit, whereas a suspected Achilles rupture or symptomatic varicose veins with skin change have their own defined, more urgent referral routes that are easy to overlook.</p></div></div>
+</div>
+<div class="connector"></div>
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><div class="node-head-text"><span class="node-tag">Treat</span><h3>Management of the common, non-emergency causes</h3></div></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body"><div class="branch"><div class="b-card"><div class="b-cond">Calf strain / tennis leg</div><div class="b-drug">PRICE + graded loading</div><div class="b-note">Relative rest, ice, compression, elevation; analgesia; heel raise and progressive calf loading; gradual return to activity.</div></div><div class="b-card"><div class="b-cond">Sciatica</div><div class="b-drug">Stay active + analgesia</div><div class="b-note">Reassure, encourage activity, NICE NG59 analgesia (avoid routine opioids/gabapentinoids), consider physiotherapy; refer if deficit or no improvement at 6–8 weeks.</div></div><div class="b-card"><div class="b-cond">Claudication (PAD)</div><div class="b-drug">Exercise + risk factors</div><div class="b-note">Supervised exercise programme, statin, antiplatelet, smoking cessation, BP and glucose control; vascular referral if lifestyle-limiting.</div></div></div><div class="kv"><div>Cramps / restless legs</div><div>Nocturnal cramps: stretching, hydration, review drugs; quinine only if severe and refractory (specialist). Restless legs: check and replace ferritin, review aggravating drugs, dopaminergic/alpha-2-delta agents if troublesome.</div><div>Venous disease</div><div>Compression hosiery for venous insufficiency (after excluding arterial disease with ABPI); skin care; refer symptomatic varicose veins.</div><div>Analgesia</div><div>Paracetamol ± topical/short-course NSAID (caution PAD/renal/elderly); neuropathic agent for clearly neuropathic pain; avoid long-term opioids for mechanical or neuropathic leg pain.</div><div>Do NOT</div><div>Apply compression to an ischaemic leg, or escalate opioids for sciatica without re-examining for a progressive deficit or cauda equina.</div></div></div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer"><p>The mainstays are active, not passive: graded loading for calf injury, staying active with simple analgesia for sciatica (NICE NG59 explicitly cautions against routine opioids and gabapentinoids), and a supervised exercise programme plus cardiovascular risk control for claudication. Each has better outcomes than rest and escalating medication.</p><p>Two safety rules bracket the treatment: never compress a leg without first excluding arterial disease with an ABPI, because compression of an ischaemic limb causes tissue loss; and never quietly escalate opioids for sciatica, because the deterioration that matters (a progressive deficit or cauda equina) is missed if the consultation becomes a prescription rather than a re-examination.</p></div></div>
+</div>
+<div class="connector"></div>
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><div class="node-head-text"><span class="node-tag">Lifestyle</span><h3>Rehabilitation, risk factors &amp; self-care</h3></div></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body"><div class="lsgrid"><div class="lstile"><b>Graded rehabilitation</b> Progressive calf and lower-limb loading with physiotherapy guidance restores tendons and muscle and reduces re-injury; keep active with sciatica rather than resting.</div><div class="lstile"><b>Cardiovascular risk</b> For claudication, smoking cessation, statin, antiplatelet and walking exercise reduce both leg symptoms and the higher risk of heart attack and stroke.</div><div class="lstile"><b>Bone &amp; training</b> In runners with stress fractures, correct training load, footwear and energy availability (RED-S); optimise calcium and vitamin D.</div><div class="lstile"><b>VTE prevention</b> Hydration and mobility around surgery and long travel for at-risk patients; know the symptoms of DVT/PE that need urgent review.</div><div class="lstile"><b>Venous health</b> Leg elevation, exercise, weight management and compression (arterial supply permitting) help venous insufficiency and prevent ulcers.</div><div class="lstile"><b>Cramps / restless legs</b> Regular stretching, hydration, reducing caffeine/alcohol, and reviewing iron status and aggravating medications.</div></div></div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer"><p>Because the leg is so often a window onto systemic disease, the lifestyle package does double duty — the cardiovascular risk-factor work that eases claudication is the same work that prevents the patient’s next coronary or cerebral event, which is the real prognosis-changer in peripheral arterial disease.</p><p>For the benign but troublesome diagnoses — cramps, restless legs, venous insufficiency — simple, specific self-management (stretching and hydration, iron repletion, elevation and compression) resolves or controls symptoms for most patients and prevents both unnecessary investigation and progression to complications such as venous ulceration.</p></div></div>
+</div>
+<div class="connector"></div>
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><div class="node-head-text"><span class="node-tag">Safety</span><h3>Safety-netting &amp; follow-up</h3></div></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body"><div class="kv"><div>Vascular / VTE</div><div><span class="pill pill-red">Attend ED / 999</span> New or increasing calf/leg swelling, or breathlessness, chest pain or haemoptysis (PE); a suddenly cold, pale, numb or weak leg (ischaemia).</div><div>Infection / pressure</div><div><span class="pill pill-red">Same-day</span> Spreading redness, fever, rapidly worsening pain, or a tense calf with pain out of proportion (necrotising infection / compartment syndrome).</div><div>Spinal</div><div><span class="pill pill-red">Emergency</span> Bilateral leg symptoms, new bladder/bowel disturbance or saddle numbness, or a progressive motor deficit (cauda equina).</div><div>Bone red flags</div><div><span class="pill pill-orange">Review</span> Worsening or night bone pain, a new or enlarging lump, or unexplained weight loss → re-image / refer on the sarcoma pathway.</div><div>Expected course</div><div>Most calf strains and sciatica improve over 2–8 weeks. If recovery stalls, re-examine and reconsider the diagnosis rather than re-prescribing.</div><div>Documentation</div><div>Record the working diagnosis, red flags checked, the management and self-care plan, the safety-net advice given, and the review interval.</div></div></div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer"><p>Concrete, symptom-level safety-netting is what makes a benign label safe in the leg, where the dangerous diagnoses (DVT/PE, ischaemia, necrotising infection, cauda equina) can evolve over hours. The patient should leave able to name the specific changes that mean same-day or 999 review rather than holding a vague instruction to return if no better.</p><p>Pairing the advice with a planned review interval turns it into active follow-up: sciatica and calf strains that do not follow their expected recovery curve are a cue to re-open the differential — re-examine the neurology, reconsider stress fracture or sarcoma, recheck the vasculature — instead of escalating analgesia on an unconfirmed diagnosis.</p></div></div>
+</div>
+</div>
+<div class="alg-foot"><strong>Educational use only.</strong> Based on NICE NG12 (suspected cancer — bone &amp; soft-tissue sarcoma), NICE CKS (DVT, peripheral arterial disease, sciatica, leg cramps, varicose veins), NICE NG158 (venous thromboembolism), NICE NG59 (low back pain &amp; sciatica), NICE CG168 (varicose veins), clinical prediction rules and BNF. Always adapt to the individual patient and local pathways.</div>
+<script>
+function initAlgorithm(storageKey){
+  const TOTAL = 9;
+  const pDone = document.getElementById('pDone');
+  const pFill = document.getElementById('pFill');
+  const resetBtn = document.getElementById('resetBtn');
+  function getState(){ try { return JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch { return {}; } }
+  function saveState(s){ try { localStorage.setItem(storageKey, JSON.stringify(s)); } catch {} }
+  function updateProgress(){
+    const boxes = document.querySelectorAll('.node-tick input[type="checkbox"]');
+    let done = 0; boxes.forEach(cb => { if (cb.checked) done++; });
+    pDone.textContent = done; pFill.style.width = (done / TOTAL * 100) + '%';
+  }
+  function applyDone(node, checked){ node.classList.toggle('is-done', checked); }
+  const state = getState();
+  document.querySelectorAll('.node').forEach((node, i) => {
+    const cb = node.querySelector('input[type="checkbox"]'); if (!cb) return;
+    const k = 'step' + (i + 1);
+    if (state[k]){ cb.checked = true; applyDone(node, true); }
+    cb.addEventListener('change', () => { const s = getState(); s[k] = cb.checked; saveState(s); applyDone(node, cb.checked); updateProgress(); });
+  });
+  document.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const ex = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!ex));
+      const d = btn.nextElementSibling; if (d) d.classList.toggle('open', !ex);
+    });
+  });
+  if (resetBtn) resetBtn.addEventListener('click', () => {
+    if (!confirm('Reset all progress?')) return;
+    localStorage.removeItem(storageKey);
+    document.querySelectorAll('.node-tick input[type="checkbox"]').forEach(cb => { cb.checked = false; applyDone(cb.closest('.node'), false); });
+    updateProgress();
+  });
+  updateProgress();
+}
+initAlgorithm('rgp.alg.leg-pain.v1');
+</script>
+<script src="../../assets/alg-diagram.js"></script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

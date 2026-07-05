@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<title>Content Audit Round 3 · All 270 Algorithms · July 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"></link>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""></link>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600&amp;display=swap" rel="stylesheet"></link>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f6f2e9;--surface:#fff;--line:#e5dfd0;--ink:#1c1917;--muted:#6b6760;--teal:#0f766e;--rust:#b3543a;--green:#15803d;--green-soft:#f0fdf4;--amber:#b45309;--amber-soft:#fffbeb;--serif:'Source Serif 4',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;font-size:15.5px}
+.wrap{max-width:940px;margin:0 auto;padding:44px 28px 90px}
+header.rep{border-bottom:3px solid var(--ink);padding-bottom:24px;margin-bottom:32px}
+.eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);margin-bottom:10px}
+h1{font-family:var(--serif);font-size:2.1rem;font-weight:600;line-height:1.15;margin-bottom:10px}
+.sub{color:var(--muted);max-width:740px}
+.meta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.meta-row span{font-size:.75rem;font-weight:600;background:var(--surface);border:1px solid var(--line);padding:4px 12px;border-radius:20px;color:var(--muted)}
+h2{font-family:var(--serif);font-size:1.45rem;font-weight:600;margin:44px 0 10px;padding-top:20px;border-top:1px solid var(--line)}
+h2 .n{color:var(--rust);margin-right:8px}
+h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;margin:22px 0 8px}
+p{margin-bottom:12px;text-wrap:pretty}
+ul{margin:0 0 14px 22px}
+li{margin-bottom:6px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin:14px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.85rem;background:var(--surface);border-radius:10px;overflow:hidden}
+th{background:var(--ink);color:#fff;text-align:left;padding:8px 12px;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}
+td{padding:7px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.fixed{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.05em;padding:2px 9px;border-radius:20px;text-transform:uppercase;background:var(--green-soft);color:var(--green);border:1px solid #bbf7d0}
+.todo{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.05em;padding:2px 9px;border-radius:20px;text-transform:uppercase;background:var(--amber-soft);color:var(--amber);border:1px solid #fde68a}
+code{font-family:ui-monospace,monospace;font-size:.82em;background:#efe9db;padding:1px 6px;border-radius:5px}
+.note{font-size:.85rem;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:12px 16px;margin:14px 0}
+.big{font-family:var(--serif);font-size:1.05rem}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+@media(max-width:680px){.kpi{grid-template-columns:1fr 1fr}}
+.kpi div{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:10px;padding:12px 14px}
+.kpi b{font-family:var(--serif);font-size:1.5rem;display:block}
+.kpi small{color:var(--muted);font-size:.75rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="rep">
+  <div class="eyebrow">Reasoning GP · Content audit — round 3</div>
+  <h1>The full algorithm sweep: all 270 pathway footers verified</h1>
+  <p class="sub">Every algorithm page's guideline citations were extracted and checked number-by-number against the real NICE catalogue, plus a red-flag scan (withdrawn drugs, outdated risk scores, renamed services) across the whole folder. <b>All fixes are already applied.</b></p>
+  <div class="meta-row"><span>270/270 algorithms scanned</span><span>~700 citations checked</span><span>~95 wrong citations corrected in 100 files</span><span>68 files IAPT-swept</span><span>4 ranitidine remnants removed</span></div>
+</header>
+
+<div class="kpi">
+  <div><b>270</b><small>algorithms scanned</small></div>
+  <div><b>~95</b><small>mis-citations fixed</small></div>
+  <div><b>68</b><small>files renamed IAPT → NHS Talking Therapies</small></div>
+  <div><b>0</b><small>clinical-content errors beyond those already fixed</small></div>
+</div>
+
+<h2><span class="n">1.</span>What the sweep confirmed</h2>
+<p class="big">The clinical <b>content</b> of the algorithm layer is sound — the red-flag scan found no new dangerous advice beyond the items fixed in earlier rounds. But the footer citations were systematically unreliable: roughly <b>1 in 7 guideline numbers was wrong</b>, in a very recognisable way — the right guideline <i>name</i>, the wrong <i>number</i> (usually a NG/CG prefix swap or a number belonging to a different guideline entirely).</p>
+<div class="note"><b>Why this matters:</b> a trainee revising for the AKT memorises these numbers; a sceptical GP checks one citation, finds "NICE NG198 Gallstone Disease" is actually the <i>acne</i> guideline, and stops trusting the whole site. This class of error is now cleared from all three content layers (protocols ✓ round 2, algorithms ✓ this round, quick-fix items ✓ round 1).</div>
+
+<h2><span class="n">2.</span>Representative corrections <span class="fixed">all applied</span></h2>
+<p>The full list is ~95 replacements across 100 files; the patterns:</p>
+<table>
+  <thead><tr><th>Pattern</th><th>Examples (cited → corrected)</th></tr></thead>
+  <tbody>
+    <tr><td><b>NG/CG prefix swaps</b></td><td>Fertility "NG156"→CG156 (×2 files) · Bedwetting "NG111"→CG111 · Delirium "NG193"→CG103 (×2) · Varicose veins "NG168"→CG168 · Neonatal jaundice "NG98"→CG98 (×3 spots) · Neutropenic sepsis "NG151"→CG151 · FH "NG71"→CG71 · Hip fracture "NG124/NG232"→CG124 · Psychosis "NG185"→CG178 · Bipolar "NG117"→CG185 · IBS "NG61"→CG61 (×2) · Autism "NG3"→CG128 · Obesity "NG17/NG189"→CG189</td></tr>
+    <tr><td><b>Numbers belonging to a different guideline</b></td><td>Gout cited as "CG177/CG56/NG120" (= OA / head injury / cough) → NG219 in 4 joint-pain pages · Falls cited as "NG147/NG191/NG15/PH56" (= diverticular / COVID / stewardship / vit D) → CG161 in 5 pages · Gallstones "NG198" (= acne) → CG188 · AMD "NG81" (= glaucoma) → NG82; Glaucoma "NG3" (= diabetes-in-pregnancy) → NG81 · Sepsis "NG27" → NG51 · NHL "NG51" → NG52 · SSI "NG45" → NG125 · HMB "NG14" (= melanoma) → NG88 · PAD "NG19" (= diabetic foot) → CG147 · Sickle cell ↔ CKD-anaemia numbers swapped (NG8/CG143) · T1DM/T2DM numbers swapped in paraesthesia (NG17/NG28) · Familial breast cancer "NG101/NG151" → CG164 (×3)</td></tr>
+    <tr><td><b>Superseded guidelines updated</b></td><td>MSCC CG75/"NG83"/"NG91" → <b>NG234 (2023)</b> in 5 pages · UTI in children CG54 (2007) → <b>NG224 (2022)</b> · AKI CG169 → NG148 · Suspected cancer in children "CG161" → NG12 · Postnatal care "NG192" → NG194 · Perinatal MH "NG4" → CG192 · Domestic violence "NG76" → PH50</td></tr>
+    <tr><td><b>Invented/nonexistent NICE guidelines re-attributed</b></td><td>"NICE GCA guideline" → BSR 2020 (×3 pages) · "NICE PCOS" → CKS/ESHRE (×3) · "NICE Sjögren CG136" → BSR 2017 · "NICE Bell's palsy CG186" → CKS · "NICE Kawasaki NG207" → RCPCH · "NICE STI testing CG253" → BASHH · "NICE hernia NG134/CG171" → CKS · Carpal tunnel "NG246" → CKS · Myeloma treatment "NG122" → BSH</td></tr>
+    <tr><td><b>Leftover clinical currency</b></td><td>Last 4 <b>ranitidine</b> recommendations removed (urticaria add-on, magnesium-deficiency ×2, allergy-test up-dosing ladder) — all now famotidine with withdrawal note · <b>ABCD2</b> triage phrase removed from paraesthesia red-flag tile · <b>IAPT → NHS Talking Therapies</b> in 68 more algorithm files (correct "formerly IAPT" formulations preserved)</td></tr>
+  </tbody>
+</table>
+
+<h2><span class="n">3.</span>Verified correct — worth trusting</h2>
+<div class="card"><p style="font-size:.9rem">The sweep also positively confirmed a lot of impressively current citations: <b>NG239</b> (B12/folate, 2024) in two pages · <b>NG243</b> (adrenal insufficiency, 2024) in sick-day-rules · <b>NG233</b> (otitis media with effusion, 2023) · <b>NG234</b> (MSCC 2023) in the dedicated MSCC page · <b>DG56</b> FIT (from round 1's fix) · <b>TA922</b> daridorexant · <b>TA875</b> semaglutide · patiromer/SZC TAs in hyperkalaemia · the full lipid TA set (ezetimibe, PCSK9s, bempedoic acid, inclisiran) · CG109 TLoC · NG52 NHL · NG132 hyperparathyroidism · NG126 ectopic pregnancy. The 2WW/NG12 discipline remains consistently excellent across all 270 pages.</p></div>
+
+<h2><span class="n">4.</span>What remains <span class="todo">queued</span></h2>
+<ul>
+  <li><b>Cases layer</b> (108 case walkthroughs in <code>cases/</code> + 312 SCA cases in <code>assets/sca-cases*.js</code> + articles/audios data): IAPT naming (~15 case pages + several data files) and the same citation-verification treatment. This is the last unaudited layer.</li>
+  <li><b>Review-date stamps</b> on every clinical page — still the single highest-value trust fix (round 1 P0).</li>
+  <li>Minor: BPE protocol oxybutynin frail-elderly caution; hrt-menopause's QRISK2 mention is fine (it's a correct comparative statement).</li>
+</ul>
+
+<h2><span class="n">5.</span>Upload</h2>
+<div class="card"><p style="font-size:.9rem">This round touched <b>~150 files, all inside <code>tools/algorithms/</code></b>. Simplest safe upload: re-upload the whole <code>tools/algorithms/</code> folder (plus <code>tools/algorithms.html</code> and the round-1/round-2 lists if not yet done). No shared JS/CSS changed this round — no <code>site.js</code> version bump needed.</p></div>
+
+</div>
+</body>
+</html>

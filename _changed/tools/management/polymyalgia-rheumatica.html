@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Polymyalgia Rheumatica — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="PMR management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🦴",
+  title:"Polymyalgia Rheumatica",
+  stemTitle:"Confirmed Polymyalgia Rheumatica — ongoing management",
+  stemSub:"Primary-care management of PMR \u2014 the steroid response that confirms the diagnosis, the slow tapering regimen with bone protection, monitoring for relapse and steroid harm \u2014 with the giant cell arteritis safety net. CKS / BSR \u00b7 2026.",
+  guideline:"NICE CKS / BSR",
+  glance:[
+    {lbl:"First-line", val:"Prednisolone 15 mg", sub:"dramatic response"},
+    {lbl:"Response", val:"~70% in 1 week", sub:"poor response = rethink"},
+    {lbl:"Taper", val:"Over ~1\u20132 years", sub:"slowly, by regimen"},
+    {lbl:"Always", val:"Bone protection", sub:"+ steroid card"},
+    {lbl:"Monitor", val:"ESR/CRP + symptoms", sub:"+ steroid harms"},
+    {lbl:"Emergency", val:"GCA", sub:"visual loss \u2192 same-day"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm clinically and exclude mimics + GCA",
+      blocks:[
+        {b:"kv", rows:[
+          ["Clinical picture","Age \u226550, bilateral shoulder \u00b1 pelvic-girdle pain + morning stiffness &gt;45 min, raised ESR/CRP"],
+          ["Confirm by response","A <b>dramatic response</b> to low-dose steroid within a week supports the diagnosis"],
+          ["Exclude mimics","RA, malignancy, infection, hypothyroidism, myositis (CK), late-onset inflammatory arthritis"],
+          ["Pre-steroid bloods","FBC, ESR/CRP, U&amp;E, LFT, TFT, CK, calcium, glucose, protein electrophoresis, RF/anti-CCP, urine dip"]
+        ]},
+        {b:"warn", html:"<b>Always screen for giant cell arteritis</b> (new headache, scalp tenderness, jaw claudication, visual symptoms) \u2014 it coexists with PMR and threatens sight. GCA needs <b>immediate high-dose steroid + same-day referral</b>."},
+        {b:"why", html:"PMR is a clinical diagnosis confirmed retrospectively by the steroid response \u2014 a <em>poor</em> response should make you doubt the diagnosis, not just increase the dose. The pre-steroid blood panel exists to catch the mimics (myeloma, malignancy, myositis) that masquerade as girdle pain before you commit to a year or more of steroids."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Support the steroid course",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🦴 Bone health", html:"Calcium/vit D and bone protection from the outset (long steroid course \u2014 see drugs)."},
+          {t:"🪪 Steroid card", html:"Issue a steroid emergency card; teach sick-day rules and never stop abruptly."},
+          {t:"🏃 Activity", html:"Gentle exercise to maintain muscle and joint function as pain settles."},
+          {t:"⚖️ Weight & diet", html:"Anticipate steroid appetite/weight gain and glucose effects \u2014 dietary advice."},
+          {t:"💉 Vaccination", html:"Keep immunisations up to date; avoid live vaccines on higher-dose steroids."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication", title:"Steroids \u2014 induce, then taper slowly",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Start", title:"Prednisolone 15 mg daily", when:"reassess at 1 week",
+           html:"Expect marked improvement within a week. If no meaningful response, <b>reconsider the diagnosis</b> before escalating."},
+          {step:"Taper", title:"Reduce slowly", when:"per BSR regimen",
+           fromLabel:"once symptoms controlled + inflammatory markers settled",
+           html:"Gradually reduce (e.g. to 10 mg over ~8 weeks, then by 1 mg every 4\u20138 weeks) over <b>1\u20132 years</b>, guided by symptoms not ESR/CRP alone."},
+          {step:"Relapse", title:"Step back up", when:"smallest effective increase",
+           fromLabel:"symptoms recur on tapering",
+           html:"Return to the last effective dose; taper more slowly thereafter. Frequent relapse \u2192 steroid-sparing agent."},
+          {step:"Steroid-sparing", title:"Methotrexate", when:"specialist \u2014 relapsing/steroid-dependent",
+           fromLabel:"multiple relapses / steroid toxicity",
+           html:"Consider methotrexate via rheumatology for relapsing or steroid-dependent disease."}
+        ]},
+        {b:"kv", rows:[
+          ["Bone protection","Co-prescribe a bisphosphonate + calcium/vit D (prolonged steroid course \u2014 high fracture risk)"],
+          ["Gastroprotection","PPI if indicated (GI risk, NSAID use)"]
+        ]},
+        {b:"warn", html:"<b>Never stop steroids abruptly</b> (adrenal crisis). Steroid harms accumulate \u2014 monitor BP, glucose, weight, bone, mood, infection risk throughout."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Response, relapse and steroid harm",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Symptoms + ESR/CRP","Each review (more during taper)","Guide tapering; relapse \u2192 step back up"],
+          ["BP, glucose, weight","Regularly","Steroid-induced hypertension/diabetes \u2014 treat"],
+          ["Bone / fracture risk","At start + ongoing","Ensure bone protection in place"],
+          ["GCA features","Every contact","New headache/visual/jaw symptoms \u2192 emergency"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"1 week", title:"Confirm response", html:"Marked improvement supports PMR; poor response \u2192 reconsider diagnosis."},
+          {n:"2", when:"Through the taper (e.g. 0,1\u20133,6 weeks then regularly)", title:"Tapering reviews", html:"Reduce per regimen guided by symptoms; monitor steroid side effects."},
+          {n:"3", when:"Ongoing to ~1\u20132 years", title:"Long-term review", html:"Aim to withdraw steroids; manage relapses; bone and metabolic surveillance."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not responding / relapsing? Re-check",
+      arrow:"\u2026if response is poor or symptoms relapse",
+      intro:"A poor steroid response is a diagnostic alarm, not a dosing problem.",
+      checks:[
+        {b:"1 \u00b7 Diagnosis", html:"Poor response \u2192 reconsider \u2014 RA, malignancy, infection, myositis."},
+        {b:"2 \u00b7 GCA", html:"New cranial/visual symptoms \u2192 treat as GCA urgently."},
+        {b:"3 \u00b7 Taper speed", html:"Relapsing on tapering \u2192 slow the taper; return to last effective dose."},
+        {b:"4 \u00b7 Adherence", html:"Confirm steroid taken; address side-effect-driven non-adherence."},
+        {b:"5 \u00b7 Steroid-sparing", html:"Frequent relapse/toxicity \u2192 rheumatology for methotrexate."}
+      ],
+      back:"Diagnosis reconfirmed, GCA excluded \u2192 adjust taper / rheumatology referral"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Giant cell arteritis", html:"\u201cNew severe headache, scalp tenderness, jaw pain on chewing, or ANY visual change \u2014 seek same-day help; sight can be lost permanently.\u201d"},
+          {t:"💊 Don\u2019t stop steroids", html:"\u201cNever stop steroids suddenly \u2014 carry your steroid card, and double the dose if seriously unwell (sick-day rules).\u201d"},
+          {t:"🦠 Infection", html:"\u201cSteroids mask infection \u2014 report fevers or feeling unwell.\u201d"},
+          {t:"🦴 Bones", html:"\u201cTake your bone-protection tablets \u2014 long steroid courses weaken bones.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"emergency for GCA; rheumatology for atypical/relapsing",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Suspected GCA, especially with visual symptoms \u2192 same-day high-dose steroid + urgent referral."},
+          {t:"Diagnostic doubt", html:"Atypical features, poor steroid response, age &lt;50, or abnormal screening bloods."},
+          {t:"Relapsing / steroid-dependent", html:"Frequent relapses or steroid toxicity \u2192 rheumatology (methotrexate)."},
+          {t:"Complications", html:"Significant steroid complications needing specialist input."}
+        ]},
+        {b:"say", html:"The good news is PMR usually responds dramatically to a steroid \u2014 you should feel much better within a week. We\u2019ll then reduce it slowly over a year or more, protect your bones, and I\u2019ll explain the warning signs of a related eye condition you must act on immediately."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Childhood MSK Presentations · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="../assets/medchooser.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+.tag-2ww{background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;font-weight:700}
+.tag-emerg{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;font-weight:700}
+</style>
+</head>
+<body class="mode-both" id="bodyEl" data-screen-label="Childhood MSK Presentations">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="childhood-msk"></aside>
+  <main class="main">
+<div class="case-head">
+  <div>
+    <div class="ch-cat">Paediatrics · Full case</div>
+    <h1>Childhood MSK Presentations</h1>
+  </div>
+  <div class="case-head-tags"><span class="tag tag-teal"><span class="tag-dot dot-teal"></span>pGALS</span><span class="tag">Benign vs inflammatory vs sinister</span><span class="tag tag-emerg">Septic · JIA · cancer</span></div>
+</div>
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">CM</div>
+      <div><div class="tb-title">Childhood MSK Presentations · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · pGALS screen · growing pains vs JIA vs malignancy · joint vs bone vs soft tissue · hypermobility · the hip refers to the knee · NG12 paediatric red flags</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">Most is benign — but screen out the serious</span><span class="ns-lbl">The majority of childhood MSK complaints are benign (mechanical/sports injury, hypermobility, growing pains) — but the task is to confidently exclude the serious: septic arthritis/osteomyelitis, juvenile idiopathic arthritis, malignancy (leukaemia/bone tumour), SUFE/Perthes', and non-accidental injury</span></div>
+    <div class="ns-item"><span class="ns-val">pGALS in &lt;5 minutes</span><span class="ns-lbl">The paediatric Gait, Arms, Legs, Spine (pGALS) screen is a quick, validated MSK examination for children — watch gait, then screen each region for restricted/painful movement. An abnormal pGALS prompts a focused regional (pREMS) exam and consideration of referral</span></div>
+    <div class="ns-item"><span class="ns-val">Growing pains: a specific, benign pattern</span><span class="ns-lbl">Growing pains are BILATERAL, in the legs (calves/shins/thighs, not joints), in the EVENING/NIGHT, never present in the morning, never cause a limp or limit activity by day, with a completely NORMAL examination. Anything outside this pattern is NOT growing pains — investigate</span></div>
+    <div class="ns-item"><span class="ns-val">🔴 Septic arthritis = emergency</span><span class="ns-lbl">A hot, swollen, very painful joint the child won't move, with fever/systemic upset → septic arthritis until proven otherwise — same-day assessment, aspiration and IV antibiotics. Kocher criteria help differentiate from transient synovitis; don't be reassured by a normal X-ray</span></div>
+    <div class="ns-item"><span class="ns-val">JIA: persistent &gt;6 weeks</span><span class="ns-lbl">Juvenile idiopathic arthritis = joint swelling/stiffness persisting &gt;6 weeks in a child under 16. Morning stiffness/gelling, limp, a swollen joint, or asymptomatic uveitis. Refer to paediatric rheumatology; early treatment prevents joint damage and protects the eyes (uveitis screening)</span></div>
+    <div class="ns-item"><span class="ns-val">🟣 Bone pain + systemic = cancer</span><span class="ns-lbl">Persistent bone pain, night pain, bone tenderness, an atypical limp, with pallor, bruising/petechiae, hepatosplenomegaly, lymphadenopathy, fever or weight loss → very urgent FBC + immediate paediatric referral for leukaemia/bone tumour (NICE NG12). Pain disproportionate to signs is a clue</span></div>
+    <div class="ns-item"><span class="ns-val">The hip refers to the knee</span><span class="ns-lbl">A child with knee/thigh pain and a normal knee must have the HIP examined — SUFE (overweight adolescent, externally rotated leg) and Perthes' (insidious limp, restricted hip) present with knee pain. Reason by age (see the Childhood Limp pathway)</span></div>
+    <div class="ns-item"><span class="ns-val">Hypermobility &amp; sports injuries</span><span class="ns-lbl">Generalised joint hypermobility (Beighton score) causes activity-related aches, clicks and recurrent sprains — managed with strengthening/physiotherapy and reassurance. Acute sports injuries (sprains, apophysitis e.g. Osgood-Schlatter, fractures) are common — examine, treat, and consider growth-plate injury</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Childhood MSK Presentations</div>
+  <div class="stem-title">A 6-year-old brought with months of intermittent leg pains that her mother has been told are "growing pains" — but who now has a morning limp, a swollen knee, and looks pale and tired</div>
+  <div class="stem-text">Maya Patel, 6, is brought by her mother with several months of intermittent leg pains. A previous clinician called them "growing pains". But over the past few weeks the pattern has changed: she now limps in the mornings, complains of a stiff, swollen right knee that's better as the day goes on, and has been more tired and pale, off her food. There's no clear injury. Her mother is reassured it's "just growing pains" but is worried by the limp and the tiredness. On examination Maya has a swollen, warm right knee with reduced movement, an antalgic morning gait, and looks pale with a couple of unexplained bruises. She is afebrile today.</div>
+  <div class="stem-note">This stem tests structured reasoning about childhood MSK complaints: recognising that this is NOT "growing pains" (which are bilateral, in the legs not joints, evening/night only, never cause a daytime limp or joint swelling, with a normal examination) but a pattern of persistent joint swelling with morning stiffness/gelling — suggestive of juvenile idiopathic arthritis — while ALSO recognising the systemic red flags (pallor, fatigue, anorexia, unexplained bruising) that mandate a very urgent FBC and immediate paediatric referral to exclude leukaemia (NICE NG12); applying the pGALS screen and a focused joint examination; reasoning through the broader differential (septic arthritis, reactive arthritis, malignancy, mechanical/hypermobility, SUFE/Perthes' with the hip-refers-to-knee rule); and referring appropriately (paediatric rheumatology for JIA with uveitis screening; urgent paediatrics/haematology for the red flags). The SCA challenge is to gently dislodge the inherited "growing pains" reassurance and act on a changed, concerning pattern.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — "Growing pains" that aren't (this stem)</strong> Persistent swollen joint + morning stiffness (JIA pattern) + systemic red flags (pallor/fatigue/bruising → leukaemia). pGALS; very urgent FBC + immediate paediatrics (NG12); paediatric rheumatology; don't accept "growing pains".</div>
+    <div class="stem-variant"><strong>Scenario B — True growing pains</strong> Bilateral leg (not joint) pain, evening/night, normal by day, normal exam, no limp. Reassure, explain, safety-net; review if the pattern changes.</div>
+    <div class="stem-variant"><strong>Scenario C — Septic arthritis (emergency)</strong> Hot, swollen joint, won't weight-bear, fever, unwell → same-day admission, aspiration, IV antibiotics (Kocher).</div>
+    <div class="stem-variant"><strong>Scenario D — JIA</strong> Joint swelling/stiffness &gt;6 weeks under 16; limp, gelling; refer paediatric rheumatology; uveitis screening; early treatment.</div>
+    <div class="stem-variant"><strong>Scenario E — Mechanical / hypermobility / sports</strong> Activity-related aches, clicks, recurrent sprains (hypermobility — Beighton; physio/strengthening); acute sprain/apophysitis (Osgood-Schlatter)/fracture/growth-plate injury; SUFE/Perthes' (hip refers to knee).</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Growing-pains pattern vs not; joint vs bone vs soft tissue; persistent (&gt;6 weeks → JIA) vs acute; systemic/cancer red flags (NG12); septic joint; hip refers to knee &amp; age-based (SUFE/Perthes'); hypermobility/sports injury; safeguarding/NAI; pGALS; the inherited reassurance.</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History — Is It Growing Pains? · Joint vs Bone · Persistence · Systemic Red Flags · ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The history's job is to test the inherited "growing pains" label against its specific benign pattern, characterise the complaint (joint vs bone vs soft tissue, acute vs persistent), and screen hard for the systemic red flags of malignancy and the features of inflammatory or septic joint disease.</strong> Maya's changed pattern — a swollen joint, a morning limp, pallor and fatigue — breaks the growing-pains rule and demands action.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 SCA framing — gently dislodge the wrong label</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"Growing pains are a real thing, but they have a very particular pattern — and a few things you've described, the swollen knee, the morning limp and the tiredness, don't fit that pattern. So I want to look into this properly rather than assume it's growing pains."</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Not accepting an inherited reassuring label when the pattern has changed is the pivotal reasoning — done respectfully, so the parent feels helped, not alarmed or contradicted.</div>
+    </div>
+    <div class="sub-divider">1A — The pattern, persistence and red flags</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"Tell me about the pains — where exactly, when they happen, and whether anything's changed recently."</em></td>
+            <td class="why"><strong>Lets the pattern declare itself.</strong> Maya's pain is now in a joint (the knee), with morning stiffness/limp and a recent change — the opposite of growing pains. The "what's changed?" question is what exposes the inadequacy of the old label.<span class="why-sub">In SCA: testing the complaint against the specific growing-pains pattern, and noticing it doesn't fit, is the core skill.</span></td>
+            <td><span class="chg chg-ddx">Joint swelling + morning stiffness → not growing pains</span></td>
+          </tr>
+          <tr><td class="q">Growing-pains pattern check<em>"Is it both legs or one? In the muscles or the joints? Evening/night or also in the morning? Does she limp or stop playing because of it?"</em></td><td class="why">Growing pains are bilateral, in the legs (not joints), evening/night only, never present in the morning, never cause a limp or limit daytime activity, with a normal exam. Maya fails every criterion (one swollen joint, morning stiffness, a limp) — so it is not growing pains and needs investigation.</td><td class="why">Fits the pattern → reassure; doesn't fit → investigate.</td><td><span class="chg chg-ddx">Pattern fail → organic cause</span></td></tr>
+          <tr><td class="q">Persistence &amp; inflammatory features (JIA)<em>"How long has the swelling/stiffness been there? Is she stiff first thing and 'gels' after rest, easing with movement?"</em></td><td class="why">Joint swelling/stiffness persisting &gt;6 weeks in a child under 16, with morning stiffness/gelling and a limp, is the picture of juvenile idiopathic arthritis — needing paediatric rheumatology and uveitis screening. The duration and the inflammatory rhythm are key.</td><td class="why">Persistent joint swelling + gelling → JIA → rheumatology + uveitis screen.</td><td><span class="chg chg-ref">JIA → paediatric rheumatology</span></td></tr>
+          <tr><td class="q">🚩 Systemic / cancer red flags<em>"Has she been pale, tired, off her food, lost weight, had fevers, night pain, easy bruising, or any lumps?"</em></td><td class="why"><strong>The safety core.</strong> Persistent bone/joint pain with pallor, fatigue, anorexia, unexplained bruising/petechiae, fever, night pain, weight loss, hepatosplenomegaly or lymphadenopathy mandates a very urgent FBC and immediate paediatric referral for leukaemia/bone tumour (NICE NG12). Maya's pallor, fatigue and bruising are exactly these flags. Pain out of proportion to signs is a clue.</td><td class="why">Systemic red flags → very urgent FBC + immediate paediatrics (NG12 leukaemia).</td><td><span class="chg" style="background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe">Red flags → urgent FBC + paeds (NG12)</span></td></tr>
+          <tr><td class="q">🚩 Septic joint / acute features<em>"Is the joint hot and very painful? Will she move it/weight-bear? Any fever or feeling unwell today?"</em></td><td class="why">A hot, swollen, very painful joint the child won't move, with fever/systemic upset, is septic arthritis — a same-day emergency (Kocher; aspiration + IV antibiotics). Maya is afebrile and her knee, while swollen, is part of a chronic picture — but septic arthritis must always be actively excluded.</td><td class="why">Hot joint + fever + won't move → septic arthritis emergency.</td><td><span class="chg chg-999">Septic features → same-day admission</span></td></tr>
+          <tr><td class="q">Mechanism, age &amp; safeguarding<em>"Was there any injury? Any knee or thigh pain (think hip)? Does the story fit — any concerns about how injuries happen?"</em></td><td class="why">Reason by age and remember the hip refers to the knee (SUFE/Perthes'). A clear mechanism suggests sports/mechanical/hypermobility causes. And always consider non-accidental injury where the history is inconsistent or there are other concerns.</td><td class="why">Trauma → mechanical/sports; knee pain → examine hip; inconsistent → safeguarding.</td><td><span class="chg chg-999">Inconsistent → safeguarding; knee pain → hip</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — the childhood MSK presentation you cannot miss</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">🟣 Persistent bone/joint pain + pallor/fatigue/bruising/fever/weight loss/lymphadenopathy</td><td class="rf-why">Leukaemia / bone tumour (Maya).</td><td><span class="rf-action" style="background:#6d28d9;color:#fff">Very urgent FBC + immediate paediatric referral — NICE NG12</span></td></tr>
+          <tr><td class="rf-flag">🔴 Septic arthritis / osteomyelitis — hot joint, won't move, fever, unwell</td><td class="rf-why">Joint destruction; sepsis; emergency.</td><td><span class="rf-action rfa-999">Same-day admission; aspiration + IV antibiotics (Kocher)</span></td></tr>
+          <tr><td class="rf-flag">Persistent joint swelling/stiffness &gt;6 weeks (JIA)</td><td class="rf-why">Joint damage; asymptomatic uveitis → blindness.</td><td><span class="rf-action rfa-same">Paediatric rheumatology; uveitis screening; early treatment</span></td></tr>
+          <tr><td class="rf-flag">Knee/thigh pain with a normal knee (SUFE/Perthes')</td><td class="rf-why">The hip refers to the knee; delay causes avascular necrosis.</td><td><span class="rf-action rfa-same">Examine the hip; urgent orthopaedics; X-ray (frog-lateral for SUFE)</span></td></tr>
+          <tr><td class="rf-flag">Not "growing pains" — unilateral, joint, daytime, limp, abnormal exam, systemic features</td><td class="rf-why">A serious cause mislabelled as benign.</td><td><span class="rf-action rfa-same">Don't accept the label; examine &amp; investigate</span></td></tr>
+          <tr><td class="rf-flag">Non-accidental injury — inconsistent history, other injuries, non-mobile child</td><td class="rf-why">Child protection.</td><td><span class="rf-action rfa-999">Safeguarding per local pathway</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What have you been told this is — and what do you think is going on now?"</div><div class="ice-why">Mum has been told "growing pains" and is reassured. Surfacing this lets you respectfully explain why the changed pattern (swollen joint, morning limp, tiredness) doesn't fit, so she understands why you're investigating rather than feeling alarmed or dismissed.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 Concerns</div><div class="ice-phrase">"You said the limp and the tiredness worry you — tell me more."</div><div class="ice-why">Her instinct that something has changed is correct and valuable. Validating it both builds trust and supports acting on the red flags.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"Let me explain what I'd like to check and why it needs doing soon."</div><div class="ice-why">She may expect reassurance. Naming this lets you explain the examination, the urgent blood test and referral, honestly but calmly — so she leaves with a clear plan rather than either false reassurance or panic.</div></div>
+    </div>
+    <div class="sub-divider">1D — Psychosocial context</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 The reassuring label, the worried parent's instinct, and the cancer that hides in "aches"</div>
+      <p>"Growing pains" is one of the most over-applied reassurances in paediatrics — comforting, usually right, and occasionally a label that lets juvenile arthritis or childhood leukaemia hide in plain sight for months. The safe clinician treats every childhood MSK complaint as a question to be answered, not a label to be inherited: testing it against the specific benign pattern, screening the systemic red flags, examining properly (pGALS), and trusting a parent's instinct that "something has changed" — because in children, that instinct is frequently the first and best sign that this is not benign.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>🔎 Respecting the instinct</h5><p>Validate the parent's sense that it's changed.</p><span class="ps-phrase">"You know Maya better than anyone, and you're right that this has changed — the swollen knee and the tiredness aren't part of simple growing pains, so let's look properly."</span></div>
+      <div class="ps-card"><h5>📏 The growing-pains rule</h5><p>Explain the specific pattern.</p><span class="ps-phrase">"Growing pains are aches in both legs, in the evening, with a completely normal child by day. A swollen joint and a morning limp don't fit, which is why I want to investigate."</span></div>
+      <div class="ps-card"><h5>⚖️ Thorough, not frightening</h5><p>Pitch the urgent tests proportionately.</p><span class="ps-phrase">"Most of the time these checks are reassuring. Given the tiredness and bruising, the responsible thing is an urgent blood test and a specialist review — being careful, not assuming the worst."</span></div>
+      <div class="ps-card"><h5>👁️ Why JIA matters</h5><p>Explain the eye link if arthritis is likely.</p><span class="ps-phrase">"If this is a type of childhood arthritis, it's very treatable — and it's important to catch early because it can affect the eyes silently, which the specialists screen for."</span></div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div><div class="sca-phrase">"A swollen joint and a morning limp aren't growing pains." — rejects the wrong label.</div><div class="sca-phrase">"Has she been pale, tired, bruising easily, or off her food?" — the leukaemia screen.</div><div class="sca-phrase">"Stiff first thing and easing with movement?" — the inflammatory (JIA) rhythm.</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Accepting "growing pains" despite the changed pattern</li><li>Not screening systemic/cancer red flags (NG12) or septic features</li><li>Not recognising the JIA pattern / persistence &gt;6 weeks</li><li>Forgetting the hip-refers-to-knee rule / safeguarding</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Accepts "growing pains"; no red-flag/septic screen; misses JIA pattern; no FBC/referral</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Doubts the label; some pattern/red-flag screen; JIA/leukaemia considered but action vague; ICE partial</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Rejects "growing pains" on the pattern; screens systemic red flags (NG12) + septic + JIA; very urgent FBC + paeds; hip/safeguarding considered; ICE all three</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage — Emergency (Septic/Cancer) · Urgent (JIA/SUFE) · Routine (Benign)</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Triage by danger: the septic joint and the leukaemia/cancer red flags are emergencies; persistent inflammatory arthritis (JIA) and SUFE/Perthes' are urgent referrals; and the benign mechanical/hypermobility/true-growing-pains group is managed/reassured in primary care — but only after the serious have been excluded.</strong> Maya sits in the emergency lane for the systemic red flags, with JIA the likely joint diagnosis.</div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div>
+        <h3>Same day</h3>
+        <span class="tc-badge tcb-e">Don't delay</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>🟣 Cancer red flags</strong><em>Bone pain + pallor/bruising/fatigue → very urgent FBC + immediate paeds (Maya)</em></li>
+          <li class="tc-item"><strong>Septic arthritis</strong><em>Hot joint + fever, won't move → admit</em></li>
+          <li class="tc-item"><strong>Immediate danger / safeguarding</strong><em>Per pathway</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Urgent</div>
+        <h3>Refer</h3>
+        <span class="tc-badge tcb-u">Specialist</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>JIA (&gt;6 weeks)</strong><em>Paediatric rheumatology; uveitis screen</em></li>
+          <li class="tc-item"><strong>SUFE / Perthes'</strong><em>Orthopaedics; hip X-ray</em></li>
+          <li class="tc-item"><strong>Persistent/atypical limp</strong><em>Paediatric assessment</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Routine</div>
+        <h3>Primary care</h3>
+        <span class="tc-badge tcb-r">After exclusion</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>True growing pains</strong><em>Reassure; explain; safety-net</em></li>
+          <li class="tc-item"><strong>Hypermobility</strong><em>Physio/strengthening; reassure</em></li>
+          <li class="tc-item"><strong>Sports/mechanical injury</strong><em>Treat; review</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Triage rationale</div><div class="sca-phrase">"Because Maya is pale and tired with a swollen joint, I need an urgent blood test today and to involve the paediatric team straight away — and if it points to arthritis, the children's joint specialists. This isn't something to watch and wait on."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Treating red-flag/septic presentations as routine</li><li>Not recognising JIA needs urgent specialist referral</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Examination — pGALS · The Joint · Hip · Systemic Signs</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Examination uses the pGALS screen (gait, arms, legs, spine), a focused look at the affected joint (swelling, warmth, range, effusion), the hip (because it refers to the knee), and a systemic examination for the signs of malignancy — pallor, bruising/petechiae, lymphadenopathy, hepatosplenomegaly.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🦵 MSK (pGALS &amp; joint)</div>
+        <table class="it">
+          <thead><tr><th>Step</th><th>What it shows</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Gait</td><td>Antalgic/limp; refusal to weight-bear (septic).</td></tr>
+            <tr><td class="factor">pGALS regional screen</td><td>Restricted/painful arms, legs, spine; abnormal → focused exam.</td></tr>
+            <tr><td class="factor">The affected joint</td><td>Swelling, warmth, effusion, reduced range (Maya: swollen warm knee).</td></tr>
+            <tr><td class="factor">The hip</td><td>Internal rotation — knee pain may be hip (SUFE/Perthes').</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🩺 Systemic / red flags</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Pallor, bruising/petechiae</td><td>Leukaemia (Maya).</td></tr>
+            <tr><td class="factor">Lymph nodes / hepatosplenomegaly</td><td>Malignancy.</td></tr>
+            <tr><td class="factor">Temperature / unwell</td><td>Septic arthritis/osteomyelitis.</td></tr>
+            <tr><td class="factor">Other joints, rash, eyes</td><td>JIA (multiple joints, uveitis), reactive arthritis.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Narration that scores</div><div class="sca-phrase">"I'll watch Maya walk and do a quick screen of all her joints, examine the swollen knee and her hips, and check her over generally — her colour, any glands or bruising — because that tells me whether this is a joint problem or something affecting the blood."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Examining only the knee; no pGALS/hip/systemic exam</li><li>Missing pallor/bruising/lymphadenopathy</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Investigations — Very Urgent FBC &amp; Film · Inflammatory Markers · Imaging</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The decisive investigation here is a very urgent FBC and blood film (to exclude leukaemia), with inflammatory markers; imaging and ultrasound are directed by the joint/hip findings — and many decisions (admit/refer) are clinical and shouldn't wait for results.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🧪 Bloods</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">FBC + blood film (very urgent)</td><td>Leukaemia — cytopenias/blasts (Maya's red flags) — NG12; children → immediate paeds.</td></tr>
+            <tr><td class="factor">CRP/ESR</td><td>Inflammation/infection (JIA, septic arthritis — Kocher).</td></tr>
+            <tr><td class="factor">LDH, urate</td><td>Tumour markers/lysis if malignancy suspected.</td></tr>
+            <tr><td class="factor">U&amp;E, LFTs, bone profile</td><td>General; bone lesions.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🩻 Imaging (directed)</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Ultrasound joint</td><td>Effusion (septic vs inflammatory).</td></tr>
+            <tr><td class="factor">X-ray</td><td>Hip (frog-lateral for SUFE), suspected fracture/bone lesion.</td></tr>
+            <tr><td class="factor">MRI / bone scan</td><td>Osteomyelitis, early Perthes', tumour (specialist).</td></tr>
+            <tr><td class="factor">Joint aspiration</td><td>Definitive for septic arthritis (in hospital).</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key reasoning</div><div class="sca-phrase">"I'll arrange a very urgent blood count and film today because of the tiredness and bruising — that checks for any problem in the blood — along with inflammation markers, and the paediatric team will arrange any scans."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not arranging an urgent FBC/film with the systemic red flags</li><li>Waiting for tests instead of referring/admitting where indicated</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Diagnosis — The Differential · Benign vs Inflammatory vs Sinister</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Place the presentation on the benign–inflammatory–sinister spectrum, and let persistence, the joint findings and the systemic red flags drive the decision.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:24%">Diagnosis</th><th>Discriminating features</th></tr></thead>
+        <tbody>
+          <tr><td class="q"><strong>🟣 Leukaemia / bone tumour</strong></td><td class="why">Persistent bone/joint pain + pallor/fatigue/bruising/fever/weight loss/lymphadenopathy; pain out of proportion (Maya's red flags).</td></tr>
+          <tr><td class="q"><strong>Juvenile idiopathic arthritis</strong></td><td class="why">Joint swelling/stiffness &gt;6 weeks, gelling, limp; uveitis risk (Maya's joint pattern).</td></tr>
+          <tr><td class="q"><strong>Septic arthritis / osteomyelitis</strong></td><td class="why">Hot joint, won't move, fever, unwell — emergency.</td></tr>
+          <tr><td class="q"><strong>Reactive / post-viral arthritis, transient synovitis</strong></td><td class="why">Recent infection; self-limiting (exclusion).</td></tr>
+          <tr><td class="q"><strong>Mechanical / hypermobility / sports</strong></td><td class="why">Activity-related, clicks, sprains, apophysitis; normal systemic exam.</td></tr>
+          <tr><td class="q"><strong>True growing pains</strong></td><td class="why">Bilateral leg (not joint), evening/night, normal by day, normal exam.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ddx-card ddx-b" style="margin-bottom:4px">
+      <h4>🚩 Two diagnoses to act on at once</h4>
+      <p>Maya's formulation: a persistent inflammatory joint picture (likely JIA) AND systemic red flags (pallor, fatigue, unexplained bruising) that mandate excluding leukaemia first. The plan: a very urgent FBC and blood film with immediate paediatric referral (NG12) to exclude malignancy, and — if that is reassuring — paediatric rheumatology for JIA with uveitis screening. Crucially, do NOT accept the "growing pains" label, and exclude a septic joint. The systemic red flags take priority.</p>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Explaining it plainly</div><div class="sca-phrase">"This isn't growing pains. Maya's knee looks like a type of inflammation, which the children's joint specialists treat — but the tiredness and bruising mean I first need an urgent blood test to rule out a problem with the blood, and I'll involve the paediatric team straight away."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Settling on a benign label despite red flags</li><li>Pursuing JIA while ignoring the leukaemia screen</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc6">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">Referral — Immediate Paediatrics (Red Flags) · Rheumatology · Orthopaedics</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Referral is danger-led: immediate paediatrics (with a very urgent FBC) for the leukaemia/cancer red flags; same-day for septic arthritis; paediatric rheumatology for JIA (with uveitis screening); and orthopaedics for SUFE/Perthes'/structural causes.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="ref-table">
+        <thead><tr><th style="width:24%">Referral</th><th>Who / when</th><th style="width:20%">Urgency</th></tr></thead>
+        <tbody>
+          <tr><td><strong>🟣 Immediate paediatrics (NG12)</strong></td><td>Bone/joint pain + systemic red flags → very urgent FBC + immediate referral (leukaemia/tumour).</td><td><span class="rf-action" style="background:#6d28d9;color:#fff">Very urgent · NG12</span></td></tr>
+          <tr><td><strong>🔴 Emergency paediatrics/orthopaedics</strong></td><td>Septic arthritis/osteomyelitis.</td><td><span class="rf-action rfa-999">Same day</span></td></tr>
+          <tr><td><strong>Paediatric rheumatology</strong></td><td>Suspected JIA (joint swelling/stiffness &gt;6 weeks) — with uveitis screening.</td><td><span class="rf-action rfa-same">Urgent</span></td></tr>
+          <tr><td><strong>Orthopaedics</strong></td><td>SUFE, Perthes', structural/fracture.</td><td><span class="rf-action rfa-same">Urgent</span></td></tr>
+          <tr><td><strong>Physiotherapy / safeguarding</strong></td><td>Hypermobility/sports rehab; safeguarding where NAI suspected.</td><td><span class="rf-action rfa-same">As indicated</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Decisive action</div><div class="sca-phrase">"I'm going to organise an urgent blood test now and contact the paediatric team today so Maya is seen quickly — and if the joint is the main issue, the children's rheumatology team will take over, including checking her eyes."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Routine referral for red-flag/septic presentations</li><li>Not arranging uveitis screening with suspected JIA</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — By Cause · Reassure True Benign · Safety-Net · Support the Family</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Management is cause-specific: urgent investigation/referral for the serious (as for Maya); confident reassurance and explanation for true benign causes (growing pains, hypermobility, minor sports injury); analgesia and physiotherapy where appropriate; and clear safety-netting and family support throughout.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--g)">🎯 By cause</div>
+        <table class="it">
+          <thead><tr><th>Cause</th><th>Management</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Red flags / leukaemia (Maya)</td><td>Very urgent FBC + immediate paediatrics; don't delay; support the family.</td></tr>
+            <tr><td class="factor">Septic arthritis</td><td>Emergency admission; aspiration + IV antibiotics.</td></tr>
+            <tr><td class="factor">JIA</td><td>Paediatric rheumatology; DMARDs/steroids (specialist); uveitis screening; physio.</td></tr>
+            <tr><td class="factor">Hypermobility / sports / mechanical</td><td>Strengthening/physiotherapy, activity modification, analgesia; reassure.</td></tr>
+            <tr><td class="factor">True growing pains</td><td>Explain the benign pattern; reassure; safety-net.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🛡️ Cross-cutting</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Safety-net</td><td>Return if fever, won't weight-bear, joint hot/swelling, new bruising/pallor, or not improving.</td></tr>
+            <tr><td class="factor">Don't over-label benign</td><td>"Growing pains" only with the classic pattern and a normal exam, after exclusion.</td></tr>
+            <tr><td class="factor">Support the family</td><td>Explain clearly; involve parents; arrange transport/follow-up.</td></tr>
+            <tr><td class="factor">Review</td><td>Re-examine persistent/changed symptoms; reconsider the differential.</td></tr>
+            <tr><td class="factor">Analgesia</td><td>Weight-appropriate paracetamol/ibuprofen as needed.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">A plan that scores</div><div class="sca-phrase">"So for Maya: an urgent blood test now and the paediatric team today, with the joint specialists to follow if it's arthritis. (For a well child with true growing pains: I'd reassure you it's benign, explain the pattern, and ask you to come back if anything changes — a limp, swelling, fever or tiredness.) I'll sort the urgent steps and support you through it."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Over-labelling "growing pains" without exclusion / a normal exam</li><li>No safety-net; not supporting the family</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Childhood MSK — SCA Consultation Scorecard</div><div class="scorecard-sub">Not growing pains · pGALS · JIA · NG12 leukaemia red flags · septic · hip refers to knee</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Structured history</strong> — tests the growing-pains pattern; persistence; systemic screen</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>pGALS &amp; focused exam narrated</strong> — gait, screen, the joint, the hip</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Systemic examination</strong> — pallor, bruising, nodes, hepatosplenomegaly, temperature</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain-language explanation</strong> — explains why it isn't growing pains and the plan</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Reframes the inherited label respectfully</strong> — validates the parent's instinct</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Safety-net specific</strong> — fever/non-weight-bearing/new bruising-pallor/swelling → return</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plan + follow-up + closing question</strong> — clear plan, review, "anything else?"</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, diagnosis, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Recognises it is NOT growing pains</strong> — swollen joint + morning limp + abnormal exam break the benign pattern</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Screens systemic red flags &amp; arranges very urgent FBC + immediate paeds</strong> — pallor/fatigue/bruising → leukaemia (NG12)</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Recognises the JIA pattern</strong> — joint swelling/stiffness/gelling &gt;6 weeks → paediatric rheumatology + uveitis screen</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Excludes septic arthritis</strong> — hot joint/fever/won't move → emergency (Kocher)</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Uses pGALS</strong> — structured paediatric MSK screen</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Hip refers to knee / age-based</strong> — examines the hip in knee pain (SUFE/Perthes')</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Considers the full differential</strong> — reactive/hypermobility/sports; safeguarding</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Appropriate investigations</strong> — FBC/film, CRP/ESR; imaging directed; doesn't wait for tests to act</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Reassures true benign confidently</strong> — only with the classic pattern + normal exam (other scenarios)</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct overall plan &amp; disposition</strong> — urgent FBC + immediate paeds; JIA referral; septic excluded; don't accept the label</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decisions</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — the "growing pains" reassurance surfaced</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> — the parent's worry about the limp/tiredness acknowledged</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations addressed</strong> — reassurance reframed into urgent investigation</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Validates the parent's instinct</strong> — "you're right that this has changed"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Conveys urgency without alarm</strong> — calm, clear, proportionate</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Involves the child appropriately</strong> — speaks to Maya, not only the parent</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Checks understanding</strong> — confirms the plan and the safety-net</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Honest about uncertainty</strong> — explains the checks without false reassurance</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Practical support</strong> — what to expect, transport, follow-up</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Parent/child leave clear &amp; supported</strong> — understand the plan and urgency</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Collaborative close</strong> — plan agreed; safety-net/referral arranged</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">Accepts "growing pains"; no systemic/septic screen; JIA missed; no FBC/referral; no safety-net</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">Doubts the label; some pattern/red-flag screen; pGALS partial; action vague; ICE partial</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Rejects "growing pains"; pGALS + systemic exam; very urgent FBC + immediate paeds (NG12); JIA → rheumatology + uveitis; septic excluded; hip/safeguarding; ICE all three</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist to see your score and feedback</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked — areas to develop</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise (the mother)</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"We were told it's just growing pains, but I'm not so sure anymore — Maya's started limping in the mornings and her knee looks swollen, and she's been so pale and tired lately. Is it just growing pains, do you think?"</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are (Maya's mother)</h5><p>You've brought your daughter Maya, 6, who has had intermittent leg pains for months — previously called "growing pains". But it's changed: she now limps in the mornings, has a stiff, swollen right knee that eases as the day goes on, and has been more tired, pale and off her food. No injury. You were reassured before, but your instinct says something's different. On examination Maya's right knee is swollen and warm with reduced movement; she's pale with a couple of unexplained bruises; she's afebrile today.</p></div>
+      <div class="ab"><h5>Hidden concerns (reveal if explored)</h5><p><strong>Trust your instinct:</strong> you feel this isn't growing pains anymore but worry about "making a fuss".</p><p><strong>Fear of something serious:</strong> the tiredness and bruising frighten you; you respond to calm honesty.</p><p><strong>Relief at being taken seriously:</strong> if the doctor validates your worry, you feel reassured even as they investigate.</p></div>
+      <div class="ab"><h5>Clinical details if asked</h5><ul><li>Months of leg pains; recent change: morning limp, swollen stiff knee (better through the day), tiredness, pallor, poor appetite</li><li>No injury; no fever today; a couple of unexplained bruises</li><li>Swollen warm right knee with reduced movement; antalgic morning gait; pale</li><li>No recent foreign travel; previously well; immunisations up to date</li></ul></div>
+      <div class="ab"><h5>Reactions at key moments</h5><ul><li><strong>If the doctor agrees it's "just growing pains" and reassures you home:</strong> you're falsely reassured — so a strong candidate must NOT do this and should investigate.</li><li><strong>On "this isn't growing pains, let's look properly":</strong> relieved you're taken seriously.</li><li><strong>On the urgent blood test + paediatric referral:</strong> anxious but reassured by the calm explanation.</li><li><strong>On the eye/arthritis explanation:</strong> you appreciate the thoroughness.</li><li><strong>Challenge line:</strong> "But the last doctor was sure it was growing pains — are you saying it might be something serious?"</li></ul></div>
+    </div>
+    <div class="actor-challenge">"The last doctor was so sure it was just growing pains — are you saying that was wrong, and it could be something serious?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> The consultation succeeds if the GP: (1) recognises that this is NOT growing pains (which are bilateral leg, evening/night, normal by day, with a normal exam) but a persistent inflammatory joint picture (likely JIA) with a changed pattern; (2) screens and acts on the systemic red flags (pallor, fatigue, unexplained bruising) with a very urgent FBC + blood film and immediate paediatric referral to exclude leukaemia (NICE NG12), and excludes septic arthritis; (3) examines properly (pGALS, the joint, the hip, systemic signs); (4) refers to paediatric rheumatology for suspected JIA with uveitis screening; (5) validates the parent's instinct, conveys urgency calmly, and safety-nets. It fails if the GP accepts the inherited "growing pains" label and reassures the family home.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Childhood MSK — Clinical Decision Framework</div><div class="sum-sub">pGALS · benign vs inflammatory vs sinister</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🧭 1 — Is it benign?</div>
+    <div class="card" style="padding:.8rem 1rem;margin-bottom:1rem"><p style="font-size:12.5px;line-height:1.6"><strong>Growing pains</strong> = bilateral, legs (not joints), evening/night, normal by day, no limp, normal exam. <strong>Anything else → investigate.</strong> Use <strong>pGALS</strong> (gait/arms/legs/spine). The hip refers to the knee (examine the hip in knee pain — SUFE/Perthes'). Hypermobility (Beighton) and sports injuries are common benign causes.</p></div>
+    <div class="sum-sub-hdr">🚩 2 — Exclude the serious</div>
+    <div class="card" style="padding:.8rem 1rem"><p style="font-size:12.5px;line-height:1.6"><strong>🔴 Septic arthritis</strong> (hot joint, won't move, fever → admit; Kocher). <strong>🟣 Leukaemia/bone tumour</strong> (persistent bone/joint pain + pallor/bruising/fatigue/fever/weight loss/lymphadenopathy → very urgent FBC + immediate paediatrics, NG12). <strong>JIA</strong> (joint swelling/stiffness &gt;6 weeks → paediatric rheumatology + uveitis screening). <strong>SUFE/Perthes'</strong> (knee pain, examine hip → orthopaedics). Consider <strong>NAI/safeguarding</strong>. Safety-net; don't over-label "growing pains".</p></div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label">SCA Quick Reference</div><div class="sum-title">Childhood MSK — Consultation Playbook</div><div class="sum-sub">Not growing pains · pGALS · exclude septic/cancer/JIA</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🎯 The three pivots that pass this case</div>
+    <div class="sum-3col">
+      <div class="snp-phrase-box snp-e"><div class="snp-lbl">1 · Test the label</div><div class="snp-text">Growing pains are bilateral/legs/evening/normal-by-day/normal-exam. A swollen joint, morning limp or systemic features = NOT growing pains.</div></div>
+      <div class="snp-phrase-box snp-m"><div class="snp-lbl">2 · Exclude the serious</div><div class="snp-text">Septic joint (emergency); systemic red flags → very urgent FBC + immediate paeds (NG12 leukaemia); JIA &gt;6 weeks → rheumatology + uveitis.</div></div>
+      <div class="snp-phrase-box snp-a"><div class="snp-lbl">3 · pGALS &amp; the hip</div><div class="snp-text">Screen with pGALS; examine the hip in knee pain (SUFE/Perthes'); consider safeguarding; reassure true benign confidently.</div></div>
+    </div>
+    <div class="sdp-pivot" style="margin-top:1rem;font-size:11.5px;background:#fef3c7;color:#854d0e;border-radius:8px;padding:.6rem .85rem;line-height:1.5">⛔ Don't accept "growing pains" when the pattern doesn't fit (joint swelling, daytime limp, systemic features) · Don't miss the leukaemia red flags (very urgent FBC + paeds, NG12) or a septic joint · Don't forget JIA (&gt;6 weeks → rheumatology + uveitis screening) · Don't forget the hip refers to the knee · Use pGALS; consider safeguarding; safety-net</div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Childhood MSK Presentations · GP Clinical Reasoning Framework v2</strong> · pGALS/pREMS · NICE NG12 (children — leukaemia/bone sarcoma) · BSPAR (JIA) · NICE CKS (limp, JIA) · childhood-limp pathway</p>
+  <p style="margin-top:4px">Most childhood MSK is benign, but confidently exclude the serious · Growing pains have a specific pattern (bilateral, legs not joints, evening/night, normal by day, no limp, normal exam) — anything else, investigate · Use pGALS; the hip refers to the knee (examine the hip in knee pain — SUFE/Perthes') · Septic arthritis (hot joint, won't move, fever) = same-day emergency · Persistent joint swelling/stiffness &gt;6 weeks = JIA → paediatric rheumatology + uveitis screening · Bone/joint pain + pallor/bruising/fatigue/fever/weight loss/lymphadenopathy → very urgent FBC + immediate paediatrics (NG12 leukaemia/bone tumour) · Hypermobility/sports injuries are common; consider safeguarding; safety-net and don't over-label "growing pains"</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current NICE CKS/NG12 and local paediatric pathways · Clinical judgement takes precedence over any framework</p>
+</div>
+</div><!-- /page -->
+  </main>
+</div><!-- /app -->
+<script src="script.js"></script>
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
+</body>
+</html>

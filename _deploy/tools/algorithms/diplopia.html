@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Diplopia Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;
+  --diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;
+  --treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;
+  --refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;
+  --lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
+  --font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif;
+}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#0f2744 0%,#1a4a7a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#1a6faf,#16a34a);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555;transition:.2s}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.kv{display:grid;grid-template-columns:minmax(130px,30%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}
+.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}
+.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}
+.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}
+.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}
+.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0;overflow:hidden}
+.rung:last-child{border-radius:0 0 7px 7px;overflow:hidden}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:60px;justify-content:center;white-space:nowrap}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#92400e}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px 0;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">👁️</div>
+  <div>
+    <b>Diplopia — New Presentation</b>
+    <small>Systematic GP assessment of double vision — monocular vs binocular, benign vs emergency</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — monocular vs binocular is the first split; binocular diplopia is a cranial-nerve or neurological problem until proven otherwise. Classify, treat the cause, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Double vision</span><div class="body">Monocular (persists covering one eye) vs binocular (resolves). Onset, variability, pain, associated neurology. Examine eye movements, pupils, lids.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — neurological emergency</span><span class="ttl">Neurological emergency?</span><div class="body">Binocular diplopia + headache/pupil involvement (3rd nerve palsy → ?aneurysm) · sudden onset · vertical diplopia · GCA · raised ICP · with other neurology (stroke/MS).</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency / urgent</span><div class="body">Painful 3rd nerve palsy with pupil involvement → emergency (aneurysm). Acute neurological diplopia → urgent.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination localise the cause.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · common causes</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Monocular</div><div class="box act"><span class="ttl">Ocular</span><div class="body">Refractive, cataract, dry eye, astigmatism; persists with one eye covered → optometry.</div></div></div><div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Binocular — cranial nerve</div><div class="box ix"><span class="ttl">Neurological</span><div class="body">3rd/4th/6th nerve palsy (microvascular vs compressive); fatigable → myasthenia.</div></div></div><div class="col"><div class="blabel">Binocular — other</div><div class="box ix"><span class="ttl">Investigate</span><div class="body">Thyroid eye disease, orbital lesion, stroke, MS.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> pupil-involving 3rd nerve palsy / acute neurological diplopia / GCA. <span class="pill pill-purple">Neurology / ophthalmology</span> binocular diplopia; <span class="pill pill-purple">optometry</span> monocular.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · treat cause &amp; support</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Treat the cause &amp; support</span><span class="ttl">By diagnosis</span><div class="body"><b>Monocular:</b> correct refractive error/cataract/dry eye via optometry. <b>Microvascular cranial-nerve palsy</b> (diabetes/hypertension): optimise glycaemic and BP control — most recover in 8–12 weeks. <b>Symptom relief:</b> temporary eye patch or prism; advise <b>not to drive</b> while diplopic (DVLA). <b>Myasthenia/thyroid eye disease:</b> specialist-directed treatment.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Recheck &amp; urgent return advice</span><div class="body"><b>Review</b> a presumed microvascular palsy at 8–12 weeks — if not resolving, or new signs appear, image and refer. <b>999 / same-day</b> for a <b>painful or pupil-involving 3rd-nerve palsy</b> (posterior communicating artery aneurysm), diplopia with other neurology (stroke, raised ICP), GCA features aged 50+, or fatigable/variable diplopia with bulbar/respiratory symptoms (myasthenic crisis). Advise not to drive until resolved.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>Binocular diplopia needs explaining:</b> a painful third-nerve palsy with a dilated pupil is a posterior communicating artery aneurysm until proven otherwise — an emergency.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Exclude Neurological & Vascular Emergencies</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Ask the critical question first: <b>Is diplopia monocular or binocular?</b> Cover one eye — if diplopia persists, it is monocular (ophthalmic cause). If it resolves, it is binocular (neurological/motility cause — always higher risk).
+    <div class="rfgrid">
+      <div class="rftile"><b>Sudden onset + headache</b> Thunderclap headache + diplopia → 999 (posterior communicating artery aneurysm — CN III palsy)</div>
+      <div class="rftile"><b>Ptosis + dilated pupil</b> CN III palsy — 80% of posterior communicating artery aneurysms present this way → 999 neurosurgery</div>
+      <div class="rftile"><b>Horner's syndrome</b> Ptosis + miosis + anhidrosis → same-day (carotid dissection, Pancoast tumour, brainstem lesion)</div>
+      <div class="rftile"><b>New-onset headache &gt;50 yrs</b> Temporal artery tenderness, jaw claudication → same-day CRP/ESR (Giant Cell Arteritis — ocular emergency)</div>
+      <div class="rftile"><b>Acute vertigo + ataxia</b> Diplopia + cerebellar signs → 999 (posterior circulation stroke — vertebrobasilar territory)</div>
+      <div class="rftile"><b>Facial weakness / dysarthria</b> Any associated neurological deficit → 999 (stroke, brainstem lesion)</div>
+      <div class="rftile"><b>Painful ophthalmoplegia</b> Orbital cellulitis, cavernous sinus thrombosis — proptosis, chemosis → 999</div>
+      <div class="rftile"><b>Rapidly progressive</b> Days to weeks, multiple cranial nerve palsies → same-day neurology (GBS Miller Fisher, meningeal carcinomatosis)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">A painful CN III palsy with pupil involvement is a posterior communicating artery aneurysm until proven otherwise — rupture risk is high and outcome is fatal without urgent intervention. Giant Cell Arteritis can cause permanent blindness within hours of diplopia onset — starting steroids urgently prevents bilateral visual loss. Posterior circulation strokes frequently present with diplopia and vertigo and are missed without a structured neurological assessment.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Monocular vs Binocular — First Diagnostic Step</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    This single question guides the entire diagnostic pathway.
+    <div class="kv">
+      <div>Cover test</div><div>Cover one eye — diplopia persists = monocular (refractive/ophthalmic); diplopia resolves = binocular (muscle or nerve problem)</div>
+      <div>Monocular diplopia</div><div>Refractive error (most common), cataract, corneal irregularity, retinal disease, dry eye — refer to optometrist / ophthalmology (non-urgent unless painful)</div>
+      <div>Binocular diplopia — horizontal</div><div>CN VI palsy (lateral rectus failure): image separation worse in lateral gaze to affected side. Hypertension, diabetes, microvascular most common causes</div>
+      <div>Binocular diplopia — vertical</div><div>CN IV palsy (superior oblique failure): worse going downstairs, tilting head. Microvascular (diabetic) or trauma. Skew deviation → brainstem</div>
+      <div>Binocular diplopia — any direction</div><div>CN III palsy: ptosis, eye deviated down and out. Pupil involvement = surgical emergency. Pupil-sparing = likely microvascular (safer)</div>
+      <div>Intermittent diplopia</div><div>Myasthenia gravis (fatiguable, worse in evening), thyroid eye disease, decompensating phoria — refer ophthalmology / neurology</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Monocular diplopia is almost always benign and ophthalmic. Binocular diplopia always indicates failure of ocular motor alignment — cranial nerve palsy, extraocular muscle disease, or brainstem pathology — and requires neurological assessment. Pupil involvement in CN III palsy is the key distinguishing feature: the pupilloconstrictor fibres travel on the outside of CN III and are compressed first by aneurysms but spared in ischaemic (microvascular) palsies.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis by Cranial Nerve</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Identify which cranial nerve is affected — this guides aetiology.
+    <div class="kv">
+      <div>CN III palsy</div><div>Eye down and out, ptosis, large pupil (aneurysm) or normal pupil (microvascular). Causes: PComm aneurysm, DM, HTN, raised ICP</div>
+      <div>CN IV palsy</div><div>Vertical diplopia, worse going downstairs, chin tuck. Head tilt to opposite shoulder compensates. Causes: trauma (most common), microvascular, congenital decompensation</div>
+      <div>CN VI palsy</div><div>Horizontal diplopia, worse looking to affected side, eye cannot abduct. Causes: microvascular (DM/HTN), raised ICP (false localising sign — urgent MRI), MS, tumour</div>
+      <div>Internuclear ophthalmoplegia</div><div>Adduction failure of one eye, nystagmus in abducting eye → brainstem lesion (MS in young, stroke in elderly)</div>
+      <div>Myasthenia gravis</div><div>Variable, fatiguable ptosis and diplopia, worse with sustained upgaze, improves with rest. Ice pack test positive. Anti-AChR antibodies.</div>
+      <div>Thyroid eye disease</div><div>Proptosis, lid retraction, restricted upgaze (inferior rectus fibrosis). TSH, TFTs. Refer to ophthalmology + endocrinology</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Isolated CN VI palsy in a hypertensive or diabetic patient aged 50–70 is usually microvascular and resolves in 8–12 weeks. However, CN VI palsy can be a false localising sign of raised ICP — urgent MRI is needed if there is no vascular risk factor. Myasthenia gravis is frequently missed (mean diagnostic delay 2 years) — fatiguability is the key clue. Internuclear ophthalmoplegia in a young patient is MS until proven otherwise.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Targeted Examination</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Visual acuity</div><div>Snellen chart both eyes — acuity loss suggests ophthalmic cause or optic nerve involvement</div>
+      <div>Pupils</div><div>Size, symmetry, light reflex, RAPD (relative afferent pupillary defect) — dilated unreactive pupil in CN III → aneurysm emergency</div>
+      <div>Ocular motility</div><div>Assess 9 cardinal positions of gaze. Document which direction worsens diplopia. Nystagmus in any direction.</div>
+      <div>Eyelids</div><div>Ptosis (CN III, Horner's, myasthenia), lid retraction (thyroid), fatiguability on sustained upgaze (myasthenia)</div>
+      <div>Proptosis / periorbital</div><div>Exophthalmos (thyroid), periorbital oedema and erythema (orbital cellulitis), pulsatile proptosis (AV fistula)</div>
+      <div>Full neuro exam</div><div>Facial sensation, other cranial nerves, limb tone/power/reflexes, cerebellar signs, gait — any deficit → urgent imaging</div>
+      <div>BP both arms</div><div>Hypertension → microvascular CN palsy most likely but does not exclude other cause</div>
+      <div>Temporal arteries</div><div>Tenderness, thickening, absent pulsation in patient &gt;50 with new headache → GCA screen</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Pupil examination is the single most important element in CN III palsy — pupil involvement changes management from watchful waiting to emergency neurosurgical referral. A full neuro examination allows detection of brainstem signs that would mandate immediate imaging. Temporal artery examination takes 30 seconds and prevents bilateral blindness from missed GCA. Examining eye movement in all 9 positions of gaze localises the affected muscle and cranial nerve.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Diagnose</span><h3>Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Bloods — all binocular</div><div><span class="pill pill-blue">FBC</span> <span class="pill pill-blue">ESR/CRP</span> (GCA if &gt;50) <span class="pill pill-blue">Glucose/HbA1c</span> <span class="pill pill-blue">TFTs</span> <span class="pill pill-blue">BP</span></div>
+      <div>Suspected GCA</div><div><span class="pill pill-blue">ESR</span> (often &gt;50) + <span class="pill pill-blue">CRP</span> — do NOT wait for results before starting steroids if clinical suspicion high</div>
+      <div>Suspected myasthenia</div><div><span class="pill pill-blue">Anti-AChR antibodies</span> (85% sensitive), <span class="pill pill-blue">Anti-MuSK</span> if seronegative. CT chest (thymoma screen). Refer neurology.</div>
+      <div>Neuroimaging</div><div>MRI brain/orbits — pupil-involving CN III, CN VI without vascular risk factors, INO, multiple palsies, progressive, young patient. CT angio if PComm aneurysm suspected.</div>
+      <div>NOT required</div><div>Routine neuroimaging for isolated pupil-sparing CN III or CN VI in known diabetic/hypertensive — resolve in 8–12 weeks. Re-image if not improved at 12 weeks or worsens.</div>
+      <div>Urgent imaging</div><div>Painful CN III with pupil involvement → CT angiography same day (sensitivity 90% for aneurysm &gt;3mm). Do not delay for MRI.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">ESR and CRP must be checked urgently in any patient over 50 with new diplopia and headache — GCA is a treatable emergency. Steroids should not wait for biopsy results if clinical suspicion is high. CT angiography is preferred over MRI angiography for acute PComm aneurysm detection because it is faster and more widely available. Isolated microvascular CN VI/IV palsies do not require imaging if there are clear vascular risk factors — this avoids unnecessary CT radiation and waiting times.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Refer</span><h3>Referral — Urgency by Diagnosis</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Painful CN III with dilated pupil (aneurysm), acute stroke signs, cavernous sinus thrombosis (proptosis + fever + pain), orbital cellulitis</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>GCA suspected — ophthalmology or rheumatology same-day. Horner's syndrome (carotid dissection). CN VI with no vascular RF. Painful ophthalmoplegia.</div>
+      <div><span class="pill pill-purple">Urgent neurology</span></div><div>Internuclear ophthalmoplegia, suspected myasthenia (fatiguable diplopia), multiple CN palsies, diplopia + vertigo/ataxia</div>
+      <div>Ophthalmology — urgent</div><div>CN IV palsy (trauma), thyroid eye disease with diplopia, persistent binocular diplopia needing prism assessment</div>
+      <div>Optometrist</div><div>Monocular diplopia without pain — refractive assessment. Decompensating phoria (intermittent in normal eye movements)</div>
+      <div>Routine ophthalmology</div><div>Stable, improving microvascular palsy not resolved by 12 weeks — orthoptist assessment and prism prescription</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">GCA requires same-day ophthalmology assessment because visual loss can occur within hours and high-dose steroids (prednisolone 60 mg or IV methylprednisolone) must be started immediately. Delaying by even one day risks the fellow eye. Painless isolated CN VI with diabetes/hypertension can be managed expectantly in primary care with 12-week monitoring, avoiding unnecessary neurology referrals. Prisms can significantly improve quality of life in stable diplopia.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>GP Management — Microvascular Palsy & Bridging Care</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Most definitive treatment is specialist-led. GP manages vascular risk and bridges with symptom relief.
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Microvascular CN palsy (DM/HTN)</div>
+        <div class="b-drug">Occlusive patch / prism</div>
+        <div class="b-note">Temporary adhesive patch over glasses lens. Refer orthoptist for Fresnel prism. Expected resolution 8–12 weeks.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">GCA confirmed (start immediately)</div>
+        <div class="b-drug">Prednisolone 60 mg OD</div>
+        <div class="b-note">Start before biopsy result. If visual loss present: IV methylprednisolone 500 mg–1 g (hospital). Bone protection with bisphosphonate + PPI.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Vascular risk factor optimisation</div>
+        <div class="b-drug">Treat HTN / diabetes</div>
+        <div class="b-note">Target BP &lt;130/80 mmHg. HbA1c &lt;53 mmol/mol (7%). Statin if cardiovascular risk &gt;10%.</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Driving</span><span class="rt">Advise patients with diplopia they must <b>not drive</b> until resolved or corrected with prism — DVLA obligation. Document advice given.</span></div>
+      <div class="rung"><span class="rn">Work / safety</span><span class="rt">Consider fitness for work involving heights, machinery, or driving. Fit note if needed.</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Microvascular CN palsies (CN III pupil-sparing, CN IV, CN VI in diabetics/hypertensives) resolve spontaneously in 85% of cases within 12 weeks as the ischaemic nerve recovers. During this period, occlusion of one eye eliminates diplopia functionally. DVLA regulations prohibit driving with diplopia — failure to advise patients creates medico-legal risk. GCA steroids must not be delayed: high-dose prednisolone reduces the risk of visual loss from 30% to under 5%.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Patient Advice & Risk Factor Management</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Driving advice</b> Must not drive until diplopia resolved or corrected with prism verified by optometrist. DVLA regulations apply. Document advice in notes.</div>
+      <div class="lstile"><b>Blood pressure control</b> Home BP monitoring. Target &lt;130/80 mmHg. Lifestyle: reduced salt, DASH diet, weight loss, alcohol reduction — reduces stroke risk 25–30%.</div>
+      <div class="lstile"><b>Diabetes management</b> Tight glycaemic control reduces microvascular CN palsy risk. HbA1c target &lt;53 mmol/mol. Foot, eye, and renal screening.</div>
+      <div class="lstile"><b>Smoking cessation</b> Smoking doubles risk of GCA and increases CVD risk. Refer to stop smoking service — Varenicline most effective (NNT 5).</div>
+      <div class="lstile"><b>Eye patch technique</b> Teach correct adhesive lens occlusion. Alternate eye daily if used long-term to prevent amblyopia (in children — urgent to avoid).</div>
+      <div class="lstile"><b>Fall prevention</b> Diplopia significantly increases falls risk especially on stairs and kerbs. Avoid driving, heights. Consider referral to falls team if elderly.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Vascular risk factor management is the primary prevention of microvascular CN palsies and reduces recurrence risk by ~40%. Patients frequently underestimate the functional impact of diplopia — fall risk is doubled and driving ability is abolished. In children, occlusion of one eye without alternating risks inducing amblyopia in the occluded eye — this is an ophthalmological emergency and requires urgent referral.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up & Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>2 weeks</div><div>Review: Is diplopia improving or worsening? New symptoms? Confirm DVLA advice given. Check BP, glucose if microvascular.</div>
+      <div>6 weeks</div><div>Reassess — most microvascular palsies improving by now. If worsening or new neurological symptoms → same-day neurology</div>
+      <div>12 weeks</div><div>Persistent diplopia → ophthalmology/neurology referral for imaging and orthoptist assessment regardless of previous decision</div>
+      <div>GCA review</div><div>2 weeks: ESR/CRP response to steroids. PMR clinic or rheumatology for long-term steroid taper plan (typically 1–2 years)</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>Worsening headache, pupil change, additional neurological symptoms (weakness, speech, collapse), loss of vision</div>
+      <div><span class="pill pill-amber">Same-day GP</span></div><div>Diplopia suddenly worsens, involvement of second eye, ptosis increases, facial numbness develops, or eye becomes painful</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The key safety-netting message: microvascular palsies should improve, not worsen. Any progression demands urgent imaging — a "reassured" patient who returns with worsening symptoms may have a compressive lesion that was missed on initial assessment. The 12-week threshold is the standard for ophthalmology/neurology referral of unresolved palsies. GCA monitoring is critical — steroid dose must be titrated to ESR/CRP response and symptoms, with relapses requiring dose increase.</div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on RCOphth guidelines on ocular motility disorders, NICE guidance on Giant Cell Arteritis (PMG13), British Neuro-Ophthalmology Society recommendations, and DVLA medical standards of fitness to drive (2023). Always adapt to individual patient context.
+</div>
+
+<script>
+(function(){
+  const STORE='rgp.alg.diplopia.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){const checks=[...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked);localStorage.setItem(STORE,JSON.stringify(checks));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');const boxes=[...flow.querySelectorAll('input[type=checkbox]')];boxes.forEach((c,i)=>{if(d[i])c.checked=true});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const expanded=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!expanded));btn.nextElementSibling.classList.toggle('open',!expanded);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

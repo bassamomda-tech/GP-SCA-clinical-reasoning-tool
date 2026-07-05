@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Resit Clinic · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<style>
+.tool-page{ padding:28px 32px 90px; max-width:920px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+.tool-head{ padding-bottom:16px; border-bottom:1px solid var(--line); margin-bottom:18px; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:34px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:8px; max-width:70ch; line-height:1.65; }
+.rc-kind{ border:1px solid #bbf7d0; border-left:5px solid #15803d; background:linear-gradient(90deg,#f0fdf4,#fff 60%); border-radius:12px; padding:13px 17px; font-size:13.4px; line-height:1.65; color:var(--ink-2); margin-bottom:20px; }
+.rc-kind b{ color:#14532d; }
+
+/* Stepper */
+.rc-steps{ display:flex; gap:6px; margin-bottom:20px; flex-wrap:wrap; }
+.rc-step{ flex:1; min-width:130px; border:1px solid var(--line); border-radius:11px; background:#fff; padding:9px 13px; font-size:12px; color:var(--muted); }
+.rc-step b{ display:block; font-size:12.5px; color:var(--ink-2); }
+.rc-step.now{ border-color:#0c4a47; box-shadow:0 0 0 2px #0c4a47; }
+.rc-step.now b{ color:var(--ink); }
+.rc-step.done{ background:#f0fdf4; border-color:#bbf7d0; }
+.rc-step.done b{ color:#15803d; }
+
+.rc-pane{ display:none; }
+.rc-pane.on{ display:block; }
+.rc-card{ border:1px solid var(--line); border-radius:15px; background:#fff; padding:19px 22px; margin-bottom:14px; }
+.rc-card h2{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:20px; margin-bottom:4px; }
+.rc-card .sub{ font-size:13px; color:var(--muted); margin-bottom:13px; line-height:1.55; }
+.rc-row{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px; align-items:center; }
+.rc-row label{ font-size:13px; font-weight:600; color:var(--ink-2); }
+.rc-row input[type="number"], .rc-row select{ font:inherit; font-size:13.5px; padding:8px 12px; border:1px solid var(--line); border-radius:9px; background:#fff; color:var(--ink); width:110px; }
+.rc-row select{ width:auto; }
+.rc-doms{ display:flex; gap:8px; flex-wrap:wrap; }
+.rc-dom{ font:inherit; font-size:12.5px; font-weight:700; padding:9px 16px; border-radius:999px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; }
+.rc-dom.sel{ background:#0c4a47; color:#f6f2e9; border-color:#0c4a47; }
+.rc-checks{ display:flex; flex-direction:column; gap:7px; }
+.rc-check{ display:flex; gap:10px; align-items:flex-start; border:1px solid var(--line); border-radius:10px; padding:10px 13px; cursor:pointer; font-size:13.2px; line-height:1.55; color:var(--ink-2); }
+.rc-check:hover{ border-color:#94a3b8; }
+.rc-check input{ margin-top:2px; accent-color:#0c4a47; flex-shrink:0; }
+.rc-check:has(input:checked){ background:#f0fdfa; border-color:#0c4a47; color:var(--ink); }
+.rc-check .dompill{ flex-shrink:0; font-size:9px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; border-radius:999px; padding:2px 8px; margin-top:2px; }
+.dompill.dg{ background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; }
+.dompill.cm{ background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; }
+.dompill.ro{ background:#fdf2f8; color:#be185d; border:1px solid #fbcfe8; }
+.dompill.gs{ background:#fffbeb; color:#b45309; border:1px solid #fde68a; }
+.rc-nav{ display:flex; gap:10px; margin-top:6px; }
+.rc-btn{ font:inherit; font-size:14px; font-weight:700; padding:11px 24px; border-radius:10px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; }
+.rc-btn:hover{ border-color:var(--ink-2); color:var(--ink); }
+.rc-btn.pri{ background:#0c4a47; color:#f6f2e9; border:none; }
+.rc-btn.pri:hover{ filter:brightness(1.12); }
+
+/* Diagnosis cards */
+.rc-dx{ border:1px solid var(--line); border-left:5px solid var(--dc); border-radius:13px; background:#fff; padding:15px 18px; margin-bottom:12px; }
+.rc-dx-hdr{ display:flex; gap:11px; align-items:baseline; flex-wrap:wrap; }
+.rc-dx-hdr .ic{ font-size:19px; }
+.rc-dx-hdr h3{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:18px; color:var(--ink); }
+.rc-conf{ margin-left:auto; font-size:10.5px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; border-radius:999px; padding:3px 11px; }
+.rc-conf.hi{ background:#fef2f2; color:#b91c1c; border:1px solid #fecaca; }
+.rc-conf.med{ background:#fffbeb; color:#b45309; border:1px solid #fde68a; }
+.rc-dx p{ font-size:13.2px; line-height:1.65; color:var(--ink-2); margin-top:7px; }
+.rc-dx .ev{ margin-top:9px; font-size:12.4px; line-height:1.6; color:var(--ink-2); background:#f8fafc; border:1px solid var(--line); border-radius:9px; padding:9px 12px; }
+.rc-dx .ev b{ color:var(--ink); font-size:11px; letter-spacing:.06em; text-transform:uppercase; }
+
+/* Plan */
+.rc-plan{ border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden; margin-bottom:14px; }
+.rc-wk{ display:flex; gap:14px; padding:13px 17px; border-bottom:1px solid #f1f5f9; }
+.rc-wk:last-child{ border-bottom:none; }
+.rc-wk .wk{ flex-shrink:0; width:80px; font-size:11px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--teal); padding-top:2px; }
+.rc-wk .wb{ flex:1; font-size:13.1px; line-height:1.65; color:var(--ink-2); }
+.rc-wk .wb b{ color:var(--ink); }
+.rc-wk .wb a{ color:var(--teal); font-weight:600; text-decoration:none; }
+.rc-rx-item{ display:flex; gap:9px; align-items:flex-start; padding:4px 0; }
+.rc-rx-item .ic{ flex-shrink:0; }
+.rc-ai-out{ font-size:13.4px; line-height:1.7; color:var(--ink); }
+.rc-ai-out h3{ font-family:'Source Serif 4',Georgia,serif; font-size:17px; margin:13px 0 5px; }
+@media print {
+  .sidebar,.sb-overlay,.rc-steps,.rc-nav,.tool-head,.rc-kind,.rc-noprint{ display:none !important; }
+  .app,.main{ display:block !important; }
+  .tool-page{ padding:0; max-width:none; }
+}
+</style>
+</head>
+<body>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-sca"></aside>
+  <main class="main">
+    <div class="tool-page">
+
+      <div class="tool-head">
+        <div class="tool-eyebrow">Reasoning GP · For resitters</div>
+        <h1>The Resit <em>Clinic</em></h1>
+        <p>A failed diet is a clinical presentation, and we treat it like one: a proper <b>history</b> (your results letter), an <b>examination</b> (honest symptoms), a set of <b>named diagnoses</b> with the evidence for each — and a <b>treatment plan</b> built for your specific failure pattern, not a generic "do more cases".</p>
+      </div>
+
+      <div class="rc-kind"><b>Read this first.</b> Around one in four candidates fails a diet, including excellent doctors — the SCA measures consulting habits, and habits are trainable. The worst response is shame-driven volume: re-running the same habits harder. The best response is exactly what you'd tell a patient: diagnose before treating. That's what this clinic does. Nothing you enter leaves this browser.</div>
+
+      <div class="rc-steps">
+        <div class="rc-step now" data-s="1"><b>1 · History</b>your results letter</div>
+        <div class="rc-step" data-s="2"><b>2 · Examination</b>the honest questionnaire</div>
+        <div class="rc-step" data-s="3"><b>3 · Diagnosis</b>named, with evidence</div>
+        <div class="rc-step" data-s="4"><b>4 · Treatment</b>your 8-week plan</div>
+      </div>
+
+      <!-- STEP 1 -->
+      <div class="rc-pane on" data-p="1">
+        <div class="rc-card">
+          <h2>Presenting complaint</h2>
+          <div class="sub">From your RCGP results breakdown. Skip anything you don't have — every field sharpens the diagnosis but none is required.</div>
+          <div class="rc-row">
+            <label>Attempt just taken</label>
+            <select id="rcAttempt"><option>1st</option><option>2nd</option><option>3rd</option><option>4th</option></select>
+            <label style="margin-left:10px">Your score</label>
+            <input type="number" id="rcScore" min="0" max="126" placeholder="e.g. 71">
+            <label>Pass mark that diet</label>
+            <input type="number" id="rcPass" min="0" max="126" placeholder="e.g. 79">
+          </div>
+          <div class="rc-row">
+            <label>Which domain was weakest on your breakdown?</label>
+            <div class="rc-doms" id="rcDoms">
+              <button class="rc-dom" data-d="dg">Data Gathering</button>
+              <button class="rc-dom" data-d="cm">Clinical Management</button>
+              <button class="rc-dom" data-d="ro">Relating to Others</button>
+              <button class="rc-dom" data-d="un">Not sure / even</button>
+            </div>
+          </div>
+        </div>
+        <div class="rc-card">
+          <h2>Feedback statements</h2>
+          <div class="sub">Tick every area your results letter flagged (paraphrased below — match the closest).</div>
+          <div class="rc-checks" id="rcStmts"></div>
+        </div>
+        <div class="rc-nav"><button class="rc-btn pri" data-go="2">Continue to examination →</button></div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="rc-pane" data-p="2">
+        <div class="rc-card">
+          <h2>Examination — the honest questionnaire</h2>
+          <div class="sub">Nobody is watching. Tick everything that is true of the exam you sat and the preparation before it — the diagnosis is only as good as the history you give it.</div>
+          <div class="rc-checks" id="rcSymps"></div>
+        </div>
+        <div class="rc-nav">
+          <button class="rc-btn" data-go="1">← Back</button>
+          <button class="rc-btn pri" data-go="3">Make the diagnosis →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="rc-pane" data-p="3">
+        <div id="rcDxList"></div>
+        <div class="rc-nav">
+          <button class="rc-btn" data-go="2">← Back</button>
+          <button class="rc-btn pri" data-go="4">Prescribe the treatment →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="rc-pane" data-p="4">
+        <div id="rcPlan"></div>
+        <div class="rc-card rc-noprint">
+          <h2>Optional: the examiner writes up your case</h2>
+          <div class="sub">An AI examiner reads everything you entered and writes a personal narrative: what most likely happened in the exam room, and the order to fix it in.</div>
+          <button class="rc-btn pri" id="rcAiBtn">Write my case-up</button>
+          <div class="rc-ai-out" id="rcAiOut" style="margin-top:12px"></div>
+        </div>
+        <div class="rc-nav">
+          <button class="rc-btn" data-go="3">← Back</button>
+          <button class="rc-btn" onclick="window.print()">🖨️ Print / save the plan</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/sca-resit.js?v=1"></script>
+<script>
+(function(){
+  'use strict';
+  const $ = q => document.querySelector(q);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  const R = window.SCA_RESIT;
+  const DOMN = { dg:'Data Gathering', cm:'Clinical Management', ro:'Relating to Others', gs:'Whole-exam' };
+  const DOMC = { dg:'#1d4ed8', cm:'#15803d', ro:'#be185d', gs:'#b45309' };
+
+  const KEY = 'rgp-sca-resit';
+  const saved = (() => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ return {}; } })();
+  const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} };
+  const state = Object.assign({ dom:null, stmts:[], symps:[], attempt:'1st', score:'', pass:'' }, saved);
+
+  /* Build checklists */
+  $('#rcStmts').innerHTML = R.statements.map(s => `
+    <label class="rc-check"><input type="checkbox" data-stmt="${s.id}"${state.stmts.includes(s.id) ? ' checked' : ''}><span class="dompill ${s.dom}">${s.dom === 'gs' ? 'Global' : DOMN[s.dom].split(' ')[0]}</span><span>${esc(s.t)}</span></label>`).join('');
+  $('#rcSymps').innerHTML = R.symptoms.map(s => `
+    <label class="rc-check"><input type="checkbox" data-symp="${s.id}"${state.symps.includes(s.id) ? ' checked' : ''}><span>${esc(s.t)}</span></label>`).join('');
+
+  document.querySelectorAll('[data-stmt]').forEach(cb => cb.addEventListener('change', () => {
+    state.stmts = [...document.querySelectorAll('[data-stmt]:checked')].map(x => x.dataset.stmt); persist();
+  }));
+  document.querySelectorAll('[data-symp]').forEach(cb => cb.addEventListener('change', () => {
+    state.symps = [...document.querySelectorAll('[data-symp]:checked')].map(x => x.dataset.symp); persist();
+  }));
+  document.querySelectorAll('.rc-dom').forEach(b => {
+    if (state.dom === b.dataset.d) b.classList.add('sel');
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.rc-dom').forEach(x => x.classList.remove('sel'));
+      b.classList.add('sel'); state.dom = b.dataset.d; persist();
+    });
+  });
+  ['rcAttempt','rcScore','rcPass'].forEach(id => {
+    const el = $('#' + id), k = id.slice(2).toLowerCase();
+    if (state[k]) el.value = state[k];
+    el.addEventListener('change', () => { state[k] = el.value; persist(); });
+  });
+
+  /* Wizard nav */
+  function go(n){
+    document.querySelectorAll('.rc-pane').forEach(p => p.classList.toggle('on', p.dataset.p == n));
+    document.querySelectorAll('.rc-step').forEach(s => {
+      s.classList.toggle('now', s.dataset.s == n);
+      s.classList.toggle('done', +s.dataset.s < n);
+    });
+    if (n == 3) renderDx();
+    if (n == 4) renderPlan();
+    window.scrollTo(0, 0);
+  }
+  document.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => go(+b.dataset.go)));
+
+  /* Diagnostic engine */
+  function diagnose(){
+    const scores = {}, evid = {};
+    const add = (dx, w, why) => {
+      scores[dx] = (scores[dx] || 0) + w;
+      (evid[dx] = evid[dx] || []).push(why);
+    };
+    state.stmts.forEach(id => {
+      const map = R.stmtMap[id] || {};
+      const stmt = R.statements.find(s => s.id === id);
+      Object.entries(map).forEach(([dx, w]) => add(dx, w, 'Letter: \u201c' + stmt.t + '\u201d'));
+    });
+    state.symps.forEach(id => {
+      const sy = R.symptoms.find(s => s.id === id);
+      Object.entries(sy.maps).forEach(([dx, w]) => add(dx, w, 'You reported: \u201c' + sy.t + '\u201d'));
+    });
+    if (state.dom && R.domMap[state.dom]) {
+      R.domMap[state.dom].forEach(dx => add(dx, 1, 'Weakest domain on your breakdown: ' + DOMN[state.dom]));
+    }
+    return Object.entries(scores)
+      .filter(([dx, s]) => s >= 2)
+      .sort((a, b) => b[1] - a[1])
+      .map(([dx, s]) => ({ dx, s, ev: [...new Set(evid[dx])] }));
+  }
+
+  function renderDx(){
+    const list = diagnose();
+    state.dxList = list.map(x => x.dx); persist();
+    const gap = state.score && state.pass ? (+state.pass - +state.score) : null;
+    let head = '';
+    if (gap !== null && !isNaN(gap)) {
+      head = `<div class="rc-card"><h2>The size of the problem</h2><p style="font-size:13.4px;line-height:1.65;color:var(--ink-2)">You were <b style="color:var(--ink)">${gap} mark${gap === 1 ? '' : 's'}</b> from the pass mark${gap <= 8 ? ' — across 12 cases that is less than one grade per case. This is a <b>habit-sized</b> gap, not a knowledge-sized one: one answered cue, one on-time management plan, one complete safety-net per case covers it.' : gap <= 20 ? ' — roughly one to two grades per case. Recoverable in one focused cycle if the treatment targets the right diagnoses below.' : ' — a substantial gap, usually meaning the consulting method itself needs rebuilding rather than patching. The plan below starts from calibration, and your educational supervisor should be part of it.'}</p></div>`;
+    }
+    $('#rcDxList').innerHTML = head + (list.length ? list.map((x, i) => {
+      const d = R.diagnoses[x.dx];
+      return `<div class="rc-dx" style="--dc:${DOMC[d.dom]}">
+        <div class="rc-dx-hdr"><span class="ic">${d.ic}</span><h3>${i + 1}. ${esc(d.name)}</h3>
+        <span class="rc-conf ${i < 2 && x.s >= 4 ? 'hi' : 'med'}">${i < 2 && x.s >= 4 ? 'Primary diagnosis' : 'Contributing'}</span></div>
+        <p><b style="color:var(--ink)">Mechanism.</b> ${esc(d.mech)}</p>
+        <p><b style="color:var(--ink)">Classic signature.</b> ${esc(d.sign)}</p>
+        <div class="ev"><b>Evidence in your history</b><br>${x.ev.slice(0, 4).map(esc).join('<br>')}</div>
+      </div>`;
+    }).join('') : '<div class="rc-card"><h2>Not enough history yet</h2><p style="font-size:13.4px;color:var(--ink-2);line-height:1.6">Go back and tick the feedback statements from your letter and the symptoms that ring true — the engine needs at least a few signals to separate the failure patterns.</p></div>');
+  }
+
+  /* Treatment plan */
+  function renderPlan(){
+    const list = diagnose().slice(0, 4);
+    const names = list.map(x => R.diagnoses[x.dx].name);
+    const rxAll = [];
+    list.forEach(x => R.diagnoses[x.dx].rx.forEach(r => rxAll.push({ ...r, from: R.diagnoses[x.dx] })));
+    const rxHtml = arr => arr.map(r => `<div class="rc-rx-item"><span class="ic">${r.from.ic}</span><span>${esc(r.do)} — <a href="${r.tool}">${esc(r.tl)}</a></span></div>`).join('');
+    const primary = rxAll.slice(0, 3), rest = rxAll.slice(3);
+
+    $('#rcPlan').innerHTML = `
+      <div class="rc-card">
+        <h2>Prescription</h2>
+        <div class="sub">Treating: <b style="color:var(--ink)">${names.map(esc).join(' · ') || 'general consulting fitness'}</b>. Eight weeks, three rules: everything out loud, diagnosis-targeted practice only, and measure — don't guess — your progress.</div>
+      </div>
+      <div class="rc-plan">
+        <div class="rc-wk"><span class="wk">Daily</span><div class="wb"><b>The non-negotiable:</b> <a href="sca-daily.html">The Daily 10</a> every day, streak unbroken. Ten minutes. This alone changes more resit outcomes than any weekend course.</div></div>
+        <div class="rc-wk"><span class="wk">Wks 1–2</span><div class="wb"><b>Recalibrate before you practise.</b> Re-read the <a href="sca-domains.html">grade descriptors</a> for your flagged domains. Mark all three transcripts in <a href="sca-examiner.html">You Be the Examiner</a> until you're within one grade of the examiner — a candidate who can't see the marking can't train toward it. Then begin your primary treatment:${rxHtml(primary)}</div></div>
+        <div class="rc-wk"><span class="wk">Wks 3–5</span><div class="wb"><b>Targeted treatment, full dose.</b> Two <a href="sca-practice.html">Hot Seat</a> cases a week — chosen from your weak experience groups on the <a href="sca-progress.html">heat-map</a> — grading every one in <a href="sca-domains.html">Examiner Marking</a>. Plus:${rxHtml(rest.length ? rest : primary)}</div></div>
+        <div class="rc-wk"><span class="wk">Wk 4</span><div class="wb"><b>Review appointment (with yourself).</b> Re-take the examination step in this clinic. Symptoms you can no longer honestly tick are healing; any that persist get promoted to primary treatment for weeks 5–8.</div></div>
+        <div class="rc-wk"><span class="wk">Wks 6–7</span><div class="wb"><b>Simulate.</b> One full <a href="sca-circuit.html">Mock Exam Circuit</a> per week under true timing, with the between-case reset ritual. If you can recruit two colleagues, run the <a href="sca-roleplay.html">Role-Play Packs</a> instead — human pressure transfers better. Run a recording through <a href="sca-real-feedback.html">Real-Consultation Feedback</a> and compare its flags against your original diagnoses.</div></div>
+        <div class="rc-wk"><span class="wk">Wk 8</span><div class="wb"><b>The booking decision — made by data, not hope.</b> Open the <a href="sca-progress.html">Progress Heat-map</a>: the readiness verdict must be green (or amber with only the breadth row open) before you book. If it isn't, extend the plan — a delayed sit costs a fee; a premature one costs a fee AND a failure pattern reinforced.</div></div>
+        <div class="rc-wk"><span class="wk">Always</span><div class="wb"><b>Tell your training programme.</b> Your TPD and educational supervisor have seen hundreds of resits — share this diagnosis page with them, ask for an SCA-focused review of your video consultations, and check your deanery's exam-support offer (most have one, few candidates use it).</div></div>
+      </div>`;
+  }
+
+  /* AI case-up */
+  $('#rcAiBtn').addEventListener('click', async () => {
+    const out = $('#rcAiOut');
+    if (!window.claude || !window.claude.complete) { out.textContent = 'The AI examiner isn\u2019t available in this preview — open the page in a normal browser tab.'; return; }
+    out.textContent = 'The examiner is reading your file…';
+    const list = diagnose().slice(0, 4);
+    const prompt = `You are a senior RCGP SCA examiner writing a kind, direct, personal case-up for a GP trainee who failed the SCA and used a structured diagnostic tool. Write 250-350 words, second person, no headings, no bullet lists. Cover: (1) what most plausibly happened in the exam room given their pattern, told as a short narrative; (2) why this pattern is common and fixable, without platitudes; (3) the ONE thing to fix first and why it unlocks the others. British English. Do not invent details not implied by the data.
+
+Their data:
+- Attempt: ${state.attempt || '1st'}; score ${state.score || '?'} vs pass mark ${state.pass || '?'}
+- Weakest domain: ${state.dom ? ({dg:'Data Gathering',cm:'Clinical Management',ro:'Relating to Others',un:'unsure'})[state.dom] : 'not given'}
+- Letter feedback areas: ${state.stmts.map(id => (R.statements.find(s => s.id === id) || {}).t).join('; ') || 'none ticked'}
+- Self-reported symptoms: ${state.symps.map(id => (R.symptoms.find(s => s.id === id) || {}).t).join('; ') || 'none ticked'}
+- Tool's diagnoses (ranked): ${list.map(x => R.diagnoses[x.dx].name).join('; ') || 'insufficient data'}`;
+    try {
+      const txt = await window.claude.complete(prompt);
+      out.innerHTML = txt.split(/\n{2,}/).map(p => '<p style="margin-bottom:10px">' + esc(p) + '</p>').join('');
+    } catch(e){ out.textContent = 'Failed: ' + (e.message || e); }
+  });
+})();
+</script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

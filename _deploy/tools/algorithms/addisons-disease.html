@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Addison&rsquo;s Disease / Adrenal Insufficiency · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f6f2;--surface:#ffffff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;
+  --safety:#dc2626;--safety-bg:#fef2f2;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;
+  --treat:#16a34a;--treat-bg:#f0fdf4;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;
+  --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;min-height:100vh;padding:0 0 60px}
+.alg-header{background:var(--text);color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--treat),#22c55e);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted);transition:all .2s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--diagnose)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.why-btn:hover{color:var(--text)}
+.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+<div class="alg-header">
+  <h1>🧂 Addison&rsquo;s Disease / Adrenal Insufficiency</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta"><span>CKS</span><span>10-min consult</span></div>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🧂</div>
+  <div>
+    <b>Addison&rsquo;s Disease / Adrenal Insufficiency</b>
+    <small>UK primary care pathway · RCGP SCA preparation · adrenal crisis &amp; sick-day rules</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — adrenal crisis is the emergency (treat before confirming); for chronic presentation confirm with 9am cortisol / short Synacthen, split primary vs secondary, replace steroids, embed sick-day rules, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Suspected adrenal insufficiency</span><div class="body">Fatigue, weight loss, postural dizziness, pigmentation; biochemistry of <b>low Na⁺ + high K⁺</b> ± hypoglycaemia.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — adrenal crisis (NG243)</span><span class="ttl">Adrenal crisis?</span><div class="body">Critically unwell with hypotension/postural drop, shock/collapse, vomiting, profound weakness, hyponatraemia, hypoglycaemia, hyperpigmentation. <b>Or milder symptoms in someone with known/high-risk adrenal insufficiency</b> (the commoner primary-care presentation) — often precipitated by illness or steroid withdrawal.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Admit</span><span class="ttl">Hydrocortisone 100mg IM/IV + fluids → 999</span><div class="body"><b>Give hydrocortisone 100mg IM or IV immediately</b> (anyone — patient/relative/carer — can give it IM); do not wait for results. IV fluids (in hospital, 1L 0.9% saline over 30 min). Rapid transport to hospital, ideally within 30 min.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Investigate</span><span class="ttl">9am cortisol + short Synacthen</span><div class="body">U&amp;E, glucose, ACTH; adrenal autoantibodies. Low 9am cortisol → confirmatory test.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · primary or secondary?</span></div>
+    <div class="split"><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel">Primary (Addison's)</div><div class="box ix"><span class="ttl">High ACTH</span><div class="body">Autoimmune (commonest), TB; pigmentation, high K⁺. Needs gluco- + mineralocorticoid.</div></div></div>
+      <div class="col"><div class="blabel">Secondary</div><div class="box ix"><span class="ttl">Low ACTH</span><div class="body"><b>Steroid withdrawal</b> (commonest), pituitary disease. No hyperpigmentation; K⁺ normal.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Refer</span><span class="ttl">Endocrinology</span><div class="body"><span class="pill pill-purple">Endocrinology</span> for all confirmed cases — replacement, sick-day rules, steroid emergency card, and IM hydrocortisone for home.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · sick-day rules &amp; self-management</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Sick-day rules &amp; self-management</span><span class="ttl">Prevention beats treatment</span><div class="body"><b>Double oral hydrocortisone during fever/illness</b>; <b>IM hydrocortisone for vomiting/D&amp;V or before surgery/procedures</b>. Ensure the patient (and family/carer) can self-inject, carry a <b>steroid emergency card + MedicAlert</b>, and never abruptly stop steroids. Flag the medical record. Coordinate steroid cover for procedures and dental work.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · monitoring &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">Review &amp; when to escalate</span><div class="body"><b>Annual review</b> of replacement dose, weight/BP (incl. postural), U&amp;E, and sick-day-rule confidence; renew the emergency kit before expiry. <b>999 + IM hydrocortisone</b> for vomiting, collapse, severe weakness or any acute illness with shock — anyone can give the injection. Treat first, confirm later.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>Never delay steroids for tests (NG243):</b> give hydrocortisone 100mg IM/IV and fluids first. <b>Prevention beats treatment</b> — flag the notes of everyone with adrenal insufficiency, ensure they're confident with sick-day rules, and that they carry an emergency IM hydrocortisone kit + steroid card.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">1</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Safety</span>
+        <h3>Adrenal Crisis — Recognise &amp; Treat Before Confirming the Diagnosis</h3>
+      </div>
+    </div>
+    <div class="node-body"><p class="intro">Adrenal (Addisonian) crisis is the can&rsquo;t-miss emergency. Treat on clinical suspicion — do NOT wait for biochemistry. Death is from hypovolaemic shock and hyperkalaemia.</p><div class="rfgrid"><div class="rftile"><b>Shock + known/possible adrenal insufficiency</b> Hypotension, collapse, vomiting, abdominal pain, fever, confusion → <span class="pill pill-red">999</span> + immediate IM/IV hydrocortisone 100 mg.</div><div class="rftile"><b>Hyponatraemia + hyperkalaemia</b> Low Na⁺ with raised K⁺ (± hypoglycaemia, mild hypercalcaemia) is the classic biochemical signature — treat empirically while confirming.</div><div class="rftile"><b>Intercurrent illness / missed steroids</b> Any patient on long-term steroids who is vomiting, septic or has stopped their steroid → crisis risk. Give parenteral hydrocortisone.</div><div class="rftile"><b>Waterhouse-Friderichsen</b> Adrenal haemorrhage in meningococcal/severe sepsis → purpura + shock → <span class="pill pill-red">999</span>.</div><div class="rftile"><b>Hypoglycaemia</b> Especially in children/secondary adrenal insufficiency → treat with IV glucose + hydrocortisone.</div><div class="rftile"><b>New presentation can BE the crisis</b> Up to 50% of Addison&rsquo;s is diagnosed at first crisis — keep a low threshold in unexplained shock.</div></div></div>
+    <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Adrenal crisis carries significant mortality and is reversible with timely steroid. Immediate management is IV/IM hydrocortisone 100 mg, aggressive IV 0.9% saline rehydration, treat hypoglycaemia, and identify/treat the precipitant. Take a random cortisol (and ideally ACTH) before steroid if it does not delay treatment — but treatment always comes first.</div></div>
+  </div>
+  <div class="connector"></div>
+
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">2</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Diagnose</span>
+        <h3>History — The Insidious Picture &amp; Its Mimics</h3>
+      </div>
+    </div>
+    <div class="node-body"><p class="intro">Chronic primary adrenal insufficiency is notoriously non-specific and frequently mislabelled as depression, CFS, anorexia or IBS for months to years.</p><div class="kv"><div>Core symptoms</div><div>Profound fatigue, weakness, anorexia, weight loss, nausea, dizziness. Salt craving is highly suggestive of mineralocorticoid deficiency.</div><div>Postural symptoms</div><div>Dizziness/lightheadedness on standing → postural hypotension from aldosterone deficiency and volume depletion.</div><div>Hyperpigmentation</div><div>Primary (Addison&rsquo;s) only: ACTH-driven pigmentation of palmar creases, buccal mucosa, scars, pressure areas. Absent in secondary (pituitary) causes.</div><div>Autoimmune clues</div><div>Personal/family history of type 1 diabetes, autoimmune thyroid disease, vitiligo, pernicious anaemia, coeliac → autoimmune polyglandular syndrome.</div><div>Other causes</div><div>TB (commonest worldwide), adrenal metastases/bilateral haemorrhage, adrenalectomy, drugs (ketoconazole, etomidate), HIV, infiltrative disease.</div><div>Steroid history</div><div>Abrupt withdrawal of long-term oral/inhaled/topical steroids → secondary (tertiary) adrenal insufficiency. Ask explicitly about steroid use.</div></div></div>
+    <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The mean delay to diagnosing Addison&rsquo;s exceeds a year because symptoms are vague. Salt craving and hyperpigmentation are the two most discriminating clinical features for primary disease; their absence does not exclude it. Recognising the autoimmune cluster (Schmidt syndrome) shortens the diagnostic journey.</div></div>
+  </div>
+  <div class="connector"></div>
+
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">3</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Diagnose</span>
+        <h3>Examination</h3>
+      </div>
+    </div>
+    <div class="node-body"><p class="intro">Look specifically for the signs that separate primary from secondary, and for evidence of associated autoimmune disease.</p><div class="kv"><div>Blood pressure</div><div>Postural hypotension (drop &gt;20 mmHg systolic). Persistent hypotension in chronic disease.</div><div>Pigmentation</div><div>Palmar creases, buccal/gingival mucosa, recent scars, knuckles, pressure points — primary disease only.</div><div>Vitiligo</div><div>Depigmented patches → autoimmune association.</div><div>Hydration / volume</div><div>Dry mucous membranes, reduced skin turgor, tachycardia → volume depletion.</div><div>Weight / muscle</div><div>Weight loss, muscle wasting, general debility.</div><div>Thyroid / other endocrine</div><div>Goitre or signs of hypo/hyperthyroidism (polyglandular syndrome).</div></div></div>
+    <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Hyperpigmentation reflects elevated ACTH and pro-opiomelanocortin (POMC)-derived peptides in primary adrenal failure, and its distribution at sun-exposed and pressure sites is characteristic. Its presence localises the lesion to the adrenal gland rather than the pituitary.</div></div>
+  </div>
+  <div class="connector"></div>
+
+  <div class="node" data-type="DIAGNOSE" data-step="4">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">4</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Diagnose</span>
+        <h3>Investigations — Confirm &amp; Localise</h3>
+      </div>
+    </div>
+    <div class="node-body"><p class="intro">Confirm cortisol deficiency, then localise (primary vs secondary) and seek the cause. Do not let testing delay treatment in a crisis.</p><div class="kv"><div>9am serum cortisol <span class="pill pill-blue">First-line</span></div><div>Low (&lt;100 nmol/L) strongly suggests insufficiency; &gt;430&ndash;500 nmol/L makes it unlikely; intermediate → Short Synacthen Test.</div><div>Short Synacthen Test <span class="pill pill-blue">Confirmatory</span></div><div>250 µg tetracosactide; measure cortisol at 0 and 30 min. Failure to rise above threshold (~&gt;430&ndash;550 nmol/L lab-dependent) confirms adrenal insufficiency.</div><div>Plasma ACTH</div><div>High ACTH + low cortisol = primary (Addison&rsquo;s). Low/inappropriately normal ACTH = secondary (pituitary/hypothalamic).</div><div>U&amp;E / glucose</div><div>Hyponatraemia, hyperkalaemia, hypoglycaemia, mild hypercalcaemia, raised urea.</div><div>Adrenal autoantibodies</div><div>21-hydroxylase antibodies positive in autoimmune Addison&rsquo;s (commonest UK cause).</div><div>Cause workup</div><div>If antibody-negative: adrenal CT (TB, haemorrhage, metastases, infiltration), TB screen. If secondary: pituitary MRI + full pituitary axis.</div><div>Renin / aldosterone</div><div>High renin with low aldosterone confirms mineralocorticoid deficiency in primary disease.</div></div></div>
+    <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The Short Synacthen Test is the definitive primary-care-accessible confirmatory test. Pairing cortisol with ACTH localises the defect, and 21-hydroxylase antibodies identify the autoimmune aetiology that accounts for the majority of UK cases. Antibody-negative disease mandates imaging to exclude TB, bilateral metastases, haemorrhage or infiltration.</div></div>
+  </div>
+  <div class="connector"></div>
+
+  <div class="node" data-type="TREAT" data-step="5">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">5</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Treat</span>
+        <h3>Replacement Therapy</h3>
+      </div>
+    </div>
+    <div class="node-body"><p class="intro">Lifelong glucocorticoid and (in primary disease) mineralocorticoid replacement, titrated clinically. Under-replacement risks crisis; over-replacement risks Cushingoid harm.</p><div class="ladder"><div class="rung"><span class="rn">Glucocorticoid</span><span class="rt"><b>Hydrocortisone</b> 15&ndash;25 mg/day in 2&ndash;3 divided doses, largest on waking to mimic the circadian rhythm (e.g. 10/5/5 mg). Some use prednisolone OD. Titrate to wellbeing, not to random cortisol.</span></div><div class="rung"><span class="rn">Mineralocorticoid</span><span class="rt"><b>Fludrocortisone</b> 50&ndash;200 µg OD in primary disease only. Titrate to BP, postural drop, electrolytes and plasma renin. Not needed in secondary insufficiency.</span></div><div class="rung"><span class="rn">Androgen (selected)</span><span class="rt"><b>DHEA</b> may be considered in women with impaired wellbeing/libido despite adequate gluco/mineralocorticoid — specialist-led, not routine.</span></div><div class="rung"><span class="rn">Monitoring</span><span class="rt">Clinical review of weight, BP, energy, pigmentation; U&amp;E and renin for fludrocortisone dosing. Avoid over-replacement (weight gain, hypertension, osteoporosis, dysglycaemia).</span></div></div></div>
+    <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Replacement aims to reproduce physiological cortisol secretion; the morning-loaded divided regimen reduces fatigue. Fludrocortisone is only required in primary disease because secondary insufficiency preserves the renin-angiotensin-aldosterone axis. Dose adequacy is judged clinically and biochemically, never by a single random cortisol.</div></div>
+  </div>
+  <div class="connector"></div>
+
+  <div class="node" data-type="SAFETY" data-step="6">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">6</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Safety</span>
+        <h3>Sick-Day Rules &amp; Crisis Prevention — Critical Patient Education</h3>
+      </div>
+    </div>
+    <div class="node-body"><p class="intro">The most examinable, life-saving element. Every patient must know the sick-day rules and carry emergency steroid.</p><div class="kv"><div>Sick-day rule 1 (oral)</div><div><b>Double</b> the oral glucocorticoid dose during fever/intercurrent illness or significant infection until recovered.</div><div>Sick-day rule 2 (parenteral)</div><div>Vomiting, diarrhoea, or unable to take/keep down tablets → <b>IM hydrocortisone</b> (emergency injection kit) and seek urgent medical help.</div><div>Procedures</div><div>Surgery, major dental work, colonoscopy prep → peri-procedure parenteral steroid cover per protocol.</div><div>Steroid Emergency Card</div><div>Issue the NHS Steroid Emergency Card + MedicAlert/bracelet. Ensure documented on records and prescriptions.</div><div>Emergency kit</div><div>Provide a hydrocortisone IM injection kit and train patient/family to use it. Replace before expiry.</div><div>Never stop abruptly</div><div>Sudden cessation precipitates crisis. Reinforce adherence at every review.</div></div></div>
+    <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Adrenal crisis is largely preventable through patient education. The 2020 NHS Steroid Emergency Card initiative standardised peri-operative and sick-day management. The SCA examiner expects explicit, structured safety-netting: double oral dose for fever, switch to IM hydrocortisone if vomiting, and call for help — delivered in plain language the patient can act on.</div></div>
+  </div>
+  <div class="connector"></div>
+
+  <div class="node" data-type="REFER" data-step="7">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">7</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Refer</span>
+        <h3>Referral Pathways</h3>
+      </div>
+    </div>
+    <div class="node-body"><p class="intro">Suspected adrenal insufficiency is an endocrinology diagnosis — refer for confirmation and lifelong supervision; manage crises as emergencies.</p><div class="kv"><div><span class="pill pill-red">999 / acute medicine</span></div><div>Suspected adrenal crisis — admit after first-dose parenteral hydrocortisone and IV fluids.</div><div><span class="pill pill-purple">Urgent endocrinology</span></div><div>New biochemical/clinical suspicion (low 9am cortisol, abnormal Synacthen, suggestive electrolytes) — for confirmation, cause workup and treatment initiation.</div><div>Pituitary / neurosurgery</div><div>Secondary insufficiency with pituitary lesion on MRI — joint endocrine/neurosurgical care.</div><div>Oncology</div><div>Bilateral adrenal metastases identified on imaging as the cause — manage primary malignancy via the appropriate cancer pathway.</div><div>Primary care role</div><div>Repeat prescriptions, sick-day reinforcement, immunisations, monitoring, and coordinating annual specialist review.</div></div></div>
+    <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Although diagnosis and stabilisation are specialist-led, primary care is central to safe long-term care: ensuring uninterrupted steroid supply, reinforcing sick-day rules, and recognising decompensation early. Bilateral adrenal metastases (e.g. from lung cancer) are an important non-autoimmune cause and route into the relevant cancer pathway.</div></div>
+  </div>
+  <div class="connector"></div>
+
+  <div class="node" data-type="LIFESTYLE" data-step="8">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">8</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Lifestyle</span>
+        <h3>Living With Adrenal Insufficiency</h3>
+      </div>
+    </div>
+    <div class="node-body"><div class="lsgrid"><div class="lstile"><b>Adherence</b> Lifelong, non-negotiable medication. Use reminders/dosette boxes; never run out — order in advance and when travelling.</div><div class="lstile"><b>Identification</b> Carry the Steroid Emergency Card and wear a MedicAlert bracelet at all times.</div><div class="lstile"><b>Travel</b> Carry extra medication and an IM hydrocortisone kit in hand luggage with a doctor&rsquo;s letter; know how to access care abroad.</div><div class="lstile"><b>Vaccination &amp; infection</b> Keep immunisations up to date; treat infections promptly and apply sick-day rules early.</div><div class="lstile"><b>Family training</b> Teach family/carers to recognise crisis and administer emergency IM hydrocortisone.</div><div class="lstile"><b>Support</b> Signpost to the Addison&rsquo;s Disease Self-Help Group (ADSHG) for patient resources and peer support.</div></div></div>
+    <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Self-management is the cornerstone of preventing crisis. Patients who reliably apply sick-day rules and carry emergency steroid have far fewer life-threatening episodes. Empowering family members to inject hydrocortisone provides a critical safety margin during severe illness or vomiting.</div></div>
+  </div>
+  <div class="connector"></div>
+
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-head">
+      <div class="node-num">9</div>
+      <div class="node-head-inner">
+        <span class="node-tag">Safety</span>
+        <h3>Follow-Up &amp; Monitoring</h3>
+      </div>
+    </div>
+    <div class="node-body"><div class="kv"><div>Each review</div><div>Assess wellbeing, energy, weight, BP (lying/standing), pigmentation. Confirm sick-day knowledge and that emergency kit/card are current.</div><div>Fludrocortisone dosing</div><div>Check U&amp;E and (where available) plasma renin; adjust to normalise BP, postural drop and electrolytes.</div><div>Over-replacement screen</div><div>Watch for weight gain, hypertension, dysglycaemia, osteoporosis — minimise glucocorticoid dose accordingly.</div><div>Associated autoimmune disease</div><div>Periodically screen for thyroid disease, B12 deficiency, coeliac, type 1 diabetes in autoimmune Addison&rsquo;s.</div><div>Annual specialist review</div><div>Coordinate endocrinology follow-up; bone health assessment as indicated.</div><div>Safety-net</div><div>Any acute illness/vomiting → sick-day rules + urgent help. Re-educate at every contact.</div></div></div>
+    <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Long-term monitoring balances the harms of under- and over-replacement and detects the additional autoimmune conditions that cluster with autoimmune Addison&rsquo;s. Repeated reinforcement of sick-day rules at every encounter is the highest-yield safety intervention in chronic care.</div></div>
+  </div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE CKS Addison&rsquo;s disease, Society for Endocrinology emergency guidance for acute adrenal insufficiency, NHS England Steroid Emergency Card (2020), Endocrine Society clinical practice guidelines. Always adapt to individual patient context, co-morbidities and local protocols.
+</div>
+
+<script>
+(function(){
+  const KEY='rgp.alg.addisons-disease.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  document.getElementById('pTotal').textContent=total;
+  function save(){const state={};flow.querySelectorAll('.node').forEach(n=>{state[n.dataset.step]=n.querySelector('input[type=checkbox]').checked;});localStorage.setItem(KEY,JSON.stringify(state));update();}
+  function update(){let done=0;flow.querySelectorAll('.node').forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb.checked){n.classList.add('done');done++;}else n.classList.remove('done');});pDone.textContent=done;pFill.style.width=(done/total*100)+'%';}
+  function load(){try{const state=JSON.parse(localStorage.getItem(KEY)||'{}');flow.querySelectorAll('.node').forEach(n=>{if(state[n.dataset.step])n.querySelector('input[type=checkbox]').checked=true;});}catch(e){}update();}
+  flow.querySelectorAll('input[type=checkbox]').forEach(cb=>cb.addEventListener('change',save));
+  flow.querySelectorAll('.why-btn').forEach(btn=>btn.addEventListener('click',function(){const ex=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',String(!ex));this.nextElementSibling.classList.toggle('open',!ex);}));
+  document.getElementById('resetBtn').addEventListener('click',function(){if(confirm('Reset all checkboxes?')){flow.querySelectorAll('input[type=checkbox]').forEach(cb=>cb.checked=false);localStorage.removeItem(KEY);update();}});
+  load();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

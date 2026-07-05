@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<title>Content Audit Round 2 · Protocols &amp; Pathways · July 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"></link>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""></link>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600&amp;display=swap" rel="stylesheet"></link>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f6f2e9;--surface:#fff;--line:#e5dfd0;--ink:#1c1917;--muted:#6b6760;--teal:#0f766e;--teal-soft:#e6f2f0;--rust:#b3543a;--green:#15803d;--green-soft:#f0fdf4;--amber:#b45309;--amber-soft:#fffbeb;--red:#b91c1c;--red-soft:#fef2f2;--serif:'Source Serif 4',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;font-size:15.5px}
+.wrap{max-width:940px;margin:0 auto;padding:44px 28px 90px}
+header.rep{border-bottom:3px solid var(--ink);padding-bottom:24px;margin-bottom:32px}
+.eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);margin-bottom:10px}
+h1{font-family:var(--serif);font-size:2.1rem;font-weight:600;line-height:1.15;margin-bottom:10px}
+.sub{color:var(--muted);max-width:740px}
+.meta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.meta-row span{font-size:.75rem;font-weight:600;background:var(--surface);border:1px solid var(--line);padding:4px 12px;border-radius:20px;color:var(--muted)}
+h2{font-family:var(--serif);font-size:1.45rem;font-weight:600;margin:44px 0 10px;padding-top:20px;border-top:1px solid var(--line)}
+h2 .n{color:var(--rust);margin-right:8px}
+p{margin-bottom:12px;text-wrap:pretty}
+ul{margin:0 0 14px 22px}
+li{margin-bottom:7px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin:14px 0}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.86rem;background:var(--surface);border-radius:10px;overflow:hidden}
+th{background:var(--ink);color:#fff;text-align:left;padding:8px 12px;font-size:.73rem;text-transform:uppercase;letter-spacing:.06em}
+td{padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.ok{color:var(--green);font-weight:700}
+.fixed{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.05em;padding:2px 9px;border-radius:20px;text-transform:uppercase;background:var(--green-soft);color:var(--green);border:1px solid #bbf7d0}
+.todo{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.05em;padding:2px 9px;border-radius:20px;text-transform:uppercase;background:var(--amber-soft);color:var(--amber);border:1px solid #fde68a}
+code{font-family:ui-monospace,monospace;font-size:.82em;background:#efe9db;padding:1px 6px;border-radius:5px}
+.note{font-size:.85rem;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:12px 16px;margin:14px 0}
+.big{font-family:var(--serif);font-size:1.05rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="rep">
+  <div class="eyebrow">Reasoning GP · Content audit — round 2</div>
+  <h1>Protocols first: full 176-protocol sweep + second pathway pass</h1>
+  <p class="sub">Method: every one of the <b>176 management protocols</b> was machine-scanned for withdrawn drugs, outdated scores, superseded citations and naming drift, and <b>every NICE guideline number cited was extracted and checked against the real guideline it refers to</b>. ~40 protocols were then deep-read (drug ladders, doses, thresholds). Findings triggered a second targeted pass over the pathways. All fixes below are already applied.</p>
+  <div class="meta-row"><span>176/176 protocols scanned</span><span>~40 protocols deep-read</span><span>200 guideline citations verified</span><span>20 files fixed this round</span></div>
+</header>
+
+<h2><span class="n">1.</span>Headline verdict on the protocol layer</h2>
+<p class="big">The protocol library is in <b>excellent clinical shape</b> — the best-maintained layer of the site. Of ~40 deep-read protocols, the drug ladders, doses and thresholds were correct and current in all but one (hypertension's diabetes target). Several are impressively ahead of common practice:</p>
+<ul>
+  <li><span class="ok">✓</span> <b>Osteoarthritis</b> correctly avoids routine paracetamol/opioids (NG226) — many references still get this wrong</li>
+  <li><span class="ok">✓</span> <b>Sciatica</b> correctly bans gabapentinoids and oral steroids (NG59 2020 position)</li>
+  <li><span class="ok">✓</span> <b>AF</b> is ORBIT-first with "modify, don't withhold" — exact NG196 doctrine</li>
+  <li><span class="ok">✓</span> <b>Impetigo</b> leads with hydrogen peroxide 1% (NG153); <b>PCOS</b> fertility leads with letrozole; <b>migraine</b> carries the topiramate Pregnancy Prevention Programme; <b>T2DM</b> cites TA924 (tirzepatide); <b>Addison's</b> cites NG243 (2024)</li>
+  <li><span class="ok">✓</span> <b>TIA protocol</b> correctly states "ABCD2 no longer guides urgency" — it was the TIA <i>algorithm</i> page that lagged (now fixed, see §3)</li>
+  <li><span class="ok">✓</span> Heart failure four pillars + titration doses; GCA same-day rules; PMR taper; UTI durations; FeverPAIN; H. pylori regimens; clopidogrel–omeprazole interaction — all verified correct</li>
+</ul>
+
+<h2><span class="n">2.</span>Errors found in protocols — all fixed <span class="fixed">applied</span></h2>
+<table>
+  <thead><tr><th>File</th><th>Error</th><th>Fix applied</th></tr></thead>
+  <tbody>
+    <tr><td><code>hypertension.html</code></td><td>"T2DM target &lt;130/80" — outdated; since the 2019 NG136 update, uncomplicated T2DM uses the standard <b>&lt;140/90</b> (&lt;80y). The tight target belongs to CKD+diabetes / ACR ≥70 (NG203)</td><td>Glance chip + target table row corrected; CKD row now cites NG203 with systolic 120–129</td></tr>
+    <tr><td><code>male-luts.html</code> + <code>benign-prostate-enlargement.html</code></td><td>Cited "NICE NG97" — that is the <i>dementia</i> guideline; male LUTS is <b>CG97</b></td><td>Both → CG97</td></tr>
+    <tr><td><code>postnatal-depression.html</code></td><td>Cited "NICE NG192" — that is <i>Caesarean birth</i>; perinatal mental health is <b>CG192</b></td><td>3 spots → CG192</td></tr>
+    <tr><td><code>iron-deficiency-anaemia.html</code></td><td>Cited "NICE NG8" — that is <i>anaemia in CKD</i>, not general IDA</td><td>→ NICE CKS / BSG (the actual sources)</td></tr>
+    <tr><td><code>contraception.html</code> (+ 2 algorithm files)</td><td>Cited "UKMEC 2016 (amended/updated 2019)" — superseded by <b>UKMEC 2023</b></td><td>All 3 files → UKMEC 2023 (content itself was already UKMEC-correct)</td></tr>
+  </tbody>
+</table>
+
+<h2><span class="n">3.</span>Pathway fixes triggered by this round <span class="fixed">applied</span></h2>
+<table>
+  <thead><tr><th>File</th><th>Problem</th><th>Fix applied</th></tr></thead>
+  <tbody>
+    <tr><td><code>tia.html</code> (algorithm)</td><td>Step 3 still taught ABCD2-based referral timing ("0–3 → within 24h, 4–5 → same day") — NG128 dropped score-based triage in 2019; the page even contradicted its own why-drawer and your correct TIA protocol</td><td>Step retitled "background only"; intro now states ALL suspected TIA (≤7 days) → specialist review within 24h; risk bands kept as historic knowledge; refer node + red-flag tile de-scored (crescendo TIA kept)</td></tr>
+    <tr><td><code>fits-funny-turns.html</code></td><td>"ABCD2 ≥4 = high risk, needs urgent same-day assessment" — same outdated triage</td><td>→ all suspected TIA within 24h per NG128</td></tr>
+    <tr><td><code>palpitations.html</code></td><td>AF anticoagulation section used HAS-BLED (NG196 prefers ORBIT) and phrased thresholds as "start if ≥2 men / ≥3 women"</td><td>3 spots → ORBIT (NG196); threshold now "offer if ≥2, consider in men at 1"</td></tr>
+    <tr><td><code>vision-loss.html</code></td><td>Cited "NICE NG80 (GCA 2023)" — NG80 was asthma; there is no NICE GCA guideline</td><td>→ BSR GCA Guideline 2020</td></tr>
+    <tr><td><code>maculopapular-rash.html</code></td><td>"NICE NG80 Drug allergy" — drug allergy is CG183</td><td>→ CG183</td></tr>
+    <tr><td><code>allergy-test-abnormalities.html</code></td><td>"NICE NG80 Food Allergy" — food allergy (under-19s) is CG116</td><td>→ CG116</td></tr>
+    <tr><td><code>hyperprolactinaemia.html</code></td><td>"NICE CG116 Acromegaly and Pituitary Disorders" — CG116 is food allergy</td><td>→ NICE CKS Hyperprolactinaemia</td></tr>
+    <tr><td><code>breathlessness.html</code>, <code>chronic-cough.html</code>, <code>wheeze-child.html</code>, <code>algorithms.html</code> card</td><td>Residual NG80 asthma citations (superseded by NG245, Nov 2024)</td><td>All → NICE/BTS/SIGN NG245 (2024)</td></tr>
+    <tr><td><code>anorexia.html</code></td><td>Cited "NICE CG9 Eating Disorders 2017" (the 2017 guideline is NG69) and MARSIPAN 2014 (replaced by MEED 2022)</td><td>→ NG69 + MEED 2022</td></tr>
+  </tbody>
+</table>
+
+<div class="note"><b>Pattern worth knowing:</b> the clinical <i>content</i> keeps being right while the <i>guideline number</i> in the footer is wrong — the numbers look pasted from memory. Round 2 verified all 200 citations in the protocol layer; the algorithm footers (270 pages) have only been spot-checked, and that's where all four shuffled numbers were found. A full footer-citation sweep of the algorithms is the highest-value remaining check.</div>
+
+<h2><span class="n">4.</span>Verified-correct highlights (deep-read, no changes needed)</h2>
+<div class="card">
+<p style="font-size:.9rem">atrial-fibrillation · heart-failure · ckd · type-2-diabetes (+TA924) · type-1-diabetes · asthma (NG245) · copd (GOLD A/B/E + eosinophil-gated ICS) · menopause · osteoporosis (ONJ + denosumab-rebound cautions) · depression (NG222 menu-first) · anxiety · migraine (MOH limits + topiramate PPP) · dvt/pulmonary-embolism (DOAC-first, pregnancy caveat) · mi-secondary-prevention (DAPT 12mo, atorva 80) · osteoarthritis · sciatica · uti-women/men/children · sore-throat (FeverPAIN, never amoxicillin) · sinusitis · cellulitis (Eron) · impetigo · shingles · bells-palsy · giant-cell-arteritis · polymyalgia-rheumatica · pcos · menorrhagia · gord/ppi-prescribing · hypo/hyperthyroidism · erectile-dysfunction · insomnia (CBT-I first) · eczema · renal-colic (infected-obstructed-kidney emergency) · obesity · gout (NG219 treat-to-target) · contraception (UKMEC categories) · neuropathic-pain (switch-don't-stack) · stable-angina · parkinsons (domperidone/metoclopramide rules) · palliative suite spot-checks</p>
+</div>
+
+<h2><span class="n">5.</span>Still open <span class="todo">queued</span></h2>
+<ul>
+  <li><b>"IAPT" naming in the case walkthroughs and SCA case data</b> (~15 case pages in <code>cases/</code>, several <code>assets/sca-cases*.js</code> + <code>calculators-data.js</code> GAD-7 text). The pathways are done; this layer is bigger and purely naming currency — say the word and I'll sweep it the same way.</li>
+  <li><b>Full citation sweep of the 270 algorithm footers</b> (the protocol layer is now verified; the four wrong numbers found so far were all in algorithm footers).</li>
+  <li><b>BPE protocol</b> lists oxybutynin without the frail-elderly caution that the female-incontinence protocol correctly carries — one-line addition.</li>
+  <li>The P0 recommendation from Round 1 stands: <b>"Reviewed: date" stamps</b> on every clinical page.</li>
+</ul>
+
+<h2><span class="n">6.</span>Upload list for this round (20 changed files)</h2>
+<div class="card">
+<p style="font-size:.88rem"><b>tools/management/</b> hypertension.html · male-luts.html · benign-prostate-enlargement.html · postnatal-depression.html · iron-deficiency-anaemia.html · contraception.html</p>
+<p style="font-size:.88rem"><b>tools/algorithms/</b> tia.html · fits-funny-turns.html · palpitations.html · vision-loss.html · maculopapular-rash.html · allergy-test-abnormalities.html · hyperprolactinaemia.html · breathlessness.html · chronic-cough.html · wheeze-child.html · anorexia.html · contraception.html · emergency-contraception.html</p>
+<p style="font-size:.88rem"><b>tools/</b> algorithms.html</p>
+<p style="font-size:.85rem;color:var(--muted)">(Plus the 13 files from the earlier quick-fix round if not yet uploaded.)</p>
+</div>
+
+</div>
+</body>
+</html>

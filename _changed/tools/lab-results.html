@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lab Results Actioning · GP / SCA Clinical Reasoning Tool</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=11" />
+<link rel="stylesheet" href="../assets/labs.css" />
+
+<style>
+  .tool-head{padding:28px 0 6px;border-bottom:1px solid var(--line);margin-bottom:24px}
+  .tool-head .eyebrow{margin-bottom:10px;display:block}
+  .tool-head h1{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:10px}
+  .tool-head p{color:var(--ink-2);font-size:15px;line-height:1.6;max-width:64ch;margin-bottom:14px}
+  .tool-breadcrumb{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);margin-bottom:18px}
+  .tool-breadcrumb a{color:var(--teal-2);text-decoration:none;font-weight:600}
+  .tool-breadcrumb a:hover{color:var(--rust)}
+  .tool-breadcrumb svg{width:11px;height:11px;color:var(--muted-2)}
+  [data-labs]{margin-top:0}
+  .action-legend{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px;
+    margin:18px 0 4px;
+  }
+  .al{
+    border:1px solid;border-radius:var(--r-md);padding:7px 11px;
+    font-size:12px;line-height:1.35;font-weight:500;
+  }
+  .al b{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
+  .al-emer{background:#fef4f2;border-color:#fecaca;color:#7f1d1d}
+  .al-canc{background:#faf5ff;border-color:#e9d5ff;color:#581c87}
+  .al-urg{background:#fff7ed;border-color:#fed7aa;color:#7c2d12}
+  .al-rev{background:#fffbeb;border-color:#fde68a;color:#78350f}
+  .al-treat{background:#ecfeff;border-color:#a5f3fc;color:#155e75}
+  .al-ref{background:#eff6ff;border-color:#bfdbfe;color:#1e40af}
+  .al-rep{background:#eef2ff;border-color:#c7d2fe;color:#3730a3}
+  .al-rec{background:#f0fdf4;border-color:#bbf7d0;color:#14532d}
+  .al-ann{background:#f8fafc;border-color:#cbd5e1;color:#1f2937}
+
+  .tool-howto{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+    padding:18px 22px;margin-top:30px;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;
+  }
+  .tool-howto h4{font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+  .tool-howto p{font-size:13px;color:var(--ink-2);line-height:1.55}
+</style>
+</head>
+<body>
+
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-decision"></aside>
+
+  <main class="main">
+    <div class="panel">
+
+      <div class="tool-breadcrumb">
+        <a href="../index.html">Reasoning GP</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+        <span>Tools</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+        <span style="color:var(--ink-2)">Lab Results Actioning</span>
+      </div>
+
+      <header class="tool-head" data-screen-label="Tool head">
+        <span class="eyebrow">Reasoning Tool · NICE · BSH · Renal · BMJ Best Practice</span>
+        <h1>Lab results actioning — <em style="font-style:italic;color:var(--teal);font-weight:500">next steps, per result</em></h1>
+        <p>Paste from EMIS / SystmOne or fill the form. The tool fires per-result rules from UK guidance (NICE CKS &amp; NGs, BSH, Renal Association, BSG, BTA, BMJ Best Practice, Medscape) and turns each abnormal value into an action: emergency, 2WW, urgent, treat, drug review, repeat, refer, recall, or annotate — with the rule cited, a patient phrase, and a notes template you can copy.</p>
+      </header>
+
+      <div class="action-legend">
+        <div class="al al-emer"><b>🔴 Emergency</b>999 / same-day admission</div>
+        <div class="al al-canc"><b>🟣 2WW Cancer</b>NICE NG12 / Macmillan</div>
+        <div class="al al-urg"><b>🟠 Urgent</b>Same-day GP / same-week specialist</div>
+        <div class="al al-rev"><b>⚠ Drug review</b>Stop / adjust offending med</div>
+        <div class="al al-treat"><b>💊 Treat</b>Start medication / supplement</div>
+        <div class="al al-ref"><b>↗ Refer</b>Routine specialist</div>
+        <div class="al al-rep"><b>♻ Repeat</b>Retest in X days/weeks</div>
+        <div class="al al-rec"><b>📞 Recall</b>Phone patient with plan</div>
+        <div class="al al-ann"><b>📝 Annotate</b>Incidental — document only</div>
+      </div>
+
+      <!-- The labs tool. data-topic-picker isn't needed (only one topic right now). -->
+      <div data-labs="generic"></div>
+
+      <div class="tool-howto" data-screen-label="How to use">
+        <div>
+          <h4>1 · Patient context first</h4>
+          <p>Age, sex, pregnancy, current meds — thresholds shift with each (e.g. K⁺ 5.6 on ACEi is a drug review; without it, just a repeat).</p>
+        </div>
+        <div>
+          <h4>2 · Paste or type</h4>
+          <p>The paste box parses common formats (Hb 102, K+ 6.2, HbA1c 62…). Anything it can't parse stays blank; fill it manually. Abnormal values get colour-coded as you type.</p>
+        </div>
+        <div>
+          <h4>3 · Read per-result actions</h4>
+          <p>The headline is the highest-acuity action. Below it: every rule that fired, grouped by test. Expand each for the patient phrase and notes template; one-click copy.</p>
+        </div>
+        <div>
+          <h4>4 · Open the full pathway</h4>
+          <p>Every analyte links to its full structured pathway (e.g. Hb → Anaemia, TSH → Abnormal TFTs) — all 52 lab pathways are wired in. Rules also hand off to the Triage Tool and MedChooser where relevant.</p>
+        </div>
+      </div>
+
+      <div class="footer-disclaimer" style="margin-top:50px">
+        <strong>Educational use only.</strong> Reference ranges, drug thresholds, and pathways vary by lab, assay, age, sex, pregnancy, and locality. The tool surfaces published UK guidance — always verify against live NICE CKS, your local pathology lab ranges, your formulary, and your clinical judgement. Recommendations are illustrative, not clinical advice.
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/case-related.js"></script>
+
+<!-- Lab actioning engine + ruleset -->
+<script src="../assets/labs.js"></script>
+<script src="../assets/labs/generic.js"></script>
+
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

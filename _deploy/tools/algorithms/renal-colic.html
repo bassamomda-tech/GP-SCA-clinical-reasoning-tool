@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Renal Colic Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf9f6;
+  --surface: #ffffff;
+  --border: #e2ddd6;
+  --text: #1c1916;
+  --muted: #695e55;
+  --accent: #b45309;
+  --safety: #991b1b;
+  --diagnose: #065f46;
+  --treat: #4c1d95;
+  --refer: #c2410c;
+  --lifestyle: #065f46;
+  --radius: 10px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.55; padding: 16px; max-width: 820px; margin: 0 auto; }
+h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600; }
+.stem-banner { display: flex; align-items: center; gap: 14px; background: #3b2208; color: #fff; padding: 16px 20px; border-radius: var(--radius); margin-bottom: 18px; }
+.sb-icon { font-size: 2rem; line-height: 1; }
+.stem-banner b { font-size: 1.05rem; display: block; }
+.stem-banner small { opacity: 0.7; font-size: 0.82rem; }
+.alg-progress { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px 16px; margin-bottom: 20px; font-size: 0.85rem; }
+.pcount { font-weight: 700; color: var(--accent); min-width: 36px; }
+.pbar { flex: 1; height: 6px; background: var(--border); border-radius: 999px; overflow: hidden; }
+.pbar-fill { height: 100%; background: linear-gradient(90deg, #b45309, #f59e0b); border-radius: 999px; width: 0%; transition: width 0.4s ease; }
+.reset { margin-left: auto; font-size: 0.8rem; background: none; border: 1px solid var(--border); border-radius: 6px; padding: 3px 10px; cursor: pointer; color: var(--muted); }
+.reset:hover { border-color: var(--accent); color: var(--accent); }
+.connector { width: 2px; height: 24px; background: var(--border); margin: 0 auto; }
+.node { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: box-shadow 0.2s; }
+.node:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.11); }
+.node.done { border-color: #a7f3d0; background: #f0fdf9; }
+.node-head { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px 10px; border-bottom: 1px solid var(--border); }
+.node-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; white-space: nowrap; margin-top: 2px; }
+[data-type="SAFETY"] .node-tag { background: #fee2e2; color: var(--safety); }
+[data-type="DIAGNOSE"] .node-tag { background: #d1fae5; color: var(--diagnose); }
+[data-type="TREAT"] .node-tag { background: #ede9fe; color: var(--treat); }
+[data-type="REFER"] .node-tag { background: #ffedd5; color: var(--refer); }
+[data-type="LIFESTYLE"] .node-tag { background: #d1fae5; color: var(--lifestyle); }
+.node-head h3 { flex: 1; }
+.node-tick { padding: 10px 16px 0; display: flex; justify-content: flex-end; }
+.node-tick label { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 0.82rem; color: var(--muted); }
+.node-tick input[type=checkbox] { width: 16px; height: 16px; cursor: pointer; accent-color: var(--accent); }
+.tlbl { user-select: none; }
+.node-body { padding: 14px 16px; font-size: 0.9rem; }
+.node-body > p { margin-bottom: 10px; color: var(--muted); font-size: 0.88rem; }
+.kv { display: grid; grid-template-columns: auto 1fr; gap: 1px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-top: 10px; font-size: 0.87rem; }
+.kv > div:nth-child(odd) { background: #faf7f2; padding: 8px 12px; font-weight: 600; color: var(--muted); font-size: 0.82rem; }
+.kv > div:nth-child(even) { background: var(--surface); padding: 8px 12px; }
+.rfgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; margin-top: 10px; }
+.rftile { background: #fee2e2; border: 1px solid #fca5a5; border-radius: 8px; padding: 10px 12px; font-size: 0.85rem; line-height: 1.45; }
+.rftile b { display: block; color: var(--safety); margin-bottom: 2px; }
+.branch { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 10px; }
+.b-card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.b-cond { background: #faf7f2; padding: 7px 12px; font-size: 0.8rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.b-drug { padding: 8px 12px 4px; font-weight: 700; font-size: 0.92rem; color: var(--treat); }
+.b-note { padding: 0 12px 10px; font-size: 0.82rem; color: var(--muted); }
+.ladder { margin-top: 10px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.rung { display: flex; align-items: baseline; gap: 10px; padding: 9px 14px; border-bottom: 1px solid var(--border); font-size: 0.87rem; }
+.rung:last-child { border-bottom: none; }
+.rung:nth-child(odd) { background: #faf9f7; }
+.rn { font-size: 0.75rem; font-weight: 700; color: var(--muted); min-width: 80px; text-transform: uppercase; letter-spacing: 0.04em; }
+.rt { flex: 1; }
+.lsgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-top: 10px; }
+.lstile { background: #ecfdf5; border: 1px solid #6ee7b7; border-radius: 8px; padding: 10px 12px; font-size: 0.85rem; line-height: 1.45; }
+.lstile b { display: block; color: var(--lifestyle); margin-bottom: 2px; }
+.pill { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 1px 7px; border-radius: 999px; letter-spacing: 0.03em; }
+.pill-red { background: #fee2e2; color: #991b1b; }
+.pill-purple { background: #ede9fe; color: #4c1d95; }
+.pill-blue { background: #dbeafe; color: #1e40af; }
+.pill-teal { background: #ccfbf1; color: #0f766e; }
+.pill-amber { background: #fef3c7; color: #92400e; }
+.pill-green { background: #dcfce7; color: #15803d; }
+.pill-grey { background: #f3f4f6; color: #374151; }
+.why-row { border-top: 1px solid var(--border); }
+.why-btn { width: 100%; text-align: left; background: none; border: none; padding: 9px 16px; font-size: 0.82rem; font-weight: 600; color: var(--accent); cursor: pointer; display: flex; align-items: center; gap: 4px; }
+.why-btn:hover { background: #fffbf0; }
+.caret { transition: transform 0.2s; }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.why-drawer { display: none; padding: 10px 16px 14px; font-size: 0.85rem; color: var(--muted); border-top: 1px dashed var(--border); line-height: 1.6; }
+.why-drawer.open { display: block; }
+.alg-foot { margin-top: 24px; padding: 14px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+@media (max-width: 540px) {
+  .rfgrid, .branch, .lsgrid { grid-template-columns: 1fr; }
+  .kv { grid-template-columns: 1fr; }
+  .kv > div:nth-child(odd) { border-bottom: none; padding-bottom: 2px; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🪨</div>
+  <div>
+    <b>Renal Colic — Acute Presentation &amp; Secondary Prevention</b>
+    <small>UK primary care algorithm · RCGP SCA preparation · Based on NICE CKS, EAU Guidelines, BAUS</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — confirm with CT-KUB and control pain, but act fast on the infected obstructed kidney (a urological emergency). Manage the stone, prevent recurrence, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Renal / ureteric colic</span><div class="body">Loin-to-groin pain, colicky, nausea, haematuria. Obs, urinalysis, U&amp;E; pregnancy test. <b>CT-KUB</b> is first-line imaging.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — infected obstruction / AKI</span><span class="ttl">Infected obstruction or AKI?</span><div class="body">Fever/sepsis + obstructing stone (infected obstructed kidney) → emergency decompression. Bilateral obstruction or single kidney with AKI. Uncontrolled pain/vomiting.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency urology</span><div class="body">Infected obstruction → emergency drainage (nephrostomy/stent) + antibiotics. AKI/anuria → urgent.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination localise the cause.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · common causes &amp; management</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Small stone</div><div class="box act"><span class="ttl">Manage</span><div class="body">&lt;5mm likely to pass; NSAID (first-line analgesia), hydration, alpha-blocker (MET); strain urine; review.</div></div></div><div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Larger / persistent</div><div class="box ix"><span class="ttl">Refer</span><div class="body">&gt;5–10mm, not passing, or persistent pain → urology for intervention (ESWL/ureteroscopy).</div></div></div><div class="col"><div class="blabel">Metabolic work-up</div><div class="box ix"><span class="ttl">Prevent</span><div class="body">Recurrent stones → stone analysis, calcium, urate; dietary/fluid advice.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> infected obstructed kidney / AKI. <span class="pill pill-purple">Urology</span> large/non-passing stones, recurrent stones; analgesia with an NSAID first-line.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · prevention &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Prevention &amp; modifiable factors</span><span class="ttl">Reduce recurrence (lifetime risk ~50%)</span><div class="body"><b>High fluid intake (2.5–3 L/day)</b> to keep urine dilute is the key measure; <b>reduce salt</b> and excessive animal protein; normal dietary calcium (don't restrict). For specific stones — reduce oxalate-rich foods (calcium oxalate), reduce purines/urate (urate stones, consider allopurinol). <b>Strain urine</b> to catch the stone for analysis; weight management.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to return urgently</span><div class="body"><b>999 / same-day</b> for <b>fever or rigors with the pain</b> (infected obstructed kidney — emergency decompression), uncontrolled pain/vomiting, or reduced urine output (AKI/single kidney). <b>Review</b> small stones expected to pass; if not passed in ~4 weeks or pain persists → urology. Arrange a <b>metabolic work-up + stone analysis</b> for recurrent stones.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>Fever plus an obstructing stone is a urological emergency:</b> an infected obstructed kidney needs same-day decompression and antibiotics — it can rapidly cause sepsis and kidney loss.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Step 1 — Screen for Emergencies: Infected Obstructed Kidney &amp; Mimics</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Infected obstruction (stone + sepsis) is a urological emergency with high mortality. Always exclude before managing conservatively.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Fever + loin pain + hydronephrosis</b> Urosepsis with infected obstructed kidney → <span class="pill pill-red">999 Emergency</span> — emergency nephrostomy / stenting within hours</div>
+      <div class="rftile"><b>Septic shock features</b> HR &gt;100, BP &lt;90 systolic, altered consciousness, rigors → <span class="pill pill-red">999 Emergency</span> — sepsis 6 protocol + urology</div>
+      <div class="rftile"><b>Bilateral obstruction / solitary kidney</b> Renal colic + known single kidney or anuric → <span class="pill pill-red">999 Emergency</span> — risk of acute renal failure</div>
+      <div class="rftile"><b>Uncontrolled pain</b> Severe pain not responding to home analgesia → <span class="pill pill-red">Same-day A&amp;E</span> — IV analgesia, imaging required</div>
+      <div class="rftile"><b>Pregnancy + renal colic</b> Loin pain in pregnant patient → <span class="pill pill-red">Same-day obstetrics/urology</span> — CT avoided; specialist USS/MRI guidance</div>
+      <div class="rftile"><b>AAA mimic</b> Age &gt;55, vascular disease, pulsatile abdominal mass, severe back/flank pain → <span class="pill pill-red">999 Emergency</span> — exclude aortic aneurysm</div>
+      <div class="rftile"><b>Haematuria + clot retention</b> Unable to pass urine + haematuria → <span class="pill pill-red">Same-day urology</span> — obstruction from clot</div>
+      <div class="rftile"><b>Immunocompromised / diabetes</b> Renal colic + fever + DM or immunosuppression → <span class="pill pill-amber">Same-day urology</span> — emphysematous pyelonephritis risk</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Infected obstructed kidney (pyonephrosis) has a mortality of 10–40% if not drained emergently — it does not respond to antibiotics alone because the infected urine cannot drain. Temperature alone can be misleading — some patients remain apyrexial initially. AAA causes ~6,000 deaths/year in the UK; classically presents with loin/flank pain in older men and can mimic renal colic exactly — pulsatile mass on examination, or known AAA, requires immediate 999. Pregnant women are a special population: radiation risk means CT-KUB is avoided; MRI or ultrasound used, and specialist input mandatory from presentation.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Step 2 — Confirm Diagnosis: Typical History &amp; Differential Diagnosis</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Renal colic has a highly characteristic presentation — confirm it and exclude dangerous mimics.</p>
+    <div class="kv">
+      <div>Classic presentation</div><div>Sudden severe loin-to-groin pain (10/10 intensity). Colicky (waxing/waning). Cannot find comfortable position (distinguishes from peritonitis). Nausea/vomiting. Radiation to ipsilateral testis/labia</div>
+      <div>Haematuria</div><div>Microscopic or macroscopic in 85% of cases. Absence does not exclude — 15% have no haematuria. Dipstick + confirm with MSU</div>
+      <div>Previous episodes</div><div>History of stones increases pre-test probability significantly. Ask about stone passage, previous lithotripsy</div>
+      <div>Key differentials</div><div>AAA (pulsatile mass, vascular RF, older age). Ectopic pregnancy (LMP, urine pregnancy test). Ovarian pathology (women: USS needed). Pyelonephritis (fever predominant, no severe colicky pain). Appendicitis (localised RIF, peritonism)</div>
+      <div>Urine pregnancy test</div><div>Mandatory in all women of childbearing age before imaging. Ectopic must be excluded</div>
+      <div>Stone risk factors</div><div>Low fluid intake, hot climate, family history, diet (high oxalate/protein/salt), gout, IBD, recurrent UTIs, anatomical abnormalities, medications (indinavir, triamterene, topiramate)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The inability to find a comfortable position is a key differentiating feature of renal colic from peritonitis (where patients lie still). The classic pain radiation pattern reflects the ureteric anatomy — upper ureter pain radiates to ipsilateral testis/labia via the genitofemoral nerve. Urine pregnancy test is a mandatory first step in women — ectopic pregnancy can present identically to renal colic and delay in diagnosis is a recognised cause of maternal death (MBRRACE UK). Haematuria absent in 15% of confirmed stone cases — its absence should not cause abandonment of the diagnosis if the clinical picture fits.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Step 3 — Stone Classification: Size, Position &amp; Composition</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Stone characteristics determine likelihood of spontaneous passage, urgency, and long-term prevention strategy.</p>
+    <div class="kv">
+      <div>Size — spontaneous passage</div><div>&lt;5mm: 90% pass spontaneously. 5–10mm: 50% pass. &gt;10mm: &lt;25% pass spontaneously — likely to need intervention</div>
+      <div>Position</div><div>Distal ureter (near bladder): highest passage rate. Proximal ureter / renal pelvis: lower passage rate, longer time. Kidney: renal stones may be incidental</div>
+      <div>Calcium oxalate (75%)</div><div>Most common. Radio-opaque. Risk factors: hypercalciuria, hyperoxaluria, hypocitraturia, low fluid. Increases with oxalate-rich diet</div>
+      <div>Uric acid (10%)</div><div>Radio-lucent on plain X-ray (visible on CT). Gout, high protein diet, dehydration, DM, metabolic syndrome. Responds to alkalinisation (potassium citrate)</div>
+      <div>Struvite (5–15%)</div><div>Infection stones (Proteus, Klebsiella, Pseudomonas). Staghorn calculi. Require treatment of underlying infection. Associated with recurrent UTIs</div>
+      <div>Cystine (&lt;3%)</div><div>Genetic (cystinuria). Present in childhood/young adults. Radio-opaque (faintly). Require high fluid, alkalinisation, D-penicillamine / tiopronin</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Stone size is the single most important predictor of spontaneous passage — this drives the management decision of conservative vs intervention. EAU 2024 guidelines recommend medical expulsive therapy for stones 5–10mm in distal ureter. Stone composition, determined from CT Hounsfield units or stone analysis after passage, determines secondary prevention — uric acid stones are uniquely responsive to urinary alkalinisation, making the distinction clinically important. Struvite/infection stones will recur unless the underlying urease-producing organism is eradicated — antibiotics alone without stone removal will fail. Stone composition analysis should be requested for all passed stones.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Step 4 — Targeted Examination</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Examination is brief but critical — exclude emergencies and assess severity.</p>
+    <div class="kv">
+      <div>Vital signs</div><div>Temperature → fever + tachycardia = infected obstruction (emergency). BP + HR → haemodynamic compromise (AAA, sepsis). SpO₂ for systemic unwell</div>
+      <div>Abdominal inspection</div><div>Distension (ileus), guarding, rigidity → peritonitis / AAA. Patient unable to lie still = characteristic colic</div>
+      <div>Aorta palpation</div><div>Pulsatile expansile mass &gt;3cm → AAA → 999 immediately. Do not delay for USS</div>
+      <div>Loin/flank</div><div>Costovertebral angle (CVA) tenderness → pyelonephritis / hydronephrosis. Renal colic often has flank pain radiating anteriorly</div>
+      <div>Abdominal palpation</div><div>Deep palpation for tenderness → peritonism (appendicitis, diverticulitis). Renal colic: often minimal guarding. Ureteric stone: tenderness medial to McBurney's</div>
+      <div>Genitalia</div><div>Testicular exam in men (exclude torsion). Hernia orifices. Radiation of pain to scrotum/labia</div>
+      <div>Urine dipstick</div><div>Haematuria confirms likely stone. Nitrites/leucocytes → infection. Glucose → DM</div>
+      <div>Pregnancy test</div><div>Women of childbearing age — urine βhCG before any imaging decision</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The examination in renal colic is as much about excluding dangerous mimics as confirming the diagnosis. The patient who cannot keep still is a positive sign — patients with peritoneal inflammation lie motionless. Palpating for an aortic aneurysm takes 10 seconds and can be lifesaving — AAA accounts for approximately 1% of presentations with suspected renal colic, but in over-55 males with vascular risk factors, it must be actively excluded. CVA tenderness with fever raises the possibility of obstructed infected system even with normal BP/HR — these patients can deteriorate rapidly.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Step 5 — Investigations</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Urine dipstick + MSU <span class="pill pill-blue">1st line</span></div><div>Haematuria confirms stone (85%). Nitrites/WBC → infection (changes urgency). Culture if infection suspected. Pregnancy test if female</div>
+      <div>CT-KUB (non-contrast CT) <span class="pill pill-blue">Gold standard</span></div><div>Sensitivity 97%, specificity 96%. Identifies stone size, position, degree of obstruction. NOT in pregnancy. Arranged via A&amp;E or urgent GP request depending on local pathway. Most patients need A&amp;E for definitive imaging</div>
+      <div>Urine USS <span class="pill pill-blue">Alternative</span></div><div>First-line in pregnancy and children. Shows hydronephrosis (indirect obstruction marker). Sensitivity 78% for stones. Does not show ureter well. Not sufficient if CT-KUB indicated</div>
+      <div>Plain KUB X-ray</div><div>Detects radio-opaque stones (calcium, struvite, cystine). Cannot detect uric acid stones. Limited sensitivity — not recommended as sole investigation (EAU 2024). Useful for monitoring known radio-opaque stones</div>
+      <div>U&amp;Es + eGFR <span class="pill pill-blue">All patients</span></div><div>Check renal function — AKI? Single kidney? Baseline. Uric acid level if uric acid stone suspected. Calcium if hypercalcaemia/hyperparathyroidism risk</div>
+      <div>FBC, CRP <span class="pill pill-blue">If infection suspected</span></div><div>WBC elevated → infection. CRP &gt;100 → significant infection. Blood cultures if septic</div>
+      <div>24h urine + stone analysis</div><div>After acute episode, for recurrent stones or first-time metabolic workup. Urinary calcium, oxalate, uric acid, citrate, creatinine. Send passed stone to biochemistry for composition analysis</div>
+      <div>NOT needed acutely</div><div>Contrast CT, IVU, retrograde pyelography — secondary care. Do not delay emergency referral for additional imaging</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">CT-KUB (non-contrast) is the gold standard investigation with near-perfect sensitivity and specificity, and can simultaneously identify AAA and other pathologies — it should be the investigation of choice for all non-pregnant adults. However, it involves ionising radiation (equivalent to ~1 year background radiation) — important for young recurrent stone formers who will have multiple scans over a lifetime. BAUS recommends USS as first-line for children and pregnant women. The 24-hour urine collection for metabolic workup is one of the most clinically impactful investigations in stone disease — identifying correctable metabolic abnormalities (hypercalciuria, hyperuricosuria, hypocitraturia) allows targeted prevention that can reduce recurrence by 50–80%.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head">
+    <span class="node-tag">Refer</span>
+    <h3>Step 6 — Referral Criteria</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999 Emergency</span></div><div>Fever + obstruction (infected kidney). Haemodynamic instability. AAA suspected. Bilateral obstruction. Anuric. Pregnancy + severe colic</div>
+      <div><span class="pill pill-red">Same-day A&amp;E</span></div><div>Uncontrolled pain at home. Single kidney with obstruction. AKI on bloods. Renal colic + rigor without fever (early sepsis). Unable to tolerate oral fluids</div>
+      <div><span class="pill pill-amber">Urgent urology (within days)</span></div><div>Stone &gt;10mm (unlikely to pass spontaneously). Proximal ureteric stone with incomplete passage after 4 weeks. Failed medical expulsive therapy. Recurrent episodes same stone</div>
+      <div><span class="pill pill-blue">Routine urology</span></div><div>Recurrent stone formers (&gt;2 episodes per year). Metabolic stone workup indicated. Staghorn calculus. Cystinuria / uric acid stones requiring specialist management</div>
+      <div>Primary care manage</div><div>Uncomplicated first or recurrent episode. Stone &lt;5mm distal ureter. Pain controlled with oral analgesia. Normal renal function. No fever. Advise stone passage confirmation</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The referral decision in renal colic is largely driven by whether there is obstruction + infection (the only true emergency) or whether the stone is likely to pass spontaneously (conservative management safe). EAU guidelines note that stones &lt;5mm pass in 90% of cases without intervention — aggressive referral is not warranted. Stones &gt;10mm have a &lt;25% spontaneous passage rate and should be referred for urology intervention planning (ESWL, ureteroscopy, or PCNL). Recurrent stone formers (2+ episodes) benefit from systematic metabolic workup and prevention strategies, which are best coordinated through urology or specialist stone clinics.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head">
+    <span class="node-tag">Treat</span>
+    <h3>Step 7 — Analgesia, Medical Expulsive Therapy &amp; Secondary Prevention</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Acute analgesia is the primary GP role. Medical expulsive therapy (MET) evidence supports alpha-blocker use for distal ureteric stones 5–10mm.</p>
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Analgesia — 1st line</div>
+        <div class="b-drug">Diclofenac PR/IM/PO <span class="pill pill-teal">NSAID</span></div>
+        <div class="b-note">Diclofenac 75mg PR or 50mg PO TDS (max 150mg/day). More effective than opioids for renal colic. Contraindicated if eGFR &lt;30, NSAID allergy, GI risk</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Analgesia — 2nd line</div>
+        <div class="b-drug">Paracetamol + weak opioid</div>
+        <div class="b-note">Paracetamol 1g QDS + Codeine 30–60mg QDS PRN. Morphine if severe (A&amp;E). Avoid NSAIDs in AKI/solitary kidney</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Medical expulsive therapy</div>
+        <div class="b-drug">Tamsulosin 400mcg OD <span class="pill pill-teal">4–6 weeks</span></div>
+        <div class="b-note">Alpha-1 blocker. For distal ureteric stones 5–10mm. Increases stone passage rate ~30%. Warn re: postural hypotension, retrograde ejaculation</div>
+      </div>
+    </div>
+    <div class="ladder" style="margin-top:14px;">
+      <div class="rung"><span class="rn">Uric acid stones</span><span class="rt"><b>Urinary alkalinisation:</b> Potassium citrate (Effercitrate) — target urine pH 6.5–7.0. Monitor urine pH daily with dipstick. Can dissolve uric acid stones over weeks to months. Allopurinol 300mg OD if hyperuricosuria</span></div>
+      <div class="rung"><span class="rn">Calcium stones (1st line prevention)</span><span class="rt"><b>Increased fluid intake:</b> target urine output &gt;2L/day. Dietary calcium normal (1000mg/day) — do NOT restrict. Reduce dietary salt (&lt;6g/day) and animal protein (&lt;0.8g/kg/day)</span></div>
+      <div class="rung"><span class="rn">Calcium stones (2nd line)</span><span class="rt"><b>Thiazide diuretics</b> if hypercalciuria confirmed: Bendroflumethiazide 2.5mg OD. <b>Potassium citrate</b> if hypocitraturia. Allopurinol if hyperuricosuria with calcium oxalate stones</span></div>
+      <div class="rung"><span class="rn">Anti-emetics</span><span class="rt"><b>Metoclopramide</b> 10mg PO/IM. Or Ondansetron 4–8mg if opioids used. Nausea significantly worsens acute presentation</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Diclofenac is the analgesic of choice for renal colic — multiple RCTs and meta-analyses confirm NSAIDs are superior to opioids for pain control and have fewer side effects. The mechanism is prostaglandin inhibition reducing ureteric spasm and renal pelvis pressure. Medical expulsive therapy (MET) with tamsulosin is supported by NICE CKS and EAU 2024 for distal ureteric stones — it relaxes the ureteric smooth muscle via alpha-1 blockade, increasing passage rate and reducing time to passage. The evidence for stones &gt;10mm is weaker. Importantly, dietary calcium restriction for calcium stone formers is CONTRAINDICATED — it paradoxically increases urinary oxalate and worsens stone formation. This is a common misconception that must be explicitly corrected.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head">
+    <span class="node-tag">Lifestyle</span>
+    <h3>Step 8 — Secondary Prevention: Lifestyle Modifications</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Fluid intake</b> Target urine output &gt;2.0–2.5L/day. Requires ~3L fluid intake. Plain water best. Assess urine colour — pale yellow target. Recurrence reduced by 50% with adequate hydration</div>
+      <div class="lstile"><b>Dietary calcium — DO NOT RESTRICT</b> Normal calcium intake (1000mg/day). Low calcium diet paradoxically INCREASES oxalate absorption → more stones. Dairy is NOT the enemy</div>
+      <div class="lstile"><b>Reduce dietary oxalate</b> If calcium oxalate stones: limit spinach, rhubarb, nuts, chocolate, beetroot, tea (avoid excess). Not total elimination</div>
+      <div class="lstile"><b>Reduce salt intake</b> High dietary sodium increases urinary calcium. Target &lt;6g/day salt. Reduces calciuria → fewer calcium stones</div>
+      <div class="lstile"><b>Animal protein</b> Limit red meat, fish, poultry to &lt;0.8g/kg/day. Reduces urinary uric acid, calcium, oxalate and increases pH. Important for uric acid and calcium stone prevention</div>
+      <div class="lstile"><b>Urine pH monitoring</b> For uric acid stones — test urine pH with dipstick BD. Target 6.5–7.0. Alkaline urine dissolves uric acid crystals. Avoid if cystine or calcium phosphate stones</div>
+      <div class="lstile"><b>Weight management</b> Obesity increases stone risk (metabolic syndrome → hyperuricosuria, hypocitraturia). BMI reduction targets reduce recurrence. Refer to NHS weight management programme</div>
+      <div class="lstile"><b>Stone passage confirmation</b> Strain urine during acute episode (coffee filter or urine strainer). Collect stone and send for composition analysis — guides prevention strategy</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Fluid intake is the single most impactful secondary prevention intervention — reducing recurrence by 50% in RCTs (Borghi et al., NEJM 2002). The 2.5L urine output target is evidence-based and should be prescribed explicitly. The calcium restriction myth is clinically important to correct actively — patients often self-restrict dairy based on a logical but incorrect assumption, which worsens their stone disease. The dietary calcium binds oxalate in the gut, reducing intestinal oxalate absorption. Straining urine to collect stones for composition analysis is free, non-invasive, and provides actionable information that guides targeted prevention — it should be recommended to every stone patient.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Step 9 — Follow-Up, Monitoring &amp; Safety-Netting</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>48–72h review</div><div>Pain controlled? Able to tolerate oral fluids? MSU culture result back? If worsening → same-day A&amp;E. Check U&amp;Es if not done at first presentation</div>
+      <div>4-week review</div><div>Has stone passed? Confirm with patient (stone in strainer / UTI ruled out). If not passed and &gt;5mm → refer urology. Review tamsulosin — stop if stone passed</div>
+      <div>6-week review (post-A&amp;E)</div><div>U&amp;Es, BP. Imaging result reviewed. Urology follow-up arranged if stone not passed or intervention required</div>
+      <div>3–6 months (recurrent)</div><div>Recurrent stone formers: review 24h urine results. Metabolic bloods: calcium, urate, bicarbonate, phosphate. Thiazide / potassium citrate response. Diet diary review</div>
+      <div>Safety-net 999</div><div>Fever + loin pain returning (infected obstruction). Collapse/hypotension. Anuria. Unable to pass urine at all</div>
+      <div>Safety-net same-day</div><div>Vomiting preventing oral analgesia/fluids. Severe uncontrolled pain. Haematuria with clots. Fever without loin pain (early sepsis)</div>
+      <div>Haematuria follow-up</div><div>Macroscopic haematuria that persists after stone passage → MSU then haematuria clinic referral (exclude bladder/renal cancer)</div>
+      <div>Annual review</div><div>Recurrent stone formers: U&amp;Es, serum calcium, uric acid. Monitor eGFR — chronic stone disease can cause CKD. USS/imaging for silent stones per urology guidance</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Recurrence rates for renal stones are 50% within 5 years without prevention — follow-up to implement prevention measures is as important as acute management. Persistent macroscopic haematuria after stone passage should not be automatically attributed to the stone — urothelial malignancy must be excluded, particularly in older patients and smokers (NICE NG12 haematuria pathway). Long-term stone disease causes progressive CKD in ~5% of patients — eGFR monitoring detects this early. The 48–72h safety-net call is particularly important because infected obstruction can develop after initial presentation appears benign — a patient who was afebrile at 9am can be septic by evening.</div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE CKS Renal or Ureteric Colic (2024); EAU Guidelines on Urolithiasis (2024); BAUS Renal Stone Disease Guidelines (2023); NICE NG12 Suspected Cancer (2023); Borghi et al. NEJM 2002 (fluid intake RCT). Always adapt to individual patient context, renal function, local antibiotic guidelines, and current NICE/BAUS updates.
+</div>
+
+<script>
+(function(){
+  const KEY = 'rgp.alg.renalcolic.v1';
+  const checks = document.querySelectorAll('.node-tick input[type=checkbox]');
+  const pDone = document.getElementById('pDone');
+  const pFill = document.getElementById('pFill');
+  const total = checks.length;
+  document.getElementById('pTotal').textContent = total;
+  function save(){ const state = Array.from(checks).map(c=>c.checked); localStorage.setItem(KEY, JSON.stringify(state)); }
+  function load(){
+    try{ const s=JSON.parse(localStorage.getItem(KEY)||'[]'); checks.forEach((c,i)=>{ if(s[i]){ c.checked=true; c.closest('.node').classList.add('done'); }}); }catch(e){}
+    update();
+  }
+  function update(){ let done=0; checks.forEach(c=>{ if(c.checked) done++; }); pDone.textContent=done; pFill.style.width=(done/total*100)+'%'; }
+  checks.forEach(c=>{ c.addEventListener('change',()=>{ c.closest('.node').classList.toggle('done',c.checked); save(); update(); }); });
+  document.getElementById('resetBtn').addEventListener('click',()=>{ checks.forEach(c=>{ c.checked=false; c.closest('.node').classList.remove('done'); }); localStorage.removeItem(KEY); update(); });
+  document.querySelectorAll('.why-btn').forEach(btn=>{ btn.addEventListener('click',()=>{ const drawer=btn.nextElementSibling; const open=drawer.classList.toggle('open'); btn.setAttribute('aria-expanded',open); }); });
+  load();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

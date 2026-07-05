@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sore Throat &amp; Acute Tonsillitis — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Sore throat management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"😦",
+  title:"Sore Throat &amp; Acute Tonsillitis",
+  stemTitle:"Sore throat \u2014 score it (FeverPAIN/Centor), then steward antibiotics",
+  stemSub:"Primary-care management of acute sore throat &amp; tonsillitis \u2014 most are viral &amp; self-limiting. Use FeverPAIN or Centor to guide whether antibiotics help, exclude the emergencies (quinsy, epiglottitis, airway compromise) and the not-to-miss causes (glandular fever, agranulocytosis), and treat symptoms with stewardship. NICE NG84 \u00b7 2026.",
+  guideline:"NICE NG84",
+  glance:[
+    {lbl:"Most are", val:"Viral &amp; self-limiting", sub:"~1 week; antibiotics little benefit"},
+    {lbl:"Score", val:"FeverPAIN or Centor", sub:"guides antibiotic decision"},
+    {lbl:"Low score", val:"No antibiotic + self-care", sub:"safety-net"},
+    {lbl:"High score", val:"Consider back-up/immediate", sub:"phenoxymethylpenicillin"},
+    {lbl:"Avoid", val:"Amoxicillin", sub:"rash if glandular fever"},
+    {lbl:"Red flag", val:"Drooling / stridor / trismus", sub:"= airway emergency"}
+  ],
+  flow:[
+    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Exclude the emergencies",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Epiglottitis / airway compromise", html:"Rapid onset, drooling, stridor, muffled \u2018hot-potato\u2019 voice, tripod sitting, struggling to swallow saliva, systemically unwell \u2192 <b>999</b>; do NOT examine the throat."},
+          {t:"🔴 Quinsy (peritonsillar abscess)", html:"Severe unilateral pain, trismus (can\u2019t open mouth), uvular deviation, muffled voice \u2192 <b>same-day ENT</b> for drainage."},
+          {t:"🔴 Agranulocytosis", html:"Severe sore throat + fever in someone on a marrow-suppressing drug (carbimazole, clozapine, methotrexate, DMARDs/chemo) \u2192 <b>urgent FBC</b> \u2014 may be neutropenic sepsis."},
+          {t:"🟠 Glandular fever", html:"Adolescent/young adult, marked malaise/fatigue, exudative tonsillitis, lymphadenopathy, splenomegaly \u2192 Monospot/EBV serology; avoid amoxicillin (rash); advise no contact sport (splenic rupture)."}
+        ]},
+        {b:"why", html:"The job in sore throat is twofold: catch the rare emergency (epiglottitis, quinsy, agranulocytosis) and then resist over-prescribing antibiotics for what is usually a self-limiting viral illness. Never give amoxicillin/ampicillin empirically \u2014 it causes a florid rash in glandular fever."}
+      ]},
+    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Score the likelihood (bacterial)",
+      blocks:[
+        {b:"kv", rows:[
+          ["FeverPAIN (1 pt each)","<b>Fever</b> (in last 24h), <b>P</b>urulence, <b>A</b>ttend rapidly (\u22643 days), severely <b>I</b>nflamed tonsils, <b>N</b>o cough/coryza. 0\u20131 \u2192 no antibiotic; 2\u20133 \u2192 back-up; 4\u20135 \u2192 consider immediate"],
+          ["Centor (1 pt each)","Tonsillar exudate, tender anterior cervical nodes, fever &gt;38, absence of cough. \u22653 \u2192 higher chance of streptococcus"],
+          ["Most causes","Viral (rhinovirus, adenovirus, EBV, influenza); group A strep is the main treatable bacterial cause"],
+          ["Self-limiting","Symptoms usually settle within ~1 week regardless of antibiotics; antibiotics shorten illness only modestly"]
+        ]}
+      ]},
+    {t:"node", d:"life", n:"3", tag:"Non-drug · core", title:"Self-care", blocks:[{b:"tiles", v:"life", items:[{t:"💧 Fluids & rest", html:"Adequate fluids, rest; most sore throats are viral and self-limiting (~1 week)."},{t:"💊 Symptom relief", html:"Regular paracetamol/ibuprofen; lozenges or saltwater gargle for comfort."},{t:"📋 Set expectations", html:"Antibiotics give only modest benefit even in bacterial cases."}]},{b:"why", html:"Most sore throats are viral and self-limiting, so analgesia, fluids and clear expectation-setting are the core management."}]},
+    {t:"node", d:"drug", n:"4", tag:"Management", title:"Symptom relief &amp; antibiotics",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Self-care for all", when:"first-line",
+           html:"<b>Paracetamol/ibuprofen</b>, fluids, rest; medicated lozenges/sprays/saline gargle for symptom relief. Explain the expected course (~1 week) &amp; safety-net."},
+          {step:"Step 2", title:"Low score", when:"FeverPAIN 0\u20131 / Centor \u22641",
+           fromLabel:"stewardship",
+           html:"<b>No antibiotic</b> \u2014 reassure, self-care, safety-net for worsening/not improving."},
+          {step:"Step 3", title:"Intermediate score", when:"FeverPAIN 2\u20133",
+           fromLabel:"shared decision",
+           html:"<b>Back-up (delayed) prescription</b> \u2014 use only if not improving in 3\u20135 days or worsening."},
+          {step:"Step 4", title:"High score / antibiotic indicated", when:"FeverPAIN 4\u20135, systemically unwell, high risk",
+           fromLabel:"treat",
+           html:"<b>Phenoxymethylpenicillin</b> (penicillin V) <b>500 mg QDS (or 1000 mg BD) for 5\u201310 days</b>; penicillin allergy \u2192 <b>clarithromycin 250\u2013500 mg BD</b> (or erythromycin 250\u2013500 mg QDS). <b>Never amoxicillin</b> (glandular-fever rash)."}
+        ]},
+        {b:"warn", html:"Scarlet fever (sandpaper rash, strawberry tongue, sore throat) is a notifiable group A strep infection \u2192 treat with penicillin and notify. Watch for the rare complications of untreated strep (rheumatic fever, glomerulonephritis, quinsy)."}
+      ]},
+    {t:"node", d:"monitor", n:"5", tag:"Follow-up", title:"Safety-net &amp; recurrence",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"During illness", title:"Safety-net", html:"Return if difficulty breathing/swallowing saliva, drooling, severe unilateral pain/trismus, or not improving in 3\u20135 days."},
+          {n:"2", when:"If glandular fever", title:"Advise", html:"Expect prolonged fatigue; avoid contact sport/heavy lifting ~1 month (splenic rupture risk)."},
+          {n:"3", when:"Recurrent tonsillitis", title:"Consider ENT", html:"Frequent, disabling episodes (e.g. SIGN/Paradise criteria) \u2192 ENT for tonsillectomy discussion."}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"6", tag:"Refer", title:"Referral",
+      arrow:"emergency vs routine",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"999 / same-day ENT", html:"Epiglottitis/airway compromise (999); quinsy/peritonsillar abscess (same-day ENT)."},
+          {t:"Urgent FBC", html:"Severe sore throat + fever on a marrow-suppressing drug (?agranulocytosis)."},
+          {t:"ENT (routine)", html:"Recurrent disabling tonsillitis \u2192 tonsillectomy assessment."},
+          {t:"🟣 2WW head &amp; neck", html:"Persistent unexplained sore throat / unilateral ulcer / neck lump / hoarseness \u2192 NG12."}
+        ]},
+        {b:"say", html:"This looks like a throat infection that\u2019s very likely viral, so antibiotics wouldn\u2019t really speed it up and can cause side effects. Painkillers, fluids and lozenges will help, and it should settle within about a week. I\u2019ll give you a \u2018just-in-case\u2019 prescription to use only if you\u2019re not improving in a few days \u2014 but come back urgently if you struggle to swallow your own saliva, start drooling, or can\u2019t open your mouth."}
+      ]}
+  ],
+  foot:"Management of acute sore throat &amp; tonsillitis in primary care; use FeverPAIN/Centor for antibiotic stewardship and exclude airway emergencies, quinsy, glandular fever and agranulocytosis. Verify against current NICE NG84 Sore throat (acute): antimicrobial prescribing."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Opioid Dependence Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   REASONING GP — Algorithm Suite · Shared CSS
+   ═══════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f7f6f3;
+  --surface: #ffffff;
+  --border: #e4e1d9;
+  --border-soft: #ede9e2;
+  --text: #1a1714;
+  --text-muted: #6b6460;
+  --text-light: #9b9390;
+
+  --safety: #c0392b;
+  --safety-bg: #fef5f5;
+  --safety-border: #f5c6c6;
+
+  --diagnose: #1a5276;
+  --diagnose-bg: #f0f6fc;
+  --diagnose-border: #c5dff0;
+
+  --treat: #1e8449;
+  --treat-bg: #f0faf3;
+  --treat-border: #b8dfc5;
+
+  --refer: #6c3483;
+  --refer-bg: #f8f0fc;
+  --refer-border: #d7b8ed;
+
+  --lifestyle: #b7770d;
+  --lifestyle-bg: #fefaf0;
+  --lifestyle-border: #f0d9a0;
+
+  --rf-bg: #c0392b;
+  --rf-tile: #fff0f0;
+  --rf-tile-border: #f5c6c6;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,.10), 0 3px 8px rgba(0,0,0,.05);
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-xs: 5px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 0 0 60px;
+}
+
+/* ── Page Header ─────────────────────────────────────── */
+.page-header {
+  background: var(--text);
+  color: #fff;
+  padding: 20px 24px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+}
+.page-header .logo {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  opacity: .8;
+  white-space: nowrap;
+}
+.page-header .sep { opacity: .3; margin: 0 4px; }
+.page-header .title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+/* ── Stem Banner ─────────────────────────────────────── */
+.stem-banner {
+  background: linear-gradient(135deg, var(--text) 0%, #2c2620 100%);
+  color: #fff;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 24px 20px;
+  margin: 20px 16px 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+.sb-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.stem-banner b { font-size: 17px; font-weight: 700; display: block; margin-bottom: 4px; }
+.stem-banner small { font-size: 12.5px; opacity: .75; line-height: 1.45; display: block; }
+
+/* ── Progress Bar ────────────────────────────────────── */
+.alg-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.pcount { font-weight: 700; color: var(--text); font-size: 14px; }
+.pbar {
+  flex: 1;
+  height: 5px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.pbar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
+  border-radius: 99px;
+  width: 0%;
+  transition: width .4s cubic-bezier(.4,0,.2,1);
+}
+.reset {
+  font-size: 12px;
+  padding: 4px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  transition: all .15s;
+}
+.reset:hover { border-color: var(--text-muted); color: var(--text); }
+
+/* ── Algorithm Flow ──────────────────────────────────── */
+.alg-flow {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ── Connector ───────────────────────────────────────── */
+.connector {
+  width: 2px;
+  height: 24px;
+  background: linear-gradient(to bottom, var(--border), transparent);
+  margin: 0 auto;
+}
+
+/* ── Node ────────────────────────────────────────────── */
+.node {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.node:hover { box-shadow: var(--shadow-md); }
+
+.node[data-type="SAFETY"]    { border-left: 4px solid var(--safety); }
+.node[data-type="DIAGNOSE"]  { border-left: 4px solid var(--diagnose); }
+.node[data-type="TREAT"]     { border-left: 4px solid var(--treat); }
+.node[data-type="REFER"]     { border-left: 4px solid var(--refer); }
+.node[data-type="LIFESTYLE"] { border-left: 4px solid var(--lifestyle); }
+
+/* Node header */
+.node-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.node-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.node[data-type="SAFETY"]    .node-num { background: var(--safety);    color: #fff; }
+.node[data-type="DIAGNOSE"]  .node-num { background: var(--diagnose);  color: #fff; }
+.node[data-type="TREAT"]     .node-num { background: var(--treat);     color: #fff; }
+.node[data-type="REFER"]     .node-num { background: var(--refer);     color: #fff; }
+.node[data-type="LIFESTYLE"] .node-num { background: var(--lifestyle); color: #fff; }
+
+.node-head-text { flex: 1; }
+.node-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 3px;
+}
+.node[data-type="SAFETY"]    .node-tag { color: var(--safety); }
+.node[data-type="DIAGNOSE"]  .node-tag { color: var(--diagnose); }
+.node[data-type="TREAT"]     .node-tag { color: var(--treat); }
+.node[data-type="REFER"]     .node-tag { color: var(--refer); }
+.node[data-type="LIFESTYLE"] .node-tag { color: var(--lifestyle); }
+
+.node-head h3 {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.01em;
+  color: var(--text);
+}
+
+/* Checkbox */
+.node-tick {
+  padding: 8px 14px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.node-tick label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-light);
+  user-select: none;
+}
+.node-tick input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #27ae60;
+  cursor: pointer;
+}
+.node-tick input:checked + .tlbl { color: #27ae60; }
+
+/* Node body */
+.node-body {
+  padding: 12px 16px 14px;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+}
+.node-body > p, .node-body > span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text-muted);
+  font-size: 13.5px;
+}
+
+/* ── KV Grid ─────────────────────────────────────────── */
+.kv {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  font-size: 13.5px;
+  margin-top: 8px;
+}
+.kv > div {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border-soft);
+  line-height: 1.5;
+}
+.kv > div:nth-child(4n+1),
+.kv > div:nth-child(4n+2) { background: var(--surface); }
+.kv > div:nth-child(4n+3),
+.kv > div:nth-child(4n+4) { background: #fafaf8; }
+.kv > div:nth-last-child(-n+2) { border-bottom: none; }
+.kv > div:nth-child(odd) {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  border-right: 1px solid var(--border-soft);
+  letter-spacing: .01em;
+}
+
+/* ── Red Flag Grid ───────────────────────────────────── */
+.rfgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+@media (max-width: 480px) { .rfgrid { grid-template-columns: 1fr; } }
+.rftile {
+  background: var(--rf-tile);
+  border: 1.5px solid var(--rf-tile-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.rftile b { color: #c0392b; font-weight: 700; display: block; margin-bottom: 2px; }
+
+/* ── Branch ──────────────────────────────────────────── */
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+.b-card {
+  background: var(--treat-bg);
+  border: 1.5px solid var(--treat-border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  font-size: 13px;
+}
+.b-cond {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+.b-drug {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--treat);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+.b-note {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* ── Ladder ──────────────────────────────────────────── */
+.ladder {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+  padding-left: 20px;
+}
+.ladder::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--treat-border), var(--refer-border));
+  border-radius: 2px;
+}
+.rung {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  padding: 9px 12px;
+  font-size: 13.5px;
+  position: relative;
+}
+.rung::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--treat);
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+  box-shadow: 0 0 0 1px var(--treat);
+}
+.rn {
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--treat);
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px 7px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.rt { flex: 1; line-height: 1.5; }
+
+/* ── Lifestyle Grid ──────────────────────────────────── */
+.lsgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+@media (max-width: 520px) { .lsgrid { grid-template-columns: 1fr; } }
+.lstile {
+  background: var(--lifestyle-bg);
+  border: 1.5px solid var(--lifestyle-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.lstile b { color: var(--lifestyle); font-weight: 700; display: block; margin-bottom: 2px; }
+
+/* ── Pills ───────────────────────────────────────────── */
+.pill {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 99px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.pill-red    { background: #fde8e8; color: #b91c1c; border: 1px solid #fca5a5; }
+.pill-purple { background: #f3e8ff; color: #7e22ce; border: 1px solid #d8b4fe; }
+.pill-blue   { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
+.pill-teal   { background: #e0fdf4; color: #0f766e; border: 1px solid #5eead4; }
+.pill-amber  { background: #fffbeb; color: #b45309; border: 1px solid #fcd34d; }
+.pill-green  { background: #f0fdf4; color: #15803d; border: 1px solid #86efac; }
+.pill-grey   { background: #f3f4f6; color: #374151; border: 1px solid #d1d5db; }
+.pill-orange { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
+
+/* ── Why Drawer ──────────────────────────────────────── */
+.why-row {
+  border-top: 1px solid var(--border-soft);
+  background: #fafaf8;
+}
+.why-btn {
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: .02em;
+  transition: color .15s;
+}
+.why-btn:hover { color: var(--text); }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.caret { transition: transform .2s; display: inline-block; }
+.why-drawer {
+  display: none;
+  padding: 4px 16px 14px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  border-top: 1px solid var(--border-soft);
+}
+.why-drawer.open { display: block; }
+.why-drawer p { margin-bottom: 6px; }
+.why-drawer p:last-child { margin-bottom: 0; }
+
+/* ── Done state ──────────────────────────────────────── */
+.node.is-done {
+  opacity: .72;
+}
+.node.is-done .node-body { position: relative; }
+.node.is-done .node-head h3 { text-decoration: line-through; text-decoration-color: #ccc; }
+
+/* ── Footer ──────────────────────────────────────────── */
+.alg-foot {
+  margin: 28px 16px 0;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.alg-foot strong { color: var(--text); }
+
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="page-header">
+  <span class="logo">Reasoning GP</span>
+  <span class="sep">·</span>
+  <span class="title">Mental Health &amp; Addiction</span>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">💊</div>
+  <div>
+    <b>Opioid Dependence — Assessment, Harm Reduction &amp; Opioid Substitution Treatment</b>
+    <small>UK "Orange Book" 2017 · NICE TA114 (methadone / buprenorphine) · confirm dependence before prescribing · take-home naloxone · usually specialist / shared-care led</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — recognise and treat overdose first, confirm opioid dependence objectively before prescribing, start opioid substitution treatment through a specialist / shared-care service, and wrap every patient in harm reduction — above all, take-home naloxone.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Person using opioids / seeking help</span><div class="body">Heroin, illicit or prescribed opioids. Establish drug(s), amount, route (oral / smoked / injected), duration, last use, and what they want from treatment.</div></div>
+    <div class="arrow"><span class="tag">Step 1 · safety first</span></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — acute overdose?</span><span class="ttl">Pinpoint pupils · ↓ respiratory rate · ↓ consciousness?</span><div class="body">Especially with alcohol, benzodiazepines, pregabalin/gabapentin, or after a period of abstinence (lost tolerance).</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Emergency</span><span class="ttl">999 + naloxone</span><div class="body">Naloxone 400 mcg IM, repeat every 2–3 min; airway/oxygen; recovery position. Naloxone is short-acting — re-sedation can occur.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="ttl">Assess</span><div class="body">Confirm dependence and assess holistically.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box ix"><span class="lbl">Step 2 · Investigate · confirm</span><span class="ttl">Dependence + objective opioid use</span><div class="body">ICD dependence criteria + drug test (urine/oral fluid) positive for opioids, signs of withdrawal/intoxication, injection marks. Screen BBV (HIV, hep B/C); assess mental health, social, safeguarding, pregnancy.</div></div>
+    <div class="arrow"><span class="tag">Step 7 · treatment</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">OST · maintenance</div><div class="box act"><span class="ttl">Methadone or buprenorphine</span><div class="body">First-line (NICE TA114). Slow methadone induction (highest-risk period) or buprenorphine once in withdrawal. Supervised consumption initially.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Harm reduction</div><div class="box act"><span class="ttl">Wrap-around</span><div class="body">Take-home naloxone, needle programmes, BBV vaccination/treatment, psychosocial support.</div></div></div>
+      <div class="col"><div class="blabel">Detox (when stable)</div><div class="box ix"><span class="ttl">Optional</span><div class="body">Gradual reduction + lofexidine; naltrexone to prevent relapse. Overdose risk rises after detox — naloxone essential.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Specialist / shared care</span><div class="body"><span class="pill pill-purple">Drug &amp; alcohol service</span> for assessment and OST initiation (most GPs prescribe under shared care). <span class="pill pill-red">Pregnancy</span> urgent joint specialist + maternity care — do not abruptly detox. <span class="pill pill-blue">Under-18s</span> specialist young people's service.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · harm reduction &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Harm reduction &amp; recovery support</span><span class="ttl">Wrap-around care</span><div class="body"><b>Take-home naloxone</b> for the patient and those around them (+ training). <b>Needle/syringe programmes</b>, BBV testing &amp; hepatitis B vaccination / hep C treatment, safer-injecting and overdose-prevention advice. Psychosocial &amp; keyworker support, housing/benefits/employment help, and treatment of coexisting mental illness. Smoking, alcohol and other-drug review; contraception/sexual health; safeguarding of any dependent children.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Monitor &amp; overdose-risk advice</span><div class="body"><b>Regular review</b> of OST dose, supervised consumption, urine drug screens and engagement; titrate methadone cautiously (cardiac/QT awareness at higher doses). <b>Emphasise the highest-risk windows</b> for fatal overdose — induction, and after any loss of tolerance (prison release, hospital discharge, completed detox) — and ensure naloxone is carried. <b>999</b> for pinpoint pupils + reduced consciousness/respiration; warn about combining opioids with alcohol/benzodiazepines/pregabalin.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>Never start opioid substitution treatment without confirmed dependence, and never give a full methadone dose to someone who may have lost tolerance.</b> The induction period and the days after any abstinence (prison release, hospital, completed detox) carry the highest overdose risk — give take-home naloxone to everyone.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head">
+    <div class="node-num">1</div>
+    <div class="node-head-text">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — recognise and treat opioid overdose, and the highest-risk moments</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <span>Opioid overdose is a reversible cause of death. Recognise it, give naloxone, and call 999 — then build overdose prevention into every consultation.</span>
+    <div class="rfgrid">
+      <div class="rftile"><b>Opioid overdose</b> Pinpoint pupils, respiratory rate &lt; 12 or shallow breathing, reduced consciousness, cyanosis, snoring/gurgling → <span class="pill pill-red">999</span> + naloxone 400 mcg IM, repeat every 2–3 min; airway, oxygen, recovery position</div>
+      <div class="rftile"><b>Lost tolerance</b> Recent abstinence — release from prison, after a hospital stay, detox or any break in use — sharply raises overdose risk if they return to their previous dose → high-risk; ensure take-home naloxone</div>
+      <div class="rftile"><b>Sedative combinations</b> Opioids + alcohol, benzodiazepines, pregabalin/gabapentin, or zopiclone → additive respiratory depression and most drug-related deaths → counsel and avoid co-prescribing sedatives</div>
+      <div class="rftile"><b>Methadone induction</b> The first 1–2 weeks of methadone are the highest-risk period — methadone accumulates over days (long half-life) → start low, titrate slowly, supervise consumption</div>
+      <div class="rftile"><b>Naloxone re-sedation</b> Naloxone is shorter-acting than most opioids (especially methadone) — the patient can re-sedate after it wears off → always 999; do not leave alone after reversal</div>
+      <div class="rftile"><b>Suicide / mental health crisis</b> High rates of depression, self-harm and intentional overdose in this group → assess risk directly at every contact and act on it (see Low Mood pathway)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>The majority of drug-related deaths in the UK involve opioids, and most involve more than one substance — opioids combined with benzodiazepines, alcohol, pregabalin or gabapentin. These central nervous system depressants act synergistically on respiratory drive, so the combination is far more dangerous than any one drug alone. Asking specifically about co-use of "street" benzodiazepines and pregabalin/gabapentin, and counselling against mixing, is a core safety conversation.</p>
+      <p>Loss of tolerance is the single most important overdose risk factor and is often iatrogenic in timing — the days following prison release, hospital discharge, or completion of a detox are when people are most likely to die, because they return to a dose their body can no longer handle. Every person leaving a controlled environment, and everyone in treatment, should leave with take-home naloxone and overdose-awareness advice for themselves and the people around them.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head">
+    <div class="node-num">2</div>
+    <div class="node-head-text">
+      <span class="node-tag">Diagnose</span>
+      <h3>Confirm opioid dependence — and confirm opioid use objectively before prescribing</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <span>Dependence is a clinical diagnosis, but you must objectively confirm current opioid use before any substitute opioid is prescribed — prescribing into a non-tolerant person can be fatal.</span>
+    <div class="kv">
+      <div>Dependence criteria (ICD-10/11)</div><div>≥ 3 over the past year: strong desire/craving; impaired control over use; a withdrawal state; tolerance (needing more for the same effect); salience (use crowds out other activities); persistent use despite clear harm.</div>
+      <div>Drug history</div><div>Which opioid(s), amount and cost per day, route (oral, smoked/"chasing", injected), duration of use, last use, typical withdrawal pattern, other drugs (benzodiazepines, crack/cocaine, alcohol, pregabalin), previous treatment episodes and any overdoses.</div>
+      <div>Objective confirmation</div><div><span class="pill pill-blue">Required before OST</span> A drug test (urine or oral fluid) positive for opioids ± methadone/buprenorphine, plus signs of intoxication or withdrawal and/or injection sites. Do not rely on history alone to justify a prescription.</div>
+      <div>Withdrawal assessment</div><div>Yawning, lacrimation, rhinorrhoea, sweating, dilated pupils, piloerection ("cold turkey"), abdominal cramps, diarrhoea, myalgia, restlessness, insomnia. Use an objective scale (e.g. COWS) — uncomfortable but rarely dangerous in healthy adults (unlike alcohol/benzo withdrawal).</div>
+      <div>Severity &amp; goals</div><div>Gauge dependence severity, complications, and the person's own goals (stabilisation and harm reduction vs abstinence) — this shapes whether you aim for maintenance OST or, later, detox.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Objective confirmation of dependence is a fundamental safety rule in the UK clinical guidelines ("Orange Book"). A substitute opioid such as methadone is itself a potent respiratory depressant; prescribing it to someone who is not in fact opioid-tolerant — for example, someone exaggerating their use to obtain a prescription — can cause fatal toxicity. Confirmation combines a positive drug test, objective signs (withdrawal or intoxication, injection marks), and a coherent history, not the history alone.</p>
+      <p>Unlike alcohol or benzodiazepine withdrawal, uncomplicated opioid withdrawal is not life-threatening in an otherwise healthy adult — it is intensely unpleasant but safe. This matters clinically: the urgency in opioid dependence is not the withdrawal itself but engaging and retaining the person in treatment, preventing overdose, and reducing the harms of continued illicit use. It also means abrupt withdrawal (e.g. on hospital admission or in custody) is rarely justified and risks disengagement and post-release overdose.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head">
+    <div class="node-num">3</div>
+    <div class="node-head-text">
+      <span class="node-tag">Diagnose</span>
+      <h3>Comprehensive assessment — physical, mental, social &amp; safeguarding</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Blood-borne viruses</div><div>Offer testing for HIV, hepatitis B and hepatitis C to anyone who injects or has injected. Offer hepatitis B vaccination (rapid schedule), and refer hepatitis C for treatment — it is now curable with direct-acting antivirals.</div>
+      <div>Injecting harms</div><div>Inspect injection sites: abscesses, cellulitis, DVT, missed/arterial injection. Consider infective endocarditis (fever + new murmur), and ask about groin injecting. Tetanus status; risk of botulism/anthrax in outbreaks.</div>
+      <div>Mental health</div><div>Screen for depression, anxiety, PTSD/trauma, personality difficulties and self-harm/suicide risk — comorbidity is the rule, not the exception, and worsens outcomes if untreated.</div>
+      <div>Cardiac (before methadone)</div><div>Methadone prolongs the QT interval. Take an ECG before/with methadone where there is cardiac risk, other QT-prolonging drugs, or higher doses; check electrolytes.</div>
+      <div>Social context</div><div>Housing, income/debt, employment, relationships, domestic abuse, and contact with the criminal justice system — all influence treatment and recovery.</div>
+      <div>Safeguarding &amp; pregnancy</div><div><span class="pill pill-amber">Always ask</span> Dependent children or pregnancy → assess and refer appropriately. Parental drug use is a safeguarding consideration; pregnancy needs urgent joint specialist + maternity care (do not abruptly detox).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>An episode of opioid treatment is a high-value opportunity to address health that is often otherwise neglected. Hepatitis C is curable in over 95% of cases with short oral direct-acting antiviral courses, and treating people who inject drugs is central to elimination — so testing and referral should be routine, not optional. Hepatitis B vaccination, HIV testing, wound care and immunisations all belong in the assessment.</p>
+      <p>Safeguarding is a continuous responsibility. Children of parents with drug dependence are at increased risk, and assessment of dependents is part of every drug-treatment contact — not to remove children by default, but to ensure support is in place. Pregnancy is managed jointly by specialist drug services and maternity teams: maintenance OST is continued because uncontrolled withdrawal and relapse carry greater risks to the fetus than stable substitute treatment.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="TREAT" data-step="4">
+  <div class="node-head">
+    <div class="node-num">4</div>
+    <div class="node-head-text">
+      <span class="node-tag">Treat</span>
+      <h3>Opioid substitution treatment (OST) — methadone vs buprenorphine</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <span>Maintenance OST is the cornerstone of treatment and is usually initiated by a specialist service, with many GPs continuing it under a shared-care agreement. Methadone and buprenorphine are both first-line (NICE TA114); choose with the patient.</span>
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Methadone</div>
+        <div class="b-drug">Oral solution 1 mg/1 ml <span class="pill pill-amber">slow induction</span></div>
+        <div class="b-note">Typical start 10–30 mg (lower if tolerance uncertain). Titrate slowly — it accumulates over days. Supervised daily consumption initially. Highest overdose risk in the first 2 weeks. Prolongs QT.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Buprenorphine</div>
+        <div class="b-drug">Sublingual — start in withdrawal</div>
+        <div class="b-note">Start only when objective withdrawal is present (partial agonist → precipitates withdrawal if given too soon). Start 2–4 mg, titrate to ~12–16 mg. Safer in overdose (ceiling effect); useful where alertness matters.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Buprenorphine / naloxone</div>
+        <div class="b-drug">Combination (e.g. Suboxone)</div>
+        <div class="b-note">Naloxone component deters injecting/diversion. Otherwise used like buprenorphine. Long-acting injectable buprenorphine is an option in specialist services.</div>
+      </div>
+    </div>
+    <div class="kv" style="margin-top:12px">
+      <div>Goal of dosing</div><div>Reach a maintenance dose that stops withdrawal and craving and blocks the effect of illicit "top-ups" — commonly methadone 60–120 mg/day or buprenorphine 12–16 mg/day. Under-dosing is a common cause of continued illicit use and drop-out.</div>
+      <div>Supervised consumption</div><div>Usually supervised at the pharmacy for the first ~3 months and until stable, then relaxed to take-home doses as risk allows — balances diversion/overdose risk against engagement.</div>
+      <div>Continue, don't interrupt</div><div>Maintain OST through hospital admissions and custody; sudden cessation drives relapse and post-release overdose. Liaise with the drug service to verify the current dose before re-prescribing.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Opioid substitution treatment is one of the most evidence-based interventions in medicine: it reduces illicit heroin use, all-cause and overdose mortality, injecting and blood-borne virus transmission, and acquisitive crime, while improving social functioning. The protective effect depends on retention — people are far safer in treatment than out of it — so the priorities are to reach an adequate maintenance dose and keep the person engaged, rather than to push prematurely toward an opioid-free state.</p>
+      <p>Methadone and buprenorphine have different risk profiles. Methadone's long, variable half-life means it accumulates over the first days of induction, which is why deaths cluster in the first two weeks and why induction is cautious and supervised. Buprenorphine is a partial agonist with a ceiling on respiratory depression (safer in overdose) but will precipitate acute withdrawal if started while a full agonist is still on board — so it is begun only once the person is objectively in withdrawal.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="TREAT" data-step="5">
+  <div class="node-head">
+    <div class="node-num">5</div>
+    <div class="node-head-text">
+      <span class="node-tag">Treat</span>
+      <h3>Detoxification &amp; relapse prevention — when the person is stable and chooses it</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>When to detox</div><div>Only when the person is stable, motivated, and has chosen an abstinence goal — with relapse-prevention support in place. Maintenance is not "failure"; for many it is the safest long-term option.</div>
+      <div>How — gradual reduction</div><div>Withdraw methadone or buprenorphine by tapering the dose. Community detox over 12+ weeks (methadone) or sooner with buprenorphine; inpatient detox is shorter and for complex cases. Buprenorphine is often preferred for the withdrawal phase.</div>
+      <div>Symptom relief</div><div>Lofexidine (an alpha-2 agonist) reduces withdrawal symptoms; add anti-emetics, anti-diarrhoeals and simple analgesia as needed. Avoid prescribing benzodiazepines.</div>
+      <div>Relapse prevention</div><div>Naltrexone (oral opioid antagonist) can support abstinence after detox in motivated, opioid-free patients — it blocks the effect of opioids. Combine with psychosocial support and mutual aid.</div>
+      <div><span class="pill pill-red">Overdose after detox</span></div><div>Tolerance is lost during/after detox — relapse onto the previous dose can be fatal. Reducing OST is the moment overdose risk rises, so naloxone provision and overdose education are mandatory.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Detoxification is not the right first or only goal for everyone. The evidence shows that detox without ongoing relapse-prevention support has high relapse rates, and — critically — relapse after the loss of tolerance carries a markedly increased risk of fatal overdose. For this reason the UK guidelines frame maintenance OST as a legitimate long-term treatment, and reserve detox for people who are stable, well-supported, and have made an informed choice toward abstinence.</p>
+      <p>Naltrexone works by blocking opioid receptors so that using opioids produces no effect, removing the reward of relapse. It is only suitable once a person is fully opioid-free (otherwise it precipitates withdrawal) and works best in motivated patients with good psychosocial support. Lofexidine eases the autonomic symptoms of withdrawal during the reduction itself, improving the chance of completing detox.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="TREAT" data-step="6">
+  <div class="node-head">
+    <div class="node-num">6</div>
+    <div class="node-head-text">
+      <span class="node-tag">Treat</span>
+      <h3>Psychosocial interventions &amp; coexisting drug/alcohol use</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Keyworking &amp; care plan</div><div>Every patient has a named keyworker and a recovery care plan, reviewed regularly. Pharmacological treatment works best embedded in structured psychosocial support, not given in isolation.</div>
+      <div>Evidence-based therapies</div><div>Contingency management (incentives for drug-free tests/engagement), behavioural couples therapy, and structured psychosocial interventions improve outcomes alongside OST.</div>
+      <div>Mutual aid</div><div>Actively connect people to Narcotics Anonymous, SMART Recovery and local peer-support/recovery communities — facilitated access improves engagement.</div>
+      <div>Coexisting use</div><div>Treat comorbid alcohol, crack/cocaine and benzodiazepine use; manage stimulant use psychosocially. Address tobacco — smoking is the biggest cause of long-term mortality in this group.</div>
+      <div>Dual diagnosis</div><div>Coordinate with mental-health services for coexisting serious mental illness — neither service should turn the person away ("no wrong door").</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Medication and psychosocial support are complementary, not alternatives. NICE recommends offering structured psychosocial interventions and facilitating access to mutual aid alongside opioid substitution treatment; contingency management — providing small, escalating incentives for objective markers such as drug-free tests or attendance — has the strongest evidence base for improving engagement and reducing illicit use.</p>
+      <p>"Dual diagnosis" (coexisting substance use and mental illness) is common and is associated with worse outcomes when services work in silos. The principle of "no wrong door" means a person should be helped to access both substance-misuse and mental-health care from whichever service they present to, rather than being bounced between them.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="REFER" data-step="7">
+  <div class="node-head">
+    <div class="node-num">7</div>
+    <div class="node-head-text">
+      <span class="node-tag">Refer</span>
+      <h3>Referral, shared care &amp; special groups</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999 / emergency</span></div><div>Opioid overdose, suspected infective endocarditis or serious injecting-related infection, or acute suicide risk.</div>
+      <div><span class="pill pill-purple">Specialist drug &amp; alcohol service</span></div><div>Refer for comprehensive assessment and initiation of OST. Many practices then continue prescribing under a <b>shared-care agreement</b> with specialist support — work within your local arrangement and competence.</div>
+      <div><span class="pill pill-red">Pregnancy — urgent joint care</span></div><div>Refer urgently for joint management by the specialist drug service and maternity team. Continue/maintain OST — <b>do not</b> attempt abrupt detox; uncontrolled withdrawal and relapse are more dangerous to the fetus.</div>
+      <div><span class="pill pill-blue">Young people (&lt; 18)</span></div><div>Refer to a specialist children &amp; young people's substance-misuse service — assessment, consent/capacity and safeguarding differ from adults.</div>
+      <div><span class="pill pill-amber">Mental health liaison</span></div><div>Coexisting serious mental illness, high suicide risk, or complex dual diagnosis — coordinate with mental-health services.</div>
+      <div>No NG12 cancer pathway</div><div>Opioid dependence is not an NICE NG12 (suspected cancer) presentation, so no 2-week-wait applies — the time-critical safety actions here are overdose reversal (naloxone) and same-day mental-health assessment for acute suicide risk.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Most opioid-dependence treatment in UK primary care happens through shared care: the specialist service assesses, stabilises and sets the treatment plan, and the GP continues prescribing and provides holistic care under an agreed framework with specialist back-up. Working within that agreement — and within your own competence and any local training requirements (e.g. RCGP certificate in the management of drug misuse) — is what makes GP involvement safe and effective.</p>
+      <p>Pregnancy is a special situation where the instinct to "get the patient off drugs" is actively harmful. Sudden opioid withdrawal in pregnancy is associated with miscarriage and preterm labour, and relapse risks overdose and disengagement from antenatal care. The guideline approach is stabilisation on OST with closely coordinated specialist drug and maternity care, planning for neonatal abstinence syndrome at delivery.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head">
+    <div class="node-num">8</div>
+    <div class="node-head-text">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Harm reduction &amp; health promotion</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Take-home naloxone</b> Supply naloxone and train the patient and the people around them to recognise and reverse an overdose. This is the single highest-impact harm-reduction action — offer it to everyone at risk, repeatedly.</div>
+      <div class="lstile"><b>Overdose awareness</b> Don't use alone; don't mix with alcohol/benzodiazepines/pregabalin; remember tolerance is lost after any break in use; use a small "tester" amount after time off; call 999 early.</div>
+      <div class="lstile"><b>Needle &amp; syringe programmes</b> Provide/refer for sterile injecting equipment and never-share advice; offer safer-injecting and wound-care information to reduce infections and BBV transmission.</div>
+      <div class="lstile"><b>Immunisation &amp; BBV treatment</b> Hepatitis B vaccination, hepatitis A and tetanus as indicated, and seasonal flu/COVID vaccines; refer hepatitis C for curative direct-acting antiviral treatment.</div>
+      <div class="lstile"><b>Wider health</b> Address smoking (the biggest long-term killer here), alcohol, sexual health and contraception, dental health and nutrition. Offer cervical screening and other routine prevention.</div>
+      <div class="lstile"><b>Social recovery</b> Support with housing, benefits/debt, employment and meaningful activity through social prescribing and recovery communities — "recovery capital" sustains change.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Take-home naloxone saves lives: overdoses are usually witnessed, and a bystander who can give intramuscular or intranasal naloxone buys the minutes needed for an ambulance to arrive. UK policy supports wide distribution of naloxone to people who use opioids and their families and carers, and drug services can supply it without a prescription. Repeated offers matter because kits get used, lost, or left behind.</p>
+      <p>Harm reduction accepts that not everyone will stop using immediately and focuses on keeping people alive and healthier in the meantime — clean injecting equipment, vaccination, BBV testing and treatment, and overdose prevention. Tobacco deserves particular emphasis: smoking, not the opioid itself, is the leading cause of premature death in this population, so smoking cessation is a high-value, often-overlooked intervention.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head">
+    <div class="node-num">9</div>
+    <div class="node-head-text">
+      <span class="node-tag">Safety</span>
+      <h3>Monitoring, safe prescribing &amp; continuing care</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Missed doses</div><div><span class="pill pill-red">Critical</span> If 3 or more consecutive days of methadone are missed, tolerance may be lost — <b>do not</b> dispense the usual dose; reassess and re-titrate. Confirm continued need and review the supervised-consumption arrangement.</div>
+      <div>Diversion &amp; intoxication</div><div>Be alert to diversion, double-scripting and selling-on; review if the person is intoxicated at pickup, repeatedly losing prescriptions, or tests negative for the prescribed drug. Adjust supervision rather than abruptly stopping.</div>
+      <div>Drug testing &amp; review</div><div>Use periodic drug testing and regular structured reviews to monitor progress and titrate supervision/take-home doses to stability. Re-check the QT/ECG at higher methadone doses or with new QT-prolonging drugs.</div>
+      <div>Transitions = danger</div><div>Hospital admission, prison entry/release and any treatment break are high-overdose-risk windows. Verify and continue the correct dose across transitions, and re-issue naloxone.</div>
+      <div>Driving (DVLA)</div><div>Patients must not drive if impaired; those on OST have notification duties and may need to demonstrate stability — advise patients of their responsibility to inform the DVLA.</div>
+      <div>Safeguarding &amp; family</div><div>Keep dependent children, pregnancy and domestic-abuse risks under review at each contact, and act on changes. Document risk, plan and the safety advice given.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>The missed-dose rule is a hard safety line: methadone tolerance falls quickly, and after three or more consecutive missed doses the usual maintenance dose can be enough to cause fatal toxicity. Pharmacies are instructed to withhold and refer back for reassessment, and prescribers must re-titrate rather than simply resume — a key reason supervised consumption and good pharmacy communication are built into treatment.</p>
+      <p>Risk is highest at transitions of care. Release from prison carries a many-fold increase in overdose death in the first weeks, and hospital admissions or treatment interruptions create the same loss-of-tolerance trap. Continuity — verifying the dose, continuing OST across settings, and re-issuing naloxone at every transition — is where primary care can directly prevent deaths.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on: "Drug misuse and dependence: UK guidelines on clinical management" (Clinical Guidelines on Drug Misuse and Dependence Update / "Orange Book", 2017), NICE TA114 (methadone &amp; buprenorphine for opioid dependence), NICE CG52 (opioid detoxification), NICE CG51 (psychosocial interventions), NICE TA115 (naltrexone), BNF, and OHID/PHE guidance on take-home naloxone and harm reduction. Opioid substitution treatment should be delivered within local specialist/shared-care arrangements. Opioid dependence is not an NG12 (suspected cancer) pathway. Always work within your competence, local protocols and the patient's individual context.
+</div>
+
+<script>
+/* ═══════════════════════════════════
+   REASONING GP — Shared Algorithm JS
+   ═══════════════════════════════════ */
+function initAlgorithm(storageKey) {
+  const TOTAL = 9;
+  const pDone = document.getElementById('pDone');
+  const pFill = document.getElementById('pFill');
+  const resetBtn = document.getElementById('resetBtn');
+
+  function getState() {
+    try { return JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch { return {}; }
+  }
+  function saveState(s) {
+    try { localStorage.setItem(storageKey, JSON.stringify(s)); } catch {}
+  }
+
+  function updateProgress() {
+    const boxes = document.querySelectorAll('.node-tick input[type="checkbox"]');
+    let done = 0;
+    boxes.forEach(cb => { if (cb.checked) done++; });
+    pDone.textContent = done;
+    pFill.style.width = (done / TOTAL * 100) + '%';
+  }
+
+  function applyDoneClass(node, checked) {
+    if (checked) node.classList.add('is-done');
+    else node.classList.remove('is-done');
+  }
+
+  // Restore state
+  const state = getState();
+  document.querySelectorAll('.node').forEach((node, i) => {
+    const cb = node.querySelector('input[type="checkbox"]');
+    if (!cb) return;
+    const key = 'step' + (i + 1);
+    if (state[key]) { cb.checked = true; applyDoneClass(node, true); }
+    cb.addEventListener('change', () => {
+      const s = getState();
+      s['step' + (i + 1)] = cb.checked;
+      saveState(s);
+      applyDoneClass(node, cb.checked);
+      updateProgress();
+    });
+  });
+
+  // Why drawers
+  document.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      const drawer = btn.nextElementSibling;
+      if (drawer) drawer.classList.toggle('open', !expanded);
+    });
+  });
+
+  // Reset
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (!confirm('Reset all progress?')) return;
+      localStorage.removeItem(storageKey);
+      document.querySelectorAll('.node-tick input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+        applyDoneClass(cb.closest('.node'), false);
+      });
+      updateProgress();
+    });
+  }
+
+  updateProgress();
+}
+
+initAlgorithm('rgp.alg.opioid-dependence.v1');
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

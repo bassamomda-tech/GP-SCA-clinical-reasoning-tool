@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bruising — Easy / Unexplained Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f7f6f2; --surface: #ffffff; --border: #e2dfd6; --text: #1a1814; --muted: #6b6760;
+  --accent: #1d3557; --accent2: #457b9d;
+  --safety-bg: #fff5f5; --safety-bdr: #e53e3e; --safety-tag: #e53e3e;
+  --diagnose-bg: #f0f7ff; --diagnose-bdr: #3182ce; --diagnose-tag: #3182ce;
+  --treat-bg: #f0fff4; --treat-bdr: #38a169; --treat-tag: #38a169;
+  --refer-bg: #faf5ff; --refer-bdr: #805ad5; --refer-tag: #805ad5;
+  --lifestyle-bg: #fffbeb; --lifestyle-bdr: #d97706; --lifestyle-tag: #d97706;
+  --pill-red: #e53e3e; --pill-purple: #805ad5; --pill-blue: #3182ce;
+  --pill-teal: #2c7a7b; --pill-amber: #d97706; --pill-green: #38a169; --pill-grey: #718096;
+  --radius: 10px; --shadow: 0 2px 12px rgba(0,0,0,0.07);
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+body { background: var(--bg); color: var(--text); line-height: 1.55; font-size: 15px; padding: 0 0 60px; }
+.stem-banner { background: var(--accent); color: #fff; display: flex; align-items: center; gap: 16px; padding: 18px 24px; border-bottom: 3px solid var(--accent2); }
+.sb-icon { font-size: 2rem; }
+.stem-banner b { display: block; font-size: 1.1rem; }
+.stem-banner small { opacity: 0.8; font-size: 0.82rem; }
+.alg-progress { background: var(--surface); border-bottom: 1px solid var(--border); padding: 10px 24px; display: flex; align-items: center; gap: 12px; font-size: 0.85rem; color: var(--muted); position: sticky; top: 0; z-index: 50; }
+.pcount { font-weight: 700; color: var(--text); min-width: 40px; }
+.pbar { flex: 1; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.pbar-fill { height: 100%; background: var(--accent2); width: 0%; transition: width .4s ease; border-radius: 99px; }
+.reset { margin-left: auto; font-size: 0.78rem; padding: 4px 12px; border: 1px solid var(--border); border-radius: 6px; background: none; cursor: pointer; color: var(--muted); }
+.reset:hover { background: var(--border); }
+.alg-flow { max-width: 780px; margin: 0 auto; padding: 28px 20px; }
+.connector { width: 2px; height: 28px; background: var(--border); margin: 0 auto; }
+.node { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); border-left-width: 4px; box-shadow: var(--shadow); overflow: hidden; transition: box-shadow .2s; position: relative; }
+.node:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.11); }
+.node[data-type="SAFETY"]    { border-left-color: var(--safety-bdr); }
+.node[data-type="DIAGNOSE"]  { border-left-color: var(--diagnose-bdr); }
+.node[data-type="TREAT"]     { border-left-color: var(--treat-bdr); }
+.node[data-type="REFER"]     { border-left-color: var(--refer-bdr); }
+.node[data-type="LIFESTYLE"] { border-left-color: var(--lifestyle-bdr); }
+.node-num { position: absolute; top: 0; left: 0; width: 28px; height: 28px; border-radius: 0 0 8px 0; background: var(--accent); color: #fff; font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; z-index: 2; }
+.node-head { display: flex; align-items: flex-start; gap: 10px; padding: 14px 18px 0 46px; }
+.node-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 3px; }
+.node[data-type="SAFETY"]    .node-tag { background: var(--safety-bg); color: var(--safety-tag); }
+.node[data-type="DIAGNOSE"]  .node-tag { background: var(--diagnose-bg); color: var(--diagnose-tag); }
+.node[data-type="TREAT"]     .node-tag { background: var(--treat-bg); color: var(--treat-tag); }
+.node[data-type="REFER"]     .node-tag { background: var(--refer-bg); color: var(--refer-tag); }
+.node[data-type="LIFESTYLE"] .node-tag { background: var(--lifestyle-bg); color: var(--lifestyle-tag); }
+.node-head h3 { font-size: 1rem; font-weight: 600; line-height: 1.3; }
+.node-tick { padding: 6px 18px 0 46px; }
+.node-tick label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-size: 0.82rem; color: var(--muted); user-select: none; }
+.node-tick input[type=checkbox] { width: 15px; height: 15px; accent-color: var(--accent2); cursor: pointer; }
+.node.done { opacity: 0.72; }
+.node.done .node-head h3 { text-decoration: line-through; color: var(--muted); }
+.node-body { padding: 12px 18px 16px 18px; font-size: 0.9rem; }
+.intro { color: var(--muted); font-size: 0.87rem; margin-bottom: 12px; }
+.kv { display: grid; grid-template-columns: minmax(130px, 30%) 1fr; gap: 0; border: 1px solid var(--border); border-radius: 7px; overflow: hidden; font-size: 0.87rem; margin-top: 8px; }
+.kv > div:nth-child(4n+1), .kv > div:nth-child(4n+2) { background: #fafaf8; }
+.kv > div { padding: 7px 11px; border-bottom: 1px solid var(--border); }
+.kv > div:last-child, .kv > div:nth-last-child(2) { border-bottom: none; }
+.kv > div:nth-child(odd) { font-weight: 600; color: var(--muted); font-size: 0.82rem; border-right: 1px solid var(--border); }
+.rfgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; margin-top: 10px; }
+.rftile { background: #fff5f5; border: 1px solid #fed7d7; border-left: 3px solid var(--safety-tag); border-radius: 7px; padding: 9px 11px; font-size: 0.84rem; line-height: 1.45; }
+.rftile b { color: var(--safety-tag); display: block; margin-bottom: 2px; }
+.branch { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 10px; }
+.b-card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; font-size: 0.85rem; }
+.b-cond { background: var(--accent); color: #fff; padding: 6px 10px; font-weight: 600; font-size: 0.8rem; }
+.b-drug { padding: 7px 10px 2px; font-weight: 700; color: var(--treat-tag); }
+.b-note { padding: 2px 10px 8px; color: var(--muted); font-size: 0.82rem; }
+.ladder { margin-top: 10px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.rung { display: flex; align-items: stretch; border-bottom: 1px solid var(--border); font-size: 0.87rem; }
+.rung:last-child { border-bottom: none; }
+.rn { background: var(--treat-bg); color: var(--treat-tag); font-weight: 700; padding: 8px 12px; min-width: 90px; display: flex; align-items: center; border-right: 1px solid var(--border); font-size: 0.8rem; }
+.rt { padding: 8px 12px; flex: 1; }
+.lsgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 8px; margin-top: 10px; }
+.lstile { background: var(--lifestyle-bg); border: 1px solid #fde68a; border-left: 3px solid var(--lifestyle-tag); border-radius: 7px; padding: 9px 11px; font-size: 0.84rem; line-height: 1.45; }
+.lstile b { color: #92400e; display: block; margin-bottom: 2px; }
+.pill { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: .04em; padding: 1px 7px; border-radius: 99px; vertical-align: middle; white-space: nowrap; }
+.pill-red    { background: #fed7d7; color: var(--pill-red); }
+.pill-purple { background: #e9d8fd; color: var(--pill-purple); }
+.pill-blue   { background: #bee3f8; color: var(--pill-blue); }
+.pill-teal   { background: #b2f5ea; color: var(--pill-teal); }
+.pill-amber  { background: #fef3c7; color: var(--pill-amber); }
+.pill-green  { background: #c6f6d5; color: var(--pill-green); }
+.pill-grey   { background: #e2e8f0; color: var(--pill-grey); }
+.why-row { border-top: 1px solid var(--border); }
+.why-btn { width: 100%; padding: 8px 18px; background: none; border: none; cursor: pointer; text-align: left; font-size: 0.83rem; font-weight: 600; color: var(--accent2); display: flex; align-items: center; gap: 6px; }
+.why-btn:hover { background: #f0f7ff; }
+.caret { transition: transform .2s; display: inline-block; }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.why-drawer { display: none; padding: 10px 18px 14px; font-size: 0.85rem; line-height: 1.6; color: var(--muted); background: #fafaf8; border-top: 1px dashed var(--border); }
+.why-drawer.open { display: block; }
+.alg-foot { max-width: 780px; margin: 20px auto 0; padding: 16px 20px; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border); line-height: 1.6; }
+@media (max-width: 520px) {
+  .rfgrid, .branch, .lsgrid { grid-template-columns: 1fr; }
+  .kv { grid-template-columns: 1fr; }
+  .kv > div:nth-child(odd) { border-right: none; border-bottom: none; padding-bottom: 2px; }
+  .node-head { padding-left: 40px; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🟣</div>
+  <div>
+    <b>Bruising — Easy or Unexplained</b>
+    <small>Systematic approach to evaluation, investigation, and management of new or worsening bruising in adults</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — FBC, film and clotting separate platelet, coagulation and vascular causes, while never missing leukaemia or safeguarding. Classify the defect, refer, modify factors, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Easy / unexplained bruising</span><div class="body">FBC + blood film + clotting screen (PT/APTT) and a medication review at the outset.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — leukaemia / safeguarding</span><span class="ttl">Sinister or safeguarding?</span><div class="body">Petechiae + systemic features (fever, bone pain, pallor) → ?acute leukaemia. Platelets &lt;20 / active bleeding. A child with unexplained bruising → safeguarding.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Very urgent FBC / same-day</span><div class="body">Suspected leukaemia → very urgent FBC + same-day haematology. Child → follow the safeguarding pathway.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Investigate</span><span class="ttl">Classify the defect</span><div class="body">FBC, film, PT/APTT, LFT; consider von Willebrand screen; review antithrombotics.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · platelet / coagulation / vascular?</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Platelet</div><div class="box ix"><span class="ttl">Low or dysfunctional</span><div class="body">Thrombocytopenia (ITP, marrow), antiplatelet drugs.</div></div></div>
+      <div class="col"><div class="blabel">Coagulation</div><div class="box ix"><span class="ttl">Clotting factors</span><div class="body">Anticoagulants, liver disease, vitamin K deficiency, von Willebrand disease, haemophilia.</div></div></div>
+      <div class="col"><div class="blabel">Vascular / other</div><div class="box ix"><span class="ttl">Vessel / connective tissue</span><div class="body">Senile purpura, steroids, scurvy, HSP, non-accidental injury.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-purple">2WW</span> <span class="pill pill-grey">NICE NG12</span> unexplained bruising/petechiae with features of leukaemia → very urgent FBC. <span class="pill pill-purple">Haematology</span> unexplained bleeding disorder. <span class="pill pill-red">Safeguarding</span> any child with unexplained bruising.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Treat the cause &amp; modifiable factors</span><span class="ttl">Remove drivers, reduce bleeding risk</span><div class="body"><b>Review antithrombotics</b> (aspirin/clopidogrel, anticoagulants) and over-the-counter NSAIDs; <b>reduce alcohol</b> and treat liver disease; correct <b>vitamin C/K</b> deficiency. <b>Senile/steroid purpura</b> — reassure, protect fragile skin, review steroid need. Treat the underlying platelet/coagulation disorder per haematology.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · monitoring &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">Recheck &amp; urgent return advice</span><div class="body"><b>Repeat FBC/film/clotting</b> to confirm and trend. <b>999 / same-day</b> for bruising + fever/pallor/bone pain (leukaemia → very urgent FBC), spontaneous mucosal/GI bleeding, severe headache, or a non-blanching rash with sepsis. <b>Any unexplained bruising in a non-mobile baby or a child → safeguarding pathway</b>, do not dismiss.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>Two things you cannot miss:</b> leukaemia (bruising + petechiae + systemic illness → very urgent FBC) and non-accidental injury in a child (especially bruising in a non-mobile baby).</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- STEP 1 -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-num">1</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Exclude Serious Haematological and Safeguarding Emergencies</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <p class="intro">Bruising is a symptom of a haemostatic disorder — from benign to life-threatening. Screen for the can't-miss diagnoses before anything else. Also consider safeguarding in every case.</p>
+      <div class="rfgrid">
+        <div class="rftile"><b>Spontaneous large haematomas</b> Especially if deep-tissue, no trauma, or joints/muscles — haemophilia, severe factor deficiency → <span class="pill pill-red">Same-day haematology</span></div>
+        <div class="rftile"><b>Petechiae / purpura + unwell child</b> Non-blanching rash + fever = meningococcal septicaemia until proven otherwise → <span class="pill pill-red">999</span></div>
+        <div class="rftile"><b>Thrombocytopenia &lt;20 × 10⁹/L</b> Platelet count critically low — high risk of intracranial or GI haemorrhage → <span class="pill pill-red">Same-day haematology</span></div>
+        <div class="rftile"><b>Bruising + anaemia + lymphadenopathy</b> Pancytopenia pattern — acute leukaemia or bone marrow failure → <span class="pill pill-red">Same-day haematology</span></div>
+        <div class="rftile"><b>Unexplained bruising in child</b> Distribution (ear, neck, buttocks, multiple stages), shape (strap marks, patterned), non-mobile child — consider NAI → <span class="pill pill-red">Immediate safeguarding referral</span></div>
+        <div class="rftile"><b>Bruising + active bleeding</b> GI bleed, haematuria, haemoptysis, intracranial bleed concurrent with bruising → <span class="pill pill-red">999</span></div>
+        <div class="rftile"><b>Warfarin/DOAC + major bruising</b> Signs of significant anticoagulation (INR &gt;5, haematoma at unusual site) → check INR, consider reversal agents → <span class="pill pill-red">Same-day review</span></div>
+        <div class="rftile"><b>Unexplained bruising in frail elderly</b> Consider elder abuse. Ask about safety at home, who administers medication. If concern → safeguarding referral → <span class="pill pill-amber">Safeguarding assessment</span></div>
+        <div class="rftile"><b>Weight loss + bruising + lymphadenopathy</b> B-symptoms + bruising — lymphoma, leukaemia → <span class="pill pill-purple">Urgent 2WW Haematology</span></div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Non-blanching petechiae in a febrile child is meningococcal septicaemia until proven otherwise — mortality without treatment is 80%; with early treatment &lt;10%. Intracranial haemorrhage risk rises exponentially when platelets fall below 20 × 10⁹/L — this requires same-day haematology assessment. Acute promyelocytic leukaemia (APML) presents with bruising, petechiae, and DIC — it is rapidly fatal without treatment but highly curable (90% cure rate) with urgent ATRA therapy. Non-accidental injury in children must be actively considered — bruising in non-mobile infants is pathognomonic of abuse until proven otherwise. In adults on anticoagulation, unexpected bleeding patterns may reflect drug interactions, renal impairment, or excessive dosing.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 2 -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-num">2</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Focused History — Characterise the Bleeding Tendency</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <p class="intro">Use history to distinguish platelet disorders (superficial, mucocutaneous) from coagulation disorders (deep, delayed) — they look and behave very differently.</p>
+      <div class="kv">
+        <div>Character of bleeding</div><div><b>Platelet disorder:</b> petechiae, gum bleeds, epistaxis, menorrhagia — immediate on injury, superficial. <b>Coagulation disorder:</b> deep haematomas, haemarthroses, delayed bleeding after surgery/dental extraction</div>
+        <div>Duration</div><div>Lifelong since childhood → congenital (von Willebrand disease, haemophilia). New onset in adult → acquired (ITP, drugs, liver disease, malignancy)</div>
+        <div>Drug history</div><div><b>Essential:</b> aspirin, NSAIDs, clopidogrel, warfarin, DOACs, SSRIs, steroids (skin fragility), herbal (ginkgo, fish oil). Even OTC ibuprofen causes bruising. Ask specifically — patients often don't volunteer</div>
+        <div>Family history</div><div>First-degree relatives with bleeding tendency, joint bleeds, excessive surgical bleeding → haemophilia (X-linked recessive), VWD (autosomal dominant)</div>
+        <div>Surgical/dental history</div><div>"Did you bleed a lot after tooth extraction or surgery?" — most reliable screen for congenital bleeding disorder. Prolonged post-dental bleed is specific for VWD/platelet disorders</div>
+        <div>Alcohol and liver disease</div><div>Alcohol causes thrombocytopenia (direct toxic + hypersplenism) and impairs coagulation factor synthesis. Heavy drinkers commonly bruise easily</div>
+        <div>Systemic illness</div><div>Renal failure (platelet dysfunction); HIV (ITP); autoimmune disease (ITP, lupus anticoagulant); hypothyroidism; Cushing's (skin fragility); malnutrition (vitamin K/C deficiency)</div>
+        <div>Menstrual history</div><div>Menorrhagia from puberty onwards is a classic VWD presentation. BAT (Bleeding Assessment Tool) score ≥3 in women suggests significant bleeding disorder</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">The Bleeding Assessment Tool (BAT) is a validated scoring instrument (ISTH-BAT) that quantifies bleeding history — a score ≥3 in women or ≥2 in men predicts a significant bleeding disorder with sensitivity 74% and specificity 88%. Von Willebrand disease affects 1 in 100 people — it is the most common inherited bleeding disorder and is frequently missed because symptoms are mild and often attributed to "normal" periods. Steroids cause skin fragility through collagen loss, producing purpura without a haemostatic defect — this is benign and requires no investigation. Drug history is the single most important first step — aspirin, NSAIDs, and SSRIs are enormously common and frequently overlooked causes.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 3 -->
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+    <div class="node-num">3</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Classify Bruising Type — Mechanism and Likely Category</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <p class="intro">Classification drives investigation and urgency. Most GP bruising presentations fall into one of five categories.</p>
+      <div class="kv">
+        <div>Senile/steroid purpura</div><div>Atrophic skin + sun damage + extensive steroid use. Thin skin tears easily. Forearms/dorsal hands. Normal FBC + coagulation. Benign. Reassure. No investigation needed in classic presentation</div>
+        <div>Drug-induced thrombocytopenia or platelet dysfunction</div><div>Temporal relationship to new drug. Petechiae, mucosal bleeds. Platelet count low or borderline. Stop offending drug. Monitor FBC. Common culprits: quinine, heparin, valproate, trimethoprim</div>
+        <div>Immune thrombocytopenia (ITP)</div><div>Isolated thrombocytopenia (&lt;100 × 10⁹/L), normal coagulation, no other cause. Wet purpura (oral/buccal petechiae) suggests severity. Can be primary or secondary (HIV, Hep C, SLE, CLL)</div>
+        <div>Inherited bleeding disorder</div><div>VWD (commonest; low VWF antigen + activity); haemophilia A (FVIII low, X-linked males); haemophilia B (FIX low). Lifelong history. Family history. Confirm with haematology</div>
+        <div>Systemic / acquired coagulopathy</div><div>Liver disease (all factors ↓ except FVIII + vWF); DIC (sepsis, cancer, obstetric emergency); vitamin K deficiency (malabsorption, antibiotics, poor diet). INR/PT raised</div>
+        <div>Vascular / connective tissue</div><div>Ehlers-Danlos syndrome (hyperelastic skin, hypermobile joints, normal bloods); Henoch-Schönlein purpura (palpable purpura, arthralgia, haematuria in children + young adults); scurvy (perifollicular)</div>
+        <div>Benign easy bruising</div><div>Common in young women. No bleeding history, no family history, normal FBC + coagulation. Diagnosis of exclusion. Reassure after investigation if normal</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Accurate classification prevents both under- and over-investigation. Senile purpura (actinic purpura) is the most common cause of bruising in patients over 65 — requesting a full coagulation screen is unnecessary and anxiety-provoking. ITP has a 30% secondary cause rate in adults — HIV, hepatitis C, SLE, and CLL must be screened at diagnosis. Heparin-induced thrombocytopenia (HIT) is a paradoxical prothrombotic emergency despite low platelets — urgent haematology involvement is required. Scurvy (vitamin C deficiency) is under-diagnosed in the UK among elderly patients, alcohol-dependent individuals, and those with restricted diets — look for perifollicular haemorrhages and corkscrew hair.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 4 -->
+  <div class="node" data-type="DIAGNOSE" data-step="4">
+    <div class="node-num">4</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Targeted Examination — Bruise Assessment and Systemic Signs</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <p class="intro">Examination is not just about the bruises — look for systemic clues to the underlying cause.</p>
+      <div class="kv">
+        <div>Bruise characterisation</div><div>Site (sun-exposed = actinic; extensor = normal; flexor surface = suspicious); size; age (yellow = older, purple = recent); shape (geometric/patterned = NAI); number; depth (superficial = platelet; deep = coagulation)</div>
+        <div>Petechiae vs purpura</div><div>Petechiae: &lt;2 mm pin-point, non-palpable, non-blanching — platelet disorder. Purpura: 2–10 mm, may be palpable — vasculitis (HSP). Ecchymosis: &gt;10 mm bruise. Document and size</div>
+        <div>Skin assessment</div><div>Skin fragility/atrophy (steroid/actinic purpura). Hyperelastic skin + hypermobile joints → Ehlers-Danlos. Jaundice/spider naevi → liver disease. Cushingoid appearance</div>
+        <div>Oral cavity</div><div>Wet purpura (blood blisters on buccal mucosa) indicates platelet count &lt;20 × 10⁹/L — immediate haematology. Gum hypertrophy with bleeding → leukaemia</div>
+        <div>Lymphadenopathy + spleen</div><div>Lymphadenopathy + bruising → lymphoma/leukaemia. Splenomegaly → portal hypertension / haematological malignancy / hypersplenism causing thrombocytopenia</div>
+        <div>Joint examination</div><div>Haemarthrosis (swollen, warm joint) without trauma → severe haemophilia. Hypermobility assessment → EDS. Arthralgia + purpura → HSP/vasculitis</div>
+        <div>Safeguarding indicators</div><div>In children: bruises on ears, neck, face, buttocks, back of legs in non-mobile child — document precisely, measure, photograph. Do not diagnose NAI — refer to safeguarding team</div>
+        <div>Nutritional assessment</div><div>Perifollicular haemorrhage + corkscrew hair → scurvy (vitamin C deficiency). Assess diet, alcohol intake, social circumstances. Check gum bleeding</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">The site of bruising is the most important clinical discriminator — actinic purpura on sun-exposed forearms in an elderly patient needs no investigation. Bruising on the ear, neck, or submandibular area in an infant is pathognomonic of non-accidental injury (these sites are never traumatised by accidental falls before the child can walk). Wet purpura (blood blisters in the mouth) reliably predicts platelet count below 20 × 10⁹/L and imminent serious bleeding risk — this finding mandates same-day haematology. Gum bleeding with gum hyperplasia in a young adult is leukaemia until proven otherwise — gum infiltration by leukaemic blast cells is a classic AML presentation.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 5 -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+    <div class="node-num">5</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — Haematological Workup</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <p class="intro">First-line tests are simple, cheap, and highly informative. Do not withhold first-line bloods in a patient with concerning bruising.</p>
+      <div class="kv">
+        <div>FBC + blood film <span class="pill pill-blue">All new unexplained bruising</span></div><div>Platelets: normal ≥150 × 10⁹/L; borderline 100–150; thrombocytopenic &lt;100. Blood film: blast cells (leukaemia), schistocytes (TTP/DIC), atypical lymphocytes (viral/CLL)</div>
+        <div>Coagulation screen <span class="pill pill-blue">All significant bruising</span></div><div>PT/INR (extrinsic pathway: liver, vitamin K, warfarin, factor VII). APTT (intrinsic pathway: haemophilia A/B, heparin, lupus anticoagulant). Fibrinogen (DIC, liver failure)</div>
+        <div>U&amp;E + LFTs</div><div>Renal failure (platelet dysfunction, uraemic bleeding). Liver disease (↓ albumin, ↑ bilirubin, ↑ LFTs, impaired factor synthesis). GGT as alcohol marker</div>
+        <div>TFTs</div><div>Hypothyroidism causes both thrombocytopenia and coagulation abnormalities. Thyroid disease is common and frequently missed as a cause of bruising</div>
+        <div>Vitamin B12, folate</div><div>Macrocytic anaemia + thrombocytopenia → consider B12/folate deficiency, bone marrow pathology, or excess alcohol</div>
+        <div>von Willebrand studies <span class="pill pill-blue">Specialist</span></div><div>VWF antigen, VWF ristocetin cofactor activity, FVIII — haematology arranges. Consider if: prolonged post-dental bleed, menorrhagia since menarche, family history, APTT borderline raised</div>
+        <div>HIV, Hep C serology</div><div>Request if ITP diagnosis likely (both cause secondary ITP and must be excluded before starting treatment). HIV test should be offered universally in line with BHIVA guidelines</div>
+        <div>Do NOT routinely order</div><div>Platelet function analyser (PFA-100) — primary care cannot interpret. D-dimer — non-specific. ANA without clinical indication. Bone marrow biopsy without haematology input</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">A normal FBC and coagulation screen in a patient with easy bruising, no relevant history, and normal examination makes a serious haematological disorder very unlikely (negative predictive value &gt;98%). The blood film is cheap and profoundly informative — it must be specifically requested with FBC; automated analysers alone cannot reliably detect blast cells, schistocytes, or atypical lymphocytes. ISTH guidance recommends von Willebrand studies for all patients with BAT score ≥3 — VWD is significantly underdiagnosed in women with heavy periods, with average time to diagnosis of 16 years. Hypothyroidism is a reversible cause of both thrombocytopenia and coagulopathy that is frequently not screened in a bruising work-up.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 6 -->
+  <div class="node" data-type="REFER" data-step="6">
+    <div class="node-num">6</div>
+    <div class="node-head">
+      <span class="node-tag">Refer</span>
+      <h3>Referral Criteria — Urgency and Destination</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <p class="intro">Haematological referral thresholds are specific. Use blood results alongside clinical picture to determine urgency.</p>
+      <div class="kv">
+        <div><span class="pill pill-red">999</span></div><div>Non-blanching rash + fever + unwell child (meningococcal). Active major bleed (intracranial, GI haemorrhage). Severe pancytopenia with systemic compromise. DIC with haemodynamic instability</div>
+        <div><span class="pill pill-red">Same-day haematology</span></div><div>Platelet count &lt;20 × 10⁹/L on first presentation. Blast cells on blood film (AML/ALL). Wet purpura (oral blood blisters). INR &gt;5 with bleeding. Suspected HIT (heparin + falling platelets + thrombosis)</div>
+        <div><span class="pill pill-purple">2WW Haematology</span></div><div>Platelet count &lt;100 × 10⁹/L with no drug cause. Unexplained pancytopenia. Lymphocytosis &gt;10 × 10⁹/L. B-symptoms + bruising. Suspected leukaemia/lymphoma. Progressive thrombocytopenia</div>
+        <div><span class="pill pill-amber">Urgent haematology (1–2 wk)</span></div><div>Isolated thrombocytopenia 50–100 × 10⁹/L stable, no active bleeding. Suspected ITP (refer before starting steroids). Abnormal APTT/PT without anticoagulants and no obvious cause</div>
+        <div><span class="pill pill-blue">Routine haematology</span></div><div>Stable VWD (diagnosed / screening). Mild haemophilia (carrier status investigation). Investigation of menorrhagia with bleeding history. Confirmed ITP (stable platelet &gt;50) for surveillance</div>
+        <div><span class="pill pill-amber">Safeguarding referral</span></div><div>Any suspicion of NAI in child or elder abuse — local safeguarding pathway. Document meticulously. Do not confront the suspected abuser. Inform safeguarding lead. May require immediate MASH referral</div>
+        <div><span class="pill pill-green">Primary care manage</span></div><div>Actinic purpura: reassure and educate. Aspirin/NSAID-induced: review drug necessity. Drug-induced (non-serious): stop drug, monitor FBC. Vitamin C deficiency: replace, dietary advice</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">ITP should be referred to haematology before initiating corticosteroid treatment — secondary causes must be excluded first, and bone marrow biopsy may be needed in patients &gt;60 to exclude MDS. Starting steroids empirically in AML can cause dangerous delays. HIT (type II) is a life-threatening prothrombotic complication of heparin — platelet count falling &gt;50% from baseline on heparin exposure requires immediate specialist input as all heparin products must be stopped and alternative anticoagulation started. The 4T score (Thrombocytopenia, Timing, Thrombosis, oTher causes) is a validated tool for estimating HIT probability. Elder abuse (physical) has a prevalence of 2–4% in community-dwelling UK adults over 65 — clinicians must be vigilant at every presentation of bruising in this group.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 7 -->
+  <div class="node" data-type="TREAT" data-step="7">
+    <div class="node-num">7</div>
+    <div class="node-head">
+      <span class="node-tag">Treat</span>
+      <h3>Treatment — Primary Care Manageable Causes</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <p class="intro">Definitive treatment of most coagulopathies requires haematology. Primary care manages modifiable causes, anticoagulation, and DINT.</p>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">Warfarin — supratherapeutic INR</div>
+          <div class="b-drug">INR 5–8, no bleeding: omit 1–2 doses</div>
+          <div class="b-note">Recheck INR in 48h. If INR &gt;8 or bleeding: phytomenadione (vitamin K1) 1–5 mg oral. If major bleed + INR &gt;4: 999 for IV vitamin K + PCC (Beriplex). Review dose and interactions.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">DOAC — bleeding on therapeutic dose</div>
+          <div class="b-drug">Minor bleed: supportive</div>
+          <div class="b-note">Delay next dose. If major bleed: 999 + specific reversal agents (idarucizumab for dabigatran; andexanet alfa for Xa inhibitors). Review indication and renal function.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Vitamin C deficiency (scurvy)</div>
+          <div class="b-drug">Ascorbic acid 250 mg QDS × 1 month <span class="pill pill-teal">curative</span></div>
+          <div class="b-note">Resolution of bruising within 2–4 weeks. Dietary advice: citrus fruit, kiwi, peppers. Address underlying social causes (poverty, food insecurity, alcohol dependence).</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Drug-induced (aspirin/NSAID)</div>
+          <div class="b-drug">Medication review</div>
+          <div class="b-note">Assess necessity vs risk. If aspirin not indicated: stop. If NSAID: switch to paracetamol where possible. SSRIs + anticoagulants: monitor closely. Review 4–6 weeks.</div>
+        </div>
+      </div>
+      <div class="ladder" style="margin-top:14px;">
+        <div class="rung"><span class="rn">ITP (mild)</span><span class="rt">Haematology initiates treatment. Platelets 30–50 with no bleeding: observation. Platelets &lt;30 or bleeding: <b>prednisolone 1 mg/kg/day</b> (initiated by haematology). Do NOT start steroids in primary care before diagnosis confirmed.</span></div>
+        <div class="rung"><span class="rn">VWD (Type 1)</span><span class="rt"><b>Desmopressin (DDAVP) 0.3 mcg/kg IV/SC</b> for minor procedures — haematology to prescribe and monitor. Tranexamic acid 1 g TDS for mucosal bleeding / menorrhagia — can be initiated in primary care (unlicensed but supported by RCOG).</span></div>
+        <div class="rung"><span class="rn">Haemophilia</span><span class="rt">Factor replacement managed entirely by haemophilia centre. Primary care role: avoid aspirin/NSAIDs; avoid IM injections; prescribe factor infusion products as directed by centre; provide emergency letter.</span></div>
+        <div class="rung"><span class="rn">Liver disease coagulopathy</span><span class="rt">Treat underlying liver disease. Vitamin K 10 mg PO daily × 3 days if vitamin K deficiency component suspected. Severe coagulopathy with bleeding → 999 (FFP/PCC required).</span></div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Tranexamic acid (antifibrinolytic) is safe, cheap, and effective for mucosal bleeding in VWD and ITP — the RCOG recommends it for menorrhagia associated with bleeding disorders as first-line alongside hormonal therapy. Scurvy is treatable and curable within weeks — failure to diagnose it in socially isolated elderly patients and those with alcohol dependence is a recurrent Serious Incident finding in the UK. Andexanet alfa (Ondexxya) was approved by NICE in 2020 for reversal of factor Xa inhibitors (rivaroxaban, apixaban) in major bleeding — available in UK emergency departments. Idarucizumab (Praxbind) reverses dabigatran within minutes. Primary care GPs must never start steroids for presumed ITP without haematology input — the clinical and diagnostic consequences of treating AML or lymphoma with immunosuppression are catastrophic.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 8 -->
+  <div class="node" data-type="LIFESTYLE" data-step="8">
+    <div class="node-num">8</div>
+    <div class="node-head">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Non-Pharmacological Interventions and Patient Education</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <p class="intro">Lifestyle advice is essential regardless of cause — for safety, treatment optimisation, and preventing further injury.</p>
+      <div class="lsgrid">
+        <div class="lstile"><b>Alcohol reduction / cessation</b> Alcohol directly suppresses platelet production (thrombocytopenic within days of binge), impairs coagulation factor synthesis, and increases falls/injury risk. Target &lt;14 units/week. AUDIT score. Refer if dependent.</div>
+        <div class="lstile"><b>Falls prevention</b> Patients on anticoagulation with bruising are at high risk from falls. Refer to falls prevention service. Home hazard assessment. Review medications causing postural hypotension. Hip protectors if osteoporotic.</div>
+        <div class="lstile"><b>Medication awareness</b> Educate: avoid aspirin, NSAIDs, ibuprofen (OTC) unless prescribed. Check interactions with anticoagulants (antibiotics, antifungals). Carry anticoagulant alert card (warfarin) or medical ID (haemophilia).</div>
+        <div class="lstile"><b>Skin protection</b> Actinic/steroid purpura: protective clothing (long sleeves), SPF 50+ on exposed skin, moisturisers to reduce fragility. Avoid skin trauma. Barrier creams for forearm protection in elderly.</div>
+        <div class="lstile"><b>Dietary optimisation</b> Vitamin K food sources (leafy greens) — counsel warfarin patients on consistent dietary intake, not avoidance. Vitamin C: ensure adequate dietary intake (citrus, peppers, kiwi). Balanced diet reduces multiple deficiencies.</div>
+        <div class="lstile"><b>Activity modification (haemophilia)</b> Contact sports and IM injections are contraindicated. Swimming, cycling, and walking are safe. Joint protection advice. Physiotherapy for joint management. Inform haemophilia centre of any planned procedure.</div>
+        <div class="lstile"><b>Anticoagulation monitoring</b> Warfarin: consistent INR check schedule; 4-weekly if stable. DOAC: annual renal function (reduce dose if eGFR falls). Avoid grapefruit juice with DOACs. Alert to bleeding symptoms.</div>
+        <div class="lstile"><b>Psychological impact</b> Unexplained bruising causes significant anxiety. Bruising from haematological malignancy treatment causes body image distress. Address these explicitly. Haemophilia societies provide peer support (Haemophilia Society UK).</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Alcohol-related thrombocytopenia is directly dose-dependent — complete abstinence can normalise platelet count within 1–2 weeks. Falls in patients on anticoagulation are responsible for 40% of major haemorrhage admissions in the UK — falls prevention is a critical safety intervention. NICE TA249 recommends dabigatran, rivaroxaban, and apixaban do not require routine monitoring — but annual renal function checks are essential as dose reduction thresholds are based on CrCl (rivaroxaban: reduce to 15 mg OD if CrCl 15–50; apixaban: specific criteria based on weight + creatinine). All patients with a diagnosed bleeding disorder should receive a haemophilia society information pack and emergency management instructions to present to any emergency clinician.</div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- STEP 9 -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-num">9</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up, Monitoring and Safety-Netting</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    <div class="node-body">
+      <p class="intro">Follow-up interval depends on the underlying cause and the severity of thrombocytopenia or coagulopathy.</p>
+      <div class="kv">
+        <div>1 week</div><div>Drug-withdrawn thrombocytopenia: repeat FBC — platelet count should be rising. Warfarin dose adjustment: recheck INR. Any patient awaiting 2WW haematology: confirm appointment received</div>
+        <div>2–4 weeks</div><div>Suspected drug-induced: FBC + LFTs — confirm resolution. Scurvy: symptomatic improvement expected. Vitamin B12 replacement initiated: early FBC improvement</div>
+        <div>3 months</div><div>Stable ITP under haematology: GP to be kept in loop. Anticoagulation review: bleeding events? Falls? Dose adherence? Annual renal function for DOAC patients</div>
+        <div>Annual</div><div>DOAC: U&amp;E + eGFR. Warfarin: INR stability review, liver function, check indications still valid. VWD under haematology: bleeding symptom review. Haemophilia: joint surveillance</div>
+        <div>FBC threshold to act</div><div>Platelets &lt;50 × 10⁹/L: same-day haematology discussion. Platelets 50–100 declining: urgent referral. Stable platelets 100–150: monitor FBC 4-weekly</div>
+        <div><span class="pill pill-red">Safety-net 999</span></div><div>Severe headache (intracranial bleed — especially if thrombocytopenic/anticoagulated); haematemesis or melaena; collapse; haematuria with clots; severe joint bleed with neurovascular compromise</div>
+        <div><span class="pill pill-red">Safety-net same-day</span></div><div>New or worsening bruising despite treatment; new oral blood blisters; spontaneous epistaxis &gt;20 minutes; new petechial rash; any bleeding not stopping with pressure</div>
+        <div>Patient card / alert</div><div>All patients on anticoagulants or with known bleeding disorder should carry an anticoagulant card and MHRA yellow anticoagulant booklet. Haemophilia patients: emergency management card from haemophilia centre</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">Thrombocytopenia from drug withdrawal typically recovers within 5–14 days — a failure to improve after drug cessation should prompt urgent re-evaluation and haematology referral. Intracranial haemorrhage in thrombocytopenic patients (&lt;20 × 10⁹/L) has a mortality of 40–60% — any severe headache in this context is a neurosurgical emergency. The MHRA anticoagulant booklet (yellow book) is a nationally standardised patient record that should be issued to all new warfarin patients — it documents INR values and enables safe cross-prescribing between healthcare professionals. DOAC renal monitoring is mandated by manufacturers but frequently omitted — apixaban requires dose reduction to 2.5 mg BD if 2 of 3 criteria met: age ≥80, weight ≤60 kg, or creatinine ≥133 µmol/L.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG12 (Suspected Cancer), NICE CKS (Anticoagulation monitoring), BSH Guidelines (ITP 2021, von Willebrand Disease, Haemophilia), ISTH Bleeding Assessment Tool, BHIVA HIV Testing Guidelines, MHRA Anticoagulation Safety, RCOG Menorrhagia Guideline. Always adapt to individual patient context and local pathways.
+</div>
+
+<script>
+(function(){
+  var KEY='rgp.alg.bruising.v1';
+  var checks=document.querySelectorAll('.node-tick input[type=checkbox]');
+  var pDone=document.getElementById('pDone');
+  var pFill=document.getElementById('pFill');
+  var total=checks.length;
+  document.getElementById('pTotal').textContent=total;
+  function save(){var s=Array.from(checks).map(function(c){return c.checked;});localStorage.setItem(KEY,JSON.stringify(s));update();}
+  function update(){var done=0;checks.forEach(function(c){c.closest('.node').classList.toggle('done',c.checked);if(c.checked)done++;});pDone.textContent=done;pFill.style.width=(done/total*100)+'%';}
+  function load(){try{var s=JSON.parse(localStorage.getItem(KEY)||'[]');checks.forEach(function(c,i){if(s[i])c.checked=true;});}catch(e){}update();}
+  checks.forEach(function(c){c.addEventListener('change',save);});
+  document.getElementById('resetBtn').addEventListener('click',function(){checks.forEach(function(c){c.checked=false;});localStorage.removeItem(KEY);update();});
+  document.querySelectorAll('.why-btn').forEach(function(btn){btn.addEventListener('click',function(){var exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});});
+  load();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

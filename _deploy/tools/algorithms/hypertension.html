@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hypertension Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f6f3; --bg-soft:#efe9dc; --surface:#ffffff; --surface-2:#fbf8f1;
+  --ink:#15202b; --ink-2:#2a3744; --muted:#6b7280; --muted-2:#94a3b8;
+  --line:#e7e0d1; --line-2:#d8cfba;
+  --teal:#0c4a47; --teal-2:#0e5c58; --teal-3:#18746f; --teal-soft:#d5e6e4;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6;min-height:100vh}
+.alg-wrap{max-width:1180px;margin:0 auto;padding:24px 20px 60px}
+@media(max-width:760px){.alg-wrap{padding:18px 14px 60px}}
+
+/* ============ Algorithms tool ============ */
+:root{
+  --alg-diagnose: #1d4ed8;  --alg-diagnose-bg:#eff6ff;  --alg-diagnose-bd:#bfdbfe;
+  --alg-treat:    #0f766e;  --alg-treat-bg:   #f0fdfa;  --alg-treat-bd:   #99f6e4;
+  --alg-refer:    #6d28d9;  --alg-refer-bg:   #f5f3ff;  --alg-refer-bd:   #ddd6fe;
+  --alg-safety:   #b91c1c;  --alg-safety-bg:  #fef2f2;  --alg-safety-bd:  #fecaca;
+  --alg-lifestyle:#15803d;  --alg-lifestyle-bg:#f0fdf4; --alg-lifestyle-bd:#bbf7d0;
+  --alg-line: #cbd5e1;
+}
+.tool-page{ padding:28px 32px 80px; max-width:1180px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+
+.tool-head{ display:flex; gap:20px; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:18px; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:34px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); font-weight:500; }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:6px; max-width:62ch; }
+.tool-meta{ display:flex; gap:8px; flex-wrap:wrap; }
+
+/* Name picker chips — removed; user picks via chat */
+.tool-head-actions{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+.head-btn{ display:inline-flex; gap:6px; align-items:center; font:inherit; font-size:13px; font-weight:600; padding:8px 14px; border-radius:8px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; transition:.15s ease; }
+.head-btn:hover{ border-color:var(--ink-2); color:var(--ink); }
+.head-btn svg{ flex-shrink:0; }
+
+/* Algorithm selector strip */
+.alg-pick{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; padding:10px; background:var(--bg-soft); border:1px solid var(--line); border-radius:12px; }
+.alg-pick .ap-label{ font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); align-self:center; padding:0 8px; font-weight:600; }
+.ap-tab{ font-size:13px; font-weight:600; padding:8px 14px; border-radius:8px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; display:inline-flex; gap:6px; align-items:center; }
+.ap-tab.active{ background:var(--teal); border-color:var(--teal); color:#fff; }
+.ap-tab[disabled]{ opacity:.55; cursor:not-allowed; }
+.ap-tab .ap-soon{ font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; background:rgba(0,0,0,.06); padding:1px 6px; border-radius:99px; }
+
+/* Stem banner */
+.stem-banner{ display:flex; gap:14px; align-items:center; padding:14px 18px; background:linear-gradient(180deg,#0c4a47, #0e5c58); color:#f6f2e9; border-radius:12px; margin-bottom:8px; }
+.stem-banner .sb-icon{ width:44px; height:44px; border-radius:10px; background:rgba(255,255,255,.08); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+.stem-banner b{ display:block; font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:20px; line-height:1.2; }
+.stem-banner small{ font-size:13px; color:rgba(255,255,255,.7); line-height:1.5; }
+
+/* Progress bar */
+.alg-progress{ display:flex; gap:14px; align-items:center; margin:12px 4px 14px; font-size:12px; color:var(--muted); }
+.alg-progress .pbar{ flex:1; height:6px; background:var(--bg-soft); border-radius:99px; overflow:hidden; }
+.alg-progress .pbar-fill{ height:100%; background:var(--teal); width:0%; transition:width .25s ease; }
+.alg-progress .pcount{ font-weight:600; color:var(--ink); font-feature-settings:"tnum"; }
+.alg-progress .reset{ font-size:11.5px; padding:4px 10px; border-radius:99px; border:1px solid var(--line); background:#fff; cursor:pointer; color:var(--muted); }
+.alg-progress .reset:hover{ color:var(--ink); border-color:var(--ink-2); }
+
+/* Flow column */
+.alg-flow{ display:flex; flex-direction:column; gap:0; }
+.alg-flow .connector{ width:2px; height:30px; background:var(--alg-line); margin-left:30px; }
+@media (max-width:540px){ .alg-flow .connector{ margin-left:18px; } }
+
+/* The card */
+.node{
+  position:relative;
+  background:#fff;
+  border:1px solid var(--line);
+  border-left: 4px solid var(--line-2);
+  border-radius:14px;
+  padding:16px 18px 14px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  column-gap:14px;
+  row-gap:8px;
+  transition: box-shadow .2s ease, transform .15s ease, border-color .2s ease;
+}
+.node.is-done{ opacity:.74; }
+.node.is-active{ box-shadow: 0 0 0 4px rgba(15,118,110,.16); border-color: var(--teal); }
+.node .node-num{
+  grid-column:1; grid-row:1 / span 2;
+  width:38px; height:38px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:14px;
+  background:#f1f5f9; color:var(--ink-2);
+}
+.node.is-done .node-num::after{ content:" ✓"; }
+.node .node-head{ grid-column:2; display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; }
+.node .node-tag{
+  font-size:10px; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
+  padding:2px 8px; border-radius:99px; border:1px solid currentColor;
+}
+.node[data-type="DIAGNOSE"]{  border-left-color:var(--alg-diagnose); }
+.node[data-type="DIAGNOSE"] .node-tag{ color:var(--alg-diagnose); background:var(--alg-diagnose-bg); border-color:var(--alg-diagnose-bd); }
+.node[data-type="TREAT"]{     border-left-color:var(--alg-treat); }
+.node[data-type="TREAT"] .node-tag{ color:var(--alg-treat); background:var(--alg-treat-bg); border-color:var(--alg-treat-bd); }
+.node[data-type="REFER"]{     border-left-color:var(--alg-refer); }
+.node[data-type="REFER"] .node-tag{ color:var(--alg-refer); background:var(--alg-refer-bg); border-color:var(--alg-refer-bd); }
+.node[data-type="SAFETY"]{    border-left-color:var(--alg-safety); }
+.node[data-type="SAFETY"] .node-tag{ color:var(--alg-safety); background:var(--alg-safety-bg); border-color:var(--alg-safety-bd); }
+.node[data-type="LIFESTYLE"]{ border-left-color:var(--alg-lifestyle); }
+.node[data-type="LIFESTYLE"] .node-tag{ color:var(--alg-lifestyle); background:var(--alg-lifestyle-bg); border-color:var(--alg-lifestyle-bd); }
+.node h3{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:18px; line-height:1.2; color:var(--ink); flex:1; }
+.node .node-tick{ grid-column:3; grid-row:1 / span 2; display:flex; align-items:center; }
+.node .node-tick label{ display:flex; gap:8px; align-items:center; cursor:pointer; user-select:none; }
+.node .node-tick input{ width:22px; height:22px; cursor:pointer; accent-color:var(--teal); }
+.node .node-tick .tlbl{ font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.node.is-done .node-tick .tlbl{ color:var(--alg-treat); }
+.node .node-body{ grid-column:2 / span 1; font-size:14px; color:var(--ink-2); line-height:1.55; }
+@media (max-width:760px){
+  .node{ grid-template-columns: auto 1fr; }
+  .node .node-tick{ grid-column:1 / -1; grid-row:auto; justify-content:flex-end; padding-top:4px; }
+  .node .node-head{ grid-column:2; }
+  .node .node-body{ grid-column:1 / -1; }
+}
+
+/* Inline pills + key/value chips inside body */
+.kv{ display:grid; grid-template-columns: 140px 1fr; gap:8px 14px; margin:.4rem 0; }
+.kv > div:nth-child(odd){ font-size:12px; color:var(--muted); letter-spacing:.04em; text-transform:uppercase; font-weight:600; padding-top:2px; }
+.kv > div:nth-child(even){ font-size:13.5px; }
+@media (max-width:540px){ .kv{ grid-template-columns:1fr; gap:2px 0; } .kv > div:nth-child(odd){ margin-top:6px; } }
+
+.pill{ display:inline-block; font-size:12px; font-weight:700; padding:2px 10px; border-radius:99px; margin:1px 2px; }
+.pill-blue{ background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; }
+.pill-teal{ background:#f0fdfa; color:#0f766e; border:1px solid #99f6e4; }
+.pill-red{ background:#fef2f2; color:#991b1b; border:1px solid #fecaca; }
+.pill-amber{ background:#fffbeb; color:#a16207; border:1px solid #fde68a; }
+.pill-green{ background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; }
+.pill-purple{ background:#f5f3ff; color:#5b21b6; border:1px solid #ddd6fe; }
+.pill-grey{ background:#f1f5f9; color:#475569; border:1px solid #e2e8f0; }
+
+/* Why-button + drawer */
+.why-row{ grid-column:2 / span 1; margin-top:6px; }
+.why-btn{
+  font: inherit; font-size:12px; font-weight:600; color:var(--ink-2);
+  background:transparent; border:1px solid var(--line); border-radius:99px;
+  padding:4px 12px; cursor:pointer; transition:.15s ease;
+  display:inline-flex; align-items:center; gap:6px;
+}
+.why-btn:hover{ border-color:var(--ink-2); }
+.why-btn[aria-expanded="true"]{ background:var(--teal); border-color:var(--teal); color:#fff; }
+.why-drawer{ display:none; grid-column:2 / span 1; margin-top:8px; padding:11px 14px; background:#f8fafc; border:1px solid var(--line); border-left:3px solid var(--ink-2); border-radius:8px; font-size:13px; color:var(--ink-2); line-height:1.55; }
+.why-drawer.open{ display:block; }
+@media (max-width:760px){ .why-row, .why-drawer{ grid-column:1 / -1; } }
+
+/* Drug ladder branching layout */
+.branch{
+  grid-column:2 / span 1;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:10px;
+  margin-top:6px;
+}
+@media (max-width:760px){ .branch{ grid-template-columns:1fr; } .branch{ grid-column:1 / -1 } }
+.branch .b-card{ border:1px solid var(--alg-treat-bd); border-radius:10px; padding:10px 12px; background:var(--alg-treat-bg); }
+.branch .b-card .b-cond{ font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--alg-treat); }
+.branch .b-card .b-drug{ font-size:15px; font-weight:600; color:var(--ink); margin-top:3px; }
+.branch .b-card .b-note{ font-size:12px; color:var(--ink-2); margin-top:4px; line-height:1.45; }
+
+/* Step ladder (vertical sub-steps) */
+.ladder{ grid-column:2 / span 1; display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+@media (max-width:760px){ .ladder{ grid-column:1 / -1; } }
+.ladder .rung{ display:grid; grid-template-columns: auto 1fr; gap:10px; align-items:center; padding:8px 12px; background:var(--surface-2); border:1px solid var(--line); border-radius:8px; }
+.ladder .rung .rn{ font-size:11px; font-weight:700; color:var(--alg-treat); background:#fff; border:1px solid var(--alg-treat-bd); border-radius:99px; padding:1px 8px; }
+.ladder .rung .rt{ font-size:13px; color:var(--ink-2); line-height:1.45; }
+.ladder .rung .rt b{ color:var(--ink); }
+
+/* Red-flag tile list */
+.rfgrid{ grid-column:2 / span 1; display:grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap:8px; margin-top:8px; }
+@media (max-width:760px){ .rfgrid{ grid-column:1 / -1; } }
+.rfgrid .rftile{ background:var(--alg-safety-bg); border:1px solid var(--alg-safety-bd); border-radius:8px; padding:8px 10px; font-size:13px; color:#7f1d1d; line-height:1.45; }
+.rfgrid .rftile b{ color:var(--alg-safety); display:block; font-weight:700; margin-bottom:2px; font-size:12px; letter-spacing:.03em; }
+
+/* Lifestyle tile list */
+.lsgrid{ grid-column:2 / span 1; display:grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap:8px; margin-top:8px; }
+@media (max-width:760px){ .lsgrid{ grid-column:1 / -1; } }
+.lsgrid .lstile{ background:var(--alg-lifestyle-bg); border:1px solid var(--alg-lifestyle-bd); border-radius:8px; padding:8px 10px; font-size:13px; color:#14532d; line-height:1.45; }
+.lsgrid .lstile b{ display:block; font-weight:700; color:var(--alg-lifestyle); font-size:12px; letter-spacing:.03em; margin-bottom:2px; }
+
+/* Footnote */
+.alg-foot{ margin-top:32px; padding:14px 18px; background:var(--bg-soft); border:1px solid var(--line); border-radius:10px; font-size:12.5px; color:var(--muted); line-height:1.5; }
+.alg-foot strong{ color:var(--ink-2); }
+
+@media print{
+  @page{
+    size: A4 portrait;
+    margin: 12mm 12mm 14mm;
+  }
+  html, body{ background:#fff !important; font-size:11px; }
+  .app{ display:block !important; grid-template-columns: 1fr !important; }
+  .main{ padding:0 !important; }
+  .tool-page{ padding:0 !important; max-width:none !important; }
+
+  /* Hide chrome */
+  .node-tick, .alg-progress, .sb-toggle, .sidebar, .tool-head-actions, .head-btn,
+  .alg-pick, .sb-show-btn, .sb-overlay{ display:none !important; }
+
+  /* Tighten header */
+  .tool-head{ padding-bottom:6px; margin-bottom:8px; border-bottom:1px solid #999; }
+  .tool-head h1{ font-size:18px; margin-top:2px; }
+  .tool-head p{ font-size:10.5px; margin-top:3px; }
+  .tool-eyebrow{ font-size:8.5px; }
+
+  /* Stem banner */
+  .stem-banner{ background:#0c4a47 !important; color:#fff !important; padding:8px 12px !important; margin-bottom:8px !important; border-radius:6px !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .stem-banner .sb-icon{ width:30px; height:30px; font-size:14px; }
+  .stem-banner b{ font-size:14px; }
+  .stem-banner small{ font-size:10px; }
+
+  /* Connectors invisible — save vertical space */
+  .alg-flow .connector{ height:6px !important; background:transparent !important; }
+
+  /* Nodes: keep each on a single page, never split mid-node */
+  .node{
+    page-break-inside: avoid;
+    break-inside: avoid;
+    padding:8px 10px !important;
+    margin-bottom:6px !important;
+    box-shadow:none !important;
+    border:1px solid #cbd5e1 !important;
+    border-left-width:3px !important;
+    border-radius:6px !important;
+    column-gap:8px !important;
+    row-gap:4px !important;
+  }
+  .node.is-active{ box-shadow:none !important; }
+
+  /* Force step-type colours to print (Chrome / Safari) */
+  .node, .node[data-type] *,
+  .pill, .rftile, .lstile, .stem-banner, .b-card, .ladder .rung, .ladder .rung .rn{
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .node-num{ width:24px !important; height:24px !important; font-size:10px !important; }
+  .node h3{ font-size:13px !important; line-height:1.2 !important; }
+  .node-tag{ font-size:8.5px !important; padding:1px 6px !important; }
+  .node .node-body{ font-size:10.5px !important; line-height:1.4 !important; }
+
+  /* Why drawers print, but compact */
+  .why-row{ margin-top:4px !important; }
+  .why-btn{ display:none !important; }
+  .why-drawer{ display:block !important; margin-top:4px !important; padding:5px 8px !important; font-size:10px !important; border:none !important; border-left:2px solid #475569 !important; background:#f1f5f9 !important; border-radius:0 4px 4px 0 !important; }
+
+  /* KV inline grid */
+  .kv{ grid-template-columns: 90px 1fr !important; gap:2px 8px !important; margin:.25rem 0 !important; }
+  .kv > div:nth-child(odd){ font-size:9px !important; padding-top:1px !important; }
+  .kv > div:nth-child(even){ font-size:10.5px !important; line-height:1.35 !important; }
+
+  /* Pills compact */
+  .pill{ font-size:9px !important; padding:1px 6px !important; margin:0 1px !important; }
+
+  /* Red-flag + lifestyle tiles: 3-up grid for print */
+  .rfgrid, .lsgrid{ grid-template-columns: repeat(3, 1fr) !important; gap:4px !important; margin-top:4px !important; }
+  .rftile, .lstile{ padding:4px 6px !important; font-size:10px !important; line-height:1.3 !important; }
+  .rftile b, .lstile b{ font-size:9.5px !important; margin-bottom:1px !important; }
+
+  /* Drug ladder branching */
+  .branch{ grid-template-columns: repeat(3, 1fr) !important; gap:4px !important; margin-top:4px !important; }
+  .b-card{ padding:5px 7px !important; }
+  .b-card .b-cond{ font-size:8.5px !important; }
+  .b-card .b-drug{ font-size:11px !important; margin-top:1px !important; }
+  .b-card .b-note{ font-size:9.5px !important; margin-top:1px !important; line-height:1.3 !important; }
+
+  .ladder{ gap:3px !important; margin-top:4px !important; }
+  .ladder .rung{ padding:4px 8px !important; }
+  .ladder .rung .rn{ font-size:9.5px !important; padding:0 6px !important; }
+  .ladder .rung .rt{ font-size:10px !important; line-height:1.3 !important; }
+
+  .alg-foot{ margin-top:10px !important; padding:6px 10px !important; font-size:9px !important; border-radius:4px !important; }
+
+  /* Avoid orphan headings */
+  h1, h2, h3, h4{ page-break-after: avoid; break-after: avoid; }
+}
+
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body data-screen-label="Hypertension algorithm">
+<div class="alg-wrap">
+  <div class="tool-page" style="padding:0;max-width:none">
+
+    <!-- Stem -->
+    <div class="stem-banner">
+      <div class="sb-icon">🩺</div>
+      <div>
+        <b>New presentation of high blood pressure</b>
+        <small>Clinic BP ≥140/90 mmHg in an adult, no prior diagnosis. Use this pathway through a single 12-minute consultation.</small>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+      <span>Progress</span>
+      <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+      <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+      <button class="reset" id="resetBtn">Reset</button>
+    </div>
+
+    <!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — confirm with ABPM/HBPM (not one clinic reading), exclude the accelerated/secondary emergency, stage and risk-stratify, treat by NG136 stepwise drugs to a target, prescribe lifestyle, and monitor.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation · clinic BP bands</span><span class="ttl">Raised blood pressure</span><div class="body"><b>&lt;140/90 normotensive</b> (recheck ≥5-yearly) · <b>140–179 / 90–119</b> → confirm with ABPM/HBPM · <b>≥180/120 = severe</b>. Repeat if clinic ≥140/90; if 2nd reading differs, take a 3rd and record the lowest. Measure both arms (use higher if difference &gt;15 mmHg).</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — exclude the emergency</span><span class="ttl">BP ≥180/120 with red flags?</span><div class="body"><ul>
+      <li><b>Accelerated (malignant) hypertension</b> — papilloedema or retinal haemorrhages</li>
+      <li><b>Phaeochromocytoma</b> — labile BP, headache, palpitations, pallor, sweating</li>
+      <li><b>Target-organ emergency</b> — new confusion/neurology, chest pain, heart failure, AKI</li>
+      <li><b>Pregnancy ≥20 wk + BP ≥140/90</b> → ?pre-eclampsia</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · same-day</span><span class="ttl">Same-day assessment</span><div class="body">Accelerated HTN / phaeochromocytoma → same-day specialist; pre-eclampsia → obstetric emergency. If ≥180/120 but asymptomatic with no red flags: assess for target-organ damage ASAP — present → treat immediately without waiting for ABPM; absent → repeat clinic BP within 7 days.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — 140–179/90–119</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">ABPM/HBPM + risk + end-organ</span><div class="body"><b>ABPM</b> (≥14 daytime readings) or <b>HBPM</b> (2 readings twice daily, ≥4 days, discard day 1). ECG, urine ACR + dip (haematuria), U&amp;E, HbA1c, lipids, fundoscopy; QRISK3. Check a <b>postural drop</b> if ≥80, T2DM or postural symptoms.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · stage by ABPM/HBPM average</span></div>
+
+    <!-- STEP 3 — STAGE -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel">Stage 1 · ABPM ≥135/85</div><div class="box ix"><span class="ttl">Treat by age &amp; risk</span><div class="body"><b>Offer drugs if &lt;80</b> with target-organ damage, established CVD, renal disease, diabetes, or <b>QRISK ≥10%</b>. Discuss drugs if QRISK &lt;10% (esp. &lt;60). Lifestyle for all.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">Stage 2 · ABPM ≥150/95</div><div class="box ix"><span class="ttl">Offer drugs at any age</span><div class="body">Offer antihypertensive treatment regardless of age (account for frailty and multimorbidity).</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · NG136 stepwise drug ladder</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:780px;"><span class="lbl">Step 7 · Action — drug ladder &amp; targets</span><span class="ttl">Step up every 4 weeks until target reached</span><div class="body"><ul>
+      <li><b>Step 1 by profile:</b> &lt;55 &amp; not African/Caribbean, or any-age T2DM → <b>A</b> (ACEi e.g. ramipril; ARB if cough/African-Caribbean). ≥55 or African/Caribbean (no T2DM) → <b>C</b> (amlodipine).</li>
+      <li><b>Step 2:</b> A + C. <b>Step 3:</b> A + C + D (thiazide-like diuretic, indapamide). Check U&amp;E 1–2 weeks after starting/up-titrating A or spironolactone.</li>
+      <li><b>Step 4 (resistant):</b> confirm adherence; if K⁺ ≤4.5 add <b>spironolactone</b>, if &gt;4.5 add alpha- or beta-blocker → specialist.</li>
+      <li><b>Targets:</b> clinic &lt;140/90 (ABPM/HBPM &lt;135/85) if &lt;80; clinic &lt;150/90 (HBPM &lt;145/85) if ≥80. Add a <b>statin</b> for primary prevention if QRISK ≥10%.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:780px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-red">Same-day</span> accelerated hypertension (papilloedema), phaeochromocytoma, pregnancy ≥20 wk + ≥140/90, BP ≥180/120 with target-organ symptoms.</li>
+      <li><span class="pill pill-purple">Specialist</span> resistant hypertension on ≥3 drugs, suspected secondary cause (Conn's, renal artery stenosis, Cushing's), or <b>age &lt;40 with stage 2</b> (risk tools underestimate lifetime risk).</li>
+      <li><span class="pill pill-grey">Primary care</span> stable, no red flags → manage and monitor per below.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · lifestyle prescription</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:780px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle — measurable targets (≈10–15 mmHg)</span><span class="ttl">Lifestyle is treatment, not a delay</span><div class="body"><b>Salt &lt;6 g/day</b> · <b>DASH/Mediterranean diet</b> · weight loss to BMI &lt;25 · <b>alcohol ≤14 u/wk</b> · 150 min/wk aerobic activity · stop smoking · reduce caffeine. Set <b>one specific target</b>, not five — combined effect rivals a single drug.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · monitor &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:780px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">What to recheck, when to return</span><div class="body"><b>Recheck:</b> U&amp;E 1–2 wks after ACEi/ARB or spironolactone (stop if K⁺ &gt;5.5 or creatinine ↑&gt;30%); HBPM at 4 wks and step up if not at target; <b>annual</b> BP, U&amp;E, ACR, QRISK and lifestyle review. <b>Call 999</b> if sudden severe headache, focal weakness, vision loss or chest pain.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Diagnose with ABPM/HBPM, not a single clinic reading</b> (clinic readings are for screening &amp; assessing response). Stage 1 ABPM ≥135/85; stage 2 ≥150/95. Always check a postural drop in the elderly/diabetic to avoid over-treatment and falls.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+        <!-- 1 — SAFETY — Rule out emergency -->
+        <div class="node" data-type="SAFETY" data-step="1">
+          <div class="node-num">1</div>
+          <div class="node-head">
+            <span class="node-tag">Safety</span>
+            <h3>Rule out hypertensive emergency first</h3>
+          </div>
+          <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+          <div class="node-body">
+            If any of the boxes below are present → <b>same-day medical assessment / 999 if neurology, chest pain, or BP &gt;180/120 with target-organ symptoms</b>. Otherwise continue.
+          </div>
+          <div class="rfgrid">
+            <div class="rftile"><b>BP ≥180/120</b> + new headache, vision change, focal weakness, chest pain, breathlessness</div>
+            <div class="rftile"><b>Suspected phaeo</b> sweating, tremor, paroxysms, palpitations</div>
+            <div class="rftile"><b>Pregnancy &gt;20w</b> BP ≥140/90 — same-day obstetric review (?pre-eclampsia)</div>
+            <div class="rftile"><b>Papilloedema / retinal haemorrhage</b> on fundoscopy</div>
+            <div class="rftile"><b>Acute kidney injury</b> rising creatinine, oliguria</div>
+            <div class="rftile"><b>Aortic dissection signs</b> tearing chest pain, BP arm-to-arm difference</div>
+          </div>
+          <div class="why-row">
+            <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+            <div class="why-drawer">Severe HTN with target-organ symptoms is a medical emergency. Untreated, mortality at 1 year was historically &gt;90%. The point of this step is to <em>not</em> start chronic-pathway thinking in someone who needs same-day specialist input.</div>
+          </div>
+        </div>
+        <div class="connector"></div>
+
+        <!-- 2 — DIAGNOSE — Confirm with ABPM/HBPM -->
+        <div class="node" data-type="DIAGNOSE" data-step="2">
+          <div class="node-num">2</div>
+          <div class="node-head">
+            <span class="node-tag">Diagnose</span>
+            <h3>Confirm with ABPM (or HBPM if declined)</h3>
+          </div>
+          <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+          <div class="node-body">
+            Do <b>not</b> treat on a single clinic reading. Repeat BP in clinic. If still ≥140/90, arrange:
+            <div class="kv">
+              <div>1st line</div><div><span class="pill pill-blue">ABPM</span> 24-hour, ≥14 daytime readings averaged.</div>
+              <div>If declined</div><div><span class="pill pill-blue">HBPM</span> 7 days, BD, discard day 1, average the rest.</div>
+              <div>Diagnostic ≥</div><div><span class="pill pill-amber">135/85 mmHg average</span> (= clinic 140/90).</div>
+            </div>
+          </div>
+          <div class="why-row">
+            <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+            <div class="why-drawer">White-coat effect overdiagnoses ~25% of clinic HTN. ABPM/HBPM removes that. NICE NG136 mandates confirmation before chronic treatment unless ≥180/120 with target-organ damage.</div>
+          </div>
+        </div>
+        <div class="connector"></div>
+
+        <!-- 3 — DIAGNOSE — Stage -->
+        <div class="node" data-type="DIAGNOSE" data-step="3">
+          <div class="node-num">3</div>
+          <div class="node-head">
+            <span class="node-tag">Diagnose</span>
+            <h3>Stage the confirmed hypertension</h3>
+          </div>
+          <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+          <div class="node-body">
+            <div class="kv">
+              <div>Stage 1</div><div>Clinic 140/90 · ABPM/HBPM <b>135/85 – 149/94</b>. Treat if &lt;80y AND target-organ damage, CVD, renal disease, diabetes, or QRISK ≥10%.</div>
+              <div>Stage 2</div><div>Clinic ≥160/100 · ABPM/HBPM <b>≥150/95</b>. Treat all adults regardless of age.</div>
+              <div>Stage 3 (severe)</div><div>Clinic <b>≥180/120</b>. Same-day specialist if any target-organ symptoms; otherwise treat immediately + investigate.</div>
+            </div>
+          </div>
+          <div class="why-row">
+            <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+            <div class="why-drawer">Staging determines whether to treat at all. Many stage 1 patients under 60 with low QRISK do not need lifelong tablets — lifestyle alone is the right answer.</div>
+          </div>
+        </div>
+        <div class="connector"></div>
+
+        <!-- 4 — DIAGNOSE — Examination -->
+        <div class="node" data-type="DIAGNOSE" data-step="4">
+          <div class="node-num">4</div>
+          <div class="node-head">
+            <span class="node-tag">Diagnose</span>
+            <h3>Targeted examination</h3>
+          </div>
+          <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+          <div class="node-body">
+            <div class="kv">
+              <div>BP both arms</div><div>Difference &gt;15 mmHg → vascular disease / coarctation. Use the higher arm thereafter.</div>
+              <div>Standing BP</div><div>If ≥80y, frail, T2DM, postural symptoms. Drop ≥20/10 → postural hypotension.</div>
+              <div>Fundi</div><div>Look for hypertensive retinopathy, esp. if severe HTN. Papilloedema = same-day.</div>
+              <div>Cardiac</div><div>Apex displacement, S4, murmurs — LVH or aortic disease.</div>
+              <div>Renal bruits</div><div>Especially if young, resistant HTN, or rapid eGFR fall → renal artery stenosis.</div>
+              <div>BMI + waist</div><div>Quantify the modifiable target.</div>
+            </div>
+          </div>
+          <div class="why-row">
+            <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+            <div class="why-drawer">Examination here is not screening — it's looking for findings that change the plan: secondary cause triggers, target-organ damage, and orthostasis (which changes drug choice).</div>
+          </div>
+        </div>
+        <div class="connector"></div>
+
+        <!-- 5 — DIAGNOSE — Investigations -->
+        <div class="node" data-type="DIAGNOSE" data-step="5">
+          <div class="node-num">5</div>
+          <div class="node-head">
+            <span class="node-tag">Diagnose</span>
+            <h3>Baseline investigations (do them all)</h3>
+          </div>
+          <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+          <div class="node-body">
+            <div class="kv">
+              <div>Bloods</div><div><span class="pill pill-blue">U&amp;Es</span> <span class="pill pill-blue">eGFR</span> <span class="pill pill-blue">HbA1c</span> <span class="pill pill-blue">Lipid profile (non-fast)</span></div>
+              <div>Urine</div><div><span class="pill pill-blue">ACR</span> <span class="pill pill-blue">Dipstick (blood)</span></div>
+              <div>ECG</div><div>LVH (Sokolow-Lyon), prior MI, AF.</div>
+              <div>QRISK3</div><div>10-year CVD risk — needed for stage 1 decision and for statin discussion.</div>
+              <div>Consider</div><div>Aldosterone:renin if &lt;40y or resistant. TFTs if symptomatic. Renal US if abnormal U&amp;Es.</div>
+            </div>
+          </div>
+          <div class="why-row">
+            <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+            <div class="why-drawer">U&amp;Es are mandatory before ACEi/ARB (and within 1–2 weeks of starting). ACR proves microalbuminuria — itself a treatment indication. ECG + QRISK quantify the risk you are trying to reduce.</div>
+          </div>
+        </div>
+        <div class="connector"></div>
+
+        <!-- 6 — REFER — Secondary screen -->
+        <div class="node" data-type="REFER" data-step="6">
+          <div class="node-num">6</div>
+          <div class="node-head">
+            <span class="node-tag">Refer</span>
+            <h3>Screen for secondary hypertension — refer when</h3>
+          </div>
+          <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+          <div class="node-body">
+            <div class="kv">
+              <div>Refer specialist</div><div><span class="pill pill-purple">Age &lt;40 with stage 2</span> <span class="pill pill-purple">Resistant on ≥3 drugs</span> <span class="pill pill-purple">Hypokalaemia + HTN</span> <span class="pill pill-purple">Abdominal bruit</span> <span class="pill pill-purple">Paroxysmal symptoms</span></div>
+              <div>Same-day</div><div><span class="pill pill-red">Accelerated HTN (papilloedema)</span> <span class="pill pill-red">Pregnancy ≥20w + ≥140/90</span> <span class="pill pill-red">BP ≥180/120 with target-organ symptoms</span></div>
+              <div>Routine</div><div>Stable, no red flags → manage in primary care, follow steps 7–9.</div>
+            </div>
+          </div>
+          <div class="why-row">
+            <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+            <div class="why-drawer">~10% of HTN has a secondary cause. Missing Conn's, phaeochromocytoma, or renal artery stenosis means treating the wrong target. Resistant or young HTN is the highest-yield trigger.</div>
+          </div>
+        </div>
+        <div class="connector"></div>
+
+        <!-- 7 — TREAT — Drug ladder with branching -->
+        <div class="node" data-type="TREAT" data-step="7">
+          <div class="node-num">7</div>
+          <div class="node-head">
+            <span class="node-tag">Treat</span>
+            <h3>Drug ladder — Step 1 splits by profile, Steps 2–4 are linear</h3>
+          </div>
+          <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+          <div class="node-body" style="font-size:13px;color:var(--muted);margin-top:2px">Start at Step 1. Step up every <b>4 weeks</b> until target reached. Check U&amp;Es within 1–2 weeks of any ACEi/ARB or spironolactone change.</div>
+
+          <!-- Step 1 — branched -->
+          <div class="branch" aria-label="Step 1 by patient profile">
+            <div class="b-card">
+              <div class="b-cond">Step 1 · &lt;55 yrs, not African / Afro-Caribbean</div>
+              <div class="b-drug">ACEi  <span class="pill pill-teal">A</span></div>
+              <div class="b-note">Ramipril 2.5–10 mg od. Switch to ARB if cough.</div>
+            </div>
+            <div class="b-card">
+              <div class="b-cond">Step 1 · ≥55 yrs, OR African / Afro-Caribbean (any age, no DM)</div>
+              <div class="b-drug">CCB  <span class="pill pill-teal">C</span></div>
+              <div class="b-note">Amlodipine 5–10 mg od. Switch to thiazide-like (indapamide) if oedema or HF.</div>
+            </div>
+            <div class="b-card">
+              <div class="b-cond">Step 1 · Type 2 diabetes (any age, any ethnicity)</div>
+              <div class="b-drug">ACEi or ARB  <span class="pill pill-teal">A</span></div>
+              <div class="b-note">Renoprotective. Choose ARB first-line in African / Afro-Caribbean.</div>
+            </div>
+          </div>
+
+          <!-- Steps 2–4 ladder -->
+          <div class="ladder">
+            <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>A + C</b> &nbsp; or &nbsp; <b>A + D</b> (thiazide-like diuretic — indapamide).</span></div>
+            <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>A + C + D</b> &nbsp; — confirm adherence and HBPM before progressing.</span></div>
+            <div class="rung"><span class="rn">Step 4 · K⁺ ≤ 4.5</span><span class="rt">Add <b>spironolactone 25 mg od</b>. Recheck U&amp;Es at 1 month. Specialist if still uncontrolled.</span></div>
+            <div class="rung"><span class="rn">Step 4 · K⁺ &gt; 4.5</span><span class="rt">Add <b>alpha-blocker (doxazosin)</b> or <b>beta-blocker (bisoprolol)</b>. Refer if uncontrolled.</span></div>
+          </div>
+
+          <div class="why-row">
+            <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+            <div class="why-drawer">Renin physiology drives the age/ethnicity split: younger non-Black patients have high-renin HTN responsive to RAAS blockade; older / Black patients have low-renin HTN best controlled with volume reduction (CCB or thiazide). Beta-blockers are <em>not</em> first-line for uncomplicated HTN.</div>
+          </div>
+        </div>
+        <div class="connector"></div>
+
+        <!-- 8 — LIFESTYLE -->
+        <div class="node" data-type="LIFESTYLE" data-step="8">
+          <div class="node-num">8</div>
+          <div class="node-head">
+            <span class="node-tag">Lifestyle</span>
+            <h3>Lifestyle prescription — measurable targets</h3>
+          </div>
+          <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+          <div class="node-body">Lifestyle alone can drop systolic BP 10–15 mmHg — equivalent to one drug. Set <b>one target</b>, not five.</div>
+          <div class="lsgrid">
+            <div class="lstile"><b>Salt</b> &lt; 6 g / day. Avoid processed food, check labels.</div>
+            <div class="lstile"><b>Activity</b> 150 min / week moderate. Brisk walking counts.</div>
+            <div class="lstile"><b>Alcohol</b> ≤ 14 units / week, spread, with alcohol-free days.</div>
+            <div class="lstile"><b>Weight</b> Aim BMI &lt; 25; 5–10% loss = meaningful BP fall.</div>
+            <div class="lstile"><b>Diet</b> DASH-style: vegetables, fruit, low-fat dairy, lean protein.</div>
+            <div class="lstile"><b>Caffeine</b> Limit excess (&gt; 4 strong coffees / day).</div>
+            <div class="lstile"><b>Smoking</b> Refer to local stop-smoking service.</div>
+            <div class="lstile"><b>Sleep</b> Screen for OSA if snoring + daytime somnolence.</div>
+          </div>
+          <div class="why-row">
+            <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+            <div class="why-drawer">Lifestyle is not a delay tactic — it is treatment. The DASH diet alone reduces SBP ~8–14 mmHg. One specific, achievable target outperforms a list of platitudes.</div>
+          </div>
+        </div>
+        <div class="connector"></div>
+
+        <!-- 9 — SAFETY / FOLLOW-UP -->
+        <div class="node" data-type="SAFETY" data-step="9">
+          <div class="node-num">9</div>
+          <div class="node-head">
+            <span class="node-tag">Safety</span>
+            <h3>Follow-up + safety-net</h3>
+          </div>
+          <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+          <div class="node-body">
+            <div class="kv">
+              <div>1–2 weeks</div><div>U&amp;Es after ACEi/ARB or spironolactone. K⁺ &gt; 5.5 or Cr ↑ &gt;30 % → stop, recheck, specialist.</div>
+              <div>4 weeks</div><div>Review HBPM. If not at target &lt; 135/85, step up.</div>
+              <div>Annually</div><div>BP, U&amp;Es, ACR, QRISK, lifestyle reinforcement.</div>
+              <div>Safety-net 999</div><div><span class="pill pill-red">Sudden severe headache</span> <span class="pill pill-red">Focal weakness</span> <span class="pill pill-red">Vision loss</span> <span class="pill pill-red">Chest pain</span> <span class="pill pill-red">Breathlessness</span></div>
+              <div>Safety-net same-day GP</div><div>Postural dizziness, persistent cough on ACEi, swollen ankles on CCB.</div>
+            </div>
+          </div>
+          <div class="why-row">
+            <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+            <div class="why-drawer">Most adverse events from new HTN drugs happen in the first 2–4 weeks. Naming what to watch for protects the patient and documents your safety-netting in the notes.</div>
+          </div>
+        </div>
+
+      </div>
+
+    <div class="alg-foot">
+      <strong>Educational use.</strong> Pathway anchored to NICE NG136 and NICE CKS (2026). Always verify against current local guidance and the patient's individual context — this is a reference tool, not a substitute for clinical judgement.
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  const flow = document.getElementById('flow');
+  const nodes = [...flow.querySelectorAll('.node')];
+  const total = nodes.length;
+  document.getElementById('pTotal').textContent = total;
+
+  const STORAGE_KEY = 'rgp.alg.htn.v1';
+  let state = {};
+  try { state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e){ state = {}; }
+
+  // Why drawer toggle
+  flow.querySelectorAll('.why-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const drawer = btn.parentElement.nextElementSibling;
+      const open = drawer.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.querySelector('.caret').textContent = open ? '▴' : '▾';
+    });
+  });
+
+  // Tick → done + light up next
+  function render(){
+    let doneCount = 0;
+    let firstUndone = -1;
+    nodes.forEach((n, i)=>{
+      const step = n.dataset.step;
+      const isDone = !!state[step];
+      n.classList.toggle('is-done', isDone);
+      n.classList.remove('is-active');
+      const cb = n.querySelector('input[type=checkbox]');
+      if (cb.checked !== isDone) cb.checked = isDone;
+      if (isDone) doneCount++;
+      else if (firstUndone === -1) firstUndone = i;
+    });
+    if (firstUndone >= 0) nodes[firstUndone].classList.add('is-active');
+    document.getElementById('pDone').textContent = doneCount;
+    document.getElementById('pFill').style.width = Math.round(doneCount * 100 / total) + '%';
+  }
+
+  nodes.forEach(n=>{
+    const cb = n.querySelector('input[type=checkbox]');
+    cb.addEventListener('change', ()=>{
+      state[n.dataset.step] = cb.checked;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      render();
+      if (cb.checked) {
+        // soft scroll to next unticked
+        const next = nodes.find(x => !state[x.dataset.step]);
+        if (next) next.scrollIntoView({behavior:'smooth', block:'nearest'});
+      }
+    });
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', ()=>{
+    state = {};
+    localStorage.removeItem(STORAGE_KEY);
+    render();
+    nodes[0].scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  render();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

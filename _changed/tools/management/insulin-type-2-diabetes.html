@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Insulin in Type 2 Diabetes — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Insulin in type 2 diabetes management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"💉",
+  title:"Insulin in Type 2 Diabetes — Initiation & Titration",
+  stemTitle:"Starting insulin in type 2 diabetes &mdash; which insulin, what starting dose, how to titrate, and when to add prandial cover",
+  stemSub:"A practical prescribing protocol for when oral/injectable therapy is no longer enough: start a basal insulin, self-titrate to the fasting target, add prandial insulin if HbA1c stays high, keep the oral agents that still help, and manage hypos \u2014 with named brands and titration tables. NICE NG28 / GMMMG insulin aid.",
+  guideline:"NICE NG28 \u00b7 GMMMG insulin aid",
+  glance:[
+    {lbl:"First-line", val:"NPH (isophane) basal", sub:"Insuman Basal\u00ae / Insulatard\u00ae"},
+    {lbl:"Start", val:"10 units once daily", sub:"6\u201310u if frail/elderly/renal"},
+    {lbl:"Titrate", val:"+2 units every 3 days", sub:"to fasting target; self-titrate"},
+    {lbl:"Alternative basal", val:"Analogue (Semglee\u00ae)", sub:"if hypos / needs carer help"},
+    {lbl:"Still high?", val:"Add prandial 4 units", sub:"rapid-acting at largest meal"},
+    {lbl:"Always", val:"Prescribe by BRAND", sub:"full product name; keep metformin"}
+  ],
+  flow:[
+
+    {t:"node", d:"found", n:"1", tag:"Before you start", title:"Confirm insulin is the right next step & counsel",
+      blocks:[
+        {b:"kv", rows:[
+          ["When to start","HbA1c remains above the individualised target despite optimised oral/non-insulin injectable therapy (metformin + 2nd/3rd agents \u00b1 GLP-1 RA) \u2014 see the Type 2 Diabetes oral ladder first."],
+          ["Keep what works","<b>Continue metformin</b> (and usually SGLT2i for cardio-renal benefit). <b>Review/stop the sulfonylurea</b> when starting insulin (additive hypo risk). GLP-1 RA may continue on specialist advice."],
+          ["Counsel","Injection technique &amp; site rotation, hypoglycaemia recognition/treatment, sick-day rules, blood-glucose monitoring, driving (DVLA), travel/fasting, and that doses will be titrated."],
+          ["DVLA","Patient must inform the DVLA; check BG before driving and every 2h on long journeys; carry fast-acting carbs; do not drive if hypo-unaware."],
+          ["Baseline","Weight/BMI, renal function, current HbA1c, capillary BG capability, and an agreed individualised glucose target."]
+        ]},
+        {b:"warn", html:"<b>Always prescribe insulin by brand, using the full product name</b> \u2014 insulins are not interchangeable and brand-prescribing prevents dangerous substitution errors."}
+      ]},
+
+    {t:"node", d:"life", n:"2", tag:"Non-drug · continues on insulin", title:"Lifestyle stays central", blocks:[{b:"tiles", v:"life", items:[{t:"\ud83d\udd7d Diet & carbs", html:"Carbohydrate awareness, portion control and a healthy dietary pattern reduce insulin requirements and weight gain; involve a dietitian."},{t:"\ud83c\udfc3 Activity", html:"Regular activity improves glycaemic control and CV risk \u2014 counsel on hypoglycaemia/glucose checks around exercise."},{t:"\u2696\ufe0f Weight", html:"Insulin promotes weight gain \u2014 reinforce weight management; consider weight-favourable agents (GLP-1/SGLT2i) alongside."},{t:"\ud83e\uddb6 Feet & checks", html:"Daily foot care, smoking cessation, BP and lipid control, and annual retinal/foot/renal screening continue."}]},{b:"why", html:"Starting insulin does not replace lifestyle \u2014 diet, activity and weight management reduce the insulin dose needed and the weight gain it causes, and the wider cardiovascular and screening care continues regardless."}]},
+    {t:"node", d:"drug", n:"3", tag:"Step 1 \u00b7 start basal", title:"First-line: NPH (isophane) basal insulin",
+      blocks:[
+        {b:"p", html:"<b>First choice is a medium-acting human NPH (isophane) insulin.</b> Start <b>10 units once daily</b> at the same time each day (not food-dependent)."},
+        {b:"table", head:["Role","Brand (first choice)","Alternatives"], rows:[
+          ["Basal \u2014 NPH/isophane (1st line)","Insuman Basal\u00ae","Insulatard\u00ae, Humulin I\u00ae"],
+          ["Basal \u2014 long-acting analogue (alt)","Semglee\u00ae / Abasaglar\u00ae (glargine)","Levemir\u00ae (detemir)"]
+        ]},
+        {b:"kv", rows:[
+          ["Frail / elderly / renal","Start lower: <b>6\u201310 units</b> once daily."],
+          ["When to choose an analogue instead","<b>Problematic (esp. nocturnal) hypoglycaemia</b>, or where the patient <b>needs a carer to give a once-daily injection</b> \u2014 long-acting analogues (Semglee/Abasaglar/Levemir) give a flatter, peakless profile."],
+          ["Don't routinely use","High-strength / ultra-long insulins (Toujeo\u00ae, degludec) are <b>not</b> for routine T2DM \u2014 specialist only."]
+        ]},
+        {b:"why", html:"NICE NG28 keeps <strong>human NPH insulin as the cost-effective first-line basal</strong>, reserving long-acting analogues for those with hypoglycaemia problems or who need someone else to inject \u2014 because analogues mainly reduce nocturnal hypos rather than improving HbA1c."}
+      ]},
+
+    {t:"node", d:"drug", n:"4", tag:"Step 2 \u00b7 titrate", title:"Titrate to the fasting target \u2014 encourage self-titration",
+      blocks:[
+        {b:"p", html:"Titrate the basal dose against the <b>pre-breakfast (fasting) capillary glucose</b>, looking at patterns over <b>4\u20137 days</b> \u2014 not one-off readings. Teach the patient to self-titrate."},
+        {b:"ladder", steps:[
+          {step:"3a", title:"Increase by 2 units every 3 days", when:"standard titration",
+           html:"Increase the basal dose by <b>2 units every 3 days</b> until the individualised fasting glucose target is reached <b>without hypoglycaemia</b>."},
+          {step:"3b", title:"Use the basal titration table", when:"by fasting CBG",
+           fromLabel:"reviewing patterns",
+           html:"&lt;4: reduce 10% \u00b7 4\u20137: no change \u00b7 7.1\u201315: +10% \u00b7 15.1\u201320: +15% \u00b7 &gt;20: +20%."},
+          {step:"3c", title:"Individualise the target", when:"frail / CKD / EoL",
+           fromLabel:"setting goals",
+           html:"CKD 4\u20135, elderly, or reduced hypo-awareness \u2192 aim <b>5\u20139 mmol/L pre-meal</b>. End-of-life \u2192 just keep free of osmotic symptoms."},
+          {step:"3d", title:"If HbA1c & BMI are falling", when:"good response",
+           fromLabel:"improving",
+           html:"Consider <b>down-titrating</b> insulin guided by BG readings to avoid hypos/weight gain."}
+        ]},
+        {b:"warn", html:"Before increasing doses, check <b>diet, activity, injection sites (lipohypertrophy), and adherence</b>. Unless worried about hypos, don't change doses on a single reading \u2014 work from 4\u20137-day patterns."}
+      ]},
+
+    {t:"node", d:"drug", n:"5", tag:"Step 3 \u00b7 still above target", title:"Add prandial insulin (basal-plus \u2192 basal-bolus)",
+      blocks:[
+        {b:"p", html:"If HbA1c stays above target <b>despite the fasting glucose being at target</b> (well-titrated basal), the problem is post-meal \u2014 add a <b>rapid-acting prandial insulin</b>."},
+        {b:"ladder", steps:[
+          {step:"4a", title:"Add prandial at the biggest meal (basal-plus)", when:"post-prandial rises",
+           html:"Add <b>4 units</b> of a rapid-acting analogue once daily, with the meal causing the largest post-prandial rise. Brands: <b>Insulin lispro Sanofi\u00ae, Apidra\u00ae</b> (or Novorapid\u00ae). Titrate <b>+2 units twice weekly</b> to the post-prandial target."},
+          {step:"4b", title:"Extend to other meals (basal-bolus)", when:"still high",
+           fromLabel:"one prandial dose insufficient",
+           html:"Add prandial insulin stepwise to the other meals, using the basal-bolus titration table (adjust each meal's dose by the next pre-meal/pre-bed glucose)."},
+          {step:"4c", title:"Twice-daily pre-mix alternative", when:"simpler regimen wanted",
+           fromLabel:"instead of basal-bolus",
+           html:"A twice-daily <b>pre-mix</b> insulin is an alternative (e.g. Humulin M3\u00ae, NovoMix\u00ae 30, Humalog\u00ae Mix25/50). If uncontrolled on BD pre-mix \u2192 refer the diabetes specialist team."}
+        ]},
+        {b:"kv", rows:[
+          ["Insulin resistance","Little response to appropriate dose titration \u2192 seek specialist advice (don't keep escalating blindly)."],
+          ["Rapid-acting timing","Just before / with / just after food."]
+        ]}
+      ]},
+
+    {t:"node", d:"safety", n:"6", tag:"Step 4 \u00b7 safety", title:"Hypoglycaemia, sick days & monitoring",
+      blocks:[
+        {b:"table", head:["Issue","What to do"], rows:[
+          ["Hypoglycaemia","Treat 15g fast carbs, recheck 15 min; review/reduce the responsible dose by 10%; stop sulfonylurea; address cause (missed meal, exercise, lipohypertrophy)"],
+          ["Weight gain","Reinforce diet/activity; keep metformin/SGLT2i/GLP-1 RA; down-titrate if HbA1c & BMI improving"],
+          ["Sick-day rules","Never stop insulin; check CBG 3\u20134 hourly if vomiting/dehydrated; test ketones if BG &gt;20 (or lower if unwell on an SGLT2i \u2014 euglycaemic DKA)"],
+          ["Injection sites","Rotate sites; examine for lipohypertrophy (causes erratic absorption)"],
+          ["Monitoring","HbA1c ~3\u20136 monthly; capillary BG patterns; annual diabetes review (feet, eyes, renal, lipids, BP)"]
+        ]},
+        {b:"warn", html:"<b>DVLA:</b> insulin-treated drivers must inform the DVLA, check BG before driving and 2-hourly on long journeys, and not drive if hypo-unaware or after a severe hypo until reviewed."}
+      ]},
+
+    {t:"loop", icon:"\uD83D\uDD01", title:"HbA1c still high on insulin? Re-run the checklist",
+      arrow:"\u2026more units isn't always the answer",
+      intro:"Before escalating insulin, check the basics that blunt its effect.",
+      checks:[
+        {b:"1 \u00b7 Fasting at target?", html:"If yes but HbA1c high \u2192 it's post-meal \u2192 add prandial, don't pile on basal."},
+        {b:"2 \u00b7 Technique/sites", html:"Lipohypertrophy, wrong needle technique, missed doses?"},
+        {b:"3 \u00b7 Oral agents", html:"Metformin/SGLT2i continued? SU stopped to reduce hypos?"},
+        {b:"4 \u00b7 Patterns", html:"Adjusting on 4\u20137-day trends, not single readings?"},
+        {b:"5 \u00b7 Resistance", html:"Little response despite titration \u2192 specialist advice."}
+      ],
+      back:"Uncontrolled on BD pre-mix, true insulin resistance, recurrent severe hypos \u2192 diabetes team"},
+
+    {t:"node", d:"follow", n:"7", tag:"Monitoring & follow-up", title:"Review the insulin regimen", arrow:"ongoing review", blocks:[{b:"timeline", items:[{n:"1", when:"Every 3\u20136 months", title:"HbA1c & titration", html:"Recheck <b>HbA1c every 3\u20136 months</b> until stable, then 6-monthly. Titrate insulin against home glucose/HbA1c toward the agreed individualised target; review the continued need for other agents."},{n:"2", when:"Each review", title:"Hypos, technique, weight", html:"Ask about <b>hypoglycaemia</b> (frequency, awareness, nocturnal), check injection sites (lipohypertrophy) and technique, weight, and adherence. Reinforce sick-day rules and DVLA advice."},{n:"3", when:"Annually", title:"Complication screen", html:"Annual feet, eyes (retinal screening), <b>U&amp;E/eGFR + urine ACR</b>, lipids, BP. Address cardiovascular risk and consider an SGLT2i/GLP-1 where indicated for cardiorenal benefit."}]}, {b:"say", html:"Insulin needs regular fine-tuning. We\u2019ll check your HbA1c every few months and ask about any hypos, and keep up the yearly checks of your feet, eyes and kidneys."}]},
+
+    {t:"node", d:"refer", n:"8", tag:"Refer", title:"When to involve the diabetes specialist team",
+      arrow:"complex or not responding",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Uncontrolled on pre-mix BD", html:"HbA1c above target despite twice-daily pre-mix insulin \u2192 specialist team (consider basal-bolus / GLP-1 RA combination)."},
+          {t:"Suspected type 1 / other", html:"Lean, ketosis-prone, rapid weight loss, very high glucose, or possible LADA/MODY \u2192 urgent specialist input (this pathway is for type 2)."},
+          {t:"Recurrent severe / unaware hypos", html:"Structured education (e.g. DAFNE-style), analogue switch, technology assessment."},
+          {t:"Pregnancy / planning", html:"Refer to joint diabetes-antenatal care; tighter targets and specialist insulin regimens."}
+        ]},
+        {b:"say", html:"Starting insulin doesn't mean things have failed \u2014 type 2 diabetes changes over time and the body often just needs help making enough insulin. We'll start one daily injection, you'll adjust the dose yourself against your morning readings, and we'll add to it only if your levels after meals stay high."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

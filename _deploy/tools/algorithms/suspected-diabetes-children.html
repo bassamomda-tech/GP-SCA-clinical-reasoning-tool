@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Suspected Diabetes in Children Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   REASONING GP — Paediatric Algorithm Suite · Shared CSS
+   ═══════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f7f6f3;
+  --surface: #ffffff;
+  --border: #e4e1d9;
+  --border-soft: #ede9e2;
+  --text: #1a1714;
+  --text-muted: #6b6460;
+  --text-light: #9b9390;
+
+  --safety: #c0392b;
+  --safety-bg: #fef5f5;
+  --safety-border: #f5c6c6;
+
+  --diagnose: #1a5276;
+  --diagnose-bg: #f0f6fc;
+  --diagnose-border: #c5dff0;
+
+  --treat: #1e8449;
+  --treat-bg: #f0faf3;
+  --treat-border: #b8dfc5;
+
+  --refer: #6c3483;
+  --refer-bg: #f8f0fc;
+  --refer-border: #d7b8ed;
+
+  --lifestyle: #b7770d;
+  --lifestyle-bg: #fefaf0;
+  --lifestyle-border: #f0d9a0;
+
+  --rf-bg: #c0392b;
+  --rf-tile: #fff0f0;
+  --rf-tile-border: #f5c6c6;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,.10), 0 3px 8px rgba(0,0,0,.05);
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-xs: 5px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 0 0 60px;
+}
+
+/* ── Page Header ─────────────────────────────────────── */
+.page-header {
+  background: var(--text);
+  color: #fff;
+  padding: 20px 24px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+}
+.page-header .logo {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  opacity: .8;
+  white-space: nowrap;
+}
+.page-header .sep { opacity: .3; margin: 0 4px; }
+.page-header .title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+/* ── Stem Banner ─────────────────────────────────────── */
+.stem-banner {
+  background: linear-gradient(135deg, var(--text) 0%, #2c2620 100%);
+  color: #fff;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 24px 20px;
+  margin: 20px 16px 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+.sb-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.stem-banner b { font-size: 17px; font-weight: 700; display: block; margin-bottom: 4px; }
+.stem-banner small { font-size: 12.5px; opacity: .75; line-height: 1.45; display: block; }
+
+/* ── Progress Bar ────────────────────────────────────── */
+.alg-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.pcount { font-weight: 700; color: var(--text); font-size: 14px; }
+.pbar {
+  flex: 1;
+  height: 5px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.pbar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
+  border-radius: 99px;
+  width: 0%;
+  transition: width .4s cubic-bezier(.4,0,.2,1);
+}
+.reset {
+  font-size: 12px;
+  padding: 4px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  transition: all .15s;
+}
+.reset:hover { border-color: var(--text-muted); color: var(--text); }
+
+/* ── Algorithm Flow ──────────────────────────────────── */
+.alg-flow {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ── Connector ───────────────────────────────────────── */
+.connector {
+  width: 2px;
+  height: 24px;
+  background: linear-gradient(to bottom, var(--border), transparent);
+  margin: 0 auto;
+}
+
+/* ── Node ────────────────────────────────────────────── */
+.node {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.node:hover { box-shadow: var(--shadow-md); }
+
+.node[data-type="SAFETY"]    { border-left: 4px solid var(--safety); }
+.node[data-type="DIAGNOSE"]  { border-left: 4px solid var(--diagnose); }
+.node[data-type="TREAT"]     { border-left: 4px solid var(--treat); }
+.node[data-type="REFER"]     { border-left: 4px solid var(--refer); }
+.node[data-type="LIFESTYLE"] { border-left: 4px solid var(--lifestyle); }
+
+/* Node header */
+.node-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.node-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.node[data-type="SAFETY"]    .node-num { background: var(--safety);    color: #fff; }
+.node[data-type="DIAGNOSE"]  .node-num { background: var(--diagnose);  color: #fff; }
+.node[data-type="TREAT"]     .node-num { background: var(--treat);     color: #fff; }
+.node[data-type="REFER"]     .node-num { background: var(--refer);     color: #fff; }
+.node[data-type="LIFESTYLE"] .node-num { background: var(--lifestyle); color: #fff; }
+
+.node-head-text { flex: 1; }
+.node-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 3px;
+}
+.node[data-type="SAFETY"]    .node-tag { color: var(--safety); }
+.node[data-type="DIAGNOSE"]  .node-tag { color: var(--diagnose); }
+.node[data-type="TREAT"]     .node-tag { color: var(--treat); }
+.node[data-type="REFER"]     .node-tag { color: var(--refer); }
+.node[data-type="LIFESTYLE"] .node-tag { color: var(--lifestyle); }
+
+.node-head h3 {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.01em;
+  color: var(--text);
+}
+
+/* Checkbox */
+.node-tick {
+  padding: 8px 14px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.node-tick label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-light);
+  user-select: none;
+}
+.node-tick input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #27ae60;
+  cursor: pointer;
+}
+.node-tick input:checked + .tlbl { color: #27ae60; }
+
+/* Node body */
+.node-body {
+  padding: 12px 16px 14px;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+}
+.node-body > p, .node-body > span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--text-muted);
+  font-size: 13.5px;
+}
+
+/* ── KV Grid ─────────────────────────────────────────── */
+.kv {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  font-size: 13.5px;
+  margin-top: 8px;
+}
+.kv > div {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border-soft);
+  line-height: 1.5;
+}
+.kv > div:nth-child(4n+1),
+.kv > div:nth-child(4n+2) { background: var(--surface); }
+.kv > div:nth-child(4n+3),
+.kv > div:nth-child(4n+4) { background: #fafaf8; }
+.kv > div:nth-last-child(-n+2) { border-bottom: none; }
+.kv > div:nth-child(odd) {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  border-right: 1px solid var(--border-soft);
+  letter-spacing: .01em;
+}
+
+/* ── Red Flag Grid ───────────────────────────────────── */
+.rfgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+@media (max-width: 480px) { .rfgrid { grid-template-columns: 1fr; } }
+.rftile {
+  background: var(--rf-tile);
+  border: 1.5px solid var(--rf-tile-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.rftile b { color: #c0392b; font-weight: 700; display: block; margin-bottom: 2px; }
+
+/* ── Branch ──────────────────────────────────────────── */
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+.b-card {
+  background: var(--treat-bg);
+  border: 1.5px solid var(--treat-border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  font-size: 13px;
+}
+.b-cond {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+.b-drug {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--treat);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+.b-note {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* ── Ladder ──────────────────────────────────────────── */
+.ladder {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+  padding-left: 20px;
+}
+.ladder::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--treat-border), var(--refer-border));
+  border-radius: 2px;
+}
+.rung {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  padding: 9px 12px;
+  font-size: 13.5px;
+  position: relative;
+}
+.rung::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--treat);
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+  box-shadow: 0 0 0 1px var(--treat);
+}
+.rn {
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--treat);
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px 7px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.rt { flex: 1; line-height: 1.5; }
+
+/* ── Lifestyle Grid ──────────────────────────────────── */
+.lsgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+@media (max-width: 520px) { .lsgrid { grid-template-columns: 1fr; } }
+.lstile {
+  background: var(--lifestyle-bg);
+  border: 1.5px solid var(--lifestyle-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.lstile b { color: var(--lifestyle); font-weight: 700; display: block; margin-bottom: 2px; }
+
+/* ── Pills ───────────────────────────────────────────── */
+.pill {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 99px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.pill-red    { background: #fde8e8; color: #b91c1c; border: 1px solid #fca5a5; }
+.pill-purple { background: #f3e8ff; color: #7e22ce; border: 1px solid #d8b4fe; }
+.pill-blue   { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
+.pill-teal   { background: #e0fdf4; color: #0f766e; border: 1px solid #5eead4; }
+.pill-amber  { background: #fffbeb; color: #b45309; border: 1px solid #fcd34d; }
+.pill-green  { background: #f0fdf4; color: #15803d; border: 1px solid #86efac; }
+.pill-grey   { background: #f3f4f6; color: #374151; border: 1px solid #d1d5db; }
+.pill-orange { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
+
+/* ── Why Drawer ──────────────────────────────────────── */
+.why-row {
+  border-top: 1px solid var(--border-soft);
+  background: #fafaf8;
+}
+.why-btn {
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: .02em;
+  transition: color .15s;
+}
+.why-btn:hover { color: var(--text); }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.caret { transition: transform .2s; display: inline-block; }
+.why-drawer {
+  display: none;
+  padding: 4px 16px 14px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  border-top: 1px solid var(--border-soft);
+}
+.why-drawer.open { display: block; }
+.why-drawer p { margin-bottom: 6px; }
+.why-drawer p:last-child { margin-bottom: 0; }
+
+/* ── Done state ──────────────────────────────────────── */
+.node.is-done {
+  opacity: .72;
+}
+.node.is-done .node-body { position: relative; }
+.node.is-done .node-head h3 { text-decoration: line-through; text-decoration-color: #ccc; }
+
+/* ── Footer ──────────────────────────────────────────── */
+.alg-foot {
+  margin: 28px 16px 0;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.alg-foot strong { color: var(--text); }
+
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="page-header">
+  <span class="logo">Reasoning GP</span>
+  <span class="sep">·</span>
+  <span class="title">Paediatric Algorithms</span>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🩸</div>
+  <div>
+    <b>Suspected Diabetes in Children &amp; Young People — Assessment &amp; Same-Day Referral</b>
+    <small>NICE NG18 · Diabetes UK "4 T's" · capillary glucose + ketones in surgery · same-day paediatric diabetes team referral · exclude DKA</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — recognise new-onset diabetes early, measure a capillary glucose and ketones the same minute you suspect it, screen for DKA, and refer to the paediatric diabetes team the same day — never send a symptomatic child away for fasting tests. Support the family, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Child / young person, possible diabetes</span><div class="body">Polyuria, polydipsia, weight loss, tiredness (the 4 T's), secondary enuresis, recurrent thrush, blurred vision, or "unwell + ketones". Any age, including infants.</div></div>
+    <div class="arrow"><span class="tag">test now</span></div>
+    <div class="box ix"><span class="lbl">Step 2 · Investigate · same minute</span><span class="ttl">Capillary blood glucose + blood/urine ketones</span><div class="body">Finger-prick glucose and a blood-ketone meter (or urine ketones) in the room. Do not wait for venous samples to act.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Decision · Hyperglycaemia?</span><span class="ttl">Glucose ≥ 11.1 mmol/L (random) with symptoms?</span><div class="body">A single raised glucose + osmotic symptoms is enough to diagnose. In a symptomatic child you do NOT need fasting glucose or HbA1c to refer.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box dec"><span class="lbl">Decision · DKA?</span><span class="ttl">Vomiting · abdo pain · Kussmaul breathing · drowsy · ketones ↑?</span></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO / borderline</div><div class="box ix"><span class="ttl">Reconsider</span><div class="body">Normal glucose + dilute polyuria → consider DI / primary polydipsia / UTI. If glycosuria or any doubt, discuss with paediatrics same day.</div></div></div>
+    </div></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">DKA features</div><div class="box stop"><span class="lbl">Stop · Emergency</span><span class="ttl">999 / blue-light to ED</span><div class="body">Suspected DKA → emergency admission. Do not delay for further tests; alert the paediatric team you are sending.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3f0fc;border-color:#cbb4e8;color:#5b2c82;">No DKA</div><div class="box refer"><span class="lbl">Refer · same day</span><span class="ttl">Paediatric diabetes MDT today</span><div class="body">Phone the on-call paediatric / paediatric diabetes team and arrange same-day specialist assessment.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box act" style="max-width:660px;"><span class="lbl">Do not</span><span class="ttl">Pitfalls to avoid</span><div class="body">Do NOT arrange a fasting glucose / HbA1c and "review next week". Do NOT start insulin or metformin in primary care. Do NOT give oral glucose tolerance test. Same-day referral prevents DKA and death.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · family support &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:660px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Family support &amp; modifiable factors</span><span class="ttl">Around the same-day referral</span><div class="body"><b>Explain the diagnosis calmly</b> and that type 1 diabetes is not caused by anything the family did; the specialist team will lead structured education (insulin, carb-counting, hypo management). Keep the child hydrated while arranging transfer. Flag the record and ensure school/nursery awareness once managed. Recognise that most childhood diabetes is type 1 — don't anchor on lifestyle/type 2.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:660px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Same-day action; urgent return advice</span><div class="body"><b>Refer the same day</b> — a symptomatic child with a raised finger-prick glucose needs paediatric assessment today, not a future fasting test. <b>999</b> for any DKA features (vomiting, abdominal pain, Kussmaul breathing, drowsiness, raised ketones). Safety-net families to return urgently if the child becomes drowsy, vomits, breathes deeply/rapidly, or deteriorates while awaiting assessment.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>A thirsty, tired child who is losing weight and weeing a lot has diabetes until proven otherwise.</b> A finger-prick glucose takes 30 seconds — measure it before they leave the room, and refer the same day if raised.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head">
+    <div class="node-num">1</div>
+    <div class="node-head-text">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — exclude diabetic ketoacidosis and act on new-onset diabetes today</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <span>New-onset type 1 diabetes in a child is a medical emergency in evolution. Up to a quarter present in DKA — which is the leading cause of death in childhood diabetes. Recognise it, measure a glucose, and escalate.</span>
+    <div class="rfgrid">
+      <div class="rftile"><b>Suspected DKA</b> Vomiting, abdominal pain, dehydration, Kussmaul (deep sighing) breathing, acetone/pear-drop breath, drowsiness or confusion + raised glucose/ketones → <span class="pill pill-red">999</span> — emergency admission</div>
+      <div class="rftile"><b>Reduced consciousness / shock</b> Floppy, very drowsy, signs of shock (cool peripheries, prolonged cap refill, tachycardia) → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Symptomatic + glucose ≥ 11.1</b> Osmotic symptoms + a single random capillary/plasma glucose ≥ 11.1 mmol/L → <span class="pill pill-red">Same-day paediatric diabetes referral</span> — do not wait for fasting or HbA1c</div>
+      <div class="rftile"><b>Infant / very young child</b> Age &lt; 2 (especially &lt; 6 months → neonatal/monogenic diabetes) — presentation is non-specific and deterioration is rapid → <span class="pill pill-red">Same-day specialist</span></div>
+      <div class="rftile"><b>Significant ketones</b> Blood ketones ≥ 3.0 mmol/L, or ≥ 2+ ketonuria, with hyperglycaemia → <span class="pill pill-red">999</span> — treat as DKA until excluded</div>
+      <div class="rftile"><b>"Unwell with ketones"</b> Any child with vomiting + heavy ketonuria + hyperglycaemia — even if not yet acidotic — is on the DKA pathway → <span class="pill pill-orange">Same-day ED / paediatrics</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Around 25% of children with new type 1 diabetes in the UK present in DKA, and the proportion is highest in the under-5s, where symptoms are most easily mistaken for gastroenteritis or a urinary tract infection. DKA at diagnosis is associated with cerebral oedema (the main cause of diabetes death in children) and with worse long-term glycaemic control. Earlier recognition — before vomiting and acidosis develop — is the single most effective way to prevent these outcomes.</p>
+      <p>NICE NG18 is explicit: refer children and young people with suspected type 1 diabetes <b>immediately, on the same day</b>, to a multidisciplinary paediatric diabetes team for confirmation of diagnosis and immediate care. A capillary blood glucose performed in the consultation is all that is needed to act — never default to an outpatient fasting test, which risks the child deteriorating into DKA while waiting.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head">
+    <div class="node-num">2</div>
+    <div class="node-head-text">
+      <span class="node-tag">Diagnose</span>
+      <h3>Recognise the presentation — the "4 T's" and osmotic symptoms</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <span>Most children present with a short history (days to a few weeks) of osmotic symptoms. Keep a low threshold — symptoms are easily attributed to a viral illness, UTI, or behaviour.</span>
+    <div class="kv">
+      <div>Toilet (polyuria)</div><div>Passing more urine, getting up at night to wee, or <b>secondary enuresis</b> — a previously dry child who starts bedwetting again. Heavy/soaked nappies in an infant.</div>
+      <div>Thirsty (polydipsia)</div><div>Drinking much more than usual, craving sugary drinks, carrying a water bottle everywhere, drinking from taps.</div>
+      <div>Tired</div><div>Lethargy, irritability, falling asleep, drop in school performance or activity.</div>
+      <div>Thinner (weight loss)</div><div>Unintentional weight loss or failure to gain weight despite a good or increased appetite. Plot on the growth chart.</div>
+      <div>Other clues</div><div>Recurrent or persistent genital/oral thrush, recurrent skin infections, blurred vision, abdominal pain, low mood/behaviour change, and the smell of acetone (pear drops) on the breath.</div>
+      <div>Don't be reassured by</div><div>A "normal" appetite, a child who looks well, or a recent viral illness — these do not exclude diabetes. The combination of thirst + weight loss + polyuria is diabetes until proven otherwise.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>The Diabetes UK "4 T's" campaign (Toilet, Thirsty, Tired, Thinner) was designed precisely because childhood diabetes is frequently missed at first contact — children are often seen one or more times before diagnosis, and a proportion are only diagnosed once they present acutely unwell in DKA. Holding the 4 T's in mind during any consultation with a thirsty or tired child, or one with new bedwetting, shortens the time to diagnosis.</p>
+      <p>Secondary nocturnal enuresis (a child who was reliably dry and starts wetting the bed again) is a classic and under-recognised presenting feature. New bedwetting plus thirst should always prompt a finger-prick glucose rather than a continence referral.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head">
+    <div class="node-num">3</div>
+    <div class="node-head-text">
+      <span class="node-tag">Diagnose</span>
+      <h3>Point-of-care testing — confirm hyperglycaemia and screen for ketones now</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Capillary blood glucose</div><div><span class="pill pill-blue">Do this first, in the room</span> A finger-prick glucose takes seconds. In a child with osmotic symptoms, a random capillary/plasma glucose <b>≥ 11.1 mmol/L</b> confirms diabetes and warrants same-day referral.</div>
+      <div>Blood or urine ketones</div><div><span class="pill pill-blue">Always pair with the glucose</span> Blood-ketone meter preferred (capillary β-hydroxybutyrate). <b>≥ 3.0 mmol/L</b>, or urine ketones <b>≥ 2+</b>, with hyperglycaemia → treat as DKA → 999.</div>
+      <div>Urine dipstick</div><div>Glycosuria supports the diagnosis (and helps where a meter is unavailable). Also screens for ketones and for a coincidental UTI. Glycosuria + symptoms = same-day referral.</div>
+      <div>Diagnostic glucose thresholds</div><div>Symptomatic: random plasma glucose ≥ 11.1 OR fasting ≥ 7.0 mmol/L. <b>In a symptomatic child, a single result is diagnostic.</b> HbA1c and OGTT are not needed and must not delay referral.</div>
+      <div>Hydration &amp; obs</div><div>Assess hydration, capillary refill, heart rate, respiratory rate/pattern, conscious level (AVPU). Tachypnoea/Kussmaul breathing or drowsiness shifts you to the DKA pathway.</div>
+      <div>What NOT to do</div><div>Do not send the child away for a fasting venous glucose, HbA1c, or OGTT and review later. Do not start insulin/metformin in primary care. Same-day specialist confirmation only.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>In an asymptomatic person, diagnosis requires two abnormal results. But a child with classic osmotic symptoms and a single random glucose ≥ 11.1 mmol/L meets the diagnostic criteria immediately — and, importantly, is at imminent risk of DKA. The pragmatic primary-care action is therefore: measure a finger-prick glucose, and if raised in a symptomatic child, refer the same day without waiting to repeat or confirm with HbA1c.</p>
+      <p>Pairing every glucose with a ketone measurement is what separates "new diabetes for same-day clinic review" from "DKA needing emergency admission". A blood-ketone meter gives an immediate β-hydroxybutyrate level; ≥ 3.0 mmol/L with hyperglycaemia indicates significant ketosis and the child should go straight to the emergency department.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head">
+    <div class="node-num">4</div>
+    <div class="node-head-text">
+      <span class="node-tag">Diagnose</span>
+      <h3>Type 1 vs Type 2 vs monogenic — but do not let typing delay referral</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <span>Assume type 1 in any child or young person with new diabetes unless there is strong evidence otherwise — type 1 is by far the most common and is the type that can deteriorate quickly. Classification is confirmed by the specialist team.</span>
+    <div class="kv">
+      <div>Type 1 (default)</div><div>Most children. Short history, marked weight loss, ketosis-prone, often lean, no strong family history of T2. Any age including infancy. <b>Treat every new paediatric diabetic as T1 for referral urgency.</b></div>
+      <div>Type 2 — consider if</div><div>Overweight/obese, older child/adolescent, acanthosis nigricans, strong family history of T2, higher-risk ethnicity (South Asian, Black, Middle Eastern), features of PCOS. Still refer same day/urgently — can present with ketosis too.</div>
+      <div>Monogenic (MODY)</div><div>Consider with a strong autosomal-dominant family history across generations, mild stable hyperglycaemia, or diabetes diagnosed &lt; 6 months of age (neonatal diabetes). Specialist genetic testing — refer.</div>
+      <div>Secondary / other</div><div>Diabetes with cystic fibrosis, pancreatic disease, steroid therapy, or syndromic associations. Context usually obvious — still needs specialist input.</div>
+      <div>Why it can wait</div><div>The acute risk (DKA) is the same whatever the type. Antibody and C-peptide testing to confirm T1 vs T2 are done by the specialist team — never delay the same-day referral to "type" the diabetes in primary care.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Type 2 diabetes is increasingly seen in adolescents, particularly with obesity and in higher-risk ethnic groups, and acanthosis nigricans (velvety hyperpigmentation in the neck and axillae) is a useful bedside marker of insulin resistance. However, adolescents with type 2 can still present with marked hyperglycaemia and ketosis, so the safe default in any acutely symptomatic young person is to manage as type 1 until the specialist team confirms otherwise.</p>
+      <p>Diabetes diagnosed in the first 6 months of life is very rarely autoimmune type 1 — it is usually monogenic (neonatal) diabetes, where genetic testing can identify children who may be treated with sulfonylureas rather than insulin. This is one reason every infant with diabetes needs urgent specialist referral rather than empirical primary-care management.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head">
+    <div class="node-num">5</div>
+    <div class="node-head-text">
+      <span class="node-tag">Diagnose</span>
+      <h3>Mimics &amp; differentials — consider, but glycosuria/hyperglycaemia means diabetes</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Urinary tract infection</div><div>Frequency, dysuria, secondary enuresis — can mimic polyuria. Dip the urine: nitrites/leucocytes suggest UTI, but glycosuria points to diabetes. The two can coexist; a raised glucose still needs referral.</div>
+      <div>Diabetes insipidus</div><div>Polyuria + polydipsia with <b>dilute</b> urine and a <b>normal</b> glucose. No glycosuria/ketones. Suspect if intense thirst but glucose normal — refer paediatric endocrinology (non-urgent unless dehydrated).</div>
+      <div>Primary (habitual) polydipsia</div><div>Excessive drinking driving polyuria; normal glucose, normal/dilute urine. Diagnosis of exclusion once diabetes and DI are ruled out.</div>
+      <div>Hypercalcaemia / hyperthyroidism</div><div>Can cause polyuria, thirst, weight loss and behaviour change. Consider if glucose normal and clinical picture fits; check the relevant bloods.</div>
+      <div>Gastroenteritis</div><div>The classic DKA misdiagnosis — vomiting + abdominal pain + lethargy. A child with "gastroenteritis" who is also thirsty, polyuric or has heavy ketones needs a glucose checked before being sent home.</div>
+      <div>Eating / behaviour</div><div>Weight loss with normal glucose may have other causes (coeliac, eating disorder, hyperthyroidism, malignancy) — but exclude diabetes first with a finger-prick.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>The most dangerous mimic is gastroenteritis: a child with early DKA has nausea, vomiting and abdominal pain, and may be labelled with a viral illness and sent home. The discriminating step is trivial — a capillary glucose and ketones. Any vomiting child who is also thirsty, passing lots of urine, breathing deeply, or has ketones must have diabetes actively excluded before discharge.</p>
+      <p>Diabetes insipidus and primary polydipsia both cause thirst and polyuria but with a normal blood glucose and no glycosuria or ketones. They are far less common and far less acutely dangerous than diabetes mellitus, so the sequence is always: exclude diabetes mellitus first (finger-prick glucose + urine dip), then consider these rarer causes if the glucose is normal.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head">
+    <div class="node-num">6</div>
+    <div class="node-head-text">
+      <span class="node-tag">Refer</span>
+      <h3>Referral Criteria</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999 / emergency admission</span></div><div>Suspected DKA: hyperglycaemia + significant ketones (blood ≥ 3.0 / urine ≥ 2+) with vomiting, abdominal pain, Kussmaul breathing, dehydration, or reduced consciousness. Also any shocked or drowsy child.</div>
+      <div><span class="pill pill-purple">Same-day paediatric diabetes team</span></div><div><b>NICE NG18:</b> refer any child/young person with suspected new type 1 diabetes <b>on the same day</b> for confirmation and immediate care — even if well and not ketotic. Phone the on-call paediatric/diabetes team; do not refer by routine letter.</div>
+      <div><span class="pill pill-orange">Same-day, infants</span></div><div>Any child &lt; 2 years (especially &lt; 6 months) with suspected diabetes — non-specific presentation and rapid deterioration; discuss with paediatrics the same day regardless of how well they look.</div>
+      <div><span class="pill pill-amber">Urgent specialist (type 2 / atypical)</span></div><div>Overweight adolescent with hyperglycaemia but no ketosis, or suspected MODY/monogenic — still refer urgently to the paediatric diabetes/endocrine team; same-day if symptomatic or any ketones.</div>
+      <div><span class="pill pill-blue">Endocrinology (non-diabetes)</span></div><div>Polyuria/polydipsia with a <b>normal</b> glucose and no glycosuria → consider diabetes insipidus/primary polydipsia and refer paediatric endocrinology (routine/urgent by severity).</div>
+      <div>How to refer well</div><div>State the capillary glucose and ketone values, hydration/conscious level, symptom duration, and weight trend. Make verbal contact so the team can stream the child to ward or clinic and start education immediately.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>NICE NG18 sets the standard that suspected type 1 diabetes is referred the same day to a specialist paediatric diabetes team — this is non-negotiable and applies even to the well-looking child, because insulin deficiency can tip into ketoacidosis within hours. Same-day specialist involvement also allows immediate structured education for the child and family, which improves long-term outcomes and reduces re-admission.</p>
+      <p>There is no two-week-wait (NG12) cancer pathway for childhood diabetes — it is not a malignancy. The analogous time-critical action here is the same-day paediatric diabetes referral. (If a child instead has unexplained petechiae, hepatosplenomegaly, or persistent unexplained bone pain, that is the separate NG12 "very urgent FBC + immediate paediatric referral" leukaemia pathway — see the Suspected Cancer in Children pathway.)</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head">
+    <div class="node-num">7</div>
+    <div class="node-head-text">
+      <span class="node-tag">Treat</span>
+      <h3>Initial management — what to do and what not to do in primary care</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Well child, no ketosis</div>
+        <div class="b-drug">Same-day referral + keep hydrated <span class="pill pill-teal">do not start insulin</span></div>
+        <div class="b-note">Arrange same-day specialist review. Encourage sugar-free fluids. Safety-net for vomiting/drowsiness. The team starts insulin and education.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Suspected DKA</div>
+        <div class="b-drug">Resuscitate &amp; 999</div>
+        <div class="b-note">ABC, high-flow oxygen if unwell, IV access if trained/available, nil by mouth, blue-light to ED. Do not give a large fluid bolus unless frankly shocked (risk of cerebral oedema) — discuss with the receiving team.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Type 2 / atypical</div>
+        <div class="b-drug">Refer — do not start metformin</div>
+        <div class="b-note">Confirmation, antibody/C-peptide testing and treatment choice are specialist decisions. Lifestyle advice can begin, but drug therapy is initiated by the team.</div>
+      </div>
+    </div>
+    <div class="kv" style="margin-top:12px">
+      <div>Do NOT</div><div>Do not arrange a fasting glucose, HbA1c or OGTT and review later in a symptomatic child. Do not start insulin or metformin. Do not delay referral to obtain antibody/C-peptide results.</div>
+      <div>Fluids</div><div>Allow oral sugar-free fluids if alert and not vomiting. Avoid sugary drinks. In suspected DKA, fluids are managed in hospital — avoid aggressive pre-hospital boluses unless shocked.</div>
+      <div>Communication</div><div>Explain to the family that this is likely diabetes and needs hospital today; pre-warn them admission is likely for type 1. Provide the team's contact and clear return advice.</div>
+      <div>Document</div><div>Record glucose and ketone values with the time, hydration and conscious level, who you spoke to, and the agreed plan/destination.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Insulin initiation, fluid management and the structured education that a newly diagnosed family needs are all specialist functions delivered by the paediatric diabetes team, often during a short admission. The primary-care job at diagnosis is recognition, point-of-care testing, DKA screening, and getting the child to the right place the same day — not starting treatment.</p>
+      <p>In suspected DKA, over-rapid or large-volume fluid resuscitation is associated with cerebral oedema, the leading cause of death in paediatric DKA. Unless the child is frankly shocked, pre-hospital and primary-care fluid boluses should be cautious and guided by the receiving paediatric team, who follow the BSPED/ISPAD DKA protocol.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head">
+    <div class="node-num">8</div>
+    <div class="node-head-text">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Family support &amp; the ongoing primary-care role</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Diagnosis-day support</b> A new diagnosis is frightening. Be calm and clear: diabetes is serious but very manageable, the hospital team will teach them everything, and the child can live a full life. Signpost Diabetes UK and JDRF for family resources.</div>
+      <div class="lstile"><b>Know the 4 T's as a practice</b> Toilet, Thirsty, Tired, Thinner. Brief reception and clinical staff so a thirsty, tired child losing weight gets a same-day appointment and a finger-prick glucose, not a routine slot.</div>
+      <div class="lstile"><b>Sick-day rules (once established)</b> Never stop insulin, monitor glucose and ketones more often during illness, maintain fluids/carbs, and seek help early. Reinforce the team's written sick-day plan at every contact.</div>
+      <div class="lstile"><b>School &amp; activity</b> Support the Individual Healthcare Plan, hypoglycaemia awareness for staff, and full participation in sport and school trips. Children with diabetes should do everything their peers do.</div>
+      <div class="lstile"><b>Immunisations</b> Keep routine childhood immunisations up to date, and offer the annual influenza vaccine and pneumococcal vaccination as recommended for children with diabetes.</div>
+      <div class="lstile"><b>Whole-family healthy habits</b> Balanced eating, limiting sugary drinks, and being active benefit the whole family and are especially relevant where type 2 risk factors (obesity, family history) are present.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Although specialist teams lead diabetes care, the GP remains central — for acute illness, mental-health support, contraception and transition in adolescence, immunisations, and for keeping the whole practice alert to the 4 T's so the next child is diagnosed sooner. Embedding the 4 T's in triage is a simple, high-impact safety intervention.</p>
+      <p>Children and young people with diabetes are recommended to receive the annual inactivated influenza vaccine and pneumococcal vaccination because intercurrent infection both worsens glycaemic control and precipitates DKA. Keeping immunisations current is a tangible, GP-deliverable way to reduce admissions.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head">
+    <div class="node-num">9</div>
+    <div class="node-head-text">
+      <span class="node-tag">Safety</span>
+      <h3>Safety-Netting &amp; Follow-up</h3>
+    </div>
+  </div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Child awaiting same-day review</div><div>While arranging specialist assessment, advise the family to return/attend ED immediately if vomiting, abdominal pain, fast or deep breathing, drowsiness, or worsening — these signal DKA.</div>
+      <div>"Glucose borderline / symptoms ongoing"</div><div>If the finger-prick is normal but symptoms persist, do not simply reassure — recheck (including after symptoms/at home), dip the urine, and discuss with paediatrics. Early diabetes can have intermittent readings.</div>
+      <div><span class="pill pill-red">Attend ED / 999 if:</span></div><div>Repeated vomiting, tummy pain, fast or "sighing" breathing, breath smells of pear drops, very drowsy/floppy, or unable to keep fluids down.</div>
+      <div><span class="pill pill-orange">Same-day review if:</span></div><div>New or increasing thirst/urination, ongoing weight loss, new bedwetting, or a parent who remains worried — bring the child back for a glucose check rather than waiting.</div>
+      <div>Established diabetes (GP role)</div><div>Support attendance at specialist clinic and structured education, ensure annual flu/pneumococcal vaccination, watch for low mood/eating difficulties, and reinforce sick-day rules at every illness contact.</div>
+      <div>Documentation</div><div>Record the glucose/ketone values and time, the conscious level/hydration, the type/urgency of referral, who was contacted, and the safety-net advice given to the family.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Specific, action-oriented safety-netting saves lives in suspected diabetes: families need to know exactly which symptoms (vomiting, deep breathing, drowsiness, pear-drop breath) mean "go straight to A&amp;E", not just "come back if worried". This is most important in the window between a primary-care suspicion and the child being seen by the specialist team.</p>
+      <p>A single normal finger-prick does not exclude evolving diabetes if symptoms are convincing — glucose can fluctuate early in the disease. The safe approach is active review (repeat testing, urine dip, paediatric discussion) rather than discharge, because the cost of a missed diagnosis is DKA.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on: NICE NG18 (Diabetes [type 1 and type 2] in children and young people, 2015, updated 2023), NICE CKS Diabetes – suspected, WHO/ADA diagnostic criteria, BSPED &amp; ISPAD paediatric DKA guidelines, and the Diabetes UK "4 T's" awareness campaign. Childhood diabetes is not an NG12 (suspected cancer) pathway — the time-critical action is same-day paediatric diabetes referral. Always adapt to individual patient context and local guidelines.
+</div>
+
+<script>
+/* ═══════════════════════════════════
+   REASONING GP — Shared Algorithm JS
+   ═══════════════════════════════════ */
+function initAlgorithm(storageKey) {
+  const TOTAL = 9;
+  const pDone = document.getElementById('pDone');
+  const pFill = document.getElementById('pFill');
+  const resetBtn = document.getElementById('resetBtn');
+
+  function getState() {
+    try { return JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch { return {}; }
+  }
+  function saveState(s) {
+    try { localStorage.setItem(storageKey, JSON.stringify(s)); } catch {}
+  }
+
+  function updateProgress() {
+    const boxes = document.querySelectorAll('.node-tick input[type="checkbox"]');
+    let done = 0;
+    boxes.forEach(cb => { if (cb.checked) done++; });
+    pDone.textContent = done;
+    pFill.style.width = (done / TOTAL * 100) + '%';
+  }
+
+  function applyDoneClass(node, checked) {
+    if (checked) node.classList.add('is-done');
+    else node.classList.remove('is-done');
+  }
+
+  // Restore state
+  const state = getState();
+  document.querySelectorAll('.node').forEach((node, i) => {
+    const cb = node.querySelector('input[type="checkbox"]');
+    if (!cb) return;
+    const key = 'step' + (i + 1);
+    if (state[key]) { cb.checked = true; applyDoneClass(node, true); }
+    cb.addEventListener('change', () => {
+      const s = getState();
+      s['step' + (i + 1)] = cb.checked;
+      saveState(s);
+      applyDoneClass(node, cb.checked);
+      updateProgress();
+    });
+  });
+
+  // Why drawers
+  document.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      const drawer = btn.nextElementSibling;
+      if (drawer) drawer.classList.toggle('open', !expanded);
+    });
+  });
+
+  // Reset
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (!confirm('Reset all progress?')) return;
+      localStorage.removeItem(storageKey);
+      document.querySelectorAll('.node-tick input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+        applyDoneClass(cb.closest('.node'), false);
+      });
+      updateProgress();
+    });
+  }
+
+  updateProgress();
+}
+
+initAlgorithm('rgp.alg.suspected-diabetes-children.v1');
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

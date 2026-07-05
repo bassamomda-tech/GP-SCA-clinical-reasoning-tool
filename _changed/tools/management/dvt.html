@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Deep Vein Thrombosis — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="DVT management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🦵",
+  title:"Deep Vein Thrombosis",
+  stemTitle:"Confirmed DVT — ongoing management",
+  stemSub:"Primary-care management after confirmed DVT \u2014 anticoagulation choice and duration, provoked vs unprovoked decisions, cancer consideration, monitoring and the PE/bleeding safety nets. NICE NG158 \u00b7 2026.",
+  guideline:"NICE NG158",
+  glance:[
+    {lbl:"First-line", val:"DOAC", sub:"apixaban / rivaroxaban"},
+    {lbl:"Provoked", val:"\u22653 months", sub:"then stop if resolved"},
+    {lbl:"Unprovoked", val:"Consider long-term", sub:"+ cancer thought"},
+    {lbl:"Cancer-associated", val:"DOAC or LMWH", sub:"ongoing"},
+    {lbl:"Check", val:"Renal + FBC", sub:"DOAC dosing"},
+    {lbl:"Red flag", val:"PE", sub:"breathless/chest pain \u2192 999"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Classify the DVT and baseline tests",
+      blocks:[
+        {b:"kv", rows:[
+          ["Confirmed","Proximal/distal DVT confirmed on ultrasound (after Wells score \u00b1 D-dimer)"],
+          ["Provoked vs unprovoked","Provoked = transient risk factor (surgery, immobility, COCP). Unprovoked \u2192 think about underlying cause/cancer"],
+          ["Cancer","In unprovoked DVT, review for occult cancer (history, exam, bloods; targeted investigation per NICE)"],
+          ["Baseline","FBC, U&amp;E/eGFR (DOAC dosing), LFTs, PT/APTT (take before starting \u2014 don\u2019t wait for results); pregnancy test where relevant"]
+        ]},
+        {b:"why", html:"Two questions shape the plan: <strong>which anticoagulant</strong> (DOAC first-line, dosed by renal function) and <strong>for how long</strong> \u2014 driven by provoked vs unprovoked status. Unprovoked DVT also prompts thinking about an underlying cause, including cancer, because the clot may be the presenting sign."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Mobilisation and risk reduction",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🚶 Mobilise", html:"Early mobilisation and leg elevation when resting \u2014 bed rest is unnecessary and harmful."},
+          {t:"🧦 Compression", html:"Compression stockings for persistent post-thrombotic leg symptoms (not for routine prevention of post-thrombotic syndrome)."},
+          {t:"💊 Address provokers", html:"Stop/avoid provoking factors where possible (e.g. review COCP/HRT)."},
+          {t:"✈️ Future prevention", html:"Advise on travel, surgery and immobility VTE prophylaxis in future."},
+          {t:"⚖️ Lifestyle", html:"Weight, activity, smoking cessation \u2014 general vascular health."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication", title:"Anticoagulation \u2014 choice and duration",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Agent", title:"A DOAC first-line", when:"apixaban / rivaroxaban",
+           html:"First-line for most. LMWH then dabigatran/edoxaban, or warfarin, where DOAC unsuitable (e.g. severe renal impairment, antiphospholipid syndrome \u2192 warfarin)."},
+          {step:"Provoked", title:"At least 3 months", when:"then review",
+           fromLabel:"transient provoking factor resolved",
+           html:"Stop at \u22653 months once the provoking factor has resolved and bleeding risk outweighs benefit."},
+          {step:"Unprovoked / recurrent", title:"Consider long-term", when:"weigh bleeding vs recurrence",
+           fromLabel:"no reversible cause / recurrent",
+           html:"Discuss continuing beyond 3 months \u2014 higher recurrence risk; individualise against bleeding risk."},
+          {step:"Cancer-associated", title:"DOAC or LMWH ongoing", when:"while cancer active",
+           fromLabel:"active malignancy",
+           html:"Continue anticoagulation while cancer is active; choice per bleeding risk/tumour site."}
+        ]},
+        {b:"warn", html:"<b>Antiphospholipid syndrome</b> \u2192 use warfarin, not a DOAC. Dose DOACs by renal function and review periodically. Coordinate any procedures and bleeding-risk drugs. If anticoagulation is contraindicated, consider a mechanical intervention (e.g. IVC filter)."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Renal, bleeding and the 3-month review",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["U&amp;E / eGFR","Baseline, then at least annually","Re-dose / switch DOAC as renal function changes"],
+          ["FBC / bleeding","Periodically","Anaemia (occult bleed) \u2192 investigate"],
+          ["Duration review","At 3 months","Decide stop vs continue (provoked vs unprovoked)"],
+          ["Cancer / cause","Unprovoked","Complete appropriate investigation"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"Soon after starting", title:"Establish + educate", html:"Confirm correct DOAC dose, adherence, bleeding counselling, leg symptoms."},
+          {n:"2", when:"3 months", title:"Duration decision", html:"Reassess provoking factors, recurrence vs bleeding risk; stop or continue."},
+          {n:"3", when:"If continued", title:"Ongoing review", html:"At least annual renal function, bleeding risk, recurrence, ongoing need."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Recurrence / problems? Re-check",
+      arrow:"\u2026if clot recurs or complications arise",
+      intro:"A recurrence on anticoagulation is a red flag for review.",
+      checks:[
+        {b:"1 \u00b7 PE?", html:"Breathlessness, pleuritic chest pain, collapse \u2192 treat as PE (urgent)."},
+        {b:"2 \u00b7 Adherence", html:"Confirm DOAC taken correctly at the right dose."},
+        {b:"3 \u00b7 Underlying cause", html:"Recurrent/unprovoked \u2192 reconsider cancer, antiphospholipid syndrome."},
+        {b:"4 \u00b7 Agent", html:"Recurrence on treatment \u2192 review choice/dose; specialist advice."},
+        {b:"5 \u00b7 Bleeding", html:"Bleeding \u2192 reassess risk/benefit and dose."}
+      ],
+      back:"PE excluded, adherence + cause reviewed \u2192 haematology/specialist advice"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Pulmonary embolism", html:"\u201cSudden breathlessness, sharp chest pain worse on breathing, coughing blood, or collapse \u2014 call 999.\u201d"},
+          {t:"🩸 Bleeding", html:"\u201cBlack/bloody stools, vomiting blood, or a bleed that won\u2019t stop \u2014 urgent help; after a head injury go to A&amp;E.\u201d"},
+          {t:"🦵 Extension", html:"\u201cWorsening leg pain/swelling despite treatment \u2014 contact us.\u201d"},
+          {t:"💊 Don\u2019t miss doses", html:"\u201cTake the anticoagulant exactly as prescribed \u2014 missed doses leave you unprotected.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"emergency for PE; specialist for complex VTE",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Suspected PE, or extensive iliofemoral DVT (consider thrombolysis) \u2192 acute."},
+          {t:"Recurrent / on treatment", html:"DVT recurring despite anticoagulation \u2192 haematology."},
+          {t:"Unusual / thrombophilia", html:"Unusual-site thrombosis, suspected antiphospholipid syndrome, or strong thrombophilia."},
+          {t:"Pregnancy / cancer", html:"Pregnancy-associated VTE, or complex cancer-associated thrombosis."}
+        ]},
+        {b:"say", html:"We\u2019ll treat the clot with a blood-thinning tablet, usually for at least three months, and review whether you need it longer. Take it every day, and seek emergency help if you become suddenly breathless or get chest pain \u2014 that could mean a clot on the lung."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

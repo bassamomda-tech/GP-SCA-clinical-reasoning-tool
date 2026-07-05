@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PTSD — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="PTSD management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🧠",
+  title:"PTSD",
+  stemTitle:"Post-traumatic stress disorder — ongoing management",
+  stemSub:"Primary-care management of PTSD \u2014 risk assessment, trauma-focused psychological therapy as first-line, and drug treatment as an adjunct or second-line \u2014 up to specialist referral. NICE NG116 \u00b7 CKS 2026.",
+  guideline:"NICE NG116",
+  glance:[
+    {lbl:"First, always", val:"Risk", sub:"suicide / safeguarding"},
+    {lbl:"First-line", val:"Trauma-focused therapy", sub:"TF-CBT or EMDR"},
+    {lbl:"Recent trauma", val:"Active monitoring", sub:"<1 month, mild"},
+    {lbl:"Drug 1st-line", val:"SSRI/SNRI", sub:"sertraline / venlafaxine"},
+    {lbl:"Avoid", val:"Benzodiazepines", sub:"for core PTSD"},
+    {lbl:"Refer", val:"Complex / refractory", sub:"specialist"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Assess symptoms, risk and comorbidity",
+      blocks:[
+        {b:"kv", rows:[
+          ["Core features","Re-experiencing (flashbacks/nightmares), avoidance, hyperarousal, negative mood/cognition after trauma"],
+          ["Risk (paramount)","Suicidal ideation, self-harm, safeguarding, risk to/from others"],
+          ["Comorbidity","Depression, substance misuse, anxiety, chronic pain \u2014 very common; treat alongside"],
+          ["Timing","Symptoms &lt;1 month = acute stress reaction; PTSD if persisting beyond ~1 month"]
+        ]},
+        {b:"why", html:"Risk comes first \u2014 PTSD carries high rates of depression, substance misuse and suicidality. The evidence-based core treatment is <strong>trauma-focused psychological therapy</strong>; medication is an adjunct or for those who decline/don\u2019t respond to therapy. Benzodiazepines are avoided as they don\u2019t treat PTSD and risk dependence."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 first-line", title:"Trauma-focused psychological therapy",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"👀 Active monitoring", html:"For mild symptoms within 1 month of trauma \u2014 structured watchful waiting with follow-up."},
+          {t:"🧠 TF-CBT", html:"Trauma-focused CBT \u2014 first-line structured therapy for PTSD."},
+          {t:"👁️ EMDR", html:"Eye-movement desensitisation and reprocessing \u2014 effective alternative."},
+          {t:"🔗 Practical support", html:"Address housing, finances, safety, social support \u2014 stabilise the context."},
+          {t:"🚫 Substances", html:"Reduce alcohol/drug self-medication; treat substance misuse alongside."},
+          {t:"😴 Sleep & grounding", html:"Sleep support and grounding techniques while awaiting therapy."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 adjunct / 2nd-line", title:"When drugs have a role",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"SSRI or SNRI", when:"sertraline / paroxetine / venlafaxine",
+           html:"Offer if the person prefers medication, declines/cannot engage in therapy, or as an adjunct. Counsel on delayed onset, early review."},
+          {step:"Step 2", title:"Optimise / switch", when:"inadequate response",
+           fromLabel:"after an adequate trial",
+           html:"Check adherence/dose; switch agent; ensure trauma-focused therapy offered/accessed."},
+          {step:"Adjunct", title:"Consider for specific symptoms", when:"specialist-guided",
+           fromLabel:"residual symptoms",
+           html:"E.g. for severe sleep disturbance/nightmares, specialist may consider adjuncts (e.g. prazosin) \u2014 specialist-led."}
+        ]},
+        {b:"warn", html:"<b>Do not use benzodiazepines</b> for core PTSD (no benefit, dependence, may worsen outcomes). Monitor for suicidality early, especially &lt;25 y; never stop antidepressants abruptly."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Risk, response and engagement",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Risk","First review 1\u20132 weeks (sooner if high risk)","Escalate urgently if risk rises"],
+          ["Symptoms / function","Each review","Track response to therapy/drug; adjust"],
+          ["Therapy access","Ongoing","Ensure trauma-focused therapy referral and engagement"],
+          ["Comorbidity","Each review","Treat depression, substance misuse, pain"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"Early (1\u20132 weeks if on drug/at risk)", title:"Safety review", html:"Risk, tolerability, engagement; refer for trauma-focused therapy."},
+          {n:"2", when:"Every few weeks", title:"Response reviews", html:"Symptoms, function, adherence; optimise/switch; coordinate with therapy."},
+          {n:"3", when:"Ongoing", title:"Continuation", html:"Continue effective treatment; relapse-prevention; manage comorbidity."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not improving? Check before escalating",
+      arrow:"\u2026if symptoms persist",
+      intro:"Confirm therapy access and an adequate drug trial; reassess comorbidity.",
+      checks:[
+        {b:"1 \u00b7 Therapy", html:"Has trauma-focused therapy (TF-CBT/EMDR) actually been accessed?"},
+        {b:"2 \u00b7 Adherence/dose", html:"Adequate antidepressant trial at adequate dose?"},
+        {b:"3 \u00b7 Comorbidity", html:"Untreated depression, substance misuse, or ongoing trauma/threat?"},
+        {b:"4 \u00b7 Safety", html:"Re-screen risk \u2014 escalate if rising."},
+        {b:"5 \u00b7 Refer", html:"Complex/refractory PTSD \u2192 specialist mental-health service."}
+      ],
+      back:"Therapy accessed, adequate drug trial, comorbidity treated \u2192 specialist referral"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Crisis", html:"\u201cIf you feel unsafe or have thoughts of ending your life \u2014 call 999, go to A&amp;E, or ring NHS 111 / Samaritans 116 123.\u201d"},
+          {t:"🍷 Self-medication", html:"\u201cUsing alcohol or drugs to cope tends to make PTSD worse \u2014 tell us and we\u2019ll help.\u201d"},
+          {t:"⚠️ Early worsening", html:"\u201cIf starting an antidepressant makes you feel more agitated or low in the first weeks, contact us promptly.\u201d"},
+          {t:"🫂 Recovery", html:"\u201cPTSD is treatable \u2014 trauma-focused therapy helps most people; it\u2019s worth waiting for and engaging with.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"when high-risk, complex, or refractory",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Urgent / crisis", html:"Significant suicide/self-harm risk, or risk to others \u2192 urgent mental-health assessment."},
+          {t:"Complex PTSD", html:"Multiple/prolonged trauma, dissociation, severe comorbidity \u2192 specialist trauma service."},
+          {t:"Treatment-resistant", html:"Not responding to therapy + adequate drug treatment."},
+          {t:"Access to therapy", html:"Refer for trauma-focused psychological therapy (TF-CBT/EMDR)."}
+        ]},
+        {b:"say", html:"PTSD is a recognised and treatable response to trauma. The most effective treatment is a specific talking therapy that processes the trauma \u2014 I\u2019ll refer you for that. Medication can help too, and we\u2019ll make sure you have support and know where to turn if things feel unsafe."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Corticosteroids in Palliative Care — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Palliative corticosteroids management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🕊️",
+  title:"Corticosteroids in Palliative Care — Step-by-Step",
+  stemTitle:"Dexamethasone in palliative care &mdash; right indication, right dose, give early in the day, then review and taper",
+  stemSub:"A practical protocol for the many palliative uses of dexamethasone: pick the dose by indication (cord compression, raised ICP, SVCO, nerve/liver-capsule pain, bowel obstruction, anorexia), give before 2pm, cover the stomach, set a clear review date, and taper to the lowest effective dose \u2014 monitoring glucose. GMEC Palliative Care 2025 / PCF8.",
+  guideline:"GMEC 2025 · PCF8",
+  glance:[
+    {lbl:"Drug", val:"Dexamethasone", sub:"~7\u00d7 potency of prednisolone"},
+    {lbl:"Cord compression / ICP", val:"16mg/day", sub:"high dose, urgent"},
+    {lbl:"Appetite / nausea adjunct", val:"2\u20134mg/day", sub:"low dose"},
+    {lbl:"Timing", val:"Before 2pm", sub:"avoid insomnia"},
+    {lbl:"Always", val:"PPI + glucose checks", sub:"+ steroid card if prolonged"},
+    {lbl:"Then", val:"Review 5\u20137 days, taper", sub:"stop if no benefit"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Indication", title:"Choose the dose by indication",
+      blocks:[
+        {b:"table", head:["Indication","Typical dexamethasone dose"], rows:[
+          ["Spinal cord / cauda equina compression","16mg/day (with urgent MRI + oncology) \u2014 see MSCC pathway"],
+          ["Raised intracranial pressure / brain mets","8\u201316mg/day"],
+          ["Superior vena cava obstruction","16mg/day (+ urgent oncology) \u2014 see SVCO pathway"],
+          ["Nerve compression / liver-capsule pain","4\u20138mg/day (adjuvant analgesic)"],
+          ["Malignant bowel obstruction","6.6\u201316mg/day (oral or SC)"],
+          ["Anorexia / poor appetite / nausea adjunct","2\u20134mg/day (short courses)"]
+        ]},
+        {b:"warn", html:"<b>Dexamethasone \u2248 7\u00d7 the glucocorticoid potency of prednisolone</b> (2mg dexamethasone \u2248 15mg prednisolone). Confirm the indication justifies steroids \u2014 the benefit must outweigh the considerable side-effect burden."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug · core", title:"Steroid-care measures", blocks:[{b:"tiles", v:"life", items:[{t:"🕘 Morning dosing", html:"Give once daily in the morning to reduce insomnia; review need regularly and stop if no benefit."},{t:"🩸 Monitor glucose", html:"Watch for steroid-induced hyperglycaemia; check glucose, especially in diabetes."},{t:"🦠 Infection/gastric care", html:"Be alert to masked infection and gastric irritation; gastroprotection if also on NSAID."}]},{b:"why", html:"Simple steroid-care measures \u2014 morning dosing, glucose monitoring, infection vigilance and a clear review/stop point \u2014 prevent avoidable harm from palliative steroids."}]},
+    {t:"node", d:"drug", n:"3", tag:"Step 1 \u00b7 start safely", title:"Start with the safety wrap-around",
+      blocks:[
+        {b:"kv", rows:[
+          ["Timing","Give the whole dose <b>before 2pm</b> (ideally morning) to avoid steroid-induced insomnia/agitation."],
+          ["Gastroprotection","Co-prescribe a <b>PPI</b> (esp. with NSAID/anticoagulant/antiplatelet)."],
+          ["Glucose","Check capillary glucose \u2014 steroids commonly cause/worsen hyperglycaemia (monitor, esp. in diabetes)."],
+          ["Route","Oral; or SC/CSCI (dexamethasone) if unable to swallow (note SC dose, e.g. 3.3mg/mL injection)."],
+          ["Document","Set a clear <b>review date</b> and the planned duration at the outset; issue a steroid card if prolonged."]
+        ]}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Step 2 \u00b7 review & taper", title:"Review at 5\u20137 days, then taper",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"3a", title:"Review benefit at 5\u20137 days", when:"the decision point",
+           html:"<b>If no clear benefit by 5\u20137 days \u2192 stop</b> (taper not needed if &lt;1\u20132 weeks &amp; recent start). Don't continue an ineffective steroid."},
+          {step:"3b", title:"If benefit \u2192 reduce to lowest effective dose", when:"taper",
+           fromLabel:"working",
+           html:"Reduce gradually as symptoms allow to the lowest dose that maintains benefit; the right maintenance dose is the smallest that works."},
+          {step:"3c", title:"Taper to stop if on >3 weeks", when:"avoid adrenal crisis",
+           fromLabel:"prolonged course",
+           html:"Don't stop abruptly after &gt;3 weeks (HPA suppression) \u2014 taper. During intercurrent illness, don't omit (sick-day steroid rules)."}
+        ]},
+        {b:"warn", html:"Side effects: hyperglycaemia, insomnia/agitation, oral candidiasis, proximal myopathy, mood change, fluid retention, infection risk, GI ulceration. Re-weigh benefit vs harm at every review."}
+      ]},
+    {t:"node", d:"safety", n:"5", tag:"Safety-net · anticipatory", title:"When to reassess / escalate", blocks:[{b:"tiles", v:"safety", items:[{t:"🩸 Hyperglycaemia", html:"Symptomatic high glucose → adjust/treat; involve the team."},{t:"🛑 No benefit", html:"No symptomatic benefit after a defined trial → taper and stop."},{t:"💊 Abrupt-stop risk", html:"Avoid abrupt withdrawal after prolonged use \u2014 risk of adrenal insufficiency."}]}]},
+    {t:"node", d:"refer", n:"6", tag:"Refer / advice", title:"When to seek advice",
+      arrow:"emergency indications & uncertainty",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Oncological emergency", html:"Cord compression, SVCO, raised ICP \u2014 high-dose <b>dexamethasone (e.g. 16 mg daily)</b> is a holding measure; arrange urgent oncology/radiotherapy (see relevant pathways)."},
+          {t:"Specialist palliative care", html:"Uncertain indication, steroid-related complications, or difficulty tapering."},
+          {t:"Diabetes", html:"Steroid-induced hyperglycaemia needing insulin/oral agent adjustment."}
+        ]},
+        {b:"say", html:"This steroid can quickly reduce swelling and ease symptoms, but it has side effects, so we use the lowest dose that helps, take it in the morning, protect your stomach, keep an eye on your sugar levels, and review within a week to decide whether to continue or come off it."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Prescribing Guide · GP / SCA Clinical Reasoning Tool</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=11" />
+<style>
+  .tool-page{ padding:0; }
+  .panel{ padding:28px 32px 80px; max-width:1040px; margin:0 auto; }
+  @media (max-width:760px){ .panel{ padding:18px 14px 60px; } }
+  .tool-breadcrumb{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted);margin-bottom:18px}
+  .tool-breadcrumb a{color:var(--teal-2);text-decoration:none;font-weight:600}
+  .tool-breadcrumb a:hover{color:var(--rust)}
+  .tool-breadcrumb svg{width:11px;height:11px;color:var(--muted-2)}
+  .tool-head{padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:20px}
+  .tool-head .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .tool-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.1;margin-top:8px}
+  .tool-head h1 em{font-style:italic;color:var(--teal)}
+  .tool-head p{color:var(--ink-2);font-size:14.5px;line-height:1.6;max-width:72ch;margin-top:8px}
+  .review-stamp{ display:inline-flex; align-items:center; gap:7px; margin-top:12px; font-size:11.5px; font-weight:700; color:var(--teal); background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:5px 12px; }
+  .review-stamp .dot{ width:7px; height:7px; border-radius:50%; background:#15803d; }
+  .review-stamp span.src{ color:var(--muted); font-weight:600; }
+
+  .pg-tabs{ display:flex; gap:8px; margin-bottom:22px; flex-wrap:wrap; }
+  .pg-tab{ font:inherit; font-size:13.5px; font-weight:700; padding:11px 17px; border-radius:11px; border:1px solid var(--line-2); background:#fff; color:var(--ink-2); cursor:pointer; display:flex; align-items:center; gap:8px; }
+  .pg-tab.on{ background:var(--teal); color:#f6f2e9; border-color:var(--teal); }
+  .pg-panel{ display:none; }
+  .pg-panel.on{ display:block; }
+
+  .pg-sec-h{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:1.4rem; line-height:1.2; margin:2px 0 4px; }
+  .pg-sec-h em{ font-style:italic; color:var(--teal); }
+  .pg-sec-p{ font-size:13.5px; line-height:1.6; color:var(--ink-2); max-width:74ch; margin-bottom:18px; }
+
+  .pg-cards{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:18px; }
+  @media (max-width:720px){ .pg-cards{ grid-template-columns:1fr; } }
+  .pg-card{ border:1px solid var(--line); border-radius:13px; background:var(--surface); padding:16px 18px; }
+  .pg-card.full{ grid-column:1 / -1; }
+  .pg-card h4{ font-size:12.5px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--teal); margin-bottom:11px; display:flex; align-items:center; gap:8px; }
+  .pg-card.warn{ border-color:#fed7aa; background:#fffdfa; }
+  .pg-card.warn h4{ color:var(--rust); }
+  .pg-card ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .pg-card li{ font-size:13.5px; line-height:1.55; color:var(--ink-2); padding-left:18px; position:relative; }
+  .pg-card li::before{ content:""; position:absolute; left:2px; top:7px; width:6px; height:6px; border-radius:2px; background:var(--teal); }
+  .pg-card.warn li::before{ background:var(--rust); }
+  .pg-card li b{ color:var(--ink); }
+  .pg-card p{ font-size:13.5px; line-height:1.6; color:var(--ink-2); }
+  .pg-cond-grp{ font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--rust); margin:14px 0 7px; }
+  .pg-cond{ columns:2; column-gap:30px; margin:0 0 2px; padding:0; list-style:none; counter-reset:none; }
+  @media (max-width:560px){ .pg-cond{ columns:1; } }
+  .pg-cond li{ font-size:13px; line-height:1.4; color:var(--ink); font-weight:600; margin-bottom:9px; break-inside:avoid; padding-left:24px; position:relative; }
+  .pg-cond li::before{ content:counter(condnum); counter-increment:condnum; position:absolute; left:0; top:0; color:var(--rust); font-weight:700; font-size:11.5px; font-variant-numeric:tabular-nums; }
+  .pg-cond li .otc{ display:block; font-weight:400; font-size:11.6px; line-height:1.4; color:var(--muted); margin-top:2px; }
+  .pg-cond li .otc::before{ content:"⊘ avoid: "; color:var(--rust); font-weight:600; }
+  .pg-cond-plus{ list-style:none; display:flex; gap:9px; flex-wrap:wrap; margin-top:2px; }
+  .pg-cond-plus li{ font-size:12.5px; color:var(--ink-2); background:#fff; border:1px solid var(--line); border-radius:8px; padding:6px 11px; }
+  .pg-cond-plus li b{ color:var(--ink); }
+
+  .pg-note{ font-size:12.5px; line-height:1.55; color:var(--ink-2); background:#fffbeb; border:1px solid #fde68a; border-radius:9px; padding:11px 14px; margin-bottom:16px; }
+  .pg-note b{ color:var(--ink); }
+  .pg-info{ font-size:12.5px; line-height:1.55; color:#1e3a8a; background:#eff6ff; border:1px solid #bfdbfe; border-radius:9px; padding:11px 14px; margin-bottom:16px; }
+  .pg-info b{ color:#1e3a8a; }
+
+  /* checklist */
+  .pg-check{ list-style:none; display:flex; flex-direction:column; gap:9px; }
+  .pg-check li{ display:flex; gap:11px; align-items:flex-start; font-size:13.5px; line-height:1.5; color:var(--ink-2); }
+  .pg-check li .bx{ flex-shrink:0; width:20px; height:20px; border-radius:5px; border:2px solid var(--teal); display:grid; place-items:center; color:var(--teal); font-size:12px; font-weight:800; margin-top:1px; }
+  .pg-check li b{ color:var(--ink); }
+
+  /* form colours table */
+  .pg-table{ width:100%; border-collapse:collapse; font-size:13px; }
+  .pg-table th, .pg-table td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; line-height:1.45; }
+  .pg-table th{ font-size:10.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); }
+  .pg-table tr:last-child td{ border-bottom:none; }
+  .pg-table td:first-child{ font-weight:800; color:var(--teal); white-space:nowrap; }
+  @media (max-width:620px){
+    .pg-table, .pg-table tbody, .pg-table tr, .pg-table td{ display:block; width:100%; }
+    .pg-table thead{ display:none; }
+    .pg-table tr{ border:1px solid var(--line); border-radius:10px; padding:4px 2px; margin-bottom:10px; }
+    .pg-table td{ border-bottom:none; padding:5px 12px; }
+    .pg-table td:first-child{ font-size:13px; }
+  }
+
+  /* RAG */
+  .pg-rag-banner{ display:flex; gap:13px; align-items:flex-start; background:#fff7ed; border:1px solid #fed7aa; border-radius:13px; padding:15px 18px; margin-bottom:18px; }
+  .pg-rag-banner .ic{ font-size:22px; line-height:1; flex-shrink:0; }
+  .pg-rag-banner h3{ font-size:14.5px; font-weight:800; color:#9a3412; margin-bottom:4px; }
+  .pg-rag-banner p{ font-size:13px; line-height:1.55; color:var(--ink-2); }
+  .pg-rag-banner p b{ color:var(--ink); }
+  .pg-area-row{ display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin-top:11px; padding-top:11px; border-top:1px solid #fed7aa; }
+  .pg-area-label{ font-size:12px; font-weight:800; letter-spacing:.03em; text-transform:uppercase; color:#9a3412; }
+  .rgp-area-select{ font:inherit; font-size:13px; padding:6px 10px; border:1px solid var(--line-2); border-radius:8px; background:#fff; color:var(--ink); max-width:260px; }
+  .rgp-area-select:focus{ outline:none; border-color:var(--teal); }
+  .pg-area-state{ font-size:12.5px; line-height:1.5; color:var(--ink-2); }
+  .pg-area-state.ok{ color:#14532d; font-weight:600; }
+  .pg-area-state.warn{ color:#9a3412; }
+  .pg-area-state.warn a{ color:var(--teal); font-weight:700; text-decoration:none; white-space:nowrap; }
+  .pg-area-state.warn a:hover{ color:var(--rust); }
+
+  .pg-rag-legend{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-bottom:18px; }
+  .pg-rl{ border:1px solid var(--line); border-radius:12px; padding:13px 15px; background:var(--surface); border-left-width:5px; }
+  .pg-rl.green{ border-left-color:#15803d; }
+  .pg-rl.amber{ border-left-color:#d97706; }
+  .pg-rl.red{ border-left-color:#dc2626; }
+  .pg-rl.grey{ border-left-color:#64748b; }
+  .pg-rl h4{ font-size:13px; font-weight:800; color:var(--ink); margin-bottom:5px; display:flex; align-items:center; gap:7px; }
+  .pg-rl .dot{ width:11px; height:11px; border-radius:50%; }
+  .pg-rl.green .dot{ background:#15803d; }
+  .pg-rl.amber .dot{ background:#d97706; }
+  .pg-rl.red .dot{ background:#dc2626; }
+  .pg-rl.grey .dot{ background:#64748b; }
+  .pg-rl p{ font-size:12.3px; line-height:1.5; color:var(--ink-2); }
+
+  .pg-rag-controls{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:14px; }
+  .pg-rag-search{ flex:1; min-width:180px; }
+  .pg-rag-search input{ width:100%; font:inherit; font-size:13.5px; padding:9px 12px; border:1px solid var(--line-2); border-radius:9px; background:#fff; color:var(--ink); }
+  .pg-rag-search input:focus{ outline:none; border-color:var(--teal); }
+  .pg-rag-filters{ display:flex; gap:6px; flex-wrap:wrap; }
+  .pg-rfilt{ font:inherit; font-size:12px; font-weight:700; padding:8px 12px; border-radius:8px; border:1px solid var(--line-2); background:#fff; color:var(--ink-2); cursor:pointer; }
+  .pg-rfilt.on{ color:#fff; }
+  .pg-rfilt.all.on{ background:var(--teal); border-color:var(--teal); }
+  .pg-rfilt.green.on{ background:#15803d; border-color:#15803d; }
+  .pg-rfilt.amber.on{ background:#d97706; border-color:#d97706; }
+  .pg-rfilt.red.on{ background:#dc2626; border-color:#dc2626; }
+  .pg-rfilt.grey.on{ background:#64748b; border-color:#64748b; }
+
+  .pg-rag-list{ display:flex; flex-direction:column; gap:8px; }
+  .pg-rag-count{ font-size:12px; font-weight:700; color:var(--muted); margin-bottom:10px; }
+  .pg-rag-grp{ font-size:11px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--teal); margin:14px 0 2px; display:flex; align-items:center; gap:8px; }
+  .pg-rag-grp:first-child{ margin-top:0; }
+  .pg-rag-grp .n{ font-size:10.5px; font-weight:700; color:var(--muted); background:var(--bg-soft); border-radius:99px; padding:1px 7px; }
+  .pg-ritem{ display:flex; gap:13px; align-items:flex-start; border:1px solid var(--line); border-radius:11px; background:var(--surface); padding:12px 14px; border-left-width:5px; }
+  .pg-ritem.green{ border-left-color:#15803d; }
+  .pg-ritem.amber{ border-left-color:#d97706; }
+  .pg-ritem.red{ border-left-color:#dc2626; }
+  .pg-ritem.grey{ border-left-color:#64748b; }
+  .pg-ritem .rtag{ flex-shrink:0; font-size:10px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; padding:3px 9px; border-radius:999px; margin-top:2px; white-space:nowrap; }
+  .pg-ritem.green .rtag{ background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; }
+  .pg-ritem.amber .rtag{ background:#fffbeb; color:#b45309; border:1px solid #fde68a; }
+  .pg-ritem.red .rtag{ background:#fef2f2; color:#b91c1c; border:1px solid #fecaca; }
+  .pg-ritem.grey .rtag{ background:#f1f5f9; color:#475569; border:1px solid #cbd5e1; }
+  .pg-ritem .rbody h5{ font-size:14px; font-weight:700; color:var(--ink); }
+  .pg-ritem .rbody .ruse{ font-size:11.5px; color:var(--muted); font-weight:600; margin-top:1px; }
+  .pg-ritem .rbody p{ font-size:12.5px; line-height:1.5; color:var(--ink-2); margin-top:5px; }
+  .pg-rag-empty{ padding:30px 16px; text-align:center; color:var(--muted); font-size:14px; }
+
+  .footer-disclaimer{ margin-top:40px; font-size:12.5px; line-height:1.6; color:var(--ink-2); background:var(--surface-2); border:1px solid var(--line); border-radius:12px; padding:16px 18px; }
+  .footer-disclaimer strong{ color:var(--ink); }
+</style>
+</head>
+<body>
+<button class="sb-toggle" aria-label="Open menu">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-prescribing"></aside>
+  <main class="main">
+    <div class="tool-page">
+      <div class="panel">
+
+        <div class="tool-breadcrumb">
+          <a href="../index.html">Reasoning GP</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+          <span>Tools</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+          <span style="color:var(--ink-2)">Prescribing Guide</span>
+        </div>
+
+        <header class="tool-head" data-screen-label="Tool head">
+          <span class="eyebrow">Reasoning Tool · Exemptions · FP10 · what not to prescribe · RAG</span>
+          <h1>Prescribing guide — <em>eligibility, the FP10, and what not to prescribe</em></h1>
+          <p>The prescribing admin that surrounds the clinical decision: who gets free prescriptions, how to write a legally valid FP10, the items the NHS asks GPs <b>not</b> to prescribe (OTC and low-value), and the red/amber/green (RAG) traffic-light rules for who should be prescribing what.</p>
+          <div class="review-stamp"><span class="dot"></span> Last reviewed June 2026 <span class="src">· NHSBSA · NHS England · GMMMG · BNF</span></div>
+        </header>
+
+        <div class="pg-tabs">
+          <button class="pg-tab on" data-tab="free">💷 Free prescription eligibility</button>
+          <button class="pg-tab" data-tab="fp10">🖊️ Filling an FP10</button>
+          <button class="pg-tab" data-tab="avoid">🚫 What not to prescribe</button>
+          <button class="pg-tab" data-tab="rag">🚦 Traffic-light (RAG)</button>
+        </div>
+
+        <!-- ============ FREE PRESCRIPTION ELIGIBILITY ============ -->
+        <div class="pg-panel on" id="tab-free">
+          <h2 class="pg-sec-h">Who gets <em>free</em> NHS prescriptions (England)</h2>
+          <p class="pg-sec-p">Prescriptions are <b>free for everyone in Wales, Scotland and Northern Ireland</b>. In England a charge applies (around <b>£9.90 per item, 2025/26 — verify current</b>) unless the patient falls into an exemption below, or holds a prepayment certificate.</p>
+
+          <div class="pg-cards">
+            <div class="pg-card">
+              <h4>🎂 Age</h4>
+              <ul>
+                <li><b>Under 16</b></li>
+                <li><b>16–18</b> and in full-time education</li>
+                <li><b>60 or over</b></li>
+              </ul>
+            </div>
+            <div class="pg-card">
+              <h4>🤰 Maternity (MatEx)</h4>
+              <ul>
+                <li><b>Pregnant</b>, or have had a baby in the <b>last 12 months</b>, with a valid maternity exemption certificate (MatEx).</li>
+              </ul>
+            </div>
+            <div class="pg-card full">
+              <h4>🏥 Medical exemption (MedEx — apply via FP92A)</h4>
+              <p style="margin-bottom:9px">A defined, fixed list of conditions. Valid 5 years. The qualifying conditions are:</p>
+              <ul>
+                <li>A <b>permanent fistula</b> needing dressing/appliance</li>
+                <li><b>Hypoadrenalism</b> (e.g. Addison's) and other conditions needing specific replacement therapy — hypoparathyroidism, hypopituitarism, diabetes insipidus</li>
+                <li><b>Diabetes mellitus</b> — except where treated by diet alone</li>
+                <li><b>Myxoedema</b> (hypothyroidism needing thyroid hormone replacement)</li>
+                <li><b>Myasthenia gravis</b></li>
+                <li><b>Epilepsy</b> needing continuous anticonvulsant therapy</li>
+                <li>A <b>continuing physical disability</b> that prevents leaving home without help</li>
+                <li><b>Cancer</b> — treatment of cancer, the effects of cancer, or the effects of cancer treatment</li>
+              </ul>
+            </div>
+            <div class="pg-card full">
+              <h4>💷 Low income &amp; benefits</h4>
+              <ul>
+                <li><b>Income Support</b>, income-based <b>JSA</b>, income-related <b>ESA</b>, <b>Pension Credit Guarantee Credit</b></li>
+                <li><b>Universal Credit</b> — if earnings are below the set threshold in the relevant assessment period</li>
+                <li><b>NHS Tax Credit Exemption Certificate</b>, or an <b>HC2 certificate</b> (NHS Low Income Scheme — HC3 gives partial help)</li>
+                <li>Named on a valid <b>war pension exemption</b> certificate (for the accepted disability)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pg-info"><b>Not exempt but on regular meds?</b> A <b>Prescription Prepayment Certificate (PPC)</b> caps the cost — a 3-month or 12-month PPC pays for itself after roughly 4+ items in 3 months or 12+ a year. There is also a separate, cheaper <b>HRT PPC</b> covering most HRT items for 12 months.</div>
+          <div class="pg-note"><b>Check, don't assume.</b> Patients self-declare exemption on the back of the FP10 — the NHSBSA runs checks and issues penalty charges for wrongful claims. If unsure, advise the patient to confirm eligibility before ticking the box.</div>
+        </div>
+
+        <!-- ============ FILLING AN FP10 ============ -->
+        <div class="pg-panel" id="tab-fp10">
+          <h2 class="pg-sec-h">Writing a <em>legally valid</em> FP10</h2>
+          <p class="pg-sec-p">The FP10 is the NHS prescription form (now mostly issued electronically via EPS). Whether printed or electronic, a valid prescription must carry all of the following — a missing element means the pharmacist cannot legally dispense it.</p>
+
+          <div class="pg-cards">
+            <div class="pg-card full">
+              <h4>✅ Every prescription must have</h4>
+              <ul class="pg-check">
+                <li><span class="bx">✓</span><span><b>Patient details</b> — full name and address; <b>age/date of birth is a legal requirement for children under 12</b> (best practice for all).</span></li>
+                <li><span class="bx">✓</span><span><b>Date</b> the prescription was signed.</span></li>
+                <li><span class="bx">✓</span><span><b>Drug</b> — name (use the <b>generic/approved name</b> unless brand is needed, e.g. modified-release, biologics, lithium), <b>form, strength, dose and directions</b>.</span></li>
+                <li><span class="bx">✓</span><span><b>Quantity or duration</b> to supply (e.g. "28 tablets" or "28 days").</span></li>
+                <li><span class="bx">✓</span><span><b>Prescriber's signature</b> (in ink, or a valid digital signature for EPS) plus <b>name and practice address</b>.</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pg-cards">
+            <div class="pg-card warn">
+              <h4>⚠️ Controlled drugs (Sch 2 &amp; 3) — extra legal rules</h4>
+              <ul>
+                <li><b>Total quantity in both words and figures</b>.</li>
+                <li>Form and strength stated; a <b>clearly specified dose</b> ("as directed" is not enough).</li>
+                <li>Prescriber's details and signature; computer-generated is acceptable but the signature must be valid.</li>
+                <li>Valid for <b>28 days</b> from the appropriate date.</li>
+                <li><b>Good practice: limit to 30 days' supply</b> (not a strict legal limit, but expected).</li>
+              </ul>
+            </div>
+            <div class="pg-card">
+              <h4>🎨 Common FP10 variants</h4>
+              <table class="pg-table">
+                <thead><tr><th>Form</th><th>Use</th></tr></thead>
+                <tbody>
+                  <tr><td>FP10NC / FP10SS</td><td>Standard GP prescription (green).</td></tr>
+                  <tr><td>FP10MDA</td><td>Instalment ("blue") — supervised opioid substitution (e.g. methadone).</td></tr>
+                  <tr><td>FP10D</td><td>Dental prescriptions.</td></tr>
+                  <tr><td>FP10PN / FP10CN</td><td>Nurse / non-medical prescriber forms.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="pg-info"><b>EPS is the norm.</b> Most prescriptions are signed digitally and sent to the patient's nominated pharmacy. The same legal elements apply — the smartcard digital signature replaces the ink one.</div>
+        </div>
+
+        <!-- ============ WHAT NOT TO PRESCRIBE ============ -->
+        <div class="pg-panel" id="tab-avoid">
+          <h2 class="pg-sec-h">Items GPs are asked <em>not</em> to prescribe</h2>
+          <p class="pg-sec-p">NHS England guidance asks prescribers to stop routinely prescribing two groups: cheap <b>over-the-counter (OTC)</b> items for self-limiting conditions, and a list of <b>low clinical-value</b> medicines. Plus a clinical group: drugs that should be <b>started and managed by secondary care</b>.</p>
+
+          <div class="pg-cards">
+            <div class="pg-card warn full">
+              <h4>🛒 The 35 conditions — OTC items not to routinely prescribe</h4>
+              <p style="margin-bottom:4px">NHS England (March 2018) lists <b>35 minor, short-term conditions</b> that are either <b>self-limiting</b> (clear on their own) or suitable for <b>self-care</b> (treatable with items bought over the counter), <b>plus</b> probiotics, vitamins &amp; minerals as items of limited clinical effectiveness. Each shows the <b>related OTC item(s)</b> a patient should normally buy rather than be prescribed.</p>
+
+              <div class="pg-cond-grp">Self-limiting conditions (8)</div>
+              <ol class="pg-cond" start="1" style="counter-reset:condnum">
+                <li>Acute sore throat <span class="otc">lozenges, anaesthetic/analgesic throat sprays, paracetamol/ibuprofen</span></li>
+                <li>Infrequent cold sores of the lip <span class="otc">aciclovir 5% cream</span></li>
+                <li>Conjunctivitis <span class="otc">chloramphenicol eye drops/ointment, lubricants</span></li>
+                <li>Coughs, colds &amp; nasal congestion <span class="otc">cough linctus/expectorants, decongestants, paracetamol, vapour rubs</span></li>
+                <li>Cradle cap (seborrhoeic dermatitis — infants) <span class="otc">emollients, soft brushing, baby shampoo</span></li>
+                <li>Haemorrhoids <span class="otc">topical soothing/anaesthetic creams &amp; suppositories (e.g. Anusol)</span></li>
+                <li>Infant colic <span class="otc">simeticone drops, lactase drops, gripe water</span></li>
+                <li>Mild cystitis <span class="otc">potassium/sodium citrate sachets, paracetamol/ibuprofen</span></li>
+              </ol>
+
+              <div class="pg-cond-grp">Conditions suitable for self-care (27)</div>
+              <ol class="pg-cond" start="9">
+                <li>Mild irritant dermatitis <span class="otc">emollients, mild hydrocortisone 1% cream</span></li>
+                <li>Dandruff <span class="otc">antifungal/ketoconazole or coal-tar shampoos</span></li>
+                <li>Diarrhoea (adults) <span class="otc">oral rehydration salts, loperamide</span></li>
+                <li>Dry / sore tired eyes <span class="otc">ocular lubricants / artificial tears</span></li>
+                <li>Earwax <span class="otc">olive oil, sodium bicarbonate or urea-hydrogen-peroxide drops</span></li>
+                <li>Excessive sweating (hyperhidrosis) <span class="otc">aluminium chloride antiperspirants (e.g. Driclor)</span></li>
+                <li>Head lice <span class="otc">dimeticone 4% lotion, wet-combing, malathion</span></li>
+                <li>Indigestion &amp; heartburn <span class="otc">antacids, alginates (Gaviscon), low-dose H2/PPI</span></li>
+                <li>Infrequent constipation <span class="otc">bulk-forming, osmotic or stimulant laxatives</span></li>
+                <li>Infrequent migraine <span class="otc">paracetamol, ibuprofen/aspirin, sumatriptan OTC</span></li>
+                <li>Insect bites &amp; stings <span class="otc">antihistamines, mild hydrocortisone, crotamiton</span></li>
+                <li>Mild acne <span class="otc">benzoyl peroxide, topical washes</span></li>
+                <li>Mild dry skin <span class="otc">emollients / moisturisers</span></li>
+                <li>Sunburn (excessive sun exposure) <span class="otc">after-sun, emollients, paracetamol/ibuprofen</span></li>
+                <li>Sun protection <span class="otc">sunscreens (except ACBS photodermatoses)</span></li>
+                <li>Mild–moderate hayfever / seasonal rhinitis <span class="otc">oral antihistamines, intranasal steroids, sodium cromoglicate eye drops</span></li>
+                <li>Minor burns &amp; scalds <span class="otc">dressings, paracetamol/ibuprofen</span></li>
+                <li>Minor pain, discomfort &amp;/or fever (aches, sprains, headache, period pain, back pain) <span class="otc">paracetamol, ibuprofen (oral/topical), aspirin</span></li>
+                <li>Mouth ulcers <span class="otc">antiseptic/anaesthetic gels &amp; mouthwashes (e.g. Bonjela, chlorhexidine)</span></li>
+                <li>Nappy rash <span class="otc">barrier creams, mild antifungal where needed</span></li>
+                <li>Oral thrush <span class="otc">miconazole oral gel, nystatin</span></li>
+                <li>Prevention of dental caries <span class="otc">fluoride toothpaste / mouthwash</span></li>
+                <li>Ringworm / athlete's foot <span class="otc">topical antifungals (clotrimazole, terbinafine, miconazole)</span></li>
+                <li>Teething / mild toothache <span class="otc">teething gels, paracetamol/ibuprofen</span></li>
+                <li>Threadworms <span class="otc">mebendazole (+ household hygiene)</span></li>
+                <li>Travel sickness <span class="otc">hyoscine, cinnarizine, antihistamines</span></li>
+                <li>Warts &amp; verrucae <span class="otc">salicylic acid preparations, cryotherapy</span></li>
+              </ol>
+
+              <div class="pg-cond-grp">Plus — limited clinical effectiveness</div>
+              <ul class="pg-cond-plus">
+                <li><b>Probiotics</b></li>
+                <li><b>Vitamins &amp; minerals</b> (not as dietary supplements or a "pick-me-up")</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pg-cards">
+            <div class="pg-card warn">
+              <h4>📉 Low clinical-value medicines</h4>
+              <ul>
+                <li><b>Liothyronine</b>; <b>lidocaine 5% plasters</b> (outside licensed use)</li>
+                <li><b>Glucosamine &amp; chondroitin</b>; <b>omega-3</b> fatty acids; rubefacients</li>
+                <li><b>Homeopathy</b>; herbal treatments; lutein &amp; antioxidants</li>
+                <li><b>Co-proxamol</b>; immediate-release fentanyl (non-cancer); dosulepin; trimipramine</li>
+                <li><b>Perindopril arginine</b>, prolonged-release doxazosin, once-daily tadalafil, paracetamol+tramadol combination, oxycodone+naloxone, aliskiren — prescribe the cheaper equivalent or alternative</li>
+              </ul>
+            </div>
+            <div class="pg-card">
+              <h4>✅ When OTC prescribing IS still appropriate</h4>
+              <ul>
+                <li>Treating a <b>long-term condition</b> (e.g. regular paracetamol for persistent pain)</li>
+                <li>Patient <b>can't self-manage / buy</b> (safeguarding, severe social vulnerability)</li>
+                <li>Symptom of a more serious condition, or where OTC isn't clinically suitable</li>
+                <li>Prescriber's clinical judgement always overrides the default.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pg-note"><b>Secondary-care / "red" drugs:</b> some medicines should never be <b>initiated</b> in primary care (see the Traffic-light tab). Don't take on prescribing of a hospital-initiated drug without a clear shared-care agreement and the monitoring it specifies.</div>
+        </div>
+
+        <!-- ============ TRAFFIC LIGHT (RAG) ============ -->
+        <div class="pg-panel" id="tab-rag">
+          <h2 class="pg-sec-h">The <em>traffic-light</em> (RAG) system — who prescribes what</h2>
+          <p class="pg-sec-p">Area Prescribing Committees classify drugs by where prescribing responsibility sits. The list below uses the <b>Greater Manchester (GMMMG)</b> RAG classification as the worked example, grouped by system. The full GMMMG list runs to many hundreds of items — this is the <b>GP-relevant subset</b>.</p>
+
+          <div class="pg-rag-banner">
+            <div class="ic">📍</div>
+            <div>
+              <h3>Not in Greater Manchester? Follow your local list</h3>
+              <p>RAG status <b>varies between areas</b> — a drug that's green in one ICB may be amber (shared care) in another. This GMMMG list is illustrative. <b>Always check your own Area Prescribing Committee / ICB formulary RAG classification</b> and shared-care agreements before prescribing.</p>
+              <div class="pg-area-row">
+                <span class="pg-area-label">Your area:</span>
+                <span id="pgAreaPicker"></span>
+                <span class="pg-area-state" data-area-unset>Not set — showing GMMMG as the example.</span>
+                <span class="pg-area-state ok" data-area-matches style="display:none">✓ <b data-area-name>your area</b> uses GMMMG — this list matches your area.</span>
+                <span class="pg-area-state warn" data-area-other style="display:none">⚠ <b data-area-name>your area</b> has its own RAG list — GMMMG is shown only as an example. <a data-area-formulary href="#">Open your local formulary →</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pg-rag-legend">
+            <div class="pg-rl green"><h4><span class="dot"></span>GREEN</h4><p>Suitable for <b>GP prescribing and initiation</b> in primary care, within competence.</p></div>
+            <div class="pg-rl amber"><h4><span class="dot"></span>AMBER</h4><p><b>Specialist initiates</b>; GP continues under a <b>shared-care agreement</b> with defined monitoring.</p></div>
+            <div class="pg-rl red"><h4><span class="dot"></span>RED</h4><p><b>Hospital / specialist only.</b> Not for GP prescribing or routine repeat in primary care.</p></div>
+            <div class="pg-rl grey"><h4><span class="dot"></span>GREY / not recommended</h4><p>Insufficient evidence or value — <b>do not routinely prescribe</b>.</p></div>
+          </div>
+
+          <div class="pg-rag-controls">
+            <div class="pg-rag-search"><input type="search" id="ragSearch" placeholder="Search a drug…" autocomplete="off"></div>
+            <div class="pg-rag-filters" id="ragFilters">
+              <button class="pg-rfilt all on" data-r="all">All</button>
+              <button class="pg-rfilt green" data-r="green">Green</button>
+              <button class="pg-rfilt amber" data-r="amber">Amber</button>
+              <button class="pg-rfilt red" data-r="red">Red</button>
+              <button class="pg-rfilt grey" data-r="grey">Grey</button>
+            </div>
+          </div>
+
+          <div class="pg-rag-count" id="ragCount"></div>
+          <div class="pg-rag-list" id="ragList"></div>
+
+          <div class="pg-note" style="margin-top:16px"><b>Shared care is a two-way agreement.</b> For amber drugs, only take on prescribing once you have the specialist's shared-care request, are competent to monitor, and have capacity to do so safely — you can decline if those aren't met.</div>
+        </div>
+
+        <div class="footer-disclaimer">
+          <strong>Educational use only.</strong> Eligibility, fees, form rules and RAG classifications change and vary by nation and ICB. Prescription charge exemptions and PPC apply to <b>England</b>; prescriptions are free in Wales, Scotland and Northern Ireland. The RAG examples follow GMMMG and are illustrative — <b>always verify against your local Area Prescribing Committee / ICB formulary, the BNF, and current NHSBSA / NHS England guidance</b> before prescribing.
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+/* RAG ruleset — GMMMG-style worked example, grouped by system. The full GMMMG
+   RAG list runs to many hundreds of items; this is the GP-relevant subset.
+   Illustrative — verify locally. */
+const RAG = [
+  // ===== Diabetes & endocrine =====
+  { d:'Metformin', use:'Type 2 diabetes', grp:'Diabetes & endocrine', rag:'green', note:'First-line; GP initiation and review.' },
+  { d:'Sulfonylureas (gliclazide, glipizide)', use:'Type 2 diabetes', grp:'Diabetes & endocrine', rag:'green', note:'GP initiation; hypo and driving advice.' },
+  { d:'SGLT2 inhibitors (dapagliflozin, empagliflozin, canagliflozin)', use:'T2DM, HF, CKD', grp:'Diabetes & endocrine', rag:'green', note:'Green for licensed indications; give sick-day rules and DKA advice.' },
+  { d:'DPP-4 inhibitors (sitagliptin, linagliptin)', use:'Type 2 diabetes', grp:'Diabetes & endocrine', rag:'green', note:'GP initiation.' },
+  { d:'GLP-1 agonists (dulaglutide, semaglutide, liraglutide)', use:'T2DM (± obesity)', grp:'Diabetes & endocrine', rag:'amber', note:'Green for T2DM in many areas; amber/specialist for some (e.g. weight-management indications) — check local.' },
+  { d:'Pioglitazone', use:'Type 2 diabetes', grp:'Diabetes & endocrine', rag:'green', note:'GP initiation; caution HF, bladder cancer, fracture risk.' },
+  { d:'Insulin (all types)', use:'Type 1 & 2 diabetes', grp:'Diabetes & endocrine', rag:'green', note:'GP continuation; specialist-led for type 1 / pumps.' },
+  { d:'Levothyroxine', use:'Hypothyroidism', grp:'Diabetes & endocrine', rag:'green', note:'GP initiation and TFT monitoring.' },
+  { d:'Liothyronine (T3)', use:'Hypothyroidism', grp:'Diabetes & endocrine', rag:'grey', note:'Not routinely recommended; specialist endocrine support only.' },
+  { d:'Carbimazole / propylthiouracil', use:'Hyperthyroidism', grp:'Diabetes & endocrine', rag:'amber', note:'Specialist initiation; shared-care FBC (agranulocytosis) and LFT advice.' },
+  { d:'Hydrocortisone / fludrocortisone', use:'Adrenal replacement (Addison\u2019s)', grp:'Diabetes & endocrine', rag:'green', note:'GP continuation; sick-day rules and steroid card essential.' },
+  { d:'Cabergoline / bromocriptine', use:'Hyperprolactinaemia', grp:'Diabetes & endocrine', rag:'amber', note:'Specialist initiation; shared-care prolactin/echo monitoring.' },
+  { d:'Desmopressin', use:'Cranial diabetes insipidus / nocturia', grp:'Diabetes & endocrine', rag:'amber', note:'Specialist initiation; sodium monitoring.' },
+  { d:'Somatropin (growth hormone)', use:'GH deficiency', grp:'Diabetes & endocrine', rag:'red', note:'Specialist / homecare only.' },
+  { d:'Octreotide / lanreotide', use:'Acromegaly, NET', grp:'Diabetes & endocrine', rag:'red', note:'Specialist only.' },
+
+  // ===== Cardiovascular =====
+  { d:'Statins (atorvastatin, simvastatin, rosuvastatin)', use:'Lipid lowering / CVD', grp:'Cardiovascular', rag:'green', note:'GP initiation per QRISK / secondary prevention.' },
+  { d:'ACE inhibitors / ARBs', use:'Hypertension, HF, CKD', grp:'Cardiovascular', rag:'green', note:'GP initiation with U&E monitoring.' },
+  { d:'Calcium-channel blockers / thiazides', use:'Hypertension', grp:'Cardiovascular', rag:'green', note:'GP initiation per NICE.' },
+  { d:'DOACs (apixaban, rivaroxaban, edoxaban, dabigatran)', use:'AF / VTE', grp:'Cardiovascular', rag:'green', note:'Green for stroke prevention in AF / VTE in most areas; check local for some indications.' },
+  { d:'Warfarin', use:'Anticoagulation', grp:'Cardiovascular', rag:'green', note:'GP continuation with INR monitoring service.' },
+  { d:'Spironolactone / eplerenone', use:'Heart failure, resistant HTN', grp:'Cardiovascular', rag:'green', note:'GP use with U&E monitoring; eplerenone amber in some areas.' },
+  { d:'Ezetimibe', use:'Lipid lowering', grp:'Cardiovascular', rag:'green', note:'GP add-on where statin insufficient/intolerant.' },
+  { d:'Bempedoic acid / inclisiran', use:'Lipid lowering', grp:'Cardiovascular', rag:'amber', note:'Specialist or local-pathway initiation; check APC.' },
+  { d:'PCSK9 inhibitors (alirocumab, evolocumab)', use:'Familial / refractory hyperlipidaemia', grp:'Cardiovascular', rag:'red', note:'Lipid-clinic / specialist only.' },
+  { d:'Amiodarone', use:'Arrhythmia', grp:'Cardiovascular', rag:'amber', note:'Specialist initiation; shared-care TFT/LFT monitoring.' },
+  { d:'Ivabradine', use:'Heart failure / angina', grp:'Cardiovascular', rag:'amber', note:'Specialist initiation; shared-care HR monitoring.' },
+  { d:'Sacubitril/valsartan (Entresto)', use:'Heart failure (HFrEF)', grp:'Cardiovascular', rag:'amber', note:'Specialist initiation in HF; GP continuation under shared care (red in some areas).' },
+  { d:'Dapagliflozin / empagliflozin (HF/CKD)', use:'Heart failure, CKD', grp:'Cardiovascular', rag:'green', note:'GP can prescribe for licensed HF/CKD indications.' },
+  { d:'Sildenafil / bosentan / ambrisentan (pulmonary HTN)', use:'Pulmonary hypertension', grp:'Cardiovascular', rag:'red', note:'Designated PH centre only.' },
+  { d:'Nicorandil', use:'Angina', grp:'Cardiovascular', rag:'green', note:'GP use; ulcer risk awareness.' },
+
+  // ===== Respiratory =====
+  { d:'Inhaled therapies (ICS / LABA / LAMA, combinations)', use:'Asthma / COPD', grp:'Respiratory', rag:'green', note:'GP initiation per NICE / GOLD; inhaler technique.' },
+  { d:'Montelukast', use:'Asthma', grp:'Respiratory', rag:'green', note:'GP use; neuropsychiatric warning.' },
+  { d:'Theophylline / aminophylline', use:'Asthma / COPD', grp:'Respiratory', rag:'green', note:'GP use with level monitoring; brand-specific.' },
+  { d:'Roflumilast', use:'Severe COPD', grp:'Respiratory', rag:'amber', note:'Specialist initiation; shared-care weight/mood monitoring.' },
+  { d:'Azithromycin (prophylactic)', use:'COPD / bronchiectasis prophylaxis', grp:'Respiratory', rag:'amber', note:'Specialist initiation; ECG/LFT and resistance monitoring.' },
+  { d:'Biologics (mepolizumab, benralizumab, omalizumab)', use:'Severe asthma', grp:'Respiratory', rag:'red', note:'Severe-asthma service only.' },
+  { d:'Nintedanib / pirfenidone', use:'Pulmonary fibrosis', grp:'Respiratory', rag:'red', note:'ILD specialist only.' },
+
+  // ===== Gastrointestinal =====
+  { d:'PPIs (omeprazole, lansoprazole)', use:'Reflux / ulcer / gastroprotection', grp:'Gastrointestinal', rag:'green', note:'GP use; review long-term need.' },
+  { d:'Mesalazine / other 5-ASA', use:'Ulcerative colitis', grp:'Gastrointestinal', rag:'green', note:'GP continuation common; renal monitoring; brand-specific.' },
+  { d:'Azathioprine / mercaptopurine', use:'IBD, immunosuppression', grp:'Gastrointestinal', rag:'amber', note:'Specialist initiation after TPMT; shared-care FBC/LFT monitoring.' },
+  { d:'Budesonide (modified-release / MMX)', use:'Crohn\u2019s / microscopic colitis', grp:'Gastrointestinal', rag:'amber', note:'Specialist initiation; shared care.' },
+  { d:'Biologics (infliximab, adalimumab, vedolizumab, ustekinumab)', use:'IBD', grp:'Gastrointestinal', rag:'red', note:'IBD specialist / homecare only.' },
+  { d:'Rifaximin', use:'Hepatic encephalopathy', grp:'Gastrointestinal', rag:'amber', note:'Specialist initiation; shared care.' },
+  { d:'Pancreatin (Creon)', use:'Pancreatic insufficiency', grp:'Gastrointestinal', rag:'green', note:'GP continuation.' },
+
+  // ===== Rheumatology & immunosuppression =====
+  { d:'Methotrexate', use:'RA, psoriasis, IBD', grp:'Rheumatology & immunosuppression', rag:'amber', note:'Specialist initiation; shared-care FBC/LFT/U&E (weekly\u2192monthly). ONCE-WEEKLY dosing; folic acid.' },
+  { d:'Leflunomide', use:'RA / psoriatic arthritis', grp:'Rheumatology & immunosuppression', rag:'amber', note:'Shared care; BP, weight, FBC, LFT monitoring.' },
+  { d:'Sulfasalazine', use:'RA, IBD', grp:'Rheumatology & immunosuppression', rag:'amber', note:'Specialist initiation; shared-care FBC/LFT monitoring (green in some areas).' },
+  { d:'Hydroxychloroquine', use:'RA, SLE', grp:'Rheumatology & immunosuppression', rag:'amber', note:'Specialist initiation; annual retinopathy screening.' },
+  { d:'Ciclosporin / tacrolimus (systemic)', use:'Immunosuppression', grp:'Rheumatology & immunosuppression', rag:'amber', note:'Specialist initiation; shared-care levels, renal, BP monitoring.' },
+  { d:'Mycophenolate mofetil', use:'Immunosuppression', grp:'Rheumatology & immunosuppression', rag:'amber', note:'Specialist initiation; shared-care FBC; pregnancy-prevention.' },
+  { d:'Penicillamine', use:'RA', grp:'Rheumatology & immunosuppression', rag:'amber', note:'Specialist initiation; shared-care FBC/urinalysis.' },
+  { d:'Colchicine / allopurinol / febuxostat', use:'Gout', grp:'Rheumatology & immunosuppression', rag:'green', note:'GP initiation; titrate allopurinol to urate target.' },
+  { d:'Biologics & JAK inhibitors (adalimumab, etanercept, tofacitinib, baricitinib)', use:'RA, psoriatic/axial SpA', grp:'Rheumatology & immunosuppression', rag:'red', note:'Rheumatology / homecare only.' },
+  { d:'Tocilizumab / rituximab', use:'RA, vasculitis', grp:'Rheumatology & immunosuppression', rag:'red', note:'Specialist only.' },
+
+  // ===== Dermatology =====
+  { d:'Topical corticosteroids / emollients', use:'Eczema, psoriasis', grp:'Dermatology', rag:'green', note:'GP use.' },
+  { d:'Topical calcineurin inhibitors (tacrolimus, pimecrolimus)', use:'Atopic eczema', grp:'Dermatology', rag:'amber', note:'Specialist initiation in some areas; GP continuation.' },
+  { d:'Acitretin', use:'Severe psoriasis', grp:'Dermatology', rag:'amber', note:'Dermatology initiation; teratogenic — shared-care LFT/lipids, pregnancy-prevention.' },
+  { d:'Isotretinoin (oral)', use:'Severe acne', grp:'Dermatology', rag:'red', note:'Dermatology only; Pregnancy Prevention Programme; mood monitoring.' },
+  { d:'Methotrexate / ciclosporin (dermatology)', use:'Severe psoriasis/eczema', grp:'Dermatology', rag:'amber', note:'Dermatology initiation; shared-care monitoring.' },
+  { d:'Dapsone', use:'Dermatitis herpetiformis etc.', grp:'Dermatology', rag:'amber', note:'Specialist initiation; shared-care FBC (haemolysis).' },
+  { d:'Biologics (adalimumab, secukinumab, dupilumab)', use:'Psoriasis / severe eczema', grp:'Dermatology', rag:'red', note:'Dermatology / homecare only.' },
+
+  // ===== Neurology =====
+  { d:'Antiepileptics (lamotrigine, levetiracetam, sodium valproate, carbamazepine)', use:'Epilepsy', grp:'Neurology', rag:'green', note:'GP continuation; specialist-led initiation. Valproate: pregnancy-prevention / MHRA restrictions.' },
+  { d:'Gabapentin / pregabalin', use:'Neuropathic pain, epilepsy', grp:'Neurology', rag:'green', note:'GP use; Schedule 3 controlled drugs — misuse awareness.' },
+  { d:'Levodopa (co-careldopa / co-beneldopa)', use:'Parkinson\u2019s disease', grp:'Neurology', rag:'green', note:'GP continuation; specialist-led titration.' },
+  { d:'Dopamine agonists (ropinirole, pramipexole, rotigotine)', use:'Parkinson\u2019s / RLS', grp:'Neurology', rag:'amber', note:'Specialist initiation; impulse-control disorder monitoring.' },
+  { d:'Apomorphine', use:'Advanced Parkinson\u2019s', grp:'Neurology', rag:'red', note:'Specialist only.' },
+  { d:'Riluzole', use:'Motor neurone disease', grp:'Neurology', rag:'red', note:'Specialist only; LFT monitoring.' },
+  { d:'Disease-modifying therapies (fingolimod, dimethyl fumarate, natalizumab, ocrelizumab)', use:'Multiple sclerosis', grp:'Neurology', rag:'red', note:'Neurology / MS service only.' },
+  { d:'Fampridine', use:'MS walking impairment', grp:'Neurology', rag:'red', note:'Specialist only.' },
+  { d:'CGRP antagonists (erenumab, fremanezumab) / triptans', use:'Migraine', grp:'Neurology', rag:'amber', note:'Triptans green (GP); CGRP mAbs amber/specialist headache service.' },
+  { d:'Botulinum toxin', use:'Dystonia, chronic migraine', grp:'Neurology', rag:'red', note:'Specialist administration only.' },
+
+  // ===== Mental health =====
+  { d:'SSRIs / SNRIs (sertraline, citalopram, venlafaxine)', use:'Depression / anxiety', grp:'Mental health', rag:'green', note:'GP initiation and titration.' },
+  { d:'Mirtazapine / tricyclics', use:'Depression', grp:'Mental health', rag:'green', note:'GP use.' },
+  { d:'Lithium', use:'Bipolar / resistant depression', grp:'Mental health', rag:'amber', note:'Specialist initiation; shared-care levels, U&E, TFT, calcium; brand-specific.' },
+  { d:'Most antipsychotics (olanzapine, risperidone, quetiapine, aripiprazole)', use:'Psychosis / bipolar', grp:'Mental health', rag:'amber', note:'Specialist initiation; shared-care metabolic monitoring; GP continuation.' },
+  { d:'Clozapine', use:'Treatment-resistant schizophrenia', grp:'Mental health', rag:'red', note:'Hospital only; mandatory FBC monitoring service registration.' },
+  { d:'Long-acting antipsychotic injections (depots)', use:'Schizophrenia', grp:'Mental health', rag:'red', note:'Mental-health service administration.' },
+  { d:'ADHD medicines (methylphenidate, lisdexamfetamine, dexamfetamine, atomoxetine, guanfacine)', use:'ADHD', grp:'Mental health', rag:'amber', note:'Specialist diagnosis/initiation; shared-care height/weight/BP/HR; controlled drugs.' },
+  { d:'Melatonin', use:'Sleep (children / specialist)', grp:'Mental health', rag:'amber', note:'Specialist initiation in children; shared care.' },
+  { d:'Modafinil', use:'Narcolepsy', grp:'Mental health', rag:'amber', note:'Specialist initiation; shared care.' },
+
+  // ===== Substance misuse =====
+  { d:'Methadone / buprenorphine (OST)', use:'Opioid dependence', grp:'Substance misuse', rag:'amber', note:'Drug-service initiation; shared-care / instalment (FP10MDA) prescribing.' },
+  { d:'Naltrexone', use:'Opioid / alcohol dependence', grp:'Substance misuse', rag:'amber', note:'Specialist service initiation.' },
+  { d:'Acamprosate / disulfiram', use:'Alcohol dependence', grp:'Substance misuse', rag:'amber', note:'Specialist initiation; shared-care LFT monitoring (disulfiram).' },
+  { d:'Nalmefene', use:'Alcohol reduction', grp:'Substance misuse', rag:'amber', note:'Specialist initiation with psychosocial support.' },
+
+  // ===== Bone health =====
+  { d:'Oral bisphosphonates (alendronate, risedronate)', use:'Osteoporosis', grp:'Bone health', rag:'green', note:'GP initiation; dental / dosing advice.' },
+  { d:'IV zoledronate', use:'Osteoporosis', grp:'Bone health', rag:'amber', note:'Specialist / service administration; renal and calcium checks.' },
+  { d:'Denosumab (Prolia)', use:'Osteoporosis', grp:'Bone health', rag:'amber', note:'Shared care; calcium before each dose; do NOT delay/stop without specialist advice (rebound fracture).' },
+  { d:'Teriparatide / romosozumab', use:'Severe osteoporosis', grp:'Bone health', rag:'red', note:'Specialist / metabolic-bone service only.' },
+  { d:'Cinacalcet', use:'Hyperparathyroidism', grp:'Bone health', rag:'amber', note:'Renal/endocrine initiation; shared-care calcium monitoring.' },
+
+  // ===== Urology & men's health =====
+  { d:'Tamsulosin / finasteride / dutasteride', use:'BPH', grp:"Urology & men's health", rag:'green', note:'GP use.' },
+  { d:'PDE5 inhibitors (sildenafil, tadalafil)', use:'Erectile dysfunction', grp:"Urology & men's health", rag:'green', note:'GP use within Schedule 2 / local criteria; once-daily tadalafil discouraged on cost.' },
+  { d:'Testosterone replacement', use:'Hypogonadism', grp:"Urology & men's health", rag:'amber', note:'Specialist initiation; shared-care PSA, haematocrit, testosterone monitoring.' },
+  { d:'Solifenacin / mirabegron', use:'Overactive bladder', grp:"Urology & men's health", rag:'green', note:'GP use; mirabegron BP monitoring.' },
+  { d:'GnRH analogues (goserelin, leuprorelin, triptorelin)', use:'Prostate cancer, endometriosis', grp:"Urology & men's health", rag:'amber', note:'Specialist initiation; GP continuation under shared care.' },
+
+  // ===== Women's health & HRT =====
+  { d:'HRT (estradiol, combined patches/gels, vaginal estrogens)', use:'Menopause', grp:"Women's health & HRT", rag:'green', note:'GP initiation.' },
+  { d:'Combined / progestogen-only contraception', use:'Contraception', grp:"Women's health & HRT", rag:'green', note:'GP / sexual-health provision.' },
+  { d:'Tranexamic acid', use:'Heavy menstrual bleeding', grp:"Women's health & HRT", rag:'green', note:'GP use.' },
+  { d:'Ulipristal (Esmya)', use:'Uterine fibroids', grp:"Women's health & HRT", rag:'red', note:'Specialist only; LFT monitoring restrictions.' },
+  { d:'Clomifene', use:'Anovulatory infertility', grp:"Women's health & HRT", rag:'amber', note:'Specialist initiation.' },
+
+  // ===== Analgesia & pain =====
+  { d:'Paracetamol', use:'Mild–moderate pain / fever', grp:'Analgesia & pain', rag:'green', note:'GP use; not routinely for self-limiting minor conditions (self-care).' },
+  { d:'NSAIDs (ibuprofen, naproxen)', use:'Pain / inflammation', grp:'Analgesia & pain', rag:'green', note:'GP use; lowest dose/shortest duration, GI/renal/CV caution, consider PPI cover.' },
+  { d:'Codeine / dihydrocodeine', use:'Moderate pain', grp:'Analgesia & pain', rag:'green', note:'GP use; CYP2D6 / dependence awareness; avoid in <12s and breastfeeding.' },
+  { d:'Co-codamol / co-dydramol', use:'Moderate pain', grp:'Analgesia & pain', rag:'green', note:'GP use; counts paracetamol toward max dose.' },
+  { d:'Tramadol', use:'Moderate–severe pain', grp:'Analgesia & pain', rag:'green', note:'GP use; Schedule 3 CD; serotonergic/seizure/dependence risk.' },
+  { d:'Morphine / oxycodone (oral)', use:'Severe / cancer pain', grp:'Analgesia & pain', rag:'green', note:'GP can prescribe (Schedule 2 CD); follow opioid-safety and review; specialist advice for escalating non-cancer pain.' },
+  { d:'Buprenorphine / fentanyl transdermal patches', use:'Chronic severe pain', grp:'Analgesia & pain', rag:'green', note:'GP continuation for stable pain; not for acute/opioid-naïve; specialist-led initiation often advised.' },
+  { d:'Gabapentin / pregabalin', use:'Neuropathic pain', grp:'Analgesia & pain', rag:'green', note:'GP use; Schedule 3 CD — misuse/diversion awareness; taper on stopping.' },
+  { d:'Amitriptyline / duloxetine (neuropathic)', use:'Neuropathic / chronic pain', grp:'Analgesia & pain', rag:'green', note:'GP use per NICE NG215.' },
+  { d:'Capsaicin 0.075% cream', use:'Neuropathic / OA pain', grp:'Analgesia & pain', rag:'green', note:'GP use; specialist advice for high-strength 8% patch (red).' },
+  { d:'Lidocaine 5% medicated plasters', use:'Post-herpetic neuralgia', grp:'Analgesia & pain', rag:'amber', note:'Only licensed PHN; specialist/restricted — not for general neuropathic or MSK pain.' },
+  { d:'Tapentadol', use:'Severe pain', grp:'Analgesia & pain', rag:'amber', note:'Often restricted/specialist initiation; check local APC.' },
+  { d:'Ketamine (oral, chronic pain)', use:'Refractory pain', grp:'Analgesia & pain', rag:'red', note:'Pain-clinic specialist only.' },
+  { d:'Nabilone / nabiximols (Sativex)', use:'Pain / MS spasticity', grp:'Analgesia & pain', rag:'red', note:'Specialist only.' },
+
+  // ===== Infections & antimicrobials =====
+  { d:'First-line antibiotics (amoxicillin, nitrofurantoin, doxycycline, flucloxacillin)', use:'Common infections', grp:'Infections & antimicrobials', rag:'green', note:'GP use per local antimicrobial guidance / UKHSA.' },
+  { d:'Antivirals (aciclovir, valaciclovir)', use:'Herpes / shingles', grp:'Infections & antimicrobials', rag:'green', note:'GP use; start early for shingles/severe HSV.' },
+  { d:'Antifungals (oral fluconazole, terbinafine)', use:'Candidiasis / tinea', grp:'Infections & antimicrobials', rag:'green', note:'GP use; terbinafine LFT check for nail courses.' },
+  { d:'"Last-line" / restricted antibiotics (co-amoxiclav, ciprofloxacin, clarithromycin)', use:'Specific infections', grp:'Infections & antimicrobials', rag:'green', note:'GP use but stewardship-restricted; quinolone MHRA cautions.' },
+  { d:'Long-term antibiotic prophylaxis', use:'Recurrent UTI / bronchiectasis', grp:'Infections & antimicrobials', rag:'amber', note:'Often specialist-initiated; shared-care review and resistance monitoring.' },
+  { d:'Antiretrovirals (HIV) / PrEP', use:'HIV treatment & prevention', grp:'Infections & antimicrobials', rag:'red', note:'GUM / HIV specialist service only.' },
+  { d:'Hepatitis C direct-acting antivirals', use:'Chronic hepatitis C', grp:'Infections & antimicrobials', rag:'red', note:'Hepatology / ODN only.' },
+  { d:'Antituberculosis therapy (rifampicin, isoniazid, etc.)', use:'Tuberculosis', grp:'Infections & antimicrobials', rag:'red', note:'TB service only.' },
+
+  // ===== Eye, ENT & oral =====
+  { d:'Chloramphenicol eye drops/ointment', use:'Bacterial conjunctivitis', grp:'Eye, ENT & oral', rag:'green', note:'OTC / GP — self-care for simple conjunctivitis.' },
+  { d:'Ocular lubricants', use:'Dry eye', grp:'Eye, ENT & oral', rag:'green', note:'Largely self-care; prescribe in chronic/Sjögren’s.' },
+  { d:'Latanoprost / timolol eye drops', use:'Glaucoma / ocular hypertension', grp:'Eye, ENT & oral', rag:'green', note:'GP continuation; ophthalmology-led management.' },
+  { d:'Intravitreal anti-VEGF (ranibizumab, aflibercept)', use:'Wet AMD, DMO', grp:'Eye, ENT & oral', rag:'red', note:'Ophthalmology only.' },
+  { d:'Ciclosporin eye drops (Ikervis)', use:'Severe keratitis / dry eye', grp:'Eye, ENT & oral', rag:'amber', note:'Ophthalmology initiation; shared care.' },
+
+  // ===== Palliative & end-of-life =====
+  { d:'Anticipatory ("just in case") medicines', use:'End-of-life symptom control', grp:'Palliative & end-of-life', rag:'green', note:'GP prescribing — morphine, midazolam, levomepromazine, hyoscine/glycopyrronium for the community syringe driver.' },
+  { d:'Methadone (analgesia, palliative)', use:'Complex cancer pain', grp:'Palliative & end-of-life', rag:'amber', note:'Palliative-specialist initiation; shared care.' },
+  { d:'Ketamine / specialist syringe-driver combinations', use:'Refractory symptoms', grp:'Palliative & end-of-life', rag:'amber', note:'Palliative-specialist advice / initiation.' },
+
+  // ===== Nutrition & borderline substances =====
+  { d:'Oral nutritional supplements (Ensure, Fortisip)', use:'Malnutrition (MUST-guided)', grp:'Nutrition & borderline substances', rag:'green', note:'GP per local pathway/ACBS; food-first first, review need.' },
+  { d:'Gluten-free foods', use:'Coeliac disease', grp:'Nutrition & borderline substances', rag:'green', note:'Local-policy dependent (many ICBs restrict to bread/flour or have stopped).' },
+  { d:'Specialist infant formulas (EHF, amino-acid)', use:'CMPA', grp:'Nutrition & borderline substances', rag:'green', note:'GP per pathway; amino-acid formula often dietitian/specialist-recommended.' },
+  { d:'Vitamin D / calcium', use:'Deficiency / osteoporosis adjunct', grp:'Nutrition & borderline substances', rag:'green', note:'Prescribe for treatment of deficiency; not as a general supplement (self-care).' },
+
+  // ===== Cancer & haematology =====
+  { d:'Cytotoxic chemotherapy', use:'Cancer', grp:'Cancer & haematology', rag:'red', note:'Oncology / haematology only.' },
+  { d:'Tamoxifen', use:'Breast cancer', grp:'Cancer & haematology', rag:'amber', note:'Specialist initiation; GP continuation under shared care.' },
+  { d:'Aromatase inhibitors (anastrozole, letrozole)', use:'Breast cancer', grp:'Cancer & haematology', rag:'amber', note:'Specialist initiation; shared-care bone-health monitoring.' },
+  { d:'Anti-androgens (bicalutamide, enzalutamide, abiraterone)', use:'Prostate cancer', grp:'Cancer & haematology', rag:'red', note:'Oncology only (bicalutamide amber in some areas).' },
+  { d:'Erythropoiesis-stimulating agents (epoetin, darbepoetin)', use:'CKD / chemo anaemia', grp:'Cancer & haematology', rag:'amber', note:'Renal / oncology initiation; shared-care Hb/iron monitoring.' },
+  { d:'Hydroxycarbamide', use:'Myeloproliferative disorders, SCD', grp:'Cancer & haematology', rag:'amber', note:'Haematology initiation; shared-care FBC monitoring.' },
+
+  // ===== Low clinical value / not recommended =====
+  { d:'Lidocaine 5% medicated plasters', use:'Neuropathic pain', grp:'Low clinical value', rag:'grey', note:'Only licensed post-herpetic neuralgia; otherwise not routinely prescribed.' },
+  { d:'Glucosamine / chondroitin', use:'Osteoarthritis', grp:'Low clinical value', rag:'grey', note:'Low clinical value; do not prescribe.' },
+  { d:'Omega-3 / fish oils', use:'Hypertriglyceridaemia', grp:'Low clinical value', rag:'grey', note:'Low clinical value; do not routinely prescribe.' },
+  { d:'Homeopathy / herbal remedies', use:'Various', grp:'Low clinical value', rag:'grey', note:'Not prescribed on the NHS.' },
+  { d:'Co-proxamol', use:'Analgesia', grp:'Low clinical value', rag:'grey', note:'Withdrawn for safety; not for routine prescribing.' },
+  { d:'Rubefacients / capsaicin (low-conc.)', use:'Musculoskeletal pain', grp:'Low clinical value', rag:'grey', note:'Limited evidence; self-care item.' },
+  { d:'Probiotics, vitamins & minerals', use:'Supplementation', grp:'Low clinical value', rag:'grey', note:'Limited evidence; not as supplements / "pick-me-up" (exceptions: diagnosed deficiency).' },
+];
+
+(function(){
+  const $ = q => document.querySelector(q);
+  const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  // tabs
+  document.querySelectorAll('.pg-tab').forEach(t=>t.addEventListener('click',()=>{
+    document.querySelectorAll('.pg-tab').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.pg-panel').forEach(x=>x.classList.remove('on'));
+    t.classList.add('on');
+    $('#tab-'+t.dataset.tab).classList.add('on');
+  }));
+
+  // RAG list
+  let rq='', rfilt='all';
+  const RAG_LABEL={green:'Green',amber:'Amber · shared care',red:'Red · specialist',grey:'Grey · avoid'};
+  const RAG_GROUPS=['Analgesia & pain','Diabetes & endocrine','Cardiovascular','Respiratory','Gastrointestinal','Rheumatology & immunosuppression','Dermatology','Neurology','Mental health','Substance misuse','Bone health',"Urology & men's health","Women's health & HRT",'Infections & antimicrobials','Eye, ENT & oral','Palliative & end-of-life','Nutrition & borderline substances','Cancer & haematology','Low clinical value'];
+  function ragFiltered(){
+    const qq=rq.trim().toLowerCase();
+    return RAG.filter(x=>{
+      if(rfilt!=='all' && x.rag!==rfilt) return false;
+      if(qq){ if(!((x.d+' '+x.use+' '+x.note+' '+(x.grp||'')).toLowerCase().includes(qq))) return false; }
+      return true;
+    });
+  }
+  function renderRag(){
+    const list=ragFiltered();
+    $('#ragCount').textContent = list.length+' of '+RAG.length+' medicines';
+    if(!list.length){ $('#ragList').innerHTML=`<div class="pg-rag-empty">No drugs match. Try another term.</div>`; return; }
+    const groups=RAG_GROUPS.filter(g=>list.some(x=>x.grp===g));
+    // any items whose group isn't in the canonical order go last
+    list.forEach(x=>{ if(x.grp && groups.indexOf(x.grp)<0) groups.push(x.grp); });
+    $('#ragList').innerHTML = groups.map(g=>{
+      const items=list.filter(x=>x.grp===g);
+      if(!items.length) return '';
+      return `<div class="pg-rag-grp">${esc(g)} <span class="n">${items.length}</span></div>`+
+        items.map(x=>`
+        <div class="pg-ritem ${x.rag}">
+          <span class="rtag">${esc(RAG_LABEL[x.rag])}</span>
+          <div class="rbody"><h5>${esc(x.d)}</h5><div class="ruse">${esc(x.use)}</div><p>${esc(x.note)}</p></div>
+        </div>`).join('');
+    }).join('');
+  }
+  renderRag();
+  $('#ragSearch').addEventListener('input',e=>{rq=e.target.value; renderRag();});
+  $('#ragFilters').addEventListener('click',e=>{
+    const b=e.target.closest('.pg-rfilt'); if(!b) return;
+    rfilt=b.dataset.r;
+    document.querySelectorAll('.pg-rfilt').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    renderRag();
+  });
+})();
+</script>
+
+<script src="../assets/local-area.js?v=1"></script>
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+<script>RGPArea && RGPArea.renderSelect('pgAreaPicker');</script>
+</body>
+</html>

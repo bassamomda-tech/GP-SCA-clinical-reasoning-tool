@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Postnatal Depression — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Postnatal depression management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🤱",
+  title:"Postnatal Depression",
+  stemTitle:"Perinatal depression \u2014 detect, risk-assess, treat, protect mother &amp; baby",
+  stemSub:"Primary-care management of postnatal depression \u2014 screen and distinguish it from the baby blues and postpartum psychosis, assess maternal + infant risk, offer psychological therapy and breastfeeding-compatible medication, and refer urgently where there is risk. NICE CG192 \u00b7 2026.",
+  guideline:"NICE CG192",
+  glance:[
+    {lbl:"Screen", val:"Whooley / EPDS", sub:"antenatal + postnatal"},
+    {lbl:"Baby blues", val:"Days 3\u201310, self-limiting", sub:"reassure"},
+    {lbl:"Mild\u2013mod", val:"Psychological therapy", sub:"guided self-help/CBT"},
+    {lbl:"Mod\u2013severe", val:"Therapy \u00b1 SSRI", sub:"sertraline if breastfeeding"},
+    {lbl:"Red flag", val:"Psychosis / suicidality", sub:"= same-day perinatal"},
+    {lbl:"Always", val:"Assess baby + bonding", sub:"safeguarding"}
+  ],
+  flow:[
+    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Postpartum psychosis + risk \u2014 emergency",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Postpartum psychosis", html:"Rapid onset (often first 2 weeks): mania, confusion, delusions, hallucinations, marked behaviour change \u2192 <b>emergency same-day perinatal psychiatry / admission</b> \u2014 a psychiatric emergency."},
+          {t:"🔴 Suicidality / self-harm", html:"Thoughts of self-harm, suicide or harming the baby \u2192 urgent risk assessment + crisis/perinatal team."},
+          {t:"🟠 Severe depression", html:"Significant functional impairment, not eating/drinking, psychotic features \u2192 urgent referral."},
+          {t:"👶 Infant safety", html:"Assess bonding, infant care and safeguarding at every contact."}
+        ]},
+        {b:"why", html:"Suicide is a leading cause of maternal death in the year after birth, and postpartum psychosis is a true emergency with rapid deterioration. Distinguishing these from self-limiting \u2018baby blues\u2019 and treatable depression is the core safety task."}
+      ]},
+    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Detect + differentiate",
+      blocks:[
+        {b:"kv", rows:[
+          ["Screen","Whooley questions at antenatal + postnatal contacts; EPDS to quantify severity"],
+          ["Baby blues","Days 3\u201310, tearful/labile, self-limiting \u2014 reassure + monitor (NOT depression)"],
+          ["Postnatal depression","Persistent low mood/anhedonia \u22652 weeks, often within 1\u20133 months; guilt, anxiety, sleep/appetite change, poor bonding"],
+          ["Differentials","Anxiety/OCD (intrusive thoughts), bipolar (screen \u2014 high relapse risk postpartum), hypothyroidism/anaemia, psychosis"]
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Treatment", title:"Stepped care (CG192)",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Mild\u2013moderate", title:"Psychological therapy", when:"first-line",
+           html:"Guided self-help, CBT or interpersonal therapy; facilitated self-help. Prioritise rapid access in the perinatal period. Social support, health-visitor input, peer support."},
+          {step:"Moderate\u2013severe", title:"Therapy \u00b1 antidepressant", when:"shared decision",
+           fromLabel:"if more severe / therapy insufficient",
+           html:"Offer an SSRI \u2014 <b>sertraline 50 mg OD (titrate to 100\u2013200 mg)</b> is a usual choice when breastfeeding (low milk levels). Discuss benefits/risks of treating vs untreated depression on mother + baby; do not stop effective pre-existing antidepressants without discussion."},
+          {step:"Specialist", title:"Perinatal mental health team", when:"severe / risk / bipolar",
+           fromLabel:"escalate",
+           html:"Severe, psychotic, bipolar, suicidality, or treatment-resistant \u2192 specialist perinatal care; consider Mother &amp; Baby Unit to keep mother + infant together."}
+        ]},
+        {b:"warn", html:"Most antidepressants are compatible with breastfeeding (sertraline preferred) \u2014 untreated maternal depression carries real risks to mother and child. Avoid abrupt discontinuation. Screen for bipolar before starting (mania risk)."}
+      ]},
+    {t:"node", d:"life", n:"4", tag:"Non-drug + support", title:"Wider support",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"👨‍👩‍👧 Practical support", html:"Mobilise partner/family help with feeds and sleep; reduce isolation."},
+          {t:"🏥 Health visitor", html:"Joint working; listening visits; monitor mother + infant development."},
+          {t:"🤝 Peer support", html:"Signpost to perinatal peer support / charities (e.g. PANDAS)."},
+          {t:"🍼 Bonding", html:"Support mother\u2013infant interaction; video-feedback interventions where available."},
+          {t:"😴 Basics", html:"Sleep, nutrition, gentle activity; check ferritin/TFTs if fatigue prominent."}
+        ]}
+      ]},
+    {t:"node", d:"monitor", n:"5", tag:"Follow-up", title:"Close review",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"1\u20132 weeks", title:"Early review", html:"Especially after starting medication \u2014 reassess mood, risk, side effects, infant."},
+          {n:"2", when:"Ongoing", title:"Monitor response", html:"EPDS to track; continue antidepressant \u22656 months after recovery; coordinate with health visitor."},
+          {n:"3", when:"Future pregnancies", title:"Relapse prevention", html:"High recurrence risk \u2014 pre-conception/early-pregnancy planning, especially bipolar/previous PPP."}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"6", tag:"Refer", title:"Referral",
+      arrow:"risk + severity",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Postpartum psychosis, suicidality, or risk to baby \u2192 same-day perinatal psychiatry / crisis team."},
+          {t:"Perinatal mental health", html:"Moderate\u2013severe, bipolar, complex, or treatment-resistant; Mother &amp; Baby Unit if admission needed."},
+          {t:"Talking therapies", html:"Prioritised perinatal access for mild\u2013moderate cases."},
+          {t:"Safeguarding", html:"Where infant welfare is a concern \u2014 follow local pathways."}
+        ]},
+        {b:"say", html:"What you\u2019re feeling is common and treatable \u2014 it\u2019s not your fault and it doesn\u2019t make you a bad parent. Talking therapy helps, and if we use an antidepressant there are ones that are safe while breastfeeding. If you ever feel unsafe, or have frightening thoughts, contact us straight away \u2014 we can get help the same day."}
+      ]}
+  ],
+  foot:"Management of perinatal/postnatal depression in primary care; postpartum psychosis and suicidality are emergencies. Verify against current NICE CG192 and the UK Drugs in Lactation Advisory Service (breastfeeding safety)."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

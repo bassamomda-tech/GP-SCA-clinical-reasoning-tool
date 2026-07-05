@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sciatica Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #f6f5f2;
+  --surface:   #ffffff;
+  --border:    #e2dfd8;
+  --text:      #1a1917;
+  --muted:     #6b6760;
+  --accent:    #1d4ed8;
+
+  --safety-h:  #b91c1c;
+  --safety-bg: #fef2f2;
+  --safety-br: #fecaca;
+
+  --diag-h:    #0369a1;
+  --diag-bg:   #f0f9ff;
+  --diag-br:   #bae6fd;
+
+  --ref-h:     #6d28d9;
+  --ref-bg:    #f5f3ff;
+  --ref-br:    #ddd6fe;
+
+  --treat-h:   #065f46;
+  --treat-bg:  #ecfdf5;
+  --treat-br:  #a7f3d0;
+
+  --life-h:    #92400e;
+  --life-bg:   #fffbeb;
+  --life-br:   #fde68a;
+
+  --conn:      #d1cfc9;
+
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+}
+
+body { padding: 0 0 60px; }
+
+.stem-banner {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--text); color: #fff;
+  padding: 18px 22px; position: sticky; top: 0; z-index: 50;
+}
+.sb-icon { font-size: 2rem; line-height: 1; }
+.stem-banner b { display: block; font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em; }
+.stem-banner small { font-size: 0.78rem; opacity: 0.65; font-weight: 400; }
+
+.alg-progress {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 22px; background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.82rem; color: var(--muted); font-weight: 500; flex-wrap: wrap;
+}
+.pbar { flex: 1; min-width: 120px; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.pbar-fill { height: 100%; width: 0%; background: var(--accent); border-radius: 99px; transition: width .35s ease; }
+.pcount { font-weight: 700; color: var(--text); }
+.reset {
+  margin-left: auto; background: none; border: 1px solid var(--border);
+  color: var(--muted); font-size: 0.76rem; padding: 3px 10px;
+  border-radius: 6px; cursor: pointer; font-family: inherit;
+}
+.reset:hover { background: var(--bg); }
+
+.alg-flow {
+  max-width: 780px; margin: 28px auto 0;
+  padding: 0 16px; display: flex; flex-direction: column; align-items: stretch;
+}
+.connector {
+  width: 2px; height: 28px; background: var(--conn);
+  align-self: center; border-radius: 2px;
+}
+
+.node {
+  background: var(--surface); border-radius: 14px;
+  border: 1.5px solid var(--border); overflow: hidden; transition: box-shadow .2s;
+}
+.node:hover { box-shadow: 0 4px 18px rgba(0,0,0,.07); }
+.node[data-type="SAFETY"]    { border-left: 4px solid var(--safety-h); }
+.node[data-type="DIAGNOSE"]  { border-left: 4px solid var(--diag-h); }
+.node[data-type="REFER"]     { border-left: 4px solid var(--ref-h); }
+.node[data-type="TREAT"]     { border-left: 4px solid var(--treat-h); }
+.node[data-type="LIFESTYLE"] { border-left: 4px solid var(--life-h); }
+
+.node-head-row {
+  display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px 0;
+}
+.node-num {
+  flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; font-weight: 700; color: #fff;
+}
+.node[data-type="SAFETY"]    .node-num { background: var(--safety-h); }
+.node[data-type="DIAGNOSE"]  .node-num { background: var(--diag-h); }
+.node[data-type="REFER"]     .node-num { background: var(--ref-h); }
+.node[data-type="TREAT"]     .node-num { background: var(--treat-h); }
+.node[data-type="LIFESTYLE"] .node-num { background: var(--life-h); }
+
+.node-head { flex: 1; }
+.node-tag {
+  display: inline-block; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 99px; margin-bottom: 4px;
+}
+.node[data-type="SAFETY"]    .node-tag { background: var(--safety-bg); color: var(--safety-h); }
+.node[data-type="DIAGNOSE"]  .node-tag { background: var(--diag-bg);   color: var(--diag-h); }
+.node[data-type="REFER"]     .node-tag { background: var(--ref-bg);    color: var(--ref-h); }
+.node[data-type="TREAT"]     .node-tag { background: var(--treat-bg);  color: var(--treat-h); }
+.node[data-type="LIFESTYLE"] .node-tag { background: var(--life-bg);   color: var(--life-h); }
+
+.node-head h3 { font-size: 1rem; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; }
+.node-tick { flex-shrink: 0; display: flex; align-items: center; gap: 6px; }
+.node-tick label { display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+.node-tick input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; }
+.tlbl { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
+
+.node.done { opacity: 0.68; }
+.node.done .node-num { background: #94a3b8 !important; }
+
+.node-body { padding: 12px 18px 14px; font-size: 0.9rem; }
+.intro { color: var(--muted); font-size: 0.87rem; margin-bottom: 10px; }
+
+.kv {
+  display: grid; grid-template-columns: 170px 1fr; gap: 0;
+  border: 1px solid var(--border); border-radius: 10px; overflow: hidden; font-size: 0.86rem;
+}
+.kv > div { padding: 8px 11px; border-bottom: 1px solid var(--border); }
+.kv > div:nth-last-child(-n+2) { border-bottom: none; }
+.kv > div:nth-child(odd) { background: var(--bg); font-weight: 600; color: var(--text); border-right: 1px solid var(--border); }
+.kv > div:nth-child(even) { background: var(--surface); }
+
+.rfgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
+@media (max-width: 540px) { .rfgrid { grid-template-columns: 1fr; } }
+.rftile {
+  background: var(--safety-bg); border: 1px solid var(--safety-br);
+  border-radius: 10px; padding: 10px 12px; font-size: 0.84rem; line-height: 1.45;
+}
+.rftile b { display: block; color: var(--safety-h); margin-bottom: 2px; font-size: 0.85rem; }
+
+.branch { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin-top: 6px; }
+.b-card { border: 1.5px solid var(--treat-br); background: var(--treat-bg); border-radius: 10px; padding: 11px 13px; font-size: 0.84rem; }
+.b-cond { font-size: 0.75rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 700; color: var(--treat-h); margin-bottom: 4px; }
+.b-drug { font-weight: 700; font-size: 0.92rem; margin-bottom: 3px; }
+.b-note { color: var(--muted); font-size: 0.82rem; }
+
+.ladder { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
+.rung {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; padding: 9px 12px; font-size: 0.87rem; position: relative;
+}
+.rung::before { content: '↑'; position: absolute; left: 16px; top: -13px; color: var(--muted); font-size: 0.8rem; }
+.rung:first-child::before { display: none; }
+.rn { flex-shrink: 0; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding-top: 2px; min-width: 52px; }
+.rt { flex: 1; line-height: 1.45; }
+
+.lsgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
+@media (max-width: 540px) { .lsgrid { grid-template-columns: 1fr; } }
+.lstile { background: var(--life-bg); border: 1px solid var(--life-br); border-radius: 10px; padding: 10px 12px; font-size: 0.84rem; line-height: 1.45; }
+.lstile b { display: block; color: var(--life-h); margin-bottom: 2px; font-size: 0.85rem; }
+
+.pill { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 99px; letter-spacing: .03em; vertical-align: middle; white-space: nowrap; }
+.pill-red    { background: #fee2e2; color: #b91c1c; }
+.pill-purple { background: #ede9fe; color: #6d28d9; }
+.pill-blue   { background: #dbeafe; color: #1d4ed8; }
+.pill-teal   { background: #ccfbf1; color: #0f766e; }
+.pill-amber  { background: #fef3c7; color: #b45309; }
+.pill-green  { background: #dcfce7; color: #15803d; }
+.pill-grey   { background: #f1f5f9; color: #475569; }
+
+.why-row { border-top: 1px solid var(--border); }
+.why-btn {
+  width: 100%; display: flex; align-items: center; gap: 6px;
+  padding: 9px 18px; background: none; border: none; font-family: inherit;
+  font-size: 0.8rem; font-weight: 600; color: var(--muted); cursor: pointer; text-align: left; letter-spacing: .02em;
+}
+.why-btn:hover { background: var(--bg); color: var(--text); }
+.caret { transition: transform .22s; display: inline-block; }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.why-drawer { display: none; padding: 0 18px 14px; font-size: 0.84rem; color: var(--muted); line-height: 1.6; font-style: italic; }
+.why-drawer.open { display: block; }
+.why-drawer b { color: var(--text); font-style: normal; }
+
+.warn-box { margin-top: 8px; padding: 8px 11px; background: #fee2e2; border: 1px solid #fecaca; border-radius: 8px; font-size: 0.83rem; line-height: 1.5; }
+.info-box  { margin-top: 8px; padding: 8px 11px; background: var(--diag-bg); border: 1px solid var(--diag-br); border-radius: 8px; font-size: 0.83rem; line-height: 1.5; }
+
+.diag-subhead { font-weight: 700; font-size: 0.9rem; margin: 14px 0 6px; color: var(--treat-h); }
+
+/* Dermatomal reference table */
+.derma-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 8px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+.derma-table th { background: var(--bg); font-weight: 700; padding: 7px 10px; text-align: left; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+.derma-table td { padding: 6px 10px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; }
+.derma-table tr:last-child td { border-bottom: none; }
+.derma-table td:last-child, .derma-table th:last-child { border-right: none; }
+.derma-table tr:nth-child(even) td { background: var(--bg); }
+
+.alg-foot {
+  max-width: 780px; margin: 24px 16px 0; padding: 14px 22px;
+  font-size: 0.78rem; color: var(--muted); background: var(--surface);
+  border-radius: 12px; border: 1px solid var(--border); line-height: 1.6;
+}
+@media (min-width: 812px) { .alg-foot { margin-left: auto; margin-right: auto; } }
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">⚡</div>
+  <div>
+    <b>Sciatica — Assessment &amp; Management</b>
+    <small>RCGP SCA pathway · UK primary care · 9-step algorithm</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — confirm radicular pain, exclude cauda equina, then manage conservatively (most settles), with imaging reserved for surgical candidates. Rehabilitate and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Sciatica (lumbar radiculopathy)</span><div class="body">Leg-dominant pain in a dermatomal distribution ± numbness/weakness. Straight-leg raise; examine power, reflexes, sensation.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — cauda equina / severe deficit</span><span class="ttl">Cauda equina or severe deficit?</span><div class="body">Bilateral sciatica, saddle anaesthesia, bladder/bowel dysfunction → emergency. Progressive or severe motor weakness (e.g. foot drop).</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency / urgent</span><div class="body">Cauda equina → same-day MRI. Significant/progressive weakness → urgent spinal referral.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box act"><span class="lbl">Manage</span><span class="ttl">Conservative first</span><div class="body">Stay active; analgesia (NSAID; neuropathic agent if needed); physiotherapy. Most improve within weeks.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 2 · if not settling</span></div>
+    <div class="box ix" style="max-width:660px;"><span class="lbl">Step 2 · Investigate</span><span class="ttl">MRI for persistent radiculopathy</span><div class="body">MRI lumbar spine if symptoms persist beyond 4–6 weeks and the patient would consider an intervention (epidural/surgery). Imaging is to plan treatment, not to confirm the diagnosis.</div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> cauda equina. <span class="pill pill-purple">Spinal / MSK</span> radicular pain not settling, with MRI-confirmed concordant lesion, for epidural or surgical opinion.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · self-management &amp; rehab</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Self-management &amp; rehab</span><span class="ttl">Stay active — most settle in weeks</span><div class="body"><b>Keep active and continue normal activities/work</b> as able; avoid bed rest. <b>Physiotherapy and a graded exercise programme</b>; analgesia (NSAID; consider a neuropathic agent per NICE, reviewing benefit). Reassurance about the favourable natural history; address yellow flags and psychosocial barriers. Weight management and core conditioning for recurrence prevention.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Cauda equina advice is mandatory</span><div class="body"><b>Give explicit cauda equina safety-net advice</b> — seek emergency care for numbness around the back passage/genitals, difficulty passing or controlling urine/bowels, or new bilateral/worsening leg weakness. <b>Review at 4–6 weeks</b>; <b>image to treat, not to diagnose</b> — MRI only if not settling and the patient would consider intervention. Urgent spinal referral for progressive motor weakness (e.g. foot drop).</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Image to treat, not to diagnose:</b> reserve MRI for those whose sciatica fails to settle and who would consider intervention — but always exclude cauda equina urgently.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- ══ STEP 1: SAFETY ══ -->
+  <div class="node" data-type="SAFETY" data-step="1" id="step1">
+    <div class="node-head-row">
+      <div class="node-num">1</div>
+      <div class="node-head">
+        <span class="node-tag">Safety</span>
+        <h3>Exclude cauda equina syndrome and serious spinal pathology first</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Ask these questions at every sciatica consultation — including follow-up. Cauda equina syndrome (CES) can develop or worsen at any point in the clinical course. Missing it causes permanent neurological damage.</p>
+      <div class="rfgrid">
+        <div class="rftile"><b>Cauda equina syndrome (CES)</b> Bilateral sciatica OR saddle area numbness (perianal, perineal, inner thighs) OR new bladder dysfunction (retention, incontinence, loss of urge) OR new bowel dysfunction (incontinence, constipation) → 999 same-day emergency MRI. Irreversible sphincter damage occurs within hours of onset</div>
+        <div class="rftile"><b>Progressive motor deficit</b> Rapidly worsening leg weakness — foot drop developing over hours to days, inability to stand on toes (S1) or heels (L4/L5) → same-day neurosurgical referral. Progressive weakness is a surgical emergency distinct from CES but equally time-critical</div>
+        <div class="rftile"><b>Spinal malignancy / metastasis</b> Age &gt;50 (or any age with known cancer), unremitting night pain that doesn't ease with position change, weight loss &gt;10% unexplained, thoracic back pain, multiple levels affected → 2WW bone pathway + urgent MRI (NICE NG12). Breast, prostate, lung, kidney, thyroid — "BLT on KT" mnemonic</div>
+        <div class="rftile"><b>Spinal fracture</b> Major trauma at any age. Minor trauma or no trauma in: osteoporosis risk (post-menopausal, prolonged steroid use, age &gt;70) + sudden severe back ± leg pain → same-day X-ray ± MRI. Pathological fracture through metastasis can present with sudden radiculopathy</div>
+        <div class="rftile"><b>Spinal infection — epidural abscess / discitis</b> Back ± leg pain + fever + elevated CRP/WCC. Risk factors: IV drug use, recent spinal procedure, immunosuppression (steroids, immunotherapy, diabetes), bacteraemia. Presentation can be subtle — back pain + CRP &gt;100 without clear cause → MRI urgently</div>
+        <div class="rftile"><b>Cauda equina — incomplete (CES-I)</b> Bilateral sciatica + perianal / saddle hypoaesthesia + some urinary symptoms (difficulty initiating, reduced stream) but retention not complete → same-day emergency MRI. CES-I has potential to deteriorate to complete CES (CES-R) — do not watch and wait</div>
+        <div class="rftile"><b>Vascular claudication mimicking sciatica</b> Buttock / thigh / calf pain on walking relieved by standing still (peripheral arterial disease) vs sciatica (relieved by sitting). Absent femoral/popliteal pulses, ABPI &lt;0.9, risk factors (smoking, diabetes, HTN) → vascular referral, not spinal</div>
+        <div class="rftile"><b>Inflammatory spondyloarthropathy</b> Age &lt;40, bilateral sacroiliac pain, morning stiffness &gt;60 minutes, improves with exercise (not rest), associated psoriasis/IBD/uveitis → inflammatory, not mechanical. HLA-B27 testing; rheumatology referral. Ankylosing spondylitis missed as "chronic back pain" for average 7 years</div>
+      </div>
+      <div class="warn-box"><b style="color:var(--safety-h);">CES screening — ask at EVERY consultation:</b> "Any numbness in your back passage, genitals, or inner thighs? Any change in how you pass urine? Any loss of control of your bladder or bowels?" A single "yes" to any of these = same-day emergency MRI, regardless of how mild the symptoms seem.</div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Cauda equina syndrome is the most important medicolegal diagnosis in UK general practice.</b> It accounts for the largest single category of successful negligence claims against GPs (NHS Resolution data). The critical error is not recognising CES-I (incomplete) — patients with incomplete CES have incomplete urinary retention, altered bladder sensation, or saddle hypoaesthesia without complete retention. These patients must be referred same-day regardless of symptom severity, because CES-I can convert to CES-R (retention) within hours, at which point prognosis for sphincter recovery is significantly worse. The NICE guidance (NG59) is unambiguous: any suspected CES = same-day emergency MRI. Asking the three screening questions takes 30 seconds and must be documented at every back/sciatica consultation. Progressive foot drop developing over days (not months) is a neurosurgical emergency — decompression within 48–72 hours gives the best chance of motor recovery.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══ STEP 2: DIAGNOSE — History ══ -->
+  <div class="node" data-type="DIAGNOSE" data-step="2" id="step2">
+    <div class="node-head-row">
+      <div class="node-num">2</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Structured history — confirm true radiculopathy and identify root level</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">"Sciatica" is a symptom, not a diagnosis. Confirm true nerve root pain (radiating below the knee in a dermatomal pattern) and distinguish it from referred somatic back pain, which is far more common and managed differently.</p>
+      <div class="kv">
+        <div>True sciatica vs referred pain</div>
+        <div><b>True radiculopathy:</b> pain radiates below the knee in a specific dermatomal distribution, often with paraesthesia (tingling/numbness) and/or weakness in the corresponding myotome. Leg pain &gt; back pain in severity. <b>Referred somatic pain:</b> dull aching into buttock/posterior thigh not reaching below knee — not true sciatica; managed as non-specific back pain</div>
+        <div>Onset &amp; mechanism</div>
+        <div>Sudden (acute disc prolapse — often with trivial trigger: bending/lifting/coughing). Insidious (lateral recess stenosis, foraminal OA — older patient). Prior episodes (recurrent disc disease, degenerative change). Duration: acute (&lt;6 weeks), subacute (6–12 weeks), chronic (&gt;12 weeks)</div>
+        <div>Dermatomal distribution</div>
+        <div>L3: anterior thigh to medial knee. L4: medial calf and foot, great toe dorsum. L5: lateral calf, dorsum of foot, great toe (most common). S1: posterior thigh/calf, lateral foot, small toes (second most common). Bilateral symptoms → CES until proven otherwise</div>
+        <div>Character of pain</div>
+        <div>Shooting, electric, burning, stabbing pain radiating down the leg. Often more severe than back pain. Paraesthesia (tingling) in dermatomal distribution. Numbness (sensory loss) indicates nerve compression. Burning/allodynia suggests sensitisation</div>
+        <div>Aggravating factors</div>
+        <div>Sitting (increases intradiscal pressure — L4/5, L5/S1 disc prolapse). Coughing / sneezing / Valsalva (↑ intradiscal pressure → shooting leg pain). Trunk flexion. Walking short distances (stenosis — neurogenic claudication). Morning stiffness &gt;1h (inflammatory)</div>
+        <div>Relieving factors</div>
+        <div>Lying flat with legs supported (disc prolapse). Walking (disc prolapse often worse sitting). Leaning forward / sitting (spinal stenosis — widens canal). Side-lying in foetal position (reduces disc pressure on nerve). NSAIDs / rest</div>
+        <div>Neurogenic claudication</div>
+        <div>Bilateral leg pain / weakness / tingling brought on by walking, relieved by sitting or forward flexion (shopping trolley sign) — lumbar spinal stenosis in older patient (&gt;60). Distinguish from vascular claudication (relieved by standing still, absent pulses)</div>
+        <div>Bladder / bowel — mandatory</div>
+        <div>Ask explicitly at every consultation: urinary retention, incontinence, altered sensation passing urine or stool, saddle anaesthesia. New onset any of these = CES until MRI excludes → same-day emergency referral</div>
+        <div>Yellow flags</div>
+        <div>Fear-avoidance beliefs, catastrophising ("it will never get better"), passive coping, depression/anxiety, work dissatisfaction, compensation/litigation. STarT Back / STarT MSK tool: risk-stratify into low/medium/high. High-risk patients need psychology input alongside physiotherapy</div>
+        <div>Medical history</div>
+        <div>Previous disc surgery (recurrent prolapse / epidural fibrosis). Diabetes (diabetic lumbosacral radiculoplexus neuropathy — Bruns-Garland syndrome — mimics sciatica). Cancer history. Immunosuppression. Prolonged steroid use (osteoporotic fracture risk). Anticoagulation (epidural haematoma risk after procedure)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Only pain radiating below the knee in a dermatomal pattern constitutes true sciatica.</b> Studies show that 40–50% of patients referred for sciatica have referred somatic pain (buttock/posterior thigh ache) rather than true radiculopathy — they do not need MRI or surgical consideration, only active rehabilitation. Distinguishing these two groups at the first consultation saves unnecessary investigations, prevents inappropriate surgical referral, and gives the correct prognosis (referred somatic pain resolves faster than true radiculopathy). The shopping trolley sign (stooped forward on trolley reduces spinal stenosis symptoms) is a memorable clinical indicator for lumbar canal stenosis that patients often volunteer without prompting — asking directly reveals this diagnosis in older patients with bilateral leg symptoms. Diabetic amyotrophy (Bruns-Garland syndrome) causes acute severe proximal leg pain with rapid muscle wasting mimicking L3/L4 radiculopathy — it occurs in newly diagnosed or poorly controlled diabetes and must not be referred for spinal surgery.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══ STEP 3: DIAGNOSE — Classification ══ -->
+  <div class="node" data-type="DIAGNOSE" data-step="3" id="step3">
+    <div class="node-head-row">
+      <div class="node-num">3</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Classify by cause and nerve root level</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Classifying by aetiology guides prognosis and management. Disc prolapse (most common, good prognosis) behaves differently from lateral recess stenosis (older patient, slower recovery, surgical threshold lower).</p>
+
+      <table class="derma-table">
+        <thead>
+          <tr>
+            <th>Root</th>
+            <th>Disc level</th>
+            <th>Pain / sensory distribution</th>
+            <th>Weakness</th>
+            <th>Reflex lost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>L3</b></td>
+            <td>L2/L3</td>
+            <td>Anterior thigh → medial knee</td>
+            <td>Hip flexion, knee extension</td>
+            <td>Knee jerk (partial)</td>
+          </tr>
+          <tr>
+            <td><b>L4</b></td>
+            <td>L3/L4</td>
+            <td>Medial calf → medial foot</td>
+            <td>Knee extension, dorsiflexion (foot drop early)</td>
+            <td>Knee jerk ↓</td>
+          </tr>
+          <tr>
+            <td><b>L5</b></td>
+            <td>L4/L5</td>
+            <td>Lateral calf → dorsum foot → great toe</td>
+            <td>Foot/great toe dorsiflexion (foot drop)</td>
+            <td>No classic reflex (tibialis posterior)</td>
+          </tr>
+          <tr>
+            <td><b>S1</b></td>
+            <td>L5/S1</td>
+            <td>Posterior thigh/calf → lateral foot → small toes</td>
+            <td>Plantarflexion (cannot stand on tiptoes)</td>
+            <td>Ankle jerk ↓ / absent</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="kv" style="margin-top: 10px;">
+        <div>🔴 Disc prolapse (herniation)</div>
+        <div>Most common cause (90% of sciatica). Nucleus pulposus extrudes through annulus fibrosus, compresses nerve root. Age 20–50. Acute onset. L4/5 and L5/S1 most common levels. <b>Natural history is favourable:</b> 80–90% of disc prolapses resolve with conservative management within 12 weeks. Disc material is reabsorbed by macrophage activity — larger prolapses paradoxically resorb faster</div>
+        <div>🟠 Lateral recess stenosis</div>
+        <div>Degenerative narrowing of lateral recess (facet hypertrophy, ligamentum flavum thickening, osteophytes) compressing exiting nerve root. Age &gt;50. Insidious onset. Often superimposed on chronic back pain. Slower natural history of recovery vs disc prolapse. Surgical decompression (laminectomy/foraminotomy) more often required</div>
+        <div>🟡 Lumbar spinal stenosis</div>
+        <div>Central canal narrowing causing neurogenic claudication. Bilateral leg symptoms. Age &gt;60 typically. Walking distance limited, relieved by sitting/flexion. Multi-level degenerative change on MRI. Conservative management (physiotherapy, analgesia) ± epidural injection. Surgical decompression for refractory cases</div>
+        <div>🟢 Piriformis syndrome</div>
+        <div>Sciatic nerve compressed by piriformis muscle in deep gluteal space. Posterior buttock pain ± radiation down posterior leg. No disc pathology on MRI. Positive FAIR test (Flexion, ADduction, Internal Rotation in supine). Deep gluteal tenderness. Treated with physiotherapy + piriformis injection — not spinal surgery</div>
+        <div>🔵 Foraminal stenosis</div>
+        <div>Narrowing of intervertebral foramen by osteophytes / disc degeneration at exit zone. More chronic course, older patient. Axial loading (extension) worsens, flexion relieves. MRI with dedicated parasagittal slices for foraminal assessment. Surgical foraminotomy when conservative measures fail</div>
+        <div>🟣 Rare / systemic causes</div>
+        <div>Spinal tumour (intra/extradural). Metastatic deposits. Epidural abscess / haematoma. Sacral insufficiency fracture (osteoporotic women — bilateral buttock pain, X-ray may miss — MRI). Herpes zoster (dermatomal rash + pain — diagnose clinically). Diabetic amyotrophy (Bruns-Garland — acute proximal leg pain + wasting, HbA1c ↑). Pelvic tumour compressing sciatic nerve</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>The paradox of disc herniation is that larger prolapses often resorb more completely.</b> MRI studies with serial imaging show that sequestrated (free fragment) disc herniations have the highest rate of spontaneous resorption (96% at 12 months in some series) — driven by inflammatory macrophage activity and neovascularisation. This is the biological basis for the good prognosis of most acute sciatica and the rationale for a conservative-first approach. Piriformis syndrome is the most commonly missed alternative diagnosis when MRI shows no disc pathology correlating with clinical symptoms. It accounts for up to 6% of sciatica cases and responds to specific physiotherapy and piriformis muscle injection — referring these patients for spinal surgery is a diagnostic error. L5 radiculopathy is the single most common level (L4/5 disc), but crucially there is no consistent reflex loss at L5 — the tibialis posterior reflex (assessed with a specific technique) may be diminished, but this is not routinely tested in primary care. L5 diagnosis therefore relies more heavily on sensory examination (dorsum of foot, great toe) and power testing (foot/toe dorsiflexion).</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══ STEP 4: DIAGNOSE — Examination ══ -->
+  <div class="node" data-type="DIAGNOSE" data-step="4" id="step4">
+    <div class="node-head-row">
+      <div class="node-num">4</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Targeted lumbar and neurological examination</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">A structured neurological examination of the lower limbs is mandatory at every sciatica consultation. Document findings clearly — they determine urgency, investigation, and referral decisions.</p>
+      <div class="kv">
+        <div>Gait observation</div>
+        <div>Foot drop (L4/L5 — steppage gait, high-stepping). Antalgic lean away from affected side (disc herniation — reduces nerve root tension). Trendelenburg (L5 — gluteal weakness). Observe ability to walk on heels (L4/L5 — dorsiflexion) and tiptoes (S1 — plantarflexion). Inability to heel-walk = significant L4/L5 weakness</div>
+        <div>Lumbar ROM</div>
+        <div>Flexion (normal finger-floor distance &lt;10 cm), extension, lateral flexion, rotation. Painful restriction all directions = severe disc disease / stenosis / malignancy. Extension worsens = facet / stenosis. Flexion worsens = discogenic. Document range and pain direction</div>
+        <div>Straight leg raise (SLR)</div>
+        <div><b>Most important test for L4/L5/S1 radiculopathy.</b> Supine, raise straight leg — positive = reproduction of leg pain (not back pain) at &lt;60°. Sensitivity 80%, specificity 40%. Crossed SLR (raising contralateral leg reproduces ipsilateral leg pain): sensitivity 25%, specificity 90% — highly specific for disc herniation when positive. Bragard's test: dorsiflexion of foot during SLR ↑ neural tension — confirms radicular origin</div>
+        <div>Femoral nerve stretch test</div>
+        <div>Prone: flex knee, extend hip — anterior thigh pain = L2/L3/L4 nerve root tension (upper lumbar disc pathology). Tests nerve roots above SLR level. Important for anterior thigh pain presentations</div>
+        <div>Power testing (myotomes)</div>
+        <div>Hip flexion (L1/L2 — iliopsoas). Knee extension (L3/L4 — quadriceps). <b>Ankle dorsiflexion (L4/L5 — tibialis anterior) — critical: test against resistance.</b> Great toe extension (L5 — extensor hallucis longus — most sensitive L5 test). Ankle plantarflexion (S1 — gastrocnemius: compare single heel raises). Grade power 0–5/5 (MRC scale)</div>
+        <div>Sensation (dermatomal)</div>
+        <div>Light touch or pinprick: L4 (medial calf/foot), L5 (dorsum foot including first web space — most reliable L5 area), S1 (lateral border of foot / little toe). <b>Perianal/saddle area</b> — test with light touch if any concern about CES. Document deficits precisely</div>
+        <div>Reflexes</div>
+        <div>Knee jerk (L3/L4 — diminished = L4 root compression). Ankle jerk (S1 — absent = S1 root compression). Compare both sides. Asymmetric reflex is more significant than symmetrically reduced. Upgoing plantars + hyperreflexia = upper motor neurone lesion — not sciatica: consider myelopathy/cord lesion</div>
+        <div>Perianal sensation (if indicated)</div>
+        <div>If any bladder/bowel symptoms: light touch to perianal skin (S3/S4/S5). Reduced / absent sensation = saddle anaesthesia = CES until disproven → 999 same-day MRI. Document explicitly in notes that this was tested</div>
+        <div>Abdominal / vascular</div>
+        <div>Palpate abdomen: AAA can cause back/leg pain mimicking sciatica (pulsatile mass &gt;3 cm). Femoral pulses bilaterally. ABPI if vascular claudication in differential. Pelvic examination (women) if pelvic mass suspected compressing sciatic nerve</div>
+      </div>
+      <div class="info-box"><b style="color:var(--diag-h);">Document the neurological exam clearly:</b> Record power (grade/5), sensation (intact/reduced/absent by dermatome), and reflexes (present/reduced/absent) at every consultation. This is essential for detecting progression, informing referral decisions, and medicolegal protection.</div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>The crossed SLR has a specificity of 90% for disc herniation</b> — when raising the unaffected leg reproduces pain in the affected leg, this almost certainly indicates a large central or paracentral disc herniation causing nerve root tension bilaterally. This finding should prompt same-day urgent referral rather than conservative management, as these herniations carry a higher risk of CES. The single heel raise test for S1 is more sensitive than the ankle jerk for S1 weakness — ask the patient to perform 10 single heel raises on the affected side and compare to the unaffected side. Inability to raise the heel 10 times = significant S1 weakness, even with a preserved ankle jerk. The extensor hallucis longus (EHL — great toe extension) is the single most sensitive clinical test for L5 radiculopathy because it is an isolated L5 muscle with minimal contribution from other roots. In any sciatica consultation, documenting that perianal sensation was explicitly tested and found normal provides essential medicolegal protection if CES is later diagnosed.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══ STEP 5: DIAGNOSE — Investigations ══ -->
+  <div class="node" data-type="DIAGNOSE" data-step="5" id="step5">
+    <div class="node-head-row">
+      <div class="node-num">5</div>
+      <div class="node-head">
+        <span class="node-tag">Diagnose</span>
+        <h3>Targeted investigations — imaging guided by clinical findings, not symptoms alone</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Acute sciatica (&lt;6 weeks) with no red flags does not require imaging — it does not change management. MRI is the investigation of choice when imaging is indicated.</p>
+      <div class="kv">
+        <div>MRI lumbar spine <span class="pill pill-blue">Investigation of choice</span></div>
+        <div>Indications: suspected CES (same-day emergency), progressive neurological deficit, failure to improve at 4–6 weeks with neurological signs, suspected malignancy / infection, pre-surgical assessment, atypical features. Demonstrates disc herniation, nerve root compression, canal/foraminal stenosis, cord/cauda equina. Superior to CT for soft tissue and neural structures</div>
+        <div>Timing of MRI</div>
+        <div><b>Same-day emergency:</b> any CES features (saddle anaesthesia, bladder/bowel change, bilateral leg symptoms + motor deficit). <b>Urgent (&lt;2 weeks):</b> progressive motor deficit, suspected infection/malignancy. <b>Routine (6–12 weeks):</b> persistent symptoms with neurological deficit not resolving despite conservative management, pre-surgical planning</div>
+        <div>X-ray lumbar spine</div>
+        <div>Limited role — does not show discs, nerve roots, or soft tissue. Indications: suspected fracture (trauma or fragility), suspected ankylosing spondylitis (sacroiliac joints), Paget's disease, bone metastasis (late changes). <b>Do NOT request for acute disc sciatica</b> — no diagnostic value and exposes patient to radiation. AP + lateral views ± Ferguson view (SI joints)</div>
+        <div>CT lumbar spine</div>
+        <div>Use when MRI contraindicated (pacemaker, severe claustrophobia — though MRI-conditional pacemakers now common). CT myelogram if MRI unavailable. Good for bony anatomy (stenosis characterisation, surgical planning). Inferior to MRI for disc and neural tissue assessment. Avoid in younger patients (radiation dose)</div>
+        <div>Bloods — red flag screen</div>
+        <div>CRP + ESR + FBC: if fever, suspected infection (abscess/discitis), inflammatory arthropathy, or malignancy. PSA (male &gt;50 with sciatica and bony pain — prostate metastasis). ALP + Ca + LDH (bone metastases, myeloma). HbA1c (suspected diabetic amyotrophy). ESR &gt;25 in sciatica = investigate further</div>
+        <div>Nerve conduction studies / EMG</div>
+        <div>Not primary care investigations. Refer to neurology if: diagnosis uncertain after MRI, suspected peripheral neuropathy mimicking radiculopathy, suspected MND (upper + lower motor neurone signs), diabetic amyotrophy, multilevel disease. Differentiates radiculopathy from peripheral neuropathy definitively</div>
+        <div>DEXA</div>
+        <div>If fragility fracture suspected (vertebral compression fracture causing radiculopathy in osteoporotic patient). FRAX score: if 10-year major osteoporotic fracture risk &gt;10% → DEXA. Post-menopausal women, prolonged steroid use, age &gt;65, BMI &lt;18.5 (NOGG 2022)</div>
+        <div>Do NOT routinely order</div>
+        <div>MRI for acute sciatica &lt;6 weeks with no red flags or neurological deficit. X-ray for soft tissue assessment. CT as first-line for disc pathology. Bone scan (largely superseded by MRI). Routine bloods for uncomplicated mechanical sciatica</div>
+      </div>
+      <div class="warn-box"><b style="color:var(--safety-h);">MRI imaging paradox:</b> 50% of asymptomatic adults aged 40+ have disc bulges on MRI; 80% of adults over 60 have degenerative disc changes. An MRI finding is only clinically meaningful if it correlates precisely with the clinical level — concordance between level of disc pathology, dermatomal pain, and examination findings is essential before surgical consideration. MRI alone does not determine surgical candidacy.</div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Early routine MRI for sciatica (before 6 weeks) does not improve outcomes and actively harms patients.</b> Three systematic reviews and multiple RCTs consistently show that early MRI for non-specific back pain and sciatica increases anxiety, catastrophising, and surgical rates without improving pain or function at 12 months. The presence of a disc bulge on MRI creates a structural label that drives fear-avoidance behaviour and passive treatment-seeking. NICE NG59 explicitly states: do not offer imaging for low back pain or sciatica without red flags or neurological deficit. However, the converse is equally important — when MRI is indicated (red flags, progressive deficit, pre-surgical), delaying it delays treatment. The skill is applying NICE guidance precisely, not using it as blanket justification to refuse all imaging requests.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══ STEP 6: REFER ══ -->
+  <div class="node" data-type="REFER" data-step="6" id="step6">
+    <div class="node-head-row">
+      <div class="node-num">6</div>
+      <div class="node-head">
+        <span class="node-tag">Refer</span>
+        <h3>Referral criteria — most sciatica resolves in primary care</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">80–90% of disc-related sciatica resolves within 12 weeks with conservative management. Surgical referral is appropriate for specific indications — not simply for persistent pain.</p>
+      <div class="kv">
+        <div>999 Emergency</div>
+        <div><span class="pill pill-red">999</span> Cauda equina syndrome — any of: saddle anaesthesia, new urinary retention or incontinence, new faecal incontinence, bilateral leg weakness. Same-day emergency MRI + neurosurgical review. Epidural haematoma (post-procedure, anticoagulated + sudden leg weakness). Spinal cord compression with acute paraplegia</div>
+        <div>Same-day neurosurgery</div>
+        <div><span class="pill pill-red">Same-day</span> Progressive foot drop or rapidly deteriorating motor deficit over hours to days (power ≤3/5 in key myotome). CES-I (incomplete) — any saddle hypoaesthesia, urinary hesitancy, altered bladder sensation even without complete retention. Suspected spinal epidural abscess (fever + back pain + neurological signs)</div>
+        <div>2-Week Wait</div>
+        <div><span class="pill pill-purple">2WW</span> Unexplained back ± leg pain + weight loss + age &gt;50 → suspected spinal malignancy (NICE NG12). Known primary malignancy + new spinal symptoms → urgent bone metastasis pathway. Unexplained raised ESR/CRP + back pain + constitutional symptoms in any age group</div>
+        <div>Urgent routine (2–4 wks)</div>
+        <div>MRI-confirmed significant disc herniation + significant persistent neurological deficit (power &lt;4/5) not improving at 4–6 weeks. Spinal stenosis causing progressive neurogenic claudication limiting function. New inflammatory spondyloarthropathy → rheumatology (NICE NG65 — within 3 weeks)</div>
+        <div>Routine spinal surgery</div>
+        <div>Persistent sciatica &gt;6–12 weeks despite optimal conservative management + MRI-confirmed concordant disc herniation + significant impact on quality of life. Lumbar spinal stenosis refractory to conservative management + MRI confirmation. <b>Surgical indications:</b> persistent neurological deficit, intractable pain (not pain alone), or failed conservative management — not "positive MRI" alone</div>
+        <div>Physiotherapy <span class="pill pill-teal">First-line always</span></div>
+        <div>All sciatica without progressive deficit — refer at first consultation (do not wait for imaging). Active exercise programme: McKenzie directional preference, neural mobilisation (nerve flossing), core stability. Self-refer where NHS self-referral available. Early physiotherapy reduces chronicity and prevents disability — delays are harmful</div>
+        <div>Pain management / psychology</div>
+        <div>Chronic sciatica (&gt;3 months) with high psychosocial yellow flag burden. STarT Back high-risk group. Pain management programme. CBT for pain — Level 1 evidence. Avoid escalating opioids without psychological input. NHS Talking Therapies/NHS Talking Therapies co-prescribing with physiotherapy for high-risk patients</div>
+        <div>Rheumatology</div>
+        <div>Suspected ankylosing spondylitis / axial spondyloarthropathy (age &lt;40, bilateral SI pain, morning stiffness &gt;60 min, HLA-B27 positive, elevated CRP). NSAIDs are disease-modifying in axial SpA — start immediately and refer within 3 weeks (NICE NG65)</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Surgery for sciatica is indicated for intractable pain or neurological deficit — not simply because MRI shows a disc prolapse.</b> The SPORT trial (NEJM 2006) showed that surgery produced faster pain relief at 3 months but outcomes at 2 years were equivalent between surgical and conservative groups for most patients. The exception is significant progressive neurological deficit, where early surgery (within 4–8 weeks) produces better long-term motor recovery than delayed surgery. Foot drop that has been present for more than 3–6 months has a poor prognosis for recovery regardless of decompression timing — early recognition is critical. The key referral message for physiotherapy: early physiotherapy in acute sciatica (within 2 weeks of onset) reduces the rate of progression to chronic pain by 30–40% — waiting for imaging before referring to physiotherapy is a common and avoidable error.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══ STEP 7: TREAT ══ -->
+  <div class="node" data-type="TREAT" data-step="7" id="step7">
+    <div class="node-head-row">
+      <div class="node-num">7</div>
+      <div class="node-head">
+        <span class="node-tag">Treat</span>
+        <h3>Evidence-based treatment pathway — active rehabilitation first</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Active treatment (exercise, movement, early return to function) has stronger evidence than passive treatments. Analgesia facilitates movement — prescribe it as an enabler, not as a standalone strategy.</p>
+
+      <p class="diag-subhead">① Acute Sciatica — First-Line (0–6 weeks)</p>
+      <div class="ladder">
+        <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Reassurance + active mobilisation:</b> Advise: 80–90% of acute disc sciatica resolves within 12 weeks. Continuing normal activities (within pain limits) is better than bed rest. Bed rest &gt;2 days is harmful — increases deconditioning, fear-avoidance, and chronicity risk. Apply heat to lumbar region for muscle spasm. Refer physiotherapy immediately — do not wait for imaging</span></div>
+        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Analgesia (to enable activity, not replace it):</b> Paracetamol 1g QDS regularly — modest but safe. Add naproxen 500 mg BD with food + PPI (omeprazole 20 mg OD) if no CI — NSAIDs have stronger evidence for sciatica than paracetamol (reduce nerve root inflammation). Topical NSAIDs for localised back pain component. Avoid opioids as first-line — not recommended by NICE NG59</span></div>
+        <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Neuropathic analgesia (if significant nerve pain):</b> Amitriptyline 10 mg nocte, titrate to 25–50 mg (NNT 3.6 for neuropathic pain; also improves sleep). OR gabapentin 300 mg TDS, titrate to 900–1800 mg/day (NNT 6.3 for radicular pain). Warn: sedation, dizziness, falls risk (particularly in elderly). Pregabalin 75 mg BD (Schedule 3 CD — prescribing governance required; higher misuse potential)</span></div>
+        <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Short-course oral corticosteroid (acute severe radiculopathy):</b> Prednisolone 30–40 mg OD × 5–7 days — reduces periradicular inflammation acutely, improves early pain and function. Evidence: modest benefit at 3 weeks, no effect on long-term outcomes. Use when severe radicular pain is preventing engagement with physiotherapy. Check HbA1c / BP; avoid in uncontrolled diabetes, severe hypertension, recent GI bleed</span></div>
+      </div>
+
+      <p class="diag-subhead">② Subacute / Persistent Sciatica (6–12 weeks)</p>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">Neuropathic pain dominant</div>
+          <div class="b-drug">Titrate neuropathic agent</div>
+          <div class="b-note">Increase amitriptyline to 50–75 mg nocte OR gabapentin to 1800–3600 mg/day in divided doses. Review at 4 weeks — if no benefit at adequate dose, switch rather than add. Duloxetine 60 mg OD: alternative with Level 1 evidence for neuropathic pain + depression (common comorbidity)</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Significant muscle spasm</div>
+          <div class="b-drug">Diazepam short course</div>
+          <div class="b-note">Diazepam 2 mg TDS maximum 2 weeks (BNF — dependence risk, prescribe with caution, avoid in anxious / substance misuse history). Reassess — if persistent spasm after 2 weeks, escalate to pain specialist, not repeat diazepam prescription</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Yellow flags identified</div>
+          <div class="b-drug">Psychology + physio</div>
+          <div class="b-note">STarT Back high-risk → refer pain management programme + NHS Talking Therapies (IAPT). CBT for pain reduces disability at 12 months more than physiotherapy alone (NNT 4). Avoid escalating analgesia without addressing psychosocial drivers</div>
+        </div>
+      </div>
+
+      <p class="diag-subhead">③ Epidural Steroid Injection (ESI)</p>
+      <div class="kv" style="margin-top:6px;">
+        <div>Indication</div>
+        <div>Acute/subacute sciatica (&lt;3 months) with severe radicular pain not responding to 4–6 weeks conservative management. Most benefit when MRI-confirmed disc prolapse is concordant with clinical level. Arranged via pain clinic / spinal surgery — not primary care procedure</div>
+        <div>Technique &amp; efficacy</div>
+        <div>Transforaminal ESI (targeted to affected root) superior to interlaminar approach. Short-term benefit (6–12 weeks): reduces radicular pain by ~50% in responders (NNT ≈ 4 for short-term benefit). Does NOT alter natural history or reduce surgery rates at 12 months — provides a window for rehabilitation engagement</div>
+        <div>Contraindications</div>
+        <div>Anticoagulation (stop as per local protocol: warfarin 5 days, DOAC 24–48h, clopidogrel 7 days). Systemic infection / local skin infection. Suspected spinal malignancy / infection. Uncontrolled diabetes (transient glucose rise). Pregnancy</div>
+      </div>
+
+      <p class="diag-subhead">④ Surgical Management (when conservative fails)</p>
+      <div class="kv" style="margin-top:6px;">
+        <div>Microdiscectomy</div>
+        <div>Standard procedure for disc prolapse + sciatica. Faster pain relief at 3 months vs conservative management. 2-year outcomes equivalent. Proceed when: persistent significant pain/deficit at 6–12 weeks, concordant MRI, patient preference after full discussion. Success rate: 85–90% for radicular pain resolution</div>
+        <div>Decompressive laminectomy</div>
+        <div>For lumbar spinal stenosis causing neurogenic claudication. Indicated when: significant functional limitation, failed conservative management (physiotherapy, injections), MRI-confirmed stenosis. Better short-term outcomes for walking distance vs conservative management at 2 years</div>
+        <div>Pre-referral requirements</div>
+        <div>MRI lumbar spine (within 3 months). Documented failed conservative management (physiotherapy, analgesia ≥6–12 weeks). Neurological examination findings. Concordance between clinical level and MRI level confirmed. STarT Back / psychosocial risk assessed — high-risk patients have worse surgical outcomes</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>NICE NG59 does not recommend opioids for sciatica</b> — the evidence base shows that opioids provide no additional benefit over NSAIDs for radicular pain, while carrying significant risks of dependence, cognitive impairment, and falls. However, the neuropathic component of sciatica (burning, shooting, electric pain) responds well to amitriptyline or gabapentin — these are the drugs with evidence. The distinction is crucial: nociceptive back pain → NSAIDs + paracetamol; neuropathic leg pain → amitriptyline/gabapentin. Many patients receive opioids for sciatica in primary care when they should be receiving neuropathic agents — this is a prescribing quality indicator. Duloxetine 60 mg OD is an underused option for sciatica with comorbid depression or anxiety, offering dual neuropathic analgesia and antidepressant effect with a good evidence base. Pregabalin has been Schedule 3 CD since April 2019 due to significant misuse and diversion — monthly prescription review and awareness of misuse signs (running out early, selling tablets) is a prescribing governance requirement.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══ STEP 8: LIFESTYLE ══ -->
+  <div class="node" data-type="LIFESTYLE" data-step="8" id="step8">
+    <div class="node-head-row">
+      <div class="node-num">8</div>
+      <div class="node-head">
+        <span class="node-tag">Lifestyle</span>
+        <h3>Non-pharmacological interventions — movement is medicine</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Active lifestyle modification is the highest-value intervention in sciatica management. Address all modifiable drivers of disc disease and nerve sensitisation — not just the acute episode.</p>
+      <div class="lsgrid">
+        <div class="lstile"><b>Stay active — the most important message</b> "Bed rest worsens sciatica." Continuing normal activities within pain limits produces better outcomes at 3 and 12 months than bed rest (Cochrane Level 1 evidence). Walking is the single best exercise — 20–30 minutes daily. Water walking (hydrotherapy) reduces load while maintaining movement. Frame: "movement is the treatment, rest is the obstacle"</div>
+        <div class="lstile"><b>Physiotherapy — specific exercises</b> McKenzie directional preference (extension exercises for posterior disc prolapse — "press-ups in lying" for L4/5, L5/S1). Nerve flossing / neural mobilisation: sciatic nerve slider exercises (knee extension + ankle dorsiflexion in supine) — reduces neural adhesions, improves nerve mobility, reduces pain by 35% at 4 weeks. Core stability (transversus abdominis activation) — long-term relapse prevention. Refer for supervised programme</div>
+        <div class="lstile"><b>Weight management</b> Obesity increases intradiscal pressure: each additional 10 kg of body weight increases lumbar disc pressure by ~150 N/m². BMI &gt;30 associated with 3× higher rate of disc herniation recurrence. Weight loss of 10% significantly reduces intradiscal load. NHS Weight Management Programme referral. Frame: "every kilogram lost reduces the pressure crushing your disc nerve"</div>
+        <div class="lstile"><b>Posture &amp; load management</b> Sitting increases intradiscal pressure more than standing — advise: limit sitting to 30 minutes maximum, then stand and walk briefly. Correct lifting: bend knees, keep back neutral, hold load close to body. Avoid prolonged forward flexion under load. Ergonomic chair: lumbar support, hips/knees at 90°, screen at eye level. Sit-stand desk if occupational risk. DSE assessment via employer (Display Screen Equipment Regulations)</div>
+        <div class="lstile"><b>Smoking cessation</b> Smoking is the most potent modifiable risk factor for disc degeneration and herniation recurrence. Mechanism: nicotine causes disc endplate vasospasm → reduced disc nutrition (discs are avascular, depend entirely on diffusion) → accelerated desiccation and annular weakening. Smokers have 2× the rate of disc herniation and significantly worse surgical outcomes. Refer NHS Stop Smoking Service + NRT/varenicline. Convey: "smoking is starving your discs of nutrition"</div>
+        <div class="lstile"><b>Sleep positioning</b> Side-lying in foetal position (knees drawn to chest, pillow between knees) reduces intradiscal pressure and nerve root tension — the most comfortable position for most disc herniation patients. Avoid prone sleeping (lumbar hyperextension loads posterior elements). Firm mattress preferred. Pillow between knees for side-lying reduces lumbopelvic rotation and SI joint stress. Water or memory foam mattress toppers reduce pressure points</div>
+        <div class="lstile"><b>Stress management &amp; psychology</b> Psychological distress amplifies pain perception via central sensitisation — this is not "imagined pain" but a neurobiological reality. Cortisol elevation from chronic stress increases systemic inflammation and impairs disc healing. MBSR (Mindfulness-Based Stress Reduction): reduces chronic pain intensity by 30% (Level 1 evidence). NHS Talking Therapies (IAPT) — self-refer. Address work stress proactively — work dissatisfaction is a stronger predictor of chronicity than MRI findings</div>
+        <div class="lstile"><b>Return to work strategy</b> Early return to work (modified duties if needed) is therapeutic — reduces chronicity, financial stress, and deconditioning. Use fit note constructively: "may be fit for work with: seated work, no heavy lifting, flexible hours." Liaise with occupational health where available. Sick certification &gt;4 weeks = yellow flag — address psychosocial barriers. Statistical reality: if off work &gt;12 weeks, only 50% return; if &gt;2 years, &lt;5% return to original job</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>Neural mobilisation (nerve flossing) is one of the most evidence-based and underused physiotherapy techniques for sciatica.</b> Sciatic nerve slider exercises work by alternately tensioning and releasing the neural tissue, reducing intraneural oedema and adhesions that develop around the compressed nerve root. A Cochrane review (2012) and multiple subsequent RCTs show 30–40% improvement in radicular pain at 4 weeks — comparable to short-course oral corticosteroids but without systemic side effects. The return-to-work statistics deserve emphasis in every consultation where sick certification is being considered: after 12 weeks off work, only 50% of patients return; after 2 years, fewer than 5% return to their original job. This is not because their back pain is necessarily severe, but because of progressive deconditioning, psychosocial deterioration, and learned disability behaviour. The GP's role in preventing long-term disability is to avoid medicalising normal recovery, encourage active participation, and use fit notes as rehabilitation tools rather than permission slips for rest.</div>
+    </div>
+  </div>
+
+  <div class="connector"></div>
+
+  <!-- ══ STEP 9: SAFETY ══ -->
+  <div class="node" data-type="SAFETY" data-step="9" id="step9">
+    <div class="node-head-row">
+      <div class="node-num">9</div>
+      <div class="node-head">
+        <span class="node-tag">Safety</span>
+        <h3>Follow-up, monitoring &amp; safety-netting</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Safety-netting for sciatica is among the most medicolegally important in primary care. Document CES screening at every consultation. Give explicit, memorable symptoms that demand same-day emergency care.</p>
+      <div class="kv">
+        <div>1–2 weeks</div>
+        <div>Repeat CES screening (mandatory — document explicitly). Neurological symptom trajectory: improving (continue conservative), static (continue + ensure physio booked), worsening motor deficit (urgent MRI + neurosurgical referral). Analgesia review: neuropathic agent started — sedation, tolerability. NSAIDs: renal check if elderly/CKD. Sick certification review</div>
+        <div>4–6 weeks</div>
+        <div>Reassess neurological examination (document power, sensation, reflexes — compare to baseline). If improving clinically: continue conservative. If neurological deficit not improving or worsening at 4–6 weeks: MRI lumbar spine + consider urgent neurosurgical referral. Yellow flag reassessment: STarT MSK score. Physiotherapy attendance confirmed</div>
+        <div>6–12 weeks</div>
+        <div>If not resolving: MRI if not yet done. If MRI shows concordant disc herniation + significant persistent deficit or intractable pain → neurosurgical referral. If improving but slow: continue physio + review analgesia. Neuropathic agents: review efficacy at adequate dose — if insufficient at 12 weeks, add or switch (amitriptyline → duloxetine, or add gabapentin)</div>
+        <div>3–6 months</div>
+        <div>Chronic sciatica (&gt;3 months): reassess STarT MSK — high-risk group → pain management programme referral. Analgesic review: deprescribe opioids if prescribed. Gabapentin/pregabalin: review ongoing need and governance (CD requirements for pregabalin). Surgical outcome review if post-operative: return to activity, physiotherapy, driving (6 weeks post-microdiscectomy)</div>
+        <div>Annual / ongoing</div>
+        <div>Recurrent sciatica: address risk factors (BMI, smoking, physical conditioning, ergonomics). Chronic neuropathic agents: annual review of ongoing need, side effects (falls risk with gabapentin in elderly — MHRA alert). DEXA if osteoporosis risk factors (vertebral fracture as precipitant). Disc reherniation rate after microdiscectomy: 5–10% — re-present if recurrent symptoms</div>
+        <div>Safety-net → 999</div>
+        <div><span class="pill pill-red">999</span> Any new: saddle anaesthesia (numbness in perianal area, genitals, or inner thighs). Urinary retention or incontinence. Faecal incontinence. Sudden bilateral leg weakness. These symptoms = CES — go to A&amp;E immediately for emergency MRI. Do not wait for GP appointment. This instruction must be given verbally AND written for the patient at every consultation</div>
+        <div>Safety-net → same-day</div>
+        <div><span class="pill pill-amber">Same-day</span> New or rapidly worsening foot drop (cannot lift foot off floor). Leg becoming progressively weaker over days. Any new neurological symptom in patient already under treatment for sciatica. Fever + severe back/leg pain (epidural abscess)</div>
+        <div>Safety-net → return if</div>
+        <div>Pain significantly worsening beyond expected trajectory at 4–6 weeks. New or different pattern of pain. Bilateral leg symptoms developing. Sleep becoming impossible despite analgesia. Concerns about cancer (night pain, weight loss, known primary). Side effects of neuropathic medications (excessive sedation, falls)</div>
+        <div>Neuropathic drug monitoring</div>
+        <div>Amitriptyline: ECG if &gt;75 mg OD or cardiac risk. Review anticholinergic burden (particularly in elderly — falls, confusion, urinary retention). Gabapentin: dose-adjust for eGFR &lt;60. MHRA 2017 alert: gabapentinoids + opioids → respiratory depression risk. Pregabalin CD: monthly prescriptions, urine drug screen if misuse concern, no early repeats. Driving: gabapentin/pregabalin — DVLA requires patients not to drive if impaired</div>
+        <div>Patient written information</div>
+        <div>Provide written CES safety-netting card: "Go to A&amp;E immediately if you develop numbness in your bottom/genitals, problems passing urine, or incontinence." NHS Choices sciatica information. Back pain self-management app (NHS-approved). STarT Back patient booklet. Versus Arthritis back pain guide</div>
+      </div>
+      <div class="warn-box"><b style="color:var(--safety-h);">Medicolegal documentation standard:</b> At every consultation for sciatica, record in the notes: (1) CES symptoms explicitly asked and found absent/present; (2) current neurological examination findings (power, sensation, reflexes); (3) safety-netting advice given. Without this documentation, missed CES is indefensible.</div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer"><b>The MHRA 2017 safety alert on gabapentinoids + opioids deserves repeated emphasis.</b> The combination of gabapentin or pregabalin with any opioid (including codeine, which is widely co-prescribed) causes clinically significant respiratory depression — disproportionately in patients with obstructive sleep apnoea, obesity, or respiratory comorbidity. This combination is now a prescribing quality indicator and the source of multiple serious adverse event reports. When prescribing gabapentin for sciatica in a patient already on any opioid, perform a respiratory risk assessment and advise the patient about the interaction. The written CES safety-netting card is a tangible medicolegal protection strategy — it converts an oral instruction into a durable document. The card should use plain language: "numbness in your bottom or genitals" rather than "saddle anaesthesia." Patients who present to A&amp;E with a GP-issued CES safety card are triaged more rapidly, and GPs who issue these cards demonstrate duty of care. Producing a template card takes 5 minutes and protects both patient and clinician indefinitely.</div>
+    </div>
+  </div>
+
+</div><!-- end .alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG59 (Low Back Pain and Sciatica 2016), NICE NG193 (Chronic Primary Pain 2021), NICE NG65 (Spondyloarthritis 2017), NICE NG12 (Suspected Cancer 2015), NICE CKS Sciatica, CKS Cauda Equina Syndrome, CKS Low Back Pain; SPORT Trial (Weinstein et al, NEJM 2006); STarT Back Tool (Hill et al, Lancet 2011); Cochrane Review: bed rest vs activity for acute back pain (Hagen 2010); Neural mobilisation evidence (Neto et al, 2012); Pregabalin Schedule 3 CD (ACMD 2017); MHRA gabapentinoid safety alert (2017); NOGG Osteoporosis Guidelines 2022; NHS Resolution medicolegal data on cauda equina claims. Always adapt to individual patient context, local formulary, and current NICE guidance.
+</div>
+
+<script>
+(function () {
+  const STORE_KEY = 'rgp.alg.sciatica.v1';
+  const flow = document.getElementById('flow');
+  const pDone = document.getElementById('pDone');
+  const pFill = document.getElementById('pFill');
+  const resetBtn = document.getElementById('resetBtn');
+
+  document.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.nextElementSibling.classList.toggle('open', !expanded);
+    });
+  });
+
+  function getState() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch { return {}; }
+  }
+  function saveState(s) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(s)); } catch {}
+  }
+  function updateProgress() {
+    const checks = flow.querySelectorAll('input[type="checkbox"]');
+    const done = [...checks].filter(c => c.checked).length;
+    pDone.textContent = done;
+    document.getElementById('pTotal').textContent = checks.length;
+    pFill.style.width = (checks.length ? (done / checks.length * 100) : 0) + '%';
+  }
+  function applyState() {
+    const state = getState();
+    flow.querySelectorAll('.node').forEach(node => {
+      const step = node.getAttribute('data-step');
+      const cb = node.querySelector('input[type="checkbox"]');
+      if (state[step]) { cb.checked = true; node.classList.add('done'); }
+    });
+    updateProgress();
+  }
+  flow.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const node = cb.closest('.node');
+      const step = node.getAttribute('data-step');
+      node.classList.toggle('done', cb.checked);
+      const state = getState();
+      if (cb.checked) { state[step] = true; } else { delete state[step]; }
+      saveState(state);
+      updateProgress();
+    });
+  });
+  resetBtn.addEventListener('click', () => {
+    if (!confirm('Reset all progress for this algorithm?')) return;
+    localStorage.removeItem(STORE_KEY);
+    flow.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
+    flow.querySelectorAll('.node').forEach(n => n.classList.remove('done'));
+    updateProgress();
+  });
+  applyState();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

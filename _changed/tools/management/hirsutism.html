@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hirsutism — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Hirsutism management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🧔‍♀️",
+  title:"Hirsutism",
+  stemTitle:"Hirsutism — ongoing management",
+  stemSub:"Primary-care management of hirsutism in women \u2014 excluding sinister causes, cosmetic and combined-pill measures, topical eflornithine and antiandrogens \u2014 remembering that response is slow. CKS 2026.",
+  guideline:"NICE CKS",
+  glance:[
+    {lbl:"Commonest cause", val:"PCOS", sub:"exclude others"},
+    {lbl:"Red flag", val:"Rapid / virilising", sub:"?androgen tumour"},
+    {lbl:"First-line drug", val:"COC", sub:"anti-androgenic"},
+    {lbl:"Facial adjunct", val:"Eflornithine", sub:"topical"},
+    {lbl:"Antiandrogen", val:"Spironolactone 50\u2013100 mg/day", sub:"+ contraception"},
+    {lbl:"Patience", val:"\u22656 months", sub:"to judge response"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Assess severity and exclude sinister causes",
+      blocks:[
+        {b:"kv", rows:[
+          ["Severity","Ferriman\u2013Gallwey distribution/score; impact on wellbeing"],
+          ["Commonest cause","PCOS \u2014 assess for oligomenorrhoea, acne, metabolic features"],
+          ["Red flags","<b>Rapid onset or virilisation</b> (clitoromegaly, voice change, balding) \u2192 ?androgen-secreting tumour"],
+          ["Bloods","Total testosterone (very high \u2192 urgent); consider 17-OHP (CAH), prolactin, TFTs, DHEAS"]
+        ]},
+        {b:"why", html:"Most hirsutism is benign and PCOS-related, but the essential job is to spot the rare <strong>rapidly progressive or virilising</strong> picture that signals an androgen-secreting tumour. Once that\u2019s excluded, treatment is cosmetic plus hormonal \u2014 and crucially, slow to work."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 first-line", title:"Cosmetic measures and weight",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"✂️ Cosmetic methods", html:"Shaving, waxing, plucking, bleaching \u2014 effective and immediate; reassure shaving doesn\u2019t worsen growth."},
+          {t:"💡 Laser / electrolysis", html:"Longer-lasting hair reduction; laser for larger areas, electrolysis for permanent removal."},
+          {t:"⚖️ Weight loss", html:"If overweight/PCOS \u2014 reduces androgens and improves hirsutism."},
+          {t:"🧠 Psychological", html:"Acknowledge distress and body-image impact; offer support."},
+          {t:"⏳ Set expectations", html:"Explain hormonal treatments take \u22656 months and work best with cosmetic measures."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication", title:"Hormonal and topical therapy",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Combined oral contraceptive", when:"anti-androgenic effect",
+           html:"First-line systemic treatment \u2014 raises SHBG and reduces free androgens. Allow several months for effect."},
+          {step:"Adjunct", title:"Topical eflornithine", when:"facial hirsutism",
+           fromLabel:"facial hair, as an adjunct",
+           html:"Slows facial hair growth; works alongside cosmetic measures (effect reverses on stopping)."},
+          {step:"Step 2", title:"Antiandrogen", when:"specialist / with contraception",
+           fromLabel:"inadequate response after \u22656 months",
+           html:"Spironolactone 50\u2013100 mg/day, cyproterone acetate, or finasteride 5 mg \u2014 <b>teratogenic</b>, so reliable contraception essential. Often specialist-guided."}
+        ]},
+        {b:"warn", html:"<b>Antiandrogens are teratogenic</b> \u2014 must be combined with effective contraception. Judge response only after <b>\u22656 months</b> (a hair-growth cycle); abandoning treatment early is the commonest mistake."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Slow response + safety",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Hirsutism response","\u22656 months","Judge effect; add/escalate if inadequate"],
+          ["COC suitability","Each review","BP, VTE risk, migraine \u2014 ongoing pill safety"],
+          ["Contraception (antiandrogen)","Ongoing","Confirm reliable contraception throughout"],
+          ["Underlying cause","If features change","Re-screen if rapid progression / virilisation"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"After starting", title:"Set expectations", html:"Confirm cosmetic measures, COC tolerability; reinforce the slow timescale."},
+          {n:"2", when:"6 months", title:"Response review", html:"Assess effect; add eflornithine / antiandrogen if inadequate."},
+          {n:"3", when:"Periodic", title:"Ongoing review", html:"Continue effective treatment; review COC/antiandrogen safety; manage PCOS holistically."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not responding? Check before escalating",
+      arrow:"\u2026if hirsutism persists",
+      intro:"Confirm an adequate trial and reconsider the cause.",
+      checks:[
+        {b:"1 \u00b7 Time", html:"Has \u22656 months elapsed? Hair cycles are slow."},
+        {b:"2 \u00b7 Adherence", html:"Consistent COC use + cosmetic measures combined?"},
+        {b:"3 \u00b7 Cause", html:"Rapid progression/virilisation \u2192 re-investigate for tumour/CAH."},
+        {b:"4 \u00b7 Add antiandrogen", html:"With contraception, if COC alone inadequate."},
+        {b:"5 \u00b7 Refer", html:"Refractory or suspected endocrinopathy \u2192 specialist."}
+      ],
+      back:"Adequate trial, cause confirmed \u2192 add antiandrogen / refer"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Virilisation", html:"\u201cRapidly increasing hair, a deepening voice, or balding \u2014 come back promptly so we can check the cause.\u201d"},
+          {t:"💊 Pregnancy", html:"\u201cIf taking an antiandrogen, you must use reliable contraception \u2014 these can harm a developing baby.\u201d"},
+          {t:"🦵 COC risks", html:"\u201cCalf swelling/pain or sudden breathlessness on the pill \u2014 seek urgent help.\u201d"},
+          {t:"⏳ Patience", html:"\u201cTreatment takes several months \u2014 keep going and combine with cosmetic methods.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"urgent for virilisation; routine for refractory",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Urgent", html:"Rapid-onset hirsutism or virilisation, or very high testosterone \u2192 endocrinology (exclude tumour)."},
+          {t:"Refractory", html:"Inadequate response to COC + antiandrogen + cosmetic measures."},
+          {t:"Suspected endocrinopathy", html:"CAH, Cushing\u2019s, or other hormonal cause."},
+          {t:"Fertility", html:"Where fertility is a concurrent goal (PCOS) \u2014 coordinate care."}
+        ]},
+        {b:"say", html:"This is usually hormonal and not dangerous, and we have good options \u2014 but they take a few months, so combining the pill with cosmetic measures works best. I\u2019ll just make sure there\u2019s no other cause first."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

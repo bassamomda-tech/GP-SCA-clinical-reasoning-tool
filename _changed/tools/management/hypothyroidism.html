@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hypothyroidism — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Hypothyroidism management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🦋",
+  title:"Hypothyroidism",
+  stemTitle:"Primary Hypothyroidism — ongoing management",
+  stemSub:"Primary-care management of confirmed primary hypothyroidism \u2014 levothyroxine initiation and titration, the subclinical decision, monitoring, and what to do when symptoms persist despite a normal TSH \u2014 up to endocrine referral. NICE NG145 \u00b7 CKS 2026.",
+  guideline:"NICE NG145",
+  glance:[
+    {lbl:"Drug", val:"Levothyroxine", sub:"once daily, empty stomach"},
+    {lbl:"Start (<65, well)", val:"1.6 \u00b5g/kg", sub:"typ. 50\u2013100 \u00b5g"},
+    {lbl:"Start (elderly/cardiac)", val:"25\u201350 \u00b5g", sub:"titrate slowly"},
+    {lbl:"Recheck TSH", val:"6\u20138 weeks", sub:"after each change"},
+    {lbl:"Target", val:"TSH in range", sub:"0.4\u20134.0 \u00b7 symptom-guided"},
+    {lbl:"Subclinical", val:"TSH >10", sub:"treat \u00b7 else consider"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm the picture and the cause",
+      blocks:[
+        {b:"kv", rows:[
+          ["Overt primary","\u2191 TSH + \u2193 FT4 \u2014 treat"],
+          ["Subclinical","\u2191 TSH + normal FT4 \u2014 decision below"],
+          ["Cause","Autoimmune (Hashimoto\u2019s, TPO antibodies), post-ablation/thyroidectomy, drug-induced (amiodarone, lithium)"],
+          ["Baseline","TSH, FT4; consider TPO antibodies; pregnancy status (changes everything). Don\u2019t test thyroid function during an acute illness \u2014 results are unreliable"],
+          ["Post-thyroid-cancer","Oncology often want long-term TSH <b>suppression (TSH &lt;0.1)</b> \u2014 check the agreed target before \u2018normalising\u2019 it; don\u2019t misread as over-replacement"]
+        ]},
+        {b:"why", html:"Primary hypothyroidism is a TSH-driven titration: the failing thyroid pushes TSH up, and your job is to replace thyroxine until the pituitary is satisfied (TSH normalises). Confirming it is <em>primary</em> matters \u2014 a low/normal TSH with low FT4 suggests pituitary disease, which is titrated on FT4 and needs endocrinology."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 supportive", title:"Get the absorption right",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"⏰ Consistent timing", html:"Take levothyroxine on an empty stomach \u2014 30\u201360 min before food, or at bedtime \u2014 the same way every day."},
+          {t:"💊 Separate interferers", html:"Take iron, calcium, PPIs and some foods (soy, coffee) several hours apart \u2014 they cut absorption."},
+          {t:"🧾 Same brand", html:"Keep to a consistent preparation where possible if control is borderline."},
+          {t:"🩺 Adherence", html:"Missed doses are the commonest cause of a stubbornly high TSH \u2014 explore gently."}
+        ]}
+      ]},
+    {t:"decision", q:"Overt, or subclinical?", note:"Overt \u2192 treat. Subclinical \u2192 decide by TSH level, symptoms, antibodies and age."},
+    {t:"node", d:"drug", n:"3", tag:"Medication", title:"Levothyroxine \u2014 initiation and titration",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Start", title:"Choose the starting dose", when:"by age + cardiac status",
+           html:"<b>&lt;65 &amp; no cardiac disease:</b> full replacement ~1.6 \u00b5g/kg/day to the nearest 25 \u00b5g (\u224860 kg \u2192 100 \u00b5g, 80 kg \u2192 125 \u00b5g, 100 kg \u2192 150 \u00b5g). <b>\u226565 or IHD:</b> start 25\u201350 \u00b5g and go slowly to avoid precipitating angina/arrhythmia."},
+          {step:"Titrate", title:"Adjust by TSH", when:"in 25\u201350 \u00b5g steps",
+           fromLabel:"recheck TSH at 6\u20138 weeks",
+           html:"Adjust to bring TSH into range and resolve symptoms. Allow 6\u20138 weeks between changes \u2014 TSH lags."},
+          {step:"Subclinical", title:"Treat selectively", when:"TSH > range, normal FT4",
+           fromLabel:"if subclinical",
+           html:"<b>Confirm on a repeat TSH after 3 months</b> (and check TPO antibodies) before acting. Treat if <b>TSH &gt;10</b>. If TSH 4\u201310: a <b>6-month trial</b> if symptomatic and &lt;65, or TPO-positive \u2014 be more cautious if &gt;65. If not treating, monitor TSH/FT4 annually (antibodies/features of thyroid disease) or every 2\u20133 years."},
+          {step:"Pregnancy", title:"Increase the dose", when:"as soon as pregnant",
+           fromLabel:"pregnancy / planning",
+           html:"Demand rises \u2014 typically increase dose ~25\u201350% and aim TSH per trimester targets; refer for joint care."}
+        ]},
+        {b:"why", html:"You titrate on TSH (not FT4) in primary hypothyroidism because TSH is the most sensitive marker of tissue thyroid status. Subclinical treatment is selective because most TSH 4\u201310 with no symptoms never progresses and over-treatment carries real harm \u2014 AF and osteoporosis."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"TSH rhythm + over-replacement watch",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["TSH (\u00b1 FT4)","6\u20138 weeks after start/dose change","Above range \u2192 \u2191 dose; suppressed \u2192 \u2193 dose"],
+          ["TSH once stable","Annually","Detect drift, adherence, dose needs"],
+          ["Over-replacement check","Each review","Suppressed TSH \u2192 risk of AF + osteoporosis \u2192 reduce dose"],
+          ["Pregnancy","Each trimester / 4-weekly early","Per specialist targets"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"6\u20138 weeks after each change", title:"Titration review", html:"Repeat TSH, review symptoms; adjust dose in small steps."},
+          {n:"2", when:"Annually once stable", title:"Stable review", html:"TSH, symptoms, adherence, over-replacement check, comorbidities."},
+          {n:"3", when:"If pregnant", title:"Joint antenatal care", html:"Increase dose promptly, frequent TSH, refer."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Symptoms persist despite a normal TSH?",
+      arrow:"\u2026if symptoms persist with biochemical control",
+      intro:"A normal TSH on adequate levothyroxine means the thyroid is replaced \u2014 look elsewhere before escalating.",
+      checks:[
+        {b:"1 \u00b7 Adherence + timing", html:"Confirm daily dosing and correct administration/absorption."},
+        {b:"2 \u00b7 Interactions", html:"PPI, iron, calcium, malabsorption, coeliac \u2014 check timing/coeliac serology."},
+        {b:"3 \u00b7 Other cause", html:"Anaemia, low B12/ferritin, depression, OSA, menopause can mimic symptoms."},
+        {b:"4 \u00b7 Over/under", html:"Re-confirm TSH truly in range, not just \u2018normalish\u2019."},
+        {b:"5 \u00b7 T3?", html:"Do <b>not</b> routinely add liothyronine \u2014 only via endocrinology after assessment."}
+      ],
+      back:"Adherent, absorbing, other causes excluded, TSH optimal \u2192 endocrine opinion"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"💓 Over-replacement", html:"\u201cPalpitations, tremor, heat intolerance, weight loss \u2014 tell us; the dose may be too high.\u201d"},
+          {t:"❤️ Angina", html:"\u201cNew or worsening chest pain after starting \u2014 contact us; we may slow the dose.\u201d"},
+          {t:"🔴 Myxoedema (rare)", html:"\u201cDrowsiness, confusion, very cold \u2014 especially if doses are missed \u2014 urgent help.\u201d"},
+          {t:"🤰 Pregnancy", html:"\u201cTell us as soon as you\u2019re pregnant or planning \u2014 you\u2019ll need a dose increase and closer checks.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to involve endocrinology",
+      arrow:"when specialist input is needed",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Pregnancy / planning", html:"Joint care; dose adjustment and trimester targets."},
+          {t:"Secondary / atypical", html:"Suspected pituitary cause (low/normal TSH with low FT4); discordant results."},
+          {t:"Cardiac", html:"Significant IHD making titration difficult."},
+          {t:"Persistent symptoms", html:"Considering liothyronine (T3) \u2014 endocrinology-only decision."},
+          {t:"Structural", html:"Goitre, nodule, or compressive symptoms; age &lt;16."}
+        ]},
+        {b:"say", html:"Your thyroid blood tests are now in the right range, but since you\u2019re still not feeling right I\u2019d like an endocrine specialist to take a closer look \u2014 we\u2019ll continue your levothyroxine as we are."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wheeze in Children · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="../assets/medchooser.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+.tag-2ww{background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;font-weight:700}
+</style>
+</head>
+<body class="mode-both" id="bodyEl" data-screen-label="Wheeze in Children">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="wheeze-children"></aside>
+  <main class="main">
+<div class="case-head">
+  <div>
+    <div class="ch-cat">Paediatrics · Full case</div>
+    <h1>Wheeze in Children</h1>
+  </div>
+  <div class="case-head-tags"><span class="tag tag-teal"><span class="tag-dot dot-teal"></span>BTS-SIGN / NICE NG245</span><span class="tag">Viral wheeze vs asthma</span><span class="tag tag-2ww">Red flags</span></div>
+</div>
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">Wh</div>
+      <div><div class="tb-title">Wheeze in Children · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · Viral-induced wheeze vs asthma · Acute severity · Spacer technique · Foreign body · Bronchiolitis · Safety-netting</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">Is it really wheeze?</span><span class="ns-lbl">Parents call many noises "wheeze." True wheeze is a polyphonic high-pitched expiratory whistle from the lower airways — distinguish it from stertor (snuffly upper airway), stridor (inspiratory, upper airway — croup/foreign body), and a rattly transmitted cough</span></div>
+    <div class="ns-item"><span class="ns-val">Viral wheeze ≠ asthma</span><span class="ns-lbl">Episodic viral-induced wheeze (well between colds, no interval symptoms, often the toddler years) is the commonest pattern and is not the same as asthma. Multi-trigger wheeze with interval symptoms, atopy and a family history points toward asthma</span></div>
+    <div class="ns-item"><span class="ns-val">No firm asthma label &lt;5</span><span class="ns-lbl">A definite diagnosis of asthma is hard to confirm under 5 (objective tests unreliable). Use a "suspected asthma" / watchful approach with a treatment trial and review, rather than committing a pre-schooler to a lifelong label prematurely</span></div>
+    <div class="ns-item"><span class="ns-val">Spacer beats inhaler</span><span class="ns-lbl">A pressurised metered-dose inhaler via a spacer (with a face mask in the young) is as effective as a nebuliser for most acute wheeze and is the mainstay of delivery. Check and teach technique every time — poor technique is the commonest cause of "treatment failure"</span></div>
+    <div class="ns-item"><span class="ns-val">Silent chest = peri-arrest</span><span class="ns-lbl">A silent chest, cyanosis, exhaustion, poor respiratory effort, SpO2 &lt;92%, or altered consciousness are life-threatening features — 999, high-flow oxygen, back-to-back salbutamol and immediate escalation</span></div>
+    <div class="ns-item"><span class="ns-val">Sudden + choking = foreign body</span><span class="ns-lbl">Abrupt onset of wheeze/cough in a well child, especially unilateral signs, after eating or playing with small objects → inhaled foreign body; needs urgent assessment ± bronchoscopy. A unilateral monophonic wheeze is foreign body until proven otherwise</span></div>
+    <div class="ns-item"><span class="ns-val">&lt;1yr first wheeze = ?bronchiolitis</span><span class="ns-lbl">A first wheezy episode in an infant with coryza, cough, poor feeding and fine crackles is more likely bronchiolitis (usually RSV) — supportive care, and admit for feeding/oxygen concerns; bronchodilators are not routinely effective</span></div>
+    <div class="ns-item"><span class="ns-val">Atypical → think again</span><span class="ns-lbl">Faltering growth, wet productive cough, finger clubbing, persistent focal signs, or wheeze from early infancy unresponsive to treatment → consider cystic fibrosis, bronchiectasis, congenital/cardiac cause, or (with lymphadenopathy/hepatosplenomegaly) a mediastinal mass — investigate, don't keep escalating inhalers</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Wheeze in Children</div>
+  <div class="stem-title">A 3-year-old brought by his anxious mother with a third bout of wheeze this winter — well between episodes — and a request for "an asthma inhaler and a proper diagnosis"</div>
+  <div class="stem-text">Theo Marsh, 3, is brought by his mother. He has had three episodes of wheeze and cough this winter, each starting with a runny nose and cough and settling over a few days; between episodes he is completely well, running around, eating and sleeping normally, with no night cough and no exercise symptoms. Today he is at the tail end of a cold — a little wheezy and coughing but feeding, talking in full sentences, playing, and not distressed. His mother is exhausted and worried; her sister's child "has bad asthma," and she wants Theo started on a regular preventer inhaler and given "a definite diagnosis." There is no personal history of eczema, no clear family history of asthma in Theo's parents, and he was born at term and growing well.</div>
+  <div class="stem-note">This stem tests the ability to: assess the acute episode for severity and decide it is safe for community management; distinguish episodic viral-induced wheeze (well between colds, no interval symptoms) from asthma, and explain why a firm asthma diagnosis and a regular preventer are not appropriate for this 3-year-old yet; teach spacer/inhaler technique; safety-net clearly for deterioration; and manage the parent's understandable wish for certainty and a preventer with empathy and shared decision-making rather than simply acquiescing or dismissing. The red-flag discipline is to keep foreign body, bronchiolitis (in younger infants) and the atypical/sinister causes in mind.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — Episodic viral-induced wheeze (this stem)</strong> Well between colds, no interval symptoms, toddler. Manage the acute episode (salbutamol via spacer PRN), parent education and a clear self-management/safety-net plan; avoid premature asthma labelling and routine preventers; review.</div>
+    <div class="stem-variant"><strong>Scenario B — Suspected asthma</strong> Interval symptoms (night cough, exercise wheeze), atopy (eczema, allergic rhinitis), family history, response to bronchodilator. Trial of treatment with structured review; in school-age children use objective tests to support the diagnosis.</div>
+    <div class="stem-variant"><strong>Scenario C — Acute severe / life-threatening</strong> Marked work of breathing, can't complete sentences/feed, SpO2 low; or silent chest, cyanosis, exhaustion, poor effort. → Oxygen, salbutamol (burst/back-to-back), steroids, 999 for life-threatening features; admit.</div>
+    <div class="stem-variant"><strong>Scenario D — Inhaled foreign body</strong> Sudden wheeze/cough in a previously well child after eating nuts or playing with small parts; unilateral/monophonic wheeze or focal signs. → Urgent assessment ± rigid bronchoscopy; do not anchor on "viral wheeze."</div>
+    <div class="stem-variant"><strong>Scenario E — Bronchiolitis (infant)</strong> First wheezy episode &lt;1 year with coryza, fine crackles, poor feeding. → Supportive care; admit for feeding &lt;50–75% or oxygen needs/apnoea; bronchodilators not routinely effective.</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Age (bronchiolitis in infants; firm asthma label avoided &lt;5); pattern (episodic viral vs multi-trigger/interval symptoms); atopy &amp; family history; acute severity (effort, SpO2, feeding, speech); onset (sudden + choking → foreign body); growth and atypical features (CF, bronchiectasis, cardiac, mediastinal mass); inhaler/spacer technique; smoke exposure; parental anxiety and expectations.</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History — Is it Wheeze? · Pattern · Severity · Atypical Features · ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The history answers four questions: is this genuinely wheeze (not stertor, stridor or a rattly cough); what is the pattern over time (episodic viral vs interval/multi-trigger); how bad is the current episode; and are there atypical features that should make you think beyond "wheezy child"?</strong> Layered over all of it is the parent's agenda — Theo's mother wants a diagnosis and a preventer, driven by her sister's child's asthma and her own exhaustion.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 SCA framing — take the worry seriously, resist the premature label</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"It's clearly worrying watching him struggle with these colds, and I want to give you a clear plan for it. Can I explain why, at three, I'd hold off on calling it asthma just yet — and what we'd watch for that would change that?"</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">The mother equates "a preventer and a label" with being taken seriously. The skill is to validate her, give a concrete plan for the episodes, and explain the uncertainty of an asthma diagnosis under 5 — without leaving her feeling fobbed off.</div>
+    </div>
+    <div class="sub-divider">1A — Characterise the wheeze and the pattern</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"Tell me what happens when he gets like this — and show me the noise he makes if you can."</em></td>
+            <td class="why"><strong>Parents label many noises "wheeze."</strong> Clarify whether it is a true expiratory whistle (lower airway wheeze), a snuffly upper-airway noise (stertor), an inspiratory noise (stridor — croup, foreign body), or just a rattly transmitted cough. Getting this right prevents both over-treatment (inhalers for stertor) and dangerous under-recognition (stridor).<span class="why-sub">In SCA: asking the parent to imitate the noise, or asking "is it breathing in or breathing out," is the move that demonstrates you know wheeze is not one thing.</span></td>
+            <td><span class="chg chg-ddx">True wheeze → lower airway. Stridor → upper airway/foreign body. Stertor/rattle → not wheeze</span></td>
+          </tr>
+          <tr><td class="q">Pattern over time<em>"Is he completely well between these episodes, or does he cough at night, or wheeze when running about, even without a cold?"</em></td><td class="why">The central discriminator. <strong>Episodic viral wheeze:</strong> well between colds, no interval symptoms, triggered by viral URTIs — Theo's pattern. <strong>Multi-trigger / asthma pattern:</strong> interval symptoms (night cough, exercise wheeze), triggers beyond colds (allergens, exercise, cold air), often with atopy and family history.</td><td class="why">Episodic viral → episode management, avoid preventer/label. Interval/multi-trigger → suspected asthma → treatment trial.</td><td><span class="chg chg-ddx">Defines viral wheeze vs asthma</span><span class="chg chg-rx">Drives whether a preventer is appropriate</span></td></tr>
+          <tr><td class="q">Acute severity now<em>"Today — is he feeding/drinking, talking or playing normally? Is he working hard to breathe, drawing in around the ribs, or going blue?"</em></td><td class="why">Severity assessment for the current episode: ability to feed and talk in sentences, work of breathing (recession, accessory muscles, nasal flaring), colour, alertness, and respiratory rate. Theo is feeding, talking in full sentences and playing — reassuring, community-manageable.</td><td class="why">Severe/life-threatening features → emergency. Mild/moderate, feeding/talking → community management with safety-net.</td><td><span class="chg chg-999">Silent chest/cyanosis/exhaustion → 999</span></td></tr>
+          <tr><td class="q">Onset &amp; choking<em>"Did this come on suddenly? Was he eating something or playing with small toys when it started?"</em></td><td class="why">A sudden onset in a previously well child, especially with a choking episode or unilateral signs, raises an inhaled foreign body — a different, urgent pathway. Gradual onset with a cold supports a viral trigger.</td><td class="why">Sudden + choking/unilateral → foreign body (urgent). Gradual with coryza → viral.</td><td><span class="chg chg-ref">Foreign body → urgent assessment ± bronchoscopy</span></td></tr>
+          <tr><td class="q">🚩 Atypical features<em>"How is his weight and growth? Is the cough wet and productive? Any wheeze since he was tiny? Any lumps/glands, or is he unusually tired or pale?"</em></td><td class="why">Faltering growth, a chronically wet/productive cough, wheeze from early infancy, finger clubbing or persistent focal signs point away from simple viral wheeze toward cystic fibrosis, bronchiectasis, a congenital/cardiac cause or recurrent aspiration. Unexplained lymphadenopathy/hepatosplenomegaly with systemic upset would prompt urgent investigation for a mediastinal mass / haematological cause.</td><td class="why">Atypical features → investigate / refer, do not keep escalating inhalers.</td><td><span class="chg chg-inv">CF, bronchiectasis, cardiac, mediastinal mass</span></td></tr>
+          <tr><td class="q">Background &amp; environment<em>"Any eczema or hay fever? Asthma in mum or dad? Does anyone smoke at home? How were the early weeks of life?"</em></td><td class="why">Atopy (eczema, allergic rhinitis) and parental asthma raise the probability that recurrent wheeze is asthma. Tobacco smoke exposure worsens wheeze and is modifiable. Prematurity and neonatal respiratory problems shape the differential.</td><td class="why">Atopy + family history → asthma more likely. Smoke exposure → cessation advice. Prematurity → chronic lung disease.</td><td><span class="chg chg-ps">Smoke exposure: address sensitively</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — the wheezy child who needs more than reassurance</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Life-threatening features — silent chest, cyanosis, poor respiratory effort, exhaustion, SpO2 &lt;92%, altered consciousness</td><td class="rf-why">Imminent respiratory failure. A "quiet" chest in a tiring child is more dangerous than a loud wheeze.</td><td><span class="rf-action rfa-999">999; high-flow oxygen; back-to-back salbutamol; steroids; blue-light transfer</span></td></tr>
+          <tr><td class="rf-flag">Acute severe — too breathless to feed/talk, marked recession, RR/HR very high, SpO2 &lt;92%</td><td class="rf-why">Needs urgent treatment and assessment; can progress to life-threatening.</td><td><span class="rf-action rfa-same">Salbutamol burst via spacer; oral steroid; oxygen; urgent paediatric assessment/admission</span></td></tr>
+          <tr><td class="rf-flag">Sudden onset ± choking, unilateral/monophonic wheeze</td><td class="rf-why">Inhaled foreign body — may be missed as "viral wheeze"; risks complete obstruction and distal collapse/infection.</td><td><span class="rf-action rfa-same">Urgent ENT/paediatric assessment ± rigid bronchoscopy</span></td></tr>
+          <tr><td class="rf-flag">Infant &lt;1 yr — first wheeze with poor feeding / apnoea / oxygen needs</td><td class="rf-why">Bronchiolitis can deteriorate; young infants and those with risk factors (prematurity, cardiac/lung disease) are vulnerable to apnoea and feeding failure.</td><td><span class="rf-action rfa-same">Admit if feeding &lt;50–75%, oxygen needs, apnoea, or significant distress</span></td></tr>
+          <tr><td class="rf-flag">Atypical chronic features — faltering growth, wet productive cough, clubbing, persistent focal signs, wheeze from early infancy</td><td class="rf-why">Suggests cystic fibrosis, bronchiectasis, congenital/cardiac disease, recurrent aspiration — not simple viral wheeze.</td><td><span class="rf-action rfa-same">Paediatric referral and investigation; do not keep escalating inhalers</span></td></tr>
+          <tr><td class="rf-flag">Systemic features — unexplained lymphadenopathy/hepatosplenomegaly, pallor, persistent fever, weight loss</td><td class="rf-why">Raises a mediastinal mass / haematological malignancy; NICE NG12 children with unexplained lymphadenopathy or hepatosplenomegaly warrant very urgent investigation (FBC, specialist referral).</td><td><span class="rf-action rfa-same">Very urgent FBC + paediatric referral (NICE NG12 children &amp; young people)</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What do you think is going on — and what's making you think it might be asthma?"</div><div class="ice-why">Theo's mother has an asthma model from her sister's child. Surfacing it lets you honour her observation (recurrent wheeze IS worth taking seriously) while explaining why the <em>pattern</em> matters — and why "asthma" is a label best earned over time, not stamped on at three.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 Concerns</div><div class="ice-phrase">"What's the thing that frightens you most when he's like this?"</div><div class="ice-why">Her concern is probably watching him struggle to breathe and feeling helpless — and exhaustion from broken nights. Addressing the fear directly (what severe looks like, when to act, what to do at home) gives her control and is more reassuring than a prescription alone.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"You mentioned a preventer inhaler and a firm diagnosis — tell me what you were hoping those would do."</div><div class="ice-why">She equates a preventer and a diagnosis with being taken seriously and with stopping the episodes. Naming this lets you explain that a daily preventer is not indicated for episodic viral wheeze, offer what <em>will</em> help (a reliever via spacer, a written plan, review), and keep her on side.</div></div>
+    </div>
+    <div class="sub-divider">1D — Psychosocial context</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 The frightened, exhausted parent of a wheezy toddler</div>
+      <p>Watching a small child work to breathe is frightening, and repeated disturbed nights wear parents down. That fear and fatigue are the engine of the "give him a preventer and a diagnosis" request — it is a request for control and reassurance. A consultation that simply refuses the preventer, or stamps on an asthma label to satisfy the parent, both miss the mark. The work is to validate the worry, equip the parent with a clear plan and the confidence to recognise severity, and explain honestly why time and pattern — not a premature label — will give the real answer.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>😴 Exhaustion &amp; helplessness</h5><p>Broken nights and the helplessness of watching a child struggle drive anxiety. Acknowledge it and give concrete control: what to do, what to watch, when to seek help.</p><span class="ps-phrase">"It's exhausting and frightening watching him like this — let's make sure you leave today knowing exactly what to do at home and exactly what would mean he needs to be seen urgently."</span></div>
+      <div class="ps-card"><h5>🏷️ The wish for a label</h5><p>A diagnosis feels like certainty. Explain that under five, the honest answer is often "wait and watch the pattern," and that this is good medicine, not indecision.</p><span class="ps-phrase">"I know a clear name would feel reassuring. At three it's genuinely hard to be certain it's asthma — many children wheeze with colds and grow out of it. Watching how the pattern develops is the most honest way to get it right for him."</span></div>
+      <div class="ps-card"><h5>🚬 Smoke exposure</h5><p>If anyone smokes at home, this is a major modifiable factor — raise it supportively, tied to the child's breathing, not as blame.</p><span class="ps-phrase">"One of the biggest things that helps a wheezy child's chest is keeping the home and car completely smoke-free — I can help anyone in the house who'd like support to cut down or stop."</span></div>
+      <div class="ps-card"><h5>👍 Empowerment through a plan</h5><p>A written action plan and confident spacer technique turn a frightening situation into a managed one — often more reassuring than any prescription.</p><span class="ps-phrase">"I'll give you a simple written plan — how much reliever to give through the spacer, how often, and the signs that mean call 999 or come straight in. You'll know exactly what to do next time."</span></div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div><div class="sca-phrase">"Is he completely well between these colds, or does he cough at night or wheeze when running about?" — the question that separates viral wheeze from asthma.</div><div class="sca-phrase">"Did it come on suddenly — was he eating or playing with small toys?" — keeps foreign body in mind.</div><div class="sca-phrase">"At three it's genuinely hard to be sure it's asthma — let's watch the pattern and I'll give you a clear plan now." — honest, reassuring, not dismissive.</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Labelling asthma and starting a regular preventer in a pre-schooler with episodic viral wheeze</li><li>Not assessing acute severity (feeding, speech, effort, colour)</li><li>Not distinguishing true wheeze from stridor/stertor; missing foreign body</li><li>Dismissing the parent's worry without a plan</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Severity not assessed; foreign body/stridor not considered; asthma label + preventer applied prematurely; no safety-net; parent dismissed</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Episode assessed; pattern partly explored; some safety-net; preventer discussion unclear; ICE partial</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Wheeze confirmed; severity assessed (safe for community); episodic viral pattern identified; preventer/label appropriately deferred; spacer technique; clear written safety-net; ICE all three; smoke exposure addressed</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage — Life-Threatening · Acute Severe · Urgent · Community</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The first triage question in any wheezy child is acute severity — because a tiring child with a quiet chest needs blue-light care, not a clinic appointment. Then sit the foreign body, the young infant, and the atypical/sinister presentations into their urgent lanes, leaving the well child with episodic viral wheeze for community management.</strong></div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div>
+        <h3>999 / blue light</h3>
+        <span class="tc-badge tcb-e">Life-threatening</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Silent chest, cyanosis, exhaustion, poor effort</strong><em>SpO2 &lt;92%, altered consciousness → oxygen, back-to-back salbutamol, steroids, 999</em></li>
+          <li class="tc-item"><strong>Apnoea (infant)</strong><em>Especially &lt;3 months / risk factors → 999</em></li>
+          <li class="tc-item"><strong>Complete airway obstruction (foreign body)</strong><em>Unable to cry/cough/breathe → paediatric basic life support; 999</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Urgent / Refer</div>
+        <h3>Same day / soon</h3>
+        <span class="tc-badge tcb-u">Hours</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Acute severe — can't feed/talk, marked recession, SpO2 &lt;92%</strong><em>Treat + urgent paediatric assessment/admission</em></li>
+          <li class="tc-item"><strong>Suspected inhaled foreign body</strong><em>Urgent ENT/paediatric assessment ± bronchoscopy</em></li>
+          <li class="tc-item"><strong>Infant bronchiolitis with feeding/oxygen concern</strong><em>Admit per NICE NG9 thresholds</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Routine</div>
+        <h3>Community</h3>
+        <span class="tc-badge tcb-r">Primary care</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Episodic viral wheeze — well child</strong><em>Reliever via spacer; written plan; safety-net; review</em></li>
+          <li class="tc-item"><strong>Suspected asthma — interval symptoms</strong><em>Treatment trial + structured review; objective tests in school-age</em></li>
+          <li class="tc-item"><strong>Atypical features (non-acute)</strong><em>Paediatric referral for investigation</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Triage rationale</div><div class="sca-phrase">"Right now Theo's feeding, talking and playing and his oxygen levels are fine, so this is safe to manage at home — but I'll show you exactly what would mean he needs to be seen urgently."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not recognising a silent chest/exhaustion as life-threatening</li><li>Missing foreign body or an unwell infant who needs admission</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Examination — Effort · Air Entry · Auscultation · Growth · Red-Flag Signs</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Examination grades the acute severity and looks for the features that change the diagnosis. The most important judgement is work of breathing and air entry — and the recognition that a quiet chest with poor effort is an emergency, not a reassuring sign.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🩺 Acute assessment</div>
+        <table class="it">
+          <thead><tr><th>Step</th><th>What it tells you</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">General / behaviour</td><td>Alert, playing, feeding, talking in sentences = reassuring; drowsy, agitated, exhausted = serious.</td></tr>
+            <tr><td class="factor">Work of breathing</td><td>Respiratory rate, recession (subcostal/intercostal), nasal flaring, accessory muscles, tracheal tug, head bobbing in infants.</td></tr>
+            <tr><td class="factor">SpO2 &amp; colour</td><td>SpO2 &lt;92% in air is a marker of severity; cyanosis is life-threatening.</td></tr>
+            <tr><td class="factor">Auscultation</td><td>Polyphonic expiratory wheeze with reasonable air entry = manageable; reduced air entry / silent chest = severe.</td></tr>
+            <tr><td class="factor">🚩 Asymmetry</td><td>Unilateral/focal signs → foreign body or focal pathology, not generalised viral wheeze.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">📏 Beyond the chest</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Growth (plot weight/height)</td><td>Faltering growth shifts the differential to CF, chronic disease — a key red flag.</td></tr>
+            <tr><td class="factor">Clubbing</td><td>Suggests chronic suppurative lung disease (CF, bronchiectasis).</td></tr>
+            <tr><td class="factor">Cardiac</td><td>Murmur, hepatomegaly, poor feeding/sweating → cardiac cause of "wheeze."</td></tr>
+            <tr><td class="factor">Atopy / ENT</td><td>Eczema, allergic rhinitis support an asthma trajectory.</td></tr>
+            <tr><td class="factor">🚩 Lymphadenopathy / hepatosplenomegaly</td><td>With systemic upset → urgent investigation (mediastinal mass / haematological).</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Narration that scores</div><div class="sca-phrase">"I'm checking how hard he's working to breathe, his oxygen level, and listening to both sides of the chest — and I'll quickly plot his growth, because that helps me be sure this is just viral wheeze and nothing more."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Reassured by a "quiet chest" in a tiring child</li><li>Not checking SpO2 / work of breathing / growth</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Investigations — Mostly Clinical · The Treatment Trial · When to Test</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Wheeze in young children is a clinical diagnosis — most need no tests, and the most useful "investigation" is often a structured trial of treatment with review. Objective tests (spirometry, FeNO, peak flow) become possible and useful in school-age children with suspected asthma; targeted tests are reserved for atypical or severe presentations.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🔬 Tests — selective</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">None (clinical) + review</td><td>Typical episodic viral wheeze in a well pre-schooler — a documented pattern over time is the most valuable "test."</td></tr>
+            <tr><td class="factor">Spirometry ± bronchodilator reversibility, FeNO, peak flow</td><td>School-age children (≈5+) with suspected asthma — support the diagnosis objectively before committing to long-term treatment.</td></tr>
+            <tr><td class="factor">Chest X-ray</td><td>Atypical/persistent focal signs, suspected foreign body or structural disease, severe/unusual presentation — not routine.</td></tr>
+            <tr><td class="factor">Sweat test / specialist work-up</td><td>Faltering growth, wet productive cough, clubbing → cystic fibrosis and other chronic causes (via paediatrics).</td></tr>
+            <tr><td class="factor">FBC + urgent referral</td><td>Systemic features with lymphadenopathy/hepatosplenomegaly (NICE NG12 children).</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🧪 The treatment trial</div>
+        <div style="padding:.8rem 1rem;font-size:12.5px;line-height:1.6">
+          <p style="margin-bottom:.5rem">Where asthma is suspected (interval symptoms, atopy), a structured trial of inhaled treatment with a clear review date — assessing symptom response — is a legitimate and recommended way to build the diagnosis in young children.</p>
+          <p>Document the pattern at each contact. Avoid an open-ended preventer prescription with no review: that is how children end up on long-term treatment they may not need, or with under-treated asthma never properly assessed.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key reasoning</div><div class="sca-phrase">"At three we can't do reliable breathing tests, so the best way to get this right is to treat the episodes, write down the pattern, and review — rather than commit him to a daily inhaler now."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Ordering spirometry in a 3-year-old (unreliable)</li><li>Starting long-term treatment with no review or documented pattern</li><li>Reflex chest X-ray with no indication</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Diagnosis — Viral Wheeze vs Asthma vs the Mimics</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The diagnostic step names the pattern and resists premature certainty: episodic viral wheeze, suspected/probable asthma, or one of the mimics that must not be missed.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:24%">Diagnosis</th><th>Discriminating features</th></tr></thead>
+        <tbody>
+          <tr><td class="q"><strong>Episodic viral-induced wheeze</strong></td><td class="why">Well between viral colds; no interval symptoms; toddler/pre-school; often resolves with age (Theo).</td></tr>
+          <tr><td class="q"><strong>Suspected / multi-trigger asthma</strong></td><td class="why">Interval symptoms (night cough, exercise wheeze), multiple triggers, atopy (eczema/rhinitis), family history, bronchodilator response.</td></tr>
+          <tr><td class="q"><strong>Bronchiolitis</strong></td><td class="why">First wheeze &lt;1 year; coryza, fine crackles, poor feeding; usually RSV; supportive care.</td></tr>
+          <tr><td class="q"><strong>Inhaled foreign body</strong></td><td class="why">Sudden onset ± choking; unilateral/monophonic wheeze or focal signs.</td></tr>
+          <tr><td class="q"><strong>🚩 Chronic / structural disease</strong></td><td class="why">Faltering growth, wet cough, clubbing, wheeze from infancy → CF, bronchiectasis, cardiac, recurrent aspiration.</td></tr>
+          <tr><td class="q"><strong>🚩 Mediastinal mass / haematological</strong></td><td class="why">Wheeze/cough with lymphadenopathy/hepatosplenomegaly, pallor, systemic upset → urgent investigation (NG12 children).</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ddx-card ddx-b" style="margin-bottom:4px">
+      <h4>🚩 Don't anchor — the patterns that should stop you escalating inhalers</h4>
+      <p>Two disciplines protect the wheezy child: don't <em>over</em>-diagnose asthma in a pre-schooler with simple viral wheeze (avoiding unnecessary long-term treatment and a sticky label), and don't <em>under</em>-investigate the child whose course is atypical — sudden onset (foreign body), faltering growth or wet cough (CF/bronchiectasis), or systemic features (mediastinal/haematological). For Theo, the pattern is reassuringly typical episodic viral wheeze; the formulation is "viral-induced wheeze, no features of asthma or sinister disease today, safe for community management with review."</p>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Explaining it plainly</div><div class="sca-phrase">"What I think Theo has is wheeze that comes with colds — very common at his age, and most children grow out of it. It's not the same as asthma, and because he's completely well between colds I wouldn't start a daily inhaler now — but we'll keep an eye on the pattern."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Committing to "asthma" without the supporting pattern</li><li>Missing an atypical course that needs investigation</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc6">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">Referral — Emergency · Paediatric Assessment · Atypical Work-up</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Most wheezy children are managed in primary care. Referral is for the acute emergency, the unwell infant, the suspected foreign body, and the atypical/severe presentations that need specialist investigation.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="ref-table">
+        <thead><tr><th style="width:24%">Referral</th><th>Who / when</th><th style="width:20%">Urgency</th></tr></thead>
+        <tbody>
+          <tr><td><strong>🔴 999 / acute admission</strong></td><td>Life-threatening or acute severe wheeze; apnoea; complete airway obstruction.</td><td><span class="rf-action rfa-999">Same day / blue light</span></td></tr>
+          <tr><td><strong>Suspected foreign body</strong></td><td>Sudden onset ± choking, unilateral signs → ENT/paediatric for bronchoscopy.</td><td><span class="rf-action rfa-same">Urgent</span></td></tr>
+          <tr><td><strong>Infant bronchiolitis</strong></td><td>Feeding &lt;50–75%, oxygen needs, apnoea, significant distress (NICE NG9).</td><td><span class="rf-action rfa-same">Same day admission</span></td></tr>
+          <tr><td><strong>Paediatric / asthma clinic</strong></td><td>Diagnostic uncertainty, frequent/severe episodes, poor response, or to support an asthma diagnosis in school-age children.</td><td><span class="rf-action rfa-same">Routine / soon</span></td></tr>
+          <tr><td><strong>🟣 Atypical → specialist work-up</strong></td><td>Faltering growth, wet productive cough, clubbing, wheeze from infancy → CF/bronchiectasis/cardiac. Systemic features with lymphadenopathy/hepatosplenomegaly → very urgent FBC + referral (NG12 children).</td><td><span class="rf-action" style="background:#6d28d9;color:#fff">Urgent · NG12 if systemic</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Knowing the thresholds</div><div class="sca-phrase">"Theo doesn't need referral today — but if these became very frequent or severe, or if I had any worry about his growth or his chest between colds, I'd involve the paediatric team."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Failing to admit an unwell infant / severe episode</li><li>Persisting with inhalers in an atypical child who needs investigation</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Reliever via Spacer · Technique · Safety-Net · Review</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>For episodic viral wheeze the plan is a reliever via a spacer for episodes, excellent technique, a clear written safety-net, parent education, and review — not a daily preventer. Where asthma is suspected, add a structured treatment trial with review.</strong> Theo's plan delivers reassurance and control without over-treatment.</div>
+    <div class="sub-divider">7A — The plan</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--g)">💨 Treatment &amp; delivery</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Reliever (salbutamol) via spacer</td><td>pMDI + spacer (face mask if young); for episodes — as-needed dosing per a written plan; spacer is as effective as a nebuliser for most.</td></tr>
+            <tr><td class="factor">Spacer/inhaler technique</td><td>Teach and check every time — single actuation, tidal breathing, mask seal; poor technique is the commonest cause of apparent failure.</td></tr>
+            <tr><td class="factor">Preventer (ICS)</td><td>Not for simple episodic viral wheeze. Reserved for suspected/confirmed asthma (interval symptoms, frequent severe episodes) within a treatment trial and review.</td></tr>
+            <tr><td class="factor">Oral steroid</td><td>Used in acute severe episodes/asthma exacerbations under appropriate assessment — not routine for mild viral wheeze.</td></tr>
+            <tr><td class="factor">Bronchiolitis (infant)</td><td>Supportive (feeding, oxygen); bronchodilators not routinely effective.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🔁 Safety-net &amp; education</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Written action plan</td><td>How much reliever, how often, and what to do if it isn't helping.</td></tr>
+            <tr><td class="factor">When to seek help urgently</td><td>"Call 999 / come straight in if: working hard to breathe, sucking in around the ribs, too breathless to feed/talk, going blue or pale, drowsy, or the reliever isn't lasting."</td></tr>
+            <tr><td class="factor">Smoke-free environment</td><td>Strong, modifiable factor; offer cessation support to household members.</td></tr>
+            <tr><td class="factor">Review</td><td>Document the pattern; review frequency/severity; reassess for asthma features over time.</td></tr>
+            <tr><td class="factor">Parent reassurance</td><td>Most pre-school viral wheeze improves with age; the plan gives control.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">A plan that scores</div><div class="sca-phrase">"Here's the plan: a reliever inhaler through a spacer for when he's wheezy — let me show you exactly how — a written sheet of what to do and the danger signs to act on, keeping the home smoke-free, and a review to watch the pattern. I'd hold off on a daily preventer for now."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Starting a regular preventer for episodic viral wheeze</li><li>Not teaching spacer technique</li><li>No written safety-net / danger signs; no review</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Wheeze in Children — SCA Consultation Scorecard</div><div class="scorecard-sub">Viral wheeze vs asthma · Acute severity · Spacer technique · Safety-netting · Avoid premature label</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Structured paediatric respiratory history</strong> — noise type, pattern, severity, atypical features, background gathered systematically</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Acute severity assessed and verbalised</strong> — feeding, speech, effort, colour, SpO2 explicitly checked</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Examination proportionate and narrated</strong> — work of breathing, auscultation both sides, growth plotted</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain-language explanation</strong> — viral wheeze vs asthma explained to the parent without jargon</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Spacer/inhaler technique taught</strong> — demonstrates and checks delivery technique</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Clear written safety-net</strong> — danger signs and when to seek urgent help spelled out</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plan + review + closing question</strong> — agreed plan, review of pattern, "anything else?"</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, diagnosis, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Acute severity correctly graded</strong> — recognises this episode is safe for community care; knows life-threatening features (silent chest, SpO2 &lt;92%)</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Episodic viral wheeze vs asthma distinguished</strong> — uses interval symptoms / pattern to differentiate</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Avoids premature asthma label &amp; routine preventer</strong> — does not commit a 3-year-old with viral wheeze to long-term ICS</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Confirms it is true wheeze</strong> — distinguishes from stridor/stertor/rattly cough</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Considers foreign body</strong> — asks about sudden onset/choking; checks for asymmetry</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Screens atypical/sinister features</strong> — growth, wet cough, clubbing, lymphadenopathy/hepatosplenomegaly</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Investigations appropriate</strong> — clinical diagnosis + review; no unreliable spirometry in a pre-schooler; targeted tests only</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct management — reliever via spacer + plan</strong> — episode treatment with technique and written plan, not a preventer</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Treatment trial framed for suspected asthma</strong> — if interval features, structured trial with review (not open-ended)</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct overall formulation</strong> — episodic viral wheeze, safe for community, with a watchful, review-based plan</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decisions</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — mother's asthma model (sister's child) surfaced</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> — the fear of watching him struggle, the exhaustion, validated</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations addressed</strong> — preventer/diagnosis request named and reshaped, not dismissed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Uncertainty explained honestly</strong> — why a firm asthma label is deferred at 3, framed as good medicine</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Parent empowered with control</strong> — written plan + technique gives confidence, not just a prescription</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Smoke exposure raised supportively</strong> — tied to the child's breathing, not blame; help offered</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Reassurance balanced with safety-netting</strong> — reassures without minimising; danger signs clear</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Shared decision on treatment</strong> — preventer decision made with the parent, reasons explained</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Child-centred manner</strong> — engages the child; examines in a child-friendly way</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Parent leaves reassured, not dismissed</strong> — feels heard and equipped</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Collaborative close</strong> — plan agreed; safety-net understood; review booked</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">Severity not assessed; foreign body/atypical missed; asthma label + preventer started prematurely; no spacer technique; no safety-net</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">Episode assessed; pattern partly explored; some safety-net; preventer decision unclear; ICE partial</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Severity graded; viral wheeze identified; preventer/label deferred appropriately; spacer technique; written safety-net; ICE all three; smoke-free advice; review</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist to see your score and feedback</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked — areas to develop</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Parent actor brief — click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"He keeps getting wheezy with every cold — this is the third time this winter. My sister's little boy has bad asthma, and I really think Theo needs a proper diagnosis and one of those preventer inhalers. Can we sort that today?"</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>You are Theo's mum. Theo is 3, normally a whirlwind. Three times this winter he's started with a runny nose and cough and gone wheezy for a few days, then been completely fine again — running around, eating well, sleeping well, no night cough, no problems when he's playing. Today he's at the tail end of a cold, a bit wheezy and coughing but chatting away, playing with the toys and not distressed. You're shattered from broken nights and worried. Your sister's son has severe asthma and it frightens you. You came in convinced Theo needs to be started on a regular preventer inhaler and given a clear diagnosis.</p></div>
+      <div class="ab"><h5>Hidden concerns (reveal if explored)</h5><p><strong>Fear (main):</strong> watching him struggle to breathe scares you and you feel helpless. If the doctor gives you a clear plan and shows you what to do, you feel much better.</p><p><strong>Wanting certainty:</strong> "not knowing" is hard. If the doctor explains honestly why they'd wait before calling it asthma, and what they'd watch for, you can accept it.</p><p><strong>Smoking:</strong> Theo's dad smokes (outside, mostly). You'll mention it if asked and are open to help.</p></div>
+      <div class="ab"><h5>Clinical details if asked</h5><ul><li>Completely well between colds — no night cough, no wheeze when running about, no symptoms without a cold</li><li>Each episode starts with coryza, lasts a few days, settles</li><li>No eczema; no hay fever; parents not asthmatic (sister's child is)</li><li>Born at term; growing well; eating and gaining normally</li><li>Today: feeding, talking in full sentences, playing; mild wheeze/cough; not blue, not sucking in</li><li>No sudden choking episode; no small-object incident; no weight loss, lumps or unusual tiredness</li><li>Theo's dad smokes</li></ul></div>
+      <div class="ab"><h5>Reactions at key moments</h5><ul><li><strong>On "not asthma yet":</strong> "But he clearly wheezes — why won't you call it asthma?" → reassured by an honest explanation of pattern and age.</li><li><strong>On no preventer:</strong> mild disappointment → satisfied if given a reliever + spacer + written plan instead.</li><li><strong>On the spacer:</strong> grateful to be shown how to use it properly.</li><li><strong>Challenge line:</strong> "So you're not going to do anything? I came here for a preventer."</li></ul></div>
+    </div>
+    <div class="actor-challenge">"So you're saying it's nothing and sending us away with no inhaler? My sister's boy ended up in hospital — I don't want that for Theo."</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> Theo's mum leaves satisfied if the GP: (1) takes her fear seriously and assesses the acute episode (safe for home); (2) explains the difference between viral wheeze and asthma, and why a firm label/preventer is deferred at 3 — without dismissing her; (3) provides a reliever via spacer with technique taught, and a clear written safety-net with danger signs; (4) addresses smoke exposure supportively; (5) arranges review to watch the pattern. She disengages if she feels fobbed off with "it's nothing," given no plan, or if her worry is brushed aside.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Wheeze in Children — Clinical Decision Framework</div><div class="sum-sub">BTS-SIGN/NICE NG245 · Viral wheeze vs asthma · NG9 bronchiolitis</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🚦 1 — Acute severity first</div>
+    <div class="algo-wrap" style="margin-bottom:1rem">
+      <div class="algo-start">Wheezy child</div>
+      <div class="algo-arrow">▼</div>
+      <div class="algo-row">
+        <div class="algo-branch algo-red"><div class="algo-branch-lbl">🔴 Life-threatening</div><ul class="algo-list"><li>Silent chest, cyanosis, exhaustion, poor effort</li><li>SpO2 &lt;92%, altered consciousness, apnoea</li></ul><span class="algo-action red-action">999</span></div>
+        <div class="algo-branch algo-amber"><div class="algo-branch-lbl">🟠 Acute severe / urgent</div><ul class="algo-list"><li>Can't feed/talk, marked recession</li><li>Foreign body; unwell infant (bronchiolitis)</li></ul><span class="algo-action amber-action">Treat + admit</span></div>
+        <div class="algo-branch algo-green"><div class="algo-branch-lbl">🟢 Community</div><ul class="algo-list"><li>Episodic viral wheeze (well child)</li><li>Suspected asthma — trial</li></ul><span class="algo-action green-action">GP manage</span></div>
+      </div>
+    </div>
+    <div class="sum-sub-hdr">🔍 2 — Pattern &amp; plan</div>
+    <div class="sum-2col">
+      <div class="card" style="padding:.8rem 1rem"><strong style="color:var(--b)">Episodic viral wheeze</strong><p style="font-size:12.5px;line-height:1.55;margin-top:.3rem">Well between colds; no interval symptoms. Reliever via spacer for episodes; technique; written safety-net; review. No routine preventer; no firm asthma label &lt;5.</p></div>
+      <div class="card" style="padding:.8rem 1rem"><strong style="color:var(--a)">Suspected asthma</strong><p style="font-size:12.5px;line-height:1.55;margin-top:.3rem">Interval symptoms, atopy, family history. Structured treatment trial + review; objective tests (spirometry/FeNO) in school-age. Investigate atypical features (CF, foreign body, cardiac, mediastinal mass).</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label">SCA Quick Reference</div><div class="sum-title">Wheeze in Children — Consultation Playbook</div><div class="sum-sub">Assess severity · name the pattern · don't over-label · safety-net</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🎯 The three pivots that pass this case</div>
+    <div class="sum-3col">
+      <div class="snp-phrase-box snp-e"><div class="snp-lbl">1 · Severity</div><div class="snp-text">Grade the episode (feeding, speech, effort, SpO2). A silent chest in a tiring child is an emergency, not reassurance.</div></div>
+      <div class="snp-phrase-box snp-m"><div class="snp-lbl">2 · Pattern, not label</div><div class="snp-text">Well between colds + no interval symptoms = episodic viral wheeze. Don't start a daily preventer or stamp "asthma" on a 3-year-old.</div></div>
+      <div class="snp-phrase-box snp-a"><div class="snp-lbl">3 · Equip the parent</div><div class="snp-text">Reliever via spacer with technique taught + a written safety-net with danger signs = control and reassurance.</div></div>
+    </div>
+    <div class="sdp-pivot" style="margin-top:1rem;font-size:11.5px;background:#fef3c7;color:#854d0e;border-radius:8px;padding:.6rem .85rem;line-height:1.5">⛔ Don't be reassured by a quiet chest in a tiring child · Don't miss sudden-onset foreign body or an unwell infant · Don't over-diagnose asthma or start routine preventers in a pre-schooler with viral wheeze · Don't under-investigate atypical features (growth, wet cough, clubbing, systemic signs) · Always teach spacer technique and give a written safety-net</div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Wheeze in Children · GP Clinical Reasoning Framework v2</strong> · BTS/SIGN &amp; NICE NG245 Asthma · NICE NG9 Bronchiolitis · NICE NG12 Suspected cancer (children &amp; young people) · RCPCH guidance</p>
+  <p style="margin-top:4px">Confirm it's true wheeze (not stridor/stertor) · Episodic viral wheeze (well between colds) ≠ asthma; avoid firm asthma label &lt;5 and routine preventers · Grade acute severity — silent chest/SpO2 &lt;92%/exhaustion = life-threatening · Sudden onset ± choking / unilateral wheeze → foreign body · First wheeze &lt;1yr → ?bronchiolitis · Atypical features (faltering growth, wet cough, clubbing, lymphadenopathy/hepatosplenomegaly) → investigate (NG12 if systemic) · Reliever via spacer with technique + written safety-net</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current BTS/SIGN, NICE NG245 and NG12 guidance · Clinical judgement takes precedence over any framework</p>
+</div>
+</div><!-- /page -->
+  </main>
+</div><!-- /app -->
+<script src="script.js"></script>
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
+</body>
+</html>

@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hypothyroidism Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #f4f3f0;
+  --surface:   #ffffff;
+  --border:    #e2e0da;
+  --text:      #1a1917;
+  --muted:     #6b6762;
+  --accent:    #1d4ed8;          /* blue */
+  --safety:    #dc2626;          /* red  */
+  --diagnose:  #7c3aed;          /* purple */
+  --treat:     #0f766e;          /* teal  */
+  --refer:     #b45309;          /* amber */
+  --lifestyle: #15803d;          /* green */
+
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, serif;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.05);
+}
+
+html { font-size: 15px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 0 0 60px;
+}
+
+/* ── HEADER / BANNER ──────────────────────────────────────── */
+.stem-banner {
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+.sb-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  background: #eff6ff;
+  border-radius: 10px;
+  width: 52px; height: 52px;
+  display: grid; place-items: center;
+}
+.stem-banner b { display: block; font-size: 1.05rem; font-weight: 700; color: var(--text); }
+.stem-banner small { font-size: .8rem; color: var(--muted); }
+
+/* ── PROGRESS BAR ─────────────────────────────────────────── */
+.alg-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  font-size: .82rem;
+  color: var(--muted);
+}
+.pcount { font-weight: 600; color: var(--text); white-space: nowrap; }
+.pbar { flex: 1; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; min-width: 60px; }
+.pbar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #1d4ed8, #7c3aed); border-radius: 99px; transition: width .4s ease; }
+button.reset {
+  padding: 4px 12px; border-radius: 6px;
+  border: 1px solid var(--border); background: white;
+  font-size: .78rem; font-family: var(--font-body);
+  cursor: pointer; color: var(--muted);
+  transition: all .15s;
+}
+button.reset:hover { background: #fee2e2; border-color: #fca5a5; color: var(--safety); }
+
+/* ── FLOW CONTAINER ───────────────────────────────────────── */
+.alg-flow {
+  max-width: 820px;
+  margin: 28px auto 0;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ── CONNECTOR ────────────────────────────────────────────── */
+.connector {
+  width: 2px;
+  height: 28px;
+  background: linear-gradient(to bottom, var(--border), transparent);
+  align-self: center;
+  margin: 0;
+}
+
+/* ── NODE CARD ────────────────────────────────────────────── */
+.node {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow .2s, border-color .2s;
+}
+.node:hover { box-shadow: var(--shadow-md); }
+.node.done { border-color: #bbf7d0; background: #f0fdf4; }
+
+/* Node type accent strip */
+.node[data-type="SAFETY"]    { border-left: 4px solid var(--safety); }
+.node[data-type="DIAGNOSE"]  { border-left: 4px solid var(--diagnose); }
+.node[data-type="TREAT"]     { border-left: 4px solid var(--treat); }
+.node[data-type="REFER"]     { border-left: 4px solid var(--refer); }
+.node[data-type="LIFESTYLE"] { border-left: 4px solid var(--lifestyle); }
+
+/* ── NODE HEADER ──────────────────────────────────────────── */
+.node-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px 10px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.node-num {
+  font-size: .72rem;
+  font-weight: 700;
+  background: var(--border);
+  color: var(--muted);
+  border-radius: 50%;
+  width: 22px; height: 22px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.node-tag {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+.node[data-type="SAFETY"]    .node-tag { background: #fee2e2; color: var(--safety); }
+.node[data-type="DIAGNOSE"]  .node-tag { background: #ede9fe; color: var(--diagnose); }
+.node[data-type="TREAT"]     .node-tag { background: #ccfbf1; color: var(--treat); }
+.node[data-type="REFER"]     .node-tag { background: #fef3c7; color: var(--refer); }
+.node[data-type="LIFESTYLE"] .node-tag { background: #dcfce7; color: var(--lifestyle); }
+
+.node-head h3 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
+}
+.node-tick {
+  margin-left: auto;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.node-tick label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+.node-tick input[type="checkbox"] {
+  width: 18px; height: 18px;
+  accent-color: var(--lifestyle);
+  cursor: pointer;
+}
+.node-tick .tlbl { font-size: .78rem; color: var(--muted); user-select: none; }
+
+/* ── NODE BODY ────────────────────────────────────────────── */
+.node-body {
+  padding: 14px 18px;
+  font-size: .9rem;
+  color: var(--text);
+  line-height: 1.65;
+}
+.node-body > p, .node-body > .intro {
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: .87rem;
+}
+
+/* ── KEY-VALUE GRID ───────────────────────────────────────── */
+.kv {
+  display: grid;
+  grid-template-columns: minmax(130px, 30%) 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  font-size: .87rem;
+}
+.kv > div:nth-child(4n+1),
+.kv > div:nth-child(4n+2) { background: #fafaf9; }
+.kv > div {
+  padding: 9px 13px;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+}
+.kv > div:last-child, .kv > div:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+.kv > div:nth-child(odd) { font-weight: 600; color: var(--muted); font-size: .82rem; }
+.kv > div:nth-child(even) { color: var(--text); }
+
+/* ── RED FLAG GRID ────────────────────────────────────────── */
+.rfgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+.rftile {
+  background: #fff5f5;
+  border: 1px solid #fecaca;
+  border-left: 3px solid var(--safety);
+  border-radius: var(--r-md);
+  padding: 10px 13px;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+.rftile b { display: block; color: var(--safety); font-size: .82rem; margin-bottom: 2px; }
+
+/* ── BRANCH ───────────────────────────────────────────────── */
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 10px;
+  margin-top: 6px;
+}
+.b-card {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  font-size: .86rem;
+}
+.b-cond {
+  background: #f1f5f9;
+  padding: 7px 12px;
+  font-weight: 600;
+  font-size: .8rem;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+.b-drug {
+  padding: 8px 12px;
+  font-weight: 700;
+  color: var(--treat);
+  background: #f0fdfa;
+  border-bottom: 1px solid var(--border);
+}
+.b-note {
+  padding: 8px 12px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ── LADDER ───────────────────────────────────────────────── */
+.ladder {
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  margin-top: 6px;
+  font-size: .87rem;
+}
+.rung {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+}
+.rung:last-child { border-bottom: none; }
+.rn {
+  background: #f1f5f9;
+  font-weight: 700;
+  font-size: .78rem;
+  color: var(--muted);
+  padding: 10px 13px;
+  min-width: 70px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+}
+.rt {
+  padding: 10px 14px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* ── LIFESTYLE GRID ───────────────────────────────────────── */
+.lsgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+.lstile {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 3px solid var(--lifestyle);
+  border-radius: var(--r-md);
+  padding: 10px 13px;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+.lstile b { display: block; color: var(--lifestyle); font-size: .82rem; margin-bottom: 2px; }
+
+/* ── PILLS ────────────────────────────────────────────────── */
+.pill {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 99px;
+  vertical-align: middle;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+.pill-red    { background: #fee2e2; color: #b91c1c; }
+.pill-purple { background: #ede9fe; color: #6d28d9; }
+.pill-blue   { background: #dbeafe; color: #1d4ed8; }
+.pill-teal   { background: #ccfbf1; color: #0f766e; }
+.pill-amber  { background: #fef3c7; color: #92400e; }
+.pill-green  { background: #dcfce7; color: #15803d; }
+.pill-grey   { background: #f1f5f9; color: #475569; }
+
+/* ── WHY DRAWER ───────────────────────────────────────────── */
+.why-row {
+  border-top: 1px solid var(--border);
+  background: #fafaf9;
+}
+.why-btn {
+  width: 100%;
+  text-align: left;
+  padding: 10px 18px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  transition: background .15s;
+}
+.why-btn:hover { background: #eff6ff; }
+.caret { font-size: .9rem; transition: transform .2s; display: inline-block; }
+.why-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.why-drawer {
+  display: none;
+  padding: 12px 18px 14px;
+  font-size: .86rem;
+  color: var(--muted);
+  line-height: 1.7;
+  border-top: 1px dashed var(--border);
+}
+.why-drawer.open { display: block; }
+
+/* ── FOOTER ───────────────────────────────────────────────── */
+.alg-foot {
+  max-width: 820px;
+  margin: 32px auto 0;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  font-size: .8rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-left: auto; margin-right: auto;
+}
+.alg-foot strong { color: var(--text); }
+
+/* ── UTILITY ──────────────────────────────────────────────── */
+ul.blist { padding-left: 18px; }
+ul.blist li { margin-bottom: 4px; }
+.mt8 { margin-top: 8px; }
+.mb8 { margin-bottom: 8px; }
+.note {
+  background: #fefce8;
+  border: 1px solid #fde68a;
+  border-radius: var(--r-sm);
+  padding: 8px 12px;
+  font-size: .84rem;
+  color: #78350f;
+  margin-top: 10px;
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<!-- ── BANNER ──────────────────────────────────────────────── -->
+<div class="stem-banner">
+  <div class="sb-icon">🦋</div>
+  <div>
+    <b>Hypothyroidism — New Diagnosis &amp; Ongoing Management</b>
+    <small>Primary hypothyroidism · subclinical hypothyroidism · Hashimoto's thyroiditis · levothyroxine initiation &amp; titration</small>
+  </div>
+</div>
+
+<!-- ── PROGRESS ────────────────────────────────────────────── -->
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- ── FLOW ────────────────────────────────────────────────── -->
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — separate overt from subclinical hypothyroidism (TSH threshold + symptoms decide who to treat), screen myxoedema coma, replace with weight-based levothyroxine, titrate to a normal TSH, address adherence, and monitor.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Raised TSH</span><div class="body"><b>Overt</b> = high TSH + low free T4. <b>Subclinical</b> = high TSH + normal free T4. Add <b>anti-TPO antibodies</b>. Symptoms — fatigue, weight gain, cold intolerance, constipation, dry skin — are non-specific; the biochemistry leads.</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — emergency &amp; context</span><span class="ttl">Myxoedema coma or central cause?</span><div class="body"><ul>
+      <li><b>Myxoedema coma</b> — hypothermia, ↓GCS, bradycardia, hyponatraemia, hypoventilation</li>
+      <li><b>Central hypothyroidism</b> — low free T4 with a <b>low/normal</b> TSH (pituitary)</li>
+      <li><b>Acute illness</b> distorts TFTs (sick euthyroid) — repeat on recovery</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — emergency / central</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">999 / endocrine</span><div class="body">Myxoedema coma → emergency admission (IV T3/T4 + hydrocortisone + supportive care, ITU). Central pattern → refer endocrinology, <b>don't just up-titrate</b>.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — overt vs subclinical</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">free T4 + anti-TPO</span><div class="body">Causes: autoimmune (<b>Hashimoto</b> — TPO+), post-thyroidectomy/RAI, drugs (amiodarone, lithium), iodine. Repeat borderline results in 3 months.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · treat or monitor?</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Overt (↑TSH + ↓T4)</div><div class="box ix"><span class="ttl">Treat — full replacement</span><div class="body">Symptomatic or not, replace. Levothyroxine ~<b>1.6 µg/kg/day</b>; <b>start 25–50 µg if ≥65 or cardiac</b> and titrate up.</div></div></div>
+      <div class="col"><div class="blabel">Subclinical · TSH ≥10 (×2, 3 mo apart)</div><div class="box ix"><span class="ttl">Consider levothyroxine</span><div class="body">NICE suggests treatment (higher CHD risk); symptom benefit limited. More cautious &gt;65 (over-suppression → AF/osteoporosis).</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Subclinical · TSH 4–10</div><div class="box ix"><span class="ttl">Individualise</span><div class="body">Repeat at 3 mo. &lt;65 + symptomatic → 6-month trial (stop if no benefit once TSH normal). <b>Treat if pregnant/planning.</b> Else monitor.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · replace &amp; titrate</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — levothyroxine titration</span><span class="ttl">Aim for a normal TSH</span><div class="body"><ul>
+      <li><b>Dose:</b> ~1.6 µg/kg/day (≈100 µg at 60 kg, 125 at 80 kg, 150 at 100 kg); start low (25–50 µg) in the elderly/cardiac and titrate.</li>
+      <li><b>Take ≥30–60 min before breakfast/caffeine</b>, separated from iron/calcium/PPIs. Avoid liothyronine / natural thyroid extract (no NICE support).</li>
+      <li><b>Titrate to a normal TSH</b> — no benefit aiming low-normal; over-suppression raises AF/osteoporosis risk.</li>
+      <li><b>Pregnancy:</b> increase dose ~25–30% as soon as pregnancy confirmed and refer.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-red">999</span> myxoedema coma.</li>
+      <li><span class="pill pill-purple">Endocrinology</span> pregnancy/planning, age &lt;16, suspected <b>secondary (pituitary)</b> hypothyroidism, amiodarone-associated, or unstable/atypical disease not responding to adequate replacement.</li>
+      <li><span class="pill pill-grey">Primary care</span> uncomplicated primary hypothyroidism → treat and monitor.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · adherence &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Adherence &amp; modifiable factors</span><span class="ttl">Make replacement work</span><div class="body"><b>Consistent daily timing &amp; adherence</b> is the commonest reason for an erratic TSH · separate levothyroxine from iron/calcium/PPIs/soya · review interacting drugs · adequate dietary iodine without excess supplements · cardiovascular-risk and weight review (hypothyroidism worsens lipids); reassure that weight gain is usually modest.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · monitor &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">What to recheck, when to return</span><div class="body"><b>Recheck TSH every 3 months</b> until stable (2 normal results 3 mo apart — a very high starting TSH can take up to 6 mo), then <b>annually</b>; check T4 if symptoms persist despite normal TSH. <b>999</b> if drowsy, cold and confused (myxoedema). <b>Return</b> if palpitations/tremor (over-replacement) or worsening fatigue. Post-thyroid-cancer patients often need TSH &lt;0.1 — check.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Don't miss central hypothyroidism:</b> a low free T4 with a low/normal TSH is pituitary in origin — refer endocrinology rather than simply up-titrating levothyroxine. And titrate to a <i>normal</i> TSH, not a suppressed one.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 1 · SAFETY · Red Flags                          -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="1">
+    <div class="node-head">
+      <div class="node-num">1</div>
+      <div>
+        <span class="node-tag">Safety</span>
+        <h3>Red Flag Exclusion — When Hypothyroidism Becomes an Emergency</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Most hypothyroidism is indolent — but these presentations require urgent action before routine workup. Screen FIRST.</p>
+      <div class="rfgrid">
+        <div class="rftile"><b>Myxoedema Coma</b> Severe hypothermia, depressed GCS, bradycardia, hypoventilation in untreated/undertreated hypothyroidism → <span class="pill pill-red">999</span> ITU admission, IV T3/T4</div>
+        <div class="rftile"><b>Adrenal Crisis Coexistence</b> Addison's or pituitary disease masking as hypothyroid; giving levothyroxine before steroids may precipitate adrenal crisis → Same-day endocrine / 999 if collapsed. Check cortisol first.</div>
+        <div class="rftile"><b>Thyroid Malignancy (Goitre)</b> Rapidly enlarging goitre, hoarseness, dysphagia, fixed hard mass, cervical lymphadenopathy → <span class="pill pill-purple">2WW Thyroid</span> cancer pathway</div>
+        <div class="rftile"><b>Pituitary / Secondary Hypothyroidism</b> Headache, visual field defect, galactorrhoea, low TSH with low T4 (not elevated TSH) — suggests hypothalamo-pituitary cause → Same-day / urgent MRI pituitary</div>
+        <div class="rftile"><b>Cardiac Decompensation</b> New pericardial effusion, heart failure, bradyarrhythmia, QTc prolongation in severe hypothyroidism → Same-day cardiology / 999 if haemodynamically compromised</div>
+        <div class="rftile"><b>Lithium / Amiodarone Toxicity</b> Severe hypothyroidism in context of lithium or amiodarone — drug-induced may be rapid onset. Check drug levels. Consider same-day specialist review if symptomatic &amp; severe.</div>
+        <div class="rftile"><b>Pregnancy with Hypothyroidism</b> Untreated/undertreated hypothyroidism in pregnancy → <span class="pill pill-red">Urgent</span> same-day obstetric endocrinology referral. Risk of miscarriage, pre-eclampsia, fetal neurodevelopment.</div>
+        <div class="rftile"><b>Children / Neonates</b> Congenital hypothyroidism (detected on newborn bloodspot); or child with growth failure, delayed puberty → Urgent paediatric endocrinology. Do NOT delay — irreversible neurodevelopmental harm.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        <strong>Myxoedema coma</strong> has a mortality of 20–40% even with treatment (NICE CKS 2023). It is precipitated by infection, cold exposure, sedatives, or surgery in severely hypothyroid patients. Secondary hypothyroidism (pituitary cause) accounts for ~5% of cases but will not respond correctly to TSH-guided titration — TSH will be low or normal despite T4 deficiency. Missing adrenal insufficiency before starting levothyroxine can precipitate a life-threatening Addisonian crisis by increasing cortisol metabolism. Thyroid cancer has a 10-year survival &gt;90% if caught early — a firm, fixed goitre must never be attributed to Hashimoto's without imaging. In pregnancy, even subclinical hypothyroidism with positive TPO antibodies is associated with a 2–3× increased miscarriage risk.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 2 · DIAGNOSE · Confirm Diagnosis                -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="2">
+    <div class="node-head">
+      <div class="node-num">2</div>
+      <div>
+        <span class="node-tag">Diagnose</span>
+        <h3>Confirm the Diagnosis — TSH Interpretation &amp; Repeat Strategy</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">A single TSH is a screening test. Confirm before labelling and starting lifelong treatment.</p>
+      <div class="kv">
+        <div>First-line test</div>
+        <div><span class="pill pill-blue">TSH</span> — Serum TSH alone is sufficient for primary hypothyroidism screening. If TSH abnormal, add <span class="pill pill-blue">Free T4</span> in same sample or immediately.</div>
+        <div>Confirm before treating</div>
+        <div>Repeat TSH + Free T4 at <b>4–6 weeks</b> if initial TSH 4–10 mU/L and patient is asymptomatic. A single elevated TSH may be transient (sick euthyroid, assay interference).</div>
+        <div>When to add Free T3</div>
+        <div>NOT routinely. Only if pituitary disease suspected (low/normal TSH + low T4) or monitoring on T3/T4 combination therapy. Do not use T3 to guide standard management.</div>
+        <div>TPO Antibodies</div>
+        <div><span class="pill pill-blue">Anti-TPO</span> — Check once if TSH elevated to confirm autoimmune aetiology (Hashimoto's). If positive: higher risk of progressing from subclinical to overt. Guides monitoring interval. Do not repeat routinely.</div>
+        <div>Thyroglobulin Ab</div>
+        <div>Only if anti-TPO negative but Hashimoto's still suspected. Less sensitive. Not routine.</div>
+        <div>Cortisol / Short Synacthen</div>
+        <div>If clinical features suggest adrenal insufficiency coexistence (hypotension, hyponatraemia, hyperpigmentation, unwell). <b>Check before starting levothyroxine.</b></div>
+        <div>Pregnancy test</div>
+        <div>In women of reproductive age with new hypothyroidism — pregnancy changes TSH reference ranges significantly. Confirm before dosing.</div>
+        <div>Interference check</div>
+        <div>Biotin supplements cause falsely low TSH / high T4. Ask patient to stop biotin 2 days before sampling.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        NICE CKS 2023 recommends repeating TSH before initiating levothyroxine unless TSH &gt;10 mU/L or the patient is clearly symptomatic with a very high TSH. Up to 50% of isolated TSH elevations in the 4–10 mU/L range normalise spontaneously. Anti-TPO positivity in subclinical hypothyroidism (TSH 4–10) increases the annual risk of progression to overt hypothyroidism from 2% to ~4–5%, justifying earlier treatment initiation in these patients. Biotin interference is underrecognised — it is found in many hair/nail supplements and causes spuriously low TSH, leading to unnecessary treatment escalation or misdiagnosis of hyperthyroidism.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 3 · DIAGNOSE · Classification                   -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="3">
+    <div class="node-head">
+      <div class="node-num">3</div>
+      <div>
+        <span class="node-tag">Diagnose</span>
+        <h3>Classify the Hypothyroidism — Treatment Decisions Follow Classification</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Classification drives whether to treat, how urgently, and at what starting dose.</p>
+      <div class="kv">
+        <div>Overt Hypothyroidism</div>
+        <div><b>TSH &gt;10 mU/L AND low Free T4</b> — Treat with levothyroxine regardless of symptoms. NICE: do not defer treatment. High risk of progression and cardiovascular harm.</div>
+        <div>Subclinical (Mild)</div>
+        <div><b>TSH 4–10 mU/L AND normal Free T4</b> — Individualise. Treat if: symptomatic, anti-TPO positive, TSH persistently &gt;10, pregnancy, age &lt;65, or cardiovascular risk. Observe if elderly, asymptomatic, no antibodies.</div>
+        <div>Secondary Hypothyroidism</div>
+        <div><b>Low/normal TSH AND low Free T4</b> — Pituitary or hypothalamic cause. Refer to endocrinology. Do NOT titrate by TSH — use Free T4 to guide dosing.</div>
+        <div>Hashimoto's Thyroiditis</div>
+        <div><b>Autoimmune:</b> TPO antibodies positive ± goitre. Most common cause of hypothyroidism in UK. May fluctuate early — "Hashitoxicosis" transient hyperthyroid phase possible.</div>
+        <div>Post-thyroidectomy / RAI</div>
+        <div>Higher replacement doses often needed. TSH target 0.5–2.5 mU/L. If post-thyroidectomy for cancer: target TSH may be suppressed (&lt;0.1) — follow oncology guidance.</div>
+        <div>Drug-induced</div>
+        <div>Lithium, amiodarone, checkpoint inhibitors, interferon, tyrosine kinase inhibitors. Manage underlying drug with prescriber; treat hypothyroidism as per severity.</div>
+        <div>Transient Hypothyroidism</div>
+        <div>Post-partum thyroiditis, subacute thyroiditis — may resolve spontaneously. Review at 6–12 months. Consider trial off levothyroxine after 12–18 months if stable.</div>
+        <div>Congenital</div>
+        <div>Detected on newborn bloodspot (TSH &gt;6 mU/L at 5–8 days). Urgent paediatric endocrinology. Start levothyroxine within 2 weeks of birth.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Classification determines management intensity. Subclinical hypothyroidism in the elderly (TSH 4–10, asymptomatic) confers no proven benefit from treatment and may increase cardiovascular risk by causing iatrogenic subclinical hyperthyroidism. Conversely, untreated overt hypothyroidism causes dyslipidaemia, impaired cardiac contractility, and a 3-fold increased cardiovascular mortality. Secondary hypothyroidism cannot be managed with TSH targets — the TSH is misleadingly low despite T4 deficiency, and misinterpreting this as "normal TSH = no problem" leads to chronic undertreatment. Post-partum thyroiditis affects ~5–10% of women and is commonly missed; it can cause significant postnatal depression if hypothyroid phase is untreated.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 4 · DIAGNOSE · Examination                      -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="4">
+    <div class="node-head">
+      <div class="node-num">4</div>
+      <div>
+        <span class="node-tag">Diagnose</span>
+        <h3>Targeted Examination — What to Look For &amp; Why It Changes Management</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Examination confirms severity, excludes red flags, and guides starting dose.</p>
+      <div class="kv">
+        <div>Thyroid gland</div>
+        <div>Palpate for goitre (size, consistency, nodules, tenderness, bruit). Hard, irregular, fixed → 2WW. Diffusely firm, non-tender, symmetrical → Hashimoto's. Tender → subacute thyroiditis. <b>Tracheal deviation → chest X-ray urgently.</b></div>
+        <div>Cardiovascular</div>
+        <div>HR and rhythm (bradycardia, atrial fibrillation), BP (hypertension common), heart sounds (muffled → pericardial effusion), peripheral oedema. ECG if bradycardic or pericardial effusion suspected.</div>
+        <div>Neurological</div>
+        <div>Delayed relaxation of ankle reflexes (pathognomonic if present), cerebellar signs (ataxia in severe hypothyroidism), carpal tunnel assessment (Tinel's/Phalen's — hypothyroid myopathy). Cognitive assessment if overt.</div>
+        <div>Skin &amp; Hair</div>
+        <div>Dry, cool, pale/yellowish skin (carotenaemia); coarse, brittle hair; loss of outer third of eyebrow (Hertoghe's sign); non-pitting oedema of face/limbs (myxoedema proper). Severity marker.</div>
+        <div>BMI &amp; Weight</div>
+        <div>Record weight — weight gain is a common complaint; baseline needed to assess treatment response. Morbid obesity with fatigue may mimic hypothyroidism; treat the TSH, not the symptom.</div>
+        <div>Blood pressure</div>
+        <div>Hypothyroidism causes diastolic hypertension. Record both arms. Will often improve with treatment — avoid adding antihypertensives prematurely.</div>
+        <div>Neck lymphadenopathy</div>
+        <div>Firm, non-tender cervical nodes with thyroid mass → thyroid malignancy until proven otherwise → 2WW referral.</div>
+        <div>Voice</div>
+        <div>Hoarseness suggests compression or vocal cord palsy from malignancy or severe myxoedema. Refer if new hoarseness + goitre.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Delayed relaxation of ankle reflexes (the "hung-up" reflex) has a specificity of ~95% for hypothyroidism when present — it is one of the most specific clinical signs in all of endocrinology. Pericardial effusion occurs in up to 30% of patients with severe hypothyroidism and may be the presenting finding — muffled heart sounds in a bradycardic patient warrant urgent ECG and echo. Cervical lymphadenopathy with a thyroid mass has a high positive predictive value for malignancy. Examination findings also provide a severity anchor — a patient with myxoedematous facies, bradycardia, and delayed reflexes needs more cautious initiation with lower starting doses than an incidentally found subclinical case.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 5 · DIAGNOSE · Investigations                   -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="DIAGNOSE" data-step="5">
+    <div class="node-head">
+      <div class="node-num">5</div>
+      <div>
+        <span class="node-tag">Diagnose</span>
+        <h3>Investigations — Baseline Tests Before Starting Treatment</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Investigations establish baseline, exclude comorbidity, and identify contraindications to treatment.</p>
+      <div class="kv">
+        <div>Essential bloods</div>
+        <div><span class="pill pill-blue">TSH + Free T4</span> — confirm diagnosis. <span class="pill pill-blue">Full blood count</span> — macrocytic anaemia (B12 deficiency common with autoimmune thyroid disease). <span class="pill pill-blue">Ferritin</span> — iron deficiency impairs levothyroxine absorption. <span class="pill pill-blue">Renal profile + electrolytes</span> — hyponatraemia in severe hypothyroidism; CKD affects dosing.</div>
+        <div>Lipid profile</div>
+        <div><span class="pill pill-blue">Fasting lipids</span> — hypothyroidism causes raised total cholesterol and LDL. Normalises with treatment. Do NOT start statins before treating hypothyroidism — reassess lipids 3–6 months post-treatment.</div>
+        <div>Liver function</div>
+        <div>Raised CK and LDH common (myopathy). Raised transaminases in hypothyroid hepatopathy. Useful baseline before starting statins if considering later.</div>
+        <div>Vitamin B12 / Folate</div>
+        <div>Autoimmune thyroid disease clusters with pernicious anaemia. Check B12 if macrocytosis or neuropathy. Do not miss — hypothyroidism will not correct B12 deficiency.</div>
+        <div>HbA1c</div>
+        <div>Hashimoto's associated with Type 1 diabetes (autoimmune clustering). Check if relevant symptoms or family history. Type 2 diabetes also common in hypothyroid patients (shared metabolic risk).</div>
+        <div>Anti-TPO antibodies</div>
+        <div>If TSH elevated — confirms autoimmune aetiology and guides monitoring frequency. Check once; do NOT repeat.</div>
+        <div>ECG</div>
+        <div>If bradycardia, pericardial effusion suspected, or pre-treatment in elderly/cardiac patients. Hypothyroidism causes sinus bradycardia, low voltage complexes, prolonged QTc.</div>
+        <div>Thyroid ultrasound</div>
+        <div>If goitre, nodule, or hard texture on palpation. NOT required for every hypothyroid patient. Do not order routinely — NICE does not recommend USS to diagnose hypothyroidism.</div>
+        <div>Do NOT order</div>
+        <div>Routine T3, thyroglobulin, nuclear medicine scan (unless malignancy suspected). Bone density is not required at diagnosis unless long-standing, treated suppressed TSH, or significant risk factors.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        The lipid profile finding is clinically critical: up to 30% of hypothyroid patients have hypercholesterolaemia which fully normalises with adequate levothyroxine. Prescribing statins before achieving euthyroidism both misses the underlying cause and risks statin myopathy (already elevated CK in hypothyroidism). Macrocytic anaemia in a hypothyroid patient has a 20–30% chance of being due to concomitant B12 deficiency (pernicious anaemia, Coeliac disease) rather than hypothyroidism itself — treating with levothyroxine alone leaves the B12 deficiency untreated. Iron deficiency reduces intestinal absorption of levothyroxine — this is why patients on levothyroxine may have persistent elevated TSH despite apparent compliance, and checking ferritin is a crucial part of the workup.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 6 · REFER · Referral Criteria                   -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="REFER" data-step="6">
+    <div class="node-head">
+      <div class="node-num">6</div>
+      <div>
+        <span class="node-tag">Refer</span>
+        <h3>Referral Criteria — Who Needs Specialist Input</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Most hypothyroidism is managed entirely in primary care. Know when to escalate.</p>
+      <div class="kv">
+        <div><span class="pill pill-red">999</span></div>
+        <div>Myxoedema coma (depressed GCS, hypothermia, bradycardia). Haemodynamic compromise. Adrenal crisis in context of known/suspected adrenal insufficiency.</div>
+        <div><span class="pill pill-red">Same-day</span></div>
+        <div>Suspected secondary hypothyroidism (low TSH + low T4 + headache / visual symptoms). Severe pericardial effusion on ECG. Lithium or amiodarone toxicity with collapse. Any pregnant patient with newly elevated TSH.</div>
+        <div><span class="pill pill-purple">2WW Thyroid</span></div>
+        <div>Firm, fixed, rapidly enlarging goitre. Hoarseness + thyroid mass. Cervical lymphadenopathy + thyroid lesion. Any suspicion of thyroid malignancy per NICE NG12.</div>
+        <div>Urgent Endocrine (2 weeks)</div>
+        <div>Secondary hypothyroidism confirmed. Resistant hypothyroidism (TSH persistently elevated despite &gt;200 mcg levothyroxine). Congenital hypothyroidism (paediatric referral same week).</div>
+        <div>Routine Endocrine</div>
+        <div>Persistent symptoms despite biochemical euthyroidism — consider trial of liothyronine (T3) under specialist supervision (NICE 2019). Complex drug interactions (amiodarone, lithium). Post-thyroidectomy for malignancy.</div>
+        <div>Obstetrics / Fetal Med</div>
+        <div>All pregnant women with hypothyroidism should have shared care with obstetric team. TSH targets in pregnancy: 1st trimester &lt;2.5 mU/L; 2nd/3rd &lt;3.0 mU/L. Dose usually increased by 25–50 mcg on diagnosis of pregnancy.</div>
+        <div>Primary care manages</div>
+        <div>Uncomplicated overt hypothyroidism. Subclinical hypothyroidism requiring treatment. Hashimoto's without complications. Routine monitoring of stable levothyroxine therapy. Drug-induced hypothyroidism (liaison with initiating prescriber).</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Secondary hypothyroidism is rare (~1 in 80,000) but has a very different management algorithm — TSH cannot be used for titration, and concurrent hormonal deficiencies (growth hormone, ACTH, FSH/LH) must be identified. Thyroid cancer accounts for ~3,900 new cases per year in the UK. The 5-year survival for well-differentiated thyroid cancer is &gt;98% when caught early — the 2WW pathway exists precisely because the prognosis is strongly stage-dependent. Pregnancy is a common reason for suboptimal thyroid management: levothyroxine requirements increase by approximately 30–50% in the first trimester due to increased TBG, hCG-driven thyroid stimulation, and increased volume of distribution. Failure to increase the dose promptly is associated with adverse fetal neurodevelopmental outcomes.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 7 · TREAT · Drug Ladder                         -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="TREAT" data-step="7">
+    <div class="node-head">
+      <div class="node-num">7</div>
+      <div>
+        <span class="node-tag">Treat</span>
+        <h3>Levothyroxine — Initiation, Titration &amp; Optimisation</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Levothyroxine is lifelong in most patients. Get the start right — wrong dosing causes more harm than delay.</p>
+
+      <p style="font-weight:600; font-size:.88rem; margin-bottom:8px; margin-top:4px;">Starting Dose — Choose Based on Patient Profile:</p>
+      <div class="branch">
+        <div class="b-card">
+          <div class="b-cond">Healthy adult &lt;65 yrs, overt hypothyroid</div>
+          <div class="b-drug">Levothyroxine <span class="pill pill-teal">1st line</span></div>
+          <div class="b-note"><b>1.6 mcg/kg/day</b> as starting dose (round to nearest 25 mcg). E.g. 70 kg → 112 mcg OD. Take 30–60 min before food.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Elderly ≥65 yrs or known IHD / cardiac risk</div>
+          <div class="b-drug">Levothyroxine <span class="pill pill-amber">⚠ Start low</span></div>
+          <div class="b-note">Start <b>25 mcg OD</b>. Increase by 25 mcg every 4–6 weeks. Risk of precipitating angina or arrhythmia with full dose. Do not rush titration.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Subclinical hypothyroid, symptomatic, TSH 4–10</div>
+          <div class="b-drug">Levothyroxine <span class="pill pill-teal">treat if indicated</span></div>
+          <div class="b-note">Start <b>50 mcg OD</b>. Titrate to TSH 0.5–2.5 mU/L. Review symptoms at 3 months. If no benefit, consider stopping.</div>
+        </div>
+        <div class="b-card">
+          <div class="b-cond">Pregnancy (new diagnosis or pre-existing)</div>
+          <div class="b-drug">Levothyroxine <span class="pill pill-red">urgent</span></div>
+          <div class="b-note">Start or increase promptly. Dose ~2 mcg/kg/day in pregnancy. Target TSH &lt;2.5 (1st trimester) or &lt;3.0 (2nd/3rd). Check TFTs every 4–6 weeks in pregnancy.</div>
+        </div>
+      </div>
+
+      <p style="font-weight:600; font-size:.88rem; margin-bottom:8px; margin-top:16px;">Titration Ladder — After Initiation:</p>
+      <div class="ladder">
+        <div class="rung"><span class="rn">Week 0</span><span class="rt"><b>Start levothyroxine</b> at appropriate starting dose. Counsel on administration: take on empty stomach, 30–60 min before food. Do not take with calcium, iron, PPIs simultaneously.</span></div>
+        <div class="rung"><span class="rn">Week 6–8</span><span class="rt"><b>Check TSH + Free T4.</b> If TSH still elevated: increase dose by <b>25 mcg.</b> Do NOT check TSH sooner — pituitary TSH response lags 4–8 weeks behind T4 change.</span></div>
+        <div class="rung"><span class="rn">Week 12–16</span><span class="rt"><b>Repeat TSH.</b> Continue 25 mcg increments every 6–8 weeks until TSH 0.5–2.5 mU/L. Most patients stabilise between 75–150 mcg/day.</span></div>
+        <div class="rung"><span class="rn">Stable</span><span class="rt"><b>Annual TSH check once stable.</b> TSH target 0.5–2.5 mU/L for most patients. Allow 0.5–3.0 mU/L range if patient feels well. Do not over-suppress.</span></div>
+        <div class="rung"><span class="rn">Persistent ↑TSH</span><span class="rt"><b>Check compliance, absorption, interactions.</b> Common causes: taken with food, iron, calcium, PPIs, cholestyramine. Coeliac disease reduces absorption. Bariatric surgery — liquid formulation may be needed.</span></div>
+        <div class="rung"><span class="rn">Persistent Sx</span><span class="rt"><b>Biochemically euthyroid but still symptomatic?</b> Exclude other causes (anaemia, menopause, depression, sleep apnoea). Consider specialist referral for trial of <b>liothyronine add-on</b> (NICE 2019 guideline — only under endocrine supervision).</span></div>
+      </div>
+
+      <div class="note mt8">
+        ⚠️ <b>Absorption interactions:</b> Separate levothyroxine from calcium carbonate, ferrous sulphate, antacids, PPIs by <b>at least 4 hours</b>. Cholestyramine and orlistat significantly reduce absorption. Inform patient of these interactions at every medication review.
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Levothyroxine (T4) is converted peripherally to T3, the active hormone, via deiodinases — this mimics physiology. The 1.6 mcg/kg/day formula is evidence-based (NEJM, BTA guidelines) and is more accurate than arbitrary starting doses. TSH has a log-linear relationship with T4, meaning small dose changes at higher TSH values have large TSH effects — this is why 25 mcg increments are appropriate and why sudden large dose changes are destabilising. The 4–8 week delay before rechecking TSH is essential: the hypothalamic-pituitary-thyroid axis has a physiological lag, and checking TSH at 2 weeks reflects only transient T4 fluctuation, not steady-state. Iatrogenic thyrotoxicosis (over-replacement) is associated with increased risk of AF, osteoporosis (post-menopausal women), and potentially increased dementia risk — do not suppress TSH below 0.5 unless clinically indicated (post-thyroidectomy for cancer).
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 8 · LIFESTYLE · Non-Pharmacological             -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="LIFESTYLE" data-step="8">
+    <div class="node-head">
+      <div class="node-num">8</div>
+      <div>
+        <span class="node-tag">Lifestyle</span>
+        <h3>Non-Pharmacological Interventions — Lifestyle IS Treatment</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Lifestyle optimisation improves symptom burden, aids levothyroxine efficacy, and reduces cardiovascular risk. Do not relegate to afterthought.</p>
+      <div class="lsgrid">
+        <div class="lstile"><b>Correct administration</b> Take levothyroxine consistently each morning, 30–60 min before food or coffee. Studies show morning fasting administration improves TSH control by ~20% vs taken with food. Bedtime dosing (2+ hours post-meal) is an evidence-based alternative.</div>
+        <div class="lstile"><b>Nutrition — Iodine</b> Ensure adequate dietary iodine (UK reference intake 140 mcg/day). Dairy, fish, eggs are good sources. Avoid extreme iodine loading (kelp, seaweed supplements) — can worsen autoimmune thyroid disease. Iodine deficiency is a treatable cause of hypothyroidism in some populations.</div>
+        <div class="lstile"><b>Selenium</b> Selenium 200 mcg/day may reduce TPO antibody titres and improve quality of life in Hashimoto's — some evidence supports supplementation, particularly in anti-TPO positive patients. Discuss, do not prescribe routinely. Brazil nuts (2/day) provide adequate selenium.</div>
+        <div class="lstile"><b>Iron-rich diet / correct deficiency</b> Iron deficiency impairs levothyroxine absorption and reduces peripheral T4→T3 conversion. Correct iron deficiency with dietary advice or supplementation. Remind patient: take ferrous sulphate ≥4 hours away from levothyroxine.</div>
+        <div class="lstile"><b>Weight management</b> Hypothyroidism causes modest weight gain (~2–5 kg) due to reduced metabolic rate. Weight does not fully normalise with levothyroxine alone. Support with dietary advice, physical activity. Avoid attributing persistent obesity solely to thyroid — check TSH is in range first.</div>
+        <div class="lstile"><b>Regular physical activity</b> Exercise improves fatigue, mood, and cardiovascular risk in hypothyroidism. 150 min/week moderate aerobic exercise (NICE PH44). Resistance training helps reduce myopathy. Start gradually — severe hypothyroidism causes exercise intolerance and myalgia initially.</div>
+        <div class="lstile"><b>Cardiovascular risk management</b> Hypothyroidism is an independent cardiovascular risk factor. Once euthyroid (stable on levothyroxine ≥6 months), reassess fasting lipids. Only initiate statins if cholesterol remains elevated after achieving euthyroidism. Control BP — often improves with treatment alone.</div>
+        <div class="lstile"><b>Vitamin D</b> Vitamin D deficiency is common in autoimmune thyroid disease and associated with higher TPO antibody titres. Supplement per NICE guidance: 10 mcg (400 IU) daily Oct–March for general population; higher doses if deficient. Check 25-OH vitamin D if symptomatic or high risk.</div>
+        <div class="lstile"><b>Gluten / Coeliac screening</b> Coeliac disease co-occurs in 3–5% of Hashimoto's patients (vs 1% general population). Undiagnosed Coeliac causes malabsorption of levothyroxine. Screen with anti-tTG IgA + total IgA if resistant hypothyroidism or GI symptoms. Gluten-free diet significantly improves levothyroxine absorption in Coeliac disease.</div>
+        <div class="lstile"><b>Mental health &amp; fatigue support</b> Depression and anxiety are 2–3× more prevalent in hypothyroidism — assess and treat independently. "Brain fog" often persists despite euthyroidism in some patients. Validate symptoms. Refer to psychology/NHS Talking Therapies if persistent. Ensure adequate sleep — fatigue is multifactorial.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        Administration timing is the single most actionable lifestyle intervention: a 2012 RCT (Surks et al) demonstrated that morning fasting administration resulted in significantly lower (better controlled) TSH compared with bedtime or with-food administration. Malabsorption causes are responsible for up to 30% of "refractory" hypothyroidism — Coeliac disease in a hypothyroid patient explains why the TSH keeps rising despite dose escalation, and a gluten-free diet can reduce levothyroxine requirements by ~30%. Selenium supplementation at 200 mcg/day reduced TPO antibody titres by ~49% at 6 months in a 2002 European trial — while not recommended as routine by NICE, many specialists support it in Hashimoto's. Cardiovascular risk reduction is essential because hypothyroid patients have a 2× increased risk of atherosclerosis — but lipid-lowering therapy initiated before euthyroidism is often premature and leads to statin prescribing that becomes unnecessary once the thyroid is treated.
+      </div>
+    </div>
+  </div>
+  <div class="connector"></div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- STEP 9 · SAFETY · Follow-Up                          -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="node" data-type="SAFETY" data-step="9">
+    <div class="node-head">
+      <div class="node-num">9</div>
+      <div>
+        <span class="node-tag">Safety</span>
+        <h3>Follow-Up, Monitoring &amp; Safety-Netting</h3>
+      </div>
+      <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+    </div>
+    <div class="node-body">
+      <p class="intro">Hypothyroidism is lifelong — but monitoring can become simple once stable. Never discharge from the register.</p>
+      <div class="kv">
+        <div>6–8 weeks</div>
+        <div>First TSH check after initiation or dose change. If TSH within target range: continue dose. If still elevated: increase by 25 mcg and repeat at 6–8 weeks. Do not adjust based on symptoms alone — use biochemistry.</div>
+        <div>3 months</div>
+        <div>Review symptoms and tolerability. Check weight, BP, and resting HR. If new palpitations, anxiety, tremor, sweating → check TSH urgently (may be over-replaced). Reassess lipid profile if initially elevated.</div>
+        <div>6 months</div>
+        <div>Once on stable dose with TSH in range: repeat TSH at 6 months. If still stable and asymptomatic: move to annual checks. Re-examine thyroid gland if goitre present.</div>
+        <div>Annual (stable)</div>
+        <div>Annual TSH check (blood test, does not require GP appointment — can be via online or practice nurse). Annual medication review. Ask about new symptoms: palpitations, tremor, weight loss (over-replacement), worsening fatigue (under-replacement or alternative diagnosis). BP check.</div>
+        <div>Pregnancy</div>
+        <div>Check TSH <b>every 4–6 weeks</b> throughout pregnancy. Increase levothyroxine dose promptly. Postpartum: return to pre-pregnancy dose; check TFTs at 6 weeks postpartum. Monitor for post-partum thyroiditis (months 3–6 postpartum).</div>
+        <div>Lipid reassessment</div>
+        <div>Re-check fasting lipids at 6 months once euthyroid. Only initiate lipid-lowering therapy if still elevated after achieving stable euthyroidism.</div>
+        <div>Bone density</div>
+        <div>DEXA scan if: persistent suppressed TSH (&lt;0.1) for &gt;12 months, post-menopausal women, significant bone fracture risk. Aim to maintain TSH ≥0.5 to minimise bone loss.</div>
+        <div>Register management</div>
+        <div>Add to hypothyroid disease register. Flag for QOF/recall. Hypothyroidism is a lifelong condition — no patient should be lost to follow-up. Update medication review annually.</div>
+      </div>
+
+      <p style="font-weight:700; font-size:.87rem; margin-top:14px; margin-bottom:6px; color: var(--safety);">Safety-Netting — Tell Every Patient:</p>
+      <div class="kv">
+        <div><span class="pill pill-red">999 if</span></div>
+        <div>Collapse, severe confusion, extreme hypothermia, loss of consciousness, haemodynamic compromise — possible myxoedema coma.</div>
+        <div><span class="pill pill-red">Same-day if</span></div>
+        <div>Chest pain, severe palpitations, or new fast irregular pulse on levothyroxine (over-replacement causing AF). Severe new dyspnoea or oedema. Rapid goitre enlargement.</div>
+        <div><span class="pill pill-amber">Return early if</span></div>
+        <div>New or worsening symptoms despite treatment. Unable to tolerate levothyroxine (headache, GI upset, palpitations). Started a new drug that may interact (calcium, iron, amiodarone, lithium, PPIs). Planned pregnancy — dose adjustment needed immediately.</div>
+        <div>Re-refer triggers</div>
+        <div>TSH persistently elevated despite &gt;200 mcg/day levothyroxine (check compliance &amp; absorption first). Persistent symptoms despite biochemically normal TSH — consider T3 under specialist guidance. New thyroid nodule or goitre change.</div>
+      </div>
+    </div>
+    <div class="why-row">
+      <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+      <div class="why-drawer">
+        The 6–8 week TSH recheck timing is physiologically mandated by the half-life of T4 (~7 days) and the pituitary TSH response lag. Earlier testing produces misleading results that drive inappropriate dose changes. Annual monitoring is essential even in stable patients because levothyroxine requirements change with age, weight fluctuation, pregnancy, new drug interactions, and progression of the underlying thyroid disease. The SCA exam specifically tests safety-netting — candidates who fail to mention 999 advice for myxoedema coma triggers, or who do not safety-net for pregnancy, consistently score below 4. Over-replacement with TSH &lt;0.1 mU/L is associated with a 3-fold increased risk of AF and a 3% annual bone mineral density loss in post-menopausal women — this is why suppressed TSH requires DEXA monitoring and corrective dose reduction even in asymptomatic patients.
+      </div>
+    </div>
+  </div>
+
+</div><!-- /alg-flow -->
+
+<!-- ── FOOTER ────────────────────────────────────────────────── -->
+<div class="alg-foot" style="max-width:820px; margin:32px auto 0; padding:0 16px;">
+  <div style="background:white;border:1px solid #e2e0da;border-radius:10px;padding:16px 20px;font-size:.8rem;color:#6b6762;line-height:1.6;">
+    <strong style="color:#1a1917;">Educational use only.</strong> Pathway based on:
+    NICE CKS Hypothyroidism (2023) ·
+    NICE NG12 Suspected Cancer Recognition (2015, updated 2023) ·
+    British Thyroid Association (BTA) Guidelines for the Management of Hypothyroidism (2019) ·
+    European Thyroid Association (ETA) Guidelines 2012 &amp; 2019 ·
+    NICE PH44 Physical Activity in Adults (2014) ·
+    RCGP Curriculum Statement — Endocrine Problems (2022).
+    Always adapt to individual patient context, local formulary, and current guidelines.
+  </div>
+</div>
+
+<!-- ── JAVASCRIPT ─────────────────────────────────────────────── -->
+<script>
+(function () {
+  const STORE_KEY = 'rgp.alg.hypothyroidism.v1';
+  const flow      = document.getElementById('flow');
+  const pDone     = document.getElementById('pDone');
+  const pFill     = document.getElementById('pFill');
+  const resetBtn  = document.getElementById('resetBtn');
+  const total     = 9;
+
+  // ── Load saved state ────────────────────────────────────────
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch(_) {}
+
+  // ── Apply to checkboxes ──────────────────────────────────────
+  flow.querySelectorAll('.node').forEach(node => {
+    const step = node.dataset.step;
+    const cb   = node.querySelector('input[type="checkbox"]');
+    if (!cb) return;
+    if (saved[step]) {
+      cb.checked = true;
+      node.classList.add('done');
+    }
+    cb.addEventListener('change', () => {
+      node.classList.toggle('done', cb.checked);
+      saved[step] = cb.checked;
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(saved)); } catch(_) {}
+      updateProgress();
+    });
+  });
+
+  // ── Progress bar ─────────────────────────────────────────────
+  function updateProgress() {
+    const n = Object.values(saved).filter(Boolean).length;
+    pDone.textContent = n;
+    pFill.style.width = (n / total * 100) + '%';
+  }
+  updateProgress();
+
+  // ── Reset ────────────────────────────────────────────────────
+  resetBtn.addEventListener('click', () => {
+    if (!confirm('Reset all progress?')) return;
+    saved = {};
+    try { localStorage.removeItem(STORE_KEY); } catch(_) {}
+    flow.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    flow.querySelectorAll('.node').forEach(n => n.classList.remove('done'));
+    updateProgress();
+  });
+
+  // ── Why? drawers ──────────────────────────────────────────────
+  flow.querySelectorAll('.why-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const drawer  = btn.nextElementSibling;
+      const isOpen  = drawer.classList.contains('open');
+      drawer.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', !isOpen);
+    });
+  });
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

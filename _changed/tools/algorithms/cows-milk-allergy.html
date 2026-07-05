@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cow's Milk Allergy Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c-bg: #fafbfc;
+  --c-card: #ffffff;
+  --c-border: #e0e4e8;
+  --c-text: #1a2332;
+  --c-text-light: #5a6a7f;
+  --c-primary: #0066cc;
+  --c-primary-light: #e6f0ff;
+  --c-red: #d32f2f;
+  --c-red-light: #ffebee;
+  --c-purple: #7b1fa2;
+  --c-purple-light: #f3e5f5;
+  --c-blue: #1976d2;
+  --c-blue-light: #e3f2fd;
+  --c-teal: #00796b;
+  --c-teal-light: #e0f2f1;
+  --c-amber: #f57c00;
+  --c-amber-light: #fff3e0;
+  --c-green: #388e3c;
+  --c-green-light: #e8f5e9;
+  --c-grey: #616161;
+  --c-grey-light: #f5f5f5;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.stem-banner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 24px 28px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+}
+
+.sb-icon {
+  font-size: 48px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.stem-banner b {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.stem-banner small {
+  display: block;
+  font-size: 15px;
+  opacity: 0.95;
+  font-weight: 400;
+}
+
+.alg-progress {
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.alg-progress > span:first-child {
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--c-text-light);
+}
+
+.pcount {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--c-primary);
+}
+
+.pbar {
+  flex: 1;
+  height: 8px;
+  background: var(--c-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pbar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-primary), #667eea);
+  width: 0;
+  transition: width 0.3s ease;
+  border-radius: 8px;
+}
+
+.reset {
+  background: transparent;
+  border: 1.5px solid var(--c-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-text-light);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.reset:hover {
+  border-color: var(--c-primary);
+  color: var(--c-primary);
+  background: var(--c-primary-light);
+}
+
+.alg-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.node {
+  background: var(--c-card);
+  border: 2px solid var(--c-border);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.node.done {
+  border-color: var(--c-green);
+  background: var(--c-green-light);
+}
+
+.node-num {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  width: 36px;
+  height: 36px;
+  background: var(--c-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--c-text-light);
+  z-index: 1;
+}
+
+.node.done .node-num {
+  background: var(--c-green);
+  color: white;
+}
+
+.node.done .node-num::after {
+  content: '✓';
+  font-size: 18px;
+}
+
+.node-head {
+  padding: 20px 72px 16px 72px;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.node.done .node-head {
+  border-bottom-color: rgba(56, 142, 60, 0.2);
+}
+
+.node-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.node[data-type="SAFETY"] .node-tag {
+  background: var(--c-red-light);
+  color: var(--c-red);
+}
+
+.node[data-type="DIAGNOSE"] .node-tag {
+  background: var(--c-blue-light);
+  color: var(--c-blue);
+}
+
+.node[data-type="TREAT"] .node-tag {
+  background: var(--c-teal-light);
+  color: var(--c-teal);
+}
+
+.node[data-type="REFER"] .node-tag {
+  background: var(--c-purple-light);
+  color: var(--c-purple);
+}
+
+.node[data-type="LIFESTYLE"] .node-tag {
+  background: var(--c-green-light);
+  color: var(--c-green);
+}
+
+.node-head h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.3;
+}
+
+.node-tick {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.node-tick label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.node-tick input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: var(--c-green);
+}
+
+.tlbl {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-text-light);
+}
+
+.node-body {
+  padding: 24px 28px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px 24px;
+  margin-top: 16px;
+  align-items: start;
+}
+
+.kv > div:nth-child(odd) {
+  font-weight: 600;
+  color: var(--c-text);
+  padding-top: 2px;
+}
+
+.kv > div:nth-child(even) {
+  color: var(--c-text);
+}
+
+.rfgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.rftile {
+  background: var(--c-red-light);
+  border-left: 4px solid var(--c-red);
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.rftile b {
+  display: block;
+  color: var(--c-red);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.branch {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.b-card {
+  border: 2px solid var(--c-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--c-bg);
+}
+
+.b-cond {
+  background: var(--c-primary-light);
+  color: var(--c-primary);
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  border-bottom: 2px solid var(--c-border);
+}
+
+.b-drug {
+  padding: 14px 16px;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--c-text);
+  background: white;
+}
+
+.b-note {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--c-text-light);
+  background: white;
+  border-top: 1px solid var(--c-border);
+}
+
+.ladder {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.rung {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  border: 2px solid var(--c-border);
+  border-bottom: none;
+  background: white;
+}
+
+.rung:first-child {
+  border-radius: 12px 12px 0 0;
+}
+
+.rung:last-child {
+  border-bottom: 2px solid var(--c-border);
+  border-radius: 0 0 12px 12px;
+}
+
+.rn {
+  background: var(--c-teal-light);
+  color: var(--c-teal);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid var(--c-border);
+}
+
+.rt {
+  padding: 14px 18px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.lsgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.lstile {
+  background: var(--c-green-light);
+  border-left: 4px solid var(--c-green);
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.lstile b {
+  display: block;
+  color: var(--c-green);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin: 0 4px;
+}
+
+.pill-red { background: var(--c-red-light); color: var(--c-red); }
+.pill-purple { background: var(--c-purple-light); color: var(--c-purple); }
+.pill-blue { background: var(--c-blue-light); color: var(--c-blue); }
+.pill-teal { background: var(--c-teal-light); color: var(--c-teal); }
+.pill-amber { background: var(--c-amber-light); color: var(--c-amber); }
+.pill-green { background: var(--c-green-light); color: var(--c-green); }
+.pill-grey { background: var(--c-grey-light); color: var(--c-grey); }
+
+.why-row {
+  border-top: 1px solid var(--c-border);
+}
+
+.node.done .why-row {
+  border-top-color: rgba(56, 142, 60, 0.2);
+}
+
+.why-btn {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 16px 28px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-primary);
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.2s;
+}
+
+.why-btn:hover {
+  background: var(--c-primary-light);
+}
+
+.caret {
+  font-size: 12px;
+  transition: transform 0.3s;
+  display: inline-block;
+}
+
+.why-btn[aria-expanded="true"] .caret {
+  transform: rotate(180deg);
+}
+
+.why-drawer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.why-drawer.open {
+  max-height: 1000px;
+  padding: 0 28px 24px 28px;
+}
+
+.why-drawer p {
+  color: var(--c-text-light);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.why-drawer p:last-child {
+  margin-bottom: 0;
+}
+
+.connector {
+  height: 32px;
+  width: 3px;
+  background: linear-gradient(180deg, var(--c-border) 0%, transparent 100%);
+  margin: 0 auto;
+}
+
+.alg-foot {
+  margin-top: 32px;
+  padding: 20px 24px;
+  background: var(--c-grey-light);
+  border-radius: 12px;
+  font-size: 13px;
+  color: var(--c-text-light);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.alg-foot strong {
+  color: var(--c-text);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  body { padding: 16px; }
+  .stem-banner { padding: 20px; gap: 16px; }
+  .sb-icon { font-size: 36px; }
+  .stem-banner b { font-size: 20px; }
+  .stem-banner small { font-size: 14px; }
+  .node-head { padding: 20px 20px 16px 64px; }
+  .node-body { padding: 20px; }
+  .node-num { width: 32px; height: 32px; font-size: 14px; top: 14px; left: 16px; }
+  .node-tick { top: 16px; right: 16px; }
+  .kv { grid-template-columns: 1fr; gap: 8px; }
+  .kv > div:nth-child(odd) { font-size: 14px; }
+  .rfgrid, .lsgrid { grid-template-columns: 1fr; }
+  .branch { grid-template-columns: 1fr; }
+  .why-drawer.open { padding: 0 20px 20px 20px; }
+  .alg-progress { flex-wrap: wrap; }
+  .pbar { width: 100%; order: 3; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🍼</div>
+  <div>
+    <b>Cow's Milk Allergy — IgE-mediated and non-IgE-mediated</b>
+    <small>UK primary care pathway for diagnosing and managing CMA in infants and children</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — distinguish IgE-mediated (rapid) from non-IgE (delayed) cows' milk protein allergy, exclude anaphylaxis, manage with maternal/infant milk exclusion, support reintroduction, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Cows milk protein allergy</span><div class="body">Timing of symptoms after milk (rapid vs delayed), GI/skin/respiratory features, feeding (breast vs formula), growth. Allergy-focused history.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — anaphylaxis</span><span class="ttl">Anaphylaxis / severe IgE reaction?</span><div class="body">Rapid urticaria/angioedema, wheeze/stridor, vomiting, hypotension after milk → IgE-mediated, risk of anaphylaxis.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency / allergy</span><div class="body">Anaphylaxis → IM adrenaline + 999 + allergy referral with adrenaline auto-injector.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination guide management.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · approach</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">IgE-mediated</div><div class="box act"><span class="ttl">Rapid</span><div class="body">Minutes–2h: urticaria, vomiting, wheeze; specific IgE/skin testing; allergy referral; avoidance.</div></div></div><div class="col"><div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">Non-IgE</div><div class="box act"><span class="ttl">Delayed</span><div class="body">Hours–days: eczema, reflux, colic, diarrhoea/blood in stool, faltering growth; trial exclusion + reintroduction.</div></div></div><div class="col"><div class="blabel">Manage</div><div class="box ix"><span class="ttl">Diet</span><div class="body">Breastfeeding: maternal dairy exclusion. Formula: extensively hydrolysed (amino-acid if severe); dietitian; milk ladder for reintroduction.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> anaphylaxis + allergy referral. <span class="pill pill-purple">Paediatric allergy / dietitian</span> diagnostic uncertainty, severe/persistent symptoms, faltering growth, or for structured reintroduction.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · diet &amp; family support</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Diet &amp; family support</span><span class="ttl">Nutrition while excluding milk</span><div class="body"><b>Support continued breastfeeding</b> with strict maternal dairy exclusion + <b>maternal calcium/vitamin D</b>; for formula-fed infants use an <b>extensively hydrolysed</b> (or amino-acid) formula — not soya/other mammalian milks under 6 months. <b>Dietitian involvement</b> to protect growth, read labels, and plan weaning. Use the <b>milk ladder</b> for non-IgE reintroduction; written allergy action plan + auto-injector training for IgE cases.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Confirm, monitor growth, reassess tolerance</span><div class="body"><b>Confirm non-IgE diagnosis</b> with planned exclusion (2–6 weeks) then <b>reintroduction</b> — don't leave a child on a milk-free diet without review. <b>Monitor growth</b> on centile charts. Most non-IgE allergy resolves by age 3 — plan re-challenge. <b>999</b> for any breathing difficulty, swelling or collapse after milk in an IgE-sensitised child.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>Confirm the diagnosis with exclusion and planned reintroduction</b> for non-IgE allergy — and ensure any infant with an IgE-mediated reaction has an allergy referral and emergency plan.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-num">1</div>
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Red Flags — Exclude anaphylaxis, failure to thrive, FPIES</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Urgent exclusion of life-threatening allergic reactions and severe malnutrition.
+    
+    <div class="rfgrid">
+      <div class="rftile"><b>Anaphylaxis features</b> Acute onset facial/lip swelling, wheeze, stridor, hypotension, collapse within minutes of milk exposure → <span class="pill pill-red">999</span> IM adrenaline 150 mcg (<6 months) or 300 mcg (6m-6yrs)</div>
+      <div class="rftile"><b>Severe faltering growth</b> Weight <2nd centile, crossing 2+ centile lines, no weight gain 2+ weeks → <span class="pill pill-red">Same-day</span> paediatric assessment (malnutrition, neglect, metabolic disease)</div>
+      <div class="rftile"><b>FPIES presentation</b> Profuse vomiting 2-4 hours after milk (not immediate), lethargy, pallor, hypotension, hypothermia → <span class="pill pill-red">999</span> (Food Protein-Induced Enterocolitis Syndrome — can cause shock)</div>
+      <div class="rftile"><b>Haematemesis / melaena</b> Blood in vomit or stools, coffee-ground vomit, black tarry stools → <span class="pill pill-red">Same-day</span> paediatrics (severe CMPA enteropathy, erosive disease)</div>
+      <div class="rftile"><b>Severe eczema + infection</b> Widespread infected eczema, fever, systemically unwell → <span class="pill pill-red">Same-day</span> (eczema herpeticum risk, sepsis)</div>
+      <div class="rftile"><b>Dehydration</b> Sunken fontanelle, reduced urine output, dry mucous membranes, lethargy → <span class="pill pill-red">Same-day</span> assessment (severe gastroenteritis, FPIES)</div>
+      <div class="rftile"><b>Respiratory distress</b> Wheeze, stridor, increased work of breathing within 2 hours of feed → <span class="pill pill-red">999</span> (anaphylaxis, severe IgE-mediated reaction)</div>
+      <div class="rftile"><b>Persistent blood-streaked stools</b> Visible blood in stools for >2 weeks despite milk-free diet → <span class="pill pill-purple">2WW</span> paediatric gastro (IBD, polyps, intussusception)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Anaphylaxis to cow's milk</b> is rare (0.1% of children) but potentially fatal. IgE-mediated CMA can progress to anaphylaxis on subsequent exposures. Parents need adrenaline auto-injectors (2 devices) and emergency action plan. Delayed recognition = death.</p>
+      <p><b>FPIES</b> (Food Protein-Induced Enterocolitis Syndrome) is non-IgE-mediated but presents with shock-like state — profound vomiting, lethargy, hypotension 2-4 hours post-milk exposure. Often misdiagnosed as sepsis or gastroenteritis. Requires IV fluids, sometimes steroids. Recurrence risk 100% on re-exposure until resolution (typically age 3-5 years).</p>
+      <p><b>Faltering growth</b> is the most serious non-acute complication. Malnutrition in infancy causes irreversible neurodevelopmental harm. Weight crossing 2+ centile lines = red flag requiring same-day paediatric input for feeding assessment, nutritional rehabilitation.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-num">2</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>History — Symptom pattern, timing, feeding history</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Take detailed feeding history focusing on symptom onset, timing relative to milk exposure, and response to avoidance.
+    
+    <div class="kv">
+      <div>Timing of symptoms</div>
+      <div><b>Immediate (<2 hours):</b> IgE-mediated (urticaria, angioedema, wheeze, vomiting). <b>Delayed (2 hours - 72 hours):</b> Non-IgE-mediated (eczema, proctocolitis, reflux, colic). <b>Both patterns:</b> Mixed IgE/non-IgE.</div>
+      
+      <div>Feeding history</div>
+      <div><b>Breastfed:</b> CMA can occur via maternal diet (cow's milk proteins in breast milk). <b>Formula-fed:</b> Standard infant formula contains cow's milk protein. <b>Weaning:</b> Symptoms may start when yoghurt, cheese, cow's milk introduced. <b>Age of onset:</b> Typically <6 months.</div>
+      
+      <div>Symptom diary</div>
+      <div>Request parent-completed food-symptom diary for 1-2 weeks. Record: all feeds/foods, symptom type, timing, severity (0-10). Bring to next appointment. Essential for establishing temporal relationship.</div>
+      
+      <div>Gastrointestinal</div>
+      <div>Vomiting (immediate or delayed), diarrhoea, blood/mucus in stools, constipation (paradoxically), colic (inconsolable crying >3 hrs/day), reflux symptoms (back arching, possetting).</div>
+      
+      <div>Skin</div>
+      <div>Atopic eczema (dry, itchy, erythematous patches flexures/face), urticaria (raised itchy wheals within 2 hours), angioedema (lip/facial swelling). <b>Eczema alone</b> does NOT diagnose CMA — trial needed.</div>
+      
+      <div>Respiratory</div>
+      <div>Wheeze, chronic cough, nasal congestion (rare as sole manifestation). <b>Caution:</b> Respiratory symptoms alone rarely CMA — consider asthma, viral infections.</div>
+      
+      <div>Family history</div>
+      <div>Atopy (eczema, asthma, allergic rhinitis, food allergies) in first-degree relatives increases CMA risk 3-fold. Ask specifically about parental/sibling allergies.</div>
+      
+      <div>Response to avoidance</div>
+      <div><b>Key diagnostic feature:</b> Did symptoms improve with cow's milk elimination? <b>IgE-mediated:</b> Improvement within 2-4 weeks. <b>Non-IgE:</b> Improvement within 2-6 weeks. <b>No improvement:</b> Reconsider diagnosis.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Timing distinguishes mechanism:</b> IgE-mediated reactions occur within minutes to 2 hours (histamine release, mast cell degranulation). Non-IgE reactions are delayed (T-cell mediated, immune complex formation). Mixed presentations occur in 20% cases.</p>
+      <p><b>Symptom diary is diagnostic gold standard</b> — establishes temporal relationship between milk exposure and symptoms. More reliable than retrospective recall. Parent-reported diaries have 85% sensitivity for identifying culprit foods in validated studies.</p>
+      <p><b>Over-diagnosis is rampant:</b> 15% of parents believe their child has CMA, but only 2-3% actually have confirmed CMA. Symptoms attributed to CMA (colic, reflux, eczema) are common in infants regardless of diet. Response to elimination + challenge is essential to confirm diagnosis.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-num">3</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Classification — IgE-mediated vs Non-IgE-mediated</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Classify based on symptom pattern and timing. Determines investigation and management strategy.
+    
+    <div class="kv">
+      <div>IgE-mediated CMA</div>
+      <div><b>Features:</b> Immediate onset (<2 hours), urticaria, angioedema, acute vomiting, wheeze, anaphylaxis. <b>Prevalence:</b> 0.5% infants. <b>Investigation:</b> Skin prick test or specific IgE blood test. <b>Management:</b> Strict avoidance, adrenaline auto-injector if severe. <span class="pill pill-amber">High risk anaphylaxis</span></div>
+      
+      <div>Non-IgE-mediated CMA</div>
+      <div><b>Features:</b> Delayed onset (>2 hours, up to 72 hours), eczema, proctocolitis (blood-streaked stools), reflux symptoms, chronic diarrhoea, colic. <b>Prevalence:</b> 2-3% infants. <b>Investigation:</b> Clinical diagnosis + elimination-reintroduction trial. Allergy tests negative. <span class="pill pill-green">Lower risk</span></div>
+      
+      <div>Mixed IgE/non-IgE</div>
+      <div><b>Features:</b> Combination of immediate and delayed symptoms. Example: urticaria within 1 hour + worsening eczema over days. <b>Prevalence:</b> 20% of CMA cases. <b>Management:</b> Treat as IgE-mediated (higher risk). Allergy tests may be positive.</div>
+      
+      <div>CMPI (proctocolitis)</div>
+      <div><b>Cow's Milk Protein-Induced Proctocolitis.</b> Non-IgE subtype. <b>Features:</b> Blood-streaked mucousy stools in otherwise well infant age <6 months, normal growth. <b>Breastfed babies</b> most common. <b>Prognosis:</b> Excellent, resolves by age 12 months. <span class="pill pill-green">Benign</span></div>
+      
+      <div>FPIES</div>
+      <div><b>Food Protein-Induced Enterocolitis Syndrome.</b> Rare non-IgE subtype. <b>Features:</b> Profuse vomiting 2-4 hours post-exposure, lethargy, pallor, shock-like state. <b>No skin/respiratory symptoms.</b> Allergy tests negative. <b>Management:</b> Strict avoidance until age 3-5 years. <span class="pill pill-red">Medical emergency</span></div>
+      
+      <div>FPIAP</div>
+      <div><b>Food Protein-Induced Allergic Proctitis.</b> Synonymous with CMPI. Blood in stools, well infant, normal growth. Self-limiting, resolves age 12 months.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Classification drives management:</b> IgE-mediated requires adrenaline auto-injector prescription, specialist allergy input, and annual review of tolerance. Non-IgE-mediated managed in primary care with elimination diet + home reintroduction. Misclassification = inappropriate treatment.</p>
+      <p><b>Proctocolitis (CMPI)</b> is the most common non-IgE presentation — isolated blood-streaked stools in well breastfed infant. Benign, self-limiting. Do NOT over-investigate (colonoscopy unnecessary). Maternal cow's milk elimination trial sufficient. 95% resolve by 12 months.</p>
+      <p><b>FPIES is rare but serious</b> — presents like septic shock (lethargy, pallor, hypotension) but is food-triggered. Delayed presentation (2-4 hours) means it's often missed. Requires IV fluids, observation. Allergy tests are negative (non-IgE mechanism), making diagnosis challenging. Only confirmed by re-challenge under medical supervision.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-num">4</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Examination — Growth, eczema severity, general wellbeing</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Focus on growth parameters, skin examination, and systemic wellbeing.
+    
+    <div class="kv">
+      <div>Growth parameters</div>
+      <div>Weight, length, head circumference plotted on centile charts (WHO 0-4 years, UK-WHO 4+ years). <b>Faltering growth:</b> Weight crossing down 2+ centile lines. <b>Failure to thrive:</b> Weight <2nd centile + poor weight gain. Document all measurements in PCHR (red book).</div>
+      
+      <div>Skin examination</div>
+      <div><b>Eczema severity:</b> Extent (% body surface area), distribution (flexures, face, trunk), signs of infection (weeping, crusting, pustules). <b>Urticaria:</b> Raised erythematous wheals (if present during consultation). <b>Angioedema:</b> Lip/facial swelling.</div>
+      
+      <div>Abdominal exam</div>
+      <div>Palpate for masses (unlikely but exclude), assess for tenderness (unlikely in non-IgE CMA). Listen for bowel sounds (hyperactive in acute FPIES). Generally unremarkable in CMA.</div>
+      
+      <div>General wellbeing</div>
+      <div><b>Alert and interactive?</b> Lethargy, pallor, irritability may indicate systemic involvement. <b>Hydration status:</b> Mucous membranes, fontanelle (if open), urine output. <b>Respiratory:</b> Wheeze, stridor, increased work of breathing.</div>
+      
+      <div>Nappy contents</div>
+      <div>If blood/mucus in stools reported, inspect nappy if brought or request photo for next appointment. <b>Frank blood:</b> Red streaks. <b>Melaena:</b> Black tarry stools (upper GI bleed). <b>Mucousy:</b> Thick clear/white mucus.</div>
+      
+      <div>Development</div>
+      <div>Age-appropriate milestones (social smile 6 weeks, sitting 6 months, walking 12-18 months). Malnutrition causes developmental delay. Document in PCHR.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Growth monitoring is mandatory</b> — faltering growth is the most serious complication of CMA. Malnutrition in first 2 years causes irreversible neurodevelopmental harm (reduced IQ, poor school performance, behavioral issues). Crossing 2+ centile lines = urgent paediatric dietitian referral.</p>
+      <p><b>Eczema alone does NOT diagnose CMA</b> — 20% of infants have eczema, only 30% of those have food allergy. Moderate-severe eczema unresponsive to topical steroids warrants CMA trial, but most eczema improves with emollients + steroids alone.</p>
+      <p><b>Visual confirmation of blood in stools</b> is important — parental reporting of "blood" can be mistaken (food dyes, urates in nappy, anal fissure from constipation). If persistent despite maternal cow's milk elimination, consider other causes (IBD, polyps, intussusception).</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-num">5</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Investigations — Selective testing based on presentation</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    IgE-mediated: allergy test. Non-IgE-mediated: clinical diagnosis + elimination trial. Do NOT over-investigate.
+    
+    <div class="kv">
+      <div>IgE-mediated — testing</div>
+      <div><b>Skin prick test (SPT):</b> Gold standard, performed by allergy specialist. Wheal ≥3mm = positive. <b>Specific IgE blood test:</b> Alternative if SPT unavailable. Cow's milk IgE >0.35 kUA/L = positive. <b>Do NOT order</b> if no immediate symptoms — negative predictive value low for non-IgE CMA.</div>
+      
+      <div>Non-IgE-mediated — NO testing</div>
+      <div>Allergy tests (SPT, specific IgE) are NEGATIVE in non-IgE CMA by definition. <b>Diagnosis:</b> Clinical (symptom pattern + response to elimination + positive reintroduction challenge). <b>Testing misleads:</b> Negative test does NOT exclude non-IgE CMA. <span class="pill pill-amber">Do not test</span></div>
+      
+      <div>Elimination trial</div>
+      <div><b>Method:</b> Eliminate ALL cow's milk protein (formula, maternal diet if breastfeeding) for 2-4 weeks (IgE) or 2-6 weeks (non-IgE). <b>Improvement:</b> Symptoms resolve/significantly improve. <b>Proceed to:</b> Supervised reintroduction challenge to confirm diagnosis.</div>
+      
+      <div>Reintroduction challenge</div>
+      <div><b>When:</b> After 2-6 weeks elimination IF symptoms improved. <b>IgE-mediated:</b> Hospital-supervised challenge (anaphylaxis risk). <b>Non-IgE-mediated:</b> Home challenge under GP guidance (low risk). <b>Positive challenge:</b> Symptoms recur within 2-4 weeks = CMA confirmed.</div>
+      
+      <div>Bloods — rarely needed</div>
+      <div><b>FBC:</b> If anaemia suspected (chronic blood loss in proctocolitis). <b>Albumin:</b> If severe malnutrition/malabsorption. <b>NOT routine.</b> Over-investigation causes anxiety.</div>
+      
+      <div>Do NOT investigate</div>
+      <div><b>IgG testing</b> (commercial "food intolerance" tests) — not validated, NOT recommended (NICE, BSACI). <b>Patch testing</b> — no role in CMA diagnosis. <b>Endoscopy/colonoscopy</b> — only if red flags (persistent GI bleeding despite milk-free diet, weight loss, IBD suspected).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Allergy tests only useful for IgE-mediated CMA</b> — skin prick test has 90% sensitivity and 50% specificity. Positive test means 50% chance of clinical allergy (not 100%). Negative test in non-IgE CMA is expected and normal. Testing non-IgE patients generates false reassurance or unnecessary dietary restrictions.</p>
+      <p><b>Elimination-reintroduction is gold standard</b> for non-IgE CMA. No blood test exists. Clinical diagnosis based on: (1) symptoms improve with elimination, (2) symptoms recur with reintroduction. If both criteria met = CMA confirmed. If symptoms do NOT improve with elimination = NOT CMA.</p>
+      <p><b>IgG food tests are scams</b> — IgG antibodies to food proteins are NORMAL physiological response to dietary proteins, not pathological. NICE, BSACI, EAACI all recommend against IgG testing. Widely sold commercially but no evidence base. Causes unnecessary dietary restrictions and parental anxiety.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-num">6</div>
+  <div class="node-head">
+    <span class="node-tag">Refer</span>
+    <h3>Referral Criteria — When to escalate</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Refer IgE-mediated CMA, faltering growth, severe symptoms, diagnostic uncertainty, or reintroduction failure.
+    
+    <div class="kv">
+      <div><span class="pill pill-red">999 / Same-day</span></div>
+      <div><b>Anaphylaxis.</b> <b>Severe faltering growth</b> (weight <2nd centile, crossing 2+ lines). <b>FPIES suspected</b> (profuse vomiting + shock-like state). <b>Dehydration.</b> <b>Persistent haematemesis/melaena.</b></div>
+      
+      <div><span class="pill pill-purple">Urgent allergy</span></div>
+      <div><b>IgE-mediated CMA suspected:</b> Immediate reactions (urticaria, angioedema, wheeze) → allergy clinic for SPT, adrenaline prescription, action plan. <b>Mixed IgE/non-IgE.</b> <b>Multiple food allergies.</b> <b>Severe eczema</b> unresponsive to treatment.</div>
+      
+      <div><span class="pill pill-blue">Routine paediatrics</span></div>
+      <div><b>Non-IgE CMA with poor growth</b> (even if not faltering) → dietitian input. <b>No improvement</b> after 6 weeks milk-free diet (reassess diagnosis). <b>Breastfeeding mother</b> struggling with elimination diet (dietitian support). <b>Parent request/anxiety</b> despite reassurance.</div>
+      
+      <div><span class="pill pill-blue">Dietitian</span></div>
+      <div><b>All CMA cases</b> benefit from dietitian input for: nutritional adequacy assessment, calcium/vitamin D supplementation, weaning advice, formula selection, reintroduction planning. <b>Essential if:</b> Multiple food allergies, faltering growth, breastfeeding mother.</div>
+      
+      <div><span class="pill pill-green">Primary care</span></div>
+      <div><b>Non-IgE CMA with:</b> Mild symptoms, normal growth, straightforward elimination diet, clear response to milk-free trial. GP manages: extensively hydrolysed formula prescription, monitoring, home reintroduction at age 12 months, annual review.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>IgE-mediated CMA requires allergy specialist input</b> — adrenaline auto-injector prescription, emergency action plan, skin prick testing, management of anaphylaxis risk. Primary care cannot provide this level of specialist care. Annual review of tolerance with supervised challenges needed.</p>
+      <p><b>Dietitian input prevents malnutrition</b> — cow's milk provides 50% of toddler's calcium, protein, and calories. Elimination without expert guidance risks rickets (vitamin D/calcium deficiency), protein-energy malnutrition, restricted growth. Dietitians assess nutritional adequacy, prescribe appropriate supplements, ensure balanced diet.</p>
+      <p><b>Non-IgE CMA can be managed in primary care</b> if: diagnosis clear, growth normal, parents confident, single allergen. GP monitors growth, prescribes hypoallergenic formula, guides home reintroduction. Escalate if: multiple allergies, faltering growth, diagnostic uncertainty, parental anxiety high.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-num">7</div>
+  <div class="node-head">
+    <span class="node-tag">Treat</span>
+    <h3>Milk Avoidance — Formula ladder and dietary substitution</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Eliminate cow's milk protein via maternal diet (breastfeeding) or hypoallergenic formula. Monitor growth closely.
+    
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Breastfed baby</div>
+        <div class="b-drug">Maternal cow's milk elimination <span class="pill pill-green">First-line</span></div>
+        <div class="b-note">Mother eliminates ALL dairy (milk, cheese, yoghurt, butter, cream, ice cream, chocolate). Continue breastfeeding. Calcium 1000 mg + Vitamin D 10 mcg daily for mother. Dietitian support essential.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Formula-fed baby — non-IgE</div>
+        <div class="b-drug">Extensively hydrolysed formula (EHF) <span class="pill pill-teal">First-line</span></div>
+        <div class="b-note">Nutramigen, Similac Alimentum, Aptamil Pepti. Proteins broken into small peptides. Prescribe on FP10. Trial 2-6 weeks. Improves symptoms in 90% non-IgE CMA.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">EHF intolerant / IgE-mediated severe</div>
+        <div class="b-drug">Amino acid formula (AAF) <span class="pill pill-teal">Second-line</span></div>
+        <div class="b-note">Neocate, Alfamino, Nutramigen Puramino. Elemental (no intact proteins). For: EHF refusal, severe IgE CMA, FPIES, eosinophilic oesophagitis. Specialist prescribing.</div>
+      </div>
+    </div>
+    
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Extensively Hydrolysed Formula (EHF)</b> — Nutramigen (Mead Johnson), Similac Alimentum (Abbott), Aptamil Pepti (Danone). Prescribe on FP10 (free on NHS). Trial 2-6 weeks. Bitter taste — may refuse initially.</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Amino Acid Formula (AAF)</b> — If EHF refused or no improvement. Neocate, Alfamino, Nutramigen Puramino. Elemental, hypoallergenic. More expensive (£30-40/tin vs £15 EHF). Specialist input before switching.</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Soya formula</b> — AVOID if age <6 months (phytoestrogens). Use age >6 months if EHF/AAF refused. 50% cross-reactivity with CMA. Not first-line. SMA Wysoy, Cow & Gate Infasoy.</span></div>
+      <div class="rung"><span class="rn">Alternative</span><span class="rt"><b>Oat/rice/coconut milk</b> — NOT suitable as sole milk source age <1 year (nutritionally inadequate). For cooking/cereal only. Unsweetened, calcium-fortified versions. From age 1+ year as drink if CMA persistent.</span></div>
+    </div>
+    
+    <div class="kv" style="margin-top: 20px;">
+      <div>Vitamin D + Calcium</div>
+      <div><b>All children on milk-free diet:</b> Vitamin D 400 IU (10 mcg) daily. <b>Calcium:</b> EHF/AAF provide adequate calcium. If alternative milks used age 1+ years, ensure 350 mg calcium daily (fortified plant milks, green vegetables, tahini).</div>
+      
+      <div>Weaning advice</div>
+      <div>Introduce solids age 6 months as usual. <b>Avoid:</b> Cow's milk, cheese, yoghurt, butter, cream, milk powder. <b>Hidden milk:</b> Bread, biscuits, cakes, ready meals (check labels). <b>Safe:</b> Meat, fish, fruit, vegetables, rice, pasta, lentils, eggs (if tolerated).</div>
+      
+      <div>Label reading</div>
+      <div>Teach parents to check labels. <b>Avoid if contains:</b> Milk, casein, whey, lactose, butter, cream, ghee, curds. <b>UK labelling law:</b> Allergens in bold. App: "CMPA support" by British Dietetic Association.</div>
+      
+      <div>Adrenaline auto-injector</div>
+      <div><b>IgE-mediated CMA only:</b> Prescribe 2 adrenaline auto-injectors. <b>EpiPen Jr</b> 150 mcg (7.5-25 kg), <b>EpiPen</b> 300 mcg (>25 kg). Train parents: anterolateral thigh, hold 10 seconds. Emergency action plan. Call 999 after use.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Extensively hydrolysed formula (EHF)</b> is first-line for non-IgE CMA — 90% effective. Proteins hydrolysed into small peptides unlikely to trigger immune response. Cheaper than amino acid formula (£15 vs £35/tin). Covered by NHS prescription (ACBS indication: "Proven Cow's Milk Allergy").</p>
+      <p><b>Amino acid formula (AAF)</b> is reserved for: severe IgE CMA, EHF failure, eosinophilic disorders, FPIES. Completely elemental — no intact proteins. More expensive, worse taste (metallic), but 99% effective. Do not use AAF first-line — try EHF first unless specialist-directed.</p>
+      <p><b>Soya formula is NOT first-line</b> — 10-14% of CMA infants also react to soya (cross-reactivity). Phytoestrogen content controversial (theoretical endocrine disruption). NICE recommends avoid <6 months. Use only if EHF/AAF refused or for cultural/religious reasons (after dietitian input).</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-num">8</div>
+  <div class="node-head">
+    <span class="node-tag">Lifestyle</span>
+    <h3>Parental Education — Safe feeding, label reading, eczema care</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Educate parents on milk avoidance, nutritional adequacy, emergency management, and prognosis.
+    
+    <div class="lsgrid">
+      <div class="lstile"><b>Safe formula preparation</b> EHF/AAF prepared same as standard formula: boil water, cool to 70°C, add powder, shake. Use within 2 hours. Discard unused formula after 24 hours. Never microwave (hot spots).</div>
+      <div class="lstile"><b>Label reading essential</b> UK law requires allergens in BOLD on food labels. Avoid: milk, whey, casein, lactose, butter, cream, ghee, curds. Download "CMPA Support" app (British Dietetic Association) — scans barcodes, flags allergens.</div>
+      <div class="lstile"><b>Hidden milk sources</b> Bread (milk powder), biscuits, cakes, chocolate, ready meals, processed meats (casein binders), crisps (milk flavouring). Always check labels even if product "looks" milk-free.</div>
+      <div class="lstile"><b>Breastfeeding support</b> Mother must eliminate ALL dairy. Accidental exposure takes 2 weeks to clear from breast milk. Support groups: "Dairy Free for Baby UK" (Facebook), "Breastfeeding with CMPA" forum. Dietitian review essential.</div>
+      <div class="lstile"><b>Social situations</b> Inform nursery, childminders, family members about strict milk avoidance. Provide safe snacks for parties. Teach child (age 2+ years) to say "I can't have milk". Medical alert bracelet for severe IgE CMA.</div>
+      <div class="lstile"><b>Eczema management</b> CMA elimination improves eczema in 30% cases. Continue emollients 3-4x daily (Diprobase, Epaderm), topical steroids for flares (hydrocortisone 1% face, betamethasone 0.1% body). CMA elimination is NOT substitute for topical treatment.</div>
+      <div class="lstile"><b>Nutrition reassurance</b> EHF/AAF provide complete nutrition — same calories, protein, calcium as standard formula. No additional supplements needed (except vitamin D 400 IU all children). Growth monitored regularly to ensure adequacy.</div>
+      <div class="lstile"><b>Prognosis counseling</b> Non-IgE CMA: 90% outgrow by age 3 years, 50% by age 1. IgE-mediated: 50% outgrow by age 5, 80% by age 16. Annual review of tolerance via supervised challenges. Prognosis excellent — reassure parents CMA is not lifelong.</div>
+      <div class="lstile"><b>Prevent accidental exposure</b> IgE-mediated CMA: carry adrenaline auto-injectors everywhere (2 devices). Train grandparents, nursery staff on use. Emergency action plan: IM adrenaline → call 999 → repeat dose after 5 mins if no improvement.</div>
+      <div class="lstile"><b>Weaning safely</b> Start solids age 6 months as usual. Introduce high-allergen foods (egg, peanut, wheat, fish) unless allergist advises otherwise. Avoidance of allergens does NOT prevent allergies. Offer milk-free versions (soya yoghurt, oat milk on cereal).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Parental anxiety is major burden</b> — CMA diagnosis causes significant stress (label reading, social restrictions, fear of reactions). Clear education reduces anxiety: EHF/AAF provides complete nutrition, CMA is usually outgrown, most reactions are mild. Reassurance is therapeutic.</p>
+      <p><b>Accidental exposures are common</b> — 25% of CMA children have accidental exposure annually. Hidden milk in processed foods (bread, biscuits) is main culprit. Label reading education reduces exposure risk 70%. Apps like "CMPA Support" automate scanning — parents scan barcode, app flags allergens.</p>
+      <p><b>EHF/AAF nutritional adequacy</b> is validated — formulas designed to meet 100% infant nutritional needs. No additional calcium or protein supplementation needed. Growth monitoring confirms adequacy. Parental concern about "missing out on nutrients" is unfounded — EHF provides same nutrition as standard formula.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-num">9</div>
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Follow-Up — Growth monitoring and tolerance reintroduction</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    Regular growth monitoring, review tolerance annually, plan milk reintroduction ladder.
+    
+    <div class="kv">
+      <div>2 weeks</div>
+      <div><b>After starting EHF/AAF:</b> Phone review. Check symptom improvement (should see 50% reduction by 2 weeks). If no improvement → consider alternative diagnosis or step up to AAF. Check formula tolerance (taste, acceptance).</div>
+      
+      <div>6 weeks</div>
+      <div><b>Face-to-face review:</b> Measure weight, length, head circumference (plot on centile charts). Symptoms should be 80-90% improved. If not → reassess diagnosis. Review maternal diet if breastfeeding. Discuss weaning plan.</div>
+      
+      <div>3-monthly (first year)</div>
+      <div><b>Growth monitoring:</b> Weight, length, head circumference. Ensure adequate growth velocity. Dietitian review if growth concerns. Check vitamin D compliance. Adjust formula prescription volumes as infant grows.</div>
+      
+      <div>Age 9-12 months</div>
+      <div><b>Milk ladder introduction:</b> Start for non-IgE CMA with well-controlled symptoms and normal growth. <b>Method:</b> Gradual reintroduction of baked milk products (muffin, biscuit), then yoghurt, then cheese, then fresh milk. <b>Duration:</b> One step every 1-2 weeks. <b>IgE-mediated:</b> Hospital-supervised challenge.</div>
+      
+      <div>Annual review</div>
+      <div><b>All CMA cases:</b> Review tolerance via milk ladder progression or supervised challenge. <b>Non-IgE:</b> 50% outgrow by age 1, 90% by age 3. <b>IgE-mediated:</b> Repeat skin prick test or specific IgE to guide challenge timing. Most outgrow by age 5-16 years.</div>
+      
+      <div>Safety-net <span class="pill pill-red">999</span></div>
+      <div><b>Anaphylaxis:</b> Facial swelling, wheeze, stridor, collapse after milk exposure. <b>FPIES reaction:</b> Profuse vomiting, lethargy, pallor 2-4 hours post-exposure. <b>Severe dehydration.</b></div>
+      
+      <div>Safety-net <span class="pill pill-red">Same-day GP</span></div>
+      <div><b>No symptom improvement</b> after 6 weeks milk-free diet. <b>Faltering growth</b> (crossing centile lines). <b>Persistent blood in stools</b> despite maternal milk elimination. <b>New concerning symptoms</b> (vomiting, lethargy, rash).</div>
+      
+      <div>Re-refer if</div>
+      <div><b>Multiple food allergies</b> develop (egg, soya, wheat). <b>Failure to thrive</b> despite adequate formula. <b>Severe eczema</b> unresponsive to treatment. <b>IgE CMA reactions worsening</b> (escalating severity). <b>Parent struggling</b> with dietary restrictions (dietitian + psychology input).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Growth monitoring is mandatory</b> — most important outcome measure. Faltering growth indicates inadequate nutrition or incorrect diagnosis. Infants on EHF/AAF should grow normally (same velocity as formula-fed peers). Crossing centile lines down = urgent dietitian referral.</p>
+      <p><b>Milk ladder is evidence-based tool</b> for gradually reintroducing cow's milk in non-IgE CMA. Baked milk is least allergenic (heat denatures proteins), followed by fermented (yoghurt), then fresh milk. Sequential introduction allows immune tolerance induction. 80% of non-IgE CMA children tolerate baked milk by age 1 year.</p>
+      <p><b>Annual tolerance review</b> prevents unnecessary prolonged avoidance. Many children outgrow CMA but remain on milk-free diet due to inertia. Regular challenges identify tolerance development. Delayed reintroduction increases risk of persistent allergy (immune system "forgets" how to tolerate milk).</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use.</strong> Pathway based on NICE CKS Cow's milk allergy in children (2023), MAP Milk Allergy in Primary Care guideline, iMAP milk ladder, BSACI guidelines. Always adapt to individual patient context and local allergy services.
+</div>
+
+<script>
+const storageKey = 'rgp.alg.cma.v1';
+const flow = document.getElementById('flow');
+const nodes = flow.querySelectorAll('.node');
+const pDone = document.getElementById('pDone');
+const pTotal = document.getElementById('pTotal');
+const pFill = document.getElementById('pFill');
+const resetBtn = document.getElementById('resetBtn');
+
+pTotal.textContent = nodes.length;
+
+function loadState() {
+  const saved = localStorage.getItem(storageKey);
+  if (!saved) return;
+  try {
+    const state = JSON.parse(saved);
+    nodes.forEach((node, i) => {
+      const chk = node.querySelector('input[type="checkbox"]');
+      if (chk && state[i]) {
+        chk.checked = true;
+        node.classList.add('done');
+      }
+    });
+    updateProgress();
+  } catch (e) {}
+}
+
+function saveState() {
+  const state = Array.from(nodes).map(node => {
+    const chk = node.querySelector('input[type="checkbox"]');
+    return chk ? chk.checked : false;
+  });
+  localStorage.setItem(storageKey, JSON.stringify(state));
+}
+
+function updateProgress() {
+  const done = Array.from(nodes).filter(node => {
+    const chk = node.querySelector('input[type="checkbox"]');
+    return chk && chk.checked;
+  }).length;
+  pDone.textContent = done;
+  const pct = (done / nodes.length) * 100;
+  pFill.style.width = pct + '%';
+}
+
+nodes.forEach(node => {
+  const chk = node.querySelector('input[type="checkbox"]');
+  if (chk) {
+    chk.addEventListener('change', () => {
+      if (chk.checked) {
+        node.classList.add('done');
+      } else {
+        node.classList.remove('done');
+      }
+      updateProgress();
+      saveState();
+    });
+  }
+
+  const whyBtn = node.querySelector('.why-btn');
+  const whyDrawer = node.querySelector('.why-drawer');
+  if (whyBtn && whyDrawer) {
+    whyBtn.addEventListener('click', () => {
+      const isOpen = whyBtn.getAttribute('aria-expanded') === 'true';
+      whyBtn.setAttribute('aria-expanded', !isOpen);
+      whyDrawer.classList.toggle('open');
+    });
+  }
+});
+
+resetBtn.addEventListener('click', () => {
+  if (confirm('Reset all progress? This cannot be undone.')) {
+    localStorage.removeItem(storageKey);
+    nodes.forEach(node => {
+      const chk = node.querySelector('input[type="checkbox"]');
+      if (chk) {
+        chk.checked = false;
+        node.classList.remove('done');
+      }
+    });
+    updateProgress();
+  }
+});
+
+loadState();
+</script>
+
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

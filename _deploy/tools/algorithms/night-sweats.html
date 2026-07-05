@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Night Sweats Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#e74c3c;--safety-lt:#fdf3f2;--safety-bd:#f5c6c3;--diagnose:#2980b9;--diagnose-lt:#eef6fc;--diagnose-bd:#aed6f1;--treat:#27ae60;--treat-lt:#eafaf1;--treat-bd:#a9dfbf;--refer:#8e44ad;--refer-lt:#f5eef8;--refer-bd:#d2b4de;--lifestyle:#e67e22;--lifestyle-lt:#fef9f0;--lifestyle-bd:#f8c471;--light:#f8f9fa;--border:#e5e7eb;--text:#1a202c;--muted:#64748b;--radius:12px;--shadow:0 2px 12px rgba(0,0,0,.08);}
+body{font-family:'DM Sans',sans-serif;background:#f0f4f8;color:var(--text);line-height:1.55;font-size:15px;padding:20px 16px 60px;}
+h3{font-family:'Source Serif 4',serif;font-weight:600;}
+.stem-banner{display:flex;align-items:center;gap:14px;background:#1a202c;color:#fff;border-radius:var(--radius);padding:18px 22px;margin-bottom:20px;max-width:780px;margin-left:auto;margin-right:auto;}
+.sb-icon{font-size:2rem;}.stem-banner b{display:block;font-size:1.05rem;font-weight:700;}.stem-banner small{font-size:.82rem;opacity:.7;}
+.alg-progress{max-width:780px;margin:0 auto 24px;background:#fff;border-radius:var(--radius);padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow);}
+.alg-progress span{font-size:.82rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+.pcount{margin-left:auto;font-weight:700;}.pbar{flex:1;height:6px;background:#e5e7eb;border-radius:99px;min-width:80px;}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#27ae60,#2ecc71);border-radius:99px;width:0%;transition:width .4s ease;}
+.reset{margin-left:8px;font-size:.78rem;background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;cursor:pointer;color:var(--muted);}
+.alg-flow{max-width:780px;margin:0 auto;display:flex;flex-direction:column;}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;position:relative;border-left:5px solid var(--border);transition:box-shadow .2s;}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);}.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);}.node[data-type="TREAT"]{border-left-color:var(--treat);}.node[data-type="REFER"]{border-left-color:var(--refer);}.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);}
+.node-num{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:#fff;}
+.node[data-type="SAFETY"] .node-num{background:var(--safety);}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose);}.node[data-type="TREAT"] .node-num{background:var(--treat);}.node[data-type="REFER"] .node-num{background:var(--refer);}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle);}
+.node-head{padding:16px 56px 0 18px;}.node-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:4px;margin-bottom:6px;}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-lt);color:var(--safety);}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-lt);color:var(--diagnose);}.node[data-type="TREAT"] .node-tag{background:var(--treat-lt);color:var(--treat);}.node[data-type="REFER"] .node-tag{background:var(--refer-lt);color:var(--refer);}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-lt);color:var(--lifestyle);}
+.node-head h3{font-size:1rem;line-height:1.3;}
+.node-tick{padding:10px 18px 0;}.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.82rem;color:var(--muted);}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:#27ae60;cursor:pointer;}
+.node.ticked{opacity:.7;}.node.ticked .node-head h3{text-decoration:line-through;color:var(--muted);}
+.node-body{padding:14px 18px 16px;}.node-body>p{font-size:.9rem;color:var(--muted);margin-bottom:12px;}
+.kv{display:grid;grid-template-columns:190px 1fr;gap:1px;background:var(--border);border-radius:8px;overflow:hidden;font-size:.87rem;margin-top:8px;}
+.kv>div{background:#fff;padding:9px 12px;line-height:1.45;}.kv>div:nth-child(odd){background:var(--light);font-weight:600;font-size:.82rem;}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin-top:8px;}
+.rftile{background:var(--safety-lt);border:1px solid var(--safety-bd);border-radius:8px;padding:10px 12px;font-size:.84rem;line-height:1.45;}.rftile b{display:block;color:var(--safety);margin-bottom:2px;}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:8px;}
+.b-card{background:var(--treat-lt);border:1px solid var(--treat-bd);border-radius:8px;padding:12px;font-size:.85rem;}
+.b-cond{font-weight:700;color:var(--treat);margin-bottom:4px;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;}.b-drug{font-weight:700;font-size:.95rem;margin-bottom:4px;}.b-note{color:var(--muted);font-size:.82rem;}
+.ladder{display:flex;flex-direction:column;gap:0;margin-top:8px;border-radius:8px;overflow:hidden;border:1px solid var(--border);}
+.rung{display:flex;align-items:stretch;font-size:.87rem;}.rn{min-width:80px;background:#1a202c;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;text-align:center;padding:10px 6px;}.rt{flex:1;padding:10px 14px;background:#fff;border-bottom:1px solid var(--border);line-height:1.4;}.rung:last-child .rt{border-bottom:none;}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin-top:8px;}
+.lstile{background:var(--lifestyle-lt);border:1px solid var(--lifestyle-bd);border-radius:8px;padding:10px 12px;font-size:.84rem;line-height:1.45;}.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px;}
+.pill{display:inline-block;font-size:.72rem;font-weight:700;border-radius:99px;padding:2px 8px;margin:1px 2px;vertical-align:middle;}
+.pill-red{background:#fde8e8;color:#c0392b;}.pill-purple{background:#f3e8fd;color:#7c3aed;}.pill-blue{background:#e8f0fe;color:#1d4ed8;}.pill-teal{background:#e6faf8;color:#0d9488;}.pill-amber{background:#fef3c7;color:#b45309;}.pill-green{background:#dcfce7;color:#16a34a;}.pill-grey{background:#f3f4f6;color:#6b7280;}
+.why-row{border-top:1px solid var(--border);}.why-btn{width:100%;text-align:left;background:none;border:none;padding:10px 18px;font-size:.82rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;font-weight:600;}.why-btn:hover{background:var(--light);}
+.caret{transition:transform .25s;}.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg);}
+.why-drawer{display:none;padding:12px 18px 16px;font-size:.85rem;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);background:var(--light);}.why-drawer.open{display:block;}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;}
+.alg-foot{max-width:780px;margin:32px auto 0;font-size:.8rem;color:var(--muted);background:#fff;border-radius:var(--radius);padding:14px 18px;border:1px solid var(--border);line-height:1.6;}
+@media(max-width:500px){.kv{grid-template-columns:1fr;}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr;}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+<div class="stem-banner">
+  <div class="sb-icon">🌙</div>
+  <div><b>Night Sweats — Systematic Primary Care Assessment</b>
+  <small>9-step diagnostic and management pathway · UK GP / RCGP SCA preparation</small></div>
+</div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span><span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — night sweats are usually benign (menopause, infection, drugs) but are a key B-symptom that, with weight loss or lymphadenopathy, signals lymphoma or TB. Treat the cause, advise, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Night sweats</span><div class="body">Drenching vs mild, weight loss, fever, lymphadenopathy, menopausal status, drugs, TB risk. Examine nodes, abdomen; consider bloods.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — B-symptoms / serious infection</span><span class="ttl">B-symptoms / serious infection?</span><div class="body">Drenching sweats + weight loss + lymphadenopathy/fever → lymphoma. TB risk (cough, travel, immunosuppression). Endocarditis, HIV.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Investigate / 2WW</span><div class="body">Suspected lymphoma → urgent haematology pathway. TB → investigate/refer.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO red flags</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">Watchful waiting may be appropriate</span><div class="body">Character &amp; context (duration, frequency, severity; travel, infection contact). In the absence of red flags, <b>observe 2–4 weeks</b> before investigating; choose initial tests by the picture.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · 4 cause groups</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Menopause / physiological</div><div class="box act"><span class="ttl">Common</span><div class="body">Vasomotor; HRT/non-hormonal options; reassure if isolated.</div></div></div><div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Infective / drugs</div><div class="box act"><span class="ttl">Common</span><div class="body">Chronic infection (TB, HIV, endocarditis); drugs (antidepressants, hypoglycaemia); alcohol.</div></div></div><div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Malignancy</div><div class="box ix"><span class="ttl">Red flag</span><div class="body">Lymphoma, leukaemia, solid tumours — with B-symptoms.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-purple">2WW</span> <span class="pill pill-grey">NICE NG12</span> night sweats + weight loss/lymphadenopathy/fever → haematological cancer pathway. Investigate TB/HIV if risk; treat menopause.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · treat cause &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Treat the cause &amp; modifiable factors</span><span class="ttl">By underlying group</span><div class="body"><b>Menopausal vasomotor sweats:</b> HRT or non-hormonal options (SSRI/SNRI, clonidine), cool bedroom, breathable bedding, reduce caffeine/alcohol/spicy food. <b>Review culprit drugs</b> (antidepressants, opioids, hypoglycaemia from diabetes treatment). <b>Reduce alcohol</b>; optimise glycaemic control; treat infection. Manage anxiety where relevant.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Watchful waiting with clear return advice</span><div class="body"><b>Review at 2–4 weeks</b> if observing without red flags; persistent drenching sweats warrant bloods (FBC, film, LDH, ESR/CRP, HIV, TB work-up) and examination of nodes/spleen. <b>Urgent</b> if weight loss, fever, new lumps, or B-symptoms develop → haematology pathway. Don't over-reassure unexplained, persistent sweats.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Night sweats with weight loss and lymphadenopathy are lymphoma B-symptoms</b> — examine the nodes and refer urgently; isolated sweats in a menopausal woman can be reassured and treated.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-num">1</div>
+  <div class="node-head"><span class="node-tag">Safety</span><h3>Red Flags — Exclude malignancy and serious infection</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Night sweats have a broad differential. The clinical priority is excluding lymphoma, TB, HIV, and endocarditis before attributing to benign causes.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>B-symptoms triad</b> Night sweats + weight loss >10% + fever → <span class="pill pill-purple">2WW haematology</span> (lymphoma — Hodgkin's, NHL)</div>
+      <div class="rftile"><b>Persistent fever</b> Fever >38°C for >2 weeks + night sweats → <span class="pill pill-red">same-day review</span> (TB, endocarditis, abscess, HIV)</div>
+      <div class="rftile"><b>HIV risk factors</b> Unprotected sex, IDU, MSM, blood transfusion + night sweats → <span class="pill pill-blue">HIV test</span> urgently</div>
+      <div class="rftile"><b>Haemoptysis + night sweats</b> → TB until proven otherwise → same-day chest X-ray + sputum AFB × 3</div>
+      <div class="rftile"><b>New heart murmur + fever</b> Infective endocarditis → <span class="pill pill-red">999 / same-day cardiology</span></div>
+      <div class="rftile"><b>Localised lymphadenopathy</b> Hard, non-tender, enlarged nodes + systemic symptoms → <span class="pill pill-purple">2WW haematology/oncology</span></div>
+      <div class="rftile"><b>Bone pain + night sweats + anaemia</b> → multiple myeloma, metastatic disease → urgent bloods + <span class="pill pill-purple">2WW</span></div>
+      <div class="rftile"><b>Immunocompromised</b> HIV+, transplant, steroids + night sweats → opportunistic infection; same-day specialist review</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Lymphoma (particularly Hodgkin's lymphoma) classically presents with night sweats, fever, and weight loss (B-symptoms) — the majority of patients are aged 15–35 or >65. The 5-year survival for Hodgkin's lymphoma caught early is >90%, dropping significantly with delayed diagnosis. TB remains a common cause of night sweats in the UK, particularly in urban areas and immigrant populations — the UK has one of the highest TB rates in Western Europe. HIV can cause night sweats at any stage — always offer testing. Infective endocarditis is the must-not-miss cardiac cause.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-num">2</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>History — Systematic characterisation of night sweats</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>True night sweats definition</div><div>Soaking through nightwear and bedding requiring a change — distinguish from normal warmth/hot bedroom. "Do you have to change your clothes?"</div>
+      <div>Duration and frequency</div><div>Acute (<2 weeks) vs chronic (>4 weeks); every night vs occasional; severity and distress to sleep</div>
+      <div>Associated fever</div><div>Subjective fever, rigors, chills? Documented temperature? Pattern (hectic, remitting, relapsing-remitting)?</div>
+      <div>Constitutional symptoms</div><div>Weight loss (how much, over what period?); fatigue; anorexia; malaise → B-symptoms (malignancy/TB)</div>
+      <div>Menopausal symptoms</div><div>Women 45–55: hot flushes, irregular periods, mood change, urogenital symptoms → menopause most likely cause</div>
+      <div>Medications</div><div>SSRIs/SNRIs (very common cause); tamoxifen; GnRH analogues; nifedipine; nitrates; steroids (withdrawal); antipyretics masking fever</div>
+      <div>Endocrine symptoms</div><div>Palpitations + sweating + weight loss → hyperthyroidism; episodic hypertension + headache + sweating → phaeochromocytoma (rare)</div>
+      <div>TB risk factors</div><div>TB contact; travel to endemic regions; overcrowded housing; prior TB; immunosuppression</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The definition of "true night sweats" is critical — studies show many patients presenting with "night sweats" are experiencing normal thermoregulation in a warm bedroom, not pathological sweating. The qualifier "soaking through clothes requiring a change" has a much higher positive predictive value for organic pathology. SSRIs and SNRIs are the most common drug cause of night sweats in UK primary care — a medication review before investigation can avoid unnecessary testing. The menopausal history is the highest-yield question in women aged 45–55.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-num">3</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Classification — Identify the aetiology category</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Physiological / environmental</div><div>Warm bedroom, heavy bedding, warm partner, alcohol before bed — history only; no investigation needed</div>
+      <div>Menopause / POI</div><div>Most common cause in women 45–55; declining oestrogen → altered thermoregulation. Also POI in women &lt;40.</div>
+      <div>Drug-induced</div><div>SSRIs, SNRIs (most common), tamoxifen, GnRH agonists, antipsychotics, nitrates, calcium channel blockers</div>
+      <div>Infection</div><div>TB (classic), HIV, infective endocarditis, osteomyelitis, abscess, brucellosis, malaria (travel)</div>
+      <div>Malignancy</div><div>Lymphoma (Hodgkin's, NHL) — most important; leukaemia; solid tumours with systemic features</div>
+      <div>Endocrine</div><div>Hyperthyroidism; hypoglycaemia (nocturnal — check HbA1c in diabetics); phaeochromocytoma (rare but treatable)</div>
+      <div>Other systemic</div><div>Obstructive sleep apnoea (common, underdiagnosed); GORD; anxiety/panic disorder; autoimmune disease (SLE, RA)</div>
+      <div>Idiopathic</div><div>No cause found after thorough evaluation — seen in 10–15% of cases; reassure but monitor</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Menopause and drug side effects account for the majority of night sweats in primary care — the key diagnostic task is efficiently excluding the dangerous minority (lymphoma, TB, HIV). Obstructive sleep apnoea causes night sweats through arousal-induced sympathetic activation and is frequently overlooked — relevant questions include snoring, witnessed apnoeas, daytime sleepiness, and obesity. Nocturnal hypoglycaemia in diabetics on sulphonylureas or insulin is a serious and completely reversible cause that requires medication review. Phaeochromocytoma is rare (1 in 100,000) but is a must-not-miss cause of episodic sweating with headache and hypertension.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-num">4</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Examination — Systematic physical assessment</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Temperature</div><div>Document accurately. Fever + night sweats → infection / haematological malignancy. Afebrile → menopause, drugs, anxiety more likely.</div>
+      <div>Lymph nodes</div><div>Full lymph node examination (cervical, axillary, inguinal, epitrochlear). Hard, non-tender, rubbery nodes → lymphoma</div>
+      <div>Thyroid</div><div>Goitre, tremor, tachycardia, lid lag, exophthalmos → hyperthyroidism</div>
+      <div>Cardiovascular</div><div>New murmur (endocarditis); irregular pulse (AF associated with thyrotoxicosis); BP (phaeochromocytoma: labile hypertension)</div>
+      <div>Chest / respiratory</div><div>Dullness to percussion, bronchial breathing → TB; bilateral hilar lymphadenopathy on CXR → sarcoidosis/lymphoma</div>
+      <div>Abdomen</div><div>Hepatosplenomegaly → haematological malignancy, infections (EBV, CMV, HIV); masses; liver disease stigmata</div>
+      <div>BMI and weight trend</div><div>Document weight. Compare with last recorded weight. >5% loss in 3 months = clinically significant.</div>
+      <div>Skin</div><div>Pallor (anaemia), jaundice, rashes (HIV seroconversion, SLE), Kaposi's sarcoma (HIV), night sweat soaking visible</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Lymph node examination is the highest-yield component of the physical examination for night sweats — rubbery, non-tender, matted nodes in a young person with weight loss and night sweats is Hodgkin's lymphoma until proven otherwise. Hepatosplenomegaly is a key examination finding that markedly increases the probability of haematological malignancy or systemic infection. Documenting and comparing serial weights is more sensitive than asking patients "have you lost weight?" — patients often underestimate significant weight loss.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-num">5</div>
+  <div class="node-head"><span class="node-tag">Diagnose</span><h3>Investigations — Risk-stratified blood panel and imaging</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Baseline (all cases)</div><div><span class="pill pill-blue">FBC + film</span>; <span class="pill pill-blue">CRP / ESR</span>; <span class="pill pill-blue">LFTs / U&Es</span>; <span class="pill pill-blue">TFTs</span>; <span class="pill pill-blue">Blood glucose / HbA1c</span>; <span class="pill pill-blue">LDH</span> (lymphoma marker)</div>
+      <div>Infection screen</div><div><span class="pill pill-blue">HIV test</span> (offer to all — NICE 2016); <span class="pill pill-blue">Chest X-ray</span> (TB, lymphoma, malignancy); blood cultures if febrile</div>
+      <div>TB workup</div><div><span class="pill pill-blue">Sputum AFB × 3</span> (if respiratory symptoms/CXR changes); <span class="pill pill-blue">IGRA / Mantoux</span> (Quantiferon-TB Gold); TB specialist referral</div>
+      <div>Endocrine workup</div><div><span class="pill pill-blue">FSH + LH + oestradiol</span> (women <45 with amenorrhoea); <span class="pill pill-blue">24h urinary catecholamines</span> or plasma metanephrines if phaeochromocytoma suspected</div>
+      <div>Haematology</div><div><span class="pill pill-blue">Blood film</span> (abnormal lymphocytes → lymphoma/leukaemia); <span class="pill pill-blue">protein electrophoresis</span> if myeloma suspected (age >60 + bone pain)</div>
+      <div>Imaging</div><div>Chest X-ray — mandatory if B-symptoms or TB risk. CT chest/abdomen/pelvis — for lymphadenopathy / lymphoma staging (hospital-led)</div>
+      <div>Do NOT routinely</div><div>PET-CT (hospital specialist); bone marrow biopsy (haematology); CT without red flags in young patients — radiation risk vs yield</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">LDH (lactate dehydrogenase) is an inexpensive and underutilised investigation — an elevated LDH in the context of night sweats, weight loss, and lymphadenopathy is a haematological emergency until lymphoma is excluded. HIV testing should be offered to all patients presenting with unexplained night sweats (NICE HIV testing guidelines 2016) — UK guidance recommends routine HIV testing in all general practices in areas of high prevalence. CXR is the single most cost-effective screening investigation for both TB and lymphoma. Phaeochromocytoma is best screened with plasma free metanephrines (sensitivity >97%) — urine catecholamines have lower sensitivity.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-num">6</div>
+  <div class="node-head"><span class="node-tag">Refer</span><h3>Referral Criteria — Urgent, 2WW, and routine pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">Same-day / 999</span></div><div>Fever + sepsis signs; suspected endocarditis; haemodynamic compromise; TB with respiratory failure</div>
+      <div><span class="pill pill-purple">2WW Haematology</span></div><div>B-symptoms (night sweats + weight loss + fever) at any age; lymphadenopathy + systemic symptoms; abnormal blood film · <b>NICE NG12:</b> night sweats with splenomegaly/lymphadenopathy → suspected haematological cancer referral</div>
+      <div><span class="pill pill-purple">2WW Chest</span></div><div>CXR abnormality (hilar lymphadenopathy, infiltrates); haemoptysis + weight loss; suspected TB or lung cancer</div>
+      <div>Urgent TB Service</div><div>Suspected active TB — same-day TB nurse or respiratory referral; barrier nursing until sputum AFB results</div>
+      <div>Endocrinology</div><div>Suspected phaeochromocytoma (episodic hypertension + headache + sweating); confirmed hyperthyroidism not responding to treatment</div>
+      <div>Sleep Clinic</div><div>Suspected OSA (BMI >30, snoring, witnessed apnoeas, Epworth >10) → overnight oximetry + referral</div>
+      <div>Menopause specialist</div><div>HRT contraindicated (breast cancer, VTE history) + severe menopausal symptoms; premature ovarian insufficiency</div>
+      <div>Primary care manage</div><div>Drug-induced (review medications); menopause (HRT); idiopathic after negative workup; lifestyle modification</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The 2WW haematology pathway is specifically designed for lymphoma — do not wait for specialist availability if B-symptoms are present. CT scanning and bone marrow biopsy for staging are time-critical. TB in primary care requires mandatory notifiable disease reporting (Public Health England/UKHSA) and contact tracing — do not delay referral. Identifying OSA as a cause of night sweats is highly impactful — CPAP treatment eliminates both sweating and the significant cardiovascular and mortality risk of untreated OSA.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-num">7</div>
+  <div class="node-head"><span class="node-tag">Treat</span><h3>Treatment — Cause-directed management ladder</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Menopausal night sweats</div>
+        <div class="b-drug">HRT <span class="pill pill-teal">1st line</span></div>
+        <div class="b-note">Oestrogen-based HRT reduces vasomotor symptoms by 75–80%. Combined HRT (oestrogen + progestogen) if uterus intact. Transdermal oestrogen preferred (lower VTE risk). Review annually.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">SSRI-induced</div>
+        <div class="b-drug">Medication review</div>
+        <div class="b-note">Reduce dose or switch to different SSRI/SNRI. If must continue: venlafaxine 37.5mg OD or mirtazapine 15mg nocte as alternatives with lower sweating rates.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">HRT contraindicated (menopause)</div>
+        <div class="b-drug">Venlafaxine <span class="pill pill-teal">2nd line</span></div>
+        <div class="b-note">37.5–75 mg OD. Reduces hot flushes/night sweats by ~50%. Or gabapentin 300 mg TDS (unlicensed but NICE-recommended for breast cancer patients). Clonidine: less effective, more side effects.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Nocturnal hypoglycaemia</div>
+        <div class="b-drug">Medication review</div>
+        <div class="b-note">Reduce sulphonylurea dose; review insulin regimen; bedtime snack; CGM to confirm pattern; endocrinology if complex.</div>
+      </div>
+    </div>
+    <div class="ladder" style="margin-top:14px;">
+      <div class="rung"><span class="rn">Hyperthyroidism</span><span class="rt"><b>Carbimazole 20–40 mg OD</b> (specialist-initiated). Propranolol 40 mg BD–TDS for symptom control while awaiting euthyroidism.</span></div>
+      <div class="rung"><span class="rn">OSA</span><span class="rt"><b>CPAP referral</b> via sleep clinic. Weight loss if BMI >30. CPAP reduces night sweats, CV mortality, and daytime somnolence.</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">HRT is the most effective treatment for menopausal night sweats with an NNT of approximately 3. The safety concerns around HRT have been significantly revised following re-analysis of the WHI study — for most women under 60 or within 10 years of menopause, HRT benefits outweigh risks. Transdermal oestrogen does not increase VTE risk and is preferred over oral oestrogen. Venlafaxine and gabapentin are evidence-based alternatives for women where HRT is contraindicated (breast cancer, personal preference) — NICE menopause guideline NG23 (2023 update) explicitly recommends these. SSRIs are paradoxically both a cause and treatment of menopausal sweats — SNRIs (venlafaxine) have stronger evidence.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-num">8</div>
+  <div class="node-head"><span class="node-tag">Lifestyle</span><h3>Non-Pharmacological — Environmental and behavioural modifications</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Cool sleeping environment</b> Bedroom temp 16–18°C. Fan, cooling mattress pad. Light, breathable cotton bedding. Moisture-wicking nightwear. Simple but highly effective.</div>
+      <div class="lstile"><b>Alcohol avoidance</b> Alcohol is a potent vasodilator — reduces threshold for sweating. Avoid within 3 hours of bedtime. Can reduce night sweats by 30%.</div>
+      <div class="lstile"><b>Caffeine reduction</b> Caffeine increases core body temperature. Avoid after 2pm. Replace with herbal teas (avoid peppermint — can worsen GORD).</div>
+      <div class="lstile"><b>Weight management</b> BMI >30 doubles risk of night sweats from OSA and worsens menopausal symptoms. 5% weight loss = significant improvement.</div>
+      <div class="lstile"><b>CBT for hot flushes</b> CBT specifically designed for menopausal vasomotor symptoms. NICE-recommended. Available via NHS Talking Therapies or online (Menopause CBT programme).</div>
+      <div class="lstile"><b>Layering bedclothes</b> Use layers rather than single thick duvet — allows thermal self-regulation during sleep cycles without full arousal.</div>
+      <div class="lstile"><b>Smoking cessation</b> Smoking increases frequency and severity of menopausal hot flushes by ~60%. Refer to stop-smoking service.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">CBT for menopausal hot flushes (the MENOS trials) has demonstrated significant reduction in hot flush frequency and bother scores — comparable to pharmacological alternatives for women who cannot or choose not to use HRT. It should be offered alongside, not instead of, HRT discussion. Alcohol consistently emerges as a modifiable risk factor in population studies — this is an underemphasised lifestyle intervention. Environmental cooling is inexpensive, safe, and immediately effective for any cause of night sweats while investigations are awaited.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-num">9</div>
+  <div class="node-head"><span class="node-tag">Safety</span><h3>Follow-Up & Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>2 weeks</div><div>Review investigation results; confirm HIV/TB results reviewed; check drug-related cause identified and addressed</div>
+      <div>6 weeks</div><div>HRT/venlafaxine efficacy review; menopausal symptom reassessment (MRS or Greene Climacteric Scale); dose adjustment if needed</div>
+      <div>3–6 months</div><div>If negative workup + no response to treatment → repeat FBC, CRP, CXR; consider CT if new features develop</div>
+      <div>Annual</div><div>HRT annual review: symptoms, breast examination, BP, VTE risk reassessment; menopause specialist review if complex</div>
+      <div><span class="pill pill-red">999 now</span></div><div>High fever + haemodynamic compromise + rigors; new neurological deficit; severe chest pain</div>
+      <div><span class="pill pill-red">Same-day GP</span></div><div>Weight loss accelerating; new lymphadenopathy; haemoptysis; new constitutional symptoms</div>
+      <div>Re-investigate if</div><div>Night sweats persist >3 months with no cause found; B-symptoms develop at any point; new examination findings</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Night sweats with a negative initial workup require a structured safety-net — lymphoma can present insidiously with a normal initial blood panel. A persistent unexplained night sweat at 3 months should prompt repeat investigations and CT consideration, even without new symptoms. HIV test results require active follow-up — some patients do not return for results. The annual HRT review is mandated by NICE NG23 (2023) — cardiovascular risk assessment, breast awareness, and reassessment of ongoing need are all components.</div>
+  </div>
+</div>
+
+</div>
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on: NICE NG23 (Menopause 2023), NICE CKS Night Sweats (2024), NICE NG33 (TB 2016), NICE HIV Testing Guidelines (2016), NICE NG12 (Lymphoma recognition), UKHSA TB guidelines (2023). Always adapt to individual patient context.
+</div>
+<script>
+(function(){
+  const KEY='rgp.alg.night-sweats.v1';
+  const nodes=document.querySelectorAll('.node');
+  const pDone=document.getElementById('pDone');const pFill=document.getElementById('pFill');
+  const total=nodes.length;document.getElementById('pTotal').textContent=total;
+  function save(){const s={};nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb)s[n.dataset.step]=cb.checked;});localStorage.setItem(KEY,JSON.stringify(s));}
+  function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb&&s[n.dataset.step]){cb.checked=true;n.classList.add('ticked');}});}catch(e){}}
+  function upd(){let d=0;nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb&&cb.checked)d++;});pDone.textContent=d;pFill.style.width=((d/total)*100)+'%';}
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');if(cb){cb.addEventListener('change',()=>{n.classList.toggle('ticked',cb.checked);upd();save();});}
+    const btn=n.querySelector('.why-btn');const dr=n.querySelector('.why-drawer');
+    if(btn&&dr){btn.addEventListener('click',()=>{const o=dr.classList.toggle('open');btn.setAttribute('aria-expanded',o);});}
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(cb){cb.checked=false;n.classList.remove('ticked');}
+      const dr=n.querySelector('.why-drawer');const btn=n.querySelector('.why-btn');
+      if(dr)dr.classList.remove('open');if(btn)btn.setAttribute('aria-expanded','false');
+    });upd();localStorage.removeItem(KEY);
+  });
+  load();upd();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

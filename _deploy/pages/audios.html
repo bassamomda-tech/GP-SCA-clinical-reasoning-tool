@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Clinical Audios · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=11" />
+<style>
+  /* ---- Learn on the Go player ---- */
+  .log-wrap{ background:linear-gradient(165deg,#0e3b38,#12504a 55%,#0c302d); border-radius:20px; padding:22px 22px 26px; color:#eafaf6; box-shadow:0 18px 44px rgba(8,40,37,.3); }
+  .log-top{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:4px; }
+  .log-badge{ font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#9fe6d6; }
+  .log-now{ margin:10px 0 4px; }
+  .log-now-label{ font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7fcdbe; opacity:.8; }
+  .log-now-title{ font-family:'Source Serif 4',serif; font-size:23px; font-weight:600; line-height:1.25; color:#fff; margin:2px 0 2px; }
+  .log-now-sub{ font-size:13px; color:#bfeee3; min-height:18px; }
+  .log-progress{ height:6px; border-radius:99px; background:rgba(255,255,255,.16); overflow:visible; margin:16px 0 6px; cursor:pointer; position:relative; touch-action:none; }
+  .log-progress::before{ content:''; position:absolute; left:0; right:0; top:-14px; bottom:-14px; }
+  .log-progress:focus-visible{ outline:2px solid #5fd6bb; outline-offset:4px; }
+  .log-progress-bar{ height:100%; width:0; background:#5fd6bb; border-radius:99px; transition:width .25s linear; position:relative; }
+  .log-progress-knob{ position:absolute; right:-7px; top:50%; transform:translateY(-50%); width:14px; height:14px; border-radius:50%; background:#fff; box-shadow:0 1px 4px rgba(0,0,0,.35); opacity:0; transition:opacity .15s; }
+  .log-progress:hover .log-progress-knob, .log-progress:focus-visible .log-progress-knob{ opacity:1; }
+  .log-btn .log-btn-sec{ position:absolute; font-size:8.5px; font-weight:800; font-family:inherit; }
+  .log-time-row{ display:flex; justify-content:space-between; margin:0 0 12px; }
+  .log-time{ font-size:12px; color:#bfeee3; font-variant-numeric:tabular-nums; letter-spacing:.02em; }
+  .log-time-dur{ color:#8fd9c8; }
+  .log-controls{ display:flex; align-items:center; justify-content:center; gap:14px; }
+  .log-btn{ border:none; cursor:pointer; background:rgba(255,255,255,.12); color:#fff; border-radius:50%; display:grid; place-items:center; transition:.15s; position:relative; }
+  .log-btn:hover{ background:rgba(255,255,255,.22); }
+  .log-btn:active{ transform:scale(.94); }
+  .log-btn svg{ width:24px; height:24px; }
+  .log-btn.sm{ width:48px; height:48px; }
+  .log-btn.sm svg{ width:20px; height:20px; }
+  .log-btn.play{ width:74px; height:74px; background:#fff; color:#0e3b38; box-shadow:0 8px 20px rgba(0,0,0,.25); }
+  .log-btn.play:hover{ background:#eafaf6; }
+  .log-btn.play svg{ width:32px; height:32px; }
+  .log-meta-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:16px; flex-wrap:wrap; }
+  .log-opts{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .log-chip{ font:inherit; font-size:12.5px; font-weight:600; padding:7px 12px; border-radius:99px; border:1px solid rgba(255,255,255,.25); background:transparent; color:#eafaf6; cursor:pointer; transition:.14s; }
+  .log-chip:hover{ background:rgba(255,255,255,.14); }
+  .log-chip.on{ background:#fff; color:#0e3b38; border-color:#fff; }
+  .log-count{ font-size:12.5px; color:#bfeee3; }
+  .log-voice-row{ display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin-top:13px; padding-top:13px; border-top:1px solid rgba(255,255,255,.12); }
+  .log-voice-ic{ font-size:14px; }
+  .log-voice-lbl{ font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:#9fe6d6; }
+  .log-voice-sel{ font:inherit; font-size:13px; padding:7px 11px; border-radius:9px; border:1px solid rgba(255,255,255,.28); background:rgba(255,255,255,.08); color:#eafaf6; max-width:280px; cursor:pointer; }
+  .log-voice-sel option{ color:#12302d; }
+  .log-voice-tip{ font-size:11.5px; color:#9fe6d6; }
+  .log-voice-help{ font:inherit; font-size:12px; font-weight:700; padding:6px 12px; border-radius:8px; border:1px solid rgba(255,255,255,.3); background:rgba(255,255,255,.1); color:#eafaf6; cursor:pointer; }
+  .log-voice-help:hover{ background:rgba(255,255,255,.2); }
+  .log-voice-banner{ margin-top:11px; }
+  .log-voice-banner[hidden]{ display:none; }
+  .lvb-inner{ position:relative; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); border-radius:11px; padding:13px 36px 13px 15px; }
+  .lvb-inner strong{ display:block; font-size:13.5px; color:#fff; margin-bottom:5px; }
+  .lvb-inner p{ margin:0; font-size:12.5px; line-height:1.55; color:#d4f3eb; }
+  .lvb-inner p b{ color:#fff; }
+  .lvb-close{ position:absolute; top:9px; right:10px; font:inherit; font-size:13px; background:none; border:none; color:#9fe6d6; cursor:pointer; }
+  .lvb-close:hover{ color:#fff; }
+  .log-hint{ font-size:12px; color:#a9e2d6; margin-top:12px; line-height:1.5; display:flex; align-items:center; gap:7px; }
+  .log-unsupported{ font-size:13.5px; color:#fff; background:rgba(0,0,0,.18); border-radius:10px; padding:12px 14px; margin-top:14px; display:none; line-height:1.55; }
+
+  /* playlist */
+  .log-list{ margin-top:18px; display:flex; flex-direction:column; gap:8px; }
+  .log-cat-h{ font-size:11px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); margin:16px 0 4px; }
+  .log-item{ border:1px solid var(--line); border-radius:12px; background:var(--surface); overflow:hidden; transition:.13s; }
+  .log-item:hover{ border-color:var(--teal); }
+  .log-track{ display:flex; align-items:center; gap:13px; padding:12px 14px; border:none; border-radius:0; background:transparent; cursor:pointer; transition:.13s; text-align:left; width:100%; font:inherit; }
+  .log-item:hover .log-track{ background:var(--teal-soft); }
+  .log-track.playing{ border-color:var(--teal); background:var(--teal-soft); box-shadow:inset 3px 0 0 var(--teal); }
+  .log-track-ic{ flex-shrink:0; width:38px; height:38px; border-radius:9px; display:grid; place-items:center; font-size:17px; background:var(--bg-soft); }
+  .log-track.playing .log-track-ic{ background:var(--teal); color:#fff; }
+  .log-track-body{ flex:1; min-width:0; }
+  .log-track-t{ font-size:14.5px; font-weight:700; color:var(--ink); line-height:1.25; }
+  .log-track-s{ font-size:12px; color:var(--muted); margin-top:1px; }
+  .log-track-dur{ flex-shrink:0; font-size:11.5px; font-weight:700; color:var(--muted); font-variant-numeric:tabular-nums; }
+  .log-track.playing .log-track-dur{ color:var(--teal); }
+  .log-script-toggle{ display:flex; align-items:center; justify-content:flex-end; gap:5px; width:100%; border:none; background:transparent; border-top:1px dashed var(--line); padding:7px 14px; cursor:pointer; font:inherit; font-size:11.5px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:var(--muted); transition:.13s; }
+  .log-script-toggle:hover{ color:var(--teal); background:var(--bg-soft); }
+  .lst-chev{ width:14px; height:14px; transition:transform .18s; }
+  .log-script-toggle.open .lst-chev{ transform:rotate(180deg); }
+  .log-script-toggle.open{ color:var(--teal); }
+  .log-script{ padding:4px 16px 15px; background:var(--bg-soft); }
+  .log-script p{ margin:0; font-size:13px; line-height:1.62; color:var(--ink-2); }
+  .dir-rail .dir-check.on{ background:var(--teal-soft); }
+  .dir-rail .dir-check.on span:first-child{ color:var(--teal) !important; font-weight:700; }
+  #logRailToggle{ display:none; }
+  @media (max-width:860px){ #logRailToggle{ display:inline-flex; } }
+</style>
+</head>
+<body>
+<button class="sb-toggle" aria-label="Open menu">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__audios"></aside>
+  <main class="main">
+
+<section class="page-hero" data-screen-label="Audios hero">
+  <div class="page-hero-inner">
+    <span class="eyebrow">Clinical Audios</span>
+    <h1>Learn on the go — <em>hands-free</em> clinical audio</h1>
+    <p>A library of 100 common GP topics — each a tight clinical briefing covering the history, examination, investigations, a plain-language explanation of the diagnosis, and management — read aloud for the commute, the school run or the gym. No downloads: your device narrates each one hands-free, so you can keep your eyes on the road. Adjust speed, autoplay through a playlist, and pick up where you left off. Plus the UK primary-care podcasts worth subscribing to.</p>
+  </div>
+</section>
+
+<div class="page-body">
+  <section class="page-section">
+    <h2><span class="eyebrow">Learn on the go</span>Hands-free player</h2>
+
+    <div class="dir-layout" id="logLayout">
+      <aside class="dir-rail" id="logRail"></aside>
+      <div class="dir-main">
+    <div class="dir-toolbar"><button class="dir-filters-toggle" id="logRailToggle" type="button"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/></svg> Filter by category</button></div>
+    <div class="log-wrap" id="logPlayer">
+      <div class="log-top">
+        <span class="log-badge">▶ Now playing</span>
+        <span class="log-count" id="logCount"></span>
+      </div>
+      <div class="log-now">
+        <div class="log-now-label" id="logNowLabel">Ready when you are</div>
+        <div class="log-now-title" id="logNowTitle">Pick a scenario or update below</div>
+        <div class="log-now-sub" id="logNowSub">Tap any track, or hit play to listen to the whole playlist back-to-back.</div>
+      </div>
+
+      <div class="log-progress" id="logProgress" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" title="Click to jump to any point"><div class="log-progress-bar" id="logBar"><span class="log-progress-knob"></span></div></div>
+      <div class="log-time-row"><span class="log-time" id="logTime">0:00</span><span class="log-time log-time-dur" id="logDur">0:00</span></div>
+
+      <div class="log-controls">
+        <button class="log-btn sm" id="logPrev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6zM20 5v14l-11-7z"/></svg></button>
+        <button class="log-btn sm" id="logBack" type="button" aria-label="Restart track"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></button>
+        <button class="log-btn sm" id="logRew" type="button" aria-label="Back 15 seconds"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 6a8 8 0 1 1-7 4"/><path d="M4 4v5h5"/></svg><b class="log-btn-sec">15</b></button>
+        <button class="log-btn play" id="logPlay" type="button" aria-label="Play or pause"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        <button class="log-btn sm" id="logFwd" type="button" aria-label="Forward 15 seconds"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 6a8 8 0 1 0 7 4"/><path d="M20 4v5h-5"/></svg><b class="log-btn-sec">15</b></button>
+        <button class="log-btn sm" id="logStop" type="button" aria-label="Stop"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg></button>
+        <button class="log-btn sm" id="logNext" type="button" aria-label="Next"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 5h2v14h-2zM4 5l11 7-11 7z"/></svg></button>
+      </div>
+
+      <div class="log-meta-row">
+        <div class="log-opts">
+          <span style="font-size:12px;color:#bfeee3">Speed</span>
+          <button class="log-chip on" data-rate="0.75" type="button">Normal</button>
+          <button class="log-chip" data-rate="1" type="button">Fast</button>
+          <button class="log-chip" data-rate="1.25" type="button">1.25×</button>
+          <button class="log-chip" data-rate="1.5" type="button">1.5×</button>
+        </div>
+        <button class="log-chip" id="logAutoplay" type="button" aria-pressed="true">↻ Autoplay: on</button>
+      </div>
+      <div class="log-voice-row">
+        <span class="log-voice-ic">🎙️</span>
+        <label for="logVoice" class="log-voice-lbl">Voice</label>
+        <select id="logVoice" class="log-voice-sel" aria-label="Narration voice"></select>
+        <span class="log-voice-tip" id="logVoiceTip"></span>
+        <button class="log-voice-help" id="logVoiceHelp" type="button">Get a natural voice →</button>
+      </div>
+      <div class="log-voice-banner" id="logVoiceBanner" hidden>
+        <div class="lvb-inner">
+          <strong id="lvbTitle">Using a basic device voice</strong>
+          <p id="lvbBody"></p>
+          <button class="lvb-close" id="lvbClose" type="button" aria-label="Dismiss">✕</button>
+        </div>
+      </div>
+      <div class="log-hint">🚗 Hands-free: start a playlist before you set off — it advances automatically. Keep your eyes on the road.</div>
+      <div class="log-unsupported" id="logUnsupported">Your browser can't read these aloud (no speech support). Try Chrome or Safari, or use the podcast links below for ready-made audio.</div>
+    </div>
+
+    <div class="log-list" id="logList"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Listen now · external</span>UK primary-care podcasts &amp; audio platforms</h2>
+    <p style="font-size:14px;color:var(--ink-2);line-height:1.6;max-width:74ch;margin:-2px 0 4px">While our own audio feed is in build, here are the established UK general-practice and NICE-aligned podcasts worth subscribing to — free, CPD-countable, and updated regularly. Opens in a new tab.</p>
+    <div class="page-grid">
+      <a class="page-card" style="text-decoration:none;color:inherit" href="https://gpnotebook.com/en-GB/podcast" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow">🎧 GPnotebook</div>
+        <h3>GPnotebook Podcast</h3>
+        <p>Bite-sized, regular primary-care chats — clinical tips and hot topics. Earn CPD while you listen.</p>
+        <span class="page-card-cta">Open gpnotebook.com/podcast ↗</span>
+      </a>
+      <a class="page-card" style="text-decoration:none;color:inherit" href="https://www.nbmedical.com/podcast" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow">🎧 NB Medical</div>
+        <h3>NB Hot Topics Podcast</h3>
+        <p>The team behind the Hot Topics GP course distil the latest practice-changing evidence and guidelines.</p>
+        <span class="page-card-cta">Open nbmedical.com/podcast ↗</span>
+      </a>
+      <a class="page-card" style="text-decoration:none;color:inherit" href="https://pckb.org/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow">🎧 PCKB</div>
+        <h3>Primary Care Knowledge Boost</h3>
+        <p>GPs Lisa &amp; Sara interview specialists, case-by-case — diagnosis, pitfalls and management for primary care.</p>
+        <span class="page-card-cta">Open pckb.org ↗</span>
+      </a>
+      <a class="page-card" style="text-decoration:none;color:inherit" href="https://egplearning.co.uk/tag/podcast/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow">🎧 eGPlearning</div>
+        <h3>eGPlearning Podblast</h3>
+        <p>Technology-enhanced primary care — tools, apps, workflow and clinical updates for the modern GP.</p>
+        <span class="page-card-cta">Open egplearning.co.uk ↗</span>
+      </a>
+      <a class="page-card" style="text-decoration:none;color:inherit" href="https://www.bmj.com/podcasts" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow">🎧 BMJ</div>
+        <h3>BMJ Podcasts</h3>
+        <p>Talk Medicine, Best Practice and education podcasts — research and clinical reviews from the BMJ.</p>
+        <span class="page-card-cta">Open bmj.com/podcasts ↗</span>
+      </a>
+      <a class="page-card" style="text-decoration:none;color:inherit" href="https://fairhealth.org.uk/podcasts/" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow">🎧 Fairhealth</div>
+        <h3>Finding Fairhealth</h3>
+        <p>Health inequalities and the social determinants of health in UK practice — essential SCA context.</p>
+        <span class="page-card-cta">Open fairhealth.org.uk ↗</span>
+      </a>
+      <a class="page-card" style="text-decoration:none;color:inherit" href="https://www.bbc.co.uk/programmes/b019dl1b" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow">🎧 BBC Radio 4</div>
+        <h3>Inside Health</h3>
+        <p>Evidence-based take on health stories in the news — useful for the questions patients bring you.</p>
+        <span class="page-card-cta">Open BBC Inside Health ↗</span>
+      </a>
+      <a class="page-card" style="text-decoration:none;color:inherit" href="https://podcasts.apple.com/gb/podcast/primary-care-knowledge-boost/id1455369089" target="_blank" rel="noopener noreferrer">
+        <div class="page-card-eyebrow">🎧 Apple / Spotify</div>
+        <h3>Find more on your podcast app</h3>
+        <p>Search "general practice", "GP", "NICE" or "primary care" on Apple Podcasts or Spotify for dozens more UK shows.</p>
+        <span class="page-card-cta">Browse on Apple Podcasts ↗</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Format</span>How the audios are built</h2>
+    <div class="page-grid">
+      <div class="page-card">
+        <div class="page-card-eyebrow">AI narrated</div>
+        <h3>Fast, current, evidence-anchored</h3>
+        <p>Daily / weekly NICE CKS update digests narrated by AI voice. Source citations on screen. 6–10 min typical.</p>
+      </div>
+      <div class="page-card">
+        <div class="page-card-eyebrow">Human recorded</div>
+        <h3>UK GP voice for "how I'd do it"</h3>
+        <p>Practising UK GPs walk through their actual reasoning on hard cases. Tone is colleague-to-colleague, not lecture.</p>
+      </div>
+      <div class="page-card">
+        <div class="page-card-eyebrow">Topic streams</div>
+        <h3>Subscribe by clinical interest</h3>
+        <p>Cardiovascular · Respiratory · MH · Endocrine · Women's health · Acute. Pick the streams you want.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <h2><span class="eyebrow">Coming soon</span>Subscribe to the audio feed</h2>
+    <div class="page-card" style="max-width:600px;background:var(--teal);color:#d5e6e4;border-color:var(--teal-2)">
+      <div class="page-card-eyebrow" style="color:#f3ede0">Podcast launch — Q2 2026</div>
+      <h3 style="color:#fff">Spotify · Apple Podcasts · RSS</h3>
+      <p style="color:#d5e6e4">Get notified the moment the audio feed goes live. No spam — only the launch email.</p>
+      <button style="margin-top:8px;background:#fff;color:var(--teal);border:none;padding:10px 16px;border-radius:8px;font-weight:600;cursor:pointer" onclick="window.RGP_openAuth&&window.RGP_openAuth('signup')">Join the waitlist →</button>
+    </div>
+  </section>
+</div>
+
+</main></div>
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/audio-scripts-1.js"></script>
+<script src="../assets/audio-scripts-2.js"></script>
+<script src="../assets/audio-scripts-3.js"></script>
+<script src="../assets/audio-scripts-4.js"></script>
+<script src="../assets/audio-scripts-5.js"></script>
+<script>
+/* ---- Learn on the Go: hands-free TTS player ----
+   Narrates common GP scenarios + the latest guideline updates using the
+   browser's SpeechSynthesis. No downloads/streaming. Remembers last track +
+   position in localStorage so a refresh resumes where you were. */
+(function(){
+  // Library scripts live in external data files (assets/audio-scripts-*.js)
+  // loaded before this script; each pushes onto window.RGP_AUDIO_TRACKS.
+  var TRACKS = (window.RGP_AUDIO_TRACKS || []);
+
+  var $ = function(s){ return document.querySelector(s); };
+  var list = $('#logList');
+  var synth = window.speechSynthesis;
+  var supported = !!synth && 'SpeechSynthesisUtterance' in window;
+  var STORE = 'rgp.audio.lastTrack.v1';
+
+  var state = { i:-1, playing:false, rate:0.75, autoplay:true, charPos:0 };
+  try{ var saved = JSON.parse(localStorage.getItem(STORE)||'null'); if(saved){ state.rate=saved.rate||0.75; } }catch(e){}
+
+  if(!supported){ $('#logUnsupported').style.display='block'; }
+
+  // ---- build playlist ----
+  var catSlug = function(s){ return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); };
+  var cats = [];
+  TRACKS.forEach(function(t){ if(cats.indexOf(t.cat)<0) cats.push(t.cat); });
+  list.innerHTML = cats.map(function(cat){
+    var rows = TRACKS.filter(function(t){return t.cat===cat;}).map(function(t){
+      var idx = TRACKS.indexOf(t);
+      return '<div class="log-item" data-item="'+idx+'" data-cat="'+catSlug(cat)+'">'+
+        '<button class="log-track" data-i="'+idx+'" type="button">'+
+          '<span class="log-track-ic">'+t.ic+'</span>'+
+          '<span class="log-track-body"><span class="log-track-t">'+t.title+'</span><span class="log-track-s">'+t.sub+'</span></span>'+
+          '<span class="log-track-dur">'+t.dur+'</span>'+
+        '</button>'+
+        '<button class="log-script-toggle" data-toggle="'+idx+'" type="button" aria-expanded="false" aria-label="Show script">'+
+          '<span class="lst-txt">Script</span>'+
+          '<svg class="lst-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>'+
+        '</button>'+
+        '<div class="log-script" id="script-'+idx+'" hidden><p>'+esc(t.body)+'</p></div>'+
+      '</div>';
+    }).join('');
+    return '<div class="log-cat-h" data-cat="'+catSlug(cat)+'" id="acat-'+catSlug(cat)+'">'+cat+'</div>'+rows;
+  }).join('');
+  $('#logCount').textContent = TRACKS.length+' briefings';
+  // ---- left category rail: filter the playlist by category ----
+  var rail = document.getElementById('logRail');
+  var layout = document.getElementById('logLayout');
+  function applyAudioFilter(slug){
+    list.querySelectorAll('.log-cat-h').forEach(function(h){ h.style.display=(slug==='all'||h.getAttribute('data-cat')===slug)?'':'none'; });
+    list.querySelectorAll('.log-item').forEach(function(it){ it.style.display=(slug==='all'||it.getAttribute('data-cat')===slug)?'':'none'; });
+    if(rail){ rail.querySelectorAll('[data-acat]').forEach(function(a){ a.classList.toggle('on', a.dataset.acat===slug); }); }
+  }
+  if(rail){
+    rail.innerHTML = '<div class="dir-rail-top"><span class="dir-rail-title">Filter by category</span></div>'
+      + '<div class="dir-rail-sec"><div class="dir-rail-list">'
+      + '<a class="dir-check on" href="#" data-acat="all"><span style="flex:1;color:var(--ink);font-size:13px;font-weight:600">All categories</span><span class="dir-check-n">'+TRACKS.length+'</span></a>'
+      + cats.map(function(cat){
+          var n = TRACKS.filter(function(t){return t.cat===cat;}).length;
+          return '<a class="dir-check" href="#acat-'+catSlug(cat)+'" data-acat="'+catSlug(cat)+'">'
+            + '<span style="flex:1;color:var(--ink);font-size:13px">'+cat+'</span>'
+            + '<span class="dir-check-n">'+n+'</span></a>';
+        }).join('')
+      + '</div></div>';
+    rail.querySelectorAll('a[data-acat]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        applyAudioFilter(a.dataset.acat);
+        if(layout){ window.scrollTo(0, layout.getBoundingClientRect().top + window.pageYOffset - 90); }
+        rail.classList.remove('open');
+      });
+    });
+    var railToggle = document.getElementById('logRailToggle');
+    if(railToggle){ railToggle.addEventListener('click', function(){ rail.classList.toggle('open'); }); }
+  }
+  // Deep-link from The Compendium (#acat-<slug>): filter to that category
+  if(location.hash && /^#acat-/.test(location.hash)){
+    applyAudioFilter(location.hash.slice(6));
+    if(layout){ window.scrollTo(0, layout.getBoundingClientRect().top + window.pageYOffset - 90); }
+  }
+
+  list.querySelectorAll('.log-track').forEach(function(b){
+    b.addEventListener('click', function(){ playIndex(parseInt(b.dataset.i,10)); });
+  });
+  list.querySelectorAll('.log-script-toggle').forEach(function(b){
+    b.addEventListener('click', function(){
+      var id = b.dataset.toggle;
+      var panel = document.getElementById('script-'+id);
+      var open = panel.hasAttribute('hidden');
+      if(open){ panel.removeAttribute('hidden'); } else { panel.setAttribute('hidden',''); }
+      b.setAttribute('aria-expanded', String(open));
+      b.classList.toggle('open', open);
+    });
+  });
+
+  function esc(s){ return String(s==null?'':s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
+  function highlight(){
+    list.querySelectorAll('.log-track').forEach(function(b){
+      b.classList.toggle('playing', parseInt(b.dataset.i,10)===state.i);
+    });
+  }
+  function setNow(t){
+    $('#logNowLabel').textContent = t ? t.cat : 'Ready when you are';
+    $('#logNowTitle').textContent = t ? t.title : 'Pick a scenario or update below';
+    $('#logNowSub').textContent = t ? t.sub : 'Tap any track, or hit play to listen to the whole playlist back-to-back.';
+  }
+  function setBar(p){ $('#logBar').style.width = (Math.max(0,Math.min(1,p))*100)+'%'; }
+
+  /* ---- elapsed / total time display ----
+     File mode uses the real audio duration; TTS mode estimates duration from
+     the character count and speaking rate, and advances a manual clock while
+     speech is actively playing (paused on pause). */
+  function fmtTime(s){
+    if(s==null || isNaN(s) || !isFinite(s)) return '0:00';
+    s = Math.max(0, Math.round(s));
+    var m = Math.floor(s/60), ss = s%60;
+    return m+':'+(ss<10?'0':'')+ss;
+  }
+  var ttsTotal = 0, ttsElapsed = 0;
+  // TTS narration runs at roughly 12.5 characters/second at rate 1.0 for a
+  // natural en-GB voice; scaled by the chosen rate.
+  function estTtsSeconds(text, rate){ return text.length / (12.5 * (rate||1)); }
+  function setTime(cur, dur){
+    $('#logTime').textContent = fmtTime(cur);
+    $('#logDur').textContent = fmtTime(dur);
+  }
+  setInterval(function(){
+    if(window.__logDragging) return;
+    if(mode==='file'){
+      if(audioEl.duration && isFinite(audioEl.duration)){ setTime(audioEl.currentTime, audioEl.duration); }
+    } else if(mode==='tts'){
+      if(supported && synth.speaking && !synth.paused){
+        ttsElapsed = Math.min(ttsElapsed + 0.25, ttsTotal);
+        setTime(ttsElapsed, ttsTotal);
+        if(ttsTotal){ setBar(ttsElapsed/ttsTotal); }
+      }
+    }
+  }, 250);
+  function setPlayIcon(playing){
+    try{ window.__rgpAudioActive = !!playing; }catch(e){}
+    $('#logPlay').innerHTML = playing
+      ? '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>'
+      : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+  }
+
+  // Dedicated <audio> element for tracks that ship a real recording (audioUrl).
+  // When a track has no file we fall back to the browser's text-to-speech.
+  var audioEl = new Audio();
+  audioEl.preload = 'none';
+  var mode = null; // 'file' | 'tts'
+
+  function stopAll(){
+    if(supported) synth.cancel();
+    try{ audioEl.pause(); }catch(e){}
+    if(ttsKeepAlive){ clearInterval(ttsKeepAlive); ttsKeepAlive = null; }
+    mode = null;
+  }
+
+  audioEl.addEventListener('loadedmetadata', function(){
+    if(mode==='file' && audioEl.duration && isFinite(audioEl.duration)){ setTime(audioEl.currentTime, audioEl.duration); }
+  });
+  audioEl.addEventListener('timeupdate', function(){
+    if(mode==='file' && audioEl.duration){ setBar(audioEl.currentTime/audioEl.duration); setTime(audioEl.currentTime, audioEl.duration); }
+  });
+  audioEl.addEventListener('ended', function(){
+    if(mode!=='file') return;
+    setBar(1);
+    if(state.autoplay && state.i < TRACKS.length-1){ playIndex(state.i+1); }
+    else { state.playing=false; setPlayIcon(false); }
+  });
+  audioEl.addEventListener('error', function(){
+    // file failed to load — fall back to narration so the user still hears something
+    if(mode==='file'){ mode=null; if(supported) speak(TRACKS[state.i]); }
+  });
+
+  var utter = null;
+  var ttsKeepAlive = null;
+  /* ---- voice quality: prefer natural / neural voices ----
+     Browser default voices sound robotic. Modern Chrome/Edge ship far better
+     "Natural"/"Online (Natural)" and Google neural voices — we rank and pick
+     the best en-GB one, and let the user override with the picker. */
+  var VOICE_STORE = 'rgp.audio.voice.v1';
+  var chosenVoiceURI = null;
+  try{ chosenVoiceURI = localStorage.getItem(VOICE_STORE) || null; }catch(e){}
+
+  function rankVoice(v){
+    var n = (v.name||'')+' '+(v.voiceURI||'');
+    var score = 0;
+    if(/en-GB/i.test(v.lang)) score += 40; else if(/^en[-_]/i.test(v.lang)) score += 12;
+    if(/siri/i.test(n)) score += 34;                // iOS Siri voices — most human
+    if(/natural/i.test(n)) score += 30;             // MS "Online (Natural)"
+    if(/enhanced|premium/i.test(n)) score += 26;    // iOS/macOS downloadable enhanced voices
+    if(/\bgoogle\b/i.test(n)) score += 22;          // Google neural (Android/Chrome)
+    if(/neural/i.test(n)) score += 20;
+    if(/online/i.test(n)) score += 10;
+    if(/libby|sonia|ryan|hazel|george|thomas|maisie|abbi|bella|elliot|ollie|alfie|kate|serena|stephanie|daniel|arthur|martha/i.test(n)) score += 8;
+    if(/female|woman/i.test(n)) score += 1;
+    if(/compact|eloquence|espeak|robot|fallback/i.test(n)) score -= 30; // basic robotic voices
+    if(v.localService === false) score += 6;
+    return score;
+  }
+  function allVoices(){ return (synth ? synth.getVoices() : []) || []; }
+  function pickBestVoice(){
+    var vs = allVoices().slice();
+    if(!vs.length) return null;
+    if(chosenVoiceURI){ var c = vs.filter(function(v){return v.voiceURI===chosenVoiceURI;})[0]; if(c) return c; }
+    vs.sort(function(a,b){ return rankVoice(b)-rankVoice(a); });
+    return vs[0];
+  }
+
+  /* ---- speak more naturally: expand medical abbreviations & shorthand so the
+     synthesiser pronounces them correctly, and add light sentence pauses. */
+  function normalizeForSpeech(text){
+    var s = ' '+text+' ';
+    var map = [
+      [/\bNICE\b/g, 'NICE'],
+      [/\bNG(\d+)\b/g, 'guideline N G $1'],
+      [/\bCG(\d+)\b/g, 'guideline C G $1'],
+      [/\bCKS\b/g, 'C K S'],
+      [/\bCHA2DS2-VASc\b/gi, 'CHADS-VASc'],
+      [/\bORBIT\b/g, 'ORBIT'],
+      [/\bHbA1c\b/gi, 'H B A one C'],
+      [/\beGFR\b/g, 'e G F R'],
+      [/\bACR\b/g, 'A C R'],
+      [/\bSGLT2\b/gi, 'S G L T 2'],
+      [/\bDPP-4\b/gi, 'D P P 4'],
+      [/\bGLP-1\b/gi, 'G L P 1'],
+      [/\bACE\b/g, 'A C E'],
+      [/\bARB\b/g, 'A R B'],
+      [/\bARBs\b/g, 'A R Bs'],
+      [/\bMRA\b/g, 'M R A'],
+      [/\bRAAS\b/g, 'raas'],
+      [/\bTSH\b/g, 'T S H'],
+      [/\bMART\b/g, 'mart'],
+      [/\bAIR\b/g, 'A I R'],
+      [/\bICS\b/g, 'I C S'],
+      [/\bLABA\b/g, 'lab-a'],
+      [/\bLAMA\b/g, 'lah-ma'],
+      [/\bSABA\b/g, 'sab-a'],
+      [/\bFEV1\b/gi, 'F E V one'],
+      [/\bFVC\b/g, 'F V C'],
+      [/\bDXA\b/g, 'dexa'],
+      [/\bFRAX\b/g, 'frax'],
+      [/\bNOGG\b/g, 'nog'],
+      [/\bBSR\b/g, 'B S R'],
+      [/\bBTS\b/g, 'B T S'],
+      [/\bSIGN\b/g, 'SIGN'],
+      [/\bSSRI\b/g, 'S S R I'],
+      [/\bSNRI\b/g, 'S N R I'],
+      [/\bDOAC\b/g, 'doe-ack'],
+      [/\bDOACs\b/g, 'doe-acks'],
+      [/\bUTI\b/g, 'U T I'],
+      [/\bCOPD\b/g, 'C O P D'],
+      [/\bHFrEF\b/g, 'heart failure with reduced ejection fraction'],
+      [/\bPHQ-9\b/gi, 'P H Q 9'],
+      [/\bT2DM\b/g, 'type 2 diabetes'],
+      [/\bIV\b/g, 'intravenous'],
+      [/\bECG\b/g, 'E C G'],
+      [/\b999\b/g, 'nine nine nine'],
+      [/\bU&E\b/gi, 'U and E']
+    ];
+    map.forEach(function(p){ s = s.replace(p[0], p[1]); });
+    // a touch of breathing room after sentences/colons for natural pacing
+    s = s.replace(/([.;:])\s+/g, '$1 ');
+    return s.trim();
+  }
+
+  // TTS playback state (module scope so we can seek into it)
+  var tts = { chunks:[], offsets:[], total:0, voice:null, idx:0 };
+
+  function speak(track){
+    if(!supported){ $('#logUnsupported').style.display='block'; state.playing=false; setPlayIcon(false); return; }
+    synth.cancel();
+    mode = 'tts';
+    var spoken = normalizeForSpeech(track.title+'. '+track.body);
+    tts.total = spoken.length;
+    ttsTotal = estTtsSeconds(spoken, state.rate); ttsElapsed = 0; setTime(0, ttsTotal);
+    tts.voice = pickBestVoice();
+
+    // Split long narration into sentence-sized chunks and queue them. Long
+    // single utterances are unreliable (Chrome/Safari cut out after ~15s),
+    // so chunking keeps playback smooth on every briefing including the 5-min one.
+    var raw = spoken.match(/[^.!?]+[.!?]+(?:\s|$)|.+$/g) || [spoken];
+    // Hard-cap chunk length: a decimal (e.g. "4.5") or an abbreviation can defeat
+    // the sentence split and collapse a large block into one chunk, which then
+    // breaks seeking (a seek into that span snaps to its start). Split any chunk
+    // over the cap at the nearest comma, then space, so no chunk dominates the timeline.
+    var CAP = 260;
+    function splitLong(s){
+      if(s.length <= CAP) return [s];
+      var out = [], rest = s;
+      while(rest.length > CAP){
+        var slice = rest.slice(0, CAP);
+        var cut = slice.lastIndexOf(', ');
+        if(cut < CAP*0.5) cut = slice.lastIndexOf(' ');
+        if(cut < CAP*0.4) cut = CAP - 1;       // no good break — hard cut
+        else if(rest.charAt(cut) === ',') cut += 1; // keep the comma with the left part
+        out.push(rest.slice(0, cut+1));
+        rest = rest.slice(cut+1).replace(/^\s+/, '');
+      }
+      if(rest) out.push(rest);
+      return out;
+    }
+    var expanded = [];
+    raw.forEach(function(c){ splitLong(c).forEach(function(p){ expanded.push(p); }); });
+    // merge tiny fragments so each chunk is a sensible length (but never exceed CAP)
+    var merged = [], buf = '';
+    expanded.forEach(function(c){
+      if(buf && (buf + c).length < 200){ buf += c; }
+      else { if(buf) merged.push(buf); buf = c; }
+    });
+    if(buf) merged.push(buf);
+    if(!merged.length) merged = [spoken];
+    tts.chunks = merged;
+    tts.offsets = []; var run = 0;
+    merged.forEach(function(c){ tts.offsets.push(run); run += c.length; });
+
+    startKeepAlive();
+    speakFrom(0);
+  }
+
+  function startKeepAlive(){
+    clearInterval(ttsKeepAlive);
+    ttsKeepAlive = setInterval(function(){
+      if(mode!=='tts'){ clearInterval(ttsKeepAlive); ttsKeepAlive=null; return; }
+      if(synth.speaking && !synth.paused){ try{ synth.resume(); }catch(e){} }
+    }, 9000);
+  }
+
+  // Speak the queued chunks starting at index `from`. Used both for normal
+  // playback and for seeking (jump to the chunk nearest the target time).
+  function speakFrom(from){
+    if(!supported) return;
+    synth.cancel();
+    tts.idx = from;
+    function runNext(){
+      if(mode!=='tts') return;
+      if(tts.idx >= tts.chunks.length){
+        setBar(1); setTime(ttsTotal, ttsTotal);
+        clearInterval(ttsKeepAlive); ttsKeepAlive = null;
+        if(state.autoplay && state.i < TRACKS.length-1){ playIndex(state.i+1); }
+        else { state.playing=false; setPlayIcon(false); }
+        return;
+      }
+      var i = tts.idx;
+      var u = new SpeechSynthesisUtterance(tts.chunks[i]);
+      u.rate = state.rate; u.pitch = 1; u.lang = (tts.voice && tts.voice.lang) || 'en-GB';
+      if(tts.voice) u.voice = tts.voice;
+      u.onboundary = function(e){
+        if(e.charIndex!=null){ var p=(tts.offsets[i]+e.charIndex)/tts.total; setBar(p); ttsElapsed = p*ttsTotal; }
+      };
+      u.onend = function(){ if(mode==='tts' && tts.idx===i){ tts.idx++; runNext(); } };
+      utter = u;
+      synth.speak(u);
+    }
+    // Chrome/Safari ignore speak() fired synchronously right after cancel(),
+    // which made seeking to a late point produce silence. A short reset delay
+    // lets the engine clear before we restart from the new chunk.
+    setTimeout(runNext, 60);
+  }
+
+  // Jump to a fraction (0..1) of the current track.
+  function seekTo(p){
+    p = Math.max(0, Math.min(0.999, p));
+    if(state.i<0) return;
+    if(mode==='file'){
+      if(audioEl.duration && isFinite(audioEl.duration)){
+        audioEl.currentTime = p*audioEl.duration;
+        if(audioEl.paused && state.playing) audioEl.play();
+      }
+      return;
+    }
+    // TTS: find the chunk whose character range contains the target, speak from it
+    if(!tts.chunks.length){ if(state.i>=0) playIndex(state.i); return; }
+    var targetChar = p*tts.total, ci = 0;
+    for(var k=0;k<tts.offsets.length;k++){ if(tts.offsets[k]<=targetChar) ci=k; else break; }
+    mode='tts'; state.playing=true; setPlayIcon(true);
+    setBar(tts.offsets[ci]/tts.total); ttsElapsed = (tts.offsets[ci]/tts.total)*ttsTotal; setTime(ttsElapsed, ttsTotal);
+    startKeepAlive();
+    speakFrom(ci);
+  }
+  function skip(seconds){
+    if(state.i<0 || !ttsTotalOrFile()) return;
+    if(mode==='file' && audioEl.duration){ seekTo((audioEl.currentTime+seconds)/audioEl.duration); }
+    else if(ttsTotal){ seekTo((ttsElapsed+seconds)/ttsTotal); }
+  }
+  function ttsTotalOrFile(){ return mode==='file' ? (audioEl.duration||0) : ttsTotal; }
+
+  function playIndex(i){
+    if(i<0||i>=TRACKS.length) return;
+    stopAll();
+    state.i = i; state.playing = true;
+    var t = TRACKS[i];
+    setNow(t); highlight(); setBar(0); setPlayIcon(true); setTime(0, 0);
+    try{ localStorage.setItem(STORE, JSON.stringify({i:i, rate:state.rate})); }catch(e){}
+    if(t.audioUrl){
+      mode = 'file';
+      audioEl.src = t.audioUrl;
+      audioEl.playbackRate = state.rate;
+      audioEl.play().catch(function(){ mode=null; if(supported) speak(t); });
+    } else {
+      speak(t);
+    }
+  }
+
+  function isPaused(){ return mode==='file' ? audioEl.paused : (supported && synth.paused); }
+  function isActive(){ return mode==='file' ? (!audioEl.paused && !audioEl.ended) : (supported && synth.speaking && !synth.paused); }
+
+  $('#logPlay').addEventListener('click', function(){
+    if(state.i<0){ playIndex(0); return; }
+    if(mode==='file'){
+      if(audioEl.paused){ audioEl.play(); state.playing=true; setPlayIcon(true); }
+      else { audioEl.pause(); state.playing=false; setPlayIcon(false); }
+      return;
+    }
+    if(!supported){ $('#logUnsupported').style.display='block'; return; }
+    if(synth.speaking && !synth.paused){ synth.pause(); state.playing=false; setPlayIcon(false); }
+    else if(synth.paused){ synth.resume(); state.playing=true; setPlayIcon(true); }
+    else { playIndex(state.i<0?0:state.i); }
+  });
+  $('#logStop').addEventListener('click', function(){ stopAll(); state.playing=false; setPlayIcon(false); setBar(0); setTime(0,0); });
+  $('#logBack').addEventListener('click', function(){ if(state.i>=0) playIndex(state.i); });
+  $('#logPrev').addEventListener('click', function(){ playIndex(Math.max(0,state.i-1)); });
+  $('#logNext').addEventListener('click', function(){ playIndex(Math.min(TRACKS.length-1,state.i+1)); });
+  $('#logRew').addEventListener('click', function(){ skip(-15); });
+  $('#logFwd').addEventListener('click', function(){ skip(15); });
+
+  // seek by clicking / dragging the progress bar
+  var prog = $('#logProgress');
+  var seekFrac = 0;
+  function fracFromEvent(e){
+    var r = prog.getBoundingClientRect();
+    var cx = (e.touches && e.touches[0]) ? e.touches[0].clientX
+           : (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX
+           : e.clientX;
+    return Math.max(0, Math.min(1, (cx - r.left) / r.width));
+  }
+  function previewBar(p){ seekFrac=p; var b=$('#logBar'); b.style.transition='none'; b.style.width=(p*100)+'%'; prog.setAttribute('aria-valuenow', Math.round(p*100)); }
+  function endSeek(){ var b=$('#logBar'); b.style.transition=''; if(state.i>=0) seekTo(seekFrac); }
+  prog.addEventListener('click', function(e){ if(state.i<0) return; previewBar(fracFromEvent(e)); endSeek(); });
+  var dragging=false;
+  prog.addEventListener('mousedown', function(e){ dragging=true; window.__logDragging=true; previewBar(fracFromEvent(e)); e.preventDefault(); });
+  window.addEventListener('mousemove', function(e){ if(dragging){ previewBar(fracFromEvent(e)); } });
+  window.addEventListener('mouseup', function(){ if(dragging){ dragging=false; window.__logDragging=false; endSeek(); } });
+  // touch drag (mobile): follow the finger, seek on release
+  prog.addEventListener('touchstart', function(e){ dragging=true; window.__logDragging=true; previewBar(fracFromEvent(e)); }, {passive:true});
+  prog.addEventListener('touchmove', function(e){ if(dragging){ previewBar(fracFromEvent(e)); e.preventDefault(); } }, {passive:false});
+  prog.addEventListener('touchend', function(){ if(dragging){ dragging=false; window.__logDragging=false; endSeek(); } });
+  prog.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'){ e.preventDefault(); skip(15); }
+    else if(e.key==='ArrowLeft'){ e.preventDefault(); skip(-15); }
+  });
+
+  document.querySelectorAll('.log-chip[data-rate]').forEach(function(c){
+    c.addEventListener('click', function(){
+      document.querySelectorAll('.log-chip[data-rate]').forEach(function(x){ x.classList.remove('on'); });
+      c.classList.add('on');
+      state.rate = parseFloat(c.dataset.rate);
+      try{ var s=JSON.parse(localStorage.getItem(STORE)||'{}'); s.rate=state.rate; localStorage.setItem(STORE, JSON.stringify(s)); }catch(e){}
+      if(mode==='file'){ audioEl.playbackRate = state.rate; }
+      else if(supported && synth.speaking){ var keep=state.i; synth.cancel(); playIndex(keep); } // re-speak at new rate
+    });
+  });
+  // restore saved rate chip
+  document.querySelectorAll('.log-chip[data-rate]').forEach(function(c){ if(parseFloat(c.dataset.rate)===state.rate){ document.querySelectorAll('.log-chip[data-rate]').forEach(function(x){x.classList.remove('on');}); c.classList.add('on'); } });
+
+  $('#logAutoplay').addEventListener('click', function(){
+    state.autoplay = !state.autoplay;
+    this.setAttribute('aria-pressed', String(state.autoplay));
+    this.textContent = state.autoplay ? '↻ Autoplay: on' : '↻ Autoplay: off';
+  });
+
+  /* ---- voice picker: list available voices, best first ---- */
+  var voiceSel = $('#logVoice');
+  function isNatural(v){ return /natural|google|neural|premium|enhanced|online|siri/i.test((v.name||'')+' '+(v.voiceURI||'')); }
+  function deviceTip(){
+    var ua = navigator.userAgent || '';
+    var isiOS = /iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document);
+    var isMac = /Macintosh/.test(ua) && !isiOS;
+    var isAndroid = /Android/.test(ua);
+    if(isiOS) return { t:'Unlock a natural voice on iPhone/iPad', b:'Go to <b>Settings → Accessibility → Spoken Content → Voices → English</b>, and download a voice marked <b>“Enhanced”</b> or <b>“Premium”</b> (e.g. a UK voice). Come back, pick it from the Voice menu, and it sounds far more human — fully offline.' };
+    if(isAndroid) return { t:'Unlock a natural voice on Android', b:'Open <b>Settings → Accessibility → Text-to-speech</b> (or in Chrome), set the engine to <b>Google Text-to-speech</b>, and install the <b>UK English</b> voice data. Then choose “Google UK English” from the Voice menu.' };
+    if(isMac) return { t:'Unlock a natural voice on Mac', b:'Go to <b>System Settings → Accessibility → Spoken Content → System Voice → Manage Voices</b> and download an English voice marked <b>(Enhanced)</b> or <b>(Premium)</b>. Or use <b>Chrome/Edge</b>, which add “Natural” online voices.' };
+    return { t:'Get a more natural voice', b:'Use <b>Google Chrome</b> or <b>Microsoft Edge</b> — both add high-quality <b>“Natural”/“Online”</b> English voices that sound far less robotic, then pick one from the Voice menu. These play on-device with no account.' };
+  }
+  function updateVoiceBanner(){
+    var banner = $('#logVoiceBanner'); if(!banner) return;
+    if(localStorage.getItem('rgp.audio.voicebanner.dismiss')==='1'){ banner.hidden=true; return; }
+    var v = pickBestVoice();
+    if(v && isNatural(v)){ banner.hidden = true; return; }   // already on a good voice
+    var tip = deviceTip();
+    $('#lvbTitle').textContent = tip.t;
+    $('#lvbBody').innerHTML = tip.b;
+    banner.hidden = false;
+  }
+  function populateVoices(){
+    if(!voiceSel) return;
+    var vs = allVoices().slice();
+    if(!vs.length){ voiceSel.innerHTML = '<option>Loading device voices…</option>'; return; }
+    vs.sort(function(a,b){ return rankVoice(b)-rankVoice(a); });
+    var best = pickBestVoice();
+    voiceSel.innerHTML = vs.map(function(v){
+      var nice = isNatural(v) ? ' ✦' : '';
+      var label = v.name.replace(/\s*\((.*?)\)\s*/,' ($1) ').trim();
+      var sel = (best && v.voiceURI===best.voiceURI) ? ' selected' : '';
+      return '<option value="'+v.voiceURI+'"'+sel+'>'+label+nice+'</option>';
+    }).join('');
+    var tip = $('#logVoiceTip');
+    if(tip){
+      var hasNatural = vs.some(isNatural);
+      tip.textContent = hasNatural ? '✦ = natural voice (best quality)' : 'No natural voice installed yet';
+    }
+    updateVoiceBanner();
+  }
+  if(voiceSel){
+    voiceSel.addEventListener('change', function(){
+      chosenVoiceURI = voiceSel.value;
+      try{ localStorage.setItem(VOICE_STORE, chosenVoiceURI); }catch(e){}
+      updateVoiceBanner();
+      if(mode==='tts' && state.i>=0){ var keep=state.i; synth.cancel(); playIndex(keep); } // re-speak in new voice
+    });
+  }
+  var vHelp = $('#logVoiceHelp');
+  if(vHelp) vHelp.addEventListener('click', function(){
+    var banner=$('#logVoiceBanner');
+    try{ localStorage.removeItem('rgp.audio.voicebanner.dismiss'); }catch(e){}
+    var tip=deviceTip(); $('#lvbTitle').textContent=tip.t; $('#lvbBody').innerHTML=tip.b;
+    banner.hidden=false; banner.scrollIntoView({block:'nearest'});
+  });
+  var vClose = $('#lvbClose');
+  if(vClose) vClose.addEventListener('click', function(){
+    $('#logVoiceBanner').hidden=true;
+    try{ localStorage.setItem('rgp.audio.voicebanner.dismiss','1'); }catch(e){}
+  });
+  populateVoices();
+  if(supported && synth.getVoices().length===0){
+    synth.addEventListener('voiceschanged', populateVoices);
+  }
+
+  // stop speech/audio if leaving the page
+  window.addEventListener('beforeunload', function(){ stopAll(); });
+})();
+
+/* ---- Audio listening → CPD ----
+   Accrues ACTIVE listening time (only while a track is actually playing) into
+   the same CPD log the reading tracker uses (localStorage 'rgp-cpd-v1'), as an
+   'Audio' entry. The reading tracker skips this page, so there's no double count.
+   Listening counts even when the user isn't interacting or the tab is hidden. */
+(function(){
+  var KEY='rgp-cpd-v1', PATH='/pages/audios.html', FLUSH_MS=12000, MIN_LOG=25;
+  var active=0, last=Date.now(), visitCounted=false;
+  function load(){ try{ return JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ return {}; } }
+  function save(d){ try{ localStorage.setItem(KEY, JSON.stringify(d)); }catch(e){} }
+  function tick(){ var now=Date.now(); if(window.__rgpAudioActive) active += now-last; last=now; }
+  function flush(){
+    tick();
+    if(active < MIN_LOG*1000) return;
+    var d=load();
+    var rec=d[PATH] || { href:PATH, title:'Clinical Audios', kind:'Audio', seconds:0, visits:0, first:Date.now(), reflection:'' };
+    rec.title='Clinical Audios'; rec.kind='Audio';
+    rec.seconds=Math.round((rec.seconds||0) + active/1000);
+    rec.last=Date.now();
+    if(!visitCounted){ rec.visits=(rec.visits||0)+1; visitCounted=true; }
+    d[PATH]=rec; save(d); active=0;
+  }
+  setInterval(tick, 1000);
+  setInterval(flush, FLUSH_MS);
+  document.addEventListener('visibilitychange', function(){ if(document.hidden) flush(); });
+  window.addEventListener('pagehide', flush);
+  window.addEventListener('beforeunload', flush);
+})();
+</script>
+</body></html>

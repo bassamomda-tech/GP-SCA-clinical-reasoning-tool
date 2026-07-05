@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thrombocytosis Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'DM Sans',system-ui,-apple-system,sans-serif;
+  font-size:15px; line-height:1.6; color:#1a1a1a;
+  background:#fafafa; padding:2rem 1rem 4rem;
+}
+.alg-wrap { max-width:820px; margin:0 auto; }
+.stem-banner {
+  background:linear-gradient(135deg,#dc2626 0%,#b91c1c 100%);
+  color:#fff; padding:1.5rem 2rem; border-radius:12px;
+  margin-bottom:1.5rem; display:flex; align-items:center; gap:1rem;
+  box-shadow:0 4px 12px rgba(220,38,38,0.15);
+}
+.sb-icon { font-size:2.5rem; line-height:1; }
+.stem-banner b { display:block; font-size:1.2rem; margin-bottom:0.25rem; }
+.stem-banner small { opacity:0.9; font-size:0.9rem; }
+
+.alg-progress {
+  background:#fff; border-radius:8px; padding:1rem 1.5rem;
+  display:flex; align-items:center; gap:1rem; margin-bottom:2rem;
+  box-shadow:0 1px 3px rgba(0,0,0,0.08);
+}
+.alg-progress > span:first-child { font-weight:600; color:#666; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.5px; }
+.pcount { font-weight:700; color:#dc2626; font-size:1.1rem; white-space:nowrap; }
+.pbar { flex:1; height:8px; background:#e5e5e5; border-radius:999px; overflow:hidden; }
+.pbar-fill { height:100%; background:linear-gradient(90deg,#dc2626,#b91c1c); width:0%; transition:width 0.4s ease; }
+.reset {
+  background:#f5f5f5; border:1px solid #d4d4d4; padding:0.4rem 1rem;
+  border-radius:6px; font-size:0.85rem; font-weight:600; cursor:pointer;
+  transition:all 0.2s;
+}
+.reset:hover { background:#e5e5e5; }
+
+.alg-flow { display:flex; flex-direction:column; gap:0; }
+.connector {
+  width:3px; background:linear-gradient(180deg,#dc2626 0%,#b91c1c 100%);
+  height:24px; margin:0 auto; opacity:0.3;
+}
+
+.node {
+  background:#fff; border-radius:10px; overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  border-left:5px solid #dc2626;
+  transition:all 0.3s;
+}
+.node.done { opacity:0.6; }
+.node.done .node-head h3 { text-decoration:line-through; }
+
+.node-num {
+  position:absolute; top:1rem; right:1rem;
+  width:32px; height:32px; border-radius:50%;
+  background:#dc2626; color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:0.9rem;
+}
+.node { position:relative; }
+
+.node-head {
+  background:linear-gradient(135deg,#fef2f2 0%,#fee2e2 100%);
+  padding:1.5rem 4rem 1rem 1.5rem;
+}
+.node-tag {
+  display:inline-block; padding:0.25rem 0.75rem;
+  background:rgba(220,38,38,0.15); color:#dc2626;
+  border-radius:4px; font-size:0.75rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:0.5px; margin-bottom:0.5rem;
+}
+.node[data-type="DIAGNOSE"] { border-left-color:#2563eb; }
+.node[data-type="DIAGNOSE"] .node-num { background:#2563eb; }
+.node[data-type="DIAGNOSE"] .node-head { background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 100%); }
+.node[data-type="DIAGNOSE"] .node-tag { background:rgba(37,99,235,0.15); color:#2563eb; }
+
+.node[data-type="TREAT"] { border-left-color:#059669; }
+.node[data-type="TREAT"] .node-num { background:#059669; }
+.node[data-type="TREAT"] .node-head { background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%); }
+.node[data-type="TREAT"] .node-tag { background:rgba(5,150,105,0.15); color:#059669; }
+
+.node[data-type="REFER"] { border-left-color:#7c3aed; }
+.node[data-type="REFER"] .node-num { background:#7c3aed; }
+.node[data-type="REFER"] .node-head { background:linear-gradient(135deg,#faf5ff 0%,#f3e8ff 100%); }
+.node[data-type="REFER"] .node-tag { background:rgba(124,58,237,0.15); color:#7c3aed; }
+
+.node[data-type="LIFESTYLE"] { border-left-color:#ea580c; }
+.node[data-type="LIFESTYLE"] .node-num { background:#ea580c; }
+.node[data-type="LIFESTYLE"] .node-head { background:linear-gradient(135deg,#fff7ed 0%,#ffedd5 100%); }
+.node[data-type="LIFESTYLE"] .node-tag { background:rgba(234,88,12,0.15); color:#ea580c; }
+
+.node-head h3 { font-size:1.3rem; font-weight:700; color:#1a1a1a; line-height:1.3; }
+
+.node-tick {
+  position:absolute; top:1.5rem; right:4rem;
+}
+.node-tick label {
+  display:flex; align-items:center; gap:0.5rem; cursor:pointer;
+  padding:0.4rem 0.8rem; border-radius:6px;
+  transition:background 0.2s;
+}
+.node-tick label:hover { background:rgba(0,0,0,0.05); }
+.node-tick input[type="checkbox"] {
+  width:20px; height:20px; cursor:pointer;
+  accent-color:#dc2626;
+}
+.tlbl { font-size:0.85rem; font-weight:600; color:#666; }
+
+.node-body { padding:1.5rem; }
+.node-body > p:first-child { margin-bottom:1rem; color:#404040; }
+
+.kv {
+  display:grid; grid-template-columns:minmax(140px,200px) 1fr;
+  gap:0.75rem 1.5rem; margin-top:1rem;
+}
+.kv > div:nth-child(odd) {
+  font-weight:600; color:#525252; font-size:0.9rem;
+}
+.kv > div:nth-child(even) { color:#262626; }
+
+.rfgrid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:0.75rem; margin-top:1rem;
+}
+.rftile {
+  background:#fef2f2; border-left:3px solid #dc2626;
+  padding:0.75rem 1rem; border-radius:6px; font-size:0.9rem;
+  line-height:1.5;
+}
+.rftile b { color:#dc2626; display:block; margin-bottom:0.25rem; }
+
+.lsgrid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:0.75rem; margin-top:1rem;
+}
+.lstile {
+  background:#f0fdf4; border-left:3px solid:#059669;
+  padding:0.75rem 1rem; border-radius:6px; font-size:0.9rem; line-height:1.5;
+}
+.lstile b { color:#059669; display:block; margin-bottom:0.25rem; }
+
+.pill {
+  display:inline-block; padding:0.15rem 0.6rem;
+  border-radius:4px; font-size:0.8rem; font-weight:600;
+  margin:0 0.2rem;
+}
+.pill-red { background:#fef2f2; color:#dc2626; border:1px solid #fecaca; }
+.pill-purple { background:#faf5ff; color:#7c3aed; border:1px solid #e9d5ff; }
+.pill-blue { background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe; }
+.pill-teal { background:#f0fdfa; color:#0d9488; border:1px solid #99f6e4; }
+.pill-amber { background:#fffbeb; color:#d97706; border:1px solid #fde68a; }
+.pill-green { background:#f0fdf4; color:#059669; border:1px solid #86efac; }
+.pill-grey { background:#f5f5f5; color:#525252; border:1px solid #e5e5e5; }
+
+.branch {
+  display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem;
+}
+.b-card {
+  flex:1; min-width:240px;
+  background:#fafafa; border:2px solid #e5e5e5;
+  border-radius:8px; padding:1rem; transition:all 0.2s;
+}
+.b-card:hover { border-color:#059669; box-shadow:0 4px 12px rgba(5,150,105,0.1); }
+.b-cond {
+  font-size:0.85rem; font-weight:600; color:#737373;
+  text-transform:uppercase; letter-spacing:0.5px; margin-bottom:0.5rem;
+}
+.b-drug {
+  font-size:1.1rem; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;
+}
+.b-note { font-size:0.9rem; color:#525252; line-height:1.5; }
+
+.ladder { display:flex; flex-direction:column; gap:0.5rem; margin-top:1rem; }
+.rung {
+  display:flex; align-items:center; gap:1rem;
+  background:#f0fdf4; border-left:4px solid #059669;
+  padding:0.75rem 1rem; border-radius:6px;
+}
+.rn {
+  font-size:0.8rem; font-weight:700; color:#059669;
+  background:#fff; padding:0.3rem 0.7rem; border-radius:4px;
+  min-width:60px; text-align:center;
+}
+.rt { flex:1; font-size:0.95rem; color:#262626; }
+
+.why-row {
+  border-top:1px solid #e5e5e5;
+  padding:0;
+}
+.why-btn {
+  width:100%; background:#fafafa; border:none;
+  padding:0.75rem 1.5rem; text-align:left; cursor:pointer;
+  font-weight:600; color:#525252; font-size:0.9rem;
+  display:flex; align-items:center; justify-content:space-between;
+  transition:background 0.2s;
+}
+.why-btn:hover { background:#f0f0f0; }
+.caret {
+  transition:transform 0.3s; display:inline-block;
+  color:#a3a3a3; font-size:1.2rem;
+}
+.why-btn[aria-expanded="true"] .caret { transform:rotate(180deg); }
+.why-drawer {
+  max-height:0; overflow:hidden;
+  transition:max-height 0.4s ease, padding 0.4s ease;
+  background:#fafafa; padding:0 1.5rem;
+}
+.why-drawer.open {
+  max-height:800px; padding:1rem 1.5rem 1.5rem;
+}
+.why-drawer p { color:#404040; line-height:1.7; margin-bottom:0.75rem; }
+.why-drawer p:last-child { margin-bottom:0; }
+
+.alg-foot {
+  margin-top:3rem; padding:1.5rem; background:#fff;
+  border-radius:8px; border-left:4px solid #d97706;
+  font-size:0.9rem; color:#525252; line-height:1.6;
+}
+.alg-foot strong { color:#1a1a1a; }
+
+@media(max-width:640px) {
+  body { padding:1rem 0.5rem 3rem; }
+  .stem-banner { padding:1rem 1.25rem; flex-direction:column; text-align:center; }
+  .sb-icon { font-size:2rem; }
+  .alg-progress { flex-wrap:wrap; padding:0.75rem 1rem; }
+  .kv { grid-template-columns:1fr; gap:0.5rem; }
+  .kv > div:nth-child(odd) { font-weight:700; color:#1a1a1a; }
+  .node-num { top:0.75rem; right:0.75rem; width:28px; height:28px; font-size:0.8rem; }
+  .node-tick { position:static; margin:0.75rem 1.5rem 0; }
+  .node-head { padding:1.25rem 1.25rem 0.75rem; }
+  .node-head h3 { font-size:1.1rem; }
+}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+<div class="alg-wrap">
+
+<div class="stem-banner">
+  <div class="sb-icon">🔴</div>
+  <div>
+    <b>Thrombocytosis — Elevated Platelet Count</b>
+    <small>Investigation and management pathway for platelets >450 × 10⁹/L in adults</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — most thrombocytosis is reactive, but NICE NG12 now treats an unexplained raised platelet count as a cancer marker in its own right. Confirm, split reactive vs clonal, treat the cause, assess for cancer, modify factors, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Raised platelet count (&gt;400)</span><div class="body">Repeat to confirm persistence. Check ferritin — iron deficiency is a common reactive driver.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1/3 · Reactive vs clonal</span><span class="ttl">Persistent and unexplained?</span><div class="body">Transient with an obvious cause vs sustained &gt;450 with no inflammatory/iron explanation.</div></div>
+    <div class="split"><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel">Reactive (commonest)</div><div class="box ix"><span class="ttl">Secondary</span><div class="body">Infection, inflammation, <b>iron deficiency</b>, bleeding, post-splenectomy, malignancy.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Essential thrombocythaemia</div><div class="box ix"><span class="ttl">Myeloproliferative</span><div class="body">Persistent &gt;450, <b>JAK2 / CALR</b>, thrombosis or bleeding, splenomegaly.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · treat cause + risk-assess</span></div>
+    <div class="box act" style="max-width:660px;"><span class="lbl">Step 7 · Action</span><span class="ttl">Treat the reactive cause</span><div class="body">Correct iron deficiency, treat infection/inflammation; recheck. If persistent &amp; unexplained → JAK2/CALR and haematology.</div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:680px;"><span class="lbl">Step 6 · Refer · Cancer assessment <span class="pill pill-purple">2WW</span> <span class="pill pill-grey">NICE NG12</span></span><span class="ttl">Unexplained thrombocytosis → assess for cancer</span><div class="body">NG12 lists a raised platelet count as a marker of <b>lung</b> and <b>endometrial</b> cancer. Consider an urgent <b>chest X-ray</b> for unexplained thrombocytosis (especially with cough, weight loss, smoking) and the endometrial pathway in women with post-menopausal bleeding. <span class="pill pill-purple">Haematology</span> if essential thrombocythaemia suspected.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Modifiable factors &amp; vascular risk</span><span class="ttl">Treat drivers, lower thrombosis risk</span><div class="body"><b>Correct iron deficiency</b> and find its source; treat infection/inflammation. In confirmed essential thrombocythaemia: <b>stop smoking</b>, manage cardiovascular risk factors (BP, lipids, diabetes), and support low-dose <b>aspirin</b>/cytoreduction as directed by haematology. Recheck once the reactive driver is treated.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · monitoring &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">Recheck &amp; when to escalate</span><div class="body"><b>Repeat platelets</b> after treating the reactive cause; persistent unexplained &gt;450 → JAK2/CALR + haematology. <b>Action the NG12 cancer pathways</b> (CXR / endometrial) for unexplained thrombocytosis. <b>Urgent</b> if signs of thrombosis (limb swelling, chest pain, TIA/stroke symptoms) or bleeding — high counts can paradoxically cause both.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Don't dismiss it:</b> an unexplained, persistent thrombocytosis is an NG12 prompt to actively consider underlying malignancy — not just a reactive curiosity.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-num">1</div>
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Red Flags — Exclude Extreme Thrombocytosis and Acute Thrombosis</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Screen for extreme thrombocytosis (platelets >1000 × 10⁹/L), acute arterial or venous thrombosis, and myeloproliferative neoplasms requiring urgent treatment.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Platelets >1000 × 10⁹/L</b> Extreme thrombocytosis → same-day haematology (paradoxical bleeding risk + thrombosis risk, requires urgent cytoreduction)</div>
+      <div class="rftile"><b>Acute thrombosis</b> Stroke, MI, PE, DVT, portal vein thrombosis with thrombocytosis → 999 (JAK2+ myeloproliferative neoplasm likely, start aspirin + anticoagulation)</div>
+      <div class="rftile"><b>Splenomegaly >5 cm</b> Massive splenomegaly + thrombocytosis → same-day haematology (ET, PV, myelofibrosis, CML)</div>
+      <div class="rftile"><b>Erythromelalgia</b> Burning pain in hands/feet, redness, relieved by cold/aspirin → same-day (ET microvascular thrombosis, needs urgent aspirin + cytoreduction)</div>
+      <div class="rftile"><b>Headache + visual symptoms</b> Severe headache, visual disturbance, TIA symptoms + platelets >800 → same-day (hyperviscosity, stroke risk)</div>
+      <div class="rftile"><b>Unexplained bleeding</b> Epistaxis, GI bleeding, bruising + platelets >1000 → same-day (acquired von Willebrand syndrome from extreme thrombocytosis)</div>
+      <div class="rftile"><b>B symptoms</b> Fever, night sweats, weight loss >10% + thrombocytosis → 2WW haematology (myeloproliferative neoplasm, lymphoma)</div>
+      <div class="rftile"><b>Pruritus after bathing</b> Intense itching after hot shower/bath + thrombocytosis → suspect PV or ET (mast cell histamine release, pathognomonic sign)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Platelets >1000 × 10⁹/L (extreme thrombocytosis)</b> paradoxically cause bleeding AND thrombosis. Acquired von Willebrand syndrome occurs as high platelet mass consumes vWF. Simultaneously, platelet activation causes microvascular thrombosis. Urgent cytoreduction (hydroxycarbamide or platelet apheresis) required.</p>
+      <p><b>Acute thrombosis</b> with thrombocytosis suggests JAK2+ myeloproliferative neoplasm (ET, PV). 30-40% of ET patients present with thrombotic event (stroke, MI, DVT, Budd-Chiari). Immediate aspirin 75 mg + anticoagulation + cytoreduction reduces recurrent thrombosis risk by 60%.</p>
+      <p><b>Erythromelalgia</b> (red, burning extremities) is pathognomonic for ET. Caused by platelet-mediated arteriolar inflammation and microthrombi. Relieved within 30 minutes by aspirin (diagnostic test). Untreated, progresses to digital ischaemia and gangrene.</p>
+      <p><b>Reactive thrombocytosis</b> (infection, inflammation, bleeding, malignancy) accounts for 80% of cases. Platelets rarely exceed 700 × 10⁹/L. Clonal thrombocytosis (ET, PV, CML) often exceeds 1000 × 10⁹/L and persists despite treating underlying cause.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-num">2</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Confirm Thrombocytosis — Repeat Count and Assess Persistence</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Confirm persistent thrombocytosis and exclude transient reactive causes. A single elevated platelet count may be post-operative, post-bleeding, or post-infection.</p>
+    <div class="kv">
+      <div>Repeat FBC</div>
+      <div>Repeat within <b>2-4 weeks</b> if platelets 450-600 × 10⁹/L asymptomatic. If platelets >600, repeat within <b>1 week</b>. If >1000, same-day haematology.</div>
+      
+      <div>Reactive vs clonal</div>
+      <div><b>Reactive thrombocytosis:</b> Platelets usually 450-700 × 10⁹/L, normalizes within 3 months of treating cause. <b>Clonal (ET/PV):</b> Platelets often >700 × 10⁹/L, persists despite treatment of inflammatory cause.</div>
+      
+      <div>Blood film</div>
+      <div>Request <span class="pill pill-blue">blood film</span> for all platelets >600 × 10⁹/L. Identifies giant platelets (ET), platelet clumping, left shift (CML), tear-drop cells (myelofibrosis).</div>
+      
+      <div>Clinical context</div>
+      <div>Recent surgery or trauma? Active infection or inflammation (RA, IBD, pneumonia)? Iron deficiency (common cause)? Bleeding episode? Malignancy? Splenectomy (persistent thrombocytosis)?</div>
+      
+      <div>Thrombosis history</div>
+      <div>Prior DVT, PE, stroke, MI? Unusual site thrombosis (portal vein, splenic vein, cerebral vein)? Family history of blood clots? These suggest underlying myeloproliferative neoplasm.</div>
+      
+      <div>Persistent thrombocytosis</div>
+      <div>Confirmed if platelets >450 × 10⁹/L on <b>two occasions</b> ≥4 weeks apart, or single count >700 × 10⁹/L, or >600 with thrombosis/symptoms.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Transient thrombocytosis</b> is common post-infection (pneumonia, UTI), post-surgery, post-bleeding, or with active inflammation (RA flare, IBD). Platelets peak at 1-2 weeks, normalize within 3 months. Repeating FBC at 4 weeks differentiates reactive from clonal.</p>
+      <p><b>Iron deficiency</b> causes reactive thrombocytosis in 50-75% of cases (ferritin <15 μg/L). Mechanism: reduced iron suppresses hepcidin, increasing platelet production. Treating iron deficiency normalizes platelets within 6-8 weeks. Always check ferritin in thrombocytosis.</p>
+      <p><b>Platelet count threshold:</b> Reactive rarely exceeds 700 × 10⁹/L. If platelets >700 × 10⁹/L and persist >3 months, clonal thrombocytosis (ET) is highly likely even if no JAK2 mutation detected initially (10-15% of ET is JAK2-negative).</p>
+      <p><b>Blood film review</b> can identify CML (left shift, basophilia), myelofibrosis (tear-drop cells, leucoerythroblastic picture), and ET (large abnormal platelets, megakaryocyte fragments). Essential for all persistent thrombocytosis.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-num">3</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Classification — Reactive vs Clonal Thrombocytosis</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Classify thrombocytosis as reactive (secondary) or clonal (primary myeloproliferative neoplasm). This determines investigation pathway and treatment urgency.</p>
+    <div class="kv">
+      <div>Reactive thrombocytosis (80%)</div>
+      <div>Platelets 450-700 × 10⁹/L. <b>Causes:</b> Infection, inflammation (RA, IBD, vasculitis), malignancy, iron deficiency, bleeding, post-operative, tissue damage, splenectomy. Normalizes when cause treated.</div>
+      
+      <div>Clonal thrombocytosis (20%)</div>
+      <div>Platelets often >700 × 10⁹/L. <b>Myeloproliferative neoplasms:</b> Essential thrombocythemia (ET), polycythaemia vera (PV), chronic myeloid leukaemia (CML), myelofibrosis. JAK2/CALR/MPL mutations present.</div>
+      
+      <div>Essential thrombocythemia (ET)</div>
+      <div>Isolated thrombocytosis >450 × 10⁹/L persistent >3 months. JAK2 V617F (60%), CALR (25%), MPL (5%). Normal Hb, WCC. Thrombosis risk 2-4% per year. Median survival 20 years.</div>
+      
+      <div>Polycythaemia vera (PV)</div>
+      <div>Raised Hb + platelets + WCC. JAK2 V617F positive in 95%. Hct >0.52 (M) or >0.48 (F). Thrombosis risk 5% per year. Requires venesection + cytoreduction.</div>
+      
+      <div>CML (chronic phase)</div>
+      <div>Thrombocytosis + leucocytosis + splenomegaly. BCR-ABL fusion gene positive. Left shift on blood film (myelocytes, metamyelocytes, basophilia). Requires tyrosine kinase inhibitor (imatinib).</div>
+      
+      <div>Myelofibrosis</div>
+      <div>Thrombocytosis early, thrombocytopenia late. Massive splenomegaly, tear-drop cells, leucoerythroblastic blood film. Bone marrow fibrosis on biopsy. Median survival 5-7 years without transplant.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Reactive thrombocytosis</b> is benign and does not increase thrombosis risk if platelets <1000 × 10⁹/L. No antiplatelet therapy needed. Treat the underlying cause (antibiotics for infection, iron for deficiency, NSAIDs for inflammation). Platelets normalize within 3 months in 90% of cases.</p>
+      <p><b>Essential thrombocythemia (ET)</b> is the commonest myeloproliferative neoplasm (incidence 1-2 per 100,000/year). Median age at diagnosis is 60. Thrombosis risk is 2-4% per year (arterial > venous). Aspirin 75 mg daily reduces thrombosis by 60%. High-risk patients (age >60, prior thrombosis) require cytoreduction.</p>
+      <p><b>JAK2 V617F mutation</b> is present in 95% of PV, 60% of ET, 50% of myelofibrosis. It activates JAK-STAT signaling, causing uncontrolled myeloid proliferation. CALR mutations (25% of ET) carry better prognosis than JAK2 (lower thrombosis risk). MPL mutations are rare (5%).</p>
+      <p><b>Distinguishing ET from reactive:</b> ET platelets persist >3 months despite treating inflammation. Reactive platelets normalize. CRP is high in reactive (infection, RA), normal in ET. Splenomegaly suggests clonal (ET, PV). Iron deficiency coexists in 30% of ET cases (confounding factor).</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-num">4</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Targeted Examination — Splenomegaly and Vascular Symptoms</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Examine for splenomegaly, signs of thrombosis, and microvascular symptoms suggesting myeloproliferative neoplasm.</p>
+    <div class="kv">
+      <div>Vital signs</div>
+      <div>BP elevated → PV (hyperviscosity increases peripheral resistance). Plethoric facies (ruddy complexion) → PV. Fever + thrombocytosis → infection, malignancy.</div>
+      
+      <div>Spleen</div>
+      <div>Percuss and palpate left upper quadrant. <b>Splenomegaly</b> → ET (mild 1-3 cm), PV (moderate 3-5 cm), CML (massive >8 cm), myelofibrosis (massive). Reactive thrombocytosis has normal spleen size.</div>
+      
+      <div>Extremities</div>
+      <div>Inspect hands and feet. <b>Erythromelalgia:</b> Red, warm, burning extremities → ET/PV (platelet microvascular thrombosis). <b>Acrocyanosis:</b> Blue discoloration → hyperviscosity (PV). <b>Gangrene/ulcers:</b> Digital ischaemia → severe ET.</div>
+      
+      <div>Neurological</div>
+      <div>Test for focal weakness, visual field defects, dysphasia (prior stroke/TIA). Assess for headache, dizziness, tinnitus (hyperviscosity symptoms in PV). Confusion, seizures → cerebral vein thrombosis.</div>
+      
+      <div>Cardiovascular</div>
+      <div>Examine for DVT (calf swelling, tenderness), peripheral arterial disease (absent pulses). Auscultate for carotid bruit (atherosclerosis accelerated by thrombocytosis). Check for signs of MI (prior event).</div>
+      
+      <div>Abdomen</div>
+      <div>Hepatomegaly → myeloproliferative neoplasm (extramedullary haematopoiesis). Ascites + splenomegaly → Budd-Chiari syndrome (hepatic vein thrombosis, associated with JAK2+ disorders).</div>
+      
+      <div>Skin</div>
+      <div>Plethora (ruddy face, red palms) → PV. Pruritus → PV/ET (mast cell histamine release, worse after hot bath). Bruising + petechiae → extreme thrombocytosis (acquired vWD).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Splenomegaly</b> in thrombocytosis strongly suggests clonal disorder. Spleen sequestration paradoxically occurs in ET/PV despite high platelet count (extramedullary haematopoiesis). Reactive thrombocytosis does not cause splenomegaly unless the reactive cause itself does (e.g., lymphoma, infection).</p>
+      <p><b>Erythromelalgia</b> (burning red extremities) is pathognomonic for ET. Occurs in 5-10% of ET patients. Caused by platelet aggregation in digital arterioles → inflammation, thrombosis. Relieved within 30 minutes by aspirin (diagnostic + therapeutic). Untreated → gangrene requiring amputation.</p>
+      <p><b>Plethora and pruritus</b> after bathing are classic for PV. Plethora (ruddy face) is due to raised Hct (>0.52). Pruritus is mast cell-mediated histamine release (worsened by warmth). Present in 40% of PV patients. Neither occur in reactive thrombocytosis.</p>
+      <p><b>Thrombotic events</b> (stroke, MI, DVT, Budd-Chiari) occur in 30-40% of ET/PV patients at presentation. Unusual site thrombosis (portal, splenic, cerebral veins) is highly suggestive of JAK2+ myeloproliferative neoplasm. Screen all thrombocytosis patients for prior thrombosis.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-num">5</div>
+  <div class="node-head">
+    <span class="node-tag">Diagnose</span>
+    <h3>Investigations — JAK2 Mutation, Inflammatory Markers, and Iron Studies</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Investigate to differentiate reactive from clonal thrombocytosis. Target investigations based on clinical context and platelet count.</p>
+    <div class="kv">
+      <div>Baseline bloods</div>
+      <div><span class="pill pill-blue">FBC + blood film</span> (mandatory for all >600 × 10⁹/L) <span class="pill pill-blue">CRP</span> (elevated in reactive, normal in ET) <span class="pill pill-blue">Ferritin</span> (iron deficiency common cause)</div>
+      
+      <div>Iron studies</div>
+      <div><span class="pill pill-blue">Serum ferritin</span> <span class="pill pill-blue">Transferrin saturation</span> — Iron deficiency (ferritin <15 μg/L) causes thrombocytosis in 50-75% of cases. Treat with ferrous sulfate 200 mg OD; platelets normalize in 6-8 weeks.</div>
+      
+      <div>Inflammatory markers</div>
+      <div><span class="pill pill-blue">ESR</span> <span class="pill pill-blue">CRP</span> — Elevated suggests reactive cause (infection, RA, IBD, malignancy). Normal CRP + persistent thrombocytosis suggests clonal (ET, PV).</div>
+      
+      <div>JAK2 mutation</div>
+      <div><span class="pill pill-blue">JAK2 V617F</span> — If platelets >600 persistent OR platelets >450 with thrombosis OR splenomegaly. Positive in 60% of ET, 95% of PV. If negative, haematology requests CALR/MPL mutations.</div>
+      
+      <div>If suspected ET/PV</div>
+      <div><span class="pill pill-blue">JAK2 V617F</span> <span class="pill pill-blue">Full blood count</span> (Hct, WCC) <span class="pill pill-blue">LDH</span> (cell turnover) <span class="pill pill-blue">Uric acid</span> (gout risk). Haematology performs bone marrow biopsy if diagnosis unclear.</div>
+      
+      <div>If suspected CML</div>
+      <div><span class="pill pill-blue">BCR-ABL</span> (Philadelphia chromosome), <span class="pill pill-blue">Blood film</span> (left shift, basophilia). If positive, haematology arranges imatinib therapy urgently.</div>
+      
+      <div>Infection/malignancy screen</div>
+      <div>If reactive cause suspected: <span class="pill pill-blue">Chest X-ray</span> (pneumonia, malignancy), <span class="pill pill-blue">Urine culture</span> (UTI), <span class="pill pill-blue">CXR + CT chest/abdo/pelvis</span> if weight loss/B symptoms (occult malignancy).</div>
+      
+      <div>When NOT to investigate</div>
+      <div><b>Do NOT</b> perform bone marrow biopsy in primary care. <b>Do NOT</b> request JAK2 if platelets <600 and no thrombosis (low yield, expensive). <b>Do NOT</b> delay treating iron deficiency to "see if platelets normalize" — treat and recheck.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>JAK2 V617F testing</b> is diagnostic for myeloproliferative neoplasm. Positive in 95% of PV, 60% of ET, 50% of myelofibrosis. Sensitivity is high enough that bone marrow biopsy is often unnecessary if JAK2+ with compatible blood count. Test if platelets >600 persistent, or >450 with thrombosis/splenomegaly.</p>
+      <p><b>Iron deficiency</b> is the commonest cause of reactive thrombocytosis in primary care. Ferritin <15 μg/L confirms deficiency. Mechanism: low iron → low hepcidin → increased thrombopoietin → thrombocytosis. Treating iron deficiency normalizes platelets in 80% of cases within 6-8 weeks.</p>
+      <p><b>CRP/ESR</b> differentiate reactive from clonal. Reactive thrombocytosis has elevated CRP (infection, RA, malignancy). ET/PV have normal CRP (unless concurrent infection). If platelets >700 and CRP normal, ET is highly likely even if JAK2 negative initially.</p>
+      <p><b>Bone marrow biopsy</b> is gold standard for ET diagnosis (WHO criteria: megakaryocyte hyperplasia, no BCR-ABL, no reactive cause). Performed by haematology, not primary care. Required if JAK2/CALR/MPL all negative (10% of ET cases), or to exclude myelofibrosis (reticulin staining).</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-num">6</div>
+  <div class="node-head">
+    <span class="node-tag">Refer</span>
+    <h3>Referral Criteria — When to Involve Haematology</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Refer based on platelet count, persistence, JAK2 status, and thrombotic risk. Clonal thrombocytosis requires specialist management.</p>
+    <div class="kv">
+      <div><span class="pill pill-red">999 Emergency</span></div>
+      <div>Acute arterial thrombosis (stroke, MI) + thrombocytosis. Acute venous thrombosis (Budd-Chiari, cerebral vein) + platelets >600. Major bleeding + platelets >1000 (acquired vWD).</div>
+      
+      <div><span class="pill pill-red">Same-day haematology</span></div>
+      <div>Platelets >1000 × 10⁹/L (extreme, bleeding + thrombosis risk). Erythromelalgia (burning extremities). Splenomegaly >5 cm + thrombocytosis. Headache + visual symptoms + platelets >800 (hyperviscosity).</div>
+      
+      <div><span class="pill pill-purple">2WW haematology</span></div>
+      <div>JAK2 V617F positive. BCR-ABL positive (CML). Platelets >700 persistent >3 months. Unexplained thrombocytosis >600 with B symptoms. Prior thrombosis + platelets >600.</div>
+      
+      <div><span class="pill pill-blue">Routine haematology</span></div>
+      <div>Platelets 600-700 persistent >3 months (normal CRP, ferritin replete). JAK2 negative but high clinical suspicion (splenomegaly, pruritus). Young patient (<40) with persistent unexplained thrombocytosis.</div>
+      
+      <div><span class="pill pill-green">Primary care management</span></div>
+      <div>Reactive thrombocytosis 450-600 with clear cause (infection, RA, iron deficiency). Post-operative thrombocytosis normalizing. Transient thrombocytosis resolving within 3 months. Iron deficiency thrombocytosis responding to treatment.</div>
+      
+      <div>Specialist referrals</div>
+      <div><b>Respiratory:</b> If malignancy suspected (CXR mass). <b>Gastro:</b> IBD with thrombocytosis. <b>Rheumatology:</b> RA, vasculitis causing reactive thrombocytosis.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Platelets >1000 × 10⁹/L</b> require same-day haematology even if asymptomatic. Paradoxical bleeding risk (acquired vWD) occurs as platelet mass consumes vWF. Simultaneously, thrombosis risk is high. Urgent cytoreduction (hydroxycarbamide or platelet apheresis) lowers platelets to safe range within days.</p>
+      <p><b>JAK2 V617F positive</b> is diagnostic for myeloproliferative neoplasm and mandates haematology referral. 2WW pathway for suspected haematological cancer (NICE NG12). Haematology confirms diagnosis, risk-stratifies (IPSET score for ET), and initiates aspirin ± cytoreduction.</p>
+      <p><b>Reactive thrombocytosis</b> (iron deficiency, infection, inflammation) does NOT require haematology referral if platelets <600 × 10⁹/L and normalizing with treatment. Treating the underlying cause is sufficient. Recheck FBC at 3 months to confirm normalization.</p>
+      <p><b>Young patients (<40)</b> with persistent unexplained thrombocytosis warrant routine haematology referral even if JAK2 negative and platelets <700. ET can present at any age. Establishing diagnosis early enables decades of thrombosis prevention with aspirin ± cytoreduction.</p>
+    </div>
+  </div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-num">7</div>
+  <div class="node-head">
+    <span class="node-tag">Treat</span>
+    <h3>Treatment — Antiplatelet for Thrombosis Prevention and Cytoreduction if High-Risk</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Treatment depends on whether thrombocytosis is reactive or clonal. Reactive thrombocytosis: treat cause. Clonal (ET/PV): aspirin for all, cytoreduction if high-risk.</p>
+    
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Reactive thrombocytosis</div>
+        <div class="b-drug">Treat underlying cause <span class="pill pill-green">No aspirin</span></div>
+        <div class="b-note">Antibiotics for infection, iron replacement for deficiency (ferrous sulfate 200 mg OD), NSAIDs for inflammation. No aspirin needed unless cardiovascular indication. Platelets normalize within 3 months.</div>
+      </div>
+      
+      <div class="b-card">
+        <div class="b-cond">Essential thrombocythemia (low-risk)</div>
+        <div class="b-drug">Aspirin 75 mg OD <span class="pill pill-teal">All patients</span></div>
+        <div class="b-note">Low-risk: Age <60, no prior thrombosis, platelets <1500. Aspirin reduces thrombosis by 60%. No cytoreduction needed. Monitor platelets every 3-6 months. Cardiovascular risk modification.</div>
+      </div>
+      
+      <div class="b-card">
+        <div class="b-cond">Essential thrombocythemia (high-risk)</div>
+        <div class="b-drug">Aspirin + Hydroxycarbamide <span class="pill pill-teal">Cytoreduction</span></div>
+        <div class="b-note">High-risk: Age >60 OR prior thrombosis OR platelets >1500. Hydroxycarbamide 500-1000 mg OD (start low, titrate). Target platelets <400 × 10⁹/L. Reduces thrombosis by 85%.</div>
+      </div>
+    </div>
+    
+    <p style="margin-top:1.5rem;"><b>ET/PV treatment ladder (haematology-managed):</b></p>
+    
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Aspirin 75 mg OD</b> for all patients (unless bleeding risk). Reduces arterial thrombosis by 60%. Check for aspirin-exacerbated gastritis (PPI if needed).</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Hydroxycarbamide 500-1500 mg OD</b> if high-risk (age >60, prior thrombosis, platelets >1500). Inhibits ribonucleotide reductase. Target platelets <400 × 10⁹/L. Monitor FBC weekly initially, then monthly.</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Anagrelide 0.5-2.5 mg OD</b> if intolerant to hydroxycarbamide. Selective platelet reducer. Side effects: palpitations, headache, fluid retention. Avoid if cardiac disease.</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Interferon-α 3-9 MU SC 3× weekly</b> if young patient (<40, pregnancy planned) or intolerant to other agents. Pegylated formulation better tolerated. Flu-like symptoms common. Contraindicated in depression.</span></div>
+      <div class="rung"><span class="rn">Emergency</span><span class="rt"><b>Platelet apheresis</b> if platelets >1500 with acute thrombosis or bleeding. Removes circulating platelets mechanically. Reduces count by 50% within hours. Used as bridge to cytoreduction.</span></div>
+    </div>
+    
+    <div class="kv" style="margin-top:1.5rem;">
+      <div>Polycythaemia vera</div>
+      <div><b>Venesection 400-500 mL weekly</b> until Hct <0.45. <b>Aspirin 75 mg OD.</b> If age >60 or prior thrombosis: <b>Hydroxycarbamide</b> (target WCC <10, platelets <400). Monitor Hct monthly.</div>
+      
+      <div>Monitoring on treatment</div>
+      <div>FBC every 3 months if stable on aspirin alone. FBC monthly if on hydroxycarbamide (cytopenia risk). Annual review: thrombosis events, bleeding, symptom control, cardiovascular risk factors.</div>
+      
+      <div>Pregnancy in ET/PV</div>
+      <div>Stop hydroxycarbamide 3 months pre-conception (teratogenic). <b>Aspirin 75 mg OD throughout pregnancy.</b> <b>LMWH prophylactic dose if prior thrombosis.</b> Interferon-α safe in pregnancy if cytoreduction needed.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Aspirin 75 mg</b> reduces arterial thrombosis (stroke, MI) by 60% in ET/PV. Mechanism: irreversibly inhibits COX-1, preventing platelet aggregation. All ET/PV patients require aspirin unless bleeding risk (prior GI bleed, platelets >1500 with acquired vWD). PPI co-prescription if gastritis risk.</p>
+      <p><b>Hydroxycarbamide (hydroxyurea)</b> is first-line cytoreductive agent. Inhibits DNA synthesis, reducing platelet count by 50-70%. Target platelets <400 × 10⁹/L. Reduces thrombosis by 85% in high-risk ET. Well-tolerated; main side effect is myelosuppression (monitor FBC monthly initially).</p>
+      <p><b>Risk stratification</b> determines treatment. Low-risk ET (age <60, no thrombosis, platelets <1500): aspirin alone sufficient. High-risk ET (age >60 OR prior thrombosis OR platelets >1500): aspirin + cytoreduction mandatory. Age >60 alone doubles thrombosis risk (4% vs 2% per year).</p>
+      <p><b>Reactive thrombocytosis does NOT increase thrombosis risk</b> unless platelets >1000 × 10⁹/L. Therefore, aspirin is not indicated for reactive causes. Treat the underlying cause (iron, infection, inflammation); platelets normalize and thrombosis risk returns to baseline.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-num">8</div>
+  <div class="node-head">
+    <span class="node-tag">Lifestyle</span>
+    <h3>Non-Pharmacological — Cardiovascular Risk Reduction and Thrombosis Prevention</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Lifestyle interventions reduce thrombotic events in patients with ET/PV. Cardiovascular risk factor control is as important as aspirin.</p>
+    <div class="lsgrid">
+      <div class="lstile"><b>Smoking cessation</b> Smoking triples arterial thrombosis risk in ET/PV. Offer varenicline or NRT. Target quit within 3 months. Referral to stop-smoking service. Smoking + ET = stroke risk 15× general population.</div>
+      
+      <div class="lstile"><b>Blood pressure control</b> Target BP <130/80 mmHg (stricter than general population). Hypertension + thrombocytosis doubles stroke risk. First-line: ACE inhibitor or ARB. Monitor monthly until controlled.</div>
+      
+      <div class="lstile"><b>Diabetes management</b> Target HbA1c <48 mmol/mol (6.5%). Diabetes + ET increases MI risk 4-fold. Metformin first-line. SGLT2 inhibitors if CVD present. Annual retinopathy screening (thrombocytosis increases retinal vein occlusion risk).</div>
+      
+      <div class="lstile"><b>Lipid control</b> Atorvastatin 20-80 mg OD if QRISK >10% or prior CVD. Target LDL <2 mmol/L (stricter if prior thrombosis: <1.4 mmol/L). Statins reduce arterial events by 40% independent of cholesterol level.</div>
+      
+      <div class="lstile"><b>Hydration</b> Maintain good hydration (2-2.5 L/day). Dehydration increases blood viscosity, worsening thrombosis risk. Carry water bottle. Avoid diuretics unless essential. Increase fluids in hot weather, flying, illness.</div>
+      
+      <div class="lstile"><b>Avoid immobility</b> Move every 2 hours on long flights/drives (DVT risk). Wear flight socks if platelets >600. LMWH prophylaxis if prior DVT + long-haul flight >8 hours. Walk 30+ min daily to maintain venous flow.</div>
+      
+      <div class="lstile"><b>Alcohol moderation</b> Limit ≤14 units/week. Alcohol increases bleeding risk (especially if platelets >1000). Binge drinking causes dehydration → thrombosis. Red wine antioxidants do NOT offset thrombosis risk in ET.</div>
+      
+      <div class="lstile"><b>Surgery precautions</b> Inform surgeons/anaesthetists of ET/PV before any procedure. Continue aspirin peri-operatively (unless high bleeding risk). LMWH prophylaxis post-op. Cytoreduction to platelets <400 before elective major surgery.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Cardiovascular risk factors</b> (smoking, hypertension, diabetes, hyperlipidaemia) are synergistic with thrombocytosis. Each additional risk factor doubles thrombosis rate. A 65-year-old with ET + smoking + hypertension has 20% 10-year stroke risk vs 4% with ET alone. Aggressive risk factor control is as important as aspirin.</p>
+      <p><b>Smoking cessation</b> is the single most important lifestyle intervention. Smoking triples arterial thrombosis risk in ET (mechanism: endothelial dysfunction + platelet activation). Quitting reduces thrombosis risk by 50% within 1 year. NNT to prevent one stroke = 10 ET patients quit smoking for 5 years.</p>
+      <p><b>Hydration</b> reduces blood viscosity and platelet aggregation. Dehydration increases Hct by 5-10%, worsening hyperviscosity (especially in PV). Patients with ET/PV should drink 2-2.5 L water daily. Dark urine is a sign of inadequate hydration.</p>
+      <p><b>Immobility</b> (long flights, bed rest) increases venous stasis and DVT risk. ET/PV patients have 5× higher DVT risk than general population. Mobilization every 2 hours, compression socks, and LMWH prophylaxis for long-haul flights reduce DVT by 70%.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-num">9</div>
+  <div class="node-head">
+    <span class="node-tag">Safety</span>
+    <h3>Follow-Up — Monitor Platelet Count and Safety-Net for Thrombosis</h3>
+  </div>
+  <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Monitor platelet trajectory, watch for thrombotic events, and re-refer if platelets rising or new symptoms. Chronic thrombocytosis requires long-term surveillance.</p>
+    <div class="kv">
+      <div>3 months</div>
+      <div>Repeat FBC if reactive thrombocytosis (should normalize). If platelets still >450, refer haematology routine. If iron deficiency, recheck ferritin (should rise to >50 μg/L on treatment).</div>
+      
+      <div>6 months</div>
+      <div>If ET/PV on aspirin alone (low-risk): FBC every 3-6 months. Monitor for progression (rising platelets, new splenomegaly). Annual cardiovascular risk review (BP, lipids, HbA1c, smoking status).</div>
+      
+      <div>Monthly (on cytoreduction)</div>
+      <div>If on hydroxycarbamide: FBC monthly for first 3 months, then every 3 months once stable. Target platelets <400 × 10⁹/L, WCC 4-10 × 10⁹/L. Watch for cytopenia (hold drug if neutrophils <1.5 or platelets <100).</div>
+      
+      <div>Annual haematology review</div>
+      <div>For ET/PV patients: Review thrombosis/bleeding events, symptom control (headache, pruritus, erythromelalgia), cardiovascular risk factors, medication adherence. Assess for disease progression (evolution to myelofibrosis: tear-drop cells, rising LDH).</div>
+      
+      <div><span class="pill pill-red">Safety-net 999</span></div>
+      <div>Sudden severe headache, focal weakness, speech changes (stroke). Chest pain, breathlessness (MI, PE). Severe abdominal pain + ascites (Budd-Chiari syndrome). Unilateral leg swelling (DVT). Sudden vision loss (retinal vein occlusion).</div>
+      
+      <div><span class="pill pill-red">Safety-net same-day</span></div>
+      <div>New erythromelalgia (burning extremities). Platelets >1500 on routine monitoring. Unexplained bleeding (epistaxis, GI) + platelets >1000. Severe headache + visual changes (hyperviscosity). TIA symptoms.</div>
+      
+      <div>Re-referral criteria</div>
+      <div>Platelets rising despite cytoreduction. Thrombotic event on treatment (medication escalation needed). Intolerance to hydroxycarbamide (switch to anagrelide/interferon). Pregnancy planning (teratogen counseling).</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p><b>Platelet trajectory</b> in reactive thrombocytosis should normalize within 3 months of treating the cause. If platelets remain >450 at 3 months despite iron repletion or infection resolution, clonal thrombocytosis (ET) is likely. Refer haematology for JAK2/CALR testing.</p>
+      <p><b>Thrombotic events</b> on treatment indicate inadequate control. If patient has stroke/MI/DVT while on aspirin + cytoreduction, haematology escalates therapy (higher hydroxycarbamide dose, switch to anagrelide, add anticoagulation). Primary care role is early recognition and urgent referral.</p>
+      <p><b>Disease progression:</b> 10-15% of ET evolves to myelofibrosis over 10-20 years. Signs: progressive splenomegaly, tear-drop cells on film, rising LDH, transition from thrombocytosis to thrombocytopenia. Myelofibrosis requires stem cell transplant evaluation (only curative therapy).</p>
+      <p><b>Annual cardiovascular review</b> is mandatory. ET/PV patients have 2-4× higher CVD mortality than general population. Controlling BP, lipids, diabetes, and smoking status reduces cardiovascular events by 50%. QRISK underestimates risk in ET (does not include thrombocytosis as variable).</p>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Pathway based on BSH Guidelines for Essential Thrombocythemia Management (2021), ELN Recommendations for PV/ET (2020), WHO Classification of Myeloproliferative Neoplasms (2022), and UpToDate clinical decision support. Always adapt to individual patient context, local guidelines, and specialist advice. Thrombocytosis is a laboratory finding — differentiate reactive from clonal causes and prevent thrombotic complications.
+</div>
+
+</div>
+
+<script>
+const LSK='rgp.alg.thrombocytosis.v1';
+const flow=document.getElementById('flow');
+const nodes=flow.querySelectorAll('.node');
+const pDone=document.getElementById('pDone');
+const pTotal=document.getElementById('pTotal');
+const pFill=document.getElementById('pFill');
+const resetBtn=document.getElementById('resetBtn');
+
+pTotal.textContent=nodes.length;
+
+let state=JSON.parse(localStorage.getItem(LSK)||'{}');
+
+nodes.forEach((n,i)=>{
+  const cb=n.querySelector('input[type="checkbox"]');
+  const step=n.dataset.step;
+  if(state[step]) {
+    cb.checked=true;
+    n.classList.add('done');
+  }
+  cb.addEventListener('change',()=>{
+    if(cb.checked) {
+      n.classList.add('done');
+      state[step]=true;
+    } else {
+      n.classList.remove('done');
+      delete state[step];
+    }
+    localStorage.setItem(LSK,JSON.stringify(state));
+    updateProgress();
+  });
+});
+
+document.querySelectorAll('.why-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const isOpen=btn.getAttribute('aria-expanded')==='true';
+    btn.setAttribute('aria-expanded',!isOpen);
+    const drawer=btn.nextElementSibling;
+    if(!isOpen) {
+      drawer.classList.add('open');
+    } else {
+      drawer.classList.remove('open');
+    }
+  });
+});
+
+resetBtn.addEventListener('click',()=>{
+  if(!confirm('Reset all progress for this algorithm?')) return;
+  localStorage.removeItem(LSK);
+  state={};
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type="checkbox"]');
+    cb.checked=false;
+    n.classList.remove('done');
+  });
+  updateProgress();
+});
+
+function updateProgress() {
+  const done=Object.keys(state).length;
+  pDone.textContent=done;
+  const pct=(done/nodes.length)*100;
+  pFill.style.width=pct+'%';
+}
+updateProgress();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

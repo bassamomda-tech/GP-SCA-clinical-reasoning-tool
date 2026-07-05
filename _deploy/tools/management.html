@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Protocols · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<style>
+.tool-page{ padding:28px 32px 80px; max-width:1180px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+
+.tool-head{ padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:20px; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:34px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); font-weight:500; }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:8px; max-width:70ch; }
+
+/* How-it-differs callout */
+.mg-diff{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:22px; }
+@media(max-width:680px){ .mg-diff{ grid-template-columns:1fr; } }
+.mg-diff a{ text-decoration:none; }
+.mg-diff .dcard{ display:flex; gap:13px; align-items:flex-start; padding:15px 17px; border-radius:14px; border:1px solid var(--line); background:var(--surface); transition:.15s ease; }
+.mg-diff .dcard.is-link:hover{ border-color:var(--teal); box-shadow:var(--shadow-2); transform:translateY(-1px); }
+.mg-diff .dcard.is-here{ background:linear-gradient(135deg,#0c4a47,#0e5c58); border-color:var(--teal); }
+.mg-diff .dc-ic{ font-size:22px; width:42px; height:42px; border-radius:10px; display:grid; place-items:center; flex-shrink:0; background:var(--bg-soft); }
+.mg-diff .dcard.is-here .dc-ic{ background:rgba(255,255,255,.12); }
+.mg-diff .dc-t{ font-family:'Source Serif 4',serif; font-weight:600; font-size:15px; color:var(--ink); }
+.mg-diff .dcard.is-here .dc-t{ color:#fdfaf3; }
+.mg-diff .dc-eyebrow{ font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--rust); margin-bottom:2px; }
+.mg-diff .dcard.is-here .dc-eyebrow{ color:#9ec9c4; }
+.mg-diff .dc-d{ font-size:12.5px; color:var(--muted); line-height:1.5; margin-top:3px; }
+.mg-diff .dcard.is-here .dc-d{ color:rgba(243,237,224,.82); }
+
+.alg-controls{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-bottom:18px; }
+.alg-search{ position:relative; flex:1; min-width:260px; }
+.alg-search svg{ position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--muted); pointer-events:none; }
+.alg-search input{ width:100%; font:inherit; font-size:15px; padding:12px 14px 12px 42px; border:1px solid var(--line-2); border-radius:10px; background:#fff; color:var(--ink); }
+.alg-search input:focus{ outline:none; border-color:var(--teal); box-shadow:0 0 0 4px var(--teal-soft); }
+.alg-count-pill{ font-size:13px; color:var(--muted); font-weight:500; white-space:nowrap; }
+.alg-count-pill b{ color:var(--ink); }
+
+.alg-empty{ display:none; padding:48px 20px; text-align:center; color:var(--muted); font-size:15px; }
+.alg-empty.show{ display:block; }
+
+.alg-group{ margin-top:30px; }
+.alg-group-head{ display:flex; align-items:center; gap:10px; margin-bottom:14px; padding:0 0 8px 4px; border-bottom:1px solid var(--line); }
+.agh-icon{ font-size:18px; }
+.alg-group-head h2{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:21px; color:var(--ink); }
+.agh-count{ font-size:11px; font-weight:700; color:var(--muted); background:var(--bg-soft); border:1px solid var(--line); border-radius:99px; padding:2px 9px; }
+
+.alg-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(264px,1fr)); gap:10px; }
+
+.alg-card{ display:flex; align-items:flex-start; gap:12px; padding:14px 16px; background:#fff; border:1px solid var(--line); border-radius:12px; text-decoration:none; color:inherit; transition:all .15s ease; position:relative; }
+.alg-card:hover{ border-color:var(--teal); box-shadow:var(--shadow-2); transform:translateY(-1px); }
+.ac-icon{ font-size:22px; line-height:1.1; flex-shrink:0; width:30px; text-align:center; }
+.ac-text{ display:flex; flex-direction:column; gap:2px; min-width:0; flex:1; }
+.ac-text b{ font-size:14.5px; font-weight:600; color:var(--ink); line-height:1.25; }
+.ac-text small{ font-size:12px; color:var(--muted); line-height:1.4; }
+.ac-arrow{ color:var(--line-2); font-size:16px; flex-shrink:0; align-self:center; transition:.15s ease; }
+.alg-card:hover .ac-arrow{ color:var(--teal); transform:translateX(2px); }
+
+.alg-card.is-soon{ background:var(--surface-2); border-style:dashed; cursor:default; opacity:.78; }
+.alg-card.is-soon:hover{ border-color:var(--line-2); box-shadow:none; transform:none; }
+.alg-card.is-soon .ac-arrow{ display:none; }
+.ac-soon{ font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; background:var(--bg-soft); color:var(--muted); border:1px solid var(--line); border-radius:99px; padding:2px 7px; align-self:center; flex-shrink:0; }
+
+.alg-foot{ margin-top:36px; padding:14px 18px; background:var(--bg-soft); border:1px solid var(--line); border-radius:10px; font-size:12.5px; color:var(--muted); line-height:1.5; }
+.alg-foot strong{ color:var(--ink-2); }
+</style>
+</head>
+<body data-screen-label="Management algorithms tool">
+
+<button class="sb-toggle" aria-label="Open menu">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-management"></aside>
+  <main class="main">
+
+    <div class="tool-page">
+
+      <div class="tool-head">
+        <div class="tool-eyebrow">Reasoning GP</div>
+        <h1>Management <em>protocols</em></h1>
+        <p>The "what to do next" for a condition you've <strong>already diagnosed</strong>. One visual pathway per disease, taking you through everything achievable in primary care — non-drug measures, the stepwise drug ladder, monitoring, follow-up and safety-netting — up to the point of referral. Re-enter the ladder at any follow-up where the patient isn't responding.</p>
+      </div>
+
+      <div class="alg-controls">
+        <div class="alg-search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="mgSearch" placeholder="Search protocols — e.g. hypertension…" autocomplete="off" />
+        </div>
+        <span class="alg-count-pill"><b id="mgShown">170+</b> conditions · all live</span>
+      </div>
+
+      <div class="alg-empty" id="mgEmpty">No protocol matches that search yet.</div>
+
+      <section class="alg-group" data-group="cardiovascular">
+        <div class="alg-group-head"><span class="agh-icon">🫀</span><h2>Cardiovascular &amp; Renal</h2><span class="agh-count">16 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/hypertension.html" data-search="hypertension high blood pressure bp htn ng136 acd ladder"><span class="ac-icon">🩺</span><span class="ac-text"><b>Hypertension</b><small>A→C→D ladder · targets · resistant-HTN loop · NG136</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/atrial-fibrillation.html" data-search="atrial fibrillation af anticoagulation rate rhythm ng196 chadsvasc doac"><span class="ac-icon">💓</span><span class="ac-text"><b>Atrial Fibrillation</b><small>Stroke prevention + rate/rhythm · NG196</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/antiplatelets-anticoagulants.html" data-search="antiplatelets anticoagulants antithrombotic aspirin clopidogrel ticagrelor prasugrel dapt doac apixaban rivaroxaban edoxaban dabigatran warfarin af vte stroke prevention peri-procedural bleeding ng196 ng158"><span class="ac-icon">🩸</span><span class="ac-text"><b>Antiplatelets &amp; Anticoagulants</b><small>DAPT durations · DOAC choice/dose · bleeding · peri-procedural · NG196/158</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/heart-failure.html" data-search="heart failure hfref four pillars ng106 sglt2 mra arni"><span class="ac-icon">🫀</span><span class="ac-text"><b>Heart Failure (HFrEF)</b><small>Four pillars + diuretics · NG106</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/ckd.html" data-search="ckd chronic kidney disease acr egfr ng203 sglt2 raas"><span class="ac-icon">🫘</span><span class="ac-text"><b>Chronic Kidney Disease</b><small>Slow progression + cardio-renal protection · NG203</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/hypercholesterolaemia.html" data-search="hypercholesterolaemia cholesterol lipids statin ezetimibe ng238 non-hdl"><span class="ac-icon">🩸</span><span class="ac-text"><b>Hypercholesterolaemia</b><small>Statin ladder + &gt;40% non-HDL goal · NG238</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/tia.html" data-search="tia transient ischaemic attack stroke secondary prevention ng128 clopidogrel"><span class="ac-icon">🧠</span><span class="ac-text"><b>TIA</b><small>Urgent pathway + secondary prevention · NG128</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/stable-angina.html" data-search="stable angina ischaemic heart disease"><span class="ac-icon">🫀</span><span class="ac-text"><b>Stable Angina</b><small>Anti-anginals + secondary prevention</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/peripheral-arterial-disease.html" data-search="peripheral arterial disease pad claudication"><span class="ac-icon">🦵</span><span class="ac-text"><b>Peripheral Arterial Disease</b><small>Supervised exercise + risk reduction</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/familial-hypercholesterolaemia.html" data-search="familial hypercholesterolaemia fh cascade ldl cg71"><span class="ac-icon">🧬</span><span class="ac-text"><b>Familial Hypercholesterolaemia</b><small>Cascade testing + ≥50% LDL reduction · CG71</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/mi-secondary-prevention.html" data-search="mi myocardial infarction heart attack secondary prevention dapt ng185"><span class="ac-icon">🫀</span><span class="ac-text"><b>MI Secondary Prevention</b><small>Five-drug bundle + cardiac rehab · NG185</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/dvt.html" data-search="dvt deep vein thrombosis clot doac anticoagulation ng158"><span class="ac-icon">🦵</span><span class="ac-text"><b>Deep Vein Thrombosis</b><small>DOAC choice + duration + PE net · NG158</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/varicose-veins.html" data-search="varicose veins venous insufficiency cg168"><span class="ac-icon">🦵</span><span class="ac-text"><b>Varicose Veins</b><small>Conservative measures + referral thresholds · CG168</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/tia-stroke.html" data-search="tia stroke ischaemic secondary prevention fast ng128"><span class="ac-icon">🧠</span><span class="ac-text"><b>TIA &amp; Stroke</b><small>Acute emergencies + secondary prevention · NG128</small></span><span class="ac-arrow">→</span></a>
+                  <a class="alg-card" href="management/aki.html" data-search="acute kidney injury aki creatinine sick day rules nephrotoxins ng148 hyperkalaemia"><span class="ac-icon">🫘</span><span class="ac-text"><b>Acute Kidney Injury</b><small>Sick-day rules · stop nephrotoxins · find cause · ng148</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/pulmonary-embolism.html" data-search="pulmonary embolism pe wells ctpa d-dimer doac apixaban anticoagulation ng158 vte"><span class="ac-icon">🫁</span><span class="ac-text"><b>Pulmonary Embolism</b><small>Wells · CTPA · DOAC · NG158</small></span><span class="ac-arrow">→</span></a>
+</div>
+      </section>
+
+      <section class="alg-group" data-group="endocrine">
+        <div class="alg-group-head"><span class="agh-icon">🦋</span><h2>Endocrine &amp; Metabolic</h2><span class="agh-count">10 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/type-2-diabetes.html" data-search="type 2 diabetes t2dm hba1c metformin sglt2 glp1 ng28"><span class="ac-icon">🩸</span><span class="ac-text"><b>Type 2 Diabetes</b><small>Glucose ladder + early organ protection · NG28</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/insulin-type-2-diabetes.html" data-search="insulin type 2 diabetes initiation titration basal nph isophane insuman basal insulatard semglee abasaglar levemir prandial bolus pre-mix novomix humulin brand ng28 gmmmg"><span class="ac-icon">💉</span><span class="ac-text"><b>Insulin in Type 2 Diabetes</b><small>Basal start/titrate · add prandial · pre-mix · hypos · prescribe by brand</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/hypothyroidism.html" data-search="hypothyroidism levothyroxine tsh subclinical ng145"><span class="ac-icon">🦋</span><span class="ac-text"><b>Hypothyroidism</b><small>Levothyroxine titration + subclinical · NG145</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/hyperthyroidism.html" data-search="hyperthyroidism thyrotoxicosis carbimazole graves ng145"><span class="ac-icon">🦋</span><span class="ac-text"><b>Hyperthyroidism</b><small>Symptom control + safe shared care · NG145</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/gout.html" data-search="gout urate allopurinol flare ult ng219"><span class="ac-icon">🦶</span><span class="ac-text"><b>Gout</b><small>Flare + treat-to-target ULT · NG219</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/osteoporosis.html" data-search="osteoporosis bone fracture dexa bisphosphonate"><span class="ac-icon">🦴</span><span class="ac-text"><b>Osteoporosis</b><small>FRAX · bisphosphonates · monitoring</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/type-1-diabetes.html" data-search="type 1 diabetes t1dm insulin dka ng17"><span class="ac-icon">🩸</span><span class="ac-text"><b>Type 1 Diabetes</b><small>Insulin self-management + annual screening · NG17</small></span><span class="ac-arrow">→</span></a>
+                  <a class="alg-card" href="management/addisons-disease.html" data-search="addisons disease adrenal insufficiency hydrocortisone fludrocortisone sick day rules steroid card crisis"><span class="ac-icon">🧂</span><span class="ac-text"><b>Addison's Disease</b><small>Hydrocortisone · sick-day rules · adrenal crisis</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/metabolic-syndrome.html" data-search="metabolic syndrome insulin resistance qrisk3 statin nafld weight ng238"><span class="ac-icon">⚖️</span><span class="ac-text"><b>Metabolic Syndrome</b><small>Weight · QRISK3 · treat each component to target</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/obesity.html" data-search="obesity weight bmi waist tier weight management glp-1 semaglutide orlistat bariatric cg189"><span class="ac-icon">⚖️</span><span class="ac-text"><b>Obesity</b><small>Tiered weight management · GLP-1 · bariatric · CG189</small></span><span class="ac-arrow">→</span></a>
+</div>
+      </section>
+
+      <section class="alg-group" data-group="respiratory">
+        <div class="alg-group-head"><span class="agh-icon">🫁</span><h2>Respiratory</h2><span class="agh-count">4 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/asthma.html" data-search="asthma air mart ics formoterol ng245 inhaler"><span class="ac-icon">🫁</span><span class="ac-text"><b>Asthma</b><small>AIR → MART pathway · NG245 (2024)</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/copd.html" data-search="copd inhaler laba lama ics ng115 ltot rescue pack"><span class="ac-icon">🫁</span><span class="ac-text"><b>COPD</b><small>Inhaler ladder + rehab + LTOT · NG115</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/bronchiectasis.html" data-search="bronchiectasis airway clearance sputum pseudomonas bts"><span class="ac-icon">🫁</span><span class="ac-text"><b>Bronchiectasis</b><small>Airway clearance + culture-guided abx · BTS</small></span><span class="ac-arrow">→</span></a>
+                  <a class="alg-card" href="management/osa.html" data-search="osa obstructive sleep apnoea osahs epworth stop bang cpap dvla ng202 snoring"><span class="ac-icon">😴</span><span class="ac-text"><b>Obstructive Sleep Apnoea</b><small>Epworth · CPAP · weight · DVLA · ng202</small></span><span class="ac-arrow">→</span></a>
+</div>
+      </section>
+
+      <section class="alg-group" data-group="mental health">
+        <div class="alg-group-head"><span class="agh-icon">🧩</span><h2>Mental Health</h2><span class="agh-count">7 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/depression.html" data-search="depression phq9 ssri sertraline stepped care ng222 risk"><span class="ac-icon">🧠</span><span class="ac-text"><b>Depression</b><small>Risk-first · stepped care · SSRI ladder · NG222</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/anxiety.html" data-search="anxiety gad generalised anxiety disorder gad7 ssri cg113"><span class="ac-icon">🧠</span><span class="ac-text"><b>Generalised Anxiety</b><small>Stepped care · SSRI ladder · CG113</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/insomnia.html" data-search="insomnia sleep cbt-i hypnotic zopiclone"><span class="ac-icon">🌙</span><span class="ac-text"><b>Insomnia</b><small>CBT-I first · short-term hypnotics · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/benzodiazepines-z-drugs.html" data-search="benzodiazepines z-drugs z-hypnotics diazepam lorazepam temazepam zopiclone zolpidem prescribing deprescribing taper dependence withdrawal anxiety insomnia bzra ta77"><span class="ac-icon">💊</span><span class="ac-text"><b>Benzodiazepines &amp; Z-drugs</b><small>Short-course only · diazepam-equivalent taper · deprescribing · TA77</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/ptsd.html" data-search="ptsd post traumatic stress disorder emdr ng116"><span class="ac-icon">🧠</span><span class="ac-text"><b>PTSD</b><small>Trauma-focused therapy · SSRI · NG116</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/ocd.html" data-search="ocd obsessive compulsive disorder erp cg31"><span class="ac-icon">🧠</span><span class="ac-text"><b>OCD</b><small>CBT/ERP + higher-dose SSRI · CG31</small></span><span class="ac-arrow">→</span></a>
+                  <a class="alg-card" href="management/postnatal-depression.html" data-search="postnatal depression perinatal mental health epds whooley sertraline puerperal psychosis ng192"><span class="ac-icon">🤱</span><span class="ac-text"><b>Postnatal Depression</b><small>Screen · therapy ± sertraline · psychosis red flag · NG192</small></span><span class="ac-arrow">→</span></a>
+</div>
+      </section>
+
+      <section class="alg-group" data-group="neurology">
+        <div class="alg-group-head"><span class="agh-icon">🧠</span><h2>Neurology</h2><span class="agh-count">14 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/migraine.html" data-search="migraine triptan prophylaxis propranolol topiramate cg150 moh"><span class="ac-icon">🧠</span><span class="ac-text"><b>Migraine</b><small>Acute + prophylaxis + MOH avoidance · CG150</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/tension-headache.html" data-search="tension headache tension-type cg150 analgesia"><span class="ac-icon">🧠</span><span class="ac-text"><b>Tension-Type Headache</b><small>Reassurance + analgesia + MOH · CG150</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/restless-legs.html" data-search="restless legs syndrome rls"><span class="ac-icon">🦵</span><span class="ac-text"><b>Restless Legs Syndrome</b><small>Iron · triggers · dopaminergic caution</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/dementia.html" data-search="dementia alzheimer"><span class="ac-icon">🧠</span><span class="ac-text"><b>Dementia</b><small>Cognitive enhancers · BPSD · support</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/bells-palsy.html" data-search="bells palsy facial nerve palsy lmn prednisolone"><span class="ac-icon">😐</span><span class="ac-text"><b>Bell's Palsy</b><small>Early prednisolone + eye protection · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/parkinsons.html" data-search="parkinsons disease levodopa shared care ng71"><span class="ac-icon">🧠</span><span class="ac-text"><b>Parkinson's Disease</b><small>Shared care · on-time meds · non-motor · NG71</small></span><span class="ac-arrow">→</span></a>
+                  <a class="alg-card" href="management/essential-tremor.html" data-search="essential tremor action tremor propranolol primidone parkinsons benign"><span class="ac-icon">🤝</span><span class="ac-text"><b>Essential Tremor</b><small>Propranolol / primidone · vs Parkinson's</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/neuropathic-pain.html" data-search="neuropathic pain ng173 amitriptyline duloxetine gabapentin pregabalin carbamazepine trigeminal"><span class="ac-icon">⚡</span><span class="ac-text"><b>Neuropathic Pain</b><small>NG173 ladder · 4 first-line · switch not stack</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/opioid-prescribing.html" data-search="opioids opioid prescribing deprescribing morphine oxycodone buprenorphine fentanyl tapentadol codeine tramadol chronic non-cancer pain taper oral morphine equivalent ome 120mg opioids aware faculty pain medicine"><span class="ac-icon">💊</span><span class="ac-text"><b>Opioids (Non-Cancer Pain)</b><small>Trial · 120mg/day OME cap · named opioids · taper &amp; stop · Opioids Aware</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/sensory-neuropathy.html" data-search="sensory neuropathy peripheral diabetic b12 glove stocking foot care ng173"><span class="ac-icon">🦶</span><span class="ac-text"><b>Sensory Neuropathy</b><small>Find cause · foot care · NG173 pain</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/trigeminal-neuralgia.html" data-search="trigeminal neuralgia facial pain carbamazepine microvascular decompression ng173"><span class="ac-icon">⚡</span><span class="ac-text"><b>Trigeminal Neuralgia</b><small>Carbamazepine · MRI red flags · NG173</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/post-herpetic-neuralgia.html" data-search="post herpetic neuralgia phn shingles neuropathic pain capsaicin lidocaine ng173"><span class="ac-icon">⚡</span><span class="ac-text"><b>Post-Herpetic Neuralgia</b><small>NG173 ladder · topical · prevent</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/carpal-tunnel-syndrome.html" data-search="carpal tunnel syndrome median nerve splint steroid injection nerve conduction decompression"><span class="ac-icon">🤚</span><span class="ac-text"><b>Carpal Tunnel Syndrome</b><small>Splint · injection · decompression</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/me-cfs.html" data-search="me cfs chronic fatigue syndrome post exertional malaise pacing energy management ng206"><span class="ac-icon">🔋</span><span class="ac-text"><b>ME/CFS</b><small>Pacing · avoid GET · NG206</small></span><span class="ac-arrow">→</span></a>
+</div>
+      </section>
+
+      <section class="alg-group" data-group="gastroenterology">
+        <div class="alg-group-head"><span class="agh-icon">🫃</span><h2>Gastroenterology</h2><span class="agh-count">14 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/ibs.html" data-search="ibs irritable bowel syndrome"><span class="ac-icon">🫃</span><span class="ac-text"><b>Irritable Bowel Syndrome</b><small>Diet (FODMAP) · antispasmodics · neuromodulators</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/ulcerative-colitis.html" data-search="ulcerative colitis uc ibd"><span class="ac-icon">🔴</span><span class="ac-text"><b>Ulcerative Colitis</b><small>5-ASA maintenance · flare management</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/crohns-disease.html" data-search="crohns disease ibd"><span class="ac-icon">🟣</span><span class="ac-text"><b>Crohn's Disease</b><small>Shared-care maintenance · flare pathway</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/diverticular-disease.html" data-search="diverticular disease diverticulosis"><span class="ac-icon">🟢</span><span class="ac-text"><b>Diverticular Disease</b><small>Fibre · symptom control · safety net</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/constipation-adult.html" data-search="constipation adult"><span class="ac-icon">🟤</span><span class="ac-text"><b>Constipation (Adult)</b><small>Laxative ladder · review</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/aphthous-ulcer.html" data-search="aphthous ulcer mouth ulcer recurrent stomatitis"><span class="ac-icon">👄</span><span class="ac-text"><b>Aphthous Ulcer</b><small>Symptomatic relief + 3-week cancer rule · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/haemorrhoids.html" data-search="haemorrhoids piles rectal bleeding banding"><span class="ac-icon">🩸</span><span class="ac-text"><b>Haemorrhoids</b><small>Fibre + topical + procedures · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/anal-fissure.html" data-search="anal fissure gtn diltiazem"><span class="ac-icon">🩸</span><span class="ac-text"><b>Anal Fissure</b><small>Stool softening + GTN/diltiazem · CKS</small></span><span class="ac-arrow">→</span></a>
+                  <a class="alg-card" href="management/gord.html" data-search="gord acid reflux heartburn ppi omeprazole h pylori barretts ng12 cg184 dyspepsia"><span class="ac-icon">🔥</span><span class="ac-text"><b>GORD / Acid Reflux</b><small>Lifestyle · PPI step-down · H. pylori · ng12</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/ppi-prescribing.html" data-search="ppi proton pump inhibitor prescribing deprescribing omeprazole lansoprazole esomeprazole pantoprazole gastroprotection nsaid clopidogrel step down stop rebound cg184 medicines optimisation"><span class="ac-icon">💊</span><span class="ac-text"><b>PPI Prescribing &amp; Deprescribing</b><small>Cheap first-line · gastroprotection · step-down/stop · rebound · CG184</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/gastroenteritis.html" data-search="gastroenteritis diarrhoea vomiting oral rehydration food poisoning norovirus campylobacter exclusion cks"><span class="ac-icon">🦠</span><span class="ac-text"><b>Gastroenteritis</b><small>Oral rehydration · avoid antibiotics · exclusion 48h · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/gilberts-syndrome.html" data-search="gilberts syndrome unconjugated bilirubin jaundice benign ugt1a1 reassurance liver cks"><span class="ac-icon">🟡</span><span class="ac-text"><b>Gilbert's Syndrome</b><small>Benign unconjugated hyperbilirubinaemia · reassure · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/cholecystitis.html" data-search="cholecystitis gallstones biliary colic cholangitis murphy ultrasound cholecystectomy cg188"><span class="ac-icon">🫀</span><span class="ac-text"><b>Cholecystitis & Gallstones</b><small>Admit acute · USS · lap cholecystectomy · CG188</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/coeliac-disease.html" data-search="coeliac celiac disease ttg iga gluten free diet duodenal biopsy ng20 dietitian"><span class="ac-icon">🌾</span><span class="ac-text"><b>Coeliac Disease</b><small>Test on gluten · biopsy · gluten-free diet · NG20</small></span><span class="ac-arrow">→</span></a>
+</div>
+      </section>
+
+      <section class="alg-group" data-group="musculoskeletal">
+        <div class="alg-group-head"><span class="agh-icon">🦴</span><h2>Musculoskeletal &amp; Rheumatology</h2><span class="agh-count">16 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/rheumatoid-arthritis.html" data-search="rheumatoid arthritis ra inflammatory polyarthritis methotrexate dmard rheumatoid factor anti-ccp shared care early referral ng100"><span class="ac-icon">🦴</span><span class="ac-text"><b>Rheumatoid Arthritis</b><small>Refer early · DMARD shared care</small></span></a>
+          <a class="alg-card" href="management/giant-cell-arteritis.html" data-search="giant cell arteritis gca temporal arteritis headache jaw claudication visual loss prednisolone esr crp pmr bsr emergency"><span class="ac-icon">🧠</span><span class="ac-text"><b>Giant Cell Arteritis</b><small>Sight-threatening · steroid NOW</small></span></a>
+          <a class="alg-card" href="management/osteoarthritis.html" data-search="osteoarthritis oa joint"><span class="ac-icon">🦵</span><span class="ac-text"><b>Osteoarthritis</b><small>Exercise-first · topical/oral analgesia · NG226</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/sciatica.html" data-search="sciatica low back radicular"><span class="ac-icon">🦵</span><span class="ac-text"><b>Sciatica</b><small>Activity · neuropathic options · red flags · NG59</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/leg-cramps.html" data-search="leg cramps nocturnal cramps"><span class="ac-icon">🦵</span><span class="ac-text"><b>Leg Cramps</b><small>Stretching · review drugs · quinine caution</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/tmd.html" data-search="temporomandibular disorders tmd jaw pain bruxism"><span class="ac-icon">😬</span><span class="ac-text"><b>TMDs</b><small>Self-care + analgesia + dental splint · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/polymyalgia-rheumatica.html" data-search="polymyalgia rheumatica pmr steroid prednisolone gca bsr"><span class="ac-icon">🦴</span><span class="ac-text"><b>Polymyalgia Rheumatica</b><small>Steroid taper + bone protection + GCA net · BSR</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/raynauds.html" data-search="raynauds phenomenon vasospasm cold nifedipine"><span class="ac-icon">🥶</span><span class="ac-text"><b>Raynaud's Phenomenon</b><small>Primary vs secondary · warmth + nifedipine · CKS</small></span><span class="ac-arrow">→</span></a>          <a class="alg-card" href="management/ankylosing-spondylitis.html" data-search="ankylosing spondylitis axial spondyloarthritis spa nsaid biologic hla-b27 ng65"><span class="ac-icon">🦴</span><span class="ac-text"><b>Ankylosing Spondylitis</b><small>Exercise + NSAID → biologic · NG65</small></span><span class="ac-arrow">→</span></a>
+
+                  <a class="alg-card" href="management/plantar-fasciitis.html" data-search="plantar fasciitis heel pain fascia stretching orthotics insole shockwave cks"><span class="ac-icon">🦶</span><span class="ac-text"><b>Plantar Fasciitis</b><small>First-step heel pain · stretching · footwear · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/greater-trochanteric-pain-syndrome.html" data-search="greater trochanteric pain syndrome gtps gluteal tendinopathy lateral hip bursitis physio cks"><span class="ac-icon">🦵</span><span class="ac-text"><b>Greater Trochanteric Pain Syndrome</b><small>Lateral hip pain · load management · physio · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/osgood-schlatter.html" data-search="osgood schlatter disease tibial tuberosity adolescent knee pain apophysitis activity modification cks"><span class="ac-icon">🦵</span><span class="ac-text"><b>Osgood-Schlatter Disease</b><small>Adolescent knee · activity modification · self-limiting · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/achilles-tendinopathy.html" data-search="achilles tendinopathy heel cord eccentric loading rupture simmonds calf squeeze"><span class="ac-icon">🦵</span><span class="ac-text"><b>Achilles Tendinopathy</b><small>Load mgmt · exclude rupture · no steroid</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/tennis-elbow.html" data-search="tennis elbow lateral epicondylalgia epicondylitis brace injection cks"><span class="ac-icon">💪</span><span class="ac-text"><b>Tennis Elbow</b><small>Activity mod · exercise · self-limiting</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/mortons-neuroma.html" data-search="mortons neuroma forefoot pain mulder click metatarsal pad injection cks"><span class="ac-icon">🦶</span><span class="ac-text"><b>Morton's Neuroma</b><small>Footwear · injection · surgery</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/shoulder-pain.html" data-search="shoulder pain rotator cuff frozen adhesive capsulitis painful arc injection physiotherapy cks"><span class="ac-icon">💪</span><span class="ac-text"><b>Shoulder Pain</b><small>Rotator cuff / frozen · rehab · injection</small></span><span class="ac-arrow">→</span></a>
+</div>
+      </section>
+
+      <section class="alg-group" data-group="womens-health">
+        <div class="alg-group-head"><span class="agh-icon">🌸</span><h2>Women's Health</h2><span class="agh-count">15 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/pcos.html" data-search="pcos polycystic ovary syndrome"><span class="ac-icon">🌸</span><span class="ac-text"><b>PCOS</b><small>Weight · cycle control · hirsutism · fertility</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/menopause.html" data-search="menopause hrt ng23"><span class="ac-icon">🌸</span><span class="ac-text"><b>Menopause</b><small>HRT selection · risks · review · NG23</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/hrt-prescribing.html" data-search="hrt prescribing hormone replacement therapy oestrogen progestogen sequential continuous combined transdermal patch gel utrogestan mirena side effects switching bleeding sel bms ng23"><span class="ac-icon">💊</span><span class="ac-text"><b>HRT Prescribing — Step-by-Step</b><small>Choose regimen · named preparations · switching · side effects · SEL/BMS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/nausea-vomiting-pregnancy.html" data-search="nausea vomiting pregnancy nvp hyperemesis gravidarum puqe"><span class="ac-icon">🤰</span><span class="ac-text"><b>Nausea/Vomiting in Pregnancy</b><small>Antiemetic ladder + hyperemesis · RCOG</small></span><span class="ac-arrow">→</span></a>
+                  <a class="alg-card" href="management/menorrhagia.html" data-search="menorrhagia heavy menstrual bleeding hmb lng ius mirena tranexamic acid fibroids ng88"><span class="ac-icon">🩸</span><span class="ac-text"><b>Heavy Menstrual Bleeding</b><small>FBC · LNG-IUS first-line · tranexamic acid · NG88</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/contraception.html" data-search="contraception ukmec larc coc pop implant iud ius emergency contraception fsrh"><span class="ac-icon">💊</span><span class="ac-text"><b>Contraception</b><small>UKMEC screen · LARC-led · emergency contraception · FSRH</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/hypertension-pregnancy.html" data-search="hypertension pregnancy pre-eclampsia eclampsia labetalol nifedipine aspirin ng133"><span class="ac-icon">🤰</span><span class="ac-text"><b>Hypertension in Pregnancy</b><small>Labetalol · aspirin prophylaxis · pre-eclampsia · NG133</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/infertility.html" data-search="infertility subfertility conceive semen analysis progesterone ovulation ivf cg156"><span class="ac-icon">👶</span><span class="ac-text"><b>Infertility</b><small>Investigate after 1 year · semen + progesterone · CG156</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/vaginal-discharge.html" data-search="vaginal discharge bacterial vaginosis candida thrush trichomonas pid metronidazole bashh"><span class="ac-icon">🌸</span><span class="ac-text"><b>Vaginal Discharge</b><small>BV · candida · trichomonas · PID + cancer red flags</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/bacterial-vaginosis.html" data-search="bacterial vaginosis bv metronidazole fishy discharge clue cells gardnerella bashh"><span class="ac-icon">🌸</span><span class="ac-text"><b>Bacterial Vaginosis</b><small>Metronidazole · not an STI · BASHH</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/pruritus-vulvae.html" data-search="pruritus vulvae vulval itch lichen sclerosus candida emollient vin cks"><span class="ac-icon">🌸</span><span class="ac-text"><b>Pruritus Vulvae</b><small>Examine · treat cause · don’t miss VIN</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/pelvic-inflammatory-disease.html" data-search="pelvic inflammatory disease pid empirical antibiotics ceftriaxone doxycycline metronidazole fertility bashh"><span class="ac-icon">🌸</span><span class="ac-text"><b>Pelvic Inflammatory Disease</b><small>Treat empirically · protect fertility · BASHH</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/dysmenorrhoea.html" data-search="dysmenorrhoea period pain nsaid mefenamic coc lng-ius endometriosis ng73"><span class="ac-icon">🌸</span><span class="ac-text"><b>Dysmenorrhoea</b><small>NSAID / hormonal · spot secondary</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/mastitis-breast-abscess.html" data-search="mastitis breast abscess lactational flucloxacillin drainage inflammatory breast cancer cks"><span class="ac-icon">🌸</span><span class="ac-text"><b>Mastitis & Breast Abscess</b><small>Keep feeding · antibiotics · drain abscess</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/premenstrual-syndrome.html" data-search="premenstrual syndrome pms pmdd symptom diary ssri drospirenone rcog"><span class="ac-icon">🌸</span><span class="ac-text"><b>Premenstrual Syndrome</b><small>Symptom diary · SSRI · hormonal</small></span><span class="ac-arrow">→</span></a>
+</div>
+      </section>
+
+      <section class="alg-group" data-group="urology">
+        <div class="alg-group-head"><span class="agh-icon">🚹</span><h2>Urology &amp; Men's Health</h2><span class="agh-count">13 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/male-luts.html" data-search="male luts lower urinary tract symptoms bph"><span class="ac-icon">🚿</span><span class="ac-text"><b>Male LUTS</b><small>Alpha-blocker · 5-ARI · anticholinergic</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/female-urinary-incontinence.html" data-search="female urinary incontinence stress urge"><span class="ac-icon">💧</span><span class="ac-text"><b>Female Urinary Incontinence</b><small>PFMT · bladder training · drugs</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/erectile-dysfunction.html" data-search="erectile dysfunction ed pde5"><span class="ac-icon">💊</span><span class="ac-text"><b>Erectile Dysfunction</b><small>CV risk · PDE5 inhibitors · referral</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/premature-ejaculation.html" data-search="premature ejaculation pe"><span class="ac-icon">🩺</span><span class="ac-text"><b>Premature Ejaculation</b><small>Behavioural · topical · SSRI</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/varicocele.html" data-search="varicocele scrotal swelling bag of worms fertility baus"><span class="ac-icon">🔵</span><span class="ac-text"><b>Varicocele</b><small>Reassure + red-flag imaging + fertility · BAUS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/balanitis.html" data-search="balanitis candidal foreskin diabetes"><span class="ac-icon">🔬</span><span class="ac-text"><b>Balanitis</b><small>Hygiene + cause-directed treatment · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/uti-women.html" data-search="uti urinary tract infection women cystitis ng109"><span class="ac-icon">💧</span><span class="ac-text"><b>UTI in Women</b><small>Empirical antibiotics + recurrent prevention · NG109</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/uti-men.html" data-search="uti urinary tract infection men prostatitis ng112"><span class="ac-icon">🚹</span><span class="ac-text"><b>UTI in Men</b><small>Complicated by default · prostate-aware · NG112</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/uti-children.html" data-search="uti urinary tract infection children paediatric ng224"><span class="ac-icon">🧒</span><span class="ac-text"><b>UTI in Children</b><small>Sample + antibiotics + imaging rules · NG224</small></span><span class="ac-arrow">→</span></a>          <a class="alg-card" href="management/benign-prostate-enlargement.html" data-search="benign prostate enlargement bph bpe luts alpha-blocker finasteride ng97"><span class="ac-icon">🚹</span><span class="ac-text"><b>Benign Prostate Enlargement</b><small>Conservative → alpha-blocker/5-ARI · NG97</small></span><span class="ac-arrow">→</span></a>
+
+                  <a class="alg-card" href="management/prostatitis.html" data-search="prostatitis acute chronic cpps quinolone alpha blocker pelvic pain cks"><span class="ac-icon">🚹</span><span class="ac-text"><b>Prostatitis</b><small>Prolonged abx (acute) · multimodal (chronic)</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/renal-colic.html" data-search="renal colic ureteric stones nsaid ct kub tamsulosin met obstructed infected ng118"><span class="ac-icon">🪨</span><span class="ac-text"><b>Renal Colic & Stones</b><small>NSAID · CT KUB · obstructed/infected = emergency</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/undescended-testis.html" data-search="undescended testis cryptorchidism orchidopexy retractile impalpable cks"><span class="ac-icon">🚹</span><span class="ac-text"><b>Undescended Testis</b><small>Orchidopexy · vs retractile · CKS</small></span><span class="ac-arrow">→</span></a>
+</div>
+      </section>
+
+      <section class="alg-group" data-group="children">
+        <div class="alg-group-head"><span class="agh-icon">🧒</span><h2>Children</h2><span class="agh-count">6 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/nocturnal-enuresis.html" data-search="nocturnal enuresis bedwetting child"><span class="ac-icon">🛏️</span><span class="ac-text"><b>Nocturnal Enuresis</b><small>Alarm · desmopressin · NG111</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/constipation-child.html" data-search="constipation children child paediatric"><span class="ac-icon">🟤</span><span class="ac-text"><b>Constipation (Child)</b><small>Disimpaction · maintenance · NG99</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/cmpa.html" data-search="cow milk protein allergy cmpa infant"><span class="ac-icon">🍼</span><span class="ac-text"><b>Cow's Milk Protein Allergy</b><small>Elimination · formula ladder · reintroduction</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/infant-reflux.html" data-search="reflux infants gor gord baby"><span class="ac-icon">🍼</span><span class="ac-text"><b>Reflux in Infants</b><small>Positioning · feeds · stepwise · NG1</small></span><span class="ac-arrow">→</span></a>
+                  <a class="alg-card" href="management/asthma-children.html" data-search="asthma children paediatric saba ics spacer mart action plan acute ng245 bts sign"><span class="ac-icon">🫁</span><span class="ac-text"><b>Asthma in Children</b><small>Stepwise ICS · spacer · action plan · acute attack · NG245</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/nappy-rash.html" data-search="nappy rash irritant dermatitis barrier candida hydrocortisone cks"><span class="ac-icon">🧒</span><span class="ac-text"><b>Nappy Rash</b><small>Barrier + nappy care · antifungal for candida</small></span><span class="ac-arrow">→</span></a>
+</div>
+      </section>
+
+      <section class="alg-group" data-group="allergy">
+        <div class="alg-group-head"><span class="agh-icon">🤧</span><h2>Allergy &amp; Immunology</h2><span class="agh-count">3 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/allergic-rhinitis.html" data-search="allergic rhinitis hay fever intranasal steroid antihistamine bsaci"><span class="ac-icon">👃</span><span class="ac-text"><b>Allergic Rhinitis</b><small>Antihistamine → intranasal steroid · BSACI</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/urticaria.html" data-search="urticaria hives angioedema antihistamine bsaci"><span class="ac-icon">🌡️</span><span class="ac-text"><b>Urticaria</b><small>Antihistamine up-dosing + angioedema net · BSACI</small></span><span class="ac-arrow">→</span></a>
+                  <a class="alg-card" href="management/angioedema.html" data-search="angioedema airway anaphylaxis ace inhibitor bradykinin c1 inhibitor hereditary antihistamine"><span class="ac-icon">💢</span><span class="ac-text"><b>Angioedema</b><small>Airway first · histaminergic vs bradykinin · ACEi · C1-INH</small></span><span class="ac-arrow">→</span></a>
+</div>
+      </section>
+
+      <section class="alg-group" data-group="infections">
+        <div class="alg-group-head"><span class="agh-icon">🦠</span><h2>Infections</h2><span class="agh-count">7 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/cellulitis.html" data-search="cellulitis erysipelas skin soft tissue infection eron flucloxacillin necrotising fasciitis tinea pedis portal ng141"><span class="ac-icon">🦠</span><span class="ac-text"><b>Cellulitis</b><small>Eron class · flucloxacillin · treat the portal</small></span></a>
+          <a class="alg-card" href="management/threadworm.html" data-search="threadworm enterobiasis pinworm mebendazole"><span class="ac-icon">🪱</span><span class="ac-text"><b>Threadworm</b><small>Whole-household treatment + hygiene · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/lyme-disease.html" data-search="lyme disease erythema migrans tick doxycycline ng95"><span class="ac-icon">🦟</span><span class="ac-text"><b>Lyme Disease</b><small>Treat EM clinically · doxycycline · NG95</small></span><span class="ac-arrow">→</span></a>
+                  <a class="alg-card" href="management/hepatitis-a.html" data-search="hepatitis a hav notifiable faecal oral igm supportive vaccine immunoglobulin ukhsa travel"><span class="ac-icon">🦠</span><span class="ac-text"><b>Hepatitis A</b><small>Notifiable · supportive · PEP + vaccine · UKHSA</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/malaria-prophylaxis.html" data-search="malaria prophylaxis abcd atovaquone proguanil doxycycline mefloquine travel bite avoidance"><span class="ac-icon">🦟</span><span class="ac-text"><b>Malaria Prophylaxis</b><small>ABCD · region-specific · fever after travel = urgent</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/whooping-cough.html" data-search="whooping cough pertussis notifiable macrolide maternal vaccine 100 day cough ukhsa"><span class="ac-icon">🦠</span><span class="ac-text"><b>Whooping Cough</b><small>Notify · macrolide · protect infants</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/glandular-fever.html" data-search="glandular fever infectious mononucleosis ebv monospot amoxicillin rash splenic rupture cks"><span class="ac-icon">🦠</span><span class="ac-text"><b>Glandular Fever</b><small>Supportive · avoid amoxicillin + contact sport</small></span><span class="ac-arrow">→</span></a>
+</div>
+      </section>
+
+      <section class="alg-group" data-group="dermatology">
+        <div class="alg-group-head"><span class="agh-icon">🧴</span><h2>Dermatology</h2><span class="agh-count">18 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/acne.html" data-search="acne vulgaris spots topical retinoid benzoyl peroxide isotretinoin ng198"><span class="ac-icon">🧴</span><span class="ac-text"><b>Acne Vulgaris</b><small>Topical → oral → isotretinoin referral · NG198</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/eczema.html" data-search="eczema atopic dermatitis emollient topical steroid cg57"><span class="ac-icon">🧴</span><span class="ac-text"><b>Atopic Eczema</b><small>Emollients + TCS + infection · CG57</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/psoriasis.html" data-search="psoriasis plaque topical vitamin d psoriatic arthritis cg153"><span class="ac-icon">🧴</span><span class="ac-text"><b>Psoriasis</b><small>Topical ladder by site + PsA/CVD screen · CG153</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/rosacea.html" data-search="rosacea flushing papulopustular ivermectin ocular"><span class="ac-icon">🧴</span><span class="ac-text"><b>Rosacea</b><small>Feature-led: triggers · topicals · oral · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/hyperhidrosis.html" data-search="hyperhidrosis sweating"><span class="ac-icon">💧</span><span class="ac-text"><b>Hyperhidrosis</b><small>Antiperspirants · iontophoresis · referral</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/hirsutism.html" data-search="hirsutism excess hair"><span class="ac-icon">🧔‍♀️</span><span class="ac-text"><b>Hirsutism</b><small>Cosmetic · COC · antiandrogens</small></span><span class="ac-arrow">→</span></a>          <a class="alg-card" href="management/bullous-pemphigoid.html" data-search="bullous pemphigoid blistering autoimmune skin steroid dermatology"><span class="ac-icon">🫧</span><span class="ac-text"><b>Bullous Pemphigoid</b><small>Refer to confirm + steroid shared care · BAD</small></span><span class="ac-arrow">→</span></a>
+
+                  <a class="alg-card" href="management/anogenital-warts.html" data-search="anogenital warts genital warts hpv podophyllotoxin imiquimod cryotherapy gum bashh vaccine"><span class="ac-icon">🔬</span><span class="ac-text"><b>Anogenital Warts</b><small>HPV 6/11 · GUM + STI screen · topical/cryo · vaccine</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/male-pattern-hair-loss.html" data-search="male pattern hair loss androgenetic alopecia minoxidil finasteride balding cks"><span class="ac-icon">💈</span><span class="ac-text"><b>Male Pattern Hair Loss</b><small>Reassure · minoxidil / finasteride</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/female-pattern-hair-loss.html" data-search="female pattern hair loss androgenetic alopecia minoxidil ferritin thyroid cks"><span class="ac-icon">💇</span><span class="ac-text"><b>Female Pattern Hair Loss</b><small>Screen · minoxidil · exclude virilisation</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/chilblains.html" data-search="chilblains perniosis cold warmth nifedipine connective tissue cks"><span class="ac-icon">🥶</span><span class="ac-text"><b>Chilblains</b><small>Keep warm · skin care · nifedipine if severe</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/scabies.html" data-search="scabies mite permethrin malathion contacts itch burrows ivermectin cks"><span class="ac-icon">🕷️</span><span class="ac-text"><b>Scabies</b><small>Permethrin ×2 · treat ALL contacts</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/seborrhoeic-dermatitis.html" data-search="seborrhoeic dermatitis dandruff malassezia ketoconazole scalp face hiv cks"><span class="ac-icon">🧴</span><span class="ac-text"><b>Seborrhoeic Dermatitis</b><small>Antifungal + anti-inflammatory · maintenance</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/shingles.html" data-search="shingles herpes zoster aciclovir ophthalmic hutchinson ramsay hunt vaccine cks"><span class="ac-icon">⚡</span><span class="ac-text"><b>Shingles (Herpes Zoster)</b><small>Antiviral ≤72h · watch the eye · vaccine</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/impetigo.html" data-search="impetigo hydrogen peroxide fusidic acid flucloxacillin exclusion ng153"><span class="ac-icon">🧴</span><span class="ac-text"><b>Impetigo</b><small>Localised topical · widespread oral · NG153</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/fungal-skin-infection.html" data-search="fungal skin tinea ringworm dermatophyte terbinafine onychomycosis tinea capitis incognito cks"><span class="ac-icon">🍄</span><span class="ac-text"><b>Fungal Skin Infection</b><small>Topical · oral for scalp/nail · avoid steroid alone</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/pityriasis-rosea.html" data-search="pityriasis rosea herald patch christmas tree self limiting syphilis cks"><span class="ac-icon">🧴</span><span class="ac-text"><b>Pityriasis Rosea</b><small>Self-limiting · reassure · exclude syphilis</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/pityriasis-versicolor.html" data-search="pityriasis versicolor malassezia ketoconazole hypopigmentation recurrence cks"><span class="ac-icon">🍄</span><span class="ac-text"><b>Pityriasis Versicolor</b><small>Antifungal · pigment recovers slowly</small></span><span class="ac-arrow">→</span></a>
+</div>
+      </section>
+
+      <section class="alg-group" data-group="ent-vestibular">
+        <div class="alg-group-head"><span class="agh-icon">👂</span><h2>ENT &amp; Vestibular</h2><span class="agh-count">6 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/sore-throat.html" data-search="sore throat acute tonsillitis pharyngitis feverpain centor phenoxymethylpenicillin glandular fever quinsy stewardship ng84"><span class="ac-icon">😦</span><span class="ac-text"><b>Sore Throat &amp; Tonsillitis</b><small>FeverPAIN/Centor · stewardship</small></span></a>
+          <a class="alg-card" href="management/otitis-media-externa.html" data-search="otitis media externa earache aom glue ear ome amoxicillin ear drops mastoiditis malignant otitis externa ng91 ng98"><span class="ac-icon">👂</span><span class="ac-text"><b>Otitis Media &amp; Externa</b><small>AOM vs OE · mastoiditis red flag</small></span></a>
+          <a class="alg-card" href="management/bppv.html" data-search="bppv benign paroxysmal positional vertigo dix hallpike epley"><span class="ac-icon">🌀</span><span class="ac-text"><b>BPPV</b><small>Dix–Hallpike + Epley manoeuvre · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/vestibular-neuronitis.html" data-search="vestibular neuronitis labyrinthitis vertigo rehab"><span class="ac-icon">🌀</span><span class="ac-text"><b>Vestibular Neuronitis</b><small>Short-term relief + rehab + stroke exclusion · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/menieres.html" data-search="menieres disease vertigo hearing loss tinnitus betahistine"><span class="ac-icon">👂</span><span class="ac-text"><b>Ménière's Disease</b><small>Acute relief + betahistine/salt + ENT · CKS</small></span><span class="ac-arrow">→</span></a>
+                  <a class="alg-card" href="management/sinusitis.html" data-search="sinusitis rhinosinusitis acute chronic nasal intranasal steroid antibiotic ng79 orbital"><span class="ac-icon">👃</span><span class="ac-text"><b>Sinusitis</b><small>Mostly viral · INCS >10d · antibiotics rarely · NG79</small></span><span class="ac-arrow">→</span></a>
+</div>
+      </section>
+
+      <section class="alg-group" data-group="ophthalmology">
+        <div class="alg-group-head"><span class="agh-icon">👁️</span><h2>Ophthalmology</h2><span class="agh-count">7 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/dry-eye-disease.html" data-search="dry eye disease lubricants artificial tears blepharitis meibomian preservative free sjogren cks"><span class="ac-icon">💧</span><span class="ac-text"><b>Dry Eye Disease</b><small>Lubricants ladder + lid hygiene · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/glaucoma.html" data-search="glaucoma open angle acute angle closure intraocular pressure latanoprost prostaglandin ng81"><span class="ac-icon">👁️</span><span class="ac-text"><b>Glaucoma</b><small>Acute angle-closure emergency · chronic shared care · NG81</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/allergic-conjunctivitis.html" data-search="allergic conjunctivitis itchy eye antihistamine mast cell stabiliser olopatadine sodium cromoglicate cks"><span class="ac-icon">👁️</span><span class="ac-text"><b>Allergic Conjunctivitis</b><small>Itch · avoidance + antihistamine/MCS · CKS</small></span><span class="ac-arrow">→</span></a>
+                  <a class="alg-card" href="management/blepharitis.html" data-search="blepharitis lid margin meibomian warm compress lid hygiene chloramphenicol doxycycline cks"><span class="ac-icon">👁️</span><span class="ac-text"><b>Blepharitis</b><small>Lid hygiene + warm compress · antibiotic/doxycycline · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/macular-degeneration.html" data-search="macular degeneration amd wet dry anti-vegf drusen amsler metamorphopsia ng82"><span class="ac-icon">👁️</span><span class="ac-text"><b>Macular Degeneration (AMD)</b><small>Urgent wet AMD referral · dry support · NG82</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/chalazion.html" data-search="chalazion meibomian cyst eyelid lump warm compress incision curettage stye hordeolum cks"><span class="ac-icon">👁️</span><span class="ac-text"><b>Chalazion (Meibomian Cyst)</b><small>Warm compress · refer persistent · CKS</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/uveitis.html" data-search="uveitis iritis anterior painful red eye photophobia hla-b27 same day ophthalmology cks"><span class="ac-icon">👁️</span><span class="ac-text"><b>Uveitis</b><small>Same-day referral · painful red eye · systemic links · CKS</small></span><span class="ac-arrow">→</span></a>
+</div>
+      </section>
+
+      <section class="alg-group" data-group="lifestyle">
+        <div class="alg-group-head"><span class="agh-icon">🌱</span><h2>Lifestyle &amp; Prevention</h2><span class="agh-count">2 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/smoking-cessation.html" data-search="smoking cessation stop smoking very brief advice varenicline nrt nicotine vape bupropion ng209"><span class="ac-icon">🚭</span><span class="ac-text"><b>Smoking Cessation</b><small>Very Brief Advice · varenicline / combo NRT / vape · NG209</small></span><span class="ac-arrow">→</span></a>
+                  <a class="alg-card" href="management/alcohol-problem-drinking.html" data-search="alcohol problem drinking misuse audit brief intervention chlordiazepoxide thiamine detox cg115"><span class="ac-icon">🍷</span><span class="ac-text"><b>Alcohol — Problem Drinking</b><small>AUDIT · brief intervention · safe detox</small></span><span class="ac-arrow">→</span></a>
+</div>
+      </section>
+
+      <section class="alg-group" data-group="sexual-health">
+        <div class="alg-group-head"><span class="agh-icon">❤️</span><h2>Sexual Health</h2><span class="agh-count">6 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/genital-herpes.html" data-search="genital herpes hsv aciclovir valaciclovir suppressive gum bashh"><span class="ac-icon">🔴</span><span class="ac-text"><b>Genital Herpes</b><small>Aciclovir · episodic/suppressive · BASHH</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/hiv.html" data-search="hiv test art antiretroviral u=u prep pep seroconversion bhiva"><span class="ac-icon">🧬</span><span class="ac-text"><b>HIV</b><small>Test widely · ART · U=U · BHIVA</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/chlamydia.html" data-search="chlamydia naat doxycycline partner notification ncsp bashh"><span class="ac-icon">🦠</span><span class="ac-text"><b>Chlamydia</b><small>NAAT · doxycycline · partner notification</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/gonorrhoea.html" data-search="gonorrhoea ceftriaxone culture resistance test of cure gum bashh"><span class="ac-icon">🦠</span><span class="ac-text"><b>Gonorrhoea</b><small>Ceftriaxone IM · culture · test of cure</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/trichomoniasis.html" data-search="trichomoniasis trichomonas metronidazole strawberry cervix gum bashh"><span class="ac-icon">🦠</span><span class="ac-text"><b>Trichomoniasis</b><small>Metronidazole · treat partner · BASHH</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/urethritis-male.html" data-search="urethritis male ngu non-gonococcal doxycycline ceftriaxone mycoplasma genitalium bashh"><span class="ac-icon">🚹</span><span class="ac-text"><b>Urethritis (Male)</b><small>NGU doxycycline · gonococcal ceftriaxone</small></span><span class="ac-arrow">→</span></a>
+        </div>
+      </section>
+
+      <section class="alg-group" data-group="haematology">
+        <div class="alg-group-head"><span class="agh-icon">🩸</span><h2>Haematology</h2><span class="agh-count">3 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/iron-deficiency-anaemia.html" data-search="iron deficiency anaemia ida ferritin microcytic oral iron colorectal cancer ng12 coeliac menorrhagia ng8 bsg"><span class="ac-icon">🩸</span><span class="ac-text"><b>Iron-Deficiency Anaemia</b><small>Ferritin · find the cause (NG12) · iron</small></span></a>
+          <a class="alg-card" href="management/sickle-cell-disease.html" data-search="sickle cell disease penicillin hydroxycarbamide crisis acute chest syndrome folate shared care"><span class="ac-icon">🩸</span><span class="ac-text"><b>Sickle Cell Disease</b><small>Prophylaxis · fast crisis analgesia · shared care</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/neutropenic-sepsis.html" data-search="neutropenic sepsis chemotherapy fever emergency admission iv antibiotics ng191 acute oncology"><span class="ac-icon">🩸</span><span class="ac-text"><b>Neutropenic Sepsis</b><small>Emergency — admit NOW · IV abx ≤1h</small></span><span class="ac-arrow">→</span></a>
+        </div>
+      </section>
+
+      <section class="alg-group" data-group="palliative">
+        <div class="alg-group-head"><span class="agh-icon">🕊️</span><h2>Palliative &amp; End of Life Care</h2><span class="agh-count">9 live</span></div>
+        <div class="alg-grid">
+          <a class="alg-card" href="management/palliative-pain.html" data-search="palliative pain opioids who analgesic ladder morphine oxycodone fentanyl buprenorphine alfentanil opioid conversion breakthrough syringe driver adjuvant neuropathic naloxone gmmmg end of life"><span class="ac-icon">💊</span><span class="ac-text"><b>Palliative Pain &amp; Opioids</b><small>WHO ladder · strong-opioid choice · conversion charts · breakthrough · adjuvants</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/palliative-nausea-vomiting.html" data-search="palliative nausea vomiting antiemetic cyclizine haloperidol metoclopramide levomepromazine ondansetron hyoscine cause based syringe driver"><span class="ac-icon">🤢</span><span class="ac-text"><b>Nausea &amp; Vomiting</b><small>Cause-based antiemetic choice · receptor sites · syringe driver</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/palliative-constipation.html" data-search="palliative constipation laxative opioid induced senna macrogol docusate sodium picosulfate methylnaltrexone bowel"><span class="ac-icon">🚽</span><span class="ac-text"><b>Constipation (Palliative)</b><small>Opioid-induced · stimulant + softener · methylnaltrexone</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/palliative-breathlessness.html" data-search="palliative breathlessness dyspnoea opioid morphine benzodiazepine lorazepam midazolam oxygen fan non-pharmacological"><span class="ac-icon">🫁</span><span class="ac-text"><b>Breathlessness (Palliative)</b><small>Non-drug measures · low-dose opioid · benzodiazepine</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/palliative-respiratory-secretions.html" data-search="palliative respiratory secretions death rattle hyoscine butylbromide hydrobromide glycopyrronium reposition anticipatory"><span class="ac-icon">💧</span><span class="ac-text"><b>Respiratory Secretions</b><small>Death rattle · antimuscarinics · reposition · reassure family</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/palliative-delirium-agitation.html" data-search="palliative delirium terminal agitation restlessness haloperidol midazolam levomepromazine reversible causes"><span class="ac-icon">🌀</span><span class="ac-text"><b>Delirium &amp; Terminal Agitation</b><small>Find reversible causes · haloperidol · midazolam · levomepromazine</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/palliative-anxiety-depression.html" data-search="palliative anxiety depression ssri mirtazapine sertraline benzodiazepine psychological distress existential"><span class="ac-icon">💭</span><span class="ac-text"><b>Anxiety &amp; Depression</b><small>Psychological support · SSRI/mirtazapine · benzodiazepine for crisis</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/care-of-the-dying.html" data-search="care of the dying last days of life anticipatory medications syringe driver just in case box recognising dying eolc"><span class="ac-icon">🕊️</span><span class="ac-text"><b>Care of the Dying</b><small>Recognising dying · anticipatory meds · syringe driver · the 4 PRN drugs</small></span><span class="ac-arrow">→</span></a>
+          <a class="alg-card" href="management/palliative-corticosteroids.html" data-search="palliative corticosteroids dexamethasone indications raised intracranial pressure spinal cord compression anorexia liver capsule pain"><span class="ac-icon">💊</span><span class="ac-text"><b>Corticosteroids (Palliative)</b><small>Dexamethasone indications · dosing · morning dose · taper · gastroprotection</small></span><span class="ac-arrow">→</span></a>
+        </div>
+      </section>
+
+      <div class="alg-foot">
+        <strong>How to use.</strong> These pathways assume the diagnosis is already made. They are static visual references — print any one to a clean handout for the consultation room. Educational use only; always verify against current NICE CKS and your local formulary.
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/filter-rail.js"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

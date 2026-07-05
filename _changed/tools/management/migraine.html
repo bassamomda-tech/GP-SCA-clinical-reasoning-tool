@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Migraine — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Migraine management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🧠",
+  title:"Migraine",
+  stemTitle:"Confirmed Migraine — ongoing management",
+  stemSub:"Primary-care management of diagnosed migraine \u2014 acute treatment that avoids medication-overuse headache, prophylaxis when attacks are frequent or disabling, trigger management and monitoring \u2014 up to neurology referral. NICE CG150 \u00b7 CKS 2026.",
+  guideline:"NICE CG150",
+  glance:[
+    {lbl:"Acute", val:"Triptan + NSAID", sub:"\u00b1 antiemetic"},
+    {lbl:"Avoid", val:"Opioids / ergots", sub:"+ MOH"},
+    {lbl:"MOH limit", val:"Triptan <10 d/mo", sub:"simple analgesia <15 d/mo"},
+    {lbl:"Prophylaxis", val:"Propranolol", sub:"or amitriptyline / topiramate"},
+    {lbl:"Topiramate", val:"Teratogenic", sub:"PPP + contraception note"},
+    {lbl:"Chronic", val:"\u226515 d/mo", sub:"refer (CGRP / botox)"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Characterise the migraine",
+      blocks:[
+        {b:"kv", rows:[
+          ["Type","With or without aura; episodic vs <b>chronic</b> (\u226515 headache days/month, \u22658 migrainous, &gt;3 months)"],
+          ["Burden","Attack frequency, duration, disability (MIDAS), impact on work/life"],
+          ["Medication-overuse headache","Acute med use \u2014 triptans/opioids \u226510 d/mo or simple analgesia \u226515 d/mo \u2192 MOH"],
+          ["Context","Menstrual relationship, aura + combined hormonal contraception (stroke risk), triggers. <b>Atypical aura</b> (motor weakness, double vision, unilateral visual symptoms, poor balance, decreased consciousness) \u2014 investigate/refer for an alternative cause"]
+        ]},
+        {b:"why", html:"Two numbers shape everything: <strong>attack frequency</strong> (do they need prophylaxis?) and <strong>days of acute medication</strong> (are they overusing, causing rebound headache?). Medication-overuse headache is the great mimic of \u2018worsening migraine\u2019 and must be excluded before escalating \u2014 and aura with combined hormonal contraception is an absolute stroke-risk contraindication to flag."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 every patient", title:"Triggers, routine and overuse avoidance",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"📓 Headache diary", html:"Track frequency, triggers, menstrual link and acute-medication days \u2014 the basis of every decision."},
+          {t:"⏰ Regular routine", html:"Consistent sleep, meals, hydration; avoid skipped meals and dehydration."},
+          {t:"💊 Limit acute meds", html:"Keep within MOH limits; if overusing, plan a withdrawal \u2014 headaches worsen before they improve."},
+          {t:"🧘 Stress", html:"Stress management, relaxation; identify and reduce personal triggers."},
+          {t:"💊 Riboflavin", html:"Riboflavin 400 mg/day may reduce frequency \u2014 a low-risk option."},
+          {t:"📍 Acupuncture", html:"A course of acupuncture if drug prophylaxis is unsuitable or declined."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 acute attack", title:"Treat the attack \u2014 and protect from MOH",
+      blocks:[
+        {b:"kv", rows:[
+          ["First-line acute","<span class='pill pill-teal'>Oral triptan</span> (e.g. sumatriptan) <b>+</b> <span class='pill pill-teal'>NSAID</span> or aspirin 900 mg; treat early in the attack"],
+          ["Add antiemetic","Metoclopramide or prochlorperazine \u2014 even without prominent nausea (improves absorption)"],
+          ["Route","Nasal/SC triptan or dispersible/antiemetic if vomiting limits oral"],
+          ["Do not use","Opioids and ergots \u2014 ineffective long-term and drive MOH"]
+        ]},
+        {b:"warn", html:"<b>Triptan cautions:</b> avoid in uncontrolled hypertension, IHD/cerebrovascular disease. Keep acute-treatment days within MOH limits and review use at every contact."}
+      ]},
+    {t:"node", d:"drug", n:"4", tag:"Medication \u00b7 prophylaxis", title:"Prophylaxis when frequent or disabling",
+      blocks:[
+        {b:"p", html:"Offer when attacks are frequent (e.g. \u22654/month) or disabling. <strong>Trial each agent at an adequate dose for \u22656\u20138 weeks</strong> before judging it; titrate slowly."},
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Propranolol or amitriptyline", when:"first-line choices",
+           html:"<b>Propranolol 80\u2013160 mg/day</b> (avoid in asthma) often first; <b>amitriptyline 10\u201375 mg at night</b> if comorbid sleep/tension/low mood."},
+          {step:"Step 2", title:"Topiramate", when:"alternative \u2014 with caution",
+           fromLabel:"ineffective / not tolerated",
+           html:"Effective but <b>teratogenic</b>: Pregnancy Prevention Programme, and it <b>reduces hormonal-contraceptive efficacy</b> \u2014 counsel carefully."},
+          {step:"Step 3", title:"Candesartan / others", when:"further options",
+           fromLabel:"still inadequate",
+           html:"Candesartan is a useful next option. Consider menstrual-related strategies (e.g. perimenstrual triptan/NSAID). Acupuncture if drugs unsuitable."}
+        ]},
+        {b:"why", html:"Prophylaxis works on a population of attacks, not a single one \u2014 so it needs an adequate dose <em>and</em> time (6\u20138 weeks) before you can call it a failure. The topiramate caveats matter disproportionately in women of childbearing potential, where the wrong choice carries fetal and contraceptive consequences."}
+      ]},
+    {t:"node", d:"monitor", n:"5", tag:"Monitoring", title:"Diary-led review",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Headache diary (frequency + med-days)","Ongoing / each review","Falling frequency = success; rising med-days = MOH risk"],
+          ["Prophylaxis trial","After 6\u20138 weeks at target dose","No benefit \u2192 switch agent"],
+          ["Acute-medication audit","Each review","Within MOH limits? Plan withdrawal if not"],
+          ["Contraception / pregnancy","Each review (topiramate / aura)","Safety counselling and adjustment"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"6", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"Diary over 4\u20138 weeks", title:"Baseline + decision", html:"Quantify frequency/disability and acute-med days; decide on prophylaxis."},
+          {n:"2", when:"6\u20138 weeks after each prophylactic", title:"Trial review", html:"Assess response at target dose; switch if ineffective or not tolerated."},
+          {n:"3", when:"Periodic once stable", title:"Step-down review", html:"Consider withdrawing prophylaxis after ~6\u201312 months of good control; ongoing MOH vigilance."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not responding? Check before escalating",
+      arrow:"\u2026if attacks remain frequent",
+      intro:"Medication overuse is the commonest reversible cause of \u2018refractory\u2019 migraine.",
+      checks:[
+        {b:"1 \u00b7 MOH", html:"Count acute-med days \u2014 overuse drives chronic daily headache; plan withdrawal."},
+        {b:"2 \u00b7 Adequate trial", html:"Was each prophylactic at target dose for 6\u20138 weeks?"},
+        {b:"3 \u00b7 Adherence", html:"Slow titration and side-effect counselling improve persistence."},
+        {b:"4 \u00b7 Triggers / hormones", html:"Menstrual pattern, sleep, contraception, stress."},
+        {b:"5 \u00b7 Chronic?", html:"\u226515 headache days/month \u2192 chronic migraine \u2192 refer (CGRP/botox)."}
+      ],
+      back:"MOH excluded, adequate trials done \u2192 switch prophylactic or refer"},
+    {t:"node", d:"safety", n:"7", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Thunderclap / red flags", html:"\u201cSudden \u2018worst-ever\u2019 headache peaking in seconds, with neck stiffness, fever, new weakness, or after head injury \u2014 call 999.\u201d"},
+          {t:"⚠️ New neurology", html:"\u201cNew persistent weakness, speech or vision change, or a headache pattern that changes markedly \u2014 contact us promptly.\u201d Sudden-onset focal symptoms = treat as stroke/TIA until proven otherwise (migraine aura evolves gradually over minutes)."},
+          {t:"💊 Overuse", html:"\u201cUsing painkillers/triptans on too many days can cause more headaches \u2014 keep a diary and stay within the limits we agreed.\u201d"},
+          {t:"🤰 Contraception", html:"\u201cMigraine with aura plus the combined pill raises stroke risk \u2014 we\u2019ll switch your contraception.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"8", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"when chronic, refractory, or red flags",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Thunderclap headache or red-flag features \u2192 same-day / 999."},
+          {t:"Chronic migraine", html:"\u226515 headache days/month refractory to prophylaxis \u2014 for CGRP monoclonal antibodies / botulinum toxin."},
+          {t:"Refractory", html:"Failed \u22653 adequate prophylactic trials."},
+          {t:"Diagnostic doubt", html:"Atypical features, late onset, or change in established pattern."},
+          {t:"Complex", html:"Hemiplegic/brainstem aura, pregnancy with difficult migraine."}
+        ]},
+        {b:"say", html:"Your migraines are frequent enough that specialist treatments \u2014 like the newer preventive injections \u2014 may help, so I\u2019d like to refer you. Meanwhile, let\u2019s tighten up the acute treatment and make sure we\u2019re not overusing painkillers."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

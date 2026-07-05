@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Medication Chooser · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=11" />
+<link rel="stylesheet" href="../assets/medchooser.css" />
+
+<style>
+  .tool-head{ padding:28px 0 6px; border-bottom:1px solid var(--line); margin-bottom:20px; }
+  .tool-head .eyebrow{ margin-bottom:10px; display:block; }
+  .tool-head h1{ font-size:clamp(1.8rem,3.4vw,2.6rem); margin-bottom:10px; }
+  .tool-head p{ color:var(--ink-2); font-size:15px; line-height:1.6; max-width:64ch; margin-bottom:14px; }
+  .tool-breadcrumb{ display:flex; gap:6px; align-items:center; font-size:12px; color:var(--muted); margin-bottom:18px; }
+  .tool-breadcrumb a{ color:var(--teal-2); text-decoration:none; font-weight:600; }
+  .tool-breadcrumb a:hover{ color:var(--rust); }
+  .tool-breadcrumb svg{ width:11px; height:11px; color:var(--muted-2); }
+
+  /* Right-side expandable condition cards */
+  #medGroups .alg-grid,
+  #medGroups .dir-flat{ display:flex; flex-direction:column; gap:9px; }
+  .alg-card.mc-item{ display:block; padding:0; overflow:hidden; background:var(--surface,#fff); border:1px solid var(--line); border-radius:12px; transition:border-color .15s ease, box-shadow .15s ease; }
+  .alg-card.mc-item:hover{ border-color:var(--line-2); }
+  .alg-card.mc-item.is-open{ border-color:var(--teal); box-shadow:var(--shadow-2); }
+  .mc-item-head{ display:flex; align-items:center; gap:14px; width:100%; font-family:inherit; text-align:left; cursor:pointer; background:transparent; border:none; padding:13px 15px; transition:background .12s ease; }
+  .mc-item-head:hover{ background:var(--bg-soft); }
+  .mc-item.is-open .mc-item-head{ background:var(--teal-soft); }
+  .mci-icon{ width:38px; height:38px; flex-shrink:0; display:grid; place-items:center; font-size:19px; background:var(--bg-soft); border:1px solid var(--line); border-radius:10px; }
+  .mc-item.is-open .mci-icon{ background:#fff; border-color:var(--teal-3); }
+  .mci-text{ flex:1; min-width:0; }
+  .mci-text b{ display:block; font-size:14.5px; font-weight:600; color:var(--ink); line-height:1.25; }
+  .mci-text small{ display:block; font-size:12px; color:var(--muted); margin-top:2px; line-height:1.4; }
+  .mc-item.is-open .mci-text b{ color:var(--teal); }
+  .mci-chev{ flex-shrink:0; width:30px; height:30px; display:grid; place-items:center; color:var(--muted-2); border-radius:8px; transition:color .15s ease, background .15s ease; }
+  .mc-item-head:hover .mci-chev{ color:var(--teal); background:rgba(0,0,0,.03); }
+  .mc-item.is-open .mci-chev{ color:var(--teal); }
+  .mci-chev svg{ width:18px; height:18px; transition:transform .22s ease; }
+  .mc-item.is-open .mci-chev svg{ transform:rotate(180deg); }
+  .mc-item-body{ padding:14px 16px 18px; border-top:1px solid var(--line); animation:mcFade .2s ease; }
+  .mc-item-body [data-medchooser]{ margin-top:0; }
+  @keyframes mcFade{ from{ opacity:0; transform:translateY(-3px); } to{ opacity:1; transform:none; } }
+  [data-medchooser] .mc-topic-picker{ display:none !important; }
+</style>
+</head>
+<body>
+
+<button class="sb-toggle" aria-label="Open navigation">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-decision"></aside>
+
+  <main class="main">
+    <div class="tool-page">
+
+      <div class="tool-breadcrumb">
+        <a href="../index.html">Reasoning GP</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+        <span>Tools</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+        <span style="color:var(--ink-2)">Medication Chooser</span>
+      </div>
+
+      <header class="tool-head" data-screen-label="Tool head">
+        <span class="eyebrow">Reasoning Tool · NICE CKS + BNF</span>
+        <h1>Medication chooser — <em style="font-style:italic;color:var(--teal);font-weight:500">tailored to the patient in front of you</em></h1>
+        <p>Pick a condition, tick the patient factors that apply, and watch first-line options re-tier in real time against NICE CKS / BNF — with the reasoning one toggle away. Filter the list by specialty on the left, or search by name.</p>
+      </header>
+
+      <div class="alg-controls">
+        <div class="alg-search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="medSearch" placeholder="Search conditions — e.g. hypertension, asthma, gout…" autocomplete="off" />
+        </div>
+        <span class="alg-count-pill"><b id="medShown">0</b> / <span id="medTotal">0</span> conditions</span>
+      </div>
+
+      <div class="alg-empty" id="medEmpty">No condition matches that search. Try a condition name.</div>
+
+      <!-- Condition directory mounts here -->
+      <div id="medGroups"></div>
+
+      <div class="alg-foot footer-disclaimer">
+        <strong>Educational use only.</strong> The Medication Chooser is a reasoning aid for UK GP trainees and clinicians — not a substitute for clinical judgement. Always verify against the live NICE CKS, the BNF, and your local formulary before prescribing. The same chooser is embedded live inside each applicable case page.
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/case-related.js"></script>
+
+<!-- Medication chooser engine + topic data -->
+<script src="../assets/medchooser.js"></script>
+<script src="../assets/meds/hypertension.js"></script>
+<script src="../assets/meds/type-2-diabetes.js"></script>
+<script src="../assets/meds/asthma.js"></script>
+<script src="../assets/meds/depression.js"></script>
+<script src="../assets/meds/anxiety.js"></script>
+<script src="../assets/meds/atrial-fibrillation.js"></script>
+<script src="../assets/meds/heart-failure.js"></script>
+<script src="../assets/meds/copd.js"></script>
+<script src="../assets/meds/type-1-diabetes.js"></script>
+<script src="../assets/meds/menopause.js"></script>
+<script src="../assets/meds/contraception.js"></script>
+<script src="../assets/meds/male-luts.js"></script>
+<script src="../assets/meds/urinary-incontinence.js"></script>
+<script src="../assets/meds/gout.js"></script>
+<script src="../assets/meds/migraine.js"></script>
+<script src="../assets/meds/ckd.js"></script>
+<script src="../assets/meds/hypothyroidism.js"></script>
+<script src="../assets/meds/hyperthyroidism.js"></script>
+<script src="../assets/meds/osteoporosis.js"></script>
+<script src="../assets/meds/angina.js"></script>
+<script src="../assets/meds/tia-stroke.js"></script>
+<script src="../assets/meds/ibs.js"></script>
+<script src="../assets/meds/constipation.js"></script>
+<script src="../assets/meds/low-back-pain.js"></script>
+<script src="../assets/meds/hypercholesterolaemia.js"></script>
+<script src="../assets/meds/osteoarthritis.js"></script>
+<script src="../assets/meds/neuropathic-pain.js"></script>
+<script src="../assets/meds/eczema.js"></script>
+<script src="../assets/meds/menorrhagia.js"></script>
+<script src="../assets/meds/allergic-rhinitis.js"></script>
+<script src="../assets/meds/psoriasis.js"></script>
+<script src="../assets/meds/erectile-dysfunction.js"></script>
+
+<!-- Condition directory: casebook-style category cards + filter rail -->
+<script>
+(function(){
+  const DIR  = document.getElementById('medGroups');
+  if (!DIR || !window.MedChooser) return;
+
+  const GROUPS = [
+    { name:'Cardiometabolic',     icon:'🫀', ids:['hypertension','type-2-diabetes','type-1-diabetes','heart-failure','atrial-fibrillation','ckd','angina','hypercholesterolaemia'] },
+    { name:'Respiratory',         icon:'🫁', ids:['asthma','copd'] },
+    { name:'Gastroenterology',    icon:'🫃', ids:['ibs','constipation'] },
+    { name:'Mental health',       icon:'🧠', ids:['depression','anxiety'] },
+    { name:'Endocrine',           icon:'🦋', ids:['hypothyroidism','hyperthyroidism'] },
+    { name:"Women's health",      icon:'🌸', ids:['menopause','contraception','menorrhagia'] },
+    { name:'Urology',             icon:'💧', ids:['male-luts','urinary-incontinence','erectile-dysfunction'] },
+    { name:'Rheumatology / MSK',  icon:'🦴', ids:['gout','osteoporosis','low-back-pain','osteoarthritis'] },
+    { name:'Neurology',           icon:'🧩', ids:['migraine','tia-stroke','neuropathic-pain'] },
+    { name:'Dermatology',         icon:'🩹', ids:['eczema','psoriasis'] },
+    { name:'Allergy / ENT',       icon:'👃', ids:['allergic-rhinitis'] },
+  ];
+  const esc = s => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  const get = id => { try { return window.MedChooser.get(id) || null; } catch(e){ return null; } };
+  const titleOf = id => (get(id) && get(id).title) ? get(id).title.replace(/\s*—.*$/, '').trim() : id.replace(/-/g,' ').replace(/\b\w/g, m=>m.toUpperCase());
+  const guideOf = id => (get(id) && get(id).guideline) || '';
+  const findId = id => GROUPS.some(g => g.ids.includes(id)) && get(id);
+  const CHEV = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+
+  function renderDirectory(){
+    let total = 0;
+    DIR.innerHTML = GROUPS.map(g => {
+      const ids = g.ids.filter(id => get(id));
+      if (!ids.length) return '';
+      total += ids.length;
+      const cards = ids.map(id => {
+        const search = (titleOf(id) + ' ' + g.name + ' ' + guideOf(id)).toLowerCase();
+        return '<div class="alg-card mc-item" data-id="' + id + '" data-search="' + esc(search) + '">' +
+            '<button class="mc-item-head" type="button" aria-expanded="false">' +
+              '<span class="mci-icon">' + g.icon + '</span>' +
+              '<span class="mci-text"><b>' + esc(titleOf(id)) + '</b><small>' + esc(guideOf(id)) + '</small></span>' +
+              '<span class="mci-chev">' + CHEV + '</span>' +
+            '</button>' +
+            '<div class="mc-item-body" hidden><div class="mc-mount"></div></div>' +
+          '</div>';
+      }).join('');
+      return '<section class="alg-group" data-group="' + esc(g.name) + '">' +
+          '<div class="alg-group-head"><span class="agh-icon">' + g.icon + '</span><h2>' + esc(g.name) + '</h2><span class="agh-count">' + ids.length + '</span></div>' +
+          '<div class="alg-grid">' + cards + '</div>' +
+        '</section>';
+    }).join('');
+    const t = document.getElementById('medTotal'); if (t) t.textContent = total;
+    const s = document.getElementById('medShown'); if (s) s.textContent = total;
+  }
+
+  function toggleCard(card, open){
+    const head = card.querySelector('.mc-item-head');
+    const body = card.querySelector('.mc-item-body');
+    const want = open != null ? open : !card.classList.contains('is-open');
+    if (want){
+      if (!body.__mounted){
+        window.MedChooser.mount(body.querySelector('.mc-mount'), card.dataset.id);
+        body.__mounted = true;
+      }
+      card.classList.add('is-open');
+      head.setAttribute('aria-expanded', 'true');
+      body.hidden = false;
+    } else {
+      card.classList.remove('is-open');
+      head.setAttribute('aria-expanded', 'false');
+      body.hidden = true;
+    }
+  }
+
+  DIR.addEventListener('click', e => {
+    const head = e.target.closest('.mc-item-head');
+    if (!head) return;
+    const card = head.closest('.mc-item');
+    toggleCard(card);
+    if (card.classList.contains('is-open')){
+      try { history.replaceState(null, '', '#' + card.dataset.id); } catch(err){}
+    }
+  });
+
+  renderDirectory();
+
+  function openHash(){
+    const id = (location.hash || '').replace(/^#/, '').trim();
+    if (!id || !findId(id)) return;
+    const card = DIR.querySelector('.mc-item[data-id="' + (window.CSS && CSS.escape ? CSS.escape(id) : id) + '"]');
+    if (card){ toggleCard(card, true); card.scrollIntoView({ block:'center' }); }
+  }
+  window.addEventListener('hashchange', openHash);
+  requestAnimationFrame(openHash);
+})();
+</script>
+
+<script src="../assets/filter-rail.js"></script>
+
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

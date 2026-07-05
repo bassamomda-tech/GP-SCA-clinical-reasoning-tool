@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multimorbidity &amp; Polypharmacy · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="../assets/medchooser.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+.tag-emerg{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;font-weight:700}
+</style>
+</head>
+<body class="mode-both" id="bodyEl" data-screen-label="Multimorbidity &amp; Polypharmacy">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="multimorbidity-polypharmacy"></aside>
+  <main class="main">
+<div class="case-head">
+  <div>
+    <div class="ch-cat">General Practice · Full case</div>
+    <h1>Multimorbidity &amp; Polypharmacy</h1>
+  </div>
+  <div class="case-head-tags"><span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE NG56</span><span class="tag">Structured medication review</span><span class="tag tag-emerg">Falls · ACB · deprescribing</span></div>
+</div>
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">MM</div>
+      <div><div class="tb-title">Multimorbidity &amp; Polypharmacy · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE NG56 · what matters to the person · structured medication review · STOPP/START · anticholinergic burden · deprescribing · treatment burden vs benefit</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">Start with "what matters to you"</span><span class="ns-lbl">NICE NG56: an individualised approach built around the person's priorities, values and goals — not a disease-by-disease, guideline-by-guideline stack. In multimorbidity, single-disease guidelines can conflict, add burden, and harm. Ask what matters most to them</span></div>
+    <div class="ns-item"><span class="ns-val">Treatment burden is real</span><span class="ns-lbl">Multiple medicines, appointments, monitoring and self-care impose a "treatment burden" that can outweigh benefit, especially with limited life expectancy or frailty. Weigh benefit vs burden and harm for EACH medicine, in THIS person, now — not in the average trial patient</span></div>
+    <div class="ns-item"><span class="ns-val">The structured medication review</span><span class="ns-lbl">A structured medication review (SMR) systematically checks: indication still valid? still effective? still wanted? safe (interactions, monitoring, renal/hepatic)? duplicated? evidence in this person? Use tools (STOPP/START) and the person's own experience and adherence</span></div>
+    <div class="ns-item"><span class="ns-val">Deprescribe deliberately</span><span class="ns-lbl">Stopping or reducing medicines that are no longer needed, not working, causing harm, or unwanted is active, planned care — agreed with the patient, one change at a time, with monitoring and a safety-net. Don't deprescribe abruptly where withdrawal effects occur (e.g. steroids, benzodiazepines, beta-blockers)</span></div>
+    <div class="ns-item"><span class="ns-val">Anticholinergic burden &amp; falls</span><span class="ns-lbl">High anticholinergic burden (ACB) — many drugs (some antidepressants, bladder antimuscarinics, antihistamines, antipsychotics) — causes confusion, falls and cognitive decline in older people. Sedatives, antihypertensives and hypoglycaemics also drive falls. Review the falls-risk and ACB drugs</span></div>
+    <div class="ns-item"><span class="ns-val">Watch the high-risk combinations</span><span class="ns-lbl">NSAID + ACE/ARB + diuretic ("triple whammy" → AKI); opioid + benzodiazepine/gabapentinoid (respiratory depression); multiple QT-prolongers; anticoagulant + antiplatelet/NSAID (bleeding); drugs needing monitoring (lithium, methotrexate, DOACs, warfarin). Rationalise</span></div>
+    <div class="ns-item"><span class="ns-val">Frailty changes the goals</span><span class="ns-lbl">In frailty/limited life expectancy, the time-to-benefit of preventive medicines (statins, tight glycaemic/BP control, bisphosphonates) may exceed remaining life, while risks (hypos, falls, AKI) are immediate. Relax targets, deprescribe preventives, and prioritise comfort and function</span></div>
+    <div class="ns-item"><span class="ns-val">Shared decisions, not edicts</span><span class="ns-lbl">Every change is a shared decision: explain benefits/risks/uncertainty, respect the person's wishes, document, and follow up. Coordinate across conditions and clinicians; nominate a continuity GP; consider the carer. The goal is care that fits the person's life</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Multimorbidity &amp; Polypharmacy</div>
+  <div class="stem-title">An 82-year-old woman on 14 medicines, increasingly frail with falls and dizziness, brought by her daughter for a "medication review" — who quietly says she'd rather take fewer tablets</div>
+  <div class="stem-text">Edith Hargreaves, 82, attends with her daughter for a medication review. She takes 14 medicines for hypertension, type 2 diabetes, atrial fibrillation, osteoporosis, depression, an overactive bladder, reflux, osteoarthritis and high cholesterol. Over the past months she has become more frail, with two falls, light-headedness on standing, daytime drowsiness and some new forgetfulness. Her HbA1c is "very well controlled" and her blood pressure runs low (she feels dizzy). She finds the tablets a burden, doesn't always take them all, and tells you quietly she'd "rather not be on so many". Her daughter worries about the falls and the forgetfulness. Edith's priority, she says, is to "stay on my feet and keep my marbles".</div>
+  <div class="stem-note">This stem tests the ability to conduct a person-centred structured medication review in multimorbidity (NICE NG56): starting with "what matters to you" (Edith wants to avoid falls and preserve cognition, and take fewer tablets); weighing benefit vs treatment burden and harm for each medicine in THIS frail, older person; identifying the medicines contributing to her presentation — postural hypotension from over-treated BP, hypoglycaemia risk from over-tight diabetes control, anticholinergic burden (the bladder antimuscarinic ± antidepressant) driving falls/confusion, and the time-to-benefit problem with preventives (statin, bisphosphonate) in frailty; recognising high-risk combinations and monitoring needs (anticoagulant for AF — stroke prevention to keep); and deprescribing deliberately, one change at a time, by shared decision, with monitoring and safety-net. The SCA challenge is balancing safe deprescribing with not stopping the medicines that genuinely matter (e.g. anticoagulation), and doing it as a collaboration with Edith and her daughter.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — Frail elder, falls &amp; ACB (this stem)</strong> Postural hypotension (over-treated BP), hypo risk (tight HbA1c), anticholinergic burden, preventives with long time-to-benefit. Person-centred SMR; deprescribe deliberately; keep anticoagulation; relax targets; monitor.</div>
+    <div class="stem-variant"><strong>Scenario B — Conflicting guidelines</strong> Single-disease guidelines pulling in opposite directions (e.g. NSAID for OA vs CKD/AF/anticoagulation). Individualise; prioritise what matters; avoid harm.</div>
+    <div class="stem-variant"><strong>Scenario C — High-risk prescribing</strong> "Triple whammy" (NSAID+ACE+diuretic), opioid+benzodiazepine, missed monitoring (lithium/methotrexate/DOAC), QT-prolongers. Identify &amp; rationalise.</div>
+    <div class="stem-variant"><strong>Scenario D — Adherence &amp; burden</strong> Intentional/unintentional non-adherence, confusion over regimens, cost/dexterity issues. Simplify, address barriers, blister packs/aids where appropriate.</div>
+    <div class="stem-variant"><strong>Scenario E — End of life / very limited prognosis</strong> Deprescribe preventives; focus on comfort/symptom control; anticipatory care; involve patient/family.</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> "What matters to you"; benefit vs burden/harm per drug; frailty &amp; time-to-benefit; falls &amp; ACB; postural BP &amp; over-treatment; hypo risk &amp; relaxed targets; keep vs stop (anticoagulation in AF); high-risk combinations &amp; monitoring; adherence &amp; simplification; shared decisions; carer &amp; continuity.</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History — What Matters · Symptoms from Medicines · Adherence &amp; Burden · ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The review begins not with the drug list but with the person: what matters to Edith, what she's experiencing, and how the medicines fit (or don't) into her life.</strong> Then connect her symptoms — falls, dizziness, drowsiness, forgetfulness — to likely drug causes, and understand her adherence and the burden the regimen imposes. This reframes a "tick-box review" into individualised care.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 SCA framing — "what matters to you?" first</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"Before we look at the tablets, I'd love to understand what matters most to you, Edith — what you want your health to let you do, and what's bothering you. You mentioned staying on your feet and keeping your mind sharp — let's build the plan around that."</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Anchoring the review in Edith's goals (avoid falls, preserve cognition, fewer tablets) turns it from a guideline audit into person-centred care — and gives a clear yardstick for every keep/stop decision.</div>
+    </div>
+    <div class="sub-divider">1A — Goals, drug-related symptoms, adherence</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"What matters most to you about your health and day-to-day life — and what would you change if you could?"</em></td>
+            <td class="why"><strong>The NG56 starting point.</strong> Edith wants to stay mobile, keep her cognition, and take fewer tablets. These goals become the criteria for every medication decision — favouring stopping things that threaten her balance and mind, and relaxing preventives whose benefit lies beyond her likely lifespan.<span class="why-sub">In SCA: leading with the person's priorities (not the disease list) is the defining skill of multimorbidity care.</span></td>
+            <td><span class="chg chg-rx">Goals → criteria for keep/stop decisions</span></td>
+          </tr>
+          <tr><td class="q">🚩 Symptoms likely caused by medicines<em>"Tell me about the falls and dizziness — worse on standing? Any drowsiness, confusion, dry mouth, constipation, or low blood sugars?"</em></td><td class="why">Connect her presentation to drug causes: postural light-headedness/falls → over-treated BP (low BP, postural drop); drowsiness/confusion/dry mouth → anticholinergic burden (bladder antimuscarinic ± antidepressant); falls also from sedatives/hypoglycaemia; forgetfulness may be ACB-related. These are the deprescribing targets.</td><td class="why">Drug-attributable symptoms → identify culprits to reduce/stop.</td><td><span class="chg chg-999">Falls/confusion → review BP/ACB/hypo drugs</span></td></tr>
+          <tr><td class="q">Each condition &amp; its control<em>"How are your blood pressure and sugars running — any dizzy spells or hypos? How's your mood, bladder, reflux, joints?"</em></td><td class="why">Over-treatment is as harmful as under-treatment here: a "very well controlled" HbA1c and low BP in a frail elder signal over-treatment with immediate harms (hypos, falls). Conversely, some treatments (anticoagulation for AF) remain high-value and should be kept. Map control vs harm per condition.</td><td class="why">Over-treated (low BP/tight HbA1c) → relax/deprescribe; high-value (AF anticoag) → keep.</td><td><span class="chg chg-rx">Relax targets; keep what matters</span></td></tr>
+          <tr><td class="q">Adherence &amp; treatment burden<em>"Honestly, how do you get on with taking all of these — do you manage them all, and is it a lot to keep up with?"</em></td><td class="why">Edith doesn't always take them all and finds them a burden. Non-adherence (intentional or not), the daily load of pills/monitoring/appointments, dexterity, cost and confusion all matter — and often the patient has already "deprescribed" the ones they value least. Simplifying improves both safety and quality of life.</td><td class="why">Non-adherence/burden → simplify; align with what she'll actually take.</td><td><span class="chg chg-ps">Simplify regimen; reduce burden</span></td></tr>
+          <tr><td class="q">Frailty &amp; prognosis context<em>"How are you managing at home day to day — any help needed? How's your general strength and energy been?"</em></td><td class="why">Frailty and limited life expectancy change the maths: preventive medicines (statin, bisphosphonate, tight glycaemic/BP control) have a time-to-benefit that may exceed remaining life, while their harms are immediate. Assessing frailty/function reframes which medicines still earn their place.</td><td class="why">Frailty/limited prognosis → deprescribe long-term preventives; prioritise function/comfort.</td><td><span class="chg chg-rx">Time-to-benefit vs prognosis</span></td></tr>
+          <tr><td class="q">Monitoring &amp; high-risk drugs<em>"Are there any tablets that need blood tests, and when were they last checked? Any new aches, swelling, or stomach upset?"</em></td><td class="why">Identify drugs needing monitoring (DOAC/warfarin, renal function with ACE/diuretics, bone profile) and high-risk combinations ("triple whammy" → AKI; anticoagulant + NSAID → bleeding). Edith's NSAID/OA treatment alongside her other drugs and renal function needs scrutiny.</td><td class="why">Monitoring gaps/high-risk combos → check &amp; rationalise.</td><td><span class="chg chg-inv">U&amp;E, renal function; review combinations</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags / things not to miss</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — harms hiding in the drug list</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why it matters</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Falls + postural hypotension from over-treatment</td><td class="rf-why">Fractures, hospitalisation, loss of independence.</td><td><span class="rf-action rfa-same">Review/reduce antihypertensives, sedatives, ACB; lying/standing BP; falls assessment</span></td></tr>
+          <tr><td class="rf-flag">Hypoglycaemia from tight glycaemic control in frailty</td><td class="rf-why">Falls, confusion, harm; benefit of tight control is long-term.</td><td><span class="rf-action rfa-same">Relax HbA1c target; reduce/stop sulfonylurea/insulin causing hypos</span></td></tr>
+          <tr><td class="rf-flag">High anticholinergic burden → confusion/cognitive decline/falls</td><td class="rf-why">Reversible cognitive impairment; dementia risk.</td><td><span class="rf-action rfa-same">Calculate ACB; deprescribe/swap antimuscarinics/sedating drugs</span></td></tr>
+          <tr><td class="rf-flag">"Triple whammy" (NSAID + ACE/ARB + diuretic) / nephrotoxic combos</td><td class="rf-why">Acute kidney injury.</td><td><span class="rf-action rfa-same">Stop/avoid NSAID; check renal function; rationalise</span></td></tr>
+          <tr><td class="rf-flag">Stopping high-value medicines inappropriately (e.g. anticoagulation in AF)</td><td class="rf-why">Deprescribing the wrong thing causes stroke/harm.</td><td><span class="rf-action rfa-same">Keep high-value treatments; deprescribe low-value/harmful ones</span></td></tr>
+          <tr><td class="rf-flag">Abrupt withdrawal of dependence/rebound drugs (steroids, benzodiazepines, beta-blockers)</td><td class="rf-why">Withdrawal/rebound harm.</td><td><span class="rf-action rfa-same">Taper gradually; never stop abruptly</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What do you feel the tablets are doing for you — which ones do you value, and which feel pointless?"</div><div class="ice-why">Edith has views on her own medicines and has informally stopped some. Surfacing this respects her expertise in her own life, reveals adherence reality, and identifies the medicines she'd most welcome stopping — a collaborative starting point.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 Concerns</div><div class="ice-phrase">"What worries you most — the falls, your memory, or the number of tablets?"</div><div class="ice-why">Her concerns (and her daughter's about falls/memory) align with the clinical priorities. Naming them lets you target the review at what's frightening them and frame deprescribing as the solution, not a loss.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"What would a good outcome from today look like for you?"</div><div class="ice-why">She wants fewer tablets and to stay well on her feet and mentally sharp. Naming this lets you agree a realistic, staged plan (a few changes now, review, more later) rather than overhauling everything at once.</div></div>
+    </div>
+    <div class="sub-divider">1D — Psychosocial context</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 The person behind the pill list — burden, autonomy and "more is not better"</div>
+      <p>Polypharmacy accumulates condition by condition, guideline by guideline, until an older person is carrying a daily load of tablets, monitoring and appointments that can itself cause falls, confusion, hospital admissions and misery — while some of those medicines no longer help, or never could in the time she has left. The most valuable thing a GP can do is step back, ask what matters to the person, weigh each medicine's benefit against its burden and harm in their life now, and deprescribe deliberately and collaboratively — recognising that, in multimorbidity and frailty, fewer, well-chosen medicines is often better care.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>⚖️ Fewer can be better</h5><p>Reframe deprescribing as good care, not giving up.</p><span class="ps-phrase">"Taking fewer tablets isn't us giving up on you — for some of these, stopping them will actually help your balance and your mind, which is exactly what you want."</span></div>
+      <div class="ps-card"><h5>🤝 Her expertise</h5><p>Treat her as the expert in her own life.</p><span class="ps-phrase">"You know your body and your days better than anyone — tell me which tablets feel worth it and which don't, and we'll start there together."</span></div>
+      <div class="ps-card"><h5>🛡️ Keeping what matters</h5><p>Reassure that the important ones stay.</p><span class="ps-phrase">"Some medicines are genuinely protecting you — like the blood-thinner for your heart rhythm, which prevents strokes — so we'll keep those. It's the ones causing more harm than good we'll tackle."</span></div>
+      <div class="ps-card"><h5>👪 Involving the daughter</h5><p>Include the carer with Edith's consent.</p><span class="ps-phrase">"With your agreement, it helps to have your daughter involved — she sees the falls and can help keep an eye as we make changes."</span></div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div><div class="sca-phrase">"What matters most to you about your health?" — the NG56 opening.</div><div class="sca-phrase">"The dizziness and falls may be from over-treating your blood pressure and the bladder tablet — those we can safely reduce." — links symptoms to drugs.</div><div class="sca-phrase">"We'll keep the blood-thinner that prevents strokes." — deprescribes the right things, keeps the high-value ones.</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Starting from the disease list/guidelines, not the person</li><li>Not linking falls/confusion to drug causes (BP/ACB/hypo)</li><li>Deprescribing high-value treatment (anticoagulation) or doing everything at once</li><li>Ignoring adherence/treatment burden and the carer</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Guideline-by-guideline; no "what matters"; misses drug-caused falls/confusion; stops anticoagulation or changes everything at once</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Person-centred; identifies some culprit drugs; some deprescribing; targets/monitoring partial; ICE partial</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">"What matters" first; links symptoms to drugs (BP/ACB/hypo); benefit-vs-burden per drug; keeps high-value, deprescribes low-value one change at a time; involves carer; ICE all three</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage — Acute Harm Now · Priority Deprescribing · Routine Optimisation</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Triage by harm: acute drug-related harm (significant hypos, AKI, falls causing injury, bleeding) needs action now; the medicines actively causing Edith's falls and confusion are priority deprescribing targets; and the lower-priority optimisation can be staged over reviews.</strong></div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Act now</div>
+        <h3>Same day / urgent</h3>
+        <span class="tc-badge tcb-e">Acute harm</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Significant hypoglycaemia / AKI / bleeding</strong><em>Address the cause urgently</em></li>
+          <li class="tc-item"><strong>Injurious falls / collapse</strong><em>Falls assessment; reduce culprit drugs</em></li>
+          <li class="tc-item"><strong>Dangerous combination</strong><em>Stop "triple whammy"/opioid+benzo</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Priority</div>
+        <h3>This review</h3>
+        <span class="tc-badge tcb-u">Deprescribe</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Falls/confusion drivers</strong><em>Over-treated BP, ACB, sedatives, hypo risk</em></li>
+          <li class="tc-item"><strong>Relax over-tight targets</strong><em>HbA1c/BP in frailty</em></li>
+          <li class="tc-item"><strong>Low-value preventives</strong><em>Time-to-benefit &gt; prognosis</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Stage</div>
+        <h3>Over reviews</h3>
+        <span class="tc-badge tcb-r">Optimise</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Simplify regimen</strong><em>Reduce burden; adherence aids</em></li>
+          <li class="tc-item"><strong>Keep high-value treatments</strong><em>Anticoagulation for AF</em></li>
+          <li class="tc-item"><strong>Monitoring &amp; follow-up</strong><em>Re-check after each change</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Triage rationale</div><div class="sca-phrase">"Let's start with the changes most likely to stop your falls and clear your head — easing the blood-pressure tablets and the bladder tablet — and do one or two at a time so we can see the effect, keeping the important ones."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Changing everything at once / no prioritisation</li><li>Missing acute harm (hypo/AKI/injurious falls)</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Assessment — Lying/Standing BP · Falls · Cognition · Frailty · Function</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>"Examination" gathers the objective data that drives deprescribing decisions: lying and standing blood pressure (postural drop), a falls and gait assessment, a cognitive screen, frailty status, and functional assessment.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">📊 Objective measures</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Lying &amp; standing BP</td><td>Postural drop from over-treated BP → falls (Edith).</td></tr>
+            <tr><td class="factor">Gait / balance / falls assessment</td><td>Falls risk; reversible drug contributors.</td></tr>
+            <tr><td class="factor">Cognitive screen</td><td>ACB-related impairment vs dementia.</td></tr>
+            <tr><td class="factor">Frailty assessment</td><td>Frailty/eFI — reframes time-to-benefit.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🔎 Function &amp; context</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Functional/ADL assessment</td><td>What she can do; goals; support needs.</td></tr>
+            <tr><td class="factor">Hydration / signs of AKI</td><td>Nephrotoxic combinations.</td></tr>
+            <tr><td class="factor">Weight / nutrition</td><td>Frailty; drug dosing.</td></tr>
+            <tr><td class="factor">Dexterity / adherence aids</td><td>Ability to manage medicines.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Narration that scores</div><div class="sca-phrase">"I'll check your blood pressure lying down and standing up to see if it's dropping — that's a common cause of dizziness and falls — and do a quick memory check and assess your balance, which helps me decide which tablets to ease back."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not measuring lying/standing BP in falls/dizziness</li><li>Not assessing frailty/cognition to inform deprescribing</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Investigations — Renal/Electrolytes · Monitoring Bloods · ACB Score · Review Tools</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Investigations support safe deprescribing: renal function and electrolytes (especially with ACE/diuretic/NSAID and dosing), the monitoring bloods her drugs require, and structured tools — STOPP/START and an anticholinergic burden score — to systematise the review.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🧪 Bloods &amp; monitoring</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">U&amp;E / renal function</td><td>Nephrotoxic combos; dose adjustment; AKI.</td></tr>
+            <tr><td class="factor">HbA1c</td><td>Over-treatment of diabetes; relax target.</td></tr>
+            <tr><td class="factor">FBC, LFTs, bone profile, B12/folate</td><td>Anaemia, drug effects, deficiency mimicking cognitive change.</td></tr>
+            <tr><td class="factor">Drug-specific monitoring</td><td>DOAC/warfarin (renal/INR), bisphosphonate review, etc.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">📋 Structured tools</div>
+        <table class="it">
+          <thead><tr><th>Tool</th><th>Use</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">STOPP/START</td><td>Identify potentially inappropriate prescriptions &amp; omissions.</td></tr>
+            <tr><td class="factor">Anticholinergic burden score</td><td>Quantify ACB driving falls/confusion.</td></tr>
+            <tr><td class="factor">Structured medication review (SMR) framework</td><td>Systematic per-drug benefit/burden/harm.</td></tr>
+            <tr><td class="factor">Falls/frailty tools</td><td>Inform deprescribing priorities.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key reasoning</div><div class="sca-phrase">"I'll check your kidney function and blood count, look at the anticholinergic load of your tablets, and use a checklist to spot anything that's doing more harm than good — then we'll decide together."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Deprescribing without checking renal function/monitoring</li><li>Not using a structured tool / not quantifying ACB</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Formulation — Keep · Reduce · Stop · Relax Targets (per Medicine)</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The "diagnosis" is a per-medicine plan — keep, reduce, stop, or relax the target — built on benefit vs burden/harm in THIS person, aligned to her goals.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:26%">Medicine/area</th><th style="width:48%">Formulation</th><th class="chg-col">Action</th></tr></thead>
+        <tbody>
+          <tr><td class="q"><strong>Antihypertensives</strong></td><td class="why">Low BP + postural drop + falls → over-treated.</td><td><span class="chg chg-rx">Reduce/stop; relax BP target</span></td></tr>
+          <tr><td class="q"><strong>Diabetes (HbA1c tight)</strong></td><td class="why">Over-tight control in frailty → hypo/falls risk; benefit long-term.</td><td><span class="chg chg-rx">Relax HbA1c; reduce hypo-causing agent</span></td></tr>
+          <tr><td class="q"><strong>Bladder antimuscarinic ± antidepressant</strong></td><td class="why">High ACB → confusion/falls/dry mouth.</td><td><span class="chg chg-rx">Stop/swap; lower ACB</span></td></tr>
+          <tr><td class="q"><strong>Statin / bisphosphonate (preventives)</strong></td><td class="why">Time-to-benefit may exceed prognosis in frailty.</td><td><span class="chg chg-rx">Consider deprescribing</span></td></tr>
+          <tr><td class="q"><strong>Anticoagulation (AF)</strong></td><td class="why">High-value stroke prevention.</td><td><span class="chg chg-ddx">KEEP (unless bleeding risk outweighs)</span></td></tr>
+          <tr><td class="q"><strong>NSAID (OA), PPI</strong></td><td class="why">NSAID + other drugs → AKI/bleeding; review OA analgesia; PPI indication.</td><td><span class="chg chg-rx">Stop NSAID; topical/alt analgesia; review PPI</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ddx-card ddx-b" style="margin-bottom:4px">
+      <h4>🚩 Deprescribe the harmful, keep the high-value — for her goals</h4>
+      <p>Edith's plan, anchored to "stay on my feet and keep my marbles": reduce/relax the over-treated BP and diabetes, lower the anticholinergic burden (stop/swap the bladder drug), consider stopping preventives whose benefit lies years away, stop the NSAID (AKI/bleeding risk) and use safer OA analgesia — while KEEPING her anticoagulation (genuine stroke prevention). Change one or two things at a time, monitor, and review.</p>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Explaining the plan</div><div class="sca-phrase">"My suggestion: ease your blood-pressure and diabetes tablets so you're less dizzy and less likely to have a low, stop the bladder tablet that may be fogging your memory, and pause a couple of long-term prevention tablets — but keep the blood-thinner that protects you from stroke. We'll do it gradually and check as we go."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>No per-medicine benefit/burden reasoning</li><li>Stopping high-value drugs or keeping clearly harmful ones</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc6">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">Referral &amp; Coordination — Pharmacist · Specialists · Falls · Frailty/MDT</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Multimorbidity care is coordinated: the clinical pharmacist for structured medication review, specialists for condition-specific advice where deprescribing is uncertain, falls and frailty services, and a nominated continuity GP — avoiding fragmented, contradictory care.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="ref-table">
+        <thead><tr><th style="width:24%">Referral / coordination</th><th>Who / when</th><th style="width:20%">Role</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Clinical pharmacist</strong></td><td>Structured medication review, deprescribing support, adherence aids.</td><td><span class="rf-action rfa-same">SMR partner</span></td></tr>
+          <tr><td><strong>Specialist advice</strong></td><td>Where deprescribing a condition-specific drug is uncertain (e.g. cardiology re anticoagulation/BP).</td><td><span class="rf-action rfa-same">As needed</span></td></tr>
+          <tr><td><strong>Falls service / physio / OT</strong></td><td>Falls assessment, strength/balance, home adaptations.</td><td><span class="rf-action rfa-same">Falls</span></td></tr>
+          <tr><td><strong>Frailty / geriatric MDT</strong></td><td>Complex frailty, comprehensive geriatric assessment.</td><td><span class="rf-action rfa-same">Holistic</span></td></tr>
+          <tr><td><strong>Continuity GP / care coordination</strong></td><td>Named GP; coordinate across conditions/clinicians; carer support.</td><td><span class="rf-action rfa-same">Continuity</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Coordinated care</div><div class="sca-phrase">"I'll work with our pharmacist on the medicine changes and get the falls team to assess your balance and home. I'll be your named GP so it's joined-up, not lots of different people changing different things."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Fragmented, uncoordinated changes</li><li>Not using pharmacist/falls/frailty support</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Deprescribe One Change at a Time · Monitor · Simplify · Review</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Management is deliberate, collaborative deprescribing: agree changes with Edith, make one or two at a time, taper where needed, monitor the effect, simplify the regimen, keep the high-value medicines, and review — turning the plan into safe, staged, person-centred action.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--g)">📉 How to deprescribe</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Shared decision &amp; consent</td><td>Explain benefit/risk/uncertainty; agree priorities; document.</td></tr>
+            <tr><td class="factor">One change at a time</td><td>Start with the highest-harm/lowest-benefit drug; attribute effects clearly.</td></tr>
+            <tr><td class="factor">Taper where needed</td><td>Gradual for steroids/benzodiazepines/beta-blockers etc.; avoid rebound.</td></tr>
+            <tr><td class="factor">Relax targets</td><td>HbA1c/BP in frailty per individualised goals.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🔁 Monitor &amp; sustain</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Monitor effect</td><td>Symptoms (falls/cognition), BP/HbA1c/renal; reinstate if needed.</td></tr>
+            <tr><td class="factor">Simplify regimen</td><td>Reduce frequency, combine, adherence aids/blister packs as appropriate.</td></tr>
+            <tr><td class="factor">Keep high-value</td><td>Anticoagulation for AF; symptomatic treatments she values.</td></tr>
+            <tr><td class="factor">Safety-net</td><td>What to watch for after each change; when to seek help.</td></tr>
+            <tr><td class="factor">Review &amp; continuity</td><td>Re-review; continuity GP; involve carer; update records.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">A plan that scores</div><div class="sca-phrase">"Let's start by easing two tablets — the blood-pressure one and the bladder one — and I'll check your blood pressure and how you feel in a few weeks. If the dizziness and fog improve, we'll go on to the next ones. We'll keep your stroke-prevention tablet. Here's what to look out for, and I'm your point of contact throughout."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Stopping many drugs at once / abrupt withdrawal of taper drugs</li><li>No monitoring/safety-net/review; not simplifying</li><li>Imposing changes rather than shared decisions</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Multimorbidity &amp; Polypharmacy — SCA Consultation Scorecard</div><div class="scorecard-sub">What matters · benefit vs burden · falls/ACB · deprescribe deliberately · keep high-value</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Starts with "what matters to you"</strong> — person's goals/priorities frame the review</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Structured, systematic review</strong> — per-medicine benefit/burden/harm; uses a framework</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Objective assessment</strong> — lying/standing BP, cognition, frailty, falls narrated</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain-language explanation</strong> — explains keep/stop/relax and the reasoning simply</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Shared decisions, not edicts</strong> — agrees changes with the patient (and carer)</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Safety-net &amp; monitoring</strong> — what to watch for after each change; reinstate if needed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Staged plan + review + closing question</strong> — one change at a time, follow-up, "anything else?"</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, review, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Individualised, benefit-vs-burden approach (NG56)</strong> — not disease-by-disease guideline stacking</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Links symptoms to culprit drugs</strong> — falls/dizziness (BP), confusion (ACB), hypos (diabetes drugs)</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Identifies &amp; reduces anticholinergic burden</strong> — calculates ACB; stops/swaps offending drugs</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Relaxes over-tight targets in frailty</strong> — HbA1c/BP; time-to-benefit reasoning for preventives</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Keeps high-value treatment</strong> — does NOT stop anticoagulation for AF inappropriately</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Spots high-risk combinations/monitoring</strong> — triple whammy/AKI, bleeding, missed monitoring</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Deprescribes safely</strong> — one change at a time; taper where needed (no abrupt withdrawal)</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Addresses adherence/burden</strong> — simplifies regimen; aligns with what she'll take</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct overall plan</strong> — staged deprescribing of harmful/low-value drugs, keep high-value, monitor, coordinate</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decisions</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — her views on which tablets help / which she'd drop surfaced</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> — falls/memory/number of tablets (and daughter's worry)</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations addressed</strong> — "fewer tablets, stay well" met with a realistic plan</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Reframes deprescribing positively</strong> — "fewer can be better," not "giving up"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Respects autonomy &amp; expertise</strong> — patient as expert in her own life</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Involves the carer appropriately</strong> — daughter included with consent</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Reassures re high-value medicines</strong> — explains why the important ones stay</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Checks understanding</strong> — confirms the staged plan and safety-net</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Coordinated, continuity-focused</strong> — named GP; joined-up care, not fragmented</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Patient leaves empowered</strong> — feels heard, in control, with a clear plan</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Collaborative close</strong> — plan agreed; review/monitoring arranged</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">Guideline-by-guideline; no "what matters"; misses drug-caused falls/confusion; stops anticoagulation or changes everything at once; no monitoring</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">Person-centred; identifies some culprits; some deprescribing; targets/monitoring partial; ICE partial</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">"What matters" first; links symptoms→drugs; benefit-vs-burden per drug; reduces ACB, relaxes targets, keeps anticoagulation; one change at a time + monitor; coordinated; ICE all three</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist to see your score and feedback</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked — areas to develop</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"The nurse said I should come for a medication review. To be honest, doctor, I'm on so many tablets — fourteen, I think — and I'd really rather not be. I keep going dizzy and I've had a couple of falls, and my memory's not what it was."</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>Edith Hargreaves, 82, here with your daughter. You take 14 medicines (for blood pressure, type 2 diabetes, atrial fibrillation, osteoporosis, depression, an overactive bladder, reflux, arthritis and cholesterol). You've become frailer, had two falls, feel light-headed standing up, drowsy in the day, and a bit forgetful. You've been told your diabetes is "very well controlled" and your blood pressure runs low (you feel dizzy). You find the tablets a burden, don't always take them all, and would rather be on fewer. Your priority is to "stay on my feet and keep my marbles". Your daughter is anxious about the falls and memory.</p></div>
+      <div class="ab"><h5>Hidden concerns (reveal if explored)</h5><p><strong>Wants fewer tablets (main):</strong> the burden bothers you; you've quietly skipped some.</p><p><strong>Fear of falls/dementia:</strong> the falls and forgetfulness frighten you and your daughter.</p><p><strong>Worry about stopping the "wrong" one:</strong> you don't want anything bad to happen — reassurance that important ones stay helps.</p></div>
+      <div class="ab"><h5>Clinical details if asked</h5><ul><li>14 medicines; falls ×2; postural dizziness; daytime drowsiness; mild new forgetfulness; dry mouth</li><li>HbA1c "very well controlled"; BP runs low; bladder antimuscarinic + antidepressant among the drugs; on an anticoagulant for AF; on an NSAID for arthritis</li><li>Doesn't always take them all; finds the regimen a burden; some dexterity difficulty</li><li>Lives at home with some help; daughter nearby and involved</li></ul></div>
+      <div class="ab"><h5>Reactions at key moments</h5><ul><li><strong>If the doctor goes through diseases/guidelines without asking what matters:</strong> you feel unheard.</li><li><strong>On "what matters to you?":</strong> relieved; you say you want fewer tablets, no falls, keep your mind.</li><li><strong>On easing BP/bladder tablets:</strong> pleased, a little cautious.</li><li><strong>On keeping the blood-thinner:</strong> reassured it's important and stays.</li><li><strong>Challenge line:</strong> "Can't you just stop most of them? But you won't stop anything important and cause a stroke, will you?"</li></ul></div>
+    </div>
+    <div class="actor-challenge">"Honestly, can't we just get rid of most of these tablets? But I don't want you stopping something important and giving me a stroke — how do you decide which ones?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> Edith is well served if the GP: (1) begins with "what matters to you" and builds the review around her goals (fewer tablets, avoid falls, preserve cognition); (2) links her falls/dizziness, drowsiness and forgetfulness to likely drug causes (over-treated BP/postural drop, anticholinergic burden, hypo risk) and assesses objectively (lying/standing BP, cognition, frailty); (3) weighs benefit vs burden per medicine — reducing/relaxing the over-treated BP and diabetes, lowering anticholinergic burden, considering stopping low-value preventives, stopping the NSAID — while KEEPING her anticoagulation; (4) deprescribes deliberately, one change at a time, with shared decisions, monitoring, simplification, carer involvement and continuity. She feels unheard if the GP works through diseases/guidelines, changes everything at once, or stops a high-value medicine.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Multimorbidity &amp; Polypharmacy — Clinical Decision Framework</div><div class="sum-sub">NG56 · what matters · benefit vs burden · deprescribe</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🧭 1 — Approach (NG56)</div>
+    <div class="card" style="padding:.8rem 1rem;margin-bottom:1rem"><p style="font-size:12.5px;line-height:1.6"><strong>Start with "what matters to you".</strong> Structured medication review per drug: indication valid? effective? wanted? safe (interactions/monitoring/renal)? duplicated? evidence in THIS person? Weigh <strong>benefit vs treatment burden &amp; harm</strong>. Use STOPP/START + anticholinergic burden score. In frailty, consider <strong>time-to-benefit vs prognosis</strong> for preventives.</p></div>
+    <div class="sum-sub-hdr">📉 2 — Deprescribe &amp; keep</div>
+    <div class="card" style="padding:.8rem 1rem"><p style="font-size:12.5px;line-height:1.6"><strong>Target:</strong> falls/confusion drivers (over-treated BP/postural drop, ACB, sedatives, hypo risk), high-risk combos (triple whammy → AKI; opioid+benzo), low-value preventives. <strong>Relax</strong> over-tight HbA1c/BP. <strong>Keep</strong> high-value (anticoagulation in AF). <strong>How:</strong> shared decision, one change at a time, taper where needed (steroids/benzos/beta-blockers), monitor, simplify, safety-net, review; coordinate (pharmacist, falls, frailty MDT, continuity GP).</p></div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label">SCA Quick Reference</div><div class="sum-title">Multimorbidity — Consultation Playbook</div><div class="sum-sub">What matters · benefit vs burden · deprescribe deliberately</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🎯 The three pivots that pass this case</div>
+    <div class="sum-3col">
+      <div class="snp-phrase-box snp-e"><div class="snp-lbl">1 · What matters to you</div><div class="snp-text">Lead with the person's goals (fewer tablets, avoid falls, keep cognition), not the disease list.</div></div>
+      <div class="snp-phrase-box snp-m"><div class="snp-lbl">2 · Benefit vs burden</div><div class="snp-text">Per medicine, in THIS frail person: link falls/confusion to drugs (BP/ACB/hypo); relax over-tight targets; mind time-to-benefit.</div></div>
+      <div class="snp-phrase-box snp-a"><div class="snp-lbl">3 · Deprescribe, keep, monitor</div><div class="snp-text">Stop harmful/low-value one change at a time (taper where needed); KEEP high-value (AF anticoagulation); monitor &amp; review.</div></div>
+    </div>
+    <div class="sdp-pivot" style="margin-top:1rem;font-size:11.5px;background:#fef3c7;color:#854d0e;border-radius:8px;padding:.6rem .85rem;line-height:1.5">⛔ Don't manage disease-by-disease without asking what matters · Don't miss drug-caused falls/confusion (BP/ACB/hypo) · Don't stop high-value medicines (e.g. AF anticoagulation) or change everything at once · Don't deprescribe abruptly where withdrawal occurs (steroids/benzos/beta-blockers) · Share decisions, monitor, simplify, coordinate</div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Multimorbidity &amp; Polypharmacy · GP Clinical Reasoning Framework v2</strong> · NICE NG56 (Multimorbidity) · structured medication review (SMR) · STOPP/START · anticholinergic burden · deprescribing guidance · NICE falls (CG161)</p>
+  <p style="margin-top:4px">Start with "what matters to you"; individualise, don't stack single-disease guidelines · Weigh benefit vs treatment burden &amp; harm for each medicine in THIS person; use a structured medication review (STOPP/START, anticholinergic burden) · Link falls/confusion/hypos to drug causes (over-treated BP/postural drop, ACB, sedatives, glycaemic drugs); relax over-tight targets in frailty; consider time-to-benefit vs prognosis for preventives · Deprescribe deliberately — shared decision, one change at a time, taper where needed, monitor, simplify, safety-net · Keep high-value treatments (anticoagulation in AF); coordinate care (pharmacist, falls/frailty MDT, continuity GP)</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current NICE NG56 and deprescribing guidance · Clinical judgement takes precedence over any framework</p>
+</div>
+</div><!-- /page -->
+  </main>
+</div><!-- /app -->
+<script src="script.js"></script>
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
+</body>
+</html>

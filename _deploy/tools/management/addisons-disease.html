@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Addison's Disease — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Addison's disease management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🧂",
+  title:"Addison's Disease",
+  stemTitle:"Adrenal insufficiency \u2014 replacement, sick-day rules and crisis prevention",
+  stemSub:"Primary-care role in established adrenal insufficiency \u2014 supporting lifelong steroid replacement, drilling the sick-day rules, ensuring the steroid emergency card and IM hydrocortisone kit, and recognising/treating adrenal crisis before biochemistry. CKS \u00b7 Society for Endocrinology \u00b7 2026.",
+  guideline:"Society for Endocrinology",
+  glance:[
+    {lbl:"Glucocorticoid", val:"Hydrocortisone 15\u201325 mg/day", sub:"15\u201325 mg/day split"},
+    {lbl:"Mineralocorticoid", val:"Fludrocortisone 50\u2013200 mcg OD", sub:"50\u2013200 \u00b5g (primary)"},
+    {lbl:"Sick-day", val:"Double oral dose", sub:"for fever/illness"},
+    {lbl:"Vomiting", val:"IM hydrocortisone 100 mg", sub:"then 999"},
+    {lbl:"Carry", val:"Steroid card + kit", sub:"+ MedicAlert"},
+    {lbl:"Crisis", val:"100 mg IV/IM stat", sub:"+ IV saline"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm the diagnosis & the replacement principle", blocks:[{b:"kv", rows:[["Diagnosis","Primary adrenal insufficiency confirmed (short Synacthen / 9am cortisol + ACTH; adrenal autoantibodies). Specialist-confirmed; GP delivers lifelong shared care."],["Replacement","Physiological replacement of <b>glucocorticoid</b> (hydrocortisone 15\u201325 mg/day in divided doses) <b>and mineralocorticoid</b> (fludrocortisone) \u2014 mimics the adrenal output the body can no longer make."],["The core risk","Patients cannot mount a stress cortisol response \u2014 so any illness/surgery needs extra steroid, and missed doses can be fatal. Everything below follows from this."]]},{b:"why", html:"Addison\u2019s is uncommon but lethal if the replacement principle is misunderstood: the dose must rise with physiological stress and can never simply stop. Establishing this upfront frames the sick-day rules, emergency kit and monitoring that follow."}]},
+    {t:"node", d:"safety", n:"2", tag:"Safety-net", title:"Adrenal crisis \u2014 treat before confirming",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Recognise crisis", html:"Hypotension/collapse, vomiting, abdominal pain, fever, confusion \u2014 especially during illness or missed doses."},
+          {t:"💉 Treat immediately", html:"<b>Hydrocortisone 100 mg IM/IV stat</b> + <b>1 L 0.9% saline IV over 30 min</b>; treat hypoglycaemia; anyone (patient, relative or carer) can give the IM injection \u2014 do not wait for cortisol."},
+          {t:"🧪 Biochemistry", html:"Hyponatraemia + hyperkalaemia \u00b1 hypoglycaemia is the classic signature \u2014 treat empirically."},
+          {t:"🚑 Admit", html:"Call 999 after the first-dose steroid + fluids \u2014 rapid transport to hospital (ideally within 30 min); identify and treat the precipitant. <b>Flag the records</b> of everyone with known adrenal insufficiency."}
+        ]},
+        {b:"why", html:"Adrenal crisis is a reversible killer. Up to half of Addison\u2019s is first diagnosed at crisis. Treatment (parenteral hydrocortisone + fluids) always precedes confirmatory tests. In under-16s follow BSPED guidance \u2014 the same principles (hydrocortisone, fluids, rapid transfer) with weight-based doses."}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 replacement", title:"Glucocorticoid + mineralocorticoid",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Glucocorticoid", title:"Hydrocortisone 15\u201325 mg/day", when:"2\u20133 divided doses",
+           html:"Largest dose on waking to mimic circadian rhythm (e.g. 10/5/5 mg). Prednisolone OD is an alternative. Titrate to wellbeing, not to a random cortisol."},
+          {step:"Mineralocorticoid", title:"Fludrocortisone 50\u2013200 \u00b5g OD", when:"primary disease only",
+           fromLabel:"primary (Addison\u2019s) only",
+           html:"Titrate to BP, postural drop, electrolytes and plasma renin. Not needed in secondary (pituitary) insufficiency."},
+          {step:"Selected", title:"DHEA", when:"specialist-led",
+           fromLabel:"impaired wellbeing despite optimal replacement",
+           html:"Considered in some women with low wellbeing/libido \u2014 specialist initiation, not routine."}
+        ]},
+        {b:"warn", html:"Never stop glucocorticoid abruptly \u2014 precipitates crisis. Over-replacement causes weight gain, hypertension, dysglycaemia and osteoporosis; under-replacement risks crisis."}
+      ]},
+    {t:"node", d:"safety", n:"4", tag:"Critical education", title:"Sick-day rules + emergency kit",
+      blocks:[
+        {b:"kv", rows:[
+          ["Sick-day rule 1 (oral)","<b>Double</b> the oral glucocorticoid for fever/intercurrent illness or significant infection until recovered"],
+          ["Sick-day rule 2 (parenteral)","Vomiting / diarrhoea / can\u2019t keep tablets down \u2192 <b>IM hydrocortisone</b> from emergency kit + seek urgent help"],
+          ["Procedures","Surgery, major dental work, colonoscopy prep \u2192 peri-procedure parenteral steroid cover"],
+          ["Always carry","NHS <b>Steroid Emergency Card</b> + MedicAlert bracelet; IM hydrocortisone kit (in date); train patient + family"]
+        ]},
+        {b:"why", html:"Adrenal crisis is largely preventable through education. The 2020 NHS Steroid Emergency Card standardised this. The highest-yield intervention at every review is rehearsing: double oral dose for fever, switch to IM if vomiting, call for help."}
+      ]},
+    {t:"node", d:"life", n:"5", tag:"Living with it", title:"Self-management",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"💊 Adherence", html:"Lifelong, never run out \u2014 order ahead, carry spares when travelling."},
+          {t:"🆔 Identification", html:"Steroid Emergency Card + MedicAlert at all times."},
+          {t:"✈️ Travel", html:"Extra meds + IM kit in hand luggage + doctor\u2019s letter."},
+          {t:"💉 Family training", html:"Teach family to give IM hydrocortisone in emergency."},
+          {t:"💉 Vaccination", html:"Keep immunisations current; treat infections promptly."},
+          {t:"🤝 Support", html:"Signpost to Addison\u2019s Disease Self-Help Group (ADSHG)."}
+        ]}
+      ]},
+    {t:"node", d:"monitor", n:"6", tag:"Monitoring", title:"Replacement review",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Wellbeing, weight, BP (lying/standing)","Each review","Adjust glucocorticoid; assess over/under-replacement"],
+          ["U&amp;E \u00b1 plasma renin","Periodically","Titrate fludrocortisone (primary disease)"],
+          ["Sick-day knowledge + kit/card","Each review","Re-educate; replace expired hydrocortisone; confirm card"],
+          ["Associated autoimmune disease","Periodic","Screen for thyroid, B12, coeliac, T1DM in autoimmune Addison\u2019s"],
+          ["Bone health","As indicated","Minimise glucocorticoid dose; assess osteoporosis risk"]
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer", title:"Specialist links",
+      arrow:"shared care with endocrinology",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"999 / acute medicine", html:"Suspected adrenal crisis \u2014 after first-dose IM/IV hydrocortisone + fluids."},
+          {t:"Endocrinology", html:"All confirmed/suspected disease \u2014 diagnosis, replacement initiation, annual review."},
+          {t:"Pituitary / neurosurgery", html:"Secondary insufficiency with a pituitary lesion."},
+          {t:"Oncology", html:"Bilateral adrenal metastases as the cause \u2014 manage primary cancer."}
+        ]},
+        {b:"say", html:"Your body can\u2019t make enough steroid hormone, so you take it as tablets every day \u2014 and crucially, you take more when you\u2019re ill. If you\u2019re vomiting or very unwell, use the emergency injection and call for help. Always carry your steroid card."}
+      ]}
+  ],
+  foot:"Primary-care support of established adrenal insufficiency under endocrinology shared care; diagnosis and initiation are specialist-led. Verify against current NICE NG243 (adrenal insufficiency, 2024), NICE CKS Addison\u2019s, Society for Endocrinology emergency guidance and the NHS Steroid Emergency Card."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

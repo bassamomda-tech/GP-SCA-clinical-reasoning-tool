@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Eye Swelling Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;
+  --diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;
+  --treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;
+  --refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;
+  --lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
+  --font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif
+}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#0d1a2e 0%,#1a3a6a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#1a3a6a,#7b3fa0);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}
+.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}
+.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}
+.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}
+.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}
+.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}
+.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#92400e}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">👁️</div>
+  <div>
+    <b>Eye Swelling — Periorbital &amp; Eyelid</b>
+    <small>Orbital cellulitis emergency · pre-septal vs orbital · chalazion · angio-oedema · thyroid eye disease</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — the critical distinction is orbital (post-septal) cellulitis from the much commoner preseptal cellulitis and benign lid swellings. Treat the cause and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Eye / lid swelling</span><div class="body">Pain, redness, proptosis, eye movements, vision, fever, bilateral vs unilateral. Examine lids, globe position, movements, acuity.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — orbital cellulitis / emergency</span><span class="ttl">Orbital cellulitis or systemic emergency?</span><div class="body">Proptosis, painful/restricted eye movements, reduced vision, RAPD, systemic upset → orbital cellulitis. Bilateral with airway/anaphylaxis → angioedema.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency</span><div class="body">Orbital cellulitis → emergency admission (IV antibiotics, imaging). Angioedema/anaphylaxis → adrenaline + 999.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination localise the cause.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · common causes</span></div>
+    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Preseptal cellulitis</div><div class="box act"><span class="ttl">Common</span><div class="body">Lid swelling, no proptosis/eye-movement pain, vision normal; oral antibiotics + review.</div></div></div><div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Allergic / angioedema</div><div class="box act"><span class="ttl">Acute</span><div class="body">Bilateral, itchy, no pain; antihistamine; check airway.</div></div></div><div class="col"><div class="blabel">Localised lid lesions</div><div class="box ix"><span class="ttl">Benign</span><div class="body">Stye/chalazion, blepharitis, dacryocystitis.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> orbital cellulitis / angioedema. <span class="pill pill-purple">Ophthalmology</span> diagnostic uncertainty; treat preseptal cellulitis with safety-netting.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · treat cause &amp; self-care</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Treat the cause &amp; self-care</span><span class="ttl">By diagnosis</span><div class="body"><b>Preseptal cellulitis:</b> oral antibiotics (e.g. co-amoxiclav) with clear safety-netting and early review. <b>Stye/chalazion/blepharitis:</b> warm compresses, lid hygiene, lid massage. <b>Allergic/contact:</b> remove the allergen, cool compresses, antihistamine; <b>stop ACE inhibitor</b> in angioedema. <b>Thyroid eye disease:</b> stop smoking, optimise thyroid status. Treat conjunctivitis/dacryocystitis as appropriate.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Recheck &amp; urgent return advice</span><div class="body"><b>Review preseptal cellulitis within 24–48 h</b> (especially children) — it can progress to orbital cellulitis. <b>999 / same-day eye unit</b> for <b>proptosis, painful or restricted eye movements, reduced vision, double vision or systemic toxicity</b> (orbital cellulitis — sight- and life-threatening), or airway compromise with angioedema (IM adrenaline). Safety-net carers to return immediately if these develop.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution crit">⚠️ <b>Orbital cellulitis is sight- and life-threatening:</b> proptosis, painful eye movements or reduced vision distinguish it from preseptal cellulitis and need emergency admission.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Orbital Cellulitis, Angio-oedema &amp; Malignancy</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Proptosis + restricted eye movement + pain on eye movement = orbital cellulitis until proven otherwise. Same-day hospital — intracranial extension can kill within hours.</b></p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Proptosis (eye pushed forward) + restricted eye movement</b> Orbital cellulitis — infection posterior to the orbital septum → same-day hospital (IV antibiotics + urgent CT orbits). Risk of cavernous sinus thrombosis, meningitis, subdural empyema, blindness. Most common after sinusitis (ethmoid sinus adjacent to orbit).</div>
+      <div class="rftile"><b>Chemosis (conjunctival oedema) + pulsatile proptosis + bruit</b> Carotid-cavernous sinus fistula (post-trauma or spontaneous) → same-day neuroradiology/ophthalmology. Arterial blood shunting into orbital venous system causes pulsating exophthalmos and conjunctival injection.</div>
+      <div class="rftile"><b>Unilateral proptosis + diplopia + no infection signs</b> Orbital tumour (lymphoma, lacrimal gland tumour, metastasis, rhabdomyosarcoma in children) → 2WW ophthalmology + CT/MRI orbits. Any unilateral proptosis in an adult without clear inflammatory cause = cancer exclusion mandatory.</div>
+      <div class="rftile"><b>Rapidly progressive bilateral proptosis + lid retraction + conjunctival injection</b> Severe thyroid eye disease (TED) with compressive optic neuropathy — loss of colour vision, reduced visual acuity, relative afferent pupillary defect (RAPD) → same-day ophthalmology. Risk of permanent sight loss within hours.</div>
+      <div class="rftile"><b>Eye swelling + lip/tongue/throat swelling</b> Angio-oedema with airway compromise risk → 999. ACE inhibitor-induced or hereditary (C1-esterase inhibitor deficiency). Periorbital angio-oedema without airway symptoms: adrenaline 500 mcg IM if airway threatened; oral antihistamine + prednisolone if not.</div>
+      <div class="rftile"><b>Periorbital swelling in a child + fever + unwell</b> Orbital cellulitis is a paediatric emergency — children can deteriorate rapidly. Pre-septal cellulitis in children also warrants careful assessment and low threshold for admission (orbital involvement harder to exclude clinically in children). Same-day paediatrics.</div>
+      <div class="rftile"><b>Eyelid mass + progressive growth + bleeding</b> Eyelid malignancy: basal cell carcinoma (most common — firm, pearly, telangiectatic margin), squamous cell carcinoma, sebaceous gland carcinoma (aggressive — may mimic recurrent chalazion), melanoma. Urgent ophthalmology / plastic surgery referral for biopsy.</div>
+      <div class="rftile"><b>Periorbital swelling + headache + meningism</b> Cavernous sinus thrombosis (complication of orbital/facial infection) — severe headache, high fever, bilateral proptosis, CN III/IV/VI palsies → 999. Mortality 20–30% even with treatment (IV antibiotics + anticoagulation controversial).</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Orbital cellulitis is one of the most dangerous eye emergencies in primary care — the hallmark distinguishing it from pre-septal (periorbital) cellulitis is involvement posterior to the orbital septum, which communicates directly with the intracranial venous sinuses via the superior and inferior ophthalmic veins. The orbital septum is a thin fibrous membrane extending from the bony orbital rim to the eyelid tarsal plates — it is the critical anatomical barrier. Structures anterior to it (eyelid skin, pre-septal fat) can be infected without danger to vision or life. Structures posterior to it (orbital fat, extraocular muscles, optic nerve) cannot. The Chandler classification of orbital infections grades severity: Class I (inflammatory oedema) through Class V (cavernous sinus thrombosis). Class II upwards (subperiosteal abscess or beyond) requires IV antibiotics and urgent imaging. The cardinal signs of orbital (vs pre-septal) disease are: proptosis (forward displacement of the globe), ophthalmoplegia (restricted eye movement from myositis or mechanical tethering), pain on eye movement, and reduced visual acuity. Any one of these in a patient with periorbital swelling mandates same-day hospital assessment.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Pre-septal vs Post-septal — The Critical Distinction</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Examine every periorbital swelling for the five orbital signs. Any one present = orbital cellulitis = same-day hospital.</b></p>
+    <div class="kv">
+      <div>Pre-septal (periorbital cellulitis)</div><div>Infection anterior to orbital septum — safe, manageable in primary care in mild cases. Features: eyelid erythema + swelling, tender to palpation, may be hot. <b>Crucially:</b> normal eye movement (full range), no proptosis, normal visual acuity, no pain on eye movement, no RAPD. Usually follows skin infection, insect bite, conjunctivitis, minor trauma. Oral antibiotics in mild cases.</div>
+      <div>Post-septal (orbital cellulitis)</div><div>Infection posterior to orbital septum — vision- and life-threatening. <b>Five orbital signs — any one = orbital cellulitis:</b> (1) Proptosis (forward globe displacement), (2) Ophthalmoplegia (restricted eye movement — pain on moving eye), (3) Chemosis (conjunctival oedema — swollen pink conjunctiva bulging forward), (4) Reduced visual acuity, (5) RAPD (relative afferent pupillary defect — afferent pupil defect on swinging torch test = optic nerve involvement). Same-day hospital immediately.</div>
+      <div>Proptosis assessment</div><div>Compare eye protrusion by standing behind patient and looking from above — asymmetric forward globe position = proptosis. Exophthalmometer (Hertel) measures formally. &gt;2 mm asymmetry is significant. Proptosis in a patient with periorbital swelling = orbital pathology until proven otherwise.</div>
+      <div>Visual acuity check</div><div>Mandatory in all periorbital swellings — use Snellen chart or near vision card. Document VA each eye separately. Any reduction in VA in the context of periorbital swelling = orbital involvement until proven otherwise. Compare with patient's baseline (spectacles prescription on phone, previous records).</div>
+      <div>RAPD (relative afferent pupillary defect)</div><div>Swinging torch test: shine bright torch into one eye for 2 seconds, then swing to the other. Normal: both pupils constrict equally. RAPD: pupil dilates (rather than constricts) when light swings to the affected eye = optic nerve compression. RAPD in orbital swelling = compressive optic neuropathy → 999.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The swinging torch test (RAPD assessment) is one of the most important and underused clinical skills in primary care — it can be performed with any bright torch in 30 seconds and directly tests optic nerve function. A positive RAPD means that the affected optic nerve is conducting fewer signals to the brain despite being illuminated — the brain therefore interprets the affected eye as "seeing" less light, and drives pupillary dilation rather than constriction when the light swings to that eye. In the context of periorbital swelling, an RAPD indicates optic nerve compression from an orbital abscess, tumour, or the swollen tissues of severe thyroid eye disease. It is a genuine ocular emergency. Visual acuity measurement with a Snellen chart should be performed at every GP consultation involving an eye complaint — it takes 60 seconds, requires no equipment beyond the chart on the wall or a phone app (Peek Acuity), and provides objective baseline data. Many cases of delayed diagnosis of serious ophthalmic conditions involve the absence of documented visual acuity at the primary care presentation.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis — Non-Emergency Causes</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Chalazion (meibomian cyst)</div><div>Most common eyelid lump. Painless, firm, non-tender rounded swelling in the eyelid (within tarsal plate — not at lid margin). Blocked meibomian gland. No erythema or tenderness unless secondarily infected. Most resolve spontaneously in 2–8 weeks with warm compresses. Persistent (&gt;3 months) → incision and curettage under local anaesthesia (ophthalmology). Recurrent chalazia → sebaceous gland carcinoma exclusion (biopsy).</div>
+      <div>Hordeolum (stye)</div><div>Acute painful tender red lump at eyelid margin. External (stye = infected lash follicle / Zeis gland — points at lid margin) or internal (infected meibomian gland — points towards conjunctiva). Staphylococcus aureus. Hot compress 4× daily. Most drain spontaneously. Topical chloramphenicol 1% ointment if pointing / secondary conjunctivitis. Do NOT incise in primary care — wait for spontaneous drainage or refer to ophthalmology if persistent (&gt;1 week).</div>
+      <div>Pre-septal (periorbital) cellulitis</div><div>Eyelid erythema, warmth, swelling, tenderness. No orbital signs. Common in children after insect bite, minor skin trauma, or as spread from conjunctivitis / dacryocystitis. Adults: dental abscess (medial spread), sinus disease. Mild: oral co-amoxiclav 625 mg TDS × 7 days. Moderate or child: low threshold for IV antibiotics (same-day assessment).</div>
+      <div>Dacryocystitis (lacrimal sac infection)</div><div>Painful red swelling below medial canthus (lower medial orbit) — infection of the nasolacrimal sac. Tearing (epiphora), discharge, swelling tender at lacrimal fossa. Acute: oral co-amoxiclav + urgent ophthalmology referral (may need sac washout / dacryocystorhinostomy). Can progress to periorbital or orbital cellulitis.</div>
+      <div>Allergic reaction</div><div>Bilateral puffy eyelids with itch, no erythema or warmth, associated with other allergic features (rhinitis, urticaria, sneezing). Angioedema: asymmetric, non-itchy, non-pitting, rapid onset (minutes to hours). Seasonal allergic conjunctivitis: bilateral, seasonal, chemosis (conjunctival swelling), watery discharge. Oral antihistamine + topical antihistamine eye drops.</div>
+      <div>Thyroid eye disease (TED)</div><div>Bilateral proptosis (may be asymmetric), lid retraction (white sclera visible above cornea = "stare"), lid lag, periorbital oedema, conjunctival injection, restricted eye movement (inferior rectus fibrosis → upgaze restriction). Associated with Graves' disease (may precede, accompany, or follow hyperthyroidism). TFTs + TSH receptor antibodies. Urgent ophthalmology referral for all suspected TED.</div>
+      <div>Blepharitis</div><div>Chronic bilateral eyelid margin inflammation — lid margin thickening, crusting at lash bases, collarettes around lashes. Burning, grittiness, intermittent blurring, dry eye. Associated with rosacea and seborrhoeic dermatitis. Management: daily lid hygiene (warm compress + lid scrub) + lubricant eye drops. Not curable but controllable. Doxycycline 100 mg OD × 12 weeks for moderate-severe.</div>
+      <div>Periorbital oedema (systemic)</div><div>Bilateral morning periorbital puffiness — hypothyroidism (myxoedema), nephrotic syndrome, allergy, venous/lymphatic obstruction (SVC syndrome — facial + arm oedema), angioedema. Check TFTs, albumin, urinalysis, renal function. Periorbital oedema is often the first visible sign of nephrotic syndrome (periorbital loose connective tissue fills with fluid first) and hypothyroidism.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Recurrent chalazion deserves specific clinical attention — a chalazion that recurs at the same site should raise suspicion for sebaceous gland carcinoma (SGC), a rare but aggressive eyelid malignancy that classically masquerades as a recurrent or treatment-resistant chalazion. SGC arises from the meibomian glands or Zeis glands and has a pagetoid spread pattern (intraepithelial spread along the conjunctiva without visible mass). It accounts for up to 5% of all eyelid malignancies and carries a metastatic mortality of 15–25%. The clinical rule is: any chalazion that recurs at the same site after incision and curettage must be sent for histological examination. GPs should document chalazion location and refer any recurrence to ophthalmology for biopsy. Thyroid eye disease (TED) is the most common cause of bilateral proptosis and unilateral proptosis in adults — it is directly caused by TSH receptor antibody-driven glycosaminoglycan deposition in the orbital fat and extraocular muscles, causing volume expansion within the rigid bony orbit. Importantly, TED can occur when thyroid function tests are normal (euthyroid Graves' disease) — TFTs alone do not exclude TED as the cause of proptosis.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Targeted Examination &amp; Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Mandatory checks (all eye swelling)</div><div>Visual acuity (Snellen or near card, each eye separately) · Pupil reactions including RAPD (swinging torch) · Eye movements (all 6 directions — restriction indicates orbital involvement) · Proptosis (compare eyes from above) · Eyelid opening / ptosis · Conjunctival inspection (chemosis, injection, discharge)</div>
+      <div>Lump characterisation</div><div>Location: eyelid margin (stye, keratosis, papilloma), within tarsal plate (chalazion), medial canthus (dacryocystitis), lateral upper lid (lacrimal gland enlargement — lymphoma, sarcoid), diffuse eyelid (cellulitis, allergy, systemic oedema). Consistency: firm non-tender (chalazion), fluctuant tender (abscess / stye), hard irregular (malignancy). Skin changes: pearly / telangiectatic (BCC), pigmented (melanoma).</div>
+      <div>Systemic examination</div><div>Temperature + HR (cellulitis / orbital cellulitis — systemic sepsis). Neck lymphadenopathy (ENT source, lymphoma). Thyroid examination (goitre, thyroid bruit — TED). Skin rosacea (blepharitis association). Sinus tenderness (sinusitis → orbital cellulitis source).</div>
+      <div>Investigations (directed)</div><div><span class="pill pill-blue">TFTs + TSH receptor antibodies</span> (thyroid eye disease) · <span class="pill pill-blue">FBC + CRP + ESR</span> (cellulitis, orbital cellulitis — guides severity) · <span class="pill pill-blue">Blood cultures</span> (pre-antibiotic in orbital cellulitis — hospital) · <span class="pill pill-blue">CT orbits + sinuses</span> (orbital cellulitis — defines abscess, sinus source — hospital) · <span class="pill pill-blue">MRI orbits</span> (soft tissue — orbital tumour, optic nerve, extraocular muscle) · <span class="pill pill-blue">C4 + C1-INH</span> (hereditary angio-oedema screen if recurrent non-allergic swelling)</div>
+      <div>Nasolacrimal system</div><div>Assess in all medial eyelid swellings: press over lacrimal sac (below medial canthus) — regurgitation of mucopurulent discharge confirms nasolacrimal duct obstruction / dacryocystitis. Epiphora (excessive tearing) suggests nasolacrimal obstruction. Referral to ophthalmology for sac washout or dacryocystorhinostomy (DCR).</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">CT orbits with contrast is the definitive investigation for orbital cellulitis — it identifies subperiosteal abscess (collection between the bony orbital wall and periorbita, typically medial from ethmoid sinusitis), intraorbital abscess, and intracranial extension. The decision to proceed to CT should be made in hospital after initial clinical assessment, not in primary care (where CT is not available). The key primary care role is to recognise the clinical signs of orbital involvement and refer urgently — attempting to definitively exclude orbital cellulitis in primary care by clinical examination alone is unsafe and is associated with delayed diagnosis. The TSH receptor antibody (TRAb) test is the most specific investigation for thyroid eye disease — it is positive in 95% of active TED cases, even when TFTs are normal (euthyroid Graves'). A positive TRAb with periorbital swelling and any of the features of TED (lid retraction, proptosis, restricted eye movement) confirms the diagnosis and mandates urgent ophthalmology referral. TRAb is not routinely available in all GP laboratories — check local availability and if unavailable, refer on clinical suspicion.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="REFER" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Orbital cellulitis with reduced VA, RAPD, or signs of intracranial extension (meningism, headache, bilateral signs, confusion) · Angio-oedema progressing to lip/tongue/throat swelling or stridor · Cavernous sinus thrombosis (bilateral proptosis + fever + CN palsies + headache)</div>
+      <div><span class="pill pill-red">Same-day ophthalmology / A&E</span></div><div>Any of the 5 orbital signs present (proptosis, ophthalmoplegia, chemosis, reduced VA, RAPD) → same-day hospital. Severe or rapidly progressive periorbital cellulitis in a child. Suspected orbital tumour with acute visual change. Carotid-cavernous fistula (pulsatile proptosis + bruit).</div>
+      <div>Urgent ophthalmology (within 1 week)</div><div>Thyroid eye disease (any suspected TED) · Dacryocystitis not responding to oral antibiotics at 48 hours · Persistent chalazion &gt;3 months · Recurrent chalazion at same site (biopsy) · Suspected eyelid malignancy (BCC, SGC) · New unilateral proptosis without clear benign cause</div>
+      <div>Ophthalmology (routine)</div><div>Chronic blepharitis not controlled with lid hygiene · Confirmed chalazion for incision and curettage · Nasolacrimal duct obstruction (epiphora) · Mild TED — monitoring programme · Entropion / ectropion causing recurrent blepharitis</div>
+      <div>Endocrinology</div><div>New Graves' disease with TED — joint management with ophthalmology. Thyroid status optimisation reduces TED severity. Smoking cessation is the most important modifiable factor in TED — smoking dramatically worsens TED severity and response to treatment.</div>
+      <div>Immunology / allergy</div><div>Recurrent angio-oedema without identifiable trigger (possible hereditary angio-oedema — C1-INH deficiency) · Severe persistent allergic periorbital swelling not responding to standard antihistamines · Suspected ACEi-induced angio-oedema (confirm and document permanently on record)</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Thyroid eye disease requires dual-specialty management — ophthalmology for the orbital component and endocrinology for thyroid function optimisation. The relationship between thyroid disease activity and TED activity is imperfect — TED can be active when thyroid function is controlled, and can progress after radioactive iodine treatment (RAI). EUGOGO (European Group on Graves' Orbitopathy) guidelines note that RAI treatment worsens TED in smokers and those with moderate-severe TED — in these patients, thyroidectomy or antithyroid drugs are preferred over RAI. Smoking is the most powerful modifiable risk factor for TED severity — smokers have a 7.7-fold increased risk of TED compared to non-smokers, and active smoking is associated with a 2–3-fold higher risk of sight-threatening TED. Smoking cessation is the single most important intervention a GP can make for a patient with Graves' disease to reduce TED risk. This should be documented at every consultation. Dacryocystitis is a condition that GPs frequently under-refer — acute dacryocystitis (lacrimal sac infection) causes medial canthal swelling and can track both pre-septally into the eyelid and post-septally into the orbit. All acute dacryocystitis in adults should have same-day or urgent ophthalmology assessment.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="TREAT" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>GP-Initiated Treatment</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Pre-septal cellulitis (mild, adult)</div>
+        <div class="b-drug">Co-amoxiclav 625 mg TDS × 7 days</div>
+        <div class="b-note">Covers streptococci, staphylococci, and anaerobes from dental / sinus source. Penicillin allergy: clarithromycin 500 mg BD × 7 days or co-trimoxazole. Review at 48 hrs — if worsening or orbital signs develop → same-day hospital. Children with pre-septal cellulitis: same-day paediatrics assessment (lower threshold for IV antibiotics — orbital disease harder to exclude in children).</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Stye (hordeolum)</div>
+        <div class="b-drug">Warm compress 4× daily × 7–10 days</div>
+        <div class="b-note">Hot compress (face cloth soaked in warm water, wrung out, applied to closed eyelid for 5–10 min, 4× daily) softens the secretions and encourages spontaneous drainage. Topical chloramphenicol 1% ointment (apply to lash margin BD) if secondary conjunctivitis or pointing lesion. Do NOT squeeze or incise in primary care — causes spread. Recurrent styes: blepharitis treatment + lid hygiene.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Allergic periorbital swelling</div>
+        <div class="b-drug">Cetirizine 10 mg OD</div>
+        <div class="b-note">Oral antihistamine (cetirizine or loratadine — non-sedating). Topical antihistamine eye drops (olopatadine 0.1% — Opatanol, or azelastine) for associated allergic conjunctivitis. Cold compress for immediate relief. Topical sodium cromoglicate 2% (Opticrom) — mast cell stabiliser, preventive use. Seasonal: start 2 weeks before predicted season. Avoid known allergens.</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Chalazion</span><span class="rt">Warm compress 4× daily × 4 weeks — resolves 50% of acute chalazia. If persistent &gt;4 weeks: topical steroid-antibiotic (chloramphenicol + betamethasone — ophthalmology prescription) or intralesional triamcinolone (ophthalmology). Persistent &gt;3 months → incision and curettage (I&C) under LA (ophthalmology). Send all I&C specimens for histology (sebaceous gland carcinoma exclusion).</span></div>
+      <div class="rung"><span class="rn">Blepharitis</span><span class="rt">Lid hygiene programme: (1) Warm compress (30–60 seconds, licences lid oil glands) → (2) Lid massage (press and roll lid margin) → (3) Lid scrubs (cotton bud dipped in diluted baby shampoo or proprietary lid wipe — Blephaclean, BlephaSol) daily. Lubricant eye drops (Hypromellose, Systane) for dry eye. Doxycycline 100 mg OD × 12 weeks for moderate-severe meibomian gland blepharitis. Lifelong maintenance lid hygiene required — blepharitis is chronic.</span></div>
+      <div class="rung"><span class="rn">Angio-oedema (non-airway)</span><span class="rt">Oral cetirizine 10 mg + oral prednisolone 40 mg OD × 3 days. If ACEi identified: stop permanently — switch to ARB. Icatibant 30 mg SC injection (bradykinin B2 antagonist) for hereditary or ACEi-induced angio-oedema (available via A&E / specialist). Hereditary angio-oedema: specialist — C1-INH concentrate, tranexamic acid prophylaxis, icatibant self-injection kit.</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The warm compress technique for chalazion and blepharitis works by liquefying the solidified meibum (meibomian gland secretion) that blocks the gland orifice — normal meibum melts at approximately 28–32°C, but in meibomian gland dysfunction the composition changes and the melting point rises. A compress heated to approximately 40°C applied for 5–10 minutes softens the secretions, and the subsequent lid massage physically expresses them. The EyeBag (reusable microwaveable eye mask) maintains consistent heat for 10 minutes and is superior to flannels. Studies show temperature-controlled warm compresses produce significantly better symptom improvement than flannels alone. Doxycycline for blepharitis works not via antibiotic activity but via its anti-inflammatory and anti-lipase properties — it inhibits bacterial lipase enzymes (from Staphylococcus and Demodex) that break down meibum into toxic free fatty acids. It also reduces matrix metalloproteinase activity. The clinical response takes 6–8 weeks — patients must be counselled to continue for the full 12-week course before assessing efficacy.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Thyroid Eye Disease — GP Role</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Smoking cessation (most important)</div><div>Smoking is the single most important modifiable factor in TED — increases risk 7-fold, worsens severity, and dramatically reduces response to immunosuppressive treatment. Document smoking status at every TED consultation. Intensive smoking cessation (Champix/Cytisine + counselling) — refer to Stop Smoking Service urgently. This intervention has more impact on TED outcome than most medical treatments.</div>
+      <div>Thyroid function optimisation</div><div>Rapid swings in thyroid function worsen TED — aim for stable euthyroidism. Carbimazole / propylthiouracil titrated carefully. Hypothyroidism from over-treatment also worsens TED (elevated TSH drives TSH receptor antibody activity). Levothyroxine block-and-replace avoids swings. Liaise with endocrinology.</div>
+      <div>Acute TED — IV methylprednisolone</div><div>Moderate-severe active TED: IV methylprednisolone pulse therapy (500 mg weekly × 6 weeks then 250 mg weekly × 6 weeks) — hospital/ophthalmology initiated. NNT approximately 3 for significant improvement. Reduces risk of sight-threatening complications. Oral prednisolone less effective and more systemic side effects.</div>
+      <div>Selenium supplementation</div><div>EUGOGO trial (2011): selenium 200 mcg daily × 6 months improved mild TED and reduced progression to moderate-severe disease (NNT = 5). Available OTC (£5–10/month). Recommend for all mild active TED. Anti-oxidant mechanism — reduces reactive oxygen species in orbital fibroblasts. Discontinue after 6 months.</div>
+      <div>Corneal protection</div><div>Lid lag → corneal exposure → corneal ulceration risk. Lubricant eye drops (preservative-free — Hylo-Tear, Viscotears) every 1–2 hours. Lubricant gel (VitA-POS) at night. Eye taping at night if lagophthalmos (incomplete lid closure). Prompt ophthalmology if corneal symptoms (pain, photophobia, blurred vision).</div>
+      <div>Surgical options (ophthalmology)</div><div>Rehabilitative (after disease quiescence — 6 months stable): (1) Orbital decompression (expands orbital volume — reduces proptosis), (2) Squint surgery (corrects diplopia from restricted muscles), (3) Lid surgery (ptosis repair, retraction correction, blepharoplasty). Order is always: decompression first, then squint, then lids.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The selenium supplementation evidence for mild TED (EUGOGO Selenium trial, NEJM 2011) is one of the few RCT-proven treatments for mild active TED — it demonstrated that selenium 200 mcg daily for 6 months significantly improved mild active TED compared to placebo (quality of life score improvement, reduction in lid swelling and proptosis, and reduced progression to moderate-severe disease). The number needed to treat was approximately 5 for meaningful improvement. Selenium is thought to work by reducing reactive oxygen species that stimulate orbital fibroblast proliferation and glycosaminoglycan deposition. It is inexpensive, safe, and available OTC — GPs can recommend it for all patients with mild TED while awaiting ophthalmology review. The correct dose is 200 mcg daily (L-selenomethionine or sodium selenite formulation). Higher doses are potentially toxic — selenium toxicity causes hair loss, nail changes, and neurological symptoms above 400 mcg/day. The 6-month course is important — extending beyond 6 months has not shown additional benefit.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Eye Health, Hygiene &amp; Prevention</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Lid hygiene (blepharitis)</b> Daily routine — non-negotiable for blepharitis and stye recurrence prevention. Warm compress 30–60 sec → lid massage → lid scrub (Blephaclean wipes, diluted baby shampoo, or cotton bud). Evening routine most effective. EyeBag microwave mask for consistent heat. This is lifelong maintenance — blepharitis does not resolve permanently.</div>
+      <div class="lstile"><b>Contact lens hygiene</b> Contact lens wearers with periorbital or ocular swelling: remove lenses immediately and do not reinsert until symptom-free. Contact lens wear is the primary risk factor for Acanthamoeba keratitis and microbial keratitis — red eye + pain + contact lens use = urgent ophthalmology (not GP management). No swimming in contact lenses. Monthly replacement, correct solution use.</div>
+      <div class="lstile"><b>Allergy avoidance</b> Seasonal allergic eye disease: sunglasses (reduces airborne allergen exposure), shower on returning home (washes pollen from hair and face), avoid eye rubbing (worsens mast cell degranulation + risk of keratoconus), antihistamine eye drops 2 weeks pre-season. Perennial allergy: HEPA filter, house dust mite covers, pet avoidance.</div>
+      <div class="lstile"><b>TED — UV protection</b> Proptosis and incomplete lid closure expose the cornea to drying and UV damage. Wrap-around UV-blocking sunglasses outdoors — reduces photophobia and corneal UV exposure. Dark-tinted glasses also reduce visibility of proptosis (psychological benefit — significant body image impact of TED). UV400 protection recommended.</div>
+      <div class="lstile"><b>Screen use and dry eye</b> Screen use dramatically reduces blink rate (normal ~15/min → screen ~6/min) causing evaporative dry eye which worsens blepharitis and meibomian gland dysfunction. 20-20-20 rule: every 20 minutes, look at something 20 feet away for 20 seconds (allows full blink cycle). Preservative-free lubricant drops before prolonged screen use.</div>
+      <div class="lstile"><b>Smoking (TED and orbital health)</b> Smoking causes orbital and eyelid vascular damage, worsens TED 7-fold, and impairs wound healing after eyelid surgery. In TED patients: smoking cessation is the highest-priority lifestyle intervention — more impactful than any pharmacotherapy. Refer to Stop Smoking Service. Champix (varenicline) + counselling achieves 35% quit rate at 6 months.</div>
+      <div class="lstile"><b>Recurrent chalazion prevention</b> Lid hygiene reduces chalazion recurrence by reducing meibomian gland blockage. Dietary omega-3 fatty acids (fish oil 1–2 g/day or flaxseed oil) improve meibum quality and reduce blockage — evidence for reduction in meibomian gland dysfunction. Doxycycline 100 mg OD × 12 weeks for recurrent chalazia driven by meibomian gland dysfunction.</div>
+      <div class="lstile"><b>Immunocompromised patients</b> Diabetics, immunosuppressed, and elderly: higher threshold for hospital referral in any periorbital swelling — infection can progress rapidly, orbital complications are more common, and organisms may be atypical (mucormycosis — invasive fungal sinusitis invading orbit in diabetic ketoacidosis → devastating prognosis). Any rapidly worsening periorbital swelling in a diabetic with DKA = orbital mucormycosis until proven otherwise → 999.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Orbital mucormycosis is an extremely rare but virtually always fatal condition if not recognised early — it occurs in immunocompromised patients (classically diabetic ketoacidosis, but also haematological malignancy, organ transplant). The Mucorales fungi (Rhizopus, Mucor) invade the sinonasal mucosa and rapidly extend through the bony walls of the sinuses into the orbit and intracranially. It presents as rapidly progressive periorbital or facial swelling with black eschar on nasal or palatal mucosa — pathognomonic of tissue necrosis from vascular invasion. Any periorbital swelling in a diabetic who is unwell or acidotic requires same-day assessment as a matter of urgency. Treatment is IV liposomal amphotericin B + aggressive surgical debridement — mortality remains 50–80% even with treatment. The 20-20-20 rule for screen users is supported by optometric guidance and is one of the most effective simple interventions for screen-related dry eye — reduced blink rate during screen use leads to tear film evaporation and meibomian gland hyperstimulation, directly contributing to the blepharitis-meibomian gland dysfunction spectrum.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Pre-septal cellulitis — 48 hours</div><div>Telephone review mandatory — margin advancing beyond pen mark? Developing orbital signs (pain on eye movement, reduced VA, proptosis)? Any orbital sign → same-day hospital immediately. Response to oral antibiotics should begin within 24–48 hrs. No improvement at 48 hrs → same-day hospital for IV antibiotics even without orbital signs (Eron Grade III upgrade).</div>
+      <div>Stye — 1 week</div><div>Resolving with hot compress? Spontaneous drainage? If not draining or enlarging at 1 week → ophthalmology (incision under LA or topical steroid-antibiotic). Spreading cellulitis → same-day hospital. Recurrent styes in same area → rule out underlying chalazion, blepharitis (manage), or sebaceous gland carcinoma (refer).</div>
+      <div>Chalazion — 4 weeks</div><div>Warm compress × 4 weeks sufficient for most. Not resolving → ophthalmology referral (I&C under LA). Same-site recurrence after I&C → histology mandatory (sebaceous gland carcinoma). Any change in overlying skin (ulceration, telangiectasia) → urgent ophthalmology.</div>
+      <div>Blepharitis — 6–8 weeks</div><div>Lid hygiene programme commenced? Doxycycline tolerated? Symptoms improving? Blepharitis is chronic — set expectation of management not cure. Annual review. Corneal complications (keratitis from lid disease) → urgent ophthalmology. Eyelid margin telangiectasia / meibomian cysts → ophthalmology assessment.</div>
+      <div>TED — ongoing</div><div>Smoking cessation achieved? TFTs stable? Selenium prescribed? Ophthalmology monitoring programme confirmed? Corneal lubricants adequate? Any new VA change, RAPD, diplopia, or corneal pain between ophthalmology appointments → same-day ophthalmology (sight-threatening TED can deteriorate rapidly).</div>
+      <div>Angio-oedema</div><div>ACEi stopped and ARB substituted? C4 + C1-INH checked (HAE exclusion)? Allergy referral arranged? EpiPen prescribed if previous airway-threatening episode? Written emergency action plan given? Family educated on adrenaline autoinjector use? Document permanently in medical record.</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>Any of the 5 orbital signs developing at any point (proptosis, ophthalmoplegia, reduced VA, RAPD, chemosis) · Eye swelling with new throat/tongue swelling or stridor (angio-oedema airway) · New severe headache + orbital swelling + fever (cavernous sinus thrombosis) · Rapidly spreading black skin/eschar in diabetic (mucormycosis)</div>
+      <div><span class="pill pill-amber">Same-day GP</span></div><div>Cellulitis margin not responding to oral antibiotics at 48 hrs · Stye spreading to preseptal cellulitis · New diplopia in known TED patient (acute muscle involvement) · Periorbital swelling in any patient with known cancer (metastasis to orbit / lymphoma) · VA change from baseline in any periorbital condition</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The 48-hour review rule for pre-septal cellulitis is one of the most important safety-netting steps in GP ophthalmology — it identifies the minority of cases that progress to orbital involvement and allows early escalation before complications develop. Documenting the cellulitis margin with a pen (marking the erythema boundary with a date and time) at the first consultation provides an objective comparator at the 48-hour review — the margin should be receding or static, not advancing. Advancing margin at 48 hours = treatment failure = same-day hospital. This rule applies regardless of whether the patient feels systemically better — local progression can occur without worsening systemic symptoms. Written safety-netting instructions (either a leaflet or EyeSafe-style written advice) given to every patient with periorbital swelling should include: "If you develop pain when moving your eye, difficulty moving your eye in any direction, your eye appears to be bulging forward, your vision changes, or you develop a severe headache with fever, call 999 or attend A&E immediately." This instruction must be documented in the clinical records to meet safety-netting standards.</div></div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE CKS Periorbital Cellulitis (2023), NICE CKS Blepharitis (2023), EUGOGO TED guidelines (2021), Royal College of Ophthalmologists Orbital Cellulitis guidelines, BOPSS Thyroid Eye Disease guidelines, Marcocci et al. NEJM 2011 (selenium TED trial), Chandler classification of orbital infections. Always adapt to individual patient context.
+</div>
+
+<script>
+(function(){
+  const STORE = 'rgp.alg.eyeswelling.v1';
+  const flow  = document.getElementById('flow');
+  const pDone = document.getElementById('pDone');
+  const pFill = document.getElementById('pFill');
+  const total = 9;
+
+  function save(){
+    localStorage.setItem(STORE, JSON.stringify(
+      [...flow.querySelectorAll('input[type=checkbox]')].map(c => c.checked)
+    ));
+  }
+  function load(){
+    try{
+      const d = JSON.parse(localStorage.getItem(STORE) || '[]');
+      [...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i) => { if(d[i]) c.checked = true; });
+    } catch(e){}
+  }
+  function update(){
+    const done = [...flow.querySelectorAll('input[type=checkbox]')].filter(c => c.checked).length;
+    pDone.textContent = done;
+    pFill.style.width = (done / total * 100) + '%';
+    save();
+  }
+
+  flow.addEventListener('change', e => { if(e.target.type === 'checkbox') update(); });
+  flow.addEventListener('click', e => {
+    const btn = e.target.closest('.why-btn');
+    if(!btn) return;
+    const exp = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!exp));
+    btn.nextElementSibling.classList.toggle('open', !exp);
+  });
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    flow.querySelectorAll('input[type=checkbox]').forEach(c => c.checked = false);
+    flow.querySelectorAll('.why-drawer').forEach(d => d.classList.remove('open'));
+    flow.querySelectorAll('.why-btn').forEach(b => b.setAttribute('aria-expanded','false'));
+    localStorage.removeItem(STORE);
+    update();
+  });
+
+  load();
+  update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

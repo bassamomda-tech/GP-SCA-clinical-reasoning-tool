@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Precocious Puberty Algorithm &middot; Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;--diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;--treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;--refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;--lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;--radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);--font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#0a2a1a 0%,#1a5a3a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}.stem-banner b{display:block;font-size:1.05rem;font-weight:600}.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#1a5a3a,#167a4a);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}.node[data-type="TREAT"] .node-num{background:var(--treat)}.node[data-type="REFER"] .node-num{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}.node[data-type="TREAT"] .node-tag{background:var(--treat)}.node[data-type="REFER"] .node-tag{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}.kv>div{background:#fff;padding:8px 10px}.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}.pill-purple{background:#ede9fe;color:#5b21b6}.pill-blue{background:#dbeafe;color:#1e40af}.pill-amber{background:#fef3c7;color:#92400e}.pill-green{background:#dcfce7;color:#15803d}.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}.why-btn:hover{color:#1a1a2e}.caret{transition:transform .25s;display:inline-block}.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}</style><link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head><body>
+<div class="stem-banner"><div class="sb-icon">🧒</div><div><b>Precocious Puberty &mdash; Assessment &amp; Referral</b><small>&lt;8y girls / &lt;9y boys &middot; intracranial red flags &middot; refer all &middot; every boy urgent &middot; central vs peripheral</small></div></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div><span>Progress</span><span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span><div class="pbar"><div class="pbar-fill" id="pFill"></div></div><button class="reset" id="resetBtn">Reset</button></div>
+
+<!-- ════════ DIAGRAM (FLOWCHART) VIEW ════════ -->
+<div id="viewDiagram">
+  <div class="dg-legend">
+    <span>The full reasoning pathway — all children with suspected precocious puberty are referred. Every boy goes urgently (higher chance of pathology); girls' urgency depends on red flags. Support the family, and safety-net.</span>
+    <span class="legend">
+      <span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span>
+    </span>
+  </div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Suspected precocious puberty</span><div class="body">Secondary sexual characteristics <b>before 8 in girls</b> or <b>before 9 in boys</b>. Plot height &amp; weight on a growth chart; examine (incl. Tanner staging, and a neurological exam with fundoscopy/visual fields). Ask about headaches, visual symptoms, CNS history.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — intracranial / serious cause</span><span class="ttl">Red flags for intracranial / serious cause?</span><div class="body">New headaches, visual disturbance or signs of raised ICP · polyuria/polydipsia (pituitary/hypothalamic) · CNS disorder/injury (trauma, meningitis, cranial irradiation, neurofibromatosis) · rapid growth crossing ≥1 centile space in 3–6 months · pubic hair in infancy · a testicular mass.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flags</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Urgent paediatric referral</span><div class="body">Highlight the red flags in the referral so paediatrics can judge how urgent. A testicular lump may follow a different (urological) pathway.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO red flags</div><div class="box ix"><span class="lbl">Refer · by sex</span><span class="ttl">Still refer all — urgency differs</span><div class="body">All children with suspected precocious puberty are referred; the route depends on whether it's a boy or a girl.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · boy or girl?</span></div>
+    <div class="split"><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">All boys</div><div class="box refer"><span class="ttl">Urgent referral — always</span><div class="body">Precocious puberty in boys is more likely to have a pathological cause, so <b>refer every boy urgently</b> even with a normal exam. Examine for a testicular mass/lump and note in the referral.</div></div></div>
+      <div class="col"><div class="blabel">Girls</div><div class="box refer"><span class="ttl">Urgent if red flags; else routine</span><div class="body"><b>Urgent</b> if any red flag, clitoromegaly, menarche before 8, or progressive breast development before 8 with height-centile crossing. Otherwise (normal neuro/genital exam &amp; growth) → <b>routine</b> referral.</div></div></div>
+    </div></div>
+    <div class="arrow"></div>
+    <div class="box ix" style="max-width:680px;"><span class="lbl">Step 2 · Investigate · what paediatrics will assess</span><span class="ttl">Central vs peripheral; benign variants</span><div class="body">Specialist work-up (bone age, LH/FSH ± GnRH test, oestradiol/testosterone, TFTs, imaging — pituitary MRI, pelvic/testicular USS). Recognise <b>benign normal variants</b> that still warrant assessment: premature thelarche (isolated breast development), premature adrenarche (isolated pubic hair). Consider <b>McCune-Albright</b> (café-au-lait macules, fibrous dysplasia, autonomous ovarian cysts).</div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Paediatric endocrinology</span><div class="body"><span class="pill pill-red">Urgent</span> all boys; any child with red flags. <span class="pill pill-purple">Routine paediatrics</span> girls with normal exam, normal growth and no red flags. <b>Refer all suspected cases</b> — do not simply observe in primary care.</div></div>
+    <div class="arrow"><span class="tag">Step 7 · specialist treatment</span></div>
+    <div class="box act" style="max-width:680px;"><span class="lbl">Step 7 · Treat (specialist-led)</span><span class="ttl">GnRH analogue or treat the source</span><div class="body"><b>Central PP:</b> a <b>GnRH analogue</b> (e.g. depot leuprorelin/triptorelin) switches the axis off to preserve adult height and ease psychosocial impact; stopped around the normal age of puberty. <b>Peripheral PP:</b> treat the cause (tumour, CAH, McCune-Albright). <b>Benign variants:</b> monitor, no drug. GP role = shared-care monitoring of growth/puberty and depot administration where agreed.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · family support &amp; modifiable factors</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Family support &amp; modifiable factors</span><span class="ttl">Support the child while specialist work-up proceeds</span><div class="body"><b>Address the psychosocial impact</b> — early development can affect self-esteem, peer relationships and behaviour; offer age-appropriate explanation and school liaison. <b>Weight management</b> where relevant (adiposity associates with earlier puberty in girls). Review any exogenous sex-steroid exposure (creams/gels, supplements). Reassure families that benign normal variants (premature thelarche/adrenarche) are common but still need assessment.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Track growth &amp; when to escalate</span><div class="body"><b>Ensure the referral is made and attended</b> — do not just observe in primary care. <b>Re-examine and escalate urgency</b> if new headache, visual disturbance, vomiting or raised-ICP signs, rapid centile-crossing growth, or a testicular mass develop (intracranial/serious cause). Keep plotting height/weight; flag any red flag prominently in the referral.</div></div>
+
+  </div><!-- /flow -->
+  </div><!-- /chart -->
+  <div class="band"><div class="caution crit">⚠️ <b>Every boy with precocious puberty is referred urgently</b> — pathology (including intracranial causes) is much more likely than in girls. In both sexes, new headache, visual change or raised-ICP signs point to an intracranial cause and must be flagged in the referral.</div></div>
+</div><!-- /viewDiagram -->
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Intracranial &amp; Serious Causes</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Precocious puberty can be the first sign of an intracranial lesion. Examine the nervous system (fundoscopy and visual fields) and plot growth in every child.</b></p>
+    <div class="rfgrid">
+      <div class="rftile"><b>New headaches, visual disturbance or signs of raised intracranial pressure</b> Possible intracranial pathology → urgent referral; flag clearly.</div>
+      <div class="rftile"><b>Polyuria / polydipsia</b> Possible pituitary/hypothalamic cause (e.g. cranial diabetes insipidus from a hypothalamic lesion).</div>
+      <div class="rftile"><b>History of CNS disorder/injury</b> CNS trauma, meningitis, cranial irradiation, hypoxic-ischaemic injury, neurofibromatosis — all raise the risk of central precocious puberty.</div>
+      <div class="rftile"><b>Steep growth / pubic hair in infancy / testicular mass</b> Rapid growth crossing ≥1 centile space in 3–6 months; pubic hair in infancy (pituitary/adrenal/virilising tumour); a testicular lump (may follow a urological pathway).</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">Central precocious puberty results from early activation of the hypothalamic-pituitary-gonadal axis, which in a proportion of children — especially boys — is driven by an intracranial lesion such as a hypothalamic hamartoma, glioma or the sequelae of cranial irradiation. That is why a neurological examination with fundoscopy and visual fields, and attention to headache or raised-ICP features, is mandatory in the primary-care assessment.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Recognising Precocious Puberty</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Definition</div><div>Onset of secondary sexual characteristics <b>before age 8 in girls</b> and <b>before age 9 in boys</b>.</div>
+      <div>Girls — features</div><div>Progressive breast enlargement before 8 (especially with upward height-centile crossing), clitoromegaly, or menarche before 8.</div>
+      <div>Boys — features</div><div>Penile growth or testicular enlargement before 9. Examine for a testicular mass/lump.</div>
+      <div>Assessment in primary care</div><div>Plot height &amp; weight on a growth chart (rapid growth crossing ≥1 centile space in 3–6 months is a red flag); examine for puberty staging; full neurological exam including fundoscopy and visual fields. Look for café-au-lait macules / facial asymmetry (McCune-Albright) and signs of hyperthyroidism/Cushing's.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">Plotting serial growth is the single most useful primary-care step: a pubertal growth spurt that crosses centile lines supports true precocious puberty and adds urgency, whereas isolated breast development or pubic hair with normal growth velocity often represents a benign variant. The examination also screens for the syndromic clues (café-au-lait macules of McCune-Albright, neurofibromatosis stigmata) that point to a specific cause.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Focused History &amp; Examination</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>History</div><div>Age and <b>sequence</b> of changes (true puberty follows an order); <b>rate of progression</b>; growth spurt; headache, visual symptoms, vomiting, polyuria/polydipsia; behaviour/mood change; <b>exogenous sex-steroid exposure</b> (creams, gels, supplements); perinatal/CNS history (irradiation, infection, trauma); family age of puberty.</div>
+      <div>Examination</div><div><b>Tanner staging</b>; plot height, weight and (where possible) <b>growth velocity</b>; full neurological exam with <b>fundoscopy and visual fields</b>; abdominal exam; <b>testicular volume/lump</b> in boys; skin for <b>café-au-lait macules</b>; thyroid status and blood pressure.</div>
+      <div>Growth velocity</div><div>A pubertal growth spurt <b>crossing ≥1 centile space in 3–6 months</b> supports true (progressive) precocious puberty and adds urgency.</div>
+      <div>Bone age</div><div>Wrist X-ray for bone age is usually arranged by the specialist; advanced bone age vs chronological age indicates significant sex-steroid exposure.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">The history separates progressive precocious puberty (ordered, accelerating, with a growth spurt) from a non-progressive benign variant, and screens for the intracranial and exogenous causes that change management. Tanner staging plus a documented growth velocity is the objective backbone of the assessment, and testicular examination in boys can reveal asymmetric enlargement (a tumour) or bilateral enlargement (central activation) that directs the work-up.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Causes — Central vs Peripheral &amp; Benign Variants</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Central (gonadotrophin-dependent)</div><div>Early HPG-axis activation: idiopathic (commonest in girls), intracranial lesions (hypothalamic hamartoma, glioma), post-CNS insult. Follows a normal pubertal sequence.</div>
+      <div>Peripheral (gonadotrophin-independent)</div><div>Sex steroids from elsewhere: congenital adrenal hyperplasia, adrenal or gonadal tumours, McCune-Albright (autonomous ovarian cysts), exogenous steroids. May be out of normal sequence (e.g. virilisation).</div>
+      <div>Benign normal variants</div><div><b>Premature thelarche</b> (isolated breast development, normal growth) and <b>premature adrenarche</b> (isolated pubic/axillary hair) — non-progressive; still need assessment to confirm.</div>
+      <div>Don't forget</div><div>Hypothyroidism and McCune-Albright can both cause precocious puberty; café-au-lait macules + fibrous dysplasia suggest the latter.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">Distinguishing central from peripheral precocious puberty determines treatment: central precocious puberty is treated with a GnRH analogue to switch the axis back off and protect adult height and psychosocial wellbeing, whereas peripheral causes require treatment of the source (e.g. a tumour, CAH). The benign variants (premature thelarche/adrenarche) need recognition so that children are reassured and monitored rather than over-investigated, but the initial referral remains appropriate because the distinction is a specialist one.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Diagnose</span><h3>Specialist Investigations (what the work-up involves)</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Bone age</div><div>Wrist X-ray — advanced bone age quantifies sex-steroid effect and predicts impact on final height.</div>
+      <div>Hormones</div><div><b>Basal LH/FSH</b> and a <b>GnRH (LHRH) stimulation test</b> to separate central (pubertal LH response) from peripheral (suppressed gonadotrophins); <b>oestradiol / testosterone</b>; <b>17-OHP</b> and androgens if virilisation; <b>TFTs</b>.</div>
+      <div>Imaging</div><div><b>Pituitary/brain MRI</b> for confirmed central PP (mandatory in boys and young girls); <b>pelvic USS</b> (uterine/ovarian maturation, cysts) in girls; <b>testicular/adrenal USS</b> if a peripheral source is suspected.</div>
+      <div>Primary-care role</div><div>Mostly <b>refer rather than test</b> — plot serial growth, photograph/document staging, and check TFTs only if hypothyroid features. The hormonal and imaging work-up is specialist-led.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">The GnRH stimulation test is the pivotal investigation because it directly demonstrates whether the hypothalamic-pituitary axis has been switched on (central) or is suppressed by a peripheral steroid source — a distinction that random hormone levels cannot reliably make. Brain MRI is essential in confirmed central precocious puberty, especially in boys and very young girls, because the pre-test probability of an intracranial lesion is high enough to mandate imaging even when the examination is normal.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Refer</span><h3>Referral — All Children, Urgency by Sex &amp; Red Flags</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">All boys — urgent</span></div><div>Precocious puberty in boys is more often pathological → refer every boy urgently, even with a normal examination. Note any testicular lump (may follow a urological pathway).</div>
+      <div><span class="pill pill-red">Girls — urgent</span></div><div>Any red flag (headache/visual/raised ICP, polyuria/polydipsia, CNS history, steep growth, pubic hair in infancy), clitoromegaly, menarche before 8, or progressive breast development before 8 with height-centile crossing.</div>
+      <div><span class="pill pill-purple">Girls — routine</span></div><div>Otherwise — normal neurological and genital examination and normal growth → routine paediatric referral.</div>
+      <div>Do not just observe</div><div><b>Refer all suspected cases.</b> Highlighting red flags in the letter helps paediatrics decide exactly how urgent.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">The sex difference in referral urgency reflects the underlying epidemiology: in girls, precocious puberty is usually idiopathic central precocious puberty, whereas in boys an identifiable (and sometimes serious) cause is much more common — so every boy warrants urgent specialist assessment. All children are referred because the diagnosis, the need for imaging and the decision about GnRH-analogue treatment to preserve final height are specialist judgements.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Specialist Treatment &amp; Shared Care</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card"><div class="b-cond">Central PP</div><div class="b-drug">GnRH analogue (depot)</div><div class="b-note">e.g. depot leuprorelin / triptorelin — paradoxically suppresses the axis, halting progression to <b>preserve adult height</b> and reduce psychosocial impact. Continued to around the normal age of puberty, then stopped.</div></div>
+      <div class="b-card"><div class="b-cond">Peripheral PP</div><div class="b-drug">Treat the source</div><div class="b-note">Surgery/oncology for a tumour; steroid replacement for CAH; aromatase inhibitor / anti-oestrogen approaches in McCune-Albright; remove exogenous steroid exposure.</div></div>
+      <div class="b-card"><div class="b-cond">Benign variants</div><div class="b-drug">Monitor — no drug</div><div class="b-note">Premature thelarche/adrenarche need reassurance and surveillance of growth/progression, not treatment.</div></div>
+    </div>
+    <div class="kv">
+      <div>GP / shared-care role</div><div>Where agreed, <b>administer depot injections</b>, monitor growth and pubertal staging, support adherence, and watch for injection-site or treatment effects — escalating concerns to the specialist.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">GnRH analogues exploit the physiology of the axis: continuous (rather than pulsatile) GnRH stimulation desensitises the pituitary, switching gonadotrophin secretion off and arresting pubertal progression — buying time for growth and emotional maturation so final height and wellbeing are protected. The decision to treat balances predicted height loss and psychosocial impact against the burden of therapy, which is why it is specialist-led, often with the GP delivering the depot under shared care.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Family Support &amp; Modifiable Factors</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Psychosocial support</b> Early development can affect self-esteem, peer relationships and behaviour — offer age-appropriate explanation and, where helpful, school liaison.</div>
+      <div class="lstile"><b>Weight</b> Address adiposity where relevant (it associates with earlier puberty in girls); support healthy diet and activity.</div>
+      <div class="lstile"><b>Exogenous steroids</b> Review and remove any sex-steroid exposure (creams/gels, supplements) that can drive peripheral changes.</div>
+      <div class="lstile"><b>Reassurance</b> Explain that benign normal variants (premature thelarche/adrenarche) are common but still warrant the assessment already arranged.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">The impact of early puberty on the child — being physically out of step with peers, and the emotional consequences — is part of the specialist's decision about whether and when to treat, so acknowledging and supporting it is genuine management, not a soft add-on. Removing exogenous steroid exposure is a concrete, reversible cause of peripheral changes that primary care can identify and act on directly.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Follow-up</span><h3>Review &amp; Safety-net</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Ensure the referral happens</div><div><b>Confirm the referral is made and attended</b> — do not simply observe in primary care. Chase non-attendance.</div>
+      <div>Keep plotting growth</div><div>Use the RCPCH puberty/close-monitoring growth charts; a documented centile-crossing growth spurt strengthens the referral and tracks progression.</div>
+      <div><span class="pill pill-red">Escalate urgency</span></div><div>New headache, visual disturbance, vomiting or raised-ICP signs, rapid centile-crossing growth, or a new testicular mass → expedite (possible intracranial/serious cause).</div>
+      <div>Reassure</div><div>Most girls have a benign/idiopathic cause; referral is routine practice, and benign variants are monitored rather than treated.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">Serial growth data and clear safety-netting are the most valuable things primary care can add while a child waits to be seen: a documented accelerating growth velocity both supports the diagnosis and raises the urgency, and the safety-net ensures that an evolving intracranial cause is escalated rather than missed.</div></div>
+</div>
+
+</div>
+
+<div class="alg-foot"><strong>Educational use only.</strong> Based on the GEMS "Precocious puberty" guide (BMJ 2020;368:l6597; RCPCH 2013 puberty/close-monitoring growth charts). All suspected cases are referred; every boy is referred urgently. Specialist services confirm the cause and decide on treatment. Adapt to local paediatric pathways.</div>
+
+<script>(function(){const STORE="rgp.alg.precociouspuberty.v1";const flow=document.getElementById("flow");const pDone=document.getElementById("pDone");const pFill=document.getElementById("pFill");const total=flow.querySelectorAll(".node").length;function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll("input[type=checkbox]")].map(c=>c.checked)));}function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||"[]");[...flow.querySelectorAll("input[type=checkbox]")].forEach((c,i)=>{if(d[i])c.checked=true;});}catch(e){}}function update(){const done=[...flow.querySelectorAll("input[type=checkbox]")].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+"%";save();}flow.addEventListener("change",e=>{if(e.target.type==="checkbox")update();});flow.addEventListener("click",e=>{const btn=e.target.closest(".why-btn");if(!btn)return;const exp=btn.getAttribute("aria-expanded")==="true";btn.setAttribute("aria-expanded",String(!exp));btn.nextElementSibling.classList.toggle("open",!exp);});document.getElementById("resetBtn").addEventListener("click",()=>{flow.querySelectorAll("input[type=checkbox]").forEach(c=>c.checked=false);flow.querySelectorAll(".why-drawer").forEach(d=>d.classList.remove("open"));flow.querySelectorAll(".why-btn").forEach(b=>b.setAttribute("aria-expanded","false"));localStorage.removeItem(STORE);update();});load();update();})();</script><script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body></html>

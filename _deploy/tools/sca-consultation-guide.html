@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Ultimate Consultation Guide · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<style>
+.tool-page{ padding:28px 32px 90px; max-width:1000px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+.tool-head{ padding-bottom:16px; border-bottom:1px solid var(--line); margin-bottom:20px; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:36px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:8px; max-width:72ch; line-height:1.6; }
+
+/* timeline bar */
+.cg-time{ display:flex; border:1px solid var(--line); border-radius:12px; overflow:hidden; margin:4px 0 8px; background:#fff; }
+.cg-time .seg{ flex-grow:0; padding:9px 6px; text-align:center; border-right:1px solid var(--line); cursor:pointer; transition:background .15s; min-width:0; }
+.cg-time .seg:last-child{ border-right:none; }
+.cg-time .seg:hover{ background:#f8fafc; }
+.cg-time .seg.on{ background:var(--teal); }
+.cg-time .seg.on .sg-t,.cg-time .seg.on .sg-l{ color:#fff; }
+.cg-time .sg-t{ font-size:11px; font-weight:800; color:var(--teal); letter-spacing:.02em; }
+.cg-time .sg-l{ font-size:10.5px; color:var(--muted); margin-top:2px; line-height:1.25; font-weight:600; }
+@media (max-width:760px){ .cg-time{ flex-wrap:wrap; } .cg-time .seg{ flex:1 1 33%; border-bottom:1px solid var(--line); } }
+
+.cg-hint{ font-size:12.5px; color:var(--muted); margin:0 0 22px; display:flex; align-items:center; gap:8px; }
+.cg-hint .ex{ display:flex; gap:7px; }
+.cg-hint button{ font:inherit; font-size:11.5px; font-weight:700; color:var(--teal); background:#fff; border:1px solid var(--line); border-radius:999px; padding:4px 12px; cursor:pointer; }
+.cg-hint button:hover{ border-color:var(--teal); }
+
+/* phases */
+.cg-flow{ display:flex; flex-direction:column; gap:12px; }
+.cg-ph{ border:1px solid var(--line); border-radius:15px; background:#fff; overflow:hidden; scroll-margin-top:80px; }
+.cg-ph.open{ border-color:var(--teal); box-shadow:0 1px 0 var(--teal); }
+.cg-sum{ list-style:none; cursor:pointer; display:flex; align-items:center; gap:15px; padding:16px 19px; }
+.cg-sum::-webkit-details-marker{ display:none; }
+.cg-sum:hover{ background:#f8fafc; }
+.cg-n{ flex-shrink:0; width:38px; height:38px; border-radius:11px; background:var(--teal); color:#fff; font-family:'Source Serif 4',Georgia,serif; font-size:18px; font-weight:600; display:grid; place-items:center; }
+.cg-htext{ flex:1; min-width:0; }
+.cg-htext h2{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:19px; color:var(--ink); line-height:1.2; }
+.cg-htext .sub{ font-size:12.6px; color:var(--ink-2); margin-top:3px; line-height:1.45; }
+.cg-when{ flex-shrink:0; font-size:11px; font-weight:800; color:var(--teal); background:#f0fdfa; border:1px solid #99f6e4; border-radius:999px; padding:4px 11px; white-space:nowrap; }
+.cg-chev{ flex-shrink:0; color:var(--muted); transition:transform .2s ease; }
+.cg-ph.open .cg-chev{ transform:rotate(180deg); }
+@media (max-width:680px){ .cg-when{ display:none; } }
+
+.cg-body{ display:none; padding:2px 19px 20px; border-top:1px solid #f1f5f9; }
+.cg-ph.open .cg-body{ display:block; }
+.cg-body{ animation:cgIn .22s ease; }
+@keyframes cgIn{ from{ opacity:0; transform:translateY(-4px); } to{ opacity:1; transform:none; } }
+
+.cg-grid{ display:grid; grid-template-columns:1fr 1fr; gap:13px; margin-top:14px; }
+@media (max-width:720px){ .cg-grid{ grid-template-columns:1fr; } }
+.cg-block{ border:1px solid var(--line); border-radius:12px; padding:13px 15px; background:#fcfcfb; }
+.cg-block.move{ border-left:4px solid var(--teal); }
+.cg-block.trap{ border-left:4px solid #b91c1c; background:#fef6f6; grid-column:1/-1; }
+.cg-block .bh{ font-size:10.5px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; margin-bottom:7px; display:flex; align-items:center; gap:6px; }
+.cg-block.move .bh{ color:var(--teal); }
+.cg-block.phr .bh{ color:var(--rust); }
+.cg-block.trap .bh{ color:#b91c1c; }
+.cg-block p{ font-size:13.2px; line-height:1.62; color:var(--ink-2); }
+.cg-block p b{ color:var(--ink); }
+.cg-block ul{ margin:0; padding-left:17px; }
+.cg-block li{ font-size:13px; line-height:1.6; color:var(--ink-2); margin-bottom:6px; }
+.cg-block li b{ color:var(--ink); }
+
+/* phrasebook quotes */
+.cg-phr-list{ display:flex; flex-direction:column; gap:7px; }
+.cg-q{ font-family:'Source Serif 4',Georgia,serif; font-style:italic; font-size:13.4px; line-height:1.5; color:var(--ink); padding-left:13px; border-left:2px solid var(--rust); }
+
+/* domain tags */
+.cg-doms{ display:flex; gap:6px; margin-top:14px; flex-wrap:wrap; }
+.cg-dtag{ font-size:10.5px; font-weight:700; border-radius:999px; padding:3px 10px; border:1px solid; }
+.cg-dtag.dg{ color:#0f766e; background:#f0fdfa; border-color:#99f6e4; }
+.cg-dtag.cm{ color:#b45309; background:#fffbeb; border-color:#fde68a; }
+.cg-dtag.ip{ color:#6d28d9; background:#f5f3ff; border-color:#ddd6fe; }
+.cg-doms .lab{ font-size:10.5px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; align-self:center; }
+
+/* golden thread note */
+.cg-thread{ border:1px dashed var(--rust); background:#fff8f5; border-radius:14px; padding:16px 19px; margin:24px 0 8px; }
+.cg-thread h3{ font-size:14px; font-weight:800; color:var(--rust); margin-bottom:6px; display:flex; gap:8px; align-items:center; }
+.cg-thread p{ font-size:13.3px; line-height:1.65; color:var(--ink-2); }
+.cg-thread p b{ color:var(--ink); }
+
+/* footer crosslinks */
+.cg-x{ margin-top:30px; border-top:1px solid var(--line); padding-top:20px; }
+.cg-x h3{ font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+.cg-xgrid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+@media (max-width:680px){ .cg-xgrid{ grid-template-columns:1fr; } }
+.cg-xcard{ display:flex; gap:12px; align-items:center; text-decoration:none; border:1px solid var(--line); border-radius:12px; background:#fff; padding:13px 15px; transition:border-color .15s; }
+.cg-xcard:hover{ border-color:var(--teal); }
+.cg-xcard .xi{ font-size:20px; }
+.cg-xcard .xb b{ display:block; font-size:13.5px; color:var(--ink); }
+.cg-xcard .xb small{ font-size:12px; color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-sca"></aside>
+  <main class="main">
+    <div class="tool-page">
+
+      <div class="tool-head">
+        <div class="tool-eyebrow">Reasoning GP · SCA craft</div>
+        <h1>The Ultimate <em>Consultation Guide</em></h1>
+        <p>One great SCA consultation, taken apart phase by phase. Click any stage to see the <b>move</b> that earns the marks, the <b>phrasebook</b> that delivers it, and the <b>trap</b> that quietly sinks candidates. Built around the three things examiners actually grade — not a script to recite.</p>
+      </div>
+
+      <div class="cg-time" id="cgTime"></div>
+      <p class="cg-hint">
+        <span class="ex">⏱️ Click a phase below — or jump from the timeline above.</span>
+        <button id="cgAll">Expand all</button>
+      </p>
+
+      <div class="cg-flow" id="cgFlow"></div>
+
+      <div class="cg-thread">
+        <h3>🧵 The golden thread that runs through all of it</h3>
+        <p>The structure is the skeleton; the marks live in the <b>connective tissue</b>. Across every phase you are doing three things at once — gathering data, building rapport, and moving toward a shared plan. The strongest candidates <b>weave ICE, cues and safety from the first minute</b> rather than bolting them on as boxes at the end. If a phase ever feels mechanical, you've dropped the thread — come back to the person in front of you.</p>
+      </div>
+
+      <div class="cg-x">
+        <h3>Practise the craft</h3>
+        <div class="cg-xgrid">
+          <a class="cg-xcard" href="sca-practice.html"><span class="xi">🔥</span><span class="xb"><b>The Hot Seat</b><small>Run a full 12-min case against the clock</small></span></a>
+          <a class="cg-xcard" href="sca-comms-lab.html"><span class="xi">💬</span><span class="xb"><b>Conversation Lab</b><small>Drill ICE, cues &amp; shared plans</small></span></a>
+          <a class="cg-xcard" href="sca-worked-examples.html"><span class="xi">📑</span><span class="xb"><b>Worked Examples</b><small>See these phases in a real pass transcript</small></span></a>
+          <a class="cg-xcard" href="sca-playbooks.html"><span class="xi">🧭</span><span class="xb"><b>Consultation Playbooks</b><small>When the consultation gets difficult</small></span></a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+const CG_PHASES = [
+  {
+    n:1, t:"The opening", when:"0:00–1:30", clock:"≈90s",
+    sub:"Settle the room, then get out of the way for the golden minute.",
+    doms:["dg"],
+    move:[
+      "<b>Orient fast, then go quiet.</b> A warm greeting, confirm who you're speaking to and why, then an <b>open question and genuine silence</b>. The first 60–90 seconds belong to the patient — let the story arrive before you start shaping it.",
+      "On <b>telephone/video</b> cases, name the channel: confirm identity, location and that you can hear them. Verbalise what you'd normally show with your face — \"take your time\", \"I'm listening\"."
+    ],
+    phr:[
+      "\"Thanks for coming in — what's brought you along today?\"",
+      "\"Tell me a bit more about that…\" (then stop talking).",
+      "\"Before we dig in — is there anything you were particularly hoping we'd sort out today?\""
+    ],
+    trap:"<b>Interrupting the golden minute.</b> Jumping to closed questions in the first 20 seconds buries the cue you needed and reads as poor active listening. Don't fill silence — the patient will."
+  },
+  {
+    n:2, t:"Focused data-gathering", when:"1:30–4:30", clock:"≈3 min",
+    sub:"Hypothesis-driven history — not a checklist sweep.",
+    doms:["dg"],
+    move:[
+      "<b>Form hypotheses early and test them.</b> Each question should be earning its keep — narrowing the differential or changing your management. Signpost when you switch from open to focused: \"Can I ask a few specific questions now?\"",
+      "<b>Screen for the dangerous things deliberately</b> (red flags relevant to this presentation) and the <b>relevant context</b> — drugs, PMH, family, social, occupation — but only what bears on <i>this</i> problem. Breadth without relevance wastes the clock."
+    ],
+    phr:[
+      "\"I want to make sure I'm not missing anything serious — has there been any [red flag]?\"",
+      "\"How is this affecting your day-to-day / work / sleep?\"",
+      "\"Just so I've got the full picture — any other conditions, or regular medications?\""
+    ],
+    trap:"<b>The exhaustive checklist.</b> Running every system 'to be safe' eats your time and signals you can't prioritise. The examiner is watching <i>whether you gather the right data efficiently</i>, not how much."
+  },
+  {
+    n:3, t:"ICE — ideas, concerns, expectations", when:"woven throughout", clock:"continuous",
+    sub:"The single highest-yield habit in the whole consultation.",
+    doms:["dg","ip"],
+    move:[
+      "<b>Ask, then actually use it.</b> Surface the patient's own thoughts and what's worrying them — and let it visibly steer the explanation and plan later. ICE that's asked and ignored scores nothing; ICE that <b>reshapes your management</b> scores across two domains.",
+      "Make it natural, not a checklist. The best ICE is often picked up from a <b>cue</b> the patient already dropped — name it back to them."
+    ],
+    phr:[
+      "\"Was there something you were worried this might be?\"",
+      "\"You mentioned you were anxious about it — tell me what's on your mind there.\"",
+      "\"What were you hoping we might do about it today?\""
+    ],
+    trap:"<b>Tick-box ICE.</b> Firing \"any ideas, concerns, expectations?\" as one robotic line — then ignoring the answer — is worse than not asking. Examiners spot the bolt-on instantly."
+  },
+  {
+    n:4, t:"Examination & investigations", when:"as indicated", clock:"≈1 min",
+    sub:"You request findings — the skill is knowing which, and why.",
+    doms:["dg","cm"],
+    move:[
+      "<b>Ask for the findings that change your management</b>, and say why you want them. There's no hands-on exam in the SCA — you state what you'd examine and the role-player/examiner gives you the result.",
+      "Interpret out loud and fold it back into your reasoning: a normal finding that rules something out is as useful as a positive one. Choose <b>targeted near-patient/initial tests</b>, not a scattergun panel."
+    ],
+    phr:[
+      "\"I'd like to check your blood pressure and listen to your chest — is that alright?\"",
+      "\"Those observations are reassuring, which makes [serious cause] much less likely.\"",
+      "\"To pin this down I'd arrange [specific test], because it would tell us…\""
+    ],
+    trap:"<b>Ordering everything, interpreting nothing.</b> Listing tests without saying what each would change looks like uncertainty, not thoroughness — and you never use the result to move the plan forward."
+  },
+  {
+    n:5, t:"Explanation & sharing understanding", when:"4:30–8:00", clock:"≈2–3 min",
+    sub:"Plain language, pitched to this patient's ICE.",
+    doms:["cm","ip"],
+    move:[
+      "<b>Explain in the patient's own terms</b>, jargon-free, and anchored to what they told you they were worried about. Chunk it, then <b>check understanding</b> — don't monologue.",
+      "Address the concern explicitly. If they feared cancer, say where this fits. Naming the worry and answering it is what separates a good explanation from a correct one."
+    ],
+    phr:[
+      "\"So what I think is going on is… does that fit with how it feels to you?\"",
+      "\"You were worried this might be something sinister — the good news is the picture really doesn't point that way, and here's why.\"",
+      "\"Can I just check I've explained that clearly — how would you put it to someone at home?\""
+    ],
+    trap:"<b>The textbook lecture.</b> Accurate, fluent, jargon-laden and aimed at no one. If the explanation doesn't connect to <i>their</i> idea or concern, it earns far less than it should."
+  },
+  {
+    n:6, t:"Shared management plan", when:"8:00–10:30", clock:"≈2–3 min",
+    sub:"Options offered, decision made together — not handed down.",
+    doms:["cm","ip"],
+    move:[
+      "<b>Offer realistic options and decide together.</b> Lay out what's reasonable (including watchful waiting), make a recommendation, and <b>negotiate</b> around the patient's preferences and circumstances. Shared, not dictated.",
+      "Be <b>safe and specific</b>: correct, guideline-consistent management, with doses/follow-up/referral thresholds that an examiner would recognise as sound. Check the plan is actually workable for them."
+    ],
+    phr:[
+      "\"There are a couple of sensible ways forward — let me talk you through them.\"",
+      "\"How does that fit with your work and home situation?\"",
+      "\"Shall we start with [option], and review in [timeframe]?\""
+    ],
+    trap:"<b>The unilateral plan.</b> A clinically perfect plan delivered <i>at</i> the patient loses the Interpersonal domain. So does an agreeable plan that's clinically unsafe. You need both — correct <i>and</i> co-produced."
+  },
+  {
+    n:7, t:"Safety-net & close", when:"10:30–12:00", clock:"final ≈90s",
+    sub:"Specific, time-bound, and genuinely understood.",
+    doms:["cm","ip"],
+    move:[
+      "<b>Safety-net with specifics:</b> exactly what should improve, by when, what would worry you, and precisely where to go if it does (and how fast — today / 48h / 999). Vague \"come back if it gets worse\" scores little.",
+      "Confirm follow-up, summarise the agreed plan in a sentence, and check for any last concern before closing warmly. Leave time for this — running out of clock here is a classic, avoidable loss."
+    ],
+    phr:[
+      "\"I'd expect this to settle over [timeframe]. If instead you get [specific red flag], I want you to [specific action] — don't wait.\"",
+      "\"We'll review in [timeframe]; book sooner if anything changes.\"",
+      "\"Is there anything we haven't covered that you wanted to ask?\""
+    ],
+    trap:"<b>The rushed ending.</b> Mismanaging the clock so the safety-net is a hurried afterthought — or absent — is one of the most common reasons safe candidates still drop marks. Protect the last 90 seconds."
+  }
+];
+
+const DOM_LABEL = { dg:["DG","Data gathering"], cm:["CM","Clinical management"], ip:["IP","Interpersonal"] };
+
+const flow = document.getElementById('cgFlow');
+const timeBar = document.getElementById('cgTime');
+
+CG_PHASES.forEach(p => {
+  const ph = document.createElement('div');
+  ph.className = 'cg-ph';
+  ph.id = 'ph'+p.n;
+  const domTags = p.doms.map(d => `<span class="cg-dtag ${d}">${DOM_LABEL[d][0]} · ${DOM_LABEL[d][1]}</span>`).join('');
+  ph.innerHTML = `
+    <div class="cg-sum" data-toggle>
+      <div class="cg-n">${p.n}</div>
+      <div class="cg-htext">
+        <h2>${p.t}</h2>
+        <div class="sub">${p.sub}</div>
+      </div>
+      <div class="cg-when">${p.when}</div>
+      <svg class="cg-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </div>
+    <div class="cg-body">
+      <div class="cg-doms"><span class="lab">Scores in</span>${domTags}</div>
+      <div class="cg-grid">
+        <div class="cg-block move">
+          <div class="bh">✓ The move</div>
+          ${p.move.map(m=>`<p>${m}</p>`).join('')}
+        </div>
+        <div class="cg-block phr">
+          <div class="bh">💬 Phrasebook</div>
+          <div class="cg-phr-list">${p.phr.map(q=>`<div class="cg-q">${q}</div>`).join('')}</div>
+        </div>
+        <div class="cg-block trap">
+          <div class="bh">⚠ The trap</div>
+          <p>${p.trap}</p>
+        </div>
+      </div>
+    </div>`;
+  flow.appendChild(ph);
+
+  // timeline segment (flex-grow proportional-ish by clock)
+  const seg = document.createElement('div');
+  seg.className = 'seg';
+  seg.dataset.target = 'ph'+p.n;
+  seg.style.flexGrow = String(p.clock.includes('3') ? 3 : p.clock.includes('2') ? 2.2 : 1.3);
+  seg.innerHTML = `<div class="sg-t">${p.n}. ${p.t.replace('Examination & investigations','Exam').replace('Focused data-gathering','History').replace('Explanation & sharing understanding','Explain').replace('Shared management plan','Plan').replace('Safety-net & close','Safety-net').replace('ICE — ideas, concerns, expectations','ICE').replace('The opening','Open')}</div><div class="sg-l">${p.when}</div>`;
+  timeBar.appendChild(seg);
+});
+
+function setOpen(ph, open){ ph.classList.toggle('open', open); syncTime(); }
+function syncTime(){
+  document.querySelectorAll('.cg-time .seg').forEach(s=>{
+    const ph = document.getElementById(s.dataset.target);
+    s.classList.toggle('on', ph && ph.classList.contains('open'));
+  });
+}
+
+flow.addEventListener('click', e=>{
+  const sum = e.target.closest('[data-toggle]');
+  if(!sum) return;
+  const ph = sum.closest('.cg-ph');
+  setOpen(ph, !ph.classList.contains('open'));
+});
+
+timeBar.addEventListener('click', e=>{
+  const seg = e.target.closest('.seg');
+  if(!seg) return;
+  const ph = document.getElementById(seg.dataset.target);
+  if(!ph.classList.contains('open')) setOpen(ph, true);
+  const y = ph.getBoundingClientRect().top + window.scrollY - 76;
+  window.scrollTo({ top:y, behavior:'smooth' });
+});
+
+const allBtn = document.getElementById('cgAll');
+allBtn.addEventListener('click', ()=>{
+  const anyClosed = [...document.querySelectorAll('.cg-ph')].some(p=>!p.classList.contains('open'));
+  document.querySelectorAll('.cg-ph').forEach(p=>p.classList.toggle('open', anyClosed));
+  allBtn.textContent = anyClosed ? 'Collapse all' : 'Expand all';
+  syncTime();
+});
+
+// open the first phase by default
+setOpen(document.getElementById('ph1'), true);
+</script>
+
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

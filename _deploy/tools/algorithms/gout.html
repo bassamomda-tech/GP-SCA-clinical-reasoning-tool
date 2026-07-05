@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Gout Algorithm &middot; Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;--diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;--treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;--refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;--lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;--radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);--font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#0a2a1a 0%,#1a5a3a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}.stem-banner b{display:block;font-size:1.05rem;font-weight:600}.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#1a5a3a,#167a4a);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}.node[data-type="TREAT"] .node-num{background:var(--treat)}.node[data-type="REFER"] .node-num{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}.node[data-type="TREAT"] .node-tag{background:var(--treat)}.node[data-type="REFER"] .node-tag{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}.kv>div{background:#fff;padding:8px 10px}.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}.pill-purple{background:#ede9fe;color:#5b21b6}.pill-blue{background:#dbeafe;color:#1e40af}.pill-amber{background:#fef3c7;color:#92400e}.pill-green{background:#dcfce7;color:#15803d}.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}.why-btn:hover{color:#1a1a2e}.caret{transition:transform .25s;display:inline-block}.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}</style><link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head><body>
+<div class="stem-banner"><div class="sb-icon">🦶</div><div><b>Gout &mdash; Diagnosis &amp; Management</b><small>Serum urate &ge;360 &middot; exclude septic arthritis &middot; flare treatment &middot; urate-lowering therapy &middot; treat-to-target</small></div></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div><span>Progress</span><span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span><div class="pbar"><div class="pbar-fill" id="pFill"></div></div><button class="reset" id="resetBtn">Reset</button></div>
+
+<!-- ════════ DIAGRAM (FLOWCHART) VIEW ════════ -->
+<div id="viewDiagram">
+  <div class="dg-legend">
+    <span>The full reasoning pathway — diagnose clinically and confirm with serum urate ≥360, always exclude septic arthritis, treat the flare, then offer urate-lowering therapy treat-to-target, modify the cardiometabolic drivers, and safety-net.</span>
+    <span class="legend">
+      <span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span>
+    </span>
+  </div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation · NICE NG219</span><span class="ttl">Suspected gout</span><div class="body"><b>Suspect</b> if rapid-onset (often overnight) severe pain, redness and swelling of one/both 1st MTP joints, or tophi. <b>Consider</b> if the same in other joints, or chronic inflammatory joint pain. Measure <b>serum uric acid (SUA)</b>.</div></div>
+    <div class="arrow"></div>
+    <div class="box dec"><span class="lbl">Step 1 · Safety — exclude septic arthritis</span><span class="ttl">Could this be septic arthritis?</span><div class="body">A hot, swollen, painful joint — especially with fever or systemic upset — is <b>septic arthritis until proven otherwise</b>. Pseudogout and other inflammatory arthritis are also differentials.</div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES / uncertain</div><div class="box stop"><span class="lbl">Stop · Admit</span><span class="ttl">Exclude septic arthritis</span><div class="body">Suspected septic joint → <b>admit</b> for urgent aspiration. Diagnostic doubt → consider joint aspiration + microscopy (negatively-birefringent urate crystals), or imaging.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — confirm gout</div><div class="box ix"><span class="lbl">Investigate · SUA</span><span class="ttl">Serum uric acid</span><div class="body"><b>SUA ≥360 µmol/L confirms</b> the clinical diagnosis. If &lt;360 and gout strongly suspected, <b>repeat ≥2 weeks after the flare settles</b>. Also check U&amp;E, lipids, HbA1c, LFT.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 6 · manage the flare</span></div>
+    <div class="box act" style="max-width:660px;"><span class="lbl">Step 6 · Action · Acute flare</span><span class="ttl">Treat early — choose one</span><div class="body"><b>Colchicine 500 micrograms 2–4 times daily</b> until the flare settles (BNF; lower frequency/dose in renal impairment or with interacting drugs) <b>OR an NSAID</b> at max anti-inflammatory dose with PPI cover (e.g. <b>naproxen 750 mg once then 250 mg every 8 h</b>, or <b>ibuprofen 400–600 mg every 6–8 h</b>). <b>Or a corticosteroid</b> if both unsuitable (e.g. <b>prednisolone 30–35 mg once daily for 3–5 days</b>, or intra-articular/IM). Choice by comorbidity, other drugs and preference. Continue any established urate-lowering therapy through the flare. Doses per BNF — verify in renal/hepatic impairment.</div></div>
+    <div class="arrow"><span class="tag">Step 7 · prevent recurrence — urate-lowering therapy</span></div>
+    <div class="box act" style="max-width:680px;"><span class="lbl">Step 7 · Action · ULT (treat-to-target)</span><span class="ttl">Offer ULT, titrate to a urate target</span><div class="body"><ul>
+      <li><b>Offer ULT</b> if: multiple/recurrent flares, CKD 3–5, on a diuretic, tophi, or chronic gouty arthritis. Discuss ULT after a <b>first</b> attack for everyone else. ULT is usually <b>lifelong</b>.</li>
+      <li><b>First-line allopurinol</b> if major CVD (previous MI/stroke/unstable angina); otherwise allopurinol or febuxostat by preference/comorbidity. <b>Allopurinol: start 100 mg once daily</b> (<b>50 mg</b> if eGFR &lt;60), titrate by <b>100 mg every ~4 weeks</b> against monthly SUA, usual max <b>900 mg/day</b>. <b>Febuxostat: 80 mg once daily</b>, increase to <b>120 mg once daily</b> if SUA not &lt;360 after 2–4 weeks. <b>Start 2–4 weeks after the flare settles</b> (or during a flare if attacks are frequent), with flare prophylaxis: <b>colchicine 500 micrograms once or twice daily</b> (low-dose NSAID + PPI if colchicine unsuitable) for <b>up to 6 months</b>.</li>
+      <li><b>Target SUA ≤360 µmol/L</b> (reduce to <b>≤300</b> if tophi, chronic gouty arthritis, or ongoing flares). Check SUA <b>monthly</b> while titrating, then <b>annually</b> once at target.</li>
+    </ul></div></div>
+    <div class="arrow"></div>
+    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 5 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Admit</span> suspected septic arthritis. <span class="pill pill-purple">Rheumatology</span> diagnostic doubt, drugs contraindicated/not tolerated/ineffective, <b>eGFR &lt;45</b>, transplant, or considering an IL-1 inhibitor.</div></div>
+    <div class="arrow"><span class="tag">Step 8 · lifestyle &amp; cardiometabolic risk</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; modifiable factors</span><span class="ttl">Lower urate &amp; treat the cluster</span><div class="body"><b>Weight loss</b>, <b>reduce alcohol</b> (especially beer/spirits) and sugar-sweetened/fructose drinks, limit purine-rich foods (red/organ meat, shellfish); encourage dairy &amp; hydration. Review urate-raising drugs — <b>thiazide/loop diuretics</b> (switch where possible), low-dose aspirin, ciclosporin. Gout clusters with hypertension, CKD, T2DM and CVD — <b>screen and treat these</b>.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · monitoring &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">Recheck &amp; when to return</span><div class="body"><b>Check SUA monthly while titrating ULT, then annually</b> at target (≤360, or ≤300 with tophi/chronic gout); continue flare prophylaxis up to 6 months. <b>Urgent / same-day</b> if a single hot joint with fever (septic arthritis), or the flare doesn't settle. Provide a <b>rescue plan</b> (kept supply of flare treatment) and reassure that ULT dissolves crystals over months — don't stop it during a flare.</div></div>
+  </div><!-- /flow -->
+  </div><!-- /chart -->
+  <div class="band"><div class="caution crit">⚠️ <b>Never miss septic arthritis:</b> a hot, swollen, acutely painful joint with fever needs urgent aspiration/admission — do not assume gout. And gout is a lifelong, treatable condition: ULT to dissolve crystals (treat-to-target) is what prevents progression.</div></div>
+</div><!-- /viewDiagram -->
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Exclude Septic Arthritis</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>A hot, swollen, acutely painful joint is septic arthritis until proven otherwise — it can destroy a joint within days and can be fatal.</b> Gout and septic arthritis can look identical, and can co-exist.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Hot swollen joint + fever / systemic upset</b> Suspected septic arthritis → admit for urgent joint aspiration before assuming gout, especially if immunosuppressed, diabetic, on a prosthetic joint, or unwell.</div>
+      <div class="rftile"><b>Diagnostic uncertainty</b> Aspirate (microscopy: negatively-birefringent monosodium urate crystals confirm gout; positively-birefringent = pseudogout). Consider X-ray, ultrasound or dual-energy CT if aspiration can't be done.</div>
+      <div class="rftile"><b>Polyarticular / atypical presentation</b> Consider other inflammatory arthritis (RA, psoriatic, reactive). Refer if the picture is unclear.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">Septic arthritis and crystal arthritis share the cardinal features of a hot, red, exquisitely tender joint, and a raised CRP and white count do not distinguish them. The only reliable way to exclude infection in a single hot joint is aspiration and Gram stain/culture, which is why NICE and rheumatology guidance treat the acute monoarthritis as septic until the aspirate proves otherwise.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Recognise — Suspect vs Consider</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Gout is a <b>clinical diagnosis</b> supported by serum urate. NICE NG219 frames recognition as two tiers:</p>
+    <div class="kv">
+      <div>Suspect gout</div><div>Rapid-onset (often overnight) severe pain, redness and swelling in one or both <b>1st MTP joints</b>, OR the presence of <b>tophi</b>.</div>
+      <div>Consider gout</div><div>Rapid-onset severe pain/redness/swelling in joints <b>other than the 1st MTP</b> (midfoot, ankle, knee, wrist, fingers), OR in someone with <b>chronic inflammatory joint pain</b>.</div>
+      <div>Typical course</div><div>Untreated flares peak within 24 h and self-resolve over 1–2 weeks; recurrent attacks, intercritical periods and tophaceous deposits follow if urate stays high.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">A classic podagra presentation (sudden, exquisitely painful, red 1st MTP joint) is specific enough that NICE allows a confident clinical diagnosis without aspiration, reserving crystal confirmation for atypical or uncertain cases. Recognising the "consider" tier matters because gout in the knee, wrist or fingers is frequently mislabelled as cellulitis or osteoarthritis.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Confirm — Serum Urate</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Measure SUA</div><div>Check <b>serum uric acid</b> in anyone you suspect of gout.</div>
+      <div>Confirms diagnosis</div><div><b>SUA ≥360 µmol/L</b> supports the clinical diagnosis of gout.</div>
+      <div>If &lt;360 but gout likely</div><div><b>Repeat at least 2 weeks after the flare has settled</b> — urate frequently dips during an acute attack, so a normal value mid-flare does not exclude gout.</div>
+      <div>Baseline before ULT</div><div>Record the pre-treatment urate; it becomes the reference for the treat-to-target titration later.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">Serum urate falls during an acute flare (an acute-phase effect), so a value below 360 at presentation in a convincing case is misleading and should be rechecked once settled. Confirming hyperuricaemia underpins the later decision to start urate-lowering therapy and provides the baseline against which treat-to-target dosing is judged.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Uncertain Cases &amp; Associated Bloods</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>If diagnosis uncertain</div><div><b>Joint aspiration + polarised microscopy</b> — negatively-birefringent monosodium urate crystals confirm gout (positively-birefringent = calcium pyrophosphate / pseudogout). Or imaging: X-ray, <b>ultrasound</b> (double-contour sign), or dual-energy CT.</div>
+      <div>Cardiometabolic screen</div><div>Check <b>U&amp;E (eGFR), lipids, HbA1c and LFTs</b> if no recent results — gout clusters with CKD, hypertension, T2DM and CVD, and renal function guides drug dosing.</div>
+      <div>Drug review</div><div>Note urate-raising drugs (thiazide/loop diuretics, low-dose aspirin, ciclosporin) for the lifestyle step.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">Crystal microscopy is the gold standard and is the way to resolve genuine diagnostic doubt or distinguish gout from pseudogout. The associated bloods are not incidental: eGFR dictates allopurinol starting dose and febuxostat caution, and the lipid/HbA1c profile reflects the cardiometabolic cluster that a gout diagnosis should prompt you to manage.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral &amp; Escalation</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">Admit</span></div><div>Suspected <b>septic arthritis</b> (hot joint + fever/systemic upset) — urgent aspiration before assuming gout.</div>
+      <div><span class="pill pill-purple">Rheumatology</span></div><div>Diagnostic doubt; ULT contraindicated, not tolerated or ineffective; <b>eGFR &lt;45</b>; transplant recipient; or considering an IL-1 inhibitor.</div>
+      <div>Reason to escalate</div><div>Refractory tophaceous gout, frequent flares despite treat-to-target, or suspected alternative inflammatory arthritis (RA, psoriatic, reactive).</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">Most gout is managed entirely in primary care; referral is reserved for diagnostic uncertainty, treatment failure or the renal/transplant patient in whom standard urate-lowering therapy is constrained. Flagging septic arthritis first is non-negotiable — a missed septic joint can be destroyed within days.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>Acute Flare</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card"><div class="b-cond">First-line (choose one)</div><div class="b-drug">Colchicine 500 mcg 2–4× daily OR NSAID</div><div class="b-note">Colchicine until flare settles (reduce in renal impairment/interactions). Or NSAID at max dose + PPI — e.g. naproxen 750 mg stat then 250 mg every 8 h, or ibuprofen 400–600 mg every 6–8 h. Treat early. Doses per BNF.</div></div>
+      <div class="b-card"><div class="b-cond">If neither suitable</div><div class="b-drug">Prednisolone 30–35 mg OD, 3–5 days</div><div class="b-note">Oral, or intra-articular/IM corticosteroid (off-label). Useful in CKD or where NSAID/colchicine contraindicated.</div></div>
+      <div class="b-card"><div class="b-cond">Already on ULT</div><div class="b-drug">Continue urate-lowering therapy</div><div class="b-note">Do not stop allopurinol/febuxostat during a flare — stopping and restarting can prolong/worsen attacks.</div></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">All three flare options work; the choice is driven by safety. NSAIDs are limited by renal impairment, GI and cardiovascular risk; colchicine by diarrhoea and renal/hepatic dosing; corticosteroids are the pragmatic choice in CKD or polypharmacy. Maintaining established urate-lowering therapy through a flare avoids the urate flux that itself triggers attacks.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Urate-Lowering Therapy (ULT) — Treat-to-Target</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Offer ULT if</div><div>Multiple/recurrent flares, CKD stage 3–5, on diuretic therapy, tophi, or chronic gouty arthritis. <b>Discuss ULT after a first attack</b> for everyone else. Explain it is usually <b>lifelong</b> and works by dissolving urate crystals.</div>
+      <div>Which drug</div><div><b>Major CVD</b> (previous MI, stroke, unstable angina) → choose <b>allopurinol</b>. No major CVD → allopurinol OR febuxostat by comorbidity/preference. <b>Allopurinol: 100 mg OD start</b> (50 mg if eGFR &lt;60), ↑100 mg every ~4 weeks, max 900 mg/day. <b>Febuxostat: 80 mg OD</b>, ↑120 mg OD if SUA not &lt;360 at 2–4 weeks.</div>
+      <div>When to start</div><div><b>2–4 weeks after a flare settles</b> (can start during a flare if attacks are frequent). Co-prescribe <b>flare prophylaxis</b> — first-line <b>colchicine 500 micrograms once or twice daily up to 6 months</b>; 2nd-line low-dose NSAID + PPI.</div>
+      <div>Target SUA</div><div><b>≤360 µmol/L</b> for most; reduce to <b>≤300</b> if tophi, chronic gouty arthritis, or continued flares despite SUA &lt;360.</div>
+      <div>Monitoring</div><div><b>Monthly SUA</b> to guide dose increases until target reached, then <b>annually</b>. Switch agent if target not reached or not tolerated.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">Gout is a curable crystal-deposition disease: lowering serum urate below its saturation point (≤360, or ≤300 for heavier crystal load) gradually dissolves the deposits and, over time, stops flares and resolves tophi. The treat-to-target strategy — titrating ULT against monthly urate levels with flare prophylaxis during the early dose-escalation phase — is what delivers that outcome, and is a clear advance over the old symptom-only approach.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Lifestyle &amp; Cardiometabolic Risk</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Weight &amp; diet</b> Support weight loss if overweight. <b>Do not recommend a specific "gout diet"</b> — evidence is weak vs ULT — but limit purine-rich red/organ meat, shellfish and beer/spirits.</div>
+      <div class="lstile"><b>Alcohol &amp; sugar</b> Reduce alcohol (especially beer and spirits) and sugar-sweetened/fructose drinks; encourage low-fat dairy and good hydration.</div>
+      <div class="lstile"><b>Review urate-raising drugs</b> Switch thiazide/loop diuretics where possible; note low-dose aspirin and ciclosporin.</div>
+      <div class="lstile"><b>Treat the cluster</b> Gout clusters with hypertension, CKD, T2DM and CVD — screen for and manage these actively.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">NICE deliberately avoids prescribing a restrictive "gout diet" because the urate-lowering effect of diet is small next to the proven benefit of ULT; weight, alcohol and sugary drinks are the pragmatic, evidence-supported targets. The bigger prize is the cardiometabolic cluster — a gout consultation is a chance to find and treat undiagnosed hypertension, CKD or diabetes.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Follow-up</span><h3>Monitoring &amp; Safety-net</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Urate monitoring</div><div><b>Monthly SUA while titrating ULT, then annually</b> at target (≤360, or ≤300 with tophi/chronic gout). Continue flare prophylaxis up to 6 months.</div>
+      <div>Rescue plan</div><div>Give a <b>kept supply</b> of flare treatment and a written plan to start it at the first twinge.</div>
+      <div>Reassure on ULT</div><div>Explain ULT dissolves crystals over months and <b>must not be stopped during a flare</b>; early flares while titrating are expected, not failure.</div>
+      <div><span class="pill pill-red">Urgent / same-day</span></div><div>Single hot joint with fever (septic arthritis), or a flare that does not settle with treatment.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">&#9662;</span></button><div class="why-drawer">The commonest reason gout "fails" is that ULT is stopped — during a flare, or once symptoms settle — so the crystal load never clears. Structured monitoring to target plus a rescue plan and clear reassurance about expected early flares is what keeps people on therapy long enough to become flare-free.</div></div>
+</div>
+
+</div>
+
+<div class="alg-foot"><strong>Educational use only.</strong> Based on NICE NG219 (Gout: diagnosis and management, 2022) as summarised in the GEMS "Gout" guide, and BNF for drug doses (NICE does not specify doses). Always exclude septic arthritis in an acute hot joint, and interpret against the whole clinical picture.</div>
+
+<script>(function(){const STORE="rgp.alg.gout.v1";const flow=document.getElementById("flow");const pDone=document.getElementById("pDone");const pFill=document.getElementById("pFill");const total=flow.querySelectorAll(".node").length;function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll("input[type=checkbox]")].map(c=>c.checked)));}function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||"[]");[...flow.querySelectorAll("input[type=checkbox]")].forEach((c,i)=>{if(d[i])c.checked=true;});}catch(e){}}function update(){const done=[...flow.querySelectorAll("input[type=checkbox]")].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+"%";save();}flow.addEventListener("change",e=>{if(e.target.type==="checkbox")update();});flow.addEventListener("click",e=>{const btn=e.target.closest(".why-btn");if(!btn)return;const exp=btn.getAttribute("aria-expanded")==="true";btn.setAttribute("aria-expanded",String(!exp));btn.nextElementSibling.classList.toggle("open",!exp);});document.getElementById("resetBtn").addEventListener("click",()=>{flow.querySelectorAll("input[type=checkbox]").forEach(c=>c.checked=false);flow.querySelectorAll(".why-drawer").forEach(d=>d.classList.remove("open"));flow.querySelectorAll(".why-btn").forEach(b=>b.setAttribute("aria-expanded","false"));localStorage.removeItem(STORE);update();});load();update();})();</script><script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body></html>

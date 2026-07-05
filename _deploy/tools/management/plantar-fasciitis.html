@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Plantar Fasciitis — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Plantar fasciitis management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🦶",
+  title:"Plantar Fasciitis",
+  stemTitle:"Plantar fasciitis (plantar heel pain) \u2014 reassure, load-manage, self-care",
+  stemSub:"Primary-care management of plantar heel pain \u2014 a clinical diagnosis, exclude the mimics, and treat with stretching, footwear/orthoses, load management and analgesia. The natural history is good \u2014 most settle within months. NICE CKS \u00b7 2026.",
+  guideline:"NICE CKS",
+  glance:[
+    {lbl:"Hallmark", val:"First-step pain", sub:"medial heel, worse on rising"},
+    {lbl:"1st-line", val:"Stretching + footwear", sub:"+ load management"},
+    {lbl:"Aids", val:"Insoles / heel cups", sub:"gel/orthotic"},
+    {lbl:"Pain relief", val:"Analgesia / topical NSAID", sub:"short-term"},
+    {lbl:"Prognosis", val:"Self-limiting", sub:"weeks\u2013months"},
+    {lbl:"Red flag", val:"Bilateral/young/systemic", sub:"= consider spondyloarthropathy"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Diagnose clinically + exclude mimics",
+      blocks:[
+        {b:"kv", rows:[
+          ["Typical","Gradual medial plantar heel pain, worst on the <b>first steps</b> in the morning or after rest, eases with activity then worsens with prolonged standing; tender at the medial calcaneal tubercle"],
+          ["Risk factors","Increased/changed loading (running, standing job), obesity, tight calf/Achilles, flat or high arches, unsupportive footwear"],
+          ["Mimics to exclude","Calcaneal stress fracture (focal bony tenderness, recent \u2191load), fat-pad atrophy, tarsal tunnel (burning/tingling \u2192 Tinel\u2019s), S1 radiculopathy, Achilles/insertional pathology"],
+          ["Systemic clue","Bilateral heel pain in a young person, or with inflammatory back pain/enthesitis \u2192 consider spondyloarthropathy"]
+        ]},
+        {b:"why", html:"Plantar fasciitis is a clinical diagnosis \u2014 imaging is not routine. The reasoning is to recognise the classic first-step pain and exclude the few mimics (stress fracture, nerve entrapment, inflammatory arthropathy) that change management."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 cornerstone", title:"Self-care + load management",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🧘 Stretching", html:"Plantar fascia + calf/Achilles stretches; towel/step stretches several times daily \u2014 the most evidence-based measure."},
+          {t:"👟 Footwear", html:"Supportive, cushioned shoes with arch support; avoid flat/unsupportive shoes and barefoot on hard floors."},
+          {t:"🦶 Insoles", html:"Off-the-shelf gel heel cups or arch-support insoles; cushioning reduces load."},
+          {t:"⚖️ Weight + load", html:"Weight loss if overweight; relative rest \u2014 reduce aggravating high-impact activity, modify training."},
+          {t:"🧊 Ice + massage", html:"Ice/roller (e.g. frozen bottle) under the arch for symptom relief."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Symptom relief", title:"Analgesia + escalation",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Step 1", title:"Simple analgesia", when:"as needed",
+           html:"Paracetamol 1 g QDS and/or oral or topical NSAID (ibuprofen 400 mg TDS or naproxen 250\u2013500 mg BD; consider GI/CV/renal risk) short-term for pain; analgesia supports rehab, not a cure."},
+          {step:"Step 2", title:"Physiotherapy", when:"if not settling",
+           fromLabel:"if persistent after self-care",
+           html:"Structured stretching/strengthening programme, gait + footwear assessment, taping; consider custom orthoses."},
+          {step:"Step 3", title:"Specialist options", when:"refractory (>3\u20136 months)",
+           fromLabel:"if refractory",
+           html:"Podiatry/MSK referral; corticosteroid injection (short-term relief; risk of fat-pad atrophy/fascia rupture \u2014 use selectively), extracorporeal shockwave therapy; rarely surgery."}
+        ]},
+        {b:"warn", html:"Counsel on the good but slow natural history (often months). Steroid injection gives short-term relief only and carries a risk of plantar fascia rupture and fat-pad atrophy \u2014 reserve and counsel."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Follow-up", title:"Review + reassess",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"6 weeks", title:"Check adherence", html:"Reassess stretching/footwear; reinforce \u2014 most improve with consistent self-care."},
+          {n:"2", when:"3 months", title:"Escalate if needed", html:"Refer physiotherapy/podiatry if not improving; review diagnosis."},
+          {n:"3", when:"Atypical/refractory", title:"Re-image / reconsider", html:"Persistent or atypical \u2192 exclude stress fracture (X-ray/MRI), nerve entrapment, inflammatory cause."}
+        ]}
+      ]},
+    {t:"node", d:"safety", n:"5", tag:"Safety-net", title:"When it isn\u2019t plantar fasciitis", blocks:[{b:"tiles", v:"safety", items:[{t:"\ud83d\udfe0 Inflammatory / bilateral", html:"Bilateral heel pain, other joint pain, or morning stiffness elsewhere \u2192 consider seronegative spondyloarthropathy."},{t:"\ud83d\udfe0 Neuro / vascular", html:"Numbness/tingling (tarsal tunnel, S1 radiculopathy) or claudication \u2192 reconsider the cause."},{t:"\ud83d\udcac Safety-net", html:"If both heels are affected, you get pins-and-needles, or other joints become painful and stiff, come back for review."}]}]},
+    {t:"node", d:"refer", n:"6", tag:"Refer", title:"When to refer",
+      arrow:"refractory or atypical",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Physiotherapy / podiatry / MSK", html:"Not improving after 3 months of self-care; for orthoses, shockwave therapy, injection."},
+          {t:"Rheumatology", html:"Suspected spondyloarthropathy (bilateral/young + inflammatory features)."},
+          {t:"Imaging / orthopaedics", html:"Suspected calcaneal stress fracture or refractory cases for surgical opinion."}
+        ]},
+        {b:"say", html:"This is plantar fasciitis \u2014 strain of the tissue under the heel. The good news is it almost always settles, though it can take a few months. The key is daily calf and foot stretches, supportive cushioned shoes or a heel insole, and easing off high-impact activity for a while. Painkillers help you keep moving."}
+      ]}
+  ],
+  foot:"Management of plantar heel pain in primary care; the diagnosis is clinical with an excellent natural history. Verify against current NICE CKS Plantar fasciitis."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

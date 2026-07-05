@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Angioedema — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Angioedema management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"💢",
+  title:"Angioedema",
+  stemTitle:"Angioedema \u2014 stabilise the airway, then find the mechanism",
+  stemSub:"Primary-care management of angioedema \u2014 recognise life-threatening airway involvement and anaphylaxis, distinguish histaminergic (allergic/idiopathic) from bradykinin-mediated (ACEi, hereditary) types, treat each correctly, and stop the trigger. CKS \u00b7 BSACI \u00b7 2026.",
+  guideline:"NICE CKS / BSACI",
+  glance:[
+    {lbl:"Airway", val:"Tongue/throat?", sub:"= emergency"},
+    {lbl:"With urticaria", val:"Histaminergic", sub:"antihistamine-responsive"},
+    {lbl:"No urticaria", val:"Bradykinin?", sub:"ACEi / hereditary"},
+    {lbl:"Allergic", val:"Antihistamine \u00b1 steroid", sub:"+ adrenaline if anaphylaxis"},
+    {lbl:"ACEi", val:"Stop permanently", sub:"avoid all ACEi"},
+    {lbl:"Red flag", val:"Stridor / anaphylaxis", sub:"= 999 + IM adrenaline"}
+  ],
+  flow:[
+    {t:"node", d:"safety", n:"1", tag:"Safety-net", title:"Airway + anaphylaxis first",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Airway involvement", html:"Tongue, lips, floor of mouth, pharynx or larynx swelling; voice change, stridor, drooling, difficulty swallowing/breathing \u2192 999."},
+          {t:"💉 Anaphylaxis", html:"Angioedema + wheeze/hypotension/widespread urticaria \u2192 <b>IM adrenaline</b> anterolateral thigh, <b>repeat after 5 min if no improvement</b>: adult/&gt;12y 500 \u00b5g, 6\u201312y 300 \u00b5g, 6m\u20136y 150 \u00b5g, &lt;6m 100\u2013150 \u00b5g. Lie flat + raise legs (semi-recumbent if breathing hard) \u2014 <b>don\u2019t let them stand or sit up suddenly</b>. 999, ABC, high-flow O\u2082, IV fluids if shocked. All need observation/admission (biphasic risk)."},
+          {t:"🔴 Bradykinin airway", html:"ACEi/hereditary airway swelling responds poorly to adrenaline/antihistamine \u2014 still give them, but airway management is paramount; admit."},
+          {t:"🟠 Rapidly progressing", html:"Any progressive facial/oral swelling \u2192 same-day assessment even if currently stable."}
+        ]},
+        {b:"why", html:"The first decision is airway, not aetiology. Allergic/histaminergic angioedema responds to adrenaline, antihistamine and steroid; bradykinin-mediated (ACEi-induced, hereditary) does not \u2014 but you still treat for anaphylaxis if uncertain and protect the airway."}
+      ]},
+    {t:"node", d:"found", n:"2", tag:"Foundation", title:"Identify the mechanism",
+      blocks:[
+        {b:"kv", rows:[
+          ["Histaminergic (commonest)","With urticaria/itch; allergic (food, drug, sting, latex) or idiopathic; responds to antihistamines"],
+          ["ACEi-induced","Bradykinin-mediated; <b>no urticaria</b>; can start years into treatment; often face/tongue; stop ACEi permanently"],
+          ["Hereditary / acquired C1-inhibitor deficiency","Recurrent angioedema without urticaria, family history, attacks of abdominal pain/laryngeal swelling; low C4 \u2192 check C1-INH"],
+          ["Drug triggers","ACEi (and sometimes ARBs), NSAIDs, contrast; review medication list"]
+        ]},
+        {b:"why", html:"Angioedema without urticaria points away from allergy toward a bradykinin mechanism (ACEi or C1-inhibitor deficiency) \u2014 these need ACEi cessation and specific therapies (C1-INH concentrate/icatibant), not just antihistamines."}
+      ]},
+    {t:"node", d:"life", n:"3", tag:"Non-drug · core", title:"Trigger avoidance", blocks:[{b:"tiles", v:"life", items:[{t:"🚫 Stop the trigger", html:"Stop any causative drug \u2014 esp. ACE inhibitor (switch class); avoid known allergens/NSAIDs if implicated."},{t:"📋 Action plan", html:"For recurrent/allergic angioedema, provide a written action plan and carry antihistamines; adrenaline auto-injector if anaphylaxis risk."},{t:"🧠 Identify type", html:"Distinguish histaminergic (allergic/idiopathic) from bradykinin-mediated (ACEi/hereditary) \u2014 management differs."}]},{b:"why", html:"Identifying and removing the trigger \u2014 most often an ACE inhibitor \u2014 is the single most important step, since bradykinin-mediated angioedema won\u2019t respond to antihistamines."}]},
+    {t:"node", d:"drug", n:"4", tag:"Medication", title:"Treat by type",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Allergic/idiopathic", title:"Non-sedating antihistamine", when:"first-line",
+           html:"<b>Cetirizine 10 mg or loratadine 10 mg once daily</b> (oral non-sedating preferred); up-dose (up to 4\u00d7 standard, specialist-guided) for chronic cases. Adrenaline if any anaphylaxis features. <b>Antihistamines/steroids are not resuscitation drugs</b> \u2014 use only after resuscitation, for skin symptoms; routine hydrocortisone is no longer recommended in acute anaphylaxis."},
+          {step:"ACEi-induced", title:"Stop the ACEi permanently", when:"+ supportive care",
+           fromLabel:"if ACEi-related",
+           html:"Discontinue and document allergy/avoid all ACEi; switch antihypertensive (avoid ARB initially if severe \u2014 specialist advice). Supportive airway management for acute episode."},
+          {step:"Hereditary/C1-INH", title:"Specific therapy (specialist)", when:"bradykinin",
+           fromLabel:"if C1-INH deficiency",
+           html:"Acute: C1-inhibitor concentrate or icatibant (not adrenaline/antihistamine). Prophylaxis via immunology. Provide emergency plan."}
+        ]},
+        {b:"warn", html:"Do not restart an ACE inhibitor after ACEi-induced angioedema \u2014 recurrence risk is high and can be fatal. ARBs carry a smaller risk; use cautiously and only with specialist input."}
+      ]},
+    {t:"node", d:"monitor", n:"5", tag:"Monitoring / work-up", title:"Investigate recurrent cases",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["C4 \u00b1 C1-inhibitor level/function","Recurrent angioedema without urticaria","Low \u2192 refer immunology (hereditary/acquired deficiency)"],
+          ["Allergy history / specific IgE","If allergic trigger suspected","Identify + avoid trigger; consider allergy clinic"],
+          ["Medication review","All cases","Stop ACEi/NSAID culprits; document"],
+          ["Symptom diary","Chronic/recurrent","Identify pattern, triggers, response to antihistamine"]
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"6", tag:"Refer", title:"Referral + safety-netting",
+      arrow:"specialist + emergency provision",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"999 / ED", html:"Airway involvement or anaphylaxis \u2014 immediate."},
+          {t:"Immunology / allergy", html:"Recurrent angioedema without urticaria, low C4, suspected hereditary; chronic refractory urticaria/angioedema."},
+          {t:"Adrenaline auto-injector", html:"Prescribe + train if anaphylaxis/food/venom trigger \u2014 <b>carry two at all times</b>, second dose at 5 min if not recovering, and <b>call an ambulance whenever it is used</b> (even if improving). Check technique at every review; refer allergy."},
+          {t:"Medication change", html:"ACEi-induced \u2192 switch antihypertensive, document avoidance."}
+        ]},
+        {b:"say", html:"This swelling can occasionally affect the throat, so if your tongue or throat swells, or you struggle to breathe or swallow, call 999. We\u2019ll work out the cause \u2014 if it\u2019s your blood-pressure tablet we\u2019ll stop it for good, and if it keeps happening without a rash we\u2019ll check a special blood test."}
+      ]}
+  ],
+  foot:"Management of angioedema in primary care; airway compromise and anaphylaxis are emergencies. Verify against current NICE CKS Angioedema/Urticaria, Resuscitation Council UK anaphylaxis guidance and BSACI."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

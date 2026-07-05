@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Premature Ejaculation — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Premature ejaculation management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🩺",
+  title:"Premature Ejaculation",
+  stemTitle:"Premature ejaculation — ongoing management",
+  stemSub:"Primary-care management of PE \u2014 distinguishing lifelong from acquired, behavioural techniques, topical anaesthetics and SSRIs \u2014 with referral for refractory or complex cases. CKS \u00b7 2026.",
+  guideline:"NICE CKS",
+  glance:[
+    {lbl:"Type", val:"Lifelong vs acquired", sub:"acquired \u2014 find cause"},
+    {lbl:"First-line", val:"Behavioural", sub:"stop-start / squeeze"},
+    {lbl:"Topical", val:"Anaesthetic", sub:"lidocaine/prilocaine"},
+    {lbl:"Drug", val:"SSRI", sub:"dapoxetine on-demand"},
+    {lbl:"Check", val:"ED / thyroid", sub:"in acquired PE"},
+    {lbl:"Address", val:"The couple", sub:"+ anxiety"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Characterise PE and look for a cause",
+      blocks:[
+        {b:"kv", rows:[
+          ["Type","<b>Lifelong</b> (since first sexual experiences) vs <b>acquired</b> (new \u2014 prompts a search for a cause)"],
+          ["Acquired causes","Erectile dysfunction (common!), prostatitis, thyroid dysfunction, anxiety, relationship factors"],
+          ["Impact","Distress, control, relationship effect \u2014 PE is defined partly by bother"],
+          ["Consider tests","TFTs if features; assess for ED (treat ED first if coexisting)"]
+        ]},
+        {b:"why", html:"Distinguishing lifelong from acquired PE is the key fork: acquired PE often has a treatable driver \u2014 most importantly <strong>erectile dysfunction</strong>, which should be treated first because the rush to ejaculate before losing the erection masquerades as PE. Addressing the partner/relationship dimension is part of effective management."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 first-line", title:"Behavioural techniques and the couple",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"⏸️ Stop\u2013start", html:"Pause stimulation as climax approaches, resume when the urge subsides \u2014 builds control."},
+          {t:"✊ Squeeze technique", html:"Apply pressure to the glans to reduce arousal before resuming."},
+          {t:"🧠 Reduce anxiety", html:"Performance anxiety is a major driver; education and reassurance help."},
+          {t:"💑 Involve the partner", html:"Couple-based approaches and psychosexual therapy improve outcomes."},
+          {t:"🧴 Adjuncts", html:"Thicker condoms can reduce sensitivity as a simple measure."},
+          {t:"📚 Education", html:"Normalise; explain typical timings and that it is treatable."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication", title:"Topical and oral options",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Treat ED first", title:"If ED coexists", when:"PDE5 inhibitor",
+           html:"Where ED contributes to acquired PE, treat the ED first \u2014 often resolves the PE."},
+          {step:"Step 1", title:"Topical anaesthetic", when:"lidocaine/prilocaine",
+           fromLabel:"if behavioural measures insufficient",
+           html:"Applied to the glans before intercourse (with a condom to avoid transferring numbness); simple and effective."},
+          {step:"Step 2", title:"SSRI", when:"dapoxetine on-demand, or daily SSRI off-label",
+           fromLabel:"persistent / lifelong PE",
+           html:"<b>Dapoxetine 30 mg on-demand</b> (up to 60 mg; licensed), or a daily SSRI (off-label, e.g. <b>sertraline 50 mg</b> or <b>paroxetine 20 mg</b>). Counsel on side effects and onset."}
+        ]},
+        {b:"warn", html:"Counsel on SSRI side effects (nausea, dizziness, mood/sexual effects) and the small early suicidality risk in younger men. Topical anaesthetic can numb the partner \u2014 use with a condom."}
+      ]},
+    {t:"node", d:"monitor", n:"4", tag:"Monitoring", title:"Response and tolerability",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Control / satisfaction","Each review","Combine behavioural + topical/SSRI if needed"],
+          ["SSRI tolerability","After starting","Manage side effects; adjust or switch"],
+          ["Coexisting ED","Ongoing","Ensure ED treated/optimised"],
+          ["Relationship / mood","Each review","Offer psychosexual therapy where relevant"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"5", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"After behavioural advice", title:"Reassess", html:"Review technique and impact; add topical anaesthetic if needed."},
+          {n:"2", when:"After starting a drug", title:"Response review", html:"Assess efficacy and side effects of topical/SSRI; combine approaches."},
+          {n:"3", when:"As needed", title:"Ongoing", html:"Confirm coexisting ED treated; consider psychosexual referral if relationship factors persist."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not responding? Re-check",
+      arrow:"\u2026if PE persists",
+      intro:"Reconsider cause and combine modalities before referral.",
+      checks:[
+        {b:"1 \u00b7 ED treated?", html:"Coexisting erectile dysfunction optimised first?"},
+        {b:"2 \u00b7 Combine", html:"Behavioural + topical + SSRI together often outperform one alone."},
+        {b:"3 \u00b7 Adherence/technique", html:"Behavioural techniques practised; drug used correctly?"},
+        {b:"4 \u00b7 Psychological", html:"Anxiety / relationship factors \u2192 psychosexual therapy."},
+        {b:"5 \u00b7 Refer", html:"Refractory or complex \u2192 specialist."}
+      ],
+      back:"ED treated, modalities combined, psychology addressed \u2192 refer"},
+    {t:"node", d:"safety", n:"6", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"⚠️ SSRI effects", html:"\u201cTell us if the tablet causes low mood, agitation, or persistent sexual side effects \u2014 we can adjust.\u201d"},
+          {t:"🧴 Numbing", html:"\u201cUse the numbing cream with a condom so it doesn\u2019t affect your partner.\u201d"},
+          {t:"🧠 Distress", html:"\u201cIf this is causing significant distress or relationship difficulty, we can refer for couples/psychosexual support.\u201d"},
+          {t:"🔄 Acquired PE", html:"\u201cIf this is new, there may be a treatable cause \u2014 worth checking erections and thyroid.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"7", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"when refractory or complex",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Psychosexual therapy", html:"Significant relationship or psychological factors, or for couple-based therapy."},
+          {t:"Refractory", html:"Persisting despite behavioural + topical + SSRI."},
+          {t:"Complex / organic", html:"Suspected organic cause, or coexisting refractory ED \u2192 urology."},
+          {t:"Diagnostic doubt", html:"Atypical features or uncertainty about the cause."}
+        ]},
+        {b:"say", html:"This is common and treatable. Simple techniques and a numbing cream help many men, and there\u2019s a tablet option too \u2014 and if it started recently, we\u2019ll check there isn\u2019t another cause behind it."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

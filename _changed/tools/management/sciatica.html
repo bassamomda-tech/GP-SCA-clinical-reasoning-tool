@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sciatica — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+</head>
+<body data-screen-label="Sciatica management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🦵",
+  title:"Sciatica",
+  stemTitle:"Sciatica (lumbar radicular pain) — ongoing management",
+  stemSub:"Primary-care management of confirmed sciatica \u2014 staying active and self-management, judicious analgesia, group exercise/physiotherapy \u2014 with the cauda-equina safety net and clear referral triggers for imaging and specialist care. NICE NG59 \u00b7 CKS 2026.",
+  guideline:"NICE NG59",
+  glance:[
+    {lbl:"First, exclude", val:"Cauda equina", sub:"red-flag emergency"},
+    {lbl:"Core advice", val:"Stay active", sub:"avoid bed rest"},
+    {lbl:"Analgesia", val:"NSAID", sub:"short course, gastroprotect"},
+    {lbl:"Do NOT use", val:"Gabapentinoids", sub:"+ no oral steroids"},
+    {lbl:"Therapy", val:"Group exercise", sub:"\u00b1 physiotherapy"},
+    {lbl:"Refer", val:"Persistent/severe", sub:"MRI + specialist"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm sciatica & set expectations", blocks:[{b:"kv", rows:[["Diagnosis","Radicular leg pain (dermatomal, below knee) \u00b1 neuro signs from nerve-root compression \u2014 distinguish from non-specific low back pain."],["Natural course","Most improves over weeks; imaging is <b>not</b> routinely needed early and does not change initial management."],["Goal","Support self-management and function, control pain, and watch for the few who need escalation/red-flag review."]]},{b:"why", html:"Framing sciatica as usually self-limiting and not needing early imaging sets up appropriate self-management and avoids unnecessary scans."}]},
+    {t:"node", d:"safety", n:"2", tag:"Foundation \u00b7 exclude emergency", title:"Confirm sciatica \u2014 and exclude cauda equina",
+      blocks:[
+        {b:"kv", rows:[
+          ["Sciatica","Radicular leg pain in a dermatomal distribution \u00b1 neurological signs (a nerve-root problem)"],
+          ["Cauda equina \u2014 EXCLUDE","Bilateral leg symptoms, saddle anaesthesia, bladder/bowel dysfunction, sexual dysfunction \u2192 <b>emergency</b>"],
+          ["Other red flags","Age &lt;20 or &gt;55, trauma, unexplained weight loss, fever, IVDU, steroid use, history of cancer (prostate/kidney/thyroid/breast), inflammatory pain \u2014 consider fracture, infection (discitis), malignancy or inflammatory back pain"],
+          ["Risk stratify","StarT Back tool to target intensity of support. Straight-leg-raise / crossed SLR supports disc prolapse. <b>Do not image in primary care</b> \u2014 imaging is only to plan a specialist intervention"]
+        ]},
+        {b:"why", html:"Most sciatica improves with time and activity, so management is largely conservative \u2014 but the one thing you must not miss is <strong>cauda equina syndrome</strong>, where delay risks permanent bladder, bowel and sexual dysfunction. Screen for it at first contact and safety-net explicitly."}
+      ]},
+    {t:"node", d:"life", n:"3", tag:"Non-drug \u00b7 mainstay", title:"Stay active + self-management",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🚶 Stay active", html:"Continue normal activities as able; <b>avoid bed rest</b> \u2014 it worsens outcomes."},
+          {t:"📚 Reassurance", html:"Explain the favourable natural history; most settle over weeks. Encourage self-management."},
+          {t:"🏃 Group exercise", html:"Refer to a group exercise programme for low back pain/sciatica."},
+          {t:"🤲 Physiotherapy", html:"Manual therapy / physiotherapy as part of a treatment package."},
+          {t:"🧠 Psychological", html:"Address fear-avoidance; combined physical + psychological programme if significant distress/disability."},
+          {t:"💼 Work", html:"Support staying at / returning to work; modify activity rather than stop."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"4", tag:"Medication", title:"Judicious analgesia \u2014 and what to avoid",
+      blocks:[
+        {b:"kv", rows:[
+          ["Consider","A short course of <span class='pill pill-teal'>NSAID</span> at the lowest effective dose (with gastroprotection / risk assessment) for low back pain"],
+          ["Weak opioid","Only if NSAID contraindicated/ineffective \u2014 short-term, with caution"],
+          ["Do NOT offer","<b>Gabapentinoids, other antiepileptics, oral steroids, or benzodiazepines</b> for sciatica (no benefit, real harms)"],
+          ["Severe acute","Consider a specialist epidural (local anaesthetic + steroid) for acute, severe sciatica"]
+        ]},
+        {b:"warn", html:"NICE specifically advises <b>against gabapentinoids and oral corticosteroids for sciatica</b> \u2014 a common prescribing error. Avoid routine strong opioids; review any analgesia for ongoing benefit."},
+        {b:"why", html:"Evidence for drug treatment in sciatica is weak, and gabapentinoids carry dependence and limited efficacy \u2014 so the emphasis is on activity, time and physiotherapy. Analgesia is a short-term enabler of movement, not the treatment itself."}
+      ]},
+    {t:"node", d:"monitor", n:"5", tag:"Monitoring", title:"Track recovery and red flags",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Pain / function","Each review","Improving \u2192 continue; not improving by 4\u20136 wk \u2192 consider imaging/referral"],
+          ["Neurology","Each review","Progressive motor deficit \u2192 urgent referral"],
+          ["Cauda equina screen","Every contact + safety-net","Any feature \u2192 emergency"],
+          ["Analgesia review","Ongoing","Stop if not helping; avoid long-term opioids/gabapentinoids"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"6", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"Early", title:"Establish plan", html:"Reassurance, activity, analgesia, refer to exercise/physiotherapy; safety-net cauda equina."},
+          {n:"2", when:"4\u20136 weeks", title:"Progress review", html:"Most improve. If not, reassess and consider imaging/specialist referral."},
+          {n:"3", when:"As needed", title:"Escalation", html:"Persistent/severe radicular pain or progressive deficit \u2192 MRI + specialist."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not improving? Check before escalating",
+      arrow:"\u2026if sciatica persists beyond 4\u20136 weeks",
+      intro:"Confirm the basics and reconsider the diagnosis before imaging.",
+      checks:[
+        {b:"1 \u00b7 Red flags", html:"Re-screen for cauda equina, malignancy, infection, fracture."},
+        {b:"2 \u00b7 Activity & therapy", html:"Has the patient stayed active and accessed exercise/physiotherapy?"},
+        {b:"3 \u00b7 Analgesia", html:"Appropriate (NSAID short course); stop ineffective/inappropriate drugs."},
+        {b:"4 \u00b7 Deficit", html:"Any progressive weakness or sensory loss \u2192 escalate urgently."},
+        {b:"5 \u00b7 Imaging/referral", html:"Persistent/severe \u2192 MRI if a specialist intervention is being considered."}
+      ],
+      back:"Red flags excluded, conservative care given \u2192 MRI + specialist if persistent/severe"},
+    {t:"node", d:"safety", n:"7", tag:"Safety-net", title:"Safety-netting \u2014 cauda equina",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Cauda equina", html:"\u201cDifficulty passing or controlling urine, numbness around the back passage/genitals, or weakness/numbness in both legs \u2014 go to A&amp;E immediately.\u201d"},
+          {t:"⚠️ Progressive weakness", html:"\u201cNew or worsening leg weakness or foot drop \u2014 contact us urgently.\u201d"},
+          {t:"🟠 Systemic red flags", html:"\u201cFever, unexplained weight loss, or pain that\u2019s constant and worse at night \u2014 get checked.\u201d"},
+          {t:"🚶 Stay active", html:"\u201cKeep gently moving \u2014 bed rest slows recovery; most sciatica settles over a few weeks.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"8", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"emergency for cauda equina; routine for persistent sciatica",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Suspected cauda equina syndrome \u2192 same-day emergency assessment / MRI. Suspected <b>metastatic spinal cord compression</b> (cancer history + progressive back pain, bilateral sciatica, gait disturbance/\u2018heavy legs\u2019, new retention) \u2192 contact the <b>MSCC coordinator</b> the same day."},
+          {t:"Urgent", html:"Progressive or severe neurological deficit."},
+          {t:"Persistent sciatica", html:"Non-resolving or severe radicular pain \u2014 imaging (MRI) and spinal/pain specialist for possible decompression or epidural."},
+          {t:"Red flags", html:"Suspected malignancy, infection or fracture."}
+        ]},
+        {b:"say", html:"The reassuring news is most sciatica settles over a few weeks if you keep gently active. I won\u2019t routinely scan or give nerve-pain tablets as they don\u2019t help here \u2014 but there are urgent warning signs I need you to know about."}
+      ]}
+  ]
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Elbow Pain Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;--diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;--treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;--refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;--lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;--radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);--font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#2a1a3a 0%,#5a3a7a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}.stem-banner b{display:block;font-size:1.05rem;font-weight:600}.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#5a3a7a,#1a6faf);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}.node[data-type="TREAT"] .node-num{background:var(--treat)}.node[data-type="REFER"] .node-num{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}.node[data-type="TREAT"] .node-tag{background:var(--treat)}.node[data-type="REFER"] .node-tag{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}.pill-purple{background:#ede9fe;color:#5b21b6}.pill-blue{background:#dbeafe;color:#1e40af}.pill-teal{background:#ccfbf1;color:#0f766e}.pill-amber{background:#fef3c7;color:#92400e}.pill-green{background:#dcfce7;color:#15803d}.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+</head>
+<body>
+<div class="stem-banner"><div class="sb-icon">💪</div><div><b>Elbow Pain / Swelling</b><small>Tennis / golfer's elbow · olecranon bursitis · cubital tunnel · radial head fracture · septic arthritis</small></div></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div><span>Progress</span><span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span><div class="pbar"><div class="pbar-fill" id="pFill"></div></div><button class="reset" id="resetBtn">Reset</button></div>
+<!-- DIAGRAM VIEW -->
+<div id="viewDiagram">
+  <div class="dg-legend"><span>The full reasoning pathway — most elbow pain is overuse tendinopathy: exclude septic joint, fracture and referred neck/nerve causes, diagnose lateral/medial/posterior, treat with load management, refer the refractory or nerve cases and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
+  <div class="chart">
+  <div class="flow">
+
+    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Elbow pain</span><div class="body"><b>Lateral vs medial vs posterior</b>; activity/overuse, locking, swelling, and <b>neurology in the hand</b>. Examine elbow range, resisted wrist movements, grip, ulnar-nerve, and the neck (referred).</div></div>
+    <div class="arrow"></div>
+
+    <!-- STEP 1 — SAFETY -->
+    <div class="box dec"><span class="lbl">Step 1 · Safety — emergencies</span><span class="ttl">Septic joint, fracture or nerve compromise?</span><div class="body"><ul>
+      <li><b>Septic joint / infected bursa</b> — hot swollen joint + fever, fluctuant tender olecranon</li>
+      <li><b>Fracture / dislocation</b> — trauma, deformity, unable to move</li>
+      <li><b>Acute nerve compromise</b> — hand weakness/sensory loss (ulnar/median/radial)</li>
+      <li>Referred cervical radiculopathy (neck-driven arm pain)</li>
+    </ul></div></div>
+    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
+      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Emergency / urgent</span><div class="body">Septic joint → emergency aspiration/admission. Infected olecranon bursitis → aspirate + antibiotics. Fracture → A&amp;E. Acute nerve deficit → urgent.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — diagnose</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Clinical</span><div class="body">Mostly clinical. Resisted wrist extension → lateral; resisted flexion/pronation → medial; Tinel at cubital tunnel → ulnar. Imaging only for trauma/locking/atypical.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 3 · which diagnosis?</span></div>
+
+    <!-- STEP 3 — DECISION -->
+    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
+      <div class="col"><div class="blabel">Lateral</div><div class="box ix"><span class="ttl">Tennis elbow</span><div class="body">Lateral epicondylalgia — pain on resisted wrist extension/gripping; overuse. Commonest.</div></div></div>
+      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Medial</div><div class="box ix"><span class="ttl">Golfer's elbow</span><div class="body">Medial epicondylalgia — pain on resisted flexion/pronation.</div></div></div>
+      <div class="col"><div class="blabel">Posterior / nerve</div><div class="box ix"><span class="ttl">Bursitis / entrapment</span><div class="body"><b>Olecranon bursitis</b> (exclude infection), <b>cubital tunnel</b> (ulnar nerve — little/ring finger numbness), OA, loose body.</div></div></div>
+    </div></div>
+    <div class="arrow"><span class="tag">Step 7 · treat conservatively</span></div>
+
+    <!-- STEP 7 — TREAT -->
+    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — load management + physiotherapy</span><span class="ttl">Most settle (often 6–12 months)</span><div class="body"><ul>
+      <li><b>Epicondylalgia (tennis/golfer's):</b> activity/load modification, analgesia/topical NSAID, <b>eccentric strengthening</b> via physiotherapy, counterforce brace; corticosteroid injection gives short-term relief only (worse long-term) — use sparingly.</li>
+      <li><b>Olecranon bursitis (non-infected):</b> rest, avoid pressure, NSAID; aspirate if very tense; <b>antibiotics + aspiration if infected</b>.</li>
+      <li><b>Cubital tunnel:</b> activity modification, night splinting in extension; decompression if persistent/motor signs.</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
+
+    <!-- STEP 6 — REFER -->
+    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
+      <li><span class="pill pill-red">Emergency</span> septic joint, infected bursa with systemic upset, fracture/dislocation.</li>
+      <li><span class="pill pill-purple">MSK / orthopaedics</span> tendinopathy refractory to ≥6 months conservative care, mechanical locking/loose body, OA.</li>
+      <li><span class="pill pill-purple">Neurology / hand surgery</span> ulnar nerve entrapment with persistent symptoms or motor loss (wasting).</li>
+    </ul></div></div>
+    <div class="arrow"><span class="tag">Step 8 · self-care &amp; ergonomics</span></div>
+
+    <!-- STEP 8 — LIFESTYLE -->
+    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Self-management &amp; ergonomics</span><span class="ttl">Address the overuse</span><div class="body"><b>Modify the provoking activity</b> (technique, equipment, grip size, workstation), relative rest then graded return · <b>eccentric/strengthening home exercises</b> · counterforce brace for tennis elbow · avoid leaning on the elbow (bursitis/ulnar nerve) · ergonomic and occupational review.</div></div>
+    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
+
+    <!-- STEP 9 — SAFETY-NET -->
+    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Same-day</b> if the elbow becomes hot and swollen with fever (septic), or new hand weakness/wasting. <b>Review</b> tendinopathy at 6–12 weeks (set expectations — recovery is slow); escalate persistent or progressive nerve symptoms. Reconsider referred neck pathology if local treatment fails.</div></div>
+  </div>
+  </div>
+  <div class="band"><div class="caution">⚠️ <b>Distinguish infected from non-infected olecranon bursitis</b> — a hot, tender, fluctuant swelling with fever needs aspiration and antibiotics, not just rest. And corticosteroid injection for tennis elbow helps short-term but worsens long-term outcomes — lead with load management.</div></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+<div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Fracture, Septic Arthritis &amp; Nerve Compromise</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="rfgrid">
+<div class="rftile"><b>Acute trauma + elbow swelling + loss of range</b> Radial head fracture or distal humerus fracture → X-ray elbow (AP + lateral). Fat pad sign on lateral X-ray = haemarthrosis even if no fracture visible (occult fracture — treat as fracture). Same-day orthopaedics if displaced.</div>
+<div class="rftile"><b>Hot swollen elbow + fever + systemically unwell</b> Septic arthritis → same-day hospital (joint aspiration + IV antibiotics). Delay risks joint destruction. Gout/pseudogout can look identical — aspiration is diagnostic and therapeutic.</div>
+<div class="rftile"><b>Elbow pain + progressive hand weakness + wasting</b> Ulnar nerve entrapment at cubital tunnel (cubital tunnel syndrome) progressing to intrinsic muscle wasting → urgent neurology/orthopaedics for nerve conduction studies. Persistent motor deficit may not fully recover.</div>
+<div class="rftile"><b>Elbow pain + numbness in ring and little finger</b> Cubital tunnel syndrome (ulnar neuropathy) — less urgent if purely sensory, but motor signs → urgent. Tinel's sign at cubital fossa.</div>
+<div class="rftile"><b>Swollen warm elbow + immunocompromised</b> Septic bursitis (olecranon bursa) vs septic arthritis — needs aspiration and culture. Immunocompromised, rheumatoid, or prosthetic joint → lower threshold for hospital.</div>
+<div class="rftile"><b>Elbow pain + weight loss + age &gt;50</b> Bone metastasis (lung, breast, prostate, kidney, thyroid) or primary bone tumour → X-ray + 2WW if suspicious lesion on X-ray or new unexplained bone pain without trauma.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The posterior fat pad sign on a lateral elbow X-ray is one of the most important radiological findings in trauma — it represents haemarthrosis displacing the fat pads from the olecranon and coronoid fossae, and is present in 90% of occult elbow fractures (fractures invisible on standard X-ray). In adults, a visible posterior fat pad with trauma should be treated as a radial head fracture even if no fracture line is visible on X-ray. Management: collar-and-cuff sling, analgesia, orthopaedic review in 1–2 weeks (repeat X-ray often shows fracture at 10–14 days when periosteal callus forms). Failing to treat fat pad sign as an occult fracture is a well-recognised medicolegal issue. Cubital tunnel syndrome (ulnar nerve compression at the medial elbow) is the second most common peripheral nerve entrapment after carpal tunnel syndrome — it causes ring and little finger paraesthesia and, in advanced cases, weakness and wasting of the intrinsic hand muscles (hypothenar wasting, interossei wasting, claw hand).</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+<div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>History — Localise by Region</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Lateral elbow pain</div><div>Lateral epicondylitis (tennis elbow) — most common. Repetitive wrist extension activities: racquet sports, typing, screwdriving, painting. Pain on resisted wrist extension (Cozen's test). No joint swelling. Age 40–60. Gradual onset.</div>
+<div>Medial elbow pain</div><div>Medial epicondylitis (golfer's elbow) — less common. Repetitive wrist flexion activities: golf, throwing, hammering. Pain on resisted wrist flexion (reverse Cozen's). Associated with cubital tunnel syndrome (medial location — watch for ulnar nerve symptoms).</div>
+<div>Posterior elbow swelling</div><div>Olecranon bursitis — large fluctuant posterior swelling, often painless, localised to bursa (can weight-bear on elbow without pain inside joint). Traumatic (direct blow), repetitive (student's elbow, miner's elbow), inflammatory (gout, RA), septic (warm, red, tender, fever).</div>
+<div>Anterior elbow pain</div><div>Bicipital tendinopathy or distal biceps tendon rupture (sudden pop + weakness of supination + Popeye deformity). Brachialis tendinopathy. Radial head fracture (lateral + anterior). Pronator teres syndrome (median nerve entrapment — anterior forearm radiation).</div>
+<div>Referred pain</div><div>Cervical radiculopathy (C6/C7 — radiating from neck to lateral elbow, associated with neck movement/neurological symptoms) · Shoulder pathology (referred to elbow) · Cardiac ischaemia (left arm/elbow pain). Always check neck and shoulder range of motion.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The anatomical localisation of elbow pain is highly diagnostically specific — the elbow has distinct compartments and structures, and pain in different regions points to different pathologies. Lateral epicondyle pain = extensor origin tendinopathy (tennis elbow). Medial epicondyle pain = flexor origin tendinopathy (golfer's elbow) ± cubital tunnel syndrome. Posterior swelling = olecranon bursa (separate from the joint). This anatomical precision means that a careful examination of exactly where the pain is, and what movements reproduce it, is the most important diagnostic tool — more informative than investigations in most cases. The key examination finding for tennis elbow (Cozen's test) takes 5 seconds: place two fingers on the lateral epicondyle and ask the patient to extend the wrist against resistance — reproduction of lateral elbow pain is a positive test with 85% sensitivity.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+<div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Lateral epicondylitis (tennis elbow)</div><div>Extensor carpi radialis brevis (ECRB) tendinopathy — not true inflammation but tendon degeneration (angiofibroblastic tendinosis). Lateral epicondyle tenderness + Cozen's test positive. No joint swelling. Affects 40–60 yr olds. Resolves in 80–95% by 12–18 months. Self-limiting.</div>
+<div>Medial epicondylitis (golfer's elbow)</div><div>Flexor-pronator origin tendinopathy. Medial epicondyle tenderness + pain on resisted wrist flexion. Check ulnar nerve (ring/little finger numbness = cubital tunnel co-existent in 30%). Less common than tennis elbow. Similar natural history.</div>
+<div>Olecranon bursitis</div><div>Posterior elbow swelling — fluctuant, transilluminates. Traumatic (reabsorbs spontaneously). Septic (warm, red, tender, fever — aspirate + culture). Gouty (inspect for tophi, check urate). Rheumatoid (check for rheumatoid nodules, systemic features).</div>
+<div>Cubital tunnel syndrome</div><div>Ulnar nerve at medial elbow. Numbness/tingling in ring and little fingers (especially at night, with elbow flexion). Tinel's sign at medial elbow. Weak grip / intrinsic wasting in advanced cases. Nerve conduction studies confirm.</div>
+<div>Elbow OA</div><div>Age &gt;50, previous fracture or loose bodies. Pain + stiffness + loss of extension. Crepitus on movement. X-ray: joint space narrowing, osteophytes, loose bodies (calcific or bony). Manage conservatively — surgery for severe cases (total elbow arthroplasty).</div>
+<div>Radial head fracture</div><div>Post-fall/trauma. Lateral elbow pain + swelling + restricted pronation/supination. Fat pad sign on X-ray. Most undisplaced fractures managed conservatively (collar-and-cuff × 2–3 weeks). Displaced or comminuted → orthopaedics (ORIF or radial head replacement).</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Tennis elbow is not an inflammatory condition — histological studies consistently show angiofibroblastic tendinosis (degeneration and attempted disorganised repair) rather than inflammatory cells. This has important treatment implications: anti-inflammatory treatments (NSAIDs, corticosteroid injection) address the wrong pathology. Corticosteroid injection for tennis elbow provides rapid short-term pain relief (superior to physiotherapy at 6 weeks) but is associated with significantly worse outcomes at 1 year and higher recurrence rates than physiotherapy or watchful waiting (NICE 2016 review). The current recommendation is to offer physiotherapy (eccentric exercises, deep friction massage) and watchful waiting as first-line, reserving corticosteroid injection for exceptional circumstances. This represents a significant shift from historical practice.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+<div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Examination &amp; Investigations</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Range of motion</div><div>Flexion/extension (normal 0–145°), pronation/supination (normal 80°/80°). Loss of full extension → joint pathology (fracture, OA, loose body, effusion). Restriction of pronation/supination → radial head pathology. Crepitus → OA, loose bodies.</div>
+<div>Cozen's test (lateral epicondylitis)</div><div>Stabilise elbow in 90° flexion, patient extends wrist against resistance — pain at lateral epicondyle = positive. Sensitivity 85%. Mill's test: extend elbow, pronate forearm, flex wrist — pain at lateral epicondyle = positive.</div>
+<div>Tinel's sign (cubital tunnel)</div><div>Tap over ulnar nerve at medial elbow (cubital fossa, posterior to medial epicondyle) — tingling in ring/little fingers = positive (Tinel's sign). Elbow flexion test (flex fully for 60 seconds) — if reproduces symptoms = cubital tunnel.</div>
+<div>Olecranon bursa assessment</div><div>Fluctuant posterior swelling — transilluminate (fluid = cyst/bursitis). Temperature (warm = septic/inflammatory). Tender directly over bursa (not inside joint — elbow ROM should be preserved if truly bursal). Aspiration: straw-coloured (traumatic), turbid (septic), crystals (gout).</div>
+<div>Investigations</div><div><span class="pill pill-blue">X-ray elbow</span> (AP + lateral) — trauma, fat pad sign, OA, calcification, loose bodies. <span class="pill pill-blue">CRP + urate</span> (gout/inflammatory). <span class="pill pill-blue">Aspiration + MC&S + crystal microscopy</span> (septic vs gouty bursitis/arthritis). <span class="pill pill-blue">USS</span> (tendon tear, bursitis extent). <span class="pill pill-blue">NCS/EMG</span> (cubital tunnel — neurology/orthopaedics)</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Olecranon bursitis aspiration is a key diagnostic and therapeutic procedure — it differentiates septic bursitis (requires IV antibiotics and repeated aspiration or surgical drainage) from traumatic or gouty bursitis (managed conservatively). The aspirated fluid should be sent for MC&S (culture), cell count, and crystal microscopy simultaneously. Septic bursitis typically shows WBC &gt;10,000/mm³ and positive Gram stain in 60% of cases; culture is positive in 85%. The most common organism is Staphylococcus aureus (80%). Empirical treatment while awaiting cultures: flucloxacillin 500 mg QDS (covers staphylococci) or co-amoxiclav if polymicrobial concern. MRSA-suspected (healthcare worker, previous MRSA): doxycycline 100 mg BD.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="5">
+<div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div><span class="pill pill-red">Same-day hospital / A&E</span></div><div>Septic arthritis (hot swollen joint + fever) · Displaced fracture or neurovascular compromise post-trauma · Distal biceps tendon rupture (surgical repair within 2 weeks for best outcome)</div>
+<div>Orthopaedics / fracture clinic</div><div>Fat pad sign on X-ray (occult fracture) — fracture clinic within 3–5 days · Radial head fracture (assessment + follow-up) · Elbow OA with significant functional limitation · Cubital tunnel syndrome with motor deficit</div>
+<div>Physiotherapy</div><div>Lateral epicondylitis (eccentric wrist exercises, deep friction massage, activity modification) · Medial epicondylitis · Post-fracture rehabilitation · Elbow OA exercise programme</div>
+<div>Neurology / orthopaedics</div><div>Cubital tunnel syndrome — nerve conduction studies + EMG. Motor signs → urgent. Purely sensory → routine. Decompression surgery (simple decompression or anterior transposition) for persistent or progressive cases.</div>
+<div>Rheumatology</div><div>Suspected RA or inflammatory arthritis (bilateral, morning stiffness &gt;60 min, systemic features) · Recurrent gouty bursitis + high urate · Psoriatic arthritis</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Distal biceps tendon rupture requires early orthopaedic assessment — surgical repair within 2 weeks produces significantly better long-term supination strength and functional outcomes than delayed repair or conservative management. After 2 weeks, tendon retraction and adhesion formation makes surgical repair progressively more difficult. The clinical features are classic: sudden pop at the anterior elbow during forceful elbow flexion or supination (e.g., lifting a heavy box), followed by weakness of elbow flexion and supination and a visible deformity (Popeye sign — biceps muscle belly displaced proximally). The Hook test is specific: the examiner hooks a finger under the bicipital tendon at the elbow — if the tendon cannot be hooked, it has ruptured. Any patient with suspected distal biceps tendon rupture should be referred to orthopaedics urgently, not managed conservatively by default.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="6">
+<div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>GP Treatment by Diagnosis</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="branch">
+<div class="b-card">
+<div class="b-cond">Lateral / medial epicondylitis</div>
+<div class="b-drug">Physiotherapy + activity modification</div>
+<div class="b-note">Self-limiting in 80–95% by 12–18 months without treatment. First-line: physiotherapy referral (eccentric exercises, deep tissue massage). Activity modification (reduce aggravating activities, ergonomic assessment). Topical NSAIDs (Voltarol 1% gel TDS). Avoid steroid injection — poor long-term outcome. Tennis elbow strap (counterforce brace) — short-term pain relief, no evidence of long-term benefit.</div>
+</div>
+<div class="b-card">
+<div class="b-cond">Olecranon bursitis (non-septic)</div>
+<div class="b-drug">Aspiration + compression bandage</div>
+<div class="b-note">Aspiration removes fluid + send MC&S + crystal microscopy. Compression bandage post-aspiration (reduces re-accumulation). Elbow padding (prevent further trauma). Traumatic: resolves in weeks. Gouty: treat underlying gout (ULT). RA: DMARD optimisation. Do NOT aspirate without sending fluid for culture — septic bursitis cannot be excluded clinically.</div>
+</div>
+<div class="b-card">
+<div class="b-cond">Septic olecranon bursitis</div>
+<div class="b-drug">Flucloxacillin 500 mg QDS × 2 weeks</div>
+<div class="b-note">Aspiration + send for MC&S. Flucloxacillin (Staphylococcus aureus most common). Co-amoxiclav if polymicrobial risk. MRSA-suspected: doxycycline 100 mg BD or seek microbiology advice. Review at 48–72 hrs — if not improving or re-accumulating → hospital (IV antibiotics, surgical drainage). Most mild-moderate cases respond to oral antibiotics.</div>
+</div>
+</div>
+<div class="ladder">
+<div class="rung"><span class="rn">Tennis elbow — refractory</span><span class="rt">PRP (platelet-rich plasma) injection — increasingly offered by MSK specialists for refractory cases failing physiotherapy. Extracorporeal shockwave therapy (ESWT — NICE IPG571). Surgical release (ECRB debridement) for cases failing 12 months conservative management. Do not repeat steroid injection.</span></div>
+<div class="rung"><span class="rn">Cubital tunnel (mild/sensory)</span><span class="rt">Elbow extension splint at night (prevents prolonged flexion — main aggravating position). Avoid resting elbow on hard surfaces. Ergonomic keyboard adjustment. Physiotherapy. Review at 6 weeks — if progressive (motor signs developing) → urgent neurology/orthopaedics for NCS + surgical decompression.</span></div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The evidence against corticosteroid injection for tennis elbow represents one of the most significant recent guideline shifts in MSK primary care. The landmark RCT by Coombes et al. (2013, Lancet) demonstrated that corticosteroid injection produced significantly worse outcomes at 1 year compared to physiotherapy alone or placebo injection — patients who received steroid injection had higher recurrence rates, greater global deterioration, and worse functional outcomes at 52 weeks despite better short-term pain relief at 4 weeks. NICE and RCGP guidelines now recommend against steroid injection as a routine treatment for tennis elbow. This requires active de-prescribing of an established GP practice — explaining to patients why the previously offered steroid injection is no longer recommended requires good communication skills. The SCA examination may specifically test this communication scenario.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+<div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Analgesia Principles &amp; Elbow OA</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Analgesia ladder</div><div>Step 1: Topical diclofenac 1% gel (Voltarol) TDS — first-line for epicondylitis and OA (NICE). Step 2: Paracetamol 1 g QDS regular (minimal evidence for MSK pain but low risk). Step 3: Oral NSAID (naproxen 250–500 mg BD) with PPI (omeprazole 20 mg) — short course. Avoid opioids for chronic MSK pain (NICE: not recommended for OA).</div>
+<div>Elbow OA management</div><div>Conservative: analgesia + physiotherapy + activity modification. Intra-articular corticosteroid injection (specialist — short-term benefit). Elbow arthroplasty (total elbow replacement) for end-stage OA with severe functional impairment. Less common than knee/hip arthroplasty — orthopaedic decision.</div>
+<div>Occupational advice</div><div>Workplace ergonomics assessment (occupational health) for repetitive strain disorders. Keyboard height, mouse grip, tool handle diameter. Statutory sick note (Med3) if unable to work. Reasonable adjustments under Equality Act 2010 if permanent disability.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Topical NSAIDs (diclofenac gel) have equivalent efficacy to oral NSAIDs for peripheral MSK pain (epicondylitis, OA of superficial joints) with dramatically lower systemic side effects — GI toxicity, renal impairment, and cardiovascular risk are all significantly reduced. NICE recommends topical NSAIDs as first-line analgesia for peripheral MSK conditions before oral NSAIDs. Voltarol 1% gel (diclofenac diethylamine 1.16% equivalent) is available OTC and on prescription. Application frequency: apply 4 times daily (QDS) or BD–TDS depending on formulation. The Voltarol 12-hour gel (2.32% diclofenac) requires BD dosing only, which improves adherence. Provide occupational advice at every consultation for work-related epicondylitis — returning a patient to the same job without addressing the causative ergonomic factor results in immediate relapse.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+<div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Activity Modification, Ergonomics &amp; Prevention</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="lsgrid">
+<div class="lstile"><b>Tennis elbow — load management</b> Identify and reduce the aggravating activity (repetitive wrist extension). Use two-handed technique for heavy lifting (reduces wrist extensor loading). Counterforce brace (tennis elbow strap) — wear 2–3 cm below lateral epicondyle during activities. Reduce grip strength requirements (larger handle grips on tools and racquets).</div>
+<div class="lstile"><b>Ergonomic assessment</b> Keyboard users: raise keyboard (reduces wrist extension angle), vertical mouse (neutral forearm posture), regular micro-breaks every 20–30 min. Manual workers: larger tool handles, reduced grip force, task rotation. Occupational health referral for complex cases. OHS referral for statutory assessment.</div>
+<div class="lstile"><b>Exercise prescription</b> Physiotherapy-guided eccentric exercises are the cornerstone of both lateral and medial epicondylitis management — 3 sets × 15 reps twice daily. Tyler Twist exercise (rubber bar eccentric wrist extension) widely available online. Progress from pain-free range, gradually increasing resistance over 12 weeks.</div>
+<div class="lstile"><b>Olecranon bursitis prevention</b> Avoid prolonged elbow resting on hard surfaces (desk, table). Use elbow padding (gel pad, foam) for occupations requiring elbow contact. After aspiration: compression bandage + elbow protection pads for 6 weeks.</div>
+<div class="lstile"><b>Nerve care (cubital tunnel)</b> Avoid prolonged elbow flexion (phone holding, sleeping with arm under pillow, using elbow rest on car door). Night splint in neutral position (prevents sleeping in hyperflex position). Computer posture: elbow at 90°, forearm supported. Refer ergonomics if desk-related.</div>
+<div class="lstile"><b>Return to sport (tennis elbow)</b> Grade return to racquet sport: begin with gentle groundstrokes (low load) progressing to full game over 6–8 weeks. Reduce string tension (reduces shock transmission). Larger sweet spot racquet. Proper backhand technique coaching (two-handed backhand reduces lateral epicondyle load by 60%).</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The Tyler Twist exercise (using a rubber bar/Flexbar) is the best-evidenced single exercise for lateral epicondylitis — it produces eccentric loading of the wrist extensors in a functionally relevant pattern. The original Tyler study showed a 72% reduction in pain at 6 weeks. Instructions: hold the bar vertically in both hands, twist the bar with the affected hand (wrist extends eccentrically against the bar's resistance). This is available for patients to view via YouTube. Most physiotherapists include this as part of a broader programme. Two-handed backhand technique coaching is the most effective sports-specific prevention strategy for tennis elbow — teaching a single-handed player to switch to a two-handed backhand eliminates the primary eccentric loading mechanism of the extensor origin during tennis. This is a recommendation from BASEM (British Association of Sport and Exercise Medicine) guidelines.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+<div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Epicondylitis — 12 weeks</div><div>Physiotherapy commenced and compliant? Symptoms improving? Most cases show gradual improvement 6–12 months. If no improvement at 12 weeks of compliant treatment → USS (tendon degeneration extent) + orthopaedics/MSK specialist referral (ESWT, PRP, surgical consideration).</div>
+<div>Bursitis — 2 weeks post-aspiration</div><div>Re-accumulated? Culture results back — organism identified? Septic bursitis: completing antibiotics? If re-accumulating after aspiration → repeat aspiration + culture. Failure of oral antibiotics for septic bursitis → hospital for IV antibiotics and possible surgical drainage.</div>
+<div>Cubital tunnel — 6 weeks</div><div>Night splint helping? Sensory symptoms improving? Any new motor signs (grip weakness, hand wasting)? Motor signs developing → expedited neurology/orthopaedics for NCS. Nerve conduction studies are the investigation of choice — confirms level and severity of compression.</div>
+<div>Post-fracture — 6 weeks</div><div>Fracture clinic follow-up. Pain resolving? Full pronation/supination returning? X-ray at 6 weeks (union confirmed). Physiotherapy for stiffness (common post-radial head fracture).</div>
+<div><span class="pill pill-red">999 / A&E safety-net</span></div><div>Sudden pop + weakness at elbow (distal biceps rupture — surgical window 2 weeks), rapidly spreading erythema + systemic compromise (septic arthritis progressing), post-cast neurovascular compromise (paraesthesia + pallor = compartment syndrome)</div>
+<div><span class="pill pill-amber">Same-day GP</span></div><div>Septic bursitis not improving at 48 hrs on antibiotics, new neurological symptoms developing (finger numbness/weakness), new acute elbow swelling following any activity</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Compartment syndrome following elbow fracture or dislocation is a rare but devastating complication — the forearm is the second most common site for compartment syndrome (after the leg). It presents with the 5 P's: Pain (disproportionate, unrelieved by opioids), Paraesthesia (early — indicates ischaemic nerve), Pallor, Paralysis (late), Pulselessness (very late). The compartment pressure threshold for fasciotomy is 30 mmHg (or within 30 mmHg of diastolic BP). Any patient in a cast who reports worsening pain + tingling must have the cast removed and be assessed for compartment syndrome immediately — do not give more analgesia and wait. This is a medicolegal emergency with a narrow window for limb salvage.</div></div>
+</div>
+
+</div>
+<div class="alg-foot"><strong>Educational use only.</strong> Based on NICE CKS Tennis Elbow (2023), NICE CKS (Tennis elbow), Coombes et al. Lancet 2013 (steroid injection RCT), Ottawa Elbow Rules, BASEM elbow guidelines, Nirschl tendinosis classification. Always adapt to individual patient context.</div>
+<script>
+(function(){
+  const STORE='rgp.alg.elbowpain.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+<script src="../../assets/alg-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+<script src="../../assets/alg-diagram.js"></script>
+</body>
+</html>

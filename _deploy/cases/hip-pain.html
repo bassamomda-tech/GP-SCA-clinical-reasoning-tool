@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hip Pain · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="../assets/medchooser.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+.tag-emerg{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;font-weight:700}
+</style>
+</head>
+<body class="mode-both" id="bodyEl" data-screen-label="Hip Pain">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="hip-pain"></aside>
+  <main class="main">
+<div class="case-head">
+  <div>
+    <div class="ch-cat">Acute &amp; MSK · Full case</div>
+    <h1>Hip Pain</h1>
+  </div>
+  <div class="case-head-tags"><span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE CKS / NG226</span><span class="tag">True hip vs lateral vs referred</span><span class="tag tag-emerg">Septic · # · cancer</span></div>
+</div>
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">HP</div>
+      <div><div class="tb-title">Hip Pain · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE CKS · Groin vs lateral vs buttock · OA · trochanteric pain · referred (spine/knee) · red flags (septic, fracture, cancer) · paediatric hip</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">Where is the pain?</span><span class="ns-lbl">Location localises the cause: GROIN/anterior pain = true hip joint (OA, labral, fracture, AVN); LATERAL pain over the greater trochanter = greater trochanteric pain syndrome (gluteal tendinopathy/bursitis); BUTTOCK/posterior = referred from spine/SIJ. "Hip pain" pointing to the buttock is rarely the hip joint</span></div>
+    <div class="ns-item"><span class="ns-val">Groin pain + restricted internal rotation</span><span class="ns-lbl">True hip joint pathology characteristically causes groin pain and early loss of internal rotation of the hip. OA is a clinical diagnosis (NICE NG226) — persistent activity-related joint pain ± short-lived morning stiffness in someone 45+; imaging is often unnecessary to diagnose</span></div>
+    <div class="ns-item"><span class="ns-val">Lateral hip = GTPS</span><span class="ns-lbl">Greater trochanteric pain syndrome (gluteal tendinopathy ± trochanteric bursitis) causes lateral hip pain, tender over the trochanter, worse lying on that side and on stairs. It is a soft-tissue, not a joint, problem — load management and physiotherapy, not joint replacement</span></div>
+    <div class="ns-item"><span class="ns-val">The knee can be the hip</span><span class="ns-lbl">Hip pathology refers to the knee (and the thigh) — always examine the hip in someone with knee pain and a normal knee, especially children. Conversely buttock pain is often the spine. Examine the joint above and below</span></div>
+    <div class="ns-item"><span class="ns-val">Septic hip = emergency</span><span class="ns-lbl">A hot, very painful hip the patient won't move, with fever/systemic upset → septic arthritis: a surgical emergency needing urgent admission, aspiration and IV antibiotics. Don't be reassured by a "normal" X-ray</span></div>
+    <div class="ns-item"><span class="ns-val">Can't weight-bear after a fall</span><span class="ns-lbl">Inability to weight-bear, a shortened/externally rotated leg, or groin pain after a fall (especially in the older/osteoporotic patient) → hip fracture; X-ray, and if negative but clinically suspected, MRI. An occult fracture is easily missed</span></div>
+    <div class="ns-item"><span class="ns-val">Night pain / systemic = think cancer</span><span class="ns-lbl">Unexplained deep bony pain, rest/night pain, weight loss or a cancer history → consider bony metastasis or primary bone tumour (NICE NG12). Steroid use / alcohol → avascular necrosis. Bilateral girdle pain + stiffness over 50 → polymyalgia rheumatica</span></div>
+    <div class="ns-item"><span class="ns-val">The limping child is different</span><span class="ns-lbl">In children, hip pain/limp has its own urgent differentials by age — DDH, transient synovitis vs septic arthritis, Perthes', and (the classic trap) SUFE in the older/overweight child with knee or thigh pain — all needing prompt assessment (see the Childhood Limp pathway)</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Hip Pain</div>
+  <div class="stem-title">A 68-year-old woman with months of deep groin pain and a worsening limp, struggling on stairs and to put on her shoes, asking whether she "needs a new hip"</div>
+  <div class="stem-text">Margaret Doyle, 68, has 6 months of gradually worsening right groin pain that radiates to the front of her thigh and occasionally the knee. It is worse with walking and weight-bearing, eases with rest, and she now limps, struggles on stairs, and finds it hard to put on her right shoe and sock. She has short-lived morning stiffness. There is no history of trauma, no fever, no rest or night pain that wakes her, no weight loss, and she is otherwise well aside from well-controlled hypertension. She is frustrated at slowing down and asks directly whether she needs "a new hip". On examination she has an antalgic gait and restricted, painful internal rotation of the right hip.</div>
+  <div class="stem-note">This stem tests the ability to: localise hip pain by site (groin/anterior = true hip joint; lateral = GTPS; buttock = referred spine) and recognise the classic clinical picture of hip osteoarthritis — activity-related groin pain referring to thigh/knee, restricted painful internal rotation, functional difficulty (stairs, shoes/socks) — diagnosing it clinically per NICE NG226 without mandatory imaging; exclude the red flags (septic arthritis, fracture, malignancy, avascular necrosis, polymyalgia) by history and examination; remember that hip pathology refers to the knee; manage OA conservatively first (education, exercise/physiotherapy, weight, analgesia by the topical-first ladder) and explain the role and threshold for joint-replacement referral honestly; and address the patient's specific question about surgery with shared decision-making. The SCA challenge is meeting the "do I need a new hip?" question with a staged, evidence-based plan rather than a premature yes/no.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — Hip osteoarthritis (this stem)</strong> Groin pain, restricted internal rotation, functional loss. Clinical diagnosis (NG226); conservative first (exercise/physio, weight, analgesia ladder); arthroplasty referral when QoL/function significantly limited despite optimised conservative care.</div>
+    <div class="stem-variant"><strong>Scenario B — Greater trochanteric pain syndrome</strong> Lateral hip pain, tender over trochanter, worse lying on it/stairs, internal rotation preserved. Load management, physiotherapy, relative rest, ± injection; not the joint.</div>
+    <div class="stem-variant"><strong>Scenario C — Referred from spine</strong> Buttock/posterior pain ± radiation, normal hip exam, lumbar signs. Treat as back/radicular pain; examine the spine.</div>
+    <div class="stem-variant"><strong>Scenario D — Red-flag hip</strong> Septic (hot, fever, won't move — emergency); fracture (fall, can't weight-bear, short/externally rotated leg); malignancy (night/rest pain, weight loss, cancer history → NG12); avascular necrosis (steroids/alcohol, groin pain, normal early X-ray → MRI).</div>
+    <div class="stem-variant"><strong>Scenario E — Paediatric hip / inflammatory</strong> Child with limp (DDH, transient synovitis vs septic, Perthes', SUFE — knee/thigh pain); or inflammatory arthritis / PMR (bilateral girdle pain, stiffness, raised inflammatory markers).</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Pain location (groin/lateral/buttock); true joint vs soft tissue vs referred; OA clinical diagnosis; red flags (septic, fracture, cancer, AVN, PMR); referral to the knee; age (paediatric differentials, fragility fracture); function/QoL for arthroplasty threshold; analgesia ladder and comorbidity; the "do I need surgery?" question.</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History — Locate the Pain · Mechanical vs Sinister · Function · Red Flags · ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The history's first job is localisation — where exactly is the pain? — because groin points to the true hip joint, lateral to greater trochanteric pain syndrome, and buttock to the spine. Then characterise it as mechanical (OA) versus sinister (rest/night pain, systemic features), and quantify the functional impact that drives management.</strong> Margaret's groin pain, radiation to the knee, mechanical pattern and difficulty with shoes/socks are a textbook hip-OA story — but the red flags must still be excluded.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 SCA framing — answer "do I need a new hip?" with a staged plan</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"That's exactly the right question, and I'll be honest with you about where surgery fits. First let me work out what's causing it and how much it's affecting your life, because for most people we can do a lot before — and sometimes instead of — a replacement."</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Margaret wants a yes/no on surgery. The skill is to honour the question while explaining the staged pathway — diagnosis, optimised conservative care, and replacement when function/quality of life justify it.</div>
+    </div>
+    <div class="sub-divider">1A — Locate, characterise, function, red flags</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"Point with one finger to where it hurts most — and tell me what it stops you doing."</em></td>
+            <td class="why"><strong>The single most useful question in hip pain is "where?".</strong> Groin/anterior (± thigh/knee radiation) = true hip joint; lateral over the trochanter = GTPS; buttock/posterior = referred spine/SIJ. Margaret points to the groin with thigh/knee radiation — the true joint. The functional impact (stairs, shoes/socks) both supports hip OA and frames management.<span class="why-sub">In SCA: localising by site, and asking what the pain prevents, is efficient and diagnostic.</span></td>
+            <td><span class="chg chg-ddx">Groin → hip joint; lateral → GTPS; buttock → spine</span></td>
+          </tr>
+          <tr><td class="q">Mechanical pattern (OA)<em>"Is it worse with walking and better with rest? Any stiffness first thing, and how long does it last?"</em></td><td class="why">Activity-related joint pain that eases with rest, with short-lived (&lt;30 min) morning stiffness, in someone 45+, is the clinical picture of OA (NICE NG226) — diagnosable without imaging. Prolonged morning stiffness or inflammatory features point elsewhere (inflammatory arthritis, PMR).</td><td class="why">Mechanical + brief stiffness → OA (clinical). Prolonged stiffness/inflammatory → other.</td><td><span class="chg chg-ddx">Clinical OA — imaging not mandatory</span></td></tr>
+          <tr><td class="q">🚩 Sinister features<em>"Any pain at rest or at night that wakes you? Fever? Weight loss? Ever had cancer? Any recent fall?"</em></td><td class="why"><strong>The safety core.</strong> Constant rest/night pain, fever, weight loss or a cancer history shift the differential to septic arthritis, malignancy (metastasis/primary bone tumour — NG12) or fracture. Margaret has none — but they must be asked. A hot hip with fever is an emergency; deep unremitting bony pain needs imaging.</td><td class="why">Rest/night pain, systemic features → cancer/septic work-up. Fall + can't weight-bear → fracture.</td><td><span class="chg chg-999">Hot hip + fever → emergency</span><span class="chg chg-inv">Night/rest pain → imaging (NG12)</span></td></tr>
+          <tr><td class="q">Risk factors for specific causes<em>"Any steroid use or heavy alcohol? Previous hip problems as a child? Any back pain or sciatica?"</em></td><td class="why">Steroids/alcohol → avascular necrosis (groin pain, normal early X-ray, needs MRI). Childhood hip disease → secondary OA. Back pain/radiation → referred spinal cause. These tailor the differential and investigation.</td><td class="why">Steroids/alcohol → AVN (MRI). Back symptoms → spine. Childhood hip disease → secondary OA.</td><td><span class="chg chg-inv">AVN risk → MRI if X-ray normal</span></td></tr>
+          <tr><td class="q">Function, occupation &amp; goals<em>"How is this affecting walking distance, work, sleep, and things like stairs or getting dressed? What would you most like to be able to do again?"</em></td><td class="why">Functional impairment and quality of life — not X-ray appearance — drive the management intensity and the threshold for arthroplasty referral. Eliciting Margaret's goals (and what she's lost) both guides the plan and answers her surgery question meaningfully.</td><td class="why">Greater functional/QoL loss despite conservative care → arthroplasty referral.</td><td><span class="chg chg-rx">Function/QoL → conservative vs surgical threshold</span></td></tr>
+          <tr><td class="q">Comorbidity &amp; analgesia history<em>"What have you tried for the pain, and do you have any stomach, kidney or heart problems?"</em></td><td class="why">Guides the analgesic ladder (topical NSAID first; oral NSAIDs limited by GI/renal/CV risk; cautious use of others) and flags fitness/risk for any future surgery.</td><td class="why">Comorbidity → tailor analgesia; relevant to surgical risk.</td><td><span class="chg chg-rx">Comorbidity → analgesia choice</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — the hip pain that isn't "just wear and tear"</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Septic arthritis — hot, very painful hip, won't move it, fever/systemic upset</td><td class="rf-why">Joint destruction within days; significant mortality; a surgical emergency. A normal X-ray does not exclude it.</td><td><span class="rf-action rfa-999">Same-day admission; aspiration + IV antibiotics</span></td></tr>
+          <tr><td class="rf-flag">Hip fracture — fall, can't weight-bear, shortened/externally rotated leg, groin pain</td><td class="rf-why">Especially in the older/osteoporotic patient; occult fractures missed on plain film.</td><td><span class="rf-action rfa-999">Urgent X-ray; if negative but suspected, MRI; orthopaedics/admit</span></td></tr>
+          <tr><td class="rf-flag">Malignancy — deep rest/night pain, weight loss, cancer history</td><td class="rf-why">Bony metastasis or primary bone tumour; pathological fracture risk.</td><td><span class="rf-action rfa-same">Urgent imaging (X-ray ± further); NICE NG12 pathway; bloods (FBC, calcium, ALP, PSA/myeloma as indicated)</span></td></tr>
+          <tr><td class="rf-flag">Avascular necrosis — groin pain, steroid/alcohol use, normal early X-ray</td><td class="rf-why">Progressive joint collapse; early diagnosis (MRI) changes outcome.</td><td><span class="rf-action rfa-same">MRI; orthopaedic referral</span></td></tr>
+          <tr><td class="rf-flag">Polymyalgia rheumatica — bilateral shoulder/hip girdle pain &amp; stiffness, age &gt;50, raised ESR/CRP</td><td class="rf-why">Steroid-responsive; associated giant cell arteritis is sight-threatening.</td><td><span class="rf-action rfa-same">ESR/CRP; treat/refer; screen GCA symptoms</span></td></tr>
+          <tr><td class="rf-flag">Child with hip pain / limp (incl. knee/thigh pain)</td><td class="rf-why">Septic hip, Perthes', SUFE, DDH — time-critical; hip refers to the knee.</td><td><span class="rf-action rfa-same">Urgent paediatric assessment per the childhood-limp pathway</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What do you think is going on with the hip — and where did the idea of a new hip come from?"</div><div class="ice-why">Margaret has concluded she needs surgery. Surfacing her idea lets you confirm the likely diagnosis (OA), validate her reasoning, and explain the staged pathway so the conversation about surgery is informed rather than a blunt yes/no.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 Concerns</div><div class="ice-phrase">"What worries you most about it — and what's it stopping you doing that matters to you?"</div><div class="ice-why">Her concern is losing independence and slowing down. Naming this lets you anchor the management in her goals and reassure her that much can be done — and that surgery, when needed, is effective.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"What were you hoping we'd decide today about the hip?"</div><div class="ice-why">She may expect an immediate referral or X-ray. Naming this lets you explain that OA is a clinical diagnosis, that we optimise conservative care first, and that referral comes when function/quality of life justify it — setting realistic expectations.</div></div>
+    </div>
+    <div class="sub-divider">1D — Psychosocial context</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 Independence, ageing, and the "new hip" question</div>
+      <p>For an older adult, hip pain is rarely just about the joint — it is about independence, the fear of "slowing down", and a worry about a big operation. Many arrive having already decided they either need, or dread, a hip replacement. The consultation succeeds by taking the functional loss seriously, giving an honest account of the staged pathway (effective conservative care first, surgery when justified), and anchoring decisions in what the person wants to keep doing — rather than in an X-ray.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>🚶 Independence &amp; goals</h5><p>Anchor the plan in what she wants to keep doing.</p><span class="ps-phrase">"What matters is keeping you doing the things you value — walking the dog, the stairs, getting dressed easily. Let's aim the treatment at those, and measure progress by them."</span></div>
+      <div class="ps-card"><h5>🔧 The staged pathway</h5><p>Explain conservative-first honestly.</p><span class="ps-phrase">"For most people we get good relief with exercises, managing weight and the right painkillers. If that isn't enough and it's really limiting your life, a hip replacement is a very effective operation — but it's a step we take when it's truly needed."</span></div>
+      <div class="ps-card"><h5>🏋️ Exercise isn't harmful</h5><p>Counter the fear that movement damages the joint.</p><span class="ps-phrase">"It's natural to worry that using it makes it worse, but the right exercise actually strengthens the muscles around the joint and reduces pain — keeping moving is part of the treatment, not against it."</span></div>
+      <div class="ps-card"><h5>😟 Fear of surgery</h5><p>Address worry about a big operation honestly.</p><span class="ps-phrase">"If we do get to a replacement, it's one of the most successful operations there is for pain and function — and you'd be fully involved in deciding when the time is right for you."</span></div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div><div class="sca-phrase">"Point with one finger to where it hurts most." — localises groin vs lateral vs buttock.</div><div class="sca-phrase">"Any pain at rest or at night, fever, or weight loss?" — screens the red flags.</div><div class="sca-phrase">"For most people we can do a lot before a replacement — let me explain the steps." — staged honesty on surgery.</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not localising the pain (missing GTPS/referred causes)</li><li>Not screening red flags (septic, fracture, cancer, AVN, PMR)</li><li>Forgetting hip refers to the knee</li><li>Promising or refusing surgery without the staged assessment</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">No localisation; red flags missed; immediate "you need a new hip" or flat refusal; no function assessment</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">OA suspected; some red-flag screen; function partly assessed; staged pathway vague; ICE partial</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Localises groin → hip joint; clinical OA per NG226; red flags screened; function/goals elicited; staged conservative→surgical pathway explained; ICE all three</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage — Emergency (Septic/Fracture) · Urgent (Cancer/AVN/PMR) · Routine</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Most hip pain is mechanical and managed in primary care. Triage pulls out the septic joint and fracture (same day), the cancer/AVN/PMR group (urgent), and the paediatric hip (its own urgent pathway) — leaving OA and soft-tissue causes for routine care.</strong></div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div>
+        <h3>Same day / 999</h3>
+        <span class="tc-badge tcb-e">Immediate action</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Septic arthritis</strong><em>Hot hip + fever, won't move → admit; aspiration + IV antibiotics</em></li>
+          <li class="tc-item"><strong>Hip fracture</strong><em>Fall, can't weight-bear, short/ER leg → urgent X-ray; orthopaedics</em></li>
+          <li class="tc-item"><strong>Child with acute limp + systemic upset</strong><em>Urgent paediatrics (?septic/SUFE)</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Urgent</div>
+        <h3>Days</h3>
+        <span class="tc-badge tcb-u">Don't delay</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>?Malignancy</strong><em>Rest/night pain, weight loss, cancer history → imaging + NG12</em></li>
+          <li class="tc-item"><strong>?Avascular necrosis</strong><em>Steroid/alcohol, normal X-ray → MRI</em></li>
+          <li class="tc-item"><strong>?PMR/GCA</strong><em>Girdle pain + stiffness + ↑ESR/CRP; screen GCA</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Routine</div>
+        <h3>GP Management</h3>
+        <span class="tc-badge tcb-r">Primary care first-line</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Hip OA</strong><em>Education, exercise/physio, weight, analgesia; arthroplasty by function/QoL</em></li>
+          <li class="tc-item"><strong>GTPS</strong><em>Load management, physiotherapy, ± injection</em></li>
+          <li class="tc-item"><strong>Referred spinal pain</strong><em>Treat as back/radicular pain</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Triage rationale</div><div class="sca-phrase">"Reassuringly, there's no sign of infection, fracture or anything sinister — the pattern fits wear-and-tear arthritis of the hip joint, which we manage here, stepping up to a specialist only if conservative treatment isn't enough."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Missing a septic hip / fracture; being reassured by a normal X-ray</li><li>Not recognising AVN/cancer/PMR patterns</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Examination — Gait · Look/Feel/Move · Internal Rotation · Trochanter · Spine &amp; Knee</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Examination confirms localisation: gait, the look/feel/move of the hip with particular attention to internal rotation (lost early in true joint disease), palpation of the greater trochanter (GTPS), and — because of referral — examination of the spine and knee.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🦵 The hip</div>
+        <table class="it">
+          <thead><tr><th>Step</th><th>What it shows</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Gait (antalgic / Trendelenburg)</td><td>Antalgic in painful hip; Trendelenburg with abductor/gluteal dysfunction.</td></tr>
+            <tr><td class="factor">Look — deformity, leg length, wasting</td><td>Fixed flexion, shortening, quadriceps wasting.</td></tr>
+            <tr><td class="factor">Feel — trochanter, joint line, groin</td><td>Tender trochanter → GTPS; groin tenderness → joint.</td></tr>
+            <tr><td class="factor">Move — internal rotation especially</td><td>Restricted/painful internal rotation = true hip joint pathology (Margaret); reduced range in OA.</td></tr>
+            <tr><td class="factor">Thomas test / FABER</td><td>Fixed flexion; FABER provokes hip/SIJ.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🔎 Don't forget</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Spine / SIJ</td><td>Buttock pain &amp; referred radicular pain.</td></tr>
+            <tr><td class="factor">Knee</td><td>Hip refers to the knee; exclude knee pathology.</td></tr>
+            <tr><td class="factor">Neurovascular</td><td>Distal pulses, sensation, power.</td></tr>
+            <tr><td class="factor">Systemic / temperature</td><td>Septic arthritis; PMR girdle exam.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Narration that scores</div><div class="sca-phrase">"I'll watch you walk, check the movement of the hip — especially rotating it inwards — feel over the side of the hip, and also check your back and knee, because hip problems can be felt in the knee."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not testing internal rotation; not palpating the trochanter</li><li>Not examining the spine/knee (referral)</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Investigations — Often Clinical · X-ray/MRI When Indicated · Bloods for Red Flags</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>OA of the hip is a clinical diagnosis (NICE NG226) and often needs no imaging; investigations are targeted at red flags, surgical planning, and the specific alternatives (AVN, fracture, inflammatory, cancer).</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🩻 Imaging — when</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>Indication</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">None (clinical OA)</td><td>Typical OA picture (45+, activity-related pain, brief stiffness) — diagnose clinically.</td></tr>
+            <tr><td class="factor">Plain X-ray (weight-bearing)</td><td>Diagnostic doubt, pre-surgical planning, trauma, or to characterise severity.</td></tr>
+            <tr><td class="factor">MRI</td><td>Suspected AVN, occult fracture (X-ray negative but suspected), tumour, labral/soft-tissue.</td></tr>
+            <tr><td class="factor">Ultrasound</td><td>Trochanteric/soft-tissue assessment; guided injection.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🧪 Bloods — selective</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">FBC, CRP/ESR</td><td>Infection, inflammatory arthritis, PMR.</td></tr>
+            <tr><td class="factor">Calcium, ALP, bone profile</td><td>Bony metastasis, myeloma, metabolic bone disease.</td></tr>
+            <tr><td class="factor">PSA / myeloma screen</td><td>Where malignancy suspected.</td></tr>
+            <tr><td class="factor">U&amp;E, renal</td><td>Before NSAID prescribing.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="lay-why-not">
+      <div class="lay-why-not-lbl">💬 "Shouldn't I have an X-ray or scan?"</div>
+      <p>"For the typical wear-and-tear hip pain you've got, the diagnosis is clear from the history and examination, and an X-ray usually doesn't change what we'd do first — which is exercises, managing weight, and pain relief. We'd get an X-ray if we were planning surgery, or a scan if I were worried about something less common. So we're not skipping a step — we're doing the right one."</p>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key reasoning</div><div class="sca-phrase">"Arthritis of the hip is something I can diagnose from examining you — we don't need an X-ray to start treatment, but we would get one if we were heading towards surgery."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Reflex X-ray for typical OA; or being falsely reassured by a normal X-ray in suspected septic/occult fracture/AVN</li><li>Not doing inflammatory/bone bloods when red flags present</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Diagnosis — By Location &amp; Pattern · The Mimics</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Name the cause from location, pattern and examination — and keep the red-flag mimics consciously in view.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:24%">Diagnosis</th><th style="width:52%">Discriminating features</th><th class="chg-col">Site</th></tr></thead>
+        <tbody>
+          <tr><td class="q"><strong>Hip osteoarthritis</strong></td><td class="why">Groin pain ± thigh/knee radiation, activity-related, brief morning stiffness, restricted painful internal rotation, functional loss (Margaret).</td><td><span class="chg chg-ddx">Groin</span></td></tr>
+          <tr><td class="q"><strong>Greater trochanteric pain syndrome</strong></td><td class="why">Lateral pain, tender trochanter, worse lying on it/stairs, internal rotation preserved.</td><td><span class="chg chg-ddx">Lateral</span></td></tr>
+          <tr><td class="q"><strong>Referred spinal / SIJ</strong></td><td class="why">Buttock/posterior pain, normal hip exam, lumbar/SIJ signs.</td><td><span class="chg chg-ddx">Buttock</span></td></tr>
+          <tr><td class="q"><strong>Avascular necrosis</strong></td><td class="why">Groin pain, steroid/alcohol risk, normal early X-ray → MRI.</td><td><span class="chg chg-inv">Groin</span></td></tr>
+          <tr><td class="q"><strong>Fracture / septic / malignancy</strong></td><td class="why">Trauma + can't weight-bear; hot + fever; rest/night pain + systemic features.</td><td><span class="chg chg-999">Red flag</span></td></tr>
+          <tr><td class="q"><strong>Inflammatory / PMR</strong></td><td class="why">Bilateral girdle pain, prolonged stiffness, raised ESR/CRP.</td><td><span class="chg chg-rx">Girdle</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ddx-card ddx-b" style="margin-bottom:4px">
+      <h4>🚩 Location first, red flags always</h4>
+      <p>Most hip-pain diagnosis is done by asking "where?" and testing internal rotation: groin + restricted internal rotation = true joint (OA in the older patient). For Margaret the formulation is clinical hip OA with significant functional impairment and no red flags — a conservative-first plan with arthroplasty held in reserve for when function and quality of life justify it. The discipline is never to let a comfortable "wear and tear" label hide a septic joint, occult fracture, AVN or malignancy.</p>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Explaining it plainly</div><div class="sca-phrase">"This is osteoarthritis of the hip — wear of the joint — which fits your groin pain, the difficulty with stairs and shoes, and the stiffness on examination. The good news is there's a lot we can do, and a replacement is there as a very effective option if and when you need it."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Labelling OA without excluding red flags</li><li>Calling lateral pain "hip arthritis" (it's GTPS)</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc6">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">Referral — Emergency · Orthopaedics (Arthroplasty) · Physio · Rheumatology</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The everyday "referral" in hip OA is to physiotherapy; orthopaedic (arthroplasty) referral is driven by quality of life and function, not X-ray grade, after optimised conservative care — with the emergencies and the red-flag groups referred urgently.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="ref-table">
+        <thead><tr><th style="width:24%">Referral</th><th>Who / when</th><th style="width:20%">Urgency</th></tr></thead>
+        <tbody>
+          <tr><td><strong>🔴 Emergency</strong></td><td>Septic arthritis; hip fracture.</td><td><span class="rf-action rfa-999">Same day</span></td></tr>
+          <tr><td><strong>Physiotherapy / MSK</strong></td><td>First-line for hip OA and GTPS — exercise, load management.</td><td><span class="rf-action" style="background:#15803d;color:#fff">Routine — first-line</span></td></tr>
+          <tr><td><strong>Orthopaedics (arthroplasty)</strong></td><td>Hip OA with significant impact on quality of life/function despite optimised conservative care; patient ready to consider surgery (NG226 — based on symptoms/function, not X-ray grade).</td><td><span class="rf-action rfa-same">Routine</span></td></tr>
+          <tr><td><strong>Orthopaedics (urgent)</strong></td><td>Suspected AVN, occult fracture, tumour.</td><td><span class="rf-action rfa-same">Urgent</span></td></tr>
+          <tr><td><strong>Rheumatology</strong></td><td>Inflammatory arthritis; PMR with diagnostic uncertainty.</td><td><span class="rf-action rfa-same">Soon</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">The honest threshold</div><div class="sca-phrase">"We refer for a replacement based on how much it's affecting your life despite treatment — not on how bad the X-ray looks. When the pain and the limits on what you can do outweigh the bother of an operation, that's the time, and you'll decide that with the surgeon."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Referring to surgery before optimising conservative care</li><li>Using X-ray grade rather than function to decide referral</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Education · Exercise · Weight · Analgesia Ladder · Surgery</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Hip OA management rests on the NICE NG226 core: education and self-management, therapeutic exercise (the cornerstone), weight management, and a stepped analgesic ladder (topical first, then cautious oral) — with joint replacement reserved for those whose quality of life and function justify it.</strong></div>
+    <div class="sub-divider">7A — The core (NG226)</div>
+    <div class="g3" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden"><div class="card-hd" style="color:var(--g)">📘 Education &amp; self-management</div><div style="padding:.8rem 1rem;font-size:12.5px;line-height:1.6">Explain OA and its course; tailored advice; encourage activity and pacing; support devices (walking aid, raised seat/shoe-horn) and footwear where helpful. Reassure that exercise is protective, not harmful.</div></div>
+      <div class="card" style="overflow:hidden"><div class="card-hd" style="color:var(--b)">🏋️ Therapeutic exercise</div><div style="padding:.8rem 1rem;font-size:12.5px;line-height:1.6"><strong>The cornerstone.</strong> Muscle strengthening and aerobic exercise, ideally physiotherapy-guided; improves pain and function. Maintain long-term.</div></div>
+      <div class="card" style="overflow:hidden"><div class="card-hd" style="color:var(--a)">⚖️ Weight management</div><div style="padding:.8rem 1rem;font-size:12.5px;line-height:1.6">Where overweight, weight loss reduces load and improves symptoms; offer support.</div></div>
+    </div>
+    <div class="sub-divider">7B — Analgesia &amp; surgery</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">💊 Analgesia ladder</div>
+        <table class="it">
+          <thead><tr><th>Step</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Topical NSAID</td><td>Consider first (NG226), especially with comorbidity.</td></tr>
+            <tr><td class="factor">Oral NSAID</td><td>Lowest effective dose, shortest time; gastroprotection; mind GI/renal/CV risk.</td></tr>
+            <tr><td class="factor">Paracetamol / weak opioids</td><td>Limited/adjunct role; NG226 cautions against routine paracetamol monotherapy and long-term opioids.</td></tr>
+            <tr><td class="factor">Intra-articular steroid</td><td>Short-term relief option for a flare (often image-guided for hip).</td></tr>
+            <tr><td class="factor">Avoid</td><td>Long-term strong opioids; glucosamine/chondroitin not recommended.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🦴 Surgery &amp; follow-up</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Joint replacement</td><td>Highly effective for pain/function; refer when QoL/function significantly affected despite optimised conservative care; decision based on symptoms not X-ray.</td></tr>
+            <tr><td class="factor">Shared decision</td><td>Discuss benefits/risks, recovery, timing; patient-led.</td></tr>
+            <tr><td class="factor">Review</td><td>Reassess response, function, analgesia tolerability; adjust; safety-net for red flags.</td></tr>
+            <tr><td class="factor">Optimise for surgery</td><td>Manage comorbidity, weight, smoking before any operation.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">A plan that scores</div><div class="sca-phrase">"Here's the plan: physiotherapy-led exercises which are the most effective treatment, a topical anti-inflammatory to start with, support around the home, and managing weight. We'll review how you get on, and if it's still really limiting your life, I'll refer you to discuss a hip replacement — a decision we'll make together."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Jumping to opioids or to surgery without core conservative care</li><li>Not offering exercise/physiotherapy as the cornerstone</li><li>Recommending glucosamine; long-term strong opioids</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Hip Pain — SCA Consultation Scorecard</div><div class="scorecard-sub">Localise (groin/lateral/buttock) · clinical OA (NG226) · red flags · exercise-first · arthroplasty by function</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Structured history that localises</strong> — establishes groin vs lateral vs buttock; mechanical vs sinister</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Red-flag screen verbalised</strong> — rest/night pain, fever, weight loss, trauma, steroids/alcohol</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Examination narrated logically</strong> — gait, internal rotation, trochanter, spine/knee</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain-language explanation</strong> — explains OA and the staged pathway clearly</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Shared decision-making on surgery</strong> — staged, honest, patient-led</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Safety-net specific</strong> — what would prompt earlier return (red flags)</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plan + review + closing question</strong> — clear plan, review, "anything else?"</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, diagnosis, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Localises the pain correctly</strong> — groin = joint; lateral = GTPS; buttock = referred spine</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Diagnoses hip OA clinically (NG226)</strong> — activity-related groin pain + restricted internal rotation; no mandatory imaging</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Screens &amp; excludes red flags</strong> — septic, fracture, malignancy (NG12), AVN, PMR</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Remembers hip refers to the knee</strong> — examines/considers knee &amp; spine</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Tests internal rotation</strong> — recognises early loss = true joint pathology</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Investigations targeted</strong> — no reflex X-ray for typical OA; imaging/bloods for red flags or surgery</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Exercise/physiotherapy as first-line</strong> — the cornerstone of OA management</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Analgesia ladder appropriate</strong> — topical NSAID first; avoids long-term opioids/glucosamine</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Weight/self-management addressed</strong> — education, activity, weight where relevant</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Arthroplasty threshold correct</strong> — refer by function/QoL after optimised conservative care, not X-ray grade</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decisions</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — her belief she needs "a new hip" surfaced</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> — loss of independence / fear of surgery addressed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations addressed</strong> — surgery question met with a staged, honest plan</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Anchors plan in her goals</strong> — function/activities she values</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Reassures exercise is safe</strong> — counters fear that movement harms the joint</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Honest about surgery</strong> — effective but staged; patient involved in timing</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Checks understanding</strong> — confirms she follows the pathway and plan</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Empathy for impact</strong> — acknowledges frustration/slowing down</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Avoids over-promising/over-medicalising</strong> — realistic, balanced</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Patient leaves with a clear, agreed plan</strong> — feels heard and has next steps</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Collaborative close</strong> — plan agreed; review/referral arranged</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">No localisation; red flags missed; reflex imaging or opioids; surgery promised/refused; no exercise</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">OA diagnosed; some red-flag screen; exercise offered; analgesia/surgery threshold partly addressed; ICE partial</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Localises pain; clinical OA (NG226); red flags screened; internal rotation tested; exercise-first + analgesia ladder; arthroplasty by function/QoL; ICE all three; safety-net</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist to see your score and feedback</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked — areas to develop</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"Doctor, my hip's been getting worse for months — the pain's right here in the groin, I'm limping, and I can hardly get my shoe and sock on. I think I probably need a new hip, don't I?"</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>Margaret Doyle, 68. Six months of gradually worsening right groin pain that goes down the front of the thigh and sometimes to the knee. Worse walking and weight-bearing, better resting. You now limp, struggle on stairs, and find it hard to put on your right shoe and sock. A bit of morning stiffness that wears off quickly. No injury, no fever, no pain at night that wakes you, no weight loss. Otherwise well (blood pressure controlled). You're frustrated at slowing down and have decided you probably need a hip replacement — you want to know if you'll be referred.</p></div>
+      <div class="ab"><h5>Hidden concerns (reveal if explored)</h5><p><strong>Independence (main):</strong> you're worried about becoming less able and reliant on others.</p><p><strong>Fear of surgery:</strong> you both want and dread an operation; reassurance about its effectiveness and that you decide the timing helps.</p><p><strong>Worry it's "something worse":</strong> if asked, you're mildly reassured to be told there are no warning signs of anything sinister.</p></div>
+      <div class="ab"><h5>Clinical details if asked</h5><ul><li>Groin pain, radiating to front of thigh/occasionally knee; mechanical (worse walking, better rest)</li><li>Short morning stiffness (&lt;30 min); limp; hard to do stairs and shoes/socks</li><li>No trauma, fever, rest/night pain, weight loss; no steroid use, minimal alcohol; no cancer history</li><li>On examination: antalgic gait; painful, restricted internal rotation of the right hip</li><li>Otherwise well; hypertension controlled; no stomach/kidney problems (so NSAIDs okay)</li></ul></div>
+      <div class="ab"><h5>Reactions at key moments</h5><ul><li><strong>On "no need for an X-ray yet":</strong> initially surprised, reassured by the explanation.</li><li><strong>On exercise being the main treatment:</strong> a little sceptical ("won't using it make it worse?") → reassured.</li><li><strong>On the staged surgery pathway:</strong> accepts it once told surgery remains an effective option when needed and she'll decide the timing.</li><li><strong>Challenge line:</strong> "So you're not going to refer me for a new hip today?"</li></ul></div>
+    </div>
+    <div class="actor-challenge">"So you're not sending me for a new hip then? I was sure that's what I needed — are you saying I just have to put up with it?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> Margaret is satisfied if the GP: (1) localises the groin pain to the hip joint and diagnoses OA clinically (NG226) without an unnecessary X-ray; (2) screens and excludes the red flags and remembers hip refers to the knee; (3) explains the staged pathway honestly — exercise/physiotherapy as the cornerstone, weight, a topical-first analgesia ladder; (4) frames arthroplasty referral around quality of life/function after optimised conservative care, with her deciding the timing, rather than a blunt yes/no today; (5) anchors the plan in her goals and reassures that exercise is safe and surgery effective. She's unsettled if simply told to "put up with it", referred prematurely, or given an immediate yes/no without explanation.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Hip Pain — Clinical Decision Framework</div><div class="sum-sub">Localise · clinical OA (NG226) · red flags · exercise-first</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🔍 1 — Localise</div>
+    <div class="sum-2col">
+      <div class="card" style="padding:.8rem 1rem"><strong style="color:var(--b)">Groin / anterior = true hip joint</strong><p style="font-size:12.5px;line-height:1.55;margin-top:.3rem">OA (restricted internal rotation), labral, AVN, fracture. Refers to thigh/knee.</p></div>
+      <div class="card" style="padding:.8rem 1rem"><strong style="color:var(--a)">Lateral = GTPS · Buttock = spine</strong><p style="font-size:12.5px;line-height:1.55;margin-top:.3rem">Lateral, tender trochanter, internal rotation preserved = GTPS. Buttock/posterior = referred spine/SIJ.</p></div>
+    </div>
+    <div class="sum-sub-hdr">🚩 2 — Red flags · 💊 3 — Manage</div>
+    <div class="card" style="padding:.8rem 1rem"><p style="font-size:12.5px;line-height:1.6"><strong>Red flags:</strong> hot hip + fever (septic → admit); fall + can't weight-bear (fracture → X-ray ± MRI); rest/night pain + weight loss/cancer history (malignancy → NG12); steroids/alcohol + normal X-ray (AVN → MRI); girdle pain + stiffness + ↑ESR/CRP (PMR). <strong>OA management (NG226):</strong> education, therapeutic exercise (cornerstone), weight; topical NSAID first then cautious oral (avoid long-term opioids, glucosamine). <strong>Arthroplasty</strong> by quality of life/function despite optimised care, not X-ray grade.</p></div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label">SCA Quick Reference</div><div class="sum-title">Hip Pain — Consultation Playbook</div><div class="sum-sub">Where is it? · clinical OA · exercise-first · honest surgery threshold</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🎯 The three pivots that pass this case</div>
+    <div class="sum-3col">
+      <div class="snp-phrase-box snp-e"><div class="snp-lbl">1 · Localise</div><div class="snp-text">Groin = joint (OA, restricted internal rotation); lateral = GTPS; buttock = spine. Hip refers to the knee.</div></div>
+      <div class="snp-phrase-box snp-m"><div class="snp-lbl">2 · Red flags</div><div class="snp-text">Septic (emergency), fracture, malignancy (NG12), AVN, PMR — exclude before "wear and tear".</div></div>
+      <div class="snp-phrase-box snp-a"><div class="snp-lbl">3 · Exercise-first, staged surgery</div><div class="snp-text">NG226 core (exercise, weight, topical-first analgesia); arthroplasty by function/QoL, not X-ray.</div></div>
+    </div>
+    <div class="sdp-pivot" style="margin-top:1rem;font-size:11.5px;background:#fef3c7;color:#854d0e;border-radius:8px;padding:.6rem .85rem;line-height:1.5">⛔ Don't skip localisation (lateral pain isn't the joint) · Don't be reassured by a normal X-ray in suspected septic/occult fracture/AVN · Don't forget hip refers to the knee · Don't jump to opioids or surgery before exercise-led care · Refer for replacement by function/quality of life, not X-ray grade</div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Hip Pain · GP Clinical Reasoning Framework v2</strong> · NICE NG226 Osteoarthritis · NICE CKS Hip pain · NICE NG12 Suspected cancer (bone) · greater trochanteric pain syndrome / childhood-limp guidance</p>
+  <p style="margin-top:4px">Localise: groin/anterior = true hip joint (refers to thigh/knee); lateral = GTPS; buttock = referred spine · Hip OA is a clinical diagnosis (NG226) — activity-related groin pain + restricted internal rotation; imaging often unnecessary · Exclude red flags: septic (emergency), fracture, malignancy (NG12), avascular necrosis, polymyalgia · Manage with education, therapeutic exercise (cornerstone), weight, topical-first analgesia (avoid long-term opioids/glucosamine) · Refer for joint replacement by quality of life/function, not X-ray grade</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current NICE NG226/CKS guidance · Clinical judgement takes precedence over any framework</p>
+</div>
+</div><!-- /page -->
+  </main>
+</div><!-- /app -->
+<script src="script.js"></script>
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DVT · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<link rel="stylesheet" href="../assets/case.css">
+<link rel="stylesheet" href="../assets/medchooser.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* === Site integration overrides === */
+.topbar,.numstrip{display:none !important}
+body{background:var(--bg, #f6f2e9) !important}
+.page{max-width:none}
+.stem-title,.step-title,.psoci-title,.qr-title,.sum-title{font-family:'Source Serif 4',Georgia,serif !important;font-weight:500 !important}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;padding:18px 4px 14px;border-bottom:1px solid var(--line, #e7e0d1);margin-bottom:18px}
+.case-head .ch-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted, #6b7280);font-weight:600;margin-bottom:4px}
+.case-head h1{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:30px;line-height:1.15;color:var(--ink, #15202b)}
+.case-head-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-top:6px}
+.tag-2ww{background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;font-weight:700}
+.tag-emerg{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;font-weight:700}
+</style>
+</head>
+<body class="mode-both" id="bodyEl" data-screen-label="DVT">
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="dvt"></aside>
+  <main class="main">
+<div class="case-head">
+  <div>
+    <div class="ch-cat">Cardiovascular &amp; Renal · Full case</div>
+    <h1>DVT</h1>
+  </div>
+  <div class="case-head-tags"><span class="tag tag-teal"><span class="tag-dot dot-teal"></span>NICE NG158</span><span class="tag">Wells · D-dimer · USS</span><span class="tag tag-emerg">PE red flag</span></div>
+</div>
+<div id="case-nav-mount"></div>
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">DV</div>
+      <div><div class="tb-title">Deep Vein Thrombosis · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE NG158 · Two-level Wells · D-dimer · Proximal USS · DOAC · Provoked vs unprovoked · Occult cancer · PE</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">Wells decides the pathway</span><span class="ns-lbl">The two-level DVT Wells score stratifies "DVT likely" (≥2) vs "DVT unlikely" (≤1) and drives the whole pathway — it determines whether you go straight to ultrasound or use a D-dimer first</span></div>
+    <div class="ns-item"><span class="ns-val">Likely → USS ≤4h (or interim anticoag)</span><span class="ns-lbl">DVT likely (Wells ≥2): proximal leg vein ultrasound within 4 hours; if not available within 4 hours, give a D-dimer AND interim therapeutic anticoagulation and scan within 24 hours</span></div>
+    <div class="ns-item"><span class="ns-val">Unlikely → D-dimer</span><span class="ns-lbl">DVT unlikely (Wells ≤1): D-dimer (with results within 4 hours, or interim anticoagulation if delayed). Negative D-dimer excludes DVT; positive → proximal USS within 4 hours</span></div>
+    <div class="ns-item"><span class="ns-val">DOAC first-line</span><span class="ns-lbl">Confirmed DVT: anticoagulate — apixaban or rivaroxaban first-line (NICE NG158), for at least 3 months. No bridging needed. Choose by renal function, comorbidity, adherence and patient factors</span></div>
+    <div class="ns-item"><span class="ns-val">D-dimer ≠ diagnosis</span><span class="ns-lbl">D-dimer is sensitive but not specific — raised in infection, malignancy, pregnancy, surgery, age. Use it only to rule OUT in the "unlikely" group; never to rule in. A negative D-dimer in a "likely" patient does not exclude DVT</span></div>
+    <div class="ns-item"><span class="ns-val">Provoked vs unprovoked</span><span class="ns-lbl">Provoked (surgery, immobility, pregnancy, hormones, cancer, long-haul travel) vs unprovoked — determines anticoagulation duration and the need to consider occult cancer and thrombophilia in unprovoked cases</span></div>
+    <div class="ns-item"><span class="ns-val">Unprovoked → think cancer</span><span class="ns-lbl">Unprovoked VTE can be the first sign of occult malignancy. NICE NG158: review history and examination, and do baseline bloods (FBC, calcium, LFTs), urinalysis and a chest X-ray; investigate further only if clinically indicated — don't ignore the cancer association</span></div>
+    <div class="ns-item"><span class="ns-val">Breathless = ?PE</span><span class="ns-lbl">DVT can embolise. Pleuritic chest pain, breathlessness, haemoptysis, tachycardia or hypoxia → suspect pulmonary embolism; haemodynamic instability is a medical emergency requiring immediate admission</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — DVT</div>
+  <div class="stem-title">A 46-year-old woman with 3 days of a painful, swollen right calf two weeks after a long-haul flight, who is otherwise well but quietly worried about a clot</div>
+  <div class="stem-text">Grace Adeyemi, 46, presents with 3 days of an aching, swollen right calf that came on without injury. It is warm and tender, and the leg looks bigger than the left. She flew back from Lagos (an 8-hour flight) two weeks ago and has been less active since with a sprained ankle. She takes the combined oral contraceptive pill and is a non-smoker. She has no breathlessness, chest pain or haemoptysis. She is worried because a colleague "had a clot that went to the lungs." She has had some recent unintentional weight loss she attributes to a diet, and is otherwise well.</div>
+  <div class="stem-note">This stem tests the ability to: recognise the clinical picture of a possible DVT and apply the two-level Wells score to choose the correct pathway (USS within 4 hours if "likely"; D-dimer first if "unlikely", with interim anticoagulation if scanning is delayed); exclude pulmonary embolism (breathlessness, chest pain, haemoptysis, instability); identify provoking factors (flight, immobility, oestrogen-containing contraception) and address them (stop the COCP, switch to a non-oestrogen method); anticoagulate appropriately with a DOAC for confirmed DVT; and consider occult malignancy and thrombophilia where the event is unprovoked. The SCA challenge is communicating uncertainty and the testing pathway clearly while managing the patient's anxiety and the contraception implications.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — Provoked DVT (this stem)</strong> Long-haul flight + immobility + COCP. Wells, USS pathway, DOAC ≥3 months, stop COCP and switch contraception; address modifiable factors; safety-net for PE.</div>
+    <div class="stem-variant"><strong>Scenario B — Unprovoked DVT</strong> No identifiable provoking factor. Anticoagulate; consider extended anticoagulation; review for occult cancer (history/exam, FBC, calcium, LFTs, urinalysis, CXR) and consider thrombophilia testing in selected cases.</div>
+    <div class="stem-variant"><strong>Scenario C — Suspected PE</strong> DVT symptoms + pleuritic chest pain/breathlessness/haemoptysis/tachycardia/hypoxia. PE Wells + pathway; haemodynamic instability → emergency admission.</div>
+    <div class="stem-variant"><strong>Scenario D — DVT in pregnancy</strong> Wells/D-dimer not validated; proceed to USS; treat with LMWH (not DOAC/warfarin); obstetric/haematology input.</div>
+    <div class="stem-variant"><strong>Scenario E — DVT mimics</strong> Cellulitis, ruptured Baker's cyst, calf muscle tear/haematoma, chronic venous insufficiency, lymphoedema, superficial thrombophlebitis. Bilateral swelling → cardiac/renal/hepatic or IVC/pelvic obstruction.</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Wells category (likely vs unlikely → USS vs D-dimer); PE features; provoked vs unprovoked (duration, cancer/thrombophilia work-up); pregnancy (LMWH, no DOAC); oestrogen contraception/HRT; renal function and bleeding risk (DOAC choice); proximal vs distal; recurrence; massive/phlegmasia (limb-threatening); active cancer (LMWH/DOAC choice).</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History — The Leg · Wells Factors · Exclude PE · Provoking Factors · ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>The history simultaneously builds the Wells score (which chooses the diagnostic pathway), screens for pulmonary embolism (the dangerous complication), and identifies provoking factors that shape treatment duration and the cancer/thrombophilia question.</strong> Grace's flight, immobility and oestrogen-containing pill are provoking factors; her quiet mention of weight loss is a thread to pull in case this is the rare unprovoked event heralding cancer.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 SCA framing — explain the "test then treat" pathway and the uncertainty</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"Your symptoms could well be a clot in the leg, and we have a clear pathway to check — a score, sometimes a blood test, and a scan. I'll explain each step. The most important thing first is to make sure it hasn't affected your breathing."</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Grace is anxious about a clot reaching the lungs. The skill is to take that fear seriously (exclude PE explicitly), explain the structured pathway, and be honest that we test before we can be certain.</div>
+    </div>
+    <div class="sub-divider">1A — The leg, the Wells factors and the PE screen</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"Tell me about the leg — when it started, and whether anything brought it on."</em></td>
+            <td class="why"><strong>Captures onset, laterality and the story.</strong> Unilateral calf pain/swelling that came on without trauma is the classic DVT picture; bilateral swelling points elsewhere (cardiac/renal/hepatic, or IVC/pelvic obstruction). The narrative also surfaces provoking factors and the patient's concern.<span class="why-sub">In SCA: eliciting laterality, the provoking story (flight/immobility) and the PE screen in the opening exchange is efficient, safe data-gathering.</span></td>
+            <td><span class="chg chg-ddx">Unilateral → DVT likely; bilateral → systemic/obstructive</span></td>
+          </tr>
+          <tr><td class="q">Wells clinical factors<em>"Is the whole leg swollen? Is the calf much bigger than the other side? Any tenderness along the deep veins? Any pitting?"</em></td><td class="why">The two-level Wells score combines clinical features (active cancer, immobilisation/recent surgery, localised deep-vein tenderness, entire leg swollen, calf &gt;3cm larger, pitting oedema, collateral superficial veins, previous DVT) and "alternative diagnosis as likely or more likely (−2)". The total (≥2 = likely; ≤1 = unlikely) chooses the pathway.</td><td class="why">Wells ≥2 → USS pathway. Wells ≤1 → D-dimer first.</td><td><span class="chg chg-inv">Wells score selects USS vs D-dimer</span></td></tr>
+          <tr><td class="q">🚩 PE screen<em>"Have you had any breathlessness, chest pain (especially on breathing in), coughing up blood, or palpitations?"</em></td><td class="why"><strong>The safety core.</strong> A DVT can embolise to the lungs. Pleuritic chest pain, breathlessness, haemoptysis, tachycardia or hypoxia raise PE; haemodynamic instability (hypotension, collapse) is a medical emergency. Grace has none — but it must be asked and documented.</td><td class="why">PE features → PE pathway / emergency admission if unstable.</td><td><span class="chg chg-999">Unstable PE → 999/admit</span></td></tr>
+          <tr><td class="q">Provoking factors<em>"Any recent long journeys, operations, illness keeping you in bed, the pill or HRT, pregnancy, or a previous clot?"</em></td><td class="why">Provoked (surgery, immobility, long-haul travel, oestrogen-containing contraception/HRT, pregnancy, active cancer) vs unprovoked determines anticoagulation duration and the cancer/thrombophilia question. Grace has a flight, reduced mobility and the COCP — provoked. The COCP must be stopped and contraception switched.</td><td class="why">Provoked → treat ≥3 months, address factor. Oestrogen → stop COCP/HRT, switch method.</td><td><span class="chg chg-rx">Stop COCP; switch contraception</span></td></tr>
+          <tr><td class="q">🚩 Occult cancer screen (esp. if unprovoked)<em>"Any weight loss, change in bowel habit, bleeding, lumps, or feeling generally unwell?"</em></td><td class="why">Unprovoked VTE can be the first manifestation of cancer. Grace mentions unintentional weight loss — worth clarifying (genuine diet vs unexplained). NICE NG158: in unprovoked VTE, review history and examination and arrange baseline bloods (FBC, calcium, LFTs), urinalysis and CXR; investigate further only if clinically indicated.</td><td class="why">Unprovoked + red flags → cancer review (bloods, urinalysis, CXR) ± targeted investigation.</td><td><span class="chg" style="background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe">Unprovoked VTE → cancer review (NG158/NG12)</span></td></tr>
+          <tr><td class="q">Bleeding risk &amp; comorbidity<em>"Any bleeding problems, ulcers, recent bleeds, liver or kidney problems? What other medicines do you take?"</em></td><td class="why">Anticoagulation is the treatment, so assess bleeding risk, renal/hepatic function and interacting drugs up front — these guide DOAC choice and dose, and flag patients who need specialist input.</td><td class="why">High bleeding risk / renal impairment → tailor anticoagulant; specialist advice.</td><td><span class="chg chg-rx">Bleeding/renal status → DOAC choice</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — the dangerous ends of DVT</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Pulmonary embolism — breathlessness, pleuritic chest pain, haemoptysis, tachycardia, hypoxia</td><td class="rf-why">PE is the lethal complication of DVT; massive PE causes haemodynamic collapse and death.</td><td><span class="rf-action rfa-999">Haemodynamically unstable → 999/immediate admission; otherwise urgent PE pathway/assessment</span></td></tr>
+          <tr><td class="rf-flag">Phlegmasia (massive proximal DVT) — severely swollen, painful, discoloured limb ± compromised perfusion</td><td class="rf-why">Limb-threatening; risk of venous gangrene and compartment syndrome.</td><td><span class="rf-action rfa-999">Emergency vascular/admission; urgent anticoagulation ± thrombolysis</span></td></tr>
+          <tr><td class="rf-flag">Bilateral leg swelling / suspected IVC or pelvic obstruction</td><td class="rf-why">Bilateral DVT or extrinsic compression (pelvic mass/malignancy) needs imaging beyond a leg scan.</td><td><span class="rf-action rfa-same">Urgent imaging; consider pelvic/abdominal cause</span></td></tr>
+          <tr><td class="rf-flag">Unprovoked VTE with cancer warning features</td><td class="rf-why">May be the presenting sign of occult malignancy.</td><td><span class="rf-action rfa-same">Cancer review (FBC, calcium, LFTs, urinalysis, CXR); targeted 2WW if indicated (NICE NG12)</span></td></tr>
+          <tr><td class="rf-flag">DVT in pregnancy</td><td class="rf-why">Wells/D-dimer not validated; untreated VTE risks PE; DOACs/warfarin contraindicated.</td><td><span class="rf-action rfa-same">Proceed to USS; treat with LMWH; obstetric/haematology input</span></td></tr>
+          <tr><td class="rf-flag">High bleeding risk needing anticoagulation</td><td class="rf-why">Anticoagulation in a high-bleeding-risk patient requires careful balance and sometimes specialist input.</td><td><span class="rf-action rfa-same">Assess risk/benefit; haematology advice; tailor agent/duration</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What do you think might be going on — and is there something particular you're worried about?"</div><div class="ice-why">Grace has connected her symptoms to her colleague's clot and the flight. Engaging her (largely correct) model lets you validate her for coming in promptly and explain the pathway, rather than talking past a fear she already holds.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 Concerns</div><div class="ice-phrase">"Is it the idea of a clot going to the lungs that's worrying you most?"</div><div class="ice-why">Naming her fear of PE lets you address it directly — explaining that you are specifically checking her breathing now, and that prompt treatment greatly reduces the risk — which is more reassuring than generic comfort.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"What were you hoping we'd do today?"</div><div class="ice-why">She may expect an immediate scan or an instant answer. Naming this lets you set realistic expectations about the timed pathway (Wells, possible D-dimer, ultrasound) and the possibility of interim anticoagulation if the scan is delayed.</div></div>
+    </div>
+    <div class="sub-divider">1D — Psychosocial context</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 Anxiety, the pill conversation, and the burden of anticoagulation</div>
+      <p>A suspected clot is frightening — patients have often heard of someone who died of a PE. Alongside the diagnostic pathway sit two human conversations: stopping the combined pill (and sorting alternative contraception, with its own implications) and, if DVT is confirmed, starting months of anticoagulation with its bleeding precautions and lifestyle adjustments. Handling the anxiety with clear, staged information, and treating the contraception and anticoagulation conversations as shared decisions, turns a scary episode into a managed one.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>😟 Fear of PE</h5><p>Acknowledge it and act on it visibly by screening the chest; explain that treatment markedly reduces embolism risk.</p><span class="ps-phrase">"I can hear the worry about a clot reaching the lungs — that's exactly why I've checked your breathing carefully, and why, if it is a clot, we start treatment quickly to stop that happening."</span></div>
+      <div class="ps-card"><h5>💊 The pill conversation</h5><p>The COCP must stop; plan alternative contraception sensitively (progestogen-only/non-hormonal), as this affects her life.</p><span class="ps-phrase">"If this is a clot, the combined pill needs to stop because the oestrogen adds to the risk. Let's sort a different method that's safe — there are good options that don't carry the same risk."</span></div>
+      <div class="ps-card"><h5>🩸 Living with anticoagulation</h5><p>Explain duration, bleeding precautions and what to watch for, framed as manageable.</p><span class="ps-phrase">"If confirmed, you'd take a blood-thinning tablet for at least three months. Most people get on with life normally — I'll go through the things to be careful about and the signs of bleeding to look out for."</span></div>
+      <div class="ps-card"><h5>🔎 The weight-loss thread</h5><p>If the event is unprovoked or there are warning features, explain the cancer review without alarm.</p><span class="ps-phrase">"You mentioned losing some weight — because a clot can occasionally be the body's first warning sign, I'd like to do a few routine checks to be thorough. It's precautionary, not because I'm expecting to find anything."</span></div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div><div class="sca-phrase">"Any breathlessness, chest pain on breathing in, or coughing up blood?" — the PE screen, every time.</div><div class="sca-phrase">"There's a scoring system that tells us whether to go straight to a scan or do a blood test first." — explains the Wells pathway.</div><div class="sca-phrase">"If it is a clot, the combined pill needs to stop and we'll switch you to a safe alternative." — addresses the provoking factor.</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not screening for PE</li><li>Not applying/realising the Wells pathway (USS vs D-dimer)</li><li>Forgetting to stop the COCP / arrange alternative contraception</li><li>Missing the unprovoked-VTE cancer consideration</li></ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">PE not screened; Wells/pathway not used; COCP not stopped; D-dimer used to "rule in"; no safety-net</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">DVT suspected; some Wells factors; pathway partly correct; COCP addressed; cancer/thrombophilia not considered; ICE partial</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Wells applied correctly → correct pathway (USS/D-dimer ± interim anticoag); PE screened; COCP stopped + contraception switched; provoked/unprovoked addressed with cancer review where relevant; ICE all three; safety-net</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage — Emergency (PE / Phlegmasia) · Urgent (Wells Pathway) · Routine</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>DVT itself is urgent, not routine — the triage task is to catch the embolic and limb-threatening emergencies, and otherwise to start the timed Wells-based diagnostic pathway promptly (with interim anticoagulation if scanning is delayed).</strong></div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div>
+        <h3>Same day / 999</h3>
+        <span class="tc-badge tcb-e">Immediate action</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Haemodynamically unstable PE</strong><em>Hypotension/collapse/hypoxia → 999/immediate admission</em></li>
+          <li class="tc-item"><strong>Phlegmasia / threatened limb</strong><em>Massively swollen, discoloured, compromised limb → emergency vascular</em></li>
+          <li class="tc-item"><strong>Suspected PE (stable)</strong><em>PE Wells + urgent pathway/assessment</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Urgent</div>
+        <h3>Hours (timed pathway)</h3>
+        <span class="tc-badge tcb-u">NG158 pathway</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>DVT likely (Wells ≥2)</strong><em>Proximal USS ≤4h; if delayed → D-dimer + interim anticoag, scan ≤24h</em></li>
+          <li class="tc-item"><strong>DVT unlikely (Wells ≤1)</strong><em>D-dimer; if positive → USS ≤4h; interim anticoag if delayed</em></li>
+          <li class="tc-item"><strong>Pregnancy</strong><em>Proceed to USS; LMWH; obstetric input</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Routine</div>
+        <h3>After diagnosis</h3>
+        <span class="tc-badge tcb-r">Ongoing care</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Confirmed DVT</strong><em>DOAC ≥3 months; address provoking factors</em></li>
+          <li class="tc-item"><strong>Excluded DVT</strong><em>Consider alternative diagnosis; safety-net</em></li>
+          <li class="tc-item"><strong>Unprovoked review</strong><em>Cancer review; duration decision; ?thrombophilia</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Triage rationale</div><div class="sca-phrase">"Your breathing is fine and the leg, while painful, isn't threatened — so this is the urgent clot-pathway: a score, and a scan today (with a blood-thinner in the meantime if the scan can't happen within a few hours)."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Treating a possible DVT as routine / next-week</li><li>Not arranging interim anticoagulation when the scan is delayed</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Examination — The Leg · Wells Signs · Chest · Exclude Mimics</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Examination quantifies the Wells signs, screens the chest for PE, and looks for the mimics — because cellulitis, a ruptured Baker's cyst and a calf tear all masquerade as DVT.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🦵 The leg</div>
+        <table class="it">
+          <thead><tr><th>Sign</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Calf circumference (measure both, &gt;3cm difference)</td><td>A Wells criterion; objective swelling.</td></tr>
+            <tr><td class="factor">Tenderness along deep veins, warmth, erythema, pitting oedema</td><td>Wells features; warmth/erythema also seen in cellulitis.</td></tr>
+            <tr><td class="factor">Dilated superficial (collateral) veins</td><td>A Wells criterion.</td></tr>
+            <tr><td class="factor">Whole-leg swelling vs calf only; bilateral?</td><td>Bilateral → systemic/obstructive cause.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🫁 Chest &amp; mimics</div>
+        <table class="it">
+          <thead><tr><th>Check</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Observations (HR, RR, SpO2, BP)</td><td>Tachycardia/hypoxia/hypotension → PE.</td></tr>
+            <tr><td class="factor">Cellulitis features</td><td>Spreading erythema, fever, portal of entry → cellulitis (can coexist).</td></tr>
+            <tr><td class="factor">Ruptured Baker's cyst / calf tear</td><td>Sudden onset, bruising, popliteal fullness; recent exertion.</td></tr>
+            <tr><td class="factor">Skin / chronic changes</td><td>Venous insufficiency, lymphoedema.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Narration that scores</div><div class="sca-phrase">"I'll measure both calves, feel along the deep veins, check for warmth and swelling, and check your pulse, breathing and oxygen — to score the likelihood and make sure your chest is fine."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not measuring calf circumference / objective Wells signs</li><li>Not checking observations for PE; missing cellulitis</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Investigations — Wells → D-dimer / USS · Baseline &amp; Cancer Bloods</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Investigation in DVT is a protocol, not a free-for-all: the Wells score selects the next test, D-dimer rules out only in the "unlikely" group, proximal ultrasound confirms, and baseline bloods plus a cancer review accompany an unprovoked event.</strong></div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--b)">🧭 The diagnostic protocol</div>
+        <table class="it">
+          <thead><tr><th>Step</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Two-level Wells</td><td>≥2 = DVT likely; ≤1 = DVT unlikely.</td></tr>
+            <tr><td class="factor">Likely (≥2)</td><td>Proximal leg vein USS within 4 hours; if not possible → D-dimer + interim anticoagulation, USS within 24 hours.</td></tr>
+            <tr><td class="factor">Unlikely (≤1)</td><td>D-dimer (results within 4h, or interim anticoagulation). Negative → DVT excluded. Positive → USS within 4 hours.</td></tr>
+            <tr><td class="factor">Negative USS but positive D-dimer (likely)</td><td>Stop interim anticoagulation; repeat USS in 6–8 days.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🧪 Baseline &amp; cancer review</div>
+        <table class="it">
+          <thead><tr><th>Test</th><th>Why</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">FBC, U&amp;E, LFTs, coagulation</td><td>Baseline before anticoagulation; renal/hepatic function guides DOAC.</td></tr>
+            <tr><td class="factor">Calcium, urinalysis, CXR</td><td>Part of the NICE NG158 occult-cancer review in unprovoked VTE.</td></tr>
+            <tr><td class="factor">Targeted cancer investigation</td><td>Only if clinically indicated by history/exam/initial results (e.g. age-appropriate screening, symptom-directed 2WW).</td></tr>
+            <tr><td class="factor">Thrombophilia testing</td><td>Consider in selected unprovoked cases (e.g. planning to stop anticoagulation, family history) — usually specialist-led.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="lay-why-not">
+      <div class="lay-why-not-lbl">💬 "Can't you just do a D-dimer and tell me?"</div>
+      <p>"The D-dimer is a useful blood test, but it's only good at ruling a clot OUT, and only when the clinical likelihood is low. Lots of things raise it — even being a bit older or having an infection — so a positive result doesn't confirm a clot. Because your score makes a clot quite likely, the right next step for you is a scan rather than relying on the blood test."</p>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key reasoning</div><div class="sca-phrase">"Your score puts you in the 'likely' group, so you go straight to a scan. If the scan can't happen within four hours, I'll give a blood-thinner to cover you until it does."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Using D-dimer to "rule in", or in a "likely" patient to exclude DVT</li><li>Not arranging interim anticoagulation for delays</li><li>Ignoring baseline bloods / unprovoked cancer review</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Diagnosis — Confirmed DVT · Provoked vs Unprovoked · The Mimics</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Confirm or exclude DVT on ultrasound, classify it provoked or unprovoked (which drives duration and the cancer question), and name the mimic if DVT is excluded.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:24%">Diagnosis</th><th>Discriminating features</th></tr></thead>
+        <tbody>
+          <tr><td class="q"><strong>Proximal DVT</strong></td><td class="why">USS-confirmed thrombus in popliteal/femoral veins — anticoagulate.</td></tr>
+          <tr><td class="q"><strong>Distal (calf) DVT</strong></td><td class="why">Confined to calf veins; manage per local policy (anticoagulate or surveillance scan).</td></tr>
+          <tr><td class="q"><strong>Provoked DVT</strong></td><td class="why">Identifiable transient factor (surgery, immobility, flight, oestrogen, pregnancy) — Grace; usually ≥3 months.</td></tr>
+          <tr><td class="q"><strong>Unprovoked DVT</strong></td><td class="why">No factor; consider extended anticoagulation + cancer/thrombophilia review.</td></tr>
+          <tr><td class="q"><strong>Cellulitis</strong></td><td class="why">Spreading erythema, fever, portal of entry; can coexist with DVT.</td></tr>
+          <tr><td class="q"><strong>Other mimics</strong></td><td class="why">Ruptured Baker's cyst, calf muscle tear/haematoma, venous insufficiency, lymphoedema, superficial thrombophlebitis.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ddx-card ddx-b" style="margin-bottom:4px">
+      <h4>🚩 The discipline — classify the event, don't just treat it</h4>
+      <p>Confirming a DVT is only half the job. Whether it is <em>provoked</em> or <em>unprovoked</em> changes how long anticoagulation continues and whether you must consider occult cancer and thrombophilia. For Grace, the flight, immobility and oestrogen pill make this a provoked DVT — at least 3 months of anticoagulation, stop the COCP, address mobility — but the unintentional weight loss still earns a basic cancer review to be safe.</p>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Explaining it plainly</div><div class="sca-phrase">"The scan shows a clot in the deep vein of your leg. It was almost certainly triggered by the flight, being less active, and the pill — so we treat it for at least three months, stop the combined pill, and get you moving."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not classifying provoked vs unprovoked</li><li>Missing the cancer/thrombophilia review when unprovoked</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc6">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">Referral — Emergency · Anticoagulation Service · Haematology · Cancer Pathway</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Confirmed uncomplicated DVT is largely managed via the local DVT/anticoagulation pathway. Referral is for the emergencies, the complex anticoagulation decisions, pregnancy, and the cancer pathway where the review raises concern.</strong></div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="ref-table">
+        <thead><tr><th style="width:24%">Referral</th><th>Who / when</th><th style="width:20%">Urgency</th></tr></thead>
+        <tbody>
+          <tr><td><strong>🔴 Emergency admission</strong></td><td>Unstable PE, phlegmasia/threatened limb.</td><td><span class="rf-action rfa-999">Same day / 999</span></td></tr>
+          <tr><td><strong>DVT / ambulatory pathway</strong></td><td>Suspected/confirmed DVT — local same-day USS and anticoagulation service.</td><td><span class="rf-action rfa-same">Same day</span></td></tr>
+          <tr><td><strong>Haematology</strong></td><td>Recurrent/unprovoked VTE, anticoagulation in renal/hepatic impairment or high bleeding risk, thrombophilia, duration decisions, antiphospholipid syndrome.</td><td><span class="rf-action rfa-same">Soon</span></td></tr>
+          <tr><td><strong>Obstetrics + haematology</strong></td><td>DVT in pregnancy (LMWH).</td><td><span class="rf-action rfa-same">Urgent</span></td></tr>
+          <tr><td><strong>🟣 Cancer pathway</strong></td><td>Where the unprovoked-VTE review or symptoms raise suspicion of malignancy → symptom-directed urgent (2WW) investigation.</td><td><span class="rf-action" style="background:#6d28d9;color:#fff">2WW if indicated · NG12</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Pathway awareness</div><div class="sca-phrase">"I'll send you straight into our same-day clot pathway for the scan and to start treatment. If anything in your routine checks needs following up, we'll arrange that too."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not using the same-day DVT pathway</li><li>Prescribing a DOAC in pregnancy</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Anticoagulation · Duration · Contraception · Safety-Net</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Management is anticoagulation (DOAC first-line) for an appropriate duration, addressing the provoking factor (stop the COCP, switch contraception), advice and a clear safety-net for PE and bleeding, and the unprovoked-VTE review where relevant.</strong></div>
+    <div class="sub-divider">7A — The plan</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--g)">💊 Anticoagulation</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">First-line</td><td>Apixaban or rivaroxaban (DOAC) — NICE NG158; no bridging; choose by renal function, bleeding risk, adherence.</td></tr>
+            <tr><td class="factor">Alternatives</td><td>LMWH then dabigatran/edoxaban; LMWH + warfarin if DOAC unsuitable; LMWH in pregnancy; consider DOAC/LMWH in active cancer.</td></tr>
+            <tr><td class="factor">Duration</td><td>At least 3 months; provoked with a transient factor → usually stop at 3 months; unprovoked / ongoing risk / cancer → consider extended anticoagulation after risk/benefit review.</td></tr>
+            <tr><td class="factor">Renal/bleeding</td><td>Dose by renal function; assess bleeding risk; review interacting drugs.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">🛡️ Beyond the drug</div>
+        <table class="it">
+          <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Stop COCP/HRT, switch contraception</td><td>Oestrogen is a provoking factor; switch to progestogen-only or non-hormonal method.</td></tr>
+            <tr><td class="factor">Mobilise &amp; advise</td><td>Encourage mobility; travel advice for future flights; manage pain.</td></tr>
+            <tr><td class="factor">Safety-net (PE &amp; bleeding)</td><td>"Seek urgent help if you become breathless, get chest pain, cough blood, or have significant bleeding."</td></tr>
+            <tr><td class="factor">Unprovoked review</td><td>Cancer review (bloods, urinalysis, CXR); duration and thrombophilia decision.</td></tr>
+            <tr><td class="factor">Follow-up</td><td>Review at ~3 months for duration decision; monitor adherence and bleeding; consider post-thrombotic syndrome.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">A plan that scores</div><div class="sca-phrase">"Here's the plan: a blood-thinning tablet (apixaban) for at least three months, stop the combined pill and switch to a safe method, keep mobile, and seek urgent help if you get breathless, chest pain, cough blood or notice bad bleeding. We'll review at three months to decide how long to continue."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>No anticoagulation duration plan; no PE/bleeding safety-net</li><li>Failing to stop the COCP / arrange contraception</li><li>DOAC in pregnancy; ignoring renal/bleeding risk</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">DVT — SCA Consultation Scorecard</div><div class="scorecard-sub">NICE NG158 · Wells → USS/D-dimer · DOAC · PE screen · Provoked vs unprovoked · Contraception</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Structured history</strong> — leg, Wells factors, PE screen, provoking factors gathered systematically</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Examination proportionate</strong> — calf measurement, deep-vein signs, observations narrated</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Explains the pathway clearly</strong> — Wells → scan/D-dimer → treatment, in plain language</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Manages anxiety &amp; uncertainty</strong> — takes the PE fear seriously; honest about testing before certainty</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Shared decisions</strong> — contraception switch and anticoagulation discussed with the patient</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Safety-net specific</strong> — PE and bleeding warning symptoms named; pathway loops closed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plan + review + closing question</strong> — plan summarised, 3-month review, "anything else?"</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, diagnosis, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Applies two-level Wells &amp; correct pathway</strong> — likely → USS ≤4h; unlikely → D-dimer; interim anticoagulation if delayed</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Screens for and excludes PE</strong> — breathlessness/chest pain/haemoptysis/instability; escalates if present</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Uses D-dimer correctly</strong> — to rule out in "unlikely" only; not to rule in</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Considers mimics</strong> — cellulitis, Baker's cyst, calf tear; bilateral → systemic/obstructive</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Anticoagulates correctly</strong> — DOAC (apixaban/rivaroxaban) first-line ≥3 months; LMWH in pregnancy</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Classifies provoked vs unprovoked</strong> — drives duration and the cancer/thrombophilia review</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Stops oestrogen &amp; switches contraception</strong> — COCP recognised as a provoking factor; safe alternative arranged</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Considers occult cancer in unprovoked VTE</strong> — review + FBC/calcium/LFTs/urinalysis/CXR (NG158)</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Baseline bloods &amp; bleeding-risk assessment</strong> — FBC/U&amp;E/LFTs/coag; renal function for DOAC dosing</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Correct overall formulation</strong> — provoked proximal DVT, DOAC ≥3 months, factors addressed, PE excluded</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decisions</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — her clot worry / flight connection surfaced</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concerns explored</strong> — fear of PE addressed directly</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Expectations addressed</strong> — realistic about the timed pathway and possible interim treatment</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Contraception conversation handled sensitively</strong> — explains why COCP stops; offers options</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Cancer review framed without alarming</strong> — "routine/precautionary," not "I think it's cancer"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Anticoagulation explained clearly</strong> — duration, bleeding precautions, practicalities</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Checks understanding</strong> — confirms she understands the pathway and safety-net</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Calm, reassuring manner</strong> — contains anxiety without false reassurance</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Shared decision-making on duration</strong> — explains the 3-month review and the unprovoked considerations</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Patient leaves informed and reassured</strong> — understands plan and warning signs</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Collaborative close</strong> — plan agreed; safety-net understood; review booked</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">PE not screened; Wells/pathway wrong; D-dimer used to rule in; COCP not stopped; no anticoagulation/duration plan; no safety-net</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">DVT suspected; pathway mostly right; DOAC started; COCP addressed; provoked/unprovoked or cancer review incomplete; ICE partial</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Wells → correct pathway; PE excluded; DOAC ≥3 months; provoked/unprovoked classified; COCP stopped + contraception switched; cancer review if unprovoked; ICE all three; PE/bleeding safety-net; review</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist to see your score and feedback</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked — areas to develop</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"Doctor, my right calf's been swollen and really sore for three days now. I flew back from Lagos a couple of weeks ago and a colleague of mine had a clot that went to her lungs — I'm a bit scared it's the same thing."</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>Grace Adeyemi, 46. Three days of an aching, swollen, warm right calf, no injury. The leg looks bigger than the left. You took an 8-hour flight from Lagos two weeks ago and have been less active since you sprained your ankle. You take the combined contraceptive pill, don't smoke. No breathlessness, no chest pain, no coughing blood. You're frightened because a colleague had a clot reach her lungs. If asked, you've lost a bit of weight recently but you've been dieting deliberately. You want to know if it's a clot and whether it's dangerous.</p></div>
+      <div class="ab"><h5>Hidden concerns (reveal if explored)</h5><p><strong>Fear of PE (main):</strong> you're scared it'll go to your lungs like your colleague's did. Being told the doctor has checked your breathing, and that treatment reduces that risk, reassures you.</p><p><strong>The pill:</strong> you'll be surprised you have to stop it and will want to know about alternatives.</p><p><strong>The scan/wait:</strong> you'd like an answer today; reassurance about the same-day pathway helps.</p></div>
+      <div class="ab"><h5>Clinical details if asked</h5><ul><li>Unilateral right calf swelling/pain, warm, tender; calf looks bigger than left; mild pitting</li><li>Onset gradual over 3 days; no trauma; reduced mobility after ankle sprain; 8-hour flight 2 weeks ago</li><li>On combined oral contraceptive pill; non-smoker; no previous clots; no family history of clots that you know of</li><li>No breathlessness, chest pain, haemoptysis, palpitations; not light-headed</li><li>Recent intentional weight loss (dieting); otherwise well; no other symptoms</li><li>No bleeding problems; no liver/kidney issues; on no other regular medication</li></ul></div>
+      <div class="ab"><h5>Reactions at key moments</h5><ul><li><strong>On the PE screen:</strong> relieved the doctor is checking your chest specifically.</li><li><strong>On stopping the pill:</strong> "Oh — I'll need something else then?" → reassured by a clear alternative.</li><li><strong>On anticoagulation:</strong> a bit daunted by months of tablets; reassured by clear explanation.</li><li><strong>Challenge line:</strong> "Can't you just do a blood test now and tell me if it's a clot?"</li></ul></div>
+    </div>
+    <div class="actor-challenge">"Is it going to go to my lungs like my colleague's did? And can't you just do a quick blood test to tell me right now if it's a clot?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> Grace is reassured if the GP: (1) screens for and excludes PE explicitly and takes her fear seriously; (2) applies the Wells score and explains the correct pathway (likely → scan within 4 hours, with interim anticoagulation if delayed), including why a D-dimer alone isn't enough for her; (3) identifies the provoking factors and stops the COCP, arranging a safe alternative; (4) plans DOAC anticoagulation for ≥3 months with a clear duration review, and gives a PE/bleeding safety-net; (5) does a basic cancer review only if needed and frames it calmly. She's unsettled if PE is not addressed, the pathway is muddled, or the pill issue is missed.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">DVT — Clinical Decision Framework</div><div class="sum-sub">NICE NG158 · Wells → USS/D-dimer · DOAC · Provoked vs unprovoked</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🚦 1 — The pathway</div>
+    <div class="algo-wrap" style="margin-bottom:1rem">
+      <div class="algo-start">Suspected DVT → two-level Wells</div>
+      <div class="algo-arrow">▼</div>
+      <div class="algo-row">
+        <div class="algo-branch algo-red"><div class="algo-branch-lbl">🔴 Emergency first</div><ul class="algo-list"><li>Unstable PE → 999</li><li>Phlegmasia / threatened limb</li></ul><span class="algo-action red-action">Admit</span></div>
+        <div class="algo-branch algo-amber"><div class="algo-branch-lbl">🟠 Likely (≥2)</div><ul class="algo-list"><li>Proximal USS ≤4h</li><li>If delayed → D-dimer + interim anticoag, USS ≤24h</li></ul><span class="algo-action amber-action">Scan</span></div>
+        <div class="algo-branch algo-green"><div class="algo-branch-lbl">🟢 Unlikely (≤1)</div><ul class="algo-list"><li>D-dimer; negative excludes</li><li>Positive → USS ≤4h</li></ul><span class="algo-action green-action">D-dimer</span></div>
+      </div>
+    </div>
+    <div class="sum-sub-hdr">💊 2 — Treat &amp; classify</div>
+    <div class="card" style="padding:.8rem 1rem"><p style="font-size:12.5px;line-height:1.6"><strong>Confirmed DVT:</strong> DOAC (apixaban/rivaroxaban) first-line ≥3 months; LMWH in pregnancy. <strong>Classify:</strong> provoked (flight/immobility/oestrogen/surgery) → usually 3 months + address factor (stop COCP, switch contraception); unprovoked → consider extended anticoagulation + occult-cancer review (FBC, calcium, LFTs, urinalysis, CXR) ± thrombophilia. <strong>Safety-net</strong> for PE and bleeding; review at 3 months.</p></div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label">SCA Quick Reference</div><div class="sum-title">DVT — Consultation Playbook</div><div class="sum-sub">Wells pathway · exclude PE · DOAC · stop the oestrogen</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🎯 The three pivots that pass this case</div>
+    <div class="sum-3col">
+      <div class="snp-phrase-box snp-e"><div class="snp-lbl">1 · Exclude PE</div><div class="snp-text">Always screen breathlessness/chest pain/haemoptysis/instability — PE is the lethal complication.</div></div>
+      <div class="snp-phrase-box snp-m"><div class="snp-lbl">2 · Wells decides</div><div class="snp-text">Likely → USS ≤4h (interim anticoag if delayed); unlikely → D-dimer (rule out only). DOAC ≥3 months once confirmed.</div></div>
+      <div class="snp-phrase-box snp-a"><div class="snp-lbl">3 · Classify &amp; address</div><div class="snp-text">Provoked vs unprovoked drives duration + cancer/thrombophilia review. Stop the COCP and switch contraception.</div></div>
+    </div>
+    <div class="sdp-pivot" style="margin-top:1rem;font-size:11.5px;background:#fef3c7;color:#854d0e;border-radius:8px;padding:.6rem .85rem;line-height:1.5">⛔ Don't use D-dimer to "rule in", or to exclude DVT in a "likely" patient · Don't forget interim anticoagulation if the scan is delayed · Don't miss PE · Don't leave the combined pill running · In unprovoked VTE, do the occult-cancer review · No DOAC in pregnancy (LMWH)</div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>DVT · GP Clinical Reasoning Framework v2</strong> · NICE NG158 Venous thromboembolic diseases · NICE CKS DVT · NICE NG12 Suspected cancer (occult malignancy in unprovoked VTE) · FSRH (contraception &amp; VTE)</p>
+  <p style="margin-top:4px">Two-level Wells selects the pathway: likely (≥2) → proximal USS ≤4h (interim anticoag + D-dimer if delayed); unlikely (≤1) → D-dimer (rule out only) → USS if positive · DOAC (apixaban/rivaroxaban) first-line ≥3 months; LMWH in pregnancy · Always exclude PE; instability = emergency · Provoked vs unprovoked drives duration and the occult-cancer review (FBC, calcium, LFTs, urinalysis, CXR) · Stop oestrogen-containing contraception/HRT and switch method · Safety-net for PE and bleeding</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current NICE NG158/CKS and NG12 guidance · Clinical judgement takes precedence over any framework</p>
+</div>
+</div><!-- /page -->
+  </main>
+</div><!-- /app -->
+<script src="script.js"></script>
+<script src="../assets/site.js?v=57"></script>
+<script src="../assets/case-nav.js"></script>
+<script src="../assets/case-related.js"></script>
+<script src="../assets/topic-links.js?v=2"></script>
+
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against current NICE / UK guidance</div>
+</body>
+</html>

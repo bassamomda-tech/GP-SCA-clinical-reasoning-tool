@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reasoning GP · Clinical reasoning for clinic and the SCA</title>
+<meta name="description" content="Reasoning GP — a clinical-reasoning and exam-preparation platform for UK GPs and trainees. 265 pathways, 170+ management protocols, 100+ full reasoning cases, and a complete SCA exam suite with AI patient practice. For healthcare professionals." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://www.reasoninggp.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Reasoning GP" />
+<meta property="og:title" content="Reasoning GP · Clinical reasoning for clinic and the SCA" />
+<meta property="og:description" content="265 pathways, 170+ protocols, 100+ full reasoning cases and a complete SCA exam suite with AI patient practice. Built for UK GPs and trainees." />
+<meta property="og:url" content="https://www.reasoninggp.com/" />
+<meta property="og:image" content="https://www.reasoninggp.com/assets/icons/icon-512.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Reasoning GP · Clinical reasoning for clinic and the SCA" />
+<meta name="twitter:description" content="265 pathways, 170+ protocols, 100+ full reasoning cases and a complete SCA exam suite with AI patient practice. For UK GPs and trainees." />
+<meta name="twitter:image" content="https://www.reasoninggp.com/assets/icons/icon-512.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site.css?v=11" />
+
+<template id="__bundler_thumbnail" data-bg-color="#f6f2e9">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#f6f2e9"/>
+    <rect x="450" y="240" width="300" height="300" rx="60" fill="#0c4a47"/>
+    <text x="600" y="445" text-anchor="middle" font-family="Georgia, serif" font-size="200" font-weight="500" fill="#f3ede0">R</text>
+    <circle cx="740" cy="540" r="32" fill="#b54c2b" stroke="#f6f2e9" stroke-width="8"/>
+    <text x="600" y="650" text-anchor="middle" font-family="Georgia, serif" font-size="44" font-weight="500" fill="#15202b">Reasoning GP</text>
+    <text x="600" y="690" text-anchor="middle" font-family="sans-serif" font-size="18" letter-spacing="2" fill="#6b7280">CLINIC · SCA · UK</text>
+  </svg>
+</template>
+
+<style>
+  /* ============================================================
+     HOME — shared bits
+     ============================================================ */
+  .home-hero{ padding:54px 0 18px; max-width:780px; }
+  @media(max-width:760px){ .home-hero{ padding:30px 0 10px; } }
+  .home-hero h1{ font-size:clamp(2.2rem,4.4vw,3.3rem); line-height:1.08; letter-spacing:-.015em; margin-top:16px; }
+  .home-hero h1 em{ font-style:italic; color:var(--teal); font-weight:500; }
+  .home-sca .home-hero h1 em{ color:var(--rust); }
+  .home-hero .lede{ font-size:17px; color:var(--ink-2); line-height:1.6; margin-top:18px; max-width:62ch; text-wrap:pretty; }
+  .hero-eyebrow.is-sca{ color:var(--rust); }
+
+  .home-clinic .home-hero{
+    text-align:center; margin:10px auto 0; max-width:1000px;
+    padding:50px 44px 40px; border-radius:28px; position:relative; overflow:hidden;
+    background:
+      radial-gradient(130% 80% at 0% 0%, var(--teal-soft) 0%, transparent 52%),
+      radial-gradient(130% 80% at 100% 0%, var(--rust-soft) 0%, transparent 52%),
+      linear-gradient(180deg,#ffffff 0%, var(--bg) 100%);
+    border:1px solid var(--line);
+    box-shadow:0 18px 44px -28px rgba(12,74,71,.35);
+  }
+  .home-sca .home-hero{
+    text-align:center; margin:10px auto 0; max-width:1000px;
+    padding:50px 44px 40px; border-radius:28px; position:relative; overflow:hidden;
+    background:
+      radial-gradient(130% 80% at 0% 0%, var(--rust-soft) 0%, transparent 52%),
+      radial-gradient(130% 80% at 100% 0%, var(--teal-soft) 0%, transparent 52%),
+      linear-gradient(180deg,#ffffff 0%, var(--bg) 100%);
+    border:1px solid var(--line);
+    box-shadow:0 18px 44px -28px rgba(176,71,31,.32);
+  }
+  @media(max-width:620px){ .home-sca .home-hero{ padding:34px 18px 28px; border-radius:20px; } }
+  @media(max-width:620px){ .home-clinic .home-hero{ padding:34px 18px 28px; border-radius:20px; } }
+  .home-clinic .home-hero .hero-eyebrow{ display:inline-flex; align-items:center; gap:7px; background:#fff; border:1px solid var(--teal-3); color:var(--teal); padding:6px 14px; border-radius:99px; font-size:11.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; box-shadow:var(--shadow-1); }
+  .home-sca .home-hero .hero-eyebrow{ display:inline-flex; align-items:center; gap:7px; background:#fff; border:1px solid #f0c3b1; color:var(--rust); padding:6px 14px; border-radius:99px; font-size:11.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; box-shadow:var(--shadow-1); }
+  .home-sca .home-hero h1{ margin-top:18px; }
+  .home-clinic .home-hero h1{ margin-top:18px; }
+  .home-clinic .home-hero .lede, .home-sca .home-hero .lede{ margin-left:auto; margin-right:auto; }
+  .home-clinic .home-hero .home-find, .home-sca .home-hero .home-find{ margin-left:auto; margin-right:auto; }
+  .home-clinic .home-hero .home-search input, .home-sca .home-hero .home-search input{ text-align:left; }
+  .home-clinic .home-hero .home-stats, .home-sca .home-hero .home-stats{ justify-content:center; }
+  .home-search{ position:relative; max-width:580px; margin-top:30px; }
+  .home-search input{ width:100%; font:inherit; font-size:16px; padding:15px 18px 15px 52px; border:1px solid var(--line-2); border-radius:14px; background:var(--surface); color:var(--ink); transition:border-color .15s ease, box-shadow .15s ease; }
+  .home-search input::placeholder{ color:var(--muted-2); }
+  .home-search input:focus{ outline:none; border-color:var(--teal); box-shadow:0 0 0 4px var(--teal-soft); }
+  .home-sca .home-search input:focus{ border-color:var(--rust); box-shadow:0 0 0 4px var(--rust-soft); }
+  .home-search .hs-ic{ position:absolute; left:18px; top:50%; transform:translateY(-50%); color:var(--muted); pointer-events:none; }
+  .home-search .hs-hint{ position:absolute; right:16px; top:50%; transform:translateY(-50%); font-size:11px; color:var(--muted-2); letter-spacing:.04em; }
+  @media(max-width:520px){ .home-search .hs-hint{ display:none; } }
+  /* Ask button, integrated inside the search bar */
+  .home-search .hs-ask{ position:absolute; right:7px; top:50%; transform:translateY(-50%); display:inline-flex; align-items:center; gap:7px; height:calc(100% - 14px); padding:0 15px; border-radius:10px; background:var(--teal); color:#f6f2e9; font:inherit; font-size:13.5px; font-weight:700; text-decoration:none; border:none; cursor:pointer; transition:background .15s, transform .15s; white-space:nowrap; }
+  .home-search .hs-ask:hover{ background:var(--teal-2); color:#fff; }
+  .home-search .hs-ask svg{ width:16px; height:16px; }
+  .home-sca .home-search .hs-ask{ background:var(--rust); color:#fff; }
+  .home-sca .home-search .hs-ask:hover{ background:var(--rust-2); }
+
+  /* ---- Search row: search box + "Ask the assistant" ---- */
+  .home-find{ display:flex; align-items:stretch; gap:12px; max-width:760px; margin-top:30px; flex-wrap:wrap; }
+  .home-find .home-search{ flex:1 1 360px; margin-top:0; max-width:none; }
+  .home-ask{ flex:0 0 auto; display:inline-flex; align-items:center; gap:10px; padding:0 20px; border-radius:14px; text-decoration:none; font-weight:600; font-size:14.5px; line-height:1.2; border:1px solid var(--teal); background:var(--teal); color:#f3ede0; transition:transform .15s ease, box-shadow .15s ease, background .15s ease; }
+  .home-ask:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(12,74,71,.26); color:#fff; background:var(--teal-2); }
+  .home-ask .ha-ic{ width:30px; height:30px; flex-shrink:0; display:grid; place-items:center; border-radius:9px; background:rgba(255,255,255,.14); }
+  .home-ask .ha-ic svg{ width:17px; height:17px; }
+  .home-ask .ha-txt{ display:flex; flex-direction:column; text-align:left; }
+  .home-ask .ha-txt small{ font-weight:500; font-size:11px; opacity:.78; letter-spacing:.01em; }
+  .home-sca .home-ask{ border-color:var(--rust); background:var(--rust); color:#fbeee7; }
+  .home-sca .home-ask:hover{ background:var(--rust-2); box-shadow:0 12px 26px rgba(155,62,34,.26); color:#fff; }
+  @media(max-width:520px){ .home-ask{ width:100%; justify-content:center; padding:13px 20px; } }
+  /* Bigger, more tappable search + ask box on phones */
+  @media(max-width:620px){
+    .home-find{ gap:12px; margin-top:22px; }
+    .home-find .home-search{ flex:1 1 100%; }
+    .home-search input{ font-size:18px; padding:21px 18px 21px 54px; border-radius:16px; }
+    .home-search .hs-ic{ left:20px; }
+    .home-search .hs-ic svg{ width:23px; height:23px; }
+    .home-search input::placeholder{ font-size:16px; }
+    .home-ask{ width:100%; justify-content:center; font-size:17px; padding:18px 20px; border-radius:16px; }
+    .home-ask .ha-ic svg{ width:22px; height:22px; }
+    .home-ask .ha-txt small{ font-size:12px; }
+    .gsearch-row{ padding:12px 12px; }
+    .gsearch-t{ font-size:15.5px; }
+    .gsearch-sub{ font-size:12.5px; }
+  }
+
+  /* ---- Global search dropdown (command palette) ---- */
+  .gsearch{ position:absolute; top:calc(100% + 8px); left:0; right:0; z-index:60; background:var(--surface); border:1px solid var(--line); border-radius:14px; box-shadow:0 24px 54px rgba(12,40,38,.22); padding:6px; max-height:60vh; overflow:auto; display:none; }
+  .gsearch.show{ display:block; }
+  .gsearch-row{ display:flex; align-items:flex-start; gap:11px; padding:9px 11px; border-radius:10px; text-decoration:none; color:inherit; cursor:pointer; }
+  .gsearch-row:hover, .gsearch-row.sel{ background:var(--bg-soft); }
+  .gsearch-ic{ font-size:18px; width:34px; height:34px; flex-shrink:0; display:grid; place-items:center; background:var(--bg-soft); border-radius:9px; }
+  .gsearch-row:hover .gsearch-ic, .gsearch-row.sel .gsearch-ic{ background:var(--surface); }
+  .gsearch-body{ flex:1; min-width:0; }
+  .gsearch-t{ font-size:14px; font-weight:700; color:var(--ink); line-height:1.25; }
+  .gsearch-sub{ font-size:11.5px; color:var(--muted); line-height:1.4; margin-top:1px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .gsearch-kind{ flex-shrink:0; font-size:9.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--teal); background:var(--teal-soft,rgba(15,118,110,.1)); border-radius:99px; padding:3px 9px; margin-top:3px; }
+  .gsearch-kind.k-tool{ color:var(--rust); background:rgba(155,62,34,.1); }
+  .gsearch-kind.k-section{ color:#475569; background:#eef2f6; }
+  .gsearch-head{ font-size:10.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); padding:9px 11px 5px; }
+  .gsearch-none{ padding:16px 12px; font-size:13px; color:var(--muted); }
+  .gsearch-foot{ border-top:1px solid var(--line); margin-top:5px; padding:9px 12px; font-size:12px; color:var(--muted); display:flex; gap:6px; align-items:center; }
+  .gsearch-foot a{ color:var(--teal); font-weight:700; text-decoration:none; }
+  .gsearch-foot a:hover{ color:var(--rust); }
+
+  /* ---- "Your area" chip row ---- */
+  .home-area{ display:flex; align-items:center; gap:9px; flex-wrap:wrap; max-width:760px; margin-top:13px; font-size:13px; }
+  .home-area .ha-pin{ font-size:14px; }
+  .home-area-lbl{ font-size:11px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); }
+  .home-area .rgp-area-select{ font:inherit; font-size:13px; padding:6px 10px; border:1px solid var(--line-2); border-radius:9px; background:var(--surface); color:var(--ink); max-width:280px; }
+  .home-area .rgp-area-select:focus{ outline:none; border-color:var(--teal); }
+  .home-area-note{ font-size:12px; color:var(--muted); }
+  .home-area-note.set{ color:var(--teal); font-weight:600; }
+  .home-install{ font:inherit; font-size:12.5px; font-weight:700; color:var(--teal); background:var(--surface); border:1px solid var(--teal); border-radius:99px; padding:6px 13px; cursor:pointer; margin-left:4px; }
+  .home-install:hover{ background:var(--teal); color:#f3f8f6; }
+  @media(display-mode:standalone){ .home-install{ display:none; } }
+
+  /* ---- Hero stat strip — focus + credibility ---- */
+  .home-stats{ display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; max-width:760px; }
+  .home-stat{ flex:1 1 0; min-width:148px; display:flex; align-items:center; gap:12px; padding:10px 4px; background:transparent; border:none; border-radius:0; }
+  .home-stat + .home-stat{ border-left:1px solid var(--line); padding-left:18px; }
+  .home-stat .hs-n{ font-family:'Source Serif 4',serif; font-weight:600; font-size:22px; line-height:1; color:var(--teal); font-feature-settings:"tnum"; }
+  .home-sca .home-stat .hs-n{ color:var(--rust); }
+  .home-stat .hs-l{ font-size:12px; line-height:1.3; color:var(--ink-2); font-weight:500; }
+  .home-stat .hs-l small{ display:block; font-size:10.5px; color:var(--muted); font-weight:400; }
+  @media(max-width:560px){ .home-stat{ flex:1 1 calc(50% - 10px); min-width:0; } .home-stat + .home-stat{ border-left:none; padding-left:4px; } }
+
+  .home-sec{ margin-top:48px; }
+  .home-sec-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
+  .home-sec-head h2{ font-size:1.5rem; letter-spacing:-.01em; }
+  .home-sec-head .eyebrow{ display:block; margin-bottom:6px; }
+  .home-sec-head a.more{ font-size:13.5px; font-weight:600; color:var(--teal-2); white-space:nowrap; }
+  .home-sca .home-sec-head a.more{ color:var(--rust); }
+  .home-sec-head a.more:hover{ color:var(--rust); }
+
+  /* Step number for the clinic priority order */
+  .sec-rank{ display:inline-flex; align-items:center; gap:9px; }
+  .sec-rank .rk{ font-family:'Source Serif 4',serif; font-size:13px; font-weight:600; color:#fff; background:var(--teal); width:24px; height:24px; border-radius:7px; display:grid; place-items:center; line-height:1; }
+
+  /* Highlighted "clinical core" panel (lead section) */
+  .home-sec.core-flag{ margin-top:38px; background:var(--surface-2); border:1px solid var(--teal-3); border-radius:var(--r-xl); padding:24px 26px 28px; box-shadow:var(--shadow-2); position:relative; overflow:hidden; }
+  .home-sec.core-flag::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--teal),var(--rust)); }
+  .home-sec.core-flag .home-sec-head{ align-items:center; }
+  .core-badge{ display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#fff; background:var(--teal); padding:5px 12px; border-radius:99px; }
+  .core-badge::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--rust); box-shadow:0 0 0 3px rgba(255,255,255,.35); }
+
+  /* ---------- FEATURE BANNERS (core destinations) ---------- */
+  .feat{ display:grid; grid-template-columns:1.3fr 1fr; gap:30px; align-items:center; border-radius:var(--r-xl); padding:34px 38px; text-decoration:none; position:relative; overflow:hidden; transition:transform .18s ease, box-shadow .18s ease; }
+  .feat:hover{ transform:translateY(-2px); }
+  @media(max-width:760px){ .feat{ grid-template-columns:1fr; padding:26px 24px; gap:20px; } }
+  .feat.teal{ background:linear-gradient(135deg,#0c4a47 0%,#0e5c58 100%); color:#f3ede0; }
+  .feat.teal:hover{ box-shadow:0 18px 40px rgba(12,74,71,.28); }
+  .feat.rust{ background:linear-gradient(135deg,#9b3e22 0%,#b54c2b 100%); color:#fbeee7; }
+  .feat.rust:hover{ box-shadow:0 18px 40px rgba(155,62,34,.28); }
+  .feat .f-eyebrow{ font-size:11.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; display:inline-flex; align-items:center; gap:8px; opacity:.9; }
+  .feat .f-eyebrow::before{ content:""; width:18px; height:1px; background:currentColor; display:inline-block; opacity:.7; }
+  .feat h2{ color:#fff; font-size:clamp(1.5rem,2.6vw,2rem); line-height:1.12; margin:12px 0 0; }
+  .feat.teal h2 em{ font-style:italic; color:#e9c7b6; font-weight:500; }
+  .feat.rust h2 em{ font-style:italic; color:#f6dcc8; font-weight:500; }
+  .feat p{ font-size:14.5px; line-height:1.6; margin-top:12px; max-width:46ch; opacity:.85; }
+  .feat .f-cta{ display:inline-flex; align-items:center; gap:9px; margin-top:20px; font-weight:600; font-size:14.5px; color:#fff; background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.24); padding:10px 18px; border-radius:99px; transition:.15s; }
+  .feat.teal:hover .f-cta{ background:var(--rust); border-color:var(--rust); }
+  .feat.rust:hover .f-cta{ background:#0c4a47; border-color:#0c4a47; }
+  .f-chips{ display:flex; flex-direction:column; gap:9px; }
+  .f-chip{ display:flex; align-items:center; gap:11px; background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.15); border-radius:12px; padding:11px 14px; font-size:13px; }
+  .f-chip .fc-ic{ font-size:18px; }
+  .f-chip b{ font-weight:600; }
+  .f-chip small{ display:block; opacity:.65; font-size:11px; margin-top:1px; }
+
+  /* ---------- FEATURE SPOTLIGHT SUB-STRIP (e.g. Lab hub under Pathways) ---------- */
+  .feat-sub{ display:flex; align-items:center; gap:18px; margin-top:14px; padding:18px 22px; background:var(--teal-soft); border:1px solid var(--teal-3); border-left:4px solid var(--teal); border-radius:var(--r-lg); text-decoration:none; color:inherit; transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease; }
+  .feat-sub:hover{ transform:translateY(-2px); box-shadow:var(--shadow-2); border-left-color:var(--rust); }
+  .feat-sub .fs-ic{ font-size:24px; width:50px; height:50px; flex-shrink:0; display:grid; place-items:center; background:#fff; border:1px solid var(--teal-3); border-radius:13px; }
+  .feat-sub .fs-body{ flex:1; min-width:0; }
+  .feat-sub .fs-eyebrow{ font-size:10.5px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--teal-3); }
+  .feat-sub .fs-t{ font-family:'Source Serif 4',serif; font-weight:500; font-size:17px; color:var(--ink); line-height:1.2; margin-top:3px; }
+  .feat-sub .fs-t em{ font-style:italic; color:var(--teal); }
+  .feat-sub .fs-p{ font-size:13px; color:var(--ink-2); line-height:1.5; margin-top:4px; max-width:74ch; }
+  .feat-sub .fs-cta{ flex-shrink:0; align-self:center; font-weight:600; font-size:13.5px; color:var(--teal); display:inline-flex; align-items:center; gap:7px; white-space:nowrap; }
+  .feat-sub:hover .fs-cta{ color:var(--rust); }
+  .feat-sub .fs-cta svg{ width:15px; height:15px; transition:transform .15s ease; }
+  .feat-sub:hover .fs-cta svg{ transform:translateX(3px); }
+  @media(max-width:760px){ .feat-sub{ flex-wrap:wrap; gap:12px; } .feat-sub .fs-cta{ width:100%; } }
+
+  /* ---------- FLOATING UPDATES BAND ---------- */
+  .home-updates{ margin-top:42px; }
+  .home-updates .home-sec-head{ margin-bottom:14px; }
+  .upd-float{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  @media(max-width:860px){ .upd-float{ grid-template-columns:1fr; } }
+  .upd-card{ position:relative; display:flex; flex-direction:column; gap:8px; padding:18px 18px 16px; background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); text-decoration:none; color:inherit; box-shadow:0 10px 26px -14px rgba(12,74,71,.30); animation:updBob 6s ease-in-out infinite; will-change:transform; transition:box-shadow .18s ease, border-color .18s ease; }
+  .upd-card:nth-child(2){ animation-delay:-2s; }
+  .upd-card:nth-child(3){ animation-delay:-4s; }
+  .upd-card::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:4px; border-radius:var(--r-lg) 0 0 var(--r-lg); background:var(--teal); }
+  .upd-card.src-mhra::before{ background:var(--rust); }
+  .upd-card.src-ukhsa::before{ background:#b45309; }
+  .upd-card:hover{ border-color:var(--teal); box-shadow:0 16px 34px -12px rgba(12,74,71,.42); animation-play-state:paused; }
+  .upd-eyebrow{ display:inline-flex; align-items:center; gap:6px; font-size:10.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--teal-3); }
+  .upd-card.src-mhra .upd-eyebrow{ color:var(--rust); }
+  .upd-card.src-ukhsa .upd-eyebrow{ color:#b45309; }
+  .upd-card h3{ font-size:15px; line-height:1.28; letter-spacing:-.005em; margin:0; }
+  .upd-card p{ font-size:12.5px; color:var(--ink-2); line-height:1.5; margin:0; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+  .upd-meta{ margin-top:auto; padding-top:4px; display:flex; align-items:center; justify-content:space-between; gap:8px; }
+  .upd-date{ font-size:11.5px; font-weight:700; color:var(--muted); font-variant-numeric:tabular-nums; }
+  .upd-go{ font-size:12px; font-weight:700; color:var(--teal); display:inline-flex; align-items:center; gap:5px; }
+  .upd-card:hover .upd-go{ color:var(--rust); }
+  @keyframes updBob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-6px); } }
+  @media(prefers-reduced-motion:reduce){ .upd-card{ animation:none; } }
+
+  /* ---------- TOOL TILE GRID ---------- */
+  .tile-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(252px,1fr)); gap:14px; }
+  .x-card{ display:flex; gap:14px; align-items:flex-start; padding:18px 18px 17px; background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); text-decoration:none; color:inherit; position:relative; transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+  .x-card:hover{ border-color:var(--teal); box-shadow:var(--shadow-2); transform:translateY(-2px); }
+  .home-sca .x-card:hover{ border-color:var(--rust); }
+  .x-ic{ font-size:22px; width:44px; height:44px; display:grid; place-items:center; background:var(--bg-soft); border-radius:12px; flex-shrink:0; }
+  .x-body{ flex:1; min-width:0; }
+  .x-t{ display:block; font-family:'Source Serif 4',serif; font-weight:500; font-size:16.5px; color:var(--ink); line-height:1.25; }
+  .x-meta{ display:block; font-size:12.5px; color:var(--muted); line-height:1.45; margin-top:3px; }
+  .x-arrow{ position:absolute; right:16px; top:16px; color:var(--line-2); font-size:15px; transition:.15s; }
+  .x-card:hover .x-arrow{ color:var(--teal); transform:translateX(2px); }
+  .x-new{ font-size:9px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:#fff; background:var(--rust); border-radius:99px; padding:1px 7px; margin-left:7px; vertical-align:middle; }
+  .poc-subhead{ font-size:11.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:22px 0 12px; }
+  /* ---------- SCA "every tool · when to use it" phased toolkit ---------- */
+  .tk-phase + .tk-phase{ margin-top:22px; }
+  .tk-phase-h{ display:flex; align-items:baseline; gap:10px; margin:0 0 11px; }
+  .tk-phase-h .tk-step{ font-family:'Source Serif 4',serif; font-size:13px; font-weight:600; color:#fff; background:var(--rust); width:22px; height:22px; border-radius:99px; display:grid; place-items:center; flex-shrink:0; }
+  .tk-phase-h .tk-lbl{ font-size:11.5px; font-weight:800; letter-spacing:.11em; text-transform:uppercase; color:var(--rust); }
+  .tk-phase-h .tk-when{ font-size:12.5px; color:var(--muted); font-weight:500; letter-spacing:.01em; }
+  .home-sca .x-card .x-when{ display:block; font-size:12.5px; color:var(--ink-2); line-height:1.45; margin-top:4px; }
+  .home-sca .x-card .x-when b{ color:var(--rust); font-weight:700; }
+  .poc-subhead:first-of-type{ margin-top:18px; }
+
+  /* SCA stepwise path */
+  .sca-path{ display:grid; grid-template-columns:repeat(6,1fr); gap:9px; margin:6px 0 8px; }
+  @media (max-width:900px){ .sca-path{ grid-template-columns:repeat(3,1fr); } }
+  @media (max-width:560px){ .sca-path{ grid-template-columns:repeat(2,1fr); } }
+  .sca-pstep{ display:flex; flex-direction:column; gap:5px; padding:13px 13px 14px; border:1px solid var(--line); border-radius:13px; background:var(--surface); text-decoration:none; transition:.16s; position:relative; }
+  .sca-pstep:hover{ border-color:var(--rust); transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.05); }
+  .sca-pstep .pn{ width:25px; height:25px; border-radius:50%; background:var(--rust); color:#fff; font-weight:800; font-size:13px; display:grid; place-items:center; }
+  .sca-pstep .pt{ font-size:13px; font-weight:800; color:var(--ink); line-height:1.25; }
+  .sca-pstep .pd{ font-size:11px; color:var(--muted); line-height:1.4; font-weight:500; }
+  .sca-stepsec{ scroll-margin-top:80px; margin-top:30px; }
+  .sca-howto{ margin-top:18px; border:1px solid var(--line); border-radius:14px; background:var(--surface); padding:16px 18px; }
+  .sca-howto .sh-h{ font-size:13px; font-weight:800; color:var(--ink); margin-bottom:12px; }
+  .sca-howto .sh-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:13px; }
+  @media(max-width:820px){ .sca-howto .sh-grid{ grid-template-columns:1fr 1fr; } }
+  @media(max-width:520px){ .sca-howto .sh-grid{ grid-template-columns:1fr; } }
+  .sca-howto .sh-col{ }
+  .sca-howto .sh-when{ font-size:10.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--rust); margin-bottom:5px; }
+  .sca-howto .sh-col p{ font-size:12.5px; line-height:1.55; color:var(--ink-2); }
+  .sca-howto .sh-col a{ color:var(--rust); font-weight:600; text-decoration:none; }
+  .sca-howto .sh-col a:hover{ text-decoration:underline; }
+  .sca-stephd{ display:flex; align-items:center; gap:12px; margin-bottom:14px; padding-bottom:11px; border-bottom:1px solid var(--line); }
+  .sca-stephd .sn{ width:34px; height:34px; border-radius:9px; background:var(--rust); color:#fff; font-weight:800; font-size:17px; display:grid; place-items:center; flex-shrink:0; font-family:'Source Serif 4',serif; }
+  .sca-stephd .st{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:22px; color:var(--ink); line-height:1.1; }
+  .sca-stephd .ss{ font-size:12.5px; color:var(--muted); margin-top:2px; font-weight:500; }
+  .x-card.lead{ border-color:var(--rust); background:linear-gradient(180deg,#fdf4f1,#fff 60%); }
+  .x-card.lead-ask{ grid-column:1 / -1; border-color:var(--teal); background:linear-gradient(110deg,#eef6f4,#fff 70%); }
+  .x-card.lead-ask .x-ic{ background:var(--teal); color:#f3f8f6; }
+  .x-card.lead-ask .x-t{ font-size:16px; }
+  .x-card.lead-ask:hover{ border-color:var(--teal); box-shadow:0 14px 30px rgba(12,74,71,.18); }
+  .x-card.lead-ask .x-new{ background:var(--teal); }
+  .x-star{ font-size:9px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:#fff; background:var(--rust); border-radius:99px; padding:1px 7px; margin-left:7px; vertical-align:middle; }
+  /* SCA step — one strong hero + compact "also" links (kills the 20-equal-cards overwhelm) */
+  .scahero{ display:flex; gap:16px; align-items:flex-start; padding:19px 22px; border:1.5px solid var(--rust); border-radius:16px; background:linear-gradient(180deg,#fdf4f1,#fff 58%); text-decoration:none; color:inherit; transition:.16s; }
+  .scahero:hover{ box-shadow:0 12px 30px rgba(155,62,34,.16); transform:translateY(-2px); }
+  .scahero .sh-ic{ font-size:28px; width:60px; height:60px; display:grid; place-items:center; background:#fff; border:1px solid #f0d3c8; border-radius:15px; flex-shrink:0; }
+  .scahero .sh-body{ flex:1; min-width:0; }
+  .scahero .sh-star{ font-size:9.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:#fff; background:var(--rust); border-radius:99px; padding:2px 9px; }
+  .scahero h3{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:20px; color:var(--ink); margin:8px 0 4px; line-height:1.2; }
+  .scahero p{ font-size:13.5px; color:var(--ink-2); line-height:1.55; }
+  .scahero .sh-go{ display:inline-flex; align-items:center; gap:6px; margin-top:11px; color:var(--rust); font-weight:700; font-size:13px; }
+  .scaalso{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-top:12px; padding-left:2px; }
+  .scaalso .al-l{ font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:.07em; color:var(--muted); }
+  .scaalso a{ display:inline-flex; align-items:center; gap:7px; font-size:12.5px; font-weight:600; color:var(--ink-2); text-decoration:none; border:1px solid var(--line); background:var(--surface); border-radius:99px; padding:7px 13px; transition:.14s; }
+  .scaalso a:hover{ border-color:var(--rust); color:var(--rust); }
+  .scaalso a .ai{ font-size:14px; }
+
+  /* ---------- 3 INTERACTIVE TOOLS STRIP (clinic) ---------- */
+  .tools3{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  @media(max-width:860px){ .tools3{ grid-template-columns:1fr; } }
+  .t3{ display:flex; flex-direction:column; background:var(--surface); border:1px solid var(--line); border-top:3px solid var(--teal); border-radius:var(--r-lg); padding:24px 22px 22px; text-decoration:none; color:inherit; transition:transform .16s ease, box-shadow .16s ease; }
+  .t3:hover{ transform:translateY(-3px); box-shadow:var(--shadow-2); }
+  /* uniform card heights (pin CTA to the bottom) + per-card colour mix */
+  .t3 .t3-cta{ margin-top:auto !important; padding-top:14px; }
+  .tools3 .t3:nth-child(2){ border-top-color:var(--rust); }
+  .tools3 .t3:nth-child(2) .t3-ic{ background:var(--rust-soft); }
+  .tools3 .t3:nth-child(2) .t3-tag{ color:var(--rust); }
+  .tools3 .t3:nth-child(3){ border-top-color:#c08a2d; }
+  .tools3 .t3:nth-child(3) .t3-ic{ background:#f7edd6; }
+  .tools3 .t3:nth-child(3) .t3-tag{ color:#9a6b16; }
+  .home-sec[data-grp="reference"] .x-card{ border-top:3px solid var(--rust); }
+  .home-sec[data-grp="reference"] .x-ic{ background:var(--rust-soft); }
+  /* SCA: first strength card uses rust (not teal) so the trio reads rust·gold·teal-ish */
+  .sca3 .t3:nth-child(1){ border-top-color:var(--rust); }
+  .sca3 .t3:nth-child(1) .t3-ic{ background:var(--rust-soft); }
+  .sca3 .t3:nth-child(1) .t3-tag{ color:var(--rust); }
+  /* SCA 6-step compact card grid */
+  .sca-steps6{ display:grid; grid-template-columns:repeat(3,1fr); gap:13px; }
+  @media(max-width:860px){ .sca-steps6{ grid-template-columns:1fr 1fr; } }
+  @media(max-width:560px){ .sca-steps6{ grid-template-columns:1fr; } }
+  .scs{ display:flex; gap:13px; align-items:flex-start; background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); padding:16px 17px; text-decoration:none; transition:.14s; }
+  .scs:hover{ transform:translateY(-3px); box-shadow:var(--shadow-2); border-color:var(--rust); }
+  .scs .scs-n{ flex-shrink:0; width:30px; height:30px; border-radius:9px; background:var(--rust); color:#fbeee7; font-weight:800; font-size:14px; display:grid; place-items:center; }
+  .scs .scs-b{ display:flex; flex-direction:column; gap:4px; }
+  .scs .scs-b b{ font-size:15px; font-weight:800; color:var(--ink); }
+  .scs .scs-b small{ font-size:12.4px; line-height:1.5; color:var(--ink-2); }
+  .scs .scs-go{ font-size:12.5px; font-weight:700; color:var(--rust); margin-top:3px; }
+  /* SCA toolkit — number badge on top, strength tag + "when to use" line */
+  .scs.kit{ flex-direction:column; gap:0; }
+  .scs.kit .scs-n{ margin-bottom:11px; }
+  .scs.kit .scs-tag{ font-size:10px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--rust); margin-bottom:3px; }
+  .scs.kit .scs-when{ font-size:12.4px; line-height:1.5; color:var(--ink-2); margin-top:4px; }
+  .scs.kit .scs-when b{ color:var(--rust); font-weight:800; font-size:inherit; }
+  .scs.kit .scs-go{ margin-top:9px; }
+  .scs.kit .scs-n{ background:var(--rust-soft); font-size:17px; }
+  /* SCA complete-toolkit groups */
+  .kit-grp{ margin-top:20px; }
+  .kit-grp:first-of-type{ margin-top:6px; }
+  .kit-grp-h{ display:flex; align-items:baseline; gap:12px; margin-bottom:12px; padding-bottom:9px; border-bottom:1px solid var(--line); }
+  .kit-grp-h .kg-ph{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:16.5px; color:var(--ink); letter-spacing:-.01em; }
+  .kit-grp-h .kg-ph b{ color:var(--rust); font-weight:600; }
+  .kit-grp-h .kg-when{ margin-left:auto; font-size:11.5px; font-weight:700; color:var(--rust); letter-spacing:.03em; text-align:right; }
+  .home-sec[data-grp="tools"] .x-card{ border-top:3px solid var(--teal); }
+  .home-sec[data-grp="tools"] .x-ic{ background:var(--teal-soft); }
+  .t3-ic{ font-size:26px; width:52px; height:52px; display:grid; place-items:center; background:var(--teal-soft); border-radius:14px; }
+  .t3-tag{ font-size:10.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--teal-3); margin-top:16px; }
+  .t3 h3{ font-size:19px; margin-top:5px; }
+  .t3 p{ font-size:13.5px; color:var(--ink-2); line-height:1.55; margin-top:8px; text-wrap:pretty; }
+  .t3-how{ margin-top:14px; padding-top:13px; border-top:1px dashed var(--line-2); }
+  .t3-how-l{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+  .t3-how ol{ margin:0; padding-left:17px; }
+  .t3-how li{ font-size:12.5px; color:var(--ink-2); line-height:1.5; margin-bottom:3px; }
+  .t3-cta{ margin-top:auto; padding-top:16px; font-weight:600; font-size:13.5px; color:var(--teal); display:inline-flex; align-items:center; gap:6px; }
+  .t3:hover .t3-cta{ color:var(--rust); }
+
+  /* ---------- FEATURED TOOL SPOTLIGHT (clinic) ---------- */
+  .tool-spot{ position:relative; display:grid; grid-template-columns:66px 1fr; gap:8px 22px; background:var(--surface); border:1px solid var(--line); border-top:3px solid var(--teal); border-radius:var(--r-lg); padding:24px 26px; text-decoration:none; color:inherit; transition:transform .15s ease, box-shadow .15s ease; margin-bottom:16px; }
+  .tool-spot:hover{ transform:translateY(-3px); box-shadow:var(--shadow-2); }
+  .tool-spot .ts-ic{ grid-row:1 / span 2; font-size:30px; width:66px; height:66px; display:grid; place-items:center; background:var(--teal-soft); border-radius:16px; }
+  .tool-spot .ts-tags{ display:flex; gap:9px; align-items:center; flex-wrap:wrap; }
+  .tool-spot .ts-tag{ font-size:10.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--teal-3); }
+  .tool-spot .ts-new{ font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:#fff; background:var(--rust); border-radius:99px; padding:2px 9px; }
+  .tool-spot h3{ font-size:21px; margin-top:5px; }
+  .tool-spot p{ font-size:14px; color:var(--ink-2); line-height:1.55; margin-top:7px; max-width:66ch; text-wrap:pretty; }
+  .tool-spot .ts-row{ display:flex; gap:9px; flex-wrap:wrap; margin-top:14px; }
+  .tool-spot .ts-step{ font-size:12px; font-weight:600; color:var(--ink-2); background:var(--bg-soft); border:1px solid var(--line); border-radius:99px; padding:5px 13px; }
+  .tool-spot .ts-step b{ color:var(--teal); font-family:'Source Serif 4',serif; font-weight:600; margin-right:6px; }
+  .tool-spot .ts-cta{ margin-top:16px; font-weight:600; font-size:13.5px; color:var(--teal); display:inline-flex; align-items:center; gap:6px; }
+  .tool-spot:hover .ts-cta{ color:var(--rust); }
+  @media(max-width:560px){ .tool-spot{ grid-template-columns:1fr; } .tool-spot .ts-ic{ grid-row:auto; } }
+
+  /* ---------- FEATURED CASES ---------- */
+  .case-row{ display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
+
+  /* ---------- FRAMEWORK STRIP ---------- */
+  .fw-strip{ margin-top:50px; background:var(--surface-2); border:1px solid var(--line); border-radius:var(--r-lg); padding:24px 26px; }
+  .fw-strip .eyebrow{ display:block; margin-bottom:14px; }
+  .fw-row{ display:grid; grid-template-columns:repeat(7,1fr); gap:8px; }
+  @media(max-width:860px){ .fw-row{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:520px){ .fw-row{ grid-template-columns:1fr; } }
+  .fw-pill{ display:flex; align-items:baseline; gap:8px; padding:8px 4px; border-top:2px solid var(--line-2); }
+  .fw-pill .n{ font-family:'Source Serif 4',serif; font-size:18px; color:var(--rust); font-weight:500; line-height:1; }
+  .fw-pill .l{ font-size:13px; color:var(--ink-2); font-weight:500; line-height:1.25; }
+  /* RCGP domain strip variant */
+  .fw-row.is-domains{ grid-template-columns:repeat(3,1fr); }
+  @media(max-width:640px){ .fw-row.is-domains{ grid-template-columns:1fr; } }
+  .fw-pill.dom .n{ color:var(--rust); }
+  .fw-pill.dom .l small{ display:block; color:var(--muted); font-weight:400; font-size:11.5px; margin-top:2px; }
+
+  .home-empty{ display:none; padding:30px 4px; color:var(--muted); font-size:14.5px; }
+  .home-empty.show{ display:block; }
+
+  /* ============================================================
+     SCA CASE GRID + EXPANDABLE EXAMINER SCORECARD
+     ============================================================ */
+  .sca-grid-cards{ display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:16px; }
+  .scc{ background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; transition:box-shadow .16s ease, border-color .16s ease; }
+  .scc[open]{ border-color:var(--rust); box-shadow:var(--shadow-2); grid-column:1 / -1; }
+  .scc-head{ display:flex; flex-direction:column; gap:10px; padding:18px 20px; cursor:pointer; list-style:none; }
+  .scc-head::-webkit-details-marker{ display:none; }
+  .scc-top{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .scc-type{ font-size:11px; font-weight:700; letter-spacing:.04em; padding:4px 9px; border-radius:99px; display:inline-flex; align-items:center; gap:5px; background:var(--rust-soft); color:var(--rust-2); }
+  .scc-dur{ font-size:11.5px; color:var(--muted); margin-left:auto; }
+  .scc h3{ font-size:18px; line-height:1.2; }
+  .scc-meta{ font-size:12.5px; color:var(--muted); }
+  .scc-brief{ font-size:13px; color:var(--ink-2); line-height:1.55; text-wrap:pretty; }
+  .scc-open-cta{ display:inline-flex; align-items:center; gap:7px; font-size:12.5px; font-weight:600; color:var(--rust); margin-top:2px; }
+  .scc-open-cta .ec-chev{ transition:transform .2s ease; }
+  .scc[open] .scc-open-cta .ec-chev{ transform:rotate(180deg); }
+
+  /* Expanded examiner panel */
+  .scc-body{ border-top:1px solid var(--line); background:var(--surface-2); padding:22px 24px 24px; }
+  @media(min-width:760px){ .scc-body{ display:grid; grid-template-columns:1.15fr .85fr; gap:26px; } }
+  .ep-eyebrow{ font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--rust-2); display:flex; align-items:center; gap:8px; }
+  .ep-eyebrow::before{ content:""; width:16px; height:1px; background:var(--rust); }
+  .ep-h{ font-family:'Source Serif 4',serif; font-size:17px; margin:6px 0 14px; }
+
+  .dom-block{ margin-bottom:14px; }
+  .dom-head{ display:flex; align-items:center; gap:8px; margin-bottom:7px; }
+  .dom-chip{ font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:3px 9px; border-radius:6px; }
+  .dom-chip.tasks{ background:#e7eef7; color:#1d4ed8; }
+  .dom-chip.rto{ background:#fdeef4; color:#be185d; }
+  .dom-chip.gs{ background:#eef6ee; color:#15803d; }
+  .dom-block ul{ margin:0; padding:0; list-style:none; }
+  .dom-block li{ position:relative; padding-left:22px; font-size:12.8px; line-height:1.5; color:var(--ink-2); margin-bottom:6px; }
+  .dom-block li::before{ content:"✓"; position:absolute; left:0; top:0; color:var(--g); font-weight:700; }
+
+  .ep-side{ }
+  .worked{ background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md); padding:14px 16px; }
+  .worked .wk{ margin-bottom:11px; }
+  .worked .wk:last-child{ margin-bottom:0; }
+  .worked .wk-l{ font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--rust-2); margin-bottom:3px; }
+  .worked .wk-t{ font-size:12.8px; font-style:italic; color:var(--ink); line-height:1.5; border-left:3px solid var(--rust-soft); padding-left:10px; }
+  .ep-learn{ margin-top:14px; font-size:12.8px; line-height:1.55; color:var(--ink-2); background:var(--mustard-soft); border-radius:var(--r-md); padding:13px 15px; }
+  .ep-learn b{ color:var(--ink); }
+
+  /* RAG self-score row */
+  .rag{ margin-top:16px; }
+  .rag-l{ font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .rag-row{ display:flex; flex-direction:column; gap:8px; }
+  .rag-item{ display:flex; align-items:center; gap:10px; }
+  .rag-item .rag-name{ font-size:12px; font-weight:600; color:var(--ink-2); flex:1; }
+  .rag-dots{ display:flex; gap:5px; }
+  .rag-dot{ width:22px; height:22px; border-radius:7px; border:1.5px solid var(--line-2); background:var(--surface); cursor:pointer; display:grid; place-items:center; font-size:11px; transition:.12s; }
+  .rag-dot:hover{ transform:scale(1.08); }
+  .rag-dot.r.on{ background:#fde8e8; border-color:#e9a8a8; }
+  .rag-dot.a.on{ background:#fdf0d8; border-color:#e9c97f; }
+  .rag-dot.g.on{ background:#dcf2e1; border-color:#8fcf9f; }
+  .ep-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+  .ep-btn{ font-size:13px; font-weight:600; padding:9px 16px; border-radius:99px; text-decoration:none; transition:.15s; }
+  .ep-btn.primary{ background:var(--rust); color:#fff; }
+  .ep-btn.primary:hover{ background:var(--rust-2); }
+  .ep-btn.ghost{ border:1px solid var(--line-2); color:var(--ink-2); }
+  .ep-btn.ghost:hover{ border-color:var(--rust); color:var(--rust); }
+
+  .sca-more-wrap{ text-align:center; margin-top:22px; }
+  .sca-more-btn{ font:inherit; font-size:14px; font-weight:600; color:var(--rust); background:var(--surface); border:1px solid var(--line-2); padding:11px 24px; border-radius:99px; cursor:pointer; transition:.15s; }
+  .sca-more-btn:hover{ border-color:var(--rust); }
+
+  /* ============================================================
+     WELCOME CHOOSER OVERLAY
+     ============================================================ */
+  .rgp-entry{ position:fixed; inset:0; z-index:4000; background:var(--bg); display:flex; align-items:center; justify-content:center; padding:32px 22px; overflow-y:auto; opacity:1; transition:opacity .35s ease; }
+  .rgp-entry[hidden]{ display:none; }
+  .rgp-entry.is-closing{ opacity:0; pointer-events:none; }
+  .re-inner{ width:100%; max-width:880px; margin:auto; }
+  .re-brand{ display:flex; align-items:center; gap:12px; justify-content:center; margin-bottom:8px; }
+  .re-mark{ width:46px; height:46px; border-radius:13px; background:var(--teal); color:#f3ede0; font-family:'Source Serif 4',serif; font-size:25px; font-weight:600; display:grid; place-items:center; }
+  .re-brand b{ font-family:'Source Serif 4',serif; font-size:20px; font-weight:600; }
+  .re-brand small{ display:block; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-top:1px; }
+  .re-h{ text-align:center; font-size:clamp(1.8rem,3.4vw,2.6rem); margin:18px 0 6px; }
+  .re-sub{ text-align:center; font-size:15.5px; color:var(--ink-2); max-width:54ch; margin:0 auto 30px; line-height:1.55; }
+  .re-cards{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media(max-width:680px){ .re-cards{ grid-template-columns:1fr; } }
+  .re-card{ text-align:left; background:var(--surface); border:1.5px solid var(--line); border-radius:var(--r-xl); padding:28px 26px; cursor:pointer; font:inherit; color:inherit; transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease; display:flex; flex-direction:column; }
+  .re-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-3); }
+  .re-card.clinic{ border-top:4px solid var(--teal); }
+  .re-card.clinic:hover{ border-color:var(--teal); }
+  .re-card.sca{ border-top:4px solid var(--rust); }
+  .re-card.sca:hover{ border-color:var(--rust); }
+  .re-ic{ font-size:32px; width:62px; height:62px; display:grid; place-items:center; border-radius:16px; }
+  .re-card.clinic .re-ic{ background:var(--teal-soft); }
+  .re-card.sca .re-ic{ background:var(--rust-soft); }
+  .re-card .re-eyebrow{ font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-top:18px; }
+  .re-card.clinic .re-eyebrow{ color:var(--teal-3); }
+  .re-card.sca .re-eyebrow{ color:var(--rust-2); }
+  .re-card h3{ font-size:23px; margin-top:5px; }
+  .re-card p{ font-size:13.5px; color:var(--ink-2); line-height:1.55; margin-top:9px; flex:1; text-wrap:pretty; }
+  .re-card ul{ list-style:none; margin:14px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:6px; }
+  .re-card li{ font-size:11.5px; font-weight:500; color:var(--ink-2); background:var(--bg-soft); border-radius:99px; padding:4px 10px; }
+  .re-go{ margin-top:18px; display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:14px; padding:11px 18px; border-radius:99px; color:#fff; align-self:flex-start; transition:.15s; }
+  .re-card.clinic .re-go{ background:var(--teal); }
+  .re-card.sca .re-go{ background:var(--rust); }
+  .re-foot{ text-align:center; font-size:12.5px; color:var(--muted); margin-top:22px; }
+  .re-foot button{ font:inherit; font-size:12.5px; color:var(--teal-2); background:none; border:none; cursor:pointer; text-decoration:underline; padding:0; }
+
+  /* Tiny "switch" affordance in hero */
+  .iface-note{ margin-top:20px; font-size:12.5px; color:var(--muted); }
+  .iface-note button{ font:inherit; font-size:12.5px; font-weight:600; color:var(--teal-2); background:none; border:none; cursor:pointer; padding:0; text-decoration:underline; }
+  .home-sca .iface-note button{ color:var(--rust); }
+
+  /* ---------- "How to use this site" orientation banner (clinic front door) ---------- */
+  .guide-flag{ display:flex; align-items:stretch; gap:20px; margin-top:24px; padding:20px 24px; background:linear-gradient(120deg,var(--teal-soft),#fff 70%); border:1.5px solid var(--teal-3); border-radius:var(--r-xl); box-shadow:var(--shadow-1); text-decoration:none; transition:.16s ease; }
+  .guide-flag:hover{ transform:translateY(-2px); box-shadow:var(--shadow-2); border-color:var(--teal); }
+  .guide-flag .gf-ic{ font-size:30px; width:62px; height:62px; flex-shrink:0; display:grid; place-items:center; background:#fff; border:1px solid var(--teal-3); border-radius:16px; align-self:flex-start; }
+  .guide-flag .gf-body{ flex:1; min-width:0; }
+  .guide-flag .gf-eyebrow{ display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); }
+  .guide-flag .gf-eyebrow::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--rust); box-shadow:0 0 0 3px rgba(255,255,255,.5); }
+  .guide-flag h2{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:23px; line-height:1.15; color:var(--ink); margin:7px 0 5px; }
+  .guide-flag h2 em{ font-style:italic; color:var(--teal); }
+  .guide-flag .gf-p{ font-size:13.6px; line-height:1.6; color:var(--ink-2); max-width:64ch; }
+  .guide-flag .gf-layers{ display:flex; flex-wrap:wrap; gap:7px; margin-top:12px; }
+  .guide-flag .gf-layers span{ font-size:11.5px; font-weight:700; color:var(--ink-2); background:#fff; border:1px solid var(--teal-3); border-radius:999px; padding:4px 11px; }
+  .guide-flag .gf-cta{ flex-shrink:0; align-self:center; display:inline-flex; align-items:center; gap:8px; font-size:13.5px; font-weight:700; color:#fff; background:var(--teal); border-radius:11px; padding:11px 18px; white-space:nowrap; }
+  .guide-flag .gf-cta svg{ width:15px; height:15px; transition:transform .15s ease; }
+  .guide-flag:hover .gf-cta svg{ transform:translateX(3px); }
+  @media(max-width:760px){ .guide-flag{ flex-wrap:wrap; gap:14px; padding:17px 18px; } .guide-flag .gf-cta{ width:100%; justify-content:center; } }
+  /* SCA cross-promo banner on the clinic front door (button → switches interface) */
+  .guide-flag.sca-cross{ width:100%; text-align:left; font:inherit; cursor:pointer; margin-top:0; background:linear-gradient(120deg,var(--rust-soft),#fff 70%); border-color:#ecc9bb; }
+  .guide-flag.sca-cross:hover{ border-color:var(--rust); }
+  .guide-flag.sca-cross .gf-ic{ border-color:#ecc9bb; }
+  .guide-flag.sca-cross .gf-eyebrow{ color:var(--rust); }
+  .guide-flag.sca-cross .gf-eyebrow::before{ background:var(--teal); }
+  .guide-flag.sca-cross h2 em{ color:var(--rust); }
+  .guide-flag.sca-cross .gf-layers span{ border-color:#ecc9bb; }
+  .guide-flag.sca-cross .gf-cta{ background:var(--rust); }
+  /* Ask box — a core box (mirrors .guide-flag) above the search, rust-accented */
+  .ask-flag{ margin-top:28px; background:linear-gradient(120deg,var(--rust-soft),#fff 70%); border-color:#ecc9bb; }
+  .ask-flag .gf-ic{ border-color:#ecc9bb; }
+  .ask-flag .gf-eyebrow{ color:var(--rust); }
+  .ask-flag .gf-eyebrow::before{ background:var(--teal); }
+  .ask-flag h2 em{ color:var(--rust); }
+  .ask-flag .gf-cta{ background:var(--rust); }
+</style>
+</head>
+<body>
+
+<button class="sb-toggle" aria-label="Open case list">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+
+<div class="app">
+  <aside class="sidebar" data-active-id="__home"></aside>
+
+  <main class="main">
+    <div class="panel">
+
+      <!-- ================= CLINIC INTERFACE ================= -->
+      <div class="home-clinic rgp-clinic-only">
+
+        <section class="home-hero" data-screen-label="Clinic · Hero">
+          <span class="hero-eyebrow">🏥 Clinic interface · point of care</span>
+          <h1>Clinical reasoning that works <em>in the room</em>.</h1>
+          <p class="lede">Open a pathway, confirm the management, reach for a tool — all anchored to NICE CKS. Built for busy clinics, urgent care and out-of-hours, where the next decision matters more than the next exam.</p>
+          <div class="home-find">
+            <div class="home-search" id="clinicSearchWrap">
+              <span class="hs-ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+              <input type="search" class="homeSearch" id="clinicGlobalSearch" placeholder="Search every pathway, protocol, prescription & tool…" autocomplete="off" aria-label="Search the clinic interface" role="combobox" aria-expanded="false" aria-controls="clinicResults" />
+              <span class="hs-hint">↵ to open</span>
+              <div class="gsearch" id="clinicResults" role="listbox" aria-label="Search results"></div>
+            </div>
+          </div>
+          <div class="home-stats" aria-label="At a glance">
+            <div class="home-stat"><span class="hs-n">250+</span><span class="hs-l">Visual pathways<small>print-ready</small></span></div>
+            <div class="home-stat"><span class="hs-n">170+</span><span class="hs-l">Management protocols<small>drug ladders</small></span></div>
+            <div class="home-stat"><span class="hs-n">110+</span><span class="hs-l">Ready prescriptions<small>EMIS copy-paste</small></span></div>
+            <div class="home-stat"><span class="hs-n">NICE</span><span class="hs-l">CKS-anchored<small>every recommendation</small></span></div>
+          </div>
+          <p class="iface-note">Preparing for the SCA instead? <button type="button" data-go-sca>Switch to the SCA interface →</button></p>
+        </section>
+
+        <!-- HOW TO USE -->
+        <a class="guide-flag" href="tools/clinic-guide.html" data-csearch="how to use guide start here orientation what is this website help getting started four layers framework consultation tour 2 minute">
+          <span class="gf-ic" aria-hidden="true">🧭</span>
+          <span class="gf-body">
+            <span class="gf-eyebrow">New here? Start here</span>
+            <h2>How to use <em>Reasoning GP</em></h2>
+            <span class="gf-p">A two-minute tour: what the site is for, the one framework behind every page, and exactly which layer to open at each point in a consultation — so you always know where to go.</span>
+            <span class="gf-layers"><span>🗺️ Pathways — diagnose</span><span>💠 Protocols — treat</span><span>📋 Casebook — learn</span><span>📚 Articles — check</span></span>
+          </span>
+          <span class="gf-cta">Read the 2-minute guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+
+        <!-- ASK THE ASSISTANT -->
+        <a class="guide-flag ask-flag" href="pages/ask.html" data-csearch="ask question assistant clinical reasoning ai answer help what is how to manage differential nice cks bnf">
+          <span class="gf-ic" aria-hidden="true">💬</span>
+          <span class="gf-body">
+            <span class="gf-eyebrow">Ask the assistant</span>
+            <h2>Ask a <em>clinical question</em></h2>
+            <span class="gf-p">Type any question in plain English — answered from the Reasoning GP library first, then NICE CKS &amp; the BNF, with links to the matching pathway, protocol or case.</span>
+          </span>
+          <span class="gf-cta">Ask a question <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+
+        <div class="home-empty clinicEmpty">No match. Try a pathway, management card, or a clinic tool — or browse the full list in the menu.</div>
+
+        <!-- CLINICAL COMPASS -->
+        <section class="home-sec core-flag" data-screen-label="Clinic · Clinical Compass" data-grp="core">
+          <div class="home-sec-head"><div><span class="core-badge">🧭 Clinical Compass</span><h2 style="margin-top:10px">Diagnose · treat · prescribe</h2></div><a class="more" href="tools/clinical-core.html">Open Clinical Compass →</a></div>
+          <div class="tools3">
+            <a class="t3" href="tools/algorithms.html" data-csearch="pathways algorithms flowchart decision tree diagnose triage printable headache chest pain">
+              <span class="t3-ic">🗺️</span><span class="t3-tag">250+ · print-ready</span>
+              <h3>Pathways</h3><p>One visual flow per presentation — Safety · Diagnose · Refer · Treat · Lifestyle. Print to a clean handout.</p>
+              <span class="t3-cta" style="margin-top:14px">Browse pathways →</span>
+            </a>
+            <a class="t3" href="tools/management.html" data-csearch="protocols management stepwise treatment drug ladder monitoring referral titration">
+              <span class="t3-ic">💠</span><span class="t3-tag">170+ · NICE-anchored</span>
+              <h3>Protocols</h3><p>Once the diagnosis is set — first-line to referral, with drug ladders, monitoring and review timing.</p>
+              <span class="t3-cta" style="margin-top:14px">Open protocols →</span>
+            </a>
+            <a class="t3" href="tools/prescribing.html" data-csearch="prescribing ready rx eligibility fp10 controlled drugs what not to prescribe rag sick day rules">
+              <span class="t3-ic">💊</span><span class="t3-tag">Ready Rx · RAG · sick-day</span>
+              <h3>Prescribing</h3><p>Everything around the prescription — ready-built Rx, who pays, FP10, what not to prescribe, RAG and sick-day rules.</p>
+              <span class="t3-cta" style="margin-top:14px">Open prescribing →</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- THE COMPENDIUM -->
+        <section class="home-sec" data-screen-label="Clinic · The Compendium" data-grp="reference">
+          <div class="home-sec-head"><div><span class="eyebrow">📖 The Compendium</span><h2>The reference library</h2></div><a class="more" href="pages/full-medicine.html">Open The Compendium →</a></div>
+          <div class="tools3">
+            <a class="t3" href="cases.html" data-csearch="casebook cases full clinical walkthroughs by specialty">
+              <span class="t3-ic">📋</span><span class="t3-tag">108 cases · by specialty</span>
+              <h3>Casebook</h3><p>Full clinical walkthroughs — the whole reasoning thread from presentation to plan, grouped by specialty.</p>
+              <span class="t3-cta" style="margin-top:14px">Open Casebook →</span>
+            </a>
+            <a class="t3" href="pages/articles.html" data-csearch="articles a-z primary care topic notes conditions reference">
+              <span class="t3-ic">📚</span><span class="t3-tag">435 topics · A–Z</span>
+              <h3>Articles</h3><p>Concise A–Z primary-care topic notes — the quick-reference companion to every pathway, protocol and case.</p>
+              <span class="t3-cta" style="margin-top:14px">Browse articles →</span>
+            </a>
+            <a class="t3" href="pages/audios.html" data-csearch="audios recordings podcast nhs topic updates listen">
+              <span class="t3-ic">🎧</span><span class="t3-tag">100 briefings · listen</span>
+              <h3>Audios</h3><p>AI + human clinical briefings for the commute or between patients — listening time counts towards your CPD.</p>
+              <span class="t3-cta" style="margin-top:14px">Open the player →</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- CPD -->
+        <section class="home-sec" data-screen-label="Clinic · CPD" data-grp="cpd">
+          <a class="feat-sub" href="pages/cpd.html" data-csearch="cpd reading listening credits reflection appraisal revalidation certificate">
+            <span class="fs-ic" aria-hidden="true">🏅</span>
+            <span class="fs-body">
+              <span class="fs-eyebrow">CPD</span>
+              <span class="fs-t">Your reading &amp; listening, <em>logged as CPD</em></span>
+              <span class="fs-p">Time on Reasoning GP is tracked automatically — add a structured reflection and print an appraisal-ready record.</span>
+            </span>
+            <span class="fs-cta">Open CPD <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </a>
+        </section>
+
+        <!-- CLINIC TOOLKIT -->
+        <section class="home-sec" data-screen-label="Clinic · Clinic Toolkit" data-grp="tools">
+          <div class="home-sec-head"><div><span class="eyebrow">🩺 Clinic Toolkit</span><h2>Everything at the desk</h2></div></div>
+          <a class="tool-spot" href="tools/consultation-spine.html" data-csearch="consultation spine presenting complaint provisional diagnosis full editable consultation red flags safety netting coded record note snomed accurx emis systmone">
+            <span class="ts-ic">🧬</span>
+            <span class="ts-tags"><span class="ts-new">Core</span><span class="ts-tag">Complaint + diagnosis → full consultation</span></span>
+            <span class="ts-main">
+              <h3>Consultation Spine</h3>
+              <p>Enter the presenting complaint (and provisional diagnosis) and get the whole consultation — ready red flags, history, examination, investigations, management, safety-netting and a coded record. Age- and symptom-specific, fully editable, flags NICE NG12 2WW criteria.</p>
+              <div class="ts-row"><span class="ts-step"><b>1</b>Complaint ± diagnosis</span><span class="ts-step"><b>2</b>Generate consultation</span><span class="ts-step"><b>3</b>Edit &amp; copy in</span></div>
+              <span class="ts-cta">Open tool →</span>
+            </span>
+          </a>
+          <div class="tile-grid">
+            <a class="x-card" href="tools/scribe.html" data-csearch="consult scribe ai medical scribe ambient dictation record emis systmone soap note referral letter snomed 2ww"><span class="x-ic">🎙️</span><span class="x-body"><span class="x-t">Consult Scribe</span><span class="x-meta">AI scribe · record → coded GP note</span></span><span class="x-arrow">→</span></a>
+            <a class="x-card" href="tools/decision-support.html" data-csearch="decision support diagnostic medication chooser lab results actioning diagnose investigate treat"><span class="x-ic">🩺</span><span class="x-body"><span class="x-t">Decision Support</span><span class="x-meta">Diagnose → read the bloods → choose the drug</span></span><span class="x-arrow">→</span></a>
+            <a class="x-card" href="tools/calculators.html" data-csearch="calculators scores chads vasc qrisk phq gad news2 egfr"><span class="x-ic">🧮</span><span class="x-body"><span class="x-t">Medical Calculators</span><span class="x-meta">55 scores · CV · VTE · MH · renal</span></span><span class="x-arrow">→</span></a>
+            <a class="x-card" href="tools/examinations.html" data-csearch="examinations technique indications interpretation red flags"><span class="x-ic">🩻</span><span class="x-body"><span class="x-t">Examinations</span><span class="x-meta">Indications · technique · interpretation</span></span><span class="x-arrow">→</span></a>
+            <a class="x-card" href="tools/gp-admin.html" data-csearch="gp admin fit note dvla forms certificates sr1 matb1 mccd"><span class="x-ic">📋</span><span class="x-body"><span class="x-t">GP Admin</span><span class="x-meta">Fit Note · DVLA · forms &amp; certificates</span></span><span class="x-arrow">→</span></a>
+            <a class="x-card" href="tools/leaflets.html" data-csearch="patient leaflets information charity nhs accurx copy link"><span class="x-ic">📑</span><span class="x-body"><span class="x-t">Patient Leaflets</span><span class="x-meta">UK lead charities · AccuRx copy-link</span></span><span class="x-arrow">→</span></a>
+            <a class="x-card" href="tools/basic-science.html" data-csearch="basic science pathophysiology pharmacodynamics mechanism the why"><span class="x-ic">🔬</span><span class="x-body"><span class="x-t">Basic Science</span><span class="x-meta">Pathophysiology · pharmacodynamics · the why</span></span><span class="x-arrow">→</span></a>
+            <a class="x-card" href="pages/ebm.html" data-csearch="ebm evidence based medicine gpevidence thennt openevidence"><span class="x-ic">📊</span><span class="x-body"><span class="x-t">EBM</span><span class="x-meta">gpevidence · TheNNT · OpenEvidence</span></span><span class="x-arrow">→</span></a>
+            <a class="x-card" href="pages/resources.html" data-csearch="resources gp links referral pathways community"><span class="x-ic">🔗</span><span class="x-body"><span class="x-t">Resources</span><span class="x-meta">GP links · referral pathways · community</span></span><span class="x-arrow">→</span></a>
+          </div>
+        </section>
+
+        <!-- SCA CROSS-PROMO (concise — full exam interface lives in SCA mode) -->
+        <section class="home-sec" data-screen-label="Clinic · SCA prep" data-grp="sca-cross">
+          <button type="button" class="guide-flag sca-cross" data-go-sca data-csearch="sca exam preparation rcgp simulated consultation assessment hot seat ai patient simulator mock circuit readiness practise revision trainee registrar">
+            <span class="gf-ic" aria-hidden="true">🎓</span>
+            <span class="gf-body">
+              <span class="gf-eyebrow">Also here · exam preparation</span>
+              <h2>Sitting the <em>SCA</em>? There's a whole exam interface</h2>
+              <span class="gf-p">The same reasoning, framed for the RCGP Simulated Consultation Assessment — work 300+ stations on the 12-minute clock, mark against the three domains, then take it live against an AI patient.</span>
+              <span class="gf-layers"><span>🎙️ Hot Seat — practise</span><span>🤖 AI Simulator — go live</span><span>🔁 Mock circuit — rehearse</span><span>🌡️ Readiness — track</span></span>
+            </span>
+            <span class="gf-cta">Switch to the SCA interface <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </button>
+        </section>
+
+        <!-- FLOATING UPDATES -->
+        <section class="home-sec home-updates" data-screen-label="Clinic · Latest updates" data-grp="updates">
+          <div class="home-sec-head"><div><span class="eyebrow">📰 Latest updates</span><h2>What changed in UK primary care</h2></div><a class="more" href="pages/updates.html">See all updates →</a></div>
+          <div class="upd-float" id="homeUpdates">
+            <a class="upd-card src-mhra" href="pages/updates.html">
+              <span class="upd-eyebrow">💊 MHRA</span>
+              <h3>ACE inhibitors — delayed-onset angioedema</h3>
+              <p>Stop the ACE inhibitor immediately if angioedema is suspected — it can occur at any time, even after years of use. Consider a bradykinin-mediated cause when standard anaphylaxis treatment isn't working.</p>
+              <span class="upd-meta"><span class="upd-date">17 Jun 2026</span><span class="upd-go">Read →</span></span>
+            </a>
+            <a class="upd-card src-nice" href="pages/updates.html">
+              <span class="upd-eyebrow">📝 NICE CKS</span>
+              <h3>CKS revisions — Breast pain &amp; Chest pain</h3>
+              <p>Breast pain – cyclical: new referral section and a stronger note that cyclical breast pain is not associated with breast cancer. Chest pain: pre-hospital management of acute heart failure realigned with NICE.</p>
+              <span class="upd-meta"><span class="upd-date">Apr 2026</span><span class="upd-go">Read →</span></span>
+            </a>
+            <a class="upd-card src-mhra" href="pages/updates.html">
+              <span class="upd-eyebrow">💊 MHRA</span>
+              <h3>Nasal decongestant sprays — rebound congestion</h3>
+              <p>Xylometazoline and oxymetazoline sprays can cause rebound congestion and, with prolonged use, rhinitis medicamentosa. Advise patients not to use for more than 5 consecutive days.</p>
+              <span class="upd-meta"><span class="upd-date">May 2026</span><span class="upd-go">Read →</span></span>
+            </a>
+          </div>
+        </section>
+
+        <section class="fw-strip" id="framework" data-screen-label="Clinic · Framework" data-grp="framework">
+          <span class="eyebrow">One framework, every consultation</span>
+          <div class="fw-row">
+            <div class="fw-pill"><span class="n">1</span><span class="l">History</span></div>
+            <div class="fw-pill"><span class="n">2</span><span class="l">Triage</span></div>
+            <div class="fw-pill"><span class="n">3</span><span class="l">Examination</span></div>
+            <div class="fw-pill"><span class="n">4</span><span class="l">Investigations</span></div>
+            <div class="fw-pill"><span class="n">5</span><span class="l">Diagnosis</span></div>
+            <div class="fw-pill"><span class="n">6</span><span class="l">Referral</span></div>
+            <div class="fw-pill"><span class="n">7</span><span class="l">Management</span></div>
+          </div>
+        </section>
+
+        <div class="footer-disclaimer" style="margin-top:40px"><strong>Educational use only.</strong> Reasoning GP is a clinical reasoning resource for the UK primary care team. It is not a substitute for clinical judgement, and recommendations should always be verified against the live NICE CKS and your local prescribing formulary.</div>
+      </div>
+
+      <!-- ================= SCA EXAM INTERFACE ================= -->
+      <div class="home-sca rgp-sca-only">
+
+        <section class="home-hero" data-screen-label="SCA · Hero">
+          <span class="hero-eyebrow is-sca">🎓 SCA interface · exam preparation</span>
+          <h1>Reason like the patient needs it — and <em>score like the examiner marks it</em>.</h1>
+          <p class="lede">The same clinical reasoning, framed for the RCGP Simulated Consultation Assessment. Work the most common stations, see exactly how each is marked across the three domains, then rehearse under real exam conditions.</p>
+          <a class="guide-flag" href="tools/sca-guide.html" data-ssearch="sca guide how to use start here exam format marking domains 12 week plan understand orientation">
+            <span class="gf-ic" aria-hidden="true">🧭</span>
+            <span class="gf-body">
+              <span class="gf-eyebrow">New here? Start here</span>
+              <h2>How to pass the <em>SCA</em></h2>
+              <span class="gf-p">A two-minute orientation: the exam format, the marking arithmetic across the three domains, why candidates fail — and a week-by-week plan that runs Understand → See a pass → Practise → Mock → Sharpen → Track.</span>
+              <span class="gf-layers"><span>🎙️ Hot Seat — practise</span><span>🔁 Mock circuit — rehearse</span><span>📚 Q-bank — sharpen</span><span>🌡️ Readiness — track</span></span>
+            </span>
+            <span class="gf-cta">Open the SCA Guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </a>
+          <a class="guide-flag ask-flag" href="pages/ask.html" aria-label="Ask the clinical reasoning assistant a question">
+            <span class="gf-ic" aria-hidden="true">💬</span>
+            <span class="gf-body">
+              <span class="gf-eyebrow">Ask the assistant</span>
+              <h2>Ask a <em>clinical question</em></h2>
+              <span class="gf-p">Type any question in plain English — answered from the Reasoning GP library first, then NICE CKS &amp; the BNF, with links to the matching pathway, protocol or case.</span>
+            </span>
+            <span class="gf-cta">Ask a question <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </a>
+          <div class="home-find">
+            <div class="home-search">
+              <span class="hs-ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+              <input type="search" class="homeSearch" placeholder="Search SCA cases, algorithms & resources…" autocomplete="off" aria-label="Search the SCA interface" />
+              <span class="hs-hint">↵ to open</span>
+            </div>
+          </div>
+          <div class="home-stats" aria-label="At a glance">
+            <div class="home-stat"><span class="hs-n">300+</span><span class="hs-l">Practice scenarios<small>video · phone · F2F</small></span></div>
+            <div class="home-stat"><span class="hs-n">3</span><span class="hs-l">Marking domains<small>scored live</small></span></div>
+            <div class="home-stat"><span class="hs-n">12<small style="display:inline">min</small></span><span class="hs-l">Real-time timer<small>exam-paced</small></span></div>
+            <div class="home-stat"><span class="hs-n">AI</span><span class="hs-l">Record &amp; review<small>instant feedback</small></span></div>
+          </div>
+          <p class="iface-note">Working a real clinic instead? <button type="button" data-go-clinic>Switch to the Clinic interface →</button></p>
+        </section>
+
+        <div class="home-empty scaEmpty">No match. Try a case, a pathway, or “SCA practice” — or browse the full list in the menu.</div>
+
+        <!-- HOT SEAT FLAGSHIP -->
+        <section class="home-sec" data-screen-label="SCA · Flagship" data-grp="practice">
+          <a class="feat rust" href="tools/sca-practice.html" data-ssearch="sca practice hot seat rcgp scorecard timer recording 12 minute consultation main practice surface mark yourself domains start here">
+            <div>
+              <span class="f-eyebrow">Start here · your main practice surface</span>
+              <h2>Sit in the <em>Hot Seat</em> — 12-minute timer, RCGP scorecard, record &amp; review</h2>
+              <p>The core of your prep: work a case end to end on the 12-minute clock, mark yourself against the three real domains, and record-and-review to see what to fix — then take it live against an AI patient.</p>
+              <span class="f-cta">Open the Hot Seat <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+            </div>
+            <div class="f-chips" aria-hidden="true">
+              <div class="f-chip"><span class="fc-ic">⏱️</span><span><b>12-minute timer</b><small>Exam-paced, every case</small></span></div>
+              <div class="f-chip"><span class="fc-ic">📋</span><span><b>RCGP scorecard</b><small>Mark against the three domains</small></span></div>
+              <div class="f-chip"><span class="fc-ic">🎙️</span><span><b>Record &amp; review</b><small>Then go live in the AI Simulator</small></span></div>
+            </div>
+          </a>
+        </section>
+
+        <!-- STRENGTHS -->
+        <section class="home-sec" data-screen-label="SCA · Strengths" data-grp="strengths">
+          <div class="home-sec-head"><div><span class="eyebrow is-sca">🎓 Why prep here</span><h2>Three things nothing else gives you</h2></div></div>
+          <div class="tools3 sca3">
+            <a class="t3" href="tools/sca-simulator.html" data-ssearch="ai patient simulator voice speech talk virtual patient solo practice consultation marked feedback domains microphone exam day personas flagship">
+              <span class="t3-ic">🎙️</span><span class="t3-tag">Live voice · marked</span>
+              <h3>AI Patient Simulator</h3><p>Talk to a real-feeling patient out loud, then get marked against the three domains — solo practice that actually feels like exam day.</p>
+              <span class="t3-cta" style="margin-top:14px">Start a consultation →</span>
+            </a>
+            <a class="t3" href="tools/sca-circuit-ai.html" data-ssearch="ai mock exam circuit back to back cases relay timed auto marked report card domains exam day simulation">
+              <span class="t3-ic">🔁</span><span class="t3-tag">Full exam-day circuit</span>
+              <h3>AI Mock Exam Circuit</h3><p>Several AI patients back-to-back on the relay clock, then one auto-marked report card across the whole diet — the closest thing to the real thing.</p>
+              <span class="t3-cta" style="margin-top:14px">Sit a mock circuit →</span>
+            </a>
+            <a class="t3" href="tools/sca-weakspots.html" data-ssearch="my readiness dashboard weak spots progress heat map domain averages groups recommendations what to do next exam prepared score pass likelihood verdict ready to book habits curriculum coverage">
+              <span class="t3-ic">🌡️</span><span class="t3-tag">Pass-likelihood verdict</span>
+              <h3>My Readiness</h3><p>Every rep feeds one picture: a pass-likelihood verdict, the habits quietly costing you marks, your curriculum coverage — and the single best next move.</p>
+              <span class="t3-cta" style="margin-top:14px">Check my readiness →</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- EVERY TOOL — WHEN TO REACH FOR IT -->
+        <section class="home-sec" data-screen-label="SCA · Toolkit" data-grp="path">
+          <div class="home-sec-head"><div><span class="eyebrow is-sca">The complete SCA toolkit</span><h2>Every tool — and exactly when to reach for it</h2></div><a class="more" href="tools/sca-guide.html">Open the SCA Guide →</a></div>
+
+          <div class="tk-phase">
+            <div class="tk-phase-h"><span class="tk-step">1</span><span class="tk-lbl">Learn the exam</span><span class="tk-when">Start before you practise</span></div>
+            <div class="tile-grid">
+              <a class="x-card" href="tools/sca-guide.html" data-ssearch="sca guide format marking arithmetic domains why candidates fail 12 week plan on the day faq understand start here orientation"><span class="x-ic">🧾</span><span class="x-body"><span class="x-t">The SCA Guide</span><span class="x-when"><b>First stop.</b> The format, the marking maths, why people fail — and a 12-week plan.</span></span><span class="x-arrow">→</span></a>
+              <a class="x-card" href="tools/sca-consultation-guide.html" data-ssearch="ultimate consultation guide structure phases opening data gathering ice examination explanation shared management safety net move phrases trap interactive walkthrough method"><span class="x-ic">🗺️</span><span class="x-body"><span class="x-t">Ultimate Consultation Guide</span><span class="x-when"><b>How to run the 12 minutes.</b> The 7 phases — the move, the phrases, the trap in each.</span></span><span class="x-arrow">→</span></a>
+              <a class="x-card" href="tools/sca-worked-examples.html" data-ssearch="worked examples model answer pass borderline fail annotated transcript what good looks like see a pass turn by turn"><span class="x-ic">📑</span><span class="x-body"><span class="x-t">Worked Examples</span><span class="x-when"><b>To hear a pass.</b> A pass next to a fail, annotated turn by turn.</span></span><span class="x-arrow">→</span></a>
+              <a class="x-card" href="tools/sca-domains.html" data-ssearch="examiner marking domains self mark out of 126 data gathering management relating to others scoring framework rubric"><span class="x-ic">⚖️</span><span class="x-body"><span class="x-t">Examiner Marking</span><span class="x-when"><b>To mark like the examiner.</b> The three domains, self-scored out of 126.</span></span><span class="x-arrow">→</span></a>
+            </div>
+          </div>
+
+          <div class="tk-phase">
+            <div class="tk-phase-h"><span class="tk-step">2</span><span class="tk-lbl">Practise the consultation</span><span class="tk-when">Your daily reps</span></div>
+            <div class="tile-grid">
+              <a class="x-card" href="tools/sca-practice.html" data-ssearch="hot seat 12 minute timer rcgp scorecard record review self mark daily practice case after case"><span class="x-ic">🔥</span><span class="x-body"><span class="x-t">The Hot Seat</span><span class="x-when"><b>Your daily rep.</b> One case on the 12-min clock, self-marked and recorded.</span></span><span class="x-arrow">→</span></a>
+              <a class="x-card" href="tools/sca-simulator.html" data-ssearch="ai patient simulator talk out loud voice speech real feeling marked feedback solo exam day personas"><span class="x-ic">🎙️</span><span class="x-body"><span class="x-t">AI Patient Simulator</span><span class="x-when"><b>To consult out loud.</b> Talk to a real-feeling patient, then get marked.</span></span><span class="x-arrow">→</span></a>
+              <a class="x-card" href="tools/sca-comms-lab.html" data-ssearch="conversation lab ice ideas concerns expectations cues empathy shared decisions negotiation language relating to others domain"><span class="x-ic">💬</span><span class="x-body"><span class="x-t">Conversation Lab</span><span class="x-when"><b>When the medicine's right</b> but ICE, cues and shared plans cost you marks.</span></span><span class="x-arrow">→</span></a>
+              <a class="x-card" href="tools/sca-drills.html" data-ssearch="micro drills cues safety net explaining reps short minutes single skill reflex"><span class="x-ic">🎯</span><span class="x-body"><span class="x-t">Micro-Drills</span><span class="x-when"><b>Ten spare minutes?</b> Drill one skill — cues, safety-net, explaining — to reflex.</span></span><span class="x-arrow">→</span></a>
+            </div>
+          </div>
+
+          <div class="tk-phase">
+            <div class="tk-phase-h"><span class="tk-step">3</span><span class="tk-lbl">Pressure-test</span><span class="tk-when">A few weeks out</span></div>
+            <div class="tile-grid">
+              <a class="x-card" href="tools/sca-circuit-ai.html" data-ssearch="ai mock exam circuit back to back relay clock report card whole diet exam day stamina pacing full"><span class="x-ic">🔁</span><span class="x-body"><span class="x-t">AI Mock Exam Circuit</span><span class="x-when"><b>2–3 weeks out.</b> Back-to-back patients on the relay clock, one report card.</span></span><span class="x-arrow">→</span></a>
+              <a class="x-card" href="tools/sca-circuit.html" data-ssearch="mock exam circuit self led offline cases timed diet no ai practise with a colleague"><span class="x-ic">📋</span><span class="x-body"><span class="x-t">Mock Exam Circuit</span><span class="x-when"><b>Rehearsing with a colleague?</b> A self-led timed diet, no AI needed.</span></span><span class="x-arrow">→</span></a>
+            </div>
+          </div>
+
+          <div class="tk-phase">
+            <div class="tk-phase-h"><span class="tk-step">4</span><span class="tk-lbl">Sharpen the knowledge</span><span class="tk-when">Top up the facts</span></div>
+            <div class="tile-grid">
+              <a class="x-card" href="tools/sca-qbank.html" data-ssearch="akt question bank sba single best answer spaced repetition revision knowledge breadth curriculum"><span class="x-ic">📝</span><span class="x-body"><span class="x-t">AKT Question Bank</span><span class="x-when"><b>Between consultations.</b> Top up breadth with SBAs and spaced repetition.</span></span><span class="x-arrow">→</span></a>
+              <a class="x-card" href="tools/sca-hot-topics.html" data-ssearch="sca hot topics what is likely this diet prioritise high yield themes guideline updates"><span class="x-ic">🗓️</span><span class="x-body"><span class="x-t">SCA Hot Topics</span><span class="x-when"><b>To revise where it pays.</b> What's most likely to come up this diet.</span></span><span class="x-arrow">→</span></a>
+              <a class="x-card" href="tools/sca-playbooks.html" data-ssearch="consultation playbooks difficult consultation types breaking bad news angry patient telephone shared decision structure scripts"><span class="x-ic">🧭</span><span class="x-body"><span class="x-t">Consultation Playbooks</span><span class="x-when"><b>When a hard type trips you</b> — 10 worked scripts (bad news, angry, phone…).</span></span><span class="x-arrow">→</span></a>
+            </div>
+          </div>
+
+          <div class="tk-phase">
+            <div class="tk-phase-h"><span class="tk-step">5</span><span class="tk-lbl">Track &amp; fix</span><span class="tk-when">Every rep feeds this</span></div>
+            <div class="tile-grid">
+              <a class="x-card" href="tools/sca-weakspots.html" data-ssearch="my readiness pass likelihood verdict habits costing marks curriculum coverage heat map single best next move ready to book"><span class="x-ic">🌡️</span><span class="x-body"><span class="x-t">My Readiness</span><span class="x-when"><b>Any time.</b> A pass-likelihood verdict and your single best next move.</span></span><span class="x-arrow">→</span></a>
+              <a class="x-card" href="tools/sca-resit.html" data-ssearch="resit clinic failed fail results feedback letter weak domains named diagnoses personalised 8 week treatment plan rebuild calibration deanery support"><span class="x-ic">🩺</span><span class="x-body"><span class="x-t">The Resit Clinic</span><span class="x-when"><b>Sat it and didn't pass?</b> Turn your results letter into named gaps and an 8-week fix.</span></span><span class="x-arrow">→</span></a>
+              <a class="x-card" href="tools/sca-daily.html" data-ssearch="daily 10 habit streak quick reps every day little and often consistency"><span class="x-ic">📆</span><span class="x-body"><span class="x-t">The Daily 10</span><span class="x-when"><b>To keep the habit.</b> Ten quick reps a day to hold a steady streak.</span></span><span class="x-arrow">→</span></a>
+            </div>
+          </div>
+        </section>
+
+        <!-- REASONING + REFERENCE (no cases) -->
+        <section class="home-sec" data-screen-label="SCA · Reference" data-grp="reference">
+          <div class="home-sec-head"><div><span class="eyebrow is-sca">Get the medicine right</span><h2>Reason &amp; revise around every station</h2></div></div>
+          <div class="tile-grid">
+            <a class="x-card" href="tools/algorithms.html" data-ssearch="algorithms pathways flowchart decision tree diagnose triage data gathering"><span class="x-ic">🗺️</span><span class="x-body"><span class="x-t">Pathways</span><span class="x-meta">The data-gathering spine of any station</span></span><span class="x-arrow">→</span></a>
+            <a class="x-card" href="tools/management.html" data-ssearch="management protocols stepwise treatment confirmed diagnosis management domain"><span class="x-ic">💠</span><span class="x-body"><span class="x-t">Protocols</span><span class="x-meta">Stepwise treatment · the management-domain marks</span></span><span class="x-arrow">→</span></a>
+            <a class="x-card" href="pages/articles.html" data-ssearch="articles a-z primary care topic notes conditions revision"><span class="x-ic">📚</span><span class="x-body"><span class="x-t">Articles</span><span class="x-meta">A–Z topic notes · 435 conditions</span></span><span class="x-arrow">→</span></a>
+            <a class="x-card" href="pages/audios.html" data-ssearch="audios recordings podcast listen revision on the go"><span class="x-ic">🎧</span><span class="x-body"><span class="x-t">Audios</span><span class="x-meta">100 briefings · revise on the go</span></span><span class="x-arrow">→</span></a>
+          </div>
+        </section>
+
+        <section class="fw-strip" data-screen-label="SCA · Domains" data-grp="domains">
+          <span class="eyebrow">How every station is marked</span>
+          <div class="fw-row is-domains">
+            <div class="fw-pill dom"><span class="n">A</span><span class="l">Data gathering &amp; diagnosis<small>“Tasks” — history, exam, investigations, working diagnosis</small></span></div>
+            <div class="fw-pill dom"><span class="n">B</span><span class="l">Clinical management<small>“Global skills” — safe, evidence-based, shared plan</small></span></div>
+            <div class="fw-pill dom"><span class="n">C</span><span class="l">Relating to others<small>ICE, empathy, language, shared decisions</small></span></div>
+          </div>
+        </section>
+
+        <div class="footer-disclaimer" style="margin-top:40px"><strong>Educational use only.</strong> SCA cases are original, inspired by common UK exam themes and built around the published RCGP marking framework — they are not copied from any case bank. Always verify clinical content against the live NICE CKS.</div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- ================= WELCOME CHOOSER ================= -->
+<div class="rgp-entry" id="rgpEntry" hidden>
+  <div class="re-inner">
+    <div class="re-brand">
+      <span class="re-mark">R</span>
+      <span><b>Reasoning GP</b><small>Clinical reasoning · UK</small></span>
+    </div>
+    <h2 class="re-h">Where are you right now?</h2>
+    <p class="re-sub">Pick the interface that fits what you’re doing. Everything stays one click apart — you can switch any time from the top bar.</p>
+    <div class="re-cards">
+      <button class="re-card clinic" type="button" data-choose="clinic">
+        <span class="re-ic">🏥</span>
+        <span class="re-eyebrow">For the consultation</span>
+        <h3>I’m in clinic</h3>
+        <p>Point-of-care reasoning. Lead with Pathways and Protocols, then reach for the medication chooser, lab actioning and diagnostic tool. The Casebook is there when you need the detail.</p>
+        <ul><li>Pathways</li><li>Protocols</li><li>3 interactive tools</li><li>Casebook</li></ul>
+        <span class="re-go">Enter clinic <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </button>
+      <button class="re-card sca" type="button" data-choose="sca">
+        <span class="re-ic">🎓</span>
+        <span class="re-eyebrow">For the exam</span>
+        <h3>I’m preparing for the SCA</h3>
+        <p>Exam-ready. The most common SCA stations, each with the RCGP examiner’s mark scheme laid out in full, plus the 12-minute practice timer, articles and resources to revise around them.</p>
+        <ul><li>SCA cases + scorecard</li><li>The Hot Seat</li><li>Pathways</li><li>Articles &amp; resources</li></ul>
+        <span class="re-go">Start SCA prep <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+      </button>
+    </div>
+    <p class="re-foot">Just browsing? <button type="button" data-choose="clinic">Take me to the clinic interface</button></p>
+  </div>
+</div>
+
+<script src="assets/site.js?v=57"></script>
+<script src="assets/rgp-pay.js?v=1"></script>
+<script src="assets/sca-cases.js"></script>
+<script src="assets/kb-index.js?v=1"></script>
+<script src="assets/local-area.js?v=1"></script>
+<script>
+/* ---------- Floating "Latest updates" — use live archive when present ---------- */
+(function(){
+  var host=document.getElementById('homeUpdates'); if(!host) return;
+  var LKEY='rgp.updates.archive.v1';
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function srcClass(src){ var s=String(src||'').toUpperCase(); if(s.indexOf('MHRA')>=0) return 'src-mhra'; if(s.indexOf('UKHSA')>=0) return 'src-ukhsa'; return 'src-nice'; }
+  function ic(src){ var s=String(src||'').toUpperCase(); if(s.indexOf('MHRA')>=0) return '💊 '; if(s.indexOf('UKHSA')>=0) return '⚠ '; if(s.indexOf('NICE')>=0||s.indexOf('CKS')>=0) return '📝 '; return '📰 '; }
+  function dt(d){ if(!d) return ''; var x=new Date(d); return isNaN(x)?'':x.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }
+  function tOf(it){ var t=Date.parse(it.date||''); if(!isNaN(t)) return t; var s=Date.parse(it.seen||''); return isNaN(s)?0:s; }
+  var items=[];
+  try{ items=JSON.parse(localStorage.getItem(LKEY)||'[]')||[]; }catch(e){ items=[]; }
+  if(!items.length) return; // keep the curated editorial cards
+  items=items.filter(function(x){return x&&x.title;}).sort(function(a,b){return tOf(b)-tOf(a);}).slice(0,3);
+  if(!items.length) return;
+  host.innerHTML=items.map(function(it){
+    return '<a class="upd-card '+srcClass(it.src||it.tag)+'" href="pages/updates.html">'+
+      '<span class="upd-eyebrow">'+esc(ic(it.src||it.tag)+(it.tag||it.src||'Update'))+'</span>'+
+      '<h3>'+esc(it.title)+'</h3>'+
+      (it.summary?'<p>'+esc(it.summary)+'</p>':'')+
+      '<span class="upd-meta"><span class="upd-date">'+esc(dt(it.date))+'</span><span class="upd-go">Read →</span></span>'+
+    '</a>';
+  }).join('');
+})();
+</script>
+<script>
+/* ---------- Global command-palette search ---------- */
+(function(){
+  // Build a combined index across pathways, cases, protocols (kb-index) + tools + sections (site.js).
+  function buildIndex(){
+    var out = [];
+    function norm(h){ return (h||'').replace(/^(\.\.\/)+/,''); }
+    var KB   = (typeof RGP_KB_TOPICS    !== 'undefined') ? RGP_KB_TOPICS    : (window.RGP_KB_TOPICS||[]);
+    var TOOLS= (typeof RGP_TOOLS        !== 'undefined') ? RGP_TOOLS        : (window.RGP_TOOLS||[]);
+    var SECT = (typeof RGP_NAV_SECTIONS !== 'undefined') ? RGP_NAV_SECTIONS : (window.RGP_NAV_SECTIONS||[]);
+    KB.forEach(function(t){
+      out.push({ title:t.title, sub:t.sub||'', icon:t.icon||'•', href:norm(t.href), kind:t.kind||'Pathway' });
+    });
+    TOOLS.forEach(function(t){
+      out.push({ title:t.label, sub:t.meta||'', icon:t.icon||'🛠️', href:norm(t.path), kind:'Tool' });
+    });
+    SECT.forEach(function(t){
+      out.push({ title:t.label, sub:t.meta||'', icon:t.icon||'📂', href:norm(t.path), kind:'Section' });
+    });
+    // de-dupe by href
+    var seen={}; return out.filter(function(x){ if(!x.href||seen[x.href]) return false; seen[x.href]=1; return true; });
+  }
+  var INDEX = null;
+  function score(item, q){
+    var t=item.title.toLowerCase(), s=(item.sub||'').toLowerCase();
+    if(t===q) return 100;
+    if(t.indexOf(q)===0) return 80;
+    if(new RegExp('\\b'+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).test(t)) return 60;
+    if(t.indexOf(q)>-1) return 45;
+    if(s.indexOf(q)>-1) return 25;
+    return 0;
+  }
+  function kindClass(k){ return k==='Tool'?'k-tool':(k==='Section'?'k-section':''); }
+
+  window.wireGlobalSearch = function(){
+    var input = document.getElementById('clinicGlobalSearch');
+    var panel = document.getElementById('clinicResults');
+    if(!input || !panel) return;
+    var sel = -1, rows = [];
+
+    function close(){ panel.classList.remove('show'); input.setAttribute('aria-expanded','false'); sel=-1; }
+    function go(href){ if(href) location.href = href; }
+
+    function render(q){
+      if(!INDEX) INDEX = buildIndex();
+      q = q.trim().toLowerCase();
+      if(q.length < 2){ close(); return; }
+      var hits = INDEX.map(function(it){ return {it:it, sc:score(it,q)}; })
+                      .filter(function(x){ return x.sc>0; })
+                      .sort(function(a,b){ return b.sc-a.sc || a.it.title.length-b.it.title.length; })
+                      .slice(0,18);
+      if(!hits.length){
+        panel.innerHTML = '<div class="gsearch-none">No match for “'+q.replace(/</g,'&lt;')+'”. Try a condition, drug or tool — or <a href="pages/ask.html">ask the assistant</a>.</div>';
+        panel.classList.add('show'); input.setAttribute('aria-expanded','true'); rows=[]; sel=-1; return;
+      }
+      rows = hits;
+      panel.innerHTML = '<div class="gsearch-head">'+hits.length+' result'+(hits.length>1?'s':'')+'</div>' +
+        hits.map(function(x,i){
+          var it=x.it;
+          return '<a class="gsearch-row'+(i===0?' sel':'')+'" role="option" href="'+it.href+'" data-i="'+i+'">'+
+            '<span class="gsearch-ic">'+it.icon+'</span>'+
+            '<span class="gsearch-body"><span class="gsearch-t">'+it.title.replace(/</g,'&lt;')+'</span>'+
+            (it.sub?'<span class="gsearch-sub">'+it.sub.replace(/</g,'&lt;')+'</span>':'')+'</span>'+
+            '<span class="gsearch-kind '+kindClass(it.kind)+'">'+it.kind+'</span></a>';
+        }).join('') +
+        '<div class="gsearch-foot">Looking for something specific? <a href="pages/ask.html">Ask the assistant →</a></div>';
+      panel.classList.add('show'); input.setAttribute('aria-expanded','true'); sel=0;
+    }
+    function moveSel(d){
+      if(!rows.length) return;
+      var els = panel.querySelectorAll('.gsearch-row');
+      if(sel>-1 && els[sel]) els[sel].classList.remove('sel');
+      sel = (sel + d + rows.length) % rows.length;
+      els[sel].classList.add('sel');
+      els[sel].scrollIntoView({block:'nearest'});
+    }
+
+    input.addEventListener('input', function(){ render(input.value); });
+    input.addEventListener('focus', function(){ if(input.value.trim().length>=2) render(input.value); });
+    input.addEventListener('keydown', function(e){
+      if(e.key==='ArrowDown'){ e.preventDefault(); moveSel(1); }
+      else if(e.key==='ArrowUp'){ e.preventDefault(); moveSel(-1); }
+      else if(e.key==='Enter'){ if(rows.length){ e.preventDefault(); go(rows[Math.max(sel,0)].it.href); } }
+      else if(e.key==='Escape'){ close(); input.blur(); }
+    });
+    panel.addEventListener('mousedown', function(e){ var r=e.target.closest('.gsearch-row'); if(r){ e.preventDefault(); go(r.getAttribute('href')); } });
+    document.addEventListener('click', function(e){ if(!e.target.closest('#clinicSearchWrap')) close(); });
+  };
+
+  // Carry a typed query into the assistant when "Ask a question" is used.
+  document.querySelectorAll('.home-search').forEach(function(box){
+    var inp = box.querySelector('input'), ask = box.querySelector('.hs-ask');
+    if(!inp || !ask) return;
+    var base = ask.getAttribute('href');
+    inp.addEventListener('input', function(){ var q=inp.value.trim(); ask.href = base + (q ? ('?q='+encodeURIComponent(q)) : ''); });
+  });
+})();
+</script>
+<script>
+(function(){
+  /* ---------- Welcome chooser ---------- */
+  const ENTRY_KEY = 'rgp.entry.v1';
+  const entry = document.getElementById('rgpEntry');
+
+  function chooseInterface(mode, persist){
+    if (window.RGP_setMode) window.RGP_setMode(mode);
+    else { document.body.classList.remove('mode-clinic','mode-both','mode-sca'); document.body.classList.add('mode-'+mode); }
+    // keep nav switch in sync
+    document.querySelectorAll('.rgp-iface button').forEach(b=>{
+      const on = (mode==='sca') ? b.dataset.mode==='sca' : b.dataset.mode!=='sca';
+      b.classList.toggle('active', on);
+    });
+    if (persist) localStorage.setItem(ENTRY_KEY, mode);
+    window.scrollTo(0,0);
+  }
+  function closeEntry(){ entry.classList.add('is-closing'); setTimeout(()=>{ entry.hidden = true; }, 380); }
+
+  if (!localStorage.getItem(ENTRY_KEY)) {
+    entry.hidden = false;
+  }
+  entry.querySelectorAll('[data-choose]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{ chooseInterface(btn.dataset.choose, true); closeEntry(); });
+  });
+  // Hero switch links + re-open chooser
+  document.querySelectorAll('[data-go-sca]').forEach(b=>b.addEventListener('click', ()=>chooseInterface('sca', true)));
+  document.querySelectorAll('[data-go-clinic]').forEach(b=>b.addEventListener('click', ()=>chooseInterface('clinic', true)));
+
+  /* ---------- SCA case cards + examiner scorecard ---------- */
+  const TYPE = {
+    video:     {ic:'🎥', label:'Video consultation'},
+    telephone: {ic:'☎️', label:'Telephone'},
+    f2f:       {ic:'🩺', label:'Face-to-face'},
+    home:      {ic:'🏠', label:'Home visit'},
+    data:      {ic:'📊', label:'Data interpretation'}
+  };
+  const DOM = {
+    tasks: {cls:'tasks', label:'Tasks — data gathering & diagnosis'},
+    rto:   {cls:'rto',   label:'Relating to others'},
+    gs:    {cls:'gs',    label:'Global skills — management'}
+  };
+  const DOM_ORDER = ['tasks','rto','gs'];
+
+  function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+  function domBlocks(checkpoints){
+    return DOM_ORDER.map(d=>{
+      const items = (checkpoints||[]).filter(c=>c.dom===d);
+      if(!items.length) return '';
+      return `<div class="dom-block">
+        <div class="dom-head"><span class="dom-chip ${DOM[d].cls}">${DOM[d].label}</span></div>
+        <ul>${items.map(c=>`<li>${esc(c.text)}</li>`).join('')}</ul>
+      </div>`;
+    }).join('');
+  }
+  function ragRows(checkpoints){
+    const present = DOM_ORDER.filter(d=>(checkpoints||[]).some(c=>c.dom===d));
+    return present.map(d=>`
+      <div class="rag-item">
+        <span class="rag-name">${DOM[d].label.split(' — ')[0]}</span>
+        <span class="rag-dots" role="group" aria-label="Self-score ${DOM[d].label}">
+          <button class="rag-dot r" type="button" data-rag="r" title="Needs work"></button>
+          <button class="rag-dot a" type="button" data-rag="a" title="Developing"></button>
+          <button class="rag-dot g" type="button" data-rag="g" title="Clear pass"></button>
+        </span>
+      </div>`).join('');
+  }
+
+  function cardHTML(c){
+    const t = TYPE[c.type] || {ic:'📋', label:'Consultation'};
+    const m = c.meta || {};
+    const metaLine = [m.age!=null?`${m.age}${m.sex?' '+m.sex:''}`:'', m.system].filter(Boolean).join(' · ');
+    const worked = (c.worked||[]).slice(0,3).map(w=>`<div class="wk"><div class="wk-l">${esc(w.lbl)}</div><div class="wk-t">${esc(w.txt)}</div></div>`).join('');
+    return `<details class="scc" data-ssearch="${esc((c.title+' '+(m.system||'')+' '+(c.type||'')).toLowerCase())}">
+      <summary class="scc-head">
+        <span class="scc-top">
+          <span class="scc-type">${t.ic} ${t.label}</span>
+          <span class="scc-dur">${c.duration||12} min</span>
+        </span>
+        <h3>${esc(c.title)}</h3>
+        <span class="scc-meta">${esc(metaLine)}</span>
+        <span class="scc-brief">${esc((c.brief||'').slice(0,150))}${(c.brief||'').length>150?'…':''}</span>
+        <span class="scc-open-cta">Reveal the examiner’s mark scheme <svg class="ec-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </summary>
+      <div class="scc-body">
+        <div class="ep-main">
+          <div class="ep-eyebrow">Mark like an RCGP examiner</div>
+          <div class="ep-h">What a clear pass looks like</div>
+          ${domBlocks(c.checkpoints)}
+        </div>
+        <div class="ep-side">
+          <div class="ep-eyebrow">Model phrases</div>
+          <div class="ep-h">Gold-standard wording</div>
+          <div class="worked">${worked}</div>
+          ${c.learning?`<div class="ep-learn"><b>Examiner’s note.</b> ${esc(c.learning)}</div>`:''}
+          <div class="rag">
+            <div class="rag-l">Score yourself after each attempt</div>
+            <div class="rag-row">${ragRows(c.checkpoints)}</div>
+          </div>
+          <div class="ep-actions">
+            <a class="ep-btn primary" href="tools/sca-practice.html">Practise this case →</a>
+          </div>
+        </div>
+      </div>
+    </details>`;
+  }
+
+  const grid = document.getElementById('scaCaseGrid');
+  const cases = (window.SCA_CASES || []);
+  const INITIAL = 8;
+  if (grid && cases.length){
+    grid.innerHTML = cases.map((c,i)=>cardHTML(c)).join('');
+    // hide overflow beyond INITIAL
+    const all = [...grid.children];
+    if (all.length > INITIAL){
+      all.slice(INITIAL).forEach(el=>el.style.display='none');
+      const btn = document.getElementById('scaMoreBtn');
+      btn.textContent = `Show all ${all.length} stations`;
+      btn.addEventListener('click', ()=>{
+        const hidden = all.slice(INITIAL).some(el=>el.style.display==='none');
+        all.slice(INITIAL).forEach(el=>el.style.display = hidden ? '' : 'none');
+        btn.textContent = hidden ? 'Show fewer stations' : `Show all ${all.length} stations`;
+      });
+    } else {
+      document.getElementById('scaMoreWrap').style.display='none';
+    }
+    // RAG wiring + close-others-open-one behaviour
+    grid.addEventListener('click', e=>{
+      const dot = e.target.closest('.rag-dot');
+      if (dot){
+        e.preventDefault();
+        dot.parentElement.querySelectorAll('.rag-dot').forEach(d=>d.classList.remove('on'));
+        dot.classList.add('on');
+      }
+    });
+  }
+
+  /* ---------- Home search (per active interface) ---------- */
+  function wireSearch(input, emptySel, attr){
+    const empty = document.querySelector(emptySel);
+    if(!input) return;
+    const scope = input.closest('.home-clinic, .home-sca');
+    const items = [...scope.querySelectorAll('['+attr+']')];
+    const sections = [...scope.querySelectorAll('.home-sec, .fw-strip')];
+    function apply(){
+      const q = input.value.trim().toLowerCase();
+      let shown=0, first=null;
+      items.forEach(el=>{
+        const hay = (el.getAttribute(attr)+' '+el.textContent).toLowerCase();
+        const match = !q || hay.includes(q);
+        el.style.display = match ? '' : 'none';
+        if(match){ shown++; if(!first && el.tagName==='A') first = el.getAttribute('href'); }
+      });
+      sections.forEach(sec=>{
+        const s = sec.querySelectorAll('['+attr+']');
+        if(!s.length){ sec.style.display = q ? 'none' : ''; return; }
+        const has = sec.querySelector('['+attr+']:not([style*="display: none"])');
+        sec.style.display = has ? '' : 'none';
+      });
+      if(empty) empty.classList.toggle('show', q && shown===0);
+      input.dataset.first = first || '';
+    }
+    input.addEventListener('input', apply);
+    input.addEventListener('keydown', e=>{ if(e.key==='Enter' && input.dataset.first){ location.href = input.dataset.first; } });
+  }
+  wireSearch(document.querySelector('.home-sca .homeSearch'), '.scaEmpty', 'data-ssearch');
+  if (window.wireGlobalSearch) window.wireGlobalSearch();
+})();
+</script>
+</body>
+</html>

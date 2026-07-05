@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Atopic Eczema — Protocol · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css">
+<link rel="stylesheet" href="../../assets/medchooser.css">
+</head>
+<body data-screen-label="Eczema management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js"></script>
+<script>
+MG.render({
+  icon:"🧴",
+  title:"Atopic Eczema",
+  stemTitle:"Atopic eczema/dermatitis — ongoing management",
+  stemSub:"Primary-care management of atopic eczema using the stepped-care model \u2014 emollients as the constant base, topical corticosteroids matched to severity, flare and infection management \u2014 up to dermatology referral. NICE CG57 \u00b7 CKS 2026.",
+  guideline:"NICE CG57",
+  glance:[
+    {lbl:"Base for all", val:"Emollients", sub:"liberal + frequent"},
+    {lbl:"Model", val:"Stepped care", sub:"step up/down with severity"},
+    {lbl:"Mild flare", val:"Mild TCS", sub:"hydrocortisone"},
+    {lbl:"Mod\u2013severe", val:"Mod\u2013potent TCS", sub:"\u00b1 calcineurin inhibitor"},
+    {lbl:"Infected", val:"Treat infection", sub:"flucloxacillin / eczema herpeticum"},
+    {lbl:"Refer", val:"Severe / uncontrolled", sub:"dermatology"}
+  ],
+  flow:[
+    {t:"node", d:"found", n:"1", tag:"Foundation", title:"Confirm and assess severity + impact",
+      blocks:[
+        {b:"kv", rows:[
+          ["Diagnosis","Itchy skin + \u22653 of: flexural involvement, history of flexural dermatitis, dry skin, other atopy, onset &lt;2 y"],
+          ["Severity","Clear / mild / moderate / severe \u2014 plus impact on sleep, school/work, psychosocial wellbeing"],
+          ["Triggers","Irritants (soap), allergens, heat, stress, infection; consider food allergy in infants with poor control"],
+          ["Document","Body areas affected and current treatments/adherence"]
+        ]},
+        {b:"why", html:"Eczema management is <strong>stepped care</strong>: emollients are the constant foundation, and topical steroid potency steps up and down to match disease activity. The key insight is that emollients are not optional background \u2014 they are the treatment that reduces flares and steroid need; under-emollient use is the commonest reason for poor control."}
+      ]},
+    {t:"node", d:"life", n:"2", tag:"Non-drug \u00b7 foundation for all", title:"Emollients and trigger avoidance",
+      blocks:[
+        {b:"tiles", v:"life", items:[
+          {t:"🧴 Emollients (liberal)", html:"Apply generously and often (e.g. \u2265250\u2013500 g/week), even when clear; continue during flares. Leave-on + soap substitute."},
+          {t:"🚫 Soap substitute", html:"Avoid soaps/detergents/bubble bath; use emollient as a wash."},
+          {t:"🌡️ Reduce triggers", html:"Avoid overheating, wool/synthetics, known irritants; keep nails short to limit scratch damage."},
+          {t:"💧 Apply technique", html:"Smooth on in the direction of hair growth; emollient first, wait, then steroid."},
+          {t:"🍼 Infants", html:"Consider food-allergy contribution if moderate\u2013severe eczema not controlled."},
+          {t:"🧠 Education", html:"Teach the step-up/step-down plan; address steroid phobia (a major adherence barrier)."}
+        ]}
+      ]},
+    {t:"node", d:"drug", n:"3", tag:"Medication \u00b7 stepped care", title:"Topical steroids matched to severity",
+      blocks:[
+        {b:"ladder", steps:[
+          {step:"Mild", title:"Emollients + mild TCS", when:"hydrocortisone 1%",
+           html:"For mild flares; thin layer once\u2013twice daily to active areas until controlled, then stop (continue emollients)."},
+          {step:"Moderate", title:"Moderate-potency TCS", when:"e.g. clobetasone butyrate",
+           fromLabel:"moderate disease / inadequate response",
+           html:"<b>Clobetasone butyrate 0.05% (Eumovate) OD\u2013BD</b>; consider a <b>topical calcineurin inhibitor</b> (tacrolimus 0.03\u20130.1% / pimecrolimus 1% BD) for the face/flexures or steroid-sparing."},
+          {step:"Severe", title:"Potent TCS \u00b1 occlusion / bandaging", when:"severe flares",
+           fromLabel:"severe / lichenified",
+           html:"<b>Potent TCS \u2014 betamethasone valerate 0.1% / mometasone 0.1% OD</b> short courses; consider bandaging. Sedating antihistamine (e.g. chlorphenamine / hydroxyzine) short-term for sleep disturbance from itch."},
+          {step:"Maintenance", title:"\u2018Weekend\u2019 therapy", when:"frequent flares",
+           fromLabel:"frequent relapses",
+           html:"Intermittent TCS/calcineurin inhibitor to recurrent sites (e.g. 2 consecutive days/week) to prevent flares."}
+        ]},
+        {b:"warn", html:"Match potency to site (mild on face/flexures; avoid potent steroids on the face long-term). <b>Recognise infection:</b> weeping/crusting/pustules \u2192 treat (node below). Reassure about safe, appropriate steroid use to counter steroid phobia."}
+      ]},
+    {t:"node", d:"safety", n:"4", tag:"Safety \u00b7 infection", title:"Spot and treat infected eczema",
+      blocks:[
+        {b:"kv", rows:[
+          ["Bacterial","Weeping, crusting, pustules, rapid worsening \u2192 oral flucloxacillin (clarithromycin if penicillin-allergic)"],
+          ["Eczema herpeticum","<b>Emergency:</b> rapidly worsening painful eczema, clustered punched-out erosions, monomorphic vesicles, systemic upset \u2192 same-day; aciclovir \u00b1 admission"],
+          ["Swabs","If not responding or recurrent"]
+        ]},
+        {b:"warn", html:"<b>Eczema herpeticum</b> is a dermatological emergency \u2014 painful, rapidly spreading, punched-out lesions \u00b1 fever \u2192 urgent treatment; ophthalmology if near the eye."}
+      ]},
+    {t:"node", d:"monitor", n:"5", tag:"Monitoring", title:"Control, growth and treatment use",
+      blocks:[
+        {b:"table", head:["What","When","Action"], rows:[
+          ["Control + flare frequency","Each review","Step up/down; add maintenance therapy if frequent flares"],
+          ["Emollient quantity","Each review","Under-use is the commonest failure \u2014 re-prescribe generously"],
+          ["TCS use / potency","Each review","Right potency for site; avoid long potent courses on face"],
+          ["Growth (children)","If extensive potent TCS","Monitor; reassure appropriate use is safe"]
+        ]}
+      ]},
+    {t:"node", d:"follow", n:"6", tag:"Follow-up", title:"Review schedule",
+      blocks:[
+        {b:"timeline", items:[
+          {n:"1", when:"After starting", title:"Response + technique", html:"Check emollient quantity, TCS technique and adherence; address steroid phobia."},
+          {n:"2", when:"During flares", title:"Step up", html:"Increase potency/maintenance; treat infection; manage itch and sleep."},
+          {n:"3", when:"Ongoing", title:"Stepped review", html:"Step down as control improves; reinforce emollient base; consider maintenance therapy."}
+        ]}
+      ]},
+    {t:"loop", icon:"🔁", title:"Not controlled? Check before escalating",
+      arrow:"\u2026if eczema stays active",
+      intro:"Most poor control is emollient under-use, technique, or unrecognised infection.",
+      checks:[
+        {b:"1 \u00b7 Emollients", html:"Genuinely using enough, often enough, including when clear?"},
+        {b:"2 \u00b7 Steroid phobia", html:"Under-treating flares from fear of steroids? Reassure and re-teach."},
+        {b:"3 \u00b7 Infection", html:"Weeping/crusting / herpeticum \u2014 treat before escalating."},
+        {b:"4 \u00b7 Triggers", html:"Irritants, allergens, heat; food allergy in poorly-controlled infants."},
+        {b:"5 \u00b7 Escalate", html:"Severe/uncontrolled despite optimal topical care \u2192 dermatology."}
+      ],
+      back:"Emollients + technique + infection + triggers addressed \u2192 refer dermatology"},
+    {t:"node", d:"safety", n:"7", tag:"Safety-net", title:"Safety-netting",
+      blocks:[
+        {b:"tiles", v:"safety", items:[
+          {t:"🔴 Eczema herpeticum", html:"\u201cRapidly spreading, painful eczema with clusters of little blisters or punched-out sores, feeling unwell \u2014 seek same-day help.\u201d"},
+          {t:"🟠 Infected eczema", html:"\u201cWeeping, golden crusting, pustules or rapid worsening \u2014 contact us; it may need an antibiotic.\u201d"},
+          {t:"🧴 Keep emollients up", html:"\u201cKeep using moisturisers every day even when the skin looks clear \u2014 it prevents flares.\u201d"},
+          {t:"💊 Steroids are safe used right", html:"\u201cUsed correctly for flares, steroid creams are safe \u2014 don\u2019t under-treat from worry; we\u2019ll guide the amount.\u201d"}
+        ]}
+      ]},
+    {t:"node", d:"refer", n:"8", tag:"Refer to secondary care", title:"When to refer",
+      arrow:"emergency for herpeticum; routine for uncontrolled",
+      blocks:[
+        {b:"tiles", v:"refer", items:[
+          {t:"Emergency", html:"Eczema herpeticum \u2192 same-day; ophthalmology if periocular."},
+          {t:"Severe / uncontrolled", html:"Not controlled by optimal topical therapy \u2014 for phototherapy / systemic / biologic assessment."},
+          {t:"Diagnostic doubt", html:"Uncertain diagnosis, or suspected contact allergy needing patch testing."},
+          {t:"Recurrent infection / psychosocial", html:"Frequent infections, or severe impact on quality of life."},
+          {t:"Food allergy (infants)", html:"Moderate\u2013severe eczema with suspected food allergy not controlled \u2192 paediatric/allergy."}
+        ]},
+        {b:"say", html:"The secret to eczema is moisturisers \u2014 lots, every day, even when the skin looks fine \u2014 with steroid cream for flares used properly and then stopped. Used correctly the steroids are safe. Let\u2019s build that routine and review."}
+      ]}
+  ]
+});
+</script>
+<!-- ═══ Interactive Medication Chooser ═══ -->
+<div class="mg-wrap mc-embed" style="padding-top:0;padding-bottom:40px">
+  <div class="mc-embed-head">⚙ Interactive Medication Chooser — tick the patient profile, options re-tier live against NICE / BNF</div>
+  <div data-medchooser="eczema"></div>
+</div>
+<style>.mc-embed-head{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#6b7280);margin:6px 0 10px}@media print{.mc-embed{display:none !important}}</style>
+<script src="../../assets/medchooser.js"></script>
+<script src="../../assets/meds/eczema.js"></script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=2"></script>
+</body>
+</html>
