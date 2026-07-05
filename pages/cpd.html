@@ -304,7 +304,7 @@
 </div>
 
 </main></div>
-<script src="../assets/site.js?v=57"></script>
+<script src="../assets/site.js?v=61"></script>
 <script>
 (function(){
   var KEY = 'rgp-cpd-v1';
@@ -595,6 +595,8 @@
   // wait for tracker, then render
   var tries=0;
   (function wait(){ if(window.RGPCPD || tries>40 || Object.keys(load()).length){ render(); } else { tries++; setTimeout(wait,120); } })();
+  // Cross-device sync landed newer data for this account → refresh the view.
+  window.addEventListener('rgp-sync-updated', function(e){ if(!e.detail || !e.detail.keys || e.detail.keys.indexOf('rgp-cpd-v1')>-1) render(); });
 })();
 </script>
 </body></html>

@@ -50,6 +50,54 @@ Source of truth: `uploads/Cancer referral NICE.pdf` (NICE NG12, May 2025).
   in Chrome). Always handle the `unavailable` case gracefully and offer a worked example.
 
 ## Session log
+- **Free "Trainee" (bronze) taster — granular paywall gate (this session):** the user
+  specified exactly what a FREE signed-in account may open. Rebuilt the paywall gate in
+  `assets/site.js` (the `RGP paywall gate` IIFE) from a 2-way clinic/sca split into a granular
+  bronze policy. Added `FREE_CASES`/`FREE_ALGS` = first 5 full case basenames (from
+  `window.RGP_CASES` groups) + first 5 `RGP_ALGORITHMS` slugs (exposed as
+  `window.RGP_FREE_SAMPLES`), and `bronzeReason()` returning null=allowed else a reason code.
+  Free account ALLOWS: Consult Scribe, Articles, Resources, Patient Leaflets, Consultation
+  Spine, the SCA **Guide** (reference, not a tool), the Casebook + Pathways **directories**
+  (browse), and the 5 sample cases + 5 sample pathways. BLOCKS (→ upgrade overlay): Ask,
+  Prescribing, CPD, all other clinic tools, ALL other `sca-*` tools, the management protocols,
+  and non-sample cases/pathways. Signed-out still fully gated (must make a free account →
+  captures email). `allowed()`: platinum=all, silver=clinic, gold=sca, bronze=`bronzeReason()===null`.
+  Gate overlay got bronze-specific copy (per-reason message + "your free plan still includes…").
+  Home free-tier pricing card rewritten to match (5 sample cases+pathways, Scribe, articles/
+  resources/leaflets, Spine+SCA Guide; Ask/Prescribing/CPD/full toolkit marked N/A). Required
+  sitewide **site.js?v=60→v=61** (root+cases/+tools/+pages/+lab-results; verified zero v=60 remain).
+  STILL PENDING (told user): protocols (single `management.html` page) and SCA cases (inside the
+  Hot Seat tool) can't be page-gated to "5 samples" — RESOLVED later this session:
+  protocols ARE individual pages (`tools/management/<slug>.html`) so the gate handles them via a
+  curated `FREE_PROTOCOLS` set (hypertension/asthma/type-2-diabetes/gout/migraine); management.html
+  directory is browsable. SCA cases capped IN-TOOL: `assets/sca-practice.js` locks all but the first
+  5 `SCA_CASES` for free accounts (dimmed tile + 🔒 CTA + upsell overlay on click), using the shared
+  `window.RGP_PAYWALL.isFreeTier()` helper now exported from the gate. Scribe capped to 5 note
+  generations/calendar month for free accounts (`rgp-scribe-quota-v1` in scribe.html generate();
+  paid = unlimited). `window.RGP_FREE_SAMPLES` now also carries protocols + scaCases. All within
+  site.js v=61 (unshipped this session, so no re-bump).
+- **Cross-device progress sync — RGPSync (this session):** the user asked that progress
+  (not just Scribe) follow the account across computers. Added `window.RGPSync` to
+  `assets/site.js` (right after the `RGPCloud` IIFE): mirrors a family of localStorage
+  progress stores to the account via `RGPCloud` → Worker `/api/data` under `store:<key>`.
+  Synced keys (with per-type merge): `rgp.progress.v1` (rank/furthest-state), `rgp-cpd-v1`
+  (cpd: max seconds/visits, min first, max last, newer reflection), and the SCA family
+  `rgp-sca-progress-v1` / `-attempts` / `-circuit-history` / `-domain-attempts` /
+  `-attempts-hotseat` / `-habits` (array: union by id||ts, cap 600) + `rgp-sca-exm` /
+  `rgp-akt-srs` (objnew: union, keep newer by last/due/ts/updated). Non-destructive: PULL
+  merges cloud⊕local and pushes the union back, so a device with local progress keeps it.
+  Loop: `start()` on init (pulls if signed in) + `onSignIn()` after login + 8s poll of
+  changed keys + push on visibilitychange/pagehide; dispatches `rgp-sync-updated` on change.
+  `pages/cpd.html` re-renders on that event; `tools/sca-weakspots.html` reloads once
+  (sessionStorage-guarded). `ready()` is false with no Worker → silently local-only in
+  preview. Verified in preview: RGPSync present, 10 keys, ready=false, no console errors.
+  Required sitewide **site.js?v=59→v=60** (root + cases/ + tools/ + pages/ +
+  lab-results.html; verified zero v=59 remain). Also this session: built
+  `tools/access-codes.html` (owner console for free-entry/discount codes → Worker
+  `/api/admin/codes`), refreshed `_changed/README`, added Setup guide "Part 7 — Members-only
+  access & payments" (PayPal→Monzo payouts, paywall, codes). Payment processor = PayPal
+  (cheapest: no monthly fee; Cloudflare Worker/KV on free tier). Worker deploy + ADMIN_EMAIL
+  + PayPal vars still pending on the user's side.
 - **Algorithm pathways — "Why?" drawers unreachable = the real "thin" complaint (this session,
   follow-on 4):** user's "steps so thin compared to original" meant LESS CLINICAL INFO, not width.
   Diagnosis via eval: 9 hidden `.why-drawer` blocks (~1700 chars of reasoning per page) and the

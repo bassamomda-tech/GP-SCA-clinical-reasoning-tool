@@ -130,6 +130,18 @@
 .scr-2ww-item .act{ display:block; margin-top:2px; }
 .scr-2ww-item .act b{ color:var(--ink); }
 
+/* missed red-flags banner */
+.scr-missed{ border:1px solid #fecaca; background:#fef2f2; border-radius:12px; padding:13px 15px; margin-bottom:14px; }
+.scr-missed-top{ display:flex; align-items:center; gap:9px; margin-bottom:8px; }
+.scr-missed-pill{ font-size:10px; font-weight:800; letter-spacing:.06em; color:#fff; background:#b91c1c; border-radius:99px; padding:3px 9px; flex-shrink:0; }
+.scr-missed-pill.tw{ background:var(--p); }
+.scr-missed-top b{ font-size:13.5px; color:#b91c1c; }
+.scr-missed-item{ font-size:12.8px; line-height:1.55; color:var(--ink-2); padding:7px 0; border-top:1px dashed #fecaca; }
+.scr-missed-item:first-of-type{ border-top:none; }
+.scr-missed-item .flag{ font-weight:700; color:var(--ink); }
+.scr-missed-item .act{ display:block; margin-top:2px; }
+.scr-missed-item .act b{ color:var(--ink); }
+
 /* rx + tasks lists */
 .scr-rx{ display:flex; flex-direction:column; gap:8px; }
 .scr-rx-item{ border:1px solid var(--line); border-radius:9px; padding:9px 12px; }
@@ -156,6 +168,11 @@
 .scr-memory-head{ display:flex; align-items:center; gap:10px; margin-bottom:0; }
 .scr-memory-head .spacer{ margin-left:auto; }
 .scr-mem-count{ font-size:10.5px; font-weight:800; background:var(--teal-soft); color:var(--teal); border-radius:99px; padding:1px 8px; }
+.scr-sync{ font-size:10.5px; font-weight:700; border-radius:99px; padding:1px 8px; border:1px solid var(--line); color:var(--muted); background:var(--bg-soft); }
+.scr-sync.on{ color:#15803d; background:#f0fdf4; border-color:#bbf7d0; }
+.scr-sync.busy{ color:#92400e; background:#fffbeb; border-color:#fde68a; }
+.scr-sync.err{ color:#b91c1c; background:#fef2f2; border-color:#fecaca; }
+.scr-sync:empty{ display:none; }
 .scr-mem-list{ display:flex; gap:9px; flex-wrap:wrap; margin-top:11px; }
 .scr-mem-empty{ font-size:12.5px; color:var(--muted); margin-top:9px; line-height:1.5; }
 .scr-mem-card{ position:relative; display:flex; flex-direction:column; gap:3px; min-width:188px; max-width:248px; padding:10px 30px 10px 12px; border:1px solid var(--line); border-radius:10px; background:#fff; cursor:pointer; transition:.12s ease; text-align:left; }
@@ -253,7 +270,7 @@
       <div class="tool-head">
         <div class="tool-eyebrow">Reasoning GP · Clinic tools</div>
         <h1>Consult <em>Scribe</em></h1>
-        <p>Record the consultation as it happens — <b>pause</b> when you're interrupted — then <b>✦ Enhance</b> the transcript (AI fixes speech-to-text mishears, punctuation and Doctor/Patient labels) and turn it into a ready-to-paste GP record in your chosen <b>note style</b>, formatted for <b>EMIS Web</b>, <b>SystmOne</b> or a generic <b>SOAP</b> note. Generates examination, impression, plan, safety-netting, a referral draft, a <b>patient summary</b>, prescription ideas and admin tasks — flags NICE NG12 two-week-wait criteria, and the <b>SCA prep</b> tab marks the consultation like an RCGP examiner. Add <b>custom instructions</b> to make every note match your style.</p>
+        <p>Record the consultation as it happens — <b>pause</b> when you're interrupted — then <b>✦ Enhance</b> the transcript (AI fixes speech-to-text mishears, punctuation and Doctor/Patient labels) and turn it into a ready-to-paste GP record in your chosen <b>note style</b> and <b>care setting</b> (GP surgery · OOH · UTC), formatted for <b>EMIS Web</b>, <b>SystmOne</b> or a generic <b>SOAP</b> note. Generates examination, impression, plan, safety-netting, a referral draft, a <b>patient summary</b>, prescription ideas and admin tasks — flags NICE NG12 two-week-wait criteria, highlights <b>missed red flags</b>, and the <b>SCA prep</b> tab marks the consultation like an RCGP examiner. Add <b>custom instructions</b> to make every note match your style.</p>
       </div>
 
       <div class="scr-note">⚙️ <b>Best on the live site, in Chrome.</b> Live dictation needs the microphone (Chrome/Edge) and note generation needs the assistant connection. <b>Never dictate or paste real patient-identifiable data into a tool.</b> Always read, edit and verify the generated record before it enters the clinical system — you remain responsible for its accuracy. Educational / drafting aid only.</div>
@@ -266,6 +283,14 @@
             <button data-sys="emis" class="on">EMIS Web</button>
             <button data-sys="s1">SystmOne</button>
             <button data-sys="soap">SOAP</button>
+          </div>
+        </div>
+        <div class="scr-ctrl-grp">
+          <span class="scr-seg-lbl">Setting</span>
+          <div class="scr-seg" id="settingSeg">
+            <button data-setting="gp" class="on">GP surgery</button>
+            <button data-setting="ooh">OOH</button>
+            <button data-setting="utc">UTC</button>
           </div>
         </div>
         <div class="scr-ctrl-grp scr-layout-toggle">
@@ -282,6 +307,7 @@
         <div class="scr-memory-head">
           <span class="scr-seg-lbl">Saved consultations</span>
           <span class="scr-mem-count" id="memCount">0</span>
+          <span class="scr-sync off" id="memSync"></span>
           <span class="spacer"></span>
           <button class="scr-btn" id="newConsultBtn">+ New consultation</button>
         </div>
@@ -381,6 +407,7 @@
             <div class="scr-pane-body">
               <div class="scr-tabpane on" data-pane="note">
                 <div id="twowwWrap"></div>
+                <div id="missedWrap"></div>
                 <div id="noteSecs"></div>
               </div>
               <div class="scr-tabpane" data-pane="referral">
@@ -391,6 +418,20 @@
                 </div>
                 <textarea class="scr-letter" id="letterBox" placeholder="No referral drafted for this consultation. Tap “Make letter ready to send” to produce a full, formatted referral letter from the consultation."></textarea>
                 <div id="refErr"></div>
+                <div class="scr-chat" style="margin-top:14px">
+                  <span class="scr-seg-lbl">Discuss / amend this referral</span>
+                  <div class="scr-chat-log" id="refChatLog"></div>
+                  <div class="scr-chips" id="refChips">
+                    <button class="scr-chip" data-q="Make the letter more concise.">Shorten</button>
+                    <button class="scr-chip" data-q="Should this referral be urgent / 2-week-wait? Check against NICE NG12 and adjust the letter if needed.">Check urgency</button>
+                    <button class="scr-chip" data-q="Is this the right specialty? Suggest the most appropriate service and rewrite the letter for it if different.">Right specialty?</button>
+                    <button class="scr-chip" data-q="Is this referral appropriate and complete? What would the receiving team want added?">Is it complete?</button>
+                  </div>
+                  <div class="scr-chat-input">
+                    <textarea id="refChatBox" placeholder="Ask about the referral or request changes — e.g. “add the smoking history”, “should this be 2WW?”, “make it routine”…"></textarea>
+                    <button class="scr-btn pri" id="refChatSend">Send</button>
+                  </div>
+                </div>
               </div>
               <div class="scr-tabpane" data-pane="patient">
                 <div class="scr-referral-bar">
@@ -455,7 +496,7 @@
 </div>
 
 <script src="../assets/cpd-log.js?v=1"></script>
-<script src="../assets/site.js?v=57"></script>
+<script src="../assets/site.js?v=61"></script>
 <script>
 (function(){
   "use strict";
@@ -463,9 +504,12 @@
   const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const LS = 'rgp-scribe-v1';
   const HLS = 'rgp-scribe-history-v1';
+  const DKEY = 'rgp-scribe-del-v1';   // tombstones so deletions hold across synced devices
   const HMAX = 40;
 
   let sys = 'emis';
+  let setting = 'gp';   // care setting: gp | ooh | utc
+  let refChat = [];     // referral discussion log
   let layout = 'split';
   let noteStyle = 'concise';
   let note = null;      // last generated note object
@@ -475,16 +519,22 @@
   let currentId = null; // id of the session currently loaded into the workspace
 
   const SYS_LABEL = { emis:'EMIS Web', s1:'SystmOne', soap:'SOAP note' };
+  const SETTING_LABEL = { gp:'GP surgery', ooh:'Out-of-hours (OOH)', utc:'Urgent treatment centre (UTC)' };
+  function settingBrief(){
+    if(setting==='ooh') return 'SETTING: Out-of-hours (OOH) primary care. Episodic contact with NO continuity — the patient\u2019s registered GP holds the record. Interpret and document accordingly: focus on tonight\u2019s problem, explicit disposition (home / GP follow-up / ED), strong specific safety-netting, and actions to hand back to the registered practice (mark them "for own GP"). Do NOT plan routine chronic disease management or practice recalls.';
+    if(setting==='utc') return 'SETTING: Urgent treatment centre (UTC). Single episodic urgent-care attendance. Document the acute problem, treatment given, explicit disposition (home / ED escalation / GP follow-up), strong specific safety-netting, and any actions for the registered GP. State ED escalation clearly where indicated. Do NOT plan routine chronic disease management.';
+    return 'SETTING: Routine GP surgery consultation with continuity of care — follow-up, recalls, chronic disease actions and practice-based referrals are all appropriate.';
+  }
 
   /* ---------- persistence ---------- */
   function save(){
     try{ localStorage.setItem(LS, JSON.stringify({
-      sys, layout, currentId, noteStyle,
+      sys, setting, layout, currentId, noteStyle,
       autoEnh: !!($('#autoEnh') && $('#autoEnh').checked),
       t: $('#transcript').value,
       ctx: { init:$('#ctxInit').value, age:$('#ctxAge').value, pc:$('#ctxPc').value },
       custom: $('#customInstr').value,
-      note, chat
+      note, chat, refChat
     })); }catch(e){}
   }
   function restore(){
@@ -494,11 +544,13 @@
     if(d.sys) setSys(d.sys);
     if(d.layout) setLayout(d.layout);
     if(d.noteStyle) setStyle(d.noteStyle);
+    if(d.setting) setSetting(d.setting);
     if(typeof d.autoEnh==='boolean' && $('#autoEnh')) $('#autoEnh').checked = d.autoEnh;
     if(d.t) $('#transcript').value = d.t;
     if(d.ctx){ $('#ctxInit').value=d.ctx.init||''; $('#ctxAge').value=d.ctx.age||''; $('#ctxPc').value=d.ctx.pc||''; }
     if(d.custom) $('#customInstr').value=d.custom;
     if(Array.isArray(d.chat)){ chat=d.chat; renderChat(); }
+    if(Array.isArray(d.refChat)){ refChat=d.refChat; renderRefChat(); }
     updateWordCount();
     if(d.note){ note=d.note; renderNote(); }
   }
@@ -509,6 +561,7 @@
   }
   function saveHistory(){
     try{ localStorage.setItem(HLS, JSON.stringify(history.slice(0, HMAX))); }catch(e){}
+    scheduleCloudPush();
   }
   function sessionTitle(){
     const pc=$('#ctxPc').value.trim();
@@ -527,10 +580,12 @@
       ts: Date.now(),
       title: sessionTitle(),
       sys,
+      setting,
       ctx:{ init:$('#ctxInit').value, age:$('#ctxAge').value, pc:$('#ctxPc').value },
       t,
       note: note ? JSON.parse(JSON.stringify(note)) : null,
-      chat: JSON.parse(JSON.stringify(chat))
+      chat: JSON.parse(JSON.stringify(chat)),
+      refChat: JSON.parse(JSON.stringify(refChat))
     };
     const i=history.findIndex(h=>h.id===currentId);
     if(i>=0) history[i]=rec; else history.unshift(rec);
@@ -538,6 +593,65 @@
     if(history.length>HMAX) history=history.slice(0,HMAX);
     saveHistory(); renderMemory();
   }
+  // Auto-save: consultations used to only reach the saved list after a note was
+  // generated — now any transcript work is upserted shortly after you stop typing,
+  // when recording stops, and when the page is closed/refreshed.
+  let upsertT=null;
+  function scheduleUpsert(){ clearTimeout(upsertT); upsertT=setTimeout(()=>{ try{ upsertSession(); }catch(e){} }, 1500); }
+  window.addEventListener('pagehide', ()=>{ try{ upsertSession(); cloudPush(); }catch(e){} });
+  document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden'){ try{ upsertSession(); }catch(e){} } });
+  /* ---------- cloud sync: consultations follow your account across devices ----------
+     Uses the site account (RGPCloud → Worker /api/data). Signed out or offline
+     → everything still works locally; the chip says so. Merge is per-consultation:
+     newest version of each wins; deletions are tombstoned so they stick. */
+  function delList(){ try{ const a=JSON.parse(localStorage.getItem(DKEY)||'[]'); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
+  function addTombstones(ids){
+    try{
+      const d=delList();
+      ids.forEach(id=>{ if(id && !d.includes(id)) d.push(id); });
+      localStorage.setItem(DKEY, JSON.stringify(d.slice(-200)));
+    }catch(e){}
+  }
+  function cloudReady(){ return !!(window.RGPCloud && RGPCloud.ready && RGPCloud.ready()); }
+  function setSync(state, msg){
+    const el=$('#memSync'); if(!el) return;
+    el.className='scr-sync '+state;
+    el.textContent = msg;
+  }
+  let cloudT=null, pushing=false;
+  function scheduleCloudPush(){ if(!cloudReady()) return; clearTimeout(cloudT); cloudT=setTimeout(cloudPush, 2500); }
+  async function cloudPush(){
+    if(!cloudReady() || pushing) return;
+    pushing=true; setSync('busy','⛶ syncing…');
+    try{
+      const r = await RGPCloud.put('scribe', { items: history.slice(0,HMAX), deleted: delList() });
+      setSync(r?'on':'err', r?'☁ synced to your account':'⚠ sync failed — retrying');
+      if(!r) scheduleCloudPush();
+    } finally { pushing=false; }
+  }
+  async function cloudPull(){
+    if(!cloudReady()){ setSync('off','on this device only — sign in to sync'); return; }
+    setSync('busy','⛶ syncing…');
+    const r = await RGPCloud.get('scribe');
+    if(!r){ setSync('err','⚠ couldn’t reach sync — working locally'); return; }
+    const remote    = (r.data && Array.isArray(r.data.items))   ? r.data.items   : [];
+    const remoteDel = (r.data && Array.isArray(r.data.deleted)) ? r.data.deleted : [];
+    addTombstones(remoteDel);
+    const dead = new Set(delList());
+    const map = new Map();
+    history.forEach(h=>{ if(h && h.id && !dead.has(h.id)) map.set(h.id, h); });
+    remote.forEach(h=>{
+      if(!h || !h.id || dead.has(h.id)) return;
+      const cur=map.get(h.id);
+      if(!cur || (h.ts||0) > (cur.ts||0)) map.set(h.id, h);
+    });
+    history=[...map.values()].sort((a,b)=>(b.ts||0)-(a.ts||0)).slice(0,HMAX);
+    try{ localStorage.setItem(HLS, JSON.stringify(history)); }catch(e){}
+    renderMemory();
+    setSync('on','☁ synced to your account');
+    scheduleCloudPush(); // write the merged set back
+  }
+
   function relTime(ts){
     const s=Math.floor((Date.now()-ts)/1000);
     if(s<60) return 'just now';
@@ -557,6 +671,7 @@
       const tags=[];
       tags.push('<span class="mtag">'+esc(SYS_LABEL[h.sys]||h.sys)+'</span>');
       if(h.ctx && h.ctx.age) tags.push('<span class="mtag">'+esc(h.ctx.age)+'y</span>');
+      if(h.setting && h.setting!=='gp') tags.push('<span class="mtag">'+esc(h.setting.toUpperCase())+'</span>');
       if(h.note && h.note.twoww && h.note.twoww.length) tags.push('<span class="mtag tw">2WW</span>');
       if(!h.note) tags.push('<span class="mtag">transcript only</span>');
       return '<button class="scr-mem-card'+(h.id===currentId?' cur':'')+'" data-id="'+h.id+'">'+
@@ -573,21 +688,24 @@
     resetEnhanceUI();
     currentId=h.id;
     if(h.sys) setSys(h.sys);
+    if(h.setting) setSetting(h.setting);
     $('#ctxInit').value=(h.ctx&&h.ctx.init)||'';
     $('#ctxAge').value=(h.ctx&&h.ctx.age)||'';
     $('#ctxPc').value=(h.ctx&&h.ctx.pc)||'';
     $('#transcript').value=h.t||'';
     note = h.note ? JSON.parse(JSON.stringify(h.note)) : null;
     chat = Array.isArray(h.chat) ? JSON.parse(JSON.stringify(h.chat)) : [];
+    refChat = Array.isArray(h.refChat) ? JSON.parse(JSON.stringify(h.refChat)) : [];
     lastSca=null;
     $('#reviewOut').innerHTML='';
     if($('#scaOut')) $('#scaOut').innerHTML='';
-    renderChat();
+    renderChat(); renderRefChat();
     if(note) renderNote(); else showOut('outEmpty');
     updateWordCount(); renderMemory(); save();
     $('#memBar').scrollIntoView ? window.scrollTo({top:0,behavior:'smooth'}) : null;
   }
   function deleteSession(id){
+    addTombstones([id]);
     history=history.filter(x=>x.id!==id);
     if(currentId===id) currentId=null;
     saveHistory(); renderMemory();
@@ -598,8 +716,8 @@
     resetEnhanceUI();
     currentId=null;
     $('#ctxInit').value=''; $('#ctxAge').value=''; $('#ctxPc').value='';
-    $('#transcript').value=''; note=null; chat=[];
-    renderChat(); $('#reviewOut').innerHTML='';
+    $('#transcript').value=''; note=null; chat=[]; refChat=[];
+    renderChat(); renderRefChat(); $('#reviewOut').innerHTML='';
     lastSca=null; if($('#scaOut')) $('#scaOut').innerHTML='';
     $('#recTimer').textContent='0:00';
     $('#recState').textContent='Ready to record'; $('#recState').classList.remove('live');
@@ -631,6 +749,13 @@
   }
   $('#sysSeg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(b) setSys(b.dataset.sys); });
   $('#layoutSeg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(b) setLayout(b.dataset.layout); });
+  function setSetting(v){
+    if(!SETTING_LABEL[v]) v='gp';
+    setting=v;
+    $('#settingSeg').querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.setting===v));
+    save();
+  }
+  $('#settingSeg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(b) setSetting(b.dataset.setting); });
   function setStyle(v){
     noteStyle=v;
     $('#styleSeg').querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.style===v));
@@ -654,8 +779,8 @@
     $('#wordCount').textContent = n+' word'+(n===1?'':'s');
     $('#genBtn').disabled = busy;   // keep clickable so a short transcript gets an explanation, not a dead button
   }
-  $('#transcript').addEventListener('input', ()=>{ updateWordCount(); save(); if(rawBackup!=null){ rawBackup=null; const b=$('#enhanceBtn'); if(b) b.textContent='✦ Enhance transcript'; } });
-  ['#ctxInit','#ctxAge','#ctxPc','#customInstr'].forEach(s=>$(s).addEventListener('input', save));
+  $('#transcript').addEventListener('input', ()=>{ updateWordCount(); save(); scheduleUpsert(); if(rawBackup!=null){ rawBackup=null; const b=$('#enhanceBtn'); if(b) b.textContent='✦ Enhance transcript'; } });
+  ['#ctxInit','#ctxAge','#ctxPc','#customInstr'].forEach(s=>$(s).addEventListener('input', ()=>{ save(); scheduleUpsert(); }));
 
   /* ---------- mic / speech recognition ---------- */
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -837,7 +962,7 @@
     $('#recTimer').classList.remove('live');
     if(timerId){ clearInterval(timerId); timerId=null; }
     try{ rec && rec.stop(); }catch(e){}
-    updateWordCount(); save();
+    updateWordCount(); save(); upsertSession();
     // automatically enhance the captured transcript in the background —
     // only when real dictation was actually captured this session (not when the
     // mic was blocked / never started, where there's nothing new to clean up)
@@ -881,22 +1006,24 @@
       '',
       'RULES:',
       STYLE[noteStyle]||STYLE.concise,
-      '- The transcript may be raw, unpunctuated speech-to-text. Interpret obvious mis-hearings using clinical context (drug names, doses, conditions) before documenting, but never invent content that was not said.',
+      settingBrief(),
+      '- ACCURACY & RELEVANCE: the transcript is raw, possibly unpunctuated speech-to-text and may contain mishears, greetings, small talk, interruptions, phone calls or third-party speech. Resolve obvious mishears using clinical context (drug names, doses, conditions, anatomy, investigations) before documenting. Exclude clinically irrelevant chatter entirely — never document pleasantries or unrelated conversation, and never let it distort the clinical content.',
       custom?('CLINICIAN’S CUSTOM INSTRUCTIONS (follow these wherever they apply): '+custom):'',
       '- Use professional UK GP record style. British spelling.',
-      '- Only state findings actually present in the transcript. Do NOT invent examination findings, observations or numbers that were not mentioned. If examination was not done, say "No examination documented." Never fabricate vital signs.',
+      '- COMPLETE BUT NEVER INVENTED: document EVERY clinically relevant statement actually made — symptoms, timeline, relevant negatives, ICE, examination, decisions, advice given. Do not drop or compress away stated clinical information; the note must be a full account of the consultation. Equally, do NOT add anything that was not said: no invented examination findings, observations, vital signs, numbers, allergies or advice. Where a standard element was not covered, state it plainly (e.g. "No examination documented.") rather than guessing.',
       '- "history" = focused history of presenting complaint incl. relevant negatives the doctor explored; do not pad.',
       '- "assessment" = working impression / differential, reasoning brief.',
       '- "plan" = management agreed (investigations, Rx, referrals, advice), as bullet-style lines separated by newlines.',
       '- "safetynet" = specific worsening advice and what to do / when to return.',
       '- "followup" = review interval / arrangement, or "PRN / as needed" if none.',
       '- "twoww": NICE NG12 (Suspected cancer: recognition and referral, 2025) two-week-wait / urgent suspected cancer pathways that the transcript triggers. ONLY include a flag if the transcript genuinely meets or approaches an NG12 criterion. For each: {flag (the feature found), criterion (precise NG12 threshold incl. qualifying age and any modifying features, e.g. "Rectal bleeding in adults aged 50+"), action (the named action: USC/2WW referral, direct-access test such as FIT/CA-125/CXR/USS/OGD/PSA, or 48h referral — include the named investigation)}. Empty array if none apply. Do not invent a cancer link that is not supported.',
+      '- "missedFlags": red flags or urgent criteria RELEVANT to this presentation that the transcript shows were NOT asked about, NOT documented, or NOT actioned — both (a) same-day EMERGENCY red flags for this presentation, and (b) NICE NG12 2WW criteria the presentation could plausibly trigger but which were not explored or referred. Each: {"flag": the missing question/feature/action, "type": "emergency" or "2ww", "why": one line on why it matters for THIS patient, "action": what to check or do}. Be selective — only flags genuinely relevant to this presentation and age; empty array if the consultation covered them.',
       '- "referral": if a referral is clearly indicated, draft a short referral letter body (no letterhead, no real identifiers — use [Patient] / [DOB] placeholders), incl. reason, relevant history/findings, and urgency (state 2WW/USC explicitly if NG12 applies). Else "".',
       '- "prescriptions": medications the doctor indicated starting/changing. Each {drug, dose, note}. Empty array if none.',
       '- "tasks": admin/follow-up actions (bloods, recall, refer, fit note, results chase, etc) as short strings. Empty array if none.',
       '',
       'Return STRICT JSON only — no prose, no markdown fences — in EXACTLY this shape:',
-      '{"presenting":"","history":"","examination":"","assessment":"","plan":"","safetynet":"","followup":"","twoww":[{"flag":"","criterion":"","action":""}],"referral":"","prescriptions":[{"drug":"","dose":"","note":""}],"tasks":[]}'
+      '{"presenting":"","history":"","examination":"","assessment":"","plan":"","safetynet":"","followup":"","twoww":[{"flag":"","criterion":"","action":""}],"missedFlags":[{"flag":"","type":"","why":"","action":""}],"referral":"","prescriptions":[{"drug":"","dose":"","note":""}],"tasks":[]}'
     ].join('\n');
   }
 
@@ -904,11 +1031,25 @@
     ['outEmpty','outBusy','outErr','outBody'].forEach(id=>$('#'+id).classList.toggle('hidden', id!==which));
   }
 
+  /* ---- Free “Trainee” monthly cap: 5 note generations / calendar month ---- */
+  const SCRIBE_QUOTA_KEY='rgp-scribe-quota-v1';
+  function scribeMonth(){ const d=new Date(); return d.getFullYear()+'-'+(d.getMonth()+1); }
+  function scribeFree(){ return !!(window.RGP_PAYWALL && RGP_PAYWALL.isFreeTier && RGP_PAYWALL.isFreeTier()); }
+  function scribeQuota(){ try{ const q=JSON.parse(localStorage.getItem(SCRIBE_QUOTA_KEY)||'{}'); return (q && q.month===scribeMonth()) ? q : {month:scribeMonth(),count:0}; }catch(e){ return {month:scribeMonth(),count:0}; } }
+  function scribeQuotaOk(){ return !scribeFree() || scribeQuota().count < 5; }
+  function scribeBump(){ if(!scribeFree()) return; const q=scribeQuota(); q.count=(q.count||0)+1; q.month=scribeMonth(); try{ localStorage.setItem(SCRIBE_QUOTA_KEY, JSON.stringify(q)); }catch(e){} }
+
   async function generate(){
     if(busy) return;
     const text=$('#transcript').value.trim();
     if(text.split(/\s+/).filter(Boolean).length<6){
       $('#outErr').innerHTML='<div class="scr-err">Add more to the transcript first — record or paste at least a sentence or two of the consultation, then tap <b>Generate note</b>. Or tap <b>Load example</b> to preview the output.</div>';
+      showOut('outErr');
+      return;
+    }
+    // Free "Trainee" accounts get 5 note generations per calendar month (Scribe uses AI credit).
+    if(!scribeQuotaOk()){
+      $('#outErr').innerHTML='<div class="scr-err">You\u2019ve used your <b>5 free notes this month</b>. Consult Scribe generation is unlimited on a paid plan \u2014 <a href="../index.html#subscriptions" style="color:inherit;font-weight:700">see the plans</a>. Your transcript is safe here, and your free notes reset next month.</div>';
       showOut('outErr');
       return;
     }
@@ -943,6 +1084,7 @@
       showOut('outErr'); return;
     }
     note=d; lastSca=null; renderNote(); save(); upsertSession();
+    scribeBump();
   }
   $('#genBtn').addEventListener('click', generate);
   $('#regenBtn').addEventListener('click', generate);
@@ -961,6 +1103,11 @@
     if(note.twoww && note.twoww.length){
       out.push('⚠ NICE NG12 — 2-WEEK-WAIT:');
       note.twoww.forEach(f=> out.push('• '+f.flag+' — '+f.criterion+' → '+f.action));
+    }
+    if(note.missedFlags && note.missedFlags.length){
+      out.push('');
+      out.push('⚠ CHECK — POSSIBLE MISSED RED FLAGS (not covered in consultation):');
+      note.missedFlags.forEach(f=> out.push('• ['+(f.type==='2ww'?'2WW':'EMERGENCY')+'] '+f.flag+(f.why?' — '+f.why:'')+' → '+(f.action||'')));
     }
     return out.join('\n').trim();
   }
@@ -990,6 +1137,15 @@
         note.twoww.map(f=>'<div class="scr-2ww-item"><span class="flag">'+esc(f.flag)+'</span> — <span class="crit">'+esc(f.criterion)+'</span><span class="act"><b>Action:</b> '+esc(f.action)+'</span></div>').join('')+
         '</div>';
     } else tw.innerHTML='';
+
+    // missed red flags banner
+    const mw=$('#missedWrap');
+    const missed=(note.missedFlags||[]);
+    if(missed.length){
+      mw.innerHTML = '<div class="scr-missed"><div class="scr-missed-top"><span class="scr-missed-pill">⚠ CHECK</span><b>Possible missed red flags — not covered in this consultation</b></div>'+
+        missed.map(f=>'<div class="scr-missed-item"><span class="scr-missed-pill'+(f.type==='2ww'?' tw':'')+'">'+(f.type==='2ww'?'2WW':'EMERGENCY')+'</span> <span class="flag">'+esc(f.flag)+'</span>'+(f.why?' — '+esc(f.why):'')+'<span class="act"><b>Consider:</b> '+esc(f.action||'')+'</span></div>').join('')+
+      '</div>';
+    } else mw.innerHTML='';
 
     // sections
     const map=SECMAP[sys];
@@ -1070,8 +1226,10 @@
       'You are a UK GP. Write a COMPLETE, ready-to-send referral letter based on the consultation record below. It should be polished enough to paste into the practice referral system with only the bracketed placeholders to fill.',
       'CONSULTATION RECORD (JSON):', JSON.stringify(note),
       'PATIENT CONTEXT:', 'Initials: '+(ctxInit||'[Initials]')+'; Age: '+(ctxAge||'[Age]'),
+      settingBrief(),
       '',
       'REQUIREMENTS:',
+      '- Write from the correct service: if the setting is OOH or UTC, write as that service (e.g. "seen in the out-of-hours service") and copy the patient\u2019s registered GP; if GP surgery, write as the practice.',
       '- Plain text letter. Structure: practice header line(s) as placeholders [Practice name / address / contact]; [Date]; recipient service + "Dear [Service / Consultant]," (choose the correct specialty from the record).',
       '- Opening line stating the ask and urgency. If the record contains an NG12 two-week-wait / urgent suspected cancer indication, state "URGENT — 2-week-wait / suspected cancer referral" explicitly and name the suspected pathway.',
       '- Concise paragraphs: reason for referral; relevant history; examination findings & any results; current medication & PMH; what has been done already; specific question/request for the service.',
@@ -1093,6 +1251,56 @@
     }finally{ busy=false; btn.textContent=o; btn.disabled=false; }
   }
   $('#readyRefBtn').addEventListener('click', makeReferralReady);
+
+  /* ---------- referral chat ---------- */
+  function renderRefChat(){
+    const log=$('#refChatLog'); if(!log) return;
+    if(!refChat.length){ log.innerHTML='<div class="scr-chat-empty">Talk through the referral or ask for changes — e.g. \u201cshould this be 2WW?\u201d, \u201cadd the drug history\u201d, \u201cmake it routine\u201d, \u201cwould dermatology be more appropriate?\u201d</div>'; return; }
+    log.innerHTML = refChat.map(m=>'<div class="scr-chat-msg '+(m.role==='you'?'you':'ai')+(m.thinking?' thinking':'')+'">'+esc(m.text)+(m.updated?'<span class="upd">Letter updated</span>':'')+'</div>').join('');
+    log.scrollTop=log.scrollHeight;
+  }
+  async function sendRefChat(q){
+    q=(q||$('#refChatBox').value).trim();
+    if(!q || busy || !note) return;
+    $('#refChatBox').value='';
+    refChat.push({role:'you', text:q});
+    refChat.push({role:'ai', text:'Thinking…', thinking:true});
+    renderRefChat(); save();
+    const prompt=[
+      'You are an experienced UK GP colleague discussing and editing a referral letter with the referring clinician. Answer their question honestly against UK guidance (NICE / CKS / NG12) and/or apply their requested change to the letter.',
+      settingBrief(),
+      'CURRENT REFERRAL LETTER:', ($('#letterBox').value.trim()||'(no letter drafted yet — if the request implies one, draft it from the record)'),
+      'CONSULTATION RECORD (JSON, reference):', JSON.stringify(note),
+      'TRANSCRIPT (reference — never invent clinical detail beyond it):', $('#transcript').value.trim(),
+      'GP REQUEST:', q,
+      '',
+      'Respond with STRICT JSON only — no markdown — as: {"reply":"<=60 words: your answer / what you changed","letter":<the FULL updated letter text if the letter should change, otherwise null>}.',
+      'Rules: keep [Patient name]/[DOB]-style placeholders; never invent identifiers or clinical facts; if a NICE NG12 2WW criterion applies, keep the urgency explicit; if the referral is inappropriate or incomplete, say so plainly.'
+    ].join('\n');
+    let raw='';
+    try{
+      if(!(window.claude && window.claude.complete)) throw new Error('unavailable');
+      raw = await window.claude.complete({ messages:[{role:'user', content:prompt}] });
+      if(!raw || !raw.trim()) throw new Error('empty');
+    }catch(err){
+      refChat.pop();
+      refChat.push({role:'ai', text: err.message==='unavailable'
+        ? 'I need the assistant connection for this — open the page from the live site in Chrome.'
+        : 'Sorry, that didn\u2019t go through — please try again.'});
+      renderRefChat(); save(); return;
+    }
+    let d=null;
+    try{ const m=raw.match(/\{[\s\S]*\}/); d=JSON.parse(m?m[0]:raw); }catch(e){}
+    refChat.pop();
+    if(!d){ refChat.push({role:'ai', text:'I couldn\u2019t parse that — try rephrasing.'}); renderRefChat(); save(); return; }
+    let updated=false;
+    if(d.letter && typeof d.letter==='string'){ note.referral=d.letter.trim(); $('#letterBox').value=note.referral; setRefStat(); updated=true; }
+    refChat.push({role:'ai', text:(d.reply||'Done.'), updated});
+    renderRefChat(); save(); upsertSession();
+  }
+  $('#refChatSend').addEventListener('click', ()=>sendRefChat());
+  $('#refChatBox').addEventListener('keydown', e=>{ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendRefChat(); } });
+  $('#refChips').addEventListener('click', e=>{ const b=e.target.closest('.scr-chip'); if(b) sendRefChat(b.dataset.q); });
 
   /* ---------- patient summary ---------- */
   function setPatStat(){
@@ -1159,12 +1367,13 @@
     renderChat(); save();
     const prompt=[
       'You are helping a UK GP refine a consultation record you previously drafted. Apply the GP\u2019s request faithfully.',
+      settingBrief(),
       'CURRENT RECORD (JSON):', JSON.stringify(note),
       'TRANSCRIPT (reference — do not invent findings beyond it):', $('#transcript').value.trim(),
       'GP REQUEST:', q,
       '',
       'Respond with STRICT JSON only — no markdown — as: {"reply":"<=45 words: what you changed, or the answer if no change","note":<the FULL updated record object in the SAME schema, OR null if the record did not change>}.',
-      'Record schema: {"presenting","history","examination","assessment","plan","safetynet","followup","twoww":[{"flag","criterion","action"}],"referral","prescriptions":[{"drug","dose","note"}],"tasks":[]}.',
+      'Record schema: {"presenting","history","examination","assessment","plan","safetynet","followup","twoww":[{"flag","criterion","action"}],"missedFlags":[{"flag","type","why","action"}],"referral","prescriptions":[{"drug","dose","note"}],"tasks":[]}.',
       'When you change the record, keep every existing field and only modify what the request implies. Preserve UK GP style and British spelling. Keep NG12 2WW flags accurate. If the request is a question or asks for something that lives outside the record (e.g. a patient-friendly summary), put it in "reply" and set "note" to null.'
     ].join('\n');
     let raw='';
@@ -1202,6 +1411,7 @@
       'You are an experienced UK GP / RCGP examiner giving a brief, constructive second opinion on a colleague\u2019s documented management plan. Be specific, fair and practical — this is advisory peer review, not a directive.',
       'CONSULTATION RECORD (JSON):', JSON.stringify(note),
       'TRANSCRIPT (reference):', $('#transcript').value.trim(),
+      settingBrief(),
       '',
       'Assess the PLAN against good UK primary-care practice (NICE / CKS), including: appropriateness of investigations & prescribing, safety-netting quality, follow-up, and whether any NICE NG12 two-week-wait / urgent or safeguarding action is indicated but missing.',
       'Return STRICT JSON only — no markdown — as:',
@@ -1393,8 +1603,8 @@
     upsertSession();        // keep current work in memory before clearing the workspace
     resetEnhanceUI();
     currentId=null;
-    $('#transcript').value=''; note=null; chat=[];
-    renderChat();
+    $('#transcript').value=''; note=null; chat=[]; refChat=[];
+    renderChat(); renderRefChat();
     $('#reviewOut').innerHTML='';
     lastSca=null; if($('#scaOut')) $('#scaOut').innerHTML='';
     $('#recTimer').textContent='0:00';
@@ -1432,6 +1642,7 @@
       {flag:"Painless visible (macroscopic) haematuria, age 67", criterion:"NICE NG12: aged 45+ with unexplained visible haematuria without UTI, or visible haematuria persisting/recurring after successful UTI treatment → suspected bladder cancer", action:"Urgent (2WW) suspected cancer referral to urology"},
       {flag:"Visible haematuria + smoker, age 67", criterion:"NICE NG12: aged 45+ with unexplained visible haematuria → also consider renal cancer", action:"Urgent (2WW) referral; bloods incl. U&E/eGFR; MSU to exclude infection"}
     ],
+    missedFlags:[],
     referral:"Dear Urology team,\n\nI should be grateful for your URGENT (2-week-wait) assessment of [Patient], DOB [DOB], under the suspected urological cancer pathway.\n\nReason: 67-year-old current smoker (20/day) with 3 weeks of painless visible haematuria on ≥2 occasions, plus ~3.2kg unintentional weight loss over 2 months. No dysuria/frequency/fever. O/E abdomen soft, no mass. Urine dip: blood +++, nitrites/leucocytes negative (no evidence of infection). This meets NICE NG12 criteria for suspected bladder/renal cancer in an adult aged 45+ with unexplained visible haematuria.\n\nPMH: hypertension. Medication: amlodipine. Bloods (FBC, U&E/eGFR, bone profile) and MSU sent today; results to follow.\n\nMany thanks.",
     prescriptions:[],
     tasks:[
@@ -1476,8 +1687,10 @@
       '- Remove filler stumbles and duplicated words from the recogniser.',
       'DO NOT:',
       '- Add, remove, infer or invent any clinical information, symptoms, findings, numbers or advice. Only transcribe more accurately what was actually said. If a word is unintelligible, write [inaudible]. Preserve meaning verbatim.',
+      '- If clearly non-clinical third-party interruptions occur (phone calls, door knocks, unrelated small talk), reduce them to a brief bracketed note e.g. [interruption] — never turn them into clinical content.',
       pc?('Context — stated presenting complaint: '+pc):'',
       age?('Context — patient age: '+age):'',
+      'Context — care setting: '+(SETTING_LABEL[setting]||'GP surgery'),
       'RAW TRANSCRIPT:', text,
       '',
       'Return ONLY the cleaned transcript text — no preamble, no commentary, no markdown.'
@@ -1525,7 +1738,9 @@
   loadHistory();
   restore();
   renderChat();
+  renderRefChat();
   renderMemory();
+  cloudPull();
   updateWordCount();
 })();
 </script>

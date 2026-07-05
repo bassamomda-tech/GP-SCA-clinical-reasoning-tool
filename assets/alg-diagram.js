@@ -102,7 +102,7 @@
 })();
 
 
-/* RGP beginner / teaching mode (shared): an ST1-facing toggle that reveals ALL
+/* RGP reasoning mode (shared): a toggle that reveals ALL
    the per-step "Why?" reasoning drawers at once, so a learner sees the clinical
    reasoning without hunting for each button. Persisted site-wide in localStorage.
    Forces drawers open purely via a body.rgp-teach CSS rule (!important) so it is
@@ -142,7 +142,7 @@
   btn.className = 'rgp-teach-toggle';
   btn.setAttribute('aria-pressed','false');
   btn.title = 'Reveal all the clinical-reasoning "Why?" panels — ideal when you are learning the pathway';
-  btn.innerHTML = '<span aria-hidden="true">🎓</span><span class="tt-label">Beginner mode</span>' +
+  btn.innerHTML = '<span aria-hidden="true">🎓</span><span class="tt-label">Reasoning mode</span>' +
                   '<span class="tt-track"><span class="tt-knob"></span></span>';
 
   // Place the toggle: prefer the dark .alg-header; else a wrapper just above the flow.
@@ -158,7 +158,7 @@
   function apply(on){
     document.body.classList.toggle('rgp-teach', on);
     btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-    btn.querySelector('.tt-label').textContent = on ? 'Beginner mode: on' : 'Beginner mode';
+    btn.querySelector('.tt-label').textContent = on ? 'Reasoning mode: on' : 'Reasoning mode';
     // Keep each button's caret/aria in sync with what the learner sees.
     document.querySelectorAll('.alg-flow .why-btn').forEach(function(b){
       b.setAttribute('aria-expanded', on ? 'true' : 'false');

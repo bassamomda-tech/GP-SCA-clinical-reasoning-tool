@@ -162,7 +162,7 @@
   </main>
 </div>
 
-<script src="../assets/site.js?v=57"></script>
+<script src="../assets/site.js?v=61"></script>
 <script src="../assets/sca-cases.js"></script>
 <script src="../assets/sca-extras.js?v=2"></script>
 <script>
@@ -385,6 +385,14 @@
   }
 
 })();
+// Cross-device sync brought in newer SCA data for this account → recompute once.
+window.addEventListener('rgp-sync-updated', function(e){
+  var keys=(e.detail&&e.detail.keys)||[];
+  if(keys.some(function(k){ return k.indexOf('sca')>-1 || k.indexOf('akt')>-1; })){
+    if(!sessionStorage.getItem('rgp-ws-synced')){ try{ sessionStorage.setItem('rgp-ws-synced','1'); }catch(_){}
+      location.reload(); }
+  }
+});
 </script>
 <script src="../assets/nav-back.js?v=1"></script>
 </body>

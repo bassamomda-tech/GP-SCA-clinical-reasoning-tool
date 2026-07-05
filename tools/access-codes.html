@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Access Codes — Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .ac-hero{ margin-bottom:18px; }
+  .ac-owner{ display:inline-block; margin-bottom:10px; background:var(--rust); color:#fff; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 10px; border-radius:999px; }
+  .ac-hero h1{ font-family:'Source Serif 4',serif; font-size:30px; color:var(--teal); margin:0 0 6px; }
+  .ac-hero p{ color:var(--muted); max-width:72ch; margin:0; line-height:1.55; }
+
+  .ac-note{ background:var(--teal-soft); border:1px solid var(--line); border-radius:12px; padding:12px 16px; font-size:13px; line-height:1.6; margin-bottom:16px; }
+  .ac-err{ background:#fbeae4; border:1px solid #e8c4b4; border-radius:12px; padding:12px 16px; font-size:13px; line-height:1.55; margin-bottom:16px; color:#8a3a1a; }
+  .ac-err.ok{ background:#e7f4ec; border-color:#bfe0cd; color:#15803d; }
+  .ac-hide{ display:none; }
+
+  /* create form */
+  .ac-card{ border:1px solid var(--line); background:var(--card); border-radius:14px; padding:18px 18px 6px; margin-bottom:20px; }
+  .ac-card h2{ font-family:'Source Serif 4',serif; font-size:18px; color:var(--ink,#1c1917); margin:0 0 14px; }
+  .ac-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; }
+  .ac-f label{ display:block; font-size:12px; font-weight:600; color:var(--muted); margin-bottom:5px; }
+  .ac-f input, .ac-f select{ width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:9px; padding:9px 11px; font:inherit; font-size:14px; background:var(--bg); color:inherit; }
+  .ac-f .hint{ font-size:11px; color:var(--muted); margin-top:4px; }
+  .ac-actions{ margin:16px 0 12px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  .ac-btn{ border:none; background:var(--teal); color:#fff; border-radius:10px; padding:10px 20px; font:inherit; font-size:14px; font-weight:700; cursor:pointer; }
+  .ac-btn[disabled]{ opacity:.5; cursor:default; }
+  .ac-btn.ghost{ background:none; border:1px solid var(--line); color:inherit; font-weight:600; }
+
+  /* list */
+  .ac-head{ display:flex; align-items:baseline; gap:12px; margin:22px 0 12px; flex-wrap:wrap; }
+  .ac-head h2{ font-family:'Source Serif 4',serif; font-size:20px; color:var(--teal); margin:0; }
+  .ac-count{ font-size:13px; color:var(--muted); }
+  .ac-search{ margin-left:auto; border:1px solid var(--line); border-radius:9px; padding:8px 12px; font:inherit; font-size:13px; background:var(--bg); color:inherit; min-width:180px; }
+
+  .ac-row{ border:1px solid var(--line); background:var(--card); border-radius:12px; padding:13px 15px; margin-bottom:10px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .ac-code{ font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:15px; font-weight:700; letter-spacing:.04em; color:var(--ink,#1c1917); }
+  .ac-tier{ font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:3px 9px; border-radius:999px; color:#fff; }
+  .ac-tier.silver{ background:#64748b; } .ac-tier.gold{ background:#b7791f; } .ac-tier.platinum{ background:var(--teal); }
+  .ac-meta{ font-size:12.5px; color:var(--muted); display:flex; gap:12px; flex-wrap:wrap; }
+  .ac-meta b{ color:var(--ink,#1c1917); font-weight:600; }
+  .ac-note-txt{ flex:1 1 100%; font-size:12.5px; color:var(--muted); font-style:italic; }
+  .ac-spend{ flex:1 1 100%; height:5px; border-radius:99px; background:var(--line); overflow:hidden; }
+  .ac-spend > span{ display:block; height:100%; background:var(--teal); }
+  .ac-tools{ margin-left:auto; display:flex; gap:8px; }
+  .ac-copy, .ac-del{ border:1px solid var(--line); background:none; border-radius:8px; padding:5px 12px; font:inherit; font-size:12px; cursor:pointer; color:inherit; }
+  .ac-copy:hover{ border-color:var(--teal); color:var(--teal); }
+  .ac-del:hover{ border-color:var(--rust); color:var(--rust); }
+  .ac-empty{ color:var(--muted); font-size:13.5px; padding:20px 4px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-accesscodes"></aside>
+  <main class="main">
+    <div class="tool-page">
+
+      <div class="ac-hero">
+        <span class="ac-owner">Owner console · not linked in the public nav</span>
+        <h1>Access &amp; discount codes</h1>
+        <p>Hand out free or comped access without taking a payment. Each code grants a tier for a set number of days when a signed-in account redeems it under <b>Account → Redeem a code</b>. Use it for reviewers, colleagues, giveaways, or bursaries. Only your admin account (the email set as <code>ADMIN_EMAIL</code> on the Worker) can open this page.</p>
+      </div>
+
+      <div class="ac-err" id="acMsg" role="status"></div>
+
+      <div class="ac-card">
+        <h2>Create a code</h2>
+        <div class="ac-grid">
+          <div class="ac-f">
+            <label for="acCode">Code</label>
+            <input id="acCode" type="text" placeholder="leave blank = auto" autocomplete="off" spellcheck="false">
+            <div class="hint">A–Z, 0–9 and hyphens. Auto-generates if blank.</div>
+          </div>
+          <div class="ac-f">
+            <label for="acTier">Grants tier</label>
+            <select id="acTier">
+              <option value="platinum">Platinum — everything</option>
+              <option value="silver">Silver — clinic tools</option>
+              <option value="gold">Gold — SCA prep</option>
+            </select>
+          </div>
+          <div class="ac-f">
+            <label for="acDays">Access length (days)</label>
+            <input id="acDays" type="number" min="1" max="3650" placeholder="e.g. 365">
+            <div class="hint">Blank = no expiry on the access itself.</div>
+          </div>
+          <div class="ac-f">
+            <label for="acMax">Max redemptions</label>
+            <input id="acMax" type="number" min="1" max="10000" value="1">
+            <div class="hint">How many different accounts can use it.</div>
+          </div>
+          <div class="ac-f">
+            <label for="acExpire">Code expires in (days)</label>
+            <input id="acExpire" type="number" min="1" max="3650" placeholder="never">
+            <div class="hint">After this, the code stops working.</div>
+          </div>
+          <div class="ac-f">
+            <label for="acNote">Note (for you)</label>
+            <input id="acNote" type="text" maxlength="120" placeholder="e.g. RCGP reviewer">
+          </div>
+        </div>
+        <div class="ac-actions">
+          <button class="ac-btn" id="acCreate" type="button">Create code</button>
+          <button class="ac-btn ghost" id="acRefresh" type="button">Refresh list</button>
+        </div>
+      </div>
+
+      <div class="ac-head">
+        <h2>Live codes</h2>
+        <span class="ac-count" id="acCount"></span>
+        <input class="ac-search" id="acFilter" type="search" placeholder="Filter codes…">
+      </div>
+      <div id="acList"><div class="ac-empty">Loading…</div></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=61"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+<script>
+(function(){
+  'use strict';
+  const $ = s => document.querySelector(s);
+  const cfg = window.RGP_CONFIG || {};
+  const API = (cfg.workerUrl || '').replace(/\/$/,'');
+  const listEl = $('#acList'), msgEl = $('#acMsg');
+  let codes = [];
+
+  function token(){ try{ return localStorage.getItem('rgp.auth.token.v1'); }catch(e){ return null; } }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+  function msg(text, ok){ msgEl.textContent = text || ''; msgEl.className = 'ac-err' + (text?'':' ac-hide') + (ok?' ok':''); }
+
+  async function call(method, body){
+    if(!API) throw new Error('The Worker isn’t connected yet — set RGP_CONFIG.workerUrl in assets/site.js.');
+    const t = token();
+    if(!t) throw new Error('Sign in with your admin account first (top-right of the page), then reload.');
+    const res = await fetch(API + '/api/admin/codes', {
+      method,
+      headers: Object.assign({ 'Content-Type':'application/json' }, { 'Authorization':'Bearer ' + t }),
+      body: body ? JSON.stringify(body) : undefined
+    });
+    const data = await res.json().catch(()=>({}));
+    if(!res.ok) throw new Error(data.error || (res.status===401||res.status===403 ? 'Only the admin account can manage codes.' : 'Request failed.'));
+    return data;
+  }
+
+  function fmtDate(ms){ if(!ms) return '—'; try{ return new Date(ms).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }catch(e){ return '—'; } }
+
+  function render(){
+    const q = ($('#acFilter').value||'').trim().toLowerCase();
+    const rows = codes
+      .map(c => ({ code: c.key.replace(/^code:/,''), m: (typeof c.value==='string'? safeParse(c.value): c.value) || {} }))
+      .filter(r => !q || r.code.toLowerCase().includes(q) || (r.m.note||'').toLowerCase().includes(q))
+      .sort((a,b)=> (b.m.created||0) - (a.m.created||0));
+
+    $('#acCount').textContent = codes.length ? (codes.length + ' code' + (codes.length===1?'':'s') + ' total') : '';
+
+    if(!rows.length){ listEl.innerHTML = '<div class="ac-empty">'+(codes.length?'No codes match that filter.':'No codes yet — create one above.')+'</div>'; return; }
+
+    listEl.innerHTML = rows.map(r=>{
+      const m = r.m;
+      const tier = ['silver','gold','platinum'].includes(m.tier) ? m.tier : 'platinum';
+      const used = m.used||0, max = m.maxUses||1;
+      const spent = max ? Math.min(100, Math.round(used/max*100)) : 0;
+      const expired = m.expires && m.expires < Date.now();
+      const full = used >= max;
+      return '<div class="ac-row">'
+        + '<span class="ac-code">'+esc(r.code)+'</span>'
+        + '<span class="ac-tier '+tier+'">'+tier+'</span>'
+        + '<div class="ac-meta">'
+          + '<span>Grants <b>'+(m.days? m.days+' days':'no-expiry')+'</b></span>'
+          + '<span>Used <b>'+used+' / '+max+'</b></span>'
+          + '<span>Code expires <b>'+(expired?'(expired)':fmtDate(m.expires))+'</b></span>'
+          + '<span>Created <b>'+fmtDate(m.created)+'</b></span>'
+          + (full?'<span style="color:var(--rust)"><b>Fully redeemed</b></span>':'')
+        + '</div>'
+        + '<div class="ac-tools">'
+          + '<button class="ac-copy" data-copy="'+esc(r.code)+'" type="button">Copy</button>'
+          + '<button class="ac-del" data-del="'+esc(r.code)+'" type="button">Delete</button>'
+        + '</div>'
+        + (m.note? '<div class="ac-note-txt">'+esc(m.note)+'</div>':'')
+        + '<div class="ac-spend"><span style="width:'+spent+'%"></span></div>'
+      + '</div>';
+    }).join('');
+  }
+  function safeParse(s){ try{ return JSON.parse(s); }catch(e){ return {}; } }
+
+  async function load(){
+    try{
+      msg('');
+      const d = await call('GET');
+      codes = Array.isArray(d.codes) ? d.codes : [];
+      render();
+    }catch(e){ listEl.innerHTML = '<div class="ac-empty">Couldn’t load codes.</div>'; msg(e.message); }
+  }
+
+  async function create(){
+    const btn = $('#acCreate'); btn.disabled = true;
+    try{
+      const body = {
+        action:'create',
+        code: $('#acCode').value.trim(),
+        tier: $('#acTier').value,
+        days: $('#acDays').value ? +$('#acDays').value : null,
+        maxUses: $('#acMax').value ? +$('#acMax').value : 1,
+        expireDays: $('#acExpire').value ? +$('#acExpire').value : null,
+        note: $('#acNote').value.trim()
+      };
+      const d = await call('POST', body);
+      msg('Created code ' + (d.code||'') + ' — copy it and share.', true);
+      $('#acCode').value=''; $('#acNote').value='';
+      await load();
+    }catch(e){ msg(e.message); }
+    finally{ btn.disabled = false; }
+  }
+
+  async function del(code){
+    if(!confirm('Delete code '+code+'? Accounts that already redeemed it keep their access; the code just stops working for new redemptions.')) return;
+    try{ await call('POST', { action:'delete', code }); msg('Deleted '+code+'.', true); await load(); }
+    catch(e){ msg(e.message); }
+  }
+
+  $('#acCreate').addEventListener('click', create);
+  $('#acRefresh').addEventListener('click', load);
+  $('#acFilter').addEventListener('input', render);
+  listEl.addEventListener('click', e=>{
+    const c = e.target.closest('[data-copy]'); if(c){ navigator.clipboard && navigator.clipboard.writeText(c.dataset.copy); c.textContent='Copied'; setTimeout(()=>c.textContent='Copy',1200); return; }
+    const d = e.target.closest('[data-del]'); if(d){ del(d.dataset.del); }
+  });
+  $('#acCode').addEventListener('keydown', e=>{ if(e.key==='Enter') create(); });
+
+  msg('');
+  load();
+})();
+</script>
+</body>
+</html>

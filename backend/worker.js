@@ -32,13 +32,16 @@ const PAYPAL_API = 'https://api-m.paypal.com'; // live. Sandbox: https://api-m.s
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const cors = corsHeaders(env);
+    const cors = corsHeaders(env, request);
     if (request.method === 'OPTIONS') return new Response(null, { headers: cors });
 
     try {
       if (url.pathname === '/api/auth/register') return json(await register(request, env), 200, cors);
       if (url.pathname === '/api/auth/login')    return json(await login(request, env), 200, cors);
       if (url.pathname === '/api/auth/me')        return json(await me(request, env), 200, cors);
+      if (url.pathname === '/api/data')           return await userData(request, env, cors);
+      if (url.pathname === '/api/redeem')         return await redeemCode(request, env, cors);
+      if (url.pathname === '/api/admin/codes')    return await adminCodes(request, env, cors);
       if (url.pathname === '/api/ai')             return await aiProxy(request, env, cors);
       if (url.pathname === '/api/embed')          return await embedProxy(request, env, cors);
       if (url.pathname === '/api/feedback')       return await feedback(request, env, cors);
@@ -63,9 +66,22 @@ export default {
 };
 
 /* ---------------- helpers ---------------- */
-function corsHeaders(env) {
+// ALLOWED_ORIGIN may be a single origin or a comma-separated list
+// (e.g. "https://gpreasoning.uk, https://www.gpreasoning.uk, https://reasoninggp.com").
+// We echo back whichever allowed origin the request actually came from, so
+// www / non-www / a second domain all work without a separate deploy.
+function corsHeaders(env, request) {
+  const list = String(env.ALLOWED_ORIGIN || '').split(',').map(s => s.trim()).filter(Boolean);
+  const reqOrigin = request && request.headers ? request.headers.get('Origin') : null;
+  let allow = '*';
+  if (list.length) {
+    allow = (reqOrigin && list.includes(reqOrigin)) ? reqOrigin : list[0];
+  } else if (reqOrigin) {
+    allow = reqOrigin;
+  }
   return {
-    'Access-Control-Allow-Origin': env.ALLOWED_ORIGIN || '*',
+    'Access-Control-Allow-Origin': allow,
+    'Vary': 'Origin',
     'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     'Access-Control-Max-Age': '86400'
@@ -93,7 +109,21 @@ function tierFromPlan(planId, env) {
   };
   return map[planId] || null;
 }
-const publicUser = u => ({ name: u.name, email: u.email, stage: u.stage || '', created: u.created, tier: u.tier || 'bronze' });
+/* Effective tier: the ADMIN_EMAIL account is always platinum; a tier granted
+   with an expiry (discount codes) lapses back to bronze after tierUntil. */
+function effectiveTier(u, env) {
+  const admin = env && String(env.ADMIN_EMAIL || '').trim().toLowerCase();
+  if (admin && u.email === admin) return 'platinum';
+  let t = u.tier || 'bronze';
+  if (t !== 'bronze' && u.tierUntil && Date.now() > u.tierUntil) t = 'bronze';
+  return t;
+}
+const publicUser = (u, env) => ({
+  name: u.name, email: u.email, stage: u.stage || '', created: u.created,
+  tier: effectiveTier(u, env),
+  tierUntil: u.tierUntil || null,
+  admin: !!(env && String(env.ADMIN_EMAIL || '').trim().toLowerCase() === u.email)
+});
 
 async function userFromToken(request, env) {
   const auth = request.headers.get('Authorization') || '';
@@ -120,7 +150,7 @@ async function register(request, env) {
   await env.USERS.put(e, JSON.stringify(user));
   const token = randHex(32);
   await env.TOKENS.put(token, e, { expirationTtl: 60 * 60 * 24 * 30 });
-  return { token, user: publicUser(user) };
+  return { token, user: publicUser(user, env) };
 }
 async function login(request, env) {
   const { email, password } = await request.json();
@@ -132,11 +162,103 @@ async function login(request, env) {
   if (hash !== user.hash) throw fail('Incorrect password — please try again.');
   const token = randHex(32);
   await env.TOKENS.put(token, e, { expirationTtl: 60 * 60 * 24 * 30 });
-  return { token, user: publicUser(user) };
+  return { token, user: publicUser(user, env) };
 }
 async function me(request, env) {
   const user = await userFromToken(request, env);
-  return { user: publicUser(user) };
+  return { user: publicUser(user, env) };
+}
+
+/* ---------------- per-user data sync (e.g. Scribe consultations) ----------------
+   GET  /api/data?k=scribe          -> { data, ts }   (null data if never saved)
+   POST /api/data?k=scribe {data}   -> { ok, ts }
+   Stored in USERS KV as udata:<email>:<key>. Signed-in users only, any tier. */
+async function userData(request, env, cors) {
+  let user;
+  try { user = await userFromToken(request, env); }
+  catch (e) { return json({ error: e.message }, e.status || 401, cors); }
+  const url = new URL(request.url);
+  const k = (url.searchParams.get('k') || '').replace(/[^a-z0-9_-]/gi, '').slice(0, 32);
+  if (!k) return json({ error: 'Missing data key' }, 400, cors);
+  const kvKey = 'udata:' + user.email + ':' + k;
+  if (request.method === 'GET') {
+    const raw = await env.USERS.get(kvKey);
+    if (!raw) return json({ data: null, ts: 0 }, 200, cors);
+    try { return json(JSON.parse(raw), 200, cors); } catch (e) { return json({ data: null, ts: 0 }, 200, cors); }
+  }
+  if (request.method === 'POST' || request.method === 'PUT') {
+    const body = await request.json();
+    const ts = Date.now();
+    const payload = JSON.stringify({ data: body.data ?? null, ts });
+    if (payload.length > 800 * 1024) return json({ error: 'Too large to sync (800 KB limit) — delete some old items.' }, 413, cors);
+    await env.USERS.put(kvKey, payload);
+    return json({ ok: true, ts }, 200, cors);
+  }
+  return json({ error: 'method' }, 405, cors);
+}
+
+/* ---------------- discount / free-entry codes ----------------
+   POST /api/redeem {code} (signed in) — grants the code's tier to the account.
+   Codes live in USERS KV as code:<CODE> =
+     { tier, days|null, maxUses, used, usedBy[], expires|null, note }         */
+async function redeemCode(request, env, cors) {
+  if (request.method !== 'POST') return json({ error: 'method' }, 405, cors);
+  let user;
+  try { user = await userFromToken(request, env); }
+  catch (e) { return json({ error: e.message }, e.status || 401, cors); }
+  const { code } = await request.json();
+  const c = String(code || '').trim().toUpperCase().replace(/[^A-Z0-9-]/g, '');
+  if (!c) return json({ error: 'Enter a code.' }, 400, cors);
+  const raw = await env.USERS.get('code:' + c);
+  if (!raw) return json({ error: 'That code isn\u2019t valid \u2014 check it and try again.' }, 404, cors);
+  const meta = JSON.parse(raw);
+  if (meta.expires && Date.now() > meta.expires) return json({ error: 'That code has expired.' }, 410, cors);
+  if (meta.maxUses && (meta.used || 0) >= meta.maxUses) return json({ error: 'That code has reached its maximum number of uses.' }, 410, cors);
+  if ((meta.usedBy || []).includes(user.email)) return json({ error: 'You\u2019ve already redeemed this code.' }, 409, cors);
+  meta.used = (meta.used || 0) + 1;
+  meta.usedBy = (meta.usedBy || []).concat(user.email).slice(-1000);
+  await env.USERS.put('code:' + c, JSON.stringify(meta));
+  user.tier = ['silver', 'gold', 'platinum'].includes(meta.tier) ? meta.tier : 'platinum';
+  user.tierUntil = meta.days ? Date.now() + meta.days * 864e5 : null;
+  user.tierSource = 'code:' + c;
+  await env.USERS.put(user.email, JSON.stringify(user));
+  return json({ ok: true, user: publicUser(user, env) }, 200, cors);
+}
+
+/* Admin console for codes (tools/access-codes.html):
+   GET  /api/admin/codes                          -> { codes:[{key,value}] }
+   POST {action:'create', code?, tier, days?, maxUses?, expireDays?, note?}
+   POST {action:'delete', code}                                              */
+async function adminCodes(request, env, cors) {
+  try { await requireAdmin(request, env); }
+  catch (e) { return json({ error: e.message }, e.status || 401, cors); }
+  if (request.method === 'GET') {
+    const codes = await listKV(env, 'code:', 200);
+    return json({ codes }, 200, cors);
+  }
+  if (request.method !== 'POST') return json({ error: 'method' }, 405, cors);
+  const b = await request.json();
+  if (b.action === 'create') {
+    const code = String(b.code || ('RGP-' + randHex(3).toUpperCase())).trim().toUpperCase().replace(/[^A-Z0-9-]/g, '');
+    if (!code) return json({ error: 'Bad code' }, 400, cors);
+    if (await env.USERS.get('code:' + code)) return json({ error: 'That code already exists.' }, 409, cors);
+    const meta = {
+      tier: ['silver', 'gold', 'platinum'].includes(b.tier) ? b.tier : 'platinum',
+      days: b.days ? Math.max(1, Math.min(3650, +b.days)) : null,
+      maxUses: b.maxUses ? Math.max(1, Math.min(10000, +b.maxUses)) : 1,
+      used: 0, usedBy: [], created: Date.now(),
+      expires: b.expireDays ? Date.now() + (+b.expireDays) * 864e5 : null,
+      note: String(b.note || '').slice(0, 120)
+    };
+    await env.USERS.put('code:' + code, JSON.stringify(meta));
+    return json({ ok: true, code, meta }, 200, cors);
+  }
+  if (b.action === 'delete') {
+    const c = String(b.code || '').trim().toUpperCase().replace(/[^A-Z0-9-]/g, '');
+    if (c) await env.USERS.delete('code:' + c);
+    return json({ ok: true }, 200, cors);
+  }
+  return json({ error: 'Unknown action' }, 400, cors);
 }
 
 /* ---------------- Live updates feed (auto-updating) ----------------

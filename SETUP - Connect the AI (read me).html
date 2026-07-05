@@ -187,6 +187,18 @@ if (!user.tier || user.tier === 'bronze') return json({ error: 'subscription_req
 
   <hr>
 
+  <h2>Part 7 — Members-only access &amp; payments <span class="pill" style="background:var(--rust)">owner setup</span></h2>
+  <p>The site can be locked so only paying members (and people you comp) get in. All of it runs on the same Worker — <b>no Firebase needed</b>; your accounts already sync across computers.</p>
+  <ol class="steps">
+    <li><b>Turn the paywall on.</b> In <code>assets/site.js</code>, <code>RGP_CONFIG.paywall</code> is <code>true</code> and <code>paywallHosts</code> lists your live domains. <b>Previews and local copies are never locked</b> — only the real site gates. Set <code>paywall:false</code> to reopen everything.</li>
+    <li><b>Tiers.</b> Admin → everything · Platinum → everything · Silver → clinic tools · Gold → SCA prep · signed-out / bronze → locked.</li>
+    <li><b>Take payments.</b> Card &amp; Apple Pay go through <b>PayPal</b> (a card can't be charged straight into a bank account). Set <code>RGP_CONFIG.paypalClientId</code> + <code>paypalPlans</code> in <code>site.js</code> and the Subscribe buttons appear on the pricing cards; the Worker verifies the webhook and grants the tier automatically.</li>
+    <li><b>Get the money into Monzo Business.</b> The processor collects the payment; you then route <em>payouts</em> to Monzo. In PayPal, add your Monzo account number + sort code as the linked withdrawal bank (or, if you use Stripe instead, set Monzo as the payout bank). Funds land in Monzo automatically.</li>
+    <li><b>Free entry / discount codes.</b> Set <code>ADMIN_EMAIL</code> on the Worker (Part 6) to your login email, then open <code>tools/access-codes.html</code> (not linked in the public menu — bookmark it). Create codes that grant a tier for a set number of days, with a max number of uses and optional expiry. Share a code; the person redeems it under <b>Account → Redeem a code</b> for full comped access — no payment taken.</li>
+  </ol>
+
+  <hr>
+
   <h2>Keeping it under £20/month</h2>
   <p>Hosting (Cloudflare) is free. The only cost is the AI itself, paid per question to Anthropic. With the recommended <b>Claude Sonnet 4.6</b> model, a typical question costs about <b>2p</b> — so £20 covers roughly <b>900 questions a month</b>. Switching the <code>AI_MODEL</code> to <code>claude-haiku-4-5</code> costs ~0.7p each (~2,700/month) at slightly lower quality.</p>
   <div class="ok note"><b>Hard ceiling:</b> in the Anthropic Console → Billing, load prepaid credit (e.g. $25) and turn <b>auto-reload OFF</b>. The AI simply stops when the credit runs out — it can never bill you more than you've added.</div>

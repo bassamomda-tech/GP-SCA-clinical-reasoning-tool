@@ -9,6 +9,28 @@
   const CASES = window.SCA_CASES || [];
   // Merge per-case extras (record-format stem, time map, word pictures, CEG tags, avoid-phrases)
   (function(){ const EX = window.SCA_EXTRAS || {}; CASES.forEach(c => { if (EX[c.id]) Object.assign(c, EX[c.id]); }); })();
+
+  /* ---- Free “Trainee” taster cap: bronze accounts get the first 5 cases only ---- */
+  const FREE_CASE_IDS = new Set(CASES.slice(0, 5).map(c => c.id));
+  function freeCapped(){ return !!(window.RGP_PAYWALL && RGP_PAYWALL.isFreeTier && RGP_PAYWALL.isFreeTier()); }
+  function caseLocked(id){ return freeCapped() && !FREE_CASE_IDS.has(id); }
+  function showCaseUpsell(){
+    let el = document.getElementById('scaCaseUpsell');
+    if (!el){
+      el = document.createElement('div');
+      el.id = 'scaCaseUpsell';
+      el.style.cssText = 'position:fixed;inset:0;z-index:9000;display:grid;place-items:center;padding:20px;background:rgba(15,23,42,.55);backdrop-filter:blur(6px)';
+      el.innerHTML = '<div style="background:#fff;border-radius:16px;max-width:400px;width:100%;padding:24px;box-shadow:0 30px 70px rgba(0,0,0,.3);font-family:inherit;text-align:center">'+
+        '<div style="font-size:26px;margin-bottom:6px">🔐</div>'+
+        '<h2 style="font-family:\'Source Serif 4\',Georgia,serif;font-size:21px;margin:0 0 8px;color:#0c4a47">That\u2019s beyond your 5 free cases</h2>'+
+        '<p style="font-size:13.5px;line-height:1.55;color:#57534e;margin:0 0 16px">Your free plan includes the first 5 Hot Seat cases. Upgrade to Gold or Platinum to unlock the full SCA case library.</p>'+
+        '<a href="../index.html#subscriptions" style="display:block;background:#0c4a47;color:#fff;font-weight:700;padding:11px;border-radius:10px;text-decoration:none;margin-bottom:8px">See the plans →</a>'+
+        '<button type="button" id="scaUpsellClose" style="font:inherit;font-size:13px;font-weight:600;color:#0c4a47;background:none;border:none;cursor:pointer">Back to the sample cases</button>'+
+      '</div>';
+      document.body.appendChild(el);
+      el.addEventListener('click', e => { if (e.target === el || e.target.id === 'scaUpsellClose') el.remove(); });
+    }
+  }
   const $ = (q, r=document) => r.querySelector(q);
   const $$ = (q, r=document) => [...r.querySelectorAll(q)];
 
@@ -87,17 +109,19 @@
 
   function renderCaseGrid(){
     const grid = $('#caseGrid');
+    if(!document.getElementById('scaLockCss')){ const st=document.createElement('style'); st.id='scaLockCss'; st.textContent='.case-tile.ct-locked{opacity:.6}.case-tile.ct-locked:hover{opacity:.85}.case-tile.ct-locked .ct-cta{color:#b45309;font-weight:700}'; document.head.appendChild(st); }
     grid.innerHTML = CASES.map(c => {
       const typeLbl = ({video:'Video',telephone:'Telephone',f2f:'Face-to-face',home:'Home visit',data:'Data interp.'})[c.type] || c.type;
       const spec = specOf(c), fam = famOf(c);
+      const locked = caseLocked(c.id);
       return `
-      <button class="case-tile" data-id="${c.id}" data-ceg="${(c.ceg||[]).map(escapeHtml).join('|')}" data-spec="${escapeHtml(spec)}" data-fam="${escapeHtml(fam)}">
+      <button class="case-tile${locked?' ct-locked':''}" data-id="${c.id}" data-ceg="${(c.ceg||[]).map(escapeHtml).join('|')}" data-spec="${escapeHtml(spec)}" data-fam="${escapeHtml(fam)}">
         <span class="ct-type" data-type="${c.type}">${typeLbl}</span>
         <h3>${escapeHtml(c.title)}</h3>
         <div class="ct-meta">${c.meta.age}y · ${escapeHtml(c.meta.sex)} · ${escapeHtml(c.meta.system||'')}</div>
         <div class="ct-setting">${escapeHtml(c.meta.setting||'')}</div>
         ${(c.ceg && c.ceg.length) ? `<div class="ct-cegs">${c.ceg.map(g => `<span class="ct-ceg">${escapeHtml(g)}</span>`).join('')}</div>` : ''}
-        <div class="ct-cta">Open this case →</div>
+        <div class="ct-cta">${locked?'🔐 Members only — upgrade':'Open this case →'}</div>
       </button>`;
     }).join('');
     grid.querySelectorAll('.case-tile').forEach(t => {
@@ -234,6 +258,7 @@
   function startCase(id){
     const c = CASES.find(x => x.id === id);
     if (!c) return;
+    if (caseLocked(id)){ showCaseUpsell(); return; }
     state.case = c;
     state.timerSec = (c.duration || 12) * 60;
     state.scores = { tasks:null, rto:null, gs:null };

@@ -10,13 +10,19 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
   // e.g. 'https://reasoning-gp-api.YOURNAME.workers.dev'  (no trailing slash)
   workerUrl: 'https://shy-voice-2225.bassamomda.workers.dev',
   // PayPal LIVE client id (for the subscribe buttons + Apple Pay)
-  paypalClientId: '',
-  // PayPal Subscription Plan IDs — create these in the PayPal dashboard
+  paypalClientId: 'ASkO8Npsc_LwTMSZtzTYOARQLNm25eHaRNpRGivyOk98V4gSgzMjiBN0YIqAQhb9rEmuGV_GV8jTdoGD',
+  // Monthly-only for now. Add the *_yearly ids later to switch the yearly toggle back on.
   paypalPlans: {
-    silver_monthly:'', silver_yearly:'',
-    gold_monthly:'',   gold_3monthly:'', gold_yearly:'',
-    platinum_monthly:'', platinum_yearly:''
-  }
+    silver_monthly:'P-7W0981493D9643523NJFITGA', silver_yearly:'P-5JJ39495BS015630PNJFJA3A',
+    gold_monthly:'P-3FU28600XR036331XNJFIV2I',   gold_3monthly:'', gold_yearly:'P-1YB945321J846421DNJFJBIY',
+    platinum_monthly:'P-85Y58353NJ528450PNJFIXBQ', platinum_yearly:'P-3EJ24467JK760462GNJFJBWQ'
+  },
+  // Member-only access. When true, content pages on the LIVE site require a
+  // signed-in paid account (or the admin, or a redeemed free-entry code).
+  // The gate only arms on the domains listed in paywallHosts — previews and
+  // local copies are never locked. Set to false to open the whole site again.
+  paywall: true,
+  paywallHosts: ['gpreasoning.uk', 'www.gpreasoning.uk', 'reasoninggp.com', 'www.reasoninggp.com']
 };
 
 /* ---- AI shim: make window.claude.complete() work on YOUR domain ----
@@ -792,7 +798,7 @@ const RGP_MGMT_SPECIALTIES = [
   {label:'Neurology',                       icon:'🧠', n:14},
   {label:'Gastroenterology',                icon:'🫃', n:14},
   {label:'Musculoskeletal & Rheumatology',  icon:'🦴', n:16},
-  {label:"Women's Health",                   icon:'🌸', n:15},
+  {label:"Women's Health",                   icon:'🌸', n:14},
   {label:"Urology & Men's Health",           icon:'🚹', n:13},
   {label:'Children',                        icon:'🧒', n:6},
   {label:'Allergy & Immunology',            icon:'🤧', n:3},
@@ -1859,9 +1865,362 @@ const RGPAuth = (function(){
     const a = document.createElement('a'); a.href = url; a.download = 'reasoning-gp-signups.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
     return rows;
   }
-  return { register, login, logout, current, refresh, tier, isPro, hasAccess, exportSignups };
+  // Redeem a discount / free-entry code against the signed-in account.
+  async function redeem(code){
+    if (!api()) throw new Error('Codes can only be redeemed on the live site.');
+    const r = await apiCall('/api/redeem', { code });
+    if (r.user) setMe(r.user);
+    return r.user;
+  }
+  function isAdmin(){ const u = current(); return !!(u && u.admin); }
+  return { register, login, logout, current, refresh, tier, isPro, hasAccess, exportSignups, redeem, isAdmin };
 })();
 window.RGPAuth = RGPAuth;
+
+/* ============================================================
+   RGPCloud — tiny per-account key/value sync (Worker-backed).
+   Used by tools (e.g. Consult Scribe) to keep data across devices.
+   No-ops gracefully when signed out or the Worker is unreachable.
+   ============================================================ */
+/* ============================================================
+   RGP paywall gate — members-only access on the LIVE site.
+   Arms only when RGP_CONFIG.paywall === true AND the hostname is in
+   RGP_CONFIG.paywallHosts (so previews / local copies never lock).
+   Access: admin account → everything; platinum → everything;
+   silver → clinic pages; gold → SCA pages; bronze / signed-out → locked.
+   Free-entry discount codes are redeemed right on the lock screen.
+   ============================================================ */
+(function(){
+  const cfg = window.RGP_CONFIG || {};
+  if (cfg.paywall !== true) return;
+  const hosts = cfg.paywallHosts || [];
+  if (hosts.indexOf(location.hostname) === -1) return;
+  if (/[?&]embed=1/.test(location.search) || document.documentElement.hasAttribute('data-rgp-embed')) return; // parent page is gated
+
+  // Pages that stay public (front door, legal, setup, offline shell)
+  const p = location.pathname.replace(/\/+$/,'/');
+  const isPublic =
+    /(^|\/)(index\.html)?$/.test(p) ||
+    /(pages\/)?(terms|privacy|about|contact)\.html$/.test(p) ||
+    /offline\.html$/.test(p) ||
+    /SETUP[^/]*\.html$/i.test(p) ||
+    /Reasoning GP - Home\.html$/.test(decodeURIComponent(p));
+  if (isPublic) return;
+
+  function pre(){ // path prefix back to site root
+    const m = location.pathname.match(/\/(cases|tools|pages)\//);
+    if (!m) return '';
+    return location.pathname.indexOf('/tools/algorithms/') > -1 || location.pathname.indexOf('/tools/management/') > -1 ? '../../' : '../';
+  }
+  function area(){ return /sca-/.test(location.pathname) ? 'sca' : 'clinic'; }
+
+  // ---- Free “Trainee” (bronze) taster policy ----
+  // A signed-in FREE account may open: Consult Scribe, Articles, Resources,
+  // Patient Leaflets, the Consultation Spine, the Casebook & Pathways
+  // DIRECTORIES (to browse), and 5 SAMPLE cases + 5 SAMPLE pathways. Everything
+  // else (Ask, Prescribing, CPD, other clinic tools, all SCA tools, the
+  // management protocols, and non-sample cases/pathways) prompts an upgrade.
+  function sampleSet(list, n){ const s = new Set(); for (const x of list){ if (s.size>=n) break; if (x) s.add(x); } return s; }
+  const FREE_CASES = (function(){
+    const bases = [];
+    (window.RGP_CASES||[]).forEach(g => (g.items||[]).forEach(i => {
+      if ((i.status==='full'||i.status==='stub') && i.path) bases.push(i.path.split('/').pop());
+    }));
+    return sampleSet(bases, 5);
+  })();
+  const FREE_ALGS = sampleSet((typeof RGP_ALGORITHMS!=='undefined'?RGP_ALGORITHMS:[]).map(a => a.slug ? a.slug+'.html' : null), 5);
+  // Protocols are individual pages with no global index — curate 5 common samples.
+  const FREE_PROTOCOLS = new Set(['hypertension.html','asthma.html','type-2-diabetes.html','gout.html','migraine.html']);
+  // SCA sample cases (first 5 in the Hot Seat library) — enforced in-tool by sca-practice.js.
+  const FREE_SCA = sampleSet((window.SCA_CASES||[]).map(c => c && c.id), 5);
+  window.RGP_FREE_SAMPLES = { cases:[...FREE_CASES], algorithms:[...FREE_ALGS], protocols:[...FREE_PROTOCOLS], scaCases:[...FREE_SCA] };
+  // Shared helper so in-tool caps (Hot Seat cases, Scribe monthly limit) can ask
+  // “is this a free account that should be capped?”. Only defined on the live
+  // paywall host (this IIFE returns early otherwise), so previews stay uncapped.
+  window.RGP_PAYWALL = {
+    armed: true,
+    freeSamples: window.RGP_FREE_SAMPLES,
+    isFreeTier: function(){
+      if (!window.RGPAuth) return false;
+      if (RGPAuth.isAdmin && RGPAuth.isAdmin()) return false;
+      return (RGPAuth.tier() || 'bronze') === 'bronze';
+    }
+  };
+  // Returns null if a free account may open this page, else a short reason code.
+  function bronzeReason(){
+    const path = location.pathname, base = (path.split('/').pop()||'');
+    const OPEN = ['scribe.html','articles.html','resources.html','leaflets.html','consultation-spine.html','sca-guide.html'];
+    if (OPEN.indexOf(base) > -1) return null;
+    if (/\/cases\.html$/.test(path) || /\/tools\/algorithms\.html$/.test(path)) return null; // browse catalogue
+    if (/\/cases\//.test(path))             return FREE_CASES.has(base) ? null : 'sample-case';
+    if (/\/tools\/algorithms\//.test(path)) return FREE_ALGS.has(base) ? null : 'sample-alg';
+    if (/\/tools\/management\.html$/.test(path)) return null;                 // protocols directory (browse)
+    if (/\/tools\/management\//.test(path)) return FREE_PROTOCOLS.has(base) ? null : 'sample-protocol';
+    if (/sca-practice\.html$/.test(path))    return null;                      // Hot Seat: 5 sample cases (capped in-tool)
+    if (/sca-/.test(path))                   return 'sca';
+    if (/ask\.html$/.test(path))             return 'ask';
+    if (/prescribing\.html$/.test(path))     return 'prescribing';
+    if (/cpd\.html$/.test(path))             return 'cpd';
+    return 'members';
+  }
+  function allowed(){
+    if (!window.RGPAuth) return true;
+    if (RGPAuth.isAdmin && RGPAuth.isAdmin()) return true;
+    const t = RGPAuth.tier();
+    if (t === 'platinum') return true;
+    if (t === 'silver') return area() === 'clinic';
+    if (t === 'gold')   return area() === 'sca';
+    // bronze / free — must be signed in AND on an allowed page
+    if (!RGPAuth.current || !RGPAuth.current()) return false;
+    return bronzeReason() === null;
+  }
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  function overlay(){
+    let el = document.querySelector('.rgp-gate');
+    if (el) return el;
+    el = document.createElement('div');
+    el.className = 'rgp-gate';
+    el.innerHTML = '<style>'+
+      '.rgp-gate{position:fixed;inset:0;z-index:9000;display:grid;place-items:center;padding:20px;background:rgba(28,25,23,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-family:"DM Sans",system-ui,sans-serif}'+
+      '.rgp-gate-card{background:#f6f2e9;border:1px solid #d9d2c4;border-radius:18px;max-width:430px;width:100%;padding:26px 24px;box-shadow:0 30px 70px rgba(0,0,0,.35);max-height:92vh;overflow-y:auto}'+
+      '.rgp-gate-ic{font-size:26px;margin-bottom:8px}'+
+      '.rgp-gate-card h2{font-family:"Source Serif 4",Georgia,serif;font-size:22px;font-weight:600;color:#1c1917;margin:0 0 6px}'+
+      '.rgp-gate-card p{font-size:13.5px;line-height:1.55;color:#57534e;margin:0 0 14px}'+
+      '.rgp-gate-btns{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}'+
+      '.rgp-gate-btn{display:block;width:100%;text-align:center;font:inherit;font-size:14px;font-weight:700;padding:11px 14px;border-radius:10px;cursor:pointer;text-decoration:none;box-sizing:border-box}'+
+      '.rgp-gate-btn.pri{background:#0c4a47;color:#fff;border:1px solid #0c4a47}'+
+      '.rgp-gate-btn.sec{background:#fff;color:#0c4a47;border:1px solid #c9c1b2}'+
+      '.rgp-gate-code{border-top:1px dashed #d9d2c4;padding-top:13px}'+
+      '.rgp-gate-code label{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#78716c;margin-bottom:6px}'+
+      '.rgp-gate-code-row{display:flex;gap:8px}'+
+      '.rgp-gate-code input{flex:1;font:inherit;font-size:14px;padding:10px 12px;border:1px solid #c9c1b2;border-radius:10px;background:#fff;text-transform:uppercase;min-width:0}'+
+      '.rgp-gate-code button{font:inherit;font-size:13.5px;font-weight:700;padding:10px 16px;border-radius:10px;border:1px solid #0c4a47;background:#0c4a47;color:#fff;cursor:pointer;flex-shrink:0}'+
+      '.rgp-gate-err{font-size:12.5px;color:#b91c1c;margin-top:8px;min-height:1em}'+
+      '.rgp-gate-err.ok{color:#15803d}'+
+      '.rgp-gate-meta{font-size:12px;color:#78716c;margin-top:12px;text-align:center}'+
+      '.rgp-gate-meta button{font:inherit;font-size:12px;font-weight:700;color:#0c4a47;background:none;border:none;cursor:pointer;text-decoration:underline;padding:0}'+
+      '</style>'+
+      '<div class="rgp-gate-card" role="dialog" aria-modal="true"><div class="rgp-gate-ic">🔐</div><div class="rgp-gate-body"></div></div>';
+    document.body.appendChild(el);
+    return el;
+  }
+
+  function render(){
+    if (allowed()){
+      const g = document.querySelector('.rgp-gate');
+      if (g) g.remove();
+      document.documentElement.style.overflow = '';
+      return;
+    }
+    const el = overlay();
+    document.documentElement.style.overflow = 'hidden';
+    const u = window.RGPAuth ? RGPAuth.current() : null;
+    const P = pre();
+    let html;
+    if (!u){
+      html = '<h2>This page is for members</h2>'+
+        '<p>Reasoning GP is a paid toolkit for GP trainees and GPs. Sign in if you already have a plan — or create a free account, pick a plan, or enter an access code you\u2019ve been given.</p>'+
+        '<div class="rgp-gate-btns">'+
+        '<button class="rgp-gate-btn pri" data-g-signin type="button">Sign in</button>'+
+        '<button class="rgp-gate-btn sec" data-g-signup type="button">Create an account</button>'+
+        '<a class="rgp-gate-btn sec" href="'+P+'index.html#subscriptions">See the plans →</a>'+
+        '</div>'+
+        '<p style="font-size:12px;margin-bottom:0">Have an access code? Create a free account first, then enter it here.</p>';
+    } else {
+      const t = RGPAuth.tier();
+      const wrongArea = (t === 'silver' || t === 'gold');
+      const reason = (t === 'bronze') ? bronzeReason() : null;
+      const reasonMsg = {
+        'sample-case':'You\u2019ve opened a case beyond your 5 free samples.',
+        'sample-alg':'You\u2019ve opened a pathway beyond your 5 free samples.',
+        'sample-protocol':'You\u2019ve opened a protocol beyond your 5 free samples.',
+        'sca':'The SCA exam suite is for Gold or Platinum members.',
+        'protocol':'The management protocols are a members feature.',
+        'ask':'Ask the assistant is a members feature.',
+        'prescribing':'The Prescribing tools are a members feature.',
+        'cpd':'CPD tracking is a members feature.',
+        'members':'This is a members feature.'
+      };
+      const head = wrongArea ? 'Your plan doesn\u2019t cover this side'
+                 : (t==='bronze' ? 'That\u2019s a members feature' : 'Your account doesn\u2019t have a plan yet');
+      const body = wrongArea
+          ? (t==='silver' ? 'Silver covers the Clinic toolkit. This is an SCA page — upgrade to Gold or Platinum to unlock it.'
+                          : 'Gold covers the SCA exam suite. This is a Clinic page — upgrade to Silver or Platinum to unlock it.')
+          : (t==='bronze'
+              ? ((reasonMsg[reason]||'This is a members feature.')+' Your free plan still includes Consult Scribe, articles, resources, patient leaflets, the consultation spine, and 5 sample cases &amp; pathways.')
+              : 'Pick a plan to unlock the toolkit, or enter an access code if you\u2019ve been given one.');
+      html = '<h2>'+head+'</h2>'+
+        '<p>'+body+'</p>'+
+        '<div class="rgp-gate-btns"><a class="rgp-gate-btn pri" href="'+P+'index.html#subscriptions">See the plans →</a></div>'+
+        '<div class="rgp-gate-code"><label>Access code</label>'+
+        '<div class="rgp-gate-code-row"><input type="text" placeholder="e.g. RGP-3F9A2C" data-g-code /><button type="button" data-g-redeem>Unlock</button></div>'+
+        '<div class="rgp-gate-err" data-g-err></div></div>'+
+        '<div class="rgp-gate-meta">Signed in as '+esc(u.email)+' · <button type="button" data-g-out>Sign out</button></div>';
+    }
+    el.querySelector('.rgp-gate-body').innerHTML = html;
+    const q = s => el.querySelector(s);
+    if (q('[data-g-signin]')) q('[data-g-signin]').addEventListener('click', () => window.RGP_openAuth && RGP_openAuth('signin'));
+    if (q('[data-g-signup]')) q('[data-g-signup]').addEventListener('click', () => window.RGP_openAuth && RGP_openAuth('signup'));
+    if (q('[data-g-out]')) q('[data-g-out]').addEventListener('click', () => { RGPAuth.logout(); render(); });
+    if (q('[data-g-redeem]')){
+      const go = async () => {
+        const inp = q('[data-g-code]'), err = q('[data-g-err]');
+        const code = (inp.value||'').trim();
+        if (!code){ err.textContent = 'Enter the code you were given.'; return; }
+        err.classList.remove('ok'); err.textContent = 'Checking\u2026';
+        try {
+          await RGPAuth.redeem(code);
+          err.classList.add('ok'); err.textContent = '\u2713 Unlocked — welcome in!';
+          setTimeout(render, 600);
+        } catch(e){ err.textContent = e.message || 'That code didn\u2019t work.'; }
+      };
+      q('[data-g-redeem]').addEventListener('click', go);
+      q('[data-g-code]').addEventListener('keydown', e => { if (e.key === 'Enter'){ e.preventDefault(); go(); } });
+    }
+  }
+
+  function init(){
+    render();
+    // re-check once the server has confirmed the profile/entitlement
+    if (window.RGPAuth && RGPAuth.refresh) RGPAuth.refresh().then(render).catch(()=>{});
+    // re-check whenever the auth UI re-renders (sign-in / sign-out)
+    if (typeof renderAuthState === 'function'){
+      const orig = renderAuthState;
+      renderAuthState = function(){ orig(); try { render(); } catch(e){} };
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+window.RGPCloud = (function(){
+  function api(){ const u = (window.RGP_CONFIG||{}).workerUrl; return u ? u.replace(/\/$/,'') : null; }
+  function token(){ try { return localStorage.getItem('rgp.auth.token.v1'); } catch(e){ return null; } }
+  function ready(){ return !!(api() && token()); }
+  async function call(k, method, data){
+    const res = await fetch(api() + '/api/data?k=' + encodeURIComponent(k), {
+      method,
+      headers: Object.assign({ 'Content-Type':'application/json' }, { 'Authorization':'Bearer ' + token() }),
+      body: method === 'GET' ? undefined : JSON.stringify({ data })
+    });
+    const d = await res.json().catch(()=>({}));
+    if (!res.ok) throw new Error(d.error || 'sync failed');
+    return d;
+  }
+  return {
+    ready,
+    async get(k){ if (!ready()) return null; try { return await call(k, 'GET'); } catch(e){ return null; } },
+    async put(k, data){ if (!ready()) return null; try { return await call(k, 'POST', data); } catch(e){ return null; } }
+  };
+})();
+
+/* ============================================================
+   RGPSync — makes the learner's PROGRESS follow their account
+   across devices, not just Consult Scribe. Mirrors a small family
+   of localStorage progress stores to the Worker (via RGPCloud):
+     • rgp.progress.v1         pathway / case “done” ticks
+     • rgp-cpd-v1              auto-CPD reading + case log
+     • rgp-sca-progress-v1     Hot Seat scorecard attempts
+     • rgp-sca-domain-attempts Examiner Marking attempts
+     • rgp-sca-attempts-hotseat Hot Seat self-marks
+     • rgp-sca-habits          simulator habit flags
+     • rgp-akt-srs             qbank spaced-repetition schedule
+   Signed out or offline: everything still works locally. On sign-in
+   we PULL + MERGE (never overwrite) so a device that already had
+   local progress keeps it and gains what the account holds. Merge is
+   per-store: statuses take the furthest state, reading time accrues to
+   the max, attempt logs union by id/timestamp, schedules keep the newer
+   entry. A light poll pushes changes back every few seconds and on hide.
+   ============================================================ */
+window.RGPSync = (function(){
+  var CFG = {
+    'rgp.progress.v1':          'rank',
+    'rgp-cpd-v1':               'cpd',
+    'rgp-sca-progress-v1':      'array',
+    'rgp-sca-attempts':         'array',
+    'rgp-sca-circuit-history':  'array',
+    'rgp-sca-domain-attempts':  'array',
+    'rgp-sca-attempts-hotseat': 'array',
+    'rgp-sca-habits':           'array',
+    'rgp-sca-exm':              'objnew',
+    'rgp-akt-srs':              'objnew'
+  };
+  function ck(k){ return 'store:' + k; }
+  function ready(){ return !!(window.RGPCloud && RGPCloud.ready && RGPCloud.ready()); }
+  function rd(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } }
+  function wr(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+  function hash(k){ try { return localStorage.getItem(k) || ''; } catch(e){ return ''; } }
+
+  var RANK = { '':0, todo:0, seen:1, reading:2, review:2, started:2, done:3, complete:3, completed:3, mastered:4 };
+  function mergeRank(a,b){ a=a||{}; b=b||{}; var o=Object.assign({},a),k;
+    for(k in b){ if((RANK[b[k]]||0) >= (RANK[o[k]]||0)) o[k]=b[k]; } return o; }
+  function mergeCpd(a,b){ a=a||{}; b=b||{}; var o={},ks={},k;
+    for(k in a)ks[k]=1; for(k in b)ks[k]=1;
+    for(k in ks){ var x=a[k]||{}, y=b[k]||{}, newer=((y.last||0)>=(x.last||0))?y:x;
+      o[k]={ href:y.href||x.href, title:y.title||x.title, kind:y.kind||x.kind,
+        seconds:Math.max(x.seconds||0, y.seconds||0), visits:Math.max(x.visits||0, y.visits||0),
+        first:Math.min(x.first||y.first||Date.now(), y.first||x.first||Date.now()),
+        last:Math.max(x.last||0, y.last||0),
+        reflection:(newer.reflection || x.reflection || y.reflection || '') }; }
+    return o; }
+  function idOf(e){ if(!e || typeof e!=='object') return null;
+    if(e.id!=null) return 'id:'+e.id;
+    var t=e.ts!=null?e.ts:e.t; if(t!=null) return t+'|'+(e.caseId||e.case||e.slug||e.c||''); return null; }
+  function tsOf(e){ return (e&&(e.ts||e.t||e.last))||0; }
+  function mergeArray(a,b,cap){ a=Array.isArray(a)?a:[]; b=Array.isArray(b)?b:[];
+    var m={}, anon=[];
+    a.concat(b).forEach(function(e){ var id=idOf(e);
+      if(id!=null){ var c=m[id]; if(!c || tsOf(e)>=tsOf(c)) m[id]=e; }
+      else if(e) anon.push(e); });
+    var out=Object.keys(m).map(function(k){return m[k];}).concat(anon);
+    out.sort(function(x,y){ return tsOf(y)-tsOf(x); });
+    return out.slice(0, cap||600); }
+  function objT(o){ return (o && (o.last||o.due||o.ts||o.updated))||0; }
+  function mergeObjNew(a,b){ a=a||{}; b=b||{}; var o=Object.assign({},a),k;
+    for(k in b){ if(!(k in o)) o[k]=b[k];
+      else if(b[k] && o[k] && typeof b[k]==='object' && typeof o[k]==='object') o[k]= objT(b[k])>=objT(o[k]) ? b[k] : o[k];
+      else o[k]=b[k]; }
+    return o; }
+  var MERGE = { rank:mergeRank, cpd:mergeCpd, array:function(a,b){return mergeArray(a,b,600);}, objnew:mergeObjNew };
+
+  var snap={}, started=false;
+  function initSnap(){ for(var k in CFG) snap[k]=hash(k); }
+
+  async function syncOne(k){
+    var r = await RGPCloud.get(ck(k));
+    var cloud = (r && r.data!=null) ? r.data : null;
+    var local = rd(k);
+    if(cloud==null && local==null) return false;
+    var merged = MERGE[CFG[k]](cloud, local);
+    var before = localStorage.getItem(k);
+    wr(k, merged); snap[k]=hash(k);
+    await RGPCloud.put(ck(k), merged);
+    return before !== localStorage.getItem(k);
+  }
+  async function pull(){
+    if(!ready()) return;
+    var changed=[];
+    for(var k in CFG){ try{ if(await syncOne(k)) changed.push(k); }catch(e){} }
+    if(changed.length) try{ window.dispatchEvent(new CustomEvent('rgp-sync-updated', { detail:{ keys:changed } })); }catch(e){}
+  }
+  async function pushChanged(){
+    if(!ready()) return;
+    for(var k in CFG){ if(hash(k)!==snap[k]){ try{ await syncOne(k); }catch(e){} } }
+  }
+  function start(){
+    if(started) return; started=true;
+    initSnap();
+    if(ready()) pull();
+    setInterval(pushChanged, 8000);
+    document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='hidden') pushChanged(); });
+    window.addEventListener('pagehide', function(){ pushChanged(); });
+    window.addEventListener('storage', function(e){ if(e && e.key && CFG[e.key]) snap[e.key]=hash(e.key); });
+  }
+  // Called after a sign-in mid-session: begin the loop (if not already) and pull now.
+  function onSignIn(){ start(); pull(); }
+  return { start:start, pull:pull, push:pushChanged, onSignIn:onSignIn, ready:ready, config:CFG };
+})();
 
 // Reflect signed-in state into the top-nav auth slot (runs on every page).
 function renderAuthState(){
@@ -2053,6 +2412,7 @@ function injectAuthModal(){
       el.querySelectorAll('.rgp-auth-form').forEach(x => x.hidden = true);
       el.querySelector('.rgp-auth-done').hidden = false;
       renderAuthState();
+      try { window.RGPSync && RGPSync.onSignIn(); } catch(e){}
     } catch (err) {
       if (errEl) errEl.textContent = err.message || 'Something went wrong — please try again.';
     } finally {
@@ -2096,7 +2456,7 @@ function injectFooter(){
           <p>Bronze is free forever. Silver is the clinic toolkit, Gold is the full SCA exam suite, Platinum is everything. Switch between monthly and yearly below — yearly saves you money.</p>
         </header>
         <div class="rgp-subs" data-subs>
-          <div class="rgp-bill-toggle" role="tablist" aria-label="Billing period">
+          <div class="rgp-bill-toggle" role="tablist" aria-label="Billing period" ${(function(){var pl=(window.RGP_CONFIG||{}).paypalPlans||{};return (pl.silver_yearly||pl.gold_yearly||pl.platinum_yearly)?'':'hidden';})()}>
             <button type="button" data-bill="monthly" class="active" role="tab">Monthly</button>
             <button type="button" data-bill="yearly" role="tab">Yearly <span class="rgp-bill-save">save up to 25%</span></button>
           </div>
@@ -2107,12 +2467,13 @@ function injectFooter(){
               <div class="rgp-sub-price"><span class="price-m">£0<small>/forever</small></span><span class="price-y">£0<small>/forever</small></span></div>
               <p class="rgp-sub-desc">Get a real feel for every section, free for good.</p>
               <ul class="rgp-sub-features">
-                <li>A few sample cases, pathways &amp; protocols from each section</li>
-                <li>The full <b>SCA Guide</b></li>
-                <li><b>3-day free trial</b> of selected Clinic &amp; SCA tools</li>
-                <li>7-step framework + guideline links</li>
-                <li class="is-na">Full Clinic toolkit</li>
-                <li class="is-na">Full SCA exam suite</li>
+                <li><b>5 sample cases + 5 sample pathways</b></li>
+                <li>Consult Scribe (record → note)</li>
+                <li>All articles, resources &amp; patient leaflets</li>
+                <li>Consultation Spine + the full <b>SCA Guide</b></li>
+                <li class="is-na">Ask the assistant</li>
+                <li class="is-na">Prescribing, CPD &amp; other tools</li>
+                <li class="is-na">Full Clinic toolkit &amp; SCA suite</li>
               </ul>
               <a class="rgp-sub-cta" href="${PRE}index.html">Start free</a>
             </article>
@@ -2474,7 +2835,9 @@ document.addEventListener('DOMContentLoaded', () => {
     applyNavOrder(getMode());
     // Backend mode: refresh profile + entitlement from the server, then re-render.
     if ((window.RGP_CONFIG||{}).workerUrl && RGPAuth && RGPAuth.refresh) {
-      RGPAuth.refresh().then(() => { try { renderAuthState(); } catch(e){} }).catch(()=>{});
+      RGPAuth.refresh().then(() => { try { renderAuthState(); } catch(e){} try { window.RGPSync && RGPSync.start(); } catch(e){} }).catch(()=>{});
+    } else {
+      try { window.RGPSync && RGPSync.start(); } catch(e){}
     }
   }
 
