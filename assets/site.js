@@ -1800,7 +1800,7 @@ const RGPAuth = (function(){
 
   function readUsers(){ try { return JSON.parse(localStorage.getItem(USERS) || '{}'); } catch(e){ return {}; } }
   function writeUsers(u){ try { localStorage.setItem(USERS, JSON.stringify(u)); } catch(e){} }
-  function pub(u){ return u ? { name:u.name, email:u.email, stage:u.stage, created:u.created, tier:u.tier || 'bronze' } : null; }
+  function pub(u){ return u ? { name:u.name, email:u.email, stage:u.stage, created:u.created, tier:u.tier || 'bronze', admin: !!u.admin } : null; }
 
   function randSalt(){
     const a = new Uint8Array(16); (crypto.getRandomValues ? crypto : window.msCrypto).getRandomValues(a);
@@ -1928,7 +1928,9 @@ window.RGPAuth = RGPAuth;
     }));
     return sampleSet(bases, 5);
   })();
-  const FREE_ALGS = sampleSet((typeof RGP_ALGORITHMS!=='undefined'?RGP_ALGORITHMS:[]).map(a => a.slug ? a.slug+'.html' : null), 5);
+  // Curated 5 sample pathways — MUST match the FREE list in the standalone
+  // content gate appended to assets/alg-nav.js (pathway pages don't load site.js).
+  const FREE_ALGS = new Set(['chest-pain.html','headache.html','abdominal-pain.html','back-pain.html','breathlessness.html']);
   // Protocols are individual pages with no global index — curate 5 common samples.
   const FREE_PROTOCOLS = new Set(['hypertension.html','asthma.html','type-2-diabetes.html','gout.html','migraine.html']);
   // SCA sample cases (first 5 in the Hot Seat library) — enforced in-tool by sca-practice.js.

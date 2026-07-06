@@ -23,9 +23,17 @@
 
   function ready(fn){ if (document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
 
-  ready(function () {
+  ready(function () { waitForSubs(0); });
+
+  // The subscriptions section is rendered into the page by site.js — if it
+  // isn't in the DOM yet when we run, retry briefly instead of giving up.
+  function waitForSubs(n){
     var subs = document.querySelector('[data-subs]');
-    if (!subs) return;
+    if (!subs) { if (n < 12) setTimeout(function(){ waitForSubs(n+1); }, 300); return; }
+    start(subs);
+  }
+
+  function start(subs) {
 
     var s = document.createElement('script');
     s.src = 'https://www.paypal.com/sdk/js?client-id=' + encodeURIComponent(cfg.paypalClientId) +
@@ -84,5 +92,5 @@
         }
       }).render(host);
     }
-  });
+  }
 })();
