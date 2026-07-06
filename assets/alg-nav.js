@@ -158,3 +158,60 @@
     document.head.appendChild(cl);
   })();
 })();
+
+
+/* ============================================================
+   RGP content gate — pathway (alg-nav.js) and protocol (mgmt-nav.js)
+   pages do NOT load site.js, so the site.js paywall gate never runs
+   on them. This standalone gate mirrors the same policy using the
+   auth cache site.js maintains in localStorage. Idempotent (one flag),
+   appended identically to BOTH files. Live hosts only.
+   ============================================================ */
+(function(){
+  if (window.__rgpContentGate) return; window.__rgpContentGate = true;
+  var HOSTS = ['gpreasoning.uk','www.gpreasoning.uk','reasoninggp.com','www.reasoninggp.com'];
+  if (HOSTS.indexOf(location.hostname) === -1) return;
+  var path = location.pathname, base = (path.split('/').pop()||'').toLowerCase();
+  var isAlg = /\/tools\/algorithms\//.test(path), isMgmt = /\/tools\/management\//.test(path);
+  if (!isAlg && !isMgmt) return;
+  if (/^(algorithms|management|lab-results)\.html$/.test(base)) return; // hub pages load site.js and are gated there
+  var FREE = isAlg
+    ? ['chest-pain.html','headache.html','abdominal-pain.html','back-pain.html','breathlessness.html']
+    : ['hypertension.html','asthma.html','type-2-diabetes.html','gout.html','migraine.html'];
+  function me(){
+    try {
+      if (!localStorage.getItem('rgp.auth.token.v1')) return null;
+      var m = JSON.parse(localStorage.getItem('rgp.auth.me.v1')||'null');
+      if (!m) return null;
+      return m.user || m;
+    } catch(e){ return null; }
+  }
+  function allowed(){
+    var u = me();
+    if (!u) return false;                                  // signed out
+    if (u.admin) return true;                              // admin account
+    var t = u.tier || 'bronze';
+    if (t === 'platinum' || t === 'silver') return true;   // clinic content covered
+    if (t === 'gold') return false;                        // SCA-only plan
+    return FREE.indexOf(base) > -1;                        // bronze: 5 samples
+  }
+  function show(){
+    if (allowed()) return;
+    var u = me();
+    var kind = isAlg ? 'pathway' : 'protocol';
+    var el = document.createElement('div');
+    el.setAttribute('style','position:fixed;inset:0;z-index:9000;display:grid;place-items:center;padding:20px;background:rgba(28,25,23,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-family:\'DM Sans\',system-ui,sans-serif');
+    el.innerHTML = '<div style="background:#f6f2e9;border:1px solid #d9d2c4;border-radius:18px;max-width:430px;width:100%;padding:26px 24px;box-shadow:0 30px 70px rgba(0,0,0,.35)">'
+      + '<div style="font-size:26px;margin-bottom:8px">\ud83d\udd10</div>'
+      + '<h2 style="font-family:\'Source Serif 4\',Georgia,serif;font-size:22px;font-weight:600;color:#1c1917;margin:0 0 6px">' + (u ? 'That\u2019s beyond your free samples' : 'This page is for members') + '</h2>'
+      + '<p style="font-size:13.5px;line-height:1.55;color:#57534e;margin:0 0 14px">' + (u
+          ? 'Your free plan includes 5 sample ' + kind + 's. Upgrade to Silver or Platinum to unlock the full library.'
+          : 'Sign in from the home page if you already have a plan \u2014 or create a free account for 5 sample ' + kind + 's.') + '</p>'
+      + '<a style="display:block;text-align:center;background:#0c4a47;color:#fff;font-weight:700;font-size:14px;padding:11px 14px;border-radius:10px;text-decoration:none;margin-bottom:8px" href="../../index.html#subscriptions">See the plans \u2192</a>'
+      + '<a style="display:block;text-align:center;background:#fff;color:#0c4a47;border:1px solid #c9c1b2;font-weight:700;font-size:14px;padding:11px 14px;border-radius:10px;text-decoration:none" href="../../' + (isAlg?'tools/algorithms.html':'tools/management.html') + '">Back to the ' + kind + ' library</a>'
+      + '</div>';
+    document.documentElement.style.overflow = 'hidden';
+    (document.body || document.documentElement).appendChild(el);
+  }
+  if (document.readyState !== 'loading') show(); else document.addEventListener('DOMContentLoaded', show);
+})();
