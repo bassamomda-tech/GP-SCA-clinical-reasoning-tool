@@ -391,7 +391,10 @@ async function aiProxy(request, env, cors) {
   let ansKey = null;
   if (cacheKey && typeof cacheKey === 'string' && cacheKey.trim() && cacheKey.length <= 300) {
     const norm = cacheKey.trim().toLowerCase();
-    ansKey = 'ans:' + hex(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(model + '|' + norm)));
+    // 'p2' is the prompt version salt — bump it whenever the answer framing changes
+    // materially, so stale answers generated under the OLD rules can never be served
+    // (old entries just stop matching and age out via their 30-day TTL).
+    ansKey = 'ans:' + hex(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(model + '|p2|' + norm)));
     const hitRaw = await env.USERS.get(ansKey);
     if (hitRaw) {
       try {
@@ -426,6 +429,9 @@ async function aiProxy(request, env, cors) {
     max_uses: 1,
     allowed_domains: [
       'nice.org.uk',            // NICE + CKS + BNF (cks./bnf. subdomains included)
+      'fsrh.org',               // FSRH — UKMEC + contraception guidance (legacy domain)
+      'cosrh.org',              // CoSRH (formerly FSRH) — UKMEC 2025 lives here
+      'medicines.org.uk',       // emc — SPCs (licensed doses, contraindications)
       'sign.ac.uk',
       'bestpractice.bmj.com',
       'gov.uk',                 // UKHSA, MHRA Drug Safety Update, Green Book
@@ -446,16 +452,18 @@ async function aiProxy(request, env, cors) {
     body: JSON.stringify(Object.assign({
       model: model,
       max_tokens: 1600,
+      temperature: 0,           // deterministic: same question + same evidence => same answer for every user
       messages: anthMessages,
       stream: wantStream
     }, tools ? { tools } : {}))
   });
   if (!resp.ok) {
     // Anthropic failed — most commonly the prepaid credit has run out (HTTP 400
-    // "credit balance too low"), but also any outage. Fall back to a FREE Cloudflare
-    // Workers AI model so Ask keeps answering. Flagged as a backup so the UI can warn
-    // the reader to verify (the free model has no web search + lower clinical depth).
-    if (env.AI) {
+    // "credit balance too low"), but also any outage.
+    // POLICY (July 2026): the free backup model is DISABLED by default for clinical
+    // answers — a wrong cheap answer is worse than no answer. Ask shows "temporarily
+    // unavailable" instead. To re-enable the old behaviour set env var FALLBACK="on".
+    if (env.AI && env.FALLBACK === 'on') {
       try {
         const fb = await workersAiAnswer(env, messages);
         if (fb && fb.trim()) return json({ completion: fb, sources: [], fallback: true }, 200, cors);
