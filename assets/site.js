@@ -2353,6 +2353,10 @@ function injectAuthModal(){
     </div>
   `;
   el.appendChild(document.createElement('style')).textContent = `
+    /* Sit ABOVE the members-gate overlay (.rgp-gate is z-index:9000).
+       Without this the sign-in box opens BEHIND the gate on a locked
+       page (e.g. Ask), so "Sign in" appears to do nothing. */
+    .rgp-auth-modal{ z-index:9600 !important; }
     .rgp-auth-err{ color:#b91c1c; font-size:12.5px; line-height:1.45; margin:2px 0 0; }
     .rgp-auth-err:not(:empty){ background:#fef2f2; border:1px solid #fecaca; border-radius:8px; padding:8px 11px; }
     .rgp-auth-form label select{ display:block; width:100%; font:inherit; font-size:14px; padding:9px 11px; border:1px solid var(--line-2,#d9d2c4); border-radius:9px; background:#fff; color:var(--ink,#15202b); margin-top:5px; }
