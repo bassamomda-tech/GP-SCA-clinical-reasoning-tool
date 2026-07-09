@@ -44,6 +44,16 @@
   .ans ul li::marker{ color:var(--teal); }
   .ans .pill-2ww{ display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700; letter-spacing:.03em; background:var(--p-bg); color:var(--p); border:1px solid var(--p-bd); padding:2px 8px; border-radius:99px; vertical-align:middle; }
 
+  /* evidence box — the direct, source-quoted answer, made instantly findable */
+  .ans .ans-evidence{ margin:6px 0 16px; background:var(--teal-soft); border:1px solid var(--teal-bd,#bcdcd6); border-left:4px solid var(--teal); border-radius:12px; padding:13px 17px 15px; }
+  .ans .ans-evidence-h{ display:flex; align-items:center; gap:8px; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); margin:0 0 8px; }
+  .ans .ans-evidence-h .ans-evidence-ic{ font-size:14px; }
+  .ans .ans-evidence > *:last-child{ margin-bottom:0; }
+  .ans .ans-evidence p{ margin:7px 0; font-size:14.5px; }
+  .ans .ans-evidence blockquote{ margin:7px 0; }
+  .ans blockquote{ margin:8px 0; padding:2px 0 2px 13px; border-left:2px solid var(--teal); color:var(--ink); font-style:normal; }
+  .ans .ans-evidence strong{ color:var(--teal-3); }
+
   /* sources */
   .ans-src{ margin-top:15px; padding-top:14px; border-top:1px dashed var(--line-2); }
   .ans-src-l{ font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:9px; }
@@ -234,6 +244,6 @@
 <script src="../assets/site.js?v=64"></script>
 <script src="../assets/ask-retrieval.js?v=3"></script>
 <script src="../assets/ask-core.js?v=6"></script>
-<script src="ask.js?v=15"></script>
+<script src="ask.js?v=17"></script>
 </body>
 </html>

@@ -126,32 +126,56 @@
   }
   function mdToHtml(md){
     const lines = String(md||'').replace(/\r/g,'').split('\n');
-    let html='', list=null;
+    let html='', list=null, evidence=false;
     const closeList=()=>{ if(list){ html += '</'+list+'>'; list=null; } };
+    // The "What the guidance says" block is the direct, source-quoted answer.
+    // Wrap it in a coloured evidence box so it's instantly findable in a busy clinic.
+    const isEvidenceHead = t => /^what the guidance says\b/i.test(t.replace(/[:—-]\s*$/,'').trim());
+    const closeEvidence=()=>{ if(evidence){ closeList(); html += '</div>'; evidence=false; } };
     lines.forEach(raw=>{
       const line = raw.trim();
       if(!line){ closeList(); return; }
       let m;
-      if((m=line.match(/^#{2,4}\s+(.*)/))){ closeList(); const lvl = line.startsWith('####')?'h4':line.startsWith('###')?'h4':'h3'; html += `<${lvl}>${inline(m[1])}</${lvl}>`; return; }
+      if((m=line.match(/^#{2,4}\s+(.*)/))){
+        closeList();
+        const label = m[1].replace(/\*\*/g,'');
+        if(isEvidenceHead(label)){
+          closeEvidence();
+          html += '<div class="ans-evidence"><div class="ans-evidence-h"><span class="ans-evidence-ic" aria-hidden="true">📋</span>'+inline(m[1])+'</div>';
+          evidence = true;
+          return;
+        }
+        closeEvidence(); // any other heading ends the evidence box
+        const lvl = line.startsWith('####')?'h4':line.startsWith('###')?'h4':'h3';
+        html += `<${lvl}>${inline(m[1])}</${lvl}>`;
+        return;
+      }
+      if((m=line.match(/^>\s?(.*)/))){ closeList(); html += `<blockquote>${inline(m[1])}</blockquote>`; return; }
       if((m=line.match(/^[-*•]\s+(.*)/))){ if(list!=='ul'){ closeList(); html+='<ul>'; list='ul'; } html += `<li>${inline(m[1])}</li>`; return; }
       if((m=line.match(/^\d+[.)]\s+(.*)/))){ if(list!=='ol'){ closeList(); html+='<ol>'; list='ol'; } html += `<li>${inline(m[1])}</li>`; return; }
       closeList();
       html += `<p>${inline(line)}</p>`;
     });
     closeList();
+    closeEvidence();
     return html;
   }
 
   /* ---------- render messages ---------- */
-  function srcHtml(hits, q){
-    const artChips = (hits||[]).map(it=>{
+  // confident=false → the library match was weak, so DON'T show the topic chips
+  // (they'd be unrelated topics — the exact noise the user flagged). Tool chips
+  // are only added when they genuinely match the question, so they can stay.
+  function srcHtml(hits, q, confident){
+    const artChips = (confident === false ? [] : (hits||[])).map(it=>{
       const a = it.a;
       return `<a class="src-chip" href="${esc(it.href)}"><span class="sc-ic">${a.icon||'📄'}</span><span>${esc(a.title)}</span></a>`;
     });
     const tChips = toolChips(q||'').map(t=>`<a class="src-chip" href="${esc(t.href)}"><span class="sc-ic">${t.ic}</span><span>${esc(t.label)}</span></a>`);
     const all = artChips.concat(tChips);
     if(!all.length) return '';
-    return `<div class="ans-src"><div class="ans-src-l">From the Reasoning GP library</div><div class="src-chips">${all.join('')}</div></div>`;
+    const label = (confident === false && artChips.length === 0 && tChips.length)
+      ? 'Related tools' : 'From the Reasoning GP library';
+    return `<div class="ans-src"><div class="ans-src-l">${label}</div><div class="src-chips">${all.join('')}</div></div>`;
   }
 
   /* ---------- external references (shown when the answer cites a source NOT on this site) ----------
@@ -301,7 +325,7 @@
     welcome.style.display='none'; clearBtn.hidden=false;
     history.forEach((m,i)=>{
       if(m.role==='user') addUser(m.content);
-      else addBot(`<div class="ans">${mdToHtml(m.content)}</div>${srcHtml(hitsFromSlugs(m.hitSlugs), m.q)}${webHtml(m.web)}${refHtml(m.content, m.q||m.content)}<div class="ans-note">Generated from Reasoning GP notes + NICE-aligned guidance. Always confirm against current NICE CKS / BNF.</div>${fbHtml(i, m.fb)}`);
+      else addBot(`<div class="ans">${mdToHtml(m.content)}</div>${srcHtml(hitsFromSlugs(m.hitSlugs), m.q, m.conf)}${webHtml(m.web)}${refHtml(m.content, m.q||m.content)}<div class="ans-note">Generated from Reasoning GP notes + NICE-aligned guidance. Always confirm against current NICE CKS / BNF.</div>${fbHtml(i, m.fb)}`);
     });
   }
 
@@ -430,12 +454,12 @@
     const wasCached = !!(window.claude && window.claude.lastCached);
     const wasFallback = !!(window.claude && window.claude.lastFallback);
     history.push({ role:'user', content:q });
-    history.push({ role:'assistant', content:answer, q:q, hitSlugs:hits.map(h=>h.slug), web:webSrcs });
+    history.push({ role:'assistant', content:answer, q:q, hitSlugs:hits.map(h=>h.slug), web:webSrcs, conf:gMeta.confident });
     const retChip = gMeta.mode==='semantic'
       ? '🧠 Library matched by meaning. '
       : (gMeta.mode==='lexical' ? '🔤 Library matched by keywords (semantic layer warming up or offline). ' : '');
     const weakChip = gMeta.confident ? '' : '📡 Weak library match — the assistant was instructed to verify against a live guideline search. ';
-    const tail = `${srcHtml(hits, q)}${webHtml(webSrcs)}${refHtml(answer, q)}<div class="ans-note">${wasFallback ? '⚠️ Answered by a free backup model (the main AI was unavailable — e.g. credit ran out). No live guidance search was used — check this answer carefully against NICE CKS / BNF. ' : ''}${wasCached ? '⚡ Instant — this exact question was answered before; served from the vetted cache. ' : ''}${retChip}${weakChip}Generated from Reasoning GP notes + NICE-aligned guidance. Always confirm against current NICE CKS / BNF.</div>${fbHtml(history.length-1)}`;
+    const tail = `${srcHtml(hits, q, gMeta.confident)}${webHtml(webSrcs)}${refHtml(answer, q)}<div class="ans-note">${wasFallback ? '⚠️ Answered by a free backup model (the main AI was unavailable — e.g. credit ran out). No live guidance search was used — check this answer carefully against NICE CKS / BNF. ' : ''}${wasCached ? '⚡ Instant — this exact question was answered before; served from the vetted cache. ' : ''}${retChip}${weakChip}Generated from Reasoning GP notes + NICE-aligned guidance. Always confirm against current NICE CKS / BNF.</div>${fbHtml(history.length-1)}`;
     if(streamEl){
       // finalise the streamed bubble: lock in the markdown + append sources/feedback
       streamAns.innerHTML = mdToHtml(answer);
