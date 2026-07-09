@@ -368,7 +368,16 @@
       if(!(window.claude && (window.claude.stream || window.claude.complete))) throw new Error('assistant-unavailable');
       // First-turn questions carry a cache key: a repeat of a popular question is
       // served instantly from the Worker's vetted answer cache (zero AI cost).
-      const cacheKey = history.length ? null : qt.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().slice(0,300);
+      // Normalised hard (filler words stripped, light stemming) so trivial wording
+      // differences ("who gave birth" vs "who give birth") hit the SAME vetted answer.
+      const STOP = new Set(['a','an','the','is','are','am','be','been','being','was','were','i','me','my','we','our','you','your','it','its','that','this','these','those','who','whom','which','what','whats','how','can','could','do','does','did','doing','have','has','had','having','would','should','shall','may','might','will','please','just','so','and','or','of','to','in','on','at','for','with','about','ago']);
+      const IRREG = { gave:'give', given:'give', took:'take', taken:'take', went:'go', gone:'go' };
+      const normKey = s => s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().split(/\s+/)
+        .map(w => IRREG[w] || w)
+        .filter(w => !STOP.has(w))
+        .map(w => w.length > 4 ? w.replace(/(ing|ed|es|s)$/,'') : w)
+        .join(' ').slice(0,300);
+      const cacheKey = history.length ? null : normKey(qt);
       const arg = Object.assign({ messages: msgs }, cacheKey ? { cacheKey } : {});
       if(canStream){
         answer = await window.claude.stream(arg, (chunk, full)=>{
@@ -394,6 +403,8 @@
         msg = 'The assistant is available on a paid plan — sign in and subscribe to ask questions.';
       } else if(err && err.message==='assistant-unavailable'){
         msg = 'The AI assistant isn\'t connected on this site yet. If you\'re the site owner, deploy the backend Worker and paste its URL into RGP_CONFIG.workerUrl in assets/site.js (see backend/README.md). Otherwise please check back soon.';
+      } else if(err && /^ai_error_/.test(err.message||'')){
+        msg = 'The AI service is temporarily unavailable. To protect answer quality, no backup model is used for clinical questions — please try again shortly, and check NICE CKS / BNF directly if it\u2019s urgent.';
       } else {
         msg = 'Sorry — I couldn\'t generate an answer just then. Please try again in a moment.';
       }
@@ -461,6 +472,25 @@
   loadSessions();
   renderThread();
   renderChatList();
+  // Cross-device sync: RGPSync merges rgp.ask.sessions.v1 from the account —
+  // when it lands, reload from localStorage and re-render (keep the chat the
+  // user is looking at if it survived the merge).
+  window.addEventListener('rgp-sync-updated', e=>{
+    const keys=(e && e.detail && e.detail.keys)||[];
+    if(!keys.includes(SESS_KEY)) return;
+    const prev=activeId;
+    try{
+      const r=JSON.parse(localStorage.getItem(SESS_KEY)||'null');
+      if(r && Array.isArray(r.sessions) && r.sessions.length){
+        sessions=r.sessions;
+        activeId = sessions.some(s=>s.id===prev) ? prev
+                 : (r.activeId && sessions.some(s=>s.id===r.activeId)) ? r.activeId
+                 : sessions[0].id;
+        history=activeSession().messages;
+      }
+    }catch(err){}
+    renderThread(); renderChatList();
+  });
   $('#chatsToggle').addEventListener('click', openDrawer);
   $('#cdClose').addEventListener('click', closeDrawer);
   $('#newChatBtn').addEventListener('click', newChat);

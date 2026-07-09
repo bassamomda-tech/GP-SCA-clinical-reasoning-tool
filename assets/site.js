@@ -2128,6 +2128,7 @@ window.RGPCloud = (function(){
      • rgp-sca-attempts-hotseat Hot Seat self-marks
      • rgp-sca-habits          simulator habit flags
      • rgp-akt-srs             qbank spaced-repetition schedule
+     • rgp.ask.sessions.v1     Ask chat history (multi-chat sessions)
    Signed out or offline: everything still works locally. On sign-in
    we PULL + MERGE (never overwrite) so a device that already had
    local progress keeps it and gains what the account holds. Merge is
@@ -2146,7 +2147,8 @@ window.RGPSync = (function(){
     'rgp-sca-attempts-hotseat': 'array',
     'rgp-sca-habits':           'array',
     'rgp-sca-exm':              'objnew',
-    'rgp-akt-srs':              'objnew'
+    'rgp-akt-srs':              'objnew',
+    'rgp.ask.sessions.v1':      'asksess'
   };
   function ck(k){ return 'store:' + k; }
   function ready(){ return !!(window.RGPCloud && RGPCloud.ready && RGPCloud.ready()); }
@@ -2184,7 +2186,25 @@ window.RGPSync = (function(){
       else if(b[k] && o[k] && typeof b[k]==='object' && typeof o[k]==='object') o[k]= objT(b[k])>=objT(o[k]) ? b[k] : o[k];
       else o[k]=b[k]; }
     return o; }
-  var MERGE = { rank:mergeRank, cpd:mergeCpd, array:function(a,b){return mergeArray(a,b,600);}, objnew:mergeObjNew };
+  /* Ask chat history: {sessions:[{id,title,created,updated,messages[]}], activeId}.
+     Union sessions by id keeping the newer .updated copy; drop the empty
+     "New chat" shells each device auto-creates (only when real chats exist);
+     keep the LOCAL device's activeId when it survives the merge. */
+  function mergeAskSess(a,b){ a=a||{}; b=b||{};
+    var as=Array.isArray(a.sessions)?a.sessions:[], bs=Array.isArray(b.sessions)?b.sessions:[];
+    var m={}; as.concat(bs).forEach(function(s){ if(!s||!s.id) return; var c=m[s.id];
+      if(!c || (s.updated||0)>=(c.updated||0)) m[s.id]=s; });
+    var out=Object.keys(m).map(function(k){return m[k];});
+    var nonEmpty=out.filter(function(s){ return s.messages && s.messages.length; });
+    if(nonEmpty.length) out=nonEmpty;
+    out.sort(function(x,y){ return (y.updated||0)-(x.updated||0); });
+    out=out.slice(0,60);
+    function has(id){ return out.some(function(s){ return s.id===id; }); }
+    var act=(b.activeId&&has(b.activeId))?b.activeId:((a.activeId&&has(a.activeId))?a.activeId:((out[0]&&out[0].id)||null));
+    return { sessions:out, activeId:act };
+  }
+
+  var MERGE = { rank:mergeRank, cpd:mergeCpd, array:function(a,b){return mergeArray(a,b,600);}, objnew:mergeObjNew, asksess:mergeAskSess };
 
   var snap={}, started=false;
   function initSnap(){ for(var k in CFG) snap[k]=hash(k); }
