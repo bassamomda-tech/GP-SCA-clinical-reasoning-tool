@@ -391,10 +391,10 @@ async function aiProxy(request, env, cors) {
   let ansKey = null;
   if (cacheKey && typeof cacheKey === 'string' && cacheKey.trim() && cacheKey.length <= 300) {
     const norm = cacheKey.trim().toLowerCase();
-    // 'p2' is the prompt version salt — bump it whenever the answer framing changes
+    // 'p3' is the prompt version salt — bump it whenever the answer framing changes
     // materially, so stale answers generated under the OLD rules can never be served
     // (old entries just stop matching and age out via their 30-day TTL).
-    ansKey = 'ans:' + hex(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(model + '|p2|' + norm)));
+    ansKey = 'ans:' + hex(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(model + '|p3|' + norm)));
     const hitRaw = await env.USERS.get(ansKey);
     if (hitRaw) {
       try {
@@ -426,7 +426,7 @@ async function aiProxy(request, env, cors) {
   const tools = (env.WEB_SEARCH === 'off') ? null : [{
     type: 'web_search_20250305',
     name: 'web_search',
-    max_uses: 1,
+    max_uses: 2,   // 2 so a verification search isn't starved when the library match is weak
     allowed_domains: [
       'nice.org.uk',            // NICE + CKS + BNF (cks./bnf. subdomains included)
       'fsrh.org',               // FSRH — UKMEC + contraception guidance (legacy domain)

@@ -95,6 +95,12 @@
     [/\bwaking (up )?at night\b/g,'insomnia nocturia'],
     [/\bman flu\b/g,'viral upper respiratory tract infection'],
     [/\bwon'?t settle\b/g,'crying infant'],
+    [/\bpost[- ]?pregnancy\b/g,'postpartum'],
+    [/\b(weeks?|months?|days?) (after|post|since) (giving )?(birth|delivery|pregnancy)\b/g,'postpartum'],
+    [/\bafter (giving )?birth\b/g,'postpartum'],
+    [/\bafter (the )?delivery\b/g,'postpartum'],
+    [/\bcombined (contraceptive |hormonal )?pill\b/g,'combined hormonal contraception chc'],
+    [/\bcontraceptive (pill|patch|ring|injection|implant)s?\b/g,'contraception $1'],
     [/\bfits?\b/g,'seizure epilepsy']
   ];
 
@@ -130,6 +136,9 @@
     seizures:'seizure', fits:'seizure', fit:'seizure', convulsion:'seizure',
     faint:'syncope', fainting:'syncope', collapse:'syncope', blackout:'syncope', blackouts:'syncope',
     period:'menstrual', periods:'menstrual', menses:'menstrual',
+    contraceptive:'contraception', contraceptives:'contraception',
+    cocp:'contraception', chc:'contraception',
+    postnatal:'postpartum', postnatally:'postpartum', puerperium:'postpartum',
     thyroid:'thyroid', underactive:'hypothyroidism', overactive:'hyperthyroidism',
     anaemic:'anaemia', anemia:'anaemia',
     piles:'haemorrhoids', hemorrhoids:'haemorrhoids',
@@ -325,8 +334,10 @@
   }
 
   /* ---------------- grounding: the notes the model actually answers from ----------------
-     Hybrid when embeddings are ready (semantic recall + lexical precision), else lexical. */
-  async function grounding(q, k){
+     Hybrid when embeddings are ready (semantic recall + lexical precision), else lexical.
+     groundingMeta additionally reports WHICH layer answered and how confident the
+     match is, so the caller can force a live web-search when the library match is weak. */
+  async function groundingMeta(q, k){
     k = k || 5;
     const lex = searchScored(q); // full ranked list
     const lexTop = lex.slice(0, 40);
@@ -347,7 +358,8 @@
       // pure lexical: ground only on TITLE-matching notes (never a stray body keyword),
       // fall back to the single best note so the answer is still anchored.
       const tHits = lex.filter(x=>x.titleHit);
-      return (tHits.length ? tHits : lex.slice(0,1)).slice(0,k).map(x=>x.it);
+      const items = (tHits.length ? tHits : lex.slice(0,1)).slice(0,k).map(x=>x.it);
+      return { items, mode:'lexical', confident: tHits.length > 0 };
     }
 
     // hybrid blend. Normalise lexical top to [0,1]; take semantic relu.
@@ -369,8 +381,11 @@
 
     // guard against a purely-semantic false friend: if the top pick has no lexical overlap
     // at all AND a clear lexical title-hit exists, prefer surfacing the lexical one too.
-    return blended.slice(0,k).map(x=>x.it);
+    const top = blended[0];
+    const confident = !!top && (top.f >= 0.45 || !!titleHit.get(top.it));
+    return { items: blended.slice(0,k).map(x=>x.it), mode:'semantic', confident };
   }
+  async function grounding(q, k){ return (await groundingMeta(q, k)).items; }
 
   /* ---------------- related topics (sync, lexical; for the "explore" chips) ---------------- */
   function relatedItems(q, excludeHrefs){
@@ -413,6 +428,7 @@
     bySlug: s => bySlugMap.get(s) || null,
     searchScored,
     grounding,
+    groundingMeta,
     relatedItems,
     tokens, GENERIC, MODIFIER,
     get semantic(){ return { available:SEM.available, ready:SEM.ready, count:SEM.count }; },

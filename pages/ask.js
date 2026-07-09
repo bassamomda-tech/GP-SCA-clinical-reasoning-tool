@@ -32,10 +32,15 @@
   function retrieveScored(q, n){ return RET ? RET.searchScored(q, n||40).map(x=>({ it:x.it, sc:x.sc, tHit:x.titleHit })) : []; }
   // Async grounding: the notes the answer is actually built from (hybrid semantic+lexical
   // when embeddings are ready, else lexical). Degrades gracefully on any error.
-  async function grounding(q){
-    if(!RET) return [];
-    try{ return await RET.grounding(q, 4); }
-    catch(e){ return RET.searchScored(q, 4).map(x=>x.it); }
+  // Returns {items, mode:'semantic'|'lexical'|'none', confident:boolean} — when confident
+  // is false the model is ORDERED to verify by live web search instead of trusting notes.
+  async function groundingMeta(q){
+    if(!RET) return { items:[], mode:'none', confident:false };
+    try{
+      if(RET.groundingMeta) return await RET.groundingMeta(q, 4);
+      return { items: await RET.grounding(q, 4), mode:'lexical', confident:true };
+    }
+    catch(e){ return { items: RET.searchScored(q, 4).map(x=>x.it), mode:'lexical', confident:false }; }
   }
 
   /* ---------- grouped "related in the library" links ---------- */
@@ -354,12 +359,19 @@
     const effectiveQ = isFollowup ? (prevUserQ.content + ' ' + q) : q;
     const typingEl = botTyping();
     // Grounding notes (hybrid semantic + lexical). Anchored on the thread topic for follow-ups.
-    let hits = await grounding(effectiveQ);
+    const gMeta = await groundingMeta(effectiveQ);
+    let hits = gMeta.items;
+
+    // Retrieval-confidence gate: when the library match is WEAK, the single biggest
+    // failure mode is the model leaning on mismatched notes or on its own memory.
+    // Tell it so explicitly and make a live guidance search mandatory.
+    const weakNote = gMeta.confident ? '' :
+      '\n\nRETRIEVAL WARNING — LOW-CONFIDENCE LIBRARY MATCH: the notes above were retrieved with low confidence and may not cover this question. Do NOT force an answer from them if they do not clearly match, and do NOT answer from memory. You MUST verify the key recommendation with a live web search of current UK guidance (NICE/CKS/BNF/GOV.UK/CoSRH) before answering; if you cannot verify a specific figure or category, say plainly which named current source the clinician should check and give only the safe general position.';
 
     // build message list (framing primer + recent conversation + grounded question)
     const msgs = [ {role:'user', content:FRAMING}, {role:'assistant', content:PRIMER_ACK} ];
     history.slice(-6).forEach(m=> msgs.push({role:m.role, content:m.content}) );
-    msgs.push({ role:'user', content: buildContext(hits) + '\n\n---\nCLINICIAN QUESTION (a follow-up in the conversation above unless it clearly changes subject): ' + q });
+    msgs.push({ role:'user', content: buildContext(hits) + weakNote + '\n\n---\nCLINICIAN QUESTION (a follow-up in the conversation above unless it clearly changes subject): ' + q });
 
     let answer = '';
     const canStream = window.claude && typeof window.claude.stream === 'function';
@@ -419,7 +431,11 @@
     const wasFallback = !!(window.claude && window.claude.lastFallback);
     history.push({ role:'user', content:q });
     history.push({ role:'assistant', content:answer, q:q, hitSlugs:hits.map(h=>h.slug), web:webSrcs });
-    const tail = `${srcHtml(hits, q)}${webHtml(webSrcs)}${refHtml(answer, q)}<div class="ans-note">${wasFallback ? '⚠️ Answered by a free backup model (the main AI was unavailable — e.g. credit ran out). No live guidance search was used — check this answer carefully against NICE CKS / BNF. ' : ''}${wasCached ? '⚡ Instant — this exact question was answered before; served from the vetted cache. ' : ''}Generated from Reasoning GP notes + NICE-aligned guidance. Always confirm against current NICE CKS / BNF.</div>${fbHtml(history.length-1)}`;
+    const retChip = gMeta.mode==='semantic'
+      ? '🧠 Library matched by meaning. '
+      : (gMeta.mode==='lexical' ? '🔤 Library matched by keywords (semantic layer warming up or offline). ' : '');
+    const weakChip = gMeta.confident ? '' : '📡 Weak library match — the assistant was instructed to verify against a live guideline search. ';
+    const tail = `${srcHtml(hits, q)}${webHtml(webSrcs)}${refHtml(answer, q)}<div class="ans-note">${wasFallback ? '⚠️ Answered by a free backup model (the main AI was unavailable — e.g. credit ran out). No live guidance search was used — check this answer carefully against NICE CKS / BNF. ' : ''}${wasCached ? '⚡ Instant — this exact question was answered before; served from the vetted cache. ' : ''}${retChip}${weakChip}Generated from Reasoning GP notes + NICE-aligned guidance. Always confirm against current NICE CKS / BNF.</div>${fbHtml(history.length-1)}`;
     if(streamEl){
       // finalise the streamed bubble: lock in the markdown + append sources/feedback
       streamAns.innerHTML = mdToHtml(answer);
