@@ -2969,7 +2969,11 @@ document.addEventListener('DOMContentLoaded', () => {
   var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
   var isSafari = isIOS && /safari/i.test(navigator.userAgent) && !/crios|fxios|edgios/i.test(navigator.userAgent);
 
-  if (standalone() || dismissed()) return;
+  // NOTE: do NOT bail out of the whole module here. The auto-pill paths below each
+  // check standalone()/dismissed() themselves; window.RGPInstall must ALWAYS be
+  // defined so the nav "📲 Install app" button works even after the pill was
+  // dismissed on this device (that early return was why the button did nothing
+  // on phones where the banner had been closed once).
 
   var deferred = null, pill = null;
 
@@ -3002,15 +3006,21 @@ document.addEventListener('DOMContentLoaded', () => {
   function shareGlyph(){
     return '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0c4a47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M20 14v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-5"/></svg>';
   }
-  function iosSheet(){
+  function iosSheet(){ return manualSheet('ios'); }
+  function manualSheet(kind){
     var w = document.createElement('div'); w.className='rgp-ios-sheet';
+    var steps = kind==='ios'
+      ? '<div class="rgp-ios-step"><span class="n">1</span><span>Tap the <b>Share</b> button '+shareGlyph()+' in the browser toolbar</span></div>'+
+        '<div class="rgp-ios-step"><span class="n">2</span><span>Choose <b>Add to Home Screen</b></span></div>'+
+        '<div class="rgp-ios-step"><span class="n">3</span><span>Tap <b>Add</b> — then open it from your home screen</span></div>'
+      : '<div class="rgp-ios-step"><span class="n">1</span><span>Tap the <b>⋮ menu</b> (three dots) in the browser toolbar</span></div>'+
+        '<div class="rgp-ios-step"><span class="n">2</span><span>Choose <b>Add to Home screen</b> (or <b>Install app</b>)</span></div>'+
+        '<div class="rgp-ios-step"><span class="n">3</span><span>Confirm — then open it from your home screen</span></div>';
     w.innerHTML =
       '<div class="rgp-ios-card" role="dialog" aria-label="Install Reasoning GP">'+
         '<h4>Add Reasoning GP to your Home Screen</h4>'+
         '<p>Install it like an app — full screen, an icon on your home screen, and the pages you’ve opened work offline.</p>'+
-        '<div class="rgp-ios-step"><span class="n">1</span><span>Tap the <b>Share</b> button '+shareGlyph()+' in Safari’s toolbar</span></div>'+
-        '<div class="rgp-ios-step"><span class="n">2</span><span>Choose <b>Add to Home Screen</b></span></div>'+
-        '<div class="rgp-ios-step"><span class="n">3</span><span>Tap <b>Add</b> — then open it from your home screen</span></div>'+
+        steps+
         '<button class="ri-done" type="button">Got it</button>'+
       '</div>';
     w.addEventListener('click', function(e){ if(e.target===w || e.target.classList.contains('ri-done')){ w.classList.remove('show'); } });
@@ -3034,6 +3044,7 @@ document.addEventListener('DOMContentLoaded', () => {
     pill.querySelector('.ri-go').addEventListener('click', function(){
       if (kind==='ios'){ if(!sheet) sheet=iosSheet(); sheet.classList.add('show'); return; }
       if (deferred){ deferred.prompt(); deferred.userChoice.then(function(c){ if(c && c.outcome==='accepted'){ hide(); setDismissed(); } }); }
+      else { if(!sheet) sheet=manualSheet('android'); sheet.classList.add('show'); }
     });
     pill.querySelector('.ri-x').addEventListener('click', function(){ hide(); setDismissed(); });
   }
@@ -3051,11 +3062,13 @@ document.addEventListener('DOMContentLoaded', () => {
     else window.addEventListener('load', function(){ setTimeout(function(){ show('ios'); }, 2200); });
   }
 
-  // Let any page trigger it explicitly (e.g. an "Install app" button).
+  // Let any page trigger it explicitly (e.g. the nav "Install app" button).
+  // Must work even when the auto-pill was dismissed: native prompt when the
+  // browser has offered one, otherwise platform-specific manual instructions.
   window.RGPInstall = function(){
+    if (standalone()) return; // already installed — nothing to do
     if (deferred){ deferred.prompt(); deferred.userChoice.then(function(c){ if(c&&c.outcome==='accepted'){ hide(); setDismissed(); } }); }
-    else if (isSafari){ injectCss(); iosSheet().classList.add('show'); }
-    else { show(isIOS?'ios':'android'); }
+    else { injectCss(); manualSheet(isIOS?'ios':'android').classList.add('show'); }
   };
 })();
 
