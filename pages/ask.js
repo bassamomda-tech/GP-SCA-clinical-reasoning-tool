@@ -178,10 +178,13 @@
   // (they'd be unrelated topics — the exact noise the user flagged). Tool chips
   // are only added when they genuinely match the question, so they can stay.
   function srcHtml(hits, q, confident){
-    const artChips = (confident === false ? [] : (hits||[])).map(it=>{
-      const a = it.a;
-      return `<a class="src-chip" href="${esc(it.href)}"><span class="sc-ic">${a.icon||'📄'}</span><span>${esc(a.title)}</span></a>`;
-    });
+    const seenT = new Set();
+    const artChips = (confident === false ? [] : (hits||[]))
+      .filter(it=>{ const k=((it.a&&it.a.title)||'').toLowerCase().replace(/[^a-z0-9]+/g,''); if(!k||seenT.has(k)) return false; seenT.add(k); return true; })
+      .map(it=>{
+        const a = it.a;
+        return `<a class="src-chip" href="${esc(it.href)}"><span class="sc-ic">${a.icon||'📄'}</span><span>${esc(a.title)}</span></a>`;
+      });
     const tChips = toolChips(q||'').map(t=>`<a class="src-chip" href="${esc(t.href)}"><span class="sc-ic">${t.ic}</span><span>${esc(t.label)}</span></a>`);
     const all = artChips.concat(tChips);
     if(!all.length) return '';
@@ -474,12 +477,18 @@
     const wasCached = !!(window.claude && window.claude.lastCached);
     const wasFallback = !!(window.claude && window.claude.lastFallback);
     history.push({ role:'user', content:q });
-    history.push({ role:'assistant', content:answer, q:q, hitSlugs:hits.map(h=>h.slug), web:webSrcs, conf:gMeta.confident });
+    // Topic chips: show ONLY library topics whose title matched a discriminating term
+    // (relevantSlugs). Independent of the coarse confidence flag, this stops semantic
+    // near-neighbours / stray common-word hits from listing unrelated topics — the exact
+    // "irrelevant website topics" the user flagged. Grounding above already used full hits.
+    const relSet = (RET && RET.relevantSlugs) ? RET.relevantSlugs(effectiveQ) : null;
+    const chipHits = relSet ? hits.filter(h=>relSet.has(h.slug)) : hits;
+    history.push({ role:'assistant', content:answer, q:q, hitSlugs:chipHits.map(h=>h.slug), web:webSrcs, conf:gMeta.confident });
     const retChip = gMeta.mode==='semantic'
       ? '🧠 Library matched by meaning. '
       : (gMeta.mode==='lexical' ? '🔤 Library matched by keywords (semantic layer warming up or offline). ' : '');
     const weakChip = gMeta.confident ? '' : '📡 Weak library match — the assistant was instructed to verify against a live guideline search. ';
-    const tail = `${srcHtml(hits, q, gMeta.confident)}${webHtml(webSrcs)}${refHtml(answer, q)}<div class="ans-note">${wasFallback ? '⚠️ Answered by a free backup model (the main AI was unavailable — e.g. credit ran out). No live guidance search was used — check this answer carefully against NICE CKS / BNF. ' : ''}${wasCached ? '⚡ Instant — this exact question was answered before; served from the vetted cache. ' : ''}${retChip}${weakChip}Generated from Reasoning GP notes + NICE-aligned guidance. Always confirm against current NICE CKS / BNF.</div>${fbHtml(history.length-1)}`;
+    const tail = `${srcHtml(chipHits, q, gMeta.confident)}${webHtml(webSrcs)}${refHtml(answer, q)}<div class="ans-note">${wasFallback ? '⚠️ Answered by a free backup model (the main AI was unavailable — e.g. credit ran out). No live guidance search was used — check this answer carefully against NICE CKS / BNF. ' : ''}${wasCached ? '⚡ Instant — this exact question was answered before; served from the vetted cache. ' : ''}${retChip}${weakChip}Generated from Reasoning GP notes + NICE-aligned guidance. Always confirm against current NICE CKS / BNF.</div>${fbHtml(history.length-1)}`;
     if(streamEl){
       // finalise the streamed bubble: lock in the markdown + append sources/feedback
       streamAns.innerHTML = mdToHtml(answer);

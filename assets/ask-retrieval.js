@@ -227,26 +227,35 @@
 
   /* ---------------- lexical scoring ---------------- */
   const W_TITLE = 3.0, W_PREFIX = 1.8, W_BODY = 0.5, COVERAGE = 4.0;
+  // A title match only counts toward CONFIDENCE / chip display when the matched query
+  // term is genuinely discriminating — IDF ≥ this ⇒ the term appears in ≲5% of the ~975
+  // topic titles. This stops an incidental common-word hit ("cold" → "Cold sores",
+  // "drop" → "Foot drop", "ready" → "Ready Prescriptions") from marking an off-library
+  // question as a confident match and surfacing a row of unrelated topics.
+  const SPECIFIC_IDF = 3.0;
   function searchScored(q, n){
     const qt = tokens(q);
     if(!qt.length) return [];
     const uniq = Array.from(new Set(qt));
     const scored = INDEX.map(it=>{
-      let sc = 0, titleHits = 0;
+      let sc = 0, titleHits = 0, specHit = false;
       const tArr = it._tArr;
       uniq.forEach(w=>{
         const w4 = w.length>=4;
-        if(it.titleTok.has(w)){ sc += W_TITLE * tokIDF(w); if(!GENERIC.has(w)) titleHits++; return; }
-        // prefix / partial title match ("hyponatr" ↔ "hyponatremia")
+        if(it.titleTok.has(w)){ const g=tokIDF(w); sc += W_TITLE * g; if(!GENERIC.has(w)){ titleHits++; if(g>=SPECIFIC_IDF) specHit=true; } return; }
+        // prefix / partial title match ("hyponatr" ↔ "hyponatremia") — but only when the two
+        // words are substantially similar in length, so a short common word can't latch onto a
+        // long unrelated term ("diver" ✗→ "diverticulitis", "man" ✗→ "management").
         if(w4){
-          for(let i=0;i<tArr.length;i++){ const tw=tArr[i]; if(tw.length>=4 && (tw.indexOf(w)===0 || w.indexOf(tw)===0)){ sc += W_PREFIX * tokIDF(tw); if(!GENERIC.has(tw)) titleHits++; return; } }
+          for(let i=0;i<tArr.length;i++){ const tw=tArr[i]; if(tw.length>=4 && (tw.indexOf(w)===0 || w.indexOf(tw)===0) && Math.min(w.length,tw.length)/Math.max(w.length,tw.length) >= 0.5){ const g=tokIDF(tw); sc += W_PREFIX * g; if(!GENERIC.has(tw)){ titleHits++; if(g>=SPECIFIC_IDF) specHit=true; } return; } }
         }
         const bf = it.bodyTok[w]; if(bf) sc += W_BODY * Math.min(bf,3) * tokIDF(w);
       });
       // Precision bonus: reward titles that ARE mostly the query topic (exact "Hypertension"
       // over "Pulmonary hypertension"), scaled so it can't swamp a strong specific-term match.
       if(titleHits && tArr.length){ sc += COVERAGE * (titleHits / tArr.length); }
-      return { it, sc, titleHit: titleHits>0 };
+      // specHit = a discriminating query term matched this title (not just any common word)
+      return { it, sc, titleHit: titleHits>0, specHit };
     }).filter(x=>x.sc>0).sort((a,b)=>b.sc-a.sc);
     return n ? scored.slice(0,n) : scored;
   }
@@ -358,14 +367,18 @@
       // pure lexical: ground only on TITLE-matching notes (never a stray body keyword),
       // fall back to the single best note so the answer is still anchored.
       const tHits = lex.filter(x=>x.titleHit);
+      const specHits = lex.filter(x=>x.specHit);
       const items = (tHits.length ? tHits : lex.slice(0,1)).slice(0,k).map(x=>x.it);
-      return { items, mode:'lexical', confident: tHits.length > 0 };
+      // Confident ONLY when a genuinely discriminating term matched a title — a lone
+      // common-word title hit is not enough, or every question would look "confident".
+      return { items, mode:'lexical', confident: specHits.length > 0 };
     }
 
     // hybrid blend. Normalise lexical top to [0,1]; take semantic relu.
     const maxLex = lexTop.length ? lexTop[0].sc : 1;
     const lexNorm = new Map(); lexTop.forEach(x=> lexNorm.set(x.it, x.sc/maxLex));
     const titleHit = new Map(); lex.forEach(x=> titleHit.set(x.it, x.titleHit));
+    const specHitMap = new Map(); lex.forEach(x=> specHitMap.set(x.it, x.specHit));
     // candidate union: lexical top 40 ∪ semantic top 40
     const semIdx = Array.from(sem.keys()).sort((a,b)=>sem[b]-sem[a]).slice(0,40);
     const cand = new Set(lexTop.map(x=>x.it));
@@ -382,10 +395,20 @@
     // guard against a purely-semantic false friend: if the top pick has no lexical overlap
     // at all AND a clear lexical title-hit exists, prefer surfacing the lexical one too.
     const top = blended[0];
-    const confident = !!top && (top.f >= 0.45 || !!titleHit.get(top.it));
+    // Confident on a strong blended score OR a DISCRIMINATING title hit on the top pick
+    // (specHit) — not just any shared title token, which let off-topic near-neighbours pass.
+    const confident = !!top && (top.f >= 0.45 || !!specHitMap.get(top.it));
     return { items: blended.slice(0,k).map(x=>x.it), mode:'semantic', confident };
   }
   async function grounding(q, k){ return (await groundingMeta(q, k)).items; }
+
+  /* ---------------- chip relevance: slugs safe to show as "related library topic" chips ----
+     A topic is chip-worthy only when a DISCRIMINATING query term matched its title
+     (specHit). Off-library questions return an empty set → no unrelated topic chips. */
+  function relevantSlugs(q){
+    try{ return new Set(searchScored(q, 80).filter(x=>x.specHit).map(x=>x.it.slug)); }
+    catch(e){ return new Set(); }
+  }
 
   /* ---------------- related topics (sync, lexical; for the "explore" chips) ---------------- */
   function relatedItems(q, excludeHrefs){
@@ -429,6 +452,7 @@
     searchScored,
     grounding,
     groundingMeta,
+    relevantSlugs,
     relatedItems,
     tokens, GENERIC, MODIFIER,
     get semantic(){ return { available:SEM.available, ready:SEM.ready, count:SEM.count }; },
