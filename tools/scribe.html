@@ -30,6 +30,17 @@
 .scr-ctrl-grp{ display:flex; align-items:center; gap:8px; }
 .scr-layout-toggle{ margin-left:auto; }
 
+/* template row + my templates */
+.scr-style-row.tpl{ flex-wrap:wrap; row-gap:8px; }
+.scr-style-row.tpl .scr-seg button{ white-space:nowrap; }
+.scr-mytpl{ display:flex; gap:6px; align-items:center; margin-left:auto; }
+.scr-mytpl select{ font:inherit; font-size:12.5px; padding:5px 8px; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--ink); max-width:180px; }
+.scr-btn.sm{ padding:5px 10px; font-size:12.5px; }
+.scr-sec .scr-psec{ margin:0 0 10px; }
+.scr-sec .scr-psec:last-child{ margin-bottom:0; }
+.scr-sec .scr-psec .pl{ display:block; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--teal); margin:0 0 2px; }
+.scr-sec .scr-psec .pv{ white-space:pre-wrap; }
+
 /* main grid */
 .scr-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start; }
 .scr-grid.stacked{ grid-template-columns:1fr; max-width:840px; margin:0 auto; }
@@ -49,6 +60,7 @@
 .scr-ctx .age{ width:74px; }
 .scr-ctx .init{ width:88px; }
 .scr-ctx .pc{ flex:1; min-width:140px; }
+.scr-ctx .bg{ flex-basis:100%; }
 
 /* recorder */
 .scr-rec{ display:flex; align-items:center; gap:14px; padding:14px; border:1px solid var(--line); border-radius:12px; background:var(--surface-2); margin-bottom:12px; }
@@ -327,6 +339,7 @@
               <input class="init" id="ctxInit" type="text" placeholder="Initials" autocomplete="off" maxlength="6">
               <input class="age" id="ctxAge" type="text" placeholder="Age" autocomplete="off" maxlength="4">
               <input class="pc" id="ctxPc" type="text" placeholder="Presenting complaint (optional context)" autocomplete="off">
+              <input class="bg" id="ctxBg" type="text" placeholder="Background (optional) — PMH, current meds, allergies, relevant results" autocomplete="off">
             </div>
 
             <div class="scr-rec">
@@ -344,6 +357,20 @@
             </div>
 
             <div class="scr-style">
+              <div class="scr-style-row tpl">
+                <span class="scr-seg-lbl">Template</span>
+                <div class="scr-seg" id="tplSeg">
+                  <button data-tpl="gp" class="on" title="Standard GP consultation note">GP consult</button>
+                  <button data-tpl="problems" title="Problem-based record — split per problem">Problems</button>
+                  <button data-tpl="chronic" title="Chronic disease review">Chronic</button>
+                  <button data-tpl="triage" title="Telephone / triage contact">Triage</button>
+                </div>
+                <div class="scr-mytpl">
+                  <select id="tplSelect" title="Apply one of your saved templates"><option value="">My templates…</option></select>
+                  <button class="scr-btn sm" id="tplSaveBtn" title="Save the current template, note style and custom instructions as a reusable template">Save</button>
+                  <button class="scr-btn sm ghost-red" id="tplDelBtn" title="Delete the selected saved template" style="display:none">✕</button>
+                </div>
+              </div>
               <div class="scr-style-row">
                 <span class="scr-seg-lbl">Note style</span>
                 <div class="scr-seg" id="styleSeg">
@@ -496,7 +523,7 @@
 </div>
 
 <script src="../assets/cpd-log.js?v=1"></script>
-<script src="../assets/site.js?v=61"></script>
+<script src="../assets/site.js?v=64"></script>
 <script>
 (function(){
   "use strict";
@@ -512,6 +539,7 @@
   let refChat = [];     // referral discussion log
   let layout = 'split';
   let noteStyle = 'concise';
+  let tpl = 'gp';       // note template: gp | problems | chronic | triage
   let note = null;      // last generated note object
   let chat = [];        // refine chat log: {role:'you'|'ai', text, updated?}
   let busy = false;
@@ -525,14 +553,19 @@
     if(setting==='utc') return 'SETTING: Urgent treatment centre (UTC). Single episodic urgent-care attendance. Document the acute problem, treatment given, explicit disposition (home / ED escalation / GP follow-up), strong specific safety-netting, and any actions for the registered GP. State ED escalation clearly where indicated. Do NOT plan routine chronic disease management.';
     return 'SETTING: Routine GP surgery consultation with continuity of care — follow-up, recalls, chronic disease actions and practice-based referrals are all appropriate.';
   }
+  // Optional clinician-entered background (PMH / meds / allergies / results) — shared by every AI call.
+  function bgBrief(){
+    const bg = $('#ctxBg') ? $('#ctxBg').value.trim() : '';
+    return bg ? ('PATIENT BACKGROUND (entered by the clinician from the record — use it to interpret the consultation, judge drug interactions/contraindications and NG12 age thresholds; do NOT document it as if said in the consultation unless it was referenced): '+bg) : '';
+  }
 
   /* ---------- persistence ---------- */
   function save(){
     try{ localStorage.setItem(LS, JSON.stringify({
-      sys, setting, layout, currentId, noteStyle,
+      sys, setting, layout, currentId, noteStyle, tpl,
       autoEnh: !!($('#autoEnh') && $('#autoEnh').checked),
       t: $('#transcript').value,
-      ctx: { init:$('#ctxInit').value, age:$('#ctxAge').value, pc:$('#ctxPc').value },
+      ctx: { init:$('#ctxInit').value, age:$('#ctxAge').value, pc:$('#ctxPc').value, bg:$('#ctxBg').value },
       custom: $('#customInstr').value,
       note, chat, refChat
     })); }catch(e){}
@@ -544,10 +577,11 @@
     if(d.sys) setSys(d.sys);
     if(d.layout) setLayout(d.layout);
     if(d.noteStyle) setStyle(d.noteStyle);
+    if(d.tpl) setTpl(d.tpl);
     if(d.setting) setSetting(d.setting);
     if(typeof d.autoEnh==='boolean' && $('#autoEnh')) $('#autoEnh').checked = d.autoEnh;
     if(d.t) $('#transcript').value = d.t;
-    if(d.ctx){ $('#ctxInit').value=d.ctx.init||''; $('#ctxAge').value=d.ctx.age||''; $('#ctxPc').value=d.ctx.pc||''; }
+    if(d.ctx){ $('#ctxInit').value=d.ctx.init||''; $('#ctxAge').value=d.ctx.age||''; $('#ctxPc').value=d.ctx.pc||''; $('#ctxBg').value=d.ctx.bg||''; }
     if(d.custom) $('#customInstr').value=d.custom;
     if(Array.isArray(d.chat)){ chat=d.chat; renderChat(); }
     if(Array.isArray(d.refChat)){ refChat=d.refChat; renderRefChat(); }
@@ -581,7 +615,8 @@
       title: sessionTitle(),
       sys,
       setting,
-      ctx:{ init:$('#ctxInit').value, age:$('#ctxAge').value, pc:$('#ctxPc').value },
+      tpl,
+      ctx:{ init:$('#ctxInit').value, age:$('#ctxAge').value, pc:$('#ctxPc').value, bg:$('#ctxBg').value },
       t,
       note: note ? JSON.parse(JSON.stringify(note)) : null,
       chat: JSON.parse(JSON.stringify(chat)),
@@ -689,9 +724,11 @@
     currentId=h.id;
     if(h.sys) setSys(h.sys);
     if(h.setting) setSetting(h.setting);
+    if(h.tpl) setTpl(h.tpl);
     $('#ctxInit').value=(h.ctx&&h.ctx.init)||'';
     $('#ctxAge').value=(h.ctx&&h.ctx.age)||'';
     $('#ctxPc').value=(h.ctx&&h.ctx.pc)||'';
+    $('#ctxBg').value=(h.ctx&&h.ctx.bg)||'';
     $('#transcript').value=h.t||'';
     note = h.note ? JSON.parse(JSON.stringify(h.note)) : null;
     chat = Array.isArray(h.chat) ? JSON.parse(JSON.stringify(h.chat)) : [];
@@ -715,7 +752,7 @@
     if(recOn) stopRec();
     resetEnhanceUI();
     currentId=null;
-    $('#ctxInit').value=''; $('#ctxAge').value=''; $('#ctxPc').value='';
+    $('#ctxInit').value=''; $('#ctxAge').value=''; $('#ctxPc').value=''; $('#ctxBg').value='';
     $('#transcript').value=''; note=null; chat=[]; refChat=[];
     renderChat(); renderRefChat(); $('#reviewOut').innerHTML='';
     lastSca=null; if($('#scaOut')) $('#scaOut').innerHTML='';
@@ -761,6 +798,51 @@
     $('#styleSeg').querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.style===v));
     save();
   }
+
+  /* ---------- note templates (Heidi/Tandem-style) ----------
+     The template shapes WHAT the note documents and how it is organised;
+     the style (concise/detailed/narrative) shapes only the prose register. */
+  const TPL={
+    gp: '',
+    problems: '- TEMPLATE — PROBLEM-BASED RECORD: the consultation may cover more than one distinct clinical problem. Identify each problem discussed and populate the "problems" array — one entry per problem, ordered by clinical priority, each {title, history, examination, assessment, plan} containing ONLY that problem’s content. "title" must be a short, codeable problem title (e.g. "Type 2 diabetes mellitus — review", "Acute low back pain"). Use the flat history/examination/assessment/plan fields only for genuinely shared content that belongs to no single problem (often empty). If only one problem was discussed, still return it as the single entry in "problems".',
+    chronic: '- TEMPLATE — CHRONIC DISEASE REVIEW: structure the history around the condition(s) under review: current control and symptoms since last review; exacerbations, admissions or complications; medication adherence and side-effects; relevant lifestyle factors actually discussed (smoking, alcohol, diet, exercise); and any objective measures stated (BP, HbA1c, PEFR, weight, eGFR) verbatim. The assessment must state the control status (well controlled / suboptimal / deteriorating) with its supporting evidence. The plan covers medication changes, agreed targets, monitoring bloods and the recall interval; put review actions (foot check, ACR, bloods, imms, recall) in "tasks".',
+    triage: '- TEMPLATE — TELEPHONE / TRIAGE NOTE: this is a remote contact. NEVER imply a physical examination occurred — "examination" holds only what was genuinely assessed remotely (patient-reported observations, video appearance, audible breathing/speech), each explicitly labelled as remote or reported. The assessment must state the working impression AND why remote management is or is not safe for this patient. The plan MUST end with an explicit disposition line — self-care / routine appointment / same-day face-to-face / urgent visit / 999 — with the agreed timeframe. Safety-netting must be specific and documented in full.'
+  };
+  function setTpl(v){
+    tpl = (v in TPL) ? v : 'gp';
+    $('#tplSeg').querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.tpl===tpl));
+    save();
+  }
+  $('#tplSeg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(b) setTpl(b.dataset.tpl); });
+
+  /* my templates — saved template + note style + custom instructions, reusable */
+  const TPLS_KEY='rgp-scribe-mytpl-v1';
+  function myTpls(){ try{ const a=JSON.parse(localStorage.getItem(TPLS_KEY)||'[]'); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
+  function saveMyTpls(a){ try{ localStorage.setItem(TPLS_KEY, JSON.stringify(a.slice(0,30))); }catch(e){} }
+  function renderTplSelect(sel){
+    const a=myTpls();
+    $('#tplSelect').innerHTML='<option value="">My templates…</option>'+a.map(t=>'<option value="'+esc(t.id)+'">'+esc(t.name)+'</option>').join('');
+    $('#tplSelect').value = sel||'';
+    $('#tplDelBtn').style.display = a.length ? '' : 'none';
+  }
+  $('#tplSaveBtn').addEventListener('click', ()=>{
+    const name=prompt('Name this template — it saves the current template, note style and custom instructions for reuse:','');
+    if(!name || !name.trim()) return;
+    const a=myTpls();
+    const rec={ id:'t'+Date.now().toString(36), name:name.trim().slice(0,40), tpl, noteStyle, custom:$('#customInstr').value.trim() };
+    a.unshift(rec); saveMyTpls(a); renderTplSelect(rec.id);
+  });
+  $('#tplSelect').addEventListener('change', ()=>{
+    const t=myTpls().find(x=>x.id===$('#tplSelect').value); if(!t) return;
+    setTpl(t.tpl); setStyle(t.noteStyle||'concise');
+    $('#customInstr').value=t.custom||''; save();
+  });
+  $('#tplDelBtn').addEventListener('click', ()=>{
+    const id=$('#tplSelect').value; if(!id) return;
+    if(!confirm('Delete this saved template?')) return;
+    saveMyTpls(myTpls().filter(x=>x.id!==id)); renderTplSelect('');
+  });
+  renderTplSelect('');
   $('#styleSeg').addEventListener('click', e=>{ const b=e.target.closest('button'); if(b) setStyle(b.dataset.style); });
 
   /* ---------- tabs ---------- */
@@ -780,7 +862,7 @@
     $('#genBtn').disabled = busy;   // keep clickable so a short transcript gets an explanation, not a dead button
   }
   $('#transcript').addEventListener('input', ()=>{ updateWordCount(); save(); scheduleUpsert(); if(rawBackup!=null){ rawBackup=null; const b=$('#enhanceBtn'); if(b) b.textContent='✦ Enhance transcript'; } });
-  ['#ctxInit','#ctxAge','#ctxPc','#customInstr'].forEach(s=>$(s).addEventListener('input', ()=>{ save(); scheduleUpsert(); }));
+  ['#ctxInit','#ctxAge','#ctxPc','#ctxBg','#customInstr'].forEach(s=>$(s).addEventListener('input', ()=>{ save(); scheduleUpsert(); }));
 
   /* ---------- mic / speech recognition ---------- */
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -993,6 +1075,8 @@
     if(init) ctx.push('Patient initials: '+init);
     if(age) ctx.push('Age: '+age);
     if(pc) ctx.push('Stated presenting complaint: '+pc);
+    const bg=$('#ctxBg').value.trim();
+    if(bg) ctx.push('Background from the record (PMH / medications / allergies / results — clinician-entered): '+bg);
     const STYLE={
       concise:'STYLE: concise GP record — terse, abbreviations acceptable (PMH, o/e, Rx), short lines. This is the default.',
       detailed:'STYLE: detailed/thorough GP record — fuller sentences, spell out the reasoning and relevant positives & negatives, but still factual and non-padded.',
@@ -1006,8 +1090,12 @@
       '',
       'RULES:',
       STYLE[noteStyle]||STYLE.concise,
+      TPL[tpl]||'',
       settingBrief(),
       '- ACCURACY & RELEVANCE: the transcript is raw, possibly unpunctuated speech-to-text and may contain mishears, greetings, small talk, interruptions, phone calls or third-party speech. Resolve obvious mishears using clinical context (drug names, doses, conditions, anatomy, investigations) before documenting. Exclude clinically irrelevant chatter entirely — never document pleasantries or unrelated conversation, and never let it distort the clinical content.',
+      '- FIDELITY (non-negotiable): (a) NEGATION — never flip a negative; "no chest pain" must never become "chest pain", and a question the doctor asked ("any chest pain?") with no clear answer is NOT a finding either way. (b) NUMBERS VERBATIM — doses, durations, readings, dates and frequencies exactly as spoken; if a number is garbled, write "[unclear]" rather than a plausible guess. (c) ATTRIBUTION — keep patient-reported symptoms distinct from doctor-observed findings; never promote a symptom the patient reported into the examination section. (d) UNCERTAIN SPEECH — where the transcript is genuinely ambiguous on a clinically material point, flag it as "[unclear — verify]" instead of resolving it silently.',
+      '- MEDICAL LANGUAGE: write in precise, codeable clinical terminology — translate lay wording into the correct clinical term ("tummy ache" → abdominal pain, "feeling sick" → nausea; distinguish vertigo from presyncope only when the transcript makes clear which). Preserve clinically meaningful patient phrases — ICE and characteristic symptom descriptions — as short quoted fragments where the exact words matter. Problem and assessment wording must be codeable, SNOMED-CT-style ("Acute exacerbation of COPD", not "chest got worse").',
+      '- USE THE CONTEXT: actively use the provided age, presenting complaint and background (PMH / medications / allergies) to interpret the transcript — e.g. judge NG12 thresholds against the stated age, note interactions between a newly started drug and the background medication list, and read ambiguous words in the light of the known conditions. Context informs interpretation and the missedFlags/twoww sections; it is NOT itself consultation content — do not write background items into history/examination unless they were actually discussed.',
       custom?('CLINICIAN’S CUSTOM INSTRUCTIONS (follow these wherever they apply): '+custom):'',
       '- Use professional UK GP record style. British spelling.',
       '- COMPLETE BUT NEVER INVENTED: document EVERY clinically relevant statement actually made — symptoms, timeline, relevant negatives, ICE, examination, decisions, advice given. Do not drop or compress away stated clinical information; the note must be a full account of the consultation. Equally, do NOT add anything that was not said: no invented examination findings, observations, vital signs, numbers, allergies or advice. Where a standard element was not covered, state it plainly (e.g. "No examination documented.") rather than guessing.',
@@ -1022,8 +1110,9 @@
       '- "prescriptions": medications the doctor indicated starting/changing. Each {drug, dose, note}. Empty array if none.',
       '- "tasks": admin/follow-up actions (bloods, recall, refer, fit note, results chase, etc) as short strings. Empty array if none.',
       '',
+      'FINAL SELF-CHECK before answering: silently re-read the transcript against your draft and verify — nothing invented (every finding, number and decision is actually in the transcript), nothing clinically relevant dropped, every negative still a negative, all doses/numbers verbatim, twoww/missedFlags each genuinely justified for THIS age and presentation, and the output is a single valid JSON object. Fix silently, then answer.',
       'Return STRICT JSON only — no prose, no markdown fences — in EXACTLY this shape:',
-      '{"presenting":"","history":"","examination":"","assessment":"","plan":"","safetynet":"","followup":"","twoww":[{"flag":"","criterion":"","action":""}],"missedFlags":[{"flag":"","type":"","why":"","action":""}],"referral":"","prescriptions":[{"drug":"","dose":"","note":""}],"tasks":[]}'
+      '{"presenting":"","history":"","examination":"","assessment":"","plan":"",'+(tpl==='problems'?'"problems":[{"title":"","history":"","examination":"","assessment":"","plan":""}],':'')+'"safetynet":"","followup":"","twoww":[{"flag":"","criterion":"","action":""}],"missedFlags":[{"flag":"","type":"","why":"","action":""}],"referral":"","prescriptions":[{"drug":"","dose":"","note":""}],"tasks":[]}'
     ].join('\n');
   }
 
@@ -1097,9 +1186,36 @@
     soap: [['presenting','Presenting complaint'],['history','Subjective'],['examination','Objective'],['assessment','Assessment'],['plan','Plan'],['safetynet','Safety-net advice'],['followup','Follow-up']]
   };
 
+  /* problem-based notes: the model may return a per-problem breakdown */
+  function noteProblems(){
+    if(!note || !Array.isArray(note.problems)) return [];
+    return note.problems.filter(p=>p && ((p.title||'').trim() || (p.history||'').trim() || (p.assessment||'').trim() || (p.plan||'').trim()));
+  }
+  function problemText(p, L){
+    const out=[];
+    ['history','examination','assessment','plan'].forEach(k=>{
+      const v=(p[k]||'').trim(); if(v){ out.push((L[k]||k).toUpperCase()+':'); out.push(v); }
+    });
+    return out.join('\n');
+  }
+
   function plainNote(){
     const map=SECMAP[sys]; const out=[];
-    map.forEach(([k,lbl])=>{ const v=(note[k]||'').trim(); if(v){ out.push(lbl.toUpperCase()+':'); out.push(v); out.push(''); } });
+    const L=Object.fromEntries(map.map(([k,l])=>[k,l]));
+    const probs=noteProblems();
+    if(probs.length){
+      const v=(note.presenting||'').trim();
+      if(v){ out.push((L.presenting||'Problem').toUpperCase()+':'); out.push(v); out.push(''); }
+      probs.forEach((p,i)=>{
+        out.push('── PROBLEM '+(i+1)+': '+((p.title||'').trim()||'(untitled)').toUpperCase()+' ──');
+        out.push(problemText(p, L)); out.push('');
+      });
+      ['history','examination','assessment','plan','safetynet','followup'].forEach(k=>{
+        const s=(note[k]||'').trim(); if(s){ out.push((L[k]||k).toUpperCase()+':'); out.push(s); out.push(''); }
+      });
+    } else {
+      map.forEach(([k,lbl])=>{ const v=(note[k]||'').trim(); if(v){ out.push(lbl.toUpperCase()+':'); out.push(v); out.push(''); } });
+    }
     if(note.twoww && note.twoww.length){
       out.push('⚠ NICE NG12 — 2-WEEK-WAIT:');
       note.twoww.forEach(f=> out.push('• '+f.flag+' — '+f.criterion+' → '+f.action));
@@ -1149,7 +1265,22 @@
 
     // sections
     const map=SECMAP[sys];
-    $('#noteSecs').innerHTML = map.map(([k,lbl])=>{
+    const L=Object.fromEntries(map.map(([k,l])=>[k,l]));
+    const probs=noteProblems();
+    const probHtml = probs.map((p,i)=>{
+      const rows=['history','examination','assessment','plan'].map(k=>{
+        const v=(p[k]||'').trim(); if(!v) return '';
+        return '<div class="scr-psec"><span class="pl">'+esc(L[k]||k)+'</span><div class="pv">'+esc(v)+'</div></div>';
+      }).join('');
+      return '<div class="scr-sec"><div class="scr-sec-head"><span class="h">Problem '+(i+1)+' — '+esc((p.title||'').trim()||'untitled')+'</span><div class="copy"><button class="scr-copy" data-prob="'+i+'">Copy</button></div></div><div class="scr-sec-body">'+rows+'</div></div>';
+    }).join('');
+    const presV=(note.presenting||'').trim();
+    const presHtml = (probs.length && presV)
+      ? '<div class="scr-sec"><div class="scr-sec-head"><span class="h">'+esc(L.presenting||'Problem')+'</span><div class="copy"><button class="scr-copy" data-copy="presenting">Copy</button></div></div><div class="scr-sec-body">'+esc(presV)+'</div></div>'
+      : '';
+    $('#noteSecs').innerHTML = presHtml + probHtml +
+      map.map(([k,lbl])=>{
+      if(probs.length && k==='presenting') return ''; // already rendered above the problem cards
       const v=(note[k]||'').trim(); if(!v) return '';
       return '<div class="scr-sec"><div class="scr-sec-head"><span class="h">'+esc(lbl)+'</span><div class="copy"><button class="scr-copy" data-copy="'+k+'">Copy</button></div></div><div class="scr-sec-body">'+esc(v)+'</div></div>';
     }).join('');
@@ -1175,6 +1306,11 @@
   // section copy + full copy
   $('#noteSecs').addEventListener('click', e=>{
     const b=e.target.closest('.scr-copy'); if(!b||!note) return;
+    if(b.dataset.prob!=null){
+      const p=noteProblems()[+b.dataset.prob];
+      if(p){ const L=Object.fromEntries(SECMAP[sys].map(([k,l])=>[k,l])); copyText('PROBLEM: '+((p.title||'').trim()||'')+'\n'+problemText(p,L), b); }
+      return;
+    }
     copyText((note[b.dataset.copy]||'').trim(), b);
   });
   $('#copyAll').addEventListener('click', e=> copyText(plainNote(), e.target));
@@ -1226,6 +1362,7 @@
       'You are a UK GP. Write a COMPLETE, ready-to-send referral letter based on the consultation record below. It should be polished enough to paste into the practice referral system with only the bracketed placeholders to fill.',
       'CONSULTATION RECORD (JSON):', JSON.stringify(note),
       'PATIENT CONTEXT:', 'Initials: '+(ctxInit||'[Initials]')+'; Age: '+(ctxAge||'[Age]'),
+      bgBrief(),
       settingBrief(),
       '',
       'REQUIREMENTS:',
@@ -1368,6 +1505,7 @@
     const prompt=[
       'You are helping a UK GP refine a consultation record you previously drafted. Apply the GP\u2019s request faithfully.',
       settingBrief(),
+      bgBrief(),
       'CURRENT RECORD (JSON):', JSON.stringify(note),
       'TRANSCRIPT (reference — do not invent findings beyond it):', $('#transcript').value.trim(),
       'GP REQUEST:', q,
@@ -1412,6 +1550,7 @@
       'CONSULTATION RECORD (JSON):', JSON.stringify(note),
       'TRANSCRIPT (reference):', $('#transcript').value.trim(),
       settingBrief(),
+      bgBrief(),
       '',
       'Assess the PLAN against good UK primary-care practice (NICE / CKS), including: appropriateness of investigations & prescribing, safety-netting quality, follow-up, and whether any NICE NG12 two-week-wait / urgent or safeguarding action is indicated but missing.',
       'Return STRICT JSON only — no markdown — as:',
@@ -1453,7 +1592,7 @@
   ];
   function scaPrompt(){
     const init=$('#ctxInit').value.trim(), age=$('#ctxAge').value.trim(), pc=$('#ctxPc').value.trim();
-    const ctx=[init?'Initials: '+init:'',age?'Age: '+age:'',pc?'Presenting complaint: '+pc:''].filter(Boolean).join('; ');
+    const ctx=[init?'Initials: '+init:'',age?'Age: '+age:'',pc?'Presenting complaint: '+pc:'',($('#ctxBg')&&$('#ctxBg').value.trim())?'Background: '+$('#ctxBg').value.trim():''].filter(Boolean).join('; ');
     return [
       'You are an experienced RCGP examiner marking a candidate\u2019s consultation for the MRCGP Simulated Consultation Assessment (SCA). Give rigorous, fair, specific developmental feedback to help the candidate prepare. Mark ONLY on what the transcript shows; do not invent things the candidate did or said.',
       'PATIENT CONTEXT:', ctx||'(none provided)',

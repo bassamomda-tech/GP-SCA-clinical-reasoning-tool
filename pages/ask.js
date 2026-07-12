@@ -34,11 +34,12 @@
   // when embeddings are ready, else lexical). Degrades gracefully on any error.
   // Returns {items, mode:'semantic'|'lexical'|'none', confident:boolean} — when confident
   // is false the model is ORDERED to verify by live web search instead of trusting notes.
-  async function groundingMeta(q){
+  async function groundingMeta(q, k){
+    k = k || 4;
     if(!RET) return { items:[], mode:'none', confident:false };
     try{
-      if(RET.groundingMeta) return await RET.groundingMeta(q, 4);
-      return { items: await RET.grounding(q, 4), mode:'lexical', confident:true };
+      if(RET.groundingMeta) return await RET.groundingMeta(q, k);
+      return { items: await RET.grounding(q, k), mode:'lexical', confident:true };
     }
     catch(e){ return { items: RET.searchScored(q, 4).map(x=>x.it), mode:'lexical', confident:false }; }
   }
@@ -126,12 +127,15 @@
   }
   function mdToHtml(md){
     const lines = String(md||'').replace(/\r/g,'').split('\n');
-    let html='', list=null, evidence=false;
+    let html='', list=null, evidence=false, dx=false;
     const closeList=()=>{ if(list){ html += '</'+list+'>'; list=null; } };
     // The "What the guidance says" block is the direct, source-quoted answer.
     // Wrap it in a coloured evidence box so it's instantly findable in a busy clinic.
     const isEvidenceHead = t => /^what the guidance says\b/i.test(t.replace(/[:—-]\s*$/,'').trim());
     const closeEvidence=()=>{ if(evidence){ closeList(); html += '</div>'; evidence=false; } };
+    // The "Working diagnosis" block is the ranked differential on diagnostic questions.
+    const isDxHead = t => /^working diagnosis\b/i.test(t.replace(/[:—-]\s*$/,'').trim());
+    const closeDx=()=>{ if(dx){ closeList(); html += '</div>'; dx=false; } };
     lines.forEach(raw=>{
       const line = raw.trim();
       if(!line){ closeList(); return; }
@@ -140,12 +144,18 @@
         closeList();
         const label = m[1].replace(/\*\*/g,'');
         if(isEvidenceHead(label)){
-          closeEvidence();
+          closeEvidence(); closeDx();
           html += '<div class="ans-evidence"><div class="ans-evidence-h"><span class="ans-evidence-ic" aria-hidden="true">📋</span>'+inline(m[1])+'</div>';
           evidence = true;
           return;
         }
-        closeEvidence(); // any other heading ends the evidence box
+        if(isDxHead(label)){
+          closeEvidence(); closeDx();
+          html += '<div class="ans-dx"><div class="ans-dx-h"><span class="ans-dx-ic" aria-hidden="true">🧭</span>'+inline(m[1])+'</div>';
+          dx = true;
+          return;
+        }
+        closeEvidence(); closeDx(); // any other heading ends the boxed section
         const lvl = line.startsWith('####')?'h4':line.startsWith('###')?'h4':'h3';
         html += `<${lvl}>${inline(m[1])}</${lvl}>`;
         return;
@@ -154,10 +164,12 @@
       if((m=line.match(/^[-*•]\s+(.*)/))){ if(list!=='ul'){ closeList(); html+='<ul>'; list='ul'; } html += `<li>${inline(m[1])}</li>`; return; }
       if((m=line.match(/^\d+[.)]\s+(.*)/))){ if(list!=='ol'){ closeList(); html+='<ol>'; list='ol'; } html += `<li>${inline(m[1])}</li>`; return; }
       closeList();
+      if((dx || evidence) && /^(\*\*guidelines used|_educational)/i.test(line)){ closeEvidence(); closeDx(); }
       html += `<p>${inline(line)}</p>`;
     });
     closeList();
     closeEvidence();
+    closeDx();
     return html;
   }
 
@@ -382,8 +394,11 @@
     const isFollowup = prevUserQ && (wc <= 5 || FOLLOWUP_RE.test(qt));
     const effectiveQ = isFollowup ? (prevUserQ.content + ' ' + q) : q;
     const typingEl = botTyping();
+    // Query-type: diagnostic questions get WIDER retrieval (each extra note is a
+    // candidate diagnosis for the ranked differential) + an explicit dx-mode order.
+    const qType = (window.RGPAskCore && window.RGPAskCore.classify) ? window.RGPAskCore.classify(effectiveQ) : 'general';
     // Grounding notes (hybrid semantic + lexical). Anchored on the thread topic for follow-ups.
-    const gMeta = await groundingMeta(effectiveQ);
+    const gMeta = await groundingMeta(effectiveQ, qType==='dx' ? 7 : 4);
     let hits = gMeta.items;
 
     // Retrieval-confidence gate: when the library match is WEAK, the single biggest
@@ -392,10 +407,15 @@
     const weakNote = gMeta.confident ? '' :
       '\n\nRETRIEVAL WARNING — LOW-CONFIDENCE LIBRARY MATCH: the notes above were retrieved with low confidence and may not cover this question. Do NOT force an answer from them if they do not clearly match, and do NOT answer from memory. You MUST verify the key recommendation with a live web search of current UK guidance (NICE/CKS/BNF/GOV.UK/CoSRH) before answering; if you cannot verify a specific figure or category, say plainly which named current source the clinician should check and give only the safe general position.';
 
+    // Diagnostic mode: restate the ranked-differential order at question time so it
+    // cannot be lost in a long primer; note the widened notes are candidate diagnoses.
+    const dxNote = qType!=='dx' ? '' :
+      '\n\nDIAGNOSTIC MODE: this reads as an undifferentiated / diagnostic question. Answer with the ranked "## Working diagnosis" differential shape — **Most likely** (one named front-runner with likelihood wording), **Also possible** (ranked, each with its discriminating feature), **Must not miss** (each with the excluding action, [[2WW]] where NG12 applies), **To narrow it down**, **Safety-net** — never a single over-confident diagnosis and never an unranked list. The library notes above are candidate diagnoses for the differential — use only those that genuinely fit this presentation.';
+
     // build message list (framing primer + recent conversation + grounded question)
     const msgs = [ {role:'user', content:FRAMING}, {role:'assistant', content:PRIMER_ACK} ];
     history.slice(-6).forEach(m=> msgs.push({role:m.role, content:m.content}) );
-    msgs.push({ role:'user', content: buildContext(hits) + weakNote + '\n\n---\nCLINICIAN QUESTION (a follow-up in the conversation above unless it clearly changes subject): ' + q });
+    msgs.push({ role:'user', content: buildContext(hits) + weakNote + dxNote + '\n\n---\nCLINICIAN QUESTION (a follow-up in the conversation above unless it clearly changes subject): ' + q });
 
     let answer = '';
     const canStream = window.claude && typeof window.claude.stream === 'function';

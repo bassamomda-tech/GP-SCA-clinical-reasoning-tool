@@ -394,7 +394,7 @@ async function aiProxy(request, env, cors) {
     // 'p4' is the prompt version salt — bump it whenever the answer framing changes
     // materially, so stale answers generated under the OLD rules can never be served
     // (old entries just stop matching and age out via their 30-day TTL).
-    ansKey = 'ans:' + hex(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(model + '|p4|' + norm)));
+    ansKey = 'ans:' + hex(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(model + '|p6|' + norm)));
     const hitRaw = await env.USERS.get(ansKey);
     if (hitRaw) {
       try {
