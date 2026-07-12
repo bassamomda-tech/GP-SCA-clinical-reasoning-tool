@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Chronic Cough Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;
+  --diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;
+  --treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;
+  --refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;
+  --lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
+  --font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif;
+}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#1a3a2e 0%,#2a7a5a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#2a7a5a,#1a6faf);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555;transition:.2s}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.node-body p{margin-bottom:10px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}
+.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}
+.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}
+.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}
+.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}
+.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}
+.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:76px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#92400e}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🫁</div>
+  <div>
+    <b>Chronic Cough — ≥8 Weeks Duration</b>
+    <small>Systematic GP assessment — UACS, GORD, CVA, eosinophilic bronchitis, cancer exclusion and cough hypersensitivity</small>
+  </div>
+</div>
+
+<div class="alg-progress">
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Exclude Malignancy, TB &amp; Serious Pathology</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Chronic cough (&gt;8 weeks) is common but requires systematic exclusion of serious causes before symptomatic management. A CXR is mandatory at first presentation.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Haemoptysis</b> Any blood in sputum in age ≥40 with smoking history → 2WW lung cancer. If massive haemoptysis (≥200 ml) → 999. Even trace haemoptysis without obvious benign cause = 2WW.</div>
+      <div class="rftile"><b>Unintentional weight loss + cough</b> Lung cancer, TB, lymphoma — 2WW chest referral. Age ≥40 + smoker + weight loss + cough = very high PPV for lung malignancy.</div>
+      <div class="rftile"><b>Abnormal CXR</b> Mass, consolidation, effusion, hilar lymphadenopathy, persistent infiltrate — immediate respiratory referral. CXR is mandatory at first presentation of chronic cough.</div>
+      <div class="rftile"><b>Night sweats + cough + weight loss</b> TB (especially migrant populations, homeless, immunocompromised), lymphoma → urgent sputum AFB × 3 + respiratory referral. Isolate the patient.</div>
+      <div class="rftile"><b>Stridor + cough</b> Tracheal obstruction, vocal cord tumour, anaphylaxis — upper airway emergency → 999</div>
+      <div class="rftile"><b>Dysphagia + cough</b> Aspiration from oesophageal pathology, pharyngeal pouch, neurological dysphagia — aspiration pneumonia risk → CXR + SALT + gastroenterology</div>
+      <div class="rftile"><b>Immunocompromised + cough</b> HIV, chemotherapy, long-term steroids → atypical pneumonia (PCP), fungal (Aspergillus), TB — urgent FBC + CXR + CD4 count. Low threshold for hospital admission.</div>
+      <div class="rftile"><b>New cough in smoker ≥40</b> Lung cancer PPV 0.5–1% in this group — sufficient for 2WW if unexplained for &gt;3 weeks. Do not attribute to "smoker's cough" without investigation.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE NG12 (Suspected Cancer, 2023) mandates a 2WW chest referral for unexplained cough lasting ≥3 weeks in adults aged ≥40 who are current or ex-smokers. Haemoptysis at any age warrants 2WW if unexplained. The 1% PPV threshold used by NICE means that even 1 in 100 patients with these features has lung cancer — the benefit of early detection justifies urgent investigation. A CXR has approximately 70% sensitivity for central lung tumours but misses peripheral and mediastinal pathology — a normal CXR does not exclude cancer in a high-risk patient, and CT chest is required if clinical suspicion persists. TB incidence in the UK is approximately 5–6/100,000 but significantly higher in some urban areas and migrant communities — night sweats + weight loss + chronic cough in a high-risk patient requires TB assessment.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>History — Characterise the Cough</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Duration and onset</div><div>Subacute (3–8 weeks — post-infectious, pertussis) vs chronic (≥8 weeks — UACS, GORD, CVA, eosinophilic bronchitis, CHS). Onset after URTI suggests post-infectious cough hypersensitivity.</div>
+      <div>ACE inhibitor use</div><div>ACE inhibitors cause a dry tickly cough in 10–15% of patients (bradykinin accumulation — class effect, not dose-related). Can develop any time during treatment. Stop and switch to ARB — cough resolves within 1–4 weeks. If persists → reassess.</div>
+      <div>Character and timing</div><div>Dry tickly (ACEi, CVA, UACS, CHS) vs productive (bronchiectasis, infection) vs barking (psychogenic, habit cough) vs worse at night (CVA, GORD, post-nasal drip) vs worse in morning (COPD, bronchiectasis, GORD)</div>
+      <div>Triggers</div><div>Cold air, exercise, laughter, perfumes, smoke → airway hyperreactivity / CVA / CHS. Lying flat, eating, alcohol → GORD/LPR. Seasonal/allergen → allergic rhinitis (UACS). Occupational (isocyanates, flour, grain) → occupational asthma.</div>
+      <div>Associated symptoms</div><div>Post-nasal drip / throat clearing / rhinorrhoea → UACS. Heartburn / regurgitation → GORD/LPR. Wheeze / breathlessness → asthma / CVA. Sputum production + recurrent infections → bronchiectasis. Hoarseness → LPR.</div>
+      <div>Smoking history</div><div>Pack-year history. Current smoker → COPD, lung cancer, chronic bronchitis. Ex-smoker → persistent risk. Passive smoke exposure. Vaping → vaping-associated lung injury (EVALI).</div>
+      <div>Occupational history</div><div>Ask specifically about workplace exposures — flour/grain dust, paint fumes, isocyanates (spray painting), wood dust, laboratory animals. Occupational asthma improves on holiday/weekends — a key diagnostic clue.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">ACE inhibitor cough affects 10–15% of patients in UK populations (higher in South Asian populations — up to 40%) and is the most common drug-induced cough. The mechanism is bradykinin and substance P accumulation in the respiratory mucosa — it is a class effect (all ACEi cause it) and is not dose-related. Stopping the ACE inhibitor resolves the cough within 1–4 weeks in 95% of cases. Failure to resolve after 4 weeks suggests a co-existing diagnosis requiring further investigation. The occupational history is one of the most neglected areas in chronic cough assessment — approximately 15% of adult-onset asthma is occupational in origin and is legally compensatable if identified and reported. The key question is whether cough/wheeze improves on days away from work.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis — The Big Five</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>The majority of chronic cough in adults has one of five benign causes. They can co-exist — a trial of empirical triple therapy (nasal steroid + PPI + ICS) is sometimes used when the cause is unclear.</p>
+    <div class="kv">
+      <div>UACS — Upper Airway Cough Syndrome</div><div>Most common cause (formerly "post-nasal drip"). Rhinitis (allergic/non-allergic), sinusitis, deviated septum. Dripping sensation down throat, throat clearing, sneezing, blocked/runny nose. Nasal steroid spray is first-line treatment.</div>
+      <div>GORD / LPR</div><div>Second most common. Acid reflux irritates cough reflex via vagal afferents. May have no heartburn (silent reflux / LPR). Worse after meals, lying flat, alcohol. BD PPI trial (8–12 weeks) for LPR — note OD dosing insufficient for LPR.</div>
+      <div>Cough-variant asthma (CVA)</div><div>Cough as sole asthma manifestation — no wheeze or dyspnoea. Worse at night, triggered by cold air, exercise, allergens. Spirometry often normal — requires FeNO or bronchoprovocation (methacholine) challenge for diagnosis.</div>
+      <div>Eosinophilic bronchitis (EB)</div><div>Eosinophilic airway inflammation without airway hyperreactivity. Dry cough, no wheeze, normal spirometry, normal peak flow. Diagnosed by induced sputum eosinophilia ≥3% or elevated FeNO. Responds well to ICS.</div>
+      <div>ACE inhibitor cough</div><div>Dry tickly cough — stop ACEi. Any patient on ACEi with new cough → stop before pursuing further investigations. Resolves in 1–4 weeks. Switch to ARB. If cough persists → investigate as new chronic cough.</div>
+      <div>Chronic cough hypersensitivity (CHS)</div><div>Sensitised cough reflex — neurogenic, triggered by minimal stimuli (cold air, talking, perfume). No underlying structural cause. Diagnosis of exclusion. Management: gabapentin, neuromodulators, speech therapy (Lesley Jamieson technique).</div>
+      <div>COPD / chronic bronchitis</div><div>Smoker, productive cough, exertional breathlessness. Spirometry FEV1/FVC &lt;0.70 post-bronchodilator diagnostic. GOLD staging guides treatment. Cough ± haemoptysis in COPD → rule out lung cancer.</div>
+      <div>Bronchiectasis</div><div>Daily productive cough (mucopurulent), recurrent chest infections, haemoptysis. Childhood infections, CF, COPD, immune deficiency. HRCT chest diagnostic. Physiotherapy + airway clearance central to management.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The "big three" causes of chronic cough (UACS, GORD, asthma/CVA) account for up to 90% of cases in non-smoking adults with a normal CXR. Eosinophilic bronchitis is important because it is clinically indistinguishable from CVA without objective testing (spirometry, FeNO, induced sputum) — it responds to ICS but not to bronchodilators. Cough hypersensitivity syndrome is increasingly recognised as the underlying mechanism for many cases of unexplained chronic cough — the cough reflex arch is sensitised (analogous to neuropathic pain), triggered by minimal stimuli. Gabapentinoids (gabapentin, pregabalin) and P2X3 receptor antagonists are emerging treatments targeting this neurogenic component.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Targeted Examination &amp; Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Examination</div><div>Nasal mucosa (pale/boggy = allergic; erythematous = infective) · post-nasal drip (pharyngeal cobblestoning) · chest auscultation (wheeze, crackles) · BMI (obesity worsens GORD/LPR) · clubbing (bronchiectasis, malignancy)</div>
+      <div>CXR (mandatory)</div><div><span class="pill pill-red">Essential first-line</span> — every patient with chronic cough. Mass, consolidation, pleural effusion, hilar nodes, hyperinflation (COPD), honeycomb (fibrosis), infiltrates (TB/PCP)</div>
+      <div>Spirometry</div><div><span class="pill pill-blue">Spirometry + reversibility</span> — COPD (FEV1/FVC &lt;0.70) vs asthma (≥12% and 200 ml reversibility to bronchodilator). Normal spirometry does NOT exclude CVA or eosinophilic bronchitis.</div>
+      <div>FeNO</div><div><span class="pill pill-blue">Fractional exhaled nitric oxide</span> — marker of eosinophilic airway inflammation. ≥40 ppb = high (CVA, eosinophilic bronchitis) · 25–39 ppb = borderline · &lt;25 ppb = low (rules out eosinophilic cause). NICE NG80 recommends FeNO in asthma diagnosis.</div>
+      <div>Blood tests</div><div><span class="pill pill-blue">FBC</span> (eosinophilia — eosinophilic bronchitis, Löffler's) · <span class="pill pill-blue">IgE + specific allergen testing</span> (allergic UACS) · <span class="pill pill-blue">CRP</span> · <span class="pill pill-blue">Sputum MC&S + AFB × 3</span> (TB if risk factors) · <span class="pill pill-blue">ACE level</span> (sarcoidosis)</div>
+      <div>Peak flow diary</div><div>2-week peak flow chart (4× daily) with symptom diary — variability &gt;20% suggests asthma/CVA. Also correlates cough to work exposures (occupational asthma).</div>
+      <div>NOT routinely in primary care</div><div>CT chest — reserved for: 2WW pathway, normal CXR but high cancer suspicion, suspected bronchiectasis, unexplained cough despite negative work-up. 24-hr oesophageal pH monitoring (GORD) — gastroenterology. Bronchoscopy — respiratory.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">FeNO measurement is now the recommended first-line objective test for suspected asthma/CVA in primary care (NICE NG80, 2017) — it identifies eosinophilic airway inflammation with 80% sensitivity and 85% specificity for steroid-responsive disease. A FeNO &gt;40 ppb supports a trial of ICS and predicts response. Normal spirometry is present in up to 30% of patients with cough-variant asthma — a normal spirogram must not be used to exclude CVA. Peak flow variability (diurnal variation &gt;20%) is an alternative diagnostic criterion. The 24-hour ambulatory pH study is the gold standard for GORD-related cough but is invasive and rarely necessary in primary care — an empirical BD PPI trial for 8–12 weeks is both diagnostic and therapeutic.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="REFER" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">2WW lung cancer</span></div><div>Haemoptysis any age (unexplained) · unexplained cough ≥3 weeks + age ≥40 + smoker/ex-smoker · abnormal CXR (mass, collapse, effusion, hilar enlargement) · weight loss + cough · chest pain + cough. NICE NG12.</div>
+      <div><span class="pill pill-red">Same-day hospital</span></div><div>Massive haemoptysis (&gt;200 ml / frank blood), respiratory failure (SpO2 &lt;92%), suspected TB with systemic compromise, stridor + cough</div>
+      <div>Respiratory — routine</div><div>Confirmed COPD for GOLD staging and specialist management · suspected bronchiectasis (HRCT required) · cough undiagnosed after 3–6 months systematic GP investigation · suspected occupational asthma (challenge testing)</div>
+      <div>Gastroenterology</div><div>GORD-related cough not responding to 12 weeks BD PPI + lifestyle → pH/impedance study ± endoscopy · suspected eosinophilic oesophagitis</div>
+      <div>ENT</div><div>Allergic rhinitis/UACS not responding to topical treatment · nasal polyps requiring surgical assessment · sinusitis refractory to antibiotics and nasal steroids (CT sinuses)</div>
+      <div>Specialist cough clinic</div><div>Unexplained chronic cough &gt;6 months despite systematic investigation → tertiary cough clinic (specialist centres with FeNO, bronchoprovocation, impedance, speech therapy, neuromodulators)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE NG12 has a very low threshold for lung cancer 2WW referral — haemoptysis at any age warrants consideration of 2WW. A normal CXR does not exclude lung cancer and should not be used as a reason to avoid referral in high-risk patients — CT chest has 3-fold higher sensitivity than CXR for peripheral tumours. Specialist cough clinics exist in most large NHS trusts — they provide a multidisciplinary assessment combining respiratory, gastroenterology, ENT, and speech and language therapy expertise alongside objective testing (FeNO, bronchoprovocation, ambulatory pH). They are appropriate for patients who have had an extensive primary care work-up without a clear diagnosis.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="TREAT" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>Cause-Directed Treatment</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">UACS / Allergic rhinitis</div>
+        <div class="b-drug">Mometasone 2 sprays each nostril OD</div>
+        <div class="b-note">Intranasal corticosteroid — first-line for UACS. Allow 4–6 weeks for full effect. Saline nasal irrigation (Neilmed) as adjunct. Add antihistamine if allergic rhinitis (cetirizine 10 mg OD). Ipratropium nasal spray for non-allergic rhinitis (vasomotor).</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">GORD / LPR cough</div>
+        <div class="b-drug">Omeprazole 20–40 mg BD (before meals)</div>
+        <div class="b-note">BD dosing essential for LPR (morning + evening acid peaks). Minimum 8–12 weeks trial — laryngeal mucosa heals slowly. Lifestyle changes concurrent (see Step 8). Add alginate (Gaviscon Advance) at bedtime. H. pylori test-and-treat if dyspeptic features.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">CVA / Eosinophilic bronchitis</div>
+        <div class="b-drug">Beclometasone 200 mcg BD (via spacer)</div>
+        <div class="b-note">ICS for 8 weeks minimum. Review cough response. CVA: add SABA (salbutamol 200 mcg PRN) if wheeze occurs. EB: ICS alone — bronchodilators not effective. Rinse mouth after use to prevent candidiasis and dysphonia.</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Stop ACEi first</b> — if on ACE inhibitor, stop before any other investigation. Switch to ARB (e.g. losartan 50 mg OD). Await 4 weeks for cough resolution before attributing residual cough to another cause.</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Empirical triple therapy</b> (when cause unclear): nasal steroid + BD PPI + ICS concurrently for 8 weeks. Sequential treatment extends the diagnostic timeline unnecessarily. Review at 8 weeks — which component is helping?</span></div>
+      <div class="rung"><span class="rn">Step 3 — CHS</span><span class="rt"><b>Gabapentin 100–300 mg nocte</b>, titrating to 300 mg TDS over 4 weeks — reduces cough frequency by 40% in cough hypersensitivity. Warn: drowsiness, dizziness. Schedule 3 controlled drug (June 2019). Alternatively: low-dose amitriptyline 10–25 mg nocte.</span></div>
+      <div class="rung"><span class="rn">Step 4 — CHS</span><span class="rt"><b>Pregabalin 75 mg BD</b> (Schedule 3 CD) — alternative to gabapentin for cough hypersensitivity. Monitor for misuse potential. Novel P2X3 antagonists (gefapixant — EMA-approved in EU; under MHRA review) — refer to specialist.</span></div>
+      <div class="rung"><span class="rn">COPD / Bronchiectasis</span><span class="rt">COPD: LAMA ± LABA ± ICS per GOLD staging (under respiratory). Bronchiectasis: physiotherapy (ACBT, Flutter, Acapella), airway clearance twice daily, long-term azithromycin 250 mg 3× weekly (if ≥3 exacerbations/year — respiratory decision).</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Empirical triple therapy (simultaneous UACS + GORD + CVA treatment) is supported by evidence from specialist cough clinics showing that 87% of unexplained chronic cough responds to one or more of these three treatments, and sequential trials would take 6–9 months. Gabapentin's mechanism in CHS is through modulation of sensitised vagal afferent C-fibres in the cough reflex arc — analogous to its mechanism in neuropathic pain. Cough hypersensitivity syndrome should be conceptualised as a neuropathic condition. Gefapixant (a P2X3 receptor antagonist on cough-reflex afferent nerves) is the first novel specific cough therapy — it reduces cough frequency by 45% but causes taste disturbance in 20% of patients. Currently approved by EMA; NICE appraisal pending.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Speech &amp; Language Therapy — Cough Suppression Techniques</html></h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>Physiotherapy-based cough suppression (Lesley Jamieson technique) has Level 1 evidence for chronic cough — it reduces cough frequency by 40–50% and should be offered to all patients with refractory cough regardless of cause.</p>
+    <div class="kv">
+      <div>Lesley Jamieson technique (SALTC)</div><div>Speech therapist-led cough suppression therapy — 4 components: (1) education about cough reflex sensitisation, (2) cough suppression manoeuvres (swallow hard when urge to cough, breathe through nose), (3) breathing control (nasal breathing, reduce mouth breathing), (4) psychoeducation and relaxation</div>
+      <div>Breathing retraining</div><div>Diaphragmatic breathing, nasal breathing retraining. Hyperventilation (mouth breathing) dries laryngeal mucosa, sensitises cough receptors. 4–7–8 breathing during cough urge suppression.</div>
+      <div>Laryngeal hydration</div><div>Humming (vibrates laryngeal tissues — promotes mucus clearance). Sipping cold water frequently. Steam inhalation. Menthol sweets — short-term relief. Avoid caffeine (dehydrating).</div>
+      <div>Cough suppression manoeuvres</div><div>Hard swallow (most effective) — actively suppresses urge to cough by inhibiting cough reflex. Sniff–swallow–sip sequence. Stifle cough behind closed lips. These techniques retrain the sensitised reflex arc.</div>
+      <div>Referral route</div><div>GP referral to community SALT or specialist cough clinic SALT. Typically 4–6 sessions. Evidence: Gibson et al. RCT (Lancet, 2009) — SLT as effective as gabapentin for refractory CHS.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The Gibson et al. Lancet RCT (2009) is the landmark study — physiotherapy-based cough suppression (Lesley Jamieson technique) achieved a 40% reduction in cough severity in patients with chronic refractory cough, comparable to gabapentin but without pharmacological side effects. The mechanism is top-down modulation of the cough reflex — the technique teaches patients to suppress the urge-to-cough sensation (which is mediated by cortical and limbic circuits) rather than simply suppressing the mechanical cough. Coughing itself further traumatises laryngeal mucosa and worsens cough hypersensitivity — breaking the cough-irritation-cough cycle is the therapeutic goal. This intervention is underutilised in primary care and should be considered early in the management pathway, not just as a last resort.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Trigger Avoidance, Reflux &amp; Vocal Hygiene</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Smoking cessation</b> The single most impactful intervention — smoking causes direct airway irritation, COPD, and increases lung cancer risk 25-fold. Even after decades of smoking, cessation reduces chronic bronchitis cough within 4–8 weeks. NHS Stop Smoking referral at every consultation.</div>
+      <div class="lstile"><b>GORD / LPR lifestyle</b> Raise head of bed 15–20 cm, avoid eating 3 hours before bed, reduce alcohol/coffee/fatty foods/chocolate/mint/citrus, weight loss (BMI 25 reduces intra-abdominal pressure). Small frequent meals. Avoid tight waistbands.</div>
+      <div class="lstile"><b>Allergen control (UACS)</b> HEPA air purifier in bedroom, mattress protectors (house dust mite allergy), regular hoovering, keep pets out of bedroom. Nasal saline irrigation (Neilmed) twice daily — reduces allergen load in nasal passages.</div>
+      <div class="lstile"><b>Vocal hygiene</b> Avoid throat clearing (damages laryngeal mucosa — try hard swallow instead). Stay hydrated (2 litres/day). Avoid caffeine/alcohol (dehydrating). Humidifier in bedroom — prevents laryngeal mucosal dryness.</div>
+      <div class="lstile"><b>Weight loss</b> Obesity is an independent risk factor for GORD, sleep apnoea (worsens cough), and asthma severity. 10% weight loss reduces oesophageal acid exposure and improves cough. Tier 3 referral if BMI &gt;35 + comorbidities.</div>
+      <div class="lstile"><b>Occupational triggers</b> If cough improves on holiday → workplace trigger. Report to occupational health. Employer has legal duty to provide PPE. Respiratory surveillance for occupational asthma workers. Consider redeployment if uncontrollable exposure.</div>
+      <div class="lstile"><b>Cold air protection</b> CVA/CHS patients: scarf over nose and mouth in cold air dramatically reduces triggered cough — cold air is the most common environmental trigger. Nasal breathing (not mouth) warms and humidifies air before reaching larynx.</div>
+      <div class="lstile"><b>Nasal saline irrigation</b> Twice-daily nasal irrigation (hypertonic saline 2.7%) — reduces nasal mucosal oedema, clears post-nasal secretions, reduces UACS cough. Neilmed Sinus Rinse kits available OTC at pharmacies. Evidence-based adjunct.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Nasal saline irrigation is underused but evidence-based for UACS — a Cochrane review (2018) confirmed modest but consistent benefit for chronic sinonasal symptoms and cough. Hypertonic (2.7%) saline is more effective than isotonic for mucociliary clearance. Throat clearing is a self-perpetuating habit that worsens cough by repeatedly traumatising vocal fold mucosa — every throat clear causes bilateral vocal fold adduction, which irritates the epithelium and releases substance P, further sensitising the cough reflex. Patients must be explicitly taught to substitute a firm swallow for throat clearing. Cold air-triggered cough is mediated by TRPA1 receptors in sensory nerve endings on the laryngeal mucosa — warming inhaled air by nasal breathing or wearing a scarf significantly reduces this trigger, particularly in CVA and CHS.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Review Strategy, Escalation &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>8 weeks</div><div>Review response to empirical treatment. Has the target cause been treated adequately? ACEi stopped? PPI twice daily (not OD)? Nasal steroid used correctly (aim into lateral wall)? ICS with spacer? Adjust, escalate, or reconsider diagnosis.</div>
+      <div>3 months</div><div>If no response to empirical triple therapy → reassess diagnosis. Repeat CXR if not done recently. Referral to respiratory (unexplained cough) or specialist cough clinic. Review smoking cessation progress.</div>
+      <div>6 months</div><div>Refractory unexplained cough ≥6 months → specialist cough clinic referral. Consider neuromodulator therapy (gabapentin). SALT cough suppression referral if not already initiated. Reassess for new sinister features.</div>
+      <div>Repeat CXR</div><div>If cough pattern changes (becomes productive, haemoptysis, associated weight loss, new respiratory symptoms) → repeat CXR regardless of when last performed. Low threshold in smokers.</div>
+      <div>Psychosocial impact</div><div>Chronic cough significantly impairs quality of life — assess PHQ-9 and GAD-7. Sleep disruption, social embarrassment, urinary incontinence (women), rib fractures (severe cases). Address holistically; CBT can help in CHS.</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>Massive haemoptysis, respiratory failure (SpO2 &lt;92%), stridor, acute severe asthma attack triggered by cough, anaphylaxis</div>
+      <div><span class="pill pill-amber">Same-day GP</span></div><div>New haemoptysis in any patient on current review, significant change in character of cough, new weight loss, new systemic features, cough not improving as expected after 4 weeks of ACEi cessation</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The most common reason for failure of empirical treatment for chronic cough is inadequate dosing or delivery technique — PPI once daily instead of twice daily (insufficient for LPR), nasal steroid aimed at the septum (causes nosebleeds and has no therapeutic effect — must aim laterally toward the inner corner of the eye), ICS without spacer (80% of drug impacts oropharynx rather than reaching airways). Before escalating investigation, confirm that treatments have been taken correctly. Rib fractures from severe chronic cough are more common than recognised — an RCT showed that 6% of patients with refractory cough have stress fractures. Urinary incontinence from cough is frequently unreported, particularly in women, and significantly impairs quality of life — it should be actively enquired about and pelvic floor physiotherapy offered.</div>
+  </div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE NG80 (Asthma Diagnosis, 2017), NICE NG12 (Suspected Cancer, 2023), NICE CKS Cough (2023), BTS Chronic Cough Guidelines (2024), ERS Task Force on Chronic Cough, ACCP Chronic Cough Guidelines, SIGN 158 (British Asthma Guideline). Always adapt to individual patient context.
+</div>
+
+<script>
+(function(){
+  const STORE='rgp.alg.chroniccough.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){
+    localStorage.setItem(STORE,JSON.stringify(
+      [...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)
+    ));
+  }
+  function load(){
+    try{
+      const d=JSON.parse(localStorage.getItem(STORE)||'[]');
+      [...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true;});
+    }catch(e){}
+  }
+  function update(){
+    const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;
+    pDone.textContent=done;
+    pFill.style.width=(done/total*100)+'%';
+    save();
+  }
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{
+    const btn=e.target.closest('.why-btn');
+    if(!btn)return;
+    const exp=btn.getAttribute('aria-expanded')==='true';
+    btn.setAttribute('aria-expanded',String(!exp));
+    btn.nextElementSibling.classList.toggle('open',!exp);
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);
+    flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));
+    flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));
+    localStorage.removeItem(STORE);
+    update();
+  });
+  load();update();
+})();
+</script>
+</body>
+</html>

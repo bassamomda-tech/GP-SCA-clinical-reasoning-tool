@@ -22,7 +22,7 @@
   if (window.RGPTriage) RGPTriage.register('contraception-triage', {
     title: 'Contraception — UKMEC safety triage',
     subtitle: 'Tick history. Surfaces emergency contraception timing and UKMEC contraindications.',
-    guideline: 'FSRH UKMEC 2023',
+    guideline: 'UKMEC 2025 (CoSRH)',
     inputs: INPUTS,
     defaultMessage: 'No contraindication flagged. Pregnancy-risk assess; offer the full range (LARC most effective); UKMEC-screen the chosen method; provide quick-start where appropriate.',
     rules: [
@@ -58,14 +58,14 @@
       },
     ],
     sources: [
-      { label: 'FSRH — UKMEC 2023', url: 'https://www.fsrh.org/standards-and-guidance/' },
+      { label: 'CoSRH — UKMEC 2025', url: 'https://www.fsrh.org/standards-and-guidance/' },
     ],
   });
 
   if (window.RGPDiagnostic) RGPDiagnostic.register('contraception-dx', {
     title: 'Contraception — best-fit method',
     subtitle: 'Not a diagnosis — the engine ranks the most suitable methods from preferences and UKMEC eligibility, with the most effective (LARC) weighted up and oestrogen down-weighted by contraindications.',
-    guideline: 'FSRH UKMEC 2023',
+    guideline: 'UKMEC 2025 (CoSRH)',
     patientPresenting: "I'd like to talk about contraception, doctor — I'm not sure what's best for me.",
     inputs: INPUTS,
     diagnoses: [
@@ -117,7 +117,7 @@
       emergency: ['emergency_need'],
     },
     sources: [
-      { label: 'FSRH — UKMEC 2023', url: 'https://www.fsrh.org/standards-and-guidance/' },
+      { label: 'CoSRH — UKMEC 2025', url: 'https://www.fsrh.org/standards-and-guidance/' },
     ],
   });
 

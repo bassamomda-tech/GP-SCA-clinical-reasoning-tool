@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Groin Pain Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;--diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;--treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;--refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;--lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;--radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);--font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#1a3a1a 0%,#4a7a1a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}.stem-banner b{display:block;font-size:1.05rem;font-weight:600}.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#4a7a1a,#c0392b);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}.node[data-type="TREAT"] .node-num{background:var(--treat)}.node[data-type="REFER"] .node-num{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}.node[data-type="TREAT"] .node-tag{background:var(--treat)}.node[data-type="REFER"] .node-tag{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}.pill-purple{background:#ede9fe;color:#5b21b6}.pill-blue{background:#dbeafe;color:#1e40af}.pill-teal{background:#ccfbf1;color:#0f766e}.pill-amber{background:#fef3c7;color:#92400e}.pill-green{background:#dcfce7;color:#15803d}.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="stem-banner"><div class="sb-icon">🏃</div><div><b>Groin Pain</b><small>Inguinal hernia · hip OA · adductor strain · lymphadenopathy · femoral hernia · meralgia paraesthetica</small></div></div>
+<div class="alg-progress"><span>Progress</span><span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span><div class="pbar"><div class="pbar-fill" id="pFill"></div></div><button class="reset" id="resetBtn">Reset</button></div>
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+<div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Strangulated Hernia, Cancer &amp; Vascular Emergencies</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<p><b>Irreducible groin lump + severe pain + vomiting = strangulated hernia until proven otherwise. 999 immediately — 6-hour window before bowel necrosis.</b></p>
+<div class="rfgrid">
+<div class="rftile"><b>Strangulated hernia</b> Groin lump becomes irreducible, exquisitely tender, firm, vomiting, signs of bowel obstruction → 999. Bowel necrosis within 6 hours. Femoral hernias (below and lateral to pubic tubercle) strangulate more readily than inguinal — strangulation risk 50× higher than inguinal.</div>
+<div class="rftile"><b>Groin lump + weight loss + age &gt;40</b> Malignant lymphadenopathy (lymphoma, metastatic malignancy) → 2WW upper GI, lower GI, urology depending on suspicious primary. Hard, fixed, non-tender inguinal lymph nodes. Bilateral = systemic disease (lymphoma, HIV, mononucleosis).</div>
+<div class="rftile"><b>Acute groin pain + absent femoral pulse</b> Acute limb ischaemia (aorto-iliac occlusion, femoral artery thrombosis/embolism) → 999. 6 Ps: Pain, Pallor, Paraesthesia, Paralysis, Pulselessness, Poikilothermia. 6-hour window for revascularisation.</div>
+<div class="rftile"><b>Groin pain + testicular pain in males</b> Testicular torsion (referred groin pain from spermatic cord) → 999. Inguinal hernia descending into scrotum → 999 if irreducible. Always examine testes in males presenting with groin pain.</div>
+<div class="rftile"><b>Hip pain + inability to weight-bear after trauma</b> Hip fracture (especially in elderly after fall) — pain often felt in groin → X-ray pelvis and hip immediately. A&E. Avascular necrosis of femoral head in steroid/alcohol users.</div>
+<div class="rftile"><b>Groin pain + fever + groin swelling</b> Inguinal lymphadenitis (bacterial — often streptococcal from lower limb infection) or inguinal abscess → same-day review. STI (lymphogranuloma venereum — tender unilateral lymphadenopathy with genital ulcer).</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Femoral hernia deserves particular attention — it passes through the femoral canal below and lateral to the pubic tubercle (inguinal hernias are above and medial). Femoral hernias occur predominantly in women (3:1 female:male) and have a strangulation rate of up to 40% within 2 years of presentation — far higher than the 2–5% annual strangulation risk of inguinal hernias. For this reason, all femoral hernias should be referred for elective surgical repair (rather than watchful waiting, which is an option for asymptomatic inguinal hernias). The femoral ring is narrow and rigid — once bowel enters, it is very easily obstructed. The classic teaching is: any groin lump in a woman that is below and lateral to the pubic tubercle is a femoral hernia until proven otherwise. Inguinal hernias in women are less common but do occur — direct inguinal hernias are almost exclusively a male condition; indirect inguinal hernias can affect women.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+<div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>History — Sex, Age, Onset &amp; Character</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Location precisely</div><div>Medial groin (adductor origin) → adductor strain / groin disruption. Anterior groin / inguinal ligament → inguinal hernia, hip OA referred, iliopsoas tendinopathy. Below inguinal ligament lateral to pubic tubercle → femoral hernia, femoral triangle structures (lymph nodes, vessels). Lateral thigh / ASIS → meralgia paraesthetica (lateral femoral cutaneous nerve).</div>
+<div>Sex and age</div><div>Male, any age: inguinal hernia (indirect — most common groin lump in men), adductor strain (athletic). Female, middle-aged: femoral hernia, hip OA, endometriosis (cyclical groin pain in women), ovarian cyst. Elderly: hip OA, femoral hernia. Children: inguinal hernia (congenital).</div>
+<div>Onset and activity</div><div>Hernia: bulge appears with straining/standing, reduces lying down. Athletic groin: onset with sport (kicking, turning, sprinting). Hip OA: insidious, worsens with activity, antalgic gait. Lymphadenopathy: insidious, may follow infection. Meralgia: tingling/burning lateral thigh, worsens standing/walking.</div>
+<div>Lump characteristics</div><div>Reducible (goes back in when lying flat — hernia) vs irreducible. Cough impulse (hernia — palpate over defect while patient coughs — transmitted impulse). Transillumination (hydrocele, lymphatic cyst). Pulsatile (femoral artery aneurysm — rare but dangerous).</div>
+<div>Women — gynaecological</div><div>Cyclical groin pain (worse with periods) → endometriosis, ovarian pathology. Groin + dyspareunia + dysmenorrhoea → endometriosis. Groin + vaginal discharge → PID (inguinal lymphadenopathy from ascending infection). Postmenopausal groin mass → ovarian cancer / lymphoma screen.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The cough impulse test for hernia is the key examination technique — place the fingertips firmly over the suspected hernia defect (inguinal canal or femoral canal) and ask the patient to cough. A transmitted impulse (movement felt against the fingers with coughing) confirms a hernia. In thin patients, an inguinal hernia is often visible — a bulge appearing at the inguinal region when the patient stands or strains that disappears when lying flat is virtually diagnostic. The distinction between inguinal and femoral hernia is made by the anatomical relationship to the pubic tubercle: inguinal hernias emerge from above and medial to the pubic tubercle; femoral hernias emerge from below and lateral. This can be difficult clinically — USS inguinal region confirms the diagnosis and identifies the specific type and any complications. All hernia patients with pain or change in symptoms should be referred to general surgery for assessment.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+<div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Inguinal hernia</div><div>Most common groin lump (males predominantly). Indirect: congenital patent processus vaginalis — emerges at deep ring, may descend into scrotum. Direct: weakness of posterior inguinal wall (older males). Cough impulse above and medial to pubic tubercle. Reducible. USS confirms. Surgery for symptomatic or irreducible hernias.</div>
+<div>Hip OA (referred groin)</div><div>Hip OA classically presents as anterior groin pain (not lateral hip — that is trochanteric bursitis / GTPS). Insidious onset, worsens with activity, morning stiffness &lt;30 min, limping. Reduced internal rotation and abduction on examination (FABER test positive). X-ray hip confirms OA.</div>
+<div>Adductor strain / groin disruption (athletic)</div><div>Medial groin pain in athletes — acute (muscle tear during sport) or chronic (sports hernia = inguinal disruption without visible hernia). Tenderness over adductor origin (pubic tubercle/ramus). Pain on resisted adduction. Squeezing test positive. MRI groin diagnostic in chronic cases.</div>
+<div>Inguinal lymphadenopathy</div><div>Anterior groin soft multiple discrete swellings. Causes: lower limb infection/cellulitis (reactive), STI (GUM referral), lymphoma (2WW if painless, rubbery, progressive). Bilateral generalised lymphadenopathy → mononucleosis, HIV, lymphoma screen (FBC + film + Monospot + HIV). USS + biopsy if persistent &gt;6 weeks.</div>
+<div>Femoral hernia</div><div>Below inguinal ligament, lateral to pubic tubercle. More common in women. High strangulation risk — refer all for surgical repair. USS confirms. May present as small tender lump mistaken for lymph node.</div>
+<div>Meralgia paraesthetica</div><div>Lateral femoral cutaneous nerve (LFCN) entrapment at ASIS (anterior superior iliac spine). Burning/tingling/numbness of anterior-lateral thigh (not groin pain per se but referred to groin). Worse with standing/walking, relieved sitting. Associated with obesity, pregnancy, tight waistbands, recent weight gain. No motor deficit. Conservative management.</div>
+<div>Hip-related: avascular necrosis (AVN)</div><div>Groin pain + hip stiffness in patient on long-term steroids, alcohol excess, sickle cell, post-trauma. X-ray may be normal early — MRI confirms. Urgent orthopaedics (decompression surgery if early stage can prevent femoral head collapse).</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Avascular necrosis (AVN) of the femoral head is the most important diagnosis not to miss in groin pain in younger patients — it is caused by impaired blood supply to the femoral head (arterial end vessels, no collateral supply). It presents as progressive groin pain and is irreversible if not treated early. Risk factors: systemic steroids (most common iatrogenic cause — even short courses), alcohol excess (40 units/week+), sickle cell disease, caisson disease (decompression sickness), post-trauma (fractured neck of femur disrupts blood supply), radiation, HIV medications. Early-stage (before femoral head collapse): core decompression surgery can preserve the joint. Late-stage (collapse): total hip replacement. GPs who prescribe long-term steroids should be aware of AVN as a complication and have a low threshold for MRI hip in patients with groin pain on steroids, even if X-ray is normal.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+<div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Examination &amp; Investigations</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Standing examination</div><div>Examine groin while patient stands (hernias are more visible standing). Visible bulge (hernia). Ask patient to cough (cough impulse). Inspect for scar (previous hernia repair — recurrence possible). Examine both sides (bilateral inguinal hernias common in males).</div>
+<div>Hip examination (FABER/FADIR)</div><div>FABER test (Flexion, ABduction, External Rotation) — groin pain = hip joint pathology (OA, labral tear, FAI). FADIR test (Flexion, ADduction, Internal Rotation) — anterior groin pain = femoroacetabular impingement (FAI) or labral tear. Log roll test (gentle passive internal-external rotation with straight leg) — groin pain = hip joint.</div>
+<div>Adductor squeeze test</div><div>Patient supine, knees bent — ask to squeeze examiner's fist between knees (resisted adduction). Pain at adductor origin = adductor strain. Squeeze test at 0°, 45°, 90° — varies with specific injured structure.</div>
+<div>Groin lymph nodes</div><div>Horizontal chain (inguinal ligament level): drains perineum, genitalia, anal canal, lower abdomen. Vertical chain (long saphenous vein): drains lower limb. All non-tender, rubbery, enlarged (&gt;1 cm) nodes for &gt;6 weeks in the absence of obvious local infection → 2WW lymphoma screen.</div>
+<div>Investigations</div><div><span class="pill pill-blue">USS groin/inguinal</span> (hernia — type + complications; lymph nodes; adductor pathology) · <span class="pill pill-blue">X-ray hip/pelvis</span> (OA, fracture, AVN late stage) · <span class="pill pill-blue">MRI hip</span> (AVN early, labral tear, FAI, sports hernia, stress fracture) · <span class="pill pill-blue">FBC + LDH + protein electrophoresis</span> (lymphoma screen) · <span class="pill pill-blue">USS pelvis</span> (ovarian pathology in women)</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Femoroacetabular impingement (FAI) is an increasingly recognised cause of groin pain in young adults (20–40 years) — it is caused by abnormal bony morphology at the hip joint (cam deformity of the femoral head or pincer deformity of the acetabulum) causing abnormal contact during hip motion, particularly flexion and internal rotation. FAI causes labral tears and progressive hip OA if untreated. The FADIR test (flexion-adduction-internal rotation) reproduces anterior groin pain in FAI — it is sensitive (90%) but not specific. MRI arthrogram is the gold standard investigation for labral pathology. Hip arthroscopy (labral repair + femoroplasty) achieves good outcomes in appropriately selected patients. GPs who see young athletes with chronic anterior groin pain and limited internal rotation on examination should refer to orthopaedics for FAI assessment rather than attributing the pain to muscle strain.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="5">
+<div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div><span class="pill pill-red">999</span></div><div>Strangulated hernia (irreducible + tender + vomiting + bowel obstruction signs). Acute limb ischaemia (absent femoral pulse + cold pale leg). Acute hip fracture (trauma + inability to weight-bear + shortened/externally rotated leg).</div>
+<div>General surgery (urgent)</div><div>Femoral hernia (all cases — high strangulation risk, refer all). Symptomatic inguinal hernia (pain, dragging, reducible but symptomatic — elective repair). Any hernia with irreducibility or change in symptoms — same-day/urgent.</div>
+<div><span class="pill pill-purple">2WW haematology/oncology</span></div><div>Persistent, painless, progressive inguinal lymphadenopathy &gt;1 cm for &gt;6 weeks without identified cause → 2WW lymphoma screen. Night sweats + weight loss + lymphadenopathy = B symptoms → urgent haematology.</div>
+<div>Orthopaedics</div><div>Hip OA with severe functional impairment (total hip replacement consideration) · AVN suspected (urgent MRI — decompression surgery time-sensitive) · FAI / labral tear · Suspected hip stress fracture</div>
+<div>Physiotherapy</div><div>Adductor strain / groin disruption (rehabilitation programme) · Hip OA (exercise as first-line NICE treatment) · Meralgia paraesthetica (stretching, posture, contributing factors)</div>
+<div>Gynaecology</div><div>Suspected endometriosis (cyclical groin pain in women) · Ovarian pathology on USS · Round ligament pain in pregnancy (benign — reassure but check for hernia)</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The management of asymptomatic inguinal hernia in adults has changed significantly — the NICE guideline and the UK Hernia Audit now support watchful waiting (non-surgical management) for asymptomatic or minimally symptomatic inguinal hernias in men, as the risk of strangulation is approximately 2% per year and surgery carries its own risks (mesh complications, chronic groin pain, recurrence). However, symptomatic hernias (dragging, pain, interference with activity) should be referred for surgical repair. All femoral hernias (both symptomatic and asymptomatic) should be referred, as their strangulation risk is disproportionately high. Round ligament pain in pregnancy is a benign cause of groin pain (stretching of the round ligament of the uterus as the uterus enlarges) — it is a stabbing unilateral groin pain, worse with rapid movement or coughing, and is entirely benign. However, a groin lump in pregnancy should be assessed to exclude a hernia, which becomes more prominent as intra-abdominal pressure increases.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="6">
+<div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>GP-Initiated Treatment</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="branch">
+<div class="b-card">
+<div class="b-cond">Asymptomatic inguinal hernia</div>
+<div class="b-drug">Watchful waiting</div>
+<div class="b-note">Discuss watchful waiting vs surgical repair (both acceptable). Advise: avoid heavy lifting until decision made. Truss (hernia support garment) — temporary symptom relief only, does not prevent progression. Reduce constipation (high-fibre diet, stool softeners). Safety-net strangulation signs. Annual review.</div>
+</div>
+<div class="b-card">
+<div class="b-cond">Hip OA</div>
+<div class="b-drug">Exercise + topical diclofenac</div>
+<div class="b-note">Topical diclofenac 1% gel TDS (first-line NICE). Paracetamol 1 g QDS. Physiotherapy (tailored hip exercise programme — strongest evidence). Weight loss (5 kg = measurable pain reduction). Oral NSAIDs + PPI if inadequate. Avoid opioids (NICE: not recommended for OA). Consider total hip replacement if severe functional impairment.</note></div>
+</div>
+<div class="b-card">
+<div class="b-cond">Adductor strain (acute)</div>
+<div class="b-drug">RICE + NSAIDs</div>
+<div class="b-note">Rest (relative), Ice, Compression, Elevation. Naproxen 500 mg BD × 5–7 days + omeprazole. Grade I: return to sport in 1–2 weeks. Grade II: 3–6 weeks with physiotherapy. Grade III (complete tear): MRI + orthopaedics (surgical repair for athletes). Physiotherapy essential for full rehabilitation and recurrence prevention.</div>
+</div>
+</div>
+<div class="ladder">
+<div class="rung"><span class="rn">Meralgia paraesthetica</span><span class="rt">Identify and remove compressive cause: tight waistband/belt, obesity (weight loss), pregnancy (resolves post-delivery), tight trouser/waist. NSAIDs (short course). Amitriptyline 10–25 mg nocte (neuropathic component). Gabapentin 300 mg TDS if amitriptyline insufficient. Nerve block (LFCN injection under USS guidance — specialist if refractory). Most resolve conservatively in 3–6 months.</span></div>
+<div class="rung"><span class="rn">Inguinal lymphadenitis</span><span class="rt">Identify and treat source infection (lower limb cellulitis, foot infection, STI). Flucloxacillin 500 mg QDS × 7 days (streptococcal/staphylococcal source from lower limb). STI-related: GUM referral (LGV = doxycycline 100 mg BD × 21 days). Re-examine at 4–6 weeks — persistent nodes → 2WW biopsy.</span></div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Meralgia paraesthetica (lateral femoral cutaneous nerve entrapment) is frequently unrecognised in primary care — patients describe burning, tingling, or numbness of the anterolateral thigh, which they may initially attribute to a back or hip problem. The key clinical feature is that the symptoms are purely sensory (no motor deficit — the LFCN is purely sensory) and are confined to the distribution of the LFCN (anterolateral thigh, not involving the knee or lower leg). Examination shows reduced sensation in the LFCN territory with a positive Tinel's sign at the ASIS. The most common treatable causes are obesity (weight distribution shifts the inguinal ligament, compressing the nerve) and external compression (tight waistband, carpenter's belt, military belt). Weight loss of 5–10 kg often resolves symptoms completely. Physiotherapy and postural correction are useful adjuncts. LFCN injection under USS guidance has a 75% short-term success rate for refractory cases.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+<div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Hernia — Pre-operative Management &amp; GP Knowledge</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Surgical options (hospital decision)</div><div>Inguinal hernia repair: open mesh (Lichtenstein — gold standard) vs laparoscopic (TAPP or TEP — faster recovery, lower chronic pain risk). Femoral hernia: laparoscopic preferred (gives access to both inguinal and femoral rings simultaneously). Mesh complications: infection, rejection, chronic mesh pain (inguinodynia).</div>
+<div>Chronic groin pain post-hernia repair</div><div>Inguinodynia: chronic groin pain &gt;3 months post-herniorrhaphy — affects 10–15% of patients. Neuropathic (ilioinguinal, iliohypogastric, or genitofemoral nerve damage) or mesh-related. Management: amitriptyline/gabapentin (neuropathic). Nerve block (specialist). Mesh removal (last resort — high recurrence risk). Refer pain clinic.</div>
+<div>Pre-op fitness assessment</div><div>GP's pre-operative role: optimise comorbidities (hypertension, diabetes, COPD, anticoagulation review). Smoking cessation (reduces wound infection, DVT, anaesthetic risk). Pre-op blood tests: FBC, U&E, ECG (if cardiac risk). Ensure consent is fully informed (mesh complications, recurrence, inguinodynia).</div>
+<div>Post-op complications (GP-managed)</div><div>Seroma (fluid collection — common, usually resolves) · wound infection (flucloxacillin) · urinary retention (acute → catheterisation) · DVT (LMWH prophylaxis post-op) · scrotal haematoma in men (common, usually conservative)</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Chronic inguinodynia (post-herniorrhaphy chronic groin pain) affects 10–15% of all hernia repairs and is a significant under-recognised complication. It is more common after open repair than laparoscopic repair due to the risk of ilioinguinal nerve injury during open dissection. The three nerves at risk during inguinal hernia repair are: ilioinguinal (sensory — medial thigh, scrotum/labia majora), iliohypogastric (sensory — lower abdomen), and genitofemoral (sensory — anterior scrotum, upper medial thigh; motor — cremaster). GPs should discuss inguinodynia risk with patients as part of pre-operative counselling, as many patients are surprised by chronic post-operative pain and mistakenly attribute it to a failed repair. Management mirrors other neuropathic pain conditions: amitriptyline, gabapentin, targeted nerve block, and pain psychology.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+<div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Prevention, Rehabilitation &amp; Return to Sport</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="lsgrid">
+<div class="lstile"><b>Hernia prevention</b> Reduce intra-abdominal pressure: treat chronic constipation (high-fibre diet + adequate hydration), manage chronic cough (COPD, smoking cessation), urinary obstruction (BPH management), obesity (weight loss). Correct lifting technique — bend knees, keep load close, avoid Valsalva. These measures reduce hernia recurrence risk post-repair.</div>
+<div class="lstile"><b>Hip OA — exercise</b> Walking 30 min daily, swimming, cycling (all low-impact and protective of hip joint cartilage). Avoid high-impact (running on hard surfaces, step aerobics — may accelerate OA). Strengthen hip abductors (gluteus medius exercises) — reduces Trendelenburg gait and hip joint load. Hydrotherapy if land exercise painful.</div>
+<div class="lstile"><b>Adductor strain — rehabilitation</b> Phase 1 (0–72 hrs): rest, ice, compression, elevation. Phase 2 (3 days–3 weeks): gentle passive range of motion, isometric adductor exercises. Phase 3 (3–6 weeks): progressive resistance, sport-specific exercises. Phase 4: return to sport with groin support. Copenhagen adductor programme — evidence-based prevention of recurrence.</div>
+<div class="lstile"><b>Meralgia paraesthetica — lifestyle</b> Avoid tight waistbands, heavy belts, tight jeans. Lose weight (even 5 kg significantly reduces LFCN compression). Avoid prolonged standing (worsens nerve ischaemia). Pelvic tilt exercises (reduce anterior pelvic tilt that tightens the inguinal ligament). Pregnancy: resolves post-delivery in most cases.</div>
+<div class="lstile"><b>Weight management</b> Obesity contributes to: inguinal hernia (increased intra-abdominal pressure), hip OA (increased joint loading), meralgia paraesthetica (LFCN compression from adipose tissue). 5–10% body weight reduction produces meaningful improvement in all three conditions. Dietary counselling + exercise programme + weight management service referral (BMI &gt;35).</div>
+<div class="lstile"><b>Return to sport (groin strain)</b> Grade I: 1–2 weeks. Grade II: 3–6 weeks with physiotherapy rehabilitation. Grade III (complete tear): 3–6 months + surgical assessment. Return criteria: full ROM, pain-free resisted adduction at 90% of contralateral strength, sport-specific functional tests passed. Copenhagen adductor exercise programme reduces adductor strain recurrence by 45%.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The Copenhagen adductor exercise programme (a simple body-weight adductor strengthening exercise performed in pairs) was shown in the Copenhagen Groin Injury Study (2019) to reduce adductor muscle injuries in male football players by 45% over a season when performed regularly. It is now part of FIFA 11+ warm-up programme and is recommended by UEFA for professional football. GPs can recommend it to athletes recovering from groin strains — it is freely available on YouTube and requires no equipment. Strengthening the adductor muscles specifically (rather than generic stretching, which has no evidence) is the cornerstone of secondary prevention of adductor injuries. This represents one of the most cost-effective sports medicine interventions available in primary care.</div></div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+<div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+<div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+<div class="node-body">
+<div class="kv">
+<div>Hernia — 6 weeks</div><div>Surgical referral confirmed? Any change in hernia (harder to reduce, more painful, tender) → same-day surgical assessment. If watchful waiting: educate patient on strangulation signs. Femoral hernia: confirm surgical appointment within 6 weeks — refer urgently if no appointment.</div>
+<div>Hip OA — 6 weeks</div><div>Exercise programme commenced? Analgesia adequate? Physiotherapy referral? Pain not improving → step up analgesia (oral NSAID). Consider intra-articular steroid (specialist or GP — short-term benefit for acute flare). Orthopaedics referral if severe functional impairment (THR candidate).</div>
+<div>Lymphadenopathy — 6 weeks</div><div>Nodes resolving after treating source infection? If persistent at 6 weeks without identified cause → 2WW haematology (lymphoma). USS inguinal + core biopsy (hospital). Document node characteristics (size, consistency, tenderness) at each review.</div>
+<div>Adductor strain — 4–6 weeks</div><div>Improving with physiotherapy? Return to sport criteria met? Grade III tear confirmed → orthopaedics (athletic population — surgical repair debate). Chronic groin pain (&gt;6 weeks) not improving → MRI groin (sports hernia, FAI, pubic symphysis pathology).</div>
+<div>Post-hernia repair — 6 weeks</div><div>Wound healing? Seroma resolving? Chronic groin pain (inguinodynia) developing? If inguinodynia → neuropathic pain management (amitriptyline, gabapentin, pain clinic referral). Recurrence (new bulge) → USS + surgical review.</div>
+<div><span class="pill pill-red">999 safety-net</span></div><div>Hernia becomes irreducible + tender + vomiting (strangulation) → 999. New cold white leg + absent pulse at any time in groin pain patient (acute ischaemia). Sudden severe hip pain in patient with known malignancy (pathological fracture).</div>
+<div><span class="pill pill-amber">Same-day GP</span></div><div>Hernia that has been reducible becomes suddenly firm and cannot be reduced → same-day surgical (impending strangulation). New severe groin pain + fever in patient with lymphadenopathy (abscess). Rapidly enlarging groin lymph node.</div>
+</div>
+</div>
+<div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Written safety-netting for hernia patients is a medicolegal obligation — every patient with a known groin hernia (whether managed conservatively or awaiting surgery) should be given clear written instructions about the signs of strangulation: sudden new severe pain in the hernia, the hernia becoming hard and irreducible, nausea, vomiting, and abdominal distension. They should be instructed to call 999 or go directly to A&E if these develop. This instruction must be documented in the clinical record. The average UK GP practice has 50–100 patients on waiting lists for hernia repair at any time — each of these patients is at risk of strangulation during the wait. GPs who fail to provide strangulation safety-netting information face significant medicolegal exposure if a patient presents late with strangulation having not been warned of the signs.</div></div>
+</div>
+
+</div>
+<div class="alg-foot"><strong>Educational use only.</strong> Based on NICE CG171 (Inguinal hernia), British Hernia Society guidelines, NICE CG177 (OA), NICE NG12 (Suspected Cancer), EAU guidelines, BSR reactive arthritis guidelines, Copenhagen Groin Injury Study (2019), NICE NG59. Always adapt to individual patient context.</div>
+<script>
+(function(){
+  const STORE='rgp.alg.groinpain.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+</body>
+</html>

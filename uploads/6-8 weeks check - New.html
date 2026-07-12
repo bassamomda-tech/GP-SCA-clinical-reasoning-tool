@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6–8 Week Postnatal Check · GP Trainee Guide</title>
+    <style>
+        :root {
+            --primary: #1a3a5c;
+            --primary-light: #e8f0f9;
+            --accent: #2563eb;
+            --danger: #dc2626;
+            --danger-light: #fff5f5;
+            --warning: #d97706;
+            --warning-light: #fffbf0;
+            --success: #059669;
+            --success-light: #ecfdf5;
+            --info: #0891b2;
+            --info-light: #ecfeff;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --border: #e2e8f0;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.06);
+            --radius: 10px;
+            --radius-sm: 6px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #f1f5f9;
+            color: var(--text);
+            line-height: 1.55;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .top-bar {
+            background: var(--primary);
+            color: #fff;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        }
+
+        .top-bar .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .top-bar .logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #fff;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .top-bar h1 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .top-bar .badge {
+            background: rgba(255,255,255,0.18);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .top-bar nav {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .top-bar nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.74rem;
+            padding: 5px 10px;
+            border-radius: 18px;
+            transition: 0.15s;
+            font-weight: 500;
+        }
+
+        .top-bar nav a:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 18px 18px 36px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media(max-width:1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card-full {
+            grid-column: 1/-1;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: 0.15s;
+            break-inside: avoid;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            padding-bottom: 11px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .card-header .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            font-weight: 700;
+        }
+
+        .card-header h2 {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .icon-r { background: var(--danger-light); color: var(--danger); }
+        .icon-a { background: var(--warning-light); color: var(--warning); }
+        .icon-b { background: var(--primary-light); color: var(--accent); }
+        .icon-g { background: var(--success-light); color: var(--success); }
+        .icon-t { background: var(--info-light); color: var(--info); }
+
+        table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 6px 0; }
+        thead th {
+            background: #f1f5f9; padding: 9px 10px; text-align: left; font-weight: 700;
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.4px;
+            color: var(--text-muted); border-bottom: 2px solid var(--border); white-space: nowrap;
+        }
+        tbody td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        tbody tr:hover { background: #fafdfe; }
+        .row-hl { background: #fffbeb !important; font-weight: 600; }
+
+        .tag {
+            display: inline-block; padding: 3px 10px; border-radius: 14px;
+            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.3px; text-transform: uppercase;
+        }
+        .tag-r { background: #fecaca; color: #991b1b; }
+        .tag-a { background: #fed7aa; color: #92400e; }
+        .tag-g { background: #bbf7d0; color: #166534; }
+        .tag-b { background: #bfdbfe; color: #1e40af; }
+
+        .algo { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; justify-content: center; }
+        .algo-box {
+            padding: 9px 14px; border-radius: var(--radius-sm); font-weight: 600;
+            font-size: 0.78rem; text-align: center; border: 2px solid transparent; min-width: 70px; flex-shrink: 0;
+        }
+        .algo-start { background: #e6f0f9; border-color: var(--accent); color: var(--primary); }
+        .algo-dec { background: #fef9c3; border-color: #d4a017; color: #6d4c0a; font-style: italic; }
+        .algo-act { background: #dbeafe; border-color: #3b82f6; color: #1e40af; }
+        .algo-res { background: #d1fae5; border-color: #10b981; color: #065f46; }
+        .algo-danger { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
+        .algo-arr { font-size: 1.3rem; font-weight: 700; color: var(--text-muted); flex-shrink: 0; }
+
+        .alert {
+            padding: 12px 16px; border-radius: var(--radius-sm); margin: 8px 0;
+            font-weight: 500; font-size: 0.82rem; border-left: 5px solid; line-height: 1.5;
+        }
+        .alert-d { background: var(--danger-light); border-color: var(--danger); color: #7f1d1d; }
+        .alert-w { background: var(--warning-light); border-color: var(--warning); color: #5c3d0b; }
+        .alert-i { background: var(--info-light); border-color: var(--info); color: #164e63; }
+        .alert-s { background: var(--success-light); border-color: var(--success); color: #064e3b; }
+        .alert strong { display: block; margin-bottom: 3px; font-size: 0.88rem; }
+
+        .screening-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 8px;
+            margin: 8px 0;
+        }
+        .screening-item {
+            background: #f7fafc;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 10px;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+        .screening-item strong { display: block; font-size: 0.85rem; color: var(--primary); margin-bottom: 2px; }
+
+        @media print {
+            body { background: #fff; font-size: 11px; }
+            .top-bar { position: static; background: #fff; color: #000; border-bottom: 2px solid #000; }
+            .top-bar nav { display: none; }
+            .container { grid-template-columns: 1fr; gap: 8px; padding: 0; max-width: 100%; }
+            .card { box-shadow: none; border: 1px solid #ccc; padding: 10px 12px; margin-bottom: 6px; }
+            .card:hover { box-shadow: none; }
+            table { font-size: 0.68rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="top-bar">
+        <div class="logo">
+            <div class="logo-icon">6‑8</div>
+            <h1>6–8 Week Postnatal Check · GP Trainee Guide</h1>
+            <span class="badge">NICE NG194 · QS37</span>
+        </div>
+        <nav>
+            <a href="#why">Why</a>
+            <a href="#mother">Mother</a>
+            <a href="#baby">Baby</a>
+            <a href="#abnormal">Abnormal</a>
+            <a href="#redflags">Red Flags</a>
+            <a href="#referral">Referral</a>
+            <a href="#algorithm">Algorithm</a>
+            <a href="#resources">Resources</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <!-- WHY THIS CHECK MATTERS -->
+        <div class="card card-full" id="why">
+            <div class="card-header">
+                <div class="icon icon-b">📋</div>
+                <h2>Why the 6–8 Week Check Matters</h2>
+            </div>
+            <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:8px;">
+                The 6–8 week postnatal consultation is a key moment to assess maternal physical and mental health, review infant development, and provide health promotion. NICE quality statement 6 states that every woman should have a GP assessment 6–8 weeks after giving birth.
+            </p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div>
+                    <p style="font-weight:700;font-size:0.8rem;margin-bottom:6px;">🔴 Crucial components – Mother</p>
+                    <ul style="font-size:0.78rem;margin-left:16px;color:var(--text);">
+                        <li>Mental health screen (EPDS/PHQ‑9)</li>
+                        <li>Physical recovery (perineum, CS scar, lochia)</li>
+                        <li>Contraception & family planning</li>
+                        <li>Pre‑existing/pregnancy‑related conditions (diabetes, hypertension)</li>
+                        <li>Health promotion (feeding, smoking, safe sleep)</li>
+                    </ul>
+                </div>
+                <div>
+                    <p style="font-weight:700;font-size:0.8rem;margin-bottom:6px;">🔵 Crucial components – Baby</p>
+                    <ul style="font-size:0.78rem;margin-left:16px;color:var(--text);">
+                        <li>Growth & general appearance</li>
+                        <li>Head‑to‑toe physical examination (NIPE: eyes, heart, hips, testes)</li>
+                        <li>Development & social smiling</li>
+                        <li>Feeding, immunisations, parental concerns</li>
+                        <li>Abnormal findings & red flags</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="alert alert-i" style="margin-top:8px;">
+                <strong>💡 Key principle</strong>This is a holistic consultation, not a tick‑box exercise. Tailor the discussion to the woman’s individual experience and needs. “What Good Looks Like” (NHS England, 2023) emphasises a personalised, trauma‑informed approach.
+            </div>
+        </div>
+
+        <!-- MOTHER CHECK -->
+        <div class="card card-full" id="mother" style="border-top:4px solid #d97706;">
+            <div class="card-header">
+                <div class="icon icon-a">👩</div>
+                <h2>Mother Check – Stepwise Assessment</h2>
+            </div>
+            <table>
+                <thead><tr><th style="width:8%;">Step</th><th style="width:28%;">Domain</th><th style="width:64%;">What to Ask & Assess</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><span class="tag tag-b" style="font-size:0.78rem;">1</span></td>
+                        <td><strong>Mental Health & Wellbeing</strong></td>
+                        <td>
+                            <ul style="margin:0;padding-left:16px;">
+                                <li>Use open questions: “How has your mood been since the birth?”</li>
+                                <li>Screen for postnatal depression (EPDS or PHQ‑9).</li>
+                                <li>Ask about anxiety, bonding, and traumatic birth experiences.</li>
+                                <li>If red flags (self‑harm, psychosis) → urgent perinatal mental health referral.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="row-hl">
+                        <td><span class="tag tag-a" style="font-size:0.78rem;">2</span></td>
+                        <td><strong>Physical Recovery</strong></td>
+                        <td>
+                            <ul style="margin:0;padding-left:16px;">
+                                <li>Perineal healing / CS scar – any ongoing pain or concerns?</li>
+                                <li>Vaginal loss: lochia should have ceased; ask about offensive discharge or heavy bleeding.</li>
+                                <li>Bladder & bowel: urinary/faecal incontinence, pelvic pressure (prolapse).</li>
+                                <li>BP check – especially if hypertension during pregnancy.</li>
+                                <li>Offer referral to perinatal pelvic health service if needed.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-g" style="font-size:0.78rem;">3</span></td>
+                        <td><strong>Contraception & Family Planning</strong></td>
+                        <td>
+                            <ul style="margin:0;padding-left:16px;">
+                                <li>Discuss options (LARC can be fitted from 3–6 weeks).</li>
+                                <li>Advise that ovulation can occur before the first period, even if breastfeeding.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="row-hl">
+                        <td><span class="tag tag-a" style="font-size:0.78rem;">4</span></td>
+                        <td><strong>Pre‑existing / Pregnancy‑Related Conditions</strong></td>
+                        <td>
+                            <ul style="margin:0;padding-left:16px;">
+                                <li><strong>Gestational diabetes:</strong> Arrange HbA1c at 6–13 weeks postpartum & refer to Diabetes Prevention Programme.</li>
+                                <li><strong>Hypertensive disorders:</strong> Ensure BP has normalised; if not, investigate for chronic hypertension.</li>
+                                <li><strong>Anaemia / thyroid:</strong> Check FBC, TFTs if indicated.</li>
+                                <li><strong>BMI ≥30:</strong> Offer weight management advice.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-b" style="font-size:0.78rem;">5</span></td>
+                        <td><strong>Health Promotion & Lifestyle</strong></td>
+                        <td>
+                            <ul style="margin:0;padding-left:16px;">
+                                <li><strong>Infant feeding:</strong> encourage breastfeeding; vitamin D for breastfeeding mothers.</li>
+                                <li><strong>Cervical screening:</strong> reschedule for 12 weeks postpartum if due.</li>
+                                <li><strong>MMR vaccination:</strong> check status; offer if needed (avoid pregnancy for 1 month).</li>
+                                <li><strong>Smoking, alcohol, substance use:</strong> brief advice.</li>
+                                <li><strong>Safe sleeping:</strong> reinforce “Back to Sleep” and smoke‑free environment.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="alert alert-w" style="margin-top:8px;">
+                <strong>⚠ Trauma‑informed care</strong>Many women have experienced a difficult or traumatic birth. Ask sensitively and offer referral to perinatal mental health or pelvic health services when needed.
+            </div>
+        </div>
+
+        <!-- BABY CHECK -->
+        <div class="card card-full" id="baby" style="border-top:4px solid #2563eb;">
+            <div class="card-header">
+                <div class="icon icon-b">👶</div>
+                <h2>Baby Check – Stepwise Assessment</h2>
+            </div>
+            <table>
+                <thead><tr><th style="width:8%;">Step</th><th style="width:28%;">Domain</th><th style="width:64%;">What to Assess & Key Actions</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><span class="tag tag-b">1</span></td>
+                        <td><strong>Growth & General Appearance</strong></td>
+                        <td>Weight & head circumference → plot in Red Book. Observe colour, breathing, activity, posture. Jaundice, pallor, cyanosis.</td>
+                    </tr>
+                    <tr class="row-hl">
+                        <td><span class="tag tag-b">2</span></td>
+                        <td><strong>Head‑to‑Toe Physical Examination</strong></td>
+                        <td>
+                            <div class="screening-grid">
+                                <div class="screening-item"><strong>Eyes</strong>Red reflex, opacities, squint, fixing & following</div>
+                                <div class="screening-item"><strong>Heart</strong>Position, murmurs, femoral pulses, heart rate</div>
+                                <div class="screening-item"><strong>Lungs</strong>Respiratory effort, rate, added sounds</div>
+                                <div class="screening-item"><strong>Hips</strong>Barlow & Ortolani, symmetrical skin creases</div>
+                                <div class="screening-item"><strong>Genitalia (boys)</strong>Testicular descent, hypospadias</div>
+                                <div class="screening-item"><strong>Spine</strong>Inspect & palpate; skin integrity</div>
+                            </div>
+                            <p style="font-size:0.75rem;margin-top:6px;"><strong>Also:</strong> head/fontanelles, face, palate, ears, neck, clavicles, limbs, hands/feet, abdomen, skin, CNS (tone, movements).</p>
+                            <div class="alert alert-i" style="margin:6px 0 0;">
+                                <strong>💡 NIPE reminder:</strong> The infant screening exam specifically targets <strong>eyes, heart, hips, and testes</strong> (the four NIPE conditions).
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-g">3</span></td>
+                        <td><strong>Development & Social Smiling</strong></td>
+                        <td>Social smiling (usually present by 6–8 weeks). Visual fixing & following. Head control (some lag when pulled to sit). Tone – should not be stiff or floppy.</td>
+                    </tr>
+                    <tr class="row-hl">
+                        <td><span class="tag tag-b">4</span></td>
+                        <td><strong>Feeding, Immunisations & Parental Concerns</strong></td>
+                        <td>Ask about feeding (breast, formula, mixed). Discuss 8‑week immunisations (arrange with practice nurse). Address parental worries – crying, sleep, rashes, bowel habits.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- COMMON ABNORMAL FINDINGS -->
+        <div class="card card-full" id="abnormal" style="border-top:4px solid #ef4444;">
+            <div class="card-header">
+                <div class="icon icon-r">⚠️</div>
+                <h2>Common Abnormal Findings & Actions (Baby)</h2>
+            </div>
+            <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:10px;">
+                Use this quick‑reference table during the examination. Findings are grouped by urgency, based on NIPE and NICE guidance.
+            </p>
+            <table>
+                <thead><tr><th>System</th><th>Abnormal Finding</th><th>Action</th></tr></thead>
+                <tbody>
+                    <tr class="row-hl" style="background:#fff5f5!important;">
+                        <td><strong>Eyes</strong></td>
+                        <td>Absent / abnormal red reflex, white pupil (leukocoria)</td>
+                        <td><span class="tag tag-r">Urgent</span> Same‑day paediatric ophthalmology referral</td>
+                    </tr>
+                    <tr class="row-hl" style="background:#fff5f5!important;">
+                        <td><strong>Heart</strong></td>
+                        <td>Loud murmur (≥3/6), diastolic murmur, absent femoral pulses, cyanosis, sweating with feeds</td>
+                        <td><span class="tag tag-r">Urgent</span> Immediate paediatric cardiology / echo</td>
+                    </tr>
+                    <tr class="row-hl" style="background:#fff5f5!important;">
+                        <td><strong>Hips</strong></td>
+                        <td>Positive Barlow or Ortolani (dislocatable/dislocated hip), significant leg length difference</td>
+                        <td><span class="tag tag-r">Urgent</span> Urgent paediatric orthopaedics / hip USS</td>
+                    </tr>
+                    <tr class="row-hl" style="background:#fff5f5!important;">
+                        <td><strong>Testes</strong></td>
+                        <td>Bilateral non‑palpable testes (possible DSD)</td>
+                        <td><span class="tag tag-r">Urgent</span> Same‑day paediatric endocrinology/urology</td>
+                    </tr>
+                    <tr class="row-hl" style="background:#fff5f5!important;">
+                        <td><strong>Neurology</strong></td>
+                        <td>Marked hypotonia/floppiness or hypertonia, persistent fisting, significant asymmetry</td>
+                        <td><span class="tag tag-r">Urgent</span> Immediate paediatric neurology assessment</td>
+                    </tr>
+                    <tr class="row-hl" style="background:#fff5f5!important;">
+                        <td><strong>Growth/General</strong></td>
+                        <td>Weight loss >10% birth weight not regained, severe jaundice (after 2 wks), apnoeic episodes</td>
+                        <td><span class="tag tag-r">Urgent</span> Paediatric admission</td>
+                    </tr>
+                    <tr style="background:#f0fff4!important;">
+                        <td><strong>Heart</strong></td>
+                        <td>Soft (≤2/6) ejection systolic murmur, normal pulses, no symptoms</td>
+                        <td><span class="tag tag-g">Routine</span> Document; review at 8‑week checks or refer if persists >6 months</td>
+                    </tr>
+                    <tr style="background:#f0fff4!important;">
+                        <td><strong>Hips</strong></td>
+                        <td>Clicky hips only (no instability); asymmetric skin creases but normal exam</td>
+                        <td><span class="tag tag-g">Routine</span> Reassure; consider hip USS if breech/FHx; routine HV follow‑up</td>
+                    </tr>
+                    <tr style="background:#f0fff4!important;">
+                        <td><strong>Testes</strong></td>
+                        <td>Unilateral undescended testis (palpable in inguinal canal)</td>
+                        <td><span class="tag tag-g">Routine</span> Non‑urgent paediatric surgical referral by 3–6 months</td>
+                    </tr>
+                    <tr style="background:#f0fff4!important;">
+                        <td><strong>Head</strong></td>
+                        <td>Flat occiput (positional plagiocephaly), small anterior fontanelle but well‑grown</td>
+                        <td><span class="tag tag-g">Routine</span> Positioning advice (tummy time); review in 4–6 weeks</td>
+                    </tr>
+                    <tr style="background:#f0fff4!important;">
+                        <td><strong>Skin</strong></td>
+                        <td>Erythema toxicum, milia, Mongolian blue spots, capillary naevus</td>
+                        <td><span class="tag tag-g">Routine</span> Reassure; no action unless changing/symptomatic</td>
+                    </tr>
+                    <tr style="background:#f0fff4!important;">
+                        <td><strong>Eyes</strong></td>
+                        <td>Intermittent convergent squint (up to 2 months) or sticky eye without redness</td>
+                        <td><span class="tag tag-g">Routine</span> Explain normal transient finding; if persistent >8 wks, refer ophthalmology</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="alert alert-i">
+                <strong>💡 If in doubt</strong>Discuss with a senior colleague or arrange an early review (2–4 weeks). Document clearly in the Red Book and clinical notes.
+            </div>
+        </div>
+
+        <!-- RED FLAGS -->
+        <div class="card card-full" id="redflags" style="border:2px solid #ef4444;">
+            <div class="card-header">
+                <div class="icon icon-r">🚨</div>
+                <h2 style="color:#c62828;">Red Flags – Immediate Action Required</h2>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <div>
+                    <h3 style="font-size:0.95rem;color:#991b1b;margin-bottom:8px;">👩 Mother</h3>
+                    <div class="alert alert-d"><strong>Mental health:</strong> Thoughts of self‑harm, hopelessness, confusion, agitation, psychotic symptoms → urgent perinatal mental health referral.</div>
+                    <div class="alert alert-d"><strong>Physical:</strong> Heavy vaginal bleeding, offensive discharge, fever, calf swelling/redness (DVT), chest pain/breathlessness (PE), severe headache with visual disturbance (pre‑eclampsia).</div>
+                    <div class="alert alert-d"><strong>Pelvic floor:</strong> Inability to control urine/stool, sensation of a bulge in the vagina → refer to pelvic health service.</div>
+                </div>
+                <div>
+                    <h3 style="font-size:0.95rem;color:#991b1b;margin-bottom:8px;">👶 Baby</h3>
+                    <div class="alert alert-d">
+                        <ul style="margin:0;padding-left:16px;">
+                            <li>Feels very stiff or very floppy.</li>
+                            <li>Holds arms/legs in fixed positions; difficult to change nappy/clothes.</li>
+                            <li>Repetitive jerky or writhing movements.</li>
+                            <li>Not bringing hands to face; hands remain fisted.</li>
+                            <li>Cannot lift head when lying on tummy.</li>
+                            <li>Moves one side of the body much more than the other.</li>
+                            <li>No social smiling or visual following by 8 weeks.</li>
+                            <li>Breathlessness or sweating during feeds; blue/pale/ashen skin.</li>
+                            <li>Yellow whites of the eyes (jaundice after 2 weeks).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <p style="font-size:0.78rem;text-align:center;color:#991b1b;font-weight:700;margin-top:8px;">ANY of the above → <u>urgent same‑day referral or admission as appropriate</u></p>
+        </div>
+
+        <!-- REFERRAL PATHWAYS -->
+        <div class="card card-full" id="referral">
+            <div class="card-header">
+                <div class="icon icon-a">📤</div>
+                <h2>Referral Pathways – Emergency, Urgent & Routine</h2>
+            </div>
+            <table>
+                <thead><tr><th>Priority</th><th>Pathway</th><th>Criteria</th><th>Action</th></tr></thead>
+                <tbody>
+                    <tr class="row-hl" style="background:#fee2e2!important;">
+                        <td><span class="tag tag-r">EMERGENCY</span></td>
+                        <td>999 / A&E / Maternity triage</td>
+                        <td>Active major bleeding, suspected sepsis, severe pre‑eclampsia, perinatal psychosis with risk to self/baby, suspected NAI requiring immediate protection, acute neurological deterioration in baby.</td>
+                        <td><strong>Immediate hospital admission. Do not delay for investigations.</strong></td>
+                    </tr>
+                    <tr style="background:#fff7ed!important;">
+                        <td><span class="tag tag-a">URGENT (within 1‑2 weeks)</span></td>
+                        <td>Perinatal mental health, pelvic health, paediatric cardiology/orthopaedics</td>
+                        <td>Significant postnatal depression not responding to primary care management, pelvic floor dysfunction affecting daily life, abnormal NIPE finding (red reflex, hip, heart murmur) that is not immediately life‑threatening.</td>
+                        <td><strong>Urgent referral. Initiate primary care management while waiting (e.g. counselling, pelvic floor exercises).</strong></td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-b">ROUTINE</span></td>
+                        <td>Health visitor, contraception clinic, physiotherapy, routine paediatrics</td>
+                        <td>Mild/moderate symptoms, routine contraceptive needs, positional talipes/plagiocephaly, minor feeding concerns, and all well‑baby checks with normal findings.</td>
+                        <td><strong>Refer routinely or manage in primary care with safety‑netting.</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- QUICK MANAGEMENT ALGORITHM -->
+        <div class="card card-full" id="algorithm" style="border-top:4px solid var(--accent);">
+            <div class="card-header">
+                <div class="icon icon-b">🧭</div>
+                <h2>6–8 Week Check Quick Algorithm</h2>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+                <div class="algo" style="justify-content:center;">
+                    <div class="algo-box algo-start">Mother attends 6–8 week<br>postnatal check</div>
+                    <span class="algo-arr">→</span>
+                    <div class="algo-box algo-act">Assess mother: mental health,<br>physical recovery, contraception,<br>pre‑existing conditions, lifestyle</div>
+                </div>
+                <span class="algo-arr">↓</span>
+                <div class="algo" style="justify-content:center;">
+                    <div class="algo-box algo-dec">Any maternal red flags?<br>(self‑harm, heavy bleeding,<br>severe headache, DVT/PE)</div>
+                </div>
+                <div style="display:flex;gap:24px;margin:4px 0;">
+                    <div class="algo-box algo-danger">YES → Urgent referral /<br>admission as per red flag</div>
+                    <div class="algo-box algo-res">NO → Continue to baby check</div>
+                </div>
+                <span class="algo-arr">↓</span>
+                <div class="algo" style="justify-content:center;">
+                    <div class="algo-box algo-start">Assess baby: growth, NIPE<br>exam, development, feeding</div>
+                    <span class="algo-arr">→</span>
+                    <div class="algo-box algo-dec">Any abnormal NIPE finding<br>or developmental red flag?</div>
+                </div>
+                <div style="display:flex;gap:24px;margin:4px 0;">
+                    <div class="algo-box algo-danger">YES → Action as per<br>abnormal findings table</div>
+                    <div class="algo-box algo-res">NO → Reassure, arrange<br>8‑week immunisations,<br>routine HV follow‑up</div>
+                </div>
+                <span class="algo-arr">↓</span>
+                <div class="algo-box algo-res" style="font-weight:700;">Complete documentation in Red Book & clinical notes</div>
+            </div>
+            <div class="alert alert-s" style="margin-top:12px;">
+                <strong>✅ Safety‑netting</strong>Advise parents to contact GP/health visitor if new concerns arise before the next routine check. Reassure that most findings are normal variants.
+            </div>
+        </div>
+
+        <!-- KEY RESOURCES -->
+        <div class="card card-full" id="resources">
+            <div class="card-header">
+                <div class="icon icon-g">📖</div>
+                <h2>Key Resources & Further Reading</h2>
+            </div>
+            <table>
+                <thead><tr><th>Resource</th><th>Link / Details</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>NICE NG194: Postnatal care (2021)</strong></td><td><a href="https://www.nice.org.uk/guidance/ng194" target="_blank">https://www.nice.org.uk/guidance/ng194</a></td></tr>
+                    <tr><td><strong>NICE QS37: Postnatal care quality standard (2022)</strong></td><td><a href="https://www.nice.org.uk/guidance/qs37" target="_blank">https://www.nice.org.uk/guidance/qs37</a></td></tr>
+                    <tr><td><strong>NHS England: GP 6–8 week maternal postnatal consultation – what good looks like (2023)</strong></td><td><a href="https://www.england.nhs.uk/long-read/gp-six-to-eight-week-maternal-postnatal-consultation-what-good-looks-like-guidance/" target="_blank">NHS England guidance</a></td></tr>
+                    <tr><td><strong>PHE NIPE screening programme handbook</strong></td><td><a href="https://www.gov.uk/government/publications/newborn-and-infant-physical-examination-programme-handbook" target="_blank">GOV.UK NIPE handbook</a></td></tr>
+                    <tr><td><strong>RCGP Curriculum: Maternity & reproductive health</strong></td><td><a href="https://www.rcgp.org.uk/mrcgp-exams/gp-curriculum/maternity-reproductive-health" target="_blank">RCGP curriculum</a></td></tr>
+                    <tr><td><strong>Patient.info: Mother's six‑week postnatal check</strong></td><td><a href="https://patient.info/doctor/history-examination/mothers-six-week-postnatal-check" target="_blank">Patient.info mother check</a></td></tr>
+                    <tr><td><strong>Patient.info: Six‑week baby check</strong></td><td><a href="https://patient.info/doctor/six-week-baby-check" target="_blank">Patient.info baby check</a></td></tr>
+                    <tr><td><strong>Healthier Together: 6–8 weeks mother and baby check</strong></td><td><a href="https://www.healthiertogether.nhs.uk/new-parent-and-baby/6-8-weeks-mother-and-baby-check" target="_blank">Healthier Together</a></td></tr>
+                </tbody>
+            </table>
+            <div class="alert alert-i" style="margin-top:8px;">
+                <strong>💡 SNOMED Codes</strong>Use <strong>169756008</strong> (Postnatal care from GP) or <strong>444099004</strong> (Maternal postnatal examination offered) to record the consultation.
+            </div>
+        </div>
+
+    </div>
+
+    <footer style="text-align:center;padding:18px;color:var(--text-muted);font-size:0.72rem;border-top:1px solid var(--border);margin-top:8px;">
+        <p><strong>6–8 Week Postnatal Check – GP Trainee Quick Reference Guide (2026 Update)</strong> · For holistic mother & baby assessment in primary care · Patient safety first</p>
+        <p style="margin-top:4px;">Sources: NICE NG194 · NICE QS37 · NHS England “What Good Looks Like” · PHE NIPE Programme · RCGP Curriculum</p>
+    </footer>
+</body>
+</html>

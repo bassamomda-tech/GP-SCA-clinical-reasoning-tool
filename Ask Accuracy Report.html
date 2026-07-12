@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask — Accuracy Incident Report · Contraceptive patch postpartum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#f6f2e9; --ink:#1c1917; --teal:#0f5f5c; --teal-soft:#e3efee; --rust:#b45a3c; --muted:#6b7280; --line:#e5e0d4; --card:#ffffff; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:'DM Sans',sans-serif; line-height:1.55; }
+  a{ color:var(--teal); } a:hover{ color:var(--rust); }
+  .wrap{ max-width:860px; margin:0 auto; padding:40px 24px 80px; }
+  h1,h2,h3{ font-family:'Source Serif 4',serif; }
+  h1{ font-size:30px; margin:6px 0 4px; }
+  h2{ font-size:21px; margin:38px 0 10px; color:var(--teal); border-bottom:2px solid var(--line); padding-bottom:6px; }
+  h3{ font-size:16.5px; margin:20px 0 6px; }
+  .eyebrow{ font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--rust); font-weight:700; }
+  .meta{ color:var(--muted); font-size:14px; margin-bottom:8px; }
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin:14px 0; }
+  .verdict{ border-top:4px solid var(--rust); }
+  .fix{ border-top:4px solid var(--teal); }
+  table{ width:100%; border-collapse:collapse; font-size:14.5px; margin:10px 0; }
+  th{ text-align:left; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); border-bottom:2px solid var(--line); padding:7px 10px 7px 0; }
+  td{ border-bottom:1px solid var(--line); padding:9px 10px 9px 0; vertical-align:top; }
+  .ok{ color:var(--teal); font-weight:700; } .bad{ color:#b3261e; font-weight:700; } .warn{ color:#8a6d1a; font-weight:700; }
+  .pill{ display:inline-block; font-size:11.5px; font-weight:700; letter-spacing:.05em; padding:2px 9px; border-radius:99px; background:var(--teal-soft); color:var(--teal); }
+  .pill.red{ background:#f7e3df; color:#b3261e; }
+  .pill.amber{ background:#f5ecd4; color:#8a6d1a; }
+  code{ background:#efe9db; padding:1px 6px; border-radius:5px; font-size:13px; }
+  ol,ul{ padding-left:22px; } li{ margin:6px 0; }
+  .small{ font-size:13px; color:var(--muted); }
+  blockquote{ margin:8px 0; padding:8px 14px; border-left:3px solid var(--line); color:var(--muted); font-style:italic; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Reasoning GP · Quality incident report</div>
+  <h1>Why Ask got the postpartum contraceptive-patch question wrong — and the plan to stop it happening</h1>
+  <div class="meta">Prepared 7 July 2026 · Question: <em>“Can I prescribe a contraceptive patch for a 30-year-old who gave birth 8 weeks ago?”</em> · Two runs, two different users, two different answers — one clinically wrong.</div>
+
+  <h2>1 · The clinical verdict first</h2>
+  <div class="card verdict">
+    <p><strong>The correct answer (UKMEC 2025, published December 2025 by the CoSRH — formerly FSRH):</strong></p>
+    <table>
+      <tr><th>Scenario at 8 weeks postpartum</th><th>CHC patch category</th><th>Meaning</th></tr>
+      <tr><td>Not breastfeeding, no extra VTE risk factors</td><td><span class="ok">UKMEC 1–2</span></td><td>Can be offered</td></tr>
+      <tr><td>Breastfeeding (≥6 weeks to &lt;6 months, primarily breastfeeding)</td><td><span class="ok">UKMEC 2</span></td><td>Advantages generally outweigh risks — <strong>can be offered</strong> with counselling; many would still discuss progestogen-only options as an alternative, but “avoid” is wrong</td></tr>
+      <tr><td>Breastfeeding, 0 to &lt;6 weeks</td><td><span class="bad">UKMEC 4</span></td><td>Do not use</td></tr>
+    </table>
+    <p><strong>What our two answers said:</strong></p>
+    <table>
+      <tr><th>Run</th><th>Claim</th><th>Verdict</th></tr>
+      <tr><td>User A (desktop)</td><td>“If breastfeeding at 8 weeks: ✗ generally avoid CHC patch” and “&lt;6 months postpartum: UKMEC 3”</td><td><span class="bad">WRONG</span> — it is category 2, not 3, under UKMEC 2016 <em>and</em> UKMEC 2025. This is the WHO MEC figure, not the UK one — a classic training-data confusion.</td></tr>
+      <tr><td>User B (phone)</td><td>Same structure, broadly correct categories — but opened with “The search results don’t give me the specific UKMEC/NICE CKS figures I need. I’ll answer from my firm knowledge…”</td><td><span class="warn">FRAGILE</span> — it admitted retrieval failed and answered from memory. It happened to land closer, but by luck, not design.</td></tr>
+      <tr><td>Both</td><td>Cited “UKMEC 2016”</td><td><span class="bad">OUT OF DATE</span> — UKMEC 2025 superseded the 2016 edition in December 2025.</td></tr>
+    </table>
+  </div>
+
+  <h2>2 · Root causes — five, all identified in our own pipeline</h2>
+
+  <h3><span class="pill red">Cause 1</span> &nbsp;The web search is <em>blocked</em> from the one source that holds the answer</h3>
+  <div class="card">
+    <p>Ask’s live web search is restricted to an allow-list of trusted UK domains (NICE, SIGN, BMJ Best Practice, gov.uk, RCOG, BASHH…). <strong>fsrh.org / cosrh.org is not on the list.</strong> UKMEC is published by CoSRH (formerly FSRH) — so for any contraception-eligibility question, the tool literally cannot reach the source of truth. User B’s answer even confessed it: <em>“the search results don’t give me the specific UKMEC figures I need.”</em> When retrieval fails, the model falls back on training memory — which is where the WHO/UK mix-up and the stale “2016” citation came from.</p>
+  </div>
+
+  <h3><span class="pill red">Cause 2</span> &nbsp;No library note covers postpartum contraception, so grounding had nothing to offer</h3>
+  <div class="card">
+    <p>Ask’s first line of defence is the site’s own curated library (~975 notes). We have a contraception <em>method-chooser tool</em> and SCA cases that mention UKMEC — but <strong>no article on postpartum/breastfeeding contraceptive eligibility</strong> for the retrieval engine to hand the model. High-traffic, high-stakes topics must exist as curated notes; the model should be assembling our vetted content, not recalling its own.</p>
+  </div>
+
+  <h3><span class="pill red">Cause 3</span> &nbsp;Inconsistency between users is built into the current setup</h3>
+  <div class="card">
+    <ul>
+      <li><strong>No temperature is set</strong> on the AI call, so it runs at the creative default — two identical questions can legitimately produce different answers.</li>
+      <li><strong>The answer cache only matches exact wording.</strong> User A typed “gave birth 8 weeks ago”, User B “who give birth 8 weeks ago” — different cache keys, so each got an independent fresh generation instead of one vetted answer.</li>
+      <li><strong>The free backup model.</strong> When Anthropic credit runs out, Ask silently falls back to a free open-source model (with a small ⚠️ note). That model is markedly weaker clinically. If one of the two runs was a fallback answer, that alone explains the quality gap.</li>
+    </ul>
+  </div>
+
+  <h3><span class="pill amber">Cause 4</span> &nbsp;Model “thinking out loud” leaked into the answer</h3>
+  <div class="card">
+    <p>“The search results don’t give me the figures I need, I’ll answer from my firm knowledge” is internal narration. It should never be shown — it erodes trust, and worse, it flags exactly the situation where the answer should have been <em>withheld or hedged</em>, not delivered with a confident table.</p>
+  </div>
+
+  <h3><span class="pill amber">Cause 5</span> &nbsp;Tone: orders instead of recommendations</h3>
+  <div class="card">
+    <p>The answer framing tells the model to “lead with the single most useful next step”, which comes out as imperatives (“Stop the drug. Refer.”). For a decision-support tool used by qualified GPs, the register should be <strong>advisory</strong>: “Recommended / consider / options are…”, explicitly supporting — not replacing — the clinician’s judgement. This needs one added framing rule; it applies to every answer, not just this one.</p>
+  </div>
+
+  <h2>3 · The fix plan</h2>
+  <div class="card fix">
+    <table>
+      <tr><th>#</th><th>Fix</th><th>Stops</th><th>Effort</th></tr>
+      <tr><td>1</td><td>Add <code>fsrh.org</code> + <code>cosrh.org</code> (and <code>medicines.org.uk</code> for SPCs) to the web-search allow-list</td><td>Cause 1</td><td>Minutes + worker re-deploy</td></tr>
+      <tr><td>2</td><td>Write a curated library article: <em>“Postpartum contraception — UKMEC 2025”</em> (timing table for CHC / POP / implant / DMPA / IUD, breastfeeding vs not, VTE modifiers)</td><td>Cause 2</td><td>~1 session; recommend also auditing other UKMEC references sitewide (one case currently cites a non-existent “UKMEC 2023”)</td></tr>
+      <tr><td>3</td><td>Set <code>temperature: 0</code> on the answer call — same question, same evidence → same answer</td><td>Cause 3a</td><td>One line + re-deploy</td></tr>
+      <tr><td>4</td><td>Grow the <strong>vetted-answer cache</strong>: add ~10 contraception/UKMEC questions to the test bank, run them in the Quality Console, approve the correct answers so all users get the same vetted response regardless of wording (normalise cache keys harder: strip filler words, singular/plural)</td><td>Cause 3b</td><td>Owner console workflow already built — needs your 20 minutes of review per batch</td></tr>
+      <tr><td>5</td><td>Fallback model: make the warning banner unmissable (top of answer, coloured) and add a “credit low” alert to the owner console — or disable fallback entirely and show “temporarily unavailable” instead. <strong>My recommendation: disable it for clinical answers.</strong> A wrong cheap answer is worse than no answer.</td><td>Cause 3c</td><td>Small; your call on policy</td></tr>
+      <tr><td>6</td><td>Framing rules: (a) never narrate the search process — if sources are insufficient, say plainly “I could not verify this against a live source — verify before acting” and keep the answer conservative; (b) phrase management as <em>recommendations</em> (“Recommended:”, “Consider”, “Options:”), never orders</td><td>Causes 4 + 5</td><td>Prompt edit + version bump</td></tr>
+      <tr><td>7</td><td>Add a standing rule: any eligibility answer must name the guideline <em>edition and year</em> (e.g. “UKMEC 2025”) — a wrong year is then self-flagging and clickable via the citation linkifier</td><td>Stale citations</td><td>Prompt edit</td></tr>
+    </table>
+  </div>
+
+  <h2>4 · Do we need a bigger AI model?</h2>
+  <div class="card">
+    <p><strong>Short answer: not yet — and it would not have fixed this incident.</strong></p>
+    <ul>
+      <li>Both failures were <strong>evidence-supply problems</strong>, not reasoning problems. The strongest model on earth cannot cite UKMEC 2025 if the search allow-list blocks it and the library doesn’t contain it — it will just hallucinate more fluently. Fixes 1–4 attack the actual cause.</li>
+      <li>The current model (Sonnet-class) is the right tier for grounded Q&amp;A. The step up (Opus-class) costs roughly <strong>5× per token</strong>: at our trimmed context sizes that means moving from roughly <strong>4–6p per fresh question to ~20–30p</strong>. Cached/vetted answers stay at ~0p either way — which is another reason the vetted cache is the best money you can spend.</li>
+      <li><strong>Sensible path:</strong> implement fixes 1–7, re-run the full test bank (add the contraception set), and only if graded accuracy still disappoints, A/B the bigger model on the test bank before paying for it in production.</li>
+    </ul>
+  </div>
+
+  <h2>5 · On “zero percent chance of mistakes”</h2>
+  <div class="card">
+    <p>Honestly: no AI system — and no clinician — reaches literal zero. What we <em>can</em> engineer is a system where the high-traffic questions are answered from <strong>vetted, owner-approved answers</strong> (deterministic, identical for every user), the long tail is <strong>grounded in the live guideline sources</strong> with clickable citations, and anything the system cannot verify is <strong>flagged as unverified instead of asserted</strong>. That is what fixes 1–7 build. The disclaimer line (“educational support — verify against live NICE CKS/BNF”) remains essential for governance either way.</p>
+  </div>
+
+  <p class="small">Sources: CoSRH UKMEC 2025 (December 2025, supersedes UKMEC 2016 amended 2019) · UKMEC 2025 summary tables — breastfeeding ≥6 weeks to &lt;6 months, CHC = category 2 · WHO MEC gives category 3 for the same row, which is the likely origin of the wrong answer.</p>
+
+</div>
+</body>
+</html>

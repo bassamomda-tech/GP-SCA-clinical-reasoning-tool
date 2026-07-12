@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Live Group Mock · Reasoning GP</title>
+<meta name="description" content="Run a real SCA mock with two friends from anywhere — one code, three roles: candidate, patient, examiner. Synced 3-minute prep, 12-minute clock and domain marking." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=11">
+<style>
+.tool-page{ padding:28px 32px 80px; max-width:980px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+.tool-head{ padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:18px; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:34px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:6px; max-width:72ch; }
+.hidden{ display:none !important; }
+.lbl{ font-size:11px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); margin:16px 0 8px; }
+
+.gm-note{ border:1px solid #fde68a; background:#fffbeb; color:#92400e; border-radius:12px; padding:12px 15px; font-size:13.5px; line-height:1.6; margin-bottom:16px; }
+.gm-note a{ color:#92400e; font-weight:700; text-decoration:underline; }
+.gm-err{ border:1px solid #fecaca; background:#fef2f2; color:#991b1b; border-radius:10px; padding:10px 14px; font-size:13px; line-height:1.5; margin-top:10px; }
+
+.gm-how{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:18px; }
+@media (max-width:760px){ .gm-how{ grid-template-columns:1fr; } }
+.gm-how-c{ border:1px solid var(--line); border-radius:12px; background:#fff; padding:12px 15px; font-size:12.6px; line-height:1.55; color:var(--ink-2); }
+.gm-how-c b{ color:var(--ink); display:block; margin-bottom:3px; font-size:13px; }
+
+.gm-two{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media (max-width:820px){ .gm-two{ grid-template-columns:1fr; } }
+.gm-card{ border:1px solid var(--line); border-radius:14px; background:#fff; padding:16px 18px; }
+.gm-card h2{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:19px; margin-bottom:4px; }
+.gm-card .sub{ font-size:12.8px; color:var(--muted); line-height:1.5; margin-bottom:12px; }
+.gm-in{ width:100%; font:inherit; font-size:14px; padding:10px 13px; border:1px solid var(--line); border-radius:10px; background:#fff; color:var(--ink); }
+.gm-in:focus{ outline:none; border-color:var(--teal); box-shadow:0 0 0 3px var(--teal-soft); }
+.gm-code-in{ text-transform:uppercase; font-weight:800; letter-spacing:.25em; font-size:18px; text-align:center; }
+.gm-btn{ font:inherit; font-size:13.5px; font-weight:800; padding:11px 20px; border-radius:10px; border:none; background:#0c4a47; color:#f6f2e9; cursor:pointer; }
+.gm-btn:hover{ background:#0e5a56; }
+.gm-btn:disabled{ opacity:.45; cursor:not-allowed; }
+.gm-btn.ghost{ background:#fff; color:var(--ink-2); border:1px solid var(--line); }
+.gm-btn.ghost:hover{ border-color:var(--ink-2); color:var(--ink); }
+.gm-list{ margin-top:8px; max-height:260px; overflow:auto; border:1px solid var(--line); border-radius:10px; }
+.gm-case{ display:flex; gap:9px; align-items:center; width:100%; text-align:left; font:inherit; font-size:13px; padding:9px 12px; border:none; border-bottom:1px solid #f4f6f9; background:#fff; cursor:pointer; color:var(--ink-2); }
+.gm-case:last-child{ border-bottom:none; }
+.gm-case:hover{ background:#f8faf9; }
+.gm-case.sel{ background:#ecf5f3; color:var(--ink); font-weight:700; }
+.gm-case .ty{ margin-left:auto; flex-shrink:0; font-size:10px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:2px 8px; }
+.gm-case .lk{ flex-shrink:0; }
+
+.gm-codebox{ text-align:center; padding:18px 0 6px; }
+.gm-codebox .c{ font-family:'Source Serif 4',Georgia,serif; font-size:46px; font-weight:600; letter-spacing:.3em; color:var(--teal); padding-left:.3em; }
+.gm-codebox .h{ font-size:12.5px; color:var(--muted); margin-top:4px; }
+.gm-roles{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:14px; }
+@media (max-width:680px){ .gm-roles{ grid-template-columns:1fr; } }
+.gm-role{ border:1.5px solid var(--line); border-radius:13px; background:#fff; padding:13px 14px; text-align:center; }
+.gm-role.mine{ border-color:#0c4a47; background:#ecf5f3; }
+.gm-role .ic{ font-size:22px; }
+.gm-role .rn{ font-size:13px; font-weight:800; color:var(--ink); margin-top:3px; }
+.gm-role .who{ font-size:12.5px; color:var(--ink-2); margin-top:4px; min-height:18px; }
+.gm-role .who.empty{ color:var(--muted); font-style:italic; }
+.gm-role button{ margin-top:8px; font:inherit; font-size:12px; font-weight:800; padding:7px 14px; border-radius:8px; border:1px solid var(--line); background:#fff; cursor:pointer; color:var(--ink-2); }
+.gm-role button:hover{ border-color:#0c4a47; color:#0c4a47; }
+
+.gm-bar{ position:sticky; top:0; z-index:5; display:flex; gap:11px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:13px; padding:11px 16px; margin-bottom:14px; box-shadow:0 6px 18px -12px rgba(0,0,0,.15); flex-wrap:wrap; }
+.gm-bar .ttl{ font-weight:800; font-size:13.5px; color:var(--ink); }
+.gm-bar .tag{ font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:2px 9px; }
+.gm-bar .role-pill{ font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:#fff; background:var(--rust); border-radius:999px; padding:3px 10px; }
+.gm-phase{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:#fff; background:#0c4a47; border-radius:999px; padding:3px 10px; }
+.gm-phase.prep{ background:#b45309; }
+.gm-phase.done{ background:#334155; }
+.gm-timer{ margin-left:auto; font-variant-numeric:tabular-nums; font-weight:800; font-size:20px; color:var(--teal); letter-spacing:.02em; }
+.gm-timer.warn{ color:#b45309; } .gm-timer.over{ color:#b91c1c; }
+
+.gm-brief{ border:1px solid var(--line); border-radius:13px; background:#fff; padding:15px 18px; margin-bottom:14px; }
+.gm-brief .bh{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:5px; }
+.gm-brief p{ font-size:14px; line-height:1.65; color:var(--ink-2); }
+.gm-open{ font-family:'Source Serif 4',Georgia,serif; font-style:italic; font-size:15px; line-height:1.6; color:var(--ink); background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:12px 15px; margin-bottom:12px; }
+.gm-fact{ display:flex; gap:10px; border-bottom:1px dashed #f1f5f9; padding:7px 0; }
+.gm-fact .k{ flex-shrink:0; width:128px; font-size:10.5px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); padding-top:2px; }
+.gm-fact .v{ flex:1; font-size:13px; line-height:1.55; color:var(--ink-2); }
+.gm-cue{ background:#fdf2f8; border:1px solid #fbcfe8; border-radius:9px; padding:8px 12px; font-size:12.8px; color:#9d174d; line-height:1.5; margin-bottom:6px; }
+.gm-sec-h{ font-size:11px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); margin:16px 0 7px; }
+
+.gm-chk{ display:flex; gap:10px; align-items:flex-start; border:1px solid var(--line); border-radius:10px; padding:9px 12px; margin-bottom:7px; font-size:13px; line-height:1.5; color:var(--ink-2); background:#fff; }
+.gm-chk input{ width:17px; height:17px; margin-top:2px; accent-color:#0c4a47; flex-shrink:0; }
+.gm-chk .dom{ flex-shrink:0; font-size:9.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; border-radius:999px; padding:2px 8px; margin-top:2px; }
+.gm-chk .dom.tasks{ background:#f0fdf4; color:#15803d; }
+.gm-chk .dom.rto{ background:#fdf2f8; color:#be185d; }
+.gm-chk .dom.gs{ background:#fffbeb; color:#b45309; }
+
+.gm-grade{ margin:10px 0 14px; }
+.gm-grade .gname{ font-size:12.5px; font-weight:800; color:var(--ink); margin-bottom:6px; }
+.gm-gseg{ display:flex; gap:7px; flex-wrap:wrap; }
+.gm-gseg button{ font:inherit; font-size:12px; font-weight:800; padding:7px 13px; border-radius:999px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; }
+.gm-gseg button.sel{ background:#0c4a47; color:#f6f2e9; border-color:#0c4a47; }
+
+.gm-result{ border:1px solid var(--line); border-radius:14px; background:#fff; padding:18px 20px; }
+.gm-result h3{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:21px; margin-bottom:10px; }
+.gm-gr{ display:inline-block; font-size:12px; font-weight:800; border-radius:8px; padding:6px 12px; margin:0 6px 6px 0; }
+.gm-gr .gn{ font-weight:600; color:var(--muted); margin-right:5px; }
+.gm-gr.CF{ background:#fef2f2; color:#b91c1c; } .gm-gr.F{ background:#fff7ed; color:#c2410c; }
+.gm-gr.P{ background:#f0fdf4; color:#15803d; } .gm-gr.CP{ background:#ecfeff; color:#0c4a47; }
+.gm-one{ font-size:14px; line-height:1.6; color:var(--ink); background:#ecf5f3; border-radius:10px; padding:11px 14px; margin:10px 0; }
+.gm-miss{ font-size:13px; line-height:1.55; color:#991b1b; background:#fef2f2; border:1px solid #fecaca; border-radius:9px; padding:8px 12px; margin-bottom:6px; }
+.gm-learn{ font-size:13.5px; line-height:1.65; color:var(--ink-2); border-top:1px dashed var(--line); margin-top:12px; padding-top:12px; }
+.gm-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+.gm-wait{ text-align:center; padding:30px 10px; color:var(--muted); font-size:14px; }
+a{ color:var(--teal); } a:hover{ color:var(--rust); }
+</style>
+</head>
+<body>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-sca"></aside>
+  <main class="main">
+    <div class="tool-page">
+      <div class="tool-head">
+        <div class="tool-eyebrow">Reasoning GP · Live group revision</div>
+        <h1>Live group <em>mock</em></h1>
+        <p>The three-person SCA role-play, without being in the same room. One of you hosts a case and shares a 5-letter code; the others join as <b>patient</b> and <b>examiner</b>. Everyone's screen shows only their own card, and the 3-minute prep and 12-minute clock run in sync. Run your usual video call alongside — this page handles the case, the clock and the marking.</p>
+      </div>
+
+      <div id="gate" class="gm-note hidden"></div>
+
+      <div id="setup" data-screen-label="Group mock — setup">
+        <div class="gm-how">
+          <div class="gm-how-c"><b>🧑‍⚕️ Candidate</b>Sees only the medical-record brief — exactly like the exam. Consults against the live clock.</div>
+          <div class="gm-how-c"><b>🧑 Patient</b>Gets the full role-play script: opening line, facts to release only when asked, ICE and the cues to plant.</div>
+          <div class="gm-how-c"><b>⚖️ Examiner</b>Gets the checkpoint card, ticks behaviours live, then grades all three domains at the end.</div>
+        </div>
+
+        <div class="gm-two">
+          <div class="gm-card">
+            <h2>Host a session</h2>
+            <div class="sub">Pick the case. Only you see this list — the candidate won't know what's coming.</div>
+            <input class="gm-in" id="caseSearch" placeholder="Search 312 cases — try 'chest pain', 'contraception'…" autocomplete="off" />
+            <div class="gm-list" id="caseList"></div>
+            <div class="gm-actions">
+              <button class="gm-btn" id="createBtn" disabled>Create session →</button>
+              <button class="gm-btn ghost" id="randBtn">Surprise me 🎲</button>
+            </div>
+            <div class="gm-err hidden" id="hostErr"></div>
+          </div>
+          <div class="gm-card">
+            <h2>Join a session</h2>
+            <div class="sub">Enter the code your friend shares. A free account is all you need to join.</div>
+            <input class="gm-in gm-code-in" id="joinCode" maxlength="5" placeholder="•••••" autocomplete="off" />
+            <div class="gm-actions">
+              <button class="gm-btn" id="joinBtn">Join →</button>
+            </div>
+            <div class="gm-err hidden" id="joinErr"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="lobby" class="hidden" data-screen-label="Group mock — lobby">
+        <div class="gm-card">
+          <div class="gm-codebox">
+            <div class="c" id="codeBig"></div>
+            <div class="h">Share this code — it lasts 6 hours. Case: <b id="lobbyCase"></b> <span id="lobbyType"></span></div>
+          </div>
+          <div class="lbl">Your first name</div>
+          <input class="gm-in" id="myName" maxlength="30" placeholder="e.g. Sam" style="max-width:280px" />
+          <div class="gm-roles" id="roleGrid"></div>
+          <div class="gm-actions">
+            <label style="display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--ink-2)"><input type="checkbox" id="optPrep" checked style="width:16px;height:16px;accent-color:#0c4a47"> 3-minute prep first</label>
+            <button class="gm-btn" id="startBtn" disabled>Start the consultation →</button>
+            <button class="gm-btn ghost" id="leaveBtn">Leave</button>
+          </div>
+          <div class="gm-err hidden" id="lobbyErr"></div>
+        </div>
+      </div>
+
+      <div id="stage" class="hidden" data-screen-label="Group mock — consultation">
+        <div class="gm-bar">
+          <span class="gm-phase" id="phaseTag">Prep</span>
+          <span class="ttl" id="barTitle"></span>
+          <span class="tag" id="barType"></span>
+          <span class="role-pill" id="barRole"></span>
+          <span class="gm-timer" id="timer">3:00</span>
+        </div>
+        <div id="paneCandidate" class="hidden"></div>
+        <div id="panePatient" class="hidden"></div>
+        <div id="paneExaminer" class="hidden"></div>
+        <div id="paneObserver" class="hidden"><div class="gm-wait">You haven't claimed a role — you're observing. The consultation is running.</div></div>
+        <div class="gm-actions" id="stageActions"></div>
+        <div class="gm-err hidden" id="stageErr"></div>
+      </div>
+
+      <div id="doneView" class="hidden" data-screen-label="Group mock — result"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=66"></script>
+<script src="../assets/sca-cases.js"></script>
+<script src="../assets/sca-extras.js?v=2"></script>
+<script>
+/* load the rest of the case library so the picker matches the other SCA tools */
+(function(){
+  var n = 80, base='../assets/sca-cases', i;
+  for(i=2;i<=n;i++){ document.write('<scr'+'ipt src="'+base+i+'.js?v=1"></scr'+'ipt>'); }
+})();
+</script>
+<script>
+(function(){
+  'use strict';
+  const $ = q => document.querySelector(q);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  const TYPE_LBL = { video:'Video', phone:'Telephone', telephone:'Telephone', f2f:'Face-to-face', visit:'Home visit', data:'Results review' };
+  const GLAB = { CF:'Clear fail', F:'Fail', P:'Pass', CP:'Clear pass' };
+  const DOMS = [['dg','Data Gathering & Diagnosis'],['cm','Clinical Management & Medical Complexity'],['rto','Relating to Others']];
+  const ROLES = [['candidate','🧑‍⚕️','Candidate'],['patient','🧑','Patient'],['examiner','⚖️','Examiner']];
+
+  const ALL = (window.SCA_CASES||[]).map(c=>Object.assign({},c,(window.SCA_EXTRAS||{})[c.id]||{}));
+  const byId = {}; ALL.forEach(c=>{ byId[c.id]=c; });
+
+  // ---- backend plumbing (same Worker the rest of the site uses) ----
+  const cfg = window.RGP_CONFIG || {};
+  const API = (cfg.workerUrl || '').replace(/\/$/, '');
+  function tok(){ try{ return localStorage.getItem('rgp.auth.token.v1'); }catch(e){ return null; } }
+  const ready = () => !!(API && tok());
+  async function api(method, qs, body){
+    const res = await fetch(API + '/api/group' + (qs||''), {
+      method,
+      headers: Object.assign({'Content-Type':'application/json'}, tok()?{'Authorization':'Bearer '+tok()}:{}),
+      body: body ? JSON.stringify(body) : undefined
+    });
+    const d = await res.json().catch(()=>({error:'Bad response from server'}));
+    if(!res.ok) throw new Error(d.error || ('HTTP '+res.status));
+    if(typeof d.now === 'number') clockOffset = d.now - Date.now();
+    return d;
+  }
+  let clockOffset = 0;
+  const serverNow = () => Date.now() + clockOffset;
+
+  if(!ready()){
+    const g = $('#gate');
+    g.classList.remove('hidden');
+    g.innerHTML = API
+      ? '<b>Sign in to host or join.</b> Group sessions sync through your account — a free account is enough to join a friend\u2019s session. Practising in the same room instead? Use the printable <a href="sca-roleplay.html">Role-Play Packs</a>.'
+      : '<b>Live sessions run on the live site.</b> This preview has no server connection, so hosting and joining are disabled here. In the same room? Use the printable <a href="sca-roleplay.html">Role-Play Packs</a>.';
+  }
+
+  // ---- free-tier host cap (mirrors the Hot Seat 5-sample policy) ----
+  const freeTier = () => !!(window.RGP_PAYWALL && RGP_PAYWALL.isFreeTier && RGP_PAYWALL.isFreeTier());
+  const freeSet = new Set(((window.RGP_FREE_SAMPLES||{}).scaCases)||[]);
+  const hostable = c => !freeTier() || freeSet.has(c.id);
+
+  // ---- session state ----
+  let code = '', st = null, me = { name:'', role:'' }, pollId = null, tickId = null, selCase = null, advancing = false;
+  const SS = 'rgp-sca-group-sess';
+  function persistMe(){ try{ sessionStorage.setItem(SS, JSON.stringify({code, name:me.name, role:me.role})); }catch(e){} }
+  function clearMe(){ try{ sessionStorage.removeItem(SS); }catch(e){} }
+
+  // ---- case picker ----
+  function renderList(q){
+    q = (q||'').trim().toLowerCase();
+    const hits = ALL.filter(c => !q || (c.title+' '+(c.brief||'')).toLowerCase().includes(q)).slice(0, 40);
+    $('#caseList').innerHTML = hits.map(c => {
+      const lock = hostable(c) ? '' : '<span class="lk">🔒</span>';
+      return `<button class="gm-case ${selCase===c.id?'sel':''}" data-id="${esc(c.id)}">${lock}<span>${esc(c.title)}</span><span class="ty">${TYPE_LBL[c.type]||''}</span></button>`;
+    }).join('') || '<div style="padding:12px 14px;font-size:13px;color:var(--muted)">No matching case.</div>';
+    document.querySelectorAll('#caseList .gm-case').forEach(b => b.addEventListener('click', () => {
+      const c = byId[b.dataset.id];
+      if(!hostable(c)){ showErr('#hostErr', 'That case is beyond the 5 free samples — upgrade to host any of the 312, or join a friend\u2019s session free.'); return; }
+      selCase = c.id; hideErr('#hostErr'); renderList($('#caseSearch').value);
+      $('#createBtn').disabled = !ready();
+    }));
+  }
+  $('#caseSearch').addEventListener('input', e => renderList(e.target.value));
+  $('#randBtn').addEventListener('click', () => {
+    const pool = ALL.filter(hostable);
+    const c = pool[Math.floor(Math.random()*pool.length)];
+    if(!c) return;
+    selCase = c.id; $('#caseSearch').value = c.title; renderList(c.title);
+    $('#createBtn').disabled = !ready();
+  });
+  renderList('');
+
+  function showErr(sel, msg){ const e=$(sel); e.textContent=msg; e.classList.remove('hidden'); }
+  function hideErr(sel){ $(sel).classList.add('hidden'); }
+
+  // ---- host / join ----
+  $('#createBtn').addEventListener('click', async () => {
+    if(!ready() || !selCase) return;
+    $('#createBtn').disabled = true;
+    try{
+      const d = await api('POST', '', { op:'create', caseId: selCase });
+      code = d.code; st = d.state; persistMe(); enterLobby(); startPolling();
+    }catch(err){ showErr('#hostErr', err.message); $('#createBtn').disabled = false; }
+  });
+  $('#joinBtn').addEventListener('click', joinFromInput);
+  $('#joinCode').addEventListener('keydown', e => { if(e.key==='Enter') joinFromInput(); });
+  async function joinFromInput(){
+    if(!ready()){ showErr('#joinErr', API ? 'Sign in first — a free account is enough.' : 'Joining works on the live site only.'); return; }
+    const c = $('#joinCode').value.trim().toUpperCase().replace(/[^A-Z0-9]/g,'');
+    if(c.length !== 5){ showErr('#joinErr','Codes are 5 letters/numbers.'); return; }
+    try{
+      const d = await api('GET', '?code='+c);
+      code = c; st = d.state; hideErr('#joinErr'); persistMe(); route(); startPolling();
+    }catch(err){ showErr('#joinErr', err.message); }
+  }
+
+  // resume after refresh
+  (function(){
+    try{
+      const s = JSON.parse(sessionStorage.getItem(SS)||'null');
+      if(s && s.code && ready()){
+        code = s.code; me.name = s.name||''; me.role = s.role||'';
+        api('GET','?code='+code).then(d => { st = d.state; if(me.name) $('#myName').value = me.name; route(); startPolling(); }).catch(clearMe);
+      }
+    }catch(e){}
+  })();
+
+  // ---- polling ----
+  function startPolling(){
+    stopPolling();
+    pollId = setInterval(async () => {
+      if(!code || document.hidden) return;
+      try{
+        const d = await api('GET','?code='+code);
+        st = d.state;
+        // if my role claim was lost in a race and the slot is still free, re-claim
+        if(me.role && st.phase==='lobby' && !st.roles[me.role]) claimRole(me.role, true);
+        route();
+      }catch(err){
+        if(/not found|expired/i.test(err.message)){ stopPolling(); showErr('#stageErr', err.message); showErr('#lobbyErr', err.message); }
+      }
+    }, 2500);
+  }
+  function stopPolling(){ if(pollId){ clearInterval(pollId); pollId = null; } }
+
+  async function patch(p){
+    const d = await api('POST','', { op:'patch', code, patch:p });
+    st = d.state; route();
+  }
+
+  // ---- routing ----
+  function show(id){ ['setup','lobby','stage','doneView'].forEach(x => $('#'+x).classList.toggle('hidden', x!==id)); }
+  function route(){
+    if(!st){ show('setup'); return; }
+    if(st.phase === 'lobby') { enterLobby(); return; }
+    if(st.phase === 'done')  { renderDone(); return; }
+    renderStage();
+  }
+
+  // ---- lobby ----
+  function enterLobby(){
+    show('lobby');
+    const c = byId[st.caseId] || {};
+    $('#codeBig').textContent = code;
+    $('#lobbyCase').textContent = me.role === 'candidate' ? '(hidden until your prep starts)' : (c.title || st.caseId);
+    $('#lobbyType').textContent = c.type ? '· '+(TYPE_LBL[c.type]||'') : '';
+    const grid = $('#roleGrid');
+    grid.innerHTML = ROLES.map(([r, ic, lbl]) => {
+      const who = st.roles && st.roles[r];
+      const mine = me.role === r;
+      return `<div class="gm-role ${mine?'mine':''}">
+        <div class="ic">${ic}</div><div class="rn">${lbl}</div>
+        <div class="who ${who?'':'empty'}">${who ? esc(who) + (mine?' (you)':'') : 'unclaimed'}</div>
+        ${!who && !mine ? `<button data-claim="${r}">Claim</button>` : mine ? `<button data-claim="">Leave role</button>` : ''}
+      </div>`;
+    }).join('');
+    grid.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+      const r = b.dataset.claim;
+      if(!r){ const old = me.role; me.role=''; persistMe(); patch({roles:{[old]:null}}).catch(e=>showErr('#lobbyErr',e.message)); return; }
+      claimRole(r, false);
+    }));
+    const canStart = st.roles && st.roles.candidate && st.roles.patient;
+    $('#startBtn').disabled = !canStart;
+    $('#startBtn').textContent = canStart ? 'Start the consultation →' : 'Waiting for candidate + patient…';
+  }
+  function claimRole(r, silent){
+    const name = ($('#myName').value||'').trim() || me.name;
+    if(!name){ if(!silent) showErr('#lobbyErr','Type your first name first.'); return; }
+    me.name = name; me.role = r; persistMe(); hideErr('#lobbyErr');
+    patch({ roles: { [r]: name } }).catch(e => { if(!silent) showErr('#lobbyErr', e.message); });
+  }
+  $('#myName').addEventListener('input', e => { me.name = e.target.value.trim(); persistMe(); });
+  $('#startBtn').addEventListener('click', () => {
+    const now = serverNow();
+    const p = $('#optPrep').checked ? { phase:'prep', prepTs: now } : { phase:'live', startTs: now };
+    patch(p).catch(e => showErr('#lobbyErr', e.message));
+  });
+  $('#leaveBtn').addEventListener('click', () => {
+    const old = me.role;
+    if(old) patch({roles:{[old]:null}}).catch(()=>{});
+    stopPolling(); clearMe(); code=''; st=null; me={name:me.name,role:''}; show('setup');
+  });
+
+  // ---- stage (prep / live / marking) ----
+  let ticks = [];   // examiner's local checkpoint ticks
+  let grades = {};  // examiner's local domain grades
+  let builtFor = '';
+  function renderStage(){
+    show('stage');
+    const c = byId[st.caseId] || {};
+    $('#barTitle').textContent = me.role==='candidate' && st.phase==='prep' ? 'Your next patient' : (c.title || '');
+    $('#barType').textContent = TYPE_LBL[c.type] || 'Consultation';
+    $('#barRole').textContent = me.role || 'observer';
+    const tag = $('#phaseTag');
+    if(st.phase==='prep'){ tag.textContent='Prep'; tag.className='gm-phase prep'; }
+    else if(st.phase==='marking'){ tag.textContent='Marking'; tag.className='gm-phase done'; }
+    else { tag.textContent='Consulting'; tag.className='gm-phase'; }
+
+    const key = st.caseId + '|' + (me.role||'obs');
+    if(builtFor !== key){ buildPanes(c); builtFor = key; }
+    ['Candidate','Patient','Examiner','Observer'].forEach(p => {
+      const mineP = (me.role||'observer').toLowerCase() === p.toLowerCase() || (!me.role && p==='Observer');
+      $('#pane'+p).classList.toggle('hidden', !mineP);
+    });
+    renderStageActions();
+    startTick();
+  }
+
+  function buildPanes(c){
+    const s = c.script || {};
+    // Candidate — brief only, like the real exam
+    $('#paneCandidate').innerHTML = `
+      <div class="gm-brief"><div class="bh">Medical-record brief</div><p>${esc(c.brief||'')}</p></div>
+      <div class="gm-brief"><div class="bh">Reminders</div><p>Open with the patient's agenda · elicit ICE · share your reasoning · agree the plan together · safety-net specifically. Your patient and examiner are on your video call.</p></div>`;
+    // Patient — full script
+    const facts = (s.facts||[]).map(f=>`<div class="gm-fact"><div class="k">${esc(f.topic||'')}</div><div class="v">${esc(f.text||'')}</div></div>`).join('');
+    const ice = s.ice ? `<div class="gm-fact"><div class="k">Ideas</div><div class="v">${esc(s.ice.ideas||'—')}</div></div>
+      <div class="gm-fact"><div class="k">Concerns</div><div class="v">${esc(s.ice.concerns||'—')}</div></div>
+      <div class="gm-fact"><div class="k">Expectations</div><div class="v">${esc(s.ice.expectations||'—')}</div></div>` : '';
+    const cues = (s.cues||[]).map(x=>`<div class="gm-cue">${esc(x)}</div>`).join('');
+    $('#panePatient').innerHTML = `
+      <div class="gm-brief"><div class="bh">How to play it</div><p>Answer only what you're asked, in 1–3 sentences. Release the facts below when the right question comes — never volunteer them. Plant each cue naturally once; if it's missed, let it go.</p></div>
+      <div class="gm-sec-h">Your opening line</div><div class="gm-open">${esc(s.opening||'')}</div>
+      <div class="gm-sec-h">Facts — release when asked</div>${facts}
+      <div class="gm-sec-h">Your ICE</div>${ice}
+      <div class="gm-sec-h">Cues to plant</div>${cues}`;
+    // Examiner — checkpoints (tick live) + cues
+    ticks = (c.checkpoints||[]).map(()=>false); grades = {};
+    const cps = (c.checkpoints||[]).map((cp,i)=>`<label class="gm-chk"><input type="checkbox" data-cp="${i}"><span class="dom ${esc(cp.dom)}">${esc(cp.dom)}</span><span>${esc(cp.text)}</span></label>`).join('');
+    $('#paneExaminer').innerHTML = `
+      <div class="gm-brief"><div class="bh">Examiner card</div><p>Tick each behaviour as you see it. The cues the patient will plant are listed below — watch whether the candidate picks them up. You'll grade the three domains when the case ends.</p></div>
+      <div class="gm-sec-h">Checkpoints</div>${cps}
+      <div class="gm-sec-h">Planted cues to watch for</div>${cues}
+      <div id="markBlock" class="hidden">
+        <div class="gm-sec-h">Grade the domains</div>
+        ${DOMS.map(([k,lbl])=>`<div class="gm-grade"><div class="gname">${lbl}</div><div class="gm-gseg" data-dom="${k}">${['CF','F','P','CP'].map(g=>`<button data-g="${g}">${GLAB[g]}</button>`).join('')}</div></div>`).join('')}
+        <div class="lbl">The single most useful fix</div>
+        <input class="gm-in" id="oneLine" maxlength="140" placeholder="One sentence the candidate should hear…" />
+        <div class="gm-actions"><button class="gm-btn" id="submitMarks" disabled>Submit marks →</button></div>
+      </div>`;
+    $('#paneExaminer').querySelectorAll('[data-cp]').forEach(b => b.addEventListener('change', e => { ticks[+e.target.dataset.cp] = e.target.checked; }));
+    $('#paneExaminer').querySelectorAll('.gm-gseg').forEach(seg => seg.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+      seg.querySelectorAll('button').forEach(x=>x.classList.remove('sel')); b.classList.add('sel');
+      grades[seg.dataset.dom] = b.dataset.g;
+      $('#submitMarks').disabled = !(grades.dg && grades.cm && grades.rto);
+    })));
+    $('#paneExaminer').addEventListener('click', e => {
+      if(e.target.id === 'submitMarks'){
+        patch({ phase:'done', marks: { dg:grades.dg, cm:grades.cm, rto:grades.rto, one:($('#oneLine').value||'').trim(), ticks: ticks } })
+          .catch(err => showErr('#stageErr', err.message));
+      }
+    });
+  }
+
+  function renderStageActions(){
+    const a = $('#stageActions');
+    if(st.phase === 'prep'){
+      a.innerHTML = me.role==='candidate' ? '<button class="gm-btn" id="skipPrep">I\u2019m ready — start the 12 minutes →</button>' : '<span style="font-size:13px;color:var(--muted)">Candidate is reading the brief…</span>';
+      const b = $('#skipPrep'); if(b) b.addEventListener('click', goLive);
+    } else if(st.phase === 'live'){
+      a.innerHTML = (me.role==='candidate'||me.role==='examiner') ? '<button class="gm-btn ghost" id="endCase">End consultation →</button>' : '';
+      const b = $('#endCase'); if(b) b.addEventListener('click', () => patch({phase:'marking'}).catch(e=>showErr('#stageErr',e.message)));
+    } else if(st.phase === 'marking'){
+      if(me.role === 'examiner'){ a.innerHTML=''; $('#markBlock') && $('#markBlock').classList.remove('hidden'); }
+      else a.innerHTML = '<span style="font-size:13px;color:var(--muted)">⚖️ The examiner is marking — hold tight…</span>';
+    }
+  }
+  function goLive(){
+    if(advancing) return; advancing = true;
+    patch({ phase:'live', startTs: serverNow() }).catch(e=>showErr('#stageErr',e.message)).finally(()=>{ advancing=false; });
+  }
+
+  // ---- shared clock ----
+  function fmt(s){ const m=Math.floor(Math.abs(s)/60), ss=Math.abs(s)%60; return (s<0?'+':'')+m+':'+String(ss).padStart(2,'0'); }
+  function startTick(){ if(!tickId) tickId = setInterval(tick, 400); }
+  function tick(){
+    if(!st || (st.phase!=='prep' && st.phase!=='live')){ return; }
+    const t = $('#timer');
+    if(st.phase === 'prep'){
+      const left = Math.round((st.prepTs + 180000 - serverNow())/1000);
+      t.textContent = fmt(Math.max(left,0)); t.className = 'gm-timer';
+      if(left <= 0 && me.role === 'candidate') goLive();
+    } else {
+      const left = Math.round((st.startTs + 720000 - serverNow())/1000);
+      t.textContent = fmt(left);
+      t.className = 'gm-timer' + (left<0 ? ' over' : left<=120 ? ' warn' : '');
+    }
+  }
+
+  // ---- result ----
+  function renderDone(){
+    show('doneView');
+    const c = byId[st.caseId] || {}, m = st.marks || {};
+    const missed = (c.checkpoints||[]).filter((cp,i) => m.ticks && !m.ticks[i]);
+    $('#doneView').innerHTML = `<div class="gm-result">
+      <h3>${esc(c.title||'Case')} — examiner's card</h3>
+      <div>${DOMS.map(([k,lbl])=>`<span class="gm-gr ${esc(m[k]||'')}"><span class="gn">${lbl.split(' ')[0]}</span>${GLAB[m[k]]||'—'}</span>`).join('')}</div>
+      ${m.one ? `<div class="gm-one">💡 ${esc(m.one)}</div>` : ''}
+      ${missed.length ? `<div class="gm-sec-h">Missed checkpoints</div>` + missed.map(cp=>`<div class="gm-miss">${esc(cp.text)}</div>`).join('') : '<div class="gm-sec-h" style="color:#15803d">Every checkpoint ticked 🎉</div>'}
+      ${c.learning ? `<div class="gm-learn"><b>Teaching point.</b> ${esc(c.learning)}</div>` : ''}
+      <div class="gm-actions">
+        ${me.role==='candidate' ? '<button class="gm-btn" id="saveAttempt">Save to My Readiness →</button>' : ''}
+        <button class="gm-btn ghost" id="againBtn">New session</button>
+        <a class="gm-btn ghost" href="sca-weakspots.html" style="text-decoration:none;display:inline-block">My Readiness</a>
+      </div>
+      <div class="gm-err hidden" id="doneMsg"></div>
+    </div>`;
+    const sv = $('#saveAttempt');
+    if(sv) sv.addEventListener('click', () => {
+      try{
+        const rec = { ts: Date.now(), id: c.id, title: c.title, groups: c.groups || c.ceg || (c.meta && c.meta.groups) || [],
+          dg: m.dg||null, cm: m.cm||null, rto: m.rto||null, overall:'', src:'group' };
+        const A='rgp-sca-attempts'; const att = JSON.parse(localStorage.getItem(A)||'[]');
+        att.push(rec); localStorage.setItem(A, JSON.stringify(att.slice(-400)));
+        sv.textContent = 'Saved ✓'; sv.disabled = true;
+      }catch(e){}
+    });
+    $('#againBtn').addEventListener('click', () => { stopPolling(); clearMe(); code=''; st=null; me.role=''; builtFor=''; show('setup'); });
+  }
+})();
+</script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

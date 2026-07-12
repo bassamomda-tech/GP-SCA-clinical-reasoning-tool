@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osteoarthritis &middot; GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="mode-both" id="bodyEl">
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">OA</div>
+      <div><div class="tb-title">Osteoarthritis &middot; Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA &middot; NICE NG226 (2022) / CKS 2023</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">&#127891; SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">&#127973; Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">&lt;30 min</span><span class="ns-lbl">Stiffness: &lt;30 min in OA (cf. &gt;60 min in inflammatory arthritis)</span></div>
+    <div class="ns-item"><span class="ns-val">45+ yrs</span><span class="ns-lbl">Age criterion for clinical OA diagnosis (NICE NG226)</span></div>
+    <div class="ns-item"><span class="ns-val">10% weight</span><span class="ns-lbl">10% weight loss &rarr; ~50% pain reduction in knee OA</span></div>
+    <div class="ns-item"><span class="ns-val">150 min/wk</span><span class="ns-lbl">Exercise target for OA management</span></div>
+    <div class="ns-item"><span class="ns-val">Topical first</span><span class="ns-lbl">NICE NG226: topical NSAID before oral NSAID in peripheral OA</span></div>
+    <div class="ns-item"><span class="ns-val">+PPI always</span><span class="ns-lbl">PPI mandatory with any oral NSAID; never prescribe without</span></div>
+    <div class="ns-item"><span class="ns-val">No X-ray</span><span class="ns-lbl">X-ray not routinely needed for clinical OA diagnosis (NICE NG226)</span></div>
+    <div class="ns-item"><span class="ns-val">No paracetamol</span><span class="ns-lbl">NICE NG226 (2022): no longer recommended routinely for OA</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">&#128203; Clinical Stem &mdash; Osteoarthritis</div>
+  <div class="stem-title">A patient presents with joint pain, stiffness, and reduced function affecting daily life, with features consistent with osteoarthritis.</div>
+  <div class="stem-text">"Mr David Chen is a 62-year-old retired builder who presents with a 2-year history of progressive bilateral knee pain, worse on activity and at the end of the day. Morning stiffness lasts about 15 minutes. He has a BMI of 31. He takes amlodipine 5 mg for hypertension. He plays golf but has had to give it up over the past 6 months. He is worried the pain will only get worse and wants to know if he needs a knee replacement."</div>
+  <div class="stem-note">OA management pivots on two evidence-based principles: exercise and weight loss are the most effective treatments (not tablets), and topical NSAID should precede oral NSAID. In SCA, the surgical expectation conversation and the NSAID + PPI prescribing are the most commonly missed elements.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A &mdash; Clinical diagnosis, typical features</strong> Age &ge;45 + activity-related pain + no morning stiffness or &lt;30 min. Clinical diagnosis &mdash; no imaging needed. Exercise + weight loss first-line. Topical diclofenac if pharmacotherapy needed.</div>
+    <div class="stem-variant"><strong>Scenario B &mdash; High cardiovascular risk</strong> Patient on antihypertensives or known CVD. Naproxen preferred if oral NSAID needed (lower thrombotic risk vs ibuprofen/diclofenac). Celecoxib if GI risk. PPI mandatory with all oral NSAIDs.</div>
+    <div class="stem-variant"><strong>Scenario C &mdash; Red flags requiring investigation</strong> Young patient (&lt;45), inflammatory features, systemic symptoms, atypical joint pattern, trauma. Bloods (CRP, ESR, RF, anti-CCP, FBC) before assuming OA.</div>
+    <div class="stem-variant"><strong>Scenario D &mdash; Surgical consideration</strong> NRS pain &ge;7 despite optimised conservative treatment, significant functional impairment, failed multiple treatment modalities. Refer to orthopaedics. Explain realistic outcomes and recovery expectations.</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Joint(s) affected (knee, hip, hand); BMI (weight loss impact); CVD risk (NSAID choice); renal function (NSAIDs); age and frailty; comorbid depression (CBT, duloxetine); surgical threshold and patient expectations.</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">&#9660; Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">&#9650; Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History Taking — Open Question · Key Diagnostics · Red Flags · ICE</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>OA history confirms the clinical diagnosis and identifies management-modifying factors.</strong> NICE NG226 clinical criteria: age ≥45 + activity-related pain + stiffness &lt;30 min = OA until proven otherwise. Functional impact drives management. ICE must directly address the surgical expectation and establish the patient's functional goals.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 SCA opener</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"I can see from your notes you've been having knee pain for about 2 years and it's been affecting your golf — that sounds very limiting. Tell me in your own words what the pain is like and how it's been affecting your day-to-day life."</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Reference the stem (2 years, golf). Open question inviting the patient to lead with functional impact — this surfaces the ICE naturally and allows the surgical expectation to emerge.</div>
+    </div>
+    <div class="sub-divider">1A — Key targeted questions</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question</th><th style="width:42%">Why it matters</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN — always start here</strong><em>"Tell me about the pain — what is it like, when is it worst, and how is it affecting your life?"</em></td>
+            <td class="why">Functional impact drives management decisions. The open answer also surfaces the ICE spontaneously — particularly the surgical expectation and the specific activity loss (golf).</td>
+            <td><span class="chg chg-rx">Management</span><span class="chg chg-ps">Psychosocial</span></td>
+          </tr>
+          <tr>
+            <td class="q">Morning stiffness duration<em>"When you wake up, how long does the stiffness last before it loosens up?"</em></td>
+            <td class="why">The key diagnostic discriminator. OA: stiffness &lt;30 minutes. RA/inflammatory: stiffness &gt;60 minutes, improving with activity (gel phenomenon). This single question separates OA from inflammatory arthritis. Stiffness &gt;30 min → inflammatory screen (CRP, ESR, RF, anti-CCP).<span class="why-sub">Classic OA: "About 10 minutes — it loosens up as I start moving." Classic RA: "An hour or more, and it's worst in the morning."</span></td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-inv">Investigations</span></td>
+          </tr>
+          <tr>
+            <td class="q">Pain pattern — activity vs rest<em>"Is the pain worse with movement, or does it also hurt at night when you're resting?"</em></td>
+            <td class="why">Activity-related pain improving with rest = mechanical OA. Constant night pain at rest = inflammatory arthritis, infection, or malignancy. Pain consistently waking patients from sleep is not typical OA — investigate before treating.</td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-urgent">Urgency</span></td>
+          </tr>
+          <tr>
+            <td class="q">Swelling, heat, redness<em>"Has the joint ever become very hot, red, and swollen — especially after rich food or alcohol?"</em></td>
+            <td class="why">Hot, red joint = inflammatory arthritis, septic arthritis, or crystal arthropathy (gout). Asymmetric monoarthritis with hyperuricaemia risk factors = gout. OA and gout frequently coexist — one does not exclude the other.</td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-urgent">Urgency</span></td>
+          </tr>
+          <tr>
+            <td class="q">Weight and BMI<em>"How much do you weigh roughly — and has that changed?"</em></td>
+            <td class="why">BMI is the single most modifiable risk factor. Every 5 kg weight loss reduces knee pain by ~20% in overweight patients. 10% body weight reduction = ~50% pain reduction. Each kilogram of body weight exerts 4 kg of force through the knee joint. This is clinically more effective than most pharmacological interventions.</td>
+            <td><span class="chg chg-rx">Management</span></td>
+          </tr>
+          <tr>
+            <td class="q">Drug history — NSAIDs, antihypertensives, anticoagulants<em>"Any painkillers including OTC? Blood pressure tablets? Blood thinners?"</em></td>
+            <td class="why">Critical for NSAID prescribing. Patient takes amlodipine (hypertension) → naproxen preferred over diclofenac/ibuprofen (lower CVD thrombotic risk). PPI mandatory with all oral NSAIDs. NSAIDs contraindicated with anticoagulants and eGFR &lt;30.</td>
+            <td><span class="chg chg-rx">Management</span></td>
+          </tr>
+          <tr>
+            <td class="q">Functional goals<em>"What can't you do now that you used to do — what would you most like to get back to?"</em></td>
+            <td class="why">Functional goals provide patient-centred targets and motivational anchors. "Getting back to golf" is more motivating than "reducing pain from 7/10 to 4/10." Connecting the treatment plan to returning to golf dramatically improves engagement with exercise and weight loss programmes.</td>
+            <td><span class="chg chg-rx">Management</span><span class="chg chg-ref">Referral</span></td>
+          </tr>
+          <tr>
+            <td class="q">Red flags: weight loss, night pain, systemic symptoms<em>"Any weight loss without trying? Night sweats? Pain waking you from sleep?"</em></td>
+            <td class="why">Red flags for malignancy (bone metastases), infection (septic arthritis), or systemic inflammatory disease. Night pain at rest consistently waking patients from sleep is not typical OA. Any red flag warrants investigation before managing as OA.</td>
+            <td><span class="chg chg-urgent">Urgency</span><span class="chg chg-inv">Investigations</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — investigate before managing as OA</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Hot, red, swollen joint + fever + systemically unwell</td><td class="rf-why">Septic arthritis — joint-destroying emergency; destroys joint within 24–48 hrs if untreated; mortality if missed</td><td><span class="rf-action rfa-999">Same-day hospital / A&amp;E</span></td></tr>
+          <tr><td class="rf-flag">Stiffness &gt;60 min + multiple small joints + symmetrical + RF positive</td><td class="rf-why">Rheumatoid arthritis — early DMARD treatment prevents joint destruction; do not manage as OA</td><td><span class="rf-action rfa-same">Urgent 2-week rheumatology</span></td></tr>
+          <tr><td class="rf-flag">Night pain + weight loss + known cancer + age &gt;50</td><td class="rf-why">Bone metastases — X-ray + CT urgently; must be excluded</td><td><span class="rf-action rfa-same">Urgent investigations + 2WW</span></td></tr>
+          <tr><td class="rf-flag">Locked joint with acute severe pain</td><td class="rf-why">Loose body, meniscal tear, or avascular necrosis — do not manage as OA flare</td><td><span class="rf-action rfa-same">Urgent orthopaedic assessment</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — ICE: Ideas · Concerns · Expectations</div>
+    <div class="ps-banner"><div class="ps-banner-lbl">💡 Why ICE is critical in OA — the surgical expectation</div><p>Most OA patients believe knee or hip replacement is the only meaningful treatment. This expectation leads to disengagement from exercise and weight loss — the most effective interventions. ICE must name the surgical expectation, address fatalism ("there's nothing that can help short of surgery"), and establish the specific functional goal that will motivate engagement with the conservative programme. The patient who understands that exercise reduces pain through muscle strengthening and who has a specific functional goal (golf) will engage. The one who feels "fobbed off" will not.</p></div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i"><div class="ice-label">💭 Ideas</div><div class="ice-phrase">"What do you think is causing the knee pain — do you have a sense of what's going on in the joint?"</div><div class="ice-why">Many OA patients have researched extensively. Understanding their model enables targeted education about what exercise actually does (strengthens muscles = shock absorbers) rather than generic advice.</div></div>
+      <div class="ice-card ice-c"><div class="ice-label">😟 Concerns</div><div class="ice-phrase">"Is there something you're particularly worried about — about how this will progress, or about becoming more limited?"</div><div class="ice-why">Fatalism and fear of progressive disability are the most common concerns. Fear of pain during exercise (misbelief that it accelerates joint damage) must also be addressed. Evidence-based correction is essential.</div></div>
+      <div class="ice-card ice-e"><div class="ice-label">🎯 Expectations</div><div class="ice-phrase">"What were you hoping might be possible today — were you expecting a referral to a surgeon, or were you hoping we could try something first?"</div><div class="ice-why">The surgical expectation must be named. Response: "Surgery is a real option — but the evidence shows that structured exercise and weight loss produce very significant benefit, often comparable to surgery, and we should give that a proper try first."</div></div>
+    </div>
+    <div class="sca-cp sca-only">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases that score</div>
+          <div class="sca-phrase">"Morning stiffness under 30 minutes and pain that's worse with activity — that fits very well with osteoarthritis."</div>
+          <div class="sca-phrase">"Surgery is not off the table — but the evidence is clear that exercise and weight loss produce very significant pain reduction, often comparable to surgery. Let me explain the numbers."</div>
+          <div class="sca-phrase">"You mentioned golf — getting you back to golf is actually a very achievable goal. Let's use that as our target."</div>
+        </div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul>
+          <li>Not asking about morning stiffness duration — the key OA vs inflammatory discriminator</li>
+          <li>Not addressing the surgical expectation — patient leaves disengaged from conservative management</li>
+          <li>Not asking about drug history for NSAID safety screening (amlodipine = CVD risk = naproxen preferred)</li>
+        </ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Stiffness not asked. Surgical expectation not addressed. Drug history absent. Functional goals not explored. Jumps to prescription.</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">OA confirmed but surgical expectation not directly addressed with evidence. Weight loss mentioned but not quantified. Golf not used as motivational goal.</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Stiffness &lt;30 min confirmed. Clinical OA explained. Surgical expectation acknowledged and reframed with evidence. Weight loss quantified. Golf as goal set. Drug history for NSAID safety taken.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage Engine — Emergency · Urgent Referral · Routine</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Triage in OA: is this really OA (red flag screen), how severe is it, and is surgical threshold met?</strong></div>
+    <div class="triage">
+      <div class="tc tc-e"><div class="tc-lbl">🔴 Emergency / Urgent</div><h3>Immediate Action</h3><span class="tc-badge tcb-e">Act now</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Hot, red joint + fever</strong><em>Septic arthritis → same-day hospital; joint aspiration</em></li>
+          <li class="tc-item"><strong>Stiffness &gt;60 min + symmetrical small joints</strong><em>RA → urgent 2-week rheumatology</em></li>
+          <li class="tc-item"><strong>Night pain + weight loss + cancer</strong><em>Bone metastases → urgent 2WW</em></li>
+          <li class="tc-item"><strong>Locked joint</strong><em>Meniscal tear/loose body → urgent orthopaedics</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u"><div class="tc-lbl">🟠 Orthopaedic Referral</div><h3>Failed Conservative Tx</h3><span class="tc-badge tcb-u">When indicated</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>NRS ≥7 + failed exercise + physio + NSAIDs + IA steroid</strong><em>Orthopaedics for surgical consideration</em></li>
+          <li class="tc-item"><strong>Significant functional impairment — cannot perform ADLs</strong><em>Document all failed conservative interventions</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r"><div class="tc-lbl">🟢 Routine Primary Care</div><h3>OA Management</h3><span class="tc-badge tcb-r">GP practice</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Typical OA (age ≥45, activity-related, stiffness &lt;30 min)</strong><em>Clinical diagnosis; no imaging; exercise + weight loss first-line</em></li>
+          <li class="tc-item"><strong>Pharmacotherapy if needed</strong><em>Topical NSAID → oral NSAID + PPI → IA corticosteroid</em></li>
+          <li class="tc-item"><strong>Depression comorbidity</strong><em>PHQ-9; duloxetine (NICE NG226 evidence)</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrase</div><div class="sca-phrase">"Based on what you've told me, this fits with osteoarthritis — the pattern is classic. I'm not referring you for surgery today, but that remains an option if the conservative programme doesn't give you sufficient benefit."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Surgical referral at first presentation without conservative management trial</li><li>Not red-flag screening before assuming OA</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Do I Need This Examination?</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Examination confirms the diagnosis, assesses severity, and screens for inflammatory arthritis. Weight and BMI are the most clinically important measurements in OA.</strong></div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:20%">Examination</th><th style="width:36%">Why it matters</th><th style="width:26%">Finding that changes management</th><th>Changes?</th></tr></thead>
+        <tbody>
+          <tr><td class="q">Weight and BMI</td><td class="why">BMI is the most clinically important modifiable factor in OA. Documents baseline. 10% weight loss in BMI &gt;30 = ~50% knee pain reduction. Weight is a primary treatment target — frame explicitly: "every kg lost removes 4 kg of force from your knee."<span class="why-sub">Must be measured at every OA consultation to monitor the primary treatment target.</span></td><td class="why">BMI &gt;30 → weight loss is the most powerful single intervention; quantify the benefit with numbers to motivate</td><td><span class="mcb mcb-yes">YES — pivotal</span></td></tr>
+          <tr><td class="q">Joint examination — inspect, palpate, ROM</td><td class="why">Crepitus = cartilage loss. Bony enlargement (osteophytes). Varus/valgus deformity. ROM limitation. Effusion = acute flare or crystal arthropathy. Warmth = inflammatory (not typical OA).</td><td class="why">Hot joint + effusion → aspiration (exclude septic arthritis). Fixed deformity + severe ROM → near surgical threshold. Warm tender joint → inflammatory screen urgently</td><td><span class="mcb mcb-yes">YES</span></td></tr>
+          <tr><td class="q">Gait assessment</td><td class="why">Antalgic gait documents functional impairment for surgical referral records. Trendelenburg = hip OA involvement. Gait abnormalities support physiotherapy prescription and surgical documentation.</td><td class="why">Antalgic gait + NRS ≥7 → surgical documentation supported</td><td><span class="mcb mcb-yes">YES — referral</span></td></tr>
+          <tr><td class="q">Signs of inflammatory arthritis</td><td class="why">Symmetrical small joint swelling, warmth, tenderness, deformities. OA in large joints + inflammatory small joint signs = coexisting RA not being treated — a significant clinical error.</td><td class="why">Inflammatory signs → urgent bloods + rheumatology; do not manage as OA alone</td><td><span class="mcb mcb-yes">YES — pathway change</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrase</div><div class="sca-phrase">"I'd like to examine your knees and measure your weight today — the weight is clinically very important because it directly determines how much load is going through the joint."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Not measuring weight/BMI — misses the most important modifiable factor</li><li>Not checking for inflammatory signs — risk of labelling RA as OA</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Do I Need This Investigation?</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>NICE NG226 is explicit: X-ray and laboratory tests are NOT routinely needed for typical OA. OA is a clinical diagnosis. Investigations only when atypical features are present or NSAID safety requires checking.</strong></div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:22%">Investigation</th><th style="width:38%">When to order (NOT routine for typical OA)</th><th>Result that changes management</th></tr></thead>
+        <tbody>
+          <tr><td class="q">Plain X-ray</td><td class="why">NOT routine for typical OA (NICE NG226). Indicated if: atypical age (&lt;45), inflammatory features, red flags, prior to surgical referral. X-ray findings correlate poorly with symptoms — important patient communication point.</td><td class="why">Osteophytes + narrowed joint space = OA confirmed (but treatment unchanged). Erosions → RA. Bone destruction → malignancy screen.</td></tr>
+          <tr><td class="q">FBC, CRP, ESR, RF, anti-CCP</td><td class="why">NOT routine. Indicated when stiffness &gt;30 min, multiple small joints, systemic symptoms, inflammatory signs, or young patient (&lt;45).</td><td class="why">Elevated CRP + RF + anti-CCP → RA; urgent rheumatology. Normal: supports OA diagnosis.</td></tr>
+          <tr><td class="q">eGFR before NSAID</td><td class="why">Safety check before any oral NSAID prescription. NSAIDs nephrotoxic; contraindicated if eGFR &lt;30. In CKD eGFR 30–60: use lowest dose shortest duration with monitoring.</td><td class="why">eGFR &lt;30 → NSAIDs contraindicated; topical only or duloxetine. eGFR 30–60 → short-term with monitoring; warn patient.</td></tr>
+          <tr><td class="q">Serum uric acid + joint aspiration (if gout suspected)</td><td class="why">Only if acute monoarthritis with hyperuricaemia risk factors. Serum urate not diagnostic alone — can be normal during acute attack. Joint aspiration with polarised microscopy is gold standard.</td><td class="why">Urate crystals → gout. Organisms → septic arthritis. Normal urate: does not exclude acute gout.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrase</div><div class="sca-phrase">"For classic osteoarthritis with your features, NICE guidance says we don't need an X-ray or blood tests to make the diagnosis — it's a clinical diagnosis. I won't be ordering imaging today."</div></div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul><li>Ordering routine X-ray for typical OA — not indicated per NICE NG226</li><li>Not checking eGFR before prescribing oral NSAID in a patient with hypertension (CKD risk)</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Reaching a Diagnosis — Explained in Plain Language</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="lay-box">
+      <div class="lay-box-lbl">🗣️ Diagnosis in Plain Language</div>
+      <p>"Osteoarthritis is what we call wear and tear in the joint — the cartilage that cushions the bones gradually wears thinner, and the bones start to grind together more than they should. This causes pain, stiffness, and swelling. Despite what many people believe, there is a lot we can do before surgery. Exercise is actually the most effective treatment — not because it fixes the cartilage, but because strong muscles act as shock absorbers and take load off the joint. And weight matters enormously: every kilogram of body weight puts about 4 kilograms of force through the knee joint with each step. Losing 5 kilograms would take 20 kilograms of force off your knee — that's the kind of change that makes a real difference to the pain."</p>
+    </div>
+    <div class="lay-why-not">
+      <div class="lay-why-not-lbl">💬 Addressing the surgical expectation</div>
+      <p><strong>"My father had a knee replacement — I assumed that's what I'd need too."</strong><br><em>"Surgery is absolutely a real option, and I'm not dismissing it. But I want to share what the evidence actually shows. Studies comparing structured exercise and weight loss programmes against knee replacement found that a significant proportion of people waiting for surgery got equivalent benefit from the programme alone. Surgery works very well when it's needed — but it has real recovery demands, usually 3 to 6 months, and its own risks. If we can get you back to playing golf without an operation, that's a much better outcome. Let's give the programme a proper 3-month try — if you're still significantly impaired after that, I will support a surgical referral."</em></p>
+    </div>
+    <div class="g3" style="margin-bottom:12px">
+      <div class="card" style="padding:1rem;border-left:4px solid var(--g)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.4rem">A — Primary care diagnosis</div>
+        <div class="ddx-card ddx-a" style="margin-bottom:.5rem"><h4>Osteoarthritis (NICE NG226)</h4><p>Age ≥45 + activity-related pain + stiffness &lt;30 min. Clinical diagnosis. Exercise + weight loss. Topical NSAID if pharmacotherapy needed. No routine X-ray.</p></div>
+        <div class="ddx-card ddx-a"><h4>Gout (crystal arthropathy)</h4><p>Acute monoarthritis + hyperuricaemia risk factors. Colchicine or NSAID acutely. Allopurinol after acute attack resolved (not during). Common OA coexistence.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--a)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:.4rem">B — Urgent referral</div>
+        <div class="ddx-card ddx-b" style="margin-bottom:.5rem"><h4>Rheumatoid arthritis</h4><p>Stiffness &gt;60 min + symmetrical small joints + RF/anti-CCP positive. Urgent rheumatology. Early DMARD prevents joint destruction.</p></div>
+        <div class="ddx-card ddx-b"><h4>OA requiring surgery</h4><p>NRS ≥7 + failed conservative management. Orthopaedic referral with full conservative management documentation.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--r)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--r);margin-bottom:.4rem">C — Emergency</div>
+        <div class="ddx-card ddx-c" style="margin-bottom:.5rem"><h4>Septic arthritis</h4><p>Hot, red, swollen joint + fever. Same-day hospital. Joint aspiration. Destroys joint within 24–48 hrs untreated.</p></div>
+        <div class="ddx-card ddx-c"><h4>Bone metastases</h4><p>Night pain + weight loss + known cancer. Urgent X-ray + CT. 2WW if new suspected malignancy.</p></div>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Key phrases</div>
+          <div class="sca-phrase">"The cartilage is wearing thinner — strong muscles act as shock absorbers. Exercise doesn't wear the joint out more — it protects it."</div>
+          <div class="sca-phrase">"Every kilogram you lose takes 4 kilograms of force off your knee. That's why weight loss is the most powerful thing you can do."</div>
+          <div class="sca-phrase">"Surgery is not off the table — let's give the exercise and weight programme a proper 3-month trial first."</div>
+        </div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul>
+          <li>Not quantifying the weight loss benefit — vague "lose some weight" does not motivate</li>
+          <li>Dismissing surgery entirely — patient needs to know the pathway if conservative fails</li>
+          <li>Not checking understanding after the explanation</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">If Referral Is Needed</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>Most OA is managed entirely in primary care. Referral to orthopaedics requires documented failed conservative management. Urgent referral if inflammatory arthritis or septic arthritis suspected.</strong></div>
+    <div class="card" style="overflow:hidden">
+      <table class="ref-table">
+        <thead><tr><th>Indication</th><th>Urgency</th><th>GP does before referral</th><th>Must NOT do</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">Septic arthritis / locked joint</td><td><span class="ref-urg rurg-999">Same-day hospital</span></td><td style="font-size:12px">Direct admission; do not delay; joint aspiration urgently in hospital</td><td style="font-size:12px;color:var(--r)">Do not give antibiotics before aspiration (confounds culture)</td></tr>
+          <tr><td style="font-weight:600">Suspected RA (stiffness &gt;60 min, inflammatory features)</td><td><span class="ref-urg rurg-2">2-week rheumatology</span></td><td style="font-size:12px">RF, anti-CCP, CRP, ESR, FBC, X-ray hands/feet; document symptom duration</td><td style="font-size:12px;color:var(--r)">Do not start DMARDs in primary care; do not manage as OA without inflammatory screen</td></tr>
+          <tr><td style="font-weight:600">OA — surgical consideration (NRS ≥7, failed conservative)</td><td><span class="ref-urg rurg-r">Routine orthopaedics</span></td><td style="font-size:12px">Document: pain NRS, functional limitations, all treatments tried (physio, weight loss attempt, topical NSAID, oral NSAID + PPI, IA steroid), duration of conservative management</td><td style="font-size:12px;color:var(--r)">Do not refer at first presentation without conservative trial; do not set expectation that surgery is the only solution</td></tr>
+          <tr><td style="font-weight:600">Refractory pain — specialist pain / duloxetine</td><td><span class="ref-urg rurg-r">Routine pain team</span></td><td style="font-size:12px">PHQ-9; document failed pharmacotherapy; consider duloxetine trial (NICE NG226) before referral</td><td style="font-size:12px;color:var(--r)">Do not prescribe long-term opioids for OA — evidence of harm with minimal benefit</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Expectation · Goals · Exercise · Drug Cards · Follow-Up · Safety-Netting</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro"><strong>NICE NG226 (2022) management: (1) Exercise + weight loss — most effective. (2) Topical NSAID before oral NSAID in peripheral OA. (3) PPI MANDATORY with every oral NSAID. (4) Paracetamol NOT recommended routinely. (5) Opioids not recommended. (6) Oral diclofenac: avoid in significant CVD.</strong></div>
+
+    <div class="sub-divider">7A — Address surgical expectation: validate → explain → negotiate</div>
+    <div class="expect-box">
+      <div class="expect-box-hdr"><span style="font-size:1.4rem">🤝</span><div class="expect-box-lbl">Validate → Explain → Negotiate</div></div>
+      <div class="expect-steps">
+        <div class="expect-step"><div class="expect-step-num">1</div><h5>Validate</h5><p>The expectation of surgery is entirely understandable if a family member has had a replacement. Acknowledge this explicitly before presenting the evidence.</p><span class="expect-phrase">"I completely understand why you'd expect a replacement — your father had one and got excellent results. That's not an unreasonable expectation at all."</span></div>
+        <div class="expect-step"><div class="expect-step-num">2</div><h5>Explain</h5><p>Share the evidence honestly with specific numbers. Exercise and weight loss produce significant pain reduction, often comparable to surgery.</p><span class="expect-phrase">"The research shows that a structured exercise programme and losing just 5–10% of your body weight reduces knee pain by about 50% in most people — comparable to what surgery achieves, without the 3–6 month recovery. I want to make sure you get that benefit first."</span></div>
+        <div class="expect-step"><div class="expect-step-num">3</div><h5>Negotiate</h5><p>Always leave with a specific agreement and goal. Connect the plan to returning to golf.</p><span class="expect-phrase">"Could we agree on a 3-month structured programme — exercise, weight loss target, and a physio referral. If you're still significantly impaired after that, I'll support a surgical referral with full documentation. And let's use getting back to golf as our specific goal."</span></div>
+      </div>
+      <div style="background:rgba(21,128,61,.08);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.65rem 1rem;margin-top:.75rem;font-size:12.5px;color:#14532d;line-height:1.55"><strong>Key principle:</strong> The patient who understands that exercise reduces pain through muscle strengthening and who has a specific functional goal will engage. The patient who feels "fobbed off" will not. Address the surgical expectation directly, quantify the evidence, and set a goal that matters to the patient.</div>
+    </div>
+
+    <div class="sub-divider">7B — Treatment goals + motivational language</div>
+    <div class="g2" style="margin-bottom:1rem">
+      <div class="card" style="padding:1rem 1.1rem">
+        <div class="card-hd" style="color:var(--g);border:none;padding:0 0 .6rem">Treatment goals</div>
+        <div class="tx-goals">
+          <span class="tx-goal tg1">Return to golf — specific, patient-centred functional goal</span>
+          <span class="tx-goal tg1">NRS pain reduction ≥3/10 from baseline</span>
+          <span class="tx-goal tg2">5–10% body weight reduction (BMI &gt;30)</span>
+          <span class="tx-goal tg2">150 min/week exercise sustained</span>
+          <span class="tx-goal tg3">No unnecessary imaging or investigations (clinical diagnosis)</span>
+          <span class="tx-goal tg3">PHQ-9 completed — depression screen</span>
+          <span class="tx-goal tg4">Surgical referral pathway understood and accessible if needed</span>
+          <span class="tx-goal tg4">NSAID + PPI correctly prescribed and monitored</span>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem">
+        <div class="card-hd" style="color:var(--b);border:none;padding:0 0 .6rem">Motivational language</div>
+        <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--b-bd);padding:.55rem .85rem;background:var(--b-bg);border-radius:0 8px 8px 0;line-height:1.6;margin-bottom:.5rem">"Every kilogram you lose takes 4 kilograms off your knee joint with every step. Losing 5 kg takes 20 kg of force off — that's like removing a sack of potatoes your knee has been carrying."</div>
+        <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.6">"Getting back to golf in 3 months is genuinely achievable with this programme. Let's make that our specific goal — not just 'a bit less pain.'"</div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7C — Lifestyle (MOST EFFECTIVE TREATMENT — first-line)</div>
+    <div class="life-grid" style="margin-bottom:1.25rem">
+      <div class="life-card"><div class="life-head"><span class="life-icon">🏃</span><div class="life-title">Therapeutic Exercise</div><span class="life-target">150 min/week aerobic + muscle strengthening</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Strong muscles act as shock absorbers, reducing articular cartilage loading. Exercise also reduces central sensitisation and improves joint lubrication. Exercise does NOT accelerate cartilage loss — it protects it.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Low-impact: swimming, cycling, walking, aqua exercise. Quadriceps strengthening: straight leg raises, mini-squats, step-ups. Physio referral for supervised programme. Reassure: pain during exercise is acceptable; pain worsening after exercise should prompt review.</p></div><span class="life-benefit">Exercise reduces pain ~30%, improves function ~25% — better than most medications (Cochrane)</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">⚖️</span><div class="life-title">Weight Loss (Overweight)</div><span class="life-target">Target: 5–10% body weight; quantify the benefit</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Each kg of body weight exerts 4 kg of force through the knee joint. Weight loss reduces articular loading and has an anti-inflammatory effect through reduced adipokine secretion.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Set a specific target: "5 kg in 3 months" is more motivating than "lose some weight." Structured lifestyle programme referral. Mediterranean diet evidence for OA. Commercial weight loss programme if BMI &gt;30.</p></div><span class="life-benefit">10% body weight loss = ~50% pain reduction in overweight patients with knee OA</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">🧘</span><div class="life-title">Physiotherapy and Education</div><span class="life-target">Refer all new OA diagnoses to physiotherapy</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Targeted muscle strengthening, biomechanical correction, pacing strategies. Patient education changes illness beliefs — particularly fatalism — the most important determinant of long-term function in OA.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Refer all new OA diagnoses. ESCAPE Pain group exercise programme. SELF-management education. Walking aids if indicated (reduces loading 15–20%).</p></div><span class="life-benefit">Physio + education programme: 40% reduction in surgical referral rates in RCTs</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">🌡️</span><div class="life-title">Heat and Cold</div><span class="life-target">Heat for stiffness; ice for acute flares</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Practical</div><p>Heat: warm bath, heat pack for morning stiffness and post-exercise. Cold: ice pack (wrapped in cloth) 15–20 min after activity or during flares. TENS has evidence for short-term relief.</p></div><span class="life-benefit">No pharmacological side effects; evidence-based adjuncts</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">🧠</span><div class="life-title">Mental Health Screen</div><span class="life-target">PHQ-9 at every OA review</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Depression prevalence ~20% in OA. Bidirectional: chronic pain → depression; depression → amplified pain. Depression predicts poor surgical outcomes. PHQ-9 at every review.</p></div><div class="life-section"><div class="life-section-lbl">Practical</div><p>Duloxetine 30–60 mg OD: NICE NG226 evidence for OA pain + comorbid depression. IAPT referral. CBT for chronic pain.</p></div><span class="life-benefit">Duloxetine reduces OA pain ~30% beyond placebo; treats depression simultaneously</span></div></div>
+      <div class="life-card"><div class="life-head"><span class="life-icon">👟</span><div class="life-title">Footwear and Orthotics</div><span class="life-target">Cushioned sports shoes; refer podiatry if appropriate</span></div><div class="life-body"><div class="life-section"><div class="life-section-lbl">Practical</div><p>Well-fitting cushioned sports shoes. Avoid high heels. Lateral wedge insoles for medial compartment knee OA. Refer to podiatry or orthotics if appropriate.</p></div><span class="life-benefit">Reduces impact loading without pharmacological side effects</span></div></div>
+    </div>
+
+    <div class="sub-divider" id="drugs">7D — Prescribing guide (NICE NG226, 2022)</div>
+    <div class="step-intro" style="margin-bottom:.75rem;border-left-color:var(--r)"><strong>Critical NICE NG226 (2022) rules: (1) Paracetamol no longer recommended routinely for OA. (2) Topical NSAID before oral in peripheral OA. (3) PPI MANDATORY with every oral NSAID. (4) Naproxen preferred for CVD risk (hypertension) — not diclofenac oral. (5) Opioids: not recommended.</strong></div>
+    <div class="g3" style="margin-bottom:1rem;gap:10px">
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--g)">
+        <div class="card-hd" style="color:var(--g);border:none;padding:0 0 .55rem;font-size:11.5px">Step 1 — Topical NSAID (first pharmacological step)</div>
+        <ul style="margin:0;padding-left:1.1rem;font-size:12px;line-height:1.8">
+          <li><strong>Topical diclofenac 1% gel:</strong> apply 3–4×/day to affected joint</li>
+          <li>NICE NG226 first-line pharmacological choice for peripheral OA</li>
+          <li>Less systemic absorption — fewer GI and CVD side effects</li>
+          <li>No PPI required — key advantage over oral NSAIDs</li>
+          <li>Review at 4 weeks; if inadequate → add oral NSAID + PPI</li>
+        </ul>
+        <div style="font-size:11px;background:var(--g-bg);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--g);font-weight:600;margin-top:.5rem">Topical diclofenac does NOT require PPI co-prescription. Prescribing oral NSAID before trying topical for peripheral OA = NICE error.</div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--b)">
+        <div class="card-hd" style="color:var(--b);border:none;padding:0 0 .55rem;font-size:11.5px">Step 2 — Oral NSAID + PPI (always co-prescribed)</div>
+        <ul style="margin:0;padding-left:1.1rem;font-size:12px;line-height:1.8">
+          <li><strong>Naproxen 250–500 mg twice daily:</strong> preferred in high CVD / hypertension (lower thrombotic risk)</li>
+          <li><strong>Ibuprofen 400 mg three times daily:</strong> lower CVD risk patients</li>
+          <li><strong>Celecoxib 100–200 mg OD:</strong> high GI risk; caution in significant CVD</li>
+          <li><strong>PPI MANDATORY</strong> — omeprazole 20 mg OD or lansoprazole 15 mg OD always co-prescribed</li>
+          <li>Lowest effective dose, shortest duration; review at 4 weeks</li>
+        </ul>
+        <div style="font-size:11px;background:var(--b-bg);border:1px solid var(--b-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--b);font-weight:600;margin-top:.5rem">This patient takes amlodipine (hypertension): naproxen preferred. Never prescribe oral diclofenac for patients with significant cardiovascular risk factors.</div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--p)">
+        <div class="card-hd" style="color:var(--p);border:none;padding:0 0 .55rem;font-size:11.5px">Step 3 — IA Corticosteroid + Duloxetine</div>
+        <ul style="margin:0;padding-left:1.1rem;font-size:12px;line-height:1.8">
+          <li><strong>IA triamcinolone 40 mg:</strong> acute flare; relief 4–8 weeks; max 3×/year; not if prosthetic joint</li>
+          <li><strong>Duloxetine 30–60 mg OD:</strong> NICE NG226 evidence for OA pain; central sensitisation or comorbid depression</li>
+          <li><strong>NOT recommended:</strong> paracetamol routinely (NICE NG226, 2022); opioids; glucosamine; acupuncture</li>
+        </ul>
+        <div style="font-size:11px;background:var(--p-bg);border:1px solid var(--p-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--p);font-weight:600;margin-top:.5rem">IA corticosteroid: max 3/year; frequent injections may accelerate cartilage loss; must exclude septic arthritis before injecting.</div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7E — Drug selector</div>
+    <div class="ds-wrap" style="margin-bottom:.85rem">
+      <div class="ds-top">
+        <h3>Select characteristics — see drug cards below</h3>
+        <div class="ds-checks">
+          <label class="ds-lbl"><input type="checkbox" id="ds-dm" onchange="calcDrug()"> Peripheral OA (knee, hand) — topical NSAID first-line, no PPI needed</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-cvd" onchange="calcDrug()"> High CVD risk / hypertension — naproxen preferred over ibuprofen or diclofenac</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-ckd" onchange="calcDrug()"> High GI risk (age &gt;65, PUD, anticoagulant) — celecoxib preferred</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-afro" onchange="calcDrug()"> Oral NSAID prescribed — PPI mandatory (always co-prescribe)</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-age55" onchange="calcDrug()"> Acute flare — intra-articular corticosteroid (max 3×/year)</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-hf" onchange="calcDrug()"> Depression / central sensitisation — duloxetine (NICE NG226)</label>
+        </div>
+      </div>
+      <div class="ds-result">
+        <div class="ds-result-title">Prescribing approach</div>
+        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Topical diclofenac first (no PPI needed). If insufficient: oral NSAID + PPI mandatory. High CVD/hypertension: naproxen. GI risk: celecoxib. Acute flare: IA corticosteroid max 3/year. Depression/central sensitisation: duloxetine. Never paracetamol routinely. Never opioids for OA. Never oral NSAID without PPI.</span></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7F — Drug reference cards</div>
+    <div class="drug-cards" id="drug-cards-container">
+      <div class="dc" id="dc-topnsaid">
+        <div class="dc-head"><div><div class="dc-name">Topical Diclofenac Gel</div><div class="dc-examples">Voltarol 1% gel; diclofenac diethylamine 1.16%</div><div class="dc-rec-badge" id="rec-topnsaid">✓ NICE Step 1</div></div><div class="dc-badges"><span class="dc-step step1">Step 1 (peripheral OA)</span><span class="dc-dose">Apply 3–4× daily to joint</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use when</div>
+          <div class="dc-item">NICE NG226 first-line pharmacological choice for peripheral joint OA (knee, hand)</div>
+          <div class="dc-item">Significantly less systemic absorption — fewer GI and CVD side effects than oral NSAIDs</div>
+          <div class="dc-item">No PPI required — key advantage; available OTC (Voltarol)</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Caution</div><div class="dc-item ci-rel">Broken or infected skin; avoid mucous membranes; wash hands after application</div></div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"Apply a small amount directly over the knee joint 3 to 4 times a day — let it dry before covering. The advantage over tablets is much less gets into the bloodstream. You don't need a stomach-protecting tablet with this one."</p></div>
+        <div class="dc-sca"><p>In SCA: prescribing oral NSAID before topical for peripheral OA = NICE NG226 error. The mark: topical diclofenac first + no PPI needed. Jumping straight to oral NSAID loses this mark.</p></div>
+      </div>
+
+      <div class="dc" id="dc-nap">
+        <div class="dc-head"><div><div class="dc-name">Naproxen (Oral NSAID — CVD risk)</div><div class="dc-examples">Naprosyn; generic naproxen; 250–500 mg tablets</div><div class="dc-rec-badge" id="rec-nap">✓ Preferred: CVD risk</div></div><div class="dc-badges"><span class="dc-step step2">Step 2 — CVD risk</span><span class="dc-dose">250–500 mg twice daily with food + PPI</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use when — always add PPI</div>
+          <div class="dc-item">Preferred oral NSAID in patients with cardiovascular risk factors or hypertension</div>
+          <div class="dc-item">Lower thrombotic cardiovascular risk than ibuprofen and diclofenac (network meta-analysis, Lancet 2013)</div>
+          <div class="dc-item">PPI MANDATORY — omeprazole 20 mg OD or lansoprazole 15 mg OD always co-prescribed</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div>
+          <div class="dc-item ci-abs">eGFR &lt;30 — nephrotoxic; AKI risk</div>
+          <div class="dc-item ci-abs">Severe heart failure; established CVD — still lower thrombotic risk than ibuprofen/diclofenac, but not zero</div>
+        </div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div>
+          <div class="dc-item">GI: dyspepsia, peptic ulcer, GI bleeding — PPI co-prescription mandatory; take with food</div>
+          <div class="dc-item">Cardiovascular: fluid retention, hypertension aggravation — monitor BP in this hypertensive patient</div>
+          <div class="dc-item">Renal: AKI risk especially in dehydration, CKD, elderly</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"Take twice daily with food — never on an empty stomach. Also take the stomach-protecting tablet I'm prescribing alongside it, every day without fail. If you develop stomach pain, dark stools, or feel very unwell, stop the tablet and contact us."</p></div>
+        <div class="dc-sca"><p>In SCA: two specific marks — (1) naproxen preferred for CVD risk patients, not diclofenac or ibuprofen; (2) PPI always co-prescribed. Both must be stated explicitly. "I'll also prescribe a stomach-protecting tablet alongside this."</p></div>
+      </div>
+
+      <div class="dc" id="dc-ibu">
+        <div class="dc-head"><div><div class="dc-name">Ibuprofen (Oral NSAID — low CVD risk)</div><div class="dc-examples">Brufen; Nurofen; 400 mg tablets</div><div class="dc-rec-badge" id="rec-ibu">✓ Low CVD risk</div></div><div class="dc-badges"><span class="dc-step step2">Step 2 — low CVD risk</span><span class="dc-dose">400 mg three times daily with food + PPI</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use when — always add PPI</div>
+          <div class="dc-item">Appropriate for patients without significant CVD risk factors</div>
+          <div class="dc-item">PPI MANDATORY — never prescribe oral NSAID without</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div>
+          <div class="dc-item ci-abs">Significant CVD risk (hypertension, IHD) — use naproxen instead</div>
+          <div class="dc-item ci-abs">eGFR &lt;30; severe heart failure</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"Three times a day with food. Always take the stomach-protecting tablet as well — that's not optional. Stop and contact us if you develop stomach pain or notice dark stools."</p></div>
+      </div>
+
+      <div class="dc" id="dc-iacs">
+        <div class="dc-head"><div><div class="dc-name">Intra-Articular Corticosteroid</div><div class="dc-examples">Triamcinolone acetonide 40 mg; methylprednisolone 40 mg</div><div class="dc-rec-badge" id="rec-iacs">✓ Flare management</div></div><div class="dc-badges"><span class="dc-step step3">Flare management</span><span class="dc-dose">40 mg IA; max 3×/year per joint</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use when</div>
+          <div class="dc-item">Acute OA flare — significant joint effusion and pain; short-term relief 4–8 weeks</div>
+          <div class="dc-item">NSAIDs contraindicated or as adjunct while waiting for exercise to take effect</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div>
+          <div class="dc-item ci-abs">Prosthetic joint — specialist procedure only; infection risk</div>
+          <div class="dc-item ci-abs">Suspected septic arthritis — must exclude before injecting (aspiration first)</div>
+          <div class="dc-item ci-rel">Diabetes — transient blood glucose elevation 48–72 hrs; warn patient</div>
+          <div class="dc-item ci-rel">More than 3×/year — may accelerate cartilage loss</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"This injection reduces the joint inflammation. You may have 24–48 hours of worsening pain initially — that's a normal reaction. After that, most people get significant relief for 4–8 weeks. We can repeat this up to 3 times a year."</p></div>
+        <div class="dc-sca"><p>In SCA: key knowledge points — max 3 IA injections/year; must not inject if septic arthritis suspected; warn diabetics about blood glucose; not for prosthetic joints.</p></div>
+      </div>
+
+      <div class="dc" id="dc-dulox">
+        <div class="dc-head"><div><div class="dc-name">Duloxetine (SNRI)</div><div class="dc-examples">Cymbalta; generic duloxetine 30/60 mg capsules</div><div class="dc-rec-badge" id="rec-dulox">✓ Central pain / depression</div></div><div class="dc-badges"><span class="dc-step step3">Step 3</span><span class="dc-dose">30 mg OD → titrate to 60 mg OD</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use when</div>
+          <div class="dc-item">OA pain with central sensitisation or comorbid depression (NICE NG226 evidence)</div>
+          <div class="dc-item">NSAIDs contraindicated or inadequate; ~30% pain reduction beyond placebo</div>
+          <div class="dc-item">Start 30 mg for 2 weeks then increase to 60 mg if tolerated</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div><div class="dc-item ci-abs">MAOIs (serotonin syndrome); uncontrolled hypertension; severe hepatic impairment</div></div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div>
+          <div class="dc-item">Nausea: most common; usually settles by week 2; take with food</div>
+          <div class="dc-item">Discontinuation syndrome: taper over 2 weeks when stopping — never stop abruptly</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"This tablet works on pain pathways in the brain and spine — it's not a conventional painkiller, but it changes how pain is processed. Start at 30 mg for 2 weeks, then increase. Allow 2–4 weeks to see the pain effect. Don't stop abruptly — we'd taper it."</p></div>
+        <div class="dc-sca"><p>In SCA: duloxetine for OA is a NICE NG226 (2022) recommendation — a specific knowledge point. Knowing it is indicated for central sensitisation and comorbid depression demonstrates up-to-date guideline knowledge.</p></div>
+      </div>
+
+      <div class="dc" id="dc-caps">
+        <div class="dc-head"><div><div class="dc-name">Topical Capsaicin</div><div class="dc-examples">Axsain 0.075%; Zacin 0.025%</div><div class="dc-rec-badge" id="rec-caps">✓ NICE adjunct</div></div><div class="dc-badges"><span class="dc-step step2">Topical adjunct</span><span class="dc-dose">Apply 3–4× daily; consistent use essential</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Use when</div>
+          <div class="dc-item">Adjunct or alternative to topical NSAID for knee and hand OA (NICE NG226)</div>
+          <div class="dc-item">Depletes substance P from sensory nerve terminals → reduces pain transmission</div>
+          <div class="dc-item">Effect builds over 4–6 weeks of regular use — must be used consistently</div>
+        </div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div>
+          <div class="dc-item">Burning sensation at application site for first 2–4 weeks — this IS the mechanism; warn patient in advance or they will stop prematurely</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"For the first 2–4 weeks you'll feel a burning sensation at the site — this is it working, not a problem. Stick with it; after a few weeks that reduces and the pain relief builds. Apply 3–4 times a day consistently."</p></div>
+      </div>
+    </div>
+
+    <div class="sub-divider" style="margin-top:1.5rem">7G — Psychosocial impact</div>
+    <div class="psoci-wrap">
+      <div class="psoci-hdr"><span style="font-size:1.5rem">🫂</span><div class="psoci-title">OA affects identity, independence, and quality of life far beyond what the NRS pain score captures</div></div>
+      <div class="psoci-grid">
+        <div class="psoci-card"><span class="psoci-icon">⛳</span><h5>Loss of Valued Activities</h5><p>OA causes patients to give up activities central to their identity — golf, gardening, dancing, walking the dog. These losses cascade into depression, reduced activity, weight gain, and worsening OA — a vicious cycle.</p><p>Addressing the specific activity loss as a treatment goal breaks this cycle. "Getting back to golf" is more powerful than "reduce NRS by 3."</p><span class="psoci-phrase">"Getting you back to golf is our goal — let's be specific about what you'd need to be able to do that."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">😢</span><h5>Depression and Chronic Pain</h5><p>Depression prevalence in OA is ~20%. Depression amplifies pain and reduces exercise engagement — bidirectional worsening. PHQ-9 at every OA review. Duloxetine treats both simultaneously.</p><span class="psoci-phrase">"How has your mood been — living with this level of pain day to day can really take a toll. I want to make sure we're not missing anything there."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">🧗</span><h5>Fatalism and Self-Efficacy</h5><p>"There's nothing that can help short of surgery" is the most common belief barrier to OA management. Directly preventing engagement with exercise and weight loss.</p><p>Motivational interviewing, specific evidence with numbers, and connecting treatment to meaningful goals are the most effective approaches.</p><span class="psoci-phrase">"I want to challenge one thing — many people believe exercise makes it worse. The research actually shows the opposite — let me explain why."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">💼</span><h5>Work and Productivity</h5><p>Manual workers with OA (this patient: retired builder) often have occupational history as a contributing cause. OA is a leading cause of early retirement. Occupational therapy referral may be appropriate.</p><span class="psoci-phrase">"Has the pain been affecting your ability to do things day-to-day — I want to make sure we factor that into the plan."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">😴</span><h5>Sleep Disruption</h5><p>Chronic pain disrupts sleep. Poor sleep amplifies pain perception and reduces physical function — bidirectional. Evening duloxetine (if prescribed) may help sleep. Sleep hygiene advice and CBT for pain/sleep comorbidity.</p><span class="psoci-phrase">"Is the pain affecting your sleep? This is something we can address specifically and it makes a real difference to how you experience the pain during the day."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">👟</span><h5>Exercise Fear</h5><p>Many patients fear that exercise will accelerate joint damage. This misbelief must be directly addressed. Exercise does NOT wear the joint out more — it protects it through muscle strengthening and load redistribution.</p><span class="psoci-phrase">"I need to address something important: exercise does not wear the joint out more. The muscles become shock absorbers — the joint actually gets more protection, not less."</span></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7H — Follow-up schedule</div>
+    <div class="card" style="padding:1.1rem 1.25rem;margin-bottom:1.25rem">
+      <div class="fu-line">
+        <div class="fu-event"><div class="fu-dot fd1">1</div><div class="fu-content"><h5>4–6 weeks — Exercise and topical NSAID review</h5><p>Engaging with exercise? Topical diclofenac adequate? Weight change documented. PHQ-9. If topical inadequate: add naproxen + PPI (for this patient with hypertension). Physiotherapy referral confirmed.</p><div class="fu-tags"><span class="ft ft-r">Medication review</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd2">2</div><div class="fu-content"><h5>3 months — Golf goal review</h5><p>Have we met the golf goal or progressing? Weight change. NRS recorded. If exercise + topical insufficient: oral NSAID + PPI. Acute flare: IA corticosteroid. Begin surgical referral documentation if NRS ≥7 despite optimised management.</p><div class="fu-tags"><span class="ft ft-a">Goal review</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd3">3</div><div class="fu-content"><h5>6 months — Escalation or surgical referral</h5><p>NRS ≥7 despite optimised conservative management → surgical referral with full documentation. PHQ-9 repeated. Duloxetine if central sensitisation or comorbid depression.</p><div class="fu-tags"><span class="ft ft-r">Surgical referral decision</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd4">4</div><div class="fu-content"><h5>Annual — Long-term OA review</h5><p>Weight; pain NRS; functional status; NSAID safety review (BP, eGFR, GI symptoms); PHQ-9; red flag rescreen. Review whether ongoing NSAID needed or topical alone now adequate.</p><div class="fu-tags"><span class="ft ft-b">Annual review</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd5">5</div><div class="fu-content"><h5>Every 3–6 months — NSAID safety monitoring</h5><p>Blood pressure (NSAIDs raise BP — important in this hypertensive patient), eGFR, FBC. Confirm PPI taken consistently. Reinforce lowest effective dose for shortest time.</p><div class="fu-tags"><span class="ft ft-a">NSAID safety</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7I — Safety-netting</div>
+    <div class="sn-box">
+      <h4>⚠ Three scenario-specific safety-net phrases</h4>
+      <div class="sn-scenarios">
+        <div class="sn-scenario sns-e">
+          <div class="sn-scenario-lbl">🔴 Emergency — hot, red, swollen joint with fever</div>
+          <div class="sn-phrase">"If at any time your joint becomes very hot, red, and swollen — particularly if you also have a fever or feel generally unwell — please go to A&amp;E the same day. That pattern is different from osteoarthritis and could be a joint infection, which is an emergency."</div>
+          <div class="sn-why">Septic arthritis can develop at any time — even in a joint with known OA. Patients interpreting a hot joint as an OA flare may present with established infection. The specific distinguishing features (fever + hot joint + systemic illness) create an actionable decision rule.</div>
+        </div>
+        <div class="sn-scenario sns-m">
+          <div class="sn-scenario-lbl">💊 NSAID — GI warning signs</div>
+          <div class="sn-phrase">"While taking the naproxen: if you develop severe stomach pain, notice your stools are very dark or tarry, or vomit blood — stop the tablet and go to A&amp;E the same day. Also take the stomach tablet every day — it's protecting your stomach lining and it's not optional."</div>
+          <div class="sn-why">NSAID-induced peptic ulceration and GI bleeding are common and potentially life-threatening. Specific warning of GI bleeding features and instruction to stop NSAID + A&amp;E is medico-legally important.</div>
+        </div>
+        <div class="sn-scenario sns-a">
+          <div class="sn-scenario-lbl">🟠 Change in pattern — new inflammatory features</div>
+          <div class="sn-phrase">"If the pattern of your pain changes — if you start getting pain in multiple smaller joints like your hands or wrists, or if the morning stiffness starts lasting more than half an hour, or joints feel warm — please come back. That pattern would be different from osteoarthritis and would need different investigation."</div>
+          <div class="sn-why">RA can develop alongside OA. New inflammatory features represent a diagnostic change requiring urgent reassessment. Specific triggering pattern gives the patient an actionable re-presentation criterion.</div>
+        </div>
+      </div>
+      <div class="sn-fu">
+        <div class="sn-fu-item"><strong>4–6 weeks</strong>Exercise + topical NSAID review; physio confirmed; PHQ-9</div>
+        <div class="sn-fu-item"><strong>3 months</strong>Golf goal review; escalation decision; weight change documented</div>
+        <div class="sn-fu-item"><strong>6 months / Annual</strong>Surgical referral if NRS ≥7; annual NSAID safety; red flag rescreen</div>
+      </div>
+    </div>
+
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7 (Final)</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say"><div class="sca-block-t">Closing phrases</div>
+          <div class="sca-phrase">"I'm prescribing topical diclofenac gel — 3 to 4 times a day on the knee — and I'm also prescribing naproxen and a stomach tablet to go with it for when the pain is worse. No stomach tablet, no naproxen."</div>
+          <div class="sca-phrase">"Our goal is getting you back to golf in 3 months. Let's set 5 kg weight loss as the first target — every kilo takes 4 kg of force off your knee."</div>
+          <div class="sca-phrase">"Hot joint + fever = A&amp;E same day, not an OA flare. Always take the stomach tablet with the naproxen."</div>
+          <div class="sca-phrase">"Is there anything else on your mind before we finish?"</div>
+        </div>
+        <div class="sca-block sca-avoid"><div class="sca-block-t">Deductions</div><ul>
+          <li>Oral NSAID before topical first — NICE NG226 error</li>
+          <li>Oral NSAID without PPI — prescribing error; never omit</li>
+          <li>Diclofenac oral for hypertensive patient — naproxen preferred</li>
+          <li>Paracetamol prescribed routinely — NICE NG226 (2022) no longer recommends this</li>
+          <li>Surgical expectation not acknowledged and addressed</li>
+          <li>Functional goal (golf) not set</li>
+          <li>Closing question absent</li>
+        </ul></div>
+        <div class="sca-block sca-score"><div class="sca-block-t">Tasks domain — full criteria</div><ul>
+          <li>Clinical OA diagnosis without X-ray (NICE NG226)</li>
+          <li>Topical diclofenac as Step 1 pharmacological treatment</li>
+          <li>Naproxen (not diclofenac) for hypertensive patient + CVD risk</li>
+          <li>PPI co-prescribed with oral NSAID — always</li>
+          <li>No paracetamol routinely (NICE NG226, 2022)</li>
+          <li>Physiotherapy referral made</li>
+          <li>Weight loss quantified: 5 kg = 20% pain reduction / 4 kg per 1 kg lost</li>
+          <li>Septic arthritis safety-net: hot joint + fever = A&amp;E</li>
+          <li>NSAID GI safety-net: dark stools = stop + A&amp;E</li>
+        </ul></div>
+        <div class="sca-block sca-score" style="border-left:2px solid #c4b5fd"><div class="sca-block-t" style="color:#c4b5fd">Relating to Others — full criteria</div><ul>
+          <li>Surgical expectation validated then reframed with evidence</li>
+          <li>Exercise mechanism explained: muscles as shock absorbers</li>
+          <li>Weight loss mechanism: 4 kg per kg lost — specific numbers</li>
+          <li>Golf as specific functional goal committed to</li>
+          <li>Understanding checked</li>
+          <li>Closing question asked</li>
+        </ul></div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Oral NSAID without topical first. No PPI. Diclofenac for hypertensive. Paracetamol prescribed. Surgical expectation not addressed. No goal. No safety-net.</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Topical NSAID tried but oral NSAID without PPI. Surgical expectation not reframed with specific evidence. Weight loss mentioned but not quantified.</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Topical → oral NSAID + PPI. Naproxen for CVD risk. No paracetamol. Surgical expectation reframed with evidence. 5 kg goal + golf target. Septic arthritis + NSAID GI safety-nets. Closing question.</div></div>
+      </div>
+    </div>
+  </div>
+</div><!-- /step 7 -->
+
+<!-- SCA SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Osteoarthritis — SCA Consultation Scorecard</div><div class="scorecard-sub">RAG self-assessment · Use after every practice consultation</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain"><div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Stem referenced</strong> — used 2-year history and golf loss before open question</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Open question first</strong> — "tell me what the pain is like and how it's affecting your life"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain language</strong> — cartilage/shock absorber/4 kg force analogy; no unexplained jargon</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Data gathering complete by 7 min</strong> — stiffness, red flags, drug history, weight, functional goals, ICE all assessed before plan</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Empathetic manner</strong> — loss of golf acknowledged as genuinely significant; fatalism addressed constructively</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Verbal summary</strong> — diagnosis, plan, goals, safety-net summarised before closing</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Logical structure</strong> — history → exam → diagnosis → management → safety-net → close</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain"><div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, diagnosis, management</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Morning stiffness asked and &lt;30 min confirmed</strong> — OA vs inflammatory discriminator applied correctly; stiffness &gt;30 min would trigger inflammatory screen</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Clinical OA diagnosis without X-ray</strong> — NICE NG226 applied; no routine imaging for typical OA stated explicitly</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Weight loss quantified as treatment</strong> — "10% = 50% pain reduction" or "4 kg force per 1 kg lost" — specific numbers cited to patient</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Topical NSAID as first pharmacological step</strong> — topical before oral; no PPI needed for topical — demonstrates NICE NG226 knowledge</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Correct oral NSAID + PPI for this patient</strong> — naproxen (not diclofenac/ibuprofen) for hypertension/CVD risk; PPI always co-prescribed and stated</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Paracetamol NOT prescribed routinely</strong> — NICE NG226 (2022): no longer recommended; demonstrates up-to-date guideline knowledge</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Physiotherapy referral made</strong> — all new OA diagnoses should be referred for supervised exercise programme</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Septic arthritis safety-net</strong> — hot joint + fever = A&amp;E same day; not managed as OA flare</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>NSAID GI safety-net</strong> — dark stools / haematemesis = stop NSAID + A&amp;E; PPI every day not just sometimes</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Surgical pathway acknowledged with clear plan</strong> — "surgery is an option if conservative fails after 3 months" — neither dismissed nor defaulted to</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain"><div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decision making</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Ideas explored</strong> — patient's understanding of cause asked; fatalism identified if present</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Surgical expectation explored</strong> — "were you expecting a referral today?" asked directly</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Functional goals explored</strong> — golf identified and set as specific motivational target</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Surgical expectation validated then reframed</strong> — acknowledged as understandable, then evidence presented honestly with clear plan if conservative fails</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Exercise mechanism explained</strong> — muscles as shock absorbers; "exercise does not wear the joint out more — it protects it"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Weight loss benefit quantified with numbers</strong> — 4 kg force per kg body weight; 50% pain reduction with 10% weight loss</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Understanding checked</strong> — "does that make sense?" or equivalent asked at least once during explanation</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Shared decision around plan</strong> — patient agreed to 3-month conservative trial; surgery pathway clearly articulated if needed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Golf goal set as specific target</strong> — personalised functional goal, not generic NRS reduction</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Verbal summary given</strong> — plan, goals, safety-net all summarised before closing</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Closing question asked</strong> — "Is there anything else on your mind?" at the very end</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap">
+      <div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div>
+      <div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div>
+      <div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div>
+    </div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist above to see your score interpretation</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"I've been having trouble with my knees for a couple of years now. It's been getting worse and I'm struggling with a lot of things I used to do."</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>David Chen, 62 years old, retired builder. Bilateral knee pain for 2 years, worse on the right. Pain worst on walking (stairs, slopes), at the end of the day. Morning stiffness about 15 minutes — loosens up as he moves. Has tried OTC ibuprofen occasionally with partial benefit. Stopped playing golf 6 months ago — used to play weekly with friends. Takes amlodipine 5 mg for hypertension. BMI 31 (96 kg). Non-smoker. No inflammatory signs — no small joint pain, no symmetrical pattern. No cancer history. No weight loss.</p></div>
+      <div class="ab"><h5>Hidden agenda — surgical expectation</h5><p>David's father had a knee replacement at 60 and was "back to full function" — David assumes he needs the same and is expecting a referral today. He will not be hostile about not getting a referral if the GP explains properly. He needs: (1) the surgical expectation validated before being reframed; (2) exercise mechanism explained (muscles as shock absorbers); (3) weight loss benefit quantified with specific numbers; (4) golf specifically set as the 3-month goal. If the GP says "try some exercises" without quantifying the benefit, he mentally dismisses it. If the GP says "losing 5 kg would take 20 kg of force off your knee — the research shows about 50% pain reduction," he becomes genuinely engaged.</p></div>
+      <div class="ab"><h5>If asked about stiffness</h5><ul><li>"About 10–15 minutes in the morning — then it loosens up as I move around"</li><li>No small joint pain (hands, wrists)</li><li>No constant night pain — pain resolves with rest</li><li>No fever, no hot/red joint</li></ul></div>
+      <div class="ab"><h5>If asked about functional goals</h5><ul><li>"Golf — I used to play every week with my friends. I really miss it."</li><li>"Walking the dog is also getting hard — we used to go an hour, now 20 minutes is painful"</li><li>If golf is set as a specific target: "Do you really think I could get back to that?"</li></ul></div>
+    </div>
+    <div class="actor-challenge">"My father had a knee replacement and it sorted him out completely — is that where I'm heading? I'd rather just get it done."</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution criteria:</strong> David accepts the conservative plan if: (1) surgical expectation validated ("I understand why you'd think that — your father had excellent results"); (2) exercise mechanism explained (muscles as shock absorbers — "this doesn't wear the joint out more"); (3) weight loss quantified with numbers; (4) golf set as specific 3-month goal; (5) surgical pathway not closed ("if this doesn't give sufficient benefit in 3 months, I will support a referral").</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Osteoarthritis — Clinical Decision Framework</div><div class="sum-sub">NICE NG226 (2022) · CKS 2023</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🚦 1 — Triage</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:var(--rad-sm);padding:.75rem .9rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.4rem">🔴 Emergency / Urgent</div><div style="font-size:12px;line-height:1.75"><div>Hot joint + fever → same-day A&amp;E (septic arthritis)</div><div>Stiffness &gt;60 min + symmetrical small joints → 2-wk rheumatology (RA)</div><div>Night pain + weight loss + cancer → urgent 2WW</div><div>Locked joint → urgent orthopaedics</div></div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:var(--rad-sm);padding:.75rem .9rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.4rem">🟠 Orthopaedic Referral</div><div style="font-size:12px;line-height:1.75"><div>NRS ≥7 + failed: exercise + physio + NSAID + IA steroid</div><div>Significant functional impairment affecting ADLs</div><div>Document all failed conservative interventions before referring</div></div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.75rem .9rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.4rem">🟢 Routine Primary Care</div><div style="font-size:12px;line-height:1.75"><div>Age ≥45 + activity pain + stiffness &lt;30 min = OA (clinical diagnosis)</div><div>Exercise + weight loss first-line</div><div>Topical → oral NSAID + PPI → IA steroid</div></div></div>
+    </div>
+    <div class="sum-sub-hdr">📊 2 — Key Numbers (NICE NG226)</div>
+    <div class="num-grid" style="margin-bottom:1rem">
+      <div class="num-card num-highlight"><div class="num-val">No paracetamol</div><div class="num-lbl">NICE NG226 (2022): no longer recommended routinely</div></div>
+      <div class="num-card num-highlight"><div class="num-val">Topical first</div><div class="num-lbl">Topical NSAID before oral in peripheral OA</div></div>
+      <div class="num-card"><div class="num-val">+PPI always</div><div class="num-lbl">Mandatory with every oral NSAID — never omit</div></div>
+      <div class="num-card"><div class="num-val">Naproxen</div><div class="num-lbl">Preferred oral NSAID in CVD / hypertension</div></div>
+      <div class="num-card"><div class="num-val">4 kg / kg</div><div class="num-lbl">Each kg lost removes ~4 kg force from knee per step</div></div>
+      <div class="num-card"><div class="num-val">10% weight</div><div class="num-lbl">10% body weight loss → ~50% pain reduction (overweight OA)</div></div>
+      <div class="num-card"><div class="num-val">No X-ray</div><div class="num-lbl">Not routinely needed for clinical OA diagnosis</div></div>
+      <div class="num-card"><div class="num-val">3 × IA max</div><div class="num-lbl">Maximum 3 intra-articular steroid injections per year</div></div>
+    </div>
+    <div class="sum-sub-hdr">💊 3 — NICE NG226 Pharmacotherapy Ladder</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem .9rem">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:.5rem">Pharmacotherapy Ladder</div>
+        <div style="font-size:12px;line-height:1.8">
+          <div><strong>Step 1:</strong> Topical diclofenac gel — no PPI needed</div>
+          <div><strong>Step 2:</strong> Oral NSAID + PPI (mandatory). High CVD: naproxen. GI risk: celecoxib.</div>
+          <div><strong>Step 3:</strong> IA corticosteroid (flares, max 3/year)</div>
+          <div><strong>Step 3:</strong> Duloxetine (central sensitisation / depression)</div>
+          <div style="margin-top:5px;font-size:11px;background:var(--r-bg);border:1px solid var(--r-bd);border-radius:5px;padding:3px 7px;color:var(--r)">⚠ No paracetamol routinely · No opioids · No glucosamine</div>
+        </div>
+      </div>
+      <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem .9rem">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--navy);margin-bottom:.5rem">NSAID Choice by Risk</div>
+        <div style="font-size:12px;line-height:1.8">
+          <div>Low CVD + low GI → ibuprofen + PPI</div>
+          <div>High CVD / hypertension → naproxen + PPI</div>
+          <div>High GI risk → celecoxib + PPI</div>
+          <div>eGFR &lt;30 → NSAIDs contraindicated; topical only</div>
+          <div>Oral diclofenac: avoid in significant CVD</div>
+        </div>
+      </div>
+    </div>
+    <div class="sum-sub-hdr">⚠ 4 — Safety Netting + Follow-Up</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div class="sn-compact-wrap">
+        <div class="sn-compact sns-e"><div class="sn-compact-lbl">🔴 Septic arthritis</div><div class="sn-compact-phrase">"Hot, red joint + fever = A&amp;E same day — not an OA flare."</div></div>
+        <div class="sn-compact sns-m"><div class="sn-compact-lbl">💊 NSAID GI warning</div><div class="sn-compact-phrase">"Dark stools / haematemesis = stop NSAID + A&amp;E. Take PPI every day."</div></div>
+        <div class="sn-compact sns-a"><div class="sn-compact-lbl">🟠 New inflammatory pattern</div><div class="sn-compact-phrase">"Stiffness &gt;30 min or new small joint pain = come back — different investigation needed."</div></div>
+      </div>
+      <div class="fu-compact-wrap">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.4rem">Follow-up timeline</div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--r)">1</div><div><strong>4–6 wks:</strong> Exercise + topical response; escalation decision</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--a)">2</div><div><strong>3 months:</strong> Golf goal review; weight change; surgical decision</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--b)">3</div><div><strong>6 months:</strong> Surgical referral if NRS ≥7 + failed conservative</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--g)">4</div><div><strong>Annual:</strong> Weight; NRS; NSAID safety (BP, eGFR); PHQ-9</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--t)">5</div><div><strong>3–6 monthly:</strong> BP + eGFR on regular oral NSAID</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label" style="color:rgba(255,255,255,.5)">SCA Exam Quick Reference</div><div class="sum-title" style="color:#fff">Osteoarthritis — SCA Strategy, Phrases &amp; Scoring</div><div class="sum-sub" style="color:rgba(255,255,255,.6)">Tasks · Relating to Others · Global Skills · RAG guide</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🕐 12-Minute Flow</div>
+    <div class="sca-flow-wrap">
+      <div class="sca-flow-step sca-f1"><div class="sca-f-time">0–2 min</div><div class="sca-f-title">Reference Stem + Open</div><div class="sca-f-phrase">"I can see you've had knee pain for 2 years and had to stop golf — that sounds very limiting. Tell me in your own words what it's like."</div><div class="sca-f-domains"><span class="sca-dom-tag gs">GS</span><span class="sca-dom-tag ro">RO</span></div><div class="sca-f-avoid">✗ Not referencing stem context · ✗ Jumping straight to systematic questions</div></div>
+      <div class="sca-flow-step sca-f2"><div class="sca-f-time">2–6 min</div><div class="sca-f-title">Stiffness + Red Flags + Drug History + ICE</div><div class="sca-f-phrase">"How long does morning stiffness last? Any hot/swollen joints? What medications are you on — any blood pressure tablets? Were you expecting a surgical referral today?"</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">RO</span></div><div class="sca-f-avoid">✗ Not asking stiffness duration · ✗ Not asking drug history · ✗ Surgical expectation not explored</div></div>
+      <div class="sca-flow-step sca-f3"><div class="sca-f-time">6–7 min</div><div class="sca-f-title">Examination</div><div class="sca-f-phrase">"I'd like to examine your knees and measure your weight — the weight is one of the most clinically important measurements here."</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span></div><div class="sca-f-avoid">✗ Not measuring weight · ✗ Not checking for inflammatory signs</div></div>
+      <div class="sca-flow-step sca-f4"><div class="sca-f-time">7–10 min</div><div class="sca-f-title">Diagnosis + Reframe + Treatment</div><div class="sca-f-phrase">"This fits OA — clinical diagnosis, no X-ray needed. Surgery is an option, but 50% pain reduction from weight loss + exercise first. Topical diclofenac → naproxen + PPI. Goal: back to golf in 3 months."</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">RO</span></div><div class="sca-f-avoid">✗ Oral NSAID before topical · ✗ No PPI · ✗ Paracetamol prescribed · ✗ Surgical expectation not reframed</div></div>
+      <div class="sca-flow-step sca-f5"><div class="sca-f-time">10–12 min</div><div class="sca-f-title">Safety-Net + Follow-Up + Close</div><div class="sca-f-phrase">"Hot joint + fever = A&amp;E. Dark stools = stop NSAID + A&amp;E. Review in 4–6 weeks. Is there anything else?"</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">RO</span></div><div class="sca-f-avoid">✗ No safety-net · ✗ No follow-up · ✗ No closing question</div></div>
+    </div>
+    <div class="sum-3col" style="margin-top:1rem">
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">🔴🟠🟢 RAG Scoring</div>
+        <div class="rag-full-wrap">
+          <div class="rag-domain-title task-col">Tasks</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">🟢</div><div>Stiffness &lt;30 min confirmed; clinical OA diagnosis no X-ray; topical before oral; naproxen for CVD; PPI always; no paracetamol; weight loss quantified; physio referral; safety-nets; follow-up</div></div>
+          <div class="rag-row rag-a-row"><div class="rag-rl">🟠</div><div>OA confirmed but oral NSAID before topical; no PPI; weight loss mentioned but not quantified; surgical expectation not addressed with evidence</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">🔴</div><div>Stiffness not asked; oral NSAID without PPI; paracetamol prescribed; no safety-net; no functional goal; surgical referral at first visit</div></div>
+          <div class="rag-domain-title ro-col" style="margin-top:.6rem">Relating to Others</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">🟢</div><div>Surgical expectation validated and reframed with evidence; exercise mechanism explained; weight loss quantified; golf as goal; understanding checked; closing question</div></div>
+          <div class="rag-row rag-a-row"><div class="rag-rl">🟠</div><div>Surgical expectation acknowledged but not reframed with specific evidence; weight loss mentioned without numbers; golf not set as goal</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">🔴</div><div>Surgical expectation ignored; patient leaves disengaged; exercise prescribed without explanation; closing question absent</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">💬 Key Phrases</div>
+        <div class="phrase-stack">
+          <div class="phrase-card p-concerns"><div class="p-lbl">Surgical expectation</div><div class="p-phrase">"I understand why you'd expect a replacement — your father had excellent results. Surgery is still an option. But the evidence shows exercise and weight loss produce comparable benefit for many people, without the 3–6 month recovery."</div></div>
+          <div class="phrase-card p-validate"><div class="p-lbl">Exercise mechanism</div><div class="p-phrase">"Strong muscles act as shock absorbers for the knee joint. Exercise does not wear it out more — it actually protects it by reducing the load on the cartilage."</div></div>
+          <div class="phrase-card p-explain"><div class="p-lbl">Weight loss numbers</div><div class="p-phrase">"Every kilogram you lose takes 4 kilograms off your knee joint with every step. Losing 5 kg would take 20 kg off — and 10% of your body weight gives about 50% pain reduction."</div></div>
+          <div class="phrase-card p-expect"><div class="p-lbl">Goal setting</div><div class="p-phrase">"Let's use getting back to golf as our 3-month target — that's a specific, achievable goal we can work towards."</div></div>
+          <div class="phrase-card p-close"><div class="p-lbl">Safety-nets</div><div class="p-phrase">"Hot joint + fever = A&amp;E same day. Dark stools with naproxen = stop the tablet and go to A&amp;E."</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">🚫 9 Danger Zones</div>
+        <div class="dz-stack">
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Oral NSAID before topical for peripheral OA</strong><br><span class="dz-fix">→ NICE NG226: topical diclofenac is Step 1; no PPI needed for topical</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Oral NSAID without PPI</strong><br><span class="dz-fix">→ PPI is mandatory with every oral NSAID; never omit</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Diclofenac oral for hypertensive patient</strong><br><span class="dz-fix">→ Naproxen preferred in CVD risk patients (lower thrombotic risk)</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Paracetamol prescribed routinely</strong><br><span class="dz-fix">→ NICE NG226 (2022): no longer recommended for OA</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Surgical expectation not addressed</strong><br><span class="dz-fix">→ Patient leaves disengaged from conservative management</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Weight loss benefit not quantified with numbers</strong><br><span class="dz-fix">→ "Lose some weight" does not motivate; "4 kg per kg lost" does</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Morning stiffness duration not asked</strong><br><span class="dz-fix">→ The single most important OA vs inflammatory discriminator</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Routine X-ray ordered for typical OA</strong><br><span class="dz-fix">→ NICE NG226: not indicated; clinical diagnosis</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Closing question absent</strong><br><span class="dz-fix">→ Always end with "Is there anything else on your mind?"</span></div></div>
+        </div>
+        <div class="sum-sub-hdr sca-sub-hdr" style="margin-top:.85rem">💊 Drug Quick-Pick</div>
+        <div class="sca-drug-pick">
+          <div class="sdp-row"><div class="sdp-cond">Peripheral OA — Step 1</div><div class="sdp-arrow">→</div><div class="sdp-pill acei-pill">Topical diclofenac 1% gel</div><div class="sdp-note">No PPI needed</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Oral NSAID, high CVD/hypertension</div><div class="sdp-arrow">→</div><div class="sdp-pill arb-pill">Naproxen + PPI</div><div class="sdp-note">Not diclofenac oral</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Oral NSAID, low CVD risk</div><div class="sdp-arrow">→</div><div class="sdp-pill ccb-pill">Ibuprofen + PPI</div><div class="sdp-note">Always PPI</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Acute flare</div><div class="sdp-arrow">→</div><div class="sdp-pill arb-pill">IA triamcinolone 40 mg</div><div class="sdp-note">Max 3×/year</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Central sensitisation / depression</div><div class="sdp-arrow">→</div><div class="sdp-pill acei-pill">Duloxetine 30–60 mg OD</div><div class="sdp-note">NICE NG226</div></div>
+          <div class="sdp-pivot">⛔ No paracetamol routinely · No opioids · Topical before oral · PPI always with oral NSAID · Naproxen for CVD risk</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Osteoarthritis · GP Clinical Reasoning Framework v2</strong> · NICE NG226 (2022) · NICE CKS Osteoarthritis (2023) · Versus Arthritis: versusarthritis.org</p>
+  <p style="margin-top:4px">v3: Dual tailored summaries · NICE NG226 (2022) paracetamol removal · Topical-before-oral rule · Naproxen preferred for CVD risk · Surgical expectation reframing · Weight loss quantification (4 kg/kg)</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current BNF/SPC · Clinical judgement takes precedence · Versus Arthritis helpline: 0800 5200 520</p>
+</div>
+</div><!-- /page -->
+<script src="script.js"></script>
+</body>
+</html>

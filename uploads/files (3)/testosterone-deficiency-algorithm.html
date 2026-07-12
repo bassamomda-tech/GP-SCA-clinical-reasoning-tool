@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Testosterone Deficiency Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;
+  --diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;
+  --treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;
+  --refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;
+  --lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
+  --font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif
+}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#0d2a1a 0%,#1a5a3a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#1a5a3a,#1a6faf);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}
+.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}
+.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}
+.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}
+.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}
+.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}
+.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#92400e}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">⚡</div>
+  <div>
+    <b>Testosterone Deficiency in Men</b>
+    <small>Hypogonadism · two morning levels · pituitary exclusion · TRT initiation · fertility · prostate surveillance</small>
+  </div>
+</div>
+
+<div class="alg-progress">
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Pituitary Mass, Secondary Causes &amp; Absolute Contraindications to TRT</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Low testosterone always requires a pituitary cause to be excluded before TRT is commenced. A pituitary macroadenoma causing secondary hypogonadism must not be treated with TRT alone — it requires neurosurgical assessment.</b></p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Low testosterone + headache + visual field defect + galactorrhoea</b> Pituitary macroadenoma (prolactinoma most common — hyperprolactinaemia suppresses GnRH/LH/FSH → secondary hypogonadism) → urgent endocrinology + MRI pituitary. Dopamine agonist (cabergoline) treats prolactinoma and restores testosterone — TRT alone without treating the tumour is dangerous.</div>
+      <div class="rftile"><b>Low testosterone + anaemia + bone pain + fatigue in patient ≥50</b> Exclude haematological malignancy (multiple myeloma — low testosterone from suppression, bone pain, renal impairment) and prostate cancer bone metastases (PSA, DRE before any TRT). TRT is absolutely contraindicated in prostate cancer.</div>
+      <div class="rftile"><b>Prostate cancer (known or suspected)</b> Absolute contraindication to TRT. TRT in prostate cancer drives tumour growth. Establish PSA baseline before starting TRT. If PSA &gt;4 ng/ml or abnormal DRE → prostate cancer exclusion before TRT (urology referral). Discuss PSA testing with the patient and document informed consent.</div>
+      <div class="rftile"><b>Polycythaemia / haematocrit &gt;0.54</b> Absolute contraindication to TRT initiation — TRT increases erythropoiesis (via erythropoietin stimulation) and can cause dangerous polycythaemia with thrombosis risk. Check FBC before starting. Monitor haematocrit every 3–6 months on TRT. If haematocrit rises &gt;0.54 → withhold TRT and seek specialist advice.</div>
+      <div class="rftile"><b>Untreated severe obstructive sleep apnoea</b> Relative contraindication — TRT worsens OSA by increasing upper airway fat deposition and reducing respiratory drive. Treat OSA first (CPAP). Once OSA controlled, TRT can be considered (with ongoing monitoring). Undiagnosed OSA may present alongside testosterone deficiency — screen (STOP-BANG questionnaire).</div>
+      <div class="rftile"><b>Desire for current or near-future fertility</b> TRT suppresses the HPG axis → profound suppression of LH/FSH → testicular atrophy → azoospermia. TRT is not appropriate for men who wish to father children in the near future. Offer: hCG injections (maintains intratesticular testosterone + spermatogenesis), clomiphene citrate (off-label), or refer to reproductive endocrinology.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The pituitary exclusion before TRT commencement is the most important safety step in testosterone deficiency management — secondary hypogonadism (low testosterone from pituitary/hypothalamic failure) can be caused by a prolactinoma, a non-functioning pituitary adenoma, a craniopharyngioma, or hypopituitarism from other causes. The key investigation is a serum prolactin alongside LH and FSH. Elevated prolactin + low LH/FSH + low testosterone = prolactinoma until proven otherwise → MRI pituitary urgently. Treating a prolactinoma with TRT alone (without cabergoline) will not restore testicular function, will not shrink the tumour, and may allow the tumour to grow undetected. Cabergoline treatment alone for a prolactinoma typically normalises testosterone in 60–70% of men within 3–6 months. The TRT and fertility issue is one of the most important counselling points in younger men — testosterone replacement therapy causes iatrogenic infertility through suppression of FSH (needed for spermatogenesis) and LH (needed for intratesticular testosterone production). This is potentially irreversible if TRT is taken for prolonged periods (testicular atrophy). The recovery of spermatogenesis after stopping TRT may take 6–24 months and is not guaranteed. Any man who may wish to have biological children must be counselled specifically about this before starting TRT, and alternatives (hCG, clomiphene) discussed. This conversation must be documented.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>Symptoms of Testosterone Deficiency</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Diagnosis requires both: (1) consistent symptoms AND (2) confirmed biochemical deficiency (two morning testosterone levels below threshold). Symptoms alone do not justify treatment.</b></p>
+    <div class="kv">
+      <div>Sexual symptoms (most specific)</div><div>Reduced libido (most consistent symptom of TD) · Erectile dysfunction (reduced morning erections is specific — nocturnal penile tumescence is testosterone-dependent) · Reduced ejaculatory volume · Reduced penile/scrotal sensation · Infertility (azoospermia)</div>
+      <div>Physical symptoms</div><div>Reduced muscle mass and strength · Increased central adiposity / gynaecomastia · Reduced body and facial hair · Fatigue, reduced stamina · Hot flushes + sweating (hypogonadotropic) · Reduced bone density (osteoporosis — fragility fractures) · Anaemia (normocytic — testosterone stimulates erythropoiesis)</div>
+      <div>Psychological symptoms (less specific)</div><div>Low mood, depression, irritability · Poor concentration and memory · Reduced motivation, vitality, and sense of wellbeing. <b>Note:</b> psychological symptoms alone are non-specific and should not drive TRT prescription without biochemical confirmation — depression and burnout can cause low mood and fatigue that mimics TD.</div>
+      <div>Validated questionnaire — AMS</div><div>Ageing Males' Symptoms (AMS) scale — 17 questions scoring psychological, somatic, and sexual symptoms. Score ≥37 = moderate-severe symptoms. Useful for documenting symptom burden at baseline and tracking treatment response. ADAM questionnaire (Androgen Deficiency in Ageing Males) — simpler 10-question screen, less validated. Use AMS for structured assessment.</div>
+      <div>Differential diagnosis</div><div>Symptoms of TD overlap significantly with: depression (fatigue, low mood, reduced libido), hypothyroidism (fatigue, low mood, weight gain), anaemia, OSA (fatigue, low energy, low libido), type 2 diabetes (fatigue, ED, reduced libido), chronic ill health, alcohol excess, anabolic steroid abuse. Exclude these before attributing symptoms to TD.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The requirement for two separate morning testosterone measurements is fundamental to the diagnosis — testosterone levels have a diurnal rhythm with peak levels in the morning (7–9 AM) and trough levels in the afternoon/evening (up to 35% lower). A single low testosterone measured at 2 PM may simply reflect normal diurnal variation rather than true deficiency. BSSM (British Society for Sexual Medicine) and EAU (European Association of Urology) guidelines both specify that at least two early morning fasting testosterone measurements must be below the reference range on separate occasions (typically 4–12 weeks apart) before TRT is initiated. This prevents treatment of transient testosterone suppression from acute illness, stress, obesity, or alcohol. The differential diagnosis of testosterone deficiency symptoms is the reason a structured approach matters — a middle-aged man presenting with fatigue, low mood, low libido, and weight gain could have hypothyroidism, type 2 diabetes, depression, obstructive sleep apnoea, or anaemia — all of which must be excluded first, as they are more common than true hypogonadism, and treating them addresses the root cause without the risks and commitments of TRT.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Classification — Primary vs Secondary Hypogonadism</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Primary hypogonadism (hypergonadotropic)</div><div>Testicular failure → low testosterone + <b>elevated LH + elevated FSH</b>. Causes: Klinefelter syndrome (47 XXY — most common — small firm testes, tall, gynaecomastia, infertility; in 30% undiagnosed until adulthood), bilateral orchidectomy, bilateral testicular torsion, chemotherapy/radiotherapy gonadotoxicity, mumps orchitis, trauma, autoimmune. Testicular failure → FSH rises (loss of inhibin B feedback) + LH rises (loss of testosterone feedback).</div>
+      <div>Secondary hypogonadism (hypogonadotropic)</div><div>Pituitary/hypothalamic failure → low testosterone + <b>low or inappropriately normal LH + low FSH</b>. Causes: pituitary adenoma (prolactinoma — most important), haemochromatosis, Kallmann syndrome (congenital — anosmia + hypogonadism), hypopituitarism (post-radiotherapy, traumatic brain injury, Sheehan's), opioid-induced (suppresses GnRH), glucocorticoid suppression, anabolic steroid suppression. MRI pituitary mandatory.</div>
+      <div>Age-related (late-onset hypogonadism)</div><div>Gradual testosterone decline with age — 1–2% per year after 30. Symptomatic late-onset hypogonadism (LOH): both biochemical testosterone deficiency AND consistent symptoms. Diagnosis requires exclusion of reversible causes (obesity, T2DM, OSA, chronic illness, medications). Not all older men with low testosterone need treatment — many are asymptomatic. Treat only if symptomatic + confirmed biochemical deficiency + no contraindications.</div>
+      <div>Functional hypogonadism</div><div>Low testosterone secondary to a reversible systemic condition — obesity (aromatase converts testosterone to oestradiol in adipose tissue), type 2 diabetes, hypothyroidism, liver disease, renal failure, anabolic steroid use, opioids, alcohol. Not "true" hypogonadism — correct the underlying cause first. Weight loss of 10% body weight raises testosterone by approximately 3–5 nmol/L. Treat the cause before considering TRT.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The LH/FSH result is the critical branch point in testosterone deficiency — elevated LH/FSH with low testosterone confirms primary (testicular) hypogonadism, which requires TRT but NOT pituitary investigation. Low or inappropriately normal LH/FSH with low testosterone confirms secondary (central) hypogonadism, which requires MRI pituitary to exclude a structural cause before TRT is commenced. This distinction cannot be made from testosterone alone. Functional hypogonadism from obesity is one of the most clinically important and actionable diagnoses — severely obese men (BMI &gt;40) frequently have total testosterone levels in the hypogonadal range due to increased aromatisation of testosterone to oestradiol in adipose tissue and increased SHBG binding. These men should be managed with weight loss first — bariatric surgery in morbidly obese men with functional hypogonadism routinely normalises testosterone to eugonadal levels without TRT. Starting TRT in a functionally hypogonadal obese man without addressing obesity means continuous treatment dependency, suppression of the HPG axis, and testicular atrophy — whereas weight loss is potentially curative. Opioid-induced hypogonadism is under-recognised and affects approximately 70% of men on long-term opioids for chronic pain — opioids suppress GnRH pulsatility, reducing LH/FSH and thus testosterone production. Any man on long-term opioids presenting with TD symptoms should have his opioid regimen reviewed as a priority — dose reduction, opioid rotation, or switch to buprenorphine (which causes less HPG axis suppression) may restore testosterone without TRT.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Mandatory blood tests</div><div><span class="pill pill-blue">Total testosterone × 2 (morning, fasting)</span> — both below 12 nmol/L confirms deficiency; 8–12 nmol/L borderline (calculate free testosterone); &lt;8 nmol/L = significant deficiency. <span class="pill pill-blue">LH + FSH</span> — primary vs secondary hypogonadism classification. <span class="pill pill-blue">Prolactin</span> — hyperprolactinaemia exclusion (prolactinoma). <span class="pill pill-blue">SHBG</span> — to calculate free testosterone (Vermeulen formula — relevant when total testosterone borderline 8–12 nmol/L). Free testosterone &lt;225 pmol/L = deficiency.</div>
+      <div>Secondary investigations</div><div><span class="pill pill-blue">FBC</span> (baseline haematocrit — polycythaemia exclusion before TRT) · <span class="pill pill-blue">PSA</span> (baseline — prostate cancer exclusion, mandatory before TRT in men ≥40) · <span class="pill pill-blue">DRE</span> (prostate examination before TRT) · <span class="pill pill-blue">TSH</span> (hypothyroidism — common differential) · <span class="pill pill-blue">HbA1c + glucose</span> (diabetes) · <span class="pill pill-blue">LFTs + ferritin</span> (haemochromatosis — causes secondary hypogonadism via pituitary iron deposition) · <span class="pill pill-blue">BMD (DXA scan)</span> (osteoporosis in longstanding hypogonadism — specialist)</div>
+      <div>Pituitary MRI</div><div>Mandatory if: secondary hypogonadism (low LH/FSH + low T) or hyperprolactinaemia. MRI pituitary with gadolinium identifies: prolactinoma (most common — responds to cabergoline), non-functioning pituitary adenoma, craniopharyngioma, other sellar mass. Arrange via endocrinology. Do not start TRT until MRI result known in secondary hypogonadism.</div>
+      <div>Karyotype</div><div>Consider if: primary hypogonadism in a young man + small firm testes + gynaecomastia → Klinefelter syndrome (47 XXY) — karyotype confirms. Klinefelter is the most common sex chromosome disorder (1:600 male births) and the most common cause of male infertility. Testosterone replacement required (primary gonadal failure). Fertility: some sperm retrieval possible with testicular sperm extraction (TESE).</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The SHBG (sex hormone-binding globulin) calculation of free testosterone is clinically important in borderline cases — total testosterone can be misleadingly low in men with low SHBG (obesity, diabetes, hypothyroidism, nephrotic syndrome) because a higher fraction is free and bioavailable, even though the total looks low. Conversely, total testosterone can be misleadingly normal in men with very high SHBG (ageing, liver disease, hyperthyroidism) while the bioavailable fraction is actually deficient. The Vermeulen formula (freely available online) calculates free testosterone from total testosterone + SHBG + albumin and is the standard method used in BSSM and EAU guidelines to assess bioavailable testosterone in borderline cases. The PSA baseline before TRT is a clinical governance and medicolegal imperative — TRT is absolutely contraindicated in prostate cancer, and an elevated PSA before starting TRT both identifies men who need prostate cancer exclusion and provides the baseline from which PSA monitoring on TRT is interpreted. A rapid rise in PSA after starting TRT (PSA velocity &gt;1 ng/ml/year or 0.4 ng/ml rise in 6 months) is an indication for urgent urology referral. The PSA discussion must be documented as an informed consent conversation — "we need to check your PSA before starting testosterone to make sure there is no prostate cancer, and we will monitor it after treatment." Haemochromatosis as a cause of secondary hypogonadism is under-recognised — iron deposition in the anterior pituitary impairs gonadotrophin secretion, causing hypogonadotropic hypogonadism in the presence of iron overload. In a man with low LH/FSH, low testosterone, liver disease, diabetes, arthropathy, and bronze skin → check ferritin and transferrin saturation urgently.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="REFER" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">Urgent endocrinology</span></div><div>Secondary hypogonadism (low LH/FSH + low T) — MRI pituitary required before treatment · Hyperprolactinaemia (prolactin &gt;1000 mU/L) — prolactinoma likely · Pan-hypopituitarism features (cortisol deficiency + adrenal crisis risk) · Suspected haemochromatosis with pituitary involvement</div>
+      <div>Endocrinology (routine)</div><div>Primary hypogonadism — initiation and titration of TRT in specialist setting (many trusts have GP initiation protocols for straightforward primary hypogonadism) · Klinefelter syndrome management · Complex cases: borderline testosterone, multiple comorbidities, previous prostate cancer history needing careful assessment</div>
+      <div>Urology</div><div>PSA &gt;4 ng/ml or abnormal DRE before TRT — prostate cancer exclusion (multi-parametric MRI prostate + TRUS biopsy) · PSA rise &gt;1 ng/ml/year or &gt;0.4 ng/ml in 6 months while on TRT</div>
+      <div>Reproductive endocrinology / andrology</div><div>Man wishing to preserve or achieve fertility — hCG injections to stimulate intratesticular testosterone + spermatogenesis, clomiphene citrate, FSH injections, sperm banking before TRT. TESE for Klinefelter's. Refer before any TRT commenced if fertility desired.</div>
+      <div>GP initiation (where local pathway permits)</div><div>Clear primary hypogonadism (elevated LH/FSH + low testosterone × 2) + no red flag features + PSA baseline normal + DRE normal + haematocrit normal + patient counselled regarding fertility, prostate risk, and polycythaemia → GP can initiate and monitor TRT per BSSM/NHS England guidance. Check local commissioning protocol.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">NHS England and BSSM guidelines have shifted significantly toward GP-led TRT initiation in straightforward primary hypogonadism — the intention is to reduce specialist waiting times and provide men with more accessible treatment. However, the prerequisite is that the GP has performed the full diagnostic workup (two morning testosterone levels, LH/FSH, prolactin, SHBG, PSA, FBC, DRE, TSH) and confirmed primary hypogonadism with no contraindications before initiating. Secondary hypogonadism (low LH/FSH) always requires specialist assessment first. The key principle is that GPs should follow their local commissioned pathway — in many NHS trusts there is now a GP TRT pathway with specific investigation requirements, formulary-approved preparations, and monitoring protocols. hCG (human chorionic gonadotrophin) for fertility preservation in hypogonadal men works by acting as an LH analogue — it stimulates the Leydig cells directly to produce intratesticular testosterone, which is required in much higher concentrations than serum testosterone for spermatogenesis to occur. Intratesticular testosterone is approximately 50–100 times higher than serum testosterone. TRT raises serum testosterone but actually reduces intratesticular testosterone (by suppressing LH) — hence the paradox that TRT causes azoospermia despite restoring serum testosterone to normal. hCG bypasses this by directly stimulating the testes without suppressing the pituitary.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="TREAT" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>TRT Preparations &amp; Dosing</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Transdermal gel (preferred first-line)</div>
+        <div class="b-drug">Testogel 50 mg (1 sachet) OD</div>
+        <div class="b-note">Apply to shoulders, upper arms, or abdomen (not genitals). Allow to dry 3–5 mins. Wash hands after application. Cover with clothing. Do not shower for 2 hours. Transfer risk to partner/children — avoid skin contact until dry. Dose titrate: check testosterone 2–4 hrs after application at week 3. Target total T: 15–30 nmol/L. Adjust to 25 mg or 75 mg sachets if needed. Testim gel, Tostran pump (10 mg per actuation) are alternatives.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Long-acting injectable (convenient)</div>
+        <div class="b-drug">Testosterone undecanoate (Nebido) 1000 mg IM</div>
+        <div class="b-note">1000 mg IM loading dose, repeat at 6 weeks, then every 10–14 weeks. Blood level trough check at week 10 (before 3rd injection). Target pre-injection T: 12–15 nmol/L. Slow onset and offset — not suitable if rapid dose adjustment needed. Less fluctuation than shorter-acting preparations. Pulmonary oil microembolism (POME) risk — keep patient observed 30 min post-injection.</note></div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Short-acting injectable (flexible)</div>
+        <div class="b-drug">Testosterone enanthate 250 mg IM every 2–3 weeks</div>
+        <div class="b-note">IM injection every 2–3 weeks. Check trough level (just before next injection) and peak level (day 3–5 post-injection). Significant troughs and peaks — mood and energy fluctuate with levels. Used where quick dose adjustment is needed or where undecanoate not available. Testosterone propionate (shorter half-life) and testosterone cypionate also available.</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Prolactinoma (secondary hypogonadism)</span><span class="rt"><b>Cabergoline 0.5 mg twice weekly</b> — dopamine agonist, shrinks prolactinoma + normalises prolactin + restores LH/FSH + normalises testosterone in 60–70% of men within 3–6 months. TRT added only if testosterone remains low despite cabergoline at therapeutic doses. Endocrinology-initiated. Monitor prolactin monthly until normalised.</span></div>
+      <div class="rung"><span class="rn">Fertility-seeking man</span><span class="rt"><b>hCG (Pregnyl) 1500–2500 IU SC/IM × 3 per week</b> — stimulates Leydig cells directly, maintains intratesticular testosterone and spermatogenesis. If inadequate response after 3–6 months → add recombinant FSH (Gonal-F or Puregon). Semen analysis at 3–6 months. Specialist-initiated. Do NOT start TRT while hCG/FSH treatment ongoing.</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Transdermal testosterone gel is the preferred first-line preparation because it provides stable daily testosterone levels (mimicking normal physiological diurnal rhythm) rather than the supraphysiological peaks and subphysiological troughs of fortnightly injections. The principal safety concern with transdermal gel is transfer to female partners and children — testosterone exposure in women can cause virilisation (acne, hair growth, clitoral enlargement) and in prepubertal children can cause precocious puberty. The prevention message (dry before contact, cover with clothing, hand-washing) must be explicitly provided at prescription and documented. The pulmonary oil microembolism (POME) risk with Nebido (testosterone undecanoate in castor oil) is rare but real — the castor oil vehicle can form small oil microemboli in the pulmonary vasculature during injection, causing coughing, dyspnoea, chest tightness, and rarely anaphylaxis. This typically occurs during or within minutes of the injection. NHS England guidance recommends a 30-minute observation period post-injection and that the first injection is given in a healthcare setting rather than self-administered. The target testosterone range on TRT (15–30 nmol/L for gel, trough 12–15 nmol/L for injections) ensures adequate replacement without supraphysiological levels that increase polycythaemia, aggression, cardiovascular, and sleep apnoea risks.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Monitoring on TRT</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>3 months after starting TRT</div><div>Testosterone level (gel: 2–4 hrs post-application; Nebido: trough before 3rd injection) — adjust dose to target range. <span class="pill pill-blue">FBC + haematocrit</span> — polycythaemia check (haematocrit &gt;0.54 = withhold, seek specialist advice). <span class="pill pill-blue">PSA</span> — baseline comparison. Symptom reassessment (AMS score). Any gynaecomastia (aromatisation to oestradiol — add anastrozole if troublesome, specialist decision).</div>
+      <div>6–12 months (then annually)</div><div>Repeat FBC + haematocrit · PSA (annual surveillance) · Testosterone level · AMS symptom score · Weight + BMI · Blood pressure · Liver function (if oral preparation used — oral TRT rarely used in UK) · DRE annually (prostate surveillance) · Bone density (DXA scan) every 2 years if osteoporosis at baseline</div>
+      <div>PSA monitoring thresholds</div><div>Stop TRT and refer to urology if: PSA rises &gt;1.4 ng/ml above baseline in any 12-month period · PSA velocity &gt;0.4 ng/ml in 6 months · Absolute PSA &gt;4 ng/ml at any time on TRT · New abnormal DRE. TRT does NOT cause prostate cancer but can unmask subclinical disease by stimulating pre-existing cancer cells.</div>
+      <div>Haematocrit management</div><div>Haematocrit 0.50–0.54: reduce TRT dose or increase injection interval. Haematocrit &gt;0.54: withhold TRT + specialist referral. Consider venesection (therapeutic phlebotomy) if very high. Check: erythropoietin (rare erythropoietin-secreting tumour if Hct dramatically elevated), concurrent smoking (contributes to polycythaemia), OSA (treat if present).</div>
+      <div>Treatment duration</div><div>TRT is lifelong for true hypogonadism (primary or secondary with irreversible cause). Annual reassessment of benefits vs risks. Consider trial cessation in functional hypogonadism if underlying cause corrected (obesity treated, opioids reduced). Stopping TRT after long-term use: HPG axis may take 6–24 months to recover. Taper slowly with specialist guidance — do not stop abruptly.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The PSA monitoring protocol on TRT is important and must be communicated clearly to patients — the concern is not that TRT causes prostate cancer, but that it can stimulate pre-existing occult prostate cancer cells that were previously quiescent in a low-testosterone environment. The landmark studies (including the testosterone trials in older men) have not shown an increased risk of prostate cancer diagnosis with TRT, but PSA monitoring remains standard of care. The PSA velocity thresholds (0.4 ng/ml rise in 6 months, 1.4 ng/ml rise in 12 months) are more sensitive for prostate cancer detection than the absolute PSA level in men on TRT, because TRT can cause a modest PSA rise that is considered acceptable (up to 1.4 ng/ml in 12 months) — but a rapid rise suggests stimulation of occult cancer. These thresholds are from the BSSM guidelines. Polycythaemia from TRT is the most common significant adverse effect — testosterone stimulates erythropoietin production, which increases red cell mass. The clinical risk is venous and arterial thrombosis (DVT, PE, MI, stroke) from increased blood viscosity. The haematocrit threshold of 0.54 (equivalent to approximately Hb 18 g/dL) is the standard intervention threshold. Injectable testosterone preparations cause higher peak levels and therefore greater erythropoietic stimulation — men on injections have higher rates of polycythaemia than those on gels. Switching to gel or reducing injection frequency/dose often resolves the problem without stopping TRT entirely.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Lifestyle Optimisation — Raises Testosterone Naturally</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>In functional hypogonadism (obesity, T2DM, OSA), lifestyle changes can raise testosterone to eugonadal levels without TRT. Measure before starting TRT to quantify lifestyle impact.</p>
+    <div class="lsgrid">
+      <div class="lstile"><b>Weight loss</b> Most effective lifestyle intervention for functional hypogonadism. 10% weight loss raises testosterone approximately 3–5 nmol/L. Mechanism: reduced aromatase activity in adipose tissue (less T→E2 conversion), reduced SHBG binding, reduced inflammatory cytokines (IL-6, TNF-α suppress Leydig cell function). Bariatric surgery in morbidly obese men normalises testosterone in 70–80%.</div>
+      <div class="lstile"><b>Resistance exercise</b> Compound resistance training (squats, deadlifts, bench press, rows) acutely raises testosterone by 15–25% post-exercise and improves Leydig cell sensitivity over time. 3 sessions per week minimum. Also builds muscle mass (which TRT aims to achieve), improves body composition, and reduces insulin resistance. More evidence than any single dietary supplement for raising testosterone.</div>
+      <div class="lstile"><b>Sleep quality</b> 70% of testosterone is secreted during sleep (particularly REM sleep, stages 3–4). Sleep deprivation of 5–6 hours reduces testosterone by 10–15% within 1 week (University of Chicago 2011 study). Target 7–9 hours/night. Treat OSA (CPAP) — OSA causes significant testosterone suppression and is highly prevalent in the TD population (overweight, middle-aged men). STOP-BANG screen all patients.</div>
+      <div class="lstile"><b>Alcohol reduction</b> Alcohol acutely suppresses testosterone synthesis (direct Leydig cell toxicity) and chronically in heavy drinkers reduces testosterone by 30–50% (via liver disease, increased SHBG, zinc depletion). Reducing to &lt;14 units/week raises testosterone. Chronic alcoholics may have irreversible Leydig cell damage — check LH/FSH to classify primary vs functional.</div>
+      <div class="lstile"><b>Zinc and vitamin D</b> Zinc is a cofactor for testosterone synthesis — deficiency (common in poor diet, alcoholism, inflammatory bowel disease) reduces testosterone. Dietary zinc: red meat, shellfish, legumes, nuts. Supplement 25–45 mg/day zinc if deficient (serum zinc). Vitamin D deficiency correlates with lower testosterone — supplement with cholecalciferol 1000–2000 IU/day to correct deficiency. Neither replaces TRT in true hypogonadism.</div>
+      <div class="lstile"><b>Stress reduction</b> Cortisol and testosterone have an antagonistic relationship — chronic stress raises cortisol, which directly inhibits GnRH pulsatility and Leydig cell testosterone synthesis. Mindfulness, CBT for chronic stress, adequate recovery between exercise sessions, and addressing occupational/relationship stressors all support the HPG axis. Burnout syndrome mimics TD and should be specifically assessed in high-achieving men presenting with TD symptoms.</div>
+      <div class="lstile"><b>Opioid review</b> Long-term opioids suppress GnRH and suppress LH/FSH, reducing testosterone in 70% of patients. Review opioid necessity (are non-opioid analgesia strategies available?), reduce dose where possible, consider switch to buprenorphine (less HPG axis suppression). For men on methadone: switch to buprenorphine can raise testosterone significantly without TRT. Document opioid-testosterone discussion.</div>
+      <div class="lstile"><b>Avoid anabolic steroids</b> Anabolic steroid use (illicit bodybuilding) causes prolonged HPG axis suppression — testosterone and LH/FSH can remain suppressed for years after stopping. Honest history-taking in gym-going men presenting with TD (ask directly — "have you ever used anabolic steroids or testosterone injections?"). Recovery of HPG axis: hCG + clomiphene PCT (post-cycle therapy) under endocrinology guidance. Document disclosure confidentially.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The evidence for lifestyle optimisation before TRT in functional hypogonadism is compelling — a 2019 meta-analysis showed that intensive lifestyle intervention (diet + exercise) in obese men raised testosterone by an average of 2.9 nmol/L, equivalent to the lower end of TRT dose titration. In men with borderline testosterone (8–12 nmol/L) and functional risk factors, a structured 3-month lifestyle programme before TRT reassessment is both evidence-based and clinically responsible — it avoids lifelong TRT in men who can achieve eugonadal testosterone with lifestyle changes, prevents the fertility-suppressing effect of TRT in younger men, and addresses the underlying metabolic risk. The sleep-testosterone relationship is one of the most underappreciated in primary care — multiple studies have shown that chronically short sleep (&lt;6 hours) reduces testosterone by 10–15% within 1 week, and this is reversible with sleep restoration. OSA is particularly important because it is highly prevalent in the obese, middle-aged male TD population, is potentially curable with CPAP/weight loss, and causes significant testosterone suppression through sleep fragmentation and intermittent hypoxia. Every man presenting with TD symptoms and snoring/witnessed apnoea should have OSA formally assessed before TRT is prescribed.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Monitoring Schedule &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Before TRT — baseline documentation</div><div>Document in records: two testosterone levels + dates · LH/FSH · prolactin · PSA + DRE · FBC + haematocrit · TSH · HbA1c · Fertility discussion and outcome · Gel transfer safety counselling · Written patient information provided · MRI pituitary result (if secondary hypogonadism)</div>
+      <div>3 months</div><div>Testosterone level (correct timing for preparation) · FBC + haematocrit · PSA · Symptom reassessment (AMS) · Dose adjustment if needed · Gel transfer compliance check · Any gynaecomastia or breast tenderness (aromatisation) · Any new lower urinary tract symptoms (prostate)</div>
+      <div>6 months</div><div>Repeat FBC · PSA · Testosterone · AMS score · Blood pressure · Weight · Any adverse effects</div>
+      <div>Annual thereafter</div><div>FBC + haematocrit · PSA (prostate surveillance) · Testosterone · DRE · AMS score · Metabolic screen (HbA1c, lipids) · DXA scan every 2 years (bone density — osteoporosis screen in hypogonadism) · OSA review if relevant</div>
+      <div>TRT audit and annual review</div><div>BSSM guidelines recommend annual formal review: Is the patient still symptomatic without TRT? Is the benefit maintained? Any new contraindications? Can dose be reduced? Any side effects? Document the ongoing indication for TRT — treatment should not continue indefinitely without formal review.</div>
+      <div><span class="pill pill-red">Stop TRT and seek specialist review</span></div><div>PSA rise &gt;1.4 ng/ml in 12 months or &gt;0.4 ng/ml in 6 months · Haematocrit &gt;0.54 · New or worsening symptoms of prostate obstruction · Confirmed prostate cancer · New desire for fertility (switch to hCG)</div>
+      <div><span class="pill pill-amber">Same-day GP</span></div><div>Chest pain / breathlessness after Nebido injection (POME) · Severe gynaecomastia or breast pain on TRT · New mood symptoms (aggression, mania) · Significant unexpected PSA rise</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The annual formal review of TRT is a clinical governance requirement — TRT is a long-term commitment with significant implications (polycythaemia risk, prostate surveillance, HPG axis suppression, fertility loss) and must not be continued on an automatic repeat prescription basis. Each annual review should address: ongoing indication (are testosterone levels still deficient? Is there symptomatic benefit? Has an underlying reversible cause been corrected?), side effects and monitoring results, and patient preferences (including fertility plans if applicable). The DXA scan surveillance for bone density in hypogonadism is important — testosterone is a key regulator of bone density in men, and longstanding untreated hypogonadism causes osteoporosis with fragility fracture risk comparable to that seen in post-menopausal women. All men with confirmed hypogonadism should have a baseline DXA scan and repeat scanning every 2 years, with osteoporosis treated per NICE guidelines (calcium + vitamin D + bisphosphonate if T-score &lt;-2.5). The cardiovascular safety of TRT remains an area of ongoing research — the TRAVERSE trial (2023, NEJM) showed no significant increase in major cardiovascular events with TRT in men with hypogonadism and high cardiovascular risk, providing reassurance for prescribing in this population. However, the polycythaemia side effect remains a genuine cardiovascular risk that requires active monitoring.</div></div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on BSSM (British Society for Sexual Medicine) UK Guidelines for Testosterone Deficiency 2022, EAU Testosterone Deficiency Guidelines 2023, NICE CKS Hypogonadism (2023), NHS England TRT prescribing guidance, TRAVERSE trial (Lincoff et al. NEJM 2023), Bassil et al. Ther Clin Risk Manag (testosterone deficiency in ageing). Always adapt to individual patient context and local commissioning pathways.
+</div>
+
+<script>
+(function(){
+  const STORE='rgp.alg.testosteronedeficiency.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true;});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+</body>
+</html>

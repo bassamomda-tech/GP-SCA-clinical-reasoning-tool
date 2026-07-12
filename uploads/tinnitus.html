@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tinnitus · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="mode-both" id="bodyEl">
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">TN</div>
+      <div><div class="tb-title">Tinnitus · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE NG155 Tinnitus 2020 / NICE CKS Tinnitus 2023</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">10–15%</span><span class="ns-lbl">UK adults with tinnitus</span></div>
+    <div class="ns-item"><span class="ns-val">1 in 200</span><span class="ns-lbl">Severely affected — life significantly impaired</span></div>
+    <div class="ns-item"><span class="ns-val">Pulsatile</span><span class="ns-lbl">Tinnitus = vascular cause until excluded</span></div>
+    <div class="ns-item"><span class="ns-val">72 hours</span><span class="ns-lbl">Sudden SNHL + tinnitus → same-day ENT emergency</span></div>
+    <div class="ns-item"><span class="ns-val">MRI IAM</span><span class="ns-lbl">Mandatory: unilateral tinnitus + SNHL</span></div>
+    <div class="ns-item"><span class="ns-val">CBT</span><span class="ns-lbl">NICE NG155 first-line for chronic tinnitus</span></div>
+    <div class="ns-item"><span class="ns-val">40%</span><span class="ns-lbl">Tinnitus patients also have hyperacusis</span></div>
+    <div class="ns-item"><span class="ns-val">6 months</span><span class="ns-lbl">Minimum betahistine trial in Menière's (not idiopathic tinnitus)</span></div>
+  </div>
+</div>
+<div class="page">
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — Tinnitus in a Working-Age Adult</div>
+  <div class="stem-title">A 42-year-old teacher presents with bilateral tinnitus following a rock concert, sleep disturbance, and health anxiety about acoustic neuroma</div>
+  <div class="stem-text">"Mr James Okafor, 42, a secondary school PE teacher. He attended a loud rock concert 3 weeks ago and has had continuous high-pitched ringing in both ears since the following morning. The ringing is there all the time and is worst at night, making it difficult to sleep. He has read online about acoustic neuroma and is worried the tinnitus might indicate a brain tumour. His hearing is subjectively unchanged. He has no dizziness. He has found himself avoiding quiet rooms and is struggling to concentrate at work."</div>
+  <div class="stem-note">Post-noise-exposure bilateral tinnitus following a clear precipitant is most likely noise-induced and benign. However, the SCA clinical tasks include: ruling out acoustic neuroma (unilateral tinnitus + SNHL = MRI IAM), ruling out pulsatile tinnitus (vascular cause), assessing severity and functional impact, and addressing the health anxiety that has developed. CBT-based tinnitus management is the NICE NG155-recommended first-line treatment. No pharmacological cure for tinnitus exists.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — Noise-Induced / Post-Concert (This Stem)</strong> Bilateral tinnitus, clear noise precipitant, bilateral, no hearing change, no vertigo. Management: audiogram, sound therapy, CBT referral, sleep hygiene, hearing protection advice.</div>
+    <div class="stem-variant"><strong>Scenario B — Acoustic Neuroma Presentation</strong> Unilateral tinnitus + progressive ipsilateral SNHL + subtle balance symptoms. MRI IAM with gadolinium mandatory. Urgent ENT referral. Do NOT reassure without imaging.</div>
+    <div class="stem-variant"><strong>Scenario C — Pulsatile Tinnitus</strong> Pulsatile tinnitus (beating, synchronous with pulse) — glomus tumour, AVM, carotid stenosis, benign intracranial hypertension. Urgent ENT + vascular MRI. Never reassure pulsatile tinnitus as benign without exclusion.</div>
+    <div class="stem-variant"><strong>Scenario D — Menière's Disease</strong> Episodic tinnitus + unilateral fluctuating SNHL + episodic vertigo (20 min–12 hrs). ENT referral for confirmation; betahistine + salt restriction + diuretic after diagnosis.</div>
+    <div class="stem-variant"><strong>Scenario E — Drug-Induced Tinnitus</strong> Tinnitus onset temporally related to new medication — aspirin at high dose, aminoglycosides, loop diuretics, quinine, cisplatin. Drug review and dose reduction or switch. Tinnitus often partially or fully reversible on stopping the drug.</div>
+    <div class="stem-variant"><strong>Key variables</strong> Unilateral vs bilateral, pulsatile vs non-pulsatile, associated hearing loss, associated vertigo, noise exposure history, ototoxic medications, duration, severity (sleep, concentration, work), and psychological impact (anxiety, depression, health anxiety).</div>
+  </div>
+</div>
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text"><div class="step-label">Step 1</div><div class="step-title">History Taking — Open Question First · Targeted Questions · ICE · Psychosocial Context</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro">The history is entirely diagnostic in tinnitus — there is no bedside test that confirms or excludes a cause with certainty. The critical discriminators are: <strong>pulsatile vs non-pulsatile</strong> (pulsatile = vascular until excluded), <strong>unilateral vs bilateral</strong> (unilateral + SNHL = acoustic neuroma until MRI excludes it), and <strong>associated symptoms</strong> (hearing loss, vertigo, neurological features). The functional and psychological impact is equally important — tinnitus is primarily a condition of disability and distress, not of pathology.</div>
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 Consultation opener</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"You've been experiencing tinnitus — a sound in your ears. Before I ask anything specific, can you describe in your own words what you're hearing, when it started, and how much it's affecting you day to day?"</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Opening with the functional impact question alongside the characterisation question signals to the patient that you are treating the whole person, not just investigating a symptom. This scores in Relating to Others from the outset.</div>
+    </div>
+    <div class="sub-divider">1A — Characterise the tinnitus: type, laterality, pattern, precipitants</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question to ask</th><th style="width:42%">Why it matters clinically</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION</strong><em>"Can you describe what you're hearing — is it a ringing, buzzing, hissing, pulsing, or something else? And which ear, or both?"</em></td>
+            <td class="why">The quality and laterality of the tinnitus are the two most diagnostically important features. Non-pulsatile bilateral tinnitus (ringing, buzzing, hissing) after noise exposure = almost certainly noise-induced or ARHL-related. Unilateral non-pulsatile tinnitus + SNHL = must exclude acoustic neuroma with MRI IAM. Pulsatile tinnitus (beating, whooshing, synchronous with pulse) = vascular until excluded urgently.<span class="why-sub">Patients often struggle to describe tinnitus — offer options ("Is it more like a constant tone, like ringing? Or a buzzing? Or a whooshing that beats with your pulse?") to help characterise it precisely.</span></td>
+            <td><span class="chg chg-ddx">Diagnoses</span><span class="chg chg-urgent">Urgency</span></td>
+          </tr>
+          <tr>
+            <td class="q">Pulsatile or steady?<em>"Does the sound beat in time with your heartbeat — like a whooshing or throbbing? Or is it a constant steady sound?"</em></td>
+            <td class="why">This is the single most critical discriminating question in tinnitus. Pulsatile tinnitus (synchronous with the pulse) indicates a vascular cause — glomus tympanicum/jugulare tumour, arteriovenous malformation (AVM), carotid stenosis, high jugular bulb, or benign intracranial hypertension (BIH, particularly in obese young women). BIH: pulsatile tinnitus + headache + visual obscurations + obese female = urgent ophthalmology (papilloedema exclusion) and neurology.<span class="why-sub">A simple test: ask the patient to press gently on the ipsilateral jugular vein — if the pulsatile tinnitus stops, this confirms a venous origin (typically benign jugular bulb variant). This is not always available in GP but is useful in ENT.</span></td>
+            <td><span class="chg chg-urgent">Pulsatile → urgent ENT + MRI</span><span class="chg chg-ref">Vascular imaging</span></td>
+          </tr>
+          <tr>
+            <td class="q">Unilateral or bilateral?<em>"Is it one ear or both — and if both, are they equally loud, or is one side worse?"</em></td>
+            <td class="why">Unilateral tinnitus with any degree of hearing change on the same side = acoustic neuroma (vestibular schwannoma) until excluded with MRI IAM with gadolinium. This applies regardless of the patient's age or the severity of the hearing loss — even mild asymmetric SNHL alongside unilateral tinnitus warrants MRI. Bilateral tinnitus (as in this stem's concert-goer) is far more likely to be noise-induced or ARHL-related.<span class="why-sub">Asymmetric bilateral tinnitus (one ear louder than the other) has the same investigation pathway as purely unilateral tinnitus — MRI IAM required.</span></td>
+            <td><span class="chg chg-ref">Unilateral → urgent ENT + MRI IAM</span><span class="chg chg-ddx">DDx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Associated hearing loss?<em>"Has your hearing changed since the tinnitus started — even slightly? Is one side worse than the other?"</em></td>
+            <td class="why">Tinnitus + ipsilateral SNHL = the classic acoustic neuroma red flag combination. Tinnitus following noise exposure without subjective hearing change may still have measurable audiometric loss — audiogram is mandatory in all patients with tinnitus regardless of subjective hearing status. Sudden hearing loss + tinnitus = sudden SNHL emergency (same-day ENT + prednisolone now).<span class="why-sub">Many patients with moderate SNHL do not self-report hearing loss — they adapt, attribute it to others mumbling, or lack a comparison baseline. Audiogram often reveals loss that the patient is unaware of.</span></td>
+            <td><span class="chg chg-ref">SNHL + unilateral → MRI IAM</span><span class="chg chg-999">Sudden SNHL + tinnitus → emergency</span></td>
+          </tr>
+          <tr>
+            <td class="q">Associated vertigo?<em>"Have you had any spinning sensations, dizziness, or balance problems since this started?"</em></td>
+            <td class="why">Tinnitus + vertigo + hearing loss = Menière's disease triad (or AICA infarct acutely). Episodic vertigo (20 min–12 hours) + fluctuating unilateral SNHL + tinnitus + aural fullness = Menière's disease — requires ENT confirmation and specific management (betahistine after diagnosis, not empirically). Acute onset of all three simultaneously = AICA stroke until MRI excludes.<span class="why-sub">Tinnitus alone (without vertigo or hearing change) = much less likely to indicate Menière's and does not require ENT urgently unless other red flags are present.</span></td>
+            <td><span class="chg chg-ddx">Menière's vs AICA</span><span class="chg chg-ref">ENT</span></td>
+          </tr>
+          <tr>
+            <td class="q">Noise exposure history<em>"Have you been exposed to loud noise — at work, at concerts, DIY, or recreational shooting? Have you worn ear protection?"</em></td>
+            <td class="why">A clear temporal relationship between loud noise exposure and tinnitus onset is the most reassuring explanation for bilateral non-pulsatile tinnitus — it suggests noise-induced cochlear hair cell damage as the mechanism. This is not directly treatable, but it guides the management conversation (sound therapy, CBT, hearing protection), explains the mechanism to the patient, and excludes more sinister causes when combined with normal audiogram and bilateral presentation.<span class="why-sub">Rock concerts typically produce 100–120 dB SPL — cochlear damage can occur with as little as 2 hours at 100 dB without protection. Temporary threshold shift (TTS) after noise exposure resolves within 24 hours; permanent threshold shift (PTS) does not.</span></td>
+            <td><span class="chg chg-ddx">NIHL tinnitus</span><span class="chg chg-rx">Hearing protection</span></td>
+          </tr>
+          <tr>
+            <td class="q">Medication review<em>"Do you take any tablets regularly — particularly aspirin, water tablets, any antibiotics recently given by injection or drip, or any medications for epilepsy?"</em></td>
+            <td class="why">Ototoxic medications cause tinnitus: salicylates (aspirin at high dose — bilateral tinnitus, often reversible on dose reduction), aminoglycosides (permanent ototoxicity — tinnitus + SNHL), loop diuretics at high doses, quinine (leg cramp treatment — no longer recommended by NICE), cisplatin. NSAIDs at high doses can also cause reversible tinnitus. Always review the complete medication list before attributing tinnitus to noise or ARHL.<span class="why-sub">Quinine for leg cramps: NICE no longer recommends quinine for muscle cramps — if a patient with tinnitus is taking it, this is both a cause of their tinnitus and an opportunity to review an inappropriate prescription.</span></td>
+            <td><span class="chg chg-ddx">Drug-induced</span><span class="chg chg-rx">Stop culprit</span></td>
+          </tr>
+          <tr>
+            <td class="q">Functional impact — sleep, work, concentration<em>"How much is this affecting your sleep? Your concentration at work? Your mood or your enjoyment of life?"</em></td>
+            <td class="why">The functional and psychological burden of tinnitus is the primary determinant of need for specialist support — not the objective loudness of the tinnitus. Patients with severe functional impairment (sleep disruption, concentration difficulties, depression, health anxiety) need CBT-based tinnitus therapy regardless of whether a physical cause is found. NICE NG155 specifically recommends assessment of psychological impact alongside audiological assessment.<span class="why-sub">Tinnitus Handicap Inventory (THI) or a simple functional assessment ("On a scale of 0–10, how much does the tinnitus affect your daily life?") helps quantify severity and prioritise intervention intensity.</span></td>
+            <td><span class="chg chg-rx">CBT referral</span><span class="chg chg-ps">Severity</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1B — Red flags</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — must not miss</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Pulsatile tinnitus (beats with pulse)</td><td class="rf-why">Pulsatile tinnitus indicates a vascular anomaly — glomus tumour (highly vascular paraganglioma in the middle ear or jugular foramen), AVM, carotid artery disease, or benign intracranial hypertension. These are not benign diagnoses and require vascular imaging urgently. Reassuring pulsatile tinnitus as "normal" without investigation is a significant clinical error.</td><td><span class="rf-action rfa-2">Urgent ENT + MRI vascular</span></td></tr>
+          <tr><td class="rf-flag">Unilateral tinnitus + ipsilateral hearing loss</td><td class="rf-why">The classic acoustic neuroma (vestibular schwannoma) presentation. Even mild asymmetric SNHL alongside unilateral tinnitus requires MRI IAM with gadolinium for exclusion. Acoustic neuromas are slow-growing but can cause permanent deafness and brainstem compression if large and untreated. Normal audiogram does NOT exclude acoustic neuroma — MRI is the diagnostic test.</td><td><span class="rf-action rfa-2">Urgent ENT + MRI IAM (gadolinium)</span></td></tr>
+          <tr><td class="rf-flag">Sudden onset tinnitus + sudden hearing loss (within 72 hours)</td><td class="rf-why">Sudden SNHL with tinnitus is a same-day ENT emergency with a 2-week steroid treatment window. Start prednisolone 1 mg/kg/day immediately — do not wait for the ENT appointment. The tinnitus in this context is a marker of acute cochlear damage that is partially reversible with timely steroid treatment.</td><td><span class="rf-action rfa-same">Same-day ENT + prednisolone NOW</span></td></tr>
+          <tr><td class="rf-flag">Tinnitus + neurological symptoms (headache, diplopia, facial numbness)</td><td class="rf-why">Tinnitus accompanying neurological symptoms localises the lesion to the posterior fossa — acoustic neuroma, meningioma, or posterior circulation stroke. Facial numbness (CN V) alongside tinnitus (CN VIII) suggests a large tumour at the cerebellopontine angle. Brainstem compression can cause life-threatening complications.</td><td><span class="rf-action rfa-2">Urgent ENT + MRI posterior fossa</span></td></tr>
+          <tr><td class="rf-flag">Pulsatile tinnitus + headache + visual symptoms in obese young woman</td><td class="rf-why">This triad = benign intracranial hypertension (pseudotumour cerebri / IIH) until proven otherwise. Raised intracranial pressure causes pulsatile tinnitus through transmission of the raised CSF pressure to the transverse sinus. Papilloedema can cause progressive visual loss. Urgent ophthalmology (fundoscopy) and neurology.</td><td><span class="rf-action rfa-same">Same-day ophthalmology + neurology</span></td></tr>
+          <tr><td class="rf-flag">Ear pain + tinnitus (without obvious otitis externa)</td><td class="rf-why">Referred otalgia from pharyngeal or tongue base malignancy can present with tinnitus and ear pain — particularly in smokers over 45. The ear is innervated by branches that also supply the pharynx. Any smoker with ear pain and tinnitus without otological cause requires urgent ENT nasendoscopy.</td><td><span class="rf-action rfa-2">Urgent ENT — pharyngeal Ca exclusion</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-divider">1C — PMH / Drug history / Social history</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🧬 PMH / FH — management impact</div>
+        <table class="it">
+          <thead><tr><th>Factor</th><th>Why it matters</th><th>Management impact</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Anxiety or depression</td><td>Tinnitus has a bidirectional relationship with anxiety and depression — each worsens the other. Pre-existing mental health conditions dramatically worsen tinnitus-related distress and impair response to sound therapy alone</td><td class="impact">Prioritise CBT referral; consider SSRI for co-morbid depression; involve IAPT earlier</td></tr>
+            <tr><td class="factor">Cardiovascular disease (hypertension, atherosclerosis)</td><td>Cardiovascular risk factors contribute to cochlear microangiopathy (ARHL) and increase the likelihood of vascular causes of pulsatile tinnitus (carotid stenosis, AVM)</td><td class="impact">Vascular risk optimisation; pulsatile tinnitus → vascular imaging; BP management</td></tr>
+            <tr><td class="factor">Previous ear surgery or ear disease</td><td>History of stapedectomy, mastoidectomy, or chronic suppurative otitis media creates a context where tinnitus may be related to surgical sequelae, ossicular damage, or cholesteatoma recurrence</td><td class="impact">ENT review of surgical history; MRI or CT temporal bones depending on presentation</td></tr>
+            <tr><td class="factor">Jaw or TMJ problems</td><td>Temporomandibular joint (TMJ) dysfunction is a well-recognised but under-diagnosed cause of somatic tinnitus — tinnitus that changes with jaw movement or pressure on the TMJ area. Often bilateral and low-pitched. Managed by dental/maxillofacial assessment</td><td class="impact">Ask specifically about jaw clicking, pain, or clenching; refer dental/maxfax if somatic pattern</td></tr>
+            <tr><td class="factor">Thyroid disease</td><td>Hypothyroidism is a reversible cause of SNHL and tinnitus — cochlear metabolic processes are thyroid-hormone dependent. TFTs should be checked in any unexplained bilateral SNHL or tinnitus</td><td class="impact">TFTs; treat hypothyroidism; reassess tinnitus after 3–6 months of replacement therapy</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">💊 Drug history · Social history</div>
+        <table class="it">
+          <thead><tr><th>Factor</th><th>Why it matters</th><th>Management impact</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Aspirin / high-dose NSAIDs</td><td>Salicylates at high doses (over 6 g/day) cause bilateral, high-pitched, reversible tinnitus. Even moderate doses can worsen tinnitus in susceptible individuals. Aspirin at low-dose (75 mg) rarely causes clinically significant tinnitus</td><td class="impact">Review dose; reduce if clinically possible; tinnitus often partially resolves</td></tr>
+            <tr><td class="factor">Caffeine and alcohol</td><td>High caffeine intake worsens tinnitus acuity and sleep disruption in many patients — a direct effect on auditory cortex excitability. Alcohol initially masks tinnitus but withdrawal causes rebound worsening. These are modifiable lifestyle factors</td><td class="impact">Advise caffeine reduction (under 3 cups/day); alcohol within safe limits; sleep hygiene priority</td></tr>
+            <tr><td class="factor">Recreational noise exposure</td><td>Concerts, nightclubs, power tools, motorbike riding, headphone use at high volume — all contribute to cumulative cochlear hair cell damage. Temporary threshold shift (tinnitus that resolves within 24 hours) is an early warning sign of permanent damage if exposure continues</td><td class="impact">Hearing protection prescription (custom earplugs for musicians); noise exposure limit advice; audiogram</td></tr>
+            <tr><td class="factor">Stress and sleep deprivation</td><td>Stress dramatically amplifies tinnitus perception — the fight-or-flight response activates the reticular formation and auditory cortex, increasing attention to the tinnitus signal. Sleep deprivation worsens this feedback loop. Conversely, improving sleep quality significantly reduces tinnitus-related distress even without changing the underlying sound</td><td class="impact">Sleep hygiene programme; sound therapy at night; stress management referral; CBT addresses this cycle directly</td></tr>
+            <tr><td class="factor">Occupation and health anxiety</td><td>A teacher with tinnitus affecting concentration directly impacts their occupational capacity. Health anxiety about tinnitus (particularly in the internet age — "acoustic neuroma search") significantly worsens functional impairment and is itself a therapeutic target in CBT-based tinnitus management</td><td class="impact">Fit note consideration for acute phase; address health anxiety directly; CBT for health anxiety and tinnitus simultaneously</td></tr>
+            <tr><td class="factor">Social isolation</td><td>Tinnitus causes progressive social withdrawal — many patients avoid quiet social settings (restaurants, cinemas, one-to-one conversations) where the tinnitus becomes more audible. This mirrors the isolation caused by hearing loss and compounds the psychological burden</td><td class="impact">Tinnitus support groups (BTA — British Tinnitus Association); CBT addressing avoidance behaviour; sound-enriched environments</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sub-divider">1D — ICE</div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i">
+        <div class="ice-label">💭 Ideas</div>
+        <div class="ice-phrase">"What do you think might be causing this noise in your ears — have you had any thoughts about what's happening?"</div>
+        <div class="ice-why">This patient has self-diagnosed acoustic neuroma via internet search — understanding his internal model before reassuring him allows the GP to directly address and correct it rather than simply reassuring ("You're fine") which leaves the underlying concern unaddressed. Explaining why this presentation (bilateral, noise-precipitated, no hearing change) is very different from acoustic neuroma (typically unilateral, progressive) is far more satisfying than generic reassurance.</div>
+      </div>
+      <div class="ice-card ice-c">
+        <div class="ice-label">😟 Concerns</div>
+        <div class="ice-phrase">"Is there a specific thing you've been worried this might be — something you read about, or something that particularly frightens you?"</div>
+        <div class="ice-why">Health anxiety about acoustic neuroma is common in tinnitus patients who have used the internet — the GP needs to name this concern directly ("Are you worried this might be something serious in the brain?") and then explain the specific clinical features that distinguish acoustic neuroma from noise-induced tinnitus. Without naming and addressing this, no amount of investigation or treatment will resolve the anxiety.</div>
+      </div>
+      <div class="ice-card ice-e">
+        <div class="ice-label">🎯 Expectations</div>
+        <div class="ice-phrase">"What were you hoping we might be able to do — were you expecting a scan or a specific treatment?"</div>
+        <div class="ice-why">Most patients with tinnitus expect either an MRI (to exclude the feared tumour) or a medication to stop the noise. Both need to be addressed: MRI is appropriate if unilateral features are present but not for bilateral noise-induced tinnitus; and there is no pharmacological cure for idiopathic tinnitus — NICE NG155 explicitly recommends against offering drug treatment for tinnitus. Managing this expectation empathetically but honestly is a key consultation skill.</div>
+      </div>
+    </div>
+    <div class="sub-divider">1E — Psychosocial context</div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>😴 Sleep Disruption and Fatigue</h5><p>Tinnitus is most intrusive in quiet environments — particularly in bed at night when there is no background noise to mask it. Sleep disruption is one of the commonest and most disabling consequences of tinnitus, creating a vicious cycle: poor sleep → increased stress → heightened cortical arousal → increased tinnitus perception → further sleep disruption. Sound therapy at night (white noise generator, bedroom radio, nature sounds) breaks this cycle by providing a masking signal.</p><span class="ps-phrase">"Has the tinnitus been affecting your sleep? If so, can you tell me what the nights have been like — do you struggle to get off to sleep, or does it wake you, or both?"</span></div>
+      <div class="ps-card"><h5>🧠 Health Anxiety and Catastrophising</h5><p>Internet-induced health anxiety is one of the commonest psychological presentations in tinnitus — the patient has read about acoustic neuroma and is now catastrophising a manageable symptom into a life-threatening diagnosis. This health anxiety is itself a therapeutic target; CBT specifically addresses catastrophic thinking patterns about tinnitus, including the "I'll go deaf/have a tumour" spiral that many patients experience in the early weeks after onset.</p><span class="ps-phrase">"I can see you've been doing a lot of research online about this. Can you tell me what you've been reading — so I can help separate the things that really apply to your situation from the things that don't?"</span></div>
+      <div class="ps-card"><h5>💼 Occupational Impact</h5><p>A PE teacher with tinnitus-related concentration difficulties faces specific occupational challenges — managing a noisy gym environment, listening to students' questions, maintaining situational awareness in sport. The occupational impact of tinnitus is frequently under-explored in GP consultations. If severe enough, a fit note for the acute phase may be appropriate, alongside an occupational health referral for teachers with persistent significant tinnitus.</p><span class="ps-phrase">"You mentioned it's affecting your concentration at work — can you give me a sense of what that looks like on a typical day? Are there specific situations where it's particularly problematic?"</span></div>
+      <div class="ps-card"><h5>🎵 Music and Recreational Noise</h5><p>For a patient who attends rock concerts regularly, the tinnitus episode is not just a medical event — it represents a conflict between something they value (live music) and their health. The GP's role is not to ban concerts but to help the patient engage with music safely using hearing protection. Custom musician's earplugs (available from audiologists) attenuate sound evenly across frequencies, preserving music quality while protecting cochlear hair cells.</p><span class="ps-phrase">"Are you worried that you might have to stop going to concerts? The good news is that you don't — but we should talk about how to protect your hearing while still enjoying them. Custom earplugs make a real difference."</span></div>
+      <div class="ps-card"><h5>🤫 Hyperacusis and Sound Sensitivity</h5><p>Approximately 40% of patients with tinnitus also have hyperacusis — an abnormal sensitivity to sounds that are well-tolerated by others. Hyperacusis develops when the auditory system becomes over-sensitised following cochlear damage. It is managed with sound desensitisation therapy (gradual, controlled exposure to sound at increasing volumes) — the opposite of avoidance. Protecting the ears from all sound worsens hyperacusis.</p><span class="ps-phrase">"Have you noticed that ordinary sounds seem louder or more uncomfortable than they used to — like traffic, or the sound of cutlery? That's quite common alongside tinnitus and it's called hyperacusis — it's also very treatable."</span></div>
+      <div class="ps-card"><h5>🫂 Social Withdrawal and Isolation</h5><p>Tinnitus causes progressive social withdrawal — patients avoid quiet restaurants, cinemas, one-to-one conversations, and social gatherings where the tinnitus becomes the dominant auditory experience. This mirrors the isolation of hearing loss and compounds the psychological burden. The patient in this stem has been "avoiding quiet rooms" — a clear early sign of maladaptive tinnitus behaviour that CBT specifically addresses.</p><span class="ps-phrase">"You mentioned avoiding quiet rooms — can you tell me more about that? I'm asking because there's a specific type of support that's very effective at helping people feel less controlled by the tinnitus, and what you're describing is exactly the kind of thing it addresses."</span></div>
+    </div>
+    <div class="sca-cp sca-only">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say">
+          <div class="sca-block-t">Key phrases that score</div>
+          <div class="sca-phrase">"Is the sound pulsing in time with your heartbeat — like a whooshing or throbbing — or is it a steady, constant ringing?"</div>
+          <div class="sca-phrase">"Is it one ear or both — and if both, is one side noticeably louder?"</div>
+          <div class="sca-phrase">"Any change in your hearing, or any dizziness or spinning, since this started?"</div>
+          <div class="sca-phrase">"I can see you've been doing some research online about this — can you tell me what specifically has been worrying you?"</div>
+          <div class="sca-phrase">"How much is this affecting your sleep, and your ability to concentrate at work?"</div>
+        </div>
+        <div class="sca-block sca-avoid">
+          <div class="sca-block-t">Deductions</div>
+          <ul>
+            <li>Not asking pulsatile vs non-pulsatile — missing the vascular emergency</li>
+            <li>Not establishing laterality before reassuring</li>
+            <li>Not asking about associated hearing loss or vertigo</li>
+            <li>Not exploring the functional impact (sleep, work, concentration)</li>
+            <li>Not addressing the acoustic neuroma health anxiety directly</li>
+            <li>Offering medication as a tinnitus cure — no pharmacological cure exists</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Pulsatile not asked; laterality not established; acoustic neuroma concern not named; functional impact not explored; offers medication cure</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Laterality and pulsatile asked; hearing loss asked; functional impact partially explored; health anxiety acknowledged but not addressed specifically</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Pulsatile vs steady confirmed; laterality and hearing change asked; vertigo asked; noise exposure taken; functional impact (sleep, work) quantified; health anxiety named and addressed; medication limitation acknowledged proactively</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEPS 2-6 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text"><div class="step-label">Step 2</div><div class="step-title">Triage Engine — Emergency · Urgent · Routine</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div>
+        <h3>Same-Day Action</h3>
+        <span class="tc-badge tcb-e">Do not delay</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Sudden tinnitus + sudden hearing loss (within 72 hours)</strong><em>Sudden SNHL emergency — prednisolone 1 mg/kg/day TODAY + same-day ENT referral</em></li>
+          <li class="tc-item"><strong>Pulsatile tinnitus + headache + visual symptoms (obese young woman)</strong><em>Benign intracranial hypertension — same-day ophthalmology for papilloedema; neurological assessment</em></li>
+          <li class="tc-item"><strong>Tinnitus + neurological symptoms (facial palsy, diplopia)</strong><em>Large acoustic neuroma or posterior fossa tumour — urgent MRI + same-day neurology</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Urgent</div>
+        <h3>Within 2 Weeks</h3>
+        <span class="tc-badge tcb-u">Rapid referral</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Unilateral tinnitus + any ipsilateral SNHL</strong><em>Acoustic neuroma exclusion — urgent ENT referral with MRI IAM request</em></li>
+          <li class="tc-item"><strong>Pulsatile tinnitus (without neurological symptoms)</strong><em>Vascular cause exclusion — urgent ENT + MRI/MRA vascular imaging</em></li>
+          <li class="tc-item"><strong>Tinnitus + ear pain in smoker over 45</strong><em>Pharyngeal malignancy exclusion — urgent ENT + nasendoscopy</em></li>
+          <li class="tc-item"><strong>Asymmetric bilateral tinnitus (one ear much louder)</strong><em>Treat as unilateral — ENT + MRI IAM for acoustic neuroma exclusion</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Routine</div>
+        <h3>Primary Care + Audiology</h3>
+        <span class="tc-badge tcb-r">GP management</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Bilateral non-pulsatile tinnitus — noise-induced or ARHL</strong><em>Audiogram; sound therapy; CBT referral (NICE NG155 first-line); sleep hygiene</em></li>
+          <li class="tc-item"><strong>Drug-induced tinnitus</strong><em>Stop or reduce culprit; reassess tinnitus at 4–6 weeks</em></li>
+          <li class="tc-item"><strong>Somatic tinnitus (TMJ-related)</strong><em>Dental/maxillofacial referral; physiotherapy; review</em></li>
+          <li class="tc-item"><strong>Hyperacusis alongside tinnitus</strong><em>Audiology referral for sound desensitisation therapy; avoid over-protection</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span></div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Unilateral tinnitus + SNHL not triggering MRI; pulsatile tinnitus not recognised as urgent; "reassurance and come back in 3 months" for all tinnitus</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Bilateral reassured as low risk; unilateral → ENT mentioned but MRI IAM not specified; pulsatile triage partially correct</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Bilateral non-pulsatile → audiology + CBT. Unilateral + SNHL → urgent ENT + MRI IAM. Pulsatile → urgent ENT + vascular imaging. Sudden onset → emergency prednisolone now. Triage clearly communicated to patient.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text"><div class="step-label">Step 3</div><div class="step-title">Do I Need This Examination?</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro">The physical examination in tinnitus is primarily about <strong>exclusion</strong> — excluding conductive causes (wax, OME) that are reversible, and excluding red flag signs (vascular bruit, cholesteatoma, facial nerve palsy) that require urgent investigation. Tuning fork tests establish whether hearing loss (if any) is conductive or sensorineural and guide the investigation pathway. Auscultation over the mastoid or carotid is mandatory for pulsatile tinnitus.</div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:20%">Examination</th><th style="width:36%">Why it matters</th><th style="width:26%">Finding + action</th><th>Mandatory?</th></tr></thead>
+        <tbody>
+          <tr><td class="q">Otoscopy</td><td class="why">Wax impaction is a common reversible cause of tinnitus — treating the wax often reduces or resolves tinnitus. Identifies cholesteatoma (pearly mass at pars flaccida), OME (dull retracted drum), perforations, and otitis media — all causing conductive hearing loss + tinnitus.<span class="why-sub">A glomus tympanicum tumour may be visible as a reddish-blue pulsatile mass behind the tympanic membrane in pulsatile tinnitus — a very important sign not to miss.</span></td><td class="why">Wax → olive oil drops + microsuction. Cholesteatoma → urgent ENT. Reddish pulsatile mass → glomus tumour → urgent ENT + vascular imaging</td><td><span class="mcb mcb-yes">YES — always</span></td></tr>
+          <tr><td class="q">Rinne + Weber tuning fork tests</td><td class="why">Differentiates conductive hearing loss (treatable: wax, OME, otosclerosis) from SNHL (may indicate acoustic neuroma if unilateral). Rinne negative = conductive loss. SNHL with asymmetry between ears on Weber = warrants audiogram and potential MRI IAM.<span class="why-sub">Normal Rinne bilaterally in a patient with unilateral tinnitus provides some reassurance but does not exclude acoustic neuroma — audiogram and MRI IAM are still needed for unilateral tinnitus + SNHL combination.</span></td><td class="why">Asymmetric Weber + unilateral tinnitus → audiogram + MRI IAM. Rinne negative → wax/OME/otosclerosis — treat first and reassess</td><td><span class="mcb mcb-yes">YES — always</span></td></tr>
+          <tr><td class="q">Auscultation over mastoid / carotid</td><td class="why">Mandatory for pulsatile tinnitus — an audible bruit over the mastoid or carotid may indicate an AVM, carotid stenosis, or highly vascular glomus tumour. The absence of a bruit does not exclude a vascular cause — many AVMs and glomus tumours are not audible on auscultation — but the presence of a bruit is a significant red flag.<span class="why-sub">Gently pressing on the ipsilateral jugular vein during pulsatile tinnitus — if this abolishes the sound, it suggests a venous origin (often benign but still requires imaging to confirm).</span></td><td class="why">Bruit present → urgent ENT + vascular MRI. No bruit but pulsatile tinnitus → still urgent ENT for imaging — bruit absence does not exclude vascular cause</td><td><span class="mcb mcb-context">Yes — pulsatile tinnitus</span></td></tr>
+          <tr><td class="q">Blood pressure (lying and standing)</td><td class="why">Hypertension is independently associated with tinnitus through cochlear microangiopathy. Also: orthostatic hypotension can cause a whooshing tinnitus variant that is sometimes described as pulsatile. BP management is a modifiable risk factor for tinnitus progression.<span class="why-sub">In this stem: the patient does not have hypertension, but BP should still be checked as part of the vascular risk assessment. Newly discovered hypertension changes both the tinnitus management and the overall cardiovascular care plan.</span></td><td class="why">Elevated BP → antihypertensive treatment; secondary benefit to tinnitus. Postural drop → orthostatic hypotension as contributing cause; medication review</td><td><span class="mcb mcb-yes">YES — all tinnitus patients</span></td></tr>
+          <tr><td class="q">Jaw / TMJ assessment</td><td class="why">Somatic tinnitus related to temporomandibular joint dysfunction changes in intensity with jaw movement or with pressure applied to the pre-auricular area or on the muscles of mastication. This is a specific, often missed cause that is managed by dental/maxillofacial services rather than audiology.<span class="why-sub">Ask the patient: "Does the tinnitus change at all when you move your jaw or clench your teeth?" A positive response suggests somatic origin.</span></td><td class="why">Tinnitus changes with jaw movement → TMJ-related somatic tinnitus → dental/maxillofacial referral; physiotherapy for masseter tension</td><td><span class="mcb mcb-context">Yes — if somatic query</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text"><div class="step-label">Step 4</div><div class="step-title">Do I Need This Investigation?</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:20%">Investigation</th><th style="width:32%">Clinical question it answers</th><th>Key result + action</th></tr></thead>
+        <tbody>
+          <tr><td class="q">Pure-tone audiogram (audiology)</td><td class="why">Mandatory in all patients with tinnitus — identifies the degree and pattern of hearing loss (even when not subjectively apparent), guides hearing aid candidacy (treating concurrent SNHL often significantly reduces tinnitus burden), and identifies the 4 kHz noise-induced notch. Audiology referral is the first step in all tinnitus pathways.</td><td class="why">SNHL bilaterally → hearing aids + sound therapy + CBT. SNHL unilateral asymmetric → urgent ENT + MRI IAM. Conductive loss → treat cause (wax, OME) and reassess. 4 kHz notch → NIHL confirmed → hearing protection + rehabilitation</td></tr>
+          <tr><td class="q">MRI IAM with gadolinium</td><td class="why">Definitive exclusion of acoustic neuroma — mandatory for unilateral tinnitus + SNHL combination. Also identifies other posterior fossa lesions (meningioma, epidermoid cyst) and vascular anomalies (glomus tumour, AVM). CT is inadequate for soft tissue in the internal auditory meatus — do not substitute. A normal MRI does not need to be repeated unless new symptoms develop.</td><td class="why">Acoustic neuroma → ENT/neurosurgery (watch + wait, Gamma Knife, or surgery). Normal → reassurance; annual monitoring audiogram. Vascular lesion → vascular surgery referral</td></tr>
+          <tr><td class="q">MRI / MRA vascular imaging</td><td class="why">For pulsatile tinnitus specifically — identifies glomus tumour, AVM, carotid stenosis, and sigmoid sinus abnormalities. MRA (magnetic resonance angiography) visualises arterial flow. CT angiography is an alternative. Also: MRI brain with venography for benign intracranial hypertension (shows transverse sinus stenosis).</td><td class="why">Glomus tumour → ENT/neurosurgery. AVM → interventional radiology / neurosurgery. Carotid stenosis → vascular surgery. BIH → neurology + acetazolamide + weight loss</td></tr>
+          <tr><td class="q">Blood tests: TFTs, FBC, fasting glucose</td><td class="why">Hypothyroidism — reversible cause of SNHL and tinnitus; TFTs mandatory in unexplained bilateral tinnitus. Anaemia — reduces cochlear oxygen delivery, can worsen tinnitus. Diabetes — microangiopathy of cochlear vessels. These are all modifiable contributing factors.</td><td class="why">Hypothyroidism → treat; reassess tinnitus at 3–6 months of replacement therapy. Anaemia → treat and reassess. Diabetes → optimise glycaemic control</td></tr>
+          <tr><td class="q">Tinnitus Handicap Inventory (THI)</td><td class="why">A validated 25-item questionnaire (completed by the patient) that quantifies functional impact of tinnitus across three domains: functional, emotional, and catastrophic. Guides treatment intensity and intervention type — mild impairment (THI 0–16) = self-help; moderate (17–36) = audiology + sound therapy; severe (37–56) = CBT + specialist; catastrophic (57+) = urgent psychiatric/psychological support.</td><td class="why">THI score determines treatment pathway and urgency of CBT referral. Also monitors treatment response over time — repeat at 3 and 6 months of therapy</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">5</div>
+    <div class="step-hdr-text"><div class="step-label">Step 5</div><div class="step-title">Reaching a Diagnosis &amp; DDx — Explained in Plain Language</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="lay-box">
+      <div class="lay-box-lbl">🗣️ Explaining Tinnitus in Plain Language</div>
+      <p>"Tinnitus is the experience of a sound that is generated inside your auditory system rather than by anything in the outside world. In your case, the most likely explanation is that the very loud noise at the concert damaged some of the tiny hair cells inside your inner ear — the cells that detect high-pitched sounds are the most vulnerable to this. When they're damaged, they send a signal to your brain even when there's no sound in the environment — and your brain interprets that as a ringing. The important thing to know is that this isn't a sign of something dangerous happening in your brain — it's a peripheral hearing system issue. And while we can't repair the hair cells, there are very effective ways of helping your brain stop paying as much attention to the signal — which is what makes the tinnitus feel less intrusive over time."</p>
+    </div>
+    <div class="lay-why-not">
+      <div class="lay-why-not-lbl">💬 Addressing the acoustic neuroma concern</div>
+      <p><strong>"Could this be acoustic neuroma?"</strong><br><em>"That's a very understandable thing to worry about — especially after reading about it online. Acoustic neuromas typically cause tinnitus in one ear, often getting progressively worse over months or years, and are usually accompanied by hearing loss on the same side. Your tinnitus started in both ears at the same time, immediately after a very loud concert — that's a completely different pattern. That said, I am going to arrange a hearing test to check your hearing formally, and if there's any asymmetry between your ears, we'd investigate further."</em></p>
+      <p><strong>"Is there a tablet that will stop the tinnitus?"</strong><br><em>"I want to be honest with you about this — there isn't a medication that's been shown to reliably reduce tinnitus. NICE, the body that reviews the evidence for NHS treatments, specifically recommends against offering tablets for tinnitus because none have been proven to work. What does have strong evidence is a type of therapy called cognitive behavioural therapy — CBT — which is specifically adapted for tinnitus. It doesn't make the sound quieter, but it changes how your brain responds to it. For most people, this makes a much bigger difference than the volume of the sound."</em></p>
+    </div>
+    <div class="g3" style="margin-bottom:12px">
+      <div class="card" style="padding:1rem;border-left:4px solid var(--g)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.4rem">A — Manageable in Primary Care</div>
+        <span class="conf-badge conf-gp" style="margin-bottom:.6rem;display:inline-block">GP + audiology</span>
+        <div class="ddx-card ddx-a" style="margin-bottom:8px"><h4>Noise-Induced Tinnitus (This Presentation)</h4><p>Bilateral, high-pitched, non-pulsatile tinnitus following clear noise exposure. Mechanism: cochlear hair cell damage with phantom auditory activity. Management: audiogram, sound therapy, CBT-based tinnitus management (NICE NG155), sleep hygiene, hearing protection advice, British Tinnitus Association self-help resources. No curative medication exists.</p></div>
+        <div class="ddx-card ddx-a" style="margin-bottom:8px"><h4>Age-Related Tinnitus (ARHL-Associated)</h4><p>Bilateral high-frequency tinnitus with progressive hearing loss in older adults. Audiogram confirms SNHL. Hearing aids (treating the SNHL) often significantly reduce tinnitus burden by restoring auditory input and reducing the auditory cortex's tendency to generate phantom noise. NHS hearing aids free to eligible patients.</p></div>
+        <div class="ddx-card ddx-a"><h4>Drug-Induced Tinnitus</h4><p>High-dose aspirin, aminoglycosides, loop diuretics, quinine, cisplatin. Bilateral, often reversible on dose reduction or drug cessation. Drug history review in all new tinnitus presentations. Quinine for leg cramps: no longer recommended by NICE — prescribing review opportunity.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--a)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:.4rem">B — Refer to ENT / Specialist</div>
+        <span class="conf-badge conf-sus" style="margin-bottom:.6rem;display:inline-block">Specialist needed</span>
+        <div class="ddx-card ddx-b" style="margin-bottom:8px"><h4>Acoustic Neuroma (Vestibular Schwannoma)</h4><p>Unilateral progressive tinnitus + ipsilateral SNHL ± disequilibrium. MRI IAM with gadolinium diagnostic. Management under ENT/neurosurgery: watch and wait (small, slow-growing), Gamma Knife stereotactic radiosurgery, or surgical removal. Normal audiogram does NOT exclude acoustic neuroma.</p></div>
+        <div class="ddx-card ddx-b" style="margin-bottom:8px"><h4>Menière's Disease</h4><p>Episodic unilateral tinnitus + fluctuating SNHL + vertigo (20 min–12 hrs) + aural fullness. Confirmed by ENT with audiogram. Treatment: betahistine (after ENT confirmation only), salt restriction, diuretics. GP should NOT start betahistine empirically without ENT-confirmed diagnosis.</p></div>
+        <div class="ddx-card ddx-b"><h4>Benign Intracranial Hypertension (IIH)</h4><p>Pulsatile tinnitus (often bilateral) + headache + visual obscurations + papilloedema in an obese woman of reproductive age. Urgent ophthalmology for papilloedema; neurology; lumbar puncture for opening pressure. Treatment: acetazolamide, weight loss, occasionally CSF shunting.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--r)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--r);margin-bottom:.4rem">C — Emergency</div>
+        <span class="conf-badge conf-emerg" style="margin-bottom:.6rem;display:inline-block">Same-day action</span>
+        <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Sudden SNHL + Tinnitus</h4><p>Sudden unilateral hearing loss + tinnitus within 72 hours. Same-day emergency — start prednisolone 1 mg/kg/day immediately (do not wait for ENT). Same-day ENT referral. Treatment window closes at 2 weeks — delay significantly worsens prognosis.</p></div>
+        <div class="ddx-card ddx-c"><h4>Glomus Tumour (Pulsatile)</h4><p>Highly vascular paraganglioma in the middle ear (glomus tympanicum) or jugular foramen (glomus jugulare). May appear as reddish pulsatile mass behind the TM on otoscopy. Urgent ENT + vascular MRI. Never biopsy a pulsatile middle ear mass in primary care — catastrophic haemorrhage risk.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">6</div>
+    <div class="step-hdr-text"><div class="step-label">Step 6</div><div class="step-title">If Referral Is Needed — What the GP Does Before &amp; During</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="card" style="overflow:hidden">
+      <table class="ref-table">
+        <thead><tr><th>Condition</th><th>Urgency</th><th>What GP does before referral</th><th>What GP must NOT do</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">Unilateral tinnitus + SNHL</td><td><span class="ref-urg rurg-2">2-week ENT + MRI IAM</span></td><td style="font-size:12px">Audiogram urgently; Rinne/Weber; otoscopy; refer ENT with explicit request for MRI IAM with gadolinium. Warn patient about MRI process (claustrophobia?) and reassure most findings are benign but require exclusion.</td><td style="font-size:12px;color:var(--r)">Do not reassure as "probably just stress" without MRI exclusion. Do not order CT instead of MRI — CT cannot see soft tissue in the IAM. Do not delay because the tinnitus is mild.</td></tr>
+          <tr><td style="font-weight:600">Pulsatile tinnitus</td><td><span class="ref-urg rurg-2">2-week ENT + vascular imaging</span></td><td style="font-size:12px">BP (target under 140/90); auscultate over mastoid and carotid; otoscopy (glomus tympanicum?); TFTs; refer ENT with explicit request for MRI/MRA vascular imaging. In obese young woman + headache + visual symptoms → same-day ophthalmology.</td><td style="font-size:12px;color:var(--r)">Never reassure pulsatile tinnitus as benign without vascular imaging. Never biopsy a pulsatile middle ear mass in primary care — catastrophic haemorrhage risk from glomus tumour.</td></tr>
+          <tr><td style="font-weight:600">Sudden SNHL + tinnitus</td><td><span class="ref-urg rurg-999">Same-day ENT + steroids NOW</span></td><td style="font-size:12px">Start prednisolone 1 mg/kg/day immediately — before ENT appointment. Same-day ENT for intratympanic steroid consideration. Document exact time of onset. Counsel on steroid side effects (glucose monitoring if diabetic).</td><td style="font-size:12px;color:var(--r)">Never wait for ENT appointment before starting steroids — the 2-week treatment window is time-critical. Never prescribe a short 3-day course — minimum 7–14 days required.</td></tr>
+          <tr><td style="font-weight:600">Bilateral non-pulsatile tinnitus — audiogram and CBT</td><td><span class="ref-urg rurg-r">Routine audiology + IAPT</span></td><td style="font-size:12px">Audiogram (audiology referral); if concurrent SNHL → hearing aid assessment; TFTs, FBC, glucose; sound therapy advice; sleep hygiene; British Tinnitus Association resources; THI questionnaire; if significant psychological impact → IAPT referral for CBT-based tinnitus management.</td><td style="font-size:12px;color:var(--r)">Do not offer medication as tinnitus treatment — NICE NG155 explicitly recommends against ginkgo biloba, betahistine, antidepressants, anticonvulsants, or supplements for idiopathic tinnitus. Do not suggest hearing protection alone will cure tinnitus.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text"><div class="step-label">Step 7</div><div class="step-title">Management — Expectation · Goals · Lifestyle · Drug Cards · Psychosocial · Follow-Up · Safety-Netting</div></div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+
+    <div class="sub-divider">7A — Address the patient's expectation first</div>
+    <div class="expect-box">
+      <div class="expect-box-hdr"><span style="font-size:1.4rem">🤝</span><div class="expect-box-lbl">This patient expects either an MRI (acoustic neuroma fear) or a cure. Address both honestly before the management plan.</div></div>
+      <div class="expect-steps">
+        <div class="expect-step"><div class="expect-step-num">1</div><h5>Validate</h5><p>Acknowledge the distress of having a sound that only you can hear — particularly at night. Do not minimise it.</p><span class="expect-phrase">"I can hear that this has been really distressing — having a constant noise that only you can hear, that's affecting your sleep and your concentration, is exhausting. I want to be really helpful about this."</span></div>
+        <div class="expect-step"><div class="expect-step-num">2</div><h5>Explain</h5><p>Address the acoustic neuroma fear directly and explain why this presentation does not fit that pattern — but also explain why you are still doing an audiogram.</p><span class="expect-phrase">"What you're describing — bilateral, starting immediately after a loud concert — is a very different pattern from the type of tinnitus that acoustic neuromas cause. But I am going to arrange a hearing test, and if anything looks asymmetric between the two ears, we'd look further."</span></div>
+        <div class="expect-step"><div class="expect-step-num">3</div><h5>Reframe</h5><p>Reframe the goal — the target is not silence but habituation: the brain learning to de-prioritise the tinnitus signal until it is no longer distressing.</p><span class="expect-phrase">"There isn't a tablet that switches the tinnitus off — but there is a therapy that's been shown to make a significant difference to how much it affects your life. Most people who go through it find the tinnitus doesn't go away completely, but it becomes much less of a problem."</span></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7C — Non-medication management: sound therapy, CBT, sleep hygiene</div>
+    <div class="life-grid" style="margin-bottom:1.25rem">
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🧠</span><div class="life-title">CBT for Tinnitus</div><span class="life-target">NICE NG155 first-line — via IAPT or audiology-led programme</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>CBT for tinnitus addresses the cognitive and behavioural patterns that maintain tinnitus distress — catastrophic thinking ("This will ruin my life"), hypervigilance to the sound, and avoidance behaviours (avoiding quiet rooms). By changing the brain's attentional response to the tinnitus signal, CBT achieves habituation: the tinnitus remains but is no longer distressing. It does not reduce the volume of the sound.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Referral via IAPT (NHS talking therapies) for CBT with a tinnitus component, or via audiology-led Tinnitus Retraining Therapy (TRT) programme. British Tinnitus Association also provides a free digital CBT programme (Tinnitus E-Programme). Typically 8–12 sessions. Evidence: significant reduction in THI scores and tinnitus-related distress in randomised trials.</p></div>
+          <span class="life-benefit">CBT is the only treatment with strong NICE-endorsed evidence for tinnitus — recommend it to every patient with significant functional impact</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🔊</span><div class="life-title">Sound Therapy</div><span class="life-target">White noise generators, nature sounds, bedroom radio — prevents auditory cortex amplification</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Sound therapy provides background auditory stimulation that reduces the contrast between the tinnitus sound and the surrounding environment. The auditory cortex amplifies tinnitus when the environment is very quiet — sound enrichment reduces this amplification by providing competing auditory input. It is not masking (drowning out the tinnitus) but habituation training.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>BBC Radio overnight at low volume. YouTube "brown noise" or "rain sounds" playlist. White noise app on smartphone (many free options). White noise machine or bedside sound generator. Hearing aids with built-in sound generator for patients with concurrent SNHL. Nature sounds (rainfall, ocean) preferred by many patients over white noise. Do not use headphones at loud volumes.</p></div>
+          <span class="life-benefit">Sound therapy reduces tinnitus distress and improves sleep quality in the majority of tinnitus patients — low risk, immediately implementable</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">😴</span><div class="life-title">Sleep Hygiene</div><span class="life-target">Target: consistent sleep routine; sound enrichment at night</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Sleep deprivation dramatically worsens tinnitus perception — the relationship is bidirectional. Improving sleep quality reduces cortical arousal and decreases the brain's attentional focus on the tinnitus signal. Sound therapy at night is the most effective single intervention for tinnitus-related sleep disruption.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Consistent sleep/wake times; bedroom dark and cool; no screens 1 hour before sleep; bedside sound generator or radio; avoid lying awake trying to sleep (get up if awake over 20 minutes). Avoid alcohol (worsens sleep quality and causes tinnitus rebound in the morning). Avoid caffeine after midday.</p></div>
+          <span class="life-benefit">Consistent sleep routine + bedside sound therapy = most immediately effective combination for tinnitus-related sleep disruption</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🔇</span><div class="life-title">Hearing Protection (Future)</div><span class="life-target">Custom earplugs for concerts — preserve music quality while protecting hearing</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Further noise exposure causes additional cochlear hair cell damage, worsening both tinnitus and hearing loss. Foam earplugs (cheapest but uncomfortable, distort sound quality) or custom musician's earplugs (attenuate all frequencies equally, preserving music fidelity). The latter are available from audiologists — cost approximately £100–200 but last many years.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Any concert, nightclub, or loud event → hearing protection. Power tools, garden equipment → protection. Motorcycling → custom hearing protection designed for helmet use. The one thing not to do: wear hearing protection all the time in ordinary environments — this worsens hyperacusis and prevents habituation.</p></div>
+          <span class="life-benefit">Custom musician's earplugs preserve enjoyment of music while preventing further cochlear damage — recommend to all noise-exposed patients</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">☕</span><div class="life-title">Caffeine and Alcohol Reduction</div><span class="life-target">Under 3 cups coffee/day; alcohol within safe limits</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>High caffeine intake increases auditory cortex excitability, worsening tinnitus perception. Alcohol initially appears to mask tinnitus but causes rebound worsening the following morning — and contributes to sleep quality disruption. Both are modifiable lifestyle factors with a direct impact on tinnitus distress that the patient can act on immediately.</p></div>
+          <span class="life-benefit">Caffeine reduction and alcohol moderation often produce noticeable improvement in tinnitus within 2–4 weeks — a motivating early win for patients</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🫂</span><div class="life-title">British Tinnitus Association (BTA)</div><span class="life-target">Free self-help resources, peer support, and digital CBT programme</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>BTA website (tinnitus.org.uk): free online resources, self-help guides, peer support forum, and the Tinnitus E-Programme (a free digital CBT course). BTA helpline: 0800 018 0527. Hearing Link supports people with tinnitus + hearing loss. Tinnitus UK forums provide peer support — useful for patients who feel isolated by their experience.</p></div>
+          <span class="life-benefit">BTA support resources are free, immediately accessible, and provide patient community and validated self-help — recommend to every tinnitus patient</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7F — Drug reference cards: what the evidence says (and does not say)</div>
+    <div class="drug-cards">
+      <div class="dc" id="dc-no-drug">
+        <div class="dc-head"><div><div class="dc-name">No Pharmacological Cure for Tinnitus</div><div class="dc-examples">NICE NG155 (2020): recommends against drug treatment — no medication has demonstrated clinically meaningful benefit</div></div><div class="dc-badges"><span class="dc-step step1">NICE NG155</span></div></div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Do NOT offer for idiopathic tinnitus</div>
+          <div class="dc-item ci-abs">Ginkgo biloba — no evidence of benefit (Cochrane review); do not recommend</div>
+          <div class="dc-item ci-abs">Betahistine — no evidence for idiopathic tinnitus; only appropriate after ENT confirms Menière's</div>
+          <div class="dc-item ci-abs">Antidepressants (for tinnitus, not comorbid depression) — NICE explicitly recommends against</div>
+          <div class="dc-item ci-abs">Anticonvulsants (gabapentin, carbamazepine) — no evidence of benefit; not recommended</div>
+          <div class="dc-item ci-rel">Supplements (zinc, magnesium, B vitamins) — no quality evidence; do not recommend NHS prescription</div>
+        </div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Drug treatment IS appropriate for</div>
+          <div class="dc-item">Comorbid depression or anxiety — treat the condition with the appropriate medication (SSRI/SNRI); tinnitus distress often improves secondarily</div>
+          <div class="dc-item">Menière's disease (ENT-confirmed) — betahistine 16 mg TDS after diagnosis</div>
+          <div class="dc-item">Sudden SNHL with tinnitus — prednisolone 1 mg/kg/day (emergency treatment for the hearing loss, not the tinnitus)</div>
+          <div class="dc-item">Drug-induced tinnitus — reducing or stopping the culprit drug (aspirin dose reduction, quinine cessation)</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"I know it's frustrating to hear that there isn't a tablet for this — and I want to be honest with you rather than prescribe something that won't help. The treatment with the best evidence for tinnitus is a type of talking therapy called CBT — adapted for tinnitus. I'm going to refer you for this, and also arrange a hearing test and some sound therapy in the meantime."</p></div>
+        <div class="dc-sca"><p>The most examinable point in tinnitus management: NICE NG155 explicitly recommends against offering medication (including ginkgo, betahistine, antidepressants, and anticonvulsants) for idiopathic tinnitus. Prescribing any of these is contrary to NICE guidance. Stating this clearly in the SCA — "There isn't a medication that works for tinnitus, but there is a very effective therapy" — scores in Tasks and also manages the patient's expectation honestly.</p></div>
+      </div>
+      <div class="dc" id="dc-ssri-tinnitus">
+        <div class="dc-head"><div><div class="dc-name">SSRI / SNRI (For Comorbid Depression/Anxiety)</div><div class="dc-examples">Sertraline 50 mg OD · Citalopram 20 mg OD — treat the psychiatric comorbidity, not tinnitus directly</div></div><div class="dc-badges"><span class="dc-step step2">Comorbid mood</span><span class="dc-dose">Standard antidepressant dose</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Appropriate when</div>
+          <div class="dc-item">Tinnitus patient also has a clinically significant depression or anxiety disorder (PHQ-9 ≥10 or GAD-7 ≥8)</div>
+          <div class="dc-item">Tinnitus-related distress has led to a depressive episode requiring medication in its own right</div>
+          <div class="dc-item">SSRI/SNRI treats the comorbid condition; tinnitus distress often improves secondarily but this is not a specific anti-tinnitus effect</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Do NOT prescribe SSRIs for tinnitus alone</div>
+          <div class="dc-item ci-abs">If mood is normal (PHQ-9 under 10) — SSRIs have no role in tinnitus management and NICE advises against</div>
+          <div class="dc-item ci-rel">High-dose SSRIs can rarely worsen tinnitus — monitor and adjust</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"This tablet is for the anxiety and low mood that has developed alongside the tinnitus — it won't directly reduce the sound, but treating the anxiety often makes the tinnitus feel much less intrusive. We'll combine this with the CBT referral for the most comprehensive approach."</p></div>
+        <div class="dc-sca"><p>The distinction the SCA examiner tests: SSRIs for comorbid depression or anxiety in tinnitus = appropriate. SSRIs for tinnitus in the absence of mood disorder = NOT appropriate per NICE NG155. Demonstrating this distinction — and using PHQ-9 to justify the prescription — scores in Tasks.</p></div>
+      </div>
+      <div class="dc" id="dc-melatonin">
+        <div class="dc-head"><div><div class="dc-name">Melatonin (Off-Label — Sleep Disruption)</div><div class="dc-examples">Circadin 2 mg MR OD — for tinnitus-related sleep disruption; limited evidence but acknowledged in NICE NG155</div></div><div class="dc-badges"><span class="dc-step step2">Sleep disruption</span><span class="dc-dose">2 mg 1 hour before bed</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Consider when</div>
+          <div class="dc-item">Tinnitus-related sleep disruption is severe and not adequately managed by sound therapy and sleep hygiene alone</div>
+          <div class="dc-item">Short-term use (4 weeks) while waiting for CBT referral — bridges the acute sleep crisis period</div>
+          <div class="dc-item">NICE NG155 acknowledges melatonin as an option; limited but acceptable evidence base for this specific use</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Limitations</div>
+          <div class="dc-item ci-rel">Not a cure — addresses sleep not tinnitus; stop when CBT is underway</div>
+          <div class="dc-item ci-rel">Effectiveness varies; licensed for over-55s in the UK; off-label under 55</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"This is a short-term measure to help you sleep while we get the CBT programme underway. It helps your body's sleep timing rather than knocking you out. Take it an hour before bed, at the same time every night. We'll reassess at 4 weeks."</p></div>
+        <div class="dc-sca"><p>Melatonin for tinnitus-related sleep disruption is acknowledged in NICE NG155 as an option — it is not the same as prescribing medication for tinnitus itself. Demonstrating this nuance shows detailed NICE guideline knowledge: "NICE specifically advises against medication for the tinnitus itself — but for the sleep disruption it causes, melatonin short-term is acceptable."</p></div>
+      </div>
+      <div class="dc" id="dc-prednisolone-snhl">
+        <div class="dc-head"><div><div class="dc-name">Prednisolone (Sudden SNHL with Tinnitus)</div><div class="dc-examples">1 mg/kg/day (max 60 mg) × 7–14 days — emergency treatment for the hearing loss, not the tinnitus</div></div><div class="dc-badges"><span class="dc-step step1">SNHL emergency</span><span class="dc-dose">1 mg/kg/day × 14d</span></div></div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Only when</div>
+          <div class="dc-item">Sudden SNHL onset within 72 hours — tinnitus is a marker of the cochlear emergency, not the treatment target</div>
+          <div class="dc-item">Start today before ENT appointment — 2-week window closes rapidly</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Do NOT use for</div>
+          <div class="dc-item ci-abs">Chronic bilateral non-pulsatile tinnitus without sudden hearing loss — no indication for prednisolone in this scenario</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"We're starting this steroid because we need to treat the hearing loss urgently — this is an emergency situation. The tinnitus is a marker of the damage that's happening to your hearing. Take it with food. See ENT today."</p></div>
+        <div class="dc-sca"><p>The critical SCA point: prednisolone for sudden SNHL is for the hearing loss emergency, not for tinnitus itself. In the sudden SNHL scenario — start prednisolone TODAY before ENT. In the bilateral noise-induced tinnitus scenario (this stem) — no prednisolone. Demonstrating this distinction shows precise clinical reasoning.</p></div>
+      </div>
+    </div>
+
+    <div class="sub-divider" style="margin-top:1.5rem">7G — Psychosocial impact: health anxiety, isolation, and habituation</div>
+    <div class="psoci-wrap">
+      <div class="psoci-hdr"><span style="font-size:1.5rem">🫂</span><div class="psoci-title">Living with tinnitus — the psychological burden and the path to habituation</div></div>
+      <div class="psoci-grid">
+        <div class="psoci-card"><span class="psoci-icon">😰</span><h5>Health Anxiety and Catastrophising</h5><p>The pattern in this patient — internet research leading to acoustic neuroma fear — is one of the commonest and most disabling features of new-onset tinnitus. The health anxiety creates a cognitive loop: awareness of tinnitus → catastrophic interpretation → increased anxiety → heightened auditory cortex arousal → louder tinnitus perception → more anxiety. CBT breaks this loop directly.</p><p>Naming the specific fear and the specific mechanism by which it is making the tinnitus worse — not just giving generic reassurance — is far more therapeutic and addresses the psychological component that is likely responsible for a significant portion of this patient's suffering.</p><span class="psoci-phrase">"The anxiety about what the tinnitus means is actually making it louder — this is a really well-understood part of the condition. The good news is there's a therapy that directly targets this cycle."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">🏫</span><h5>Occupational Impact</h5><p>A PE teacher's ability to manage a noisy class, maintain situational awareness in sport, and communicate with students is directly affected by concentration difficulties from tinnitus. The occupational impact may justify a short-term fit note during the acute distress phase, alongside referral to occupational health for adjustment support (such as positioning the teacher in quieter environments during the acute phase).</p><p>The positive message: tinnitus habituation — once achieved through CBT — means many patients with chronic tinnitus return to full occupational function. The target is not silence but reduced salience of the sound.</p><span class="psoci-phrase">"Many people with tinnitus that initially felt completely disabling find that after working through the CBT programme, they can function normally at work — the sound may still be there, but it's no longer in the foreground of their attention."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">🎵</span><h5>Music and Recreational Identity</h5><p>This patient attends rock concerts — this is a source of joy and social connection, not just a habit. The clinical conversation about noise protection must not be framed as "stop going to concerts" — this would be both unnecessary and damaging to the patient's wellbeing. Custom musician's earplugs preserve the quality of the music experience while protecting the cochlea.</p><p>Supporting the patient to continue enjoying music safely — with appropriate protection — is both clinically correct and patient-centred. The alternative (avoidance) contributes to the social withdrawal that worsens tinnitus-related distress.</p><span class="psoci-phrase">"You don't need to give up concerts — you need to protect your hearing at them. Custom earplugs from an audiologist don't muffle the music, they just reduce the volume to a safe level. Many professional musicians use them."</span></div>
+        <div class="psoci-card"><span class="psoci-icon">🤫</span><h5>Hyperacusis</h5><p>If hyperacusis is present (40% of tinnitus patients): the management paradox must be explained. Many patients' instinct is to protect their ears from all sound — using earplugs in everyday environments. This worsens hyperacusis by increasing the auditory system's sensitivity (reduced afferent input → increased central gain). The correct approach is controlled, gradual sound desensitisation — the opposite of avoidance.</p><p>Audiology-led sound desensitisation therapy is the treatment for hyperacusis — not hearing protection in everyday environments. Custom earplugs should only be used in genuinely loud settings (concerts, workshops), not in daily life.</p><span class="psoci-phrase">"I know it might seem counterintuitive, but protecting your ears from ordinary everyday sounds actually makes the sensitivity worse. The treatment for that sensitivity is gradual, controlled exposure — which audiology can guide you through."</span></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7H — Follow-up</div>
+    <div class="card" style="padding:1.1rem 1.25rem;margin-bottom:1.25rem">
+      <div class="fu-line">
+        <div class="fu-event"><div class="fu-dot fd1">1</div><div class="fu-content"><h5>4 Weeks — Audiogram result + initial symptom review</h5><p>Review formal audiogram result; discuss findings and implications; if asymmetric → confirm ENT referral with MRI IAM; if bilateral SNHL → hearing aid candidacy discussed; THI score to quantify progress; sleep and work impact reassessed; sound therapy engagement checked; CBT referral confirmed.</p><div class="fu-tags"><span class="ft ft-r">Audiogram result</span><span class="ft ft-b">CBT referral status</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd2">2</div><div class="fu-content"><h5>3 Months — CBT progress and symptom review</h5><p>THI score repeat (compare to baseline); CBT progress; sleep quality; work functioning; mood screen (PHQ-9); if not improving despite CBT engagement → audiologist review; if depression has developed → SSRI consideration; if acoustic neuroma MRI result pending → chase and review.</p><div class="fu-tags"><span class="ft ft-b">THI repeat</span><span class="ft ft-r">PHQ-9</span></div></div></div>
+        <div class="fu-event"><div class="fu-dot fd3">3</div><div class="fu-content"><h5>Annual review — if chronic tinnitus established</h5><p>Annual audiogram (monitor for progressive SNHL); THI; mood; hearing aid review (if applicable); recurrence of health anxiety; any new unilateral or pulsatile features → reinvestigate urgently; lifestyle factors reassessed (caffeine, alcohol, noise protection).</p><div class="fu-tags"><span class="ft ft-r">Annual audiogram</span><span class="ft ft-b">Lifestyle factors</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7J — Safety-netting</div>
+    <div class="sn-box">
+      <h4>⚠ Three scenario-specific safety-net phrases</h4>
+      <div class="sn-scenarios">
+        <div class="sn-scenario sns-e">
+          <div class="sn-scenario-lbl">🔴 Emergency — sudden change in tinnitus or hearing</div>
+          <div class="sn-phrase">"If your hearing suddenly gets significantly worse in one ear, or if the tinnitus dramatically increases overnight alongside a feeling of blocked hearing — contact us the same day or go to A&amp;E if we're closed. This is a time-critical situation where early treatment makes a real difference."</div>
+          <div class="sn-why">Sudden SNHL presenting with worsening tinnitus has a 2-week steroid treatment window. Pre-warning the patient with this specific scenario ensures they seek help immediately rather than waiting for a routine appointment — which would potentially put them outside the treatment window. Documenting this advice is medico-legally protective.</div>
+        </div>
+        <div class="sn-scenario sns-m">
+          <div class="sn-scenario-lbl">🟠 Red flag — new features developing</div>
+          <div class="sn-phrase">"If the tinnitus becomes louder in only one ear, or starts beating in time with your heartbeat, or if you notice any changes in your hearing or any dizziness alongside it — come back and see us promptly rather than waiting for your next review appointment."</div>
+          <div class="sn-why">These three features — new unilaterality, pulsatile character, or associated hearing loss/vertigo — represent the key red flag transitions in tinnitus that change the diagnosis and investigation pathway. Pre-warning the patient to report them immediately creates a second safety layer and ensures the GP is not relying solely on scheduled reviews to catch these changes.</div>
+        </div>
+        <div class="sn-scenario sns-a">
+          <div class="sn-scenario-lbl">💊 Medication expectation management</div>
+          <div class="sn-phrase">"If you see information online or elsewhere suggesting a supplement or medication for tinnitus — please check with us before starting anything. Some of the supplements marketed for tinnitus have no evidence behind them, and some medications can actually worsen tinnitus. We want to make sure you're spending your money on things that have a reasonable chance of helping."</div>
+          <div class="sn-why">Patients with tinnitus are vulnerable to unproven supplement marketing — ginkgo biloba, B vitamins, zinc, and magnesium are all marketed for tinnitus with no quality evidence. Pre-warning the patient to check before purchasing protects them from wasted expenditure and potential harm.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7 (Final)</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say">
+          <div class="sca-block-t">Closing the consultation</div>
+          <div class="sca-phrase">"To summarise: I'm arranging the formal hearing test, and I'm going to refer you for a CBT programme specifically designed for tinnitus — that has the strongest evidence for helping with exactly the kind of distress you're describing."</div>
+          <div class="sca-phrase">"There isn't a medication that switches tinnitus off — but the CBT approach genuinely works for most people. It won't make the sound disappear, but it changes how much it affects you."</div>
+          <div class="sca-phrase">"If the hearing suddenly gets worse in one ear, or the tinnitus starts pulsing with your heartbeat — come in the same day. And if it becomes one-sided, come back promptly."</div>
+          <div class="sca-phrase">"Is there anything you'd like to ask before we finish?"</div>
+        </div>
+        <div class="sca-block sca-avoid">
+          <div class="sca-block-t">Deductions — closing</div>
+          <ul>
+            <li>Offering medication (ginkgo, betahistine, antidepressants) for idiopathic tinnitus</li>
+            <li>Not addressing acoustic neuroma concern directly</li>
+            <li>Not arranging audiogram as first-line investigation</li>
+            <li>Not mentioning CBT as NICE-recommended first-line treatment</li>
+            <li>Not giving sudden SNHL or pulsatile tinnitus red flag safety-net</li>
+            <li>Not addressing the sleep disruption with practical sound therapy advice</li>
+          </ul>
+        </div>
+        <div class="sca-block sca-score">
+          <div class="sca-block-t">Tasks — full criteria</div>
+          <ul>
+            <li>Pulsatile vs non-pulsatile established; laterality confirmed before reassuring</li>
+            <li>Audiogram arranged (audiology referral) as first investigation</li>
+            <li>No medication offered for idiopathic tinnitus — NICE NG155 cited</li>
+            <li>CBT referral (IAPT or audiology-led) recommended as first-line treatment</li>
+            <li>Sound therapy advice given (specific examples — radio, white noise, app)</li>
+            <li>Sudden hearing change and pulsatile tinnitus safety-nets both given</li>
+          </ul>
+        </div>
+        <div class="sca-block sca-score" style="border-left:2px solid #c4b5fd">
+          <div class="sca-block-t" style="color:#c4b5fd">Relating to Others — full criteria</div>
+          <ul>
+            <li>Acoustic neuroma fear named and addressed directly — not just generic reassurance</li>
+            <li>No medication honesty framed empathetically — not dismissively</li>
+            <li>Music and concert lifestyle supported not condemned — custom earplugs discussed</li>
+            <li>Sleep impact addressed with specific practical advice</li>
+            <li>CBT reframed positively — habituation goal explained clearly</li>
+            <li>Closing question asked with genuine space for patient response</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Offers ginkgo or betahistine; doesn't address acoustic neuroma concern; no CBT referral; no audiogram; no red flag safety-net; doesn't address sleep impact</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Audiogram planned; acoustic neuroma concern acknowledged but not specifically addressed; CBT mentioned; no medication limit stated; sleep and sound therapy not addressed specifically</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Pulsatile/laterality confirmed; acoustic neuroma concern directly addressed with clinical reasoning; no medication for idiopathic tinnitus (NICE cited); CBT and audiogram arranged; sound therapy advice specific; safety-net given for sudden SNHL and pulsatile tinnitus; music lifestyle supported with hearing protection advice</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left"><div class="scorecard-title">Tinnitus — SCA Consultation Scorecard</div><div class="scorecard-sub">Based on the official SCA Consultation Tool · RAG self-assessment · NICE NG155 (2020)</div></div>
+    <div style="display:flex;gap:8px;align-items:center"><div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div><button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button></div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain"><span class="sc-domain-icon">🌐</span><div><div class="sc-domain-title">Global Skills</div></div><div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Structured consultation</strong> — characterisation → red flag screen → investigation → management in logical sequence</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Time management</strong> — pulsatile/laterality confirmed early; management plan in final 4 minutes</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Open question first</strong> — patient describes tinnitus character and impact before targeted questions</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain language throughout</strong> — cochlear hair cell mechanism explained; CBT goal of "habituation not silence" explained</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>No medication offered for idiopathic tinnitus</strong> — NICE NG155 position stated; honest about the evidence</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Investigation rationale shared</strong> — explains what audiogram is looking for and why MRI depends on the result</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Closed with summary and question</strong> — management summarised; patient asked if anything unclear</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain"><span class="sc-domain-icon">✓</span><div><div class="sc-domain-title">Tasks</div></div><div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Pulsatile vs non-pulsatile AND laterality established</strong> — both confirmed before any reassurance given</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Associated hearing loss and vertigo asked</strong> — unilateral SNHL + tinnitus = MRI IAM; Menière's triad asked</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Noise exposure history taken</strong> — concert precipitant documented; hearing protection use asked</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Ototoxic medication review</strong> — aspirin dose, aminoglycosides, quinine, loop diuretics checked</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Functional impact quantified</strong> — sleep disruption, work concentration, mood impact all assessed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Audiogram arranged via audiology</strong> — first-line investigation for all tinnitus; explained what it's looking for</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>CBT referral recommended as first-line (NICE NG155)</strong> — not medication; referral pathway stated (IAPT or audiology-led)</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Sound therapy advice given</strong> — specific examples (radio, white noise app, nature sounds) for sleep and daytime</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Safety-net: sudden SNHL + pulsatile tinnitus both covered</strong> — sudden hearing change = same-day; pulsatile = urgent review</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>No medication offered for idiopathic tinnitus</strong> — NICE NG155 applied correctly; ginkgo/betahistine/antidepressants not prescribed</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain"><span class="sc-domain-icon">🤝</span><div><div class="sc-domain-title">Relating to Others</div></div><div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div></div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Acoustic neuroma concern named directly</strong> — "Are you worried this might be a brain tumour?" — not just generic reassurance</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Concern addressed with clinical reasoning</strong> — explains specifically why bilateral post-concert tinnitus ≠ acoustic neuroma pattern</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>ICE fully explored</strong> — ideas, concerns, expectations all elicited; medication expectation addressed specifically</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>No medication honesty — empathetically framed</strong> — "I want to be honest rather than prescribe something that won't help"</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>CBT reframed as habituation not silence</strong> — goal of therapy explained correctly; patient's expectation of cure addressed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Music lifestyle supported, not condemned</strong> — custom earplugs mentioned; concerts are compatible with hearing protection</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Sleep impact addressed practically</strong> — specific sound therapy examples given; sleep hygiene advice offered</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Cognitive cycle explained</strong> — anxiety making tinnitus louder via auditory cortex arousal; CBT targets this specifically</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Hyperacusis avoidance paradox addressed if relevant</strong> — correct advice: do not over-protect ears in everyday environments</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Understanding checked after key points</strong> — after CBT explanation and after safety-net information</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Closing question asked genuinely</strong> — space given; patient allowed to raise remaining concerns or questions</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap"><div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div><div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div><div class="interp-zones"><div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div><div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div></div></div>
+    <div class="interp-msg" id="sc-interp-msg"><div class="interp-icon">📋</div><div class="interp-text">Complete the checklist above to see your score interpretation</div></div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none"><div class="sc-missed-title">⚠ Items not yet checked</div><div id="sc-missed-list" class="sc-missed-list"></div></div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()"><h3>🎭 Patient actor brief — click to practise</h3><span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span></button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"I've had this constant ringing in both ears for three weeks now — since a concert I went to. I can't sleep. I've been reading about it online and I'm really worried it might be something serious."</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>James Okafor, 42, PE teacher. Bilateral high-pitched ringing since the morning after a rock concert 3 weeks ago. Both ears equally. Steady, constant tone — not pulsatile, not one side worse. Hearing subjectively unchanged. No dizziness. No headache. Sleep is very poor — wakes repeatedly and can't get back to sleep because of the ringing. Struggling to concentrate in school — especially hard in noisy environments.</p></div>
+      <div class="ab"><h5>Hidden concern</h5><p>You've diagnosed yourself with acoustic neuroma online. Won't say this directly unless asked: "Is there something specific you've been worried this might be?" → "I read about something called an acoustic neuroma — a tumour on the hearing nerve. It said tinnitus is a symptom. I've been terrified since I read it." Responds positively and visibly relaxes if the specific clinical reasons why this presentation doesn't fit are explained clearly.</p></div>
+      <div class="ab"><h5>Responses to specific questions</h5><ul><li>Is it one ear or both: "Both ears, equally — I can't tell which side it's coming from"</li><li>Does it pulse with your heartbeat: "No — it's a constant steady tone, like a TV test signal"</li><li>Hearing change: "My hearing seems the same — although I haven't really tested it"</li><li>Recent viral illness: "No — nothing, it just started after the concert"</li><li>Medications: only ibuprofen occasionally for sports injuries — denies regular aspirin</li></ul></div>
+      <div class="ab"><h5>Challenges and responses</h5><ul><li>If medication is offered: "Is there a tablet that can stop it?" — disappointed but accepting if the honest NICE NG155 evidence is explained</li><li>If MRI is mentioned without audiogram first: "Can I just have a scan — to rule out the tumour?"</li><li>If CBT is offered: "Therapy? — it's not in my head, the noise is real" → accepts if mechanism explained clearly</li><li>On concerts: "Am I going to have to stop going to live music?" → relieved if custom earplugs are mentioned</li></ul></div>
+    </div>
+    <div class="actor-challenge">"Can you just refer me for a brain scan? I need to know it's not the tumour before I can think about anything else."</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> James leaves satisfied if the candidate: (1) names and specifically addresses the acoustic neuroma fear using clinical reasoning; (2) is honest that there is no medication but explains CBT compellingly; (3) addresses the sleep disruption with specific sound therapy advice; (4) supports his concert attendance with custom earplugs; (5) explains why audiogram is the appropriate first investigation (and under what circumstances an MRI might follow). He will push for the scan — the key moment is explaining that MRI is indicated if the audiogram shows asymmetric findings, which is the clinically correct response.</p>
+  </div>
+</div>
+
+<!-- SUMMARIES -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left"><span class="sum-icon">🏥</span><div><div class="sum-label">Clinic Quick Reference</div><div class="sum-title">Tinnitus — Clinical Decision Framework</div><div class="sum-sub">NICE NG155 Tinnitus (2020) · NICE CKS Tinnitus (2023)</div></div></div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+    <div class="sum-sub-hdr">🚦 1 — Triage Algorithm</div>
+    <div class="algo-wrap" style="margin-bottom:1rem">
+      <div class="algo-start">Tinnitus → first: pulsatile vs non-pulsatile? Then: unilateral vs bilateral?</div>
+      <div class="algo-arrow">↓</div>
+      <div class="algo-row">
+        <div class="algo-branch algo-red"><div class="algo-branch-lbl">🔴 Emergency / Urgent</div><ul class="algo-list"><li>Sudden tinnitus + sudden SNHL → prednisolone NOW + same-day ENT</li><li>Pulsatile + headache + visual (obese woman) → same-day ophthalmology (IIH)</li><li>Unilateral tinnitus + SNHL → 2-week ENT + MRI IAM gadolinium</li><li>Pulsatile (any) → 2-week ENT + vascular MRI</li></ul><div class="algo-action red-action">Act urgently — do not reassure without exclusion</div></div>
+        <div class="algo-branch algo-green"><div class="algo-branch-lbl">🟢 Routine — Primary Care</div><ul class="algo-list"><li>Bilateral non-pulsatile → audiogram (audiology)</li><li>CBT referral (IAPT or audiology-led) — NICE NG155 first-line</li><li>Sound therapy advice + sleep hygiene</li><li>No medication for idiopathic tinnitus (NICE NG155)</li></ul><div class="algo-action green-action">Audiogram + CBT + sound therapy</div></div>
+        <div class="algo-branch algo-amber"><div class="algo-branch-lbl">⚠ Key Rules</div><ul class="algo-list"><li>No ginkgo, betahistine, antidepressants for idiopathic tinnitus</li><li>Betahistine ONLY after ENT confirms Menière's</li><li>MRI IAM needed if unilateral + SNHL — audiogram first</li><li>Never biopsy pulsatile middle ear mass (glomus)</li></ul><div class="algo-action amber-action">Apply NICE NG155 — evidence-based only</div></div>
+      </div>
+    </div>
+    <div class="sum-sub-hdr">📊 2 — Key Numbers</div>
+    <div class="num-grid" style="margin-bottom:1rem">
+      <div class="num-card num-highlight"><div class="num-val">CBT</div><div class="num-lbl">NICE NG155 first-line — strongest evidence for tinnitus</div></div>
+      <div class="num-card num-highlight"><div class="num-val">72 hours</div><div class="num-lbl">Sudden SNHL + tinnitus → steroids TODAY</div></div>
+      <div class="num-card"><div class="num-val">Unilateral</div><div class="num-lbl">+ SNHL → urgent ENT + MRI IAM (acoustic neuroma)</div></div>
+      <div class="num-card"><div class="num-val">Pulsatile</div><div class="num-lbl">= Vascular until excluded with imaging</div></div>
+      <div class="num-card"><div class="num-val">40%</div><div class="num-lbl">Tinnitus patients also have hyperacusis</div></div>
+      <div class="num-card"><div class="num-val">0</div><div class="num-lbl">Medications with NICE endorsement for idiopathic tinnitus</div></div>
+    </div>
+    <div class="sum-sub-hdr">⚠ 3 — Safety Netting</div>
+    <div class="sn-compact-wrap">
+      <div class="sn-compact sns-e"><div class="sn-compact-lbl">🔴 Sudden hearing change</div><div class="sn-compact-phrase">"Hearing suddenly worse + tinnitus worse in one ear → same-day or A&amp;E. Emergency steroid window."</div></div>
+      <div class="sn-compact sns-m"><div class="sn-compact-lbl">🟠 New red flag features</div><div class="sn-compact-phrase">"Tinnitus becomes one-sided, or starts beating with heartbeat → prompt review not next scheduled appointment."</div></div>
+      <div class="sn-compact sns-a"><div class="sn-compact-lbl">💊 Supplement warning</div><div class="sn-compact-phrase">"Check before buying any supplement for tinnitus — check with us first; most have no evidence."</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left"><span class="sum-icon">🎓</span><div><div class="sum-label" style="color:rgba(255,255,255,.5)">SCA Quick Reference</div><div class="sum-title" style="color:#fff">Tinnitus SCA — Strategy, Phrases &amp; Scoring</div></div></div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+    <div class="sum-sub-hdr sca-sub-hdr">🕐 12-Minute Flow</div>
+    <div class="sca-flow-wrap">
+      <div class="sca-flow-step sca-f1"><div class="sca-f-time">0–2 min</div><div class="sca-f-title">Open + Type + Impact</div><div class="sca-f-phrase">"Can you describe in your own words what you're hearing, when it started, and how much it's affecting your daily life?"</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">Relating to Others</span></div><div class="sca-f-avoid">✗ Not asking about functional impact first · ✗ Jumping to investigations without characterising</div></div>
+      <div class="sca-flow-step sca-f2"><div class="sca-f-time">2–5 min</div><div class="sca-f-title">Pulsatile + Laterality + Red Flags</div><div class="sca-f-phrase">"Is it beating in time with your heartbeat? One ear or both? Any hearing change? Dizziness? Any noise exposure recently?"</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span></div><div class="sca-f-avoid">✗ Not asking pulsatile vs steady · ✗ Laterality not confirmed · ✗ Ototoxic drugs not reviewed</div></div>
+      <div class="sca-flow-step sca-f3"><div class="sca-f-time">5–7 min</div><div class="sca-f-title">ICE + Examination</div><div class="sca-f-phrase">"Is there something specific you've been worried this might be — perhaps something you read online? I'd like to look in your ears and do a quick hearing test with a tuning fork."</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">Relating to Others</span></div><div class="sca-f-avoid">✗ Acoustic neuroma concern not named · ✗ Otoscopy omitted · ✗ Tuning forks not done</div></div>
+      <div class="sca-flow-step sca-f4"><div class="sca-f-time">7–10 min</div><div class="sca-f-title">Explanation + Plan</div><div class="sca-f-phrase">"This pattern — bilateral, after a loud concert — is very different from acoustic neuroma. I'm arranging a hearing test, and if it shows anything asymmetric we'd look further. The best treatment for the tinnitus itself is a specific CBT programme."</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">Relating to Others</span></div><div class="sca-f-avoid">✗ Offering medication · ✗ Not addressing acoustic neuroma specifically · ✗ CBT not mentioned</div></div>
+      <div class="sca-flow-step sca-f5"><div class="sca-f-time">10–12 min</div><div class="sca-f-title">Sound Therapy + Safety-Net + Close</div><div class="sca-f-phrase">"For tonight: try a low-volume radio or white noise app — it helps. If your hearing suddenly gets worse in one ear, come in the same day. And concerts are fine with the right earplugs. Is there anything you'd like to ask?"</div><div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">Relating to Others</span><span class="sca-dom-tag gs">Global Skills</span></div><div class="sca-f-avoid">✗ No sound therapy · ✗ No sudden SNHL safety-net · ✗ Condemned concerts · ✗ No closing question</div></div>
+    </div>
+    <div class="sum-sub-hdr sca-sub-hdr" style="margin-top:.85rem">🚫 8 Danger Zones</div>
+    <div class="dz-stack">
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Offering ginkgo biloba, betahistine, or antidepressants for idiopathic tinnitus</strong><br><span class="dz-fix">→ "NICE specifically advises against medication for tinnitus — the evidence doesn't support it. I won't prescribe something that's unlikely to help."</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not asking pulsatile vs non-pulsatile first</strong><br><span class="dz-fix">→ "Does the sound beat in time with your heartbeat — like a whooshing or throbbing?"</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not establishing laterality before reassuring</strong><br><span class="dz-fix">→ Unilateral + SNHL = MRI IAM mandatory. Bilateral + noise exposure = audiology + CBT first.</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not addressing acoustic neuroma concern directly</strong><br><span class="dz-fix">→ "Are you worried this might be something in the brain — like a tumour on the hearing nerve?" Then explain specifically why this bilateral post-concert pattern is different.</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not mentioning CBT as NICE NG155 first-line treatment</strong><br><span class="dz-fix">→ "The treatment with the strongest evidence for tinnitus is CBT — I'm going to refer you for this."</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not giving the sudden SNHL safety-net</strong><br><span class="dz-fix">→ "If your hearing suddenly gets worse in one ear alongside the tinnitus — contact us the same day, or go to A&amp;E. That's a time-critical situation."</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Telling patient to avoid concerts</strong><br><span class="dz-fix">→ "You don't need to give up concerts — you need custom earplugs. Audiologists can provide these; they preserve music quality while protecting your hearing."</span></div></div>
+      <div class="dz-item"><span class="dz-x">✗</span><div><strong>Prescribing betahistine without Menière's diagnosis from ENT</strong><br><span class="dz-fix">→ "Betahistine is for a specific ear condition called Menière's disease — we'd need ENT to confirm that before starting it."</span></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Tinnitus · GP Clinical Reasoning Framework v2</strong> · NICE NG155 Tinnitus (2020) · NICE CKS Tinnitus (2023) · British Tinnitus Association (tinnitus.org.uk) · Cima RFF et al. Specialised treatment based on CBT versus usual care for tinnitus (Lancet, 2012) · DVLA Assessing Fitness to Drive (2024)</p>
+  <p style="margin-top:4px">Teaching clinicians why each step matters — not just what to do · Always consult current BNF/SPC · Clinical judgement takes precedence · NICE NG155 available at nice.org.uk/guidance/ng155</p>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

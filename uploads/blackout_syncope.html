@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blackout &amp; Syncope · GP Clinical Reasoning Framework v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="mode-both" id="bodyEl">
+
+<header class="topbar">
+  <div class="tb-inner">
+    <div class="tb-brand">
+      <div class="tb-icon">BS</div>
+      <div><div class="tb-title">Blackout &amp; Syncope · Clinical Reasoning Framework v2</div><div class="tb-sub">GP &amp; SCA · NICE CKS TLOC 2022 / ESC Syncope Guidelines 2018</div></div>
+    </div>
+    <div class="mode-group">
+      <button class="mode-btn" onclick="setMode('sca')" id="btn-sca">🎓 SCA</button>
+      <button class="mode-btn active" onclick="setMode('both')" id="btn-both">Both</button>
+      <button class="mode-btn" onclick="setMode('clinic')" id="btn-clinic">🏥 Clinic</button>
+    </div>
+    <nav class="tb-nav">
+      <a href="#s1">History</a><a href="#s2">Triage</a><a href="#s3">Exam</a>
+      <a href="#s4">Investigations</a><a href="#s5">Diagnosis</a><a href="#s6">Referral</a>
+      <a href="#s7">Management</a><a href="#sum-clinic" class="clinic-only">Clinic Ref</a><a href="#sum-sca" class="sca-only">SCA Ref</a>
+    </nav>
+  </div>
+</header>
+
+<div class="numstrip">
+  <div class="ns-inner">
+    <div class="ns-item"><span class="ns-val">≥20 mmHg</span><span class="ns-lbl">Systolic drop → orthostatic</span></div>
+    <div class="ns-item"><span class="ns-val">3 min</span><span class="ns-lbl">Standing before BP recheck</span></div>
+    <div class="ns-item"><span class="ns-val">&gt;450 ms</span><span class="ns-lbl">QTc limit — males (refer)</span></div>
+    <div class="ns-item"><span class="ns-val">&gt;470 ms</span><span class="ns-lbl">QTc limit — females (refer)</span></div>
+    <div class="ns-item"><span class="ns-val">&lt;5 min</span><span class="ns-lbl">LOC duration → true syncope</span></div>
+    <div class="ns-item"><span class="ns-val">6 months</span><span class="ns-lbl">DVLA off driving (Group 1)</span></div>
+    <div class="ns-item"><span class="ns-val">5 years</span><span class="ns-lbl">DVLA HGV ban — unexplained</span></div>
+    <div class="ns-item"><span class="ns-val">24–48 hr</span><span class="ns-lbl">ECG target — high-risk features</span></div>
+  </div>
+</div>
+
+<div class="page">
+
+<div class="stem-box clinic-only">
+  <div class="stem-label">📋 Clinical Stem — First Blackout in a Middle-Aged Adult</div>
+  <div class="stem-title">A 58-year-old male teacher presents the morning after collapsing in a supermarket — differentiate syncope, seizure, and cardiac cause</div>
+  <div class="stem-text">"Mr James Allen, 58 years old, works as a secondary school teacher. He attends with his wife after collapsing in a busy supermarket yesterday afternoon. He reports feeling 'strange and sweaty' for a few seconds before losing consciousness. His wife witnessed the event — he slumped to the floor, was unconscious for approximately 2 minutes with no jerking, then recovered rapidly. Paramedics attended; his ECG was reported as normal and he was discharged from A&amp;E with advice to see his GP. He is on ramipril 5 mg and amlodipine 5 mg for hypertension, and atorvastatin 40 mg. He is a non-smoker and drinks approximately 14 units of alcohol per week."</div>
+  <div class="stem-note">This stem is designed to distinguish vasovagal syncope from cardiac syncope, orthostatic hypotension, and seizure. The antihypertensive history makes orthostatic hypotension a live differential. The brief prodrome and rapid recovery favour vasovagal, but age 58, male sex, and no clear postural trigger mean cardiac arrhythmia must be excluded first.</div>
+  <div class="stem-variants">
+    <div class="stem-variant"><strong>Scenario A — Classic Vasovagal (low risk)</strong> 19-year-old woman, hot concert, 30 minutes standing, sweating and tunnel vision prodrome, rapid complete recovery, one previous episode at 16. Reassurance plus lifestyle advice; no urgent referral.</div>
+    <div class="stem-variant"><strong>Scenario B — Orthostatic Hypotension</strong> 74-year-old man on three antihypertensives who blacked out rising from a chair. Systolic drop ≥20 mmHg confirmed at 3 minutes standing. Medication review, compression stockings, hydration.</div>
+    <div class="stem-variant"><strong>Scenario C — Possible Seizure</strong> 42-year-old woman, 5 minutes witnessed shaking, urinary incontinence, lateral tongue biting, 20 minutes to full recovery. Neurology referral and DVLA notification mandatory from point of suspected seizure.</div>
+    <div class="stem-variant"><strong>Scenario D — Cardiac High Risk</strong> 55-year-old man, no prodrome, collapsed while seated, preceded by palpitations, family history of sudden death at 48. QTc 488 ms on ECG. Same-day cardiology referral; stop QT-prolonging agents.</div>
+    <div class="stem-variant"><strong>Scenario E — Medication-Induced</strong> 68-year-old woman, new tamsulosin added to lisinopril and furosemide three days ago, classic orthostatic pattern on lying/standing BP. Tamsulosin withheld; symptoms fully resolved within two weeks.</div>
+    <div class="stem-variant"><strong>Key variables to adapt for</strong> Age and sex; presence or absence of prodrome; position when collapsed (standing vs exertional vs supine); witness account; duration of LOC; post-event confusion; family history of sudden death; QT-prolonging medications; ECG result; established cardiac history.</div>
+  </div>
+</div>
+
+<div class="collapse-controls">
+  <span class="cc-label">Steps:</span>
+  <button class="cc-btn" onclick="expandAll()">▼ Expand all</button>
+  <button class="cc-btn" onclick="collapseAll()">▲ Collapse all</button>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-wrap" id="s1">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc1">1</div>
+    <div class="step-hdr-text">
+      <div class="step-label">Step 1</div>
+      <div class="step-title">History Taking — Open Question First · Targeted Questions · ICE · Psychosocial Context</div>
+    </div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro">The history is the most powerful diagnostic tool in syncope. The <strong>witness account</strong> is often more informative than the patient's own recall (they were unconscious). Establish: was this true syncope (transient LOC due to global cerebral hypoperfusion, self-terminating)? Or a seizure, metabolic event, or psychogenic episode? Key discriminators: prodrome, duration, recovery pattern, position at collapse.</div>
+
+    <div class="card sca-only" style="padding:.9rem 1.1rem;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--p);margin-bottom:.45rem">🎓 Consultation opener — use existing information first</div>
+      <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.55">"I can see from your notes that you collapsed in a supermarket yesterday and that your ECG was reported as normal in A&amp;E. Before I ask you anything specific, I'd really like to hear what happened from your perspective — can you tell me in your own words what you remember?"</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:.4rem">Asking for information already documented costs marks in Tasks and Global Skills. Referencing existing information signals you have read the case and opens the consultation in a patient-centred way.</div>
+    </div>
+
+    <div class="sub-divider">1A — Start with an open question: let the patient lead, then move to targeted questions</div>
+    <div class="card" style="overflow:hidden;margin-bottom:12px">
+      <table class="rt">
+        <thead><tr><th style="width:28%">Question to ask</th><th style="width:42%">Why it matters clinically</th><th class="chg-col">Changes what?</th></tr></thead>
+        <tbody>
+          <tr class="open-q-row">
+            <td class="q"><strong>🟢 OPEN QUESTION — always start here</strong><em>"Can you talk me through what happened from the very beginning — what were you doing just before?"</em></td>
+            <td class="why">Allows the patient to lead with the most salient detail, often revealing the trigger, position, and prodrome without a single leading question. The story frequently tells you the diagnosis.<span class="why-sub">SCA: opening with a genuine open question scores Global Skills (structured consultation) and Relating to Others (patient-centred). Never start with a closed question.</span></td>
+            <td><span class="chg chg-ddx">Diagnoses</span><span class="chg chg-ps">ICE</span><span class="chg chg-rx">Management</span></td>
+          </tr>
+          <tr>
+            <td class="q">Any warning before it happened?<em>"Did you notice anything — any sensation — in the seconds before?"</em></td>
+            <td class="why">A prodrome (sweating, nausea, greyout, tunnel vision) strongly suggests vasovagal or orthostatic syncope. <strong>No prodrome</strong> is a red flag for cardiac arrhythmia, particularly in patients over 45.<span class="why-sub">Prodrome under 10 seconds suggests arrhythmia; 10 seconds to 2 minutes favours vasovagal. Absent prodrome in over 45 = urgent cardiac exclusion.</span></td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-urgent">Risk</span></td>
+          </tr>
+          <tr>
+            <td class="q">What position were you in?<em>"Were you standing, sitting, or lying down?"</em></td>
+            <td class="why">Syncope while supine or during exertion is almost always cardiac — vasovagal does not occur lying flat. Syncope after prolonged standing or on rising suggests orthostatic or vasovagal mechanism.<span class="why-sub">Exertional syncope → same-day referral regardless of any other feature. Supine syncope → cardiac until proven otherwise.</span></td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-ref">Referral</span><span class="chg chg-urgent">Urgency</span></td>
+          </tr>
+          <tr>
+            <td class="q">Did anyone witness what happened?<em>"Was anyone with you? What did they see?"</em></td>
+            <td class="why">Witness account is often the most diagnostically powerful information in syncope — describing duration, limb movements, incontinence, tongue biting, and recovery speed. If patient attended alone, obtain a witness contact number.<span class="why-sub">Anoxic jerks in the first 2 seconds of syncope are normal — distinguish from sustained tonic-clonic movements lasting over 30 seconds.</span></td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-ref">Referral</span></td>
+          </tr>
+          <tr>
+            <td class="q">How long were you unconscious?<em>"Any idea how long you were out — seconds, a minute, longer?"</em></td>
+            <td class="why">True syncope is brief — under 2 minutes — with rapid complete recovery. LOC over 5 minutes significantly raises probability of epilepsy, hypoglycaemia, or structural brain pathology.<span class="why-sub">Very brief LOC under 10 seconds with no prodrome in an older patient → consider heart block or asystole.</span></td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-ref">Neurology</span></td>
+          </tr>
+          <tr>
+            <td class="q">Jerking movements, tongue biting, or incontinence?<em>"After you fell, did you shake, bite your tongue, or lose control of your bladder?"</em></td>
+            <td class="why">Tonic-clonic movements over 30 seconds, lateral tongue biting, and urinary incontinence strongly suggest seizure. Brief anoxic jerks (1–2 seconds) occur in up to 50% of true syncope — do not confuse with tonic-clonic activity.<span class="why-sub">Lateral tongue biting is highly specific (over 90%) for epilepsy. Tip tongue biting occurs in both — location is the discriminator.</span></td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-ref">Neurology</span><span class="chg chg-rx">DVLA</span></td>
+          </tr>
+          <tr>
+            <td class="q">How quickly did you recover?<em>"When you came round, did you know immediately where you were, or did it take time?"</em></td>
+            <td class="why">Rapid complete recovery within seconds to 2 minutes with no confusion is characteristic of syncope. Prolonged confusion over 5 minutes suggests post-ictal state, prolonged cardiac arrest, or metabolic cause.<span class="why-sub">Vasovagal patients feel tired but are immediately orientated. Post-ictal patients cannot recall where they are for 5–20 minutes.</span></td>
+            <td><span class="chg chg-ddx">DDx</span></td>
+          </tr>
+          <tr>
+            <td class="q">Palpitations or chest pain beforehand?<em>"Did you notice your heart beating fast or irregularly, or any chest tightness, in the minutes before?"</em></td>
+            <td class="why">Palpitations preceding syncope suggest arrhythmic cause — SVT, VT, AF with rapid ventricular response, or heart block. Chest pain raises possibility of ACS-related arrhythmia or PE. Either makes this a high-risk presentation.<span class="why-sub">Absence of palpitations does not exclude cardiac cause — some arrhythmias terminate before the patient can register them.</span></td>
+            <td><span class="chg chg-999">Emergency</span><span class="chg chg-urgent">Risk</span><span class="chg chg-ref">Cardiology</span></td>
+          </tr>
+          <tr>
+            <td class="q">Any specific trigger?<em>"Were you in pain, frightened, or had a blood test? Or did it follow a cough, going to the toilet, or a large meal?"</em></td>
+            <td class="why">Situational syncope (cough, micturition, defecation, post-prandial) is a recognised benign reflex mechanism. Vasovagal is triggered by emotional distress, pain, venepuncture, or prolonged standing. Trigger identification directly determines management.<span class="why-sub">Micturition syncope typically occurs at night; cough syncope in COPD patients — both benign but require documenting.</span></td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-rx">Lifestyle</span></td>
+          </tr>
+          <tr>
+            <td class="q">Has this happened before?<em>"Have you ever blacked out before, even briefly? Any time earlier in life?"</em></td>
+            <td class="why">Lifelong history of faints with vasovagal features is strongly reassuring. A first blackout in a middle-aged or older adult without prior history requires full cardiac exclusion. Recurrent episodes despite investigation raise the possibility of inherited channelopathy.<span class="why-sub">Ask specifically about childhood faints — Brugada syndrome and LQTS may have first presented with syncope in childhood.</span></td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-ref">Cardiology</span></td>
+          </tr>
+          <tr>
+            <td class="q">Recent illness, reduced fluid intake, or medication changes?<em>"Any illness recently? Had much less to drink? Any new tablets or changes to your tablets in the last two weeks?"</em></td>
+            <td class="why">Dehydration can precipitate vasovagal or orthostatic syncope in patients on antihypertensives or diuretics. A new medication in the preceding 2 weeks — especially alpha-blockers, antihypertensives, or QT-prolonging drugs — should be considered the cause until proven otherwise.<span class="why-sub">In this stem: ramipril plus amlodipine — drug-induced orthostatic hypotension is a live differential that would be fully reversible.</span></td>
+            <td><span class="chg chg-ddx">DDx</span><span class="chg chg-rx">Medication review</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-divider">1B — Red flags: must not miss · must ask · must act</div>
+    <div class="rf-wrap" style="margin-bottom:1rem">
+      <div class="rf-hdr"><span style="font-size:1.1rem">🚨</span><h3>Red Flags — act before continuing history</h3></div>
+      <table class="rf-table">
+        <thead><tr><th>Red flag</th><th>Why dangerous</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td class="rf-flag">Exertional syncope</td><td class="rf-why">LOC during physical exercise suggests structural heart disease (HOCM, severe AS, CAD) or catecholamine-triggered arrhythmia. Sudden cardiac death risk markedly elevated. Do not allow exercise until cardiac investigation is complete.</td><td><span class="rf-action rfa-same">Same-day cardiology</span></td></tr>
+          <tr><td class="rf-flag">Syncope while supine or seated</td><td class="rf-why">Vasovagal does not occur lying flat or without a positional or emotional trigger. Syncope at rest strongly suggests cardiac arrhythmia — complete heart block, VT, or prolonged QT causing torsades de pointes.</td><td><span class="rf-action rfa-same">Same-day ECG + cardiology</span></td></tr>
+          <tr><td class="rf-flag">No prodrome in patient over 40</td><td class="rf-why">Sudden-onset LOC without warning in a middle-aged or older adult is cardiac arrhythmia until proven otherwise. Young vasovagal patients typically have a 10–20 second prodrome. Absent prodrome in over 45 = urgent cardiac exclusion.</td><td><span class="rf-action rfa-same">Same-day assessment</span></td></tr>
+          <tr><td class="rf-flag">Family history of sudden cardiac death under 40</td><td class="rf-why">Raises strong suspicion for inherited channelopathy — Long QT syndrome, Brugada, CPVT, or hypertrophic cardiomyopathy. All life-threatening; require specialist cardiac evaluation with family cascade screening.</td><td><span class="rf-action rfa-same">Urgent cardiology</span></td></tr>
+          <tr><td class="rf-flag">Palpitations preceding LOC</td><td class="rf-why">Awareness of fast or irregular heartbeat before syncope is highly suggestive of arrhythmia — SVT, VT, or AF with rapid ventricular response. Requires urgent Holter or ILR if episode not captured on standard monitoring.</td><td><span class="rf-action rfa-same">Same-day ECG + referral</span></td></tr>
+          <tr><td class="rf-flag">Prolonged LOC over 5 minutes or post-ictal confusion</td><td class="rf-why">True syncope self-terminates in under 2 minutes with rapid full recovery. Prolonged LOC or extended confusion raises probability of epileptic seizure, prolonged cardiac arrest, hypoglycaemia, or structural brain pathology.</td><td><span class="rf-action rfa-same">A&amp;E same-day</span></td></tr>
+          <tr><td class="rf-flag">Abnormal 12-lead ECG</td><td class="rf-why">QTc over 450 ms (male) or 470 ms (female), Brugada pattern, complete heart block, epsilon waves (ARVC), pre-excitation (WPW), or ST changes in a patient with syncope = high-risk finding requiring same-day specialist assessment.</td><td><span class="rf-action rfa-999">Refer same-day</span></td></tr>
+          <tr><td class="rf-flag">New focal neurological deficits after LOC</td><td class="rf-why">Focal signs (facial droop, arm weakness, speech disturbance) after LOC raise the possibility of posterior circulation stroke or vertebrobasilar TIA. Activate stroke pathway immediately — this is not a straightforward syncope presentation.</td><td><span class="rf-action rfa-999">999 / Stroke pathway</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sg-wrap">
+      <div class="sg-hdr"><span style="font-size:1.1rem">🛡️</span><h3>Safeguarding Considerations — Consider in Every Consultation</h3></div>
+      <div class="sg-body">
+        <div style="font-size:12.5px;color:#4a0072;line-height:1.55;margin-bottom:.75rem;background:#fff;border:1px solid var(--ps-bd);border-radius:var(--rad-sm);padding:.65rem .9rem;border-left:3px solid var(--ps)"><strong>Blackout and syncope can be a marker of harm or serious vulnerability.</strong> A person living with domestic abuse may present with injury from a "fall" during a blackout that was not truly accidental. Older adults with recurrent unexplained blackouts may be experiencing medication misuse or neglect. The vulnerability created by LOC also creates safeguarding risks for any dependants in the patient's care, especially when driving.</div>
+        <div class="sg-grid">
+          <div class="sg-card"><h5>🏠 Domestic Abuse / Intimate Partner Violence</h5><ul><li>Recurrent blackouts with inconsistent explanations of associated injury</li><li>Partner insists on being present and speaks over the patient</li><li>Patient reluctant to discuss the episode when partner leaves the room</li><li>Pattern of A&amp;E attendances for "falls" without physiological explanation</li><li>Consider controlled medication being withheld or given in excess by a third party</li></ul></div>
+          <div class="sg-card"><h5>👴 Older Adults / Carer-Related Concern</h5><ul><li>Unexplained LOC in an older adult with a sole carer — consider medication misuse or neglect</li><li>Carer administering multiple medications without GP oversight</li><li>Older adult found collapsed at home with an unreported delay in calling for help</li><li>Polypharmacy-induced syncope in a vulnerable adult who cannot self-advocate</li><li>Carer who minimises or dismisses the episode without adequate concern</li></ul></div>
+          <div class="sg-card"><h5>🧒 Children in the Household</h5><ul><li>Parent with recurrent syncope who is sole carer — what happens to dependent children when parent loses consciousness?</li><li>Does the syncope occur while driving children to school? DVLA notification is mandatory</li><li>Domestic stress and conflict may be contributing to vasovagal episodes</li><li>Consider children as young carers — assess impact on welfare and education</li></ul></div>
+          <div class="sg-card"><h5>💊 Self-Harm / Medication Misuse Risk</h5><ul><li>Deliberate overdose can present as unexplained LOC — check electrolytes and drug screen if suspected</li><li>Alcohol-induced LOC in the context of hazardous or dependent drinking</li><li>Benzodiazepine or opioid misuse presenting as unexplained LOC in at-risk populations</li><li>Assess for suicidal ideation if the context of the episode is ambiguous or concealed</li></ul></div>
+        </div>
+        <div class="sg-action"><strong>If a safeguarding concern is identified:</strong> Do not confront the alleged perpetrator. Document concerns precisely using objective language. Refer via local ICB safeguarding pathway — this does not require patient consent if there is immediate risk of harm. For adult safeguarding, contact local authority Adult Social Care. For children, follow Children's Services referral pathway.</div>
+      </div>
+    </div>
+
+    <div class="sub-divider">1C — PMH · FH · Drug history · Social history: management impact</div>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--t)">🧬 PMH / FH — changes management</div>
+        <table class="it">
+          <thead><tr><th>Factor</th><th>Why it matters</th><th>Management impact</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Structural heart disease (IHD, cardiomyopathy, valve disease)</td><td>Dramatically increases the probability of arrhythmic cause and predicts increased short-term mortality</td><td class="impact">Same-day cardiology; ECG mandatory; echo if not recent; admit if haemodynamically compromised</td></tr>
+            <tr><td class="factor">Previous arrhythmia (AF, SVT, VT, WPW, heart block)</td><td>Known arrhythmia substantially raises probability that current syncope is arrhythmic — may indicate inadequate rate or rhythm control</td><td class="impact">Review current antiarrhythmic treatment; urgent 24-hour Holter or ILR; cardiology review</td></tr>
+            <tr><td class="factor">Diabetes mellitus (long-standing)</td><td>Autonomic neuropathy impairs the baroreflex response to standing, predisposing to orthostatic hypotension as a primary mechanism</td><td class="impact">Lying/standing BP with 3-minute protocol; HbA1c; review autonomic features; consider fludrocortisone</td></tr>
+            <tr><td class="factor">Parkinson's disease / Lewy body dementia</td><td>Autonomic dysfunction is a core feature of Parkinson's — severe orthostatic hypotension is extremely common and often the presenting feature</td><td class="impact">Lying/standing BP series; Parkinson's specialist referral; fludrocortisone or midodrine under specialist guidance</td></tr>
+            <tr><td class="factor">Epilepsy (established)</td><td>A blackout in a patient with known epilepsy is more likely to be a seizure — but cardiac syncope can co-exist and is more dangerous</td><td class="impact">Review anti-epileptic drug levels and compliance; liaise with neurology; DVLA rules if seizure pattern has changed</td></tr>
+            <tr><td class="factor">Anaemia (known or recent)</td><td>Reduced haemoglobin lowers oxygen delivery to the brain; acute blood loss causes syncope via hypovolaemic shock</td><td class="impact">FBC mandatory; if acute GI bleed suspected — urgent A&amp;E; check stool colour; treat underlying cause</td></tr>
+            <tr><td class="factor">Family history of sudden cardiac death under 40</td><td>Strongly raises suspicion for inherited channelopathy (LQTS, Brugada, CPVT, ARVC) or HCM — all life-threatening with family implications</td><td class="impact">Same-day cardiology; ECG including Brugada-specific leads if indicated; cascade family screening</td></tr>
+            <tr><td class="factor">Anxiety, panic disorder, or functional neurological disorder</td><td>Psychogenic non-epileptic attacks (PNEA) and functional syncope can mimic true syncope exactly — management is completely different</td><td class="impact">PNEA requires psychological input not cardiology; functional syncope managed with physiotherapy and CBT</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div class="card-hd" style="color:var(--a)">💊 Drug history · Social history — clinical impact</div>
+        <table class="it">
+          <thead><tr><th>Factor</th><th>Why it matters</th><th>Management impact</th></tr></thead>
+          <tbody>
+            <tr><td class="factor">Antihypertensives (ACEi, CCB, ARB, alpha-blockers)</td><td>All antihypertensives can cause or worsen orthostatic hypotension — alpha-blockers (tamsulosin, doxazosin) carry the highest risk</td><td class="impact">Check lying/standing BP; review and rationalise regimen; consider dose reduction or timing change</td></tr>
+            <tr><td class="factor">Diuretics (furosemide, thiazides)</td><td>Volume depletion reduces preload and predisposes to syncope on standing — worsened by hot weather, illness, or poor oral intake</td><td class="impact">Review dose; advise adequate hydration; check U&amp;E for electrolyte disturbance contributing to arrhythmia risk</td></tr>
+            <tr><td class="factor">QT-prolonging medications</td><td>Antipsychotics, macrolide antibiotics, azole antifungals can prolong QT interval and precipitate torsades de pointes — a life-threatening polymorphic VT</td><td class="impact">Mandatory ECG with QTc measurement; stop or switch culprit drug; check electrolytes (K+, Mg2+)</td></tr>
+            <tr><td class="factor">Alcohol (excess or dependent)</td><td>Alcohol causes vasodilation and dehydration predisposing to syncope; alcoholic cardiomyopathy causes arrhythmic syncope; withdrawal can cause seizures</td><td class="impact">AUDIT-C screening; brief intervention; withdrawal risk assessment; FBC (macrocytosis), LFTs</td></tr>
+            <tr><td class="factor">Insulin or sulphonylureas</td><td>Hypoglycaemia can present as LOC that mimics syncope exactly — managed completely differently</td><td class="impact">Check blood glucose at presentation; continuous glucose monitoring if recurrent; review regimen and meal timing</td></tr>
+            <tr><td class="factor">Driving — occupation and daily use</td><td>DVLA requires notification of any unexplained blackout; Group 1 (car) 6 months off; Group 2 (HGV/bus) minimum 5 years. Failure to advise is a GMC duty and medicolegal risk</td><td class="impact">Mandatory DVLA advice at first consultation; document precisely; patient must notify DVLA themselves</td></tr>
+            <tr><td class="factor">Hazardous occupation (heights, machinery, aviation)</td><td>Sudden LOC in an occupation where it poses a risk to the patient or others requires immediate work restriction pending investigation</td><td class="impact">Issue fit note restricting relevant duties only; document clearly; refer to occupational health if prolonged restriction needed</td></tr>
+            <tr><td class="factor">Living alone / poor social support</td><td>A patient who lives alone with recurrent syncope is at increased risk of serious injury from an unwitnessed fall</td><td class="impact">Falls risk assessment; personal alarm consideration; review frequency of planned follow-up</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-divider">1D — ICE: Ideas · Concerns · Expectations — in every consultation, not just SCA</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">💡 Why ICE matters in blackout — not a tick-box exercise</div>
+      <p>Patients presenting with a first blackout frequently carry a catastrophic fear — often that they have a brain tumour, that their heart stopped, or that they are "going mad." If the GP does not explore and name the patient's own model, the consultation risks treating the wrong problem. In the SCA, failing to name the patient's specific concern is the commonest reason for losing the Relating to Others domain entirely.</p>
+    </div>
+    <div class="ice-grid" style="margin-bottom:12px">
+      <div class="ice-card ice-i">
+        <div class="ice-label">💭 Ideas</div>
+        <div class="ice-phrase">"What do you think might have caused you to black out? Have you had any thoughts about what it could be?"</div>
+        <div class="ice-why">Patients with syncope often have a specific and frequently incorrect internal model (e.g. "I had a mini-stroke," "my heart stopped"). Unless you uncover this model, your explanation will not land. The patient's idea shapes what information will be reassuring versus frightening for them specifically.</div>
+      </div>
+      <div class="ice-card ice-c">
+        <div class="ice-label">😟 Concerns</div>
+        <div class="ice-phrase">"Is there something specific you've been worried about since this happened — something going through your mind that you haven't said yet?"</div>
+        <div class="ice-why">The most common hidden concern in a middle-aged male with syncope is "Am I going to die suddenly?" — particularly when there is a personal or family connection to sudden cardiac death. Without naming and directly addressing this concern, any reassurance is hollow and the patient will leave unconvinced.</div>
+      </div>
+      <div class="ice-card ice-e">
+        <div class="ice-label">🎯 Expectations</div>
+        <div class="ice-phrase">"What were you hoping we might be able to do for you today — was there something specific you were expecting?"</div>
+        <div class="ice-why">Many patients with syncope expect a brain scan (CT or MRI). Understanding this expectation before launching into the management plan allows you to acknowledge and address it explicitly rather than having the patient leave feeling dismissed. Offering the right investigation while explaining why a brain scan is not the priority is a high-scoring consultation move.</div>
+      </div>
+    </div>
+
+    <div class="sub-divider">1E — Psychosocial context: the person behind the blackout</div>
+    <div class="ps-banner">
+      <div class="ps-banner-lbl">🫂 How psychosocial factors directly cause, trigger, and perpetuate syncope</div>
+      <p>Vasovagal syncope — the commonest cause at all ages — is directly mediated by the autonomic nervous system's response to psychological triggers: emotional distress, fear, and anxiety activate the vasovagal reflex. Chronic stress elevates baseline sympathetic tone, making the paradoxical parasympathetic withdrawal that causes syncope more likely. Separately, the fear and behavioural avoidance that follow a blackout frequently create more disability than the blackout itself — patients restrict their lives, stop exercising, and avoid social situations, all of which worsen the underlying physiology.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card"><h5>😰 Anxiety and Emotional Triggers</h5><p>Fear, pain, the sight of blood, and acute emotional distress are potent vagal triggers. High trait anxiety and panic disorder are associated with significantly increased frequency of vasovagal syncope. Hyperventilation during anxiety attacks reduces CO₂ and causes cerebral vasoconstriction, precipitating near-syncope.</p><span class="ps-phrase">"Some people find their blackouts happen more when they're stressed or anxious — has life been more difficult recently in any way?"</span><p style="font-size:11px;color:var(--muted);margin-top:.35rem">If anxiety is a significant contributor: CBT via IAPT and autonomic retraining are more effective than purely cardiac investigations — changes the pathway entirely.</p></div>
+      <div class="ps-card"><h5>🏃 Deconditioning and Lifestyle</h5><p>Prolonged inactivity, poor hydration, excessive alcohol, and high ambient temperature all reduce effective circulating volume and lower the threshold for vasovagal syncope. A sedentary lifestyle with poor cardiovascular reserve means the body cannot adequately compensate for postural changes.</p><span class="ps-phrase">"Can you tell me a bit about your lifestyle day-to-day — how much you're moving around, eating and drinking?"</span><p style="font-size:11px;color:var(--muted);margin-top:.35rem">If deconditioning is identified: structured tilt training, hydration targets, and dietary salt advice are first-line — more effective than medication in motivated patients.</p></div>
+      <div class="ps-card"><h5>💼 Occupational and Financial Stress</h5><p>Teaching is a high-demand occupation associated with chronic stress, which activates the sympatho-adrenal axis and reduces self-care behaviours. A driving restriction — mandatory after unexplained blackout — may threaten employment, creating a vicious cycle of stress and increased syncope frequency.</p><span class="ps-phrase">"Your job as a teacher can be really demanding — how are things at work at the moment?"</span><p style="font-size:11px;color:var(--muted);margin-top:.35rem">Work stress management referral; occupational health assessment; fit note for driving-related duties where applicable.</p></div>
+      <div class="ps-card"><h5>🤝 Social Embarrassment and Avoidance</h5><p>Blackouts in public — supermarkets, public transport, workplaces — cause significant embarrassment and anticipatory fear of recurrence. Patients frequently restrict activity and social engagement, withdrawing from normal life. This avoidance reduces exercise tolerance and worsens the underlying physiology.</p><span class="ps-phrase">"Since this happened, have you been avoiding doing certain things or going certain places because you're worried it might happen again?"</span><p style="font-size:11px;color:var(--muted);margin-top:.35rem">Avoidance is a maintaining factor — behavioural activation and graduated exposure directly address this. IAPT referral if avoidance is significantly affecting quality of life.</p></div>
+      <div class="ps-card"><h5>🏠 Family and Carer Burden</h5><p>Witnessing a loved one collapse is deeply distressing for family members, who may become hypervigilant and overprotective. Partners may restrict the patient's activities further than medically necessary, reinforcing avoidance. The family's emotional response directly affects rehabilitation and engagement with investigation.</p><span class="ps-phrase">"How has your wife been since this happened? Has it affected things at home for both of you?"</span><p style="font-size:11px;color:var(--muted);margin-top:.35rem">Family psychoeducation is as important as patient education — involving the partner in the plan improves outcomes and reduces carer anxiety significantly.</p></div>
+      <div class="ps-card"><h5>🚗 Driving and Independence</h5><p>Driving restriction is one of the most psychosocially impactful consequences of a blackout — affecting employment, social activities, caring responsibilities, and sense of autonomy. The emotional weight is often underestimated by clinicians but is frequently the patient's primary concern.</p><span class="ps-phrase">"I need to talk to you about driving — it's something I have a legal duty to address. Can I ask how important driving is to your day-to-day life?"</span><p style="font-size:11px;color:var(--muted);margin-top:.35rem">Explore the impact before giving the restriction, then problem-solve together — alternative transport, fit note for driving-related duties, timeline for investigation.</p></div>
+    </div>
+
+    <div class="sca-cp sca-only">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 1</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say">
+          <div class="sca-block-t">Key phrases that score</div>
+          <div class="sca-phrase">"Before I ask you anything specific, can you tell me in your own words what happened — right from the beginning?"</div>
+          <div class="sca-phrase">"I need to mention something important about driving — there's a legal requirement after any unexplained blackout."</div>
+          <div class="sca-phrase">"Is there something particular you've been worried this might be?"</div>
+          <div class="sca-phrase">"What were you hoping we might arrange for you today?"</div>
+        </div>
+        <div class="sca-block sca-avoid">
+          <div class="sca-block-t">Deductions (examiner flags)</div>
+          <ul>
+            <li>Asking for the ECG result already documented in the case notes</li>
+            <li>Asking five or more closed questions before a single open question</li>
+            <li>Failing to ask about driving or DVLA at any point</li>
+            <li>Not exploring the witness account despite it being available</li>
+            <li>Never naming the patient's specific concern explicitly</li>
+            <li>Confusing brief anoxic jerks with seizure without clarifying duration</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red — failing</div><div class="rag-bullets">Asks closed questions only; never explores ICE; doesn't mention driving; asks for information already in the notes; witness account not sought</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber — borderline</div><div class="rag-bullets">Opens with a closed question but recovers; explores ICE partially; mentions driving but doesn't explore the impact; misses at least one key discriminating question</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green — passing</div><div class="rag-bullets">Genuine open question first; elicits prodrome, duration, position, witness account, and exertion; names patient's concern; addresses driving with empathy and a plan</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-wrap" id="s2">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc2">2</div>
+    <div class="step-hdr-text">
+      <div class="step-label">Step 2</div>
+      <div class="step-title">Triage Engine — Emergency · Urgent · Routine</div>
+    </div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro">Triage in syncope is driven by the probability of a cardiac cause. The ESC (2018) and NICE both recommend risk stratification at first presentation — high-risk features mandate same-day assessment; typical low-risk features (young patient, clear vasovagal trigger, rapid complete recovery, normal ECG) can be managed in primary care. <strong>Never assume vasovagal without actively excluding high-risk features.</strong></div>
+    <div class="triage">
+      <div class="tc tc-e">
+        <div class="tc-lbl">🔴 Emergency</div>
+        <h3>999 or A&amp;E Now</h3>
+        <span class="tc-badge tcb-e">Immediate assessment</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Exertional syncope</strong><em>Possible HOCM, severe AS, or catecholaminergic VT — highest-risk pattern; do not allow any exercise</em></li>
+          <li class="tc-item"><strong>Syncope + ongoing chest pain or breathlessness</strong><em>ACS-related arrhythmia or massive PE until proven otherwise</em></li>
+          <li class="tc-item"><strong>Syncope + focal neurology</strong><em>Posterior circulation stroke or TIA — activate stroke pathway immediately</em></li>
+          <li class="tc-item"><strong>Prolonged LOC over 5 minutes with confusion</strong><em>Non-syncopal cause — epilepsy, prolonged cardiac arrest, metabolic</em></li>
+          <li class="tc-item"><strong>Haemodynamic instability at presentation</strong><em>Ongoing hypotension, tachycardia, pallor — hypovolaemia, massive PE, ongoing VT</em></li>
+          <li class="tc-item"><strong>Life-threatening ECG changes</strong><em>QTc over 500 ms, Brugada pattern, complete heart block, VT on rhythm strip</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-u">
+        <div class="tc-lbl">🟠 Urgent</div>
+        <h3>Same-Day / 48-Hour Assessment</h3>
+        <span class="tc-badge tcb-u">Rapid assessment required</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>First unexplained syncope over age 45</strong><em>Cardiac arrhythmia probability increases with age — ECG + monitoring mandatory</em></li>
+          <li class="tc-item"><strong>No prodrome in any age group</strong><em>Sudden-onset LOC without warning = cardiac until proven otherwise</em></li>
+          <li class="tc-item"><strong>Syncope preceded by palpitations</strong><em>Suggests arrhythmia — urgent Holter and cardiology review</em></li>
+          <li class="tc-item"><strong>Family history of sudden cardiac death under 40</strong><em>Possible inherited channelopathy — specialist cardiac evaluation</em></li>
+          <li class="tc-item"><strong>Syncope in a patient with known structural heart disease</strong><em>Cardiac cause probability very high — do not defer assessment</em></li>
+          <li class="tc-item"><strong>QTc 450–500 ms on ECG (not yet immediately life-threatening)</strong><em>Medication review + cardiology within 48 hours</em></li>
+        </ul>
+      </div>
+      <div class="tc tc-r">
+        <div class="tc-lbl">🟢 Routine</div>
+        <h3>Primary Care Management</h3>
+        <span class="tc-badge tcb-r">GP management with review</span>
+        <ul class="tc-items">
+          <li class="tc-item"><strong>Classic vasovagal pattern</strong><em>Young patient, clear trigger (standing, heat, emotion), full prodrome, rapid complete recovery, normal ECG</em></li>
+          <li class="tc-item"><strong>Confirmed orthostatic hypotension</strong><em>Lying/standing BP drop confirmed, medication-related, no structural cardiac disease</em></li>
+          <li class="tc-item"><strong>Situational syncope</strong><em>Cough, micturition, defecation — recognised benign reflex mechanism with clear trigger</em></li>
+          <li class="tc-item"><strong>Recurrent vasovagal with previous negative cardiac workup</strong><em>If cardiac cause was comprehensively excluded and history is unchanged</em></li>
+          <li class="tc-item"><strong>Young athlete with isolated single vasovagal episode</strong><em>No cardiac history, normal ECG, classic history — lifestyle advice and GP monitoring</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 2</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say">
+          <div class="sca-block-t">Triage phrases that score</div>
+          <div class="sca-phrase">"Given that this happened without any warning and you were sitting down at the time, I'm not able to reassure you today without getting your heart checked urgently."</div>
+          <div class="sca-phrase">"The good news is that the story you're describing — the warning feelings, it happening when you were standing in a queue — does fit with the most common and generally safe type of blackout."</div>
+        </div>
+        <div class="sca-block sca-avoid">
+          <div class="sca-block-t">Triage deductions</div>
+          <ul>
+            <li>Giving blanket reassurance without systematically checking red flag features</li>
+            <li>Missing exertional syncope as the highest-risk clinical feature</li>
+            <li>Not asking about family history of sudden cardiac death</li>
+            <li>Delaying ECG when high-risk features are present in the history</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Gives blanket reassurance; misses red flags; doesn't stratify risk; labels as vasovagal without exclusion</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Identifies some risk features but triage decision lacks clarity or evidence base; doesn't explain reasoning to patient</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Systematically applies risk stratification; shares reasoning with patient; makes clear triage decision based on named features</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-wrap" id="s3">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc3">3</div>
+    <div class="step-hdr-text">
+      <div class="step-label">Step 3</div>
+      <div class="step-title">Do I Need This Examination?</div>
+    </div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro">The 12-lead ECG is mandatory in all patients with TLOC and should be done in the surgery if the patient is seen in primary care. Lying and standing BP is the next priority to exclude orthostatic hypotension. Cardiac auscultation may reveal the structural lesion driving exertional syncope. A brief neurological examination is needed to exclude focal signs. Never skip the ECG or lying/standing BP.</div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:20%">Examination</th><th style="width:36%">Why it matters</th><th style="width:26%">What finding changes management</th><th>Changes management?</th></tr></thead>
+        <tbody>
+          <tr><td class="q">12-Lead ECG</td><td class="why">Mandatory in all TLOC — identifies arrhythmia, QT prolongation, heart block, pre-excitation, Brugada pattern, or ischaemia<span class="why-sub">Perform in surgery immediately; document QTc, PR interval, and QRS duration precisely</span></td><td class="why">QTc over 450/470 ms, Brugada pattern, heart block, delta waves (WPW) → same-day cardiology</td><td><span class="mcb mcb-yes">YES — always</span></td></tr>
+          <tr><td class="q">Lying and standing BP (3 min standing)</td><td class="why">Detects orthostatic hypotension — systolic drop ≥20 mmHg or diastolic ≥10 mmHg within 3 minutes of standing<span class="why-sub">Check at 1 minute and 3 minutes post-standing; ask about symptoms at each measurement</span></td><td class="why">Confirmed orthostatic drop → medication review, lifestyle measures, compression stockings, consider fludrocortisone</td><td><span class="mcb mcb-yes">YES — always</span></td></tr>
+          <tr><td class="q">Cardiac auscultation</td><td class="why">Listen for murmurs suggesting structural heart disease: ejection systolic (AS — slow-rising pulse, narrow pulse pressure), dynamic murmur increasing on Valsalva (HOCM)<span class="why-sub">HOCM murmur becomes louder on standing and Valsalva (reduced preload) — opposite to AS</span></td><td class="why">Murmur + exertional syncope → same-day referral; echo mandatory; avoid nitrates in HOCM</td><td><span class="mcb mcb-yes">YES — if murmur found</span></td></tr>
+          <tr><td class="q">Heart rate and rhythm (radial pulse)</td><td class="why">Bradycardia under 50 bpm, tachycardia over 100 bpm, or irregular rhythm may indicate an arrhythmic cause; assess pulse character (collapsing = AR, slow-rising = AS)<span class="why-sub">Resting bradycardia with syncope → urgent ECG and cardiology; irregular rhythm → AF management pathway</span></td><td class="why">Resting bradycardia + syncope → urgent cardiology; irregular → AF pathway</td><td><span class="mcb mcb-yes">YES — if abnormal</span></td></tr>
+          <tr><td class="q">Brief neurological examination</td><td class="why">Focal neurological deficit (facial droop, limb weakness, speech disturbance, cerebellar signs) after LOC raises possibility of posterior circulation stroke or TIA<span class="why-sub">A transient deficit already resolved at time of assessment is still significant — same-day TIA clinic</span></td><td class="why">Any focal deficit → immediate stroke pathway; carotid bruit → investigate for TIA/carotid stenosis</td><td><span class="mcb mcb-yes">YES — if deficit found</span></td></tr>
+          <tr><td class="q">Capillary blood glucose</td><td class="why">Hypoglycaemia can present as LOC or near-syncope — important in diabetic patients or those on insulin or sulphonylureas; metabolic LOC is managed differently from haemodynamic syncope<span class="why-sub">Hypoglycaemia → treat immediately; review insulin/sulphonylurea regimen; arrange SMBG</span></td><td class="why">Confirmed hypoglycaemia → treat; review diabetes medication and meal timing</td><td><span class="mcb mcb-context">Context — diabetic patients</span></td></tr>
+          <tr><td class="q">Tongue examination</td><td class="why">Lateral tongue biting (bite marks on the lateral border) is highly specific (over 90%) for epileptic seizure; tip biting occurs in both syncope and seizure<span class="why-sub">Lateral tongue bite → document; neurology referral; DVLA notification</span></td><td class="why">Lateral tongue bite → document prominently; neurology referral; DVLA notification mandatory</td><td><span class="mcb mcb-yes">YES — if bite marks found</span></td></tr>
+          <tr><td class="q">Pallor and hydration status</td><td class="why">Pallor (anaemia, acute haemorrhage), dry mucous membranes (dehydration), or other signs of intercurrent illness may reveal the precipitant of syncope<span class="why-sub">Pallor with haemodynamic instability → urgent bloods; dehydration on diuretics → IV fluids, medication review</span></td><td class="why">Pallor + haemodynamic instability → urgent bloods; dehydration → fluid management and medication review</td><td><span class="mcb mcb-context">Context — if suggested by history</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 3</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say">
+          <div class="sca-block-t">Examination phrases that score</div>
+          <div class="sca-phrase">"I'd like to check your blood pressure in two positions — lying down and then after you've been standing for three minutes — to see if there's a drop that might explain the blackout."</div>
+          <div class="sca-phrase">"I'm going to do a heart tracing now — this is the most important single test we can do here in the surgery today."</div>
+        </div>
+        <div class="sca-block sca-avoid">
+          <div class="sca-block-t">Examination deductions</div>
+          <ul>
+            <li>Not performing or requesting an ECG in a patient with syncope</li>
+            <li>Not checking lying/standing BP when the history suggests an orthostatic cause</li>
+            <li>Requesting CT head without focal neurological indication — wastes time and harms patient</li>
+            <li>Not explaining what you are looking for before each examination manoeuvre</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Does not mention ECG; no lying/standing BP; examination not targeted to the clinical question</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">ECG mentioned but not explained; lying/standing BP without 3-minute protocol; doesn't share findings with patient</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">ECG performed and result explained; lying/standing BP with 3-minute protocol; explains purpose of each manoeuvre; findings linked directly to management</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-wrap" id="s4">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">4</div>
+    <div class="step-hdr-text">
+      <div class="step-label">Step 4</div>
+      <div class="step-title">Do I Need This Investigation?</div>
+    </div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro">Investigations in syncope must be directed by the history and examination — not ordered reflexively. A 12-lead ECG is mandatory; beyond this, the choice is stratified by risk. The ESC (2018) and NICE both caution against routine CT head for unexplained syncope — it has a very low diagnostic yield and exposes the patient to unnecessary radiation. The goal is to capture the arrhythmia or exclude structural heart disease — this requires sequential monitoring strategies if the initial ECG is normal.</div>
+    <div class="card" style="overflow:hidden">
+      <table class="rt">
+        <thead><tr><th style="width:20%">Investigation</th><th style="width:32%">Clinical question it answers</th><th>What result changes management?</th></tr></thead>
+        <tbody>
+          <tr><td class="q">12-Lead ECG</td><td class="why">Mandatory first-line for all TLOC — detects arrhythmia, conduction defects, channelopathy, ischaemia, and hypertrophy</td><td class="why">QTc over 450/470 ms → cardiology; Brugada → EP study; heart block → pacing; delta waves (WPW) → electrophysiology; ST changes → ACS pathway</td></tr>
+          <tr><td class="q">Blood glucose (BM)</td><td class="why">Excludes hypoglycaemia as a metabolic cause of LOC — essential in any patient on insulin, sulphonylurea, or with a history suggesting metabolic aetiology</td><td class="why">Confirmed hypoglycaemia → immediate treatment; review insulin/sulphonylurea dosing; continuous glucose monitoring; dietary review</td></tr>
+          <tr><td class="q">FBC</td><td class="why">Identifies anaemia as a contributing or precipitating cause — reduced Hb impairs oxygen delivery; macrocytosis may indicate excess alcohol</td><td class="why">Hb under 80 g/L in context of syncope → urgent investigation of cause; transfusion threshold based on clinical context</td></tr>
+          <tr><td class="q">U&amp;E (electrolytes and renal function)</td><td class="why">Electrolyte disturbances — particularly hypokalaemia, hypomagnesaemia, and hypocalcaemia — prolong the QT interval and predispose to ventricular arrhythmia</td><td class="why">K+ under 3.0 mmol/L or low Mg2+ → replace electrolytes; review diuretics; recheck ECG after correction</td></tr>
+          <tr><td class="q">Thyroid function tests (TFTs)</td><td class="why">Both hypothyroidism (bradyarrhythmia, QT prolongation) and hyperthyroidism (AF, SVT) are causes of arrhythmic syncope easily missed without routine screening</td><td class="why">TSH under 0.1 mU/L → treat hyperthyroidism; risk of AF. TSH over 10 mU/L → treat hypothyroidism; recheck ECG after normalisation</td></tr>
+          <tr><td class="q">24-hour ambulatory ECG (Holter monitor)</td><td class="why">Captures intermittent arrhythmia not present on resting ECG — most useful when episodes are frequent (at least once per week); correlates symptoms with cardiac rhythm</td><td class="why">Symptomatic arrhythmia captured → specific antiarrhythmic or device therapy; asymptomatic significant arrhythmia → cardiology before treatment</td></tr>
+          <tr><td class="q">External loop recorder (7–30 days) / ILR (up to 3 years)</td><td class="why">For infrequent unexplained syncope where the Holter is likely to be unhelpful — ILR is the gold standard for capturing the cardiac rhythm during a spontaneous episode</td><td class="why">Rhythm during syncope captured → confirms or excludes arrhythmic cause; guides pacemaker decision or antiarrhythmic therapy</td></tr>
+          <tr><td class="q">Echocardiogram</td><td class="why">Evaluates structural heart disease — cardiomyopathy, valvular disease (AS, HOCM, MVP), LV function, and pulmonary hypertension; mandatory if murmur or abnormal ECG</td><td class="why">Severe AS → valve replacement assessment; HOCM → specialist management, ICD consideration; impaired LV function → ICD assessment</td></tr>
+          <tr><td class="q">Tilt-table test</td><td class="why">Provokes vasovagal or orthostatic syncope under controlled conditions — confirms cardioinhibitory vs vasodepressor subtype; useful when history is suggestive but not diagnostic</td><td class="why">Cardioinhibitory response (asystole over 3 seconds) → consider dual-chamber pacemaker in selected patients over 40; vasodepressor → lifestyle management</td></tr>
+          <tr><td class="q">CT head</td><td class="why">Not routinely indicated for syncope — almost never diagnostic in the absence of focal neurological signs, head injury, or suspicion of intracranial haemorrhage<span class="why-sub">Ordering CT head reflexively for syncope is a common SCA deduction — the examiner expects you to explain why it isn't indicated</span></td><td class="why">Indicated only if: focal neurology, new severe headache at onset, or clinical suspicion of intracranial haemorrhage (SAH)</td></tr>
+          <tr><td class="q">EEG</td><td class="why">Indicated only if seizure is clinically suspected — prolonged LOC, post-ictal state, lateral tongue biting, or tonic-clonic movements over 30 seconds — not useful for routine syncope<span class="why-sub">Do not order EEG speculatively; confirm the seizure diagnosis on clinical grounds before requesting</span></td><td class="why">Epileptiform activity → anti-epileptic drug initiation under neurology; DVLA notification mandatory; confirm diagnosis before treatment</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 4</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say">
+          <div class="sca-block-t">Investigation phrases that score</div>
+          <div class="sca-phrase">"The heart tracing is the most important test today — I want to check the electrical activity of your heart, particularly the timing intervals between heartbeats."</div>
+          <div class="sca-phrase">"A brain scan isn't the first investigation we use for blackouts — the cause is usually in the heart's rhythm or blood pressure, not the brain itself."</div>
+        </div>
+        <div class="sca-block sca-avoid">
+          <div class="sca-block-t">Investigation deductions</div>
+          <ul>
+            <li>Ordering CT head as a first-line investigation without neurological indication</li>
+            <li>Not explaining what each investigation is looking for in plain language</li>
+            <li>Ordering investigations not linked to a specific clinical question</li>
+            <li>Failing to plan monitoring beyond resting ECG for unexplained syncope</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Reflexively orders CT head; ECG not mentioned; no monitoring strategy for unexplained syncope</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">ECG ordered but no monitoring plan; investigations not clearly explained to patient; doesn't address why CT brain isn't first-line</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">ECG performed; monitoring strategy explained (Holter/ILR); explains each investigation in lay language; addresses the brain scan expectation directly</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-wrap" id="s5">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc4">5</div>
+    <div class="step-hdr-text">
+      <div class="step-label">Step 5</div>
+      <div class="step-title">Reaching a Diagnosis &amp; DDx — Explained in Plain Language</div>
+    </div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro">Before giving any diagnosis, you must have excluded dangerous differentials. In syncope: cardiac cause (arrhythmia, structural disease) excluded before reassuring vasovagal; seizure separated from syncope on history and witness account; metabolic causes (hypoglycaemia) checked in appropriate patients. The diagnosis of vasovagal syncope is a diagnosis of exclusion — not a default — in anyone over 40 with a first episode.</div>
+    <div class="lay-box">
+      <div class="lay-box-lbl">🗣️ Explaining the Diagnosis in Plain Language — say something like this</div>
+      <p>"Your blackout happened because your brain briefly didn't get quite enough blood to stay conscious. Think of it like a temporary power cut — lasting only a few seconds — and then the power comes back on and you recover completely. The most common reason for this kind of blackout is something called a vasovagal episode, which is like the body's automatic alarm system being triggered too strongly — it causes the blood vessels to widen and the heart to slow down at the same moment, so less blood gets to the brain for a few seconds. It's not dangerous, it doesn't mean there's something wrong with your brain, and it doesn't mean your heart is failing — but we do need to check your heart's electrical system first to make sure that isn't the cause, because some heart conditions can produce a very similar kind of blackout and those do need different treatment."</p>
+    </div>
+    <div class="lay-why-not">
+      <div class="lay-why-not-lbl">💬 Addressing the patient's own explanation — why it may not be the full picture</div>
+      <p><strong>"I think I must have had a mini-stroke."</strong><br><em>"I understand why that's your first thought — both can cause a brief loss of consciousness. The key difference is that a TIA usually causes symptoms like weakness or speech problems rather than complete unconsciousness, and recovery tends to be slower. From what you've described, the pattern — the warning feelings, the standing in a queue — fits much more with a blood-pressure or heart-rhythm cause. That's what we're going to investigate first. If at any point you develop weakness, speech problems, or facial drooping, that would change things and we'd need to act immediately."</em></p>
+      <p><strong>"I think it might be my blood pressure tablets."</strong><br><em>"You're absolutely right that this is a very real possibility, and you've spotted something important. The combination of your ramipril and amlodipine can cause your blood pressure to drop when you stand up, particularly if you were a bit dehydrated. We're going to check this today by measuring your blood pressure lying down and then after standing. If that's the cause, reviewing your tablets could be a simpler answer than the other possibilities."</em></p>
+    </div>
+    <div class="g3" style="margin-bottom:12px">
+      <div class="card" style="padding:1rem;border-left:4px solid var(--g)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--g);margin-bottom:.4rem">A — Diagnosable in Primary Care</div>
+        <span class="conf-badge conf-gp" style="margin-bottom:.6rem;display:inline-block">GP can diagnose</span>
+        <div class="ddx-card ddx-a" style="margin-bottom:8px"><h4>Vasovagal Syncope (reflex syncope)</h4><p>Classic prodrome (sweating, nausea, tunnel vision) → positional trigger (standing, heat, emotion) → brief LOC → rapid full recovery. Commonest cause of syncope at all ages. Confirmed by clinical history alone when all red flags are absent and the ECG is normal.</p></div>
+        <div class="ddx-card ddx-a" style="margin-bottom:8px"><h4>Orthostatic Hypotension</h4><p>Systolic BP drop ≥20 mmHg within 3 minutes of standing. Confirmed by lying/standing BP protocol. Common in older adults, patients on antihypertensives, and those with autonomic dysfunction (Parkinson's, diabetes).</p></div>
+        <div class="ddx-card ddx-a" style="margin-bottom:8px"><h4>Situational Syncope</h4><p>Recognised reflex syncope triggered by specific actions: cough syncope (Valsalva-mediated), micturition syncope (typically nocturnal), defecation, or swallowing. History is diagnostic. Benign but worth documenting clearly.</p></div>
+        <div class="ddx-card ddx-a"><h4>Medication-Induced Syncope</h4><p>New or changed medication identified as causative by temporal correlation. Alpha-blockers, antihypertensives, diuretics, and QT-prolonging drugs are the commonest culprits. Often fully resolves with drug withdrawal or dose adjustment.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--a)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--a);margin-bottom:.4rem">B — Suspected — Refer</div>
+        <span class="conf-badge conf-sus" style="margin-bottom:.6rem;display:inline-block">Refer for confirmation</span>
+        <div class="ddx-card ddx-b" style="margin-bottom:8px"><h4>Cardiac Arrhythmia (SVT, VT, AF, heart block)</h4><p>Sudden-onset LOC without prodrome; preceded by palpitations; supine or exertional onset. May not be captured on resting ECG — requires ambulatory monitoring. Cardiology referral for Holter, echo, and specialist management.</p></div>
+        <div class="ddx-card ddx-b" style="margin-bottom:8px"><h4>Structural Heart Disease (HOCM, Aortic Stenosis)</h4><p>Exertional syncope with murmur on auscultation. HOCM: dynamic murmur increasing on standing; AS: slow-rising pulse, ejection systolic murmur radiating to carotids. Echo is diagnostic — refer urgently.</p></div>
+        <div class="ddx-card ddx-b" style="margin-bottom:8px"><h4>Epileptic Seizure</h4><p>Prolonged LOC, lateral tongue biting, post-ictal confusion, witnessed tonic-clonic movements over 30 seconds. Neurology referral for EEG and specialist review. DVLA notification required at point of suspected diagnosis.</p></div>
+        <div class="ddx-card ddx-b"><h4>Carotid Sinus Hypersensitivity</h4><p>Syncope triggered by head turning, tight collar, or shaving in older male patients. Diagnosed by carotid sinus massage in a specialist setting only — never perform in primary care without monitoring and resuscitation facilities. Possible pacemaker.</p></div>
+      </div>
+      <div class="card" style="padding:1rem;border-left:4px solid var(--r)">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--r);margin-bottom:.4rem">C — Emergency — Act Now</div>
+        <span class="conf-badge conf-emerg" style="margin-bottom:.6rem;display:inline-block">Diagnose &amp; act</span>
+        <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Prolonged QT + LOC (Torsades de Pointes)</h4><p>QTc over 500 ms on ECG + syncope = life-threatening. Torsades de pointes is a polymorphic VT that can degenerate to VF. Stop all QT-prolonging medications immediately. Correct electrolytes. Same-day emergency cardiology referral.</p></div>
+        <div class="ddx-card ddx-c" style="margin-bottom:8px"><h4>Complete Heart Block</h4><p>Resting bradycardia under 40 bpm with atrioventricular dissociation on ECG → Adams-Stokes attacks (sudden-onset LOC without prodrome). Requires emergency transcutaneous pacing as a bridge to permanent pacemaker insertion.</p></div>
+        <div class="ddx-card ddx-c"><h4>Subarachnoid Haemorrhage (SAH)</h4><p>Thunderclap headache (worst of the patient's life) at onset + LOC. CT head emergency without contrast; lumbar puncture if CT negative and clinical suspicion remains high. This is not true syncope but can present with sudden LOC.</p></div>
+      </div>
+    </div>
+    <div class="card" style="overflow:hidden">
+      <div class="card-hd" style="color:var(--navy)">📊 ESC Syncope Risk Stratification — Initial Assessment</div>
+      <table class="rt">
+        <thead><tr><th>Category</th><th>Features</th><th>Risk level</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">Classic low-risk</td><td>Age under 40, clear vasovagal trigger, full prodrome, rapid recovery, normal ECG, no cardiac history, no family history of SCD</td><td><span class="conf-badge conf-gp">Low risk</span></td><td>Primary care management; lifestyle advice; no urgent referral required</td></tr>
+          <tr><td style="font-weight:600">Intermediate risk</td><td>Age over 45 with first unexplained syncope; no clear trigger; no prodrome; cardiac history; abnormal but non-life-threatening ECG</td><td><span class="conf-badge conf-sus">Intermediate</span></td><td>Holter monitor; cardiology referral within 2 weeks; echo if murmur present</td></tr>
+          <tr><td style="font-weight:600">High risk</td><td>Exertional syncope; syncope while supine; significant structural heart disease; abnormal ECG (LBBB, complete block, QTc over 500 ms); family history of SCD under 40</td><td><span class="conf-badge conf-emerg">High risk</span></td><td>Same-day cardiology; continuous monitoring; admit if haemodynamically unstable</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 5</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say">
+          <div class="sca-block-t">Diagnosis phrases that score</div>
+          <div class="sca-phrase">"What I think has happened is that your body's automatic alarm system temporarily slowed your heart and widened your blood vessels at the same moment — this caused a very brief power cut to your brain."</div>
+          <div class="sca-phrase">"This kind of blackout is called a vasovagal episode — it's the most common type and isn't dangerous, but we do need to rule out a heart rhythm problem before we can say that with confidence."</div>
+          <div class="sca-phrase">"I hear you wondering if it was a mini-stroke — I understand that worry completely, and here's why the pattern doesn't quite fit..."</div>
+        </div>
+        <div class="sca-block sca-avoid">
+          <div class="sca-block-t">Diagnosis deductions</div>
+          <ul>
+            <li>Diagnosing vasovagal without actively excluding cardiac cause first</li>
+            <li>Using the word "syncope" without explaining what it means in plain English</li>
+            <li>Not acknowledging the patient's own theory about the cause before correcting it</li>
+            <li>Reassuring the patient without a concrete monitoring plan in place</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Diagnoses vasovagal without exclusion of cardiac; uses medical jargon without explanation; ignores patient's own theory</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Gives diagnosis in lay language but doesn't explain mechanism; acknowledges patient's concern but doesn't address it directly</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Explains diagnosis using a clear analogy; excludes cardiac cause verbally with a concrete plan; acknowledges and addresses patient's own theory; shares uncertainty where it genuinely exists</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step-wrap" id="s6">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc5">6</div>
+    <div class="step-hdr-text">
+      <div class="step-label">Step 6</div>
+      <div class="step-title">If Referral Is Needed — What the GP Does Before &amp; During</div>
+    </div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+    <div class="step-intro">Before referring, the GP must have completed risk stratification, performed an ECG, documented the DVLA advice given, and reviewed the medication list. The referral letter must contain enough clinical information to allow the cardiologist or neurologist to prioritise the appointment correctly. A referral without an ECG result, lying/standing BP result, and a clear description of the episode is insufficient.</div>
+    <div class="card" style="overflow:hidden">
+      <table class="ref-table">
+        <thead><tr><th>Condition</th><th>Urgency</th><th>What GP does before referral</th><th>What GP must NOT do</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">Exertional syncope / suspected structural heart disease (HOCM, AS)</td><td><span class="ref-urg rurg-999">Same-day A&amp;E</span></td><td style="font-size:12px">Perform ECG in surgery; advise against all physical exertion immediately; call A&amp;E and discuss directly with medical registrar; document advice given in detail</td><td style="font-size:12px;color:var(--r)">Do not let the patient drive themselves to hospital; do not allow any exercise before assessment; do not reassure as "probably vasovagal"</td></tr>
+          <tr><td style="font-weight:600">Prolonged QT or Brugada pattern on ECG + syncope</td><td><span class="ref-urg rurg-999">Same-day emergency</span></td><td style="font-size:12px">Stop all QT-prolonging medications immediately; check and correct electrolytes (K+, Mg2+); refer via A&amp;E or direct cardiology call; document QTc value; advise no driving</td><td style="font-size:12px;color:var(--r)">Do not start any new QT-prolonging medication; do not discharge without cardiology discussion; do not minimise the risk</td></tr>
+          <tr><td style="font-weight:600">Unexplained syncope — first episode, age over 45, no cardiac history</td><td><span class="ref-urg rurg-2">2-week cardiology</span></td><td style="font-size:12px">Perform ECG; arrange Holter monitor; FBC, U&amp;E, TFTs; advise no driving until investigation complete; review and document full medication list; complete DVLA advice in notes</td><td style="font-size:12px;color:var(--r)">Do not reassure as vasovagal without investigation; do not allow return to hazardous occupations pending investigation</td></tr>
+          <tr><td style="font-weight:600">Suspected epileptic seizure</td><td><span class="ref-urg rurg-2">2-week neurology</span></td><td style="font-size:12px">Document witness account fully and precisely; advise no driving immediately (DVLA requirement from first suspected seizure); check blood glucose; do not start anti-epileptic drugs without neurological confirmation</td><td style="font-size:12px;color:var(--r)">Do not start anti-epileptic medication without specialist confirmation; do not allow driving; do not document "epilepsy" without specialist confirmation (medicolegal implications)</td></tr>
+          <tr><td style="font-weight:600">Recurrent unexplained syncope — normal ECG and Holter</td><td><span class="ref-urg rurg-4">4-week cardiology</span></td><td style="font-size:12px">Review all previous investigation results; arrange external event recorder if not already done; document frequency and quality-of-life impact; advise DVLA; request tilt-table test consideration in referral letter</td><td style="font-size:12px;color:var(--r)">Do not diagnose vasovagal without a complete cardiac exclusion; do not initiate beta-blockers before specialist review (evidence base is weak and age-specific)</td></tr>
+          <tr><td style="font-weight:600">Suspected carotid sinus hypersensitivity</td><td><span class="ref-urg rurg-r">Routine cardiology</span></td><td style="font-size:12px">Document clinical suspicion clearly (head turning or tight collar trigger in older male); review and stop alpha-blockers if present; advise lifestyle modifications regarding collars</td><td style="font-size:12px;color:var(--r)">Never perform carotid sinus massage in primary care — risk of stroke and cardiac arrest without resuscitation facilities; specialist procedure only in a monitored setting</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 6</span><span class="sca-dom">Tasks</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say">
+          <div class="sca-block-t">Referral phrases that score</div>
+          <div class="sca-phrase">"Given that this happened without any warning and you're on blood pressure medication, I think we need a specialist heart doctor to review you — I'm going to arrange a cardiology appointment within two weeks."</div>
+          <div class="sca-phrase">"Before I refer you, I want to make sure we've done the most important tests here — the heart tracing and the blood pressure check standing up — so the cardiologist has all that information when they see you."</div>
+        </div>
+        <div class="sca-block sca-avoid">
+          <div class="sca-block-t">Referral deductions</div>
+          <ul>
+            <li>Referring without completing the ECG and lying/standing BP in the surgery first</li>
+            <li>Not explaining to the patient why a referral is needed or which specialist</li>
+            <li>Referring to the wrong specialty (e.g. neurology for cardiac syncope without focal neurology)</li>
+            <li>Not providing DVLA advice before the patient leaves</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red</div><div class="rag-bullets">Refers without GP workup; doesn't explain reason for referral; wrong specialty; no DVLA advice</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber</div><div class="rag-bullets">Appropriate referral but doesn't explain timeline or reasoning to patient; misses one important pre-referral step</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green</div><div class="rag-bullets">Appropriate specialty chosen; explains rationale to patient; pre-referral workup completed; DVLA addressed; timeline shared clearly with patient</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step-wrap" id="s7">
+  <div class="step-hdr is-open" onclick="toggleStep(this)">
+    <div class="step-circle sc7">7</div>
+    <div class="step-hdr-text">
+      <div class="step-label">Step 7</div>
+      <div class="step-title">Management — Expectation · Goals · Lifestyle · Drug Selector · Drug Cards · Psychosocial · Follow-Up · Safety-Netting</div>
+    </div>
+    <div class="step-toggle"><span class="sti-icon">▲</span><span class="sti-text">collapse</span></div>
+  </div>
+  <div class="step-body">
+
+    <div class="sub-divider">7A — Address the patient's expectation first: validate → explain → negotiate</div>
+    <div class="expect-box">
+      <div class="expect-box-hdr">
+        <span style="font-size:1.4rem">🤝</span>
+        <div class="expect-box-lbl">Never dismiss the expectation — acknowledge it, share your reasoning, then agree a shared plan</div>
+      </div>
+      <div class="expect-steps">
+        <div class="expect-step">
+          <div class="expect-step-num">1</div>
+          <h5>Validate — name their expectation</h5>
+          <p>Many patients with syncope expect a brain scan (CT or MRI). They have often already decided this is what they need. Naming this expectation before explaining why you're suggesting something different prevents the patient from feeling dismissed or unheard.</p>
+          <span class="expect-phrase">"I completely understand why your first thought would be that something might be wrong with your brain — that's a very natural thing to worry about after losing consciousness."</span>
+        </div>
+        <div class="expect-step">
+          <div class="expect-step-num">2</div>
+          <h5>Explain — share your clinical reasoning</h5>
+          <p>Patients accept a management plan they don't like if you explain the reasoning behind it. Sharing your clinical thinking — why the heart is more likely than the brain to be the cause — builds trust and transforms reluctant compliance into genuine understanding.</p>
+          <span class="expect-phrase">"The evidence tells us that for most blackouts, particularly with the pattern you've described, the cause is in the heart's rhythm or blood pressure — not the brain itself. A brain scan wouldn't actually answer the question we're asking."</span>
+        </div>
+        <div class="expect-step">
+          <div class="expect-step-num">3</div>
+          <h5>Negotiate — offer something today</h5>
+          <p>Never leave the patient with nothing. If you're not arranging a brain scan, offer something concrete — the ECG, the Holter, a plan, a clear timeline. "Come back if it happens again" is not a management plan.</p>
+          <span class="expect-phrase">"What I'd like to do today is do a heart tracing here, check your blood pressure lying and standing, and then arrange a heart monitor for 24 hours — this will answer the question much faster than a brain scan would."</span>
+        </div>
+      </div>
+      <div style="background:rgba(21,128,61,.08);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.65rem 1rem;margin-top:.75rem;font-size:12.5px;color:#14532d;line-height:1.55">
+        <strong>Key principle:</strong> In the SCA, addressing the patient's expectation explicitly — even if you don't fulfil it — is a high-scoring behaviour in both Relating to Others and Tasks. Offering a clear alternative and explaining why it is the right approach is what distinguishes a good consultation from an excellent one.
+      </div>
+    </div>
+
+    <div class="sub-divider">7B — Why treatment matters: goals tailored to this patient</div>
+    <div class="g2" style="margin-bottom:1rem">
+      <div class="card" style="padding:1rem 1.1rem">
+        <div class="card-hd" style="color:var(--g);border:none;padding:0 0 .6rem">Treatment goals — syncope</div>
+        <div class="tx-goals">
+          <span class="tx-goal tg1">🚫 Prevent recurrence</span>
+          <span class="tx-goal tg1">🏥 Exclude dangerous cause</span>
+          <span class="tx-goal tg2">🚗 Restore safe driving</span>
+          <span class="tx-goal tg2">💼 Return to work safely</span>
+          <span class="tx-goal tg3">😰 Reduce fear of recurrence</span>
+          <span class="tx-goal tg3">🤝 Involve partner / family</span>
+          <span class="tx-goal tg4">📋 DVLA compliance</span>
+          <span class="tx-goal tg4">💊 Medication rationalisation</span>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem">
+        <div class="card-hd" style="color:var(--b);border:none;padding:0 0 .6rem">Motivational language — tailored to the patient</div>
+        <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--b-bd);padding:.55rem .85rem;background:var(--b-bg);border-radius:0 8px 8px 0;line-height:1.6;margin-bottom:.5rem">"For most people with your kind of blackout, a few straightforward changes — drinking more water, knowing what to do at the very first warning sign — can reduce episodes by more than half. We want to get you back to your normal life, including driving, as quickly as possible."</div>
+        <div style="font-size:12.5px;font-style:italic;border-left:3px solid var(--p-bd);padding:.55rem .85rem;background:var(--p-bg);border-radius:0 8px 8px 0;line-height:1.6">"I know as a teacher, being off the road is a real problem. Once we've investigated and can confirm this is the benign type — which I think it is — we can get you back to driving and to work with confidence."</div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7C — Non-medication management: mechanism + evidence + tailored advice</div>
+    <div class="step-intro" style="margin-bottom:.75rem"><strong>Lifestyle interventions are first-line treatment for vasovagal and orthostatic syncope.</strong> The evidence base for physical counter-manoeuvres, fluid loading, and tilt training in reducing vasovagal recurrence is stronger than for any medication. Generic advice ("drink more water") without mechanism or measurable targets is unlikely to be remembered or acted upon.</div>
+    <div class="life-grid" style="margin-bottom:1.25rem">
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">💧</span><div class="life-title">Hydration Loading</div><span class="life-target">Target: 2–3 litres/day + 500 mL at onset of prodrome</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Adequate intravascular volume reduces the haemodynamic drop on standing and blunts the vasovagal reflex. Dehydration reduces preload, worsening the hypotension underlying both vasovagal and orthostatic syncope.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Carry a 1-litre water bottle. Drink 500 mL 15 minutes before any known trigger situation (long meetings, hot weather, medical appointments). Increase intake during illness and hot weather.</p></div>
+          <span class="life-benefit">Reduces vasovagal episodes by up to 50% in randomised studies</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🧦</span><div class="life-title">Compression Stockings</div><span class="life-target">Target: Class 2 compression (20–30 mmHg) worn daily</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Graduated compression reduces venous pooling in the lower limbs, maintains central venous return and cardiac preload, and reduces the drop in systolic BP on standing — directly counteracting the primary mechanism of orthostatic syncope.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Put on in the morning before standing; wear throughout the day; remove at night. Class 2 (20–30 mmHg) is appropriate for most adults. Available on NHS prescription for confirmed orthostatic hypotension.</p></div>
+          <span class="life-benefit">Reduces systolic BP drop by 10–15 mmHg in orthostatic hypotension</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🏋️</span><div class="life-title">Physical Counter-Manoeuvres</div><span class="life-target">Target: Use immediately at first prodrome warning</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Leg crossing, squatting, or hand-gripping at the onset of presyncope activates the muscle pump and increases venous return, aborting the vasovagal response before LOC occurs. The most immediately effective intervention during an attack.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>At the very first warning (sweating, nausea, tunnel vision): immediately sit or crouch, cross legs, and tense leg muscles firmly. Do NOT try to push through and remain standing — this accelerates the episode. Demonstrate this manoeuvre explicitly in the consultation.</p></div>
+          <span class="life-benefit">Aborts vasovagal episode in 50–70% of cases when used at prodrome onset</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🧂</span><div class="life-title">Dietary Salt (supervised)</div><span class="life-target">Target: 6–9 g additional salt/day — orthostatic only</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Increased dietary sodium expands plasma volume and increases renal water retention, improving preload and systolic BP on standing — the same mechanism as fludrocortisone but via dietary means.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Only advise for confirmed orthostatic hypotension without heart failure or uncontrolled hypertension. Use salt tablets (1 g each) or increased dietary salt. Review BP at 4 weeks. Avoid in heart failure, CKD, or poorly controlled hypertension.</p></div>
+          <span class="life-benefit">Reduces orthostatic BP drop by 5–10 mmHg when combined with fluid loading</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🚶</span><div class="life-title">Tilt Training</div><span class="life-target">Target: 30–40 min upright wall-standing, 3× per week</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Gradual structured orthostatic stress — standing against a wall for progressively longer periods — reduces autonomic reactivity to upright posture over time, reconditioning the baroreflex and reducing syncope frequency in vasovagal patients.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Begin with 5–10 minutes of wall-standing daily, increasing by 5 minutes per week. Always with a support person initially. Stop if prodrome develops and use counter-manoeuvres. Best guided by a physiotherapist experienced in autonomic dysfunction.</p></div>
+          <span class="life-benefit">Reduces recurrence by 50% in motivated and consistent vasovagal patients</span>
+        </div>
+      </div>
+      <div class="life-card">
+        <div class="life-head"><span class="life-icon">🚫</span><div class="life-title">Trigger Avoidance</div><span class="life-target">Target: Identify and modify personal triggers</span></div>
+        <div class="life-body">
+          <div class="life-section"><div class="life-section-lbl">Mechanism</div><p>Understanding and modifying situational triggers (prolonged standing, hot environments, missed meals, alcohol) directly reduces the frequency of vasovagal and orthostatic episodes. Patients who can predict their triggers have significantly fewer events.</p></div>
+          <div class="life-section"><div class="life-section-lbl">Practical</div><p>Keep a simple episode diary — date, time, what happened before. Specific advice: avoid prolonged standing in queues (move feet rhythmically); eat regular small meals; avoid alcohol in hot weather; rise slowly from bed — sit on the edge for 30 seconds before standing.</p></div>
+          <span class="life-benefit">Personalised trigger avoidance reduces recurrence in the majority of patients</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7D — Prescribing guide: what to start, in what order, and why</div>
+    <div class="step-intro" style="margin-bottom:.75rem;border-left-color:var(--p)"><strong>Pharmacological treatment of syncope is cause-specific and should only be initiated after cardiac exclusion.</strong> Vasovagal syncope has limited evidence for drug therapy — lifestyle measures are first-line. Orthostatic hypotension has a clearer pharmacological pathway. Treat the cause, not the symptom.</div>
+    <div class="g3" style="margin-bottom:1rem;gap:10px">
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--g)">
+        <div class="card-hd" style="color:var(--g);border:none;padding:0 0 .55rem;font-size:11.5px">Step 1 — Lifestyle first (all syncope types)</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
+          <p style="margin:0 0 .5rem"><strong>Non-pharmacological measures are first-line for vasovagal and orthostatic syncope</strong></p>
+          <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7">
+            <li>Fluid loading (2–3 L/day) + salt supplementation (orthostatic only)</li>
+            <li>Physical counter-manoeuvres — leg crossing, squatting at prodrome onset</li>
+            <li>Compression stockings (Class 2) for confirmed orthostatic hypotension</li>
+            <li>Tilt training — 30 min wall-standing, 3× per week</li>
+            <li>Review and rationalise all medications causing orthostatic changes</li>
+          </ul>
+          <div style="font-size:11px;background:var(--g-bg);border:1px solid var(--g-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--g);font-weight:600">Review at 4–6 weeks — if recurrent episodes despite lifestyle, consider pharmacotherapy</div>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--b)">
+        <div class="card-hd" style="color:var(--b);border:none;padding:0 0 .55rem;font-size:11.5px">Step 2 — Orthostatic: Fludrocortisone</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
+          <p style="margin:0 0 .5rem"><strong>Fludrocortisone 50–200 mcg daily — first pharmacological option for orthostatic hypotension</strong></p>
+          <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7">
+            <li>Mineralocorticoid — causes sodium and water retention, expanding plasma volume</li>
+            <li>Absolute contraindication: heart failure, uncontrolled hypertension</li>
+            <li>Monitor BP, electrolytes, and weight (oedema risk) at 2 and 6 weeks</li>
+            <li>Start at 100 mcg daily and titrate to effect</li>
+          </ul>
+          <div style="font-size:11px;background:var(--b-bg);border:1px solid var(--b-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--b);font-weight:600">If orthostatic hypotension refractory to fludrocortisone → add midodrine</div>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--p)">
+        <div class="card-hd" style="color:var(--p);border:none;padding:0 0 .55rem;font-size:11.5px">Step 3 — Refractory orthostatic: Midodrine</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
+          <p style="margin:0 0 .5rem"><strong>Midodrine 2.5–10 mg TDS — alpha-1 agonist, increases peripheral vascular resistance</strong></p>
+          <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7">
+            <li>Do NOT take last dose after 6 pm — causes supine hypertension overnight</li>
+            <li>Avoid in coronary artery disease, urinary retention, hyperthyroidism</li>
+            <li>Monitor supine BP measured lying flat at every visit</li>
+            <li>Specialist-initiated in most cases; can be continued by primary care</li>
+          </ul>
+          <div style="font-size:11px;background:var(--p-bg);border:1px solid var(--p-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--p);font-weight:600">Last dose before 6 pm — supine hypertension overnight is the critical safety risk</div>
+        </div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:1rem;gap:10px">
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--r)">
+        <div class="card-hd" style="color:var(--r);border:none;padding:0 0 .55rem;font-size:11.5px">Step 4 — Refractory vasovagal: specialist options</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
+          <p style="margin:0 0 .5rem"><strong>Beta-blockers, SSRIs, and pacemaker — specialist decision only, not primary care alone</strong></p>
+          <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7">
+            <li>Beta-blockers (metoprolol) — POST-trial suggests some benefit in vasovagal in patients over 42 years old specifically; evidence weak in younger patients</li>
+            <li>SSRIs (paroxetine, sertraline) — may help in vasovagal with significant anxiety component; not licensed for this indication — document off-label use</li>
+            <li>Cardiac pacing — only for cardioinhibitory vasovagal (asystole over 3 seconds on tilt test) in patients over 40 with recurrent disabling episodes (ESC Class IIa)</li>
+          </ul>
+          <div style="font-size:11px;background:var(--r-bg);border:1px solid var(--r-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--r);font-weight:600">Initiate Step 4 therapies under cardiologist or neurologist guidance only</div>
+        </div>
+      </div>
+      <div class="card" style="padding:1rem 1.1rem;border-left:3px solid var(--a)">
+        <div class="card-hd" style="color:var(--a);border:none;padding:0 0 .55rem;font-size:11.5px">Special cases — medication review and key interactions</div>
+        <div style="font-size:12.5px;line-height:1.55;color:var(--ink)">
+          <p style="margin:0 0 .5rem"><strong>Medication review is often the most impactful single intervention in drug-induced syncope</strong></p>
+          <ul style="margin:0 0 .5rem;padding-left:1.1rem;font-size:12px;line-height:1.7">
+            <li>Alpha-blockers + antihypertensives → high orthostatic risk; review combination always</li>
+            <li>Diuretics → reduce plasma volume; consider dose reduction or timing change</li>
+            <li>QT-prolonging agents → must be reviewed and risk-assessed; stop if QTc over 500 ms</li>
+            <li>Beta-blockers and centrally-acting antihypertensives → can worsen orthostatic responses</li>
+            <li>Antihypertensives: consider target BP relaxation in elderly patients with confirmed OH</li>
+          </ul>
+          <div style="font-size:11px;background:var(--a-bg);border:1px solid var(--a-bd);border-radius:var(--rad-sm);padding:.45rem .7rem;color:var(--a);font-weight:600">Document all medication changes and rationale clearly — important for future prescribers</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-divider" id="drugs">7E — Medication selection guide — choose the clinical context for treatment direction</div>
+    <!-- NOTE: calcDrug() in script.js is hardcoded to hypertension drug IDs (ds-dm, ds-ckd, ds-cvd, etc.) and will NOT function correctly for this syncope page. The checkboxes below serve as a visual navigation guide to the drug cards in 7F rather than an automated recommender. -->
+    <div class="ds-wrap" style="margin-bottom:.85rem">
+      <div class="ds-top">
+        <h3>Select the clinical context — drug card guidance appears below</h3>
+        <div class="ds-checks">
+          <label class="ds-lbl"><input type="checkbox" id="ds-orth" onchange="calcDrug()"> Orthostatic hypotension confirmed</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-vasovagal" onchange="calcDrug()"> Refractory vasovagal (≥3 episodes/year despite lifestyle)</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-medreview" onchange="calcDrug()"> Medication-induced syncope (review culprit drugs)</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-qtlong" onchange="calcDrug()"> QT-prolonging medication in use</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-cardiac" onchange="calcDrug()"> Suspected cardiac arrhythmia (refer to cardiology)</label>
+          <label class="ds-lbl"><input type="checkbox" id="ds-epilepsy" onchange="calcDrug()"> Suspected seizure (refer to neurology)</label>
+        </div>
+      </div>
+      <div class="ds-result">
+        <div class="ds-result-title">Management direction</div>
+        <div id="ds-output"><span style="font-size:12.5px;color:var(--g)">Select the clinical context above — see drug cards below for details. Note: the automated drug recommender is calibrated for hypertension; for syncope, use the drug reference cards in 7F as your guide.</span></div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7F — Drug reference cards: syncope pharmacological management</div>
+    <div class="drug-cards" id="drug-cards-container">
+      <div class="dc" id="dc-fludroc">
+        <div class="dc-head">
+          <div><div class="dc-name">Fludrocortisone</div><div class="dc-examples">Florinef — synthetic mineralocorticoid</div><div class="dc-rec-badge" id="rec-fludroc">✓ Recommended</div></div>
+          <div class="dc-badges"><span class="dc-step step1">1st line OH</span><span class="dc-dose">50–200 mcg OD</span></div>
+        </div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Prefer when</div>
+          <div class="dc-item">Confirmed orthostatic hypotension unresponsive to lifestyle measures</div>
+          <div class="dc-item">Autonomic neuropathy (Parkinson's, diabetes, multisystem atrophy)</div>
+          <div class="dc-item">Patient unable to tolerate compression stockings</div>
+          <div class="dc-item">Orthostatic drop ≥20 mmHg persisting despite fluid loading and salt</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div>
+          <div class="dc-item ci-abs">Heart failure (any degree) — causes fluid overload and decompensation</div>
+          <div class="dc-item ci-abs">Uncontrolled hypertension or established supine hypertension</div>
+          <div class="dc-item ci-rel">Chronic kidney disease — monitor electrolytes closely at shorter intervals</div>
+          <div class="dc-item ci-rel">Significant peripheral oedema already present before starting</div>
+        </div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div>
+          <div class="dc-item">Peripheral oedema — commonest; review at 4 weeks</div>
+          <div class="dc-item">Supine hypertension — measure lying BP at every review appointment</div>
+          <div class="dc-item">Hypokalaemia — monitor electrolytes at 2 and 6 weeks after starting</div>
+          <div class="dc-item">Headache and weight gain — often dose-related; consider dose reduction</div>
+        </div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">🔬 Monitor</div>
+          <div class="dc-item">U&amp;E at 2 weeks and 6 weeks after initiation, then 6-monthly</div>
+          <div class="dc-item">Lying and standing BP at every review</div>
+          <div class="dc-item">Weight and ankle oedema at every review</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"This tablet helps your body hold onto some salt and water, which keeps your blood pressure up when you stand. You may notice some ankle swelling — let us know if this gets uncomfortable. Continue wearing your compression stockings alongside it."</p></div>
+        <div class="dc-sca"><p>In the SCA, fludrocortisone is the correct answer for confirmed orthostatic hypotension after lifestyle failure — but don't forget to screen for heart failure (absolute contraindication) and to name the monitoring plan. Naming U&amp;E monitoring scores in the Tasks domain.</p></div>
+      </div>
+
+      <div class="dc" id="dc-midodrine">
+        <div class="dc-head">
+          <div><div class="dc-name">Midodrine</div><div class="dc-examples">Alpha-1 agonist — increases peripheral vascular resistance</div><div class="dc-rec-badge" id="rec-midodrine">✓ Recommended</div></div>
+          <div class="dc-badges"><span class="dc-step step2">2nd line OH</span><span class="dc-dose">2.5–10 mg TDS</span></div>
+        </div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Prefer when</div>
+          <div class="dc-item">Orthostatic hypotension refractory to fludrocortisone plus lifestyle measures</div>
+          <div class="dc-item">Intolerance of fludrocortisone side effects (oedema, supine hypertension)</div>
+          <div class="dc-item">Neurogenic orthostatic hypotension (Parkinson's, autonomic failure) — strong evidence base</div>
+          <div class="dc-item">Patients needing morning-only coverage for occupational orthostatic hypotension</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div>
+          <div class="dc-item ci-abs">Significant coronary artery disease — worsens myocardial oxygen demand</div>
+          <div class="dc-item ci-abs">Urinary retention or bladder outflow obstruction</div>
+          <div class="dc-item ci-rel">Hyperthyroidism — worsens sympathomimetic effects significantly</div>
+          <div class="dc-item ci-rel">Severe renal or hepatic impairment — altered drug metabolism</div>
+        </div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div>
+          <div class="dc-item">Supine hypertension — critical; do NOT take after 6 pm; measure lying BP every visit</div>
+          <div class="dc-item">Scalp tingling and piloerection — common; usually tolerated by patients</div>
+          <div class="dc-item">Urinary hesitancy — ask specifically at review; can precipitate retention</div>
+          <div class="dc-item">Reflex bradycardia — monitor heart rate at each visit</div>
+        </div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">🔬 Monitor</div>
+          <div class="dc-item">Supine BP (measured lying flat, not seated) at every review appointment</div>
+          <div class="dc-item">Lying/standing BP series — assess efficacy of treatment</div>
+          <div class="dc-item">Renal function at 6-monthly intervals</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"Take this tablet in the morning with breakfast and again at lunchtime — do NOT take it after 6 pm, as it can push your blood pressure up too much overnight when you're lying flat. If you get scalp tingling, that's a normal side effect and it will ease."</p></div>
+        <div class="dc-sca"><p>The critical SCA point for midodrine: "Do not take after 6 pm" — supine nocturnal hypertension is the most important and examinable safety issue. Demonstrating awareness of this in counselling scores highly in both Tasks and Relating to Others.</p></div>
+      </div>
+
+      <div class="dc" id="dc-betablock">
+        <div class="dc-head">
+          <div><div class="dc-name">Beta-Blockers (Metoprolol)</div><div class="dc-examples">Metoprolol succinate 25–100 mg OD — weak evidence in vasovagal; age-specific</div><div class="dc-rec-badge" id="rec-betablock">✓ Recommended</div></div>
+          <div class="dc-badges"><span class="dc-step step3">Specialist</span><span class="dc-dose">25–100 mg OD</span></div>
+        </div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Consider when (specialist decision only)</div>
+          <div class="dc-item">Vasovagal syncope in patients specifically over 42 years old — POST-trial benefit in this age group</div>
+          <div class="dc-item">Palpitations preceding vasovagal episodes suggesting adrenergic-driven subtype</div>
+          <div class="dc-item">Co-existing hypertension or a separate rate control indication</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div>
+          <div class="dc-item ci-abs">Orthostatic hypotension — worsens by blunting compensatory reflex tachycardia</div>
+          <div class="dc-item ci-abs">Asthma or severe COPD — bronchospasm risk</div>
+          <div class="dc-item ci-rel">Resting bradycardia under 55 bpm before treatment</div>
+          <div class="dc-item ci-rel">Patients under 42 — POST-trial found no benefit and possible harm in younger patients</div>
+        </div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div>
+          <div class="dc-item">Fatigue and significantly reduced exercise tolerance — common</div>
+          <div class="dc-item">Cold peripheries — dose-related and often troubling in winter months</div>
+          <div class="dc-item">Worsening orthostatic hypotension if not confirmed vasovagal subtype</div>
+        </div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">🔬 Monitor</div>
+          <div class="dc-item">Resting HR and BP at 4-week review post-initiation</div>
+          <div class="dc-item">Lying/standing BP to confirm not worsening orthostatic component</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"This tablet helps slow your heart's response to the triggers that cause your blackouts. Don't stop it suddenly — we'd need to reduce the dose gradually. Let me know if you feel unusually tired or notice cold hands and feet."</p></div>
+        <div class="dc-sca"><p>Key SCA nuance for beta-blockers in vasovagal: only for age over 42, only after cardiac exclusion, and NOT if orthostatic hypotension is present. Demonstrating age-based prescribing rationale (POST-trial evidence) scores in the Tasks domain.</p></div>
+      </div>
+
+      <div class="dc" id="dc-ssri">
+        <div class="dc-head">
+          <div><div class="dc-name">SSRIs (Paroxetine / Sertraline)</div><div class="dc-examples">Paroxetine 10–20 mg OD, Sertraline 50 mg OD — unlicensed indication for syncope</div><div class="dc-rec-badge" id="rec-ssri">✓ Recommended</div></div>
+          <div class="dc-badges"><span class="dc-step step3">Specialist</span><span class="dc-dose">Variable</span></div>
+        </div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Consider when</div>
+          <div class="dc-item">Refractory vasovagal with significant anxiety, panic, or phobic avoidance component</div>
+          <div class="dc-item">High frequency of emotional triggers for syncope episodes</div>
+          <div class="dc-item">Co-existing depression or anxiety disorder requiring treatment independently</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div>
+          <div class="dc-item ci-abs">QT prolongation on ECG — SSRIs themselves prolong QT and increase arrhythmia risk</div>
+          <div class="dc-item ci-abs">Bipolar disorder without established mood stabiliser cover</div>
+          <div class="dc-item ci-rel">Elderly patients — increased fall and fragility fracture risk, particularly relevant here</div>
+        </div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div>
+          <div class="dc-item">Initial nausea and headache — usually resolves within 2 weeks of starting</div>
+          <div class="dc-item">Sexual dysfunction — ask sensitively at the 6-week review appointment</div>
+          <div class="dc-item">Increased fall risk in elderly — particularly relevant given the underlying syncope diagnosis</div>
+        </div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">🔬 Monitor</div>
+          <div class="dc-item">ECG at baseline and at 4 weeks to check QT interval after starting</div>
+          <div class="dc-item">Syncope frequency at 6–8 weeks to assess treatment effect</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"This type of medication can help with the anxiety around your blackouts and may reduce how often they happen — it's being used off-licence for this purpose. It takes 4–6 weeks to take full effect, and any initial side effects usually settle in the first two weeks."</p></div>
+        <div class="dc-sca"><p>SSRIs for syncope are unlicensed — always state this explicitly. The examiner expects you to acknowledge off-label use and obtain informed consent. Checking QTc before starting is a patient-safety marker that scores in the Tasks domain.</p></div>
+      </div>
+
+      <div class="dc" id="dc-doac">
+        <div class="dc-head">
+          <div><div class="dc-name">Anticoagulation (DOAC)</div><div class="dc-examples">Apixaban, Rivaroxaban, Edoxaban — for AF-related syncope</div><div class="dc-rec-badge" id="rec-doac">✓ Recommended</div></div>
+          <div class="dc-badges"><span class="dc-step step2">Concurrent</span><span class="dc-dose">Dose by CHA₂DS₂-VASc</span></div>
+        </div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Prefer when</div>
+          <div class="dc-item">Syncope with newly diagnosed AF confirmed on ECG or Holter monitor</div>
+          <div class="dc-item">CHA₂DS₂-VASc score ≥2 in males or ≥3 in females</div>
+          <div class="dc-item">Rate or rhythm control does not preclude the separate anticoagulation need</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Avoid if</div>
+          <div class="dc-item ci-abs">Mechanical heart valve — use warfarin not a DOAC</div>
+          <div class="dc-item ci-abs">Severe renal impairment — check eGFR; dose adjustment required for all DOACs</div>
+          <div class="dc-item ci-rel">Very high bleeding risk — calculate HAS-BLED score and discuss risk-benefit explicitly</div>
+        </div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Side effects</div>
+          <div class="dc-item">Major and minor bleeding — advise on what to do if significant bleeding occurs</div>
+          <div class="dc-item">GI upset — take rivaroxaban with main meal to improve absorption and tolerability</div>
+        </div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">🔬 Monitor</div>
+          <div class="dc-item">eGFR annually and if acutely unwell or dehydrated</div>
+          <div class="dc-item">Adherence review at every appointment — DOACs require consistent daily dosing</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"Because we've found an irregular heart rhythm, we need to protect you from blood clots forming. This tablet does that job — take it every day without stopping. If you ever need surgery or a dental procedure, let the team know you are on a blood thinner."</p></div>
+        <div class="dc-sca"><p>If syncope is caused by AF, the anticoagulation decision must be addressed separately from rate/rhythm control. Calculating CHA₂DS₂-VASc and explaining the stroke risk scores in the Tasks domain — the examiner expects both to be explicitly mentioned as separate decisions.</p></div>
+      </div>
+
+      <div class="dc" id="dc-medreview">
+        <div class="dc-head">
+          <div><div class="dc-name">Medication Review (Culprit Drugs)</div><div class="dc-examples">Stop / reduce / switch: antihypertensives, alpha-blockers, diuretics, QT-prolonging agents</div><div class="dc-rec-badge" id="rec-medreview">✓ Recommended</div></div>
+          <div class="dc-badges"><span class="dc-step step1">Priority 1</span><span class="dc-dose">Case-by-case</span></div>
+        </div>
+        <div class="dc-section dc-g"><div class="dc-sec-t">✓ Almost always the first step</div>
+          <div class="dc-item">Any new medication started within 2 weeks before the first episode</div>
+          <div class="dc-item">Orthostatic hypotension confirmed on lying/standing BP protocol</div>
+          <div class="dc-item">QTc over 450/470 ms on ECG with a QT-prolonging agent in use</div>
+          <div class="dc-item">Alpha-blocker (tamsulosin, doxazosin) combined with other antihypertensives</div>
+        </div>
+        <div class="dc-section dc-r"><div class="dc-sec-t">✗ Risk when stopping abruptly</div>
+          <div class="dc-item ci-abs">Antiepileptic drugs — never stop without specific neurological advice</div>
+          <div class="dc-item ci-abs">Beta-blockers — stop gradually only; risk of rebound tachycardia and hypertension</div>
+          <div class="dc-item ci-rel">ACE inhibitors in established CKD or heart failure — discuss with cardiology before stopping</div>
+        </div>
+        <div class="dc-section dc-a"><div class="dc-sec-t">⚠ Communication essentials</div>
+          <div class="dc-item">Explain precisely why the medication is being stopped or reduced</div>
+          <div class="dc-item">Provide a safety-netting plan for the conditions previously treated by that medication</div>
+          <div class="dc-item">Arrange review of the original indication at a separate, dedicated appointment</div>
+        </div>
+        <div class="dc-section dc-b"><div class="dc-sec-t">🔬 Monitor after review</div>
+          <div class="dc-item">Blood pressure at 2–4 weeks after medication changes</div>
+          <div class="dc-item">ECG at 4 weeks if a QT-prolonging drug was stopped (to confirm QTc improvement)</div>
+        </div>
+        <div class="dc-counsel"><div class="dc-counsel-t">💬 Counselling</div><p>"I think your blood pressure tablet may be contributing to your blackouts by dropping your blood pressure when you stand. I'd like to reduce the dose slightly — your blood pressure has been well-controlled recently, so this should be safe, and we'll recheck it in two weeks."</p></div>
+        <div class="dc-sca"><p>Medication review as a management intervention scores very highly in the SCA — it demonstrates safe prescribing thinking and addresses the root cause rather than adding yet another drug. Always document the rationale for stopping or reducing any medication in the clinical notes.</p></div>
+      </div>
+    </div>
+
+    <div class="sub-divider" style="margin-top:1.5rem">7G — Psychosocial impact of the diagnosis: driving, work, relationships &amp; daily life</div>
+    <div class="psoci-wrap">
+      <div class="psoci-hdr"><span style="font-size:1.5rem">🫂</span><div class="psoci-title">Living with a blackout diagnosis — what changes beyond the clinical</div></div>
+      <div style="font-size:12.5px;color:#831843;line-height:1.55;margin-bottom:.85rem;background:#fff;border:1px solid var(--ps-bd);border-radius:var(--rad-sm);padding:.65rem .9rem;border-left:3px solid var(--ps)">A blackout diagnosis creates immediate and far-reaching consequences for daily life — most of which are driven by the mandatory driving restriction, not by the clinical severity of the blackout itself. For a middle-aged working adult who drives daily, loss of their licence is often more distressing than the episode itself. Proactively addressing these impacts — rather than waiting for the patient to raise them — demonstrates the patient-centred care that distinguishes excellent consultations in both the SCA examination and in real clinical practice.</div>
+      <div class="psoci-grid">
+        <div class="psoci-card">
+          <span class="psoci-icon">🚗</span>
+          <h5>DVLA and Driving Restriction</h5>
+          <p>Group 1 (car) licence: must not drive for 6 months after a single unexplained blackout. Group 2 (HGV/bus): minimum 5-year ban for unexplained syncope. Even confirmed simple vasovagal requires 4 weeks off driving after a first episode with no prodrome.</p>
+          <p>The GP has a legal and professional duty (GMC Good Medical Practice 2024) to advise the patient to stop driving and to inform the DVLA. If the patient refuses, the GP may break confidentiality and notify the DVLA directly after warning the patient of this intent. Document the conversation in detail.</p>
+          <p>If a firm diagnosis is made (e.g. vasovagal confirmed by tilt test), driving can resume earlier under specific DVLA guidance — always confirm via the current DVLA medical standards at GOV.UK.</p>
+          <span class="psoci-phrase">"I know losing your licence, even temporarily, is a huge inconvenience — let's be clear about what you need to do and how quickly we can potentially get this resolved with the right investigations."</span>
+        </div>
+        <div class="psoci-card">
+          <span class="psoci-icon">💼</span>
+          <h5>Employment and Occupational Risk</h5>
+          <p>Occupations involving driving (professional driver, carer transport, delivery), working at heights (construction, scaffolding), or operating heavy machinery carry immediate risk if syncope recurs — the patient must stop these duties pending full investigation.</p>
+          <p>Teaching involves responsibility for children — while not a direct height or machinery risk, safeguarding obligations may require a risk assessment if syncope occurs in school. Advise the patient to discuss with their school and occupational health team.</p>
+          <p>Issue a fit note restricting hazardous duties only — not a blanket sicknote for all work if the patient can otherwise function safely at a desk or in low-risk activities.</p>
+          <span class="psoci-phrase">"Can you tell me about your work — is there anything in your job that might be dangerous if you had another blackout unexpectedly while doing it?"</span>
+        </div>
+        <div class="psoci-card">
+          <span class="psoci-icon">😰</span>
+          <h5>Fear of Recurrence and Anxiety</h5>
+          <p>Most patients with syncope develop significant anticipatory anxiety about when the next episode will occur. This anxiety itself increases sympathetic activation, lowers the syncope threshold, and paradoxically increases recurrence risk — a well-recognised and self-perpetuating vicious cycle.</p>
+          <p>Avoidance behaviour — stopping exercise, avoiding public places, crowds, or shopping centres — reduces quality of life and deconditions the patient, further lowering the syncope threshold and making recurrence more likely not less.</p>
+          <p>Psychoeducation, a clear management plan, and a definitive timeline for investigation significantly reduce anticipatory anxiety and avoidance behaviour. CBT or IAPT referral should be considered early if avoidance is already significant.</p>
+          <span class="psoci-phrase">"It's completely understandable that you're worried about it happening again — let's talk about what we can do to reduce that risk and what you should do if you feel it starting."</span>
+        </div>
+        <div class="psoci-card">
+          <span class="psoci-icon">🤝</span>
+          <h5>Relationships and Partner Burden</h5>
+          <p>Partners and family members who witness a collapse are often significantly traumatised — they may have believed the patient had died. This can lead to hyperprotective behaviour that restricts the patient further than is medically necessary or helpful.</p>
+          <p>Involving the partner or key family member in the consultation where possible — explaining the diagnosis, prognosis, and management plan to both simultaneously — reduces carer anxiety and builds a coherent home management strategy.</p>
+          <p>Counter-manoeuvre training (leg crossing, squatting at prodrome) should be taught to both the patient and their partner — the partner can also help monitor for early prodrome signs and support the patient in applying the technique.</p>
+          <span class="psoci-phrase">"Would it be helpful if your wife came in for part of the consultation? She witnessed the episode and understanding what happened may help both of you feel more in control of the situation."</span>
+        </div>
+        <div class="psoci-card">
+          <span class="psoci-icon">🏃</span>
+          <h5>Exercise, Sport and Physical Activity</h5>
+          <p>Exercise restriction is a major quality-of-life issue — particularly in physically active patients. For vasovagal syncope (not exertional), there is no absolute contraindication to exercise; in fact, graduated exercise (tilt training) is itself a therapeutic intervention.</p>
+          <p>For exertional syncope or any suspicion of structural heart disease, exercise must be completely restricted until the cardiac cause is excluded — this includes all competitive sport, gym work, and intense physical activity without exception.</p>
+          <p>Athletes with unexplained syncope require specialist cardiology input before returning to any competitive activity — the ESC provides specific return-to-sport guidance that should be followed precisely.</p>
+          <span class="psoci-phrase">"If your blackout happened during exercise or sport, I need you to stop all intense physical activity until we've checked your heart — this is a safety measure while we investigate, and it doesn't necessarily mean you can't exercise once we have the results."</span>
+        </div>
+        <div class="psoci-card">
+          <span class="psoci-icon">🌅</span>
+          <h5>Independence and Daily Activities</h5>
+          <p>Driving restriction affects not only commuting to work but caring for children or elderly relatives, social activities, and the sense of personal autonomy — particularly significant for patients in rural areas or those who fulfil a caring role for others who depend on them.</p>
+          <p>Practical problem-solving is as important as clinical advice: discuss alternative transport options, online supermarket shopping, adjusting daily routines (showering seated, rising from bed slowly, sitting on the bed edge for 30 seconds before standing).</p>
+          <p>For older patients, the fear of falling may lead to complete withdrawal from activity — which increases deconditioning and paradoxically increases the falls and syncope risk further. A structured graded activity plan is essential to break this cycle.</p>
+          <span class="psoci-phrase">"Let's think through the practical side together — what's the biggest impact this is having on your day-to-day life right now, beyond the driving?"</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-divider">7H — Follow-up schedule</div>
+    <div class="card" style="padding:1.1rem 1.25rem;margin-bottom:1.25rem">
+      <div class="fu-line">
+        <div class="fu-event">
+          <div class="fu-dot fd1">1</div>
+          <div class="fu-content">
+            <h5>1 Week — ECG result review and initial blood results</h5>
+            <p>Review ECG result (if performed in surgery); check FBC, U&amp;E, TFTs, and blood glucose results; review lying/standing BP result. If Holter has been arranged, confirm it is in progress. Re-emphasise no driving until investigation is complete. Check DVLA notification status with patient.</p>
+            <div class="fu-tags"><span class="ft ft-r">Bloods</span><span class="ft ft-r">ECG</span><span class="ft ft-a">DVLA check</span></div>
+          </div>
+        </div>
+        <div class="fu-event">
+          <div class="fu-dot fd2">2</div>
+          <div class="fu-content">
+            <h5>2–4 Weeks — Holter monitor result review</h5>
+            <p>Review 24-hour or 48-hour Holter result; if no arrhythmia captured and episodes remain unexplained, arrange external loop recorder or refer to cardiology for ILR consideration. If Holter reveals arrhythmia, expedite cardiology referral. If vasovagal confirmed clinically, reinforce lifestyle measures and counter-manoeuvre technique.</p>
+            <div class="fu-tags"><span class="ft ft-r">Holter result</span><span class="ft ft-b">Cardiology referral</span></div>
+          </div>
+        </div>
+        <div class="fu-event">
+          <div class="fu-dot fd3">3</div>
+          <div class="fu-content">
+            <h5>6–8 Weeks — Post-specialist or post-investigation review</h5>
+            <p>Review cardiology or neurology letter; implement recommended treatment; assess response to lifestyle measures started at initial presentation; address medication changes; review psychosocial impact of driving restriction and assess fitness to drive if investigation is now complete.</p>
+            <div class="fu-tags"><span class="ft ft-b">Specialist letter</span><span class="ft ft-a">Driving review</span></div>
+          </div>
+        </div>
+        <div class="fu-event">
+          <div class="fu-dot fd4">4</div>
+          <div class="fu-content">
+            <h5>3 Months — Treatment response and monitoring</h5>
+            <p>Review frequency of syncope episodes since last consultation; assess lifestyle measure adherence; if on fludrocortisone or midodrine, review U&amp;E, BP, and tolerability; reinforce counter-manoeuvre training; reassess occupational restrictions; DVLA status review if driving restriction was temporary.</p>
+            <div class="fu-tags"><span class="ft ft-r">Electrolytes</span><span class="ft ft-b">Med review</span><span class="ft ft-a">DVLA</span></div>
+          </div>
+        </div>
+        <div class="fu-event">
+          <div class="fu-dot fd5">5</div>
+          <div class="fu-content">
+            <h5>Ongoing — Annual review or episode-triggered</h5>
+            <p>Annual review for patients with recurrent syncope; reassess psychosocial impact, medication adherence, and lifestyle measures annually; patients with implantable devices (ILR, pacemaker) follow under cardiology. Advise patient to book urgently if episodes increase in frequency, change in character, or any new cardiac symptoms develop.</p>
+            <div class="fu-tags"><span class="ft ft-r">Ongoing</span><span class="ft ft-b">Annual</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-divider" id="monitoring">7I — Monitoring: the BEEP rule + DVLA targets</div>
+    <div class="mon-rule">
+      <h4>Memory rule</h4>
+      <p>After syncope: <strong>B</strong>lood tests (FBC, U&amp;E, TFTs, glucose) → <strong>E</strong>CG (mandatory, same visit, document QTc) → <strong>E</strong>pisode review at every visit (frequency, character change, new features) → <strong>P</strong>harmacological monitoring (fludrocortisone: U&amp;E at 2 weeks and 6 weeks; midodrine: supine BP at every visit, no dose after 6 pm) | DVLA target: <strong>6 months off driving</strong> (Group 1) for unexplained syncope; reinstate once cause is confirmed and treated; <strong>5 years</strong> minimum for Group 2 (HGV/bus)</p>
+    </div>
+    <div class="g2" style="margin-bottom:1.25rem">
+      <div class="card" style="overflow:hidden">
+        <table class="rt">
+          <thead><tr><th>Drug / Intervention</th><th>Test</th><th>Timing</th><th>Action threshold</th></tr></thead>
+          <tbody>
+            <tr><td class="q">Fludrocortisone</td><td>U&amp;E (K+, Na+, creatinine)</td><td>2 weeks, 6 weeks, then 6-monthly</td><td>K+ under 3.0 → supplement or reduce dose; Na+ over 147 → review dose; rising creatinine → specialist review</td></tr>
+            <tr><td class="q">Fludrocortisone</td><td>Lying/standing BP; weight and ankle assessment</td><td>Every appointment</td><td>Supine systolic over 160 → reduce dose; significant ankle oedema → reduce dose or carefully add low-dose furosemide</td></tr>
+            <tr><td class="q">Midodrine</td><td>Supine BP (measured lying flat — not seated)</td><td>Every appointment</td><td>Supine systolic over 180 → reduce dose or adjust timing; confirm last dose is before 6 pm</td></tr>
+            <tr><td class="q">Holter / Loop recorder</td><td>Results review with cardiologist</td><td>2–4 weeks post-fitting</td><td>Symptomatic arrhythmia captured → expedite cardiology; asymptomatic significant arrhythmia → cardiology interpretation before any treatment</td></tr>
+            <tr><td class="q">All syncope patients</td><td>Lying and standing BP</td><td>Every review appointment</td><td>New orthostatic drop ≥20 mmHg → medication review; established OH not improving → escalate pharmacological treatment</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <table class="rt">
+          <thead><tr><th>Diagnosis / Patient group</th><th>DVLA Group 1 (car)</th><th>DVLA Group 2 (HGV/bus)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Unexplained single blackout</strong></td><td>6 months off driving minimum</td><td>Minimum 5 years; specialist opinion required before reinstatement</td></tr>
+            <tr><td><strong>Vasovagal confirmed (simple)</strong></td><td>4 weeks off if no prodrome; can drive if prodrome gives adequate warning to act</td><td>Case-by-case specialist assessment required</td></tr>
+            <tr><td><strong>Orthostatic hypotension — controlled</strong></td><td>Can drive once symptom-free and cause identified and treated</td><td>Specialist assessment required for reinstatement</td></tr>
+            <tr><td><strong>Cardiac arrhythmia causing syncope</strong></td><td>6 months minimum off; until arrhythmia is controlled (pacemaker or ablation)</td><td>Must cease; specialist confirmation of adequate control required</td></tr>
+            <tr><td><strong>First suspected seizure</strong></td><td>6 months off minimum from first seizure; 12 months if recurrent seizures</td><td>10 years seizure-free off all medication for Group 2; specialist input</td></tr>
+            <tr><td><strong>Pacemaker inserted for syncope</strong></td><td>1 week off; can drive once pacing function confirmed on device check</td><td>6 weeks off; specialist pacemaker function confirmation required</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sub-divider">7J — Safety-netting: exact phrases + medico-legal rationale</div>
+    <div class="sn-box">
+      <h4>⚠ Three scenario-specific phrases — use these verbatim</h4>
+      <div class="sn-scenarios">
+        <div class="sn-scenario sns-e">
+          <div class="sn-scenario-lbl">🔴 Emergency — syncope with dangerous new features</div>
+          <div class="sn-phrase">"If you lose consciousness again — particularly if it happens without any warning, while you're exercising, or if you have chest pain or palpitations beforehand — I need you to call 999 immediately. Do not wait and do not drive yourself to hospital."</div>
+          <div class="sn-why">This phrase explicitly names the red-flag symptoms that make cardiac arrhythmia probable and require an immediate emergency response. Naming "without any warning" and "while exercising" addresses the two highest-risk features the patient must act on. Documenting this specific safety-net language in the clinical notes is medico-legally protective if the patient subsequently has a serious cardiac event.</div>
+        </div>
+        <div class="sn-scenario sns-m">
+          <div class="sn-scenario-lbl">🚗 Driving — DVLA mandatory advice</div>
+          <div class="sn-phrase">"You must not drive until we have investigated this blackout fully and the DVLA has confirmed you can restart — this is a legal requirement, not just our advice. You'll need to contact the DVLA directly to notify them yourself. If you were to drive and have another blackout, you could seriously harm yourself or someone else."</div>
+          <div class="sn-why">The DVLA driving restriction after unexplained syncope is a statutory obligation, not discretionary clinical advice. Failure to advise the patient and document this advice creates significant medico-legal liability for the GP. The GP also has the authority and duty to notify the DVLA directly if the patient continues to drive against advice — document any such refusal immediately and in detail.</div>
+        </div>
+        <div class="sn-scenario sns-a">
+          <div class="sn-scenario-lbl">🟠 Prodrome — emergency self-management technique</div>
+          <div class="sn-phrase">"If you feel the warning sensations starting — the sweating, the nausea, the greyness at the edges of your vision — immediately sit or crouch down and cross your legs, tensing your muscles firmly. Do not try to push through it or stay standing. This manoeuvre can prevent the blackout from happening — but it only works if you use it at the very first sign."</div>
+          <div class="sn-why">Teaching the physical counter-manoeuvre at the consultation itself and reinforcing it as a safety-net strategy addresses the immediate risk of recurrence before investigations are complete. This demonstrates to the SCA examiner that the GP is taking a holistic and practical approach to patient safety — it scores in both the Tasks and Relating to Others domains.</div>
+        </div>
+      </div>
+      <div class="sn-legal">
+        <h5>Why safety-netting matters beyond clinical care</h5>
+        <div class="sn-legal-grid">
+          <div class="sn-legal-item">DVLA non-disclosure after physician advice is a criminal offence for the patient — document your advice precisely with date, time, and patient's response</div>
+          <div class="sn-legal-item">A patient with a blackout who drives and injures a third party creates medico-legal liability for the treating GP if no DVLA advice was documented at the first consultation</div>
+          <div class="sn-legal-item">Missed exertional syncope causing sudden cardiac death in a patient reassured without investigation is a serious medicolegal risk — document red flag exclusion explicitly</div>
+          <div class="sn-legal-item">Failure to notify DVLA of suspected epilepsy (when patient refuses) violates DVLA statutory guidance and conflicts with GMC Good Medical Practice duty of candour</div>
+          <div class="sn-legal-item">Safety-netting for specific named red-flag symptoms protects against claims that the patient was not informed of the warning signs of a more serious diagnosis</div>
+          <div class="sn-legal-item">A generic "come back if worse" instruction is not sufficient — named symptoms, named timescales, and named specific actions are required for medico-legal protection</div>
+        </div>
+      </div>
+      <div class="sn-fu">
+        <div class="sn-fu-item"><strong>1 week:</strong> Review ECG and initial blood results; confirm DVLA advice understood; Holter fitting confirmed and in progress</div>
+        <div class="sn-fu-item"><strong>2–4 weeks:</strong> Holter result; if unexplained — expedite cardiology referral; if vasovagal confirmed — reinforce lifestyle measures</div>
+        <div class="sn-fu-item"><strong>Immediately (999):</strong> Palpitations before LOC; exertional LOC; chest pain; focal neurology — call 999 and do not drive</div>
+      </div>
+    </div>
+
+    <div class="sca-cp sca-only" style="margin-top:.85rem">
+      <div class="sca-cp-hdr"><span class="sca-cp-lbl">🎓 SCA Checkpoint — Step 7 (Final)</span><span class="sca-dom">Tasks</span><span class="sca-dom">Relating to Others</span><span class="sca-dom">Global Skills</span></div>
+      <div class="sca-grid">
+        <div class="sca-block sca-say">
+          <div class="sca-block-t">Closing the consultation</div>
+          <div class="sca-phrase">"To summarise what we've agreed: we're doing a heart tracing now, checking your blood pressure lying and standing, and arranging a heart monitor. You must not drive until we have the results."</div>
+          <div class="sca-phrase">"I want to make sure you understand the driving situation clearly — you must not drive at all until the DVLA has cleared you, and you'll need to contact them yourself to notify them today."</div>
+          <div class="sca-phrase">"If you feel the warning symptoms starting, use the leg-crossing technique I showed you — this can prevent the blackout from happening if you use it immediately."</div>
+          <div class="sca-phrase">"Is there anything I've said that you're not clear about, or anything we haven't covered that you wanted to ask?"</div>
+          <div class="sca-phrase">"I know this has been unsettling. We are going to get to the bottom of it — and most people with this kind of blackout, once we've checked their heart, turn out to have the benign type."</div>
+        </div>
+        <div class="sca-block sca-avoid">
+          <div class="sca-block-t">Deductions — closing</div>
+          <ul>
+            <li>Ending without summarising the agreed management plan clearly</li>
+            <li>Not mentioning the DVLA driving restriction at the close</li>
+            <li>Not giving the patient a genuine opportunity to ask questions</li>
+            <li>Reassuring the patient without a concrete monitoring plan in place</li>
+            <li>Not teaching counter-manoeuvres before the patient leaves</li>
+            <li>Not documenting DVLA advice in the clinical notes</li>
+          </ul>
+        </div>
+        <div class="sca-block sca-score">
+          <div class="sca-block-t">Tasks domain — full criteria</div>
+          <ul>
+            <li>History: prodrome, position, duration, witness account, exertion, palpitations all covered</li>
+            <li>Red flag identification: exertional, no prodrome, family SCD, palpitations — all checked</li>
+            <li>Investigation: ECG performed in surgery; lying/standing BP checked</li>
+            <li>Diagnosis shared in plain language using an analogy</li>
+            <li>DVLA advice given, documented, and confirmed patient understood</li>
+          </ul>
+        </div>
+        <div class="sca-block sca-score" style="border-left:2px solid #c4b5fd">
+          <div class="sca-block-t" style="color:#c4b5fd">Relating to Others — full criteria</div>
+          <ul>
+            <li>Patient's own theory about the cause acknowledged before being addressed</li>
+            <li>Specific hidden concern named and directly responded to</li>
+            <li>Expectation (brain scan) validated then redirected with clear clinical reasoning</li>
+            <li>Emotional response to driving restriction acknowledged with genuine empathy</li>
+            <li>Partner or family involvement explicitly offered</li>
+            <li>Closing question asked genuinely: "Is there anything else you wanted to ask?"</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rag-strip">
+        <div class="rag-item rag-r"><div class="rag-item-t">🔴 Red — failing</div><div class="rag-bullets">No DVLA advice; no specific concern addressed; generic or absent safety-netting; management plan unclear or not agreed; no closing question offered</div></div>
+        <div class="rag-item rag-a"><div class="rag-item-t">🟠 Amber — borderline</div><div class="rag-bullets">DVLA mentioned briefly; management plan given but not negotiated with patient; counter-manoeuvres not demonstrated; closing question absent or perfunctory</div></div>
+        <div class="rag-item rag-g"><div class="rag-item-t">🟢 Green — passing</div><div class="rag-bullets">DVLA advice explicit and documented; management plan agreed with patient; counter-manoeuvres demonstrated practically; safety-netting with named red flags; closing question asked; partner involvement offered</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCA SCORECARD -->
+<div class="scorecard-wrap sca-only" style="margin-bottom:1.5rem">
+  <div class="scorecard-hdr">
+    <div class="scorecard-hdr-left">
+      <div class="scorecard-title">Blackout &amp; Syncope — SCA Consultation Scorecard</div>
+      <div class="scorecard-sub">Based on the official SCA Consultation Tool · RAG self-assessment · Use after every practice consultation</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <div class="scorecard-total-wrap"><span class="scorecard-total" id="sc-total">0</span><span class="scorecard-total-label">/ 33 pts</span></div>
+      <button class="sc-reset-btn" onclick="resetScorecard()">↺ Reset</button>
+    </div>
+  </div>
+  <div class="scorecard-grid">
+    <div class="sc-domain">
+      <div class="sc-domain-hdr gs-domain">
+        <span class="sc-domain-icon">🌐</span>
+        <div><div class="sc-domain-title">Global Skills</div><div class="sc-domain-sub">Structure, language, responsiveness</div></div>
+        <div class="sc-domain-score"><span id="sc-gs-score">0</span><span class="sc-domain-max">/7</span></div>
+      </div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Structured consultation</strong> — logical flow with clear signposting between sections</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Appropriate use of time</strong> — history complete by 6–7 minutes; investigation and management in final 5</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Open question first</strong> — genuine open question used at the start; closed questions follow from it</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Plain language throughout</strong> — no unexplained medical jargon; "syncope" explained if used</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Non-verbal attentiveness</strong> — pausing, acknowledging responses, not interrupting patient</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Investigation rationale shared</strong> — explains what each test is looking for before ordering it</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb gs-cb" data-pts="1"><span class="sc-item-text"><strong>Closed with summary and question</strong> — management plan summarised; patient asked if anything unclear</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr task-domain">
+        <span class="sc-domain-icon">✓</span>
+        <div><div class="sc-domain-title">Tasks</div><div class="sc-domain-sub">Clinical reasoning, diagnosis, management</div></div>
+        <div class="sc-domain-score"><span id="sc-tasks-score">0</span><span class="sc-domain-max">/15</span></div>
+      </div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Core history elements</strong> — all of: prodrome, position, duration, witness account, and exertion elicited</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Red flag identification and response</strong> — at least two high-risk features checked and acted upon appropriately</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>DVLA driving advice</strong> — explicitly stated, explained, and documented; patient verbally confirms understanding</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>ECG arranged and discussed</strong> — 12-lead ECG performed in surgery; result or plan for result explained to patient</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Lying/standing BP checked</strong> — with correct 3-minute standing protocol; result discussed</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Diagnosis shared in lay language</strong> — mechanism explained using an analogy; uncertainty acknowledged</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Monitoring strategy planned</strong> — Holter or ILR arranged; follow-up timeline specified to the patient</span><span class="sc-pts">2pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Medication review addressed</strong> — antihypertensives reviewed in context of orthostatic hypotension differential</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="1"><span class="sc-item-text"><strong>Safety-netting specific</strong> — named red-flag symptoms; named action (999); named follow-up timepoint</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb tasks-cb" data-pts="2"><span class="sc-item-text"><strong>Appropriate referral decision</strong> — correct specialty chosen; rationale explained to patient; pre-referral workup complete</span><span class="sc-pts">2pt</span></label>
+      </div>
+    </div>
+    <div class="sc-domain">
+      <div class="sc-domain-hdr ro-domain">
+        <span class="sc-domain-icon">🤝</span>
+        <div><div class="sc-domain-title">Relating to Others</div><div class="sc-domain-sub">Communication, rapport, shared decision making</div></div>
+        <div class="sc-domain-score"><span id="sc-ro-score">0</span><span class="sc-domain-max">/11</span></div>
+      </div>
+      <div class="sc-items">
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Opened with genuine open question</strong> — not a clarifying closed question; patient given space to lead</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Explored patient's ideas</strong> — asked specifically what the patient thinks caused the blackout</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Explored patient's concerns</strong> — elicited and named the specific underlying worry (not just "are you worried?")</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Explored patient's expectations</strong> — asked what investigation or outcome the patient was hoping for today</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Patient's own theory acknowledged</strong> — their explanation (mini-stroke, blood pressure tablets) named and addressed before correcting</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Driving restriction handled with empathy</strong> — impact acknowledged before the restriction was given; problem-solved together</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Brain scan expectation addressed</strong> — validated then redirected with clear clinical reasoning; patient accepted the alternative</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Partner or family involvement offered</strong> — explicitly asked whether the patient would like their partner involved in the explanation or plan</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Counter-manoeuvres taught practically</strong> — technique demonstrated or described; not just mentioned in passing</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Checked understanding at key points</strong> — e.g. after DVLA advice and after management plan summary</span><span class="sc-pts">1pt</span></label>
+        <label class="sc-item" onclick="calcScore()"><input type="checkbox" class="sc-cb ro-cb" data-pts="1"><span class="sc-item-text"><strong>Closing question asked genuinely</strong> — "Is there anything else you wanted to ask?" with space for the patient to respond</span><span class="sc-pts">1pt</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f8fafc;border-top:1px solid var(--line);padding:.85rem 1.25rem">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin-bottom:.5rem">RAG Self-Assessment Guide</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+      <div style="background:#fee2e2;border:1px solid var(--r-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--r);margin-bottom:.2rem">🔴 Red — not achieved</div><div style="font-size:11.5px;color:#7f1d1d;line-height:1.45">Closed questions throughout; ICE not explored; DVLA not mentioned; no counter-manoeuvre teaching; patient's concern unaddressed; diagnosis not explained in lay language</div></div>
+      <div style="background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--a);margin-bottom:.2rem">🟠 Amber — partially achieved</div><div style="font-size:11.5px;color:#78350f;line-height:1.45">ICE partially explored; DVLA mentioned but not empathetically; diagnosis explained but without analogy; counter-manoeuvre mentioned but not taught; brain scan expectation not explicitly addressed</div></div>
+      <div style="background:var(--g-bg);border:1px solid var(--g-bd);border-radius:8px;padding:.5rem .75rem"><div style="font-size:10px;font-weight:700;color:var(--g);margin-bottom:.2rem">🟢 Green — fully achieved</div><div style="font-size:11.5px;color:#14532d;line-height:1.45">Open question genuinely used; ICE fully explored and referenced in plan; DVLA handled with empathy and problem-solving; diagnosis explained with analogy; counter-manoeuvres demonstrated; closing question asked</div></div>
+    </div>
+  </div>
+  <div class="scorecard-interp">
+    <div class="interp-bar-wrap">
+      <div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div>
+      <div class="interp-labels"><span>0</span><span>11</span><span>17</span><span>25</span><span>33</span></div>
+      <div class="interp-zones">
+        <div class="interp-zone iz-r">Fail</div>
+        <div class="interp-zone iz-a">Borderline</div>
+        <div class="interp-zone iz-g">Pass</div>
+        <div class="interp-zone iz-gg">Strong pass</div>
+      </div>
+    </div>
+    <div class="interp-msg" id="sc-interp-msg">
+      <div class="interp-icon">📋</div>
+      <div class="interp-text">Complete the checklist above to see your score interpretation and feedback</div>
+    </div>
+  </div>
+  <div class="sc-missed-wrap" id="sc-missed-section" style="display:none">
+    <div class="sc-missed-title">⚠ Items not yet checked — areas to develop</div>
+    <div id="sc-missed-list" class="sc-missed-list"></div>
+  </div>
+</div>
+
+<!-- ACTOR BRIEF -->
+<div class="card sca-only" style="margin-bottom:2.5rem">
+  <button class="actor-toggle" onclick="toggleActor()">
+    <h3>🎭 Patient actor brief — click to practise</h3>
+    <span style="font-size:12px;color:var(--muted)" id="actor-icon">▼ show</span>
+  </button>
+  <div class="actor-body" id="actor-body">
+    <div class="actor-open">"I still can't believe it happened — I just went down in the middle of the supermarket with everyone watching. My wife thought I was dying. I feel absolutely fine now but I'm terrified about what it means."</div>
+    <div class="ab-grid">
+      <div class="ab"><h5>Who you are</h5><p>James Allen, 58, secondary school history teacher. You were doing the weekly shop on a Saturday afternoon when it happened. You were standing in the checkout queue for about 15 minutes when you started to feel "odd." You commute 40 minutes each way by car. Your wife Diane was with you and witnessed the whole episode. You've never blacked out before in your life.</p></div>
+      <div class="ab"><h5>Hidden agenda</h5><p>You are terrified you have something seriously wrong with your heart and are going to die suddenly — like your close friend Colin, who dropped dead from a heart attack at 55. You won't mention Colin unless directly asked about what you're specifically worried about. If the doctor asks "Is there something you're particularly worried this might be?", you'll say: "I'm worried my heart stopped. My friend died suddenly at 55 and I keep thinking what if that happens to me."</p></div>
+      <div class="ab"><h5>Symptoms if asked directly</h5><ul><li>Felt sweaty and "strange" for about 5 seconds before collapsing</li><li>Had been standing in the queue for around 15 minutes — it was warm in the shop</li><li>Wife says you were out for about 2 minutes; no shaking, no tongue biting, no incontinence</li><li>Came round feeling tired but knew exactly where you were immediately</li><li>On ramipril 5 mg and amlodipine 5 mg; no new medications recently</li><li>Drinks about 14 units per week (wine in the evenings)</li></ul></div>
+      <div class="ab"><h5>Lifestyle + bonus details</h5><ul><li>You drive 40 minutes each way to work — loss of licence would be a very serious problem</li><li>You are worried about what this means for driving — but wait for the doctor to raise it</li><li>If asked about stress at work: yes, the school has been under Ofsted pressure and it's been very stressful</li><li>If asked what you were expecting today: "I thought you'd send me for a brain scan"</li><li>Respond well to warmth and empathy; become slightly defensive if the doctor is dismissive</li></ul></div>
+    </div>
+    <div class="actor-challenge">"Can't you just refer me for a brain scan? My nephew fainted last year and they did a scan on him — surely that would show what's wrong?"</div>
+    <p style="font-size:11.5px;color:var(--muted);margin-top:.75rem"><strong>Resolution:</strong> James accepts the plan if the candidate: (1) directly acknowledges his worry about his heart and references his friend Colin; (2) explains in plain language why the ECG and Holter are more useful than a brain scan for his type of blackout; (3) gives him the DVLA driving restriction information without being dismissive of how difficult this is; and (4) teaches him the leg-crossing counter-manoeuvre specifically. He will not be satisfied with generic reassurance or a "we'll see" response.</p>
+  </div>
+</div>
+
+<!-- CLINIC SUMMARY -->
+<div class="sum-section clinic-only" id="sum-clinic">
+  <div class="sum-hdr" onclick="toggleSum('clinic')">
+    <div class="sum-hdr-left">
+      <span class="sum-icon">🏥</span>
+      <div>
+        <div class="sum-label">Clinic Quick Reference</div>
+        <div class="sum-title">Blackout &amp; Syncope — Clinical Decision Framework</div>
+        <div class="sum-sub">NICE CKS TLOC 2022 · ESC Syncope Guidelines 2018 · First Presentation</div>
+      </div>
+    </div>
+    <div class="sum-toggle" id="sum-toggle-clinic"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-clinic">
+
+    <div class="sum-sub-hdr">🚦 1 — Triage System</div>
+    <div class="algo-wrap" style="margin-bottom:1rem">
+      <div class="algo-start">Patient presents with TLOC (transient loss of consciousness) → perform ECG + lying/standing BP immediately</div>
+      <div class="algo-arrow">↓</div>
+      <div class="algo-row">
+        <div class="algo-branch algo-red">
+          <div class="algo-branch-lbl">🔴 Emergency — 999 or A&amp;E</div>
+          <ul class="algo-list">
+            <li>Exertional syncope (HOCM / AS / catecholaminergic VT)</li>
+            <li>QTc over 500 ms, complete heart block, Brugada pattern on ECG</li>
+            <li>Syncope + chest pain / breathlessness / focal neurology</li>
+            <li>Prolonged LOC over 5 min with confusion</li>
+            <li>Haemodynamic instability at presentation</li>
+          </ul>
+          <div class="algo-action red-action">999 / Direct A&amp;E referral with phone call</div>
+        </div>
+        <div class="algo-branch algo-amber">
+          <div class="algo-branch-lbl">🟠 Urgent — 48 hours to 2 weeks</div>
+          <ul class="algo-list">
+            <li>First unexplained syncope over age 45</li>
+            <li>No prodrome in any age group</li>
+            <li>Palpitations preceding LOC</li>
+            <li>Family history of SCD under 40</li>
+            <li>QTc 450–500 ms (not yet life-threatening)</li>
+          </ul>
+          <div class="algo-action amber-action">ECG + Holter + 2-week cardiology referral</div>
+        </div>
+        <div class="algo-branch algo-green">
+          <div class="algo-branch-lbl">🟢 Routine — primary care management</div>
+          <ul class="algo-list">
+            <li>Classic vasovagal (young, trigger, full prodrome, rapid recovery, normal ECG)</li>
+            <li>Confirmed orthostatic hypotension on lying/standing BP</li>
+            <li>Situational syncope (cough, micturition, defecation)</li>
+            <li>Medication-induced confirmed by temporal correlation</li>
+          </ul>
+          <div class="algo-action green-action">Lifestyle, medication review, GP monitoring</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sum-sub-hdr">🔬 2 — Diagnostic Pathway</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem .9rem">
+        <div style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--navy);margin-bottom:.5rem">ESC Risk Stratification</div>
+        <div style="font-size:12px;line-height:1.6">
+          <div style="margin-bottom:.3rem"><span class="conf-badge conf-gp">Low risk</span> Age under 40, clear vasovagal trigger, full prodrome, normal ECG, no cardiac history</div>
+          <div style="margin-bottom:.3rem"><span class="conf-badge conf-sus">Intermediate</span> Age over 45, first unexplained episode, no clear trigger, no prodrome, cardiac history</div>
+          <div><span class="conf-badge conf-emerg">High risk</span> Exertional, supine, structural heart disease, abnormal ECG, family SCD under 40</div>
+        </div>
+      </div>
+      <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem .9rem">
+        <div style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--navy);margin-bottom:.5rem">Mandatory First-Line Tests</div>
+        <div style="font-size:12px;line-height:1.6">
+          <div style="margin-bottom:.2rem">✅ 12-lead ECG — document QTc, PR, QRS</div>
+          <div style="margin-bottom:.2rem">✅ Lying/standing BP — 1 min and 3 min post-standing</div>
+          <div style="margin-bottom:.2rem">✅ Blood glucose — hypoglycaemia exclusion</div>
+          <div style="margin-bottom:.2rem">✅ FBC, U&amp;E, TFTs — routine; U&amp;E checks electrolytes for arrhythmia risk</div>
+          <div>🚫 CT head — NOT routine; only if focal neurology or severe headache at onset</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sum-sub-hdr">📊 3 — Key Numbers</div>
+    <div class="num-grid" style="margin-bottom:1rem">
+      <div class="num-card num-highlight"><div class="num-val">≥20 mmHg</div><div class="num-lbl">Systolic drop after 3 min standing = orthostatic hypotension</div></div>
+      <div class="num-card"><div class="num-val">3 min</div><div class="num-lbl">Standing time required before BP recheck (not 1 minute)</div></div>
+      <div class="num-card num-highlight"><div class="num-val">&gt;450 ms</div><div class="num-lbl">QTc upper limit males — refer same-day if over 500 ms</div></div>
+      <div class="num-card"><div class="num-val">&gt;470 ms</div><div class="num-lbl">QTc upper limit females — refer same-day if over 500 ms</div></div>
+      <div class="num-card num-highlight"><div class="num-val">&lt;5 min</div><div class="num-lbl">LOC duration consistent with true syncope; over 5 min → other cause</div></div>
+      <div class="num-card"><div class="num-val">6 months</div><div class="num-lbl">DVLA Group 1 off driving — unexplained single blackout</div></div>
+      <div class="num-card num-highlight"><div class="num-val">5 years</div><div class="num-lbl">DVLA Group 2 (HGV/bus) minimum ban — unexplained syncope</div></div>
+      <div class="num-card"><div class="num-val">24–48 hr</div><div class="num-lbl">Target ECG time for any high-risk syncope features</div></div>
+      <div class="num-card"><div class="num-val">&gt;42 yrs</div><div class="num-lbl">Age above which beta-blockers may help in vasovagal (POST-trial)</div></div>
+      <div class="num-card num-highlight"><div class="num-val">1 week</div><div class="num-lbl">DVLA off driving after pacemaker insertion — Group 1 licence</div></div>
+      <div class="num-card"><div class="num-val">50%</div><div class="num-lbl">Reduction in vasovagal recurrence with physical counter-manoeuvres</div></div>
+      <div class="num-card"><div class="num-val">50%</div><div class="num-lbl">Reduction in vasovagal recurrence with adequate hydration loading</div></div>
+    </div>
+
+    <div class="sum-sub-hdr">💊 4 — Medication Decision &amp; Choice</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem .9rem">
+        <div style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--navy);margin-bottom:.5rem">Pharmacological Step Approach</div>
+        <div style="font-size:12px;line-height:1.6">
+          <div style="margin-bottom:.2rem"><strong>Step 1:</strong> Lifestyle (all types) — fluid 2–3 L/day, counter-manoeuvres, compression stockings, trigger avoidance, tilt training</div>
+          <div style="margin-bottom:.2rem"><strong>Step 2 (OH):</strong> Fludrocortisone 50–200 mcg OD — avoid in heart failure; U&amp;E at 2 and 6 weeks</div>
+          <div style="margin-bottom:.2rem"><strong>Step 3 (OH refractory):</strong> Midodrine 2.5–10 mg TDS — do NOT dose after 6 pm; monitor supine BP</div>
+          <div><strong>Step 4 (vasovagal refractory):</strong> Metoprolol (age &gt;42 only), SSRIs (unlicensed), or pacemaker (specialist) — initiate under cardiology</div>
+        </div>
+      </div>
+      <div style="background:#f8fafc;border:1px solid var(--line);border-radius:var(--rad-sm);padding:.75rem .9rem">
+        <div style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--navy);margin-bottom:.5rem">High-Priority Medication Review</div>
+        <div style="font-size:12px;line-height:1.6">
+          <div style="margin-bottom:.2rem">⚠ Alpha-blockers (tamsulosin) + antihypertensives → high orthostatic risk; review combination</div>
+          <div style="margin-bottom:.2rem">⚠ QTc over 450/470 ms + QT-prolonging agent → stop culprit immediately</div>
+          <div style="margin-bottom:.2rem">⚠ Diuretics → reduce dose if dehydrated; check electrolytes</div>
+          <div>⚠ Any new medication within 2 weeks of first episode → likely culprit; review first before adding new drugs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sum-sub-hdr">⚠ 5 — Safety Netting &amp; Follow-Up</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem">
+      <div class="sn-compact-wrap">
+        <div class="sn-compact sns-e">
+          <div class="sn-compact-lbl">🔴 Emergency — exertional or no-prodrome recurrence</div>
+          <div class="sn-compact-phrase">"If it happens again without any warning, during exercise, or with chest pain or palpitations — call 999 immediately and do not drive."</div>
+        </div>
+        <div class="sn-compact sns-m">
+          <div class="sn-compact-lbl">🚗 Driving — mandatory DVLA advice</div>
+          <div class="sn-compact-phrase">"You must not drive — this is a legal requirement. Contact the DVLA yourself today to notify them. We must document this advice."</div>
+        </div>
+        <div class="sn-compact sns-a">
+          <div class="sn-compact-lbl">🟠 Prodrome — self-management technique</div>
+          <div class="sn-compact-phrase">"If you feel the warning starting — sit or crouch, cross your legs, tense your muscles firmly. Do this immediately at the very first sign."</div>
+        </div>
+      </div>
+      <div class="fu-compact-wrap">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.4rem">Follow-up timeline</div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--r)">1</div><div><strong>1 week:</strong> ECG result; initial bloods (FBC, U&amp;E, TFTs, glucose); DVLA confirmed</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--a)">2</div><div><strong>2–4 weeks:</strong> Holter monitor result; if unexplained → expedite cardiology</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--b)">3</div><div><strong>6–8 weeks:</strong> Post-specialist review; implement treatment; driving status</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--g)">4</div><div><strong>3 months:</strong> Treatment response; U&amp;E if on fludrocortisone; occupational status</div></div>
+        <div class="fu-compact-row"><div class="fu-compact-dot" style="background:var(--t)">5</div><div><strong>Annual:</strong> Recurrence review; medication check; DVLA status; lifestyle adherence</div></div>
+        <div style="margin-top:.5rem;background:var(--a-bg);border:1px solid var(--a-bd);border-radius:8px;padding:.45rem .65rem;font-size:11.5px;color:var(--a);font-weight:600">📌 Document DVLA advice at every contact until investigation complete</div>
+      </div>
+    </div>
+
+    <div class="sum-sub-hdr">🔬 6 — Monitoring &amp; Red Flags</div>
+    <div class="mon-table-wrap" style="margin-bottom:.65rem">
+      <table class="mon-table">
+        <thead><tr><th>Drug / Monitor</th><th>Test</th><th>Timing</th><th>Action threshold</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Fludrocortisone</strong></td><td>U&amp;E (K+, Na+, creatinine)</td><td class="mon-red">2 weeks + 6 weeks</td><td style="font-size:11.5px">K+ under 3.0 → supplement; Na+ over 147 → reduce dose; rising Cr → specialist</td></tr>
+          <tr><td><strong>Fludrocortisone</strong></td><td>Lying/standing BP + weight</td><td class="mon-amber">Every appointment</td><td style="font-size:11.5px">Supine over 160 → reduce dose; significant oedema → reduce dose</td></tr>
+          <tr><td><strong>Midodrine</strong></td><td>Supine BP (lying flat)</td><td class="mon-red">Every appointment</td><td style="font-size:11.5px">Supine over 180 → reduce dose; confirm last dose before 6 pm always</td></tr>
+          <tr><td><strong>Holter / ILR</strong></td><td>Results review</td><td class="mon-amber">2–4 weeks post-fitting</td><td style="font-size:11.5px">Symptomatic arrhythmia captured → expedite cardiology; asymptomatic → cardiology first</td></tr>
+          <tr><td><strong>All syncope patients</strong></td><td>Lying/standing BP</td><td class="mon-green">Every review</td><td style="font-size:11.5px">New drop ≥20 mmHg → medication review; established OH not improving → escalate treatment</td></tr>
+          <tr><td><strong>QT-prolonging agent stopped</strong></td><td>ECG for QTc</td><td class="mon-amber">4 weeks after stopping</td><td style="font-size:11.5px">QTc normalised → reassure; QTc still elevated → identify and remove additional culprits</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div class="flag-item flag-red"><strong>🔴 Cardiac red flags requiring immediate action:</strong> Exertional syncope; supine syncope; QTc over 500 ms; family history SCD under 40; palpitations preceding LOC; focal neurology after LOC</div>
+      <div class="flag-item flag-pink"><strong>🛡️ Safeguarding:</strong> Recurrent "falls" without physiological explanation; partner speaking over patient; inconsistent injury explanation; dependent children or elders in care; medication misuse suspected</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SCA SUMMARY -->
+<div class="sum-section sca-only" id="sum-sca">
+  <div class="sum-hdr sca-sum-hdr" onclick="toggleSum('sca')">
+    <div class="sum-hdr-left">
+      <span class="sum-icon">🎓</span>
+      <div>
+        <div class="sum-label" style="color:rgba(255,255,255,.5)">SCA Exam Quick Reference</div>
+        <div class="sum-title" style="color:#fff">Blackout &amp; Syncope SCA — Strategy, Phrases &amp; Scoring</div>
+        <div class="sum-sub" style="color:rgba(255,255,255,.6)">Tasks · Relating to Others · Global Skills · RAG guide</div>
+      </div>
+    </div>
+    <div class="sum-toggle sca-toggle" id="sum-toggle-sca"><span class="sum-ti-icon">▼</span><span class="sum-ti-text">expand</span></div>
+  </div>
+  <div class="sum-body closed" id="sum-body-sca">
+
+    <div class="sum-sub-hdr sca-sub-hdr">🕐 12-Minute Consultation Flow — with Domain Scoring</div>
+    <div class="sca-flow-wrap">
+      <div class="sca-flow-step sca-f1">
+        <div class="sca-f-time">0–2 min</div>
+        <div class="sca-f-title">Open &amp; Data Gather</div>
+        <div class="sca-f-phrase">"I can see from your notes that your ECG was normal. Can you tell me in your own words what happened?"</div>
+        <div class="sca-f-note">Reference existing information first; genuine open question; let patient lead for 60–90 seconds without interrupting</div>
+        <div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">Relating to Others</span><span class="sca-dom-tag gs">Global Skills</span></div>
+        <div class="sca-f-avoid">✗ Starting with "How long did it last?" · ✗ Asking for the ECG result already documented</div>
+      </div>
+      <div class="sca-flow-step sca-f2">
+        <div class="sca-f-time">2–5 min</div>
+        <div class="sca-f-title">Targeted History + ICE</div>
+        <div class="sca-f-phrase">"What position were you in? Was there any warning? Did anyone see it? Is there something specific you've been worried this might be?"</div>
+        <div class="sca-f-note">Prodrome, position, duration, witness, exertion, palpitations — all in 3 minutes. ICE before targeted closes. Name the specific concern when elicited.</div>
+        <div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">Relating to Others</span></div>
+        <div class="sca-f-avoid">✗ Never naming what the patient is specifically worried about · ✗ Missing the exertion question</div>
+      </div>
+      <div class="sca-flow-step sca-f3">
+        <div class="sca-f-time">5–7 min</div>
+        <div class="sca-f-title">Examination &amp; DVLA</div>
+        <div class="sca-f-phrase">"I'm going to do a heart tracing now — this is the most important test we can do here today. I also need to talk to you about driving."</div>
+        <div class="sca-f-note">ECG in surgery; lying/standing BP with 3-minute protocol; introduce DVLA here with empathy — don't leave it to the very end</div>
+        <div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag gs">Global Skills</span></div>
+        <div class="sca-f-avoid">✗ Skipping ECG in surgery · ✗ Leaving DVLA advice until after safety-netting (patient may disengage)</div>
+      </div>
+      <div class="sca-flow-step sca-f4">
+        <div class="sca-f-time">7–10 min</div>
+        <div class="sca-f-title">Diagnosis + Plan</div>
+        <div class="sca-f-phrase">"Think of it like a brief power cut to the brain — it isn't dangerous in itself, but we need to check your heart's electrical system first to be sure."</div>
+        <div class="sca-f-note">Explain mechanism in plain language with an analogy. Address brain scan expectation explicitly. Share uncertainty. Negotiate the plan — don't impose it.</div>
+        <div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">Relating to Others</span></div>
+        <div class="sca-f-avoid">✗ Diagnosing vasovagal without naming what excludes cardiac · ✗ Ordering CT head without indication</div>
+      </div>
+      <div class="sca-flow-step sca-f5">
+        <div class="sca-f-time">10–12 min</div>
+        <div class="sca-f-title">Safety-Net + Close</div>
+        <div class="sca-f-phrase">"At the very first warning — sit, cross your legs, tense your muscles. Is there anything at all you'd like to ask before we finish?"</div>
+        <div class="sca-f-note">Demonstrate counter-manoeuvre; name three specific red flags; confirm DVLA understood; summary; genuine closing question</div>
+        <div class="sca-f-domains"><span class="sca-dom-tag task">Tasks</span><span class="sca-dom-tag ro">Relating to Others</span><span class="sca-dom-tag gs">Global Skills</span></div>
+        <div class="sca-f-avoid">✗ No closing question · ✗ Counter-manoeuvre only mentioned, not demonstrated · ✗ Safety-netting generic</div>
+      </div>
+    </div>
+
+    <div class="sum-3col" style="margin-top:1rem">
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">🔴🟠🟢 RAG Scoring — All 3 Domains</div>
+        <div class="rag-full-wrap">
+          <div class="rag-domain-title task-col">Tasks Domain</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">🟢</div><div>All history elements; red flags checked; ECG performed; lying/standing BP done; DVLA addressed; diagnosis explained; Holter arranged; safety-netting specific</div></div>
+          <div class="rag-row rag-a-row"><div class="rag-rl">🟠</div><div>Most history elements; one or two red flags missed; ECG mentioned but not explained; DVLA brief; diagnosis in lay language but no mechanism; safety-netting vague</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">🔴</div><div>Closed history only; exertion not checked; no ECG; no DVLA; reassured as vasovagal without exclusion; CT head requested reflexively</div></div>
+          <div class="rag-domain-title ro-col" style="margin-top:.6rem">Relating to Others</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">🟢</div><div>Genuine open question; full ICE; patient's hidden concern (friend's death) named; brain scan expectation validated and redirected with reasoning; DVLA with empathy; counter-manoeuvres demonstrated; partner involvement offered; closing question</div></div>
+          <div class="rag-row rag-a-row"><div class="rag-rl">🟠</div><div>Open question but then lapses to closed; ICE partially explored; concern acknowledged but not specifically named; brain scan addressed but without clinical reasoning; DVLA stated without exploring impact</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">🔴</div><div>Starts with closed question; no ICE; patient's concern ignored; DVLA stated bluntly without empathy; no closing question; plan imposed not negotiated</div></div>
+          <div class="rag-domain-title gs-col" style="margin-top:.6rem">Global Skills</div>
+          <div class="rag-row rag-g-row"><div class="rag-rl">🟢</div><div>Clear logical structure; history complete by 6–7 minutes; signposting between sections; plain language throughout; pauses appropriately; references existing information from notes</div></div>
+          <div class="rag-row rag-a-row"><div class="rag-rl">🟠</div><div>Mostly structured but jumps between sections; mostly plain language with occasional jargon; time pressure visible in final 2 minutes</div></div>
+          <div class="rag-row rag-r-row"><div class="rag-rl">🔴</div><div>Disorganised; history still running at 8+ minutes; medical jargon throughout; asks for documented information; no signposting</div></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">💬 Key Phrases — ICE, Diagnosis &amp; Plan</div>
+        <div class="phrase-stack">
+          <div class="phrase-card p-ideas">
+            <div class="p-lbl">Ideas</div>
+            <div class="p-phrase">"What do you think might have caused you to black out? Have you had any thoughts about what it could be?"</div>
+          </div>
+          <div class="phrase-card p-concerns">
+            <div class="p-lbl">Concerns</div>
+            <div class="p-phrase">"Is there something specific you've been worried about — something going through your mind you haven't said yet?"</div>
+          </div>
+          <div class="phrase-card p-expect">
+            <div class="p-lbl">Expectations</div>
+            <div class="p-phrase">"What were you hoping we might be able to arrange for you today — was there something specific?"</div>
+          </div>
+          <div class="phrase-card p-validate">
+            <div class="p-lbl">Validate brain scan expectation</div>
+            <div class="p-phrase">"I completely understand why a brain scan would be your first thought — the evidence tells us the cause is usually in the heart's rhythm, not the brain itself."</div>
+          </div>
+          <div class="phrase-card p-explain">
+            <div class="p-lbl">Explain diagnosis</div>
+            <div class="p-phrase">"Think of it like a brief power cut to the brain — the body's alarm system caused the blood vessels to widen and the heart to slow at the same moment."</div>
+          </div>
+          <div class="phrase-card p-close">
+            <div class="p-lbl">Close</div>
+            <div class="p-phrase">"Is there anything at all I've said that isn't clear, or anything we haven't covered that you wanted to ask before we finish?"</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sum-sub-hdr sca-sub-hdr">🚫 9 Danger Zones — Instant Deductions</div>
+        <div class="dz-stack">
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Asking for documented ECG result</strong><br><span class="dz-fix">→ Reference it: "I can see your ECG was normal at A&amp;E"</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Starting with "How long were you out for?"</strong><br><span class="dz-fix">→ Start with: "Can you tell me in your own words what happened?"</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Not asking about exertion at time of collapse</strong><br><span class="dz-fix">→ Always ask: "Were you doing anything strenuous when it happened?"</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Reassuring as vasovagal before excluding cardiac</strong><br><span class="dz-fix">→ "I think it's likely the benign type — but we need to check your heart's electrical system first"</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Ordering CT head without focal neurology</strong><br><span class="dz-fix">→ Explain: "A brain scan wouldn't answer the question we're asking — the cause is usually cardiac"</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>No DVLA advice given</strong><br><span class="dz-fix">→ Mandatory: "You must not drive — this is a legal requirement; contact the DVLA today"</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Patient's specific concern never named</strong><br><span class="dz-fix">→ Name it: "You're worried your heart stopped — like what happened to your friend Colin"</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>Safety-netting generic ("come back if worse")</strong><br><span class="dz-fix">→ Specific: "If it happens without any warning, or during exercise, call 999 immediately"</span></div></div>
+          <div class="dz-item"><span class="dz-x">✗</span><div><strong>No closing question asked</strong><br><span class="dz-fix">→ Always close: "Is there anything else you wanted to ask before we finish?"</span></div></div>
+        </div>
+
+        <div class="sum-sub-hdr sca-sub-hdr" style="margin-top:.85rem">💊 Drug Quick-Pick — Syncope</div>
+        <div class="sca-drug-pick">
+          <div class="sdp-row"><div class="sdp-cond">Orthostatic hypotension — Step 2</div><div class="sdp-arrow">→</div><div class="sdp-pill acei-pill">Fludrocortisone</div><div class="sdp-note">50–200 mcg OD; avoid in HF</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Orthostatic — refractory to fludrocortisone</div><div class="sdp-arrow">→</div><div class="sdp-pill ccb-pill">Midodrine</div><div class="sdp-note">2.5–10 mg TDS; no dose after 6 pm</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Vasovagal refractory — age over 42</div><div class="sdp-arrow">→</div><div class="sdp-pill arb-pill">Metoprolol</div><div class="sdp-note">25–100 mg OD; specialist decision</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Vasovagal + significant anxiety component</div><div class="sdp-arrow">→</div><div class="sdp-pill arb-pill">SSRI (off-label)</div><div class="sdp-note">Check QTc first; document unlicensed use</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Syncope caused by newly diagnosed AF</div><div class="sdp-arrow">→</div><div class="sdp-pill acei-pill">Anticoagulation (DOAC)</div><div class="sdp-note">CHA₂DS₂-VASc ≥2 (M) / ≥3 (F)</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Drug-induced orthostatic (tamsulosin + ACEi)</div><div class="sdp-arrow">→</div><div class="sdp-pill ccb-pill">Medication review</div><div class="sdp-note">Stop or reduce culprit; review in 2 weeks</div></div>
+          <div class="sdp-pivot">⛔ Never combine fludrocortisone with heart failure · Never give midodrine after 6 pm · Never start anti-epileptics without neurological confirmation · Never diagnose vasovagal without cardiac exclusion · Never allow driving without DVLA advice documented</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-footer">
+  <p><strong>Blackout &amp; Syncope · GP Clinical Reasoning Framework v2</strong> · NICE CKS Transient Loss of Consciousness (2022) · ESC Guidelines for Syncope (2018) · DVLA Assessing Fitness to Drive: Medical Standards for Drivers (2024) · GMC Good Medical Practice (2024)</p>
+  <p style="margin-top:4px">v2: Dual tailored summaries (Clinic + SCA) with visual algorithms · Clinical stem · Open Q first · ICE in all modes · Psychosocial (1E + 7G) · Lay language DDx (Step 5) · Safeguarding (Step 1) · Expectation management (7A) · SCA RAG checkpoints after every step · SCA Scorecard as standalone section · DVLA guidance at every relevant step</p>
+  <p style="margin-top:4px">Teaching clinicians <em>why</em> each step matters — not just what to do · Always consult current BNF/SPC · Clinical judgement takes precedence over any framework · DVLA standards should be verified at GOV.UK at the point of use</p>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

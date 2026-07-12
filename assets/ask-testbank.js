@@ -114,5 +114,27 @@ window.ASK_TESTBANK = [
 
   /* ---- dermatology ---- */
   { t:'Eczema — flare', q:'How do I manage an eczema flare on the limbs in an adult?',
-    must:[ ['steroid','corticosteroid','betamethasone','hydrocortisone'], ['emollient'] ], why:'Topical corticosteroid + continued emollients (CKS)' }
+    must:[ ['steroid','corticosteroid','betamethasone','hydrocortisone'], ['emollient'] ], why:'Topical corticosteroid + continued emollients (CKS)' },
+
+  /* ---- contraception / UKMEC 2025 (added after the postpartum-patch incident) ---- */
+  { t:'Postpartum — CHC patch, breastfeeding 8 wks', q:'Can I prescribe a contraceptive patch for a 30-year-old who gave birth 8 weeks ago and is breastfeeding?',
+    must:[ ['UKMEC 2025'], ['category 2','ukmec 2'] ], why:'UKMEC 2025: breastfeeding ≥6 wks–<6 months, CHC = category 2 (can be offered). NOT WHO MEC 3, NOT "avoid"' },
+  { t:'Postpartum — CHC, not breastfeeding', q:'When can a woman who is not breastfeeding start the combined pill after giving birth?',
+    must:[ ['3 week','three week','21 day'], ['VTE','thrombo','clot'] ], why:'UKMEC 2025: from 3 weeks if no VTE risk factors; ≥6 weeks unrestricted' },
+  { t:'Postpartum — CHC <6 wks breastfeeding', q:'Combined pill for a breastfeeding mother 4 weeks after delivery?',
+    must:[ ['UKMEC'], ['4','do not','not use','avoid'] ], why:'UKMEC 4 at 0–<6 weeks breastfeeding — do not use' },
+  { t:'Postpartum — when contraception needed', q:'How soon after giving birth does a woman need contraception?',
+    must:[ ['21','day 21','three week','3 week'] ], why:'Fertility can return from day 21 postpartum' },
+  { t:'Postpartum — POP timing', q:'Can the progestogen-only pill be started straight after delivery while breastfeeding?',
+    must:[ ['any time','anytime','yes','immediately','straight away'] ], why:'POP/implant: any time postpartum, UKMEC 1' },
+  { t:'Postpartum — IUD timing', q:'When can a copper coil be fitted after childbirth?',
+    must:[ ['48 hour','48h','48-hour'], ['4 week','four week','28 day'] ], why:'Within 48 h of birth OR from 4 weeks; between = UKMEC 3' },
+  { t:'UKMEC — current edition', q:'Which edition of the UKMEC is current for contraceptive eligibility?',
+    must:[ ['2025'] ], why:'UKMEC 2025 (CoSRH, Dec 2025) supersedes UKMEC 2016 — a "2016" or "2023" answer is stale' },
+  { t:'UKMEC — aura', q:'Is the combined pill safe in migraine with aura?',
+    must:[ ['UKMEC'], ['4','contraindicated'] ], why:'UKMEC 4 at any age' },
+  { t:'UKMEC — smoker over 35', q:'Can a 38-year-old smoking 15 a day use the combined pill?',
+    must:[ ['UKMEC','contraindicated','category 4','not'] ], why:'Smoking ≥15/day aged ≥35 = UKMEC 4 for CHC' },
+  { t:'Emergency contraception — options', q:'A woman had unprotected sex 4 days ago — what emergency contraception can I offer?',
+    must:[ ['copper','Cu-IUD','IUD'], ['ulipristal','ellaOne'] ], why:'Cu-IUD up to 5 days (most effective) + ulipristal 120 h; levonorgestrel only ≤72 h' }
 ];

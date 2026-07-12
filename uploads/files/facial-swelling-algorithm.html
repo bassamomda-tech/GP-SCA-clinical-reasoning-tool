@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Facial Swelling Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;--diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;--treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;--refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;--lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;--radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);--font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif;}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#7a1a2e 0%,#c0392b 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#c0392b,#7b3fa0);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}.node[data-type="TREAT"] .node-num{background:var(--treat)}.node[data-type="REFER"] .node-num{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}.node[data-type="TREAT"] .node-tag{background:var(--treat)}.node[data-type="REFER"] .node-tag{background:var(--refer)}.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}.pill-purple{background:#ede9fe;color:#5b21b6}.pill-blue{background:#dbeafe;color:#1e40af}.pill-teal{background:#ccfbf1;color:#0f766e}.pill-amber{background:#fef3c7;color:#92400e}.pill-green{background:#dcfce7;color:#15803d}.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="stem-banner">
+  <div class="sb-icon">🫦</div>
+  <div>
+    <b>Facial Swelling — New Presentation</b>
+    <small>Systematic GP assessment — dental, salivary, inflammatory, allergic and malignant causes</small>
+  </div>
+</div>
+<div class="alg-progress">
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+<div class="alg-flow" id="flow">
+
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Red Flags — Airway Compromise &amp; Life-Threatening Causes</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <b>Airway assessment is the priority.</b> Any facial swelling that could track to the floor of mouth, neck or retropharynx is a potential airway emergency.
+    <div class="rfgrid">
+      <div class="rftile"><b>Ludwig's angina</b> Bilateral submandibular swelling + raised floor of mouth + drooling + stridor → 999. Rapidly fatal airway emergency from dental infection.</div>
+      <div class="rftile"><b>Stridor / drooling</b> Any stridor, drooling, or inability to swallow own saliva with facial/neck swelling → 999. Impending airway compromise.</div>
+      <div class="rftile"><b>Angio-oedema</b> Sudden soft-tissue swelling of lip/tongue/throat + urticaria / allergen exposure → 999. Give IM adrenaline 0.5 mg (1:1000) if anaphylaxis.</div>
+      <div class="rftile"><b>Orbital cellulitis</b> Periorbital swelling + proptosis + restricted/painful eye movements + fever → 999 ophthalmology. Intracranial extension risk.</div>
+      <div class="rftile"><b>Cavernous sinus thrombosis</b> Bilateral periorbital swelling + headache + fever + chemosis → 999. Complication of facial/sinus infection.</div>
+      <div class="rftile"><b>Rapidly expanding neck mass</b> Increasing swelling tracking towards neck + trismus + fever → same-day hospital (deep space neck infection — descending necrotising mediastinitis risk)</div>
+      <div class="rftile"><b>Hard fixed painless mass</b> Non-tender, fixed, progressive facial/parotid swelling ± weight loss → 2WW head and neck cancer</div>
+      <div class="rftile"><b>Trismus (jaw won't open)</b> Limited mouth opening + swelling + fever → peritonsillar abscess or masseteric space abscess → same-day hospital</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Ludwig's angina has a mortality of up to 50% without immediate surgical airway — it spreads rapidly along fascial planes from a mandibular molar infection to the submandibular, sublingual, and submental spaces simultaneously. The airway can close within hours. Orbital cellulitis carries intracranial extension risk (cavernous sinus thrombosis, subdural empyema) in 5–10% of cases — proptosis and restricted eye movement are the defining features distinguishing orbital from pre-septal (periorbital) cellulitis. Angioedema with laryngeal involvement has a 5–10 minute window before airway occlusion — IM adrenaline must be given without delay.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>History — Location, Onset &amp; Associated Features</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Location</div><div>Periorbital (orbital/pre-septal cellulitis, allergy), cheek (dental abscess — upper/lower molar), angle of jaw (parotid gland), submandibular (lymph node, submandibular gland, dental), midline (thyroglossal cyst), neck (lymph nodes)</div>
+      <div>Onset</div><div>Sudden (minutes/hours — angio-oedema, allergy, insect sting) vs hours–days (dental abscess, cellulitis, salivary duct obstruction) vs weeks–months (malignancy, sarcoid, Sjögren's)</div>
+      <div>Pain</div><div>Severe + dental history → dental abscess. Colicky at mealtimes → salivary duct calculus (submandibular most common). Painless progressive → malignancy, Sjögren's parotid enlargement</div>
+      <div>Dental history</div><div>Toothache, recent dental work, broken/carious tooth. Dental cause is the single most common cause of facial swelling — ask specifically about lower molar pain.</div>
+      <div>Systemic symptoms</div><div>Fever (infection, malignancy), weight loss, night sweats (lymphoma), bilateral parotid enlargement (Sjögren's, sarcoid, HIV, alcoholic parotitis), dry eyes/mouth (Sjögren's)</div>
+      <div>Allergen exposure</div><div>New food, drug (ACE inhibitor — most common cause of drug-induced angio-oedema), insect sting, latex. ACE inhibitor angio-oedema can occur after years of use.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">ACE inhibitor-induced angio-oedema affects 0.1–0.7% of patients and can occur at any point during treatment — years after starting. The mechanism is bradykinin accumulation (not IgE-mediated), so adrenaline, antihistamines, and steroids are less effective. Treatment is stopping the ACE inhibitor — switch to ARB (lower risk). Salivary duct calculi (sialolithiasis) are typically submandibular (85%) due to the saliva being more alkaline and mucous. Mealtime swelling that reduces between meals is pathognomonic — the salivary gland swells on stimulation, then drains partially at rest. Bilateral parotid enlargement is the classic presentation of Sjögren's syndrome (xerostomia + keratoconjunctivitis sicca + parotid enlargement).</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis by Anatomical Zone</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Dental / odontogenic (most common)</div><div>Periapical abscess (from carious tooth), periodontal abscess, pericoronal abscess (wisdom tooth). Localised to one side, fluctuant or indurated. Dental X-ray diagnostic.</div>
+      <div>Salivary gland</div><div>Parotid: mumps (bilateral, painful — check vaccination status), parotitis, parotid calculus, pleomorphic adenoma (benign, slow-growing), parotid malignancy. Submandibular: calculus, sialadenitis.</div>
+      <div>Lymph nodes</div><div>Reactive (URTI, dental, scalp infection, EBV), suppurative lymphadenitis (bacterial), TB lymphadenitis (painless, matted), lymphoma (rubbery, non-tender, persistent). Location guides drainage area.</div>
+      <div>Inflammatory / autoimmune</div><div>Sjögren's (bilateral parotid, dry eyes/mouth), sarcoidosis (bilateral parotid + hilar lymphadenopathy — Heerfordt's syndrome), GCA (temporal swelling, temporal artery tenderness, age &gt;50)</div>
+      <div>Skin and soft tissue</div><div>Cellulitis (dental origin, insect bite, trauma — erythematous, warm, tender, spreading), sebaceous cyst (punctum visible), lipoma (soft, lobulated, non-tender), dermoid cyst</div>
+      <div>Vascular / congenital</div><div>Arteriovenous malformation (AVM — bluish discolouration, pulsatile), haemangioma, branchial cyst (lateral neck, young adults), thyroglossal cyst (midline, moves on tongue protrusion)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Dental infections account for 60–70% of facial swelling presentations in primary care — the anatomical relationship between roots of the lower molars and the submandibular space explains why seemingly minor dental infections can rapidly become life-threatening. Pleomorphic adenoma is the most common benign parotid tumour and grows slowly over years — it requires surgical excision (parotidectomy) as it has 5% malignant transformation risk if untreated. Heerfordt's syndrome (uveitis + parotid enlargement + facial nerve palsy + fever) is a specific sarcoidosis presentation — bilateral parotid swelling with uveitis is virtually pathognomonic and should prompt ACE level and CXR.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Targeted Examination</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Airway assessment first</div><div>Stridor, drooling, voice change (muffled/hot potato = peritonsillar abscess), trismus, inability to open mouth — any of these → 999 before completing examination</div>
+      <div>Swelling characteristics</div><div>Fluctuant (pus — abscess, ready to drain) vs indurated/woody (cellulitis, tumour) vs compressible (lymphoedema, vascular) vs pulsatile (AVM). Transilluminates (cyst) vs does not (solid tumour).</div>
+      <div>Skin / surface</div><div>Erythema + warmth → infection. Fixed to skin or underlying bone → malignancy. Mobile → benign. Punctum visible → sebaceous cyst. Parotid duct (Stensen's duct) — milk pus by massaging gland.</div>
+      <div>Mouth and teeth</div><div>Dental inspection — carious/broken tooth, gum swelling, pus at gum margin, trismus (mouth opening &lt;35 mm = significant), floor of mouth elevation (Ludwig's)</div>
+      <div>Lymph nodes (full chain)</div><div>Cervical (anterior/posterior), submandibular, submental, pre/post-auricular, supraclavicular. Tenderness/warmth → reactive/infective. Hard fixed → malignancy. Rubbery matted → lymphoma/TB.</div>
+      <div>Eyes</div><div>Proptosis, restricted eye movement, chemosis, visual acuity — distinguish orbital from pre-septal cellulitis. Dry eyes (Schirmer's test — Sjögren's)</div>
+      <div>Facial nerve</div><div>Facial nerve palsy with parotid swelling → parotid malignancy until proven otherwise. Test all branches: forehead, eye closure, nasolabial fold, mouth movement.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Facial nerve palsy in association with a parotid mass is a sinister combination — malignant parotid tumours invade the facial nerve as they expand through the gland. The presence of facial weakness with parotid swelling mandates urgent 2WW head and neck cancer referral. Trismus (limited mouth opening &lt;35 mm) indicates involvement of the masticator space — this can be caused by pericoronitis, masseteric space abscess, or temporal muscle involvement and impairs anaesthetic airway management. Milking the parotid duct (massaging the gland while visualising Stensen's duct orifice adjacent to the upper second molar) is a simple bedside test — pus emerging confirms parotitis.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="DIAGNOSE" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Diagnose</span><h3>Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Bloods — directed</div><div><span class="pill pill-blue">FBC</span> (leukocytosis — infection; lymphocytosis — EBV/viral) · <span class="pill pill-blue">CRP / ESR</span> · <span class="pill pill-blue">Mumps serology</span> (IgM — if bilateral parotid, unvaccinated) · <span class="pill pill-blue">Monospot / EBV IgM</span> (glandular fever)</div>
+      <div>Dental imaging</div><div><span class="pill pill-blue">Dental panoramic tomography (OPG)</span> — identifies periapical abscess, dental caries, impacted wisdom teeth, jaw lesions. Request via dentistry or hospital OPG unit.</div>
+      <div>Salivary gland</div><div><span class="pill pill-blue">Ultrasound salivary gland</span> — identifies calculi (&gt;90% sensitivity), abscess, benign vs cystic vs solid mass. First-line imaging for parotid / submandibular swelling.</div>
+      <div>Suspected malignancy</div><div><span class="pill pill-blue">USS + FNAC</span> (fine needle aspiration cytology) — organised via 2WW head and neck cancer pathway. MRI parotid is gold standard for soft tissue characterisation (via ENT).</div>
+      <div>Autoimmune screen</div><div><span class="pill pill-blue">Anti-Ro (SSA) + Anti-La (SSB)</span> (Sjögren's — 70% sensitive) · <span class="pill pill-blue">ANA</span> · <span class="pill pill-blue">ACE level</span> (sarcoidosis) · <span class="pill pill-blue">CXR</span> (bilateral hilar lymphadenopathy — sarcoid)</div>
+      <div>NOT routinely</div><div>CT face for uncomplicated dental abscess — reserve CT for deep space infections, orbital complications, or when MRI/USS non-diagnostic. Radiation dose to lenses.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Ultrasound is the first-line investigation for salivary gland pathology — it is readily available, radiation-free, and identifies calculi (which are radiolucent on plain X-ray) with 90% sensitivity. The dental panoramic radiograph (OPG) is the most informative single dental image and should be arranged promptly for all suspected odontogenic facial swelling — it identifies the causative tooth, any jaw cysts, and bony involvement. Anti-Ro/La antibodies are positive in 70% of Sjögren's syndrome — a negative result does not exclude the diagnosis (seronegative Sjögren's exists). Salivary gland biopsy (minor salivary gland lip biopsy) is the gold standard for Sjögren's diagnosis when serology is negative.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="REFER" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Ludwig's angina, stridor/drooling, anaphylaxis/angio-oedema with throat involvement, orbital cellulitis with proptosis</div>
+      <div><span class="pill pill-red">Same-day hospital</span></div><div>Spreading dental infection tracking to neck, trismus + fever + swelling, cavernous sinus thrombosis signs, periorbital swelling with restricted eye movement</div>
+      <div><span class="pill pill-purple">2WW head &amp; neck</span></div><div>Unexplained parotid lump ≥3 weeks, parotid swelling + facial nerve palsy, hard fixed facial mass, cervical lymphadenopathy ≥3 weeks with no infective cause, suspected mucosal head and neck cancer</div>
+      <div>Urgent dental</div><div>Same-day or next-day emergency dental: dental abscess with swelling (needs incision and drainage ± extraction). NHS 111 dental helpline for emergency dental access if no registered dentist.</div>
+      <div>ENT — routine</div><div>Recurrent parotitis, salivary duct calculus (sialendoscopy — minimally invasive stone removal), submandibular gland excision if recurrent sialadenitis</div>
+      <div>Rheumatology</div><div>Suspected Sjögren's syndrome (anti-Ro/La positive or characteristic features) · suspected sarcoidosis with systemic features</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">The 2WW head and neck cancer pathway covers parotid tumours (including the 20% of parotid tumours that are malignant) — any unexplained parotid mass lasting more than 3 weeks warrants referral regardless of soft consistency. Sialendoscopy (endoscopic removal of salivary duct calculi) has a 90% success rate and avoids gland excision — this is now available in most ENT centres. Facial nerve palsy with parotid swelling has a 60% positive predictive value for parotid malignancy in published series — it must be treated as cancer until proven otherwise and investigated within the 2WW pathway.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>GP-Initiated Treatment</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Dental abscess — mild</div>
+        <div class="b-drug">Amoxicillin 500 mg TDS × 5 days</div>
+        <div class="b-note">Antibiotics only as adjunct to dental treatment — refer same-day emergency dental. NICE guidance: antibiotics without dental treatment are ineffective and should not be prescribed without concurrent dental referral. Metronidazole 400 mg TDS if penicillin allergy.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Facial cellulitis</div>
+        <div class="b-drug">Co-amoxiclav 625 mg TDS × 5–7 days</div>
+        <div class="b-note">Covers streptococcal and anaerobic organisms. Flucloxacillin 500 mg QDS if staphylococcal (post-trauma). Cefalexin 500 mg QDS if penicillin allergy (non-anaphylactic). Review at 48 hrs — admit if spreading or fever not settling.</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">ACE inhibitor angio-oedema</div>
+        <div class="b-drug">Stop ACE inhibitor immediately</div>
+        <div class="b-note">Switch to ARB (angiotensin receptor blocker — lower angio-oedema risk). No antihistamines or steroids (bradykinin-mediated, not IgE). Icatibant (bradykinin antagonist) available if recurrent/severe — specialist initiated. Warn about future episodes.</div>
+      </div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Allergic angio-oedema</span><span class="rt">IM adrenaline 0.5 mg (1:1000) if systemic → 999. Chlorphenamine 10 mg IV/IM + hydrocortisone 200 mg IV in hospital. EpiPen prescribed on discharge. Allergy clinic referral.</span></div>
+      <div class="rung"><span class="rn">Salivary calculus</span><span class="rt">Encourage salivary flow — hydration, lemon drops, massage gland. Analgesia (ibuprofen 400 mg TDS). ENT referral for sialendoscopy. Antibiotics only if acute sialadenitis (co-amoxiclav).</span></div>
+      <div class="rung"><span class="rn">Sjögren's / sarcoid</span><span class="rt">Artificial tears (hypromellose) + saliva substitutes (Biotène). Hydroxychloroquine 200–400 mg OD (rheumatology initiated) for systemic Sjögren's. Oral prednisolone for sarcoid — specialist directed.</span></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NICE guidance (NICE CKS Dental Abscess, 2023) emphasises that antibiotics without dental treatment are ineffective for dental abscesses — the pus collection must be drained. Prescribing antibiotics alone delays definitive treatment and contributes to antimicrobial resistance. ACE inhibitor angio-oedema is bradykinin-mediated (not IgE) — antihistamines and steroids are largely ineffective, which is why this presentation can be dangerous. Icatibant (a bradykinin B2 receptor antagonist) is used in severe ACE inhibitor angio-oedema in secondary care. The switch from ACE inhibitor to ARB reduces but does not eliminate recurrence risk (ARBs cause angio-oedema in ~0.5% vs 1–3% for ACEi).</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Prevention &amp; Self-Management</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Dental hygiene</b> Twice-daily brushing (2 minutes), daily interdental cleaning, annual dental check-up. Dental abscess is 100% preventable with good oral hygiene. Fluoride toothpaste (1450 ppm for adults).</div>
+      <div class="lstile"><b>Dental registration</b> Register with NHS dentist — sign up via NHS.UK or 111. Unregistered patients use emergency dental services. Dental neglect from access barriers is a major cause of facial sepsis admissions.</div>
+      <div class="lstile"><b>Smoking cessation</b> Smoking doubles periodontal disease risk — major cause of dental abscesses and tooth loss. Brief intervention + smoking cessation service referral at every dental/GP consultation.</div>
+      <div class="lstile"><b>Salivary gland health</b> Adequate hydration (2 litres/day) reduces salivary calculus formation. Avoid dehydration. Stimulate salivary flow with sugar-free chewing gum. Avoid dry mouth medications where possible.</div>
+      <div class="lstile"><b>Allergen avoidance</b> EpiPen — trained use, always carry two pens, not out of date. Medical alert bracelet. Carry action plan. Allergy UK helpline: 01322 619898. Avoid identified trigger.</div>
+      <div class="lstile"><b>Sun protection</b> Sjögren's patients have photosensitivity risk. Apply SPF50 daily. Sjögren's also carries 44× increased risk of parotid lymphoma — annual parotid examination.</div>
+      <div class="lstile"><b>Eye care (Sjögren's)</b> Preservative-free artificial tears 4–6×/day. Hypromellose 0.3% drops. Avoid dry environments, fans blowing at face. Punctal plugs via ophthalmology if severe.</div>
+      <div class="lstile"><b>MMR vaccine check</b> Bilateral parotid swelling in unvaccinated or MMR-unknown → check vaccination status. Two doses of MMR vaccine prevent mumps. Offer catch-up if not vaccinated.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">NHS dental access is a significant problem in the UK — approximately 30 million adults are not registered with an NHS dentist (2023 data). This directly contributes to the high rates of dental abscess presentations in emergency departments and general practice. GP prescribing of antibiotics without dental referral perpetuates the problem — always simultaneously refer to emergency dental services. Sjögren's syndrome carries a 44× increased lifetime risk of parotid MALT lymphoma compared to the general population — this is the most important long-term monitoring priority and is managed via annual rheumatology review.</div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up &amp; Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>48 hours</div><div>Cellulitis: is erythema spreading despite antibiotics? Mark the leading edge with pen at time of prescribing — compare at 48 hrs. Not improving → hospital admission for IV antibiotics.</div>
+      <div>1 week</div><div>Post-dental abscess treatment — confirm definitive dental treatment arranged (extraction or root canal). Swelling fully resolved? No residual hard mass (if so, exclude tumour).</div>
+      <div>3 weeks</div><div>Any facial lump persisting ≥3 weeks with no clear infective cause → 2WW head and neck referral regardless of soft texture. Do not wait longer.</div>
+      <div>ACE inhibitor</div><div>Confirm switch to ARB documented. Recheck BP at 4 weeks. Warn patient about future facial swelling with any medication. Document allergy status on records.</div>
+      <div>2WW follow-up</div><div>Confirm referral received by hospital. Expected appointment within 2 weeks. If no letter after 2 weeks → chase directly.</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>Increasing swelling + difficulty breathing, stridor, drooling, sudden throat tightening, deteriorating consciousness, severe trismus</div>
+      <div><span class="pill pill-amber">Same-day GP</span></div><div>Cellulitis not improving at 48 hrs, spreading redness beyond marked margin, new fever/rigors, increasing trismus, new diplopia with periorbital swelling</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">Marking the leading edge of cellulitis with a surgical skin marker at the time of prescribing antibiotics is a well-validated safety-netting tool — any spread beyond the marked border at 48 hours indicates treatment failure and mandates IV antibiotics in hospital. The 3-week rule for unexplained lumps is based on NICE NG12 — the risk of malignancy in a persistent unexplained lump at 3 weeks is sufficient to justify 2WW referral. Waiting longer for spontaneous resolution risks delayed cancer diagnosis. Facial cellulitis tracking below the mandible into the neck requires same-day hospital admission — downward spread to the mediastinum (descending necrotising mediastinitis) carries 40% mortality even with surgical intervention.</div>
+  </div>
+</div>
+
+</div>
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE CKS Dental Abscess (2023), NICE NG12 (Suspected Cancer Referral), NICE CKS Salivary Gland Conditions, BSACI Angio-oedema guidelines, NICE CG37 (Referral for Suspected Cancer), BDA guidelines. Always adapt to individual patient context.
+</div>
+<script>
+(function(){
+  const STORE='rgp.alg.facialswelling.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+</body>
+</html>

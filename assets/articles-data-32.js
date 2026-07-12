@@ -328,7 +328,31 @@
       'Suspected congenital Zika syndrome → fetal medicine/paediatrics',
       'Neurological features (suspected Guillain-Barré syndrome) → emergency neurology',
       'Pre-travel/preconception advice → travel-health clinic and current guidance'],
-    source:'UKHSA / NaTHNaC — Zika virus' }
+    source:'UKHSA / NaTHNaC — Zika virus' },
+
+  { id:'postpartum-contraception', title:'Postpartum contraception (UKMEC 2025)', category:'Women’s health', icon:'🤱',
+    overview:'Choosing and starting contraception after childbirth, using the UK Medical Eligibility Criteria — current edition UKMEC 2025 (CoSRH, formerly FSRH; published December 2025, supersedes UKMEC 2016). Fertility can return from day 21 postpartum, so the conversation belongs in maternity discharge and the 6–8-week check. The high-stakes decision is oestrogen (combined hormonal contraception, CHC — pill, patch or ring) versus everything else, driven by postpartum VTE risk and breastfeeding. Note: UKMEC categories are UK-specific — do not substitute WHO MEC figures, which differ (e.g. breastfeeding 6 weeks–<6 months is WHO 3 but UKMEC 2).',
+    features:[
+      'Contraception is needed from day 21 postpartum — ovulation can precede the first period',
+      'Lactational amenorrhoea (LAM) is ~98% effective only if ALL of: <6 months postpartum, amenorrhoeic, and fully/nearly-fully breastfeeding',
+      'CHC (pill / patch / ring) and breastfeeding — UKMEC 2025: 0 to <6 weeks postpartum = category 4 (do not use); 6 weeks to <6 months (primarily breastfeeding) = category 2 (can be offered — advantages generally outweigh risks); ≥6 months = category 1–2',
+      'CHC and NOT breastfeeding — UKMEC 2025: 0 to <3 weeks = category 3–4 (4 with other VTE risk factors); 3 to <6 weeks = category 2 (3 with other VTE risk factors); ≥6 weeks = category 1. UKMEC 2025 tightened VTE rules generally — more than one VTE risk factor makes CHC category 4',
+      'Progestogen-only methods (POP, implant, DMPA) — can be started at ANY time postpartum, breastfeeding or not (UKMEC 1–2); the implant and POP are the usual quick-start choices at the postnatal check',
+      'Intrauterine methods (Cu-IUD / LNG-IUS) — insert within 48 hours of birth OR from 4 weeks postpartum (UKMEC 1); insertion between 48 hours and <4 weeks is UKMEC 3 (perforation/expulsion risk)'],
+    management:[
+      'Recommended: raise contraception before day 21 (maternity discharge / early postnatal contact) and again at the 6–8-week check — quote UKMEC 2025 categories, not WHO MEC or the superseded UKMEC 2016',
+      'If breastfeeding at 6 weeks–<6 months: CHC (including the patch) CAN be offered (UKMEC 2) with counselling; many still prefer progestogen-only options first — present the choice rather than a blanket "avoid"',
+      'If <6 weeks postpartum and breastfeeding: do not offer CHC (UKMEC 4); offer POP, implant, DMPA or (from 4 weeks) an IUD/IUS instead',
+      'If not breastfeeding: CHC is reasonable from 3 weeks with no VTE risk factors, and unrestricted from 6 weeks; screen for VTE risk factors (age ≥35, BMI ≥30, smoking, pre-eclampsia, caesarean, immobility, family history) — with more than one, avoid CHC (UKMEC 2025 category 4)',
+      'Quick-start rules: POP started ≤day 21 needs no extra precautions; after day 21, exclude pregnancy risk and advise 2 days extra precautions (7 days for CHC/DMPA/implant per method rules)',
+      'Consider long-acting reversible contraception (LARC — implant, IUS, IUD) as the most effective option, including immediate postpartum insertion where available',
+      'Emergency contraception: not needed before day 21; from day 21 all methods can be considered (Cu-IUD from 4 weeks postpartum)',
+      'Verify any uncertain category against the UKMEC 2025 summary tables (cosrh.org) rather than answering from memory'],
+    referral:[
+      'Complex medical comorbidity (e.g. VTE history, cardiac disease) → specialist contraception (CoSRH/SRH) clinic',
+      'Requested sterilisation or complex IUD insertion (e.g. perforation risk, failed fitting) → SRH/gynaecology',
+      'No cancer pathway link (NICE NG12) for this topic'],
+    source:'CoSRH UKMEC 2025 (Dec 2025) / FSRH Contraception After Pregnancy / NICE CKS Contraception' }
 
   );
 })();

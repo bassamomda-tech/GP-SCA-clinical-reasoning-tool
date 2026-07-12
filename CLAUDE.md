@@ -50,6 +50,321 @@ Source of truth: `uploads/Cancer referral NICE.pdf` (NICE NG12, May 2025).
   in Chrome). Always handle the `unavailable` case gracefully and offer a worked example.
 
 ## Session log
+- **SCA — Live Group Mock built (the one competitor feature we lacked) + 312-case marketing
+  (this session):** competitive scan (SCAreVision/SCAPrep/MedTutor/Clinitalk) showed we already
+  had readiness dashboard (sca-weakspots), worked examples, 12-case full-diet circuit, voice —
+  the ONLY real gap was SCAreVision's networked group revision. Built it: (1) `backend/worker.js`
+  new `/api/group` endpoint (signed-in, ANY tier): POST {op:'create',caseId}→5-letter code
+  (alphabet excludes 0/O/1/I/L), state in USERS KV `grp:<CODE>` TTL 6h refreshed per write;
+  GET ?code=→{state,now}; POST {op:'patch',code,patch}→shallow merge, roles merged per-role
+  (null=leave), v counter; responses carry `now` for client clock-offset sync. (2) NEW
+  `tools/sca-group.html`: host picks case (search all 312; free tier can host only the 5
+  RGP_FREE_SAMPLES.scaCases — 🔒 in picker — but can JOIN any session = invite/growth loop);
+  lobby with claim-a-role cards (candidate/patient/examiner, first-name, re-claim on race loss);
+  synced 3-min prep (candidate auto-advances at 0) + 12-min clock computed from server ts +
+  offset; per-role views (candidate=brief only; patient=opening/facts/ICE/cues card;
+  examiner=checkpoints ticked live + CF/F/P/CP grades ×3 domains + one-line fix); done view
+  shows grades + missed checkpoints + learning; candidate saves to `rgp-sca-attempts`
+  (src:'group') so it feeds My Readiness. 2.5s polling, sessionStorage resume, graceful
+  no-worker/preview message → points to printable Role-Play Packs. (3) `assets/site.js`:
+  scaToolsList entry '👥 Live Group Mock'; bronze OPEN list += 'sca-group.html'. (4)
+  `index.html`: SCA hero stat 300+→**312 AI patient cases · unlimited · no credits**; phase-3
+  toolkit gained the Group Mock x-card; meta/og/twitter descriptions now say "312 AI patient
+  roleplays — unlimited, no per-case credits". (5) SITEWIDE `site.js?v=64/65→66` (batches:
+  root+pages 14, tools+lab-results 48, cases 108; "SETUP - Connect the AI" page has no site.js
+  ref; deploy folders skipped). SW CACHE_VERSION **v27→v28**. Deploy = WHOLE SITE + re-paste
+  worker.js in Cloudflare (group endpoint). sca-fix/ holds the core changed set. Residual
+  (unchanged): 4.9MB document.write case loading; circuit personas/hands-free parity; TTS echo
+  risk. KV race on simultaneous role claims is mitigated client-side (silent re-claim).
+- **SCA — AI patient made fast + natural at the Worker root; full SCA audit (this session):**
+  user asked to make the SCA side best-in-class, verify the AI patient runs smoothly live, and
+  find deficits. Root causes of "not smooth" found in `backend/worker.js` aiProxy: EVERY /api/ai
+  call carried the `web_search` tool (a simulated patient could stall 5–15s mid-consultation to
+  search NICE) and `temperature:0` (patient replies robotic + identical on retry of the same
+  case). Fix: aiProxy now reads `nosearch` + `temperature` from the request body — `nosearch:true`
+  omits the web-search tool; temperature is clamped 0–1 (default stays 0 for Ask/Scribe accuracy).
+  `assets/site.js` AI shim (complete() + stream()) forwards `arg.nosearch` / `arg.temperature`.
+  `tools/sca-simulator.html` + `tools/sca-circuit-ai.html`: patient turns send
+  `{nosearch:true, temperature:0.7}`, examiner-marking calls send `{nosearch:true}` (temp 0 kept
+  for marking consistency). Simulator also gained ONE automatic retry when the examiner JSON
+  fails to parse (renderFeedback returns false → re-mark once, mirrors Scribe); fixed literal
+  `&amp;` artifacts inside both patient/examiner prompts; circuit persist() duplicate-condition
+  bug (`r.dg!=='-'&&r.dg!=='-'`) fixed. Bumps: **site.js?v=64→65 on the two SCA AI pages ONLY**
+  (precedent: v55→56 round — other pages don't use the new fields; stale copies elsewhere are
+  behaviour-identical), SW CACHE_VERSION **v26→v27**. Deploy staged in `sca-fix/` (worker.js
+  re-paste in Cloudflare + assets/site.js + the two tool pages + service-worker.js). Audit
+  results (verified, no action needed): 80 sca-cases files eval cleanly → 312 cases, zero
+  duplicate ids, zero missing fields (title/brief/opening/facts/cues/ice/checkpoints), types
+  231 video + 81 telephone; sca-practice/sca-weakspots/sca-simulator load with zero console
+  errors. KNOWN residual deficits (deliberate, not yet done): ~4.9 MB of case scripts load via
+  document.write on simulator+circuit (SW caches after first visit — consider lazy loading);
+  circuit lacks the simulator's personas + hands-free live-voice mode; simulator TTS safety
+  timeout can re-open the mic while long TTS is still speaking (echo risk); patient replies
+  don't stream (short replies, low win).
+- **Ask — irrelevant library chips on off-library questions FIXED at the retrieval root (this
+  session):** user screenshot (thrombocytosis/Raynaud's/warfarin question) STILL showed a "FROM
+  THE REASONING GP LIBRARY" row of junk (Growing pains, Tailbone, Foot drop, Cold sores, Ready
+  Prescriptions). The prior client-side srcHtml gate (`confident===false → no chips`) was
+  correct but never fired: the confidence flag itself was a FALSE POSITIVE — any single
+  incidental title-hit flipped it true (lexical `tHits.length>0`; semantic `||titleHit(top)`),
+  and on the live site the semantic layer ranked odd neighbours that got listed unfiltered.
+  Root-cause fix in `assets/ask-retrieval.js`: (1) `searchScored` now tracks **specHit** = a
+  matched title term that is genuinely DISCRIMINATING (`tokIDF ≥ SPECIFIC_IDF=3.0`, i.e. term in
+  ≲5% of the 975 titles) and non-generic; (2) confidence now keys on specHit — lexical
+  `confident = specHits.length>0`, semantic `confident = top.f≥0.45 || specHit(top)`; (3) prefix
+  matching gained a **length-ratio guard** (`min/max ≥ 0.5`) so a short common word can't latch
+  a long unrelated term ("diver" ✗→ diverticulitis, "man" ✗→ management, while
+  hyponatr→hyponatremia / anticoag→anticoagulation survive); (4) new exported `relevantSlugs(q)`
+  = slugs with a specHit (the ONLY topics allowed as chips). `pages/ask.js`: chips are now built
+  from `hits.filter(h=>relevantSlugs.has(h.slug))` (stored as hitSlugs + passed to srcHtml) so
+  semantic near-neighbours with no title overlap can never show as chips; srcHtml also **dedupes**
+  chips by normalised title (killed the triple "Raynaud's phenomenon/Raynaud's Phenomenon/
+  Raynauds"). Verified with a temp harness over the full 975-topic index: the user's exact query
+  now shows Raynaud's phenomenon · Thrombocytosis (relevant!) with ZERO junk; hypertension/
+  headache/anaemia core queries stay confident with correct chips; "diver" no longer hits
+  diverticulitis. Known residual: a contrived off-library multi-word query can still surface a
+  tangential chip that shares an exact real word (e.g. "decompression **sickness**" → "Motion
+  sickness") — lexical-only can't tell peripheral from central; semantic would, but the chip
+  filter is deliberately lexical to keep OUT bad semantic neighbours. Client/retrieval only — NO
+  worker framing/salt change (answer cache stays valid; chips are recomputed client-side every
+  ask, so the fix applies even to cached answers). Bumps: **ask-retrieval.js?v=3→4** (ask.html +
+  ask-quality.html), **ask.js?v=18→19** (ask.html), SW CACHE_VERSION **v25→v26**. `ask-fix-2/`
+  refreshed to the FULL undeployed set (7 files: assets/ask-core.js v8 + assets/ask-retrieval.js
+  v4 + pages/ask.js + pages/ask.html + tools/ask-quality.html + service-worker.js v26 + re-paste
+  backend/worker.js for the p6 salt from the prior round).
+- **Scribe — Heidi/Tandem-style templates + problem-based notes (this session):** user chose
+  (questions form): note templates, saveable custom templates, problem-based notes,
+  EMIS/SystmOne copy (already existed via `sys`/SECMAP), priority = medical language. All in
+  `tools/scribe.html`: (1) **Template segmented control** `#tplSeg` (GP consult default /
+  Problem-based / Chronic review / Triage-phone) above the note-style row; `tpl` state
+  persisted in save()/restore + per-session (upsert/loadSession); `TPL` directive map injected
+  into buildPrompt after STYLE. Problem-based → JSON shape gains `problems:[{title,history,
+  examination,assessment,plan}]` (shape string is dynamic on tpl); chronic → control status/
+  adherence/objective-measures/recall structure, QOF-able actions in tasks; triage → never
+  imply physical exam, remote findings labelled, explicit disposition line, full safety-net.
+  (2) **My templates**: `#tplSelect`+Save/✕ buttons (`.scr-mytpl` CSS); saves {tpl, noteStyle,
+  custom instructions} as named template in localStorage `rgp-scribe-mytpl-v1` (cap 30,
+  local-only — NOT in RGPSync); applying sets all three. (3) **Problem-split rendering**:
+  `noteProblems()`/`problemText()`; renderNote shows presenting card + per-problem cards
+  ("Problem N — title", sub-labelled via SECMAP[sys] so EMIS/S1/SOAP wording carries through,
+  `.scr-psec` CSS) + any non-empty shared flat sections; per-problem Copy button
+  (data-prob); plainNote() outputs "── PROBLEM N: TITLE ──" blocks for the full-note copy.
+  (4) **MEDICAL LANGUAGE rule** in buildPrompt (codeable SNOMED-style problem/assessment
+  wording, lay→clinical term translation, ICE kept as short quotes). Bumped SW CACHE_VERSION
+  **v24→v25**. Deploy staged in `scribe-fix/` (tools/scribe.html + service-worker.js).
+- **Scribe — fidelity rules + background context (this session):** user: Scribe "not accurate,
+  not considering the context". (1) New full-width **Background** field (`#ctxBg`, PMH/meds/
+  allergies/results) in the context row; persisted in save()/restore, sessions (upsert/load),
+  cleared on new session, input listener; `.scr-ctx .bg{flex-basis:100%}`. (2) `bgBrief()`
+  helper next to settingBrief() — injects the background into referral letter, record-refine
+  chat and second-opinion prompts; scaPrompt ctx line gains Background; buildPrompt pushes it
+  as clinician-entered context. (3) buildPrompt hardened: FIDELITY rule (negation never
+  flipped; numbers/doses verbatim or "[unclear]"; patient-reported vs doctor-observed
+  attribution; ambiguous material points → "[unclear — verify]"), USE THE CONTEXT rule
+  (age→NG12 thresholds, background meds→interactions; context informs interpretation but is
+  never documented as consultation content), FINAL SELF-CHECK (silent re-read: nothing
+  invented/dropped, negatives intact, numbers verbatim, twoww/missedFlags justified, valid
+  JSON). Bumped SW CACHE_VERSION **v23→v24**. Deploy staged in `scribe-fix/` (tools/scribe.html
+  + service-worker.js) — no worker/site.js change.
+- **Ask — 4 further accuracy rules (this session, follow-on):** added to `assets/ask-core.js`
+  FRAMING: (1) MISSING PATIENT FACTOR — BRANCH, DON'T ASSUME (renal/hepatic, pregnancy/
+  breastfeeding, age/frailty, anticoagulation, allergy → branch the answer or add a
+  "**Check first:**" line; never silently assume the common case); (2) PRESCRIBING SAFETY
+  BLOCK ("**Before prescribing:**" — key contraindications/cautions, interactions to check,
+  monitoring + interval, sourced); (3) VALIDATED SCORES (name score + threshold + action —
+  Wells/CURB-65/FeverPAIN/CHA₂DS₂-VASc+ORBIT/QRISK3/FRAX etc.; never invent a cut-off);
+  (4) CONFLICT RULE (live-fetched guidance beats a conflicting library note; state the
+  discrepancy, never average). PRIMER_ACK updated. Prompt-only — no ask.js change. Bumps:
+  ask-core.js?v=7→8 (ask.html + ask-quality.html), worker ansKey salt **p5→p6**, SW
+  CACHE_VERSION **v22→v23**. `ask-fix-2/` refreshed (5 files) + worker re-paste required.
+- **Ask — ranked-differential diagnostic answers (this session):** user wants diagnostic
+  queries answered as a practical ranked differential ("highly likely / likely"), never one
+  over-confident diagnosis. (1) `assets/ask-core.js`: added DIAGNOSTIC QUESTIONS rule to
+  FRAMING — dx questions must open with "## Working diagnosis": **Most likely** (ONE named
+  front-runner + likelihood word + supporting features), **Also possible** (ranked, each with
+  its discriminator), **Must not miss** (each with excluding action, [[2WW]]/NG12 where met),
+  **To narrow it down**, **Safety-net**; likelihood words only (highly likely/likely/possible/
+  unlikely-but-exclude), no invented percentages, no certainty unless pathognomonic; mgmt-of-
+  established-diagnosis questions excluded. Also added FINAL SELF-CHECK (silent pre-answer
+  re-read: figures sourced, NG12 age+feature+action, dx shape, Guidelines-used line) and
+  exported `classify(q)` → 'dx'|'general' (regex: differential/what could this be/causes of/
+  presents-with-without-mgmt-verbs etc.). PRIMER_ACK updated. (2) `pages/ask.js`: groundingMeta
+  takes k; classify(effectiveQ)==='dx' → retrieval widened 4→7 notes (extra notes = candidate
+  diagnoses) + DIAGNOSTIC MODE order appended after weakNote restating the shape; mdToHtml
+  renders "## Working diagnosis" as a rust-accented `.ans-dx` box (🧭 header, mirrors
+  ans-evidence; closes on next heading or **Guidelines used**/_Educational_ line — same
+  closure added for the evidence box). (3) CSS `.ans-dx` in pages/ask.html (color-mix rust
+  tints). Bumps: ask-core.js?v=6→7 + ask.js?v=17→18 (ask.html), ask-core v7 in ask-quality.html,
+  worker ansKey salt **p4→p5** (framing changed → kills stale cached answers), SW CACHE_VERSION
+  **v21→v22**. `ask-fix-2/` refreshed (6 files) + worker re-paste required.
+- **Ask — hide unrelated library chips on weak match (this session):** user screenshot showed
+  an off-library question (thrombocytosis/Raynaud's) still rendering a "FROM THE REASONING GP
+  LIBRARY" row of unrelated topics (Growing pains, Tailbone pain, Foot drop, Cold sores, Ready
+  Prescriptions) — the low-confidence grounding hits. Fixed in `pages/ask.js`: `srcHtml(hits,q,
+  confident)` now drops the article/topic chips entirely when `confident===false` (keeps tool
+  chips, which are only added on a genuine keyword match; relabels to "Related tools" if only
+  those remain, else the row is omitted). The confidence flag is persisted on each assistant
+  message (`conf:gMeta.confident`) so the saved-chat re-render path (`renderThread`) suppresses
+  them too. Bumped `ask.js?v=16→17` in ask.html; SW CACHE_VERSION **v20→v21**. `ask-fix-2/`
+  refreshed (ask.js, ask.html, service-worker.js). Presentational + client-only — no worker
+  change needed for this piece.
+- **Ask — coloured evidence box for the direct answer (this session):** user wanted the part
+  that directly answers the question boxed + coloured so it's findable in a busy clinic. In
+  `pages/ask.js` `mdToHtml` now detects the "What the guidance says" heading and wraps that
+  section (until the next heading) in `<div class="ans-evidence">` with a 📋 header; also added
+  `>` blockquote parsing so the quoted guidance lines render as quotes. CSS in `pages/ask.html`:
+  `.ans-evidence` = teal-soft bg + 4px teal left border + rounded, `.ans-evidence-h` uppercase
+  teal label, `.ans blockquote` teal left-rule. Verified via a standalone harness screenshot
+  (box renders correctly, "In practice"/"Guidelines used" fall outside it). Bumped `ask.js?v=15→16`
+  in ask.html; SW CACHE_VERSION **v19→v20**. `ask-fix-2/` refreshed (ask.js, ask.html,
+  service-worker.js). Purely presentational — no worker change, but the box only appears when
+  the model uses the evidence-first shape (needs the p4 framing round deployed).
+- **Ask — Medwise-style evidence-first (extractive) answers (this session):** user wants
+  Medwise-level accuracy. Medwise's trick = extractive answers (quote the guideline text,
+  don't compose from memory). Added EVIDENCE-FIRST ANSWER SHAPE rule to `assets/ask-core.js`
+  FRAMING: any figure-dependent answer (dose/category/threshold/referral criterion/monitoring
+  interval) must OPEN with a "**What the guidance says**" block of 1–3 near-verbatim quoted
+  lines each ending "[source]", drawn ONLY from the supplied notes or THIS turn's web content,
+  then an "**In practice**" advisory block; memory paraphrase may never be dressed as a quote;
+  non-figure questions keep normal structure. PRIMER_ACK updated to match. Cache salt
+  `p3→p4` in `backend/worker.js`; `ask-core.js?v=5→6` in pages/ask.html + tools/ask-quality.html;
+  SW CACHE_VERSION **v18→v19**. `ask-fix-2/` deploy folder refreshed (7 files incl. pages/ask.js
+  from the prior round; worker re-paste still required — it may also predate /api/embed, check
+  the 🧠/🔤 retrieval chip on live answers). Combined with the prior rounds this gives the
+  Medwise property end-to-end: semantic retrieval → confidence gate → forced verification
+  search → extractive quoted answer → visible retrieval mode → vetted answer cache.
+- **Ask — systemic accuracy net: retrieval-confidence gate + forced verification search (this
+  session):** user (rightly) rejected per-topic synonym patching as whack-a-mole and demanded a
+  systemic fix; they confirmed the Cloudflare `AI` binding EXISTS, so semantic search should be
+  live once the current worker.js is pasted (if answers still show the keyword chip, the deployed
+  worker predates `/api/embed`). Changes: (1) `assets/ask-retrieval.js` — `grounding` refactored
+  into `groundingMeta(q,k)` returning `{items, mode:'semantic'|'lexical', confident}` (semantic:
+  confident = top blended f≥0.45 or title-hit; lexical: confident = any title-hit); `grounding`
+  is now a thin wrapper; both exported (`?v=2→3`). (2) `pages/ask.js` — uses groundingMeta; when
+  NOT confident, appends a RETRIEVAL WARNING to the grounded context ordering the model to ignore
+  mismatched notes, never answer from memory, and MUST verify via live web search (or name the
+  source to check + safe general position). Every answer now shows a retrieval chip in the
+  ans-note: 🧠 "matched by meaning" / 🔤 "matched by keywords (semantic layer warming up or
+  offline)" + 📡 weak-match chip when the gate fired — so the user can SEE which mode answered
+  on the live site (`ask.js?v=14→15`). (3) `backend/worker.js` — web_search `max_uses 1→2` so the
+  verification search isn't starved. SW CACHE_VERSION **v17→v18**. Deploy set refreshed in
+  `ask-fix-2/` (now 6 site files + worker re-paste). Diagnostic for the user: if live answers
+  show 🔤 keyword chip persistently, the deployed worker lacks /api/embed → re-paste worker.js.
+- **Ask — postpartum UKMEC still wrong: retrieval miss + memory-quoted category (this
+  session):** user transcript showed the live site answering "CHC at 8 wks postpartum,
+  breastfeeding" with UKMEC 3 (the 2016 figure; UKMEC 2025 = category 2), self-correcting
+  only when challenged. TWO root causes found: (1) **retrieval miss** — the library chips
+  showed pregnancy articles, NOT the curated postpartum-contraception article; the lexical
+  index has no stemming so "contraceptive"≠"contraception" and "post pregnancy"≠"postpartum",
+  so the one note with the right category never reached the model. Fixed in
+  `assets/ask-retrieval.js`: PHRASES additions (post[- ]pregnancy / N weeks after birth-
+  delivery-pregnancy / after (giving) birth / after delivery → 'postpartum'; combined
+  (contraceptive|hormonal) pill → 'combined hormonal contraception chc'; contraceptive
+  pill|patch|ring|injection|implant → 'contraception $1') + SYN additions (contraceptive/s
+  →contraception, cocp/chc→contraception, postnatal/postnatally/puerperium→postpartum).
+  Verified in preview: the user's exact question now ranks postpartum-contraception #1
+  (55 vs 22). (2) **memory-quoted figure** — model stated a category despite live UKMEC 2025
+  search results being present. Added VERIFIED FIGURES ONLY rule to `assets/ask-core.js`
+  FRAMING (never state a UKMEC category/dose/threshold from memory; quote only if in notes
+  or THIS turn's web content; else search, else say "check the UKMEC 2025 summary table" +
+  safe general position). Cache salt `p2→p3` in `backend/worker.js` (framing changed
+  materially). Bumps: ask-retrieval.js?v=1→2 + ask-core.js?v=4→5 in pages/ask.html +
+  tools/ask-quality.html; SW CACHE_VERSION **v16→v17** (user has deployed the v64/v16 round,
+  so this needs a real bump). Deploy set staged in `ask-fix-2/`: assets/ask-retrieval.js,
+  assets/ask-core.js, pages/ask.html, tools/ask-quality.html, service-worker.js + RE-PASTE
+  backend/worker.js in Cloudflare (kills the wrong cached answers via p3). Told user: also
+  run the contraception test-bank set in the Quality Console and approve correct answers to
+  pin them permanently.
+- **"Install app" dead on phones — RGPInstall early-return fix (this session):** the nav
+  "📲 Install app" button calls `window.RGPInstall()`, but the install IIFE in
+  `assets/site.js` did `if (standalone() || dismissed()) return;` BEFORE defining
+  `RGPInstall` — so on any device where the auto install pill had ever been dismissed
+  (key `rgp-install-dismissed-v1`), the button was undefined and silently did nothing
+  (PC worked because the pill was never dismissed there). Fix: removed the module-level
+  early return (the auto-pill paths already gate on standalone/dismissed themselves) so
+  `RGPInstall` is ALWAYS defined; generalised `iosSheet()` → `manualSheet(kind)` with an
+  Android variant (⋮ menu → Add to Home screen / Install app); `RGPInstall` now = native
+  `beforeinstallprompt` when captured, else the platform manual sheet (no more dead pill
+  when `deferred` is null); no-op when already standalone. Runtime-verified by re-running
+  the module with the dismissed key set: button opens the sheet. NO version bump — site.js
+  stays ?v=64 because v64 was never deployed (this landed in the same undeployed round as
+  the chat sync); refreshed `chat-sync-fix/assets/site.js` in the download package.
+- **Ask chat history cross-device sync + UKMEC 2025 content round (this session):** user
+  reported Ask chats don't follow the account across devices. Added `rgp.ask.sessions.v1`
+  to the `RGPSync` CFG in `assets/site.js` with a new `asksess` merge: union sessions by id
+  keeping the newer `.updated` copy, drop empty "New chat" shells (only when real chats
+  exist), cap 60, keep the LOCAL device's activeId when it survives. `pages/ask.js` listens
+  for `rgp-sync-updated` (key match on SESS_KEY) → reloads from localStorage and re-renders
+  thread+chat list, preserving the open chat if it survived the merge (`ask.js?v=13→14`).
+  Sync only manifests on the live site (Worker + signed in; preview = local-only). ALSO this
+  session (continuation of the UKMEC accuracy plan): postpartum-contraception article was
+  already in `articles-data-32.js` + index (total 436) + contraception test-bank set in
+  `ask-testbank.js` — completed the remaining stale-citation sweep: UKMEC 2023→2025 (CoSRH)
+  in tools/algorithms/contraception.html + emergency-contraception.html, cases/migraine.html
+  (×2), tools/management/contraception.html (guideline+foot), assets/dx-packs/contraception.js
+  (4 strings via run_script). Sitewide **site.js?v=63→v=64** (root+pages 14, tools+lab-results
+  48, cases 108; verified zero live v63 — the only hits were the now-deleted `changed-signin/`
+  + `signin-only/` download packages, superseded because deploy is again the whole site).
+  Bumped `service-worker.js` CACHE_VERSION **v15→v16**. Deploy = whole site + re-paste worker
+  if not already done.
+- **Sign-in blocked on locked pages — auth-modal z-index fix (this session):** user reported
+  that after signing OUT on a gated page (e.g. `pages/ask.html`), clicking **Sign in** on the
+  "This page is for members" gate did nothing — they had to close the tab and sign in from the
+  home page. Root cause: the members-gate overlay `.rgp-gate` is `z-index:9000`, but the auth
+  modal `.rgp-auth-modal` was `z-index:220` (in `assets/site.css`), so `RGP_openAuth()` opened
+  the login box BEHIND the gate — invisible/unclickable. On the home page there's no gate so it
+  worked, matching the symptom. Fix: raised the auth modal to `z-index:9600` in `assets/site.css`
+  AND added a cache-proof `.rgp-auth-modal{z-index:9600 !important}` rule to the `<style>` block
+  `injectAuthModal()` appends in `site.js` (that style loads after site.css, so it wins even if a
+  stale site.css is cached). Verified in preview: `RGP_openAuth('signin')` opens, computed
+  `z-index` = 9600 (> gate 9000), no console errors. Required sitewide **site.js?v=62→v=63**
+  (root + cases/ + tools/ + pages/ + tools/algorithms/lab-results.html; algorithm/management
+  pathway pages load alg-nav.js/mgmt-nav.js NOT site.js so were untouched; verified zero live
+  ?v=62 remain — the two ?v=62 hits left are the separate `_changed/` + `changed-4/` Ask-accuracy
+  deploy packages). Bumped `service-worker.js` CACHE_VERSION **v14→v15** so clients refetch the
+  HTML pages (which now reference ?v=63). Deploy = re-upload assets/site.js + assets/site.css +
+  all HTML pages + service-worker.js (effectively the whole site).
+- **Ask — accuracy hardening round 2 (this session):** follow-on to the wrong/inconsistent
+  UKMEC answer complaint. Prior (interrupted) turn had already landed: ADVISORY REGISTER
+  (recommendations not orders), NAME YOUR SOURCES (edition+year), UNREACHABLE PUBLISHER RULE,
+  UKMEC 2025/CoSRH rule, `temperature:0`, fallback model off by default, default model
+  `claude-sonnet-5`, cosrh.org/fsrh.org/medicines.org.uk in allowed_domains. THIS session
+  added: (1) **GUIDELINES-USED LINE** rule in `assets/ask-core.js` FRAMING — every answer must
+  end (before the educational italic) with `**Guidelines used:** …` listing each guideline w/
+  edition/year (or "none directly applicable"); PRIMER_ACK updated to match. (2) Unreachable-
+  publisher rule strengthened: a recommendation is fair to give whenever endorsed by NICE/BNF/
+  current UK guidance regardless of hosting site; never say "cannot access / no permission".
+  (3) **Answer-cache invalidation**: `ansKey` hash in `backend/worker.js` now salts with a
+  prompt version (`model + '|p2|' + norm`) — bump `p2` whenever FRAMING changes materially, so
+  stale answers generated under old rules can never be served (this was a real cause of the
+  two-users-different-answers report: one user hit a pre-fix cached answer). Old `ans:` entries
+  age out via TTL. Bumped `ask-core.js?v=3`→`?v=4` in pages/ask.html + tools/ask-quality.html
+  ONLY (site.js untouched, stays ?v=62). Deploy set (also staged in `_changed/`):
+  assets/ask-core.js, pages/ask.html, tools/ask-quality.html + re-paste backend/worker.js in
+  Cloudflare. Cost note given to user: Sonnet ≈2–3p/question vs Haiku <1p; Opus not needed —
+  grounding + search + cache matter more than model size.
+- **Live paywall gaps fixed — pathway/protocol pages + PayPal button timing (this session):**
+  user tested with a real free account on gpreasoning.uk and found (a) algorithms, protocols
+  and casebook all fully open (not capped to 5), and (b) the pricing Subscribe buttons doing
+  nothing. Root causes: (1) pathway pages (`tools/algorithms/*.html`) load `alg-nav.js` and
+  protocol pages (`tools/management/*.html`) load `mgmt-nav.js` — NEITHER loads `site.js`, so the
+  site.js paywall gate never ran on them (casebook `cases/*.html` DO load site.js and were fine).
+  Fixed by appending an identical standalone content gate (IIFE, `window.__rgpContentGate` flag)
+  to BOTH `assets/alg-nav.js` and `assets/mgmt-nav.js`: live-host check, reads the auth cache
+  site.js keeps in localStorage (`rgp.auth.token.v1` + `rgp.auth.me.v1` → `.user.tier`/`.admin`),
+  allows admin/platinum/silver, blocks gold+signed-out, bronze → only 5 curated sample basenames,
+  else a teal upgrade overlay (links `../../index.html#subscriptions`). Curated FREE lists:
+  pathways = chest-pain/headache/abdominal-pain/back-pain/breathlessness; protocols =
+  hypertension/asthma/type-2-diabetes/gout/migraine (all verified to exist). Made site.js's
+  `FREE_ALGS` a matching fixed Set (was dynamic first-5 of RGP_ALGORITHMS) so the hub-gate and
+  page-gate agree. (2) `rgp-pay.js` gave up if `[data-subs]` wasn't in the DOM at DOMContentLoaded,
+  but site.js renders the footer/subscriptions section — added a 12×300ms retry
+  (`waitForSubs`). Bumped `service-worker.js` CACHE_VERSION **v13→v14** (alg-nav.js/mgmt-nav.js are
+  loaded UN-versioned, so the SW bump forces clients to refetch them). NOTE: the user's "buttons do
+  nothing" was ALSO partly a pre-deploy cached site — told them to redeploy + hard-refresh twice.
+  Changed files to redeploy: assets/alg-nav.js, assets/mgmt-nav.js, assets/site.js, assets/rgp-pay.js,
+  service-worker.js. site.js still ?v=61 sitewide (unchanged version string — content changed but
+  it's fetched fresh once SW updates; if a browser still shows stale, the SW v14 bump clears it).
 - **Free "Trainee" (bronze) taster — granular paywall gate (this session):** the user
   specified exactly what a FREE signed-in account may open. Rebuilt the paywall gate in
   `assets/site.js` (the `RGP paywall gate` IIFE) from a 2-way clinic/sca split into a granular

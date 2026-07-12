@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Low Mood Algorithm · Reasoning GP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --safety:#c0392b;--safety-bg:#fdf2f2;--safety-border:#e8b4b4;
+  --diagnose:#1a6faf;--diagnose-bg:#f0f6fd;--diagnose-border:#b3d4f0;
+  --treat:#167a4a;--treat-bg:#f0faf4;--treat-border:#b3e0c8;
+  --refer:#7b3fa0;--refer-bg:#f8f2fd;--refer-border:#d4b3f0;
+  --lifestyle:#b05a1a;--lifestyle-bg:#fdf6f0;--lifestyle-border:#e8cdb3;
+  --radius:10px;--shadow:0 2px 12px rgba(0,0,0,.08);
+  --font-body:'DM Sans',sans-serif;--font-serif:'Source Serif 4',serif
+}
+body{font-family:var(--font-body);font-size:14px;background:#f5f6f8;color:#1a1a2e;line-height:1.55;padding:16px;max-width:860px;margin:0 auto}
+h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1.3}
+.stem-banner{background:linear-gradient(135deg,#1a1a3a 0%,#2a2a5a 100%);color:#fff;border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:1.05rem;font-weight:600}
+.stem-banner small{opacity:.75;font-size:.82rem}
+.alg-progress{background:#fff;border-radius:var(--radius);padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:18px;box-shadow:var(--shadow);flex-wrap:wrap}
+.alg-progress span{font-size:.82rem;font-weight:500;color:#555}
+.pcount{margin-left:auto;font-weight:700;font-size:.9rem}
+.pbar{flex:1;min-width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,#2a2a5a,#167a4a);border-radius:3px;width:0%;transition:width .4s ease}
+.reset{padding:4px 12px;border:1px solid #d1d5db;border-radius:6px;background:#fff;cursor:pointer;font-size:.78rem;color:#555}
+.reset:hover{background:#f3f4f6}
+.alg-flow{display:flex;flex-direction:column;gap:0}
+.connector{width:2px;height:20px;background:#d1d5db;margin:0 auto}
+.node{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-left:4px solid #ccc;transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-left-color:var(--safety);background:var(--safety-bg)}
+.node[data-type="DIAGNOSE"]{border-left-color:var(--diagnose);background:var(--diagnose-bg)}
+.node[data-type="TREAT"]{border-left-color:var(--treat);background:var(--treat-bg)}
+.node[data-type="REFER"]{border-left-color:var(--refer);background:var(--refer-bg)}
+.node[data-type="LIFESTYLE"]{border-left-color:var(--lifestyle);background:var(--lifestyle-bg)}
+.node-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;font-weight:700;font-size:.85rem;flex-shrink:0;color:#fff}
+.node[data-type="SAFETY"] .node-num{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle)}
+.node-head{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.node-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:4px;color:#fff;white-space:nowrap}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle)}
+.node-tick{padding:0 16px 4px;display:flex;justify-content:flex-end}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.8rem;color:#666}
+.node-tick input[type=checkbox]{accent-color:var(--treat);width:15px;height:15px}
+.tlbl{user-select:none}
+.node-body{padding:4px 16px 14px;font-size:.875rem}
+.node-body p{margin-bottom:8px}
+.kv{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:1px;background:#e5e7eb;border-radius:8px;overflow:hidden;margin:10px 0;font-size:.82rem}
+.kv>div{background:#fff;padding:8px 10px}
+.kv>div:nth-child(odd){font-weight:600;color:#374151;background:#f9fafb}
+.node[data-type="SAFETY"] .kv>div{background:var(--safety-bg)}
+.node[data-type="SAFETY"] .kv>div:nth-child(odd){background:#fce8e8}
+.node[data-type="DIAGNOSE"] .kv>div{background:var(--diagnose-bg)}
+.node[data-type="DIAGNOSE"] .kv>div:nth-child(odd){background:#dbeafe}
+.node[data-type="TREAT"] .kv>div{background:var(--treat-bg)}
+.node[data-type="TREAT"] .kv>div:nth-child(odd){background:#dcfce7}
+.node[data-type="REFER"] .kv>div{background:var(--refer-bg)}
+.node[data-type="REFER"] .kv>div:nth-child(odd){background:#ede9fe}
+.node[data-type="LIFESTYLE"] .kv>div{background:var(--lifestyle-bg)}
+.node[data-type="LIFESTYLE"] .kv>div:nth-child(odd){background:#fde8d0}
+.rfgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:10px 0}
+.rftile{background:#fff;border:1px solid var(--safety-border);border-left:3px solid var(--safety);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.82rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#fff;border:1px solid var(--treat-border);border-radius:8px;padding:10px 12px}
+.b-cond{font-size:.75rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.b-drug{font-size:.88rem;font-weight:700;color:var(--treat);margin-bottom:3px}
+.b-note{font-size:.78rem;color:#4b5563;line-height:1.4}
+.ladder{margin:10px 0;display:flex;flex-direction:column;gap:0}
+.rung{display:flex;align-items:stretch;overflow:hidden;margin-bottom:3px}
+.rung:first-child{border-radius:7px 7px 0 0}
+.rung:last-child{border-radius:0 0 7px 7px}
+.rn{background:var(--treat);color:#fff;font-weight:700;font-size:.75rem;padding:8px 10px;display:flex;align-items:center;min-width:72px;justify-content:center;white-space:nowrap;text-align:center}
+.rt{background:#fff;border:1px solid var(--treat-border);border-left:none;padding:8px 12px;flex:1;font-size:.82rem;line-height:1.4;display:flex;align-items:center}
+.lsgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin:10px 0}
+.lstile{background:#fff;border:1px solid var(--lifestyle-border);border-left:3px solid var(--lifestyle);border-radius:7px;padding:9px 11px;font-size:.8rem;line-height:1.4}
+.lstile b{display:block;color:var(--lifestyle);margin-bottom:2px}
+.pill{display:inline-block;padding:1px 7px;border-radius:20px;font-size:.72rem;font-weight:600;white-space:nowrap;line-height:1.5}
+.pill-red{background:#fee2e2;color:#991b1b}
+.pill-purple{background:#ede9fe;color:#5b21b6}
+.pill-blue{background:#dbeafe;color:#1e40af}
+.pill-teal{background:#ccfbf1;color:#0f766e}
+.pill-amber{background:#fef3c7;color:#92400e}
+.pill-green{background:#dcfce7;color:#15803d}
+.pill-grey{background:#f3f4f6;color:#374151}
+.why-row{border-top:1px dashed #e5e7eb;margin:0 16px;padding:0}
+.why-btn{background:none;border:none;cursor:pointer;font-size:.78rem;color:#6b7280;padding:8px 0;display:flex;align-items:center;gap:4px;font-family:var(--font-body);font-weight:500}
+.why-btn:hover{color:#1a1a2e}
+.caret{transition:transform .25s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:10px 0 14px;font-size:.8rem;color:#4b5563;line-height:1.55;border-top:1px solid #f3f4f6;margin-top:4px}
+.why-drawer.open{display:block}
+.alg-foot{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-top:18px;font-size:.78rem;color:#6b7280;line-height:1.5;box-shadow:var(--shadow)}
+.alg-foot strong{color:#374151}
+@media(max-width:500px){.kv{grid-template-columns:1fr}.rfgrid,.branch,.lsgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="stem-banner">
+  <div class="sb-icon">🌧️</div>
+  <div>
+    <b>Low Mood — Assessment &amp; Management</b>
+    <small>Depression · adjustment disorder · bipolar · grief · organic causes · PHQ-9 · NICE NG222 · safe prescribing</small>
+  </div>
+</div>
+
+<div class="alg-progress">
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1">
+  <div class="node-head"><div class="node-num">1</div><span class="node-tag">Safety</span><h3>Immediate Safety — Suicidal Ideation, Self-Harm &amp; Bipolar Red Flags</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Ask every patient presenting with low mood directly about suicidal ideation. Asking does not increase risk — it reduces it. Document the response and your risk assessment every time.</b></p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Active suicidal ideation with plan and/or intent</b> Ask: "Are you having thoughts of ending your life? Do you have a plan? Do you intend to act on it?" Plan + intent = high risk → same-day mental health crisis team assessment or 999 if immediate danger. Do not leave the patient alone. Contact a family member or carer if consented. Remove or reduce access to means (medications, firearms) where possible.</div>
+      <div class="rftile"><b>Recent self-harm or attempted suicide</b> Any recent attempt → 999 or immediate A&E transfer. Any self-harm within last 24–48 hours → same-day mental health crisis assessment. Risk factors for completed suicide: male sex, older age, social isolation, alcohol/substance use, previous attempt, access to lethal means, chronic pain, terminal illness, recent bereavement or relationship breakdown.</div>
+      <div class="rftile"><b>Psychotic features with low mood</b> Psychotic depression (mood-congruent delusions — worthlessness, guilt, nihilism, poverty; auditory hallucinations commanding self-harm) — high risk, requires urgent psychiatric assessment. Do not manage with antidepressants alone — needs antipsychotic + antidepressant combination or ECT under specialist care.</div>
+      <div class="rftile"><b>Elevated mood, racing thoughts, reduced sleep, grandiosity, reckless behaviour preceding or alternating with low mood</b> Bipolar disorder — prescribing an SSRI alone in unrecognised bipolar can precipitate a manic episode or rapid cycling. Screen with MDQ (Mood Disorder Questionnaire) or ask directly. Do not start an antidepressant without mood stabiliser cover if bipolar is suspected. Refer to psychiatry.</div>
+      <div class="rftile"><b>Severe functional impairment — unable to care for self or dependants</b> Unable to eat, drink, maintain hygiene, care for children → urgent mental health assessment. Consider voluntary or involuntary admission under MHA 1983 if risk to self or others. Document functional assessment at each contact. Safeguarding children if parental severe depression is impairing childcare.</div>
+      <div class="rftile"><b>Low mood + postpartum (within 12 months of birth)</b> Postnatal depression (PND) — Edinburgh Postnatal Depression Scale (EPDS) ≥13 = significant symptoms, refer urgently. Postpartum psychosis (first 2 weeks: confusion, hallucinations, agitation, rapidly shifting mood) → 999, mother-and-baby unit. Baby safety assessment essential. Distinguish baby blues (day 3–5, self-limiting) from PND (persisting &gt;2 weeks) from postpartum psychosis (early, severe, rapid onset).</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Direct questioning about suicide does not increase suicidal ideation — this is supported by systematic reviews including a Cochrane review (Dazzi et al. 2014) which found no evidence that asking about suicidal thoughts causes or increases suicidal behaviour. The myth that asking "plants the idea" is one of the most damaging misconceptions in clinical practice and leads to under-assessment of suicide risk. Direct questioning within a therapeutic relationship relieves distress, opens dialogue, and is the first step in risk reduction. The clinical documentation of a suicide risk assessment is a medicolegal imperative — it must include: what was asked, the patient's response, identified risk factors (alcohol, isolation, access to means, previous attempts, male sex, chronic pain), protective factors (family support, religious beliefs, help-seeking behaviour), and the clinical decision made. The bipolar red flag before prescribing SSRIs is critical — antidepressants prescribed as monotherapy in bipolar disorder (particularly bipolar II, which is frequently misdiagnosed as recurrent unipolar depression) can precipitate hypomanic or manic episodes, trigger mixed states, and cause rapid cycling. The MDQ (Mood Disorder Questionnaire) is a validated 13-item screening tool that takes 5 minutes to complete — a score of ≥7 with functional impairment has 73% sensitivity for bipolar I disorder. In any patient with multiple previous depressive episodes not responding to antidepressants, a bipolar screen should be performed before prescribing a further course of antidepressant monotherapy. Postnatal depression affects 10–15% of mothers in the UK and is the most under-diagnosed condition in perinatal care — the EPDS is validated for use in primary care and should be administered at 6-week postnatal review and again at 3–4 months. An EPDS score ≥13, or any score on the question about self-harm (question 10), warrants urgent assessment and referral.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2">
+  <div class="node-head"><div class="node-num">2</div><span class="node-tag">Diagnose</span><h3>PHQ-9 &amp; Severity Classification</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Use PHQ-9 at every depression assessment — it classifies severity, guides treatment decisions, and tracks treatment response. Always score and document it.</b></p>
+    <div class="kv">
+      <div>PHQ-2 gateway screen</div><div>Two questions: "Over the past 2 weeks, how often have you been bothered by: (1) Little interest or pleasure in doing things? (2) Feeling down, depressed, or hopeless?" Score 0–3 each. PHQ-2 score ≥3 = proceed to PHQ-9. PHQ-2 sensitivity for major depression: 83%, specificity 90%. Use as an efficient screen in multimorbidity reviews and long-term condition consultations.</div>
+      <div>PHQ-9 scoring</div><div>9 items scored 0–3 (not at all/several days/more than half the days/nearly every day). Total 0–27. Severity: 0–4 = none/minimal; 5–9 = mild; 10–14 = moderate; 15–19 = moderately severe; 20–27 = severe. Also scores functional impairment (last item). Document the total score and date at every consultation — this is the primary outcome measure.</div>
+      <div>Depressive episode — ICD-11 core symptoms</div><div>Requires ≥2 weeks of: (1) Persistent low mood most of the day nearly every day; and/or (2) Markedly diminished interest or pleasure (anhedonia). Plus additional symptoms (out of 7): weight/appetite change, sleep disturbance (insomnia or hypersomnia), psychomotor agitation or retardation, fatigue/loss of energy, feelings of worthlessness or excessive guilt, difficulty concentrating, recurrent thoughts of death or suicidal ideation. Mild = 2 core + 2 additional; Moderate = 2 core + 3–4 additional; Severe = 2 core + 5+ additional.</div>
+      <div>GAD-7 co-assessment</div><div>Score anxiety concurrently with PHQ-9 — 50% of depressed patients have comorbid anxiety disorder. GAD-7 ≥10 = moderate-severe anxiety. Comorbid depression + anxiety: treat depression first (SSRIs are first-line for both), but if anxiety is severe and is the primary driver of low mood, consider it as the primary diagnosis. Document both scores.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The PHQ-9 is the most widely validated and widely used depression outcome measure in UK primary care — it was developed and validated against DSM-IV criteria for major depressive disorder (Kroenke et al. JGIM 2001) and has been extensively validated in UK populations. Its value is not just in initial classification (which can be done clinically) but in serial outcome measurement — a 5-point drop in PHQ-9 score represents a clinically meaningful response, and a score below 10 at 8–12 weeks represents remission. NICE NG222 (Depression in Adults, 2022) specifically recommends using a validated outcome tool (PHQ-9 or equivalent) at every contact to monitor treatment response, rather than relying solely on clinical impression. Serial PHQ-9 documentation also provides clear medicolegal evidence of clinical decision-making at each escalation point. The DSM-5 distinction between "adjustment disorder with depressed mood" (low mood as a proportionate response to an identifiable stressor, resolving within 6 months of stressor removal) and "major depressive disorder" (meets full diagnostic criteria regardless of precipitant) has treatment implications — adjustment disorder is primarily managed with psychological support and watchful waiting, whereas major depressive disorder needs structured psychological therapy ± antidepressant regardless of whether a stressor precipitated it. The stressor does not determine the diagnosis — the symptom severity and duration do. The PHQ-9 score at the functional impairment question is particularly useful in GP practice — "How difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?" — as it directly assesses the impact threshold that determines management decisions.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3">
+  <div class="node-head"><div class="node-num">3</div><span class="node-tag">Diagnose</span><h3>Differential Diagnosis — Organic Causes &amp; Psychiatric Comorbidities</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Exclude medical causes before attributing low mood to psychological depression. Several are reversible — missing them means unnecessary antidepressants and delayed treatment of the actual cause.</b></p>
+    <div class="kv">
+      <div>Hypothyroidism</div><div>The most important and most commonly missed organic cause of low mood in primary care. Classic presentation: low mood + fatigue + weight gain + cold intolerance + constipation + bradycardia + dry skin. TSH alone sufficient for screening. Subclinical hypothyroidism (TSH elevated, free T4 normal): treat if TSH &gt;10 mU/L or if symptomatic TSH 4–10 mU/L. Full hypothyroidism: levothyroxine — treat the thyroid, not the depression. Depression resolves in most patients with adequate thyroid replacement.</div>
+      <div>Anaemia</div><div>Iron deficiency anaemia and B12/folate deficiency cause fatigue, low mood, poor concentration, and cognitive slowing that closely mimics depression. FBC + ferritin + B12 + folate. Iron deficiency may precede anaemia — ferritin &lt;30 μg/L = iron deficiency (treat with ferrous sulphate 200 mg TDS). B12 deficiency: IM hydroxocobalamin loading (6 doses over 2 weeks) if neurological features or malabsorption; oral cyanocobalamin 50–150 mcg OD if dietary deficiency only.</div>
+      <div>Diabetes / hyperglycaemia</div><div>T2DM is associated with a twofold increased risk of depression, and hyperglycaemia independently causes low mood, cognitive dulling, and fatigue. HbA1c mandatory in any unexplained low mood, especially in patients with risk factors. Optimising glycaemic control can substantially improve mood. Depression and T2DM are bidirectionally related — each worsens the other.</div>
+      <div>Alcohol and substance misuse</div><div>Alcohol is a CNS depressant — chronic heavy use causes depression both directly (neurochemical) and indirectly (social consequences, sleep disruption, nutritional deficiency, thiamine depletion). AUDIT-C screen. Direct history: units per week, pattern of use, CAGE criteria. Cannabis use: regular cannabis use is associated with depression and anxiety (causal relationship, not just association, confirmed by Mendelian randomisation studies). Benzodiazepine and opioid dependence also cause low mood.</div>
+      <div>Drug-induced low mood</div><div>Beta-blockers (especially atenolol — less lipophilic agents like bisoprolol may be better tolerated). Statins (low mood in 5–10% — switch statin or consider statin holiday). Corticosteroids (acute high-dose → euphoria; chronic → depression). Hormonal contraception (COC/POP — low mood in susceptible women, particularly those with prior depressive episodes). Isotretinoin. Finasteride (post-finasteride syndrome — persistent sexual dysfunction and low mood after stopping). Medication review mandatory.</div>
+      <div>Chronic illness</div><div>Low mood is prevalent in: chronic pain (50%), heart failure (20–40%), COPD (20–50%), cancer (20–30%), Parkinson's disease (40%), multiple sclerosis (50%), post-stroke (30–40%), chronic kidney disease (20–40%), rheumatoid arthritis (20%). These represent comorbid depression requiring active treatment — not "understandable sadness" that should be left untreated. Treat to target with the same rigour as primary depression.</div>
+      <div>Grief and bereavement</div><div>Normal grief (bereavement): sadness, tearfulness, preoccupation with the deceased, reduced appetite, sleep disturbance. Does not routinely require antidepressants — watchful waiting, Cruse Bereavement Support, Good Grief Trust. Prolonged grief disorder (ICD-11): persistent, disabling grief beyond 6–12 months, failure to return to daily functioning → specialist psychological therapy (complicated grief therapy, CBT). Clinical depression may co-exist with grief — treat if PHQ-9 ≥10 persisting and functionally impaired.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The investigation of organic causes of low mood is not optional — it is a core component of every depression assessment. NICE NG222 recommends a minimum screen of: TSH, FBC, ferritin, B12/folate, HbA1c, and U&E in patients presenting with low mood, to exclude reversible causes before initiating antidepressants. The cost of missing hypothyroidism as the cause of low mood is significant — a patient may be on antidepressants for years, with partial response, when the underlying thyroid disorder continues. TSH is the single most sensitive and specific test for thyroid dysfunction and should be checked routinely. The relationship between hormonal contraception and low mood is clinically important and generates significant patient-GP consultation — a large Danish cohort study (Skovlund et al. JAMA Psychiatry 2016, n=1 million) found that hormonal contraception use was associated with a 20–40% increased risk of first antidepressant prescription and first depression diagnosis. The progestogen-only pill had the highest associated risk. The mechanism involves progestogen downregulation of GABA-A receptors (similar to premenstrual dysphoric disorder pathophysiology). GPs should review hormonal contraception method in women presenting with low mood that temporally correlates with contraceptive initiation or change. Alcohol is the most common modifiable cause of persistent depression in primary care — heavy drinkers who successfully reduce alcohol often experience dramatic mood improvement within weeks without any antidepressant. Treating depression with SSRIs without addressing alcohol misuse has poor outcomes — alcohol reduces SSRI efficacy and increases impulsivity and suicide risk. The sequence should be: screen (AUDIT-C), brief intervention, and alcohol reduction before or concurrent with antidepressant initiation.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4">
+  <div class="node-head"><div class="node-num">4</div><span class="node-tag">Diagnose</span><h3>Risk Assessment &amp; Investigations</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Structured risk assessment</div><div>At every low mood consultation: assess suicidal ideation (passive vs active), plan, intent, means, previous attempts, alcohol/substance use, social support, protective factors (children, beliefs, future plans). Document clearly. Columbia Suicide Severity Rating Scale (C-SSRS) or equivalent. "Low risk" is not a binary — document what was asked and what the patient said. Risk is dynamic — re-assess at every contact.</div>
+      <div>Baseline investigations</div><div><span class="pill pill-blue">TSH</span> · <span class="pill pill-blue">FBC + ferritin + B12 + folate</span> · <span class="pill pill-blue">HbA1c</span> · <span class="pill pill-blue">U&amp;E + eGFR</span> (hyponatraemia from SSRI risk — baseline sodium essential before starting SSRIs, especially in elderly) · <span class="pill pill-blue">LFTs</span> (alcohol, hepatic impairment affects drug metabolism) · <span class="pill pill-blue">ECG</span> (if starting citalopram/escitalopram — QTc prolongation risk; age ≥60 or cardiac history)</div>
+      <div>Bipolar screening</div><div>Before prescribing antidepressants: MDQ (Mood Disorder Questionnaire) — 13 questions, ≥7 symptoms + functional impairment + occurring in the same period = screen positive. Also ask: "Have you ever had a period of time when you were the opposite of depressed — more energetic, needed less sleep, had racing thoughts, or were unusually confident or reckless?" Positive screen → refer to psychiatry before starting antidepressants.</div>
+      <div>Social history — key assessment</div><div>Housing stability · Employment + financial stress · Relationship status and quality · Caring responsibilities · Childhood adversity (ACEs — Adverse Childhood Experiences: strong dose-response with adult depression risk) · Recent life events (losses, transitions) · Loneliness and social isolation (ONS Loneliness Index — RCSLT validated single question: "How often do you feel lonely?") · Domestic violence / coercive control screen (DASH tool)</div>
+      <div>Depression subtype — ask directly</div><div><b>Seasonal (SAD):</b> recurrent winter onset + remission in spring/summer → light therapy (10,000 lux, 30 min each morning) + SSRI. <b>Atypical:</b> mood reactivity (mood improves with positive events), hypersomnia, hyperphagia, leaden paralysis, rejection sensitivity → MAOIs traditionally most effective (rarely used in UK); SSRIs reasonable. <b>Melancholic:</b> anhedonia, morning worse, early morning wakening, loss of pleasure (not just reduced) → antidepressants + structured psychological therapy. <b>Psychotic:</b> see Step 1.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The sodium baseline before starting SSRIs is a patient safety imperative that is frequently overlooked — SSRIs and SNRIs cause SIADH (syndrome of inappropriate antidiuretic hormone secretion) in approximately 1–5% of patients, causing hyponatraemia. Risk factors include: older age (&gt;65), female sex, low BMI, concurrent diuretic use, pre-existing hyponatraemia, and renal impairment. Severe hyponatraemia from SSRIs (sodium &lt;125 mmol/L) can cause confusion, seizures, coma, and death. A baseline sodium is mandatory before prescribing an SSRI in any patient over 65 or on diuretics. Repeat sodium at 2–4 weeks after starting (before reaching steady state). The ECG before citalopram or escitalopram is a BNF and MHRA requirement — both drugs cause dose-dependent QTc prolongation, with citalopram being the most potent QTc-prolonging SSRI. Maximum dose of citalopram in patients aged ≥65 is 20 mg (not 40 mg). Maximum dose in all adults if QTc &gt;450 ms in men or &gt;460 ms in women = avoid citalopram/escitalopram, use sertraline instead. Adverse Childhood Experiences (ACEs) are strongly and dose-dependently associated with adult mental illness — patients with ≥4 ACEs have a 4.5-fold increased risk of depression. Identifying ACEs in the social history guides treatment (trauma-focused CBT, EMDR) and explains why standard SSRI + CBT may have limited effect in patients with complex trauma backgrounds. Screening for domestic violence with a validated tool (DASH — Domestic Abuse, Stalking and Honour-Based Violence questionnaire) is part of a comprehensive depression assessment — coercive control and intimate partner violence are among the strongest environmental drivers of depression in women and should be actively asked about.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="REFER" data-step="5">
+  <div class="node-head"><div class="node-num">5</div><span class="node-tag">Refer</span><h3>Referral Pathways</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999 / Crisis Team same-day</span></div><div>Active suicidal ideation with plan and intent → 999 or mental health crisis team · Recent suicide attempt → 999 A&E · Postpartum psychosis → 999 (mother-and-baby unit admission) · Psychotic depression with command hallucinations to self-harm · Severe self-neglect (not eating, drinking, or caring for self)</div>
+      <div><span class="pill pill-red">Same-day mental health</span></div><div>High suicide risk without immediate intent (e.g. passive ideation with a formed plan, previous attempt, alcohol use, isolation) → phone mental health crisis team for same-day risk assessment. Many areas have a 24-hour crisis line (NHS Mental Health Crisis Line: 111 option 2 in many areas). Document decision and risk rationale.</div>
+      <div>Urgent psychiatry (within 1–2 weeks)</div><div>Moderate-severe depression not responding to first-line SSRI at 4–6 weeks · Suspected bipolar disorder (positive MDQ screen) · Psychotic features · Severe recurrent depression · Treatment-resistant depression (two adequate SSRI trials failed) · Depression + significant substance misuse needing dual diagnosis management</div>
+      <div>IAPT (Talking Therapies for anxiety and depression)</div><div>Mild-moderate depression (PHQ-9 5–15) → self-refer or GP refer to NHS Talking Therapies (formerly IAPT). Step 2: psychoeducation, guided self-help, computerised CBT (Beating the Blues, SilverCloud). Step 3: CBT 16–20 sessions, behavioural activation, counselling. NICE NG222 recommends psychological therapy as first-line for mild-moderate depression, especially when patient prefers non-pharmacological approach.</div>
+      <div>Primary care psychological therapies</div><div>Behavioural activation (BA) — structured activity scheduling, proven as effective as CBT for mild-moderate depression, deliverable by non-specialist. Problem-solving therapy (PST) — for depression precipitated by identifiable social problems. Counselling — non-directive, supportive, useful in bereavement/adjustment. Mindfulness-Based Cognitive Therapy (MBCT) — NICE-recommended for preventing relapse in patients with 3+ previous depressive episodes.</div>
+      <div>Social prescribing / link worker</div><div>NICE NG222 emphasises social interventions alongside clinical management. Social prescribing link workers connect patients to: community activities, exercise programmes, befriending services, debt/housing advice, carer support, volunteering. Particularly valuable for low mood driven by loneliness, social isolation, or social determinants of health. Refer directly via your PCN link worker (standard in all English PCNs from 2020).</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">NICE NG222 (Depression in Adults, 2022) represented a significant shift in the recommended treatment pathway — the previous stepped care model was replaced with a more individualised, shared-decision-making approach that treats all types of interventions (pharmacological, psychological, social) as co-equal options rather than hierarchical steps. Key changes: (1) SSRIs are no longer automatically recommended as first-line over psychological therapy — the patient's preference is central; (2) the recommendation against prescribing antidepressants for mild depression remains — watchful waiting and low-intensity psychological intervention are preferred; (3) exercise is explicitly recommended as a treatment for mild-moderate depression (not just lifestyle advice); (4) social prescribing is explicitly included in the treatment pathway for the first time. The NHS Talking Therapies (formerly IAPT — Improving Access to Psychological Therapies) service is the primary referral destination for mild-moderate depression — it is the largest mental health programme in the world and is available in every CCG/ICB area in England. Self-referral is possible (the patient does not need a GP referral letter). Current NHS targets require that 75% of patients completing treatment achieve reliable improvement and 50% recover to below clinical caseness. GPs should know their local Talking Therapies service access number and waiting time. Mindfulness-Based Cognitive Therapy (MBCT) has NICE recommendation specifically for relapse prevention — not for the acute depressive episode, but for patients in remission who have had 3 or more previous depressive episodes. The NNT for MBCT preventing relapse at 12 months is approximately 4 (compared to antidepressant continuation), making it one of the most evidence-based psychological interventions in psychiatry.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="TREAT" data-step="6">
+  <div class="node-head"><div class="node-num">6</div><span class="node-tag">Treat</span><h3>Antidepressant Prescribing</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p><b>Antidepressants are indicated for moderate-severe depression (PHQ-9 ≥10) or mild depression that has failed to respond to watchful waiting and psychological intervention. They are NOT indicated for mild depression as first-line monotherapy.</b></p>
+    <div class="ladder">
+      <div class="rung"><span class="rn">First-line<br/>SSRI</span><span class="rt"><b>Sertraline 50 mg OD</b> — preferred first-line SSRI for most adults. Best evidence base, favourable safety profile, lowest QTc risk of all SSRIs, safe in cardiac disease and elderly. Start 50 mg OD (morning to reduce insomnia), titrate to 100 mg at 4 weeks if insufficient response. Maximum 200 mg/day. Take 2–4 weeks for initial effect, 4–8 weeks for full therapeutic effect. Alternatives: <b>fluoxetine 20 mg OD</b> (longest half-life — fewer discontinuation symptoms, preferred if adherence concern; avoid in adolescents as first-line per NICE CYPMH), <b>citalopram 20 mg OD</b> (max 20 mg in ≥65 yrs, avoid if QTc prolonged), <b>escitalopram 10 mg OD</b> (similar QT caution).</span></div>
+      <div class="rung"><span class="rn">Anxiety-<br/>comorbid</span><span class="rt"><b>Sertraline 50 mg OD</b> — first-line for mixed depression/anxiety and for all anxiety disorders (generalised anxiety, panic disorder, social anxiety, OCD, PTSD). Add brief low-dose <b>propranolol 10–40 mg PRN</b> for somatic anxiety symptoms (palpitations, tremor) while awaiting SSRI effect. Avoid benzodiazepines (dependence risk) — if short-term anxiolytic needed while waiting for SSRI effect: consider short course (max 7–10 days) only in severe cases with explicit consent to time-limited use.</span></div>
+      <div class="rung"><span class="rn">Insomnia-<br/>predominant</span><span class="rt"><b>Mirtazapine 15 mg nocte</b> — noradrenergic and specific serotonergic antidepressant (NaSSA). Sedating at lower doses (antihistamine H1 effect predominates at 15 mg), less sedating at higher doses. Stimulates appetite — useful in depression with anorexia and weight loss, elderly with poor appetite. Avoid in obesity. Titrate to 30 mg if insufficient antidepressant response at 4 weeks. Effective for comorbid anxiety. Good discontinuation profile.</span></div>
+      <div class="rung"><span class="rn">Chronic pain<br/>comorbid</span><span class="rt"><b>Duloxetine 30 mg OD for 2 weeks, then 60 mg OD</b> — SNRI, licensed for depression + diabetic peripheral neuropathic pain + fibromyalgia + stress urinary incontinence. Useful for the very common combination of depression + chronic pain (central sensitisation). Monitor BP (noradrenergic effects raise BP). Discontinue slowly — significant discontinuation syndrome. <b>Amitriptyline 10–25 mg nocte</b> as adjunct for sleep and pain (not as antidepressant at these doses — inadequate therapeutic dose).</span></div>
+      <div class="rung"><span class="rn">Second-line<br/>(SSRI failed)</span><span class="rt">Switch SSRI (try sertraline → escitalopram, or vice versa) — different receptor affinity profiles. Switch to SNRI (venlafaxine 75 mg OD, titrate to 150 mg — more noradrenergic at higher doses, superior efficacy for severe depression). Augmentation (specialist): lithium augmentation (most evidence), aripiprazole augmentation, quetiapine 50–150 mg nocte (NICE TA213 — licensed augmentation). Refer to psychiatry if second SSRI has failed at adequate dose and duration.</span></div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">Sertraline as the preferred first-line SSRI for most adults is consistent with NICE NG222, the Cipriani et al. network meta-analysis (Lancet 2018 — the largest antidepressant RCT network meta-analysis, 522 trials, 116,000 patients), and the BNF prescribing guidance. Sertraline and escitalopram ranked highest for efficacy in the Cipriani meta-analysis; sertraline was the recommended first-line choice based on its combination of efficacy, safety, and cost-effectiveness. The minimum adequate trial of an antidepressant is 4 weeks at therapeutic dose — below this, it is not possible to assess treatment response. Patients who stop antidepressants within 2–4 weeks due to initial side effects (nausea, headache, sleep disturbance — common and transient) should be counselled that side effects typically resolve within 1–2 weeks and the therapeutic effect is yet to develop. The prescribing consultation should explicitly state: "You may feel slightly worse before you feel better in the first 1–2 weeks — this is normal and does not mean the medication is wrong for you." Mirtazapine's pharmacological profile (H1 antagonism — sedation/appetite; alpha-2 antagonism — increases noradrenaline and serotonin release; 5-HT2 and 5-HT3 antagonism — reduces anxiety and GI side effects) makes it clinically useful in a specific phenotype of depression: older patient, marked insomnia, weight loss, poor appetite, anxious. These patients often respond poorly to activating SSRIs (agitation, worsened insomnia) and better to mirtazapine's sedating profile. The well-known "paradox" is that mirtazapine is less sedating at 30–45 mg than at 15 mg — the noradrenergic activation at higher doses counteracts the antihistamine sedation. Duloxetine as the first-line choice for depression + diabetic neuropathic pain simplifies prescribing — rather than an SSRI + pregabalin/amitriptyline, duloxetine addresses both conditions with one agent at one dose.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7">
+  <div class="node-head"><div class="node-num">7</div><span class="node-tag">Treat</span><h3>Treatment Duration, Discontinuation &amp; Relapse Prevention</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Minimum treatment duration</div><div>NICE NG222: continue antidepressant for at least <b>6 months after remission</b> (PHQ-9 &lt;10 for ≥2 months). Premature stopping within 6 months of remission is the most common cause of relapse in primary care. Inform patients at prescription: "Once you start to feel better, you will need to continue the medication for at least 6 months more." Document this plan in the records and on the prescription.</div>
+      <div>Recurrent depression — longer duration</div><div>After 2nd depressive episode: 2 years continuous treatment after remission. After 3rd or more episodes: consider indefinite continuation (maintenance treatment). Risk of recurrence after 1st episode: 50%; after 2nd: 70%; after 3rd: 90%. Each episode lowers the threshold for subsequent episodes. The decision to stop long-term antidepressants should involve a structured shared decision-making conversation, not be done at the patient's request without clinical review.</div>
+      <div>Tapering and discontinuation</div><div>NEVER stop antidepressants abruptly. Discontinuation syndrome (paroxetine worst — FINISH symptoms: Flu-like, Insomnia, Nausea, Imbalance, Sensory disturbances "electric shocks", Hyperarousal) is common with all SSRIs/SNRIs, particularly paroxetine and venlafaxine. Taper slowly over weeks to months (longer taper for longer duration of treatment). <b>Royal College of Psychiatrists hyperbolic tapering guidance:</b> reduce by 10% of current dose every 2–4 weeks, using liquid preparations or split tablets for low doses. Provide written tapering plan.</div>
+      <div>If antidepressant is failing — when to escalate</div><div>No response at 4 weeks at therapeutic dose → check adherence, dose, and alcohol use first. Then: increase dose to maximum tolerated (e.g. sertraline 100→150→200 mg). Still no response at 6–8 weeks at maximum dose → switch antidepressant class. Two failed adequate trials → refer psychiatry. Treatment-resistant depression (TRD = failure of 2 agents at adequate dose and duration) has specialist options: augmentation with aripiprazole, lithium, quetiapine, T3 thyroid augmentation, ECT, or esketamine (NICE approved).</div>
+      <div>Antidepressant in pregnancy</div><div>Discuss benefits vs risks. Most evidence for: <b>sertraline</b> (lowest placental transfer, most data) and <b>fluoxetine</b>. Avoid paroxetine in first trimester (cardiac malformation signal — small but documented). SNRIs: neonatal adaptation syndrome (NAS) risk — tremor, jitteriness, feeding difficulties — self-limiting. Discuss with obstetric team and perinatal mental health. Untreated severe depression in pregnancy carries greater risks to mother and foetus than treated depression.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The 6-month post-remission continuation rule is one of the most important and most violated principles in GP prescribing for depression — the discontinuation rate within the first 3 months of treatment is approximately 40–50% in primary care, meaning nearly half of all patients stop their antidepressant before any meaningful therapeutic effect can be established, let alone before the post-remission maintenance period. The primary reason patients stop early is a misunderstanding of the treatment paradigm — many patients assume antidepressants are a short-term intervention, like antibiotics, and stop when they "feel better." The prescribing consultation must address this explicitly: "The medication needs to continue for at least 6 months after you feel well — feeling better is when we're treating the risk of the depression coming back, not when we stop." Antidepressant discontinuation syndrome is clinically significant and was significantly underestimated until the Royal College of Psychiatrists published their landmark guidance (Davies and Read 2019, Addictive Behaviours) which found that withdrawal symptoms were reported by 56% of antidepressant users, with 46% describing them as severe. The FINISH mnemonic (Flu-like, Insomnia, Nausea, Imbalance, Sensory disturbances, Hyperarousal) is the standard teaching tool. Paroxetine is the most problematic SSRI for discontinuation (shortest half-life → steepest plasma level drop), followed by venlafaxine. Fluoxetine has the longest half-life and effectively self-tapers. Providing patients with a written tapering schedule (available from the RCPsych website) and warning them in advance that they may experience discontinuation symptoms is both clinically important and a patient safety issue that reduces unnecessary GP re-consultations and emergency attendances.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8">
+  <div class="node-head"><div class="node-num">8</div><span class="node-tag">Lifestyle</span><h3>Evidence-Based Non-Pharmacological Interventions</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <p>NICE NG222 explicitly includes physical activity, sleep interventions, and social prescribing as core treatment options — not lifestyle advice that runs alongside treatment. Prescribe them with the same specificity as a drug.</p>
+    <div class="lsgrid">
+      <div class="lstile"><b>Structured physical activity</b> NICE NG222 recommends structured exercise as a treatment for mild-moderate depression. 150 minutes/week moderate-intensity aerobic exercise, or 75 minutes vigorous, or combination. Refer to NHS exercise referral scheme (available in most GP practices) or structured group exercise programme. Meta-analyses show exercise NNT ≈ 4 for significant depression improvement. Mechanism: BDNF increase (promotes hippocampal neurogenesis), endorphin release, reduced HPA axis reactivity, improved sleep, social engagement.</div>
+      <div class="lstile"><b>Sleep hygiene and CBT-I</b> Sleep disturbance (both insomnia and hypersomnia) is both a symptom and a driver of depression — poor sleep worsens mood, and improving sleep improves depression outcomes. CBT for insomnia (CBT-I) has stronger evidence than any sleeping medication. Prescribe sleep hygiene rules: fixed wake time, dark cool bedroom, no screens 1 hour before bed, no daytime napping, restrict bed to sleep and sex only, limit caffeine to before noon. Refer to Sleepio (NHS digital-CBT-I, free on NHS in England) or IAPT for CBT-I.</div>
+      <div class="lstile"><b>Alcohol reduction</b> Alcohol is a CNS depressant — reducing to within recommended limits (&lt;14 units/week, spread across 3+ days) consistently improves mood. AUDIT-C score every depression review. Brief motivational intervention (FRAMES: Feedback, Responsibility, Advice, Menu, Empathy, Self-efficacy). Refer to community alcohol team if AUDIT &gt;15 or dependent. Alcohol reduction is often the single most effective intervention for mild-moderate depression in men with heavy drinking patterns.</div>
+      <div class="lstile"><b>Behavioural activation</b> Core component of CBT, but deliverable independently. Identify activities that previously gave pleasure or sense of achievement — schedule them systematically, starting with small, achievable activities. Breaks the depression-inactivity-worsening mood cycle. Can be self-directed using books (Overcoming Depression workbook — free from many libraries), guided by a link worker, or delivered formally in IAPT. Particularly effective for anhedonia-predominant depression where motivation is the barrier.</div>
+      <div class="lstile"><b>Social connection</b> Loneliness is an independent risk factor for depression (OR 2.5) and predicts poor antidepressant response. Prescribe social connection through social prescribing: community activities, volunteering, Men in Sheds (men with depression), walking groups, faith communities, befriending services. NHS Social Prescribing Link Workers are available in all English PCNs. The ONS loneliness measure ("How often do you feel lonely?") — Always/Often = refer to befriending service.</div>
+      <div class="lstile"><b>Mindfulness</b> NICE NG222 recommends Mindfulness-Based Cognitive Therapy (MBCT) specifically for relapse prevention in patients with 3+ previous depressive episodes. 8-week group programme — more effective than antidepressant continuation for preventing relapse in recurrent depression (NNT 4). The Frantic World app, Headspace, and Calm are not formal MBCT but can provide an accessible introduction. NHS group MBCT programmes available through IAPT/Talking Therapies in most areas.</div>
+      <div class="lstile"><b>Diet and nutrition</b> Mediterranean diet (high olive oil, fish, vegetables, legumes, wholegrains) is associated with 33% lower risk of depression (Psaltopoulou et al. 2013). Omega-3 fatty acids (EPA-rich — 1–2 g EPA/day): meta-analyses show modest antidepressant effect as adjunct to SSRIs. B12, folate, zinc, and vitamin D deficiency are associated with poorer antidepressant response — correct all deficiencies (especially B12 and D). Advise against skipping meals — hypoglycaemia exacerbates low mood and irritability.</div>
+      <div class="lstile"><b>Light therapy (seasonal depression)</b> 10,000 lux bright light therapy for 30 minutes each morning immediately after waking — first-line treatment for seasonal affective disorder (SAD). Comparable efficacy to fluoxetine for SAD (Lam et al. JAMA Psychiatry 2006). Use a validated SAD light box (not a standard lamp — must be 10,000 lux). Start in October (before typical onset), continue until April. Can cause agitation, headache, and insomnia if used incorrectly (not for evening use). Also beneficial as adjunct to SSRI for non-seasonal depression.</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The evidence base for exercise as a treatment for depression is substantial and underutilised — a 2023 network meta-analysis (Noetel et al. BMJ 2024, 218 RCTs, 14,170 participants) concluded that walking/jogging, yoga, strength training, and mixed aerobic exercise were all effective treatments for depression, with effect sizes comparable to antidepressants and psychotherapy. The key issue in primary care is that exercise is often mentioned as lifestyle advice (one-liner at the end of the consultation) rather than prescribed as a structured intervention with specificity (modality, frequency, duration, intensity, referral mechanism). NICE NG222 is explicit that GPs should discuss and support physical activity as a treatment option, not just mention it. Referring to the NHS exercise referral scheme (available through most practices) with a specific activity prescription has significantly better outcomes than verbal advice alone. The CBT-I (Cognitive Behavioural Therapy for Insomnia) is clinically superior to any pharmacological sleep aid for chronic insomnia — multiple RCTs and meta-analyses show CBT-I produces larger and more durable improvements in sleep onset latency, total sleep time, and sleep quality than benzodiazepines or Z-drugs, without the risks of dependence, tolerance, or next-day sedation. NHS Sleepio is a digital CBT-I programme available free on the NHS in England (via self-referral online) and has been shown in RCTs to be as effective as face-to-face CBT-I. Given the profound bidirectional relationship between sleep and depression, offering CBT-I (via Sleepio or IAPT) to every depressed patient with insomnia is evidence-based standard of care, not an optional extra.</div></div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9">
+  <div class="node-head"><div class="node-num">9</div><span class="node-tag">Safety</span><h3>Follow-Up, Monitoring &amp; Long-Term Safety-Netting</h3></div>
+  <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Review at 2 weeks (new antidepressant)</div><div>After initiating any antidepressant: review at 2 weeks — check tolerability (nausea, headache, insomnia, agitation, sexual dysfunction), suicidal ideation (increased activation in the first 2 weeks can paradoxically increase risk before full antidepressant effect), early discontinuation. If side effects intolerable → adjust dose or switch. PHQ-9 at this visit (baseline comparison). Remind patient: 2–4 weeks for initial effect, 4–8 weeks for full effect. Document explicitly.</div>
+      <div>Review at 4–6 weeks</div><div>Response assessment: PHQ-9. Responder = ≥50% reduction in PHQ-9 score. Remission = PHQ-9 &lt;5. If partial response → increase dose. If no response at adequate dose × 4 weeks → switch antidepressant. If psychological therapy not yet started → chase IAPT referral or explore barriers. Social factors reviewed — housing, finances, alcohol.</div>
+      <div>Review at 3 months</div><div>In remission (PHQ-9 &lt;10)? If yes → discuss continuation plan (minimum 6 months from remission, longer if recurrent). If not in remission → review treatment: dose adequate? Adherence confirmed? Alcohol? Psychological therapy started? Consider referral to psychiatry if second antidepressant trial failing. Document functional recovery alongside PHQ-9 score.</div>
+      <div>Long-term monitoring on antidepressants</div><div>Annual medication review (NICE NG222 — structured review). Weight (mirtazapine, quetiapine — weight gain). Blood pressure and heart rate (SNRIs — venlafaxine, duloxetine raise BP). Sodium (SSRIs — annual U&amp;E in patients ≥65 or diuretic users). Sexual dysfunction (very common — 30–40% on SSRIs — ask directly, consider switching to mirtazapine, bupropion, or agomelatine if problematic). Bone density in long-term SSRI users (SSRIs reduce bone density — DEXA if ≥5 years on SSRIs and postmenopausal or male ≥70).</div>
+      <div>Stopping antidepressants — structured plan</div><div>Shared decision-making: confirm patient in stable remission ≥6 months (≥24 months if recurrent) · Written tapering plan (hyperbolic taper — RCPsych guidance) · Warning about discontinuation symptoms (FINISH) and how to distinguish from relapse · Crisis plan if relapse occurs during taper · Review at 4 and 8 weeks of taper. If relapse during taper → restart at previous effective dose immediately.</div>
+      <div><span class="pill pill-red">Same-day crisis / 999</span></div><div>Patient discloses new suicidal plan with intent during any follow-up · Patient has taken an overdose (regardless of substance) → 999 · Parent with severe depression expresses thoughts of harming children or self with children present → 999 + safeguarding referral · Postpartum — any escalation in symptoms in first 2 weeks after birth</div>
+      <div><span class="pill pill-amber">Same-day GP</span></div><div>Patient on new SSRI calls reporting significantly increased agitation, suicidal thoughts, or severe insomnia in first 2 weeks (activation syndrome) · Hyponatraemia symptoms (confusion, nausea, headache) in elderly patient started on SSRI · Patient requesting emergency supply of antidepressants after running out (adherence and discontinuation risk) · New manic symptoms in a patient on antidepressant monotherapy</div>
+    </div>
+  </div>
+  <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The 2-week review after starting an antidepressant is a patient safety requirement, not a convenience. The MHRA issued a warning in 2004 (following concerns from the CSM) that SSRIs and SNRIs may be associated with an increased risk of suicidal thoughts and self-harm in the early weeks of treatment, particularly in younger patients (under 30). The mechanism is thought to involve increased psychomotor activation (the patient feels more energised and able to act on passive suicidal ideation before the antidepressant's mood-lifting effect has developed). For this reason, a face-to-face or telephone review at 2 weeks is the minimum standard — this is documented in the BNF, NICE NG222, and multiple RCGP guidelines. Patients should also be given an emergency contact number for the interim period. The sexual dysfunction side effects of SSRIs are significantly underreported and underasked — studies show 30–40% of patients on SSRIs experience sexual dysfunction (reduced libido, delayed orgasm, anorgasmia, erectile dysfunction), but fewer than 20% spontaneously report it because of embarrassment. GPs must ask directly: "Some people find this medication affects their sexual desire or function — has that been an issue for you?" This is particularly important in younger patients for whom sexual dysfunction may be a deal-breaker for continued treatment. Switching to mirtazapine, bupropion (off-label in UK), or agomelatine substantially reduces sexual side effects while maintaining antidepressant efficacy. The SSRI-bone density association requires long-term monitoring — observational studies show that SSRIs reduce bone mineral density through serotonin receptor-mediated effects on osteoblast and osteoclast activity. After 5 years of SSRI use, the fracture risk increase is clinically significant (similar magnitude to glucocorticoid-induced osteoporosis). DXA scan surveillance should be considered in postmenopausal women and men aged ≥70 on long-term SSRIs.</div></div>
+</div>
+
+</div>
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on NICE NG222 (Depression in Adults, 2022), NICE CG192 (Antenatal and Postnatal Mental Health), NICE TA213 (Quetiapine augmentation), Cipriani et al. Lancet 2018 (antidepressant network meta-analysis), Noetel et al. BMJ 2024 (exercise for depression), Royal College of Psychiatrists antidepressant discontinuation guidance (Davies &amp; Read 2019), BNF antidepressant prescribing guidelines, MHRA SSRI/SNRI safety guidance. Always adapt to individual patient context and local IAPT/Talking Therapies pathways.
+</div>
+
+<script>
+(function(){
+  const STORE='rgp.alg.lowmood.v1';
+  const flow=document.getElementById('flow');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=9;
+  function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}
+  function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true;});}catch(e){}}
+  function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}
+  flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});
+  flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});
+  document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});
+  load();update();
+})();
+</script>
+</body>
+</html>
