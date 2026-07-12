@@ -380,7 +380,7 @@ async function aiProxy(request, env, cors) {
   try { user = await userFromToken(request, env); }
   catch (e) { return json({ error: 'sign_in_required' }, 401, cors); }
 
-  const { messages, cacheKey, stream } = await request.json();
+  const { messages, cacheKey, stream, nosearch, temperature } = await request.json();
   if (!Array.isArray(messages) || !messages.length) return json({ error: 'no_messages' }, 400, cors);
 
   // Common-answer cache: the site sends cacheKey (the normalised question) for
@@ -423,7 +423,9 @@ async function aiProxy(request, env, cors) {
   // searches when the answer depends on current guidance it is unsure of (new
   // thresholds, safety alerts, updated guidelines). Each search costs ~1p on top
   // of tokens. Turn off by setting a WEB_SEARCH env var to "off".
-  const tools = (env.WEB_SEARCH === 'off') ? null : [{
+  // Role-play / marking calls (SCA patient simulator, examiner) send nosearch:true —
+  // a simulated patient must never stall mid-consultation to search the web.
+  const tools = (env.WEB_SEARCH === 'off' || nosearch === true) ? null : [{
     type: 'web_search_20250305',
     name: 'web_search',
     max_uses: 2,   // 2 so a verification search isn't starved when the library match is weak
@@ -452,7 +454,9 @@ async function aiProxy(request, env, cors) {
     body: JSON.stringify(Object.assign({
       model: model,
       max_tokens: 1600,
-      temperature: 0,           // deterministic: same question + same evidence => same answer for every user
+      // Deterministic (0) for clinical answers; role-play callers may request up to 1
+      // so the simulated patient varies naturally between runs of the same case.
+      temperature: (typeof temperature === 'number' && temperature > 0) ? Math.min(1, temperature) : 0,
       messages: anthMessages,
       stream: wantStream
     }, tools ? { tools } : {}))

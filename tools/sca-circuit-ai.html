@@ -203,7 +203,7 @@
   </main>
 </div>
 
-<script src="../assets/site.js?v=61"></script>
+<script src="../assets/site.js?v=65"></script>
 <script src="../assets/tts-voice.js?v=1"></script>
 <script src="../assets/sca-cases.js"></script>
 <script src="../assets/sca-extras.js?v=2"></script>
@@ -304,7 +304,7 @@
       'YOUR STORY — reveal each piece ONLY when asked a relevant question; never dump it all:',facts||'(none)',
       'INNER WORLD — share only if genuinely explored: Ideas: '+(ice.ideas||'—')+' | Concerns: '+(ice.concerns||'—')+' | Expectations: '+(ice.expectations||'—'),
       'CUES — drop each ONCE, naturally, then move on:',cues||'(none)',
-      'SPEAK in short, realistic lay language (1–3 sentences), with the emotion your situation implies. No jargon, no self-diagnosis, no symptom-lists. Answer plausibly &amp; consistently if asked something off-brief. Never break character or give feedback. Output only what the patient says aloud.'].join('\n');
+      'SPEAK in short, realistic lay language (1–3 sentences), with the emotion your situation implies. No jargon, no self-diagnosis, no symptom-lists. Answer plausibly and consistently if asked something off-brief. Never break character or give feedback. Output only what the patient says aloud.'].join('\n');
   }
   function buildMessages(c){
     const msgs=[{role:'user',content:patientSystem(c)},{role:'assistant',content:(c.script&&c.script.opening)||'Hello doctor.'}];
@@ -318,7 +318,7 @@
     busy=true; $('#sendBtn').disabled=true; showTyping();
     let reply='';
     try{ if(!(window.claude&&window.claude.complete)) throw new Error('unavailable');
-      reply=await window.claude.complete({messages:buildMessages(order[idx])}); if(!reply||!reply.trim()) throw new Error('empty');
+      reply=await window.claude.complete({messages:buildMessages(order[idx]), nosearch:true, temperature:0.7}); if(!reply||!reply.trim()) throw new Error('empty');
     }catch(err){ hideTyping(); busy=false; $('#sendBtn').disabled=false;
       const e=$('#liveErr'); e.textContent=err.message==='unavailable'?'The AI patient needs the live-site assistant connection. You can keep typing to rehearse, or end the case.':'The patient didn\u2019t respond — try again.'; e.classList.remove('hidden'); return; }
     hideTyping(); reply=reply.trim(); addMsg('pt',reply); speak(reply);
@@ -363,7 +363,7 @@
   }
   async function markCase(c, tr){
     try{ if(!(window.claude&&window.claude.complete)) throw 0;
-      const raw=await window.claude.complete({messages:[{role:'user',content:examinerPrompt(c)}]});
+      const raw=await window.claude.complete({messages:[{role:'user',content:examinerPrompt(c)}], nosearch:true});
       const m=raw.match(/\{[\s\S]*\}/); const d=JSON.parse(m?m[0]:raw);
       return { title:c.title, groups:(c.ceg||c.groups||[]), dg:d.dg||'F', cm:d.cm||'F', rto:d.rto||'F', one:d.one||'' };
     }catch(e){ return { title:c.title, groups:(c.ceg||c.groups||[]), dg:'-', cm:'-', rto:'-', one:'(not marked — assistant offline)' }; }
@@ -422,7 +422,7 @@
       localStorage.setItem(KEY, JSON.stringify(hist.slice(-30)));
       // also push per-case attempts so the heat-map's group/domain averages update
       const AK='rgp-sca-attempts'; const att=JSON.parse(localStorage.getItem(AK)||'[]');
-      results.forEach(r=>{ if(r&&r.dg!=='-'&&r.dg!=='-') att.push({ ts:Date.now(), title:r.title, groups:r.groups, dg:r.dg, cm:r.cm, rto:r.rto, src:'ai-circuit' }); });
+      results.forEach(r=>{ if(r && r.dg && r.dg!=='-') att.push({ ts:Date.now(), title:r.title, groups:r.groups, dg:r.dg, cm:r.cm, rto:r.rto, src:'ai-circuit' }); });
       localStorage.setItem(AK, JSON.stringify(att.slice(-400)));
     }catch(e){}
   }

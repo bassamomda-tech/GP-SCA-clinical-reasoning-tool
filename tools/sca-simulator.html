@@ -302,7 +302,7 @@
   </main>
 </div>
 
-<script src="../assets/site.js?v=61"></script>
+<script src="../assets/site.js?v=65"></script>
 <script src="../assets/tts-voice.js?v=1"></script>
 <script src="../assets/sca-cases.js"></script>
 <script src="../assets/sca-extras.js?v=2"></script>
@@ -594,7 +594,7 @@
     let reply='';
     try{
       if(!(window.claude && window.claude.complete)) throw new Error('unavailable');
-      reply = await window.claude.complete({ messages: buildMessages() });
+      reply = await window.claude.complete({ messages: buildMessages(), nosearch:true, temperature:0.7 });
       if(!reply || !reply.trim()) throw new Error('empty');
     }catch(err){
       hideTyping(); busy=false; $('#sendBtn').disabled=false; convoState='idle';
@@ -736,7 +736,7 @@
       'CASE: '+c.title+' — '+(c.brief||''),
       'EXPECTED POSITIVE BEHAVIOURS (checkpoints; dom = tasks[Data Gathering & Clinical Management] / rto[Relating to Others] / gs[Global/Safety]):',
       cps||'(none provided)',
-      'CUES THE PATIENT PLANTED (did the candidate pick up &amp; respond to each?):',
+      'CUES THE PATIENT PLANTED (did the candidate pick up and respond to each?):',
       cues||'(none)',
       'TRANSCRIPT:',
       convo||'(empty)',
@@ -777,21 +777,27 @@
     let raw='';
     try{
       if(!(window.claude && window.claude.complete)) throw new Error('unavailable');
-      raw = await window.claude.complete({ messages:[{role:'user', content:examinerPrompt()}] });
+      raw = await window.claude.complete({ messages:[{role:'user', content:examinerPrompt()}], nosearch:true });
     }catch(err){
       $('#fbBody').innerHTML = `<div class="sim-err">${err.message==='unavailable'
         ? 'Marking needs the assistant connection (live site). Meanwhile, self-mark against the role-play examiner card for this case.'
         : 'Couldn\u2019t generate feedback — try ending again.'}</div>`;
       return;
     }
-    renderFeedback(raw);
+    if(!renderFeedback(raw)){
+      // one automatic retry — large JSON outputs occasionally truncate mid-object
+      let raw2='';
+      try{ raw2 = await window.claude.complete({ messages:[{role:'user', content:examinerPrompt()}], nosearch:true }); }catch(e){}
+      renderFeedback(raw2||raw, true);
+    }
   }
 
-  function renderFeedback(raw){
+  function renderFeedback(raw, final){
     let d=null;
     try{ const m=raw.match(/\{[\s\S]*\}/); d=JSON.parse(m?m[0]:raw); }catch(e){}
     if(d) logAttempt(d);
-    if(!d){ $('#fbBody').innerHTML=`<div class="sim-err">Couldn\u2019t parse the marking. Raw examiner note:</div><p style="font-size:13.5px;line-height:1.6;color:var(--ink-2)">${esc(raw)}</p>`; return; }
+    if(!d && !final){ return false; }
+    if(!d){ $('#fbBody').innerHTML=`<div class="sim-err">Couldn\u2019t parse the marking. Raw examiner note:</div><p style="font-size:13.5px;line-height:1.6;color:var(--ink-2)">${esc(raw)}</p>`; return true; }
     const dom=(o,name)=>{ const g=GMAP[(o&&o.grade)||'F']||GMAP.F; return `<div class="sim-dom ${g.c}"><div class="dn">${name}</div><div class="dg">${(o&&o.grade)||'F'}</div><div class="dl">${g.l} — ${esc((o&&o.note)||'')}</div></div>`; };
     const overall=(d.overall||'FAIL').toUpperCase()==='PASS';
     const list=(arr,cls)=> (arr&&arr.length)? '<ul>'+arr.map(x=>`<li class="${cls}">${esc(x)}</li>`).join('')+'</ul>' : '<p style="font-size:13px;color:var(--muted)">—</p>';
@@ -801,6 +807,7 @@
       <div class="sim-fb-sec"><h4>✅ What worked</h4>${list(d.strengths,'good')}</div>
       <div class="sim-fb-sec"><h4>🔧 To improve</h4>${list(d.improve,'miss')}</div>
       ${(d.missed&&d.missed.length)?`<div class="sim-fb-sec"><h4>⚠ Missed checkpoints / cues</h4>${list(d.missed,'miss')}</div>`:''}`;
+    return true;
   }
 
   // ---------- feedback actions ----------

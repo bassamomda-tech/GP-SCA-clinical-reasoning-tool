@@ -39,11 +39,19 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
       const messages = Array.isArray(arg) ? arg : (arg && arg.messages) ? arg.messages
         : [{ role:'user', content:String(arg||'') }];
       const cacheKey = (arg && !Array.isArray(arg) && arg.cacheKey) ? String(arg.cacheKey) : null;
+      // Optional per-call knobs (role-play tools): nosearch disables the web-search
+      // tool server-side (a simulated patient must never stall to search); temperature
+      // lets the patient vary naturally between runs (clinical answers stay at 0).
+      const extra = {};
+      if (arg && !Array.isArray(arg)) {
+        if (arg.nosearch === true) extra.nosearch = true;
+        if (typeof arg.temperature === 'number') extra.temperature = arg.temperature;
+      }
       let token = null; try { token = localStorage.getItem('rgp.auth.token.v1'); } catch(e){}
       const res = await fetch(cfg.workerUrl.replace(/\/$/,'') + '/api/ai', {
         method:'POST',
         headers: Object.assign({ 'Content-Type':'application/json' }, token ? { 'Authorization':'Bearer ' + token } : {}),
-        body: JSON.stringify(Object.assign({ messages }, cacheKey ? { cacheKey } : {}))
+        body: JSON.stringify(Object.assign({ messages }, cacheKey ? { cacheKey } : {}, extra))
       });
       if (res.status === 401 || res.status === 402) { const e = new Error('unavailable'); e.code = res.status; throw e; }
       if (!res.ok) throw new Error('ai_error_' + res.status);
@@ -61,11 +69,16 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
       const messages = Array.isArray(arg) ? arg : (arg && arg.messages) ? arg.messages
         : [{ role:'user', content:String(arg||'') }];
       const cacheKey = (arg && !Array.isArray(arg) && arg.cacheKey) ? String(arg.cacheKey) : null;
+      const extra = {};
+      if (arg && !Array.isArray(arg)) {
+        if (arg.nosearch === true) extra.nosearch = true;
+        if (typeof arg.temperature === 'number') extra.temperature = arg.temperature;
+      }
       let token = null; try { token = localStorage.getItem('rgp.auth.token.v1'); } catch(e){}
       const res = await fetch(cfg.workerUrl.replace(/\/$/,'') + '/api/ai', {
         method:'POST',
         headers: Object.assign({ 'Content-Type':'application/json' }, token ? { 'Authorization':'Bearer ' + token } : {}),
-        body: JSON.stringify(Object.assign({ messages, stream:true }, cacheKey ? { cacheKey } : {}))
+        body: JSON.stringify(Object.assign({ messages, stream:true }, cacheKey ? { cacheKey } : {}, extra))
       });
       if (res.status === 401 || res.status === 402) { const e = new Error('unavailable'); e.code = res.status; throw e; }
       if (!res.ok) throw new Error('ai_error_' + res.status);
