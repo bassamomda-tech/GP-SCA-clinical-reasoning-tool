@@ -188,11 +188,12 @@
   }
   function allowed(){
     var u = me();
-    if (!u) return false;                                  // signed out
-    if (u.admin) return true;                              // admin account
-    var t = u.tier || 'bronze';
-    if (t === 'platinum' || t === 'silver') return true;   // clinic content covered
-    if (t === 'gold') return false;                        // SCA-only plan
+    if (u && u.admin) return true;                          // admin account
+    var t = (u && u.tier) || 'bronze';                      // signed-out == bronze free tier
+    if (t === 'platinum' || t === 'silver') return true;    // clinic content covered
+    if (u && t === 'gold') return false;                    // SCA-only plan
+    return FREE.indexOf(base) !== -1;                       // bronze or signed-out — 5 free samples
+  }
     return FREE.indexOf(base) > -1;                        // bronze: 5 samples
   }
   function show(){
@@ -203,10 +204,8 @@
     el.setAttribute('style','position:fixed;inset:0;z-index:9000;display:grid;place-items:center;padding:20px;background:rgba(28,25,23,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-family:\'DM Sans\',system-ui,sans-serif');
     el.innerHTML = '<div style="background:#f6f2e9;border:1px solid #d9d2c4;border-radius:18px;max-width:430px;width:100%;padding:26px 24px;box-shadow:0 30px 70px rgba(0,0,0,.35)">'
       + '<div style="font-size:26px;margin-bottom:8px">\ud83d\udd10</div>'
-      + '<h2 style="font-family:\'Source Serif 4\',Georgia,serif;font-size:22px;font-weight:600;color:#1c1917;margin:0 0 6px">' + (u ? 'That\u2019s beyond your free samples' : 'This page is for members') + '</h2>'
-      + '<p style="font-size:13.5px;line-height:1.55;color:#57534e;margin:0 0 14px">' + (u
-          ? 'Your free plan includes 5 sample ' + kind + 's. Upgrade to Silver or Platinum to unlock the full library.'
-          : 'Sign in from the home page if you already have a plan \u2014 or create a free account for 5 sample ' + kind + 's.') + '</p>'
+      + '<h2 style="font-family:\'Source Serif 4\',Georgia,serif;font-size:22px;font-weight:600;color:#1c1917;margin:0 0 6px">That\u2019s beyond the free samples</h2>'
+      + '<p style="font-size:13.5px;line-height:1.55;color:#57534e;margin:0 0 14px">The 5 sample ' + kind + 's are free for everyone — no sign-up needed. Unlock the full library with Silver or Platinum, or sign in if you already have a plan.</p>'
       + '<a style="display:block;text-align:center;background:#0c4a47;color:#fff;font-weight:700;font-size:14px;padding:11px 14px;border-radius:10px;text-decoration:none;margin-bottom:8px" href="../../index.html#subscriptions">See the plans \u2192</a>'
       + '<a style="display:block;text-align:center;background:#fff;color:#0c4a47;border:1px solid #c9c1b2;font-weight:700;font-size:14px;padding:11px 14px;border-radius:10px;text-decoration:none" href="../../' + (isAlg?'tools/algorithms.html':'tools/management.html') + '">Back to the ' + kind + ' library</a>'
       + '</div>';

@@ -34,8 +34,31 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
   if (window.claude && typeof window.claude.complete === 'function') return; // preview/native: leave as-is
   const cfg = window.RGP_CONFIG || {};
   if (!cfg.workerUrl) return; // not configured yet → tools show their graceful "AI unavailable" fallback
+
+  // ---- AI cost meter (this shim only exists on your live host: a Worker is
+  // configured and the native preview `claude` is absent) ----
+  // Every AI call is billable, so free / signed-out users get a 1-run trial PER
+  // feature; beyond that the covering paid plan is required. Paid tiers are
+  // unlimited. Enforced HERE so no tool page can bypass it: an exhausted user is
+  // blocked BEFORE any billable request, and only successful, non-cached calls
+  // are counted. The per-feature counter is registered with RGPSync, so it
+  // follows a signed-in account across devices (can't be reset by switching).
+  const AI_TRIAL_KEY = 'rgp-ai-trial-v1', AI_TRIAL_MAX = 1;
+  const AI_AREA = { ask:'clinic', 'ask-quality':'clinic', scribe:'clinic',
+    'consultation-spine':'clinic', 'sca-simulator':'sca', 'sca-circuit-ai':'sca' };
+  function aiFeature(){ return (location.pathname.split('/').pop()||'').replace(/\.html$/,'').toLowerCase() || 'ai'; }
+  function aiTier(){ try{ if (window.RGPAuth){ if (RGPAuth.isAdmin && RGPAuth.isAdmin()) return 'admin'; return (RGPAuth.tier ? RGPAuth.tier() : 'bronze') || 'bronze'; } }catch(e){} return 'bronze'; }
+  function aiUnlimited(feat){ const t = aiTier(); if (t==='admin' || t==='platinum') return true; const area = AI_AREA[feat] || 'clinic'; if (t==='silver') return area==='clinic'; if (t==='gold') return area==='sca'; return false; }
+  function aiCounts(){ try{ return JSON.parse(localStorage.getItem(AI_TRIAL_KEY)||'{}')||{}; }catch(e){ return {}; } }
+  function aiLeft(feat){ return aiUnlimited(feat) ? Infinity : Math.max(0, AI_TRIAL_MAX-(aiCounts()[feat]||0)); }
+  function aiGateOrThrow(){ const feat = aiFeature(); if (aiLeft(feat) > 0) return feat; try{ if (window.RGP_PAYWALL && RGP_PAYWALL.showTrialGate) RGP_PAYWALL.showTrialGate(feat); }catch(e){} const err = new Error('unavailable'); err.code = 402; err.trial = true; throw err; }
+  function aiBump(feat){ if (aiUnlimited(feat)) return; const c = aiCounts(); c[feat] = (c[feat]||0)+1; try{ localStorage.setItem(AI_TRIAL_KEY, JSON.stringify(c)); }catch(e){} } // RGPSync poll pushes the change to the account
+  // read-only view for tools that want to show “N free runs left”
+  window.RGP_AI_TRIAL = { left:aiLeft, max:AI_TRIAL_MAX, feature:aiFeature, unlimited:aiUnlimited };
+
   window.claude = {
     async complete(arg){
+      const _feat = aiGateOrThrow();
       const messages = Array.isArray(arg) ? arg : (arg && arg.messages) ? arg.messages
         : [{ role:'user', content:String(arg||'') }];
       const cacheKey = (arg && !Array.isArray(arg) && arg.cacheKey) ? String(arg.cacheKey) : null;
@@ -60,12 +83,14 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
       window.claude.lastSources = Array.isArray(data.sources) ? data.sources : [];
       window.claude.lastCached = !!data.cached;
       window.claude.lastFallback = !!data.fallback;
+      if (!data.cached) aiBump(_feat);
       return data.completion || data.text || '';
     },
     // Streaming answer: same as complete() but calls onToken(textChunk) as words
     // arrive, so the UI can render progressively. Returns the full text at the end.
     // Falls back to a normal complete() if the server doesn't stream (cache hit).
     async stream(arg, onToken){
+      const _feat = aiGateOrThrow();
       const messages = Array.isArray(arg) ? arg : (arg && arg.messages) ? arg.messages
         : [{ role:'user', content:String(arg||'') }];
       const cacheKey = (arg && !Array.isArray(arg) && arg.cacheKey) ? String(arg.cacheKey) : null;
@@ -91,6 +116,7 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
         window.claude.lastFallback = !!data.fallback;
         const full = data.completion || data.text || '';
         if (full && typeof onToken === 'function') onToken(full, full);
+        if (!data.cached) aiBump(_feat);
         return full;
       }
       window.claude.lastCached = false;
@@ -114,6 +140,7 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
           else if (o.error) { throw new Error(o.error); }
         }
       }
+      aiBump(_feat);
       return full;
     },
     // Embeddings for semantic search (Ask). Returns number[][]. Throws if the
@@ -1973,8 +2000,9 @@ window.RGPAuth = RGPAuth;
     if (/\/tools\/management\.html$/.test(path)) return null;                 // protocols directory (browse)
     if (/\/tools\/management\//.test(path)) return FREE_PROTOCOLS.has(base) ? null : 'sample-protocol';
     if (/sca-practice\.html$/.test(path))    return null;                      // Hot Seat: 5 sample cases (capped in-tool)
+    if (/sca-simulator\.html$/.test(path) || /sca-circuit-ai\.html$/.test(path)) return null; // AI trial (metered to 1 free run)
     if (/sca-/.test(path))                   return 'sca';
-    if (/ask\.html$/.test(path))             return 'ask';
+    if (/ask\.html$/.test(path))             return null;                      // Ask: 1 free AI run (metered), then paid
     if (/prescribing\.html$/.test(path))     return 'prescribing';
     if (/cpd\.html$/.test(path))             return 'cpd';
     return 'members';
@@ -1986,8 +2014,7 @@ window.RGPAuth = RGPAuth;
     if (t === 'platinum') return true;
     if (t === 'silver') return area() === 'clinic';
     if (t === 'gold')   return area() === 'sca';
-    // bronze / free — must be signed in AND on an allowed page
-    if (!RGPAuth.current || !RGPAuth.current()) return false;
+    // bronze OR signed-out — identical free access; no email/account required
     return bronzeReason() === null;
   }
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -2096,6 +2123,50 @@ window.RGPAuth = RGPAuth;
     }
   }
 
+  // AI free-trial gate — shown when a free / signed-out user has used all 5 free
+  // runs of a paid AI feature (the meter in the AI shim calls this). Reuses the
+  // members gate card + access-code redeem.
+  const AI_TRIAL_LABELS = {
+    'ask':'Ask the assistant', 'ask-quality':'Ask',
+    'scribe':'Consult Scribe', 'consultation-spine':'the Consultation Spine AI draft',
+    'sca-simulator':'the AI Patient Simulator', 'sca-circuit-ai':'the AI Mock Exam Circuit'
+  };
+  function showTrialGate(feature){
+    const el = overlay();
+    document.documentElement.style.overflow = 'hidden';
+    const u = window.RGPAuth ? RGPAuth.current() : null;
+    const P = pre();
+    const lbl = AI_TRIAL_LABELS[feature] || 'this AI feature';
+    el.querySelector('.rgp-gate-body').innerHTML =
+      '<h2>Your free trial run is used up</h2>'+
+      '<p>You\u2019ve used your 1 free trial run of '+esc(lbl)+'. The AI features are part of the paid plans \u2014 upgrade for unlimited use'+(u?'':', or sign in if you already have a plan')+'.</p>'+
+      '<div class="rgp-gate-btns">'+
+      '<a class="rgp-gate-btn pri" href="'+P+'index.html#subscriptions">See the plans →</a>'+
+      (u?'':'<button class="rgp-gate-btn sec" data-g-signin type="button">Sign in</button>')+
+      '<button class="rgp-gate-btn sec" data-g-close type="button">Maybe later</button>'+
+      '</div>'+
+      '<div class="rgp-gate-code"><label>Access code</label>'+
+      '<div class="rgp-gate-code-row"><input type="text" placeholder="e.g. RGP-3F9A2C" data-g-code /><button type="button" data-g-redeem>Unlock</button></div>'+
+      '<div class="rgp-gate-err" data-g-err></div></div>';
+    const q = s => el.querySelector(s);
+    const close = () => { el.remove(); document.documentElement.style.overflow=''; };
+    if (q('[data-g-signin]')) q('[data-g-signin]').addEventListener('click', () => window.RGP_openAuth && RGP_openAuth('signin'));
+    if (q('[data-g-close]')) q('[data-g-close]').addEventListener('click', close);
+    if (q('[data-g-redeem]')){
+      const go = async () => {
+        const inp = q('[data-g-code]'), err = q('[data-g-err]');
+        const code = (inp.value||'').trim();
+        if (!code){ err.textContent = 'Enter the code you were given.'; return; }
+        err.classList.remove('ok'); err.textContent = 'Checking\u2026';
+        try { await RGPAuth.redeem(code); err.classList.add('ok'); err.textContent = '\u2713 Unlocked — reloading\u2026'; setTimeout(()=>location.reload(), 700); }
+        catch(e){ err.textContent = e.message || 'That code didn\u2019t work.'; }
+      };
+      q('[data-g-redeem]').addEventListener('click', go);
+      q('[data-g-code]').addEventListener('keydown', e => { if (e.key === 'Enter'){ e.preventDefault(); go(); } });
+    }
+  }
+  window.RGP_PAYWALL.showTrialGate = showTrialGate;
+
   function init(){
     render();
     // re-check once the server has confirmed the profile/entitlement
@@ -2162,7 +2233,8 @@ window.RGPSync = (function(){
     'rgp-sca-habits':           'array',
     'rgp-sca-exm':              'objnew',
     'rgp-akt-srs':              'objnew',
-    'rgp.ask.sessions.v1':      'asksess'
+    'rgp.ask.sessions.v1':      'asksess',
+    'rgp-ai-trial-v1':          'trialmax'
   };
   function ck(k){ return 'store:' + k; }
   function ready(){ return !!(window.RGPCloud && RGPCloud.ready && RGPCloud.ready()); }
@@ -2218,7 +2290,10 @@ window.RGPSync = (function(){
     return { sessions:out, activeId:act };
   }
 
-  var MERGE = { rank:mergeRank, cpd:mergeCpd, array:function(a,b){return mergeArray(a,b,600);}, objnew:mergeObjNew, asksess:mergeAskSess };
+  // AI free-trial counters {feature:count}: keep the HIGHER count per feature so
+  // the trial can't be reset by switching devices or clearing one browser.
+  function mergeTrialMax(a,b){ a=a||{}; b=b||{}; var o=Object.assign({},a),k; for(k in b){ o[k]=Math.max(o[k]||0, b[k]||0); } return o; }
+  var MERGE = { rank:mergeRank, cpd:mergeCpd, array:function(a,b){return mergeArray(a,b,600);}, objnew:mergeObjNew, asksess:mergeAskSess, trialmax:mergeTrialMax };
 
   var snap={}, started=false;
   function initSnap(){ for(var k in CFG) snap[k]=hash(k); }

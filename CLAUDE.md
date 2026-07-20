@@ -50,6 +50,25 @@ Source of truth: `uploads/Cancer referral NICE.pdf` (NICE NG12, May 2025).
   in Chrome). Always handle the `unavailable` case gracefully and offer a worked example.
 
 ## Session log
+- **Free tier opened to signed-OUT visitors (no email required) (this session):** user wanted
+  everyone to get the same access as the free/bronze plan WITHOUT creating an account, to lower
+  the entry barrier. Previously all three paywall gates blocked signed-out users entirely
+  (`if (!u) return false`). Changed all three to treat signed-out == bronze free tier:
+  (1) `assets/site.js` `allowed()` — dropped the `if (!RGPAuth.current()) return false` line so
+  signed-out falls through to `bronzeReason()===null` (same free pages + 5 sample cases/pathways/
+  protocols as bronze; Ask/Prescribing/CPD/full library still gated → prompts sign-up/upgrade).
+  (2) `assets/alg-nav.js` + `assets/mgmt-nav.js` standalone content gates — `allowed()` now
+  `var t=(u&&u.tier)||'bronze'`, admin/gold checks guarded with `u&&`, so signed-out gets the 5
+  FREE sample pathways/protocols; overlay copy unified to "The 5 sample …s are free for everyone
+  — no sign-up needed. Unlock the full library with Silver or Platinum, or sign in…". Free
+  content (scribe/articles/resources/leaflets/spine/sca-guide/sca-group + 5 samples each of
+  cases/algorithms/protocols) is now reachable with zero friction; `isFreeTier()` already returns
+  true when signed-out so in-tool caps (Hot Seat 5 cases, Scribe 5/mo, group host=samples-only,
+  join=any) apply consistently. Bumps: **site.js?v=66→v=67 SITEWIDE** (root+pages 14, tools+lab
+  48, cases 108 — batched 4-8/commit because the backend stalled on large-file commits; verified
+  zero live v66 remain, only the stale `sca-fix/` staging folder still shows v66), alg-nav.js/
+  mgmt-nav.js are loaded UN-versioned so **SW CACHE_VERSION v28→v29** forces their refetch.
+  Deploy = WHOLE SITE (no worker change this round). No console errors on load.
 - **SCA — Live Group Mock built (the one competitor feature we lacked) + 312-case marketing
   (this session):** competitive scan (SCAreVision/SCAPrep/MedTutor/Clinitalk) showed we already
   had readiness dashboard (sca-weakspots), worked examples, 12-case full-diet circuit, voice —
