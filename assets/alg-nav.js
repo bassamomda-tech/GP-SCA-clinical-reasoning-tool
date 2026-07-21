@@ -194,8 +194,6 @@
     if (u && t === 'gold') return false;                    // SCA-only plan
     return FREE.indexOf(base) !== -1;                       // bronze or signed-out — 5 free samples
   }
-    return FREE.indexOf(base) > -1;                        // bronze: 5 samples
-  }
   function show(){
     if (allowed()) return;
     var u = me();

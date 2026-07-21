@@ -7,7 +7,7 @@
    - Google Fonts: cache-first (long-lived).
    Bump CACHE_VERSION to force clients to refresh cached files.
 */
-const CACHE_VERSION = 'v29';
+const CACHE_VERSION = 'v31';
 const SHELL_CACHE   = 'rgp-shell-' + CACHE_VERSION;
 const RUNTIME_CACHE = 'rgp-runtime-' + CACHE_VERSION;
 const FONT_CACHE    = 'rgp-fonts-' + CACHE_VERSION;
