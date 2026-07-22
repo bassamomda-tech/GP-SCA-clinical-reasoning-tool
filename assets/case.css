@@ -90,6 +90,15 @@ body.mode-sca .case-toc-foot .ctf-dot{ background:var(--rust); }
   padding:8px 28px;
   display:flex;align-items:center;gap:10px;
 }
+.case-nav-back{
+  display:inline-flex;align-items:center;gap:6px;flex-shrink:0;
+  font-family:inherit;font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;
+  padding:7px 12px;border:1px solid var(--line);border-radius:9px;background:#fff;white-space:nowrap;
+}
+.case-nav-back:hover{ color:var(--rust);border-color:var(--rust); }
+.case-nav-back svg{ width:15px;height:15px; }
+body.mode-sca .case-nav-back{ color:var(--rust); }
+@media(max-width:520px){ .case-nav-back span{ display:none; } }
 .case-nav-trigger{
   display:inline-flex;align-items:center;gap:8px;
   font-family:inherit;font-size:13px;font-weight:600;

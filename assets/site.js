@@ -45,7 +45,8 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
   // follows a signed-in account across devices (can't be reset by switching).
   const AI_TRIAL_KEY = 'rgp-ai-trial-v1', AI_TRIAL_MAX = 1;
   const AI_AREA = { ask:'clinic', 'ask-quality':'clinic', scribe:'clinic',
-    'consultation-spine':'clinic', 'sca-simulator':'sca', 'sca-circuit-ai':'sca' };
+    'consultation-spine':'clinic', 'gp-forms':'clinic', 'sca-simulator':'sca', 'sca-circuit-ai':'sca',
+    'sca-practice':'sca', 'sca-resit':'sca', 'sca-real-feedback':'sca', 'sca-comms-lab':'sca' };
   function aiFeature(){ return (location.pathname.split('/').pop()||'').replace(/\.html$/,'').toLowerCase() || 'ai'; }
   function aiTier(){ try{ if (window.RGPAuth){ if (RGPAuth.isAdmin && RGPAuth.isAdmin()) return 'admin'; return (RGPAuth.tier ? RGPAuth.tier() : 'bronze') || 'bronze'; } }catch(e){} return 'bronze'; }
   function aiUnlimited(feat){ const t = aiTier(); if (t==='admin' || t==='platinum') return true; const area = AI_AREA[feat] || 'clinic'; if (t==='silver') return area==='clinic'; if (t==='gold') return area==='sca'; return false; }
@@ -908,28 +909,24 @@ function renderTopNav(activeId){
 
   // SCA Tools mega — the SCA candidate suite, ordered by the prep journey
   const scaToolsList = [
+    { ic:'🧾', label:'The SCA Guide',         meta:'Format · marking · 12-week plan', path:'tools/sca-guide.html' },
+    { ic:'🗺️', label:'Ultimate Consultation Guide', meta:'The 7 phases · move · phrases · trap', path:'tools/sca-consultation-guide.html' },
+    { ic:'📑', label:'Worked Examples',       meta:'Pass vs fail · annotated turn-by-turn', path:'tools/sca-worked-examples.html' },
+    { ic:'⚖️', label:'Examiner Marking',      meta:'The domains · self-mark /126', path:'tools/sca-domains.html' },
     { ic:'🎙️', label:'AI Patient Simulator', meta:'Live AI patient · exam-day mode · marked', path:'tools/sca-simulator.html' },
-    { ic:'🔥', label:'The Hot Seat',          meta:'12-min timer · RCGP scorecard · record', path:'tools/sca-practice.html' },
+    { ic:'💬', label:'Conversation Lab',      meta:'ICE · cues · shared plans · negotiation', path:'tools/sca-comms-lab.html' },
+    { ic:'🎯', label:'Micro-Drills',          meta:'Cues · safety-net · explainer reps', path:'tools/sca-drills.html' },
     { ic:'🔁', label:'AI Mock Exam Circuit',  meta:'Back-to-back AI patients · report card', path:'tools/sca-circuit-ai.html' },
     { ic:'👥', label:'Live Group Mock',       meta:'3 friends · 1 code · candidate / patient / examiner', path:'tools/sca-group.html' },
-    { ic:'💬', label:'Conversation Lab',      meta:'ICE · cues · shared plans · negotiation', path:'tools/sca-comms-lab.html' },
-    { ic:'🌡️', label:'My Readiness',          meta:'Pass-likelihood · habits · coverage', path:'tools/sca-weakspots.html' },
+    { ic:'📋', label:'Mock Exam Circuit',     meta:'Self-led timed diet · no AI', path:'tools/sca-circuit.html' },
     { ic:'📝', label:'AKT Question Bank',     meta:'SBAs · spaced repetition', path:'tools/sca-qbank.html' },
-    { ic:'📑', label:'Worked Examples',       meta:'Pass vs fail · annotated turn-by-turn', path:'tools/sca-worked-examples.html' },
-    { ic:'🗺️', label:'Ultimate Consultation Guide', meta:'The 7 phases · move · phrases · trap', path:'tools/sca-consultation-guide.html' },
-    { ic:'🧭', label:'Consultation Playbooks',meta:'10 difficult consultation types', path:'tools/sca-playbooks.html' },
-    { ic:'🎯', label:'Micro-Drills',          meta:'Cues · safety-net · explainer reps', path:'tools/sca-drills.html' },
     { ic:'🔥', label:'SCA Hot Topics',        meta:"What's likely this diet", path:'tools/sca-hot-topics.html' },
-    { ic:'🧾', label:'The SCA Guide',         meta:'Format · marking · 12-week plan', path:'tools/sca-guide.html' },
-    { ic:'⚖️', label:'Examiner Marking',      meta:'The domains · self-mark /126', path:'tools/sca-domains.html' },
+    { ic:'🧭', label:'Consultation Playbooks',meta:'10 difficult consultation types', path:'tools/sca-playbooks.html' },
+    { ic:'🌡️', label:'My Readiness',          meta:'Pass-likelihood · habits · coverage', path:'tools/sca-weakspots.html' },
     { ic:'🩺', label:'The Resit Clinic',      meta:'Failed? Results letter → 8-week fix', path:'tools/sca-resit.html' },
+    { ic:'📆', label:'The Daily 10',          meta:'Habit streak · quick daily reps', path:'tools/sca-daily.html' },
   ];
-  const scaToolsMega = `
-    <a class="rgp-mm-tool" href="${PRE}index.html#sca-step1">
-      <span class="rgp-mm-tool-ic">🎓</span>
-      <span><b>The full SCA path</b><small>See all tools, step by step</small></span>
-    </a>
-  ` + scaToolsList.map(t => `
+  const scaToolsMega = scaToolsList.map(t => `
     <a class="rgp-mm-tool ${activeId === t.id ? 'is-active' : ''}" href="${PRE}${t.path}">
       <span class="rgp-mm-tool-ic">${t.ic}</span>
       <span><b>${t.label}</b><small>${t.meta}</small></span>
@@ -1977,6 +1974,56 @@ window.RGPAuth = RGPAuth;
   // SCA sample cases (first 5 in the Hot Seat library) — enforced in-tool by sca-practice.js.
   const FREE_SCA = sampleSet((window.SCA_CASES||[]).map(c => c && c.id), 5);
   window.RGP_FREE_SAMPLES = { cases:[...FREE_CASES], algorithms:[...FREE_ALGS], protocols:[...FREE_PROTOCOLS], scaCases:[...FREE_SCA] };
+
+  // Mark which cards are the free samples on the 3 directory pages (algorithms.html,
+  // management.html, cases.html) — users couldn't tell which 5 were free. Badges the
+  // matching cards + (for signed-out/bronze only) a banner explaining the policy.
+  (function(){
+    const DIRS = [
+      { test:/\/tools\/algorithms\.html$/, set:FREE_ALGS,      label:'pathways' },
+      { test:/\/tools\/management\.html$/, set:FREE_PROTOCOLS, label:'protocols' },
+      { test:/\/cases\.html$/,             set:FREE_CASES,     label:'cases' }
+    ];
+    const cfg = DIRS.find(d => d.test.test(location.pathname));
+    if (!cfg) return;
+    const css = document.createElement('style');
+    css.textContent = '.ac-free-badge{position:absolute;top:8px;right:10px;font-size:9px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:#0c4a47;border-radius:999px;padding:3px 9px;line-height:1;pointer-events:none}'
+      + '.ac-free-banner{margin:14px 0 4px;padding:11px 16px;border:1px solid #99c4bf;background:#ecf5f3;border-radius:11px;font-size:13px;line-height:1.55;color:#1c1917}'
+      + '.ac-free-banner b{color:#0c4a47}.ac-free-banner a{color:#0c4a47;font-weight:700;text-decoration:underline}';
+    document.head.appendChild(css);
+    function run(){
+      const cards = document.querySelectorAll('a.alg-card[href]');
+      if (!cards.length) return false;
+      let any = false;
+      cards.forEach(a => {
+        const base = (a.getAttribute('href')||'').split('/').pop();
+        if (cfg.set.has(base)){
+          any = true;
+          if (!a.querySelector('.ac-free-badge')){ const b=document.createElement('span'); b.className='ac-free-badge'; b.textContent='Free'; a.appendChild(b); }
+        }
+      });
+      const restricted = !!(window.RGP_PAYWALL && RGP_PAYWALL.isFreeTier && RGP_PAYWALL.isFreeTier());
+      if (restricted && any && !document.querySelector('.ac-free-banner')){
+        const head = document.querySelector('.tool-head');
+        if (head){
+          const d = document.createElement('div');
+          d.className = 'ac-free-banner';
+          const home = /\/tools\//.test(location.pathname) ? '../index.html' : 'index.html';
+          d.innerHTML = '\ud83d\udd13 <b>Free, no sign-up needed:</b> the '+cfg.set.size+' '+cfg.label+' marked <span class="ac-free-badge" style="position:static;display:inline-block;vertical-align:middle;margin:0 3px">Free</span> below are open to everyone. <a href="'+home+'#subscriptions">Unlock the full library \u2192</a>';
+          head.insertAdjacentElement('afterend', d);
+        }
+      }
+      return true;
+    }
+    const start = () => {
+      run();
+      let n = 0;
+      const mo = new MutationObserver(() => run());
+      mo.observe(document.body, { childList:true, subtree:true });
+      const iv = setInterval(() => { run(); if (++n > 30) clearInterval(iv); }, 200); // covers late async renders (cases.html)
+    };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+  })();
   // Shared helper so in-tool caps (Hot Seat cases, Scribe monthly limit) can ask
   // “is this a free account that should be capped?”. Only defined on the live
   // paywall host (this IIFE returns early otherwise), so previews stay uncapped.
@@ -1992,7 +2039,7 @@ window.RGPAuth = RGPAuth;
   // Returns null if a free account may open this page, else a short reason code.
   function bronzeReason(){
     const path = location.pathname, base = (path.split('/').pop()||'');
-    const OPEN = ['scribe.html','articles.html','resources.html','leaflets.html','consultation-spine.html','sca-guide.html','sca-group.html'];
+    const OPEN = ['scribe.html','articles.html','resources.html','leaflets.html','consultation-spine.html','sca-guide.html','sca-group.html','clinic-guide.html'];
     if (OPEN.indexOf(base) > -1) return null;
     if (/\/cases\.html$/.test(path) || /\/tools\/algorithms\.html$/.test(path)) return null; // browse catalogue
     if (/\/cases\//.test(path))             return FREE_CASES.has(base) ? null : 'sample-case';
@@ -2000,8 +2047,8 @@ window.RGPAuth = RGPAuth;
     if (/\/tools\/management\.html$/.test(path)) return null;                 // protocols directory (browse)
     if (/\/tools\/management\//.test(path)) return FREE_PROTOCOLS.has(base) ? null : 'sample-protocol';
     if (/sca-practice\.html$/.test(path))    return null;                      // Hot Seat: 5 sample cases (capped in-tool)
-    if (/sca-simulator\.html$/.test(path) || /sca-circuit-ai\.html$/.test(path)) return null; // AI trial (metered to 1 free run)
-    if (/sca-/.test(path))                   return 'sca';
+    if (/sca-simulator\.html$/.test(path)) return null;                       // AI trial (metered to 1 free run)
+    if (/sca-/.test(path))                   return 'sca';                     // incl. sca-group + sca-circuit-ai: members only
     if (/ask\.html$/.test(path))             return null;                      // Ask: 1 free AI run (metered), then paid
     if (/prescribing\.html$/.test(path))     return 'prescribing';
     if (/cpd\.html$/.test(path))             return 'cpd';
@@ -2123,8 +2170,8 @@ window.RGPAuth = RGPAuth;
     }
   }
 
-  // AI free-trial gate — shown when a free / signed-out user has used all 5 free
-  // runs of a paid AI feature (the meter in the AI shim calls this). Reuses the
+  // AI free-trial gate — shown when a free / signed-out user has used their 1 free
+  // run of a paid AI feature (the meter in the AI shim calls this). Reuses the
   // members gate card + access-code redeem.
   const AI_TRIAL_LABELS = {
     'ask':'Ask the assistant', 'ask-quality':'Ask',
@@ -2457,7 +2504,7 @@ function injectAuthModal(){
         <button class="rgp-auth-submit" data-close type="button">Start practising</button>
       </div>
       <div class="rgp-auth-foot">
-        Questions? <a href="mailto:bassamomda91@gmail.com">Email us</a> · <a href="https://www.linkedin.com/in/bassam-mohamed-646a50116/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        Questions? <a href="mailto:bassamomda@gmail.com">Email us</a> · <a href="https://www.linkedin.com/in/bassam-mohamed-646a50116/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </div>
   `;
@@ -2607,7 +2654,7 @@ function injectFooter(){
                 <li>DVLA · Fit Note · Sick-Day Rules · Scribe</li>
                 <li class="is-na">SCA exam suite</li>
               </ul>
-              <a class="rgp-sub-cta" href="mailto:bassamomda91@gmail.com?subject=Silver%20(Clinic)%20subscription">Choose Silver</a>
+              <a class="rgp-sub-cta" href="mailto:bassamomda@gmail.com?subject=Silver%20(Clinic)%20subscription">Choose Silver</a>
             </article>
 
             <article class="rgp-sub-card rgp-tier-gold">
@@ -2624,7 +2671,7 @@ function injectFooter(){
                 <li>The Hot Seat — timer · scorecard · AI marking</li>
                 <li class="is-na">Clinic toolkit</li>
               </ul>
-              <a class="rgp-sub-cta" href="mailto:bassamomda91@gmail.com?subject=Gold%20(SCA)%20subscription">Choose Gold</a>
+              <a class="rgp-sub-cta" href="mailto:bassamomda@gmail.com?subject=Gold%20(SCA)%20subscription">Choose Gold</a>
             </article>
 
             <article class="rgp-sub-card rgp-tier-platinum is-featured">
@@ -2641,7 +2688,7 @@ function injectFooter(){
                 <li>Priority access to new tools</li>
                 <li>Cancel anytime</li>
               </ul>
-              <a class="rgp-sub-cta" href="mailto:bassamomda91@gmail.com?subject=Platinum%20(All%20access)%20subscription">Choose Platinum</a>
+              <a class="rgp-sub-cta" href="mailto:bassamomda@gmail.com?subject=Platinum%20(All%20access)%20subscription">Choose Platinum</a>
             </article>
           </div>
         </div>
@@ -2736,7 +2783,7 @@ function injectFooter(){
             <div class="rgp-foot-brand-tag">SCA · Clinical reasoning · UK</div>
           </div>
         </div>
-        <p class="rgp-foot-about">A UK-focused clinical reasoning platform for GP trainees, qualified GPs and SCA candidates — built case by case around one repeatable 7-step framework, every recommendation anchored to NICE CKS or named UK guidance.</p>
+        <p class="rgp-foot-about">A UK-focused clinical reasoning platform for GP trainees, qualified GPs and SCA candidates.</p>
         <div class="rgp-foot-microtag">Anchored to NICE CKS</div>
       </div>
 
@@ -2758,15 +2805,8 @@ function injectFooter(){
           <li><a href="${PRE}tools/sca-practice.html">The Hot Seat</a></li>
           <li><a href="${PRE}tools/sca-simulator.html">AI Patient Simulator</a></li>
           <li><a href="${PRE}tools/sca-circuit-ai.html">AI Mock Exam Circuit</a></li>
-          <li><a href="${PRE}tools/sca-circuit.html">Mock Exam Circuit</a></li>
-          <li><a href="${PRE}tools/sca-qbank.html">AKT Question Bank</a></li>
-          <li><a href="${PRE}tools/sca-worked-examples.html">Worked Example Consultations</a></li>
-          <li><a href="${PRE}tools/sca-comms-lab.html">Conversation Lab</a></li>
-          <li><a href="${PRE}tools/sca-consultation-guide.html">Ultimate Consultation Guide</a></li>
+          <li><a href="${PRE}tools/sca-group.html">Live Group Mock</a></li>
           <li><a href="${PRE}tools/sca-weakspots.html">My Readiness</a></li>
-          <li><a href="${PRE}tools/sca-drills.html">Micro-Drills</a></li>
-          <li><a href="${PRE}tools/sca-resit.html">The Resit Clinic</a></li>
-          <li><a href="${PRE}tools/sca-daily.html">The Daily 10</a></li>
         </ul>
       </div>
 
@@ -2780,16 +2820,16 @@ function injectFooter(){
           <li><a href="${PRE}pages/terms.html">Terms of Use</a></li>
           <li><a href="${PRE}pages/privacy.html">Privacy Policy</a></li>
           <li><a href="${PRE}pages/disclaimer.html">Medical Disclaimer</a></li>
-          <li><a href="mailto:bassamomda91@gmail.com?subject=Reasoning%20GP%20enquiry">Contact us</a></li>
+          <li><a href="mailto:bassamomda@gmail.com?subject=Reasoning%20GP%20enquiry">Contact us</a></li>
         </ul>
         <div class="rgp-foot-contact">
           <a class="rgp-foot-contact-link" href="https://www.linkedin.com/in/bassam-mohamed-646a50116/" target="_blank" rel="noopener noreferrer">
             <span class="rgp-foot-ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></span>
             <span class="rgp-foot-ct"><small>Founder · LinkedIn</small><b>Dr Bassam Mohamed</b></span>
           </a>
-          <a class="rgp-foot-contact-link" href="mailto:bassamomda91@gmail.com">
+          <a class="rgp-foot-contact-link" href="mailto:bassamomda@gmail.com">
             <span class="rgp-foot-ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-            <span class="rgp-foot-ct"><small>Email</small><b>bassamomda91@gmail.com</b></span>
+            <span class="rgp-foot-ct"><small>Email</small><b>bassamomda@gmail.com</b></span>
           </a>
         </div>
       </div>
@@ -2797,11 +2837,11 @@ function injectFooter(){
 
     <div class="rgp-foot-legal">
       <div class="rgp-foot-legal-inner">
-        <div class="rgp-foot-legal-copy">© ${new Date().getFullYear()} Reasoning GP · All rights reserved.</div>
-        <p class="rgp-foot-legal-company">Company number 16892799</p>
-        <p class="rgp-foot-legal-disc">Reasoning GP is an independent clinical-reasoning and medical-education platform created by practising UK GPs. The content is intended for healthcare professionals as an educational resource and must not replace clinical judgement or official national/local guidance. Users are responsible for verifying all information against current standards.</p>
+        <div class="rgp-foot-legal-copy">© ${new Date().getFullYear()} BDYAM Medical Services Ltd · All rights reserved.</div>
+        <p class="rgp-foot-legal-company">Reasoning GP is a trading name of BDYAM Medical Services Ltd, registered in England &amp; Wales (company no. 16892799).</p>
+        <p class="rgp-foot-legal-disc">An independent clinical-reasoning and medical-education platform for UK healthcare professionals. Educational use only — it does not replace clinical judgement or official national/local guidance; verify all information against current standards.</p>
         <div class="rgp-foot-legal-links">
-          <a href="mailto:bassamomda91@gmail.com">Contact</a>
+          <a href="mailto:bassamomda@gmail.com">Contact</a>
           <a href="${PRE}pages/privacy.html">Privacy</a>
           <a href="${PRE}pages/terms.html">Terms</a>
           <a href="${PRE}pages/disclaimer.html">Disclaimer</a>

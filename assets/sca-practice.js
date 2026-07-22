@@ -1852,6 +1852,7 @@ Tone: warm, direct, RCGP-style. Reference UK guidance briefly where relevant. Ke
     $('#timerPause').addEventListener('click', pauseTimer);
     $('#timerReset').addEventListener('click', resetTimer);
     $('#exitSession').addEventListener('click', exitSession);
+    { const b = $('#backToCases'); if (b) b.addEventListener('click', function(){ exitSession(); window.scrollTo({top:0}); }); }
 
     // Subnav
     $$('.subnav button').forEach(b => b.addEventListener('click', () => goToStep(b.dataset.step)));

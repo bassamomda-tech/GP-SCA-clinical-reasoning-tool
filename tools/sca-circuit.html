@@ -126,7 +126,7 @@
   </main>
 </div>
 
-<script src="../assets/site.js?v=67"></script>
+<script src="../assets/site.js?v=72"></script>
 <script src="../assets/sca-cases.js"></script>
 <script src="../assets/sca-extras.js?v=2"></script>
 <script src="../assets/sca-cases2.js?v=1"></script>
@@ -215,6 +215,13 @@
   const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 
   const CASES = (window.SCA_CASES || []).map(c => Object.assign({}, c, (window.SCA_EXTRAS || {})[c.id] || {}));
+  /* Free tier: circuit draws only from the 5 sample cases */
+  if (window.RGP_PAYWALL && RGP_PAYWALL.isFreeTier && RGP_PAYWALL.isFreeTier()){
+    CASES.splice(5);
+    const h = document.querySelector('.tool-head');
+    if (h){ const d = document.createElement('div'); d.style.cssText='margin:14px 0 4px;padding:11px 16px;border:1px solid #99c4bf;background:#ecf5f3;border-radius:11px;font-size:13px;line-height:1.55;color:#1c1917';
+      d.innerHTML='\ud83d\udd13 <b style="color:#0c4a47">Free plan:</b> your circuit draws from the 5 free sample cases. <a href="../index.html#subscriptions" style="color:#0c4a47;font-weight:700">Unlock all 312 \u2192</a>'; h.insertAdjacentElement('afterend', d); }
+  }
   const TYPE_LBL = { video:'Video consultation', phone:'Telephone', f2f:'Face-to-face', visit:'Home visit', data:'Results / data' };
 
   let order = [], idx = 0, phase = 'read', left = 0, timer = null, nCases = 3;

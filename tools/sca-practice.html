@@ -18,6 +18,9 @@
 .tool-head h1 em{ font-style:italic; color:var(--teal); font-weight:500; }
 .tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:6px; max-width:62ch; }
 .head-actions{ display:flex; gap:8px; align-items:center; }
+.case-nav-back{ display:inline-flex; align-items:center; gap:6px; flex-shrink:0; font:inherit; font-size:13px; font-weight:600; color:var(--teal); text-decoration:none; padding:7px 12px; border:1px solid var(--line); border-radius:9px; background:#fff; cursor:pointer; white-space:nowrap; }
+.case-nav-back:hover{ color:var(--rust); border-color:var(--rust); }
+.case-nav-back svg{ width:15px; height:15px; }
 .head-btn{ display:inline-flex; gap:6px; align-items:center; font:inherit; font-size:13px; font-weight:600; padding:8px 14px; border-radius:8px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; transition:.15s ease; text-decoration:none; }
 .head-btn:hover{ border-color:var(--ink-2); color:var(--ink); }
 .head-btn.ghost{ font-size:12px; font-weight:500; color:var(--muted); padding:6px 11px; }
@@ -823,6 +826,10 @@ body.tel-mode #phoneModeBtn{ background:#0c4a47; color:#f6f2e9; border-color:#0c
       <div id="session" class="session">
         <div class="session-head">
           <div class="sh-left">
+            <button class="case-nav-back" id="backToCases" type="button" aria-label="Back to all cases">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+              <span>All cases</span>
+            </button>
             <span class="sh-type" id="shType">VIDEO</span>
             <div>
               <h2 id="shTitle">Case title</h2>
@@ -1129,7 +1136,7 @@ body.tel-mode #phoneModeBtn{ background:#0c4a47; color:#f6f2e9; border-color:#0c
   </main>
 </div>
 
-<script src="../assets/site.js?v=67"></script>
+<script src="../assets/site.js?v=72"></script>
 <script src="../assets/case-related.js"></script>
 <script src="../assets/sca-cases.js"></script>
 <script src="../assets/sca-extras.js?v=2"></script>

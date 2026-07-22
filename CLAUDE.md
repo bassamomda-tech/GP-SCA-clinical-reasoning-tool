@@ -50,6 +50,107 @@ Source of truth: `uploads/Cancer referral NICE.pdf` (NICE NG12, May 2025).
   in Chrome). Always handle the `unavailable` case gracefully and offer a worked example.
 
 ## Session log
+- **Live Group Mock + AI Mock Exam Circuit made members-only (this session):** removed
+  'sca-group.html' from the bronze OPEN allowlist — then RESTORED it on user request (the
+  join-a-friend's-session growth loop; host still capped to the 5 samples, joining free, no
+  AI cost — the tool makes zero Claude calls). Net change: only the sca-circuit-ai free-trial
+  page-gate exception in `assets/site.js` `bronzeReason()` — both now fall through to the
+  /sca-/ 'sca' reason → free/signed-out get the members gate; Gold/Platinum unchanged. The
+  AI Patient Simulator keeps its 1 metered free run (the conversion hook). NO version bump:
+  v71 is still undeployed so ?v=71 was never cached (precedent: v64 round). Deploy set
+  unchanged = WHOLE SITE (v71 + SW v34).
+- **AI SCA cap audit + AI_AREA completion (this session):** user asked to make sure the AI SCA is
+  capped. Confirmed the shim meter (1 free run/feature, block-before-request, non-cached-only
+  counting) is live for sca-simulator + sca-circuit-ai. Grepped ALL claude.complete/stream call
+  sites and found 4 more AI-calling SCA pages MISSING from `AI_AREA` in the site.js shim (they
+  defaulted to 'clinic' → Gold/SCA-plan users would be wrongly metered to 1 there, Silver
+  wrongly unlimited): added 'sca-practice','sca-resit','sca-real-feedback','sca-comms-lab' → 'sca'
+  and 'gp-forms' → 'clinic' (explicit). Also previous round (same deploy set): free-tier 5-case
+  cap + "Free plan" banner added to sca-simulator/sca-circuit-ai/sca-circuit/sca-roleplay case
+  pools (CASES.splice(5) when RGP_PAYWALL.isFreeTier()). Bumps: **site.js?v=70→v=71 SITEWIDE**
+  (root+pages 14, tools+lab 50, cases 108; verified zero v70 remain). SW stays v34 (already
+  bumped this deploy round, still undeployed). Deploy = WHOLE SITE.
+- **Casebook full structural audit — all 108 cases fixed & verified (this session):** after the AKI
+  stray-`</td>` bug, user asked to check ALL casebook cases. Script-audited every cases/*.html for
+  (a) stray td/tr/th tags outside real tables and (b) `<div>` open/close balance. Found & fixed:
+  aki.html + headache.html + dry-eye.html (stray `</td>`/`<td>` in drug-card markup, from prior
+  round); atrial-fibrillation.html + heart-failure.html (+3 missing `</div>` each) and
+  hypertension.html (+1) — inserted before `<div class="page-footer">` so step-7 sections are no
+  longer swallowed/nested; abnormal-lfts.html had 4 EXTRA orphan `</div>`s before the footer
+  (closed .page/.app early, footer rendered outside the page wrapper) — removed. Re-audit: all
+  108 files now balance with zero stray table tags. Deploy set this round: cases/style.css +
+  cases/{aki,headache,dry-eye,atrial-fibrillation,heart-failure,hypertension,abnormal-lfts}.html
+  + service-worker.js (SW v34).
+- **Casebook reasoning-table layout fix — AKI history columns "not well arranged" (this session):**
+  user reported the AKI case's history table columns misarranged; the cause is generic: the
+  3-column reasoning tables (`.rt` Question/Why/Changes-what, plus `.rf-table`, `.ref-table`) in
+  SHARED `cases/style.css` crushed side-by-side on anything under ~desktop width (chg-col squeezed
+  to a sliver). Fixed for ALL 108 cases in `cases/style.css`: desktop `.rt` gains
+  `table-layout:fixed` + `overflow-wrap:break-word` (inline th widths 26/42% now hold; no column
+  collapse); ≤900px the `.rt`/`.rf-table`/`.ref-table` rows STACK (thead hidden, td display:block,
+  "Why it matters"/"Changes what?" micro-labels injected via ::before/:has, open-q green edge moves
+  to the row). style.css is loaded UN-versioned by case pages → **SW CACHE_VERSION v33→v34**.
+  Deploy = cases/style.css + service-worker.js only (site.js untouched, stays ?v=70).
+- **"How to use this site" opened to free/signed-out (this session):** user found the main
+  onboarding guide (`tools/clinic-guide.html`, "How to use this site") wasn't reachable before
+  sign-up — added it to the `OPEN` allowlist in `assets/site.js`'s standalone content gate
+  (alongside scribe/articles/resources/leaflets/spine/sca-guide/sca-group). Bumped
+  **site.js?v=69→v=70 SITEWIDE** (root+pages 17, tools 49, cases 108; verified zero v69 remain).
+  SW CACHE_VERSION stays v33 (site.js is versioned in the script tag, doesn't need a SW bump).
+  Deploy = WHOLE SITE. No console errors on tools/clinic-guide.html load.
+- **Free-sample badges — which 5 are free wasn't visible in the directories (this session):**
+  user found the free-tier "5 samples" policy invisible: browsing Pathways/Protocols/Casebook
+  gave no clue which items were open vs paid. Added to `assets/site.js` (runs after
+  FREE_ALGS/FREE_PROTOCOLS/FREE_CASES are computed, so one shared source of truth with the
+  gates): on `tools/algorithms.html`, `tools/management.html`, `cases.html` only — finds every
+  `a.alg-card[href]`, matches the href basename against the relevant free set, and appends a
+  small teal "Free" pill badge (absolute-positioned, card already `position:relative`). For
+  signed-out/bronze visitors specifically (`RGP_PAYWALL.isFreeTier()`) also inserts a banner
+  right after `.tool-head`: "🔓 Free, no sign-up needed: the 5 <pathways/protocols/cases> marked
+  Free below are open to everyone. Unlock the full library →" (links to pricing). Handles
+  `cases.html`'s async/JS-rendered card list via a MutationObserver + short poll (algorithms.html/
+  management.html render cards statically server-side so the immediate pass catches them).
+  Paid users (silver/platinum/admin) never see the banner since `isFreeTier()` is false, badges
+  still show for them but are harmless. Bumps: **site.js?v=68→v=69 SITEWIDE** (root+pages 14,
+  tools+lab 50, cases 108; verified zero v68 remain), **SW CACHE_VERSION v31→v32**. Deploy =
+  WHOLE SITE (no worker change). No console errors on tools/algorithms.html load.
+- **CRITICAL FIX — free/signed-out users could open ALL pathways & protocols (this session):**
+  user found the free tier (and signed-out) had access to every pathway/protocol, not just the 5
+  samples. Root cause: the "Free tier opened to signed-OUT" edit left ORPHAN dead lines after the
+  new `return` in the standalone content gate of BOTH `assets/alg-nav.js` and `assets/mgmt-nav.js`
+  (`return FREE.indexOf(base) !== -1; }` immediately followed by a stray `return FREE.indexOf(base)
+  > -1; }` from the old body) — a **SyntaxError** that stopped the whole trailing gate IIFE from
+  parsing, so `show()` never ran and NOTHING was gated on pathway/protocol pages. Removed the two
+  orphan lines in each file; both now parse (verified: chest-pain.html + lab-results.html load with
+  zero console errors). Gate policy unchanged (admin/platinum/silver=full, gold=blocked on clinic,
+  bronze/signed-out=5 curated samples). Files are loaded UN-versioned so **SW CACHE_VERSION
+  v30→v31** forces refetch. Deploy = re-upload assets/alg-nav.js + assets/mgmt-nav.js +
+  service-worker.js (site.js unchanged, stays ?v=68).
+- **AI cost control — 1 free trial run per paid AI feature; everything billable behind the paywall
+  (this session):** user: keep anything that COSTS money to paid users, except a free trial of **1**
+  run per user for each billable feature (down from an initial 5). The only per-use cost is the
+  Claude API, and every call funnels through the `window.claude.complete/stream` shim in
+  `assets/site.js` — so the meter was built THERE (one choke point, no tool page can bypass it):
+  (1) **AI cost meter** in the shim — `AI_TRIAL_KEY='rgp-ai-trial-v1'`, `AI_TRIAL_MAX=1`, per-feature
+  counter keyed by page basename; `AI_AREA` maps ask/ask-quality/scribe/consultation-spine→clinic,
+  sca-simulator/sca-circuit-ai→sca. `aiUnlimited()`: admin/platinum=all, silver=clinic, gold=sca,
+  bronze/signed-out=metered. `aiGateOrThrow()` blocks BEFORE any billable request when the 1 run is
+  spent (throws code 402 + calls showTrialGate); `aiBump()` counts ONLY successful, non-cached calls
+  (checks `data.cached`); exposed `window.RGP_AI_TRIAL={left,max,feature,unlimited}` for tools that
+  want to show "N free runs left". (2) **showTrialGate(feature)** added to `RGP_PAYWALL` — reuses the
+  members-gate card: "Your free trial run is used up / You've used your 1 free trial run of <feature>"
+  + See the plans / Sign in / access-code redeem. (3) **Page gates opened (Option A)** — `bronzeReason()`
+  now returns null for `ask.html`, `sca-simulator.html`, `sca-circuit-ai.html` so free/signed-out users
+  can REACH the flagship AI (Ask + AI Patient + AI Mock Circuit) for their 1 metered run — strong
+  conversion hook — instead of being hard-blocked. This also plugged a real leak: **Consultation Spine's
+  AI draft was previously uncapped** for free users; now 1. (4) **Cross-device trial sync** — registered
+  `rgp-ai-trial-v1` in RGPSync CFG with a new `trialmax` merge (keep the HIGHER per-feature count) so the
+  trial can't be reset by switching device / clearing one browser. Static content (436 articles, 312
+  cases, pathways, protocols, casebook, calculators, leaflets, CPD, Group Mock sync) stays free — it
+  costs nothing. The "5 free samples" strings in the members gate are UNRELATED (static case/pathway/
+  protocol samples) and stay 5. Bumps: **site.js?v=67→v=68 SITEWIDE** (root+pages 14, tools+lab 50,
+  cases 108; verified zero v67 remain), **SW CACHE_VERSION v29→v30**. Deploy = WHOLE SITE (no worker
+  change — the shim is client-side; the Worker already meters nothing, cost is the API key usage).
 - **Free tier opened to signed-OUT visitors (no email required) (this session):** user wanted
   everyone to get the same access as the free/bronze plan WITHOUT creating an account, to lower
   the entry barrier. Previously all three paywall gates blocked signed-out users entirely
