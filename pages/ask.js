@@ -301,11 +301,27 @@
   }
 
   /* ---------- sessions / persistence (multi-chat) ---------- */
-  const SESS_KEY = 'rgp.ask.sessions.v1';
+  const SESS_KEY = 'rgp.ask.sessions.v1';   // canonical key (synced per-account by RGPSync)
   const OLD_KEY  = 'rgp.ask.thread.v1';
   let sessions = [];
   let activeId = null;
   let history  = [];   // alias to the active session's .messages array
+
+  // Chat history is private to the signed-in account. localStorage is shared by the
+  // whole browser, so we namespace each account's chats under their own key and stamp
+  // the store with an `owner`. Guests never write the canonical key, so signed-out
+  // chats can't leak into — or sync up as — the next person who signs in on the same device.
+  function askIdentity(){
+    try{ const u=window.RGPAuth&&RGPAuth.current(); const id=u&&(u.email||u.id);
+      return id ? 'u:'+String(id).toLowerCase() : 'guest'; }catch(e){ return 'guest'; }
+  }
+  function nsKey(id){ return SESS_KEY+'::'+id; }
+  let curIdent = askIdentity();
+  // Guests (signed-out) get EPHEMERAL history: kept in sessionStorage (per-tab, cleared
+  // when the tab closes) and never written to shared localStorage — so on a shared or
+  // clinic browser one visitor's questions can't be seen by the next person. Signed-in
+  // accounts persist privately in localStorage (and sync across devices via RGPSync).
+  function storeFor(id){ try{ return id==='guest' ? window.sessionStorage : window.localStorage; }catch(e){ return window.localStorage; } }
 
   function uid(){ return 's'+Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
   function newSessionObj(){ return { id:uid(), title:'New chat', created:Date.now(), updated:Date.now(), messages:[] }; }
@@ -316,20 +332,55 @@
     const t = String(u.content).replace(/\s+/g,' ').trim();
     return t.length>46 ? t.slice(0,46).trim()+'\u2026' : t;
   }
-  function saveSessions(){ try{ localStorage.setItem(SESS_KEY, JSON.stringify({sessions, activeId})); }catch(e){} }
+  function saveSessions(){
+    const payload = JSON.stringify({sessions, activeId, owner:curIdent});
+    try{ storeFor(curIdent).setItem(nsKey(curIdent), payload); }catch(e){}
+    // Signed-in: mirror to the canonical key so RGPSync pushes the right person's chats.
+    // Guest: leave NOTHING in localStorage — clear the canonical key and any legacy
+    // guest store so signed-out chats can't leak to the next user of this browser.
+    try{
+      if(curIdent!=='guest'){ localStorage.setItem(SESS_KEY, payload); }
+      else { localStorage.removeItem(SESS_KEY); localStorage.removeItem(nsKey('guest')); }
+    }catch(e){}
+  }
   function save(){ const s=activeSession(); if(s){ s.updated=Date.now(); if(!s.title || s.title==='New chat') s.title=deriveTitle(s.messages); } saveSessions(); renderChatList(); }
 
+  function readStore(key, st){
+    try{ const r=JSON.parse((st||localStorage).getItem(key)||'null'); if(r && Array.isArray(r.sessions)) return r; }catch(e){}
+    return null;
+  }
   function loadSessions(){
-    try{ const r=JSON.parse(localStorage.getItem(SESS_KEY)||'null'); if(r && Array.isArray(r.sessions)){ sessions=r.sessions; activeId=r.activeId; } }catch(e){ sessions=[]; }
+    curIdent = askIdentity();
+    // Purge any legacy guest chats left in shared localStorage by an older build.
+    if(curIdent==='guest'){ try{ localStorage.removeItem(nsKey('guest')); localStorage.removeItem(SESS_KEY); }catch(e){} }
+    // Prefer this identity's own namespaced store (guest = sessionStorage, account =
+    // localStorage). For a signed-in account, the canonical key may hold cloud-merged
+    // data (via RGPSync) — accept it only if it's unowned (legacy) or owned by THIS
+    // account, never another user's.
+    let r = readStore(nsKey(curIdent), storeFor(curIdent));
+    if(!r && curIdent!=='guest'){ const c=readStore(SESS_KEY, localStorage); if(c && (!c.owner || c.owner===curIdent)) r=c; }
+    if(r){ sessions=r.sessions||[]; activeId=r.activeId; } else { sessions=[]; activeId=null; }
     if(!sessions.length){
-      // migrate the old single-thread store, if present
+      // migrate the old single-thread store once, then remove it so it can't re-leak.
+      // Guests never adopt it (it could be a previous person's chat) — just clear it.
       let old=[]; try{ old=JSON.parse(localStorage.getItem(OLD_KEY)||'[]')||[]; }catch(e){}
+      try{ localStorage.removeItem(OLD_KEY); }catch(e){}
       const s=newSessionObj();
-      if(old.length){ s.messages=old; s.title=deriveTitle(old); }
+      if(old.length && curIdent!=='guest'){ s.messages=old; s.title=deriveTitle(old); }
       sessions=[s]; activeId=s.id; saveSessions();
     }
     if(!activeId || !activeSession()) activeId=sessions[0].id;
     history = activeSession().messages;
+  }
+  // When the signed-in account changes (sign in/out, or in another tab), archive the
+  // current chats under their owner and load the new account's own history.
+  function syncIdentity(){
+    if(askIdentity()===curIdent) return false;
+    saveSessions();          // stamp + archive the outgoing identity's chats
+    loadSessions();          // curIdent is refreshed inside
+    saveSessions();          // stamp canonical for the incoming identity
+    renderThread(); renderChatList();
+    return true;
   }
   function hitsFromSlugs(slugs){ if(!slugs || !RET) return []; return slugs.map(s=>RET.bySlug(s)).filter(Boolean); }
 
@@ -541,16 +592,26 @@
   loadSessions();
   renderThread();
   renderChatList();
+  // The signed-in account can resolve AFTER this script runs (auth is async), and a
+  // user may sign in/out or switch account without reloading the page. syncIdentity()
+  // reloads the right person's chats whenever the identity changes — without it, chats
+  // get written under a stale/guest identity and leak to everyone on the device.
+  setInterval(syncIdentity, 1500);
+  window.addEventListener('focus', syncIdentity);
+  document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) syncIdentity(); });
+  window.addEventListener('storage', e=>{ if(e.key==='rgp.auth.me.v1' || e.key==='rgp.auth.token.v1') syncIdentity(); });
   // Cross-device sync: RGPSync merges rgp.ask.sessions.v1 from the account —
   // when it lands, reload from localStorage and re-render (keep the chat the
   // user is looking at if it survived the merge).
   window.addEventListener('rgp-sync-updated', e=>{
     const keys=(e && e.detail && e.detail.keys)||[];
     if(!keys.includes(SESS_KEY)) return;
+    if(syncIdentity()) return;   // identity changed — that reload already applied the right data
     const prev=activeId;
     try{
       const r=JSON.parse(localStorage.getItem(SESS_KEY)||'null');
-      if(r && Array.isArray(r.sessions) && r.sessions.length){
+      // Only adopt the canonical store if it belongs to the account now signed in.
+      if(r && (!r.owner || r.owner===curIdent) && Array.isArray(r.sessions) && r.sessions.length){
         sessions=r.sessions;
         activeId = sessions.some(s=>s.id===prev) ? prev
                  : (r.activeId && sessions.some(s=>s.id===r.activeId)) ? r.activeId

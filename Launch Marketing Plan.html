@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reasoning GP — LinkedIn & WhatsApp Launch Plan</title>
+<meta name="omelette-owns-print" content="1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet" />
+<template id="__bundler_thumbnail" data-bg-color="#f6f2e9">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#f6f2e9"/>
+    <rect x="450" y="230" width="300" height="300" rx="60" fill="#0c4a47"/>
+    <text x="600" y="435" text-anchor="middle" font-family="Georgia, serif" font-size="200" font-weight="500" fill="#f3ede0">R</text>
+    <circle cx="740" cy="530" r="32" fill="#b54c2b" stroke="#f6f2e9" stroke-width="8"/>
+    <text x="600" y="650" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="500" fill="#15202b">Launch Playbook</text>
+  </svg>
+</template>
+<style>
+:root{
+  --bg:#f6f2e9; --bg-soft:#efe9dc; --surface:#ffffff; --surface-2:#fbf8f1;
+  --ink:#15202b; --ink-2:#2a3744; --muted:#5d6673; --muted-2:#64748b;
+  --line:#e7e0d1; --line-2:#d8cfba;
+  --teal:#0c4a47; --teal-2:#0e5c58; --teal-3:#136a65; --teal-soft:#d5e6e4;
+  --rust:#b54c2b; --rust-2:#9b3e22; --rust-soft:#f7e3da;
+  --mustard:#b8862d; --mustard-soft:#f6e9c8;
+  --shadow-1:0 1px 2px rgba(20,30,40,.04),0 2px 8px rgba(20,30,40,.04);
+  --shadow-2:0 4px 14px rgba(20,30,40,.07),0 1px 3px rgba(20,30,40,.04);
+  --shadow-3:0 10px 30px rgba(20,30,40,.10),0 2px 6px rgba(20,30,40,.05);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans','Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}
+a:hover{color:var(--rust)}
+.wrap{max-width:960px;margin:0 auto;padding:0 28px}
+.serif{font-family:'Source Serif 4',Georgia,serif}
+.mono{font-family:'DM Mono',ui-monospace,monospace}
+
+/* ---------- Masthead ---------- */
+.mast{background:linear-gradient(160deg,#0c4a47 0%,#0a3d3a 60%,#08302e 100%);color:#f3ede0;padding:60px 0 52px;position:relative;overflow:hidden}
+.mast::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(181,76,43,.35),transparent 65%)}
+.mast .wrap{position:relative;z-index:1}
+.brandline{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.brandmark{width:44px;height:44px;border-radius:12px;background:#f3ede0;color:#0c4a47;display:grid;place-items:center;font-family:'Source Serif 4',serif;font-weight:700;font-size:26px;position:relative}
+.brandmark::after{content:"";position:absolute;right:-5px;bottom:-5px;width:16px;height:16px;border-radius:50%;background:var(--rust);border:3px solid #0a3d3a}
+.brandline b{font-family:'Source Serif 4',serif;font-size:19px;font-weight:600;letter-spacing:.01em}
+.brandline span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;display:block;margin-top:2px}
+.mast .kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#e6b7a4;font-weight:600}
+.mast h1{font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(2.1rem,5vw,3.3rem);line-height:1.06;letter-spacing:-.015em;margin:16px 0 0;max-width:16ch}
+.mast h1 em{font-style:italic;color:#e6b7a4}
+.mast .sub{font-size:17px;line-height:1.6;opacity:.86;max-width:60ch;margin-top:20px}
+.mast .metarow{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.mast .metarow .chip{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:99px;padding:7px 15px;font-size:13px;font-weight:500}
+
+/* ---------- Section scaffolding ---------- */
+section{padding:52px 0}
+section:nth-of-type(even){background:var(--surface-2)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--rust)}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--rust)}
+h2.sec{font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.12;letter-spacing:-.01em;margin:14px 0 8px}
+.sec-lede{color:var(--muted);font-size:16px;max-width:64ch;text-wrap:pretty}
+
+/* ---------- Strategy grid ---------- */
+.grid{display:grid;gap:18px;margin-top:30px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:760px){.g3,.g2{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow-1)}
+.card h3{font-size:15px;font-weight:700;letter-spacing:.02em;display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.card .num{width:26px;height:26px;border-radius:8px;background:var(--teal-soft);color:var(--teal);display:grid;place-items:center;font-size:13px;font-weight:700;flex-shrink:0}
+.card p{font-size:14.5px;color:var(--ink-2)}
+.card ul{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:8px}
+.card li{font-size:14px;color:var(--ink-2);padding-left:18px;position:relative}
+.card li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--rust)}
+
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+@media(max-width:760px){.pillars{grid-template-columns:repeat(2,1fr)}}
+.pillar{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 16px;text-align:center}
+.pillar .big{font-family:'Source Serif 4',serif;font-size:30px;font-weight:700;color:var(--teal);line-height:1}
+.pillar .lab{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.35}
+
+/* ---------- Trial callout ---------- */
+.trial{background:var(--teal);color:#f3ede0;border-radius:20px;padding:30px 32px;margin-top:30px;display:flex;flex-wrap:wrap;align-items:center;gap:24px;justify-content:space-between}
+.trial .t-l{max-width:52ch}
+.trial h3{font-family:'Source Serif 4',serif;font-size:22px;font-weight:600;margin-bottom:8px}
+.trial p{font-size:14.5px;opacity:.88}
+.codebox{background:#f3ede0;color:var(--teal);border-radius:14px;padding:16px 22px;text-align:center;flex-shrink:0}
+.codebox .lab{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);font-weight:700}
+.codebox .code{font-family:'DM Mono',monospace;font-size:26px;font-weight:500;letter-spacing:.05em;margin-top:4px}
+.codebox .sm{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* ---------- Calendar ---------- */
+.cal{margin-top:28px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
+.cal-row{display:grid;grid-template-columns:78px 1fr 128px;border-top:1px solid var(--line)}
+.cal-row:first-child{border-top:none}
+.cal-row.head{background:var(--teal);color:#f3ede0;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.cal-row.head>div{padding:12px 16px}
+.cal-row>div{padding:14px 16px;font-size:14px}
+.cal-row .day{font-weight:700;color:var(--teal);border-right:1px solid var(--line)}
+.cal-row.head .day{color:#f3ede0}
+.cal-row .what b{display:block;font-size:14.5px;color:var(--ink)}
+.cal-row .what span{font-size:13px;color:var(--muted)}
+.cal-row .chan{border-left:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px;align-content:center}
+.tag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:99px;white-space:nowrap}
+.tag.li{background:#e8f0ef;color:var(--teal)}
+.tag.wa{background:var(--rust-soft);color:var(--rust-2)}
+.tag.both{background:var(--mustard-soft);color:var(--mustard)}
+@media(max-width:640px){.cal-row{grid-template-columns:60px 1fr}.cal-row .chan{grid-column:1/-1;border-left:none;border-top:1px dashed var(--line)}}
+
+/* ---------- Post cards ---------- */
+.post{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-2);margin-top:26px;overflow:hidden}
+.post-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 22px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+.post-head .who{display:flex;align-items:center;gap:12px}
+.avatar{width:42px;height:42px;border-radius:50%;background:var(--teal);color:#f3ede0;display:grid;place-items:center;font-weight:700;font-size:16px;flex-shrink:0}
+.post-head .who b{font-size:14.5px;display:block}
+.post-head .who span{font-size:12.5px;color:var(--muted)}
+.post-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:99px}
+.post-label.li{background:#0a66c2;color:#fff}
+.post-label.wa{background:#25d366;color:#0a3d1e}
+.post-body{padding:22px}
+.post-copy{white-space:pre-wrap;font-size:15px;line-height:1.62;color:var(--ink-2)}
+.post-copy strong{color:var(--ink);font-weight:700}
+.post-foot{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.hashtag{font-size:13px;color:var(--teal);font-weight:500}
+.note{background:var(--mustard-soft);border-left:3px solid var(--mustard);border-radius:0 10px 10px 0;padding:12px 16px;margin:0 22px 22px;font-size:13.5px;color:#6b551f}
+.note b{color:#4d3d15}
+.copybtn{margin-left:auto;font-size:12px;font-weight:600;color:var(--teal);border:1px solid var(--line-2);background:var(--surface);border-radius:8px;padding:6px 12px;cursor:pointer;transition:.15s}
+.copybtn:hover{background:var(--teal);color:#f3ede0;border-color:var(--teal)}
+
+/* ---------- Social graphic cards ---------- */
+.cards-note{font-size:13.5px;color:var(--muted);margin-top:8px}
+.social-scroll{margin-top:30px;display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+@media(max-width:820px){.social-scroll{grid-template-columns:1fr}}
+.sc-wrap{display:flex;flex-direction:column;gap:10px}
+.sc-cap{font-size:12.5px;color:var(--muted)}
+.sc-cap b{color:var(--ink)}
+
+/* Square 1:1 social card */
+.sq{aspect-ratio:1/1;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-3);position:relative;background:var(--bg)}
+.sq .inner{position:absolute;inset:0;padding:44px;display:flex;flex-direction:column}
+.sc-brand{display:flex;align-items:center;gap:10px}
+.sc-brand .m{width:32px;height:32px;border-radius:9px;background:var(--teal);color:#f3ede0;display:grid;place-items:center;font-family:'Source Serif 4',serif;font-weight:700;font-size:19px}
+.sc-brand.on-teal .m{background:#f3ede0;color:var(--teal)}
+.sc-brand b{font-family:'Source Serif 4',serif;font-size:16px}
+.sc-url{margin-top:auto;font-family:'DM Mono',monospace;font-size:14px;letter-spacing:.02em;display:flex;align-items:center;gap:8px}
+.sc-url .dot{width:7px;height:7px;border-radius:50%;background:var(--rust)}
+
+/* card A — teal hero */
+.sq.teal-hero{background:linear-gradient(155deg,#0c4a47,#08302e)}
+.sq.teal-hero *{color:#f3ede0}
+.sq.teal-hero .eyb{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#e6b7a4;font-weight:700;margin-top:26px}
+.sq.teal-hero h4{font-family:'Source Serif 4',serif;font-weight:600;font-size:34px;line-height:1.08;margin-top:14px;letter-spacing:-.01em}
+.sq.teal-hero h4 em{font-style:italic;color:#e6b7a4}
+.sq.teal-hero .statline{display:flex;gap:22px;margin-top:22px}
+.sq.teal-hero .statline .s b{font-family:'Source Serif 4',serif;font-size:26px;display:block;line-height:1}
+.sq.teal-hero .statline .s span{font-size:11.5px;opacity:.75}
+.sq.teal-hero .sc-url .dot{background:#e6b7a4}
+
+/* card B — cream stat */
+.sq.cream{background:radial-gradient(120% 90% at 100% 0%,var(--rust-soft),transparent 55%),var(--surface)}
+.sq.cream .eyb{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);font-weight:700;margin-top:26px}
+.sq.cream .huge{font-family:'Source Serif 4',serif;font-weight:700;font-size:96px;color:var(--teal);line-height:.9;margin-top:14px}
+.sq.cream .huge small{font-size:34px;font-weight:600}
+.sq.cream h4{font-family:'Source Serif 4',serif;font-weight:600;font-size:26px;line-height:1.12;margin-top:12px;color:var(--ink);max-width:14ch}
+.sq.cream .sub{font-size:14px;color:var(--muted);margin-top:10px;max-width:26ch}
+
+/* card C — SCA rust */
+.sq.rust-hero{background:linear-gradient(150deg,#b54c2b,#8a3a20)}
+.sq.rust-hero *{color:#fbeee7}
+.sq.rust-hero .eyb{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#f6d8cb;font-weight:700;margin-top:26px}
+.sq.rust-hero h4{font-family:'Source Serif 4',serif;font-weight:600;font-size:33px;line-height:1.1;margin-top:14px}
+.sq.rust-hero .bullets{margin-top:20px;display:flex;flex-direction:column;gap:11px}
+.sq.rust-hero .bullets div{font-size:15px;padding-left:26px;position:relative}
+.sq.rust-hero .bullets div::before{content:"";position:absolute;left:0;top:7px;width:12px;height:12px;border-radius:50%;border:2px solid #f6d8cb}
+.sq.rust-hero .sc-url .dot{background:#f6d8cb}
+
+/* card D — screenshot frame */
+.sq.frame{background:var(--surface);border:1px solid var(--line)}
+.sq.frame .inner{padding:32px}
+.shot{flex:1;margin-top:18px;border-radius:12px;border:1px solid var(--line-2);background:repeating-linear-gradient(45deg,#f1ece0,#f1ece0 11px,#ece5d6 11px,#ece5d6 22px);display:grid;place-items:center;position:relative;overflow:hidden}
+.shot .ph{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);background:var(--surface);border:1px dashed var(--line-2);border-radius:8px;padding:8px 14px;text-align:center;max-width:80%}
+.sq.frame .cap{font-size:13px;color:var(--muted);margin-top:14px}
+.sq.frame .cap b{color:var(--ink);font-size:16px;display:block;font-family:'Source Serif 4',serif}
+.hrt-mock{flex:1;margin-top:16px;display:flex;flex-direction:column;gap:9px;justify-content:center}
+.hn{border:1px solid var(--line);border-left-width:4px;border-radius:10px;padding:11px 13px;background:var(--surface)}
+.hn .ht{font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.hn .hb{font-size:12px;line-height:1.4;color:var(--ink-2)}
+.hn .hb b{color:var(--ink)}
+.hn.safety{border-left-color:var(--rust);background:var(--rust-soft)}
+.hn.safety .ht{color:var(--rust-2)}
+.hn.decide{border-left-color:var(--teal);background:var(--teal-soft)}
+.hn.decide .ht{color:var(--teal)}
+.hn.treat{border-left-color:var(--mustard);background:var(--mustard-soft)}
+.hn.treat .ht{color:var(--mustard)}
+.hn .pw{font-size:9px;font-weight:700;background:#7c3aed;color:#fff;border-radius:99px;padding:2px 8px;letter-spacing:.04em}
+
+/* ---------- Tips list ---------- */
+.tips{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.tips{grid-template-columns:1fr}}
+.tip{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.tip b{font-size:14.5px;display:flex;align-items:center;gap:8px}
+.tip .ic{width:24px;height:24px;border-radius:7px;background:var(--rust-soft);color:var(--rust);display:grid;place-items:center;font-size:13px;font-weight:700}
+.tip p{font-size:13.5px;color:var(--muted);margin-top:8px}
+
+/* ---------- footer ---------- */
+.foot{background:var(--ink);color:#c9cfd4;padding:40px 0;font-size:13px}
+.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:center}
+.foot b{color:#f3ede0;font-family:'Source Serif 4',serif;font-size:16px}
+
+.divider{height:1px;background:var(--line);margin:0}
+@media print{section{page-break-inside:avoid}.copybtn{display:none}}
+</style>
+</head>
+<body>
+
+<!-- ===================== MASTHEAD ===================== -->
+<header class="mast">
+  <div class="wrap">
+    <div class="brandline">
+      <div class="brandmark">R</div>
+      <div><b>Reasoning GP</b><span>Clinic · SCA · UK</span></div>
+    </div>
+    <div class="kicker">Launch Marketing Playbook · LinkedIn &amp; WhatsApp</div>
+    <h1 class="serif">Ready-to-post copy to launch <em>gpreasoning.uk</em></h1>
+    <p class="sub">A two-week launch sequence with copy you can paste straight into LinkedIn and share into GP trainee groups — plus designed graphic cards and a 7-day trial code to convert readers into users.</p>
+    <div class="metarow">
+      <div class="chip">👤 Dr Bassam Mohamed</div>
+      <div class="chip">🎯 GPs · registrars · IMGs · trainers</div>
+      <div class="chip">📅 14-day rollout</div>
+      <div class="chip">🔑 7-day trial code</div>
+      <div class="chip">💻 Use personal devices</div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== STRATEGY ===================== -->
+<section id="strategy">
+  <div class="wrap">
+    <span class="eyebrow">The strategy</span>
+    <h2 class="sec serif">One platform, four audiences, two channels</h2>
+    <p class="sec-lede">Reasoning GP does two jobs — it sharpens everyday clinic reasoning and it drills the SCA. The launch leads on the clinic tools GPs reach for every day, with the SCA suite as the strong second hook, then lets each audience self-select into the part that speaks to them.</p>
+
+    <div class="pillars">
+      <div class="pillar"><div class="big">265</div><div class="lab">clinical pathways</div></div>
+      <div class="pillar"><div class="big">170+</div><div class="lab">management protocols</div></div>
+      <div class="pillar"><div class="big">100+</div><div class="lab">full reasoning cases</div></div>
+      <div class="pillar"><div class="big">312</div><div class="lab">AI patient roleplays</div></div>
+    </div>
+
+    <div class="grid g3">
+      <div class="card">
+        <h3><span class="num">1</span> Who we're reaching</h3>
+        <ul>
+          <li>Qualified GPs — clinic reasoning, Ask, Scribe, CPD</li>
+          <li>Registrars sitting the SCA</li>
+          <li>IMG doctors preparing for UK GP training</li>
+          <li>Training programme directors &amp; trainers</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><span class="num">2</span> The core message</h3>
+        <p><b>"Think it through, not just look it up."</b> Everything is an <b>algorithm you reason through</b> — and all of it is summarised from NICE and national guidelines. Not more information: a trusted way to reason with it.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:30px">
+      <span class="eyebrow">What makes us different</span>
+      <div class="grid g2" style="margin-top:18px">
+        <div class="card"><h3><span class="num" style="background:var(--rust-soft);color:var(--rust)">📍</span> Pathways = decision-making algorithms</h3><p>Start with a presentation and answer one question at a time — the algorithm guides you to the diagnosis, with red flags and exact referral thresholds built in.</p></div>
+        <div class="card"><h3><span class="num" style="background:var(--teal-soft);color:var(--teal)">🗂️</span> Protocols = management, organised</h3><p>Once diagnosed, the same clean algorithm structure walks you through managing the condition — what to start, monitor, and when to step up.</p></div>
+        <div class="card"><h3><span class="num" style="background:var(--mustard-soft);color:var(--mustard)">📖</span> Casebook = full worked reasoning</h3><p>100+ real cases worked end to end — the whole reasoning shown, not just the answer. Like sitting beside an experienced colleague.</p></div>
+        <div class="card"><h3><span class="num" style="background:#ede4fb;color:#7c3aed">💬</span> Ask = instant, guideline-grounded</h3><p>Type your real clinic question and get the answer in seconds — quoting the guideline and edition. Unique, and a genuine time-saver every clinic.</p></div>
+      </div>
+      <p style="margin-top:14px;font-size:14px;color:var(--muted);text-align:center">✅ Every pathway, protocol, case and answer is <b style="color:var(--teal)">summarised from NICE &amp; national guidelines</b>.</p>
+    </div>
+
+    <div class="trial">
+      <div class="t-l">
+        <h3 class="serif">Give every reader a reason to act today</h3>
+        <p>End each post with the trial code. It removes the "I'll look later" friction — they get the full platform (Ask, SCA suite, all pathways) free for a week. Set it to expire to create urgency in launch week.</p>
+      </div>
+      <div class="codebox">
+        <div class="lab">7-day full access</div>
+        <div class="code">LAUNCH7</div>
+        <div class="sm">redeem at gpreasoning.uk</div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;background:var(--rust-soft);border:1px solid #e8c3b5;border-left:4px solid var(--rust);border-radius:0 12px 12px 0;padding:16px 20px;display:flex;gap:14px;align-items:flex-start">
+      <div style="font-size:20px;line-height:1">💻</div>
+      <div><b style="display:block;font-size:14.5px;color:var(--rust-2);margin-bottom:4px">Tell people to try it on a personal device first</b><span style="font-size:13.5px;color:var(--ink-2)">The site is only a few weeks old, so some NHS networks may not have allow-listed it yet and could block or slow it. Until that clears, suggest opening gpreasoning.uk on a personal phone or laptop. A short line like <em>“works best on your own phone for now”</em> at the end of a post saves people the frustration.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CALENDAR ===================== -->
+<section id="calendar">
+  <div class="wrap">
+    <span class="eyebrow">The rollout</span>
+    <h2 class="sec serif">A 14-day launch calendar</h2>
+    <p class="sec-lede">Front-load the announcement, then alternate value and proof. LinkedIn builds authority; WhatsApp drives the fast, personal shares into registrar groups. Two channels, one rhythm.</p>
+
+    <div class="cal">
+      <div class="cal-row head"><div class="day">Day</div><div class="what">Post</div><div class="chan">Channel</div></div>
+      <div class="cal-row"><div class="day">1</div><div class="what"><b>The founder announcement</b><span>Why I built it — the story post</span></div><div class="chan"><span class="tag li">LinkedIn</span><span class="tag wa">WhatsApp</span></div></div>
+      <div class="cal-row"><div class="day">2</div><div class="what"><b>Group drop — SCA</b><span>Short share into registrar groups</span></div><div class="chan"><span class="tag wa">WhatsApp</span></div></div>
+      <div class="cal-row"><div class="day">4</div><div class="what"><b>The "reasoning vs lookup" post</b><span>Positioning — how we're different</span></div><div class="chan"><span class="tag li">LinkedIn</span></div></div>
+      <div class="cal-row"><div class="day">5</div><div class="what"><b>Broadcast to contacts</b><span>Personal note to your network</span></div><div class="chan"><span class="tag wa">WhatsApp</span></div></div>
+      <div class="cal-row"><div class="day">6</div><div class="what"><b>Clinic pathway spotlight — HRT</b><span>A worked example: reasoning in the room</span></div><div class="chan"><span class="tag li">LinkedIn</span></div></div>
+      <div class="cal-row"><div class="day">7</div><div class="what"><b>Feature spotlight — AI patient</b><span>312 roleplays, unlimited, no credits</span></div><div class="chan"><span class="tag li">LinkedIn</span><span class="tag wa">WhatsApp</span></div></div>
+      <div class="cal-row"><div class="day">9</div><div class="what"><b>Feature spotlight — Ask &amp; Scribe</b><span>Everyday clinic value for GPs</span></div><div class="chan"><span class="tag li">LinkedIn</span></div></div>
+      <div class="cal-row"><div class="day">11</div><div class="what"><b>For trainers &amp; TPDs</b><span>Use it with your trainees</span></div><div class="chan"><span class="tag li">LinkedIn</span></div></div>
+      <div class="cal-row"><div class="day">12</div><div class="what"><b>Forwardable one-liner</b><span>The message others pass on</span></div><div class="chan"><span class="tag wa">WhatsApp</span></div></div>
+      <div class="cal-row"><div class="day">14</div><div class="what"><b>Trial deadline reminder</b><span>Last call on LAUNCH7</span></div><div class="chan"><span class="tag both">Both</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LINKEDIN POSTS ===================== -->
+<section id="linkedin">
+  <div class="wrap">
+    <span class="eyebrow">LinkedIn · from your personal profile</span>
+    <h2 class="sec serif">Copy-ready LinkedIn posts</h2>
+    <p class="sec-lede">Written in your voice as a founder-GP. Posted from your personal profile, they carry more reach and trust than a company page. Paste as-is, or tweak the opening line to match your week.</p>
+
+    <!-- LI 1 -->
+    <div class="post">
+      <div class="post-head">
+        <div class="who"><div class="avatar">BM</div><div><b>Dr Bassam Mohamed</b><span>GP · Founder of Reasoning GP</span></div></div>
+        <div class="post-label li">LinkedIn · Day 1</div>
+      </div>
+      <div class="post-body">
+        <div class="post-copy">Three years ago I kept noticing the same thing in clinic and in teaching: we're brilliant at looking things up, but we rarely see the reasoning laid out — the questions that actually change management, and why.
+
+So I built the tool I wished I'd had.
+
+Today I'm launching <strong>Reasoning GP</strong> 🩺
+
+It's a clinical-reasoning platform for UK GPs and trainees — and everything in it is summarised from NICE and national guidelines:
+
+• <strong>Pathways</strong> — decision-making algorithms that walk you from presentation to diagnosis, one question at a time (265 of them)
+• <strong>Protocols</strong> — the same clear algorithm structure for managing a condition once you've made the diagnosis (170+)
+• <strong>Casebook</strong> — 100+ full cases worked end to end, with the whole reasoning shown, not just the answer
+• <strong>Ask</strong> — an AI assistant that answers your real clinic question in seconds, quoting the actual guideline. The time-saver you didn't know you needed
+• A complete <strong>SCA suite</strong> with 312 AI patient roleplays — unlimited, no per-case credits
+
+Whether you want a sharper five minutes between patients, or you're sitting the SCA — it's built for you.
+
+You can try 5 samples free, no signup. Or use the code <strong>LAUNCH7</strong> for 7 days of full access.
+
+👉 gpreasoning.uk
+
+I'd genuinely love your feedback — reply here or DM me.</div>
+        <div class="post-foot">
+          <span class="hashtag">#GeneralPractice</span><span class="hashtag">#SCA</span><span class="hashtag">#MRCGP</span><span class="hashtag">#GPtrainee</span><span class="hashtag">#PrimaryCare</span>
+          <button class="copybtn" data-copy>Copy</button>
+        </div>
+      </div>
+      <div class="note"><b>Why it works:</b> The origin story earns attention before the pitch. Ends with a soft ask for feedback — engagement fuels LinkedIn reach far more than a hard sell.</div>
+    </div>
+
+    <!-- LI 2 -->
+    <div class="post">
+      <div class="post-head">
+        <div class="who"><div class="avatar">BM</div><div><b>Dr Bassam Mohamed</b><span>GP · Founder of Reasoning GP</span></div></div>
+        <div class="post-label li">LinkedIn · Day 4</div>
+      </div>
+      <div class="post-body">
+        <div class="post-copy">Most GP resources hand you a wall of text and leave you to find the answer.
+
+Reasoning GP is built differently — everything is an <strong>algorithm you can think through</strong>, and all of it is summarised straight from NICE and national guidelines:
+
+📍 <strong>Pathways</strong> — decision-making algorithms for a presentation. Start with the symptom, answer each question, and it guides you to the diagnosis — red flags and exact referral thresholds built in.
+
+🗂️ <strong>Protocols</strong> — the same clean algorithm, but for managing a condition once diagnosed. What to start, what to monitor, when to step up.
+
+📖 <strong>Casebook</strong> — 100+ real cases worked end to end, showing the full reasoning a GP actually uses — the closest thing to sitting beside an experienced colleague.
+
+💬 <strong>Ask</strong> — type your real question ("CHC at 8 weeks postpartum, breastfeeding?") and get the answer in seconds, quoting the guideline and edition. Minutes of searching, gone.
+
+That's the difference: not more information, but a way to reason through it — grounded in guidelines every time.
+
+Try it free (5 samples, no signup) or take 7 days full access with <strong>LAUNCH7</strong>. Works best on your own phone or laptop for now.
+
+gpreasoning.uk</div>
+        <div class="post-foot">
+          <span class="hashtag">#ClinicalReasoning</span><span class="hashtag">#SCA</span><span class="hashtag">#GeneralPractice</span><span class="hashtag">#MRCGP</span>
+          <button class="copybtn" data-copy>Copy</button>
+        </div>
+      </div>
+      <div class="note"><b>Why it works:</b> This is your core differentiator post — it names exactly what each tool is (algorithm, algorithm, worked cases, instant guideline answers) and hammers the "guidelines every time" trust signal. The strongest single post for converting sceptical GPs.</div>
+    </div>
+
+    <!-- LI Ask (clinic) -->
+    <div class="post">
+      <div class="post-head">
+        <div class="who"><div class="avatar">BM</div><div><b>Dr Bassam Mohamed</b><span>GP · Founder of Reasoning GP</span></div></div>
+        <div class="post-label li">LinkedIn · Day 9</div>
+      </div>
+      <div class="post-body">
+        <div class="post-copy">How many minutes a day do you lose looking things up mid-clinic? 🕑
+
+You half-remember the threshold, open three tabs, scroll a PDF, and the patient's still waiting.
+
+That's the problem <strong>Ask</strong> solves — and it's the tool I'm most proud of.
+
+Type the question the way you'd actually say it:
+<em>"Sertraline dose in an 80-year-old?"</em>
+<em>"When do I refer microscopic haematuria?"</em>
+
+And you get a straight answer in seconds — with the <strong>guideline named, the edition, and what to check first.</strong> Not a vague AI summary; a guideline-grounded answer you can act on and trust.
+
+Every pathway, protocol and case behind it is summarised from NICE and national guidance — so Ask is drawing from the same trusted well.
+
+It genuinely gives you back minutes every clinic.
+
+Try it free (5 samples, no signup) or 7 days full access with <strong>LAUNCH7</strong>. Works best on your own device for now.
+
+gpreasoning.uk</div>
+        <div class="post-foot">
+          <span class="hashtag">#GeneralPractice</span><span class="hashtag">#PrimaryCare</span><span class="hashtag">#NICE</span><span class="hashtag">#ClinicalDecisionSupport</span>
+          <button class="copybtn" data-copy>Copy</button>
+        </div>
+      </div>
+      <div class="note"><b>Why it works:</b> Leads with a pain every GP feels (time lost looking things up) and positions Ask as the unique time-saver. "Guideline named + edition" is the trust proof that separates it from generic AI.</div>
+    </div>
+
+    <!-- LI HRT (clinic) -->
+    <div class="post">
+      <div class="post-head">
+        <div class="who"><div class="avatar">BM</div><div><b>Dr Bassam Mohamed</b><span>GP · Founder of Reasoning GP</span></div></div>
+        <div class="post-label li">LinkedIn · Day 6</div>
+      </div>
+      <div class="post-body">
+        <div class="post-copy">A 52-year-old asks you for HRT. Flushes, broken sleep, low mood. Straightforward script?
+
+This is exactly where reasoning beats a quick prescription 👇
+
+→ <strong>Safety first.</strong> Any postmenopausal bleeding? A PV bleed more than 12 months after her last period is a 2-week-wait for endometrial cancer — investigated BEFORE any HRT. Never put unscheduled bleeding down to "hormones."
+
+→ <strong>Route matters.</strong> Transdermal oestrogen (patch/gel) skips first-pass metabolism — lower VTE and stroke risk than oral. First choice if there's migraine, a raised BMI, or VTE risk.
+
+→ <strong>Protect the endometrium.</strong> Uterus present + systemic oestrogen = she needs a progestogen (or a Mirena, which also covers contraception — because HRT isn't one).
+
+→ <strong>Under 40 with POI?</strong> HRT until the natural age of menopause (~51) for bone and cardiovascular protection.
+
+That's one pathway in Reasoning GP — NICE NG23-aligned, red flags and referral thresholds built in. We've got 265 of them for the presentations that make you pause.
+
+Try 5 free, no signup. 7 days full access with <strong>LAUNCH7</strong> — works best on your own phone or laptop for now.
+
+gpreasoning.uk</div>
+        <div class="post-foot">
+          <span class="hashtag">#GeneralPractice</span><span class="hashtag">#Menopause</span><span class="hashtag">#HRT</span><span class="hashtag">#PrimaryCare</span><span class="hashtag">#ClinicalReasoning</span>
+          <button class="copybtn" data-copy>Copy</button>
+        </div>
+      </div>
+      <div class="note"><b>Why it works:</b> A real clinic scenario is far more shareable than a feature list — GPs recognise the moment. It proves the product's depth with one worked example and pairs directly with the HRT card below.</div>
+    </div>
+
+    <!-- LI 3 -->
+    <div class="post">
+      <div class="post-head">
+        <div class="who"><div class="avatar">BM</div><div><b>Dr Bassam Mohamed</b><span>GP · Founder of Reasoning GP</span></div></div>
+        <div class="post-label li">LinkedIn · Day 7</div>
+      </div>
+      <div class="post-body">
+        <div class="post-copy">Passing the SCA comes down to one thing: reps.
+
+The problem is finding enough realistic cases — and someone to play the patient.
+
+So we built <strong>312 AI patient roleplays</strong> into Reasoning GP. 🎙️
+
+• Real presentations across the whole curriculum
+• The AI plays the patient — video or telephone consultations
+• You get examiner-style marking against the three domains, with a one-line fix after each
+• Unlimited. No per-case credits, no counting down your practice
+
+You can run a full 12-minute case at 6am before a shift, or a quick circuit on your commute.
+
+Registrars — this is the practice you can't get enough of anywhere else.
+
+5 sample cases are free. Full access free for 7 days with <strong>LAUNCH7</strong>.
+
+gpreasoning.uk</div>
+        <div class="post-foot">
+          <span class="hashtag">#SCA</span><span class="hashtag">#MRCGP</span><span class="hashtag">#GPtrainee</span><span class="hashtag">#GPregistrar</span>
+          <button class="copybtn" data-copy>Copy</button>
+        </div>
+      </div>
+      <div class="note"><b>Why it works:</b> Single-feature focus + a concrete "6am before a shift" scene makes it tangible. "No per-case credits" is a direct jab at how competitors meter practice.</div>
+    </div>
+
+    <!-- LI 4 -->
+    <div class="post">
+      <div class="post-head">
+        <div class="who"><div class="avatar">BM</div><div><b>Dr Bassam Mohamed</b><span>GP · Founder of Reasoning GP</span></div></div>
+        <div class="post-label li">LinkedIn · Day 9</div>
+      </div>
+      <div class="post-body">
+        <div class="post-copy">Not sitting an exam? Reasoning GP is built for your working day too.
+
+Two tools I use every clinic:
+
+📋 <strong>Ask</strong> — a clinical assistant grounded in current UK guidance. Ask it a real question ("CHC at 8 weeks postpartum, breastfeeding?") and it answers with the guideline, the edition, and what to check first — not a vague summary.
+
+✍️ <strong>Consult Scribe</strong> — turns your consultation into a clean, coded note in your template. EMIS or SystmOne wording, problem-based structure, ready to paste.
+
+Plus 265 pathways and 170+ protocols for the presentations that make you pause.
+
+It's the sharper five minutes between patients.
+
+Free to try (5 samples, no signup) — or 7 days full access with <strong>LAUNCH7</strong>.
+
+gpreasoning.uk</div>
+        <div class="post-foot">
+          <span class="hashtag">#GeneralPractice</span><span class="hashtag">#PrimaryCare</span><span class="hashtag">#GPs</span><span class="hashtag">#DigitalHealth</span>
+          <button class="copybtn" data-copy>Copy</button>
+        </div>
+      </div>
+      <div class="note"><b>Why it works:</b> Widens the audience beyond exam candidates to qualified GPs. The specific Ask example proves accuracy instead of claiming it.</div>
+    </div>
+
+    <!-- LI 5 -->
+    <div class="post">
+      <div class="post-head">
+        <div class="who"><div class="avatar">BM</div><div><b>Dr Bassam Mohamed</b><span>GP · Founder of Reasoning GP</span></div></div>
+        <div class="post-label li">LinkedIn · Day 11</div>
+      </div>
+      <div class="post-body">
+        <div class="post-copy">A note for GP trainers and TPDs 👇
+
+If you supervise registrars, you know the two hardest things to give them are enough realistic practice and consistent, structured feedback.
+
+Reasoning GP helps with both:
+
+• 312 AI patient roleplays with examiner-style marking across the three domains
+• 100+ worked reasoning cases you can walk through together in tutorial
+• A Live Group Mock — run a group revision session with candidate, patient and examiner roles, synced across devices
+
+It's the kind of thing you can point a struggling trainee at on a Friday and know they'll get quality reps over the weekend.
+
+Happy to set up trainer access — DM me. Or take a look with <strong>LAUNCH7</strong> for 7 days full access.
+
+gpreasoning.uk</div>
+        <div class="post-foot">
+          <span class="hashtag">#GPtraining</span><span class="hashtag">#MedicalEducation</span><span class="hashtag">#TPD</span><span class="hashtag">#MRCGP</span>
+          <button class="copybtn" data-copy>Copy</button>
+        </div>
+      </div>
+      <div class="note"><b>Why it works:</b> Speaks to a decision-maker who influences many trainees. The "point a struggling trainee at it on a Friday" line is a concrete job-to-be-done.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== WHATSAPP ===================== -->
+<section id="whatsapp">
+  <div class="wrap">
+    <span class="eyebrow">WhatsApp · groups &amp; broadcast</span>
+    <h2 class="sec serif">Copy-ready WhatsApp messages</h2>
+    <p class="sec-lede">WhatsApp rewards short, human and forwardable. No hashtags, one link, a clear ask. These are built to survive being passed from one registrar group to the next.</p>
+
+    <!-- WA 1 -->
+    <div class="post">
+      <div class="post-head">
+        <div class="who"><div class="avatar" style="background:#25d366;color:#0a3d1e">BM</div><div><b>Registrar / SCA group drop</b><span>Short, native to the group</span></div></div>
+        <div class="post-label wa">WhatsApp · Day 2</div>
+      </div>
+      <div class="post-body">
+        <div class="post-copy">Sharing something that might help anyone sitting the SCA 👇
+
+I built a platform with 312 AI patient roleplays — the AI plays the patient (video or phone), and you get examiner-style marking after each case. Unlimited practice, no per-case credits.
+
+5 cases are free to try, no signup. Full access free for 7 days with code <strong>LAUNCH7</strong>.
+
+👉 gpreasoning.uk
+
+Would really value your thoughts if you give it a go 🙏</div>
+        <div class="post-foot">
+          <button class="copybtn" data-copy>Copy</button>
+        </div>
+      </div>
+      <div class="note"><b>Why it works:</b> Opens with the benefit to the group, not "I made a thing." Humble ask at the end fits group etiquette and invites replies.</div>
+    </div>
+
+    <!-- WA 2 -->
+    <div class="post">
+      <div class="post-head">
+        <div class="who"><div class="avatar" style="background:#25d366;color:#0a3d1e">BM</div><div><b>Broadcast to your contacts</b><span>Warm, personal</span></div></div>
+        <div class="post-label wa">WhatsApp · Day 5</div>
+      </div>
+      <div class="post-body">
+        <div class="post-copy">Hi 👋 quick personal one — I've just launched something I've been building for a while.
+
+It's called <strong>Reasoning GP</strong>: a clinical-reasoning and SCA prep platform for GPs and trainees. Pathways, worked cases, an AI clinical assistant, and 312 AI patient roleplays for exam practice.
+
+If you're a GP, a registrar, or know someone preparing for UK GP training, I'd love you to take a look — and pass it on if it's useful.
+
+Free to try, or 7 days full access with <strong>LAUNCH7</strong>:
+gpreasoning.uk
+
+Thank you 🙏 — Bassam</div>
+        <div class="post-foot">
+          <button class="copybtn" data-copy>Copy</button>
+        </div>
+      </div>
+      <div class="note"><b>Why it works:</b> Signed personally and asks people to pass it on — turning your contacts into distribution. Keep broadcast lists under 256 and only to people who have your number saved.</div>
+    </div>
+
+    <!-- WA 3 -->
+    <div class="post">
+      <div class="post-head">
+        <div class="who"><div class="avatar" style="background:#25d366;color:#0a3d1e">BM</div><div><b>The forwardable one-liner</b><span>Designed to be passed on</span></div></div>
+        <div class="post-label wa">WhatsApp · Day 12</div>
+      </div>
+      <div class="post-body">
+        <div class="post-copy">🩺 <strong>Reasoning GP</strong> — SCA + clinic reasoning for UK GPs
+
+• 312 AI patient roleplays (unlimited, no credits)
+• 265 pathways · 170+ protocols · 100+ worked cases
+• AI clinical assistant + consult scribe
+
+Try 5 free, no signup. 7 days full access with <strong>LAUNCH7</strong>.
+👉 gpreasoning.uk</div>
+        <div class="post-foot">
+          <button class="copybtn" data-copy>Copy</button>
+        </div>
+      </div>
+      <div class="note"><b>Why it works:</b> Scannable, no personal framing — so anyone can forward it into their own groups without it feeling second-hand. This is your workhorse message.</div>
+    </div>
+
+    <!-- WA 4 -->
+    <div class="post">
+      <div class="post-head">
+        <div class="who"><div class="avatar" style="background:#25d366;color:#0a3d1e">BM</div><div><b>Trial deadline nudge</b><span>Last-call urgency</span></div></div>
+        <div class="post-label wa">WhatsApp · Day 14</div>
+      </div>
+      <div class="post-body">
+        <div class="post-copy">Quick nudge for anyone who meant to look 👀
+
+The <strong>LAUNCH7</strong> code (7 days full access to Reasoning GP) is closing soon. If you're sitting the SCA or want the clinic tools, now's the moment:
+
+👉 gpreasoning.uk
+
+Takes 30 seconds to start a case 🙏</div>
+        <div class="post-foot">
+          <button class="copybtn" data-copy>Copy</button>
+        </div>
+      </div>
+      <div class="note"><b>Why it works:</b> A gentle deadline reminder recovers the "I'll do it later" crowd — usually the single highest-converting message in a launch.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== SOCIAL CARDS ===================== -->
+<section id="graphics">
+  <div class="wrap">
+    <span class="eyebrow">Graphics · attach to your posts</span>
+    <h2 class="sec serif">Designed social cards</h2>
+    <p class="cards-note">Square 1:1 cards that pair with the posts above — the format works on both LinkedIn and WhatsApp. Right-click any card to save it as an image, or ask me to export them as PNGs. Card D recreates a real pathway (HRT / Menopause); you can also drop in your own screenshot from gpreasoning.uk.</p>
+
+    <div class="social-scroll">
+
+      <!-- Card A -->
+      <div class="sc-wrap">
+        <div class="sq teal-hero">
+          <div class="inner">
+            <div class="sc-brand on-teal"><div class="m">R</div><b>Reasoning GP</b></div>
+            <div class="eyb">Now live</div>
+            <h4 class="serif">Think it through, <em>not just look it up.</em></h4>
+            <div class="statline">
+              <div class="s"><b>265</b><span>pathways</span></div>
+              <div class="s"><b>312</b><span>AI roleplays</span></div>
+              <div class="s"><b>100+</b><span>cases</span></div>
+            </div>
+            <div class="sc-url"><span class="dot"></span>gpreasoning.uk</div>
+          </div>
+        </div>
+        <div class="sc-cap"><b>Card A — Launch announcement.</b> Pair with the Day 1 post.</div>
+      </div>
+
+      <!-- Card B -->
+      <div class="sc-wrap">
+        <div class="sq cream">
+          <div class="inner">
+            <div class="sc-brand"><div class="m">R</div><b>Reasoning GP</b></div>
+            <div class="eyb">SCA practice</div>
+            <div class="huge">312</div>
+            <h4 class="serif">AI patient roleplays</h4>
+            <div class="sub">Unlimited. No per-case credits. Video or telephone, with examiner-style marking.</div>
+            <div class="sc-url"><span class="dot"></span>gpreasoning.uk</div>
+          </div>
+        </div>
+        <div class="sc-cap"><b>Card B — The headline stat.</b> Pair with the Day 7 / SCA posts.</div>
+      </div>
+
+      <!-- Card C -->
+      <div class="sc-wrap">
+        <div class="sq rust-hero">
+          <div class="inner">
+            <div class="sc-brand on-teal"><div class="m">R</div><b>Reasoning GP</b></div>
+            <div class="eyb">For the SCA</div>
+            <h4 class="serif">Everything you need to be exam-ready</h4>
+            <div class="bullets">
+              <div>312 AI patient cases</div>
+              <div>Examiner-style marking</div>
+              <div>Live group mocks</div>
+              <div>Readiness dashboard</div>
+            </div>
+            <div class="sc-url"><span class="dot"></span>gpreasoning.uk</div>
+          </div>
+        </div>
+        <div class="sc-cap"><b>Card C — SCA feature list.</b> Great for registrar group shares.</div>
+      </div>
+
+      <!-- Card D -->
+      <div class="sc-wrap">
+        <div class="sq frame">
+          <div class="inner">
+            <div class="sc-brand"><div class="m">R</div><b>Reasoning GP</b></div>
+            <div class="hrt-mock">
+              <div class="hn safety"><div class="ht">Step 1 · Safety<span class="pw">2WW · NG12</span></div><div class="hb"><b>Postmenopausal bleeding &gt;12 mo</b> → 2-week-wait endometrial pathway <b>before</b> any HRT</div></div>
+              <div class="hn decide"><div class="ht">Step 3 · Route</div><div class="hb"><b>Transdermal oestrogen preferred</b> — avoids first-pass, lower VTE &amp; stroke risk</div></div>
+              <div class="hn treat"><div class="ht">Step 7 · Prescribe</div><div class="hb">Uterus present? <b>Add a progestogen</b> (or LNG-IUS) to protect the endometrium</div></div>
+            </div>
+            <div class="cap"><b>HRT / Menopause pathway</b>NICE NG23 · red flags &amp; thresholds built in</div>
+          </div>
+        </div>
+        <div class="sc-cap"><b>Card D — Clinic pathway.</b> A real HRT worked example; pair with the Day 6 post.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TIPS ===================== -->
+<section id="tips">
+  <div class="wrap">
+    <span class="eyebrow">Make it land</span>
+    <h2 class="sec serif">Posting tips that matter</h2>
+    <div class="tips">
+      <div class="tip"><b><span class="ic">1</span> Post the link in the first comment</b><p>On LinkedIn, links in the body can suppress reach. Put "link in comments" and drop gpreasoning.uk as your first comment.</p></div>
+      <div class="tip"><b><span class="ic">2</span> First 90 minutes decide reach</b><p>Reply to every comment fast. Early engagement is what pushes a post into more feeds — so post when you can be present.</p></div>
+      <div class="tip"><b><span class="ic">3</span> One idea per post</b><p>Resist listing everything. Each post should leave the reader with a single takeaway and one clear action.</p></div>
+      <div class="tip"><b><span class="ic">4</span> WhatsApp: ask permission in groups</b><p>A quick "OK to share a resource here?" to admins keeps you welcome — and stops the message being deleted as spam.</p></div>
+      <div class="tip"><b><span class="ic">5</span> Track the code</b><p>Because LAUNCH7 is unique to these posts, redemptions tell you exactly which channel is working. Watch it in your access-codes console.</p></div>
+      <div class="tip"><b><span class="ic">6</span> Repost the winner</b><p>Whichever Day 1–7 post performs best, adapt and re-run it in week 3. Repetition builds recognition — don't fear reusing a winner.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <b>Reasoning GP · Launch Playbook</b>
+    <span>Dr Bassam Mohamed · gpreasoning.uk · For healthcare professionals</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var post=btn.closest('.post-body').querySelector('.post-copy');
+    var text=post.innerText;
+    navigator.clipboard.writeText(text).then(function(){
+      var old=btn.textContent;btn.textContent='Copied ✓';
+      setTimeout(function(){btn.textContent=old;},1600);
+    }).catch(function(){
+      var r=document.createRange();r.selectNodeContents(post);
+      var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+    });
+  });
+});
+</script>
+</body>
+</html>

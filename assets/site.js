@@ -2397,7 +2397,7 @@ function renderAuthState(){
         </button>
         <div class="rgp-acct-menu" hidden>
           <div class="rgp-acct-hd"><b>${esc(u.name)}</b><small>${esc(u.email)}</small>${u.stage ? `<span class="rgp-acct-stage">${esc(u.stage)}</span>` : ''}</div>
-          <a class="rgp-acct-link" href="${getPathPrefix()}tools/sca-weakspots.html">My Readiness</a>
+          <button class="rgp-acct-link" data-acct-redeem type="button">Have a code?</button>
           <button class="rgp-acct-link rgp-acct-logout" data-acct-logout type="button">Log out</button>
         </div>
       </div>`;
@@ -2406,6 +2406,18 @@ function renderAuthState(){
     btn.addEventListener('click', e => { e.stopPropagation(); const open = !menu.hidden; menu.hidden = open; btn.setAttribute('aria-expanded', String(!open)); });
     document.addEventListener('click', e => { if (!box.contains(e.target)) { menu.hidden = true; btn.setAttribute('aria-expanded','false'); } });
     box.querySelector('[data-acct-logout]').addEventListener('click', () => { RGPAuth.logout(); renderAuthState(); });
+    const redeemBtn = box.querySelector('[data-acct-redeem]');
+    if (redeemBtn) redeemBtn.addEventListener('click', async () => {
+      const code = (window.prompt('Enter your access code:') || '').trim();
+      if (!code) return;
+      try {
+        await RGPAuth.redeem(code);
+        window.alert('\u2713 Code applied — your access is unlocked. Welcome in!');
+        renderAuthState();
+      } catch (e) {
+        window.alert(e && e.message ? e.message : 'That code didn\u2019t work.');
+      }
+    });
   } else {
     box.innerHTML = `
       <button class="rgp-auth-btn rgp-auth-signin" data-open-auth="signin" type="button" data-i18n="nav.signin">Sign in</button>
