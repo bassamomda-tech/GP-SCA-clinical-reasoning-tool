@@ -318,7 +318,15 @@ async function adminCodes(request, env, cors) {
   try { await requireAdmin(request, env); }
   catch (e) { return json({ error: e.message }, e.status || 401, cors); }
   if (request.method === 'GET') {
-    const codes = await listKV(env, 'code:', 200);
+    // listKV flattens meta onto the row ({key, ...meta}); the admin page expects
+    // {key, value:meta}. Reshape so every field (days/used/maxUses/expires/created)
+    // renders instead of falling back to placeholder defaults.
+    const rows = await listKV(env, 'code:', 200);
+    const codes = rows.map(function (r) {
+      const value = Object.assign({}, r);
+      delete value.key;
+      return { key: r.key, value: value };
+    });
     return json({ codes }, 200, cors);
   }
   if (request.method !== 'POST') return json({ error: 'method' }, 405, cors);
