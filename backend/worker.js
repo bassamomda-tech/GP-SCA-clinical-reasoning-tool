@@ -284,9 +284,28 @@ async function redeemCode(request, env, cors) {
   meta.used = (meta.used || 0) + 1;
   meta.usedBy = (meta.usedBy || []).concat(user.email).slice(-1000);
   await env.USERS.put('code:' + c, JSON.stringify(meta));
-  user.tier = ['silver', 'gold', 'platinum'].includes(meta.tier) ? meta.tier : 'platinum';
-  user.tierUntil = meta.days ? Date.now() + meta.days * 864e5 : null;
-  user.tierSource = 'code:' + c;
+  // Only ever UPGRADE — never shorten access or downgrade a tier a member already holds.
+  // So an existing annual member who also redeems a 7-day trial keeps their annual access.
+  const RANK = { silver: 1, gold: 2, platinum: 3 };
+  const newTier = ['silver', 'gold', 'platinum'].includes(meta.tier) ? meta.tier : 'platinum';
+  const newUntil = meta.days ? Date.now() + meta.days * 864e5 : null; // null = no expiry (forever)
+  const curTier = ['silver', 'gold', 'platinum'].includes(user.tier) ? user.tier : null;
+  const curUntil = user.tierUntil || null;
+  const curActive = curTier && (!curUntil || curUntil > Date.now()); // do they hold live access now?
+  // Tier: keep the higher-ranked of current (if still active) vs the code's tier.
+  user.tier = (curActive && RANK[curTier] >= RANK[newTier]) ? curTier : newTier;
+  // Expiry: keep whichever access lasts longer. null (forever) always wins.
+  if (!curActive) {
+    user.tierUntil = newUntil;                       // no live access → take the code's window
+  } else if (curUntil === null || newUntil === null) {
+    user.tierUntil = null;                           // either side is no-expiry → forever
+  } else {
+    user.tierUntil = Math.max(curUntil, newUntil);   // both dated → the later expiry
+  }
+  // Record the source, preserving the earlier one so it's clear access was stacked.
+  user.tierSource = (curActive && user.tierSource && user.tierSource !== 'code:' + c)
+    ? user.tierSource + '+code:' + c
+    : 'code:' + c;
   await env.USERS.put(user.email, JSON.stringify(user));
   return json({ ok: true, user: publicUser(user, env) }, 200, cors);
 }
