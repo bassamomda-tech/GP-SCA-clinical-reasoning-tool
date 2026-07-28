@@ -10,7 +10,7 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
   // e.g. 'https://reasoning-gp-api.YOURNAME.workers.dev'  (no trailing slash)
   workerUrl: 'https://shy-voice-2225.bassamomda.workers.dev',
   // PayPal LIVE client id (for the subscribe buttons + Apple Pay)
-  paypalClientId: 'ASkO8Npsc_LwTMSZtzTYOARQLNm25eHaRNpRGivyOk98V4gSgzMjiBN0YIqAQhb9rEmuGV_GV8jTdoGD',
+  paypalClientId: 'BAAHZsHIniprLkylYIYvaqm6n_GOams8xudSYZa3tNANMB3BoOn8DGLaaXNBwBApmum9GOhr4fns0gZZyA',
   // Monthly-only for now. Add the *_yearly ids later to switch the yearly toggle back on.
   paypalPlans: {
     silver_monthly:'P-7W0981493D9643523NJFITGA', silver_yearly:'P-5JJ39495BS015630PNJFJA3A',
