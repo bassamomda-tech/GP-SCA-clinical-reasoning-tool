@@ -43,6 +43,7 @@ export default {
       if (url.pathname === '/api/group')          return await groupSession(request, env, cors);
       if (url.pathname === '/api/redeem')         return await redeemCode(request, env, cors);
       if (url.pathname === '/api/admin/codes')    return await adminCodes(request, env, cors);
+      if (url.pathname === '/api/admin/user')     return await adminUser(request, env, cors);
       if (url.pathname === '/api/ai')             return await aiProxy(request, env, cors);
       if (url.pathname === '/api/embed')          return await embedProxy(request, env, cors);
       if (url.pathname === '/api/feedback')       return await feedback(request, env, cors);
@@ -307,6 +308,38 @@ async function redeemCode(request, env, cors) {
     ? user.tierSource + '+code:' + c
     : 'code:' + c;
   await env.USERS.put(user.email, JSON.stringify(user));
+  return json({ ok: true, user: publicUser(user, env) }, 200, cors);
+}
+
+/* Admin: look up a member and set their tier by hand (ADMIN_EMAIL only).
+   GET  /api/admin/user?email=someone@nhs.net        -> { user }
+   POST /api/admin/user { email, tier, until? }      -> { ok, user }
+   Used to rescue a customer whose payment webhook didn't apply.            */
+async function adminUser(request, env, cors) {
+  try { await requireAdmin(request, env); }
+  catch (e) { return json({ error: e.message }, e.status || 401, cors); }
+  const url = new URL(request.url);
+  if (request.method === 'GET') {
+    const email = String(url.searchParams.get('email') || '').trim().toLowerCase();
+    if (!email) return json({ error: 'email required' }, 400, cors);
+    const raw = await env.USERS.get(email);
+    if (!raw) return json({ error: 'no such user' }, 404, cors);
+    return json({ user: JSON.parse(raw) }, 200, cors);
+  }
+  if (request.method !== 'POST') return json({ error: 'method' }, 405, cors);
+  const b = await request.json();
+  const email = String(b.email || '').trim().toLowerCase();
+  const tier = String(b.tier || '').trim().toLowerCase();
+  if (!email) return json({ error: 'email required' }, 400, cors);
+  if (['bronze', 'silver', 'gold', 'platinum'].indexOf(tier) === -1) return json({ error: 'bad tier' }, 400, cors);
+  const raw = await env.USERS.get(email);
+  if (!raw) return json({ error: 'no such user' }, 404, cors);
+  const user = JSON.parse(raw);
+  user.tier = tier;
+  user.tierUntil = b.until ? Number(b.until) : null; // null = no expiry
+  user.tierSource = 'admin';
+  delete user.payIssue;
+  await env.USERS.put(email, JSON.stringify(user));
   return json({ ok: true, user: publicUser(user, env) }, 200, cors);
 }
 
@@ -767,21 +800,78 @@ async function paypalWebhook(request, env) {
 
   const event = JSON.parse(bodyText);
   const type = event.event_type || '';
-  const res = event.resource || {};
+  let res = event.resource || {};
+
+  const GRANT = ['BILLING.SUBSCRIPTION.ACTIVATED', 'BILLING.SUBSCRIPTION.UPDATED', 'BILLING.SUBSCRIPTION.RE-ACTIVATED', 'PAYMENT.SALE.COMPLETED'];
+  const REVOKE = ['BILLING.SUBSCRIPTION.CANCELLED', 'BILLING.SUBSCRIPTION.EXPIRED', 'BILLING.SUBSCRIPTION.SUSPENDED'];
+  if (GRANT.indexOf(type) === -1 && REVOKE.indexOf(type) === -1) return new Response('ignored', { status: 200 });
+
+  // PAYMENT.SALE.COMPLETED carries a sale resource: no plan_id and usually no
+  // custom_id. Resolve the real subscription so recurring payments still work.
+  const subId = res.id && String(res.id).indexOf('I-') === 0 ? res.id : (res.billing_agreement_id || null);
+  if ((!res.plan_id || !res.custom_id) && subId) {
+    try {
+      const sr = await fetch(`${PAYPAL_API}/v1/billing/subscriptions/${encodeURIComponent(subId)}`, {
+        headers: { 'Authorization': `Bearer ${access}` }
+      });
+      if (sr.ok) { const full = await sr.json(); res = Object.assign({}, full, { id: full.id || subId }); }
+    } catch (e) { /* fall through to what the event gave us */ }
+  }
+
   // custom_id is set when the subscription is created on the site = the user's email
   const email = (res.custom_id || (res.subscriber && res.subscriber.email_address) || '').trim().toLowerCase();
-  if (!email) return new Response('no user', { status: 200 });
+  if (!email) { await logPayIssue(env, 'no-email', type, res); return new Response('no user', { status: 200 }); }
   const raw = await env.USERS.get(email);
-  if (!raw) return new Response('unknown user', { status: 200 });
+  if (!raw) { await logPayIssue(env, 'unknown-user:' + email, type, res); return new Response('unknown user', { status: 200 }); }
   const user = JSON.parse(raw);
 
-  if (type === 'BILLING.SUBSCRIPTION.ACTIVATED' || type === 'BILLING.SUBSCRIPTION.UPDATED' || type === 'PAYMENT.SALE.COMPLETED') {
-    const tier = tierFromPlan(res.plan_id, env);
-    if (tier) { user.tier = tier; user.sub = { id: res.id, plan: res.plan_id, status: res.status, ts: Date.now() }; }
-  } else if (type === 'BILLING.SUBSCRIPTION.CANCELLED' || type === 'BILLING.SUBSCRIPTION.EXPIRED' || type === 'BILLING.SUBSCRIPTION.SUSPENDED') {
+  if (GRANT.indexOf(type) !== -1) {
+    let tier = tierFromPlan(res.plan_id, env);
+    // The PLAN_* vars can drift from the live plans (e.g. plans recreated under a
+    // new PayPal app). Rather than silently granting nothing to someone who has
+    // just paid, fall back to the plan's NAME from the PayPal API.
+    if (!tier && res.plan_id) tier = await tierFromPlanName(res.plan_id, access);
+    if (tier) {
+      user.tier = tier;
+      // A live paid subscription never carries a code expiry. Clearing this is
+      // essential: a leftover tierUntil from a trial code would lapse the paying
+      // customer straight back to bronze.
+      user.tierUntil = null;
+      user.tierSource = 'paypal';
+      user.sub = { id: res.id || subId, plan: res.plan_id || null, status: res.status || 'ACTIVE', ts: Date.now() };
+    } else {
+      // Paid but unmappable — record it so it can be fixed by hand, never silent.
+      user.payIssue = { plan: res.plan_id || null, sub: res.id || subId || null, type, ts: Date.now() };
+      await logPayIssue(env, 'unmapped-plan:' + email, type, res);
+    }
+  } else {
     user.tier = 'bronze';
+    user.tierUntil = null;
     if (user.sub) user.sub.status = 'cancelled';
   }
   await env.USERS.put(email, JSON.stringify(user));
   return new Response('ok', { status: 200 });
+}
+/* Map a plan to a tier by its NAME when the PLAN_* ids don't match. */
+async function tierFromPlanName(planId, access) {
+  try {
+    const r = await fetch(`${PAYPAL_API}/v1/billing/plans/${encodeURIComponent(planId)}`, {
+      headers: { 'Authorization': `Bearer ${access}` }
+    });
+    if (!r.ok) return null;
+    const p = await r.json();
+    const n = ((p.name || '') + ' ' + (p.description || '')).toLowerCase();
+    if (n.indexOf('platinum') !== -1) return 'platinum';
+    if (n.indexOf('gold') !== -1) return 'gold';
+    if (n.indexOf('silver') !== -1) return 'silver';
+  } catch (e) {}
+  return null;
+}
+/* Keep a short trail of payment events that couldn't be applied. */
+async function logPayIssue(env, why, type, res) {
+  try {
+    await env.USERS.put('payissue:' + Date.now() + ':' + Math.random().toString(36).slice(2, 7),
+      JSON.stringify({ why, type, plan: (res && res.plan_id) || null, sub: (res && res.id) || null, ts: Date.now() }),
+      { expirationTtl: 60 * 60 * 24 * 30 });
+  } catch (e) {}
 }
