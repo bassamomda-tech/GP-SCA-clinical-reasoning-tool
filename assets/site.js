@@ -2380,6 +2380,26 @@ window.RGPSync = (function(){
   return { start:start, pull:pull, push:pushChanged, onSignIn:onSignIn, ready:ready, config:CFG };
 })();
 
+// Plain-English plan names + the "your plan" line in the account menu, so a member
+// can always see what they're paying for (and spot it if a payment hasn't landed).
+function tierLabel(t){
+  return ({ bronze:'the Free plan', silver:'Silver \u2014 clinic tools', gold:'Gold \u2014 SCA prep', platinum:'Platinum \u2014 everything' })[t] || 'the Free plan';
+}
+function planLine(u){
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const t = (u && u.tier) || 'bronze';
+  const paid = t !== 'bronze';
+  const name = ({ bronze:'Free plan', silver:'Silver', gold:'Gold', platinum:'Platinum' })[t] || 'Free plan';
+  let sub = '';
+  if (!paid) sub = 'Upgrade any time';
+  else if (u.tierUntil) {
+    const d = new Date(u.tierUntil);
+    sub = (u.tierUntil < Date.now() ? 'Expired ' : 'Until ') + d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+  } else sub = (u.tierSource === 'paypal') ? 'Active subscription' : 'Active';
+  return '<span class="rgp-plan-badge' + (paid ? ' paid' : '') + '">' + esc(name) + '</span>' +
+         '<span class="rgp-plan-sub">' + esc(sub) + '</span>';
+}
+
 // Reflect signed-in state into the top-nav auth slot (runs on every page).
 function renderAuthState(){
   const box = document.querySelector('.rgp-auth'); if (!box) return;
@@ -2397,6 +2417,8 @@ function renderAuthState(){
         </button>
         <div class="rgp-acct-menu" hidden>
           <div class="rgp-acct-hd"><b>${esc(u.name)}</b><small>${esc(u.email)}</small>${u.stage ? `<span class="rgp-acct-stage">${esc(u.stage)}</span>` : ''}</div>
+          <div class="rgp-acct-plan">${planLine(u)}</div>
+          <button class="rgp-acct-link" data-acct-refresh type="button">Refresh my plan</button>
           <button class="rgp-acct-link" data-acct-redeem type="button">Have a code?</button>
           <button class="rgp-acct-link rgp-acct-logout" data-acct-logout type="button">Log out</button>
         </div>
@@ -2406,6 +2428,25 @@ function renderAuthState(){
     btn.addEventListener('click', e => { e.stopPropagation(); const open = !menu.hidden; menu.hidden = open; btn.setAttribute('aria-expanded', String(!open)); });
     document.addEventListener('click', e => { if (!box.contains(e.target)) { menu.hidden = true; btn.setAttribute('aria-expanded','false'); } });
     box.querySelector('[data-acct-logout]').addEventListener('click', () => { RGPAuth.logout(); renderAuthState(); });
+    // Pull the tier straight from the server. This is the button to press after paying:
+    // PayPal's webhook can land a few seconds after checkout closes, so the cached
+    // account in the browser may still say "Free plan".
+    const refreshBtn = box.querySelector('[data-acct-refresh]');
+    if (refreshBtn) refreshBtn.addEventListener('click', async () => {
+      const before = (RGPAuth.current() || {}).tier || 'bronze';
+      refreshBtn.textContent = 'Checking\u2026';
+      try {
+        if (RGPAuth.refresh) await RGPAuth.refresh();
+        const after = (RGPAuth.current() || {}).tier || 'bronze';
+        renderAuthState();
+        if (after !== before) window.alert('\u2713 Your plan is now ' + tierLabel(after) + '. Enjoy!');
+        else if (after === 'bronze') window.alert('You\u2019re still on the free plan.\n\nIf you\u2019ve just paid, wait a minute and press this again \u2014 payments can take a moment to come through. If it still doesn\u2019t show, email bassamomda@gmail.com with the email you paid with and it\u2019ll be sorted straight away.');
+        else window.alert('You\u2019re on ' + tierLabel(after) + ' \u2014 all up to date.');
+      } catch (e) {
+        window.alert('Couldn\u2019t check just now. Please try again in a moment.');
+      }
+      refreshBtn.textContent = 'Refresh my plan';
+    });
     const redeemBtn = box.querySelector('[data-acct-redeem]');
     if (redeemBtn) redeemBtn.addEventListener('click', async () => {
       const code = (window.prompt('Enter your access code:') || '').trim();
@@ -2424,7 +2465,28 @@ function renderAuthState(){
       <button class="rgp-auth-btn rgp-auth-signup" data-open-auth="signup" type="button" data-i18n="nav.signup">Sign up</button>`;
     box.querySelectorAll('[data-open-auth]').forEach(b => b.addEventListener('click', () => window.RGP_openAuth?.(b.dataset.openAuth)));
   }
+  markCurrentPlan();
 }
+// Mark the plan the member is already on, on the pricing cards, so paying doesn't
+// feel like it went nowhere and nobody buys the same tier twice.
+function markCurrentPlan(n){
+  const subs = document.querySelector('[data-subs]');
+  // The pricing section is rendered by the footer injector, which may run after this —
+  // retry briefly so the badge still lands on a freshly-built section.
+  if (!subs) { if ((n || 0) < 20) setTimeout(() => markCurrentPlan((n || 0) + 1), 300); return; }
+  const u = (window.RGPAuth && RGPAuth.current) ? RGPAuth.current() : null;
+  const tier = (u && u.tier) || null;
+  subs.querySelectorAll('.rgp-tier-cur').forEach(el => el.remove());
+  subs.querySelectorAll('.rgp-sub-card.is-current').forEach(el => el.classList.remove('is-current'));
+  if (!tier || tier === 'bronze') return;
+  const card = subs.querySelector('.rgp-tier-' + tier); if (!card) return;
+  card.classList.add('is-current');
+  const pill = document.createElement('div');
+  pill.className = 'rgp-tier-cur';
+  pill.textContent = '\u2713 Your current plan';
+  card.insertBefore(pill, card.firstChild);
+}
+window.RGP_markCurrentPlan = markCurrentPlan;
 window.RGP_renderAuthState = renderAuthState;
 
 /* ---------- AUTO-INIT (replaces legacy sidebar init) ---------- */
@@ -2538,6 +2600,12 @@ function injectAuthModal(){
     .rgp-acct-hd b{ display:block; font-size:13.5px; color:var(--ink,#15202b); }
     .rgp-acct-hd small{ display:block; font-size:11.5px; color:var(--muted,#6b7280); margin-top:1px; word-break:break-all; }
     .rgp-acct-stage{ display:inline-block; margin-top:7px; font-size:10.5px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--teal,#0c4a47); background:var(--teal-soft,#e6efee); border-radius:999px; padding:2px 9px; }
+    .rgp-acct-plan{ padding:9px 12px 10px; margin:0 0 5px; border-bottom:1px solid var(--line,#e7e0d1); display:flex; flex-direction:column; gap:3px; }
+    .rgp-tier-cur{ background:var(--teal,#0c4a47); color:#f6f2e9; font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; border-radius:99px; padding:4px 11px; align-self:flex-start; margin-bottom:10px; display:inline-block; }
+    .rgp-sub-card.is-current{ border-color:var(--teal,#0c4a47); box-shadow:0 0 0 2px var(--teal-soft,#d5e6e4); }
+    .rgp-plan-badge{ align-self:flex-start; font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--muted,#6b7280); background:var(--bg-soft,#efe9dc); border-radius:99px; padding:3px 9px; }
+    .rgp-plan-badge.paid{ color:#f6f2e9; background:var(--teal,#0c4a47); }
+    .rgp-plan-sub{ font-size:11.5px; color:var(--muted,#6b7280); }
     .rgp-acct-link{ display:block; width:100%; text-align:left; font:inherit; font-size:13px; font-weight:600; color:var(--ink-2,#374151); background:none; border:none; border-radius:8px; padding:9px 12px; cursor:pointer; text-decoration:none; box-sizing:border-box; }
     .rgp-acct-link:hover{ background:var(--bg-soft,#efe9dc); }
     .rgp-acct-logout{ color:#b91c1c; }

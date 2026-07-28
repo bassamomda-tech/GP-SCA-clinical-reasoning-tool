@@ -68,6 +68,33 @@
       <div class="ac-err" id="acMsg" role="status"></div>
 
       <div class="ac-card">
+        <h2>Fix a member's access</h2>
+        <p style="font-size:14px;color:var(--muted);margin:-4px 0 14px">If someone has paid but is still locked out, set their tier here. Look them up by the email they signed up with, then grant the tier they bought. This overrides any expiry.</p>
+        <div class="ac-grid">
+          <div class="ac-f">
+            <label for="muEmail">Member email</label>
+            <input id="muEmail" type="email" placeholder="name@nhs.net" autocomplete="off" spellcheck="false">
+            <div class="hint">The email on their Reasoning GP account.</div>
+          </div>
+          <div class="ac-f">
+            <label for="muTier">Set tier</label>
+            <select id="muTier">
+              <option value="platinum">Platinum — everything</option>
+              <option value="silver">Silver — clinic tools</option>
+              <option value="gold">Gold — SCA prep</option>
+              <option value="bronze">Bronze — free tier</option>
+            </select>
+            <div class="hint">No expiry — stays until you change it.</div>
+          </div>
+        </div>
+        <div class="ac-actions">
+          <button class="ac-btn ghost" id="muLookup" type="button">Look up</button>
+          <button class="ac-btn" id="muSet" type="button">Grant access</button>
+        </div>
+        <div id="muOut" style="margin-top:12px;font-size:13.5px"></div>
+      </div>
+
+      <div class="ac-card">
         <h2>Create a code</h2>
         <div class="ac-grid">
           <div class="ac-f">
@@ -120,7 +147,7 @@
   </main>
 </div>
 
-<script src="../assets/site.js?v=73"></script>
+<script src="../assets/site.js?v=74"></script>
 <script src="../assets/nav-back.js?v=1"></script>
 <script>
 (function(){
@@ -233,6 +260,51 @@
     const d = e.target.closest('[data-del]'); if(d){ del(d.dataset.del); }
   });
   $('#acCode').addEventListener('keydown', e=>{ if(e.key==='Enter') create(); });
+
+  /* ---- Fix a member's access (rescue a paid customer who's locked out) ---- */
+  const muOut = $('#muOut');
+  function muSay(html, ok){ muOut.innerHTML = html ? '<span style="color:'+(ok?'#15803d':'#b54c2b')+'">'+html+'</span>' : ''; }
+  async function userCall(method, qs, body){
+    if(!API) throw new Error('The Worker isn’t connected yet — set RGP_CONFIG.workerUrl in assets/site.js.');
+    const t = token();
+    if(!t) throw new Error('Sign in with your admin account first, then reload.');
+    const res = await fetch(API + '/api/admin/user' + (qs||''), {
+      method,
+      headers: { 'Content-Type':'application/json', 'Authorization':'Bearer ' + t },
+      body: body ? JSON.stringify(body) : undefined
+    });
+    const d = await res.json().catch(()=>({}));
+    if(!res.ok) throw new Error(d.error || ('Request failed ('+res.status+')'));
+    return d;
+  }
+  $('#muLookup').addEventListener('click', async ()=>{
+    const email = $('#muEmail').value.trim().toLowerCase();
+    if(!email) return muSay('Enter their email first.');
+    muSay('Looking up…', true);
+    try{
+      const d = await userCall('GET', '?email=' + encodeURIComponent(email));
+      const u = d.user || {};
+      const until = u.tierUntil ? new Date(u.tierUntil).toLocaleDateString('en-GB') : 'no expiry';
+      let s = '<b>'+esc(u.name||'(no name)')+'</b> — tier: <b>'+esc(u.tier||'bronze')+'</b> ('+until+')'
+            + (u.tierSource ? ' · via '+esc(u.tierSource) : '');
+      if(u.sub) s += '<br>PayPal sub: '+esc(u.sub.status||'?')+' · plan '+esc(u.sub.plan||'?');
+      if(u.payIssue) s += '<br><b style="color:#b54c2b">⚠ Payment received but the plan couldn’t be matched — grant the tier manually below.</b>';
+      muSay(s, true);
+      if(u.tier) $('#muTier').value = ['bronze','silver','gold','platinum'].indexOf(u.tier)>-1 ? u.tier : 'platinum';
+    }catch(e){ muSay(esc(e.message)); }
+  });
+  $('#muSet').addEventListener('click', async ()=>{
+    const email = $('#muEmail').value.trim().toLowerCase();
+    const tier = $('#muTier').value;
+    if(!email) return muSay('Enter their email first.');
+    if(!confirm('Set '+email+' to '+tier+'?')) return;
+    muSay('Saving…', true);
+    try{
+      await userCall('POST', '', { email, tier });
+      muSay('✓ Done — '+esc(email)+' is now <b>'+esc(tier)+'</b>. Ask them to sign out and back in.', true);
+    }catch(e){ muSay(esc(e.message)); }
+  });
+  $('#muEmail').addEventListener('keydown', e=>{ if(e.key==='Enter') $('#muLookup').click(); });
 
   msg('');
   load();
