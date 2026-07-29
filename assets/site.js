@@ -2392,7 +2392,9 @@ function planLine(u){
   const name = ({ bronze:'Free plan', silver:'Silver', gold:'Gold', platinum:'Platinum' })[t] || 'Free plan';
   let sub = '';
   if (!paid) sub = 'Upgrade any time';
-  else if (u.tierUntil) {
+  else if (u.sub && u.sub.status === 'suspended') {
+    sub = 'Payment problem \u2014 update your card in PayPal to keep access';
+  } else if (u.tierUntil) {
     const d = new Date(u.tierUntil);
     const on = d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
     if (u.tierUntil <= Date.now()) sub = 'Expired ' + on + ' — renew to continue';
@@ -2402,11 +2404,18 @@ function planLine(u){
       const left = days === 1 ? '1 day left' : days + ' days left';
       sub = left + ' · renew by ' + on;
     }
-  } else sub = (u.tierSource === 'paypal') ? 'Active subscription · renews automatically' : 'Active · no expiry';
+  } else if (u.sub && u.sub.nextBilling) {
+    // A live PayPal subscription has no access cut-off — show the renewal date
+    // (and days to it) so "no expiry" doesn't look like missing information.
+    const on = new Date(u.sub.nextBilling).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+    const days = Math.ceil((u.sub.nextBilling - Date.now()) / 864e5);
+    sub = 'Renews ' + on + (days > 0 ? ' · in ' + (days === 1 ? '1 day' : days + ' days') : '');
+  } else sub = (u.tierSource === 'paypal') ? 'Active subscription · renews automatically' : 'Active · no end date';
   const soon = paid && u.tierUntil && u.tierUntil > Date.now() && (u.tierUntil - Date.now()) < 8 * 864e5;
   const lapsed = paid && u.tierUntil && u.tierUntil <= Date.now();
+  const trouble = paid && u.sub && u.sub.status === 'suspended';
   return '<span class="rgp-plan-badge' + (paid ? ' paid' : '') + '">' + esc(name) + '</span>' +
-         '<span class="rgp-plan-sub' + (soon || lapsed ? ' warn' : '') + '">' + esc(sub) + '</span>';
+         '<span class="rgp-plan-sub' + (soon || lapsed || trouble ? ' warn' : '') + '">' + esc(sub) + '</span>';
 }
 
 // Reflect signed-in state into the top-nav auth slot (runs on every page).

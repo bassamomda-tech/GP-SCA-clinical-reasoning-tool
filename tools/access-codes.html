@@ -72,8 +72,11 @@
         <p style="font-size:14px;color:var(--muted);margin:-4px 0 14px">A live count of accounts on gpreasoning.uk, split by plan.</p>
         <div class="ac-actions" style="margin-top:0">
           <button class="ac-btn" id="stLoad" type="button">Count accounts</button>
+          <button class="ac-btn ghost" id="stList" type="button">Show email list</button>
+          <button class="ac-btn ghost" id="stCsv" type="button">Download CSV</button>
         </div>
         <div id="stOut" style="margin-top:14px;font-size:13.5px"></div>
+        <div id="stTable" style="margin-top:14px"></div>
       </div>
 
       <div class="ac-card">
@@ -94,6 +97,11 @@
               <option value="bronze">Bronze — free tier</option>
             </select>
             <div class="hint">No expiry — stays until you change it.</div>
+          </div>
+          <div class="ac-f">
+            <label for="muDays">Access length (days)</label>
+            <input id="muDays" type="number" min="0" step="1" placeholder="blank = no end date">
+            <div class="hint">e.g. 30 for a month they've paid for. Leave blank for open-ended.</div>
           </div>
         </div>
         <div class="ac-actions">
@@ -299,7 +307,7 @@
             + (u.tierSource ? ' · via '+esc(u.tierSource) : '');
       if (d.effectiveTier && d.effectiveTier !== (u.tier||'bronze')) s += '<br>Effective tier (what they actually get): <b>'+esc(d.effectiveTier)+'</b>';
       if (d.isAdmin) s += '<br><b>ℹ This is the admin account — always Platinum regardless of the stored tier.</b>';
-      if(u.sub) s += '<br>PayPal sub: '+esc(u.sub.status||'?')+' · plan '+esc(u.sub.plan||'?');
+      if(u.sub) s += '<br>PayPal sub: '+esc(u.sub.status||'?')+' · plan '+esc(u.sub.plan||'?')+(u.sub.nextBilling?' · renews '+new Date(u.sub.nextBilling).toLocaleDateString('en-GB'):'');
       else s += '<br><b style="color:#b54c2b">No PayPal subscription recorded — no payment webhook has ever been applied to this account.</b>';
       if(u.payIssue) s += '<br><b style="color:#b54c2b">⚠ Payment received but the plan couldn’t be matched — grant the tier manually below.</b>';
       muSay(s, true);
@@ -313,8 +321,9 @@
     if(!confirm('Set '+email+' to '+tier+'?')) return;
     muSay('Saving…', true);
     try{
-      await userCall('POST', '', { email, tier });
-      muSay('✓ Done — '+esc(email)+' is now <b>'+esc(tier)+'</b>. Ask them to sign out and back in.', true);
+      const dv = Number($('#muDays').value || 0);
+      await userCall('POST', '', { email, tier, days: dv });
+      muSay('✓ Done — '+esc(email)+' is now <b>'+esc(tier)+'</b>'+(dv>0?' for '+dv+' days':' (no end date)')+'. Ask them to sign out and back in.', true);
     }catch(e){ muSay(esc(e.message)); }
   });
   $('#muEmail').addEventListener('keydown', e=>{ if(e.key==='Enter') $('#muLookup').click(); });
@@ -325,15 +334,59 @@
       '<div style="font-family:\'Source Serif 4\',Georgia,serif;font-size:26px;font-weight:700;color:var(--teal,#0c4a47);line-height:1">' + (n==null?'\u2014':n) + '</div>' +
       '<div style="font-size:11.5px;color:var(--muted,#5d6673);margin-top:5px">' + esc(label) + '</div></div>';
   }
+  let statsCache = null;
+  async function fetchStats(){
+    if(!API) throw new Error('The Worker isn\u2019t connected yet.');
+    const t = token(); if(!t) throw new Error('Sign in with your admin account first.');
+    const res = await fetch(API + '/api/admin/stats', { headers:{ 'Authorization':'Bearer ' + t } });
+    const d = await res.json().catch(()=>({}));
+    if(!res.ok) throw new Error(d.error || ('Request failed ('+res.status+')'));
+    statsCache = d; return d;
+  }
+  function fmtDate(ms){ return ms ? new Date(ms).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) : '\u2014'; }
+  $('#stList').addEventListener('click', async ()=>{
+    const tbl = $('#stTable');
+    tbl.innerHTML = '<p style="font-size:13px;color:var(--muted)">Loading\u2026</p>';
+    try{
+      const d = statsCache || await fetchStats();
+      const m = d.members || [];
+      if(!m.length){ tbl.innerHTML = '<p style="font-size:13px;color:var(--muted)">No accounts yet.</p>'; return; }
+      let h = '<div style="overflow:auto;border:1px solid var(--line,#e7e0d1);border-radius:12px">'
+        + '<table style="width:100%;border-collapse:collapse;font-size:13px">'
+        + '<thead><tr style="background:var(--teal,#0c4a47);color:#f3ede0;text-align:left">'
+        + '<th style="padding:9px 12px">Email</th><th style="padding:9px 12px">Name</th>'
+        + '<th style="padding:9px 12px">Plan</th><th style="padding:9px 12px">Joined</th></tr></thead><tbody>';
+      m.forEach(function(u,i){
+        h += '<tr style="border-top:1px solid var(--line,#e7e0d1);background:'+(i%2?'var(--surface-2,#fbf8f1)':'#fff')+'">'
+          + '<td style="padding:8px 12px"><a href="mailto:'+esc(u.email)+'">'+esc(u.email)+'</a></td>'
+          + '<td style="padding:8px 12px">'+esc(u.name||'\u2014')+'</td>'
+          + '<td style="padding:8px 12px">'+esc(u.tier||'bronze')+(u.until?' <span style="color:var(--muted)">to '+fmtDate(u.until)+'</span>':'')+'</td>'
+          + '<td style="padding:8px 12px;color:var(--muted)">'+fmtDate(u.created)+'</td></tr>';
+      });
+      tbl.innerHTML = h + '</tbody></table></div>'
+        + '<p style="font-size:12px;color:var(--muted);margin-top:8px">'+m.length+' account'+(m.length===1?'':'s')+', newest first. Handle these addresses in line with your privacy policy \u2014 marketing email needs consent.</p>';
+    }catch(e){ tbl.innerHTML = '<span style="color:#b54c2b">'+esc(e.message)+'</span>'; }
+  });
+  $('#stCsv').addEventListener('click', async ()=>{
+    try{
+      const d = statsCache || await fetchStats();
+      const m = d.members || [];
+      if(!m.length) return alert('No accounts yet.');
+      const rows = [['email','name','stage','plan','expires','source','joined','last_seen']].concat(
+        m.map(u=>[u.email,u.name,u.stage,u.tier,u.until?new Date(u.until).toISOString().slice(0,10):'',u.source,u.created?new Date(u.created).toISOString().slice(0,10):'',u.seen?new Date(u.seen).toISOString().slice(0,10):''])
+      );
+      const csv = rows.map(r=>r.map(c=>'"'+String(c==null?'':c).replace(/"/g,'""')+'"').join(',')).join('\n');
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+      a.download = 'reasoning-gp-members-' + new Date().toISOString().slice(0,10) + '.csv';
+      a.click(); URL.revokeObjectURL(a.href);
+    }catch(e){ alert(e.message); }
+  });
   $('#stLoad').addEventListener('click', async ()=>{
     const out = $('#stOut');
     out.innerHTML = 'Counting\u2026';
     try{
-      if(!API) throw new Error('The Worker isn\u2019t connected yet.');
-      const t = token(); if(!t) throw new Error('Sign in with your admin account first.');
-      const res = await fetch(API + '/api/admin/stats', { headers:{ 'Authorization':'Bearer ' + t } });
-      const d = await res.json().catch(()=>({}));
-      if(!res.ok) throw new Error(d.error || ('Request failed ('+res.status+')'));
+      const d = await fetchStats();
       const tt = d.tiers || {};
       out.innerHTML = '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px">' +
         stat('Total accounts', d.total) + stat('Paying now', d.paying) +
