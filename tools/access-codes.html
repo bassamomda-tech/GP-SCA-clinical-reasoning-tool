@@ -68,6 +68,15 @@
       <div class="ac-err" id="acMsg" role="status"></div>
 
       <div class="ac-card">
+        <h2>Who's using the site</h2>
+        <p style="font-size:14px;color:var(--muted);margin:-4px 0 14px">A live count of accounts on gpreasoning.uk, split by plan.</p>
+        <div class="ac-actions" style="margin-top:0">
+          <button class="ac-btn" id="stLoad" type="button">Count accounts</button>
+        </div>
+        <div id="stOut" style="margin-top:14px;font-size:13.5px"></div>
+      </div>
+
+      <div class="ac-card">
         <h2>Fix a member's access</h2>
         <p style="font-size:14px;color:var(--muted);margin:-4px 0 14px">If someone has paid but is still locked out, set their tier here. Look them up by the email they signed up with, then grant the tier they bought. This overrides any expiry.</p>
         <div class="ac-grid">
@@ -148,7 +157,7 @@
   </main>
 </div>
 
-<script src="../assets/site.js?v=74"></script>
+<script src="../assets/site.js?v=75"></script>
 <script src="../assets/nav-back.js?v=1"></script>
 <script>
 (function(){
@@ -309,6 +318,31 @@
     }catch(e){ muSay(esc(e.message)); }
   });
   $('#muEmail').addEventListener('keydown', e=>{ if(e.key==='Enter') $('#muLookup').click(); });
+
+  /* ---- Who's using the site ---- */
+  function stat(label, n){
+    return '<div style="background:var(--surface-2,#fbf8f1);border:1px solid var(--line,#e7e0d1);border-radius:12px;padding:12px 14px">' +
+      '<div style="font-family:\'Source Serif 4\',Georgia,serif;font-size:26px;font-weight:700;color:var(--teal,#0c4a47);line-height:1">' + (n==null?'\u2014':n) + '</div>' +
+      '<div style="font-size:11.5px;color:var(--muted,#5d6673);margin-top:5px">' + esc(label) + '</div></div>';
+  }
+  $('#stLoad').addEventListener('click', async ()=>{
+    const out = $('#stOut');
+    out.innerHTML = 'Counting\u2026';
+    try{
+      if(!API) throw new Error('The Worker isn\u2019t connected yet.');
+      const t = token(); if(!t) throw new Error('Sign in with your admin account first.');
+      const res = await fetch(API + '/api/admin/stats', { headers:{ 'Authorization':'Bearer ' + t } });
+      const d = await res.json().catch(()=>({}));
+      if(!res.ok) throw new Error(d.error || ('Request failed ('+res.status+')'));
+      const tt = d.tiers || {};
+      out.innerHTML = '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px">' +
+        stat('Total accounts', d.total) + stat('Paying now', d.paying) +
+        stat('Active last 7 days', d.active7) + stat('Active last 30 days', d.active30) +
+        stat('Free (bronze)', tt.bronze) + stat('Silver', tt.silver) +
+        stat('Gold', tt.gold) + stat('Platinum', tt.platinum) +
+        (d.expired ? stat('Lapsed', d.expired) : '') + '</div>';
+    }catch(e){ out.innerHTML = '<span style="color:#b54c2b">'+esc(e.message)+'</span>'; }
+  });
   $('#muEvents').addEventListener('click', async ()=>{
     muSay('Loading payment events\u2026', true);
     try{
