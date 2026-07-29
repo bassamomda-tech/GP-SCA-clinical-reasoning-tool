@@ -2394,10 +2394,19 @@ function planLine(u){
   if (!paid) sub = 'Upgrade any time';
   else if (u.tierUntil) {
     const d = new Date(u.tierUntil);
-    sub = (u.tierUntil < Date.now() ? 'Expired ' : 'Until ') + d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
-  } else sub = (u.tierSource === 'paypal') ? 'Active subscription' : 'Active';
+    const on = d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+    if (u.tierUntil <= Date.now()) sub = 'Expired ' + on + ' — renew to continue';
+    else {
+      // Days left, so a member can see when to renew before access lapses.
+      const days = Math.ceil((u.tierUntil - Date.now()) / 864e5);
+      const left = days === 1 ? '1 day left' : days + ' days left';
+      sub = left + ' · renew by ' + on;
+    }
+  } else sub = (u.tierSource === 'paypal') ? 'Active subscription · renews automatically' : 'Active · no expiry';
+  const soon = paid && u.tierUntil && u.tierUntil > Date.now() && (u.tierUntil - Date.now()) < 8 * 864e5;
+  const lapsed = paid && u.tierUntil && u.tierUntil <= Date.now();
   return '<span class="rgp-plan-badge' + (paid ? ' paid' : '') + '">' + esc(name) + '</span>' +
-         '<span class="rgp-plan-sub">' + esc(sub) + '</span>';
+         '<span class="rgp-plan-sub' + (soon || lapsed ? ' warn' : '') + '">' + esc(sub) + '</span>';
 }
 
 // Reflect signed-in state into the top-nav auth slot (runs on every page).
@@ -2578,7 +2587,7 @@ function injectAuthModal(){
         <button class="rgp-auth-submit" data-close type="button">Start practising</button>
       </div>
       <div class="rgp-auth-foot">
-        Questions? <a href="mailto:bassamomda@gmail.com">Email us</a> · <a href="https://www.linkedin.com/in/bassam-mohamed-646a50116/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        Questions? <a href="mailto:bassamomda@gmail.com">Email us</a> · <a href="https://wa.me/447543774533" target="_blank" rel="noopener noreferrer">WhatsApp</a> · <a href="https://www.linkedin.com/in/bassam-mohamed-646a50116/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </div>
   `;
@@ -2606,6 +2615,7 @@ function injectAuthModal(){
     .rgp-plan-badge{ align-self:flex-start; font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--muted,#6b7280); background:var(--bg-soft,#efe9dc); border-radius:99px; padding:3px 9px; }
     .rgp-plan-badge.paid{ color:#f6f2e9; background:var(--teal,#0c4a47); }
     .rgp-plan-sub{ font-size:11.5px; color:var(--muted,#6b7280); }
+    .rgp-plan-sub.warn{ color:var(--rust,#b54c2b); font-weight:700; }
     .rgp-acct-link{ display:block; width:100%; text-align:left; font:inherit; font-size:13px; font-weight:600; color:var(--ink-2,#374151); background:none; border:none; border-radius:8px; padding:9px 12px; cursor:pointer; text-decoration:none; box-sizing:border-box; }
     .rgp-acct-link:hover{ background:var(--bg-soft,#efe9dc); }
     .rgp-acct-logout{ color:#b91c1c; }
@@ -2907,6 +2917,10 @@ function injectFooter(){
             <span class="rgp-foot-ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></span>
             <span class="rgp-foot-ct"><small>Founder · LinkedIn</small><b>Dr Bassam Mohamed</b></span>
           </a>
+          <a class="rgp-foot-contact-link" href="https://wa.me/447543774533" target="_blank" rel="noopener noreferrer">
+            <span class="rgp-foot-ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.26.86 5.81 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.23 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29"/></svg></span>
+            <span class="rgp-foot-ct"><small>WhatsApp</small><b>+44 7543 774533</b></span>
+          </a>
           <a class="rgp-foot-contact-link" href="mailto:bassamomda@gmail.com">
             <span class="rgp-foot-ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
             <span class="rgp-foot-ct"><small>Email</small><b>bassamomda@gmail.com</b></span>
@@ -2922,6 +2936,7 @@ function injectFooter(){
         <p class="rgp-foot-legal-disc">An independent clinical-reasoning and medical-education platform for UK healthcare professionals. Educational use only — it does not replace clinical judgement or official national/local guidance; verify all information against current standards.</p>
         <div class="rgp-foot-legal-links">
           <a href="mailto:bassamomda@gmail.com">Contact</a>
+          <a href="https://wa.me/447543774533" target="_blank" rel="noopener noreferrer">WhatsApp</a>
           <a href="${PRE}pages/privacy.html">Privacy</a>
           <a href="${PRE}pages/terms.html">Terms</a>
           <a href="${PRE}pages/disclaimer.html">Disclaimer</a>
