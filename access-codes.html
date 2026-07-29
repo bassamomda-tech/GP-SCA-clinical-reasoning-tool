@@ -90,6 +90,7 @@
         <div class="ac-actions">
           <button class="ac-btn ghost" id="muLookup" type="button">Look up</button>
           <button class="ac-btn" id="muSet" type="button">Grant access</button>
+          <button class="ac-btn ghost" id="muEvents" type="button">Payment events</button>
         </div>
         <div id="muOut" style="margin-top:12px;font-size:13.5px"></div>
       </div>
@@ -147,7 +148,7 @@
   </main>
 </div>
 
-<script src="../assets/site.js?v=73"></script>
+<script src="../assets/site.js?v=74"></script>
 <script src="../assets/nav-back.js?v=1"></script>
 <script>
 (function(){
@@ -285,9 +286,12 @@
       const d = await userCall('GET', '?email=' + encodeURIComponent(email));
       const u = d.user || {};
       const until = u.tierUntil ? new Date(u.tierUntil).toLocaleDateString('en-GB') : 'no expiry';
-      let s = '<b>'+esc(u.name||'(no name)')+'</b> — tier: <b>'+esc(u.tier||'bronze')+'</b> ('+until+')'
+      let s = '<b>'+esc(u.name||'(no name)')+'</b> — stored tier: <b>'+esc(u.tier||'bronze')+'</b> ('+until+')'
             + (u.tierSource ? ' · via '+esc(u.tierSource) : '');
+      if (d.effectiveTier && d.effectiveTier !== (u.tier||'bronze')) s += '<br>Effective tier (what they actually get): <b>'+esc(d.effectiveTier)+'</b>';
+      if (d.isAdmin) s += '<br><b>ℹ This is the admin account — always Platinum regardless of the stored tier.</b>';
       if(u.sub) s += '<br>PayPal sub: '+esc(u.sub.status||'?')+' · plan '+esc(u.sub.plan||'?');
+      else s += '<br><b style="color:#b54c2b">No PayPal subscription recorded — no payment webhook has ever been applied to this account.</b>';
       if(u.payIssue) s += '<br><b style="color:#b54c2b">⚠ Payment received but the plan couldn’t be matched — grant the tier manually below.</b>';
       muSay(s, true);
       if(u.tier) $('#muTier').value = ['bronze','silver','gold','platinum'].indexOf(u.tier)>-1 ? u.tier : 'platinum';
@@ -305,6 +309,21 @@
     }catch(e){ muSay(esc(e.message)); }
   });
   $('#muEmail').addEventListener('keydown', e=>{ if(e.key==='Enter') $('#muLookup').click(); });
+  $('#muEvents').addEventListener('click', async ()=>{
+    muSay('Loading payment events\u2026', true);
+    try{
+      const d = await userCall('GET', '');
+      const rows = d.payIssues || [];
+      if(!rows.length){ muSay('<b>No payment events logged.</b><br>If a payment was made since the last Worker deploy, this means PayPal never reached the Worker — check the webhook URL in your PayPal app, and that PAYPAL_WEBHOOK_ID in Cloudflare matches it.', true); return; }
+      let s = '<b>Recent payment events that couldn\u2019t be applied:</b><br>';
+      rows.slice(0,15).forEach(function(r){
+        const v = r.value || r;
+        s += '\u2022 ' + esc(v.why||'?') + ' · ' + esc(v.type||'?') + (v.plan? ' · plan '+esc(v.plan):'') + ' · ' + (v.ts? new Date(v.ts).toLocaleString('en-GB'):'') + '<br>';
+      });
+      s += '<br><i>“signature-failed” means PAYPAL_WEBHOOK_ID doesn\u2019t match the webhook PayPal is sending from. “unmapped-plan” means the PLAN_* variables don\u2019t match your live plan ids.</i>';
+      muSay(s, true);
+    }catch(e){ muSay(esc(e.message)); }
+  });
 
   msg('');
   load();
