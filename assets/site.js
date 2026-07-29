@@ -15,7 +15,7 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
   paypalPlans: {
     silver_monthly:'P-7W0981493D9643523NJFITGA', silver_yearly:'P-5JJ39495BS015630PNJFJA3A',
     gold_monthly:'P-3FU28600XR036331XNJFIV2I',   gold_3monthly:'', gold_yearly:'P-1YB945321J846421DNJFJBIY',
-    platinum_monthly:'P-85Y58353NJ528450PNJFIXBQ', platinum_yearly:'P-3EJ24467JK760462GNJFJBWQ'
+    platinum_monthly:'P-85Y58353NJ528450PNJFIXBQ', platinum_yearly:'P-02W75567UM810814LNJVCD5Y'
   },
   // Member-only access. When true, content pages on the LIVE site require a
   // signed-in paid account (or the admin, or a redeemed free-entry code).
