@@ -44,6 +44,7 @@ export default {
       if (url.pathname === '/api/redeem')         return await redeemCode(request, env, cors);
       if (url.pathname === '/api/admin/codes')    return await adminCodes(request, env, cors);
       if (url.pathname === '/api/admin/user')     return await adminUser(request, env, cors);
+      if (url.pathname === '/api/admin/stats')    return await adminStats(request, env, cors);
       if (url.pathname === '/api/ai')             return await aiProxy(request, env, cors);
       if (url.pathname === '/api/embed')          return await embedProxy(request, env, cors);
       if (url.pathname === '/api/feedback')       return await feedback(request, env, cors);
@@ -124,6 +125,10 @@ const publicUser = (u, env) => ({
   name: u.name, email: u.email, stage: u.stage || '', created: u.created,
   tier: effectiveTier(u, env),
   tierUntil: u.tierUntil || null,
+  tierSource: u.tierSource || '',
+  // Expose just enough of the subscription for the account menu to show the
+  // renewal date — never the PayPal ids beyond the subscription reference.
+  sub: u.sub ? { status: u.sub.status || '', nextBilling: u.sub.nextBilling || null, id: u.sub.id || '' } : null,
   admin: !!(env && String(env.ADMIN_EMAIL || '').trim().toLowerCase() === u.email)
 });
 
@@ -311,6 +316,46 @@ async function redeemCode(request, env, cors) {
   return json({ ok: true, user: publicUser(user, env) }, 200, cors);
 }
 
+/* Admin: how many accounts exist, split by tier + how many are recently active.
+   GET /api/admin/stats -> { total, tiers:{}, active7, active30, paying }        */
+async function adminStats(request, env, cors) {
+  try { await requireAdmin(request, env); }
+  catch (e) { return json({ error: e.message }, e.status || 401, cors); }
+  const tiers = { bronze: 0, silver: 0, gold: 0, platinum: 0 };
+  let total = 0, active7 = 0, active30 = 0, paying = 0, expired = 0;
+  const members = [];
+  const now = Date.now();
+  let cursor;
+  // Accounts are stored under their email; skip our prefixed bookkeeping keys.
+  for (let i = 0; i < 40; i++) {
+    const res = await env.USERS.list({ limit: 1000, cursor });
+    for (const k of res.keys) {
+      if (k.name.indexOf(':') !== -1) continue; // code:, payissue:, store:, grp: …
+      if (k.name.indexOf('@') === -1) continue;
+      total++;
+      const raw = await env.USERS.get(k.name);
+      if (!raw) continue;
+      let u; try { u = JSON.parse(raw); } catch (e) { continue; }
+      const t = ['silver', 'gold', 'platinum'].indexOf(u.tier) !== -1 ? u.tier : 'bronze';
+      const live = t !== 'bronze' && (!u.tierUntil || u.tierUntil > now);
+      tiers[live ? t : 'bronze']++;
+      if (live) paying++;
+      if (t !== 'bronze' && u.tierUntil && u.tierUntil <= now) expired++;
+      const seen = u.lastSeen || u.lastLogin || u.created || 0;
+      if (seen > now - 7 * 864e5) active7++;
+      if (seen > now - 30 * 864e5) active30++;
+      members.push({
+        email: u.email || k.name, name: u.name || '', stage: u.stage || '',
+        tier: live ? t : 'bronze', until: u.tierUntil || null,
+        source: u.tierSource || '', created: u.created || 0, seen: seen
+      });
+    }
+    if (!res.list_complete && res.cursor) cursor = res.cursor; else break;
+  }
+  members.sort((a, b) => (b.created || 0) - (a.created || 0));
+  return json({ total, tiers, paying, expired, active7, active30, members }, 200, cors);
+}
+
 /* Admin: look up a member and set their tier by hand (ADMIN_EMAIL only).
    GET  /api/admin/user?email=someone@nhs.net        -> { user }
    POST /api/admin/user { email, tier, until? }      -> { ok, user }
@@ -321,10 +366,21 @@ async function adminUser(request, env, cors) {
   const url = new URL(request.url);
   if (request.method === 'GET') {
     const email = String(url.searchParams.get('email') || '').trim().toLowerCase();
-    if (!email) return json({ error: 'email required' }, 400, cors);
+    if (!email) {
+      // No email = return the recent payment-issue trail, so it's possible to see
+      // whether PayPal webhooks are arriving at all and why they didn't apply.
+      const rows = await listKV(env, 'payissue:', 50);
+      return json({ payIssues: rows }, 200, cors);
+    }
     const raw = await env.USERS.get(email);
     if (!raw) return json({ error: 'no such user' }, 404, cors);
-    return json({ user: JSON.parse(raw) }, 200, cors);
+    const u = JSON.parse(raw);
+    const adminEmail = String(env.ADMIN_EMAIL || '').trim().toLowerCase();
+    return json({
+      user: u,
+      effectiveTier: effectiveTier(u, env),
+      isAdmin: !!adminEmail && u.email === adminEmail
+    }, 200, cors);
   }
   if (request.method !== 'POST') return json({ error: 'method' }, 405, cors);
   const b = await request.json();
@@ -336,7 +392,10 @@ async function adminUser(request, env, cors) {
   if (!raw) return json({ error: 'no such user' }, 404, cors);
   const user = JSON.parse(raw);
   user.tier = tier;
-  user.tierUntil = b.until ? Number(b.until) : null; // null = no expiry
+  // days = a dated grant (e.g. 30 for a month someone paid for outside PayPal);
+  // until = an explicit timestamp; neither = open-ended access.
+  const days = Number(b.days || 0);
+  user.tierUntil = days > 0 ? Date.now() + days * 864e5 : (b.until ? Number(b.until) : null);
   user.tierSource = 'admin';
   delete user.payIssue;
   await env.USERS.put(email, JSON.stringify(user));
@@ -795,8 +854,15 @@ async function paypalWebhook(request, env) {
       webhook_event: JSON.parse(bodyText)
     })
   });
-  const verify = await verifyRes.json();
-  if (verify.verification_status !== 'SUCCESS') return new Response('bad signature', { status: 400 });
+  const verify = await verifyRes.json().catch(() => ({}));
+  if (verify.verification_status !== 'SUCCESS') {
+    // Log it: a wrong PAYPAL_WEBHOOK_ID (or one from a different PayPal app) makes
+    // every real payment fail here silently, which is the usual cause of
+    // "customer paid but has no access".
+    let ev = {}; try { ev = JSON.parse(bodyText); } catch (e) {}
+    await logPayIssue(env, 'signature-failed:' + (verify.verification_status || verifyRes.status), ev.event_type || '?', (ev.resource || {}));
+    return new Response('bad signature', { status: 400 });
+  }
 
   const event = JSON.parse(bodyText);
   const type = event.event_type || '';
@@ -838,16 +904,42 @@ async function paypalWebhook(request, env) {
       // customer straight back to bronze.
       user.tierUntil = null;
       user.tierSource = 'paypal';
-      user.sub = { id: res.id || subId, plan: res.plan_id || null, status: res.status || 'ACTIVE', ts: Date.now() };
+      // Capture the next billing date so the member can see when their monthly plan
+      // renews. A live subscription has no access expiry (tierUntil stays null) —
+      // this is the renewal date, not a cut-off.
+      const nextBill = (res.billing_info && res.billing_info.next_billing_time) ? Date.parse(res.billing_info.next_billing_time) : null;
+      user.sub = {
+        id: res.id || subId, plan: res.plan_id || null, status: res.status || 'ACTIVE',
+        nextBilling: (nextBill && !isNaN(nextBill)) ? nextBill : null,
+        cycle: (res.billing_info && res.billing_info.cycle_executions && res.billing_info.cycle_executions[0] && res.billing_info.cycle_executions[0].tenure_type) || null,
+        ts: Date.now()
+      };
     } else {
       // Paid but unmappable — record it so it can be fixed by hand, never silent.
       user.payIssue = { plan: res.plan_id || null, sub: res.id || subId || null, type, ts: Date.now() };
       await logPayIssue(env, 'unmapped-plan:' + email, type, res);
     }
   } else {
-    user.tier = 'bronze';
-    user.tierUntil = null;
-    if (user.sub) user.sub.status = 'cancelled';
+    // A monthly subscription must keep running until it's genuinely finished.
+    // Only EXPIRED (PayPal says the agreement is over) cuts access immediately.
+    if (type === 'BILLING.SUBSCRIPTION.SUSPENDED') {
+      // Usually a temporarily failed payment — PayPal retries for days. Don't strip
+      // access off a paying member over a declined card: hold the tier and give a
+      // 7-day grace window, and let a later success clear it.
+      const grace = Date.now() + 7 * 864e5;
+      user.tierUntil = Math.max(user.tierUntil || 0, grace) || grace;
+      if (user.sub) { user.sub.status = 'suspended'; user.sub.graceUntil = grace; }
+    } else if (type === 'BILLING.SUBSCRIPTION.CANCELLED') {
+      // They've cancelled but already paid for the current month — let them keep
+      // what they bought until the period ends, then it lapses on its own.
+      const paidTo = (user.sub && user.sub.nextBilling) ? user.sub.nextBilling : Date.now();
+      user.tierUntil = paidTo > Date.now() ? paidTo : Date.now();
+      if (user.sub) user.sub.status = 'cancelled';
+    } else {
+      user.tier = 'bronze';
+      user.tierUntil = null;
+      if (user.sub) user.sub.status = 'expired';
+    }
   }
   await env.USERS.put(email, JSON.stringify(user));
   return new Response('ok', { status: 200 });

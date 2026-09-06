@@ -212,3 +212,29 @@
   }
   if (document.readyState !== 'loading') show(); else document.addEventListener('DOMContentLoaded', show);
 })();
+
+/* ── Canonical + paywall markup (SEO). Static tags win; this only fills gaps
+   on the large generated pages (tools/algorithms/*, cases/*) that are not
+   hand-edited. Canonical host: https://gpreasoning.uk (apex, no www). ── */
+(function(){
+  if (window.__rgpCanonical) return; window.__rgpCanonical = true;
+  var HOST = 'https://gpreasoning.uk';
+  var FREE_CASES = ['hypertension.html','atrial-fibrillation.html','heart-failure.html','chest-pain.html','palpitations.html'];
+  var FREE_ALGS  = ['chest-pain.html','headache.html','abdominal-pain.html','back-pain.html','breathlessness.html'];
+  var path = location.pathname.replace(/\/index\.html$/, '/');
+  var base = (path.split('/').pop() || '');
+  if (!document.querySelector('link[rel="canonical"]')) {
+    var l = document.createElement('link');
+    l.rel = 'canonical'; l.href = HOST + (path === '/' ? '/' : path);
+    document.head.appendChild(l);
+  }
+  var gated = null;
+  if (/\/cases\//.test(path))                 gated = FREE_CASES.indexOf(base) === -1;
+  else if (/\/tools\/algorithms\//.test(path)) gated = FREE_ALGS.indexOf(base) === -1;
+  if (gated && !document.querySelector('script[data-rgp-paywall]')) {
+    var s = document.createElement('script');
+    s.type = 'application/ld+json'; s.setAttribute('data-rgp-paywall','1');
+    s.textContent = JSON.stringify({'@context':'https://schema.org','@type':'WebPage',isAccessibleForFree:false,hasPart:{'@type':'WebPageElement',isAccessibleForFree:false,cssSelector:'body'}});
+    document.head.appendChild(s);
+  }
+})();
