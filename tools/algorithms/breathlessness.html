@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Breathlessness Algorithm · Reasoning GP</title>
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/breathlessness.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -730,7 +731,7 @@
         <div><span class="pill pill-blue">NT-proBNP</span>: &lt;125 pg/mL = HF unlikely; 125–400 = possible → Echo within 3 months; &gt;400 = probable → Echo within 6 weeks (NICE NG106). Add <span class="pill pill-blue">U&amp;Es, eGFR, LFTs, TFTs, FBC</span></div>
 
         <div>Suspected asthma</div>
-        <div><span class="pill pill-blue">FeNO</span> ≥40 ppb = eosinophilic airway inflammation (supports asthma) · <span class="pill pill-blue">Spirometry + bronchodilator reversibility</span> (&gt;12% AND &gt;200 mL improvement = positive) · Bronchial challenge if equivocal · Peak flow diary (2-week record)</div>
+        <div><span class="pill pill-blue">FeNO</span> <b>≥50 ppb (adults 17+) or ≥35 ppb (ages 12–16)</b> = diagnostic of asthma per NG245 (the older 40 ppb figure was NG80) · <span class="pill pill-blue">Spirometry + bronchodilator reversibility</span> (&gt;12% AND &gt;200 mL improvement = positive) · Bronchial challenge if equivocal · Peak flow diary (2-week record)</div>
 
         <div>Suspected COPD</div>
         <div><span class="pill pill-blue">Post-bronchodilator spirometry</span> (FEV₁/FVC &lt;0.7 confirms) · <span class="pill pill-blue">FBC</span> (polycythaemia), <span class="pill pill-blue">α₁-antitrypsin</span> (if early onset / minimal smoking)</div>
@@ -754,7 +755,7 @@
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
       <div class="why-drawer">
-        NT-proBNP has a negative predictive value of 98% for HF — it is the single most efficient test for ruling out cardiac dyspnoea in primary care. FeNO is now recommended by NICE (NG245) as part of asthma diagnosis; a value ≥40 ppb has a positive likelihood ratio of ~15 for eosinophilic asthma. Age-adjusted D-dimer (age × 10 µg/L for patients &gt;50) increases specificity without sacrificing sensitivity, avoiding unnecessary CTPA in older patients. CXR is normal in ~25% of PEs and should not be used to exclude it.
+        NT-proBNP has a negative predictive value of 98% for HF — it is the single most efficient test for ruling out cardiac dyspnoea in primary care. FeNO is the recommended first objective test for suspected asthma (NICE/BTS/SIGN NG245): <b>≥50 ppb in adults 17 and over, or ≥35 ppb at ages 12–16, confirms asthma</b>. Smoking lowers FeNO, so a normal result does not exclude it — move on to spirometry with reversibility, then PEF variability. Age-adjusted D-dimer (age × 10 µg/L for patients &gt;50) increases specificity without sacrificing sensitivity, avoiding unnecessary CTPA in older patients. CXR is normal in ~25% of PEs and should not be used to exclude it.
       </div>
     </div>
   </div>
@@ -862,10 +863,10 @@
       </div>
 
       <!-- LADDER: COPD escalation -->
-      <div style="font-weight:700;font-size:13px;color:var(--c-text3);margin:20px 0 6px;text-transform:uppercase;letter-spacing:0.5px;">COPD escalation ladder (NICE NG115 / GOLD 2024)</div>
+      <div style="font-weight:700;font-size:13px;color:var(--c-text3);margin:20px 0 6px;text-transform:uppercase;letter-spacing:0.5px;">COPD escalation ladder (NICE NG115)</div>
       <div class="ladder">
-        <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>LAMA monotherapy</b> — Tiotropium 18 mcg OD or umeclidinium 55 mcg OD. Superior to LABA monotherapy for breathlessness and exacerbation reduction.</span></div>
-        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>LAMA + LABA (dual bronchodilation)</b> — e.g. Umeclidinium/vilanterol (Anoro Ellipta) OD. Use when symptoms persist on LAMA alone. MRC ≥3.</span></div>
+        <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Short-acting bronchodilator PRN</b> — salbutamol (or ipratropium). NICE's actual first step; assess response before any maintenance inhaler.</span></div>
+        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>LABA + LAMA (dual bronchodilation)</b> — e.g. umeclidinium/vilanterol (Anoro Ellipta) OD. <b>NG115 recommends dual therapy, not LAMA alone,</b> once short-acting treatment is insufficient and there are <b>no asthmatic/steroid-responsive features</b> — at any symptom burden. LAMA-only is for the patient who cannot tolerate a LABA. Asthmatic features instead → LABA+ICS.</span></div>
         <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Triple therapy: LAMA + LABA + ICS</b> — e.g. Trelegy Ellipta (fluticasone/umeclidinium/vilanterol) OD. Reserve for: ≥2 exacerbations/year AND FEV₁ &lt;50% AND blood eos ≥300 cells/µL.</span></div>
         <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Specialist review</b> — Consider theophylline (monitor levels), azithromycin prophylaxis (for frequent exacerbators, check QTc, NTM), roflumilast, long-term oxygen therapy (LTOT) assessment.</span></div>
       </div>

@@ -24,7 +24,7 @@ RGPDiagnostic.register('asthma', {
     { group:'Associated', id:'persistent_cough_3wk', kind:'check', label:'Cough or hoarseness >3 weeks' },
     { group:'Associated', id:'haemoptysis', kind:'check', label:'Haemoptysis' },
     { group:'Bloods / tests', id:'eosinophils_high', kind:'check', label:'Blood eosinophils ≥0.3 ×10⁹/L' },
-    { group:'Bloods / tests', id:'feno_high', kind:'check', label:'FeNO ≥40 ppb' },
+    { group:'Bloods / tests', id:'feno_high', kind:'check', label:'FeNO ≥50 ppb (adult 17+) or ≥35 ppb (age 12–16) — NG245' },
     { group:'Bloods / tests', id:'fev1_reversible', kind:'check', label:'FEV1 reversibility ≥12% + 200mL with SABA' },
     { group:'Bloods / tests', id:'fev1_fvc_low', kind:'check', label:'FEV1/FVC <0.7 post-bronchodilator' },
     { group:'Bloods / tests', id:'bnp_raised', kind:'check', label:'NT-proBNP raised' },

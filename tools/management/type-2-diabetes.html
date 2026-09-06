@@ -18,13 +18,13 @@ MG.render({
   icon:"🩸",
   title:"Type 2 Diabetes — The Complete Guide",
   stemTitle:"T2DM made simple &mdash; confirm, protect the organs, climb the ladder, review the whole person",
-  stemSub:"One pathway: confirm the diagnosis (and spot the person who ISN'T type 2), set an individualised target, treat cardiovascular risk as hard as glucose, climb the drug ladder with named doses + the side-effect fixes, know the injectable rules, run the annual review, and de-intensify the frail. NICE NG28 \u00b7 CKS.",
-  guideline:"NICE NG28 \u00b7 NG136 \u00b7 NG238",
+  stemSub:"One pathway: confirm the diagnosis (and spot the person who ISN'T type 2), set an individualised target, treat cardiovascular risk as hard as glucose, start the NEW first-line dual therapy (MR metformin + SGLT2i) and branch by phenotype, know the injectable rules, run the annual review, and de-intensify the frail. Rebuilt on NICE NG28 (18 Feb 2026 update) \u00b7 CKS.",
+  guideline:"NICE NG28 (Feb 2026) \u00b7 NG136 \u00b7 NG238",
   glance:[
     {lbl:"Diagnose", val:"HbA1c \u226548 \u00d72", sub:"once only if symptomatic"},
     {lbl:"Target", val:"48 / 53", sub:"no-hypo drug / hypo drug"},
-    {lbl:"First-line", val:"Metformin", sub:"500mg OD \u2192 1g BD"},
-    {lbl:"Organ protection", val:"SGLT2i early", sub:"CVD \u00b7 HF \u00b7 CKD \u00b7 QRISK>10%"},
+    {lbl:"First-line (2026)", val:"MR metformin + SGLT2i", sub:"dual, even with no comorbidity"},
+    {lbl:"Then branch", val:"By phenotype", sub:"ASCVD \u00b7 HF \u00b7 CKD \u00b7 obesity \u00b7 early-onset \u00b7 frailty"},
     {lbl:"BP target", val:"<140/90", sub:"<130/80 if CKD/ACR\u226570"},
     {lbl:"Statin", val:"Atorvastatin 20mg", sub:">40y or QRISK \u226510%"}
   ],
@@ -69,32 +69,37 @@ MG.render({
     {t:"node", d:"drug", n:"4", tag:"Step 4 · glucose ladder", title:"The drug ladder — doses, when, and why",
       blocks:[
         {b:"p", html:"Set the target first: <b>48</b> on lifestyle \u00b1 one non-hypo drug, <b>53</b> once on a sulfonylurea/insulin, relaxed (58\u201364+) in frailty. Intensify when HbA1c rises above <b>58</b> \u2014 and act, don't watch (therapeutic inertia is the commonest error in T2DM care). Review every change at 3\u20136 months."},
+        {b:"warn", html:"<b>NG28 changed on 18 February 2026 \u2014 metformin monotherapy is no longer the default.</b> If glucose-lowering medication is needed, <b>offer MR metformin AND an SGLT2 inhibitor first-line to the majority of people, even with no comorbidity at all</b>, unless contraindicated. Introduce them stepwise (metformin first to check tolerability, then add the SGLT2i within weeks). SGLT2i only if the person's level of frailty does not place them at risk of adverse events (volume depletion, hypotension). Then read across to the <b>phenotype branch</b> below \u2014 the ladder is no longer one queue."},
         {b:"ladder", steps:[
-          {step:"Step 1", title:"Metformin", when:"everyone, unless contraindicated",
-           html:"<b>500mg OD with food \u2192 add 500mg weekly \u2192 1g BD.</b> GI upset (~25%) \u2192 slow titration or <b>MR formulation</b>. eGFR <45 \u2192 half dose review; <b>stop <30</b>. Sick-day pause. B12 check if neuropathy/anaemia on long-term use."},
-          {step:"Step 1+", title:"SGLT2 inhibitor EARLY — not as an afterthought", when:"CVD, HF, CKD, or QRISK >10%",
-           fromLabel:"organ protection, regardless of HbA1c",
-           html:"<b>Dapagliflozin 10mg</b> or <b>empagliflozin 10\u201325mg</b> OD, alongside metformin (or instead, if metformin not tolerated). Benefits are independent of glucose \u2014 do not wait for the HbA1c to 'justify' it."},
-          {step:"Step 2", title:"Second agent by phenotype", when:"HbA1c >58 on metformin",
-           fromLabel:"choose through the patient's lens",
-           html:"<b>Weight/CV benefit wanted \u2192 SGLT2i.</b> <b>Hypo-averse (driver, elderly) \u2192 DPP-4i</b> (sitagliptin 100mg / linagliptin 5mg \u2014 the renal-failure-friendly one). <b>Cost + rapid effect \u2192 gliclazide</b> 40\u201380mg mane \u2192 max 160mg BD (hypos, weight gain; warn drivers \u2014 glucose testing rules). <b>Pioglitazone</b> 15\u201345mg \u2014 potent insulin sensitiser, but fluid retention (never in HF), fractures, bladder-cancer signal."},
-          {step:"Step 3", title:"Triple therapy", when:"HbA1c >58 on dual",
+          {step:"Step 1", title:"MR metformin + SGLT2 inhibitor — dual therapy first-line", when:"everyone needing medication, no comorbidity required",
+           html:"<b>Metformin MR</b> in preference to standard-release (standard-release only if tablets must be crushed / liquid needed): 500mg OD with food \u2192 titrate weekly \u2192 1\u20132g daily. eGFR <45 \u2192 dose review; <b>stop <30</b>. B12 if neuropathy/anaemia on long-term use. Then add <b>dapagliflozin 10mg</b> or <b>empagliflozin 10mg</b> OD. <b>Metformin contraindicated/not tolerated:</b> SGLT2i monotherapy \u2014 or, if frailty puts them at risk from an SGLT2i, DPP-4i monotherapy."},
+          {step:"Before the SGLT2i", title:"The DKA safety check — new, and examinable", when:"every initiation",
+           fromLabel:"do not skip",
+           html:"Check for <b>previous DKA</b>, risk of <b>dehydration or volume depletion</b>, and a <b>very-low-carbohydrate or ketogenic diet</b>; address modifiable DKA risks BEFORE starting. <b>Do not initiate while the person is unwell with intercurrent illness.</b> Follow MHRA safety advice on ketone monitoring, and put <b>sick-day rules in every individualised treatment plan</b> (with how to restart after recovery)."},
+          {step:"Step 2", title:"Branch by phenotype — not by HbA1c alone", when:"at diagnosis and at every review",
+           fromLabel:"more than one? agree the priority with the patient",
+           html:"<b>Established ASCVD \u2192 triple therapy first-line:</b> MR metformin + SGLT2i + <b>s/c semaglutide up to 1mg weekly</b>. <b>Heart failure \u2192</b> SGLT2i is the priority agent (dapagliflozin/empagliflozin). <b>CKD \u2192</b> SGLT2i + ACEi/ARB; eGFR 20\u201330 \u2192 dapagliflozin or empagliflozin with a <b>DPP-4i</b>. <b>Obesity \u2192</b> earlier GLP-1 RA or tirzepatide. <b>Early-onset (diagnosed <40) \u2192</b> higher lifetime cardiorenal risk: escalate earlier to a GLP-1 RA or tirzepatide. <b>Frailty \u2192</b> relax the target, avoid/caution SGLT2i, DPP-4i is the gentle agent, and review for the smallest effective number of medicines at the lowest effective dose."},
+          {step:"Step 3", title:"Further intensification", when:"HbA1c above the agreed target on the above",
            fromLabel:"re-check adherence first",
-           html:"Combine three mechanisms (e.g. metformin + SGLT2i + DPP-4i or SU). Don't stack a DPP-4i WITH a GLP-1 RA (same pathway, no added benefit)."},
-          {step:"Step 4", title:"GLP-1 RA / tirzepatide", when:"triple failed + BMI \u226535 (or insulin unsuitable)",
-           fromLabel:"or occupational need to avoid hypos",
-           html:"<b>Semaglutide (Ozempic\u00ae)</b> 0.25mg weekly \u2192 titrate 4-weekly \u2192 1mg; oral option Rybelsus\u00ae. <b>Tirzepatide (Mounjaro\u00ae, TA924)</b> \u2014 dual GIP/GLP-1, the most potent. Continue beyond 6 months only if HbA1c \u2193\u226511 mmol/mol AND weight \u2193\u22653%. Counsel: nausea (start low, eat smaller meals), rare pancreatitis (stop + assess if severe abdominal pain), gallstones, and <b>pause before surgery/procedures per anaesthetic guidance</b>."},
+           html:"Add a third/fourth mechanism guided by the phenotype: GLP-1 RA or tirzepatide (weight, ASCVD, early-onset), <b>DPP-4i</b> (hypo-averse, CKD \u2014 linagliptin needs no dose adjustment), <b>gliclazide</b> 40\u201380mg mane \u2192 max 160mg BD (cheap and fast, but hypos + weight gain; DVLA testing rules), <b>pioglitazone</b> 15\u201345mg (never in HF; fractures, bladder-cancer signal). Never stack a DPP-4i WITH a GLP-1 RA."},
+          {step:"Step 4", title:"GLP-1 RA / tirzepatide", when:"per phenotype above — no longer 'only after triple therapy'",
+           fromLabel:"earlier in ASCVD, obesity, early-onset",
+           html:"<b>Semaglutide (Ozempic\u00ae)</b> 0.25mg weekly \u2192 titrate 4-weekly \u2192 up to 1mg (the dose NG28 recommends; higher doses are outside the recommendation). <b>Tirzepatide (Mounjaro\u00ae)</b> \u2014 dual GIP/GLP-1, the most potent, and now used earlier in obesity/early-onset. Continue beyond 6 months only if the agreed HbA1c and weight response is met. Counsel: nausea (start low, smaller meals), rare pancreatitis (stop + assess if severe abdominal pain), gallstones, and <b>pause before surgery/procedures per anaesthetic guidance</b>."},
           {step:"Step 5", title:"Insulin", when:"symptomatic or HbA1c high despite the above",
            fromLabel:"see the dedicated insulin protocol",
            html:"Usually <b>NPH (Humulin I\u00ae/Insulatard\u00ae) 10 units at bedtime</b>, self-titrated 2\u20134 units twice weekly to fasting 5\u20137. KEEP metformin + SGLT2i; STOP the sulfonylurea (or halve and watch) and DPP-4i. Structured education, glucose meter, DVLA + hypo counselling."}
         ]},
         {b:"table", head:["Drug class","Key side effects","Fix / monitoring"], rows:[
-          ["Metformin","GI upset, B12 deficiency, (lactic acidosis \u2014 rare, renal)","Titrate slowly \u2192 MR; B12 if symptomatic; sick-day pause; eGFR gates"],
-          ["SGLT2i","Genital thrush, UTI, polyuria, <b>euglycaemic DKA</b>, Fournier's (rare), volume depletion","Sick-day pause (dehydration/surgery); thrush \u2192 treat + hygiene advice, rarely needs stopping; check ketones if unwell even with normal glucose"],
+          ["Metformin (MR preferred)","GI upset, B12 deficiency, (lactic acidosis \u2014 rare, renal)","MR first-line; B12 if symptomatic; sick-day pause; eGFR gates"],
+          ["SGLT2i","Genital thrush, UTI, polyuria, <b>euglycaemic DKA</b>, Fournier's (rare), volume depletion","Pre-initiation DKA check + MHRA ketone-monitoring advice; sick-day pause with restart plan; don't start during intercurrent illness; thrush \u2192 treat + hygiene advice, rarely needs stopping; check ketones if unwell even with normal glucose"],
           ["Sulfonylurea","<b>Hypoglycaemia</b>, weight gain","Educate + meter for drivers (DVLA rules); avoid in eGFR <30, frail, erratic eaters"],
           ["DPP-4i","Generally benign; rare pancreatitis","Dose-adjust sitagliptin in CKD (linagliptin needs none)"],
           ["Pioglitazone","Fluid retention/HF, fractures, bladder cancer signal, weight","Never in HF or haematuria under investigation; review benefit at 6 months"],
           ["GLP-1 RA / tirzepatide","Nausea/vomiting, gallstones, pancreatitis (rare)","Slow titration; dietary advice; stop if pancreatitis suspected"]
+        ]},
+        {b:"kv", rows:[
+          ["Already on metformin alone?","NG28 2026 changes the default for NEW decisions \u2014 it does not order a mass switch. A person stable at target on metformin monotherapy with no cardiorenal indication does not need changing today; but <b>run a targeted register review</b> (CV comorbidity, CKD, rising HbA1c, obesity, early-onset) \u2014 most of them now qualify for SGLT2i addition."],
+          ["Access inequality (new duty)","Monitor who is actually getting SGLT2 inhibitors and engage the groups with lower uptake \u2014 women, older people, some minority ethnic backgrounds, and socioeconomically deprived patients."]
         ]},
         {b:"warn", html:"<b>De-intensification is a treatment too:</b> in frailty, dementia, or limited life expectancy \u2014 relax the target, strip out the hypo-causing drugs first (SU, insulin), and stop anything without symptomatic benefit. An HbA1c of 48 in a care-home resident is a harm marker, not an achievement."}
       ]},
@@ -146,7 +151,7 @@ MG.render({
         {b:"say", html:"Your tablets have done a lot of work, but the numbers are telling us you need the extra options only the specialist team can start \u2014 we'll keep everything else going in the meantime, and nothing you've done has 'failed': diabetes drifts with time, and we move with it."}
       ]}
   ],
-  foot:"Confirmed type 2 diabetes in adults \u2014 NICE NG28 with NG136 (BP), NG238 (lipids) and NG203 (CKD) interfaces. Verify doses against the current BNF before prescribing."
+  foot:"Confirmed type 2 diabetes in adults \u2014 NICE NG28 (updated 18 February 2026: dual MR metformin + SGLT2i first-line, phenotype branches) with NG136 (BP), NG238 (lipids) and NG203 (CKD) interfaces. Verify doses against the current BNF before prescribing."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

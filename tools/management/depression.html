@@ -24,7 +24,7 @@ MG.render({
   glance:[
     {lbl:"Before any drug", val:"Risk + bipolar", sub:"mania Hx changes everything"},
     {lbl:"Less severe", val:"Menu, not pill", sub:"CBT / BA / exercise first"},
-    {lbl:"First-line", val:"Sertraline 50mg", sub:"review 2wks (1wk if <25)"},
+    {lbl:"First-line", val:"Sertraline 50mg", sub:"review 2wks \u00b7 1wk if 18\u201325 or \u2191risk"},
     {lbl:"Judge at", val:"4 weeks", sub:"some response? push on to 6\u20138"},
     {lbl:"Continue", val:"6m \u00b7 2y if recurrent", sub:"after remission"},
     {lbl:"Stop", val:"Slow + proportionate", sub:"weeks\u2013months, smaller steps at the end"}
@@ -64,15 +64,16 @@ MG.render({
           ["Poor sleep + poor appetite \u00b1 weight loss","<b>Mirtazapine 15 \u2192 45mg nocte</b>","Sedation + appetite gain become the treatment; also spares sexual function. (Paradox: MORE sedating at 15 than 30\u201345)"],
           ["Comorbid anxiety dominant","Sertraline or escitalopram 10 \u2192 20mg","Start half-dose for 1 week (early agitation is the quit-driver in anxious patients)"],
           ["Post-MI / cardiac disease","<b>Sertraline</b> (evidence-based post-MI)","Avoid citalopram/escitalopram if QT risk; avoid TCAs"],
-          ["On NSAID / aspirin / DOAC / warfarin","Any SSRI <b>+ PPI cover</b> \u2014 or mirtazapine","SSRIs impair platelet serotonin \u2192 GI bleed risk multiplies with these"],
+          ["On NSAID or aspirin","Any SSRI \u2014 and <b>consider adding a PPI</b> (NG222)","SSRIs impair platelet serotonin; the PPI recommendation is specifically for the SSRI + NSAID combination"],
+          ["On a DOAC / warfarin","Prefer a lower-bleeding-risk option (e.g. <b>mirtazapine</b>) or accept an SSRI with counselling","Be aware of the added bleeding risk and discuss it \u2014 but there is <b>no NICE/SPS rule that every SSRI + anticoagulant needs a PPI</b>. Decide case by case (add gastroprotection if there is also an NSAID, dyspepsia, ulcer history or other GI risk); check INR more closely if on warfarin"],
           ["Elderly","Sertraline; check <b>Na\u207a at 2\u20134 weeks</b>","Hyponatraemia risk (worse with diuretics); falls counselling"],
-          ["<25 years","Fluoxetine has the best young-adult evidence","<b>Review at 1 week</b> mandatory \u2014 early activation/suicidality window"],
+          ["Aged 18\u201325, or ANY increased suicide risk at any age","Choose as for any other adult (sertraline is the usual default)","<b>Review at 1 week</b> \u2014 NG222's one-week review applies to people <b>aged 18 to 25 inclusive</b> (not 'under 25') and to anyone at increased risk of suicide, then regularly. NG222 does <b>not</b> name fluoxetine as the preferred antidepressant for this age group \u2014 that is the <b>under-18</b> (CAMHS) rule. Then review at least every 2\u20134 weeks for the first 3 months"],
           ["Sexual dysfunction already an issue","Mirtazapine (or vortioxetine later)","SSRIs/SNRIs cause dysfunction in ~50%+ \u2014 ask, they won't volunteer it"],
           ["Neuropathic pain co-existing","Duloxetine 60mg","One drug, two jobs"],
           ["Pregnancy / breastfeeding","<b>Sertraline</b> (best data both) \u2014 don't stop an effective drug abruptly for pregnancy","Joint decision, perinatal team if moderate+; paroxetine avoided T1"],
           ["Stopped before due to withdrawal","Fluoxetine (long half-life, self-tapering)","Or plan the slow taper from day one"]
         ]},
-        {b:"warn", html:"Counsel at initiation \u2014 the 4 sentences that prevent abandonment: (1) \u201cIt takes 2\u20134 weeks to start working \u2014 don't judge it at day 5.\u201d (2) \u201cThe first week can bring nausea or feeling wired \u2014 that fades.\u201d (3) \u201cIt's not addictive, but we stop it slowly, together.\u201d (4) \u201cIf your mood dips further or you have thoughts of harming yourself \u2014 contact us straight away, don't wait for the review.\u201d"}
+        {b:"warn", html:"Counsel at initiation \u2014 the 4 sentences that prevent abandonment: (1) \u201cIt takes 2\u20134 weeks to start working \u2014 don't judge it at day 5.\u201d (2) \u201cThe first week can bring nausea or feeling wired \u2014 that fades.\u201d (3) \u201cIt's not addictive, but we stop it slowly, together.\u201d (4) \u201cIf your mood dips further or you have thoughts of harming yourself \u2014 contact us straight away, don't wait for the review.\u201d <b>Book the review before they leave: 1 week if aged 18\u201325 or at increased suicide risk, otherwise 2 weeks; then every 2\u20134 weeks for 3 months.</b>"}
       ]},
 
     {t:"node", d:"drug", n:"4", tag:"Step 4 · not better?", title:"The response clock — optimise, switch, then combine",
@@ -85,19 +86,19 @@ MG.render({
            html:"Sertraline 50\u2192100\u2192150\u2192200; escitalopram 10\u219220; mirtazapine 15\u219230\u219245. Meaningful gains often appear one step up; go to max tolerated before declaring failure."},
           {step:"4c", title:"Switch — with the right mechanics", when:"no/insufficient response",
            fromLabel:"adequate dose + 4 weeks",
-           html:"<b>SSRI\u2192SSRI:</b> direct swap next day (same-class). <b>SSRI\u2192mirtazapine:</b> cross-taper over 1\u20132 weeks. <b>SSRI\u2192venlafaxine MR 75\u2192375mg:</b> cross-taper; check BP at higher doses. <b>Fluoxetine\u2192anything:</b> stop, wait 4\u20137 days (long half-life), start low. <b>Anything\u2192MAOI territory:</b> specialist only. Never overlap two serotonergics at full dose."},
+           html:"Mechanics vary by drug, dose and duration \u2014 <b>check a switching resource (SPS/Maudsley) for the specific pair rather than applying one rule</b>. Broadly: <b>SSRI\u2192SSRI</b> at low dose can often be a direct swap, but taper first from higher doses or if withdrawal-prone. <b>SSRI\u2192mirtazapine:</b> usually cross-taper (mirtazapine can be added while the SSRI reduces). <b>SSRI\u2192venlafaxine MR 75\u2192375mg:</b> withdraw/cross-taper cautiously; monitor BP at higher doses. <b>Fluoxetine\u2192anything:</b> its long half-life means an effective self-taper \u2014 start the new drug low and go slowly. <b>Anything\u2192MAOI:</b> specialist only, with a washout. Avoid two serotonergics at full dose together."},
           {step:"4d", title:"Two adequate trials failed", when:"'treatment-resistant'",
            fromLabel:"the referral threshold",
            html:"Refer / seek advice: augmentation (lithium, quetiapine, aripiprazole), vortioxetine, combination therapy \u2014 psychiatry-initiated. Meanwhile: therapy on board? alcohol really addressed? diagnosis revisited (bipolar II, ADHD, PTSD, personality-level difficulties, undisclosed trauma)?"}
         ]},
         {b:"table", head:["Side effect","Typical culprit","Fix — keep treatment alive"], rows:[
           ["Nausea, GI upset week 1","Any SSRI/SNRI","With food; usually gone by wk 2 \u2014 pre-warned patients tolerate it"],
-          ["Early agitation / 'wired'","SSRIs, esp. fluoxetine","Half-dose start, morning dosing; short-term propranolol if needed; review risk"],
+          ["Early agitation / 'wired'","SSRIs, esp. fluoxetine","Half-dose start, morning dosing; short-term propranolol if needed; <b>review risk \u2014 and remember the 1-week review duty at 18\u201325 or any increased suicide risk</b>"],
           ["Sexual dysfunction (persists)","All SSRIs/SNRIs (~50%+)","ASK at review. Dose-reduce \u00b7 switch to mirtazapine/vortioxetine \u00b7 or treat (sildenafil for men). Silent quit-driver #1"],
           ["Weight gain","Mirtazapine >> SSRIs","Named upfront; diet/activity support; switch if unacceptable"],
           ["Sedation","Mirtazapine, trazodone","Night dosing; often the desired effect \u2014 or increase mirtazapine (less sedating higher up)"],
           ["Hyponatraemia (confusion, cramps, falls)","All serotonergics; elderly + diuretics","Na\u207a at 2\u20134 wks in at-risk; <130 \u2192 stop + recheck; mirtazapine least implicated"],
-          ["Bleeding / bruising","SSRIs + NSAID/anticoagulant","PPI cover or switch class"],
+          ["Bleeding / bruising","SSRIs, especially with an NSAID or anticoagulant","Consider a PPI where an NSAID or other GI risk factor is involved; otherwise weigh switching class (mirtazapine) \u2014 individualised, not automatic"],
           ["Sweating","Venlafaxine, sertraline","Dose timing; usually tolerable once explained"],
           ["QT concerns","Citalopram/escitalopram","Respect the caps (40mg / 20mg; halved >65); ECG if cardiac history or co-QT drugs"]
         ]},

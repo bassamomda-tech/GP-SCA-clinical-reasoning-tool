@@ -242,7 +242,7 @@
     management:[
       'Confirm the diagnosis (HbA1c) and assess for complications and cardiovascular risk at diagnosis and at review',
       'Lifestyle is foundational: structured education, dietary change, weight loss (which can induce remission in some), physical activity, and smoking cessation',
-      'Glucose-lowering: metformin first-line; add an SGLT2 inhibitor (especially with cardiovascular disease, heart failure, or chronic kidney disease — strong organ-protective evidence), and individualise further therapy (e.g. GLP-1 agonists, others) to HbA1c targets and comorbidity',
+      'Glucose-lowering (NICE NG28, updated 18 February 2026): MR metformin AND an SGLT2 inhibitor as DUAL first-line therapy for the majority — even with no comorbidity — introduced stepwise, with the SGLT2i only where frailty does not put the person at risk of volume depletion or hypotension; SGLT2i monotherapy if metformin is not tolerated (DPP-4i if frail). Established ASCVD gets triple first-line therapy with subcutaneous semaglutide up to 1mg weekly. Then branch by phenotype — heart failure, CKD, obesity, early-onset (<40y), frailty — rather than climbing one ladder',
       'Crucially, manage CARDIOVASCULAR RISK: blood pressure, statins/lipids, and antiplatelets where indicated — most morbidity is cardiovascular',
       'Provide structured complication surveillance: annual retinal screening, foot checks, renal monitoring (ACR/eGFR), blood pressure, and lipids',
       'Set individualised HbA1c targets (tighter for younger/lower-risk, relaxed for frail/elderly to avoid hypoglycaemia)',

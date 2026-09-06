@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atrial Fibrillation · GP Clinical Reasoning Framework</title>
+<link rel="canonical" href="https://gpreasoning.uk/cases/atrial-fibrillation.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -664,8 +665,8 @@ body.mode-clinic .sca-only{display:none!important}
 
 <div class="numstrip">
   <div class="ns-inner">
-    <div class="ns-item"><span class="ns-val">CHA₂DS₂-VASc ≥2♂ / ≥3♀</span><span class="ns-lbl">Anticoagulate</span></div>
-    <div class="ns-item"><span class="ns-val">CHA₂DS₂-VASc 1♂ / 2♀</span><span class="ns-lbl">Consider anticoagulation</span></div>
+    <div class="ns-item"><span class="ns-val">CHA₂DS₂-VASc ≥2</span><span class="ns-lbl">Offer anticoagulation — same score in ♀ as ♂ (NG196)</span></div>
+    <div class="ns-item"><span class="ns-val">CHA₂DS₂-VASc 1♂</span><span class="ns-lbl">Consider anticoagulation</span></div>
     <div class="ns-item"><span class="ns-val">HAS-BLED ≥3</span><span class="ns-lbl">High bleed risk — NB NICE NG196 now prefers ORBIT; fix modifiable factors, don’t withhold</span></div>
     <div class="ns-item"><span class="ns-val">48 hours</span><span class="ns-lbl">Cardioversion anticoag threshold</span></div>
     <div class="ns-item"><span class="ns-val">HR &lt;110 bpm</span><span class="ns-lbl">Rate control target (lenient)</span></div>
@@ -1764,7 +1765,7 @@ body.mode-clinic .sca-only{display:none!important}
           <ul class="algo-list">
             <li>New AF &lt;48h onset — cardioversion window</li>
             <li>HR &gt;110 + breathlessness → rate control today</li>
-            <li>CHA₂DS₂-VASc ≥2♂/≥3♀, not anticoagulated → DOAC today</li>
+            <li>CHA₂DS₂-VASc ≥2 (same threshold in women as in men), not anticoagulated → DOAC today</li>
             <li>New AF + suspected thyrotoxicosis — urgent TFTs</li>
             <li>INR &gt;4.0 or active bleeding on anticoagulation</li>
           </ul>
@@ -1793,7 +1794,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="cv-row cv-0"><div class="cv-score">0 ♂</div><div class="cv-bar" style="background:var(--g-bd);width:10%"></div><div class="cv-action" style="background:var(--g-bg);color:var(--g)">No anticoagulation</div></div>
           <div class="cv-row cv-1m"><div class="cv-score">1 ♂</div><div class="cv-bar" style="background:var(--a-bd);width:33%"></div><div class="cv-action" style="background:var(--a-bg);color:var(--a)">Consider anticoagulation</div></div>
           <div class="cv-row cv-1f"><div class="cv-score">1♀ only</div><div class="cv-bar" style="background:var(--b-bd);width:20%"></div><div class="cv-action" style="background:var(--b-bg);color:var(--b)">Female sex alone = no Rx</div></div>
-          <div class="cv-row cv-2p"><div class="cv-score">≥2♂/≥3♀</div><div class="cv-bar" style="background:var(--r-bd);width:100%"></div><div class="cv-action" style="background:var(--r-bg);color:var(--r);font-weight:700">Offer DOAC — today</div></div>
+          <div class="cv-row cv-2p"><div class="cv-score">≥2 (♂ or ♀)</div><div class="cv-bar" style="background:var(--r-bd);width:100%"></div><div class="cv-action" style="background:var(--r-bg);color:var(--r);font-weight:700">Offer DOAC — today</div></div>
           <div class="cv-note">⚠ Score increases with age — reassess annually. Falls alone NOT a contraindication. Aspirin is NOT an alternative. Female sex alone (score 1) does NOT trigger anticoagulation.</div>
         </div>
       </div>
@@ -1818,7 +1819,7 @@ body.mode-clinic .sca-only{display:none!important}
     <!-- 3. KEY NUMBERS -->
     <div class="sum-sub-hdr">📊 3 — Key Numbers</div>
     <div class="num-grid" style="margin-bottom:1rem">
-      <div class="num-card num-highlight"><div class="num-val">≥2♂/≥3♀</div><div class="num-lbl">CHA₂DS₂-VASc → anticoagulate</div></div>
+      <div class="num-card num-highlight"><div class="num-val">≥2</div><div class="num-lbl">CHA₂DS₂-VASc → anticoagulate (same in women as men; consider at 1 in men)</div></div>
       <div class="num-card num-highlight"><div class="num-val">DOAC</div><div class="num-lbl">First-line. Not aspirin. Not warfarin unless valvular.</div></div>
       <div class="num-card num-highlight"><div class="num-val">48 hrs</div><div class="num-lbl">Cardioversion anticoagulation threshold</div></div>
       <div class="num-card"><div class="num-val">HR &lt;110</div><div class="num-lbl">Lenient rate target at rest (RACE II)</div></div>
@@ -2034,7 +2035,7 @@ body.mode-clinic .sca-only{display:none!important}
           <div class="sdp-row"><div class="sdp-cond">Rate control — first-line</div><div class="sdp-arrow">→</div><div class="sdp-pill bbl-pill">Bisoprolol</div><div class="sdp-note">HR target &lt;110 bpm</div></div>
           <div class="sdp-row"><div class="sdp-cond">Rate — BB contraindicated (asthma)</div><div class="sdp-arrow">→</div><div class="sdp-pill ccb-pill">Diltiazem</div><div class="sdp-note">NOT with BB. NOT in HFrEF.</div></div>
           <div class="sdp-row"><div class="sdp-cond">Rate add-on / sedentary / HFrEF</div><div class="sdp-arrow">→</div><div class="sdp-pill dig-pill">Digoxin</div><div class="sdp-note">K⁺ &gt;3.5. NEVER in WPW.</div></div>
-          <div class="sdp-row"><div class="sdp-cond">Anticoagulation — non-valvular AF</div><div class="sdp-arrow">→</div><div class="sdp-pill doac-pill">DOAC (Apixaban)</div><div class="sdp-note">CHA₂DS₂-VASc ≥2♂/≥3♀</div></div>
+          <div class="sdp-row"><div class="sdp-cond">Anticoagulation — non-valvular AF</div><div class="sdp-arrow">→</div><div class="sdp-pill doac-pill">DOAC (Apixaban)</div><div class="sdp-note">CHA₂DS₂-VASc ≥2 (♂ or ♀)</div></div>
           <div class="sdp-row"><div class="sdp-cond">Valvular AF / mechanical valve</div><div class="sdp-arrow">→</div><div class="sdp-pill arb-pill">Warfarin only</div><div class="sdp-note">INR 2–3. DOACs not validated.</div></div>
           <div class="sdp-pivot">⛔ Aspirin ≠ AF stroke prevention · ⛔ BB + diltiazem = heart block · ⛔ AV nodal drugs + WPW = VF · ⛔ Female sex alone (score 1) ≠ anticoagulate</div>
         </div>

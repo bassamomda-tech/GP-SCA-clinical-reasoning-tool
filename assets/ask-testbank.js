@@ -72,7 +72,7 @@ window.ASK_TESTBANK = [
 
   /* ---- endocrine / metabolic / haematology ---- */
   { t:'T2DM — first line', q:'First-line drug treatment for type 2 diabetes?',
-    must:[ ['metformin'] ], why:'Metformin first line (NICE NG28)' },
+    must:[ ['metformin'], ['sglt2','gliflozin','dapagliflozin','empagliflozin'] ], why:'Modified-release metformin AND an SGLT2 inhibitor as dual first-line therapy for the majority, even with no comorbidity (NICE NG28, updated 18 February 2026); SGLT2i monotherapy if metformin not tolerated, DPP-4i if frailty makes an SGLT2i unsafe' },
   { t:'Diabetes — diagnostic HbA1c', q:'What HbA1c confirms a diagnosis of type 2 diabetes?',
     must:[ ['48'] ], why:'HbA1c ≥48 mmol/mol (repeat if asymptomatic)' },
   { t:'Folate deficiency', q:'How do I treat folate deficiency anaemia?',

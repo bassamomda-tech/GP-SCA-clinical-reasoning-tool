@@ -19,14 +19,14 @@ MG.render({
   icon:"🫁",
   title:"COPD — The Complete Guide",
   stemTitle:"COPD made simple &mdash; confirm, grade, treat the trait, rescue, refer",
-  stemSub:"One pathway: confirm with post-bronchodilator spirometry and the full diagnostic work-up, grade severity and symptom burden, do the high-value non-drug work first, climb the inhaler ladder by phenotype (the 'two Es'), manage exacerbations with exact rescue doses, de-escalate ICS when it isn't earning its pneumonia risk, and know the LTOT and referral triggers. NICE NG115 \u00b7 GOLD.",
-  guideline:"NICE NG115 \u00b7 GOLD 2025",
+  stemSub:"One pathway: confirm with post-bronchodilator spirometry and the full diagnostic work-up, grade severity and symptom burden, do the high-value non-drug work first, climb the NG115 inhaler ladder (asthmatic features are the branch point \u2014 dual LABA+LAMA is the default, never LAMA alone), manage exacerbations with exact rescue doses, de-escalate ICS when it isn't earning its pneumonia risk, and know the LTOT and referral triggers. NICE NG115 \u00b7 NG114.",
+  guideline:"NICE NG115 \u00b7 NG114 (exacerbations)",
   glance:[
     {lbl:"Diagnose", val:"FEV\u2081/FVC <0.7", sub:"POST-bronchodilator"},
     {lbl:"#1 lever", val:"Stop smoking", sub:"only disease-modifier"},
-    {lbl:"First inhaler", val:"LAMA or LABA+LAMA", sub:"by symptom burden"},
-    {lbl:"Add ICS if", val:"The two Es", sub:"Exacerbations + Eos \u22650.3"},
-    {lbl:"Rescue pack", val:"Pred 30mg \u00d75d", sub:"\u00b1 5-day antibiotic"},
+    {lbl:"First regular inhaler", val:"LABA + LAMA", sub:"no asthmatic features \u2014 not LAMA alone"},
+    {lbl:"Asthmatic features", val:"LABA + ICS", sub:"then triple if needed"},
+    {lbl:"Rescue pack", val:"Pred 30mg \u00d75d", sub:"antibiotic: NG114 judgement"},
     {lbl:"LTOT trigger", val:"SpO\u2082 \u226492%", sub:"stable \u2014 refer to assess"}
   ],
   flow:[
@@ -58,37 +58,41 @@ MG.render({
 
     {t:"node", d:"drug", n:"3", tag:"Step 3 · inhalers", title:"The ladder — treat the trait, not the FEV\u2081",
       blocks:[
-        {b:"p", html:"Everyone gets a short-acting reliever. The first regular inhaler depends on <strong>symptom burden</strong>; adding ICS depends on the <strong>'two Es' — Exacerbations (\u22652/yr or 1 admission) and Eosinophils (\u22650.3)</strong> or asthmatic features. Review any change at 8\u201312 weeks."},
+        {b:"p", html:"Everyone starts with a short-acting reliever. If they remain breathless or keep exacerbating despite it, the branch point is <strong>asthmatic/steroid-responsive features</strong>, not the FEV\u2081 and not an eosinophil cut-off: <b>no asthmatic features \u2192 LABA+LAMA</b>; <b>asthmatic features \u2192 LABA+ICS</b>. Review any change at 8\u201312 weeks."},
+        {b:"warn", html:"<b>Two common misreadings of NG115, both corrected here.</b> (1) <b>LAMA monotherapy is not a NICE step</b> for a symptomatic patient \u2014 once short-acting treatment is insufficient and there are no asthmatic features, NICE recommends <b>LABA+LAMA</b> (dual), whatever the symptom burden. (2) The <b>blood-eosinophil thresholds (0.1 / 0.3) are GOLD, an international framework \u2014 NICE does not gate ICS on an eosinophil count.</b> NICE gates ICS on asthmatic/steroid-responsive features, then on persisting day-to-day symptoms or severe/frequent exacerbations. Eosinophils are supportive context for a shared decision, not the rule."},
+        {b:"kv", rows:[
+          ["'Asthmatic features / steroid responsiveness' means (NG115)","Any previous secure diagnosis of asthma or atopy, a <b>higher blood eosinophil count</b>, substantial FEV\u2081 variation over time (\u2265400ml), or substantial diurnal peak-flow variation (\u226520%)"]
+        ]},
         {b:"ladder", steps:[
-          {step:"All", title:"Short-acting reliever PRN", when:"everyone",
+          {step:"All", title:"Short-acting reliever PRN", when:"everyone — the actual NICE first step",
            html:"<b>Salbutamol 100mcg 1\u20132 puffs PRN</b> (+ spacer) or ipratropium 20\u201340mcg QDS (stop SAMA when a LAMA starts \u2014 don't double anticholinergics)."},
-          {step:"Step A", title:"LAMA — lower symptom burden", when:"MRC 1\u20132 / CAT <10, \u22641 exacerbation",
-           fromLabel:"first regular inhaler",
-           html:"<b>Tiotropium</b> (Spiriva\u00ae Respimat 2 puffs OD / Tiogiva\u00ae DPI), glycopyrronium (Seebri\u00ae) or aclidinium (Eklira\u00ae Genuair BD). Once-daily, best exacerbation prevention of any single agent."},
-          {step:"Step B", title:"LABA + LAMA — higher symptom burden", when:"MRC \u22653 / CAT \u226510",
-           fromLabel:"or breathless on LAMA alone",
-           html:"One combined device OD: <b>Anoro\u00ae Ellipta</b> (umeclidinium/vilanterol), <b>Spiolto\u00ae Respimat</b>, <b>Ultibro\u00ae Breezhaler</b>. This \u2014 not ICS/LABA \u2014 is the default dual therapy in COPD without asthmatic features."},
-          {step:"Step C", title:"Add ICS → triple therapy", when:"the two Es, or asthmatic features",
-           fromLabel:"exacerbating on LABA+LAMA",
-           html:"Single triple device: <b>Trelegy\u00ae Ellipta OD</b>, <b>Trimbow\u00ae BD</b>, <b>Trixeo\u00ae Aerosphere BD</b>. Also use a 3-month ICS trial if breathlessness persists on LABA+LAMA with day-to-day variability. <b>Set the review: if no fewer flares at 12 months, or pneumonia \u2014 step back down to LABA+LAMA</b> (de-escalation is safe when eos <0.3)."},
-          {step:"Step D", title:"Beyond triple — specialist territory", when:"still exacerbating",
+          {step:"Step A", title:"LABA + LAMA — no asthmatic features", when:"still breathless / exacerbating despite short-acting",
+           fromLabel:"the default first regular inhaler, any symptom burden",
+           html:"One combined device: <b>Anoro\u00ae Ellipta OD</b> (umeclidinium/vilanterol), <b>Spiolto\u00ae Respimat OD</b>, <b>Ultibro\u00ae Breezhaler OD</b>. LAMA-only (tiotropium, glycopyrronium, aclidinium) has a place mainly where a LABA is not tolerated \u2014 it is not the recommended starting point for the symptomatic patient."},
+          {step:"Step A\u2032", title:"LABA + ICS — asthmatic features present", when:"instead of LABA+LAMA in that group",
+           fromLabel:"steroid-responsive phenotype",
+           html:"LABA/ICS combination (e.g. Fostair\u00ae, Symbicort\u00ae, Relvar\u00ae). Counsel pneumonia risk and rinse-and-spit."},
+          {step:"Step B", title:"Triple therapy (LABA+LAMA+ICS)", when:"day-to-day symptoms harming QoL, or severe/frequent exacerbations",
+           fromLabel:"3-month trial for the symptom indication",
+           html:"Single triple device: <b>Trelegy\u00ae Ellipta OD</b>, <b>Trimbow\u00ae BD</b>, <b>Trixeo\u00ae Aerosphere BD</b>. On the symptom indication, use a <b>3-month trial and stop back to LABA+LAMA if no benefit</b>. <b>Set the review either way: no fewer flares at 12 months, or a pneumonia \u2014 step back down to LABA+LAMA.</b> One severe or two moderate exacerbations in a year is the NICE exacerbation trigger."},
+          {step:"Step C", title:"Beyond triple — specialist territory", when:"still exacerbating",
            fromLabel:"optimised triple + non-drug work",
            html:"<b>Azithromycin 250mg 3\u00d7/week</b> (specialist-initiated: needs ECG for QT, LFTs, hearing check, and CT/sputum first). <b>Roflumilast</b> if chronic bronchitis + FEV\u2081<50% + flares. <b>Carbocisteine</b> trial for chronic productive cough (continue only if it helps at 4 weeks)."}
         ]},
         {b:"table", head:["Side effect","Culprit","Fix"], rows:[
-          ["Pneumonia (\u2191risk ~50%)","ICS in COPD","This is why ICS is gated by the two Es \u2014 de-escalate if not earning its keep; counsel to report fever/purulence"],
+          ["Pneumonia (\u2191risk ~50%)","ICS in COPD","Why ICS is reserved for asthmatic features, persisting symptoms or frequent exacerbations \u2014 de-escalate if not earning its keep; counsel to report fever/purulence"],
           ["Dry mouth, urinary retention, glaucoma precipitation","LAMA","Caution in BPH/urinary symptoms and angle-closure risk; never nebulise ipratropium into the eyes (mask fit)"],
           ["Tremor, palpitations, cramps","LABA/salbutamol","Usually settles; check not over-using SABA for uncontrolled disease"],
           ["Oral thrush / dysphonia","ICS","Rinse-and-spit; spacer with MDIs"],
           ["QT prolongation / hearing loss","Azithromycin prophylaxis","Baseline + repeat ECG and LFTs; stop if tinnitus/hearing change; treat flares with a NON-macrolide"]
         ]},
-        {b:"warn", html:"<b>Legacy ICS/LABA-only patients</b> (Seretide-era, no LAMA): if no asthmatic features and eos <0.3, switch to LABA+LAMA at review \u2014 same symptom control, less pneumonia. Never leave someone on ICS/LABA + separate LAMA in three devices when one triple inhaler does it."}
+        {b:"warn", html:"<b>Legacy ICS/LABA-only patients</b> (Seretide-era, no LAMA): if no asthmatic/steroid-responsive features, switch to LABA+LAMA at review \u2014 same symptom control, less pneumonia. Never leave someone on ICS/LABA + separate LAMA in three devices when one triple inhaler does it."}
       ]},
 
     {t:"node", d:"safety", n:"4", tag:"Step 4 · exacerbation", title:"The flare — exact rescue doses",
       blocks:[
         {b:"table", head:["Severity","Picture","Action"], rows:[
-          ["Mild\u2013moderate (home)","More breathless, \u2191sputum volume/purulence, coping","\u2191 bronchodilator use (spacer). <b>Prednisolone 30mg OD \u00d7 5 days</b> if breathlessness limits activities. Antibiotic ONLY if sputum purulent/\u2191: <b>amoxicillin 500mg TDS</b> or <b>doxycycline 200mg then 100mg OD</b> or <b>clarithromycin 500mg BD</b> \u2014 all 5 days"],
+          ["Mild\u2013moderate (home)","More breathless, \u2191sputum volume/purulence, coping","\u2191 bronchodilator use (spacer). <b>Prednisolone 30mg OD \u00d7 5 days</b> if breathlessness limits activities. <b>Antibiotic \u2014 NG114 is a judgement, not a purulence rule:</b> weigh <b>severity of symptoms (sputum colour change AND increases in volume or thickness)</b>, whether they need hospital, <b>previous exacerbation and hospitalisation history</b>, risk of complications (significant comorbidity, very poor lung function) and previous sputum culture results. If giving one: <b>amoxicillin 500mg TDS</b> or <b>doxycycline 200mg then 100mg OD</b> or <b>clarithromycin 500mg BD</b> \u2014 5 days"],
           ["Severe","Breathless at rest, RR \u226525, accessory muscles, SpO\u2082 <90\u201392% or below their known baseline","Admit. Controlled O\u2082 if available: <b>target 88\u201392%</b> via Venturi 24\u201328% \u2014 uncontrolled high-flow O\u2082 kills CO\u2082 retainers"],
           ["Life-threatening","Confusion/drowsiness (CO\u2082), cyanosis, exhaustion, new oedema","999. Sit up, controlled O\u2082, salbutamol while waiting"]
         ]},
@@ -105,7 +109,7 @@ MG.render({
           ["MRC + CAT + exacerbation count","Every review (\u22651/yr; 2 if severe)","Trend, not snapshot \u2014 rising burden = revisit ladder + rehab"],
           ["Observed technique + adherence","Every review","Fix before any escalation"],
           ["SpO\u2082 when STABLE","Every review","<b>\u226492% \u2192 refer for LTOT assessment</b> (two ABGs 3 weeks apart in secondary care). Never oximeter-screen during/just after a flare"],
-          ["FBC eosinophils","When considering ICS either way","\u22650.3 supports ICS; <0.1 argues against"],
+          ["FBC eosinophils","When weighing ICS either way","A higher count is one of the NG115 'asthmatic features' supporting ICS \u2014 context for the decision, NOT a NICE numerical gate (the 0.1/0.3 cut-offs are GOLD)"],
           ["BMI + mood + frailty","Annually","Cachexia \u2192 dietitian; depression/anxiety are near-universal and treatable; consider frailty/palliative needs"],
           ["Spirometry","Periodically / if changing picture","Rapid decline (>500ml/5y) \u2192 refer"]
         ]},
@@ -120,7 +124,7 @@ MG.render({
         {b:"2 · Technique", html:"Watched them? Device matched to their inspiratory effort?"},
         {b:"3 · Rehab", html:"Offered, attended, completed? Re-refer after every admission."},
         {b:"4 · Second diagnosis", html:"Heart failure (BNP), anaemia, PE (disproportionate hypoxia), lung cancer (new haemoptysis/weight loss \u2192 2WW CXR/CT), bronchiectasis, anxiety."},
-        {b:"5 · Phenotype", html:"Eosinophils re-checked? ICS earning its keep \u2014 or due de-escalation?"}
+        {b:"5 · Phenotype", html:"Asthmatic/steroid-responsive features re-assessed? ICS earning its keep \u2014 or due de-escalation?"}
       ],
       back:"All addressed → next ladder step / refer"},
 
@@ -136,7 +140,7 @@ MG.render({
         {b:"say", html:"The two treatments with the biggest effect are stopping smoking and the exercise programme \u2014 the inhalers help you live with the disease, but those two change where it's going. And if you ever feel more breathless with dirtier phlegm, that's a flare: start the plan and let us know the same day."}
       ]}
   ],
-  foot:"Confirmed COPD in adults on NICE NG115 with GOLD 2025 concepts. Verify doses against the current BNF and local formulary (inhaler brands vary by ICB) before prescribing."
+  foot:"Confirmed COPD in adults on NICE NG115 (inhaler pathway branches on asthmatic features; no eosinophil gate) with NG114 for exacerbation antibiotics. Verify doses against the current BNF and local formulary (inhaler brands vary by ICB) before prescribing."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

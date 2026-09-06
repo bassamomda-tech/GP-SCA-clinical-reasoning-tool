@@ -22,7 +22,7 @@ MG.render({
   stemSub:"One pathway: pick the correct CLASS by indication, choose and dose the DOAC properly (using CrCl, not eGFR), master the four dose-reduction rules, know the interactions and missed-dose rules, set durations for DAPT and VTE, switch safely between agents, manage bleeding and surgery, and run the annual review that catches the silent dosing errors. NICE NG196 \u00b7 NG158 \u00b7 NG128 \u00b7 BSH.",
   guideline:"NICE NG196/NG158/NG128 \u00b7 BSH",
   glance:[
-    {lbl:"AF anticoagulate if", val:"CHA\u2082DS\u2082-VASc \u22652", sub:"\u22653 women \u00b7 consider at 1 (men)"},
+    {lbl:"AF anticoagulate if", val:"CHA\u2082DS\u2082-VASc \u22652", sub:"same threshold in men AND women \u00b7 consider at 1 in men"},
     {lbl:"Default DOAC", val:"Apixaban 5mg BD", sub:"2.5mg BD if 2 of: \u226580y, \u226460kg, Cr\u2265133"},
     {lbl:"Dose by", val:"CrCl (Cockcroft-Gault)", sub:"NOT the lab eGFR"},
     {lbl:"VTE", val:"Apixaban 10mg BD \u00d77d", sub:"\u2192 5mg BD \u00b7 review 3 months"},
@@ -39,7 +39,7 @@ MG.render({
           ["Mechanical valve, mitral stenosis (mod\u2013severe), triple-positive APS, CrCl <15, pregnancy","DOACs unproven or harmful here","<b>Warfarin</b> (or LMWH in pregnancy/cancer per specialist)"]
         ]},
         {b:"kv", rows:[
-          ["AF threshold","CHA\u2082DS\u2082-VASc <b>\u22652 men / \u22653 women</b> \u2192 anticoagulate; 1 (men) \u2192 consider. Score 0 men / 1 women \u2192 none. <b>Aspirin has NO role in AF stroke prevention</b> (NG196)"],
+          ["AF threshold (NG196 \u2014 read this carefully)","<b>Offer anticoagulation (a DOAC) to anyone with CHA\u2082DS\u2082-VASc \u22652 \u2014 the same score in women as in men.</b> <b>Consider</b> anticoagulation for <b>men with a score of 1</b>. There is <b>no \u22653-in-women rule</b> in NG196: female sex contributes a point but is not an independent indication on its own, which is why 'score 2 = anticoagulate' applies to a woman with (say) hypertension + female sex just as it does to a man with two risk factors. Getting this wrong systematically under-treats women. <b>Aspirin has NO role in AF stroke prevention.</b>"],
           ["Bleeding risk","<b>ORBIT</b> preferred (NG196): use it to FIX modifiables \u2014 BP, alcohol, NSAIDs, anaemia, concurrent antiplatelet \u2014 <b>not to withhold anticoagulation</b>; falls risk alone almost never outweighs stroke prevention"],
           ["Baseline bloods","FBC, U&E + <b>CrCl by Cockcroft-Gault</b> (needs weight!), LFTs; repeat at least annually"],
           ["Who owns the plan?","DAPT durations = cardiology (discharge summary); AF/VTE = usually you. Reconcile every hospital letter \u2014 duplicated or orphaned antithrombotics kill"]
@@ -107,9 +107,9 @@ MG.render({
           ["Another antithrombotic","Multiplied bleeding","Only ever specialist-directed, time-limited"]
         ]},
         {b:"kv", rows:[
-          ["Missed DOAC dose","<b>BD drugs (apixaban/dabigatran):</b> take if <6h late, else skip \u2014 never double. <b>OD drugs (rivaroxaban/edoxaban):</b> take same day if remembered, else skip"],
+          ["Missed DOAC dose \u2014 <b>product-specific, not one rule</b>","<b>Apixaban (BD):</b> take the missed dose immediately, then continue BD as before. <b>Dabigatran (BD):</b> the missed dose may be taken up to <b>6 hours before</b> the next dose is due \u2014 omit it if less than 6 hours remain. <b>Rivaroxaban / edoxaban (OD):</b> take immediately and continue the normal OD schedule the next day. <b>Never double up.</b> Check the individual SPC \u2014 the widely-quoted 'take if under 6 hours late' is the dabigatran rule and does not apply to the others"],
           ["Missed \u22652 days","Restart at normal dose + safety-net; recurrent misses \u2192 dosette/OD agent/adherence conversation \u2014 a DOAC not taken is a stroke waiting (24h half-life = anticoagulation gone in a day)"],
-          ["Vomiting the dose","<1h after taking \u2192 repeat; >1h \u2192 it's absorbed, don't"],
+          ["Vomiting the dose","No universal interval exists in the SPCs. Pragmatically: vomiting very soon after swallowing (roughly within the first hour, tablet possibly seen) \u2192 discuss re-dosing; later than that treat it as absorbed and do NOT repeat. Repeated vomiting \u2192 seek advice (anticoagulant cover may need to be bridged/withheld) rather than guessing"],
           ["Alert card","Everyone on an anticoagulant carries one (dentists, A&E, pharmacists)"]
         ]}
       ]},
@@ -142,6 +142,7 @@ MG.render({
           ["Warfarin","5 days (bridge only if mechanical valve/recent VTE \u2014 via anticoag service)","Same evening if haemostasis"]
         ]},
         {b:"kv", rows:[
+          ["These intervals are drug-specific","There is no single peri-procedural rule for 'DOACs' \u2014 the interval depends on the <b>individual agent, the CrCl and the bleeding risk of the procedure</b> (dabigatran, being renally cleared, needs the longest). Follow the local/BSH peri-operative protocol and the surgical team's threshold rather than one remembered number"],
           ["No bridging for DOACs","Fast on, fast off \u2014 LMWH bridging adds bleeding without benefit"],
           ["Dental work, skin surgery, cataracts","Usually NO interruption needed (local haemostatic measures) \u2014 don't reflexively stop"],
           ["Recent stent/ACS needing surgery","Cardiology discussion BEFORE anything stops"]

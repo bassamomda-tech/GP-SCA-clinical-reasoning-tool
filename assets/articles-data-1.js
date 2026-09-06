@@ -25,7 +25,7 @@
       'Actively discourage cosmetic, dermatological and surgical procedures — they rarely satisfy and often worsen preoccupation or shift it elsewhere',
       'Treat comorbid depression, anxiety and substance misuse; involve family/carers where appropriate; provide crisis/safety-netting information',
       'Review SSRI response at 4–6 weeks and again at 12 weeks — OCD-level doses take longer to work; if an adequate trial fails, switch to a second SSRI before specialist clomipramine',
-      'Under-25s starting an SSRI: review within 1 week and warn about early agitation/akathisia and a transient rise in suicidal thoughts'],
+      'Starting an SSRI in someone aged 18\u201325 inclusive, or at any increased risk of suicide at any age: review within 1 week (2 weeks otherwise) and warn about early agitation/akathisia and a transient rise in suicidal thoughts'],
     referral:[
       'Significant suicide or self-harm risk → same-day/urgent mental-health assessment (crisis team)',
       'Moderate–severe, delusional-intensity (absent insight), or refractory to first-line treatment → specialist mental-health / specialist OCD-BDD service',

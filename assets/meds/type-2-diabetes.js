@@ -4,7 +4,7 @@
    ============================================ */
 MedChooser.register('type-2-diabetes', {
   title: 'Type 2 Diabetes — glucose-lowering therapy',
-  subtitle: 'First-line metformin plus tailored add-ons. NICE NG28 prioritises SGLT2i for cardiovascular and renal risk regardless of HbA1c.',
+  subtitle: 'NICE NG28 (Feb 2026): MR metformin PLUS an SGLT2 inhibitor as dual first-line therapy for the majority \u2014 even with no comorbidity \u2014 then branch by phenotype (ASCVD, HF, CKD, obesity, early-onset, frailty).',
   guideline: 'NICE NG28 · CKS Type 2 diabetes · BNF',
 
   factors: [

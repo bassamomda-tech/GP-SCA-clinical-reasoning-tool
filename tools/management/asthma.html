@@ -21,7 +21,7 @@ MG.render({
   stemSub:"One pathway: confirm the diagnosis objectively (in the right test order), start the anti-inflammatory reliever (never SABA alone), escalate low-dose \u2192 moderate-dose MART, use the FeNO/eosinophil gate before add-ons, manage the acute attack, transition legacy SABA patients, and know when to step DOWN. NICE/BTS/SIGN NG245 (2024).",
   guideline:"NICE NG245 (2024)",
   glance:[
-    {lbl:"Diagnose", val:"FeNO \u2192 BDR \u2192 PEF", sub:"objective test sequence"},
+    {lbl:"Diagnose", val:"FeNO \u2192 BDR \u2192 PEF", sub:"\u226550 ppb adult \u00b7 \u226535 ppb age 12\u201316"},
     {lbl:"Step 1", val:"AIR", sub:"ICS/formoterol PRN only"},
     {lbl:"Steps 2\u20133", val:"MART low \u2192 moderate", sub:"same inhaler BD + PRN"},
     {lbl:"Step 4 gate", val:"FeNO + eosinophils", sub:"raised \u2192 refer"},
@@ -34,9 +34,9 @@ MG.render({
       blocks:[
         {b:"ladder", steps:[
           {step:"1st", title:"FeNO", when:"symptoms suggest asthma",
-           html:"<b>FeNO \u226550 ppb = asthma confirmed.</b> (Smoking lowers FeNO \u2014 a normal result doesn't exclude.) If unavailable or not raised \u2192 next test."},
+           html:"<b>FeNO \u226550 ppb (adults 17 and over) or \u226535 ppb (ages 12\u201316) = asthma confirmed.</b> Those are the NG245 thresholds \u2014 the older 40 ppb figure and the 25\u201339 'borderline' band came from the superseded NG80. (Smoking lowers FeNO \u2014 a normal result doesn't exclude asthma.) If unavailable or below the threshold \u2192 next test."},
           {step:"2nd", title:"Spirometry with bronchodilator reversibility", when:"FeNO not diagnostic",
-           fromLabel:"FeNO <50 or unavailable",
+           fromLabel:"FeNO below threshold or unavailable",
            html:"<b>FEV1 increase \u226512% AND \u2265200ml</b> (or \u226510% of predicted FEV1) after salbutamol = confirmed. Normal spirometry when well doesn't exclude asthma."},
           {step:"3rd", title:"PEF variability", when:"still uncertain",
            fromLabel:"spirometry not diagnostic",
